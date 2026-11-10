@@ -1,0 +1,79 @@
+{
+  "origin": "a564ea059f84e83f9c7c05f3a13f6b8a26f3972c",
+  "controls": [
+    {
+      "id": "OLD-1",
+      "priorId": "Q4-11",
+      "candidate": {
+        "id": "Q4-11",
+        "generation": 4,
+        "parent": "Q3-11",
+        "family": "control",
+        "grammar": "stack",
+        "shift": 1.2000000000000002,
+        "scale": 1.095,
+        "rotation": 12,
+        "metadata": 17.2,
+        "rocketFont": 21,
+        "siteFont": 21,
+        "metricFont": 22.2,
+        "timeFont": 80,
+        "mutation": "retained holdout: lift footer; center wide field row; reserve marker lane",
+        "footerLift": 3,
+        "fieldWidth": 320,
+        "pinGuard": true,
+        "missionLift": 2
+      }
+    },
+    {
+      "id": "OLD-2",
+      "priorId": "Q4-21",
+      "candidate": {
+        "id": "Q4-21",
+        "generation": 4,
+        "parent": "Q3-21",
+        "family": "atlas",
+        "grammar": "stack",
+        "shift": 1.2000000000000002,
+        "scale": 1.095,
+        "rotation": 12,
+        "metadata": 17.2,
+        "rocketFont": 21,
+        "siteFont": 21,
+        "metricFont": 22.2,
+        "timeFont": 80,
+        "mutation": "retained holdout: lift footer; center wide field row; reserve marker lane",
+        "footerLift": 3,
+        "fieldWidth": 320,
+        "pinGuard": true,
+        "missionLift": 2
+      }
+    },
+    {
+      "id": "OLD-3",
+      "priorId": "Q4-33",
+      "candidate": {
+        "id": "Q4-33",
+        "generation": 4,
+        "parent": "Q3-31",
+        "family": "earthrise",
+        "grammar": "stack",
+        "shift": 1.2000000000000002,
+        "scale": 1.095,
+        "rotation": 0,
+        "metadata": 17.2,
+        "rocketFont": 21,
+        "siteFont": 21,
+        "metricFont": 22.2,
+        "timeFont": 80,
+        "mutation": "blind visual finding: curved Earth limb + stable paired fitness groups",
+        "footerLift": 3,
+        "fieldWidth": 320,
+        "pinGuard": true,
+        "missionLift": 2,
+        "earthLimb": true,
+        "pairedFields": true
+      }
+    }
+  ]
+}

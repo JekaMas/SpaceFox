@@ -1,0 +1,13 @@
+{
+  "reason": "Before confirmation freeze: report-only axis stage filtering; force untransformed390bed on narrow viewports. All prior measurements used desktop width, where this rule makes no geometric/paint change. Renderer, core, fonts, actual candidate settings and prior records unchanged.",
+  "changes": {
+    "prototype/features/lab.js": {
+      "before": "08169e49e19f1f8c30e3740efdc4decd2cda5439276c06ea1ff0ba31fd678305",
+      "after": "b0fdbb88998772b2f1fd9403fcb121fe09e9f27ce3282d610d6300ee7f5aee36"
+    },
+    "prototype/features/style.css": {
+      "before": "d63703eb2691200757f25794907353c0e6c8a51d577b03b54610fd5feab7a404",
+      "after": "88395ffd2053e113b12789e5f96eb8d64c7a637083fbdcaf59372d6379260c4f"
+    }
+  }
+}

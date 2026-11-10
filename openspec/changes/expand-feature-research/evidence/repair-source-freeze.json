@@ -1,0 +1,80 @@
+{
+  "stage": "confirmation-repair-1 before repair80 and current264 audit",
+  "time": "2026-11-10T22:43:32.539102+00:00",
+  "parentFreeze": "confirm-freeze.json",
+  "hypotheses": {
+    "H1": "marker/site band collision confirmed in actual raw observations",
+    "H2": "all nonwhite words fit original; negative control fails; complete token coverage; preserved0.02 tolerance"
+  },
+  "newVariants": [
+    {
+      "id": "R2-01",
+      "parent": "J3-005",
+      "overrides": {
+        "pin": [
+          44,
+          255
+        ]
+      }
+    },
+    {
+      "id": "R2-02",
+      "parent": "J3-005",
+      "overrides": {
+        "pin": [
+          44,
+          261
+        ]
+      }
+    },
+    {
+      "id": "R2-03",
+      "parent": "J3-005",
+      "overrides": {
+        "pin": [
+          44,
+          267
+        ]
+      }
+    },
+    {
+      "id": "R2-04",
+      "parent": "J3-005",
+      "overrides": {
+        "pin": [
+          44,
+          273
+        ]
+      }
+    }
+  ],
+  "inputs": "author32 + releasedscreen24 + failedconfirm24, now regression only",
+  "sources": {
+    "prototype/features/axes.json": "c677b5add8ef571b0ddbbc3415fc195f1a29909fd5ed12ea37a7c40cbb15d9d9",
+    "prototype/features/bounds-probe.html": "55ca9f2ad8abdb0d16ceb21e004a07148beb1700640d1b9eda90db0ef9c6dfcc",
+    "prototype/features/bounds-probe.js": "68ff4ba1dbeadf990deaec4332135503f3a19e9e7222a76d2f3583d0d6403137",
+    "prototype/features/bounds-probe.json": "23b82f83e5969a456d1da9d52acd16263198bcd052b31e09feedb5303c6ca846",
+    "prototype/features/core.js": "6478942fff61e222b5a50ae20037cd846bc2236d31ea590d555082967ef7c13c",
+    "prototype/features/data.js": "80480c78551740ed22c9b77ef1fcdecbeb9e2067b8b95318d016e9a879fff057",
+    "prototype/features/fixtures.json": "c969b3d809a1af186edffb86d059cffca0dae11542e9d87af2d00ef11ea3f63d",
+    "prototype/features/font-manifest.json": "4ed3413d3d800883c07fc34795e1a9cbffc72facb9c6ebedc3652913a4a2222a",
+    "prototype/features/fonts/ChakraPetch-SemiBold.ttf": "45264de3204ddbd5fb3e14a2402acd5c630d16650ae5fc221d2c52da46a6734b",
+    "prototype/features/fonts/IBMPlexSansCondensed-SemiBold.ttf": "a081ca60548aea14100757a2d6fe71ca60fd90ebce779c9a8ae5a0c8fb4526d4",
+    "prototype/features/fonts/Oxanium[wght].ttf": "2ce01d946e1e1ffc8d7eecfffbda8623bedd63eaf811a20488c4b69af45babb0",
+    "prototype/features/fonts/SairaCondensed-SemiBold.ttf": "30f8ed4d078211003a9715c80c51ce031bab5c9a17e8771182e4c4599205634b",
+    "prototype/features/index.html": "3cda04507cbd3f031db1a6ff3a4459df439451f77517409e2574e98e599ecc3e",
+    "prototype/features/lab.js": "3e78ac80827b6fba0e8682c8b6bc033be6508f003e65986a55fb450976ccc382",
+    "prototype/features/legacy.json": "40438ed5c24dd1a41c09c135a1db74772b7717e20c08685ea879385f9aabbb68",
+    "prototype/features/renderer.js": "86630b5ecfe3370c92044cd6c658b2826dbfda970d16d6ba46132b0a8cc47086",
+    "prototype/features/review.html": "6889f4df8d667fa8437e20fc885dd261d01376c2b7ab322038652527a2044697",
+    "prototype/features/review.js": "8e012909d27e6be1278ae3bba58f945cb00c1d8294201758417475a423bdda19",
+    "prototype/features/rocket-catalog.json": "ec4dac8c43e1ec1f1b2c28ee6f665af45da51947412a251d98a81787ecb2c201",
+    "prototype/features/sheet.html": "8263dcb381d0f4c532d81e0c1409dd75d20e84ba06999152b5a11c46d1386a68",
+    "prototype/features/sheet.js": "1e3b59857741daa21c0b5977ccbf8d3ccaff05a1c6c2abf2ed04712b4e884b08",
+    "prototype/features/style.css": "88395ffd2053e113b12789e5f96eb8d64c7a637083fbdcaf59372d6379260c4f",
+    "prototype/features/text-bounds.js": "1ca596873af87ebf5a3b10d244ee0ec64d84416afa762f9391dad7d2ad5a97db",
+    "prototype/layout-data.js": "fa3cfd312d89414752c43e20e1bee903e70c6c7cc120973215af67c306da7ec1",
+    "prototype/qualification/core.js": "70eea010f9ce4a19b782d77defdb048f3eddd2261f0be8d16730006f739c80dc",
+    "prototype/qualification/renderer.js": "9044f7a25a8ec8c454d1620a9f3a12ddb7f8dfb3d75d8390199224c5fa7df417"
+  }
+}

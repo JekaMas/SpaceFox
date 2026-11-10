@@ -1,0 +1,311 @@
+{
+  "candidates": [
+    {
+      "id": "R3-01",
+      "stage": "repair2",
+      "axis": "architecture",
+      "parents": [
+        "J3-010"
+      ],
+      "settings": {
+        "architecture": "ticket",
+        "projection": "auto",
+        "window": "auto",
+        "grammar": "centered",
+        "fitness": "row",
+        "typography": "barlow",
+        "palette": "mint",
+        "colorRoles": "site-accent",
+        "separators": "none",
+        "rocket": "filled",
+        "status": "cap",
+        "decor": "quiet"
+      },
+      "tuning": {
+        "colorRoles": 0,
+        "grammar": 0,
+        "typography": 0
+      },
+      "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+      "mutation": "second retained confirm: full operator wrap width 270",
+      "overrides": {
+        "operatorWidth": 270
+      }
+    },
+    {
+      "id": "R3-02",
+      "stage": "repair2",
+      "axis": "architecture",
+      "parents": [
+        "J3-010"
+      ],
+      "settings": {
+        "architecture": "ticket",
+        "projection": "auto",
+        "window": "auto",
+        "grammar": "centered",
+        "fitness": "row",
+        "typography": "barlow",
+        "palette": "mint",
+        "colorRoles": "site-accent",
+        "separators": "none",
+        "rocket": "filled",
+        "status": "cap",
+        "decor": "quiet"
+      },
+      "tuning": {
+        "colorRoles": 0,
+        "grammar": 0,
+        "typography": 0
+      },
+      "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+      "mutation": "second retained confirm: full operator wrap width 276",
+      "overrides": {
+        "operatorWidth": 276
+      }
+    },
+    {
+      "id": "R3-03",
+      "stage": "repair2",
+      "axis": "architecture",
+      "parents": [
+        "J3-010"
+      ],
+      "settings": {
+        "architecture": "ticket",
+        "projection": "auto",
+        "window": "auto",
+        "grammar": "centered",
+        "fitness": "row",
+        "typography": "barlow",
+        "palette": "mint",
+        "colorRoles": "site-accent",
+        "separators": "none",
+        "rocket": "filled",
+        "status": "cap",
+        "decor": "quiet"
+      },
+      "tuning": {
+        "colorRoles": 0,
+        "grammar": 0,
+        "typography": 0
+      },
+      "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+      "mutation": "second retained confirm: full operator wrap width 282",
+      "overrides": {
+        "operatorWidth": 282
+      }
+    },
+    {
+      "id": "R3-04",
+      "stage": "repair2",
+      "axis": "architecture",
+      "parents": [
+        "J3-010"
+      ],
+      "settings": {
+        "architecture": "ticket",
+        "projection": "auto",
+        "window": "auto",
+        "grammar": "centered",
+        "fitness": "row",
+        "typography": "barlow",
+        "palette": "mint",
+        "colorRoles": "site-accent",
+        "separators": "none",
+        "rocket": "filled",
+        "status": "cap",
+        "decor": "quiet"
+      },
+      "tuning": {
+        "colorRoles": 0,
+        "grammar": 0,
+        "typography": 0
+      },
+      "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+      "mutation": "second retained confirm: full operator wrap width 288",
+      "overrides": {
+        "operatorWidth": 288
+      }
+    }
+  ],
+  "demoScenes": [
+    {
+      "id": "scene-c4b01e5b304b400aacb5",
+      "language": "ru",
+      "status": "changed",
+      "flags": {
+        "rescheduled": true,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "04:04",
+      "fixture": {
+        "rocket": {
+          "full": "Купол Transfer 5",
+          "displayLabel": "Купол Transfer 5"
+        },
+        "operator": {
+          "full": "Международный сенсорный проект",
+          "displayLabel": "Международный сенсорный проект"
+        },
+        "purpose": {
+          "full": "Съёмка верхней стратосферы",
+          "displayLabel": "Съёмка верхней стратосферы"
+        },
+        "site": {
+          "full": "Новая Зеландия · синтетическая площадка Купол",
+          "displayLabel": "Новая Зеландия · Тест Купол"
+        },
+        "point": [
+          173.5,
+          -41.8
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 391020,
+        "displayLabel": "T−4д 12ч 37м"
+      },
+      "fields": [
+        {
+          "role": "stress",
+          "value": 9,
+          "displayLabel": "9"
+        },
+        {
+          "role": "energy",
+          "value": 83,
+          "displayLabel": "83"
+        },
+        {
+          "role": "steps",
+          "value": 96619,
+          "displayLabel": "96 619"
+        },
+        {
+          "role": "battery",
+          "value": 99,
+          "displayLabel": "99%"
+        }
+      ]
+    },
+    {
+      "id": "scene-24d3753137074ae2b536",
+      "language": "ru",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": false
+      },
+      "clock": "23:09",
+      "fixture": {
+        "rocket": {
+          "full": "Лён Return IV",
+          "displayLabel": "Лён Return IV"
+        },
+        "operator": {
+          "full": "Группа космического мониторинга",
+          "displayLabel": "Группа космического мониторинга"
+        },
+        "purpose": {
+          "full": "Испытание новых защитных панелей",
+          "displayLabel": "Испытание новых защитных панелей"
+        },
+        "site": {
+          "full": "Танзания · синтетическая площадка Астра",
+          "displayLabel": "Танзания · Тест Астра"
+        },
+        "point": null,
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Время уточняется"
+      },
+      "fields": [
+        {
+          "role": "heart",
+          "value": 163,
+          "displayLabel": "163"
+        },
+        {
+          "role": "stress",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "role": "battery",
+          "value": 0,
+          "displayLabel": "0%"
+        },
+        {
+          "role": "calories",
+          "value": 93627,
+          "displayLabel": "93 627"
+        }
+      ]
+    },
+    {
+      "id": "scene-e1f351ce8f1f488d9a34",
+      "language": "en",
+      "status": "both",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "00:01",
+      "fixture": {
+        "rocket": {
+          "full": "Cedar Mk II",
+          "displayLabel": "Cedar Mk II"
+        },
+        "operator": {
+          "full": "Distant Orbit Research Centre",
+          "displayLabel": "Distant Orbit Research Centre"
+        },
+        "purpose": {
+          "full": "Auroral spectrum survey",
+          "displayLabel": "Auroral spectrum survey"
+        },
+        "site": {
+          "full": "Norway · synthetic test location Cedar",
+          "displayLabel": "Norway · Test Cedar"
+        },
+        "point": [
+          9.7,
+          61.3
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 7234920,
+        "displayLabel": "T−83d 17h 42m"
+      },
+      "fields": [
+        {
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        },
+        {
+          "role": "calories",
+          "value": 98765,
+          "displayLabel": "98,765"
+        },
+        {
+          "role": "stress",
+          "value": 99,
+          "displayLabel": "99"
+        },
+        {
+          "role": "steps",
+          "value": 87654,
+          "displayLabel": "87,654"
+        }
+      ]
+    }
+  ]
+}

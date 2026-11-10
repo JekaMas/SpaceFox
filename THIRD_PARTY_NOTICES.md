@@ -64,3 +64,13 @@ The current workflow pin also cannot yet be fetched from its GitHub remote; see
 [setup report](openspec/changes/spacefox-watchface/evidence/setup-report.md).
 Local source readiness is not a claim that a public clone or store release has
 been qualified. Garmin SDK tools and firmware are not bundled or relicensed.
+
+## Additional numeral-font experiments
+
+Feature research bundles unmodified Saira Condensed, IBM Plex Sans Condensed,
+Chakra Petch and Oxanium font files under SIL OFL1.1. Original notices are in
+`licenses/sairacondensed-OFL.txt`, `licenses/ibmplexsanscondensed-OFL.txt`,
+`licenses/chakrapetch-OFL.txt`, `licenses/oxanium-OFL.txt`. Source URLs and binary
+SHA256 are in `prototype/features/font-manifest.json`. These licenses remain
+separate from the MIT original code/specification. No brand reference photographs
+are redistributed with the source.

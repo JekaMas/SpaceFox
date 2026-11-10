@@ -1,0 +1,9 @@
+/* SPDX-License-Identifier: MIT. Re-evaluate existing DOM observations after evaluator-only guard tightening. */
+'use strict';
+const fs=require('node:fs'),zlib=require('node:zlib'),crypto=require('node:crypto'),F=require('../prototype/features/core.js');
+const path=process.argv[2],c=JSON.parse(zlib.gunzipSync(fs.readFileSync(path))),cs=c.generations.flatMap(g=>g.candidates),before=crypto.createHash('sha256').update(fs.readFileSync(path)).digest('hex');
+const check=(records,scenes)=>records.map(r=>{const candidate=cs.find(x=>x.id===r.candidate),scene=scenes.find(x=>x.id===r.scene);if(!candidate||!scene)throw Error('Unknown raw identity');return {...r,...F.evaluate(r.observation,scene,candidate)};});
+c.currentAudit.records=check(c.currentAudit.records,c.training);c.currentAudit.results=cs.map(x=>F.summarize(x.id,c.currentAudit.records.filter(r=>r.candidate===x.id)));
+c.currentAudit.evaluatorRecheck={method:'Existing DOM geometry unchanged; evaluator-only complete-word guard reevaluation, not new browser observations',parentArchiveSha256:before,sources:Object.fromEntries(['prototype/features/core.js','prototype/features/text-bounds.js'].map(p=>[p,crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex')]))};
+for(const control of c.controls.filter(x=>x.kind==='regression80')){control.records=check(control.records,control.scenes);control.results=control.candidateIds.map(id=>F.summarize(id,control.records.filter(r=>r.candidate===id)));control.qualification=control.candidateIds.map(id=>({id,...F.qualify(id,control.scenes,control.records.filter(r=>r.candidate===id),cs.find(x=>x.id===id))}));}
+fs.writeFileSync(path,zlib.gzipSync(JSON.stringify(c)));process.stdout.write(JSON.stringify({records:c.currentAudit.records.length,passed:c.currentAudit.results.filter(r=>!r.failures).length,regression:c.controls.filter(x=>x.kind==='regression80').flatMap(x=>x.qualification)})+'\n');

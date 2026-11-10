@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "stage": "confirm24 only",
+  "releasedAtUtc": "2026-11-10T22:29:56.024966+00:00",
+  "candidateIds": [
+    "ANCHOR",
+    "J3-010",
+    "J3-008",
+    "J3-005",
+    "J1-016"
+  ],
+  "freezeSha256": "4827c499dd2c79ef5d8c8e0b5c555043a9623f4c45566a19acaca597785dc7bd",
+  "campaignBeforeConfirmSha256": "f2a47484a8e75fc02823a4cda191a4b10d6709a91445cc344b1471d410414346",
+  "packetSealSha256": "67510d1b03a815546c13de83c30f7f5915e45170b4cfc4dd66f9b646272de46c",
+  "basis": "All five retain32 author and24 screen passes; source and selection freeze checked before confirm reveal; supplemental ANCHOR was regression with1/12adaptation used",
+  "allowedPacket": "confirm24/",
+  "rule": "One independent confirmation of these frozen five. No repair/reselection on confirmation; any failure requires separately retained increment and new unopened confirmation."
+}

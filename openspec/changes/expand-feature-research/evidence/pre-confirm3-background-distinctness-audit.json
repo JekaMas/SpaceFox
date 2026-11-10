@@ -1,0 +1,68 @@
+{
+  "method": "Independent copied source rules plus raw observations; canonical parameter JSON and actual geometry/computed paint descriptors; not pixel hashes",
+  "backgroundSourceConsistency": {
+    "records": 9600,
+    "errors": [],
+    "reviewerCorrection": "Initial model assumed all legacy field rows flex; inspected inherited renderer and legacy OLD-3 earthLimb branch correctly sets paired field row display:block. Corrected only reviewer expectation; no production delta."
+  },
+  "parameterUnique": 280,
+  "common32DescriptorGroups": 277,
+  "common32Aliases": [
+    [
+      "J3-008",
+      "R4-05",
+      "R4-06"
+    ],
+    [
+      "J3-010",
+      "R3-04"
+    ]
+  ],
+  "matchedPairWitnesses": [
+    {
+      "pair": [
+        "J3-008",
+        "R4-05"
+      ],
+      "scene": "scene-c4b01e5b304b400aacb5",
+      "descriptorSha256": [
+        "bef4b6f790f77052b82e557ef6f35fa30584bf1789857306113264ba8bdd20c1",
+        "2978f573a013c06c41b088c528968b277fef23128f357dfd51de3bb20b2814ce"
+      ]
+    },
+    {
+      "pair": [
+        "J3-008",
+        "R4-06"
+      ],
+      "scene": "scene-c4b01e5b304b400aacb5",
+      "descriptorSha256": [
+        "bef4b6f790f77052b82e557ef6f35fa30584bf1789857306113264ba8bdd20c1",
+        "da98a1c23798b1bbb74e9efda7576b8bae1a334b0702a73c61de76c99969cd4d"
+      ]
+    },
+    {
+      "pair": [
+        "R4-05",
+        "R4-06"
+      ],
+      "scene": "scene-c4b01e5b304b400aacb5",
+      "descriptorSha256": [
+        "2978f573a013c06c41b088c528968b277fef23128f357dfd51de3bb20b2814ce",
+        "da98a1c23798b1bbb74e9efda7576b8bae1a334b0702a73c61de76c99969cd4d"
+      ]
+    },
+    {
+      "pair": [
+        "J3-010",
+        "R3-04"
+      ],
+      "scene": "scene-c4b01e5b304b400aacb5",
+      "descriptorSha256": [
+        "5de08ee9ad88a774494908129f04c4860cd9f759ee602e7a40b15a714b5305db",
+        "386e85e81d5961fbbcab4753c1d4e43cf9d4f0609214f61ddbdf6ceeb29f88ca"
+      ]
+    }
+  ],
+  "allPairsDistinguished": true
+}

@@ -1,0 +1,20 @@
+{
+  "method": "Independent token offset/text coverage and actual rect arithmetic; original fullRange matches the retained failed observation exactly",
+  "checks": [
+    {
+      "variant": "original frozen scene",
+      "completeNonwhiteCoverage": true,
+      "horizontalWordFit": true
+    },
+    {
+      "variant": "deliberately clipped nonwhite word",
+      "completeNonwhiteCoverage": true,
+      "horizontalWordFit": false
+    }
+  ],
+  "firstLineWordRight": 238.546875,
+  "parentRight": 240,
+  "overflowFragmentWidth": 4.4765625,
+  "nonwhiteRectOverflow": false,
+  "conclusion": "The original horizontal clip is a whitespace-only measurement false positive. The deliberately clipped nonwhite control remains failing. First confirmation verdict is still retained as failed."
+}

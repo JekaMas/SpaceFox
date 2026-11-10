@@ -1,0 +1,15 @@
+# Independent verdict — second confirmation failed
+
+**The second fresh confirmation fails the five-proposal goal.** Independent audit of120 actual observations confirms four24/24 passes and two failed scenes for ticket J3-010. The result cannot be presented as final acceptance. The original failure archive and the complete independently audited snapshot remain retained.
+
+The exact input equals the second separately sealed bank. Candidate parameters and all source hashes still match the second freeze; the failed history archive is byte-identical to the actual export. ANCHOR, J3-008, R2-04 and J1-016 pass all24 scenes. Atlas's corrected measurement now passes with the independent nonwhite-token coverage checks. J3-010 fails circle:operator twice; these are geometric failures, not trailing-space fragments or outside-class labels.
+
+The offending Russian operator labels have30 and31 graphemes, within the accepted32-grapheme class. Their actual17.2px ink-rectangle widths are307.0390625 and300.3515625 at y70.6172 and71.2192. Their maximum rectangle-corner radii are197.5837 and194.6136, both beyond the frozen191px inner-circle limit. The first rectangle also crosses the nominal195px display circle; the second stays inside195 but violates the agreed inner margin. These are rectangle/glyph-fit observations, not a separate raster proof that every rectangle corner contains painted pixels. Receipt: confirmation-attempt2-circle-details.json.
+
+The independent results are in confirmation-attempt2-independent-audit.json. No production evaluator is imported by that audit. No source/parameter repair occurred before this failed observation was retained. Previously known screen/first-confirm/second-confirm cases are regression material after any subsequent repair.
+
+A separate third increment is now appropriate. Four explicit operator-width hypotheses270/276/282/288 at the same centered y68 retain the full labels, font floors and reading route while testing the real circle geometry. They must be represented as active parameters, preserve lineage and be checked against all104 known scenes without relabeling that regression as fresh confirmation. The other four proposals' valid observations can be retained when source-effect inspection confirms their actual owners/inputs are unchanged.
+
+The reviewer prepared and sealed confirm3_24 **before production repair or selection**, checking at sealing that feature core/renderer/text-bounds and inherited Q/R still matched the second freeze. The bank contains24 new RU/EN scenes under the same accepted bounds, including at least four operator strings of exactly32 graphemes in each locale, all flag combinations, new logical-role combinations, wide values, missing data/coordinates and real countries with verified synthetic points. Values, IDs and hashes remain withheld until the third exact candidate/source freeze. No threshold or input-class contract was reduced to make a prior failure pass.
+
+Reviewer production write scope remains empty. The project is not DONE; fresh acceptance still requires the third frozen set to pass a genuinely unopened confirmation.

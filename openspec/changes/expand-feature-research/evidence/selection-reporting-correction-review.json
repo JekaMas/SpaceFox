@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "method": "Independent one-field metadata delta/source binding review; no rendering or prior green tests repeated",
+  "passed": true,
+  "changedSelectionFields": [
+    "candidateIds"
+  ],
+  "frozenSnapshotSha256": "4d07a4061c1f6f0ddb498b165a09de0826c781bf2667dd0d6fba969333985aab",
+  "currentSelectionSha256": "95ad296b4dee5114024b8e29b1e6eca13ffedc8d949599a82031e78a32b194c9",
+  "byteExactReverseSha256": "4d07a4061c1f6f0ddb498b165a09de0826c781bf2667dd0d6fba969333985aab",
+  "currentIdsEqualFrozenActualCandidatesAndNames": true,
+  "onlyFrozenSourceDifference": [
+    "openspec/changes/expand-feature-research/evidence/final-selection.json"
+  ],
+  "other39FrozenSourceHashesUnchanged": true,
+  "freezeAndActualCampaignUnchanged": true,
+  "freshBrowserAcceptanceRetained": true,
+  "boundary": "Current final-selection reporting is corrected; frozen original and third freeze remain immutable. This does not create new DOM/device/live data evidence."
+}

@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "kind": "POST-verdict REPORTING-ONLY correction; NOcandidate/render/evaluator change",
+  "timeUtc": "2026-11-10T23:34:03.518058+00:00",
+  "requiredBy": "final-technical-review.md",
+  "changedField": "candidateIds",
+  "oldCandidateIds": [
+    "ANCHOR",
+    "J3-010",
+    "J3-008",
+    "J3-005",
+    "J1-016"
+  ],
+  "newCandidateIds": [
+    "R4-01",
+    "R4-03",
+    "R4-05",
+    "R4-12",
+    "R4-09"
+  ],
+  "frozenSnapshotPath": "openspec/changes/expand-feature-research/evidence/history/third-freeze-final-selection.json",
+  "frozenSha256": "4d07a4061c1f6f0ddb498b165a09de0826c781bf2667dd0d6fba969333985aab",
+  "currentSha256": "95ad296b4dee5114024b8e29b1e6eca13ffedc8d949599a82031e78a32b194c9",
+  "exactReverseSha256": "4d07a4061c1f6f0ddb498b165a09de0826c781bf2667dd0d6fba969333985aab",
+  "reconstructedFrozenBytesEqual": true,
+  "unchangedFields": [
+    "candidates",
+    "names",
+    "demoScenes",
+    "selectionReason",
+    "increment"
+  ],
+  "boundary": "Thirdfreeze/release/history leftunchanged. ActualtestedR4IDs and render parameters werecorrect beforeandafter. Metadata correction is not new confirmation; no120DOMrerun."
+}

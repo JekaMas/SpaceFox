@@ -1,0 +1,1434 @@
+{
+  "schemaVersion": 1,
+  "synthetic": true,
+  "scenes": [
+    {
+      "id": "scene-1f42ec1f855e48439cf3",
+      "language": "ru",
+      "status": "both",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "00:02",
+      "fixture": {
+        "rocket": {
+          "full": "Лён Mk VI",
+          "displayLabel": "Лён Mk VI"
+        },
+        "operator": {
+          "full": "Центр орбитальной метрологии",
+          "displayLabel": "Центр орбитальной метрологии"
+        },
+        "purpose": {
+          "full": "Проверка малых оптических систем",
+          "displayLabel": "Проверка малых оптических систем"
+        },
+        "site": {
+          "full": "Канада · синтетическая площадка Лён",
+          "displayLabel": "Канада · Тест Лён"
+        },
+        "point": [
+          -110,
+          54
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 7920300,
+        "displayLabel": "T−91д 16ч 05м"
+      },
+      "fields": [
+        {
+          "role": "calories",
+          "value": 97531,
+          "displayLabel": "97 531"
+        },
+        {
+          "role": "energy",
+          "value": 0,
+          "displayLabel": "0"
+        },
+        {
+          "role": "steps",
+          "value": 97253,
+          "displayLabel": "97 253"
+        },
+        {
+          "role": "heart",
+          "value": 237,
+          "displayLabel": "237"
+        }
+      ]
+    },
+    {
+      "id": "scene-ac8c955be4054e22ac40",
+      "language": "en",
+      "status": "both",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "00:02",
+      "fixture": {
+        "rocket": {
+          "full": "Flax Mk VI",
+          "displayLabel": "Flax Mk VI"
+        },
+        "operator": {
+          "full": "Orbital Metrology Centre",
+          "displayLabel": "Orbital Metrology Centre"
+        },
+        "purpose": {
+          "full": "Small optical system validation",
+          "displayLabel": "Small optical system validation"
+        },
+        "site": {
+          "full": "Canada · synthetic test location Flax",
+          "displayLabel": "Canada · Test Flax"
+        },
+        "point": [
+          -110,
+          54
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 7920300,
+        "displayLabel": "T−91d 16h 05m"
+      },
+      "fields": [
+        {
+          "role": "calories",
+          "value": 97531,
+          "displayLabel": "97,531"
+        },
+        {
+          "role": "energy",
+          "value": 0,
+          "displayLabel": "0"
+        },
+        {
+          "role": "steps",
+          "value": 97253,
+          "displayLabel": "97,253"
+        },
+        {
+          "role": "heart",
+          "value": 237,
+          "displayLabel": "237"
+        }
+      ]
+    },
+    {
+      "id": "scene-65592fcc90b74d77b42d",
+      "language": "ru",
+      "status": "scheduled",
+      "flags": {
+        "rescheduled": false,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "01:41",
+      "fixture": {
+        "rocket": {
+          "full": "Falcon 9 Block 5",
+          "displayLabel": "Falcon 9 Block 5"
+        },
+        "operator": {
+          "full": "SpaceX",
+          "displayLabel": "SpaceX"
+        },
+        "purpose": {
+          "full": "Наблюдение арктических льдов",
+          "displayLabel": "Наблюдение арктических льдов"
+        },
+        "site": {
+          "full": "Канада · синтетическая площадка Лён",
+          "displayLabel": "Канада · Тест Лён"
+        },
+        "point": [
+          -108,
+          55
+        ],
+        "model": "falcon"
+      },
+      "countdown": {
+        "seconds": 1391,
+        "displayLabel": "T−23м 11с"
+      },
+      "fields": [
+        {
+          "role": "energy",
+          "value": 0,
+          "displayLabel": "0"
+        },
+        {
+          "role": "heart",
+          "value": 232,
+          "displayLabel": "232"
+        },
+        {
+          "role": "battery",
+          "value": 83,
+          "displayLabel": "83%"
+        },
+        {
+          "role": "stress",
+          "value": 1,
+          "displayLabel": "1"
+        }
+      ]
+    },
+    {
+      "id": "scene-ab326c21880648ca9d7d",
+      "language": "en",
+      "status": "scheduled",
+      "flags": {
+        "rescheduled": false,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "01:41",
+      "fixture": {
+        "rocket": {
+          "full": "Falcon 9 Block 5",
+          "displayLabel": "Falcon 9 Block 5"
+        },
+        "operator": {
+          "full": "SpaceX",
+          "displayLabel": "SpaceX"
+        },
+        "purpose": {
+          "full": "Arctic ice observation",
+          "displayLabel": "Arctic ice observation"
+        },
+        "site": {
+          "full": "Canada · synthetic test location Flax",
+          "displayLabel": "Canada · Test Flax"
+        },
+        "point": [
+          -108,
+          55
+        ],
+        "model": "falcon"
+      },
+      "countdown": {
+        "seconds": 1391,
+        "displayLabel": "T−23m 11s"
+      },
+      "fields": [
+        {
+          "role": "energy",
+          "value": 0,
+          "displayLabel": "0"
+        },
+        {
+          "role": "heart",
+          "value": 232,
+          "displayLabel": "232"
+        },
+        {
+          "role": "battery",
+          "value": 83,
+          "displayLabel": "83%"
+        },
+        {
+          "role": "stress",
+          "value": 1,
+          "displayLabel": "1"
+        }
+      ]
+    },
+    {
+      "id": "scene-c4b01e5b304b400aacb5",
+      "language": "ru",
+      "status": "changed",
+      "flags": {
+        "rescheduled": true,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "04:04",
+      "fixture": {
+        "rocket": {
+          "full": "Купол Transfer 5",
+          "displayLabel": "Купол Transfer 5"
+        },
+        "operator": {
+          "full": "Международный сенсорный проект",
+          "displayLabel": "Международный сенсорный проект"
+        },
+        "purpose": {
+          "full": "Съёмка верхней стратосферы",
+          "displayLabel": "Съёмка верхней стратосферы"
+        },
+        "site": {
+          "full": "Новая Зеландия · синтетическая площадка Купол",
+          "displayLabel": "Новая Зеландия · Тест Купол"
+        },
+        "point": [
+          173.5,
+          -41.8
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 391020,
+        "displayLabel": "T−4д 12ч 37м"
+      },
+      "fields": [
+        {
+          "role": "stress",
+          "value": 9,
+          "displayLabel": "9"
+        },
+        {
+          "role": "energy",
+          "value": 83,
+          "displayLabel": "83"
+        },
+        {
+          "role": "steps",
+          "value": 96619,
+          "displayLabel": "96 619"
+        },
+        {
+          "role": "battery",
+          "value": 99,
+          "displayLabel": "99%"
+        }
+      ]
+    },
+    {
+      "id": "scene-44cdee8f08eb4c539075",
+      "language": "en",
+      "status": "changed",
+      "flags": {
+        "rescheduled": true,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "04:04",
+      "fixture": {
+        "rocket": {
+          "full": "Dome Transfer 5",
+          "displayLabel": "Dome Transfer 5"
+        },
+        "operator": {
+          "full": "International Sensor Consortium",
+          "displayLabel": "International Sensor Consortium"
+        },
+        "purpose": {
+          "full": "Upper stratosphere imaging",
+          "displayLabel": "Upper stratosphere imaging"
+        },
+        "site": {
+          "full": "New Zealand · synthetic test location Dome",
+          "displayLabel": "New Zealand · Test Dome"
+        },
+        "point": [
+          173.5,
+          -41.8
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 391020,
+        "displayLabel": "T−4d 12h 37m"
+      },
+      "fields": [
+        {
+          "role": "stress",
+          "value": 9,
+          "displayLabel": "9"
+        },
+        {
+          "role": "energy",
+          "value": 83,
+          "displayLabel": "83"
+        },
+        {
+          "role": "steps",
+          "value": 96619,
+          "displayLabel": "96,619"
+        },
+        {
+          "role": "battery",
+          "value": 99,
+          "displayLabel": "99%"
+        }
+      ]
+    },
+    {
+      "id": "scene-a2b9379e27584bdf969a",
+      "language": "ru",
+      "status": "stale",
+      "flags": {
+        "rescheduled": false,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "06:16",
+      "fixture": {
+        "rocket": {
+          "full": "Electron",
+          "displayLabel": "Electron"
+        },
+        "operator": {
+          "full": "Rocket Lab",
+          "displayLabel": "Rocket Lab"
+        },
+        "purpose": {
+          "full": "Калибровка бортовой антенны",
+          "displayLabel": "Калибровка бортовой антенны"
+        },
+        "site": {
+          "full": "Новая Зеландия · синтетическая площадка Купол",
+          "displayLabel": "Новая Зеландия · Тест Купол"
+        },
+        "point": [
+          170.5,
+          -44
+        ],
+        "model": "electron"
+      },
+      "countdown": {
+        "seconds": 25440,
+        "displayLabel": "T−7ч 04м"
+      },
+      "fields": [
+        {
+          "role": "heart",
+          "value": 219,
+          "displayLabel": "219"
+        },
+        {
+          "role": "calories",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "steps",
+          "value": 96302,
+          "displayLabel": "96 302"
+        },
+        {
+          "role": "stress",
+          "value": 72,
+          "displayLabel": "72"
+        }
+      ]
+    },
+    {
+      "id": "scene-c74ea3cc386240ffa1d0",
+      "language": "en",
+      "status": "stale",
+      "flags": {
+        "rescheduled": false,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "06:16",
+      "fixture": {
+        "rocket": {
+          "full": "Electron",
+          "displayLabel": "Electron"
+        },
+        "operator": {
+          "full": "Rocket Lab",
+          "displayLabel": "Rocket Lab"
+        },
+        "purpose": {
+          "full": "New onboard antenna calibration",
+          "displayLabel": "New onboard antenna calibration"
+        },
+        "site": {
+          "full": "New Zealand · synthetic test location Dome",
+          "displayLabel": "New Zealand · Test Dome"
+        },
+        "point": [
+          170.5,
+          -44
+        ],
+        "model": "electron"
+      },
+      "countdown": {
+        "seconds": 25440,
+        "displayLabel": "T−7h 04m"
+      },
+      "fields": [
+        {
+          "role": "heart",
+          "value": 219,
+          "displayLabel": "219"
+        },
+        {
+          "role": "calories",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "steps",
+          "value": 96302,
+          "displayLabel": "96,302"
+        },
+        {
+          "role": "stress",
+          "value": 72,
+          "displayLabel": "72"
+        }
+      ]
+    },
+    {
+      "id": "scene-18acdf0bce8947d99e77",
+      "language": "ru",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": true,
+        "stale": false,
+        "timeKnown": false
+      },
+      "clock": "08:48",
+      "fixture": {
+        "rocket": {
+          "full": "Риф Polar II",
+          "displayLabel": "Риф Polar II"
+        },
+        "operator": {
+          "full": "Группа атмосферных систем",
+          "displayLabel": "Группа атмосферных систем"
+        },
+        "purpose": {
+          "full": "Картография высокого разрешения",
+          "displayLabel": "Картография высокого разрешения"
+        },
+        "site": {
+          "full": "Германия · синтетическая площадка Риф",
+          "displayLabel": "Германия · Тест Риф"
+        },
+        "point": [
+          10.5,
+          51.5
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Время уточняется"
+      },
+      "fields": [
+        {
+          "role": "energy",
+          "value": 1,
+          "displayLabel": "1"
+        },
+        {
+          "role": "steps",
+          "value": 96124,
+          "displayLabel": "96 124"
+        },
+        {
+          "role": "stress",
+          "value": 72,
+          "displayLabel": "72"
+        },
+        {
+          "role": "battery",
+          "value": 50,
+          "displayLabel": "50%"
+        }
+      ]
+    },
+    {
+      "id": "scene-942746af1ed34631814b",
+      "language": "en",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": true,
+        "stale": false,
+        "timeKnown": false
+      },
+      "clock": "08:48",
+      "fixture": {
+        "rocket": {
+          "full": "Reef Polar II",
+          "displayLabel": "Reef Polar II"
+        },
+        "operator": {
+          "full": "Upper Atmosphere Systems Group",
+          "displayLabel": "Upper Atmosphere Systems Group"
+        },
+        "purpose": {
+          "full": "High Resolution Climate Mapping",
+          "displayLabel": "High Resolution Climate Mapping"
+        },
+        "site": {
+          "full": "Germany · synthetic test location Reef",
+          "displayLabel": "Germany · Test Reef"
+        },
+        "point": [
+          10.5,
+          51.5
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Time pending"
+      },
+      "fields": [
+        {
+          "role": "energy",
+          "value": 1,
+          "displayLabel": "1"
+        },
+        {
+          "role": "steps",
+          "value": 96124,
+          "displayLabel": "96,124"
+        },
+        {
+          "role": "stress",
+          "value": 72,
+          "displayLabel": "72"
+        },
+        {
+          "role": "battery",
+          "value": 50,
+          "displayLabel": "50%"
+        }
+      ]
+    },
+    {
+      "id": "scene-8a1ad41fb9114ee3a08d",
+      "language": "ru",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": false,
+        "stale": false,
+        "timeKnown": false
+      },
+      "clock": "11:03",
+      "fixture": {
+        "rocket": {
+          "full": "Ariane 64",
+          "displayLabel": "Ariane 64"
+        },
+        "operator": {
+          "full": "Arianespace",
+          "displayLabel": "Arianespace"
+        },
+        "purpose": {
+          "full": "Доставка лунных измерителей",
+          "displayLabel": "Доставка лунных измерителей"
+        },
+        "site": {
+          "full": "Германия · синтетическая площадка Риф",
+          "displayLabel": "Германия · Тест Риф"
+        },
+        "point": [
+          11,
+          50.5
+        ],
+        "model": "ariane"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Время уточняется"
+      },
+      "fields": [
+        {
+          "role": "stress",
+          "value": 99,
+          "displayLabel": "99"
+        },
+        {
+          "role": "heart",
+          "value": 204,
+          "displayLabel": "204"
+        },
+        {
+          "role": "energy",
+          "value": 50,
+          "displayLabel": "50"
+        },
+        {
+          "role": "steps",
+          "value": 95529,
+          "displayLabel": "95 529"
+        }
+      ]
+    },
+    {
+      "id": "scene-ff812905c1f7461eb4a0",
+      "language": "en",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": false,
+        "stale": false,
+        "timeKnown": false
+      },
+      "clock": "11:03",
+      "fixture": {
+        "rocket": {
+          "full": "Ariane 64",
+          "displayLabel": "Ariane 64"
+        },
+        "operator": {
+          "full": "Arianespace",
+          "displayLabel": "Arianespace"
+        },
+        "purpose": {
+          "full": "Lunar instrument delivery",
+          "displayLabel": "Lunar instrument delivery"
+        },
+        "site": {
+          "full": "Germany · synthetic test location Reef",
+          "displayLabel": "Germany · Test Reef"
+        },
+        "point": [
+          11,
+          50.5
+        ],
+        "model": "ariane"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Time pending"
+      },
+      "fields": [
+        {
+          "role": "stress",
+          "value": 99,
+          "displayLabel": "99"
+        },
+        {
+          "role": "heart",
+          "value": 204,
+          "displayLabel": "204"
+        },
+        {
+          "role": "energy",
+          "value": 50,
+          "displayLabel": "50"
+        },
+        {
+          "role": "steps",
+          "value": 95529,
+          "displayLabel": "95,529"
+        }
+      ]
+    },
+    {
+      "id": "scene-a7511db6a5a249af904e",
+      "language": "ru",
+      "status": "both",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "13:31",
+      "fixture": {
+        "rocket": {
+          "full": "Край Light 3",
+          "displayLabel": "Край Light 3"
+        },
+        "operator": {
+          "full": "Центр космической навигации",
+          "displayLabel": "Центр космической навигации"
+        },
+        "purpose": {
+          "full": "Проверка резервной линии связи",
+          "displayLabel": "Проверка резервной линии связи"
+        },
+        "site": {
+          "full": "Австралия · синтетическая площадка Край",
+          "displayLabel": "Австралия · Тест Край"
+        },
+        "point": [
+          136,
+          -26
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 5089560,
+        "displayLabel": "T−58д 21ч 46м"
+      },
+      "fields": [
+        {
+          "role": "battery",
+          "value": 72,
+          "displayLabel": "72%"
+        },
+        {
+          "role": "steps",
+          "value": 95490,
+          "displayLabel": "95 490"
+        },
+        {
+          "role": "heart",
+          "value": 196,
+          "displayLabel": "196"
+        },
+        {
+          "role": "calories",
+          "value": 95212,
+          "displayLabel": "95 212"
+        }
+      ]
+    },
+    {
+      "id": "scene-5808b47f0b1747a69a7a",
+      "language": "en",
+      "status": "both",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "13:31",
+      "fixture": {
+        "rocket": {
+          "full": "Rim Light 3",
+          "displayLabel": "Rim Light 3"
+        },
+        "operator": {
+          "full": "Space Navigation Bureau",
+          "displayLabel": "Space Navigation Bureau"
+        },
+        "purpose": {
+          "full": "Backup communications test",
+          "displayLabel": "Backup communications test"
+        },
+        "site": {
+          "full": "Australia · synthetic test location Rim",
+          "displayLabel": "Australia · Test Rim"
+        },
+        "point": [
+          136,
+          -26
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 5089560,
+        "displayLabel": "T−58d 21h 46m"
+      },
+      "fields": [
+        {
+          "role": "battery",
+          "value": 72,
+          "displayLabel": "72%"
+        },
+        {
+          "role": "steps",
+          "value": 95490,
+          "displayLabel": "95,490"
+        },
+        {
+          "role": "heart",
+          "value": 196,
+          "displayLabel": "196"
+        },
+        {
+          "role": "calories",
+          "value": 95212,
+          "displayLabel": "95,212"
+        }
+      ]
+    },
+    {
+      "id": "scene-0a07670a8b1241648015",
+      "language": "ru",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": false,
+        "stale": true,
+        "timeKnown": false
+      },
+      "clock": "16:06",
+      "fixture": {
+        "rocket": {
+          "full": "Спектр Block 8",
+          "displayLabel": "Спектр Block 8"
+        },
+        "operator": {
+          "full": "Орбитальные исследователи",
+          "displayLabel": "Орбитальные исследователи"
+        },
+        "purpose": {
+          "full": "Мониторинг облачного покрова",
+          "displayLabel": "Мониторинг облачного покрова"
+        },
+        "site": {
+          "full": "Австралия · синтетическая площадка Край",
+          "displayLabel": "Австралия · Тест Край"
+        },
+        "point": [
+          134,
+          -24
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Время уточняется"
+      },
+      "fields": [
+        {
+          "role": "steps",
+          "value": 95312,
+          "displayLabel": "95 312"
+        },
+        {
+          "role": "stress",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "heart",
+          "value": 189,
+          "displayLabel": "189"
+        },
+        {
+          "role": "energy",
+          "value": 3,
+          "displayLabel": "3"
+        }
+      ]
+    },
+    {
+      "id": "scene-e25a6d9cb3744c12bc8c",
+      "language": "en",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": false,
+        "stale": true,
+        "timeKnown": false
+      },
+      "clock": "16:06",
+      "fixture": {
+        "rocket": {
+          "full": "Spectrum Block 8",
+          "displayLabel": "Spectrum Block 8"
+        },
+        "operator": {
+          "full": "Orbital Investigation Group",
+          "displayLabel": "Orbital Investigation Group"
+        },
+        "purpose": {
+          "full": "Cloud cover monitoring",
+          "displayLabel": "Cloud cover monitoring"
+        },
+        "site": {
+          "full": "Australia · synthetic test location Rim",
+          "displayLabel": "Australia · Test Rim"
+        },
+        "point": [
+          134,
+          -24
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Time pending"
+      },
+      "fields": [
+        {
+          "role": "steps",
+          "value": 95312,
+          "displayLabel": "95,312"
+        },
+        {
+          "role": "stress",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "heart",
+          "value": 189,
+          "displayLabel": "189"
+        },
+        {
+          "role": "energy",
+          "value": 3,
+          "displayLabel": "3"
+        }
+      ]
+    },
+    {
+      "id": "scene-8a6ff9cff4054bcd8549",
+      "language": "ru",
+      "status": "stale",
+      "flags": {
+        "rescheduled": false,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "18:18",
+      "fixture": {
+        "rocket": {
+          "full": "Луч Orbital 4",
+          "displayLabel": "Луч Orbital 4"
+        },
+        "operator": {
+          "full": "Системы наблюдения Меридиан",
+          "displayLabel": "Системы наблюдения Меридиан"
+        },
+        "purpose": {
+          "full": "Проверка карты магнитосферы",
+          "displayLabel": "Проверка карты магнитосферы"
+        },
+        "site": {
+          "full": "Польша · синтетическая площадка Луч",
+          "displayLabel": "Польша · Тест Луч"
+        },
+        "point": [
+          19.5,
+          52
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 0,
+        "displayLabel": "T−00с"
+      },
+      "fields": [
+        {
+          "role": "stress",
+          "value": 25,
+          "displayLabel": "25"
+        },
+        {
+          "role": "battery",
+          "value": 88,
+          "displayLabel": "88%"
+        },
+        {
+          "role": "calories",
+          "value": 94717,
+          "displayLabel": "94 717"
+        },
+        {
+          "role": "steps",
+          "value": 94578,
+          "displayLabel": "94 578"
+        }
+      ]
+    },
+    {
+      "id": "scene-0c669a9adbc24330bf29",
+      "language": "en",
+      "status": "stale",
+      "flags": {
+        "rescheduled": false,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "18:18",
+      "fixture": {
+        "rocket": {
+          "full": "Beam Orbital 4",
+          "displayLabel": "Beam Orbital 4"
+        },
+        "operator": {
+          "full": "Meridian Observation Systems",
+          "displayLabel": "Meridian Observation Systems"
+        },
+        "purpose": {
+          "full": "New magnetosphere map validation",
+          "displayLabel": "New magnetosphere map validation"
+        },
+        "site": {
+          "full": "Poland · synthetic test location Beam",
+          "displayLabel": "Poland · Test Beam"
+        },
+        "point": [
+          19.5,
+          52
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 0,
+        "displayLabel": "T−00s"
+      },
+      "fields": [
+        {
+          "role": "stress",
+          "value": 25,
+          "displayLabel": "25"
+        },
+        {
+          "role": "battery",
+          "value": 88,
+          "displayLabel": "88%"
+        },
+        {
+          "role": "calories",
+          "value": 94717,
+          "displayLabel": "94,717"
+        },
+        {
+          "role": "steps",
+          "value": 94578,
+          "displayLabel": "94,578"
+        }
+      ]
+    },
+    {
+      "id": "scene-da4c6945c3ae4d0383e9",
+      "language": "ru",
+      "status": "changed",
+      "flags": {
+        "rescheduled": true,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "21:43",
+      "fixture": {
+        "rocket": {
+          "full": "Астра Pathfinder",
+          "displayLabel": "Астра Pathfinder"
+        },
+        "operator": {
+          "full": "Центр спектральных измерений",
+          "displayLabel": "Центр спектральных измерений"
+        },
+        "purpose": {
+          "full": "Оценка калибровки фотометров",
+          "displayLabel": "Оценка калибровки фотометров"
+        },
+        "site": {
+          "full": "Польша · синтетическая площадка Луч",
+          "displayLabel": "Польша · Тест Луч"
+        },
+        "point": [
+          20,
+          51.5
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 3,
+        "displayLabel": "T−03с"
+      },
+      "fields": [
+        {
+          "role": "energy",
+          "value": 88,
+          "displayLabel": "88"
+        },
+        {
+          "role": "battery",
+          "value": 3,
+          "displayLabel": "3%"
+        },
+        {
+          "role": "calories",
+          "value": 94400,
+          "displayLabel": "94 400"
+        },
+        {
+          "role": "stress",
+          "value": 100,
+          "displayLabel": "100"
+        }
+      ]
+    },
+    {
+      "id": "scene-fe78473c88ad4872aab5",
+      "language": "en",
+      "status": "changed",
+      "flags": {
+        "rescheduled": true,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "21:43",
+      "fixture": {
+        "rocket": {
+          "full": "Astra Pathfinder",
+          "displayLabel": "Astra Pathfinder"
+        },
+        "operator": {
+          "full": "Spectral Measurement Centre",
+          "displayLabel": "Spectral Measurement Centre"
+        },
+        "purpose": {
+          "full": "Photometer calibration survey",
+          "displayLabel": "Photometer calibration survey"
+        },
+        "site": {
+          "full": "Poland · synthetic test location Beam",
+          "displayLabel": "Poland · Test Beam"
+        },
+        "point": [
+          20,
+          51.5
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 3,
+        "displayLabel": "T−03s"
+      },
+      "fields": [
+        {
+          "role": "energy",
+          "value": 88,
+          "displayLabel": "88"
+        },
+        {
+          "role": "battery",
+          "value": 3,
+          "displayLabel": "3%"
+        },
+        {
+          "role": "calories",
+          "value": 94400,
+          "displayLabel": "94,400"
+        },
+        {
+          "role": "stress",
+          "value": 100,
+          "displayLabel": "100"
+        }
+      ]
+    },
+    {
+      "id": "scene-6837fb82ecd24477b0f6",
+      "language": "ru",
+      "status": "scheduled",
+      "flags": {
+        "rescheduled": false,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "22:57",
+      "fixture": {
+        "rocket": {
+          "full": "Купол Heavy 2",
+          "displayLabel": "Купол Heavy 2"
+        },
+        "operator": {
+          "full": "Исследования дальней орбиты",
+          "displayLabel": "Исследования дальней орбиты"
+        },
+        "purpose": {
+          "full": "Доставка узла радионавигации",
+          "displayLabel": "Доставка узла радионавигации"
+        },
+        "site": {
+          "full": "Танзания · синтетическая площадка Астра",
+          "displayLabel": "Танзания · Тест Астра"
+        },
+        "point": null,
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 1430940,
+        "displayLabel": "T−16д 13ч 29м"
+      },
+      "fields": [
+        {
+          "role": "calories",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "battery",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "heart",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "stress",
+          "value": null,
+          "displayLabel": "—"
+        }
+      ]
+    },
+    {
+      "id": "scene-6d51fc7da611421193b6",
+      "language": "en",
+      "status": "scheduled",
+      "flags": {
+        "rescheduled": false,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "22:57",
+      "fixture": {
+        "rocket": {
+          "full": "Dome Heavy 2",
+          "displayLabel": "Dome Heavy 2"
+        },
+        "operator": {
+          "full": "Distant Orbit Research Bureau",
+          "displayLabel": "Distant Orbit Research Bureau"
+        },
+        "purpose": {
+          "full": "Radio navigation node delivery",
+          "displayLabel": "Radio navigation node delivery"
+        },
+        "site": {
+          "full": "Tanzania · synthetic test location Astra",
+          "displayLabel": "Tanzania · Test Astra"
+        },
+        "point": null,
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 1430940,
+        "displayLabel": "T−16d 13h 29m"
+      },
+      "fields": [
+        {
+          "role": "calories",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "battery",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "heart",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "stress",
+          "value": null,
+          "displayLabel": "—"
+        }
+      ]
+    },
+    {
+      "id": "scene-24d3753137074ae2b536",
+      "language": "ru",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": false
+      },
+      "clock": "23:09",
+      "fixture": {
+        "rocket": {
+          "full": "Лён Return IV",
+          "displayLabel": "Лён Return IV"
+        },
+        "operator": {
+          "full": "Группа космического мониторинга",
+          "displayLabel": "Группа космического мониторинга"
+        },
+        "purpose": {
+          "full": "Испытание новых защитных панелей",
+          "displayLabel": "Испытание новых защитных панелей"
+        },
+        "site": {
+          "full": "Танзания · синтетическая площадка Астра",
+          "displayLabel": "Танзания · Тест Астра"
+        },
+        "point": null,
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Время уточняется"
+      },
+      "fields": [
+        {
+          "role": "heart",
+          "value": 163,
+          "displayLabel": "163"
+        },
+        {
+          "role": "stress",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "role": "battery",
+          "value": 0,
+          "displayLabel": "0%"
+        },
+        {
+          "role": "calories",
+          "value": 93627,
+          "displayLabel": "93 627"
+        }
+      ]
+    },
+    {
+      "id": "scene-ca31a7a31eab4b67b19d",
+      "language": "en",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": false
+      },
+      "clock": "23:09",
+      "fixture": {
+        "rocket": {
+          "full": "Flax Return IV",
+          "displayLabel": "Flax Return IV"
+        },
+        "operator": {
+          "full": "Space Monitoring Working Group",
+          "displayLabel": "Space Monitoring Working Group"
+        },
+        "purpose": {
+          "full": "New protective panel trials",
+          "displayLabel": "New protective panel trials"
+        },
+        "site": {
+          "full": "Tanzania · synthetic test location Astra",
+          "displayLabel": "Tanzania · Test Astra"
+        },
+        "point": null,
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Time pending"
+      },
+      "fields": [
+        {
+          "role": "heart",
+          "value": 163,
+          "displayLabel": "163"
+        },
+        {
+          "role": "stress",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "role": "battery",
+          "value": 0,
+          "displayLabel": "0%"
+        },
+        {
+          "role": "calories",
+          "value": 93627,
+          "displayLabel": "93,627"
+        }
+      ]
+    }
+  ]
+}

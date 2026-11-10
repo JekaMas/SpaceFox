@@ -1,0 +1,1190 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-11-11",
+  "scope": "Research only; no repository mutation; no final review; no user study performed.",
+  "freshness": "New sources relative to prior Apple Astronomy/WorldTime, Atlas/TerraMark, Bell & Ross, Citizen, Patek campaign, not a claim that all publications are newly released.",
+  "source_count": 21,
+  "category_counts": {
+    "watches": 7,
+    "operations": 7,
+    "guides_research": 7
+  },
+  "visual_reviews_count": 6,
+  "read_claim": "Sections listed were read. No source is represented as fully read unless listed; no abstract-only result is used.",
+  "constraints": [
+    "round Garmin 390x390",
+    "time plus four configurable fields",
+    "full rocket name, full company name, full mission goal",
+    "full country and full site name",
+    "countdown with explicit units",
+    "geography and verified launch marker",
+    "no unnamed abbreviations or ellipsis",
+    "all mandatory content visible in every candidate"
+  ],
+  "sources": [
+    {
+      "id": "W01",
+      "category": "watches",
+      "title": "Arnold & Son Globetrotter 42",
+      "url": "https://www.arnoldandson.com/collections/globetrotter/",
+      "kind": "official_product_design",
+      "checked_at": "2026-11-11",
+      "read_status": "primary_sections_read",
+      "sections_read": [
+        "New horizons",
+        "Collection and globe/bridge description"
+      ],
+      "observation": "Описаны купол северной полусферы и отдельный внешний пояс времени.",
+      "transferable_idea": "Крупное geo-ядро, ограниченное собственной круглой областью; подписи данных за пределами карты.",
+      "mutations": [
+        "geoProjection: polar_north",
+        "geoWindow: central_medallion",
+        "architecture: geo_core"
+      ],
+      "limitation": "Механический рельеф и физический мост не доказывают цифровую читаемость; северная проекция не покрывает все места старта.",
+      "visual_review": {
+        "performed": true,
+        "url": "https://cdn.arnoldandson.com/content/uploads/2025/07/16091322/AS-Globetrotter-42-Steel-blue_face-up.png",
+        "element": "Front product photograph",
+        "observation": "Увидены серебристая суша/тёмный океан, центральная карта, отдельные пояса подписей; широкий мост перекрывает карту.",
+        "method": "Official asset downloaded temporarily and inspected with view_image",
+        "retained_in_repo": false
+      },
+      "user_study_of_spacefox": false
+    },
+    {
+      "id": "W02",
+      "category": "watches",
+      "title": "Greubel Forsey GMT Balancier Convexe",
+      "url": "https://greubelforsey.com/en/collections/collection-convexe/gmt-balancier-convexe",
+      "kind": "official_product_design",
+      "checked_at": "2026-11-11",
+      "read_status": "primary_sections_read",
+      "sections_read": [
+        "Globe and concentric indications",
+        "Integrated power reserve",
+        "Technical characteristics"
+      ],
+      "observation": "Текст связывает вращающийся за 24 часа глобус с local/universal/second-zone/day-night indications.",
+      "transferable_idea": "Разделять смысловые пояса: время, география и состояние; при этом место запуска имеет один выбранный контекст.",
+      "mutations": [
+        "architecture: typed_zones",
+        "colorRoles: time_geo_status_roles"
+      ],
+      "limitation": "Текстовый дизайн-референс; не выполнена визуальная проверка этого источника. Маркетинговые заявления не измерение glanceability.",
+      "visual_review": {
+        "performed": false,
+        "reason": "Text only; image descriptions not counted as visual review."
+      },
+      "user_study_of_spacefox": false
+    },
+    {
+      "id": "W03",
+      "category": "watches",
+      "title": "Montblanc 1858 Geosphere 0 Oxygen MB133303",
+      "url": "https://www.montblanc.com/en-us/montblanc-1858-geosphere-0-oxygen-MB133303.html",
+      "kind": "official_product_design",
+      "checked_at": "2026-11-11",
+      "read_status": "primary_sections_read",
+      "sections_read": [
+        "Details",
+        "Movement and dial characteristics"
+      ],
+      "observation": "Две вращающиеся полусферы с 24-часовой шкалой и day/night indications перечислены явно.",
+      "transferable_idea": "Протестировать две равноправные полусферы как альтернативу скрытому за горизонтом маркеру, сохранив единую полную подпись места.",
+      "mutations": [
+        "geoProjection: dual_hemisphere",
+        "geoWindow: paired_windows"
+      ],
+      "limitation": "Это перенос идеи: две маленькие карты могут ухудшить детализацию. Рекламная спецификация не устанавливает безопасный размер подписи на Garmin.",
+      "visual_review": {
+        "performed": false,
+        "reason": "Text only; image descriptions not counted as visual review."
+      },
+      "user_study_of_spacefox": false
+    },
+    {
+      "id": "W04",
+      "category": "watches",
+      "title": "Frédérique Constant Classic Worldtimer Manufacture 2026",
+      "url": "https://frederiqueconstant.com/fr/collection_page/worldtimer/",
+      "kind": "official_product_design",
+      "checked_at": "2026-11-11",
+      "read_status": "primary_sections_read",
+      "sections_read": [
+        "Une icône du voyage, réinventée à Genève",
+        "Une Collection, Trois Visages de l’Exception"
+      ],
+      "observation": "Официальная страница описывает новую коллекцию 2026 и синюю градацию с рельефными континентами.",
+      "transferable_idea": "Тестировать выразительную географию двумя тонами поверхности при спокойных текстовых зонах.",
+      "mutations": [
+        "palette: ocean_blue_neutral_land",
+        "decor: relief_suggested_by_flat_tones"
+      ],
+      "limitation": "Прочитан текст, изображения не исследованы. Ни новые продажи, ни новая коллекция не означают улучшение UX.",
+      "visual_review": {
+        "performed": false,
+        "reason": "Text only; image descriptions not counted as visual review."
+      },
+      "user_study_of_spacefox": false
+    },
+    {
+      "id": "W05",
+      "category": "watches",
+      "title": "Seiko Astron — Reasons for choosing / design history",
+      "url": "https://www.seikowatches.com/us-en/products/astron/story_gpssolarwatch",
+      "kind": "official_designer_history",
+      "checked_at": "2026-11-11",
+      "read_status": "primary_sections_read",
+      "sections_read": [
+        "2012 7X Series",
+        "First concept SBXA033",
+        "2014/2015 8X Series"
+      ],
+      "observation": "Официальный рассказ объясняет инвертированную полусферу в концепте для выражения вращения по часовой стрелке и периферийные города.",
+      "transferable_idea": "Установить north-up и проверяемое положение маркера; направление декоративного движения не должно зеркалить географию.",
+      "mutations": [
+        "geoProjection: north_up_nonmirrored",
+        "decor: motion_with_fixed_geography"
+      ],
+      "limitation": "Прочитан первичный текст, включая поисковое извлечение этих разделов; изображения не засчитаны. Зеркальный концепт — исторический приём, не рекомендуемая cartography.",
+      "visual_review": {
+        "performed": false,
+        "reason": "Text only; image descriptions not counted as visual review."
+      },
+      "user_study_of_spacefox": false
+    },
+    {
+      "id": "W06",
+      "category": "watches",
+      "title": "Breguet Marine Hora Mundi 5557",
+      "url": "https://www.breguet.com/en/watches/marine/marine-hora-mundi-5557/5557brys5wv",
+      "kind": "official_product_design",
+      "checked_at": "2026-11-11",
+      "read_status": "primary_sections_read",
+      "sections_read": [
+        "Dual time zone and instantaneous change",
+        "World map layers"
+      ],
+      "observation": "Описаны два выбранных города с синхронной датой и наложенные слои карты.",
+      "transferable_idea": "Вынести полное актуальное место в фиксированное окно; сохранить карту самостоятельной областью.",
+      "mutations": [
+        "geoWindow: framed_place_window",
+        "missionGrammar: literal_labeled_place"
+      ],
+      "limitation": "Нельзя переносить мнемонику двух timezones или physical depth без проверки; в SpaceFox все обязательные подписи остаются видимыми.",
+      "visual_review": {
+        "performed": true,
+        "url": "https://www.breguet.com/sites/default/files/images/5557BRYS5WV.png?im=Resize,height=752",
+        "element": "Front 5557BRYS5WV",
+        "observation": "Увидены карта с координатной сеткой, дата в верхнем окне, выбранный PARIS в нижнем окне; плотный декор вокруг карты.",
+        "method": "Official asset downloaded temporarily and inspected with view_image",
+        "retained_in_repo": false
+      },
+      "user_study_of_spacefox": false
+    },
+    {
+      "id": "W07",
+      "category": "watches",
+      "title": "Omega Seamaster Aqua Terra Worldtimer 2023",
+      "url": "https://press.omegawatches.com/seamaster-aqua-terra-worldtimer-2023/",
+      "kind": "official_press_release",
+      "checked_at": "2026-11-11",
+      "read_status": "primary_sections_read",
+      "sections_read": [
+        "Worldtimer display",
+        "Titanium and steel editions"
+      ],
+      "observation": "Описана Земля с вида над Северным полюсом и 24-часовой day/night ring.",
+      "transferable_idea": "Отделить карту от внешнего текста; акцентом отмечать один реально значимый контекст.",
+      "mutations": [
+        "geoProjection: polar_north",
+        "separators: dedicated_geo_boundary",
+        "colorRoles: single_reference_accent"
+      ],
+      "limitation": "24 города/региона, сокращённые названия и мелкий кольцевой текст не переносить как готовую эргономику для390px; различие цветов не заменяет полную подпись.",
+      "visual_review": {
+        "performed": true,
+        "url": "https://press.omegawatches.com/wp-content/uploads/2023/05/f263eea36c31270a56ca783e2c821d6a-1600x2000.jpg",
+        "element": "Official launch group photograph",
+        "observation": "Увидены отдельный центральный map-disc, day/night ring и наружные названия городов/регионов, часть сокращена; LONDON отмечен красным на трёх вариантах.",
+        "method": "Official asset downloaded temporarily and inspected with view_image",
+        "retained_in_repo": false
+      },
+      "user_study_of_spacefox": false
+    },
+    {
+      "id": "O01",
+      "category": "operations",
+      "title": "NASA Artemis I Press Kit — Countdown Timeline",
+      "url": "https://www.nasa.gov/wp-content/uploads/static/artemis-i-press-kit/img/Artemis%20I_Press%20Kit.pdf",
+      "kind": "official_mission_procedure",
+      "checked_at": "2026-11-11",
+      "read_status": "primary_sections_read",
+      "sections_read": [
+        "Countdown Timeline PDF page 12",
+        "Terminal count and hold rules PDF page 14"
+      ],
+      "observation": "Различены L-minus, T-minus и holds; остановка процедуры не тождественна простой разности timestamp.",
+      "transferable_idea": "Подписывать обычный отсчёт До запуска; статус задержки передавать отдельно и только при наличии данных.",
+      "mutations": [
+        "missionGrammar: literal_countdown_units",
+        "statusPlacement: adjacent_to_countdown"
+      ],
+      "limitation": "Исторический Artemis I протокол, не универсальный для всех ракет. Не объявлять текущий state миссии. HTML route стал возвращать общую страницу; проверен официальный PDF.",
+      "visual_review": {
+        "performed": false,
+        "reason": "Text only; image descriptions not counted as visual review."
+      },
+      "user_study_of_spacefox": false
+    },
+    {
+      "id": "O02",
+      "category": "operations",
+      "title": "NASA LSP Mission Countdown",
+      "url": "https://lspcountdown.ndc.nasa.gov/",
+      "kind": "official_public_dashboard",
+      "checked_at": "2026-11-11",
+      "read_status": "primary_sections_read",
+      "sections_read": [
+        "Clock labels",
+        "Launch events list",
+        "Footer updated July 2026"
+      ],
+      "observation": "Публичная структура отдельно показывает L-Time, T-Time, Planned Hold, UTC, Liftoff и Window. При проверке получены нулевые placeholders.",
+      "transferable_idea": "Визуально и словесно отделить локальные часы владельца от времени события/отсчёта.",
+      "mutations": [
+        "architecture: separate_clock_and_countdown",
+        "typography: clock_vs_duration_roles"
+      ],
+      "limitation": "Прочитана DOM/text-структура, интерфейс не засчитан как визуально проверенный. Нули не доказывают live activity либо отсутствие запусков; нельзя показывать fake health/status.",
+      "visual_review": {
+        "performed": false,
+        "reason": "Text only; image descriptions not counted as visual review."
+      },
+      "user_study_of_spacefox": false
+    },
+    {
+      "id": "O03",
+      "category": "operations",
+      "title": "NASA Eyes",
+      "url": "https://science.nasa.gov/eyes/",
+      "kind": "official_visualization_product",
+      "checked_at": "2026-11-11",
+      "read_status": "primary_sections_read",
+      "sections_read": [
+        "Featured apps — Eyes on the Solar System",
+        "Eyes on the Earth",
+        "Real-Time/Past/Present/Future description"
+      ],
+      "observation": "NASA описывает simulated views с переключением времени и выбором объектов на основе mission data.",
+      "transferable_idea": "Выбранный объект/место и время карты должны соответствовать текстовой карточке; статичная условная карта не должна выглядеть live telemetry.",
+      "mutations": [
+        "architecture: selected_object_and_geo",
+        "rocketDepiction: selected_object_glyph"
+      ],
+      "limitation": "Прочитаны официальные разделы; интерактивный runtime и изображения не проверены. Это симуляция, не raw spacecraft-health dashboard.",
+      "visual_review": {
+        "performed": false,
+        "reason": "Text only; image descriptions not counted as visual review."
+      },
+      "user_study_of_spacefox": false
+    },
+    {
+      "id": "O04",
+      "category": "operations",
+      "title": "NASA/JPL Deep Space Network Now",
+      "url": "https://www.jpl.nasa.gov/deep-space-network-now/",
+      "kind": "official_public_dashboard_description",
+      "checked_at": "2026-11-11",
+      "read_status": "primary_sections_read",
+      "sections_read": [
+        "Network sites",
+        "Update interval",
+        "Dish selection"
+      ],
+      "observation": "Три географические станции; текст описывает обновление данных каждые пять секунд и выбор антенны.",
+      "transferable_idea": "Если есть данные свежести, показывать их рядом с состоянием; пространственная схема отделена от технических величин.",
+      "mutations": [
+        "statusPlacement: data_freshness_footnote",
+        "colorRoles: connection_state_with_text"
+      ],
+      "limitation": "Открыто описание, не подтверждён live data stream и не просмотрен runtime. Не переносить скорость обновления DSN в ограничения watch face.",
+      "visual_review": {
+        "performed": false,
+        "reason": "Text only; image descriptions not counted as visual review."
+      },
+      "user_study_of_spacefox": false
+    },
+    {
+      "id": "O05",
+      "category": "operations",
+      "title": "ESA ESTRACK now — the guide",
+      "url": "https://www.esa.int/articles/about-us/directorates/operations/esa-ground-stations/estrack-now-the-guide",
+      "kind": "official_dashboard_guide",
+      "checked_at": "2026-11-11",
+      "read_status": "primary_sections_read",
+      "sections_read": [
+        "Key terms",
+        "BepiColombo and New Norcia example",
+        "Select Mission / Select Station"
+      ],
+      "observation": "Разделены mission/station contexts; указаны acquisition/loss of signal, pass, contact-quality semantics и примеры time remaining.",
+      "transferable_idea": "Использовать одну явную полную подпись выбранного места; semantic colors состояния дополнять текстом.",
+      "mutations": [
+        "missionGrammar: full_country_and_site",
+        "colorRoles: status_semantics",
+        "statusPlacement: near_relevant_entity"
+      ],
+      "limitation": "Исторический пример 2019, не текущие значения. Сокращения AOS/LOS/NNO из профессионального интерфейса нельзя переносить в UI без расшифровки.",
+      "visual_review": {
+        "performed": false,
+        "reason": "Text only; image descriptions not counted as visual review."
+      },
+      "user_study_of_spacefox": false
+    },
+    {
+      "id": "O06",
+      "category": "operations",
+      "title": "ESA-hosted Mission Control System graphical user interface",
+      "url": "https://www.esa.int/ESA_Multimedia/Images/2018/07/Mission_Control_System_graphical_user_interface",
+      "kind": "official_illustrative_image",
+      "checked_at": "2026-11-11",
+      "read_status": "primary_sections_read",
+      "sections_read": [
+        "Image record, date, credit and licence"
+      ],
+      "observation": "Официальная страница ESA датирована 26.07.2018 и credit ESA.",
+      "transferable_idea": "Группировать поля локально; статус отделять от числовых измерений; избегать повторения ярких рамок как постоянного декора.",
+      "mutations": [
+        "separators: local_grouping",
+        "statusPlacement: separate_status_strip"
+      ],
+      "limitation": "На изображении логотип Bologna и даты 2015. Это ESA-hosted illustration, не проверенный современный ESOC production console и не доказательство хорошего UX.",
+      "visual_review": {
+        "performed": true,
+        "url": "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2018/07/mission_control_system_graphical_user_interface/17621591-1-eng-GB/Mission_Control_System_graphical_user_interface_pillars.jpg",
+        "element": "Full hosted screenshot",
+        "observation": "Увидены таблицы, отдельный DB Connected, красный STOP ALL, красно/зелёные строки и многочисленные рамки; локальный status-word дублирует цвет.",
+        "method": "Official asset downloaded temporarily and inspected with view_image",
+        "retained_in_repo": false
+      },
+      "user_study_of_spacefox": false
+    },
+    {
+      "id": "O07",
+      "category": "operations",
+      "title": "NASA Open MCT User’s Guide 1.0 (2021)",
+      "url": "https://nasa.github.io/openmct/static/files/Open_MCT_Users_Guide.pdf",
+      "kind": "official_software_guide",
+      "checked_at": "2026-11-11",
+      "read_status": "primary_sections_read",
+      "sections_read": [
+        "Status Area p21",
+        "Time Conductor pp22–24",
+        "Display Layouts p69",
+        "Alphanumerics p72",
+        "Conditional styling p78"
+      ],
+      "observation": "Определены общий time context, статус последнего обновления, label+current-value и condition-based styles.",
+      "transferable_idea": "Четыре настраиваемых поля остаются подписанными; общий временной контекст; выделение только изменившегося состояния.",
+      "mutations": [
+        "fitnessEncoding: label_value",
+        "colorRoles: conditional_semantic_status",
+        "statusPlacement: dedicated_freshness"
+      ],
+      "limitation": "Desktop UI и guide examples, не wearable user study; miniature graphs and menu trees не следует копировать. Web PDF был слишком велик, PDF прочитан локально без установки пакетов.",
+      "visual_review": {
+        "performed": true,
+        "url": "https://nasa.github.io/openmct/static/files/Open_MCT_Users_Guide.pdf#page=69",
+        "element": "Display Layouts, physical and printed page 69",
+        "observation": "Увидены четыре области графиков, постоянная верхняя статусная полоса и общий Time Conductor снизу.",
+        "method": "Official PDF rendered with bundled pdftoppm and inspected with view_image",
+        "retained_in_repo": false
+      },
+      "user_study_of_spacefox": false
+    },
+    {
+      "id": "G01",
+      "category": "guides_research",
+      "title": "Garmin Connect IQ Watch Faces UX",
+      "url": "https://developer.garmin.com/connect-iq/articles/user-experience-guidelines/Watch_Faces.html",
+      "kind": "official_platform_guide",
+      "checked_at": "2026-11-11",
+      "read_status": "primary_sections_read",
+      "sections_read": [
+        "Color Use",
+        "Screen Size and Shape",
+        "Custom Fonts",
+        "Low-/High-Power",
+        "Always Active",
+        "Always On AMOLED",
+        "Best Practices"
+      ],
+      "observation": "Разные экранные технологии, relative coordinates, font size per resolution и отдельные power modes требуют разных решений.",
+      "transferable_idea": "Статичная минутная геометрия и независимый небольшой seconds region; основной макет проверять именно на целевом устройстве.",
+      "mutations": [
+        "architecture: minute_stable",
+        "typography: resolution_specific_metrics",
+        "decor: gesture_only_motion"
+      ],
+      "limitation": "Официальные технические рекомендации, не исследование удобства. MIP/AMOLED нельзя смешивать; AOD ограничения не превращать в active-screen стиль.",
+      "visual_review": {
+        "performed": false,
+        "reason": "Text only; image descriptions not counted as visual review."
+      },
+      "user_study_of_spacefox": false
+    },
+    {
+      "id": "G02",
+      "category": "guides_research",
+      "title": "Google Wear Typography",
+      "url": "https://developer.android.com/design/ui/wear/guides/styles/typography",
+      "kind": "official_platform_guide",
+      "checked_at": "2026-11-11",
+      "read_status": "primary_sections_read",
+      "sections_read": [
+        "Tokens",
+        "Type roles",
+        "Numerals and arc text"
+      ],
+      "observation": "Выделены роли display/title/label/body/arc/numerals, tracking/width/weight и tabular spacing для чисел.",
+      "transferable_idea": "Развести типографические роли времени, duration, четырёх значений и полных подписей; табличные цифры препятствуют скачкам.",
+      "mutations": [
+        "typography: role_based_tabular_numerals",
+        "missionGrammar: readable_full_labels"
+      ],
+      "limitation": "Wear OS guide, не Garmin норма и не empirical result. sp/pt нельзя подменять Garmin physical pixels.",
+      "visual_review": {
+        "performed": true,
+        "url": "https://developer.android.com/static/wear/images/design/type-roles.png",
+        "element": "Type roles illustration",
+        "observation": "Увидены дуговой Success и прямой numeric time picker с отдельным Hour; это sparse application screens, не dense watch-face evidence.",
+        "method": "Official asset downloaded temporarily and inspected with view_image",
+        "retained_in_repo": false
+      },
+      "user_study_of_spacefox": false
+    },
+    {
+      "id": "G03",
+      "category": "guides_research",
+      "title": "Google Wear Color",
+      "url": "https://developer.android.com/design/ui/wear/guides/styles/color",
+      "kind": "official_platform_guide",
+      "checked_at": "2026-11-11",
+      "read_status": "primary_sections_read",
+      "sections_read": [
+        "Build from black",
+        "New color roles",
+        "Semantic meaning",
+        "Color accessibility"
+      ],
+      "observation": "Рекомендованы чёрная основа и разделённые accent/container/surface roles.",
+      "transferable_idea": "Менять palette отдельно от semantic mapping; нейтральные обязательные надписи и один акцент выбранной миссии.",
+      "mutations": [
+        "palette: black_neutral_accent",
+        "colorRoles: separate_brand_from_status"
+      ],
+      "limitation": "Google guideline, не пользовательский эксперимент и не универсальный эффект OLED. Текст/форма нужны и при красном/зелёном status; страницу иллюстраций не засчитывал.",
+      "visual_review": {
+        "performed": false,
+        "reason": "Text only; image descriptions not counted as visual review."
+      },
+      "user_study_of_spacefox": false
+    },
+    {
+      "id": "G04",
+      "category": "guides_research",
+      "title": "W3C Understanding WCAG 2.2 — Use of Color",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html",
+      "kind": "official_accessibility_guidance",
+      "checked_at": "2026-11-11",
+      "read_status": "primary_sections_read",
+      "sections_read": [
+        "Success criterion 1.4.1",
+        "Intent",
+        "Examples"
+      ],
+      "observation": "Цвет не должен быть единственным способом передачи информации.",
+      "transferable_idea": "Слово состояния и различимая форма маркера сохраняются при каждой palette.",
+      "mutations": [
+        "colorRoles: redundant_text_shape_color",
+        "rocketDepiction: icon_with_full_name"
+      ],
+      "limitation": "Web accessibility guidance не wrist-study; выполнение критерия само по себе не доказывает glanceability.",
+      "visual_review": {
+        "performed": false,
+        "reason": "Text only; image descriptions not counted as visual review."
+      },
+      "user_study_of_spacefox": false
+    },
+    {
+      "id": "G05",
+      "category": "guides_research",
+      "title": "W3C Understanding WCAG 2.2 — Contrast Minimum",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+      "kind": "official_accessibility_guidance",
+      "checked_at": "2026-11-11",
+      "read_status": "primary_sections_read",
+      "sections_read": [
+        "Success criterion 1.4.3",
+        "Intent",
+        "Thin-font and anti-aliasing note",
+        "CSS point definition"
+      ],
+      "observation": "Для обычного текста указан ratio 4.5:1, для large text 3:1; определение large связано с CSS metrics.",
+      "transferable_idea": "Проверять фактический фон под каждой полной подписью, не средний цвет карты; учитывать тонкие штрихи.",
+      "mutations": [
+        "palette: measured_text_contrast",
+        "decor: no_texture_under_labels"
+      ],
+      "limitation": "Это полезный экранный ориентир, не доказанная достаточность на запястье/солнце; Garmin px нельзя автоматически назвать CSS large text.",
+      "visual_review": {
+        "performed": false,
+        "reason": "Text only; image descriptions not counted as visual review."
+      },
+      "user_study_of_spacefox": false
+    },
+    {
+      "id": "G06",
+      "category": "guides_research",
+      "title": "Blascheck et al. Glanceable Visualization (2019)",
+      "url": "https://petra.isenberg.cc/publications/papers/Blascheck_2019_GVS.pdf",
+      "kind": "primary_empirical_paper",
+      "checked_at": "2026-11-11",
+      "read_status": "primary_sections_read",
+      "sections_read": [
+        "Study design §§4.1–4.6",
+        "Participants §4.4 and §6.1",
+        "Results §§5–6",
+        "Limitations §7.3"
+      ],
+      "observation": "Два исследования по18 человек сравнивали большее из двух отмеченных значений на charts с7/12/24 элементами. Результаты зависят от типа chart и размера данных.",
+      "transferable_idea": "Предпочитать простые проверяемые encoding для четырёх полей; сравнивать bar/arc по конкретной задаче и сохранять exact numbers.",
+      "mutations": [
+        "fitnessEncoding: bounded_bar_plus_value",
+        "decor: avoid_many_nested_rings"
+      ],
+      "limitation": "Статичные часы, простая задача, преимущественно техническая выборка; это не оптимум full watch face. Указанные в оригинале91% staircase accuracy исправлены в G07 на примерно63%; пороги не гарантия точности.",
+      "visual_review": {
+        "performed": false,
+        "reason": "Text only; image descriptions not counted as visual review."
+      },
+      "user_study_of_spacefox": false
+    },
+    {
+      "id": "G07",
+      "category": "guides_research",
+      "title": "While et al. Glanceable Data Visualizations for Older Adults (CHI 2024)",
+      "url": "https://arxiv.org/html/2403.12343v1",
+      "kind": "primary_empirical_paper",
+      "checked_at": "2026-11-11",
+      "read_status": "primary_sections_read",
+      "sections_read": [
+        "Participants §4.1",
+        "Task §4.3",
+        "Protocol changes §4.5",
+        "Results §5.1",
+        "Limitations §7"
+      ],
+      "observation": "Концептуальная репликация:24 человека65–96лет;7 не завершили Radial24. Более старшая подгруппа отличается по многим условиям. §4.3 исправляет expected accuracy оригинала с91% на≈63%.",
+      "transferable_idea": "В тест чтения включать возрастную вариативность и полные подписи, не оценивать dense UI по модели или привычным молодым читателям.",
+      "mutations": [
+        "typography: explicit_legibility_checks",
+        "fitnessEncoding: low_complexity_with_exact_value"
+      ],
+      "limitation": "Стенд, селекция по образованию, историческая younger comparison и изменения протокола ограничивают выводы; результаты не доказывают лучший шрифт или допустимую плотность SpaceFox.",
+      "visual_review": {
+        "performed": false,
+        "reason": "Text only; image descriptions not counted as visual review."
+      },
+      "user_study_of_spacefox": false
+    }
+  ],
+  "axes": {
+    "architecture": {
+      "values": [
+        "time_header_geo_center",
+        "time_core_geo_lower",
+        "two_deck",
+        "geo_side_ticket"
+      ],
+      "sources": [
+        "W01",
+        "W02",
+        "O02",
+        "O07",
+        "G01"
+      ]
+    },
+    "geoProjection": {
+      "values": [
+        "orthographic_launch_centered",
+        "equirectangular_seam_shifted",
+        "azimuthal_launch_centered",
+        "dual_hemisphere"
+      ],
+      "sources": [
+        "W01",
+        "W03",
+        "W05",
+        "W07"
+      ],
+      "note": "Exact digital projections are our testable extrapolations, not manufacturer recommendations."
+    },
+    "geoWindow": {
+      "values": [
+        "central_medallion",
+        "lower_horizon_chord",
+        "side_inset",
+        "wide_strip"
+      ],
+      "sources": [
+        "W01",
+        "W06",
+        "W07"
+      ]
+    },
+    "missionGrammar": {
+      "values": [
+        "three_literal_labeled_lines",
+        "full_name_inline_roles",
+        "grouped_vehicle_operator_plus_goal",
+        "full_country_site_window"
+      ],
+      "sources": [
+        "W06",
+        "O01",
+        "O05",
+        "G02"
+      ]
+    },
+    "fitnessEncoding": {
+      "values": [
+        "label_value_only",
+        "label_value_bounded_bar",
+        "label_value_bounded_arc",
+        "label_value_bounded_ticks"
+      ],
+      "sources": [
+        "O07",
+        "G06",
+        "G07"
+      ],
+      "note": "Progress visual only for a real maximum/goal supplied by the data; every value and full field label retained."
+    },
+    "typography": {
+      "values": [
+        "tabular_numbers_regular_labels",
+        "humanist_regular",
+        "condensed_numbers_regular_labels",
+        "sentence_case_labels"
+      ],
+      "sources": [
+        "G01",
+        "G02",
+        "G05",
+        "G07"
+      ]
+    },
+    "palette": {
+      "values": [
+        "ivory_on_black",
+        "warm_gray_on_black",
+        "ice_accent_neutral_text",
+        "amber_accent_neutral_text"
+      ],
+      "sources": [
+        "W04",
+        "W07",
+        "G03",
+        "G05"
+      ]
+    },
+    "colorRoles": {
+      "values": [
+        "single_mission_accent",
+        "typed_time_geo_status",
+        "semantic_status_plus_text",
+        "neutral_values_category_labels"
+      ],
+      "sources": [
+        "W02",
+        "O05",
+        "O07",
+        "G03",
+        "G04"
+      ]
+    },
+    "separators": {
+      "values": [
+        "whitespace",
+        "short_rules",
+        "local_backgrounds",
+        "small_section_ticks"
+      ],
+      "sources": [
+        "W07",
+        "O06",
+        "O07"
+      ]
+    },
+    "rocketDepiction": {
+      "values": [
+        "solid_silhouette",
+        "clean_outline",
+        "simplified_body_glyph",
+        "cropped_vehicle_portrait"
+      ],
+      "sources": [
+        "O03",
+        "G04"
+      ],
+      "note": "Every version retains full rocket name; a generic rocket shape is not evidence of correct vehicle identity."
+    },
+    "statusPlacement": {
+      "values": [
+        "countdown_adjacent",
+        "mission_end",
+        "dedicated_header",
+        "geo_footer"
+      ],
+      "sources": [
+        "O01",
+        "O04",
+        "O05",
+        "O07"
+      ],
+      "note": "Only show states/freshness actually provided by data; omit invented status."
+    },
+    "decor": {
+      "values": [
+        "none",
+        "sparse_stars_outside_labels",
+        "quiet_graticule_in_geo",
+        "thin_nonoccluding_orbit"
+      ],
+      "sources": [
+        "W04",
+        "W05",
+        "W06",
+        "G01",
+        "G05",
+        "G06"
+      ]
+    }
+  },
+  "hypotheses": [
+    {
+      "id": "H01",
+      "axis": "architecture",
+      "axis_hypothesis": 1,
+      "variant_a": "Время в свободной верхней зоне",
+      "variant_b": "То же время поверх карты",
+      "hypothesis": "Отдельная зона времени повышает точность чтения без потери геоданных.",
+      "task": "1с: HH:MM;2с: страна/место",
+      "falsification_criterion": "Не подтверждена, если точность HH:MM не улучшилась хотя бы на5п.п. либо страна/место ухудшились >3п.п.",
+      "sources": [
+        "W01",
+        "O02"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H02",
+      "axis": "architecture",
+      "axis_hypothesis": 2,
+      "variant_a": "Фиксированные места четырёх подписанных полей",
+      "variant_b": "Адаптивные места тех же полей при смене миссии",
+      "hypothesis": "Стабильная геометрия сокращает поиск нужного поля.",
+      "task": "После смены длинных/коротких миссий найти заранее названное поле",
+      "falsification_criterion": "Не подтверждена, если медианное время верного ответа не сокращено≥15% при потере точности≤3п.п.",
+      "sources": [
+        "O07",
+        "G01"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H03",
+      "axis": "geoProjection",
+      "axis_hypothesis": 1,
+      "variant_a": "Orthographic centered on launch site",
+      "variant_b": "Global equirectangular with visible site",
+      "hypothesis": "Центрирование на старте ускоряет нахождение маркера.",
+      "task": "Найти маркер для12 мест на обоих полушариях",
+      "falsification_criterion": "Не подтверждена, если медианное время не сокращено≥15% или число неверных мест растёт.",
+      "sources": [
+        "W01",
+        "W03",
+        "W07"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H04",
+      "axis": "geoProjection",
+      "axis_hypothesis": 2,
+      "variant_a": "Seam shifted away from launch marker",
+      "variant_b": "Fixed dateline seam",
+      "hypothesis": "Сдвиг шва сохраняет маркер и его halo цельными.",
+      "task": "Рендерить набор долгот±179.9 и широт0,±60,±85",
+      "falsification_criterion": "Не подтверждена, если хотя бы один маркер/halo разрезан, скрыт, отражён или координаты не соответствуют подписи.",
+      "sources": [
+        "W05",
+        "W07"
+      ],
+      "test_kind": "deterministic_geometry_check",
+      "observed_result": null
+    },
+    {
+      "id": "H05",
+      "axis": "geoWindow",
+      "axis_hypothesis": 1,
+      "variant_a": "Полный круглый geo-medallion",
+      "variant_b": "Нижний clipped-horizon window",
+      "hypothesis": "Круглое окно даёт более уверенное распознавание материка при той же площади карты.",
+      "task": "2с: выбрать материк отмеченного места",
+      "falsification_criterion": "Не подтверждена, если точность не выше≥5п.п.; читаемость времени должна быть не хуже3п.п.",
+      "sources": [
+        "W01",
+        "W07"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H06",
+      "axis": "geoWindow",
+      "axis_hypothesis": 2,
+      "variant_a": "Боковое geo-window",
+      "variant_b": "Нижнее geo-window",
+      "hypothesis": "Боковое окно лучше освобождает горизонтальную ширину для полных названий.",
+      "task": "Автопроверка40 длинных названий плюс3с чтение страны/места",
+      "falsification_criterion": "Не подтверждена, если есть клиппинг/неназванное сокращение либо точность не растёт≥5п.п. при одинаковом минимальном размере глифа.",
+      "sources": [
+        "W06",
+        "G02"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H07",
+      "axis": "missionGrammar",
+      "axis_hypothesis": 1,
+      "variant_a": "Три строки с полными подписями Ракета/Компания/Цель",
+      "variant_b": "Те же полные данные как единое предложение",
+      "hypothesis": "Явные роли уменьшают путаницу оператора с миссией.",
+      "task": "3с: сопоставить ракету, компанию и цель",
+      "falsification_criterion": "Не подтверждена, если число ошибочных пар не снижается≥20% относительно контроля.",
+      "sources": [
+        "O05",
+        "O07"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H08",
+      "axis": "missionGrammar",
+      "axis_hypothesis": 2,
+      "variant_a": "Перенос полных имён по словам",
+      "variant_b": "Пропорциональное уменьшение всего полного текста",
+      "hypothesis": "Word wrapping сохраняет распознавание длинных имён.",
+      "task": "3с чтение названия ракеты и места в длинных fixtures",
+      "falsification_criterion": "Не подтверждена, если точность не повышается≥5п.п.; запрещены обрезка,ellipsis и исчезновение других обязательных данных.",
+      "sources": [
+        "W06",
+        "G02",
+        "G07"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H09",
+      "axis": "fitnessEncoding",
+      "axis_hypothesis": 1,
+      "variant_a": "Точное число+подписанный bounded bar",
+      "variant_b": "То же точное число и подпись без графика",
+      "hypothesis": "Бар помогает грубой оценке доли реальной цели.",
+      "task": "2с: выше ли2/3цели; отдельно назвать точное число",
+      "falsification_criterion": "Не подтверждена, если coarse-accuracy не повышается≥5п.п. или exact-accuracy теряет>3п.п.",
+      "sources": [
+        "G06",
+        "O07"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H10",
+      "axis": "fitnessEncoding",
+      "axis_hypothesis": 2,
+      "variant_a": "Число и полная подпись без иконки",
+      "variant_b": "То же число/подпись с дополнительной иконкой",
+      "hypothesis": "Без лишней иконки четыре разнородных поля быстрее читаются точно.",
+      "task": "2с: значение и единица запрошенного поля",
+      "falsification_criterion": "Не подтверждена, если медианное время верного чтения не уменьшается≥10% при потере точности≤3п.п.",
+      "sources": [
+        "O07",
+        "G07"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H11",
+      "axis": "typography",
+      "axis_hypothesis": 1,
+      "variant_a": "Табличные цифры",
+      "variant_b": "Пропорциональные цифры того же шрифта и cap-height",
+      "hypothesis": "Табличные цифры сохраняют якоря обновляющихся значений.",
+      "task": "Рендер всех countdown/clock переходов и1с чтение",
+      "falsification_criterion": "Не подтверждена, если x-якоря числовых колонок скачут либо ошибки чтения не уменьшаются≥3п.п.",
+      "sources": [
+        "G02",
+        "G01"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H12",
+      "axis": "typography",
+      "axis_hypothesis": 2,
+      "variant_a": "Regular humanist full labels",
+      "variant_b": "Condensed full labels at equal cap-height",
+      "hypothesis": "Обычная ширина помогает распознать полные названия лучше condensed.",
+      "task": "3с: дословное имя компании и места",
+      "falsification_criterion": "Не подтверждена, если точность не выше≥5п.п.; все строки обязаны помещаться.",
+      "sources": [
+        "G02",
+        "G05",
+        "G07"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H13",
+      "axis": "palette",
+      "axis_hypothesis": 1,
+      "variant_a": "Светлый нейтральный текст+ледяной акцент",
+      "variant_b": "Светлый нейтральный текст+янтарный акцент",
+      "hypothesis": "Ледяной акцент лучше янтарного сохраняет точность в дневном ambient condition при равном контрасте.",
+      "task": "2с чтение поля и статуса; daylight отдельно от room light",
+      "falsification_criterion": "Не подтверждена при выигрыше ледяного акцента<5п.п. либо неравном фактическом контрасте. Направление задано до теста.",
+      "sources": [
+        "G03",
+        "G05"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H14",
+      "axis": "palette",
+      "axis_hypothesis": 2,
+      "variant_a": "Чёрная основа",
+      "variant_b": "Слегка окрашенная тёмная основа",
+      "hypothesis": "Чёрная основа лучше отделяет geo-окно от текстовых зон.",
+      "task": "2с HH:MM и место; отдельно эстетика",
+      "falsification_criterion": "Не подтверждена, если совместная точность не выше≥5п.п.; одинаковые размеры и измеренный контраст текста.",
+      "sources": [
+        "G03",
+        "W04"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H15",
+      "axis": "colorRoles",
+      "axis_hypothesis": 1,
+      "variant_a": "Один устойчивый цвет статуса+его полная подпись",
+      "variant_b": "Акцент той же яркости привязан к компании;полная подпись статуса та же",
+      "hypothesis": "Semantic role упрощает нахождение задержки.",
+      "task": "2с: назвать состояние запуска",
+      "falsification_criterion": "Не подтверждена, если точность не повышается≥5п.п. при сохранении страны/времени в пределах3п.п.",
+      "sources": [
+        "O05",
+        "G03",
+        "G04"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H16",
+      "axis": "colorRoles",
+      "axis_hypothesis": 2,
+      "variant_a": "Цвет+подпись+форма маркера",
+      "variant_b": "Цвет+та же полная подпись, форма одинаковая",
+      "hypothesis": "Форма даёт дополнительную устойчивость в monochrome.",
+      "task": "2с различить selected site и secondary geo-reference",
+      "falsification_criterion": "Не подтверждена, если accuracy в grayscale не повышается≥5п.п.; цветная точность не должна терять>3п.п.",
+      "sources": [
+        "G04",
+        "W07"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H17",
+      "axis": "separators",
+      "axis_hypothesis": 1,
+      "variant_a": "Пробелы между четырьмя полями",
+      "variant_b": "Полные рамки вокруг тех же четырёх полей",
+      "hypothesis": "Whitespace снижает визуальный шум без ошибок группировки.",
+      "task": "2с: связать значение с подписью",
+      "falsification_criterion": "Не подтверждена, если время верного ответа не сокращено≥10% или ошибок группировки больше.",
+      "sources": [
+        "O06",
+        "O07"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H18",
+      "axis": "separators",
+      "axis_hypothesis": 2,
+      "variant_a": "Короткие локальные линии между смысловыми блоками",
+      "variant_b": "Длинные линии через карту и текстовые зоны",
+      "hypothesis": "Короткие разделители уменьшают ложные продолжения и перекрытия.",
+      "task": "1с время;2с найти marker;pixel-overlap check",
+      "falsification_criterion": "Не подтверждена при любом перекрытии глифов/маркера или отсутствии≥3п.п. выигрыша совместной точности.",
+      "sources": [
+        "W07",
+        "O07"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H19",
+      "axis": "rocketDepiction",
+      "axis_hypothesis": 1,
+      "variant_a": "Чистый solid rocket silhouette",
+      "variant_b": "Тонкий outline rocket glyph при одинаковом bbox",
+      "hypothesis": "Силуэт лучше узнаётся как ракета при коротком взгляде.",
+      "task": "1с: класс объекта;полное имя ракеты постоянно видно",
+      "falsification_criterion": "Не подтверждена, если распознавание класса не повышается≥5п.п.; точное имя не хуже3п.п. Это не тест знания модели ракеты.",
+      "sources": [
+        "O03",
+        "G04"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H20",
+      "axis": "rocketDepiction",
+      "axis_hypothesis": 2,
+      "variant_a": "Упрощённый vehicle portrait без текстур",
+      "variant_b": "Детальный portrait того же аппарата в том же bbox",
+      "hypothesis": "Упрощение сохраняет космический образ и снижает отвлечение.",
+      "task": "1с время;2с класс объекта;отдельная эстетическая оценка",
+      "falsification_criterion": "Не подтверждена, если ошибки времени не снижаются≥20% или узнаваемость класса падает>3п.п.",
+      "sources": [
+        "O03",
+        "G05"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H21",
+      "axis": "statusPlacement",
+      "axis_hypothesis": 1,
+      "variant_a": "Полное слово состояния рядом с countdown",
+      "variant_b": "То же слово в верхнем header",
+      "hypothesis": "Соседство помогает правильно интерпретировать отсчёт при переносе.",
+      "task": "2с: до старта/после/перенесён;remaining duration",
+      "falsification_criterion": "Не подтверждена, если совместная точность не выше≥5п.п.",
+      "sources": [
+        "O01",
+        "O02"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H22",
+      "axis": "statusPlacement",
+      "axis_hypothesis": 2,
+      "variant_a": "Состояние миссии в отдельной mission-zone",
+      "variant_b": "То же состояние между fitness fields",
+      "hypothesis": "Отдельная зона уменьшает ошибочное отнесение state к fitness.",
+      "task": "2с: к какому объекту относится состояние",
+      "falsification_criterion": "Не подтверждена, если неправильных атрибуций не меньше≥20% относительно контроля.",
+      "sources": [
+        "O05",
+        "O07"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H23",
+      "axis": "decor",
+      "axis_hypothesis": 1,
+      "variant_a": "Звёзды только вне glyph boxes",
+      "variant_b": "Те же звёзды равномерно под текстом",
+      "hypothesis": "Текстовые зоны без звёзд читаются точнее при сохранении темы.",
+      "task": "2с HH:MM+одно поле;затем отдельный вопрос о теме",
+      "falsification_criterion": "Не подтверждена, если ошибки не ниже≥20% либо узнавание космической темы<70%.",
+      "sources": [
+        "G05",
+        "W04"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    },
+    {
+      "id": "H24",
+      "axis": "decor",
+      "axis_hypothesis": 2,
+      "variant_a": "Тихая geo-graticule только внутри карты",
+      "variant_b": "Карта без graticule",
+      "hypothesis": "Сетка помогает ориентации без замедления чтения.",
+      "task": "2с: к северу/югу от экватора находится marker;время",
+      "falsification_criterion": "Не подтверждена, если orientation-accuracy не выше≥5п.п. или чтение времени теряет>3п.п.",
+      "sources": [
+        "W06",
+        "W05"
+      ],
+      "test_kind": "user_test_proposal",
+      "observed_result": null
+    }
+  ],
+  "hypotheses_status": "All proposed; no observed results; thresholds are proposed project criteria, not values inferred from research.",
+  "verification_boundary": [
+    "Model visual inspection is not a user study.",
+    "Official product marketing does not establish UX superiority.",
+    "256 generated candidates plus 3 baselines do not establish exhaustive design coverage or population preference.",
+    "Projection families and most mutation values are our inferences inspired by sources.",
+    "No packages installed or paid tools used.",
+    "Copyrighted visual files are temporary, not licensed as project resources."
+  ],
+  "methodology_source": {
+    "title": "Scientific Agent Skills: A Library of Procedural Knowledge for Research Agents",
+    "authors": [
+      "Timothy Kassis",
+      "Vinayak Agarwal",
+      "Yuhuan He",
+      "Darshil Patel",
+      "Aubrey M. Brueckner"
+    ],
+    "year": 2026,
+    "url": "https://doi.org/10.48550/arXiv.2609.00065",
+    "version_checked": "v2 (2026-09-02)",
+    "role": "Procedure only; excluded from 21 design evidence sources"
+  }
+}

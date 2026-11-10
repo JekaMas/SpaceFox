@@ -1,0 +1,611 @@
+{
+  "countries": [
+    [
+      "NOR",
+      "Норвегия",
+      "Norway",
+      [
+        [
+          9.7,
+          61.3
+        ],
+        [
+          11,
+          63
+        ]
+      ],
+      [
+        "Кедр",
+        "Cedar"
+      ]
+    ],
+    [
+      "IDN",
+      "Индонезия",
+      "Indonesia",
+      [
+        [
+          113.5,
+          -1
+        ],
+        [
+          115,
+          -2.1
+        ]
+      ],
+      [
+        "Парус",
+        "Sail"
+      ]
+    ],
+    [
+      "TUR",
+      "Турция",
+      "Turkey",
+      [
+        [
+          34,
+          39
+        ],
+        [
+          36,
+          39.5
+        ]
+      ],
+      [
+        "Лира",
+        "Lyra"
+      ]
+    ],
+    [
+      "MEX",
+      "Мексика",
+      "Mexico",
+      [
+        [
+          -103,
+          24
+        ],
+        [
+          -101,
+          23
+        ]
+      ],
+      [
+        "Ирис",
+        "Iris"
+      ]
+    ],
+    [
+      "ITA",
+      "Италия",
+      "Italy",
+      [
+        [
+          12,
+          43
+        ],
+        [
+          13.2,
+          42.4
+        ]
+      ],
+      [
+        "Мост",
+        "Bridge"
+      ]
+    ],
+    [
+      "ARG",
+      "Аргентина",
+      "Argentina",
+      [
+        [
+          -65,
+          -33
+        ],
+        [
+          -63,
+          -35
+        ]
+      ],
+      [
+        "Клён",
+        "Maple"
+      ]
+    ]
+  ],
+  "payloads": [
+    [
+      [
+        "Кедр Mk II",
+        "Cedar Mk II"
+      ],
+      [
+        "Центр дальних орбит",
+        "Distant Orbit Research Centre"
+      ],
+      [
+        "Спектр полярного сияния",
+        "Auroral spectrum survey"
+      ],
+      "generic"
+    ],
+    [
+      [
+        "Falcon 9",
+        "Falcon 9"
+      ],
+      [
+        "SpaceX",
+        "SpaceX"
+      ],
+      [
+        "Доставка орбитального модуля",
+        "Orbital module delivery"
+      ],
+      "falcon"
+    ],
+    [
+      [
+        "Парус Light 2",
+        "Sail Light 2"
+      ],
+      [
+        "Лаборатория небесной механики",
+        "Celestial Mechanics Laboratory"
+      ],
+      [
+        "Калибровка звёздных датчиков",
+        "Star tracker calibration"
+      ],
+      "generic"
+    ],
+    [
+      [
+        "Electron",
+        "Electron"
+      ],
+      [
+        "Rocket Lab",
+        "Rocket Lab"
+      ],
+      [
+        "Наблюдение морских течений",
+        "Ocean circulation survey"
+      ],
+      "electron"
+    ],
+    [
+      [
+        "Вектор 27 Heavy",
+        "Vector 27 Heavy"
+      ],
+      [
+        "Орбитальные системы Меридиан",
+        "Meridian Orbital Systems"
+      ],
+      [
+        "Проверка межспутниковой связи",
+        "Intersatellite link validation"
+      ],
+      "generic"
+    ],
+    [
+      [
+        "Ariane 62",
+        "Ariane 62"
+      ],
+      [
+        "Arianespace",
+        "Arianespace"
+      ],
+      [
+        "Измерение солнечного ветра",
+        "Solar wind measurement"
+      ],
+      "ariane"
+    ],
+    [
+      [
+        "Лира Transfer II",
+        "Lyra Transfer II"
+      ],
+      [
+        "Институт дальней радиосвязи",
+        "Deep Space Radio Institute"
+      ],
+      [
+        "Испытание возвратной капсулы",
+        "Return capsule demonstration"
+      ],
+      "generic"
+    ],
+    [
+      [
+        "Ирис Pathfinder",
+        "Iris Pathfinder"
+      ],
+      [
+        "Центр прикладной астрофизики",
+        "Applied Astrophysics Centre"
+      ],
+      [
+        "Картография лесного покрова",
+        "Forest cover mapping"
+      ],
+      "generic"
+    ],
+    [
+      [
+        "Рубеж Mk III",
+        "Frontier Mk III"
+      ],
+      [
+        "Объединённая научная группа",
+        "Joint Science Flight Group"
+      ],
+      [
+        "Доставка лунного ретранслятора",
+        "Lunar relay delivery"
+      ],
+      "generic"
+    ],
+    [
+      [
+        "Арго One",
+        "Argo One"
+      ],
+      [
+        "Экспериментальные аппараты",
+        "Experimental Spacecraft Team"
+      ],
+      [
+        "Точность орбитальных часов",
+        "Orbital clock accuracy test"
+      ],
+      "generic"
+    ],
+    [
+      [
+        "Альтаир Block 4",
+        "Altair Block 4"
+      ],
+      [
+        "Спутниковая экспедиция",
+        "Satellite Expedition Office"
+      ],
+      [
+        "Измерение магнитосферы Земли",
+        "Earth magnetosphere survey"
+      ],
+      "generic"
+    ],
+    [
+      [
+        "Клён Orbital",
+        "Maple Orbital"
+      ],
+      [
+        "Системы космического полёта",
+        "Spaceflight Systems Centre"
+      ],
+      [
+        "Проверка навигационного маяка",
+        "Navigation beacon validation"
+      ],
+      "generic"
+    ]
+  ],
+  "clocks": [
+    "00:01",
+    "01:10",
+    "04:44",
+    "07:20",
+    "12:34",
+    "17:56",
+    "22:08",
+    "23:59",
+    "08:08",
+    "20:20",
+    "03:33",
+    "18:48"
+  ],
+  "flags": [
+    [
+      1,
+      1,
+      1
+    ],
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      1,
+      1
+    ],
+    [
+      1,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      1
+    ],
+    [
+      0,
+      1,
+      0
+    ],
+    [
+      1,
+      0,
+      1
+    ],
+    [
+      0,
+      1,
+      1
+    ],
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      1,
+      1,
+      0
+    ]
+  ],
+  "seconds": [
+    7234920,
+    843,
+    533220,
+    34920,
+    null,
+    null,
+    4147140,
+    null,
+    1,
+    0,
+    2444640,
+    null
+  ],
+  "fields": [
+    [
+      [
+        "battery",
+        100
+      ],
+      [
+        "calories",
+        98765
+      ],
+      [
+        "stress",
+        99
+      ],
+      [
+        "steps",
+        87654
+      ]
+    ],
+    [
+      [
+        "heart",
+        240
+      ],
+      [
+        "steps",
+        23456
+      ],
+      [
+        "energy",
+        100
+      ],
+      [
+        "calories",
+        54321
+      ]
+    ],
+    [
+      [
+        "stress",
+        1
+      ],
+      [
+        "battery",
+        9
+      ],
+      [
+        "heart",
+        41
+      ],
+      [
+        "energy",
+        0
+      ]
+    ],
+    [
+      [
+        "calories",
+        10001
+      ],
+      [
+        "energy",
+        null
+      ],
+      [
+        "steps",
+        99998
+      ],
+      [
+        "battery",
+        1
+      ]
+    ],
+    [
+      [
+        "steps",
+        9876
+      ],
+      [
+        "heart",
+        118
+      ],
+      [
+        "calories",
+        43210
+      ],
+      [
+        "stress",
+        100
+      ]
+    ],
+    [
+      [
+        "energy",
+        100
+      ],
+      [
+        "stress",
+        null
+      ],
+      [
+        "battery",
+        100
+      ],
+      [
+        "heart",
+        null
+      ]
+    ],
+    [
+      [
+        "battery",
+        88
+      ],
+      [
+        "steps",
+        76543
+      ],
+      [
+        "calories",
+        65432
+      ],
+      [
+        "energy",
+        8
+      ]
+    ],
+    [
+      [
+        "heart",
+        75
+      ],
+      [
+        "battery",
+        50
+      ],
+      [
+        "stress",
+        5
+      ],
+      [
+        "calories",
+        12345
+      ]
+    ],
+    [
+      [
+        "calories",
+        9
+      ],
+      [
+        "stress",
+        10
+      ],
+      [
+        "heart",
+        199
+      ],
+      [
+        "steps",
+        10101
+      ]
+    ],
+    [
+      [
+        "stress",
+        100
+      ],
+      [
+        "steps",
+        99999
+      ],
+      [
+        "energy",
+        1
+      ],
+      [
+        "battery",
+        0
+      ]
+    ],
+    [
+      [
+        "energy",
+        null
+      ],
+      [
+        "calories",
+        null
+      ],
+      [
+        "battery",
+        null
+      ],
+      [
+        "steps",
+        null
+      ]
+    ],
+    [
+      [
+        "steps",
+        40004
+      ],
+      [
+        "battery",
+        37
+      ],
+      [
+        "heart",
+        120
+      ],
+      [
+        "stress",
+        73
+      ]
+    ]
+  ],
+  "nullPoints": [
+    11
+  ]
+}

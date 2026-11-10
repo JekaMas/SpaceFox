@@ -1,0 +1,215 @@
+{
+  "schemaVersion": 1,
+  "kind": "SECOND exacttop5/sourcefreeze BEFORE unopenedreconfirm24disclosure",
+  "timeUtc": "2026-11-10T22:52:31.086744+00:00",
+  "candidateIds": [
+    "ANCHOR",
+    "J3-010",
+    "J3-008",
+    "R2-04",
+    "J1-016"
+  ],
+  "candidates": [
+    {
+      "id": "ANCHOR",
+      "stage": "anchor",
+      "axis": null,
+      "parents": [],
+      "settings": {
+        "architecture": "control",
+        "projection": "auto",
+        "window": "auto",
+        "grammar": "stack",
+        "fitness": "row",
+        "typography": "roboto",
+        "palette": "mint",
+        "colorRoles": "standard",
+        "separators": "none",
+        "rocket": "filled",
+        "status": "cap",
+        "decor": "quiet"
+      },
+      "tuning": {}
+    },
+    {
+      "id": "J3-010",
+      "stage": "joint3",
+      "axis": "architecture",
+      "parents": [
+        "J2-020",
+        "F1-06-1"
+      ],
+      "settings": {
+        "architecture": "ticket",
+        "projection": "auto",
+        "window": "auto",
+        "grammar": "centered",
+        "fitness": "row",
+        "typography": "barlow",
+        "palette": "mint",
+        "colorRoles": "site-accent",
+        "separators": "none",
+        "rocket": "filled",
+        "status": "cap",
+        "decor": "quiet"
+      },
+      "tuning": {
+        "colorRoles": 0,
+        "grammar": 0,
+        "typography": 0
+      },
+      "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+      "mutation": "joint measured typography"
+    },
+    {
+      "id": "J3-008",
+      "stage": "joint3",
+      "axis": null,
+      "parents": [
+        "J2-013",
+        "F1-06-1"
+      ],
+      "settings": {
+        "architecture": "relay",
+        "projection": "equirectangular",
+        "window": "third",
+        "grammar": "centered",
+        "fitness": "goal-dots",
+        "typography": "barlow",
+        "palette": "mint",
+        "colorRoles": "clock-accent",
+        "separators": "hairline",
+        "rocket": "two-tone",
+        "status": "header-pair",
+        "decor": "terminator-style"
+      },
+      "tuning": {
+        "colorRoles": 1,
+        "palette": 0,
+        "typography": 0
+      },
+      "mutation": "joint measured typography"
+    },
+    {
+      "id": "R2-04",
+      "stage": "repair1",
+      "axis": "architecture",
+      "parents": [
+        "J3-005"
+      ],
+      "settings": {
+        "architecture": "earthrise",
+        "projection": "auto",
+        "window": "auto",
+        "grammar": "stack",
+        "fitness": "row",
+        "typography": "roboto",
+        "palette": "ice",
+        "colorRoles": "standard",
+        "separators": "none",
+        "rocket": "filled",
+        "status": "cap",
+        "decor": "quiet"
+      },
+      "tuning": {
+        "palette": 0
+      },
+      "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+      "mutation": "confirmed marker/site band collision; marker lane 273",
+      "overrides": {
+        "pin": [
+          44,
+          273
+        ]
+      }
+    },
+    {
+      "id": "J1-016",
+      "stage": "joint1",
+      "axis": null,
+      "parents": [
+        "F2-01-1",
+        "F1-02-4",
+        "F2-03-1",
+        "F1-04-6",
+        "F2-05-4",
+        "F1-06-4",
+        "F1-07-6",
+        "F1-08-8",
+        "F1-09-8",
+        "F2-10-4",
+        "F1-11-8",
+        "F1-12-3",
+        "F1-01-1"
+      ],
+      "settings": {
+        "architecture": "atlas",
+        "projection": "stereographic",
+        "window": "lower-cap",
+        "grammar": "centered",
+        "fitness": "slim-arcs",
+        "typography": "saira",
+        "palette": "magenta",
+        "colorRoles": "warm-status",
+        "separators": "baseline-rule",
+        "rocket": "engraved",
+        "status": "boxed-header",
+        "decor": "fine-grid"
+      },
+      "tuning": {
+        "architecture": 1,
+        "window": 1,
+        "fitness": 1,
+        "rocket": 1
+      }
+    }
+  ],
+  "selectionRationale": "Same four other structures; Earth D=R2-04 ties C in neutral visual preference and has higher minimum sampled land3800vs3500 over80seen. Four marker positions are one structure, not four finalist routes. Atlas correction is complete-word instrumentation, no layout change.",
+  "previousAttempt": "history/confirmation-attempt1-failed.json.gz",
+  "previousAttemptVerdict": "FAILED,never relabeled fresh",
+  "regression": "5x80allpass undercomplete-token guard;4markerlanes80allpass; final2blind8images no materialblockers",
+  "catalog": "264parameter/actualcomputed descriptors unique;145currentauthor32pass",
+  "sourceSha256": {
+    "openspec/changes/expand-feature-research/evidence/final-selection.json": "8b3b2eef3ecba40fc112fe475ba57a2f8aee8f310bbe9c17d6dd8765bf4663da",
+    "prototype/features/axes.json": "c677b5add8ef571b0ddbbc3415fc195f1a29909fd5ed12ea37a7c40cbb15d9d9",
+    "prototype/features/bounds-probe.html": "a2a9221f0c2fee9fab3318b9c59b5df9d7e19e903626544a5839fd4e57035c95",
+    "prototype/features/bounds-probe.js": "68ff4ba1dbeadf990deaec4332135503f3a19e9e7222a76d2f3583d0d6403137",
+    "prototype/features/bounds-probe.json": "23b82f83e5969a456d1da9d52acd16263198bcd052b31e09feedb5303c6ca846",
+    "prototype/features/core.js": "dd608f9f935801bf899fa4cf217b7c64f1a510471e10c2ae9deba34135d2a36b",
+    "prototype/features/data.js": "80480c78551740ed22c9b77ef1fcdecbeb9e2067b8b95318d016e9a879fff057",
+    "prototype/features/fixtures.json": "c969b3d809a1af186edffb86d059cffca0dae11542e9d87af2d00ef11ea3f63d",
+    "prototype/features/font-manifest.json": "4ed3413d3d800883c07fc34795e1a9cbffc72facb9c6ebedc3652913a4a2222a",
+    "prototype/features/fonts/ChakraPetch-SemiBold.ttf": "45264de3204ddbd5fb3e14a2402acd5c630d16650ae5fc221d2c52da46a6734b",
+    "prototype/features/fonts/IBMPlexSansCondensed-SemiBold.ttf": "a081ca60548aea14100757a2d6fe71ca60fd90ebce779c9a8ae5a0c8fb4526d4",
+    "prototype/features/fonts/Oxanium[wght].ttf": "2ce01d946e1e1ffc8d7eecfffbda8623bedd63eaf811a20488c4b69af45babb0",
+    "prototype/features/fonts/SairaCondensed-SemiBold.ttf": "30f8ed4d078211003a9715c80c51ce031bab5c9a17e8771182e4c4599205634b",
+    "prototype/features/index.html": "c80964a554981e9510b6a4fd167a59ef820c30e35856cf6f1f5716343a7a49a0",
+    "prototype/features/lab.js": "3e78ac80827b6fba0e8682c8b6bc033be6508f003e65986a55fb450976ccc382",
+    "prototype/features/legacy.json": "40438ed5c24dd1a41c09c135a1db74772b7717e20c08685ea879385f9aabbb68",
+    "prototype/features/renderer.js": "86630b5ecfe3370c92044cd6c658b2826dbfda970d16d6ba46132b0a8cc47086",
+    "prototype/features/review.html": "bce575a06b85825b61547d51e0118a716ddbe737ac59d7f3b3b1a7d15ddebc7d",
+    "prototype/features/review.js": "48fd648bbfd4d2a720aff16ff7e1c0446c0713aa327baf93ca04f54d08c4bd09",
+    "prototype/features/rocket-catalog.json": "ec4dac8c43e1ec1f1b2c28ee6f665af45da51947412a251d98a81787ecb2c201",
+    "prototype/features/sheet.html": "7fd951b12d3f07cf4ce8d15ac4b63830a0e358f1bb0fad786a8aeed6d3d02152",
+    "prototype/features/sheet.js": "1e3b59857741daa21c0b5977ccbf8d3ccaff05a1c6c2abf2ed04712b4e884b08",
+    "prototype/features/style.css": "88395ffd2053e113b12789e5f96eb8d64c7a637083fbdcaf59372d6379260c4f",
+    "prototype/features/text-bounds.js": "1ca596873af87ebf5a3b10d244ee0ec64d84416afa762f9391dad7d2ad5a97db",
+    "prototype/fonts/BarlowSemiCondensed-latin-600.woff2": "6850e108c9e552f6f6e5fbce8aabee3eea301936a9198fb470626beda8c203c0",
+    "prototype/fonts/NotoSans-cyrillic-500.woff2": "1376c49e5a162f8d23a35c62d085d03e0a6a8cd363e7a1bb45da80b518153cd5",
+    "prototype/fonts/NotoSans-latin-500.woff2": "f857d092bc3adc4cc6c5e14475248093d18184e474cc2ad98b2cd57d0ff41eb1",
+    "prototype/fonts/NotoSans-latin-ext-500.woff2": "2916797aae3951a6f2b80f886ba02b089ebf885f5f30cf124c4c2cbff9bfe8bd",
+    "prototype/fonts/Rajdhani-latin-600.woff2": "35f7e628ec8e7dd3bf434e95ce28289803401f12d8605c56ca83db2b4b301d33",
+    "prototype/fonts/RobotoCondensed-latin-600.woff2": "bc8afff05ba2d847e9c93afd5f13a1fe3b4e785facbffdfd09abd775df8564ff",
+    "prototype/fonts/SpaceGrotesk-latin-600.woff2": "564c913b0f490680c150486d120600c3a75f5aca3026ae6dd07d82c76aff6c1b",
+    "prototype/fonts/fonts.css": "baa80974801ddc7095f7ba690cddfbad441f4813390c1e9f98e75b567e3591d8",
+    "prototype/fonts/manifest.json": "3a82789d48e3aca65f3eb2df54ba3af60e8b22f55a260bf81c05287385249e09",
+    "prototype/layout-data.js": "fa3cfd312d89414752c43e20e1bee903e70c6c7cc120973215af67c306da7ec1",
+    "prototype/qualification/core.js": "70eea010f9ce4a19b782d77defdb048f3eddd2261f0be8d16730006f739c80dc",
+    "prototype/qualification/renderer.js": "9044f7a25a8ec8c454d1620a9f3a12ddb7f8dfb3d75d8390199224c5fa7df417",
+    "prototype/qualification/style.css": "e749ecf2454dfe90dfffb33abd44ec9d311dd9ce40d27ab5c13181613c0ac836",
+    "prototype/vendor/d3-7.9.0.min.js": "f2094bbf6141b359722c4fe454eb6c4b0f0e42cc10cc7af921fc158fceb86539",
+    "prototype/vendor/topojson-client-3.1.0.min.js": "25cd02ae486cc5063e0215a4e4cfb15de83700c87ac48bac4d57dc6aaf3ebb89"
+  },
+  "campaignBeforeReconfirmSha256": "58c5b0d3f79bc588bda0092432824fdc1930a456255e311f45b72be6c7778ad2",
+  "newBankBoundary": "Reviewer prepared24beforeproductionrepair/selection. Implementer has not read inputs/IDs/hash. Release pending independent freeze/source/raw verification. No tuning after reveal."
+}

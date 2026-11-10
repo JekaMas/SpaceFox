@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "packet": "confirm3_24",
+  "releasedAtUtc": "2026-11-10T23:29:14.031393+00:00",
+  "decision": "RELEASE ONLY confirm3_24 after independent source/known-raw/guard verification. Frozen exact five may now be measured once on this unseen packet; no post-disclosure adaptation can be claimed fresh confirmation.",
+  "freezeSha256": "fd81d89c12d7947284c89a27e97473d1dc1eb432a2cb3e307354a2da7fd45047",
+  "frozenCandidateIds": [
+    "R4-01",
+    "R4-03",
+    "R4-05",
+    "R4-12",
+    "R4-09"
+  ],
+  "packetSealSha256": "822244c7d9c5f808c98b905f5dba7a272ffcb5d9c46fdf3d57f7585db9adb1c3",
+  "packetSealedFilesVerified": 8,
+  "preRepairSourceBindingVerified": true,
+  "rawReceipts": [
+    "opaque280-independent-audit.json",
+    "edge-earth128-independent-audit.json",
+    "final128-independent-audit.json"
+  ],
+  "guardReceipt": "pre-confirm3-source-guard-audit.json",
+  "sourceBackgroundCorrectionReceipt": "pre-confirm3-background-distinctness-audit.json",
+  "boundary": "Prior two fresh confirmations failed and remain failures. Known128 is regression; fresh confirmation3 remains pending actual DOM observations and independent oracle audit."
+}

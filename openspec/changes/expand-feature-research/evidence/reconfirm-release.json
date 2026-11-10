@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "stage": "new reconfirm24 only",
+  "releasedAtUtc": "2026-11-10T22:54:22.335324+00:00",
+  "candidateIds": [
+    "ANCHOR",
+    "J3-010",
+    "J3-008",
+    "R2-04",
+    "J1-016"
+  ],
+  "secondFreezeSha256": "c361accf2ff122c77f4d682b69d9f93615df1811325f03200b241dc258e65472",
+  "packetSealSha256": "404d43becf73ee46bd1801153f5ba6aad82d633a78434f8d31a06521c7c4b8c9",
+  "allowedPacket": "reconfirm24/",
+  "basis": "264-current author audit145pass; selected5all80regressionpass; coverage guard repaired; firstconfirmationfailure retained; exactsecondfreeze and untouchednewpacket seal checked",
+  "aodBoundary": "25nativePNGcountsmatch, max4.5578%; sharedsparsebrowseroutput, no device/power claim",
+  "rule": "One fresh reconfirmation of frozen five. No tuning, replacement or relabeling failure as fresh success."
+}

@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "sourceCommit": "0d47b4c7edac7f6c1687258f0763efa0f7be7cae",
+  "behaviorCases": 10,
+  "cleanSourceDAG": "checks/clean-source-dag.json",
+  "structural": "completion-structure/source-shape",
+  "retainedChecks": "retained-checks.json",
+  "requiredIndependentEvidence": [
+    "final-technical-review.md",
+    "selection-reporting-correction-review.md",
+    "final3-visual-review.md"
+  ],
+  "boundary": "Completebrowserresearch acceptance; finaltaskpublication/closurepending. Native/device/livefeed remainsopen."
+}

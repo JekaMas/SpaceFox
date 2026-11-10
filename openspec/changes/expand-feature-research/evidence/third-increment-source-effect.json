@@ -1,0 +1,31 @@
+{
+  "old264RawAndSummariesUnchanged": true,
+  "evaluateQualifyMeasureUnchanged": true,
+  "changes": {
+    "prototype/features/core.js": {
+      "beforeSha256": "dd608f9f935801bf899fa4cf217b7c64f1a510471e10c2ae9deba34135d2a36b",
+      "afterSha256": "8abca9b53d8610c7e21da50fa9cbd5f7b3dd9fc5d1910d5e12bb643b67d6ce71",
+      "diff": [
+        "--- \n",
+        "+++ \n",
+        "@@ -42,3 +42,3 @@\n",
+        "       if(c.legacy) continue;",
+        "-      if(c.overrides&&(Object.keys(c.overrides).some(k=>k!=='pin')||!Array.isArray(c.overrides.pin)||c.overrides.pin.length!==2||!c.overrides.pin.every(Number.isFinite)))throw Error('invalid rendered override');",
+        "+      if(c.overrides&&(!Object.keys(c.overrides).length||Object.keys(c.overrides).some(k=>!['pin','operatorWidth'].includes(k))||'pin'in c.overrides&&(!Array.isArray(c.overrides.pin)||c.overrides.pin.length!==2||!c.overrides.pin.every(Number.isFinite))||'operatorWidth'in c.overrides&&(!Number.isFinite(c.overrides.operatorWidth)||c.overrides.operatorWidth<=0||c.overrides.operatorWidth>390)))throw Error('invalid rendered override');",
+        "       for(const a of axes) if(![a.anchor,...a.levels].includes(c.settings?.[a.id]) || !Number.isFinite(c.tuning?.[a.id]??0)) throw Error('invalid rendered setting');"
+      ]
+    },
+    "prototype/features/renderer.js": {
+      "beforeSha256": "86630b5ecfe3370c92044cd6c658b2826dbfda970d16d6ba46132b0a8cc47086",
+      "afterSha256": "ca8d8382ef12a819927d93ade3cc7440f5d3f31e47e3770976abb9c1d486f03f",
+      "diff": [
+        "--- \n",
+        "+++ \n",
+        "@@ -80,2 +80,3 @@\n",
+        "       if(p.distributed&&['company-purpose','two-columns'].includes(g)){const y=c.settings.architecture==='ticket'?68:210;boxes.operator=[45,y,145];boxes.purpose=[205,y,145];}",
+        "+      if(c.overrides?.operatorWidth){boxes.operator[0]=195-c.overrides.operatorWidth/2;boxes.operator[2]=c.overrides.operatorWidth;}",
+        "       for(const [role,el]of Object.entries(labels)){if(role!=='rocket')boxes[role][1]+=tune(c,'grammar');el.style.position='absolute';labelPosition(el,boxes[role],g==='centered'||role==='rocket'&&!['flow','title-company','title-ribbon'].includes(g));if(g==='hanging'&&role!=='rocket')el.style.marginLeft='10px';if(g==='title-ribbon')el.style.borderBottom='1px solid #315368';if(g==='title-company'&&role==='operator'){el.style.borderLeft='1px solid #315368';el.style.paddingLeft='6px';}m.append(el);}return;"
+      ]
+    }
+  }
+}

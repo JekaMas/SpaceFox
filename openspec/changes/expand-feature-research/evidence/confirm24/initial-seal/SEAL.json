@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "stage": "confirm24",
+  "status": "sealed-before-candidate-release",
+  "sealedAtUtc": "2026-11-10T21:31:48.583887+00:00",
+  "files": {
+    "inputs.json": {
+      "sha256": "897220fe2194d51ad7b86826beac9f71c75cf6cb58f84000793ca4bdfe4840e3",
+      "bytes": 35678
+    },
+    "oracle.json": {
+      "sha256": "348cf700afe302279de9fade32dab8b259f3a7252704ab43b43eb1118ffd4979",
+      "bytes": 33728
+    },
+    "source.json": {
+      "sha256": "e9670fad0790a9833d6eb6d8894f5c6bc5af8697e3030f4d6ef6a39b40caa081",
+      "bytes": 8678
+    },
+    "schema.md": {
+      "sha256": "6b8f8703691ff7b5367bb7042fa39ef112e237ee6badea2c6428372f66bbabd5",
+      "bytes": 2973
+    },
+    "protocol.md": {
+      "sha256": "8068eba20e38affe72e2ab70f48dc7541563dfad9304a4d94005556d6e95cbb8",
+      "bytes": 2222
+    },
+    "build_packet.py": {
+      "sha256": "701d8e861168cf9dca59cd2ec337e18a587d05b8dd566c7e00a674e17494d96d",
+      "bytes": 5301
+    },
+    "validate-geography.js": {
+      "sha256": "caae9ad96d523aa94e4e087d3ee80b8ff3f701a58ae62923a46dc24cd3d3ede8",
+      "bytes": 1851
+    },
+    "geography-validation.json": {
+      "sha256": "e4376e38ce0eec88bf9d6dd5e54600d5fc0cdb2b9bc00577092695005cb5cfa6",
+      "bytes": 5026
+    }
+  }
+}

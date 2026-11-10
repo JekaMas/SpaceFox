@@ -1,0 +1,1434 @@
+{
+  "schemaVersion": 1,
+  "synthetic": true,
+  "scenes": [
+    {
+      "id": "scene-7f12b1ddb599471b9b30",
+      "language": "ru",
+      "status": "stale",
+      "flags": {
+        "rescheduled": false,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "00:09",
+      "fixture": {
+        "rocket": {
+          "full": "Волна Mk IV",
+          "displayLabel": "Волна Mk IV"
+        },
+        "operator": {
+          "full": "Группа орбитальной экологии",
+          "displayLabel": "Группа орбитальной экологии"
+        },
+        "purpose": {
+          "full": "Съёмка ночной атмосферы Земли",
+          "displayLabel": "Съёмка ночной атмосферы Земли"
+        },
+        "site": {
+          "full": "Великобритания · синтетическая площадка Бор",
+          "displayLabel": "Великобритания · Тест Бор"
+        },
+        "point": [
+          -2.5,
+          54.5
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 6233160,
+        "displayLabel": "T−72д 03ч 26м"
+      },
+      "fields": [
+        {
+          "role": "stress",
+          "value": 92,
+          "displayLabel": "92"
+        },
+        {
+          "role": "energy",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "role": "steps",
+          "value": 92817,
+          "displayLabel": "92 817"
+        },
+        {
+          "role": "calories",
+          "value": 81726,
+          "displayLabel": "81 726"
+        }
+      ]
+    },
+    {
+      "id": "scene-4866892d0ddf4f1c8551",
+      "language": "en",
+      "status": "stale",
+      "flags": {
+        "rescheduled": false,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "00:09",
+      "fixture": {
+        "rocket": {
+          "full": "Wave Mk IV",
+          "displayLabel": "Wave Mk IV"
+        },
+        "operator": {
+          "full": "Orbital Ecology Working Group",
+          "displayLabel": "Orbital Ecology Working Group"
+        },
+        "purpose": {
+          "full": "Night atmosphere imaging",
+          "displayLabel": "Night atmosphere imaging"
+        },
+        "site": {
+          "full": "United Kingdom · synthetic test location Grove",
+          "displayLabel": "United Kingdom · Test Grove"
+        },
+        "point": [
+          -2.5,
+          54.5
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 6233160,
+        "displayLabel": "T−72d 03h 26m"
+      },
+      "fields": [
+        {
+          "role": "stress",
+          "value": 92,
+          "displayLabel": "92"
+        },
+        {
+          "role": "energy",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "role": "steps",
+          "value": 92817,
+          "displayLabel": "92,817"
+        },
+        {
+          "role": "calories",
+          "value": 81726,
+          "displayLabel": "81,726"
+        }
+      ]
+    },
+    {
+      "id": "scene-6ac18fa86afb4e069d58",
+      "language": "ru",
+      "status": "both",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "02:22",
+      "fixture": {
+        "rocket": {
+          "full": "Ariane 64",
+          "displayLabel": "Ariane 64"
+        },
+        "operator": {
+          "full": "Arianespace",
+          "displayLabel": "Arianespace"
+        },
+        "purpose": {
+          "full": "Доставка научных отражателей",
+          "displayLabel": "Доставка научных отражателей"
+        },
+        "site": {
+          "full": "Великобритания · синтетическая площадка Бор",
+          "displayLabel": "Великобритания · Тест Бор"
+        },
+        "point": [
+          -3.5,
+          56.5
+        ],
+        "model": "ariane"
+      },
+      "countdown": {
+        "seconds": 8377080,
+        "displayLabel": "T−96д 22ч 58м"
+      },
+      "fields": [
+        {
+          "role": "calories",
+          "value": 99997,
+          "displayLabel": "99 997"
+        },
+        {
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        },
+        {
+          "role": "steps",
+          "value": 99996,
+          "displayLabel": "99 996"
+        },
+        {
+          "role": "heart",
+          "value": 239,
+          "displayLabel": "239"
+        }
+      ]
+    },
+    {
+      "id": "scene-337a66b2122546c1b977",
+      "language": "en",
+      "status": "both",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "02:22",
+      "fixture": {
+        "rocket": {
+          "full": "Ariane 64",
+          "displayLabel": "Ariane 64"
+        },
+        "operator": {
+          "full": "Arianespace",
+          "displayLabel": "Arianespace"
+        },
+        "purpose": {
+          "full": "Scientific reflector delivery",
+          "displayLabel": "Scientific reflector delivery"
+        },
+        "site": {
+          "full": "United Kingdom · synthetic test location Grove",
+          "displayLabel": "United Kingdom · Test Grove"
+        },
+        "point": [
+          -3.5,
+          56.5
+        ],
+        "model": "ariane"
+      },
+      "countdown": {
+        "seconds": 8377080,
+        "displayLabel": "T−96d 22h 58m"
+      },
+      "fields": [
+        {
+          "role": "calories",
+          "value": 99997,
+          "displayLabel": "99,997"
+        },
+        {
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        },
+        {
+          "role": "steps",
+          "value": 99996,
+          "displayLabel": "99,996"
+        },
+        {
+          "role": "heart",
+          "value": 239,
+          "displayLabel": "239"
+        }
+      ]
+    },
+    {
+      "id": "scene-156a155336f34955b897",
+      "language": "ru",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": true,
+        "stale": false,
+        "timeKnown": false
+      },
+      "clock": "05:05",
+      "fixture": {
+        "rocket": {
+          "full": "Маяк Extended",
+          "displayLabel": "Маяк Extended"
+        },
+        "operator": {
+          "full": "Северные космические системы",
+          "displayLabel": "Северные космические системы"
+        },
+        "purpose": {
+          "full": "Проверка радиовысотомера",
+          "displayLabel": "Проверка радиовысотомера"
+        },
+        "site": {
+          "full": "Финляндия · синтетическая площадка Волна",
+          "displayLabel": "Финляндия · Тест Волна"
+        },
+        "point": [
+          26,
+          64
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Время уточняется"
+      },
+      "fields": [
+        {
+          "role": "energy",
+          "value": 0,
+          "displayLabel": "0"
+        },
+        {
+          "role": "steps",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "heart",
+          "value": 40,
+          "displayLabel": "40"
+        },
+        {
+          "role": "stress",
+          "value": null,
+          "displayLabel": "—"
+        }
+      ]
+    },
+    {
+      "id": "scene-7e228bea832046888c95",
+      "language": "en",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": true,
+        "stale": false,
+        "timeKnown": false
+      },
+      "clock": "05:05",
+      "fixture": {
+        "rocket": {
+          "full": "Beacon Extended",
+          "displayLabel": "Beacon Extended"
+        },
+        "operator": {
+          "full": "Northern Space Systems",
+          "displayLabel": "Northern Space Systems"
+        },
+        "purpose": {
+          "full": "Radar altimeter validation",
+          "displayLabel": "Radar altimeter validation"
+        },
+        "site": {
+          "full": "Finland · synthetic test location Wave",
+          "displayLabel": "Finland · Test Wave"
+        },
+        "point": [
+          26,
+          64
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Time pending"
+      },
+      "fields": [
+        {
+          "role": "energy",
+          "value": 0,
+          "displayLabel": "0"
+        },
+        {
+          "role": "steps",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "heart",
+          "value": 40,
+          "displayLabel": "40"
+        },
+        {
+          "role": "stress",
+          "value": null,
+          "displayLabel": "—"
+        }
+      ]
+    },
+    {
+      "id": "scene-561ddb89672947c19003",
+      "language": "ru",
+      "status": "scheduled",
+      "flags": {
+        "rescheduled": false,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "09:41",
+      "fixture": {
+        "rocket": {
+          "full": "Falcon 9 Block 5",
+          "displayLabel": "Falcon 9 Block 5"
+        },
+        "operator": {
+          "full": "SpaceX",
+          "displayLabel": "SpaceX"
+        },
+        "purpose": {
+          "full": "Снабжение научной станции",
+          "displayLabel": "Снабжение научной станции"
+        },
+        "site": {
+          "full": "Финляндия · синтетическая площадка Волна",
+          "displayLabel": "Финляндия · Тест Волна"
+        },
+        "point": [
+          25.5,
+          65
+        ],
+        "model": "falcon"
+      },
+      "countdown": {
+        "seconds": 1628,
+        "displayLabel": "T−27м 08с"
+      },
+      "fields": [
+        {
+          "role": "battery",
+          "value": 2,
+          "displayLabel": "2%"
+        },
+        {
+          "role": "stress",
+          "value": 0,
+          "displayLabel": "0"
+        },
+        {
+          "role": "calories",
+          "value": 45678,
+          "displayLabel": "45 678"
+        },
+        {
+          "role": "heart",
+          "value": 210,
+          "displayLabel": "210"
+        }
+      ]
+    },
+    {
+      "id": "scene-2fa656472a694010b9a8",
+      "language": "en",
+      "status": "scheduled",
+      "flags": {
+        "rescheduled": false,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "09:41",
+      "fixture": {
+        "rocket": {
+          "full": "Falcon 9 Block 5",
+          "displayLabel": "Falcon 9 Block 5"
+        },
+        "operator": {
+          "full": "SpaceX",
+          "displayLabel": "SpaceX"
+        },
+        "purpose": {
+          "full": "Science station resupply",
+          "displayLabel": "Science station resupply"
+        },
+        "site": {
+          "full": "Finland · synthetic test location Wave",
+          "displayLabel": "Finland · Test Wave"
+        },
+        "point": [
+          25.5,
+          65
+        ],
+        "model": "falcon"
+      },
+      "countdown": {
+        "seconds": 1628,
+        "displayLabel": "T−27m 08s"
+      },
+      "fields": [
+        {
+          "role": "battery",
+          "value": 2,
+          "displayLabel": "2%"
+        },
+        {
+          "role": "stress",
+          "value": 0,
+          "displayLabel": "0"
+        },
+        {
+          "role": "calories",
+          "value": 45678,
+          "displayLabel": "45,678"
+        },
+        {
+          "role": "heart",
+          "value": 210,
+          "displayLabel": "210"
+        }
+      ]
+    },
+    {
+      "id": "scene-0dbb41111a3e41eb9cfd",
+      "language": "ru",
+      "status": "changed",
+      "flags": {
+        "rescheduled": true,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "13:37",
+      "fixture": {
+        "rocket": {
+          "full": "Орион Light III",
+          "displayLabel": "Орион Light III"
+        },
+        "operator": {
+          "full": "Центр спектральной астрономии",
+          "displayLabel": "Центр спектральной астрономии"
+        },
+        "purpose": {
+          "full": "Изучение высоких слоёв воздуха",
+          "displayLabel": "Изучение высоких слоёв воздуха"
+        },
+        "site": {
+          "full": "Испания · синтетическая площадка Маяк",
+          "displayLabel": "Испания · Тест Маяк"
+        },
+        "point": [
+          -4,
+          40
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 29160,
+        "displayLabel": "T−8ч 06м"
+      },
+      "fields": [
+        {
+          "role": "heart",
+          "value": 132,
+          "displayLabel": "132"
+        },
+        {
+          "role": "energy",
+          "value": 17,
+          "displayLabel": "17"
+        },
+        {
+          "role": "battery",
+          "value": 99,
+          "displayLabel": "99%"
+        },
+        {
+          "role": "steps",
+          "value": 34567,
+          "displayLabel": "34 567"
+        }
+      ]
+    },
+    {
+      "id": "scene-59d32c86b68f42c685d4",
+      "language": "en",
+      "status": "changed",
+      "flags": {
+        "rescheduled": true,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "13:37",
+      "fixture": {
+        "rocket": {
+          "full": "Orion Light III",
+          "displayLabel": "Orion Light III"
+        },
+        "operator": {
+          "full": "Spectral Astronomy Centre",
+          "displayLabel": "Spectral Astronomy Centre"
+        },
+        "purpose": {
+          "full": "Upper atmosphere research",
+          "displayLabel": "Upper atmosphere research"
+        },
+        "site": {
+          "full": "Spain · synthetic test location Beacon",
+          "displayLabel": "Spain · Test Beacon"
+        },
+        "point": [
+          -4,
+          40
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 29160,
+        "displayLabel": "T−8h 06m"
+      },
+      "fields": [
+        {
+          "role": "heart",
+          "value": 132,
+          "displayLabel": "132"
+        },
+        {
+          "role": "energy",
+          "value": 17,
+          "displayLabel": "17"
+        },
+        {
+          "role": "battery",
+          "value": 99,
+          "displayLabel": "99%"
+        },
+        {
+          "role": "steps",
+          "value": 34567,
+          "displayLabel": "34,567"
+        }
+      ]
+    },
+    {
+      "id": "scene-9d2491b68ee94928a794",
+      "language": "ru",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": false,
+        "stale": false,
+        "timeKnown": false
+      },
+      "clock": "16:52",
+      "fixture": {
+        "rocket": {
+          "full": "Сфера Transfer",
+          "displayLabel": "Сфера Transfer"
+        },
+        "operator": {
+          "full": "Международная лётная группа",
+          "displayLabel": "Международная лётная группа"
+        },
+        "purpose": {
+          "full": "Контроль космического мусора",
+          "displayLabel": "Контроль космического мусора"
+        },
+        "site": {
+          "full": "Испания · синтетическая площадка Маяк",
+          "displayLabel": "Испания · Тест Маяк"
+        },
+        "point": [
+          -3.5,
+          39
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Время уточняется"
+      },
+      "fields": [
+        {
+          "role": "steps",
+          "value": 65439,
+          "displayLabel": "65 439"
+        },
+        {
+          "role": "calories",
+          "value": 23458,
+          "displayLabel": "23 458"
+        },
+        {
+          "role": "battery",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "stress",
+          "value": 75,
+          "displayLabel": "75"
+        }
+      ]
+    },
+    {
+      "id": "scene-5c53818478d74284b745",
+      "language": "en",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": false,
+        "stale": false,
+        "timeKnown": false
+      },
+      "clock": "16:52",
+      "fixture": {
+        "rocket": {
+          "full": "Sphere Transfer",
+          "displayLabel": "Sphere Transfer"
+        },
+        "operator": {
+          "full": "International Flight Group",
+          "displayLabel": "International Flight Group"
+        },
+        "purpose": {
+          "full": "Orbital debris monitoring",
+          "displayLabel": "Orbital debris monitoring"
+        },
+        "site": {
+          "full": "Spain · synthetic test location Beacon",
+          "displayLabel": "Spain · Test Beacon"
+        },
+        "point": [
+          -3.5,
+          39
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Time pending"
+      },
+      "fields": [
+        {
+          "role": "steps",
+          "value": 65439,
+          "displayLabel": "65,439"
+        },
+        {
+          "role": "calories",
+          "value": 23458,
+          "displayLabel": "23,458"
+        },
+        {
+          "role": "battery",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "stress",
+          "value": 75,
+          "displayLabel": "75"
+        }
+      ]
+    },
+    {
+      "id": "scene-b20ca2b81e48415485b1",
+      "language": "ru",
+      "status": "both",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "21:12",
+      "fixture": {
+        "rocket": {
+          "full": "Electron",
+          "displayLabel": "Electron"
+        },
+        "operator": {
+          "full": "Rocket Lab",
+          "displayLabel": "Rocket Lab"
+        },
+        "purpose": {
+          "full": "Проверка новых солнечных панелей",
+          "displayLabel": "Проверка новых солнечных панелей"
+        },
+        "site": {
+          "full": "Ботсвана · синтетическая площадка Пик",
+          "displayLabel": "Ботсвана · Тест Пик"
+        },
+        "point": [
+          24,
+          -22
+        ],
+        "model": "electron"
+      },
+      "countdown": {
+        "seconds": 5685420,
+        "displayLabel": "T−65д 19ч 17м"
+      },
+      "fields": [
+        {
+          "role": "energy",
+          "value": 99,
+          "displayLabel": "99"
+        },
+        {
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        },
+        {
+          "role": "calories",
+          "value": 98764,
+          "displayLabel": "98 764"
+        },
+        {
+          "role": "heart",
+          "value": 198,
+          "displayLabel": "198"
+        }
+      ]
+    },
+    {
+      "id": "scene-cecc2d12835145279ef8",
+      "language": "en",
+      "status": "both",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "21:12",
+      "fixture": {
+        "rocket": {
+          "full": "Electron",
+          "displayLabel": "Electron"
+        },
+        "operator": {
+          "full": "Rocket Lab",
+          "displayLabel": "Rocket Lab"
+        },
+        "purpose": {
+          "full": "New solar array demonstration",
+          "displayLabel": "New solar array demonstration"
+        },
+        "site": {
+          "full": "Botswana · synthetic test location Peak",
+          "displayLabel": "Botswana · Test Peak"
+        },
+        "point": [
+          24,
+          -22
+        ],
+        "model": "electron"
+      },
+      "countdown": {
+        "seconds": 5685420,
+        "displayLabel": "T−65d 19h 17m"
+      },
+      "fields": [
+        {
+          "role": "energy",
+          "value": 99,
+          "displayLabel": "99"
+        },
+        {
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        },
+        {
+          "role": "calories",
+          "value": 98764,
+          "displayLabel": "98,764"
+        },
+        {
+          "role": "heart",
+          "value": 198,
+          "displayLabel": "198"
+        }
+      ]
+    },
+    {
+      "id": "scene-5703bad60b9c475890f3",
+      "language": "ru",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": false,
+        "stale": true,
+        "timeKnown": false
+      },
+      "clock": "23:45",
+      "fixture": {
+        "rocket": {
+          "full": "Ручей Block 7",
+          "displayLabel": "Ручей Block 7"
+        },
+        "operator": {
+          "full": "Орбитальные научные аппараты",
+          "displayLabel": "Орбитальные научные аппараты"
+        },
+        "purpose": {
+          "full": "Измерение потоков микрочастиц",
+          "displayLabel": "Измерение потоков микрочастиц"
+        },
+        "site": {
+          "full": "Ботсвана · синтетическая площадка Пик",
+          "displayLabel": "Ботсвана · Тест Пик"
+        },
+        "point": [
+          25,
+          -23
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Время уточняется"
+      },
+      "fields": [
+        {
+          "role": "stress",
+          "value": 30,
+          "displayLabel": "30"
+        },
+        {
+          "role": "calories",
+          "value": 8,
+          "displayLabel": "8"
+        },
+        {
+          "role": "steps",
+          "value": 12001,
+          "displayLabel": "12 001"
+        },
+        {
+          "role": "energy",
+          "value": 1,
+          "displayLabel": "1"
+        }
+      ]
+    },
+    {
+      "id": "scene-79c8482cf54a4b99ac6c",
+      "language": "en",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": false,
+        "stale": true,
+        "timeKnown": false
+      },
+      "clock": "23:45",
+      "fixture": {
+        "rocket": {
+          "full": "Brook Block 7",
+          "displayLabel": "Brook Block 7"
+        },
+        "operator": {
+          "full": "Orbital Science Vehicle Group",
+          "displayLabel": "Orbital Science Vehicle Group"
+        },
+        "purpose": {
+          "full": "Microparticle flux measurement",
+          "displayLabel": "Microparticle flux measurement"
+        },
+        "site": {
+          "full": "Botswana · synthetic test location Peak",
+          "displayLabel": "Botswana · Test Peak"
+        },
+        "point": [
+          25,
+          -23
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Time pending"
+      },
+      "fields": [
+        {
+          "role": "stress",
+          "value": 30,
+          "displayLabel": "30"
+        },
+        {
+          "role": "calories",
+          "value": 8,
+          "displayLabel": "8"
+        },
+        {
+          "role": "steps",
+          "value": 12001,
+          "displayLabel": "12,001"
+        },
+        {
+          "role": "energy",
+          "value": 1,
+          "displayLabel": "1"
+        }
+      ]
+    },
+    {
+      "id": "scene-2063cc5dc77245a3aada",
+      "language": "ru",
+      "status": "scheduled",
+      "flags": {
+        "rescheduled": false,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "10:01",
+      "fixture": {
+        "rocket": {
+          "full": "Тополь Mk V",
+          "displayLabel": "Тополь Mk V"
+        },
+        "operator": {
+          "full": "Центр межпланетных технологий",
+          "displayLabel": "Центр межпланетных технологий"
+        },
+        "purpose": {
+          "full": "Проверка бортового спектрометра",
+          "displayLabel": "Проверка бортового спектрометра"
+        },
+        "site": {
+          "full": "Южная Корея · синтетическая площадка Ручей",
+          "displayLabel": "Южная Корея · Тест Ручей"
+        },
+        "point": [
+          127.5,
+          36.5
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 0,
+        "displayLabel": "T−00с"
+      },
+      "fields": [
+        {
+          "role": "battery",
+          "value": 51,
+          "displayLabel": "51%"
+        },
+        {
+          "role": "heart",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "calories",
+          "value": 0,
+          "displayLabel": "0"
+        },
+        {
+          "role": "steps",
+          "value": 99995,
+          "displayLabel": "99 995"
+        }
+      ]
+    },
+    {
+      "id": "scene-81d9a1879ac2424a9ff1",
+      "language": "en",
+      "status": "scheduled",
+      "flags": {
+        "rescheduled": false,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "10:01",
+      "fixture": {
+        "rocket": {
+          "full": "Poplar Mk V",
+          "displayLabel": "Poplar Mk V"
+        },
+        "operator": {
+          "full": "Interplanetary Technology Centre",
+          "displayLabel": "Interplanetary Technology Centre"
+        },
+        "purpose": {
+          "full": "Onboard spectrometer validation",
+          "displayLabel": "Onboard spectrometer validation"
+        },
+        "site": {
+          "full": "South Korea · synthetic test location Brook",
+          "displayLabel": "South Korea · Test Brook"
+        },
+        "point": [
+          127.5,
+          36.5
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 0,
+        "displayLabel": "T−00s"
+      },
+      "fields": [
+        {
+          "role": "battery",
+          "value": 51,
+          "displayLabel": "51%"
+        },
+        {
+          "role": "heart",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "calories",
+          "value": 0,
+          "displayLabel": "0"
+        },
+        {
+          "role": "steps",
+          "value": 99995,
+          "displayLabel": "99,995"
+        }
+      ]
+    },
+    {
+      "id": "scene-765c5f9d833e4ff9895c",
+      "language": "ru",
+      "status": "stale",
+      "flags": {
+        "rescheduled": false,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "11:58",
+      "fixture": {
+        "rocket": {
+          "full": "Янтарь Return II",
+          "displayLabel": "Янтарь Return II"
+        },
+        "operator": {
+          "full": "Служба космических измерений",
+          "displayLabel": "Служба космических измерений"
+        },
+        "purpose": {
+          "full": "Доставка оптического телескопа",
+          "displayLabel": "Доставка оптического телескопа"
+        },
+        "site": {
+          "full": "Южная Корея · синтетическая площадка Ручей",
+          "displayLabel": "Южная Корея · Тест Ручей"
+        },
+        "point": null,
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 2,
+        "displayLabel": "T−02с"
+      },
+      "fields": [
+        {
+          "role": "heart",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "role": "stress",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "role": "energy",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "role": "calories",
+          "value": 33333,
+          "displayLabel": "33 333"
+        }
+      ]
+    },
+    {
+      "id": "scene-344c4bef2f7f4cfb90bf",
+      "language": "en",
+      "status": "stale",
+      "flags": {
+        "rescheduled": false,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "11:58",
+      "fixture": {
+        "rocket": {
+          "full": "Amber Return II",
+          "displayLabel": "Amber Return II"
+        },
+        "operator": {
+          "full": "Space Measurement Service",
+          "displayLabel": "Space Measurement Service"
+        },
+        "purpose": {
+          "full": "Optical telescope delivery",
+          "displayLabel": "Optical telescope delivery"
+        },
+        "site": {
+          "full": "South Korea · synthetic test location Brook",
+          "displayLabel": "South Korea · Test Brook"
+        },
+        "point": null,
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 2,
+        "displayLabel": "T−02s"
+      },
+      "fields": [
+        {
+          "role": "heart",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "role": "stress",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "role": "energy",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "role": "calories",
+          "value": 33333,
+          "displayLabel": "33,333"
+        }
+      ]
+    },
+    {
+      "id": "scene-a027bfa6653247c7b776",
+      "language": "ru",
+      "status": "changed",
+      "flags": {
+        "rescheduled": true,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "14:14",
+      "fixture": {
+        "rocket": {
+          "full": "Риф Pathfinder 3",
+          "displayLabel": "Риф Pathfinder 3"
+        },
+        "operator": {
+          "full": "Лаборатория орбитальной связи",
+          "displayLabel": "Лаборатория орбитальной связи"
+        },
+        "purpose": {
+          "full": "Испытание межпланетной антенны",
+          "displayLabel": "Испытание межпланетной антенны"
+        },
+        "site": {
+          "full": "Таиланд · синтетическая площадка Сад",
+          "displayLabel": "Таиланд · Тест Сад"
+        },
+        "point": [
+          100.5,
+          16
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 1077180,
+        "displayLabel": "T−12д 11ч 13м"
+      },
+      "fields": [
+        {
+          "role": "calories",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "steps",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "stress",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "battery",
+          "value": null,
+          "displayLabel": "—"
+        }
+      ]
+    },
+    {
+      "id": "scene-75c0b859d4d5431b8862",
+      "language": "en",
+      "status": "changed",
+      "flags": {
+        "rescheduled": true,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "14:14",
+      "fixture": {
+        "rocket": {
+          "full": "Reef Pathfinder 3",
+          "displayLabel": "Reef Pathfinder 3"
+        },
+        "operator": {
+          "full": "Orbital Communications Lab",
+          "displayLabel": "Orbital Communications Lab"
+        },
+        "purpose": {
+          "full": "Interplanetary antenna test",
+          "displayLabel": "Interplanetary antenna test"
+        },
+        "site": {
+          "full": "Thailand · synthetic test location Garden",
+          "displayLabel": "Thailand · Test Garden"
+        },
+        "point": [
+          100.5,
+          16
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 1077180,
+        "displayLabel": "T−12d 11h 13m"
+      },
+      "fields": [
+        {
+          "role": "calories",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "steps",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "stress",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "battery",
+          "value": null,
+          "displayLabel": "—"
+        }
+      ]
+    },
+    {
+      "id": "scene-8a4f29949a60464f916c",
+      "language": "ru",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": false
+      },
+      "clock": "19:59",
+      "fixture": {
+        "rocket": {
+          "full": "Сад Heavy 1",
+          "displayLabel": "Сад Heavy 1"
+        },
+        "operator": {
+          "full": "Проект дальнего наблюдения",
+          "displayLabel": "Проект дальнего наблюдения"
+        },
+        "purpose": {
+          "full": "Оценка работы тепловых экранов",
+          "displayLabel": "Оценка работы тепловых экранов"
+        },
+        "site": {
+          "full": "Таиланд · синтетическая площадка Сад",
+          "displayLabel": "Таиланд · Тест Сад"
+        },
+        "point": null,
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Время уточняется"
+      },
+      "fields": [
+        {
+          "role": "steps",
+          "value": 11223,
+          "displayLabel": "11 223"
+        },
+        {
+          "role": "energy",
+          "value": 82,
+          "displayLabel": "82"
+        },
+        {
+          "role": "stress",
+          "value": 18,
+          "displayLabel": "18"
+        },
+        {
+          "role": "heart",
+          "value": 86,
+          "displayLabel": "86"
+        }
+      ]
+    },
+    {
+      "id": "scene-d74786590fbf4502b44c",
+      "language": "en",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": false
+      },
+      "clock": "19:59",
+      "fixture": {
+        "rocket": {
+          "full": "Garden Heavy 1",
+          "displayLabel": "Garden Heavy 1"
+        },
+        "operator": {
+          "full": "Distant Observation Project",
+          "displayLabel": "Distant Observation Project"
+        },
+        "purpose": {
+          "full": "Thermal screen evaluation",
+          "displayLabel": "Thermal screen evaluation"
+        },
+        "site": {
+          "full": "Thailand · synthetic test location Garden",
+          "displayLabel": "Thailand · Test Garden"
+        },
+        "point": null,
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Time pending"
+      },
+      "fields": [
+        {
+          "role": "steps",
+          "value": 11223,
+          "displayLabel": "11,223"
+        },
+        {
+          "role": "energy",
+          "value": 82,
+          "displayLabel": "82"
+        },
+        {
+          "role": "stress",
+          "value": 18,
+          "displayLabel": "18"
+        },
+        {
+          "role": "heart",
+          "value": 86,
+          "displayLabel": "86"
+        }
+      ]
+    }
+  ]
+}

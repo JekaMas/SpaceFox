@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "stage": "third-confirm24",
+  "status": "sealed-before-ticket-production-repair-and-selection",
+  "sealedAtUtc": "2026-11-10T23:02:13.882253+00:00",
+  "preRepairSources": {
+    "prototype/features/core.js": "dd608f9f935801bf899fa4cf217b7c64f1a510471e10c2ae9deba34135d2a36b",
+    "prototype/features/renderer.js": "86630b5ecfe3370c92044cd6c658b2826dbfda970d16d6ba46132b0a8cc47086",
+    "prototype/features/text-bounds.js": "1ca596873af87ebf5a3b10d244ee0ec64d84416afa762f9391dad7d2ad5a97db",
+    "prototype/qualification/core.js": "70eea010f9ce4a19b782d77defdb048f3eddd2261f0be8d16730006f739c80dc",
+    "prototype/qualification/renderer.js": "9044f7a25a8ec8c454d1620a9f3a12ddb7f8dfb3d75d8390199224c5fa7df417"
+  },
+  "files": {
+    "inputs.json": {
+      "sha256": "d89e5c24e291b42d27f249c0fc88fa22e729520baa43bbb52a20a477b2f02b38",
+      "bytes": 35670
+    },
+    "oracle.json": {
+      "sha256": "6b24ed9a784e1e1d238b0a94dacb4b9cfe72139cd56d815203d2688d716deaa5",
+      "bytes": 33739
+    },
+    "source.json": {
+      "sha256": "c8d3df2353455ba3983b27da99259aa1811e5ab8d366a6612c99642dc6b64007",
+      "bytes": 8672
+    },
+    "schema.md": {
+      "sha256": "70aeff0652e39ebfeecf665ad337342bdfd5997138f5ea975d0ffcb71729f49a",
+      "bytes": 3642
+    },
+    "protocol.md": {
+      "sha256": "517d06474dd4b07a5d486bf46f604ced28eff00b19ba9bbef1c24d224e11bc95",
+      "bytes": 2009
+    },
+    "build_packet.py": {
+      "sha256": "701d8e861168cf9dca59cd2ec337e18a587d05b8dd566c7e00a674e17494d96d",
+      "bytes": 5301
+    },
+    "validate-geography.js": {
+      "sha256": "caae9ad96d523aa94e4e087d3ee80b8ff3f701a58ae62923a46dc24cd3d3ede8",
+      "bytes": 1851
+    },
+    "geography-validation.json": {
+      "sha256": "2af82244af653064857cbc119d3849b152bfb0c6008b83423de5400d3153a91e",
+      "bytes": 4986
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "change": "expand-feature-research",
+  "scope": {
+    "property_ids": [
+      "R1.P1",
+      "R2.P1",
+      "R3.P1",
+      "R4.P1",
+      "R5.P1"
+    ],
+    "test_ids": [
+      "unittest::tests.test_feature_research.FeatureTest.test_matrix_positive",
+      "unittest::tests.test_feature_research.FeatureTest.test_matrix_negative",
+      "unittest::tests.test_feature_research.FeatureTest.test_evolution_positive",
+      "unittest::tests.test_feature_research.FeatureTest.test_evolution_negative",
+      "unittest::tests.test_feature_research.FeatureTest.test_measurement_positive",
+      "unittest::tests.test_feature_research.FeatureTest.test_measurement_negative",
+      "unittest::tests.test_feature_research.FeatureTest.test_qualification_positive",
+      "unittest::tests.test_feature_research.FeatureTest.test_qualification_negative",
+      "unittest::tests.test_feature_research.FeatureTest.test_boundaries_positive",
+      "unittest::tests.test_feature_research.FeatureTest.test_boundaries_negative"
+    ]
+  },
+  "reviews": [
+    {
+      "id": "D1",
+      "question": "Known renderer/measurement boundaries; new isolated feature laboratory with source traceability and withheld confirmation",
+      "property_ids": [
+        "R1.P1",
+        "R2.P1",
+        "R3.P1",
+        "R4.P1",
+        "R5.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_feature_research.FeatureTest.test_matrix_positive",
+        "unittest::tests.test_feature_research.FeatureTest.test_matrix_negative",
+        "unittest::tests.test_feature_research.FeatureTest.test_evolution_positive",
+        "unittest::tests.test_feature_research.FeatureTest.test_evolution_negative",
+        "unittest::tests.test_feature_research.FeatureTest.test_measurement_positive",
+        "unittest::tests.test_feature_research.FeatureTest.test_measurement_negative",
+        "unittest::tests.test_feature_research.FeatureTest.test_qualification_positive",
+        "unittest::tests.test_feature_research.FeatureTest.test_qualification_negative",
+        "unittest::tests.test_feature_research.FeatureTest.test_boundaries_positive",
+        "unittest::tests.test_feature_research.FeatureTest.test_boundaries_negative"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read exact prototype/qualification/core.js and renderer.js, final-source-binding and distribution/components.json.",
+          "outcome": "Current gallery owns eight fixed stacks; canonical examples/artwork can be reused; new browser experiment owner is appropriate.",
+          "results": [
+            {
+              "path": "prototype/qualification/renderer.js",
+              "line": 40,
+              "classification": "interface_dependency",
+              "reason": "Real prior DOM, ink and marker geometry; old source remains unchanged."
+            },
+            {
+              "path": "distribution/components.json",
+              "line": 1,
+              "classification": "interface_dependency",
+              "reason": "Qualified local font redistributions need existing inventory/OFL notices."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "New research laboratory ownership",
+          "reason": "Exact existing dependencies are known; all new owner paths are explicitly planned. No unfamiliar subsystem discovery is needed.",
+          "outcome": "No semantic evidence claimed.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "unavailable",
+          "query": "SpaceFox research references",
+          "reason": "No matching JetBrains-index capability is exposed for this checkout in this session.",
+          "outcome": "No IDE evidence claimed.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "New owner prototype/features reuses exact prior SpaceFoxQR/SpaceFoxQ. Existing known asset/license owners remain authoritative, no Smart Example route."
+    }
+  ]
+}

@@ -1,0 +1,618 @@
+{
+  "schemaVersion": 1,
+  "candidateIds": [
+    "ANCHOR",
+    "J3-010",
+    "J3-008",
+    "J3-005",
+    "J1-016"
+  ],
+  "candidates": [
+    {
+      "id": "R4-01",
+      "stage": "repair3",
+      "axis": null,
+      "parents": [
+        "ANCHOR"
+      ],
+      "settings": {
+        "architecture": "control",
+        "projection": "auto",
+        "window": "auto",
+        "grammar": "stack",
+        "fitness": "row",
+        "typography": "roboto",
+        "palette": "mint",
+        "colorRoles": "standard",
+        "separators": "none",
+        "rocket": "filled",
+        "status": "cap",
+        "decor": "quiet"
+      },
+      "tuning": {},
+      "overrides": {
+        "mission": [
+          76,
+          173,
+          288,
+          112
+        ]
+      },
+      "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane"
+    },
+    {
+      "id": "R4-03",
+      "stage": "repair3",
+      "axis": "architecture",
+      "parents": [
+        "R3-04"
+      ],
+      "settings": {
+        "architecture": "ticket",
+        "projection": "auto",
+        "window": "auto",
+        "grammar": "centered",
+        "fitness": "row",
+        "typography": "barlow",
+        "palette": "mint",
+        "colorRoles": "site-accent",
+        "separators": "none",
+        "rocket": "filled",
+        "status": "cap",
+        "decor": "quiet"
+      },
+      "tuning": {
+        "colorRoles": 0,
+        "grammar": 0,
+        "typography": 0
+      },
+      "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+      "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane",
+      "overrides": {
+        "operatorWidth": 288,
+        "operatorY": 69
+      }
+    },
+    {
+      "id": "R4-05",
+      "stage": "repair3",
+      "axis": null,
+      "parents": [
+        "J3-008"
+      ],
+      "settings": {
+        "architecture": "relay",
+        "projection": "equirectangular",
+        "window": "third",
+        "grammar": "centered",
+        "fitness": "goal-dots",
+        "typography": "barlow",
+        "palette": "mint",
+        "colorRoles": "clock-accent",
+        "separators": "hairline",
+        "rocket": "two-tone",
+        "status": "header-pair",
+        "decor": "terminator-style"
+      },
+      "tuning": {
+        "colorRoles": 1,
+        "palette": 0,
+        "typography": 0
+      },
+      "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane",
+      "overrides": {
+        "operatorWidth": 288
+      }
+    },
+    {
+      "id": "R4-12",
+      "stage": "repair4",
+      "axis": "architecture",
+      "parents": [
+        "R4-07"
+      ],
+      "settings": {
+        "architecture": "earthrise",
+        "projection": "auto",
+        "window": "auto",
+        "grammar": "stack",
+        "fitness": "row",
+        "typography": "roboto",
+        "palette": "ice",
+        "colorRoles": "standard",
+        "separators": "none",
+        "rocket": "filled",
+        "status": "cap",
+        "decor": "quiet"
+      },
+      "tuning": {
+        "palette": 0
+      },
+      "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+      "mutation": "visible marker outside entireopaque fitnessbackground",
+      "overrides": {
+        "mission": [
+          32,
+          173,
+          288,
+          112
+        ],
+        "pin": [
+          368,
+          148
+        ]
+      }
+    },
+    {
+      "id": "R4-09",
+      "stage": "repair3",
+      "axis": null,
+      "parents": [
+        "J1-016"
+      ],
+      "settings": {
+        "architecture": "atlas",
+        "projection": "stereographic",
+        "window": "lower-cap",
+        "grammar": "centered",
+        "fitness": "slim-arcs",
+        "typography": "saira",
+        "palette": "magenta",
+        "colorRoles": "warm-status",
+        "separators": "baseline-rule",
+        "rocket": "engraved",
+        "status": "boxed-header",
+        "decor": "fine-grid"
+      },
+      "tuning": {
+        "architecture": 1,
+        "window": 1,
+        "fitness": 1,
+        "rocket": 1
+      },
+      "overrides": {
+        "mission": [
+          76,
+          142,
+          288,
+          112
+        ],
+        "pin": [
+          350,
+          130
+        ]
+      },
+      "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane"
+    }
+  ],
+  "names": {
+    "R4-01": "Центр управления",
+    "R4-03": "Билет на старт",
+    "R4-05": "Миссия в фокусе",
+    "R4-12": "Восход Земли",
+    "R4-09": "Атлас"
+  },
+  "demoScenes": [
+    {
+      "id": "scene-330d252f97ff466293fd",
+      "language": "ru",
+      "status": "stale",
+      "flags": {
+        "rescheduled": false,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "04:44",
+      "fixture": {
+        "rocket": {
+          "full": "Парус Light 2",
+          "displayLabel": "Парус Light 2"
+        },
+        "operator": {
+          "full": "Лаборатория небесной механики",
+          "displayLabel": "Лаборатория небесной механики"
+        },
+        "purpose": {
+          "full": "Калибровка звёздных датчиков",
+          "displayLabel": "Калибровка звёздных датчиков"
+        },
+        "site": {
+          "full": "Индонезия · синтетическая площадка Парус",
+          "displayLabel": "Индонезия · Тест Парус"
+        },
+        "point": [
+          113.5,
+          -1
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 533220,
+        "displayLabel": "T−6д 04ч 07м"
+      },
+      "fields": [
+        {
+          "role": "stress",
+          "value": 1,
+          "displayLabel": "1"
+        },
+        {
+          "role": "battery",
+          "value": 9,
+          "displayLabel": "9%"
+        },
+        {
+          "role": "heart",
+          "value": 41,
+          "displayLabel": "41"
+        },
+        {
+          "role": "energy",
+          "value": 0,
+          "displayLabel": "0"
+        }
+      ]
+    },
+    {
+      "id": "scene-e1f351ce8f1f488d9a34",
+      "language": "en",
+      "status": "both",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "00:01",
+      "fixture": {
+        "rocket": {
+          "full": "Cedar Mk II",
+          "displayLabel": "Cedar Mk II"
+        },
+        "operator": {
+          "full": "Distant Orbit Research Centre",
+          "displayLabel": "Distant Orbit Research Centre"
+        },
+        "purpose": {
+          "full": "Auroral spectrum survey",
+          "displayLabel": "Auroral spectrum survey"
+        },
+        "site": {
+          "full": "Norway · synthetic test location Cedar",
+          "displayLabel": "Norway · Test Cedar"
+        },
+        "point": [
+          9.7,
+          61.3
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 7234920,
+        "displayLabel": "T−83d 17h 42m"
+      },
+      "fields": [
+        {
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        },
+        {
+          "role": "calories",
+          "value": 98765,
+          "displayLabel": "98,765"
+        },
+        {
+          "role": "stress",
+          "value": 99,
+          "displayLabel": "99"
+        },
+        {
+          "role": "steps",
+          "value": 87654,
+          "displayLabel": "87,654"
+        }
+      ]
+    },
+    {
+      "id": "scene-8e76c9152e4341578425",
+      "language": "ru",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": false,
+        "stale": false,
+        "timeKnown": false
+      },
+      "clock": "12:34",
+      "fixture": {
+        "rocket": {
+          "full": "Вектор 27 Heavy",
+          "displayLabel": "Вектор 27 Heavy"
+        },
+        "operator": {
+          "full": "Орбитальные системы Меридиан",
+          "displayLabel": "Орбитальные системы Меридиан"
+        },
+        "purpose": {
+          "full": "Проверка межспутниковой связи",
+          "displayLabel": "Проверка межспутниковой связи"
+        },
+        "site": {
+          "full": "Турция · синтетическая площадка Лира",
+          "displayLabel": "Турция · Тест Лира"
+        },
+        "point": [
+          34,
+          39
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Время уточняется"
+      },
+      "fields": [
+        {
+          "role": "steps",
+          "value": 9876,
+          "displayLabel": "9 876"
+        },
+        {
+          "role": "heart",
+          "value": 118,
+          "displayLabel": "118"
+        },
+        {
+          "role": "calories",
+          "value": 43210,
+          "displayLabel": "43 210"
+        },
+        {
+          "role": "stress",
+          "value": 100,
+          "displayLabel": "100"
+        }
+      ]
+    },
+    {
+      "id": "author3-16-ru",
+      "language": "ru",
+      "status": "both",
+      "clock": "16:16",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": true
+      },
+      "fixture": {
+        "rocket": {
+          "full": "—",
+          "displayLabel": "—"
+        },
+        "operator": {
+          "full": "—",
+          "displayLabel": "—"
+        },
+        "purpose": {
+          "full": "—",
+          "displayLabel": "—"
+        },
+        "site": {
+          "full": "Место уточняется",
+          "displayLabel": "Место уточняется"
+        },
+        "point": null,
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 86399940,
+        "displayLabel": "T−999д 23ч 59м"
+      },
+      "fields": [
+        {
+          "role": "battery",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "heart",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "steps",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "energy",
+          "value": null,
+          "displayLabel": "—"
+        }
+      ]
+    },
+    {
+      "id": "author3-02-ru",
+      "language": "ru",
+      "status": "tbd",
+      "clock": "19:07",
+      "flags": {
+        "rescheduled": true,
+        "stale": false,
+        "timeKnown": false
+      },
+      "fixture": {
+        "rocket": {
+          "full": "Electron",
+          "displayLabel": "Electron"
+        },
+        "operator": {
+          "full": "Rocket Lab",
+          "displayLabel": "Rocket Lab"
+        },
+        "purpose": {
+          "full": "Съёмка Земли",
+          "displayLabel": "Съёмка Земли"
+        },
+        "site": {
+          "full": "Франция · Тест Дуга",
+          "displayLabel": "Франция · Тест Дуга"
+        },
+        "point": [
+          2,
+          47
+        ],
+        "model": "electron"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Время уточняется"
+      },
+      "fields": [
+        {
+          "role": "heart",
+          "value": 72,
+          "displayLabel": "72"
+        },
+        {
+          "role": "stress",
+          "value": 28,
+          "displayLabel": "28"
+        },
+        {
+          "role": "battery",
+          "value": 82,
+          "displayLabel": "82%"
+        },
+        {
+          "role": "energy",
+          "value": 68,
+          "displayLabel": "68"
+        }
+      ]
+    },
+    {
+      "id": "author3-03-ru",
+      "language": "ru",
+      "status": "tbd",
+      "clock": "11:11",
+      "flags": {
+        "rescheduled": false,
+        "stale": true,
+        "timeKnown": false
+      },
+      "fixture": {
+        "rocket": {
+          "full": "Ariane 64",
+          "displayLabel": "Ariane 64"
+        },
+        "operator": {
+          "full": "Arianespace",
+          "displayLabel": "Arianespace"
+        },
+        "purpose": {
+          "full": "Научный аппарат",
+          "displayLabel": "Научный аппарат"
+        },
+        "site": {
+          "full": "НЗ · Тест Восток",
+          "displayLabel": "НЗ · Тест Восток"
+        },
+        "point": [
+          175,
+          -41
+        ],
+        "model": "ariane"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Время уточняется"
+      },
+      "fields": [
+        {
+          "role": "calories",
+          "value": 88888,
+          "displayLabel": "88,888"
+        },
+        {
+          "role": "energy",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "role": "steps",
+          "value": 99999,
+          "displayLabel": "99,999"
+        },
+        {
+          "role": "stress",
+          "value": 100,
+          "displayLabel": "100"
+        }
+      ]
+    },
+    {
+      "id": "author-edge-7",
+      "language": "ru",
+      "status": "stale",
+      "clock": "08:08",
+      "flags": {
+        "rescheduled": false,
+        "stale": true,
+        "timeKnown": true
+      },
+      "fixture": {
+        "rocket": {
+          "full": "Falcon 9 Block 5",
+          "displayLabel": "Falcon 9 Block 5"
+        },
+        "operator": {
+          "full": "ШШШШШШШШШШШШШШШШШШШШШШШШШШШШШШШШ",
+          "displayLabel": "ШШШШШШШШШШШШШШШШШШШШШШШШШШШШШШШШ"
+        },
+        "purpose": {
+          "full": "Исследование дальнего космоса",
+          "displayLabel": "Исследование дальнего космоса"
+        },
+        "site": {
+          "full": "Казахстан · Тест Полёт",
+          "displayLabel": "Казахстан · Тест Полёт"
+        },
+        "point": [
+          67,
+          48
+        ],
+        "model": "falcon"
+      },
+      "countdown": {
+        "seconds": 86399940,
+        "displayLabel": "T−999д 23ч 59м"
+      },
+      "fields": [
+        {
+          "role": "calories",
+          "value": 88888,
+          "displayLabel": "88,888"
+        },
+        {
+          "role": "energy",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "role": "steps",
+          "value": 99999,
+          "displayLabel": "99,999"
+        },
+        {
+          "role": "stress",
+          "value": 100,
+          "displayLabel": "100"
+        }
+      ]
+    }
+  ],
+  "selectionRationale": "Blind preference routes A/G/D/B/O, with unqualified exact legacyA replaced by existing ANCHOR after its separate regression. Preserve five different routes and two new clock/mission order structures. No confirmation values read.",
+  "visualMappingNote": "Neutral finalA-E are new labels in selection order, not the earlier A-O aliases.",
+  "increment": "maximum-width-repair-3 plusactualopaque-backgroundguard",
+  "selectionReason": "All5differentroutes; choose288metadatawidth sufficientfor2lines32wideoperators, retainlargerart/circleclearances than290 alternatives. TicketY69 leavesmorepurposegap than69.25. EarthrightpinR4-12weakindependentvisualpreference, actualoutsiderow; allotherchosenwideimages reviewed. Actualnewoccluder128regressionall5pass, final3integrated10images no visiblematerialblockers."
+}

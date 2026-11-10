@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "license": "MIT",
+  "description": "Original illustrative schematics, not engineering drawings. Add a model entry without changing layout code. Generic has a question-mark cutout.",
+  "models": {
+    "falcon": {
+      "bodyWidth": 12,
+      "kind": "specific",
+      "paths": [
+        {
+          "d": "M10 65V20L16 3l6 17v45Z",
+          "part": "body"
+        },
+        {
+          "d": "M10 23h12M10 46h12M11 65l-3 6h16l-3-6",
+          "part": "detail"
+        }
+      ]
+    },
+    "electron": {
+      "bodyWidth": 12,
+      "kind": "specific",
+      "dark": true,
+      "paths": [
+        {
+          "d": "M10 65V20L16 3l6 17v45Z",
+          "part": "body"
+        },
+        {
+          "d": "M10 23h12M10 46h12M11 65l-3 6h16l-3-6",
+          "part": "detail"
+        }
+      ]
+    },
+    "ariane": {
+      "bodyWidth": 12,
+      "kind": "specific",
+      "paths": [
+        {
+          "d": "M2 65V35l3.5-8 3.5 8v30ZM23 65V35l3.5-8 3.5 8v30Z",
+          "part": "booster"
+        },
+        {
+          "d": "M10 65V20L16 3l6 17v45Z",
+          "part": "body"
+        },
+        {
+          "d": "M10 23h12M10 46h12M11 65l-3 6h16l-3-6",
+          "part": "detail"
+        }
+      ]
+    },
+    "generic": {
+      "bodyWidth": 12,
+      "kind": "generic",
+      "paths": [
+        {
+          "d": "M10 65V20L16 3l6 17v45Z",
+          "part": "body"
+        },
+        {
+          "d": "m10 50-5 15h5m12-15 5 15h-5",
+          "part": "booster"
+        },
+        {
+          "d": "M12 30h5l2 3-3 4v4m0 4v2M10 23h12M11 65l-3 6h16l-3-6",
+          "part": "detail"
+        }
+      ]
+    }
+  }
+}

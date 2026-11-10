@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "releasedAtUtc": "2026-11-10T22:14:21.350161+00:00",
+  "stage": "screen24 only",
+  "basis": "Actual source/campaign/candidate freeze and complete current author benchmark independently checked before release",
+  "freezeSha256": "23995ec0a8d1df6e9f123a4361cf4a611e34147708b1e2d9b4c1102a3d919a89",
+  "campaignSha256": "178cfc885f4ed76d91dd755a4c1e1bc982af8cd7a5c58eb1177a993819f16db1",
+  "candidateIds": [
+    "J3-002",
+    "J1-004",
+    "J3-003",
+    "J3-004",
+    "J1-016",
+    "J3-005",
+    "J3-006",
+    "J3-007",
+    "J3-008",
+    "J1-027",
+    "J3-010",
+    "J2-018"
+  ],
+  "packetSealSha256": "36b2cfcd1096e17113eda8081b20f9a43f859994216fd8dec5e2e8a17ebf86c7",
+  "allowedPacket": "screen24/",
+  "forbiddenUntilTopFiveFreeze": [
+    "confirm24/",
+    "PRIVATE-prepare-all.py"
+  ],
+  "note": "Do not open or copy the confirmation packet during screening. After screen reveal, its reuse is regression; confirmation remains separate."
+}

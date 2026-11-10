@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "method": "Independent final reconciliation, no production evaluator calls",
+  "acceptedBoundary": "PASS for exact frozen5 on bounded RU/EN browser benchmark: 32author+96known controls and24 fresh confirm3. Prior failed confirmations remain failures; this is not human/device/native/live-feed acceptance.",
+  "freezeSha256": "fd81d89c12d7947284c89a27e97473d1dc1eb432a2cb3e307354a2da7fd45047",
+  "actualCampaignGzipSha256": "53c28025a94a26e63ece0201d25a09609dfae165ef8fd92f0422847813987ac1",
+  "checks": [
+    {
+      "name": "frozen40 source files unchanged after disclosure",
+      "passed": true,
+      "detail": {
+        "count": 40,
+        "mismatches": []
+      }
+    },
+    {
+      "name": "exact freeze same as independently released",
+      "passed": true
+    },
+    {
+      "name": "immutable before-third archive retained byte exact",
+      "passed": true
+    },
+    {
+      "name": "packet seal unchanged",
+      "passed": true
+    },
+    {
+      "name": "all sealed packet files unchanged",
+      "passed": true,
+      "detail": {
+        "mismatches": []
+      }
+    },
+    {
+      "name": "new control actual exact24 sealed input scenes",
+      "passed": true
+    },
+    {
+      "name": "exact frozen5 IDs in actual control/topFive",
+      "passed": true
+    },
+    {
+      "name": "full frozen candidate parameters unchanged",
+      "passed": true
+    },
+    {
+      "name": "controls prefix retained exact",
+      "passed": true
+    },
+    {
+      "name": "only documented append and UI selection changed",
+      "passed": true,
+      "detail": {
+        "modified": [
+          "controls",
+          "topFive",
+          "displayScenes"
+        ]
+      }
+    },
+    {
+      "name": "displayScenes switched only to actual new input",
+      "passed": true
+    },
+    {
+      "name": "all previous generations/currentAudit/training exact",
+      "passed": true
+    },
+    {
+      "name": "new120 records unique24 each correct5 IDs",
+      "passed": true
+    },
+    {
+      "name": "independent oracle stage fresh confirm with all5 pass",
+      "passed": true
+    },
+    {
+      "name": "independent oracle hashes exact packet",
+      "passed": true
+    },
+    {
+      "name": "actual foreground120 paint matches frozen source rules",
+      "passed": true,
+      "detail": {
+        "mismatches": []
+      }
+    }
+  ],
+  "passed": true,
+  "retainedEarlierFreshFailures": [
+    {
+      "kind": "confirm",
+      "failedCandidates": [
+        {
+          "id": "J3-005",
+          "failedScenes": 4
+        },
+        {
+          "id": "J1-016",
+          "failedScenes": 1
+        }
+      ]
+    },
+    {
+      "kind": "reconfirm",
+      "failedCandidates": [
+        {
+          "id": "J3-010",
+          "failedScenes": 2
+        }
+      ]
+    }
+  ],
+  "independent120Summary": [
+    {
+      "id": "R4-01",
+      "failedScenes": 0,
+      "minGap": 4,
+      "minClockInk": 58.14679718017578,
+      "clockProbeRange": [
+        58.49849319458008,
+        58.49849319458008
+      ]
+    },
+    {
+      "id": "R4-03",
+      "failedScenes": 0,
+      "minGap": 4.46875,
+      "minClockInk": 57.28428268432617,
+      "clockProbeRange": [
+        58.49794006347656,
+        58.49794006347656
+      ]
+    },
+    {
+      "id": "R4-05",
+      "failedScenes": 0,
+      "minGap": 4.3828125,
+      "minClockInk": 57.28428268432617,
+      "clockProbeRange": [
+        58.49794006347656,
+        58.49794006347656
+      ]
+    },
+    {
+      "id": "R4-12",
+      "failedScenes": 0,
+      "minGap": 4,
+      "minClockInk": 58.14679718017578,
+      "clockProbeRange": [
+        58.49849319458008,
+        58.49849319458008
+      ]
+    },
+    {
+      "id": "R4-09",
+      "failedScenes": 0,
+      "minGap": 4,
+      "minClockInk": 57.83063507080078,
+      "clockProbeRange": [
+        58.495357513427734,
+        58.495357513427734
+      ]
+    }
+  ],
+  "geometryMarginBoundary": "Several gaps exactly4px; deterministic threshold pass does not establish rendering tolerance on Garmin or universal strings."
+}

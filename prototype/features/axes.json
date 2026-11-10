@@ -1,0 +1,281 @@
+{
+  "schemaVersion": 1,
+  "axes": [
+    {
+      "id": "architecture",
+      "anchor": "control",
+      "levels": [
+        "atlas",
+        "earthrise",
+        "relay",
+        "ticket",
+        "central",
+        "split",
+        "duplex",
+        "polar-clock"
+      ],
+      "renderedParameters": "clock/fitness/mission/geo anchors",
+      "hypotheses": [
+        "Distributing operator above and purpose below a central clock may preserve complete labels.",
+        "Mission-first with a lower clock may create a different coherent reading route."
+      ],
+      "sourceRefs": [
+        "https://www.nasa.gov/specials/artemis-i-press-kit/"
+      ],
+      "inference": "Author design hypotheses informed by the reference; no causal/user result claimed."
+    },
+    {
+      "id": "projection",
+      "anchor": "auto",
+      "levels": [
+        "equirectangular",
+        "mercator",
+        "azimuthal-equal-area",
+        "stereographic",
+        "gnomonic",
+        "conic-equal-area",
+        "polar-north",
+        "polar-south"
+      ],
+      "renderedParameters": "actual D3 projection and rotation",
+      "hypotheses": [
+        "Regional projection may expose more unoccluded land in the same window.",
+        "Polar context may remain recognizable without a decorative globe dominating labels."
+      ],
+      "sourceRefs": [
+        "https://www.arnoldandson.com/collections/globetrotter/"
+      ],
+      "inference": "Author design hypotheses informed by the reference; no causal/user result claimed."
+    },
+    {
+      "id": "window",
+      "anchor": "auto",
+      "levels": [
+        "compact-disc",
+        "wide-strip",
+        "side-half",
+        "lower-cap",
+        "quarter",
+        "third",
+        "large-disc",
+        "edge-window"
+      ],
+      "renderedParameters": "geo rectangle, scale and marker-safe anchor",
+      "hypotheses": [
+        "A dedicated geo window may reduce competition with text.",
+        "A cropped curved limb may preserve theme with full mission labels."
+      ],
+      "sourceRefs": [
+        "https://www.arnoldandson.com/collections/globetrotter/"
+      ],
+      "inference": "Author design hypotheses informed by the reference; no causal/user result claimed."
+    },
+    {
+      "id": "grammar",
+      "anchor": "stack",
+      "levels": [
+        "flow",
+        "title-company",
+        "company-purpose",
+        "two-columns",
+        "title-ribbon",
+        "centered",
+        "hanging",
+        "distributed"
+      ],
+      "renderedParameters": "visible text flow, full approved labels",
+      "hypotheses": [
+        "Short operator/title can share a baseline without deleting purpose.",
+        "Long labels need natural wrapping rather than hidden ellipsis."
+      ],
+      "sourceRefs": [
+        "https://developer.samsung.com/sdp/blog/en/2022/09/20/things-to-consider-when-designing-complication-layouts"
+      ],
+      "inference": "Author design hypotheses informed by the reference; no causal/user result claimed."
+    },
+    {
+      "id": "fitness",
+      "anchor": "row",
+      "levels": [
+        "two-pairs",
+        "paired-columns",
+        "capsules",
+        "inline-bars",
+        "goal-dots",
+        "slim-arcs",
+        "icon-above",
+        "wide-row"
+      ],
+      "renderedParameters": "group arrangement and truthful secondary proportion for bounded roles",
+      "hypotheses": [
+        "Stable pairs may tolerate wider field values.",
+        "A bounded battery/energy proportion may supplement a number without inventing a target for steps."
+      ],
+      "sourceRefs": [
+        "https://www.microsoft.com/en-us/research/publication/studies-of-part-to-whole-glanceable-visualizations-on-smartwatch-faces/"
+      ],
+      "inference": "Author design hypotheses informed by the reference; no causal/user result claimed."
+    },
+    {
+      "id": "typography",
+      "anchor": "roboto",
+      "levels": [
+        "barlow",
+        "rajdhani",
+        "space",
+        "saira",
+        "plex",
+        "chakra",
+        "oxanium",
+        "roboto-airy"
+      ],
+      "renderedParameters": "font family, measured ink calibration and tracking",
+      "hypotheses": [
+        "Equal glyph ink is a better size comparison than equal CSS font-size.",
+        "A technical font must earn its width/fit instead of being selected by theme alone."
+      ],
+      "sourceRefs": [
+        "https://developer.android.com/design/ui/wear/guides/styles/typography"
+      ],
+      "inference": "Author design hypotheses informed by the reference; no causal/user result claimed."
+    },
+    {
+      "id": "palette",
+      "anchor": "mint",
+      "levels": [
+        "amber",
+        "ice",
+        "orange",
+        "lavender",
+        "cyan",
+        "magenta",
+        "ivory",
+        "solar"
+      ],
+      "renderedParameters": "actual sRGB theme colors",
+      "hypotheses": [
+        "Warm and cool themes can preserve the same minimum contrast.",
+        "A palette must remain comprehensible without color-only status encoding."
+      ],
+      "sourceRefs": [
+        "https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html"
+      ],
+      "inference": "Author design hypotheses informed by the reference; no causal/user result claimed."
+    },
+    {
+      "id": "colorRoles",
+      "anchor": "standard",
+      "levels": [
+        "clock-accent",
+        "mission-accent",
+        "site-accent",
+        "fitness-accent",
+        "mono",
+        "dual-accent",
+        "muted-context",
+        "warm-status"
+      ],
+      "renderedParameters": "which semantic roles receive accent/luminance",
+      "hypotheses": [
+        "One dominant accent may make the visual hierarchy more coherent.",
+        "Independent literal status shapes must survive any role assignment."
+      ],
+      "sourceRefs": [
+        "https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html"
+      ],
+      "inference": "Author design hypotheses informed by the reference; no causal/user result claimed."
+    },
+    {
+      "id": "separators",
+      "anchor": "none",
+      "levels": [
+        "hairline",
+        "open-brackets",
+        "flat-card",
+        "rails",
+        "dashed-rule",
+        "capsule-group",
+        "corner-marks",
+        "baseline-rule"
+      ],
+      "renderedParameters": "group rules/frames/padding",
+      "hypotheses": [
+        "An open frame may group a mission without surrounding every number.",
+        "Excess dividers may fragment reading even if the rectangles fit."
+      ],
+      "sourceRefs": [
+        "https://nasa.github.io/openmct/"
+      ],
+      "inference": "Author design hypotheses informed by the reference; no causal/user result claimed."
+    },
+    {
+      "id": "rocket",
+      "anchor": "filled",
+      "levels": [
+        "outline",
+        "two-tone",
+        "technical",
+        "engraved",
+        "pixel",
+        "inset",
+        "nose-accent",
+        "angled"
+      ],
+      "renderedParameters": "registered original schematic style, outline and real bounds",
+      "hypotheses": [
+        "A larger clear outline may read as a rocket more reliably than a needle.",
+        "Generic fallback needs an explicitly conditional visual, not an unsupported model identity."
+      ],
+      "sourceRefs": [
+        "https://www.nasa.gov/specials/artemis-i-press-kit/"
+      ],
+      "inference": "Author design hypotheses informed by the reference; no causal/user result claimed."
+    },
+    {
+      "id": "status",
+      "anchor": "cap",
+      "levels": [
+        "header-left",
+        "header-right",
+        "header-pair",
+        "count-before",
+        "count-after",
+        "mission-edge",
+        "stacked-header",
+        "boxed-header"
+      ],
+      "renderedParameters": "physical independent badge positions",
+      "hypotheses": [
+        "A header cap may free a long duration from footer clipping.",
+        "Two independent shapes must remain visible for both simultaneous flags."
+      ],
+      "sourceRefs": [
+        "https://lspcountdown.ndc.nasa.gov/"
+      ],
+      "inference": "Author design hypotheses informed by the reference; no causal/user result claimed."
+    },
+    {
+      "id": "decor",
+      "anchor": "quiet",
+      "levels": [
+        "no-grid",
+        "latitude-only",
+        "fine-grid",
+        "orbit",
+        "stars-outside",
+        "stipple-land",
+        "contour",
+        "terminator-style"
+      ],
+      "renderedParameters": "real grid/land/orbit/star paint outside data",
+      "hypotheses": [
+        "Quieter grid may leave the land more apparent.",
+        "Decor outside text can support theme without changing semantic content."
+      ],
+      "sourceRefs": [
+        "https://science.nasa.gov/eyes/"
+      ],
+      "inference": "Author design hypotheses informed by the reference; no causal/user result claimed."
+    }
+  ]
+}

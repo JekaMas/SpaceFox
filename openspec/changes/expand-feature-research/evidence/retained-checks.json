@@ -1,0 +1,28 @@
+{
+  "status": "observed retained checks before clean-source DAG",
+  "retained": [
+    {
+      "command": "python3 -B -m unittest -v tests.test_foundation.FoundationTest.test_distribution_inventory tests.test_foundation.FoundationTest.test_unlicensed_distribution_rejected",
+      "result": "2passed, observed earlier in thissame active task",
+      "scope": "OFLfontassets/notices/distribution inventory unchanged since observedgreen; no rerunfor unrelatedgeometry/docs",
+      "evidenceType": "retained in-session tool observation"
+    },
+    {
+      "command": "python3 -B tools/build_feature_data.py --check",
+      "result": "passed",
+      "scope": "FourcanonicalJSONbundleinputs and builder unchanged; data.js currentequals generatedbundle",
+      "evidenceType": "retained tool execution, 2026-11-11"
+    },
+    {
+      "command": "node --check each8featureJS+2toolsJS",
+      "result": "10passed",
+      "scope": "All10JSsourcebytes unchanged afterstable syntaxbatch; metadata/docs/tests-only changes do notinvalidate JSsyntax"
+    },
+    {
+      "command": "openspec validate expand-feature-research --strict --json",
+      "result": "passed",
+      "scope": "Delta requirements/scenarios unchanged since laststrictvalidation; finaltaskstructural gate stillpending"
+    }
+  ],
+  "boundary": "No retainedcheck is relabeled native/live/human/device evidence. Fullnew source-bound DAG still mustexecute oncleancommit; publicationstillpending."
+}

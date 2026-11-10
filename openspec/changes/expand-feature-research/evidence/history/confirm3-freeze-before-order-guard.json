@@ -1,0 +1,247 @@
+{
+  "schemaVersion": 1,
+  "kind": "THIRD exacttop5/fullsourcefreeze BEFOREunopenedconfirm3_24disclosure",
+  "timeUtc": "2026-11-10T23:22:34.730232+00:00",
+  "candidateIds": [
+    "R4-01",
+    "R4-03",
+    "R4-05",
+    "R4-12",
+    "R4-09"
+  ],
+  "candidates": [
+    {
+      "id": "R4-01",
+      "stage": "repair3",
+      "axis": null,
+      "parents": [
+        "ANCHOR"
+      ],
+      "settings": {
+        "architecture": "control",
+        "projection": "auto",
+        "window": "auto",
+        "grammar": "stack",
+        "fitness": "row",
+        "typography": "roboto",
+        "palette": "mint",
+        "colorRoles": "standard",
+        "separators": "none",
+        "rocket": "filled",
+        "status": "cap",
+        "decor": "quiet"
+      },
+      "tuning": {},
+      "overrides": {
+        "mission": [
+          76,
+          173,
+          288,
+          112
+        ]
+      },
+      "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane"
+    },
+    {
+      "id": "R4-03",
+      "stage": "repair3",
+      "axis": "architecture",
+      "parents": [
+        "R3-04"
+      ],
+      "settings": {
+        "architecture": "ticket",
+        "projection": "auto",
+        "window": "auto",
+        "grammar": "centered",
+        "fitness": "row",
+        "typography": "barlow",
+        "palette": "mint",
+        "colorRoles": "site-accent",
+        "separators": "none",
+        "rocket": "filled",
+        "status": "cap",
+        "decor": "quiet"
+      },
+      "tuning": {
+        "colorRoles": 0,
+        "grammar": 0,
+        "typography": 0
+      },
+      "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+      "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane",
+      "overrides": {
+        "operatorWidth": 288,
+        "operatorY": 69
+      }
+    },
+    {
+      "id": "R4-05",
+      "stage": "repair3",
+      "axis": null,
+      "parents": [
+        "J3-008"
+      ],
+      "settings": {
+        "architecture": "relay",
+        "projection": "equirectangular",
+        "window": "third",
+        "grammar": "centered",
+        "fitness": "goal-dots",
+        "typography": "barlow",
+        "palette": "mint",
+        "colorRoles": "clock-accent",
+        "separators": "hairline",
+        "rocket": "two-tone",
+        "status": "header-pair",
+        "decor": "terminator-style"
+      },
+      "tuning": {
+        "colorRoles": 1,
+        "palette": 0,
+        "typography": 0
+      },
+      "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane",
+      "overrides": {
+        "operatorWidth": 288
+      }
+    },
+    {
+      "id": "R4-12",
+      "stage": "repair4",
+      "axis": "architecture",
+      "parents": [
+        "R4-07"
+      ],
+      "settings": {
+        "architecture": "earthrise",
+        "projection": "auto",
+        "window": "auto",
+        "grammar": "stack",
+        "fitness": "row",
+        "typography": "roboto",
+        "palette": "ice",
+        "colorRoles": "standard",
+        "separators": "none",
+        "rocket": "filled",
+        "status": "cap",
+        "decor": "quiet"
+      },
+      "tuning": {
+        "palette": 0
+      },
+      "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+      "mutation": "visible marker outside entireopaque fitnessbackground",
+      "overrides": {
+        "mission": [
+          32,
+          173,
+          288,
+          112
+        ],
+        "pin": [
+          368,
+          148
+        ]
+      }
+    },
+    {
+      "id": "R4-09",
+      "stage": "repair3",
+      "axis": null,
+      "parents": [
+        "J1-016"
+      ],
+      "settings": {
+        "architecture": "atlas",
+        "projection": "stereographic",
+        "window": "lower-cap",
+        "grammar": "centered",
+        "fitness": "slim-arcs",
+        "typography": "saira",
+        "palette": "magenta",
+        "colorRoles": "warm-status",
+        "separators": "baseline-rule",
+        "rocket": "engraved",
+        "status": "boxed-header",
+        "decor": "fine-grid"
+      },
+      "tuning": {
+        "architecture": 1,
+        "window": 1,
+        "fitness": 1,
+        "rocket": 1
+      },
+      "overrides": {
+        "mission": [
+          76,
+          142,
+          288,
+          112
+        ],
+        "pin": [
+          350,
+          130
+        ]
+      },
+      "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane"
+    }
+  ],
+  "selectionRationale": "All5differentroutes; choose288metadatawidth sufficientfor2lines32wideoperators, retainlargerart/circleclearances than290 alternatives. TicketY69 leavesmorepurposegap than69.25. EarthrightpinR4-12weakindependentvisualpreference, actualoutsiderow; allotherchosenwideimages reviewed. Actualnewoccluder128regressionall5pass, final3integrated10images no visiblematerialblockers.",
+  "catalog": "280parameterunique;277common32paint/layout groups,4matchedpairwitnesses separatealiases;not280distinctstructures",
+  "authorAudit": "8960actualnewoccluderobservations,159pass",
+  "finalRegression": "5x128 actual0fail withmandatoryoccluderandwordcoverageguard",
+  "visual": "final3integrated10nativeimages no visiblematerialblockers",
+  "previousFreshFailures": [
+    "history/confirmation-attempt1-failed.json.gz",
+    "history/confirmation-attempt2-failed.json.gz"
+  ],
+  "otherRetainedFailures": [
+    "history/open-edge24-failed.json.gz",
+    "history/wide-before-opaque-audit.json.gz"
+  ],
+  "sourceSha256": {
+    "openspec/changes/expand-feature-research/evidence/final-selection.json": "4d07a4061c1f6f0ddb498b165a09de0826c781bf2667dd0d6fba969333985aab",
+    "prototype/features/author-edge24.json": "231ac046b18e5f284faaf1fde66e6384b2dfe45bb1ab697df39300bc8f39fb4e",
+    "prototype/features/axes.json": "c677b5add8ef571b0ddbbc3415fc195f1a29909fd5ed12ea37a7c40cbb15d9d9",
+    "prototype/features/bounds-probe.html": "45414326382ee439bd74a411e9a3b426b0683a83842b5509ddca105f74d53393",
+    "prototype/features/bounds-probe.js": "68ff4ba1dbeadf990deaec4332135503f3a19e9e7222a76d2f3583d0d6403137",
+    "prototype/features/bounds-probe.json": "23b82f83e5969a456d1da9d52acd16263198bcd052b31e09feedb5303c6ca846",
+    "prototype/features/core.js": "efe30c6c9d2f9f5ed1b080074aeef26a3e8f071d5e15a106064dc0736668adb8",
+    "prototype/features/data.js": "80480c78551740ed22c9b77ef1fcdecbeb9e2067b8b95318d016e9a879fff057",
+    "prototype/features/fixtures.json": "c969b3d809a1af186edffb86d059cffca0dae11542e9d87af2d00ef11ea3f63d",
+    "prototype/features/font-manifest.json": "4ed3413d3d800883c07fc34795e1a9cbffc72facb9c6ebedc3652913a4a2222a",
+    "prototype/features/fonts/ChakraPetch-SemiBold.ttf": "45264de3204ddbd5fb3e14a2402acd5c630d16650ae5fc221d2c52da46a6734b",
+    "prototype/features/fonts/IBMPlexSansCondensed-SemiBold.ttf": "a081ca60548aea14100757a2d6fe71ca60fd90ebce779c9a8ae5a0c8fb4526d4",
+    "prototype/features/fonts/Oxanium[wght].ttf": "2ce01d946e1e1ffc8d7eecfffbda8623bedd63eaf811a20488c4b69af45babb0",
+    "prototype/features/fonts/SairaCondensed-SemiBold.ttf": "30f8ed4d078211003a9715c80c51ce031bab5c9a17e8771182e4c4599205634b",
+    "prototype/features/index.html": "13ded174f8f13f58f56630594eb1d5389a14565afcb0151874f34ef275e5d517",
+    "prototype/features/lab.js": "e1d68e84414f200ba0a74a90313dcfae7a6dcb6200f1c95022d96c93f11c86a0",
+    "prototype/features/legacy.json": "40438ed5c24dd1a41c09c135a1db74772b7717e20c08685ea879385f9aabbb68",
+    "prototype/features/renderer.js": "e88c1d67bccbdc186291a4d766b9929707fc3e071d3b4a97e354d2c5f3ac5f8b",
+    "prototype/features/review.html": "41b1acfbe181ca376368feaed1dcf71e6baa69c46e24d90ca0407d0f95f86d83",
+    "prototype/features/review.js": "3fbb1caccdf5f4f957ec4d7e56199adcb5b6c2cf45cb7e9969d9bb2031d50d09",
+    "prototype/features/rocket-catalog.json": "ec4dac8c43e1ec1f1b2c28ee6f665af45da51947412a251d98a81787ecb2c201",
+    "prototype/features/sheet.html": "04e74891539766bc59aa5f0a47bea09de4d578be02598f006840b946bb942fc7",
+    "prototype/features/sheet.js": "1e3b59857741daa21c0b5977ccbf8d3ccaff05a1c6c2abf2ed04712b4e884b08",
+    "prototype/features/style.css": "88395ffd2053e113b12789e5f96eb8d64c7a637083fbdcaf59372d6379260c4f",
+    "prototype/features/text-bounds.js": "1ca596873af87ebf5a3b10d244ee0ec64d84416afa762f9391dad7d2ad5a97db",
+    "prototype/fonts/BarlowSemiCondensed-latin-600.woff2": "6850e108c9e552f6f6e5fbce8aabee3eea301936a9198fb470626beda8c203c0",
+    "prototype/fonts/NotoSans-cyrillic-500.woff2": "1376c49e5a162f8d23a35c62d085d03e0a6a8cd363e7a1bb45da80b518153cd5",
+    "prototype/fonts/NotoSans-latin-500.woff2": "f857d092bc3adc4cc6c5e14475248093d18184e474cc2ad98b2cd57d0ff41eb1",
+    "prototype/fonts/NotoSans-latin-ext-500.woff2": "2916797aae3951a6f2b80f886ba02b089ebf885f5f30cf124c4c2cbff9bfe8bd",
+    "prototype/fonts/Rajdhani-latin-600.woff2": "35f7e628ec8e7dd3bf434e95ce28289803401f12d8605c56ca83db2b4b301d33",
+    "prototype/fonts/RobotoCondensed-latin-600.woff2": "bc8afff05ba2d847e9c93afd5f13a1fe3b4e785facbffdfd09abd775df8564ff",
+    "prototype/fonts/SpaceGrotesk-latin-600.woff2": "564c913b0f490680c150486d120600c3a75f5aca3026ae6dd07d82c76aff6c1b",
+    "prototype/fonts/fonts.css": "baa80974801ddc7095f7ba690cddfbad441f4813390c1e9f98e75b567e3591d8",
+    "prototype/fonts/manifest.json": "3a82789d48e3aca65f3eb2df54ba3af60e8b22f55a260bf81c05287385249e09",
+    "prototype/layout-data.js": "fa3cfd312d89414752c43e20e1bee903e70c6c7cc120973215af67c306da7ec1",
+    "prototype/qualification/core.js": "70eea010f9ce4a19b782d77defdb048f3eddd2261f0be8d16730006f739c80dc",
+    "prototype/qualification/renderer.js": "9044f7a25a8ec8c454d1620a9f3a12ddb7f8dfb3d75d8390199224c5fa7df417",
+    "prototype/qualification/style.css": "e749ecf2454dfe90dfffb33abd44ec9d311dd9ce40d27ab5c13181613c0ac836",
+    "prototype/vendor/d3-7.9.0.min.js": "f2094bbf6141b359722c4fe454eb6c4b0f0e42cc10cc7af921fc158fceb86539",
+    "prototype/vendor/topojson-client-3.1.0.min.js": "25cd02ae486cc5063e0215a4e4cfb15de83700c87ac48bac4d57dc6aaf3ebb89"
+  },
+  "campaignBeforeConfirm3Sha256": "fdbce7a5e960efdf8e0300806627e2fb7cb3b8aad9b189e7f3b6adf1785f98ff",
+  "newBankBoundary": "confirm3_24sealedbyindependentreviewerBEFOREproductionrepair;implementer hasneverreadvalues/IDs/hash. Exact5/sourcefreeze now; releasepending independentverification;NOtuningafterreveal."
+}

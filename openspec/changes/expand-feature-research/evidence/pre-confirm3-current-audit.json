@@ -1,0 +1,142 @@
+{
+  "method": "Independent source/known-input reconciliation; production evaluator used only for separately identified negative guard probes",
+  "checks": [
+    {
+      "name": "freeze IDs exactly actual last regression IDs",
+      "passed": true
+    },
+    {
+      "name": "freeze candidate parameters exactly corpus",
+      "passed": true
+    },
+    {
+      "name": "all source hashes current",
+      "passed": true,
+      "detail": {
+        "files": 40,
+        "mismatches": []
+      }
+    },
+    {
+      "name": "freeze campaign exact immutable copy",
+      "passed": true
+    },
+    {
+      "name": "reviewed current campaign exact frozen copy",
+      "passed": true
+    },
+    {
+      "name": "known 128 scenes exact retained expected inputs",
+      "passed": true
+    },
+    {
+      "name": "actual foreground paint agrees source CSS/renderer",
+      "passed": true,
+      "detail": {
+        "records": 9600,
+        "errors": [],
+        "correctedBy": "pre-confirm3-background-distinctness-audit.json"
+      }
+    },
+    {
+      "name": "actual four slots agree declared mapping",
+      "passed": true,
+      "detail": {
+        "records": 9600,
+        "errors": []
+      }
+    },
+    {
+      "name": "catalog-only reversal reconstructs exact prior core",
+      "passed": true
+    },
+    {
+      "name": "all existing override order already canonical",
+      "passed": true
+    },
+    {
+      "name": "order-only equivalent override signature/rejection",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "guardProbes": [
+    {
+      "name": "healthy actual baseline",
+      "passed": true,
+      "evaluator": [],
+      "qualification": {
+        "passed": true,
+        "errors": []
+      },
+      "independent": []
+    },
+    {
+      "name": "deleted mandatory channel",
+      "passed": true,
+      "evaluator": [
+        "foreground-measurement"
+      ],
+      "qualification": {
+        "passed": false,
+        "errors": [
+          "contradiction"
+        ]
+      },
+      "independent": [
+        "foreground measurement"
+      ]
+    },
+    {
+      "name": "solid opaque container over actual healthy pin",
+      "passed": true,
+      "evaluator": [
+        "marker:background-occluded"
+      ],
+      "qualification": {
+        "passed": false,
+        "errors": [
+          "contradiction"
+        ]
+      },
+      "independent": [
+        "marker background occluded:count-group"
+      ]
+    },
+    {
+      "name": "nonfinite foreground rect",
+      "passed": true,
+      "evaluator": [
+        "foreground-measurement"
+      ],
+      "qualification": {
+        "passed": false,
+        "errors": [
+          "contradiction"
+        ]
+      },
+      "independent": [
+        "foreground measurement"
+      ]
+    },
+    {
+      "name": "nonfinite foreground opacity",
+      "passed": true,
+      "evaluator": [
+        "foreground-measurement"
+      ],
+      "qualification": {
+        "passed": false,
+        "errors": [
+          "contradiction"
+        ]
+      },
+      "independent": [
+        "foreground measurement"
+      ]
+    }
+  ],
+  "boundary": "Third unseen packet remains unopened; release requires clean pre-disclosure review. campaign.topFive historical, final-selection/freeze are current authority. Raw audits standalone and separately retained.",
+  "initialReceipt": "pre-confirm3-source-guard-audit.json",
+  "reviewerCorrection": "Initial model assumed all legacy field rows flex; inspected inherited renderer and legacy OLD-3 earthLimb branch correctly sets paired field row display:block. Corrected only reviewer expectation; no production delta."
+}
