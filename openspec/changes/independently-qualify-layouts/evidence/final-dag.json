@@ -1,0 +1,456 @@
+{
+  "cases": {
+    "R1.P1.NEGATIVE": {
+      "evidence_fingerprint": "ecf6524c79a4e93fda6af53d5d2fdb58c4d1c703cbbbc80930816228df31443b",
+      "green_expectation": "Complete visible semantics",
+      "invalidation_dependencies": [
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "prototype/qualification/lab.js",
+        "tests/test_layout_qualification.py",
+        "prototype/qualification/style.css",
+        "prototype/qualification/index.html"
+      ],
+      "observable": "Declared outcome matches independent literal oracle.",
+      "polarity": "negative",
+      "property_id": "R1.P1",
+      "red_expectation": "An invalid input is accepted or valid input rejected.",
+      "scenario": "Measure semantic retention",
+      "scenario_fingerprint": "2d6a202448de49b06b20d37970fa0461f2bdc1ad6b68252b1ae82a18a185f54b",
+      "setup": "Invoke real JS owner with literal good or deliberately malformed inputs. Browser records exercise actual DOM separately.",
+      "source_path": "tests/test_layout_qualification.py",
+      "source_sha256": "0f673197bc5e079678a3cc49c47e42875afb70b78bf7afb009efa498fd100652",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_qualification.QualificationTest.test_semantic_negative"
+    },
+    "R1.P1.POSITIVE": {
+      "evidence_fingerprint": "4494ee15cf8c748901c2635f00c3ebeb990a5829fb5c55640b918b611c89dad4",
+      "green_expectation": "Complete visible semantics",
+      "invalidation_dependencies": [
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "prototype/qualification/lab.js",
+        "tests/test_layout_qualification.py",
+        "prototype/qualification/style.css",
+        "prototype/qualification/index.html"
+      ],
+      "observable": "Declared outcome matches independent literal oracle.",
+      "polarity": "positive",
+      "property_id": "R1.P1",
+      "red_expectation": "An invalid input is accepted or valid input rejected.",
+      "scenario": "Measure semantic retention",
+      "scenario_fingerprint": "2d6a202448de49b06b20d37970fa0461f2bdc1ad6b68252b1ae82a18a185f54b",
+      "setup": "Invoke real JS owner with literal good or deliberately malformed inputs. Browser records exercise actual DOM separately.",
+      "source_path": "tests/test_layout_qualification.py",
+      "source_sha256": "0f673197bc5e079678a3cc49c47e42875afb70b78bf7afb009efa498fd100652",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_qualification.QualificationTest.test_semantic_positive"
+    },
+    "R2.P1.NEGATIVE": {
+      "evidence_fingerprint": "37dece057b92be99e0978b1a00851cf70872b7f250adf53302b5f3b66653c56a",
+      "green_expectation": "Bounded measured evolution",
+      "invalidation_dependencies": [
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "prototype/qualification/lab.js",
+        "tests/test_layout_qualification.py",
+        "prototype/qualification/style.css",
+        "prototype/qualification/index.html"
+      ],
+      "observable": "Declared outcome matches independent literal oracle.",
+      "polarity": "negative",
+      "property_id": "R2.P1",
+      "red_expectation": "An invalid input is accepted or valid input rejected.",
+      "scenario": "Evolve measured parents",
+      "scenario_fingerprint": "1c6ed85461bd96559c24df3c9adfcccfea9e74d1bc5e314fdf0b485940d16d2b",
+      "setup": "Invoke real JS owner with literal good or deliberately malformed inputs. Browser records exercise actual DOM separately.",
+      "source_path": "tests/test_layout_qualification.py",
+      "source_sha256": "0f673197bc5e079678a3cc49c47e42875afb70b78bf7afb009efa498fd100652",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_qualification.QualificationTest.test_evolution_negative"
+    },
+    "R2.P1.POSITIVE": {
+      "evidence_fingerprint": "1f0216820bebb907a75b1c7c74613fe64e054f62295f506931e55ee5379bf860",
+      "green_expectation": "Bounded measured evolution",
+      "invalidation_dependencies": [
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "prototype/qualification/lab.js",
+        "tests/test_layout_qualification.py",
+        "prototype/qualification/style.css",
+        "prototype/qualification/index.html"
+      ],
+      "observable": "Declared outcome matches independent literal oracle.",
+      "polarity": "positive",
+      "property_id": "R2.P1",
+      "red_expectation": "An invalid input is accepted or valid input rejected.",
+      "scenario": "Evolve measured parents",
+      "scenario_fingerprint": "1c6ed85461bd96559c24df3c9adfcccfea9e74d1bc5e314fdf0b485940d16d2b",
+      "setup": "Invoke real JS owner with literal good or deliberately malformed inputs. Browser records exercise actual DOM separately.",
+      "source_path": "tests/test_layout_qualification.py",
+      "source_sha256": "0f673197bc5e079678a3cc49c47e42875afb70b78bf7afb009efa498fd100652",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_qualification.QualificationTest.test_evolution_positive"
+    },
+    "R3.P1.LEGACY1": {
+      "evidence_fingerprint": "9d0a879d62c480a5e40ee955a5d3c6dcbeb3d1b1e3ce9c45174a2e7dff1c24b1",
+      "green_expectation": "Qualified measurements and evidence",
+      "invalidation_dependencies": [
+        "prototype/research/metrics.js",
+        "prototype/research/generator.js",
+        "tests/test_layout_research.py",
+        "openspec/changes/evolve-spacefox-layouts/evidence/campaign-checkpoint.json"
+      ],
+      "observable": "Declared outcome matches independent literal oracle.",
+      "polarity": "positive",
+      "property_id": "R3.P1",
+      "red_expectation": "An invalid input is accepted or valid input rejected.",
+      "scenario": "Reject plausible bad evidence",
+      "scenario_fingerprint": "d14bb12bcb42b84849e69f07e9067945d3b73dcdebd349b854ad4b577b9ef549",
+      "setup": "Invoke real JS owner with literal good or deliberately malformed inputs. Browser records exercise actual DOM separately.",
+      "source_path": "tests/test_layout_research.py",
+      "source_sha256": "11cf50f9985c41db22698f390887af05207567e85072a8533b3e03247e55c8e8",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_research.ResearchTest.test_detector_positive"
+    },
+    "R3.P1.LEGACY2": {
+      "evidence_fingerprint": "cb0e7b7f560f8735ad96a29f66b18c1b780faac78a2fb7dbc7c44ca9f88bc3c8",
+      "green_expectation": "Qualified measurements and evidence",
+      "invalidation_dependencies": [
+        "prototype/research/metrics.js",
+        "prototype/research/generator.js",
+        "tests/test_layout_research.py",
+        "openspec/changes/evolve-spacefox-layouts/evidence/campaign-checkpoint.json"
+      ],
+      "observable": "Declared outcome matches independent literal oracle.",
+      "polarity": "negative",
+      "property_id": "R3.P1",
+      "red_expectation": "An invalid input is accepted or valid input rejected.",
+      "scenario": "Reject plausible bad evidence",
+      "scenario_fingerprint": "d14bb12bcb42b84849e69f07e9067945d3b73dcdebd349b854ad4b577b9ef549",
+      "setup": "Invoke real JS owner with literal good or deliberately malformed inputs. Browser records exercise actual DOM separately.",
+      "source_path": "tests/test_layout_research.py",
+      "source_sha256": "11cf50f9985c41db22698f390887af05207567e85072a8533b3e03247e55c8e8",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_research.ResearchTest.test_detector_negative"
+    },
+    "R3.P1.LEGACY3": {
+      "evidence_fingerprint": "f143a0857fc3019789e65c7b48c7d3962da474306b92620028c2bf104cd70216",
+      "green_expectation": "Qualified measurements and evidence",
+      "invalidation_dependencies": [
+        "prototype/research/metrics.js",
+        "prototype/research/generator.js",
+        "tests/test_layout_research.py",
+        "openspec/changes/evolve-spacefox-layouts/evidence/campaign-checkpoint.json"
+      ],
+      "observable": "Declared outcome matches independent literal oracle.",
+      "polarity": "positive",
+      "property_id": "R3.P1",
+      "red_expectation": "An invalid input is accepted or valid input rejected.",
+      "scenario": "Reject plausible bad evidence",
+      "scenario_fingerprint": "d14bb12bcb42b84849e69f07e9067945d3b73dcdebd349b854ad4b577b9ef549",
+      "setup": "Invoke real JS owner with literal good or deliberately malformed inputs. Browser records exercise actual DOM separately.",
+      "source_path": "tests/test_layout_research.py",
+      "source_sha256": "11cf50f9985c41db22698f390887af05207567e85072a8533b3e03247e55c8e8",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_research.ResearchTest.test_qualification_positive"
+    },
+    "R3.P1.LEGACY4": {
+      "evidence_fingerprint": "0bd443f1e594f3885d191b64b9f9a643143e7d8756dfe74d540d7acf6653a00f",
+      "green_expectation": "Qualified measurements and evidence",
+      "invalidation_dependencies": [
+        "prototype/research/metrics.js",
+        "prototype/research/generator.js",
+        "tests/test_layout_research.py",
+        "openspec/changes/evolve-spacefox-layouts/evidence/campaign-checkpoint.json"
+      ],
+      "observable": "Declared outcome matches independent literal oracle.",
+      "polarity": "negative",
+      "property_id": "R3.P1",
+      "red_expectation": "An invalid input is accepted or valid input rejected.",
+      "scenario": "Reject plausible bad evidence",
+      "scenario_fingerprint": "d14bb12bcb42b84849e69f07e9067945d3b73dcdebd349b854ad4b577b9ef549",
+      "setup": "Invoke real JS owner with literal good or deliberately malformed inputs. Browser records exercise actual DOM separately.",
+      "source_path": "tests/test_layout_research.py",
+      "source_sha256": "11cf50f9985c41db22698f390887af05207567e85072a8533b3e03247e55c8e8",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_research.ResearchTest.test_qualification_negative"
+    },
+    "R3.P1.NEGATIVE": {
+      "evidence_fingerprint": "a813ec15b6c01f0d53769cb9210fdc9e8e0c342c2f6aa537556ccec32ca57350",
+      "green_expectation": "Qualified measurements and evidence",
+      "invalidation_dependencies": [
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "prototype/qualification/lab.js",
+        "tests/test_layout_qualification.py",
+        "prototype/qualification/style.css",
+        "prototype/qualification/index.html"
+      ],
+      "observable": "Declared outcome matches independent literal oracle.",
+      "polarity": "negative",
+      "property_id": "R3.P1",
+      "red_expectation": "An invalid input is accepted or valid input rejected.",
+      "scenario": "Reject plausible bad evidence",
+      "scenario_fingerprint": "d14bb12bcb42b84849e69f07e9067945d3b73dcdebd349b854ad4b577b9ef549",
+      "setup": "Invoke real JS owner with literal good or deliberately malformed inputs. Browser records exercise actual DOM separately.",
+      "source_path": "tests/test_layout_qualification.py",
+      "source_sha256": "0f673197bc5e079678a3cc49c47e42875afb70b78bf7afb009efa498fd100652",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_qualification.QualificationTest.test_detector_negative"
+    },
+    "R3.P1.POSITIVE": {
+      "evidence_fingerprint": "8808865deb1d54eb6bab3dd3f57d99846563ad9a0b5b5d73c2209dfc60ae841a",
+      "green_expectation": "Qualified measurements and evidence",
+      "invalidation_dependencies": [
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "prototype/qualification/lab.js",
+        "tests/test_layout_qualification.py",
+        "prototype/qualification/style.css",
+        "prototype/qualification/index.html"
+      ],
+      "observable": "Declared outcome matches independent literal oracle.",
+      "polarity": "positive",
+      "property_id": "R3.P1",
+      "red_expectation": "An invalid input is accepted or valid input rejected.",
+      "scenario": "Reject plausible bad evidence",
+      "scenario_fingerprint": "d14bb12bcb42b84849e69f07e9067945d3b73dcdebd349b854ad4b577b9ef549",
+      "setup": "Invoke real JS owner with literal good or deliberately malformed inputs. Browser records exercise actual DOM separately.",
+      "source_path": "tests/test_layout_qualification.py",
+      "source_sha256": "0f673197bc5e079678a3cc49c47e42875afb70b78bf7afb009efa498fd100652",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_qualification.QualificationTest.test_detector_positive"
+    },
+    "R4.P1.NEGATIVE": {
+      "evidence_fingerprint": "f9595641daa37aa191fb2369e4da93b915783cc171c3b680b9a7a25b2eeb4265",
+      "green_expectation": "Independent final comparison",
+      "invalidation_dependencies": [
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "prototype/qualification/lab.js",
+        "tests/test_layout_qualification.py",
+        "openspec/changes/independently-qualify-layouts/evidence/campaign-with-holdout.json",
+        "openspec/changes/independently-qualify-layouts/evidence/independent-holdout/inputs.json",
+        "openspec/changes/independently-qualify-layouts/evidence/independent-holdout/oracle.json",
+        "prototype/qualification/style.css",
+        "prototype/qualification/index.html"
+      ],
+      "observable": "Declared outcome matches independent literal oracle.",
+      "polarity": "negative",
+      "property_id": "R4.P1",
+      "red_expectation": "An invalid input is accepted or valid input rejected.",
+      "scenario": "Qualify frozen finalists",
+      "scenario_fingerprint": "898afbbc2e57e8ec16c67c13512e6e9f896a81d8cf44955d1b194d8a43d86988",
+      "setup": "Invoke real JS owner with literal good or deliberately malformed inputs. Browser records exercise actual DOM separately.",
+      "source_path": "tests/test_layout_qualification.py",
+      "source_sha256": "0f673197bc5e079678a3cc49c47e42875afb70b78bf7afb009efa498fd100652",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_qualification.QualificationTest.test_qualification_negative"
+    },
+    "R4.P1.POSITIVE": {
+      "evidence_fingerprint": "e7c22e18627592da2acc7270fd57337c1d2506da808e45e6f8d90a4de6f5e0da",
+      "green_expectation": "Independent final comparison",
+      "invalidation_dependencies": [
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "prototype/qualification/lab.js",
+        "tests/test_layout_qualification.py",
+        "openspec/changes/independently-qualify-layouts/evidence/campaign-with-holdout.json",
+        "openspec/changes/independently-qualify-layouts/evidence/independent-holdout/inputs.json",
+        "openspec/changes/independently-qualify-layouts/evidence/independent-holdout/oracle.json",
+        "prototype/qualification/style.css",
+        "prototype/qualification/index.html"
+      ],
+      "observable": "Declared outcome matches independent literal oracle.",
+      "polarity": "positive",
+      "property_id": "R4.P1",
+      "red_expectation": "An invalid input is accepted or valid input rejected.",
+      "scenario": "Qualify frozen finalists",
+      "scenario_fingerprint": "898afbbc2e57e8ec16c67c13512e6e9f896a81d8cf44955d1b194d8a43d86988",
+      "setup": "Invoke real JS owner with literal good or deliberately malformed inputs. Browser records exercise actual DOM separately.",
+      "source_path": "tests/test_layout_qualification.py",
+      "source_sha256": "0f673197bc5e079678a3cc49c47e42875afb70b78bf7afb009efa498fd100652",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_qualification.QualificationTest.test_qualification_positive"
+    },
+    "R5.P1.NEGATIVE": {
+      "evidence_fingerprint": "57774ecb7492c76f9e04b4c62d4b29e94235b2d753732f2450ca0ed0eb7b300f",
+      "green_expectation": "Sparse always-on preview",
+      "invalidation_dependencies": [
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "prototype/qualification/lab.js",
+        "tests/test_layout_qualification.py",
+        "prototype/qualification/style.css",
+        "prototype/qualification/index.html"
+      ],
+      "observable": "Declared outcome matches independent literal oracle.",
+      "polarity": "negative",
+      "property_id": "R5.P1",
+      "red_expectation": "An invalid input is accepted or valid input rejected.",
+      "scenario": "Count sparse pixels",
+      "scenario_fingerprint": "f7b5286ff612cfa6cde4dbfcd89ca8b0f75350f5409cc1714a0490b2812bbee0",
+      "setup": "Invoke real JS owner with literal good or deliberately malformed inputs. Browser records exercise actual DOM separately.",
+      "source_path": "tests/test_layout_qualification.py",
+      "source_sha256": "0f673197bc5e079678a3cc49c47e42875afb70b78bf7afb009efa498fd100652",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_qualification.QualificationTest.test_aod_negative"
+    },
+    "R5.P1.POSITIVE": {
+      "evidence_fingerprint": "5ef773018ca8ef35043b0e5746cce3020b6692310e13cf844b90dcee0d0a3e27",
+      "green_expectation": "Sparse always-on preview",
+      "invalidation_dependencies": [
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "prototype/qualification/lab.js",
+        "tests/test_layout_qualification.py",
+        "prototype/qualification/style.css",
+        "prototype/qualification/index.html"
+      ],
+      "observable": "Declared outcome matches independent literal oracle.",
+      "polarity": "positive",
+      "property_id": "R5.P1",
+      "red_expectation": "An invalid input is accepted or valid input rejected.",
+      "scenario": "Count sparse pixels",
+      "scenario_fingerprint": "f7b5286ff612cfa6cde4dbfcd89ca8b0f75350f5409cc1714a0490b2812bbee0",
+      "setup": "Invoke real JS owner with literal good or deliberately malformed inputs. Browser records exercise actual DOM separately.",
+      "source_path": "tests/test_layout_qualification.py",
+      "source_sha256": "0f673197bc5e079678a3cc49c47e42875afb70b78bf7afb009efa498fd100652",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_qualification.QualificationTest.test_aod_positive"
+    }
+  },
+  "change": "independently-qualify-layouts",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_layout_research.ResearchTest.test_detector_positive",
+        "tests.test_layout_research.ResearchTest.test_detector_negative",
+        "tests.test_layout_research.ResearchTest.test_qualification_positive",
+        "tests.test_layout_research.ResearchTest.test_qualification_negative"
+      ],
+      "cwd": "/Users/jekamas/projects/SpaceFox",
+      "duration_seconds": 0.48607312515378,
+      "exit_code": 0,
+      "id": "legacy-guards",
+      "observed_tests": {
+        "unittest::tests.test_layout_research.ResearchTest.test_detector_negative": "pass",
+        "unittest::tests.test_layout_research.ResearchTest.test_detector_positive": "pass",
+        "unittest::tests.test_layout_research.ResearchTest.test_qualification_negative": "pass",
+        "unittest::tests.test_layout_research.ResearchTest.test_qualification_positive": "pass"
+      },
+      "status": "exited",
+      "stderr": "test_detector_positive (tests.test_layout_research.ResearchTest.test_detector_positive) ... ok\ntest_detector_negative (tests.test_layout_research.ResearchTest.test_detector_negative) ... ok\ntest_qualification_positive (tests.test_layout_research.ResearchTest.test_qualification_positive) ... ok\ntest_qualification_negative (tests.test_layout_research.ResearchTest.test_qualification_negative) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.418s\n\nOK\n",
+      "stderr_artifact": "/Users/jekamas/projects/SpaceFox/openspec/changes/independently-qualify-layouts/evidence/final-dag.json.legacy-guards.stderr.log",
+      "stderr_truncated": false,
+      "stdout": "",
+      "stdout_artifact": "/Users/jekamas/projects/SpaceFox/openspec/changes/independently-qualify-layouts/evidence/final-dag.json.legacy-guards.stdout.log",
+      "stdout_truncated": false
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_layout_qualification"
+      ],
+      "cwd": "/Users/jekamas/projects/SpaceFox",
+      "duration_seconds": 0.8205137918703258,
+      "exit_code": 0,
+      "id": "qualification-tests",
+      "observed_tests": {
+        "unittest::tests.test_layout_qualification.QualificationTest.test_aod_negative": "pass",
+        "unittest::tests.test_layout_qualification.QualificationTest.test_aod_positive": "pass",
+        "unittest::tests.test_layout_qualification.QualificationTest.test_detector_negative": "pass",
+        "unittest::tests.test_layout_qualification.QualificationTest.test_detector_positive": "pass",
+        "unittest::tests.test_layout_qualification.QualificationTest.test_evolution_negative": "pass",
+        "unittest::tests.test_layout_qualification.QualificationTest.test_evolution_positive": "pass",
+        "unittest::tests.test_layout_qualification.QualificationTest.test_qualification_negative": "pass",
+        "unittest::tests.test_layout_qualification.QualificationTest.test_qualification_positive": "pass",
+        "unittest::tests.test_layout_qualification.QualificationTest.test_semantic_negative": "pass",
+        "unittest::tests.test_layout_qualification.QualificationTest.test_semantic_positive": "pass"
+      },
+      "status": "exited",
+      "stderr": "test_aod_negative (tests.test_layout_qualification.QualificationTest.test_aod_negative) ... ok\ntest_aod_positive (tests.test_layout_qualification.QualificationTest.test_aod_positive) ... ok\ntest_detector_negative (tests.test_layout_qualification.QualificationTest.test_detector_negative) ... ok\ntest_detector_positive (tests.test_layout_qualification.QualificationTest.test_detector_positive) ... ok\ntest_evolution_negative (tests.test_layout_qualification.QualificationTest.test_evolution_negative) ... ok\ntest_evolution_positive (tests.test_layout_qualification.QualificationTest.test_evolution_positive) ... ok\ntest_qualification_negative (tests.test_layout_qualification.QualificationTest.test_qualification_negative) ... ok\ntest_qualification_positive (tests.test_layout_qualification.QualificationTest.test_qualification_positive) ... ok\ntest_semantic_negative (tests.test_layout_qualification.QualificationTest.test_semantic_negative) ... ok\ntest_semantic_positive (tests.test_layout_qualification.QualificationTest.test_semantic_positive) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.750s\n\nOK\n",
+      "stderr_artifact": "/Users/jekamas/projects/SpaceFox/openspec/changes/independently-qualify-layouts/evidence/final-dag.json.qualification-tests.stderr.log",
+      "stderr_truncated": false,
+      "stdout": "",
+      "stdout_artifact": "/Users/jekamas/projects/SpaceFox/openspec/changes/independently-qualify-layouts/evidence/final-dag.json.qualification-tests.stdout.log",
+      "stdout_truncated": false
+    }
+  ],
+  "finished_at": "2026-11-10T21:13:36.023208+00:00",
+  "git": {
+    "dirty": false,
+    "head": "f40b2a8fa7b3743e053da843f22c2efe1087ac0a",
+    "status": "known"
+  },
+  "manifest": "openspec/changes/independently-qualify-layouts/verification.json",
+  "manifest_sha256": "b3bb59d862b5b6789327501179aef3b8278105223336fd56ba13d271735e6929",
+  "requested_selectors": {
+    "all": true,
+    "cases": [],
+    "changed_paths": [],
+    "commands": [],
+    "owners": [],
+    "properties": [],
+    "requirements": [],
+    "scenarios": [],
+    "tests": []
+  },
+  "schema_version": 2,
+  "selection": {
+    "cases": [
+      "R1.P1.NEGATIVE",
+      "R1.P1.POSITIVE",
+      "R2.P1.NEGATIVE",
+      "R2.P1.POSITIVE",
+      "R3.P1.LEGACY1",
+      "R3.P1.LEGACY2",
+      "R3.P1.LEGACY3",
+      "R3.P1.LEGACY4",
+      "R3.P1.NEGATIVE",
+      "R3.P1.POSITIVE",
+      "R4.P1.NEGATIVE",
+      "R4.P1.POSITIVE",
+      "R5.P1.NEGATIVE",
+      "R5.P1.POSITIVE"
+    ],
+    "commands": [
+      "legacy-guards",
+      "qualification-tests"
+    ],
+    "properties": [
+      "R1.P1",
+      "R2.P1",
+      "R3.P1",
+      "R4.P1",
+      "R5.P1"
+    ],
+    "requirements": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5"
+    ]
+  },
+  "specifications": {
+    "R1": "5ac6513f457344bdef2c84ffddfc59733133222e9e70349a991731daab43087d",
+    "R2": "af780a05a393f80d7602efd658b89ec3521919c12fd89443e48ed5447119772e",
+    "R3": "bf9369f47bc7a0a7cd580a791d85572393ae14e011dbb68e0f581650b642e05d",
+    "R4": "738a1c00de8318ed44c7a0352319be3c15d82875bfd241ed1a245ee4629bd563",
+    "R5": "a313943ba6ab384e00636c168fba72bea4bb82adf51e726b2e7b07c7078f82a8"
+  },
+  "started_at": "2026-11-10T21:13:34.586939+00:00",
+  "status": "passed",
+  "substitution_gaps": []
+}
