@@ -1,0 +1,1370 @@
+{
+  "schemaVersion": 1,
+  "synthetic": true,
+  "claimBoundary": "Display labels are the exact producer-approved onscreen strings; this is a browser geometry/semantic holdout, not human or native-device validation.",
+  "expectedSceneCount": 24,
+  "expected": [
+    {
+      "sceneId": "holdout-5488714056844cf8",
+      "language": "ru",
+      "requiredDisplay": {
+        "time": "00:00",
+        "rocket": "Falcon 9 Block 5",
+        "operator": "SpaceX",
+        "purpose": "Доставка научного аппарата",
+        "site": "Тест Полюс · Мыс Аврора",
+        "countdown": "T−38д 17ч 42м"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "steps",
+          "value": 99999,
+          "displayLabel": "99 999"
+        },
+        {
+          "slot": 1,
+          "role": "calories",
+          "value": 88888,
+          "displayLabel": "88 888"
+        },
+        {
+          "slot": 2,
+          "role": "heart",
+          "value": 199,
+          "displayLabel": "199"
+        },
+        {
+          "slot": 3,
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        }
+      ],
+      "indicators": {
+        "exclamation": false,
+        "cloudOff": false,
+        "uncertaintyLabel": false
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        160.0,
+        82.0
+      ],
+      "modelExpected": "generic",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 16,
+        "operator": 6,
+        "purpose": 26,
+        "site": 23
+      }
+    },
+    {
+      "sceneId": "holdout-b44598cf4fc24976",
+      "language": "en",
+      "requiredDisplay": {
+        "time": "00:00",
+        "rocket": "Falcon 9 Block 5",
+        "operator": "SpaceX",
+        "purpose": "Science spacecraft delivery",
+        "site": "Test Polar · Aurora Cape",
+        "countdown": "T−38d 17h 42m"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "steps",
+          "value": 99999,
+          "displayLabel": "99,999"
+        },
+        {
+          "slot": 1,
+          "role": "calories",
+          "value": 88888,
+          "displayLabel": "88,888"
+        },
+        {
+          "slot": 2,
+          "role": "heart",
+          "value": 199,
+          "displayLabel": "199"
+        },
+        {
+          "slot": 3,
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        }
+      ],
+      "indicators": {
+        "exclamation": false,
+        "cloudOff": false,
+        "uncertaintyLabel": false
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        160.0,
+        82.0
+      ],
+      "modelExpected": "generic",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 16,
+        "operator": 6,
+        "purpose": 27,
+        "site": 24
+      }
+    },
+    {
+      "sceneId": "holdout-6182d214ecf94b3d",
+      "language": "ru",
+      "requiredDisplay": {
+        "time": "23:59",
+        "rocket": "Electron",
+        "operator": "Rocket Lab",
+        "purpose": "Карта радиационного фона",
+        "site": "Тест Полюс · Мыс Аврора",
+        "countdown": "T−2д 23ч"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "energy",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "slot": 1,
+          "role": "heart",
+          "value": 40,
+          "displayLabel": "40"
+        },
+        {
+          "slot": 2,
+          "role": "stress",
+          "value": 0,
+          "displayLabel": "0"
+        },
+        {
+          "slot": 3,
+          "role": "battery",
+          "value": 1,
+          "displayLabel": "1%"
+        }
+      ],
+      "indicators": {
+        "exclamation": true,
+        "cloudOff": false,
+        "uncertaintyLabel": false
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        160.0,
+        82.0
+      ],
+      "modelExpected": "electron",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 8,
+        "operator": 10,
+        "purpose": 24,
+        "site": 23
+      }
+    },
+    {
+      "sceneId": "holdout-339963878da440d3",
+      "language": "en",
+      "requiredDisplay": {
+        "time": "23:59",
+        "rocket": "Electron",
+        "operator": "Rocket Lab",
+        "purpose": "Radiation environment mapping",
+        "site": "Test Polar · Aurora Cape",
+        "countdown": "T−2d 23h"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "energy",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "slot": 1,
+          "role": "heart",
+          "value": 40,
+          "displayLabel": "40"
+        },
+        {
+          "slot": 2,
+          "role": "stress",
+          "value": 0,
+          "displayLabel": "0"
+        },
+        {
+          "slot": 3,
+          "role": "battery",
+          "value": 1,
+          "displayLabel": "1%"
+        }
+      ],
+      "indicators": {
+        "exclamation": true,
+        "cloudOff": false,
+        "uncertaintyLabel": false
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        160.0,
+        82.0
+      ],
+      "modelExpected": "electron",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 8,
+        "operator": 10,
+        "purpose": 29,
+        "site": 24
+      }
+    },
+    {
+      "sceneId": "holdout-d53f4d9956e546ab",
+      "language": "ru",
+      "requiredDisplay": {
+        "time": "08:08",
+        "rocket": "Atlas V 551",
+        "operator": "ULA",
+        "purpose": "Снабжение экипажа",
+        "site": "Тест Восток · Плато Янтарь",
+        "countdown": "T−11ч 59м"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "calories",
+          "value": 12345,
+          "displayLabel": "12 345"
+        },
+        {
+          "slot": 1,
+          "role": "steps",
+          "value": 54321,
+          "displayLabel": "54 321"
+        },
+        {
+          "slot": 2,
+          "role": "energy",
+          "value": 0,
+          "displayLabel": "0"
+        },
+        {
+          "slot": 3,
+          "role": "stress",
+          "value": 99,
+          "displayLabel": "99"
+        }
+      ],
+      "indicators": {
+        "exclamation": false,
+        "cloudOff": true,
+        "uncertaintyLabel": false
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        -130.0,
+        60.0
+      ],
+      "modelExpected": "generic",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 11,
+        "operator": 3,
+        "purpose": 17,
+        "site": 26
+      }
+    },
+    {
+      "sceneId": "holdout-ddb13ee496c749c9",
+      "language": "en",
+      "requiredDisplay": {
+        "time": "08:08",
+        "rocket": "Atlas V 551",
+        "operator": "ULA",
+        "purpose": "Crew resupply",
+        "site": "Test East · Amber Plateau",
+        "countdown": "T−11h 59m"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "calories",
+          "value": 12345,
+          "displayLabel": "12,345"
+        },
+        {
+          "slot": 1,
+          "role": "steps",
+          "value": 54321,
+          "displayLabel": "54,321"
+        },
+        {
+          "slot": 2,
+          "role": "energy",
+          "value": 0,
+          "displayLabel": "0"
+        },
+        {
+          "slot": 3,
+          "role": "stress",
+          "value": 99,
+          "displayLabel": "99"
+        }
+      ],
+      "indicators": {
+        "exclamation": false,
+        "cloudOff": true,
+        "uncertaintyLabel": false
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        -130.0,
+        60.0
+      ],
+      "modelExpected": "generic",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 11,
+        "operator": 3,
+        "purpose": 13,
+        "site": 25
+      }
+    },
+    {
+      "sceneId": "holdout-d7599b67b2e24a63",
+      "language": "ru",
+      "requiredDisplay": {
+        "time": "10:10",
+        "rocket": "Союз-2.1б/Фрегат",
+        "operator": "Главкосмос",
+        "purpose": "Передача данных с орбиты",
+        "site": "Тест Восток · Плато Янтарь",
+        "countdown": "T−9м 07с"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "heart",
+          "value": 220,
+          "displayLabel": "220"
+        },
+        {
+          "slot": 1,
+          "role": "battery",
+          "value": 0,
+          "displayLabel": "0%"
+        },
+        {
+          "slot": 2,
+          "role": "steps",
+          "value": 1,
+          "displayLabel": "1"
+        },
+        {
+          "slot": 3,
+          "role": "calories",
+          "value": 1,
+          "displayLabel": "1"
+        }
+      ],
+      "indicators": {
+        "exclamation": true,
+        "cloudOff": true,
+        "uncertaintyLabel": false
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        -130.0,
+        60.0
+      ],
+      "modelExpected": "generic",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 16,
+        "operator": 10,
+        "purpose": 24,
+        "site": 26
+      }
+    },
+    {
+      "sceneId": "holdout-fef986604d9945a4",
+      "language": "en",
+      "requiredDisplay": {
+        "time": "10:10",
+        "rocket": "Soyuz-2.1b/Fregat",
+        "operator": "Glavkosmos",
+        "purpose": "Orbital data relay",
+        "site": "Test East · Amber Plateau",
+        "countdown": "T−9m 07s"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "heart",
+          "value": 220,
+          "displayLabel": "220"
+        },
+        {
+          "slot": 1,
+          "role": "battery",
+          "value": 0,
+          "displayLabel": "0%"
+        },
+        {
+          "slot": 2,
+          "role": "steps",
+          "value": 1,
+          "displayLabel": "1"
+        },
+        {
+          "slot": 3,
+          "role": "calories",
+          "value": 1,
+          "displayLabel": "1"
+        }
+      ],
+      "indicators": {
+        "exclamation": true,
+        "cloudOff": true,
+        "uncertaintyLabel": false
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        -130.0,
+        60.0
+      ],
+      "modelExpected": "generic",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 17,
+        "operator": 10,
+        "purpose": 18,
+        "site": 25
+      }
+    },
+    {
+      "sceneId": "holdout-e483ad734f534735",
+      "language": "ru",
+      "requiredDisplay": {
+        "time": "11:11",
+        "rocket": "H3-22S",
+        "operator": "MHI",
+        "purpose": "Полярная климатическая съёмка",
+        "site": "Тест Центр · Долина Маяк",
+        "countdown": "Время уточняется"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "stress",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "slot": 1,
+          "role": "energy",
+          "value": 1,
+          "displayLabel": "1"
+        },
+        {
+          "slot": 2,
+          "role": "battery",
+          "value": 99,
+          "displayLabel": "99%"
+        },
+        {
+          "slot": 3,
+          "role": "heart",
+          "value": 88,
+          "displayLabel": "88"
+        }
+      ],
+      "indicators": {
+        "exclamation": true,
+        "cloudOff": false,
+        "uncertaintyLabel": true
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        35.0,
+        -2.0
+      ],
+      "modelExpected": "generic",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 6,
+        "operator": 3,
+        "purpose": 29,
+        "site": 24
+      }
+    },
+    {
+      "sceneId": "holdout-611d1619d0204f03",
+      "language": "en",
+      "requiredDisplay": {
+        "time": "11:11",
+        "rocket": "H3-22S",
+        "operator": "MHI",
+        "purpose": "Polar climate survey",
+        "site": "Test Central · Beacon Vale",
+        "countdown": "Time pending"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "stress",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "slot": 1,
+          "role": "energy",
+          "value": 1,
+          "displayLabel": "1"
+        },
+        {
+          "slot": 2,
+          "role": "battery",
+          "value": 99,
+          "displayLabel": "99%"
+        },
+        {
+          "slot": 3,
+          "role": "heart",
+          "value": 88,
+          "displayLabel": "88"
+        }
+      ],
+      "indicators": {
+        "exclamation": true,
+        "cloudOff": false,
+        "uncertaintyLabel": true
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        35.0,
+        -2.0
+      ],
+      "modelExpected": "generic",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 6,
+        "operator": 3,
+        "purpose": 20,
+        "site": 26
+      }
+    },
+    {
+      "sceneId": "holdout-62a4e35f5dd34379",
+      "language": "ru",
+      "requiredDisplay": {
+        "time": "20:02",
+        "rocket": "Ariane 62",
+        "operator": "Arianespace",
+        "purpose": "Навигационный резерв",
+        "site": "Тест Центр · Долина Маяк",
+        "countdown": "Время уточняется"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "calories",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "slot": 1,
+          "role": "steps",
+          "value": 9999,
+          "displayLabel": "9 999"
+        },
+        {
+          "slot": 2,
+          "role": "heart",
+          "value": 72,
+          "displayLabel": "72"
+        },
+        {
+          "slot": 3,
+          "role": "energy",
+          "value": 66,
+          "displayLabel": "66"
+        }
+      ],
+      "indicators": {
+        "exclamation": false,
+        "cloudOff": false,
+        "uncertaintyLabel": true
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        35.0,
+        -2.0
+      ],
+      "modelExpected": "ariane",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 9,
+        "operator": 11,
+        "purpose": 20,
+        "site": 24
+      }
+    },
+    {
+      "sceneId": "holdout-c16060f0dd8c4294",
+      "language": "en",
+      "requiredDisplay": {
+        "time": "20:02",
+        "rocket": "Ariane 62",
+        "operator": "Arianespace",
+        "purpose": "Navigation backup",
+        "site": "Test Central · Beacon Vale",
+        "countdown": "Time pending"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "calories",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "slot": 1,
+          "role": "steps",
+          "value": 9999,
+          "displayLabel": "9,999"
+        },
+        {
+          "slot": 2,
+          "role": "heart",
+          "value": 72,
+          "displayLabel": "72"
+        },
+        {
+          "slot": 3,
+          "role": "energy",
+          "value": 66,
+          "displayLabel": "66"
+        }
+      ],
+      "indicators": {
+        "exclamation": false,
+        "cloudOff": false,
+        "uncertaintyLabel": true
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        35.0,
+        -2.0
+      ],
+      "modelExpected": "ariane",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 9,
+        "operator": 11,
+        "purpose": 17,
+        "site": 26
+      }
+    },
+    {
+      "sceneId": "holdout-b28e0a1c0ec24de1",
+      "language": "ru",
+      "requiredDisplay": {
+        "time": "22:22",
+        "rocket": "Neutron",
+        "operator": "Rocket Lab",
+        "purpose": "Отработка возврата ступени",
+        "site": "Тест Юг · Остров Каскад",
+        "countdown": "T−41д 19ч"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "energy",
+          "value": 99,
+          "displayLabel": "99"
+        },
+        {
+          "slot": 1,
+          "role": "steps",
+          "value": 10000,
+          "displayLabel": "10 000"
+        },
+        {
+          "slot": 2,
+          "role": "calories",
+          "value": 9999,
+          "displayLabel": "9 999"
+        },
+        {
+          "slot": 3,
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        }
+      ],
+      "indicators": {
+        "exclamation": false,
+        "cloudOff": false,
+        "uncertaintyLabel": false
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        179.5,
+        -52.0
+      ],
+      "modelExpected": "generic",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 7,
+        "operator": 10,
+        "purpose": 26,
+        "site": 23
+      }
+    },
+    {
+      "sceneId": "holdout-12fbbe97bd42462a",
+      "language": "en",
+      "requiredDisplay": {
+        "time": "22:22",
+        "rocket": "Neutron",
+        "operator": "Rocket Lab",
+        "purpose": "Stage return demonstration",
+        "site": "Test South · Cascade Isle",
+        "countdown": "T−41d 19h"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "energy",
+          "value": 99,
+          "displayLabel": "99"
+        },
+        {
+          "slot": 1,
+          "role": "steps",
+          "value": 10000,
+          "displayLabel": "10,000"
+        },
+        {
+          "slot": 2,
+          "role": "calories",
+          "value": 9999,
+          "displayLabel": "9,999"
+        },
+        {
+          "slot": 3,
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        }
+      ],
+      "indicators": {
+        "exclamation": false,
+        "cloudOff": false,
+        "uncertaintyLabel": false
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        179.5,
+        -52.0
+      ],
+      "modelExpected": "generic",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 7,
+        "operator": 10,
+        "purpose": 26,
+        "site": 25
+      }
+    },
+    {
+      "sceneId": "holdout-322f65a07b904b2c",
+      "language": "ru",
+      "requiredDisplay": {
+        "time": "06:50",
+        "rocket": "Vega-C",
+        "operator": "Avio",
+        "purpose": "Радиолокационная съёмка",
+        "site": "Тест Юг · Остров Каскад",
+        "countdown": "T−19ч 03м"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "battery",
+          "value": 9,
+          "displayLabel": "9%"
+        },
+        {
+          "slot": 1,
+          "role": "stress",
+          "value": 87,
+          "displayLabel": "87"
+        },
+        {
+          "slot": 2,
+          "role": "heart",
+          "value": 155,
+          "displayLabel": "155"
+        },
+        {
+          "slot": 3,
+          "role": "steps",
+          "value": 25000,
+          "displayLabel": "25 000"
+        }
+      ],
+      "indicators": {
+        "exclamation": true,
+        "cloudOff": false,
+        "uncertaintyLabel": false
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        179.5,
+        -52.0
+      ],
+      "modelExpected": "generic",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 6,
+        "operator": 4,
+        "purpose": 23,
+        "site": 23
+      }
+    },
+    {
+      "sceneId": "holdout-797024e8b61a4d76",
+      "language": "en",
+      "requiredDisplay": {
+        "time": "06:50",
+        "rocket": "Vega-C",
+        "operator": "Avio",
+        "purpose": "Radar imaging mission",
+        "site": "Test South · Cascade Isle",
+        "countdown": "T−19h 03m"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "battery",
+          "value": 9,
+          "displayLabel": "9%"
+        },
+        {
+          "slot": 1,
+          "role": "stress",
+          "value": 87,
+          "displayLabel": "87"
+        },
+        {
+          "slot": 2,
+          "role": "heart",
+          "value": 155,
+          "displayLabel": "155"
+        },
+        {
+          "slot": 3,
+          "role": "steps",
+          "value": 25000,
+          "displayLabel": "25,000"
+        }
+      ],
+      "indicators": {
+        "exclamation": true,
+        "cloudOff": false,
+        "uncertaintyLabel": false
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        179.5,
+        -52.0
+      ],
+      "modelExpected": "generic",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 6,
+        "operator": 4,
+        "purpose": 21,
+        "site": 25
+      }
+    },
+    {
+      "sceneId": "holdout-bcde7e784f5948a3",
+      "language": "ru",
+      "requiredDisplay": {
+        "time": "15:45",
+        "rocket": "New Shepard",
+        "operator": "Blue Origin",
+        "purpose": "Короткий научный полёт",
+        "site": "Тест Запад · Порт Вега",
+        "countdown": "T−3д 12ч"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "calories",
+          "value": 31415,
+          "displayLabel": "31 415"
+        },
+        {
+          "slot": 1,
+          "role": "energy",
+          "value": 42,
+          "displayLabel": "42"
+        },
+        {
+          "slot": 2,
+          "role": "battery",
+          "value": 42,
+          "displayLabel": "42%"
+        },
+        {
+          "slot": 3,
+          "role": "heart",
+          "value": 99,
+          "displayLabel": "99"
+        }
+      ],
+      "indicators": {
+        "exclamation": false,
+        "cloudOff": true,
+        "uncertaintyLabel": false
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        -179.5,
+        24.0
+      ],
+      "modelExpected": "generic",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 11,
+        "operator": 11,
+        "purpose": 22,
+        "site": 22
+      }
+    },
+    {
+      "sceneId": "holdout-128e23f45e95487e",
+      "language": "en",
+      "requiredDisplay": {
+        "time": "15:45",
+        "rocket": "New Shepard",
+        "operator": "Blue Origin",
+        "purpose": "Suborbital science flight",
+        "site": "Test West · Vega Harbour",
+        "countdown": "T−3d 12h"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "calories",
+          "value": 31415,
+          "displayLabel": "31,415"
+        },
+        {
+          "slot": 1,
+          "role": "energy",
+          "value": 42,
+          "displayLabel": "42"
+        },
+        {
+          "slot": 2,
+          "role": "battery",
+          "value": 42,
+          "displayLabel": "42%"
+        },
+        {
+          "slot": 3,
+          "role": "heart",
+          "value": 99,
+          "displayLabel": "99"
+        }
+      ],
+      "indicators": {
+        "exclamation": false,
+        "cloudOff": true,
+        "uncertaintyLabel": false
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        -179.5,
+        24.0
+      ],
+      "modelExpected": "generic",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 11,
+        "operator": 11,
+        "purpose": 25,
+        "site": 24
+      }
+    },
+    {
+      "sceneId": "holdout-6e155377c00d496b",
+      "language": "ru",
+      "requiredDisplay": {
+        "time": "19:07",
+        "rocket": "Minotaur IV",
+        "operator": "Northrop Grumman",
+        "purpose": "Проверка связи спутников",
+        "site": "Тест Запад · Порт Вега",
+        "countdown": "T−00с"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "steps",
+          "value": 88888,
+          "displayLabel": "88 888"
+        },
+        {
+          "slot": 1,
+          "role": "battery",
+          "value": 88,
+          "displayLabel": "88%"
+        },
+        {
+          "slot": 2,
+          "role": "stress",
+          "value": 88,
+          "displayLabel": "88"
+        },
+        {
+          "slot": 3,
+          "role": "calories",
+          "value": 8888,
+          "displayLabel": "8 888"
+        }
+      ],
+      "indicators": {
+        "exclamation": true,
+        "cloudOff": true,
+        "uncertaintyLabel": false
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        -179.5,
+        24.0
+      ],
+      "modelExpected": "generic",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 11,
+        "operator": 16,
+        "purpose": 24,
+        "site": 22
+      }
+    },
+    {
+      "sceneId": "holdout-49d0fd4ac732442a",
+      "language": "en",
+      "requiredDisplay": {
+        "time": "19:07",
+        "rocket": "Minotaur IV",
+        "operator": "Northrop Grumman",
+        "purpose": "Satellite link verification",
+        "site": "Test West · Vega Harbour",
+        "countdown": "T−00s"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "steps",
+          "value": 88888,
+          "displayLabel": "88,888"
+        },
+        {
+          "slot": 1,
+          "role": "battery",
+          "value": 88,
+          "displayLabel": "88%"
+        },
+        {
+          "slot": 2,
+          "role": "stress",
+          "value": 88,
+          "displayLabel": "88"
+        },
+        {
+          "slot": 3,
+          "role": "calories",
+          "value": 8888,
+          "displayLabel": "8,888"
+        }
+      ],
+      "indicators": {
+        "exclamation": true,
+        "cloudOff": true,
+        "uncertaintyLabel": false
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        -179.5,
+        24.0
+      ],
+      "modelExpected": "generic",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 11,
+        "operator": 16,
+        "purpose": 27,
+        "site": 24
+      }
+    },
+    {
+      "sceneId": "holdout-d480e02b4feb4091",
+      "language": "ru",
+      "requiredDisplay": {
+        "time": "09:30",
+        "rocket": "Falcon 9",
+        "operator": "SpaceX",
+        "purpose": "Испытание орбитального буксира",
+        "site": "Тест Дата · Берег Орбита",
+        "countdown": "T−1д 00ч"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "heart",
+          "value": 200,
+          "displayLabel": "200"
+        },
+        {
+          "slot": 1,
+          "role": "calories",
+          "value": 22222,
+          "displayLabel": "22 222"
+        },
+        {
+          "slot": 2,
+          "role": "steps",
+          "value": 22222,
+          "displayLabel": "22 222"
+        },
+        {
+          "slot": 3,
+          "role": "energy",
+          "value": 100,
+          "displayLabel": "100"
+        }
+      ],
+      "indicators": {
+        "exclamation": true,
+        "cloudOff": true,
+        "uncertaintyLabel": false
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        70.0,
+        -78.0
+      ],
+      "modelExpected": "falcon",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 8,
+        "operator": 6,
+        "purpose": 30,
+        "site": 24
+      }
+    },
+    {
+      "sceneId": "holdout-b36783dabcd8485c",
+      "language": "en",
+      "requiredDisplay": {
+        "time": "09:30",
+        "rocket": "Falcon 9",
+        "operator": "SpaceX",
+        "purpose": "Orbital tug test",
+        "site": "Test Date · Orbit Shore",
+        "countdown": "T−1d 00h"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "heart",
+          "value": 200,
+          "displayLabel": "200"
+        },
+        {
+          "slot": 1,
+          "role": "calories",
+          "value": 22222,
+          "displayLabel": "22,222"
+        },
+        {
+          "slot": 2,
+          "role": "steps",
+          "value": 22222,
+          "displayLabel": "22,222"
+        },
+        {
+          "slot": 3,
+          "role": "energy",
+          "value": 100,
+          "displayLabel": "100"
+        }
+      ],
+      "indicators": {
+        "exclamation": true,
+        "cloudOff": true,
+        "uncertaintyLabel": false
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        70.0,
+        -78.0
+      ],
+      "modelExpected": "falcon",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 8,
+        "operator": 6,
+        "purpose": 16,
+        "site": 23
+      }
+    },
+    {
+      "sceneId": "holdout-4cda57efb15343f4",
+      "language": "ru",
+      "requiredDisplay": {
+        "time": "16:16",
+        "rocket": "Northstar Mk III",
+        "operator": "Northstar Launch Systems",
+        "purpose": "Проверка нового теплозащитника",
+        "site": "Тест Дата · Берег Орбита",
+        "countdown": "Время уточняется"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        },
+        {
+          "slot": 1,
+          "role": "energy",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "slot": 2,
+          "role": "stress",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "slot": 3,
+          "role": "heart",
+          "value": 100,
+          "displayLabel": "100"
+        }
+      ],
+      "indicators": {
+        "exclamation": true,
+        "cloudOff": true,
+        "uncertaintyLabel": true
+      },
+      "pointExpected": false,
+      "sourcePoint": null,
+      "modelExpected": "generic",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 16,
+        "operator": 24,
+        "purpose": 30,
+        "site": 24
+      }
+    },
+    {
+      "sceneId": "holdout-50fc6f00c8354272",
+      "language": "en",
+      "requiredDisplay": {
+        "time": "16:16",
+        "rocket": "Northstar Mk III",
+        "operator": "Northstar Launch Systems",
+        "purpose": "Thermal shield qualification",
+        "site": "Test Date · Orbit Shore",
+        "countdown": "Time pending"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        },
+        {
+          "slot": 1,
+          "role": "energy",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "slot": 2,
+          "role": "stress",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "slot": 3,
+          "role": "heart",
+          "value": 100,
+          "displayLabel": "100"
+        }
+      ],
+      "indicators": {
+        "exclamation": true,
+        "cloudOff": true,
+        "uncertaintyLabel": true
+      },
+      "pointExpected": false,
+      "sourcePoint": null,
+      "modelExpected": "generic",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 16,
+        "operator": 24,
+        "purpose": 28,
+        "site": 23
+      }
+    }
+  ]
+}

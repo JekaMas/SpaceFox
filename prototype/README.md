@@ -59,3 +59,10 @@ python3 -B tools/build_preview.py --check
 [Канаверал](https://ll.thespacedevs.com/2.3.0/pads/80/?format=api),
 [Махия](https://ll.thespacedevs.com/2.3.0/pads/210/?format=api),
 [Куру](https://ll.thespacedevs.com/2.3.0/pads/67/?format=api).
+# Независимая квалификация
+
+Три актуальных предложения: [qualification/review.html](qualification/review.html).
+Лаборатория: [qualification/index.html](qualification/index.html), «Открыть сохранённые результаты».
+92 уникальных варианта, первоначальный независимый контроль с сохранёнными отказами,
+ремонт и повторное визуальное ревью описаны в [отчёте](../docs/LAYOUT_QUALIFICATION.md).
+Это браузерные макеты с синтетическими сценами; реальный Garmin ещё не проверен.

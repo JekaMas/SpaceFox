@@ -333,3 +333,13 @@ work updates the specification and MIT runbook only. No Pages site, workflow,
 scheduled task or updater implementation is activated in this increment.
 Primary-source decision notes and retained proof limits are in
 `evidence/static-feed-design-review.md`.
+
+## Independently reviewed browser proposals
+
+The second experiment (`independently-qualify-layouts`) adds 48/24/12 plus eight
+repair candidates, sealed reviewer-owned inputs, separate technical and blind
+visual reviews, and three proposals: Mission Control, Earthrise and Atlas.
+See `docs/LAYOUT_QUALIFICATION.md` for actual outcomes and proof limits. The first
+fresh holdout failed; repaired finalists passed the same inputs as regression.
+This does not select a native layout, prove all language/font combinations or
+complete the watch-face, live-feed, catalog transport or physical power tasks.

@@ -1,0 +1,56 @@
+{
+  "method": "Independent stdlib PNG decode, CRC validation and circular nonblack-pixel count; no SpaceFox code imported",
+  "results": [
+    {
+      "file": "aod-short.png",
+      "sha256": "db966115949e5ddb0f2fbc3ff9fa8b666ec7d1f29bd2056cf9fc93423e7beb95",
+      "actual": {
+        "lit": 4130,
+        "total": 119488,
+        "ratio": 0.034564140332083555,
+        "passed": true
+      }
+    },
+    {
+      "file": "aod-long.png",
+      "sha256": "cfa35d65193c5e18e653b383f1a394a8c8df8b44309ebc136201200803a46e31",
+      "actual": {
+        "lit": 3367,
+        "total": 119488,
+        "ratio": 0.028178561863952865,
+        "passed": true
+      }
+    },
+    {
+      "file": "aod-countdown.png",
+      "sha256": "b3c78b5c30a1e100b6471b2a9e36fd184b4b00b9cc0f756d4131d691a60f1454",
+      "actual": {
+        "lit": 5111,
+        "total": 119488,
+        "ratio": 0.04277416979110873,
+        "passed": true
+      }
+    },
+    {
+      "file": "aod-missing.png",
+      "sha256": "3c1d37daa86184e4729c7ebbc1edbec5f747ed02a6b654996afb18a493120d02",
+      "actual": {
+        "lit": 5334,
+        "total": 119488,
+        "ratio": 0.04464046598821639,
+        "passed": true
+      }
+    },
+    {
+      "file": "aod-pending.png",
+      "sha256": "4ebcc273fcc41e7bbe8a2f929ec5b30617f0bd138f4d8c527d59d076a5ce79dd",
+      "actual": {
+        "lit": 4808,
+        "total": 119488,
+        "ratio": 0.040238350294590254,
+        "passed": true
+      }
+    }
+  ],
+  "errors": []
+}

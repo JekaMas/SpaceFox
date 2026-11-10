@@ -1,0 +1,2841 @@
+{
+  "schemaVersion": 1,
+  "method": "Reviewer independent geometry/semantic/contrast checks against oracle and author inputs; no production evaluator calls",
+  "finalCampaignSha256": "29fc16fb7e2edcc0a8ef24de01345263b5cca9130e5ff07030adb5e7da040bf8",
+  "candidateCount": 92,
+  "generationSizes": [
+    48,
+    24,
+    12,
+    8
+  ],
+  "repairBudgetUsed": 8,
+  "newlyAudited": [
+    "Q4-33",
+    "Q4-34"
+  ],
+  "retainedAuditReuse": "First six repair candidates: raw records byte-equivalent. New renderer branch affects earthLimb=true only; removed optional north arrow is outside measured boxes. No repeat of unchanged green observations.",
+  "finalIds": [
+    "Q4-11",
+    "Q4-21",
+    "Q4-33"
+  ],
+  "freshHoldoutFailures": {
+    "Q3-11": 1,
+    "Q3-21": 2,
+    "Q3-31": 6
+  },
+  "holdoutRegression": [
+    {
+      "id": "Q4-11",
+      "errors": [],
+      "trials": [
+        {
+          "scene": "holdout-5488714056844cf8",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.14052963256836,
+            16.22724723815918,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.097000122070312
+        },
+        {
+          "scene": "holdout-b44598cf4fc24976",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            19.793556213378906,
+            19.793556213378906,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 21
+        },
+        {
+          "scene": "holdout-6182d214ecf94b3d",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.097000122070312
+        },
+        {
+          "scene": "holdout-339963878da440d3",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754,
+            16.22724723815918
+          ],
+          "siteInkHeight": 21
+        },
+        {
+          "scene": "holdout-d53f4d9956e546ab",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.21640968322754,
+            16.14052963256836
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-ddb13ee496c749c9",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            19.793556213378906,
+            19.793556213378906,
+            16.21640968322754,
+            16.14052963256836
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-d7599b67b2e24a63",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.227249145507812,
+            15.826172828674316,
+            15.826172828674316
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-fef986604d9945a4",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.227249145507812,
+            15.826172828674316,
+            15.826172828674316
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-e483ad734f534735",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.4609375,
+          "metricInkHeights": [
+            16.21640968322754,
+            15.826172828674316,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-611d1619d0204f03",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.4609375,
+          "metricInkHeights": [
+            16.21640968322754,
+            15.826172828674316,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-62a4e35f5dd34379",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            2.3522462844848633,
+            16.14052963256836,
+            16.01045036315918,
+            16.140527725219727
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-c16060f0dd8c4294",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            2.3522462844848633,
+            19.793556213378906,
+            16.01045036315918,
+            16.140527725219727
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-b28e0a1c0ec24de1",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.125,
+          "metricInkHeights": [
+            16.14052963256836,
+            16.21640968322754,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.264999389648438
+        },
+        {
+          "scene": "holdout-12fbbe97bd42462a",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.125,
+          "metricInkHeights": [
+            16.14052963256836,
+            19.782716751098633,
+            19.793556213378906,
+            16.227249145507812
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-322f65a07b904b2c",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.04296875,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.264999389648438
+        },
+        {
+          "scene": "holdout-797024e8b61a4d76",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.04296875,
+            19.793556213378906
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-bcde7e784f5948a3",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.8125,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.01045036315918,
+            16.22724723815918,
+            16.14052963256836
+          ],
+          "siteInkHeight": 20.26500129699707
+        },
+        {
+          "scene": "holdout-128e23f45e95487e",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.8125,
+          "metricInkHeights": [
+            19.793556213378906,
+            16.01045036315918,
+            16.22724723815918,
+            16.14052963256836
+          ],
+          "siteInkHeight": 21.000001907348633
+        },
+        {
+          "scene": "holdout-6e155377c00d496b",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.26500129699707
+        },
+        {
+          "scene": "holdout-49d0fd4ac732442a",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            19.793556213378906,
+            16.22724723815918,
+            16.22724723815918,
+            19.793556213378906
+          ],
+          "siteInkHeight": 21.000001907348633
+        },
+        {
+          "scene": "holdout-d480e02b4feb4091",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.01045036315918,
+            16.01045036315918,
+            16.21640968322754
+          ],
+          "siteInkHeight": 21.231000900268555
+        },
+        {
+          "scene": "holdout-b36783dabcd8485c",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.227249145507812,
+            19.793556213378906,
+            19.793556213378906,
+            16.21640968322754
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-4cda57efb15343f4",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.1640625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754
+          ],
+          "siteInkHeight": 21.231000900268555
+        },
+        {
+          "scene": "holdout-50fc6f00c8354272",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.1640625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754
+          ],
+          "siteInkHeight": 16.170001983642578
+        }
+      ],
+      "failedScenes": 0,
+      "minGap": 4,
+      "reportedDisagreements": []
+    },
+    {
+      "id": "Q4-12",
+      "errors": [],
+      "trials": [
+        {
+          "scene": "holdout-5488714056844cf8",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.14052963256836,
+            16.22724723815918,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.097000122070312
+        },
+        {
+          "scene": "holdout-b44598cf4fc24976",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            19.793556213378906,
+            19.793556213378906,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 21
+        },
+        {
+          "scene": "holdout-6182d214ecf94b3d",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.097000122070312
+        },
+        {
+          "scene": "holdout-339963878da440d3",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754,
+            16.22724723815918
+          ],
+          "siteInkHeight": 21
+        },
+        {
+          "scene": "holdout-d53f4d9956e546ab",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.21640968322754,
+            16.14052963256836
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-ddb13ee496c749c9",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            19.793556213378906,
+            19.793556213378906,
+            16.21640968322754,
+            16.14052963256836
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-d7599b67b2e24a63",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.227249145507812,
+            15.826172828674316,
+            15.826172828674316
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-fef986604d9945a4",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.227249145507812,
+            15.826172828674316,
+            15.826172828674316
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-e483ad734f534735",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.4609375,
+          "metricInkHeights": [
+            16.21640968322754,
+            15.826172828674316,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-611d1619d0204f03",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.4609375,
+          "metricInkHeights": [
+            16.21640968322754,
+            15.826172828674316,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-62a4e35f5dd34379",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            2.3522462844848633,
+            16.14052963256836,
+            16.01045036315918,
+            16.140527725219727
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-c16060f0dd8c4294",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            2.3522462844848633,
+            19.793556213378906,
+            16.01045036315918,
+            16.140527725219727
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-b28e0a1c0ec24de1",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.125,
+          "metricInkHeights": [
+            16.14052963256836,
+            16.21640968322754,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.264999389648438
+        },
+        {
+          "scene": "holdout-12fbbe97bd42462a",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.125,
+          "metricInkHeights": [
+            16.14052963256836,
+            19.782716751098633,
+            19.793556213378906,
+            16.227249145507812
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-322f65a07b904b2c",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.04296875,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.264999389648438
+        },
+        {
+          "scene": "holdout-797024e8b61a4d76",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.04296875,
+            19.793556213378906
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-bcde7e784f5948a3",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.8125,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.01045036315918,
+            16.22724723815918,
+            16.14052963256836
+          ],
+          "siteInkHeight": 20.26500129699707
+        },
+        {
+          "scene": "holdout-128e23f45e95487e",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.8125,
+          "metricInkHeights": [
+            19.793556213378906,
+            16.01045036315918,
+            16.22724723815918,
+            16.14052963256836
+          ],
+          "siteInkHeight": 21.000001907348633
+        },
+        {
+          "scene": "holdout-6e155377c00d496b",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.26500129699707
+        },
+        {
+          "scene": "holdout-49d0fd4ac732442a",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            19.793556213378906,
+            16.22724723815918,
+            16.22724723815918,
+            19.793556213378906
+          ],
+          "siteInkHeight": 21.000001907348633
+        },
+        {
+          "scene": "holdout-d480e02b4feb4091",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.01045036315918,
+            16.01045036315918,
+            16.21640968322754
+          ],
+          "siteInkHeight": 21.231000900268555
+        },
+        {
+          "scene": "holdout-b36783dabcd8485c",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.227249145507812,
+            19.793556213378906,
+            19.793556213378906,
+            16.21640968322754
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-4cda57efb15343f4",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.1640625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754
+          ],
+          "siteInkHeight": 21.231000900268555
+        },
+        {
+          "scene": "holdout-50fc6f00c8354272",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.1640625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754
+          ],
+          "siteInkHeight": 16.170001983642578
+        }
+      ],
+      "failedScenes": 0,
+      "minGap": 4,
+      "reportedDisagreements": []
+    },
+    {
+      "id": "Q4-21",
+      "errors": [],
+      "trials": [
+        {
+          "scene": "holdout-5488714056844cf8",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.14052963256836,
+            16.22724723815918,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.097000122070312
+        },
+        {
+          "scene": "holdout-b44598cf4fc24976",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            19.793556213378906,
+            19.793556213378906,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 21
+        },
+        {
+          "scene": "holdout-6182d214ecf94b3d",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.097000122070312
+        },
+        {
+          "scene": "holdout-339963878da440d3",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754,
+            16.22724723815918
+          ],
+          "siteInkHeight": 21
+        },
+        {
+          "scene": "holdout-d53f4d9956e546ab",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.21640968322754,
+            16.14052963256836
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-ddb13ee496c749c9",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            19.793556213378906,
+            19.793556213378906,
+            16.21640968322754,
+            16.14052963256836
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-d7599b67b2e24a63",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.227249145507812,
+            15.826172828674316,
+            15.826172828674316
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-fef986604d9945a4",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.227249145507812,
+            15.826172828674316,
+            15.826172828674316
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-e483ad734f534735",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.4609375,
+          "metricInkHeights": [
+            16.21640968322754,
+            15.826172828674316,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-611d1619d0204f03",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.4609375,
+          "metricInkHeights": [
+            16.21640968322754,
+            15.826172828674316,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-62a4e35f5dd34379",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            2.3522462844848633,
+            16.14052963256836,
+            16.01045036315918,
+            16.140527725219727
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-c16060f0dd8c4294",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            2.3522462844848633,
+            19.793556213378906,
+            16.01045036315918,
+            16.140527725219727
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-b28e0a1c0ec24de1",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.125,
+          "metricInkHeights": [
+            16.14052963256836,
+            16.21640968322754,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.264999389648438
+        },
+        {
+          "scene": "holdout-12fbbe97bd42462a",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.125,
+          "metricInkHeights": [
+            16.14052963256836,
+            19.782716751098633,
+            19.793556213378906,
+            16.227249145507812
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-322f65a07b904b2c",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.04296875,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.264999389648438
+        },
+        {
+          "scene": "holdout-797024e8b61a4d76",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.04296875,
+            19.793556213378906
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-bcde7e784f5948a3",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.8125,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.01045036315918,
+            16.22724723815918,
+            16.14052963256836
+          ],
+          "siteInkHeight": 20.26500129699707
+        },
+        {
+          "scene": "holdout-128e23f45e95487e",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.8125,
+          "metricInkHeights": [
+            19.793556213378906,
+            16.01045036315918,
+            16.22724723815918,
+            16.14052963256836
+          ],
+          "siteInkHeight": 21.000001907348633
+        },
+        {
+          "scene": "holdout-6e155377c00d496b",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.26500129699707
+        },
+        {
+          "scene": "holdout-49d0fd4ac732442a",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            19.793556213378906,
+            16.22724723815918,
+            16.22724723815918,
+            19.793556213378906
+          ],
+          "siteInkHeight": 21.000001907348633
+        },
+        {
+          "scene": "holdout-d480e02b4feb4091",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.01045036315918,
+            16.01045036315918,
+            16.21640968322754
+          ],
+          "siteInkHeight": 21.231000900268555
+        },
+        {
+          "scene": "holdout-b36783dabcd8485c",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.227249145507812,
+            19.793556213378906,
+            19.793556213378906,
+            16.21640968322754
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-4cda57efb15343f4",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.1640625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754
+          ],
+          "siteInkHeight": 21.231000900268555
+        },
+        {
+          "scene": "holdout-50fc6f00c8354272",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.1640625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754
+          ],
+          "siteInkHeight": 16.170001983642578
+        }
+      ],
+      "failedScenes": 0,
+      "minGap": 4,
+      "reportedDisagreements": []
+    },
+    {
+      "id": "Q4-22",
+      "errors": [],
+      "trials": [
+        {
+          "scene": "holdout-5488714056844cf8",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.14052963256836,
+            16.22724723815918,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.097000122070312
+        },
+        {
+          "scene": "holdout-b44598cf4fc24976",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            19.793556213378906,
+            19.793556213378906,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 21
+        },
+        {
+          "scene": "holdout-6182d214ecf94b3d",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.097000122070312
+        },
+        {
+          "scene": "holdout-339963878da440d3",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754,
+            16.22724723815918
+          ],
+          "siteInkHeight": 21
+        },
+        {
+          "scene": "holdout-d53f4d9956e546ab",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.21640968322754,
+            16.14052963256836
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-ddb13ee496c749c9",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            19.793556213378906,
+            19.793556213378906,
+            16.21640968322754,
+            16.14052963256836
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-d7599b67b2e24a63",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.227249145507812,
+            15.826172828674316,
+            15.826172828674316
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-fef986604d9945a4",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.227249145507812,
+            15.826172828674316,
+            15.826172828674316
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-e483ad734f534735",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.4609375,
+          "metricInkHeights": [
+            16.21640968322754,
+            15.826172828674316,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-611d1619d0204f03",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.4609375,
+          "metricInkHeights": [
+            16.21640968322754,
+            15.826172828674316,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-62a4e35f5dd34379",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            2.3522462844848633,
+            16.14052963256836,
+            16.01045036315918,
+            16.140527725219727
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-c16060f0dd8c4294",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            2.3522462844848633,
+            19.793556213378906,
+            16.01045036315918,
+            16.140527725219727
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-b28e0a1c0ec24de1",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.125,
+          "metricInkHeights": [
+            16.14052963256836,
+            16.21640968322754,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.264999389648438
+        },
+        {
+          "scene": "holdout-12fbbe97bd42462a",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.125,
+          "metricInkHeights": [
+            16.14052963256836,
+            19.782716751098633,
+            19.793556213378906,
+            16.227249145507812
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-322f65a07b904b2c",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.04296875,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.264999389648438
+        },
+        {
+          "scene": "holdout-797024e8b61a4d76",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.04296875,
+            19.793556213378906
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-bcde7e784f5948a3",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.8125,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.01045036315918,
+            16.22724723815918,
+            16.14052963256836
+          ],
+          "siteInkHeight": 20.26500129699707
+        },
+        {
+          "scene": "holdout-128e23f45e95487e",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.8125,
+          "metricInkHeights": [
+            19.793556213378906,
+            16.01045036315918,
+            16.22724723815918,
+            16.14052963256836
+          ],
+          "siteInkHeight": 21.000001907348633
+        },
+        {
+          "scene": "holdout-6e155377c00d496b",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.26500129699707
+        },
+        {
+          "scene": "holdout-49d0fd4ac732442a",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            19.793556213378906,
+            16.22724723815918,
+            16.22724723815918,
+            19.793556213378906
+          ],
+          "siteInkHeight": 21.000001907348633
+        },
+        {
+          "scene": "holdout-d480e02b4feb4091",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.01045036315918,
+            16.01045036315918,
+            16.21640968322754
+          ],
+          "siteInkHeight": 21.231000900268555
+        },
+        {
+          "scene": "holdout-b36783dabcd8485c",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.227249145507812,
+            19.793556213378906,
+            19.793556213378906,
+            16.21640968322754
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-4cda57efb15343f4",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.1640625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754
+          ],
+          "siteInkHeight": 21.231000900268555
+        },
+        {
+          "scene": "holdout-50fc6f00c8354272",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.1640625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754
+          ],
+          "siteInkHeight": 16.170001983642578
+        }
+      ],
+      "failedScenes": 0,
+      "minGap": 4,
+      "reportedDisagreements": []
+    },
+    {
+      "id": "Q4-31",
+      "errors": [],
+      "trials": [
+        {
+          "scene": "holdout-5488714056844cf8",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.14052963256836,
+            16.22724723815918,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.097000122070312
+        },
+        {
+          "scene": "holdout-b44598cf4fc24976",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            19.793556213378906,
+            19.793556213378906,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 21
+        },
+        {
+          "scene": "holdout-6182d214ecf94b3d",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.097000122070312
+        },
+        {
+          "scene": "holdout-339963878da440d3",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754,
+            16.22724723815918
+          ],
+          "siteInkHeight": 21
+        },
+        {
+          "scene": "holdout-d53f4d9956e546ab",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.21640968322754,
+            16.14052963256836
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-ddb13ee496c749c9",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            19.793556213378906,
+            19.793556213378906,
+            16.21640968322754,
+            16.14052963256836
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-d7599b67b2e24a63",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.227249145507812,
+            15.826172828674316,
+            15.826172828674316
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-fef986604d9945a4",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.227249145507812,
+            15.826172828674316,
+            15.826172828674316
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-e483ad734f534735",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.4609375,
+          "metricInkHeights": [
+            16.21640968322754,
+            15.826172828674316,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-611d1619d0204f03",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.4609375,
+          "metricInkHeights": [
+            16.21640968322754,
+            15.826172828674316,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-62a4e35f5dd34379",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            2.3522462844848633,
+            16.14052963256836,
+            16.01045036315918,
+            16.140527725219727
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-c16060f0dd8c4294",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            2.3522462844848633,
+            19.793556213378906,
+            16.01045036315918,
+            16.140527725219727
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-b28e0a1c0ec24de1",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.125,
+          "metricInkHeights": [
+            16.14052963256836,
+            16.21640968322754,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.264999389648438
+        },
+        {
+          "scene": "holdout-12fbbe97bd42462a",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.125,
+          "metricInkHeights": [
+            16.14052963256836,
+            19.782716751098633,
+            19.793556213378906,
+            16.227249145507812
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-322f65a07b904b2c",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.04296875,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.264999389648438
+        },
+        {
+          "scene": "holdout-797024e8b61a4d76",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.04296875,
+            19.793556213378906
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-bcde7e784f5948a3",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.8125,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.01045036315918,
+            16.22724723815918,
+            16.14052963256836
+          ],
+          "siteInkHeight": 20.26500129699707
+        },
+        {
+          "scene": "holdout-128e23f45e95487e",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.8125,
+          "metricInkHeights": [
+            19.793556213378906,
+            16.01045036315918,
+            16.22724723815918,
+            16.14052963256836
+          ],
+          "siteInkHeight": 21.000001907348633
+        },
+        {
+          "scene": "holdout-6e155377c00d496b",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.26500129699707
+        },
+        {
+          "scene": "holdout-49d0fd4ac732442a",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            19.793556213378906,
+            16.22724723815918,
+            16.22724723815918,
+            19.793556213378906
+          ],
+          "siteInkHeight": 21.000001907348633
+        },
+        {
+          "scene": "holdout-d480e02b4feb4091",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.01045036315918,
+            16.01045036315918,
+            16.21640968322754
+          ],
+          "siteInkHeight": 21.231000900268555
+        },
+        {
+          "scene": "holdout-b36783dabcd8485c",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.227249145507812,
+            19.793556213378906,
+            19.793556213378906,
+            16.21640968322754
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-4cda57efb15343f4",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.1640625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754
+          ],
+          "siteInkHeight": 21.231000900268555
+        },
+        {
+          "scene": "holdout-50fc6f00c8354272",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.1640625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754
+          ],
+          "siteInkHeight": 16.170001983642578
+        }
+      ],
+      "failedScenes": 0,
+      "minGap": 4,
+      "reportedDisagreements": []
+    },
+    {
+      "id": "Q4-32",
+      "errors": [],
+      "trials": [
+        {
+          "scene": "holdout-5488714056844cf8",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.14052963256836,
+            16.22724723815918,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.097000122070312
+        },
+        {
+          "scene": "holdout-b44598cf4fc24976",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            19.793556213378906,
+            19.793556213378906,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 21
+        },
+        {
+          "scene": "holdout-6182d214ecf94b3d",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.097000122070312
+        },
+        {
+          "scene": "holdout-339963878da440d3",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754,
+            16.22724723815918
+          ],
+          "siteInkHeight": 21
+        },
+        {
+          "scene": "holdout-d53f4d9956e546ab",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.21640968322754,
+            16.14052963256836
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-ddb13ee496c749c9",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            19.793556213378906,
+            19.793556213378906,
+            16.21640968322754,
+            16.14052963256836
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-d7599b67b2e24a63",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.227249145507812,
+            15.826172828674316,
+            15.826172828674316
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-fef986604d9945a4",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.227249145507812,
+            15.826172828674316,
+            15.826172828674316
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-e483ad734f534735",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.4609375,
+          "metricInkHeights": [
+            16.21640968322754,
+            15.826172828674316,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-611d1619d0204f03",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.4609375,
+          "metricInkHeights": [
+            16.21640968322754,
+            15.826172828674316,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-62a4e35f5dd34379",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            2.3522462844848633,
+            16.14052963256836,
+            16.01045036315918,
+            16.140527725219727
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-c16060f0dd8c4294",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            2.3522462844848633,
+            19.793556213378906,
+            16.01045036315918,
+            16.140527725219727
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-b28e0a1c0ec24de1",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.125,
+          "metricInkHeights": [
+            16.14052963256836,
+            16.21640968322754,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.264999389648438
+        },
+        {
+          "scene": "holdout-12fbbe97bd42462a",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.125,
+          "metricInkHeights": [
+            16.14052963256836,
+            19.782716751098633,
+            19.793556213378906,
+            16.227249145507812
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-322f65a07b904b2c",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.04296875,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.264999389648438
+        },
+        {
+          "scene": "holdout-797024e8b61a4d76",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.04296875,
+            19.793556213378906
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-bcde7e784f5948a3",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.8125,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.01045036315918,
+            16.22724723815918,
+            16.14052963256836
+          ],
+          "siteInkHeight": 20.26500129699707
+        },
+        {
+          "scene": "holdout-128e23f45e95487e",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.8125,
+          "metricInkHeights": [
+            19.793556213378906,
+            16.01045036315918,
+            16.22724723815918,
+            16.14052963256836
+          ],
+          "siteInkHeight": 21.000001907348633
+        },
+        {
+          "scene": "holdout-6e155377c00d496b",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.26500129699707
+        },
+        {
+          "scene": "holdout-49d0fd4ac732442a",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            19.793556213378906,
+            16.22724723815918,
+            16.22724723815918,
+            19.793556213378906
+          ],
+          "siteInkHeight": 21.000001907348633
+        },
+        {
+          "scene": "holdout-d480e02b4feb4091",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.01045036315918,
+            16.01045036315918,
+            16.21640968322754
+          ],
+          "siteInkHeight": 21.231000900268555
+        },
+        {
+          "scene": "holdout-b36783dabcd8485c",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.227249145507812,
+            19.793556213378906,
+            19.793556213378906,
+            16.21640968322754
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-4cda57efb15343f4",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.1640625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754
+          ],
+          "siteInkHeight": 21.231000900268555
+        },
+        {
+          "scene": "holdout-50fc6f00c8354272",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.1640625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754
+          ],
+          "siteInkHeight": 16.170001983642578
+        }
+      ],
+      "failedScenes": 0,
+      "minGap": 4,
+      "reportedDisagreements": []
+    },
+    {
+      "id": "Q4-33",
+      "errors": [],
+      "trials": [
+        {
+          "scene": "holdout-5488714056844cf8",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.14052963256836,
+            16.22724723815918,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.097000122070312
+        },
+        {
+          "scene": "holdout-b44598cf4fc24976",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            19.793556213378906,
+            19.793556213378906,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 21
+        },
+        {
+          "scene": "holdout-6182d214ecf94b3d",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.097000122070312
+        },
+        {
+          "scene": "holdout-339963878da440d3",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754,
+            16.22724723815918
+          ],
+          "siteInkHeight": 21
+        },
+        {
+          "scene": "holdout-d53f4d9956e546ab",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.21640968322754,
+            16.14052963256836
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-ddb13ee496c749c9",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            19.793556213378906,
+            19.793556213378906,
+            16.21640968322754,
+            16.14052963256836
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-d7599b67b2e24a63",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.227249145507812,
+            15.826172828674316,
+            15.826172828674316
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-fef986604d9945a4",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.227249145507812,
+            15.826172828674316,
+            15.826172828674316
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-e483ad734f534735",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.4609375,
+          "metricInkHeights": [
+            16.21640968322754,
+            15.826172828674316,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-611d1619d0204f03",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.4609375,
+          "metricInkHeights": [
+            16.21640968322754,
+            15.826172828674316,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-62a4e35f5dd34379",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            2.3522462844848633,
+            16.14052963256836,
+            16.01045036315918,
+            16.140527725219727
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-c16060f0dd8c4294",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            2.3522462844848633,
+            19.793556213378906,
+            16.01045036315918,
+            16.140527725219727
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-b28e0a1c0ec24de1",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.125,
+          "metricInkHeights": [
+            16.14052963256836,
+            16.21640968322754,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.264999389648438
+        },
+        {
+          "scene": "holdout-12fbbe97bd42462a",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.125,
+          "metricInkHeights": [
+            16.14052963256836,
+            19.782716751098633,
+            19.793556213378906,
+            16.227249145507812
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-322f65a07b904b2c",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.04296875,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.264999389648438
+        },
+        {
+          "scene": "holdout-797024e8b61a4d76",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.04296875,
+            19.793556213378906
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-bcde7e784f5948a3",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.8125,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.01045036315918,
+            16.22724723815918,
+            16.14052963256836
+          ],
+          "siteInkHeight": 20.26500129699707
+        },
+        {
+          "scene": "holdout-128e23f45e95487e",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.8125,
+          "metricInkHeights": [
+            19.793556213378906,
+            16.01045036315918,
+            16.22724723815918,
+            16.14052963256836
+          ],
+          "siteInkHeight": 21.000001907348633
+        },
+        {
+          "scene": "holdout-6e155377c00d496b",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.26500129699707
+        },
+        {
+          "scene": "holdout-49d0fd4ac732442a",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            19.793556213378906,
+            16.22724723815918,
+            16.22724723815918,
+            19.793556213378906
+          ],
+          "siteInkHeight": 21.000001907348633
+        },
+        {
+          "scene": "holdout-d480e02b4feb4091",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.01045036315918,
+            16.01045036315918,
+            16.21640968322754
+          ],
+          "siteInkHeight": 21.231000900268555
+        },
+        {
+          "scene": "holdout-b36783dabcd8485c",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.227249145507812,
+            19.793556213378906,
+            19.793556213378906,
+            16.21640968322754
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-4cda57efb15343f4",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.1640625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754
+          ],
+          "siteInkHeight": 21.231000900268555
+        },
+        {
+          "scene": "holdout-50fc6f00c8354272",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.1640625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754
+          ],
+          "siteInkHeight": 16.170001983642578
+        }
+      ],
+      "failedScenes": 0,
+      "minGap": 4,
+      "reportedDisagreements": []
+    },
+    {
+      "id": "Q4-34",
+      "errors": [],
+      "trials": [
+        {
+          "scene": "holdout-5488714056844cf8",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.14052963256836,
+            16.22724723815918,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.097000122070312
+        },
+        {
+          "scene": "holdout-b44598cf4fc24976",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            19.793556213378906,
+            19.793556213378906,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 21
+        },
+        {
+          "scene": "holdout-6182d214ecf94b3d",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.097000122070312
+        },
+        {
+          "scene": "holdout-339963878da440d3",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754,
+            16.22724723815918
+          ],
+          "siteInkHeight": 21
+        },
+        {
+          "scene": "holdout-d53f4d9956e546ab",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.21640968322754,
+            16.14052963256836
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-ddb13ee496c749c9",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            19.793556213378906,
+            19.793556213378906,
+            16.21640968322754,
+            16.14052963256836
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-d7599b67b2e24a63",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.227249145507812,
+            15.826172828674316,
+            15.826172828674316
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-fef986604d9945a4",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.227249145507812,
+            15.826172828674316,
+            15.826172828674316
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-e483ad734f534735",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.4609375,
+          "metricInkHeights": [
+            16.21640968322754,
+            15.826172828674316,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-611d1619d0204f03",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.4609375,
+          "metricInkHeights": [
+            16.21640968322754,
+            15.826172828674316,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-62a4e35f5dd34379",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            2.3522462844848633,
+            16.14052963256836,
+            16.01045036315918,
+            16.140527725219727
+          ],
+          "siteInkHeight": 20.034000396728516
+        },
+        {
+          "scene": "holdout-c16060f0dd8c4294",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            2.3522462844848633,
+            19.793556213378906,
+            16.01045036315918,
+            16.140527725219727
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-b28e0a1c0ec24de1",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.125,
+          "metricInkHeights": [
+            16.14052963256836,
+            16.21640968322754,
+            16.14052963256836,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.264999389648438
+        },
+        {
+          "scene": "holdout-12fbbe97bd42462a",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.125,
+          "metricInkHeights": [
+            16.14052963256836,
+            19.782716751098633,
+            19.793556213378906,
+            16.227249145507812
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-322f65a07b904b2c",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.04296875,
+            16.227249145507812
+          ],
+          "siteInkHeight": 20.264999389648438
+        },
+        {
+          "scene": "holdout-797024e8b61a4d76",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4375,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.04296875,
+            19.793556213378906
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-bcde7e784f5948a3",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.8125,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.01045036315918,
+            16.22724723815918,
+            16.14052963256836
+          ],
+          "siteInkHeight": 20.26500129699707
+        },
+        {
+          "scene": "holdout-128e23f45e95487e",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 57.8125,
+          "metricInkHeights": [
+            19.793556213378906,
+            16.01045036315918,
+            16.22724723815918,
+            16.14052963256836
+          ],
+          "siteInkHeight": 21.000001907348633
+        },
+        {
+          "scene": "holdout-6e155377c00d496b",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.22724723815918,
+            16.22724723815918,
+            16.22724723815918,
+            16.22724723815918
+          ],
+          "siteInkHeight": 20.26500129699707
+        },
+        {
+          "scene": "holdout-49d0fd4ac732442a",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            19.793556213378906,
+            16.22724723815918,
+            16.22724723815918,
+            19.793556213378906
+          ],
+          "siteInkHeight": 21.000001907348633
+        },
+        {
+          "scene": "holdout-d480e02b4feb4091",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.01045036315918,
+            16.01045036315918,
+            16.21640968322754
+          ],
+          "siteInkHeight": 21.231000900268555
+        },
+        {
+          "scene": "holdout-b36783dabcd8485c",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.4765625,
+          "metricInkHeights": [
+            16.227249145507812,
+            19.793556213378906,
+            19.793556213378906,
+            16.21640968322754
+          ],
+          "siteInkHeight": 16.170001983642578
+        },
+        {
+          "scene": "holdout-4cda57efb15343f4",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.1640625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754
+          ],
+          "siteInkHeight": 21.231000900268555
+        },
+        {
+          "scene": "holdout-50fc6f00c8354272",
+          "failures": [],
+          "reportedFailures": [],
+          "minGap": 4,
+          "clockInkHeight": 58.1640625,
+          "metricInkHeights": [
+            16.227249145507812,
+            16.21640968322754,
+            16.21640968322754,
+            16.21640968322754
+          ],
+          "siteInkHeight": 16.170001983642578
+        }
+      ],
+      "failedScenes": 0,
+      "minGap": 4,
+      "reportedDisagreements": []
+    }
+  ],
+  "trainingRegression": [
+    {
+      "id": "Q4-11",
+      "trials": 16,
+      "failedScenes": 0,
+      "failures": []
+    },
+    {
+      "id": "Q4-12",
+      "trials": 16,
+      "failedScenes": 0,
+      "failures": []
+    },
+    {
+      "id": "Q4-21",
+      "trials": 16,
+      "failedScenes": 0,
+      "failures": []
+    },
+    {
+      "id": "Q4-22",
+      "trials": 16,
+      "failedScenes": 0,
+      "failures": []
+    },
+    {
+      "id": "Q4-31",
+      "trials": 16,
+      "failedScenes": 0,
+      "failures": []
+    },
+    {
+      "id": "Q4-32",
+      "trials": 16,
+      "failedScenes": 0,
+      "failures": []
+    },
+    {
+      "id": "Q4-33",
+      "trials": 16,
+      "failedScenes": 0,
+      "failures": []
+    },
+    {
+      "id": "Q4-34",
+      "trials": 16,
+      "failedScenes": 0,
+      "failures": []
+    }
+  ],
+  "errors": []
+}

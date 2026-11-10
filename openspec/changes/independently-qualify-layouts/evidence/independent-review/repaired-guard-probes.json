@@ -1,0 +1,41 @@
+{
+  "source": "/tmp/spacefox-round2-independent-holdout/frozen-current-source/prototype/qualification/core.js",
+  "results": [
+    {
+      "counterexample": "nonfinite-marker-contrast",
+      "evaluationFailures": [
+        "marker:contrast"
+      ],
+      "singleTrialQualification": {
+        "passed": false,
+        "errors": [
+          "bad observation"
+        ]
+      }
+    },
+    {
+      "counterexample": "absent-clock-ink-lines",
+      "evaluationFailures": [
+        "missing-lines:time"
+      ],
+      "singleTrialQualification": {
+        "passed": false,
+        "errors": [
+          "bad observation"
+        ]
+      }
+    },
+    {
+      "counterexample": "missing-physical-badge",
+      "evaluationFailures": [
+        "flag:rescheduled"
+      ],
+      "singleTrialQualification": {
+        "passed": false,
+        "errors": [
+          "bad observation"
+        ]
+      }
+    }
+  ]
+}

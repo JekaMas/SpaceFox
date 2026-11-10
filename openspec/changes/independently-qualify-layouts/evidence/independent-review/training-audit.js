@@ -1,0 +1,7 @@
+/* MIT. Compare retained author scenes; this is not the independent holdout. */
+'use strict';
+const fs=require('fs'),path=require('path'),{verifyRecord}=require('./independent-audit.js');
+const campaign=JSON.parse(fs.readFileSync(process.argv[2],'utf8')),generation=campaign.generations.find(g=>g.generation===4),training=new Map(campaign.training.map(s=>[s.id,s])),selected=process.argv.slice(4);
+const asExpected=s=>({requiredDisplay:{time:s.clock,rocket:s.fixture.rocket.displayLabel,operator:s.fixture.operator.displayLabel,purpose:s.fixture.purpose.displayLabel,site:s.fixture.site.displayLabel,countdown:s.countdown.displayLabel},slots:s.fields.map((f,i)=>({slot:i,role:f.role,displayLabel:f.displayLabel})),indicators:{exclamation:s.flags.rescheduled,cloudOff:s.flags.stale,uncertaintyLabel:!s.flags.timeKnown},pointExpected:!!s.fixture.point});
+const results=generation.candidates.filter(c=>!selected.length||selected.includes(c.id)).map(candidate=>{const rows=generation.records.filter(r=>r.candidate===candidate.id&&training.has(r.scene)),trials=rows.map(r=>verifyRecord(r,asExpected(training.get(r.scene))));return {id:candidate.id,trials:trials.length,failedScenes:trials.filter(t=>t.failures.length).length,failures:trials.filter(t=>t.failures.length)};});
+fs.writeFileSync(process.argv[3],JSON.stringify({method:'Independent raw-observation audit against retained author inputs, not a fresh holdout',results},null,2)+'\n');console.log(JSON.stringify(results));

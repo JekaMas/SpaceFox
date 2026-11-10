@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "change": "independently-qualify-layouts",
+  "scope": {
+    "property_ids": [
+      "R1.P1",
+      "R2.P1",
+      "R3.P1",
+      "R4.P1",
+      "R5.P1"
+    ],
+    "test_ids": [
+      "unittest::tests.test_layout_qualification.QualificationTest.test_semantic_positive",
+      "unittest::tests.test_layout_qualification.QualificationTest.test_semantic_negative",
+      "unittest::tests.test_layout_qualification.QualificationTest.test_evolution_positive",
+      "unittest::tests.test_layout_qualification.QualificationTest.test_evolution_negative",
+      "unittest::tests.test_layout_qualification.QualificationTest.test_detector_positive",
+      "unittest::tests.test_layout_qualification.QualificationTest.test_detector_negative",
+      "unittest::tests.test_layout_qualification.QualificationTest.test_qualification_positive",
+      "unittest::tests.test_layout_qualification.QualificationTest.test_qualification_negative",
+      "unittest::tests.test_layout_qualification.QualificationTest.test_aod_positive",
+      "unittest::tests.test_layout_qualification.QualificationTest.test_aod_negative",
+      "unittest::tests.test_layout_research.ResearchTest.test_detector_positive",
+      "unittest::tests.test_layout_research.ResearchTest.test_detector_negative",
+      "unittest::tests.test_layout_research.ResearchTest.test_qualification_positive",
+      "unittest::tests.test_layout_research.ResearchTest.test_qualification_negative"
+    ]
+  },
+  "reviews": [
+    {
+      "id": "D1",
+      "question": "Independent review, full semantic benchmark and sealed holdout qualification",
+      "property_ids": [
+        "R1.P1",
+        "R2.P1",
+        "R3.P1",
+        "R4.P1",
+        "R5.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_layout_qualification.QualificationTest.test_semantic_positive",
+        "unittest::tests.test_layout_qualification.QualificationTest.test_semantic_negative",
+        "unittest::tests.test_layout_qualification.QualificationTest.test_evolution_positive",
+        "unittest::tests.test_layout_qualification.QualificationTest.test_evolution_negative",
+        "unittest::tests.test_layout_qualification.QualificationTest.test_detector_positive",
+        "unittest::tests.test_layout_qualification.QualificationTest.test_detector_negative",
+        "unittest::tests.test_layout_qualification.QualificationTest.test_qualification_positive",
+        "unittest::tests.test_layout_qualification.QualificationTest.test_qualification_negative",
+        "unittest::tests.test_layout_qualification.QualificationTest.test_aod_positive",
+        "unittest::tests.test_layout_qualification.QualificationTest.test_aod_negative",
+        "unittest::tests.test_layout_research.ResearchTest.test_detector_positive",
+        "unittest::tests.test_layout_research.ResearchTest.test_detector_negative",
+        "unittest::tests.test_layout_research.ResearchTest.test_qualification_positive",
+        "unittest::tests.test_layout_research.ResearchTest.test_qualification_negative"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read prototype/layouts.js, launch-examples.json, layout-rocket.css, tools/build_preview.py and existing watchface delta.",
+          "outcome": "Current gallery owns eight fixed stacks; canonical examples/artwork can be reused; new browser experiment owner is appropriate.",
+          "results": [
+            {
+              "path": "prototype/layouts.js",
+              "line": 6,
+              "classification": "interface_dependency",
+              "reason": "Baseline H/C/E parameters and geographic projection."
+            },
+            {
+              "path": "prototype/launch-examples.json",
+              "line": 1,
+              "classification": "interface_dependency",
+              "reason": "Canonical launch/site fixtures."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "New research laboratory ownership",
+          "reason": "Exact existing dependencies are known; all new owner paths are explicitly planned. No unfamiliar subsystem discovery is needed.",
+          "outcome": "No semantic evidence claimed.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "unavailable",
+          "query": "SpaceFox research references",
+          "reason": "No matching JetBrains-index capability is exposed for this checkout in this session.",
+          "outcome": "No IDE evidence claimed.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "New qualification owner with known original renderer/measurement dependencies; preserve historical results."
+    }
+  ]
+}

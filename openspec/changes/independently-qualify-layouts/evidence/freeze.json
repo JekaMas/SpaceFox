@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "frozenBeforeHoldout": true,
+  "candidateIds": [
+    "Q3-11",
+    "Q3-21",
+    "Q3-31"
+  ],
+  "sourceSha256": {
+    "prototype/qualification/core.js": "c9bc6c4ac042c038cd900b661842c2b0dc3ebe77937e5a55343052f0c867ca4a",
+    "prototype/qualification/renderer.js": "2fed556999f5875b800f1e028f4195d62d46bddaf6ffaa612cb25e0ca0e6f2cd",
+    "prototype/qualification/lab.js": "f02c8f8421505318f7a78831da1bb271ea58acce5258fe3c93313136028212cb",
+    "prototype/qualification/style.css": "c4b4c3c5179030c9de671dbc8f5805ac915a2441bb7007c1365bf9868e7d6030",
+    "prototype/qualification/index.html": "62b4af6ece868e81fac48de9e6aff21ee9712dccfc8bb38975a9f4b5375c2718",
+    "prototype/layout-data.js": "fa3cfd312d89414752c43e20e1bee903e70c6c7cc120973215af67c306da7ec1",
+    "prototype/fonts/RobotoCondensed-latin-600.woff2": "bc8afff05ba2d847e9c93afd5f13a1fe3b4e785facbffdfd09abd775df8564ff",
+    "prototype/fonts/NotoSans-cyrillic-500.woff2": "1376c49e5a162f8d23a35c62d085d03e0a6a8cd363e7a1bb45da80b518153cd5",
+    "prototype/fonts/NotoSans-latin-500.woff2": "f857d092bc3adc4cc6c5e14475248093d18184e474cc2ad98b2cd57d0ff41eb1",
+    "prototype/vendor/d3-7.9.0.min.js": "f2094bbf6141b359722c4fe454eb6c4b0f0e42cc10cc7af921fc158fceb86539",
+    "prototype/vendor/topojson-client-3.1.0.min.js": "25cd02ae486cc5063e0215a4e4cfb15de83700c87ac48bac4d57dc6aaf3ebb89"
+  },
+  "trainingSceneIds": [
+    "author-1-ru",
+    "author-1-en",
+    "author-2-ru",
+    "author-2-en",
+    "author-3-ru",
+    "author-3-en",
+    "author-4-ru",
+    "author-4-en",
+    "author-5-ru",
+    "author-5-en",
+    "author-6-ru",
+    "author-6-en",
+    "author-7-ru",
+    "author-7-en",
+    "author-8-ru",
+    "author-8-en"
+  ],
+  "generationSizes": [
+    48,
+    24,
+    12
+  ],
+  "trainingCampaignSha256": "57ba15f02974a075c3b9ac761bd6de9ac985739d7534d12b513f514f805d3be7",
+  "note": "Independent holdout input and oracle not yet read by author. Any subsequent production repair requires a new freeze and retained first-attempt results."
+}

@@ -1,0 +1,1440 @@
+{
+  "schemaVersion": 1,
+  "synthetic": true,
+  "scenes": [
+    {
+      "id": "holdout-5488714056844cf8",
+      "language": "ru",
+      "status": "scheduled",
+      "flags": {
+        "rescheduled": false,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "00:00",
+      "fixture": {
+        "rocket": {
+          "full": "Falcon 9 Block 5",
+          "displayLabel": "Falcon 9 Block 5"
+        },
+        "operator": {
+          "full": "SpaceX",
+          "displayLabel": "SpaceX"
+        },
+        "purpose": {
+          "full": "Доставка научного аппарата",
+          "displayLabel": "Доставка научного аппарата"
+        },
+        "site": {
+          "full": "Тест Полюс · Мыс Аврора",
+          "displayLabel": "Тест Полюс · Мыс Аврора"
+        },
+        "point": [
+          160.0,
+          82.0
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 3346920,
+        "displayLabel": "T−38д 17ч 42м"
+      },
+      "fields": [
+        {
+          "role": "steps",
+          "value": 99999,
+          "displayLabel": "99 999"
+        },
+        {
+          "role": "calories",
+          "value": 88888,
+          "displayLabel": "88 888"
+        },
+        {
+          "role": "heart",
+          "value": 199,
+          "displayLabel": "199"
+        },
+        {
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        }
+      ]
+    },
+    {
+      "id": "holdout-b44598cf4fc24976",
+      "language": "en",
+      "status": "scheduled",
+      "flags": {
+        "rescheduled": false,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "00:00",
+      "fixture": {
+        "rocket": {
+          "full": "Falcon 9 Block 5",
+          "displayLabel": "Falcon 9 Block 5"
+        },
+        "operator": {
+          "full": "SpaceX",
+          "displayLabel": "SpaceX"
+        },
+        "purpose": {
+          "full": "Science spacecraft delivery",
+          "displayLabel": "Science spacecraft delivery"
+        },
+        "site": {
+          "full": "Test Polar · Aurora Cape",
+          "displayLabel": "Test Polar · Aurora Cape"
+        },
+        "point": [
+          160.0,
+          82.0
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 3346920,
+        "displayLabel": "T−38d 17h 42m"
+      },
+      "fields": [
+        {
+          "role": "steps",
+          "value": 99999,
+          "displayLabel": "99,999"
+        },
+        {
+          "role": "calories",
+          "value": 88888,
+          "displayLabel": "88,888"
+        },
+        {
+          "role": "heart",
+          "value": 199,
+          "displayLabel": "199"
+        },
+        {
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        }
+      ]
+    },
+    {
+      "id": "holdout-6182d214ecf94b3d",
+      "language": "ru",
+      "status": "changed",
+      "flags": {
+        "rescheduled": true,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "23:59",
+      "fixture": {
+        "rocket": {
+          "full": "Electron",
+          "displayLabel": "Electron"
+        },
+        "operator": {
+          "full": "Rocket Lab",
+          "displayLabel": "Rocket Lab"
+        },
+        "purpose": {
+          "full": "Карта радиационного фона",
+          "displayLabel": "Карта радиационного фона"
+        },
+        "site": {
+          "full": "Тест Полюс · Мыс Аврора",
+          "displayLabel": "Тест Полюс · Мыс Аврора"
+        },
+        "point": [
+          160.0,
+          82.0
+        ],
+        "model": "electron"
+      },
+      "countdown": {
+        "seconds": 255600,
+        "displayLabel": "T−2д 23ч"
+      },
+      "fields": [
+        {
+          "role": "energy",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "role": "heart",
+          "value": 40,
+          "displayLabel": "40"
+        },
+        {
+          "role": "stress",
+          "value": 0,
+          "displayLabel": "0"
+        },
+        {
+          "role": "battery",
+          "value": 1,
+          "displayLabel": "1%"
+        }
+      ]
+    },
+    {
+      "id": "holdout-339963878da440d3",
+      "language": "en",
+      "status": "changed",
+      "flags": {
+        "rescheduled": true,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "23:59",
+      "fixture": {
+        "rocket": {
+          "full": "Electron",
+          "displayLabel": "Electron"
+        },
+        "operator": {
+          "full": "Rocket Lab",
+          "displayLabel": "Rocket Lab"
+        },
+        "purpose": {
+          "full": "Radiation environment mapping",
+          "displayLabel": "Radiation environment mapping"
+        },
+        "site": {
+          "full": "Test Polar · Aurora Cape",
+          "displayLabel": "Test Polar · Aurora Cape"
+        },
+        "point": [
+          160.0,
+          82.0
+        ],
+        "model": "electron"
+      },
+      "countdown": {
+        "seconds": 255600,
+        "displayLabel": "T−2d 23h"
+      },
+      "fields": [
+        {
+          "role": "energy",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "role": "heart",
+          "value": 40,
+          "displayLabel": "40"
+        },
+        {
+          "role": "stress",
+          "value": 0,
+          "displayLabel": "0"
+        },
+        {
+          "role": "battery",
+          "value": 1,
+          "displayLabel": "1%"
+        }
+      ]
+    },
+    {
+      "id": "holdout-d53f4d9956e546ab",
+      "language": "ru",
+      "status": "stale",
+      "flags": {
+        "rescheduled": false,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "08:08",
+      "fixture": {
+        "rocket": {
+          "full": "Atlas V 551",
+          "displayLabel": "Atlas V 551"
+        },
+        "operator": {
+          "full": "United Launch Alliance",
+          "displayLabel": "ULA"
+        },
+        "purpose": {
+          "full": "Снабжение экипажа",
+          "displayLabel": "Снабжение экипажа"
+        },
+        "site": {
+          "full": "Тест Восток · Плато Янтарь",
+          "displayLabel": "Тест Восток · Плато Янтарь"
+        },
+        "point": [
+          -130.0,
+          60.0
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 43140,
+        "displayLabel": "T−11ч 59м"
+      },
+      "fields": [
+        {
+          "role": "calories",
+          "value": 12345,
+          "displayLabel": "12 345"
+        },
+        {
+          "role": "steps",
+          "value": 54321,
+          "displayLabel": "54 321"
+        },
+        {
+          "role": "energy",
+          "value": 0,
+          "displayLabel": "0"
+        },
+        {
+          "role": "stress",
+          "value": 99,
+          "displayLabel": "99"
+        }
+      ]
+    },
+    {
+      "id": "holdout-ddb13ee496c749c9",
+      "language": "en",
+      "status": "stale",
+      "flags": {
+        "rescheduled": false,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "08:08",
+      "fixture": {
+        "rocket": {
+          "full": "Atlas V 551",
+          "displayLabel": "Atlas V 551"
+        },
+        "operator": {
+          "full": "United Launch Alliance",
+          "displayLabel": "ULA"
+        },
+        "purpose": {
+          "full": "Crew resupply",
+          "displayLabel": "Crew resupply"
+        },
+        "site": {
+          "full": "Test East · Amber Plateau",
+          "displayLabel": "Test East · Amber Plateau"
+        },
+        "point": [
+          -130.0,
+          60.0
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 43140,
+        "displayLabel": "T−11h 59m"
+      },
+      "fields": [
+        {
+          "role": "calories",
+          "value": 12345,
+          "displayLabel": "12,345"
+        },
+        {
+          "role": "steps",
+          "value": 54321,
+          "displayLabel": "54,321"
+        },
+        {
+          "role": "energy",
+          "value": 0,
+          "displayLabel": "0"
+        },
+        {
+          "role": "stress",
+          "value": 99,
+          "displayLabel": "99"
+        }
+      ]
+    },
+    {
+      "id": "holdout-d7599b67b2e24a63",
+      "language": "ru",
+      "status": "both",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "10:10",
+      "fixture": {
+        "rocket": {
+          "full": "Союз-2.1б/Фрегат",
+          "displayLabel": "Союз-2.1б/Фрегат"
+        },
+        "operator": {
+          "full": "Главкосмос",
+          "displayLabel": "Главкосмос"
+        },
+        "purpose": {
+          "full": "Передача данных с орбиты",
+          "displayLabel": "Передача данных с орбиты"
+        },
+        "site": {
+          "full": "Тест Восток · Плато Янтарь",
+          "displayLabel": "Тест Восток · Плато Янтарь"
+        },
+        "point": [
+          -130.0,
+          60.0
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 547,
+        "displayLabel": "T−9м 07с"
+      },
+      "fields": [
+        {
+          "role": "heart",
+          "value": 220,
+          "displayLabel": "220"
+        },
+        {
+          "role": "battery",
+          "value": 0,
+          "displayLabel": "0%"
+        },
+        {
+          "role": "steps",
+          "value": 1,
+          "displayLabel": "1"
+        },
+        {
+          "role": "calories",
+          "value": 1,
+          "displayLabel": "1"
+        }
+      ]
+    },
+    {
+      "id": "holdout-fef986604d9945a4",
+      "language": "en",
+      "status": "both",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "10:10",
+      "fixture": {
+        "rocket": {
+          "full": "Soyuz-2.1b/Fregat",
+          "displayLabel": "Soyuz-2.1b/Fregat"
+        },
+        "operator": {
+          "full": "Glavkosmos",
+          "displayLabel": "Glavkosmos"
+        },
+        "purpose": {
+          "full": "Orbital data relay",
+          "displayLabel": "Orbital data relay"
+        },
+        "site": {
+          "full": "Test East · Amber Plateau",
+          "displayLabel": "Test East · Amber Plateau"
+        },
+        "point": [
+          -130.0,
+          60.0
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 547,
+        "displayLabel": "T−9m 07s"
+      },
+      "fields": [
+        {
+          "role": "heart",
+          "value": 220,
+          "displayLabel": "220"
+        },
+        {
+          "role": "battery",
+          "value": 0,
+          "displayLabel": "0%"
+        },
+        {
+          "role": "steps",
+          "value": 1,
+          "displayLabel": "1"
+        },
+        {
+          "role": "calories",
+          "value": 1,
+          "displayLabel": "1"
+        }
+      ]
+    },
+    {
+      "id": "holdout-e483ad734f534735",
+      "language": "ru",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": true,
+        "stale": false,
+        "timeKnown": false
+      },
+      "clock": "11:11",
+      "fixture": {
+        "rocket": {
+          "full": "H3-22S",
+          "displayLabel": "H3-22S"
+        },
+        "operator": {
+          "full": "Mitsubishi Heavy Industries",
+          "displayLabel": "MHI"
+        },
+        "purpose": {
+          "full": "Полярная климатическая съёмка",
+          "displayLabel": "Полярная климатическая съёмка"
+        },
+        "site": {
+          "full": "Тест Центр · Долина Маяк",
+          "displayLabel": "Тест Центр · Долина Маяк"
+        },
+        "point": [
+          35.0,
+          -2.0
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Время уточняется"
+      },
+      "fields": [
+        {
+          "role": "stress",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "role": "energy",
+          "value": 1,
+          "displayLabel": "1"
+        },
+        {
+          "role": "battery",
+          "value": 99,
+          "displayLabel": "99%"
+        },
+        {
+          "role": "heart",
+          "value": 88,
+          "displayLabel": "88"
+        }
+      ]
+    },
+    {
+      "id": "holdout-611d1619d0204f03",
+      "language": "en",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": true,
+        "stale": false,
+        "timeKnown": false
+      },
+      "clock": "11:11",
+      "fixture": {
+        "rocket": {
+          "full": "H3-22S",
+          "displayLabel": "H3-22S"
+        },
+        "operator": {
+          "full": "Mitsubishi Heavy Industries",
+          "displayLabel": "MHI"
+        },
+        "purpose": {
+          "full": "Polar climate survey",
+          "displayLabel": "Polar climate survey"
+        },
+        "site": {
+          "full": "Test Central · Beacon Vale",
+          "displayLabel": "Test Central · Beacon Vale"
+        },
+        "point": [
+          35.0,
+          -2.0
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Time pending"
+      },
+      "fields": [
+        {
+          "role": "stress",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "role": "energy",
+          "value": 1,
+          "displayLabel": "1"
+        },
+        {
+          "role": "battery",
+          "value": 99,
+          "displayLabel": "99%"
+        },
+        {
+          "role": "heart",
+          "value": 88,
+          "displayLabel": "88"
+        }
+      ]
+    },
+    {
+      "id": "holdout-62a4e35f5dd34379",
+      "language": "ru",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": false,
+        "stale": false,
+        "timeKnown": false
+      },
+      "clock": "20:02",
+      "fixture": {
+        "rocket": {
+          "full": "Ariane 62",
+          "displayLabel": "Ariane 62"
+        },
+        "operator": {
+          "full": "Arianespace",
+          "displayLabel": "Arianespace"
+        },
+        "purpose": {
+          "full": "Навигационный резерв",
+          "displayLabel": "Навигационный резерв"
+        },
+        "site": {
+          "full": "Тест Центр · Долина Маяк",
+          "displayLabel": "Тест Центр · Долина Маяк"
+        },
+        "point": [
+          35.0,
+          -2.0
+        ],
+        "model": "ariane"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Время уточняется"
+      },
+      "fields": [
+        {
+          "role": "calories",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "steps",
+          "value": 9999,
+          "displayLabel": "9 999"
+        },
+        {
+          "role": "heart",
+          "value": 72,
+          "displayLabel": "72"
+        },
+        {
+          "role": "energy",
+          "value": 66,
+          "displayLabel": "66"
+        }
+      ]
+    },
+    {
+      "id": "holdout-c16060f0dd8c4294",
+      "language": "en",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": false,
+        "stale": false,
+        "timeKnown": false
+      },
+      "clock": "20:02",
+      "fixture": {
+        "rocket": {
+          "full": "Ariane 62",
+          "displayLabel": "Ariane 62"
+        },
+        "operator": {
+          "full": "Arianespace",
+          "displayLabel": "Arianespace"
+        },
+        "purpose": {
+          "full": "Navigation backup",
+          "displayLabel": "Navigation backup"
+        },
+        "site": {
+          "full": "Test Central · Beacon Vale",
+          "displayLabel": "Test Central · Beacon Vale"
+        },
+        "point": [
+          35.0,
+          -2.0
+        ],
+        "model": "ariane"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Time pending"
+      },
+      "fields": [
+        {
+          "role": "calories",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "steps",
+          "value": 9999,
+          "displayLabel": "9,999"
+        },
+        {
+          "role": "heart",
+          "value": 72,
+          "displayLabel": "72"
+        },
+        {
+          "role": "energy",
+          "value": 66,
+          "displayLabel": "66"
+        }
+      ]
+    },
+    {
+      "id": "holdout-b28e0a1c0ec24de1",
+      "language": "ru",
+      "status": "scheduled",
+      "flags": {
+        "rescheduled": false,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "22:22",
+      "fixture": {
+        "rocket": {
+          "full": "Neutron",
+          "displayLabel": "Neutron"
+        },
+        "operator": {
+          "full": "Rocket Lab",
+          "displayLabel": "Rocket Lab"
+        },
+        "purpose": {
+          "full": "Отработка возврата ступени",
+          "displayLabel": "Отработка возврата ступени"
+        },
+        "site": {
+          "full": "Тест Юг · Остров Каскад",
+          "displayLabel": "Тест Юг · Остров Каскад"
+        },
+        "point": [
+          179.5,
+          -52.0
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 3610800,
+        "displayLabel": "T−41д 19ч"
+      },
+      "fields": [
+        {
+          "role": "energy",
+          "value": 99,
+          "displayLabel": "99"
+        },
+        {
+          "role": "steps",
+          "value": 10000,
+          "displayLabel": "10 000"
+        },
+        {
+          "role": "calories",
+          "value": 9999,
+          "displayLabel": "9 999"
+        },
+        {
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        }
+      ]
+    },
+    {
+      "id": "holdout-12fbbe97bd42462a",
+      "language": "en",
+      "status": "scheduled",
+      "flags": {
+        "rescheduled": false,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "22:22",
+      "fixture": {
+        "rocket": {
+          "full": "Neutron",
+          "displayLabel": "Neutron"
+        },
+        "operator": {
+          "full": "Rocket Lab",
+          "displayLabel": "Rocket Lab"
+        },
+        "purpose": {
+          "full": "Stage return demonstration",
+          "displayLabel": "Stage return demonstration"
+        },
+        "site": {
+          "full": "Test South · Cascade Isle",
+          "displayLabel": "Test South · Cascade Isle"
+        },
+        "point": [
+          179.5,
+          -52.0
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 3610800,
+        "displayLabel": "T−41d 19h"
+      },
+      "fields": [
+        {
+          "role": "energy",
+          "value": 99,
+          "displayLabel": "99"
+        },
+        {
+          "role": "steps",
+          "value": 10000,
+          "displayLabel": "10,000"
+        },
+        {
+          "role": "calories",
+          "value": 9999,
+          "displayLabel": "9,999"
+        },
+        {
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        }
+      ]
+    },
+    {
+      "id": "holdout-322f65a07b904b2c",
+      "language": "ru",
+      "status": "changed",
+      "flags": {
+        "rescheduled": true,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "06:50",
+      "fixture": {
+        "rocket": {
+          "full": "Vega-C",
+          "displayLabel": "Vega-C"
+        },
+        "operator": {
+          "full": "Avio",
+          "displayLabel": "Avio"
+        },
+        "purpose": {
+          "full": "Радиолокационная съёмка",
+          "displayLabel": "Радиолокационная съёмка"
+        },
+        "site": {
+          "full": "Тест Юг · Остров Каскад",
+          "displayLabel": "Тест Юг · Остров Каскад"
+        },
+        "point": [
+          179.5,
+          -52.0
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 68580,
+        "displayLabel": "T−19ч 03м"
+      },
+      "fields": [
+        {
+          "role": "battery",
+          "value": 9,
+          "displayLabel": "9%"
+        },
+        {
+          "role": "stress",
+          "value": 87,
+          "displayLabel": "87"
+        },
+        {
+          "role": "heart",
+          "value": 155,
+          "displayLabel": "155"
+        },
+        {
+          "role": "steps",
+          "value": 25000,
+          "displayLabel": "25 000"
+        }
+      ]
+    },
+    {
+      "id": "holdout-797024e8b61a4d76",
+      "language": "en",
+      "status": "changed",
+      "flags": {
+        "rescheduled": true,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "06:50",
+      "fixture": {
+        "rocket": {
+          "full": "Vega-C",
+          "displayLabel": "Vega-C"
+        },
+        "operator": {
+          "full": "Avio",
+          "displayLabel": "Avio"
+        },
+        "purpose": {
+          "full": "Radar imaging mission",
+          "displayLabel": "Radar imaging mission"
+        },
+        "site": {
+          "full": "Test South · Cascade Isle",
+          "displayLabel": "Test South · Cascade Isle"
+        },
+        "point": [
+          179.5,
+          -52.0
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 68580,
+        "displayLabel": "T−19h 03m"
+      },
+      "fields": [
+        {
+          "role": "battery",
+          "value": 9,
+          "displayLabel": "9%"
+        },
+        {
+          "role": "stress",
+          "value": 87,
+          "displayLabel": "87"
+        },
+        {
+          "role": "heart",
+          "value": 155,
+          "displayLabel": "155"
+        },
+        {
+          "role": "steps",
+          "value": 25000,
+          "displayLabel": "25,000"
+        }
+      ]
+    },
+    {
+      "id": "holdout-bcde7e784f5948a3",
+      "language": "ru",
+      "status": "stale",
+      "flags": {
+        "rescheduled": false,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "15:45",
+      "fixture": {
+        "rocket": {
+          "full": "New Shepard",
+          "displayLabel": "New Shepard"
+        },
+        "operator": {
+          "full": "Blue Origin",
+          "displayLabel": "Blue Origin"
+        },
+        "purpose": {
+          "full": "Короткий научный полёт",
+          "displayLabel": "Короткий научный полёт"
+        },
+        "site": {
+          "full": "Тест Запад · Порт Вега",
+          "displayLabel": "Тест Запад · Порт Вега"
+        },
+        "point": [
+          -179.5,
+          24.0
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 302400,
+        "displayLabel": "T−3д 12ч"
+      },
+      "fields": [
+        {
+          "role": "calories",
+          "value": 31415,
+          "displayLabel": "31 415"
+        },
+        {
+          "role": "energy",
+          "value": 42,
+          "displayLabel": "42"
+        },
+        {
+          "role": "battery",
+          "value": 42,
+          "displayLabel": "42%"
+        },
+        {
+          "role": "heart",
+          "value": 99,
+          "displayLabel": "99"
+        }
+      ]
+    },
+    {
+      "id": "holdout-128e23f45e95487e",
+      "language": "en",
+      "status": "stale",
+      "flags": {
+        "rescheduled": false,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "15:45",
+      "fixture": {
+        "rocket": {
+          "full": "New Shepard",
+          "displayLabel": "New Shepard"
+        },
+        "operator": {
+          "full": "Blue Origin",
+          "displayLabel": "Blue Origin"
+        },
+        "purpose": {
+          "full": "Suborbital science flight",
+          "displayLabel": "Suborbital science flight"
+        },
+        "site": {
+          "full": "Test West · Vega Harbour",
+          "displayLabel": "Test West · Vega Harbour"
+        },
+        "point": [
+          -179.5,
+          24.0
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 302400,
+        "displayLabel": "T−3d 12h"
+      },
+      "fields": [
+        {
+          "role": "calories",
+          "value": 31415,
+          "displayLabel": "31,415"
+        },
+        {
+          "role": "energy",
+          "value": 42,
+          "displayLabel": "42"
+        },
+        {
+          "role": "battery",
+          "value": 42,
+          "displayLabel": "42%"
+        },
+        {
+          "role": "heart",
+          "value": 99,
+          "displayLabel": "99"
+        }
+      ]
+    },
+    {
+      "id": "holdout-6e155377c00d496b",
+      "language": "ru",
+      "status": "both",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "19:07",
+      "fixture": {
+        "rocket": {
+          "full": "Minotaur IV",
+          "displayLabel": "Minotaur IV"
+        },
+        "operator": {
+          "full": "Northrop Grumman",
+          "displayLabel": "Northrop Grumman"
+        },
+        "purpose": {
+          "full": "Проверка связи спутников",
+          "displayLabel": "Проверка связи спутников"
+        },
+        "site": {
+          "full": "Тест Запад · Порт Вега",
+          "displayLabel": "Тест Запад · Порт Вега"
+        },
+        "point": [
+          -179.5,
+          24.0
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 0,
+        "displayLabel": "T−00с"
+      },
+      "fields": [
+        {
+          "role": "steps",
+          "value": 88888,
+          "displayLabel": "88 888"
+        },
+        {
+          "role": "battery",
+          "value": 88,
+          "displayLabel": "88%"
+        },
+        {
+          "role": "stress",
+          "value": 88,
+          "displayLabel": "88"
+        },
+        {
+          "role": "calories",
+          "value": 8888,
+          "displayLabel": "8 888"
+        }
+      ]
+    },
+    {
+      "id": "holdout-49d0fd4ac732442a",
+      "language": "en",
+      "status": "both",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "19:07",
+      "fixture": {
+        "rocket": {
+          "full": "Minotaur IV",
+          "displayLabel": "Minotaur IV"
+        },
+        "operator": {
+          "full": "Northrop Grumman",
+          "displayLabel": "Northrop Grumman"
+        },
+        "purpose": {
+          "full": "Satellite link verification",
+          "displayLabel": "Satellite link verification"
+        },
+        "site": {
+          "full": "Test West · Vega Harbour",
+          "displayLabel": "Test West · Vega Harbour"
+        },
+        "point": [
+          -179.5,
+          24.0
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 0,
+        "displayLabel": "T−00s"
+      },
+      "fields": [
+        {
+          "role": "steps",
+          "value": 88888,
+          "displayLabel": "88,888"
+        },
+        {
+          "role": "battery",
+          "value": 88,
+          "displayLabel": "88%"
+        },
+        {
+          "role": "stress",
+          "value": 88,
+          "displayLabel": "88"
+        },
+        {
+          "role": "calories",
+          "value": 8888,
+          "displayLabel": "8,888"
+        }
+      ]
+    },
+    {
+      "id": "holdout-d480e02b4feb4091",
+      "language": "ru",
+      "status": "both",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "09:30",
+      "fixture": {
+        "rocket": {
+          "full": "Falcon 9",
+          "displayLabel": "Falcon 9"
+        },
+        "operator": {
+          "full": "SpaceX",
+          "displayLabel": "SpaceX"
+        },
+        "purpose": {
+          "full": "Испытание орбитального буксира",
+          "displayLabel": "Испытание орбитального буксира"
+        },
+        "site": {
+          "full": "Тест Дата · Берег Орбита",
+          "displayLabel": "Тест Дата · Берег Орбита"
+        },
+        "point": [
+          70.0,
+          -78.0
+        ],
+        "model": "falcon"
+      },
+      "countdown": {
+        "seconds": 86400,
+        "displayLabel": "T−1д 00ч"
+      },
+      "fields": [
+        {
+          "role": "heart",
+          "value": 200,
+          "displayLabel": "200"
+        },
+        {
+          "role": "calories",
+          "value": 22222,
+          "displayLabel": "22 222"
+        },
+        {
+          "role": "steps",
+          "value": 22222,
+          "displayLabel": "22 222"
+        },
+        {
+          "role": "energy",
+          "value": 100,
+          "displayLabel": "100"
+        }
+      ]
+    },
+    {
+      "id": "holdout-b36783dabcd8485c",
+      "language": "en",
+      "status": "both",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "09:30",
+      "fixture": {
+        "rocket": {
+          "full": "Falcon 9",
+          "displayLabel": "Falcon 9"
+        },
+        "operator": {
+          "full": "SpaceX",
+          "displayLabel": "SpaceX"
+        },
+        "purpose": {
+          "full": "Orbital tug test",
+          "displayLabel": "Orbital tug test"
+        },
+        "site": {
+          "full": "Test Date · Orbit Shore",
+          "displayLabel": "Test Date · Orbit Shore"
+        },
+        "point": [
+          70.0,
+          -78.0
+        ],
+        "model": "falcon"
+      },
+      "countdown": {
+        "seconds": 86400,
+        "displayLabel": "T−1d 00h"
+      },
+      "fields": [
+        {
+          "role": "heart",
+          "value": 200,
+          "displayLabel": "200"
+        },
+        {
+          "role": "calories",
+          "value": 22222,
+          "displayLabel": "22,222"
+        },
+        {
+          "role": "steps",
+          "value": 22222,
+          "displayLabel": "22,222"
+        },
+        {
+          "role": "energy",
+          "value": 100,
+          "displayLabel": "100"
+        }
+      ]
+    },
+    {
+      "id": "holdout-4cda57efb15343f4",
+      "language": "ru",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": false
+      },
+      "clock": "16:16",
+      "fixture": {
+        "rocket": {
+          "full": "Northstar Mk III",
+          "displayLabel": "Northstar Mk III"
+        },
+        "operator": {
+          "full": "Northstar Launch Systems",
+          "displayLabel": "Northstar Launch Systems"
+        },
+        "purpose": {
+          "full": "Проверка нового теплозащитника",
+          "displayLabel": "Проверка нового теплозащитника"
+        },
+        "site": {
+          "full": "Тест Дата · Берег Орбита",
+          "displayLabel": "Тест Дата · Берег Орбита"
+        },
+        "point": null,
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Время уточняется"
+      },
+      "fields": [
+        {
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        },
+        {
+          "role": "energy",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "role": "stress",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "role": "heart",
+          "value": 100,
+          "displayLabel": "100"
+        }
+      ]
+    },
+    {
+      "id": "holdout-50fc6f00c8354272",
+      "language": "en",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": false
+      },
+      "clock": "16:16",
+      "fixture": {
+        "rocket": {
+          "full": "Northstar Mk III",
+          "displayLabel": "Northstar Mk III"
+        },
+        "operator": {
+          "full": "Northstar Launch Systems",
+          "displayLabel": "Northstar Launch Systems"
+        },
+        "purpose": {
+          "full": "Thermal shield qualification",
+          "displayLabel": "Thermal shield qualification"
+        },
+        "site": {
+          "full": "Test Date · Orbit Shore",
+          "displayLabel": "Test Date · Orbit Shore"
+        },
+        "point": null,
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Time pending"
+      },
+      "fields": [
+        {
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        },
+        {
+          "role": "energy",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "role": "stress",
+          "value": 100,
+          "displayLabel": "100"
+        },
+        {
+          "role": "heart",
+          "value": 100,
+          "displayLabel": "100"
+        }
+      ]
+    }
+  ]
+}

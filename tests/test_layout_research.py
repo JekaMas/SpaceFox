@@ -8,9 +8,9 @@ PRELUDE = """
 const assert=require('node:assert/strict');
 const G=require('./prototype/research/generator.js');
 const M=require('./prototype/research/metrics.js');
-const measurements=cs=>cs.map((c,i)=>({id:c.id,trials:6,failures:0,rank:i,siteFont:c.site[3],maxSiteWidth:190,timeFont:c.time[3],geoArea:10000,truncations:0}));
+const measurements=cs=>cs.map((c,i)=>({id:c.id,trials:6,failures:0,failedScenes:0,rank:i,siteFont:c.site[3],maxSiteWidth:190,timeFont:c.time[3],geoArea:10000,truncations:0}));
 const g1=()=>G.generationOne();
-const campaign=()=>{const a=g1(),ar=measurements(a),b=G.evolve(a,ar,2),br=measurements(b),c=G.evolve(b,br,3),cr=measurements(c);return {currentAudit:{detector:'intrinsic-text-v2',results:[...ar,...br,...cr]},detectorQualification:{passed:true,tests:['healthy','collision','circle','clipping','subpixel-clipping','missing','marker'].map(name=>({name}))},generations:[{candidates:a,results:ar},{candidates:b,results:br},{candidates:c,results:cr}],finalists:['globe','map','horizon'].map(kind=>{const f=c.find(x=>x.kind===kind&&x.site[3]>=21);return {id:f.id,kind,validation:{trials:24,failures:0},scenes:Array.from({length:24},(_,i)=>({candidate:f.id,scene:'v'+i,failures:[]})),siteFont:21,timeFont:80,baselineSiteFont:{globe:16.5,map:17,horizon:18}[kind],visualReviewed:true};})};};
+const campaign=()=>{const a=g1(),ar=measurements(a),b=G.evolve(a,ar,2),br=measurements(b),c=G.evolve(b,br,3),cr=measurements(c);return {currentAudit:{detector:'intrinsic-text-v2',results:[...ar,...br,...cr]},detectorQualification:{passed:true,tests:['healthy','collision','circle','clipping','subpixel-clipping','missing','marker'].map(name=>({name}))},generations:[{candidates:a,results:ar},{candidates:b,results:br},{candidates:c,results:cr}],finalists:['globe','map','horizon'].map(kind=>{const f=c.find(x=>x.kind===kind&&x.site[3]>=21);return {id:f.id,kind,validation:{trials:24,failures:0},scenes:Array.from({length:24},(_,i)=>({candidate:f.id,scene:'validation-'+(Math.floor(i/4)+1)+'-'+(Math.floor(i/2)%2?'en':'ru')+'-'+(i%2?'tbd':'both'),failures:[]})),siteFont:21,timeFont:80,baselineSiteFont:{globe:16.5,map:17,horizon:18}[kind],visualReviewed:true};})};};
 const healthy=()=>({kind:'map',pointExpected:false,pin:null,rocket:{x:290,y:205,w:20,h:65},geo:{x:40,y:190,w:310,h:145},text:[
  {role:'time',value:'23:58',x:90,y:50,w:210,h:80,font:80},
  {role:'metric0',value:'6842',x:55,y:155,w:70,h:24,font:22},
@@ -56,7 +56,7 @@ area.geo.circle={x:195,y:195,r:1};assert.equal(M.evaluate(area).geoArea,0);area.
  [s=>s.text.find(t=>t.role==='rocket').clipped=true,'clipped:'],
  [s=>s.text=s.text.filter(t=>t.role!=='purpose'),'missing:'],
  [s=>s.pin={x:195,y:70,visible:true},'marker:'],
- [s=>s.text.at(-1).font=18.99,'font:'],[s=>s.pointExpected=true,'marker:missing'],
+ [s=>s.text.at(-1).font=18.99,'font:'],[s=>s.pointExpected=true,'marker:missing'],[s=>s.pin={x:NaN,y:NaN,visible:true},'marker:invalid'],
  [s=>s.graphics=[{x:80,y:205,w:20,h:20}],'icon:']
 ]){const s=healthy();change(s);assert.ok(M.evaluate(s).failures.some(f=>f.startsWith(expected)),expected);}
 assert.throws(()=>M.summarize('x',[]),/empty/);""")
@@ -89,7 +89,7 @@ assert.ok(saved.finalists.every(f=>f.scenes.length===24&&f.validation.failures==
  c=>c.finalists[0].scenes.pop(),c=>c.finalists[0].scenes[0].scene=c.finalists[0].scenes[1].scene,
  c=>c.finalists[0].visualReviewed=false,c=>c.finalists[0].siteFont=18,
  c=>c.finalists[0].id='unknown',c=>c.finalists[0].baselineSiteFont=1,
- c=>delete c.currentAudit,c=>c.currentAudit.results.pop(),c=>c.detectorQualification.passed=false,
+ c=>c.finalists[0].scenes.forEach((s,i)=>s.scene='unrelated-'+i),c=>{const r=c.currentAudit.results.find(r=>r.id===c.finalists[0].id);r.failures=99;r.failedScenes=6;},c=>delete c.currentAudit,c=>c.currentAudit.results.pop(),c=>c.detectorQualification.passed=false,
  c=>c.detectorQualification.tests.pop(),
  c=>c.generations[0].candidates[1]={...c.generations[0].candidates[0],id:'duplicate-visual'}
 ]){const c=campaign();change(c);assert.equal(M.qualifyCampaign(c).passed,false);}""")

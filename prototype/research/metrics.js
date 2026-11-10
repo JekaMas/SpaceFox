@@ -17,6 +17,7 @@
     for(let i=0;i<text.length;i++)for(let j=i+1;j<text.length;j++)if(overlaps(text[i],text[j],0))failures.push('overlap:'+text[i].role+'/'+text[j].role);
     for(const graphic of scene.graphics||[])for(const t of text)if(overlaps(graphic,t))failures.push('icon:'+t.role);
     if(scene.pin){
+      if(![scene.pin.x,scene.pin.y].every(Number.isFinite))failures.push('marker:invalid');
       if(!scene.pin.visible||Math.hypot(scene.pin.x-195,scene.pin.y-195)>182)failures.push('marker:outside');
       const marker={x:scene.pin.x-5,y:scene.pin.y-5,w:10,h:10};
       for(const t of text)if(overlaps(marker,t,5))failures.push('marker:'+t.role);
@@ -59,6 +60,10 @@
     }
     if(campaign.finalists?.length!==3||new Set(campaign.finalists?.map(f=>f.kind)).size!==3||['globe','map','horizon'].some(k=>!campaign.finalists?.some(f=>f.kind===k)))failures.push('three-families');
     for(const f of campaign.finalists||[]){
+      const expected=new Set(Array.from({length:6},(_,i)=>['ru','en'].flatMap(lang=>['both','tbd'].map(status=>`validation-${i+1}-${lang}-${status}`))).flat());
+      if(f.scenes?.some(s=>!expected.has(s.scene)))failures.push('unexpected-scene:'+f.id);
+      const latest=audit?.results?.find(r=>r.id===f.id);
+      if(!latest||latest.failures!==0||latest.failedScenes!==0)failures.push('contradictory-audit:'+f.id);
       if(f.validation?.trials!==24||f.validation?.failures!==0)failures.push('validation:'+f.id);
       if(!candidates.some(c=>c.id===f.id&&c.kind===f.kind)||f.scenes?.length!==24||new Set(f.scenes?.map(s=>s.scene)).size!==24||f.scenes?.some(s=>s.candidate!==f.id||s.failures.length))failures.push('scene-evidence:'+f.id);
       if(!(f.siteFont>=19)||!(f.timeFont>=(f.kind==='globe'?80:72))||!f.visualReviewed)failures.push('thresholds-or-review:'+f.id);
