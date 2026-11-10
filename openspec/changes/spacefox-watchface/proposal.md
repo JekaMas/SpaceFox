@@ -13,11 +13,16 @@ the layout, but live updates and a maintainable visual catalog are still missing
   local countdown, a model-specific rocket image and a launch-site globe/map.
   Use a compact Earth/rocket/information band with rocket, company and mission
   context on the right, and a larger country/site label below the countdown.
-- Refresh the launch schedule through the paired phone, approximately every five
-  minutes when available, from a small personal static HTTPS feed. GitHub Actions
+- Calculate the countdown entirely on the watch from its current clock and the
+  cached UTC launch time, including after sleep and without connectivity.
+- Refresh the schedule hourly by default and every fifteen minutes from two hours
+  before a known launch through thirty minutes after its unconfirmed time.
+  Unknown times use hourly checks; five-minute polling is an optional setting.
+  Use the paired phone and a small personal static HTTPS feed. GitHub Actions
   runs a deterministic updater and publishes it with GitHub Pages; no AWS account,
   always-running backend, custom phone app or per-refresh LLM call is required.
-  Publisher, CDN and watch delays mean five minutes is not an end-to-end guarantee.
+  Polling and publisher/CDN delays affect how soon a change is learned, not the
+  countdown's local progression; the longer update delay is an explicit trade-off.
   Retain cached information without inventing launch certainty or a confirmed liftoff.
 - Keep the compact design from the latest answer: no permanent update timestamp;
   a circled `!` plus amber countdown for a reschedule and a separate stale marker.

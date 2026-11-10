@@ -6,6 +6,7 @@
 - [x] 1.2 Adopt the exact JekaMas workflow pin and qualify the proposal/specs/design/tasks; verify native OpenSpec validation/status/instructions and the required setup checks recorded in `evidence/setup-report.md`.
 - [x] 1.3 Recompose the browser prototype into an Earth/rocket/metadata band, enlarge the launch-site label and update the affected specifications; verify three rocket examples, globe/map, exceptional-state fit at narrow size and strict OpenSpec validation in `evidence/layout-review-v4.md`.
 - [x] 1.4 Replace the planned always-running service with the selected personal GitHub Actions/Pages feed and MIT agent guide; verify coherent proposal/design/specs/tasks, primary-source constraints and strict OpenSpec validation in `evidence/static-feed-design-review.md`. This task enables no scheduler or deployment.
+- [x] 1.5 Clarify fully local countdown computation and reduce the default data cadence to hourly/15-minute near-launch polling, retaining a configurable fast mode; verify coherent age limits, bounded window exit, offline wake and stale-latch scenarios, guide consistency and strict validation in `evidence/local-countdown-review.md`.
 
 ## 2. Native implementation qualification
 
@@ -14,9 +15,9 @@
 
 ## 3. Launch schedule
 
-- [ ] 3.1 Implement `tools/update_feed.py`, its persisted accepted state and bounded static feed/schema using a qualified LL2 query; verify earlier/cancelled and omitted tracked identities, missing context, uncertain UTC, oversize/malformed/regressing data, unchanged successful validation, quota accounting and 429 without inventing facts; document the exact contract.
-- [ ] 3.2 Implement configurable `FeedBaseUrl`, watch polling/cache, local countdown and per-launch reschedule flags using source/per-record validation age; verify independent publisher/watch timing, old HTTP 200/304 files, offline startup, +20-minute/unknown updates, threshold/restart, invalid feed and zero without liftoff confirmation.
-- [ ] 3.3 Implement the standard-runner Actions/custom-Pages publication workflow with serialized runs, bounded artifacts/retention and recovery of last accepted state; verify first/second published source validation, provider/validation failures retaining the site, overlapping/older runs, preserved source age during catalog-only updates and documented delayed/disabled schedule recovery. Enable it only within an implementation/deployment request.
+- [ ] 3.1 Implement `tools/update_feed.py`, its accepted state, bounded feed and refresh-policy metadata using a qualified LL2 query; verify 60/15-minute due checks and optional fast mode, earlier/cancelled/omitted identities, missing context, uncertain UTC, malformed/regressing data, unchanged validation, quota and 429; document the exact contract.
+- [ ] 3.2 Implement `FeedBaseUrl`, adaptive polling/cache, clock-derived local countdown and reschedule flags; verify two-hour offline sleep/wake without timer drift or network-on-redraw, exact window boundaries/return to hourly, old 200/304, per-record age and stale latch on window exit, +20-minute/unknown updates, restart, invalid feed and zero without confirmation.
+- [ ] 3.3 Implement the standard-runner Actions/custom-Pages workflow with lightweight due checks, serialized updates, bounded artifacts/retention and recovery of accepted state; verify not-due runs perform no provider fetch/publication, first/second validation, failure/overlap handling, unchanged age during catalog-only updates and disabled-schedule recovery. Enable only within an implementation/deployment request.
 - [ ] 3.4 Rehearse `docs/AGENT_SETUP.md` for the owner's instance and another owner's fork/feed URL; verify prerequisites, Actions/Pages settings, manual recovery, no required author credentials/AWS/recurring LLM calls, and actual HTTPS plus phone/watch readback; retain exact unavailable prerequisites rather than a false setup pass.
 
 ## 4. Updateable catalog
@@ -62,3 +63,9 @@ The owner selected GitHub Actions plus static files for the personal deployment.
 The `service/` plan is superseded by the deterministic updater/static publisher.
 `docs/AGENT_SETUP.md` is the MIT reproduction guide; task 1.4 is this spec-only
 revision. All updater, workflow, Pages and native work remains pending above.
+
+Task 1.5 clarifies that rendering/countdown calculation is independent of data
+sync and replaces the original continuous five-minute default with a lighter
+60/15-minute policy. These are documented defaults chosen for this personal use,
+not a claim that Garmin requires frequent network access. Fast polling remains
+available, and the increased external-change delay is explicit.

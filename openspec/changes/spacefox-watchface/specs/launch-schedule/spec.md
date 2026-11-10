@@ -7,11 +7,12 @@ stable launch identity, honest timing precision and resilient cached operation.
 
 ### Requirement: Automatic bounded refresh
 
-The watch SHALL automatically fetch its configured static HTTPS feed through
-Garmin Connect on the paired phone, targeting five-minute background intervals
-when permitted. The independent publisher and watch cadences, deployment/CDN
-delay and connectivity MUST NOT be presented as a five-minute delivery guarantee.
-The watch SHALL cache accepted data and calculate countdowns locally.
+The watch SHALL fetch its static HTTPS feed through Garmin Connect: hourly by
+default, every fifteen minutes from two hours before a known launch until thirty
+minutes after its unconfirmed target time. Unknown-time launches use hourly mode.
+Intervals SHALL be configurable within platform/provider limits, including an
+optional five-minute mode. Drawing/countdown ticks MUST NOT initiate network
+requests. Delivery delay SHALL remain explicit.
 
 #### Scenario: Connected refresh
 - **WHEN** a scheduled background refresh is permitted and the phone has connectivity
@@ -20,6 +21,10 @@ The watch SHALL cache accepted data and calculate countdowns locally.
 #### Scenario: Provider unavailable or rate limited
 - **WHEN** a refresh fails, times out or is rate limited
 - **THEN** the last accepted schedule remains available and retries respect platform/provider limits without a per-second request loop
+
+#### Scenario: Refresh window changes
+- **WHEN** the cached exact launch time enters the two-hour window or passes thirty minutes without confirmation
+- **THEN** the local scheduler changes between fifteen-minute and hourly checks without inferring liftoff; temporary faster checking does not become permanent
 
 ### Requirement: Personal static-feed operation
 
@@ -36,11 +41,12 @@ only; fitness values and personal identifiers SHALL remain on the watch.
 
 ### Requirement: Rate-aware static publication
 
-The updater SHALL target five-minute runs, serialize publication and budget
-steady provider calls at no more than twelve per hour, below the documented
-fifteen-call anonymous limit. Manual runs, retries and extra pages/details MUST
-share the applicable budget. A failed or invalid provider update MUST retain the
-last working publication and source-validation times. No LLM SHALL infer facts.
+The updater SHALL use the same hourly/near-launch policy: normally one and near
+launch four primary provider polls per hour. Scheduler wakeups MAY only check
+whether a poll is due. A configured fast mode MUST stay within twelve steady
+calls/hour; manual runs, retries and extra requests share the provider budget.
+Publication SHALL be serialized. Failed/invalid updates MUST retain working data
+and validation times. No LLM SHALL infer facts.
 
 #### Scenario: Provider failure or overlapping runs
 - **WHEN** the provider returns a throttle/error, a payload fails validation, or two runs overlap
@@ -94,10 +100,11 @@ than reuse another launch's context or invent a mission task.
 
 ### Requirement: UTC countdown and precision
 
-The countdown SHALL derive from a validated UTC launch timestamp and the watch
-clock, with days/hours/minutes for distant launches and seconds only while active
-when supported. A date-only, missing or invalid timestamp SHALL not produce an
-exact countdown.
+The watch SHALL calculate the countdown locally as validated launch UTC minus
+its current UTC clock, recomputing on redraw and wake without phone/network
+access. It SHALL show days/hours/minutes for distant launches and seconds only
+while active when supported. Sleep MUST NOT freeze or accumulate timer drift.
+A date-only, missing or invalid timestamp SHALL not produce an exact countdown.
 
 #### Scenario: Exact time available
 - **WHEN** an accepted launch has an exact UTC timestamp and the watch time zone changes
@@ -106,6 +113,10 @@ exact countdown.
 #### Scenario: Date known but time uncertain
 - **WHEN** the provider gives only a date, coarse window or invalid/missing exact timestamp
 - **THEN** the watch displays that uncertainty without inventing second-level precision
+
+#### Scenario: Offline countdown after sleep
+- **WHEN** the watch wakes after two hours asleep without connectivity and its cached exact launch is still in the future
+- **THEN** the remaining time reflects the current clock, two hours less than before sleep, without downloading data or requiring a continuously running timer
 
 ### Requirement: Reschedule detection
 
@@ -124,12 +135,12 @@ clear the flag; selecting a different launch SHALL not inherit it.
 
 ### Requirement: Cached schedule freshness
 
-The watch SHALL persist accepted data and the publisher's successful provider
-validation time, including older validation for retained unconfirmed records.
-Freshness SHALL use source age, defaulting to a configurable fifteen-minute limit,
-independent of download time, rescheduling and phone disconnects. Re-fetching or
-rebuilding old data MUST NOT renew freshness. Cache SHALL survive restart; an
-empty cache SHALL show an explicit no-schedule state.
+The watch SHALL persist data and each record's provider-validation time. Freshness
+MUST use source age, never download/build time. Default stale limits are three
+hours normally and forty-five minutes near launch, configurable with publisher
+cadence. Re-fetching old data or validating other records MUST NOT renew a record.
+Once stale, that record SHALL remain stale until newer source validation arrives.
+Cache SHALL survive restart; an empty cache SHALL show no schedule.
 
 #### Scenario: Freshness threshold reached
 - **WHEN** accepted data reaches the configured maximum age without successful validation
@@ -146,6 +157,10 @@ empty cache SHALL show an explicit no-schedule state.
 #### Scenario: Previously tracked record is absent from a new provider result
 - **WHEN** an unconfirmed tracked launch is retained from cache while newer records are validated
 - **THEN** its older source-validation time remains attached and no cancellation, liftoff or fresh status is inferred from omission
+
+#### Scenario: Faster checking ends while data is stale
+- **WHEN** a stale unconfirmed record leaves the near-launch window and polling returns to hourly mode
+- **THEN** the longer normal age limit does not clear its stale flag without newer provider validation
 
 ### Requirement: Repeatable agent-assisted personal setup
 

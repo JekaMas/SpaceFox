@@ -9,9 +9,10 @@ in `prototype/mission.html`. Its schedule, health values and model graphics are
 illustrative. No Monkey C owner, live service or downloadable asset pipeline exists.
 
 The first device is Forerunner 165, 390 × 390 round AMOLED. The owner selected
-GitHub Actions plus static files for one family's watch. Publisher and watch each
-target a five-minute cadence; deployment, CDN, queueing and connectivity add delay.
-This is not a guarantee of five-minute end-to-end launch-status delivery.
+GitHub Actions plus static files for one family's watch. Countdown calculation is
+fully local. Data polling defaults to hourly, increasing to fifteen minutes only
+near a known launch; a five-minute mode remains configurable. Longer polling adds
+change-detection delay, plus deployment/CDN/queue/connectivity delays.
 
 ## Goals / Non-Goals
 
@@ -67,8 +68,11 @@ The compact company's label means launch service provider/operator; it is not a
 guess at the rocket manufacturer. The prototype's mission purposes are illustrative
 sample text rather than a claim about a currently scheduled real mission.
 
-The initial freshness policy defaults to 15 minutes (three nominal publisher
-cycles), configurable by the owner. Age at or above the limit is stale. It is
+The default freshness limit is three hours normally and forty-five minutes in the
+near-launch window: three expected publisher cycles, configurable by the owner.
+Age at or above the effective limit is stale. An already stale record is latched
+until newer provider validation; leaving the short window must not make the same
+old data fresh by extending its age limit. Freshness is
 calculated from the updater's successful provider-validation time, not the watch's
 HTTP completion or artifact build time. Downloading the same old file with 200/304
 does not renew it. A retained tracked record absent from a new provider batch keeps
@@ -78,13 +82,43 @@ A valid unchanged provider response does advance validation time, while its cont
 revision and any existing reschedule flag remain unchanged. A phone disconnect
 does not automatically make recently validated data stale.
 
+### Separate local rendering from changes in the external schedule
+
+Monkey C supports ordinary computation and UTC time arithmetic. The face stores
+the accepted UTC launch timestamp and calculates `launchUtc - Time.now()` on
+each permitted redraw/wake. It does not need a phone, network call, running
+second timer or a fetched countdown value. After sleep it recalculates from the
+clock, rather than continuing a frozen/decrementing counter. Seconds and animation
+remain restricted to an active display; a cached exact time can still be stale
+as a prediction, independently of the accuracy of that local calculation.
+
+| Data polling mode | Publisher and watch defaults | Source stale limit |
+| --- | --- | --- |
+| Normal / unknown launch time | 60 minutes | 3 hours |
+| From 2 hours before exact launch until 30 minutes after an unconfirmed target | 15 minutes | 45 minutes |
+| Explicit optional fast mode | 5 minutes or another permitted interval | Three configured publisher cycles by default |
+
+After the bounded near-launch window, return to hourly checks even if status is
+still unconfirmed. Keep the awaiting-update/stale state; the frequency change
+does not establish liftoff or clear a latched stale flag. A provider-supplied new
+time can select a new window. Cadence selection uses cached facts and is subject
+to platform wake restrictions. It must not make a network call from a draw tick.
+
+Feed metadata/configuration identifies the publisher's refresh policy; watch
+polling follows it by default. Raising only watch fetch frequency cannot force
+new provider data and must not change the claimed source freshness. Two hourly
+polls can approach two hours of change-detection delay; two fifteen-minute polls
+can approach thirty minutes, before infrastructure delays. Newly added or earlier
+launches are discovered on the next successful sync; local logic cannot know an
+external schedule change while disconnected.
+
 ### Publish bounded files and preserve the last working deployment
 
 The planned static interface is:
 
 | Path relative to `FeedBaseUrl` | Contract |
 | --- | --- |
-| `data/v1/schedule.json` | Schema version, launch-content revision, provider-validation/build UTC times, bounded launch records and pinned catalog references |
+| `data/v1/schedule.json` | Schema version, launch-content revision, provider-validation/build UTC times, refresh/freshness policy, bounded launch records and pinned catalog references |
 | `catalog/v1/<revision>/manifest.json` | Immutable site/model metadata, source/rights and exact asset digests/bounds |
 | `assets/rockets/<model-id>/<revision>/...` | Prepared native-compatible stills and optional short frame packs |
 
@@ -102,8 +136,12 @@ require reducing the supported bound. Reject oversize/unsupported/malformed or
 regressing data without truncating IDs/coordinates or evicting the last good cache.
 Native budget qualification in task 2.2 remains mandatory.
 
-Target one bounded provider batch per five-minute run, at most 12 steady calls/hour
-against the documented 15/hour anonymous allowance. Pagination, detail lookups,
+Target one bounded provider batch when due: normally once/hour, four/hour in the
+near window. A default fifteen-minute cron can inspect the retained schedule and
+skip provider fetch/publication until the appropriate interval is due; a scheduler
+wakeup is not a provider update. Optional five-minute source mode also needs a
+matching cron. Keep its steady calls at or below 12/hour against the documented
+15/hour anonymous allowance. Pagination, detail lookups,
 manual dispatch and retries count too. Qualify a query that covers upcoming and
 tracked identities before implementation acceptance; an omitted identity does not
 prove completion/cancellation. Use serialized runs, provider throttle information
@@ -124,8 +162,8 @@ cannot be recovered, leave the current site intact and report the failure.
 Missing retained state cannot be reconstructed by guessing.
 
 Use the custom Pages Actions artifact/deploy path, rather than a commit-triggered
-Pages build on each tick. This avoids committing a heartbeat every five minutes
-and the ordinary Pages soft limit of ten builds/hour. Serialize deployments so an
+Pages build on each tick. This avoids frequent heartbeat commits and accommodates
+the optional faster mode without the normal ten-build/hour soft limit. Serialize deployments so an
 older queued run cannot overwrite a newer publication. Keep immutable file
 references and watch-side validation: CDN visibility is not a cross-request atomic
 transaction. Retain compatible prior assets within a documented bounded retention
@@ -228,7 +266,7 @@ identities for code that does not exist yet. The minimum meaningful boundaries a
 | Contract | Planned owner | Required independent observation |
 | --- | --- | --- |
 | Time/settings/health display and circle fit | Native watch face | Simulator plus physical FR165; unavailable metric and longest-label cases |
-| UTC selection, reschedules, zero crossing and freshness | Updater plus watch cache | Independent timestamps; +20-minute/unknown updates, unchanged fresh validation, repeated old 200/304, omitted tracked identity, age boundary and restart |
+| UTC selection, reschedules, zero crossing and freshness | Updater plus watch cache | Independent timestamps; offline redraw after two hours asleep, no network on redraw, 60/15-minute window boundaries, unchanged validation, old 200/304, omitted identity and stale latch when a window ends |
 | Personal static publication and reproduction | Actions/Pages plus setup runbook | First/second published validation, 429/invalid response, overlapping/old run rejection, disabled schedule recovery, another owner's fork URL and actual phone/watch readback |
 | Correct point/model selection | Catalog plus native renderer | Known sourced coordinates/model IDs; missing mapping and out-of-range coordinate rejection |
 | Safe catalog/image replacement | Catalog distribution plus watch cache | Two distinct revisions, interrupted/corrupt transfer, previous-version persistence and valid activation |
@@ -257,9 +295,9 @@ boundaries are qualified.
 - Provider access/rate limits and schedule uncertainty → shared caching, bounded
   retries, explicit precision and stale markers. Launch Library coverage is not a
   guarantee that every launch worldwide is present.
-- GitHub queues/CDN/disabled scheduling → source-age freshness, retained cache and
-  explicit recovery runbook; the two five-minute cadences can approach ten minutes
-  of polling delay before infrastructure/network delays are added.
+- Reduced polling and GitHub queues/CDN/disabled scheduling → explicit change
+  detection delay, adaptive source-age limits, retained cache and recovery runbook;
+  countdown progression remains local and independent of that delay.
 - Small display and AMOLED power budget → short optional animation, clear primary
   typography and no continuous rendering; inspect the longest values on-device.
 - Catalog updates can fail independently of schedule refresh → separate accepted
