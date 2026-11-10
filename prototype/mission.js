@@ -4,11 +4,7 @@
   const root = document.getElementById('launch-watch-mission');
   const bundle = JSON.parse(document.getElementById('mission-locales').textContent);
   const world = JSON.parse(root.querySelector('#mission-world-topology').textContent);
-  const launches = {
-    falcon: {rocket:'Falcon 9', operator:'SpaceX', purpose:'communications', country:'us', site:'Canaveral', pad:'SLC-40', point:[-80.57735736,28.56194122], seconds:8040},
-    electron: {rocket:'Electron', operator:'Rocket Lab', purpose:'smallSats', country:'nz', site:'Māhia', pad:'Launch Complex 1', point:[177.86586,-39.26085], seconds:15900},
-    ariane: {rocket:'Ariane 62', operator:'Arianespace', purpose:'communications', country:'gf', site:'Kourou', pad:'ELA-4', point:[-52.786838,5.256319], seconds:28740}
-  };
+  const launches = JSON.parse(document.getElementById('mission-examples').textContent);
   const metrics = {
     steps:{key:'steps', value:6842, icon:'footprints'},
     energy:{name:'Body Battery', value:68, icon:'zap'},

@@ -259,6 +259,14 @@ recorded as real launch evidence.
 
 ## Validation contract
 
+The exploratory geography gallery in `prototype/layouts.html` compares eight
+active-display variants and four OFL numeral fonts, without selecting a replacement
+native layout. `docs/DESIGN_RESEARCH.md` defines fractions as geographic-region
+height, documents skill/source suitability and records the qualitative shortlist.
+Shared example data/artwork/geography keep all variants coherent. The original
+Mission remains separately available; physical legibility, raster fonts and AOD
+must still be qualified rather than inferred from browser screenshots.
+
 Before semantic implementation, create the pinned workflow's `verification.json`
 and relevant `discovery.json` from the exact scenarios. Do not fabricate test
 identities for code that does not exist yet. The minimum meaningful boundaries are:

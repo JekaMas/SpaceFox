@@ -12,12 +12,16 @@ copyright and permission notices with distributions that contain them.
 
 | Component | Version / use | Terms | Retained notice |
 | --- | --- | --- | --- |
-| D3 | 7.9.0, map projection; CDN reference | ISC | [D3 license](licenses/d3-LICENSE.txt) |
-| topojson-client | 3.1.0, topology decoder; CDN reference | ISC | [topojson-client license](licenses/topojson-client-LICENSE.txt) |
+| D3 | 7.9.0, map projection; CDN reference and local gallery copy | ISC | [D3 license](licenses/d3-LICENSE.txt) |
+| topojson-client | 3.1.0, topology decoder; CDN reference and local gallery copy | ISC | [topojson-client license](licenses/topojson-client-LICENSE.txt) |
 | @d3-maps/atlas | 1.0.0, embedded countries-110m topology | MIT, underlying data public domain | [Atlas license](licenses/d3-maps-atlas-LICENSE.txt) |
 | Natural Earth | Underlying world geography | Public domain | [Natural Earth terms](https://www.naturalearthdata.com/about/terms-of-use/) |
 | Lucide | 0.468.0, vendored preview icons; includes Feather-derived portions | ISC, retains Feather attribution | [Lucide license](licenses/lucide-LICENSE.txt) |
-| Barlow Semi Condensed | Preview clock font, loaded from Google Fonts | SIL OFL 1.1 | [Barlow license](licenses/BarlowSemiCondensed-OFL.txt) |
+| Barlow Semi Condensed | Preview clock font; local Latin subset in gallery | SIL OFL 1.1 | [Barlow license](licenses/BarlowSemiCondensed-OFL.txt) |
+| Roboto Condensed | Gallery numerals, Latin / 600 | SIL OFL 1.1 | [Roboto license](licenses/RobotoCondensed-OFL.txt) |
+| Rajdhani | Gallery numerals, Latin / 600 | SIL OFL 1.1 | [Rajdhani license](licenses/Rajdhani-OFL.txt) |
+| Space Grotesk | Gallery numerals, Latin / 600 | SIL OFL 1.1 | [Space Grotesk license](licenses/SpaceGrotesk-OFL.txt) |
+| Noto Sans | Gallery labels, Latin / Latin Extended / Cyrillic / 500 | SIL OFL 1.1 | [Noto Sans license](licenses/NotoSans-OFL.txt) |
 
 Dependency sources: [D3 7.9.0](https://www.npmjs.com/package/d3/v/7.9.0),
 [topojson-client 3.1.0](https://www.npmjs.com/package/topojson-client/v/3.1.0),
@@ -26,6 +30,9 @@ Dependency sources: [D3 7.9.0](https://www.npmjs.com/package/d3/v/7.9.0),
 [Barlow](https://github.com/jpt/barlow). Exact license texts were retrieved on
 2026-11-10; fonts served by Google may change independently of this repository.
 Native font redistribution needs its own recorded source/version and OFL notice.
+The gallery's exact font URLs and content SHA-256 values are retained in
+`prototype/fonts/manifest.json`; the WOFF2 files are bundled, not installed as
+system fonts. Their rendering does not establish native FR165 glyph support.
 
 ## Data and future images
 

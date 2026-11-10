@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SpaceFox · восемь компоновок</title>
+  <link rel="stylesheet" href="fonts/fonts.css"><link rel="stylesheet" href="layouts.css"><link rel="stylesheet" href="layout-rocket.css">
+  <script defer src="vendor/d3-7.9.0.min.js"></script><script defer src="vendor/topojson-client-3.1.0.min.js"></script>
+  <script defer src="vendor/lucide-0.468.0.min.js"></script><script defer src="layout-data.js"></script><script defer src="layouts.js"></script>
+</head>
+<body>
+<main id="layout-lab">
+  <header><div><a class="brand" href="index.html">SpaceFox</a><h1>Земля на циферблате</h1><p>8 компоновок · одинаковые данные · исходный экран 390 × 390</p></div><a class="text-link" href="../docs/DESIGN_RESEARCH.md">Эргономика и шрифты</a></header>
+  <div class="controls" aria-label="Общие настройки сравнения">
+    <label>Пример запуска<select id="lab-launch"><option value="falcon">Falcon 9 · Канаверал</option><option value="electron">Electron · Махия</option><option value="ariane">Ariane 62 · Куру</option></select></label>
+    <label>Цифры времени<select id="lab-font"><option value="roboto">Roboto Condensed</option><option value="barlow">Barlow Semi Condensed</option><option value="rajdhani">Rajdhani</option><option value="space">Space Grotesk</option></select></label>
+    <label>Состояние<select id="lab-state"><option value="scheduled">По плану</option><option value="changed">Перенос +20 минут</option><option value="tbd">Время уточняется</option><option value="both">Перенос + устаревшие данные</option></select></label>
+    <label>Наклон Земли<select id="lab-roll"><option value="preset">Как в макете</option><option value="0">Север вверх · 0°</option><option value="20">Наклон 20°</option><option value="-20">Наклон −20°</option></select></label>
+    <label>Цифры для проверки<select id="lab-clock"><option>14:28</option><option>23:58</option><option>08:08</option></select></label>
+    <label>Подписи<select id="lab-language"><option value="ru">Русские</option><option value="en">English</option></select></label>
+  </div>
+  <div class="lab-meta"><p>¼, ⅓, ½ — высота области Земли от диаметра экрана: 98, 130 и 195 px. Это не доля площади круга.</p><p id="font-status" role="status">Шрифты загружаются…</p></div>
+  <section class="gallery" aria-label="Сравнение восьми компоновок"><p>Макеты загружаются…</p></section>
+  <section class="type-section" aria-label="Сравнение шрифтов"><h2>Одна высота, разные цифры</h2><p>Образцы одинакового кегля и веса 600. Подписи — Noto Sans 500. Сравните ширину, открытость цифр и двоеточие.</p><div class="type-grid"></div></section>
+  <p class="limitations">Данные демонстрационные. Доли и кегли заданы в пикселях макета; размер в браузере не равен физическому размеру часов. Нативные шрифты, глифы и AOD ещё нужно проверять на FR165.</p>
+  <footer><a href="index.html">Исходный макет «Миссия»</a><a href="../openspec/README.md">Спецификация MIT</a><a href="../THIRD_PARTY_NOTICES.md">Лицензии графики и шрифтов</a></footer>
+</main>
+<dialog id="layout-detail" aria-labelledby="detail-title"><div class="dialog-top"><h2 id="detail-title"></h2><button type="button" id="detail-close" aria-label="Закрыть увеличенный макет">Закрыть</button></div><div id="detail-face"></div><p id="detail-note"></p></dialog>
+</body></html>

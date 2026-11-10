@@ -1,0 +1,14 @@
+/* Generated from the canonical Mission schematic artwork; MIT. */
+  .face .core { position:absolute; left:40%; top:22%; width:20%; height:70%; background:linear-gradient(90deg,#8197a5,#f4f7fa 42%,#d0dde5 68%,#849cae); }
+  .face .fairing { position:absolute; z-index:2; top:0; left:35%; width:30%; height:26%; border-radius:50% 50% 18% 18%; background:linear-gradient(90deg,#a4b5c1,#f4f7fa 45%,#bdcdd8); }
+  .face .interstage { position:absolute; z-index:3; left:40%; top:34%; width:20%; height:9%; background:#2c4051; }
+  .face .engine { position:absolute; bottom:5%; left:39%; width:22%; height:5%; background:#9ab1c0; clip-path:polygon(20% 0,80% 0,100% 100%,0 100%); }
+  .face .booster { display:none; }
+  .face .flame { position:absolute; top:94%; left:43%; width:14%; height:15%; border-radius:20% 20% 65% 65%; background:linear-gradient(#fff5c7,#ffb256,#e76b35); opacity:0; }
+  .face .electron .core { background:linear-gradient(90deg,#536b7b,#142330 40%,#243b4c 80%,#6e8a9d); }
+  .face .electron .interstage { background:#d5e3ec; top:42%; height:3%; }
+  .face .ariane .core { width:26%; left:37%; }
+  .face .ariane .fairing { width:34%; left:33%; }
+  .face .ariane .interstage { width:26%; left:37%; height:3%; top:36%; background:#a7becd; }
+  .face .ariane .booster { display:block; position:absolute; top:49%; width:15%; height:44%; border-radius:60% 60% 5% 5%; background:linear-gradient(90deg,#8aa0af,#e4eff6 55%,#a9c0d0); }
+  .face .ariane .booster.left { left:20%; } .face .ariane .booster.right { right:20%; }

@@ -4,15 +4,100 @@
   "officialPrice": 0,
   "paidFeatures": false,
   "components": [
-    {"id":"spacefox","productIncluded":true,"license":"MIT","source":"original SpaceFox code, specs, translations and schematic artwork","notice":"LICENSE"},
-    {"id":"d3-7.9.0","productIncluded":true,"license":"ISC","source":"https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js","notice":"licenses/d3-LICENSE.txt"},
-    {"id":"topojson-client-3.1.0","productIncluded":true,"license":"ISC","source":"https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js","notice":"licenses/topojson-client-LICENSE.txt"},
-    {"id":"d3-maps-atlas-1.0.0","productIncluded":true,"license":"MIT","source":"https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m","notice":"licenses/d3-maps-atlas-LICENSE.txt"},
-    {"id":"natural-earth","productIncluded":true,"license":"LicenseRef-Public-Domain-Natural-Earth","source":"https://www.naturalearthdata.com/about/terms-of-use/","notice":"THIRD_PARTY_NOTICES.md"},
-    {"id":"lucide-0.468.0","productIncluded":true,"license":"ISC","source":"https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js","notice":"licenses/lucide-LICENSE.txt"},
-    {"id":"barlow-semi-condensed","productIncluded":true,"license":"OFL-1.1","source":"https://github.com/jpt/barlow","notice":"licenses/BarlowSemiCondensed-OFL.txt"},
-    {"id":"agent-workflow-and-generated-adapters","productIncluded":false,"license":"NOASSERTION","source":"https://github.com/JekaMas/agent-workflow/tree/f8e7ba481bf356600925e01936d7e9f3f1ac0084"},
-    {"id":"garmin-sdk","productIncluded":false,"license":"NOASSERTION","source":"https://developer.garmin.com/connect-iq/"},
-    {"id":"third-party-rocket-photos","productIncluded":false,"license":"NOASSERTION","source":"No photos bundled; rights must be qualified per future asset"}
+    {
+      "id": "spacefox",
+      "productIncluded": true,
+      "license": "MIT",
+      "source": "original SpaceFox code, specs, translations and schematic artwork",
+      "notice": "LICENSE"
+    },
+    {
+      "id": "d3-7.9.0",
+      "productIncluded": true,
+      "license": "ISC",
+      "source": "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js",
+      "notice": "licenses/d3-LICENSE.txt"
+    },
+    {
+      "id": "topojson-client-3.1.0",
+      "productIncluded": true,
+      "license": "ISC",
+      "source": "https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js",
+      "notice": "licenses/topojson-client-LICENSE.txt"
+    },
+    {
+      "id": "d3-maps-atlas-1.0.0",
+      "productIncluded": true,
+      "license": "MIT",
+      "source": "https://esm.sh/@d3-maps/atlas@1.0.0/world/countries/countries-110m",
+      "notice": "licenses/d3-maps-atlas-LICENSE.txt"
+    },
+    {
+      "id": "natural-earth",
+      "productIncluded": true,
+      "license": "LicenseRef-Public-Domain-Natural-Earth",
+      "source": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "notice": "THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "id": "lucide-0.468.0",
+      "productIncluded": true,
+      "license": "ISC",
+      "source": "https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js",
+      "notice": "licenses/lucide-LICENSE.txt"
+    },
+    {
+      "id": "barlow-semi-condensed",
+      "productIncluded": true,
+      "license": "OFL-1.1",
+      "source": "https://github.com/jpt/barlow",
+      "notice": "licenses/BarlowSemiCondensed-OFL.txt"
+    },
+    {
+      "id": "agent-workflow-and-generated-adapters",
+      "productIncluded": false,
+      "license": "NOASSERTION",
+      "source": "https://github.com/JekaMas/agent-workflow/tree/f8e7ba481bf356600925e01936d7e9f3f1ac0084"
+    },
+    {
+      "id": "garmin-sdk",
+      "productIncluded": false,
+      "license": "NOASSERTION",
+      "source": "https://developer.garmin.com/connect-iq/"
+    },
+    {
+      "id": "third-party-rocket-photos",
+      "productIncluded": false,
+      "license": "NOASSERTION",
+      "source": "No photos bundled; rights must be qualified per future asset"
+    },
+    {
+      "id": "roboto-condensed",
+      "productIncluded": true,
+      "license": "OFL-1.1",
+      "source": "https://github.com/google/fonts/tree/main/ofl/robotocondensed",
+      "notice": "licenses/RobotoCondensed-OFL.txt"
+    },
+    {
+      "id": "noto-sans",
+      "productIncluded": true,
+      "license": "OFL-1.1",
+      "source": "https://github.com/google/fonts/tree/main/ofl/notosans",
+      "notice": "licenses/NotoSans-OFL.txt"
+    },
+    {
+      "id": "rajdhani",
+      "productIncluded": true,
+      "license": "OFL-1.1",
+      "source": "https://github.com/google/fonts/tree/main/ofl/rajdhani",
+      "notice": "licenses/Rajdhani-OFL.txt"
+    },
+    {
+      "id": "space-grotesk",
+      "productIncluded": true,
+      "license": "OFL-1.1",
+      "source": "https://github.com/google/fonts/tree/main/ofl/spacegrotesk",
+      "notice": "licenses/SpaceGrotesk-OFL.txt"
+    }
   ]
 }
