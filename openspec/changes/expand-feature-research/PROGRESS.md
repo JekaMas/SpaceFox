@@ -1,6 +1,6 @@
 # SpaceFox · feature research progress
 
-Status: active. Started 2026-11-11. Canonical tasks will be in tasks.md; this file is a dated research log, not a second task list.
+Status: completed for the browser research and MIT source publication. Started 2026-11-11. Canonical tasks will be in tasks.md; this file is a dated research log, not a second task list.
 
 ## Measurable objective
 
@@ -56,3 +56,7 @@ Publication uses the existing public source branch, preserving its independent h
 2026-11-11 — THIRDfreshconfirm actual5×24allpass, independentoracle120/120PASS; exactfrozenR4five each128known+24fresh. Source/seal/append-onlyaudit16checksPASS; no postdisclosurecandidate/codechange. Independentfinal3images10PASS. Requiredstale selection.candidateIds fixedONLYonefield afterverdict; frozenoriginal retained, exactreversebytes/SHA independentlyPASS. Browserresearch acceptance achieved; remainingrequiredwork clean-sourceDAG+publicpublication/closure. Native/live/power/human proofsnotclaimed.
 
 2026-11-11 — Full10-caseDAGPASS oncleanSOURCE0d47b4c7edac7f6c1687258f0763efa0f7be7cae (gitdirtyfalse); source-shape/strictOpenSpecPASS. PriorOFLinventory/bundle/JSsyntaxgreens retainedwithinunchangedinputs. Publicsnapshot40frozenownerpaths byteequaltoauthoring, publicstrictPASS underitsownconfig; publicworkflowREADMEvariant preserved. Readyto pushauthorizedMITsource; native/liveworknotreleased.
+
+2026-11-11 — AuthorizedMITsourcepublishedtoJekaMas/SpaceFox main d1221d4b9d4203a2e478e4007c8d33d80d0d27f1; gitremotereadbackexact, GitHubconnectorreturnedactualreportatexactSHA. PublicstrictOpenSpecPASS;40ownerpathsidentical;17rawcompletionguidancefilesexcluded. Readbackcaughtonebrokenreportledgerlink, fixedasdocs-onlyandall4authoredMarkdownlocal-linkchecksPASS. Behavioralinputs unchanged; retainclean-source10greens, closepublicationtask and publishreceipts/checkboxclosure.
+
+2026-11-11 — Taskcomplete structuralgatePASS andfinalDAGqueryconfirmsall10currentgreens without rerunning unchangedbehavior fordocumentation/commit changes. Finalsource280/8960/159; final5each152scenes andindependenttechnical+visualPASS. Requiredworkcomplete; publishfinalreceipt/link/checkboxclosure, verifyremotehead. Native/liveSDK/devicetasksremainintentionallyopenoutside thisresearchgoal.

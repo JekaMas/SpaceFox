@@ -1,0 +1,663 @@
+{
+  "change": "expand-feature-research",
+  "manifest": "openspec/changes/expand-feature-research/verification.json",
+  "manifest_sha256": "3c1da7968065d8e28871a882495e70811c9c8590ecfef87ce008916e45355e9e",
+  "nodes": {
+    "cases": {
+      "R1.P1.NEGATIVE": {
+        "command_id": "feature-tests",
+        "current_evidence_fingerprint": "5e62d5c6c6cd555d14bd92d650bdd1ff5ba4ebafa33537a82b2eacfe1e65450f",
+        "distinct_reason": "matrix negative independent partition",
+        "green_expectation": "Traceable feature matrix",
+        "id": "R1.P1.NEGATIVE",
+        "invalidation_dependencies": [
+          "distribution/components.json",
+          "licenses/chakrapetch-OFL.txt",
+          "licenses/ibmplexsanscondensed-OFL.txt",
+          "licenses/oxanium-OFL.txt",
+          "licenses/sairacondensed-OFL.txt",
+          "prototype/features/axes.json",
+          "prototype/features/core.js",
+          "prototype/features/font-manifest.json",
+          "prototype/features/fonts/**",
+          "prototype/features/text-bounds.js",
+          "prototype/qualification/core.js",
+          "tests/test_feature_research.py",
+          "tests/test_layout_qualification.py"
+        ],
+        "latest_observed_status": "passed",
+        "observable": "Exact declared valid/invalid partition is respected.",
+        "polarity": "negative",
+        "property_id": "R1.P1",
+        "red_expectation": "Invalid evidence/input accepted or literal valid input rejected.",
+        "scenario": "Inspect feature hypotheses",
+        "scenario_fingerprint": "c596d1f93dc858267131b814b4febde8e6dde12619a230d6c99fa130d7937f45",
+        "setup": "Invoke real feature owner with literal independent examples/counterexamples; actual saved experiment checked when available.",
+        "source_path": "tests/test_feature_research.py",
+        "source_sha256": "bbd3b9c58c068f92c12b7586cf12f5c8ce9b2c28251e73f4a9eb25ee0906b044",
+        "state": "implemented",
+        "substitution": {
+          "classification": "NO_TEST_DOUBLE"
+        },
+        "test_id": "unittest::tests.test_feature_research.FeatureTest.test_matrix_negative"
+      },
+      "R1.P1.POSITIVE": {
+        "command_id": "feature-tests",
+        "current_evidence_fingerprint": "bf9cb8d97e3e677101226aa76a07bb2f45296031cc93ae82d240679777cbbff0",
+        "distinct_reason": "matrix positive independent partition",
+        "green_expectation": "Traceable feature matrix",
+        "id": "R1.P1.POSITIVE",
+        "invalidation_dependencies": [
+          "distribution/components.json",
+          "licenses/chakrapetch-OFL.txt",
+          "licenses/ibmplexsanscondensed-OFL.txt",
+          "licenses/oxanium-OFL.txt",
+          "licenses/sairacondensed-OFL.txt",
+          "prototype/features/axes.json",
+          "prototype/features/core.js",
+          "prototype/features/font-manifest.json",
+          "prototype/features/fonts/**",
+          "prototype/features/text-bounds.js",
+          "prototype/qualification/core.js",
+          "tests/test_feature_research.py",
+          "tests/test_layout_qualification.py"
+        ],
+        "latest_observed_status": "passed",
+        "observable": "Exact declared valid/invalid partition is respected.",
+        "polarity": "positive",
+        "property_id": "R1.P1",
+        "red_expectation": "Invalid evidence/input accepted or literal valid input rejected.",
+        "scenario": "Inspect feature hypotheses",
+        "scenario_fingerprint": "c596d1f93dc858267131b814b4febde8e6dde12619a230d6c99fa130d7937f45",
+        "setup": "Invoke real feature owner with literal independent examples/counterexamples; actual saved experiment checked when available.",
+        "source_path": "tests/test_feature_research.py",
+        "source_sha256": "bbd3b9c58c068f92c12b7586cf12f5c8ce9b2c28251e73f4a9eb25ee0906b044",
+        "state": "implemented",
+        "substitution": {
+          "classification": "NO_TEST_DOUBLE"
+        },
+        "test_id": "unittest::tests.test_feature_research.FeatureTest.test_matrix_positive"
+      },
+      "R2.P1.NEGATIVE": {
+        "command_id": "feature-tests",
+        "current_evidence_fingerprint": "5ffa964dc2896b701a2a3d68f4d0d155e168773c4a9b1513d551a2c53140a8bc",
+        "distinct_reason": "evolution negative independent partition",
+        "green_expectation": "Feature and joint generations",
+        "id": "R2.P1.NEGATIVE",
+        "invalidation_dependencies": [
+          "prototype/features/axes.json",
+          "prototype/features/core.js",
+          "prototype/features/text-bounds.js",
+          "prototype/qualification/core.js",
+          "tests/test_feature_research.py",
+          "tests/test_layout_qualification.py"
+        ],
+        "latest_observed_status": "passed",
+        "observable": "Exact declared valid/invalid partition is respected.",
+        "polarity": "negative",
+        "property_id": "R2.P1",
+        "red_expectation": "Invalid evidence/input accepted or literal valid input rejected.",
+        "scenario": "Evolve feature evidence",
+        "scenario_fingerprint": "c8dba677425291fa1843a8d576905d654d13d8fe410d1c0c0bceb856778e6186",
+        "setup": "Invoke real feature owner with literal independent examples/counterexamples; actual saved experiment checked when available.",
+        "source_path": "tests/test_feature_research.py",
+        "source_sha256": "bbd3b9c58c068f92c12b7586cf12f5c8ce9b2c28251e73f4a9eb25ee0906b044",
+        "state": "implemented",
+        "substitution": {
+          "classification": "NO_TEST_DOUBLE"
+        },
+        "test_id": "unittest::tests.test_feature_research.FeatureTest.test_evolution_negative"
+      },
+      "R2.P1.POSITIVE": {
+        "command_id": "feature-tests",
+        "current_evidence_fingerprint": "e4a023c8fc5506f6f1c734024398ee6925891f4c04b38e039f9db1497abd676a",
+        "distinct_reason": "evolution positive independent partition",
+        "green_expectation": "Feature and joint generations",
+        "id": "R2.P1.POSITIVE",
+        "invalidation_dependencies": [
+          "prototype/features/axes.json",
+          "prototype/features/core.js",
+          "prototype/features/text-bounds.js",
+          "prototype/qualification/core.js",
+          "tests/test_feature_research.py",
+          "tests/test_layout_qualification.py"
+        ],
+        "latest_observed_status": "passed",
+        "observable": "Exact declared valid/invalid partition is respected.",
+        "polarity": "positive",
+        "property_id": "R2.P1",
+        "red_expectation": "Invalid evidence/input accepted or literal valid input rejected.",
+        "scenario": "Evolve feature evidence",
+        "scenario_fingerprint": "c8dba677425291fa1843a8d576905d654d13d8fe410d1c0c0bceb856778e6186",
+        "setup": "Invoke real feature owner with literal independent examples/counterexamples; actual saved experiment checked when available.",
+        "source_path": "tests/test_feature_research.py",
+        "source_sha256": "bbd3b9c58c068f92c12b7586cf12f5c8ce9b2c28251e73f4a9eb25ee0906b044",
+        "state": "implemented",
+        "substitution": {
+          "classification": "NO_TEST_DOUBLE"
+        },
+        "test_id": "unittest::tests.test_feature_research.FeatureTest.test_evolution_positive"
+      },
+      "R3.P1.NEGATIVE": {
+        "command_id": "feature-tests",
+        "current_evidence_fingerprint": "23015bf23aee3f71f63efcc38f28571443b36c8c9dc1048164360af29b8107cc",
+        "distinct_reason": "measurement negative independent partition",
+        "green_expectation": "Honest rendered measurements",
+        "id": "R3.P1.NEGATIVE",
+        "invalidation_dependencies": [
+          "openspec/changes/expand-feature-research/evidence/atlas-word-bounds-corrected.json",
+          "openspec/changes/expand-feature-research/evidence/atlas-word-bounds-diagnostic.json",
+          "openspec/changes/expand-feature-research/evidence/campaign.json.gz",
+          "prototype/features/axes.json",
+          "prototype/features/core.js",
+          "prototype/features/renderer.js",
+          "prototype/features/text-bounds.js",
+          "prototype/qualification/core.js",
+          "prototype/qualification/renderer.js",
+          "tests/test_feature_research.py",
+          "tests/test_layout_qualification.py"
+        ],
+        "latest_observed_status": "passed",
+        "observable": "Exact declared valid/invalid partition is respected.",
+        "polarity": "negative",
+        "property_id": "R3.P1",
+        "red_expectation": "Invalid evidence/input accepted or literal valid input rejected.",
+        "scenario": "Measure constraints",
+        "scenario_fingerprint": "1e198e4eb630dbaef457f5b5139ff33f7f002e6041c084cc2df71cf6c304b9e6",
+        "setup": "Invoke real feature owner with literal independent examples/counterexamples; actual saved experiment checked when available.",
+        "source_path": "tests/test_feature_research.py",
+        "source_sha256": "bbd3b9c58c068f92c12b7586cf12f5c8ce9b2c28251e73f4a9eb25ee0906b044",
+        "state": "implemented",
+        "substitution": {
+          "classification": "NO_TEST_DOUBLE"
+        },
+        "test_id": "unittest::tests.test_feature_research.FeatureTest.test_measurement_negative"
+      },
+      "R3.P1.POSITIVE": {
+        "command_id": "feature-tests",
+        "current_evidence_fingerprint": "53aa583963380e6bb4c48787341f11d9d31b4aee6aa871bd03aa42cbe9c8eace",
+        "distinct_reason": "measurement positive independent partition",
+        "green_expectation": "Honest rendered measurements",
+        "id": "R3.P1.POSITIVE",
+        "invalidation_dependencies": [
+          "openspec/changes/expand-feature-research/evidence/atlas-word-bounds-corrected.json",
+          "openspec/changes/expand-feature-research/evidence/atlas-word-bounds-diagnostic.json",
+          "openspec/changes/expand-feature-research/evidence/campaign.json.gz",
+          "prototype/features/axes.json",
+          "prototype/features/core.js",
+          "prototype/features/renderer.js",
+          "prototype/features/text-bounds.js",
+          "prototype/qualification/core.js",
+          "prototype/qualification/renderer.js",
+          "tests/test_feature_research.py",
+          "tests/test_layout_qualification.py"
+        ],
+        "latest_observed_status": "passed",
+        "observable": "Exact declared valid/invalid partition is respected.",
+        "polarity": "positive",
+        "property_id": "R3.P1",
+        "red_expectation": "Invalid evidence/input accepted or literal valid input rejected.",
+        "scenario": "Measure constraints",
+        "scenario_fingerprint": "1e198e4eb630dbaef457f5b5139ff33f7f002e6041c084cc2df71cf6c304b9e6",
+        "setup": "Invoke real feature owner with literal independent examples/counterexamples; actual saved experiment checked when available.",
+        "source_path": "tests/test_feature_research.py",
+        "source_sha256": "bbd3b9c58c068f92c12b7586cf12f5c8ce9b2c28251e73f4a9eb25ee0906b044",
+        "state": "implemented",
+        "substitution": {
+          "classification": "NO_TEST_DOUBLE"
+        },
+        "test_id": "unittest::tests.test_feature_research.FeatureTest.test_measurement_positive"
+      },
+      "R4.P1.NEGATIVE": {
+        "command_id": "feature-tests",
+        "current_evidence_fingerprint": "a636274e0a241590bc983cfae67f4b22913c6169c6b1980fead519a6d6240a2a",
+        "distinct_reason": "qualification negative independent partition",
+        "green_expectation": "Combined top five confirmation",
+        "id": "R4.P1.NEGATIVE",
+        "invalidation_dependencies": [
+          "openspec/changes/expand-feature-research/evidence/campaign.json.gz",
+          "openspec/changes/expand-feature-research/evidence/confirm3-freeze.json",
+          "openspec/changes/expand-feature-research/evidence/confirm3-release.json",
+          "openspec/changes/expand-feature-research/evidence/confirm3_24/**",
+          "openspec/changes/expand-feature-research/evidence/final-selection.json",
+          "openspec/changes/expand-feature-research/evidence/history/third-freeze-final-selection.json",
+          "openspec/changes/expand-feature-research/evidence/selection-reporting-correction.json",
+          "prototype/features/author-edge24.json",
+          "prototype/features/axes.json",
+          "prototype/features/bounds-probe.html",
+          "prototype/features/bounds-probe.js",
+          "prototype/features/bounds-probe.json",
+          "prototype/features/core.js",
+          "prototype/features/data.js",
+          "prototype/features/fixtures.json",
+          "prototype/features/font-manifest.json",
+          "prototype/features/fonts/ChakraPetch-SemiBold.ttf",
+          "prototype/features/fonts/IBMPlexSansCondensed-SemiBold.ttf",
+          "prototype/features/fonts/Oxanium[wght].ttf",
+          "prototype/features/fonts/SairaCondensed-SemiBold.ttf",
+          "prototype/features/index.html",
+          "prototype/features/lab.js",
+          "prototype/features/legacy.json",
+          "prototype/features/renderer.js",
+          "prototype/features/review.html",
+          "prototype/features/review.js",
+          "prototype/features/rocket-catalog.json",
+          "prototype/features/sheet.html",
+          "prototype/features/sheet.js",
+          "prototype/features/style.css",
+          "prototype/features/text-bounds.js",
+          "prototype/fonts/BarlowSemiCondensed-latin-600.woff2",
+          "prototype/fonts/NotoSans-cyrillic-500.woff2",
+          "prototype/fonts/NotoSans-latin-500.woff2",
+          "prototype/fonts/NotoSans-latin-ext-500.woff2",
+          "prototype/fonts/Rajdhani-latin-600.woff2",
+          "prototype/fonts/RobotoCondensed-latin-600.woff2",
+          "prototype/fonts/SpaceGrotesk-latin-600.woff2",
+          "prototype/fonts/fonts.css",
+          "prototype/fonts/manifest.json",
+          "prototype/layout-data.js",
+          "prototype/qualification/core.js",
+          "prototype/qualification/renderer.js",
+          "prototype/qualification/style.css",
+          "prototype/vendor/d3-7.9.0.min.js",
+          "prototype/vendor/topojson-client-3.1.0.min.js",
+          "tests/test_feature_research.py",
+          "tests/test_layout_qualification.py"
+        ],
+        "latest_observed_status": "passed",
+        "observable": "Exact declared valid/invalid partition is respected.",
+        "polarity": "negative",
+        "property_id": "R4.P1",
+        "red_expectation": "Invalid evidence/input accepted or literal valid input rejected.",
+        "scenario": "Confirm the selection",
+        "scenario_fingerprint": "1d6bcf63fc270a399252010e096f40fdc48e656128633738698e9a364138d7df",
+        "setup": "Invoke real feature owner with literal independent examples/counterexamples; actual saved experiment checked when available.",
+        "source_path": "tests/test_feature_research.py",
+        "source_sha256": "bbd3b9c58c068f92c12b7586cf12f5c8ce9b2c28251e73f4a9eb25ee0906b044",
+        "state": "implemented",
+        "substitution": {
+          "classification": "NO_TEST_DOUBLE"
+        },
+        "test_id": "unittest::tests.test_feature_research.FeatureTest.test_qualification_negative"
+      },
+      "R4.P1.POSITIVE": {
+        "command_id": "feature-tests",
+        "current_evidence_fingerprint": "5fefc3ebb7efc4ed790aea4fc1e627a81ba8556c0363c8c3e1dee83ef3c4ff13",
+        "distinct_reason": "qualification positive independent partition",
+        "green_expectation": "Combined top five confirmation",
+        "id": "R4.P1.POSITIVE",
+        "invalidation_dependencies": [
+          "openspec/changes/expand-feature-research/evidence/campaign.json.gz",
+          "openspec/changes/expand-feature-research/evidence/confirm3-freeze.json",
+          "openspec/changes/expand-feature-research/evidence/confirm3-release.json",
+          "openspec/changes/expand-feature-research/evidence/confirm3_24/**",
+          "openspec/changes/expand-feature-research/evidence/final-selection.json",
+          "openspec/changes/expand-feature-research/evidence/history/third-freeze-final-selection.json",
+          "openspec/changes/expand-feature-research/evidence/selection-reporting-correction.json",
+          "prototype/features/author-edge24.json",
+          "prototype/features/axes.json",
+          "prototype/features/bounds-probe.html",
+          "prototype/features/bounds-probe.js",
+          "prototype/features/bounds-probe.json",
+          "prototype/features/core.js",
+          "prototype/features/data.js",
+          "prototype/features/fixtures.json",
+          "prototype/features/font-manifest.json",
+          "prototype/features/fonts/ChakraPetch-SemiBold.ttf",
+          "prototype/features/fonts/IBMPlexSansCondensed-SemiBold.ttf",
+          "prototype/features/fonts/Oxanium[wght].ttf",
+          "prototype/features/fonts/SairaCondensed-SemiBold.ttf",
+          "prototype/features/index.html",
+          "prototype/features/lab.js",
+          "prototype/features/legacy.json",
+          "prototype/features/renderer.js",
+          "prototype/features/review.html",
+          "prototype/features/review.js",
+          "prototype/features/rocket-catalog.json",
+          "prototype/features/sheet.html",
+          "prototype/features/sheet.js",
+          "prototype/features/style.css",
+          "prototype/features/text-bounds.js",
+          "prototype/fonts/BarlowSemiCondensed-latin-600.woff2",
+          "prototype/fonts/NotoSans-cyrillic-500.woff2",
+          "prototype/fonts/NotoSans-latin-500.woff2",
+          "prototype/fonts/NotoSans-latin-ext-500.woff2",
+          "prototype/fonts/Rajdhani-latin-600.woff2",
+          "prototype/fonts/RobotoCondensed-latin-600.woff2",
+          "prototype/fonts/SpaceGrotesk-latin-600.woff2",
+          "prototype/fonts/fonts.css",
+          "prototype/fonts/manifest.json",
+          "prototype/layout-data.js",
+          "prototype/qualification/core.js",
+          "prototype/qualification/renderer.js",
+          "prototype/qualification/style.css",
+          "prototype/vendor/d3-7.9.0.min.js",
+          "prototype/vendor/topojson-client-3.1.0.min.js",
+          "tests/test_feature_research.py",
+          "tests/test_layout_qualification.py"
+        ],
+        "latest_observed_status": "passed",
+        "observable": "Allfrozenfive qualify on128known+24fresh; source/parameter/packet identity exact; previousfreshfailures retained.",
+        "polarity": "positive",
+        "property_id": "R4.P1",
+        "red_expectation": "Invalid evidence/input accepted or literal valid input rejected.",
+        "scenario": "Confirm the selection",
+        "scenario_fingerprint": "1d6bcf63fc270a399252010e096f40fdc48e656128633738698e9a364138d7df",
+        "setup": "Read actual280catalog/current8960observations,128regression and genuinelyreleasedthirdconfirm24; verify frozen sources/packet seals, exactsceneIDs, fullfive semanticgeometry and two new actualreadingroutes.",
+        "source_path": "tests/test_feature_research.py",
+        "source_sha256": "bbd3b9c58c068f92c12b7586cf12f5c8ce9b2c28251e73f4a9eb25ee0906b044",
+        "state": "implemented",
+        "substitution": {
+          "classification": "NO_TEST_DOUBLE"
+        },
+        "test_id": "unittest::tests.test_feature_research.FeatureTest.test_qualification_positive"
+      },
+      "R5.P1.NEGATIVE": {
+        "command_id": "feature-tests",
+        "current_evidence_fingerprint": "b1fe6addbc4588566bc1c5582859c9429d38fc0a918507b71528f8849ce21dab",
+        "distinct_reason": "boundaries negative independent partition",
+        "green_expectation": "Explicit benchmark boundaries",
+        "id": "R5.P1.NEGATIVE",
+        "invalidation_dependencies": [
+          "prototype/features/axes.json",
+          "prototype/features/core.js",
+          "prototype/features/text-bounds.js",
+          "prototype/qualification/core.js",
+          "tests/test_feature_research.py",
+          "tests/test_layout_qualification.py"
+        ],
+        "latest_observed_status": "passed",
+        "observable": "Exact declared valid/invalid partition is respected.",
+        "polarity": "negative",
+        "property_id": "R5.P1",
+        "red_expectation": "Invalid evidence/input accepted or literal valid input rejected.",
+        "scenario": "Retain difficult inputs",
+        "scenario_fingerprint": "309fdfabaa3c81447a6c6dc7331afd35d12ea12d7e598480c0218f282acafb4d",
+        "setup": "Invoke real feature owner with literal independent examples/counterexamples; actual saved experiment checked when available.",
+        "source_path": "tests/test_feature_research.py",
+        "source_sha256": "bbd3b9c58c068f92c12b7586cf12f5c8ce9b2c28251e73f4a9eb25ee0906b044",
+        "state": "implemented",
+        "substitution": {
+          "classification": "NO_TEST_DOUBLE"
+        },
+        "test_id": "unittest::tests.test_feature_research.FeatureTest.test_boundaries_negative"
+      },
+      "R5.P1.POSITIVE": {
+        "command_id": "feature-tests",
+        "current_evidence_fingerprint": "acadf69732fe42410aa09cb7bb9dd420449656f139c695d90d3e88a1ba0e6701",
+        "distinct_reason": "boundaries positive independent partition",
+        "green_expectation": "Explicit benchmark boundaries",
+        "id": "R5.P1.POSITIVE",
+        "invalidation_dependencies": [
+          "prototype/features/axes.json",
+          "prototype/features/core.js",
+          "prototype/features/text-bounds.js",
+          "prototype/qualification/core.js",
+          "tests/test_feature_research.py",
+          "tests/test_layout_qualification.py"
+        ],
+        "latest_observed_status": "passed",
+        "observable": "Exact declared valid/invalid partition is respected.",
+        "polarity": "positive",
+        "property_id": "R5.P1",
+        "red_expectation": "Invalid evidence/input accepted or literal valid input rejected.",
+        "scenario": "Retain difficult inputs",
+        "scenario_fingerprint": "309fdfabaa3c81447a6c6dc7331afd35d12ea12d7e598480c0218f282acafb4d",
+        "setup": "Invoke real feature owner with literal independent examples/counterexamples; actual saved experiment checked when available.",
+        "source_path": "tests/test_feature_research.py",
+        "source_sha256": "bbd3b9c58c068f92c12b7586cf12f5c8ce9b2c28251e73f4a9eb25ee0906b044",
+        "state": "implemented",
+        "substitution": {
+          "classification": "NO_TEST_DOUBLE"
+        },
+        "test_id": "unittest::tests.test_feature_research.FeatureTest.test_boundaries_positive"
+      }
+    },
+    "commands": {
+      "feature-tests": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "-v",
+          "tests.test_feature_research"
+        ],
+        "authority": "local",
+        "cwd": ".",
+        "id": "feature-tests",
+        "runner": "python-unittest",
+        "timeout_seconds": 90
+      }
+    },
+    "properties": {
+      "R1.P1": {
+        "id": "R1.P1",
+        "oracle": "Literal independently specified positive and counterexample inputs; separate retained real browser and reviewer-owned observations. No human/native inference.",
+        "owner": "matrix",
+        "requirement_id": "R1",
+        "scenarios": [
+          "Inspect feature hypotheses"
+        ],
+        "source_globs": [
+          "distribution/components.json",
+          "licenses/chakrapetch-OFL.txt",
+          "licenses/ibmplexsanscondensed-OFL.txt",
+          "licenses/oxanium-OFL.txt",
+          "licenses/sairacondensed-OFL.txt",
+          "prototype/features/axes.json",
+          "prototype/features/core.js",
+          "prototype/features/font-manifest.json",
+          "prototype/features/fonts/**",
+          "prototype/features/text-bounds.js",
+          "prototype/qualification/core.js",
+          "tests/test_feature_research.py",
+          "tests/test_layout_qualification.py"
+        ],
+        "statement": "Traceable feature matrix"
+      },
+      "R2.P1": {
+        "id": "R2.P1",
+        "oracle": "Literal independently specified positive and counterexample inputs; separate retained real browser and reviewer-owned observations. No human/native inference.",
+        "owner": "evolution",
+        "requirement_id": "R2",
+        "scenarios": [
+          "Evolve feature evidence"
+        ],
+        "source_globs": [
+          "prototype/features/axes.json",
+          "prototype/features/core.js",
+          "prototype/features/text-bounds.js",
+          "prototype/qualification/core.js",
+          "tests/test_feature_research.py",
+          "tests/test_layout_qualification.py"
+        ],
+        "statement": "Feature and joint generations"
+      },
+      "R3.P1": {
+        "id": "R3.P1",
+        "oracle": "Literal independently specified positive and counterexample inputs; separate retained real browser and reviewer-owned observations. No human/native inference.",
+        "owner": "measurement",
+        "requirement_id": "R3",
+        "scenarios": [
+          "Measure constraints"
+        ],
+        "source_globs": [
+          "openspec/changes/expand-feature-research/evidence/atlas-word-bounds-corrected.json",
+          "openspec/changes/expand-feature-research/evidence/atlas-word-bounds-diagnostic.json",
+          "openspec/changes/expand-feature-research/evidence/campaign.json.gz",
+          "prototype/features/axes.json",
+          "prototype/features/core.js",
+          "prototype/features/renderer.js",
+          "prototype/features/text-bounds.js",
+          "prototype/qualification/core.js",
+          "prototype/qualification/renderer.js",
+          "tests/test_feature_research.py",
+          "tests/test_layout_qualification.py"
+        ],
+        "statement": "Honest rendered measurements"
+      },
+      "R4.P1": {
+        "id": "R4.P1",
+        "oracle": "Literal independently specified positive and counterexample inputs; separate retained real browser and reviewer-owned observations. No human/native inference.",
+        "owner": "qualification",
+        "requirement_id": "R4",
+        "scenarios": [
+          "Confirm the selection"
+        ],
+        "source_globs": [
+          "openspec/changes/expand-feature-research/evidence/campaign.json.gz",
+          "openspec/changes/expand-feature-research/evidence/confirm3-freeze.json",
+          "openspec/changes/expand-feature-research/evidence/confirm3-release.json",
+          "openspec/changes/expand-feature-research/evidence/confirm3_24/**",
+          "openspec/changes/expand-feature-research/evidence/final-selection.json",
+          "openspec/changes/expand-feature-research/evidence/history/third-freeze-final-selection.json",
+          "openspec/changes/expand-feature-research/evidence/selection-reporting-correction.json",
+          "prototype/features/author-edge24.json",
+          "prototype/features/axes.json",
+          "prototype/features/bounds-probe.html",
+          "prototype/features/bounds-probe.js",
+          "prototype/features/bounds-probe.json",
+          "prototype/features/core.js",
+          "prototype/features/data.js",
+          "prototype/features/fixtures.json",
+          "prototype/features/font-manifest.json",
+          "prototype/features/fonts/ChakraPetch-SemiBold.ttf",
+          "prototype/features/fonts/IBMPlexSansCondensed-SemiBold.ttf",
+          "prototype/features/fonts/Oxanium[wght].ttf",
+          "prototype/features/fonts/SairaCondensed-SemiBold.ttf",
+          "prototype/features/index.html",
+          "prototype/features/lab.js",
+          "prototype/features/legacy.json",
+          "prototype/features/renderer.js",
+          "prototype/features/review.html",
+          "prototype/features/review.js",
+          "prototype/features/rocket-catalog.json",
+          "prototype/features/sheet.html",
+          "prototype/features/sheet.js",
+          "prototype/features/style.css",
+          "prototype/features/text-bounds.js",
+          "prototype/fonts/BarlowSemiCondensed-latin-600.woff2",
+          "prototype/fonts/NotoSans-cyrillic-500.woff2",
+          "prototype/fonts/NotoSans-latin-500.woff2",
+          "prototype/fonts/NotoSans-latin-ext-500.woff2",
+          "prototype/fonts/Rajdhani-latin-600.woff2",
+          "prototype/fonts/RobotoCondensed-latin-600.woff2",
+          "prototype/fonts/SpaceGrotesk-latin-600.woff2",
+          "prototype/fonts/fonts.css",
+          "prototype/fonts/manifest.json",
+          "prototype/layout-data.js",
+          "prototype/qualification/core.js",
+          "prototype/qualification/renderer.js",
+          "prototype/qualification/style.css",
+          "prototype/vendor/d3-7.9.0.min.js",
+          "prototype/vendor/topojson-client-3.1.0.min.js",
+          "tests/test_feature_research.py",
+          "tests/test_layout_qualification.py"
+        ],
+        "statement": "Combined top five confirmation"
+      },
+      "R5.P1": {
+        "id": "R5.P1",
+        "oracle": "Literal independently specified positive and counterexample inputs; separate retained real browser and reviewer-owned observations. No human/native inference.",
+        "owner": "boundaries",
+        "requirement_id": "R5",
+        "scenarios": [
+          "Retain difficult inputs"
+        ],
+        "source_globs": [
+          "prototype/features/axes.json",
+          "prototype/features/core.js",
+          "prototype/features/text-bounds.js",
+          "prototype/qualification/core.js",
+          "tests/test_feature_research.py",
+          "tests/test_layout_qualification.py"
+        ],
+        "statement": "Explicit benchmark boundaries"
+      }
+    },
+    "requirements": {
+      "R1": {
+        "capability": "feature-research",
+        "fingerprint": "3dfd310c0b660795506665f9be5e7513d1d3ac6d6781b7c0b81fb78d3dc5fb4e",
+        "id": "R1",
+        "title": "Traceable feature matrix"
+      },
+      "R2": {
+        "capability": "feature-research",
+        "fingerprint": "2b684b354179f104cf820972ea6956d4d60145e5b62c23e2b517f1f1826c7c42",
+        "id": "R2",
+        "title": "Feature and joint generations"
+      },
+      "R3": {
+        "capability": "feature-research",
+        "fingerprint": "7de254670892803694d8e28a2625704fbd6ce7eb5f33e02959f197c12f669da4",
+        "id": "R3",
+        "title": "Honest rendered measurements"
+      },
+      "R4": {
+        "capability": "feature-research",
+        "fingerprint": "157d6894c25124ba7e9ff6b747320ba4302c48041a043025d4c43e935d2118d3",
+        "id": "R4",
+        "title": "Combined top five confirmation"
+      },
+      "R5": {
+        "capability": "feature-research",
+        "fingerprint": "75e949633dcad359bedf092baac76c58b884ac62a56f97e4018fb44743dce0c8",
+        "id": "R5",
+        "title": "Explicit benchmark boundaries"
+      }
+    }
+  },
+  "requested_selectors": {
+    "all": true,
+    "cases": [],
+    "changed_paths": [],
+    "commands": [],
+    "owners": [],
+    "properties": [],
+    "requirements": [],
+    "scenarios": [],
+    "tests": []
+  },
+  "selection": {
+    "cases": [
+      "R1.P1.NEGATIVE",
+      "R1.P1.POSITIVE",
+      "R2.P1.NEGATIVE",
+      "R2.P1.POSITIVE",
+      "R3.P1.NEGATIVE",
+      "R3.P1.POSITIVE",
+      "R4.P1.NEGATIVE",
+      "R4.P1.POSITIVE",
+      "R5.P1.NEGATIVE",
+      "R5.P1.POSITIVE"
+    ],
+    "commands": [
+      "feature-tests"
+    ],
+    "properties": [
+      "R1.P1",
+      "R2.P1",
+      "R3.P1",
+      "R4.P1",
+      "R5.P1"
+    ],
+    "requirements": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5"
+    ]
+  },
+  "specifications": {
+    "R1": "3dfd310c0b660795506665f9be5e7513d1d3ac6d6781b7c0b81fb78d3dc5fb4e",
+    "R2": "2b684b354179f104cf820972ea6956d4d60145e5b62c23e2b517f1f1826c7c42",
+    "R3": "7de254670892803694d8e28a2625704fbd6ce7eb5f33e02959f197c12f669da4",
+    "R4": "157d6894c25124ba7e9ff6b747320ba4302c48041a043025d4c43e935d2118d3",
+    "R5": "75e949633dcad359bedf092baac76c58b884ac62a56f97e4018fb44743dce0c8"
+  },
+  "status": "passed",
+  "substitution_gaps": []
+}
