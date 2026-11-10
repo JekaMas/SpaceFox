@@ -1,0 +1,320 @@
+{
+  "schema_version": 2,
+  "change": "evolve-spacefox-layouts",
+  "requirements": [
+    {
+      "id": "R1",
+      "capability": "layout-research",
+      "title": "Reproducible candidate catalog",
+      "fingerprint": "79bfad90fb1ae091d11e0cd76fb31485f934462b4f9ea98c5ea5152365581836"
+    },
+    {
+      "id": "R2",
+      "capability": "layout-research",
+      "title": "Measured layout constraints",
+      "fingerprint": "e004ce7b448c896313ed83c73d07e3b3d7e81646964dda7a90cf7e26ace5d9bb"
+    },
+    {
+      "id": "R3",
+      "capability": "layout-research",
+      "title": "Evidence-driven generations",
+      "fingerprint": "d2c8ad466b3409d9430e463730c37d14437eee82fbc5bb91df0b655555ee728c"
+    },
+    {
+      "id": "R4",
+      "capability": "layout-research",
+      "title": "Bounded finalist qualification",
+      "fingerprint": "10c09927e6e4cd19b98c41764b88ce7ac7a0e4e82b8ef604dd27c251713d403a"
+    }
+  ],
+  "properties": [
+    {
+      "id": "R1.P1",
+      "requirement_id": "R1",
+      "scenarios": [
+        "Generate and inspect candidates"
+      ],
+      "statement": "Deterministic unique catalog and explicit invalid-candidate rejection.",
+      "owner": "catalog",
+      "oracle": "Deterministic unique catalog and explicit invalid-candidate rejection.",
+      "source_globs": [
+        "prototype/research/generator.js",
+        "tests/test_layout_research.py"
+      ]
+    },
+    {
+      "id": "R2.P1",
+      "requirement_id": "R2",
+      "scenarios": [
+        "Measure rendered scenes"
+      ],
+      "statement": "Literal rectangle counterexamples detect fit, overlap, missing values and marker occlusion.",
+      "owner": "detector",
+      "oracle": "Literal rectangle counterexamples detect fit, overlap, missing values and marker occlusion.",
+      "source_globs": [
+        "prototype/research/metrics.js",
+        "prototype/research/renderer.js",
+        "prototype/research/fixtures.js",
+        "prototype/research/research.css",
+        "prototype/research/lab.js",
+        "tests/test_layout_research.py"
+      ]
+    },
+    {
+      "id": "R3.P1",
+      "requirement_id": "R3",
+      "scenarios": [
+        "Select and evolve"
+      ],
+      "statement": "Actual measured parents and mutation lineage; absent evidence rejected.",
+      "owner": "evolution",
+      "oracle": "Actual measured parents and mutation lineage; absent evidence rejected.",
+      "source_globs": [
+        "prototype/research/generator.js",
+        "prototype/research/metrics.js",
+        "tests/test_layout_research.py"
+      ]
+    },
+    {
+      "id": "R4.P1",
+      "requirement_id": "R4",
+      "scenarios": [
+        "Review the final selection"
+      ],
+      "statement": "Exact counts, families, thresholds and visual-review requirements; incomplete evidence rejected.",
+      "owner": "qualification",
+      "oracle": "Exact counts, families, thresholds and visual-review requirements; incomplete evidence rejected.",
+      "source_globs": [
+        "prototype/research/generator.js",
+        "prototype/research/metrics.js",
+        "openspec/changes/evolve-spacefox-layouts/evidence/campaign-checkpoint.json",
+        "tests/test_layout_research.py"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "R1.P1.POSITIVE",
+      "property_id": "R1.P1",
+      "polarity": "positive",
+      "scenario": "Generate and inspect candidates",
+      "scenario_fingerprint": "41e54fa3e6cf41b6a83d5352adad1bee70352b404a73c9550d885b8121f38c9e",
+      "setup": "Invoke the real JavaScript owner with literal independently chosen valid and invalid inputs via existing Node. Browser runs additionally exercise rendered bounds.",
+      "observable": "Valid inputs satisfy the declared property.",
+      "red_expectation": "The independently specified expected outcome is violated.",
+      "green_expectation": "Deterministic unique catalog and explicit invalid-candidate rejection.",
+      "invalidation_dependencies": [
+        "prototype/research/generator.js",
+        "tests/test_layout_research.py"
+      ],
+      "test_id": "unittest::tests.test_layout_research.ResearchTest.test_generator_positive",
+      "command_id": "research-tests",
+      "state": "implemented",
+      "source_path": "tests/test_layout_research.py",
+      "distinct_reason": "catalog positive independent input partition",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "db1eb3c870b3f9341b4e743e8aae85de8a9400efc2841b41fcf067d63613491e"
+    },
+    {
+      "id": "R1.P1.NEGATIVE",
+      "property_id": "R1.P1",
+      "polarity": "negative",
+      "scenario": "Generate and inspect candidates",
+      "scenario_fingerprint": "41e54fa3e6cf41b6a83d5352adad1bee70352b404a73c9550d885b8121f38c9e",
+      "setup": "Invoke the real JavaScript owner with literal independently chosen valid and invalid inputs via existing Node. Browser runs additionally exercise rendered bounds.",
+      "observable": "Explicit invalid or incomplete inputs fail the declared property.",
+      "red_expectation": "The independently specified expected outcome is violated.",
+      "green_expectation": "Deterministic unique catalog and explicit invalid-candidate rejection.",
+      "invalidation_dependencies": [
+        "prototype/research/generator.js",
+        "tests/test_layout_research.py"
+      ],
+      "test_id": "unittest::tests.test_layout_research.ResearchTest.test_generator_negative",
+      "command_id": "research-tests",
+      "state": "implemented",
+      "source_path": "tests/test_layout_research.py",
+      "distinct_reason": "catalog negative independent input partition",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "db1eb3c870b3f9341b4e743e8aae85de8a9400efc2841b41fcf067d63613491e"
+    },
+    {
+      "id": "R2.P1.POSITIVE",
+      "property_id": "R2.P1",
+      "polarity": "positive",
+      "scenario": "Measure rendered scenes",
+      "scenario_fingerprint": "cdcb1d3aa2cf9effa3fe8962fffb8953fad950a399e1744d33c90f0201ae9b6e",
+      "setup": "Invoke the real JavaScript owner with literal independently chosen valid and invalid inputs via existing Node. Browser runs additionally exercise rendered bounds.",
+      "observable": "Valid inputs satisfy the declared property.",
+      "red_expectation": "The independently specified expected outcome is violated.",
+      "green_expectation": "Literal rectangle counterexamples detect fit, overlap, missing values and marker occlusion.",
+      "invalidation_dependencies": [
+        "prototype/research/metrics.js",
+        "prototype/research/renderer.js",
+        "prototype/research/fixtures.js",
+        "prototype/research/research.css",
+        "prototype/research/lab.js",
+        "tests/test_layout_research.py"
+      ],
+      "test_id": "unittest::tests.test_layout_research.ResearchTest.test_detector_positive",
+      "command_id": "research-tests",
+      "state": "implemented",
+      "source_path": "tests/test_layout_research.py",
+      "distinct_reason": "detector positive independent input partition",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "db1eb3c870b3f9341b4e743e8aae85de8a9400efc2841b41fcf067d63613491e"
+    },
+    {
+      "id": "R2.P1.NEGATIVE",
+      "property_id": "R2.P1",
+      "polarity": "negative",
+      "scenario": "Measure rendered scenes",
+      "scenario_fingerprint": "cdcb1d3aa2cf9effa3fe8962fffb8953fad950a399e1744d33c90f0201ae9b6e",
+      "setup": "Invoke the real JavaScript owner with literal independently chosen valid and invalid inputs via existing Node. Browser runs additionally exercise rendered bounds.",
+      "observable": "Explicit invalid or incomplete inputs fail the declared property.",
+      "red_expectation": "The independently specified expected outcome is violated.",
+      "green_expectation": "Literal rectangle counterexamples detect fit, overlap, missing values and marker occlusion.",
+      "invalidation_dependencies": [
+        "prototype/research/metrics.js",
+        "prototype/research/renderer.js",
+        "prototype/research/fixtures.js",
+        "prototype/research/research.css",
+        "prototype/research/lab.js",
+        "tests/test_layout_research.py"
+      ],
+      "test_id": "unittest::tests.test_layout_research.ResearchTest.test_detector_negative",
+      "command_id": "research-tests",
+      "state": "implemented",
+      "source_path": "tests/test_layout_research.py",
+      "distinct_reason": "detector negative independent input partition",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "db1eb3c870b3f9341b4e743e8aae85de8a9400efc2841b41fcf067d63613491e"
+    },
+    {
+      "id": "R3.P1.POSITIVE",
+      "property_id": "R3.P1",
+      "polarity": "positive",
+      "scenario": "Select and evolve",
+      "scenario_fingerprint": "4402a83e53d2ae25e7b9274b2ba9b474000a323c7a1ac7494d333fdb02739a62",
+      "setup": "Invoke the real JavaScript owner with literal independently chosen valid and invalid inputs via existing Node. Browser runs additionally exercise rendered bounds.",
+      "observable": "Valid inputs satisfy the declared property.",
+      "red_expectation": "The independently specified expected outcome is violated.",
+      "green_expectation": "Actual measured parents and mutation lineage; absent evidence rejected.",
+      "invalidation_dependencies": [
+        "prototype/research/generator.js",
+        "prototype/research/metrics.js",
+        "tests/test_layout_research.py"
+      ],
+      "test_id": "unittest::tests.test_layout_research.ResearchTest.test_evolution_positive",
+      "command_id": "research-tests",
+      "state": "implemented",
+      "source_path": "tests/test_layout_research.py",
+      "distinct_reason": "evolution positive independent input partition",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "db1eb3c870b3f9341b4e743e8aae85de8a9400efc2841b41fcf067d63613491e"
+    },
+    {
+      "id": "R3.P1.NEGATIVE",
+      "property_id": "R3.P1",
+      "polarity": "negative",
+      "scenario": "Select and evolve",
+      "scenario_fingerprint": "4402a83e53d2ae25e7b9274b2ba9b474000a323c7a1ac7494d333fdb02739a62",
+      "setup": "Invoke the real JavaScript owner with literal independently chosen valid and invalid inputs via existing Node. Browser runs additionally exercise rendered bounds.",
+      "observable": "Explicit invalid or incomplete inputs fail the declared property.",
+      "red_expectation": "The independently specified expected outcome is violated.",
+      "green_expectation": "Actual measured parents and mutation lineage; absent evidence rejected.",
+      "invalidation_dependencies": [
+        "prototype/research/generator.js",
+        "prototype/research/metrics.js",
+        "tests/test_layout_research.py"
+      ],
+      "test_id": "unittest::tests.test_layout_research.ResearchTest.test_evolution_negative",
+      "command_id": "research-tests",
+      "state": "implemented",
+      "source_path": "tests/test_layout_research.py",
+      "distinct_reason": "evolution negative independent input partition",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "db1eb3c870b3f9341b4e743e8aae85de8a9400efc2841b41fcf067d63613491e"
+    },
+    {
+      "id": "R4.P1.POSITIVE",
+      "property_id": "R4.P1",
+      "polarity": "positive",
+      "scenario": "Review the final selection",
+      "scenario_fingerprint": "565d08936d2623d1337d5e15b3f6ba4da80b886af6e713c6d2b836ceb0a27dd8",
+      "setup": "Invoke the real JavaScript owner with literal independently chosen valid and invalid inputs via existing Node. Browser runs additionally exercise rendered bounds.",
+      "observable": "Valid inputs satisfy the declared property.",
+      "red_expectation": "The independently specified expected outcome is violated.",
+      "green_expectation": "Exact counts, families, thresholds and visual-review requirements; incomplete evidence rejected.",
+      "invalidation_dependencies": [
+        "prototype/research/generator.js",
+        "prototype/research/metrics.js",
+        "openspec/changes/evolve-spacefox-layouts/evidence/campaign-checkpoint.json",
+        "tests/test_layout_research.py"
+      ],
+      "test_id": "unittest::tests.test_layout_research.ResearchTest.test_qualification_positive",
+      "command_id": "research-tests",
+      "state": "implemented",
+      "source_path": "tests/test_layout_research.py",
+      "distinct_reason": "qualification positive independent input partition",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "db1eb3c870b3f9341b4e743e8aae85de8a9400efc2841b41fcf067d63613491e"
+    },
+    {
+      "id": "R4.P1.NEGATIVE",
+      "property_id": "R4.P1",
+      "polarity": "negative",
+      "scenario": "Review the final selection",
+      "scenario_fingerprint": "565d08936d2623d1337d5e15b3f6ba4da80b886af6e713c6d2b836ceb0a27dd8",
+      "setup": "Invoke the real JavaScript owner with literal independently chosen valid and invalid inputs via existing Node. Browser runs additionally exercise rendered bounds.",
+      "observable": "Explicit invalid or incomplete inputs fail the declared property.",
+      "red_expectation": "The independently specified expected outcome is violated.",
+      "green_expectation": "Exact counts, families, thresholds and visual-review requirements; incomplete evidence rejected.",
+      "invalidation_dependencies": [
+        "prototype/research/generator.js",
+        "prototype/research/metrics.js",
+        "openspec/changes/evolve-spacefox-layouts/evidence/campaign-checkpoint.json",
+        "tests/test_layout_research.py"
+      ],
+      "test_id": "unittest::tests.test_layout_research.ResearchTest.test_qualification_negative",
+      "command_id": "research-tests",
+      "state": "implemented",
+      "source_path": "tests/test_layout_research.py",
+      "distinct_reason": "qualification negative independent input partition",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "db1eb3c870b3f9341b4e743e8aae85de8a9400efc2841b41fcf067d63613491e"
+    }
+  ],
+  "commands": [
+    {
+      "id": "research-tests",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_layout_research"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 60,
+      "authority": "local"
+    }
+  ]
+}

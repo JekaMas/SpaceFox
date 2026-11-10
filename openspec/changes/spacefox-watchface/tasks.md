@@ -28,7 +28,7 @@
 
 ## 5. Native watch face
 
-- [ ] 5.1 Implement local time, four persisted configurable Garmin fields and the compact Mission band with larger country/site text; verify missing metrics/context, long names, field hiding, settings persistence and circular screen fit in simulator and on FR165.
+- [ ] 5.1 Implement local time, four persisted configurable Garmin fields and the selected coherent launch scene with larger country/site text and stacked/paired/distributed metadata as appropriate; verify missing metrics/context, long names, field hiding, settings persistence and circular screen fit in simulator and on FR165. Consult `evolve-spacefox-layouts` for measured browser recommendations, without treating them as device acceptance.
 - [ ] 5.2 Implement the matching rocket visual, globe/map point and independent compact status indicators; verify known/unknown models and sites, corrected points, combined reschedule/stale state and unknown time without a precise countdown.
 - [ ] 5.3 Implement the optional 2–3-second ignition/ascent animation; verify wrist activation, disable, sleep/low-power stop and readable static fallback; document the measured device/power limits.
 - [ ] 5.4 Generate Monkey C resources and manifest languages from `locales/catalog.json`; qualify the 36 draft languages on the supported FR165 firmware, including native review, glyphs, Arabic shaping/RTL, long statuses/site names, memory, watch date/number and 12/24-hour settings, English fallback and preserved selections; advertise only qualified languages. Resource/preview/license foundation is owned by `localize-free-distribution`, not this task.

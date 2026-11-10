@@ -1,0 +1,974 @@
+{
+  "passed": true,
+  "tests": [
+    {
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 0,
+      "name": "healthy",
+      "rank": 38,
+      "raw": {
+        "geo": null,
+        "graphics": [],
+        "kind": "map",
+        "pin": null,
+        "pointExpected": false,
+        "rocket": {
+          "h": 65,
+          "w": 20,
+          "x": 290,
+          "y": 205
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "23:58",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 42
+          },
+          {
+            "clipped": false,
+            "contentWidth": 51.43575,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric0",
+            "value": "6842",
+            "w": 51.421875,
+            "x": 55,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 26.263875,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric1",
+            "value": "68",
+            "w": 26.25,
+            "x": 143,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 26.263875,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric2",
+            "value": "72",
+            "w": 26.25,
+            "x": 210,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 45.0060625,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric3",
+            "value": "82%",
+            "w": 44.9921875,
+            "x": 275,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 75.78731250000001,
+            "font": 19,
+            "h": 21.2734375,
+            "role": "rocket",
+            "value": "Falcon 9",
+            "w": 75.7734375,
+            "x": 80,
+            "y": 205
+          },
+          {
+            "clipped": false,
+            "contentWidth": 55.7873125,
+            "font": 16,
+            "h": 17.9140625,
+            "role": "operator",
+            "value": "SpaceX",
+            "w": 55.7734375,
+            "x": 80,
+            "y": 232
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.326375,
+            "font": 16,
+            "h": 17.9140625,
+            "role": "purpose",
+            "value": "Science",
+            "w": 58.3125,
+            "x": 80,
+            "y": 256
+          },
+          {
+            "clipped": false,
+            "contentWidth": 129.07637499999998,
+            "font": 32,
+            "h": 35.1953125,
+            "role": "countdown",
+            "value": "T−2h 34m",
+            "w": 129.0625,
+            "x": 110,
+            "y": 286
+          },
+          {
+            "clipped": false,
+            "contentWidth": 119.7716875,
+            "font": 19,
+            "h": 21.2734375,
+            "role": "site",
+            "value": "USA · Kourou",
+            "w": 119.7578125,
+            "x": 110,
+            "y": 333
+          }
+        ],
+        "unknown": false
+      },
+      "siteFont": 19,
+      "siteWidth": 119.7578125,
+      "timeFont": 80,
+      "truncations": 0
+    },
+    {
+      "capClearance": null,
+      "failures": [
+        "overlap:metric0/metric1"
+      ],
+      "geoArea": 0,
+      "name": "collision",
+      "rank": 38,
+      "raw": {
+        "geo": null,
+        "graphics": [],
+        "kind": "map",
+        "pin": null,
+        "pointExpected": false,
+        "rocket": {
+          "h": 65,
+          "w": 20,
+          "x": 290,
+          "y": 205
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "23:58",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 42
+          },
+          {
+            "clipped": false,
+            "contentWidth": 51.43575,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric0",
+            "value": "6842",
+            "w": 51.421875,
+            "x": 55,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 26.263875,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric1",
+            "value": "68",
+            "w": 26.25,
+            "x": 55,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 26.263875,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric2",
+            "value": "72",
+            "w": 26.25,
+            "x": 210,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 45.0060625,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric3",
+            "value": "82%",
+            "w": 44.9921875,
+            "x": 275,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 75.78731250000001,
+            "font": 19,
+            "h": 21.2734375,
+            "role": "rocket",
+            "value": "Falcon 9",
+            "w": 75.7734375,
+            "x": 80,
+            "y": 205
+          },
+          {
+            "clipped": false,
+            "contentWidth": 55.7873125,
+            "font": 16,
+            "h": 17.9140625,
+            "role": "operator",
+            "value": "SpaceX",
+            "w": 55.7734375,
+            "x": 80,
+            "y": 232
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.326375,
+            "font": 16,
+            "h": 17.9140625,
+            "role": "purpose",
+            "value": "Science",
+            "w": 58.3125,
+            "x": 80,
+            "y": 256
+          },
+          {
+            "clipped": false,
+            "contentWidth": 129.07637499999998,
+            "font": 32,
+            "h": 35.1953125,
+            "role": "countdown",
+            "value": "T−2h 34m",
+            "w": 129.0625,
+            "x": 110,
+            "y": 286
+          },
+          {
+            "clipped": false,
+            "contentWidth": 119.7716875,
+            "font": 19,
+            "h": 21.2734375,
+            "role": "site",
+            "value": "USA · Kourou",
+            "w": 119.7578125,
+            "x": 110,
+            "y": 333
+          }
+        ],
+        "unknown": false
+      },
+      "siteFont": 19,
+      "siteWidth": 119.7578125,
+      "timeFont": 80,
+      "truncations": 0
+    },
+    {
+      "capClearance": null,
+      "failures": [
+        "circle:site"
+      ],
+      "geoArea": 0,
+      "name": "circle",
+      "rank": 38,
+      "raw": {
+        "geo": null,
+        "graphics": [],
+        "kind": "map",
+        "pin": null,
+        "pointExpected": false,
+        "rocket": {
+          "h": 65,
+          "w": 20,
+          "x": 290,
+          "y": 205
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "23:58",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 42
+          },
+          {
+            "clipped": false,
+            "contentWidth": 51.43575,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric0",
+            "value": "6842",
+            "w": 51.421875,
+            "x": 55,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 26.263875,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric1",
+            "value": "68",
+            "w": 26.25,
+            "x": 143,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 26.263875,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric2",
+            "value": "72",
+            "w": 26.25,
+            "x": 210,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 45.0060625,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric3",
+            "value": "82%",
+            "w": 44.9921875,
+            "x": 275,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 75.78731250000001,
+            "font": 19,
+            "h": 21.2734375,
+            "role": "rocket",
+            "value": "Falcon 9",
+            "w": 75.7734375,
+            "x": 80,
+            "y": 205
+          },
+          {
+            "clipped": false,
+            "contentWidth": 55.7873125,
+            "font": 16,
+            "h": 17.9140625,
+            "role": "operator",
+            "value": "SpaceX",
+            "w": 55.7734375,
+            "x": 80,
+            "y": 232
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.326375,
+            "font": 16,
+            "h": 17.9140625,
+            "role": "purpose",
+            "value": "Science",
+            "w": 58.3125,
+            "x": 80,
+            "y": 256
+          },
+          {
+            "clipped": false,
+            "contentWidth": 129.07637499999998,
+            "font": 32,
+            "h": 35.1953125,
+            "role": "countdown",
+            "value": "T−2h 34m",
+            "w": 129.0625,
+            "x": 110,
+            "y": 286
+          },
+          {
+            "clipped": false,
+            "contentWidth": 119.7716875,
+            "font": 19,
+            "h": 21.2734375,
+            "role": "site",
+            "value": "USA · Kourou",
+            "w": 119.7578125,
+            "x": 0,
+            "y": 333
+          }
+        ],
+        "unknown": false
+      },
+      "siteFont": 19,
+      "siteWidth": 119.7578125,
+      "timeFont": 80,
+      "truncations": 0
+    },
+    {
+      "capClearance": null,
+      "failures": [
+        "clipped:rocket"
+      ],
+      "geoArea": 0,
+      "name": "clipping",
+      "rank": 38,
+      "raw": {
+        "geo": null,
+        "graphics": [],
+        "kind": "map",
+        "pin": null,
+        "pointExpected": false,
+        "rocket": {
+          "h": 65,
+          "w": 20,
+          "x": 290,
+          "y": 205
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "23:58",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 42
+          },
+          {
+            "clipped": false,
+            "contentWidth": 51.43575,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric0",
+            "value": "6842",
+            "w": 51.421875,
+            "x": 55,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 26.263875,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric1",
+            "value": "68",
+            "w": 26.25,
+            "x": 143,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 26.263875,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric2",
+            "value": "72",
+            "w": 26.25,
+            "x": 210,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 45.0060625,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric3",
+            "value": "82%",
+            "w": 44.9921875,
+            "x": 275,
+            "y": 155
+          },
+          {
+            "clipped": true,
+            "contentWidth": 75.78731250000001,
+            "font": 19,
+            "h": 21.2734375,
+            "role": "rocket",
+            "value": "Falcon 9",
+            "w": 10,
+            "x": 80,
+            "y": 205
+          },
+          {
+            "clipped": false,
+            "contentWidth": 55.7873125,
+            "font": 16,
+            "h": 17.9140625,
+            "role": "operator",
+            "value": "SpaceX",
+            "w": 55.7734375,
+            "x": 80,
+            "y": 232
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.326375,
+            "font": 16,
+            "h": 17.9140625,
+            "role": "purpose",
+            "value": "Science",
+            "w": 58.3125,
+            "x": 80,
+            "y": 256
+          },
+          {
+            "clipped": false,
+            "contentWidth": 129.07637499999998,
+            "font": 32,
+            "h": 35.1953125,
+            "role": "countdown",
+            "value": "T−2h 34m",
+            "w": 129.0625,
+            "x": 110,
+            "y": 286
+          },
+          {
+            "clipped": false,
+            "contentWidth": 119.7716875,
+            "font": 19,
+            "h": 21.2734375,
+            "role": "site",
+            "value": "USA · Kourou",
+            "w": 119.7578125,
+            "x": 110,
+            "y": 333
+          }
+        ],
+        "unknown": false
+      },
+      "siteFont": 19,
+      "siteWidth": 119.7578125,
+      "timeFont": 80,
+      "truncations": 0
+    },
+    {
+      "capClearance": null,
+      "failures": [
+        "clipped:rocket"
+      ],
+      "geoArea": 0,
+      "name": "subpixel-clipping",
+      "rank": 38,
+      "raw": {
+        "geo": null,
+        "graphics": [],
+        "kind": "map",
+        "pin": null,
+        "pointExpected": false,
+        "rocket": {
+          "h": 65,
+          "w": 20,
+          "x": 290,
+          "y": 205
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "23:58",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 42
+          },
+          {
+            "clipped": false,
+            "contentWidth": 51.43575,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric0",
+            "value": "6842",
+            "w": 51.421875,
+            "x": 55,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 26.263875,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric1",
+            "value": "68",
+            "w": 26.25,
+            "x": 143,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 26.263875,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric2",
+            "value": "72",
+            "w": 26.25,
+            "x": 210,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 45.0060625,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric3",
+            "value": "82%",
+            "w": 44.9921875,
+            "x": 275,
+            "y": 155
+          },
+          {
+            "clipped": true,
+            "contentWidth": 75.78731250000001,
+            "font": 19,
+            "h": 21.2734375,
+            "role": "rocket",
+            "value": "Falcon 9",
+            "w": 75.5234375,
+            "x": 80,
+            "y": 205
+          },
+          {
+            "clipped": false,
+            "contentWidth": 55.7873125,
+            "font": 16,
+            "h": 17.9140625,
+            "role": "operator",
+            "value": "SpaceX",
+            "w": 55.7734375,
+            "x": 80,
+            "y": 232
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.326375,
+            "font": 16,
+            "h": 17.9140625,
+            "role": "purpose",
+            "value": "Science",
+            "w": 58.3125,
+            "x": 80,
+            "y": 256
+          },
+          {
+            "clipped": false,
+            "contentWidth": 129.07637499999998,
+            "font": 32,
+            "h": 35.1953125,
+            "role": "countdown",
+            "value": "T−2h 34m",
+            "w": 129.0625,
+            "x": 110,
+            "y": 286
+          },
+          {
+            "clipped": false,
+            "contentWidth": 119.7716875,
+            "font": 19,
+            "h": 21.2734375,
+            "role": "site",
+            "value": "USA · Kourou",
+            "w": 119.7578125,
+            "x": 110,
+            "y": 333
+          }
+        ],
+        "unknown": false
+      },
+      "siteFont": 19,
+      "siteWidth": 119.7578125,
+      "timeFont": 80,
+      "truncations": 0
+    },
+    {
+      "capClearance": null,
+      "failures": [
+        "missing:purpose"
+      ],
+      "geoArea": 0,
+      "name": "missing",
+      "rank": 38,
+      "raw": {
+        "geo": null,
+        "graphics": [],
+        "kind": "map",
+        "pin": null,
+        "pointExpected": false,
+        "rocket": {
+          "h": 65,
+          "w": 20,
+          "x": 290,
+          "y": 205
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "23:58",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 42
+          },
+          {
+            "clipped": false,
+            "contentWidth": 51.43575,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric0",
+            "value": "6842",
+            "w": 51.421875,
+            "x": 55,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 26.263875,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric1",
+            "value": "68",
+            "w": 26.25,
+            "x": 143,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 26.263875,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric2",
+            "value": "72",
+            "w": 26.25,
+            "x": 210,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 45.0060625,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric3",
+            "value": "82%",
+            "w": 44.9921875,
+            "x": 275,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 75.78731250000001,
+            "font": 19,
+            "h": 21.2734375,
+            "role": "rocket",
+            "value": "Falcon 9",
+            "w": 75.7734375,
+            "x": 80,
+            "y": 205
+          },
+          {
+            "clipped": false,
+            "contentWidth": 55.7873125,
+            "font": 16,
+            "h": 17.9140625,
+            "role": "operator",
+            "value": "SpaceX",
+            "w": 55.7734375,
+            "x": 80,
+            "y": 232
+          },
+          {
+            "clipped": false,
+            "contentWidth": 129.07637499999998,
+            "font": 32,
+            "h": 35.1953125,
+            "role": "countdown",
+            "value": "T−2h 34m",
+            "w": 129.0625,
+            "x": 110,
+            "y": 286
+          },
+          {
+            "clipped": false,
+            "contentWidth": 119.7716875,
+            "font": 19,
+            "h": 21.2734375,
+            "role": "site",
+            "value": "USA · Kourou",
+            "w": 119.7578125,
+            "x": 110,
+            "y": 333
+          }
+        ],
+        "unknown": false
+      },
+      "siteFont": 19,
+      "siteWidth": 119.7578125,
+      "timeFont": 80,
+      "truncations": 0
+    },
+    {
+      "capClearance": null,
+      "failures": [
+        "marker:time"
+      ],
+      "geoArea": 0,
+      "name": "marker",
+      "rank": 38,
+      "raw": {
+        "geo": {
+          "h": 0,
+          "w": 0,
+          "x": 0,
+          "y": 0
+        },
+        "graphics": [],
+        "kind": "map",
+        "pin": {
+          "visible": true,
+          "x": 195,
+          "y": 70
+        },
+        "pointExpected": true,
+        "rocket": {
+          "h": 65,
+          "w": 20,
+          "x": 290,
+          "y": 205
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "23:58",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 42
+          },
+          {
+            "clipped": false,
+            "contentWidth": 51.43575,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric0",
+            "value": "6842",
+            "w": 51.421875,
+            "x": 55,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 26.263875,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric1",
+            "value": "68",
+            "w": 26.25,
+            "x": 143,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 26.263875,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric2",
+            "value": "72",
+            "w": 26.25,
+            "x": 210,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 45.0060625,
+            "font": 22,
+            "h": 24.1953125,
+            "role": "metric3",
+            "value": "82%",
+            "w": 44.9921875,
+            "x": 275,
+            "y": 155
+          },
+          {
+            "clipped": false,
+            "contentWidth": 75.78731250000001,
+            "font": 19,
+            "h": 21.2734375,
+            "role": "rocket",
+            "value": "Falcon 9",
+            "w": 75.7734375,
+            "x": 80,
+            "y": 205
+          },
+          {
+            "clipped": false,
+            "contentWidth": 55.7873125,
+            "font": 16,
+            "h": 17.9140625,
+            "role": "operator",
+            "value": "SpaceX",
+            "w": 55.7734375,
+            "x": 80,
+            "y": 232
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.326375,
+            "font": 16,
+            "h": 17.9140625,
+            "role": "purpose",
+            "value": "Science",
+            "w": 58.3125,
+            "x": 80,
+            "y": 256
+          },
+          {
+            "clipped": false,
+            "contentWidth": 129.07637499999998,
+            "font": 32,
+            "h": 35.1953125,
+            "role": "countdown",
+            "value": "T−2h 34m",
+            "w": 129.0625,
+            "x": 110,
+            "y": 286
+          },
+          {
+            "clipped": false,
+            "contentWidth": 119.7716875,
+            "font": 19,
+            "h": 21.2734375,
+            "role": "site",
+            "value": "USA · Kourou",
+            "w": 119.7578125,
+            "x": 110,
+            "y": 333
+          }
+        ],
+        "unknown": false
+      },
+      "siteFont": 19,
+      "siteWidth": 119.7578125,
+      "timeFont": 80,
+      "truncations": 0
+    }
+  ]
+}

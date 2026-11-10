@@ -21,15 +21,16 @@ readability of time, countdown and selected fitness values.
 
 ### Requirement: Compact launch-information band
 
-The launch band SHALL place Earth, the rocket visual and launch metadata side by
-side, with the rocket name and available company and mission context to the right of
-the rocket. Missing context SHALL remain explicit. The country/site label SHALL
+The launch scene SHALL integrate Earth, the rocket visual and launch metadata in
+a coherent composition. Rocket name, company and mission context MAY use stacked,
+paired or distributed labels; their association SHALL remain clear. Missing context
+SHALL remain explicit. The country/site label SHALL
 use at least 16 display pixels at 390 × 390 without reducing primary time or
 placing text outside the circle.
 
 #### Scenario: Use the launch band's space
 - **WHEN** a launch supplies its rocket name, launch company and mission purpose
-- **THEN** the rocket name, company and mission purpose appear to the right of its visual in a readable hierarchy without a duplicate title row below the band
+- **THEN** rocket name, company and mission purpose use the selected coherent layout's readable hierarchy, retaining full supplied values without an unneeded duplicate title
 
 #### Scenario: Long or absent context
 - **WHEN** a rocket/company/mission name is long or some context is unavailable

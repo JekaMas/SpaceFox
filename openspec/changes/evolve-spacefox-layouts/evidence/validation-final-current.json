@@ -1,0 +1,5826 @@
+{
+  "candidates": [
+    {
+      "appearance": "observatory",
+      "contextFont": 16.5,
+      "countdown": [
+        82,
+        289.06650276357755,
+        226,
+        31
+      ],
+      "date": [
+        95,
+        26,
+        200,
+        14
+      ],
+      "family": "upper-orbit",
+      "font": "roboto",
+      "generation": 7,
+      "geo": [
+        35,
+        31,
+        126,
+        126
+      ],
+      "headline": [
+        183,
+        45,
+        162,
+        25
+      ],
+      "hypotheses": [
+        "H01",
+        "H02",
+        "H03",
+        "H04"
+      ],
+      "id": "G7-003",
+      "ink": "cyan",
+      "kind": "globe",
+      "matte": true,
+      "metricFont": 22.2,
+      "metrics": [
+        [
+          62,
+          241.64650276357753,
+          65,
+          42
+        ],
+        [
+          129,
+          241.64650276357753,
+          65,
+          42
+        ],
+        [
+          196,
+          241.64650276357753,
+          65,
+          42
+        ],
+        [
+          263,
+          241.64650276357753,
+          65,
+          42
+        ]
+      ],
+      "metricsLayout": "content",
+      "mode": "stack",
+      "mutation": "intrinsic-title-fit-16.5",
+      "name": "Верхняя орбита",
+      "parent": "G5-001",
+      "pinTarget": [
+        0.58,
+        0.6
+      ],
+      "region": [
+        220,
+        83,
+        125,
+        76
+      ],
+      "repositionGlobe": false,
+      "rocket": [
+        185,
+        67,
+        26,
+        85
+      ],
+      "roll": 0,
+      "scale": 1,
+      "site": [
+        54,
+        328.16650276357757,
+        282,
+        21
+      ],
+      "time": [
+        45,
+        158.24650276357752,
+        300,
+        80
+      ],
+      "titleFont": 16.5
+    },
+    {
+      "appearance": "observatory",
+      "contextFont": 16.5,
+      "countdown": [
+        82,
+        233,
+        226,
+        31
+      ],
+      "date": [
+        95,
+        26,
+        200,
+        14
+      ],
+      "family": "map-ribbon",
+      "font": "roboto",
+      "generation": 5,
+      "geo": [
+        43,
+        259,
+        304,
+        119
+      ],
+      "headline": [
+        116,
+        173,
+        220,
+        25
+      ],
+      "hypotheses": [
+        "H01",
+        "H02",
+        "H06"
+      ],
+      "id": "G5-016",
+      "ink": "cyan",
+      "kind": "map",
+      "matte": true,
+      "metricFont": 22.2,
+      "metrics": [
+        [
+          62,
+          132,
+          65,
+          42
+        ],
+        [
+          129,
+          132,
+          65,
+          42
+        ],
+        [
+          196,
+          132,
+          65,
+          42
+        ],
+        [
+          263,
+          132,
+          65,
+          42
+        ]
+      ],
+      "metricsLayout": "content",
+      "mode": "title-company",
+      "mutation": "clear-scene",
+      "name": "Нижняя карта",
+      "parent": "G3-019",
+      "pinTarget": [
+        0.43,
+        0.44
+      ],
+      "region": [
+        128,
+        175,
+        207,
+        79
+      ],
+      "rocket": [
+        77,
+        176,
+        23,
+        58
+      ],
+      "roll": 0,
+      "scale": 0.9408,
+      "site": [
+        54,
+        328.18529798571353,
+        282,
+        21
+      ],
+      "time": [
+        45,
+        50,
+        300,
+        72
+      ],
+      "titleFont": 17
+    },
+    {
+      "appearance": "observatory",
+      "contextFont": 16.5,
+      "countdown": [
+        82,
+        287.98529798571354,
+        226,
+        32
+      ],
+      "date": [
+        95,
+        26,
+        200,
+        14
+      ],
+      "family": "earthrise",
+      "font": "barlow",
+      "generation": 6,
+      "geo": [
+        0,
+        213,
+        390,
+        177
+      ],
+      "headline": [
+        111,
+        170,
+        229,
+        25
+      ],
+      "horizonPitch": 70,
+      "hypotheses": [
+        "H01",
+        "H02",
+        "H08"
+      ],
+      "id": "G6-002",
+      "ink": "cyan",
+      "kind": "horizon",
+      "matte": true,
+      "metricFont": 22.2,
+      "metrics": [
+        [
+          62,
+          132,
+          65,
+          42
+        ],
+        [
+          129,
+          132,
+          65,
+          42
+        ],
+        [
+          196,
+          132,
+          65,
+          42
+        ],
+        [
+          263,
+          132,
+          65,
+          42
+        ]
+      ],
+      "metricsLayout": "content",
+      "mode": "title-company",
+      "mutation": "curved-cap-70",
+      "name": "Восход Земли",
+      "parent": "G5-019",
+      "pinTarget": [
+        0.68,
+        0.31
+      ],
+      "region": [
+        126,
+        175,
+        211,
+        78
+      ],
+      "rocket": [
+        75,
+        177,
+        24,
+        64
+      ],
+      "roll": -15,
+      "scale": 1.0537,
+      "site": [
+        54,
+        328.18529798571353,
+        282,
+        21
+      ],
+      "time": [
+        45,
+        50,
+        300,
+        72
+      ],
+      "titleFont": 17
+    }
+  ],
+  "qualification": {
+    "failures": [
+      "thresholds-or-review:G7-003",
+      "thresholds-or-review:G5-016",
+      "thresholds-or-review:G6-002"
+    ],
+    "passed": false
+  },
+  "results": [
+    {
+      "capClearance": null,
+      "failedScenes": 0,
+      "failures": 0,
+      "geoArea": 0,
+      "id": "G7-003",
+      "maxSiteWidth": 212.4921875,
+      "rank": 23.475,
+      "reasons": [],
+      "siteFont": 21,
+      "timeFont": 80,
+      "trials": 24,
+      "truncations": 2
+    },
+    {
+      "capClearance": null,
+      "failedScenes": 0,
+      "failures": 0,
+      "geoArea": 0,
+      "id": "G5-016",
+      "maxSiteWidth": 212.4921875,
+      "rank": 41.725,
+      "reasons": [],
+      "siteFont": 21,
+      "timeFont": 72,
+      "trials": 24,
+      "truncations": 1
+    },
+    {
+      "capClearance": 12.550120752219954,
+      "failedScenes": 0,
+      "failures": 0,
+      "geoArea": 0,
+      "id": "G6-002",
+      "maxSiteWidth": 212.4921875,
+      "rank": 40.75,
+      "reasons": [],
+      "siteFont": 21,
+      "timeFont": 72,
+      "trials": 24,
+      "truncations": 1
+    }
+  ],
+  "sceneIds": [
+    "validation-1-ru-both",
+    "validation-1-ru-tbd",
+    "validation-1-en-both",
+    "validation-1-en-tbd",
+    "validation-2-ru-both",
+    "validation-2-ru-tbd",
+    "validation-2-en-both",
+    "validation-2-en-tbd",
+    "validation-3-ru-both",
+    "validation-3-ru-tbd",
+    "validation-3-en-both",
+    "validation-3-en-tbd",
+    "validation-4-ru-both",
+    "validation-4-ru-tbd",
+    "validation-4-en-both",
+    "validation-4-en-tbd",
+    "validation-5-ru-both",
+    "validation-5-ru-tbd",
+    "validation-5-en-both",
+    "validation-5-en-tbd",
+    "validation-6-ru-both",
+    "validation-6-ru-tbd",
+    "validation-6-en-both",
+    "validation-6-en-tbd"
+  ],
+  "schema": 1,
+  "trials": [
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 10950,
+      "rank": 35.475,
+      "raw": {
+        "geo": {
+          "circle": {
+            "r": 60.48,
+            "x": 98,
+            "y": 94
+          },
+          "h": 126,
+          "w": 126,
+          "x": 34.9921875,
+          "y": 31
+        },
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": {
+          "visible": true,
+          "x": 114.41486826813464,
+          "y": 80.6844064073995
+        },
+        "pointExpected": true,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 86.14668750000001,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "ВТ · 10 НОЯ",
+            "w": 86.1328125,
+            "x": 151.9296875,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "08:08",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 105.1779375,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "Falcon Heavy",
+            "w": 105.1640625,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": false,
+            "contentWidth": 57.4904375,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "SpaceX",
+            "w": 57.4765625,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": true,
+            "contentWidth": 135.06074999999998,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "Научная миссия",
+            "w": 125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 126.4279375,
+            "font": 31,
+            "h": 34.09375,
+            "role": "countdown",
+            "value": "T−2ч 34м",
+            "w": 126.4140625,
+            "x": 131.7890625,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.9921875,
+            "font": 16,
+            "h": 17.9921875,
+            "role": "stale",
+            "value": "Расписание устарело",
+            "w": 17.9921875,
+            "x": 289.9921875,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 178.44356249999998,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "США · Канаверал",
+            "w": 178.4296875,
+            "x": 105.78125,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": false
+      },
+      "scene": "validation-1-ru-both",
+      "siteFont": 21,
+      "siteWidth": 178.4296875,
+      "timeFont": 80,
+      "truncations": 1
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 10950,
+      "rank": 35.475,
+      "raw": {
+        "geo": {
+          "circle": {
+            "r": 60.48,
+            "x": 98,
+            "y": 94
+          },
+          "h": 126,
+          "w": 126,
+          "x": 34.9921875,
+          "y": 31
+        },
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": {
+          "visible": true,
+          "x": 114.41486826813464,
+          "y": 80.6844064073995
+        },
+        "pointExpected": true,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 86.14668750000001,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "ВТ · 10 НОЯ",
+            "w": 86.1328125,
+            "x": 151.9296875,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "08:08",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 105.1779375,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "Falcon Heavy",
+            "w": 105.1640625,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": false,
+            "contentWidth": 57.4904375,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "SpaceX",
+            "w": 57.4765625,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": true,
+            "contentWidth": 135.06074999999998,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "Научная миссия",
+            "w": 125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 147.03731249999998,
+            "font": 16,
+            "h": 17.59375,
+            "role": "countdown",
+            "value": "Время уточняется",
+            "w": 147.0234375,
+            "x": 121.484375,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 178.44356249999998,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "США · Канаверал",
+            "w": 178.4296875,
+            "x": 105.78125,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": true
+      },
+      "scene": "validation-1-ru-tbd",
+      "siteFont": 21,
+      "siteWidth": 178.4296875,
+      "timeFont": 80,
+      "truncations": 1
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 10950,
+      "rank": 35.475,
+      "raw": {
+        "geo": {
+          "circle": {
+            "r": 60.48,
+            "x": 98,
+            "y": 94
+          },
+          "h": 126,
+          "w": 126,
+          "x": 34.9921875,
+          "y": 31
+        },
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": {
+          "visible": true,
+          "x": 114.41486826813464,
+          "y": 80.6844064073995
+        },
+        "pointExpected": true,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 95.7091875,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "TUE · 10 NOV",
+            "w": 95.6953125,
+            "x": 147.1484375,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "08:08",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 105.1779375,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "Falcon Heavy",
+            "w": 105.1640625,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": false,
+            "contentWidth": 57.4904375,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "SpaceX",
+            "w": 57.4765625,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": true,
+            "contentWidth": 125.4045,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "Science mission",
+            "w": 125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 125.0841875,
+            "font": 31,
+            "h": 34.09375,
+            "role": "countdown",
+            "value": "T−2h 34m",
+            "w": 125.0703125,
+            "x": 132.4609375,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.9921875,
+            "font": 16,
+            "h": 17.9921875,
+            "role": "stale",
+            "value": "Outdated schedule",
+            "w": 17.9921875,
+            "x": 289.9921875,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 158.32637499999998,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "USA · Canaveral",
+            "w": 158.3125,
+            "x": 115.84375,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": false
+      },
+      "scene": "validation-1-en-both",
+      "siteFont": 21,
+      "siteWidth": 158.3125,
+      "timeFont": 80,
+      "truncations": 1
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 10950,
+      "rank": 35.475,
+      "raw": {
+        "geo": {
+          "circle": {
+            "r": 60.48,
+            "x": 98,
+            "y": 94
+          },
+          "h": 126,
+          "w": 126,
+          "x": 34.9921875,
+          "y": 31
+        },
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": {
+          "visible": true,
+          "x": 114.41486826813464,
+          "y": 80.6844064073995
+        },
+        "pointExpected": true,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 95.7091875,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "TUE · 10 NOV",
+            "w": 95.6953125,
+            "x": 147.1484375,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "08:08",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 105.1779375,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "Falcon Heavy",
+            "w": 105.1640625,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": false,
+            "contentWidth": 57.4904375,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "SpaceX",
+            "w": 57.4765625,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": true,
+            "contentWidth": 125.4045,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "Science mission",
+            "w": 125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 87.98262500000001,
+            "font": 16,
+            "h": 17.59375,
+            "role": "countdown",
+            "value": "Time pending",
+            "w": 87.96875,
+            "x": 151.015625,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 158.32637499999998,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "USA · Canaveral",
+            "w": 158.3125,
+            "x": 115.84375,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": true
+      },
+      "scene": "validation-1-en-tbd",
+      "siteFont": 21,
+      "siteWidth": 158.3125,
+      "timeFont": 80,
+      "truncations": 1
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 10950,
+      "rank": 35.475,
+      "raw": {
+        "geo": {
+          "circle": {
+            "r": 60.48,
+            "x": 98,
+            "y": 94
+          },
+          "h": 126,
+          "w": 126,
+          "x": 34.9921875,
+          "y": 31
+        },
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": {
+          "visible": true,
+          "x": 112.47065396402336,
+          "y": 83.21321042790862
+        },
+        "pointExpected": true,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 86.14668750000001,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "ВТ · 10 НОЯ",
+            "w": 86.1328125,
+            "x": 151.9296875,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "23:58",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 65.70918750000001,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "Electron",
+            "w": 65.6953125,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": false,
+            "contentWidth": 87.49043750000001,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "Rocket Lab",
+            "w": 87.4765625,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": true,
+            "contentWidth": 137.59981249999998,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "Малые спутники",
+            "w": 125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 126.4279375,
+            "font": 31,
+            "h": 34.09375,
+            "role": "countdown",
+            "value": "T−2ч 34м",
+            "w": 126.4140625,
+            "x": 131.7890625,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.9921875,
+            "font": 16,
+            "h": 17.9921875,
+            "role": "stale",
+            "value": "Расписание устарело",
+            "w": 17.9921875,
+            "x": 289.9921875,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 212.5060625,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "Н. Зеландия · Махия",
+            "w": 212.4921875,
+            "x": 88.75,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": false
+      },
+      "scene": "validation-2-ru-both",
+      "siteFont": 21,
+      "siteWidth": 212.4921875,
+      "timeFont": 80,
+      "truncations": 1
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 10950,
+      "rank": 35.475,
+      "raw": {
+        "geo": {
+          "circle": {
+            "r": 60.48,
+            "x": 98,
+            "y": 94
+          },
+          "h": 126,
+          "w": 126,
+          "x": 34.9921875,
+          "y": 31
+        },
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": {
+          "visible": true,
+          "x": 112.47065396402336,
+          "y": 83.21321042790862
+        },
+        "pointExpected": true,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 86.14668750000001,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "ВТ · 10 НОЯ",
+            "w": 86.1328125,
+            "x": 151.9296875,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "23:58",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 65.70918750000001,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "Electron",
+            "w": 65.6953125,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": false,
+            "contentWidth": 87.49043750000001,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "Rocket Lab",
+            "w": 87.4765625,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": true,
+            "contentWidth": 137.59981249999998,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "Малые спутники",
+            "w": 125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 147.03731249999998,
+            "font": 16,
+            "h": 17.59375,
+            "role": "countdown",
+            "value": "Время уточняется",
+            "w": 147.0234375,
+            "x": 121.484375,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 212.5060625,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "Н. Зеландия · Махия",
+            "w": 212.4921875,
+            "x": 88.75,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": true
+      },
+      "scene": "validation-2-ru-tbd",
+      "siteFont": 21,
+      "siteWidth": 212.4921875,
+      "timeFont": 80,
+      "truncations": 1
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 10950,
+      "rank": 47.475,
+      "raw": {
+        "geo": {
+          "circle": {
+            "r": 60.48,
+            "x": 98,
+            "y": 94
+          },
+          "h": 126,
+          "w": 126,
+          "x": 34.9921875,
+          "y": 31
+        },
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": {
+          "visible": true,
+          "x": 112.47065396402336,
+          "y": 83.21321042790862
+        },
+        "pointExpected": true,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 95.7091875,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "TUE · 10 NOV",
+            "w": 95.6953125,
+            "x": 147.1484375,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "23:58",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 65.70918750000001,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "Electron",
+            "w": 65.6953125,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": false,
+            "contentWidth": 87.49043750000001,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "Rocket Lab",
+            "w": 87.4765625,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 118.857625,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "Small satellites",
+            "w": 118.84375,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 125.0841875,
+            "font": 31,
+            "h": 34.09375,
+            "role": "countdown",
+            "value": "T−2h 34m",
+            "w": 125.0703125,
+            "x": 132.4609375,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.9921875,
+            "font": 16,
+            "h": 17.9921875,
+            "role": "stale",
+            "value": "Outdated schedule",
+            "w": 17.9921875,
+            "x": 289.9921875,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 210.1935625,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "New Zealand · Māhia",
+            "w": 210.1796875,
+            "x": 89.90625,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": false
+      },
+      "scene": "validation-2-en-both",
+      "siteFont": 21,
+      "siteWidth": 210.1796875,
+      "timeFont": 80,
+      "truncations": 0
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 10950,
+      "rank": 47.475,
+      "raw": {
+        "geo": {
+          "circle": {
+            "r": 60.48,
+            "x": 98,
+            "y": 94
+          },
+          "h": 126,
+          "w": 126,
+          "x": 34.9921875,
+          "y": 31
+        },
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": {
+          "visible": true,
+          "x": 112.47065396402336,
+          "y": 83.21321042790862
+        },
+        "pointExpected": true,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 95.7091875,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "TUE · 10 NOV",
+            "w": 95.6953125,
+            "x": 147.1484375,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "23:58",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 65.70918750000001,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "Electron",
+            "w": 65.6953125,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": false,
+            "contentWidth": 87.49043750000001,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "Rocket Lab",
+            "w": 87.4765625,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 118.857625,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "Small satellites",
+            "w": 118.84375,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 87.98262500000001,
+            "font": 16,
+            "h": 17.59375,
+            "role": "countdown",
+            "value": "Time pending",
+            "w": 87.96875,
+            "x": 151.015625,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 210.1935625,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "New Zealand · Māhia",
+            "w": 210.1796875,
+            "x": 89.90625,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": true
+      },
+      "scene": "validation-2-en-tbd",
+      "siteFont": 21,
+      "siteWidth": 210.1796875,
+      "timeFont": 80,
+      "truncations": 0
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 10950,
+      "rank": 35.475,
+      "raw": {
+        "geo": {
+          "circle": {
+            "r": 60.48,
+            "x": 98,
+            "y": 94
+          },
+          "h": 126,
+          "w": 126,
+          "x": 34.9921875,
+          "y": 31
+        },
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": {
+          "visible": true,
+          "x": 116.61075593590392,
+          "y": 81.77163770053737
+        },
+        "pointExpected": true,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 86.14668750000001,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "ВТ · 10 НОЯ",
+            "w": 86.1328125,
+            "x": 151.9296875,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "08:08",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 75.75606250000001,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "Ariane 64",
+            "w": 75.7421875,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": false,
+            "contentWidth": 97.8498125,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "Arianespace",
+            "w": 97.8359375,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": true,
+            "contentWidth": 135.73262499999998,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "Дальний космос",
+            "w": 125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 126.4279375,
+            "font": 31,
+            "h": 34.09375,
+            "role": "countdown",
+            "value": "T−2ч 34м",
+            "w": 126.4140625,
+            "x": 131.7890625,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.9921875,
+            "font": 16,
+            "h": 17.9921875,
+            "role": "stale",
+            "value": "Расписание устарело",
+            "w": 17.9921875,
+            "x": 289.9921875,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 180.09981249999998,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "Фр. Гвиана · Куру",
+            "w": 180.0859375,
+            "x": 104.953125,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": false
+      },
+      "scene": "validation-3-ru-both",
+      "siteFont": 21,
+      "siteWidth": 180.0859375,
+      "timeFont": 80,
+      "truncations": 1
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 10950,
+      "rank": 35.475,
+      "raw": {
+        "geo": {
+          "circle": {
+            "r": 60.48,
+            "x": 98,
+            "y": 94
+          },
+          "h": 126,
+          "w": 126,
+          "x": 34.9921875,
+          "y": 31
+        },
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": {
+          "visible": true,
+          "x": 116.61075593590392,
+          "y": 81.77163770053737
+        },
+        "pointExpected": true,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 86.14668750000001,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "ВТ · 10 НОЯ",
+            "w": 86.1328125,
+            "x": 151.9296875,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "08:08",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 75.75606250000001,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "Ariane 64",
+            "w": 75.7421875,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": false,
+            "contentWidth": 97.8498125,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "Arianespace",
+            "w": 97.8359375,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": true,
+            "contentWidth": 135.73262499999998,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "Дальний космос",
+            "w": 125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 147.03731249999998,
+            "font": 16,
+            "h": 17.59375,
+            "role": "countdown",
+            "value": "Время уточняется",
+            "w": 147.0234375,
+            "x": 121.484375,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 180.09981249999998,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "Фр. Гвиана · Куру",
+            "w": 180.0859375,
+            "x": 104.953125,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": true
+      },
+      "scene": "validation-3-ru-tbd",
+      "siteFont": 21,
+      "siteWidth": 180.0859375,
+      "timeFont": 80,
+      "truncations": 1
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 10950,
+      "rank": 35.475,
+      "raw": {
+        "geo": {
+          "circle": {
+            "r": 60.48,
+            "x": 98,
+            "y": 94
+          },
+          "h": 126,
+          "w": 126,
+          "x": 34.9921875,
+          "y": 31
+        },
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": {
+          "visible": true,
+          "x": 116.61075593590392,
+          "y": 81.77163770053737
+        },
+        "pointExpected": true,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 95.7091875,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "TUE · 10 NOV",
+            "w": 95.6953125,
+            "x": 147.1484375,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "08:08",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 75.75606250000001,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "Ariane 64",
+            "w": 75.7421875,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": false,
+            "contentWidth": 97.8498125,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "Arianespace",
+            "w": 97.8359375,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": true,
+            "contentWidth": 155.13887499999998,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "Deep-space science",
+            "w": 125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 125.0841875,
+            "font": 31,
+            "h": 34.09375,
+            "role": "countdown",
+            "value": "T−2h 34m",
+            "w": 125.0703125,
+            "x": 132.4609375,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.9921875,
+            "font": 16,
+            "h": 17.9921875,
+            "role": "stale",
+            "value": "Outdated schedule",
+            "w": 17.9921875,
+            "x": 289.9921875,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 190.5373125,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "Fr. Guiana · Kourou",
+            "w": 190.5234375,
+            "x": 99.734375,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": false
+      },
+      "scene": "validation-3-en-both",
+      "siteFont": 21,
+      "siteWidth": 190.5234375,
+      "timeFont": 80,
+      "truncations": 1
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 10950,
+      "rank": 35.475,
+      "raw": {
+        "geo": {
+          "circle": {
+            "r": 60.48,
+            "x": 98,
+            "y": 94
+          },
+          "h": 126,
+          "w": 126,
+          "x": 34.9921875,
+          "y": 31
+        },
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": {
+          "visible": true,
+          "x": 116.61075593590392,
+          "y": 81.77163770053737
+        },
+        "pointExpected": true,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 95.7091875,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "TUE · 10 NOV",
+            "w": 95.6953125,
+            "x": 147.1484375,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "08:08",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 75.75606250000001,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "Ariane 64",
+            "w": 75.7421875,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": false,
+            "contentWidth": 97.8498125,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "Arianespace",
+            "w": 97.8359375,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": true,
+            "contentWidth": 155.13887499999998,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "Deep-space science",
+            "w": 125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 87.98262500000001,
+            "font": 16,
+            "h": 17.59375,
+            "role": "countdown",
+            "value": "Time pending",
+            "w": 87.96875,
+            "x": 151.015625,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 190.5373125,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "Fr. Guiana · Kourou",
+            "w": 190.5234375,
+            "x": 99.734375,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": true
+      },
+      "scene": "validation-3-en-tbd",
+      "siteFont": 21,
+      "siteWidth": 190.5234375,
+      "timeFont": 80,
+      "truncations": 1
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 10950,
+      "rank": 23.475,
+      "raw": {
+        "geo": {
+          "circle": {
+            "r": 60.48,
+            "x": 98,
+            "y": 94
+          },
+          "h": 126,
+          "w": 126,
+          "x": 34.9921875,
+          "y": 31
+        },
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": {
+          "visible": true,
+          "x": 114.41486826813464,
+          "y": 80.6844064073995
+        },
+        "pointExpected": true,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 86.14668750000001,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "ВТ · 10 НОЯ",
+            "w": 86.1328125,
+            "x": 151.9296875,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "23:58",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 121.4279375,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "Vulcan Centaur",
+            "w": 121.4140625,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": true,
+            "contentWidth": 181.592,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "United Launch Alliance",
+            "w": 125,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": true,
+            "contentWidth": 179.14668749999998,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "Исследование планет",
+            "w": 125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 126.4279375,
+            "font": 31,
+            "h": 34.09375,
+            "role": "countdown",
+            "value": "T−2ч 34м",
+            "w": 126.4140625,
+            "x": 131.7890625,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.9921875,
+            "font": 16,
+            "h": 17.9921875,
+            "role": "stale",
+            "value": "Расписание устарело",
+            "w": 17.9921875,
+            "x": 289.9921875,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 178.44356249999998,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "США · Канаверал",
+            "w": 178.4296875,
+            "x": 105.78125,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": false
+      },
+      "scene": "validation-4-ru-both",
+      "siteFont": 21,
+      "siteWidth": 178.4296875,
+      "timeFont": 80,
+      "truncations": 2
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 10950,
+      "rank": 23.475,
+      "raw": {
+        "geo": {
+          "circle": {
+            "r": 60.48,
+            "x": 98,
+            "y": 94
+          },
+          "h": 126,
+          "w": 126,
+          "x": 34.9921875,
+          "y": 31
+        },
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": {
+          "visible": true,
+          "x": 114.41486826813464,
+          "y": 80.6844064073995
+        },
+        "pointExpected": true,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 86.14668750000001,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "ВТ · 10 НОЯ",
+            "w": 86.1328125,
+            "x": 151.9296875,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "23:58",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 121.4279375,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "Vulcan Centaur",
+            "w": 121.4140625,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": true,
+            "contentWidth": 181.592,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "United Launch Alliance",
+            "w": 125,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": true,
+            "contentWidth": 179.14668749999998,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "Исследование планет",
+            "w": 125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 147.03731249999998,
+            "font": 16,
+            "h": 17.59375,
+            "role": "countdown",
+            "value": "Время уточняется",
+            "w": 147.0234375,
+            "x": 121.484375,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 178.44356249999998,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "США · Канаверал",
+            "w": 178.4296875,
+            "x": 105.78125,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": true
+      },
+      "scene": "validation-4-ru-tbd",
+      "siteFont": 21,
+      "siteWidth": 178.4296875,
+      "timeFont": 80,
+      "truncations": 2
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 10950,
+      "rank": 23.475,
+      "raw": {
+        "geo": {
+          "circle": {
+            "r": 60.48,
+            "x": 98,
+            "y": 94
+          },
+          "h": 126,
+          "w": 126,
+          "x": 34.9921875,
+          "y": 31
+        },
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": {
+          "visible": true,
+          "x": 114.41486826813464,
+          "y": 80.6844064073995
+        },
+        "pointExpected": true,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 95.7091875,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "TUE · 10 NOV",
+            "w": 95.6953125,
+            "x": 147.1484375,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "23:58",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 121.4279375,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "Vulcan Centaur",
+            "w": 121.4140625,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": true,
+            "contentWidth": 181.592,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "United Launch Alliance",
+            "w": 125,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": true,
+            "contentWidth": 170.76387499999998,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "Planetary exploration",
+            "w": 125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 125.0841875,
+            "font": 31,
+            "h": 34.09375,
+            "role": "countdown",
+            "value": "T−2h 34m",
+            "w": 125.0703125,
+            "x": 132.4609375,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.9921875,
+            "font": 16,
+            "h": 17.9921875,
+            "role": "stale",
+            "value": "Outdated schedule",
+            "w": 17.9921875,
+            "x": 289.9921875,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 158.32637499999998,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "USA · Canaveral",
+            "w": 158.3125,
+            "x": 115.84375,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": false
+      },
+      "scene": "validation-4-en-both",
+      "siteFont": 21,
+      "siteWidth": 158.3125,
+      "timeFont": 80,
+      "truncations": 2
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 10950,
+      "rank": 23.475,
+      "raw": {
+        "geo": {
+          "circle": {
+            "r": 60.48,
+            "x": 98,
+            "y": 94
+          },
+          "h": 126,
+          "w": 126,
+          "x": 34.9921875,
+          "y": 31
+        },
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": {
+          "visible": true,
+          "x": 114.41486826813464,
+          "y": 80.6844064073995
+        },
+        "pointExpected": true,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 95.7091875,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "TUE · 10 NOV",
+            "w": 95.6953125,
+            "x": 147.1484375,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "23:58",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 121.4279375,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "Vulcan Centaur",
+            "w": 121.4140625,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": true,
+            "contentWidth": 181.592,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "United Launch Alliance",
+            "w": 125,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": true,
+            "contentWidth": 170.76387499999998,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "Planetary exploration",
+            "w": 125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 87.98262500000001,
+            "font": 16,
+            "h": 17.59375,
+            "role": "countdown",
+            "value": "Time pending",
+            "w": 87.96875,
+            "x": 151.015625,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 158.32637499999998,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "USA · Canaveral",
+            "w": 158.3125,
+            "x": 115.84375,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": true
+      },
+      "scene": "validation-4-en-tbd",
+      "siteFont": 21,
+      "siteWidth": 158.3125,
+      "timeFont": 80,
+      "truncations": 2
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 10950,
+      "rank": 35.475,
+      "raw": {
+        "geo": {
+          "circle": {
+            "r": 60.48,
+            "x": 98,
+            "y": 94
+          },
+          "h": 126,
+          "w": 126,
+          "x": 34.9921875,
+          "y": 31
+        },
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": {
+          "visible": true,
+          "x": 116.61075593590392,
+          "y": 81.77163770053737
+        },
+        "pointExpected": true,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 86.14668750000001,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "ВТ · 10 НОЯ",
+            "w": 86.1328125,
+            "x": 151.9296875,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "08:08",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 87.25606250000001,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "New Glenn",
+            "w": 87.2421875,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": false,
+            "contentWidth": 89.84981250000001,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "Blue Origin",
+            "w": 89.8359375,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": true,
+            "contentWidth": 241.99825,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "Доставка аппарата на орбиту",
+            "w": 125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 126.4279375,
+            "font": 31,
+            "h": 34.09375,
+            "role": "countdown",
+            "value": "T−2ч 34м",
+            "w": 126.4140625,
+            "x": 131.7890625,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.9921875,
+            "font": 16,
+            "h": 17.9921875,
+            "role": "stale",
+            "value": "Расписание устарело",
+            "w": 17.9921875,
+            "x": 289.9921875,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 180.09981249999998,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "Фр. Гвиана · Куру",
+            "w": 180.0859375,
+            "x": 104.953125,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": false
+      },
+      "scene": "validation-5-ru-both",
+      "siteFont": 21,
+      "siteWidth": 180.0859375,
+      "timeFont": 80,
+      "truncations": 1
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 10950,
+      "rank": 35.475,
+      "raw": {
+        "geo": {
+          "circle": {
+            "r": 60.48,
+            "x": 98,
+            "y": 94
+          },
+          "h": 126,
+          "w": 126,
+          "x": 34.9921875,
+          "y": 31
+        },
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": {
+          "visible": true,
+          "x": 116.61075593590392,
+          "y": 81.77163770053737
+        },
+        "pointExpected": true,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 86.14668750000001,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "ВТ · 10 НОЯ",
+            "w": 86.1328125,
+            "x": 151.9296875,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "08:08",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 87.25606250000001,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "New Glenn",
+            "w": 87.2421875,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": false,
+            "contentWidth": 89.84981250000001,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "Blue Origin",
+            "w": 89.8359375,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": true,
+            "contentWidth": 241.99825,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "Доставка аппарата на орбиту",
+            "w": 125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 147.03731249999998,
+            "font": 16,
+            "h": 17.59375,
+            "role": "countdown",
+            "value": "Время уточняется",
+            "w": 147.0234375,
+            "x": 121.484375,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 180.09981249999998,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "Фр. Гвиана · Куру",
+            "w": 180.0859375,
+            "x": 104.953125,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": true
+      },
+      "scene": "validation-5-ru-tbd",
+      "siteFont": 21,
+      "siteWidth": 180.0859375,
+      "timeFont": 80,
+      "truncations": 1
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 10950,
+      "rank": 35.475,
+      "raw": {
+        "geo": {
+          "circle": {
+            "r": 60.48,
+            "x": 98,
+            "y": 94
+          },
+          "h": 126,
+          "w": 126,
+          "x": 34.9921875,
+          "y": 31
+        },
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": {
+          "visible": true,
+          "x": 116.61075593590392,
+          "y": 81.77163770053737
+        },
+        "pointExpected": true,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 95.7091875,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "TUE · 10 NOV",
+            "w": 95.6953125,
+            "x": 147.1484375,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "08:08",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 87.25606250000001,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "New Glenn",
+            "w": 87.2421875,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": false,
+            "contentWidth": 89.84981250000001,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "Blue Origin",
+            "w": 89.8359375,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": true,
+            "contentWidth": 208.6154375,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "Orbital spacecraft delivery",
+            "w": 125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 125.0841875,
+            "font": 31,
+            "h": 34.09375,
+            "role": "countdown",
+            "value": "T−2h 34m",
+            "w": 125.0703125,
+            "x": 132.4609375,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.9921875,
+            "font": 16,
+            "h": 17.9921875,
+            "role": "stale",
+            "value": "Outdated schedule",
+            "w": 17.9921875,
+            "x": 289.9921875,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 190.5373125,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "Fr. Guiana · Kourou",
+            "w": 190.5234375,
+            "x": 99.734375,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": false
+      },
+      "scene": "validation-5-en-both",
+      "siteFont": 21,
+      "siteWidth": 190.5234375,
+      "timeFont": 80,
+      "truncations": 1
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 10950,
+      "rank": 35.475,
+      "raw": {
+        "geo": {
+          "circle": {
+            "r": 60.48,
+            "x": 98,
+            "y": 94
+          },
+          "h": 126,
+          "w": 126,
+          "x": 34.9921875,
+          "y": 31
+        },
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": {
+          "visible": true,
+          "x": 116.61075593590392,
+          "y": 81.77163770053737
+        },
+        "pointExpected": true,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 95.7091875,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "TUE · 10 NOV",
+            "w": 95.6953125,
+            "x": 147.1484375,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "08:08",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 87.25606250000001,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "New Glenn",
+            "w": 87.2421875,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": false,
+            "contentWidth": 89.84981250000001,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "Blue Origin",
+            "w": 89.8359375,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": true,
+            "contentWidth": 208.6154375,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "Orbital spacecraft delivery",
+            "w": 125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 87.98262500000001,
+            "font": 16,
+            "h": 17.59375,
+            "role": "countdown",
+            "value": "Time pending",
+            "w": 87.96875,
+            "x": 151.015625,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 190.5373125,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "Fr. Guiana · Kourou",
+            "w": 190.5234375,
+            "x": 99.734375,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": true
+      },
+      "scene": "validation-5-en-tbd",
+      "siteFont": 21,
+      "siteWidth": 190.5234375,
+      "timeFont": 80,
+      "truncations": 1
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 0,
+      "rank": 42,
+      "raw": {
+        "geo": null,
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": null,
+        "pointExpected": false,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 86.14668750000001,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "ВТ · 10 НОЯ",
+            "w": 86.1328125,
+            "x": 151.9296875,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "23:58",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.592,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "—",
+            "w": 17.578125,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.592,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "—",
+            "w": 17.578125,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.592,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "—",
+            "w": 17.578125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 126.4279375,
+            "font": 31,
+            "h": 34.09375,
+            "role": "countdown",
+            "value": "T−2ч 34м",
+            "w": 126.4140625,
+            "x": 131.7890625,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.9921875,
+            "font": 16,
+            "h": 17.9921875,
+            "role": "stale",
+            "value": "Расписание устарело",
+            "w": 17.9921875,
+            "x": 289.9921875,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 212.5060625,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "Н. Зеландия · Махия",
+            "w": 212.4921875,
+            "x": 88.75,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": false
+      },
+      "scene": "validation-6-ru-both",
+      "siteFont": 21,
+      "siteWidth": 212.4921875,
+      "timeFont": 80,
+      "truncations": 0
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 0,
+      "rank": 42,
+      "raw": {
+        "geo": null,
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": null,
+        "pointExpected": false,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 86.14668750000001,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "ВТ · 10 НОЯ",
+            "w": 86.1328125,
+            "x": 151.9296875,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "23:58",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.592,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "—",
+            "w": 17.578125,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.592,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "—",
+            "w": 17.578125,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.592,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "—",
+            "w": 17.578125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 147.03731249999998,
+            "font": 16,
+            "h": 17.59375,
+            "role": "countdown",
+            "value": "Время уточняется",
+            "w": 147.0234375,
+            "x": 121.484375,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 212.5060625,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "Н. Зеландия · Махия",
+            "w": 212.4921875,
+            "x": 88.75,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": true
+      },
+      "scene": "validation-6-ru-tbd",
+      "siteFont": 21,
+      "siteWidth": 212.4921875,
+      "timeFont": 80,
+      "truncations": 0
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 0,
+      "rank": 42,
+      "raw": {
+        "geo": null,
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": null,
+        "pointExpected": false,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 95.7091875,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "TUE · 10 NOV",
+            "w": 95.6953125,
+            "x": 147.1484375,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "23:58",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.592,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "—",
+            "w": 17.578125,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.592,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "—",
+            "w": 17.578125,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.592,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "—",
+            "w": 17.578125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 125.0841875,
+            "font": 31,
+            "h": 34.09375,
+            "role": "countdown",
+            "value": "T−2h 34m",
+            "w": 125.0703125,
+            "x": 132.4609375,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.9921875,
+            "font": 16,
+            "h": 17.9921875,
+            "role": "stale",
+            "value": "Outdated schedule",
+            "w": 17.9921875,
+            "x": 289.9921875,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 210.1935625,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "New Zealand · Māhia",
+            "w": 210.1796875,
+            "x": 89.90625,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": false
+      },
+      "scene": "validation-6-en-both",
+      "siteFont": 21,
+      "siteWidth": 210.1796875,
+      "timeFont": 80,
+      "truncations": 0
+    },
+    {
+      "candidate": "G7-003",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 0,
+      "rank": 42,
+      "raw": {
+        "geo": null,
+        "graphics": [
+          {
+            "h": 14,
+            "w": 14,
+            "x": 80.7265625,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 160.078125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 225.28125,
+            "y": 241.640625
+          },
+          {
+            "h": 14,
+            "w": 14,
+            "x": 299.953125,
+            "y": 241.640625
+          }
+        ],
+        "kind": "globe",
+        "pin": null,
+        "pointExpected": false,
+        "rocket": {
+          "h": 85,
+          "w": 26,
+          "x": 185,
+          "y": 67
+        },
+        "text": [
+          {
+            "clipped": false,
+            "contentWidth": 95.7091875,
+            "font": 14,
+            "h": 15.6796875,
+            "role": "date",
+            "value": "TUE · 10 NOV",
+            "w": 95.6953125,
+            "x": 147.1484375,
+            "y": 26
+          },
+          {
+            "clipped": false,
+            "contentWidth": 173.12324999999998,
+            "font": 80,
+            "h": 78.3984375,
+            "role": "time",
+            "value": "23:58",
+            "w": 173.109375,
+            "x": 108.4453125,
+            "y": 158.2421875
+          },
+          {
+            "clipped": false,
+            "contentWidth": 67.47481250000001,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric0",
+            "value": "99 999",
+            "w": 67.4609375,
+            "x": 54,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric1",
+            "value": "100",
+            "w": 39.1796875,
+            "x": 147.4921875,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 39.1935625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric2",
+            "value": "199",
+            "w": 39.1796875,
+            "x": 212.6953125,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 58.107625,
+            "font": 22.2,
+            "h": 24.421875,
+            "role": "metric3",
+            "value": "100%",
+            "w": 58.09375,
+            "x": 277.90625,
+            "y": 259.640625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.592,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "rocket",
+            "value": "—",
+            "w": 17.578125,
+            "x": 220,
+            "y": 83
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.592,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "operator",
+            "value": "—",
+            "w": 17.578125,
+            "x": 220,
+            "y": 104.4765625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 17.592,
+            "font": 16.5,
+            "h": 18.4765625,
+            "role": "purpose",
+            "value": "—",
+            "w": 17.578125,
+            "x": 220,
+            "y": 125.953125
+          },
+          {
+            "clipped": false,
+            "contentWidth": 87.98262500000001,
+            "font": 16,
+            "h": 17.59375,
+            "role": "countdown",
+            "value": "Time pending",
+            "w": 87.96875,
+            "x": 151.015625,
+            "y": 289.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 7.467,
+            "font": 16,
+            "h": 18.328125,
+            "role": "change",
+            "value": "!",
+            "w": 15.984375,
+            "x": 82.0078125,
+            "y": 296.0625
+          },
+          {
+            "clipped": false,
+            "contentWidth": 210.1935625,
+            "font": 21,
+            "h": 23.515625,
+            "role": "site",
+            "value": "New Zealand · Māhia",
+            "w": 210.1796875,
+            "x": 89.90625,
+            "y": 328.1640625
+          }
+        ],
+        "unknown": true
+      },
+      "scene": "validation-6-en-tbd",
+      "siteFont": 21,
+      "siteWidth": 210.1796875,
+      "timeFont": 80,
+      "truncations": 0
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 24050,
+      "rank": 54.025,
+      "scene": "validation-1-ru-both",
+      "siteFont": 21,
+      "siteWidth": 178.4296875,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 25350,
+      "rank": 54.675,
+      "scene": "validation-1-ru-tbd",
+      "siteFont": 21,
+      "siteWidth": 178.4296875,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 24650,
+      "rank": 54.325,
+      "scene": "validation-1-en-both",
+      "siteFont": 21,
+      "siteWidth": 158.3125,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 25950,
+      "rank": 54.975,
+      "scene": "validation-1-en-tbd",
+      "siteFont": 21,
+      "siteWidth": 158.3125,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 22850,
+      "rank": 53.425,
+      "scene": "validation-2-ru-both",
+      "siteFont": 21,
+      "siteWidth": 212.4921875,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 24150,
+      "rank": 54.075,
+      "scene": "validation-2-ru-tbd",
+      "siteFont": 21,
+      "siteWidth": 212.4921875,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 22850,
+      "rank": 53.425,
+      "scene": "validation-2-en-both",
+      "siteFont": 21,
+      "siteWidth": 210.1796875,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 24150,
+      "rank": 54.075,
+      "scene": "validation-2-en-tbd",
+      "siteFont": 21,
+      "siteWidth": 210.1796875,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 23750,
+      "rank": 53.875,
+      "scene": "validation-3-ru-both",
+      "siteFont": 21,
+      "siteWidth": 180.0859375,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 25050,
+      "rank": 54.525,
+      "scene": "validation-3-ru-tbd",
+      "siteFont": 21,
+      "siteWidth": 180.0859375,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 23450,
+      "rank": 53.725,
+      "scene": "validation-3-en-both",
+      "siteFont": 21,
+      "siteWidth": 190.5234375,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 24750,
+      "rank": 54.375,
+      "scene": "validation-3-en-tbd",
+      "siteFont": 21,
+      "siteWidth": 190.5234375,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 24050,
+      "rank": 42.025,
+      "scene": "validation-4-ru-both",
+      "siteFont": 21,
+      "siteWidth": 178.4296875,
+      "timeFont": 72,
+      "truncations": 1
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 25350,
+      "rank": 42.675,
+      "scene": "validation-4-ru-tbd",
+      "siteFont": 21,
+      "siteWidth": 178.4296875,
+      "timeFont": 72,
+      "truncations": 1
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 24650,
+      "rank": 42.325,
+      "scene": "validation-4-en-both",
+      "siteFont": 21,
+      "siteWidth": 158.3125,
+      "timeFont": 72,
+      "truncations": 1
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 25950,
+      "rank": 42.975,
+      "scene": "validation-4-en-tbd",
+      "siteFont": 21,
+      "siteWidth": 158.3125,
+      "timeFont": 72,
+      "truncations": 1
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 23750,
+      "rank": 41.875,
+      "scene": "validation-5-ru-both",
+      "siteFont": 21,
+      "siteWidth": 180.0859375,
+      "timeFont": 72,
+      "truncations": 1
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 25050,
+      "rank": 42.525,
+      "scene": "validation-5-ru-tbd",
+      "siteFont": 21,
+      "siteWidth": 180.0859375,
+      "timeFont": 72,
+      "truncations": 1
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 23450,
+      "rank": 41.725,
+      "scene": "validation-5-en-both",
+      "siteFont": 21,
+      "siteWidth": 190.5234375,
+      "timeFont": 72,
+      "truncations": 1
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 24750,
+      "rank": 42.375,
+      "scene": "validation-5-en-tbd",
+      "siteFont": 21,
+      "siteWidth": 190.5234375,
+      "timeFont": 72,
+      "truncations": 1
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 0,
+      "rank": 42,
+      "scene": "validation-6-ru-both",
+      "siteFont": 21,
+      "siteWidth": 212.4921875,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 0,
+      "rank": 42,
+      "scene": "validation-6-ru-tbd",
+      "siteFont": 21,
+      "siteWidth": 212.4921875,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 0,
+      "rank": 42,
+      "scene": "validation-6-en-both",
+      "siteFont": 21,
+      "siteWidth": 210.1796875,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G5-016",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 0,
+      "rank": 42,
+      "scene": "validation-6-en-tbd",
+      "siteFont": 21,
+      "siteWidth": 210.1796875,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": 17.381628004524856,
+      "failures": [],
+      "geoArea": 21500,
+      "rank": 52.75,
+      "scene": "validation-1-ru-both",
+      "siteFont": 21,
+      "siteWidth": 178.4296875,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": 17.381628004524856,
+      "failures": [],
+      "geoArea": 23575,
+      "rank": 53.7875,
+      "scene": "validation-1-ru-tbd",
+      "siteFont": 21,
+      "siteWidth": 178.4296875,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": 17.381628004524856,
+      "failures": [],
+      "geoArea": 22100,
+      "rank": 53.05,
+      "scene": "validation-1-en-both",
+      "siteFont": 21,
+      "siteWidth": 158.3125,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": 17.381628004524856,
+      "failures": [],
+      "geoArea": 25675,
+      "rank": 54.8375,
+      "scene": "validation-1-en-tbd",
+      "siteFont": 21,
+      "siteWidth": 158.3125,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": 17.627114636864945,
+      "failures": [],
+      "geoArea": 20450,
+      "rank": 52.225,
+      "scene": "validation-2-ru-both",
+      "siteFont": 21,
+      "siteWidth": 212.4921875,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": 17.627114636864945,
+      "failures": [],
+      "geoArea": 22525,
+      "rank": 53.2625,
+      "scene": "validation-2-ru-tbd",
+      "siteFont": 21,
+      "siteWidth": 212.4921875,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": 17.627114636864945,
+      "failures": [],
+      "geoArea": 20450,
+      "rank": 52.225,
+      "scene": "validation-2-en-both",
+      "siteFont": 21,
+      "siteWidth": 210.1796875,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": 17.627114636864945,
+      "failures": [],
+      "geoArea": 24025,
+      "rank": 54.0125,
+      "scene": "validation-2-en-tbd",
+      "siteFont": 21,
+      "siteWidth": 210.1796875,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": 12.550120752219954,
+      "failures": [],
+      "geoArea": 22350,
+      "rank": 53.175,
+      "scene": "validation-3-ru-both",
+      "siteFont": 21,
+      "siteWidth": 180.0859375,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": 12.550120752219954,
+      "failures": [],
+      "geoArea": 24425,
+      "rank": 54.2125,
+      "scene": "validation-3-ru-tbd",
+      "siteFont": 21,
+      "siteWidth": 180.0859375,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": 12.550120752219954,
+      "failures": [],
+      "geoArea": 22050,
+      "rank": 53.025,
+      "scene": "validation-3-en-both",
+      "siteFont": 21,
+      "siteWidth": 190.5234375,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": 12.550120752219954,
+      "failures": [],
+      "geoArea": 25625,
+      "rank": 54.8125,
+      "scene": "validation-3-en-tbd",
+      "siteFont": 21,
+      "siteWidth": 190.5234375,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": 17.381628004524856,
+      "failures": [],
+      "geoArea": 21500,
+      "rank": 40.75,
+      "scene": "validation-4-ru-both",
+      "siteFont": 21,
+      "siteWidth": 178.4296875,
+      "timeFont": 72,
+      "truncations": 1
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": 17.381628004524856,
+      "failures": [],
+      "geoArea": 23575,
+      "rank": 41.7875,
+      "scene": "validation-4-ru-tbd",
+      "siteFont": 21,
+      "siteWidth": 178.4296875,
+      "timeFont": 72,
+      "truncations": 1
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": 17.381628004524856,
+      "failures": [],
+      "geoArea": 22100,
+      "rank": 41.05,
+      "scene": "validation-4-en-both",
+      "siteFont": 21,
+      "siteWidth": 158.3125,
+      "timeFont": 72,
+      "truncations": 1
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": 17.381628004524856,
+      "failures": [],
+      "geoArea": 25675,
+      "rank": 42.8375,
+      "scene": "validation-4-en-tbd",
+      "siteFont": 21,
+      "siteWidth": 158.3125,
+      "timeFont": 72,
+      "truncations": 1
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": 12.550120752219954,
+      "failures": [],
+      "geoArea": 22350,
+      "rank": 41.175,
+      "scene": "validation-5-ru-both",
+      "siteFont": 21,
+      "siteWidth": 180.0859375,
+      "timeFont": 72,
+      "truncations": 1
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": 12.550120752219954,
+      "failures": [],
+      "geoArea": 24425,
+      "rank": 42.2125,
+      "scene": "validation-5-ru-tbd",
+      "siteFont": 21,
+      "siteWidth": 180.0859375,
+      "timeFont": 72,
+      "truncations": 1
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": 12.550120752219954,
+      "failures": [],
+      "geoArea": 22050,
+      "rank": 53.025,
+      "scene": "validation-5-en-both",
+      "siteFont": 21,
+      "siteWidth": 190.5234375,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": 12.550120752219954,
+      "failures": [],
+      "geoArea": 25625,
+      "rank": 54.8125,
+      "scene": "validation-5-en-tbd",
+      "siteFont": 21,
+      "siteWidth": 190.5234375,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 0,
+      "rank": 42,
+      "scene": "validation-6-ru-both",
+      "siteFont": 21,
+      "siteWidth": 212.4921875,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 0,
+      "rank": 42,
+      "scene": "validation-6-ru-tbd",
+      "siteFont": 21,
+      "siteWidth": 212.4921875,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 0,
+      "rank": 42,
+      "scene": "validation-6-en-both",
+      "siteFont": 21,
+      "siteWidth": 210.1796875,
+      "timeFont": 72,
+      "truncations": 0
+    },
+    {
+      "candidate": "G6-002",
+      "capClearance": null,
+      "failures": [],
+      "geoArea": 0,
+      "rank": 42,
+      "scene": "validation-6-en-tbd",
+      "siteFont": 21,
+      "siteWidth": 210.1796875,
+      "timeFont": 72,
+      "truncations": 0
+    }
+  ],
+  "visualReview": "pending; geometric qualification alone is insufficient"
+}

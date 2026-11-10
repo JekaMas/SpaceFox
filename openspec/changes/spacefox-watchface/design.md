@@ -259,6 +259,14 @@ recorded as real launch evidence.
 
 ## Validation contract
 
+The subsequent `evolve-spacefox-layouts` research retains 319 parameter-unique
+candidates, qualified current browser measurements and three recommendations:
+upper globe G7-003, lower flat map G5-016 and curved horizon G6-002. The owner's
+new instruction allows paired/distributed metadata rather than a mandatory right
+column. `docs/LAYOUT_AUTORESEARCH.md` owns objectives, eliminations and evidence.
+The research's 21-pixel site target does not replace the existing native 16-pixel
+minimum or qualify physical font legibility; the native layout choice stays open.
+
 The exploratory geography gallery in `prototype/layouts.html` compares eight
 active-display variants and four OFL numeral fonts, without selecting a replacement
 native layout. `docs/DESIGN_RESEARCH.md` defines fractions as geographic-region
