@@ -38,9 +38,10 @@ An unverified model match or missing coordinate SHALL remain explicit.
 ### Requirement: Updateable watch-compatible visuals
 
 The system SHALL distribute accepted catalog revisions and watch-compatible
-rocket images/frame packs to installed watch faces without a layout-code change.
-Transfers SHALL be versioned, bounded by device limits and cached; unchanged
-assets SHALL be reused. Unsupported visual formats SHALL not be activated.
+rocket images/frame packs as static HTTPS files beside the personal feed, without
+a layout-code change or dynamic image server. Transfers SHALL use immutable
+revision/digest references, device-qualified bounds and cache reuse. A different
+feed host SHALL NOT require a layout change. Unsupported visuals SHALL not activate.
 
 #### Scenario: Rocket image replaced
 - **WHEN** the accepted manifest changes an image version for a known rocket
@@ -49,6 +50,10 @@ assets SHALL be reused. Unsupported visual formats SHALL not be activated.
 #### Scenario: Offline or unsupported asset
 - **WHEN** a replacement cannot be fetched or uses an unsupported format
 - **THEN** the previous accepted visual or generic fallback remains usable and the display does not crash
+
+#### Scenario: Static deployment and CDN versions differ
+- **WHEN** a new manifest is visible before its referenced files, or a cached old manifest is returned
+- **THEN** the watch verifies the exact version/digest set before activation, retains its last working catalog on mismatch and does not mix old site/model data with new images
 
 ### Requirement: Atomic validated catalog activation
 

@@ -18,7 +18,7 @@ public source snapshot.
 | Capability | Specification |
 | --- | --- |
 | Watch-face layout, configurable fields, geography, animation and native localization | [watchface](changes/spacefox-watchface/specs/watchface/spec.md) |
-| Automatic launch schedule, countdown, reschedules and cache | [launch-schedule](changes/spacefox-watchface/specs/launch-schedule/spec.md) |
+| Personal Actions/Pages feed, launch schedule, countdown, reschedules and source-age cache | [launch-schedule](changes/spacefox-watchface/specs/launch-schedule/spec.md) |
 | Versioned rockets/sites/assets and redistribution rights | [visual-catalog](changes/spacefox-watchface/specs/visual-catalog/spec.md) |
 | Shared language resources and preview language selection | [localization](changes/localize-free-distribution/specs/localization/spec.md) |
 | MIT scope and free official distribution | [open-distribution](changes/localize-free-distribution/specs/open-distribution/spec.md) |
@@ -26,3 +26,7 @@ public source snapshot.
 The language/preview/license foundation is implemented. Native Garmin software,
 live schedule updates and device qualification remain open in the
 [watch-face implementation plan](changes/spacefox-watchface/tasks.md).
+
+Personal deployment uses the selected Actions/static-files approach described in
+the [MIT agent setup guide](../docs/AGENT_SETUP.md); no updater or Pages workflow is
+enabled by publishing this specification.
