@@ -1,0 +1,308 @@
+{
+  "change": "localize-free-distribution",
+  "manifest": "openspec/changes/localize-free-distribution/verification.json",
+  "manifest_sha256": "8a51e333ef9ed5573a314b76c0d00c96f34be7677f9a441a1f474ae2b882a5b8",
+  "nodes": {
+    "cases": {
+      "R1.P1.NEGATIVE": {
+        "command_id": "foundation-tests",
+        "current_evidence_fingerprint": "9e22841be2f95eb206cb56bf9c62e5f92329f716def96845280ae1f94197cc6d",
+        "distinct_reason": "catalog negative fixture",
+        "green_expectation": "Missing keys, empty labels, swapped/duplicate Garmin mappings, changed tokens and invalid direction are rejected.",
+        "id": "R1.P1.NEGATIVE",
+        "invalidation_dependencies": [
+          "locales/**",
+          "tools/localization.py",
+          "tests/test_foundation.py"
+        ],
+        "latest_observed_status": "passed",
+        "observable": "Missing keys, empty labels, swapped/duplicate Garmin mappings, changed tokens and invalid direction are rejected.",
+        "polarity": "negative",
+        "property_id": "R1.P1",
+        "red_expectation": "A malformed locale is accepted or a complete locale fails.",
+        "scenario": "Validate language resources",
+        "scenario_fingerprint": "002784f1a7674bc93ec4f7606321110f80cefdb94a25d024452db9570af6545d",
+        "setup": "Validate the complete checked-in 36-code catalog and mutate copied German/Russian/Japanese strings, Garmin mappings and text direction.",
+        "source_path": "tests/test_foundation.py",
+        "source_sha256": "35c83a91d9ee68d9ac4a946ae6e2360ebc8a49bf8468328696ed7c8aeb08cddc",
+        "state": "implemented",
+        "substitution": {
+          "classification": "NO_TEST_DOUBLE"
+        },
+        "test_id": "unittest::tests.test_foundation.FoundationTest.test_catalog_rejects_corruption"
+      },
+      "R1.P1.POSITIVE": {
+        "command_id": "foundation-tests",
+        "current_evidence_fingerprint": "d001bd09d0256cb28190fe41ea6c27339f524663a9d5c68f0bc3d624277d8b92",
+        "distinct_reason": "catalog positive fixture",
+        "green_expectation": "All complete language files validate with matching tokens and explicit draft status.",
+        "id": "R1.P1.POSITIVE",
+        "invalidation_dependencies": [
+          "locales/**",
+          "tools/localization.py",
+          "tests/test_foundation.py"
+        ],
+        "latest_observed_status": "passed",
+        "observable": "All complete language files validate with matching tokens and explicit draft status.",
+        "polarity": "positive",
+        "property_id": "R1.P1",
+        "red_expectation": "A malformed locale is accepted or a complete locale fails.",
+        "scenario": "Validate language resources",
+        "scenario_fingerprint": "002784f1a7674bc93ec4f7606321110f80cefdb94a25d024452db9570af6545d",
+        "setup": "Validate the complete checked-in 36-code catalog and mutate copied German/Russian/Japanese strings, Garmin mappings and text direction.",
+        "source_path": "tests/test_foundation.py",
+        "source_sha256": "35c83a91d9ee68d9ac4a946ae6e2360ebc8a49bf8468328696ed7c8aeb08cddc",
+        "state": "implemented",
+        "substitution": {
+          "classification": "NO_TEST_DOUBLE"
+        },
+        "test_id": "unittest::tests.test_foundation.FoundationTest.test_catalog_complete"
+      },
+      "R2.P1.NEGATIVE": {
+        "command_id": "foundation-tests",
+        "current_evidence_fingerprint": "346a0160512a7b41e2c16dd86f0086fef2769ad24fd1a3bfc068b486c6cebafc",
+        "distinct_reason": "preview-i18n negative fixture",
+        "green_expectation": "Unsupported or malformed values never produce an unknown locale; explicit fallback examples return English.",
+        "id": "R2.P1.NEGATIVE",
+        "invalidation_dependencies": [
+          "prototype/i18n.js",
+          "prototype/mission.template.html",
+          "locales/**",
+          "tests/test_foundation.py"
+        ],
+        "latest_observed_status": "passed",
+        "observable": "Unsupported or malformed values never produce an unknown locale; explicit fallback examples return English.",
+        "polarity": "negative",
+        "property_id": "R2.P1",
+        "red_expectation": "A saved choice is ignored, a Chinese script is confused, or unsupported input leaks through.",
+        "scenario": "Resolve a preview language",
+        "scenario_fingerprint": "35f50ea6df03d2629221335922b812f3a8dd3cec9861adb27d63141bcf4754e0",
+        "setup": "Invoke the real prototype/i18n.js resolver in Node with literal saved/browser preferences, all 36 locale IDs, Chinese regions/scripts and malformed inputs.",
+        "source_path": "tests/test_foundation.py",
+        "source_sha256": "35c83a91d9ee68d9ac4a946ae6e2360ebc8a49bf8468328696ed7c8aeb08cddc",
+        "state": "implemented",
+        "substitution": {
+          "classification": "NO_TEST_DOUBLE"
+        },
+        "test_id": "unittest::tests.test_foundation.FoundationTest.test_unsupported_and_invalid_inputs"
+      },
+      "R2.P1.POSITIVE": {
+        "command_id": "foundation-tests",
+        "current_evidence_fingerprint": "58a0a59f95e807b177bee71aa577d79f8e87416dabff12cd59e5f370b22f3aed",
+        "distinct_reason": "preview-i18n positive fixture",
+        "green_expectation": "Saved choices, language preferences and literal Chinese script/region examples resolve to the expected supported locale.",
+        "id": "R2.P1.POSITIVE",
+        "invalidation_dependencies": [
+          "prototype/i18n.js",
+          "prototype/mission.template.html",
+          "locales/**",
+          "tests/test_foundation.py"
+        ],
+        "latest_observed_status": "passed",
+        "observable": "Saved choices, language preferences and literal Chinese script/region examples resolve to the expected supported locale.",
+        "polarity": "positive",
+        "property_id": "R2.P1",
+        "red_expectation": "A saved choice is ignored, a Chinese script is confused, or unsupported input leaks through.",
+        "scenario": "Resolve a preview language",
+        "scenario_fingerprint": "35f50ea6df03d2629221335922b812f3a8dd3cec9861adb27d63141bcf4754e0",
+        "setup": "Invoke the real prototype/i18n.js resolver in Node with literal saved/browser preferences, all 36 locale IDs, Chinese regions/scripts and malformed inputs.",
+        "source_path": "tests/test_foundation.py",
+        "source_sha256": "35c83a91d9ee68d9ac4a946ae6e2360ebc8a49bf8468328696ed7c8aeb08cddc",
+        "state": "implemented",
+        "substitution": {
+          "classification": "NO_TEST_DOUBLE"
+        },
+        "test_id": "unittest::tests.test_foundation.FoundationTest.test_language_preferences"
+      },
+      "R3.P1.NEGATIVE": {
+        "command_id": "foundation-tests",
+        "current_evidence_fingerprint": "98c135a4305a5a439007a380a5def457835dd7a8a798e2b1f0145cd9256427d2",
+        "distinct_reason": "distribution-inventory negative fixture",
+        "green_expectation": "Included unknown-license assets/tooling, absent notices and paid-feature policy are rejected.",
+        "id": "R3.P1.NEGATIVE",
+        "invalidation_dependencies": [
+          "LICENSE",
+          "THIRD_PARTY_NOTICES.md",
+          "licenses/**",
+          "distribution/**",
+          "tools/localization.py",
+          "tests/test_foundation.py"
+        ],
+        "latest_observed_status": "passed",
+        "observable": "Included unknown-license assets/tooling, absent notices and paid-feature policy are rejected.",
+        "polarity": "negative",
+        "property_id": "R3.P1",
+        "red_expectation": "A declared unlicensed included component or paid official policy passes the inventory validator.",
+        "scenario": "Inspect a distribution inventory",
+        "scenario_fingerprint": "17152867c0ed4a6c97a16d42fa6c6abaa7bfee65ac8e66c5c07b51889f2fac14",
+        "setup": "Load the checked-in MIT/notice inventory; try copies with an included unknown-license photo, missing notice, included unlicensed tooling and paid fields.",
+        "source_path": "tests/test_foundation.py",
+        "source_sha256": "35c83a91d9ee68d9ac4a946ae6e2360ebc8a49bf8468328696ed7c8aeb08cddc",
+        "state": "implemented",
+        "substitution": {
+          "classification": "NO_TEST_DOUBLE"
+        },
+        "test_id": "unittest::tests.test_foundation.FoundationTest.test_unlicensed_distribution_rejected"
+      },
+      "R3.P1.POSITIVE": {
+        "command_id": "foundation-tests",
+        "current_evidence_fingerprint": "98091388bd14dc73a255d723749a8567884a430e46fcccf5e24b5eb8f9df6cdf",
+        "distinct_reason": "distribution-inventory positive fixture",
+        "green_expectation": "Original-work MIT, retained component notices and free official pricing are present.",
+        "id": "R3.P1.POSITIVE",
+        "invalidation_dependencies": [
+          "LICENSE",
+          "THIRD_PARTY_NOTICES.md",
+          "licenses/**",
+          "distribution/**",
+          "tools/localization.py",
+          "tests/test_foundation.py"
+        ],
+        "latest_observed_status": "passed",
+        "observable": "Original-work MIT, retained component notices and free official pricing are present.",
+        "polarity": "positive",
+        "property_id": "R3.P1",
+        "red_expectation": "A declared unlicensed included component or paid official policy passes the inventory validator.",
+        "scenario": "Inspect a distribution inventory",
+        "scenario_fingerprint": "17152867c0ed4a6c97a16d42fa6c6abaa7bfee65ac8e66c5c07b51889f2fac14",
+        "setup": "Load the checked-in MIT/notice inventory; try copies with an included unknown-license photo, missing notice, included unlicensed tooling and paid fields.",
+        "source_path": "tests/test_foundation.py",
+        "source_sha256": "35c83a91d9ee68d9ac4a946ae6e2360ebc8a49bf8468328696ed7c8aeb08cddc",
+        "state": "implemented",
+        "substitution": {
+          "classification": "NO_TEST_DOUBLE"
+        },
+        "test_id": "unittest::tests.test_foundation.FoundationTest.test_distribution_inventory"
+      }
+    },
+    "commands": {
+      "foundation-tests": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "-v",
+          "tests.test_foundation"
+        ],
+        "authority": "local",
+        "cwd": ".",
+        "id": "foundation-tests",
+        "runner": "python-unittest",
+        "timeout_seconds": 30
+      }
+    },
+    "properties": {
+      "R1.P1": {
+        "id": "R1.P1",
+        "oracle": "Literal Garmin 36-code set, independent BCP-47 preference examples and explicit upstream license inventory, reviewed against cited primary sources.",
+        "owner": "catalog",
+        "requirement_id": "R1",
+        "scenarios": [
+          "Validate language resources"
+        ],
+        "source_globs": [
+          "locales/**",
+          "tools/localization.py",
+          "tests/test_foundation.py"
+        ],
+        "statement": "All 36 complete language resources pass; corrupted locale input is rejected."
+      },
+      "R2.P1": {
+        "id": "R2.P1",
+        "oracle": "Literal Garmin 36-code set, independent BCP-47 preference examples and explicit upstream license inventory, reviewed against cited primary sources.",
+        "owner": "preview-i18n",
+        "requirement_id": "R2",
+        "scenarios": [
+          "Resolve a preview language"
+        ],
+        "source_globs": [
+          "prototype/i18n.js",
+          "prototype/mission.template.html",
+          "locales/**",
+          "tests/test_foundation.py"
+        ],
+        "statement": "Literal saved/browser locale fixtures resolve without partial or unknown IDs."
+      },
+      "R3.P1": {
+        "id": "R3.P1",
+        "oracle": "Literal Garmin 36-code set, independent BCP-47 preference examples and explicit upstream license inventory, reviewed against cited primary sources.",
+        "owner": "distribution-inventory",
+        "requirement_id": "R3",
+        "scenarios": [
+          "Inspect a distribution inventory"
+        ],
+        "source_globs": [
+          "LICENSE",
+          "THIRD_PARTY_NOTICES.md",
+          "licenses/**",
+          "distribution/**",
+          "tools/localization.py",
+          "tests/test_foundation.py"
+        ],
+        "statement": "Every included component has declared terms and a retained license; unlicensed tooling and images are excluded."
+      }
+    },
+    "requirements": {
+      "R1": {
+        "capability": "localization",
+        "fingerprint": "82bb9408d4e0340e96e6e4c65465545bdb2c59d6af4c2d6fcea14ee31e461ed1",
+        "id": "R1",
+        "title": "Complete language catalog"
+      },
+      "R2": {
+        "capability": "localization",
+        "fingerprint": "0039a45c30df73769121299cfd93b5772cccf2812d88a6fca0851f658986d97c",
+        "id": "R2",
+        "title": "Predictable preview language selection"
+      },
+      "R3": {
+        "capability": "open-distribution",
+        "fingerprint": "0bee41230a898da59b31ea48eee7cb96907342e2710454b780eeba363273592f",
+        "id": "R3",
+        "title": "Explicit permissive distribution scope"
+      }
+    }
+  },
+  "requested_selectors": {
+    "all": true,
+    "cases": [],
+    "changed_paths": [],
+    "commands": [],
+    "owners": [],
+    "properties": [],
+    "requirements": [],
+    "scenarios": [],
+    "tests": []
+  },
+  "selection": {
+    "cases": [
+      "R1.P1.NEGATIVE",
+      "R1.P1.POSITIVE",
+      "R2.P1.NEGATIVE",
+      "R2.P1.POSITIVE",
+      "R3.P1.NEGATIVE",
+      "R3.P1.POSITIVE"
+    ],
+    "commands": [
+      "foundation-tests"
+    ],
+    "properties": [
+      "R1.P1",
+      "R2.P1",
+      "R3.P1"
+    ],
+    "requirements": [
+      "R1",
+      "R2",
+      "R3"
+    ]
+  },
+  "specifications": {
+    "R1": "82bb9408d4e0340e96e6e4c65465545bdb2c59d6af4c2d6fcea14ee31e461ed1",
+    "R2": "0039a45c30df73769121299cfd93b5772cccf2812d88a6fca0851f658986d97c",
+    "R3": "0bee41230a898da59b31ea48eee7cb96907342e2710454b780eeba363273592f"
+  },
+  "status": "passed",
+  "substitution_gaps": []
+}

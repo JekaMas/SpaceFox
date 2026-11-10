@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "change": "localize-free-distribution",
+  "scope": {
+    "property_ids": [
+      "R1.P1",
+      "R2.P1",
+      "R3.P1"
+    ],
+    "test_ids": [
+      "unittest::tests.test_foundation.FoundationTest.test_catalog_complete",
+      "unittest::tests.test_foundation.FoundationTest.test_catalog_rejects_corruption",
+      "unittest::tests.test_foundation.FoundationTest.test_language_preferences",
+      "unittest::tests.test_foundation.FoundationTest.test_unsupported_and_invalid_inputs",
+      "unittest::tests.test_foundation.FoundationTest.test_distribution_inventory",
+      "unittest::tests.test_foundation.FoundationTest.test_unlicensed_distribution_rejected"
+    ]
+  },
+  "reviews": [
+    {
+      "id": "D1",
+      "question": "Locate the current preview strings, dependency shell and license owners.",
+      "property_ids": [
+        "R1.P1",
+        "R2.P1",
+        "R3.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_foundation.FoundationTest.test_catalog_complete",
+        "unittest::tests.test_foundation.FoundationTest.test_catalog_rejects_corruption",
+        "unittest::tests.test_foundation.FoundationTest.test_language_preferences",
+        "unittest::tests.test_foundation.FoundationTest.test_unsupported_and_invalid_inputs",
+        "unittest::tests.test_foundation.FoundationTest.test_distribution_inventory",
+        "unittest::tests.test_foundation.FoundationTest.test_unlicensed_distribution_rejected"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "rg --files and targeted reads of prototype/mission.html, prototype/index.html, README.md and .agents/workflow/README.md",
+          "outcome": "Russian strings are in mission.html; exported index has a host runtime; root license/locales absent.",
+          "results": [
+            {
+              "path": "prototype/mission.html",
+              "line": 127,
+              "classification": "change_candidate",
+              "reason": "Owns preview launch strings and rendering."
+            },
+            {
+              "path": ".agents/workflow/README.md",
+              "line": 106,
+              "classification": "interface_dependency",
+              "reason": "Separate workflow ownership and no asserted redistribution grant."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "unavailable",
+          "query": "SpaceFox preview localization and licensing ownership",
+          "reason": "No SpaceFox semantic index has been qualified; existing setup covers exact files only. Known source files were read directly.",
+          "outcome": "No semantic evidence claimed.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "unavailable",
+          "query": "SpaceFox localization references",
+          "reason": "No JetBrains index tool is exposed in this session for SpaceFox.",
+          "outcome": "No IDE semantic evidence claimed.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "Language and distribution foundation is an independently deliverable change; native implementation remains in the original change."
+    }
+  ]
+}

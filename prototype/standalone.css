@@ -1,0 +1,22 @@
+/* SPDX-License-Identifier: MIT. Original SpaceFox preview shell. */
+:root {color-scheme:light dark; font-family:system-ui,sans-serif; background:light-dark(#f4f6f8,#101820); color:light-dark(#273442,#e2e9ef)}
+* {box-sizing:border-box}
+body {margin:0; padding:24px 16px 36px; font-size:16px; line-height:1.4}
+main {max-width:760px; margin:auto}
+header {display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:20px}
+h1 {font-size:22px; font-weight:600; margin:0; letter-spacing:.01em}
+a {color:light-dark(#22657b,#9be5ed); text-underline-offset:3px}
+button,input,select {font:inherit}
+.btn {display:inline-flex;align-items:center;gap:8px;border:1px solid light-dark(#b8c5cf,#496171);border-radius:8px;padding:9px 14px;background:light-dark(#fff,#1c2b37);color:inherit;cursor:pointer}
+.btn svg {width:17px;height:17px}
+.form-label {display:flex;flex-direction:column;gap:5px;min-width:0;font-size:14px}
+.form-select {min-width:0;width:100%;padding:8px;border:1px solid light-dark(#b8c5cf,#496171);border-radius:6px;background:light-dark(#fff,#1c2b37);color:inherit}
+.viz-controls {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.form-check {display:flex;gap:8px;align-items:center;font-size:14px}
+input[type=checkbox] {accent-color:#408ca2}
+.appearance-settings {display:flex;flex-wrap:wrap;gap:14px;margin-top:16px;align-items:center}
+.accent-label {display:flex;align-items:center;gap:8px;font-size:14px}
+.text-small,footer {font-size:13px;line-height:1.45}
+footer {margin-top:24px;color:light-dark(#596b7b,#aebdcb)}
+:focus-visible {outline:2px solid #408ca2;outline-offset:3px}
+@media(max-width:440px) {body{padding:16px 12px 28px}.viz-controls{grid-template-columns:minmax(0,1fr)}}

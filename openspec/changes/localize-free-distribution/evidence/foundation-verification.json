@@ -1,0 +1,215 @@
+{
+  "cases": {
+    "R1.P1.NEGATIVE": {
+      "evidence_fingerprint": "9e22841be2f95eb206cb56bf9c62e5f92329f716def96845280ae1f94197cc6d",
+      "green_expectation": "Missing keys, empty labels, swapped/duplicate Garmin mappings, changed tokens and invalid direction are rejected.",
+      "invalidation_dependencies": [
+        "locales/**",
+        "tools/localization.py",
+        "tests/test_foundation.py"
+      ],
+      "observable": "Missing keys, empty labels, swapped/duplicate Garmin mappings, changed tokens and invalid direction are rejected.",
+      "polarity": "negative",
+      "property_id": "R1.P1",
+      "red_expectation": "A malformed locale is accepted or a complete locale fails.",
+      "scenario": "Validate language resources",
+      "scenario_fingerprint": "002784f1a7674bc93ec4f7606321110f80cefdb94a25d024452db9570af6545d",
+      "setup": "Validate the complete checked-in 36-code catalog and mutate copied German/Russian/Japanese strings, Garmin mappings and text direction.",
+      "source_path": "tests/test_foundation.py",
+      "source_sha256": "35c83a91d9ee68d9ac4a946ae6e2360ebc8a49bf8468328696ed7c8aeb08cddc",
+      "status": "passed",
+      "test_id": "unittest::tests.test_foundation.FoundationTest.test_catalog_rejects_corruption"
+    },
+    "R1.P1.POSITIVE": {
+      "evidence_fingerprint": "d001bd09d0256cb28190fe41ea6c27339f524663a9d5c68f0bc3d624277d8b92",
+      "green_expectation": "All complete language files validate with matching tokens and explicit draft status.",
+      "invalidation_dependencies": [
+        "locales/**",
+        "tools/localization.py",
+        "tests/test_foundation.py"
+      ],
+      "observable": "All complete language files validate with matching tokens and explicit draft status.",
+      "polarity": "positive",
+      "property_id": "R1.P1",
+      "red_expectation": "A malformed locale is accepted or a complete locale fails.",
+      "scenario": "Validate language resources",
+      "scenario_fingerprint": "002784f1a7674bc93ec4f7606321110f80cefdb94a25d024452db9570af6545d",
+      "setup": "Validate the complete checked-in 36-code catalog and mutate copied German/Russian/Japanese strings, Garmin mappings and text direction.",
+      "source_path": "tests/test_foundation.py",
+      "source_sha256": "35c83a91d9ee68d9ac4a946ae6e2360ebc8a49bf8468328696ed7c8aeb08cddc",
+      "status": "passed",
+      "test_id": "unittest::tests.test_foundation.FoundationTest.test_catalog_complete"
+    },
+    "R2.P1.NEGATIVE": {
+      "evidence_fingerprint": "346a0160512a7b41e2c16dd86f0086fef2769ad24fd1a3bfc068b486c6cebafc",
+      "green_expectation": "Unsupported or malformed values never produce an unknown locale; explicit fallback examples return English.",
+      "invalidation_dependencies": [
+        "prototype/i18n.js",
+        "prototype/mission.template.html",
+        "locales/**",
+        "tests/test_foundation.py"
+      ],
+      "observable": "Unsupported or malformed values never produce an unknown locale; explicit fallback examples return English.",
+      "polarity": "negative",
+      "property_id": "R2.P1",
+      "red_expectation": "A saved choice is ignored, a Chinese script is confused, or unsupported input leaks through.",
+      "scenario": "Resolve a preview language",
+      "scenario_fingerprint": "35f50ea6df03d2629221335922b812f3a8dd3cec9861adb27d63141bcf4754e0",
+      "setup": "Invoke the real prototype/i18n.js resolver in Node with literal saved/browser preferences, all 36 locale IDs, Chinese regions/scripts and malformed inputs.",
+      "source_path": "tests/test_foundation.py",
+      "source_sha256": "35c83a91d9ee68d9ac4a946ae6e2360ebc8a49bf8468328696ed7c8aeb08cddc",
+      "status": "passed",
+      "test_id": "unittest::tests.test_foundation.FoundationTest.test_unsupported_and_invalid_inputs"
+    },
+    "R2.P1.POSITIVE": {
+      "evidence_fingerprint": "58a0a59f95e807b177bee71aa577d79f8e87416dabff12cd59e5f370b22f3aed",
+      "green_expectation": "Saved choices, language preferences and literal Chinese script/region examples resolve to the expected supported locale.",
+      "invalidation_dependencies": [
+        "prototype/i18n.js",
+        "prototype/mission.template.html",
+        "locales/**",
+        "tests/test_foundation.py"
+      ],
+      "observable": "Saved choices, language preferences and literal Chinese script/region examples resolve to the expected supported locale.",
+      "polarity": "positive",
+      "property_id": "R2.P1",
+      "red_expectation": "A saved choice is ignored, a Chinese script is confused, or unsupported input leaks through.",
+      "scenario": "Resolve a preview language",
+      "scenario_fingerprint": "35f50ea6df03d2629221335922b812f3a8dd3cec9861adb27d63141bcf4754e0",
+      "setup": "Invoke the real prototype/i18n.js resolver in Node with literal saved/browser preferences, all 36 locale IDs, Chinese regions/scripts and malformed inputs.",
+      "source_path": "tests/test_foundation.py",
+      "source_sha256": "35c83a91d9ee68d9ac4a946ae6e2360ebc8a49bf8468328696ed7c8aeb08cddc",
+      "status": "passed",
+      "test_id": "unittest::tests.test_foundation.FoundationTest.test_language_preferences"
+    },
+    "R3.P1.NEGATIVE": {
+      "evidence_fingerprint": "98c135a4305a5a439007a380a5def457835dd7a8a798e2b1f0145cd9256427d2",
+      "green_expectation": "Included unknown-license assets/tooling, absent notices and paid-feature policy are rejected.",
+      "invalidation_dependencies": [
+        "LICENSE",
+        "THIRD_PARTY_NOTICES.md",
+        "licenses/**",
+        "distribution/**",
+        "tools/localization.py",
+        "tests/test_foundation.py"
+      ],
+      "observable": "Included unknown-license assets/tooling, absent notices and paid-feature policy are rejected.",
+      "polarity": "negative",
+      "property_id": "R3.P1",
+      "red_expectation": "A declared unlicensed included component or paid official policy passes the inventory validator.",
+      "scenario": "Inspect a distribution inventory",
+      "scenario_fingerprint": "17152867c0ed4a6c97a16d42fa6c6abaa7bfee65ac8e66c5c07b51889f2fac14",
+      "setup": "Load the checked-in MIT/notice inventory; try copies with an included unknown-license photo, missing notice, included unlicensed tooling and paid fields.",
+      "source_path": "tests/test_foundation.py",
+      "source_sha256": "35c83a91d9ee68d9ac4a946ae6e2360ebc8a49bf8468328696ed7c8aeb08cddc",
+      "status": "passed",
+      "test_id": "unittest::tests.test_foundation.FoundationTest.test_unlicensed_distribution_rejected"
+    },
+    "R3.P1.POSITIVE": {
+      "evidence_fingerprint": "98091388bd14dc73a255d723749a8567884a430e46fcccf5e24b5eb8f9df6cdf",
+      "green_expectation": "Original-work MIT, retained component notices and free official pricing are present.",
+      "invalidation_dependencies": [
+        "LICENSE",
+        "THIRD_PARTY_NOTICES.md",
+        "licenses/**",
+        "distribution/**",
+        "tools/localization.py",
+        "tests/test_foundation.py"
+      ],
+      "observable": "Original-work MIT, retained component notices and free official pricing are present.",
+      "polarity": "positive",
+      "property_id": "R3.P1",
+      "red_expectation": "A declared unlicensed included component or paid official policy passes the inventory validator.",
+      "scenario": "Inspect a distribution inventory",
+      "scenario_fingerprint": "17152867c0ed4a6c97a16d42fa6c6abaa7bfee65ac8e66c5c07b51889f2fac14",
+      "setup": "Load the checked-in MIT/notice inventory; try copies with an included unknown-license photo, missing notice, included unlicensed tooling and paid fields.",
+      "source_path": "tests/test_foundation.py",
+      "source_sha256": "35c83a91d9ee68d9ac4a946ae6e2360ebc8a49bf8468328696ed7c8aeb08cddc",
+      "status": "passed",
+      "test_id": "unittest::tests.test_foundation.FoundationTest.test_distribution_inventory"
+    }
+  },
+  "change": "localize-free-distribution",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_foundation"
+      ],
+      "cwd": "/Users/jekamas/projects/SpaceFox",
+      "duration_seconds": 0.2700250409543514,
+      "exit_code": 0,
+      "id": "foundation-tests",
+      "observed_tests": {
+        "unittest::tests.test_foundation.FoundationTest.test_catalog_complete": "pass",
+        "unittest::tests.test_foundation.FoundationTest.test_catalog_rejects_corruption": "pass",
+        "unittest::tests.test_foundation.FoundationTest.test_distribution_inventory": "pass",
+        "unittest::tests.test_foundation.FoundationTest.test_language_preferences": "pass",
+        "unittest::tests.test_foundation.FoundationTest.test_unlicensed_distribution_rejected": "pass",
+        "unittest::tests.test_foundation.FoundationTest.test_unsupported_and_invalid_inputs": "pass"
+      },
+      "status": "exited",
+      "stderr": "test_catalog_complete (tests.test_foundation.FoundationTest.test_catalog_complete) ... ok\ntest_catalog_rejects_corruption (tests.test_foundation.FoundationTest.test_catalog_rejects_corruption) ... ok\ntest_distribution_inventory (tests.test_foundation.FoundationTest.test_distribution_inventory) ... ok\ntest_language_preferences (tests.test_foundation.FoundationTest.test_language_preferences) ... ok\ntest_unlicensed_distribution_rejected (tests.test_foundation.FoundationTest.test_unlicensed_distribution_rejected) ... ok\ntest_unsupported_and_invalid_inputs (tests.test_foundation.FoundationTest.test_unsupported_and_invalid_inputs) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.193s\n\nOK\n",
+      "stderr_artifact": "/Users/jekamas/projects/SpaceFox/openspec/changes/localize-free-distribution/evidence/foundation-verification.json.foundation-tests.stderr.log",
+      "stderr_truncated": false,
+      "stdout": "",
+      "stdout_artifact": "/Users/jekamas/projects/SpaceFox/openspec/changes/localize-free-distribution/evidence/foundation-verification.json.foundation-tests.stdout.log",
+      "stdout_truncated": false
+    }
+  ],
+  "finished_at": "2026-11-10T16:08:25.481358+00:00",
+  "git": {
+    "dirty": false,
+    "head": "2ad07cf6ac49e9ef5a8d97f2f5667e598b17d1c9",
+    "status": "known"
+  },
+  "manifest": "openspec/changes/localize-free-distribution/verification.json",
+  "manifest_sha256": "8a51e333ef9ed5573a314b76c0d00c96f34be7677f9a441a1f474ae2b882a5b8",
+  "requested_selectors": {
+    "all": true,
+    "cases": [],
+    "changed_paths": [],
+    "commands": [],
+    "owners": [],
+    "properties": [],
+    "requirements": [],
+    "scenarios": [],
+    "tests": []
+  },
+  "schema_version": 2,
+  "selection": {
+    "cases": [
+      "R1.P1.NEGATIVE",
+      "R1.P1.POSITIVE",
+      "R2.P1.NEGATIVE",
+      "R2.P1.POSITIVE",
+      "R3.P1.NEGATIVE",
+      "R3.P1.POSITIVE"
+    ],
+    "commands": [
+      "foundation-tests"
+    ],
+    "properties": [
+      "R1.P1",
+      "R2.P1",
+      "R3.P1"
+    ],
+    "requirements": [
+      "R1",
+      "R2",
+      "R3"
+    ]
+  },
+  "specifications": {
+    "R1": "82bb9408d4e0340e96e6e4c65465545bdb2c59d6af4c2d6fcea14ee31e461ed1",
+    "R2": "0039a45c30df73769121299cfd93b5772cccf2812d88a6fca0851f658986d97c",
+    "R3": "0bee41230a898da59b31ea48eee7cb96907342e2710454b780eeba363273592f"
+  },
+  "started_at": "2026-11-10T16:08:25.164495+00:00",
+  "status": "passed",
+  "substitution_gaps": []
+}

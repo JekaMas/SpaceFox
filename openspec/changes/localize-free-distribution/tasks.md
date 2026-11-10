@@ -1,0 +1,24 @@
+# Tasks
+
+## 1. Language foundation
+
+- [x] 1.1 Add the 36-locale catalog and complete draft translations; validate key/placeholder coverage, unique Garmin mappings and rejection of malformed inputs with focused tests. Receipt: `evidence/foundation-verification.json`.
+- [x] 1.2 Localize the preview with saved/browser/English resolution and stable RTL geometry; test exact language matching and inspect representative languages, combined status, narrow layout and settings preservation in the browser. Receipt: `evidence/localization-review.md` and browser JSON/captures.
+
+## 2. Free distribution
+
+- [x] 2.1 Add MIT, upstream notices, explicit license scope and free official-release policy; inspect the component inventory, remove the Codex preview runtime and verify that the inventory validator rejects included assets/tooling with unqualified redistribution terms. No product package is built in this increment. Receipt: `evidence/localization-review.md`.
+
+## 3. Reconciliation
+
+- [x] 3.1 Update the original native implementation plan, README and localization guide; retain focused test/browser receipts, validate both OpenSpec changes and review the final diff on a clean committed revision. Receipts: `evidence/localization-review.md` and `evidence/foundation-verification.json`.
+
+## Resume notes
+
+This change owns language resources, the browser preview and license foundation.
+Native watch-face tasks remain in `spacefox-watchface/tasks.md`; drafts and browser
+checks do not establish native support. Publication remains a later action.
+
+Current language/license/preview increment is complete; keep its valid source
+checks without rerunning them for this evidence-only completion update. Future
+native entry remains the original task 2.1 and language qualification task 5.4.
