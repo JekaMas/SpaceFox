@@ -110,8 +110,21 @@ keeps full parameters/current audit rather than replacing failures with a summar
 
 ## Checks and proof boundary
 
-The final strict OpenSpec, graph, exact-case execution, source inventory and
-publication receipts are reconciled in tasks.md and the local publication record.
+The complete final DAG passed all eight exact tests on clean source revision
+`bb3bb36acd61564345c5f1f16621021d14efa380`; `final-dag.json` records identities,
+outputs and invalidation fingerprints. Strict OpenSpec passed for both affected
+changes under authoring and public configurations. Source inventory passed with
+164 candidates and no errors. Public commit `d8d61f4` contains the research source;
+remote readback matched and GitHub returned the published report. A first DAG
+attempt used an unsupported outside-repository receipt path and was rejected
+before any test ran; the real accepted receipt is inside this change.
+
+Completion-structure output remains local because it includes separately owned
+development guidance; public-source check commands remain the README's ordinary
+OpenSpec/Python/Node commands. Final structural/retained-evidence observations are
+reconciled in tasks.md and the local publication record.
+The task-complete structural check passed; a retained-evidence query confirmed
+all eight current case fingerprints still passed after documentation-only closure.
 Prior unchanged locale, free-license inventory, original preview generation,
 workflow bootstrap/packaging/routes and shared mechanics greens are retained.
 No dependency, locale resource, original preview builder, price policy or workflow

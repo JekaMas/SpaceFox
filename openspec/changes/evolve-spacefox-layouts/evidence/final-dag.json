@@ -1,0 +1,260 @@
+{
+  "cases": {
+    "R1.P1.NEGATIVE": {
+      "evidence_fingerprint": "874b0b6804e6a812ab0f832481197edec18326e1e04faed4612be353967580d7",
+      "green_expectation": "Deterministic unique catalog and explicit invalid-candidate rejection.",
+      "invalidation_dependencies": [
+        "prototype/research/generator.js",
+        "tests/test_layout_research.py"
+      ],
+      "observable": "Explicit invalid or incomplete inputs fail the declared property.",
+      "polarity": "negative",
+      "property_id": "R1.P1",
+      "red_expectation": "The independently specified expected outcome is violated.",
+      "scenario": "Generate and inspect candidates",
+      "scenario_fingerprint": "41e54fa3e6cf41b6a83d5352adad1bee70352b404a73c9550d885b8121f38c9e",
+      "setup": "Invoke the real JavaScript owner with literal independently chosen valid and invalid inputs via existing Node. Browser runs additionally exercise rendered bounds.",
+      "source_path": "tests/test_layout_research.py",
+      "source_sha256": "db1eb3c870b3f9341b4e743e8aae85de8a9400efc2841b41fcf067d63613491e",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_research.ResearchTest.test_generator_negative"
+    },
+    "R1.P1.POSITIVE": {
+      "evidence_fingerprint": "99a8a4bc526f7d56b4face932961ac5073113b77553776ea4696f40981d25a53",
+      "green_expectation": "Deterministic unique catalog and explicit invalid-candidate rejection.",
+      "invalidation_dependencies": [
+        "prototype/research/generator.js",
+        "tests/test_layout_research.py"
+      ],
+      "observable": "Valid inputs satisfy the declared property.",
+      "polarity": "positive",
+      "property_id": "R1.P1",
+      "red_expectation": "The independently specified expected outcome is violated.",
+      "scenario": "Generate and inspect candidates",
+      "scenario_fingerprint": "41e54fa3e6cf41b6a83d5352adad1bee70352b404a73c9550d885b8121f38c9e",
+      "setup": "Invoke the real JavaScript owner with literal independently chosen valid and invalid inputs via existing Node. Browser runs additionally exercise rendered bounds.",
+      "source_path": "tests/test_layout_research.py",
+      "source_sha256": "db1eb3c870b3f9341b4e743e8aae85de8a9400efc2841b41fcf067d63613491e",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_research.ResearchTest.test_generator_positive"
+    },
+    "R2.P1.NEGATIVE": {
+      "evidence_fingerprint": "5286476795c0bfe494e180d3cef6688a1763412027f5b6ea853c01824bb6a7cb",
+      "green_expectation": "Literal rectangle counterexamples detect fit, overlap, missing values and marker occlusion.",
+      "invalidation_dependencies": [
+        "prototype/research/metrics.js",
+        "prototype/research/renderer.js",
+        "prototype/research/fixtures.js",
+        "prototype/research/research.css",
+        "prototype/research/lab.js",
+        "tests/test_layout_research.py"
+      ],
+      "observable": "Explicit invalid or incomplete inputs fail the declared property.",
+      "polarity": "negative",
+      "property_id": "R2.P1",
+      "red_expectation": "The independently specified expected outcome is violated.",
+      "scenario": "Measure rendered scenes",
+      "scenario_fingerprint": "cdcb1d3aa2cf9effa3fe8962fffb8953fad950a399e1744d33c90f0201ae9b6e",
+      "setup": "Invoke the real JavaScript owner with literal independently chosen valid and invalid inputs via existing Node. Browser runs additionally exercise rendered bounds.",
+      "source_path": "tests/test_layout_research.py",
+      "source_sha256": "db1eb3c870b3f9341b4e743e8aae85de8a9400efc2841b41fcf067d63613491e",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_research.ResearchTest.test_detector_negative"
+    },
+    "R2.P1.POSITIVE": {
+      "evidence_fingerprint": "454d60481ae42f3191c6489bce681a8ad44ff56540fa152e4a2439803eaed98f",
+      "green_expectation": "Literal rectangle counterexamples detect fit, overlap, missing values and marker occlusion.",
+      "invalidation_dependencies": [
+        "prototype/research/metrics.js",
+        "prototype/research/renderer.js",
+        "prototype/research/fixtures.js",
+        "prototype/research/research.css",
+        "prototype/research/lab.js",
+        "tests/test_layout_research.py"
+      ],
+      "observable": "Valid inputs satisfy the declared property.",
+      "polarity": "positive",
+      "property_id": "R2.P1",
+      "red_expectation": "The independently specified expected outcome is violated.",
+      "scenario": "Measure rendered scenes",
+      "scenario_fingerprint": "cdcb1d3aa2cf9effa3fe8962fffb8953fad950a399e1744d33c90f0201ae9b6e",
+      "setup": "Invoke the real JavaScript owner with literal independently chosen valid and invalid inputs via existing Node. Browser runs additionally exercise rendered bounds.",
+      "source_path": "tests/test_layout_research.py",
+      "source_sha256": "db1eb3c870b3f9341b4e743e8aae85de8a9400efc2841b41fcf067d63613491e",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_research.ResearchTest.test_detector_positive"
+    },
+    "R3.P1.NEGATIVE": {
+      "evidence_fingerprint": "f2afd8ca968e4d11dd1faf366aa322748d1dfd95740cc634f38f3217d21ad947",
+      "green_expectation": "Actual measured parents and mutation lineage; absent evidence rejected.",
+      "invalidation_dependencies": [
+        "prototype/research/generator.js",
+        "prototype/research/metrics.js",
+        "tests/test_layout_research.py"
+      ],
+      "observable": "Explicit invalid or incomplete inputs fail the declared property.",
+      "polarity": "negative",
+      "property_id": "R3.P1",
+      "red_expectation": "The independently specified expected outcome is violated.",
+      "scenario": "Select and evolve",
+      "scenario_fingerprint": "4402a83e53d2ae25e7b9274b2ba9b474000a323c7a1ac7494d333fdb02739a62",
+      "setup": "Invoke the real JavaScript owner with literal independently chosen valid and invalid inputs via existing Node. Browser runs additionally exercise rendered bounds.",
+      "source_path": "tests/test_layout_research.py",
+      "source_sha256": "db1eb3c870b3f9341b4e743e8aae85de8a9400efc2841b41fcf067d63613491e",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_research.ResearchTest.test_evolution_negative"
+    },
+    "R3.P1.POSITIVE": {
+      "evidence_fingerprint": "2d45dbf08ab6392fc0d2ff23a94abba78d822e566ba51f3c51d741c0076daef0",
+      "green_expectation": "Actual measured parents and mutation lineage; absent evidence rejected.",
+      "invalidation_dependencies": [
+        "prototype/research/generator.js",
+        "prototype/research/metrics.js",
+        "tests/test_layout_research.py"
+      ],
+      "observable": "Valid inputs satisfy the declared property.",
+      "polarity": "positive",
+      "property_id": "R3.P1",
+      "red_expectation": "The independently specified expected outcome is violated.",
+      "scenario": "Select and evolve",
+      "scenario_fingerprint": "4402a83e53d2ae25e7b9274b2ba9b474000a323c7a1ac7494d333fdb02739a62",
+      "setup": "Invoke the real JavaScript owner with literal independently chosen valid and invalid inputs via existing Node. Browser runs additionally exercise rendered bounds.",
+      "source_path": "tests/test_layout_research.py",
+      "source_sha256": "db1eb3c870b3f9341b4e743e8aae85de8a9400efc2841b41fcf067d63613491e",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_research.ResearchTest.test_evolution_positive"
+    },
+    "R4.P1.NEGATIVE": {
+      "evidence_fingerprint": "8bb01851960313c1321205d12b41ed93af85854ddfed9bc9c2e3eddd1bea74a8",
+      "green_expectation": "Exact counts, families, thresholds and visual-review requirements; incomplete evidence rejected.",
+      "invalidation_dependencies": [
+        "prototype/research/generator.js",
+        "prototype/research/metrics.js",
+        "openspec/changes/evolve-spacefox-layouts/evidence/campaign-checkpoint.json",
+        "tests/test_layout_research.py"
+      ],
+      "observable": "Explicit invalid or incomplete inputs fail the declared property.",
+      "polarity": "negative",
+      "property_id": "R4.P1",
+      "red_expectation": "The independently specified expected outcome is violated.",
+      "scenario": "Review the final selection",
+      "scenario_fingerprint": "565d08936d2623d1337d5e15b3f6ba4da80b886af6e713c6d2b836ceb0a27dd8",
+      "setup": "Invoke the real JavaScript owner with literal independently chosen valid and invalid inputs via existing Node. Browser runs additionally exercise rendered bounds.",
+      "source_path": "tests/test_layout_research.py",
+      "source_sha256": "db1eb3c870b3f9341b4e743e8aae85de8a9400efc2841b41fcf067d63613491e",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_research.ResearchTest.test_qualification_negative"
+    },
+    "R4.P1.POSITIVE": {
+      "evidence_fingerprint": "5300e7b00093de10bc9e060c750543a6527340db4d1a6c8eb85022b23314cc7d",
+      "green_expectation": "Exact counts, families, thresholds and visual-review requirements; incomplete evidence rejected.",
+      "invalidation_dependencies": [
+        "prototype/research/generator.js",
+        "prototype/research/metrics.js",
+        "openspec/changes/evolve-spacefox-layouts/evidence/campaign-checkpoint.json",
+        "tests/test_layout_research.py"
+      ],
+      "observable": "Valid inputs satisfy the declared property.",
+      "polarity": "positive",
+      "property_id": "R4.P1",
+      "red_expectation": "The independently specified expected outcome is violated.",
+      "scenario": "Review the final selection",
+      "scenario_fingerprint": "565d08936d2623d1337d5e15b3f6ba4da80b886af6e713c6d2b836ceb0a27dd8",
+      "setup": "Invoke the real JavaScript owner with literal independently chosen valid and invalid inputs via existing Node. Browser runs additionally exercise rendered bounds.",
+      "source_path": "tests/test_layout_research.py",
+      "source_sha256": "db1eb3c870b3f9341b4e743e8aae85de8a9400efc2841b41fcf067d63613491e",
+      "status": "passed",
+      "test_id": "unittest::tests.test_layout_research.ResearchTest.test_qualification_positive"
+    }
+  },
+  "change": "evolve-spacefox-layouts",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_layout_research"
+      ],
+      "cwd": "/Users/jekamas/projects/SpaceFox",
+      "duration_seconds": 0.7922713747248054,
+      "exit_code": 0,
+      "id": "research-tests",
+      "observed_tests": {
+        "unittest::tests.test_layout_research.ResearchTest.test_detector_negative": "pass",
+        "unittest::tests.test_layout_research.ResearchTest.test_detector_positive": "pass",
+        "unittest::tests.test_layout_research.ResearchTest.test_evolution_negative": "pass",
+        "unittest::tests.test_layout_research.ResearchTest.test_evolution_positive": "pass",
+        "unittest::tests.test_layout_research.ResearchTest.test_generator_negative": "pass",
+        "unittest::tests.test_layout_research.ResearchTest.test_generator_positive": "pass",
+        "unittest::tests.test_layout_research.ResearchTest.test_qualification_negative": "pass",
+        "unittest::tests.test_layout_research.ResearchTest.test_qualification_positive": "pass"
+      },
+      "status": "exited",
+      "stderr": "test_detector_negative (tests.test_layout_research.ResearchTest.test_detector_negative) ... ok\ntest_detector_positive (tests.test_layout_research.ResearchTest.test_detector_positive) ... ok\ntest_evolution_negative (tests.test_layout_research.ResearchTest.test_evolution_negative) ... ok\ntest_evolution_positive (tests.test_layout_research.ResearchTest.test_evolution_positive) ... ok\ntest_generator_negative (tests.test_layout_research.ResearchTest.test_generator_negative) ... ok\ntest_generator_positive (tests.test_layout_research.ResearchTest.test_generator_positive) ... ok\ntest_qualification_negative (tests.test_layout_research.ResearchTest.test_qualification_negative) ... ok\ntest_qualification_positive (tests.test_layout_research.ResearchTest.test_qualification_positive) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.680s\n\nOK\n",
+      "stderr_artifact": "/Users/jekamas/projects/SpaceFox/openspec/changes/evolve-spacefox-layouts/evidence/final-dag.json.research-tests.stderr.log",
+      "stderr_truncated": false,
+      "stdout": "",
+      "stdout_artifact": "/Users/jekamas/projects/SpaceFox/openspec/changes/evolve-spacefox-layouts/evidence/final-dag.json.research-tests.stdout.log",
+      "stdout_truncated": false
+    }
+  ],
+  "finished_at": "2026-11-10T20:07:08.701209+00:00",
+  "git": {
+    "dirty": false,
+    "head": "bb3bb36acd61564345c5f1f16621021d14efa380",
+    "status": "known"
+  },
+  "manifest": "openspec/changes/evolve-spacefox-layouts/verification.json",
+  "manifest_sha256": "093afbd4916ec9db5921b3d1e37a0be5a14b297571b37a92bf4f17af2f8217a0",
+  "requested_selectors": {
+    "all": true,
+    "cases": [],
+    "changed_paths": [],
+    "commands": [],
+    "owners": [],
+    "properties": [],
+    "requirements": [],
+    "scenarios": [],
+    "tests": []
+  },
+  "schema_version": 2,
+  "selection": {
+    "cases": [
+      "R1.P1.NEGATIVE",
+      "R1.P1.POSITIVE",
+      "R2.P1.NEGATIVE",
+      "R2.P1.POSITIVE",
+      "R3.P1.NEGATIVE",
+      "R3.P1.POSITIVE",
+      "R4.P1.NEGATIVE",
+      "R4.P1.POSITIVE"
+    ],
+    "commands": [
+      "research-tests"
+    ],
+    "properties": [
+      "R1.P1",
+      "R2.P1",
+      "R3.P1",
+      "R4.P1"
+    ],
+    "requirements": [
+      "R1",
+      "R2",
+      "R3",
+      "R4"
+    ]
+  },
+  "specifications": {
+    "R1": "79bfad90fb1ae091d11e0cd76fb31485f934462b4f9ea98c5ea5152365581836",
+    "R2": "e004ce7b448c896313ed83c73d07e3b3d7e81646964dda7a90cf7e26ace5d9bb",
+    "R3": "d2c8ad466b3409d9430e463730c37d14437eee82fbc5bb91df0b655555ee728c",
+    "R4": "10c09927e6e4cd19b98c41764b88ce7ac7a0e4e82b8ef604dd27c251713d403a"
+  },
+  "started_at": "2026-11-10T20:07:07.849897+00:00",
+  "status": "passed",
+  "substitution_gaps": []
+}
