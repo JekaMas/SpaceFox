@@ -32,3 +32,9 @@ satisfied, and unknown viewer age alone does not gate native implementation.
 Keep the separate audience/use rule for release review. See
 ../publication-owner-review.md and ../publication-owner-checks.json. The new
 contract adds one scenario; earlier53/99/source hashes remain historical.
+
+The owner's follow-up closes the intended-use age clarification as well. Both
+relevant age conditions are confirmed for this instance; no private numeric ages
+are published. Native technical qualification and ordinary Store review remain
+open. This status-only update changes no capability specification/scenario or
+behavior owner; retain observed structural/browser greens without rerun.

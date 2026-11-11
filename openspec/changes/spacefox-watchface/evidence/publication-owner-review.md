@@ -32,3 +32,17 @@ This turn re-read the two primary sources. The article wrapper remained unusable
 through the browser search tool; direct HTTPS retrieval of Garmin's article read
 section1(f), including the general-audience caveat. No SDK installation, Garmin
 account action, agreement acceptance or Store submission was performed.
+
+## Follow-up: age clarification closed
+
+The owner has confirmed the relevant intended-use age condition in addition to
+the already confirmed adult publisher. No age clarification remains open for the
+current instance. Exact numeric ages and other personal details are deliberately
+omitted. This closes the age question only; implementation, hardware qualification
+and ordinary Store review remain separate work. The reusable audience requirement
+is unchanged for other instances.
+
+This is a documentation/status update. All four capability specs remain byte-for-byte
+unchanged from the observed53-requirement/100-scenario strict checks. Retain those
+greens and previous browser evidence without rerun; no test, renderer, asset or
+workflow changed.

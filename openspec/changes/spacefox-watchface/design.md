@@ -564,9 +564,9 @@ and actual approved Store installation remain required observations. Owner-only
 beta can qualify Garmin settings integration if needed, with a separate beta UUID;
 it is not a shared public beta or guaranteed state migration to production.
 
-The owner confirmed adult status and publication from their own account. The
-agreement's18+ developer-account condition is satisfied by that clarification;
-no exact private age belongs in public documentation. The previous automatic
+The owner confirmed publication from their adult account and has now confirmed
+the relevant intended-use age condition. No age clarification remains open for
+this instance. Exact private ages are not retained in public documentation. The previous automatic
 hold on all native development pending a child's age was too broad and is removed.
 
 The separate review guideline concerns under13 intended/known use, including a

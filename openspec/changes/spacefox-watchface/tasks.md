@@ -17,7 +17,7 @@
 - [ ] 2.1 Before semantic implementation, establish the real owners/tests and author the pinned workflow's verification/discovery records; verify all selected requirements/scenarios have meaningful positive and negative cases and graph validation passes.
 - [ ] 2.2 Qualify the FR165 SDK path for static HTTPS feed fetch through Garmin Connect, background parse/time/memory bounds, compatible image/frame transfer and persisted last-working cache; measure decoded feed≤8192bytes, transfer/parse/activation peak RAM, decoded graphics, serialized per-value/total storage and staging/recovery peak. Establish actual supported types, limits and write/error behavior; do not infer RAM from compressed bytes. Record a successful native experiment plus failure behavior.
 
-- [ ] 2.3 Pin SDK/device profile/firmware and only qualified APIs/products/permissions. The owner is the adult official publisher; developer-age eligibility is confirmed. Unknown viewer age is not an implementation prerequisite. Keep the separate under13 audience/use rule in release review7.3, without publishing private ages or assuming an exemption.
+- [ ] 2.3 Pin SDK/device profile/firmware and only qualified APIs/products/permissions. The owner is the adult official publisher and has confirmed the relevant intended-use age condition. No age clarification remains open; only technical qualification remains in this task. Keep the separate under13 audience/use rule in release review7.3, without publishing private ages or assuming an exemption.
 
 ## 3. Launch schedule
 
@@ -67,7 +67,8 @@ path completed setup. See `evidence/setup-report.md` for the original failure,
 recovery and portability limit; do not silently choose another pin.
 
 The code/evidence entry is task2.1, followed by native qualification2.2/2.3.
-The owner confirmed adult publication; no child-age response gates implementation. No SDK, paid service, native/Store publication or live feed deployment was
+The owner confirmed the publisher and intended-use age conditions; no age
+clarification remains open or gates implementation. No SDK, paid service, native/Store publication or live feed deployment was
 performed during the specification increment. Original MIT specification/source
 publication to the existing GitHub repository is a separate completed channel.
 
