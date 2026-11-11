@@ -5,6 +5,19 @@ stable launch identity, honest timing precision and resilient cached operation.
 
 ## ADDED Requirements
 
+### Requirement: Worldwide schedule identity coverage
+
+Schedule selection SHALL admit all in-scope public launch countries, operators,
+configurations and sites without a fixed sample whitelist. The publisher SHALL
+resolve selected/upcoming references against the global catalog and source
+supplements, preserving new or uncertain identities. Missing artwork SHALL NOT
+remove an otherwise eligible launch. A provider omission SHALL NOT establish
+retirement, cancellation or worldwide schedule completeness.
+
+#### Scenario: Previously unseen organization or site
+- **WHEN** a valid upcoming public launch introduces a new operator, configuration, country or site
+- **THEN** the publisher preserves its identity and available data, records unresolved catalog gaps and keeps it eligible for next-launch selection
+
 ### Requirement: Automatic bounded refresh
 
 The watch SHALL fetch its static HTTPS feed through Garmin Connect: hourly by

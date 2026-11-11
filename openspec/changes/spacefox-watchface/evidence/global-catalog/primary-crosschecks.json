@@ -1,0 +1,51 @@
+{
+  "reviewedOn": "2026-11-11",
+  "scope": "Primary-source crosschecks and unresolved supplement candidates; not a completed worldwide source closure or active production override.",
+  "findings": [
+    {
+      "id": "ariane-64-status-conflict",
+      "sourceModelId": 116,
+      "name": "Ariane 64",
+      "providerValue": {
+        "active": false,
+        "pending_launches": 16
+      },
+      "primaryFact": "First four-booster Ariane6 flight on2026-02-12, documented by ESA and CNES.",
+      "sources": [
+        "https://www.esa.int/ESA_Multimedia/Images/2026/02/First_Ariane_6_with_four_boosters_launched",
+        "https://centrespatialguyanais.cnes.fr/en/succes-va267"
+      ],
+      "disposition": "Retain in required set; preserve raw provider status and require reviewed lifecycle reconciliation."
+    },
+    {
+      "id": "jaxa-sounding-configuration-omissions",
+      "names": [
+        "S-310",
+        "S-520",
+        "SS-520"
+      ],
+      "primaryFact": "JAXA Uchinoura facility lists these sounding rockets for KS Center; its sounding-rocket program describes scientific flights. Names are absent from the queried170configuration union.",
+      "sources": [
+        "https://www.isas.jaxa.jp/en/about/facilities/uchinoura.html",
+        "https://www.isas.jaxa.jp/en/missions/sounding_rockets/"
+      ],
+      "disposition": "Required supplement candidates. Establish exact configuration, current program status, pad-level coordinates, origin/organization mapping and artwork; do not merge with another Uchinoura pad or claim absence from the unqueried historical LL2 database."
+    },
+    {
+      "id": "esrange-public-scientific-scope",
+      "primaryFact": "SSC offers sounding-rocket launch services from Esrange. An orbital-only catalog would narrow the requested scope.",
+      "sources": [
+        "https://sscspace.com/services/science-launch-services/sounding-rockets/"
+      ],
+      "disposition": "Include scientific/suborbital official-source review in worldwide coverage; provider pad flags alone do not close this review."
+    },
+    {
+      "id": "small-island-map-detail",
+      "primaryFact": "Natural Earth publishes major-island and minor-island layers at finer resolution than the110m baseline.",
+      "sources": [
+        "https://www.naturalearthdata.com/downloads/10m-physical-vectors/"
+      ],
+      "disposition": "Per-site context qualification and bounded regional detail remain required. No new all-pad rendering or map asset import was performed."
+    }
+  ]
+}

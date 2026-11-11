@@ -11,8 +11,9 @@ the layout, but live updates and a maintainable visual catalog are still missing
 
 - Define a Forerunner 165 watch face with four configurable fitness fields, a
   local countdown, a model-specific rocket image and a launch-site globe/map.
-  Use a compact Earth/rocket/information band with rocket, company and mission
-  context on the right, and a larger country/site label below the countdown.
+  Use the accepted full-screen flat map with gradual fading and no clock tile:
+  rocket/company and mission purpose above time, countdown adjacent to time,
+  four large fields in 2×2, country/site below the fields and a large left rocket.
 - Calculate the countdown entirely on the watch from its current clock and the
   cached UTC launch time, including after sleep and without connectivity.
 - Refresh the schedule hourly by default and every fifteen minutes from two hours
@@ -32,6 +33,11 @@ the layout, but live updates and a maintainable visual catalog are still missing
 - Make site coordinates, rocket mappings, images and animation frames versioned
   static data/assets so they can be added or corrected without editing watch-face
   layout code. Preserve provider-validation age across file/CDN re-fetches.
+- Require worldwide public orbital and civil suborbital/scientific coverage of
+  countries/territories, configurations, launch organizations and pad-level sites.
+  Bind paginated source inventories and official supplements to distinct metadata,
+  artwork, marks and geographic-view acceptance; the initial sample pack does not
+  establish completeness. See `evidence/global-catalog/` and `docs/GLOBAL_CATALOG.md`.
 - Supply an MIT agent setup guide for another family's own GitHub feed, including
   URL configuration, quotas, schedule disablement, recovery and actual readback.
 - Consume the shared 36-language catalog, qualify native text/fonts/RTL on FR165
@@ -63,9 +69,11 @@ None; this is a new repository with no existing main specifications.
 Planned owners are a Monkey C watch face, a scheduled provider-to-static-feed
 updater, a GitHub Pages publication workflow and a versioned catalog/asset pipeline.
 The backend service in the initial design is replaced by this personal feed.
-Initial visuals cover Falcon 9, Electron and
-Ariane 6 (the Ariane 62 variant in the mockup), plus a clearly generic fallback.
-Launch Library 2 is the proposed provider; its coverage and rate limits must be
+The existing sample visuals cover Falcon 9, Falcon Heavy, Electron, Ariane 62 and
+Ariane 64 plus a generic fallback. The required production catalog is global;
+all known current configurations require specific or explicitly reviewed shared
+visuals before full artwork acceptance. Launch Library 2 API 2.3.0 is the checked
+provider baseline, supplemented from official sources; its coverage and rate limits must be
 preserved in product claims. The current increment updates the specification and
 agent instructions only. Enabling scheduled workflows/Pages, paid hosting, SDK
 installation and native implementation are separate implementation work. The

@@ -1,0 +1,365 @@
+{
+  "source": {
+    "provider": "The Space Devs Launch Library 2",
+    "apiVersion": "2.3.0",
+    "baseUrl": "https://ll.thespacedevs.com/2.3.0/",
+    "docsUrl": "https://ll.thespacedevs.com/docs/",
+    "termsUrl": "https://github.com/TheSpaceDevs/Tutorials/blob/main/faqs/faq_TSD.md",
+    "observedFromUTC": "2026-11-11T14:54:07.963172+00:00",
+    "observedToUTC": "2026-11-11T14:56:20.639218+00:00",
+    "scope": "Complete pagination of each listed query; multi-request reference inventory, not a transactional or independently complete worldwide/operational snapshot."
+  },
+  "counts": {
+    "countries": 103,
+    "providerActiveModels": 161,
+    "inactiveModelsWithPending": 9,
+    "requiredReferenceConfigurations": 170,
+    "placeholders": 5,
+    "organizationsAllStatuses": 350,
+    "organizationsWithReferenceRelations": 70,
+    "manufacturerOrganizations": 60,
+    "providerActivePads": 216,
+    "padCountriesOrTerritories": 22,
+    "padsWithoutCountry": 2,
+    "padsWithFiniteCoordinates": 213,
+    "padsWithoutUsableCoordinates": 3,
+    "specificModelArtworks": 5,
+    "exactSourceConfigurationsMatchedByCurrentResolver": 5,
+    "currentOrganizationBadges": 3,
+    "currentFlagArtworks": 4,
+    "matchedProviderCountryRecords": 4
+  },
+  "padCountryTable": [
+    {
+      "countryId": 34,
+      "name": "Australia",
+      "alpha3": "AUS",
+      "providerActivePads": 7,
+      "coordinateRows": 7,
+      "currentFlagId": null
+    },
+    {
+      "countryId": 24,
+      "name": "Brazil",
+      "alpha3": "BRA",
+      "providerActivePads": 2,
+      "coordinateRows": 2,
+      "currentFlagId": null
+    },
+    {
+      "countryId": 6,
+      "name": "China",
+      "alpha3": "CHN",
+      "providerActivePads": 46,
+      "coordinateRows": 46,
+      "currentFlagId": null
+    },
+    {
+      "countryId": 1,
+      "name": "France",
+      "alpha3": "FRA",
+      "providerActivePads": 1,
+      "coordinateRows": 1,
+      "currentFlagId": "flag-fr"
+    },
+    {
+      "countryId": 50,
+      "name": "French Guiana",
+      "alpha3": "GUF",
+      "providerActivePads": 2,
+      "coordinateRows": 2,
+      "currentFlagId": "flag-fr"
+    },
+    {
+      "countryId": 9,
+      "name": "India",
+      "alpha3": "IND",
+      "providerActivePads": 4,
+      "coordinateRows": 4,
+      "currentFlagId": null
+    },
+    {
+      "countryId": 32,
+      "name": "Iran",
+      "alpha3": "IRN",
+      "providerActivePads": 3,
+      "coordinateRows": 3,
+      "currentFlagId": null
+    },
+    {
+      "countryId": 29,
+      "name": "Israel",
+      "alpha3": "ISR",
+      "providerActivePads": 1,
+      "coordinateRows": 1,
+      "currentFlagId": null
+    },
+    {
+      "countryId": 3,
+      "name": "Italy",
+      "alpha3": "ITA",
+      "providerActivePads": 1,
+      "coordinateRows": 1,
+      "currentFlagId": null
+    },
+    {
+      "countryId": 28,
+      "name": "Japan",
+      "alpha3": "JPN",
+      "providerActivePads": 9,
+      "coordinateRows": 9,
+      "currentFlagId": null
+    },
+    {
+      "countryId": 44,
+      "name": "Kazakhstan",
+      "alpha3": "KAZ",
+      "providerActivePads": 25,
+      "coordinateRows": 25,
+      "currentFlagId": null
+    },
+    {
+      "countryId": 52,
+      "name": "Marshall Islands",
+      "alpha3": "MHL",
+      "providerActivePads": 2,
+      "coordinateRows": 2,
+      "currentFlagId": null
+    },
+    {
+      "countryId": 51,
+      "name": "New Zealand",
+      "alpha3": "NZL",
+      "providerActivePads": 3,
+      "coordinateRows": 3,
+      "currentFlagId": "flag-nz"
+    },
+    {
+      "countryId": 53,
+      "name": "North Korea",
+      "alpha3": "PRK",
+      "providerActivePads": 3,
+      "coordinateRows": 3,
+      "currentFlagId": null
+    },
+    {
+      "countryId": 49,
+      "name": "Norway",
+      "alpha3": "NOR",
+      "providerActivePads": 1,
+      "coordinateRows": 1,
+      "currentFlagId": null
+    },
+    {
+      "countryId": 103,
+      "name": "Oman",
+      "alpha3": "OMN",
+      "providerActivePads": 1,
+      "coordinateRows": 1,
+      "currentFlagId": null
+    },
+    {
+      "countryId": 5,
+      "name": "Russia",
+      "alpha3": "RUS",
+      "providerActivePads": 27,
+      "coordinateRows": 27,
+      "currentFlagId": null
+    },
+    {
+      "countryId": 35,
+      "name": "South Korea",
+      "alpha3": "KOR",
+      "providerActivePads": 3,
+      "coordinateRows": 3,
+      "currentFlagId": null
+    },
+    {
+      "countryId": 7,
+      "name": "Spain",
+      "alpha3": "ESP",
+      "providerActivePads": 2,
+      "coordinateRows": 2,
+      "currentFlagId": null
+    },
+    {
+      "countryId": 15,
+      "name": "Sweden",
+      "alpha3": "SWE",
+      "providerActivePads": 2,
+      "coordinateRows": 2,
+      "currentFlagId": null
+    },
+    {
+      "countryId": 10,
+      "name": "United Kingdom",
+      "alpha3": "GBR",
+      "providerActivePads": 5,
+      "coordinateRows": 3,
+      "currentFlagId": null
+    },
+    {
+      "countryId": 2,
+      "name": "United States of America",
+      "alpha3": "USA",
+      "providerActivePads": 64,
+      "coordinateRows": 64,
+      "currentFlagId": "flag-us"
+    }
+  ],
+  "missingCoordinatePads": [
+    {
+      "sourceId": 101,
+      "name": "Unknown Pad",
+      "sourceUrl": "https://ll.thespacedevs.com/2.3.0/pads/101/?format=json",
+      "providerActive": true,
+      "locationId": 3,
+      "locationName": "Sea Launch",
+      "countryId": null,
+      "latitude": null,
+      "longitude": null,
+      "coordinateStatus": "missing-or-invalid",
+      "agencyIds": [],
+      "celestialBodyId": 1,
+      "celestialBodyName": "Earth",
+      "providerTotalLaunches": 0,
+      "providerOrbitalAttempts": 0,
+      "mapRenderQualification": "not-performed"
+    },
+    {
+      "sourceId": 213,
+      "name": "Launch Pad Callum",
+      "sourceUrl": "https://ll.thespacedevs.com/2.3.0/pads/213/?format=json",
+      "providerActive": true,
+      "locationId": 157,
+      "locationName": "SaxaVord Spaceport",
+      "countryId": 10,
+      "latitude": null,
+      "longitude": null,
+      "coordinateStatus": "missing-or-invalid",
+      "agencyIds": [],
+      "celestialBodyId": 1,
+      "celestialBodyName": "Earth",
+      "providerTotalLaunches": 0,
+      "providerOrbitalAttempts": 0,
+      "mapRenderQualification": "not-performed"
+    },
+    {
+      "sourceId": 214,
+      "name": "Launch Pad Elizabeth",
+      "sourceUrl": "https://ll.thespacedevs.com/2.3.0/pads/214/?format=json",
+      "providerActive": true,
+      "locationId": 157,
+      "locationName": "SaxaVord Spaceport",
+      "countryId": 10,
+      "latitude": null,
+      "longitude": null,
+      "coordinateStatus": "missing-or-invalid",
+      "agencyIds": [],
+      "celestialBodyId": 1,
+      "celestialBodyName": "Earth",
+      "providerTotalLaunches": 0,
+      "providerOrbitalAttempts": 0,
+      "mapRenderQualification": "not-performed"
+    }
+  ],
+  "matchedModels": [
+    {
+      "sourceId": 26,
+      "name": "Electron",
+      "fullName": "Electron",
+      "variant": "",
+      "sourceUrl": "https://ll.thespacedevs.com/2.3.0/launcher_configurations/26/?format=json",
+      "providerActive": true,
+      "providerPendingLaunches": 56,
+      "placeholder": false,
+      "familyIds": [],
+      "manufacturerId": 147,
+      "manufacturerCountryIds": [
+        2
+      ],
+      "currentPackAssetId": "electron",
+      "currentPackSpecific": true
+    },
+    {
+      "sourceId": 116,
+      "name": "Ariane 64",
+      "fullName": "Ariane 64",
+      "variant": "64",
+      "sourceUrl": "https://ll.thespacedevs.com/2.3.0/launcher_configurations/116/?format=json",
+      "providerActive": false,
+      "providerPendingLaunches": 16,
+      "placeholder": false,
+      "familyIds": [
+        59,
+        62
+      ],
+      "manufacturerId": 1044,
+      "manufacturerCountryIds": [
+        1
+      ],
+      "currentPackAssetId": "ariane-64",
+      "currentPackSpecific": true
+    },
+    {
+      "sourceId": 121,
+      "name": "Ariane 62",
+      "fullName": "Ariane 62",
+      "variant": "62",
+      "sourceUrl": "https://ll.thespacedevs.com/2.3.0/launcher_configurations/121/?format=json",
+      "providerActive": true,
+      "providerPendingLaunches": 8,
+      "placeholder": false,
+      "familyIds": [
+        59,
+        62
+      ],
+      "manufacturerId": 1044,
+      "manufacturerCountryIds": [
+        1
+      ],
+      "currentPackAssetId": "ariane-62",
+      "currentPackSpecific": true
+    },
+    {
+      "sourceId": 161,
+      "name": "Falcon Heavy",
+      "fullName": "Falcon Heavy",
+      "variant": "Heavy",
+      "sourceUrl": "https://ll.thespacedevs.com/2.3.0/launcher_configurations/161/?format=json",
+      "providerActive": true,
+      "providerPendingLaunches": 12,
+      "placeholder": false,
+      "familyIds": [
+        1
+      ],
+      "manufacturerId": 121,
+      "manufacturerCountryIds": [
+        2
+      ],
+      "currentPackAssetId": "falcon-heavy",
+      "currentPackSpecific": true
+    },
+    {
+      "sourceId": 164,
+      "name": "Falcon 9",
+      "fullName": "Falcon 9 Block 5",
+      "variant": "Block 5",
+      "sourceUrl": "https://ll.thespacedevs.com/2.3.0/launcher_configurations/164/?format=json",
+      "providerActive": true,
+      "providerPendingLaunches": 121,
+      "placeholder": false,
+      "familyIds": [
+        1,
+        176
+      ],
+      "manufacturerId": 121,
+      "manufacturerCountryIds": [
+        2
+      ],
+      "currentPackAssetId": "falcon-9",
+      "currentPackSpecific": true
+    }
+  ],
+  "claim": "Complete listed endpoint pagination only. Global catalogue, all model-specific visuals, curated origins, all flags and all per-site maps remain incomplete/unqualified."
+}

@@ -1,0 +1,144 @@
+{
+  "method": "13 sequential requests including one404; no retry, account, dev mirror, paid access or schedule deployment. Raw descriptions/images were not bundled; normalized facts are joined to current pack gaps.",
+  "requests": [
+    {
+      "url": "https://ll.thespacedevs.com/api-throttle/?format=json",
+      "requestedAt": "2026-11-11T14:54:07.963172+00:00",
+      "status": 404,
+      "error": "HTTP Error 404: Not Found",
+      "name": "throttle-error"
+    },
+    {
+      "url": "https://ll.thespacedevs.com/2.3.0/launcher_configurations/?active=true&limit=100&mode=detailed&format=json",
+      "requestedAt": "2026-11-11T14:54:20.585321+00:00",
+      "status": 200,
+      "sha256": "a344e274a5ea0db5c3f5f18361c1db23dc65cd80cfc0e41a72da2df387b99340",
+      "name": "models-1",
+      "count": 161,
+      "rows": 100,
+      "next": "https://ll.thespacedevs.com/2.3.0/launcher_configurations/?active=true&format=json&limit=100&mode=detailed&offset=100",
+      "responseDate": "Wed, 11 Nov 2026 14:54:22 GMT"
+    },
+    {
+      "url": "https://ll.thespacedevs.com/2.3.0/launcher_configurations/?active=true&format=json&limit=100&mode=detailed&offset=100",
+      "requestedAt": "2026-11-11T14:55:02.361793+00:00",
+      "status": 200,
+      "sha256": "ba2c0d72ff1e17088070d8ce2b9e7aba90d98661345e4d0a9a201b3fadd49306",
+      "name": "models-2",
+      "count": 161,
+      "rows": 61,
+      "next": null,
+      "responseDate": "Wed, 11 Nov 2026 14:55:05 GMT"
+    },
+    {
+      "url": "https://ll.thespacedevs.com/2.3.0/launcher_configurations/?active=false&pending_launches__gt=0&limit=100&mode=detailed&format=json",
+      "requestedAt": "2026-11-11T14:55:05.922858+00:00",
+      "status": 200,
+      "sha256": "b93c9838cc918915b687f3ce23b2194385def45202edeb74b0b8ab1371888642",
+      "name": "models-pending-1",
+      "count": 9,
+      "rows": 9,
+      "next": null,
+      "responseDate": "Wed, 11 Nov 2026 14:55:09 GMT"
+    },
+    {
+      "url": "https://ll.thespacedevs.com/2.3.0/pads/?active=true&limit=100&mode=detailed&format=json",
+      "requestedAt": "2026-11-11T14:55:09.130437+00:00",
+      "status": 200,
+      "sha256": "c41e7678e267801e546ebb497a7fb4db9f886217067f635b6041976864b0ecb5",
+      "name": "pads-1",
+      "count": 216,
+      "rows": 100,
+      "next": "https://ll.thespacedevs.com/2.3.0/pads/?active=true&format=json&limit=100&mode=detailed&offset=100",
+      "responseDate": "Wed, 11 Nov 2026 14:55:12 GMT"
+    },
+    {
+      "url": "https://ll.thespacedevs.com/2.3.0/config/countries/?limit=100&format=json",
+      "requestedAt": "2026-11-11T14:55:12.876792+00:00",
+      "status": 200,
+      "sha256": "1202dbd861b5f842ffd4780172a4007b5c9e00cc0f1f65a8e35ee488a452341d",
+      "name": "countries-1",
+      "count": 103,
+      "rows": 100,
+      "next": "https://ll.thespacedevs.com/2.3.0/config/countries/?format=json&limit=100&offset=100",
+      "responseDate": "Wed, 11 Nov 2026 14:55:13 GMT"
+    },
+    {
+      "url": "https://ll.thespacedevs.com/2.3.0/agencies/?limit=100&mode=normal&format=json",
+      "requestedAt": "2026-11-11T14:55:13.240615+00:00",
+      "status": 200,
+      "sha256": "b3dcb3495ae3577acbe7e5c344f80a6e13d3920790d4b7b6f3939b4adeb15916",
+      "name": "agencies-1",
+      "count": 350,
+      "rows": 100,
+      "next": "https://ll.thespacedevs.com/2.3.0/agencies/?format=json&limit=100&mode=normal&offset=100",
+      "responseDate": "Wed, 11 Nov 2026 14:55:13 GMT"
+    },
+    {
+      "url": "https://ll.thespacedevs.com/2.3.0/pads/?active=true&format=json&limit=100&mode=detailed&offset=100",
+      "requestedAt": "2026-11-11T14:56:14.435550+00:00",
+      "status": 200,
+      "sha256": "070a5615bf9aa7cb8c57ca3fe17aa7a3e3578db6eb8d23494e1b63e313aa7f2c",
+      "name": "pads-2",
+      "count": 216,
+      "rows": 100,
+      "next": "https://ll.thespacedevs.com/2.3.0/pads/?active=true&format=json&limit=100&mode=detailed&offset=200",
+      "responseDate": "Wed, 11 Nov 2026 14:56:17 GMT"
+    },
+    {
+      "url": "https://ll.thespacedevs.com/2.3.0/pads/?active=true&format=json&limit=100&mode=detailed&offset=200",
+      "requestedAt": "2026-11-11T14:56:17.678956+00:00",
+      "status": 200,
+      "sha256": "07eb4f8749ef7c38f04fdb68044b2c43c5b0ba862b98fa90fe448092a96c9c13",
+      "name": "pads-3",
+      "count": 216,
+      "rows": 16,
+      "next": null,
+      "responseDate": "Wed, 11 Nov 2026 14:56:18 GMT"
+    },
+    {
+      "url": "https://ll.thespacedevs.com/2.3.0/config/countries/?format=json&limit=100&offset=100",
+      "requestedAt": "2026-11-11T14:56:18.483390+00:00",
+      "status": 200,
+      "sha256": "2afb7315a7b37da5a5547e4f0cfb27d484151f7e9602a745a42db287e4e04980",
+      "name": "countries-2",
+      "count": 103,
+      "rows": 3,
+      "next": null,
+      "responseDate": "Wed, 11 Nov 2026 14:56:18 GMT"
+    },
+    {
+      "url": "https://ll.thespacedevs.com/2.3.0/agencies/?format=json&limit=100&mode=normal&offset=100",
+      "requestedAt": "2026-11-11T14:56:18.787781+00:00",
+      "status": 200,
+      "sha256": "ea67f90ceb771625e5479248ec8dbfa3d77441085c685f88b09b32eb429cc6fd",
+      "name": "agencies-2",
+      "count": 350,
+      "rows": 100,
+      "next": "https://ll.thespacedevs.com/2.3.0/agencies/?format=json&limit=100&mode=normal&offset=200",
+      "responseDate": "Wed, 11 Nov 2026 14:56:19 GMT"
+    },
+    {
+      "url": "https://ll.thespacedevs.com/2.3.0/agencies/?format=json&limit=100&mode=normal&offset=200",
+      "requestedAt": "2026-11-11T14:56:19.740941+00:00",
+      "status": 200,
+      "sha256": "4397383c97ef98183b2a072c38b69dedb6c569cb6f59df3c768bc97a4b3e81b1",
+      "name": "agencies-3",
+      "count": 350,
+      "rows": 100,
+      "next": "https://ll.thespacedevs.com/2.3.0/agencies/?format=json&limit=100&mode=normal&offset=300",
+      "responseDate": "Wed, 11 Nov 2026 14:56:20 GMT"
+    },
+    {
+      "url": "https://ll.thespacedevs.com/2.3.0/agencies/?format=json&limit=100&mode=normal&offset=300",
+      "requestedAt": "2026-11-11T14:56:20.639218+00:00",
+      "status": 200,
+      "sha256": "db16b3d33c8e40ea9a28a085b7377dae4c4b3293b742e853cd55ee9ec5183581",
+      "name": "agencies-4",
+      "count": 350,
+      "rows": 50,
+      "next": null,
+      "responseDate": "Wed, 11 Nov 2026 14:56:21 GMT"
+    }
+  ]
+}

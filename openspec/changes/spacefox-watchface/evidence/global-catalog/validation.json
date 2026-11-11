@@ -1,0 +1,47 @@
+{
+  "scope": "Specification/source-reference checks only; no native/product/global-artwork acceptance.",
+  "strictOpenSpec": "passed",
+  "localStructuralGate": "passed; native implementation tasks intentionally remain open; raw workflow guidance excluded from publication",
+  "inventoryChecks": {
+    "uniqueRecordsByCategory": {
+      "countries": 103,
+      "configurations": 170,
+      "organizations": 350,
+      "pads": 216
+    },
+    "sourceRequests": 13,
+    "successfulSourcePages": 12,
+    "nextAndCountClosure": "passed",
+    "foreignReferences": "passed",
+    "realResolverSpecificMatches": 5,
+    "finiteCoordinates": 213,
+    "missingCoordinates": 3,
+    "primaryWitnesses": "Ariane64 conflict and JAXA omissions retained",
+    "localReportLinks": "passed"
+  },
+  "specFilesSHA256": {
+    "openspec/changes/spacefox-watchface/specs/visual-catalog/spec.md": "8001917f7f5f88ec9b36243d0be1511032c28a8f05cd957ae0484509b8dda008",
+    "openspec/changes/spacefox-watchface/specs/launch-schedule/spec.md": "905ef370c58dc449625a34c0686dc78207011c629881dab953bfddbd9d7e630b",
+    "openspec/changes/spacefox-watchface/specs/watchface/spec.md": "945956e7fc47fced2a37d796b0abb62b14a760cecd285f5b03c76375f83f121a",
+    "openspec/changes/spacefox-watchface/design.md": "2789f99db32d35563b3a05e0ebd0c2edb2f4296b3120fcd9e6e73772336d760c",
+    "openspec/changes/spacefox-watchface/proposal.md": "1c2bafe0f0a6c367cf300aea87f0f9aba2c7d85c731d1d957ef36eaaa0c83a8c"
+  },
+  "reportFilesSHA256": {
+    "docs/GLOBAL_CATALOG.md": "982e9e650787034458cc97019a67f49c9665ca25861b7560eb13dcfa58f17607",
+    "docs/GLOBAL_CATALOG_INVENTORY.md": "a3cf3791e02dbfdf828371f0d604ce58d88e21117e06d118123e3e45505e0d44",
+    "THIRD_PARTY_NOTICES.md": "9165ad36960f123ea886135af54ed17fc3574ee1a0c881fdd338740db041bc17"
+  },
+  "referenceSHA256": "a94bdeb202861d2759db348d2b9ded75a15ca9e4acd86f466a4adc6e02669263",
+  "primaryCrosschecksSHA256": "96e68ac6a823b0ec0acf3dde62b81ceed82a23091e4b626a0f3bf3d7ef8145a9",
+  "retainedEvidence": {
+    "wideMapCases": 6,
+    "status": "current passed via evidence query, no rerun",
+    "reason": "Selected UI, renderers, art, world geometry and original browser inputs unchanged."
+  },
+  "remaining": [
+    "Global production catalog/updater and schedule-reference closure",
+    "Official-source supplements/current status curation",
+    "All known-model artwork and origin/operator mark coverage",
+    "Every-site map/globe and native FR165 qualification"
+  ]
+}

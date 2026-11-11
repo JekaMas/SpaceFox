@@ -259,14 +259,70 @@ of a forever-running unattended cron are acceptable. A local scheduled runner is
 the alternative if the owner later prefers it. No automation is enabled by merely
 publishing this specification/runbook.
 
-### Use a small versioned catalog and prepared graphics
+### Global scope, separate roles and bounded watch delivery
+
+The owner requires all publicly documented Earth launch countries/territories,
+current configurations, launch organizations and pad-level sites, including
+orbital attempts and public civil suborbital/scientific flights. The five-model
+sample pack is incomplete. The dated [coverage audit](../../../docs/GLOBAL_CATALOG.md)
+and [reference inventory](evidence/global-catalog/reference-inventory.json) are
+research evidence, not a second active catalog or a completed updater.
+
+The checked LL2 baseline is API 2.3.0; older 2.2.x routes are unsupported. Enumerate
+all pages and preserve stable IDs. Include active configurations, inactive ones
+with pending launches, all upcoming schedule references and official-source
+supplements. A provider-active flag is source metadata, not proof of operational
+status: Ariane 64 is a concrete disagreement with dated ESA/CNES flight evidence.
+Keep corrections as sourced, reviewed catalog inputs rather than layout switches.
+
+Separate pad country/territory, operator, manufacturer and curated body-origin
+records. National launch capability, a payload customer's country and a company's
+registration are not interchangeable. Preserve multinational/historical/unknown
+entities and source names. No region, company type or original artwork whitelist
+may filter an otherwise eligible public launch.
+
+Required artwork coverage includes every known required configuration with a
+specific or reviewed shared visual, plus verified country/region and operator
+marks. Runtime generic/no-mark fallbacks remain safe, but do not close artwork
+gaps. Official photos/logos are not automatically MIT. Reuse the authored
+`assets/rocket-pack/registry.source.json` through one catalog workflow; migration
+must not create another independently maintained asset or site lookup in layout.
+
+Use shared sourced world geometry for the accepted full-screen map and optional
+globe. Prepare bounded regional detail when 110m geometry omits small islands.
+Qualify every required sourced pad, date-line/polar cases and missing/mobile
+positions. A departure's event position must not be replaced with a port, airport,
+headquarters or unverified zero. All 216 source-flagged active pads in the reference
+snapshot still need per-site geographic qualification; 213 finite coordinates
+prove only numeric validity, not real launch-point accuracy.
+
+The full catalog lives with the static publisher. The watch receives only a
+qualified selection and immutable model/mark/map shards, keeping the schedule
+ceiling and measured cache limits. Full catalog pagination is cached/resumable
+and normally much less frequent than schedule polling; newly referenced IDs use
+bounded queued lookups. Both jobs share one quota and serialized accepted state.
+Do not fetch all pages on every watch sync, load all global objects into RAM or
+renew launch-source freshness during a catalog-only build.
+
+Publish coverage denominators, all source pages/counts/digests, unresolved
+official-source omissions, exact-ID mappings, artwork/mark gaps and geographic
+qualification separately. Provider pagination completeness is a finite checked
+claim; global operational completeness needs additional source review. Native
+task 4.3 owns that release evidence and remains open.
+
+### Catalog maintenance owners
 
 The intended maintenance interface is:
 
 | Planned owner | Contents |
 | --- | --- |
+| `catalog/countries.json` | Country/territory/region kinds, source IDs/codes and qualified marks |
+| `catalog/organizations.json` | Distinct launch operators, manufacturers and pad agencies with sourced country associations |
 | `catalog/rockets.json` | Stable model IDs, explicit provider mappings, asset/frame references and attribution |
 | `catalog/sites.json` | Stable pad/site IDs, country/place, coordinates and source |
+| `catalog/source-overrides.json` | Reviewed official-source supplements/corrections, retaining source values and review dates |
+| `catalog/geography.json` | Shared world/regional geometry or prepared map/globe shard references and provenance |
+| `catalog/coverage.json` | Dated expected/observed IDs, source pages and separate metadata/visual/mark/coordinate/map coverage |
 | `assets/rockets/<model-id>/<revision>/` | Watch-compatible still images and optional short frame packs |
 | `tools/catalog.py` | Validate inputs and build a versioned static manifest/package |
 

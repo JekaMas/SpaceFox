@@ -45,6 +45,14 @@ The default freely redistributable pack uses original schematics or assets with
 established compatible terms; do not silently include NC/ND/restricted photos.
 Rocket and company names identify subjects; SpaceFox does not claim their marks.
 
+A dated, normalized LL2 API2.3.0 factual reference inventory is now included under
+`openspec/changes/spacefox-watchface/evidence/global-catalog/` for specification
+coverage analysis. It is not the active feed/catalog. The Space Devs source terms
+and attribution remain applicable; MIT covers original SpaceFox analysis/specs,
+not a claim of ownership of upstream data or referenced photos/logos. Only minimal
+facts and coverage relations were retained; provider descriptions, image files
+and map photographs are not bundled by this audit.
+
 ## Original model/identity pack
 
 `assets/rocket-pack/` contains new SpaceFox schematics for Falcon9/FalconHeavy,

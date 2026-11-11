@@ -86,6 +86,10 @@ false geographic point.
 - **WHEN** the site has no valid coordinates
 - **THEN** its available text remains visible and the geographic point is omitted rather than placed at a fabricated location
 
+#### Scenario: Worldwide catalog geography
+- **WHEN** a valid selected site is outside the original demonstration countries, on a small island, near a pole or across the date line
+- **THEN** its source-derived point and country/place are displayed in the accepted full-screen map or chosen globe without a country whitelist or a launch-country substitution for rocket origin
+
 ### Requirement: Accepted full-screen map composition
 
 The default composition SHALL use a 390 × 390 full-screen flat-map window with

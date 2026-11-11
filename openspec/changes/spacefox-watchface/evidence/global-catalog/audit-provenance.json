@@ -1,0 +1,38 @@
+{
+  "scope": "Reference facts, source closure/count audit, actual existing model resolver on170 new source names, and spec review. No production catalog/updater/native map implementation.",
+  "localInputsSHA256": {
+    "assets/rocket-pack/catalog.json": "8c0ee3fd67df33bf376d37adea3ca35203f539ab6f6155a55f0d377f3eaaa89f",
+    "assets/rocket-pack/registry.source.json": "2cda78bb37a875d3ba50453a1d8d81bcb06f7653f60338206442f303628e3567",
+    "prototype/rocket-models/core.js": "e04a6515d2ae44a4d39a0e1f75e973030a7cc82307f5fcd44f79d0cb6609f8fb",
+    "prototype/layout-data.js": "fa3cfd312d89414752c43e20e1bee903e70c6c7cc120973215af67c306da7ec1"
+  },
+  "sourceCounts": {
+    "countries": 103,
+    "providerActiveModels": 161,
+    "inactiveModelsWithPending": 9,
+    "requiredReferenceConfigurations": 170,
+    "placeholders": 5,
+    "organizationsAllStatuses": 350,
+    "organizationsWithReferenceRelations": 70,
+    "manufacturerOrganizations": 60,
+    "providerActivePads": 216,
+    "padCountriesOrTerritories": 22,
+    "padsWithoutCountry": 2,
+    "padsWithFiniteCoordinates": 213,
+    "padsWithoutUsableCoordinates": 3,
+    "specificModelArtworks": 5,
+    "exactSourceConfigurationsMatchedByCurrentResolver": 5,
+    "currentOrganizationBadges": 3,
+    "currentFlagArtworks": 4,
+    "matchedProviderCountryRecords": 4
+  },
+  "findings": [
+    "Provider pagination complete for recorded queries",
+    "Ariane64 lifecycle contradiction retained",
+    "Three JAXA sounding names absent from selected170, official supplement still needed",
+    "Three source pads lack coordinates",
+    "All-pad geographic qualification not performed",
+    "Five model visuals and three company marks remain partial"
+  ],
+  "behaviorTests": "Prior greens retained; no production owner or existing research inputs changed. New source-name resolver audit has different external inputs, not a rerun of the previous synthetic identity tests."
+}
