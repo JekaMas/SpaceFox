@@ -36,3 +36,5 @@ minimum text contrast12.19. Historical focus source files and all8 old DAG edges
 remain current and green without rerun. Native proposal/design/spec updated to
 remove the former icon requirement. Next: clean-source execution of new R3 only,
 public snapshot/readback, task5 closure.
+
+Status follow-up complete: two exact R3 tests passed on clean source7758d918ffc71f794cc155422dab02165935eec8, including8 injected-fault rejections.30 fresh browser states retained. Source/spec/report published at6c6ec6a672ae6bdc250cdfe0ed5d28d49283721e; remote main matched and GitHub connector read back actual badge removal/color/underline code. Both public-configuration strict spec checks passed. Current task closure changes no product source. Native/human/independent qualification remains open.
