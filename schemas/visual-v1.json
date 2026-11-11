@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spacefox.invalid/schemas/visual-v1.json",
+  "title": "SpaceFox producer visual1; native qualification pending",
+  "description": "Strict parser/relational constraints and canonical digest in docs/VISUAL_PROTOCOL.md are normative. A delivered geometry shard also requires <=4096 decoded bytes and still animation.",
+  "type": "array",
+  "minItems": 8,
+  "maxItems": 8,
+  "prefixItems": [
+    {
+      "const": "SFV"
+    },
+    {
+      "const": 1
+    },
+    {
+      "const": 32
+    },
+    {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 256
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 16777215
+      },
+      "minItems": 1,
+      "maxItems": 32,
+      "uniqueItems": true
+    },
+    {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 134225920
+      },
+      "minItems": 3,
+      "maxItems": 4096,
+      "uniqueItems": true
+    },
+    {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "prefixItems": [
+          {
+            "const": 0
+          },
+          {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 31
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4095
+            },
+            "minItems": 3,
+            "maxItems": 512
+          }
+        ],
+        "items": false
+      },
+      "minItems": 1,
+      "maxItems": 512
+    },
+    {
+      "oneOf": [
+        {
+          "const": [
+            0,
+            []
+          ]
+        },
+        {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [
+            {
+              "type": "integer",
+              "minimum": 2000,
+              "maximum": 3000
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "minItems": 4,
+                "maxItems": 4,
+                "prefixItems": [
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3000
+                  },
+                  {
+                    "type": "integer",
+                    "minimum": -2048,
+                    "maximum": 2048
+                  },
+                  {
+                    "type": "integer",
+                    "minimum": -2048,
+                    "maximum": 2048
+                  },
+                  {
+                    "type": "integer",
+                    "minimum": 128,
+                    "maximum": 512
+                  }
+                ],
+                "items": false
+              },
+              "minItems": 2,
+              "maxItems": 16
+            }
+          ],
+          "items": false
+        }
+      ]
+    }
+  ],
+  "items": false
+}
