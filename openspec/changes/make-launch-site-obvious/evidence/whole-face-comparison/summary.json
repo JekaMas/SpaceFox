@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-11",
+  "scope": "Paired whole-face comparison; no human performance or independent preference test.",
+  "authoringSourceCommit": "8936c4d87ad91f00a2414c2dca41e22445fb00b8",
+  "previousPublicCommit": "e898e78dc7accc1a575a9e26265d0df499497fbd",
+  "families": 5,
+  "scenes": [
+    "comparison-short-ru",
+    "author3-07-ru",
+    "author3-07-en"
+  ],
+  "pairs": 15,
+  "nativeDOMWidthCSSPx": 390,
+  "overviewWatchWidthCSSPx": 195,
+  "baseObjectsExactlyEqual": 5,
+  "requiredLabelsCompared": 150,
+  "requiredLabelDifferences": [],
+  "additionalLabelRoles": [
+    {
+      "family": "ticket",
+      "scene": "comparison-short-ru",
+      "roles": [
+        "launchCue"
+      ]
+    },
+    {
+      "family": "ticket",
+      "scene": "author3-07-ru",
+      "roles": [
+        "launchCue"
+      ]
+    },
+    {
+      "family": "ticket",
+      "scene": "author3-07-en",
+      "roles": [
+        "launchCue"
+      ]
+    }
+  ],
+  "identicalLabelProperties": [
+    "x",
+    "y",
+    "w",
+    "h",
+    "cx",
+    "cy",
+    "font",
+    "fontSize",
+    "lineHeight",
+    "textAlign",
+    "color",
+    "value"
+  ],
+  "ticketCueCenterMinusPinX390Px": {
+    "comparison-short-ru": -12.84765625,
+    "author3-07-ru": -12.84765625,
+    "author3-07-en": -3.265625
+  },
+  "atlasInheritedMissionCenterMinusTimeX390Px": {
+    "comparison-short-ru": 24.99609375,
+    "author3-07-ru": 24.99609375,
+    "author3-07-en": 24.99609375
+  },
+  "judgment": "Overall ergonomic superiority is unproven. Marker qualification is retained with its original scope.",
+  "qualitativeAssessmentOwner": "Current authoring agent, not an independent reviewer or human participant",
+  "images": {
+    "atlas-pair.jpg": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "role": "saved browser screenshot"
+    },
+    "earthrise-pair.jpg": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "role": "saved browser screenshot"
+    },
+    "overview-initial-clipped.jpg": {
+      "pixels": [
+        1265,
+        712
+      ],
+      "role": "rejected initial comparison shell"
+    },
+    "overview-long-en.jpg": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "role": "saved browser screenshot"
+    },
+    "overview-long-ru.jpg": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "role": "saved browser screenshot"
+    },
+    "overview-short.jpg": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "role": "saved browser screenshot"
+    },
+    "pair-0.jpg": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "role": "saved browser screenshot"
+    },
+    "pair-1.jpg": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "role": "saved browser screenshot"
+    },
+    "pair-2.jpg": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "role": "saved browser screenshot"
+    },
+    "pair-3.jpg": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "role": "saved browser screenshot"
+    },
+    "pair-4.jpg": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "role": "saved browser screenshot"
+    },
+    "ticket-pair.jpg": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "role": "saved browser screenshot"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "observedAtUTC": "2026-11-11T09:32:43.272986+00:00",
+  "checks": {
+    "retainedBrowserDependencies": {
+      "count": 53,
+      "mismatches": []
+    },
+    "retainedEvidenceTools": {
+      "count": 23,
+      "mismatches": []
+    },
+    "retainedPreviousOwners": {
+      "count": 9,
+      "mismatches": []
+    }
+  },
+  "behaviorTestsRerun": false,
+  "reason": "Original owners, assertion tools and fixtures retain exact frozen bytes. Added comparison UI has separate browser/syntax observations.",
+  "filesSHA256": {
+    "prototype/marker/compare.html": "2795972ab92303c9c08aaf6594aab885f9711799718ac350b01905c9748941ee",
+    "prototype/marker/compare.js": "a10dfd6c158acc3e451dee103bc7ec21de6cb6be3784a7889eaf3d5ed5fbfa98",
+    "docs/FINALISTS_COMPARISON.md": "32cdacbf7064202eb7d198318639694bacba187bdd11d6b6c19d2551c2acd856",
+    "docs/MARKER_RESEARCH.md": "d820ce5ed472ba4a88e09e06c74ed9db271041a2d7e90aea86efcc6ff8490ea8",
+    "openspec/changes/make-launch-site-obvious/PROGRESS.md": "3154b5d97f52c05c73fed9e9285935da4f4fe5f0156f0a3540338d49077dba20",
+    "openspec/changes/make-launch-site-obvious/evidence/whole-face-comparison/atlas-pair.jpg": "80e3bc0a4f67814b7d984b48c2b373a408da3004c33fad5acaa2ea97f09399c2",
+    "openspec/changes/make-launch-site-obvious/evidence/whole-face-comparison/earthrise-pair.jpg": "d1b80b0ffd2df283c50a6b3a91d417288435f6a5ce9ac8e86ce79981a391716e",
+    "openspec/changes/make-launch-site-obvious/evidence/whole-face-comparison/measurements.json": "29e13e7f5793b938f50644f756545a160256c102da496667777bce3f5acfc3aa",
+    "openspec/changes/make-launch-site-obvious/evidence/whole-face-comparison/overview-initial-clipped.jpg": "eabd0b7c33d9f580ec521bcc51bf95bdd03593a5d51d7228a542a6ab84b1a2f4",
+    "openspec/changes/make-launch-site-obvious/evidence/whole-face-comparison/overview-long-en.jpg": "cb4bc694b1fdbea18bdfd77b587f0ad052e2e87238de61522ba2d7f6557db133",
+    "openspec/changes/make-launch-site-obvious/evidence/whole-face-comparison/overview-long-ru.jpg": "15015773c98a03ea448e1fb80dc17e4d2b1187c0d96b0eeda49fd08db35fb0ac",
+    "openspec/changes/make-launch-site-obvious/evidence/whole-face-comparison/overview-short.jpg": "cdaf6c544bc7079993b56cba0924b9b3a2cca42d6d8fdf1aa205bfb2428c4fff",
+    "openspec/changes/make-launch-site-obvious/evidence/whole-face-comparison/pair-0.jpg": "7866b611d03ab2aa6a2a83641936b30139fae5ad4eb5ccd426cea8a42bcfc69d",
+    "openspec/changes/make-launch-site-obvious/evidence/whole-face-comparison/pair-1.jpg": "26fdff0ad25a7702202c32dca057a6addb87f0b1479dbf18f84d0b809c377e8c",
+    "openspec/changes/make-launch-site-obvious/evidence/whole-face-comparison/pair-2.jpg": "ca959a534d43650c63b6011141e7294505a015876664f078e62fd0ba9cd9953f",
+    "openspec/changes/make-launch-site-obvious/evidence/whole-face-comparison/pair-3.jpg": "6411d481226c8ff0017bf4751327ef793891ef3be3b42ea00879bdf2561f4b37",
+    "openspec/changes/make-launch-site-obvious/evidence/whole-face-comparison/pair-4.jpg": "74f32705e493311502724b84e2356c9aa0d19a12c36190466fd29c65b78ce0b6",
+    "openspec/changes/make-launch-site-obvious/evidence/whole-face-comparison/summary.json": "6d3ea2ebab60f132d9af1e64e3528c04cfefe36f6b72ccb359e150bf9f59f1fa",
+    "openspec/changes/make-launch-site-obvious/evidence/whole-face-comparison/ticket-pair.jpg": "963c71c0dcb17a58de01352e40a5648a291917ba67284ce6ab64e57185cb84fd"
+  },
+  "readmeProductPrefixSHA256": "1f5da7f20e4cefec8989694358739271d2f6ab9a4d8c8c8260fa80426ceb2f65",
+  "readmeBindingScope": "Product prefix only; authoring and public development suffixes intentionally differ."
+}
