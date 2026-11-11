@@ -1,0 +1,23 @@
+{
+  "scope": "Specification and reversible desktop representation size study; no native storage implementation/qualification.",
+  "strictStructuralGate": "passed after splitting overlong feed requirement; initial failed receipt retained locally",
+  "specAndReportSHA256": {
+    "openspec/changes/spacefox-watchface/design.md": "45fcc07ed974c7674c664328ceae7dbb3df30e57f81b8fb85a53d6416a284b7e",
+    "openspec/changes/spacefox-watchface/specs/visual-catalog/spec.md": "475eda36faf5d5b4c17dae0128c01c700a5057c3511166557db8be7cd153fd59",
+    "openspec/changes/spacefox-watchface/specs/launch-schedule/spec.md": "0ac0050a53c191fbf26d4dd72b5381c4515205d6af69ac7d1218f56fa7a428d6",
+    "docs/EFFICIENT_STORAGE.md": "fa8815a7e29ab3314a160c05812b550cf2dc2a2b334dcd0f451226d7ee295363"
+  },
+  "studySHA256": "a09ab48dee50f390ab01010bb0674f9c52096b7991ba171dac5eee61affcb33c",
+  "frozenArchiveSHA256": "a94bdeb202861d2759db348d2b9ded75a15ca9e4acd86f466a4adc6e02669263",
+  "formatChecks": "839records retained; minified/columnar JSON semantic equality, canonical typed-tree equality, gzip byte roundtrip passed. No duplicate full encodings stored.",
+  "integrityChecks": "Existing archive unchanged; local report links/headings checked. Six historical wide-map cases remain current via query without rerun.",
+  "priorEvidenceBoundary": "Previous global inventory/count/comparator observations remain valid. Older global validation spec-file hashes are historical; these new storage clauses are covered by this fresh structural receipt.",
+  "nativeBudgets": "Still require FR165 SDK/firmware measurements under tasks2.2/4.4;32KB object-value limit is not a RAM allowance.",
+  "failureRepair": {
+    "observed": "OpenSpec strict warning: existing Bounded coherent feed text exceeded500characters after insertion.",
+    "hypothesis": "New decoded-size paragraph belongs to a separate requirement; structural length causes failure, not a runtime defect.",
+    "owner": "specs/launch-schedule/spec.md",
+    "repair": "Restored original coherent-feed requirement and scenario; added Decoded feed size accounting with its own scenario. No contract weakened.",
+    "discriminator": "Same native structural command on changed specification passed. Unrelated source checks and behavioral tests not rerun."
+  }
+}

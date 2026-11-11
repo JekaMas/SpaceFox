@@ -203,6 +203,11 @@ require reducing the supported bound. Reject oversize/unsupported/malformed or
 regressing data without truncating IDs/coordinates or evicting the last good cache.
 Native budget qualification in task 2.2 remains mandatory.
 
+This ceiling is decoded UTF-8 before object parsing, not compressed transfer size.
+Version/lookup-table metadata counts toward it. Runtime containers, decode buffers,
+serialized storage and graphics have separate measured budgets; none follows
+automatically from the JSON byte count.
+
 Target one bounded provider batch when due: normally once/hour, four/hour in the
 near window. A default fifteen-minute cron can inspect the retained schedule and
 skip provider fetch/publication until the appropriate interval is due; a scheduler
@@ -309,6 +314,59 @@ official-source omissions, exact-ID mappings, artwork/mark gaps and geographic
 qualification separately. Provider pagination completeness is a finite checked
 claim; global operational completeness needs additional source review. Native
 task 4.3 owns that release evidence and remains open.
+
+### Efficient dictionaries, immutable content and bounded caches
+
+Use one normalized publisher-side country/organization/model/site/asset record
+per typed stable ID. Wire references use IDs, not repeated full objects or source
+URLs. Common labels and immutable components may be shared; pool only the selected
+locale/required fallback strings on the watch. Full names, aliases and provenance
+remain recoverable from the canonical publisher data. Do not load a global alias
+index or all36 locale dictionaries on every startup or redraw.
+
+Readable canonical sources and dated audit evidence remain inspectable. Generate
+compact deterministic JSON for delivery. A short-key/columnar/shared-string schema
+is a candidate only after lossless decode and FR165 measurements show a net
+benefit over simple bounded JSON. Keep a versioned column/type definition, typed
+IDs, nulls, UTC seconds and numeric precision. Never rely on undocumented array
+order, truncate an ID, quantize coordinates silently or treat zero as absence.
+
+Start with normal HTTPS JSON. Gzip/columnar/binary byte counts do not establish
+native RAM efficiency; compression and alternate response paths require actual
+SDK/firmware support, bounded expansion and decode-cost qualification. Do not
+assume a new API feature is supported merely because it appears in current docs.
+The [desktop study](evidence/efficient-storage/format-study.json) round-trips all839
+archived records without changing the original audit. It is not a watch codec or
+RAM benchmark. See [storage contract and metrics](../../../docs/EFFICIENT_STORAGE.md).
+
+Cache one compatible encoded content instance per digest and reuse references.
+Derived SVG/PNG/source previews are not all shipped to the watch. Reuse qualified
+body/mark components or a qualified composed image; different rocket configurations
+remain distinct. Load/decode only the active view/frame and bounded lookahead
+needed by the accepted pipeline, with a byte-bounded eviction policy. Pin active,
+staging and required recovery references until safe commit; if they cannot coexist
+inside the budget, defer the candidate rather than deleting working content.
+
+Build watch/Pages artifacts from an explicit runtime-output inventory. Do not copy
+the whole repository, SDK, source previews, browser research or audit snapshots
+into those artifacts. This packaging rule does not omit required production
+catalog entries or qualified assets from their documented delivery location.
+
+Separate small accepted freshness/revision/settings state from unchanged model/map
+content. Redraw computes time/countdown from memory and performs no persistence
+I/O, catalog deserialization or bitmap/map rebuilding. Successful new source
+validation must still be persisted even when launch content is unchanged. A failed
+write cannot advance the durable active revision. No countdown history or unbounded
+update logs are stored merely to reconstruct the current display.
+
+Qualification records transfer bytes, decoded feed/shard bytes, parse and activation
+peak RAM, decoded bitmap/frame memory, per-value serialization, total persistent
+bytes and staging/recovery peak. Document native storage keys/schema/migration and
+their single writer. Use only qualified Storage value types and stable keys, not
+build-dependent Symbol keys. SDK/storage errors preserve accepted state. The
+documented32KB value ceiling is not a FR165 RAM or total-cache allowance; actual
+target budgets may be smaller. The publisher's existing1MiB artifact budget also
+needs measured reconciliation with complete global content, without hiding gaps.
 
 ### Catalog maintenance owners
 

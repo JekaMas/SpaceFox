@@ -126,6 +126,57 @@ layer into watch RAM or enlarging the bounded schedule without qualification.
 - **WHEN** a catalog traversal and near-launch schedule polling share the anonymous quota
 - **THEN** cached/resumable catalog work respects the common budget and does not exceed the provider limit or falsely renew launch-source freshness
 
+### Requirement: Compact canonical dictionaries
+
+Country, organization, configuration, site and asset records SHALL be stored once
+per typed stable identity and referenced by ID. Derived wire/storage dictionaries
+SHALL be deterministic, versioned and lossless for accepted facts. Reordering or
+pooling SHALL NOT change IDs, null/zero distinctions, strings, units or precision.
+Aliases, provenance and full source detail MAY stay publisher-side; the watch
+SHALL receive only its bounded required dependency closure.
+
+#### Scenario: Several launches share entities
+- **WHEN** cached launches reference the same operator, country, model or asset
+- **THEN** the shared definition/content is stored once per accepted version and the launches refer to it without repeated full records or mutable cross-version indexes
+
+#### Scenario: Dictionary order or schema changes
+- **WHEN** a received table uses a different order, unknown schema, out-of-range index or mismatched revision
+- **THEN** decoding preserves the exact typed identities under a supported schema or rejects the candidate without changing the accepted cache
+
+### Requirement: Bounded asset cache and persistence writes
+
+On-watch cache SHALL have explicit byte/entry limits and retention rules. Verified
+immutable content SHALL be reused by digest; unreferenced entries SHALL be evicted
+without deleting active or required recovery content. Update staging and rollback
+SHALL fit the measured budget. Redraw/countdown ticks SHALL NOT initiate storage
+I/O or rebuild/parse catalogs; new accepted source-validation metadata SHALL
+still persist even when launch content is unchanged.
+
+#### Scenario: Cache is full during an asset replacement
+- **WHEN** a candidate needs space while the current version is still active
+- **THEN** only safe unreferenced content is evicted, or the update is deferred with the last working version intact; active/staging/recovery peak usage stays bounded
+
+#### Scenario: Unchanged launch gains a new source validation
+- **WHEN** successful validation updates freshness without changing model/map content
+- **THEN** accepted validation metadata persists coherently, unchanged assets are reused and countdown ticks cause no storage writes
+
+### Requirement: Separate measured storage budgets
+
+Qualification SHALL record compressed transfer bytes, decoded payload bytes,
+parse/activation peak RAM, decoded graphics/frame RAM, serialized value size,
+total persistent cache and staging/recovery peak. Each SHALL fit the target
+device/API budget. Compressed size SHALL NOT stand in for decoded or peak memory.
+Alternate columnar/binary/compressed encodings SHALL require supported SDK paths
+and measured end-to-end benefit before adoption.
+
+#### Scenario: Compressed content expands beyond limits
+- **WHEN** a small transfer would exceed decoded, parser, graphics or persistent-storage bounds
+- **THEN** it is rejected or split through a qualified versioned path without replacing accepted data or claiming memory efficiency from transfer size alone
+
+#### Scenario: Global catalog grows outside the selected slice
+- **WHEN** unrelated global records are added while selected dependencies stay the same
+- **THEN** the watch does not load those unrelated records and its payload/cache remain bounded independently of worldwide catalog cardinality
+
 ### Requirement: Data-driven catalog maintenance
 
 Maintainers SHALL be able to add a rocket/model mapping, replace its image or

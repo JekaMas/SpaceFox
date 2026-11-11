@@ -1,0 +1,53 @@
+{
+  "scope": "Desktop lossless size study of existing839-record archival reference. No watch wire format, codec implementation, native RAM, object-store size, CPU or energy acceptance. Archive unchanged; no duplicate full encodings stored.",
+  "source": "openspec/changes/spacefox-watchface/evidence/global-catalog/reference-inventory.json",
+  "sourceSHA256": "a94bdeb202861d2759db348d2b9ded75a15ca9e4acd86f466a4adc6e02669263",
+  "recordCounts": {
+    "countries": 103,
+    "models": 170,
+    "organizations": 350,
+    "sites": 216
+  },
+  "python": "3.14.7",
+  "zlib": "1.2.12",
+  "columnarMethod": "Each homogeneous entity collection stores its column names once and every complete row as an array; nested values/metadata retained. Reconstruct by exact column zip; no IDs/precision/names/unknowns dropped. String-table pooling not included.",
+  "results": [
+    {
+      "name": "archived-pretty-json",
+      "utf8Bytes": 394969,
+      "gzip9Bytes": 26140,
+      "sha256": "a94bdeb202861d2759db348d2b9ded75a15ca9e4acd86f466a4adc6e02669263",
+      "semanticRoundtrip": true,
+      "gzipByteRoundtrip": true,
+      "utf8ReductionVsArchivePercent": 0.0
+    },
+    {
+      "name": "minified-object-json",
+      "utf8Bytes": 283782,
+      "gzip9Bytes": 24495,
+      "sha256": "d30010740f0423e4dffbbf91b34aa349c7b44b81f3c9e2900bbf1c688332352f",
+      "semanticRoundtrip": true,
+      "gzipByteRoundtrip": true,
+      "utf8ReductionVsArchivePercent": 28.15
+    },
+    {
+      "name": "columnar-json-candidate",
+      "utf8Bytes": 137596,
+      "gzip9Bytes": 21688,
+      "sha256": "af92ea820881e990a212a08cfc5589728461c62978b9a366593cf5147a818436",
+      "semanticRoundtrip": true,
+      "gzipByteRoundtrip": true,
+      "utf8ReductionVsArchivePercent": 65.16
+    }
+  ],
+  "decision": "Use compact bounded JSON as initial wire baseline; compare columnar/short-key/shared-string layouts only on measured FR165 workloads before accepting complexity. Do not send the full catalog even if compressed.",
+  "sources": [
+    "https://developer.garmin.com/connect-iq/api-docs/Toybox/Application/Storage.html",
+    "https://developer.garmin.com/connect-iq/connect-iq-faq/how-do-i-create-a-connect-iq-background-service/",
+    "https://developer.garmin.com/connect-iq/articles/core-topics/Resources.html",
+    "https://developer.garmin.com/connect-iq/api-docs/Toybox/Communications.html"
+  ],
+  "typePreservingCanonicalRoundtrip": true,
+  "canonicalTreeSHA256": "89106d14e72969cf6aa271c5da4f1205dc7bef7a24b8b3b96f582346cde5da3d",
+  "additionalCheck": "Canonical JSON byte equality with sorted keys and finite numbers; distinguishes bool/number, null/zero, strings and numeric representations."
+}

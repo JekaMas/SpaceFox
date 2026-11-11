@@ -81,6 +81,18 @@ regressing or malformed snapshots MUST NOT replace the last accepted cache.
 - **WHEN** a response exceeds the bound, has an unsupported schema, missing required identity, invalid coordinates/time, or older source validation than the accepted cache
 - **THEN** the response is rejected and current time, fitness fields and last accepted launch data remain usable
 
+### Requirement: Decoded feed size accounting
+
+The 8192-byte ceiling SHALL apply to decoded UTF-8, including dictionaries and
+metadata, before object parsing. Compression SHALL NOT enlarge that allowance.
+Compact serialization SHALL preserve required identities, timestamps/precision,
+explicit absence and source freshness. Runtime containers and persisted size
+SHALL be qualified separately from JSON bytes.
+
+#### Scenario: Compressed schedule exceeds the decoded allowance
+- **WHEN** the compressed transfer fits but its decoded schedule exceeds8192bytes or the qualified runtime budget
+- **THEN** the candidate is rejected without replacing the accepted cache or claiming memory efficiency from compressed size
+
 ### Requirement: Stable next-launch selection
 
 The system SHALL choose the earliest eligible upcoming launch from the accepted
