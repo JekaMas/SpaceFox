@@ -8,7 +8,7 @@
 - [x] 1.4 Replace the planned always-running service with the selected personal GitHub Actions/Pages feed and MIT agent guide; verify coherent proposal/design/specs/tasks, primary-source constraints and strict OpenSpec validation in `evidence/static-feed-design-review.md`. This task enables no scheduler or deployment.
 - [x] 1.5 Clarify fully local countdown computation and reduce the default data cadence to hourly/15-minute near-launch polling, retaining a configurable fast mode; verify coherent age limits, bounded window exit, offline wake and stale-latch scenarios, guide consistency and strict validation in `evidence/local-countdown-review.md`.
 - [x] 1.6 Create an exploratory geography/typography gallery with flat map/globe, 1/4–1/3–1/2-height regions, side/top/horizon placements and orientation controls; compare four licensed numeral fonts, preserve common example data, and inspect real browser renders/long statuses/circular fit. Record source-based ergonomic reasoning and qualified recommendations in `evidence/geography-layout-review.md`; do not choose a new native layout on the owner's behalf.
-- [ ] 1.7 Audit global countries/configurations/organizations/pads against current paginated provider data and primary sources; fix global coverage, exact identities, artwork/map gaps and bounded delivery in the spec; preserve the accepted full-screen composition and publish the dated inventory/review.
+- [x] 1.7 Audit global countries/configurations/organizations/pads against current paginated provider data and primary sources; fix global coverage, exact identities, artwork/map gaps and bounded delivery in the spec; preserve the accepted full-screen composition and publish the dated inventory/review.
 
 ## 2. Native implementation qualification
 
@@ -77,3 +77,5 @@ Task 1.6 supplies eight exploratory active-screen layouts and four numeral-font
 choices. Read `docs/DESIGN_RESEARCH.md` and `evidence/geography-layout-review.md`;
 H/C/E are a qualified shortlist, not an approved replacement for the native
 Mission layout. The gallery is RU/EN; the original preview retains 36 locales.
+
+Task1.7 completes the global specification/source-audit increment. See docs/GLOBAL_CATALOG.md and evidence/global-catalog/:170 source configurations,350organizations,103country records,216provider-active pads,213finite positions and3missing positions. Full-page source coverage does not establish worldwide operational completeness; official-source conflicts/omissions and partial artwork are explicit. Native global/catalog/map qualification remains task4.3. Accepted04/full composition is preserved.
