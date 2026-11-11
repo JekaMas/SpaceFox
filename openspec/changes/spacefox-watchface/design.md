@@ -6,7 +6,8 @@ See [proposal.md](proposal.md) for intent and [baseline audit](evidence/baseline
 for current coverage and [layout review v4](evidence/layout-review-v4.md) for the
 subsequent compact-band revision. The initial browser mockup in
 `prototype/mission.html` is retained as a baseline. The selected visual basis is
-now [Mission in Focus with clearer geography](../../../prototype/relay/index.html).
+now [Mission in Focus with clearer geography](../../../prototype/relay/index.html),
+followed by the [larger-fields/map comparison](../../../prototype/focus/index.html).
 Schedule, health values and model graphics remain illustrative. No Monkey C owner,
 live service or downloadable asset pipeline exists.
 
@@ -42,12 +43,27 @@ native glyph bounds and AMOLED/AOD adaptation still require separate validation.
 This selection does not inherit the previous full marker/human/device claims.
 See [decision and bounded browser evidence](../../../docs/RELAY_REFINEMENT.md).
 
-The follow-up [header comparison](../../../prototype/relay/header.html) offers
-rocket + company or rocket + purpose as a compact top pair, with the remaining
-label below. The preview recommends the company pair; the owner has requested
-comparison of both, not final native acceptance. Long values stack without
-shrinking type. Time, fitness, rocket artwork, map projection and bottom launch
-information keep their positions. See [bounded header evidence](../../../docs/RELAY_HEADER.md).
+The owner subsequently accepted rocket + company as the top pair, with mission
+purpose below (`Falcon 9 · SpaceX` / `Связь`). Long values stack without shrinking.
+The historical [header comparison](../../../prototype/relay/header.html) preserves
+its original geometry and [bounded evidence](../../../docs/RELAY_HEADER.md).
+
+The next [browser proposal](../../../prototype/focus/index.html) preserves that
+accepted header and clock size, enlarges four independent values from 22.2 to 32px
+in a 2×2 grid, moves countdown directly below time, moves country/site below the
+fields and adds a small separate device battery at the top. The battery indicator
+does not consume a custom slot. It is distinct from Body Battery and may be
+unavailable. Assigning battery to a slot remains possible; the demo controls allow
+reassignment, with absent source values shown as `—`.
+
+Three comparable map formats are available: side fragment with fade toward text,
+framed flat map, and partial orthographic globe. Default black and optional dark
+navy backgrounds are browser themes, not qualified AMOLED power modes. Soft
+cutouts darken map paint behind text without dimming the true site marker.
+The side fragment is the author's recommendation; the owner has accepted the
+header, not yet the complete new composition. Native glyph/AOD/device checks,
+all 36 locales and human glance readability remain open. See
+[96-state browser evidence and limits](../../../docs/FOCUS_LAYOUT.md).
 
 ### Use a personal static feed, not an always-running backend
 

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "change": "enlarge-relay-fields",
+  "scope": {
+    "property_ids": [
+      "R1.P1",
+      "R2.P1"
+    ],
+    "test_ids": [
+      "unittest::tests.test_focus.FocusTest.test_layout_positive",
+      "unittest::tests.test_focus.FocusTest.test_layout_negative",
+      "unittest::tests.test_focus.FocusTest.test_geography_positive",
+      "unittest::tests.test_focus.FocusTest.test_geography_negative"
+    ]
+  },
+  "reviews": [
+    {
+      "id": "D1",
+      "question": "Enlarged layout and geography wrappers over exact known relay owner",
+      "property_ids": [
+        "R1.P1",
+        "R2.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_focus.FocusTest.test_layout_positive",
+        "unittest::tests.test_focus.FocusTest.test_layout_negative",
+        "unittest::tests.test_focus.FocusTest.test_geography_positive",
+        "unittest::tests.test_focus.FocusTest.test_geography_negative"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read prototype/relay/header-renderer.js, qualification/renderer.js, features/renderer.js and composition/metrics.js",
+          "outcome": "Reuse renderer and DOM/SVG metrics; add separate battery and geographic-anchor diagnostics.",
+          "results": [
+            {
+              "path": "prototype/relay/header-renderer.js",
+              "line": 3,
+              "classification": "interface_dependency",
+              "reason": "Accepted header rendering owner."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Exact renderer owner is already known",
+          "reason": "No unknown subsystem or ownership discovery.",
+          "outcome": "No semantic-search evidence claimed.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Known browser owner",
+          "reason": "No unknown symbol, reference tracing or IDE operation needed.",
+          "outcome": "No indexed evidence claimed.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "New isolated layout; old published owners stay unchanged."
+    }
+  ]
+}

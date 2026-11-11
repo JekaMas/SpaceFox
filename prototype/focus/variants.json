@@ -1,0 +1,9 @@
+{
+  "selected": "fade",
+  "variants": [
+    {"id":"fade","name":"01 · Мягкий край","projection":"map","box":[220,30,158,190],"pin":[335,165],"scale":95,"fade":true,"frame":false},
+    {"id":"window","name":"02 · Карта в окне","projection":"map","box":[270,113,108,106],"pin":[335,165],"scale":77,"fade":false,"frame":true},
+    {"id":"globe","name":"03 · Полушарие","projection":"globe","box":[220,30,158,190],"pin":[335,165],"scale":99,"fade":true,"frame":false}
+  ],
+  "backgrounds": {"black":"#000000","navy":"#050a11"}
+}

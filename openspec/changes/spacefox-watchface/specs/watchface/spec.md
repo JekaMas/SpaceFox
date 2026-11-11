@@ -41,6 +41,9 @@ placing text outside the circle.
 The watch face SHALL provide four independently configurable fields supporting
 steps, Body Battery, heart rate, stress, calories, watch battery and hidden. It
 SHALL display Garmin-provided values and an unavailable marker for missing data.
+An optional compact watch-battery indicator outside the fitness region SHALL NOT
+consume one of the four independently configurable slots. Watch battery and Body
+Battery SHALL remain distinct data sources.
 
 #### Scenario: Configure and hide fields
 - **WHEN** a user assigns calories to one field and hides another
@@ -49,6 +52,10 @@ SHALL display Garmin-provided values and an unavailable marker for missing data.
 #### Scenario: Health data unavailable
 - **WHEN** Garmin does not supply a selected metric
 - **THEN** that field displays an unavailable marker rather than a fabricated value or a crash
+
+#### Scenario: Separate watch battery
+- **WHEN** a user enables the dedicated watch-battery indicator and assigns four fitness metrics
+- **THEN** all four chosen slots remain available, and the separate indicator uses watch charge or an unavailable marker without substituting Body Battery
 
 ### Requirement: Model-specific rocket visual
 

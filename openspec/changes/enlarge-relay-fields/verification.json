@@ -1,0 +1,281 @@
+{
+  "schema_version": 2,
+  "change": "enlarge-relay-fields",
+  "requirements": [
+    {
+      "id": "R1",
+      "capability": "focus-layout",
+      "title": "Large configurable fields and grouped time",
+      "fingerprint": "c197367433854f7384eb7465acc53078582bd191157dd5e4b6d528fb39d1c152"
+    },
+    {
+      "id": "R2",
+      "capability": "focus-layout",
+      "title": "Geographic and status meaning survives themes",
+      "fingerprint": "98bbd52549a42c58b65346826cfa09c12760af07b3052abe15d347d0f4181bed"
+    }
+  ],
+  "properties": [
+    {
+      "id": "R1.P1",
+      "requirement_id": "R1",
+      "scenarios": [
+        "Read short and long values",
+        "Reject misleading fields"
+      ],
+      "statement": "Large configurable fields and grouped time",
+      "owner": "layout",
+      "oracle": "Exact fixture strings/roles, literal geometry thresholds and projected-source identity from source-bound actual browser measurements; bounded browser evidence only.",
+      "source_globs": [
+        "prototype/focus/**",
+        "tests/test_focus.py",
+        "tools/focus_audit.py",
+        "openspec/changes/enlarge-relay-fields/evidence/browser.json"
+      ]
+    },
+    {
+      "id": "R2.P1",
+      "requirement_id": "R2",
+      "scenarios": [
+        "Inspect alternative maps",
+        "Reject a false geographic success"
+      ],
+      "statement": "Geographic and status meaning survives themes",
+      "owner": "geography",
+      "oracle": "Exact fixture strings/roles, literal geometry thresholds and projected-source identity from source-bound actual browser measurements; bounded browser evidence only.",
+      "source_globs": [
+        "prototype/focus/**",
+        "tests/test_focus.py",
+        "tools/focus_audit.py",
+        "openspec/changes/enlarge-relay-fields/evidence/browser.json"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "R1.P1.S1.POSITIVE",
+      "property_id": "R1.P1",
+      "polarity": "positive",
+      "scenario": "Read short and long values",
+      "scenario_fingerprint": "c6e9177d72011b8ffff5fbb7a9baa5b10c16dfa0eda3f832202921d9f4965bce",
+      "setup": "Load actual source-bound browser export; negative cases inject literal missing-value/overlap or displaced/false marker faults.",
+      "observable": "Exact values and geometry or exact source marker with no invalid accepted rows.",
+      "red_expectation": "Missing/overlapped values or a false geographic marker pass the auditor.",
+      "green_expectation": "Valid measured browser rows accepted; injected faults explicitly rejected.",
+      "invalidation_dependencies": [
+        "prototype/focus/**",
+        "tests/test_focus.py",
+        "tools/focus_audit.py",
+        "openspec/changes/enlarge-relay-fields/evidence/browser.json"
+      ],
+      "test_id": "unittest::tests.test_focus.FocusTest.test_layout_positive",
+      "command_id": "focus-tests",
+      "state": "implemented",
+      "source_path": "tests/test_focus.py",
+      "distinct_reason": "Read short and long values positive",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "6c60f476b791b77b9330d8932da013381cf95c42f0e97d17ad6c29b169d6cfea"
+    },
+    {
+      "id": "R1.P1.S1.NEGATIVE",
+      "property_id": "R1.P1",
+      "polarity": "negative",
+      "scenario": "Read short and long values",
+      "scenario_fingerprint": "c6e9177d72011b8ffff5fbb7a9baa5b10c16dfa0eda3f832202921d9f4965bce",
+      "setup": "Load actual source-bound browser export; negative cases inject literal missing-value/overlap or displaced/false marker faults.",
+      "observable": "Exact values and geometry or exact source marker with no invalid accepted rows.",
+      "red_expectation": "Missing/overlapped values or a false geographic marker pass the auditor.",
+      "green_expectation": "Valid measured browser rows accepted; injected faults explicitly rejected.",
+      "invalidation_dependencies": [
+        "prototype/focus/**",
+        "tests/test_focus.py",
+        "tools/focus_audit.py",
+        "openspec/changes/enlarge-relay-fields/evidence/browser.json"
+      ],
+      "test_id": "unittest::tests.test_focus.FocusTest.test_layout_negative",
+      "command_id": "focus-tests",
+      "state": "implemented",
+      "source_path": "tests/test_focus.py",
+      "distinct_reason": "Read short and long values negative",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "6c60f476b791b77b9330d8932da013381cf95c42f0e97d17ad6c29b169d6cfea"
+    },
+    {
+      "id": "R1.P1.S2.POSITIVE",
+      "property_id": "R1.P1",
+      "polarity": "positive",
+      "scenario": "Reject misleading fields",
+      "scenario_fingerprint": "063b50738ffabb935189c65236ef207b8f0edc9443d60c7ffdf41b88a6d67ce5",
+      "setup": "Load actual source-bound browser export; negative cases inject literal missing-value/overlap or displaced/false marker faults.",
+      "observable": "Exact values and geometry or exact source marker with no invalid accepted rows.",
+      "red_expectation": "Missing/overlapped values or a false geographic marker pass the auditor.",
+      "green_expectation": "Valid measured browser rows accepted; injected faults explicitly rejected.",
+      "invalidation_dependencies": [
+        "prototype/focus/**",
+        "tests/test_focus.py",
+        "tools/focus_audit.py",
+        "openspec/changes/enlarge-relay-fields/evidence/browser.json"
+      ],
+      "test_id": "unittest::tests.test_focus.FocusTest.test_layout_positive",
+      "command_id": "focus-tests",
+      "state": "implemented",
+      "source_path": "tests/test_focus.py",
+      "distinct_reason": "Reject misleading fields positive",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "6c60f476b791b77b9330d8932da013381cf95c42f0e97d17ad6c29b169d6cfea"
+    },
+    {
+      "id": "R1.P1.S2.NEGATIVE",
+      "property_id": "R1.P1",
+      "polarity": "negative",
+      "scenario": "Reject misleading fields",
+      "scenario_fingerprint": "063b50738ffabb935189c65236ef207b8f0edc9443d60c7ffdf41b88a6d67ce5",
+      "setup": "Load actual source-bound browser export; negative cases inject literal missing-value/overlap or displaced/false marker faults.",
+      "observable": "Exact values and geometry or exact source marker with no invalid accepted rows.",
+      "red_expectation": "Missing/overlapped values or a false geographic marker pass the auditor.",
+      "green_expectation": "Valid measured browser rows accepted; injected faults explicitly rejected.",
+      "invalidation_dependencies": [
+        "prototype/focus/**",
+        "tests/test_focus.py",
+        "tools/focus_audit.py",
+        "openspec/changes/enlarge-relay-fields/evidence/browser.json"
+      ],
+      "test_id": "unittest::tests.test_focus.FocusTest.test_layout_negative",
+      "command_id": "focus-tests",
+      "state": "implemented",
+      "source_path": "tests/test_focus.py",
+      "distinct_reason": "Reject misleading fields negative",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "6c60f476b791b77b9330d8932da013381cf95c42f0e97d17ad6c29b169d6cfea"
+    },
+    {
+      "id": "R2.P1.S1.POSITIVE",
+      "property_id": "R2.P1",
+      "polarity": "positive",
+      "scenario": "Inspect alternative maps",
+      "scenario_fingerprint": "3757c0efa90ed0a302371f15fb20f9bcdb3bcde6372923434960addd64c1a754",
+      "setup": "Load actual source-bound browser export; negative cases inject literal missing-value/overlap or displaced/false marker faults.",
+      "observable": "Exact values and geometry or exact source marker with no invalid accepted rows.",
+      "red_expectation": "Missing/overlapped values or a false geographic marker pass the auditor.",
+      "green_expectation": "Valid measured browser rows accepted; injected faults explicitly rejected.",
+      "invalidation_dependencies": [
+        "prototype/focus/**",
+        "tests/test_focus.py",
+        "tools/focus_audit.py",
+        "openspec/changes/enlarge-relay-fields/evidence/browser.json"
+      ],
+      "test_id": "unittest::tests.test_focus.FocusTest.test_geography_positive",
+      "command_id": "focus-tests",
+      "state": "implemented",
+      "source_path": "tests/test_focus.py",
+      "distinct_reason": "Inspect alternative maps positive",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "6c60f476b791b77b9330d8932da013381cf95c42f0e97d17ad6c29b169d6cfea"
+    },
+    {
+      "id": "R2.P1.S1.NEGATIVE",
+      "property_id": "R2.P1",
+      "polarity": "negative",
+      "scenario": "Inspect alternative maps",
+      "scenario_fingerprint": "3757c0efa90ed0a302371f15fb20f9bcdb3bcde6372923434960addd64c1a754",
+      "setup": "Load actual source-bound browser export; negative cases inject literal missing-value/overlap or displaced/false marker faults.",
+      "observable": "Exact values and geometry or exact source marker with no invalid accepted rows.",
+      "red_expectation": "Missing/overlapped values or a false geographic marker pass the auditor.",
+      "green_expectation": "Valid measured browser rows accepted; injected faults explicitly rejected.",
+      "invalidation_dependencies": [
+        "prototype/focus/**",
+        "tests/test_focus.py",
+        "tools/focus_audit.py",
+        "openspec/changes/enlarge-relay-fields/evidence/browser.json"
+      ],
+      "test_id": "unittest::tests.test_focus.FocusTest.test_geography_negative",
+      "command_id": "focus-tests",
+      "state": "implemented",
+      "source_path": "tests/test_focus.py",
+      "distinct_reason": "Inspect alternative maps negative",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "6c60f476b791b77b9330d8932da013381cf95c42f0e97d17ad6c29b169d6cfea"
+    },
+    {
+      "id": "R2.P1.S2.POSITIVE",
+      "property_id": "R2.P1",
+      "polarity": "positive",
+      "scenario": "Reject a false geographic success",
+      "scenario_fingerprint": "6a85aff9969a7c10f6f7a775c9b3acecb368c30c4e0beb162861e0a7779b09ec",
+      "setup": "Load actual source-bound browser export; negative cases inject literal missing-value/overlap or displaced/false marker faults.",
+      "observable": "Exact values and geometry or exact source marker with no invalid accepted rows.",
+      "red_expectation": "Missing/overlapped values or a false geographic marker pass the auditor.",
+      "green_expectation": "Valid measured browser rows accepted; injected faults explicitly rejected.",
+      "invalidation_dependencies": [
+        "prototype/focus/**",
+        "tests/test_focus.py",
+        "tools/focus_audit.py",
+        "openspec/changes/enlarge-relay-fields/evidence/browser.json"
+      ],
+      "test_id": "unittest::tests.test_focus.FocusTest.test_geography_positive",
+      "command_id": "focus-tests",
+      "state": "implemented",
+      "source_path": "tests/test_focus.py",
+      "distinct_reason": "Reject a false geographic success positive",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "6c60f476b791b77b9330d8932da013381cf95c42f0e97d17ad6c29b169d6cfea"
+    },
+    {
+      "id": "R2.P1.S2.NEGATIVE",
+      "property_id": "R2.P1",
+      "polarity": "negative",
+      "scenario": "Reject a false geographic success",
+      "scenario_fingerprint": "6a85aff9969a7c10f6f7a775c9b3acecb368c30c4e0beb162861e0a7779b09ec",
+      "setup": "Load actual source-bound browser export; negative cases inject literal missing-value/overlap or displaced/false marker faults.",
+      "observable": "Exact values and geometry or exact source marker with no invalid accepted rows.",
+      "red_expectation": "Missing/overlapped values or a false geographic marker pass the auditor.",
+      "green_expectation": "Valid measured browser rows accepted; injected faults explicitly rejected.",
+      "invalidation_dependencies": [
+        "prototype/focus/**",
+        "tests/test_focus.py",
+        "tools/focus_audit.py",
+        "openspec/changes/enlarge-relay-fields/evidence/browser.json"
+      ],
+      "test_id": "unittest::tests.test_focus.FocusTest.test_geography_negative",
+      "command_id": "focus-tests",
+      "state": "implemented",
+      "source_path": "tests/test_focus.py",
+      "distinct_reason": "Reject a false geographic success negative",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "6c60f476b791b77b9330d8932da013381cf95c42f0e97d17ad6c29b169d6cfea"
+    }
+  ],
+  "commands": [
+    {
+      "id": "focus-tests",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_focus"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 120,
+      "authority": "local"
+    }
+  ]
+}
