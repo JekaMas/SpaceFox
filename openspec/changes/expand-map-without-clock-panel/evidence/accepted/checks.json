@@ -1,0 +1,27 @@
+{
+  "scope": "Owner selection and one actual main-entry browser smoke observation; no new research run, native/human or energy qualification.",
+  "selectedVariant": "full",
+  "nativeSpecStrict": "passed",
+  "currentJsSyntax": "passed",
+  "browserSmoke": "passed",
+  "entrySHA256": {
+    "prototype/current/current.js": "444d6f49d6f74572a1d58773a7faac630bec60b9365d17a6aac55c723526ca4b",
+    "prototype/current/index.html": "d531acc064fea1c2d6b27b79ad290b73f2794f06967b4ea7087b5212c58d02f4",
+    "prototype/current/selection.json": "8d50a516d460b82cadb94fd3a82f513555ee3a258952ba06ef92b4ec6e0fd21e",
+    "prototype/current/style.css": "0ab41612482dfec85dd2124cc1d744d71c181d08c7b61127d45ccb0c247bfe1b"
+  },
+  "observationSHA256": "535ae17b1d12270208768eb24f467246dbac71f1e184baa8768f561053f8a01c",
+  "imagesSHA256": {
+    "context.png": "42b432003bff453ef0217937e32602c7a7badf0aa504d1b814ac13595965a19e",
+    "face.png": "0143c89c527007ac2c1ec07d697f8b19ffbf7f578d67ae0f3e5c7a15ae0e8387"
+  },
+  "retainedResearch": {
+    "file": "openspec/changes/expand-map-without-clock-panel/evidence/browser.json",
+    "sha256": "9d3b8fa9de46ca5cfe0e2886991ed8eea195ebe53c667892de327acdd10edf83",
+    "states": 84,
+    "currentGreens": 6,
+    "sourceBindings": 42,
+    "rerun": false,
+    "reason": "New selected entry is outside the research owner. Original renderer/variants/dependencies and audited observations are unchanged."
+  }
+}

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SpaceFox · выбранный циферблат</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>SpaceFox · выбранный циферблат</h1>
+  <p class="note">Полноэкранная карта с направленным затуханием и тонким контуром текста.</p>
+  <div class="toolbar">
+    <select id="scene" aria-label="Демонстрационные данные"></select>
+    <select id="origin" aria-label="Значение флага">
+      <option value="rocket">Происхождение ракеты</option>
+      <option value="operator">Страна оператора</option>
+    </select>
+  </div>
+  <div id="slots" class="slot-options"></div>
+  <p id="status" role="status">Загрузка…</p>
+  <section id="gallery" aria-label="Выбранный циферблат"></section>
+  <p class="note">Условное расписание и фитнес-данные. Нет значения — поле показывает «—».</p>
+  <p class="note"><a href="../wide-map/index.html">Сравнить шесть вариантов</a> · <a href="../../docs/WIDE_MAP.md">Выбор и результаты проверки</a></p>
+</main>
+<script src="../vendor/d3-7.9.0.min.js"></script>
+<script src="../vendor/topojson-client-3.1.0.min.js"></script>
+<script src="../layout-data.js"></script>
+<script src="../qualification/core.js"></script>
+<script src="../qualification/renderer.js"></script>
+<script src="../features/data.js"></script>
+<script src="../features/text-bounds.js"></script>
+<script src="../features/core.js"></script>
+<script src="../features/renderer.js"></script>
+<script src="../marker/data.js"></script>
+<script src="../marker/core.js"></script>
+<script src="../marker/renderer.js"></script>
+<script src="../relay/renderer.js"></script>
+<script src="../relay/header-renderer.js"></script>
+<script src="../focus/renderer.js"></script>
+<script src="../countdown-status/countdown-status.js"></script>
+<script src="../rocket-models/core.js"></script>
+<script src="../rocket-models/renderer.js"></script>
+<script src="../wide-map/renderer.js"></script>
+<script src="current.js"></script>
+</body>
+</html>

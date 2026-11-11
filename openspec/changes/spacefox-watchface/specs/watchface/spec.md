@@ -86,6 +86,19 @@ false geographic point.
 - **WHEN** the site has no valid coordinates
 - **THEN** its available text remains visible and the geographic point is omitted rather than placed at a fabricated location
 
+### Requirement: Accepted full-screen map composition
+
+The default composition SHALL use a 390 × 390 full-screen flat-map window with
+directed gradual fading, transparent text backgrounds and dark glyph contours.
+The source-derived site marker SHALL remain unfaded. Preserve the accepted
+rocket/company header, mission purpose, primary time, adjacent countdown, four
+large configurable fields and separate watch battery. Globe SHALL remain an
+available setting; the default map choice SHALL not remove that capability.
+
+#### Scenario: Open the default face
+- **WHEN** the face is opened without a different geography setting
+- **THEN** the full-screen flat map is used without a black clock tile, the source point stays visible, and all accepted foreground values remain readable inside the circle
+
 ### Requirement: Compact exceptional-state indicators
 
 The home face SHALL omit a persistent update timestamp and service-status badges.

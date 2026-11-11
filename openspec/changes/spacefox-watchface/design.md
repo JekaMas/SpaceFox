@@ -81,12 +81,16 @@ checked against all14 scenes; native memory/AOD/device recognition remain open.
 
 ### Wider geography without text-sized map holes
 
-The later [panel-free wide-map comparison](../../../prototype/wide-map/index.html)
-removes text-sized map cutouts and uses dark glyph contours over broad geometric
-fades. It compares195/260/390px widths and heights up to390px while retaining
-the124px rocket,32px field values and actual unfaded source pin. The site label
-moves2px up to reserve its contour. These are browser proposals, not an owner
-selection or a native draw/memory/power qualification. See
+On2026-11-11 the owner accepted variant04 (`full`) from the
+[panel-free comparison](../../../prototype/wide-map/index.html): a390×390 flat-map
+window with directed gradual fading, no text-sized map cutouts, dark glyph
+contours and an unfaded actual source pin. Keep the124px rocket,32px field values
+and accepted header/countdown grouping. The site label moves2px up to reserve
+its contour. The [main preview](../../../prototype/current/index.html) reads its
+accepted selection from `prototype/current/selection.json` and resolves the
+unchanged `full` variant from the research registry. Other windows remain
+research alternatives; globe remains an available planned setting. This is the
+accepted visual baseline, not native draw/memory/power qualification. See
 [84-state evidence, tradeoffs and limits](../../../docs/WIDE_MAP.md).
 
 ### Use a personal static feed, not an always-running backend
