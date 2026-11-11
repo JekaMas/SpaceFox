@@ -1,0 +1,64 @@
+{
+  "scope": "Final specification self-review only; no native, service, independent-review or Store acceptance",
+  "baseAuthoringRevision": "9894c923b38e575feab472dee112de1a02d59dea",
+  "canonicalSpecCounts": {
+    "launch-schedule": {
+      "requirements": 15,
+      "scenarios": 29
+    },
+    "release-lifecycle": {
+      "requirements": 8,
+      "scenarios": 11
+    },
+    "visual-catalog": {
+      "requirements": 18,
+      "scenarios": 36
+    },
+    "watchface": {
+      "requirements": 12,
+      "scenarios": 23
+    }
+  },
+  "totalRequirements": 53,
+  "totalScenarios": 99,
+  "strictStructuralGate": {
+    "status": "passed",
+    "localReceipt": "openspec/changes/spacefox-watchface/evidence/final-review-completion-structure/openspec-wa563vdg/result.json",
+    "privateWorkflowGuidance": "Not distributed; public configuration receives its own ordinary strict OpenSpec check"
+  },
+  "specAndGuideSHA256": {
+    "docs/AGENT_SETUP.md": "2350d18312f84db01c5f694a3f5ee0bd4ffbfff25c36c35c3c7589bbb7be7e2e",
+    "docs/RELEASE_AND_UPDATES.md": "f57aba76d3e5ffc0ab24d943145114ee4b548a33318039b6b17a2f5970da9d21",
+    "openspec/changes/spacefox-watchface/design.md": "2444a4d0934d33ca5ff2187cc752eb6fb98db4a022740e7aa5c924f823cc01ff",
+    "openspec/changes/spacefox-watchface/proposal.md": "264d4dc2c7809e6f052dfbbef048e0f2627c2149a55ef09987a11a78d4e56efd",
+    "openspec/changes/spacefox-watchface/specs/launch-schedule/spec.md": "fc0fea9c4a5d0cf107e93c545514b8e7582b9ff7e0de9d1a1c915cb82e5f296e",
+    "openspec/changes/spacefox-watchface/specs/release-lifecycle/spec.md": "97aa555cc38afe71ff02347bb984716a5273af2c58ba1d80eb3f9649320b021c",
+    "openspec/changes/spacefox-watchface/specs/visual-catalog/spec.md": "25449b7a3efa262e4c8851b5e73ed64cfbed3f6f58b727f7b7fed7436b29ef94",
+    "openspec/changes/spacefox-watchface/specs/watchface/spec.md": "6fb453da528649dbb0b02e795a1c2e02d7203f7c97aa056add49aa4ef21b9fec"
+  },
+  "frozenArchiveSHA256": "a94bdeb202861d2759db348d2b9ded75a15ca9e4acd86f466a4adc6e02669263",
+  "browserBindings": {
+    "count": 42,
+    "status": "all source hashes unchanged",
+    "originalReceipt": "openspec/changes/expand-map-without-clock-panel/evidence/browser.json"
+  },
+  "retainedCases": {
+    "R1.P1.NEGATIVE": "passed",
+    "R1.P1.POSITIVE": "passed",
+    "R2.P1.NEGATIVE": "passed",
+    "R2.P1.POSITIVE": "passed",
+    "R3.P1.NEGATIVE": "passed",
+    "R3.P1.POSITIVE": "passed"
+  },
+  "retainedCaseBoundary": "Original clean behavior source8897b4f5952f779fe4b52688ff50053c1d4dcfac. Query only; no rerun, no refreshed old hashes. Current prototype/assets/tools/tests unchanged against base.",
+  "trackedNativeUpdaterWorkflowFiles": [],
+  "supersedes": "Older global/efficient-storage structural spec receipts are historical after this spec revision. Their inventory/desktop-format facts and immutable receipts remain unchanged.",
+  "remaining": "Eligibility, real FR165 API/metrics/parser/geometry/cache/AOD/battery/locales/global artwork, publisher and actual Store release remain open.",
+  "mechanicalDocumentChecks": {
+    "localLinks": 80,
+    "missingLocalLinks": 0,
+    "requirementBodyLimit": "all<=500 normalized characters",
+    "uniqueRequirementNames": "passed per capability",
+    "gitDiffWhitespace": "passed"
+  }
+}

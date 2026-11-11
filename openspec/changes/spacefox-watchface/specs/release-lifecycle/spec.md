@@ -1,0 +1,114 @@
+## Purpose
+
+Make native development, personal installation, free Store distribution and
+separate code/asset/data updates reproducible without overstating readiness.
+
+## ADDED Requirements
+
+### Requirement: Qualified target and reproducible build
+
+Native releases SHALL pin source, SDK, device profiles, dependencies and build
+settings. The manifest SHALL declare watchface type, a stable application UUID,
+only qualified products/languages and the minimum required API. FR165 baseline
+SHALL fit its checked API 5.2 support without API 6-only dependencies. SDK version
+SHALL NOT be treated as device runtime support.
+
+#### Scenario: A newer SDK offers an unavailable API
+- **WHEN** build tooling documents an API newer than the supported FR165 runtime
+- **THEN** the baseline uses a qualified supported path or records a blocker, and a successful desktop compile does not establish device compatibility
+
+### Requirement: Preserved signing identity
+
+Official releases SHALL use the same backed-up 4096-bit RSA developer signing key
+and application UUID for updates. The private key SHALL remain outside source,
+Pages and data workflows. Release provenance SHALL record source/toolchain,
+package digest, version, supported products/languages and test evidence without
+publishing credentials. A forked native product SHALL use its own identity/key.
+
+#### Scenario: Update the official app
+- **WHEN** a tested native fix is prepared
+- **THEN** the existing identity/key signs the next package, and loss of that key is reported as a release blocker rather than silently creating an unrelated replacement app
+
+### Requirement: Platform eligibility before native use
+
+Before SDK-based development for the intended user or distribution, the owner
+SHALL resolve current Garmin agreement/review eligibility, including the published
+under13 restriction. Unknown eligibility SHALL remain a blocker, not an assumed
+exception for private installation. Original MIT documentation MAY remain public;
+private age or account details SHALL NOT enter the feed or public evidence.
+
+#### Scenario: Intended-user eligibility is unresolved
+- **WHEN** the applicable age or other platform eligibility condition is not established
+- **THEN** specification/source review may continue but native use or Store readiness is not claimed and a private sideload is not offered as an exemption
+
+### Requirement: Personal installation before public release
+
+After eligibility and native checks, the personal pilot SHALL use a device-targeted
+Build for Device PRG and a verified GARMIN/APPS installation route. Real FR165
+time/settings, active/AOD, health, phone sync, reboot and two data/asset revisions
+SHALL be observed. Sideload success SHALL NOT establish Store approval or Store
+settings/update behavior.
+
+#### Scenario: Pilot works in the simulator only
+- **WHEN** no physical FR165 installation and phone/background observations exist
+- **THEN** native hardware acceptance remains incomplete despite successful compilation or simulation
+
+### Requirement: Free truthful Connect IQ publication
+
+The official app SHALL be free without paid fields or activation. Store submission
+SHALL export a tested IQ package for qualified products/languages, provide accurate
+screenshots, dependencies, setup, permissions, privacy, rights and support details,
+and pass Garmin review. Source publication SHALL NOT imply Store availability.
+The actual approved Store installation SHALL be qualified before release closure.
+
+#### Scenario: Package is uploaded but awaiting review
+- **WHEN** Garmin accepts an upload for review but has not approved public distribution
+- **THEN** the release remains pending and neither a GitHub tag nor uploader-only installation is described as public Store availability
+
+#### Scenario: Another family uses the official app
+- **WHEN** another owner installs the free official Store binary
+- **THEN** that owner can configure their own FeedBaseUrl and publisher fork without the author's signing key, SDK or hosted feed
+
+### Requirement: Separate executable and content updates
+
+Monkey C logic, permissions, bundled fonts and new renderer/schema capabilities
+SHALL update through a signed native release. Supported schedule, catalog, geometry
+and frame content SHALL update from static HTTPS files. Code version, wire schema,
+renderer schema, catalog revision, asset digest, publisher generation and per-record
+source validation SHALL remain distinct; content builds SHALL NOT renew source age.
+
+#### Scenario: Replace art without changing the renderer
+- **WHEN** new rocket art and corrected site coordinates fit the installed app's schemas
+- **THEN** the data publisher can distribute them without a Store update, while an unsupported drawing operation waits for a native update
+
+### Requirement: Compatibility and state migration
+
+Releases SHALL preserve field assignments, locale, projection and feed URL through
+versioned migrations. Unsupported feed/renderer versions SHALL retain accepted
+data and expose an actionable settings/update explanation. The publisher SHALL
+keep current and previous wire majors for at least 90 days after an announced major
+transition. A feed-host change SHALL isolate launch state by namespace.
+
+#### Scenario: Old app meets a newer feed
+- **WHEN** the app encounters an unsupported version or old cached state
+- **THEN** it uses a supported compatibility feed or last accepted data with honest age, preserves user choices and offers recovery without inventing a fresh schedule
+
+#### Scenario: Change the personal feed host
+- **WHEN** FeedBaseUrl changes to another instance
+- **THEN** launches/validation/reschedule state do not merge across instances; verified identical asset bytes may be reused by digest
+
+### Requirement: Recoverable releases and content rollback
+
+Code repair SHALL use a higher-version compatible signed release, without assuming
+Store downgrade support. Asset rollback SHALL publish a new monotonic generation
+pinning a prior compatible set. Schedule correction SHALL retain source provenance
+and SHALL NOT fake newer validation or regress accepted source state. Each release
+SHALL retain reconstructible source and manifest evidence.
+
+#### Scenario: A newly deployed asset is defective
+- **WHEN** a reviewed prior compatible visual is restored
+- **THEN** a new publication generation selects that set, launch-source age remains unchanged and installed code/settings do not need a forced reset
+
+#### Scenario: A signed app release is defective
+- **WHEN** the official binary requires repair
+- **THEN** a higher-version release with the existing identity/key is prepared and qualified; a Store downgrade or lossless sideload-to-Store migration is not assumed

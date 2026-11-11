@@ -84,7 +84,7 @@ regressing or malformed snapshots MUST NOT replace the last accepted cache.
 ### Requirement: Decoded feed size accounting
 
 The 8192-byte ceiling SHALL apply to decoded UTF-8, including dictionaries and
-metadata, before object parsing. Compression SHALL NOT enlarge that allowance.
+metadata. The publisher SHALL enforce it before publication. Compression SHALL NOT enlarge that allowance.
 Compact serialization SHALL preserve required identities, timestamps/precision,
 explicit absence and source freshness. Runtime containers and persisted size
 SHALL be qualified separately from JSON bytes.
@@ -198,3 +198,50 @@ Another user's setup MUST NOT require the author's credentials or hosted feed.
 #### Scenario: Another family configures a copy
 - **WHEN** an agent follows the guide with that owner's repository and permissions
 - **THEN** it produces the owner's feed URL and documented observations, or reports the exact unavailable prerequisite without claiming a completed deployment
+
+### Requirement: Durable publisher state and request budget
+
+The publisher SHALL keep versioned active/pending snapshots, source-validation
+times, reschedule state, monotonic generation and request reservations/backoff in
+a dedicated durable feed-state Git branch. Pages/CDN, Actions cache and expiring
+artifacts SHALL NOT be sole recovery authorities. Requests SHALL reserve quota
+durably before calling the provider; uncertain consumed reservations SHALL remain
+counted after a crash.
+
+#### Scenario: Runner disappears after a provider call
+- **WHEN** a runner terminates after reserving quota but before recording the result
+- **THEN** the next run retains that reservation, source age and accepted flags, applies backoff and does not restart with a fresh request allowance
+
+#### Scenario: Prior state cannot be recovered
+- **WHEN** the instance was bootstrapped but its authoritative state is unavailable or invalid
+- **THEN** publication stops with the current deployment intact rather than reconstructing accepted state from an old CDN file or guessing
+
+### Requirement: Monotonic recoverable publication
+
+All schedule/catalog/manual deployments SHALL share serialization and use an
+expected-base state check. A validated pending generation SHALL persist before
+deployment; promotion SHALL require exact revision readback. Recovery SHALL
+reconcile interrupted publication before a new one. Older queued code/state SHALL
+NOT overwrite newer accepted generations, and deployment SHALL include the complete
+referenced current/retained compatible files.
+
+#### Scenario: Crash between deployment and promotion
+- **WHEN** Pages has received a pending generation but its active-state promotion was interrupted
+- **THEN** recovery compares durable pending/active and live revisions, completes or safely retries that same candidate, and cannot roll the site back through an older queued run
+
+#### Scenario: Fresh schedule artifact omits an unchanged image
+- **WHEN** a new Pages artifact would lack a referenced current or retained asset
+- **THEN** packaging fails before deployment rather than assuming a previous site's file will remain available
+
+### Requirement: Native response bounds
+
+The selected FR165 transport SHALL qualify oversized, deeply nested, malformed
+and excessive-cardinality responses against actual platform parse/memory limits.
+If Garmin parses JSON before the app callback, a callback check SHALL NOT be
+claimed as a pre-parse size guard. Platform failures and rejected candidates
+SHALL retain durable accepted data; transfer and parsed-object peaks SHALL be
+measured separately.
+
+#### Scenario: Response exceeds native parser capacity
+- **WHEN** an untrusted or corrupt host returns a response beyond the qualified size or shape
+- **THEN** the error path preserves accepted storage, subsequent startup remains usable and no callback-only check is reported as preventing an earlier allocation

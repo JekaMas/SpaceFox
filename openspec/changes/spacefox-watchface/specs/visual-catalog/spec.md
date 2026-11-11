@@ -242,6 +242,10 @@ with assets from an unaccepted version.
 - **WHEN** a new revision is incomplete or fails an integrity check
 - **THEN** the last working revision remains active across restart and the incomplete revision is not reported as successfully installed
 
+#### Scenario: New launch arrives before optional artwork
+- **WHEN** valid new schedule metadata arrives while its optional model/map assets are still downloading
+- **THEN** time/status/identity activate with a compatible generic or no-point fallback, never a previous model's image relabeled as the new rocket, and optional artwork cannot indefinitely block schedule freshness
+
 ### Requirement: Redistributable asset provenance
 
 Every distributed image/frame asset SHALL record creator, source, license and
@@ -265,3 +269,32 @@ original letter badges MAY substitute.
 #### Scenario: Origin differs from launch country
 - **WHEN** a rocket launches abroad or the user switches model-origin to operator-origin
 - **THEN** the body flag follows only the selected curated origin, the company mark follows only the supplied operator, the launch-site map stays unchanged, and absent selected provenance does not become a guessed national flag
+
+### Requirement: Bounded selection manifest
+
+The watch SHALL obtain a bounded selection manifest with only the required
+model, mark, site and map dependencies and measured per-shard limits. The global
+publisher manifest SHALL NOT become a mandatory watch download. Each reference
+SHALL pin renderer/schema version, digest, bounds and projection metadata.
+Unrelated global growth SHALL NOT enlarge the selected manifest.
+
+#### Scenario: Global manifest has thousands of assets
+- **WHEN** the publisher adds assets unrelated to the watch's selected launches
+- **THEN** the watch fetches only its bounded selection manifest and required immutable shards, without parsing or storing the full global manifest
+
+### Requirement: Qualified declarative visual transport
+
+FR165 qualification SHALL start with bounded JSON geometry/palette primitives
+and animation transforms supported by the existing renderer. Remote executable
+code SHALL NOT be accepted. New artwork within the supported schema SHALL be
+data-only. Bitmap/frame transport MAY replace this path only after target
+background transfer, persistence, reboot, integrity and memory proof; API 6-only
+binary responses SHALL NOT be a baseline dependency.
+
+#### Scenario: Maintainer adds a rocket in the supported drawing schema
+- **WHEN** validated artwork uses only supported bounded primitives and transforms
+- **THEN** its geometry, marks and optional animation can update from static files without an app or layout change
+
+#### Scenario: Artwork requires a new renderer operation
+- **WHEN** a visual requires unknown drawing operations or a different projection convention
+- **THEN** the old app retains a compatible visual and the new capability requires a versioned native release rather than downloaded executable code

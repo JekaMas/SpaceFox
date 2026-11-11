@@ -19,18 +19,17 @@ readability of time, countdown and selected fitness values.
 - **WHEN** the watch's local time zone changes
 - **THEN** current time follows the watch while the UTC-based launch countdown retains the same duration
 
-### Requirement: Compact launch-information band
+### Requirement: Coherent launch metadata
 
-The launch scene SHALL integrate Earth, the rocket visual and launch metadata in
-a coherent composition. Rocket name, company and mission context MAY use stacked,
-paired or distributed labels; their association SHALL remain clear. Missing context
-SHALL remain explicit. The country/site label SHALL
-use at least 16 display pixels at 390 × 390 without reducing primary time or
-placing text outside the circle.
+The active scene SHALL pair rocket and operator above time, with mission purpose
+on the following line, as in the accepted 04/full layout. Long values MAY wrap or
+use bounded short labels. Association and missing context SHALL remain clear.
+The country/site label SHALL use at least 16 display pixels at 390×390 without
+reducing primary time or placing text outside the circle.
 
-#### Scenario: Use the launch band's space
+#### Scenario: Use the accepted header
 - **WHEN** a launch supplies its rocket name, launch company and mission purpose
-- **THEN** rocket name, company and mission purpose use the selected coherent layout's readable hierarchy, retaining full supplied values without an unneeded duplicate title
+- **THEN** rocket and company read together above time, mission purpose occupies the following line, and full supplied values remain retained without an unneeded duplicate title
 
 #### Scenario: Long or absent context
 - **WHEN** a rocket/company/mission name is long or some context is unavailable
@@ -92,7 +91,7 @@ false geographic point.
 
 ### Requirement: Accepted full-screen map composition
 
-The default composition SHALL use a 390 × 390 full-screen flat-map window with
+The default active composition SHALL use a 390×390 full-screen flat-map window with
 directed gradual fading, transparent text backgrounds and dark glyph contours.
 The source-derived site marker SHALL remain unfaded. Preserve the accepted
 rocket/company header, mission purpose, primary time, adjacent countdown, four
@@ -100,12 +99,12 @@ large configurable fields and separate watch battery. Globe SHALL remain an
 available setting; the default map choice SHALL not remove that capability.
 
 #### Scenario: Open the default face
-- **WHEN** the face is opened without a different geography setting
+- **WHEN** the face is active without a different geography setting
 - **THEN** the full-screen flat map is used without a black clock tile, the source point stays visible, and all accepted foreground values remain readable inside the circle
 
 ### Requirement: Compact exceptional-state indicators
 
-The home face SHALL omit a persistent update timestamp and service-status badges.
+The active home face SHALL omit a persistent update timestamp and service-status badges.
 A reschedule SHALL use an amber countdown; otherwise it SHALL use mint. Unknown
 new time SHALL replace the precise countdown with an uncertainty label. Stale data
 SHALL add a dotted countdown underline, independently of rescheduling. No
@@ -132,7 +131,48 @@ occurred merely because an animation played or the countdown reached zero.
 
 #### Scenario: Animation disabled or display sleeps
 - **WHEN** animation is disabled or the face enters sleep/low-power mode
-- **THEN** animated rendering stops and a static rocket visual remains available
+- **THEN** animated rendering stops; the active static face retains its rocket and the low-power face uses its qualified sparse layout
+
+### Requirement: Qualified AMOLED always-on display
+
+The face SHALL use a separate sparse AOD scene with thin time and a compact
+countdown or uncertainty state, updated at most once per minute. It SHALL meet
+the target's lit-pixel and burn-in rules, omit the full-screen map, seconds and
+animation, and stop active timers on sleep. Returning active SHALL restore the
+accepted composition and recompute time from the clock. Independent reschedule
+and stale meaning SHALL remain distinguishable in the qualified sparse scene.
+
+#### Scenario: Enter always-on mode
+- **WHEN** FR165 enters low-power always-on mode
+- **THEN** the sparse scene stays within the applicable 10-percent lit-pixel limit and device burn-in rules, timers stop and no full-screen map or launch animation remains lit
+
+#### Scenario: Wrist gestures disabled
+- **WHEN** the user disables wrist wake and keeps AOD enabled
+- **THEN** sparse time and honest launch timing remain readable without requiring animation or an active-screen gesture
+
+### Requirement: Background-only schedule communication
+
+The watch-face service SHALL fetch and stage bounded feed/assets in permitted
+background events, without foreground communication or raw sensor activation.
+Work SHALL respect the platform deadline and smaller background memory pool.
+The foreground SHALL receive only a small revision notification and load an
+accepted cache; termination SHALL preserve the last working state.
+
+#### Scenario: Background process is interrupted
+- **WHEN** connectivity or the background deadline interrupts a multi-part update
+- **THEN** the accepted cache survives, incomplete work resumes only at a permitted event and the face receives no partial replacement or oversized background-exit payload
+
+### Requirement: Native Garmin metric access
+
+Fields SHALL use available Garmin APIs and only necessary declared permissions.
+Steps/calories, watch charge and recent heart-rate/Body Battery/stress samples
+SHALL retain distinct sources. Feature checks SHALL handle unsupported APIs,
+denied permissions and absent samples. Reading a field SHALL NOT enable raw
+sensor streaming, parse entire histories or upload personal data.
+
+#### Scenario: A selected history metric is unavailable
+- **WHEN** firmware, permissions or recent samples do not support the chosen metric
+- **THEN** the field shows an unavailable marker while other fields, time and cached launch data continue working
 
 ### Requirement: Qualified native localization
 

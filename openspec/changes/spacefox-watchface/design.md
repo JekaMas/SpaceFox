@@ -2,96 +2,105 @@
 
 ## Context
 
-See [proposal.md](proposal.md) for intent and [baseline audit](evidence/baseline-audit.md)
-for current coverage and [layout review v4](evidence/layout-review-v4.md) for the
-subsequent compact-band revision. The initial browser mockup in
-`prototype/mission.html` is retained as a baseline. The selected visual basis is
-now [Mission in Focus with clearer geography](../../../prototype/relay/index.html),
-followed by the [larger-fields/current status preview](../../../prototype/countdown-status/index.html).
-Schedule, health values and model graphics remain illustrative. No Monkey C owner,
-live service or downloadable asset pipeline exists.
+See [proposal.md](proposal.md) for intent and [final lifecycle review](evidence/final-review/review.md)
+for the checked platform constraints and resolved contradictions. The accepted
+active composition is [prototype/current](../../../prototype/current/index.html),
+selection04/full in `prototype/current/selection.json`. Browser schedule, health
+and model examples remain illustrative. There is no native build, updater,
+Actions workflow or implemented downloadable visual pipeline yet.
 
-The first device is Forerunner 165, 390 × 390 round AMOLED. The owner selected
-GitHub Actions plus static files for one family's watch. Countdown calculation is
-fully local. Data polling defaults to hourly, increasing to fifteen minutes only
-near a known launch; a five-minute mode remains configurable. Longer polling adds
-change-detection delay, plus deployment/CDN/queue/connectivity delays.
+The first target is Forerunner165,390×390 round AMOLED. Garmin's checked device
+matrix lists API 5.2, independently of the newest desktop SDK. FR165 Music and
+other products need their own qualification; neither Wi-Fi nor an API 6 binary
+response is a baseline dependency. Source links and observation dates are in
+[the source ledger](evidence/final-review/sources.md).
 
 ## Goals / Non-Goals
 
-**Goals:** keep the native display lightweight and keep launch data, site points
-and visual assets independently maintainable. The three specifications own the
-behavioral contract; this document identifies the intended owners and checks.
+**Goals:** keep native time/fitness useful offline, make global launch content
+maintainable, and establish a reproducible personal installation and free public
+release. Four capability specs own the contract: watchface, launch-schedule,
+visual-catalog and release-lifecycle. This document identifies owners and choices.
 
-**Non-Goals:** continuous on-watch 3D rendering, flight telemetry/trajectory claims,
-a custom mobile app, a multi-user service, AWS/cloud-account provisioning,
-per-refresh LLM reasoning, and enabling a live deployment during this spec increment.
+**Non-Goals:** flight telemetry, continuous3D, a custom mobile app, shared hosted
+accounts, AWS, recurring LLM calls or enabling native/Pages/Store deployment in
+this specification increment.
 
 ## Decisions
 
-### Use Mission in Focus as the visual basis
+### Owner-accepted active composition and historical research
 
-On 2026-11-11 the owner selected the existing M2-31 “Mission in Focus” composition,
-derived from R4-05, with more visible geography. Preserve its large mint time,
-left rocket, four configurable fields, complete mission labels, bottom place and
-countdown, projection and true site anchor. The current default preview uses the
-moderate “clear” treatment; a brighter treatment is available for comparison.
+Use04/full:390×390 flat map, directed gradual fading, unfaded source-derived pin,
+transparent text backgrounds and thin dark glyph contours without a clock tile.
+Keep the124px left rocket, mint primary time, countdown immediately below time,
+four independently configurable32px values in2×2, larger country/site below the
+fields and separate small watch battery above. Rocket and operator read together
+above time (`Falcon9 · SpaceX`), mission purpose on the next line. Long values
+wrap or abbreviate without inventing missing context; full supplied values remain
+in the accepted data. Globe remains an available planned setting.
 
-Only map paint and the backing safety margin at the operator label change.
-The browser margin is one source pixel, derived from the actual label rectangle;
-native glyph bounds and AMOLED/AOD adaptation still require separate validation.
-This selection does not inherit the previous full marker/human/device claims.
-See [decision and bounded browser evidence](../../../docs/RELAY_REFINEMENT.md).
+Amber countdown means reschedule; a dotted underline independently means stale.
+There is no exclamation/cloud badge or permanent last-update row. Watch charge
+and Body Battery have distinct Garmin sources. The initial five model drawings,
+curated model/operator-origin flags and original company letter marks use the
+single `assets/rocket-pack/registry.source.json`. Origin is never inferred from
+the launch country. Official logos are not included under an invented MIT grant.
 
-The owner subsequently accepted rocket + company as the top pair, with mission
-purpose below (`Falcon 9 · SpaceX` / `Связь`). Long values stack without shrinking.
-The historical [header comparison](../../../prototype/relay/header.html) preserves
-its original geometry and [bounded evidence](../../../docs/RELAY_HEADER.md).
+Earlier white-time bands, side fragments, stacked metadata recommendations and
+unselected finalists are historical research, not competing native defaults:
+[baseline audit](evidence/baseline-audit.md), [band revision](evidence/layout-review-v4.md),
+[Mission refinement](../../../docs/RELAY_REFINEMENT.md),
+[header](../../../docs/RELAY_HEADER.md), [larger fields](../../../docs/FOCUS_LAYOUT.md),
+[rocket pack](../../../docs/ROCKET_MODELS.md), [accepted wide map](../../../docs/WIDE_MAP.md).
+The wide-map84-state browser evidence and prior independent research retain their
+original proof limits; owner selection establishes design intent, not native
+legibility, power, global artwork or36-language acceptance.
 
-The next [browser proposal](../../../prototype/countdown-status/index.html) preserves that
-accepted header and clock size, enlarges four independent values from 22.2 to 32px
-in a 2×2 grid, moves countdown directly below time, moves country/site below the
-fields and adds a small separate device battery at the top. The battery indicator
-does not consume a custom slot. It is distinct from Body Battery and may be
-unavailable. Assigning battery to a slot remains possible; the demo controls allow
-reassignment, with absent source values shown as `—`.
+### Separate AMOLED active and always-on scenes
 
-Three comparable map formats are available: side fragment with fade toward text,
-framed flat map, and partial orthographic globe. Default black and optional dark
-navy backgrounds are browser themes, not qualified AMOLED power modes. Soft
-cutouts darken map paint behind text without dimming the true site marker.
-The side fragment is the author's recommendation; the owner has accepted the
-header, not yet the complete new composition. Native glyph/AOD/device checks,
-all 36 locales and human glance readability remain open. See
-[96-state browser evidence and limits](../../../docs/FOCUS_LAYOUT.md).
+The accepted full-screen map belongs to active mode. AOD uses sparse thin time
+and compact countdown/uncertainty on black, with no large map, rocket animation
+or seconds. It must fit the applicable 10-percent lit-pixel ceiling and target
+burn-in rules. Use minute updates, restrained grayscale and qualified placement
+variation; a particular shift pattern is not proof of compliance. Do not apply
+MIP partial-update assumptions to FR165 AMOLED.
 
-### Larger model graphics and origin marks
+Implement `WatchUi.WatchFace`; stop active timers/animation in `onEnterSleep`,
+restore the accepted scene and recompute UTC countdown in `onExitSleep`. A user
+who disables wrist wake must still have usable sparse time/launch timing. Actual
+pixel counts, lifecycle behavior and battery comparison against a stated stock
+face baseline require simulator plus real FR165 evidence. AOD acceptance remains
+open; current browser renders do not simulate its power constraints.
 
-The subsequent [rocket-pack browser proposal](../../../prototype/rocket-models/index.html)
-prepares five original model drawings plus generic art, origin flags and original
-company letter badges. Its active authored registry is assets/rocket-pack/registry.source.json;
-old feature-research schematics remain historical. SVG, transparent PNG candidates
-and decorated previews are generated through the documented pack build, not an
-active remote catalog delivery pipeline. Body flag mode follows the owner's
-choice: model origin by default or separately recorded operator country, never
-launch country. Ariane uses a European regional origin; Electron's simplified NZ
-family association and US operator-country mode remain distinct. Official logos
-are not included under a claimed MIT grant. The larger browser proposal must be
-checked against all14 scenes; native memory/AOD/device recognition remain open.
+### Native target, background service and health sources
 
-### Wider geography without text-sized map holes
+Use the official SDK Manager, pinned SDK/device profiles and Monkey C tooling.
+Record exact versions, firmware, manifest product ID, dependency/build settings
+and minimum required API. The manifest is type `watchface`; use only products,
+languages and permissions actually qualified. No SDK installation is performed
+by this review. Native task2.1 establishes real owners/tests before code work.
 
-On2026-11-11 the owner accepted variant04 (`full`) from the
-[panel-free comparison](../../../prototype/wide-map/index.html): a390×390 flat-map
-window with directed gradual fading, no text-sized map cutouts, dark glyph
-contours and an unfaded actual source pin. Keep the124px rocket,32px field values
-and accepted header/countdown grouping. The site label moves2px up to reserve
-its contour. The [main preview](../../../prototype/current/index.html) reads its
-accepted selection from `prototype/current/selection.json` and resolves the
-unchanged `full` variant from the research registry. Other windows remain
-research alternatives; globe remains an available planned setting. This is the
-accepted visual baseline, not native draw/memory/power qualification. See
-[84-state evidence, tradeoffs and limits](../../../docs/WIDE_MAP.md).
+The foreground draws cached state. The permitted background service fetches,
+validates and stages bounded data; it may be terminated and has a30-second
+platform deadline. Split/resume optional asset work across permitted events;
+never rely on foreground networking, an always-running process or sub-five-minute
+temporal events. Persist coherent accepted state before notifying the foreground
+with a small revision token. Do not pass the8KiB feed through `Background.exit`:
+its approximately8KiB serialized-data ceiling is a separate constraint. The cache
+writer/migration protocol must be qualified, not assumed transactional.
+
+Planned field sources are ActivityMonitor steps/calories, System watch charge and
+recent SensorHistory samples for heart rate/Body Battery/stress. Check exact API
+availability and needed permissions on target; take only a bounded latest sample,
+not an entire history or raw sensor stream. Unavailable data shows `—`. No health,
+user location, child identity or field history is uploaded to the feed. The map
+uses launch-site coordinates and needs no watch GPS permission.
+
+Garmin's App Types table allows SensorHistory for watch faces, while its manifest
+permission table leaves that cell blank. Treat this documentation inconsistency
+as an explicit target qualification case, not proof that every metric works or
+grounds to silently remove configurable options. Store claims follow actual
+firmware/API observations.
 
 ### Use a personal static feed, not an always-running backend
 
@@ -111,11 +120,14 @@ flowchart LR
 ```
 
 The watch's `FeedBaseUrl` setting selects its instance. Default operation needs
-only the existing GitHub and Garmin accounts: no provider key, AWS, domain,
+only the owner's GitHub and Garmin accounts, subject to platform eligibility: no provider key, AWS, domain,
 SpaceFox login, public inbound server or custom mobile app. The static URL is
 public; it contains launch/catalog data, never the child's health or identity.
-Other families use their own fork/feed URL; no shared author-operated service is
-required. Do not make their watch silently depend on JekaMas's feed.
+Other families install the official free binary and fork only the data publisher,
+then set their own feed URL; they do not need the author's key or SDK. A native
+code fork uses its own application UUID/key/listing. No shared author service is
+required. The initial FeedBaseUrl is blank with explicit setup; time/fields and
+bundled generic geography/rocket remain usable before the first sync. Do not make their watch silently depend on JekaMas's feed.
 
 Direct per-watch provider polling is not the default: the provider recommends
 shared caching and its normal response is unsuitable to assume fits a background
@@ -185,9 +197,10 @@ The planned static interface is:
 
 | Path relative to `FeedBaseUrl` | Contract |
 | --- | --- |
-| `data/v1/schedule.json` | Schema version, launch-content revision, provider-validation/build UTC times, refresh/freshness policy, bounded launch records and pinned catalog references |
-| `catalog/v1/<revision>/manifest.json` | Immutable site/model metadata, source/rights and exact asset digests/bounds |
-| `assets/rockets/<model-id>/<revision>/...` | Prepared native-compatible stills and optional short frame packs |
+| `data/v1/schedule.json` | Bounded snapshot, publisher generation, content/catalog versions, per-record source-validation UTC, build UTC and refresh/freshness policy |
+| `catalog/v1/<revision>/manifest.json` | Full publisher inventory; never a required watch download |
+| `catalog/v1/<revision>/slices/<slice-id>.json` | Bounded watch dependency manifest pinned by schedule; exact asset digests, schema, size, bounds and projection metadata |
+| `assets/<kind>/<content-digest>.json` | Immutable compatible geometry/palette/transforms or separately qualified native visual format |
 
 The schedule contains a small set of upcoming launches and retained relevant
 tracked identities, not the full API response or image data. Required fields cover
@@ -203,7 +216,10 @@ require reducing the supported bound. Reject oversize/unsupported/malformed or
 regressing data without truncating IDs/coordinates or evicting the last good cache.
 Native budget qualification in task 2.2 remains mandatory.
 
-This ceiling is decoded UTF-8 before object parsing, not compressed transfer size.
+This ceiling is decoded UTF-8, not compressed transfer size. The publisher enforces
+it before publication. Native JSON may be parsed by Garmin before the callback;
+a callback size check is not a pre-parse allocation guard. Task2.2 must qualify
+actual response/parser limits, excessive shape and error/restart behavior.
 Version/lookup-table metadata counts toward it. Runtime containers, decode buffers,
 serialized storage and graphics have separate measured budgets; none follows
 automatically from the JSON byte count.
@@ -221,25 +237,51 @@ and persisted/backed-off budget handling; do not evade limits by changing runner
 or credentials. A first failure is not permission for a rapid retry loop.
 
 Use scheduled runs away from the top of the hour and an explicit manual dispatch.
-After a successful provider validation, publish a new freshness timestamp even if
-launch content is unchanged. Validate the whole artifact, including referenced
-licensed assets, before deploying. A provider/validation failure keeps the current
-site and source timestamps; a catalog-only deployment may reuse that old schedule
-without claiming new provider success. Persist/recover previous accepted state
-independently of the ephemeral Actions workspace: the accepted public snapshot
-also carries the bounded retained launch state and is read/validated at startup.
-Actions cache may accelerate this, but is not the sole source of truth. Only a
-first explicit bootstrap can start without prior state; if required accepted state
-cannot be recovered, leave the current site intact and report the failure.
-Missing retained state cannot be reconstructed by guessing.
+After a successful validation, publish new per-record freshness even when content
+is unchanged. Source/validation failure keeps accepted facts and ages; catalog-only
+builds do not validate launches. All scheduled/manual/catalog jobs use the same
+concurrency group with cancellation disabled. Concurrency is not a logical-order
+proof: a late queued run must check current source/state before doing any work.
 
-Use the custom Pages Actions artifact/deploy path, rather than a commit-triggered
-Pages build on each tick. This avoids frequent heartbeat commits and accommodates
-the optional faster mode without the normal ten-build/hour soft limit. Serialize deployments so an
-older queued run cannot overwrite a newer publication. Keep immutable file
-references and watch-side validation: CDN visibility is not a cross-request atomic
-transaction. Retain compatible prior assets within a documented bounded retention
-policy; missing/corrupt versions retain the last working watch catalog.
+The durable authority is a dedicated `feed-state` Git branch, not public Pages,
+Actions cache or an expiring artifact. It carries compact active/pending normalized
+snapshots, per-record validation/flags, monotonic generation, source/catalog/tool
+revisions, due time and quota reservations/backoff. Initial current-ledger budget
+is 64KiB, independent of the8KiB watch feed. Monitor Git history growth separately;
+current-file size does not bound history. Do not force-prune history automatically.
+No health, secrets or growing raw provider archive belongs in this branch.
+
+Persist a quota reservation with an expected-base/CAS branch update before each
+provider request, including pagination, retries and manual work. A lost runner's
+reservation remains consumed. If required state is unavailable after bootstrap,
+keep the site intact and report the failure. Authenticated Git state is authoritative;
+a stale public CDN snapshot cannot reset accepted flags, due times or budget.
+
+Persist the validated pending generation before deploying. Build the complete
+Pages artifact from pinned catalog sources and durable candidate state: include
+all referenced current and retained compatible assets, not only changed files.
+Use custom Pages upload/deploy, then read back the exact generation/manifest before
+promoting active state with an expected-base check. CDN readback observes that
+request, not every edge or phone. On a crash between state/deploy/promotion, reconcile
+the pending generation and live revision before new polling or publication. Retry
+that same candidate or finish promotion; never let older code/state replace newer
+accepted generations. Interrupted publication may delay updates but must not erase
+accepted state. Test these fault boundaries explicitly.
+
+Custom Pages uses the whole artifact, not additive file uploads. Immutable URLs
+and digest validation handle cross-request visibility skew; keep compatible prior
+assets for the documented90-day schema transition window and pinned recoverable
+candidates. Check packaging and size before deployment. Complete global content,
+retention and the1MiB initial site budget may conflict: record measured reconciliation
+before acceptance rather than silently deleting global art or enlarging the budget.
+
+This revises the earlier no-commit/CDN-recovery plan. Durable state checkpoints
+are intentional commits on `feed-state`, not heartbeat commits on source `main`
+or triggers for Pages builds. Not-due cron wakeups do no provider request, state
+commit or deployment. Use read-only permissions for source/PR checks, `contents:
+write` only for the state writer, and `pages: write`/`id-token: write` for the
+`github-pages` deployment job. Data workflows never require the Garmin signing key.
+Branch/environment rules and pinned third-party Actions are implementation work.
 
 Only standard public GitHub-hosted runners are selected. Keep the Pages artifact
 small (initial budget 1 MiB) with short artifact retention (one day), no growing
@@ -389,7 +431,7 @@ their implementation exists. The maintainer workflow is "add/correct data and
 assets, validate, build one catalog revision". Individual entries never require
 editing the layout or adding a second switch statement of model/site names.
 
-The manifest carries schema/catalog versions, asset format/dimensions/size and
+The publisher manifest and bounded watch slice carry schema/catalog versions, asset format/dimensions/size and
 content digests. Watch compatibility and supported budgets are measured with the
 Garmin SDK before accepting the native pipeline. Download into a staging version,
 validate references/data/assets, and atomically activate it. An interrupted update
@@ -398,41 +440,40 @@ configuration. Anonymous provider access is the default; if a future owner needs
 a token, it belongs in repository secrets, not the watch, JSON, artifact or source.
 Garmin developer signing keys remain local and are not uploaded by this data job.
 
-For the globe, prefer small prepared views/frames or a measured lightweight native
-projection using sourced geographic geometry. Site coordinates remain the source
-of truth for the marker and orientation. A globe picture with a manually positioned
-decorative dot is not acceptable evidence of geographic correctness.
+### Qualify updateable visuals without an API 6 dependency
 
-### Preserve the compact home screen
+Start native qualification with declarative JSON: a finite palette, bounded
+polygons/lines/ellipses, normalized coordinates and short animation transforms.
+An exporter from the existing original schematic registry is planned, not present.
+The generic native renderer interprets data, never downloaded Monkey C, bytecode,
+scripts or arbitrary SVG. Bound command/vertex counts, depth, coordinates, per-shard
+bytes, decoded geometry and active/frame peaks. Define a canonical typed encoding
+for digests and test publisher/device agreement; JSON formatting is not an identity.
+Never claim raw-byte integrity from a reserialized parsed dictionary without that
+contract. SHA-256 support still needs target/background resource qualification.
 
-Use the latest "Mission" mockup: dominant white time, four icon/value fields,
-a compact Earth → rocket → launch-information band, secondary countdown and a
-larger country/site label. The band puts the rocket name, company and concise
-mission context to the right of the rocket rather than in a duplicate row below.
-Keep the rocket name strongest, then operator and mission context; unknown values
-remain explicit. Long supplied text uses bounded short labels or ellipsis while
-preserving full values in the accepted record and accessible preview labels.
+This is a qualification baseline, not a measured final codec. Supported JSON
+Arrays/Dictionary primitives avoid assuming a new binary response API or durable
+BitmapReference. A bitmap/frame path may be adopted only after actual FR165
+background transfer, target storage types, reboot, integrity and peak-budget proof.
+If neither path meets limits, record the failed boundary and redesign; do not
+silently replace global updateable art with a five-model hardcoded switch.
 
-The browser reference uses a narrow Earth/rocket slot plus a flexible text column.
-The geographic view still projects real coordinates after resizing. Country/site
-text grows from 11 CSS px to 13–14 CSS px and moves slightly upward into the wider
-part of the circle; the corresponding native 390-pixel design uses at least 16
-display pixels. Main time and four configurable fields retain their hierarchy.
-There is no
-permanent "updated N minutes ago" row. Full names and update details may be
-available in settings/details; a new details interaction is not required by this
-first specification.
+Render the selected flat map or lightweight orthographic globe from qualified
+sourced geometry, or use qualified prepared view shards. Orientation and the pin
+come from the same sourced site coordinates/projection metadata. Regional detail
+must preserve small islands, poles and date-line context. Bounded on-watch manifests
+must not grow with the full worldwide asset inventory. Bundled generic/map basics
+and accepted previous content keep clock/fields usable when content is unavailable.
 
-Maintain a reschedule flag per launch identifier, comparing accepted target
-time/precision with its previous value. Unchanged refreshes retain that flag;
-moving to another launch clears it for the new identity. Known new time uses
-amber; unknown new time suppresses a precise countdown. Staleness adds an
-independent dotted underline. The owner subsequently requested removing the top
-icons, so no exclamation/cloud badge remains anywhere on the current face. Both
-states together use amber plus dots; normal data uses mint without dots. Countdown
-stays centered and normal current time does not change color with alerts. The
-separate watch-battery indicator is centered in the freed top area. The new browser
-wrapper preserves the previous map/field preview as historical evidence.
+### Preserve compact status and current settings
+
+Reschedule flags are per launch identity; unchanged refreshes preserve them and a
+new identity does not inherit them. Unknown new time replaces precision with an
+uncertainty label. Amber and dotted underline remain independent in the active
+scene; sparse AOD preserves both meanings through qualified restrained treatments. Full
+update/version diagnostics belong in settings/runbook, without new service badges
+on the active face. Keep the dedicated battery separate from the four slots.
 
 ### Animate a short visual, not a claimed real liftoff
 
@@ -450,7 +491,7 @@ upper globe G7-003, lower flat map G5-016 and curved horizon G6-002. The owner's
 new instruction allows paired/distributed metadata rather than a mandatory right
 column. `docs/LAYOUT_AUTORESEARCH.md` owns objectives, eliminations and evidence.
 The research's 21-pixel site target does not replace the existing native 16-pixel
-minimum or qualify physical font legibility; the native layout choice stays open.
+minimum or qualify physical font legibility; the historical layout choice is superseded by the owner's 04/full selection; physical native qualification remains open.
 
 The exploratory geography gallery in `prototype/layouts.html` compares eight
 active-display variants and four OFL numeral fonts, without selecting a replacement
@@ -471,11 +512,13 @@ identities for code that does not exist yet. The minimum meaningful boundaries a
 | Personal static publication and reproduction | Actions/Pages plus setup runbook | First/second published validation, 429/invalid response, overlapping/old run rejection, disabled schedule recovery, another owner's fork URL and actual phone/watch readback |
 | Correct point/model selection | Catalog plus native renderer | Known sourced coordinates/model IDs; missing mapping and out-of-range coordinate rejection |
 | Safe catalog/image replacement | Catalog distribution plus watch cache | Two distinct revisions, interrupted/corrupt transfer, previous-version persistence and valid activation |
-| Short animation/power lifecycle | Native rendering/lifecycle | Observed start/stop with disable and sleep transitions on the actual device |
+| Short animation/AOD lifecycle | Native rendering/lifecycle | Actual start/stop, sparse lit-pixel counts, minute updates, disabled wrist wake and measured battery impact |
+| Durable publisher and ordering | Git state plus Pages | Faults before/after quota reservation, candidate persistence, deploy and promotion; stale-code/CAS rejection and complete artifact reconstruction |
+| Release/migration | Signed PRG/IQ plus Store | Stable identity/key, preserved settings, supported/unsupported schemas, approved Store install, higher-version repair and pinned asset rollback |
 
 Browser screenshots only establish the illustrative layout. Structural OpenSpec
 checks establish artifact validity. Neither substitutes for these native/live
-requirements. All three capabilities remain implementation work until those
+requirements. All four capabilities remain implementation work until those
 boundaries are qualified.
 
 ## Risks / Trade-offs
@@ -505,19 +548,56 @@ boundaries are qualified.
   revisions and retain working visuals; missing graphics do not invalidate current
   time or invent schedule certainty.
 
-## Migration Plan
+## Development, release and update lifecycle
 
-No production migration is needed for this new repository. Implement and qualify
-the contracts locally, including a provider-backed rehearsal when access permits.
-Keep deployment and paid endpoint selection separate from the current authoring
-scope. Roll back a failed catalog revision to the last accepted local revision;
-retain the generic built-in visual when no downloaded version is usable.
+[RELEASE_AND_UPDATES.md](../../../docs/RELEASE_AND_UPDATES.md) describes platform
+requirements versus the exact SpaceFox route. Source publication is already
+MIT/GitHub; it is not native distribution, feed deployment or Store approval.
 
-The static-feed revision replaces the earlier planned `service/` owner. Current
-work updates the specification and MIT runbook only. No Pages site, workflow,
-scheduled task or updater implementation is activated in this increment.
-Primary-source decision notes and retained proof limits are in
-`evidence/static-feed-design-review.md`.
+First resolve platform eligibility, then native task2.1/2.2 and an actual personal
+PRG pilot using Build for Device and the verified USB/MTP GARMIN/APPS route.
+For production, retain one application UUID and securely backed-up 4096-bit RSA
+key; losing it prevents updating that Store identity. Export a tested `.iq` with
+only qualified products/languages, accurate free listing/screenshots, permissions,
+setup dependencies, privacy/data-flow and support/rights details. Garmin review
+and actual approved Store installation remain required observations. Owner-only
+beta can qualify Garmin settings integration if needed, with a separate beta UUID;
+it is not a shared public beta or guaranteed state migration to production.
+
+The checked review guidelines apply to SDK development as well as distribution
+and contain an under13 restriction. Intended-user eligibility is unresolved;
+do not claim a private sideload exemption, collect/publish the child's age or
+change the intended audience just to claim compliance. Continue public original
+MIT specification work while resolving that prerequisite before native use.
+
+Separate versions: native app/build; feed wire major; renderer schema; catalog
+revision; immutable asset digest; monotonic publisher generation; per-record
+source-validation time. Supported content updates do not require a Store release.
+New logic, permissions, fonts/glyphs or renderer operations do. Never download
+executable watch code as an asset. Keep current and previous wire majors for at
+least 90 days after an announced transition; both are output projections of the
+same accepted source state and shared quota, not separate provider polling.
+Preserve old compatible assets/schemas throughout that window. An unsupported app
+keeps cache with honest age and an actionable settings/update message.
+
+Version persistent settings/cache and test migrations. Preserve four assignments,
+language, projection and feed URL; validate before committing new cache keys.
+Isolate launch/flag/age state when FeedBaseUrl changes; identical verified content
+may reuse digest cache. Do not promise lossless sideload-to-Store/beta-to-production
+migration or uninstall survival without observing it. Document backup/reconfiguration
+if a platform boundary requires a separate installation.
+
+Code rollback means a tested higher-version signed corrective release with the
+same identity/key, not a promised Store downgrade. Asset rollback uses a new
+publisher generation that pins reviewed prior compatible content. Schedule
+corrections retain actual source validation and provenance; no fake timestamp or
+regression is allowed to make an old schedule look fresh. Source tags, package
+digests, supported schemas, catalog/asset manifests and evidence make each release
+reconstructible. Review upstream code/workflow updates in each fork before deploying;
+source Git updates do not automatically update installed native binaries.
+
+No SDK, native signing key, updater, scheduled workflow, live Pages or Store release
+is provisioned by this spec revision. All implementation/release tasks remain open.
 
 ## Independently reviewed browser proposals
 

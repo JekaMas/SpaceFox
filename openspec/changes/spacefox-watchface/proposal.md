@@ -29,7 +29,8 @@ the layout, but live updates and a maintainable visual catalog are still missing
   amber countdown for a reschedule and an independent dotted underline for stale data,
   with service-status badges removed from the face.
 - Add a short ignition/ascent animation while the display is active; allow it to
-  be disabled and stop it when the watch face sleeps.
+  be disabled and stop it when the watch face sleeps. Add a separate sparse AMOLED
+  AOD scene; the full-screen map is the active composition, not an AOD promise.
 - Make site coordinates, rocket mappings, images and animation frames versioned
   static data/assets so they can be added or corrected without editing watch-face
   layout code. Preserve provider-validation age across file/CDN re-fetches.
@@ -40,6 +41,13 @@ the layout, but live updates and a maintainable visual catalog are still missing
   establish completeness. See `evidence/global-catalog/` and `docs/GLOBAL_CATALOG.md`.
 - Supply an MIT agent setup guide for another family's own GitHub feed, including
   URL configuration, quotas, schedule disablement, recovery and actual readback.
+- Define native development/personal PRG/Store IQ, preserved signing identity,
+  truthful free publication, platform eligibility and privacy/rights checks.
+  Separate code releases from content updates; qualify FR165 API 5.2, response
+  bounds, AOD, cache migrations and 90-day wire compatibility.
+- Keep publisher active/pending state and request reservations in a dedicated
+  feed-state branch with monotonic/CAS recovery and complete Pages artifacts;
+  a public CDN response is not the authoritative recovery ledger.
 - Consume the shared 36-language catalog, qualify native text/fonts/RTL on FR165
   and distribute original SpaceFox work under MIT with free official downloads.
   The completed resource/license foundation is tracked separately in
@@ -59,6 +67,8 @@ the layout, but live updates and a maintainable visual catalog are still missing
   personal static-feed publication.
 - `visual-catalog`: maintainable, versioned site/rocket metadata and visual assets
   with validation, offline fallback and atomic update activation.
+- `release-lifecycle`: qualified builds, signing, personal installation, free Store
+  distribution and compatible/recoverable code-versus-content updates.
 
 ### Modified Capabilities
 
@@ -78,3 +88,5 @@ preserved in product claims. The current increment updates the specification and
 agent instructions only. Enabling scheduled workflows/Pages, paid hosting, SDK
 installation and native implementation are separate implementation work. The
 MIT source/specification remains published in the existing GitHub repository.
+The final source-based review is in `evidence/final-review/`; intended-user
+eligibility and native/device/Store evidence remain explicitly unresolved.
