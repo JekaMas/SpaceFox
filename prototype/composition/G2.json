@@ -1,0 +1,515 @@
+[
+  {
+    "id": "C2-11",
+    "generation": 2,
+    "layout": "satellite",
+    "paint": "silver",
+    "params": {
+      "time": [
+        35,
+        50,
+        210
+      ],
+      "geo": [
+        229,
+        32,
+        156,
+        156
+      ],
+      "pin": [
+        307,
+        110
+      ],
+      "scale": 74,
+      "paint": {
+        "ocean": "#315d7e"
+      },
+      "mission": [
+        51,
+        174,
+        288
+      ],
+      "rocket": [
+        20,
+        180,
+        26,
+        64
+      ]
+    },
+    "parents": [
+      "C1-13"
+    ],
+    "reference": "M2-11",
+    "hypothesis": "Separate clock/globe and center or left-align a full-width metadata group; repair rocket/field collision."
+  },
+  {
+    "id": "C2-12",
+    "generation": 2,
+    "layout": "satellite",
+    "paint": "silver",
+    "params": {
+      "time": [
+        35,
+        50,
+        210
+      ],
+      "geo": [
+        229,
+        32,
+        156,
+        156
+      ],
+      "pin": [
+        307,
+        110
+      ],
+      "scale": 74,
+      "mission": [
+        76,
+        174,
+        288
+      ],
+      "rocket": [
+        20,
+        180,
+        26,
+        64
+      ],
+      "align": "left",
+      "paint": {
+        "ocean": "#315d7e"
+      }
+    },
+    "parents": [
+      "C1-13"
+    ],
+    "reference": "M2-11",
+    "hypothesis": "Separate clock/globe and center or left-align a full-width metadata group; repair rocket/field collision."
+  },
+  {
+    "id": "C2-21",
+    "generation": 2,
+    "layout": "hemisphere",
+    "paint": "teal",
+    "params": {
+      "time": [
+        70,
+        35,
+        250
+      ],
+      "geo": [
+        145,
+        87,
+        270,
+        161
+      ],
+      "pin": [
+        335,
+        134
+      ],
+      "mission": [
+        51,
+        147,
+        288
+      ],
+      "rocket": [
+        20,
+        171,
+        26,
+        64
+      ],
+      "shade": "left",
+      "gridOpacity": 0.1
+    },
+    "parents": [
+      "C1-22"
+    ],
+    "reference": "M2-41",
+    "hypothesis": "Compare smooth shading against an explicit right map lane; tests whether bright land can coexist with long text."
+  },
+  {
+    "id": "C2-22",
+    "generation": 2,
+    "layout": "hemisphere",
+    "paint": "teal",
+    "params": {
+      "time": [
+        70,
+        35,
+        250
+      ],
+      "geo": [
+        255,
+        105,
+        135,
+        144
+      ],
+      "pin": [
+        326,
+        164
+      ],
+      "mission": [
+        51,
+        134,
+        195
+      ],
+      "rocket": [
+        20,
+        165,
+        26,
+        64
+      ],
+      "paint": {
+        "ocean": "#315d7e"
+      },
+      "scale": 100,
+      "gridOpacity": 0.1
+    },
+    "parents": [
+      "C1-22"
+    ],
+    "reference": "M2-41",
+    "hypothesis": "Compare smooth shading against an explicit right map lane; tests whether bright land can coexist with long text."
+  },
+  {
+    "id": "C2-31",
+    "generation": 2,
+    "layout": "atlas",
+    "paint": "blue",
+    "params": {
+      "time": [
+        70,
+        25,
+        250
+      ],
+      "geo": [
+        18,
+        139,
+        354,
+        70
+      ],
+      "pin": [
+        290,
+        174
+      ],
+      "scale": 55,
+      "mission": [
+        51,
+        215,
+        288
+      ],
+      "fields": [
+        35,
+        110,
+        320,
+        29
+      ],
+      "rocket": [
+        20,
+        216,
+        26,
+        62
+      ],
+      "gridOpacity": 0.12
+    },
+    "parents": [
+      "C1-31"
+    ],
+    "reference": "M2-51",
+    "hypothesis": "Separate a continuous bright band from metadata; flat map versus curved limb."
+  },
+  {
+    "id": "C2-32",
+    "generation": 2,
+    "layout": "atlas",
+    "paint": "blue",
+    "params": {
+      "time": [
+        70,
+        25,
+        250
+      ],
+      "geo": [
+        18,
+        146,
+        354,
+        61
+      ],
+      "pin": [
+        290,
+        178
+      ],
+      "scale": 190,
+      "projection": "globe",
+      "rotateOffset": 35,
+      "mission": [
+        51,
+        213,
+        288
+      ],
+      "fields": [
+        35,
+        110,
+        320,
+        29
+      ],
+      "rocket": [
+        20,
+        216,
+        26,
+        62
+      ],
+      "gridOpacity": 0.14
+    },
+    "parents": [
+      "C1-31"
+    ],
+    "reference": "M2-51",
+    "hypothesis": "Separate a continuous bright band from metadata; flat map versus curved limb."
+  },
+  {
+    "id": "C2-41",
+    "generation": 2,
+    "layout": "earthrise",
+    "paint": "teal",
+    "params": {
+      "time": [
+        32,
+        60,
+        210
+      ],
+      "geo": [
+        211,
+        18,
+        205,
+        154
+      ],
+      "pin": [
+        326,
+        91
+      ],
+      "scale": 100,
+      "mission": [
+        51,
+        175,
+        288
+      ],
+      "rocket": [
+        20,
+        179,
+        26,
+        64
+      ],
+      "paint": {
+        "ocean": "#315d7e"
+      },
+      "gridOpacity": 0.14
+    },
+    "parents": [
+      "C1-42"
+    ],
+    "reference": "M2-41",
+    "hypothesis": "Retain a larger upper-right geographic figure with no text cutouts; move clock and mission into clear space."
+  },
+  {
+    "id": "C2-42",
+    "generation": 2,
+    "layout": "earthrise",
+    "paint": "teal",
+    "params": {
+      "time": [
+        35,
+        50,
+        210
+      ],
+      "geo": [
+        225,
+        28,
+        176,
+        154
+      ],
+      "pin": [
+        315,
+        105
+      ],
+      "scale": 86,
+      "mission": [
+        51,
+        181,
+        288
+      ],
+      "rocket": [
+        20,
+        183,
+        26,
+        62
+      ],
+      "paint": {
+        "ocean": "#315d7e"
+      },
+      "gridOpacity": 0.22
+    },
+    "parents": [
+      "C1-42"
+    ],
+    "reference": "M2-41",
+    "hypothesis": "Retain a larger upper-right geographic figure with no text cutouts; move clock and mission into clear space."
+  },
+  {
+    "id": "C2-51",
+    "generation": 2,
+    "layout": "horizon",
+    "paint": "silver",
+    "params": {
+      "time": [
+        70,
+        25,
+        250
+      ],
+      "geo": [
+        0,
+        126,
+        390,
+        98
+      ],
+      "pin": [
+        319,
+        174
+      ],
+      "scale": 198,
+      "rotateOffset": 35,
+      "mission": [
+        51,
+        215,
+        288
+      ],
+      "fields": [
+        35,
+        110,
+        320,
+        29
+      ],
+      "rocket": [
+        20,
+        216,
+        26,
+        62
+      ],
+      "gridOpacity": 0.12
+    },
+    "parents": [
+      "C1-53"
+    ],
+    "reference": "M2-51",
+    "hypothesis": "Compare broad curved band against side fragment; reserve clean typography."
+  },
+  {
+    "id": "C2-52",
+    "generation": 2,
+    "layout": "horizon",
+    "paint": "silver",
+    "params": {
+      "time": [
+        70,
+        35,
+        250
+      ],
+      "geo": [
+        245,
+        112,
+        148,
+        136
+      ],
+      "pin": [
+        325,
+        176
+      ],
+      "scale": 110,
+      "mission": [
+        51,
+        134,
+        188
+      ],
+      "rocket": [
+        20,
+        165,
+        26,
+        64
+      ],
+      "paint": {
+        "ocean": "#315d7e"
+      },
+      "gridOpacity": 0.14
+    },
+    "parents": [
+      "C1-53"
+    ],
+    "reference": "M2-51",
+    "hypothesis": "Compare broad curved band against side fragment; reserve clean typography."
+  },
+  {
+    "id": "C2-61",
+    "generation": 2,
+    "layout": "belt",
+    "paint": "teal",
+    "params": {
+      "time": [
+        70,
+        25,
+        250
+      ],
+      "mission": [
+        51,
+        213,
+        288
+      ],
+      "rocket": [
+        20,
+        216,
+        26,
+        62
+      ],
+      "site": 286,
+      "count": 315,
+      "gridOpacity": 0.12
+    },
+    "parents": [
+      "C1-62"
+    ],
+    "reference": "M2-31",
+    "hypothesis": "Repair long metadata and bottom countdown, compare stack against row narrative."
+  },
+  {
+    "id": "C2-62",
+    "generation": 2,
+    "layout": "belt",
+    "paint": "teal",
+    "params": {
+      "time": [
+        70,
+        35,
+        250
+      ],
+      "mission": [
+        51,
+        213,
+        288
+      ],
+      "rocket": [
+        20,
+        216,
+        26,
+        62
+      ],
+      "site": 286,
+      "count": 315,
+      "grammar": "row",
+      "gridOpacity": 0.12
+    },
+    "parents": [
+      "C1-62"
+    ],
+    "reference": "M2-31",
+    "hypothesis": "Repair long metadata and bottom countdown, compare stack against row narrative."
+  }
+]

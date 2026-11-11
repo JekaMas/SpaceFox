@@ -1,0 +1,149 @@
+{
+  "createdAtUTC": "2026-11-11T10:12:00.904762+00:00",
+  "candidateIds": [
+    "C3-11",
+    "C3-21",
+    "C3-32"
+  ],
+  "candidates": [
+    {
+      "id": "C3-11",
+      "generation": 3,
+      "layout": "earthrise",
+      "paint": "teal",
+      "params": {
+        "time": [
+          32,
+          60,
+          210
+        ],
+        "geo": [
+          229,
+          23,
+          166,
+          166
+        ],
+        "pin": [
+          311,
+          105
+        ],
+        "scale": 81,
+        "mission": [
+          51,
+          175,
+          288
+        ],
+        "rocket": [
+          20,
+          179,
+          26,
+          64
+        ],
+        "paint": {
+          "ocean": "#315d7e"
+        },
+        "gridOpacity": 0.16
+      },
+      "parents": [
+        "C2-41"
+      ],
+      "reference": "M2-41",
+      "hypothesis": "Keep accepted bright upper-right globe but remove its internal horizontal crop; compare scale/curvature."
+    },
+    {
+      "id": "C3-21",
+      "generation": 3,
+      "layout": "horizon",
+      "paint": "silver",
+      "params": {
+        "time": [
+          70,
+          35,
+          250
+        ],
+        "geo": [
+          245,
+          112,
+          148,
+          136
+        ],
+        "pin": [
+          325,
+          176
+        ],
+        "scale": 110,
+        "mission": [
+          51,
+          134,
+          188
+        ],
+        "rocket": [
+          20,
+          165,
+          26,
+          64
+        ],
+        "paint": {
+          "ocean": "#315d7e"
+        },
+        "gridOpacity": 0.12,
+        "frameRadius": 16
+      },
+      "parents": [
+        "C2-52"
+      ],
+      "reference": "M2-51",
+      "hypothesis": "Keep accepted separated map/text lanes, soften deliberate frame and test mirrored reading balance."
+    },
+    {
+      "id": "C3-32",
+      "generation": 3,
+      "layout": "belt",
+      "paint": "teal",
+      "params": {
+        "time": [
+          70,
+          25,
+          250
+        ],
+        "mission": [
+          51,
+          213,
+          288
+        ],
+        "rocket": [
+          23,
+          214,
+          24,
+          57
+        ],
+        "site": 286,
+        "count": 315,
+        "gridOpacity": 0.12,
+        "frameRadius": 10,
+        "grammar": "flow"
+      },
+      "parents": [
+        "C2-61"
+      ],
+      "reference": "M2-31",
+      "hypothesis": "Repair artwork circle margin without shrinking text; adaptive metadata flow addresses G2 fixed-row failures."
+    }
+  ],
+  "sourceSHA256": {
+    "prototype/composition/G1.json": "611040a117f2b94eae8c6bc4f4647a7b347584d31042dbe2ff1d144574fba77f",
+    "prototype/composition/G2.json": "906883b0958b735e14036045985ab59365919a72135d3f3479ad9722e0311b65",
+    "prototype/composition/G3.json": "67f958607f0751f5cbec6496c2688f62efdaae7199b05ff9cfa9337fd13466d4",
+    "prototype/composition/core.js": "4016eb3c23257b7686f3ec63298923cbea55d4378834852fffd11584d1926b78",
+    "prototype/composition/final.json": "e121ab6734667518919fc2e9a993c012b28ae0a581ed8ec95b8d00adf811bd2a",
+    "prototype/composition/index.html": "9fb35db47d65883556c2a05230b8409b9d13595a419f09f1e92167c38e7b7011",
+    "prototype/composition/lab.js": "e3303072d6600469da8ca9d7a52b05bf2c4938e981732fd4dbbaaa41ef6c35f2",
+    "prototype/composition/metrics.js": "3e3c63b4a1fe29ca039b590a7ca0c4b7c233f731c057cc1fcfe53e2310d125cc",
+    "prototype/composition/policy.json": "c0ebb0429cda94e5f7f77d1b6854886d1ddb73f57bf58781bec9eaaf775dcfde",
+    "prototype/composition/renderer.js": "8dc0947a57445416cabbc15577f766a34578c3a1a8ba497299da80583a7e71ff",
+    "prototype/composition/review.html": "800576a9444ddf6b990ebf3c0d026929abf47a38b6120e3813acb858b603ba6f",
+    "prototype/composition/review.js": "2bb544235defb2f616a1f6f6f2229ef8701dfc91dc36155f510cd9458c6aa975",
+    "prototype/composition/scenes.json": "58e74c5737175a339c8f5debd86dd85b10c232a879a8e85e0e6772bbfb8bc863"
+  },
+  "next": "Only now author six additional scenes; not a blind or independent holdout. Fixed parameters may fail; preserve failures."
+}

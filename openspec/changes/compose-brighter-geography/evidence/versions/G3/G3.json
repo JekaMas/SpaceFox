@@ -1,0 +1,248 @@
+[
+  {
+    "id": "C3-11",
+    "generation": 3,
+    "layout": "earthrise",
+    "paint": "teal",
+    "params": {
+      "time": [
+        32,
+        60,
+        210
+      ],
+      "geo": [
+        229,
+        23,
+        166,
+        166
+      ],
+      "pin": [
+        311,
+        105
+      ],
+      "scale": 81,
+      "mission": [
+        51,
+        175,
+        288
+      ],
+      "rocket": [
+        20,
+        179,
+        26,
+        64
+      ],
+      "paint": {
+        "ocean": "#315d7e"
+      },
+      "gridOpacity": 0.16
+    },
+    "parents": [
+      "C2-41"
+    ],
+    "reference": "M2-41",
+    "hypothesis": "Keep accepted bright upper-right globe but remove its internal horizontal crop; compare scale/curvature."
+  },
+  {
+    "id": "C3-12",
+    "generation": 3,
+    "layout": "earthrise",
+    "paint": "teal",
+    "params": {
+      "time": [
+        32,
+        60,
+        210
+      ],
+      "geo": [
+        228,
+        17,
+        174,
+        174
+      ],
+      "pin": [
+        315,
+        104
+      ],
+      "scale": 85.5,
+      "mission": [
+        51,
+        175,
+        288
+      ],
+      "rocket": [
+        20,
+        179,
+        26,
+        64
+      ],
+      "paint": {
+        "ocean": "#315d7e"
+      },
+      "gridOpacity": 0.26,
+      "roll": 18
+    },
+    "parents": [
+      "C2-41"
+    ],
+    "reference": "M2-41",
+    "hypothesis": "Keep accepted bright upper-right globe but remove its internal horizontal crop; compare scale/curvature."
+  },
+  {
+    "id": "C3-21",
+    "generation": 3,
+    "layout": "horizon",
+    "paint": "silver",
+    "params": {
+      "time": [
+        70,
+        35,
+        250
+      ],
+      "geo": [
+        245,
+        112,
+        148,
+        136
+      ],
+      "pin": [
+        325,
+        176
+      ],
+      "scale": 110,
+      "mission": [
+        51,
+        134,
+        188
+      ],
+      "rocket": [
+        20,
+        165,
+        26,
+        64
+      ],
+      "paint": {
+        "ocean": "#315d7e"
+      },
+      "gridOpacity": 0.12,
+      "frameRadius": 16
+    },
+    "parents": [
+      "C2-52"
+    ],
+    "reference": "M2-51",
+    "hypothesis": "Keep accepted separated map/text lanes, soften deliberate frame and test mirrored reading balance."
+  },
+  {
+    "id": "C3-22",
+    "generation": 3,
+    "layout": "horizon",
+    "paint": "silver",
+    "params": {
+      "time": [
+        70,
+        35,
+        250
+      ],
+      "geo": [
+        -3,
+        112,
+        148,
+        136
+      ],
+      "pin": [
+        65,
+        176
+      ],
+      "scale": 110,
+      "mission": [
+        151,
+        134,
+        188
+      ],
+      "rocket": [
+        344,
+        165,
+        26,
+        64
+      ],
+      "paint": {
+        "ocean": "#315d7e"
+      },
+      "gridOpacity": 0.12,
+      "frameRadius": 16
+    },
+    "parents": [
+      "C2-52"
+    ],
+    "reference": "M2-51",
+    "hypothesis": "Keep accepted separated map/text lanes, soften deliberate frame and test mirrored reading balance."
+  },
+  {
+    "id": "C3-31",
+    "generation": 3,
+    "layout": "belt",
+    "paint": "teal",
+    "params": {
+      "time": [
+        70,
+        25,
+        250
+      ],
+      "mission": [
+        51,
+        213,
+        288
+      ],
+      "rocket": [
+        23,
+        214,
+        24,
+        57
+      ],
+      "site": 286,
+      "count": 315,
+      "gridOpacity": 0.12,
+      "frameRadius": 10
+    },
+    "parents": [
+      "C2-61"
+    ],
+    "reference": "M2-31",
+    "hypothesis": "Repair artwork circle margin without shrinking text; adaptive metadata flow addresses G2 fixed-row failures."
+  },
+  {
+    "id": "C3-32",
+    "generation": 3,
+    "layout": "belt",
+    "paint": "teal",
+    "params": {
+      "time": [
+        70,
+        25,
+        250
+      ],
+      "mission": [
+        51,
+        213,
+        288
+      ],
+      "rocket": [
+        23,
+        214,
+        24,
+        57
+      ],
+      "site": 286,
+      "count": 315,
+      "gridOpacity": 0.12,
+      "frameRadius": 10,
+      "grammar": "flow"
+    },
+    "parents": [
+      "C2-61"
+    ],
+    "reference": "M2-31",
+    "hypothesis": "Repair artwork circle margin without shrinking text; adaptive metadata flow addresses G2 fixed-row failures."
+  }
+]

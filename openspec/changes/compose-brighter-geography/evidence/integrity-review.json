@@ -1,0 +1,13 @@
+{
+  "retainedOldBindings": {
+    "sourceSHA256": 53,
+    "evidenceToolSHA256": 23
+  },
+  "finalCandidatesUnchanged": true,
+  "postFreezeSourceDrift": [
+    "prototype/composition/metrics.js"
+  ],
+  "driftAdjudication": "Only documented metric-v3 RGB/RGBA correction, no renderer/parameter drift. Original source retained in versions/pre-v3.",
+  "newForegroundDOMProof": "All36 queried panels on three displayed final faces serialize transparent rgba; common renderer sets the same backgrounds for every new candidate.",
+  "newRendererSHA256": "8dc0947a57445416cabbc15577f766a34578c3a1a8ba497299da80583a7e71ff"
+}

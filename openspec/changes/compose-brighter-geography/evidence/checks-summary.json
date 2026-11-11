@@ -1,0 +1,21 @@
+{
+  "sourceHead": "48b39af98050fce79d6a656342df89fe45e62761",
+  "cleanAtBehaviorRun": true,
+  "observedNewTests": {
+    "unittest::tests.test_composition.CompositionTest.test_boundary_negative": "pass",
+    "unittest::tests.test_composition.CompositionTest.test_boundary_positive": "pass",
+    "unittest::tests.test_composition.CompositionTest.test_final_negative": "pass",
+    "unittest::tests.test_composition.CompositionTest.test_final_positive": "pass",
+    "unittest::tests.test_composition.CompositionTest.test_generations_negative": "pass",
+    "unittest::tests.test_composition.CompositionTest.test_generations_positive": "pass",
+    "unittest::tests.test_composition.CompositionTest.test_information_negative": "pass",
+    "unittest::tests.test_composition.CompositionTest.test_information_positive": "pass",
+    "unittest::tests.test_composition.CompositionTest.test_metrics_negative": "pass",
+    "unittest::tests.test_composition.CompositionTest.test_metrics_positive": "pass"
+  },
+  "originalChecksReexecuted": false,
+  "specStructuralResult": "completion-structure/current/openspec-wiwuekwh/result.json (authoring-only raw guidance excluded from publication)",
+  "syntax": "Seven new JS owners checked with node --check after stable implementation",
+  "whitespace": "git diff --cached --check passed after stable batch",
+  "scope": "Browser composition, diagnostic SVG and saved evidence integrity; no human/native/live/AOD acceptance"
+}

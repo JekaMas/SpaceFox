@@ -1,0 +1,108 @@
+{
+  "date": "2026-11-11",
+  "boundary": "Primary-source text inspection; no claim to have watched linked videos or inspected inaccessible images. Transfer to SpaceFox is a hypothesis.",
+  "sources": [
+    {
+      "id": "S1",
+      "stage": "G1",
+      "url": "https://developer.garmin.com/connect-iq/articles/user-experience-guidelines/Watch_Faces.html",
+      "read": "Color Use; Screen Size and Shape; Custom Fonts; Always On; Best Practices",
+      "idea": "Design for the selected round screen and separate active bright geography from unimplemented AOD adaptation.",
+      "limit": "Does not prescribe composition metrics or validate this prototype."
+    },
+    {
+      "id": "S2",
+      "stage": "G1",
+      "url": "https://www.esri.com/news/arcuser/0112/make-maps-people-want-to-look-at.html",
+      "read": "Five principles; visual contrast and figure-ground discussion",
+      "idea": "Land/water value separation and coherent geographic figure, not just more saturated paint.",
+      "limit": "HTML read; PDF fetch restricted; no watch-specific threshold."
+    },
+    {
+      "id": "S3",
+      "stage": "G1",
+      "url": "https://www.nngroup.com/articles/principles-visual-design/",
+      "read": "Scale, hierarchy, balance, contrast, Gestalt text",
+      "idea": "Time remains the entry point; metadata and geography must form deliberate groups.",
+      "limit": "General guidance, not a measured SpaceFox result."
+    },
+    {
+      "id": "S4",
+      "stage": "G1",
+      "url": "https://www.ibm.com/design/language/layout/tips-and-techniques/",
+      "read": "Hierarchy, typography, Gestalt, positive/negative space",
+      "idea": "Explicit axes and spatial grouping; do not fill every empty area with equal visual weight.",
+      "limit": "Web/layout guidance needs adaptation to a circular watch.",
+      "additionalReadForG3": "Make and break patterns; Let it breathe; Guide the eye; Master asymmetry"
+    },
+    {
+      "id": "S5",
+      "stage": "G1",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+      "read": "Success criterion and intent",
+      "idea": "Use linear luminance and contrast, rather than RGB channel differences.",
+      "limit": "Screen/browser contrast proxy; not a claim of WCAG conformance or watch-distance readability."
+    },
+    {
+      "id": "S6",
+      "stage": "G1",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html",
+      "read": "In brief; graphical objects criterion and intent",
+      "idea": "Preserve meaningful marker differentiation against its immediate context.",
+      "limit": "Full marker perception remains outside this composition-only numerical gate."
+    },
+    {
+      "id": "S7",
+      "stage": "G1",
+      "url": "https://arxiv.org/html/2310.16185v2",
+      "read": "Abstract, design-space outline and smartwatch face context",
+      "idea": "Treat the face as a small dashboard with competing contextual components.",
+      "limit": "Design-space research; no causal ranking of our layouts."
+    },
+    {
+      "id": "S8",
+      "stage": "G2",
+      "url": "https://d3js.org/d3-geo/projection",
+      "read": "Projection, clipping, scale, translation and rotation",
+      "idea": "Projection clipping and camera translation are separate; keep the actual site projected when changing footprint.",
+      "limit": "Technical geometry, not ergonomic evidence."
+    },
+    {
+      "id": "S9",
+      "stage": "G2",
+      "url": "https://www.esri.com/arcgis-blog/products/arcgis-online/education/visual-hierarchy-for-maps",
+      "read": "Purpose-dependent hierarchy, color and detail text",
+      "idea": "A brighter basemap still needs a quieter detail layer; reduce grid competition before dimming land.",
+      "limit": "Linked videos not watched; images not separately inspected."
+    },
+    {
+      "id": "S10",
+      "stage": "G3",
+      "url": "https://www.esri.com/arcgis-blog/products/arcgis-pro/mapping/design-principles-for-cartography",
+      "read": "Hierarchical organization and Balance sections, including whole-page content and visual weight/direction",
+      "idea": "Evaluate globe, type and rocket together; a centred geographic figure alone does not establish balanced composition.",
+      "limit": "Overlaps the same author principles as S2; not an independent research replication. Linked diagram resolved, not counted as a separately viewed example."
+    }
+  ],
+  "notCountedAsRead": [
+    {
+      "url": "https://support.apple.com/guide/watch/faces-and-features-apde9218b440/watchos",
+      "reason": "HTTP429"
+    },
+    {
+      "url": "https://library.esri.com/docs/128969.pdf",
+      "reason": "Fetch restricted; equivalent HTML source S2 read"
+    },
+    {
+      "url": "https://persci.mit.edu/research/clutter",
+      "reason": "Timeout; searched abstract identifies Feature Congestion, no implementation or full-paper-derived threshold claimed"
+    }
+  ],
+  "methodReference": {
+    "url": "https://doi.org/10.48550/arXiv.2609.00065",
+    "authors": "Timothy Kassis, Vinayak Agarwal, Yuhuan He, Darshil Patel, Aubrey M. Brueckner",
+    "year": 2026,
+    "checked": "arXiv abstract/authors/version record",
+    "scope": "Procedural skill provenance, no validation of SpaceFox ergonomics"
+  }
+}

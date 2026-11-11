@@ -1,0 +1,331 @@
+{
+  "cases": {
+    "R1.P1.NEGATIVE": {
+      "evidence_fingerprint": "623a0142163f80dd1eda4a078689e02173613c0fce94b7fe02bc3286b8f394f1",
+      "green_expectation": "Predeclared falsifiable composition metrics",
+      "invalidation_dependencies": [
+        "prototype/composition/core.js",
+        "prototype/composition/policy.json",
+        "prototype/composition/metrics.js",
+        "tests/test_composition.py",
+        "openspec/changes/compose-brighter-geography/evidence/G1-v1-browser.json",
+        "openspec/changes/compose-brighter-geography/evidence/G1-browser.json",
+        "openspec/changes/compose-brighter-geography/evidence/controls-v3-browser.json"
+      ],
+      "observable": "Correct classification, complete scene/value/parent identity, no unsupported acceptance.",
+      "polarity": "negative",
+      "property_id": "R1.P1",
+      "red_expectation": "Invalid geometry/evidence or brightness-only false green accepted.",
+      "scenario": "Discriminate misleading brightness",
+      "scenario_fingerprint": "0479725a19a5b396b34853d48e2c1ca13b9554b27c7cbe87c69da1f1403bdb2a",
+      "setup": "Run actual new policy or reconcile source-bound actual browser evidence with literal inputs/counterexamples.",
+      "source_path": "tests/test_composition.py",
+      "source_sha256": "e59e32515f956cca604d6ff2de80b49ee3d63e814200a470e5f4073683538f99",
+      "status": "passed",
+      "test_id": "unittest::tests.test_composition.CompositionTest.test_metrics_negative"
+    },
+    "R1.P1.POSITIVE": {
+      "evidence_fingerprint": "c8d990e16282721f93d2e1cebadf836348c5b93cb3a23d087b0319d695c4a04a",
+      "green_expectation": "Predeclared falsifiable composition metrics",
+      "invalidation_dependencies": [
+        "prototype/composition/core.js",
+        "prototype/composition/policy.json",
+        "prototype/composition/metrics.js",
+        "tests/test_composition.py",
+        "openspec/changes/compose-brighter-geography/evidence/G1-v1-browser.json",
+        "openspec/changes/compose-brighter-geography/evidence/G1-browser.json",
+        "openspec/changes/compose-brighter-geography/evidence/controls-v3-browser.json"
+      ],
+      "observable": "Correct classification, complete scene/value/parent identity, no unsupported acceptance.",
+      "polarity": "positive",
+      "property_id": "R1.P1",
+      "red_expectation": "Invalid geometry/evidence or brightness-only false green accepted.",
+      "scenario": "Discriminate misleading brightness",
+      "scenario_fingerprint": "0479725a19a5b396b34853d48e2c1ca13b9554b27c7cbe87c69da1f1403bdb2a",
+      "setup": "Run actual new policy or reconcile source-bound actual browser evidence with literal inputs/counterexamples.",
+      "source_path": "tests/test_composition.py",
+      "source_sha256": "e59e32515f956cca604d6ff2de80b49ee3d63e814200a470e5f4073683538f99",
+      "status": "passed",
+      "test_id": "unittest::tests.test_composition.CompositionTest.test_metrics_positive"
+    },
+    "R2.P1.NEGATIVE": {
+      "evidence_fingerprint": "3a7cb414923d40d6b46fe23646593d504dfbf9e5a743f97207b2084e95941e57",
+      "green_expectation": "Preserved information and deliberate alignment",
+      "invalidation_dependencies": [
+        "prototype/composition/**",
+        "tests/test_composition.py",
+        "tools/composition_audit.py",
+        "openspec/changes/compose-brighter-geography/evidence/final-browser.json"
+      ],
+      "observable": "Correct classification, complete scene/value/parent identity, no unsupported acceptance.",
+      "polarity": "negative",
+      "property_id": "R2.P1",
+      "red_expectation": "Invalid geometry/evidence or brightness-only false green accepted.",
+      "scenario": "Read a complete face",
+      "scenario_fingerprint": "59ee2d69e57f2bb4843e93c2d7bf84460d421261c81c3a9c78f28ed3c69735fe",
+      "setup": "Run actual new policy or reconcile source-bound actual browser evidence with literal inputs/counterexamples.",
+      "source_path": "tests/test_composition.py",
+      "source_sha256": "e59e32515f956cca604d6ff2de80b49ee3d63e814200a470e5f4073683538f99",
+      "status": "passed",
+      "test_id": "unittest::tests.test_composition.CompositionTest.test_information_negative"
+    },
+    "R2.P1.POSITIVE": {
+      "evidence_fingerprint": "c6a2af8bcbf86adfbde3591c070969a2174cba3e8fd2bea845920a3dc3f83ec3",
+      "green_expectation": "Preserved information and deliberate alignment",
+      "invalidation_dependencies": [
+        "prototype/composition/**",
+        "tests/test_composition.py",
+        "tools/composition_audit.py",
+        "openspec/changes/compose-brighter-geography/evidence/final-browser.json"
+      ],
+      "observable": "Correct classification, complete scene/value/parent identity, no unsupported acceptance.",
+      "polarity": "positive",
+      "property_id": "R2.P1",
+      "red_expectation": "Invalid geometry/evidence or brightness-only false green accepted.",
+      "scenario": "Read a complete face",
+      "scenario_fingerprint": "59ee2d69e57f2bb4843e93c2d7bf84460d421261c81c3a9c78f28ed3c69735fe",
+      "setup": "Run actual new policy or reconcile source-bound actual browser evidence with literal inputs/counterexamples.",
+      "source_path": "tests/test_composition.py",
+      "source_sha256": "e59e32515f956cca604d6ff2de80b49ee3d63e814200a470e5f4073683538f99",
+      "status": "passed",
+      "test_id": "unittest::tests.test_composition.CompositionTest.test_information_positive"
+    },
+    "R3.P1.NEGATIVE": {
+      "evidence_fingerprint": "e34456d2022a7b782e4bc4e195208fb768910e01f57386c378fb7767d77ab85d",
+      "green_expectation": "Adaptive generations against exact controls",
+      "invalidation_dependencies": [
+        "prototype/composition/**",
+        "tests/test_composition.py",
+        "tools/composition_audit.py",
+        "openspec/changes/compose-brighter-geography/evidence/G1-decision.json",
+        "openspec/changes/compose-brighter-geography/evidence/G2-decision.json",
+        "openspec/changes/compose-brighter-geography/evidence/G3-decision.json"
+      ],
+      "observable": "Correct classification, complete scene/value/parent identity, no unsupported acceptance.",
+      "polarity": "negative",
+      "property_id": "R3.P1",
+      "red_expectation": "Invalid geometry/evidence or brightness-only false green accepted.",
+      "scenario": "Evolve a measured hypothesis",
+      "scenario_fingerprint": "54fca3258cd19ef76dfc907e320d36bfec9266020645f396aebf8d9707af5849",
+      "setup": "Run actual new policy or reconcile source-bound actual browser evidence with literal inputs/counterexamples.",
+      "source_path": "tests/test_composition.py",
+      "source_sha256": "e59e32515f956cca604d6ff2de80b49ee3d63e814200a470e5f4073683538f99",
+      "status": "passed",
+      "test_id": "unittest::tests.test_composition.CompositionTest.test_generations_negative"
+    },
+    "R3.P1.POSITIVE": {
+      "evidence_fingerprint": "ae7fccaf63761ef2391d1276b7ba7a9bda43bd4dfefb45f9adb92eb844ed4748",
+      "green_expectation": "Adaptive generations against exact controls",
+      "invalidation_dependencies": [
+        "prototype/composition/**",
+        "tests/test_composition.py",
+        "tools/composition_audit.py",
+        "openspec/changes/compose-brighter-geography/evidence/G1-decision.json",
+        "openspec/changes/compose-brighter-geography/evidence/G2-decision.json",
+        "openspec/changes/compose-brighter-geography/evidence/G3-decision.json"
+      ],
+      "observable": "Correct classification, complete scene/value/parent identity, no unsupported acceptance.",
+      "polarity": "positive",
+      "property_id": "R3.P1",
+      "red_expectation": "Invalid geometry/evidence or brightness-only false green accepted.",
+      "scenario": "Evolve a measured hypothesis",
+      "scenario_fingerprint": "54fca3258cd19ef76dfc907e320d36bfec9266020645f396aebf8d9707af5849",
+      "setup": "Run actual new policy or reconcile source-bound actual browser evidence with literal inputs/counterexamples.",
+      "source_path": "tests/test_composition.py",
+      "source_sha256": "e59e32515f956cca604d6ff2de80b49ee3d63e814200a470e5f4073683538f99",
+      "status": "passed",
+      "test_id": "unittest::tests.test_composition.CompositionTest.test_generations_positive"
+    },
+    "R4.P1.NEGATIVE": {
+      "evidence_fingerprint": "6882586b73e2d651bc5dbbdc3a1a43f8960114973e7ec651a560eee62b2ce1cd",
+      "green_expectation": "Whole composition review and bounded conclusions",
+      "invalidation_dependencies": [
+        "prototype/composition/**",
+        "tests/test_composition.py",
+        "tools/composition_audit.py",
+        "openspec/changes/compose-brighter-geography/evidence/final-browser.json",
+        "openspec/changes/compose-brighter-geography/evidence/additional-browser.json",
+        "tools/reconcile_composition.js",
+        "tools/summarize_composition.py"
+      ],
+      "observable": "Correct classification, complete scene/value/parent identity, no unsupported acceptance.",
+      "polarity": "negative",
+      "property_id": "R4.P1",
+      "red_expectation": "Invalid geometry/evidence or brightness-only false green accepted.",
+      "scenario": "Inspect final proposals",
+      "scenario_fingerprint": "061e7e6a70e4fa3c898175a5ab47d2d3cf49b839b1a6583350e0043aebda41f0",
+      "setup": "Run actual new policy or reconcile source-bound actual browser evidence with literal inputs/counterexamples.",
+      "source_path": "tests/test_composition.py",
+      "source_sha256": "e59e32515f956cca604d6ff2de80b49ee3d63e814200a470e5f4073683538f99",
+      "status": "passed",
+      "test_id": "unittest::tests.test_composition.CompositionTest.test_final_negative"
+    },
+    "R4.P1.POSITIVE": {
+      "evidence_fingerprint": "ab7ffdcce9fc3ead5232b4fae5aa7d0e4f2a9f801e07189754722e5aa8681257",
+      "green_expectation": "Whole composition review and bounded conclusions",
+      "invalidation_dependencies": [
+        "prototype/composition/**",
+        "tests/test_composition.py",
+        "tools/composition_audit.py",
+        "openspec/changes/compose-brighter-geography/evidence/final-browser.json",
+        "openspec/changes/compose-brighter-geography/evidence/additional-browser.json",
+        "tools/reconcile_composition.js",
+        "tools/summarize_composition.py"
+      ],
+      "observable": "Correct classification, complete scene/value/parent identity, no unsupported acceptance.",
+      "polarity": "positive",
+      "property_id": "R4.P1",
+      "red_expectation": "Invalid geometry/evidence or brightness-only false green accepted.",
+      "scenario": "Inspect final proposals",
+      "scenario_fingerprint": "061e7e6a70e4fa3c898175a5ab47d2d3cf49b839b1a6583350e0043aebda41f0",
+      "setup": "Run actual new policy or reconcile source-bound actual browser evidence with literal inputs/counterexamples.",
+      "source_path": "tests/test_composition.py",
+      "source_sha256": "e59e32515f956cca604d6ff2de80b49ee3d63e814200a470e5f4073683538f99",
+      "status": "passed",
+      "test_id": "unittest::tests.test_composition.CompositionTest.test_final_positive"
+    },
+    "R5.P1.NEGATIVE": {
+      "evidence_fingerprint": "12464ca84331d2cf585e4e3a05b949180c40eb6ceb85d517158df8b121ed0668",
+      "green_expectation": "Durable research and publication boundary",
+      "invalidation_dependencies": [
+        "prototype/composition/**",
+        "tests/test_composition.py",
+        "tools/composition_audit.py",
+        "openspec/changes/compose-brighter-geography/evidence/final-freeze.json",
+        "openspec/changes/compose-brighter-geography/evidence/visual-review.md",
+        "openspec/changes/make-launch-site-obvious/evidence/final-freeze.json"
+      ],
+      "observable": "Correct classification, complete scene/value/parent identity, no unsupported acceptance.",
+      "polarity": "negative",
+      "property_id": "R5.P1",
+      "red_expectation": "Invalid geometry/evidence or brightness-only false green accepted.",
+      "scenario": "Continue or reproduce the campaign",
+      "scenario_fingerprint": "d1bf058bd5f7f5c8e64526cf9bf238e560f3ee908b68d81ca92f6bee68589170",
+      "setup": "Run actual new policy or reconcile source-bound actual browser evidence with literal inputs/counterexamples.",
+      "source_path": "tests/test_composition.py",
+      "source_sha256": "e59e32515f956cca604d6ff2de80b49ee3d63e814200a470e5f4073683538f99",
+      "status": "passed",
+      "test_id": "unittest::tests.test_composition.CompositionTest.test_boundary_negative"
+    },
+    "R5.P1.POSITIVE": {
+      "evidence_fingerprint": "7307db13539b9c01aded329cd248444fce8fb6cf39ae0d9602eabfca324f2f14",
+      "green_expectation": "Durable research and publication boundary",
+      "invalidation_dependencies": [
+        "prototype/composition/**",
+        "tests/test_composition.py",
+        "tools/composition_audit.py",
+        "openspec/changes/compose-brighter-geography/evidence/final-freeze.json",
+        "openspec/changes/compose-brighter-geography/evidence/visual-review.md",
+        "openspec/changes/make-launch-site-obvious/evidence/final-freeze.json"
+      ],
+      "observable": "Correct classification, complete scene/value/parent identity, no unsupported acceptance.",
+      "polarity": "positive",
+      "property_id": "R5.P1",
+      "red_expectation": "Invalid geometry/evidence or brightness-only false green accepted.",
+      "scenario": "Continue or reproduce the campaign",
+      "scenario_fingerprint": "d1bf058bd5f7f5c8e64526cf9bf238e560f3ee908b68d81ca92f6bee68589170",
+      "setup": "Run actual new policy or reconcile source-bound actual browser evidence with literal inputs/counterexamples.",
+      "source_path": "tests/test_composition.py",
+      "source_sha256": "e59e32515f956cca604d6ff2de80b49ee3d63e814200a470e5f4073683538f99",
+      "status": "passed",
+      "test_id": "unittest::tests.test_composition.CompositionTest.test_boundary_positive"
+    }
+  },
+  "change": "compose-brighter-geography",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_composition"
+      ],
+      "cwd": "/Users/jekamas/projects/SpaceFox",
+      "duration_seconds": 0.3530555418692529,
+      "exit_code": 0,
+      "id": "composition-tests",
+      "observed_tests": {
+        "unittest::tests.test_composition.CompositionTest.test_boundary_negative": "pass",
+        "unittest::tests.test_composition.CompositionTest.test_boundary_positive": "pass",
+        "unittest::tests.test_composition.CompositionTest.test_final_negative": "pass",
+        "unittest::tests.test_composition.CompositionTest.test_final_positive": "pass",
+        "unittest::tests.test_composition.CompositionTest.test_generations_negative": "pass",
+        "unittest::tests.test_composition.CompositionTest.test_generations_positive": "pass",
+        "unittest::tests.test_composition.CompositionTest.test_information_negative": "pass",
+        "unittest::tests.test_composition.CompositionTest.test_information_positive": "pass",
+        "unittest::tests.test_composition.CompositionTest.test_metrics_negative": "pass",
+        "unittest::tests.test_composition.CompositionTest.test_metrics_positive": "pass"
+      },
+      "status": "exited",
+      "stderr": "test_boundary_negative (tests.test_composition.CompositionTest.test_boundary_negative) ... ok\ntest_boundary_positive (tests.test_composition.CompositionTest.test_boundary_positive) ... ok\ntest_final_negative (tests.test_composition.CompositionTest.test_final_negative) ... ok\ntest_final_positive (tests.test_composition.CompositionTest.test_final_positive) ... ok\ntest_generations_negative (tests.test_composition.CompositionTest.test_generations_negative) ... ok\ntest_generations_positive (tests.test_composition.CompositionTest.test_generations_positive) ... ok\ntest_information_negative (tests.test_composition.CompositionTest.test_information_negative) ... ok\ntest_information_positive (tests.test_composition.CompositionTest.test_information_positive) ... ok\ntest_metrics_negative (tests.test_composition.CompositionTest.test_metrics_negative) ... ok\ntest_metrics_positive (tests.test_composition.CompositionTest.test_metrics_positive) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.266s\n\nOK\n",
+      "stderr_artifact": "/Users/jekamas/projects/SpaceFox/openspec/changes/compose-brighter-geography/evidence/verification-final.json.composition-tests.stderr.log",
+      "stderr_truncated": false,
+      "stdout": "",
+      "stdout_artifact": "/Users/jekamas/projects/SpaceFox/openspec/changes/compose-brighter-geography/evidence/verification-final.json.composition-tests.stdout.log",
+      "stdout_truncated": false
+    }
+  ],
+  "finished_at": "2026-11-11T10:32:05.670873+00:00",
+  "git": {
+    "dirty": false,
+    "head": "48b39af98050fce79d6a656342df89fe45e62761",
+    "status": "known"
+  },
+  "manifest": "openspec/changes/compose-brighter-geography/verification.json",
+  "manifest_sha256": "d25bc3ec69af059f6b7742339023c7c775cc0cd9d7c4f6466d4e8e34dbab0879",
+  "requested_selectors": {
+    "all": true,
+    "cases": [],
+    "changed_paths": [],
+    "commands": [],
+    "owners": [],
+    "properties": [],
+    "requirements": [],
+    "scenarios": [],
+    "tests": []
+  },
+  "schema_version": 2,
+  "selection": {
+    "cases": [
+      "R1.P1.NEGATIVE",
+      "R1.P1.POSITIVE",
+      "R2.P1.NEGATIVE",
+      "R2.P1.POSITIVE",
+      "R3.P1.NEGATIVE",
+      "R3.P1.POSITIVE",
+      "R4.P1.NEGATIVE",
+      "R4.P1.POSITIVE",
+      "R5.P1.NEGATIVE",
+      "R5.P1.POSITIVE"
+    ],
+    "commands": [
+      "composition-tests"
+    ],
+    "properties": [
+      "R1.P1",
+      "R2.P1",
+      "R3.P1",
+      "R4.P1",
+      "R5.P1"
+    ],
+    "requirements": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5"
+    ]
+  },
+  "specifications": {
+    "R1": "0c4ff855ba8ca5c5b6bfbf9fd4b2bab20d2a5acae7e0b9ed027c05303e646eb3",
+    "R2": "472c0fb12f6dea5e8e8140560ac4f8c4fac024c2542a7ed0ae7d78b944251a46",
+    "R3": "069e77ab8a6203fa24de08388683a33cb28e947e8b4d5f6be62da645fe7627b7",
+    "R4": "683b6ca85a88f2a0324c95a2a211b6cd33f1d7615dd5db153a5351008523c17d",
+    "R5": "c1bbec371f7bbcda1d343b67497bbae1d0d4498f2a365198e393c5807a6c8bf8"
+  },
+  "started_at": "2026-11-11T10:32:05.171478+00:00",
+  "status": "passed",
+  "substitution_gaps": []
+}

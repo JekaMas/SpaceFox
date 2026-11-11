@@ -1,0 +1,23 @@
+{
+  "dateUTC": "2026-11-11T10:18:07.575095+00:00",
+  "reason": "Opaque CSS colors serialize as rgb with three channels, not necessarily rgba. V2 excluded those panels; old-face area/energy/connectivity were wrong. New candidate foregrounds are transparent rgba, so only old control map/contrast observations are affected.",
+  "oldMetricSHA256": "3e3c63b4a1fe29ca039b590a7ca0c4b7c233f731c057cc1fcfe53e2310d125cc",
+  "candidateIdsUnchanged": [
+    "C3-11",
+    "C3-21",
+    "C3-32"
+  ],
+  "numericThresholdsUnchanged": true,
+  "requiredAction": "Reobserve ten old controls on14 author/additional scenes with corrected opacity parser; recompute all verdicts against corrected baselines. Retain original candidate measurements and original exports; no new observation/source claim for those carried rows.",
+  "newMetricSHA256": "a1a16d04e13ec085fe28e2b4ba1f94d2b55b055c7e23986d598fa5a58dbcdcf2",
+  "observedControlCount": 140,
+  "reconciledSceneGates": {
+    "G1": "27/144",
+    "G2": "19/96",
+    "G3": "45/48",
+    "final": "24/24",
+    "additional": "18/18"
+  },
+  "selectionChanged": false,
+  "carriedCandidateProof": "Common renderer sets every queried label, field-row and count-group background transparent for every new candidate; only controls can enter the corrected RGB opaque branch. Exact candidate observations retained with original v2 source bindings."
+}

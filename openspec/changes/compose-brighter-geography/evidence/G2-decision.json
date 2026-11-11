@@ -1,0 +1,25 @@
+{
+  "generation": 2,
+  "metricVersion": 2,
+  "candidateScenes": 96,
+  "acceptedScenes": 19,
+  "fullyPassingCandidates": [
+    "C2-41",
+    "C2-52"
+  ],
+  "parents": [
+    {
+      "id": "C2-41",
+      "reason": "Keep accepted bright upper-right globe but remove its internal horizontal crop; compare scale/curvature."
+    },
+    {
+      "id": "C2-52",
+      "reason": "Keep accepted separated map/text lanes, soften deliberate frame and test mirrored reading balance."
+    },
+    {
+      "id": "C2-61",
+      "reason": "Repair artwork circle margin without shrinking text; adaptive metadata flow addresses G2 fixed-row failures."
+    }
+  ],
+  "visualReview": "Own review: separated lanes preserve bright geography and clear type. Upper-right globe needs a continuous silhouette; raw side rectangle should be an intentional rounded window. Belt can work after moving the rocket safely inside the round screen. Shading-only repair dims map without reliably protecting long text."
+}

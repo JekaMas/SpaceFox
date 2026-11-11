@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "change": "compose-brighter-geography",
+  "scope": {
+    "property_ids": [
+      "R1.P1",
+      "R2.P1",
+      "R3.P1",
+      "R4.P1",
+      "R5.P1"
+    ],
+    "test_ids": [
+      "unittest::tests.test_composition.CompositionTest.test_metrics_positive",
+      "unittest::tests.test_composition.CompositionTest.test_metrics_negative",
+      "unittest::tests.test_composition.CompositionTest.test_information_positive",
+      "unittest::tests.test_composition.CompositionTest.test_information_negative",
+      "unittest::tests.test_composition.CompositionTest.test_generations_positive",
+      "unittest::tests.test_composition.CompositionTest.test_generations_negative",
+      "unittest::tests.test_composition.CompositionTest.test_final_positive",
+      "unittest::tests.test_composition.CompositionTest.test_final_negative",
+      "unittest::tests.test_composition.CompositionTest.test_boundary_positive",
+      "unittest::tests.test_composition.CompositionTest.test_boundary_negative"
+    ]
+  },
+  "reviews": [
+    {
+      "id": "D1",
+      "question": "New whole-face composition with brighter geography, preserving historical renderer owners.",
+      "property_ids": [
+        "R1.P1",
+        "R2.P1",
+        "R3.P1",
+        "R4.P1",
+        "R5.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_composition.CompositionTest.test_metrics_positive",
+        "unittest::tests.test_composition.CompositionTest.test_metrics_negative",
+        "unittest::tests.test_composition.CompositionTest.test_information_positive",
+        "unittest::tests.test_composition.CompositionTest.test_information_negative",
+        "unittest::tests.test_composition.CompositionTest.test_generations_positive",
+        "unittest::tests.test_composition.CompositionTest.test_generations_negative",
+        "unittest::tests.test_composition.CompositionTest.test_final_positive",
+        "unittest::tests.test_composition.CompositionTest.test_final_negative",
+        "unittest::tests.test_composition.CompositionTest.test_boundary_positive",
+        "unittest::tests.test_composition.CompositionTest.test_boundary_negative"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read exact prototype/features/renderer.js and marker/renderer.js, previous comparison and frozen controls.",
+          "outcome": "Reuse assets and exact controls in a new isolated owner; no existing whole-composition bright-map optimizer.",
+          "results": [
+            {
+              "path": "prototype/features/renderer.js",
+              "line": 116,
+              "classification": "interface_dependency",
+              "reason": "Actual prior DOM renderer and projected catalog geography."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "New composition-only owner",
+          "reason": "Exact prior owners and new module responsibility already known.",
+          "outcome": "No semantic-search claim.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Composition-only owner and exact historical dependencies",
+          "reason": "No unknown symbol, reference tracing or IDE operation needed; exact files already identified.",
+          "outcome": "No indexed evidence claimed.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "Composition evidence is distinct from previous marker-specific acceptance."
+    }
+  ]
+}

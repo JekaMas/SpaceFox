@@ -1,0 +1,266 @@
+{
+  "scope": "Descriptive browser composition evidence; no independent, human, native, power or AOD qualification.",
+  "generations": {
+    "G1": {
+      "candidates": 18,
+      "observations": 144,
+      "passingScenes": 27,
+      "passingCandidates": []
+    },
+    "G2": {
+      "candidates": 12,
+      "observations": 96,
+      "passingScenes": 19,
+      "passingCandidates": [
+        "C2-41",
+        "C2-52"
+      ]
+    },
+    "G3": {
+      "candidates": 6,
+      "observations": 48,
+      "passingScenes": 45,
+      "passingCandidates": [
+        "C3-11",
+        "C3-21",
+        "C3-31",
+        "C3-32"
+      ]
+    }
+  },
+  "currentMetricVersion": 3,
+  "policyThresholdVersion": 1,
+  "parameterCount": 36,
+  "observedHeroDescriptorCount": 36,
+  "heroDescriptorsSHA256": {
+    "C1-11": "378895d14a65938d53ef0dd1a9b2db2d5361cc7b322887874392bc61d5093d4e",
+    "C1-12": "670a2f2d494154f7e9a6a3778bc25967f464ae803c45145c175edecfe4cb68a3",
+    "C1-13": "2b2f8756738927ab9878c2e49e6981ebd1f06753efaa06f238750cba8e8feaa8",
+    "C1-21": "d2dad248b83fbbd6d2cc6d381aed1e9a39b33e69d862a704a23ecae0771be16f",
+    "C1-22": "ddf6803720919ca7bec41a5b3670c9c718dbd14738f710a113b782b3816bce61",
+    "C1-23": "b1b9dbe9c12fb3f7b4bfe2cada3f7bcbd41e16bf3cf3e50ec00fce9bef6a9cbb",
+    "C1-31": "b9725e55d81ec43e6dff18e6ac63149dbbbe700e200cc1a13fccca180672ddf4",
+    "C1-32": "0ce75cf27fbbbf5a93d55974ab4383f24da46daa5604e0375aab4cf00569ebd7",
+    "C1-33": "7e809dad7a33e034c0c6074de21ec83b65ef3d8c6375857fac5b58741ed67fb1",
+    "C1-41": "f7f96230f56576b91f097d1a2f9f6090e0ef38edb3aa4cb63aad57c0f7ad8205",
+    "C1-42": "75b9665e74b1e3041366b007e6505992aa0ef1566728ad5d3dadea485f4acc73",
+    "C1-43": "587c3a81fef570e09c38871816292048b7848708bc663960fc0f287a6b8c1a13",
+    "C1-51": "2ee91066e41825efd3e43880a3315ddb9a1805b3a4e3bd5ebaa3aaf24f8de68c",
+    "C1-52": "c5a6b3f6ffb52614873fb1d669351eaa0a37f06a984edbc5468ae5037d1d379b",
+    "C1-53": "a6946d469c0731cc1253c3c9d0ec30fefb86e96167927cf38cc308b7d4fb9607",
+    "C1-61": "8fa05b098038b39a49b0050146ba2be8c062db305e364c24c7b1068c275b907b",
+    "C1-62": "c82aaa7801a926ffc855e09618e85e14e53cec1f043413126d0d9f2cfc2b7d0a",
+    "C1-63": "98d684a18874fd3c269a533e90fad082921de3cb88cc82393882225ca6b3725a",
+    "C2-11": "ffdc1083b3902c9cd3fc174548e31c606a529b3ef20886a289f70855cb529ef0",
+    "C2-12": "96160e0d05761a3f60c4a039b759778c67b4843a9287dc5a99c043f8c8e40cb1",
+    "C2-21": "cfb4ab4a6bf28ab63b087f7705db58670cd0dd37d64175a51a06c571644cf646",
+    "C2-22": "ea8d474a405809ce3930676293599bb695fce4a0cbc5dbe8c09f738db3dfe649",
+    "C2-31": "f75b46945859b032a330b005fef040beec0e92b7a1abc1a768a90713dcb8562e",
+    "C2-32": "9bd68f7876c21d665698e3dd3dc9b438d65a15c0587235fc7f04ceb9267ac62c",
+    "C2-41": "b42863b33473c553f2c240ab28efd285655915a63b43527b6fc4bd9b016e89a7",
+    "C2-42": "be8a6772c26ef2d93bee4b20b6fa6e41a4deaa962656816249937fd828539da6",
+    "C2-51": "a638869cbbd1d177e9c35479c00d9b553893cf2179bf25fd722f639cbb007c8f",
+    "C2-52": "352bad913435c156c75b63059ebc42a970fb8340bf5948ee40123a7d7acf15a1",
+    "C2-61": "a804a31c0cac594ab8dc75b5550e11d731b5e327c6336a17f8103a2c5dbb5167",
+    "C2-62": "8f35b0c30d3cc6c0f2781c75eebe9f8c10b4050adf8ae4082ee11d949d0c5c64",
+    "C3-11": "e56471718cf31f5ddbcdec98296bb0d967978833a4cae59c2df4fa15e3b044d0",
+    "C3-12": "b8a46634a4e3edf20eae47f49e006482686e66be040f061a502a16cbda3ae448",
+    "C3-21": "61126407fa8b47163cc08aa950337560a87f14defcf377110a5d78c39c1f5142",
+    "C3-22": "6f925bd983f71eae148fd2ba5443988b4571fa64907de6316e7792e01371e28f",
+    "C3-31": "b3d6351fe33e58410faf09726a256536bd88df6ab5e1bb1aae31f773218879db",
+    "C3-32": "43d89029e8855db6d2f1b6ec0e52cd9afbed7357ddf51a1d1eed39bf52dda04a"
+  },
+  "final": {
+    "C3-11": {
+      "scenes": 14,
+      "knownCoordinates": 13,
+      "passed": 14,
+      "ranges": {
+        "usableFraction": [
+          0.14359731196835623,
+          0.14385681509713197
+        ],
+        "meanLuminance": [
+          0.1562692274266171,
+          0.2960388456205222
+        ],
+        "panelRetention": [
+          1,
+          1
+        ],
+        "largestComponent": [
+          1,
+          1
+        ],
+        "landFraction": [
+          0.1456355907529261,
+          0.5639802153040442
+        ],
+        "landWaterContrast": [
+          2.7349447313597404,
+          2.7349447313597404
+        ],
+        "energyGain": [
+          10.853540247047922,
+          15.37467685811179
+        ]
+      },
+      "minTextContrast": 12.817696620358548,
+      "minMarkerGap": 68.930353516261,
+      "maxAxisResidual": 0.00390625
+    },
+    "C3-21": {
+      "scenes": 14,
+      "knownCoordinates": 13,
+      "passed": 14,
+      "ranges": {
+        "usableFraction": [
+          0.1588410280167634,
+          0.15901682045883728
+        ],
+        "meanLuminance": [
+          0.14652067756585502,
+          0.3643846118222383
+        ],
+        "panelRetention": [
+          1,
+          1
+        ],
+        "largestComponent": [
+          1,
+          1
+        ],
+        "landFraction": [
+          0.11894598155467721,
+          0.7304169298799748
+        ],
+        "landWaterContrast": [
+          3.0234016120107325,
+          3.0234016120107325
+        ],
+        "energyGain": [
+          3.9178580908850793,
+          10.49741508807851
+        ]
+      },
+      "minTextContrast": 12.817696620358548,
+      "minMarkerGap": 66.82352403991725,
+      "maxAxisResidual": 0.00390625
+    },
+    "C3-32": {
+      "scenes": 14,
+      "knownCoordinates": 13,
+      "passed": 14,
+      "ranges": {
+        "usableFraction": [
+          0.1437814754791003,
+          0.1437898465477705
+        ],
+        "meanLuminance": [
+          0.13366733956561275,
+          0.2070613147464692
+        ],
+        "panelRetention": [
+          1,
+          1
+        ],
+        "largestComponent": [
+          1,
+          1
+        ],
+        "landFraction": [
+          0.21651045002037608,
+          0.394073470338243
+        ],
+        "landWaterContrast": [
+          4.687822824536687,
+          4.687822824536687
+        ],
+        "energyGain": [
+          8.721283462168717,
+          28.2910671464648
+        ]
+      },
+      "minTextContrast": 12.817696620358548,
+      "minMarkerGap": 28.075884320284338,
+      "maxAxisResidual": 0.00390625
+    }
+  },
+  "finalAuthorScenes": 24,
+  "additionalScenes": 18,
+  "controlsShortRU": {
+    "R4-01": {
+      "usableFraction": 0.06671741730137572,
+      "meanLuminance": 0.02297049422577265,
+      "energy": 0.0015325320488797155,
+      "panelRetention": 0.9338019917984769,
+      "largestComponent": 1
+    },
+    "R4-03": {
+      "usableFraction": 0.04667707890495245,
+      "meanLuminance": 0.024916424557111554,
+      "energy": 0.001197023982541831,
+      "panelRetention": 1,
+      "largestComponent": 1
+    },
+    "R4-05": {
+      "usableFraction": 0.1642571094463732,
+      "meanLuminance": 0.015370599968186129,
+      "energy": 0.002525244994622112,
+      "panelRetention": 0.7495703318947409,
+      "largestComponent": 1
+    },
+    "R4-12": {
+      "usableFraction": 0.09484420803319786,
+      "meanLuminance": 0.015127959638508211,
+      "energy": 0.0017427809946566333,
+      "panelRetention": 0.7514880139791406,
+      "largestComponent": 1
+    },
+    "R4-09": {
+      "usableFraction": 0.5306922694150583,
+      "meanLuminance": 0.009311065561247828,
+      "energy": 0.005206474535809141,
+      "panelRetention": 0.5589884349528862,
+      "largestComponent": 1
+    },
+    "M2-11": {
+      "usableFraction": 0.06656673806531238,
+      "meanLuminance": 0.015740985685276484,
+      "energy": 0.0010478260710016316,
+      "panelRetention": 0.9339910735259572,
+      "largestComponent": 1
+    },
+    "M3-21": {
+      "usableFraction": 0.04178837480156432,
+      "meanLuminance": 0.01644679267626986,
+      "energy": 0.0006872847366395879,
+      "panelRetention": 0.8724222299895141,
+      "largestComponent": 1
+    },
+    "M2-31": {
+      "usableFraction": 0.1642571094463732,
+      "meanLuminance": 0.012973395760788082,
+      "energy": 0.0021314068921180784,
+      "panelRetention": 0.7495703318947409,
+      "largestComponent": 1
+    },
+    "M2-41": {
+      "usableFraction": 0.1451292175350001,
+      "meanLuminance": 0.016175219034869633,
+      "energy": 0.002676799092116179,
+      "panelRetention": 0.612441525449983,
+      "largestComponent": 1
+    },
+    "M2-51": {
+      "usableFraction": 0.5306420430030373,
+      "meanLuminance": 0.008598289201176768,
+      "energy": 0.0048074790575692436,
+      "panelRetention": 0.5589662906303351,
+      "largestComponent": 1
+    }
+  },
+  "controlReobservationsV3": 140,
+  "controlScenarioIdentities": 140,
+  "note": "Stage control repetitions and metric-version rechecks are not independent samples; candidate rows retained with original source provenance and corrected control references."
+}

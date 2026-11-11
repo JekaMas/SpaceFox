@@ -1,0 +1,16 @@
+{
+  "authoredBeforeG1": true,
+  "counts": [
+    18,
+    12,
+    6
+  ],
+  "policyVersion": 1,
+  "sourcesSHA256": {
+    "prototype/composition/policy.json": "c0ebb0429cda94e5f7f77d1b6854886d1ddb73f57bf58781bec9eaaf775dcfde",
+    "prototype/composition/G1.json": "611040a117f2b94eae8c6bc4f4647a7b347584d31042dbe2ff1d144574fba77f",
+    "prototype/composition/scenes.json": "58e74c5737175a339c8f5debd86dd85b10c232a879a8e85e0e6772bbfb8bc863"
+  },
+  "scope": "Heuristic composition experiment, not human or device qualification",
+  "note": "Source skeleton was authored before verification graph; graph is completed before any experiment. This ordering deviation does not create evidence."
+}

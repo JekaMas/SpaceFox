@@ -1,0 +1,41 @@
+{
+  "generation": 1,
+  "metricVersion": 2,
+  "candidateScenes": 144,
+  "acceptedScenes": 27,
+  "fullyPassingCandidates": [],
+  "decision": "No candidate accepted as final. Six observed parents retained for bounded repair, including failures; belt is closest with6/8 scenes.",
+  "parents": [
+    {
+      "id": "C1-13",
+      "acceptedScenes": 0,
+      "reason": "Separate clock/globe and center or left-align a full-width metadata group; repair rocket/field collision."
+    },
+    {
+      "id": "C1-22",
+      "acceptedScenes": 1,
+      "reason": "Compare smooth shading against an explicit right map lane; tests whether bright land can coexist with long text."
+    },
+    {
+      "id": "C1-31",
+      "acceptedScenes": 1,
+      "reason": "Separate a continuous bright band from metadata; flat map versus curved limb."
+    },
+    {
+      "id": "C1-42",
+      "acceptedScenes": 0,
+      "reason": "Retain a larger upper-right geographic figure with no text cutouts; move clock and mission into clear space."
+    },
+    {
+      "id": "C1-53",
+      "acceptedScenes": 1,
+      "reason": "Compare broad curved band against side fragment; reserve clean typography."
+    },
+    {
+      "id": "C1-62",
+      "acceptedScenes": 6,
+      "reason": "Repair long metadata and bottom countdown, compare stack against row narrative."
+    }
+  ],
+  "visualReview": "Own review: brighter geography is clear. Large bright map under narrative competes with text; dedicated globe and belt are more promising. Rectangular cropped map windows need deliberate boundaries, not accidental holes."
+}

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "scope": "Browser composition heuristics, not validated human/device thresholds",
+  "mapUsableFractionMin": 0.12,
+  "mapMeanLuminanceMin": 0.10,
+  "landWaterContrastMin": 1.8,
+  "landFractionMin": 0.03,
+  "landFractionMax": 0.85,
+  "panelRetentionMin": 0.85,
+  "largestComponentMin": 0.95,
+  "energyGainMin": 2,
+  "textContrastMin": 4.5,
+  "clockContrastMin": 3,
+  "axisResidualMax": 1,
+  "markerGapMin": 4,
+  "foregroundGapMin": 4,
+  "fontMin": {"timeInk":58.5,"rocket":21,"operator":17.2,"purpose":17.2,"site":21,"field":22.2,"countdown":31}
+}
