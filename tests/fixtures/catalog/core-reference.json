@@ -1,0 +1,45 @@
+{
+  "reference": {
+    "schemaVersion": 1,
+    "purpose": "Independent literal producer fixture; synthetic sites, no map qualification",
+    "source": {"provider": "fixture", "observedToUTC": "2026-11-11T00:00:00Z", "termsUrl": "fixture-data-rights"},
+    "queries": {"models": "literal fixture"},
+    "mapBaseline": {"scope": "not-qualified"},
+    "countries": [
+      {"sourceId": 1, "name": "France", "alpha2": "FR", "alpha3": "FRA", "currentPackFlagId": "flag-fr"},
+      {"sourceId": 2, "name": "United States", "alpha2": "US", "alpha3": "USA", "currentPackFlagId": "flag-us"},
+      {"sourceId": 17, "name": "Unknown", "alpha2": "??", "alpha3": "???", "currentPackFlagId": null}
+    ],
+    "organizations": [
+      {"sourceId": 121, "name": "SpaceX", "abbrev": "SpX", "sourceUrl": "fixture:organization/121", "type": {"id": 3, "name": "Commercial"}, "countryIds": [2], "providerPendingLaunches": null, "providerTotalLaunches": null, "referenceRoles": ["manufacturer-of-required-configuration"], "currentPackBadgeId": "company-spacex"},
+      {"sourceId": 1044, "name": "ArianeGroup", "abbrev": "AG", "sourceUrl": "fixture:organization/1044", "type": {"id": 1, "name": "Government"}, "countryIds": [1, 2], "providerPendingLaunches": 0, "providerTotalLaunches": null, "referenceRoles": [], "currentPackBadgeId": null}
+    ],
+    "models": [
+      {"sourceId": 121, "name": "Ariane 6", "fullName": "Ariane 62", "variant": "2", "sourceUrl": "fixture:configuration/121", "providerActive": false, "providerPendingLaunches": 4, "placeholder": false, "familyIds": [99], "manufacturerId": 1044, "manufacturerCountryIds": [1], "currentPackAssetId": "ariane-62", "currentPackSpecific": true},
+      {"sourceId": 164, "name": "Falcon 9", "fullName": "Falcon 9 Block 5", "variant": "Block 5", "sourceUrl": "fixture:configuration/164", "providerActive": true, "providerPendingLaunches": 0, "placeholder": false, "familyIds": [], "manufacturerId": 121, "manufacturerCountryIds": [2], "currentPackAssetId": "falcon-9", "currentPackSpecific": true},
+      {"sourceId": 999, "name": "未知 / Я", "fullName": "未知 / Я", "variant": "", "sourceUrl": "fixture:configuration/999", "providerActive": true, "providerPendingLaunches": null, "placeholder": false, "familyIds": [], "manufacturerId": 121, "manufacturerCountryIds": [2], "currentPackAssetId": "generic", "currentPackSpecific": false}
+    ],
+    "sites": [
+      {"sourceId": 13, "name": "Synthetic moving platform reference", "sourceUrl": "fixture:site/13", "providerActive": true, "locationId": 1, "locationName": "Unverified ocean reference", "countryId": null, "latitude": 0, "longitude": -154.000000000000000001, "coordinateStatus": "finite-in-range-unverified", "agencyIds": [121], "celestialBodyId": 1, "celestialBodyName": "Earth", "providerTotalLaunches": 0, "providerOrbitalAttempts": 0, "mapRenderQualification": "not-performed"},
+      {"sourceId": 65, "name": "Synthetic shared point A", "sourceUrl": "fixture:site/65", "providerActive": false, "locationId": 2, "locationName": "Māhia fixture", "countryId": 2, "latitude": -39.262833000000000001, "longitude": 177.864469000000000001, "coordinateStatus": "finite-in-range-unverified", "agencyIds": [], "celestialBodyId": 1, "celestialBodyName": "Earth", "providerTotalLaunches": 0, "providerOrbitalAttempts": 0, "mapRenderQualification": "not-performed"},
+      {"sourceId": 185, "name": "Synthetic shared point B", "sourceUrl": "fixture:site/185", "providerActive": true, "locationId": 2, "locationName": "Māhia fixture", "countryId": 2, "latitude": -39.262833000000000001, "longitude": 177.864469000000000001, "coordinateStatus": "finite-in-range-unverified", "agencyIds": [], "celestialBodyId": 1, "celestialBodyName": "Earth", "providerTotalLaunches": 0, "providerOrbitalAttempts": 0, "mapRenderQualification": "not-performed"},
+      {"sourceId": 101, "name": "Unavailable fixture", "sourceUrl": "fixture:site/101", "providerActive": true, "locationId": null, "locationName": null, "countryId": null, "latitude": null, "longitude": null, "coordinateStatus": "missing-or-invalid", "agencyIds": [], "celestialBodyId": 1, "celestialBodyName": "Earth", "providerTotalLaunches": null, "providerOrbitalAttempts": null, "mapRenderQualification": "not-performed"}
+    ]
+  },
+  "registry": {
+    "schemaVersion": 1, "version": "fixture.1", "license": "MIT", "creator": "Fixture author", "originMeaning": "Explicit curated source only",
+    "models": [
+      {"id": "falcon-9", "name": "Falcon 9", "aliases": ["Falcon 9", "Falcon 9 Block 5"], "kind": "specific", "file": "svg/falcon-9.svg", "creator": "Fixture author", "license": "MIT", "sources": ["fixture:falcon"], "originCode": "US", "originSources": ["fixture:model-origin"]},
+      {"id": "ariane-62", "name": "Ariane 62", "aliases": ["Ariane 62"], "kind": "specific", "file": "svg/ariane-62.svg", "creator": "Fixture author", "license": "MIT", "sources": ["fixture:ariane"], "originCode": "EUROPE", "originSources": ["fixture:regional-origin"]},
+      {"id": "generic", "name": "Unknown", "aliases": [], "kind": "generic", "file": "svg/generic.svg", "creator": "Fixture author", "license": "MIT", "sources": ["fixture:generic"], "originCode": null, "originSources": []}
+    ],
+    "companies": [
+      {"id": "company-spacex", "name": "SpaceX", "aliases": ["SpaceX"], "kind": "original-letter-badge", "file": "svg/company-spacex.svg", "creator": "Fixture author", "license": "MIT", "sources": ["Original fixture badge"], "originCode": "US", "originSources": ["fixture:operator-origin"]}
+    ],
+    "countries": [
+      {"id": "flag-fr", "name": "France mark", "codes": ["FR"], "file": "svg/flag-fr.svg", "creator": "Fixture author", "license": "MIT", "sources": ["fixture:flag-fr"]},
+      {"id": "flag-us", "name": "US mark", "codes": ["US"], "file": "svg/flag-us.svg", "creator": "Fixture author", "license": "MIT", "sources": ["fixture:flag-us"]},
+      {"id": "flag-europe", "name": "Europe region", "codes": ["EUROPE"], "kind": "regional-origin", "file": "svg/flag-europe.svg", "creator": "Fixture author", "license": "MIT", "sources": ["fixture:region"]}
+    ]
+  }
+}
