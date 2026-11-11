@@ -1,0 +1,28 @@
+{
+  "freshObservations": 28,
+  "reusedControls": 14,
+  "unchangedNonMetadataLabelPairs": 196,
+  "allTypographyPairs": 280,
+  "allObservedFitContrastSemanticChecks": "PASS",
+  "baselineSourceAndSceneIdentity": "verified",
+  "currentSharedMetricSHA256": "a1a16d04e13ec085fe28e2b4ba1f94d2b55b055c7e23986d598fa5a58dbcdcf2",
+  "observedSourceBindings": "all four exact files retained in observed-source; current HTML differs only by documented footer wording",
+  "retainedOldBrowserOwners": 53,
+  "retainedOldEvidenceTools": 23,
+  "oldTestsRerun": false,
+  "syntax": "two new JavaScript owners passed node --check after stable implementation",
+  "openspec": "spacefox-watchface strict structural validation passed after header-design note",
+  "scope": "own browser review, no independent/human/native evidence",
+  "filesSHA256": {
+    "prototype/relay/header.html": "d8a6a2a3a3df0741a4700b6f9798fc20d3bd3aa8de0deb1767ecefd523131d98",
+    "prototype/relay/header-variants.json": "96698905d6fddf7ede663054dbc843ee451fd85e26ebe0413c5696e58099dc6f",
+    "prototype/relay/header-renderer.js": "a817803c8366202d0d1ab10c83c1da1580243a97cdb6cb5b9786ae249c8ba44d",
+    "prototype/relay/header-review.js": "93b08c458307caef408894fac4105cf5336905566255bac1ffb5bc5484587624",
+    "docs/RELAY_HEADER.md": "faa1c73d09c1a2498e459cf251101867c08cf45ffb56cb4b5a0f738b3eda3a00",
+    "openspec/changes/spacefox-watchface/design.md": "4406a25f93781c340cf6347a733596c8c812f0b1d0f0075a3a97d7cab8e0092c",
+    "openspec/changes/compose-brighter-geography/evidence/relay-header/browser.json": "3321db9c06d9f1761fd500626a00a54de6d1407b634c3adf7cd2f50dd4201f61",
+    "openspec/changes/compose-brighter-geography/evidence/relay-header/summary.json": "853124d1a7570e09563d8899b8733a87e4bbaf74379c8fe42700ee7bb3a896e6",
+    "openspec/changes/compose-brighter-geography/evidence/relay-header/two-options.jpg": "b93d200b0a9a0772c553237837ba88f0367191fa9e8aa4c622d37a19865addab",
+    "openspec/changes/compose-brighter-geography/evidence/relay-header/selected-company.jpg": "e6eb00f88add7ab93adbbc8b4943cf7922b576a8755b70cd18d2626a710ed7d3"
+  }
+}

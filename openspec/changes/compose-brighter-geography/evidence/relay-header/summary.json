@@ -1,0 +1,32 @@
+{
+  "baseId": "M2-31",
+  "scenes": 14,
+  "newObservations": 28,
+  "retainedControlScenes": 14,
+  "variants": {
+    "purpose": {
+      "passedScenes": 14,
+      "minTextContrast": 11.311230002060286,
+      "mapSignalRatioVsClearBase": [
+        0.7704851243036103,
+        1.0252644912823083
+      ],
+      "singleRowPairScenes": 2,
+      "stackedPairScenes": 12
+    },
+    "company": {
+      "passedScenes": 14,
+      "minTextContrast": 13.373062398256602,
+      "mapSignalRatioVsClearBase": [
+        0.7690750439660738,
+        1.0253198356639919
+      ],
+      "singleRowPairScenes": 6,
+      "stackedPairScenes": 8
+    }
+  },
+  "unchangedNonMetadataLabelPairs": 196,
+  "allTypographyComparisons": 280,
+  "scope": "Own browser evidence, not human/native usability qualification.",
+  "presentationClarification": "After measurement only the footer wording changed from brightness preserved to colors preserved. The original four source files are retained in observed-source; watch renderers and parameters unchanged."
+}

@@ -42,6 +42,13 @@ native glyph bounds and AMOLED/AOD adaptation still require separate validation.
 This selection does not inherit the previous full marker/human/device claims.
 See [decision and bounded browser evidence](../../../docs/RELAY_REFINEMENT.md).
 
+The follow-up [header comparison](../../../prototype/relay/header.html) offers
+rocket + company or rocket + purpose as a compact top pair, with the remaining
+label below. The preview recommends the company pair; the owner has requested
+comparison of both, not final native acceptance. Long values stack without
+shrinking type. Time, fitness, rocket artwork, map projection and bottom launch
+information keep their positions. See [bounded header evidence](../../../docs/RELAY_HEADER.md).
+
 ### Use a personal static feed, not an always-running backend
 
 Planned `watchface/` owns Monkey C rendering, settings, local countdowns and cache.
