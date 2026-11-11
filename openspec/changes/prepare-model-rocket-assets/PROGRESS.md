@@ -23,3 +23,11 @@ Render receipt prevents stale SVG→PNG association. Next: clean-source six exac
 checks, publication/readback, retained-old-greens and task closure.
 
 Initial strict OpenSpec checks rejected three overly long requirement paragraphs (>500characters). Requirements were tightened and exact examples/independence cases retained in scenarios; no behavior or acceptance target was weakened. Syntax checks for all3 new JS files passed and remain valid.
+
+Complete: all6 exact tests passed on clean sourceff7302ef96b7caefd9cc7a796e5d6e7270f8692b.
+Public source2dc545cd9eca2e94e7f3aa44c385f7eecaf697ea matches remote main;
+GitHub connector read back the asset guide and actual origin-mode resolver at
+that revision. Both public-configuration strict OpenSpec checks passed. MIT
+source/asset package and public README/workflow suffix preserved. Final closure
+is task/source-ledger/publication notes only; retain original behavior greens.
+Native/human/independent recognition, live catalog and AOD remain open.

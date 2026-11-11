@@ -13,7 +13,7 @@ or official brand graphic is copied or bundled.
 
 Company badge design: original letter pairs SX/RL/AS. These are identification
 labels, not replicas of official logos. National flag SVG code is original and
-deliberately simplified at micro size. The launch-country overlays do not claim
+deliberately simplified at micro size. The origin overlays do not claim
 to reproduce painted flags on an actual mission vehicle.
 
 Owner-selected origin metadata:
