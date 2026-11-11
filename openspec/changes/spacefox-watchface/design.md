@@ -4,9 +4,11 @@
 
 See [proposal.md](proposal.md) for intent and [baseline audit](evidence/baseline-audit.md)
 for current coverage and [layout review v4](evidence/layout-review-v4.md) for the
-subsequent compact-band revision. The product artifact is the browser mockup
-in `prototype/mission.html`. Its schedule, health values and model graphics are
-illustrative. No Monkey C owner, live service or downloadable asset pipeline exists.
+subsequent compact-band revision. The initial browser mockup in
+`prototype/mission.html` is retained as a baseline. The selected visual basis is
+now [Mission in Focus with clearer geography](../../../prototype/relay/index.html).
+Schedule, health values and model graphics remain illustrative. No Monkey C owner,
+live service or downloadable asset pipeline exists.
 
 The first device is Forerunner 165, 390 × 390 round AMOLED. The owner selected
 GitHub Actions plus static files for one family's watch. Countdown calculation is
@@ -25,6 +27,20 @@ a custom mobile app, a multi-user service, AWS/cloud-account provisioning,
 per-refresh LLM reasoning, and enabling a live deployment during this spec increment.
 
 ## Decisions
+
+### Use Mission in Focus as the visual basis
+
+On 2026-11-11 the owner selected the existing M2-31 “Mission in Focus” composition,
+derived from R4-05, with more visible geography. Preserve its large mint time,
+left rocket, four configurable fields, complete mission labels, bottom place and
+countdown, projection and true site anchor. The current default preview uses the
+moderate “clear” treatment; a brighter treatment is available for comparison.
+
+Only map paint and the backing safety margin at the operator label change.
+The browser margin is one source pixel, derived from the actual label rectangle;
+native glyph bounds and AMOLED/AOD adaptation still require separate validation.
+This selection does not inherit the previous full marker/human/device claims.
+See [decision and bounded browser evidence](../../../docs/RELAY_REFINEMENT.md).
 
 ### Use a personal static feed, not an always-running backend
 

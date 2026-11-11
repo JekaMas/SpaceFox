@@ -1,0 +1,28 @@
+{
+  "baseId": "M2-31",
+  "scenes": 14,
+  "variants": {
+    "clear": {
+      "minMeanLuminanceRatio": 4.544078558206242,
+      "maxMeanLuminanceRatio": 7.671088370408973,
+      "minMapEnergyRatio": 4.542957946971173,
+      "maxMapEnergyRatio": 7.669092899674653,
+      "minTextContrast": 13.373062398256602,
+      "knownCoordinateScenes": 13,
+      "layoutIdenticalScenes": 14
+    },
+    "bright": {
+      "minMeanLuminanceRatio": 8.701067549198305,
+      "maxMeanLuminanceRatio": 15.22825923579812,
+      "minMapEnergyRatio": 8.698385345884741,
+      "maxMapEnergyRatio": 15.224297927549229,
+      "minTextContrast": 13.373062398256602,
+      "knownCoordinateScenes": 13,
+      "layoutIdenticalScenes": 14
+    }
+  },
+  "foregroundAndPathsEqual": true,
+  "requiredLabelPairs": 280,
+  "scope": "SVG/DOM browser evidence; no human/native/device result",
+  "variantCount": 3
+}

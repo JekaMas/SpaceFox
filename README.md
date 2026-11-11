@@ -17,6 +17,10 @@
 
 Основной документ: [предложение SpaceFox](openspec/changes/spacefox-watchface/proposal.md).
 
+**Выбранная основа дальнейшего макета — «Миссия в фокусе» с более заметной картой.**
+[Сравнение исходника и двух уровней яркости](prototype/relay/index.html) сохраняет
+прежнюю компоновку и шрифты; [решение и проверка](docs/RELAY_REFINEMENT.md).
+
 ## Обновления для личных часов
 
 Выбран путь **GitHub Actions → статический JSON/графика GitHub Pages → Garmin

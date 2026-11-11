@@ -1,0 +1,31 @@
+{
+  "baseId": "M2-31",
+  "newVariantScenePairs": 28,
+  "unchangedRequiredLabelPairs": 280,
+  "exactTextGeometryStyleAndGeographicPaths": true,
+  "textContrastAtLeast4_5": true,
+  "mapSignalAtLeastDouble": true,
+  "sourceBindings": "current and retained first source verified against actual browser exports before image-format check",
+  "retainedOldBrowserOwners": 53,
+  "retainedOldEvidenceTools": 23,
+  "oldTestsRerun": false,
+  "currentSourceSyntax": "renderer.js and review.js pass node --check after paint-backing change",
+  "openspec": "spacefox-watchface strict validation passed after design visual-basis update; native work remains open",
+  "selectedImagePixels": [
+    390,
+    390
+  ],
+  "selectedImageFormat": "JPEG, verified by file/sips; original .png extension corrected without editing image bytes",
+  "filesSHA256": {
+    "prototype/relay/renderer.js": "0c6491550fa7ce3f813b5b9be9093bc390f4a97718d033b9416ed7062ba557d6",
+    "prototype/relay/review.js": "c7bb0ff80c2f465617a24c27e22fc75213065c293c132a3917b4ea4f2f698df4",
+    "prototype/relay/index.html": "4c9107e6914a34130973e1bf1c75d1f158419feba4f3e16cf45aa438d522f8f0",
+    "prototype/relay/variants.json": "caaf40ce9df1c4f5f272dee7e01a7e39842fdaab62781ae5336763b88b2e35a2",
+    "docs/RELAY_REFINEMENT.md": "0e256ed69a0b7143c0e40216bdd77a9250d2c4ea78744afb2bf7d756f2e29eb0",
+    "openspec/changes/spacefox-watchface/design.md": "fe2620b48ccca2f1a00f067adc8c32df2bd1c008de4f637c1089e8668ce4192f",
+    "openspec/changes/compose-brighter-geography/evidence/relay-refinement/browser.json": "6170b90562b69e64c0df513bc65b1521aed8a1089c2bb35a16f20d6b0fe1b2a5",
+    "openspec/changes/compose-brighter-geography/evidence/relay-refinement/browser-first.json": "a1d4494afd0979dccbc442ffab1ec66f7f8b15b156fae3ae487137bbd7075504",
+    "openspec/changes/compose-brighter-geography/evidence/relay-refinement/summary.json": "6163c914a3ca275218a0b6b156d9a63cc890bf97e9bb3f6a76c038e260298f0e",
+    "openspec/changes/compose-brighter-geography/evidence/relay-refinement/selected-clear.jpg": "6d83075814b4fa7737076cac540fdda65d01cac07d4699d510fe50fe91af4eb8"
+  }
+}
