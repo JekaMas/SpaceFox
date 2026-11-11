@@ -25,7 +25,8 @@ the layout, but live updates and a maintainable visual catalog are still missing
   countdown's local progression; the longer update delay is an explicit trade-off.
   Retain cached information without inventing launch certainty or a confirmed liftoff.
 - Keep the compact design from the latest answer: no permanent update timestamp;
-  a circled `!` plus amber countdown for a reschedule and a separate stale marker.
+  amber countdown for a reschedule and an independent dotted underline for stale data,
+  with service-status badges removed from the face.
 - Add a short ignition/ascent animation while the display is active; allow it to
   be disabled and stop it when the watch face sleeps.
 - Make site coordinates, rocket mappings, images and animation frames versioned

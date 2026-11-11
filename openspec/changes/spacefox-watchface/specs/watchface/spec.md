@@ -88,10 +88,11 @@ false geographic point.
 
 ### Requirement: Compact exceptional-state indicators
 
-The home face SHALL omit a persistent update timestamp. A reschedule SHALL show
-a circled exclamation mark and amber countdown; unknown new time SHALL replace
-the precise countdown with an uncertainty label. Stale data SHALL have a distinct
-cloud-off marker and dotted countdown underline, independently of rescheduling.
+The home face SHALL omit a persistent update timestamp and service-status badges.
+A reschedule SHALL use an amber countdown; otherwise it SHALL use mint. Unknown
+new time SHALL replace the precise countdown with an uncertainty label. Stale data
+SHALL add a dotted countdown underline, independently of rescheduling. No
+exclamation or cloud-off badge SHALL occupy the face.
 
 #### Scenario: Normal schedule
 - **WHEN** the selected launch has current data and no detected reschedule
@@ -99,7 +100,7 @@ cloud-off marker and dotted countdown underline, independently of rescheduling.
 
 #### Scenario: Reschedule and stale data coexist
 - **WHEN** a previously detected reschedule remains selected and its cached schedule becomes stale
-- **THEN** both indicators remain visible, distinct and inside the circle, and the current-time color remains unchanged
+- **THEN** the countdown is amber with a dotted underline inside the circle, and the current-time color remains unchanged
 
 ### Requirement: Short active-display launch animation
 

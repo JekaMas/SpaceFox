@@ -1,0 +1,179 @@
+{
+  "cases": {
+    "R3.P1.NEGATIVE": {
+      "evidence_fingerprint": "485d02de7f6e0107afaaaab04f1c6b0166515171b8bae2828475425ee2fe6506",
+      "green_expectation": "Correct states fit, wrong encodings and lost unchanged strings are rejected.",
+      "invalidation_dependencies": [
+        "openspec/changes/enlarge-relay-fields/evidence/browser.json",
+        "openspec/changes/enlarge-relay-fields/evidence/countdown-status/browser.json",
+        "prototype/composition/additional-scenes.json",
+        "prototype/composition/metrics.js",
+        "prototype/composition/policy.json",
+        "prototype/composition/scenes.json",
+        "prototype/countdown-status/countdown-status.js",
+        "prototype/countdown-status/index.html",
+        "prototype/countdown-status/status-review.js",
+        "prototype/countdown-status/status-style.css",
+        "prototype/features/core.js",
+        "prototype/features/data.js",
+        "prototype/features/renderer.js",
+        "prototype/features/style.css",
+        "prototype/features/text-bounds.js",
+        "prototype/focus/renderer.js",
+        "prototype/focus/style.css",
+        "prototype/focus/variants.json",
+        "prototype/fonts/fonts.css",
+        "prototype/layout-data.js",
+        "prototype/marker/core.js",
+        "prototype/marker/data.js",
+        "prototype/marker/final-selection.json",
+        "prototype/marker/renderer.js",
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "prototype/qualification/style.css",
+        "prototype/relay/header-renderer.js",
+        "prototype/relay/renderer.js",
+        "prototype/relay/variants.json",
+        "prototype/vendor/d3-7.9.0.min.js",
+        "prototype/vendor/topojson-client-3.1.0.min.js",
+        "tests/test_countdown_status.py",
+        "tools/countdown_status_audit.py",
+        "tools/focus_audit.py"
+      ],
+      "observable": "All four states distinct at countdown with unchanged other information and sufficient dotted-line clearance.",
+      "polarity": "negative",
+      "property_id": "R3.P1",
+      "red_expectation": "A wrong status color/underline or remaining service badge is accepted.",
+      "scenario": "Distinguish all schedule states without badges",
+      "scenario_fingerprint": "83b341cc0876a59bfe560107f10f85da7b03d6d34a9026febafa200035f0f70f",
+      "setup": "Load source-bound actual browser status observations; negative cases inject swapped colors, removed/false dotted underline and surviving badges.",
+      "source_path": "tests/test_countdown_status.py",
+      "source_sha256": "18a729774fec967c6f519a632cadd25c24092d3824f861fc05f75e8803544508",
+      "status": "passed",
+      "test_id": "unittest::tests.test_countdown_status.CountdownStatusTest.test_negative"
+    },
+    "R3.P1.POSITIVE": {
+      "evidence_fingerprint": "167b7d0ccf6bca2b61a461513fd3b8722059927ca5bd579a0ab7c3cd58d40cca",
+      "green_expectation": "Correct states fit, wrong encodings and lost unchanged strings are rejected.",
+      "invalidation_dependencies": [
+        "openspec/changes/enlarge-relay-fields/evidence/browser.json",
+        "openspec/changes/enlarge-relay-fields/evidence/countdown-status/browser.json",
+        "prototype/composition/additional-scenes.json",
+        "prototype/composition/metrics.js",
+        "prototype/composition/policy.json",
+        "prototype/composition/scenes.json",
+        "prototype/countdown-status/countdown-status.js",
+        "prototype/countdown-status/index.html",
+        "prototype/countdown-status/status-review.js",
+        "prototype/countdown-status/status-style.css",
+        "prototype/features/core.js",
+        "prototype/features/data.js",
+        "prototype/features/renderer.js",
+        "prototype/features/style.css",
+        "prototype/features/text-bounds.js",
+        "prototype/focus/renderer.js",
+        "prototype/focus/style.css",
+        "prototype/focus/variants.json",
+        "prototype/fonts/fonts.css",
+        "prototype/layout-data.js",
+        "prototype/marker/core.js",
+        "prototype/marker/data.js",
+        "prototype/marker/final-selection.json",
+        "prototype/marker/renderer.js",
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "prototype/qualification/style.css",
+        "prototype/relay/header-renderer.js",
+        "prototype/relay/renderer.js",
+        "prototype/relay/variants.json",
+        "prototype/vendor/d3-7.9.0.min.js",
+        "prototype/vendor/topojson-client-3.1.0.min.js",
+        "tests/test_countdown_status.py",
+        "tools/countdown_status_audit.py",
+        "tools/focus_audit.py"
+      ],
+      "observable": "All four states distinct at countdown with unchanged other information and sufficient dotted-line clearance.",
+      "polarity": "positive",
+      "property_id": "R3.P1",
+      "red_expectation": "A wrong status color/underline or remaining service badge is accepted.",
+      "scenario": "Distinguish all schedule states without badges",
+      "scenario_fingerprint": "83b341cc0876a59bfe560107f10f85da7b03d6d34a9026febafa200035f0f70f",
+      "setup": "Load source-bound actual browser status observations; negative cases inject swapped colors, removed/false dotted underline and surviving badges.",
+      "source_path": "tests/test_countdown_status.py",
+      "source_sha256": "18a729774fec967c6f519a632cadd25c24092d3824f861fc05f75e8803544508",
+      "status": "passed",
+      "test_id": "unittest::tests.test_countdown_status.CountdownStatusTest.test_positive"
+    }
+  },
+  "change": "enlarge-relay-fields",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_countdown_status"
+      ],
+      "cwd": "/Users/jekamas/projects/SpaceFox",
+      "duration_seconds": 0.08873320929706097,
+      "exit_code": 0,
+      "id": "countdown-status-tests",
+      "observed_tests": {
+        "unittest::tests.test_countdown_status.CountdownStatusTest.test_negative": "pass",
+        "unittest::tests.test_countdown_status.CountdownStatusTest.test_positive": "pass"
+      },
+      "status": "exited",
+      "stderr": "test_negative (tests.test_countdown_status.CountdownStatusTest.test_negative) ... ok\ntest_positive (tests.test_countdown_status.CountdownStatusTest.test_positive) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.016s\n\nOK\n",
+      "stderr_artifact": "/Users/jekamas/projects/SpaceFox/openspec/changes/enlarge-relay-fields/evidence/countdown-status/verification.json.countdown-status-tests.stderr.log",
+      "stderr_truncated": false,
+      "stdout": "",
+      "stdout_artifact": "/Users/jekamas/projects/SpaceFox/openspec/changes/enlarge-relay-fields/evidence/countdown-status/verification.json.countdown-status-tests.stdout.log",
+      "stdout_truncated": false
+    }
+  ],
+  "finished_at": "2026-11-11T12:21:55.723017+00:00",
+  "git": {
+    "dirty": false,
+    "head": "7758d918ffc71f794cc155422dab02165935eec8",
+    "status": "known"
+  },
+  "manifest": "openspec/changes/enlarge-relay-fields/verification.json",
+  "manifest_sha256": "cff474bcdcf5a44f70f9a557b525a4d57a4e6d011dabc2e0f2b9f0ddda938d83",
+  "requested_selectors": {
+    "all": false,
+    "cases": [],
+    "changed_paths": [],
+    "commands": [],
+    "owners": [],
+    "properties": [],
+    "requirements": [
+      "R3"
+    ],
+    "scenarios": [],
+    "tests": []
+  },
+  "schema_version": 2,
+  "selection": {
+    "cases": [
+      "R3.P1.NEGATIVE",
+      "R3.P1.POSITIVE"
+    ],
+    "commands": [
+      "countdown-status-tests"
+    ],
+    "properties": [
+      "R3.P1"
+    ],
+    "requirements": [
+      "R3"
+    ]
+  },
+  "specifications": {
+    "R3": "0b493aed634ce9566d70a2a4b71d4222011675c3605a03b82a4bbbe8031ce066"
+  },
+  "started_at": "2026-11-11T12:21:55.573529+00:00",
+  "status": "passed",
+  "substitution_gaps": []
+}

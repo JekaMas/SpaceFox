@@ -7,7 +7,7 @@ for current coverage and [layout review v4](evidence/layout-review-v4.md) for th
 subsequent compact-band revision. The initial browser mockup in
 `prototype/mission.html` is retained as a baseline. The selected visual basis is
 now [Mission in Focus with clearer geography](../../../prototype/relay/index.html),
-followed by the [larger-fields/map comparison](../../../prototype/focus/index.html).
+followed by the [larger-fields/current status preview](../../../prototype/countdown-status/index.html).
 Schedule, health values and model graphics remain illustrative. No Monkey C owner,
 live service or downloadable asset pipeline exists.
 
@@ -48,7 +48,7 @@ purpose below (`Falcon 9 · SpaceX` / `Связь`). Long values stack without s
 The historical [header comparison](../../../prototype/relay/header.html) preserves
 its original geometry and [bounded evidence](../../../docs/RELAY_HEADER.md).
 
-The next [browser proposal](../../../prototype/focus/index.html) preserves that
+The next [browser proposal](../../../prototype/countdown-status/index.html) preserves that
 accepted header and clock size, enlarges four independent values from 22.2 to 32px
 in a 2×2 grid, moves countdown directly below time, moves country/site below the
 fields and adds a small separate device battery at the top. The battery indicator
@@ -284,9 +284,13 @@ first specification.
 Maintain a reschedule flag per launch identifier, comparing accepted target
 time/precision with its previous value. Unchanged refreshes retain that flag;
 moving to another launch clears it for the new identity. Known new time uses
-amber plus `!`; unknown new time suppresses a precise countdown. Staleness is an
-independent cloud-off marker plus dotted underline. Reserved marker positions keep
-the countdown centered; normal current time does not change color with alerts.
+amber; unknown new time suppresses a precise countdown. Staleness adds an
+independent dotted underline. The owner subsequently requested removing the top
+icons, so no exclamation/cloud badge remains anywhere on the current face. Both
+states together use amber plus dots; normal data uses mint without dots. Countdown
+stays centered and normal current time does not change color with alerts. The
+separate watch-battery indicator is centered in the freed top area. The new browser
+wrapper preserves the previous map/field preview as historical evidence.
 
 ### Animate a short visual, not a claimed real liftoff
 

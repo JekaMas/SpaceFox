@@ -4,13 +4,16 @@
   "scope": {
     "property_ids": [
       "R1.P1",
-      "R2.P1"
+      "R2.P1",
+      "R3.P1"
     ],
     "test_ids": [
       "unittest::tests.test_focus.FocusTest.test_layout_positive",
       "unittest::tests.test_focus.FocusTest.test_layout_negative",
       "unittest::tests.test_focus.FocusTest.test_geography_positive",
-      "unittest::tests.test_focus.FocusTest.test_geography_negative"
+      "unittest::tests.test_focus.FocusTest.test_geography_negative",
+      "unittest::tests.test_countdown_status.CountdownStatusTest.test_positive",
+      "unittest::tests.test_countdown_status.CountdownStatusTest.test_negative"
     ]
   },
   "reviews": [
@@ -61,6 +64,51 @@
       ],
       "disposition": "current_change",
       "rationale": "New isolated layout; old published owners stay unchanged."
+    },
+    {
+      "id": "D2",
+      "question": "Known focus rendering wrapper for countdown status",
+      "property_ids": [
+        "R3.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_countdown_status.CountdownStatusTest.test_positive",
+        "unittest::tests.test_countdown_status.CountdownStatusTest.test_negative"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read exact focus renderer, observer and existing native status contract.",
+          "outcome": "Wrap the known focus renderer; reuse the unchanged CM geometry and independent numeric audit.",
+          "results": [
+            {
+              "path": "prototype/focus/renderer.js",
+              "line": 5,
+              "classification": "interface_dependency",
+              "reason": "Exact current renderer owner."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Exact renderer owner is already known",
+          "reason": "No unknown subsystem or ownership discovery.",
+          "outcome": "No semantic-search evidence claimed.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Known browser owner",
+          "reason": "No unknown symbol, reference tracing or IDE operation needed.",
+          "outcome": "No indexed evidence claimed.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "Small isolated current preview; existing historical source owners unchanged."
     }
   ]
 }

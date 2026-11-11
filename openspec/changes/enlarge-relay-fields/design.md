@@ -30,3 +30,13 @@ hard inherited backing; visual review prompted32px and feathered map-only masks.
 The unchanged v3 raster metric is conservatively interpreted for black background.
 The full four-slot UI reassignment is separately captured; hidden fields/native
 settings persistence and36-language qualification are not implemented here.
+
+Owner follow-up: remove top service badges and encode state at the countdown.
+Use amber `#f3c37a` for reschedule, mint `#71e4c0` otherwise, and a2px dotted
+underline for stale data, independently. Center the existing battery at the top.
+Keep the published focus renderer and96-state evidence immutable; add a small
+wrapper/current preview. Check four states × three maps × two backgrounds plus
+long/unknown timing cases. Reuse the existing layout/marker audit against fresh
+observations; qualify status decoding with wrong-color/underline/badge faults.
+Only the new status property needs fresh execution; previous R1/R2 greens remain
+valid at their source-bound historical preview, not as evidence for the new UI.

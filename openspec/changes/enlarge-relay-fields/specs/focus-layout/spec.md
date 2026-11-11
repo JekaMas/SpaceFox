@@ -32,3 +32,16 @@ their flags are true; the preview SHALL explain their meanings.
 #### Scenario: Reject a false geographic success
 - **WHEN** a marker is hidden, displaced from its projected source, or present without a coordinate
 - **THEN** the check rejects the result even when the map itself looks bright
+
+### Requirement: Countdown-integrated schedule status
+
+The current preview SHALL remove exclamation and cloud-off badges from the face.
+A reschedule SHALL make countdown text amber; otherwise it SHALL remain mint.
+Stale data SHALL add a dotted underline below the countdown, independently of
+rescheduling. Unknown time SHALL retain the uncertainty label. Current time,
+four configured values, mission header, geography and site identity SHALL remain
+unchanged. The small watch-battery indicator SHALL be centered in the freed top area.
+
+#### Scenario: Distinguish all schedule states without badges
+- **WHEN** the schedule is normal, rescheduled, stale, or both rescheduled and stale
+- **THEN** the countdown respectively uses mint, amber, mint with dots, or amber with dots, no exclamation/cloud badge remains, and the dotted line fits between countdown and fitness values
