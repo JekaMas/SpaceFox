@@ -13,5 +13,15 @@ No native or live deployment task was completed. SDK and agreements untouched.
 Author structural gate passed:53requirements/99scenarios;80local links,42unchanged
 browser source bindings, unchanged839-record audit and6retained green cases.
 Tracked native/updater/workflow inventory is empty. No behavior rerun.
-Current step: author/public source commits, public ordinary strict validation and
-exact remote/connector readback. Private workflow receipts remain unpublished.
+Completed current spec-review increment: authoring0b60320 published as
+8677fd167f3beddd46e68905026eeb6499a01710. Exact remote-main equality and GitHub
+connector readback of release-lifecycle/spec.md confirmed. Public ordinary strict
+OpenSpec passed with zero issues;14original files published, public adapters
+preserved and17raw private workflow files excluded. Task1.9 is complete.
+
+Closure changes only task/progress/check receipts; all53requirements/99scenarios,
+canonical guide/spec hashes, browser owners and archive remain unchanged from
+the observed green checks. Retain those checks without rerun. No native, live
+publisher or Store release is claimed. Next native entry: resolve2.3, then2.1/2.2.
+The pending eligibility clarification does not block completed MIT documentation
+review/publication and is not inferred from elapsed time.

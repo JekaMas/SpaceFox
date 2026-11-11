@@ -60,5 +60,18 @@
     "requirementBodyLimit": "all<=500 normalized characters",
     "uniqueRequirementNames": "passed per capability",
     "gitDiffWhitespace": "passed"
+  },
+  "publicPublication": {
+    "revision": "8677fd167f3beddd46e68905026eeb6499a01710",
+    "exactRemoteMain": "matched",
+    "connectorReadback": "release-lifecycle/spec.md at exact revision",
+    "publicStrictOpenSpec": {
+      "valid": true,
+      "issues": []
+    },
+    "originalFiles": 14,
+    "privateRawGuidanceExcluded": 17,
+    "publicAdapters": "AGENTS.md, PROJECT_WORKFLOW.md, openspec/config.yaml unchanged",
+    "closureBoundary": "Subsequent checkbox/progress/receipt closure does not change these canonical spec/guide semantic inputs; retain the observed checks."
   }
 }

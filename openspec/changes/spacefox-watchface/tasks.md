@@ -10,7 +10,7 @@
 - [x] 1.6 Create an exploratory geography/typography gallery with flat map/globe, 1/4–1/3–1/2-height regions, side/top/horizon placements and orientation controls; compare four licensed numeral fonts, preserve common example data, and inspect real browser renders/long statuses/circular fit. Record source-based ergonomic reasoning and qualified recommendations in `evidence/geography-layout-review.md`; do not choose a new native layout on the owner's behalf.
 - [x] 1.7 Audit global countries/configurations/organizations/pads against current paginated provider data and primary sources; fix global coverage, exact identities, artwork/map gaps and bounded delivery in the spec; preserve the accepted full-screen composition and publish the dated inventory/review.
 - [x] 1.8 Define efficient dictionary/wire/cache storage, preserve identities/unknowns/freshness, measure lossless desktop encodings and record native budget/recovery requirements without changing frozen evidence or claiming device performance.
-- [ ] 1.9 Review final completeness/consistency against primary Garmin/GitHub sources; fix accepted-layout/status/AOD/API/publication/recovery contradictions, define separate code/assets/data updates and record open eligibility/native gates; validate and publish the original MIT spec/guide revision with exact readback.
+- [x] 1.9 Review final completeness/consistency against primary Garmin/GitHub sources; fix accepted-layout/status/AOD/API/publication/recovery contradictions, define separate code/assets/data updates and record open eligibility/native gates; validate and publish the original MIT spec/guide revision with exact readback.
 
 ## 2. Native implementation qualification
 
