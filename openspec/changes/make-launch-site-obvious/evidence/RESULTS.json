@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "status": "research acceptance complete; publicationprepared",
+  "recordedAtUtc": "2026-11-11T08:18:19.617121+00:00",
+  "candidateIds": [
+    "M2-11",
+    "M3-21",
+    "M2-31",
+    "M2-41",
+    "M2-51"
+  ],
+  "generations": [
+    30,
+    20,
+    10
+  ],
+  "exactOldControls": 5,
+  "authorDomRecords": 2080,
+  "freshSemantics": 120,
+  "freshSourceGeometry": 360,
+  "freshActualNonNullMaskTrials": 300,
+  "freshNativeTrials": 360,
+  "freshNativeAllPass": true,
+  "primaryBlind": {
+    "uniqueImages": 60,
+    "freshContexts": 2,
+    "responses": 120,
+    "positiveCorrect": 60,
+    "negativeNone": 53,
+    "negativeUncertain": 7,
+    "falsePoints": 0,
+    "materialFailures": 0,
+    "distinctPositiveCoordinateSets": 1,
+    "not120of120Correct": true
+  },
+  "geographySupplement": {
+    "uniqueImages": 35,
+    "freshContexts": 1,
+    "positiveCorrect": 30,
+    "negativeNone": 4,
+    "negativeUncertain": 1,
+    "falsePoints": 0,
+    "materialFailures": 0,
+    "additionalCoordinateSets": 2,
+    "postPrimaryNotFreshBank": true
+  },
+  "captureCounts": {
+    "stages": [
+      {
+        "stage": "g1",
+        "rawJpegFrames": 100,
+        "watchCropObservations": 420,
+        "trialGroups": 105
+      },
+      {
+        "stage": "g2",
+        "rawJpegFrames": 56,
+        "watchCropObservations": 240,
+        "trialGroups": 60
+      },
+      {
+        "stage": "g3",
+        "rawJpegFrames": 28,
+        "watchCropObservations": 120,
+        "trialGroups": 30
+      },
+      {
+        "stage": "screen",
+        "rawJpegFrames": 132,
+        "watchCropObservations": 576,
+        "trialGroups": 144
+      },
+      {
+        "stage": "screen-g3-delta",
+        "rawJpegFrames": 16,
+        "watchCropObservations": 48,
+        "trialGroups": 12
+      },
+      {
+        "stage": "confirm",
+        "rawJpegFrames": 320,
+        "watchCropObservations": 1440,
+        "trialGroups": 360
+      }
+    ],
+    "uniqueRawJpegFrames": 652,
+    "watchCropObservations": 2844,
+    "notIndependentObservations": true,
+    "rejectedEarlierScaledFrames": 72,
+    "rejectedEarlierScaledCrops": 420
+  },
+  "independentReceipts": {
+    "confirm-native-independent-audit.json": {
+      "passed": true,
+      "sha256": "248c0f69059f7c72b24bd7e91837228653267da6c57c264ab53efa64b9b8eb01"
+    },
+    "confirm-geometry-independent-audit.json": {
+      "passed": true,
+      "sha256": "a2da51c08719854609b05196a30920aeb5232dd0981b8e8d3b43d1996625c905"
+    },
+    "confirm-semantic-independent-audit.json": {
+      "passed": true,
+      "sha256": "570b0d6183d7d400660aa408365d1db47e496904ce6d3e2d8801795b7a609505"
+    },
+    "confirm-native-source-closure.json": {
+      "passed": true,
+      "sha256": "125c397203ed8bd76413bec2c7a75dd83f9b9bf22a4b0119b28a7e4230db7e07"
+    }
+  },
+  "boundaries": [
+    "Browser prototype not native Garmin build",
+    "No human speed/preference/recognition-rate or wrist/battery/AOD proof",
+    "Source masks and actual JPEG support are different layers",
+    "Knownscreen native4sample notall24; finalfresh nativeall24",
+    "Negativeunable is recordeduncertainty notconfidentabsence",
+    "Localization accepts filledglyphsilhouette plus6nativepx oranchor; not6px anchoraccuracy",
+    "Finite testedcorpus notexhaustiveUnicode oralllocales"
+  ],
+  "unchangedPriorOwners": 9,
+  "independentFinalVerdict": {
+    "file": "final-review.md",
+    "decision": "bounded PASS exact5",
+    "unresolvedMaterialBlockers": 0
+  },
+  "integrityChecks": {
+    "total": 18,
+    "passed": 18,
+    "receipt": "final-integrity-audit.json"
+  }
+}

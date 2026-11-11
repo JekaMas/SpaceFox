@@ -1,0 +1,4 @@
+# G1 decision — pending native audit
+35×32 retained DOM/source-mask observations. After guard-only AA reconciliation21/35 have no geometry/mask failure:18new inControl/Ticket/Relay +3oldcontrols. Earthrise/Atlas newmarkers fail fullsupport clearance, so descendants remain explicit repair exploration.
+Fresh image-only195px review40images=35active+5hidden:6materialsemanticfailures, no falsepositive on5hidden. Five cyan-diamond variants and oldAtlasblue symbol were located but not confidently identified as launchsite. This is one modelcontext, not human recognition accuracy. Allanswers locked before truthbinding. No claim that review reproduces userexperience.
+G2 must reserveclear markerzone and reducecompetingmaptexture; diamondidentity is not promoted. Parents are chosen withinfamily by hardfailures, blindrecognition then conservativeclearance; failingfamilyparents are exploration only. Nativeimagegate still pending and cannot be bypassed by this note.

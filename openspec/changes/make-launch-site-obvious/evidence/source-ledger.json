@@ -1,0 +1,544 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-11-11",
+  "scope": "Research only, no candidate review/ranking or production edits.",
+  "requirements": [
+    "round390x390",
+    "time",
+    "four configurable fields with full labels",
+    "full rocket/company/goal",
+    "full country/site",
+    "explicit countdown",
+    "truthfully projected launchpoint marker"
+  ],
+  "source_count": 12,
+  "substantially_new_source_count": 12,
+  "abstract_only_count": 1,
+  "actual_visual_inspection_count": 4,
+  "sources": [
+    {
+      "id": "R01",
+      "title": "Stachoň et al. — Effect of Size, Shape and Map Background in Cartographic Visualization",
+      "url": "https://www.mdpi.com/2220-9964/7/11/427",
+      "date": "2018-11-01",
+      "date_checked": "2026-11-11",
+      "kind": "primary_empirical_article",
+      "read_status": "selected_primary_sections_read",
+      "sections_read": [
+        "§5 Materials and Methods, especially stimuli/participants/procedure",
+        "§6 Results",
+        "§7 Discussion and Conclusions"
+      ],
+      "source_findings": "69 Czech/Chinese GIS/cartography students, 48 tasks; target among 24 distractors; 6–13 px stimuli on 22-inch monitors. Larger symbols and absence of map background improved search speed in their task.",
+      "spacefox_inference": "Test rendered marker size and background competition separately; use size/shape redundancy for launchpoint.",
+      "limits": "Not wrist, predominantly young trained map readers; differing physical pixel size means 6–13 px is not a Garmin threshold; medium sizes excluded from part of analysis.",
+      "generations": [
+        "G1",
+        "G2"
+      ],
+      "substantially_new_vs_round3": true,
+      "new_reason": "New empirical study specifically manipulates point-symbol size, shape and map background.",
+      "secondary_urls": [],
+      "visual_inspection": {
+        "performed": false
+      },
+      "study_of_spacefox": false,
+      "url_reused_from_round3": false
+    },
+    {
+      "id": "R02",
+      "title": "Cybulski & Ledermann — The impact of point symbol similarity on visual search on maps",
+      "url": "https://repositum.tuwien.at/handle/20.500.12708/203995",
+      "date": "2024 (repository gives year)",
+      "date_checked": "2026-11-11",
+      "kind": "primary_empirical_article_abstract_only",
+      "read_status": "primary_abstract_only",
+      "sections_read": [
+        "TU Wien primary repository metadata and abstract; full article not obtained"
+      ],
+      "source_findings": "Abstract reports 33 participants and 60 stimuli, poorer search with greater similarity between target and distractors; round-based symbols reportedly easiest within tested sets.",
+      "spacefox_inference": "Make launchpoint distinct from stars, status dots, decorative orbit objects; do not assume round shape universally wins.",
+      "limits": "Abstract-only evidence: effect sizes, exact stimuli and full limitations not independently examined. Supplemental code repository readme inspected only for access, not executed.",
+      "generations": [
+        "G1",
+        "G2"
+      ],
+      "substantially_new_vs_round3": true,
+      "new_reason": "New point-symbol similarity and visual-search question, not a general watch-face review.",
+      "secondary_urls": [
+        "https://doi.org/10.1080/15230406.2024.2409166"
+      ],
+      "visual_inspection": {
+        "performed": false
+      },
+      "study_of_spacefox": false,
+      "url_reused_from_round3": false
+    },
+    {
+      "id": "R03",
+      "title": "Li, Newman & Klasnja — Exploring the Design Space of Glanceable Smartwatch Feedback Displays: Experimental Study",
+      "url": "https://mhealth.jmir.org/2026/1/e81972",
+      "date": "2026-07-23",
+      "date_checked": "2026-11-11",
+      "kind": "primary_empirical_article",
+      "read_status": "selected_primary_sections_read",
+      "sections_read": [
+        "Methods: simulation, experimental task, stylization/salience/granularity",
+        "Results: final sample and outcomes",
+        "Discussion: methodological limitations"
+      ],
+      "source_findings": "202 retained MTurk participants; desktop watch simulation shown for 5 s, followed by progress/time recall. Stylization harmed progress estimation; significant salience effect was not found.",
+      "spacefox_inference": "Use an actual launch-marker detection question; test both primary time and marker rather than borrowing progress-estimation results.",
+      "limits": "Not a worn watch or marker-search task; design dimensions partly confounded; trained interpretation, recall delay and 5 s exposure differ from uncued 1 s findability.",
+      "generations": [
+        "G1",
+        "G2",
+        "G3"
+      ],
+      "substantially_new_vs_round3": true,
+      "new_reason": "New 2026 primary glance study and important counterexample to universal salience claims.",
+      "secondary_urls": [],
+      "visual_inspection": {
+        "performed": false
+      },
+      "study_of_spacefox": false,
+      "url_reused_from_round3": false
+    },
+    {
+      "id": "R04",
+      "title": "Zhang et al. — Designing Effective Multi-Window Map Interfaces: The Role of Highlighting and Luminance Contrast in Visual Search",
+      "url": "https://www.mdpi.com/2220-9964/15/4/180",
+      "date": "2026-04-21",
+      "date_checked": "2026-11-11",
+      "kind": "primary_empirical_article",
+      "read_status": "selected_primary_sections_read",
+      "sections_read": [
+        "§4 Participants/Apparatus/Task",
+        "§5.2 Behavioral performance",
+        "§6.2–6.3 interpretation",
+        "§8 limitations",
+        "Correction statement"
+      ],
+      "source_findings": "35 university students, 21.5-inch monitor at 60 cm, abstract-letter target search across a dense 16-window layout. Highlighting and contrast interacted; region-based emphasis helped in tested conditions.",
+      "spacefox_inference": "In G3 test one coherent selected-launch region and quiet supporting map, not uniformly brighter everything.",
+      "limits": "Not marker identity or wrist context; highlights differ in spatial extent; chromaticity not independently controlled; medium/high contrast plateau is not a Garmin prescription. Reference-only correction reported.",
+      "generations": [
+        "G3"
+      ],
+      "substantially_new_vs_round3": true,
+      "new_reason": "New primary experiment on spatial organization of attention rather than earlier chart reading.",
+      "secondary_urls": [],
+      "visual_inspection": {
+        "performed": false
+      },
+      "study_of_spacefox": false,
+      "url_reused_from_round3": false
+    },
+    {
+      "id": "R05",
+      "title": "Ordnance Survey — Symbology",
+      "url": "https://docs.os.uk/more-than-maps/geographic-data-visualisation/guide-to-cartography/symbology",
+      "date": "Undated guide; accessed 2026-11-11",
+      "date_checked": "2026-11-11",
+      "kind": "official_cartography_guide",
+      "read_status": "selected_primary_sections_read",
+      "sections_read": [
+        "Graphic variables",
+        "Figure–ground relationship",
+        "Points"
+      ],
+      "source_findings": "Symbols may encode with size, shape, color, lightness, orientation and pattern; hierarchy separates key figure from supporting ground.",
+      "spacefox_inference": "Reserve a distinctive marker identity for launchpoint; mute basemap features without deleting mandatory information.",
+      "limits": "Practice guidance, not user experiment; attempted GitBook illustration download was denied and is NOT counted as visual inspection.",
+      "generations": [
+        "G1",
+        "G2",
+        "G3"
+      ],
+      "substantially_new_vs_round3": true,
+      "new_reason": "New cartographic symbology and figure-ground source.",
+      "secondary_urls": [],
+      "visual_inspection": {
+        "performed": false
+      },
+      "study_of_spacefox": false,
+      "url_reused_from_round3": false
+    },
+    {
+      "id": "R06",
+      "title": "Esri — Cartographic creations: Style thematic data",
+      "url": "https://learn.arcgis.com/en/projects/cartographic-creations-style-thematic-data/",
+      "date": "Tutorial last tested 2026-07-16; publication date not specified",
+      "date_checked": "2026-11-11",
+      "kind": "official_cartography_tutorial",
+      "read_status": "selected_primary_sections_read",
+      "sections_read": [
+        "Design for visual hierarchy",
+        "Style Lake District National Park",
+        "Drop shadow warning"
+      ],
+      "source_findings": "Tutorial lowers park fill contrast to retain mountain foreground; adds boundary for context; cautions that shadows on multiple layers confuse hierarchy.",
+      "spacefox_inference": "Quiet land and graticule while keeping selected launch marker prominent; selected-place label should belong to the marker region.",
+      "limits": "Tutorial demonstration, not measured UX; desktop map and many mountain symbols; specific colors/shadow widths not watch norms.",
+      "generations": [
+        "G2",
+        "G3"
+      ],
+      "substantially_new_vs_round3": true,
+      "new_reason": "New foreground/background cartographic example with inspectable visual.",
+      "secondary_urls": [],
+      "visual_inspection": {
+        "performed": true,
+        "url": "https://learn.arcgis.com/en/projects/cartographic-creations-style-thematic-data/GUID-CB5E3669-9388-4A86-8916-6C4D44EB7BD5-web.png",
+        "section": "Map at two different scales after pale fill/dark outline",
+        "method": "view_image on official asset; NASA PDF rendered with bundled pdftoppm",
+        "observed": "Two scale views: pale park fill and dark outline, dark/green mountain triangles stand above subdued basemap; some triangles are cut by image boundaries.",
+        "sha256": "071f527abd1360dc5dd76a8a00b77e546a7e6140cca2fbe193497761fe155492",
+        "retained_as_project_asset": false
+      },
+      "study_of_spacefox": false,
+      "url_reused_from_round3": false
+    },
+    {
+      "id": "R07",
+      "title": "Mapbox — Optimize map label placement",
+      "url": "https://docs.mapbox.com/help/dive-deeper/optimize-map-label-placement/",
+      "date": "Undated current documentation; accessed 2026-11-11",
+      "date_checked": "2026-11-11",
+      "kind": "official_rendering_design_guide",
+      "read_status": "selected_primary_sections_read",
+      "sections_read": [
+        "Label collision",
+        "Variable anchors and radial offset",
+        "Label hierarchy and layer ordering"
+      ],
+      "source_findings": "Alternative anchors are tried in order; if none fits, label can be hidden; collision settings control visibility and overlaps.",
+      "spacefox_inference": "Critical full launch-site caption needs an explicit fallback outside map with a truthful leader; optional map labels can yield, mandatory caption cannot disappear.",
+      "limits": "Technical behavior, not legibility study; invisible-by-collision fallback is unacceptable as SpaceFox completion. CSS/GL units are not Garmin physical pixels.",
+      "generations": [
+        "G2",
+        "G3"
+      ],
+      "substantially_new_vs_round3": true,
+      "new_reason": "New selected-object labeling and collision placement behavior.",
+      "secondary_urls": [],
+      "visual_inspection": {
+        "performed": false
+      },
+      "study_of_spacefox": false,
+      "url_reused_from_round3": false
+    },
+    {
+      "id": "R08",
+      "title": "Mapbox Style Specification — circle stroke and text halo",
+      "url": "https://docs.mapbox.com/style-spec/reference/layers/",
+      "date": "Undated current specification; accessed 2026-11-11",
+      "date_checked": "2026-11-11",
+      "kind": "official_rendering_specification",
+      "read_status": "selected_primary_sections_read",
+      "sections_read": [
+        "circle-stroke-color/opacity/width",
+        "text-halo-color/width",
+        "text-ignore-placement"
+      ],
+      "source_findings": "Circle stroke lies outside circle radius. Text halo expands from font outline; documented maximum is 1/4 font size in this renderer.",
+      "spacefox_inference": "Measure complete outer rendered support including stroke/halo in clipping checks; core radius alone does not describe visibility.",
+      "limits": "Mapbox-specific implementation contract, not a Garmin halo optimum or minimum size. Geometric bounds must be verified in final PNG after every mask.",
+      "generations": [
+        "G1",
+        "G2"
+      ],
+      "substantially_new_vs_round3": true,
+      "new_reason": "New precise rendered-bounds and halo behavior, separate from previous typography guides.",
+      "secondary_urls": [],
+      "visual_inspection": {
+        "performed": false
+      },
+      "study_of_spacefox": false,
+      "url_reused_from_round3": false
+    },
+    {
+      "id": "R09",
+      "title": "Google Maps — Advanced marker parts/customization and collision management",
+      "url": "https://developers.google.com/maps/documentation/javascript/advanced-markers/basic-customization",
+      "date": "Undated current documentation; accessed 2026-11-11",
+      "date_checked": "2026-11-11",
+      "kind": "official_marker_design_and_api",
+      "read_status": "selected_primary_sections_read",
+      "sections_read": [
+        "Basic marker customization, title/scale/background/border/glyph",
+        "Marker collision management: REQUIRED and REQUIRED_AND_HIDES_OPTIONAL"
+      ],
+      "source_findings": "Marker border, glyph and background are separate style components; required marker can hide optional overlapping labels. A title property is not a persistent visible caption.",
+      "spacefox_inference": "Keep a required launchpoint above optional map decoration; change core/border/glyph independently in G1. Full site name remains visibly rendered.",
+      "limits": "Google platform capability, not Garmin result; do not enable paid API/sample runtime. No code from external example executed.",
+      "generations": [
+        "G1",
+        "G2"
+      ],
+      "substantially_new_vs_round3": true,
+      "new_reason": "New marker anatomy and prioritization rather than Wear OS style guides.",
+      "secondary_urls": [
+        "https://developers.google.com/maps/documentation/javascript/examples/marker-collision-management"
+      ],
+      "visual_inspection": {
+        "performed": true,
+        "url": "https://developers.google.com/static/maps/documentation/javascript/advanced-markers/images/marker_parts.png",
+        "section": "Figure 1: Parts of an Advanced Marker",
+        "method": "view_image on official asset; NASA PDF rendered with bundled pdftoppm",
+        "observed": "Yellow pin background, red boundary and blue central glyph separately labeled; the geographic anchor is suggested by the pin tip, not by label arrows.",
+        "sha256": "52c7bbc5ca5298f14bbf4863a85cecc11df4c9b8f880b756d560eb39d7f0189c",
+        "retained_as_project_asset": false
+      },
+      "study_of_spacefox": false,
+      "url_reused_from_round3": false
+    },
+    {
+      "id": "R10",
+      "title": "W3C — Understanding WCAG 2.2: Non-text Contrast (1.4.11)",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html",
+      "date": "WCAG 2.2 understanding document; exact page date not specified",
+      "date_checked": "2026-11-11",
+      "kind": "official_accessibility_guidance",
+      "read_status": "selected_primary_sections_read",
+      "sections_read": [
+        "Success criterion",
+        "Adjacent colors",
+        "Graphic Objects and essential parts",
+        "Required for understanding"
+      ],
+      "source_findings": "Significant graphical information has 3:1 contrast to adjacent colors under this criterion; identification depends on essential shape parts rather than every decorative color.",
+      "spacefox_inference": "Check marker contour against the actual adjacent land/ocean/coast pixels; clear identity and outline matter more than average image contrast.",
+      "limits": "Web criterion, not a wrist minimum or proof of noticeability. Nominal pass does not resolve tiny strokes, anti-aliasing, glare or competing glyphs.",
+      "generations": [
+        "G1",
+        "G3"
+      ],
+      "substantially_new_vs_round3": true,
+      "new_reason": "New non-text/essential-shape criterion; prior ledger covered use-of-color and text contrast only.",
+      "secondary_urls": [],
+      "visual_inspection": {
+        "performed": true,
+        "url": "https://www.w3.org/WAI/WCAG22/Understanding/img/contrast-magnet.png",
+        "section": "Figure 18, essential graphical parts",
+        "method": "view_image on official asset; NASA PDF rendered with bundled pdftoppm",
+        "observed": "Red U-shaped magnet with white tips and black outline: recognizable object requires shape and differentiated tips, not red hue alone.",
+        "sha256": "395f885d0bde18d9fd88bbc9362e4e50a8525dae7b5159e0df766952de8e3b96",
+        "retained_as_project_asset": false
+      },
+      "study_of_spacefox": false,
+      "url_reused_from_round3": false
+    },
+    {
+      "id": "R11",
+      "title": "NASA — Human Integration Design Processes, NASA/TP-2014-218556",
+      "url": "https://www.nasa.gov/wp-content/uploads/2015/03/human_integration_design_processes.pdf",
+      "date": "2014-09 (historical manual)",
+      "date_checked": "2026-11-11",
+      "kind": "official_human_factors_manual",
+      "read_status": "selected_primary_sections_read",
+      "sections_read": [
+        "§4.18.2 Legibility and angular size",
+        "§4.18.3 three-phase evaluation",
+        "§4.18.3.2 cued identification",
+        "Figure 4.18.3.2-1, printed p4-260 / PDF p287"
+      ],
+      "source_findings": "Guidance distinguishes physical/angular dimensions and environmental conditions; standards do not replace representative testing; shown identification test already cues the target.",
+      "spacefox_inference": "Record physical screen diameter, viewing distance/angle, rendered core/halo. Add uncued launchpoint search; do not call cued recognition a findability test.",
+      "limits": "Historical aerospace manual, not current Garmin requirement or current NASA compliance audit. Its 1 s/98% and font angles are not adopted as SpaceFox norms; font legibility is not point-marker detection.",
+      "generations": [
+        "G1",
+        "G2",
+        "G3"
+      ],
+      "substantially_new_vs_round3": true,
+      "new_reason": "New ergonomics/evaluation source with explicit distinction between legibility and search.",
+      "secondary_urls": [],
+      "visual_inspection": {
+        "performed": true,
+        "url": "https://www.nasa.gov/wp-content/uploads/2015/03/human_integration_design_processes.pdf#page=287",
+        "section": "Figure 4.18.3.2-1, printed p4-260 / PDF p287",
+        "method": "view_image on official asset; NASA PDF rendered with bundled pdftoppm",
+        "observed": "Orange box surrounds a small green schematic symbol in a dense procedures display; caption and text explicitly say cued element and highlighting.",
+        "sha256": "299557096f83454af9879eea0bd503f5a5d8ed9c3cc16dbcd815702578348a95",
+        "retained_as_project_asset": false
+      },
+      "study_of_spacefox": false,
+      "url_reused_from_round3": false
+    },
+    {
+      "id": "R12",
+      "title": "Atilgan, Xiong & Legge — Reconciling print-size and display-size constraints on reading",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7720185/",
+      "date": "2020-11-09 online; issue 2020-12-01",
+      "date_checked": "2026-11-11",
+      "kind": "primary_empirical_article",
+      "read_status": "selected_primary_sections_read",
+      "sections_read": [
+        "Selected full-text Results, Discussion and Materials/Methods excerpts via Europe PMC XML mirror"
+      ],
+      "source_findings": "30 normally sighted and 10 low-vision participants read prose at simulated laptop/tablet/phone formats on one 27-inch monitor. Font size and characters per line jointly constrained reading speed.",
+      "spacefox_inference": "Do not make full site captions unreadably narrow to fund a larger marker; reflow or allocate a larger caption zone and test it.",
+      "limits": "Prose reading over 1-minute tasks, not wrist search or short labels. Reported character-count thresholds are not minimum label length or a safe small-font prescription. Full sections/data not reanalyzed.",
+      "generations": [
+        "G2",
+        "G3"
+      ],
+      "substantially_new_vs_round3": true,
+      "new_reason": "New primary physical/display-size constraint study, not a repeated watch-face survey.",
+      "secondary_urls": [
+        "https://doi.org/10.1073/pnas.2007514117",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7720185/fullTextXML"
+      ],
+      "visual_inspection": {
+        "performed": false
+      },
+      "study_of_spacefox": false,
+      "url_reused_from_round3": false
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "G1-H1",
+      "generation": "G1",
+      "state": "proposed",
+      "variable": "rendered marker core diameter",
+      "contrast": "8/12/16 px; identical halo and other UI",
+      "test": "Uncued 1 s view, indicate launchpoint position; then HH:MM probe on separate trials",
+      "criterion": "At least90% detection, localization error≤10px; selected size improves vs8px by≥5pp; HH:MM loss≤3pp",
+      "source_ids": [
+        "R01",
+        "R03",
+        "R08",
+        "R11"
+      ],
+      "result": null
+    },
+    {
+      "id": "G1-H2",
+      "generation": "G1",
+      "state": "proposed",
+      "variable": "marker contour",
+      "contrast": "single accent fill vs same core with crisp light/dark contours",
+      "test": "Matched land/ocean/coast/graticule conditions; final PNG clipping and user search",
+      "criterion": "Detection errors reduced≥20%; HH:MM loss≤3pp; no essential contour clipping",
+      "source_ids": [
+        "R08",
+        "R09",
+        "R10"
+      ],
+      "result": null
+    },
+    {
+      "id": "G1-H3",
+      "generation": "G1",
+      "state": "proposed",
+      "variable": "launchpoint identity relative to distractors",
+      "contrast": "unique shape plus explicit launch-site relation vs similar shape/color used by decor",
+      "test": "Uncued1s: what is marked and where; full place/country preserved",
+      "criterion": "Incorrect object identity reduced≥20%; no unverified coordinate displacement",
+      "source_ids": [
+        "R02",
+        "R05",
+        "R09",
+        "R10"
+      ],
+      "result": null
+    },
+    {
+      "id": "G2-H1",
+      "generation": "G2",
+      "state": "conditional_draft_pending_G1_failure_patterns",
+      "variable": "camera/projection context",
+      "contrast": "launch-centered geo window vs global window, same accepted G1 marker",
+      "test": "Truthful coordinate projection at coast/dateline/limb fixtures; uncued marker search",
+      "criterion": "Zero clipped/hidden essential marker parts and zero anchor displacement; localization time improves≥15% without losing country/site reading>3pp",
+      "source_ids": [
+        "R01",
+        "R07",
+        "R08",
+        "R11"
+      ],
+      "result": null
+    },
+    {
+      "id": "G2-H2",
+      "generation": "G2",
+      "state": "conditional_draft_pending_G1_failure_patterns",
+      "variable": "selected-place label association",
+      "contrast": "full external caption with short truthful leader vs same full caption visually detached from point",
+      "test": "2s: associate marked place with complete country/site; long-name and edge fixtures",
+      "criterion": "Wrong place-to-marker association≤5% and at least20% fewer errors vscontrol; no glyph or halo clipping",
+      "source_ids": [
+        "R07",
+        "R09",
+        "R12"
+      ],
+      "result": null
+    },
+    {
+      "id": "G3-H1",
+      "generation": "G3",
+      "state": "conditional_draft_pending_G2_failure_patterns",
+      "variable": "figure-ground hierarchy",
+      "contrast": "quiet land/coast/graticule and one selected-launch region vs equal emphasis of all layers",
+      "test": "Uncued1s marker and separate HH:MM/field probes; mandatory content identical",
+      "criterion": "Marker detection improves≥5pp; time/field accuracy loss≤3pp; geography and all full labels retained",
+      "source_ids": [
+        "R04",
+        "R05",
+        "R06",
+        "R10"
+      ],
+      "result": null
+    },
+    {
+      "id": "G3-H2",
+      "generation": "G3",
+      "state": "conditional_draft_pending_G2_failure_patterns",
+      "variable": "refinement and stable selected context",
+      "contrast": "one consistent launch accent linking marker and full caption vs same palette accents spread across decoration",
+      "test": "Switch three missions with different country/site lengths;2s identify selected site and countdown state",
+      "criterion": "Incorrect contextual attribution reduced≥20%; no field movement/clipping; exact required text remains readable",
+      "source_ids": [
+        "R03",
+        "R04",
+        "R06",
+        "R12"
+      ],
+      "result": null
+    }
+  ],
+  "generation_states": {
+    "G1": "research packet delivered; no test result/acceptance observed",
+    "G2": "conditional drafts, refresh after root shares G1 failures",
+    "G3": "conditional drafts, refresh after root shares G2 failures"
+  },
+  "numerical_hypothesis_thresholds": "Proposed project criteria, not extracted empirical results or Garmin norms.",
+  "geometric_inferences": {
+    "physical_marker_size": "s_mm = rendered_px * physical_screen_diameter_mm /390; viewing angle = 2*atan(s_mm/(2*distance_mm)). Record actual device values; no nominal diameter assumed.",
+    "circular_window_support": "For a circular marker support radius m in a circular geo window radius r: distance(marker center, window center)+m≤r. Apply to stroke and essential halo, not core alone.",
+    "edge_policy": "Recenter/choose projection or allocate external caption; never clamp a marker to screen edge while retaining original location claim.",
+    "draw_order": "Validate finalPNG after map mask/globe horizon and screen mask, basemap, overlays and labels. Scene-graph presence alone is not visibility."
+  },
+  "methodology_source": {
+    "title": "Scientific Agent Skills: A Library of Procedural Knowledge for Research Agents",
+    "authors": [
+      "Timothy Kassis",
+      "Vinayak Agarwal",
+      "Yuhuan He",
+      "Darshil Patel",
+      "Aubrey M. Brueckner"
+    ],
+    "year": 2026,
+    "url": "https://doi.org/10.48550/arXiv.2609.00065",
+    "current_record_checked": "2026-11-11: arXiv current v2, revised2026-09-02; not a UX evidence source"
+  },
+  "access_limits": [
+    "OS GitBook image asset and MDPI stimuli image download denied; neither counted visually.",
+    "PMC article sometimes served CAPTCHA; R12 selected full text accessed through Europe PMC XML mirror.",
+    "Cybulski2024 full paper not obtained; abstract-only explicitly recorded.",
+    "No packages installed, no paid services or API examples run.",
+    "Copyrighted images/PDF used only in temporary inspection folder, not project assets."
+  ]
+}

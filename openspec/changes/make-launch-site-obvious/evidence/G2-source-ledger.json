@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "stage": "G2 targeted research",
+  "date_checked": "2026-11-11",
+  "scope": "Only reference work under/tmp/spacefox-marker-round4-references; no candidate verdicts or rankings.",
+  "failure_patterns": {
+    "source": "Parent task message; not independently inspected in this reference role",
+    "reported_evidence": "/Users/jekamas/projects/SpaceFox/openspec/changes/make-launch-site-obvious/evidence/campaign.json.gz",
+    "read_by_research_agent": false,
+    "sealed_banks_read": false,
+    "observations": [
+      "Earthrise all6glyphs reportedly fail at old anchor368,148 near circular edge/field background",
+      "Atlas mostly fails between clock and mission",
+      "Control/Ticket/Relay have some healthy instances",
+      "Larger glyph alone not sufficient"
+    ]
+  },
+  "sources": [
+    {
+      "id": "G2-R01",
+      "title": "Zuo et al. — The influence of target layout and target graphic type on searching performance based on eye-tracking technology",
+      "url": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2023.1052488/full",
+      "date": "2023-02-09",
+      "kind": "primary_empirical_article",
+      "read_status": "selected_full_text_sections",
+      "sections": [
+        "§2 Materials/methods",
+        "§3.1 and3.2 results",
+        "§4.2–4.3 interpretation",
+        "§5 limitations"
+      ],
+      "finding": "39 students,24-inch desktop,100×100px automobile-console icons; location affected some search measures and interacted with icon style. Circular-vs-rectangular comparison was indirect.",
+      "inference": "Test relocation using each retained G1 glyph/lineage; changing the anchor zone can alter visual search, and location results need not generalize across glyph styles.",
+      "limits": "Not wrist or launch-map; unlimited search, circular block always first, young sample; do not infer top-left or any single corner is universally best.",
+      "new_vs_G1": true
+    },
+    {
+      "id": "G2-R02",
+      "title": "Xia et al. — Visualizing on the Wrist: Impact of Motion, Dial Shape and Visualization Type on Smartwatch",
+      "url": "https://pr.ieeevis.org/year/2025/program/paper_918b3f1e-6e9b-43f0-bb8b-5bad6b3956ef.html",
+      "date": "2025-11-06 conference session",
+      "kind": "primary_conference_abstract_and_author_repository",
+      "read_status": "abstract_and_primary_apparatus_readme_only",
+      "sections": [
+        "Official IEEE VIS abstract",
+        "Authors repository README, study design summary"
+      ],
+      "finding": "Official abstract reports N32 comparing bar/radial, round/square and sitting/walking; walking reduced estimation accuracy in their task.",
+      "inference": "Treat real wrist motion and dial shape as separate external-validity conditions; a static390px clearance gate does not establish glanceability.",
+      "limits": "Full paper not obtained; no marker-search effect, direction or pixel threshold inferred. Appendix/code were not executed and no third-party summary is used as evidence.",
+      "secondary_urls": [
+        "https://github.com/ZhouxuanXia/Visualizing-on-the-Wrist",
+        "https://doi.org/10.1109/VIS60296.2025.00081"
+      ],
+      "new_vs_G1": true
+    },
+    {
+      "id": "G2-R03",
+      "title": "Android Developers — Handle different watch shapes",
+      "url": "https://developer.android.com/training/wearables/views/layouts",
+      "date": "Current official documentation; page date not established",
+      "kind": "official_wearable_layout_guide",
+      "read_status": "primary_sections_read",
+      "sections": [
+        "Cropping on round screens",
+        "Use a BoxInsetLayout",
+        "Figure2 window insets"
+      ],
+      "finding": "A rectangular layout can crop corner content on a round single-screen UI; BoxInsetLayout defines an interior region for child content.",
+      "inference": "Compute a safe region for full glyph support, then position geography so the real launch coordinate projects into that region.",
+      "limits": "Wear OS library behavior, not Garmin-specific padding or a demonstrated minimum margin. Do not copy15dp from sample into390px as a norm.",
+      "new_vs_G1": true
+    },
+    {
+      "id": "G2-R04",
+      "title": "Esri ArcGIS Pro — Symbol units and size",
+      "url": "https://pro.arcgis.com/en/pro-app/3.3/help/mapping/layer-properties/units-and-symbol-size.htm",
+      "date": "ArcGIS Pro3.3 documentation; publication date unspecified",
+      "kind": "official_cartographic_rendering_guide",
+      "read_status": "primary_sections_read",
+      "sections": [
+        "Consistent display size vs measurable map size",
+        "Symbol units in maps",
+        "No-reference-scale examples at1:35000 and1:5000"
+      ],
+      "finding": "Locator symbols may keep a consistent display size independently of changing map scale. Reference-scale symbols instead grow/shrink with the view.",
+      "inference": "Hold the exact retained G1 marker footprint fixed while varying geographic scale/radius and camera placement in G2.",
+      "limits": "Rendering semantics, not a user study. Fixed display size does not itself ensure useful context, correct position, sufficient clearance or noticeability.",
+      "new_vs_G1": true
+    },
+    {
+      "id": "G2-R05",
+      "title": "Ordnance Survey — Generalisation",
+      "url": "https://docs.os.uk/more-than-maps/geographic-data-visualisation/guide-to-cartography/generalisation",
+      "date": "Undated official guide; accessed2026-11-11",
+      "kind": "official_cartographic_design_guide",
+      "read_status": "primary_text_read",
+      "sections": [
+        "Purpose/scale and reduced space",
+        "Elimination/simplification/exaggeration/displacement",
+        "Preserving characteristics and spatial relationships"
+      ],
+      "finding": "Reduced map scale requires selective detail; simplify nonessential features while preserving defining characteristics and spatial relationships. Displacement is a distinct operation.",
+      "inference": "Simplify graticule/minor texture and nonessential geography when reserving marker space; keep coastline/country context and truthful launch anchor.",
+      "limits": "General cartographic practice, not wrist experiment. The fact that some maps displace features does not authorize silently moving SpaceFox launch coordinates.",
+      "new_vs_G1": true
+    },
+    {
+      "id": "G2-R06",
+      "title": "Mapbox GL JS — Offset the vanishing point using padding",
+      "url": "https://docs.mapbox.com/mapbox-gl-js/example/offset-vanishing-point-with-padding/",
+      "date": "Current official example; page date unspecified",
+      "kind": "official_camera_layout_example",
+      "read_status": "primary_explanation_and_source_read",
+      "sections": [
+        "Explanation",
+        "Marker setLngLat center",
+        "Sidebar padding with map.easeTo"
+      ],
+      "finding": "Example retains geographic marker coordinates while changing camera padding to account for floating sidebars.",
+      "inference": "Reserve visual space occupied by clock/mission/fields through camera or geo-window layout; change projection/camera instead of clamping the marker.",
+      "limits": "Pitched Mapbox example, not Garmin or proof for spherical projection. Example/runtime not executed; requires an API token and no paid API was used.",
+      "new_vs_G1": true
+    }
+  ],
+  "new_source_count": 6,
+  "visual_inspections": [
+    {
+      "source_id": "G2-R03",
+      "url": "https://developer.android.com/static/wear/images/02_uilib.png",
+      "observed": "Gray inset square sits inside round display; Hello there text remains in interior. This is a conservative layout example, not measured margin guidance.",
+      "method": "Official PNG downloaded temporarily and actually inspected with view_image",
+      "sha256": "ac8c7fbf1570324d41777d2c26435d9d78ecda1df8f1de441b7619a8e91426dc",
+      "project_media": false
+    },
+    {
+      "source_id": "G2-R04",
+      "url": "https://pro.arcgis.com/en/pro-app/3.3/help/mapping/layer-properties/GUID-C82EF854-5E1E-4EDC-BA86-791C8FAD48F8-web.png",
+      "observed": "Overview map with cyan circular locator at one rendered size.",
+      "method": "Official PNG downloaded temporarily and actually inspected with view_image",
+      "sha256": "625856dbbe975de7e5fa49d4b936ae8420d33f995343bd9008058336d19ec87a",
+      "project_media": false
+    },
+    {
+      "source_id": "G2-R04",
+      "url": "https://pro.arcgis.com/en/pro-app/3.3/help/mapping/layer-properties/GUID-A4B304D0-3533-4581-8075-B27F4322C90B-web.png",
+      "observed": "Zoomed basemap shows larger buildings/roads but same cyan marker diameter as previous example.",
+      "method": "Official PNG downloaded temporarily and actually inspected with view_image",
+      "sha256": "a6cebb766c7e4412169077bd7176e58ccdff50e2d9734a78be7f9e5f26666016",
+      "project_media": false
+    }
+  ],
+  "actual_visual_inspection_count": 3,
+  "source_findings_vs_inference": "Separate fields per source; none is an experiment on SpaceFox.",
+  "geometry": {
+    "ideal_circle_assumption": {
+      "center": [
+        195,
+        195
+      ],
+      "radius": 195
+    },
+    "reported_anchor": [
+      368,
+      148
+    ],
+    "anchor_radial_clearance_px": 15.729255035853669,
+    "meaning": "Illustrative calculation only; not full glyph clearance, not proof of failure cause, and not a candidate verdict. Actual pixel center convention may differ.",
+    "support_rule": "Let F=(screenCircle intersect geoWindow) minus occupied UI. Full glyph offsets G fit at anchor p iff p+G is a subset of F, equivalently p belongs to F eroded byG.",
+    "projection_rule": "Pan/recenter/rescale geographic rendering and recompute the real point; never clamp or hand-displace marker while claiming unchanged geographic coordinates.",
+    "size_rule": "Retained G1 rendered glyph size/style must remain fixed unless explicitly a new size treatment; geography scale is independent."
+  },
+  "hypotheses": [
+    {
+      "id": "G2-T01",
+      "type": "engineering_hypothesis",
+      "variable": "camera/geo-window placement, retained G1 glyph unchanged",
+      "prediction": "A reserved free region for complete marker support can remove edge/UI collisions while maintaining true coordinate projection.",
+      "test": "For each supplied G1 lineage and each of20context mutations, evaluate complete final support mask after all masks/layers, not anchor alone; subtract clock/mission/field opaque regions.",
+      "criterion": "Zero clipped essential glyph/outline pixels, zero overlap with occupied UI, coordinate anchor agrees with same projection formula; optional2px clearance is a proposed margin, not source norm.",
+      "human_metric_executed": false,
+      "result": null
+    },
+    {
+      "id": "G2-T02",
+      "type": "human_hypothesis_not_executed",
+      "variable": "geography scale with fixed accepted G1 marker and controlled anchor region",
+      "prediction": "Reduced/reframed geography with sufficient coast/country context makes launchpoint easier to locate than the same lineage original context.",
+      "test": "Uncued1s marker localization, separate2s country/site reading, matched render/physical scale; compare within lineage.",
+      "criterion": "Detection improves≥5percentage points; HH:MM and full country/site reading lose≤3points; engineering tests above pass. No claim of achieving these values without people.",
+      "human_metric_executed": false,
+      "result": null
+    },
+    {
+      "id": "G2-T03",
+      "type": "human_hypothesis_not_executed",
+      "variable": "nonessential map texture, geographic projection/anchor/glyph fixed",
+      "prediction": "Lowering or eliminating competing minor texture near the target reduces search errors while retaining geographic meaning.",
+      "test": "Compare retained coastline/land/country context with and without optional graticule/minor texture/decor; full required labels identical.",
+      "criterion": "Marker errors reduce≥20%relative to baseline with time/field reading loss≤3percentage points; geographic correctness unchanged. This is an untested project criterion.",
+      "human_metric_executed": false,
+      "result": null
+    }
+  ],
+  "no_human_tests_performed": true,
+  "no_acceptance_claim": true,
+  "continuation": "G3 semantic label/pin research follows actual G2 failure patterns; not preaccepted here.",
+  "access_limits": [
+    "CGF positional-study PDF returned403 and Samsung circular-UX PDF timed out; neither used as substantive evidence or visual inspection.",
+    "VIS2025 used official primary abstract and authors README only, explicitly bounded.",
+    "No API examples/code executed; no paid services/installations."
+  ]
+}

@@ -1,0 +1,263 @@
+{
+  "method": "Independent per-image location/semantic check against withheld frozen truth; outline interiors accepted; no human latency/probability inference",
+  "errors": [],
+  "trials": [
+    {
+      "imageId": "image-b648fd684a",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [
+        "wrong semantic identity"
+      ],
+      "response": {
+        "imageId": "image-b648fd684a",
+        "status": "located",
+        "x": 172,
+        "y": 53,
+        "classification": "uncertain",
+        "confidence": "medium",
+        "evidence": "Yellow teardrop location pin on the map at upper right. No visible launch/start label; the pin establishes a location, but its launch-site meaning is not explicit."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 8.0,
+      "tolerance": 3.0,
+      "passed": false
+    },
+    {
+      "imageId": "image-62d6bb32d1",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-62d6bb32d1",
+        "status": "located",
+        "x": 168,
+        "y": 119,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Small yellow-centred ring on the globe beside the time, with \u0421\u0422\u0410\u0420\u0422 directly below it."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.5,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-d2253624e5",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [
+        "wrong semantic identity"
+      ],
+      "response": {
+        "imageId": "image-d2253624e5",
+        "status": "located",
+        "x": 153,
+        "y": 42,
+        "classification": "uncertain",
+        "confidence": "medium",
+        "evidence": "Yellow teardrop location pin on the small globe at upper right. No visible launch/start label identifies its meaning more specifically."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 8.0156097709407,
+      "tolerance": 3.0,
+      "passed": false
+    },
+    {
+      "imageId": "image-0db7572371",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [
+        "wrong localized point"
+      ],
+      "response": {
+        "imageId": "image-0db7572371",
+        "status": "located",
+        "x": 168,
+        "y": 115,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow-centred circular map marker at right, with \u0421\u0422\u0410\u0420\u0422 directly below it."
+      },
+      "distanceToFilledSilhouette": 26.504716561397142,
+      "distanceToAnchor": 32.50384592629001,
+      "tolerance": 3.0,
+      "passed": false
+    },
+    {
+      "imageId": "image-677bd15590",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-677bd15590",
+        "status": "located",
+        "x": 161,
+        "y": 44,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow-centred ring near the map top, with \u0421\u0422\u0410\u0420\u0422 beneath it."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.4999999999999929,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-d588606418",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [
+        "wrong semantic identity"
+      ],
+      "response": {
+        "imageId": "image-d588606418",
+        "status": "located",
+        "x": 161,
+        "y": 36,
+        "classification": "uncertain",
+        "confidence": "medium",
+        "evidence": "Yellow teardrop location pin near the map top. No visible launch/start label establishes that this is a launch site."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 8.499999999999993,
+      "tolerance": 3.0,
+      "passed": false
+    },
+    {
+      "imageId": "image-e227cdcc52",
+      "size": 195,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-e227cdcc52",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "The small globe shows continents and an outline; no distinct location marker or launch/start label is visible."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-03ef431ec5",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-03ef431ec5",
+        "status": "located",
+        "x": 153,
+        "y": 50,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow-centred ring on the small globe, with \u0421\u0422\u0410\u0420\u0422 immediately above it."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.5,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-2ffdbe3204",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [
+        "wrong semantic identity"
+      ],
+      "response": {
+        "imageId": "image-2ffdbe3204",
+        "status": "located",
+        "x": 168,
+        "y": 74,
+        "classification": "uncertain",
+        "confidence": "medium",
+        "evidence": "Yellow teardrop location pin on the map at right. No visible launch/start label specifies that the location is a launch site."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 8.514693182963201,
+      "tolerance": 3.0,
+      "passed": false
+    },
+    {
+      "imageId": "image-505e3d6f44",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [
+        "wrong semantic identity"
+      ],
+      "response": {
+        "imageId": "image-505e3d6f44",
+        "status": "located",
+        "x": 168,
+        "y": 111,
+        "classification": "uncertain",
+        "confidence": "medium",
+        "evidence": "Yellow teardrop location pin on the small globe beside the time. No visible launch/start label explicitly identifies a launch site."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 8.5,
+      "tolerance": 3.0,
+      "passed": false
+    },
+    {
+      "imageId": "image-4b1a74a4ff",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-4b1a74a4ff",
+        "status": "located",
+        "x": 172,
+        "y": 53,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow teardrop map pin at upper right, with \u0421\u0422\u0410\u0420\u0422 below it."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 8.0,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-9b7dd9bc38",
+      "size": 195,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-9b7dd9bc38",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "\u0421\u0422\u0410\u0420\u0422 appears on the small globe, but no distinct point, ring, or pin is visible. The word alone does not provide a map-marker location."
+      },
+      "passed": true
+    }
+  ],
+  "passed": false,
+  "counts": {
+    "images": 12,
+    "positive": 10,
+    "negative": 2,
+    "negativeUnable": 0,
+    "materialFailures": 6
+  },
+  "lockVerified": true,
+  "answersSha256": "d3236e14d02ccb5a0834530482bdecd95b54bfa7b8009fdf0f4338ca78e640a7",
+  "truthSha256": "d4a128830e31f2a10dfbcb305c2c3021bc8914b1712c5fa0139eb61d352adc14"
+}

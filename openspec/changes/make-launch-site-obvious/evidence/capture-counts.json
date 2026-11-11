@@ -1,0 +1,45 @@
+{
+  "stages": [
+    {
+      "stage": "g1",
+      "rawJpegFrames": 100,
+      "watchCropObservations": 420,
+      "trialGroups": 105
+    },
+    {
+      "stage": "g2",
+      "rawJpegFrames": 56,
+      "watchCropObservations": 240,
+      "trialGroups": 60
+    },
+    {
+      "stage": "g3",
+      "rawJpegFrames": 28,
+      "watchCropObservations": 120,
+      "trialGroups": 30
+    },
+    {
+      "stage": "screen",
+      "rawJpegFrames": 132,
+      "watchCropObservations": 576,
+      "trialGroups": 144
+    },
+    {
+      "stage": "screen-g3-delta",
+      "rawJpegFrames": 16,
+      "watchCropObservations": 48,
+      "trialGroups": 12
+    },
+    {
+      "stage": "confirm",
+      "rawJpegFrames": 320,
+      "watchCropObservations": 1440,
+      "trialGroups": 360
+    }
+  ],
+  "uniqueRawJpegFrames": 652,
+  "watchCropObservations": 2844,
+  "notIndependentObservations": true,
+  "rejectedEarlierScaledFrames": 72,
+  "rejectedEarlierScaledCrops": 420
+}

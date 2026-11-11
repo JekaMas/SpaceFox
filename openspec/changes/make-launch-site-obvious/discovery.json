@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "change": "make-launch-site-obvious",
+  "scope": {
+    "property_ids": [
+      "R1.P1",
+      "R2.P1",
+      "R3.P1",
+      "R4.P1",
+      "R5.P1",
+      "R6.P1"
+    ],
+    "test_ids": [
+      "unittest::tests.test_marker_research.MarkerTest.test_generations_positive",
+      "unittest::tests.test_marker_research.MarkerTest.test_generations_negative",
+      "unittest::tests.test_marker_research.MarkerTest.test_geometry_positive",
+      "unittest::tests.test_marker_research.MarkerTest.test_geometry_negative",
+      "unittest::tests.test_marker_research.MarkerTest.test_raster_positive",
+      "unittest::tests.test_marker_research.MarkerTest.test_raster_negative",
+      "unittest::tests.test_marker_research.MarkerTest.test_localization_positive",
+      "unittest::tests.test_marker_research.MarkerTest.test_localization_negative",
+      "unittest::tests.test_marker_research.MarkerTest.test_qualification_positive",
+      "unittest::tests.test_marker_research.MarkerTest.test_qualification_negative",
+      "unittest::tests.test_marker_research.MarkerTest.test_boundaries_positive",
+      "unittest::tests.test_marker_research.MarkerTest.test_boundaries_negative"
+    ]
+  },
+  "reviews": [
+    {
+      "id": "D1",
+      "question": "Known feature renderer remains frozen; add full marker/raster/localization experiment owner.",
+      "property_ids": [
+        "R1.P1",
+        "R2.P1",
+        "R3.P1",
+        "R4.P1",
+        "R5.P1",
+        "R6.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_marker_research.MarkerTest.test_generations_positive",
+        "unittest::tests.test_marker_research.MarkerTest.test_generations_negative",
+        "unittest::tests.test_marker_research.MarkerTest.test_geometry_positive",
+        "unittest::tests.test_marker_research.MarkerTest.test_geometry_negative",
+        "unittest::tests.test_marker_research.MarkerTest.test_raster_positive",
+        "unittest::tests.test_marker_research.MarkerTest.test_raster_negative",
+        "unittest::tests.test_marker_research.MarkerTest.test_localization_positive",
+        "unittest::tests.test_marker_research.MarkerTest.test_localization_negative",
+        "unittest::tests.test_marker_research.MarkerTest.test_qualification_positive",
+        "unittest::tests.test_marker_research.MarkerTest.test_qualification_negative",
+        "unittest::tests.test_marker_research.MarkerTest.test_boundaries_positive",
+        "unittest::tests.test_marker_research.MarkerTest.test_boundaries_negative"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read prototype/features/core.js,renderer.js,review.js; prior frozen selection/geometry and actualoverview.",
+          "outcome": "Old marker is two small circles; source point and opaque-layer channel can be reused. No existing actual-raster/uncued-localization owner.",
+          "results": [
+            {
+              "path": "prototype/features/renderer.js",
+              "line": 31,
+              "classification": "interface_dependency",
+              "reason": "Actual projected marker/point and map clipping source."
+            },
+            {
+              "path": "prototype/features/core.js",
+              "line": 117,
+              "classification": "interface_dependency",
+              "reason": "Retain prior semantic/fit/type/foreground gates."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "New marker research owner",
+          "reason": "Exact old owners/dependencies and new module location are known.",
+          "outcome": "No semantic-search evidence claimed.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "unavailable",
+          "query": "SpaceFox marker references",
+          "reason": "No matching index capability for thischeckout exposed.",
+          "outcome": "NoIDEevidenceclaimed.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "New wrapper preserves frozen old behavior while extending missing perceptual/raster boundaries."
+    }
+  ]
+}

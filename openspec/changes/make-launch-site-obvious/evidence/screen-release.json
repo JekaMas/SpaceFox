@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "decision": "RELEASE ONLY screen24 after independently verified exact12/source/currentarchive freeze; confirm24 remains CLOSED",
+  "releasedAtUtc": "2026-11-11T06:33:45.993188+00:00",
+  "freezeSha256": "b27b87697b917e1537108387ecfb6525c1cedbeffbafe81c014d4b87d7406137",
+  "sealedScreenVerified": true,
+  "frozenSources": 50,
+  "exactCandidates": [
+    "M2-11",
+    "M2-12",
+    "M2-21",
+    "M2-22",
+    "M2-31",
+    "M2-32",
+    "M2-41",
+    "M2-42",
+    "M2-51",
+    "M2-52",
+    "OLD-1",
+    "OLD-2"
+  ],
+  "frozenCampaignSha256": "9a28d0a5b34fbc7c00c20d30b9f7c364b7ba355b619eb37f04ce8568e919c72f",
+  "native4Rule": "For each locale ru,en select first non-null scene in bank order, then widest operator by grapheme count over locale (ID lexical tiebreak), excluding selected scene; deterministic lexical fallback if needed. Exactly four; never pick by render result.",
+  "screenOrderAmendment": "Before disclosure: screen12 applies to measuredG2parents; G3descendants must rerunall24 as knownregression, notfreshscreen. confirm24 stayssealeduntilfinal5/sourcefreeze.",
+  "boundary": "G2-parent screen; any G3 descendant repeats all24 as known regression before final fresh confirm24. Four native scenes selected deterministically after disclosure; all24 semantic/diagnostic checks still mandatory."
+}

@@ -1,0 +1,39 @@
+{
+  "method": "Negative guard probes using an actual healthy retained old base observation plus deliberate synthetic new mask corruption; no claim of actual marker raster measurement",
+  "sourceSha256": {
+    "core.js": "d61852bc7dea0b98aa709ebdfe3fb06d9a013bf797871464d4aba84cd84b4ad2",
+    "renderer.js": "e1718aa91bdf4e29cfc874fb9721366919e625531c4a37a99e2127a02c8476a5"
+  },
+  "checks": [
+    {
+      "name": "changed exact control pin",
+      "accepted": false,
+      "error": "changed old control paint"
+    },
+    {
+      "name": "control kind changed but ignored by rendering",
+      "accepted": false,
+      "error": "changed old control paint"
+    },
+    {
+      "name": "non-enum projection",
+      "accepted": false,
+      "error": "changed old control paint"
+    },
+    {
+      "name": "195 report accepted standalone",
+      "result": {
+        "passed": true,
+        "failures": []
+      }
+    },
+    {
+      "name": "fake masks all195 / invalid anchor / absent snapshot-assets",
+      "evaluatedFailures": [],
+      "qualification": {
+        "passed": true,
+        "errors": []
+      }
+    }
+  ]
+}

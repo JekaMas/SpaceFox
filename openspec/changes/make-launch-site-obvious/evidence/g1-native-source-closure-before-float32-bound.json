@@ -1,0 +1,195 @@
+{
+  "method": "Independent source/native snapshot closure; compare actual live leaves/computed paint/transforms/clip/foreground, not candidate recipe. Numeric epsilon1e-4native390units allows observed CSSOM Float32 bbox serialization only; no image resampling or coordinate shift applied.",
+  "onSnapshots": 210,
+  "numericEpsilon": 0.0001,
+  "maxNumericDifference": 0.000174857474661394,
+  "mismatches": [
+    {
+      "metadata": "0072.json",
+      "candidate": "OLD-5",
+      "size": 222,
+      "errors": [
+        "/foreground/3/x:numeric mismatch",
+        "/foreground/3/w:numeric mismatch",
+        "/foreground/8/x:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0072.json",
+      "candidate": "M1-15",
+      "size": 222,
+      "errors": [
+        "/foreground/4/w:numeric mismatch",
+        "/foreground/5/x:numeric mismatch",
+        "/foreground/9/w:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0073.json",
+      "candidate": "OLD-5",
+      "size": 222,
+      "errors": [
+        "/foreground/3/x:numeric mismatch",
+        "/foreground/3/w:numeric mismatch",
+        "/foreground/8/x:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0073.json",
+      "candidate": "M1-15",
+      "size": 222,
+      "errors": [
+        "/foreground/4/w:numeric mismatch",
+        "/foreground/5/x:numeric mismatch",
+        "/foreground/9/w:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0076.json",
+      "candidate": "M1-24",
+      "size": 222,
+      "errors": [
+        "/geo/w:numeric mismatch",
+        "/foreground/4/w:numeric mismatch",
+        "/foreground/5/x:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0076.json",
+      "candidate": "M1-33",
+      "size": 222,
+      "errors": [
+        "/foreground/3/w:numeric mismatch",
+        "/foreground/4/w:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0077.json",
+      "candidate": "M1-24",
+      "size": 222,
+      "errors": [
+        "/geo/w:numeric mismatch",
+        "/foreground/4/w:numeric mismatch",
+        "/foreground/5/x:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0077.json",
+      "candidate": "M1-33",
+      "size": 222,
+      "errors": [
+        "/foreground/3/w:numeric mismatch",
+        "/foreground/4/w:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0080.json",
+      "candidate": "M1-42",
+      "size": 222,
+      "errors": [
+        "/foreground/3/x:numeric mismatch",
+        "/foreground/3/w:numeric mismatch",
+        "/foreground/5/x:numeric mismatch",
+        "/foreground/9/w:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0080.json",
+      "candidate": "M1-51",
+      "size": 222,
+      "errors": [
+        "/foreground/3/x:numeric mismatch",
+        "/foreground/3/w:numeric mismatch",
+        "/foreground/8/x:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0081.json",
+      "candidate": "M1-42",
+      "size": 222,
+      "errors": [
+        "/foreground/3/x:numeric mismatch",
+        "/foreground/3/w:numeric mismatch",
+        "/foreground/5/x:numeric mismatch",
+        "/foreground/9/w:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0081.json",
+      "candidate": "M1-51",
+      "size": 222,
+      "errors": [
+        "/foreground/3/x:numeric mismatch",
+        "/foreground/3/w:numeric mismatch",
+        "/foreground/8/x:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0084.json",
+      "candidate": "M1-54",
+      "size": 222,
+      "errors": [
+        "/foreground/9/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0084.json",
+      "candidate": "M1-55",
+      "size": 222,
+      "errors": [
+        "/foreground/9/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0084.json",
+      "candidate": "M1-56",
+      "size": 222,
+      "errors": [
+        "/foreground/3/x:numeric mismatch",
+        "/foreground/3/w:numeric mismatch",
+        "/foreground/8/x:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0085.json",
+      "candidate": "M1-54",
+      "size": 222,
+      "errors": [
+        "/foreground/9/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0085.json",
+      "candidate": "M1-55",
+      "size": 222,
+      "errors": [
+        "/foreground/9/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0085.json",
+      "candidate": "M1-56",
+      "size": 222,
+      "errors": [
+        "/foreground/3/x:numeric mismatch",
+        "/foreground/3/w:numeric mismatch",
+        "/foreground/8/x:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    }
+  ],
+  "passed": false
+}

@@ -1,0 +1,1 @@
+Only image/raw artifactpaths relocated forrepositoryreplay. Originaltruth/lock/score in original-receipt; unchangedanswerbytes, images, masks and coordinates. Repeatedscoringchecksloaderrelocation; itisnotnewobserverevidence.

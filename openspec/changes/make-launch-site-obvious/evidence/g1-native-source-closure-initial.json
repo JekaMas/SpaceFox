@@ -1,0 +1,923 @@
+{
+  "method": "Independent source/native snapshot closure; compare actual live leaves/computed paint/transforms/clip/foreground, not candidate recipe. Numeric epsilon1e-4native390units allows observed CSSOM Float32 bbox serialization only; no image resampling or coordinate shift applied.",
+  "onSnapshots": 210,
+  "numericEpsilon": 0.0001,
+  "maxNumericDifference": 21656,
+  "mismatches": [
+    {
+      "metadata": "0000.json",
+      "candidate": "OLD-2",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0001.json",
+      "candidate": "OLD-2",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0004.json",
+      "candidate": "OLD-3",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0005.json",
+      "candidate": "OLD-3",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0020.json",
+      "candidate": "M1-21",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0021.json",
+      "candidate": "M1-21",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0024.json",
+      "candidate": "M1-22",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0024.json",
+      "candidate": "M1-23",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0025.json",
+      "candidate": "M1-22",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0025.json",
+      "candidate": "M1-23",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0028.json",
+      "candidate": "M1-24",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0028.json",
+      "candidate": "M1-25",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0029.json",
+      "candidate": "M1-24",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0029.json",
+      "candidate": "M1-25",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0032.json",
+      "candidate": "M1-26",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0032.json",
+      "candidate": "M1-31",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0033.json",
+      "candidate": "M1-26",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0033.json",
+      "candidate": "M1-31",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0036.json",
+      "candidate": "M1-32",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0036.json",
+      "candidate": "M1-33",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0037.json",
+      "candidate": "M1-32",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0037.json",
+      "candidate": "M1-33",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0040.json",
+      "candidate": "M1-34",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0040.json",
+      "candidate": "M1-35",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0041.json",
+      "candidate": "M1-34",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0041.json",
+      "candidate": "M1-35",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0044.json",
+      "candidate": "M1-36",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0045.json",
+      "candidate": "M1-36",
+      "size": 390,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0072.json",
+      "candidate": "OLD-2",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0072.json",
+      "candidate": "OLD-3",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0072.json",
+      "candidate": "OLD-5",
+      "size": 222,
+      "errors": [
+        "/foreground/3/w:numeric mismatch",
+        "/foreground/3/x:numeric mismatch",
+        "/foreground/8/x:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0072.json",
+      "candidate": "M1-15",
+      "size": 222,
+      "errors": [
+        "/foreground/4/w:numeric mismatch",
+        "/foreground/5/x:numeric mismatch",
+        "/foreground/9/w:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0073.json",
+      "candidate": "OLD-2",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0073.json",
+      "candidate": "OLD-3",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0073.json",
+      "candidate": "OLD-5",
+      "size": 222,
+      "errors": [
+        "/foreground/3/w:numeric mismatch",
+        "/foreground/3/x:numeric mismatch",
+        "/foreground/8/x:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0073.json",
+      "candidate": "M1-15",
+      "size": 222,
+      "errors": [
+        "/foreground/4/w:numeric mismatch",
+        "/foreground/5/x:numeric mismatch",
+        "/foreground/9/w:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0076.json",
+      "candidate": "M1-21",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0076.json",
+      "candidate": "M1-22",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0076.json",
+      "candidate": "M1-23",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0076.json",
+      "candidate": "M1-24",
+      "size": 222,
+      "errors": [
+        "/foreground/4/w:numeric mismatch",
+        "/foreground/5/x:numeric mismatch",
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch",
+        "/foreground/10/w:numeric mismatch",
+        "/geo/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0076.json",
+      "candidate": "M1-25",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0076.json",
+      "candidate": "M1-26",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0076.json",
+      "candidate": "M1-31",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0076.json",
+      "candidate": "M1-32",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0076.json",
+      "candidate": "M1-33",
+      "size": 222,
+      "errors": [
+        "/foreground/3/w:numeric mismatch",
+        "/foreground/4/w:numeric mismatch",
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0077.json",
+      "candidate": "M1-21",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0077.json",
+      "candidate": "M1-22",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0077.json",
+      "candidate": "M1-23",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0077.json",
+      "candidate": "M1-24",
+      "size": 222,
+      "errors": [
+        "/foreground/4/w:numeric mismatch",
+        "/foreground/5/x:numeric mismatch",
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch",
+        "/foreground/10/w:numeric mismatch",
+        "/geo/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0077.json",
+      "candidate": "M1-25",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0077.json",
+      "candidate": "M1-26",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0077.json",
+      "candidate": "M1-31",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0077.json",
+      "candidate": "M1-32",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0077.json",
+      "candidate": "M1-33",
+      "size": 222,
+      "errors": [
+        "/foreground/3/w:numeric mismatch",
+        "/foreground/4/w:numeric mismatch",
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0080.json",
+      "candidate": "M1-34",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0080.json",
+      "candidate": "M1-35",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0080.json",
+      "candidate": "M1-36",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0080.json",
+      "candidate": "M1-42",
+      "size": 222,
+      "errors": [
+        "/foreground/3/w:numeric mismatch",
+        "/foreground/3/x:numeric mismatch",
+        "/foreground/5/x:numeric mismatch",
+        "/foreground/9/w:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0080.json",
+      "candidate": "M1-51",
+      "size": 222,
+      "errors": [
+        "/foreground/3/w:numeric mismatch",
+        "/foreground/3/x:numeric mismatch",
+        "/foreground/8/x:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0081.json",
+      "candidate": "M1-34",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0081.json",
+      "candidate": "M1-35",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0081.json",
+      "candidate": "M1-36",
+      "size": 222,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0081.json",
+      "candidate": "M1-42",
+      "size": 222,
+      "errors": [
+        "/foreground/3/w:numeric mismatch",
+        "/foreground/3/x:numeric mismatch",
+        "/foreground/5/x:numeric mismatch",
+        "/foreground/9/w:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0081.json",
+      "candidate": "M1-51",
+      "size": 222,
+      "errors": [
+        "/foreground/3/w:numeric mismatch",
+        "/foreground/3/x:numeric mismatch",
+        "/foreground/8/x:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0084.json",
+      "candidate": "M1-54",
+      "size": 222,
+      "errors": [
+        "/foreground/9/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0084.json",
+      "candidate": "M1-55",
+      "size": 222,
+      "errors": [
+        "/foreground/9/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0084.json",
+      "candidate": "M1-56",
+      "size": 222,
+      "errors": [
+        "/foreground/3/w:numeric mismatch",
+        "/foreground/3/x:numeric mismatch",
+        "/foreground/8/x:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0085.json",
+      "candidate": "M1-54",
+      "size": 222,
+      "errors": [
+        "/foreground/9/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0085.json",
+      "candidate": "M1-55",
+      "size": 222,
+      "errors": [
+        "/foreground/9/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0085.json",
+      "candidate": "M1-56",
+      "size": 222,
+      "errors": [
+        "/foreground/3/w:numeric mismatch",
+        "/foreground/3/x:numeric mismatch",
+        "/foreground/8/x:numeric mismatch",
+        "/foreground/10/w:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0088.json",
+      "candidate": "OLD-2",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0088.json",
+      "candidate": "OLD-3",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0088.json",
+      "candidate": "M1-21",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0088.json",
+      "candidate": "M1-22",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0088.json",
+      "candidate": "M1-23",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0088.json",
+      "candidate": "M1-24",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0089.json",
+      "candidate": "OLD-2",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0089.json",
+      "candidate": "OLD-3",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0089.json",
+      "candidate": "M1-21",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0089.json",
+      "candidate": "M1-22",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0089.json",
+      "candidate": "M1-23",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0089.json",
+      "candidate": "M1-24",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0092.json",
+      "candidate": "M1-25",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0092.json",
+      "candidate": "M1-26",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0092.json",
+      "candidate": "M1-31",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0092.json",
+      "candidate": "M1-32",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0092.json",
+      "candidate": "M1-33",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0092.json",
+      "candidate": "M1-34",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0092.json",
+      "candidate": "M1-35",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0092.json",
+      "candidate": "M1-36",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0093.json",
+      "candidate": "M1-25",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0093.json",
+      "candidate": "M1-26",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0093.json",
+      "candidate": "M1-31",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0093.json",
+      "candidate": "M1-32",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0093.json",
+      "candidate": "M1-33",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0093.json",
+      "candidate": "M1-34",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0093.json",
+      "candidate": "M1-35",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    },
+    {
+      "metadata": "0093.json",
+      "candidate": "M1-36",
+      "size": 195,
+      "errors": [
+        "/foreground/6/y:numeric mismatch",
+        "/foreground/6/x:numeric mismatch"
+      ]
+    }
+  ],
+  "passed": false
+}

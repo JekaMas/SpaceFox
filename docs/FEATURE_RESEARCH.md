@@ -1,5 +1,7 @@
 # SpaceFox: исследование признаков и пять направлений
 
+**Дополнение 11 ноября:** замечание о незаметном знаке старта открыло [следующий раунд](MARKER_RESEARCH.md). Прежние технические результаты сохранены; они не являются измерением быстрого поиска точки человеком.
+
 11 ноября 2026. Браузерные предложения для Forerunner 165, круг 390×390. Оригинальные код, тексты и спецификация — MIT; шрифты сохраняют OFL. Нативный циферблат Garmin, живой feed и проверка на часах остаются следующей работой.
 
 [Пять предложений](../prototype/features/review.html) · [лаборатория](../prototype/features/index.html) · [таблица мутаций](FEATURE_MUTATION_MATRIX.md) · [цель и журнал прогресса](../openspec/changes/expand-feature-research/PROGRESS.md) · [источники](../openspec/changes/expand-feature-research/evidence/fresh-sources.md)

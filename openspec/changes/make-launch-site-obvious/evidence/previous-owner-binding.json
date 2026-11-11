@@ -1,0 +1,192 @@
+{
+  "purpose": "Prior owners must remain byte-identical for thisnewmodule",
+  "sources": {
+    "prototype/features/core.js": "67a0ad5206755c4fd5854460a6477c2d2d8a78ba09ce9a4015abc06f899d5153",
+    "prototype/features/renderer.js": "e88c1d67bccbdc186291a4d766b9929707fc3e071d3b4a97e354d2c5f3ac5f8b",
+    "prototype/features/style.css": "88395ffd2053e113b12789e5f96eb8d64c7a637083fbdcaf59372d6379260c4f",
+    "prototype/features/text-bounds.js": "1ca596873af87ebf5a3b10d244ee0ec64d84416afa762f9391dad7d2ad5a97db",
+    "prototype/features/data.js": "80480c78551740ed22c9b77ef1fcdecbeb9e2067b8b95318d016e9a879fff057",
+    "prototype/qualification/core.js": "70eea010f9ce4a19b782d77defdb048f3eddd2261f0be8d16730006f739c80dc",
+    "prototype/qualification/renderer.js": "9044f7a25a8ec8c454d1620a9f3a12ddb7f8dfb3d75d8390199224c5fa7df417",
+    "prototype/qualification/style.css": "e749ecf2454dfe90dfffb33abd44ec9d311dd9ce40d27ab5c13181613c0ac836",
+    "prototype/layout-data.js": "fa3cfd312d89414752c43e20e1bee903e70c6c7cc120973215af67c306da7ec1"
+  },
+  "oldCandidates": [
+    {
+      "id": "R4-01",
+      "stage": "repair3",
+      "axis": null,
+      "parents": [
+        "ANCHOR"
+      ],
+      "settings": {
+        "architecture": "control",
+        "projection": "auto",
+        "window": "auto",
+        "grammar": "stack",
+        "fitness": "row",
+        "typography": "roboto",
+        "palette": "mint",
+        "colorRoles": "standard",
+        "separators": "none",
+        "rocket": "filled",
+        "status": "cap",
+        "decor": "quiet"
+      },
+      "tuning": {},
+      "overrides": {
+        "mission": [
+          76,
+          173,
+          288,
+          112
+        ]
+      },
+      "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane"
+    },
+    {
+      "id": "R4-03",
+      "stage": "repair3",
+      "axis": "architecture",
+      "parents": [
+        "R3-04"
+      ],
+      "settings": {
+        "architecture": "ticket",
+        "projection": "auto",
+        "window": "auto",
+        "grammar": "centered",
+        "fitness": "row",
+        "typography": "barlow",
+        "palette": "mint",
+        "colorRoles": "site-accent",
+        "separators": "none",
+        "rocket": "filled",
+        "status": "cap",
+        "decor": "quiet"
+      },
+      "tuning": {
+        "colorRoles": 0,
+        "grammar": 0,
+        "typography": 0
+      },
+      "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+      "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane",
+      "overrides": {
+        "operatorWidth": 288,
+        "operatorY": 69
+      }
+    },
+    {
+      "id": "R4-05",
+      "stage": "repair3",
+      "axis": null,
+      "parents": [
+        "J3-008"
+      ],
+      "settings": {
+        "architecture": "relay",
+        "projection": "equirectangular",
+        "window": "third",
+        "grammar": "centered",
+        "fitness": "goal-dots",
+        "typography": "barlow",
+        "palette": "mint",
+        "colorRoles": "clock-accent",
+        "separators": "hairline",
+        "rocket": "two-tone",
+        "status": "header-pair",
+        "decor": "terminator-style"
+      },
+      "tuning": {
+        "colorRoles": 1,
+        "palette": 0,
+        "typography": 0
+      },
+      "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane",
+      "overrides": {
+        "operatorWidth": 288
+      }
+    },
+    {
+      "id": "R4-12",
+      "stage": "repair4",
+      "axis": "architecture",
+      "parents": [
+        "R4-07"
+      ],
+      "settings": {
+        "architecture": "earthrise",
+        "projection": "auto",
+        "window": "auto",
+        "grammar": "stack",
+        "fitness": "row",
+        "typography": "roboto",
+        "palette": "ice",
+        "colorRoles": "standard",
+        "separators": "none",
+        "rocket": "filled",
+        "status": "cap",
+        "decor": "quiet"
+      },
+      "tuning": {
+        "palette": 0
+      },
+      "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+      "mutation": "visible marker outside entireopaque fitnessbackground",
+      "overrides": {
+        "mission": [
+          32,
+          173,
+          288,
+          112
+        ],
+        "pin": [
+          368,
+          148
+        ]
+      }
+    },
+    {
+      "id": "R4-09",
+      "stage": "repair3",
+      "axis": null,
+      "parents": [
+        "J1-016"
+      ],
+      "settings": {
+        "architecture": "atlas",
+        "projection": "stereographic",
+        "window": "lower-cap",
+        "grammar": "centered",
+        "fitness": "slim-arcs",
+        "typography": "saira",
+        "palette": "magenta",
+        "colorRoles": "warm-status",
+        "separators": "baseline-rule",
+        "rocket": "engraved",
+        "status": "boxed-header",
+        "decor": "fine-grid"
+      },
+      "tuning": {
+        "architecture": 1,
+        "window": 1,
+        "fitness": 1,
+        "rocket": 1
+      },
+      "overrides": {
+        "mission": [
+          76,
+          142,
+          288,
+          112
+        ],
+        "pin": [
+          350,
+          130
+        ]
+      },
+      "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane"
+    }
+  ]
+}

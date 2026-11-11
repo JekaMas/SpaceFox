@@ -1,0 +1,485 @@
+{
+  "method": "Independent per-image location/semantic check against withheld frozen truth; outline interiors accepted; no human latency/probability inference",
+  "errors": [],
+  "trials": [
+    {
+      "imageId": "image-1ecbe854b9",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-1ecbe854b9",
+        "status": "located",
+        "x": 191,
+        "y": 94,
+        "classification": "launch-site",
+        "confidence": "medium",
+        "evidence": "Small yellow-centered circle with white rim marks a point on the map to the right of the clock; the geographic point fits a launch location, though it has no explicit launch-site label."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.317161971201372,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-9112ff9f74",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-9112ff9f74",
+        "status": "located",
+        "x": 191,
+        "y": 136,
+        "classification": "launch-site",
+        "confidence": "medium",
+        "evidence": "A yellow-centered, pale-rimmed circle marks a point on the small globe beside the clock; its geographic placement within the launch display suggests the launch site."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.2655796384866467,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-05f4dc30a8",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-05f4dc30a8",
+        "status": "located",
+        "x": 196,
+        "y": 60,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "A yellow-orange teardrop map pin with a dark center appears on the upper-right geographic silhouette, clearly marking a location in the launch display."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 9.447957733047065,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-2a30055b01",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-2a30055b01",
+        "status": "located",
+        "x": 191,
+        "y": 94,
+        "classification": "launch-site",
+        "confidence": "medium",
+        "evidence": "A small yellow-centered ring with white outline marks a geographic point on the right-hand map, with no explicit launch-site text attached."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.317161971201372,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-f8da4edb01",
+      "size": 222,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-f8da4edb01",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "The upper-right globe is a plain wireframe/landmass graphic; I see no separate location dot, ring, or map pin. The country text alone does not establish a visible marker."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-a2024d159c",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-a2024d159c",
+        "status": "located",
+        "x": 183,
+        "y": 51,
+        "classification": "launch-site",
+        "confidence": "medium",
+        "evidence": "A yellow-centered white ring appears over the upper-right globe/map immediately to the right of the time, marking a geographic location in the launch display."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.4472135954999447,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-e11b4e34fc",
+      "size": 222,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-e11b4e34fc",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "I see a globe inside a faint rectangular outline, but no separate point marker or pin. The outline is not a location mark."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-119013faba",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-119013faba",
+        "status": "located",
+        "x": 174,
+        "y": 57,
+        "classification": "launch-site",
+        "confidence": "medium",
+        "evidence": "A yellow-centered pale ring stands out on the upper-right globe, visibly marking a geographic point without a textual site label."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.39223227027637086,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-645714efec",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-645714efec",
+        "status": "located",
+        "x": 183,
+        "y": 51,
+        "classification": "launch-site",
+        "confidence": "medium",
+        "evidence": "A small yellow-centered ring with a white outer rim marks a point near the top-right of the large globe, next to the clock."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.4472135954999555,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-903b951c6f",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-903b951c6f",
+        "status": "located",
+        "x": 174,
+        "y": 57,
+        "classification": "launch-site",
+        "confidence": "medium",
+        "evidence": "A yellow-centered white ring is visible on the small upper-right globe; its placement provides the geographic marker in the launch display."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.39223227027637086,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-e26414d001",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-e26414d001",
+        "status": "located",
+        "x": 191,
+        "y": 136,
+        "classification": "launch-site",
+        "confidence": "medium",
+        "evidence": "A yellow-centered white ring marks a point on the small globe at the right of the clock. The surrounding rectangle is separate from the geographic point."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.2655796384866467,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-a24d7a0b31",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-a24d7a0b31",
+        "status": "located",
+        "x": 174,
+        "y": 57,
+        "classification": "launch-site",
+        "confidence": "medium",
+        "evidence": "A yellow-centered ring with a pale border is clearly visible on the upper-right globe, marking a geographic location in the launch display."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.39223227027637086,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-d042d2166e",
+      "size": 222,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-d042d2166e",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "The upper-right globe has land outlines but no distinct colored point, ring, or pin. No visible launch-site marker is identifiable."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-4721288b15",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-4721288b15",
+        "status": "located",
+        "x": 196,
+        "y": 60,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "A bright yellow-orange teardrop map pin with a dark center is visible on the upper-right globe/map beside the time."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 9.447957733047065,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-f1320b34bd",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-f1320b34bd",
+        "status": "located",
+        "x": 196,
+        "y": 60,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "A bright yellow-orange teardrop pin marks a location on the upper-right globe, with a clear point and dark circular center."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 9.447957733047065,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-8b7be93c7d",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-8b7be93c7d",
+        "status": "located",
+        "x": 174,
+        "y": 57,
+        "classification": "launch-site",
+        "confidence": "medium",
+        "evidence": "A small yellow-centered, white-rimmed circle marks a point on the globe inside the upper-right rectangular map area."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.39223227027637086,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-2781d95fce",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-2781d95fce",
+        "status": "located",
+        "x": 196,
+        "y": 60,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "An orange-yellow teardrop map pin with a dark center is visible on the upper-right geographic shape beside the clock."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 9.447957733047065,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-c4ae512517",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-c4ae512517",
+        "status": "located",
+        "x": 183,
+        "y": 51,
+        "classification": "launch-site",
+        "confidence": "medium",
+        "evidence": "A yellow-centered white ring is visible over the geographic shape immediately right of the clock; it supplies a distinct location point but no explicit site label."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.4472135954999555,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-87edd1fd18",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-87edd1fd18",
+        "status": "located",
+        "x": 183,
+        "y": 51,
+        "classification": "launch-site",
+        "confidence": "medium",
+        "evidence": "A yellow-centered ring with white edging marks a point on the upper-right map shape, separate from the rocket icon lower down."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.4472135954999555,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-9a680209a1",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-9a680209a1",
+        "status": "located",
+        "x": 191,
+        "y": 136,
+        "classification": "launch-site",
+        "confidence": "medium",
+        "evidence": "A yellow-centered white ring marks a location on the rectangular map at the right of the clock."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.2655796384866467,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-5497cb1464",
+      "size": 222,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-5497cb1464",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "The small upper-right globe shows landmass shading but no separate point, ring, or pin. I cannot identify a visible launch-site marker."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-e3f6bcad2e",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-e3f6bcad2e",
+        "status": "located",
+        "x": 191,
+        "y": 94,
+        "classification": "launch-site",
+        "confidence": "medium",
+        "evidence": "A small yellow-centered circle with a white rim marks a point on the large map at the right of the green clock."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.317161971201372,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-aec3e53d83",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-aec3e53d83",
+        "status": "located",
+        "x": 191,
+        "y": 94,
+        "classification": "launch-site",
+        "confidence": "medium",
+        "evidence": "A yellow-centered white ring appears on the right-hand globe/map beside the clock, clearly marking a geographic point."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.317161971201372,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-a58a6ec3a6",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-a58a6ec3a6",
+        "status": "located",
+        "x": 191,
+        "y": 136,
+        "classification": "launch-site",
+        "confidence": "medium",
+        "evidence": "A yellow-centered ring with a white outer border marks a point on the small globe to the right of the clock."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.2655796384866467,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "counts": {
+    "images": 24,
+    "positive": 20,
+    "negative": 4,
+    "negativeUnable": 0,
+    "materialFailures": 0
+  },
+  "lockVerified": true,
+  "answersSha256": "cdb3c58d23a78a909aa533a5719042fc3f8654ec88e9c9789eb28f578d256523",
+  "truthSha256": "f92479747c5a4f60d2b0c8949c98c46fb61a1bf65831a78188ba17a83988980c"
+}

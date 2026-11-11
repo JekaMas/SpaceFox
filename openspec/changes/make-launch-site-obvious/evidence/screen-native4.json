@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 1,
+  "synthetic": true,
+  "scenes": [
+    {
+      "id": "scene-434291f272884091a7de",
+      "language": "ru",
+      "status": "scheduled",
+      "flags": {
+        "rescheduled": false,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "07:56",
+      "fixture": {
+        "rocket": {
+          "full": "Штиль Heavy 8",
+          "displayLabel": "Штиль Heavy 8"
+        },
+        "operator": {
+          "full": "Орбитальная лаборатория спектров",
+          "displayLabel": "Орбитальная лаборатория спектров"
+        },
+        "purpose": {
+          "full": "Проверка магнитосферного зонда",
+          "displayLabel": "Проверка магнитосферного зонда"
+        },
+        "site": {
+          "full": "Аргентина · синтетическая площадка Кварц",
+          "displayLabel": "Аргентина · Тест Кварц"
+        },
+        "point": [
+          -66,
+          -32
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 9567270,
+        "displayLabel": "T−110д 17ч 34м"
+      },
+      "fields": [
+        {
+          "role": "calories",
+          "value": 99991,
+          "displayLabel": "99 991"
+        },
+        {
+          "role": "steps",
+          "value": 98719,
+          "displayLabel": "98 719"
+        },
+        {
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        },
+        {
+          "role": "heart",
+          "value": 237,
+          "displayLabel": "237"
+        }
+      ]
+    },
+    {
+      "id": "scene-2e2324fbbf0a4efab368",
+      "language": "ru",
+      "status": "tbd",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": false
+      },
+      "clock": "11:11",
+      "fixture": {
+        "rocket": {
+          "full": "Поток Heavy II",
+          "displayLabel": "Поток Heavy II"
+        },
+        "operator": {
+          "full": "ММММММММММММММММММММММММММММММММ",
+          "displayLabel": "ММММММММММММММММММММММММММММММММ"
+        },
+        "purpose": {
+          "full": "Развёртывание радиотелескопа",
+          "displayLabel": "Развёртывание радиотелескопа"
+        },
+        "site": {
+          "full": "Индонезия · синтетическая площадка Скат",
+          "displayLabel": "Индонезия · Тест Скат"
+        },
+        "point": [
+          113,
+          -2
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": null,
+        "displayLabel": "Время уточняется"
+      },
+      "fields": [
+        {
+          "role": "steps",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "heart",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "stress",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "role": "battery",
+          "value": null,
+          "displayLabel": "—"
+        }
+      ]
+    },
+    {
+      "id": "scene-cd95986cd6264a1fad4e",
+      "language": "en",
+      "status": "scheduled",
+      "flags": {
+        "rescheduled": false,
+        "stale": false,
+        "timeKnown": true
+      },
+      "clock": "07:56",
+      "fixture": {
+        "rocket": {
+          "full": "Stillwind Heavy 8",
+          "displayLabel": "Stillwind Heavy 8"
+        },
+        "operator": {
+          "full": "Interstellar Spectra Laboratory",
+          "displayLabel": "Interstellar Spectra Laboratory"
+        },
+        "purpose": {
+          "full": "Magnetosphere probe test",
+          "displayLabel": "Magnetosphere probe test"
+        },
+        "site": {
+          "full": "Argentina · synthetic test location Quartz",
+          "displayLabel": "Argentina · Test Quartz"
+        },
+        "point": [
+          -66,
+          -32
+        ],
+        "model": "generic"
+      },
+      "countdown": {
+        "seconds": 9567270,
+        "displayLabel": "T−110d 17h 34m"
+      },
+      "fields": [
+        {
+          "role": "calories",
+          "value": 99991,
+          "displayLabel": "99,991"
+        },
+        {
+          "role": "steps",
+          "value": 98719,
+          "displayLabel": "98,719"
+        },
+        {
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        },
+        {
+          "role": "heart",
+          "value": 237,
+          "displayLabel": "237"
+        }
+      ]
+    },
+    {
+      "id": "scene-14e7fa4f4b3f4d2e889a",
+      "language": "en",
+      "status": "both",
+      "flags": {
+        "rescheduled": true,
+        "stale": true,
+        "timeKnown": true
+      },
+      "clock": "17:39",
+      "fixture": {
+        "rocket": {
+          "full": "Ariane 62",
+          "displayLabel": "Ariane 62"
+        },
+        "operator": {
+          "full": "Alliance of Orbital Laboratories",
+          "displayLabel": "Alliance of Orbital Laboratories"
+        },
+        "purpose": {
+          "full": "Auroral reconnaissance",
+          "displayLabel": "Auroral reconnaissance"
+        },
+        "site": {
+          "full": "Finland · synthetic test location Rime",
+          "displayLabel": "Finland · Test Rime"
+        },
+        "point": [
+          26,
+          64.5
+        ],
+        "model": "ariane"
+      },
+      "countdown": {
+        "seconds": 573001,
+        "displayLabel": "T−6d 15h 10m"
+      },
+      "fields": [
+        {
+          "role": "heart",
+          "value": 218,
+          "displayLabel": "218"
+        },
+        {
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        },
+        {
+          "role": "calories",
+          "value": 93517,
+          "displayLabel": "93,517"
+        },
+        {
+          "role": "steps",
+          "value": 87439,
+          "displayLabel": "87,439"
+        }
+      ]
+    }
+  ]
+}

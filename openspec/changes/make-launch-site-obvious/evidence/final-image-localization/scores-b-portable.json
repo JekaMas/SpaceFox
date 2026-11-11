@@ -1,0 +1,1131 @@
+{
+  "method": "Independent per-image location/semantic check against withheld frozen truth; outline interiors accepted; no human latency/probability inference",
+  "errors": [],
+  "trials": [
+    {
+      "imageId": "image-c15279e0d11c",
+      "size": 390,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-c15279e0d11c",
+        "status": "located",
+        "x": 305,
+        "y": 100,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow center inside a white circular target on the globe; it marks a geographic launch point."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.0,
+      "tolerance": 6.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-b7cb20024f53",
+      "size": 390,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-b7cb20024f53",
+        "status": "located",
+        "x": 305,
+        "y": 100,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow-center white target on the globe marks a geographic point."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.0,
+      "tolerance": 6.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-4ed2316c3d20",
+      "size": 390,
+      "expectedVisible": false,
+      "kind": "genuine-null",
+      "errors": [],
+      "response": {
+        "imageId": "image-4ed2316c3d20",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "The top icon is a crossed-out location symbol; there is no geographic point."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-7594d2b85afd",
+      "size": 390,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-7594d2b85afd",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "The globe is visible without any launch-point symbol."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-3e291d935545",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-3e291d935545",
+        "status": "located",
+        "x": 174,
+        "y": 57,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow-center white target appears on the upper-right globe."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.39223227027637086,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-46fdaabeffc2",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-46fdaabeffc2",
+        "status": "located",
+        "x": 174,
+        "y": 57,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow-center white target ring appears on the upper-right globe."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.39223227027637086,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-768f466bc9ce",
+      "size": 222,
+      "expectedVisible": false,
+      "kind": "genuine-null",
+      "errors": [],
+      "response": {
+        "imageId": "image-768f466bc9ce",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "Top crossed-location icon is visible; there is no geographic point marker."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-1dda0a1dcf3a",
+      "size": 222,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-1dda0a1dcf3a",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "The upper-right globe has no visible launch-point symbol."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-a7b5148af3e8",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-a7b5148af3e8",
+        "status": "located",
+        "x": 152,
+        "y": 50,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "White target ring with yellow center is visible on the globe."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.5,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-31b47f1aa126",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-31b47f1aa126",
+        "status": "located",
+        "x": 152,
+        "y": 50,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Small yellow-center white target ring is visible on the upper-right globe."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.5,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-11929b2d812e",
+      "size": 195,
+      "expectedVisible": false,
+      "kind": "genuine-null",
+      "errors": [],
+      "response": {
+        "imageId": "image-11929b2d812e",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "The gold top symbol shows crossed-out location; no geographic point is displayed."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-2b9a617c925d",
+      "size": 195,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-2b9a617c925d",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "medium",
+        "evidence": "A small globe is visible, but there is no visible launch-point target."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-420bfc65e34d",
+      "size": 390,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-420bfc65e34d",
+        "status": "located",
+        "x": 336,
+        "y": 239,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Target ring and yellow center appear on the globe above \u0421\u0422\u0410\u0420\u0422."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.0,
+      "tolerance": 6.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-1f420dfe83d7",
+      "size": 390,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-1f420dfe83d7",
+        "status": "located",
+        "x": 336,
+        "y": 239,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow-center target is on the globe directly above LAUNCH."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.0,
+      "tolerance": 6.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-478f7335ea7c",
+      "size": 390,
+      "expectedVisible": false,
+      "kind": "genuine-null",
+      "errors": [],
+      "response": {
+        "imageId": "image-478f7335ea7c",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "Gold crossed-location symbol at the top indicates unavailable location; no geographic point is shown."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-f5ffcb91f404",
+      "size": 390,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-f5ffcb91f404",
+        "status": "unable",
+        "x": null,
+        "y": null,
+        "classification": "uncertain",
+        "confidence": "medium",
+        "evidence": "\u0421\u0422\u0410\u0420\u0422 appears across the bottom of the globe, but there is no distinct launch point."
+      },
+      "negativeUncertainty": true,
+      "passed": true
+    },
+    {
+      "imageId": "image-16686fdcf7eb",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-16686fdcf7eb",
+        "status": "located",
+        "x": 191,
+        "y": 136,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow center inside a white target ring is on the globe above \u0421\u0422\u0410\u0420\u0422."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.2655796384866467,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-ed6bc6c23d92",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-ed6bc6c23d92",
+        "status": "located",
+        "x": 191,
+        "y": 136,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow-center white ring sits on the globe above LAUNCH."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.2655796384866467,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-0e8de5f27be4",
+      "size": 222,
+      "expectedVisible": false,
+      "kind": "genuine-null",
+      "errors": [],
+      "response": {
+        "imageId": "image-0e8de5f27be4",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "Crossed-location icon appears at the top; no map or launch point is present."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-ba45b2b04edb",
+      "size": 222,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-ba45b2b04edb",
+        "status": "unable",
+        "x": null,
+        "y": null,
+        "classification": "uncertain",
+        "confidence": "medium",
+        "evidence": "The globe is labeled \u0421\u0422\u0410\u0420\u0422, but no distinct marker identifies a point."
+      },
+      "negativeUncertainty": true,
+      "passed": true
+    },
+    {
+      "imageId": "image-8e21c4d43a3e",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-8e21c4d43a3e",
+        "status": "located",
+        "x": 168,
+        "y": 119,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow-center target on the globe sits above the \u0421\u0422\u0410\u0420\u0422 label."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.5,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-4ede8ffc1cda",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-4ede8ffc1cda",
+        "status": "located",
+        "x": 168,
+        "y": 119,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "White target ring with yellow center is on the globe above LAUNCH."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.5,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-34a4f2b96ee9",
+      "size": 195,
+      "expectedVisible": false,
+      "kind": "genuine-null",
+      "errors": [],
+      "response": {
+        "imageId": "image-34a4f2b96ee9",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "Small crossed-location symbol appears at the top; no map point is shown."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-8885cde4886e",
+      "size": 195,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-8885cde4886e",
+        "status": "unable",
+        "x": null,
+        "y": null,
+        "classification": "uncertain",
+        "confidence": "medium",
+        "evidence": "The globe is labeled \u0421\u0422\u0410\u0420\u0422, but no distinct point is visible to locate precisely."
+      },
+      "negativeUncertainty": true,
+      "passed": true
+    },
+    {
+      "imageId": "image-f0c67e52e358",
+      "size": 390,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-f0c67e52e358",
+        "status": "located",
+        "x": 335,
+        "y": 165,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow center and white target ring on the map indicate the launch point."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.0,
+      "tolerance": 6.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-82a54d7cc30b",
+      "size": 390,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-82a54d7cc30b",
+        "status": "located",
+        "x": 335,
+        "y": 165,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow-center white target ring is visible on the map to the right of the time."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.0,
+      "tolerance": 6.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-0fdce14668d0",
+      "size": 390,
+      "expectedVisible": false,
+      "kind": "genuine-null",
+      "errors": [],
+      "response": {
+        "imageId": "image-0fdce14668d0",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "Crossed-location icon at the top indicates unavailable location; no map marker is displayed."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-a4c637ff0ae7",
+      "size": 390,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-a4c637ff0ae7",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "Background map is visible without a target or pin."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-489560ab56ef",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-489560ab56ef",
+        "status": "located",
+        "x": 191,
+        "y": 94,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "White-ring yellow target is visible on the right-hand background map."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.317161971201372,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-12b311b53e11",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-12b311b53e11",
+        "status": "located",
+        "x": 191,
+        "y": 94,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Small white-ring yellow target is visible on the right-side map."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.317161971201372,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-b889b2d3d022",
+      "size": 222,
+      "expectedVisible": false,
+      "kind": "genuine-null",
+      "errors": [],
+      "response": {
+        "imageId": "image-b889b2d3d022",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "Top crossed-location icon is shown; there is no geographic marker."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-c97bcdd5bdd3",
+      "size": 222,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-c97bcdd5bdd3",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "medium",
+        "evidence": "Map silhouette appears behind the time with no visible target or pin."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-f64dc96a6e8d",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-f64dc96a6e8d",
+        "status": "located",
+        "x": 167,
+        "y": 82,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "White-ring yellow target appears on the right-hand map."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.7071067811865476,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-c64210fced06",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-c64210fced06",
+        "status": "located",
+        "x": 167,
+        "y": 82,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Small yellow-center white target marks a point on the right-side map."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.7071067811865476,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-30daf203cacb",
+      "size": 195,
+      "expectedVisible": false,
+      "kind": "genuine-null",
+      "errors": [],
+      "response": {
+        "imageId": "image-30daf203cacb",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "A crossed-location symbol appears at the top; no geographic marker is shown."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-76891d04685d",
+      "size": 195,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-76891d04685d",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "medium",
+        "evidence": "Map background is present without a visible point marker."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-06178806a695",
+      "size": 390,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-06178806a695",
+        "status": "located",
+        "x": 322,
+        "y": 89,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "White-ring yellow target marks a point on the upper-right background map."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 1.4210854715202004e-14,
+      "tolerance": 6.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-e1c859e8fdd3",
+      "size": 390,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-e1c859e8fdd3",
+        "status": "located",
+        "x": 322,
+        "y": 89,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "White-ring yellow target marks a point on the map at upper right."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 1.4210854715202004e-14,
+      "tolerance": 6.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-411df152c482",
+      "size": 390,
+      "expectedVisible": false,
+      "kind": "genuine-null",
+      "errors": [],
+      "response": {
+        "imageId": "image-411df152c482",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "Crossed-location icon appears in the status area, with no geographic point displayed."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-c6d3f8b48685",
+      "size": 390,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-c6d3f8b48685",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "The dark background map contains no visible pin or target."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-37945419bdd5",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-37945419bdd5",
+        "status": "located",
+        "x": 183,
+        "y": 51,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow-center target ring is visible on the upper-right map."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.4472135954999555,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-aa6c5a08d1e4",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-aa6c5a08d1e4",
+        "status": "located",
+        "x": 183,
+        "y": 51,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow-center white target ring marks a point on the upper-right map."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.4472135954999555,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-1c9198a4d634",
+      "size": 222,
+      "expectedVisible": false,
+      "kind": "genuine-null",
+      "errors": [],
+      "response": {
+        "imageId": "image-1c9198a4d634",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "Crossed-location icon is in the status area; no geographic marker is displayed."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-a9db305e9f22",
+      "size": 222,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-a9db305e9f22",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "medium",
+        "evidence": "The dark background map has no visible launch-point marker."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-96f2658de80e",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-96f2658de80e",
+        "status": "located",
+        "x": 161,
+        "y": 44,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "White-ring yellow target is visible on the upper-right map."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.4999999999999929,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-08f46b0a025a",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-08f46b0a025a",
+        "status": "located",
+        "x": 161,
+        "y": 44,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow-center white target is on the map near the upper-right edge."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.4999999999999929,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-27162848bb28",
+      "size": 195,
+      "expectedVisible": false,
+      "kind": "genuine-null",
+      "errors": [],
+      "response": {
+        "imageId": "image-27162848bb28",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "Gold crossed-location icon is shown near the center of the status row; there is no map point."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-6cac1b047348",
+      "size": 195,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-6cac1b047348",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "medium",
+        "evidence": "The small dark map contains no visible point marker."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-5e432bb5bf60",
+      "size": 390,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-5e432bb5bf60",
+        "status": "located",
+        "x": 344,
+        "y": 104,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow teardrop map pin marks a location near the upper-right edge."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 18.0,
+      "tolerance": 6.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-70bb4ff2910c",
+      "size": 390,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-70bb4ff2910c",
+        "status": "located",
+        "x": 344,
+        "y": 104,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow teardrop pin with dark center marks a location on the background map."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 18.0,
+      "tolerance": 6.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-7db89241299c",
+      "size": 390,
+      "expectedVisible": false,
+      "kind": "genuine-null",
+      "errors": [],
+      "response": {
+        "imageId": "image-7db89241299c",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "Top gold icon is a crossed location symbol, not a displayed geographic point."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-ffa63e8782b5",
+      "size": 390,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-ffa63e8782b5",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "Large background map shows no visible point marker."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-298dc7af98f6",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-298dc7af98f6",
+        "status": "located",
+        "x": 196,
+        "y": 59,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Orange-yellow teardrop location pin marks a point on the background map."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 10.447785077122878,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-61314cc8ae59",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-61314cc8ae59",
+        "status": "located",
+        "x": 196,
+        "y": 59,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow teardrop map pin on the right-hand map marks a location."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 10.447785077122878,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-d5e878c55ab8",
+      "size": 222,
+      "expectedVisible": false,
+      "kind": "genuine-null",
+      "errors": [],
+      "response": {
+        "imageId": "image-d5e878c55ab8",
+        "status": "unable",
+        "x": null,
+        "y": null,
+        "classification": "uncertain",
+        "confidence": "low",
+        "evidence": "Only a tiny gold crossed square at the top is visible; no map point can be reliably located."
+      },
+      "negativeUncertainty": true,
+      "passed": true
+    },
+    {
+      "imageId": "image-804a5ec02666",
+      "size": 222,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-804a5ec02666",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "Background map has no visible point marker."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-98e70ff5e295",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-98e70ff5e295",
+        "status": "located",
+        "x": 172,
+        "y": 52,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow teardrop map pin on the background map indicates a location."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 9.0,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-8a28db19b000",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-8a28db19b000",
+        "status": "located",
+        "x": 172,
+        "y": 52,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Yellow teardrop map pin is visible near the upper-right edge."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 9.0,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-1047d0c5e0c6",
+      "size": 195,
+      "expectedVisible": false,
+      "kind": "genuine-null",
+      "errors": [],
+      "response": {
+        "imageId": "image-1047d0c5e0c6",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "medium",
+        "evidence": "A small boxed crossed-location icon appears at the top; no geographic point is displayed."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-2cfa4c7626f0",
+      "size": 195,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-2cfa4c7626f0",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "high",
+        "evidence": "The background map has no visible pin or target."
+      },
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "counts": {
+    "images": 60,
+    "positive": 30,
+    "negative": 30,
+    "negativeUnable": 4,
+    "materialFailures": 0
+  },
+  "lockVerified": true,
+  "answersSha256": "6cfd38ef3f08f3b8a5cbd8cc87d69ff832aebb94d468a9eec97ac0d0cde1062f",
+  "truthSha256": "c16f8e6f92a19d79744a61a42271f0c9ffd599d949a019dc48f2bfaa9bbeebc5"
+}

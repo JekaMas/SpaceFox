@@ -1,0 +1,41 @@
+{
+  "stage": "Post-primary geography supplement, not anotherfreshconfirmation ornewgeneration",
+  "selectionRule": "Greedy farthest minimum great-circle distance from primarypoint andpreviouschosen; bankorder tie-break, no render/grade inspection. Two distinct non-null points.",
+  "sourceCandidates": [
+    "M2-11",
+    "M3-21",
+    "M2-31",
+    "M2-41",
+    "M2-51"
+  ],
+  "primaryPoint": [
+    -70,
+    -30
+  ],
+  "scenes": [
+    {
+      "id": "scene-94d0235c8817487499f7",
+      "point": [
+        127.5,
+        36.2
+      ],
+      "language": "ru"
+    },
+    {
+      "id": "scene-700e0b0477dd45e894ff",
+      "point": [
+        -14,
+        15
+      ],
+      "language": "ru"
+    }
+  ],
+  "planned": {
+    "active": 30,
+    "hidden": 5,
+    "images": 35,
+    "freshModelContexts": 1
+  },
+  "parametersUnchanged": true,
+  "bankSHA256": "f5904f1987145e30f89e47cad8fd92f59233285c9f09506857af6737b2d82352"
+}

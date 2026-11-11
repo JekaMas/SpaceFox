@@ -14,3 +14,6 @@ bin/
 .env
 .env.*
 !.env.example
+
+# Reproducible sips decode caches; original JPEG and metadata remain evidence.
+/openspec/changes/make-launch-site-obvious/evidence/native/**/*.decoded.png

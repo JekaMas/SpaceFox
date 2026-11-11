@@ -1,0 +1,1 @@
+Image/raw paths made repository-relative after both lockedresponses and originalscores. Originaltruth/locks/scores retained in original-receipt. Answerbytes, allimage/maskhashes, coordinates, IDs, thresholds andparameterobjects unchanged. Replayingfrozen scorerafterpathrelocation checksartifactreadability, notnewobserver performance.

@@ -1,0 +1,703 @@
+{
+  "method": "Independent per-image location/semantic check against withheld frozen truth; outline interiors accepted; no human latency/probability inference",
+  "errors": [],
+  "trials": [
+    {
+      "imageId": "image-b0ba1dc5ff96",
+      "size": 390,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-b0ba1dc5ff96",
+        "status": "located",
+        "x": 305,
+        "y": 100,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Amber dot inside a white ring on the globe visibly marks a geographic point."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.0,
+      "tolerance": 6.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-48a289e7b42f",
+      "size": 195,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-48a289e7b42f",
+        "status": "unable",
+        "x": null,
+        "y": null,
+        "classification": "uncertain",
+        "confidence": "low",
+        "evidence": "The globe has a START label, but I cannot reliably separate a point marker from its dark surface at this size."
+      },
+      "negativeUncertainty": true,
+      "passed": true
+    },
+    {
+      "imageId": "image-747b66cd8f8f",
+      "size": 195,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-747b66cd8f8f",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "medium",
+        "evidence": "A globe is visible, but no distinct site dot, ring, or pointer is shown."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-b36b985111ae",
+      "size": 195,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-b36b985111ae",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "medium",
+        "evidence": "The map behind the time contains geographic texture but no distinct site marker."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-9e7bf868d2fc",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-9e7bf868d2fc",
+        "status": "located",
+        "x": 161,
+        "y": 44,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "A small amber-centered white ring on the map marks a specific geographic point."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.5,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-3ee3d970ab63",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-3ee3d970ab63",
+        "status": "located",
+        "x": 183,
+        "y": 50,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Amber-centered white bullseye on the upper-right map marks the site."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.7232405706795725,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-2af0c1ba5cfd",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-2af0c1ba5cfd",
+        "status": "located",
+        "x": 191,
+        "y": 136,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "White ring with an amber center on the globe, immediately above START, identifies the geographic site."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.2655796384866467,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-350d354ee9ee",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-350d354ee9ee",
+        "status": "located",
+        "x": 168,
+        "y": 120,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Amber-centered white ring on the globe sits above START and marks the launch location."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.5,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-5ac21ce8a7ec",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-5ac21ce8a7ec",
+        "status": "located",
+        "x": 174,
+        "y": 57,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "White circular outline with amber center is a distinct point on the globe."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.39223227027637086,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-cd5e053e4755",
+      "size": 390,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-cd5e053e4755",
+        "status": "located",
+        "x": 335,
+        "y": 165,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Bright amber-centered white ring on the map marks a single geographic location."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.0,
+      "tolerance": 6.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-aaf449ac5a0a",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-aaf449ac5a0a",
+        "status": "located",
+        "x": 196,
+        "y": 60,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Amber teardrop map pin at the upper right marks a site on the background map."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 9.447957733047065,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-67aef96f35ac",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-67aef96f35ac",
+        "status": "located",
+        "x": 183,
+        "y": 50,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Small amber-centered white ring visibly marks a point on the upper-right map."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.7232405706795725,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-29f3a7e4c4a5",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-29f3a7e4c4a5",
+        "status": "located",
+        "x": 161,
+        "y": 44,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Amber-centered white ring on the map identifies a specific geographic point."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.5,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-72c522321406",
+      "size": 390,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-72c522321406",
+        "status": "located",
+        "x": 336,
+        "y": 239,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Large white ring with amber center on the globe is explicitly paired with START."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.0,
+      "tolerance": 6.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-96e9861117f7",
+      "size": 390,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-96e9861117f7",
+        "status": "located",
+        "x": 335,
+        "y": 165,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "White ring with amber center marks a single point on the large map."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.0,
+      "tolerance": 6.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-425f3db84593",
+      "size": 390,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-425f3db84593",
+        "status": "located",
+        "x": 305,
+        "y": 100,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Amber-centered white ring is clearly visible on the globe and marks a geographic point."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.0,
+      "tolerance": 6.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-7a42f77f7bf0",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-7a42f77f7bf0",
+        "status": "located",
+        "x": 172,
+        "y": 53,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "An amber map pin with a dark center identifies a site on the background map."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 8.0,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-32fe4b4e0252",
+      "size": 390,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-32fe4b4e0252",
+        "status": "located",
+        "x": 344,
+        "y": 105,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Prominent amber teardrop pin with a dark center marks a location on the map."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 17.0,
+      "tolerance": 6.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-f83953b9924e",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-f83953b9924e",
+        "status": "located",
+        "x": 191,
+        "y": 136,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Amber-centered white ring on the globe appears directly above START."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.2655796384866467,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-203e8396ddb7",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-203e8396ddb7",
+        "status": "located",
+        "x": 152,
+        "y": 50,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "A small amber-centered white ring marks a specific point on the upper-right globe."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.5,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-36d0fed657fa",
+      "size": 390,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-36d0fed657fa",
+        "status": "located",
+        "x": 322,
+        "y": 89,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Amber-centered white bullseye on the upper-right map marks the geographic site."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.0,
+      "tolerance": 6.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-3d5dd7d10e9a",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-3d5dd7d10e9a",
+        "status": "located",
+        "x": 168,
+        "y": 120,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Small amber-centered white ring on the globe is paired with START."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.5,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-2ad2f15c340c",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-2ad2f15c340c",
+        "status": "located",
+        "x": 191,
+        "y": 94,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Distinct white ring with amber center marks a point on the map beside the time."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.317161971201372,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-1885bf058245",
+      "size": 195,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-1885bf058245",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "medium",
+        "evidence": "The geographic background is visible, but I see no distinct dot, ring, or pin marking a site."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-aaedeb7d1ed5",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-aaedeb7d1ed5",
+        "status": "located",
+        "x": 174,
+        "y": 57,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Amber-centered white ring marks one point on the upper-right globe."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.39223227027637086,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-881254e3b964",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-881254e3b964",
+        "status": "located",
+        "x": 152,
+        "y": 50,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Amber-centered white ring marks a point on the globe."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.5,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-d8c6e8d5bf7c",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-d8c6e8d5bf7c",
+        "status": "located",
+        "x": 196,
+        "y": 60,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Amber teardrop map pin at the upper right marks the site."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 9.447957733047065,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-ce89fc322f64",
+      "size": 222,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-ce89fc322f64",
+        "status": "located",
+        "x": 191,
+        "y": 94,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "White ring with amber center is a distinct point on the map next to the time."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.317161971201372,
+      "tolerance": 3.4153846153846152,
+      "passed": true
+    },
+    {
+      "imageId": "image-83a7ae6fb42e",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-83a7ae6fb42e",
+        "status": "located",
+        "x": 167,
+        "y": 82,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Small amber-centered white ring visibly marks a map location."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.7071067811865476,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-50df0172fc2e",
+      "size": 390,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-50df0172fc2e",
+        "status": "located",
+        "x": 344,
+        "y": 105,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Large amber teardrop pin marks a point on the background map."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 17.0,
+      "tolerance": 6.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-be11ec5e6159",
+      "size": 390,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-be11ec5e6159",
+        "status": "located",
+        "x": 322,
+        "y": 89,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Amber-centered white ring visibly marks a geographic point on the upper-right map."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.0,
+      "tolerance": 6.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-98d0f49d303c",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-98d0f49d303c",
+        "status": "located",
+        "x": 172,
+        "y": 53,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Amber teardrop map pin with a dark center marks a site on the map."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 8.0,
+      "tolerance": 3.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-a3da01416b00",
+      "size": 195,
+      "expectedVisible": false,
+      "kind": "map-present-marker-hidden",
+      "errors": [],
+      "response": {
+        "imageId": "image-a3da01416b00",
+        "status": "none",
+        "x": null,
+        "y": null,
+        "classification": "none",
+        "confidence": "medium",
+        "evidence": "The background map is visible, but no distinct map pin, dot, or ring marks a site."
+      },
+      "passed": true
+    },
+    {
+      "imageId": "image-d0b58800bfa2",
+      "size": 390,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-d0b58800bfa2",
+        "status": "located",
+        "x": 336,
+        "y": 239,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Amber-centered white ring on the globe appears above START and identifies the launch site."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.0,
+      "tolerance": 6.0,
+      "passed": true
+    },
+    {
+      "imageId": "image-47470f1e0be1",
+      "size": 195,
+      "expectedVisible": true,
+      "kind": "active",
+      "errors": [],
+      "response": {
+        "imageId": "image-47470f1e0be1",
+        "status": "located",
+        "x": 167,
+        "y": 83,
+        "classification": "launch-site",
+        "confidence": "high",
+        "evidence": "Small white ring with amber center marks a specific point on the map."
+      },
+      "distanceToFilledSilhouette": 0.7071067811865476,
+      "distanceToAnchor": 0.7071067811865476,
+      "tolerance": 3.0,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "counts": {
+    "images": 35,
+    "positive": 30,
+    "negative": 5,
+    "negativeUnable": 1,
+    "materialFailures": 0
+  },
+  "lockVerified": true,
+  "answersSha256": "0f883881db2419e7eb431070f716bdf7e782cb70b9709f53b84f9159e9985a78",
+  "truthSha256": "8faa32c95552a521bb61d5f62d1e839ed92c9d813ba218e4226608df9137d534"
+}

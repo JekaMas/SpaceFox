@@ -1,0 +1,234 @@
+{
+  "schema_version": "1.0",
+  "generation": "G3",
+  "created_date": "2026-11-11",
+  "role": "primary_reference_research_only",
+  "write_scope": "/tmp/spacefox-marker-round4-references",
+  "repo_read": false,
+  "sealed_banks_read": false,
+  "candidate_verdicts": false,
+  "human_study_executed": false,
+  "parent_reported_input": {
+    "G2": "20/20 passed 32 author semantic + fullmask checks; true-camera anchor reposition repaired prior failures; fresh image/native review underway",
+    "G1": "Image-only review described some diamonds as locatable but semantically uncertain; ring contextual, pin/flag more explicitly location-like",
+    "epistemic_status": "parent-provided, not independently verified; no human rates inferred"
+  },
+  "sources": [
+    {
+      "id": "G3-R01",
+      "title": "Influence mechanism of icon semantics on visual search performance: Evidence from an eye-tracking study",
+      "authors": "Tao Jin; Wenrui Wang; Jiamin He; Zhengxin Wu; Haoran Gu",
+      "date": "2023-01 (volume 93)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0169814122001433",
+      "doi": "https://doi.org/10.1016/j.ergon.2022.103402",
+      "access": "publisher_preview_only",
+      "read": "Abstract, highlights, introduction and publisher section snippets: Participants, Behavioural experiment results, Discussion, Conclusions; full paper NOT obtained.",
+      "finding": "Высокая семантическая знакомость помогала поиску; добавление текста не давало универсальной выгоды и в изученных раскладках могло замедлять поиск.",
+      "idea": "Узнаваемость формы и полезность подписи проверять отдельно.",
+      "mutation": "Сохранённый G2-маркер + локализованное СТАРТ/LAUNCH против более узнаваемой pin-формы; не назначать победителя заранее.",
+      "limits": "Publisher preview; в видимом фрагменте behavioral sample — 20 студентов. Полные eye-tracking методы/размер второго sample не проверены. Не часы, не launch-site, не доказательство причинного эффекта в 5×2 SpaceFox."
+    },
+    {
+      "id": "G3-R02",
+      "title": "How Do Older Adults Process Icons in Visual Search Tasks? The Combined Effects of Icon Type and Cognitive Aging",
+      "authors": "Jianfeng Wu; Dongfang Jiao; Chunfu Lu; Chengmin Li; Xiaofang Huang; Suzan Weng",
+      "date": "2022-04-08",
+      "url": "https://www.mdpi.com/1660-4601/19/8/4525",
+      "doi": "https://doi.org/10.3390/ijerph19084525",
+      "access": "selected_full_text",
+      "read": "§§2.1–2.4 materials/participants/procedure; §§3.1–3.2 accuracy and response time; selected discussion.",
+      "finding": "В этой задаче icon+text превосходили icon-only по точности и времени поиска. Набрано 16 человек 60–66 лет, анализ 15 после исключения одного; группы CN/MCI.",
+      "idea": "Явное слово может сокращать семантическое угадывание, особенно при незнакомой абстрактной форме.",
+      "mutation": "Добавить пространственно связанное слово роли к сохранённому ring/pin, сохранив полное имя места.",
+      "limits": "Медицинские иконки 3×3, desktop 17-inch, 65–70 cm, target задан текстом, показ до mouse click. Разные icon subsets в text/no-text условиях; малая специфическая выборка. Не часовое ограничение, не launch-map, не основание переносить rates."
+    },
+    {
+      "id": "G3-R03",
+      "title": "The Influence of the Relationship Between Landmark Symbol Types, Annotations, and Colors on Search Performance in Mobile Maps Based on Eye Tracking",
+      "authors": "Hao Fang; Hongyun Guo; Zhangtong Song; Nai Yang; Rui Wang; Fen Guo",
+      "date": "2025-03-14",
+      "url": "https://www.mdpi.com/2220-9964/14/3/129",
+      "doi": "https://doi.org/10.3390/ijgi14030129",
+      "access": "selected_full_text_and_visual",
+      "read": "§§2.1–2.4 methods; §§3.1–3.2; §4.2; limitations and Data Availability; actual Fig.1.",
+      "finding": "В эксперименте n=40, 776×436 desktop maps, 24 символа: авторы сообщают преимущество функциональных INDEX в эффективности поиска; согласование цвета символа и подписи не улучшило поиск значимо.",
+      "idea": "Функция места и связь с подписью важнее предположения, что одинаковый cyan автоматически объяснит роль.",
+      "mutation": "Явная роль старта + близкая подпись, сохраняя форму/контраст; цветовая связь — вспомогательная.",
+      "limits": "Не сравнение подпись/no-label: annotations есть в обеих color-ветвях. 20–30-летние, target задан категорией, не часы. Data Availability ошибочно/противоречиво заявляет «no new data» при описанном опыте: снижает проверяемость. Гендерные объяснения не переносим в дизайн."
+    },
+    {
+      "id": "G3-R04",
+      "title": "Search Efficiency and Visual Appeal of Pictorial-Based and Typography-Based Map",
+      "authors": "Dorotea Kovačević; Klementina Možina",
+      "date": "2026-03-12",
+      "url": "https://www.mdpi.com/2220-9964/15/3/119",
+      "doi": "https://doi.org/10.3390/ijgi15030119",
+      "access": "selected_full_text_and_visual",
+      "read": "§§2.1–2.6; §3.1; §4 contextual explanations; actual Fig.1.",
+      "finding": "n=50, Croatian tourists, desktop city maps: text-only POI находили быстрее pictogram-only. Авторы НЕ тестировали icon+text.",
+      "idea": "Прямой текст полезен как гипотеза семантического уточнения, но его добавление не доказано этим сравнением.",
+      "mutation": "Проверить локализованное слово роли без удаления полного имени места; не заменять всю карту текстом.",
+      "limits": "1280×1024 monitor, 60 cm, no time limit. Два типа POI и речевое задание; шрифтовые/рамочные формы и spacing различались. Не watchface и не эффект избыточной подписи."
+    },
+    {
+      "id": "G3-R05",
+      "title": "Micro Visualizations on a Smartwatch: Assessing Reading Performance While Walking",
+      "authors": "Fairouz Grioui; Tanja Blascheck; Lijie Yao; Petra Isenberg",
+      "date": "2024-07-25 (arXiv v1)",
+      "url": "https://arxiv.org/html/2407.17893v1",
+      "access": "selected_full_text_and_visual",
+      "read": "§§2.1–2.7; §§3.1, 3.3; §4; actual Fig.1.",
+      "finding": "Две wrist-стадии n=18/24 на Fossil Gen6: движение ухудшало часть показателей чтения radial-progress; точное чтение и ответ занимали время. Fig.1 использует знакомый pin для distance walked.",
+      "idea": "Pin не гарантирует launch-site semantics; конкуренцию с fitness проверять явно.",
+      "mutation": "Уникальная связь geo-marker ↔ полное место ↔ роль старта; не повторять тот же pin как метку другого поля.",
+      "limits": "Задание — выбрать максимум fitness progress и оценить процент, не marker search. До 12 s на стимул; response-time во второй стадии только по 70% видео. Визуальное использование pin не доказывает, что люди ошибались в его смысле."
+    },
+    {
+      "id": "G3-R06",
+      "title": "Maps — Apple Human Interface Guidelines",
+      "authors": "Apple",
+      "date": "current guide; change log last listed 2024-12-18; accessed 2026-11-11",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/maps/",
+      "read_url": "https://developer.apple.com/design/human-interface-guidelines/maps.md",
+      "access": "official_guide_text_only",
+      "read": "Best practices selected-element styling; Custom information; Place cards surrounding location-related cues; watchOS.",
+      "finding": "Apple рекомендует отличать selected element; pin с именем места указан как компактная location-related подсказка вокруг place card.",
+      "idea": "Семантика может строиться связкой pin + полное имя, а не отдельным декоративным знаком.",
+      "mutation": "Сильная pin-форма рядом с местом/на карте с однозначной пространственной связью; роль старта остаётся вопросом проверки.",
+      "limits": "Гайд интерактивных Maps/place cards, не сравнительный UX опыт и не Garmin. Попытки загрузки Apple artwork дали 404: actual visual inspection Apple НЕ заявляется. 2–3 chars внутри annotation не норма для обязательных подписей SpaceFox."
+    },
+    {
+      "id": "G3-R07",
+      "title": "Best practices for tiles — Wear OS",
+      "authors": "Google / Android Developers",
+      "date": "2025-05-20 (page last updated)",
+      "url": "https://developer.android.com/design/ui/wear/guides/surfaces/tiles/bestpractices",
+      "access": "official_guide_and_visual",
+      "read": "Include only necessary elements; Hide app titles; Make actions instantly understandable; Show glanceable representations. Actual hide-title / DONTshowapptitle images.",
+      "finding": "Гайд допускает скрыть app title на маленьком Tile, чтобы сохранить высоту двух рядов. Реально просмотренная пара показывает Timer, тесноту рядов и потерю промежутков.",
+      "idea": "Польза ещё одного слова должна оправдывать его реальную площадь; узнаваемая семантика не отменяет геометрические требования.",
+      "mutation": "Считать label support вместе с glyph support; отбрасывать пересечения с fitness/mission без сокращения обязательных полей.",
+      "limits": "Интерактивный Tile и 48dp targets, не пассивный Garmin face: размер и правило удаления заголовка не переносим. Нельзя удалять обязательные поля SpaceFox. Guide пример не user-study и не измеренная цена подписи."
+    }
+  ],
+  "newness": {
+    "compared_files": [
+      "/tmp/spacefox-feature-round3-source-ledger.json",
+      "/tmp/spacefox-marker-round4-references/source-ledger.json",
+      "/tmp/spacefox-marker-round4-references/G2-source-ledger.json"
+    ],
+    "new_primary_source_urls": 7,
+    "match_found": false,
+    "note": "Exact new URL/topic paths checked locally; not a claim exhaustive literature novelty."
+  },
+  "visual_inspections": [
+    {
+      "id": "G3-V01",
+      "source": "G3-R03",
+      "url": "https://mdpi-res.com/ijgi/ijgi-14-00129/article_deploy/html/images/ijgi-14-00129-g001-550.jpg",
+      "element": "Fig.1, Blue vs Black annotation maps",
+      "seen": "Две прямоугольные карты: одинаковые синие круговые значки и зелёные дороги; слева синие подписи, справа серые/чёрные; слева красная рамка вокруг одного POI. Это не label/no-label пара.",
+      "status": "actually_opened_with_view_image",
+      "download_sha256": "ee35f6a25de15dea2a2b8d5b3cd59f79cfe959f77f498f2f2ccc11d7c018b354",
+      "media_retained": false
+    },
+    {
+      "id": "G3-V02",
+      "source": "G3-R04",
+      "url": "https://mdpi-res.com/ijgi/ijgi-15-00119/article_deploy/html/images/ijgi-15-00119-g001-550.jpg",
+      "element": "Fig.1, pictorial vs typography POI",
+      "seen": "Слева чёрные pictograms в белых рамках; справа uppercase двухстрочные имена в рамках на том же сером basemap; красный YOU ARE HERE в центре. Pictograms+text condition отсутствует.",
+      "status": "actually_opened_with_view_image",
+      "download_sha256": "9c59e6c4d71b1eba921bcb0c1412516bc1413413644435e9dd32d39f8b081ce1",
+      "media_retained": false
+    },
+    {
+      "id": "G3-V03",
+      "source": "G3-R05",
+      "url": "https://arxiv.org/html/2407.17893v1/figures/studies/3_stimuli.JPG",
+      "element": "Fig.1 three round watch stimuli",
+      "seen": "Время сверху; три progress circles: зелёный calories, синий steps, жёлтый distance; красный pin стоит ВНУТРИ distance fitness circle. Красный heart/дуга снизу. Это контекстная неоднозначность формы, не наблюдение user error.",
+      "status": "actually_opened_with_view_image",
+      "download_sha256": "c41943d24895c87c21a8b7e971f34ddf836a3c6324b281a8ebd3ebb2dc582b7e",
+      "media_retained": false
+    },
+    {
+      "id": "G3-V04",
+      "source": "G3-R07",
+      "url": "https://developer.android.com/static/wear/images/design/tiles-bestpractices-hidetitle-updated.png",
+      "element": "Do: hide app title",
+      "seen": "Четыре значения таймера в 2×2, раздельные округлые контейнеры с промежутками, плюс снизу, icon сверху; нет слова Timer.",
+      "status": "actually_opened_with_view_image",
+      "download_sha256": "d85224b100c3816d199f79882b7cf0823ec0368aadb369c0555340a86f3a0beb",
+      "media_retained": false
+    },
+    {
+      "id": "G3-V05",
+      "source": "G3-R07",
+      "url": "https://developer.android.com/static/wear/images/design/tiles-bestpractices-DONTshowapptitle-updated.png",
+      "element": "Do not: keep title on small tile",
+      "seen": "Добавлено Timer под icon; 2×2 контейнеры и значения сжаты по вертикали, средние границы соприкасаются. Другая палитра/корпус иллюстрации: это не контролируемый опыт одной переменной.",
+      "status": "actually_opened_with_view_image",
+      "download_sha256": "5d7cc3c107eb6f0299ef0738c0a131261a33279c7fb0d24dcbc65205822044b6",
+      "media_retained": false
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "G3-T01",
+      "name": "Explicit launch-role label",
+      "status": "proposed_not_executed",
+      "sources": [
+        "G3-R01",
+        "G3-R02",
+        "G3-R04"
+      ],
+      "prediction": "Для сохранённой G2-геометрии ring/pin + локализованное СТАРТ или LAUNCH увеличивает долю свободных ответов «место старта ракеты» против той же G2-базы.",
+      "falsifier": "Ответ остаётся «географическая точка», «цель», «моя позиция» либо «кнопка запуска»; преимущества перед базой нет; подпись уменьшает чтение обязательных полей.",
+      "measurement": "Раздельно location detection, free semantic naming, association with full site name. Не сообщать назначение символа до ответа. Слово локализовать по UI; не добавлять СТАРТ и LAUNCH одновременно.",
+      "result": null
+    },
+    {
+      "id": "G3-T02",
+      "name": "Familiar pin without extra role label",
+      "status": "proposed_not_executed",
+      "sources": [
+        "G3-R01",
+        "G3-R03",
+        "G3-R05",
+        "G3-R06"
+      ],
+      "prediction": "Более узнаваемая pin-форма при сохранении истинного tip anchor, полного имени места и контекста даст понятное geographic-location meaning с меньшей занятой площадью; launch-role meaning должен проверяться отдельно.",
+      "falsifier": "Pin читается как distance fitness, current position, destination, generic map/decor; полное место не связывается с ним или tip mislocalizes site.",
+      "measurement": "Не приравнивать «вижу pin» к «понимаю старт». Сохранить одинаковую camera/projection; support всех essential частей без clipping.",
+      "result": null
+    },
+    {
+      "id": "G3-T03",
+      "name": "Semantic gain must survive space budget",
+      "status": "proposed_not_executed",
+      "sources": [
+        "G3-R04",
+        "G3-R05",
+        "G3-R07"
+      ],
+      "prediction": "Хотя бы одно семантическое решение помещается в 390px и сохраняет чтение всех обязательных полей без изменения принятой G2-географии; выигрывает только если benefit не куплен потерей другого содержания.",
+      "falsifier": "Label/pin support пересекает fitness/mission/clock/site, текст приходится сокращать/уменьшать либо его роль выглядит интерактивной кнопкой.",
+      "measurement": "Engineering: zero essential clipping/opaque overlap; exact required strings retained. Human: отдельные задания на time/4fields/mission/place/countdown, показатели не измерены. Численные margins заранее выбирает протокол проекта, не литература.",
+      "result": null
+    }
+  ],
+  "design_comparison": {
+    "planned": "5 actual G2 lineages × (explicit-role-label vs stronger-familiar-pin) = 10",
+    "causal_limit": "Ring+label versus different pin changes both text and shape. This compares complete designs, not an isolated label effect. Existing unchanged G2 image can serve as retained baseline without generating extra candidates; no new 2×2 factorial claimed.",
+    "frozen": "Actual G2 camera, projection, true geographic anchor, mandatory strings and accepted layout unless protocol explicitly records a repair. For pins anchor is tip; support non-symmetric.",
+    "mandatory": "time + four configurable fields + rocket/name/company/target + country/full site + countdown + geographic marker. All full mandatory labels retained."
+  },
+  "methodology": {
+    "skill_previously_applied": "scientific-critical-thinking",
+    "record_checked_in_round4": "https://arxiv.org/abs/2609.00065",
+    "record_version": "v2 revised 2026-09-02",
+    "use": "provenance and proof-boundary discipline, not a design finding and not counted among 7 sources"
+  },
+  "media": "Temporary images removed after actual visual inspection; only URLs/hashes/observations retained; no copyrighted assets copied to MIT repo."
+}

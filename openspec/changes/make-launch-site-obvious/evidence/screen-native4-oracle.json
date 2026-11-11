@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "synthetic": true,
+  "expectedSceneCount": 4,
+  "claimBoundary": "Finite synthetic browser semantic/geometry benchmark, not human/native evidence",
+  "expected": [
+    {
+      "sceneId": "scene-434291f272884091a7de",
+      "language": "ru",
+      "requiredDisplay": {
+        "time": "07:56",
+        "rocket": "Штиль Heavy 8",
+        "operator": "Орбитальная лаборатория спектров",
+        "purpose": "Проверка магнитосферного зонда",
+        "site": "Аргентина · Тест Кварц",
+        "countdown": "T−110д 17ч 34м"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "calories",
+          "value": 99991,
+          "displayLabel": "99 991"
+        },
+        {
+          "slot": 1,
+          "role": "steps",
+          "value": 98719,
+          "displayLabel": "98 719"
+        },
+        {
+          "slot": 2,
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        },
+        {
+          "slot": 3,
+          "role": "heart",
+          "value": 237,
+          "displayLabel": "237"
+        }
+      ],
+      "indicators": {
+        "exclamation": false,
+        "cloudOff": false,
+        "uncertaintyLabel": false
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        -66,
+        -32
+      ],
+      "sourceCountryIso": "ARG",
+      "modelExpected": "generic",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 13,
+        "operator": 32,
+        "purpose": 30,
+        "site": 22
+      }
+    },
+    {
+      "sceneId": "scene-cd95986cd6264a1fad4e",
+      "language": "en",
+      "requiredDisplay": {
+        "time": "07:56",
+        "rocket": "Stillwind Heavy 8",
+        "operator": "Interstellar Spectra Laboratory",
+        "purpose": "Magnetosphere probe test",
+        "site": "Argentina · Test Quartz",
+        "countdown": "T−110d 17h 34m"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "calories",
+          "value": 99991,
+          "displayLabel": "99,991"
+        },
+        {
+          "slot": 1,
+          "role": "steps",
+          "value": 98719,
+          "displayLabel": "98,719"
+        },
+        {
+          "slot": 2,
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        },
+        {
+          "slot": 3,
+          "role": "heart",
+          "value": 237,
+          "displayLabel": "237"
+        }
+      ],
+      "indicators": {
+        "exclamation": false,
+        "cloudOff": false,
+        "uncertaintyLabel": false
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        -66,
+        -32
+      ],
+      "sourceCountryIso": "ARG",
+      "modelExpected": "generic",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 17,
+        "operator": 31,
+        "purpose": 24,
+        "site": 23
+      }
+    },
+    {
+      "sceneId": "scene-2e2324fbbf0a4efab368",
+      "language": "ru",
+      "requiredDisplay": {
+        "time": "11:11",
+        "rocket": "Поток Heavy II",
+        "operator": "ММММММММММММММММММММММММММММММММ",
+        "purpose": "Развёртывание радиотелескопа",
+        "site": "Индонезия · Тест Скат",
+        "countdown": "Время уточняется"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "steps",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "slot": 1,
+          "role": "heart",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "slot": 2,
+          "role": "stress",
+          "value": null,
+          "displayLabel": "—"
+        },
+        {
+          "slot": 3,
+          "role": "battery",
+          "value": null,
+          "displayLabel": "—"
+        }
+      ],
+      "indicators": {
+        "exclamation": true,
+        "cloudOff": true,
+        "uncertaintyLabel": true
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        113,
+        -2
+      ],
+      "sourceCountryIso": "IDN",
+      "modelExpected": "generic",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 14,
+        "operator": 32,
+        "purpose": 28,
+        "site": 21
+      }
+    },
+    {
+      "sceneId": "scene-14e7fa4f4b3f4d2e889a",
+      "language": "en",
+      "requiredDisplay": {
+        "time": "17:39",
+        "rocket": "Ariane 62",
+        "operator": "Alliance of Orbital Laboratories",
+        "purpose": "Auroral reconnaissance",
+        "site": "Finland · Test Rime",
+        "countdown": "T−6d 15h 10m"
+      },
+      "slots": [
+        {
+          "slot": 0,
+          "role": "heart",
+          "value": 218,
+          "displayLabel": "218"
+        },
+        {
+          "slot": 1,
+          "role": "battery",
+          "value": 100,
+          "displayLabel": "100%"
+        },
+        {
+          "slot": 2,
+          "role": "calories",
+          "value": 93517,
+          "displayLabel": "93,517"
+        },
+        {
+          "slot": 3,
+          "role": "steps",
+          "value": 87439,
+          "displayLabel": "87,439"
+        }
+      ],
+      "indicators": {
+        "exclamation": true,
+        "cloudOff": true,
+        "uncertaintyLabel": false
+      },
+      "pointExpected": true,
+      "sourcePoint": [
+        26,
+        64.5
+      ],
+      "sourceCountryIso": "FIN",
+      "modelExpected": "ariane",
+      "mustNotAssertLiftoff": true,
+      "withinDeclaredReadableClass": true,
+      "graphemeLengths": {
+        "rocket": 9,
+        "operator": 32,
+        "purpose": 22,
+        "site": 19
+      }
+    }
+  ]
+}

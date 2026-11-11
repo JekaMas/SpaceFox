@@ -1,0 +1,9 @@
+{
+  "method": "Independent source/native snapshot closure; compare actual live leaves/computed paint/transforms/clip/foreground, not candidate recipe. Numeric epsilon5e-4native390units allows observed CSSOM Float32 bbox serialization only; no image resampling or coordinate shift applied.",
+  "onSnapshots": 210,
+  "numericEpsilon": 0.0005,
+  "precisionBasis": "CSSOM Float32 at1200CSSpx hasULP0.0001220703; subtract/normalize up to2x gives a conservative0.0005native390 bound. No style/shape/source point tolerance; only numerical fields, display:contents zeroarea x/y ignored as nonpainted.",
+  "maxNumericDifference": 0.000174857474661394,
+  "mismatches": [],
+  "passed": true
+}

@@ -1,0 +1,442 @@
+{
+  "method": "Independent stdlib PNG/JPEG-ancestry artifact geometry/local-image-support checker, no product imports",
+  "policy": {
+    "area390": {
+      "glyph": 60,
+      "core": 28,
+      "halo": 30
+    },
+    "survival": {
+      "glyph": 0.95,
+      "core": 0.98,
+      "halo": 0.95
+    },
+    "clearance390": 4,
+    "coreEqDiameter390": 6,
+    "glyphMinMaxExtent390": 12,
+    "coreContrast": 3,
+    "coreContrastFraction": 0.9,
+    "haloContrast": 3,
+    "haloContrastFraction": 0.5,
+    "coreAlphaEligible": 0.75,
+    "haloAlphaEligible": 0.25,
+    "minEligible390": 12,
+    "minSignalDelta8bit": 12,
+    "noiseMultiplier": 4,
+    "paddingCapturePixels": 16
+  },
+  "proofLayer": "native",
+  "trials": [
+    {
+      "id": "M3-21:scene-434291f272884091a7de:390",
+      "candidate": "M3-21",
+      "scene": "scene-434291f272884091a7de",
+      "size": 390,
+      "errors": [],
+      "metrics": {
+        "imageAncestry": [
+          "lossless-png"
+        ],
+        "glyphAlphaArea": 456.26666666666665,
+        "coreAlphaArea": 93.82745098039216,
+        "haloAlphaArea": 168.98823529411766,
+        "survival": {
+          "glyph": 1.0000000000000002,
+          "core": 0.9999999999999999,
+          "halo": 1.0
+        },
+        "fullGlyphConservativeClearance390": 7.79,
+        "glyphMaxExtent390": 24.0,
+        "noise99_8bit": 0,
+        "signalThreshold8bit": 12,
+        "offRoiSignalFraction": 0.0,
+        "coreEligiblePixels": 88,
+        "coreContrastFraction": 1.0,
+        "coreContrast10th": 7.459605077626261,
+        "coreSignalPixels": 88,
+        "haloEligiblePixels": 195,
+        "haloContrastFraction": 0.9692307692307692,
+        "haloContrast10th": 4.07677593788228,
+        "haloSignalPixels": 194
+      },
+      "passed": true
+    },
+    {
+      "id": "M3-21:scene-2e2324fbbf0a4efab368:390",
+      "candidate": "M3-21",
+      "scene": "scene-2e2324fbbf0a4efab368",
+      "size": 390,
+      "errors": [],
+      "metrics": {
+        "imageAncestry": [
+          "lossless-png"
+        ],
+        "glyphAlphaArea": 456.26666666666665,
+        "coreAlphaArea": 93.82745098039216,
+        "haloAlphaArea": 168.98823529411766,
+        "survival": {
+          "glyph": 1.0000000000000002,
+          "core": 0.9999999999999999,
+          "halo": 1.0
+        },
+        "fullGlyphConservativeClearance390": 7.79,
+        "glyphMaxExtent390": 24.0,
+        "noise99_8bit": 0,
+        "signalThreshold8bit": 12,
+        "offRoiSignalFraction": 0.0,
+        "coreEligiblePixels": 88,
+        "coreContrastFraction": 1.0,
+        "coreContrast10th": 7.796810169451225,
+        "coreSignalPixels": 88,
+        "haloEligiblePixels": 195,
+        "haloContrastFraction": 0.9692307692307692,
+        "haloContrast10th": 4.021349668562847,
+        "haloSignalPixels": 195
+      },
+      "passed": true
+    },
+    {
+      "id": "M3-21:scene-cd95986cd6264a1fad4e:390",
+      "candidate": "M3-21",
+      "scene": "scene-cd95986cd6264a1fad4e",
+      "size": 390,
+      "errors": [],
+      "metrics": {
+        "imageAncestry": [
+          "lossless-png"
+        ],
+        "glyphAlphaArea": 456.26666666666665,
+        "coreAlphaArea": 93.82745098039216,
+        "haloAlphaArea": 168.98823529411766,
+        "survival": {
+          "glyph": 1.0000000000000002,
+          "core": 0.9999999999999999,
+          "halo": 1.0
+        },
+        "fullGlyphConservativeClearance390": 7.79,
+        "glyphMaxExtent390": 24.0,
+        "noise99_8bit": 0,
+        "signalThreshold8bit": 12,
+        "offRoiSignalFraction": 0.0,
+        "coreEligiblePixels": 88,
+        "coreContrastFraction": 1.0,
+        "coreContrast10th": 7.459605077626261,
+        "coreSignalPixels": 88,
+        "haloEligiblePixels": 195,
+        "haloContrastFraction": 0.9692307692307692,
+        "haloContrast10th": 4.07677593788228,
+        "haloSignalPixels": 194
+      },
+      "passed": true
+    },
+    {
+      "id": "M3-21:scene-14e7fa4f4b3f4d2e889a:390",
+      "candidate": "M3-21",
+      "scene": "scene-14e7fa4f4b3f4d2e889a",
+      "size": 390,
+      "errors": [],
+      "metrics": {
+        "imageAncestry": [
+          "lossless-png"
+        ],
+        "glyphAlphaArea": 456.26666666666665,
+        "coreAlphaArea": 93.82745098039216,
+        "haloAlphaArea": 168.98823529411766,
+        "survival": {
+          "glyph": 1.0000000000000002,
+          "core": 0.9999999999999999,
+          "halo": 1.0
+        },
+        "fullGlyphConservativeClearance390": 7.79,
+        "glyphMaxExtent390": 24.0,
+        "noise99_8bit": 0,
+        "signalThreshold8bit": 12,
+        "offRoiSignalFraction": 0.0,
+        "coreEligiblePixels": 88,
+        "coreContrastFraction": 1.0,
+        "coreContrast10th": 7.101993731750352,
+        "coreSignalPixels": 88,
+        "haloEligiblePixels": 195,
+        "haloContrastFraction": 0.9435897435897436,
+        "haloContrast10th": 3.34148249118955,
+        "haloSignalPixels": 195
+      },
+      "passed": true
+    },
+    {
+      "id": "M3-21:scene-434291f272884091a7de:222",
+      "candidate": "M3-21",
+      "scene": "scene-434291f272884091a7de",
+      "size": 222,
+      "errors": [],
+      "metrics": {
+        "imageAncestry": [
+          "lossless-png"
+        ],
+        "glyphAlphaArea": 149.2313725490196,
+        "coreAlphaArea": 31.16078431372549,
+        "haloAlphaArea": 53.180392156862744,
+        "survival": {
+          "glyph": 1.0,
+          "core": 1.0,
+          "halo": 1.0000000000000002
+        },
+        "fullGlyphConservativeClearance390": 7.414864864864864,
+        "glyphMaxExtent390": 24.594594594594597,
+        "noise99_8bit": 0,
+        "signalThreshold8bit": 12,
+        "offRoiSignalFraction": 0.0,
+        "coreEligiblePixels": 27,
+        "coreContrastFraction": 1.0,
+        "coreContrast10th": 7.262903453227957,
+        "coreSignalPixels": 27,
+        "haloEligiblePixels": 71,
+        "haloContrastFraction": 0.8873239436619719,
+        "haloContrast10th": 2.9705971227310415,
+        "haloSignalPixels": 71
+      },
+      "passed": true
+    },
+    {
+      "id": "M3-21:scene-2e2324fbbf0a4efab368:222",
+      "candidate": "M3-21",
+      "scene": "scene-2e2324fbbf0a4efab368",
+      "size": 222,
+      "errors": [],
+      "metrics": {
+        "imageAncestry": [
+          "lossless-png"
+        ],
+        "glyphAlphaArea": 149.2313725490196,
+        "coreAlphaArea": 31.16078431372549,
+        "haloAlphaArea": 53.180392156862744,
+        "survival": {
+          "glyph": 1.0,
+          "core": 1.0,
+          "halo": 1.0000000000000002
+        },
+        "fullGlyphConservativeClearance390": 7.414864864864864,
+        "glyphMaxExtent390": 24.594594594594597,
+        "noise99_8bit": 0,
+        "signalThreshold8bit": 12,
+        "offRoiSignalFraction": 0.0,
+        "coreEligiblePixels": 27,
+        "coreContrastFraction": 1.0,
+        "coreContrast10th": 7.625329802385657,
+        "coreSignalPixels": 27,
+        "haloEligiblePixels": 71,
+        "haloContrastFraction": 0.9014084507042254,
+        "haloContrast10th": 3.0134895362471585,
+        "haloSignalPixels": 71
+      },
+      "passed": true
+    },
+    {
+      "id": "M3-21:scene-cd95986cd6264a1fad4e:222",
+      "candidate": "M3-21",
+      "scene": "scene-cd95986cd6264a1fad4e",
+      "size": 222,
+      "errors": [],
+      "metrics": {
+        "imageAncestry": [
+          "lossless-png"
+        ],
+        "glyphAlphaArea": 149.2313725490196,
+        "coreAlphaArea": 31.16078431372549,
+        "haloAlphaArea": 53.180392156862744,
+        "survival": {
+          "glyph": 1.0,
+          "core": 1.0,
+          "halo": 1.0000000000000002
+        },
+        "fullGlyphConservativeClearance390": 7.414864864864864,
+        "glyphMaxExtent390": 24.594594594594597,
+        "noise99_8bit": 0,
+        "signalThreshold8bit": 12,
+        "offRoiSignalFraction": 0.0,
+        "coreEligiblePixels": 27,
+        "coreContrastFraction": 1.0,
+        "coreContrast10th": 7.25222123262031,
+        "coreSignalPixels": 27,
+        "haloEligiblePixels": 71,
+        "haloContrastFraction": 0.9295774647887324,
+        "haloContrast10th": 3.2686200500758726,
+        "haloSignalPixels": 71
+      },
+      "passed": true
+    },
+    {
+      "id": "M3-21:scene-14e7fa4f4b3f4d2e889a:222",
+      "candidate": "M3-21",
+      "scene": "scene-14e7fa4f4b3f4d2e889a",
+      "size": 222,
+      "errors": [],
+      "metrics": {
+        "imageAncestry": [
+          "lossless-png"
+        ],
+        "glyphAlphaArea": 149.2313725490196,
+        "coreAlphaArea": 31.16078431372549,
+        "haloAlphaArea": 53.180392156862744,
+        "survival": {
+          "glyph": 1.0,
+          "core": 1.0,
+          "halo": 1.0000000000000002
+        },
+        "fullGlyphConservativeClearance390": 7.414864864864864,
+        "glyphMaxExtent390": 24.594594594594597,
+        "noise99_8bit": 0,
+        "signalThreshold8bit": 12,
+        "offRoiSignalFraction": 0.0,
+        "coreEligiblePixels": 27,
+        "coreContrastFraction": 1.0,
+        "coreContrast10th": 6.817679755331271,
+        "coreSignalPixels": 27,
+        "haloEligiblePixels": 71,
+        "haloContrastFraction": 0.9014084507042254,
+        "haloContrast10th": 3.055426372474397,
+        "haloSignalPixels": 71
+      },
+      "passed": true
+    },
+    {
+      "id": "M3-21:scene-434291f272884091a7de:195",
+      "candidate": "M3-21",
+      "scene": "scene-434291f272884091a7de",
+      "size": 195,
+      "errors": [],
+      "metrics": {
+        "imageAncestry": [
+          "lossless-png"
+        ],
+        "glyphAlphaArea": 114.99215686274509,
+        "coreAlphaArea": 24.235294117647058,
+        "haloAlphaArea": 40.97254901960784,
+        "survival": {
+          "glyph": 1.0,
+          "core": 1.0,
+          "halo": 1.0000000000000004
+        },
+        "fullGlyphConservativeClearance390": 6.58,
+        "glyphMaxExtent390": 26.0,
+        "noise99_8bit": 0,
+        "signalThreshold8bit": 12,
+        "offRoiSignalFraction": 0.0,
+        "coreEligiblePixels": 22,
+        "coreContrastFraction": 1.0,
+        "coreContrast10th": 5.281615471286138,
+        "coreSignalPixels": 22,
+        "haloEligiblePixels": 54,
+        "haloContrastFraction": 0.8703703703703703,
+        "haloContrast10th": 2.6301310550271224,
+        "haloSignalPixels": 54
+      },
+      "passed": true
+    },
+    {
+      "id": "M3-21:scene-2e2324fbbf0a4efab368:195",
+      "candidate": "M3-21",
+      "scene": "scene-2e2324fbbf0a4efab368",
+      "size": 195,
+      "errors": [],
+      "metrics": {
+        "imageAncestry": [
+          "lossless-png"
+        ],
+        "glyphAlphaArea": 114.99215686274509,
+        "coreAlphaArea": 24.235294117647058,
+        "haloAlphaArea": 40.97254901960784,
+        "survival": {
+          "glyph": 1.0,
+          "core": 1.0,
+          "halo": 1.0000000000000004
+        },
+        "fullGlyphConservativeClearance390": 6.58,
+        "glyphMaxExtent390": 26.0,
+        "noise99_8bit": 0,
+        "signalThreshold8bit": 12,
+        "offRoiSignalFraction": 0.0,
+        "coreEligiblePixels": 22,
+        "coreContrastFraction": 1.0,
+        "coreContrast10th": 6.025326098032769,
+        "coreSignalPixels": 22,
+        "haloEligiblePixels": 54,
+        "haloContrastFraction": 0.9259259259259259,
+        "haloContrast10th": 3.0371054512090376,
+        "haloSignalPixels": 54
+      },
+      "passed": true
+    },
+    {
+      "id": "M3-21:scene-cd95986cd6264a1fad4e:195",
+      "candidate": "M3-21",
+      "scene": "scene-cd95986cd6264a1fad4e",
+      "size": 195,
+      "errors": [],
+      "metrics": {
+        "imageAncestry": [
+          "lossless-png"
+        ],
+        "glyphAlphaArea": 114.99215686274509,
+        "coreAlphaArea": 24.235294117647058,
+        "haloAlphaArea": 40.97254901960784,
+        "survival": {
+          "glyph": 1.0,
+          "core": 1.0,
+          "halo": 1.0000000000000004
+        },
+        "fullGlyphConservativeClearance390": 6.58,
+        "glyphMaxExtent390": 26.0,
+        "noise99_8bit": 0,
+        "signalThreshold8bit": 12,
+        "offRoiSignalFraction": 0.0,
+        "coreEligiblePixels": 22,
+        "coreContrastFraction": 1.0,
+        "coreContrast10th": 4.99575148154328,
+        "coreSignalPixels": 22,
+        "haloEligiblePixels": 54,
+        "haloContrastFraction": 0.8703703703703703,
+        "haloContrast10th": 2.7731783314956777,
+        "haloSignalPixels": 54
+      },
+      "passed": true
+    },
+    {
+      "id": "M3-21:scene-14e7fa4f4b3f4d2e889a:195",
+      "candidate": "M3-21",
+      "scene": "scene-14e7fa4f4b3f4d2e889a",
+      "size": 195,
+      "errors": [],
+      "metrics": {
+        "imageAncestry": [
+          "lossless-png"
+        ],
+        "glyphAlphaArea": 114.99215686274509,
+        "coreAlphaArea": 24.235294117647058,
+        "haloAlphaArea": 40.97254901960784,
+        "survival": {
+          "glyph": 1.0,
+          "core": 1.0,
+          "halo": 1.0000000000000004
+        },
+        "fullGlyphConservativeClearance390": 6.58,
+        "glyphMaxExtent390": 26.0,
+        "noise99_8bit": 0,
+        "signalThreshold8bit": 12,
+        "offRoiSignalFraction": 0.0,
+        "coreEligiblePixels": 22,
+        "coreContrastFraction": 1.0,
+        "coreContrast10th": 4.83877867053298,
+        "coreSignalPixels": 22,
+        "haloEligiblePixels": 54,
+        "haloContrastFraction": 0.8703703703703703,
+        "haloContrast10th": 2.550853777720739,
+        "haloSignalPixels": 54
+      },
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "boundary": "Diagnostic coverage and native image support are separate; neither is human search/noticeability. No unobserved/missing captures count as passing.",
+  "passed": true
+}

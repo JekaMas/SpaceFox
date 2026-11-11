@@ -1,0 +1,575 @@
+{
+  "stage": "G3 before results",
+  "candidates": [
+    {
+      "id": "M3-11",
+      "generation": 3,
+      "family": "control",
+      "parents": [
+        "M2-11"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-01",
+        "stage": "repair3",
+        "axis": null,
+        "parents": [
+          "ANCHOR"
+        ],
+        "settings": {
+          "architecture": "control",
+          "projection": "auto",
+          "window": "auto",
+          "grammar": "stack",
+          "fitness": "row",
+          "typography": "roboto",
+          "palette": "mint",
+          "colorRoles": "standard",
+          "separators": "none",
+          "rocket": "filled",
+          "status": "cap",
+          "decor": "quiet"
+        },
+        "tuning": {},
+        "overrides": {
+          "mission": [
+            76,
+            173,
+            288,
+            112
+          ]
+        },
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane"
+      },
+      "kind": "ring24",
+      "context": {
+        "map": "quiet",
+        "cue": true,
+        "pin": [
+          305,
+          100
+        ]
+      },
+      "hypothesis": "G3-explicit-launch-cue",
+      "parentAcceptance": true
+    },
+    {
+      "id": "M3-12",
+      "generation": 3,
+      "family": "control",
+      "parents": [
+        "M2-11"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-01",
+        "stage": "repair3",
+        "axis": null,
+        "parents": [
+          "ANCHOR"
+        ],
+        "settings": {
+          "architecture": "control",
+          "projection": "auto",
+          "window": "auto",
+          "grammar": "stack",
+          "fitness": "row",
+          "typography": "roboto",
+          "palette": "mint",
+          "colorRoles": "standard",
+          "separators": "none",
+          "rocket": "filled",
+          "status": "cap",
+          "decor": "quiet"
+        },
+        "tuning": {},
+        "overrides": {
+          "mission": [
+            76,
+            173,
+            288,
+            112
+          ]
+        },
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane"
+      },
+      "kind": "beacon-pin",
+      "context": {
+        "map": "quiet",
+        "cue": false,
+        "pin": [
+          305,
+          100
+        ]
+      },
+      "hypothesis": "G3-familiar-pin-and-steady-casing",
+      "parentAcceptance": true
+    },
+    {
+      "id": "M3-21",
+      "generation": 3,
+      "family": "ticket",
+      "parents": [
+        "M2-21"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-03",
+        "stage": "repair3",
+        "axis": "architecture",
+        "parents": [
+          "R3-04"
+        ],
+        "settings": {
+          "architecture": "ticket",
+          "projection": "auto",
+          "window": "auto",
+          "grammar": "centered",
+          "fitness": "row",
+          "typography": "barlow",
+          "palette": "mint",
+          "colorRoles": "site-accent",
+          "separators": "none",
+          "rocket": "filled",
+          "status": "cap",
+          "decor": "quiet"
+        },
+        "tuning": {
+          "colorRoles": 0,
+          "grammar": 0,
+          "typography": 0
+        },
+        "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane",
+        "overrides": {
+          "operatorWidth": 288,
+          "operatorY": 69
+        }
+      },
+      "kind": "ring24",
+      "context": {
+        "map": "quiet",
+        "cue": true,
+        "pin": [
+          336,
+          239
+        ]
+      },
+      "hypothesis": "G3-explicit-launch-cue",
+      "parentAcceptance": true
+    },
+    {
+      "id": "M3-22",
+      "generation": 3,
+      "family": "ticket",
+      "parents": [
+        "M2-21"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-03",
+        "stage": "repair3",
+        "axis": "architecture",
+        "parents": [
+          "R3-04"
+        ],
+        "settings": {
+          "architecture": "ticket",
+          "projection": "auto",
+          "window": "auto",
+          "grammar": "centered",
+          "fitness": "row",
+          "typography": "barlow",
+          "palette": "mint",
+          "colorRoles": "site-accent",
+          "separators": "none",
+          "rocket": "filled",
+          "status": "cap",
+          "decor": "quiet"
+        },
+        "tuning": {
+          "colorRoles": 0,
+          "grammar": 0,
+          "typography": 0
+        },
+        "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane",
+        "overrides": {
+          "operatorWidth": 288,
+          "operatorY": 69
+        }
+      },
+      "kind": "beacon-pin",
+      "context": {
+        "map": "quiet",
+        "cue": false,
+        "pin": [
+          336,
+          239
+        ]
+      },
+      "hypothesis": "G3-familiar-pin-and-steady-casing",
+      "parentAcceptance": true
+    },
+    {
+      "id": "M3-31",
+      "generation": 3,
+      "family": "relay",
+      "parents": [
+        "M2-31"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-05",
+        "stage": "repair3",
+        "axis": null,
+        "parents": [
+          "J3-008"
+        ],
+        "settings": {
+          "architecture": "relay",
+          "projection": "equirectangular",
+          "window": "third",
+          "grammar": "centered",
+          "fitness": "goal-dots",
+          "typography": "barlow",
+          "palette": "mint",
+          "colorRoles": "clock-accent",
+          "separators": "hairline",
+          "rocket": "two-tone",
+          "status": "header-pair",
+          "decor": "terminator-style"
+        },
+        "tuning": {
+          "colorRoles": 1,
+          "palette": 0,
+          "typography": 0
+        },
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane",
+        "overrides": {
+          "operatorWidth": 288
+        }
+      },
+      "kind": "ring24",
+      "context": {
+        "map": "quiet",
+        "cue": true,
+        "pin": [
+          335,
+          165
+        ]
+      },
+      "hypothesis": "G3-explicit-launch-cue",
+      "parentAcceptance": true
+    },
+    {
+      "id": "M3-32",
+      "generation": 3,
+      "family": "relay",
+      "parents": [
+        "M2-31"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-05",
+        "stage": "repair3",
+        "axis": null,
+        "parents": [
+          "J3-008"
+        ],
+        "settings": {
+          "architecture": "relay",
+          "projection": "equirectangular",
+          "window": "third",
+          "grammar": "centered",
+          "fitness": "goal-dots",
+          "typography": "barlow",
+          "palette": "mint",
+          "colorRoles": "clock-accent",
+          "separators": "hairline",
+          "rocket": "two-tone",
+          "status": "header-pair",
+          "decor": "terminator-style"
+        },
+        "tuning": {
+          "colorRoles": 1,
+          "palette": 0,
+          "typography": 0
+        },
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane",
+        "overrides": {
+          "operatorWidth": 288
+        }
+      },
+      "kind": "beacon-pin",
+      "context": {
+        "map": "quiet",
+        "cue": false,
+        "pin": [
+          335,
+          165
+        ]
+      },
+      "hypothesis": "G3-familiar-pin-and-steady-casing",
+      "parentAcceptance": true
+    },
+    {
+      "id": "M3-41",
+      "generation": 3,
+      "family": "earthrise",
+      "parents": [
+        "M2-41"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-12",
+        "stage": "repair4",
+        "axis": "architecture",
+        "parents": [
+          "R4-07"
+        ],
+        "settings": {
+          "architecture": "earthrise",
+          "projection": "auto",
+          "window": "auto",
+          "grammar": "stack",
+          "fitness": "row",
+          "typography": "roboto",
+          "palette": "ice",
+          "colorRoles": "standard",
+          "separators": "none",
+          "rocket": "filled",
+          "status": "cap",
+          "decor": "quiet"
+        },
+        "tuning": {
+          "palette": 0
+        },
+        "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+        "mutation": "visible marker outside entireopaque fitnessbackground",
+        "overrides": {
+          "mission": [
+            32,
+            173,
+            288,
+            112
+          ],
+          "pin": [
+            368,
+            148
+          ]
+        }
+      },
+      "kind": "ring24",
+      "context": {
+        "map": "quiet",
+        "cue": true,
+        "pin": [
+          322,
+          89
+        ]
+      },
+      "hypothesis": "G3-explicit-launch-cue",
+      "parentAcceptance": true
+    },
+    {
+      "id": "M3-42",
+      "generation": 3,
+      "family": "earthrise",
+      "parents": [
+        "M2-41"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-12",
+        "stage": "repair4",
+        "axis": "architecture",
+        "parents": [
+          "R4-07"
+        ],
+        "settings": {
+          "architecture": "earthrise",
+          "projection": "auto",
+          "window": "auto",
+          "grammar": "stack",
+          "fitness": "row",
+          "typography": "roboto",
+          "palette": "ice",
+          "colorRoles": "standard",
+          "separators": "none",
+          "rocket": "filled",
+          "status": "cap",
+          "decor": "quiet"
+        },
+        "tuning": {
+          "palette": 0
+        },
+        "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+        "mutation": "visible marker outside entireopaque fitnessbackground",
+        "overrides": {
+          "mission": [
+            32,
+            173,
+            288,
+            112
+          ],
+          "pin": [
+            368,
+            148
+          ]
+        }
+      },
+      "kind": "beacon-pin",
+      "context": {
+        "map": "quiet",
+        "cue": false,
+        "pin": [
+          322,
+          89
+        ]
+      },
+      "hypothesis": "G3-familiar-pin-and-steady-casing",
+      "parentAcceptance": true
+    },
+    {
+      "id": "M3-51",
+      "generation": 3,
+      "family": "atlas",
+      "parents": [
+        "M2-51"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-09",
+        "stage": "repair3",
+        "axis": null,
+        "parents": [
+          "J1-016"
+        ],
+        "settings": {
+          "architecture": "atlas",
+          "projection": "stereographic",
+          "window": "lower-cap",
+          "grammar": "centered",
+          "fitness": "slim-arcs",
+          "typography": "saira",
+          "palette": "magenta",
+          "colorRoles": "warm-status",
+          "separators": "baseline-rule",
+          "rocket": "engraved",
+          "status": "boxed-header",
+          "decor": "fine-grid"
+        },
+        "tuning": {
+          "architecture": 1,
+          "window": 1,
+          "fitness": 1,
+          "rocket": 1
+        },
+        "overrides": {
+          "mission": [
+            76,
+            142,
+            288,
+            112
+          ],
+          "pin": [
+            350,
+            130
+          ]
+        },
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane"
+      },
+      "kind": "pin",
+      "context": {
+        "map": "quiet",
+        "cue": true,
+        "pin": [
+          344,
+          122
+        ]
+      },
+      "hypothesis": "G3-explicit-launch-cue",
+      "parentAcceptance": true
+    },
+    {
+      "id": "M3-52",
+      "generation": 3,
+      "family": "atlas",
+      "parents": [
+        "M2-51"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-09",
+        "stage": "repair3",
+        "axis": null,
+        "parents": [
+          "J1-016"
+        ],
+        "settings": {
+          "architecture": "atlas",
+          "projection": "stereographic",
+          "window": "lower-cap",
+          "grammar": "centered",
+          "fitness": "slim-arcs",
+          "typography": "saira",
+          "palette": "magenta",
+          "colorRoles": "warm-status",
+          "separators": "baseline-rule",
+          "rocket": "engraved",
+          "status": "boxed-header",
+          "decor": "fine-grid"
+        },
+        "tuning": {
+          "architecture": 1,
+          "window": 1,
+          "fitness": 1,
+          "rocket": 1
+        },
+        "overrides": {
+          "mission": [
+            76,
+            142,
+            288,
+            112
+          ],
+          "pin": [
+            350,
+            130
+          ]
+        },
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane"
+      },
+      "kind": "beacon-pin",
+      "context": {
+        "map": "quiet",
+        "cue": false,
+        "pin": [
+          344,
+          122
+        ]
+      },
+      "hypothesis": "G3-familiar-pin-and-steady-casing",
+      "parentAcceptance": true
+    }
+  ],
+  "candidateIds": [
+    "M3-11",
+    "M3-12",
+    "M3-21",
+    "M3-22",
+    "M3-31",
+    "M3-32",
+    "M3-41",
+    "M3-42",
+    "M3-51",
+    "M3-52"
+  ],
+  "sourceSHA256": {
+    "prototype/marker/core.js": "e987f425cdadf21be72a34612df67a58236773d581e6c5c76970db210d51eb04",
+    "prototype/marker/renderer.js": "c6d5137378364251c9a3d5bebeb0ebd4f16bad2e8447c06d1b463602a7947709",
+    "prototype/marker/lab.js": "008de64815b92cf22bc6dd375e4b4511328e137e15c5f5f60a6d628137b37139",
+    "prototype/marker/index.html": "5e55e095d7bff2f8d34deeb37de9969e944aeac1998d58815ebd00ccf56e8dc8"
+  }
+}

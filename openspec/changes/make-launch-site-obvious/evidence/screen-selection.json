@@ -1,0 +1,671 @@
+{
+  "stage": "screen12 before sealed disclosure",
+  "candidateIds": [
+    "M2-11",
+    "M2-12",
+    "M2-21",
+    "M2-22",
+    "M2-31",
+    "M2-32",
+    "M2-41",
+    "M2-42",
+    "M2-51",
+    "M2-52",
+    "OLD-1",
+    "OLD-2"
+  ],
+  "controls": [
+    "OLD-1",
+    "OLD-2"
+  ],
+  "count": 12,
+  "expectedBoundary": "Oldcontrol nativehalo failure may remain; controls not eligible by quota",
+  "candidates": [
+    {
+      "id": "M2-11",
+      "generation": 2,
+      "family": "control",
+      "parents": [
+        "M1-11"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-01",
+        "stage": "repair3",
+        "axis": null,
+        "parents": [
+          "ANCHOR"
+        ],
+        "settings": {
+          "architecture": "control",
+          "projection": "auto",
+          "window": "auto",
+          "grammar": "stack",
+          "fitness": "row",
+          "typography": "roboto",
+          "palette": "mint",
+          "colorRoles": "standard",
+          "separators": "none",
+          "rocket": "filled",
+          "status": "cap",
+          "decor": "quiet"
+        },
+        "tuning": {},
+        "overrides": {
+          "mission": [
+            76,
+            173,
+            288,
+            112
+          ]
+        },
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane"
+      },
+      "kind": "ring24",
+      "context": {
+        "map": "quiet",
+        "cue": false,
+        "pin": [
+          305,
+          100
+        ]
+      },
+      "hypothesis": "G2-clearance-and-background",
+      "parentAcceptance": true
+    },
+    {
+      "id": "M2-12",
+      "generation": 2,
+      "family": "control",
+      "parents": [
+        "M1-11"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-01",
+        "stage": "repair3",
+        "axis": null,
+        "parents": [
+          "ANCHOR"
+        ],
+        "settings": {
+          "architecture": "control",
+          "projection": "auto",
+          "window": "auto",
+          "grammar": "stack",
+          "fitness": "row",
+          "typography": "roboto",
+          "palette": "mint",
+          "colorRoles": "standard",
+          "separators": "none",
+          "rocket": "filled",
+          "status": "cap",
+          "decor": "quiet"
+        },
+        "tuning": {},
+        "overrides": {
+          "mission": [
+            76,
+            173,
+            288,
+            112
+          ]
+        },
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane"
+      },
+      "kind": "ring24",
+      "context": {
+        "map": "coast",
+        "cue": false,
+        "pin": [
+          305,
+          100
+        ]
+      },
+      "hypothesis": "G2-clearance-and-background",
+      "parentAcceptance": true
+    },
+    {
+      "id": "M2-21",
+      "generation": 2,
+      "family": "ticket",
+      "parents": [
+        "M1-21"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-03",
+        "stage": "repair3",
+        "axis": "architecture",
+        "parents": [
+          "R3-04"
+        ],
+        "settings": {
+          "architecture": "ticket",
+          "projection": "auto",
+          "window": "auto",
+          "grammar": "centered",
+          "fitness": "row",
+          "typography": "barlow",
+          "palette": "mint",
+          "colorRoles": "site-accent",
+          "separators": "none",
+          "rocket": "filled",
+          "status": "cap",
+          "decor": "quiet"
+        },
+        "tuning": {
+          "colorRoles": 0,
+          "grammar": 0,
+          "typography": 0
+        },
+        "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane",
+        "overrides": {
+          "operatorWidth": 288,
+          "operatorY": 69
+        }
+      },
+      "kind": "ring24",
+      "context": {
+        "map": "quiet",
+        "cue": false,
+        "pin": [
+          336,
+          239
+        ]
+      },
+      "hypothesis": "G2-clearance-and-background",
+      "parentAcceptance": true
+    },
+    {
+      "id": "M2-22",
+      "generation": 2,
+      "family": "ticket",
+      "parents": [
+        "M1-21"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-03",
+        "stage": "repair3",
+        "axis": "architecture",
+        "parents": [
+          "R3-04"
+        ],
+        "settings": {
+          "architecture": "ticket",
+          "projection": "auto",
+          "window": "auto",
+          "grammar": "centered",
+          "fitness": "row",
+          "typography": "barlow",
+          "palette": "mint",
+          "colorRoles": "site-accent",
+          "separators": "none",
+          "rocket": "filled",
+          "status": "cap",
+          "decor": "quiet"
+        },
+        "tuning": {
+          "colorRoles": 0,
+          "grammar": 0,
+          "typography": 0
+        },
+        "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane",
+        "overrides": {
+          "operatorWidth": 288,
+          "operatorY": 69
+        }
+      },
+      "kind": "ring24",
+      "context": {
+        "map": "coast",
+        "cue": false,
+        "pin": [
+          336,
+          239
+        ]
+      },
+      "hypothesis": "G2-clearance-and-background",
+      "parentAcceptance": true
+    },
+    {
+      "id": "M2-31",
+      "generation": 2,
+      "family": "relay",
+      "parents": [
+        "M1-31"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-05",
+        "stage": "repair3",
+        "axis": null,
+        "parents": [
+          "J3-008"
+        ],
+        "settings": {
+          "architecture": "relay",
+          "projection": "equirectangular",
+          "window": "third",
+          "grammar": "centered",
+          "fitness": "goal-dots",
+          "typography": "barlow",
+          "palette": "mint",
+          "colorRoles": "clock-accent",
+          "separators": "hairline",
+          "rocket": "two-tone",
+          "status": "header-pair",
+          "decor": "terminator-style"
+        },
+        "tuning": {
+          "colorRoles": 1,
+          "palette": 0,
+          "typography": 0
+        },
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane",
+        "overrides": {
+          "operatorWidth": 288
+        }
+      },
+      "kind": "ring24",
+      "context": {
+        "map": "quiet",
+        "cue": false,
+        "pin": [
+          335,
+          165
+        ]
+      },
+      "hypothesis": "G2-clearance-and-background",
+      "parentAcceptance": true
+    },
+    {
+      "id": "M2-32",
+      "generation": 2,
+      "family": "relay",
+      "parents": [
+        "M1-31"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-05",
+        "stage": "repair3",
+        "axis": null,
+        "parents": [
+          "J3-008"
+        ],
+        "settings": {
+          "architecture": "relay",
+          "projection": "equirectangular",
+          "window": "third",
+          "grammar": "centered",
+          "fitness": "goal-dots",
+          "typography": "barlow",
+          "palette": "mint",
+          "colorRoles": "clock-accent",
+          "separators": "hairline",
+          "rocket": "two-tone",
+          "status": "header-pair",
+          "decor": "terminator-style"
+        },
+        "tuning": {
+          "colorRoles": 1,
+          "palette": 0,
+          "typography": 0
+        },
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane",
+        "overrides": {
+          "operatorWidth": 288
+        }
+      },
+      "kind": "ring24",
+      "context": {
+        "map": "coast",
+        "cue": false,
+        "pin": [
+          335,
+          165
+        ]
+      },
+      "hypothesis": "G2-clearance-and-background",
+      "parentAcceptance": true
+    },
+    {
+      "id": "M2-41",
+      "generation": 2,
+      "family": "earthrise",
+      "parents": [
+        "M1-41"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-12",
+        "stage": "repair4",
+        "axis": "architecture",
+        "parents": [
+          "R4-07"
+        ],
+        "settings": {
+          "architecture": "earthrise",
+          "projection": "auto",
+          "window": "auto",
+          "grammar": "stack",
+          "fitness": "row",
+          "typography": "roboto",
+          "palette": "ice",
+          "colorRoles": "standard",
+          "separators": "none",
+          "rocket": "filled",
+          "status": "cap",
+          "decor": "quiet"
+        },
+        "tuning": {
+          "palette": 0
+        },
+        "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+        "mutation": "visible marker outside entireopaque fitnessbackground",
+        "overrides": {
+          "mission": [
+            32,
+            173,
+            288,
+            112
+          ],
+          "pin": [
+            368,
+            148
+          ]
+        }
+      },
+      "kind": "ring24",
+      "context": {
+        "map": "quiet",
+        "cue": false,
+        "pin": [
+          322,
+          89
+        ]
+      },
+      "hypothesis": "G2-clearance-and-background",
+      "parentAcceptance": false
+    },
+    {
+      "id": "M2-42",
+      "generation": 2,
+      "family": "earthrise",
+      "parents": [
+        "M1-41"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-12",
+        "stage": "repair4",
+        "axis": "architecture",
+        "parents": [
+          "R4-07"
+        ],
+        "settings": {
+          "architecture": "earthrise",
+          "projection": "auto",
+          "window": "auto",
+          "grammar": "stack",
+          "fitness": "row",
+          "typography": "roboto",
+          "palette": "ice",
+          "colorRoles": "standard",
+          "separators": "none",
+          "rocket": "filled",
+          "status": "cap",
+          "decor": "quiet"
+        },
+        "tuning": {
+          "palette": 0
+        },
+        "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+        "mutation": "visible marker outside entireopaque fitnessbackground",
+        "overrides": {
+          "mission": [
+            32,
+            173,
+            288,
+            112
+          ],
+          "pin": [
+            368,
+            148
+          ]
+        }
+      },
+      "kind": "ring24",
+      "context": {
+        "map": "coast",
+        "cue": false,
+        "pin": [
+          322,
+          89
+        ]
+      },
+      "hypothesis": "G2-clearance-and-background",
+      "parentAcceptance": false
+    },
+    {
+      "id": "M2-51",
+      "generation": 2,
+      "family": "atlas",
+      "parents": [
+        "M1-54"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-09",
+        "stage": "repair3",
+        "axis": null,
+        "parents": [
+          "J1-016"
+        ],
+        "settings": {
+          "architecture": "atlas",
+          "projection": "stereographic",
+          "window": "lower-cap",
+          "grammar": "centered",
+          "fitness": "slim-arcs",
+          "typography": "saira",
+          "palette": "magenta",
+          "colorRoles": "warm-status",
+          "separators": "baseline-rule",
+          "rocket": "engraved",
+          "status": "boxed-header",
+          "decor": "fine-grid"
+        },
+        "tuning": {
+          "architecture": 1,
+          "window": 1,
+          "fitness": 1,
+          "rocket": 1
+        },
+        "overrides": {
+          "mission": [
+            76,
+            142,
+            288,
+            112
+          ],
+          "pin": [
+            350,
+            130
+          ]
+        },
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane"
+      },
+      "kind": "pin",
+      "context": {
+        "map": "quiet",
+        "cue": false,
+        "pin": [
+          344,
+          122
+        ]
+      },
+      "hypothesis": "G2-clearance-and-background",
+      "parentAcceptance": false
+    },
+    {
+      "id": "M2-52",
+      "generation": 2,
+      "family": "atlas",
+      "parents": [
+        "M1-54"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-09",
+        "stage": "repair3",
+        "axis": null,
+        "parents": [
+          "J1-016"
+        ],
+        "settings": {
+          "architecture": "atlas",
+          "projection": "stereographic",
+          "window": "lower-cap",
+          "grammar": "centered",
+          "fitness": "slim-arcs",
+          "typography": "saira",
+          "palette": "magenta",
+          "colorRoles": "warm-status",
+          "separators": "baseline-rule",
+          "rocket": "engraved",
+          "status": "boxed-header",
+          "decor": "fine-grid"
+        },
+        "tuning": {
+          "architecture": 1,
+          "window": 1,
+          "fitness": 1,
+          "rocket": 1
+        },
+        "overrides": {
+          "mission": [
+            76,
+            142,
+            288,
+            112
+          ],
+          "pin": [
+            350,
+            130
+          ]
+        },
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane"
+      },
+      "kind": "pin",
+      "context": {
+        "map": "coast",
+        "cue": false,
+        "pin": [
+          344,
+          122
+        ]
+      },
+      "hypothesis": "G2-clearance-and-background",
+      "parentAcceptance": false
+    },
+    {
+      "id": "OLD-1",
+      "generation": 0,
+      "family": "control",
+      "parents": [],
+      "control": true,
+      "base": {
+        "id": "R4-01",
+        "stage": "repair3",
+        "axis": null,
+        "parents": [
+          "ANCHOR"
+        ],
+        "settings": {
+          "architecture": "control",
+          "projection": "auto",
+          "window": "auto",
+          "grammar": "stack",
+          "fitness": "row",
+          "typography": "roboto",
+          "palette": "mint",
+          "colorRoles": "standard",
+          "separators": "none",
+          "rocket": "filled",
+          "status": "cap",
+          "decor": "quiet"
+        },
+        "tuning": {},
+        "overrides": {
+          "mission": [
+            76,
+            173,
+            288,
+            112
+          ]
+        },
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane"
+      },
+      "kind": "old",
+      "context": {
+        "map": "base",
+        "cue": false
+      }
+    },
+    {
+      "id": "OLD-2",
+      "generation": 0,
+      "family": "ticket",
+      "parents": [],
+      "control": true,
+      "base": {
+        "id": "R4-03",
+        "stage": "repair3",
+        "axis": "architecture",
+        "parents": [
+          "R3-04"
+        ],
+        "settings": {
+          "architecture": "ticket",
+          "projection": "auto",
+          "window": "auto",
+          "grammar": "centered",
+          "fitness": "row",
+          "typography": "barlow",
+          "palette": "mint",
+          "colorRoles": "site-accent",
+          "separators": "none",
+          "rocket": "filled",
+          "status": "cap",
+          "decor": "quiet"
+        },
+        "tuning": {
+          "colorRoles": 0,
+          "grammar": 0,
+          "typography": 0
+        },
+        "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane",
+        "overrides": {
+          "operatorWidth": 288,
+          "operatorY": 69
+        }
+      },
+      "kind": "old",
+      "context": {
+        "map": "base",
+        "cue": false
+      }
+    }
+  ],
+  "immutableCampaign": {
+    "file": "pre-screen-campaign.json.gz",
+    "sha256": "9a28d0a5b34fbc7c00c20d30b9f7c364b7ba355b619eb37f04ce8568e919c72f"
+  },
+  "screenOrderAmendment": "Before disclosure: screen12 applies to measuredG2parents; G3descendants must rerunall24 as knownregression, notfreshscreen. confirm24 stayssealeduntilfinal5/sourcefreeze."
+}

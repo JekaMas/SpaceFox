@@ -1,0 +1,382 @@
+{
+  "schemaVersion": 1,
+  "candidateIds": [
+    "M2-11",
+    "M3-21",
+    "M2-31",
+    "M2-41",
+    "M2-51"
+  ],
+  "candidates": [
+    {
+      "id": "M2-11",
+      "generation": 2,
+      "family": "control",
+      "parents": [
+        "M1-11"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-01",
+        "stage": "repair3",
+        "axis": null,
+        "parents": [
+          "ANCHOR"
+        ],
+        "settings": {
+          "architecture": "control",
+          "projection": "auto",
+          "window": "auto",
+          "grammar": "stack",
+          "fitness": "row",
+          "typography": "roboto",
+          "palette": "mint",
+          "colorRoles": "standard",
+          "separators": "none",
+          "rocket": "filled",
+          "status": "cap",
+          "decor": "quiet"
+        },
+        "tuning": {},
+        "overrides": {
+          "mission": [
+            76,
+            173,
+            288,
+            112
+          ]
+        },
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane"
+      },
+      "kind": "ring24",
+      "context": {
+        "map": "quiet",
+        "cue": false,
+        "pin": [
+          305,
+          100
+        ]
+      },
+      "hypothesis": "G2-clearance-and-background",
+      "parentAcceptance": true
+    },
+    {
+      "id": "M3-21",
+      "generation": 3,
+      "family": "ticket",
+      "parents": [
+        "M2-21"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-03",
+        "stage": "repair3",
+        "axis": "architecture",
+        "parents": [
+          "R3-04"
+        ],
+        "settings": {
+          "architecture": "ticket",
+          "projection": "auto",
+          "window": "auto",
+          "grammar": "centered",
+          "fitness": "row",
+          "typography": "barlow",
+          "palette": "mint",
+          "colorRoles": "site-accent",
+          "separators": "none",
+          "rocket": "filled",
+          "status": "cap",
+          "decor": "quiet"
+        },
+        "tuning": {
+          "colorRoles": 0,
+          "grammar": 0,
+          "typography": 0
+        },
+        "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane",
+        "overrides": {
+          "operatorWidth": 288,
+          "operatorY": 69
+        }
+      },
+      "kind": "ring24",
+      "context": {
+        "map": "quiet",
+        "cue": true,
+        "pin": [
+          336,
+          239
+        ]
+      },
+      "hypothesis": "G3-explicit-launch-cue",
+      "parentAcceptance": true
+    },
+    {
+      "id": "M2-31",
+      "generation": 2,
+      "family": "relay",
+      "parents": [
+        "M1-31"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-05",
+        "stage": "repair3",
+        "axis": null,
+        "parents": [
+          "J3-008"
+        ],
+        "settings": {
+          "architecture": "relay",
+          "projection": "equirectangular",
+          "window": "third",
+          "grammar": "centered",
+          "fitness": "goal-dots",
+          "typography": "barlow",
+          "palette": "mint",
+          "colorRoles": "clock-accent",
+          "separators": "hairline",
+          "rocket": "two-tone",
+          "status": "header-pair",
+          "decor": "terminator-style"
+        },
+        "tuning": {
+          "colorRoles": 1,
+          "palette": 0,
+          "typography": 0
+        },
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane",
+        "overrides": {
+          "operatorWidth": 288
+        }
+      },
+      "kind": "ring24",
+      "context": {
+        "map": "quiet",
+        "cue": false,
+        "pin": [
+          335,
+          165
+        ]
+      },
+      "hypothesis": "G2-clearance-and-background",
+      "parentAcceptance": true
+    },
+    {
+      "id": "M2-41",
+      "generation": 2,
+      "family": "earthrise",
+      "parents": [
+        "M1-41"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-12",
+        "stage": "repair4",
+        "axis": "architecture",
+        "parents": [
+          "R4-07"
+        ],
+        "settings": {
+          "architecture": "earthrise",
+          "projection": "auto",
+          "window": "auto",
+          "grammar": "stack",
+          "fitness": "row",
+          "typography": "roboto",
+          "palette": "ice",
+          "colorRoles": "standard",
+          "separators": "none",
+          "rocket": "filled",
+          "status": "cap",
+          "decor": "quiet"
+        },
+        "tuning": {
+          "palette": 0
+        },
+        "hypothesis": "Mission-first with a lower clock may create a different coherent reading route.",
+        "mutation": "visible marker outside entireopaque fitnessbackground",
+        "overrides": {
+          "mission": [
+            32,
+            173,
+            288,
+            112
+          ],
+          "pin": [
+            368,
+            148
+          ]
+        }
+      },
+      "kind": "ring24",
+      "context": {
+        "map": "quiet",
+        "cue": false,
+        "pin": [
+          322,
+          89
+        ]
+      },
+      "hypothesis": "G2-clearance-and-background",
+      "parentAcceptance": false
+    },
+    {
+      "id": "M2-51",
+      "generation": 2,
+      "family": "atlas",
+      "parents": [
+        "M1-54"
+      ],
+      "control": false,
+      "base": {
+        "id": "R4-09",
+        "stage": "repair3",
+        "axis": null,
+        "parents": [
+          "J1-016"
+        ],
+        "settings": {
+          "architecture": "atlas",
+          "projection": "stereographic",
+          "window": "lower-cap",
+          "grammar": "centered",
+          "fitness": "slim-arcs",
+          "typography": "saira",
+          "palette": "magenta",
+          "colorRoles": "warm-status",
+          "separators": "baseline-rule",
+          "rocket": "engraved",
+          "status": "boxed-header",
+          "decor": "fine-grid"
+        },
+        "tuning": {
+          "architecture": 1,
+          "window": 1,
+          "fitness": 1,
+          "rocket": 1
+        },
+        "overrides": {
+          "mission": [
+            76,
+            142,
+            288,
+            112
+          ],
+          "pin": [
+            350,
+            130
+          ]
+        },
+        "mutation": "OPENlegal32wideoperator: metadatawidth and reservedgeo lane"
+      },
+      "kind": "pin",
+      "context": {
+        "map": "quiet",
+        "cue": false,
+        "pin": [
+          344,
+          122
+        ]
+      },
+      "hypothesis": "G2-clearance-and-background",
+      "parentAcceptance": false
+    }
+  ],
+  "names": [
+    "Пульт орбиты",
+    "Билет на старт",
+    "Миссия в фокусе",
+    "Восход Земли",
+    "Атлас запуска"
+  ],
+  "scope": "Final selection across generations, before separateconfirm24",
+  "blindRule": "Afterreleaseconfirm24 choosefirstnonnull RU andEN active scenes, firstgenuinenull inbankorder, hiddenmarker=firstnonnullRU; samefourconditions at3sizes for5candidates;2freshcontexts with separatelyrandomizedorder.",
+  "immutableCampaign": {
+    "file": "pre-confirm-campaign.json.gz",
+    "sha256": "4e30a0fb7ef76e6c5ddfc7e7bb84c938e5c11870ee630f1b21e36bc2676d2174"
+  },
+  "sourceSHA256": {
+    "prototype/features/author-edge24.json": "231ac046b18e5f284faaf1fde66e6384b2dfe45bb1ab697df39300bc8f39fb4e",
+    "prototype/features/axes.json": "c677b5add8ef571b0ddbbc3415fc195f1a29909fd5ed12ea37a7c40cbb15d9d9",
+    "prototype/features/bounds-probe.html": "94669e1c2c68f382879fa4c9eee79fe3fe8ef45d745066875d93fa4099eb5a62",
+    "prototype/features/bounds-probe.js": "68ff4ba1dbeadf990deaec4332135503f3a19e9e7222a76d2f3583d0d6403137",
+    "prototype/features/bounds-probe.json": "23b82f83e5969a456d1da9d52acd16263198bcd052b31e09feedb5303c6ca846",
+    "prototype/features/core.js": "67a0ad5206755c4fd5854460a6477c2d2d8a78ba09ce9a4015abc06f899d5153",
+    "prototype/features/data.js": "80480c78551740ed22c9b77ef1fcdecbeb9e2067b8b95318d016e9a879fff057",
+    "prototype/features/fixtures.json": "c969b3d809a1af186edffb86d059cffca0dae11542e9d87af2d00ef11ea3f63d",
+    "prototype/features/font-manifest.json": "4ed3413d3d800883c07fc34795e1a9cbffc72facb9c6ebedc3652913a4a2222a",
+    "prototype/features/fonts/ChakraPetch-SemiBold.ttf": "45264de3204ddbd5fb3e14a2402acd5c630d16650ae5fc221d2c52da46a6734b",
+    "prototype/features/fonts/IBMPlexSansCondensed-SemiBold.ttf": "a081ca60548aea14100757a2d6fe71ca60fd90ebce779c9a8ae5a0c8fb4526d4",
+    "prototype/features/fonts/Oxanium[wght].ttf": "2ce01d946e1e1ffc8d7eecfffbda8623bedd63eaf811a20488c4b69af45babb0",
+    "prototype/features/fonts/SairaCondensed-SemiBold.ttf": "30f8ed4d078211003a9715c80c51ce031bab5c9a17e8771182e4c4599205634b",
+    "prototype/features/index.html": "da8b6eb2812d4b50c5f4c58cfb0fadc14197ae90158064b9806ed1880ec267b7",
+    "prototype/features/lab.js": "e1d68e84414f200ba0a74a90313dcfae7a6dcb6200f1c95022d96c93f11c86a0",
+    "prototype/features/legacy.json": "40438ed5c24dd1a41c09c135a1db74772b7717e20c08685ea879385f9aabbb68",
+    "prototype/features/renderer.js": "e88c1d67bccbdc186291a4d766b9929707fc3e071d3b4a97e354d2c5f3ac5f8b",
+    "prototype/features/review.html": "d8dc199d06a60c0ac6a332967cd6bf9b7070f932540eb0e1e25c49d6238c5244",
+    "prototype/features/review.js": "3fbb1caccdf5f4f957ec4d7e56199adcb5b6c2cf45cb7e9969d9bb2031d50d09",
+    "prototype/features/rocket-catalog.json": "ec4dac8c43e1ec1f1b2c28ee6f665af45da51947412a251d98a81787ecb2c201",
+    "prototype/features/sheet.html": "f5e20b6fd8b14a48ab4bf3ed854d48bff472023e286a4e8dde83bb2818901fda",
+    "prototype/features/sheet.js": "1e3b59857741daa21c0b5977ccbf8d3ccaff05a1c6c2abf2ed04712b4e884b08",
+    "prototype/features/style.css": "88395ffd2053e113b12789e5f96eb8d64c7a637083fbdcaf59372d6379260c4f",
+    "prototype/features/text-bounds.js": "1ca596873af87ebf5a3b10d244ee0ec64d84416afa762f9391dad7d2ad5a97db",
+    "prototype/fonts/BarlowSemiCondensed-latin-600.woff2": "6850e108c9e552f6f6e5fbce8aabee3eea301936a9198fb470626beda8c203c0",
+    "prototype/fonts/NotoSans-cyrillic-500.woff2": "1376c49e5a162f8d23a35c62d085d03e0a6a8cd363e7a1bb45da80b518153cd5",
+    "prototype/fonts/NotoSans-latin-500.woff2": "f857d092bc3adc4cc6c5e14475248093d18184e474cc2ad98b2cd57d0ff41eb1",
+    "prototype/fonts/NotoSans-latin-ext-500.woff2": "2916797aae3951a6f2b80f886ba02b089ebf885f5f30cf124c4c2cbff9bfe8bd",
+    "prototype/fonts/Rajdhani-latin-600.woff2": "35f7e628ec8e7dd3bf434e95ce28289803401f12d8605c56ca83db2b4b301d33",
+    "prototype/fonts/RobotoCondensed-latin-600.woff2": "bc8afff05ba2d847e9c93afd5f13a1fe3b4e785facbffdfd09abd775df8564ff",
+    "prototype/fonts/SpaceGrotesk-latin-600.woff2": "564c913b0f490680c150486d120600c3a75f5aca3026ae6dd07d82c76aff6c1b",
+    "prototype/fonts/fonts.css": "baa80974801ddc7095f7ba690cddfbad441f4813390c1e9f98e75b567e3591d8",
+    "prototype/fonts/manifest.json": "3a82789d48e3aca65f3eb2df54ba3af60e8b22f55a260bf81c05287385249e09",
+    "prototype/layout-data.js": "fa3cfd312d89414752c43e20e1bee903e70c6c7cc120973215af67c306da7ec1",
+    "prototype/marker/core.js": "e987f425cdadf21be72a34612df67a58236773d581e6c5c76970db210d51eb04",
+    "prototype/marker/data.js": "f8378d2c69407c5e33debe5bb22bce3156b39480430d1077ab3dc02c19a8febb",
+    "prototype/marker/data.json": "af2af59d53ea7e48ff15aa80b8b5aa417497ced6f178f39a1cd2f004736f9abb",
+    "prototype/marker/final-selection.json": "0cbcf3266dc2120ebdc539762d71c84d87a0e31e49dbc8e6af0309a4c29fe605",
+    "prototype/marker/index.html": "d8efdb08da3f28004f717744a77344031b9af74f36a74f154fef7ed47ff515e9",
+    "prototype/marker/lab.js": "17067fcc4441e90f29c87717a7d09a114fb264baac9b8884c9114db5a7f9c5dd",
+    "prototype/marker/renderer.js": "c6d5137378364251c9a3d5bebeb0ebd4f16bad2e8447c06d1b463602a7947709",
+    "prototype/marker/review.html": "60f82c6ffbc8da66afd03b2e473755f376107f44824894e433cf641561d212b6",
+    "prototype/marker/review.js": "45b6f57e74b11aeff1bbf4ae2407e57abfe6e3c21301633ee1d1ec4bde5da326",
+    "prototype/qualification/core.js": "70eea010f9ce4a19b782d77defdb048f3eddd2261f0be8d16730006f739c80dc",
+    "prototype/qualification/index.html": "0857c473afca70699e15ef13cf5105f2eccecda59ae7fd28df182c008719c9f3",
+    "prototype/qualification/lab.js": "fe645597c235adfa85b05c49c683443807470cd43b64731f062ad9daa0898ace",
+    "prototype/qualification/renderer.js": "9044f7a25a8ec8c454d1620a9f3a12ddb7f8dfb3d75d8390199224c5fa7df417",
+    "prototype/qualification/review.html": "122f0124220dc711fa2ff45d0ec1b6ce0f48096f7b622005a7ed910708b27ce8",
+    "prototype/qualification/review.js": "23c459f018ef9c0d37d7fdae1e0c14403dfdd14fb7a88b06bd59d7d59436f6cb",
+    "prototype/qualification/style.css": "e749ecf2454dfe90dfffb33abd44ec9d311dd9ce40d27ab5c13181613c0ac836",
+    "prototype/vendor/d3-7.9.0.min.js": "f2094bbf6141b359722c4fe454eb6c4b0f0e42cc10cc7af921fc158fceb86539",
+    "prototype/vendor/lucide-0.468.0.min.js": "3411692820cb8d47543f69496aa25fd603a358f4498046f41c508a5a3342210e",
+    "prototype/vendor/topojson-client-3.1.0.min.js": "25cd02ae486cc5063e0215a4e4cfb15de83700c87ac48bac4d57dc6aaf3ebb89"
+  },
+  "screenNativeRule": "For each locale ru,en select first non-null scene in bank order, then widest operator by grapheme count over locale (ID lexical tiebreak), excluding selected scene; deterministic lexical fallback if needed. Exactly four; never pick by render result.",
+  "evidenceToolSHA256": {
+    "tools/freeze_marker_sources.py": "362b44550eb96c1c8664698cd54a8c0c2afedbc1b2cc86f67e7ad4ee6ac3c053",
+    "tools/bind_marker_blind.py": "af99db2ab2a77c679c103a27b2bb8b7ccacf999844df10e46948128feec10d46",
+    "tools/prepare_marker_blind.py": "22669157cf8951365957c2082b4f5aa61aaa2a72217f6e8163083b495dbc3c9b",
+    "tools/recheck_markers.js": "84d6f516dc8cd6fba82895931734a3ed4dc1be34ad7cd2a4757fb09acd1a7617",
+    "tools/build_marker_jobs.py": "8f062f2b9973ccd7452733992279779c4f6d473899cc21841cb6b32997487942",
+    "tools/audit_marker_native.js": "377219564004bb83e0413a49efc54ca6b476846f14c527dfd9fc8b65194c79ab",
+    "tools/annotate_marker_aa.js": "28bec257d9960b28c726a95c5105d7ea9bbd882009d513bd6a6cdbea9c66ca83",
+    "tests/test_marker_research.py": "4f9541218a0a0e9294e868a46fb4a176daae4a636999daa6c9971ba49f20ddce",
+    "openspec/changes/make-launch-site-obvious/evidence/reviewer/protocol-review.md": "efba3309e510257fc92a08b1aa1e2025b212a1c5920766ec1e2f2a838ea3b446",
+    "openspec/changes/make-launch-site-obvious/evidence/reviewer/audit_marker_raster.py": "a2394dd6f7a41c787d2ac755677ccd309499fd5b59495ac14411b81cb4f8e21d",
+    "openspec/changes/make-launch-site-obvious/evidence/reviewer/probe_independent_checker.py": "bbc19bc75b908a47843f1418d4b3563f081597caf6162f7b3169a607cbe52bb9",
+    "openspec/changes/make-launch-site-obvious/evidence/reviewer/scene-schema.md": "70c27f6b83d257759bf2cd97c272f390351b6668bc0b86a6a3047eefeaa52c61",
+    "openspec/changes/make-launch-site-obvious/evidence/reviewer/agreed-policy.json": "854a7b4df184ac1936179a0869def7bacae4aa0f88cf7d6d01c45cc930cfde3a",
+    "openspec/changes/make-launch-site-obvious/evidence/reviewer/localization-schema.md": "52184da586ea1467431b59365ff7f60b331ae09a4b6435e7a7959050e3dddb27",
+    "openspec/changes/make-launch-site-obvious/evidence/reviewer/png_decoder_source.py": "fd5a6aa32abd1a64bb514dd2bb0e06916a43614121146650f7184606db836cb2",
+    "openspec/changes/make-launch-site-obvious/evidence/reviewer/check_native_source_closure.py": "7fa770fd9bb89c43452b4757d37410ba7a6ce817369a48e5770944c662efb50d",
+    "openspec/changes/make-launch-site-obvious/evidence/reviewer/export_assets.py": "a497cb14c71120348c9df5115acfa0e2359aebf59c66159cb0f8f601c42c562e",
+    "openspec/changes/make-launch-site-obvious/evidence/reviewer/audit_semantics.js": "b5bb70a5e15b92a54280210736b5a95df074e0f1c1d0873314122f5e22229a3b",
+    "openspec/changes/make-launch-site-obvious/evidence/reviewer/raster-schema.md": "adba694f3af364845b59de3aabb93a5719df1af0e173b5acbd23c9d861be2e6d",
+    "openspec/changes/make-launch-site-obvious/evidence/reviewer/score_localization.py": "1d24a38a756ae6b126fd4ed8ca49c1acc03170c330b3102677c8b164974a639f",
+    "openspec/changes/make-launch-site-obvious/evidence/reviewer/audit_visible_masks.py": "203c646e1eea41b0664ebcedaa73d3044566319d581621df235d7e6d5e674a12",
+    "openspec/changes/make-launch-site-obvious/evidence/reviewer/audit-raw-retained.js": "b6048276cfdd4b19daf82c25870fbf041939b8f240c72e09fd8d42d641dee189",
+    "tools/prepare_marker_final_blind.py": "ecc10a546af0e41f7bf3407b4c395e88a018901861d9b3eb04ab7f3a886ce0b2"
+  }
+}

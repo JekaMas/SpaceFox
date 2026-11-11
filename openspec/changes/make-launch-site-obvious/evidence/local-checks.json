@@ -1,0 +1,55 @@
+{
+  "reason": "assessMasks owner changed after initial12greens: addAApositivegain/fringeguard and key-size/sourcebinding; rerun directlyaffectedgeometry cases only. Other10unchangedfunction partitions retain observedgreens. No whole-suite refresh.",
+  "command": [
+    "python3",
+    "-B",
+    "-m",
+    "unittest",
+    "-v",
+    "tests.test_marker_research.MarkerTest.test_geometry_positive",
+    "tests.test_marker_research.MarkerTest.test_geometry_negative"
+  ],
+  "exit": 0,
+  "syntaxParsed": [
+    "tools/freeze_marker_sources.py",
+    "tools/bind_marker_blind.py",
+    "tools/prepare_marker_final_blind.py",
+    "tools/prepare_marker_blind.py",
+    "tools/build_marker_jobs.py",
+    "tests/test_marker_research.py",
+    "openspec/changes/make-launch-site-obvious/evidence/reviewer/audit_marker_raster.py",
+    "openspec/changes/make-launch-site-obvious/evidence/reviewer/probe_independent_checker.py",
+    "openspec/changes/make-launch-site-obvious/evidence/reviewer/audit_visible_masks.py",
+    "openspec/changes/make-launch-site-obvious/evidence/reviewer/png_decoder_source.py",
+    "openspec/changes/make-launch-site-obvious/evidence/reviewer/check_native_source_closure.py",
+    "openspec/changes/make-launch-site-obvious/evidence/reviewer/export_assets.py",
+    "openspec/changes/make-launch-site-obvious/evidence/reviewer/score_localization.py"
+  ],
+  "coreSHA256": "e987f425cdadf21be72a34612df67a58236773d581e6c5c76970db210d51eb04",
+  "retainedInitialRun": {
+    "testCount": 12,
+    "exit": 0,
+    "sourceBoundary": "Observed earlier in this same task. Some prototype owners later changed; use updated independent artifacts for full product acceptance, not this unit summary."
+  },
+  "qualificationCaseUpdate": {
+    "tests": [
+      "test_qualification_positive",
+      "test_qualification_negative"
+    ],
+    "exit": 0,
+    "reason": "literaloldemptypositive replaced byactualretainedhealthyG1record andnull-anchorcorruption, observed2/2green; qualification owner unchanged afterward."
+  },
+  "workflowReady": {
+    "claimed": false,
+    "reason": "Pinned ready unconditionally rerunsallmodulecases. Userinstructionpreservesvalidgreens; retained12namedobservations +directlyaffected reruns +independentcorpusreceipts used. No runner-backedready recordfabricated."
+  },
+  "gitWhitespaceCheck": {
+    "status": "warnings observed, not reported as pass",
+    "details": [
+      "G1-image-localization-exact/review.md finalblankline",
+      "frozenreviewer/export_assets.py blankline trailingwhitespace",
+      "frozenreviewer/png_decoder_source.py finalblankline"
+    ],
+    "reason": "Retain exact historical reviewer/criterion bytes, including their whitespace; allsyntax/execution checks pass. No source changed merely to refresh proof hashes."
+  }
+}

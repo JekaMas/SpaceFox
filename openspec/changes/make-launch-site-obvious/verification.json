@@ -1,0 +1,525 @@
+{
+  "schema_version": 2,
+  "change": "make-launch-site-obvious",
+  "requirements": [
+    {
+      "id": "R1",
+      "capability": "marker-ergonomics",
+      "title": "Three traceable research generations",
+      "fingerprint": "ded79519815d194e8c31192d78b1f51ea80cc50d398d52e7716eec4278c58492"
+    },
+    {
+      "id": "R2",
+      "capability": "marker-ergonomics",
+      "title": "Full launch-marker geometry",
+      "fingerprint": "6c4899114baaeea53325e98dea3cfb1fdde3592b22489ddc6482518b679aedde"
+    },
+    {
+      "id": "R3",
+      "capability": "marker-ergonomics",
+      "title": "Honest raster evidence",
+      "fingerprint": "aec32a5afadf73eac82b14a2f22d787046574c4bf68973d6db348f485e1f9731"
+    },
+    {
+      "id": "R4",
+      "capability": "marker-ergonomics",
+      "title": "Blind localization and meaning",
+      "fingerprint": "3cac39f1cbd5d12eb8910068801cd457ac3e26bfa5e36b218d205db61afd4863"
+    },
+    {
+      "id": "R5",
+      "capability": "marker-ergonomics",
+      "title": "Separate screening and fresh confirmation",
+      "fingerprint": "8e4d5d04a03a318207613d6280d002b0f44cb54994f1d192ba3e78d9626baff5"
+    },
+    {
+      "id": "R6",
+      "capability": "marker-ergonomics",
+      "title": "Explicit bounds and durable progress",
+      "fingerprint": "b641060256f4810588e207dfa0e353aa38a55542b4a5d04eda1719c2abb0e89e"
+    }
+  ],
+  "properties": [
+    {
+      "id": "R1.P1",
+      "requirement_id": "R1",
+      "scenarios": [
+        "Evolve observed hypotheses"
+      ],
+      "statement": "Three traceable research generations",
+      "owner": "generations",
+      "oracle": "Literal independent valid/counterexample inputs; actual source-cloned masks/native captures and separate reviewer oracle; no human/device inference.",
+      "source_globs": [
+        "prototype/marker/**",
+        "prototype/features/core.js",
+        "prototype/features/renderer.js",
+        "prototype/features/text-bounds.js",
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "tests/test_marker_research.py"
+      ]
+    },
+    {
+      "id": "R2.P1",
+      "requirement_id": "R2",
+      "scenarios": [
+        "Measure the complete symbol"
+      ],
+      "statement": "Full launch-marker geometry",
+      "owner": "geometry",
+      "oracle": "Literal independent valid/counterexample inputs; actual source-cloned masks/native captures and separate reviewer oracle; no human/device inference.",
+      "source_globs": [
+        "prototype/marker/**",
+        "prototype/features/core.js",
+        "prototype/features/renderer.js",
+        "prototype/features/text-bounds.js",
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "tests/test_marker_research.py"
+      ]
+    },
+    {
+      "id": "R3.P1",
+      "requirement_id": "R3",
+      "scenarios": [
+        "Audit actual image support"
+      ],
+      "statement": "Honest raster evidence",
+      "owner": "raster",
+      "oracle": "Literal independent valid/counterexample inputs; actual source-cloned masks/native captures and separate reviewer oracle; no human/device inference.",
+      "source_globs": [
+        "prototype/marker/**",
+        "prototype/features/core.js",
+        "prototype/features/renderer.js",
+        "prototype/features/text-bounds.js",
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "tests/test_marker_research.py"
+      ]
+    },
+    {
+      "id": "R4.P1",
+      "requirement_id": "R4",
+      "scenarios": [
+        "Locate the launch place"
+      ],
+      "statement": "Blind localization and meaning",
+      "owner": "localization",
+      "oracle": "Literal independent valid/counterexample inputs; actual source-cloned masks/native captures and separate reviewer oracle; no human/device inference.",
+      "source_globs": [
+        "prototype/marker/**",
+        "prototype/features/core.js",
+        "prototype/features/renderer.js",
+        "prototype/features/text-bounds.js",
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "tests/test_marker_research.py"
+      ]
+    },
+    {
+      "id": "R5.P1",
+      "requirement_id": "R5",
+      "scenarios": [
+        "Accept a final selection"
+      ],
+      "statement": "Separate screening and fresh confirmation",
+      "owner": "qualification",
+      "oracle": "Literal independent valid/counterexample inputs; actual source-cloned masks/native captures and separate reviewer oracle; no human/device inference.",
+      "source_globs": [
+        "prototype/marker/**",
+        "prototype/features/core.js",
+        "prototype/features/renderer.js",
+        "prototype/features/text-bounds.js",
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "tests/test_marker_research.py"
+      ]
+    },
+    {
+      "id": "R6.P1",
+      "requirement_id": "R6",
+      "scenarios": [
+        "Inspect the evidence boundary"
+      ],
+      "statement": "Explicit bounds and durable progress",
+      "owner": "boundaries",
+      "oracle": "Literal independent valid/counterexample inputs; actual source-cloned masks/native captures and separate reviewer oracle; no human/device inference.",
+      "source_globs": [
+        "prototype/marker/**",
+        "prototype/features/core.js",
+        "prototype/features/renderer.js",
+        "prototype/features/text-bounds.js",
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "tests/test_marker_research.py"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "R1.P1.POSITIVE",
+      "property_id": "R1.P1",
+      "polarity": "positive",
+      "scenario": "Evolve observed hypotheses",
+      "scenario_fingerprint": "c5a1e3de3363eedd22c6f254b3241a3a4af321472bc921637a94089c73f4ef29",
+      "setup": "Invoke actual new marker owner against literal independent partitions; reconcile saved actual evidence at completion.",
+      "observable": "Correct valid/invalid partition, exact scene/source/capture identities, explicit missing layer.",
+      "red_expectation": "Wrong geometry/evidence/catch or unsupported claim accepted.",
+      "green_expectation": "Three traceable research generations",
+      "invalidation_dependencies": [
+        "prototype/marker/**",
+        "prototype/features/core.js",
+        "prototype/features/renderer.js",
+        "prototype/features/text-bounds.js",
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "tests/test_marker_research.py"
+      ],
+      "test_id": "unittest::tests.test_marker_research.MarkerTest.test_generations_positive",
+      "command_id": "marker-tests",
+      "state": "implemented",
+      "source_path": "tests/test_marker_research.py",
+      "distinct_reason": "generations positive partition",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "4f9541218a0a0e9294e868a46fb4a176daae4a636999daa6c9971ba49f20ddce"
+    },
+    {
+      "id": "R1.P1.NEGATIVE",
+      "property_id": "R1.P1",
+      "polarity": "negative",
+      "scenario": "Evolve observed hypotheses",
+      "scenario_fingerprint": "c5a1e3de3363eedd22c6f254b3241a3a4af321472bc921637a94089c73f4ef29",
+      "setup": "Invoke actual new marker owner against literal independent partitions; reconcile saved actual evidence at completion.",
+      "observable": "Correct valid/invalid partition, exact scene/source/capture identities, explicit missing layer.",
+      "red_expectation": "Wrong geometry/evidence/catch or unsupported claim accepted.",
+      "green_expectation": "Three traceable research generations",
+      "invalidation_dependencies": [
+        "prototype/marker/**",
+        "prototype/features/core.js",
+        "prototype/features/renderer.js",
+        "prototype/features/text-bounds.js",
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "tests/test_marker_research.py"
+      ],
+      "test_id": "unittest::tests.test_marker_research.MarkerTest.test_generations_negative",
+      "command_id": "marker-tests",
+      "state": "implemented",
+      "source_path": "tests/test_marker_research.py",
+      "distinct_reason": "generations negative partition",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "4f9541218a0a0e9294e868a46fb4a176daae4a636999daa6c9971ba49f20ddce"
+    },
+    {
+      "id": "R2.P1.POSITIVE",
+      "property_id": "R2.P1",
+      "polarity": "positive",
+      "scenario": "Measure the complete symbol",
+      "scenario_fingerprint": "65b226af44ad3d103fdc24a2315693e279d025fff03af6b92e744df824ddeff1",
+      "setup": "Invoke actual new marker owner against literal independent partitions; reconcile saved actual evidence at completion.",
+      "observable": "Correct valid/invalid partition, exact scene/source/capture identities, explicit missing layer.",
+      "red_expectation": "Wrong geometry/evidence/catch or unsupported claim accepted.",
+      "green_expectation": "Full launch-marker geometry",
+      "invalidation_dependencies": [
+        "prototype/marker/**",
+        "prototype/features/core.js",
+        "prototype/features/renderer.js",
+        "prototype/features/text-bounds.js",
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "tests/test_marker_research.py"
+      ],
+      "test_id": "unittest::tests.test_marker_research.MarkerTest.test_geometry_positive",
+      "command_id": "marker-tests",
+      "state": "implemented",
+      "source_path": "tests/test_marker_research.py",
+      "distinct_reason": "geometry positive partition",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "4f9541218a0a0e9294e868a46fb4a176daae4a636999daa6c9971ba49f20ddce"
+    },
+    {
+      "id": "R2.P1.NEGATIVE",
+      "property_id": "R2.P1",
+      "polarity": "negative",
+      "scenario": "Measure the complete symbol",
+      "scenario_fingerprint": "65b226af44ad3d103fdc24a2315693e279d025fff03af6b92e744df824ddeff1",
+      "setup": "Invoke actual new marker owner against literal independent partitions; reconcile saved actual evidence at completion.",
+      "observable": "Correct valid/invalid partition, exact scene/source/capture identities, explicit missing layer.",
+      "red_expectation": "Wrong geometry/evidence/catch or unsupported claim accepted.",
+      "green_expectation": "Full launch-marker geometry",
+      "invalidation_dependencies": [
+        "prototype/marker/**",
+        "prototype/features/core.js",
+        "prototype/features/renderer.js",
+        "prototype/features/text-bounds.js",
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "tests/test_marker_research.py"
+      ],
+      "test_id": "unittest::tests.test_marker_research.MarkerTest.test_geometry_negative",
+      "command_id": "marker-tests",
+      "state": "implemented",
+      "source_path": "tests/test_marker_research.py",
+      "distinct_reason": "geometry negative partition",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "4f9541218a0a0e9294e868a46fb4a176daae4a636999daa6c9971ba49f20ddce"
+    },
+    {
+      "id": "R3.P1.POSITIVE",
+      "property_id": "R3.P1",
+      "polarity": "positive",
+      "scenario": "Audit actual image support",
+      "scenario_fingerprint": "a85bcf8a302f00fdf08809a199de3086a341878c7d4764cd956d7cc0b133a90a",
+      "setup": "Invoke actual new marker owner against literal independent partitions; reconcile saved actual evidence at completion.",
+      "observable": "Correct valid/invalid partition, exact scene/source/capture identities, explicit missing layer.",
+      "red_expectation": "Wrong geometry/evidence/catch or unsupported claim accepted.",
+      "green_expectation": "Honest raster evidence",
+      "invalidation_dependencies": [
+        "prototype/marker/**",
+        "prototype/features/core.js",
+        "prototype/features/renderer.js",
+        "prototype/features/text-bounds.js",
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "tests/test_marker_research.py"
+      ],
+      "test_id": "unittest::tests.test_marker_research.MarkerTest.test_raster_positive",
+      "command_id": "marker-tests",
+      "state": "implemented",
+      "source_path": "tests/test_marker_research.py",
+      "distinct_reason": "raster positive partition",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "4f9541218a0a0e9294e868a46fb4a176daae4a636999daa6c9971ba49f20ddce"
+    },
+    {
+      "id": "R3.P1.NEGATIVE",
+      "property_id": "R3.P1",
+      "polarity": "negative",
+      "scenario": "Audit actual image support",
+      "scenario_fingerprint": "a85bcf8a302f00fdf08809a199de3086a341878c7d4764cd956d7cc0b133a90a",
+      "setup": "Invoke actual new marker owner against literal independent partitions; reconcile saved actual evidence at completion.",
+      "observable": "Correct valid/invalid partition, exact scene/source/capture identities, explicit missing layer.",
+      "red_expectation": "Wrong geometry/evidence/catch or unsupported claim accepted.",
+      "green_expectation": "Honest raster evidence",
+      "invalidation_dependencies": [
+        "prototype/marker/**",
+        "prototype/features/core.js",
+        "prototype/features/renderer.js",
+        "prototype/features/text-bounds.js",
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "tests/test_marker_research.py"
+      ],
+      "test_id": "unittest::tests.test_marker_research.MarkerTest.test_raster_negative",
+      "command_id": "marker-tests",
+      "state": "implemented",
+      "source_path": "tests/test_marker_research.py",
+      "distinct_reason": "raster negative partition",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "4f9541218a0a0e9294e868a46fb4a176daae4a636999daa6c9971ba49f20ddce"
+    },
+    {
+      "id": "R4.P1.POSITIVE",
+      "property_id": "R4.P1",
+      "polarity": "positive",
+      "scenario": "Locate the launch place",
+      "scenario_fingerprint": "7c228c0c2091d3b23431291b54e915a41e9248ff7f4c63c4250a42d506efc40d",
+      "setup": "Invoke actual new marker owner against literal independent partitions; reconcile saved actual evidence at completion.",
+      "observable": "Correct valid/invalid partition, exact scene/source/capture identities, explicit missing layer.",
+      "red_expectation": "Wrong geometry/evidence/catch or unsupported claim accepted.",
+      "green_expectation": "Blind localization and meaning",
+      "invalidation_dependencies": [
+        "prototype/marker/**",
+        "prototype/features/core.js",
+        "prototype/features/renderer.js",
+        "prototype/features/text-bounds.js",
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "tests/test_marker_research.py"
+      ],
+      "test_id": "unittest::tests.test_marker_research.MarkerTest.test_localization_positive",
+      "command_id": "marker-tests",
+      "state": "implemented",
+      "source_path": "tests/test_marker_research.py",
+      "distinct_reason": "localization positive partition",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "4f9541218a0a0e9294e868a46fb4a176daae4a636999daa6c9971ba49f20ddce"
+    },
+    {
+      "id": "R4.P1.NEGATIVE",
+      "property_id": "R4.P1",
+      "polarity": "negative",
+      "scenario": "Locate the launch place",
+      "scenario_fingerprint": "7c228c0c2091d3b23431291b54e915a41e9248ff7f4c63c4250a42d506efc40d",
+      "setup": "Invoke actual new marker owner against literal independent partitions; reconcile saved actual evidence at completion.",
+      "observable": "Correct valid/invalid partition, exact scene/source/capture identities, explicit missing layer.",
+      "red_expectation": "Wrong geometry/evidence/catch or unsupported claim accepted.",
+      "green_expectation": "Blind localization and meaning",
+      "invalidation_dependencies": [
+        "prototype/marker/**",
+        "prototype/features/core.js",
+        "prototype/features/renderer.js",
+        "prototype/features/text-bounds.js",
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "tests/test_marker_research.py"
+      ],
+      "test_id": "unittest::tests.test_marker_research.MarkerTest.test_localization_negative",
+      "command_id": "marker-tests",
+      "state": "implemented",
+      "source_path": "tests/test_marker_research.py",
+      "distinct_reason": "localization negative partition",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "4f9541218a0a0e9294e868a46fb4a176daae4a636999daa6c9971ba49f20ddce"
+    },
+    {
+      "id": "R5.P1.POSITIVE",
+      "property_id": "R5.P1",
+      "polarity": "positive",
+      "scenario": "Accept a final selection",
+      "scenario_fingerprint": "6304281e77d93216f4f3b2c853226ff903e415fc348c7100d13ecfef0d12dd47",
+      "setup": "Invoke actual new marker owner against literal independent partitions; reconcile saved actual evidence at completion.",
+      "observable": "Correct valid/invalid partition, exact scene/source/capture identities, explicit missing layer.",
+      "red_expectation": "Wrong geometry/evidence/catch or unsupported claim accepted.",
+      "green_expectation": "Separate screening and fresh confirmation",
+      "invalidation_dependencies": [
+        "prototype/marker/**",
+        "prototype/features/core.js",
+        "prototype/features/renderer.js",
+        "prototype/features/text-bounds.js",
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "tests/test_marker_research.py"
+      ],
+      "test_id": "unittest::tests.test_marker_research.MarkerTest.test_qualification_positive",
+      "command_id": "marker-tests",
+      "state": "implemented",
+      "source_path": "tests/test_marker_research.py",
+      "distinct_reason": "qualification positive partition",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "4f9541218a0a0e9294e868a46fb4a176daae4a636999daa6c9971ba49f20ddce"
+    },
+    {
+      "id": "R5.P1.NEGATIVE",
+      "property_id": "R5.P1",
+      "polarity": "negative",
+      "scenario": "Accept a final selection",
+      "scenario_fingerprint": "6304281e77d93216f4f3b2c853226ff903e415fc348c7100d13ecfef0d12dd47",
+      "setup": "Invoke actual new marker owner against literal independent partitions; reconcile saved actual evidence at completion.",
+      "observable": "Correct valid/invalid partition, exact scene/source/capture identities, explicit missing layer.",
+      "red_expectation": "Wrong geometry/evidence/catch or unsupported claim accepted.",
+      "green_expectation": "Separate screening and fresh confirmation",
+      "invalidation_dependencies": [
+        "prototype/marker/**",
+        "prototype/features/core.js",
+        "prototype/features/renderer.js",
+        "prototype/features/text-bounds.js",
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "tests/test_marker_research.py"
+      ],
+      "test_id": "unittest::tests.test_marker_research.MarkerTest.test_qualification_negative",
+      "command_id": "marker-tests",
+      "state": "implemented",
+      "source_path": "tests/test_marker_research.py",
+      "distinct_reason": "qualification negative partition",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "4f9541218a0a0e9294e868a46fb4a176daae4a636999daa6c9971ba49f20ddce"
+    },
+    {
+      "id": "R6.P1.POSITIVE",
+      "property_id": "R6.P1",
+      "polarity": "positive",
+      "scenario": "Inspect the evidence boundary",
+      "scenario_fingerprint": "fac9f23d53091c3f1b4df3d563b54dd597042437cf3394846e83de4775033f9c",
+      "setup": "Invoke actual new marker owner against literal independent partitions; reconcile saved actual evidence at completion.",
+      "observable": "Correct valid/invalid partition, exact scene/source/capture identities, explicit missing layer.",
+      "red_expectation": "Wrong geometry/evidence/catch or unsupported claim accepted.",
+      "green_expectation": "Explicit bounds and durable progress",
+      "invalidation_dependencies": [
+        "prototype/marker/**",
+        "prototype/features/core.js",
+        "prototype/features/renderer.js",
+        "prototype/features/text-bounds.js",
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "tests/test_marker_research.py"
+      ],
+      "test_id": "unittest::tests.test_marker_research.MarkerTest.test_boundaries_positive",
+      "command_id": "marker-tests",
+      "state": "implemented",
+      "source_path": "tests/test_marker_research.py",
+      "distinct_reason": "boundaries positive partition",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "4f9541218a0a0e9294e868a46fb4a176daae4a636999daa6c9971ba49f20ddce"
+    },
+    {
+      "id": "R6.P1.NEGATIVE",
+      "property_id": "R6.P1",
+      "polarity": "negative",
+      "scenario": "Inspect the evidence boundary",
+      "scenario_fingerprint": "fac9f23d53091c3f1b4df3d563b54dd597042437cf3394846e83de4775033f9c",
+      "setup": "Invoke actual new marker owner against literal independent partitions; reconcile saved actual evidence at completion.",
+      "observable": "Correct valid/invalid partition, exact scene/source/capture identities, explicit missing layer.",
+      "red_expectation": "Wrong geometry/evidence/catch or unsupported claim accepted.",
+      "green_expectation": "Explicit bounds and durable progress",
+      "invalidation_dependencies": [
+        "prototype/marker/**",
+        "prototype/features/core.js",
+        "prototype/features/renderer.js",
+        "prototype/features/text-bounds.js",
+        "prototype/qualification/core.js",
+        "prototype/qualification/renderer.js",
+        "tests/test_marker_research.py"
+      ],
+      "test_id": "unittest::tests.test_marker_research.MarkerTest.test_boundaries_negative",
+      "command_id": "marker-tests",
+      "state": "implemented",
+      "source_path": "tests/test_marker_research.py",
+      "distinct_reason": "boundaries negative partition",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "4f9541218a0a0e9294e868a46fb4a176daae4a636999daa6c9971ba49f20ddce"
+    }
+  ],
+  "commands": [
+    {
+      "id": "marker-tests",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_marker_research"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 120,
+      "authority": "local"
+    }
+  ]
+}

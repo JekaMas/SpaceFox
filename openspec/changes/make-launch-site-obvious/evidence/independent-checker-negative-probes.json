@@ -1,0 +1,135 @@
+{
+  "method": "Independent checker negative discrimination; actual healthy baseline reused from retained G1 native audit. All interventions artifact-only, not new live/browser observations.",
+  "healthyBaseline": {
+    "receipt": "g1-native-independent-audit.json",
+    "trial": "M1-11:author-marker-hero:390",
+    "passed": true
+  },
+  "results": [
+    {
+      "name": "missing mandatory core reference",
+      "scope": "artifact-only deliberately corrupted data/images derived from actual healthy capture; not a live-DOM intervention",
+      "rejected": true,
+      "errors": [
+        "ValueError: missing mandatory component reference"
+      ]
+    },
+    {
+      "name": "reference self-edge clipping",
+      "scope": "artifact-only deliberately corrupted data/images derived from actual healthy capture; not a live-DOM intervention",
+      "rejected": true,
+      "errors": [
+        "ValueError: reference already clipped at own edge"
+      ]
+    },
+    {
+      "name": "opaque foreground covers complete glyph",
+      "scope": "artifact-only deliberately corrupted data/images derived from actual healthy capture; not a live-DOM intervention",
+      "rejected": true,
+      "errors": [
+        "clipped/occluded glyph",
+        "clipped/occluded core",
+        "clipped/occluded halo",
+        "full glyph clearance",
+        "insufficient core image evidence",
+        "insufficient halo image evidence"
+      ]
+    },
+    {
+      "name": "additional real rectangular geo clip removes core",
+      "scope": "artifact-only deliberately corrupted data/images derived from actual healthy capture; not a live-DOM intervention",
+      "rejected": true,
+      "errors": [
+        "clipped/occluded glyph",
+        "clipped/occluded core",
+        "clipped/occluded halo",
+        "full glyph clearance",
+        "insufficient core image evidence",
+        "insufficient halo image evidence"
+      ]
+    },
+    {
+      "name": "additional watch/circle clip removes marker",
+      "scope": "artifact-only deliberately corrupted data/images derived from actual healthy capture; not a live-DOM intervention",
+      "rejected": true,
+      "errors": [
+        "clipped/occluded glyph",
+        "clipped/occluded core",
+        "clipped/occluded halo",
+        "full glyph clearance",
+        "insufficient core image evidence",
+        "insufficient halo image evidence"
+      ]
+    },
+    {
+      "name": "tiny core",
+      "scope": "artifact-only deliberately corrupted data/images derived from actual healthy capture; not a live-DOM intervention",
+      "rejected": true,
+      "errors": [
+        "tiny core",
+        "core equivalent diameter",
+        "insufficient core image evidence"
+      ]
+    },
+    {
+      "name": "native ON substituted with low-contrast HIDE images",
+      "scope": "artifact-only deliberately corrupted data/images derived from actual healthy capture; not a live-DOM intervention",
+      "rejected": true,
+      "errors": [
+        "low local core contrast",
+        "weak actual core signal",
+        "low local halo contrast",
+        "weak actual halo signal"
+      ]
+    },
+    {
+      "name": "ON face pixel content shifted one physical pixel",
+      "scope": "artifact-only deliberately corrupted data/images derived from actual healthy capture; not a live-DOM intervention",
+      "rejected": true,
+      "errors": [
+        "unexplained off-ROI image change"
+      ]
+    },
+    {
+      "name": "non-marker descriptor changed",
+      "scope": "artifact-only deliberately corrupted data/images derived from actual healthy capture; not a live-DOM intervention",
+      "rejected": true,
+      "errors": [
+        "counterpart changed non-marker descriptors"
+      ]
+    },
+    {
+      "name": "mandatory occluder channel absent",
+      "scope": "artifact-only deliberately corrupted data/images derived from actual healthy capture; not a live-DOM intervention",
+      "rejected": true,
+      "errors": [
+        "ValueError: missing actual foreground container channel"
+      ]
+    },
+    {
+      "name": "NaN anchor",
+      "scope": "artifact-only deliberately corrupted data/images derived from actual healthy capture; not a live-DOM intervention",
+      "rejected": true,
+      "errors": [
+        "ValueError: invalid true site anchor"
+      ]
+    },
+    {
+      "name": "missing raster artifact",
+      "scope": "artifact-only deliberately corrupted data/images derived from actual healthy capture; not a live-DOM intervention",
+      "rejected": true,
+      "errors": [
+        "FileNotFoundError: [Errno 2] No such file or directory: '/private/tmp/spacefox-marker-round4-review/g1-adapted/objects/missing-file.png'"
+      ]
+    },
+    {
+      "name": "invented marker in actual no-coordinate scene",
+      "scope": "artifact-only deliberately corrupted data/images derived from actual healthy capture; not a live-DOM intervention",
+      "rejected": true,
+      "errors": [
+        "invented marker/reference for missing point"
+      ]
+    }
+  ],
+  "allMutantsRejected": true
+}
