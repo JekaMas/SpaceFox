@@ -65,6 +65,20 @@ header, not yet the complete new composition. Native glyph/AOD/device checks,
 all 36 locales and human glance readability remain open. See
 [96-state browser evidence and limits](../../../docs/FOCUS_LAYOUT.md).
 
+### Larger model graphics and origin marks
+
+The subsequent [rocket-pack browser proposal](../../../prototype/rocket-models/index.html)
+prepares five original model drawings plus generic art, origin flags and original
+company letter badges. Its active authored registry is assets/rocket-pack/registry.source.json;
+old feature-research schematics remain historical. SVG, transparent PNG candidates
+and decorated previews are generated through the documented pack build, not an
+active remote catalog delivery pipeline. Body flag mode follows the owner's
+choice: model origin by default or separately recorded operator country, never
+launch country. Ariane uses a European regional origin; Electron's simplified NZ
+family association and US operator-country mode remain distinct. Official logos
+are not included under a claimed MIT grant. The larger browser proposal must be
+checked against all14 scenes; native memory/AOD/device recognition remain open.
+
 ### Use a personal static feed, not an always-running backend
 
 Planned `watchface/` owns Monkey C rendering, settings, local countdowns and cache.

@@ -45,6 +45,18 @@ The default freely redistributable pack uses original schematics or assets with
 established compatible terms; do not silently include NC/ND/restricted photos.
 Rocket and company names identify subjects; SpaceFox does not claim their marks.
 
+## Original model/identity pack
+
+`assets/rocket-pack/` contains new SpaceFox schematics for Falcon9/FalconHeavy,
+Electron, Ariane62/Ariane64 and generic art; original SX/RL/AS letter badges;
+original vector code for US, NZ, French and European flags; generated PNGs.
+Those original files use MIT with the retained pack LICENSE. These are
+informational schematics, not copied reference photographs or official logos.
+The grant does not relicense company trademarks or assert endorsement. Regional
+European origin and operator-country metadata are kept distinct from launch-pad
+country. Asset provenance and sources are in registry.source.json and the linked
+rocket-model research ledger. Existing reference sites/brands retain their rights.
+
 ## Development tooling excluded from product packages
 
 `.agents/workflow` is a separately owned Git submodule at the recorded project pin.

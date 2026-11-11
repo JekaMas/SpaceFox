@@ -81,3 +81,15 @@ third-party rights remain separate.
 #### Scenario: Replace a rocket image
 - **WHEN** a maintainer proposes an image or frame-pack replacement
 - **THEN** compatible recorded rights and attribution are required before distribution, or the asset is rejected and the accepted schematic remains available
+
+### Requirement: Curated origin and independent operator marks
+
+Graphics MAY carry body origin/company marks. Origin SHALL use curated model or
+selected-operator provenance, never launch country or cross-mode fallback. Missing
+identity SHALL omit its mark; regions SHALL remain explicit. Readable model/operator
+labels SHALL remain. Official artwork SHALL retain separately established terms;
+original letter badges MAY substitute.
+
+#### Scenario: Origin differs from launch country
+- **WHEN** a rocket launches abroad or the user switches model-origin to operator-origin
+- **THEN** the body flag follows only the selected curated origin, the company mark follows only the supplied operator, the launch-site map stays unchanged, and absent selected provenance does not become a guessed national flag

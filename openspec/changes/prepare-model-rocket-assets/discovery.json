@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "change": "prepare-model-rocket-assets",
+  "scope": {
+    "property_ids": [
+      "R1.P1",
+      "R2.P1",
+      "R3.P1"
+    ],
+    "test_ids": [
+      "unittest::tests.test_rocket_pack.RocketPackTest.test_pack_positive",
+      "unittest::tests.test_rocket_pack.RocketPackTest.test_pack_negative",
+      "unittest::tests.test_rocket_pack.RocketPackTest.test_identity_positive",
+      "unittest::tests.test_rocket_pack.RocketPackTest.test_identity_negative",
+      "unittest::tests.test_rocket_pack.RocketPackTest.test_layout_positive",
+      "unittest::tests.test_rocket_pack.RocketPackTest.test_layout_negative"
+    ]
+  },
+  "reviews": [
+    {
+      "id": "D1",
+      "question": "Model pack and larger rocket decoration under accepted face constraints",
+      "property_ids": [
+        "R1.P1",
+        "R2.P1",
+        "R3.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_rocket_pack.RocketPackTest.test_pack_positive",
+        "unittest::tests.test_rocket_pack.RocketPackTest.test_pack_negative",
+        "unittest::tests.test_rocket_pack.RocketPackTest.test_identity_positive",
+        "unittest::tests.test_rocket_pack.RocketPackTest.test_identity_negative",
+        "unittest::tests.test_rocket_pack.RocketPackTest.test_layout_positive",
+        "unittest::tests.test_rocket_pack.RocketPackTest.test_layout_negative"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read countdown-status wrapper, existing rocket-catalog.json, launch-examples.json and visual-catalog spec.",
+          "outcome": "Wrap known current face; retain old frozen owners and a single new active asset registry.",
+          "results": [
+            {
+              "path": "prototype/countdown-status/countdown-status.js",
+              "line": 3,
+              "classification": "interface_dependency",
+              "reason": "Accepted current face and preserved countdown status."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Exact owners already known",
+          "reason": "No unknown code ownership.",
+          "outcome": "No semantic-search evidence claimed.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "New isolated asset wrapper over known source",
+          "reason": "No symbol navigation/refactor needed.",
+          "outcome": "No indexed evidence claimed.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "New asset/fit scope, previous source owners immutable."
+    }
+  ]
+}

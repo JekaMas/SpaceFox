@@ -1,0 +1,590 @@
+{
+  "schemaVersion": 1,
+  "version": "0.1.0",
+  "license": "MIT",
+  "creator": "SpaceFox contributors",
+  "description": "Original illustrative schematics and informational marks. Not exact engineering scale or mission paint; company badges are original letter labels, not official logos.",
+  "models": [
+    {
+      "id": "falcon-9",
+      "name": "Falcon 9",
+      "aliases": [
+        "Falcon 9",
+        "Falcon 9 Block 5"
+      ],
+      "kind": "specific",
+      "companyForAssetSheet": "spacex",
+      "exportSize": [
+        54,
+        124
+      ],
+      "bodyArea": [
+        20,
+        39,
+        24,
+        105
+      ],
+      "anchors": {
+        "country": [
+          20,
+          67,
+          24,
+          14
+        ],
+        "company": [
+          22,
+          88,
+          20,
+          49
+        ]
+      },
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "https://www.spacex.com/vehicles/falcon-9/"
+      ],
+      "originCode": "US",
+      "originSources": [
+        "https://new.spacex.com/mission"
+      ],
+      "svg": {
+        "path": "svg/falcon-9.svg",
+        "sha256": "1fe104a1c8fc764bca363db675e6e66ea0432c13d7c11724489d2b3daba66468"
+      },
+      "png": {
+        "path": "png/falcon-9.png",
+        "width": 54,
+        "height": 124,
+        "sha256": "0b775fed887fb7a83019dfb13773f4652ead61325b18a1c857ccbe185dbad84d"
+      },
+      "decoratedPreview": {
+        "svg": {
+          "path": "previews/falcon-9.svg",
+          "sha256": "95a417559e4a96396d8c7e4cb5563b7ea5c603b29940cdfac319ce7dc2602f5b"
+        },
+        "png": {
+          "path": "previews/falcon-9.png",
+          "sha256": "c5721c919e92a6606f83a96be748ba48e85f1b45cb25a9710d6a3733aab6a868"
+        }
+      }
+    },
+    {
+      "id": "falcon-heavy",
+      "name": "Falcon Heavy",
+      "aliases": [
+        "Falcon Heavy"
+      ],
+      "kind": "specific",
+      "companyForAssetSheet": "spacex",
+      "exportSize": [
+        54,
+        124
+      ],
+      "bodyArea": [
+        20,
+        39,
+        24,
+        105
+      ],
+      "anchors": {
+        "country": [
+          20,
+          67,
+          24,
+          14
+        ],
+        "company": [
+          22,
+          88,
+          20,
+          49
+        ]
+      },
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "https://www.spacex.com/vehicles/falcon-heavy/Falcon"
+      ],
+      "originCode": "US",
+      "originSources": [
+        "https://new.spacex.com/mission"
+      ],
+      "svg": {
+        "path": "svg/falcon-heavy.svg",
+        "sha256": "46f6fa978198ead0af07d45c5274f4901bb9c39510b8d52e0cd92e38445d1eea"
+      },
+      "png": {
+        "path": "png/falcon-heavy.png",
+        "width": 54,
+        "height": 124,
+        "sha256": "bb61c6873b120ed86f4bf8ff6baf119c6c2307e58c50c1b82169efb2a5120049"
+      },
+      "decoratedPreview": {
+        "svg": {
+          "path": "previews/falcon-heavy.svg",
+          "sha256": "9c1fcdedc555cf74110bac2f6e8444488487e385b57000d3646890514edeae84"
+        },
+        "png": {
+          "path": "previews/falcon-heavy.png",
+          "sha256": "95e2a2ee5ddab8264673813f8a4d8e624e2f7aea08c9ae10f3b00cb82cd9e347"
+        }
+      }
+    },
+    {
+      "id": "electron",
+      "name": "Electron",
+      "aliases": [
+        "Electron"
+      ],
+      "kind": "specific",
+      "companyForAssetSheet": "rocket-lab",
+      "exportSize": [
+        54,
+        124
+      ],
+      "bodyArea": [
+        20,
+        39,
+        24,
+        105
+      ],
+      "anchors": {
+        "country": [
+          20,
+          67,
+          24,
+          14
+        ],
+        "company": [
+          22,
+          88,
+          20,
+          49
+        ]
+      },
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "https://rocketlabcorp.com/launch/electron/"
+      ],
+      "originCode": "NZ",
+      "originSources": [
+        "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000013/rklb-20251231.htm"
+      ],
+      "svg": {
+        "path": "svg/electron.svg",
+        "sha256": "eac0dd34a9def28661c33cee4c040207514c74913cf0d0d93d6e2518dc9a5064"
+      },
+      "png": {
+        "path": "png/electron.png",
+        "width": 54,
+        "height": 124,
+        "sha256": "0f2e53cd2a8104f55ce3d64cec92720b5099424adebbc80fe5fb116e497478e8"
+      },
+      "decoratedPreview": {
+        "svg": {
+          "path": "previews/electron.svg",
+          "sha256": "5d5260923b5a6ab4f3d9bd15c0c2540b50ba21bd214851a2aadebc6e05c488d5"
+        },
+        "png": {
+          "path": "previews/electron.png",
+          "sha256": "7177195e774a2d426aacdaad05178a9ba893727714316efec2ea23b20ec8b76d"
+        }
+      }
+    },
+    {
+      "id": "ariane-62",
+      "name": "Ariane 62",
+      "aliases": [
+        "Ariane 62",
+        "Ariane 6 2"
+      ],
+      "kind": "specific",
+      "companyForAssetSheet": "arianespace",
+      "exportSize": [
+        54,
+        124
+      ],
+      "bodyArea": [
+        20,
+        39,
+        24,
+        105
+      ],
+      "anchors": {
+        "country": [
+          20,
+          67,
+          24,
+          14
+        ],
+        "company": [
+          22,
+          88,
+          20,
+          49
+        ]
+      },
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "https://www.esa.int/ESA_Multimedia/Images/2017/01/Artist_s_view_of_both_Ariane_6_booster_configurations"
+      ],
+      "originCode": "EUROPE",
+      "originSources": [
+        "https://www.arianespace.com/profil-in-short/"
+      ],
+      "svg": {
+        "path": "svg/ariane-62.svg",
+        "sha256": "16f4f0c3dd7919cefb01d4354e448d769a38517bedc611f8d417d7c0389db417"
+      },
+      "png": {
+        "path": "png/ariane-62.png",
+        "width": 54,
+        "height": 124,
+        "sha256": "0495d60f857b98fd31965eab793722b96c2508b900ff0a09e887426cb128aff8"
+      },
+      "decoratedPreview": {
+        "svg": {
+          "path": "previews/ariane-62.svg",
+          "sha256": "81bc8316817e7e1e412c604021e453ee0467cea210d6b8b79fd476f0c6c3e4ae"
+        },
+        "png": {
+          "path": "previews/ariane-62.png",
+          "sha256": "aea9c8fa38f3ecd372a78aba6f94a6ea104868a59a71409ff1791ffb568631e3"
+        }
+      }
+    },
+    {
+      "id": "ariane-64",
+      "name": "Ariane 64",
+      "aliases": [
+        "Ariane 64",
+        "Ariane 6 4"
+      ],
+      "kind": "specific",
+      "companyForAssetSheet": "arianespace",
+      "exportSize": [
+        54,
+        124
+      ],
+      "bodyArea": [
+        20,
+        39,
+        24,
+        105
+      ],
+      "anchors": {
+        "country": [
+          20,
+          67,
+          24,
+          14
+        ],
+        "company": [
+          22,
+          88,
+          20,
+          49
+        ]
+      },
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "https://www.esa.int/ESA_Multimedia/Images/2017/01/Artist_s_view_of_both_Ariane_6_booster_configurations"
+      ],
+      "originCode": "EUROPE",
+      "originSources": [
+        "https://www.arianespace.com/profil-in-short/"
+      ],
+      "svg": {
+        "path": "svg/ariane-64.svg",
+        "sha256": "f0bad5c529689f705a6ba76e913ab9c5acfacfc2efb96c00e31ca6d0e97237ca"
+      },
+      "png": {
+        "path": "png/ariane-64.png",
+        "width": 54,
+        "height": 124,
+        "sha256": "877bca13c06108267ce76065346749d50ed07cc7dd8ba5ec3ee49fbc8b1a2047"
+      },
+      "decoratedPreview": {
+        "svg": {
+          "path": "previews/ariane-64.svg",
+          "sha256": "22973fba9e6a58042c8015860e21d79676a6b17037d7617abd20dd0f25d34cf4"
+        },
+        "png": {
+          "path": "previews/ariane-64.png",
+          "sha256": "689b8486b747ad98291e4a450072b9d8ecd1f2c7f22d91515c57c2e0bef2d1c8"
+        }
+      }
+    },
+    {
+      "id": "generic",
+      "name": "Неизвестная модель",
+      "aliases": [],
+      "kind": "generic",
+      "companyForAssetSheet": null,
+      "exportSize": [
+        54,
+        124
+      ],
+      "bodyArea": [
+        20,
+        39,
+        24,
+        105
+      ],
+      "anchors": {
+        "country": [
+          20,
+          67,
+          24,
+          14
+        ],
+        "company": [
+          22,
+          88,
+          20,
+          49
+        ]
+      },
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "Original SpaceFox fallback"
+      ],
+      "originCode": null,
+      "originSources": [],
+      "svg": {
+        "path": "svg/generic.svg",
+        "sha256": "ffb15ee10a1d3abfd56c4fb23f7024694c2124106a81a52cc1598e7e95d255b5"
+      },
+      "png": {
+        "path": "png/generic.png",
+        "width": 54,
+        "height": 124,
+        "sha256": "6d588de0015e248ecf8375e07fb785f7d14314724c836a8283b782824ba4460d"
+      },
+      "decoratedPreview": {
+        "svg": {
+          "path": "previews/generic.svg",
+          "sha256": "6137c9027ce634e190f93d0be6461e4e9f94412c3cd8d96de37c2603669bd618"
+        },
+        "png": {
+          "path": "previews/generic.png",
+          "sha256": "6d588de0015e248ecf8375e07fb785f7d14314724c836a8283b782824ba4460d"
+        }
+      }
+    }
+  ],
+  "companies": [
+    {
+      "id": "company-spacex",
+      "companyId": "spacex",
+      "name": "SpaceX",
+      "aliases": [
+        "SpaceX"
+      ],
+      "kind": "original-letter-badge",
+      "exportSize": [
+        20,
+        38
+      ],
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "Original SpaceFox vector letter badge; not official logo"
+      ],
+      "originCode": "US",
+      "originSources": [
+        "https://new.spacex.com/mission"
+      ],
+      "svg": {
+        "path": "svg/company-spacex.svg",
+        "sha256": "525901be0012a7880aa8430c40922a0da0441daf7a67f17dc2a6df8d401e45d6"
+      },
+      "png": {
+        "path": "png/company-spacex.png",
+        "width": 20,
+        "height": 38,
+        "sha256": "6880c4c75aacc7f35d2c49f871ca284212df16a6c289b72ced205a63195c1041"
+      }
+    },
+    {
+      "id": "company-rocket-lab",
+      "companyId": "rocket-lab",
+      "name": "Rocket Lab",
+      "aliases": [
+        "Rocket Lab",
+        "Rocket Lab Ltd"
+      ],
+      "kind": "original-letter-badge",
+      "exportSize": [
+        20,
+        38
+      ],
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "Original SpaceFox vector letter badge; not official logo"
+      ],
+      "originCode": "US",
+      "originSources": [
+        "https://investors.rocketlabcorp.com/resources/investor-faqs"
+      ],
+      "svg": {
+        "path": "svg/company-rocket-lab.svg",
+        "sha256": "92049e19f01bac80d40167c59c69073aada7aaef3fcf4e12cf4b2ab52a87ddd8"
+      },
+      "png": {
+        "path": "png/company-rocket-lab.png",
+        "width": 20,
+        "height": 38,
+        "sha256": "d599d1a018392f9eaf3cd091cf6428f926550f83b6763c4fe225caafa2aad1d7"
+      }
+    },
+    {
+      "id": "company-arianespace",
+      "companyId": "arianespace",
+      "name": "Arianespace",
+      "aliases": [
+        "Arianespace"
+      ],
+      "kind": "original-letter-badge",
+      "exportSize": [
+        20,
+        38
+      ],
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "Original SpaceFox vector letter badge; not official logo"
+      ],
+      "originCode": "FR",
+      "originSources": [
+        "https://www.arianespace.com/profil-in-short/"
+      ],
+      "svg": {
+        "path": "svg/company-arianespace.svg",
+        "sha256": "eb0e3fa170a4af83cbf28373165dae73477516d768bcbb12331082aa1d74e4f4"
+      },
+      "png": {
+        "path": "png/company-arianespace.png",
+        "width": 20,
+        "height": 38,
+        "sha256": "5e9340dd1bac3e859077e77fa09ce3c434c03032d5cee4e2df79c15461e35506"
+      }
+    }
+  ],
+  "countries": [
+    {
+      "id": "flag-us",
+      "name": "США",
+      "codes": [
+        "US"
+      ],
+      "exportSize": [
+        20,
+        12
+      ],
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "Original SpaceFox simplified national flag vector"
+      ],
+      "svg": {
+        "path": "svg/flag-us.svg",
+        "sha256": "e2458a055981767e169bef75d19ba7aa8c4f092541ba92ba97ad6222bb35d57d"
+      },
+      "png": {
+        "path": "png/flag-us.png",
+        "width": 20,
+        "height": 12,
+        "sha256": "d29721724aec8e7df9389862a0b6a7a57d7973f5ee916978350bcf1de9f8983a"
+      }
+    },
+    {
+      "id": "flag-nz",
+      "name": "Новая Зеландия",
+      "codes": [
+        "NZ"
+      ],
+      "exportSize": [
+        20,
+        12
+      ],
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "Original SpaceFox simplified national flag vector"
+      ],
+      "svg": {
+        "path": "svg/flag-nz.svg",
+        "sha256": "1251029fb32c23b94b859720ebb3f6b53e85a3c720f956b1db661b3edea4386b"
+      },
+      "png": {
+        "path": "png/flag-nz.png",
+        "width": 20,
+        "height": 12,
+        "sha256": "ed23889a07f5d20f0f238b7247769c20103af8b25dc4120084120f544c0c7030"
+      }
+    },
+    {
+      "id": "flag-fr",
+      "name": "Франция / Французская Гвиана",
+      "codes": [
+        "FR",
+        "GF"
+      ],
+      "exportSize": [
+        20,
+        12
+      ],
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "Original SpaceFox simplified national flag vector"
+      ],
+      "svg": {
+        "path": "svg/flag-fr.svg",
+        "sha256": "106a2a60f9bf7dd72e09dc2e4e8c1d95ba33e66990306d6ceb09ec31c77778a0"
+      },
+      "png": {
+        "path": "png/flag-fr.png",
+        "width": 20,
+        "height": 12,
+        "sha256": "7e200ed3f7e7755298fcde275dfb7f8fb90f10b513b6980b38818dc1a2b4efa3"
+      }
+    },
+    {
+      "id": "flag-europe",
+      "name": "Европа · международная программа",
+      "codes": [
+        "EUROPE"
+      ],
+      "kind": "regional-origin",
+      "exportSize": [
+        20,
+        12
+      ],
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "Original SpaceFox flag vector; https://www.coe.int/en/web/about-us/the-european-flag"
+      ],
+      "svg": {
+        "path": "svg/flag-europe.svg",
+        "sha256": "0c5410d49cae275cc75179958020f3ad385a62f657511e8eb8c98f5c4d2acbee"
+      },
+      "png": {
+        "path": "png/flag-europe.png",
+        "width": 20,
+        "height": 12,
+        "sha256": "77467c94175de8a66b3435d91f5c4a93201e1e28bee3228af06ac6dcb7d77da4"
+      }
+    }
+  ],
+  "originMeaning": "Curated model-origin association or operator-country record; never launch country.",
+  "sourceSHA256": "2cda78bb37a875d3ba50453a1d8d81bcb06f7653f60338206442f303628e3567",
+  "rasterizationSHA256": "24599040b40f474158e2a39e0f7c8f5896ef10dd568990231319fe2dc40dc5e4"
+}

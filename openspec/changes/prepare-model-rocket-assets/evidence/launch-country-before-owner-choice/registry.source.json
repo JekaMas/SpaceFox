@@ -1,0 +1,358 @@
+{
+  "schemaVersion": 1,
+  "version": "0.1.0",
+  "license": "MIT",
+  "creator": "SpaceFox contributors",
+  "description": "Original illustrative schematics and informational marks. Not exact engineering scale or mission paint; company badges are original letter labels, not official logos.",
+  "models": [
+    {
+      "id": "falcon-9",
+      "name": "Falcon 9",
+      "aliases": [
+        "Falcon 9",
+        "Falcon 9 Block 5"
+      ],
+      "kind": "specific",
+      "companyForAssetSheet": "spacex",
+      "file": "svg/falcon-9.svg",
+      "exportSize": [
+        54,
+        124
+      ],
+      "bodyArea": [
+        20,
+        39,
+        24,
+        105
+      ],
+      "anchors": {
+        "country": [
+          20,
+          67,
+          24,
+          14
+        ],
+        "company": [
+          22,
+          88,
+          20,
+          49
+        ]
+      },
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "https://www.spacex.com/vehicles/falcon-9/"
+      ]
+    },
+    {
+      "id": "falcon-heavy",
+      "name": "Falcon Heavy",
+      "aliases": [
+        "Falcon Heavy"
+      ],
+      "kind": "specific",
+      "companyForAssetSheet": "spacex",
+      "file": "svg/falcon-heavy.svg",
+      "exportSize": [
+        54,
+        124
+      ],
+      "bodyArea": [
+        20,
+        39,
+        24,
+        105
+      ],
+      "anchors": {
+        "country": [
+          20,
+          67,
+          24,
+          14
+        ],
+        "company": [
+          22,
+          88,
+          20,
+          49
+        ]
+      },
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "https://www.spacex.com/vehicles/falcon-heavy/Falcon"
+      ]
+    },
+    {
+      "id": "electron",
+      "name": "Electron",
+      "aliases": [
+        "Electron"
+      ],
+      "kind": "specific",
+      "companyForAssetSheet": "rocket-lab",
+      "file": "svg/electron.svg",
+      "exportSize": [
+        54,
+        124
+      ],
+      "bodyArea": [
+        20,
+        39,
+        24,
+        105
+      ],
+      "anchors": {
+        "country": [
+          20,
+          67,
+          24,
+          14
+        ],
+        "company": [
+          22,
+          88,
+          20,
+          49
+        ]
+      },
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "https://rocketlabcorp.com/launch/electron/"
+      ]
+    },
+    {
+      "id": "ariane-62",
+      "name": "Ariane 62",
+      "aliases": [
+        "Ariane 62",
+        "Ariane 6 2"
+      ],
+      "kind": "specific",
+      "companyForAssetSheet": "arianespace",
+      "file": "svg/ariane-62.svg",
+      "exportSize": [
+        54,
+        124
+      ],
+      "bodyArea": [
+        20,
+        39,
+        24,
+        105
+      ],
+      "anchors": {
+        "country": [
+          20,
+          67,
+          24,
+          14
+        ],
+        "company": [
+          22,
+          88,
+          20,
+          49
+        ]
+      },
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "https://www.esa.int/ESA_Multimedia/Images/2017/01/Artist_s_view_of_both_Ariane_6_booster_configurations"
+      ]
+    },
+    {
+      "id": "ariane-64",
+      "name": "Ariane 64",
+      "aliases": [
+        "Ariane 64",
+        "Ariane 6 4"
+      ],
+      "kind": "specific",
+      "companyForAssetSheet": "arianespace",
+      "file": "svg/ariane-64.svg",
+      "exportSize": [
+        54,
+        124
+      ],
+      "bodyArea": [
+        20,
+        39,
+        24,
+        105
+      ],
+      "anchors": {
+        "country": [
+          20,
+          67,
+          24,
+          14
+        ],
+        "company": [
+          22,
+          88,
+          20,
+          49
+        ]
+      },
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "https://www.esa.int/ESA_Multimedia/Images/2017/01/Artist_s_view_of_both_Ariane_6_booster_configurations"
+      ]
+    },
+    {
+      "id": "generic",
+      "name": "Неизвестная модель",
+      "aliases": [],
+      "kind": "generic",
+      "companyForAssetSheet": null,
+      "file": "svg/generic.svg",
+      "exportSize": [
+        54,
+        124
+      ],
+      "bodyArea": [
+        20,
+        39,
+        24,
+        105
+      ],
+      "anchors": {
+        "country": [
+          20,
+          67,
+          24,
+          14
+        ],
+        "company": [
+          22,
+          88,
+          20,
+          49
+        ]
+      },
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "Original SpaceFox fallback"
+      ]
+    }
+  ],
+  "companies": [
+    {
+      "id": "company-spacex",
+      "companyId": "spacex",
+      "name": "SpaceX",
+      "aliases": [
+        "SpaceX"
+      ],
+      "kind": "original-letter-badge",
+      "file": "svg/company-spacex.svg",
+      "exportSize": [
+        20,
+        38
+      ],
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "Original SpaceFox vector letter badge; not official logo"
+      ]
+    },
+    {
+      "id": "company-rocket-lab",
+      "companyId": "rocket-lab",
+      "name": "Rocket Lab",
+      "aliases": [
+        "Rocket Lab",
+        "Rocket Lab Ltd"
+      ],
+      "kind": "original-letter-badge",
+      "file": "svg/company-rocket-lab.svg",
+      "exportSize": [
+        20,
+        38
+      ],
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "Original SpaceFox vector letter badge; not official logo"
+      ]
+    },
+    {
+      "id": "company-arianespace",
+      "companyId": "arianespace",
+      "name": "Arianespace",
+      "aliases": [
+        "Arianespace"
+      ],
+      "kind": "original-letter-badge",
+      "file": "svg/company-arianespace.svg",
+      "exportSize": [
+        20,
+        38
+      ],
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "Original SpaceFox vector letter badge; not official logo"
+      ]
+    }
+  ],
+  "countries": [
+    {
+      "id": "flag-us",
+      "name": "США",
+      "codes": [
+        "US"
+      ],
+      "file": "svg/flag-us.svg",
+      "exportSize": [
+        20,
+        12
+      ],
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "Original SpaceFox simplified national flag vector"
+      ]
+    },
+    {
+      "id": "flag-nz",
+      "name": "Новая Зеландия",
+      "codes": [
+        "NZ"
+      ],
+      "file": "svg/flag-nz.svg",
+      "exportSize": [
+        20,
+        12
+      ],
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "Original SpaceFox simplified national flag vector"
+      ]
+    },
+    {
+      "id": "flag-fr",
+      "name": "Франция / Французская Гвиана",
+      "codes": [
+        "FR",
+        "GF"
+      ],
+      "file": "svg/flag-fr.svg",
+      "exportSize": [
+        20,
+        12
+      ],
+      "creator": "SpaceFox contributors",
+      "license": "MIT",
+      "sources": [
+        "Original SpaceFox simplified national flag vector"
+      ]
+    }
+  ]
+}
