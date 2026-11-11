@@ -1,0 +1,48 @@
+{
+  "manifest_sha256": "d25bc3ec69af059f6b7742339023c7c775cc0cd9d7c4f6466d4e8e34dbab0879",
+  "sourceBehaviorReceipt": "verification-final.json",
+  "currentCases": {
+    "R1.P1.NEGATIVE": {
+      "status": "passed",
+      "evidenceFingerprint": "623a0142163f80dd1eda4a078689e02173613c0fce94b7fe02bc3286b8f394f1"
+    },
+    "R1.P1.POSITIVE": {
+      "status": "passed",
+      "evidenceFingerprint": "c8d990e16282721f93d2e1cebadf836348c5b93cb3a23d087b0319d695c4a04a"
+    },
+    "R2.P1.NEGATIVE": {
+      "status": "passed",
+      "evidenceFingerprint": "3a7cb414923d40d6b46fe23646593d504dfbf9e5a743f97207b2084e95941e57"
+    },
+    "R2.P1.POSITIVE": {
+      "status": "passed",
+      "evidenceFingerprint": "c6a2af8bcbf86adfbde3591c070969a2174cba3e8fd2bea845920a3dc3f83ec3"
+    },
+    "R3.P1.NEGATIVE": {
+      "status": "passed",
+      "evidenceFingerprint": "e34456d2022a7b782e4bc4e195208fb768910e01f57386c378fb7767d77ab85d"
+    },
+    "R3.P1.POSITIVE": {
+      "status": "passed",
+      "evidenceFingerprint": "ae7fccaf63761ef2391d1276b7ba7a9bda43bd4dfefb45f9adb92eb844ed4748"
+    },
+    "R4.P1.NEGATIVE": {
+      "status": "passed",
+      "evidenceFingerprint": "6882586b73e2d651bc5dbbdc3a1a43f8960114973e7ec651a560eee62b2ce1cd"
+    },
+    "R4.P1.POSITIVE": {
+      "status": "passed",
+      "evidenceFingerprint": "ab7ffdcce9fc3ead5232b4fae5aa7d0e4f2a9f801e07189754722e5aa8681257"
+    },
+    "R5.P1.NEGATIVE": {
+      "status": "passed",
+      "evidenceFingerprint": "12464ca84331d2cf585e4e3a05b949180c40eb6ceb85d517158df8b121ed0668"
+    },
+    "R5.P1.POSITIVE": {
+      "status": "passed",
+      "evidenceFingerprint": "7307db13539b9c01aded329cd248444fce8fb6cf39ae0d9602eabfca324f2f14"
+    }
+  },
+  "reexecuted": false,
+  "reason": "Only publication/progress/log closure changed since the clean-source behavioral receipt."
+}
