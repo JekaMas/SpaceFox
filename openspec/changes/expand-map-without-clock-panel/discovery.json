@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "change": "expand-map-without-clock-panel",
+  "scope": {
+    "property_ids": [
+      "R1.P1",
+      "R2.P1",
+      "R3.P1"
+    ],
+    "test_ids": [
+      "unittest::tests.test_wide_map.WideMapTest.test_information_positive",
+      "unittest::tests.test_wide_map.WideMapTest.test_information_negative",
+      "unittest::tests.test_wide_map.WideMapTest.test_geography_positive",
+      "unittest::tests.test_wide_map.WideMapTest.test_geography_negative",
+      "unittest::tests.test_wide_map.WideMapTest.test_outline_positive",
+      "unittest::tests.test_wide_map.WideMapTest.test_outline_negative"
+    ]
+  },
+  "reviews": [
+    {
+      "id": "D1",
+      "question": "Panel-free wide map with preserved text and bounded outline evidence",
+      "property_ids": [
+        "R1.P1",
+        "R2.P1",
+        "R3.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_wide_map.WideMapTest.test_information_positive",
+        "unittest::tests.test_wide_map.WideMapTest.test_information_negative",
+        "unittest::tests.test_wide_map.WideMapTest.test_geography_positive",
+        "unittest::tests.test_wide_map.WideMapTest.test_geography_negative",
+        "unittest::tests.test_wide_map.WideMapTest.test_outline_positive",
+        "unittest::tests.test_wide_map.WideMapTest.test_outline_negative"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read focus finish/text masks, current rocket renderer and CM v3 raster/contrast implementation.",
+          "outcome": "New sibling finish removes inherited masks; old raster threshold cannot measure faint wide-map exposure.",
+          "results": [
+            {
+              "path": "prototype/focus/renderer.js",
+              "line": 25,
+              "classification": "interface_dependency",
+              "reason": "Existing text-sized map mask owner."
+            },
+            {
+              "path": "prototype/composition/metrics.js",
+              "line": 9,
+              "classification": "interface_dependency",
+              "reason": "Retained geometry/raw-contrast metric boundary."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Exact rendering owners already identified",
+          "reason": "No unknown subsystem ownership.",
+          "outcome": "No semantic-search claim.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "New wrapper over known renderers",
+          "reason": "No IDE symbol/refactor needed.",
+          "outcome": "No indexed claim.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "Separate map-only owner, retained old source and green receipts."
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+MIT. Superseded first84-state browser export. Source renderer changed after this observation: site label moved2px up to reserve its new0.5px contour inside radius191. Audit also corrected a false1px padding on the unshadowed rocket-art SVG. Half-width missed the20% clock exposure target (13.69% minimum). No green receipt from this iteration is reused.

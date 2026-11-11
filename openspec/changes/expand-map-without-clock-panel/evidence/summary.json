@@ -1,0 +1,123 @@
+{
+  "variants": [
+    {
+      "id": "half",
+      "window": [
+        195,
+        45,
+        195,
+        280
+      ],
+      "failures": [],
+      "exposure_target": false,
+      "clock_exposure_min": 0.13694457716196848,
+      "clock_exposure_hero": 0.13694457716196848,
+      "visible_area_hero": 0.2621316443381781,
+      "raw_contrast_min": 4.7553024804553
+    },
+    {
+      "id": "two-thirds",
+      "window": [
+        130,
+        0,
+        260,
+        390
+      ],
+      "failures": [],
+      "exposure_target": true,
+      "clock_exposure_min": 0.38115145723841376,
+      "clock_exposure_hero": 0.38150979455327283,
+      "visible_area_hero": 0.45466622375243676,
+      "raw_contrast_min": 3.1272712258909108
+    },
+    {
+      "id": "wide-band",
+      "window": [
+        0,
+        65,
+        390,
+        260
+      ],
+      "failures": [],
+      "exposure_target": true,
+      "clock_exposure_min": 0.7050883898709985,
+      "clock_exposure_hero": 0.7078953655040612,
+      "visible_area_hero": 0.4909715485750298,
+      "raw_contrast_min": 3.079767202162562
+    },
+    {
+      "id": "full",
+      "window": [
+        0,
+        0,
+        390,
+        390
+      ],
+      "failures": [],
+      "exposure_target": true,
+      "clock_exposure_min": 0.7365623506927855,
+      "clock_exposure_hero": 0.7385332059245103,
+      "visible_area_hero": 0.639181319380658,
+      "raw_contrast_min": 3.359802258962326
+    },
+    {
+      "id": "radial",
+      "window": [
+        0,
+        0,
+        390,
+        390
+      ],
+      "failures": [],
+      "exposure_target": true,
+      "clock_exposure_min": 1,
+      "clock_exposure_hero": 1,
+      "visible_area_hero": 0.8910835178038699,
+      "raw_contrast_min": 1.825262894931296
+    },
+    {
+      "id": "hemisphere",
+      "window": [
+        0,
+        0,
+        390,
+        390
+      ],
+      "failures": [],
+      "exposure_target": true,
+      "clock_exposure_min": 0.35845676063067367,
+      "clock_exposure_hero": 0.4062350692785475,
+      "visible_area_hero": 0.3635555123461415,
+      "raw_contrast_min": 1.8528230607347076
+    }
+  ],
+  "control_exposure": {
+    "method": "Live SVG geography raster, marker removed, all alpha composited over black and round clipped; potential background signal, not exposed text pixels or screen photometry.",
+    "window": {
+      "x": 220,
+      "y": 30,
+      "w": 158,
+      "h": 190
+    },
+    "visibleAreaFraction": 0.14221608563777569,
+    "visibleReach": {
+      "minX": 229,
+      "maxX": 377,
+      "minY": 30,
+      "maxY": 219
+    },
+    "meanMapY": 0.010807718336201092,
+    "clock": {
+      "area": 16744,
+      "potentialFraction": 0,
+      "meanY": 5.440121564821793e-06,
+      "maxY": 0.001655611856835249
+    },
+    "rawTextMapContrast": [],
+    "thresholds": {
+      "reachY": 0.002,
+      "clockY": 0.004
+    }
+  },
+  "scope": "Browser DOM/SVG diagnostics and composited potential map background; nominal fill/contour contrast is not measured glyph halo coverage, human/native/AOD/power or WCAG conformance."
+}

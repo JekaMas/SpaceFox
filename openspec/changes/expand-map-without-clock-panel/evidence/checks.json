@@ -1,0 +1,16 @@
+{
+  "scope": "Local artifact/source checks; not native/human acceptance",
+  "observed": [
+    "openspec validate expand-map-without-clock-panel --strict --json: passed",
+    "openspec validate spacefox-watchface --strict --json: passed",
+    "requirement_tests validate: passed",
+    "discovery_ledger: passed",
+    "node --check renderer.js/exposure.js/review.js: passed"
+  ],
+  "jsSHA256": {
+    "prototype/wide-map/exposure.js": "bf33d0b51007db9bf5c5bf1256a2937480d3f10f13f22e3faf3ae79c1949fa48",
+    "prototype/wide-map/renderer.js": "e0b22f02839087019874daaec25bfd8ff3cc194036f3dc6fb813887b9b83b5ab",
+    "prototype/wide-map/review.js": "1551d18a9d77faa62649cb1dd67df62337e0a103bbf72d036a846aabc4a8d93d"
+  },
+  "manifestSHA256": "012e3847fd63dc4a0a5e024388e2f650df7039082a23b0d2412aa3178b46b0ef"
+}

@@ -1,0 +1,11 @@
+{
+  "selected":"two-thirds",
+  "variants":[
+    {"id":"half","name":"01 · Половина ширины","box":[195,45,195,280],"projection":"map","scale":112,"fade":"linear","opacity":1},
+    {"id":"two-thirds","name":"02 · ⅔ ширины, вся высота","box":[130,0,260,390],"projection":"map","scale":130,"fade":"linear","opacity":1},
+    {"id":"wide-band","name":"03 · Вся ширина, полоса","box":[0,65,390,260],"projection":"map","scale":140,"fade":"linear","opacity":0.9},
+    {"id":"full","name":"04 · Весь экран","box":[0,0,390,390],"projection":"map","scale":145,"fade":"linear","opacity":0.85},
+    {"id":"radial","name":"05 · Весь экран, радиальное затухание","box":[0,0,390,390],"projection":"map","scale":145,"fade":"radial","opacity":0.95},
+    {"id":"hemisphere","name":"06 · Большое полушарие","box":[0,0,390,390],"projection":"globe","scale":205,"fade":"radial","opacity":0.95,"longitudeOffset":25,"latitudeOffset":10}
+  ]
+}

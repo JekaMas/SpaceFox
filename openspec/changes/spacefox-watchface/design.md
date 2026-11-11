@@ -79,6 +79,16 @@ family association and US operator-country mode remain distinct. Official logos
 are not included under a claimed MIT grant. The larger browser proposal must be
 checked against all14 scenes; native memory/AOD/device recognition remain open.
 
+### Wider geography without text-sized map holes
+
+The later [panel-free wide-map comparison](../../../prototype/wide-map/index.html)
+removes text-sized map cutouts and uses dark glyph contours over broad geometric
+fades. It compares195/260/390px widths and heights up to390px while retaining
+the124px rocket,32px field values and actual unfaded source pin. The site label
+moves2px up to reserve its contour. These are browser proposals, not an owner
+selection or a native draw/memory/power qualification. See
+[84-state evidence, tradeoffs and limits](../../../docs/WIDE_MAP.md).
+
 ### Use a personal static feed, not an always-running backend
 
 Planned `watchface/` owns Monkey C rendering, settings, local countdowns and cache.

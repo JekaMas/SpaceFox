@@ -1,0 +1,3 @@
+/* SPDX-License-Identifier: MIT */
+@import url('../focus/style.css');
+#gallery{grid-template-columns:repeat(3,402px);gap:8px}.single #gallery{grid-template-columns:402px}#gallery .card h2{font-size:13px;line-height:18px;height:22px}.preview{width:390px;height:390px}.preview .face{transform:none}#bed .face{transform:none!important}.toolbar label{font-size:12px;align-self:center}.note a{white-space:nowrap}
