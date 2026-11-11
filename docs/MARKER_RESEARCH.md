@@ -1,6 +1,6 @@
 # SpaceFox: заметное место старта
 
-Раунд 2026-11-11. Исследовательская проверка завершена; публикация подготавливается. [Прогресс](../openspec/changes/make-launch-site-obvious/PROGRESS.md) и [OpenSpec](../openspec/changes/make-launch-site-obvious/specs/marker-ergonomics/spec.md) — канонические ссылки.
+Раунд 2026-11-11. Исследовательская проверка завершена. Исходники, OpenSpec и результаты [опубликованы под MIT](https://github.com/JekaMas/SpaceFox/commit/33e0a62ddc3b75c0da93e82cced703d797b00da7). [Прогресс](../openspec/changes/make-launch-site-obvious/PROGRESS.md) и [OpenSpec](../openspec/changes/make-launch-site-obvious/specs/marker-ergonomics/spec.md) — канонические ссылки.
 
 ## Что было недостаточно в прежней проверке
 

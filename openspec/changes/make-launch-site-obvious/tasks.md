@@ -4,11 +4,7 @@
 - [x] Generation1: research,30hypotheses+5oldcontrols,measure/cull/independentlocalization,record accepted parents.
 - [x] Generation2: targeted new research,20context/position hypotheses,measure/cull/localization,freeze screening and record parents.
 - [x] Generation3: targeted new research,10refinements,measure/cull/localization,freeze five and apply unopened confirmation.
-- [ ] Resolve independent findings, reconcile actual layers/checks, publish MITsource/spec/evidence and completed progress.
+- [x] Resolve independent findings, reconcile actual layers/checks, publish MITsource/spec/evidence and completed progress.
 
 ## Resume
-RepositorySpaceFox; authoring6f8cddd/public2559588 before this change, workingtreeclean.
-UserfindslaunchpointonlyTicket/Relay. Old280experiment unchanged. New module
-prototype/marker. Reviewer packets /tmp/spacefox-marker-round4-review: do NOT
-open screen24/confirm24/privatepreparation until respective source+IDfreezes.
-Canonical progress PROGRESS.md. No native/install/paid services.
+Completed2026-11-11: threegenerations, exactfive acceptedwithinbrowserbounds, allfreshnative/sourcechecks andtwoimagecontexts, plusseparategeographycoverage. Publicsource commit33e0a62ddc3b75c0da93e82cced703d797b00da7 verifiedviaGitremoteandGitHubconnector; followuppublicationreceiptisdocumentationonly. See PROGRESS.md and evidence/RESULTS.json/final-review.md. No Garmin SDK/native/livefeed/humanproof. Privatepinnedworkflow staysonlyinauthoringhistory.
