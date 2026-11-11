@@ -89,4 +89,6 @@ agent instructions only. Enabling scheduled workflows/Pages, paid hosting, SDK
 installation and native implementation are separate implementation work. The
 MIT source/specification remains published in the existing GitHub repository.
 The final source-based review is in `evidence/final-review/`; intended-user
-eligibility and native/device/Store evidence remain explicitly unresolved.
+audience-rule review and native/device/Store evidence remain explicit release work.
+The adult owner publishes from their own Garmin account; the developer-age
+condition is confirmed. Unknown viewer age alone does not block implementation.

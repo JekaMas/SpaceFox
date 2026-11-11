@@ -1,0 +1,52 @@
+{
+  "scope": "Adult publication clarification; correction of an overbroad implementation hold, no native/Store approval",
+  "baseAuthoringRevision": "2e5cc5bfae95f66c07731304dcfc291c1e1961a1",
+  "ownerStatus": "Adult official publisher confirmed; exact personal age deliberately omitted",
+  "primarySources": [
+    "https://developer.garmin.com/downloads/connect-iq/sdks/agreement.html",
+    "https://developer.garmin.com/connect-iq/articles/app-review-guidelines/Overview.html"
+  ],
+  "strictStructuralGate": {
+    "status": "passed",
+    "localReceipt": "openspec/changes/spacefox-watchface/evidence/publication-owner-completion-structure/openspec-8xui1hwx/result.json",
+    "privateRawGuidance": "not for public distribution"
+  },
+  "currentSpecCounts": {
+    "launch-schedule": {
+      "requirements": 15,
+      "scenarios": 29
+    },
+    "release-lifecycle": {
+      "requirements": 8,
+      "scenarios": 12
+    },
+    "visual-catalog": {
+      "requirements": 18,
+      "scenarios": 36
+    },
+    "watchface": {
+      "requirements": 12,
+      "scenarios": 23
+    }
+  },
+  "currentSpecSHA256": {
+    "openspec/changes/spacefox-watchface/specs/launch-schedule/spec.md": "fc0fea9c4a5d0cf107e93c545514b8e7582b9ff7e0de9d1a1c915cb82e5f296e",
+    "openspec/changes/spacefox-watchface/specs/release-lifecycle/spec.md": "ba171d1454584a44085f373f284fe8172f5391ed925bb168571906fd07c01133",
+    "openspec/changes/spacefox-watchface/specs/visual-catalog/spec.md": "25449b7a3efa262e4c8851b5e73ed64cfbed3f6f58b727f7b7fed7436b29ef94",
+    "openspec/changes/spacefox-watchface/specs/watchface/spec.md": "6fb453da528649dbb0b02e795a1c2e02d7203f7c97aa056add49aa4ef21b9fec"
+  },
+  "guideSHA256": {
+    "docs/AGENT_SETUP.md": "5a29046d4600144a1f8ea4d73f5cb8263ef427adca55b341aadd6fe0ce2737a7",
+    "docs/RELEASE_AND_UPDATES.md": "15b9c1b0aee6226813383757ecabf6b2531935dc4e6509f6bf15567856163c15"
+  },
+  "retainedEvidence": "Previous53/99 spec hashes are historical for the changed release contract; unchanged rendering/behavior source remains valid. No behavior suite/query rerun. No native, network service or Store acceptance.",
+  "documentLinks": {
+    "checked": 83,
+    "missing": 0
+  },
+  "publicStrictOpenSpec": {
+    "valid": true,
+    "issues": [],
+    "boundary": "ordinary public configuration; private adapters/receipts excluded"
+  }
+}

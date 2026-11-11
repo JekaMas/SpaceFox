@@ -25,3 +25,10 @@ the observed green checks. Retain those checks without rerun. No native, live
 publisher or Store release is claimed. Next native entry: resolve2.3, then2.1/2.2.
 The pending eligibility clarification does not block completed MIT documentation
 review/publication and is not inferred from elapsed time.
+
+Owner clarification supersedes the earlier pending age/implementation hold:
+the adult owner is the official publisher, the developer-account condition is
+satisfied, and unknown viewer age alone does not gate native implementation.
+Keep the separate audience/use rule for release review. See
+../publication-owner-review.md and ../publication-owner-checks.json. The new
+contract adds one scenario; earlier53/99/source hashes remain historical.

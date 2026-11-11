@@ -17,7 +17,7 @@
 - [ ] 2.1 Before semantic implementation, establish the real owners/tests and author the pinned workflow's verification/discovery records; verify all selected requirements/scenarios have meaningful positive and negative cases and graph validation passes.
 - [ ] 2.2 Qualify the FR165 SDK path for static HTTPS feed fetch through Garmin Connect, background parse/time/memory bounds, compatible image/frame transfer and persisted last-working cache; measure decoded feed≤8192bytes, transfer/parse/activation peak RAM, decoded graphics, serialized per-value/total storage and staging/recovery peak. Establish actual supported types, limits and write/error behavior; do not infer RAM from compressed bytes. Record a successful native experiment plus failure behavior.
 
-- [ ] 2.3 Before native development/use, resolve current platform eligibility, including the published under13 condition, without publishing private age/account details or assuming a sideload exemption. Record the applicable agreement/guideline revision and disposition; then pin SDK/device profile/firmware and only qualified APIs/products/permissions.
+- [ ] 2.3 Pin SDK/device profile/firmware and only qualified APIs/products/permissions. The owner is the adult official publisher; developer-age eligibility is confirmed. Unknown viewer age is not an implementation prerequisite. Keep the separate under13 audience/use rule in release review7.3, without publishing private ages or assuming an exemption.
 
 ## 3. Launch schedule
 
@@ -51,7 +51,7 @@
 
 ## 7. Native release and maintenance
 
-- [ ] 7.1 Establish production UUID and securely backed-up 4096-bit signing key outside Git/data workflows; create reproducible source/SDK/profile/package provenance, only qualified manifest products/languages and permissions. Verify device-targeted PRG installation through the actual USB/MTP GARMIN/APPS route after eligibility resolution; distinguish simulator from real-device evidence.
+- [ ] 7.1 Establish production UUID and securely backed-up 4096-bit signing key outside Git/data workflows; create reproducible source/SDK/profile/package provenance, only qualified manifest products/languages and permissions. Verify device-targeted PRG installation through the actual USB/MTP GARMIN/APPS route after applicable native/platform checks; distinguish simulator from real-device evidence.
 - [ ] 7.2 Qualify settings/cache migration, initial blank FeedBaseUrl, independent host namespaces, current/previous wire majors and 90-day announced transition; observe PRG/Store and any beta/production boundaries without assuming state survival. Test unsupported schema/renderer, higher-version signed code repair and new-generation asset rollback with unchanged source age.
 - [ ] 7.3 Prepare accurate free Store listing, actual screenshots, setup/dependencies/permissions/privacy/rights/support and tested Export Project IQ. Recheck current guidelines/agreement, submit within an authorized release request, record Garmin disposition and qualify the approved Store installation/settings/update path. Source publication or owner-only beta does not close this task.
 
@@ -66,8 +66,8 @@ the exact clean local release, then the bootstrap's reviewed migration recovery
 path completed setup. See `evidence/setup-report.md` for the original failure,
 recovery and portability limit; do not silently choose another pin.
 
-Before native development/use resolve task2.3; the code/evidence entry is task2.1,
-followed by qualification of the actual Garmin asset/cache boundary in2.2. No SDK, paid service, native/Store publication or live feed deployment was
+The code/evidence entry is task2.1, followed by native qualification2.2/2.3.
+The owner confirmed adult publication; no child-age response gates implementation. No SDK, paid service, native/Store publication or live feed deployment was
 performed during the specification increment. Original MIT specification/source
 publication to the existing GitHub repository is a separate completed channel.
 
@@ -100,7 +100,9 @@ Task1.9 records the final source-based spec self-review in evidence/final-review
 The canonical current default is04/full active with separate sparse AOD. The
 release-lifecycle capability and docs/RELEASE_AND_UPDATES.md define PRG/IQ,
 signing, free Store distribution, compatibility/migration and three update
-channels. Durable feed-state replaces CDN-only recovery. Eligibility is
-unresolved pending owner clarification/current Garmin terms; native tasks2–7
-remain open. First native entry requires2.3 as well as2.1/2.2; no private age is
-to be published. Historical checks retain their original source/proof boundaries.
+channels. Durable feed-state replaces CDN-only recovery. The owner clarified adult
+publication; the developer-account age condition is satisfied and the blanket
+child-age implementation hold is removed. Separate audience/use terms stay in
+release review7.3. Native tasks2–7 remain open for real implementation evidence.
+See evidence/publication-owner-review.md; historical receipts retain their dates
+and proof boundaries, with current contract hashes in the correction receipt.

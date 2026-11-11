@@ -120,7 +120,7 @@ flowchart LR
 ```
 
 The watch's `FeedBaseUrl` setting selects its instance. Default operation needs
-only the owner's GitHub and Garmin accounts, subject to platform eligibility: no provider key, AWS, domain,
+only the owner's GitHub and Garmin accounts: no provider key, AWS, domain,
 SpaceFox login, public inbound server or custom mobile app. The static URL is
 public; it contains launch/catalog data, never the child's health or identity.
 Other families install the official free binary and fork only the data publisher,
@@ -554,7 +554,7 @@ boundaries are qualified.
 requirements versus the exact SpaceFox route. Source publication is already
 MIT/GitHub; it is not native distribution, feed deployment or Store approval.
 
-First resolve platform eligibility, then native task2.1/2.2 and an actual personal
+The adult owner is the official publisher. Start native task2.1/2.2 and an actual personal
 PRG pilot using Build for Device and the verified USB/MTP GARMIN/APPS route.
 For production, retain one application UUID and securely backed-up 4096-bit RSA
 key; losing it prevents updating that Store identity. Export a tested `.iq` with
@@ -564,11 +564,18 @@ and actual approved Store installation remain required observations. Owner-only
 beta can qualify Garmin settings integration if needed, with a separate beta UUID;
 it is not a shared public beta or guaranteed state migration to production.
 
-The checked review guidelines apply to SDK development as well as distribution
-and contain an under13 restriction. Intended-user eligibility is unresolved;
-do not claim a private sideload exemption, collect/publish the child's age or
-change the intended audience just to claim compliance. Continue public original
-MIT specification work while resolving that prerequisite before native use.
+The owner confirmed adult status and publication from their own account. The
+agreement's18+ developer-account condition is satisfied by that clarification;
+no exact private age belongs in public documentation. The previous automatic
+hold on all native development pending a child's age was too broad and is removed.
+
+The separate review guideline concerns under13 intended/known use, including a
+caveat for general-audience apps when such use is known. Adult publication does
+not override it. Preserve the real family motivation and audience facts; do not
+relabel the product or assume a private-install exemption. Check the applicable
+rule during release preparation; unknown viewer age alone is not a new universal
+implementation prerequisite. This clarification is not Garmin approval or legal
+clearance. See [the correction](evidence/publication-owner-review.md).
 
 Separate versions: native app/build; feed wire major; renderer schema; catalog
 revision; immutable asset digest; monotonic publisher generation; per-record

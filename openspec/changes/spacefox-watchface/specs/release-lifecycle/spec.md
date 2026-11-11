@@ -29,21 +29,25 @@ publishing credentials. A forked native product SHALL use its own identity/key.
 - **WHEN** a tested native fix is prepared
 - **THEN** the existing identity/key signs the next package, and loss of that key is reported as a release blocker rather than silently creating an unrelated replacement app
 
-### Requirement: Platform eligibility before native use
+### Requirement: Adult publisher and accurate audience review
 
-Before SDK-based development for the intended user or distribution, the owner
-SHALL resolve current Garmin agreement/review eligibility, including the published
-under13 restriction. Unknown eligibility SHALL remain a blocker, not an assumed
-exception for private installation. Original MIT documentation MAY remain public;
-private age or account details SHALL NOT enter the feed or public evidence.
+The official publisher SHALL be the adult owner using their own Garmin developer
+account; the owner has confirmed adult status. Unknown viewer age alone SHALL NOT
+block implementation. Release review SHALL distinguish the developer-account18+
+condition from the under13 audience/use rule, without claiming adult publication
+or private sideload overrides that rule. Private ages SHALL NOT enter public data.
 
-#### Scenario: Intended-user eligibility is unresolved
-- **WHEN** the applicable age or other platform eligibility condition is not established
-- **THEN** specification/source review may continue but native use or Store readiness is not claimed and a private sideload is not offered as an exemption
+#### Scenario: Adult owner publishes the app
+- **WHEN** the adult owner develops and prepares SpaceFox for publication from their account
+- **THEN** the developer-age condition is recorded as satisfied without requesting the child's age as a prerequisite to implementation or claiming Store approval
+
+#### Scenario: Audience review identifies an applicable restriction
+- **WHEN** facts about intended audience or actual use trigger Garmin's under13 rule
+- **THEN** release preparation records and resolves that issue honestly, including the general-audience caveat, without treating an adult account or private installation as an exemption
 
 ### Requirement: Personal installation before public release
 
-After eligibility and native checks, the personal pilot SHALL use a device-targeted
+After native checks and applicable platform review, the pilot SHALL use a device-targeted
 Build for Device PRG and a verified GARMIN/APPS installation route. Real FR165
 time/settings, active/AOD, health, phone sync, reboot and two data/asset revisions
 SHALL be observed. Sideload success SHALL NOT establish Store approval or Store
