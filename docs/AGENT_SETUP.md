@@ -2,20 +2,23 @@
 
 SpaceFox uses **scheduled GitHub Actions → static GitHub Pages → paired phone →
 watch**. The publisher, tracked-input materializer and serialized delivery adapter
-have local qualification. The owner's original public `2171fcb` source completed
-[one authentic manual bootstrap](https://github.com/jekamas/SpaceFox/actions/runs/43150627242),
-including exact 3475-byte HTTPS feed/catalog readback and active generation 1.
-Automatic cron, a second validation/update and fault recovery remain unqualified;
-the locally qualified checkout optimization has no remote speed measurement.
-Native fetch/cache/rendering, physical FR165 and Store acceptance remain pending. See the actual
+have local qualification. The published old-v1 source `ea272b2` has observed
+manual bootstrap, second due cycle, optimized generation3 and pre-arm cancellation/
+recovery into generation4 (3184-byte exact HTTPS closure). Automatic cron,
+armed-before-POST recovery and remote Pages cancellation remain unqualified.
+Observed workflow times174s versus474/595s are three runs, not a controlled benchmark.
+The integrated dual-wire bridge is a new local candidate awaiting actual source
+publication and hosted qualification. Native fetch/cache/rendering, phone/physical
+FR165 and Store acceptance remain pending. See the actual
 [CLOUD_DELIVERY runbook](CLOUD_DELIVERY.md) for permissions, recovery and limits.
 
 Each family should own its own publisher fork and feed-state authority. The source
 is MIT; original schematics are MIT, and fonts/geography/data retain their distinct
 terms in [THIRD_PARTY_NOTICES](../THIRD_PARTY_NOTICES.md). No AWS account, author’s
 account keys, Garmin signing key in a data job, continuously running computer or
-recurring model call is required by this architecture. Existing Python 3.10+ and
-Git suffice for the portable publisher tools; do not install tools implicitly.
+recurring model call is required by this architecture. Existing Python 3.10+, Git and Node are used by the producer; Node runs only the
+off-watch map conversion with pinned vendored scripts. Saved-state jobs use
+Python/Git without a source-data build. Do not install tools implicitly.
 
 ## Prepare an independent instance
 
@@ -68,11 +71,13 @@ reconciliation; do not reset state, invent a live generation or rebuild pending
 bytes. A disabled or delayed schedule needs inspection and authorized recovery.
 No background model session is part of normal publishing.
 
-The current first delivery is draft-v1 selected-launch metadata: feed ≤8192
-UTF-8 bytes, complete current plus retained artifact ≤1MiB and ≤256 files,
-visuals and verified positions null. The global.3 publisher catalog has 568 pinned
-inputs and art for 108/171 required configurations, with 63 remaining art gaps.
-Source2 regional geography stays explicit and off-watch; its roughly 1.47MB Git
-input corpus is separate from the served-site budget. Full graphics, worldwide
-content, native transfer, ninety-day wire-major compatibility and release/device
-qualification remain open.
+The currently hosted old-v1 delivery remains data-only. The new local bridge
+candidate produces both v1 and v2, each feed≤8192 decoded UTF-8 bytes, with complete
+current+prior artifact≤1MiB/256files. Prepare follows595 canonical inputs plus the recipe (596materialized files); runtime
+jobs exclude source data. The accepted global.3 catalog has562assets and art for
+108/171required configurations, with63art gaps. Source2 provenance remains
+explicit and off-watch; its roughly1.47MB input corpus is not the served budget.
+The full selected flat-map scene needs71GETs; native batching/cadence, globe,
+worldwide coverage,36native languages, phone/watch and Store remain unqualified.
+V1 is retained indefinitely. Future source/feed publication determines the actual
+transition announcement; no elapsed90day support is claimed.

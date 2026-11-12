@@ -74,6 +74,8 @@ class Service:
     def __init__(self, remote):
         self.remote, self.live, self.artifact = remote, {}, {}
         self.reads, self.posts, self.provider_calls, self.statuses = [], [], 0, {}
+        self.read_hook = None
+        self.actions = {}
         service = self
 
         class Handler(BaseHTTPRequestHandler):
@@ -92,7 +94,12 @@ class Service:
 
             def do_GET(self):
                 service.reads.append(self.path)
-                if self.path.startswith('/2.3.0/'):
+                if service.read_hook is not None:
+                    service.read_hook(self.path)
+                if '/actions/' in self.path:
+                    value = service.actions.get(self.path)
+                    self.send(404 if value is None else 200, b'' if value is None else encoded(value))
+                elif self.path.startswith('/2.3.0/'):
                     service.provider_calls += 1
                     ledger = json.loads(git(service.remote, 'show', 'refs/heads/feed-state:ledger.json'))
                     if not ledger['requests'] or ledger['requests'][-1]['outcome'] != 'reserved':
@@ -131,26 +138,30 @@ class Service:
 RUNTIME_DRIVER = '''
 import json,sys
 from pathlib import Path
-import tools.cloud_feed as cli
 root=Path.cwd().resolve()
-seen={'builderCalls':0,'oidcCalls':0}
+seen={'builderCalls':0,'oidcCalls':0,'nodeCalls':0,'sourceDataReads':0}
 def profile(frame,event,arg):
     if event=='call' and frame.f_code.co_name=='build_catalog':
         seen['builderCalls']+=1
         raise AssertionError('non-builder command called catalog builder')
 def audit(event,args):
+    if event=='subprocess.Popen' and Path(str(args[0])).name in ('node','nodejs'):
+        seen['nodeCalls']+=1
+        raise AssertionError('non-builder command invoked Node')
     if event=='open' and isinstance(args[0],(str,bytes)):
         path=Path(args[0].decode() if isinstance(args[0],bytes) else args[0]).resolve()
         if path.is_relative_to(root) and path.relative_to(root).parts[:1] in [
             ('catalog',),('assets',),('openspec',),('.agents',),('tests',)]:
+            seen['sourceDataReads']+=1
             raise AssertionError('non-builder command read source/private data')
 def oidc():
     seen['oidcCalls']+=1
     return 'qualification-only-oidc'
-cli.oidc_token=oidc
 sys.addaudithook(audit)
 sys.setprofile(profile)
 try:
+    import tools.cloud_feed as cli
+    cli.oidc_token=oidc
     result=cli.main(sys.argv[1:])
 finally:
     sys.setprofile(None)
@@ -204,7 +215,7 @@ class CloudRuntimeCheckoutTest(unittest.TestCase):
         self.assertEqual('', git(self.source, 'status', '--porcelain'))
 
     def cli(self, *command, success=True, oidc_calls=None):
-        env = dict(os.environ, GITHUB_RUN_ID='87', GITHUB_RUN_ATTEMPT='1')
+        env = dict(os.environ, GITHUB_RUN_ID=str(getattr(self, 'run_id', 87)), GITHUB_RUN_ATTEMPT='1')
         for key in ('GH_TOKEN', 'GITHUB_OUTPUT', 'GIT_CONFIG_COUNT'):
             env.pop(key, None)
         result = subprocess.run([sys.executable, '-B', '-c', RUNTIME_DRIVER, *self.arguments(*command)],
@@ -212,6 +223,8 @@ class CloudRuntimeCheckoutTest(unittest.TestCase):
         self.assertEqual(0 if success else 2, result.returncode, result.stderr.decode())
         boundary = json.loads(result.stderr.decode().split('RUNTIME_BOUNDARY ', 1)[1])
         self.assertEqual(0, boundary['builderCalls'])
+        self.assertEqual(0, boundary['nodeCalls'])
+        self.assertEqual(0, boundary['sourceDataReads'])
         expected_oidc = int(command[0] == 'deploy') if oidc_calls is None else oidc_calls
         self.assertEqual(expected_oidc, boundary['oidcCalls'])
         return json.loads(result.stdout) if success else result.stderr.decode()
@@ -259,7 +272,7 @@ class CloudRuntimeCheckoutTest(unittest.TestCase):
         materialize = subprocess.run(['bash', '-e', '-o', 'pipefail', '-c', script],
                                      cwd=self.source, capture_output=True)
         self.assertEqual(0, materialize.returncode, materialize.stderr.decode())
-        self.assertEqual({'catalogVersion': '2026-11-12.global.3', 'catalogInputs': 569},
+        self.assertEqual({'catalogVersion': '2026-11-12.global.3.bridge1', 'catalogInputs': 596},
                          json.loads(materialize.stdout))
         self.assertEqual('', git(self.source, 'status', '--porcelain'))
         output = self.base / 'prepared-site'
@@ -267,7 +280,7 @@ class CloudRuntimeCheckoutTest(unittest.TestCase):
                                  *self.arguments('prepare', '--bootstrap', '--output', str(output))],
                                 cwd=self.source, capture_output=True)
         self.assertEqual(0, result.returncode, result.stderr.decode())
-        self.assertEqual(('true', 1, 2), tuple(json.loads(result.stdout)[k]
+        self.assertEqual(('true', 1, 4), tuple(json.loads(result.stdout)[k]
                          for k in ('pending', 'requests', 'exportedFiles')))
         self.assertEqual(1, self.service.provider_calls)
         feed = json.loads((output / 'feed.json').read_bytes())

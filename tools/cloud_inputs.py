@@ -99,6 +99,16 @@ def materialize(root):
                 pin_bytes(item)
                 geography_inputs.add(item['path'])
             load_source(root, recipe['geography'])
+    if 'visualBridge' in recipe:
+        from tools.spacefox.bridge_map import dependencies as map_dependencies, load_source as map_source
+        from tools.spacefox.geographic_context import dependencies as regional_dependencies
+        bridge = pin(recipe['visualBridge'])
+        for item in map_dependencies(bridge):
+            pin_bytes(item)
+        regional = pin(bridge['regional'])
+        for item in regional_dependencies({'index': regional}):
+            pin_bytes(item)
+        map_source(root, recipe['visualBridge'])
     sources = [(recipe['assetSeed']['path'], [row for kind in ('models', 'companies', 'countries')
                                             for row in registry[kind]])]
     for item in recipe.get('curations', []):

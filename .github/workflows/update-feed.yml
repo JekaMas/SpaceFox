@@ -11,6 +11,10 @@ on:
         description: Explicit FIRST empty-site authority creation (never recovery)
         type: boolean
         default: false
+      qualify_pre_post_recovery:
+        description: Deliberately fail after durable arm to qualify skipped-deploy recovery
+        type: boolean
+        default: false
 
 # This group covers all jobs, including async finality, HTTPS and promotion.
 # Pending runs may be replaced; durable source/CAS guards decide permission.
@@ -92,6 +96,11 @@ jobs:
           EXPECTED_BASE: ${{ needs.prepare.outputs.head }}
           ARTIFACT_ID: ${{ needs.prepare.outputs.artifact_id }}
         run: python3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" arm --expected-base "$EXPECTED_BASE" --artifact-id "$ARTIFACT_ID"
+      - name: Qualify recovery after intent before Pages POST
+        if: github.event_name == 'workflow_dispatch' && inputs.qualify_pre_post_recovery
+        run: |
+          echo 'Deliberate qualification fault: exact intent is saved; deploy must be skipped.' >&2
+          exit 97
 
   deploy:
     needs: arm

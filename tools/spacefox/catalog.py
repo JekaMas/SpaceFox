@@ -527,7 +527,7 @@ def validate_catalog(catalog, *, _admission_date=None):
     producer = catalog.get('producerVersion', 1)
     _require(type(producer) is int and producer in (1, 2), 'unsupported producer version')
     source_fields = {'reference', 'assetSeed', 'curations'} if producer == 2 else {'reference', 'assetSeed'}
-    _require(isinstance(catalog['source'], dict) and source_fields <= catalog['source'].keys() <= source_fields | ({'geography'} if producer == 2 else set()), 'missing source metadata')
+    _require(isinstance(catalog['source'], dict) and source_fields <= catalog['source'].keys() <= source_fields | ({'geography', 'visualBridge'} if producer == 2 else set()), 'missing source metadata')
     _require(all(isinstance(x, dict) for x in catalog['source'].values()), 'invalid source metadata')
     if producer == 2:
         for identity, definition in catalog['source']['curations'].items():
@@ -978,12 +978,12 @@ def build_catalog(root, source_path=None, *, _strict_creation_path=None):
     source_path = Path(source_path) if source_path is not None else root / 'catalog/source.json'
     manifest = loads_json(_read(source_path))
     required = {'schemaVersion', 'catalogVersion', 'reference', 'assetSeed'}
-    _require(isinstance(manifest, dict) and required <= manifest.keys() <= required | {'producerVersion', 'curations', 'geography'}, 'unknown/missing source recipe fields')
+    _require(isinstance(manifest, dict) and required <= manifest.keys() <= required | {'producerVersion', 'curations', 'geography', 'visualBridge'}, 'unknown/missing source recipe fields')
     _schema(manifest['schemaVersion'], 'source recipe'); _version(manifest['catalogVersion'])
     producer = manifest.get('producerVersion', 1)
     _require(type(producer) is int and producer in (1, 2), 'unsupported producer version')
     _require(('curations' in manifest) == (producer == 2), 'producer2 requires curation inputs')
-    _require(producer == 2 or 'geography' not in manifest, 'geography requires producer2')
+    _require(producer == 2 or not {'geography','visualBridge'} & manifest.keys(), 'geography requires producer2')
     imports, pins, paths = {}, {}, {}
     for key in ('reference', 'assetSeed'):
         item = manifest[key]
@@ -1074,6 +1074,15 @@ def build_catalog(root, source_path=None, *, _strict_creation_path=None):
                       (geography.get('schemaVersion') == 2 and geography.get('license') == 'LGPL-3.0-or-later' and
                        geography.get('format') == 'offwatch-regional-context-v1')), 'geography rights/provenance required')
             catalog['source']['geography'] = deepcopy(item); pins[item['path']] = item['sha256']
+        if 'visualBridge' in manifest:
+            item = manifest['visualBridge']
+            _require(isinstance(item, dict) and set(item) == {'path','sha256'}, 'invalid bridge source pin')
+            from .bridge_map import load_source, dependencies
+            source = load_source(root, item)
+            from .geographic_context import dependencies as regional_dependencies
+            catalog['source']['visualBridge'] = deepcopy(item)
+            for pin in [item, *dependencies(source['index']), *regional_dependencies(source['regional'])]:
+                pins[pin['path']] = pin['sha256']
         for table in catalog['dictionaries'].values():
             for identity, row in table.items():
                 if identity in updates:

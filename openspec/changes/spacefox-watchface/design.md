@@ -753,3 +753,42 @@ Tracked sparse materialization follows the single catalog recipe and checks
 all declared transitive source bytes. Status-first error handling closes non-success
 HTTP bodies unread; exact success bodies retain their strict wire limit. These
 local properties do not establish authentic hosted behavior.
+
+## Producer visual bridge v2 — local apply contract
+
+See docs/PUBLISHER_VISUAL_BRIDGE.md. Root feed.json remains closed v1. The new
+wire2/feed.json and immutable wire2 catalog project the same accepted state,
+source age, generation and shared quota. Selection/descriptors are immutable
+content-addressed objects and bind typed role/entity IDs before optional fetch.
+Descriptor raw SHA is independent of complete semantic SFV SHA; all fragment
+raw hashes/paths/lengths are mandatory. There is no envelope hash cycle.
+
+Current plus previous delivery traverses exact complete dependencies; the old
+mutable wire root is not retained as immutable content. Compatibility policy is
+announced separately from proof of elapsed90days. A catalog/art source change
+flows through the real cloud prepare path and durable Publisher.prepare; code
+adoption alone neither changes asset identity nor validates provider data.
+
+This apply is a producer/local handoff, not native transport, full artwork,
+physical, hosted retention, Store or whole-DAG acceptance. Existing source and
+execution receipts remain historical. New tests exercise production build,
+durable Git, recovery, complete closure and exact local HTTP observation with
+literal positive/negative oracles; remote services remain substituted.
+
+The current implementation makes the current cloud/content and provider-accept paths
+request `visual-v2` explicitly, independent of the produced files. New product
+snapshots persist the concrete artifact profile inside their revision; complete
+product closure and durable source/selected-fact binding are validated on prepare,
+Git write, authenticated reopen and cloud traversal. Legacy bound no-profile API
+calls admit only complete valid v1/dual output and persist its resolved profile;
+unmarked historical snapshots recover without changing saved artifact bytes.
+Byte inspection cannot recover missing first-call intent, so compatibility API
+v1 admission is not evidence of v2 production. Dual-to-v1 regression and edits to
+a saved pending snapshot are refused. Current v2 compatibility constants also
+retain exact JSON types. 
+Pending feed selection-validation age additionally equals the durable source
+epoch; rehashing both feed roots cannot silently renew launch selection age.
+Cloud admission additionally supplies the authenticated origin ledger instance to cloud
+snapshot admission. Current/prior traversal and historical unmarked v1/dual
+snapshots obey the same namespace binding as public write and normal reopen;
+raw authentication alone cannot waive a divergent feed instance.

@@ -10,9 +10,10 @@ import sys
 if __package__ in (None, ''):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from tools.spacefox.catalog import build_catalog
+from tools.spacefox.catalog import build_catalog, canonical_bytes
 from tools.spacefox.cloud import (CloudError, Pages, Site, arm, delivery, delivery_files,
                                   deploy, git_credentials, oidc_token, recover)
+from tools.spacefox.visual_bridge import (build_artifact as build_visual_artifact, FEED_PATH, sha, validate_feed as validate_visual_feed)
 from tools.spacefox.provider import LL2Client
 from tools.spacefox.publisher import GitState, Publisher, StateError
 from tools.spacefox.schedule import RefreshPolicy
@@ -46,6 +47,36 @@ def outputs(result):
             for key in ('head', 'pending', 'build_version'):
                 if key in result:
                     stream.write(f'{key}={result[key]}\n')
+
+
+def prepare_content(pub, client, now, catalog, *, root, clock=None):
+    """Real cloud prepare owner: recover first; catalog-only changes never poll.
+
+    The complete source digest detects metadata/art changes independent of code
+    adoption or provider due time. Pending candidates are never reconstructed.
+    """
+    if pub.ledger['pending'] is not None:
+        return {'result':'recovered_pending','requests':0}
+    def builder(*args, **kwargs):
+        return build_visual_artifact(*args, **kwargs, root=root)
+    active=pub.ledger['active']
+    if active is not None:
+        path=f'artifacts/{active["generation"]}/{FEED_PATH}'
+        previous=None
+        if FEED_PATH in active['files']:
+            previous=validate_visual_feed(pub.store._blob(pub.head,path,8192))
+        if previous is None or previous['catalogSourceDigest'] != sha(canonical_bytes(catalog)):
+            publisher=pub.publisher_envelope(now)
+            traversal=None
+            if previous is not None:
+                traversal=previous['providerTraversal']
+            else:
+                from tools.spacefox.wire import validate_feed
+                traversal=validate_feed(pub.store._blob(pub.head,f'artifacts/{active["generation"]}/feed.json',8192))['providerTraversal']
+            files,digest=builder(pub.schedule,catalog,now,publisher=publisher,policy=pub.policy,traversal=traversal)
+            revision=pub.prepare(pub.head,now,files,digest,feed_publisher=publisher,artifact_profile='visual-v2')
+            return {'result':'content_pending','requests':0,'revision':vars(revision)}
+    return update(pub,client,now,catalog,trigger='scheduled',clock=clock,artifact_builder=builder,artifact_profile='visual-v2')
 
 
 def main(argv=None):
@@ -115,8 +146,8 @@ def main(argv=None):
             result = {'result': 'recovered_pending', 'requests': 0}
             if pub.ledger['pending'] is None:
                 client = LL2Client(**({} if args.origin is None else {'origin': args.origin, 'local_http': True}))
-                result = update(pub, client, sample(), build_catalog(root), trigger='scheduled',
-                                clock=None if args.now is not None else utc_now)
+                result = prepare_content(pub, client, sample(), build_catalog(root), root=root,
+                                         clock=None if args.now is not None else utc_now)
             pending = pub.ledger['pending'] is not None
             if pending:
                 files = delivery_files(pub, delivery(pub))

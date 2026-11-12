@@ -8,16 +8,24 @@
 
 ## Текущее состояние
 
-Реализованы и локально проверены deterministic publisher, обработчик Launch
-Library 2, долговечное состояние `feed-state`, сериализованный workflow
-GitHub Actions/Pages, экспорт графики и versioned catalog. Для публичного
-исходного среза `2171fcb` [первый ручной bootstrap](https://github.com/jekamas/SpaceFox/actions/runs/43150627242)
-завершил все четыре job: generation 1 принят, точный HTTPS closure составил
-3475 байт (feed 2857 + catalog 618). Это проверка первого data-only v1 delivery.
-Автоматический cron, повторный цикл и удалённое recovery ещё не квалифицированы.
-Оптимизация checkout следующих job проверена локально; удалённое ускорение
-не измерено. Нативное приложение, телефон/FR165, полный набор рисунков,
-36 языков на часах и Store-релиз ещё требуют проверки.
+Реализованы publisher Launch Library 2, долговечное состояние `feed-state`,
+сериализованный workflow Actions/Pages, экспорт графики и versioned catalog.
+На опубликованном исходном срезе `ea272b2` проверен data-only v1 до generation 4:
+[отмена до arm](https://github.com/jekamas/SpaceFox/actions/runs/43166274512) и
+[ручное recovery](https://github.com/jekamas/SpaceFox/actions/runs/43166780103)
+сохранили точные pending-байты, source age и квоту; HTTPS closure — 3184 байта.
+Первый bootstrap, повторный ручной due-цикл, оптимизированный checkout и not-due
+тоже наблюдались. Cron, отмена после arm/до POST и отмена удалённого Pages ещё
+не квалифицированы. Наблюдавшийся workflow занял 174 с против прежних 474/595 с;
+это три наблюдения, не контролируемый benchmark и не гарантия.
+
+Новый локальный кандидат добавляет параллельный v2 (`wire2/feed.json`) и полный
+immutable current/prior closure; этот bridge ещё не опубликован и не принят на
+реальном hosted/native пути. Полная карта использует 71 GET; сейчас поддержана
+только плоская карта. Native transport, глобус, полное worldwide-содержимое,
+оставшиеся 63 пробела artwork, 36 языков на часах, телефон/FR165, 90-дневное
+наблюдение совместимости и Store остаются открытыми. V1 сохраняется бессрочно;
+дата объявления перехода определяется фактической будущей публикацией.
 
 [CLOUD_DELIVERY](docs/CLOUD_DELIVERY.md) описывает настоящий workflow и recovery;
 [AGENT_SETUP](docs/AGENT_SETUP.md) — отдельный fork и URL для каждой семьи.
@@ -82,6 +90,12 @@ Source2 regional geography включается явно и остаётся off
 
 См. [описание и просмотр макета](prototype/README.md). Это визуальный ориентир,
 не установочный файл Garmin и не доказательство работы живого расписания.
+
+Для согласованной ручной проверки recovery workflow имеет необязательный input
+`qualify_pre_post_recovery=true`: после сохранения intent arm намеренно завершится
+с ошибкой, deploy будет пропущен. Следующий обычный dispatch с inputfalse проверяет
+точный завершённый старый run до повторной публикации. Значение по умолчанию false;
+это операторский fault-тест из [runbook](docs/CLOUD_DELIVERY.md).
 
 ## Работа со спецификацией и макетом
 

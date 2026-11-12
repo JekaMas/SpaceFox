@@ -298,3 +298,44 @@ binary responses SHALL NOT be a baseline dependency.
 #### Scenario: Artwork requires a new renderer operation
 - **WHEN** a visual requires unknown drawing operations or a different projection convention
 - **THEN** the old app retains a compatible visual and the new capability requires a versioned native release rather than downloaded executable code
+
+### Requirement: Versioned selected visual bridge
+
+V2 SHALL retain closed root v1 and publish selected visuals from the same durable
+source, generation and quota. Immutable identity, lossless facts, separate raw and
+semantic hashes, unchanged source ages and complete bounded delivery SHALL obey
+the scenarios below. Optional visuals SHALL permit generic/no-point schedule
+activation. This producer contract SHALL NOT establish native or elapsed-retention
+acceptance.
+
+#### Scenario: Same identity receives distinct artwork or a corrected point
+- **WHEN** a data-only source revision changes art or a sourced site point and later rolls back to prior compatible content
+- **THEN** each change has a new monotonic generation and immutable selected descriptor binding; unchanged assets reuse their digests and launch validation ages remain unchanged
+
+The publisher SHALL retain the closed data-only root feed v1 and publish an
+explicit v2 endpoint below the same FeedBaseUrl from the same durable accepted
+state, generation and quota. The v2 projection SHALL preserve selected launch
+facts, exact typed identity, null/zero/Unicode/precision and source-validation
+age, and include only the selected configuration, supplied operator, selected
+curated origin and actual site/jurisdiction dependencies. Immutable descriptor
+digests SHALL bind exact role/entity identity, logical asset identity and sourced
+point/camera independently of catalog/envelope digests. Raw shard bytes/path/size
+and full canonical semantic SFV digests SHALL be checked separately. Optional
+visual downloads SHALL permit prompt schedule activation using generic/no-point
+fallback; an old same-ID visual SHALL NOT be relabeled as a new asset revision.
+
+A data/art-only input change SHALL allocate a new monotonic pending generation
+without provider polling or renewing source-validation times. Pending recovery
+SHALL reuse exact durable bytes. Complete current/prior file closure and exact
+HTTPS readback SHALL include both wire majors and every immutable dependency
+within the existing1MiB/256file,8KiBfeed and4KiBshard bounds. Announced compatibility
+SHALL last at least90days; dual files alone SHALL NOT prove elapsed retention.
+Accepted04/full sourced map camera, bright land/ocean/coast, directed fade,
+transparent time area and unfaded28pxmarker SHALL remain the producer target;
+full native composition, heap/storage and physical acceptance remain separate.
+The supported producer profile SHALL be accepted04-full flat map only; its
+acceptance SHALL NOT establish globe support or close global map/globe coverage.
+
+#### Scenario: Corrupt or replayed optional visual dependency
+- **WHEN** a selected descriptor, shard, index, major or immutable reference is missing, corrupt, stale or incompatible
+- **THEN** producer complete-closure admission rejects it without replacing accepted state, while a consumer can activate valid schedule metadata with explicit generic/no-point fallback

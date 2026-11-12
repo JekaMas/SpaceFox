@@ -84,7 +84,7 @@ class PublisherContentIntegrationTest(unittest.TestCase):
         self.assertEqual(b'1', git(root, 'rev-list', '--count', 'HEAD').strip())
         self.assertFalse((root / 'assets/global/curation-20261112-content-r1.json').exists())
         result = self.materialize(root)
-        self.assertEqual({'catalogVersion': '2026-11-12.global.3', 'catalogInputs': 569}, result)
+        self.assertEqual({'catalogVersion': '2026-11-12.global.3.bridge1', 'catalogInputs': 596}, result)
         built = self.run_python(root, '-c', '''
 import hashlib,json
 from pathlib import Path
@@ -97,9 +97,9 @@ print(json.dumps({'inputs':len(c['inputDigests']),'bytes':len(raw),'sha256':hash
 ''')
         self.assertEqual(0, built.returncode, built.stderr.decode())
         report = json.loads(built.stdout)
-        self.assertEqual((568, 2136474, 562, 108, 171, 63),
+        self.assertEqual((595, 2139924, 562, 108, 171, 63),
                          tuple(report[k] for k in ('inputs', 'bytes', 'assets', 'mapped', 'required', 'gaps')))
-        self.assertEqual('bfde1e9deca438502719980cb871c5362861eb953d29d72b4216cf684d9aedce', report['sha256'])
+        self.assertEqual('3227cd95dbedd47fa74d0f2d0da8340abe08a433b03132ac671b026e5c9e4f89', report['sha256'])
         self.assertEqual(self.recipe, report['recipe'])
         self.assertFalse((root / '.agents').exists())
         print('CURRENT_CONTENT ' + json.dumps(report, sort_keys=True))

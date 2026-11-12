@@ -16,12 +16,10 @@ from urllib.error import HTTPError
 from urllib.parse import quote, urlsplit
 from urllib.request import HTTPRedirectHandler, ProxyHandler, Request, build_opener
 
-from .catalog import canonical_bytes
 from .provider import bounded_json
 from .publisher import (Conflict, LiveRevision, MAX_ARTIFACT_BYTES,
                         MAX_ARTIFACT_FILES, Publisher, StateError, _canonical,
-                        _digest, _path, _sha)
-from .wire import validate_feed
+                        _digest, _path, _sha, validate_snapshot_artifact)
 
 JOURNAL = 'cloud.json'
 FINAL = {'succeed', 'deployment_failed', 'deployment_perms_error',
@@ -226,22 +224,20 @@ def snapshot_files(store, state, generation):
     for path, raw in files.items():
         if snapshot['files'][path] != {'sha256': _sha(raw), 'bytes': len(raw)}:
             raise CloudError('durable snapshot file is corrupt')
-    validate_snapshot(snapshot, files)
+    validate_snapshot(snapshot, files, instance=doc['instance_id'],
+                      selection_validated_utc=doc.get('selection_validated_utc'),
+                      require_selection_epoch=snapshot is doc['pending'])
     return snapshot, files
 
 
-def validate_snapshot(snapshot, files):
-    """Current wire validator. Future graphics need an explicit closure adapter."""
-    doc = validate_feed(files.get('feed.json'))
-    path = doc['catalogPath']
-    dictionary = {'schemaVersion': 1, 'catalogVersion': doc['catalogRevision'],
-                  'qualification': 'publisher-metadata-only', 'entries': doc['dictionaries'],
-                  'unresolved': doc['unresolvedCatalogIds']}
-    if (set(files) != {'feed.json', path} or files[path] != canonical_bytes(dictionary)
-            or _sha(files[path]) != doc['catalogDigest']
-            or snapshot['catalog_revision'] != doc['catalogDigest']
-            or snapshot['generation'] != doc['publisher']['generation']):
-        raise CloudError('feed/catalog exact schema and complete closure mismatch')
+def validate_snapshot(snapshot, files, *, instance=None, selection_validated_utc=None, require_selection_epoch=False):
+    """Use the durable expected profile; old unmarked v1 snapshots still read."""
+    try:
+        if validate_snapshot_artifact(snapshot, files, instance=instance, selection_validated_utc=selection_validated_utc,
+                                      require_selection_epoch=require_selection_epoch) is None:
+            raise StateError('cloud delivery requires a supported product feed')
+    except (ValueError, KeyError, TypeError) as error:
+        raise CloudError('invalid complete durable product closure') from error
 
 
 def journal(pub):
@@ -315,6 +311,27 @@ def delivery_files(pub, manifest):
         if raw is None or {'sha256': _sha(raw), 'bytes': len(raw)} != {k: meta[k] for k in ('sha256', 'bytes')}:
             raise CloudError('delivery bytes disagree with authenticated Git')
         result[path] = raw
+    # Derive completeness from the authenticated origin ledger, not a caller's
+    # expected-file list. The origin survives promotion/code adoption in Git.
+    current_origins={(m['state'],m['generation']) for m in manifest.values() if m['role']=='current'}
+    if len(current_origins)!=1:
+        raise CloudError('one exact current delivery origin required')
+    state,generation=next(iter(current_origins))
+    origin=pub.store._ledger_at(state)
+    current=next((s for s in (origin['active'],origin['pending']) if s is not None and s['generation']==generation),None)
+    if current is None or not any(s is not None and s['artifact_revision']==current['artifact_revision']
+                                  for s in (pub.ledger['active'],pub.ledger['pending'])):
+        raise CloudError('current delivery is neither active nor pending')
+    required={}
+    if current is origin['pending'] and origin['active'] is not None:
+        prior=origin['active']
+        for path,meta in prior['files'].items():
+            if path not in ('feed.json','wire2/feed.json'):
+                required[path]=dict(meta,state=state,generation=prior['generation'],role='previous')
+    for path,meta in current['files'].items():
+        required[path]=dict(meta,state=state,generation=generation,role='current')
+    if manifest!=required:
+        raise CloudError('delivery index is not the exact current/prior immutable union')
     if sum(map(len, result.values())) > MAX_ARTIFACT_BYTES:
         raise CloudError('complete current and retained delivery exceeds1MiB')
     return result
@@ -330,7 +347,7 @@ def delivery(pub):
     active = pub.ledger['active']
     if active is not None:
         for path, meta in active['files'].items():
-            if path != 'feed.json':
+            if path not in ('feed.json', 'wire2/feed.json'):
                 manifest[path] = dict(meta, state=pub.head, generation=active['generation'], role='previous')
     for path, meta in snap['files'].items():
         manifest[path] = dict(meta, state=pub.head, generation=snap['generation'], role='current')
@@ -374,7 +391,10 @@ class Site:
                 code, actual = self.get(path, len(raw))
                 if code != 200 or actual != raw:
                     raise CloudError('live immutable file missing, mixed or corrupt')
-            # Re-read the mutable root after all immutable reads to catch a switch.
+            # Both wire-major roots are mutable. A stable v1 root cannot prove
+            # wire2 remained coherent after its first read during the closure.
+            if 'wire2/feed.json' in expected and self.get('wire2/feed.json', 8192) != (200, expected['wire2/feed.json']):
+                raise CloudError('live versioned feed changed during exact closure observation')
             if self.get('feed.json', 8192) != (200, feed):
                 raise CloudError('live feed changed during exact closure observation')
             return LiveRevision(snap['generation'], snap['artifact_revision'])

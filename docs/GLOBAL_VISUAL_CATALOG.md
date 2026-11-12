@@ -239,3 +239,13 @@ identity, typed corrections, provenance, jurisdiction, exact visual shard paths,
 rights and complete referenced-file closure before activation. Source URLs remain
 attribution only. Full artwork/worldwide collection, native/phone/FR165,
 90-day wire-major support and authentic cloud qualification remain open.
+
+## Producer bridge source extension
+
+The explicit wire2 bridge now appends an immutable `visualBridge` source pin to
+the single recipe, version `2026-11-12.global.3.bridge1`. Metadata/art coverage
+counts above are unchanged. The active595 input pins include the exact original
+Natural Earth polygon topology, vendored D3/TopoJSON/atlas notices and reviewed
+regional source2 transitive inputs. Old schema1 world geometry and source2
+candidate files remain unchanged. See [producer bridge](PUBLISHER_VISUAL_BRIDGE.md)
+for the selected native interface and its separate offwatch/device proof limits.

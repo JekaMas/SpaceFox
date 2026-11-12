@@ -6,14 +6,19 @@ its [first explicit bootstrap run](https://github.com/jekamas/SpaceFox/actions/r
 prepare, arm, deploy and promote all succeeded. Active generation 1, pending null,
 the exact Pages build-version success and exact HTTPS feed/catalog/root re-read
 were observed: 2857 + 618 = 3475 bytes. This qualifies that first data-only cycle.
-The later-job checkout optimization in [CLOUD_RUNTIME_CHECKOUT](CLOUD_RUNTIME_CHECKOUT.md)
-is locally qualified; no remote latency or speedup is established for it.
+The later-job checkout optimization was subsequently observed on public`ea272b2`:
+174s workflow versus474/595s earlier runs, with later checkouts1/0/1s. These are
+three observations, not a controlled benchmark. Old-v1 generation4 was recovered
+from exact pending bytes after cancellation before arm (runs43166274512→43166780103),
+with zero recovery provider requests and3184-byte exact HTTPS readback.
+Cron, armed-before-POST and remote Pages cancellation remain open.
 
-The first vertical deployment serves the existing draft wire v1 `feed.json` and
-its exact immutable catalog. Visuals and verified positions remain null. The rich
-global publisher catalog stays off-watch. Native, graphics, global completeness,
-previous wire-major compatibility, physical FR165, signing and Store acceptance
-remain separate open requirements.
+The actual hosted feed is the data-onlyv1 path. The new integrated candidate adds
+parallel`wire2/feed.json` and complete current/prior immutable visual dependencies;
+it still awaits publication and real hosted qualification. The rich global catalog
+stays off-watch. Full selected map71GET, flat-map-only, native efficiency/globe,
+worldwide/36languages/phone/FR165/90day/Store remain separate open requirements.
+V1 remains indefinitely; actual future publication determines announcement date.
 
 One workflow concurrency group covers recovery, provider work, candidate build,
 artifact upload, intent, asynchronous deployment, HTTPS observation and active
@@ -34,30 +39,24 @@ relative SVG facts from the clean tracked Git index. It materializes only this
 closure and validates it with the unchanged catalog builder. The documented
 `tools/catalog.py --amend` route therefore needs no second input-list edit when
 adding a curation or SVG; unrelated research/private files stay absent. The current
-active public-domain global.3 recipe resolves to568 catalog inputs plus the static
+integrated global.3.bridge1 recipe resolves to595 canonical inputs plus the recipe (596materialized files) and the static
 Python runtime/schema seed. For an explicit source2 candidate, the materializer
 uses `geographic_context.dependencies` to obtain every base-world, clip, notice,
 supplement and metadata pin, checks their tracked bytes and SHA-256, then calls
 `load_source` and the actual catalog builder for full source/rights admission.
-The source2 Python owner is in the static runtime seed; no source-data list is
-added there. A valid new index/base path or curation/SVG remains recipe driven.
+The source2 and bridge Python owners are in the static runtime seed. The accepted04
+map index adds declared original topology, pinned D3/TopoJSON, regional data and
+notices through the same transitive materializer. A new index/base path or
+curation/SVG remains recipe driven; no separate source-data list is added.
 
-Before forced sparse checkout, each declared input must be a tracked HEAD blob
-and any existing local bytes must match it. This also covers assume-unchanged-hidden
-edits; ordinary tracked edits already stopped at the initial Git diff guard.
-Untracked sources/dependencies and their local bytes are never accepted or
-silently overwritten. No development evidence/research/native/SDK is copied into
-the uploaded site. No package install or paid service is used.
-
-The explicit source2 candidate's index plus20 transitive inputs total1,468,065
-publisher-side bytes. This checkout is not the served site. The ordinary active
-recipe remains `2026-11-12.global.3` with its original public-domain source, and
-source2 remains an explicit off-watch preview candidate. Optional source-backed
-previews include their selected corresponding clips and all required notices;
-they have their own complete current/prior1MiB validation. Cloud delivery remains
-the unchanged data-onlyv1 feed/catalog path with visuals/positions null and no
-raw geography corpus. See [the transitive closure brief](WORLD_CLOUD_INTEGRATION.md)
-for this finite integration and its proof boundaries.
+Before forced sparse checkout each declared input must be a tracked HEAD blob,
+and existing local bytes must match it, including assume-unchanged-hidden edits.
+Untracked source/dependencies and local edits reject without overwrite. No SDK,
+private development receipts, or research tree enters the uploaded site. The
+source2 index and20transitive inputs total1,468,065publisher-side bytes; the served
+candidate contains only selected dependencies and corresponding provenance.
+See [PUBLISHER_VISUAL_BRIDGE](PUBLISHER_VISUAL_BRIDGE.md) and
+[the transitive source brief](WORLD_CLOUD_INTEGRATION.md) for their separate limits.
 
 Prepare/arm/promote jobs alone have contents write. The deployment job alone has
 Pages and OIDC write; it has contents read. Prepare/promote have Pages read for
@@ -177,3 +176,19 @@ The per-family setup guide is [AGENT_SETUP.md](AGENT_SETUP.md). The planned
 watch setting is a base URL such as `https://jekamas.github.io/SpaceFox`; the
 feed endpoint is that base plus [`/feed.json`](https://jekamas.github.io/SpaceFox/feed.json).
 The first readback proves its recorded cycle, not continuing availability or cron.
+
+## Explicit pre-POST recovery qualification
+
+For an authorized manual fault rehearsal only, dispatch with
+`qualify_pre_post_recovery=true` (defaultfalse). After the arm step persists its
+exact intent, a separate step deliberately exits97. The arm job fails and deploy
+is skipped; the saved intent remains armed. This input is guarded by the manual
+`workflow_dispatch` event, so schedule/push and ordinary manual runs keep their
+normal path. It neither forces provider polling nor changes source ages or quota.
+
+After that old run is completed, a fresh ordinary dispatch with the inputfalse
+uses the existing recovery guard. A Pages404 is uncertain until exact old
+repository/source/run/attempt records prove the deploy job was skipped with no
+steps (or its named POST step explicitly skipped). Unknown, still-running,
+wrong-attempt or started POST records continue to refuse. Root owns the authentic
+rehearsal and final HTTPS readback; a local deliberate fault is not remote proof.

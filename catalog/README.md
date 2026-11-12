@@ -113,13 +113,14 @@ has no verified event-time location. `mapRenderQualification: not-performed`
 remains unchanged. A consumer must not turn these metadata facts into qualified
 marker/map acceptance.
 
-The unchanged initial import has 839 provider records: 103 countries, 350 organizations,
-170 configurations and 216 sites. The original adapter adds one explicit region
-and 13 source SVG definitions; the active curation now adds 3 official configurations,
-2 unresolved launch areas and 204 original SVGs (217 total). This dated query union is not current worldwide
-completeness or upcoming-reference/supplement closure. The maintained revision maps 54/165 original known configurations and 57/168
-with official additions. The 111 remaining exact IDs are reported as art gaps. Generic fallback is not visual coverage.
-No SVG is converted or qualified for Garmin by this tool.
+The dated initial import has 839 provider records: 103 countries, 350 organizations,
+170 configurations and 216 sites. The accepted global.3 maintained catalog has
+562 assets and maps 108/171 required configurations, with 63 exact artwork gaps.
+These are the accepted recipe/build coverage facts; a separate metadata refresh
+candidate has not been activated here. Generic fallback does not close artwork
+coverage. The query union is not current worldwide completeness or complete
+upcoming-reference/supplement closure. SVG export has local producer qualification;
+Garmin rendering, memory and device acceptance remain separate.
 
 Own code remains MIT. Imported facts retain their source/terms metadata, and each
 seed SVG retains creator, license and sources. Provider data and third-party rights

@@ -427,9 +427,13 @@ class CloudDeliveryTest(unittest.TestCase):
                              stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         self.assertEqual(0, run.returncode, run.stderr.decode())
         result = json.loads(run.stdout)
-        self.assertEqual(('true', 1, 2), (result['pending'], result['requests'], result['exportedFiles']))
+        self.assertEqual(('true', 1, 4), (result['pending'], result['requests'], result['exportedFiles']))
+        from tools.spacefox.visual_bridge import validate_feed as validate_v2
+        visual = validate_v2((out / 'wire2/feed.json').read_bytes())
+        self.assertEqual('immutable-catalog', visual['dictionaryMode'])
         feed = json.loads((out / 'feed.json').read_bytes())
         self.assertEqual((1, NOW), (feed['publisher']['generation'], feed['publisher']['selectionValidatedUtc']))
+        self.assertEqual(feed['publisher'], visual['publisher'])
         again = self.root / 'cli-recovered'
         run = subprocess.run(args + ['--output', str(again)], cwd=clone,
                              stdout=subprocess.PIPE, stderr=subprocess.PIPE)

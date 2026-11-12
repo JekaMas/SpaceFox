@@ -29,7 +29,7 @@ def utc_now():
     return int(datetime.now(timezone.utc).timestamp())
 
 
-def update(pub, client, now, catalog, *, trigger='scheduled', max_pages=2, detail_limit=2, clock=None):
+def update(pub, client, now, catalog, *, trigger='scheduled', max_pages=2, detail_limit=2, clock=None, artifact_builder=None, artifact_profile='feed-v1'):
     """Real vertical path. Required pagination is atomic; details are optional.
 
     Pagination stops within explicit request/record bounds and reports partial;
@@ -146,11 +146,12 @@ def update(pub, client, now, catalog, *, trigger='scheduled', max_pages=2, detai
         traversal = {'query': client.first_url, 'complete': complete, 'reportedCount': expected_count,
                      'receivedUpcoming': received, 'detailRequests': detail_calls,
                      'worldwideCompleteness': False}
-        files, catalog_digest = build_artifact(candidate, catalog, accepted_at, publisher=publisher,
+        builder = build_artifact if artifact_builder is None else artifact_builder
+        files, catalog_digest = builder(candidate, catalog, accepted_at, publisher=publisher,
                                              policy=pub.policy, traversal=traversal)
         revision = pub.accept_and_prepare(pub.head, primary_token, tuple(records), accepted_at, files, catalog_digest,
                                           invocation_utc=primary_request_at, selection_validated_utc=selection_epoch,
-                                          feed_publisher=publisher)
+                                          feed_publisher=publisher, artifact_profile=artifact_profile)
         token = None
         return {'result': 'pending', 'head': pub.head, 'requests': calls,
                 'traversal': traversal, 'detailFailures': detail_failures,
@@ -173,7 +174,7 @@ def export_pending(pub, directory):
 
 def executing_revision(root):
     """Bind permission SHA to the actual tracked clean producer checkout."""
-    scopes = ['tools/spacefox', 'tools/update_feed.py', 'catalog', 'schemas/feed-v1.json']
+    scopes = ['tools/spacefox', 'tools/update_feed.py', 'catalog', 'schemas']
     result = subprocess.run(['git', '-C', str(root), 'status', '--porcelain', '--untracked-files=all', '--', *scopes],
                             stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
     if result.stdout:
