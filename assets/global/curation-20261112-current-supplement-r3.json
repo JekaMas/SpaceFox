@@ -1,0 +1,701 @@
+{
+  "schemaVersion": 1,
+  "id": "current-2026-full-vehicle-supplement-20261112-r3",
+  "reviewedAt": "2026-11-12",
+  "sources": [
+    "https://www.innospc.com/shop_contents/myboard_read.htm?category_idx=&h_search_c=0&h_search_v=&idx=1012135&load_type=&me_popup=&myboard_code=sub04_02&page=1&page_idx=0&page_limit=5&tag_on=",
+    "https://www.innospc.com/page/sub01_02_1",
+    "https://www.innospc.com/page/sub01_03_1",
+    "https://www.dbaspace.com/about_s.html",
+    "https://www.stokespace.com/news/scaling-nova",
+    "https://www.isro.gov.in/ISRO_SOLVE.html",
+    "https://www.isro.gov.in/soundingRockets.html",
+    "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2025_26_Eng_29042026_Rev.pdf",
+    "https://www.dlr.de/en/latest/news/2026/successful-flight-of-dlr-sounding-rocket-mapheus-17",
+    "https://www.dlr.de/en/research-and-transfer/projects-and-missions/refex",
+    "https://www.alada.gov.br/",
+    "https://sscspace.com/news/rexus-35-36/",
+    "https://sscspace.com/wp-content/uploads/Launching-programme.pdf",
+    "https://www.kasa.go.kr/prog/plcyBrf/brief/kor/sub01_01_04/view.do?plcyBrfNo=370",
+    "https://en.cas-space.com/list/38.html",
+    "https://en.cas-space.com/list/41.html",
+    "https://en.cas-space.com/article/483.html",
+    "https://www.gov.br/aeb/pt-br/acesso-a-informacao/auditorias/prestacao-de-contas/relatorio-de-gestao-aeb-2025.pdf"
+  ],
+  "reason": "Append exact complete civil orbital/suborbital programmes from primary current offerings and2026+publications. No old identity/fact/decision/art/role/site changes. Alias strings are lossless facts, never identity resolution.",
+  "assets": [],
+  "updates": [],
+  "additions": [
+    {
+      "identity": "spacefox:configuration:sebit",
+      "facts": {
+        "sourceId": "sebit",
+        "name": "SEBIT",
+        "fullName": "SEBIT",
+        "variant": "suborbital test vehicle",
+        "sourceUrl": "https://www.innospc.com/shop_contents/myboard_read.htm?category_idx=&h_search_c=0&h_search_v=&idx=1012135&load_type=&me_popup=&myboard_code=sub04_02&page=1&page_idx=0&page_limit=5&tag_on=",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": 1098,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "development",
+        "officialLifecycleSource": "https://www.innospc.com/shop_contents/myboard_read.htm?category_idx=&h_search_c=0&h_search_v=&idx=1012135&load_type=&me_popup=&myboard_code=sub04_02&page=1&page_idx=0&page_limit=5&tag_on=",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "INNOSPACE reports the complete SEBIT suborbital rocket’s2026test and continuing corrective verification programme.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [
+          "SEBIT multipurpose suborbital rocket"
+        ],
+        "variantUnspecified": false
+      },
+      "references": {
+        "manufacturer": "ll2:organization:1098",
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:hanbit-micro",
+      "facts": {
+        "sourceId": "hanbit-micro",
+        "name": "HANBIT-Micro",
+        "fullName": "HANBIT-Micro",
+        "variant": "two main stages plus kick stage",
+        "sourceUrl": "https://www.innospc.com/page/sub01_02_1",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": 1098,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "development",
+        "officialLifecycleSource": "https://www.innospc.com/page/sub01_02_1",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "Manufacturer currently offers HANBIT-Micro as a distinct complete orbital launcher with two main stages and a kick stage.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [
+          "한빛-마이크로"
+        ],
+        "variantUnspecified": false
+      },
+      "references": {
+        "manufacturer": "ll2:organization:1098",
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:hanbit-mini",
+      "facts": {
+        "sourceId": "hanbit-mini",
+        "name": "HANBIT-Mini",
+        "fullName": "HANBIT-Mini",
+        "variant": "three-stage",
+        "sourceUrl": "https://www.innospc.com/page/sub01_03_1",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": 1098,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "development",
+        "officialLifecycleSource": "https://www.innospc.com/page/sub01_03_1",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "Manufacturer currently offers the distinct complete three-stage HANBIT-Mini orbital launcher.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [
+          "한빛-미니"
+        ],
+        "variantUnspecified": false,
+        "stages": 3
+      },
+      "references": {
+        "manufacturer": "ll2:organization:1098",
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:nebula2",
+      "facts": {
+        "sourceId": "nebula2",
+        "name": "Nebula-2",
+        "fullName": "Nebula-2",
+        "variant": "variant unspecified",
+        "sourceUrl": "https://www.dbaspace.com/about_s.html",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": 1102,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "development",
+        "officialLifecycleSource": "https://www.dbaspace.com/about_s.html",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "Deep Blue explicitly plans Nebula2 first-flight and commercial phase in2027 while distinguishing Nebula1.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [
+          "星云二号"
+        ],
+        "variantUnspecified": true
+      },
+      "references": {
+        "manufacturer": "ll2:organization:1102",
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:nova-block-2",
+      "facts": {
+        "sourceId": "nova-block-2",
+        "name": "Nova Block 2",
+        "fullName": "Nova Block 2",
+        "variant": "Block 2",
+        "sourceUrl": "https://www.stokespace.com/news/scaling-nova",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": 1048,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "development",
+        "officialLifecycleSource": "https://www.stokespace.com/news/scaling-nova",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "Stoke explicitly announced the distinct complete Nova Block2 configuration inSeptember2026 with2029first-flight plan.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [
+          "Nova Block2"
+        ],
+        "variantUnspecified": false
+      },
+      "references": {
+        "manufacturer": "ll2:organization:1048",
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:solve",
+      "facts": {
+        "sourceId": "solve",
+        "name": "SOLVE",
+        "fullName": "SOLVE",
+        "variant": "solid suborbital parachute test vehicle",
+        "sourceUrl": "https://www.isro.gov.in/ISRO_SOLVE.html",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": 31,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "development",
+        "officialLifecycleSource": "https://www.isro.gov.in/ISRO_SOLVE.html",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "ISRO explicitly develops SOLVE, a new complete solid suborbital launch vehicle for Gaganyaan parachute experiments in2026.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [
+          "Sub-Orbital Launch Vehicle for Experiments"
+        ],
+        "variantUnspecified": false
+      },
+      "references": {
+        "manufacturer": "ll2:organization:31",
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:rh200",
+      "facts": {
+        "sourceId": "rh200",
+        "name": "Rohini RH-200",
+        "fullName": "Rohini RH-200",
+        "variant": "RH-200",
+        "sourceUrl": "https://www.isro.gov.in/soundingRockets.html",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": 31,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "operating",
+        "officialLifecycleSource": "https://www.isro.gov.in/soundingRockets.html",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "ISRO current operational sounding-rocket inventory explicitly offers RH200.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [
+          "RH-200"
+        ],
+        "variantUnspecified": false
+      },
+      "references": {
+        "manufacturer": "ll2:organization:31",
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:rh300-mk2",
+      "facts": {
+        "sourceId": "rh300-mk2",
+        "name": "Rohini RH-300 Mk II",
+        "fullName": "Rohini RH-300 Mk II",
+        "variant": "RH-300-Mk-II",
+        "sourceUrl": "https://www.isro.gov.in/soundingRockets.html",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": 31,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "operating",
+        "officialLifecycleSource": "https://www.isro.gov.in/soundingRockets.html",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "ISRO current operational sounding-rocket inventory explicitly offers RH300MkII.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [
+          "RH-300-Mk-II"
+        ],
+        "variantUnspecified": false
+      },
+      "references": {
+        "manufacturer": "ll2:organization:31",
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:nglv-no-solid-strap-ons",
+      "facts": {
+        "sourceId": "nglv-no-solid-strap-ons",
+        "name": "NGLV without solid strap-ons",
+        "fullName": "NGLV without solid strap-ons",
+        "variant": "without solid strap-ons",
+        "sourceUrl": "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2025_26_Eng_29042026_Rev.pdf",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": 31,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "development",
+        "officialLifecycleSource": "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2025_26_Eng_29042026_Rev.pdf",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "ISRO2025–26annual report explicitly plans the complete NGLV variant without solid strap-ons.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [
+          "NGLV without solid strap-ons"
+        ],
+        "variantUnspecified": false,
+        "stages": 3
+      },
+      "references": {
+        "manufacturer": "ll2:organization:31",
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:nglv-solid-strap-ons",
+      "facts": {
+        "sourceId": "nglv-solid-strap-ons",
+        "name": "NGLV with solid strap-ons",
+        "fullName": "NGLV with solid strap-ons",
+        "variant": "with solid strap-ons",
+        "sourceUrl": "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2025_26_Eng_29042026_Rev.pdf",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": 31,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "development",
+        "officialLifecycleSource": "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2025_26_Eng_29042026_Rev.pdf",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "ISRO2025–26annual report explicitly plans the complete NGLV variant with solid strap-ons.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [
+          "NGLV with solid strap-ons"
+        ],
+        "variantUnspecified": false,
+        "stages": 3
+      },
+      "references": {
+        "manufacturer": "ll2:organization:31",
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:red-kite-improved-malemute",
+      "facts": {
+        "sourceId": "red-kite-improved-malemute",
+        "name": "Red Kite–Improved Malemute",
+        "fullName": "Red Kite–Improved Malemute",
+        "variant": "two-stage sounding",
+        "sourceUrl": "https://www.dlr.de/en/latest/news/2026/successful-flight-of-dlr-sounding-rocket-mapheus-17",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": 29,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "operating",
+        "officialLifecycleSource": "https://www.dlr.de/en/latest/news/2026/successful-flight-of-dlr-sounding-rocket-mapheus-17",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "DLR reports the complete RedKite/ImprovedMalemute rocket flying MAPHEUS17 onOctober1,2026 within a recurring programme.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [
+          "RK/IM",
+          "MAPHEUS Red Kite–Improved Malemute"
+        ],
+        "variantUnspecified": false,
+        "stages": 2
+      },
+      "references": {
+        "manufacturer": "ll2:organization:29",
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:vsb30",
+      "facts": {
+        "sourceId": "vsb30",
+        "name": "VSB-30",
+        "fullName": "VSB-30",
+        "variant": "variant unspecified",
+        "sourceUrl": "https://www.dlr.de/en/research-and-transfer/projects-and-missions/refex",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "operating",
+        "officialLifecycleSource": "https://www.dlr.de/en/research-and-transfer/projects-and-missions/refex",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "ALADA currently offers VSB30; DLR and SSC explicitly retain current/future whole VSB30 science carrier programmes.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [
+          "VSB30"
+        ],
+        "variantUnspecified": true,
+        "stages": 2
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:improved-orion",
+      "facts": {
+        "sourceId": "improved-orion",
+        "name": "Improved Orion",
+        "fullName": "Improved Orion",
+        "variant": "single-stage sounding",
+        "sourceUrl": "https://sscspace.com/news/rexus-35-36/",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "operating",
+        "officialLifecycleSource": "https://sscspace.com/news/rexus-35-36/",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "SSC actual March2026REXUS35/36 flights identify single-stage Orion; programme explicitly binds these and2027+REXUS to ImprovedOrion.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [
+          "Single stage Orion",
+          "REXUS Improved Orion"
+        ],
+        "variantUnspecified": false,
+        "stages": 1
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:korean-next-generation-methane",
+      "facts": {
+        "sourceId": "korean-next-generation-methane",
+        "name": "Korean next-generation methane reusable launcher",
+        "fullName": "Korean next-generation methane reusable launcher",
+        "variant": "2025 revised methane programme",
+        "sourceUrl": "https://www.kasa.go.kr/prog/plcyBrf/brief/kor/sub01_01_04/view.do?plcyBrfNo=370",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "development",
+        "officialLifecycleSource": "https://www.kasa.go.kr/prog/plcyBrf/brief/kor/sub01_01_04/view.do?plcyBrfNo=370",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "KASA March2026publication explicitly starts revised methane reusable next-generation launcher development toward2032.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [
+          "차세대발사체"
+        ],
+        "variantUnspecified": false
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:kinetica2h",
+      "facts": {
+        "sourceId": "kinetica2h",
+        "name": "Kinetica-2H",
+        "fullName": "Kinetica-2H",
+        "variant": "variant unspecified",
+        "sourceUrl": "https://en.cas-space.com/list/38.html",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": 1040,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "development",
+        "officialLifecycleSource": "https://en.cas-space.com/list/38.html",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "CAS Space currently offers Kinetica2H as a distinct complete future launcher in its manufacturer fleet.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [
+          "PR-2H"
+        ],
+        "variantUnspecified": true
+      },
+      "references": {
+        "manufacturer": "ll2:organization:1040",
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:kinetica3",
+      "facts": {
+        "sourceId": "kinetica3",
+        "name": "Kinetica-3",
+        "fullName": "Kinetica-3",
+        "variant": "variant unspecified",
+        "sourceUrl": "https://en.cas-space.com/list/41.html",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": 1040,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "development",
+        "officialLifecycleSource": "https://en.cas-space.com/list/41.html",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "CAS Space currently offers Kinetica3 as a distinct complete launcher aimed at future space-access demand.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [
+          "PR-3"
+        ],
+        "variantUnspecified": true
+      },
+      "references": {
+        "manufacturer": "ll2:organization:1040",
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:lihong1-y1-test",
+      "facts": {
+        "sourceId": "lihong1-y1-test",
+        "name": "Li Hong-1 Y1 suborbital test vehicle",
+        "fullName": "Li Hong-1 Y1 suborbital test vehicle",
+        "variant": "Y1 complete test vehicle",
+        "sourceUrl": "https://en.cas-space.com/article/483.html",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": 1040,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "flight-demonstrated",
+        "officialLifecycleSource": "https://en.cas-space.com/article/483.html",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "CAS Space explicitly reports the complete LiHong1Y1 suborbital test vehicle’s January12,2026flight to120km, with separate recovered capsule.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [
+          "Li Hong-1 (PH-1) maiden test vehicle"
+        ],
+        "variantUnspecified": false
+      },
+      "references": {
+        "manufacturer": "ll2:organization:1040",
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:vs30",
+      "facts": {
+        "sourceId": "vs30",
+        "name": "VS-30",
+        "fullName": "VS-30",
+        "variant": "variant unspecified",
+        "sourceUrl": "https://www.gov.br/aeb/pt-br/acesso-a-informacao/auditorias/prestacao-de-contas/relatorio-de-gestao-aeb-2025.pdf",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "operating",
+        "officialLifecycleSource": "https://www.gov.br/aeb/pt-br/acesso-a-informacao/auditorias/prestacao-de-contas/relatorio-de-gestao-aeb-2025.pdf",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "AEB report explicitly plans a VS30 launch of the PSM science module in the second half of2026.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [
+          "VS30"
+        ],
+        "variantUnspecified": true
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:vs50",
+      "facts": {
+        "sourceId": "vs50",
+        "name": "VS-50",
+        "fullName": "VS-50",
+        "variant": "variant unspecified",
+        "sourceUrl": "https://www.gov.br/aeb/pt-br/acesso-a-informacao/auditorias/prestacao-de-contas/relatorio-de-gestao-aeb-2025.pdf",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "development",
+        "officialLifecycleSource": "https://www.gov.br/aeb/pt-br/acesso-a-informacao/auditorias/prestacao-de-contas/relatorio-de-gestao-aeb-2025.pdf",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "AEB report explicitly retains complete two-stage VS50 qualification and technology development in its2026programme.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [
+          "VS50"
+        ],
+        "variantUnspecified": true,
+        "stages": 2
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:vlm1",
+      "facts": {
+        "sourceId": "vlm1",
+        "name": "VLM-1",
+        "fullName": "VLM-1",
+        "variant": "variant unspecified",
+        "sourceUrl": "https://www.gov.br/aeb/pt-br/acesso-a-informacao/auditorias/prestacao-de-contas/relatorio-de-gestao-aeb-2025.pdf",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "development",
+        "officialLifecycleSource": "https://www.gov.br/aeb/pt-br/acesso-a-informacao/auditorias/prestacao-de-contas/relatorio-de-gestao-aeb-2025.pdf",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "AEB report explicitly retains orbital VLM1 development and precursor qualification for2026.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [
+          "VLM1",
+          "Veículo Lançador de Microssatélites"
+        ],
+        "variantUnspecified": true,
+        "stages": 3
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    }
+  ]
+}

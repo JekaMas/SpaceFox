@@ -57,8 +57,8 @@ class BridgeRuntimePublicTest(unittest.TestCase):
         result = subprocess.run(['bash', '-e', '-o', 'pipefail', '-c', script],
                                 cwd=self.source, capture_output=True)
         self.assertEqual(0, result.returncode, result.stderr.decode())
-        #595canonical inputDigests plus the authenticated recipe itself.
-        self.assertEqual(596, json.loads(result.stdout)['catalogInputs'])
+        # The accepted current recipe has 683 declared inputs plus the recipe itself.
+        self.assertEqual(684, json.loads(result.stdout)['catalogInputs'])
         # Independent inventory follows the literal source declarations rather
         # than build_catalog.inputDigests or production dependencies() helpers.
         data = {'catalog/source.json'}
@@ -68,7 +68,7 @@ class BridgeRuntimePublicTest(unittest.TestCase):
             self.assertEqual(pin['sha256'], hashlib.sha256(raw).hexdigest())
             return json.loads(raw)
         recipe = json.loads((self.source / 'catalog/source.json').read_bytes())
-        read(recipe['reference']);read(recipe['geography'])
+        read(recipe['reference']);read(recipe['geography']);read(recipe['eligibility']);read(recipe['currentContexts'])
         for pin in (recipe['assetSeed'], *recipe['curations']):
             source = read(pin)
             rows = ([a['facts'] for a in source['assets']] if 'assets' in source else
@@ -83,7 +83,7 @@ class BridgeRuntimePublicTest(unittest.TestCase):
                     *[p for item in regional.get('supplements',[]) for p in (item,item['metadata'])]):
             data.add(pin['path'])
             self.assertEqual(pin['sha256'], hashlib.sha256((self.source / pin['path']).read_bytes()).hexdigest())
-        self.assertEqual(595, len(data - {'catalog/source.json'}))
+        self.assertEqual(683, len(data - {'catalog/source.json'}))
         seed = {p.removeprefix('/') for p in (self.source / '.github/spacefox-inputs.txt').read_text().splitlines()}
         tracked = set(git(self.source, 'ls-tree', '-r', '--name-only', 'HEAD').splitlines())
         seed &= tracked
@@ -160,6 +160,12 @@ class BridgeRuntimePublicTest(unittest.TestCase):
         return expected
 
     def test_dual_producer_pending_content_source_clocks_and_runtime_roots(self):
+        self._dual_producer(negative=False)
+
+    def test_dual_producer_rejects_root_switches_and_corrupt_optional(self):
+        self._dual_producer(negative=True)
+
+    def _dual_producer(self, *, negative):
         self.full_checkout()
         result = subprocess.run([sys.executable, '-B', '-c', SEED, str(self.remote), self.code],
                                 cwd=self.source, capture_output=True)
@@ -170,15 +176,25 @@ class BridgeRuntimePublicTest(unittest.TestCase):
         recovered = self.prepare(first_output)
         self.assertEqual(('recovered_pending', 0), (recovered['result'], recovered['requests']))
         self.assertEqual(original, self.publisher().ledger)
-        first = self.publish(first_output, challenge_roots=True)
+        first = self.publish(first_output, challenge_roots=negative)
         self.assertEqual((1, 2), tuple(json.loads(first[p])['schemaVersion'] for p in ('feed.json', 'wire2/feed.json')))
         # Restore the full authenticated source only for prepare, then change a
         # genuine recipe semantic input in the isolated public source clone.
         self.full_checkout()
         recipe = json.loads((self.source / 'catalog/source.json').read_bytes())
         recipe['catalogVersion'] += '.content-clock'
+        # Eligibility is an immutable input bound to the catalog version. A
+        # data-only version fixture must publish a matching independently pinned
+        # registry, while preserving its actual per-identity decisions.
+        eligibility = json.loads((self.source / recipe['eligibility']['path']).read_bytes())
+        eligibility['catalogVersion'] = recipe['catalogVersion']
+        eligibility_bytes = prior.encoded(eligibility)
+        eligibility_hash = hashlib.sha256(eligibility_bytes).hexdigest()
+        eligibility_path = 'catalog/current-eligibility-' + eligibility_hash + '.json'
+        (self.source / eligibility_path).write_bytes(eligibility_bytes)
+        recipe['eligibility'] = {'path': eligibility_path, 'sha256': eligibility_hash}
         (self.source / 'catalog/source.json').write_bytes(prior.encoded(recipe))
-        git(self.source, 'add', '--sparse', 'catalog/source.json')
+        git(self.source, 'add', '--sparse', 'catalog/source.json', eligibility_path)
         git(self.source, 'commit', '-qm', 'data-only catalog revision fixture')
         self.code = git(self.source, 'rev-parse', 'HEAD')
         git(self.source, 'push', '-q', str(self.remote), 'HEAD:refs/heads/main')
@@ -189,17 +205,18 @@ class BridgeRuntimePublicTest(unittest.TestCase):
         pub = self.publisher()
         for key in ('accepted', 'requests', 'last_poll_utc', 'selection_validated_utc'):
             self.assertEqual(before[key], pub.ledger[key], key)
-        # Deliberately corrupt one authenticated saved optional shard. Runtime
-        # must reject before intent/POST, retaining exact corrupt fixture state.
-        baseline = pub.head
-        optional = next(p for p in pub.pending_files() if p.startswith('objects/'))
-        self.runtime('arm')
-        self.poison('artifacts/2/' + optional, b'{}')
-        corrupt = self.snapshot(); posts = len(self.service.posts)
-        self.cli('arm', '--expected-base', corrupt[0], '--artifact-id', '99', success=False)
-        self.assertEqual(corrupt, self.snapshot())
-        self.assertEqual((posts, 0), (len(self.service.posts), self.service.provider_calls))
-        git(self.remote, 'update-ref', 'refs/heads/feed-state', baseline)
+        if negative:
+            # Deliberately corrupt one authenticated saved optional shard. Runtime
+            # must reject before intent/POST, retaining exact corrupt fixture state.
+            baseline = pub.head
+            optional = next(p for p in pub.pending_files() if p.startswith('objects/'))
+            self.runtime('arm')
+            self.poison('artifacts/2/' + optional, b'{}')
+            corrupt = self.snapshot(); posts = len(self.service.posts)
+            self.cli('arm', '--expected-base', corrupt[0], '--artifact-id', '99', success=False)
+            self.assertEqual(corrupt, self.snapshot())
+            self.assertEqual((posts, 0), (len(self.service.posts), self.service.provider_calls))
+            git(self.remote, 'update-ref', 'refs/heads/feed-state', baseline)
         second = self.publish(second_output)
         for path, raw in first.items():
             if path not in ('feed.json', 'wire2/feed.json'):
@@ -224,9 +241,9 @@ class BridgeRuntimePublicTest(unittest.TestCase):
         runtime_files = {p.removeprefix('/') for p in (ROOT / '.github/spacefox-inputs.txt').read_text().splitlines()
                          if p != '/catalog/source.json'} & tracked
         print('BRIDGE_TRACE ' + json.dumps({'runtimeFiles': len(runtime_files),
-              'prepareInputs':596,'canonicalInputDigests':595,'firstFiles':len(first),'unionFiles':len(second),'unionBytes':sum(map(len,second.values())),
+              'prepareInputs':684,'canonicalInputDigests':683,'firstFiles':len(first),'unionFiles':len(second),'unionBytes':sum(map(len,second.values())),
               'posts':2,'providerCalls':0,'selectionValidatedUtc':after['selection_validated_utc'],
-              'twoMutableRootsChallenged':True,'sourceOnlyGeneration':after['generation']},sort_keys=True))
+              'twoMutableRootsChallenged':negative,'sourceOnlyGeneration':after['generation']},sort_keys=True))
 
     def test_unmarked_v1_pending_adoption_remains_exact_without_source_data(self):
         self.runtime('arm')
@@ -260,6 +277,12 @@ class BridgeRuntimePublicTest(unittest.TestCase):
         self.assertEqual((1,0),(len(self.service.posts),self.service.provider_calls))
 
     def test_manual_pre_post_fault_retains_intent_and_requires_exact_skipped_attempt(self):
+        self._manual_pre_post_fault(negative=False)
+
+    def test_manual_pre_post_refuses_ambiguous_old_attempts(self):
+        self._manual_pre_post_fault(negative=True)
+
+    def _manual_pre_post_fault(self, *, negative):
         workflow = (ROOT / '.github/workflows/update-feed.yml').read_text()
         definition = workflow.split('      qualify_pre_post_recovery:\n',1)[1].split('\n\n',1)[0]
         self.assertIn('        type: boolean\n        default: false', definition)
@@ -299,16 +322,17 @@ class BridgeRuntimePublicTest(unittest.TestCase):
                    'repository':{'full_name':'owner/SpaceFox'}}
         valid_job={'name':'deploy','run_id':87,'head_sha':self.code,'status':'completed','conclusion':'skipped','steps':[]}
         valid={prefix:valid_run,prefix+'/jobs?per_page=100':{'total_count':1,'jobs':[valid_job]}}
-        for mode in ('unknown','run-started','deploy-started','wrong-attempt'):
-            self.service.actions=deepcopy(valid)
-            if mode=='unknown':self.service.actions={}
-            elif mode=='run-started':self.service.actions[prefix]['status']='in_progress'
-            elif mode=='wrong-attempt':self.service.actions[prefix]['run_attempt']=2
-            else:self.service.actions[prefix+'/jobs?per_page=100']['jobs'][0].update(conclusion='failure',steps=[
-                {'name':'POST once, then bound async polling and cancellation finality','status':'completed','conclusion':'failure'}])
-            self.cli('recover',success=False)
-            self.assertEqual(before,self.snapshot())
-            self.assertEqual(([],0),(self.service.posts,self.service.provider_calls))
+        if negative:
+            for mode in ('unknown','run-started','deploy-started','wrong-attempt'):
+                self.service.actions=deepcopy(valid)
+                if mode=='unknown':self.service.actions={}
+                elif mode=='run-started':self.service.actions[prefix]['status']='in_progress'
+                elif mode=='wrong-attempt':self.service.actions[prefix]['run_attempt']=2
+                else:self.service.actions[prefix+'/jobs?per_page=100']['jobs'][0].update(conclusion='failure',steps=[
+                    {'name':'POST once, then bound async polling and cancellation finality','status':'completed','conclusion':'failure'}])
+                self.cli('recover',success=False)
+                self.assertEqual(before,self.snapshot())
+                self.assertEqual(([],0),(self.service.posts,self.service.provider_calls))
         self.service.actions=valid
         self.cli('recover')
         after=json.loads(git(self.remote,'show','refs/heads/feed-state:cloud.json'))
@@ -320,9 +344,15 @@ class BridgeRuntimePublicTest(unittest.TestCase):
         self.assertIsNone(pub.ledger['active'])
         self.assertEqual(([],0),(self.service.posts,self.service.provider_calls))
         print('PRE_POST_RECOVERY '+json.dumps({'faultExit':97,'intentStatusBefore':'armed','intentStatusAfter':'not_started',
-              'refusals':4,'newRunId':88,'oldRunId':87,'posts':0,'providerCalls':0,'pendingExact':True},sort_keys=True))
+              'refusals':4 if negative else 0,'newRunId':88,'oldRunId':87,'posts':0,'providerCalls':0,'pendingExact':True},sort_keys=True))
 
     def test_frozen_rich_a_b_exact_union_through_runtime_only_cli(self):
+        self._frozen_rich_a_b(negative=False)
+
+    def test_frozen_rich_rejects_both_mutable_root_switches(self):
+        self._frozen_rich_a_b(negative=True)
+
+    def _frozen_rich_a_b(self, *, negative):
         from tools.spacefox.schedule import (LaunchRecord,StableId,IdKind,Timing,TimePrecision,LaunchStatus)
         from tools.spacefox.publisher import LiveRevision
         self.runtime('arm')
@@ -361,7 +391,7 @@ class BridgeRuntimePublicTest(unittest.TestCase):
             output=self.base/('frozen-'+label);output.mkdir()
             for path,raw in expected.items():
                 target=output/path;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(raw)
-            actual=self.publish(output,challenge_roots=generation==2)
+            actual=self.publish(output,challenge_roots=negative and generation==2)
             self.assertEqual(expected,actual)
             observed.append({'generation':generation,'files':len(actual),'bytes':sum(map(len,actual.values()))})
             pub=self.publisher()
@@ -376,7 +406,7 @@ class BridgeRuntimePublicTest(unittest.TestCase):
         self.assertEqual((2,0),(len(self.service.posts),self.service.provider_calls))
         self.assertFalse((self.source/'catalog').exists())
         self.assertFalse((self.source/'tests').exists())
-        print('FROZEN_RICH_TRACE '+json.dumps({'generations':observed,'bothMutableRootsChallenged':True,
+        print('FROZEN_RICH_TRACE '+json.dumps({'generations':observed,'bothMutableRootsChallenged':negative,
               'providerCalls':0,'builderCalls':0,'nodeCalls':0,'catalogSourceReads':0,'immutableFixtureBytesExact':True},sort_keys=True))
 
 

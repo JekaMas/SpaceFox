@@ -1,0 +1,759 @@
+{
+  "schemaVersion": 1,
+  "id": "current-2026-art-20261112-r1",
+  "reviewedAt": "2026-11-12",
+  "sources": [
+    "https://www.isro.gov.in/media_isro/pdf/ResourcesPdf/SpaceIndia/publication%2832%29.pdf",
+    "https://www.isro.gov.in/soundingRockets.html",
+    "https://www.innospc.com/myboard/sub04_02/1012135",
+    "https://www.innospc.com/page/sub01_02_1",
+    "https://www.innospc.com/page/sub01_03_1",
+    "https://www.dbaspace.com/rocket_s.html",
+    "https://www.stokespace.com/news/scaling-nova",
+    "https://en.cas-space.com/list/38.html",
+    "https://en.cas-space.com/list/41.html",
+    "https://en.cas-space.com/article/483.html",
+    "https://www.gov.br/aeb/pt-br/acoes-e-programas/aplicacoes-espaciais/transporte-espacial/vs-50",
+    "https://www.gov.br/aeb/pt-br/acoes-e-programas/aplicacoes-espaciais/transporte-espacial/vlm-1",
+    "https://www.gov.br/aeb/pt-br/acesso-a-informacao/auditorias/prestacao-de-contas/relatorio-de-gestao-aeb-2025.pdf",
+    "https://elib.dlr.de/196704/1/15082023-Bits%20and%20Bytes%20in%20Microgravity%20Insights%20into%20the%20hardware%20and%20software%20of%20sounding%20rockets.pdf",
+    "https://sscspace.com/news/rexus-35-36/",
+    "https://www.gov.br/aeb/pt-br/acoes-e-programas/aplicacoes-espaciais/transporte-espacial/vs-30",
+    "https://www.gov.br/aeb/pt-br/acoes-e-programas/aplicacoes-espaciais/transporte-espacial/vsb-30",
+    "https://www.isro.gov.in/ISRO_EN/RH200_200th_successive_launch.html"
+  ],
+  "reason": "Original source-bounded vehicle representatives only; preserve exact factual and lifecycle decisions and all nonvisual relationships.",
+  "assets": [
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-rh300-mk2-isro1997",
+        "name": "rh300-mk2-isro1997",
+        "file": "current-20261112-art/svg/rh300-mk2.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; source graphics retain their own rights.",
+        "sourceSha256": "cb871f0ac43ce6ee7d944868213c9475d4b2884a174a283cf56db3cc2a3fd345",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.isro.gov.in/media_isro/pdf/ResourcesPdf/SpaceIndia/publication%2832%29.pdf",
+          "https://www.isro.gov.in/soundingRockets.html"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:rh300-mk2"
+          ],
+          "features": [
+            "ISRO 1997 caption explicitly identifies RH 300 Mk II; the agency figure and table show a slender one-stage body and 305 mm diameter with aft fin assembly.",
+            "Original simplified red body and pale pointed nose draw on the agency photograph; lateral fins are symbolic projections."
+          ],
+          "limitations": "Original MIT artwork, not source image or official mark. 1997 representative only; payload section lengths and colour vary by mission. Fin projection, stations and proportions are approximate; the drawing does not claim an exact current flight. No stage, dimension or origin fact is added."
+        },
+        "geometryReference": {
+          "basis": "ISRO Space India April-June 1997, printed p13-14, approximate exterior only.",
+          "reviewedAt": "2026-11-12",
+          "representativeDate": "1997-04",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-art-sebit-r1",
+        "name": "sebit",
+        "file": "current-20261112-art/svg/sebit.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; source graphics retain their own rights.",
+        "sourceSha256": "bae62e170b1561cfe3ff3302422334a552bd36711c6e6f933123f81cb6484a95",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.innospc.com/myboard/sub04_02/1012135"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:sebit"
+          ],
+          "features": [
+            "Manufacturer named 2026 complete SEBIT representative, dark nose and lower body, pale upper area and four aft fins shown symbolically.",
+            "Single-stage silhouette is independent of the HANBIT orbital series."
+          ],
+          "limitations": "Illustrates the first test article; later control/engine improvements may change details. Fin projections, colour blocks and stations approximate; dark surface is lightened for visibility on black. No official emblem or mission lettering."
+        },
+        "geometryReference": {
+          "basis": "Named source exterior, independently drawn approximate schematic; no inferred configuration fact.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true,
+          "representativeDate": "2026-09"
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-art-hanbit-micro-r1",
+        "name": "hanbit-micro",
+        "file": "current-20261112-art/svg/hanbit-micro.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; source graphics retain their own rights.",
+        "sourceSha256": "8d3d2900f07f0ab3becb060152966fa1a3dc0a2357bcb369e3acde90f240fe52",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.innospc.com/page/sub01_02_1"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:hanbit-micro"
+          ],
+          "features": [
+            "Manufacturer whole product rendering shows a slim unboosted white cylinder with rounded pointed fairing.",
+            "Relative width reflects published full-vehicle dimensions; internal stages and kick stage are not separate rocket images."
+          ],
+          "limitations": "Undated manufacturer concept, not evidence of a flight or final configuration. Exact length, stage transitions, surface detailing, colour panels and engines are schematic; no logos or flag."
+        },
+        "geometryReference": {
+          "basis": "Named source exterior, independently drawn approximate schematic; no inferred configuration fact.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-art-hanbit-mini-r1",
+        "name": "hanbit-mini",
+        "file": "current-20261112-art/svg/hanbit-mini.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; source graphics retain their own rights.",
+        "sourceSha256": "a14bacd998c21a5951cb7582de79c9c732a3b9b6f55be0e51c1dbedc404fc917",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.innospc.com/page/sub01_03_1"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:hanbit-mini"
+          ],
+          "features": [
+            "Manufacturer whole product rendering shows a slim unboosted white cylinder with rounded pointed fairing.",
+            "Relative width reflects published full-vehicle dimensions; internal stages and kick stage are not separate rocket images."
+          ],
+          "limitations": "Undated manufacturer concept, not evidence of a flight or final configuration. Exact length, stage transitions, surface detailing, colour panels and engines are schematic; no logos or flag."
+        },
+        "geometryReference": {
+          "basis": "Named source exterior, independently drawn approximate schematic; no inferred configuration fact.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-art-nebula2-r1",
+        "name": "nebula2",
+        "file": "current-20261112-art/svg/nebula2.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; source graphics retain their own rights.",
+        "sourceSha256": "d84d488610ae324d115f60ab08731b12ed0e72698317602f8ce59c41223efe1a",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.dbaspace.com/rocket_s.html"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:nebula2"
+          ],
+          "features": [
+            "Manufacturer November 2026 Nebula-2 rendering shows a metallic slender unboosted vehicle with rounded fairing and aft features.",
+            "Long single core with neutral engine symbol, not the distinct Nebula-1."
+          ],
+          "limitations": "Dated development render; current and future design can change. Side features and engine count are deliberately schematic. No painted flags, writing or logos."
+        },
+        "geometryReference": {
+          "basis": "Named source exterior, independently drawn approximate schematic; no inferred configuration fact.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true,
+          "representativeDate": "2026-11"
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-art-nova-block2-r1",
+        "name": "nova-block2",
+        "file": "current-20261112-art/svg/nova-block2.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; source graphics retain their own rights.",
+        "sourceSha256": "f3373d5a9362956ad6c01e740ae6d0043e3b5eee37e4b9f9d2bd9c77147d8b2d",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.stokespace.com/news/scaling-nova"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:nova-block-2"
+          ],
+          "features": [
+            "September 2026 Stoke comparison labels Block 2 separately from Pathfinder: cylindrical upper stage and broad fairing rather than Pathfinder’s tapered upper stage.",
+            "Slim core and visible fairing shoulder; internal cutaway elements not reproduced."
+          ],
+          "limitations": "Future design and proportions approximate; no flight readiness or final hardware claim. Base is a neutral symbol and does not count engines."
+        },
+        "geometryReference": {
+          "basis": "Named source exterior, independently drawn approximate schematic; no inferred configuration fact.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true,
+          "representativeDate": "2026-09"
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-art-kinetica2h-r1",
+        "name": "kinetica2h",
+        "file": "current-20261112-art/svg/kinetica2h.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; source graphics retain their own rights.",
+        "sourceSha256": "240c1995fdcb43946305579ca804f4e35230809181f9295fa3219614ab135b73",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://en.cas-space.com/list/38.html"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:kinetica2h"
+          ],
+          "features": [
+            "Manufacturer named product rendering shows a central core and side core projections with a long upper stack and rounded fairing.",
+            "Orthographic representation shows two side projections, not a count of all physical cores."
+          ],
+          "limitations": "Manufacturer development concept; rear structures may be occluded, engine and placement details approximated. No national marks or official logo."
+        },
+        "geometryReference": {
+          "basis": "Named source exterior, independently drawn approximate schematic; no inferred configuration fact.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-art-kinetica3-r1",
+        "name": "kinetica3",
+        "file": "current-20261112-art/svg/kinetica3.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; source graphics retain their own rights.",
+        "sourceSha256": "de616feb0e2faf7e9fbc289b7cd7cf531d24affb046fe9b61f0210eb49c27270",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://en.cas-space.com/list/41.html"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:kinetica3"
+          ],
+          "features": [
+            "Manufacturer named product image depicts an unboosted long vehicle with a tapering widened midsection and a pointed fairing.",
+            "Nominal 91 m height and 6.6 m diameter come from manufacturer product page; visual is not an engineering model."
+          ],
+          "limitations": "Manufacturer future concept, not a flight; finlike features and engine configuration are not specified by this schematic. Omits flag and logo."
+        },
+        "geometryReference": {
+          "basis": "Named source exterior, independently drawn approximate schematic; no inferred configuration fact.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-art-lihong1-y1-r1",
+        "name": "lihong1-y1",
+        "file": "current-20261112-art/svg/lihong1-y1.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; source graphics retain their own rights.",
+        "sourceSha256": "057ef8c366ab91b1d3d49c0dbbc7de1644792a85d7c8619633394d0450d897df",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://en.cas-space.com/article/483.html"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:lihong1-y1-test"
+          ],
+          "features": [
+            "Manufacturer 12 January 2026 article shows the named complete suborbital test vehicle in flight: slim pale body and rounded capsule-shaped upper section.",
+            "Lower fins and base are schematic; the separately recovered capsule is not mapped as a standalone rocket."
+          ],
+          "limitations": "Representative of Y1 test flight only, not a later orbital spacecraft or Li Hong-2; dimensions and landing hardware placement are not asserted. No logo or flag."
+        },
+        "geometryReference": {
+          "basis": "Named source exterior, independently drawn approximate schematic; no inferred configuration fact.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true,
+          "representativeDate": "2026-01"
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-art-vs50-r1",
+        "name": "vs50",
+        "file": "current-20261112-art/svg/vs50.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; source graphics retain their own rights.",
+        "sourceSha256": "726d1b9696af72f1f8428a4328aa6a7978c0255091a31d7ad9e0737f00675823",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.gov.br/aeb/pt-br/acoes-e-programas/aplicacoes-espaciais/transporte-espacial/vs-50"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:vs50"
+          ],
+          "features": [
+            "AEB named concept shows a broad unboosted S50 lower cylinder, S44 upper stage and pointed payload fairing.",
+            "Vehicle remains distinct from the three-stage VLM-1."
+          ],
+          "limitations": "Illustrates the published baseline development concept; payload dimensions, surface colours and final design may differ. Internal cutaway not reproduced and no official markings."
+        },
+        "geometryReference": {
+          "basis": "Named source exterior, independently drawn approximate schematic; no inferred configuration fact.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true,
+          "representativeDate": "2023-10"
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-art-vlm1-r1",
+        "name": "vlm1",
+        "file": "current-20261112-art/svg/vlm1.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; source graphics retain their own rights.",
+        "sourceSha256": "7072d5d85ee0aae56ea172885d54147e2924b10b8373d9f01c2123a09e68d6ba",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.gov.br/aeb/pt-br/acoes-e-programas/aplicacoes-espaciais/transporte-espacial/vlm-1",
+          "https://www.gov.br/aeb/pt-br/acesso-a-informacao/auditorias/prestacao-de-contas/relatorio-de-gestao-aeb-2025.pdf"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:vlm1"
+          ],
+          "features": [
+            "AEB concept shows a slender unboosted three-stage solid baseline with two equal-width S50 sections and smaller pointed head.",
+            "2025 annual report retains three-solid-stage baseline; separate proposed liquid-stage development is not asserted equivalent."
+          ],
+          "limitations": "Published baseline concept only; payload, colours, dimensions and final flight design remain uncertain. No flag or official graphics."
+        },
+        "geometryReference": {
+          "basis": "Named source exterior, independently drawn approximate schematic; no inferred configuration fact.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true,
+          "representativeDate": "2023-10"
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-art-improved-orion-r1",
+        "name": "improved-orion",
+        "file": "current-20261112-art/svg/improved-orion.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; source graphics retain their own rights.",
+        "sourceSha256": "0faa152fb8162fae00abc44a58e81fd5b7b97e8ca0a8381a1bfc3326644c04bd",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://elib.dlr.de/196704/1/15082023-Bits%20and%20Bytes%20in%20Microgravity%20Insights%20into%20the%20hardware%20and%20software%20of%20sounding%20rockets.pdf",
+          "https://sscspace.com/news/rexus-35-36/"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:improved-orion"
+          ],
+          "features": [
+            "DLR MORABA 2023 slide 7 explicitly labels the complete single-stage Improved Orion with slim body, pointed upper section and aft fins.",
+            "SSC reports the later REXUS 35/36 programme; no Nike booster is added."
+          ],
+          "limitations": "2023 representative only; payload, paint, fin projections and length vary with mission. No mission or logo claim."
+        },
+        "geometryReference": {
+          "basis": "Named source exterior, independently drawn approximate schematic; no inferred configuration fact.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true,
+          "representativeDate": "2023-08"
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-art-vs30-r1",
+        "name": "vs30",
+        "file": "current-20261112-art/svg/vs30.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; source graphics retain their own rights.",
+        "sourceSha256": "e1553f54582166116b3b44e2e3592270e4a0c5d2923cbcdb981e444865588ee3",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://elib.dlr.de/196704/1/15082023-Bits%20and%20Bytes%20in%20Microgravity%20Insights%20into%20the%20hardware%20and%20software%20of%20sounding%20rockets.pdf",
+          "https://www.gov.br/aeb/pt-br/acoes-e-programas/aplicacoes-espaciais/transporte-espacial/vs-30"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:vs30"
+          ],
+          "features": [
+            "DLR MORABA 2023 slide 7 labels single-stage VS-30 separately from VS-30/Improved Orion, with one slim lower motor, aft fins and long upper payload.",
+            "AEB confirms the single-stage configuration."
+          ],
+          "limitations": "Source-dated representative, not a claim of the particular V16 head or future payload. Stage sections and colour boundaries are schematic, no logos."
+        },
+        "geometryReference": {
+          "basis": "Named source exterior, independently drawn approximate schematic; no inferred configuration fact.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true,
+          "representativeDate": "2023-08"
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-art-vsb30-r1",
+        "name": "vsb30",
+        "file": "current-20261112-art/svg/vsb30.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; source graphics retain their own rights.",
+        "sourceSha256": "35768b2ea89895b7696325d3960cafacce95f8fc4fb4bfc7b95e99d31afadd35",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://elib.dlr.de/196704/1/15082023-Bits%20and%20Bytes%20in%20Microgravity%20Insights%20into%20the%20hardware%20and%20software%20of%20sounding%20rockets.pdf",
+          "https://www.gov.br/aeb/pt-br/acoes-e-programas/aplicacoes-espaciais/transporte-espacial/vsb-30"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:vsb30"
+          ],
+          "features": [
+            "DLR MORABA 2023 slide 7 explicitly labels VSB-30, a narrow two-motor S31/S30 stack with both aft and interstage fin projections.",
+            "DLR slide 10 identifies motor positions and a representative payload; AEB confirms the full carrier."
+          ],
+          "limitations": "2023 representative, not the specially modified ReFEx head; the experiment/payload assembly and exterior colours can vary. Fin projections and stations are approximate; no emblems."
+        },
+        "geometryReference": {
+          "basis": "Named source exterior, independently drawn approximate schematic; no inferred configuration fact.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true,
+          "representativeDate": "2023-08"
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-art-rh200-r1",
+        "name": "rh200",
+        "file": "current-20261112-art/svg/rh200.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; source graphics retain their own rights.",
+        "sourceSha256": "8ff4244e0e54f6306f5377b3e76520883779a894c3eb7ac99b9164dcc2507f06",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.isro.gov.in/ISRO_EN/RH200_200th_successive_launch.html",
+          "https://www.isro.gov.in/soundingRockets.html"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:rh200"
+          ],
+          "features": [
+            "ISRO 23 November 2022 RH-200 event gallery shows a red-lower white-upper vehicle model on stage and a matching broad colour relationship in distant flight photographs.",
+            "A representative body with two fin positions; fin projections and colours are schematic."
+          ],
+          "limitations": "The event page does not separately caption the stage display model; it is a representative visual lead, not proof that it reproduces every RH-200 version. Launch photos are distant. Exact payload, fin geometry and dimensions remain unasserted; independent source/identity judgment required."
+        },
+        "geometryReference": {
+          "basis": "Named source exterior, independently drawn approximate schematic; no inferred configuration fact.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true,
+          "representativeDate": "2022-11"
+        }
+      }
+    }
+  ],
+  "updates": [
+    {
+      "identity": "spacefox:configuration:rh300-mk2",
+      "changes": {
+        "currentPackAssetId": "current-rh300-mk2-isro1997",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.isro.gov.in/media_isro/pdf/ResourcesPdf/SpaceIndia/publication%2832%29.pdf",
+        "https://www.isro.gov.in/soundingRockets.html"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:sebit",
+      "changes": {
+        "currentPackAssetId": "current-art-sebit-r1",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.innospc.com/myboard/sub04_02/1012135"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:hanbit-micro",
+      "changes": {
+        "currentPackAssetId": "current-art-hanbit-micro-r1",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.innospc.com/page/sub01_02_1"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:hanbit-mini",
+      "changes": {
+        "currentPackAssetId": "current-art-hanbit-mini-r1",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.innospc.com/page/sub01_03_1"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:nebula2",
+      "changes": {
+        "currentPackAssetId": "current-art-nebula2-r1",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.dbaspace.com/rocket_s.html"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:nova-block-2",
+      "changes": {
+        "currentPackAssetId": "current-art-nova-block2-r1",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.stokespace.com/news/scaling-nova"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:kinetica2h",
+      "changes": {
+        "currentPackAssetId": "current-art-kinetica2h-r1",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://en.cas-space.com/list/38.html"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:kinetica3",
+      "changes": {
+        "currentPackAssetId": "current-art-kinetica3-r1",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://en.cas-space.com/list/41.html"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:lihong1-y1-test",
+      "changes": {
+        "currentPackAssetId": "current-art-lihong1-y1-r1",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://en.cas-space.com/article/483.html"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:vs50",
+      "changes": {
+        "currentPackAssetId": "current-art-vs50-r1",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.gov.br/aeb/pt-br/acoes-e-programas/aplicacoes-espaciais/transporte-espacial/vs-50"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:vlm1",
+      "changes": {
+        "currentPackAssetId": "current-art-vlm1-r1",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.gov.br/aeb/pt-br/acoes-e-programas/aplicacoes-espaciais/transporte-espacial/vlm-1",
+        "https://www.gov.br/aeb/pt-br/acesso-a-informacao/auditorias/prestacao-de-contas/relatorio-de-gestao-aeb-2025.pdf"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:improved-orion",
+      "changes": {
+        "currentPackAssetId": "current-art-improved-orion-r1",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://elib.dlr.de/196704/1/15082023-Bits%20and%20Bytes%20in%20Microgravity%20Insights%20into%20the%20hardware%20and%20software%20of%20sounding%20rockets.pdf",
+        "https://sscspace.com/news/rexus-35-36/"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:vs30",
+      "changes": {
+        "currentPackAssetId": "current-art-vs30-r1",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://elib.dlr.de/196704/1/15082023-Bits%20and%20Bytes%20in%20Microgravity%20Insights%20into%20the%20hardware%20and%20software%20of%20sounding%20rockets.pdf",
+        "https://www.gov.br/aeb/pt-br/acoes-e-programas/aplicacoes-espaciais/transporte-espacial/vs-30"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:vsb30",
+      "changes": {
+        "currentPackAssetId": "current-art-vsb30-r1",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://elib.dlr.de/196704/1/15082023-Bits%20and%20Bytes%20in%20Microgravity%20Insights%20into%20the%20hardware%20and%20software%20of%20sounding%20rockets.pdf",
+        "https://www.gov.br/aeb/pt-br/acoes-e-programas/aplicacoes-espaciais/transporte-espacial/vsb-30"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:rh200",
+      "changes": {
+        "currentPackAssetId": "current-art-rh200-r1",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.isro.gov.in/ISRO_EN/RH200_200th_successive_launch.html",
+        "https://www.isro.gov.in/soundingRockets.html"
+      ]
+    }
+  ],
+  "additions": []
+}

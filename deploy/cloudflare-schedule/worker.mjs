@@ -13,7 +13,7 @@ export default {
       let response;
       try {
         response = await fetch(ENDPOINT, {
-          method: 'POST', redirect: 'error', signal: AbortSignal.timeout(10000),
+          method: 'POST', redirect: 'manual', signal: AbortSignal.timeout(10000),
           headers: {
             'Accept': 'application/vnd.github+json',
             'Authorization': `Bearer ${env.GITHUB_DISPATCH_TOKEN}`,

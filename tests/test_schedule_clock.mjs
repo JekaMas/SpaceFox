@@ -19,7 +19,7 @@ test('scheduled boundary, failures, concurrency and secret safety', async () => 
   const base = `http://127.0.0.1:${server.address().port}`;
   globalThis.fetch = (url, options) => {
     assert.equal(url, 'https://api.github.com/repos/JekaMas/SpaceFox/actions/workflows/update-feed.yml/dispatches');
-    assert.equal(options.redirect, 'error');
+    assert.equal(options.redirect, 'manual');
     assert.ok(options.signal instanceof AbortSignal);
     return realFetch(base + new URL(url).pathname, options);
   };
@@ -46,7 +46,7 @@ test('scheduled boundary, failures, concurrency and secret safety', async () => 
     status = 429;
     await assert.rejects(invoke(), /HTTP 429/);
     status = 302;
-    await assert.rejects(invoke(), /Dispatch transport failed/);
+    await assert.rejects(invoke(), /Dispatch rejected \(HTTP 302\)/);
     assert.equal(requests.length, 4);
     status = 204;
     await Promise.all([invoke(), invoke()]);
@@ -57,4 +57,24 @@ test('scheduled boundary, failures, concurrency and secret safety', async () => 
     globalThis.fetch = realFetch;
     await new Promise(resolve => server.close(resolve));
   }
+});
+
+// A deliberately substituted fetch models the documented Workers redirect-mode
+// constraint; it does not execute the Cloudflare runtime.
+test('dispatch uses a Workers-supported redirect mode', async () => {
+  let attempts = 0;
+  globalThis.fetch = async (_url, options) => {
+    attempts++;
+    if (!['follow', 'manual'].includes(options.redirect)) throw new TypeError('unsupported redirect mode');
+    assert.equal(options.redirect, 'manual');
+    return new Response(null, {status: 204});
+  };
+  try {
+    let waited; let retries = 0;
+    await worker.scheduled({cron, noRetry() { retries++; }}, {GITHUB_DISPATCH_TOKEN: token},
+      {waitUntil(promise) { waited = promise; }});
+    await waited;
+    assert.equal(attempts, 1);
+    assert.equal(retries, 1);
+  } finally { globalThis.fetch = realFetch; }
 });

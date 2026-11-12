@@ -32,10 +32,11 @@ class GlobalMapTest(unittest.TestCase):
         for lat,lon in [(90,180),(-90,-180),(Decimal('0.00000000000001'),Decimal('179.99999999999999'))]:
             x,y=project(lat,lon,kind='globe',center=(lat,lon))
             self.assertAlmostEqual(x,128);self.assertAlmostEqual(y,128)
-        # The actual CLI renders map/globe contexts for every numeric source row.
+        # Explicit archive scope renders map/globe contexts for every numeric source row.
+        # Current event/program scope has a separate source-dated nonempty oracle.
         # The file is reusable evidence, not a fixed image chosen for five sites.
         target=ROOT/'build/global-site-audit.json'
-        completed=subprocess.run([sys.executable,'-B',str(ROOT/'tools/build_global_map.py'),'--audit','--output',str(target)],cwd=tempfile.gettempdir(),capture_output=True,text=True,timeout=180)
+        completed=subprocess.run([sys.executable,'-B',str(ROOT/'tools/build_global_map.py'),'--audit','--scope','archive','--output',str(target)],cwd=tempfile.gettempdir(),capture_output=True,text=True,timeout=180)
         self.assertEqual(completed.returncode,0,completed.stderr)
         report=loads_json(target.read_bytes())
         self.assertEqual((report['siteRows'],report['numericSourcePairs'],report['unknownPositions']),(218,213,5))

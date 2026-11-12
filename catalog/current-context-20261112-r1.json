@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-12",
+  "scopeStart": "2026-01-01",
+  "qualification": "finite-source-dated-events-and-programs-not-worldwide-complete",
+  "records": [
+    {
+      "id": "spacefox:context:s1x5-2026",
+      "name": "SubOrbital Express-5 / MASER17",
+      "kind": "event",
+      "status": "occurred",
+      "period": {
+        "start": "2026-05-31",
+        "end": "2026-05-31"
+      },
+      "configurationId": "spacefox:configuration:red-kite-red-kite",
+      "siteId": "spacefox:site:esrange-sounding-area",
+      "sitePrecision": "facility",
+      "organizationRoles": [
+        {
+          "organizationId": "ll2:organization:151",
+          "role": "launch-operator",
+          "sources": [
+            "https://sscspace.com/services/science-launch-services/sounding-rockets/suborbital-express/"
+          ]
+        }
+      ],
+      "sources": [
+        "https://moraba.de/missionen/missions-kalender/",
+        "https://sscspace.com/services/science-launch-services/sounding-rockets/suborbital-express/"
+      ],
+      "uncertainty": "Exact pad and event-time coordinates are not established; retained source position is only a geographic reference."
+    },
+    {
+      "id": "spacefox:context:syster-cousin-2026",
+      "name": "SYSTER/COUSIN",
+      "kind": "event",
+      "status": "planned",
+      "period": {
+        "start": "2026-11-01",
+        "end": "2026-11-17"
+      },
+      "configurationId": "spacefox:configuration:black-brant-v-single-stage",
+      "siteId": "spacefox:site:esrange-sounding-area",
+      "sitePrecision": "facility",
+      "organizationRoles": [
+        {
+          "organizationId": "ll2:organization:151",
+          "role": "prime-contractor",
+          "sources": [
+            "https://sscspace.com/news/systercousin-rocket-to-study-physics-inside-the-aurora/"
+          ]
+        },
+        {
+          "organizationId": "ll2:organization:151",
+          "role": "flight-director",
+          "sources": [
+            "https://sscspace.com/news/systercousin-rocket-to-study-physics-inside-the-aurora/"
+          ]
+        },
+        {
+          "organizationId": "ll2:organization:29",
+          "role": "collaborator",
+          "sources": [
+            "https://sscspace.com/news/systercousin-rocket-to-study-physics-inside-the-aurora/"
+          ]
+        }
+      ],
+      "sources": [
+        "https://sscspace.com/news/systercousin-rocket-to-study-physics-inside-the-aurora/"
+      ],
+      "uncertainty": "Window only; no observed flight, exact UTC launch time, precise pad, whole art or manufacturer inferred. Prime contractor/flight director is not automatically the launch-operator role."
+    },
+    {
+      "id": "spacefox:context:rexus35-2026",
+      "name": "REXUS 35",
+      "kind": "event",
+      "status": "occurred",
+      "period": {
+        "start": "2026-03-10",
+        "end": "2026-03-10"
+      },
+      "configurationId": "spacefox:configuration:improved-orion",
+      "siteId": "spacefox:site:esrange-sounding-area",
+      "sitePrecision": "facility",
+      "organizationRoles": [],
+      "sources": [
+        "https://moraba.de/missionen/missions-kalender/",
+        "https://sscspace.com/news/rexus-35-36/"
+      ],
+      "uncertainty": "SSC has an adjacent 2025 launch-period typo; actual 2026 launch dates and MORABA exact vehicle ledger corroborate. No operator inferred from campaign partners."
+    },
+    {
+      "id": "spacefox:context:rexus36-2026",
+      "name": "REXUS 36",
+      "kind": "event",
+      "status": "occurred",
+      "period": {
+        "start": "2026-03-12",
+        "end": "2026-03-12"
+      },
+      "configurationId": "spacefox:configuration:improved-orion",
+      "siteId": "spacefox:site:esrange-sounding-area",
+      "sitePrecision": "facility",
+      "organizationRoles": [],
+      "sources": [
+        "https://moraba.de/missionen/missions-kalender/",
+        "https://sscspace.com/news/rexus-35-36/"
+      ],
+      "uncertainty": "SSC has an adjacent 2025 launch-period typo; actual 2026 launch dates and MORABA exact vehicle ledger corroborate. No operator inferred from campaign partners."
+    },
+    {
+      "id": "spacefox:context:mapheus17-2026",
+      "name": "MAPHEUS17",
+      "kind": "event",
+      "status": "occurred",
+      "period": {
+        "start": "2026-10-01",
+        "end": "2026-10-01"
+      },
+      "configurationId": "spacefox:configuration:red-kite-improved-malemute",
+      "siteId": "spacefox:site:esrange-sounding-area",
+      "sitePrecision": "facility",
+      "organizationRoles": [
+        {
+          "organizationId": "ll2:organization:29",
+          "role": "launch-operator",
+          "sources": [
+            "https://www.dlr.de/en/latest/news/2026/successful-flight-of-dlr-sounding-rocket-mapheus-17"
+          ]
+        }
+      ],
+      "sources": [
+        "https://moraba.de/missionen/missions-kalender/",
+        "https://www.dlr.de/en/latest/news/2026/successful-flight-of-dlr-sounding-rocket-mapheus-17"
+      ],
+      "uncertainty": "Exact pad and event-time coordinates are not established; retained source position is only a geographic reference."
+    },
+    {
+      "id": "spacefox:context:rocksat-2026",
+      "name": "RockSat2026",
+      "kind": "event",
+      "status": "occurred",
+      "period": {
+        "start": "2026-06-24",
+        "end": "2026-06-24"
+      },
+      "configurationId": "spacefox:configuration:terrier-improved-malemute",
+      "siteId": "ll2:site:52",
+      "sitePrecision": "facility",
+      "organizationRoles": [
+        {
+          "organizationId": "ll2:organization:44",
+          "role": "launch-operator",
+          "sources": [
+            "https://www.nasa.gov/centers-and-facilities/wallops/nasa-sounding-rocket-to-launch-student-experiments/"
+          ]
+        }
+      ],
+      "sources": [
+        "https://www.nasa.gov/soundingrockets/missions/",
+        "https://www.nasa.gov/centers-and-facilities/wallops/nasa-sounding-rocket-to-launch-student-experiments/"
+      ],
+      "uncertainty": "Exact pad and event-time coordinates are not established; retained source position is only a geographic reference."
+    },
+    {
+      "id": "spacefox:context:pslv-c62-2026",
+      "name": "PSLV-C62 / EOS-N1",
+      "kind": "event",
+      "status": "occurred",
+      "period": {
+        "start": "2026-01-12",
+        "end": "2026-01-12"
+      },
+      "configurationId": "ll2:configuration:178",
+      "siteId": "ll2:site:50",
+      "sitePrecision": "pad",
+      "organizationRoles": [
+        {
+          "organizationId": "spacefox:organization:nsil",
+          "role": "launch-service-provider",
+          "sources": [
+            "https://www.isro.gov.in/Mission_PSLV_C62.html"
+          ]
+        }
+      ],
+      "sources": [
+        "https://www.isro.gov.in/Mission_PSLV_C62.html",
+        "https://www.isro.gov.in/PSLV_Launchers.html"
+      ],
+      "uncertainty": "Launch anomaly is not orbital success. Commercial launch provider NSIL is not equated with ISRO manufacturer; origin remains unqualified."
+    }
+  ]
+}

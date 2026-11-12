@@ -1,4 +1,43 @@
-# Maintained global visual catalog — producer revision 5 review1
+# Maintained global visual catalog
+
+The portable dated 2026+ source is `2026-11-12.global.14.current-context1`. Its sole
+recipe-pinned [eligibility registry](../catalog/current-2026.json) retains 198
+identities: 139 source-qualified current configurations, 54 under review and 5
+placeholders. Specific or reviewed shared artwork covers 128/139; the 11 generic
+gaps include the newly distinct Red Kite/Red Kite and single-stage Black Brant V.
+Neither is an alias for Red Kite/Improved Malemute or Black Brant IX. These are
+qualified-so-far counts, not the final worldwide denominator. A selected future
+reference in review or absent from the registry retains its identity and source
+age with an unresolved marker and generic fallback.
+
+The [current context source](../catalog/current-context-20261112-r1.json) separately
+binds seven dated 2026 events to three sites in Sweden, the United States and India.
+It records exact organization roles; manufacturers, contractors, collaborators and
+launch service providers are not interchangeable. Esrange's precise pad position
+remains unknown. The two numeric site references are rendering inputs, not surveyed
+pad accuracy. `python3 -B tools/build_global_map.py --audit --output
+build/current-site-audit.json` audits this nonempty current closure and reports
+explicit model-origin, associated-organization, event-role and launch-jurisdiction
+denominators. `--scope archive` separately audits all 218 retained source sites,
+including 29 mobile references and 5 unavailable positions. An empty audit refuses.
+The model-only catalog report remains `python3 -B tools/catalog.py --check --report
+build/current-coverage.json`; its model dependencies are not launch countries.
+
+Source-dated entity origin can now be curated independently of optional artwork.
+The current revision adds directly sourced Brazilian VSB-30 origin, Swedish SSC
+origin and German DLR origin. These assertions do not turn vehicle manufacture,
+corporate origin or launch location into event operator evidence. NSIL is a
+separate sourced commercial launch-service organization with badge and curated
+origin still unknown. Existing graphics, original facts and prior lifecycle
+reviews remain retained. The literal source records carry their dated URLs and uncertainty; this public source contains no private acceptance packet.
+Task 4.3, worldwide source coverage, remaining specific art, pad accuracy, native,
+public and Store acceptance remain open; global.9/global.12 receipts are history.
+
+For the current page-policy/art and runtime closure probe, run
+`python3 -B -m unittest -v tests.test_page_art_public`.
+
+The following sections describe historical producer revision 5, not the current registry.
+
 
 The single active recipe is `catalog/source.json`. The November 11 reference,
 original registry, 13 original SVGs, browser sources and their old evidence remain
@@ -6,7 +45,7 @@ unchanged. This increment implements catalog authoring and finite geography
 production under tasks 4.1, 4.3 and 4.5. It does not complete those tasks, worldwide
 content coverage, pad accuracy, native transport, hosting or Store acceptance.
 
-## Current finite coverage
+## Historical finite coverage
 
 | Category | Accepted finite revision `2026-11-12.global.5.review1.bridge1` |
 | --- | --- |
@@ -57,7 +96,7 @@ DeepBlue image is Nebula2 and is excluded. Qased uses the original agency-credit
 no guessed booster/head choice. No picture changes a provider fact, lifecycle,
 operator/manufacturer/origin/site role or original source history.
 
-The older562/108/63 and598/144/27 count receipts remain historical. New data-dependent
+The older562/108/63 and 598/144/27 count receipts remain historical. New data-dependent
 count/geometry/selector checks use the frozen revision4 recipe as baseline;
 unrelated valid publisher/native/global checks and the earlier36-specific proof
 boundary are retained without rerunning. Full known-model art, worldwide/current
@@ -332,11 +371,3 @@ reconstruction or a new global envelope rule. The current accepted finite revisi
 Other11 selected R2 originals and all prior facts/roles/origin unknowns remain.
 The repaired finite increment has independent and root review. Complete
 artwork, native and public-delivery acceptance remain separate.
-
-## Current 2026 registry
-
-The provisional registry qualifies 69 current configurations, with 66 specific
-art mappings and three gaps (30, 152 and 200); 102 records require review and
-five are placeholders. Retained historical assets do not constitute current
-coverage. Future events with unknown or review status use the safe fallback.
-See catalog/current-2026.json for scoped sources and uncertainty.

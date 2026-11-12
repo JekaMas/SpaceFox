@@ -3,9 +3,9 @@
 `tools/cloud_inputs.py` follows the single tracked `catalog/source.json` recipe.
 It materializes immutable imports, curations and their relative SVGs, verifies
 tracked bytes and hashes, then calls the actual catalog builder for typed facts,
-references and rights admission. The integrated global.3.bridge1 recipe declares
-595 canonical inputDigests; the materializer authenticates596files including the
-recipe. It retains its public-domain schema1 world and adds the declared
+references and rights admission. The current global.14.current-context1
+recipe declares 683 pinned inputs; the materializer authenticates 684 files including
+the recipe. The retained global.3 / 595 pins / 596 files observations are historical. The current recipe retains its public-domain schema1 world and adds the declared
 accepted04 original topology plus regional source2 conversion closure. All 839 original provider facts and
 older immutable assets remain source inputs; a large full-global export may
 reject the unchanged 1MiB bound. Selected closure remains the delivery route.
@@ -15,7 +15,8 @@ For an explicit source2 candidate, the materializer calls
 transitive input and uses `load_source` for decoding/provenance/source-bounds and
 rights. A valid new index/base path or curation/SVG needs no second path-list edit.
 Source2 remains off-watch provenance. The integrated bridge now uses its declared
-regional source in optional v2 map conversion; the old hostedv1 remains data-only.
+regional source in optional v2 map conversion; historical hostedv1 receipts
+remain data-only.
 
 Every input must be a tracked HEAD blob. Edited, missing, wrong-digest, untracked
 or index-hidden local bytes reject before replacement. Local edits are preserved.
@@ -29,10 +30,12 @@ global_map.py or recipe bytes does not turn them into new executions.
 | Optional off-watch preview | Exact selected clips, base world, attribution, original notices, source descriptor and selected SFV; complete current plus one prior ≤1MiB. No arbitrary-selection fit claim. |
 | Hosted old-v1 | Selected metadata feed/catalog; complete current+retained ≤1MiB/256 files; feed ≤8192 decoded UTF-8 bytes. Visuals and verified positions null. |
 
-The new local dual-wire candidate adds selected immutable descriptors/SFV and
+The portable dual-wire source adds selected immutable descriptors/SFV and
 corresponding provenance to the complete current/prior1MiB/256file artifact; each
 feed remains8192decoded bytes. Full map71GET and flat-map-only limitations stay
-explicit. Publication/hostedv2 and native transfer/globe/36languages are unqualified.
+explicit. Historical generation5 qualified its own dual-wire recovery/readback;
+this successor needs separate hosted qualification. Native transfer/globe/36languages
+remain unqualified. See CLOUD_DELIVERY.md for exact historical and current boundaries.
 
 GSHHG2.3.7 remains LGPL-3.0-or-later with full corresponding notices and selected
 source inputs. SPC/PacIOOS has distinct free redistribution terms and original

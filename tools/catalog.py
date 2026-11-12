@@ -28,7 +28,7 @@ def validate_artwork_sources(root, catalog):
         build_pack(root, catalog, roots=identities[offset:offset+LIMITS['selectionRoots']])
 
 
-def amend_recipe(root, source, supplement, version, *, output_paths=()):
+def amend_recipe(root, source, supplement, version, *, output_paths=(), contexts=None):
     """Append a new pinned data revision; validate all inputs before activation."""
     root, source, supplement = Path(root).resolve(), Path(source).resolve(), Path(supplement).resolve()
     if not supplement.is_relative_to(root) or not supplement.is_file():
@@ -45,6 +45,12 @@ def amend_recipe(root, source, supplement, version, *, output_paths=()):
     if relative in {x['path'] for x in recipe.setdefault('curations', [])}:
         raise CatalogError('append a new curation file; accepted pinned supplements are immutable')
     recipe['curations'].append({'path': relative, 'sha256': hashlib.sha256(supplement.read_bytes()).hexdigest()})
+    if contexts is not None:
+        context_path = Path(contexts).resolve()
+        if not context_path.is_relative_to(root) or not context_path.is_file():
+            raise CatalogError('current contexts must be a file inside the repository')
+        recipe['currentContexts'] = {'path': context_path.relative_to(root).as_posix(),
+                                     'sha256': hashlib.sha256(context_path.read_bytes()).hexdigest()}
     candidate = None
     registry_created = None
     try:
@@ -63,7 +69,8 @@ def amend_recipe(root, source, supplement, version, *, output_paths=()):
                 old_facts = old_models.get(identity, {}).get('facts')
                 def lifecycle_facts(value):
                     return None if value is None else {k: v for k, v in value.items()
-                            if k not in ('currentPackAssetId', 'currentPackSpecific')}
+                            if k not in ('currentPackAssetId', 'currentPackSpecific', 'curatedOriginId',
+                                         'curatedOriginSources', 'curatedOriginReviewedAt', 'curatedOriginNote')}
                 if identity in registry['records'] and lifecycle_facts(old_facts) == lifecycle_facts(facts):
                     records[identity] = registry['records'][identity]
                 else:
@@ -110,6 +117,7 @@ def main(argv=None):
     parser.add_argument('--source', type=Path)
     parser.add_argument('--output', type=Path)
     parser.add_argument('--amend', type=Path, help='append a new curation file and atomically activate its recipe pin')
+    parser.add_argument('--contexts', type=Path, help='pin source-dated current context data with --amend')
     parser.add_argument('--catalog-version', help='new version required with --amend')
     parser.add_argument('--report', type=Path, help='write finite coverage report')
     parser.add_argument('--check', action='store_true', help='validate without writing catalog output')
@@ -123,12 +131,14 @@ def main(argv=None):
         for target in (args.output, args.report):
             if target is not None and target.resolve().is_relative_to(root) and not target.resolve().is_relative_to(root/'build'):
                 raise CatalogError('in-checkout derived output must stay under build/')
+        if args.contexts and not args.amend:
+            raise CatalogError('--contexts requires --amend')
         if args.amend:
             previous = build_catalog(root, args.source)
             protected_before = {args.source.resolve(), *((root / p).resolve() for p in previous['inputDigests'])}
             if any(p is not None and p.resolve() in protected_before for p in (args.output, args.report)):
                 raise CatalogError('output would overwrite a catalog source or frozen import')
-        catalog = amend_recipe(root, args.source, args.amend, args.catalog_version, output_paths=(args.output,args.report)) if args.amend else build_catalog(root, args.source)
+        catalog = amend_recipe(root, args.source, args.amend, args.catalog_version, output_paths=(args.output,args.report), contexts=args.contexts) if args.amend else build_catalog(root, args.source)
         output = args.output.resolve() if args.output else None
         protected = {args.source.resolve(), *((root / path).resolve() for path in catalog['inputDigests'])}
         if output in protected or (args.report and args.report.resolve() in protected):

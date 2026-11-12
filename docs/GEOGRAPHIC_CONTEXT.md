@@ -4,9 +4,11 @@ This is an off-watch source and preview increment under task 4.3. The active
 `catalog/source.json` still uses the accepted schema1 Natural Earth source. The
 explicit candidate recipe is `catalog/geography/context-candidate-20261112.json`;
 its immutable source index is `catalog/geography/regional-20261112-r3/source.json`.
-It does not replace the content branch's eventual `global.3` recipe. Integration
-must combine that branch's content pins with this geography pin and choose one
-new catalog version, without replacing either branch's immutable inputs.
+This paragraph records the earlier geography candidate boundary. The current
+recipe retains schema1 world and also pins `visualBridge`, whose accepted04
+index references this regional source. Integration preserves both immutable
+inputs; see [WORLD_CLOUD_INTEGRATION.md](WORLD_CLOUD_INTEGRATION.md) and
+[PUBLISHER_VISUAL_BRIDGE.md](PUBLISHER_VISUAL_BRIDGE.md) for the active path.
 
 The 218 finite catalog rows retain their exact identities, source positions,
 provenance, dates and position roles. There are 213 numeric references: 185 fixed

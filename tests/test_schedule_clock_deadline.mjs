@@ -78,9 +78,9 @@ test('clock isolates rejected wakeups and never follows redirect destinations', 
     assert.equal(req.headers.authorization, `Bearer ${token}`);
     assert.equal(req.headers['x-github-api-version'], '2022-11-28');
     assert.deepEqual(JSON.parse(Buffer.concat(chunks).toString()), {ref: 'main'});
-    if (req.url === '/redirect') {
+    if (req.url.startsWith('/redirect/')) {
       redirected++;
-      res.writeHead(307, {Location: sinkBase + '/credential-sink'}); res.end(token);
+      res.writeHead(Number(req.url.split('/').at(-1)), {Location: sinkBase + '/credential-sink'}); res.end(token);
     } else {
       accepted++;
       res.writeHead(204); res.end();
@@ -90,24 +90,29 @@ test('clock isolates rejected wakeups and never follows redirect destinations', 
   let outgoing = 0;
   globalThis.fetch = (url, options) => {
     assert.equal(url, endpoint);
-    assert.equal(options.redirect, 'error');
+    assert.equal(options.redirect, 'manual');
     outgoing++;
-    return realFetch(base + (outgoing === 1 ? '/redirect' : '/accepted'), options);
+    return realFetch(base + (outgoing <= 5 ? `/redirect/${[301, 302, 303, 307, 308][outgoing - 1]}` : outgoing === 6 ? '/redirect/307' : '/accepted'), options);
   };
   try {
     assert.deepEqual(Object.keys(worker), ['scheduled']);
+    for (const status of [301, 302, 303, 307, 308]) {
+      await assert.rejects(invoke(), {message: `Dispatch rejected (HTTP ${status})`});
+      assert.equal(outgoing, redirected); // exactly one POST per wakeup, no retry
+      assert.equal(sinkRequests, 0);
+    }
     const outcomes = await Promise.allSettled([
       invoke(), invoke(), invoke('* * * * *'), invoke(cron, ''), invoke(cron, 'bad secret'),
     ]);
     assert.deepEqual(outcomes.map(row => row.status), ['rejected', 'fulfilled', 'rejected', 'rejected', 'rejected']);
-    assert.equal(outcomes[0].reason.message, 'Dispatch transport failed');
-    assert.equal(outgoing, 2);
+    assert.equal(outcomes[0].reason.message, 'Dispatch rejected (HTTP 307)');
+    assert.equal(outgoing, 7);
     assert.equal(accepted, 1);
-    assert.equal(redirected, 1);
+    assert.equal(redirected, 6);
     assert.equal(sinkRequests, 0);
-    // A distinct later wakeup remains able to dispatch after an uncertain outcome.
+    // A distinct later wakeup remains able to dispatch after rejection.
     await invoke();
-    assert.equal(outgoing, 3);
+    assert.equal(outgoing, 8);
     assert.equal(accepted, 2);
   } finally {
     globalThis.fetch = realFetch;

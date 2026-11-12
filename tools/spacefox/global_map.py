@@ -178,6 +178,7 @@ def build_site_view(root, catalog, site_id, *, kind='map', event_position=None):
 
 def audit_sites(root, catalog, *, render_contexts=False):
     """Enumerate all source rows, distinguishing projection from point accuracy."""
+    _require(bool(catalog['dictionaries']['sites']), 'site audit requires a nonempty explicit scope')
     world = load_world(root,catalog); rows = []; map_digest = None
     if render_contexts:
         base = world_visuals(world)

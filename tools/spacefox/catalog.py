@@ -48,11 +48,13 @@ REF_TYPES = {
 JURISDICTION_KINDS = ('unknown', 'unclassified', 'country', 'territory', 'region', 'historical')
 LIFECYCLE_FIELDS = frozenset(('officialLifecycle', 'officialLifecycleSource',
                               'officialLifecycleReviewedAt', 'officialLifecycleNote'))
+ORIGIN_FIELDS = frozenset(('curatedOriginId', 'curatedOriginSources',
+                            'curatedOriginReviewedAt', 'curatedOriginNote'))
 CURATED_EXTENSION_FIELDS = {
     'countries': frozenset(('jurisdictionKind',)),
-    'models': LIFECYCLE_FIELDS,
-    'configurations': LIFECYCLE_FIELDS,
-    'organizations': frozenset(),
+    'models': LIFECYCLE_FIELDS | ORIGIN_FIELDS,
+    'configurations': LIFECYCLE_FIELDS | ORIGIN_FIELDS,
+    'organizations': ORIGIN_FIELDS,
     'sites': frozenset(('positionMode',)),
 }
 
@@ -67,6 +69,22 @@ def _validate_fact_patch(collection, before, patch, sources, reviewed_at, admiss
     # A known name cannot make the same extension valid on another collection.
     extensions = set().union(*CURATED_EXTENSION_FIELDS.values())
     _require(not (patch.keys() & extensions) - allowed, 'curated field belongs to another collection')
+    if patch.keys() & ORIGIN_FIELDS:
+        result = {**before, **patch}
+        _require(ORIGIN_FIELDS <= result.keys(), 'curated origin requires identity, sources, date and note')
+        identity = result['curatedOriginId']
+        if identity is not None:
+            _identity(identity, 'country')
+        origin_sources = _strings(result['curatedOriginSources'], 'curated origin sources')
+        _require(bool(origin_sources) and set(origin_sources) <= set(sources),
+                 'curated origin sources must belong to this operation')
+        _text(result['curatedOriginNote'], 'curated origin note')
+        try:
+            reviewed = date.fromisoformat(result['curatedOriginReviewedAt'])
+            _require(reviewed <= min(date.fromisoformat(reviewed_at), admission_date),
+                     'curated origin review cannot postdate admission')
+        except (ValueError, TypeError) as exc:
+            raise CatalogError('invalid curated origin date') from exc
     if 'positionMode' in patch:
         _require(patch['positionMode'] in ('fixed-source', 'mobile-reference-no-event'), 'invalid site position mode')
     if 'jurisdictionKind' in patch:
@@ -374,14 +392,14 @@ def normalize_reference(reference, registry, *, catalog_version, _curated_countr
     for facts in _reference_rows(reference, 'organizations'):
         row = _row('organization', facts, 'reference', facts['sourceId'])
         badge = facts['currentPackBadgeId']
-        origin, sources = _origin(assets, badge, codes)
+        origin, sources = _entity_origin(facts, assets, badge, codes)
         row.update(roles=deepcopy(_strings(facts['referenceRoles'], 'organization.referenceRoles')), originSources=sources)
         row['references'] = {'countries': _id_list('country', facts['countryIds']), 'badge': _asset_ref(badge), 'origin': origin}
         _put(d['organizations'], stable_id('ll2', 'organization', facts['sourceId']), row)
     for facts in _reference_rows(reference, 'models'):
         row = _row('configuration', facts, 'reference', facts['sourceId'])
         asset = facts['currentPackAssetId']
-        origin, sources = _origin(assets, asset, codes)
+        origin, sources = _entity_origin(facts, assets, asset, codes)
         if asset is not None:
             _require(asset in assets and assets[asset]['seedCollection'] == 'models', f'unknown model asset {asset}')
             _require((assets[asset]['facts'].get('kind') == 'specific') == facts['currentPackSpecific'], 'source specific-art flag disagrees with seed')
@@ -426,6 +444,15 @@ def _origin(assets, asset_id, codes):
     sources = _strings(facts.get('originSources'), 'curated origin sources')
     _require(bool(sources), 'curated origin requires provenance')
     return codes[code], deepcopy(sources)
+
+
+def _entity_origin(facts, assets, asset_id, codes):
+    """Explicit sourced entity origin is independent of optional art and launch site."""
+    if 'curatedOriginId' not in facts:
+        return _origin(assets, asset_id, codes)
+    identity = facts['curatedOriginId']
+    _require(identity is None or identity in codes.values(), 'unknown curated origin jurisdiction')
+    return identity, deepcopy(facts['curatedOriginSources']) if identity is not None else []
 
 
 def _check_reference_coherence(dictionaries):
@@ -485,7 +512,7 @@ def _check_reference_coherence(dictionaries):
                         _require(asset_id is None or asset_id in assets, 'unknown curated model asset')
                         specific = asset_id is not None and assets[asset_id]['facts'].get('kind') == 'specific'
                         _require(specific == facts['currentPackSpecific'], 'curated specific-art flag mismatch')
-                    origin, sources = _origin(assets, asset_id, codes)
+                    origin, sources = _entity_origin(facts, assets, asset_id, codes)
                     expected['origin'] = origin
                     _require(row['originSources'] == sources, 'curated origin source mismatch')
                 _require(row['references'] == expected, 'curated fact/reference mismatch '+identity)
@@ -509,7 +536,7 @@ def _check_reference_coherence(dictionaries):
                 expected = {'country': _nullable_id('country', facts['countryId']),
                             'agencies': _id_list('organization', facts['agencyIds'])}
             if collection in ('organizations', 'configurations'):
-                origin, sources = _origin(assets, asset_id, codes)
+                origin, sources = _entity_origin(facts, assets, asset_id, codes)
                 expected['origin'] = origin
                 _require(row['originSources'] == sources, f'curated origin provenance mismatch {identity}')
             _require(row['references'] == expected, f'source reference mismatch {identity}')
@@ -527,7 +554,7 @@ def validate_catalog(catalog, *, _admission_date=None):
     producer = catalog.get('producerVersion', 1)
     _require(type(producer) is int and producer in (1, 2), 'unsupported producer version')
     source_fields = {'reference', 'assetSeed', 'curations'} if producer == 2 else {'reference', 'assetSeed'}
-    _require(isinstance(catalog['source'], dict) and source_fields <= catalog['source'].keys() <= source_fields | ({'geography', 'visualBridge', 'eligibility'} if producer == 2 else {'eligibility'}), 'missing source metadata')
+    _require(isinstance(catalog['source'], dict) and source_fields <= catalog['source'].keys() <= source_fields | ({'geography', 'visualBridge', 'eligibility', 'currentContexts'} if producer == 2 else {'eligibility'}), 'missing source metadata')
     _require(all(isinstance(x, dict) for x in catalog['source'].values()), 'invalid source metadata')
     if producer == 2:
         for identity, definition in catalog['source']['curations'].items():
@@ -787,7 +814,7 @@ def validate_catalog_selection(selection, asset_rows, *, expected_version):
                 # LL2 originals retain unknown provider fields losslessly. Only
                 # actual curated creations acquire publisher creation semantics;
                 # later reviewed corrections were checked in their history above.
-                sources = [original['officialLifecycleSource']] if isinstance(original.get('officialLifecycleSource'), str) else []
+                sources = ([original['officialLifecycleSource']] if isinstance(original.get('officialLifecycleSource'), str) else []) + list(original.get('curatedOriginSources', []))
                 reviewed = (curation['reviewedAt'] if curation and
                             row.get('creationCuration') == curation['id'] else admission.isoformat())
                 _validate_creation_extensions(collection, original, sources, reviewed, admission, allow_legacy=True)
@@ -961,10 +988,10 @@ def _curated_row(identity, facts, references, evidence):
         _require(references == {'mark':_asset_ref(facts['currentPackFlagId'])}, 'curated country mark mismatch')
         row['jurisdictionKind'] = facts['jurisdictionKind']
     if kind == 'configuration':
-        row.update(originSources=deepcopy(evidence['sources']) if references.get('origin') else [],
+        row.update(originSources=deepcopy(facts.get('curatedOriginSources', evidence['sources'])) if references.get('origin') else [],
                    unresolvedFamilies=_id_list('family', facts['familyIds']))
     if kind == 'organization':
-        row.update(roles=deepcopy(facts['referenceRoles']), originSources=deepcopy(evidence['sources']) if references.get('origin') else [])
+        row.update(roles=deepcopy(facts['referenceRoles']), originSources=deepcopy(facts.get('curatedOriginSources', evidence['sources'])) if references.get('origin') else [])
     if kind == 'site':
         row.update(position=_position(facts), eventPosition=None)
     return row
@@ -978,7 +1005,7 @@ def build_catalog(root, source_path=None, *, _strict_creation_path=None):
     source_path = Path(source_path) if source_path is not None else root / 'catalog/source.json'
     manifest = loads_json(_read(source_path))
     required = {'schemaVersion', 'catalogVersion', 'reference', 'assetSeed'}
-    _require(isinstance(manifest, dict) and required <= manifest.keys() <= required | {'producerVersion', 'curations', 'geography', 'visualBridge', 'eligibility'}, 'unknown/missing source recipe fields')
+    _require(isinstance(manifest, dict) and required <= manifest.keys() <= required | {'producerVersion', 'curations', 'geography', 'visualBridge', 'eligibility', 'currentContexts'}, 'unknown/missing source recipe fields')
     _schema(manifest['schemaVersion'], 'source recipe'); _version(manifest['catalogVersion'])
     producer = manifest.get('producerVersion', 1)
     _require(type(producer) is int and producer in (1, 2), 'unsupported producer version')
@@ -1118,7 +1145,7 @@ def build_catalog(root, source_path=None, *, _strict_creation_path=None):
                     assets = {r['facts']['id']:r for r in catalog['dictionaries']['assets'].values()}
                     codes = {r['facts'].get('alpha2',r['facts'].get('code')):k for k,r in catalog['dictionaries']['countries'].items()}
                     asset = facts['currentPackAssetId'] if collection == 'configurations' else facts['currentPackBadgeId']
-                    origin, row['originSources'] = _origin(assets,asset,codes)
+                    origin, row['originSources'] = _entity_origin(facts,assets,asset,codes)
                     if collection == 'configurations':
                         row['references'] = {'manufacturer':_curated_ref('organization',facts['manufacturerId']),
                             'manufacturerCountries':[_curated_ref('country',x) for x in facts['manufacturerCountryIds']],
@@ -1143,6 +1170,15 @@ def build_catalog(root, source_path=None, *, _strict_creation_path=None):
             _require(hashlib.sha256(data).hexdigest() == row['facts']['sourceSha256'], 'curated asset source digest mismatch')
         row['content'] = {'path': relative, 'sha256': hashlib.sha256(data).hexdigest(), 'bytes': len(data), 'format': 'source-svg'}
         pins[relative] = row['content']['sha256']
+    if 'currentContexts' in manifest:
+        item = manifest['currentContexts']
+        _require(isinstance(item, dict) and set(item) == {'path', 'sha256'}, 'invalid current context pin')
+        data = _read(_local_path(root, item['path']))
+        _require(hashlib.sha256(data).hexdigest() == item['sha256'], 'current context digest mismatch')
+        catalog['source']['currentContexts'] = deepcopy(item)
+        pins[item['path']] = item['sha256']
+        from .current_context import validate_contexts
+        validate_contexts(catalog, loads_json(data))
     catalog['inputDigests'] = pins
     validate_catalog(catalog, _admission_date=admission_date)
     if 'geography' in catalog['source']:

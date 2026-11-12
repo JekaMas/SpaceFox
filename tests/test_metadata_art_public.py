@@ -62,7 +62,20 @@ def selection(files):
 
 
 class MetadataArtPublicTest(unittest.TestCase):
-    setUp = runtime.CloudRuntimeCheckoutTest.setUp
+    def setUp(self):
+        runtime.CloudRuntimeCheckoutTest.setUp(self)
+        # This witness is the frozen historical 194-specific public recipe.
+        # This historical recipe is independent of subsequent eligibility
+        # decisions. Global.13 qualifies 194 again; current admission/refusal is
+        # tested separately. Bind the exact public-ancestral historical tree.
+        revision = 'c46c5f9a30da354dc0d32f3191249286e4223873'
+        expected_tree = '47d7d8cdc16aa134419f603cc57c10e243f06bc4'
+        self.assertEqual(expected_tree, runtime.git(self.source, 'rev-parse', revision + '^{tree}'))
+        runtime.git(self.source, 'checkout', '--detach', '-q', revision)
+        self.assertEqual('', runtime.git(self.source, 'status', '--porcelain'))
+        self.code = revision
+        runtime.git(self.source, 'push', '--force', '-q', str(self.remote), 'HEAD:refs/heads/main')
+
     tearDown = runtime.CloudRuntimeCheckoutTest.tearDown
     cli = runtime.CloudRuntimeCheckoutTest.cli
     snapshot = runtime.CloudRuntimeCheckoutTest.snapshot
@@ -86,6 +99,12 @@ class MetadataArtPublicTest(unittest.TestCase):
         self.assertEqual(reads, len(self.service.reads))
 
     def test_frozen_actual194_content_update_sparse_recovery_metadata_and_source_gates(self):
+        self._frozen_actual194(negative=False)
+
+    def test_metadata_gate_refusals_and_source_adoption_preserve_state(self):
+        self._frozen_actual194(negative=True)
+
+    def _frozen_actual194(self, *, negative):
         # Full current-recipe materializer633 was already observed before the
         # earlier evaluation-clock oracle failure. This standalone behavior
         # fixture uses only the public tree; do not repeat that unchanged gate.
@@ -140,14 +159,16 @@ class MetadataArtPublicTest(unittest.TestCase):
         actual = {p.relative_to(self.source).as_posix() for p in self.source.rglob('*')
                   if p.is_file() and '.git' not in p.relative_to(self.source).parts}
         self.assertEqual(21, len(actual))
-        self.blocked('yielded_pending')
+        if negative:
+            self.blocked('yielded_pending')
         self.cli('arm', '--expected-base', pub.head, '--artifact-id', '990')
         pub = self.publisher()
         intent = journal(pub)['intent']
         self.service.live = union
         # Legal public core promotion can precede cloud journal finality.
         pub.reconcile(LiveRevision(2, pub.ledger['pending']['artifact_revision']))
-        self.blocked('yielded_armed')
+        if negative:
+            self.blocked('yielded_armed')
         self.service.statuses[intent['buildVersion']] = 'succeed'
         with patch.object(runtime, 'RUNTIME_DRIVER', BLOCKED_DRIVER):
             self.cli('recover')
@@ -195,10 +216,11 @@ class MetadataArtPublicTest(unittest.TestCase):
         runtime.git(self.source, 'commit', '--allow-empty', '-qm', 'new source event fixture')
         old_code, self.code = self.code, runtime.git(self.source, 'rev-parse', 'HEAD')
         runtime.git(self.source, 'push', '-q', str(self.remote), 'HEAD:refs/heads/main')
-        for code in (old_code, self.code):
-            runtime.git(self.source, 'checkout', '-q', code)
-            self.cli('metadata', success=False)
-            self.assertEqual(before, self.snapshot())
+        if negative:
+            for code in (old_code, self.code):
+                runtime.git(self.source, 'checkout', '-q', code)
+                self.cli('metadata', success=False)
+                self.assertEqual(before, self.snapshot())
         pub = self.publisher()
         pub.adopt_code(pub.head)
         adopted = self.snapshot()
@@ -206,9 +228,9 @@ class MetadataArtPublicTest(unittest.TestCase):
         self.assertEqual(('not_due', 0), (idle['status'], idle['requests']))
         self.assertEqual(adopted, self.snapshot())
         self.assertEqual((0, 0, 4), (self.service.provider_calls, len(self.service.posts), len(world['calls'])))
-        print('METADATA_ART_PUBLIC ' + json.dumps(dict(canonicalInputs=632,
-              runtimeFiles=21, oldFiles=len(old), currentFiles=len(new), unionFiles=len(union),
+        print('METADATA_ART_PUBLIC ' + json.dumps(dict(runtimeFiles=21, oldFiles=len(old), currentFiles=len(new), unionFiles=len(union),
               unionBytes=sum(map(len, union.values())), primaryCalls=0, metadataCalls=4,
-              notDueCalls=0, pendingCalls=0, armedCalls=0, pendingWrites=0, armedWrites=0,
+              notDueCalls=0, gateChecksExecuted=negative,
               sourceUtc=SOURCE_UTC, model194Specific=True, siteAndLaunchUnchanged=True,
-              versionedMapReusedExactly=True, recoveryBuilderCalls=0, recoveryCollectorImports=0), sort_keys=True))
+              versionedMapReusedExactly=True, recoveryBuilderCalls=0, recoveryCollectorImports=0,
+              **({'pendingCalls':0, 'armedCalls':0, 'pendingWrites':0, 'armedWrites':0} if negative else {})), sort_keys=True))

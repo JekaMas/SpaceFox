@@ -34,7 +34,7 @@ UTC. It includes per-record page validation dates, source interval, relation edg
 required active/pending/upcoming IDs, accepted schedule digest/reference dates,
 unknown jurisdictions and unqualified visual/mark/position denominators. Full
 pagination is a nontransactional traversal, not a synchronized worldwide database
-snapshot. Official supplements,15 current art gaps and precise pad accuracy are
+snapshot. Official supplements, unresolved current artwork and precise pad accuracy are
 not closed by this collector.
 
 Every page, including304, needs an existing shared publisher reservation committed
@@ -165,9 +165,11 @@ cleared pending state. Explicit `recover` owns journal finality in that case.
 It cannot adopt code, recover a pending deployment, bootstrap
 state, force launch polling or build art/catalog source data. Non-metadata
 arm/deploy/recover paths do not import the collector or read the metadata corpus.
-Their source seed now has21 runtime files, including two lazily used metadata
-entry/collector modules; it still excludes the catalog recipe and all source data.
-Prepare retains the full647-source-input+recipe648 materializer before authority.
+The current source seed has 23 runtime files, including the lazily used metadata
+entry/collector modules; it excludes the catalog recipe and all source data.
+Prepare authenticates 683 pinned inputs plus the recipe (684 files) before authority.
+The earlier 21-runtime-file and 647-input-plus-recipe/648-file observations remain
+historical and retain their original source boundary.
 
 `metadata --interval-seconds` validates3600..604800seconds and defaults to86400.
 The deadline is the last complete candidate's `source.completedUtc` plus the
@@ -201,7 +203,8 @@ and official current supplements. Only a reviewed new pinned reference/recipe
 revision may activate those data through the existing source/prepare/delivery
 path. Metadata maintenance never edits `catalog/source.json` automatically.
 
-Current15 artwork gaps, exact pad/map accuracy, worldwide official/upcoming
+The eleven generic gaps among 139 qualified current configurations, 54 review identities,
+five placeholders, exact pad/map accuracy, worldwide official/upcoming
 supplement closure, full native/globe/language/phone/FR165/Store acceptance and
 whole tasks4.3/4.4 remain open. A generic/unknown visual remains explicitly
 unqualified. Candidate corpus64MiB, served artifact1MiB and watch feed8KiB are
@@ -217,14 +220,15 @@ The current-source real-local-Git/loopback probe preserves four exact public
 countries pages (80 rows at20) and uses100 only when new collections start.
 It makes four metadata requests, preserves source/quota prefixes, refuses policy
 rollback without a write, imports every publisher-overlay test, checks the actual
-21-file metadata sparse shell and invokes the actual current radial LM5 producer.
+23-file metadata sparse shell, refuses historical review ID 123/LM5 and invokes
+the actual current Hanbit Mini producer with exact reviewed identity/rights/shards.
 The output remains a partial candidate; no metadata or recipe adoption follows.
 
 The retained earlier `tests.test_metadata_art_public` observation belongs to its
 frozen global.4 recipe: configuration194 gained specific art,106 current/113
 current-prior files (375605bytes),21runtime files,0primary/4metadata/not_due0,
 pending/armed0HTTP/0write, exact map reuse and source-age isolation. Its literal
-count fixture is historical; it is not a current global.5.review1 whole-suite gate.
+count fixture is historical; it is not a current-recipe whole-suite gate.
 Earlier global.3/596-file/76-file collector/bridge receipts likewise retain their
 original boundaries. No local test proves authentic cron/Pages/LL2/native uptake.
 

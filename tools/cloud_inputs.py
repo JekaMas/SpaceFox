@@ -89,6 +89,8 @@ def materialize(root):
     registry = pin(recipe['assetSeed'])
     if 'eligibility' in recipe:
         pin(recipe['eligibility'])
+    if 'currentContexts' in recipe:
+        pin(recipe['currentContexts'])
     geography_inputs = set()
     if 'geography' in recipe:
         geography = pin(recipe['geography'])

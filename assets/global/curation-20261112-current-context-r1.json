@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "id": "current-context-20261112-r1",
+  "reviewedAt": "2026-11-12",
+  "sources": [
+    "https://moraba.de/missionen/missions-kalender/",
+    "https://sscspace.com/news/systercousin-rocket-to-study-physics-inside-the-aurora/",
+    "https://sscspace.com/services/science-launch-services/sounding-rockets/suborbital-express/",
+    "https://sscspace.com/news/rexus-35-36/",
+    "https://www.dlr.de/en/latest/news/2026/successful-flight-of-dlr-sounding-rocket-mapheus-17",
+    "https://www.nasa.gov/soundingrockets/missions/",
+    "https://www.nasa.gov/centers-and-facilities/wallops/nasa-sounding-rocket-to-launch-student-experiments/",
+    "https://www.isro.gov.in/Mission_PSLV_C62.html",
+    "https://www.isro.gov.in/PSLV_Launchers.html",
+    "https://www.dlr.de/en/research-and-transfer/projects-and-missions/refex",
+    "https://sscspace.com/about/corporate-governance/",
+    "https://sscspace.com/about/the-company/history/",
+    "https://moraba.de/impressum/"
+  ],
+  "reason": "Exact current scientific vehicles and independent source-dated entity origins; immutable history and missing art/manufacturer facts retained.",
+  "assets": [],
+  "updates": [
+    {
+      "identity": "spacefox:configuration:vsb30",
+      "changes": {
+        "curatedOriginId": "ll2:country:24",
+        "curatedOriginSources": [
+          "https://www.dlr.de/en/research-and-transfer/projects-and-missions/refex"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "DLR explicitly describes VSB-30 as Brazilian-made; multinational development is not denied."
+      },
+      "sources": [
+        "https://www.dlr.de/en/research-and-transfer/projects-and-missions/refex"
+      ]
+    },
+    {
+      "identity": "ll2:organization:151",
+      "changes": {
+        "curatedOriginId": "ll2:country:15",
+        "curatedOriginSources": [
+          "https://sscspace.com/about/corporate-governance/",
+          "https://sscspace.com/about/the-company/history/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Swedish state-owned legal company; official history binds current SSC Space name to retained Swedish Space Corp identity."
+      },
+      "sources": [
+        "https://sscspace.com/about/corporate-governance/",
+        "https://sscspace.com/about/the-company/history/"
+      ]
+    },
+    {
+      "identity": "ll2:organization:29",
+      "changes": {
+        "curatedOriginId": "ll2:country:4",
+        "curatedOriginSources": [
+          "https://moraba.de/impressum/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "German registered DLR legal entity; not a vehicle origin assertion."
+      },
+      "sources": [
+        "https://moraba.de/impressum/"
+      ]
+    }
+  ],
+  "additions": [
+    {
+      "identity": "spacefox:configuration:red-kite-red-kite",
+      "facts": {
+        "sourceId": "red-kite-red-kite",
+        "name": "Red Kite / Red Kite",
+        "fullName": "Red Kite / Red Kite",
+        "variant": "2-stage sounding rocket",
+        "sourceUrl": "https://moraba.de/missionen/missions-kalender/",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "operating",
+        "officialLifecycleSource": "https://moraba.de/missionen/missions-kalender/",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "Exact whole two-stage combination, date and facility; distinct from Red Kite/Improved Malemute.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [],
+        "variantUnspecified": false,
+        "stages": 2
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:black-brant-v-single-stage",
+      "facts": {
+        "sourceId": "black-brant-v-single-stage",
+        "name": "Black Brant V (single-stage)",
+        "fullName": "Black Brant V (single-stage)",
+        "variant": "1-stage sounding rocket",
+        "sourceUrl": "https://sscspace.com/news/systercousin-rocket-to-study-physics-inside-the-aurora/",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "operating",
+        "officialLifecycleSource": "https://sscspace.com/news/systercousin-rocket-to-study-physics-inside-the-aurora/",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "2026 November1–17 Esrange campaign; SSC prime contractor and flight director, DLR MORABA collaborator. No actual launch or exact pad/time inferred.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [],
+        "variantUnspecified": false,
+        "stages": 1
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:organization:nsil",
+      "facts": {
+        "sourceId": "nsil",
+        "name": "NewSpace India Limited",
+        "abbrev": "NSIL",
+        "sourceUrl": "https://www.isro.gov.in/Mission_PSLV_C62.html",
+        "type": {
+          "name": "Commercial"
+        },
+        "countryIds": [],
+        "providerPendingLaunches": null,
+        "providerTotalLaunches": null,
+        "referenceRoles": [
+          "source-dated-launch-service-provider"
+        ],
+        "currentPackBadgeId": null
+      },
+      "references": {
+        "countries": [],
+        "badge": null,
+        "origin": null
+      }
+    }
+  ]
+}

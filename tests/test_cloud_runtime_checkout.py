@@ -272,7 +272,7 @@ class CloudRuntimeCheckoutTest(unittest.TestCase):
         materialize = subprocess.run(['bash', '-e', '-o', 'pipefail', '-c', script],
                                      cwd=self.source, capture_output=True)
         self.assertEqual(0, materialize.returncode, materialize.stderr.decode())
-        self.assertEqual({'catalogVersion': '2026-11-12.global.3.bridge1', 'catalogInputs': 596},
+        self.assertEqual({'catalogVersion': '2026-11-12.global.14.current-context1', 'catalogInputs': 684},
                          json.loads(materialize.stdout))
         self.assertEqual('', git(self.source, 'status', '--porcelain'))
         output = self.base / 'prepared-site'

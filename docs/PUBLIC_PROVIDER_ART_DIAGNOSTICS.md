@@ -1,10 +1,6 @@
 # Portable provider, artwork and readback update
 
-The current recipe is `2026-11-12.global.8.current2026-review1`. Its provisional
-2026+ registry has 69 source-qualified configurations, 66 with specific artwork;
-three gaps remain: 30, 152 and 200. Another 102 records need review and five are
-placeholders. The earlier 160/171 inventory described a historical, unfiltered
-scope; its retained assets are not current-coverage claims.
+The provisional `2026-11-12.global.14.current-context1` registry has 139 source-qualified current configurations, 128 with specific or reviewed shared artwork and eleven generic gaps. Another 54 identities need review and five are placeholders. Retained assets and historical unfiltered inventories are not current coverage claims.
 Four additive originals depict source-dated Shavit (NASA/Reuters, April1996),
 Vector-R (FAA2017), Simorgh (MOD2021) and Chollima-1 (KCNA2023) representatives.
 Their primary URLs, dates, exact typed identities and limitations are in
@@ -26,7 +22,7 @@ SHA256. Both mutable roots are reread after the complete closure. Diagnostics do
 not include raw response bodies, service URLs, extra requests, retry or new state.
 The original hosted HTTP failure cause remains unknown.
 
-Run the finite current-public control in a clean portable checkout:
+Run the retained finite Simorgh provider/readback control in a clean portable checkout:
 
 ```sh
 python3 -B -m unittest -v tests.test_public_provider_art_diagnostics
@@ -36,7 +32,11 @@ It executes the actual cloud CLI from that checkout with disposable local Git,
 LL2 and CDN loopback HTTP, including actual provider traversal/detail normalization,
 current artwork generation, exact positive readback/promotion and corrupt-art
 refusal with unchanged authority and source ages. It also imports the selected
-portable test modules and exports the currently qualified Simorgh original through the public visual CLI.
+portable test modules and exports the qualified Simorgh original through the
+public visual CLI. Its retained receipt is old-art scope; it is not evidence for
+the newly appended artwork. The current page-policy/new-art producer control is
+`python3 -B -m unittest -v tests.test_page_art_public`, with Hanbit Mini exact
+identity/rights/shards and explicit refusal of historical review 123/LM5.
 The first fixture publication uses an explicitly observer-supplied revision; it
 is not a hosted deployment. Existing child receipts retain their original proof
 boundaries. This control proves no authentic GitHub Actions/Pages, cron/provider

@@ -46,9 +46,10 @@ this boundary. In prepare, `tools/cloud_inputs.py` follows the single
 relative SVG facts from the clean tracked Git index. It materializes only this
 closure and validates it with the unchanged catalog builder. The documented
 `tools/catalog.py --amend` route therefore needs no second input-list edit when
-adding a curation or SVG; unrelated research/private files stay absent. The current
-integrated global.4.bridge1 recipe resolves to632 canonical inputs plus the recipe (633materialized files) and the static
-Python runtime/schema seed. For an explicit source2 candidate, the materializer
+adding a curation or SVG; unrelated research/private files stay absent. The portable
+current global.14.current-context1 recipe resolves to 683 pinned inputs plus
+the recipe (684 materialized files), with a 23-file runtime/schema seed when the
+recipe is excluded. The earlier global.4/633/21 observations remain historical. For an explicit source2 candidate, the materializer
 uses `geographic_context.dependencies` to obtain every base-world, clip, notice,
 supplement and metadata pin, checks their tracked bytes and SHA-256, then calls
 `load_source` and the actual catalog builder for full source/rights admission.
@@ -179,7 +180,8 @@ The first authentic Actions cycle and exact readback are observed above. A secon
 validation/update and exact fault recovery remain required before closing the
 whole cloud boundary.
 
-Automatic scheduling is not qualified. No `schedule` event was observed at 03:52
+The following is a historical 2026-11-12 GitHub-schedule observation, not a
+statement of current instance state. No `schedule` event was observed at 03:52
 or 04:07 UTC, or by 04:24 after the 04:22 slot on 2026-11-12, despite an active
 workflow on non-fork default `main` and operational GitHub service status. The
 [second manual due-recovery run](https://github.com/jekamas/SpaceFox/actions/runs/43154719080)
@@ -215,5 +217,7 @@ uses the existing quota/CAS authority, a daily completion cadence and at most4
 reserved calls per invocation. Candidate data stays off-watch and requires
 separate reviewed export/adoption. No source/field age is refreshed by metadata.
 See [GLOBAL_METADATA_REFRESH.md](GLOBAL_METADATA_REFRESH.md). Four equivalent
-literal cron entries are a registration diagnostic; authentic scheduling remains
-to be observed, with no known cause/fix claim.
+literal cron entries retain their historical registration-diagnostic scope.
+For the optional external clock and per-instance natural-event, whole-workflow
+and due-source/readback qualification, see [EXTERNAL_SCHEDULE_CLOCK.md](EXTERNAL_SCHEDULE_CLOCK.md).
+This source snapshot does not attest any instance's current operation.

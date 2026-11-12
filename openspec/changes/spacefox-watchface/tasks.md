@@ -65,8 +65,9 @@ acceptance remain open. No implementation checkbox is closed by source export.
 Portable metadata/art integration is locally qualified as a candidate. Global
 coverage, actual metadata collection/adoption, authentic cron, complete native
 scene/phone/FR165/Store acceptance and all whole-task checkboxes remain open.
-The current source recipe and standalone integration command are documented in
-`docs/GLOBAL_METADATA_REFRESH.md` and `tests/test_metadata_art_public.py`.
+The current source recipe and page-policy/art command are documented in
+`docs/GLOBAL_METADATA_REFRESH.md` and `tests/test_page_art_public.py`.
+`tests/test_metadata_art_public.py` retains its frozen historical fixture scope.
 
 The finite page-policy/art successor is locally checked by tests.test_page_art_public.
 Full provider adoption, complete known-model art, authentic cron, native scene,
@@ -75,4 +76,13 @@ task checkbox closes; candidate metadata never automatically adopts a recipe.
 
 ## Portable current catalog and external clock
 
-The provisional current registry, bounded detail/readback behavior and optional external dispatch clock are local candidates. Clock provisioning and live delivery remain unqualified.
+The portable source is global.14.current-context1: 198 dated records,
+139 qualified current, 54 review and five placeholders; 128 current specific/shared
+mappings and eleven generic gaps. The 638 retained/new assets are an archive count.
+The source recipe has 683 pins plus itself (684 materialized files); saved-state
+jobs use 23 runtime files. Page-policy/current-art control is tests.test_page_art_public;
+tests.test_metadata_art_public retains its explicitly frozen historical scope.
+The optional external clock requires each instance's exact deployed source,
+natural events, whole-workflow outcomes and a due-source update/readback. This
+portable snapshot includes no private operator evidence or current-account
+attestation. Worldwide/native/full-scene/phone/device/Store and whole tasks remain open.

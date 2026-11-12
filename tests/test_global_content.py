@@ -38,6 +38,7 @@ class GlobalContentTest(unittest.TestCase):
     def setUpClass(cls):
         cls.catalog=build_catalog(ROOT)
         cls.old=build_catalog(ROOT,HISTORICAL)
+        cls.baseline=build_catalog(ROOT,ROOT/'tests/fixtures/catalog/global-before-remaining-art-source.json')
 
     def test_reviewed_extensions_positive(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -118,22 +119,26 @@ class GlobalContentTest(unittest.TestCase):
             self.assertEqual(source.read_bytes(),before)
 
     def test_current_all_asset_bounded_admission_positive(self):
-        seen=set();actual=build_pack
-        def observe(root,catalog,**kwargs):
-            pack=actual(root,catalog,**kwargs);seen.update(pack['manifest']['assets'])
-            self.assertLessEqual(len(kwargs['roots']),LIMITS['selectionRoots'])
-            self.assertLessEqual(len(canonical_bytes(pack['manifest']))+sum(map(len,pack['objects'].values())),1048576)
-            for statistic in pack['statistics'].values():self.assertLessEqual(statistic['maxShardDecodedBytes'],4096)
-            return pack
-        with patch('tools.spacefox.graphics.build_pack',side_effect=observe):
-            validate_artwork_sources(ROOT,self.catalog)
-        self.assertEqual(seen,set(self.catalog['dictionaries']['assets']))
-        self.assertEqual(len(seen),562)
-        report=coverage_report(self.catalog)
-        self.assertEqual((report['configurations']['mappedArt'],len(report['configurations']['missingArtIds'])),(108,63))
-        self.assertEqual(report['organizations']['mappedKnownBadges'],349)
-        self.assertEqual(len(report['origins']['organizations']['missingOriginIds']),336)
-        self.assertIsNone(self.catalog['dictionaries']['organizations']['ll2:organization:183']['references']['badge'])
+        # Both immutable global.3 and current global.14 archive cohorts execute
+        # the same bounded real-art admission and all original assertions.
+        for catalog, asset_count, mapping_counts, missing_origins in (
+                (self.baseline, 562, (108, 63), 336), (self.catalog, 638, (174, 19), 335)):
+            seen=set();actual=build_pack
+            def observe(root,catalog,**kwargs):
+                pack=actual(root,catalog,**kwargs);seen.update(pack['manifest']['assets'])
+                self.assertLessEqual(len(kwargs['roots']),LIMITS['selectionRoots'])
+                self.assertLessEqual(len(canonical_bytes(pack['manifest']))+sum(map(len,pack['objects'].values())),1048576)
+                for statistic in pack['statistics'].values():self.assertLessEqual(statistic['maxShardDecodedBytes'],4096)
+                return pack
+            with patch('tools.spacefox.graphics.build_pack',side_effect=observe):
+                validate_artwork_sources(ROOT,catalog)
+            self.assertEqual(seen,set(catalog['dictionaries']['assets']))
+            self.assertEqual(len(seen),asset_count)
+            report=coverage_report(catalog)
+            self.assertEqual((report['configurations']['mappedArt'],len(report['configurations']['missingArtIds'])),mapping_counts)
+            self.assertEqual(report['organizations']['mappedKnownBadges'],349)
+            self.assertEqual(len(report['origins']['organizations']['missingOriginIds']),missing_origins)
+            self.assertIsNone(catalog['dictionaries']['organizations']['ll2:organization:183']['references']['badge'])
 
     def test_current_full_pack_and_atomic_invalid_asset_negative(self):
         with self.assertRaisesRegex(VisualError,'publisher artifact byte limit'):
@@ -192,10 +197,16 @@ class GlobalContentTest(unittest.TestCase):
             row=self.catalog['dictionaries']['configurations']['spacefox:configuration:'+token]
             self.assertIsNone(row['references']['origin']);self.assertIsNone(row['references']['manufacturer'])
             self.assertIsNone(row['facts']['providerActive']);self.assertIsNone(row['facts']['overallLengthMetres'])
-        miura9=self.catalog['dictionaries']['configurations']['spacefox:configuration:miura9']
+        miura9=self.baseline['dictionaries']['configurations']['spacefox:configuration:miura9']
         self.assertIsNone(miura9['references']['visual']);self.assertIsNone(miura9['references']['origin'])
         self.assertIsNone(miura9['facts']['providerActive'])
-        self.assertFalse(self.catalog['dictionaries']['configurations']['ll2:configuration:509']['facts']['currentPackSpecific'])
+        self.assertFalse(self.baseline['dictionaries']['configurations']['ll2:configuration:509']['facts']['currentPackSpecific'])
+        for identity, asset in (('spacefox:configuration:miura9', 'spacefox:asset:remaining-r1-miura9'),
+                                ('ll2:configuration:509', 'spacefox:asset:remaining-r1-miura5-current')):
+            row=self.catalog['dictionaries']['configurations'][identity]
+            self.assertEqual(row['references']['visual'],asset)
+            self.assertTrue(row['facts']['currentPackSpecific'])
+            self.assertIsNone(row['references']['origin'])
         self.assertEqual(len(tree('themis-t1h').findall('.//*[@data-part="fairing"]')),0)
         flags={a['facts']['depictedCode']:a['facts'] for a in new['assets'] if a['collection']=='countries'}
         india=ET.parse(ROOT/'assets/global'/flags['IN']['file'])

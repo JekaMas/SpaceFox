@@ -810,7 +810,7 @@ active files, source epochs, reservations and quota remain exact. The old intent
 is never POSTed; a later new run needs a new state/build-version intent. A terminal
 Pages response still precedes exact complete HTTP admission and promotion.
 
-## Portable metadata and reviewed artwork
+## Historical portable metadata and reviewed artwork — global.4
 
 The current global.4.bridge1 source has632 pinned inputs plus its recipe; prepare
 authenticates all633. The derived21-file runtime excludes source/art data.
@@ -818,12 +818,12 @@ Metadata shares whole-workflow concurrency and runs after successful no-pending
 prepare or promotion. Pending/armed journals yield before service reads/writes
 or collector import. Exact full live readback precedes daily candidate cadence.
 Four table requests can complete a small metadata candidate; no automatic recipe
-adoption follows. Reviewed art reaches144/171 mappings with27 exact gaps and598
+adoption follows. Reviewed art reaches144/171 mappings with27 exact gaps and 598
 assets. An art-only update preserves launch/site facts and source age; unchanged
 content-addressed maps are reused. Hosted generation5 on6494602 was separately
 observed; this successor still needs its own publication/qualification.
 
-## Portable page-policy and accepted artwork successor
+## Historical portable page-policy and artwork successor — global.5
 
 Current global.5.review1.bridge1 authenticates647 input pins plus recipe648,
 retains156/171 mappings,611assets and15exact gaps. The scheduled candidate-only
@@ -835,4 +835,34 @@ requires separate publication/hosted qualification; native/release remain open.
 
 ## Portable current catalog and external clock
 
-The provisional current registry, bounded detail/readback behavior and optional external dispatch clock are local candidates. Clock provisioning and live delivery remain unqualified.
+The portable source is global.14.current-context1: 198 dated records,
+139 qualified current, 54 review and five placeholders; 128 current specific/shared
+mappings and eleven generic gaps. The 638 retained/new assets are an archive count.
+The source recipe has 683 pins plus itself (684 materialized files); saved-state
+jobs use 23 runtime files. Page-policy/current-art control is tests.test_page_art_public;
+tests.test_metadata_art_public retains its explicitly frozen historical scope.
+The optional external clock requires each instance's exact deployed source,
+natural events, whole-workflow outcomes and a due-source update/readback. This
+portable snapshot includes no private operator evidence or current-account
+attestation. Worldwide/native/full-scene/phone/device/Store and whole tasks remain open.
+
+
+### Source-dated current event/program context (global14)
+
+`currentContexts` is an optional digest-pinned source-recipe input. Its nonempty
+records bind an exact configuration and site to a 2026+ event/program interval,
+source list, uncertainty and explicitly sourced organization roles. This is an
+editorial context inventory, not a second launch schedule; windows never become
+exact countdown times. The existing current model projection stays independent.
+The map audit explicitly joins current context roots, while `--scope archive`
+retains the complete geographic rendering sweep. Empty scope is an error before
+output activation. No association with a rocket alone makes a site current.
+
+Entity origin has four optional reviewed facts (`curatedOriginId`,
+`curatedOriginSources`, `curatedOriginReviewedAt`, `curatedOriginNote`) admitted
+through the existing curation operation. Typed source membership and date
+validation apply at creation, update and selected metadata replay. Explicit
+entity provenance takes precedence over legacy asset provenance; explicit null
+means unavailable without falling back. Unchanged rows preserve legacy origin
+behavior. Origin-only changes do not reopen lifecycle decisions. Asset geometry,
+exact identity and selected-watch size limits remain independent.

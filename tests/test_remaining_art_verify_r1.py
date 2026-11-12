@@ -18,6 +18,7 @@ from tools.spacefox.graphics import assemble_visual, canonical_visual
 ROOT = Path(__file__).resolve().parents[1]
 CURATION = Path('assets/global/curation-20261112-remaining-r1.json')
 HISTORICAL = ROOT/'tests/fixtures/catalog/global-before-remaining-art-source.json'
+ACCEPTED_R1 = ROOT/'tests/fixtures/catalog/global-before-further-art-r2-source.json'
 # This independent oracle names every expected exact input ID and artwork ID.
 # It is deliberately not derived from the curation or author review tables.
 EXPECTED = {
@@ -58,7 +59,7 @@ class RemainingArtIndependentR1Test(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             # Rich source/curation metadata reaches the unchanged byte cap
             # before the 16-root cardinality cap. This is a bounded selection.
-            refused = execute(ROOT/'tools/export_visuals.py','--output',Path(tmp)/'too-rich',
+            refused = execute(ROOT/'tools/export_visuals.py','--source',ACCEPTED_R1,'--output',Path(tmp)/'too-rich',
                                *[arg for identity in identities[:12] for arg in ('--root',identity)])
             self.assertEqual(refused.returncode,1)
             self.assertIn('selection manifest byte limit',refused.stderr)
@@ -68,7 +69,7 @@ class RemainingArtIndependentR1Test(unittest.TestCase):
             for offset, identity in enumerate(identities):
                 roots = [identity]
                 output = Path(tmp)/f'selection-{offset}'
-                manifest = self.export(ROOT/'catalog/source.json',output,roots)
+                manifest = self.export(ACCEPTED_R1,output,roots)
                 rows = manifest['selection']['dictionaries']['configurations']
                 self.assertEqual(set(rows),set(roots))
                 models = {asset for asset,entry in manifest['assets'].items()
@@ -87,7 +88,7 @@ class RemainingArtIndependentR1Test(unittest.TestCase):
                         self.assertEqual(entry['rights']['license'],'MIT')
                         self.assertIn('SpaceFox',entry['rights']['credit'])
                         self.assertTrue(entry['catalogRecord']['facts']['sources'])
-        c = build_catalog(ROOT)
+        c = build_catalog(ROOT, ACCEPTED_R1)
         for new_id, old_model in [('shared-lm7-yz1a',100),('shared-angara-a5-breezem',73)]:
             new = c['dictionaries']['assets']['spacefox:asset:remaining-r1-'+new_id]
             old_visual = c['dictionaries']['configurations'][f'll2:configuration:{old_model}']['references']['visual']
@@ -95,6 +96,26 @@ class RemainingArtIndependentR1Test(unittest.TestCase):
             self.assertNotEqual(new['facts']['id'],old['facts']['id'])
             self.assertEqual((ROOT/new['content']['path']).read_bytes(),(ROOT/old['content']['path']).read_bytes())
             self.assertEqual(new['content']['sha256'],old['content']['sha256'])
+
+    def test_current_r1_identity_admission_is_separate_from_historical_art(self):
+        from tools.spacefox.current_catalog import load_registry, future_reference
+        catalog = build_catalog(ROOT)
+        registry = load_registry(ROOT, catalog)
+        review = future_reference(catalog, registry, 'll2:configuration:109')
+        self.assertEqual(review['state'], 'needs-review')
+        self.assertEqual(review['identity'], 'll2:configuration:109')
+        self.assertIsNone(review['configuration'])
+        self.assertTrue(review['reviewRequired'])
+        with tempfile.TemporaryDirectory() as tmp:
+            rejected = execute(ROOT/'tools/export_visuals.py', '--output', Path(tmp)/'review',
+                               '--root', 'll2:configuration:109')
+            self.assertEqual(rejected.returncode, 1)
+            self.assertIn('unknown root/reference', rejected.stderr)
+            self.assertFalse((Path(tmp)/'review').exists())
+            admitted = self.export(ROOT/'catalog/source.json', Path(tmp)/'current', ['ll2:configuration:194'])
+            row = admitted['selection']['dictionaries']['configurations']['ll2:configuration:194']
+            self.assertEqual(row['references']['visual'], 'spacefox:asset:remaining-r1-kuaizhou11')
+            self.assertEqual(registry['records']['ll2:configuration:194']['state'], 'current-evidence')
 
     def test_actual_curation_cli_reopen_and_rejected_update_preserve_files(self):
         with tempfile.TemporaryDirectory() as tmp:

@@ -43,7 +43,7 @@ class PageArtPublicTest(unittest.TestCase):
         for path in manifest['files']:
             if path.startswith('tests/test_') and path.endswith('.py'):
                 importlib.import_module(path[:-3].replace('/', '.'))
-        self.assertEqual('2026-11-12.global.8.current2026-review1',
+        self.assertEqual('2026-11-12.global.14.current-context1',
                          json.loads((ROOT / 'catalog/source.json').read_bytes())['catalogVersion'])
         raw_journal = (PREFIX / 'observed-journal.raw.json').read_bytes()
         self.assertEqual('f4afca950f9ddc6ff7275a2bbae04a1645244078a5e0f34f0aa1cfb1f59a8a43', digest(raw_journal))
@@ -153,18 +153,21 @@ class PageArtPublicTest(unittest.TestCase):
             # Use the real current producer CLI; literal exact model/asset/rights
             # are an oracle independent of the recipe's selected asset lookup.
             output = base / 'visuals'
+            rejected = subprocess.run([sys.executable, '-B', 'tools/export_visuals.py', '--output', str(base / 'old'),
+                                       '--root', 'll2:configuration:123'], cwd=ROOT, capture_output=True)
+            self.assertNotEqual(0, rejected.returncode, 'review identity must not be relabeled current')
             result = subprocess.run([sys.executable, '-B', 'tools/export_visuals.py', '--output', str(output),
-                                     '--root', 'll2:configuration:123'], cwd=ROOT, capture_output=True)
+                                     '--root', 'spacefox:configuration:hanbit-mini'], cwd=ROOT, capture_output=True)
             self.assertEqual(0, result.returncode, result.stderr.decode())
             visual = json.loads((output / 'manifest.json').read_bytes())
-            model = visual['selection']['dictionaries']['configurations']['ll2:configuration:123']
-            identity = 'spacefox:asset:further-r2-lm5-yz2-radial-firstflight'
+            model = visual['selection']['dictionaries']['configurations']['spacefox:configuration:hanbit-mini']
+            identity = 'spacefox:asset:current-art-hanbit-mini-review1'
             self.assertEqual(identity, model['references']['visual'])
             self.assertIsNone(model['references']['origin'])
             asset = visual['assets'][identity]
             self.assertEqual('MIT', asset['rights']['license'])
             self.assertIn('SpaceFox', asset['rights']['credit'])
-            self.assertEqual(['ll2:configuration:123'], asset['catalogRecord']['facts']['coverage']['configurationIds'])
+            self.assertEqual(['spacefox:configuration:hanbit-mini'], asset['catalogRecord']['facts']['coverage']['configurationIds'])
             for shard in asset['shards']:
                 raw = (output / shard['path']).read_bytes()
                 self.assertEqual(shard['sha256'], digest(raw))
@@ -182,7 +185,7 @@ class PageArtPublicTest(unittest.TestCase):
             self.assertEqual(0, result.returncode, result.stderr.decode())
             runtime = {p.relative_to(checkout).as_posix() for p in checkout.rglob('*')
                        if p.is_file() and '.git' not in p.relative_to(checkout).parts}
-            self.assertEqual(21, len(runtime))
+            self.assertEqual(23, len(runtime))
             self.assertFalse(any(p.startswith(('catalog/', 'assets/', 'tests/', '.agents/')) for p in runtime))
             print('PUBLIC_PAGE_ART ' + json.dumps(dict(public=code, metadataRequests=4, primaryDuringMetadata=0,
                 exactPrefixRows=80, candidateComplete=False, automaticAdoption=False, sparseFiles=len(runtime),

@@ -54,6 +54,24 @@ class FurtherArtR2Test(unittest.TestCase):
         cls.before = build_catalog(ROOT,HISTORICAL)
         cls.after = build_catalog(ROOT)
 
+    @classmethod
+    def use_historical_recipe(cls):
+        # These finite R2 assertions describe the historical cohort, not the
+        # later eligibility-filtered current view. Reconstruct its exact recipe
+        # through the real amendment CLI from the retained pre-R2 fixture.
+        cls.history_tmp = tempfile.TemporaryDirectory(prefix='spacefox-art-r2-history-')
+        cls.addClassCleanup(cls.history_tmp.cleanup)
+        history = temporary_catalog(Path(cls.history_tmp.name) / 'owner')
+        cls.historical_source = history / 'catalog/source.json'
+        cls.historical_source.write_bytes(HISTORICAL.read_bytes())
+        for amendment, version in ((CURATION, 'literal.further.r2'),
+                                   (RADIAL_CURATION, 'literal.further.r2.radial')):
+            result = execute(ROOT/'tools/catalog.py', '--repo', history, '--source', cls.historical_source,
+                             '--amend', history/amendment, '--catalog-version', version)
+            if result.returncode:
+                raise AssertionError(result.stderr)
+        cls.after = build_catalog(history)
+
     def export(self,source,output,identity):
         result = execute(ROOT/'tools/export_visuals.py','--source',source,
                          '--output',output,'--root',identity)
@@ -61,6 +79,7 @@ class FurtherArtR2Test(unittest.TestCase):
         return json.loads((output/'manifest.json').read_bytes())
 
     def test_exact12_remaining15_and_preserved_source_contract(self):
+        self.use_historical_recipe()
         before,after = coverage_report(self.before),coverage_report(self.after)
         self.assertEqual((before['counts']['assets'],before['configurations']['mappedArt']),(598,144))
         self.assertEqual((after['counts']['assets'],after['configurations']['mappedArt']),(611,156))
@@ -83,7 +102,7 @@ class FurtherArtR2Test(unittest.TestCase):
                 if key!='visual':
                     self.assertEqual(new['references'][key],value,(identity,key))
         old_recipe = json.loads(HISTORICAL.read_bytes())
-        new_recipe = json.loads((ROOT/'catalog/source.json').read_bytes())
+        new_recipe = json.loads(self.historical_source.read_bytes())
         self.assertEqual(new_recipe['curations'][:-2],old_recipe['curations'])
         self.assertEqual([x['path'] for x in new_recipe['curations'][-2:]],
                          [str(CURATION),str(RADIAL_CURATION)])
@@ -96,11 +115,12 @@ class FurtherArtR2Test(unittest.TestCase):
             self.assertEqual(new_recipe[key],old_recipe[key])
 
     def test_all12_actual_export_cli_exact_identity_rights_and_geometry(self):
+        self.use_historical_recipe()
         wires = {}
         with tempfile.TemporaryDirectory() as tmp:
             for i,(identity,(name,asset)) in enumerate(EXPECTED.items()):
                 output = Path(tmp)/str(i)
-                manifest = self.export(ROOT/'catalog/source.json',output,identity)
+                manifest = self.export(self.historical_source,output,identity)
                 rows = manifest['selection']['dictionaries']['configurations']
                 self.assertEqual(set(rows),{identity})
                 row = rows[identity]
@@ -131,6 +151,12 @@ class FurtherArtR2Test(unittest.TestCase):
         self.assertNotEqual(wires['ll2:configuration:384'],wires['ll2:configuration:385'])
 
     def test_cli_admission_reopen_retained_objects_and_atomic_refusal(self):
+        self._cli_admission(positive_only=False)
+
+    def test_cli_admission_reopens_and_preserves_retained_objects(self):
+        self._cli_admission(positive_only=True)
+
+    def _cli_admission(self, *, positive_only):
         with tempfile.TemporaryDirectory() as tmp:
             root = temporary_catalog(Path(tmp)/'owner')
             source = root/'catalog/source.json'
@@ -165,6 +191,8 @@ class FurtherArtR2Test(unittest.TestCase):
                 self.assertIsNone(r['references']['origin'])
             for table in ('countries','organizations','sites'):
                 self.assertEqual(reopened['dictionaries'][table],old_catalog['dictionaries'][table])
+            if positive_only:
+                return
             accepted=(source.read_bytes(),catalog_output.read_bytes(),inventory(output))
             bad={'schemaVersion':1,'id':'rejected-further-r2','reviewedAt':'2026-11-12',
                  'sources':['https://www.spacex.com/vehicles/starship'],

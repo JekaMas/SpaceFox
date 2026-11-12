@@ -4,12 +4,13 @@ SpaceFox uses **scheduled GitHub Actions → static GitHub Pages → paired phon
 watch**. The publisher, tracked-input materializer and serialized delivery adapter
 have local qualification. The published old-v1 source `ea272b2` has observed
 manual bootstrap, second due cycle, optimized generation3 and pre-arm cancellation/
-recovery into generation4 (3184-byte exact HTTPS closure). Automatic cron and remote started-Pages cancellation remain unqualified.
+recovery into generation4 (3184-byte exact HTTPS closure). Those historical receipts do not qualify automatic cron or remote started-Pages cancellation.
 Observed workflow times174s versus474/595s are three runs, not a controlled benchmark.
 The later public6494602 dual-wire recovery reached active generation5 with
 zero reported provider requests and exact109-file/372331-byte HTTPS union.
-The metadata/art successor is a local candidate; publication and authentic
-metadata/cron qualification remain separate. Native fetch/cache/rendering,
+The owner’s later public generation13 adopted metadata/art content with zero
+provider requests and preserved the earlier source age; it is not a new source
+validation. Authentic metadata and automatic cron qualification remain separate. Native fetch/cache/rendering,
 phone/physical FR165 and Store acceptance remain pending. See the actual
 [CLOUD_DELIVERY runbook](CLOUD_DELIVERY.md) for permissions, recovery and limits.
 
@@ -58,9 +59,10 @@ Python/Git without a source-data build. Do not install tools implicitly.
 ## Operate and maintain
 
 The configured offset fifteen-minute cron is intended to wake a lightweight due
-check; automatic scheduling has not yet been observed for the owner's instance.
-A manual due-recovery dispatch with `bootstrap=false` preserves cadence and quota;
-it does not qualify cron. See the runbook for the recorded observations. Normal source
+check. Qualify naturally scheduled execution and fresh-source delivery for each
+instance using the external-clock runbook; the historical observations above do
+not describe current account state. A manual due-recovery dispatch with
+`bootstrap=false` preserves cadence and quota; it does not qualify cron. Normal source
 validation is hourly and near-launch validation every fifteen minutes, with
 explicit persisted fast mode. A not-due run makes no provider request. Watch
 countdown calculation is local. Re-fetching an old file, correcting a catalog or
@@ -71,6 +73,12 @@ failed/ambiguous deployments, use the runbook’s exact journal/service/HTTPS
 reconciliation; do not reset state, invent a live generation or rebuild pending
 bytes. A disabled or delayed schedule needs inspection and authorized recovery.
 No background model session is part of normal publishing.
+
+The current portable source is `2026-11-12.global.14.current-context1`:
+683 pinned inputs plus the recipe (684 materialized files), with 23 runtime files
+when the recipe is excluded. Its dated current counts and command are in
+[GLOBAL_VISUAL_CATALOG.md](GLOBAL_VISUAL_CATALOG.md). The historical counts below
+remain attached to their original receipts.
 
 The hosted generation5 includes both v1 and v2. The historical global.4 local
 successor preserved both, each feed≤8192 decoded UTF-8 bytes, with complete
@@ -85,7 +93,8 @@ worldwide coverage,36native languages, phone/watch and Store remain unqualified.
 V1 is retained indefinitely. Future source/feed publication determines the actual
 transition announcement; no elapsed90day support is claimed.
 
-For the independent Cloudflare clock candidate and its separate account,
-credential, local qualification and real-event requirements, see
-[External schedule clock](EXTERNAL_SCHEDULE_CLOCK.md). This is not provisioned
-or qualified by the local source alone.
+For the independent Cloudflare clock, its separate account, credential, fixed
+destination, local qualification and real-event requirements, see
+[External schedule clock](EXTERNAL_SCHEDULE_CLOCK.md). Each fork must review and
+change the fixed destination for its own repository and qualify its own instance;
+local source or another owner’s observations do not establish its operation.

@@ -67,7 +67,7 @@ The retained global.3 bridge observation extends the static seed by three code f
 595 canonical source inputs plus the recipe (596materialized files); later jobs use19 runtime files and preserve full
 v1/v2 durable admission without opening recipe/data or invoking a builder. The
 historical integration retains its original global.3/596 and19-file boundary.
-The current-source portable witness exercises real configuration194 content-only
+The frozen global.4 portable witness exercises real configuration194 content-only
 art adoption, exact map/current-prior reuse,21-file sparse saved-state recovery,
 metadata cadence and source/adoption/pending/armed gates through YAML shells and CLI:
 
@@ -79,14 +79,18 @@ These local loopback checks retain the explicit OIDC-response substitution and d
 not qualify hosted v2, native transport, globe, worldwide or Store behavior.
 
 
-The metadata successor adds a final source-first job inside the same concurrency
-group. Its two lazy metadata modules extend the runtime seed to21 files. Only
+The historical metadata successor added a final source-first job inside the same
+concurrency group. Its two lazy metadata modules then extended the runtime seed to 21 files. Only
 `metadata` opens its auxiliary candidate corpus; arm/deploy/recover still use
 saved artifact/journal bytes without collector import or source-data builds.
-The current global.4.bridge1 materializer follows632 pinned inputs plus the recipe633;
-new data-dependent integration observations cover this source change. See
+The historical global.4.bridge1 materializer followed 632 pinned inputs plus the
+recipe (633 files). The current global.14.current-context1 recipe follows683 pins
+plus the recipe (684 files); the runtime seed excluding the recipe has 23 tracked files.
+The current portable page-policy/art probe is `tests.test_page_art_public`; it
+selects Hanbit Mini and refuses now-review historical 123/LM5. Retained historical
+metadata controls are not current-art or whole-suite acceptance. See
 [GLOBAL_METADATA_REFRESH.md](GLOBAL_METADATA_REFRESH.md) for cadence, guards and
-the separate immutable export/review/adoption handoff. This inventory change
-has a new local21-file sparse integration observation; independent successor
-review and later hosted qualification remain separate. Older19-file observations
-retain their original source/inventory boundary.
+the separate immutable export/review/adoption handoff. The local 21-file metadata
+observation remains historical; the current clean sparse receipt binds 684 inputs
+and 23 runtime files. Later hosted qualification is separate. Older 19-file
+observations retain their original source/inventory boundary.
