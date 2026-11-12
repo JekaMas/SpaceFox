@@ -36,6 +36,7 @@ PATHS = {'countries': '/2.3.0/config/countries/',
          'organizations': '/2.3.0/agencies/',
          'models': '/2.3.0/launcher_configurations/', 'sites': '/2.3.0/pads/'}
 MODES = {'countries': None, 'organizations': 'normal', 'models': 'detailed', 'sites': 'detailed'}
+_STORED_PAGE_SIZE = object()
 
 
 class RefreshError(StateError):
@@ -285,9 +286,9 @@ class RefreshResult:
 
 
 class CatalogRefresh:
-    def __init__(self, publisher, *, origin='https://ll.thespacedevs.com', page_size=20,
+    def __init__(self, publisher, *, origin='https://ll.thespacedevs.com', page_size=_STORED_PAGE_SIZE,
                  max_source_age_seconds=MAX_SOURCE_AGE_SECONDS, schedule_max_pages=2,
-                 transport=None, local_http=False):
+                 transport=None, local_http=False, migrate_page_size=False):
         parsed = urlsplit(origin)
         require(parsed.path in ('', '/') and not parsed.query and not parsed.fragment
                 and parsed.username is None and parsed.password is None, 'invalid catalog origin')
@@ -297,7 +298,12 @@ class CatalogRefresh:
         else:
             require(parsed.scheme == 'https' and parsed.hostname == 'll.thespacedevs.com'
                     and parsed.port in (None, 443), 'production official LL2 origin required')
+        use_stored_size = page_size is _STORED_PAGE_SIZE
+        if use_stored_size:
+            page_size = 20
         require(type(page_size) is int and 1 <= page_size <= 100, 'page size must be1..100')
+        require(type(migrate_page_size) is bool and (not migrate_page_size or page_size == 100),
+                'qualified page-size migration requires desired100')
         require(type(max_source_age_seconds) is int and 60 <= max_source_age_seconds <= 604800,
                 'catalog source age must be60..604800seconds')
         require(type(schedule_max_pages) is int and 1 <= schedule_max_pages <= 4, 'primary request bound must be1..4')
@@ -305,38 +311,53 @@ class CatalogRefresh:
         self.origin = origin.rstrip('/')
         self.page_size = page_size
         self.max_age = max_source_age_seconds
+        self.migrate_page_size = migrate_page_size
         self.schedule_max_pages = schedule_max_pages
         self.transport = transport or CatalogHTTPTransport()
         self.objects = {}
         ref = publisher.ledger.get('catalog_refresh')
         if ref is None:
-            self.journal = dict(schemaVersion=1, origin=self.origin, pageSize=page_size,
-                                maxSourceAgeSeconds=self.max_age, staging=None, cache={}, current=None, previous=None)
+            self.journal = self._empty_journal()
         else:
             raw = publisher.store._blob(publisher.head, _catalog_ref(ref), MAX_CATALOG_JOURNAL_BYTES)
             self.journal = strict_json(raw, MAX_CATALOG_JOURNAL_BYTES)
             try:
+                if use_stored_size:
+                    self.page_size = self._size(self.journal['pageSize'])
                 self._check_journal()
             except (KeyError, TypeError, ValueError, AttributeError) as error:
                 if isinstance(error, StateError):
                     raise
                 raise RefreshError('malformed catalog checkpoint/candidate') from error
 
+    def _empty_journal(self):
+        return dict(schemaVersion=2 if self.migrate_page_size else 1, origin=self.origin,
+                    pageSize=self.page_size, maxSourceAgeSeconds=self.max_age,
+                    staging=None, cache={}, current=None, previous=None)
+
     def _check_journal(self):
         j = self.journal
         require(type(j) is dict and set(j) == {'schemaVersion', 'origin', 'pageSize', 'maxSourceAgeSeconds',
                                              'staging', 'cache', 'current', 'previous'}
-                and type(j['schemaVersion']) is int and j['schemaVersion'] == 1,
+                and type(j['schemaVersion']) is int and j['schemaVersion'] in (1, 2),
                 'unsupported catalog journal')
-        require((j['origin'], j['pageSize'], j['maxSourceAgeSeconds']) ==
-                (self.origin, self.page_size, self.max_age), 'checkpoint query/policy changed; use original collector settings')
+        self._size(j['pageSize'])
+        require(type(j['maxSourceAgeSeconds']) is int
+                and (j['origin'], j['maxSourceAgeSeconds']) == (self.origin, self.max_age)
+                and (j['pageSize'] == self.page_size or self.migrate_page_size),
+                'checkpoint query/policy changed; use original collector settings')
         require(type(j['cache']) is dict and len(j['cache']) <= MAX_PAGES, 'catalog cache index exceeds bound')
         for ref in (j['current'], j['previous']):
             if ref is not None:
                 candidate = strict_json(self._read(ref), MAX_CATALOG_OBJECT_BYTES)
-                require(candidate.get('complete') is True and candidate.get('schemaVersion') == 1,
+                require(candidate.get('complete') is True and type(candidate.get('schemaVersion')) is int
+                        and candidate['schemaVersion'] in (1, 2),
                         'referenced catalog candidate is not complete')
-                data, remaining, _, _, _ = self._assemble(candidate['coverage']['pages'])
+                sizes = self._candidate_sizes(candidate)
+                if j['schemaVersion'] == 1:
+                    require(candidate['schemaVersion'] == 1 and all(v == j['pageSize'] for v in sizes.values()),
+                            'legacy candidate query policy differs from journal')
+                data, remaining, _, _, _ = self._assemble(candidate['coverage']['pages'], sizes)
                 require(remaining is None, 'complete candidate has incomplete pages')
                 for collection in COLLECTIONS:
                     data[collection].sort(key=lambda row: row['sourceId'])
@@ -355,15 +376,70 @@ class CatalogRefresh:
         # hash-consistent malformed journal cannot manufacture a complete prefix.
         if j['staging'] is not None:
             stage = j['staging']
-            require(type(stage) is dict and set(stage) == {'startedUtc', 'pages'}, 'invalid catalog staging')
+            require(type(stage) is dict and set(stage) == ({'startedUtc', 'pages'} if j['schemaVersion'] == 1
+                    else {'startedUtc', 'pages', 'pageSizes'}), 'invalid catalog staging')
             _utc(stage['startedUtc'])
             require(type(stage['pages']) is list and len(stage['pages']) <= MAX_PAGES, 'catalog page bound exceeded')
-            self._assemble(stage['pages'])
+            self._assemble(stage['pages'], self._stage_sizes())
         for url, meta in j['cache'].items():
-            require(type(meta) is dict and set(meta) == {'body', 'etag'}, 'invalid catalog cache entry')
+            require(type(meta) is dict and set(meta) == ({'body', 'etag'} if j['schemaVersion'] == 1
+                    else {'body', 'etag', 'pageSize'}), 'invalid catalog cache entry')
+            size = j['pageSize'] if j['schemaVersion'] == 1 else self._size(meta['pageSize'])
             self._etag(meta['etag'])
             self._read(meta['body'])
-            require(any(self._url(c, 0) == url or self._valid_url(c, url) for c in COLLECTIONS), 'unsafe cache URL')
+            require(any(self._valid_url(c, url, page_size=size) for c in COLLECTIONS), 'unsafe cache URL')
+        if self.migrate_page_size and (j['schemaVersion'] == 1 or j['pageSize'] != self.page_size):
+            old_size = j['pageSize']
+            sizes = self._stage_sizes()
+            stage = j['staging']
+            if stage is not None:
+                # Every already-started collection keeps its complete query
+                # binding. No committed page/link is changed or redownloaded.
+                started = {p['collection'] for p in stage['pages']}
+                stage['pageSizes'] = {c: sizes[c] if c in started else self.page_size for c in COLLECTIONS}
+            if j['schemaVersion'] == 1:
+                for meta in j['cache'].values():
+                    meta['pageSize'] = old_size
+            j['schemaVersion'], j['pageSize'] = 2, self.page_size
+
+    @staticmethod
+    def _size(value):
+        require(type(value) is int and 1 <= value <= 100, 'page size must be1..100')
+        return value
+
+    def _stage_sizes(self):
+        stage = self.journal['staging']
+        sizes = (stage['pageSizes'] if self.journal['schemaVersion'] == 2 and stage is not None
+                 else {c: self.journal['pageSize'] for c in COLLECTIONS})
+        require(type(sizes) is dict and set(sizes) == set(COLLECTIONS), 'invalid collection query policy')
+        for size in sizes.values():
+            self._size(size)
+        return sizes
+
+    def _candidate_sizes(self, candidate):
+        queries = candidate['coverage']['queries']
+        require(type(queries) is dict and set(queries) == set(COLLECTIONS), 'invalid candidate queries')
+        sizes = {}
+        for collection in COLLECTIONS:
+            query = parse_qs(urlsplit(queries[collection]).query, strict_parsing=True)
+            limit = query.get('limit', [])
+            require(len(limit) == 1 and bool(re.fullmatch('[1-9][0-9]*', limit[0])), 'invalid candidate page size')
+            sizes[collection] = self._size(int(limit[0]))
+            require(self._valid_url(collection, queries[collection], 0, sizes[collection]), 'unsafe candidate query')
+        source = candidate['source']
+        require(source['baseUrl'] == self.origin + '/2.3.0/' and type(source['maxSourceAgeSeconds']) is int
+                and source['maxSourceAgeSeconds'] == self.max_age, 'candidate source policy differs from journal')
+        if candidate['schemaVersion'] == 2:
+            policy = candidate['queryPolicy']
+            require(type(policy) is dict and set(policy) == {'origin', 'pageSizes', 'maxSourceAgeSeconds'}
+                    and type(policy['maxSourceAgeSeconds']) is int
+                    and type(policy['pageSizes']) is dict and set(policy['pageSizes']) == set(COLLECTIONS),
+                    'invalid candidate query policy')
+            for size in policy['pageSizes'].values():
+                self._size(size)
+            require(policy == dict(origin=self.origin, pageSizes=sizes,
+                    maxSourceAgeSeconds=self.max_age), 'candidate query policy mismatch')
+        return sizes
 
     def _read(self, ref):
         path = object_path(ref)
@@ -382,15 +458,15 @@ class CatalogRefresh:
         self.objects[object_path(ref)] = raw
         return ref
 
-    def _url(self, collection, offset):
-        query = {'format': 'json', 'limit': str(self.page_size)}
+    def _url(self, collection, offset, page_size=None):
+        query = {'format': 'json', 'limit': str(self.page_size if page_size is None else page_size)}
         if MODES[collection] is not None:
             query['mode'] = MODES[collection]
         if offset:
             query['offset'] = str(offset)
         return self.origin + PATHS[collection] + '?' + urlencode(query)
 
-    def _valid_url(self, collection, url, offset=None):
+    def _valid_url(self, collection, url, offset=None, page_size=None):
         try:
             if type(url) is not str or any(ord(c) <= 32 or ord(c) == 127 for c in url):
                 return False
@@ -405,7 +481,7 @@ class CatalogRefresh:
             value = int(supplied[0])
             if offset is not None and value != offset:
                 return False
-            expected = parse_qs(urlsplit(self._url(collection, value)).query)
+            expected = parse_qs(urlsplit(self._url(collection, value, page_size)).query)
             return query == expected
         except (ValueError, TypeError):
             return False
@@ -416,44 +492,46 @@ class CatalogRefresh:
                 and bool(re.fullmatch(r'(?:W/)?"[\x21\x23-\x7e]*"', value)), 'invalid ETag')
         return value
 
-    def _page(self, collection, raw, offset, expected):
+    def _page(self, collection, raw, offset, expected, page_size=None):
+        page_size = self.page_size if page_size is None else page_size
         page = strict_json(raw)
         require(type(page) is dict and {'count', 'next', 'previous', 'results'} <= page.keys(), 'incomplete collection page')
         total = page['count']
         require(type(total) is int and 0 <= total <= MAX_ROWS and (expected is None or total == expected),
                 'invalid/drifting collection count')
         rows = page['results']
-        require(type(rows) is list and len(rows) <= self.page_size, 'invalid collection page cardinality')
+        require(type(rows) is list and len(rows) <= page_size, 'invalid collection page cardinality')
         received = offset + len(rows)
         require(received <= total, 'collection exceeds declared count')
         following = page['next']
-        require(following is None or type(following) is str and self._valid_url(collection, following, received)
+        require(following is None or type(following) is str and self._valid_url(collection, following, received, page_size)
                 and len(rows) > 0, 'unsafe/nonadvancing pagination')
         require(following is not None or received == total, 'truncated collection')
         require(following is None or received < total, 'next page after declared count')
         prior = page['previous']
         require(prior is None if offset == 0 else type(prior) is str and
-                self._valid_url(collection, prior, max(0, offset - self.page_size)), 'invalid previous page link')
+                self._valid_url(collection, prior, max(0, offset - page_size), page_size), 'invalid previous page link')
         normalized = [normalize_row(collection, row, self.origin) for row in rows]
         return total, following, normalized
 
-    def _assemble(self, pages):
+    def _assemble(self, pages, page_sizes=None):
+        sizes = self._stage_sizes() if page_sizes is None else page_sizes
         data = {c: [] for c in COLLECTIONS}
         seen = {c: set() for c in COLLECTIONS}
         expected = None
-        index, offset, url = 0, 0, self._url(COLLECTIONS[0], 0)
+        index, offset, url = 0, 0, self._url(COLLECTIONS[0], 0, sizes[COLLECTIONS[0]])
         for page in pages:
             require(type(page) is dict and set(page) == {'collection', 'url', 'body', 'etag', 'validatedUtc',
                                                        'receivedUtc', 'status', 'count', 'rows', 'next'}, 'invalid page checkpoint')
             require(index < len(COLLECTIONS), 'page after collection completion')
             collection = COLLECTIONS[index]
-            require(page['collection'] == collection and self._valid_url(collection, page['url'], offset),
+            require(page['collection'] == collection and self._valid_url(collection, page['url'], offset, sizes[collection]),
                     'checkpoint page sequence mismatch')
             _utc(page['validatedUtc'])
             _utc(page['receivedUtc'])
             require(page['validatedUtc'] <= page['receivedUtc'] and page['status'] in (200, 304), 'invalid page source epoch/status')
             self._etag(page['etag'])
-            total, following, rows = self._page(collection, self._read(page['body']), offset, expected)
+            total, following, rows = self._page(collection, self._read(page['body']), offset, expected, sizes[collection])
             require((total, len(rows), following) == (page['count'], page['rows'], page['next']), 'page checkpoint facts mismatch')
             ids = [row['sourceId'] for row in rows]
             require(len(set(ids)) == len(ids) and not seen[collection].intersection(ids), 'duplicate source identity')
@@ -464,7 +542,7 @@ class CatalogRefresh:
             if following is None:
                 index += 1
                 offset, expected = 0, None
-                url = None if index == len(COLLECTIONS) else self._url(COLLECTIONS[index], 0)
+                url = None if index == len(COLLECTIONS) else self._url(COLLECTIONS[index], 0, sizes[COLLECTIONS[index]])
             else:
                 url = following
         return data, (None if index == len(COLLECTIONS) else COLLECTIONS[index]), url, offset, expected
@@ -495,8 +573,7 @@ class CatalogRefresh:
             # Actual CAS conflicts still require a new reconciled owner.
             durable = self.publisher.ledger.get('catalog_refresh')
             if durable is None:
-                self.journal = dict(schemaVersion=1, origin=self.origin, pageSize=self.page_size,
-                                    maxSourceAgeSeconds=self.max_age, staging=None, cache={}, current=None, previous=None)
+                self.journal = self._empty_journal()
             else:
                 self.journal = strict_json(self.publisher.store._blob(
                     self.publisher.head, _catalog_ref(durable), MAX_CATALOG_JOURNAL_BYTES), MAX_CATALOG_JOURNAL_BYTES)
@@ -569,13 +646,13 @@ class CatalogRefresh:
                         missing[collection].append(identity)
                         retained[collection].append(deepcopy(item))
             data[collection].sort(key=lambda r: r['sourceId'])
-        return dict(schemaVersion=1, complete=True,
+        candidate = dict(schemaVersion=self.journal['schemaVersion'], complete=True,
                     source=dict(provider='The Space Devs Launch Library 2', apiVersion='2.3.0', baseUrl=self.origin + '/2.3.0/',
                                 observedFromUtc=min(p['validatedUtc'] for p in pages), observedToUtc=max(p['validatedUtc'] for p in pages),
                                 completedUtc=now, maxSourceAgeSeconds=self.max_age,
                                 scope='Complete unfiltered typed provider-table pagination; multi-request nontransactional traversal, not worldwide official operational completeness.'),
                     reference=data, retainedMissing=retained, missingComparedToPrevious=missing,
-                    coverage=dict(pages=deepcopy(pages), queries={c: self._url(c, 0) for c in COLLECTIONS},
+                    coverage=dict(pages=deepcopy(pages), queries={c: self._url(c, 0, self._stage_sizes()[c]) for c in COLLECTIONS},
                                   counts={c: len(data[c]) for c in COLLECTIONS}, distinctIds={c: sorted(ids[c]) for c in COLLECTIONS},
                                   recordValidatedUtc=record_epochs,
                                   relations=sorted(edges), upcomingReferences=upcoming,
@@ -593,6 +670,16 @@ class CatalogRefresh:
                                                            celestialBodies=sorted({r['celestialBodyId'] for r in data['sites'] if r['celestialBodyId'] is not None})),
                                   worldwideOfficialSupplementClosure=False, artworkQualification=False, coordinateAccuracyQualification=False),
                     previousComplete=self.journal['current'])
+        if self.journal['schemaVersion'] == 2:
+            candidate['queryPolicy'] = dict(origin=self.origin, pageSizes=deepcopy(self._stage_sizes()),
+                                           maxSourceAgeSeconds=self.max_age)
+        return candidate
+
+    def _cache_entry(self, page, page_size):
+        entry = {'body': page['body'], 'etag': page['etag']}
+        if self.journal['schemaVersion'] == 2:
+            entry['pageSize'] = page_size
+        return entry
 
     def run(self, now, *, max_requests=1, clock=None, restart=False):
         require(type(max_requests) is int and 1 <= max_requests <= 4, 'bounded invocation requires1..4requests')
@@ -611,6 +698,8 @@ class CatalogRefresh:
             self._check_journal()
         if restart or self.journal['staging'] is None and self.journal['current'] is None:
             self.journal['staging'] = {'startedUtc': sample(), 'pages': []}
+            if self.journal['schemaVersion'] == 2:
+                self.journal['staging']['pageSizes'] = {c: self.page_size for c in COLLECTIONS}
             self._save(sample())
         if self.journal['staging'] is None:
             return RefreshResult('complete', 0, self.journal['current'])
@@ -644,7 +733,8 @@ class CatalogRefresh:
                     body = response.body
                 epoch = validation_epoch(Response(200, headers, body), received_at)
                 require(received_at - self.max_age <= epoch, 'catalog source Date/Age too old')
-                total, following, rows = self._page(collection, body, offset, expected)
+                size = self._stage_sizes()[collection]
+                total, following, rows = self._page(collection, body, offset, expected, size)
                 old_ids = {row['sourceId'] for row in data[collection]}
                 new_ids = [row['sourceId'] for row in rows]
                 require(len(new_ids) == len(set(new_ids)) and not old_ids.intersection(new_ids), 'duplicate source identity')
@@ -654,7 +744,7 @@ class CatalogRefresh:
                 # committing it; failures retain the previous durable page.
                 tentative = deepcopy(self.journal)
                 tentative['staging']['pages'].append(page)
-                tentative['cache'][url] = {'body': page['body'], 'etag': page['etag']}
+                tentative['cache'][url] = self._cache_entry(page, size)
                 require(len(tentative['cache']) <= MAX_PAGES, 'catalog cache URL budget exhausted')
                 require(len(_canonical(tentative)) <= MAX_CATALOG_JOURNAL_BYTES, 'catalog journal byte budget exhausted')
                 self.publisher.finish_request(self.publisher.head, token, received_at, 'success')
@@ -679,7 +769,8 @@ class CatalogRefresh:
             reference = self._put(_canonical(candidate))
             self.journal['previous'] = self.journal['current']
             self.journal['current'] = reference
-            self.journal['cache'] = {p['url']: {'body': p['body'], 'etag': p['etag']} for p in self.journal['staging']['pages']}
+            sizes = self._stage_sizes()
+            self.journal['cache'] = {p['url']: self._cache_entry(p, sizes[p['collection']]) for p in self.journal['staging']['pages']}
             self.journal['staging'] = None
             self._save(completed_at)
             return RefreshResult('complete', attempts, reference)

@@ -31,6 +31,10 @@ def scheduled(publisher, now, *, interval_seconds=86400, max_requests=4, clock=N
     publisher._context(publisher.head)
     if publisher.ledger['pending'] is not None:
         return dict(status='yielded_pending', requests=0, completed=None)
+    # The scheduled writer explicitly opts into the qualified migration. An
+    # explicit caller page size retains the original exact-policy contract.
+    if 'page_size' not in settings:
+        settings = dict(settings, page_size=100, migrate_page_size=True)
     collector = CatalogRefresh(publisher, **settings)
     current = collector.current()
     if collector.journal['staging'] is None and current is not None:
@@ -55,6 +59,8 @@ def main(argv=None):
     parser.add_argument('--origin', default='https://ll.thespacedevs.com')
     parser.add_argument('--local-http', action='store_true', help='explicit loopback-only local qualification')
     parser.add_argument('--page-size', type=int, default=20)
+    parser.add_argument('--migrate-page-size', action='store_true',
+                        help='qualified migration to --page-size100 at safe collection boundaries')
     parser.add_argument('--max-source-age-seconds', type=int, default=86400)
     parser.add_argument('--schedule-max-pages', type=int, default=2)
     parser.add_argument('--max-requests', type=int, default=1)
@@ -92,7 +98,8 @@ def main(argv=None):
             live = None if raw_live is None else LiveRevision(**raw_live)
             publisher.reconcile(live)
         collector = CatalogRefresh(publisher, origin=args.origin, local_http=args.local_http,
-                                   page_size=args.page_size, max_source_age_seconds=args.max_source_age_seconds,
+                                   page_size=args.page_size, migrate_page_size=args.migrate_page_size,
+                                   max_source_age_seconds=args.max_source_age_seconds,
                                    schedule_max_pages=args.schedule_max_pages)
         if args.command == 'collect':
             now = int(time.time()) if args.now is None else args.now

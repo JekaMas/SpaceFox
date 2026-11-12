@@ -1,4 +1,4 @@
-# Maintained global visual catalog — producer revision 4
+# Maintained global visual catalog — producer revision 5 review1
 
 The single active recipe is `catalog/source.json`. The November 11 reference,
 original registry, 13 original SVGs, browser sources and their old evidence remain
@@ -8,15 +8,15 @@ content coverage, pad accuracy, native transport, hosting or Store acceptance.
 
 ## Current finite coverage
 
-| Category | Maintained revision `2026-11-12.global.4.bridge1` |
+| Category | Accepted finite revision `2026-11-12.global.5.review1.bridge1` |
 | --- | --- |
 | Original provider facts retained | 839 records: 103 countries, 350 organizations, 170 configurations, 216 sites |
 | Additional identities | 3 JAXA and 2 NASA sounding configurations, separate MIURA9 metadata, plus 2 official launch-area identities with unresolved pad points |
 | Required known configurations | 165 original non-placeholders + 6 official supplements = 171 |
-| Specific/reviewed shared mappings | 138/165 original configurations; 144/171 with supplements |
-| Remaining specific-art gaps | 27 exact configuration IDs with unresolved primary shape/identity limits; all63 prior gaps were reviewed |
-| Original art added | 36 new immutable asset records in the remaining-art increment: 34 dedicated original schematics and 2 newly reviewed copies of existing originals. Earlier 48 content-r1 assets and all older artwork remain immutable |
-| Source SVGs exported | 598 total: earlier 562 + 36 appended originals/reviewed copies; full-global export exceeds 1MiB and is not a delivery requirement |
+| Specific/reviewed shared mappings | 150/165 original configurations; 156/171 with supplements; the preceding revision recorded144/171 |
+| Remaining specific-art gaps | 15 exact configuration IDs with unresolved primary shape/identity limits; all27 inherited gaps researched,12 mappings accepted after separate independent/root review |
+| Original art added | 12 new immutable original schematics in R2, after the accepted36 remaining-r1 records (34 originals and2 reviewed copies). Earlier48 content-r1 assets and all older artwork remain immutable |
+| Source SVGs exported | 611 total: preceding598 +12 originals +1 immutable radial LM5 replacement; full-global export exceeds 1MiB and is not a delivery requirement |
 | Country marks | 8 original national flags (AU/JP/CN/RU/IN/DE/ES/KR), 90 currently selected informational code badges, 4 retained marks and Europe region; all old code badges remain immutable. Unknown omitted |
 | Organization badges | 349/349 known organization identities have an identifiable original label or retained mark; Unknown183 omitted. New labels show abbreviation + exact operator ID, never claim official logos |
 | Sourced origins | 94/171 required configurations; 13/349 known organizations. The remaining 77 and 336 origins stay explicit gaps, independent of badge availability |
@@ -34,21 +34,34 @@ active/pending flags retain their original meaning; they are not current in-serv
 proof. Official additions have null provider flags/counts and a separate official
 lifecycle assertion, rather than invented provider records.
 
-The accepted remaining-art curation records the finite source review for all63 prior gaps. A published
-representative fairing option can support a specific schematic when its option,
-source date and limits are explicit; multiple fairings alone do not make an art
-gap. Supplied booster/suffix identities remain exact. H3 retains its unresolved
-zero/two/four-booster family uncertainty. Epsilon S uses the current 2026 M-35a
-Block 1 representative, without asserting equivalence to former E-21. MIURA 5
-and MIURA 9 use separately reviewed current profiles. No picture changes a
-source model fact, lifecycle assertion, operator/manufacturer/origin/site role.
+The accepted finite review accounts for all27 inherited gaps and separates12
+source-bound mappings from15 unresolved identities. The original profiles and
+immutable radial LM5 append retain their named/source-dated limitations. Actual
+54×124 portable visual inspection is separate from native/device execution.
 
-The old 562/108/63 receipts remain historical. Only data-dependent checks are
-superseded by this increment's finite coverage/geometry/selector controls;
-unrelated publisher/native/global matrices are retained at their original proof
-boundaries. The finite art increment has separate accepted review evidence; whole known-model
-coverage remains open. The metadata/art public successor is a local candidate
-pending its own independent review.
+A published source-dated exterior representative can support a schematic when
+its exact name/configuration and limits are explicit. Approximate plotting
+proportions are allowed; an engineering height/diameter pair is not a prerequisite
+for an original source-bound illustration. No inferred dimension enters model
+facts. Primary manufacturer/agency drawings and explicitly credited firsthand
+photographs establish only the exterior they depict; a news rehost without an
+original credit does not establish primary provenance. Photos, official logos
+and manufacturer graphic bytes remain outside the MIT asset pack.
+
+R2 retains exact1110/2110/2210 motor/fairing codes, first-flightLM5/YZ2,
+source-dated2016SARGE and2022Prime, current2026V3/three-grid-fin architecture,
+2025namedZephyr (no equivalence to current unnamed redesign), publishedLM10/10A
+crew options and the exact paired Nebula1 product image. The November2 stainless
+DeepBlue image is Nebula2 and is excluded. Qased uses the original agency-credit
+2020Noor photograph. GenericH3/Safir/Unha/Soyuz/ProtonM/Vulcan remain gaps, with
+no guessed booster/head choice. No picture changes a provider fact, lifecycle,
+operator/manufacturer/origin/site role or original source history.
+
+The older562/108/63 and598/144/27 count receipts remain historical. New data-dependent
+count/geometry/selector checks use the frozen revision4 recipe as baseline;
+unrelated valid publisher/native/global checks and the earlier36-specific proof
+boundary are retained without rerunning. Full known-model art, worldwide/current
+source coverage, native composition and public delivery remain open.
 
 ## Data-only add, correct and replace workflow
 
@@ -80,7 +93,7 @@ actually reviewed source values before use:
 
 ```sh
 python3 -B tools/catalog.py --amend catalog/reviewed-site-correction-2.json \
-  --catalog-version 2026-11-12.global.5 --output build/publisher-catalog.json \
+  --catalog-version 2026-11-12.global.6 --output build/publisher-catalog.json \
   --report build/global-coverage.json
 python3 -B tools/export_visuals.py --output build/selected-visuals \
   --root ll2:configuration:164 --root ll2:site:65
@@ -279,8 +292,8 @@ for the selected native interface and its separate offwatch/device proof limits.
 ## Remaining-art revision and retained selection example
 
 The remaining-art R1 increment adds36 exact mappings after reviewing all63 earlier
-gaps:34 dedicated originals and2 newly reviewed copies of prior originals. The additive curation retains source/identity/shape review;27 exact gaps and
-the aggregate known-model gate remain open.
+gaps:34 dedicated originals and2 newly reviewed copies of prior originals. Source/identity/shape review remains in the additive curation;15 exact gaps
+and the aggregate known-model gate remain open.
 
 The same existing producer ports can reopen the earlier recipe and produce its
 original selected bytes alongside the current selection, without a layout edit:
@@ -308,3 +321,14 @@ geometry, and old object files remain byte-identical. Its isolated triangle is a
 test input, not accepted vehicle art. National origins or other optional metadata
 must be reviewed separately: copying an old visual's geometry does not authorize
 copying its optional origin fields to a previously unknown model origin.
+
+
+R2 independent V1 appends one immutable LM5/YZ-2 radial-view representative while
+retaining the original flattened informational schematic. Four physical boosters
+remain documented; the new orthographic view shows three because the rear one
+is occluded. This is a source-bound silhouette improvement, not an engineering
+reconstruction or a new global envelope rule. The current accepted finite revision is
+`2026-11-12.global.5.review1.bridge1`:156/171 mappings,611 assets and15 exact gaps.
+Other11 selected R2 originals and all prior facts/roles/origin unknowns remain.
+The repaired finite increment has independent and root review. Complete
+artwork, native and public-delivery acceptance remain separate.

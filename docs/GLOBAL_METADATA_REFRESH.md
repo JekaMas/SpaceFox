@@ -34,7 +34,7 @@ UTC. It includes per-record page validation dates, source interval, relation edg
 required active/pending/upcoming IDs, accepted schedule digest/reference dates,
 unknown jurisdictions and unqualified visual/mark/position denominators. Full
 pagination is a nontransactional traversal, not a synchronized worldwide database
-snapshot. Official supplements,27 current art gaps and precise pad accuracy are
+snapshot. Official supplements,15 current art gaps and precise pad accuracy are
 not closed by this collector.
 
 Every page, including304, needs an existing shared publisher reservation committed
@@ -110,7 +110,9 @@ live readback. `collect` requires `--expected-head` and a trusted caller-owned
 `artifact_revision`. Pending publication is refused so the owning cloud recovery
 path can finish it first. The CLI derives running SHA from its actual checkout
 and refuses untracked/dirty collector runtime files. Supply the same page-size /
-source-age options on reopen; a changed query/policy cannot reinterpret a journal.
+source-age options on reopen; an explicit changed query/policy cannot reinterpret
+a journal. An omitted primitive reader page size selects the stored desired policy;
+the standalone CLI keeps its explicit default20.
 
 ```sh
 python3 -B tools/refresh_catalog.py status --remote /path/to/authority.git
@@ -126,6 +128,14 @@ python3 -B tools/refresh_catalog.py export --remote /path/to/authority.git \
 `--max-requests` is1..4 (default1); `--page-size` is1..100 (default20);
 `--max-source-age-seconds` is60..604800 (default86400);
 `--schedule-max-pages` is1..4 (default2). `--restart` begins a new traversal.
+`--page-size 100 --migrate-page-size` explicitly selects the qualified journal2
+transition. It preserves every saved page/raw hash/date and completes a started
+collection at its old bound size; unstarted collections and subsequent traversals
+use100. Origin/source-age changes and unqualified explicit size changes still
+refuse. Current/prior immutable candidates replay their own original query policy;
+old candidate bytes are never rewritten. Cache entries bind their own query size.
+Old writers refuse journal2; a smaller-size rollback cannot reset the traversal.
+No write occurs for status/export, not_due or preflight-yield paths.
 `--source-ref` defaults to `refs/heads/main`. The sole production origin is the
 official LL2 HTTPS host. `--local-http` only accepts an explicit127.0.0.1 port;
 `--now` exists only with that local test mode. Exports refuse to overwrite different
@@ -157,7 +167,7 @@ state, force launch polling or build art/catalog source data. Non-metadata
 arm/deploy/recover paths do not import the collector or read the metadata corpus.
 Their source seed now has21 runtime files, including two lazily used metadata
 entry/collector modules; it still excludes the catalog recipe and all source data.
-Prepare retains the full632-source-input+recipe633 materializer before authority.
+Prepare retains the full647-source-input+recipe648 materializer before authority.
 
 `metadata --interval-seconds` validates3600..604800seconds and defaults to86400.
 The deadline is the last complete candidate's `source.completedUtc` plus the
@@ -165,7 +175,10 @@ interval. A complete current candidate before that deadline returns `not_due`,
 zeroHTTP and no auxiliary write. Partial staging resumes at its next uncommitted
 URL on later normal workflow events, regardless of the old complete candidate's
 age. An overdue complete candidate starts a replacement traversal using its exact
-ETag/raw cache. `--max-requests` validates1..4 and defaults to4 per invocation;
+ETag/raw cache. Automatic scheduled metadata explicitly selects desired100 with this migration,
+including an existing20-row partial collection. No manual database edit is needed.
+The primitive/new standalone explicit default remains20 for compatibility; it
+accepts the existing1..100 range. `--max-requests` validates1..4 and defaults to4 per invocation;
 every HTTP still needs its own durable shared reservation. Read-only preflight
 returns `yielded` without initial staging/write for launch-due, backoff, uncertain
 requests, or insufficient conservative primary headroom. Pending publication
@@ -188,25 +201,39 @@ and official current supplements. Only a reviewed new pinned reference/recipe
 revision may activate those data through the existing source/prepare/delivery
 path. Metadata maintenance never edits `catalog/source.json` automatically.
 
-Current27 artwork gaps, exact pad/map accuracy, worldwide official/upcoming
+Current15 artwork gaps, exact pad/map accuracy, worldwide official/upcoming
 supplement closure, full native/globe/language/phone/FR165/Store acceptance and
 whole tasks4.3/4.4 remain open. A generic/unknown visual remains explicitly
 unqualified. Candidate corpus64MiB, served artifact1MiB and watch feed8KiB are
 separate limits; finite current state does not bound lifetime Git history.
 
-The portable focused integration command is:
+The portable focused page-policy/art integration command is:
 
 ```sh
-python3 -B -m unittest -v tests.test_metadata_art_public
+python3 -B -m unittest -v tests.test_page_art_public
 ```
 
-This current-source real-local-Git/HTTP/sparse-CLI control observes the frozen actual
-configuration194 gaining specific art,106 current files and113 current/prior files
-(375605bytes),21 total runtime files including the tracked seed,0primary and4metadata
-requests, not_due0, pending/armed0HTTP/0write, exact map reuse and source-age
-isolation. Historical metadata/bridge suites retain their original global.3
-recipe/596-materialized-file and76-file fixture boundaries; those literal-count
-methods are not a whole-suite gate for the current global.4 recipe. It
-substitutes external service responses, not validators, and does not prove authentic
-cron/Pages/LL2/native uptake or every interleaving. Earlier collector/bridge
-receipts retain their original source boundaries.
+The current-source real-local-Git/loopback probe preserves four exact public
+countries pages (80 rows at20) and uses100 only when new collections start.
+It makes four metadata requests, preserves source/quota prefixes, refuses policy
+rollback without a write, imports every publisher-overlay test, checks the actual
+21-file metadata sparse shell and invokes the actual current radial LM5 producer.
+The output remains a partial candidate; no metadata or recipe adoption follows.
+
+The retained earlier `tests.test_metadata_art_public` observation belongs to its
+frozen global.4 recipe: configuration194 gained specific art,106 current/113
+current-prior files (375605bytes),21runtime files,0primary/4metadata/not_due0,
+pending/armed0HTTP/0write, exact map reuse and source-age isolation. Its literal
+count fixture is historical; it is not a current global.5.review1 whole-suite gate.
+Earlier global.3/596-file/76-file collector/bridge receipts likewise retain their
+original boundaries. No local test proves authentic cron/Pages/LL2/native uptake.
+
+The qualified page-policy control is portable in `tests/test_page_art_public.py`. For controlled103countries/350organizations/176models/218sites,
+20-row traversal costs44requests and100-row traversal11. After four saved
+20-row countries pages, preserving that prefix and finishing countries at20
+then starting the other tables at100 reduces remaining calls40to11. These are
+local observed/conditional counts; a provider cap or different source counts
+requires separate measurement. Requested100 never relaxes2MiB/page,64MiB/corpus,
+4metadata/invocation,15shared/hour, primary priority/headroom or source-age rules.
+Pagination advances by actual returned rows; changed/unsafe link policies refuse.
+Root must separately qualify actual LL2 response behavior and hosted adoption.

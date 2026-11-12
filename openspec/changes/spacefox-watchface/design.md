@@ -822,3 +822,13 @@ adoption follows. Reviewed art reaches144/171 mappings with27 exact gaps and598
 assets. An art-only update preserves launch/site facts and source age; unchanged
 content-addressed maps are reused. Hosted generation5 on6494602 was separately
 observed; this successor still needs its own publication/qualification.
+
+## Portable page-policy and accepted artwork successor
+
+Current global.5.review1.bridge1 authenticates647 input pins plus recipe648,
+retains156/171 mappings,611assets and15exact gaps. The scheduled candidate-only
+collector migrates a saved20-row collection without redownload and starts later
+collections at100; source ages, shared quota and explicit adoption remain intact.
+The portable control checks the exact80-row public prefix, source/quota isolation,
+specific radial LM5 producer and21-file metadata sparse shell. This local successor
+requires separate publication/hosted qualification; native/release remain open.

@@ -67,3 +67,8 @@ coverage, actual metadata collection/adoption, authentic cron, complete native
 scene/phone/FR165/Store acceptance and all whole-task checkboxes remain open.
 The current source recipe and standalone integration command are documented in
 `docs/GLOBAL_METADATA_REFRESH.md` and `tests/test_metadata_art_public.py`.
+
+The finite page-policy/art successor is locally checked by tests.test_page_art_public.
+Full provider adoption, complete known-model art, authentic cron, native scene,
+paired-phone/physical-device/battery and Store acceptance remain open. No whole
+task checkbox closes; candidate metadata never automatically adopts a recipe.

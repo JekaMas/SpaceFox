@@ -1,0 +1,676 @@
+{
+  "schemaVersion": 1,
+  "id": "further-art-20261112-r2",
+  "reviewedAt": "2026-11-12",
+  "sources": [
+    "https://calt.spacechina.com/n482/n699/c6767/content.html",
+    "https://cnes.fr/sites/default/files/2025-04/LATITUDE_2025_04_14.pdf",
+    "https://ntrs.nasa.gov/api/citations/20170000838/downloads/20170000838.pdf",
+    "https://snebulos.mit.edu/projects/reference/launch_vehicles/OSC/Taurus-User-Guide-Rev4.0.pdf",
+    "https://via.ritzau.dk/pressemeddelelse/13651020/dansk-britiske-orbex-viser-for-forste-gang-banebrydende-raket-frem-pa-affyringsrampe?publisherId=13561053",
+    "https://www.calt.com/n482/n498/c2562549/content.html",
+    "https://www.calt.com/n482/n498/c2562559/content.html",
+    "https://www.cnsa.gov.cn/n6758823/n6758838/c10078852/content.html",
+    "https://www.dbaspace.com/rocket.html",
+    "https://www.dbaspace.com/rocket_s.html",
+    "https://www.gov.uk/government/news/uk-company-reveals-micro-launcher-rocket",
+    "https://www.nasa.gov/wp-content/uploads/2016/09/nasa-flight-opportunities-newsletter-april-2019.pdf",
+    "https://www.nasa.gov/wp-content/uploads/2021/01/flightopportunities-2016-annualreport-508-highres.pdf",
+    "https://www.spacechina.com/n25/n146/n238/n12985/c1043765/content.html",
+    "https://www.spacex.com/launches/starship-flight-13",
+    "https://www.spacex.com/updates/#starship-v3",
+    "https://www.spacex.com/vehicles/starship",
+    "https://www.tasnimnews.ir/fa/news/1399/02/03/2248973/"
+  ],
+  "reason": "Finite original specific exterior schematics for supported exact identities; immutable additional curation without configuration-fact/lifecycle/role/origin/source replacement. All27 inherited gaps researched, unresolved identities retained.",
+  "assets": [
+    {
+      "collection": "models",
+      "facts": {
+        "id": "further-r2-minotaur-c-1110",
+        "name": "minotaur-c-1110",
+        "file": "further-20261112-r2/svg/minotaur-c-1110.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; no third-party graphic bytes or official logo redistributed.",
+        "sourceSha256": "81e996d267c54c6b65d88842b3aa71043c3fc7d52031f2d164fbd2691bc2b9dd",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://snebulos.mit.edu/projects/reference/launch_vehicles/OSC/Taurus-User-Guide-Rev4.0.pdf"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "ll2:configuration:383"
+          ],
+          "features": [
+            "Exact 1110 code: SSLV/Peacekeeper stage0; standard-length Orion50S/50 upper motors.",
+            "63-inch payload fairing; Orion38 stage3 and no fifth stage. Broad lower motor, tapered interstage, slim upper stack and distinct fairing."
+          ],
+          "limitations": "Original MIT SpaceFox informational schematic; no copied photo, manufacturer drawing, logo or official graphic bytes. Source-dated published representative, not an engineering reconstruction, exact paintwork or actual mission choice. Unpublished plotted proportions and symbolic engine/stage details are illustrative and never become catalog facts. Exact labels, raw providerfacts, role relationships, sourcehistory and originunknowns are retained. Manufacturer Figure2-4 explicitly defines each digit, including original SSLV code1 versus commercial standard code2 and XL code3. Figure2-1/2-3 supply the full outside and interstage; Figure2-5 gives motor dimensions. This is a code-bound original exterior schematic, not a mislabeled existing3210 or an exact mission fairing/paint reconstruction. Whole span and stage stations use illustrative plotting proportions; no summed engineering height is introduced. The Peacekeeper baseline lower motor is drawn shorter than the Castor120 standard per the manufacturer comparison; its unpublished exact overall envelope is not a catalog fact."
+        },
+        "geometryReference": {
+          "basis": "Manufacturer code/motor/fairing identity binds the exterior; whole normalized drawing span, relative widths and station proportions are illustrative, not a new engineering dimension pair.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true,
+          "parameters": {
+            "code": "1110",
+            "baseShoulder": 0.61
+          }
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "further-r2-minotaur-c-2110",
+        "name": "minotaur-c-2110",
+        "file": "further-20261112-r2/svg/minotaur-c-2110.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; no third-party graphic bytes or official logo redistributed.",
+        "sourceSha256": "0c30e7ed88da707496ba017d5b83dfce3f8a0e211576a254d31bbe3c7c394ea2",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://snebulos.mit.edu/projects/reference/launch_vehicles/OSC/Taurus-User-Guide-Rev4.0.pdf"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "ll2:configuration:384"
+          ],
+          "features": [
+            "Exact 2110 code: Castor120 stage0; standard-length Orion50S/50 upper motors, not TaurusXL.",
+            "63-inch payload fairing; Orion38 stage3 and no fifth stage. Broad lower motor, tapered interstage, slim upper stack and distinct fairing."
+          ],
+          "limitations": "Original MIT SpaceFox informational schematic; no copied photo, manufacturer drawing, logo or official graphic bytes. Source-dated published representative, not an engineering reconstruction, exact paintwork or actual mission choice. Unpublished plotted proportions and symbolic engine/stage details are illustrative and never become catalog facts. Exact labels, raw providerfacts, role relationships, sourcehistory and originunknowns are retained. Manufacturer Figure2-4 explicitly defines each digit, including original SSLV code1 versus commercial standard code2 and XL code3. Figure2-1/2-3 supply the full outside and interstage; Figure2-5 gives motor dimensions. This is a code-bound original exterior schematic, not a mislabeled existing3210 or an exact mission fairing/paint reconstruction. Whole span and stage stations use illustrative plotting proportions; no summed engineering height is introduced. The Peacekeeper baseline lower motor is drawn shorter than the Castor120 standard per the manufacturer comparison; its unpublished exact overall envelope is not a catalog fact."
+        },
+        "geometryReference": {
+          "basis": "Manufacturer code/motor/fairing identity binds the exterior; whole normalized drawing span, relative widths and station proportions are illustrative, not a new engineering dimension pair.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true,
+          "parameters": {
+            "code": "2110",
+            "baseShoulder": 0.56
+          }
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "further-r2-minotaur-c-2210",
+        "name": "minotaur-c-2210",
+        "file": "further-20261112-r2/svg/minotaur-c-2210.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; no third-party graphic bytes or official logo redistributed.",
+        "sourceSha256": "42a0e2bd525c34456269f19bbcd6e1e2b5aa5b282c60be47f81174c10894f9bc",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://snebulos.mit.edu/projects/reference/launch_vehicles/OSC/Taurus-User-Guide-Rev4.0.pdf"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "ll2:configuration:385"
+          ],
+          "features": [
+            "Exact 2210 code: Castor120 stage0; standard-length Orion50S/50 upper motors, not TaurusXL.",
+            "92-inch payload fairing; Orion38 stage3 and no fifth stage. Broad lower motor, tapered interstage, slim upper stack and distinct fairing."
+          ],
+          "limitations": "Original MIT SpaceFox informational schematic; no copied photo, manufacturer drawing, logo or official graphic bytes. Source-dated published representative, not an engineering reconstruction, exact paintwork or actual mission choice. Unpublished plotted proportions and symbolic engine/stage details are illustrative and never become catalog facts. Exact labels, raw providerfacts, role relationships, sourcehistory and originunknowns are retained. Manufacturer Figure2-4 explicitly defines each digit, including original SSLV code1 versus commercial standard code2 and XL code3. Figure2-1/2-3 supply the full outside and interstage; Figure2-5 gives motor dimensions. This is a code-bound original exterior schematic, not a mislabeled existing3210 or an exact mission fairing/paint reconstruction. Whole span and stage stations use illustrative plotting proportions; no summed engineering height is introduced. The Peacekeeper baseline lower motor is drawn shorter than the Castor120 standard per the manufacturer comparison; its unpublished exact overall envelope is not a catalog fact."
+        },
+        "geometryReference": {
+          "basis": "Manufacturer code/motor/fairing identity binds the exterior; whole normalized drawing span, relative widths and station proportions are illustrative, not a new engineering dimension pair.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true,
+          "parameters": {
+            "code": "2210",
+            "baseShoulder": 0.56
+          }
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "further-r2-lm5-yz2-firstflight",
+        "name": "lm5-yz2-firstflight",
+        "file": "further-20261112-r2/svg/lm5-yz2-firstflight.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; no third-party graphic bytes or official logo redistributed.",
+        "sourceSha256": "fb3f18b7f3a92dcbc107076da134bc87f558f0616b27e2e40fca428d55b991aa",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.spacechina.com/n25/n146/n238/n12985/c1043765/content.html",
+          "https://calt.spacechina.com/n482/n699/c6767/content.html"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "ll2:configuration:123"
+          ],
+          "features": [
+            "Exact2016-11-03 LongMarch5/Yuanzheng2 first-flight combination; two core stages plus upper stage, four3.35m liquid boosters around5m core.",
+            "First-flight short5.2m-class bulbous head, tapered booster noses and four lower booster bodies; not LongMarch5B/YZ2 or later lengthened fairing."
+          ],
+          "limitations": "Original MIT SpaceFox informational schematic; no copied photo, manufacturer drawing, logo or official graphic bytes. Source-dated published representative, not an engineering reconstruction, exact paintwork or actual mission choice. Unpublished plotted proportions and symbolic engine/stage details are illustrative and never become catalog facts. Exact labels, raw providerfacts, role relationships, sourcehistory and originunknowns are retained. CASC2016 release explicitly identifies YZ2; the CALT gallery captions identify maiden-flight vehicle. The original photographer is credited SunHao on manufacturer-published photos. Published56.97m/5m/four3.35m architecture sets overall aspect ratio; the first-flight head and station proportions are illustrative from inspected photos. No equivalence to every LM5 fairing or sourcefact correction."
+        },
+        "geometryReference": {
+          "basis": "Source-bound exterior and disclosed approximate plotting proportions; see per-asset notes. No inferred dimension is added to configuration facts.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": false,
+          "diameterIsIllustrative": false,
+          "parameters": {
+            "length": 56.97,
+            "diameter": 5,
+            "fairing": 5.2,
+            "boosters": 4,
+            "boosterDiameter": 3.35,
+            "boosterFraction": 0.59,
+            "fairingFraction": 0.25
+          }
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "further-r2-sarge-published2016",
+        "name": "sarge-published2016",
+        "file": "further-20261112-r2/svg/sarge-published2016.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; no third-party graphic bytes or official logo redistributed.",
+        "sourceSha256": "b8a414a546a0a89a7ab1682aa4e2a738735090065c84fe581b00c042997ea542",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.nasa.gov/wp-content/uploads/2021/01/flightopportunities-2016-annualreport-508-highres.pdf",
+          "https://ntrs.nasa.gov/api/citations/20170000838/downloads/20170000838.pdf",
+          "https://www.nasa.gov/wp-content/uploads/2016/09/nasa-flight-opportunities-newsletter-april-2019.pdf"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "ll2:configuration:197"
+          ],
+          "features": [
+            "Published2016 NASA/Exos SARGE representative: single liquid-fuel sounding-rocket cylinder with pointed red nose and lower trapezoid fins.",
+            "No strap-ons or orbital upper stages; excludes the newer larger black BLK3 platform."
+          ],
+          "limitations": "Original MIT SpaceFox informational schematic; no copied photo, manufacturer drawing, logo or official graphic bytes. Source-dated published representative, not an engineering reconstruction, exact paintwork or actual mission choice. Unpublished plotted proportions and symbolic engine/stage details are illustrative and never become catalog facts. Exact labels, raw providerfacts, role relationships, sourcehistory and originunknowns are retained. This is the explicitly source-dated2016 SARGE platform representative published by NASA with Exos credit, not proof of exterior equivalence to every2018/2019 flight. NASA2015 documents10.95m/0.5m; NASA2019 actual underside view supports lower fins but not exact nose dimensions. Current manufacturer capabilityPDF distinguishes25%larger BLK3; its current black hardware is excluded. All nose/fin stations are illustrative, not inferred catalog measurements. Root inspected the exact NASA2016 page on2026-11-12 and permits a published SARGE-platform representative from its sole named platform and0.5m/11m context. The photo caption itself says only EXOSrocket; it does not independently prove that photographed vehicle is SARGE. Original2018 Exos hover thumbnail and2019 NASA underside support lower-body/fins only. This uncertainty is retained; no exact2018flight/exterior-equivalence or BLK3 claim."
+        },
+        "geometryReference": {
+          "basis": "Source-bound exterior and disclosed approximate plotting proportions; see per-asset notes. No inferred dimension is added to configuration facts.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": false,
+          "diameterIsIllustrative": false,
+          "parameters": {
+            "length": 10.95,
+            "diameter": 0.5
+          }
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "further-r2-qased-noor2020",
+        "name": "qased-noor2020",
+        "file": "further-20261112-r2/svg/qased-noor2020.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; no third-party graphic bytes or official logo redistributed.",
+        "sourceSha256": "9af202d28ad4efe96cc72f09af783c30320b25d0a3698fa1c168e5b7c8f77556",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.tasnimnews.ir/fa/news/1399/02/03/2248973/"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "ll2:configuration:217"
+          ],
+          "features": [
+            "Qased2020 Noor launch representative, three stages with narrow lower cylinder and a widened rounded upper payload head.",
+            "Dedicated launcher profile from the exactNoor report; no renamed missile or Safir/Simorgh artwork substitution."
+          ],
+          "limitations": "Original MIT SpaceFox informational schematic; no copied photo, manufacturer drawing, logo or official graphic bytes. Source-dated published representative, not an engineering reconstruction, exact paintwork or actual mission choice. Unpublished plotted proportions and symbolic engine/stage details are illustrative and never become catalog facts. Exact labels, raw providerfacts, role relationships, sourcehistory and originunknowns are retained. Tasnim2020-04-22 report explicitly identifies Qased andNoor; the lead whole launch photograph bears Photo:TasnimNews. This firsthand agency visual establishes the depicted flight exterior. Technical text states three stages; no news-only measurement is written as a new catalog fact. Overall/body/head proportions are approximate visual plotting only; tiny engine and joint symbols do not assert internal structure."
+        },
+        "geometryReference": {
+          "basis": "Source-bound exterior and disclosed approximate plotting proportions; see per-asset notes. No inferred dimension is added to configuration facts.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true,
+          "parameters": {
+            "length": 18,
+            "diameter": 1.25,
+            "fairing": 1.45,
+            "fairingFraction": 0.18
+          }
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "further-r2-orbex-prime-2022",
+        "name": "orbex-prime-2022",
+        "file": "further-20261112-r2/svg/orbex-prime-2022.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; no third-party graphic bytes or official logo redistributed.",
+        "sourceSha256": "03215872557d374ffe39869922c41fa757190a785771604d0fc9d23c78b45495",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://via.ritzau.dk/pressemeddelelse/13651020/dansk-britiske-orbex-viser-for-forste-gang-banebrydende-raket-frem-pa-affyringsrampe?publisherId=13561053",
+          "https://www.gov.uk/government/news/uk-company-reveals-micro-launcher-rocket"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "ll2:configuration:480"
+          ],
+          "features": [
+            "Orbex-issued2022-05-11 full-scalePrime prototype representative, two stages with six first-stage engines and one upper engine.",
+            "Unboosted carbon-body cylinder, near-uniform diameter and pale pointed nose; excludes unrelated Skyrora and hypothetical recovery devices."
+          ],
+          "limitations": "Original MIT SpaceFox informational schematic; no copied photo, manufacturer drawing, logo or official graphic bytes. Source-dated published representative, not an engineering reconstruction, exact paintwork or actual mission choice. Unpublished plotted proportions and symbolic engine/stage details are illustrative and never become catalog facts. Exact labels, raw providerfacts, role relationships, sourcehistory and originunknowns are retained. The source is Orbex's own distributed press release, corroborated by UKSA, identifying the full-scale2022 prototype.19m length is documented;1.45m plotting diameter is illustrative here because the later manufacturer board URL failed. Representative excludes uninspected later flight-production changes; no actualflight, present operational state or successful launch inferred. The retained2026 administration/lifecycle conflict and source facts remain unchanged."
+        },
+        "geometryReference": {
+          "basis": "Source-bound exterior and disclosed approximate plotting proportions; see per-asset notes. No inferred dimension is added to configuration facts.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": false,
+          "diameterIsIllustrative": true,
+          "parameters": {
+            "length": 19,
+            "diameter": 1.45,
+            "fairing": 1.45,
+            "fairingFraction": 0.17
+          }
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "further-r2-starship-v3-2026",
+        "name": "starship-v3-2026",
+        "file": "further-20261112-r2/svg/starship-v3-2026.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; no third-party graphic bytes or official logo redistributed.",
+        "sourceSha256": "56357261fd806d966e136c3ba4229b5c49382920b85eacb42beef4fa2188b352",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.spacex.com/vehicles/starship",
+          "https://www.spacex.com/updates/#starship-v3",
+          "https://www.spacex.com/launches/starship-flight-13"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "ll2:configuration:522"
+          ],
+          "features": [
+            "Current2026 Starship/SuperHeavyV3:124m whole stack,52m ship,72m booster and9m diameter,33Raptor3 booster engines/six ship engines.",
+            "Integrated hot stage, lowered three-grid-fin arrangement, two visible leeward/windward flap pairs and elongated ship; not a V1/V2 exterior copy."
+          ],
+          "limitations": "Original MIT SpaceFox informational schematic; no copied photo, manufacturer drawing, logo or official graphic bytes. Source-dated published representative, not an engineering reconstruction, exact paintwork or actual mission choice. Unpublished plotted proportions and symbolic engine/stage details are illustrative and never become catalog facts. Exact labels, raw providerfacts, role relationships, sourcehistory and originunknowns are retained. Current manufacturer page JS bindsV3 video assets and124/52/72/9m metrics; primary May12 update explicitly reducesgridfins4to3 and integrateshotstage. Flight13 report explicitly identifiesV3 and33/sixengines. Flattened view depicts two sidegridfins plus a central face indication for the third, never four. Profile stations and flap polygons are illustrative inspected-image proportions; 33engines are described, not incorrectly rendered as a countable front engine row. No FAA future150m/V4 substitution."
+        },
+        "geometryReference": {
+          "basis": "Source-bound exterior and disclosed approximate plotting proportions; see per-asset notes. No inferred dimension is added to configuration facts.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": false,
+          "diameterIsIllustrative": false,
+          "parameters": {
+            "length": 124,
+            "diameter": 9
+          }
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "further-r2-zephyr-cnes2025",
+        "name": "zephyr-cnes2025",
+        "file": "further-20261112-r2/svg/zephyr-cnes2025.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; no third-party graphic bytes or official logo redistributed.",
+        "sourceSha256": "83acd7fac532726577528c0d9052ffed63fbd8720ba643a90b06379747cb80a5",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://cnes.fr/sites/default/files/2025-04/LATITUDE_2025_04_14.pdf"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "ll2:configuration:534"
+          ],
+          "features": [
+            "ExactnamedZephyr in manufacturer-authored April2025 CNES-hosted brochure,200kg class kerosene-propelled launcher concept.",
+            "Slim unboosted cylinder, pale ogive head and two main exterior color regions from the whole conceptual image."
+          ],
+          "limitations": "Original MIT SpaceFox informational schematic; no copied photo, manufacturer drawing, logo or official graphic bytes. Source-dated published representative, not an engineering reconstruction, exact paintwork or actual mission choice. Unpublished plotted proportions and symbolic engine/stage details are illustrative and never become catalog facts. Exact labels, raw providerfacts, role relationships, sourcehistory and originunknowns are retained. Explicit2025 namedZephyr source-dated representative, admitted under root2026-11-12 ruling. Brochure states no overallheight,diameter or stagecount: those remain unavailable from this source. Retained provider19m/1.5m and current unnamedOurLauncher30m/2m/twostages are separate statements, not harmonized.19/1.5 are approximate plotting assumptions only. No exterior-equivalence or actualflight/currentunnamedredesign claim."
+        },
+        "geometryReference": {
+          "basis": "Source-bound exterior and disclosed approximate plotting proportions; see per-asset notes. No inferred dimension is added to configuration facts.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true,
+          "parameters": {
+            "length": 19,
+            "diameter": 1.5,
+            "fairing": 1.5,
+            "fairingFraction": 0.18
+          }
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "further-r2-lm10-crew-published",
+        "name": "lm10-crew-published",
+        "file": "further-20261112-r2/svg/lm10-crew-published.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; no third-party graphic bytes or official logo redistributed.",
+        "sourceSha256": "7accffb4dad91f15036940a1906e562d0df18acfc07e19c3d391d9036875633b",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.calt.com/n482/n498/c2562549/content.html",
+          "https://www.cnsa.gov.cn/n6758823/n6758838/c10078852/content.html"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "ll2:configuration:536"
+          ],
+          "features": [
+            "Three5m core stages and two common-core5m boosters, source-dated crew representative.",
+            "Narrow crew escape tower above tapered crew head; documented crew option, not an inferred actual mission selection or single-stage2026 demonstrator."
+          ],
+          "limitations": "Original MIT SpaceFox informational schematic; no copied photo, manufacturer drawing, logo or official graphic bytes. Source-dated published representative, not an engineering reconstruction, exact paintwork or actual mission choice. Unpublished plotted proportions and symbolic engine/stage details are illustrative and never become catalog facts. Exact labels, raw providerfacts, role relationships, sourcehistory and originunknowns are retained. 2023 CASC graphic hosted by CNSA supplies the published crew envelope; March18,2026 dedicated CALT product page supplies the current architecture. Current published lengths88.8m lander/92.5mcrew differ from the older graphic88.5m; drawing uses92.5mcrew without rewriting provider facts. Escape/head/stage stations and booster nose proportions are illustrative; published crew option is allowed as a dated representative. No mission-specific choice or fullfirstflight claim."
+        },
+        "geometryReference": {
+          "basis": "Source-bound exterior and disclosed approximate plotting proportions; see per-asset notes. No inferred dimension is added to configuration facts.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": false,
+          "diameterIsIllustrative": false,
+          "parameters": {
+            "length": 92.5,
+            "diameter": 5,
+            "boosters": 2
+          }
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "further-r2-lm10a-crew-published",
+        "name": "lm10a-crew-published",
+        "file": "further-20261112-r2/svg/lm10a-crew-published.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; no third-party graphic bytes or official logo redistributed.",
+        "sourceSha256": "aaec9269ce785d160f7c0340baf4d52ccd72293e8fa216100b6bb95707adfa76",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.calt.com/n482/n498/c2562559/content.html",
+          "https://www.cnsa.gov.cn/n6758823/n6758838/c10078852/content.html"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "ll2:configuration:537"
+          ],
+          "features": [
+            "Two5m tandem core stages, no boosters; reusable-first-stage crew representative.",
+            "Narrow crew escape tower above tapered crew head; documented crew option, not an inferred actual mission selection or single-stage2026 demonstrator."
+          ],
+          "limitations": "Original MIT SpaceFox informational schematic; no copied photo, manufacturer drawing, logo or official graphic bytes. Source-dated published representative, not an engineering reconstruction, exact paintwork or actual mission choice. Unpublished plotted proportions and symbolic engine/stage details are illustrative and never become catalog facts. Exact labels, raw providerfacts, role relationships, sourcehistory and originunknowns are retained. 2023 CASC graphic hosted by CNSA supplies the published crew envelope; March18,2026 dedicated CALT product page supplies the current architecture. Current published lengths67.4mcrew/66.4mcargo; older graphic says67m. Drawing explicitly uses67.4mcrew without rewriting provider facts. Escape/head/stage stations and booster nose proportions are illustrative; published crew option is allowed as a dated representative. No mission-specific choice or fullfirstflight claim."
+        },
+        "geometryReference": {
+          "basis": "Source-bound exterior and disclosed approximate plotting proportions; see per-asset notes. No inferred dimension is added to configuration facts.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": false,
+          "diameterIsIllustrative": false,
+          "parameters": {
+            "length": 67.4,
+            "diameter": 5,
+            "boosters": 0
+          }
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "further-r2-nebula1-published-current",
+        "name": "nebula1-published-current",
+        "file": "further-20261112-r2/svg/nebula1-published-current.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; no third-party graphic bytes or official logo redistributed.",
+        "sourceSha256": "b4691aa863278548f0bd96e4fd3d5b843c8bd595c2f095474b8e5ede272c729b",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.dbaspace.com/rocket.html",
+          "https://www.dbaspace.com/rocket_s.html"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "ll2:configuration:545"
+          ],
+          "features": [
+            "Current manufacturer-boundNebula1 medium recoverable vehicle,3.35m core,three stages and11+2+upperstage propulsion.",
+            "Unboosted long cylinder, slightly broader pale ogivefairing, upper-body gridfins and long stowedlower recoverylegs from the specificNebula1 xingyun1-gj image."
+          ],
+          "limitations": "Original MIT SpaceFox informational schematic; no copied photo, manufacturer drawing, logo or official graphic bytes. Source-dated published representative, not an engineering reconstruction, exact paintwork or actual mission choice. Unpublished plotted proportions and symbolic engine/stage details are illustrative and never become catalog facts. Exact labels, raw providerfacts, role relationships, sourcehistory and originunknowns are retained. Both English and Chinese live product HTML explicitly pair xingyun1-gj.png withNebula1 and3stage11+2(+upper) text; the preceding November2stainless20261102-152111.png isNebula2, notNebula1. Old xingyun1-1 image occurs only in commented-outHTML and is not used. Current named product drawing is the representative; separate stainless teststage material and exact flight revision are not silently equated. Totalheight is unpublished here;42m is an illustrative drawing span, not a catalog fact."
+        },
+        "geometryReference": {
+          "basis": "Source-bound exterior and disclosed approximate plotting proportions; see per-asset notes. No inferred dimension is added to configuration facts.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": false,
+          "parameters": {
+            "length": 42,
+            "diameter": 3.35,
+            "fairing": 3.8,
+            "fairingFraction": 0.23
+          }
+        }
+      }
+    }
+  ],
+  "updates": [
+    {
+      "identity": "ll2:configuration:383",
+      "changes": {
+        "currentPackAssetId": "further-r2-minotaur-c-1110",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://snebulos.mit.edu/projects/reference/launch_vehicles/OSC/Taurus-User-Guide-Rev4.0.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:384",
+      "changes": {
+        "currentPackAssetId": "further-r2-minotaur-c-2110",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://snebulos.mit.edu/projects/reference/launch_vehicles/OSC/Taurus-User-Guide-Rev4.0.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:385",
+      "changes": {
+        "currentPackAssetId": "further-r2-minotaur-c-2210",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://snebulos.mit.edu/projects/reference/launch_vehicles/OSC/Taurus-User-Guide-Rev4.0.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:123",
+      "changes": {
+        "currentPackAssetId": "further-r2-lm5-yz2-firstflight",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.spacechina.com/n25/n146/n238/n12985/c1043765/content.html",
+        "https://calt.spacechina.com/n482/n699/c6767/content.html"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:197",
+      "changes": {
+        "currentPackAssetId": "further-r2-sarge-published2016",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.nasa.gov/wp-content/uploads/2021/01/flightopportunities-2016-annualreport-508-highres.pdf",
+        "https://ntrs.nasa.gov/api/citations/20170000838/downloads/20170000838.pdf",
+        "https://www.nasa.gov/wp-content/uploads/2016/09/nasa-flight-opportunities-newsletter-april-2019.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:217",
+      "changes": {
+        "currentPackAssetId": "further-r2-qased-noor2020",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.tasnimnews.ir/fa/news/1399/02/03/2248973/"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:480",
+      "changes": {
+        "currentPackAssetId": "further-r2-orbex-prime-2022",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://via.ritzau.dk/pressemeddelelse/13651020/dansk-britiske-orbex-viser-for-forste-gang-banebrydende-raket-frem-pa-affyringsrampe?publisherId=13561053",
+        "https://www.gov.uk/government/news/uk-company-reveals-micro-launcher-rocket"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:522",
+      "changes": {
+        "currentPackAssetId": "further-r2-starship-v3-2026",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.spacex.com/vehicles/starship",
+        "https://www.spacex.com/updates/#starship-v3",
+        "https://www.spacex.com/launches/starship-flight-13"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:534",
+      "changes": {
+        "currentPackAssetId": "further-r2-zephyr-cnes2025",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://cnes.fr/sites/default/files/2025-04/LATITUDE_2025_04_14.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:536",
+      "changes": {
+        "currentPackAssetId": "further-r2-lm10-crew-published",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.calt.com/n482/n498/c2562549/content.html",
+        "https://www.cnsa.gov.cn/n6758823/n6758838/c10078852/content.html"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:537",
+      "changes": {
+        "currentPackAssetId": "further-r2-lm10a-crew-published",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.calt.com/n482/n498/c2562559/content.html",
+        "https://www.cnsa.gov.cn/n6758823/n6758838/c10078852/content.html"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:545",
+      "changes": {
+        "currentPackAssetId": "further-r2-nebula1-published-current",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.dbaspace.com/rocket.html",
+        "https://www.dbaspace.com/rocket_s.html"
+      ]
+    }
+  ],
+  "additions": []
+}

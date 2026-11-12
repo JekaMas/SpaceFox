@@ -65,7 +65,7 @@ def server(remote, now):
                 store.close()
             index = PATHS.index(urlsplit(self.path).path)
             query = parse_qs(urlsplit(self.path).query)
-            expected = {'format': ['json'], 'limit': ['20']}
+            expected = {'format': ['json'], 'limit': ['100']}
             if index:
                 expected['mode'] = ['normal' if index == 1 else 'detailed']
             if query != expected:

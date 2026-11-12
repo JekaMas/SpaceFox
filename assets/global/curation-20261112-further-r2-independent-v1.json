@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "id": "further-art-20261112-r2-independent-v1",
+  "reviewedAt": "2026-11-12",
+  "sources": [
+    "https://www.spacechina.com/n25/n146/n238/n12985/c1043765/content.html",
+    "https://calt.spacechina.com/n482/n699/c6767/content.html"
+  ],
+  "reason": "Narrow source-bound LM5/YZ-2 radial-view silhouette fidelity improvement. Append immutable replacement; preserve original twelve candidate assets, all configuration facts, exact labels, identity, roles, origin unknowns, eligibility and other eleven selected originals.",
+  "assets": [
+    {
+      "collection": "models",
+      "facts": {
+        "id": "further-r2-lm5-yz2-radial-firstflight",
+        "name": "lm5-yz2-radial-firstflight",
+        "file": "further-20261112-r2/svg/lm5-yz2-radial-firstflight.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork; no third-party graphic bytes or official logo redistributed.",
+        "sourceSha256": "dbdf1b9c53acd8a4f1fefa134897b5bccf906b135d9df68f960e028ff2861ec8",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.spacechina.com/n25/n146/n238/n12985/c1043765/content.html",
+          "https://calt.spacechina.com/n482/n699/c6767/content.html"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "ll2:configuration:123"
+          ],
+          "features": [
+            "Exact2016-11-03 LongMarch5/Yuanzheng2 first-flight combination; two core stages plus upper stage, four3.35m liquid boosters around5m core.",
+            "First-flight short5.2m-class bulbous head and four radially mounted3.35m boosters around5m core. This orthographic representative shows two side boosters and one front booster; the fourth rear booster is occluded by the core. Not LongMarch5B/YZ2 or later lengthened fairing."
+          ],
+          "limitations": "Original MIT SpaceFox informational schematic; no copied photo, manufacturer drawing, logo or official graphic bytes. Source-dated published representative, not an engineering reconstruction, exact paintwork or actual mission choice. Unpublished plotted proportions and symbolic engine/stage details are illustrative and never become catalog facts. Exact labels, raw providerfacts, role relationships, sourcehistory and originunknowns are retained. CASC2016 release explicitly identifies YZ2; the CALT gallery captions identify maiden-flight vehicle. The original photographer is credited SunHao on manufacturer-published photos. Published56.97m/5m/four3.35m architecture sets overall aspect ratio; the first-flight head and station proportions are illustrative from inspected photos. No equivalence to every LM5 fairing or sourcefact correction. Independent2026-11-12 radial-view fidelity improvement: original flattened informational total-booster schematic remains immutable. The new projection places four physical boosters radially, with the rear booster occluded and three externally visible. Transverse silhouette is source-bound to this representative, not a new global engineering-envelope rule. All unpublished stations remain illustrative."
+        },
+        "geometryReference": {
+          "basis": "Source-bound exterior and disclosed approximate plotting proportions; see per-asset notes. No inferred dimension is added to configuration facts.",
+          "reviewedAt": "2026-11-12",
+          "lengthIsIllustrative": false,
+          "diameterIsIllustrative": false,
+          "parameters": {
+            "length": 56.97,
+            "diameter": 5,
+            "fairing": 5.2,
+            "boosters": 4,
+            "boosterDiameter": 3.35,
+            "boosterFraction": 0.59,
+            "fairingFraction": 0.25
+          },
+          "projection": "Source-bound radial orthographic representative: two side boosters plus one front; fourth rear booster occluded. Four physical boosters retained."
+        }
+      }
+    }
+  ],
+  "updates": [
+    {
+      "identity": "ll2:configuration:123",
+      "changes": {
+        "currentPackAssetId": "further-r2-lm5-yz2-radial-firstflight",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.spacechina.com/n25/n146/n238/n12985/c1043765/content.html",
+        "https://calt.spacechina.com/n482/n699/c6767/content.html"
+      ]
+    }
+  ],
+  "additions": []
+}
