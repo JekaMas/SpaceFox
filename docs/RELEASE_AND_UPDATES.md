@@ -2,8 +2,12 @@
 
 Дата проверки первичных источников: **2026-11-11**. Оригинальный документ —
 [MIT](../LICENSE). Это план выпуска с локально проверенной реализацией publisher,
-updater, Actions workflow и экспорта каталогов. Настоящие Actions/Pages/HTTPS,
-Monkey C, FR165 и Store-релиз ещё требуют квалификации.
+updater, Actions workflow и экспорта каталогов. Для публичного среза `2171fcb`
+[первый ручной bootstrap](https://github.com/jekamas/SpaceFox/actions/runs/43150627242)
+прошёл четыре job, exact HTTPS feed/catalog readback (3475 байт) и promotion
+active generation 1. Автоматический cron, повторный цикл и fault recovery ещё
+не квалифицированы. Новая оптимизация checkout проверена локально, без измерения
+удалённого ускорения. Monkey C, FR165 и Store-релиз ещё требуют квалификации.
 Канонические требования — [release-lifecycle](../openspec/changes/spacefox-watchface/specs/release-lifecycle/spec.md),
 [архитектура](../openspec/changes/spacefox-watchface/design.md) и
 [единые задачи](../openspec/changes/spacefox-watchface/tasks.md).

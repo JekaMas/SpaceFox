@@ -10,10 +10,14 @@
 
 Реализованы и локально проверены deterministic publisher, обработчик Launch
 Library 2, долговечное состояние `feed-state`, сериализованный workflow
-GitHub Actions/Pages, экспорт графики и versioned catalog. Это исходный код с
-локальной квалификацией. Настоящие Actions/Pages и live HTTPS, нативное приложение,
-телефон/FR165, полный набор рисунков, 36 языков на часах и Store-релиз ещё
-требуют проверки. Никакой опубликованный feed здесь не объявлен работающим.
+GitHub Actions/Pages, экспорт графики и versioned catalog. Для публичного
+исходного среза `2171fcb` [первый ручной bootstrap](https://github.com/jekamas/SpaceFox/actions/runs/43150627242)
+завершил все четыре job: generation 1 принят, точный HTTPS closure составил
+3475 байт (feed 2857 + catalog 618). Это проверка первого data-only v1 delivery.
+Автоматический cron, повторный цикл и удалённое recovery ещё не квалифицированы.
+Оптимизация checkout следующих job проверена локально; удалённое ускорение
+не измерено. Нативное приложение, телефон/FR165, полный набор рисунков,
+36 языков на часах и Store-релиз ещё требуют проверки.
 
 [CLOUD_DELIVERY](docs/CLOUD_DELIVERY.md) описывает настоящий workflow и recovery;
 [AGENT_SETUP](docs/AGENT_SETUP.md) — отдельный fork и URL для каждой семьи.
@@ -21,9 +25,10 @@ AWS, постоянно работающий компьютер, аккаунт�
 модели для этой архитектуры не нужны. Python 3.10+ и Git достаточны для publisher.
 
 Планируемая настройка `FeedBaseUrl` содержит **базовый адрес**:
-`https://jekamas.github.io/SpaceFox`. Сам JSON endpoint —
-`https://jekamas.github.io/SpaceFox/feed.json`. Для другой семьи оба адреса
-получаются из её собственного fork; это примеры настройки, а не live-проверка.
+[https://jekamas.github.io/SpaceFox](https://jekamas.github.io/SpaceFox). Сам JSON endpoint —
+[feed.json](https://jekamas.github.io/SpaceFox/feed.json). Первый точный readback
+этих адресов наблюдался в указанном bootstrap; для другой семьи оба адреса
+получаются из её собственного fork и требуют отдельной проверки.
 
 ## Каталог и пределы
 
@@ -92,7 +97,9 @@ python3 -B tools/build_preview.py --check
 ```
 
 Откройте `prototype/index.html` для просмотра. Это браузерный макет с условными
-данными; нативное приложение Garmin и живое расписание ещё не реализованы.
+данными; нативное приложение Garmin ещё не квалифицировано. Publisher и первый
+ручной Actions/Pages/HTTPS цикл проверены; автоматический cron остаётся
+неподтверждённым. См. текущий статус выше.
 
 Этот публичный репозиторий содержит текущий срез проекта: спецификацию, исходники
 макета, переводы, тесты и лицензии. Локальные интеграции процесса разработки и

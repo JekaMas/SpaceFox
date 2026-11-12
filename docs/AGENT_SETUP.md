@@ -2,8 +2,12 @@
 
 SpaceFox uses **scheduled GitHub Actions → static GitHub Pages → paired phone →
 watch**. The publisher, tracked-input materializer and serialized delivery adapter
-have local qualification. Native fetch/cache/rendering, authentic cloud delivery,
-physical FR165 and Store acceptance remain pending. See the actual
+have local qualification. The owner's original public `2171fcb` source completed
+[one authentic manual bootstrap](https://github.com/jekamas/SpaceFox/actions/runs/43150627242),
+including exact 3475-byte HTTPS feed/catalog readback and active generation 1.
+Automatic cron, a second validation/update and fault recovery remain unqualified;
+the locally qualified checkout optimization has no remote speed measurement.
+Native fetch/cache/rendering, physical FR165 and Store acceptance remain pending. See the actual
 [CLOUD_DELIVERY runbook](CLOUD_DELIVERY.md) for permissions, recovery and limits.
 
 Each family should own its own publisher fork and feed-state authority. The source
@@ -29,7 +33,8 @@ Git suffice for the portable publisher tools; do not install tools implicitly.
    `https://jekamas.github.io/SpaceFox/feed.json`. `FeedBaseUrl` is the **base**,
    without `/feed.json`. Another family uses its own owner/repository base, or
    sets the repository variable `SPACEFOX_PAGES_URL` to its authorized HTTPS base.
-   These are configuration examples, not a claim that the endpoint is live.
+   The owner's first bootstrap verified these exact endpoints. Another instance
+   requires its own deployment and exact readback.
 4. For a genuinely first empty instance only, dispatch the workflow with
    `bootstrap=true`. This explicitly creates durable feed-state authority. Do not
    use bootstrap as recovery or delete authority to force a refresh. Once state
@@ -48,7 +53,10 @@ Git suffice for the portable publisher tools; do not install tools implicitly.
 
 ## Operate and maintain
 
-The offset fifteen-minute cron wakes a lightweight due check. Normal source
+The configured offset fifteen-minute cron is intended to wake a lightweight due
+check; automatic scheduling has not yet been observed for the owner's instance.
+A manual due-recovery dispatch with `bootstrap=false` preserves cadence and quota;
+it does not qualify cron. See the runbook for the recorded observations. Normal source
 validation is hourly and near-launch validation every fifteen minutes, with
 explicit persisted fast mode. A not-due run makes no provider request. Watch
 countdown calculation is local. Re-fetching an old file, correcting a catalog or

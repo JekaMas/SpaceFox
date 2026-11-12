@@ -80,9 +80,11 @@ jobs:
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: /.github/spacefox-inputs.txt
-      - run: |
-          git sparse-checkout set --no-cone --stdin < .github/spacefox-inputs.txt
-          python3 -B tools/cloud_inputs.py
+      - name: Check out runtime seed for exact saved-state validation
+        run: |
+          # Prepare alone builds source data. Later jobs validate immutable Git files.
+          sed '\|^/catalog/source.json$|d' .github/spacefox-inputs.txt |
+            git sparse-checkout set --no-cone --stdin
       - name: Persist unique candidate/source/run/artifact deployment intent
         id: arm
         env:
@@ -109,9 +111,11 @@ jobs:
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: /.github/spacefox-inputs.txt
-      - run: |
-          git sparse-checkout set --no-cone --stdin < .github/spacefox-inputs.txt
-          python3 -B tools/cloud_inputs.py
+      - name: Check out runtime seed for exact saved-state validation
+        run: |
+          # Prepare alone builds source data. Later jobs validate immutable Git files.
+          sed '\|^/catalog/source.json$|d' .github/spacefox-inputs.txt |
+            git sparse-checkout set --no-cone --stdin
       - name: POST once, then bound async polling and cancellation finality
         env:
           GH_TOKEN: ${{ github.token }}
@@ -134,9 +138,11 @@ jobs:
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: /.github/spacefox-inputs.txt
-      - run: |
-          git sparse-checkout set --no-cone --stdin < .github/spacefox-inputs.txt
-          python3 -B tools/cloud_inputs.py
+      - name: Check out runtime seed for exact saved-state validation
+        run: |
+          # Prepare alone builds source data. Later jobs validate immutable Git files.
+          sed '\|^/catalog/source.json$|d' .github/spacefox-inputs.txt |
+            git sparse-checkout set --no-cone --stdin
       - name: Require async finality and complete exact HTTPS files before promotion
         env:
           GH_TOKEN: ${{ github.token }}

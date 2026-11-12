@@ -1,9 +1,13 @@
 # Serialized cloud delivery
 
 `tools/cloud_feed.py` is the stdlib GitHub/Pages adapter. The workflow is
-`.github/workflows/update-feed.yml`. Its publisher implementation has local qualification; authentic Actions/Pages
-permissions, deployment and live HTTPS qualification remain pending. Local source
-preparation does not establish a deployed service.
+`.github/workflows/update-feed.yml`. The original public source `2171fcb` completed
+its [first explicit bootstrap run](https://github.com/jekamas/SpaceFox/actions/runs/43150627242):
+prepare, arm, deploy and promote all succeeded. Active generation 1, pending null,
+the exact Pages build-version success and exact HTTPS feed/catalog/root re-read
+were observed: 2857 + 618 = 3475 bytes. This qualifies that first data-only cycle.
+The later-job checkout optimization in [CLOUD_RUNTIME_CHECKOUT](CLOUD_RUNTIME_CHECKOUT.md)
+is locally qualified; no remote latency or speedup is established for it.
 
 The first vertical deployment serves the existing draft wire v1 `feed.json` and
 its exact immutable catalog. Visuals and verified positions remain null. The rich
@@ -20,8 +24,11 @@ schedules and explicit dispatch run it. The offset15minute cron checks the
 persisted hourly/near15minute cadence; push/dispatch does not force a provider
 request. Optional fast mode is an explicit bootstrap policy, unchanged by restart.
 
-Each checkout is the triggering SHA, followed by the non-cone runtime seed
-in `.github/spacefox-inputs.txt`. `tools/cloud_inputs.py` follows the single
+Each checkout is the triggering SHA. Prepare materializes the full non-cone seed
+in `.github/spacefox-inputs.txt`; arm, deploy and promote derive the runtime-only
+seed by excluding `/catalog/source.json` and validate the saved Git files without
+running the materializer. [CLOUD_RUNTIME_CHECKOUT](CLOUD_RUNTIME_CHECKOUT.md) records
+this boundary. In prepare, `tools/cloud_inputs.py` follows the single
 `catalog/source.json` recipe, its pinned imports/curations/geography, and their
 relative SVG facts from the clean tracked Git index. It materializes only this
 closure and validates it with the unchanged catalog builder. The documented
@@ -86,8 +93,9 @@ server idempotency or conditional Pages writes. The reviewed official sources ar
 [pinned deploy client](https://github.com/actions/deploy-pages/blob/d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e/src/internal/api-client.js),
 [pinned deploy context](https://github.com/actions/deploy-pages/blob/d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e/src/internal/context.js) and
 [pinned artifact action](https://github.com/actions/upload-pages-artifact/blob/7b1f4a764d45c48632c6b24a0339c27f5614fb0b/action.yml).
-The service's acceptance of this version and status/cancel lookup by it must be
-observed remotely before claiming operational qualification.
+The first bootstrap observed service acceptance and successful status lookup for
+its unique version. Cancel lookup/finality and fault recovery still require their
+own authentic observations before operational qualification.
 
 The deploy step executes once for the exact armed run/attempt, without HTTP
 retries. A re-run has another attempt identity and cannot POST an older armed
@@ -154,9 +162,18 @@ Local tests use actual bare Git, actual loopback HTTP, local async/status/cancel
 faults, literal independent files/counts and a sparse clean copied CLI. They
 substitute GitHub/LL2 and artifact upload. They cannot establish GitHub token/OIDC
 permissions, real Pages async behavior, live provider truth or watch transfer.
-An authorized deployment must observe authentic Actions,
-first/second updates, exact recovery and readback before closing that boundary.
+The first authentic Actions cycle and exact readback are observed above. A second
+validation/update and exact fault recovery remain required before closing the
+whole cloud boundary.
+
+Automatic scheduling is not qualified. No `schedule` event was observed at 03:52
+or 04:07 UTC, or by 04:24 after the 04:22 slot on 2026-11-12, despite an active
+workflow on non-fork default `main` and operational GitHub service status. The
+[second manual due-recovery run](https://github.com/jekamas/SpaceFox/actions/runs/43154719080)
+uses `bootstrap=false`, no force, and the unchanged persisted cadence/quota; its
+outcome is not asserted by this source snapshot. Manual runs do not prove cron.
 
 The per-family setup guide is [AGENT_SETUP.md](AGENT_SETUP.md). The planned
 watch setting is a base URL such as `https://jekamas.github.io/SpaceFox`; the
-feed endpoint is that base plus `/feed.json`. No live endpoint is asserted here.
+feed endpoint is that base plus [`/feed.json`](https://jekamas.github.io/SpaceFox/feed.json).
+The first readback proves its recorded cycle, not continuing availability or cron.
