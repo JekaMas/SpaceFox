@@ -142,11 +142,15 @@ def validate_dictionary(feed, raw):
 
 
 def build_artifact(state, catalog, now, *, publisher, policy=None, traversal=None,
-                   root=None, origin_mode='model'):
+                   root=None, origin_mode='model', eligibility=None):
     from .schedule import DEFAULT_POLICY
     policy = DEFAULT_POLICY if policy is None else policy
     root = Path(root or Path(__file__).resolve().parents[2])
     validate_catalog(catalog)
+    catalog_source_digest = sha(canonical_bytes(catalog))
+    if eligibility is not None:
+        from .current_catalog import view_for_schedule
+        catalog = view_for_schedule(catalog, eligibility, state, now, policy)['catalog']
     _require(origin_mode in ('model','operator'), 'unsupported curated origin mode')
     files, v1_digest = build_v1(state, catalog, now, publisher=publisher, policy=policy, traversal=traversal)
     base = validate_v1(files['feed.json'], now=now)
@@ -209,7 +213,7 @@ def build_artifact(state, catalog, now, *, publisher, policy=None, traversal=Non
             'roles':roles,'gaps':sorted(gaps)})
     feed = deepcopy(base)
     feed.update(schemaVersion=2,dictionaries=dictionaries,unresolvedCatalogIds=sorted(set(selected_ids)-all_rows.keys()),
-                visualSelection=selection,compatibility=TRANSITION,catalogSourceDigest=sha(canonical_bytes(catalog)))
+                visualSelection=selection,compatibility=TRANSITION,catalogSourceDigest=catalog_source_digest)
     dictionary = _dictionary(feed)
     raw = canonical_bytes(dictionary)
     feed['catalogDigest'] = sha(raw)

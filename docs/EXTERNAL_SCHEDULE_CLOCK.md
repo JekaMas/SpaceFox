@@ -1,0 +1,104 @@
+# External schedule clock (candidate, not yet provisioned)
+
+This clock only asks the existing `update-feed.yml` to run on `main`; it does not
+fetch provider data, hold feed state or publish Pages. The publisher's existing
+whole-workflow concurrency, due/source-age checks, durable quota reservations,
+CAS, recovery and validation remain authoritative. It is not exactly-once: a
+lost response or simultaneous clock/GitHub/manual event can create duplicate
+runs. GitHub may replace a pending run; publisher state, not the clock, protects
+source quota. An HTTP 204 only means the dispatch was accepted, not that the run
+or feed update succeeded. A missed event or failed invocation waits until the next
+quarter-hour; no clock can promise a deadline or service availability.
+
+## Account and permission boundary
+
+Cloudflare's [Workers product page](https://www.cloudflare.com/products/workers/) states no credit card is
+needed; its [limits](https://developers.cloudflare.com/workers/platform/limits/)
+include five Cron Triggers per account, 100,000 requests/day and 10 ms CPU per
+invocation. This design needs one trigger at 7, 22, 37 and 52 minutes UTC per
+hour (96 invocations/day), plus one outgoing call per invocation. Account-wide
+usage and limits can change; verify the actual account and terms before enabling.
+The [dashboard guide](https://developers.cloudflare.com/workers/get-started/dashboard/)
+requires a Cloudflare account. Account creation or acceptance of terms is an
+owner action; this document does not authorize it, paid upgrades or deployment.
+
+Create a **new** GitHub fine-grained personal access token restricted to the
+`JekaMas/SpaceFox` repository, with repository **Actions: write** and an expiry.
+GitHub requires that permission for [workflow dispatch](https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event).
+It also permits other Actions management in that repository, so protect it as a
+powerful credential. Do not reuse a broad token, place it in source, paste it in
+chat, use it as a plain variable, or log request/response bodies. Store it only
+as the Cloudflare [encrypted Secret](https://developers.cloudflare.com/workers/configuration/secrets/)
+`GITHUB_DISPATCH_TOKEN`. The Worker has no `fetch` handler; disable workers.dev
+and any public route. Its hardcoded target prevents changing the destination by
+configuration. No GitHub credential is used to read private provider data.
+
+The request intentionally pins GitHub REST API `2022-11-28` and accepts only its
+legacy 204 response. GitHub's [version policy](https://docs.github.com/en/rest/about-the-rest-api/api-versions)
+currently supports it through March 10, 2028. The [2026-03-10 breaking change](https://docs.github.com/en/rest/about-the-rest-api/breaking-changes)
+changes dispatch to HTTP 200 with run details; changing the header requires an
+explicit source/test revision. The clock never reads or logs response bodies.
+
+## Dashboard setup, qualification and recovery
+
+On 2026-11-12 the root operator reported that the `spacefox-schedule-clock`
+Worker has the reviewed module active, workers.dev and preview URLs disabled,
+and no routes or domains. The dashboard used compatibility date 2026-11-12;
+its date picker offered named runtime-change dates, not the earlier reference
+date. The reference now matches the reported dashboard date. The operator had
+not yet configured the secret or Cron trigger, and the different date has not
+been established equivalent by natural execution. This report is not an
+independent observation or live qualification.
+
+Only after source review and explicit deployment authority:
+
+1. Confirm the public default-branch workflow supports `workflow_dispatch`, has
+   default false values for bootstrap and fault-injection inputs, and retains its
+   whole-publisher concurrency and due/quota/CAS controls. Check `main` is the
+   actual intended source revision. Create a Workers Free application in the
+   Cloudflare dashboard, use the exact reviewed `worker.mjs` as module source,
+   disable workers.dev and Version/Preview URLs and do not attach any HTTP route.
+   The [dashboard editor](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/)
+   supports Create application > Hello World > Edit code; replace the template
+   entirely with the reviewed scheduled-only module before adding the secret or
+   trigger. No local Wrangler installation, custom domain or support request is
+   needed for this documented route. Record any account-specific missing option.
+   The reference config explicitly sets `preview_urls = false`: current
+   [Version URL configuration](https://developers.cloudflare.com/workers/versions-and-deployments/version-urls/)
+   preserves an existing setting when that key is omitted, independently of
+   `workers_dev`. Inspect both switches in the actual account.
+2. Set the encrypted Secret `GITHUB_DISPATCH_TOKEN`, deploy the reviewed version,
+   and configure exactly one Cron Trigger `7,22,37,52 * * * *` in UTC. Cloudflare
+   says trigger changes can take [up to 15 minutes to propagate](https://developers.cloudflare.com/workers/configuration/cron-triggers/).
+   `wrangler.toml` is a configuration reference, not an instruction to install a CLI.
+3. Local qualification without any credentials, live account or SDK:
+   `node --test tests/test_schedule_clock*.mjs`. This uses the actual scheduled
+   handler and a loopback HTTP server, including an actual ten-second stalled
+   request/AbortSignal check. The clock sends at most one POST per invocation;
+   separate events can each POST, and this unit does not test the downstream
+   publisher's durable quota, CAS, source-age or serialization behavior. It does
+   not establish Cloudflare behavior. Retain still-valid individual receipts when
+   reviewing evidence; documentation changes do not require a suite rerun.
+4. Observe at least two naturally timed Cloudflare Cron Events and match each to
+   a GitHub `workflow_dispatch` run by timestamp. Inspect run completion and the
+   publisher's source-validation/state/Pages evidence. Observe at least one real
+   due feed update and its public readback; a not-due success, 204 or an unchanged
+   file alone cannot prove an updated feed. Check the watch separately. Record
+   exact UTC times, run IDs, source age, feed generation and readback. Do not claim
+   automatic operation before these observations and independent review.
+5. If an event fails, inspect sanitized status in Cron Events and GitHub Actions.
+   No same-event retry is attempted, including after an uncertain transport result;
+   the next scheduled event is a fresh wake-up. 401/403 may indicate expired,
+   revoked or insufficient token, but 403 can have other causes. Rotate by
+   creating a new restricted token, replacing the encrypted secret and deploying
+   the new Worker version; revoke the old token after confirming the new one.
+   For compromise, disable the Cron Trigger and revoke immediately, then inspect
+   Actions and publisher state. Delete the secret and Worker if retiring the clock.
+   GitHub/manual recovery remains available under its normal authorization.
+
+Alternative considered: [cron-job.org](https://cron-job.org/en/faq/) offers free
+HTTP jobs and custom headers, but its [privacy policy](https://cron-job.org/en/privacy/)
+states HTTP authentication credentials are stored unencrypted. This is a material
+credential boundary; Cloudflare documents encrypted secrets. Neither service has
+been provisioned or qualified here. Cloudflare and GitHub can independently delay,
+drop or disable execution, and this does not guarantee either service's SLA.

@@ -72,13 +72,20 @@ reconciliation; do not reset state, invent a live generation or rebuild pending
 bytes. A disabled or delayed schedule needs inspection and authorized recovery.
 No background model session is part of normal publishing.
 
-The hosted generation5 includes both v1 and v2. The current local metadata/art
-successor preserves both, each feed≤8192 decoded UTF-8 bytes, with complete
+The hosted generation5 includes both v1 and v2. The historical global.4 local
+successor preserved both, each feed≤8192 decoded UTF-8 bytes, with complete
 current+prior artifact≤1MiB/256files. Prepare follows632 canonical inputs plus the recipe (633materialized files); the21-file runtime
-seed excludes source data. The accepted global.4.bridge1 catalog has598assets and art for
-144/171required configurations, with27exact art gaps. Source2 provenance remains
+seed excludes source data. The accepted historical global.4.bridge1 catalog had598assets and art for
+144/171 then-required configurations, with27exact art gaps. These historical
+counts are not the 2026+ current scope; see GLOBAL_VISUAL_CATALOG.md for the
+provisional local candidate and unresolved review. Source2 provenance remains
 explicit and off-watch; its roughly1.47MB input corpus is not the served budget.
 The full selected flat-map scene needs71GETs; native batching/cadence, globe,
 worldwide coverage,36native languages, phone/watch and Store remain unqualified.
 V1 is retained indefinitely. Future source/feed publication determines the actual
 transition announcement; no elapsed90day support is claimed.
+
+For the independent Cloudflare clock candidate and its separate account,
+credential, local qualification and real-event requirements, see
+[External schedule clock](EXTERNAL_SCHEDULE_CLOCK.md). This is not provisioned
+or qualified by the local source alone.

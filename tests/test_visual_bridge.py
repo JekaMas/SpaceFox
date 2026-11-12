@@ -219,6 +219,17 @@ class VisualBridgeTest(unittest.TestCase):
         self.assertNotEqual(maphashes[0],maphashes[1]);self.assertEqual(maphashes[0],maphashes[2]);self.assertEqual(1,len(set(shared)))
         # Source-only metadata has a distinct generation without renewing ages.
         metadata=copy.deepcopy(catalogs[0]);metadata['catalogVersion']='bridge.metadata-only'
+        # A new catalog revision must bind its own immutable eligibility decision
+        # record, even when only its version metadata changed.
+        from tools.spacefox.current_catalog import load_registry
+        eligibility = copy.deepcopy(load_registry(workspace, catalogs[0]))
+        eligibility['catalogVersion'] = metadata['catalogVersion']
+        eligibility_bytes = canonical_bytes(eligibility)
+        eligibility_hash = hashlib.sha256(eligibility_bytes).hexdigest()
+        eligibility_path = 'catalog/current-eligibility-' + eligibility_hash + '.json'
+        (workspace / eligibility_path).write_bytes(eligibility_bytes)
+        metadata['source']['eligibility'] = {'path': eligibility_path, 'sha256': eligibility_hash}
+        metadata['inputDigests'][eligibility_path] = eligibility_hash
         self.assertEqual('content_pending',prepare_content(self.pub,client,NOW+10,metadata,root=workspace)['result'])
         feed=validate_feed(self.pub.pending_files()[FEED_PATH]);self.assertEqual(5,feed['publisher']['generation']);self.assertEqual(epoch,feed['publisher']['selectionValidatedUtc'])
         self.assertEqual(0,client.calls);self.assertEqual(quota,self.pub.ledger['requests'])

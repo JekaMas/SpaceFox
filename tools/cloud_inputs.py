@@ -87,6 +87,8 @@ def materialize(root):
     recipe = loads_json(checkout('catalog/source.json'))
     pin(recipe['reference'])
     registry = pin(recipe['assetSeed'])
+    if 'eligibility' in recipe:
+        pin(recipe['eligibility'])
     geography_inputs = set()
     if 'geography' in recipe:
         geography = pin(recipe['geography'])

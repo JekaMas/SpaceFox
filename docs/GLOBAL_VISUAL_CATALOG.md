@@ -332,3 +332,11 @@ reconstruction or a new global envelope rule. The current accepted finite revisi
 Other11 selected R2 originals and all prior facts/roles/origin unknowns remain.
 The repaired finite increment has independent and root review. Complete
 artwork, native and public-delivery acceptance remain separate.
+
+## Current 2026 registry
+
+The provisional registry qualifies 69 current configurations, with 66 specific
+art mappings and three gaps (30, 152 and 200); 102 records require review and
+five are placeholders. Retained historical assets do not constitute current
+coverage. Future events with unknown or review status use the safe fallback.
+See catalog/current-2026.json for scoped sources and uncertainty.

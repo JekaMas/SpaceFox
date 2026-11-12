@@ -57,8 +57,10 @@ def prepare_content(pub, client, now, catalog, *, root, clock=None):
     """
     if pub.ledger['pending'] is not None:
         return {'result':'recovered_pending','requests':0}
+    from tools.spacefox.current_catalog import load_registry
+    eligibility = load_registry(root, catalog)
     def builder(*args, **kwargs):
-        return build_visual_artifact(*args, **kwargs, root=root)
+        return build_visual_artifact(*args, **kwargs, root=root, eligibility=eligibility)
     active=pub.ledger['active']
     if active is not None:
         path=f'artifacts/{active["generation"]}/{FEED_PATH}'

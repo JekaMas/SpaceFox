@@ -369,6 +369,19 @@ def delivery(pub):
     return manifest
 
 
+def _readback_error(message, path, expected, status, actual, *, phase='closure'):
+    # Paths have already passed the durable 240-byte path bound. Emit only
+    # fixed metadata and digests, never URLs, credentials or response bodies.
+    context = {
+        'path': path,
+        'kind': 'mutable-root' if path in ('feed.json', 'wire2/feed.json') else 'immutable-file',
+        'phase': phase, 'status': status,
+        'expected': None if expected is None else {'bytes': len(expected), 'sha256': _sha(expected)},
+        'actual': {'bytes': len(actual), 'sha256': _sha(actual)},
+    }
+    return CloudError(message + '; readback=' + _canonical(context).decode('utf-8').strip())
+
+
 class Site:
     def __init__(self, base, *, local_http=False, http=None):
         self.base = endpoint(base, local_http=local_http, base=True)
@@ -383,7 +396,8 @@ class Site:
         if status == 404 and pub.ledger['active'] is None:
             return None
         if status != 200:
-            raise CloudError('live feed unavailable; retain active/pending')
+            raise _readback_error('live feed unavailable; retain active/pending',
+                                  'feed.json', None, status, feed, phase='root')
         for role in ('pending', 'active'):
             snap = pub.ledger[role]
             if snap is None:
@@ -404,13 +418,21 @@ class Site:
                     continue
                 code, actual = self.get(path, len(raw))
                 if code != 200 or actual != raw:
-                    raise CloudError('live immutable file missing, mixed or corrupt')
+                    kind = 'mutable root' if path == 'wire2/feed.json' else 'immutable file'
+                    raise _readback_error('live ' + kind + ' missing, mixed or corrupt',
+                                          path, raw, code, actual)
             # Both wire-major roots are mutable. A stable v1 root cannot prove
             # wire2 remained coherent after its first read during the closure.
-            if 'wire2/feed.json' in expected and self.get('wire2/feed.json', 8192) != (200, expected['wire2/feed.json']):
-                raise CloudError('live versioned feed changed during exact closure observation')
-            if self.get('feed.json', 8192) != (200, feed):
-                raise CloudError('live feed changed during exact closure observation')
+            if 'wire2/feed.json' in expected:
+                code, actual = self.get('wire2/feed.json', 8192)
+                if (code, actual) != (200, expected['wire2/feed.json']):
+                    raise _readback_error('live versioned feed changed during exact closure observation',
+                                          'wire2/feed.json', expected['wire2/feed.json'], code, actual,
+                                          phase='after-closure')
+            code, actual = self.get('feed.json', 8192)
+            if (code, actual) != (200, feed):
+                raise _readback_error('live feed changed during exact closure observation',
+                                      'feed.json', feed, code, actual, phase='after-closure')
             return LiveRevision(snap['generation'], snap['artifact_revision'])
         raise CloudError('live feed is neither exact durable active nor pending')
 

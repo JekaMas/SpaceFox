@@ -17,11 +17,11 @@ if __package__ in (None, ''):
 
 from tools.spacefox.catalog import build_catalog, CatalogError
 from tools.spacefox.feed import FeedEncodingError
-from tools.spacefox.provider import (LL2Client, ProviderError, normalize_launch,
+from tools.spacefox.provider import (LL2Client, ProviderError, normalize_detail_launch,
                                     validation_epoch, bounded_json, DEFAULT_ORIGIN)
 from tools.spacefox.publisher import (GitState, Publisher, StateError, LiveRevision,
                                      AllowanceUnavailable)
-from tools.spacefox.schedule import RefreshPolicy
+from tools.spacefox.schedule import RefreshPolicy, LaunchStatus
 from tools.spacefox.wire import build_artifact
 
 
@@ -33,8 +33,9 @@ def update(pub, client, now, catalog, *, trigger='scheduled', max_pages=2, detai
     """Real vertical path. Required pagination is atomic; details are optional.
 
     Pagination stops within explicit request/record bounds and reports partial;
-    absence never proves cancellation. Old retained IDs receive bounded detail
-    reconciliation in oldest-validation order, independent of page completeness.
+    absence never proves cancellation. Omitted unconfirmed IDs receive bounded
+    detail reconciliation in oldest-validation order, independent of page
+    completeness. Confirmed terminal history keeps its existing facts and age.
     """
     if type(max_pages) is not int or not 1 <= max_pages <= 4 or type(detail_limit) is not int or not 0 <= detail_limit <= 4:
         raise ProviderError('bounded max_pages1..4/detail_limit0..4 required')
@@ -92,7 +93,9 @@ def update(pub, client, now, catalog, *, trigger='scheduled', max_pages=2, detai
         # Validate primary facts before spending any optional reconciliation slot.
         selection_epoch = min(primary_epochs)
         pub.preview_source(tuple(records), sample(), selection_validated_utc=selection_epoch)
-        omitted = sorted((e.record for e in pub.schedule.entries if e.record.launch_id.key not in seen),
+        omitted = sorted((e.record for e in pub.schedule.entries
+                          if e.record.launch_id.key not in seen
+                          and e.record.status not in (LaunchStatus.COMPLETED, LaunchStatus.CANCELLED)),
                          key=lambda r: (r.source_validated_utc, r.launch_id.key))[:detail_limit]
         primary_token = token
         primary_request_at = request_at
@@ -117,7 +120,7 @@ def update(pub, client, now, catalog, *, trigger='scheduled', max_pages=2, detai
                     detail_calls += issued
                 if response.status != 200:
                     raise ProviderError('detail response did not validate a record')
-                record = normalize_launch(bounded_json(response.body), validation_epoch(response, sample()))
+                record = normalize_detail_launch(bounded_json(response.body), validation_epoch(response, sample()))
                 if record.launch_id != prior.launch_id:
                     raise ProviderError('detail response identity mismatch')
                 try:
@@ -231,7 +234,13 @@ def main(argv=None):
         else:
             now = args.now if args.now is not None else utc_now()
             client = LL2Client(origin=args.origin, page_size=args.page_size, local_http=args.local_http)
-            result = update(pub, client, now, build_catalog(root), trigger=args.trigger,
+            catalog = build_catalog(root)
+            from tools.spacefox.current_catalog import load_registry, view_for_schedule
+            eligibility = load_registry(root, catalog)
+            def current_builder(state, source, instant, *, publisher, policy, traversal):
+                projected = source if eligibility is None else view_for_schedule(source, eligibility, state, instant, policy)['catalog']
+                return build_artifact(state, projected, instant, publisher=publisher, policy=policy, traversal=traversal)
+            result = update(pub, client, now, catalog, trigger=args.trigger, artifact_builder=current_builder,
                             max_pages=args.max_pages, detail_limit=args.detail_limit,
                             clock=None if args.now is not None else utc_now)
             if result['result'] == 'pending':

@@ -19,6 +19,10 @@ def main(argv=None):
     args=parser.parse_args(argv)
     try:
         catalog=build_catalog(ROOT,args.source)
+        from tools.spacefox.current_catalog import load_registry, current_view
+        eligibility = load_registry(ROOT, catalog, source_path=args.source)
+        if eligibility is not None:
+            catalog = current_view(catalog, eligibility, referenced_ids=args.roots or [])['catalog']
         output=args.output.resolve()
         protected=[args.source.resolve(),*((ROOT/p).resolve() for p in catalog['inputDigests'])]
         for path in protected:

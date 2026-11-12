@@ -527,7 +527,7 @@ def validate_catalog(catalog, *, _admission_date=None):
     producer = catalog.get('producerVersion', 1)
     _require(type(producer) is int and producer in (1, 2), 'unsupported producer version')
     source_fields = {'reference', 'assetSeed', 'curations'} if producer == 2 else {'reference', 'assetSeed'}
-    _require(isinstance(catalog['source'], dict) and source_fields <= catalog['source'].keys() <= source_fields | ({'geography', 'visualBridge'} if producer == 2 else set()), 'missing source metadata')
+    _require(isinstance(catalog['source'], dict) and source_fields <= catalog['source'].keys() <= source_fields | ({'geography', 'visualBridge', 'eligibility'} if producer == 2 else {'eligibility'}), 'missing source metadata')
     _require(all(isinstance(x, dict) for x in catalog['source'].values()), 'invalid source metadata')
     if producer == 2:
         for identity, definition in catalog['source']['curations'].items():
@@ -978,7 +978,7 @@ def build_catalog(root, source_path=None, *, _strict_creation_path=None):
     source_path = Path(source_path) if source_path is not None else root / 'catalog/source.json'
     manifest = loads_json(_read(source_path))
     required = {'schemaVersion', 'catalogVersion', 'reference', 'assetSeed'}
-    _require(isinstance(manifest, dict) and required <= manifest.keys() <= required | {'producerVersion', 'curations', 'geography', 'visualBridge'}, 'unknown/missing source recipe fields')
+    _require(isinstance(manifest, dict) and required <= manifest.keys() <= required | {'producerVersion', 'curations', 'geography', 'visualBridge', 'eligibility'}, 'unknown/missing source recipe fields')
     _schema(manifest['schemaVersion'], 'source recipe'); _version(manifest['catalogVersion'])
     producer = manifest.get('producerVersion', 1)
     _require(type(producer) is int and producer in (1, 2), 'unsupported producer version')
@@ -992,6 +992,12 @@ def build_catalog(root, source_path=None, *, _strict_creation_path=None):
         path = _local_path(root, item['path']); data = _read(path)
         _require(hashlib.sha256(data).hexdigest() == item['sha256'], f'input digest mismatch: {item["path"]}')
         imports[key] = loads_json(data); pins[item['path']] = item['sha256']; paths[key] = path
+    if 'eligibility' in manifest:
+        item = manifest['eligibility']
+        _require(isinstance(item, dict) and set(item) == {'path', 'sha256'}, 'invalid eligibility pin')
+        data = _read(_local_path(root, item['path']))
+        _require(hashlib.sha256(data).hexdigest() == item['sha256'], 'eligibility digest mismatch')
+        pins[item['path']] = item['sha256']
     reference, registry = deepcopy(imports['reference']), deepcopy(imports['assetSeed'])
     updates, additions, curated_assets, curation_sources = {}, [], {}, {}
     if producer == 2:
@@ -1061,6 +1067,8 @@ def build_catalog(root, source_path=None, *, _strict_creation_path=None):
                                   _defer_validation=producer == 2,
                                   _curated_mark_ids={facts['id'] for facts in registry['countries']
                                                      if facts['id'] in curated_assets})
+    if 'eligibility' in manifest:
+        catalog['source']['eligibility'] = deepcopy(manifest['eligibility'])
     if producer == 2:
         catalog['producerVersion'] = 2; catalog['source']['curations'] = curation_sources
         if 'geography' in manifest:

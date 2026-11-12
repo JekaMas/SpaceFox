@@ -116,8 +116,9 @@ marker/map acceptance.
 The dated initial import has 839 provider records: 103 countries, 350 organizations,
 170 configurations and 216 sites. The accepted global.3 maintained catalog has
 562 assets and maps 108/171 required configurations, with 63 exact artwork gaps.
-These are the accepted recipe/build coverage facts; a separate metadata refresh
-candidate has not been activated here. Generic fallback does not close artwork
+Those numbers describe that historical revision, not the 2026+ product scope.
+The local candidate and its provisional eligibility counts are documented in
+`docs/GLOBAL_VISUAL_CATALOG.md`. Generic fallback does not close artwork
 coverage. The query union is not current worldwide completeness or complete
 upcoming-reference/supplement closure. SVG export has local producer qualification;
 Garmin rendering, memory and device acceptance remain separate.

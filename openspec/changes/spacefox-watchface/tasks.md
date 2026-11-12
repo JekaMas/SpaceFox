@@ -72,3 +72,7 @@ The finite page-policy/art successor is locally checked by tests.test_page_art_p
 Full provider adoption, complete known-model art, authentic cron, native scene,
 paired-phone/physical-device/battery and Store acceptance remain open. No whole
 task checkbox closes; candidate metadata never automatically adopts a recipe.
+
+## Portable current catalog and external clock
+
+The provisional current registry, bounded detail/readback behavior and optional external dispatch clock are local candidates. Clock provisioning and live delivery remain unqualified.

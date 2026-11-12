@@ -832,3 +832,7 @@ collections at100; source ages, shared quota and explicit adoption remain intact
 The portable control checks the exact80-row public prefix, source/quota isolation,
 specific radial LM5 producer and21-file metadata sparse shell. This local successor
 requires separate publication/hosted qualification; native/release remain open.
+
+## Portable current catalog and external clock
+
+The provisional current registry, bounded detail/readback behavior and optional external dispatch clock are local candidates. Clock provisioning and live delivery remain unqualified.

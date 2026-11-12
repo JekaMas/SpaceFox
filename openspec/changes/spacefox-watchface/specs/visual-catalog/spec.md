@@ -16,7 +16,7 @@ provider enumeration alone SHALL NOT prove worldwide completeness.
 
 #### Scenario: A launch outside the sample countries
 - **WHEN** a public launch references a country, operator, model or site absent from the original sample pack
-- **THEN** its identity and available facts enter the global catalog without a country whitelist or layout change, and missing visuals or coordinates are recorded as gaps
+- **THEN** its identity and available facts enter review and, when in scope, the current catalog without a country whitelist or layout change; missing visuals or coordinates are recorded as gaps
 
 #### Scenario: A scientific rocket missing from the main provider
 - **WHEN** an agency documents an in-scope current vehicle or site absent from the provider
@@ -24,16 +24,20 @@ provider enumeration alone SHALL NOT prove worldwide completeness.
 
 ### Requirement: Current lifecycle and configuration identity
 
-The required set SHALL include provider-active configurations, configurations
-with pending launches, all upcoming-launch references and sourced current
-supplements. Development, operational, retired, placeholder and disputed states
-SHALL remain distinct. Family names SHALL NOT silently merge configurations.
-Official-source corrections SHALL retain the provider value, evidence and review
-date; an inactive flag alone SHALL NOT discard a pending or confirmed current model.
+The current set SHALL include 2026+ operating, developing and officially planned
+configurations, with dated sources and uncertainty. Provider flags and pending
+counts alone SHALL NOT prove lifecycle. Historical identities SHALL remain
+available but not count as current. Future unknown or disputed references SHALL
+retain their identity and fallback. Distinct configuration IDs SHALL NOT merge;
+source corrections SHALL preserve provider facts and review evidence.
 
 #### Scenario: Inactive configuration has a future flight
 - **WHEN** a configuration is marked inactive but has pending launches or a current official flight announcement
-- **THEN** it remains in scope with the conflict recorded for review rather than disappearing through an active-only query
+- **THEN** the launch and its identity remain eligible, and the status conflict enters review; an official current or future programme supports inclusion without relying on the inactive flag
+
+#### Scenario: Future reference needs lifecycle review
+- **WHEN** a scheduled launch references an unknown, excluded or disputed configuration
+- **THEN** the schedule preserves its identity and source-validation age, flags the identity for review and uses a safe generic fallback until the exact model is qualified
 
 #### Scenario: Distinct boosters or provider identities
 - **WHEN** configurations differ in provider ID, booster arrangement or supplied full name

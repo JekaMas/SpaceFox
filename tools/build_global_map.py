@@ -24,6 +24,10 @@ def main(argv=None):
     args = parser.parse_args(argv)
     try:
         catalog = build_catalog(ROOT,args.source); output = args.output.resolve()
+        from tools.spacefox.current_catalog import load_registry, current_view
+        eligibility = load_registry(ROOT, catalog, source_path=args.source)
+        if eligibility is not None:
+            catalog = current_view(catalog, eligibility, referenced_ids=args.site + (args.roots or []))['catalog']
         if output.is_relative_to(ROOT) and not output.is_relative_to(ROOT/'build'):
             raise GeographyError('in-checkout output must stay under build/')
         if args.audit:

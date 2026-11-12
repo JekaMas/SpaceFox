@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Validate/build publisher metadata locally; never fetch or publish."""
 import argparse
+from copy import deepcopy
+from datetime import datetime, timezone
 import hashlib
 import json
 import os
@@ -34,27 +36,72 @@ def amend_recipe(root, source, supplement, version, *, output_paths=()):
     recipe = loads_json(source.read_bytes())
     if not isinstance(version, str) or not version.strip() or version == recipe['catalogVersion']:
         raise CatalogError('a distinct nonempty catalog version is required')
+    from tools.spacefox.current_catalog import load_registry, validate_registry
+    previous = build_catalog(root, source)
+    previous_registry = load_registry(root, previous, source_path=source)
+    recipe.pop('eligibility', None)
     recipe.update(producerVersion=2, catalogVersion=version)
     relative = supplement.relative_to(root).as_posix()
     if relative in {x['path'] for x in recipe.setdefault('curations', [])}:
         raise CatalogError('append a new curation file; accepted pinned supplements are immutable')
     recipe['curations'].append({'path': relative, 'sha256': hashlib.sha256(supplement.read_bytes()).hexdigest()})
     candidate = None
+    registry_created = None
     try:
         with tempfile.NamedTemporaryFile(dir=source.parent, prefix='.recipe-', delete=False) as stream:
             candidate = Path(stream.name); stream.write(canonical_bytes(recipe)); stream.flush(); os.fsync(stream.fileno())
         catalog = build_catalog(root, candidate, _strict_creation_path=relative)
-        # Geometry/rights/export admission is part of a maintained revision, not
-        # postponed until a later command has already changed the active recipe.
+        if previous_registry is not None:
+            registry = deepcopy(previous_registry)
+            registry['catalogVersion'] = version
+            registry['dictionaryDigest'] = hashlib.sha256(canonical_bytes(catalog['dictionaries'])).hexdigest()
+            old_models = previous['dictionaries']['configurations']
+            new_models = catalog['dictionaries']['configurations']
+            records = {}
+            for identity, row in new_models.items():
+                facts = row['facts']
+                old_facts = old_models.get(identity, {}).get('facts')
+                def lifecycle_facts(value):
+                    return None if value is None else {k: v for k, v in value.items()
+                            if k not in ('currentPackAssetId', 'currentPackSpecific')}
+                if identity in registry['records'] and lifecycle_facts(old_facts) == lifecycle_facts(facts):
+                    records[identity] = registry['records'][identity]
+                else:
+                    placeholder = facts['placeholder']
+                    records[identity] = {
+                        'state': 'unknown-reference' if placeholder else 'needs-review',
+                        'reason': 'New or changed configuration needs a dated lifecycle review.',
+                        'sources': [facts['sourceUrl']],
+                        'asOf': datetime.now(timezone.utc).date().isoformat(),
+                        'uncertainty': 'No current or retired decision is inferred from this revision.'}
+            registry['records'] = records
+            validate_registry(catalog, registry)
+            registry_bytes = canonical_bytes(registry)
+            digest = hashlib.sha256(registry_bytes).hexdigest()
+            registry_path = root / 'catalog' / ('current-eligibility-' + digest + '.json')
+            if registry_path.exists():
+                if registry_path.read_bytes() != registry_bytes:
+                    raise CatalogError('eligibility object collision')
+            else:
+                with registry_path.open('xb') as stream:
+                    stream.write(registry_bytes); stream.flush(); os.fsync(stream.fileno())
+                registry_created = registry_path
+            recipe['eligibility'] = {'path': registry_path.relative_to(root).as_posix(), 'sha256': digest}
+            candidate.write_bytes(canonical_bytes(recipe))
+            catalog = build_catalog(root, candidate, _strict_creation_path=relative)
+        # Geometry/rights/export admission precedes source activation.
         validate_artwork_sources(root, catalog)
         protected = {source, supplement, *((root/p).resolve() for p in catalog['inputDigests'])}
         if any(p is not None and Path(p).resolve() in protected for p in output_paths):
             raise CatalogError('output would overwrite a catalog source or frozen import')
         os.replace(candidate, source); candidate = None
+        registry_created = None
         return catalog
     finally:
         if candidate is not None:
             candidate.unlink(missing_ok=True)
+        if registry_created is not None:
+            registry_created.unlink(missing_ok=True)
 
 
 def main(argv=None):
@@ -86,8 +133,12 @@ def main(argv=None):
         protected = {args.source.resolve(), *((root / path).resolve() for path in catalog['inputDigests'])}
         if output in protected or (args.report and args.report.resolve() in protected):
             raise CatalogError('output would overwrite a catalog source or frozen import')
-        data = canonical_bytes(catalog)
-        for target, payload in [(output, data), (args.report, canonical_bytes(coverage_report(catalog)))]:
+        from tools.spacefox.current_catalog import current_coverage, current_view, load_registry
+        eligibility = load_registry(root, catalog, source_path=args.source)
+        product = catalog if eligibility is None else current_view(catalog, eligibility)['catalog']
+        report = coverage_report(catalog) if eligibility is None else current_coverage(catalog, eligibility)
+        data = canonical_bytes(product)
+        for target, payload in [(output, data), (args.report, canonical_bytes(report))]:
             if target is None:
                 continue
             target.parent.mkdir(parents=True, exist_ok=True)
@@ -95,8 +146,10 @@ def main(argv=None):
                 temporary = Path(stream.name); stream.write(payload); stream.flush(); os.fsync(stream.fileno())
             os.replace(temporary, target); temporary = None
         print(json.dumps({'schemaVersion': 1, 'catalogVersion': catalog['catalogVersion'],
+                          'currentScope': None if eligibility is None else report['qualification'],
+                          'eligibilityReviewCount': None if eligibility is None else len(report['reviewIds']),
                           'qualification': catalog['qualification'], 'sha256': hashlib.sha256(data).hexdigest(),
-                          'bytes': len(data), 'counts': {k: len(v) for k, v in catalog['dictionaries'].items()}}, sort_keys=True))
+                          'bytes': len(data), 'counts': {k: len(v) for k, v in product['dictionaries'].items()}}, sort_keys=True))
         return 0
     except (CatalogError, OSError, ValueError) as exc:
         print(f'catalog: {exc}', file=sys.stderr)

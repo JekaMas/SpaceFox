@@ -147,8 +147,25 @@ def _country_code(country):
 
 
 def normalize_launch(row, validated_utc):
+    """Normalize a normal-mode upcoming row; detail modes are not list inputs."""
+    return _normalize_launch(row, validated_utc, detail=False)
+
+
+def normalize_detail_launch(row, validated_utc):
+    """Normalize the documented launch-detail projection and legacy normal rows.
+
+    LL2's launch UUID endpoint declares LaunchDetailed even with ?mode=normal.
+    Only this explicit context accepts detailed; every consumed source field is
+    checked by the same normalizer, and the caller must bind the requested UUID.
+    """
+    return _normalize_launch(row, validated_utc, detail=True)
+
+
+def _normalize_launch(row, validated_utc, *, detail):
     row = _object(row, 'launch')
-    _require(row.get('response_mode', 'normal') == 'normal', 'normal launch mode required')
+    modes = ('normal', 'detailed') if detail else ('normal',)
+    _require(row.get('response_mode', 'normal') in modes,
+             'normal/detailed launch detail mode required' if detail else 'normal launch mode required')
     try:
         identity = row['id']
         _require(type(identity) is str and str(uuid.UUID(identity)) == identity, 'canonical LL2 launch UUID required')

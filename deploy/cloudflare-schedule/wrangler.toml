@@ -1,0 +1,8 @@
+# Reference configuration; dashboard setup needs no Wrangler installation.
+name = "spacefox-schedule-clock"
+main = "worker.mjs"
+compatibility_date = "2026-11-12"
+workers_dev = false
+preview_urls = false
+[triggers]
+crons = ["7,22,37,52 * * * *"]

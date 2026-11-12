@@ -43,7 +43,7 @@ class PageArtPublicTest(unittest.TestCase):
         for path in manifest['files']:
             if path.startswith('tests/test_') and path.endswith('.py'):
                 importlib.import_module(path[:-3].replace('/', '.'))
-        self.assertEqual('2026-11-12.global.5.review1.bridge1',
+        self.assertEqual('2026-11-12.global.8.current2026-review1',
                          json.loads((ROOT / 'catalog/source.json').read_bytes())['catalogVersion'])
         raw_journal = (PREFIX / 'observed-journal.raw.json').read_bytes()
         self.assertEqual('f4afca950f9ddc6ff7275a2bbae04a1645244078a5e0f34f0aa1cfb1f59a8a43', digest(raw_journal))

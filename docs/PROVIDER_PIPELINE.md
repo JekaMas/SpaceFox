@@ -28,9 +28,26 @@ duplicates, foreign links, empty advancing pages and inconsistent final count
 reject the whole batch. Reaching the page cap is an explicit partial traversal.
 Even a terminal page does not prove worldwide source/supplement completeness.
 
-After upcoming, at most2(default, configurable0..4) omitted retained identities
-receive normal-mode `/2.3.0/launches/UUID/?mode=normal` reconciliation in oldest
-validation order. This can discover a terminal flight after it left upcoming.
+After upcoming, at most2(default, configurable0..4) omitted unconfirmed retained
+identities receive `/2.3.0/launches/UUID/?mode=normal` reconciliation in oldest
+validation order. Pending, started and unknown phases remain eligible. Confirmed
+completed/cancelled history consumes no optional request or detail-budget slot;
+its facts, validation age and latches still pass through the existing reducer and
+retirement contract. A genuinely newer primary reappearance can still correct
+that record and restore nonterminal reconciliation eligibility. An omission never
+changes its phase or validation time. This can discover a terminal flight after
+it left upcoming.
+
+The [official2.3 OpenAPI](https://ll.thespacedevs.com/2.3.0/json), linked by
+[the provider docs](https://ll.thespacedevs.com/docs/), declares the UUID endpoint's
+response as `LaunchDetailed`, with `response_mode: detailed`. The explicit detail
+normalizer accepts normal/detailed while validating the same consumed nested
+identity, context, timing and source fields; the caller checks the requested UUID.
+Upcoming pages remain normal-only. List/minimal, unknown modes and malformed
+consumed fields remain refused. The local fixture pins the official schema and
+exact g9 durable state; its reconstructed upcoming rows and loopback Date are
+authored replay inputs, never production freshness evidence. The original failed
+production detail body was not captured, so its actual mode remains unknown.
 Omission/404/304 are never cancellation or completion. Required upcoming pagination remains atomic. Optional detail404/304, malformed or
 regressing facts, timeout,429and exhausted allowance retain that identity and its
 old validation while the valid upcoming batch can become pending. Failed details

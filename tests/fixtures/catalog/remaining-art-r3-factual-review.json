@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "qualification": "Portable compact factual review; raw source bytes/acquisition logs external temporary only. Values are review decisions, not proof of primary factual correctness.",
+  "acceptedAssets": 611,
+  "acceptedMapped": 156,
+  "required": 171,
+  "candidateMapped": 160,
+  "remaining": [
+    30,
+    39,
+    74,
+    86,
+    94,
+    96,
+    152,
+    196,
+    200,
+    502,
+    505
+  ],
+  "candidates": [
+    {
+      "identity": "ll2:configuration:44",
+      "fullName": "Shavit",
+      "assetId": "remaining-r3-shavit-nasa1996",
+      "representativeDate": "1996-04",
+      "sources": [
+        "https://ntrs.nasa.gov/api/citations/19960024281/downloads/19960024281.pdf"
+      ],
+      "status": "candidate-mapped"
+    },
+    {
+      "identity": "ll2:configuration:139",
+      "fullName": "Vector-R",
+      "assetId": "remaining-r3-vector-r-faa2017",
+      "representativeDate": "2017-01",
+      "sources": [
+        "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/FAA_AST_2017_Commercial_Space_Transportation_Compendium.pdf"
+      ],
+      "status": "candidate-mapped"
+    },
+    {
+      "identity": "ll2:configuration:142",
+      "fullName": "Simorgh",
+      "assetId": "remaining-r3-simorgh-mod2021",
+      "representativeDate": "2021-12-30",
+      "sources": [
+        "https://presstv.ir/Detail/2021/12/31/673755/US-remains-concerned-over-Iran-scientific-progress-amid-sanctions"
+      ],
+      "status": "candidate-mapped"
+    },
+    {
+      "identity": "ll2:configuration:495",
+      "fullName": "Chollima-1",
+      "assetId": "remaining-r3-chollima1-kcna2023",
+      "representativeDate": "2023-11-21",
+      "sources": [
+        "https://assets.korearisk.com/uploads/sites/5/2023/11/Pyongyang-times-2023-1125.pdf"
+      ],
+      "status": "candidate-mapped"
+    }
+  ],
+  "familyExperimentIds": [
+    30,
+    39,
+    86,
+    96,
+    152,
+    200
+  ],
+  "unresolvedExactIds": [
+    74,
+    94,
+    196,
+    502,
+    505
+  ]
+}

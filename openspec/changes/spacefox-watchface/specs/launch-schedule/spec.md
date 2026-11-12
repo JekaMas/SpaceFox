@@ -52,6 +52,26 @@ only; fitness values and personal identifiers SHALL remain on the watch.
 - **THEN** a normal scheduled program publishes the compact feed and versioned assets, and the watch reads them without a SpaceFox service account or a provider token
 - **AND** public standard runners and bounded artifacts are used without enabling paid resources
 
+### Requirement: Independent scheduled clock
+
+The deployment SHALL support an independent clock that invokes only the main
+publisher workflow with a bounded request and repository-scoped encrypted secret.
+It SHALL expose no public HTTP trigger or provider credential. Existing publisher
+concurrency, quota, source-age and CAS controls remain authoritative. A dispatch
+alone MUST NOT establish feed freshness or automatic delivery.
+
+#### Scenario: Clock failure and later recovery
+- **WHEN** a clock invocation receives an HTTP error or an uncertain transport outcome
+- **THEN** the failure is visible without disclosing the secret, no immediate retry occurs, and a later scheduled wake-up can trigger the publisher
+
+#### Scenario: Duplicate or overlapping wakeups
+- **WHEN** the clock and another event dispatch overlapping publisher runs
+- **THEN** the existing workflow serializes publication and durable due/quota/CAS rules remain authoritative
+
+#### Scenario: Live qualification
+- **WHEN** the owner claims automatic refresh is operational
+- **THEN** evidence includes at least two real clock events and their workflow runs plus an actual due feed update and public readback
+
 ### Requirement: Rate-aware static publication
 
 The updater SHALL use the same hourly/near-launch policy: normally one and near
