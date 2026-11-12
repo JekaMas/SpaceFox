@@ -1,4 +1,4 @@
-# Maintained global visual catalog — producer revision 3
+# Maintained global visual catalog — producer revision 4
 
 The single active recipe is `catalog/source.json`. The November 11 reference,
 original registry, 13 original SVGs, browser sources and their old evidence remain
@@ -8,15 +8,15 @@ content coverage, pad accuracy, native transport, hosting or Store acceptance.
 
 ## Current finite coverage
 
-| Category | Maintained revision `2026-11-12.global.3` |
+| Category | Maintained revision `2026-11-12.global.4.bridge1` |
 | --- | --- |
 | Original provider facts retained | 839 records: 103 countries, 350 organizations, 170 configurations, 216 sites |
 | Additional identities | 3 JAXA and 2 NASA sounding configurations, separate MIURA9 metadata, plus 2 official launch-area identities with unresolved pad points |
 | Required known configurations | 165 original non-placeholders + 6 official supplements = 171 |
-| Specific/reviewed shared mappings | 103/165 original configurations; 108/171 with supplements |
-| Remaining specific-art gaps | 62 original plus1 new MIURA9 exact configuration IDs; regenerate the per-ID report with the documented catalog command |
-| Original art added | 48 new immutable source-reviewed vehicle assets in this batch: 46 map 49 former original gaps; 2 map NASA additions. Earlier accepted artwork remains immutable |
-| Source SVGs exported | 562 total: accepted 218 + 344 appended originals; full-global export exceeds 1MiB and is not a delivery requirement |
+| Specific/reviewed shared mappings | 138/165 original configurations; 144/171 with supplements |
+| Remaining specific-art gaps | 27 exact configuration IDs with unresolved primary shape/identity limits; all63 prior gaps were reviewed |
+| Original art added | 36 new immutable asset records in the remaining-art increment: 34 dedicated original schematics and 2 newly reviewed copies of existing originals. Earlier 48 content-r1 assets and all older artwork remain immutable |
+| Source SVGs exported | 598 total: earlier 562 + 36 appended originals/reviewed copies; full-global export exceeds 1MiB and is not a delivery requirement |
 | Country marks | 8 original national flags (AU/JP/CN/RU/IN/DE/ES/KR), 90 currently selected informational code badges, 4 retained marks and Europe region; all old code badges remain immutable. Unknown omitted |
 | Organization badges | 349/349 known organization identities have an identifiable original label or retained mark; Unknown183 omitted. New labels show abbreviation + exact operator ID, never claim official logos |
 | Sourced origins | 94/171 required configurations; 13/349 known organizations. The remaining 77 and 336 origins stay explicit gaps, independent of badge availability |
@@ -33,6 +33,22 @@ availability does not establish that it operates a particular launch. Provider
 active/pending flags retain their original meaning; they are not current in-service
 proof. Official additions have null provider flags/counts and a separate official
 lifecycle assertion, rather than invented provider records.
+
+The accepted remaining-art curation records the finite source review for all63 prior gaps. A published
+representative fairing option can support a specific schematic when its option,
+source date and limits are explicit; multiple fairings alone do not make an art
+gap. Supplied booster/suffix identities remain exact. H3 retains its unresolved
+zero/two/four-booster family uncertainty. Epsilon S uses the current 2026 M-35a
+Block 1 representative, without asserting equivalence to former E-21. MIURA 5
+and MIURA 9 use separately reviewed current profiles. No picture changes a
+source model fact, lifecycle assertion, operator/manufacturer/origin/site role.
+
+The old 562/108/63 receipts remain historical. Only data-dependent checks are
+superseded by this increment's finite coverage/geometry/selector controls;
+unrelated publisher/native/global matrices are retained at their original proof
+boundaries. The finite art increment has separate accepted review evidence; whole known-model
+coverage remains open. The metadata/art public successor is a local candidate
+pending its own independent review.
 
 ## Data-only add, correct and replace workflow
 
@@ -64,7 +80,7 @@ actually reviewed source values before use:
 
 ```sh
 python3 -B tools/catalog.py --amend catalog/reviewed-site-correction-2.json \
-  --catalog-version 2026-11-12.global.4 --output build/publisher-catalog.json \
+  --catalog-version 2026-11-12.global.5 --output build/publisher-catalog.json \
   --report build/global-coverage.json
 python3 -B tools/export_visuals.py --output build/selected-visuals \
   --root ll2:configuration:164 --root ll2:site:65
@@ -231,14 +247,24 @@ python3 -B -m unittest -v tests.test_catalog_core tests.test_visual_protocol \
   tests.test_global_catalog tests.test_global_map
 ```
 
-Source2 fine context remains an explicit off-watch candidate; see
-[GEOGRAPHIC_CONTEXT](GEOGRAPHIC_CONTEXT.md) and the tracked-input bridge in
-[WORLD_CLOUD_INTEGRATION](WORLD_CLOUD_INTEGRATION.md). The active recipe retains
-its public-domain world. Current/retained selected metadata rechecks source
-identity, typed corrections, provenance, jurisdiction, exact visual shard paths,
-rights and complete referenced-file closure before activation. Source URLs remain
-attribution only. Full artwork/worldwide collection, native/phone/FR165,
-90-day wire-major support and authentic cloud qualification remain open.
+Independent R3 found that bundle re-admission did not check an explicit visual
+shard path against its digest. Pack creation and current/retained bundle admission
+now share the same visual shard-reference validator. Missing paths, mismatched
+digest paths and external URL paths reject before activation; recorded source URLs
+remain attribution only. Full content/native qualification remains separate.
+
+A separate candidate now repairs fine source context without replacing the active
+recipe: see [Source-backed regional geography](GEOGRAPHIC_CONTEXT.md). It pins
+LGPL GSHHG and separately licensed SPC/PacIOOS original source/terms, demonstrates
+literal Omelek containment, and exports bounded off-watch regional/accepted-camera
+previews. Legacy schema1 limits remain unchanged. The schema2 descriptor and its
+transitive materializer/native bridge are explicitly unqualified for watch use;
+task4.3 and the complete worldwide/native/device gates remain open.
+## Global content R1 evidence and open work
+
+Source images were inspected; unpublished dimensions and payload envelopes are explicitly schematic. Historic FAA2017 material supports historic shape only. Lifecycle assertions preserve source conflicts, and no launch/manufacturer country supplies an unsourced origin. European vehicle origin remains distinct from FrenchGuiana site jurisdiction; Electron modelNZ versus operatorUS is preserved.
+
+Full-global catalog stays publisher-side. Every asset must pass export admission; the producer retains its fixed64KiB selection,1MiB artifact and4KiB shard caps. The separate native8KiB wire budget is unchanged; this batch does not qualify rich selections for that wire. Historical global.2 full-pack tests use an explicitly frozen recipe; new current tests cover the larger source, real over-budget rejection, bounded all-asset validation, selected closure, immutable mark rollback and atomic malformed-art rejection. Neither these checks nor the counts complete task4.3. Worldwide/upcoming collection, exact pad accuracy, Omelek/Kwajalein/Guam detail, rich10481B native fit, actual phone/FR165/cloud90day resilience and Store acceptance remain open.
 
 ## Producer bridge source extension
 
@@ -249,3 +275,36 @@ Natural Earth polygon topology, vendored D3/TopoJSON/atlas notices and reviewed
 regional source2 transitive inputs. Old schema1 world geometry and source2
 candidate files remain unchanged. See [producer bridge](PUBLISHER_VISUAL_BRIDGE.md)
 for the selected native interface and its separate offwatch/device proof limits.
+
+## Remaining-art revision and retained selection example
+
+The remaining-art R1 increment adds36 exact mappings after reviewing all63 earlier
+gaps:34 dedicated originals and2 newly reviewed copies of prior originals. The additive curation retains source/identity/shape review;27 exact gaps and
+the aggregate known-model gate remain open.
+
+The same existing producer ports can reopen the earlier recipe and produce its
+original selected bytes alongside the current selection, without a layout edit:
+
+```python
+from pathlib import Path
+from tools.spacefox.catalog import build_catalog
+from tools.spacefox.graphics import build_pack, write_pack
+
+root = Path('.').resolve()
+retained = build_catalog(root, root/'tests/fixtures/catalog/global-before-remaining-art-source.json')
+current = build_catalog(root)
+write_pack(root/'build/retained-kuaizhou11',
+           build_pack(root, retained, roots=['ll2:configuration:194']))
+write_pack(root/'build/current-kuaizhou11',
+           build_pack(root, current, roots=['ll2:configuration:194']))
+```
+
+A later reviewed replacement appends a new curation and a new immutable asset ID
+through `amend_recipe`; reopening `catalog/source.json` reads the new generation.
+`test_data_only_replacement_reopen_new_generation_positive` exercises that exact
+operation, real selected export and real local immutable writer. It verifies the
+new manifest differs, the prior recipe still reconstructs its old selected
+geometry, and old object files remain byte-identical. Its isolated triangle is a
+test input, not accepted vehicle art. National origins or other optional metadata
+must be reviewed separately: copying an old visual's geometry does not authorize
+copying its optional origin fields to a previously unknown model origin.

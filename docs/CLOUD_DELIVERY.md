@@ -11,14 +11,22 @@ The later-job checkout optimization was subsequently observed on public`ea272b2`
 three observations, not a controlled benchmark. Old-v1 generation4 was recovered
 from exact pending bytes after cancellation before arm (runs43166274512→43166780103),
 with zero recovery provider requests and3184-byte exact HTTPS readback.
-Cron, armed-before-POST and remote Pages cancellation remain open.
+Actual dual-wire generation5 recovery was subsequently observed on public
+`6494602` in [push run43184519278](https://github.com/jekamas/SpaceFox/actions/runs/43184519278).
+All four jobs succeeded; the exact completed old skipped-deploy attempt was the
+positive no-start witness. A new bound intent reused the exact pending artifact,
+source ages and quota with zero reported provider requests. Pages reached
+`succeed`; read-only HTTPS checked109files/372331bytes and both roots before and
+after the current/prior immutable union. This qualifies that recovery/static
+boundary. Remote started-Pages cancellation remains open.
 
-The actual hosted feed is the data-onlyv1 path. The new integrated candidate adds
-parallel`wire2/feed.json` and complete current/prior immutable visual dependencies;
-it still awaits publication and real hosted qualification. The rich global catalog
-stays off-watch. Full selected map71GET, flat-map-only, native efficiency/globe,
-worldwide/36languages/phone/FR165/90day/Store remain separate open requirements.
-V1 remains indefinitely; actual future publication determines announcement date.
+The metadata/art successor is locally integrated and requires separate later
+publication and hosted qualification. The rich global catalog stays off-watch;
+full selected map71GET, flat-map-only, native efficiency/globe, worldwide,
+36languages, phone/FR165, elapsed90day support and Store remain separate open
+requirements. V1 remains indefinitely. Genuine cron had zero observed executions
+through2026-11-12 08:56UTC. Four literal UTC-minute entries are diagnostic
+re-registration, not a proven repair or an observed scheduled cycle.
 
 One workflow concurrency group covers recovery, provider work, candidate build,
 artifact upload, intent, asynchronous deployment, HTTPS observation and active
@@ -39,7 +47,7 @@ relative SVG facts from the clean tracked Git index. It materializes only this
 closure and validates it with the unchanged catalog builder. The documented
 `tools/catalog.py --amend` route therefore needs no second input-list edit when
 adding a curation or SVG; unrelated research/private files stay absent. The current
-integrated global.3.bridge1 recipe resolves to595 canonical inputs plus the recipe (596materialized files) and the static
+integrated global.4.bridge1 recipe resolves to632 canonical inputs plus the recipe (633materialized files) and the static
 Python runtime/schema seed. For an explicit source2 candidate, the materializer
 uses `geographic_context.dependencies` to obtain every base-world, clip, notice,
 supplement and metadata pin, checks their tracked bytes and SHA-256, then calls
@@ -199,3 +207,13 @@ repository/source/run/attempt records prove the deploy job was skipped with no
 steps (or its named POST step explicitly skipped). Unknown, still-running,
 wrong-attempt or started POST records continue to refuse. Root owns the authentic
 rehearsal and final HTTPS readback; a local deliberate fault is not remote proof.
+
+
+A final metadata job now runs under the same whole-workflow concurrency after
+successful prepare plus completed delivery (or a genuine no-pending skip). It
+uses the existing quota/CAS authority, a daily completion cadence and at most4
+reserved calls per invocation. Candidate data stays off-watch and requires
+separate reviewed export/adoption. No source/field age is refreshed by metadata.
+See [GLOBAL_METADATA_REFRESH.md](GLOBAL_METADATA_REFRESH.md). Four equivalent
+literal cron entries are a registration diagnostic; authentic scheduling remains
+to be observed, with no known cause/fix claim.

@@ -809,3 +809,16 @@ witness permits `not_started`. This changes the journal alone; pending files,
 active files, source epochs, reservations and quota remain exact. The old intent
 is never POSTed; a later new run needs a new state/build-version intent. A terminal
 Pages response still precedes exact complete HTTP admission and promotion.
+
+## Portable metadata and reviewed artwork
+
+The current global.4.bridge1 source has632 pinned inputs plus its recipe; prepare
+authenticates all633. The derived21-file runtime excludes source/art data.
+Metadata shares whole-workflow concurrency and runs after successful no-pending
+prepare or promotion. Pending/armed journals yield before service reads/writes
+or collector import. Exact full live readback precedes daily candidate cadence.
+Four table requests can complete a small metadata candidate; no automatic recipe
+adoption follows. Reviewed art reaches144/171 mappings with27 exact gaps and598
+assets. An art-only update preserves launch/site facts and source age; unchanged
+content-addressed maps are reused. Hosted generation5 on6494602 was separately
+observed; this successor still needs its own publication/qualification.

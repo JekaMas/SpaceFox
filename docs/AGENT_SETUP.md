@@ -4,12 +4,13 @@ SpaceFox uses **scheduled GitHub Actions → static GitHub Pages → paired phon
 watch**. The publisher, tracked-input materializer and serialized delivery adapter
 have local qualification. The published old-v1 source `ea272b2` has observed
 manual bootstrap, second due cycle, optimized generation3 and pre-arm cancellation/
-recovery into generation4 (3184-byte exact HTTPS closure). Automatic cron,
-armed-before-POST recovery and remote Pages cancellation remain unqualified.
+recovery into generation4 (3184-byte exact HTTPS closure). Automatic cron and remote started-Pages cancellation remain unqualified.
 Observed workflow times174s versus474/595s are three runs, not a controlled benchmark.
-The integrated dual-wire bridge is a new local candidate awaiting actual source
-publication and hosted qualification. Native fetch/cache/rendering, phone/physical
-FR165 and Store acceptance remain pending. See the actual
+The later public6494602 dual-wire recovery reached active generation5 with
+zero reported provider requests and exact109-file/372331-byte HTTPS union.
+The metadata/art successor is a local candidate; publication and authentic
+metadata/cron qualification remain separate. Native fetch/cache/rendering,
+phone/physical FR165 and Store acceptance remain pending. See the actual
 [CLOUD_DELIVERY runbook](CLOUD_DELIVERY.md) for permissions, recovery and limits.
 
 Each family should own its own publisher fork and feed-state authority. The source
@@ -71,11 +72,11 @@ reconciliation; do not reset state, invent a live generation or rebuild pending
 bytes. A disabled or delayed schedule needs inspection and authorized recovery.
 No background model session is part of normal publishing.
 
-The currently hosted old-v1 delivery remains data-only. The new local bridge
-candidate produces both v1 and v2, each feed≤8192 decoded UTF-8 bytes, with complete
-current+prior artifact≤1MiB/256files. Prepare follows595 canonical inputs plus the recipe (596materialized files); runtime
-jobs exclude source data. The accepted global.3 catalog has562assets and art for
-108/171required configurations, with63art gaps. Source2 provenance remains
+The hosted generation5 includes both v1 and v2. The current local metadata/art
+successor preserves both, each feed≤8192 decoded UTF-8 bytes, with complete
+current+prior artifact≤1MiB/256files. Prepare follows632 canonical inputs plus the recipe (633materialized files); the21-file runtime
+seed excludes source data. The accepted global.4.bridge1 catalog has598assets and art for
+144/171required configurations, with27exact art gaps. Source2 provenance remains
 explicit and off-watch; its roughly1.47MB input corpus is not the served budget.
 The full selected flat-map scene needs71GETs; native batching/cadence, globe,
 worldwide coverage,36native languages, phone/watch and Store remain unqualified.

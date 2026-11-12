@@ -22,6 +22,10 @@ from .schedule import (AcceptedLaunch, IdKind, LaunchRecord, LaunchStatus,
 MAX_LEDGER_BYTES = 65536
 MAX_ARTIFACT_BYTES = 1048576
 MAX_ARTIFACT_FILES = 256
+MAX_CATALOG_JOURNAL_BYTES = 1048576
+MAX_CATALOG_OBJECT_BYTES = 16777216
+MAX_CATALOG_CORPUS_BYTES = 67108864
+MAX_CATALOG_OBJECTS = 4096
 REQUESTS_PER_HOUR = 15
 UNCERTAIN_DELAY_SECONDS = 60
 STATE_REF = 'refs/heads/feed-state'
@@ -273,6 +277,13 @@ def _schedule_ref(value):
     return 'schedules/' + value['sha256'] + '.json'
 
 
+def _catalog_ref(value):
+    _keys(value, 'sha256 bytes')
+    _digest(value['sha256'])
+    _integer(value['bytes'], 1, MAX_CATALOG_JOURNAL_BYTES)
+    return 'catalog-refresh/journals/' + value['sha256'] + '.json'
+
+
 def _pack_ledger(document):
     """Schema2 stores lossless schedule objects once, outside the small ledger.
 
@@ -299,7 +310,9 @@ def decode_ledger(raw, schedule_lookup=None):
     try:
         doc = json.loads(raw.decode('utf-8'), object_pairs_hook=_pairs, parse_constant=_bad_constant)
         _optional_keys(doc, 'schema_version instance_id code_revision refresh_policy generation accepted active pending '
-              'last_event_utc last_poll_utc backoff_until_utc requests', 'selection_validated_utc')
+              'last_event_utc last_poll_utc backoff_until_utc requests', 'selection_validated_utc catalog_refresh')
+        if 'catalog_refresh' in doc:
+            _catalog_ref(doc['catalog_refresh'])
         if type(doc['schema_version']) is not int or doc['schema_version'] not in (1, 2):
             raise StateError('unsupported publisher-state schema')
         if doc['schema_version'] == 2:
@@ -521,6 +534,11 @@ class GitState:
         elif head != anchor:
             raise StateError('unanchored state root')
         self._files(head, doc)  # Reject broken/missing artifacts on every reopen.
+        if 'catalog_refresh' in doc:
+            ref = doc['catalog_refresh']
+            raw = self._blob(head, _catalog_ref(ref), MAX_CATALOG_JOURNAL_BYTES)
+            if len(raw) != ref['bytes'] or _sha(raw) != ref['sha256']:
+                raise StateError('catalog journal bytes/digest mismatch')
         return head, doc
 
     @staticmethod
@@ -566,7 +584,7 @@ class GitState:
                                        require_selection_epoch=snapshot is doc['pending'])
         return result
 
-    def _commit(self, doc, parent, files):
+    def _commit(self, doc, parent, files, *, replace_catalog=False):
         raw, schedules = _pack_ledger(doc)
         decode_ledger(raw, schedules.__getitem__)
         tree_files = dict(files, **schedules, **{'ledger.json': raw})
@@ -577,7 +595,8 @@ class GitState:
             self._git('read-tree', '--empty')
         else:
             self._git('read-tree', parent)
-            paths = self._git('ls-files', '-z', 'artifacts', 'schedules').stdout
+            paths = self._git('ls-files', '-z', 'artifacts', 'schedules',
+                              *(['catalog-refresh'] if replace_catalog else [])).stdout
             if paths:
                 self._git('update-index', '-z', '--index-info',
                           data=b''.join(b'0 ' + b'0' * 40 + b'\t' + path + b'\0' for path in paths.split(b'\0') if path))
@@ -610,10 +629,31 @@ class GitState:
             raise Conflict('bootstrap lost atomic create-if-absent')
         return commit
 
-    def write(self, expected, doc, new_files=None):
+    def write(self, expected, doc, new_files=None, *, catalog_files=None):
         head, previous = self.load()
         if head != expected:
             raise Conflict('state expected base is stale')
+        if catalog_files is None:
+            if doc.get('catalog_refresh') != previous.get('catalog_refresh'):
+                raise StateError('catalog journal requires explicit auxiliary CAS')
+        else:
+            if type(catalog_files) is not dict or not 1 <= len(catalog_files) <= MAX_CATALOG_OBJECTS:
+                raise StateError('bounded catalog auxiliary working set required')
+            total = 0
+            for path, raw in catalog_files.items():
+                if (type(path) is not str or not re.fullmatch(
+                        r'catalog-refresh/(?:journals|objects)/[0-9a-f]{64}\.json', path)
+                        or type(raw) is not bytes or not 1 <= len(raw) <= MAX_CATALOG_OBJECT_BYTES
+                        or path.rsplit('/', 1)[1] != _sha(raw) + '.json'):
+                    raise StateError('invalid content-addressed catalog object')
+                total += len(raw)
+            if total > MAX_CATALOG_CORPUS_BYTES:
+                raise StateError('catalog auxiliary corpus exceeds finite working-set budget')
+            ref = doc.get('catalog_refresh')
+            path = _catalog_ref(ref)
+            raw = catalog_files.get(path)
+            if raw is None or len(raw) != ref['bytes']:
+                raise StateError('catalog auxiliary CAS lacks exact journal')
         try:
             packed, schedules = _pack_ledger(doc)
             candidate = decode_ledger(packed, schedules.__getitem__)
@@ -644,7 +684,8 @@ class GitState:
             if entry.record.launch_id.key not in retained:
                 needed[self._archive_path(entry.record.launch_id)] = _canonical(schedule_document(
                     ScheduleState((entry,), previous['accepted']['evaluated_at_utc'])))
-        commit = self._commit(candidate, head, needed)
+        needed.update(catalog_files or {})
+        commit = self._commit(candidate, head, needed, replace_catalog=catalog_files is not None)
         result = self._git('push', f'--force-with-lease={STATE_REF}:{head}', self.remote,
                            f'{commit}:{STATE_REF}', check=False)
         if result.returncode:
@@ -658,8 +699,10 @@ class GitState:
                           data=b'\n'.join(line.split(b' ')[0] for line in objects.splitlines()) + b'\n').stdout
         archive = self._git('ls-tree', '-r', '-l', head, 'retired').stdout.splitlines()
         schedules = self._git('ls-tree', '-r', '-l', head, 'schedules').stdout.splitlines()
+        catalog = self._git('ls-tree', '-r', '-l', head, 'catalog-refresh').stdout.splitlines()
         return {'archive_records': len(archive), 'archive_blob_bytes': sum(int(line.split()[3]) for line in archive),
                 'schedule_objects': len(schedules), 'schedule_blob_bytes': sum(int(line.split()[3]) for line in schedules),
+                'catalog_objects': len(catalog), 'catalog_blob_bytes': sum(int(line.split()[3]) for line in catalog),
                 'ledger_bytes': len(self._blob(head, 'ledger.json', MAX_LEDGER_BYTES)),
                 'commits': int(self._git('rev-list', '--count', head).stdout),
                 'history_object_bytes': sum(int(size) for size in sizes.splitlines()),
@@ -770,6 +813,55 @@ class Publisher:
         if self.running_code != self.store.current_code():
             raise StateError('source advanced during reservation; slot retained without request permission')
         return token
+
+    def catalog_ready(self, expected, now, *, schedule_max_pages=2, provider_ready=True):
+        """Yield to due launch work and reserve its rolling-hour primary capacity.
+
+        The default updater's primary traversal is at most two pages; callers
+        using its supported1..4 page override must pass the same bound here.
+        Reserve for the shortest configured cadence even before entering a near
+        window, so catalog work cannot drain the hour just ahead of that window.
+        Optional reconciliation details remain best effort under the same quota.
+        """
+        _integer(schedule_max_pages, 1, 4)
+        doc = self._context(expected)
+        self._ready(doc)
+        self._time(doc, now)
+        current = advance_schedule(self.schedule, now, self.policy)
+        selected = select_next(current).entry
+        if poll_due(None if selected is None else selected.record,
+                    doc['last_poll_utc'], now, self.policy):
+            return None
+        cadence = self.policy.fast_interval_seconds or self.policy.near_interval_seconds
+        headroom = ((3600 + cadence - 1) // cadence) * schedule_max_pages
+        used = sum(now < r['at_utc'] + 3600 for r in doc['requests'])
+        if used >= max(0, REQUESTS_PER_HOUR - headroom):
+            return None
+        if provider_ready and doc['backoff_until_utc'] is not None and now < doc['backoff_until_utc']:
+            return False
+        if provider_ready and any(r['outcome'] == 'reserved' and now < r['at_utc'] + UNCERTAIN_DELAY_SECONDS
+               for r in doc['requests']):
+            return False
+        return True
+
+    def reserve_catalog(self, expected, now, *, schedule_max_pages=2):
+        if not self.catalog_ready(expected, now, schedule_max_pages=schedule_max_pages, provider_ready=False):
+            return None
+        return self.reserve(expected, now, purpose='catalog', trigger='extra')
+
+    def checkpoint_catalog(self, expected, now, reference, files):
+        """Auxiliary off-watch state shares source/CAS/clock authority.
+
+        No launch acceptance, poll, selection-validation or publication field is
+        changed. Schedule writers retain this reference and its exact objects.
+        """
+        doc = self._context(expected)
+        self._ready(doc)
+        self._time(doc, now)
+        _catalog_ref(reference)
+        doc['catalog_refresh'] = reference
+        self.head, self._ledger = self.store.write(self.head, doc, catalog_files=files)
+        return self.head
 
     def _result(self, expected, token, now, *, completed=False, invocation_utc=None):
         doc = self._context(expected)

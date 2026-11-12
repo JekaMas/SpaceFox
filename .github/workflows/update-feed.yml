@@ -2,7 +2,11 @@ name: SpaceFox serialized feed
 
 on:
   schedule:
-    - cron: '7,22,37,52 * * * *'
+    # Equivalent UTC-minute re-registration diagnostic; actual cron remains to be observed.
+    - cron: '7 * * * *'
+    - cron: '22 * * * *'
+    - cron: '37 * * * *'
+    - cron: '52 * * * *'
   push:
     branches: [main]
   workflow_dispatch:
@@ -156,3 +160,29 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" recover
+
+  metadata:
+    needs: [prepare, arm, deploy, promote]
+    if: always() && needs.prepare.result == 'success' && (needs.prepare.outputs.pending == 'false' || needs.promote.result == 'success')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      pages: read
+      actions: read
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: /.github/spacefox-inputs.txt
+      - name: Check out runtime seed for exact saved-state validation
+        run: |
+          # Metadata reads its auxiliary corpus from Git, never source/art inputs.
+          sed '\|^/catalog/source.json$|d' .github/spacefox-inputs.txt |
+            git sparse-checkout set --no-cone --stdin
+      - name: Resume due metadata candidate within shared source-first allowance
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" metadata

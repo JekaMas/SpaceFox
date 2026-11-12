@@ -5,8 +5,9 @@ deploy and promote each materialized and validated the same 569 catalog inputs.
 Its recorded job durations were approximately 1m44, 2m18, 1m38 and 2m. Those are
 whole-job observations, not measurements of the materializer alone or a promised
 speedup. Later public`ea272b2` observations measured174s versus474/595s for the
-whole workflow; three runs are not a controlled benchmark. The new bridge
-candidate still awaits source publication and authentic qualification.
+whole workflow; three runs are not a controlled benchmark. Public6494602 later qualified dual-wire generation5 recovery and the exact
+109-file/372331-byte HTTPS union. The current metadata/art successor awaits
+separate publication and qualification.
 
 `prepare` keeps the exact triggering SHA checkout and the full existing
 `tools/cloud_inputs.py` step before source-ref/state/provider operations. The
@@ -59,19 +60,33 @@ forbidden mutation, provider request or publication POST.
 These are local implementation observations. They do not establish remote job
 latency, live GitHub permissions/OIDC/Pages service behavior, bridge/native graphic
 delivery, worldwide catalog completeness, 90-day support, SDK/FR165 or Store
-acceptance. No whole OpenSpec task closes. Existing checks retain their original proof boundaries. The portable runtime test
-is tests/test_cloud_runtime_checkout.py.
+acceptance. No whole OpenSpec task closes. Existing checks retain their original proof boundaries. The standalone portable
+runtime test is `tests/test_cloud_runtime_checkout.py`.
 
-The integrated bridge extends the static seed by three code files. Prepare follows
+The retained global.3 bridge observation extends the static seed by three code files. Prepare follows
 595 canonical source inputs plus the recipe (596materialized files); later jobs use19 runtime files and preserve full
 v1/v2 durable admission without opening recipe/data or invoking a builder. The
-portable integration witness runs the real dual producer, pending recovery, both
-mutable-root challenges, current/prior union, catalog-only/source-only clocks and
-unmarked historicalv1 adoption through actual sparse YAML shells and CLI:
+historical integration retains its original global.3/596 and19-file boundary.
+The current-source portable witness exercises real configuration194 content-only
+art adoption, exact map/current-prior reuse,21-file sparse saved-state recovery,
+metadata cadence and source/adoption/pending/armed gates through YAML shells and CLI:
 
 ```sh
-python3 -B -m unittest -v tests.test_bridge_runtime_public
+python3 -B -m unittest -v tests.test_metadata_art_public
 ```
 
 These local loopback checks retain the explicit OIDC-response substitution and do
 not qualify hosted v2, native transport, globe, worldwide or Store behavior.
+
+
+The metadata successor adds a final source-first job inside the same concurrency
+group. Its two lazy metadata modules extend the runtime seed to21 files. Only
+`metadata` opens its auxiliary candidate corpus; arm/deploy/recover still use
+saved artifact/journal bytes without collector import or source-data builds.
+The current global.4.bridge1 materializer follows632 pinned inputs plus the recipe633;
+new data-dependent integration observations cover this source change. See
+[GLOBAL_METADATA_REFRESH.md](GLOBAL_METADATA_REFRESH.md) for cadence, guards and
+the separate immutable export/review/adoption handoff. This inventory change
+has a new local21-file sparse integration observation; independent successor
+review and later hosted qualification remain separate. Older19-file observations
+retain their original source/inventory boundary.

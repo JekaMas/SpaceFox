@@ -12,7 +12,7 @@ if __package__ in (None, ''):
 
 from tools.spacefox.catalog import build_catalog, canonical_bytes
 from tools.spacefox.cloud import (CloudError, Pages, Site, arm, delivery, delivery_files,
-                                  deploy, git_credentials, oidc_token, recover)
+                                  deploy, git_credentials, journal, oidc_token, recover)
 from tools.spacefox.visual_bridge import (build_artifact as build_visual_artifact, FEED_PATH, sha, validate_feed as validate_visual_feed)
 from tools.spacefox.provider import LL2Client
 from tools.spacefox.publisher import GitState, Publisher, StateError
@@ -23,7 +23,7 @@ from tools.update_feed import executing_revision, update, utc_now
 def source_revision(root):
     code = executing_revision(root)
     dirty = subprocess.run(['git', '-C', str(root), 'status', '--porcelain', '--untracked-files=all',
-                            '--', 'tools/cloud_feed.py', 'tools/cloud_inputs.py', '.github'], check=True, stdout=subprocess.PIPE)
+                            '--', 'tools/cloud_feed.py', 'tools/cloud_inputs.py', 'tools/refresh_catalog.py', '.github'], check=True, stdout=subprocess.PIPE)
     if dirty.stdout:
         raise CloudError('cloud runtime and workflow must be committed and clean')
     return code
@@ -99,6 +99,9 @@ def main(argv=None):
     deploy_p = sub.add_parser('deploy')
     deploy_p.add_argument('--expected-base', required=True)
     sub.add_parser('recover')
+    metadata = sub.add_parser('metadata', help='bounded daily off-watch candidate refresh after delivery')
+    metadata.add_argument('--interval-seconds', type=int, default=86400)
+    metadata.add_argument('--max-requests', type=int, default=4)
     args = p.parse_args(argv)
     store = None
     try:
@@ -124,6 +127,26 @@ def main(argv=None):
         pub = Publisher(store, code)
         if args.command in ('arm', 'deploy') and args.expected_base != pub.head:
             raise CloudError('supply exact current state base')
+        if args.command == 'metadata':
+            if not 3600 <= args.interval_seconds <= 604800 or not 1 <= args.max_requests <= 4:
+                raise CloudError('bounded metadata cadence/requests required')
+            if pub.ledger['code_revision'] != code:
+                raise CloudError('metadata requires source writer adoption first')
+            pub._context(pub.head)
+            if pub.ledger['pending'] is not None:
+                outputs({'head': pub.head, 'status': 'yielded_pending', 'requests': 0})
+                return 0
+            publication = journal(pub)
+            if publication is not None and publication['status'] == 'armed':
+                outputs({'head': pub.head, 'status': 'yielded_armed', 'requests': 0})
+                return 0
+            pub = recover(pub, site, pages)
+            from tools.refresh_catalog import scheduled
+            result = scheduled(pub, sample(), interval_seconds=args.interval_seconds,
+                               max_requests=args.max_requests, clock=None if args.now is not None else utc_now,
+                               **({} if args.origin is None else {'origin': args.origin, 'local_http': True}))
+            outputs(dict(result, head=pub.head))
+            return 0
         if pub.ledger['code_revision'] != code:
             if args.command != 'prepare' and args.command != 'recover':
                 raise CloudError('state must be adopted/reconciled by the writer first')

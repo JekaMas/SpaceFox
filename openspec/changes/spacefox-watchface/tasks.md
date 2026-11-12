@@ -61,3 +61,9 @@
 The publisher, workflow source and catalog export have local qualification. Native,
 authentic cloud/HTTPS, phone/FR165, full artwork,36-language,90day and Store
 acceptance remain open. No implementation checkbox is closed by source export.
+
+Portable metadata/art integration is locally qualified as a candidate. Global
+coverage, actual metadata collection/adoption, authentic cron, complete native
+scene/phone/FR165/Store acceptance and all whole-task checkboxes remain open.
+The current source recipe and standalone integration command are documented in
+`docs/GLOBAL_METADATA_REFRESH.md` and `tests/test_metadata_art_public.py`.
