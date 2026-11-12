@@ -18,6 +18,12 @@ from tools.spacefox.graphics import (
 
 ROOT = Path(__file__).resolve().parents[1]
 FIX = ROOT / 'tests/fixtures/visual'
+HISTORICAL_SOURCE = ROOT/'tests/fixtures/catalog/global-before-content-source.json'
+
+def historical_catalog():
+    # Frozen global.2 full-export witnesses retain their 218-asset proof boundary.
+    # Current catalogs are tested by test_global_content and selected-root cases.
+    return build_catalog(ROOT, HISTORICAL_SOURCE)
 
 
 def svg(body, box='0 0 10 10'):
@@ -46,6 +52,10 @@ class VisualProtocolTest(unittest.TestCase):
     def fixture_recipe(self, directory):
         directory = Path(directory)
         source = loads_json((ROOT/'catalog/source.json').read_bytes())
+        # Retain the schema1 registry mutation fixture as a compatibility lane;
+        # the maintained producer2 path has separate real-input/CLI cases.
+        for key in ('producerVersion', 'curations', 'geography'):
+            source.pop(key, None)
         for key in ('reference', 'assetSeed'):
             path = ROOT/source[key]['path']
             target = directory/('inputs/'+key+'.json')
@@ -179,9 +189,9 @@ class VisualProtocolTest(unittest.TestCase):
                 if data.startswith(b' '):loads_visual(data)
                 else:export_svg(data,[10,10])
 
-    def test_all_sources_positive(self):
-        c=build_catalog(ROOT);before=canonical_bytes(c);pack=build_pack(ROOT,c)
-        self.assertEqual(len(pack['manifest']['assets']),13)
+    def test_historical_global2_sources_positive(self):
+        c=historical_catalog();before=canonical_bytes(c);pack=build_pack(ROOT,c)
+        self.assertEqual(len(pack['manifest']['assets']),218)
         self.assertEqual(pack['manifest']['qualification'],'producer-only-not-device-qualified')
         self.assertEqual(canonical_bytes(c),before)
         for identity,row in c['dictionaries']['assets'].items():
@@ -224,7 +234,7 @@ class VisualProtocolTest(unittest.TestCase):
         with self.assertRaises(VisualError):loads_shard(b' '*4097)
         value=self.literal();value[7]=[2500,[[0,0,0,256],[2500,0,0,256]]]
         with self.assertRaises(VisualError):loads_shard(canonical_visual(value))
-        p=build_pack(ROOT,build_catalog(ROOT))
+        p=build_pack(ROOT,historical_catalog())
         for mode in ('missing','reordered','repeated','canvas','animation'):
             bad=copy.deepcopy(p);row=bad['manifest']['assets']['spacefox:asset:falcon-heavy']
             if mode == 'missing':row['shards'].pop()
@@ -235,7 +245,7 @@ class VisualProtocolTest(unittest.TestCase):
             with tempfile.TemporaryDirectory() as d, self.subTest(mode=mode), self.assertRaises(VisualError):write_pack(d,bad)
 
     def test_rights_positive(self):
-        p=build_pack(ROOT,build_catalog(ROOT));r=p['manifest']['assets']['spacefox:asset:company-spacex']
+        p=build_pack(ROOT,historical_catalog());r=p['manifest']['assets']['spacefox:asset:company-spacex']
         self.assertEqual(r['rights']['license'],'MIT')
         self.assertEqual(r['rights']['credit'],r['catalogRecord']['facts']['creator'])
         self.assertIn('sources',r['catalogRecord']['facts'])
@@ -249,7 +259,7 @@ class VisualProtocolTest(unittest.TestCase):
         with self.assertRaises(VisualError):build_pack(ROOT,c)
 
     def test_selection_positive(self):
-        c=build_catalog(ROOT);roots=['ll2:configuration:164','ll2:site:65']
+        c=historical_catalog();roots=['ll2:configuration:164','ll2:site:65']
         p=build_pack(ROOT,c,roots=roots)
         self.assertNotIn('spacefox:asset:electron',p['manifest']['assets'])
         self.assertEqual(p['manifest']['selection']['dictionaries']['sites']['ll2:site:65']['position']['longitude'],Decimal('177.864469'))
@@ -302,7 +312,7 @@ class VisualProtocolTest(unittest.TestCase):
 
     def test_atomic_positive(self):
         with tempfile.TemporaryDirectory() as d:
-            p=build_pack(ROOT,build_catalog(ROOT));s=write_pack(d,p)
+            p=build_pack(ROOT,historical_catalog());s=write_pack(d,p)
             manifest=(Path(d)/'manifest.json').read_bytes()
             self.assertEqual(s['objectsWritten'],len(p['objects']))
             s=write_pack(d,p);self.assertEqual(s['objectsReused'],len(p['objects']))
@@ -314,7 +324,7 @@ class VisualProtocolTest(unittest.TestCase):
 
     def test_atomic_negative(self):
         with tempfile.TemporaryDirectory() as d:
-            p=build_pack(ROOT,build_catalog(ROOT));write_pack(d,p);path=Path(d)/'manifest.json';old=path.read_bytes()
+            p=build_pack(ROOT,historical_catalog());write_pack(d,p);path=Path(d)/'manifest.json';old=path.read_bytes()
             def fail(stage):raise OSError('injected before local activation')
             with self.assertRaises(OSError):write_pack(d,p,fault=fail)
             self.assertEqual(path.read_bytes(),old)

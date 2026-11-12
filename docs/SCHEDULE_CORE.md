@@ -4,7 +4,7 @@
 Python 3.10+ and the standard library. It performs no network, file, clock, quota
 reservation or deployment operations and has no `.agents` runtime dependency.
 The provider adapter, wire schema, durable feed-state branch and real updater
-remain separate owners. This module is actual publisher policy, not native watch
+are separate owners; see PROVIDER_PIPELINE.md for their actual local integration. This module is actual publisher policy, not native watch
 evidence. Native countdown, cache persistence, background delivery and runtime
 qualification keep their separate obligations.
 
@@ -128,3 +128,13 @@ Portable checks: `python3 -B -m unittest -v tests.test_schedule_policy`.
 Literal tests cover selection/exclusion/context, precision/order, atomic rejection,
 cadence boundaries, reschedule/withdrawal, source-age thresholds/omission/latching
 and a replayed acceptance→move→omission→old-file→renewal→cancellation sequence.
+
+## Provider integration extension
+
+The provider pipeline adds SOURCE_COARSE timing with supplied nominal NET and
+raw precision, STARTED phase for confirmed in-flight/intermediate deployment,
+and separate source-modification seconds/subseconds/ISO facts. Exact target
+semantics and existing typed identities remain unchanged. Started records are
+excluded from next-upcoming without a completed/success claim. Per-ID durable
+terminal archival is owned by publisher.py; no global source cutoff or unresolved
+omission eviction is permitted. See PROVIDER_PIPELINE.md for literal contracts.

@@ -5,10 +5,11 @@ Adapters must supply source-validated normalized records, retain the returned
 state, reserve request quota separately, and apply the bounded feed encoder.
 """
 from dataclasses import dataclass, replace
-from datetime import date
+from datetime import date, datetime, timezone
 from enum import Enum
 import hashlib
 import json
+import re
 
 
 class ScheduleError(ValueError):
@@ -29,6 +30,7 @@ class TimePrecision(str, Enum):
     DATE = 'date'
     WINDOW = 'window'
     UNKNOWN = 'unknown'
+    SOURCE_COARSE = 'source-coarse'  # Nominal source NET is not an exact target.
 
 
 class LaunchStatus(str, Enum):
@@ -36,6 +38,7 @@ class LaunchStatus(str, Enum):
     UNKNOWN = 'unknown'
     CANCELLED = 'cancelled'
     COMPLETED = 'completed'  # Provider-confirmed, never inferred from the clock.
+    STARTED = 'started'  # Confirmed in flight/payload deployed, not completed.
 
 
 class TimingState(str, Enum):
@@ -64,6 +67,20 @@ def _utc(value, field):
         raise ScheduleError(f'{field} must be UTC integer seconds in years 0001..9999')
 
 
+def _source_iso(value, seconds, subsecond=None):
+    if value is None:
+        return
+    try:
+        parsed = datetime.fromisoformat(value.replace('Z', '+00:00'))
+        if parsed.utcoffset() is None or seconds is None:
+            raise ValueError('missing source timezone or nominal UTC')
+        delta = parsed.astimezone(timezone.utc) - datetime(1970, 1, 1, tzinfo=timezone.utc)
+        if delta.days * 86400 + delta.seconds != seconds or subsecond is not None and parsed.microsecond != subsecond:
+            raise ValueError('source ISO/normalized UTC disagree')
+    except (ValueError, TypeError, OverflowError) as error:
+        raise ScheduleError('source ISO and UTC facts disagree') from error
+
+
 @dataclass(frozen=True)
 class StableId:
     kind: IdKind
@@ -88,14 +105,27 @@ class Timing:
     date_utc: str | None = None
     window_start_utc: int | None = None
     window_end_utc: int | None = None
+    nominal_utc: int | None = None
+    source_net: str | None = None
+    source_precision_id: int | None = None
+    source_precision_name: str | None = None
+    source_precision_abbrev: str | None = None
+    source_precision_description: str | None = None
 
     def __post_init__(self):
         if type(self.precision) is not TimePrecision:
             raise ScheduleError('precision must be TimePrecision')
-        for field in ('exact_utc', 'window_start_utc', 'window_end_utc'):
+        for field in ('exact_utc', 'window_start_utc', 'window_end_utc', 'nominal_utc'):
             value = getattr(self, field)
             if value is not None:
                 _utc(value, field)
+        for field in ('source_net', 'source_precision_name', 'source_precision_abbrev', 'source_precision_description'):
+            _text(getattr(self, field), field, optional=True)
+        _source_iso(self.source_net, self.nominal_utc)
+        if self.source_precision_id is not None and (type(self.source_precision_id) is not int or self.source_precision_id < 0):
+            raise ScheduleError('invalid source precision identity')
+        if self.precision is TimePrecision.SOURCE_COARSE and (self.source_net is None or self.nominal_utc is None):
+            raise ScheduleError('source-coarse requires supplied nominal NET')
         if self.date_utc is not None:
             _text(self.date_utc, 'date_utc')
             try:
@@ -115,6 +145,8 @@ class Timing:
         if self.precision is TimePrecision.EXACT:
             if self.exact_utc is None:
                 raise ScheduleError('exact precision requires exact_utc')
+            if self.nominal_utc is not None and self.nominal_utc != self.exact_utc:
+                raise ScheduleError('source nominal NET and exact target disagree')
             if ((start is not None and self.exact_utc < start)
                     or (end is not None and self.exact_utc > end)):
                 raise ScheduleError('exact target lies outside supplied window')
@@ -145,7 +177,7 @@ class Timing:
         lower_bounds = [] if self.window_start_utc is None else [self.window_start_utc]
         if self.date_utc is not None:
             lower_bounds.append((date.fromisoformat(self.date_utc) - date(1970, 1, 1)).days * 86400)
-        return max(lower_bounds) if lower_bounds else self.window_end_utc
+        return max(lower_bounds) if lower_bounds else (self.window_end_utc if self.window_end_utc is not None else self.nominal_utc)
 
 
 @dataclass(frozen=True)
@@ -162,6 +194,15 @@ class LaunchRecord:
     operator_name: str | None = None
     mission_name: str | None = None
     mission_purpose: str | None = None
+    source_updated_utc: int | None = None
+    source_updated_subsecond: int = 0
+    source_updated_iso: str | None = None
+    source_status_id: int | None = None
+    source_status_name: str | None = None
+    site_name: str | None = None
+    country_name: str | None = None
+    country_code: str | None = None
+    site_location_name: str | None = None
 
     def __post_init__(self):
         for field, kind in (('launch_id', IdKind.LAUNCH),
@@ -176,8 +217,23 @@ class LaunchRecord:
         if type(self.timing) is not Timing or type(self.status) is not LaunchStatus:
             raise ScheduleError('record requires validated Timing and LaunchStatus')
         _utc(self.source_validated_utc, 'source_validated_utc')
-        for field in ('configuration_name', 'operator_name', 'mission_name', 'mission_purpose'):
+        if self.source_updated_utc is not None:
+            _utc(self.source_updated_utc, 'source_updated_utc')
+            if self.source_updated_utc > self.source_validated_utc:
+                raise ScheduleError('source content modification exceeds validation epoch')
+        if type(self.source_updated_subsecond) is not int or not 0 <= self.source_updated_subsecond <= 999999:
+            raise ScheduleError('source subsecond must be0..999999microseconds')
+        if self.source_updated_subsecond and self.source_updated_utc is None:
+            raise ScheduleError('source subsecond requires source UTC')
+        _text(self.source_updated_iso, 'source_updated_iso', optional=True)
+        _source_iso(self.source_updated_iso, self.source_updated_utc, self.source_updated_subsecond)
+        if self.source_status_id is not None and (type(self.source_status_id) is not int or self.source_status_id < 0):
+            raise ScheduleError('invalid source status identity')
+        for field in ('configuration_name', 'operator_name', 'mission_name', 'mission_purpose', 'source_status_name', 'site_name', 'country_name', 'site_location_name'):
             _text(getattr(self, field), field, optional=True)
+        if self.country_code is not None and (type(self.country_code) is not str
+                or re.fullmatch(r'[A-Z]{2,3}', self.country_code) is None):
+            raise ScheduleError('country code must be explicitly sourced alpha2/alpha3 or null')
 
     def content(self):
         """Return plain JSON-compatible semantic content with explicit nulls.
@@ -196,6 +252,14 @@ class LaunchRecord:
         result['timing'] = dict(precision=timing.precision.value, exact_utc=timing.exact_utc,
                                 date_utc=timing.date_utc, window_start_utc=timing.window_start_utc,
                                 window_end_utc=timing.window_end_utc)
+        for field in ('nominal_utc', 'source_net', 'source_precision_id', 'source_precision_name', 'source_precision_abbrev', 'source_precision_description'):
+            if getattr(timing, field) is not None:
+                result['timing'][field] = getattr(timing, field)
+        if self.source_updated_subsecond:
+            result['source_updated_subsecond'] = self.source_updated_subsecond
+        for field in ('source_updated_utc', 'source_updated_iso', 'source_status_id', 'source_status_name', 'site_name', 'country_name', 'country_code', 'site_location_name'):
+            if getattr(self, field) is not None:
+                result[field] = getattr(self, field)
         result['status'] = self.status.value
         return result
 
@@ -289,7 +353,7 @@ def cadence_seconds(record: LaunchRecord | None, now_utc: int,
     _arguments(record, now_utc, policy)
     if policy.fast_interval_seconds is not None:
         return policy.fast_interval_seconds
-    if (record is not None and record.status not in (LaunchStatus.CANCELLED, LaunchStatus.COMPLETED)
+    if (record is not None and record.status not in (LaunchStatus.CANCELLED, LaunchStatus.COMPLETED, LaunchStatus.STARTED)
             and record.timing.exact_utc is not None
             and record.timing.exact_utc - 7200 <= now_utc <= record.timing.exact_utc + 1800):
         return policy.near_interval_seconds
@@ -319,7 +383,7 @@ def _stale(record, now_utc, policy):
     if now_utc - validated >= policy.normal_interval_seconds * policy.stale_cycles:
         return True
     target = record.timing.exact_utc
-    if target is None or record.status in (LaunchStatus.CANCELLED, LaunchStatus.COMPLETED):
+    if target is None or record.status in (LaunchStatus.CANCELLED, LaunchStatus.COMPLETED, LaunchStatus.STARTED):
         return False
     # Include a threshold crossed while the caller slept through the near window.
     near_deadline = max(validated + policy.near_interval_seconds * policy.stale_cycles,
@@ -366,6 +430,20 @@ def merge_schedule(state: ScheduleState, incoming: tuple[LaunchRecord, ...], now
         prior = by_id.get(key)
         if prior is not None:
             old = prior.record
+            if old.source_updated_utc is not None and (record.source_updated_utc is None or (record.source_updated_utc, record.source_updated_subsecond) < (old.source_updated_utc, old.source_updated_subsecond)):
+                raise ScheduleError('source content modification cannot regress')
+            comparable = record.content()
+            # Additive model qualification: old null/absent newly modeled footer
+            # facts are unknown, not a negative assertion. A fresh origin may
+            # supply them without changing last_updated. Known facts cannot be
+            # cleared or contradicted at the same source modification epoch.
+            if record.source_validated_utc > old.source_validated_utc:
+                for field in ('country_code', 'site_location_name'):
+                    if getattr(old, field) is None:
+                        comparable.pop(field, None)
+            if (old.source_updated_utc is not None and (record.source_updated_utc, record.source_updated_subsecond) == (old.source_updated_utc, old.source_updated_subsecond)
+                    and comparable != old.content()):
+                raise ScheduleError('source content conflicts at same modification epoch')
             if record.source_validated_utc < old.source_validated_utc:
                 raise ScheduleError('source validation cannot regress')
             if record.source_validated_utc == old.source_validated_utc:
@@ -400,7 +478,7 @@ def select_next(state: ScheduleState) -> Selection:
     if type(state) is not ScheduleState:
         raise ScheduleError('state must be ScheduleState')
     eligible = [entry for entry in state.entries
-                if entry.record.status not in (LaunchStatus.CANCELLED, LaunchStatus.COMPLETED)]
+                if entry.record.status not in (LaunchStatus.CANCELLED, LaunchStatus.COMPLETED, LaunchStatus.STARTED)]
     if not eligible:
         return Selection(None, TimingState.NO_SCHEDULE, None)
 
@@ -415,3 +493,19 @@ def select_next(state: ScheduleState) -> Selection:
     if exact <= state.evaluated_at_utc:
         return Selection(entry, TimingState.AWAITING_UPDATE, None)
     return Selection(entry, TimingState.COUNTDOWN, exact - state.evaluated_at_utc)
+
+
+TERMINAL_RETENTION_SECONDS = 86400
+
+def compact_schedule(state: ScheduleState) -> ScheduleState:
+    """Retire confirmed terminal records after one day; durable owner archives IDs.
+
+    Pending/unknown/started omissions and their ages/latches always survive.
+    The publisher stores each retired record in its Git authority and checks
+    that exact identity on reappearance. Byte/cardinality overflow fails closed.
+    """
+    retained = tuple(entry for entry in state.entries if not (
+        entry.record.status in (LaunchStatus.COMPLETED, LaunchStatus.CANCELLED)
+        and entry.record.source_updated_utc is not None
+        and state.evaluated_at_utc - entry.record.source_validated_utc >= TERMINAL_RETENTION_SECONDS))
+    return ScheduleState(retained, state.evaluated_at_utc)

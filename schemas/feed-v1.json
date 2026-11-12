@@ -1,0 +1,514 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spacefox.invalid/schemas/feed-v1.json",
+  "title": "SpaceFox selected-launch feed v1",
+  "description": "Publisher bytes <=8192 strict UTF8. Cross-field references/digests/timing constraints are additionally enforced by tools.spacefox.wire.validate_feed. Native admission and optional graphics envelopes remain separate.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "catalogRevision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "catalogDigest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "catalogPath": {
+      "type": "string",
+      "pattern": "^catalogs/[0-9a-f]{64}\\.json$"
+    },
+    "dictionaries": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "enum": [
+              "configuration",
+              "organization",
+              "site",
+              "country"
+            ]
+          },
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "visual": {
+            "type": "null"
+          },
+          "position": {
+            "type": "null"
+          },
+          "sourcePosition": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "encoding",
+                  "latitude",
+                  "longitude",
+                  "units",
+                  "qualification"
+                ],
+                "properties": {
+                  "encoding": {
+                    "const": "decimal-text-v1"
+                  },
+                  "latitude": {
+                    "type": "string",
+                    "maxLength": 64,
+                    "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$"
+                  },
+                  "longitude": {
+                    "type": "string",
+                    "maxLength": 64,
+                    "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$"
+                  },
+                  "units": {
+                    "const": "degrees"
+                  },
+                  "qualification": {
+                    "const": "unverified-reference"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "name",
+          "visual"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "unresolvedCatalogIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "launch": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "launch_id": {
+              "type": "string",
+              "pattern": "^[^:]+:launch:.+$"
+            },
+            "configuration_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "operator_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "site_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "country_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "configuration_name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "operator_name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "mission_name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "mission_purpose": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "timing": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "precision": {
+                  "enum": [
+                    "exact",
+                    "date",
+                    "window",
+                    "unknown",
+                    "source-coarse"
+                  ]
+                },
+                "exact_utc": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": -62135596800,
+                  "maximum": 253402300799
+                },
+                "date_utc": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "window_start_utc": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": -62135596800,
+                  "maximum": 253402300799
+                },
+                "window_end_utc": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": -62135596800,
+                  "maximum": 253402300799
+                },
+                "nominal_utc": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": -62135596800,
+                  "maximum": 253402300799
+                },
+                "source_net": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "source_precision_id": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 0
+                },
+                "source_precision_name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "source_precision_abbrev": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "source_precision_description": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "precision",
+                "exact_utc",
+                "date_utc",
+                "window_start_utc",
+                "window_end_utc"
+              ]
+            },
+            "status": {
+              "enum": [
+                "pending",
+                "unknown"
+              ]
+            },
+            "source_validated_utc": {
+              "type": "integer",
+              "minimum": -62135596800,
+              "maximum": 253402300799
+            },
+            "source_updated_utc": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": -62135596800,
+              "maximum": 253402300799
+            },
+            "source_updated_subsecond": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 999999
+            },
+            "source_updated_iso": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "source_status_id": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "source_status_name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "site_name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "country_name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "rescheduled": {
+              "type": "boolean"
+            },
+            "stale": {
+              "type": "boolean"
+            },
+            "country_code": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^[A-Z]{2,3}$"
+            },
+            "site_location_name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "launch_id",
+            "configuration_id",
+            "operator_id",
+            "site_id",
+            "country_id",
+            "configuration_name",
+            "operator_name",
+            "mission_name",
+            "mission_purpose",
+            "timing",
+            "status",
+            "source_validated_utc",
+            "rescheduled",
+            "stale",
+            "country_code",
+            "site_location_name"
+          ]
+        }
+      ]
+    },
+    "timingState": {
+      "enum": [
+        "countdown",
+        "awaiting-update",
+        "uncertain",
+        "no-schedule"
+      ]
+    },
+    "refreshPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "normal_interval_seconds": {
+          "type": "integer",
+          "minimum": 300
+        },
+        "near_interval_seconds": {
+          "type": "integer",
+          "minimum": 300
+        },
+        "fast_interval_seconds": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 300
+        },
+        "stale_cycles": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "normal_interval_seconds",
+        "near_interval_seconds",
+        "fast_interval_seconds",
+        "stale_cycles"
+      ]
+    },
+    "pollIntervalSeconds": {
+      "type": "integer",
+      "minimum": 300
+    },
+    "sourceContentRevision": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "acceptedRecords": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 128
+        },
+        "includedRecords": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "scope": {
+          "const": "selected-launch"
+        },
+        "worldwideCompleteness": {
+          "const": false
+        }
+      },
+      "required": [
+        "acceptedRecords",
+        "includedRecords",
+        "scope",
+        "worldwideCompleteness"
+      ]
+    },
+    "providerTraversal": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "query": {
+              "type": "string"
+            },
+            "complete": {
+              "type": "boolean"
+            },
+            "reportedCount": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "receivedUpcoming": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 80
+            },
+            "detailRequests": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            },
+            "worldwideCompleteness": {
+              "const": false
+            }
+          },
+          "required": [
+            "query",
+            "complete",
+            "reportedCount",
+            "receivedUpcoming",
+            "detailRequests",
+            "worldwideCompleteness"
+          ]
+        }
+      ]
+    },
+    "publisher": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "instance",
+        "generation",
+        "selectionValidatedUtc"
+      ],
+      "properties": {
+        "instance": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "generation": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 253402300799
+        },
+        "selectionValidatedUtc": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": -62135596800,
+          "maximum": 253402300799
+        }
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "publisher",
+    "catalogRevision",
+    "catalogDigest",
+    "catalogPath",
+    "dictionaries",
+    "unresolvedCatalogIds",
+    "launch",
+    "timingState",
+    "refreshPolicy",
+    "pollIntervalSeconds",
+    "sourceContentRevision",
+    "selection",
+    "providerTraversal"
+  ]
+}

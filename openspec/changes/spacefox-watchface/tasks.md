@@ -1,9 +1,9 @@
 # Tasks
 
-## 1. Specification foundation — current increment
+## 1. Specification foundation — completed authoring increments
 
 - [x] 1.1 Create the independent SpaceFox repository, preserve the unchanged Mission mockup and audit every requested feature; verify the copied SHA-256 and `evidence/baseline-audit.md` coverage table.
-- [x] 1.2 Adopt the exact JekaMas workflow pin and qualify the proposal/specs/design/tasks; verify native OpenSpec validation/status/instructions and the required setup checks recorded in `evidence/setup-report.md`.
+- [x] 1.2 Establish and validate the original OpenSpec proposal/specs/design/tasks foundation. Historical authoring-tool provenance is separate from this portable source snapshot.
 - [x] 1.3 Recompose the browser prototype into an Earth/rocket/metadata band, enlarge the launch-site label and update the affected specifications; verify three rocket examples, globe/map, exceptional-state fit at narrow size and strict OpenSpec validation in `evidence/layout-review-v4.md`.
 - [x] 1.4 Replace the planned always-running service with the selected personal GitHub Actions/Pages feed and MIT agent guide; verify coherent proposal/design/specs/tasks, primary-source constraints and strict OpenSpec validation in `evidence/static-feed-design-review.md`. This task enables no scheduler or deployment.
 - [x] 1.5 Clarify fully local countdown computation and reduce the default data cadence to hourly/15-minute near-launch polling, retaining a configurable fast mode; verify coherent age limits, bounded window exit, offline wake and stale-latch scenarios, guide consistency and strict validation in `evidence/local-countdown-review.md`.
@@ -14,10 +14,10 @@
 
 ## 2. Native implementation qualification
 
-- [ ] 2.1 Before semantic implementation, establish the real owners/tests and author the pinned workflow's verification/discovery records; verify all selected requirements/scenarios have meaningful positive and negative cases and graph validation passes.
+- [ ] 2.1 Before semantic implementation, establish the real owners/tests and record source-bound behavior verification and discovery; verify all selected requirements/scenarios have meaningful positive and negative cases and graph validation passes.
 - [ ] 2.2 Qualify the FR165 SDK path for static HTTPS feed fetch through Garmin Connect, background parse/time/memory bounds, compatible image/frame transfer and persisted last-working cache; measure decoded feed≤8192bytes, transfer/parse/activation peak RAM, decoded graphics, serialized per-value/total storage and staging/recovery peak. Establish actual supported types, limits and write/error behavior; do not infer RAM from compressed bytes. Record a successful native experiment plus failure behavior.
 
-- [ ] 2.3 Pin SDK/device profile/firmware and only qualified APIs/products/permissions. The owner is the adult official publisher and has confirmed the relevant intended-use age condition. No age clarification remains open; only technical qualification remains in this task. Keep the separate under13 audience/use rule in release review7.3, without publishing private ages or assuming an exemption.
+- [ ] 2.3 Pin SDK/device profile/firmware and only qualified APIs/products/permissions. Keep publisher/audience platform review separate from technical qualification and retain the release7.3 obligations without private family details.
 
 ## 3. Launch schedule
 
@@ -55,55 +55,9 @@
 - [ ] 7.2 Qualify settings/cache migration, initial blank FeedBaseUrl, independent host namespaces, current/previous wire majors and 90-day announced transition; observe PRG/Store and any beta/production boundaries without assuming state survival. Test unsupported schema/renderer, higher-version signed code repair and new-generation asset rollback with unchanged source age.
 - [ ] 7.3 Prepare accurate free Store listing, actual screenshots, setup/dependencies/permissions/privacy/rights/support and tested Export Project IQ. Recheck current guidelines/agreement, submit within an authorized release request, record Garmin disposition and qualify the approved Store installation/settings/update path. Source publication or owner-only beta does not close this task.
 
-## Resume notes
 
-The current authorized increment is repository/specification setup, not native
-product implementation. The browser mockup is not a live service or a Garmin
-build. No product implementation or Store-release task above is complete.
+## Public implementation status
 
-The installed workflow pin was not fetchable from GitHub. It was hydrated from
-the exact clean local release, then the bootstrap's reviewed migration recovery
-path completed setup. See `evidence/setup-report.md` for the original failure,
-recovery and portability limit; do not silently choose another pin.
-
-The code/evidence entry is task2.1, followed by native qualification2.2/2.3.
-The owner confirmed the publisher and intended-use age conditions; no age
-clarification remains open or gates implementation. No SDK, paid service, native/Store publication or live feed deployment was
-performed during the specification increment. Original MIT specification/source
-publication to the existing GitHub repository is a separate completed channel.
-
-The completed layout/specification feedback increment is task 1.3. It changes
-the prototype and affected contracts only; native implementation remains open.
-Use `evidence/layout-review-v4.md` for the new proof boundary and retained checks.
-
-Language and free-distribution foundation now lives in the separately deliverable
-`localize-free-distribution` change. Native qualification remains task 5.4;
-resource completeness does not close any native implementation task.
-
-The owner selected GitHub Actions plus static files for the personal deployment.
-The `service/` plan is superseded by the deterministic updater/static publisher.
-`docs/AGENT_SETUP.md` is the MIT reproduction guide; task 1.4 is this spec-only
-revision. All updater, workflow, Pages and native work remains pending above.
-
-Task 1.5 clarifies that rendering/countdown calculation is independent of data
-sync and replaces the original continuous five-minute default with a lighter
-60/15-minute policy. These are documented defaults chosen for this personal use,
-not a claim that Garmin requires frequent network access. Fast polling remains
-available, and the increased external-change delay is explicit.
-
-Task 1.6 supplies eight exploratory active-screen layouts and four numeral-font
-choices. Read `docs/DESIGN_RESEARCH.md` and `evidence/geography-layout-review.md`;
-H/C/E were a historical shortlist, superseded for the active default by the owner's 04/full selection. They do not establish native qualification. The gallery is RU/EN; the original preview retains 36 locales.
-
-Task1.7 completes the global specification/source-audit increment. See docs/GLOBAL_CATALOG.md and evidence/global-catalog/:170 source configurations,350organizations,103country records,216provider-active pads,213finite positions and3missing positions. Full-page source coverage does not establish worldwide operational completeness; official-source conflicts/omissions and partial artwork are explicit. Native global/catalog/map qualification remains task4.3. Accepted04/full composition is preserved.
-
-Task1.9 records the final source-based spec self-review in evidence/final-review/.
-The canonical current default is04/full active with separate sparse AOD. The
-release-lifecycle capability and docs/RELEASE_AND_UPDATES.md define PRG/IQ,
-signing, free Store distribution, compatibility/migration and three update
-channels. Durable feed-state replaces CDN-only recovery. The owner clarified adult
-publication; the developer-account age condition is satisfied and the blanket
-child-age implementation hold is removed. Separate audience/use terms stay in
-release review7.3. Native tasks2–7 remain open for real implementation evidence.
-See evidence/publication-owner-review.md; historical receipts retain their dates
-and proof boundaries, with current contract hashes in the correction receipt.
+The publisher, workflow source and catalog export have local qualification. Native,
+authentic cloud/HTTPS, phone/FR165, full artwork,36-language,90day and Store
+acceptance remain open. No implementation checkbox is closed by source export.

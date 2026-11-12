@@ -6,8 +6,10 @@ See [proposal.md](proposal.md) for intent and [final lifecycle review](evidence/
 for the checked platform constraints and resolved contradictions. The accepted
 active composition is [prototype/current](../../../prototype/current/index.html),
 selection04/full in `prototype/current/selection.json`. Browser schedule, health
-and model examples remain illustrative. There is no native build, updater,
-Actions workflow or implemented downloadable visual pipeline yet.
+and model examples remain illustrative. The deterministic publisher, serialized
+Actions workflow, catalog/graphic export and source-backed off-watch geography
+have local source qualification. Native, authentic hosted/live HTTPS delivery,
+full artwork and device acceptance remain pending.
 
 The first target is Forerunner165,390×390 round AMOLED. Garmin's checked device
 matrix lists API 5.2, independently of the newest desktop SDK. FR165 Music and
@@ -105,9 +107,10 @@ firmware/API observations.
 ### Use a personal static feed, not an always-running backend
 
 Planned `watchface/` owns Monkey C rendering, settings, local countdowns and cache.
-Planned `tools/update_feed.py` normalizes Launch Library 2 data and builds static
-output. Planned `.github/workflows/update-feed.yml` schedules that deterministic
-program and deploys a validated GitHub Pages artifact. Neither file exists yet.
+`tools/update_feed.py` normalizes Launch Library 2 data and builds static
+output. `.github/workflows/update-feed.yml` schedules the deterministic
+`tools/cloud_feed.py` adapter and supplies the serialized Pages path. These
+files have local qualification; authentic deployment remains open.
 The agent sets up/repairs this automation; it is not an LLM invoked on every run.
 
 ```mermaid
@@ -247,7 +250,14 @@ The durable authority is a dedicated `feed-state` Git branch, not public Pages,
 Actions cache or an expiring artifact. It carries compact active/pending normalized
 snapshots, per-record validation/flags, monotonic generation, source/catalog/tool
 revisions, due time and quota reservations/backoff. Initial current-ledger budget
-is 64KiB, independent of the8KiB watch feed. Monitor Git history growth separately;
+is 64KiB, independent of the8KiB watch feed. Storage schema2 references exact
+normalized schedule objects by SHA256and byte length outside that ledger; it
+deduplicates accepted/active/pending copies, bounds each schedule object to1MiB
+and each record to its64KiBterminal archive, and retains the128entry admission
+limit. Schema1 embedded snapshots migrate on the next CAS without changing old
+artifact revisions, exact bytes, source ages or producer identity. Missing or
+corrupt objects stop recovery. These authority objects are measured separately
+from the≤1MiBpublication artifact. Monitor Git history growth separately;
 current-file size does not bound history. Do not force-prune history automatically.
 No health, secrets or growing raw provider archive belongs in this branch.
 
@@ -440,11 +450,35 @@ configuration. Anonymous provider access is the default; if a future owner needs
 a token, it belongs in repository secrets, not the watch, JSON, artifact or source.
 Garmin developer signing keys remain local and are not uploaded by this data job.
 
+### Initial bounded publisher catalog implementation
+
+The producer unit uses `catalog/source.json` as its single active authored input:
+a versioned recipe pins the preserved reference-inventory and schematic registry
+as immutable seeds. `tools/spacefox/catalog.py` normalizes them into one dictionary
+per typed country/organization/configuration/site/asset ID. `tools/catalog.py`
+validates and builds local derived JSON. The public input/API contract and exact
+proof limits are in `catalog/README.md`; it supersedes the planned per-table paths
+only for this initial import adapter, not the remaining maintenance requirements.
+No second active five-model lookup is authored. Provider facts, aliases, roles,
+unknowns, precise source points and attribution are retained; duplicate/conflicting
+IDs, unresolved typed dependencies and invalid coordinates fail. Missing source
+family definitions stay explicit unresolved facts. Existing source SVGs and all
+reference positions remain unqualified. The publisher dependency subset is not a
+native bounded manifest, codec or canonical device-digest protocol.
+
+VC08.P2 is the producer-only conjunct. Existing VC08.P1 retains the complete
+consumer/bounds/accepted-cache contract, with all of its cases still planned.
+Tasks4.1/4.3/4.4 remain unchecked: full source closure, reviewed corrections and
+supplements, known-model artwork/marks, all-site map views, native transfer/storage,
+activation/recovery and final global qualification are not supplied by metadata.
+
 ### Qualify updateable visuals without an API 6 dependency
 
 Start native qualification with declarative JSON: a finite palette, bounded
 polygons/lines/ellipses, normalized coordinates and short animation transforms.
-An exporter from the existing original schematic registry is planned, not present.
+The producer exporter now consumes catalog content references for the original
+schematic sources; its local contract is `docs/VISUAL_PROTOCOL.md`. Native
+qualification remains separate and incomplete.
 The generic native renderer interprets data, never downloaded Monkey C, bytecode,
 scripts or arbitrary SVG. Bound command/vertex counts, depth, coordinates, per-shard
 bytes, decoded geometry and active/frame peaks. Define a canonical typed encoding
@@ -501,9 +535,8 @@ Shared example data/artwork/geography keep all variants coherent. The original
 Mission remains separately available; physical legibility, raster fonts and AOD
 must still be qualified rather than inferred from browser screenshots.
 
-Before semantic implementation, create the pinned workflow's `verification.json`
-and relevant `discovery.json` from the exact scenarios. Do not fabricate test
-identities for code that does not exist yet. The minimum meaningful boundaries are:
+Record source-bound behavior verification against exact scenarios. Do not fabricate
+test identities for code that does not exist yet. The minimum meaningful boundaries are:
 
 | Contract | Planned owner | Required independent observation |
 | --- | --- | --- |
@@ -564,18 +597,13 @@ and actual approved Store installation remain required observations. Owner-only
 beta can qualify Garmin settings integration if needed, with a separate beta UUID;
 it is not a shared public beta or guaranteed state migration to production.
 
-The owner confirmed publication from their adult account and has now confirmed
-the relevant intended-use age condition. No age clarification remains open for
-this instance. Exact private ages are not retained in public documentation. The previous automatic
-hold on all native development pending a child's age was too broad and is removed.
-
 The separate review guideline concerns under13 intended/known use, including a
 caveat for general-audience apps when such use is known. Adult publication does
 not override it. Preserve the real family motivation and audience facts; do not
 relabel the product or assume a private-install exemption. Check the applicable
 rule during release preparation; unknown viewer age alone is not a new universal
 implementation prerequisite. This clarification is not Garmin approval or legal
-clearance. See [the correction](evidence/publication-owner-review.md).
+clearance.
 
 Separate versions: native app/build; feed wire major; renderer schema; catalog
 revision; immutable asset digest; monotonic publisher generation; per-record
@@ -603,8 +631,9 @@ digests, supported schemas, catalog/asset manifests and evidence make each relea
 reconstructible. Review upstream code/workflow updates in each fork before deploying;
 source Git updates do not automatically update installed native binaries.
 
-No SDK, native signing key, updater, scheduled workflow, live Pages or Store release
-is provisioned by this spec revision. All implementation/release tasks remain open.
+Publisher/updater and scheduled-workflow source now have local qualification.
+No SDK, native signing key, authentic live Pages or Store release is provisioned
+by this source snapshot. Native and full integration/release tasks remain open.
 
 ## Independently reviewed browser proposals
 
@@ -615,3 +644,112 @@ See `docs/LAYOUT_QUALIFICATION.md` for actual outcomes and proof limits. The fir
 fresh holdout failed; repaired finalists passed the same inputs as regression.
 This does not select a native layout, prove all language/font combinations or
 complete the watch-face, live-feed, catalog transport or physical power tasks.
+
+### Producer visual protocol v1 (independent qualification pending)
+
+`tools/spacefox/graphics.py` and portable `tools/export_visuals.py` implement the
+producer-only VC13.P2/VC15.P2/VC17.P2/VC18.P2 conjuncts. The one active catalog
+supplies typed assets, exact facts, attribution and source content pins. Original
+SVGs are resolved off-watch to opaque painter-order simple polygons; unsupported
+source semantics fail the whole candidate. Curves/strokes have a declared analytic
+1/32 nominal pixel boundary ceiling plus1/32pixel fixed-point rounding, with
+curved boundaries conservatively restricted inside viewports. There is no source
+site-coordinate quantization or second model switch.
+
+The fixed integer array protocol uses RGB24, a flat unique packedXY vertex pool
+(x+16384*y, both in1/32 nominal pixel units) and indexed polygon commands. Optional
+whole-visual2–3second translation/scale keyframes are finite data. Canonical compact
+array JSON defines SHA-256 preimages. Each delivered standalone shard is<=4096
+decoded UTF-8 bytes, with its own local palette/pool; ordered complete-asset digest
+assembly rejects missing/mixed/reordered fragments. Measured all13 original sources
+fit at most4shards; no full logical asset must be fetched/parsed in one response.
+A65536-byte logical/selection producer refusal bound is not a Garmin allowance.
+
+MIT/default-pack admission is explicit; unknown/incompatible rights reject. Full
+asset records and source hashes remain in publisher metadata. Selected rows retain
+all facts and precise source points, while unrelated global source/import metadata
+stays publisher-side. Verified immutable shards are reused by digest. Local
+manifest replacement occurs only after the complete candidate validates; failed
+local attempts retain the previous manifest. No hosting publication occurs.
+
+The schema, measured limits, curve/stroke approximation and clipping restrictions,
+source gaps, standalone-shard/reference assembly and local-failure boundaries are
+documented in `docs/VISUAL_PROTOCOL.md`. This does not qualify native JSON/SHA
+agreement, parse/decoded/resident/staging peaks, graphics, storage/reboot/cache,
+HTTPS, prompt schedule activation, optional-asset fallback, host changes or release.
+All original native companion cases and tasks4.1/4.2/4.4/4.5 remain open.
+
+## Durable publisher control-core implementation boundary (round1)
+
+`tools/spacefox/publisher.py` now owns the local/remote Git control authority,
+validated64KiB ledger, normalized accepted schedule/policy, shared request
+reservations/backoff, active/pending generations and real Git-stored declared
+artifact bytes. `docs/PUBLISHER_STATE.md` records schema/API/trust and storage
+limits; `tools/publisher_state.py` is a functional local-only operator CLI.
+This is the LS04.P2/LS13.P2/LS14.P2 conjunct. The original mixed P1 properties
+remain planned: actual provider normalization/HTTP, authenticated GitHub/Actions
+serialization, complete feed/retained-asset assembler and actual Pages readback
+are different owners. A controlled conditional deployment port is explicit; no
+receipt file or declared expected-file list closes actual Pages/asset discovery.
+
+Bootstrap atomically creates an independent anchor and state branch. Each state
+mutation is a parent-linked Git commit pushed with the exact old SHA lease.
+Missing/corrupt previously bootstrapped authority fails closed. The current source
+ref is checked before work permission; source checkout is unnecessary. Future
+Actions source checkout must remain sparse rather than uploading the research
+tree or private workflow. Policy/IDs/nulls/per-record UTC and latches are durable.
+Prepare advances stale evaluation without source validation and persists exact
+candidate files before conditional deployment. Compatible current code can adopt
+the retained schema and finish an older pinned pending candidate without changing
+its revision; older queued code cannot obtain permission.
+
+Real local Git semantics and a two-process CAS race are qualified here. The
+conditional deployment port still requires real serialization/readback from its
+actual adapter. No provider network call, public mutation, workflow enablement,
+GitHub API authentication or native observation is performed by this unit.
+
+
+### Maintained global producer increment — 2026-11-12
+
+`catalog/source.json` now declares compatible producer2: pinned curation revisions
+retain effective/original facts, correction history, exact typed mappings, rights
+and primary-source evidence. Legacy schema1 recipes/APIs and SFV renderer1 remain
+supported. `tools/catalog.py --amend` validates the complete configured art before
+atomic recipe replacement; imported reference/registry/13SVG/browser evidence
+remain unchanged. Official JAXA sounding configurations and unresolved Esrange/
+Uchinoura sounding areas are explicit SpaceFox additions, not fabricated LL2 rows.
+See `docs/GLOBAL_VISUAL_CATALOG.md` for complete contract and finite gaps.
+
+A shared pinned Natural Earth source drives equirectangular and orthographic
+context for every finite site coordinate, with source facts kept exact and only
+art quantized. Sea/air reference positions omit markers absent sourced event fixes.
+Low-detail context does not qualify tiny-island detail or actual pad accuracy.
+Geography selection manifests stay at8KiB and geometry shards at4KiB; complete
+current/one-prior local bundle closures retain the1MiB artifact ceiling. The large
+normalized publisher catalog is not a mandatory delivered file. Native transfer,
+selection integration, memory/persistence and90-day hosted retention remain open.
+The current global.3 content maps108/171 required configurations, with63 exact
+art gaps. Upcoming-reference closure and worldwide official-source completeness
+remain explicit.
+
+## Cloud delivery increment: exact Git authority and async finality
+
+`docs/CLOUD_DELIVERY.md` owns the concrete adapter/workflow protocol. Additive
+cloud.json state-tree CAS binds exact pending/source/ref/run/artifact intent before
+POST. The unique pre-intent state SHA is pages_build_version; actual service
+acceptance/status/cancel lookup remains a remote qualification obligation. Same
+workflow concurrency spans all four least-permission jobs. Status404/lost/unknown
+retains the intent and forbids new work even with visible pending bytes, except
+that exact authenticated completed Actions records may positively prove the
+whole deploy job or POST step was skipped. Missing/cancelled/started records
+remain uncertain; never infer quiescence from404 alone. Exact
+HTTPS mutable feed + every immutable file + final feed reread precedes promotion.
+The original provider/publisher/wire owners remain unchanged. Current delivery is
+feed/catalog only, current+one active immutable dependency closure, not recursive
+prior artifact unions. Prior wire-major90day graphics/compatible endpoints remain
+open rather than being replaced by retaining all historical daily catalogs.
+
+Tracked sparse materialization follows the single catalog recipe and checks
+all declared transitive source bytes. Status-first error handling closes non-success
+HTTP bodies unread; exact success bodies retain their strict wire limit. These
+local properties do not establish authentic hosted behavior.

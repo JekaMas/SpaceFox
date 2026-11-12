@@ -32,7 +32,7 @@ publishing credentials. A forked native product SHALL use its own identity/key.
 ### Requirement: Adult publisher and accurate audience review
 
 The official publisher SHALL be the adult owner using their own Garmin developer
-account; the owner has confirmed adult status. Unknown viewer age alone SHALL NOT
+account. Unknown viewer age alone SHALL NOT
 block implementation. Release review SHALL distinguish the developer-account18+
 condition from the under13 audience/use rule, without claiming adult publication
 or private sideload overrides that rule. Private ages SHALL NOT enter public data.

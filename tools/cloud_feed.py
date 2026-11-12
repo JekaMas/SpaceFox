@@ -1,0 +1,143 @@
+#!/usr/bin/env python3
+"""Whole-workflow Git/Pages adapter. No --live or caller source-SHA authority."""
+import argparse
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+
+if __package__ in (None, ''):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from tools.spacefox.catalog import build_catalog
+from tools.spacefox.cloud import (CloudError, Pages, Site, arm, delivery, delivery_files,
+                                  deploy, git_credentials, oidc_token, recover)
+from tools.spacefox.provider import LL2Client
+from tools.spacefox.publisher import GitState, Publisher, StateError
+from tools.spacefox.schedule import RefreshPolicy
+from tools.update_feed import executing_revision, update, utc_now
+
+
+def source_revision(root):
+    code = executing_revision(root)
+    dirty = subprocess.run(['git', '-C', str(root), 'status', '--porcelain', '--untracked-files=all',
+                            '--', 'tools/cloud_feed.py', 'tools/cloud_inputs.py', '.github'], check=True, stdout=subprocess.PIPE)
+    if dirty.stdout:
+        raise CloudError('cloud runtime and workflow must be committed and clean')
+    return code
+
+
+def context(repository, code, local=False):
+    if local:
+        return
+    if (os.environ.get('GITHUB_REPOSITORY') != repository
+            or os.environ.get('GITHUB_REF') != 'refs/heads/main'
+            or os.environ.get('GITHUB_SHA') != code
+            or os.environ.get('GITHUB_EVENT_NAME') not in ('schedule', 'workflow_dispatch', 'push')):
+        raise CloudError('only exact trusted main schedule/dispatch/push may write')
+
+
+def outputs(result):
+    print(json.dumps(result, sort_keys=True))
+    filename = os.environ.get('GITHUB_OUTPUT')
+    if filename:
+        with open(filename, 'a', encoding='utf-8') as stream:
+            for key in ('head', 'pending', 'build_version'):
+                if key in result:
+                    stream.write(f'{key}={result[key]}\n')
+
+
+def main(argv=None):
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--repository', default=os.environ.get('GITHUB_REPOSITORY'), required='GITHUB_REPOSITORY' not in os.environ)
+    p.add_argument('--remote', help='default authenticated github.com repository; local qualification may use bare Git')
+    p.add_argument('--site', required=True, help='per-instance HTTPS Pages base URL')
+    p.add_argument('--api', default='https://api.github.com')
+    p.add_argument('--origin', help='provider origin override only for local qualification')
+    p.add_argument('--local-qualification', action='store_true', help='explicit local Git/loopback test boundary')
+    p.add_argument('--now', type=int, help='logical UTC; local qualification only')
+    sub = p.add_subparsers(dest='command', required=True)
+    prepare = sub.add_parser('prepare')
+    prepare.add_argument('--output', type=Path, required=True)
+    prepare.add_argument('--bootstrap', action='store_true')
+    prepare.add_argument('--fast-seconds', type=int)
+    arm_p = sub.add_parser('arm')
+    arm_p.add_argument('--expected-base', required=True)
+    arm_p.add_argument('--artifact-id', type=int, required=True)
+    deploy_p = sub.add_parser('deploy')
+    deploy_p.add_argument('--expected-base', required=True)
+    sub.add_parser('recover')
+    args = p.parse_args(argv)
+    store = None
+    try:
+        root = Path(__file__).resolve().parents[1]
+        code = source_revision(root)
+        context(args.repository, code, args.local_qualification)
+        if not args.local_qualification and (args.now is not None or args.origin is not None or args.remote is not None):
+            raise CloudError('runtime source/time/provider/authority overrides are qualification-only')
+        token = os.environ.get('GH_TOKEN', '')
+        git_credentials(token)
+        store = GitState(args.remote or f'https://github.com/{args.repository}.git')
+        site = Site(args.site, local_http=args.local_qualification)
+        pages = Pages(args.repository, token, api=args.api, local_http=args.local_qualification)
+        sample = (lambda: args.now) if args.now is not None else utc_now
+        if args.command == 'prepare' and args.bootstrap:
+            if not args.local_qualification and os.environ.get('GITHUB_EVENT_NAME') != 'workflow_dispatch':
+                raise CloudError('first bootstrap requires explicit trusted dispatch')
+            if site.get('feed.json', 8192)[0] != 404:
+                raise CloudError('first bootstrap requires an empty site, never CDN state recovery')
+            store.bootstrap(code, RefreshPolicy(fast_interval_seconds=args.fast_seconds))
+        elif args.command == 'prepare' and args.fast_seconds is not None:
+            raise CloudError('fast mode may only be selected at explicit bootstrap')
+        pub = Publisher(store, code)
+        if args.command in ('arm', 'deploy') and args.expected_base != pub.head:
+            raise CloudError('supply exact current state base')
+        if pub.ledger['code_revision'] != code:
+            if args.command != 'prepare' and args.command != 'recover':
+                raise CloudError('state must be adopted/reconciled by the writer first')
+            pub.adopt_code(pub.head)
+        if args.command == 'deploy':
+            result = deploy(pub, pages, site, expected=args.expected_base, repository=args.repository,
+                            run_id=int(os.environ['GITHUB_RUN_ID']), run_attempt=int(os.environ['GITHUB_RUN_ATTEMPT']),
+                            id_token=oidc_token())
+            outputs({'status': result})
+        elif args.command == 'arm':
+            pub, intent = arm(pub, expected=args.expected_base, repository=args.repository,
+                              run_id=int(os.environ['GITHUB_RUN_ID']), run_attempt=int(os.environ['GITHUB_RUN_ATTEMPT']),
+                              artifact_id=args.artifact_id, now=sample())
+            outputs({'head': pub.head, 'build_version': intent['buildVersion']})
+        else:
+            pub = recover(pub, site, pages)
+            if args.command == 'recover':
+                outputs({'head': pub.head, 'pending': str(pub.ledger['pending'] is not None).lower()})
+                return 0
+            result = {'result': 'recovered_pending', 'requests': 0}
+            if pub.ledger['pending'] is None:
+                client = LL2Client(**({} if args.origin is None else {'origin': args.origin, 'local_http': True}))
+                result = update(pub, client, sample(), build_catalog(root), trigger='scheduled',
+                                clock=None if args.now is not None else utc_now)
+            pending = pub.ledger['pending'] is not None
+            if pending:
+                files = delivery_files(pub, delivery(pub))
+                args.output.mkdir(parents=False, exist_ok=False)
+                for relative, content in files.items():
+                    target = args.output / relative
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    target.write_bytes(content)
+                result['exportedFiles'] = len(files)
+                result['exportedBytes'] = sum(map(len, files.values()))
+            outputs(dict(result, head=pub.head, pending=str(pending).lower()))
+        return 0
+    except (ValueError, OSError, subprocess.SubprocessError, KeyError) as error:
+        # Exception text from HTTP workers/servers is intentionally never echoed.
+        message = str(error) if isinstance(error, StateError) else type(error).__name__
+        print('cloud-feed: ' + message, file=sys.stderr)
+        return 2
+    finally:
+        if store is not None:
+            store.close()
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

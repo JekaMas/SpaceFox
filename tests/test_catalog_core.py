@@ -256,7 +256,7 @@ class CatalogCoreTest(unittest.TestCase):
         before = ARCHIVE.read_bytes()
         c = build_catalog(ROOT)
         d = c['dictionaries']
-        self.assertEqual({k: len(d[k]) for k in d}, {'countries': 104, 'organizations': 350, 'configurations': 170, 'sites': 216, 'assets': 13})
+        self.assertEqual({k: len(d[k]) for k in d}, {'countries': 104, 'organizations': 350, 'configurations': 176, 'sites': 218, 'assets': 562})
         expected = {26: 'electron', 116: 'ariane-64', 121: 'ariane-62', 161: 'falcon-heavy', 164: 'falcon-9'}
         for key, asset in expected.items():
             self.assertEqual(d['configurations'][f'll2:configuration:{key}']['references']['visual'], f'spacefox:asset:{asset}')

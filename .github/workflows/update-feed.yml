@@ -1,0 +1,143 @@
+name: SpaceFox serialized feed
+
+on:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      bootstrap:
+        description: Explicit FIRST empty-site authority creation (never recovery)
+        type: boolean
+        default: false
+
+# This group covers all jobs, including async finality, HTTPS and promotion.
+# Pending runs may be replaced; durable source/CAS guards decide permission.
+concurrency:
+  group: spacefox-whole-publisher-v1
+  cancel-in-progress: false
+
+permissions: {}
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+  SPACEFOX_SITE: ${{ vars.SPACEFOX_PAGES_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
+
+jobs:
+  prepare:
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'push')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pages: read
+      actions: read
+    outputs:
+      pending: ${{ steps.prepare.outputs.pending }}
+      head: ${{ steps.prepare.outputs.head }}
+      artifact_id: ${{ steps.upload.outputs.artifact_id }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: /.github/spacefox-inputs.txt
+      - name: Materialize exact reviewed runtime and catalog closure
+        run: |
+          git sparse-checkout set --no-cone --stdin < .github/spacefox-inputs.txt
+          python3 -B tools/cloud_inputs.py
+      - name: Recover first, then check source cadence and prepare exact candidate
+        id: prepare
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FIRST_BOOTSTRAP: ${{ github.event_name == 'workflow_dispatch' && inputs.bootstrap && 'true' || 'false' }}
+        run: |
+          args=()
+          if [ "$FIRST_BOOTSTRAP" = true ]; then args+=(--bootstrap); fi
+          python3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" prepare --output "$RUNNER_TEMP/spacefox-site" "${args[@]}"
+      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        id: upload
+        if: steps.prepare.outputs.pending == 'true'
+        with:
+          path: ${{ runner.temp }}/spacefox-site
+          retention-days: 1
+
+  arm:
+    needs: prepare
+    if: needs.prepare.outputs.pending == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    permissions:
+      contents: write
+    outputs:
+      head: ${{ steps.arm.outputs.head }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: /.github/spacefox-inputs.txt
+      - run: |
+          git sparse-checkout set --no-cone --stdin < .github/spacefox-inputs.txt
+          python3 -B tools/cloud_inputs.py
+      - name: Persist unique candidate/source/run/artifact deployment intent
+        id: arm
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_BASE: ${{ needs.prepare.outputs.head }}
+          ARTIFACT_ID: ${{ needs.prepare.outputs.artifact_id }}
+        run: python3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" arm --expected-base "$EXPECTED_BASE" --artifact-id "$ARTIFACT_ID"
+
+  deploy:
+    needs: arm
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    environment:
+      name: github-pages
+      url: ${{ env.SPACEFOX_SITE }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: /.github/spacefox-inputs.txt
+      - run: |
+          git sparse-checkout set --no-cone --stdin < .github/spacefox-inputs.txt
+          python3 -B tools/cloud_inputs.py
+      - name: POST once, then bound async polling and cancellation finality
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_BASE: ${{ needs.arm.outputs.head }}
+        run: python3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" deploy --expected-base "$EXPECTED_BASE"
+
+  promote:
+    needs: [prepare, arm, deploy]
+    if: always() && needs.arm.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      pages: read
+      actions: read
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: /.github/spacefox-inputs.txt
+      - run: |
+          git sparse-checkout set --no-cone --stdin < .github/spacefox-inputs.txt
+          python3 -B tools/cloud_inputs.py
+      - name: Require async finality and complete exact HTTPS files before promotion
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" recover

@@ -16,7 +16,7 @@ import uuid
 
 from .schedule import (AcceptedLaunch, IdKind, LaunchRecord, LaunchStatus,
                        ScheduleError, ScheduleState, StableId, TimePrecision,
-                       Timing, advance_schedule, merge_schedule, poll_due, select_next,
+                       Timing, advance_schedule, merge_schedule, compact_schedule, poll_due, select_next,
                        DEFAULT_POLICY, RefreshPolicy)
 
 MAX_LEDGER_BYTES = 65536
@@ -35,6 +35,15 @@ class StateError(ValueError):
 
 class Conflict(StateError):
     """The caller lost its exact expected Git base; start by reopening state."""
+
+
+class AllowanceUnavailable(StateError):
+    """A durable quota/backoff decision refused a request before HTTP."""
+
+
+def _optional_keys(value, required, optional):
+    if type(value) is not dict or not set(required.split()) <= set(value) <= set((required + ' ' + optional).split()):
+        raise StateError('unexpected or missing state fields')
 
 
 def _keys(value, expected):
@@ -92,11 +101,12 @@ def _identity(value):
 
 def schedule_document(state):
     """Lossless domain-state representation, including per-record latches/nulls."""
-    return {'evaluated_at_utc': state.evaluated_at_utc,
+    result = {'evaluated_at_utc': state.evaluated_at_utc,
             'entries': [{'record': dict(entry.record.content(),
                                        source_validated_utc=entry.record.source_validated_utc),
                          'rescheduled': entry.rescheduled, 'stale': entry.stale}
                         for entry in state.entries]}
+    return result
 
 
 def _schedule(value):
@@ -106,14 +116,19 @@ def _schedule(value):
     entries = []
     for entry in value['entries']:
         _keys(entry, 'record rescheduled stale')
+        if len(_canonical({'entries': [entry], 'evaluated_at_utc': value['evaluated_at_utc']})) > MAX_LEDGER_BYTES:
+            raise StateError('individual record exceeds durable retirement archive budget')
         r = entry['record']
-        _keys(r, 'launch_id configuration_id operator_id site_id country_id configuration_name '
-              'operator_name mission_name mission_purpose timing status source_validated_utc')
-        _keys(r['timing'], 'precision exact_utc date_utc window_start_utc window_end_utc')
+        _optional_keys(r, 'launch_id configuration_id operator_id site_id country_id configuration_name '
+              'operator_name mission_name mission_purpose timing status source_validated_utc',
+              'source_updated_utc source_updated_subsecond source_updated_iso source_status_id source_status_name site_name country_name country_code site_location_name')
+        _optional_keys(r['timing'], 'precision exact_utc date_utc window_start_utc window_end_utc',
+                       'nominal_utc source_net source_precision_id source_precision_name source_precision_abbrev source_precision_description')
         timing = dict(r['timing'])
         timing['precision'] = TimePrecision(timing['precision'])
         fields = {k: _identity(r[k]) for k in ('launch_id', 'configuration_id', 'operator_id', 'site_id', 'country_id')}
         fields.update({k: r[k] for k in ('configuration_name', 'operator_name', 'mission_name', 'mission_purpose', 'source_validated_utc')})
+        fields.update({k: r[k] for k in ('source_updated_utc', 'source_updated_subsecond', 'source_updated_iso', 'source_status_id', 'source_status_name', 'site_name', 'country_name', 'country_code', 'site_location_name') if k in r})
         record = LaunchRecord(**fields, timing=Timing(**timing), status=LaunchStatus(r['status']))
         entries.append(AcceptedLaunch(record, entry['rescheduled'], entry['stale']))
     return ScheduleState(tuple(entries), value['evaluated_at_utc'])
@@ -157,16 +172,55 @@ def _snapshot(value):
         raise StateError('artifact metadata revision mismatch')
 
 
-def decode_ledger(raw):
+def _schedule_ref(value):
+    _keys(value, 'sha256 bytes')
+    _digest(value['sha256'])
+    _integer(value['bytes'], 1, MAX_ARTIFACT_BYTES)
+    return 'schedules/' + value['sha256'] + '.json'
+
+
+def _pack_ledger(document):
+    """Schema2 stores lossless schedule objects once, outside the small ledger.
+
+    Snapshot metadata/digests still describe the original expanded schedule,
+    including legacy field absence. Never reconstruct it through domain defaults.
+    """
+    doc = json.loads(_canonical(document))
+    if type(doc.get('schema_version')) is not int or doc['schema_version'] not in (1, 2):
+        raise StateError('unsupported publisher-state schema')
+    doc['schema_version'] = 2
+    objects = {}
+    for holder, field in [(doc, 'accepted')] + [(s, 'schedule') for s in (doc['active'], doc['pending']) if s is not None]:
+        raw = _canonical(holder[field])
+        ref = {'sha256': _sha(raw), 'bytes': len(raw)}
+        objects[_schedule_ref(ref)] = raw
+        holder[field] = ref
+    return _canonical(doc), objects
+
+
+def decode_ledger(raw, schedule_lookup=None):
     """Bound before parse, reject duplicate/nonfinite/unknown fields and schema."""
     if type(raw) is not bytes or len(raw) > MAX_LEDGER_BYTES:
         raise StateError('current ledger exceeds64KiB')
     try:
         doc = json.loads(raw.decode('utf-8'), object_pairs_hook=_pairs, parse_constant=_bad_constant)
-        _keys(doc, 'schema_version instance_id code_revision refresh_policy generation accepted active pending '
-              'last_event_utc last_poll_utc backoff_until_utc requests')
-        if type(doc['schema_version']) is not int or doc['schema_version'] != 1:
+        _optional_keys(doc, 'schema_version instance_id code_revision refresh_policy generation accepted active pending '
+              'last_event_utc last_poll_utc backoff_until_utc requests', 'selection_validated_utc')
+        if type(doc['schema_version']) is not int or doc['schema_version'] not in (1, 2):
             raise StateError('unsupported publisher-state schema')
+        if doc['schema_version'] == 2:
+            for holder, field in [(doc, 'accepted')] + [(s, 'schedule') for s in (doc['active'], doc['pending']) if s is not None]:
+                ref = holder[field]
+                path = _schedule_ref(ref)
+                if schedule_lookup is None:
+                    raise StateError('schema2 requires authoritative schedule objects')
+                data = schedule_lookup(path)
+                if type(data) is not bytes or len(data) != ref['bytes'] or _sha(data) != ref['sha256']:
+                    raise StateError('schedule object bytes/digest mismatch')
+                value = json.loads(data.decode('utf-8'), object_pairs_hook=_pairs, parse_constant=_bad_constant)
+                if _canonical(value) != data:
+                    raise StateError('schedule object must be canonical UTF8 JSON')
+                holder[field] = value
         _digest(doc['instance_id'])
         _digest(doc['code_revision'], git=True)
         _keys(doc['refresh_policy'], 'normal_interval_seconds near_interval_seconds fast_interval_seconds stale_cycles')
@@ -175,6 +229,11 @@ def decode_ledger(raw):
         _utc(doc['last_event_utc'], optional=True)
         _utc(doc['last_poll_utc'], optional=True)
         _utc(doc['backoff_until_utc'], optional=True)
+        selection_epoch = doc.get('selection_validated_utc')
+        if selection_epoch is not None:
+            _utc(selection_epoch)
+            if doc['last_event_utc'] is None or selection_epoch > doc['last_event_utc']:
+                raise StateError('selection validation exceeds ledger time')
         accepted = _schedule(doc['accepted'])
         if accepted.evaluated_at_utc is not None and (doc['last_event_utc'] is None
                 or accepted.evaluated_at_utc > doc['last_event_utc']):
@@ -201,7 +260,9 @@ def decode_ledger(raw):
         seen = set()
         prior_time = None
         for request in doc['requests']:
-            _keys(request, 'id at_utc purpose trigger outcome')
+            _optional_keys(request, 'id at_utc purpose trigger outcome', 'accepted_source')
+            if 'accepted_source' in request and (type(request['accepted_source']) is not bool or request['purpose'] != 'schedule' or request['outcome'] != 'success'):
+                raise StateError('invalid consumed source reservation')
             _digest(request['id'])
             _utc(request['at_utc'])
             if request['purpose'] not in ('schedule', 'catalog', 'version') or request['trigger'] not in ('scheduled', 'manual', 'retry', 'extra'):
@@ -222,11 +283,21 @@ def decode_ledger(raw):
         raise StateError('malformed publisher ledger') from error
 
 
-def _transition(old, new):
+def _transition(old, new, archive_lookup=None):
+    if new['schema_version'] < old['schema_version']:
+        raise StateError('publisher-state schema cannot regress')
     if new['instance_id'] != old['instance_id']:
         raise StateError('instance identity cannot change')
     if new['refresh_policy'] != old['refresh_policy']:
         raise StateError('durable refresh policy needs an explicit schema migration')
+    prior_epoch, next_epoch = old.get('selection_validated_utc'), new.get('selection_validated_utc')
+    if prior_epoch is not None and (next_epoch is None or next_epoch < prior_epoch):
+        raise StateError('selection validation cannot regress')
+    if next_epoch != prior_epoch and not any(
+            r.get('accepted_source') is True and not any(
+                p['id'] == r['id'] and p.get('accepted_source') is True for p in old['requests'])
+            for r in new['requests']):
+        raise StateError('selection validation requires newly accepted primary source')
     for field in ('last_event_utc', 'last_poll_utc', 'backoff_until_utc'):
         if old[field] is not None and (new[field] is None or new[field] < old[field]):
             raise StateError('ledger time cannot regress')
@@ -234,6 +305,10 @@ def _transition(old, new):
         raise StateError('publication generation cannot regress or skip')
     previous = _schedule(old['accepted'])
     next_state = _schedule(new['accepted'])
+    if archive_lookup is not None:
+        known = {e.record.launch_id.key for e in previous.entries}
+        restored = [archive_lookup(e.record.launch_id) for e in next_state.entries if e.record.launch_id.key not in known]
+        previous = ScheduleState(previous.entries + tuple(e for e in restored if e is not None), previous.evaluated_at_utc)
     if next_state != previous:
         if next_state.evaluated_at_utc is None:
             raise StateError('accepted schedule cannot reset')
@@ -242,7 +317,7 @@ def _transition(old, new):
                                       next_state.evaluated_at_utc, RefreshPolicy(**new['refresh_policy']))
         except ScheduleError as error:
             raise StateError(str(error)) from error
-        if expected != next_state:
+        if expected != next_state and compact_schedule(expected) != next_state:
             raise StateError('accepted normalized state regresses or loses flags/records')
     if old['pending'] is not None and new['pending'] != old['pending']:
         if new['pending'] is not None or new['active'] != old['pending']:
@@ -261,10 +336,17 @@ def _transition(old, new):
         if current is None:
             if new['last_event_utc'] is None or new['last_event_utc'] < request['at_utc'] + 3600:
                 raise StateError('unexpired quota reservation cannot disappear')
-        elif ({k: v for k, v in current.items() if k != 'outcome'} !=
-              {k: v for k, v in request.items() if k != 'outcome'} or
+        elif ({k: v for k, v in current.items() if k not in ('outcome', 'accepted_source')} !=
+              {k: v for k, v in request.items() if k not in ('outcome', 'accepted_source')} or
+              'accepted_source' in request and 'accepted_source' not in current or
+              request.get('accepted_source', False) and not current.get('accepted_source', False) or
               request['outcome'] != 'reserved' and current['outcome'] != request['outcome']):
             raise StateError('request reservation cannot be rewritten')
+        if current is not None and current.get('accepted_source', False) and request.get('accepted_source') is False:
+            if old['pending'] is not None or new['pending'] is None:
+                raise StateError('source reservation consumption requires a new durable candidate')
+        if current is not None and 'accepted_source' in current and 'accepted_source' not in request and request['outcome'] != 'reserved':
+            raise StateError('completed legacy reservation cannot acquire source permission')
 
 
 class GitState:
@@ -311,6 +393,10 @@ class GitState:
             raise StateError('Git object exceeds byte budget before parse')
         return self._git('show', f'{revision}:{path}').stdout
 
+    def _ledger_at(self, revision):
+        return decode_ledger(self._blob(revision, 'ledger.json', MAX_LEDGER_BYTES),
+                             lambda path: self._blob(revision, path, MAX_ARTIFACT_BYTES))
+
     def load(self):
         refs = self._refs(STATE_REF, ANCHOR_REF)
         if set(refs) != {STATE_REF, ANCHOR_REF}:
@@ -321,19 +407,45 @@ class GitState:
         anchor = self._git('rev-parse', 'refs/spacefox/anchor').stdout.decode().strip()
         if self._git('merge-base', '--is-ancestor', anchor, head, check=False).returncode:
             raise StateError('state is not descended from bootstrap authority')
-        doc = decode_ledger(self._blob(head, 'ledger.json', MAX_LEDGER_BYTES))
-        initial = decode_ledger(self._blob(anchor, 'ledger.json', MAX_LEDGER_BYTES))
+        doc = self._ledger_at(head)
+        initial = self._ledger_at(anchor)
         if doc['instance_id'] != initial['instance_id']:
             raise StateError('bootstrap instance does not match ledger')
         parents = self._git('rev-list', '--parents', '-n', '1', head).stdout.decode().split()[1:]
         if len(parents) > 1:
             raise StateError('state history must be linear')
         if parents:
-            _transition(decode_ledger(self._blob(parents[0], 'ledger.json', MAX_LEDGER_BYTES)), doc)
+            _transition(self._ledger_at(parents[0]), doc,
+                        lambda identity: self.archived(identity, parents[0]))
+            self._check_retired(parents[0], head, doc)
         elif head != anchor:
             raise StateError('unanchored state root')
         self._files(head, doc)  # Reject broken/missing artifacts on every reopen.
         return head, doc
+
+    @staticmethod
+    def _archive_path(identity):
+        digest = _sha(_canonical([identity.kind.value, identity.namespace, identity.value]))
+        return f'retired/{digest[:2]}/{digest}.json'
+
+    def archived(self, identity, revision=None):
+        revision = revision or self.load()[0]
+        path = self._archive_path(identity)
+        if self._git('cat-file', '-e', f'{revision}:{path}', check=False).returncode:
+            return None
+        raw = self._blob(revision, path, MAX_LEDGER_BYTES)
+        document = json.loads(raw.decode('utf-8'), object_pairs_hook=_pairs, parse_constant=_bad_constant)
+        state = _schedule(document)
+        if len(state.entries) != 1 or state.entries[0].record.launch_id != identity:
+            raise StateError('retired identity archive mismatch')
+        return state.entries[0]
+
+    def _check_retired(self, parent, head, doc):
+        previous = _schedule(self._ledger_at(parent)['accepted'])
+        retained = {e.record.launch_id.key for e in _schedule(doc['accepted']).entries}
+        for entry in previous.entries:
+            if entry.record.launch_id.key not in retained and self.archived(entry.record.launch_id, head) != entry:
+                raise StateError('retired record lacks exact durable ID archive')
 
     def _files(self, head, doc):
         result = {}
@@ -350,35 +462,25 @@ class GitState:
         return result
 
     def _commit(self, doc, parent, files):
-        raw = _canonical(doc)
-        decode_ledger(raw)
-        tree_files = dict(files, **{'ledger.json': raw})
-        # mktree constructs recursive trees directly: no source checkout/index.
-        tree = {}
+        raw, schedules = _pack_ledger(doc)
+        decode_ledger(raw, schedules.__getitem__)
+        tree_files = dict(files, **schedules, **{'ledger.json': raw})
+        # Preserve the ID-level terminal archive in the durable tree. The current
+        # ledger/artifact working set stays bounded; archive/history growth is
+        # separately measured, never advertised as a constant lifetime bound.
+        if parent is None:
+            self._git('read-tree', '--empty')
+        else:
+            self._git('read-tree', parent)
+            paths = self._git('ls-files', '-z', 'artifacts', 'schedules').stdout
+            if paths:
+                self._git('update-index', '-z', '--index-info',
+                          data=b''.join(b'0 ' + b'0' * 40 + b'\t' + path + b'\0' for path in paths.split(b'\0') if path))
         for path, data in tree_files.items():
-            parts = path.split('/')
-            node = tree
-            for part in parts[:-1]:
-                existing = node.setdefault(part, {})
-                if type(existing) is not dict:
-                    raise StateError('artifact file/directory collision')
-                node = existing
-            if parts[-1] in node:
-                raise StateError('artifact file/directory collision')
-            node[parts[-1]] = data
-
-        def build(node):
-            lines = []
-            for name, value in sorted(node.items()):
-                if type(value) is dict:
-                    mode, kind, sha = '040000', 'tree', build(value)
-                else:
-                    mode, kind = '100644', 'blob'
-                    sha = self._git('hash-object', '-w', '--stdin', data=value).stdout.decode().strip()
-                lines.append(f'{mode} {kind} {sha}\t{name}\0'.encode())
-            return self._git('mktree', '-z', data=b''.join(lines)).stdout.decode().strip()
-
-        args = ['commit-tree', build(tree)]
+            sha = self._git('hash-object', '-w', '--stdin', data=data).stdout.decode().strip()
+            self._git('update-index', '--add', '--cacheinfo', f'100644,{sha},{path}')
+        tree_sha = self._git('write-tree').stdout.decode().strip()
+        args = ['commit-tree', tree_sha]
         if parent is not None:
             args.extend(['-p', parent])
         return self._git(*args, data=b'SpaceFox durable publisher checkpoint\n').stdout.decode().strip()
@@ -394,7 +496,7 @@ class GitState:
                    refresh_policy=dict(vars(policy)),
                    code_revision=running_code, generation=0, accepted=schedule_document(ScheduleState()),
                    active=None, pending=None, last_event_utc=None, last_poll_utc=None,
-                   backoff_until_utc=None, requests=[])
+                   backoff_until_utc=None, requests=[], selection_validated_utc=None)
         commit = self._commit(doc, None, {})
         result = self._git('push', '--atomic', f'--force-with-lease={STATE_REF}:',
                            f'--force-with-lease={ANCHOR_REF}:', self.remote,
@@ -408,8 +510,9 @@ class GitState:
         if head != expected:
             raise Conflict('state expected base is stale')
         try:
-            candidate = decode_ledger(_canonical(doc))
-            _transition(previous, candidate)
+            packed, schedules = _pack_ledger(doc)
+            candidate = decode_ledger(packed, schedules.__getitem__)
+            _transition(previous, candidate, lambda identity: self.archived(identity, head))
         except (ScheduleError, ValueError, TypeError) as error:
             raise StateError(str(error)) from error
         files = self._files(head, previous)
@@ -423,6 +526,11 @@ class GitState:
                     if type(data) is not bytes or len(data) != meta['bytes'] or _sha(data) != meta['sha256']:
                         raise StateError('candidate lacks exact durable artifact bytes')
                     needed[key] = data
+        retained = {e.record.launch_id.key for e in _schedule(candidate['accepted']).entries}
+        for entry in _schedule(previous['accepted']).entries:
+            if entry.record.launch_id.key not in retained:
+                needed[self._archive_path(entry.record.launch_id)] = _canonical(schedule_document(
+                    ScheduleState((entry,), previous['accepted']['evaluated_at_utc'])))
         commit = self._commit(candidate, head, needed)
         result = self._git('push', f'--force-with-lease={STATE_REF}:{head}', self.remote,
                            f'{commit}:{STATE_REF}', check=False)
@@ -435,7 +543,11 @@ class GitState:
         objects = self._git('rev-list', '--objects', head).stdout
         sizes = self._git('cat-file', '--batch-check=%(objectsize)',
                           data=b'\n'.join(line.split(b' ')[0] for line in objects.splitlines()) + b'\n').stdout
-        return {'ledger_bytes': len(self._blob(head, 'ledger.json', MAX_LEDGER_BYTES)),
+        archive = self._git('ls-tree', '-r', '-l', head, 'retired').stdout.splitlines()
+        schedules = self._git('ls-tree', '-r', '-l', head, 'schedules').stdout.splitlines()
+        return {'archive_records': len(archive), 'archive_blob_bytes': sum(int(line.split()[3]) for line in archive),
+                'schedule_objects': len(schedules), 'schedule_blob_bytes': sum(int(line.split()[3]) for line in schedules),
+                'ledger_bytes': len(self._blob(head, 'ledger.json', MAX_LEDGER_BYTES)),
                 'commits': int(self._git('rev-list', '--count', head).stdout),
                 'history_object_bytes': sum(int(size) for size in sizes.splitlines()),
                 'reachable_objects': len(sizes.splitlines())}
@@ -530,12 +642,12 @@ class Publisher:
                             now, self.policy, not_before_utc=doc['backoff_until_utc']):
                 return None
         if doc['backoff_until_utc'] is not None and now < doc['backoff_until_utc']:
-            raise StateError('durable provider backoff is active')
+            raise AllowanceUnavailable('durable provider backoff is active')
         requests = [r for r in doc['requests'] if now < r['at_utc'] + 3600]
         if any(r['outcome'] == 'reserved' and now < r['at_utc'] + UNCERTAIN_DELAY_SECONDS for r in requests):
             raise StateError('uncertain request outcome requires recovery delay')
         if len(requests) >= REQUESTS_PER_HOUR:
-            raise StateError('shared15/hour provider allowance exhausted')
+            raise AllowanceUnavailable('shared15/hour provider allowance exhausted')
         token = _sha(uuid.uuid4().bytes)
         requests.append(dict(id=token, at_utc=now, purpose=purpose, trigger=trigger, outcome='reserved'))
         doc['requests'] = requests
@@ -546,16 +658,24 @@ class Publisher:
             raise StateError('source advanced during reservation; slot retained without request permission')
         return token
 
-    def _result(self, expected, token, now):
+    def _result(self, expected, token, now, *, completed=False, invocation_utc=None):
         doc = self._context(expected)
         self._ready(doc)
         self._time(doc, now)
+        if invocation_utc is not None:
+            _utc(invocation_utc)
         request = next((r for r in doc['requests'] if r['id'] == token), None)
-        if request is None or request['outcome'] != 'reserved':
-            raise StateError('result requires an unresolved durable reservation')
+        if (request is None or request.get('accepted_source', False)
+                or request['outcome'] not in (('reserved', 'success') if completed else ('reserved',))
+                or completed and request['outcome'] == 'success' and request.get('accepted_source') is not False
+                or completed and now >= request['at_utc'] + 3600
+                or invocation_utc is not None and request['at_utc'] != invocation_utc
+                or completed and request['outcome'] == 'success'
+                and request['at_utc'] != (now if invocation_utc is None else invocation_utc)):
+            raise StateError('result requires a matching unused durable reservation')
         return doc, request
 
-    def finish_request(self, expected, token, now, outcome, *, retry_after_utc=None):
+    def finish_request(self, expected, token, now, outcome, *, retry_after_utc=None, retain_for_acceptance=False):
         doc, request = self._result(expected, token, now)
         if outcome not in ('success', 'failed', 'throttled'):
             raise StateError('invalid provider result')
@@ -569,18 +689,74 @@ class Publisher:
         elif retry_after_utc is not None:
             raise StateError('success cannot carry retry backoff')
         request['outcome'] = outcome
+        if retain_for_acceptance:
+            if outcome != 'success' or request['purpose'] != 'schedule':
+                raise StateError('only a successful schedule reservation can await source acceptance')
+            request['accepted_source'] = False
         return self._save(doc)
 
-    def accept_source(self, expected, token, incoming, now):
+    def publisher_envelope(self, now, *, selection_validated_utc=None):
+        """Tentative next revision at this exact head; CAS allocates it later.
+
+        Only a qualified primary observation may supply a new epoch. None means
+        preserve accepted/legacy-unknown age, including metadata-only rebuilds.
+        """
+        doc = self._context(self.head)
+        self._ready(doc)
+        self._time(doc, now)
+        epoch = self._selection_epoch(doc, selection_validated_utc, now)
+        return dict(instance=doc['instance_id'], generation=doc['generation'] + 1,
+                    selectionValidatedUtc=epoch)
+
+    def _selection_epoch(self, doc, epoch, now):
+        prior = doc.get('selection_validated_utc')
+        if epoch is None:
+            return prior
+        _utc(epoch)
+        if epoch > now or prior is not None and epoch < prior:
+            raise StateError('selection validation is future or regressing')
+        return epoch
+
+    def preview_source(self, incoming, now, *, selection_validated_utc=None):
+        """Archive-aware candidate used for wire admission before durable acceptance."""
+        doc = self._context(self.head)
+        self._ready(doc)
+        self._time(doc, now)
+        self._selection_epoch(doc, selection_validated_utc, now)
+        try:
+            if type(incoming) is not tuple or any(type(r) is not LaunchRecord for r in incoming):
+                raise ScheduleError('incoming records must be an immutable LaunchRecord tuple')
+            if len({r.launch_id.key for r in incoming}) != len(incoming):
+                raise ScheduleError('duplicate incoming launch identity')
+            base = self.schedule
+            known = {e.record.launch_id.key for e in base.entries}
+            restored, records = [], []
+            for record in incoming:
+                archived = None if record.launch_id.key in known else self.store.archived(record.launch_id, self.head)
+                if archived is not None:
+                    # Actual reducer enforces per-ID modification/validation monotonicity.
+                    merge_schedule(ScheduleState((archived,), base.evaluated_at_utc), (record,), now, self.policy)
+                    if record.content() == archived.record.content():
+                        continue  # Still terminal: retain its archive, no active working-set growth.
+                    restored.append(archived)
+                records.append(record)
+            if restored:
+                base = ScheduleState(base.entries + tuple(restored), base.evaluated_at_utc)
+            accepted = compact_schedule(merge_schedule(base, tuple(records), now, self.policy))
+            return accepted
+        except ScheduleError as error:
+            raise StateError(str(error)) from error
+
+    def accept_source(self, expected, token, incoming, now, *, selection_validated_utc=None):
         doc, request = self._result(expected, token, now)
         if request['purpose'] != 'schedule':
             raise StateError('schedule validation needs a schedule request reservation')
-        try:
-            accepted = merge_schedule(self.schedule, incoming, now, self.policy)
-        except ScheduleError as error:
-            raise StateError(str(error)) from error
+        accepted = self.preview_source(incoming, now)
         doc['accepted'] = schedule_document(accepted)
+        if selection_validated_utc is not None:
+            doc['selection_validated_utc'] = self._selection_epoch(doc, selection_validated_utc, now)
         request['outcome'] = 'success'
+        request['accepted_source'] = True
         return self._save(doc)
 
     def observe_age(self, expected, now):
@@ -590,15 +766,49 @@ class Publisher:
         doc['accepted'] = schedule_document(advance_schedule(self.schedule, now, self.policy))
         return self._save(doc)
 
-    def prepare(self, expected, now, files, catalog_revision):
+    def prepare(self, expected, now, files, catalog_revision, *, feed_publisher=None):
         doc = self._context(expected)
         self._ready(doc)
         self._time(doc, now)
         doc['accepted'] = schedule_document(advance_schedule(self.schedule, now, self.policy))
+        return self._prepare_document(doc, files, catalog_revision, feed_publisher=feed_publisher)
+
+    def accept_and_prepare(self, expected, token, incoming, now, files, catalog_revision, *, invocation_utc=None,
+                           selection_validated_utc=None, feed_publisher=None):
+        """Commit validated source, consumed allowance and exact pending atomically.
+
+        The updater byte-admits the archive-aware preview before calling this.
+        A lost runner cannot leave newly accepted source without its candidate.
+        """
+        # Explicit invocation time anchors the saved reservation while completion
+        # may occur later. It is caller evidence, not proof of an OS process.
+        doc, request = self._result(expected, token, now, completed=True, invocation_utc=invocation_utc)
+        if request['purpose'] != 'schedule':
+            raise StateError('schedule validation needs a schedule reservation')
+        doc['accepted'] = schedule_document(self.preview_source(incoming, now))
+        if selection_validated_utc is not None:
+            doc['selection_validated_utc'] = self._selection_epoch(doc, selection_validated_utc, now)
+        request['outcome'] = 'success'
+        request['accepted_source'] = True
+        return self._prepare_document(doc, files, catalog_revision, feed_publisher=feed_publisher)
+
+    def _prepare_document(self, doc, files, catalog_revision, *, feed_publisher=None):
         if type(files) is not dict or not files or len(files) > MAX_ARTIFACT_FILES:
             raise StateError('bounded actual artifact files required')
         _digest(catalog_revision)
         generation = doc['generation'] + 1
+        if feed_publisher is not None:
+            from .wire import validate_feed
+            try:
+                feed = validate_feed(files.get('feed.json'), now=doc['last_event_utc'])
+            except ValueError as error:
+                raise StateError('invalid publisher feed') from error
+            expected = dict(instance=doc['instance_id'], generation=generation,
+                            selectionValidatedUtc=doc.get('selection_validated_utc'))
+            if (feed_publisher != expected or feed['publisher'] != expected
+                    or feed['sourceContentRevision'] != _schedule(doc['accepted']).content_revision
+                    or feed['catalogDigest'] != catalog_revision):
+                raise StateError('feed does not bind allocated publisher revision/source/catalog')
         manifest, durable_files = {}, {}
         for path, data in files.items():
             _path(path)

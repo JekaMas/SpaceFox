@@ -94,3 +94,32 @@ Chakra Petch and Oxanium font files under SIL OFL1.1. Original notices are in
 SHA256 are in `prototype/features/font-manifest.json`. These licenses remain
 separate from the MIT original code/specification. No brand reference photographs
 are redistributed with the source.
+
+## Global.3 original art and regional geographic source
+
+`assets/global/svg/` and the original curation/shape-review text are SpaceFox MIT
+schematic artwork and analysis. National flag geometry and informational country
+codes are distinct from official company logos; operator labels are original
+abbreviation/ID drawings. Referenced manufacturer photographs and download
+archives are not redistributed by this snapshot. Mapping a source schematic does
+not establish engineering accuracy, operational status or endorsement.
+
+The active `catalog/world.json` uses public-domain Natural Earth-derived lines.
+The explicit off-watch source2 candidate retains GSHHG 2.3.7 selected clip inputs
+under **LGPL-3.0-or-later**, with the original `LICENSE.TXT`, `COPYINGv3`,
+`COPYING.LESSERv3` and `README.TXT` in
+`catalog/geography/gshhg-high-20261112-r2/`. Those notices and the corresponding
+selected source/derivation accompany optional derived previews. MIT does not
+relicense that data.
+
+`catalog/geography/regional-20261112-r3/` additionally retains the original
+SPC/PacIOOS Marshall Islands GeoJSON and the original metadata HTML with its
+**free redistribution terms** (`LicenseRef-PacIOOS-free-redistribution`). The
+source index records the separate license, metadata URL, exact byte hashes,
+credit and derivation. Those terms are distinct from both LGPL and SpaceFox MIT.
+The Git source corpus of 1,468,065 bytes is a publisher input, separate from the
+1MiB served artifact limit. See [source context](docs/GEOGRAPHIC_CONTEXT.md).
+
+Existing bundled preview fonts retain their respective SIL OFL notices. No new
+native font family, native localization qualification or Garmin SDK content is
+included in this publisher/content snapshot.

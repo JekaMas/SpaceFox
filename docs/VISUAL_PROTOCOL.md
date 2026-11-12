@@ -1,5 +1,10 @@
 # Declarative original-art producer v1
 
+The SFV renderer contract remains version 1. The compatible producer-2 catalog
+curation and source-driven geography extension are documented in
+[GLOBAL_VISUAL_CATALOG.md](GLOBAL_VISUAL_CATALOG.md). The accepted 13 sources remain
+unchanged; the current configured export attempts all 218 assets.
+
 This is an implemented **producer contract**, not a Garmin-qualified transport.
 Python 3.10+ standard library is sufficient. No build/test imports `.agents`, SDK,
 network client, external converter or downloaded code. The single active input is
@@ -18,8 +23,9 @@ The CLI also works from another current directory using its absolute path. Outpu
 inside the checkout must stay under `build/`. A separate source recipe can be
 supplied with `--source`; imported paths still resolve inside this repository.
 The temporary-catalog test demonstrates a new mapped asset and replacement source
-SVG through data only. This unit does not add a production correction/refresh or
-supplement authoring workflow to the accepted import adapter.
+SVG through data only. The producer-2 catalog extension now supplies append-only, validated local
+correction/replacement/supplement commands. Production refresh/quota/HTTP remains
+a separate obligation.
 
 ## Wire and canonical identity
 

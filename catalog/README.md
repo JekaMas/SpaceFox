@@ -1,5 +1,10 @@
 # Publisher catalog core
 
+The active recipe now uses the compatible producer-2 curation extension.
+See [maintained global visual catalog](../docs/GLOBAL_VISUAL_CATALOG.md) for
+working add/correct/replace commands, official additions, coverage and geography.
+The schema-1 import contract below remains supported as a compatibility lane.
+
 `source.json` is the one active authored catalog input. It pins immutable import
 seeds by repository-relative path and SHA-256. The initial version adapts the
 retained 2026-11-11 reference inventory and the original schematic registry. Keep
@@ -22,8 +27,9 @@ operation, and product code/tests do not import `.agents`.
 
 ## Source contract and identity
 
-The recipe has exactly `schemaVersion: 1`, a nonempty `catalogVersion`, `reference`
-and `assetSeed`. Each import has exactly `path` and a lowercase SHA-256 `sha256`.
+A legacy recipe has exactly `schemaVersion: 1`, a nonempty `catalogVersion`,
+`reference` and `assetSeed`. Producer 2 additionally declares `producerVersion: 2`,
+ordered pinned `curations` and optional pinned `geography`. Each import has exactly `path` and a lowercase SHA-256 `sha256`.
 Paths must remain inside the repository, including after resolving symlinks. A
 changed accepted input requires a new catalog version and new import digest.
 The build has no previous-revision ledger; deployment/immutable naming must enforce
@@ -53,12 +59,11 @@ are preserved in `unresolvedFamilies`; no family definition or reviewed shared
 geometry is invented. Inactive/pending/placeholder/disputed source facts are kept;
 this adapter does not resolve lifecycle disagreements.
 
-For a future input revision, retain the original provider values and provenance
-in the versioned source, provide every referenced definition, update the active
-recipe and run the same validator/build/tests. Source collection and reviewed
-supplement/correction authoring are still separate unfinished maintenance work.
-This initial adapter does not implement a refresh crawler, official correction
-policy, image replacement workflow or full global acceptance gate.
+For a maintained revision, append a reviewed pinned curation through the documented
+`--amend` command. Effective facts, exact original provider facts, ordered correction
+history and explicit official additions remain distinct. The command validates
+all configured exports before replacing the active recipe. A production refresh
+crawler, common-quota HTTP adapter and full global acceptance gate remain pending.
 
 ## Producer JSON schema1
 
@@ -108,12 +113,12 @@ has no verified event-time location. `mapRenderQualification: not-performed`
 remains unchanged. A consumer must not turn these metadata facts into qualified
 marker/map acceptance.
 
-The initial import has 839 provider records: 103 countries, 350 organizations,
-170 configurations and 216 sites. The generated catalog adds one explicit region
-and 13 source SVG definitions. This dated query union is not current worldwide
-completeness or upcoming-reference/supplement closure. Only five configurations
-have the existing specific drawings; the remaining 160 non-placeholder models
-still lack specific/reviewed shared art. Generic fallback is not visual coverage.
+The unchanged initial import has 839 provider records: 103 countries, 350 organizations,
+170 configurations and 216 sites. The original adapter adds one explicit region
+and 13 source SVG definitions; the active curation now adds 3 official configurations,
+2 unresolved launch areas and 204 original SVGs (217 total). This dated query union is not current worldwide
+completeness or upcoming-reference/supplement closure. The maintained revision maps 54/165 original known configurations and 57/168
+with official additions. The 111 remaining exact IDs are reported as art gaps. Generic fallback is not visual coverage.
 No SVG is converted or qualified for Garmin by this tool.
 
 Own code remains MIT. Imported facts retain their source/terms metadata, and each

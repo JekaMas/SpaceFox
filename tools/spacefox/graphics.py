@@ -714,6 +714,16 @@ def _atomic(path,data,prefix):
         if temporary is not None:temporary.unlink(missing_ok=True)
 
 
+def _validate_shard_reference(part):
+    """One visual-manifest reference contract for creation and re-admission."""
+    _require(isinstance(part,dict) and set(part) == {'sha256','path','decodedBytes'},'invalid shard reference')
+    key=part['sha256']
+    _require(isinstance(key,str) and re.fullmatch('[0-9a-f]{64}',key) is not None,'invalid shard digest')
+    _require(part['path'] == f'objects/{key}.json','missing/mismatched immutable shard')
+    _integer(part['decodedBytes'],1,LIMITS['shardBytes'],'shard bytes')
+    return key
+
+
 def _validate_pack(pack):
     _require(isinstance(pack,dict) and set(pack) == {'manifest','objects','statistics','catalog'},'invalid pack envelope')
     manifest,objects=pack['manifest'],pack['objects']
@@ -735,12 +745,10 @@ def _validate_pack(pack):
         parts=_array(row['shards'],'asset shards',maximum=LIMITS['shardsPerAsset'])
         _require(bool(parts),'asset shards required');fragment_data=[]
         for part in parts:
-            _require(isinstance(part,dict) and set(part) == {'sha256','path','decodedBytes'},'invalid shard reference')
-            key=part['sha256'];_require(digest_ok(key),'invalid shard digest');expected.add(key)
-            _require(part['path'] == f'objects/{key}.json' and key in objects,'missing/mismatched immutable shard')
+            key=_validate_shard_reference(part);expected.add(key)
+            _require(key in objects,'missing/mismatched immutable shard')
             data=objects[key];fragment=loads_shard(data)
             _require(canonical_visual(fragment) == data and hashlib.sha256(data).hexdigest() == key,'candidate shard digest mismatch')
-            _integer(part['decodedBytes'],1,LIMITS['shardBytes'],'shard bytes')
             _require(len(data) == part['decodedBytes'],'candidate shard byte mismatch');fragment_data.append(data)
         _array(row['animation'],'asset animation',length=2)
         value=assemble_visual(fragment_data,row['animation'])
@@ -758,7 +766,9 @@ def _validate_pack(pack):
         _require(identity in catalog['dictionaries']['assets'] and canonical_bytes(record) == canonical_bytes(catalog['dictionaries']['assets'][identity]),'asset source metadata mismatch')
         facts=record.get('facts');_require(isinstance(facts,dict),'asset facts required')
         _require(identity == 'spacefox:asset:'+str(facts.get('id')) and record.get('kind') == 'asset','asset identity mismatch')
-        _require(record.get('provenance') == [{'source':'assetSeed','recordId':facts['id']}],'asset provenance mismatch')
+        provenance = ([{'source':'curation','recordId':record['curation']['id']}] if 'curation' in record
+                      else [{'source':'assetSeed','recordId':facts['id']}])
+        _require(record.get('provenance') == provenance,'asset provenance mismatch')
         _require(facts.get('license') == 'MIT' and isinstance(facts.get('creator'),str) and bool(facts['creator'].strip()),'asset rights/creator not admitted')
         _require(isinstance(facts.get('sources'),list) and bool(facts['sources']) and all(isinstance(x,str) and bool(x.strip()) for x in facts['sources']),'asset sources required')
         rights={'license':'MIT','credit':facts.get('credit',facts['creator']),'admission':'explicit MIT source; local free default-pack admission only'}

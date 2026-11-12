@@ -1,0 +1,162 @@
+# Serialized cloud delivery
+
+`tools/cloud_feed.py` is the stdlib GitHub/Pages adapter. The workflow is
+`.github/workflows/update-feed.yml`. Its publisher implementation has local qualification; authentic Actions/Pages
+permissions, deployment and live HTTPS qualification remain pending. Local source
+preparation does not establish a deployed service.
+
+The first vertical deployment serves the existing draft wire v1 `feed.json` and
+its exact immutable catalog. Visuals and verified positions remain null. The rich
+global publisher catalog stays off-watch. Native, graphics, global completeness,
+previous wire-major compatibility, physical FR165, signing and Store acceptance
+remain separate open requirements.
+
+One workflow concurrency group covers recovery, provider work, candidate build,
+artifact upload, intent, asynchronous deployment, HTTPS observation and active
+promotion. It never cancels a running workflow to replace it. Pending jobs can
+be replaced or start out of chronological order; the current authenticated Git
+source ref and exact feed-state CAS decide permission. Only trusted main pushes,
+schedules and explicit dispatch run it. The offset15minute cron checks the
+persisted hourly/near15minute cadence; push/dispatch does not force a provider
+request. Optional fast mode is an explicit bootstrap policy, unchanged by restart.
+
+Each checkout is the triggering SHA, followed by the non-cone runtime seed
+in `.github/spacefox-inputs.txt`. `tools/cloud_inputs.py` follows the single
+`catalog/source.json` recipe, its pinned imports/curations/geography, and their
+relative SVG facts from the clean tracked Git index. It materializes only this
+closure and validates it with the unchanged catalog builder. The documented
+`tools/catalog.py --amend` route therefore needs no second input-list edit when
+adding a curation or SVG; unrelated research/private files stay absent. The current
+active public-domain global.3 recipe resolves to568 catalog inputs plus the static
+Python runtime/schema seed. For an explicit source2 candidate, the materializer
+uses `geographic_context.dependencies` to obtain every base-world, clip, notice,
+supplement and metadata pin, checks their tracked bytes and SHA-256, then calls
+`load_source` and the actual catalog builder for full source/rights admission.
+The source2 Python owner is in the static runtime seed; no source-data list is
+added there. A valid new index/base path or curation/SVG remains recipe driven.
+
+Before forced sparse checkout, each declared input must be a tracked HEAD blob
+and any existing local bytes must match it. This also covers assume-unchanged-hidden
+edits; ordinary tracked edits already stopped at the initial Git diff guard.
+Untracked sources/dependencies and their local bytes are never accepted or
+silently overwritten. No development evidence/research/native/SDK is copied into
+the uploaded site. No package install or paid service is used.
+
+The explicit source2 candidate's index plus20 transitive inputs total1,468,065
+publisher-side bytes. This checkout is not the served site. The ordinary active
+recipe remains `2026-11-12.global.3` with its original public-domain source, and
+source2 remains an explicit off-watch preview candidate. Optional source-backed
+previews include their selected corresponding clips and all required notices;
+they have their own complete current/prior1MiB validation. Cloud delivery remains
+the unchanged data-onlyv1 feed/catalog path with visuals/positions null and no
+raw geography corpus. See [the transitive closure brief](WORLD_CLOUD_INTEGRATION.md)
+for this finite integration and its proof boundaries.
+
+Prepare/arm/promote jobs alone have contents write. The deployment job alone has
+Pages and OIDC write; it has contents read. Prepare/promote have Pages read for
+status and Actions read for the exact completed-attempt recovery witness. Artifact retention is1day and the runner is public standard Ubuntu. No
+OIDC or Git token enters stdout, command arguments, Git URLs or a persisted file.
+The Git authentication header exists only in the worker environment. HTTP
+credentials enter a bounded worker through stdin; errors never echo its stderr
+or remote response body. HTTP uses one attempt, no proxy/redirect/compression,
+10second socket and a killable20second total deadline. Non-success error
+bodies are closed unread; a standard oversized Pages404 HTML body can establish
+only the status, never an accepted feed. Successful feed bodies still have the
+strict8192byte bound and exact declared-length check. Polling is bounded to
+60attempts at5seconds for deployment,6for recovery/cancellation. Job timeouts
+add an outer bound; uncertain async activity is still retained after cancellation.
+
+## Durable async intent and recovery
+
+The publisher's ledger, schedule, quotas, active/pending snapshots and their raw
+files remain unchanged. `cloud.json` is an auxiliary object in the same linear
+feed-state tree. A journal write uses the same actual Git ref CAS and preserves
+all ledger fields. Ordinary publisher commits preserve the journal. The intent
+binds the exact candidate state/generation/artifact digest, current source/ref,
+repository, workflow run/attempt and uploaded artifact ID before any Pages POST.
+
+`pages_build_version` is the unique state commit immediately before intent. A
+later retry uses another unique commit but the same saved pending bytes. The
+official default deploy-pages action takes this version from `GITHUB_SHA`, which
+recurring source-unchanged runs reuse. This adapter performs the documented REST
+POST directly, with the persisted discriminator, and never fabricates If-Match,
+server idempotency or conditional Pages writes. The reviewed official sources are
+[Pages REST](https://docs.github.com/en/rest/pages/pages),
+[workflow concurrency](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency),
+[pinned deploy client](https://github.com/actions/deploy-pages/blob/d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e/src/internal/api-client.js),
+[pinned deploy context](https://github.com/actions/deploy-pages/blob/d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e/src/internal/context.js) and
+[pinned artifact action](https://github.com/actions/upload-pages-artifact/blob/7b1f4a764d45c48632c6b24a0339c27f5614fb0b/action.yml).
+The service's acceptance of this version and status/cancel lookup by it must be
+observed remotely before claiming operational qualification.
+
+The deploy step executes once for the exact armed run/attempt, without HTTP
+retries. A re-run has another attempt identity and cannot POST an older armed
+intent. Only a trusted single serialized workflow invokes this permission; this
+is not a distributed server-side conditional-write primitive. A crash after
+arming but before POST is ambiguous until reconciled. A404, unknown status,
+deployment_lost, failed status call, missing receipt or cancel response alone
+cannot authorize another attempt/generation. Recovery retains the intent, quotas,
+candidate and active bytes and stops. It must establish final status for the exact
+unique version. A cancel endpoint requests cancellation; a subsequent terminal
+status is still required. When Pages returns404, recovery may instead authenticate the exact saved
+repository/source/workflow/run/attempt through the Actions API. Only a completed
+attempt and its unique completed deploy job with an explicitly skipped whole job
+or the explicitly skipped POST step establish `not_started`. Missing, truncated,
+wrong-identity, still-running or merely cancelled records do not. A new unique
+attempt then reuses the exact same pending bytes, quota and source age. Historical
+record expiry or an uncertain started step still needs actual service
+reconciliation; no operator-supplied `--live` or feed-state reset is accepted.
+The service records and this inference require authentic remote fault
+qualification before operational acceptance.
+
+After terminal success/failure/cancellation, HTTPS must identify exact durable
+active or pending feed bytes. The adapter reads every immutable file in the
+expected closure, with exact byte limits and content equality, and re-reads the
+mutable feed at the end. A mixed, truncated, missing or corrupt file stops
+promotion. Closure selection uses that same observed feed, so a CDN root switch
+cannot select a smaller closure from a preliminary read. Status success alone
+never promotes. Failed terminal attempts retain
+the same pending generation and may arm a new unique attempt; no provider poll
+or rebuild is needed. Code adoption keeps the original source revision, raw bytes,
+generation and source-validation times. Unsupported legacy wire stops safely;
+storage schema1 remains readable and its original artifacts are not rebuilt.
+
+## Complete delivery and bounded retention
+
+The artifact consists of current candidate files plus the currently active
+snapshot's immutable data dependencies. It never recursively unions the prior
+uploaded artifact. Generations A→B→C retain B's dependencies alongside C and drop
+A when no served/protected root needs them. Shared content-addressed bytes merge
+once. The exact uploaded closure is saved in the journal as authenticated Git
+snapshot/file origins, byte lengths and hashes, allowing reconstruction after
+workspace and Actions artifacts expire, including after promotion. Combined
+delivery is at most1MiB and256files. The current wire's feed stays at most8192
+decoded UTF8bytes; no truncation or field omission is allowed to meet the budget.
+
+The closure validator currently handles the actual data-only feed/catalog schema.
+It rejects undeclared/mismatched/missing files and unsupported visual schemas.
+Connecting graphics requires an explicit reference traversal/validation extension,
+without changing this exact-readback protocol. This is not the planned complete
+graphics artifact or the current/previous **wire major**90day announced transition.
+Those release mechanics remain required; no policy retaining every daily catalog
+for90days was invented as a substitute.
+
+## Configuration and qualification
+
+Use a separate fork for each family’s publisher and feed-state authority. Enable Pages with workflow
+build type and the github-pages environment, then use a trusted manual dispatch
+with bootstrap=true only for the first empty site. Existing/missing/partial
+authority is never silently bootstrapped. Set repository variable
+SPACEFOX_PAGES_URL for another HTTPS base; otherwise the owner/repository Pages
+URL is used. No signing key or provider secret belongs in these jobs.
+
+Local tests use actual bare Git, actual loopback HTTP, local async/status/cancel
+faults, literal independent files/counts and a sparse clean copied CLI. They
+substitute GitHub/LL2 and artifact upload. They cannot establish GitHub token/OIDC
+permissions, real Pages async behavior, live provider truth or watch transfer.
+An authorized deployment must observe authentic Actions,
+first/second updates, exact recovery and readback before closing that boundary.
+
+The per-family setup guide is [AGENT_SETUP.md](AGENT_SETUP.md). The planned
+watch setting is a base URL such as `https://jekamas.github.io/SpaceFox`; the
+feed endpoint is that base plus `/feed.json`. No live endpoint is asserted here.

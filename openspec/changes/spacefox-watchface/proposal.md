@@ -84,12 +84,10 @@ Ariane 64 plus a generic fallback. The required production catalog is global;
 all known current configurations require specific or explicitly reviewed shared
 visuals before full artwork acceptance. Launch Library 2 API 2.3.0 is the checked
 provider baseline, supplemented from official sources; its coverage and rate limits must be
-preserved in product claims. The current increment updates the specification and
-agent instructions only. Enabling scheduled workflows/Pages, paid hosting, SDK
-installation and native implementation are separate implementation work. The
+preserved in product claims. The publisher, workflow source, catalog export and off-watch geography now have
+local qualification. Enabling scheduled workflows/Pages, SDK installation,
+native acceptance and Store release remain separate authorized work. The
 MIT source/specification remains published in the existing GitHub repository.
 The final source-based review is in `evidence/final-review/`; intended-user
 routine platform review and native/device/Store evidence remain explicit release work.
-The adult owner publishes from their own Garmin account. The owner has confirmed
-both relevant age conditions for this instance; no age clarification remains open.
-Exact private ages are not retained. The reusable audience-review contract remains.
+Publisher and audience platform requirements remain explicit release-review work.

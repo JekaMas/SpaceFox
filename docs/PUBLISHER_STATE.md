@@ -13,10 +13,16 @@ bootstrap because the anchor survives. Restoring authority is an operator Git
 recovery action; CDN, cache and expired artifact downloads cannot recreate it.
 Protect both refs against deletion/force updates in the eventual remote setup.
 
-Each state commit has exactly one parent and a complete `ledger.json`. Schema1
-stores the instance/code identity, refresh policy, accepted normalized schedule,
-active/pending snapshots, monotonic generation, poll/event UTC, backoff and request
-reservations. Identity kinds/namespaces, explicit nulls, UTC precision, per-record
+Each non-root state commit has exactly one parent and a complete `ledger.json`.
+Schema2 stores instance/code identity, refresh policy, content-addressed accepted/
+active/pending schedule references, monotonic generation, poll/event UTC, backoff
+and request reservations. Exact normalized documents live in `schedules/SHA256.json`;
+equal snapshots share bytes, and current unreferenced schedule objects are removed
+from the tree while history remains. Referenced objects are checked against exact
+bytes/digest and bounded to1MiBbefore parse, with≤128entries and each record still
+fitting its64KiBretirement archive. Schema1 embedded schedules remain readable;
+the next CAS migrates one way to schema2 without rebuilding old snapshot documents
+through domain defaults. Old pending metadata hashes and actual bytes remain exact. Identity kinds/namespaces, explicit nulls, UTC precision, per-record
 validation and stale/reschedule latches survive parsing/reopen. Unknown fields,
 duplicate JSON keys, nonfinite/malformed values, unsupported versions, regressing
 validation/generations/times and invalid artifact digests fail closed. The ledger
@@ -95,7 +101,8 @@ complete feed/catalog/90day-compatible asset reference closure. The real artifac
 assembler remains required, including the unchanged-image omission scenario.
 
 Current ledger size and history growth are separate. `GitState.measure()` reports
-ledger bytes, reachable commit/object counts and summed uncompressed reachable Git
+ledger bytes, separate current schedule object counts/bytes and terminal archive
+counts/bytes, reachable commit/object counts and summed uncompressed reachable Git
 object sizes. That last measurement is not filesystem/pack size. Git history is
 not bounded by the64KiB ledger; no automatic force-pruning is performed. The local
 growth test runs11 publication generations and reports the actual25checkpoint
@@ -114,3 +121,13 @@ schedule-document shape (a literal example is
 `prepare --directory` persists bounded actual files; `export-pending --directory`
 requires a new directory and restores the saved bytes. No command is a successful
 placeholder for `tools/update_feed.py`, provider fetch or deployment.
+
+## Provider integration extension
+
+The actual tools/update_feed.py path now binds its clean executing checkout,
+reserves each HTTP request, previews archive-aware state before byte admission,
+accepts source and persists/exports the real bounded data-only pending artifact.
+GitState retains per-ID terminal archives outside the current ledger and reports
+their separate growth. The current ledger128entry/64KiBbound remains strict;
+unresolved omissions are not evicted. See PROVIDER_PIPELINE.md. Authenticating
+Actions/Pages, full current/retained graphics and native delivery remain open.
