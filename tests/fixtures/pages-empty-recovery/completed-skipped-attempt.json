@@ -1,0 +1,128 @@
+{
+  "run": {
+    "id": 43177353154,
+    "run_attempt": 1,
+    "head_sha": "daa91e10ab4c68fad53bfe560025df0356ab5ea5",
+    "head_branch": "main",
+    "status": "completed",
+    "conclusion": "failure",
+    "event": "workflow_dispatch",
+    "path": ".github/workflows/update-feed.yml",
+    "repository": {
+      "full_name": "JekaMas/SpaceFox"
+    }
+  },
+  "jobs": {
+    "total_count": 4,
+    "jobs": [
+      {
+        "id": 131044729451,
+        "run_id": 43177353154,
+        "head_sha": "daa91e10ab4c68fad53bfe560025df0356ab5ea5",
+        "name": "prepare",
+        "status": "completed",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Materialize exact reviewed runtime and catalog closure",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Recover first, then check source cadence and prepare exact candidate",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 131045713236,
+        "run_id": 43177353154,
+        "head_sha": "daa91e10ab4c68fad53bfe560025df0356ab5ea5",
+        "name": "arm",
+        "status": "completed",
+        "conclusion": "failure",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check out runtime seed for exact saved-state validation",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Persist unique candidate/source/run/artifact deployment intent",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Qualify recovery after intent before Pages POST",
+            "status": "completed",
+            "conclusion": "failure"
+          },
+          {
+            "name": "Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "id": 131045831105,
+        "run_id": 43177353154,
+        "head_sha": "daa91e10ab4c68fad53bfe560025df0356ab5ea5",
+        "name": "deploy",
+        "status": "completed",
+        "conclusion": "skipped",
+        "steps": []
+      },
+      {
+        "id": 131045831610,
+        "run_id": 43177353154,
+        "head_sha": "daa91e10ab4c68fad53bfe560025df0356ab5ea5",
+        "name": "promote",
+        "status": "completed",
+        "conclusion": "skipped",
+        "steps": []
+      }
+    ]
+  }
+}

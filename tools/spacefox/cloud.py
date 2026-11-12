@@ -34,6 +34,10 @@ class DeploymentNotFound(CloudError):
     """Missing Pages status is uncertain without a separate trusted witness."""
 
 
+class DeploymentStatusEmpty(CloudError):
+    """Every bounded Pages poll was empty; a separate trusted witness is needed."""
+
+
 def endpoint(url, *, local_http=False, base=False):
     p = urlsplit(url)
     if (p.username is not None or p.password is not None or p.fragment
@@ -145,12 +149,22 @@ class Pages:
     def wait(self, version, *, polls=6, delay=5):
         if type(polls) is not int or not 1 <= polls <= 60 or not 0 <= delay <= 10:
             raise CloudError('bounded deployment polling required')
+        empty_only = True
         for n in range(polls):
-            status = self.status(version)
+            try:
+                status = self.status(version)
+            except DeploymentNotFound as error:
+                if not empty_only:
+                    raise CloudError('Pages status disappeared after a nonempty observation') from error
+                raise
             if status in FINAL:
                 return status
+            if status:
+                empty_only = False
             if n + 1 < polls:
                 time.sleep(delay)
+        if empty_only:
+            raise DeploymentStatusEmpty('Pages status empty throughout bounded polling; intent retained')
         raise CloudError('deployment finality unknown after bounded polling')
 
     def create(self, intent, id_token):
@@ -409,7 +423,7 @@ def recover(pub, site, pages):
     if value is not None and value['status'] == 'armed':
         try:
             status = pages.wait(value['intent']['buildVersion'])
-        except DeploymentNotFound:
+        except (DeploymentNotFound, DeploymentStatusEmpty):
             if not pages.never_started(value['intent']):
                 raise
             status = 'not_started'

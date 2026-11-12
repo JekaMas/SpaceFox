@@ -105,7 +105,9 @@ deployment_lost, failed status call, missing receipt or cancel response alone
 cannot authorize another attempt/generation. Recovery retains the intent, quotas,
 candidate and active bytes and stops. It must establish final status for the exact
 unique version. A cancel endpoint requests cancellation; a subsequent terminal
-status is still required. When Pages returns404, recovery may instead authenticate the exact saved
+status is still required. When Pages returns404, or every response in the bounded
+recovery poll window is HTTP200 with a literal empty status string, recovery may
+instead authenticate the exact saved
 repository/source/workflow/run/attempt through the Actions API. Only a completed
 attempt and its unique completed deploy job with an explicitly skipped whole job
 or the explicitly skipped POST step establish `not_started`. Missing, truncated,
@@ -113,8 +115,12 @@ wrong-identity, still-running or merely cancelled records do not. A new unique
 attempt then reuses the exact same pending bytes, quota and source age. Historical
 record expiry or an uncertain started step still needs actual service
 reconciliation; no operator-supplied `--live` or feed-state reset is accepted.
-The service records and this inference require authentic remote fault
-qualification before operational acceptance.
+An empty response alone never proves no deployment. Any nonempty status observed
+in that polling window disables the empty-only fallback, including when a later
+response becomes empty or404. Malformed responses and HTTP/transport errors stop
+without consulting Actions. Terminal status remains sufficient without Actions
+access, using the same polling bounds and delays. The service records and this
+inference require authentic remote fault qualification before operational acceptance.
 
 After terminal success/failure/cancellation, HTTPS must identify exact durable
 active or pending feed bytes. The adapter reads every immutable file in the
@@ -187,7 +193,8 @@ is skipped; the saved intent remains armed. This input is guarded by the manual
 normal path. It neither forces provider polling nor changes source ages or quota.
 
 After that old run is completed, a fresh ordinary dispatch with the inputfalse
-uses the existing recovery guard. A Pages404 is uncertain until exact old
+uses the existing recovery guard. A Pages404 or bounded all-empty status window
+is uncertain until exact old
 repository/source/run/attempt records prove the deploy job was skipped with no
 steps (or its named POST step explicitly skipped). Unknown, still-running,
 wrong-attempt or started POST records continue to refuse. Root owns the authentic

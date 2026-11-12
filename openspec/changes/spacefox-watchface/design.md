@@ -792,3 +792,20 @@ Cloud admission additionally supplies the authenticated origin ledger instance t
 snapshot admission. Current/prior traversal and historical unmarked v1/dual
 snapshots obey the same namespace binding as public write and normal reopen;
 raw authentication alone cannot waive a divergent feed instance.
+
+## Empty-status Pages recovery boundary
+
+An authenticated recovery lookup can return HTTP200 with `{"status":""}` for a
+saved build version whose completed exact old workflow attempt skipped deployment.
+The status alone is uncertain. Preserve the original six recovery polls and five
+second delays; classify a window as empty-only only if every parsed status was the
+empty string. A dedicated CloudError subtype lets recovery consult the unchanged
+Pages.never_started predicate after that window, just as for404. A nonempty status
+at any point, even followed by empty/404, prevents this inference. Malformed or
+failed calls remain strict. Normal progress/terminal polling never prechecks Actions.
+
+Only the exact repository/source/workflow/run/attempt completed skipped-deploy
+witness permits `not_started`. This changes the journal alone; pending files,
+active files, source epochs, reservations and quota remain exact. The old intent
+is never POSTed; a later new run needs a new state/build-version intent. A terminal
+Pages response still precedes exact complete HTTP admission and promotion.
