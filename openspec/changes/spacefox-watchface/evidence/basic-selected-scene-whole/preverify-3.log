@@ -1,0 +1,109 @@
+test_composition_negative (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_composition_negative) ... FAIL
+test_composition_positive (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_composition_positive) ... FAIL
+test_header_negative (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_header_negative) ... ok
+test_header_positive (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_header_positive) ... ok
+test_long_negative (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_long_negative) ... ok
+test_long_positive (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_long_positive) ... ok
+test_marker_negative (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_marker_negative) ... ok
+test_marker_positive (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_marker_positive) ... FAIL
+test_missing_point_negative (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_missing_point_negative) ... ok
+test_missing_point_positive (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_missing_point_positive) ... ok
+test_models_negative (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_models_negative) ... ok
+test_models_positive (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_models_positive) ... ok
+test_normal_negative (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_normal_negative) ... ok
+test_normal_positive (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_normal_positive) ... ok
+test_point_negative (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_point_negative) ... ok
+test_point_positive (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_point_positive) ... ok
+test_public_negative (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_public_negative) ... FAIL
+test_public_positive (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_public_positive) ... FAIL
+test_status_negative (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_status_negative) ... ok
+test_status_positive (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_status_positive) ... ok
+test_unknown_negative (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_unknown_negative) ... ok
+test_unknown_positive (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_unknown_positive) ... ok
+test_worldwide_negative (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_worldwide_negative) ... ERROR
+test_worldwide_positive (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_worldwide_positive) ... ok
+
+======================================================================
+ERROR: test_worldwide_negative (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_worldwide_negative)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-selected-scene-whole/tests/test_basic_selected_scene.py", line 145, in test_worldwide_negative
+    files={};ref=build_map(ROOT,c,'ll2:site:29',files);m=json.loads(files[ref['path']]);self.assertEqual(m['position']['longitude'],'-80.58313644')
+                 ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-selected-scene-whole/tools/spacefox/bridge_map.py", line 113, in build_map
+    view=build_view(root,catalog,site_id,source_pin=source['index']['regional'],profile='accepted04-full')
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-selected-scene-whole/tools/spacefox/geographic_context.py", line 274, in build_view
+    validate_catalog(catalog)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-selected-scene-whole/tools/spacefox/catalog.py", line 639, in validate_catalog
+    _require('position' in row and _same_position(row['position'], _position(row['facts'])), 'source position mismatch')
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-selected-scene-whole/tools/spacefox/catalog.py", line 141, in _require
+    raise CatalogError(message)
+tools.spacefox.catalog.CatalogError: source position mismatch
+
+======================================================================
+FAIL: test_composition_negative (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_composition_negative)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-selected-scene-whole/tests/test_basic_selected_scene.py", line 162, in test_composition_negative
+    self.observed('selectedIdentityNegative');self.public_binding()
+                                              ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-selected-scene-whole/tests/test_basic_selected_scene.py", line 149, in public_binding
+    self.assertIsNotNone(self.bind)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_composition_positive (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_composition_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-selected-scene-whole/tests/test_basic_selected_scene.py", line 159, in test_composition_positive
+    self.observed('selectedCompositionPositive');self.public_binding();self.bounded('current')
+                                                 ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-selected-scene-whole/tests/test_basic_selected_scene.py", line 149, in public_binding
+    self.assertIsNotNone(self.bind)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_marker_positive (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_marker_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-selected-scene-whole/tests/test_basic_selected_scene.py", line 175, in test_marker_positive
+    self.public_binding();w,h,data=png_pixels((UNIT/'public/current-vulcan.png').read_bytes());marker(self,data,w,(335,165))
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-selected-scene-whole/tests/test_basic_selected_scene.py", line 149, in public_binding
+    self.assertIsNotNone(self.bind)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_public_negative (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_public_negative)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-selected-scene-whole/tests/test_basic_selected_scene.py", line 185, in test_public_negative
+    self.public_binding();log=(UNIT/'public/reopen/reopen.log').read_text();self.assertIn('callbacks=0',log);self.assertIn('phase=raster-activation count=0',log)
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-selected-scene-whole/tests/test_basic_selected_scene.py", line 149, in public_binding
+    self.assertIsNotNone(self.bind)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_public_positive (tests.test_basic_selected_scene.BasicSelectedSceneTest.test_public_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-selected-scene-whole/tests/test_basic_selected_scene.py", line 183, in test_public_positive
+    def test_public_positive(self):self.public_binding();self.assertIn('callbacks=2',(UNIT/'public/network/public-background.log').read_text())
+                                   ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-selected-scene-whole/tests/test_basic_selected_scene.py", line 149, in public_binding
+    self.assertIsNotNone(self.bind)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+----------------------------------------------------------------------
+Ran 24 tests in 19.616s
+
+FAILED (failures=5, errors=1)
+Actual retained native table: 11/11; raw launcher 1

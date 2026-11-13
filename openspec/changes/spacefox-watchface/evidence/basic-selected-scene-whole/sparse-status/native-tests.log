@@ -1,0 +1,15 @@
+------------------------------------------------------------------------------
+Executing test sparseStatusAllCombinations...
+DEBUG (17:25): SPARSE_STATUS rescheduled=0 stale=0 timeColor=7829367 countColor=5606008 dots=0 unknown=--:--:--
+DEBUG (17:25): SPARSE_STATUS rescheduled=0 stale=1 timeColor=7829367 countColor=5606008 dots=17 unknown=--:--:--
+DEBUG (17:25): SPARSE_STATUS rescheduled=1 stale=0 timeColor=7829367 countColor=11040045 dots=0 unknown=--:--:--
+DEBUG (17:25): SPARSE_STATUS rescheduled=1 stale=1 timeColor=7829367 countColor=11040045 dots=17 unknown=--:--:--
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+sparseStatusAllCombinations         PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

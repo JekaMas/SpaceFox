@@ -1,0 +1,18 @@
+setUpClass (tests.test_basic_selected_scene.BasicSelectedSceneTest) ... ERROR
+
+======================================================================
+ERROR: setUpClass (tests.test_basic_selected_scene.BasicSelectedSceneTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-selected-scene-whole/tests/test_basic_selected_scene.py", line 61, in setUpClass
+    cls.receipt=read(output/'scene-observation.json') if retained else native(output)
+                                                                       ~~~~~~^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-selected-scene-whole/tests/test_basic_selected_scene.py", line 41, in native
+    if result.returncode:raise AssertionError('native compile failed: '+str(output/'compile.log'))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: native compile failed: /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-selected-scene-whole/openspec/changes/spacefox-watchface/evidence/basic-selected-scene-whole/native/compile.log
+
+----------------------------------------------------------------------
+Ran 0 tests in 5.638s
+
+FAILED (errors=1)

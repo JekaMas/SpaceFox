@@ -18,7 +18,11 @@ fields WF01.P1/WF03.P1 subsequently passed10/10cases through one command in an
 independent verification. Reschedule LS10.P1 passed4/4cases through one command;
 local signed packaging RL02.P2 passed11/11cases through two commands and an
 independent check of both actual PRG/IQ signatures and all327source inputs.
-Seven whole software properties are closed; physical task5.1 remains open. Actual FR165 SDK
+Header, model visual, map/point, composition and compact statuses subsequently
+passed24/24cases through one whole command after an independent targeted sparse
+status repair. **Twelve whole software properties and tasks5.2/5.4 are closed.**
+The native task list is13closed/18open;148properties retain136unreconciled closures.
+Physical task5.1 remains open. Actual FR165 SDK
 observations cover five languages, the captured1,822-launch/413-composition corpus,
 menu glyphs, normal settings activation, numeric clock and fixed scene. Read the
 [exact report](openspec/changes/spacefox-watchface/evidence/basic-main-review/FINAL.md)
@@ -39,10 +43,11 @@ local seconds arithmetic without improving source accuracy. Unknown time is
 The current map-only writer uses fresh `feed-state-map-v3` and
 `spacefox-state-bootstrap-map-v3` authority refs. The prior public writer is
 quiesced; a clean map-only bootstrap passed allfive jobs, followed by actual
-HTTPS readback of all96files/616444bytes. The live feed is2,718bytes, generation1.
-A subsequent metadata HTTP timeout remains recorded; the next timed run passed
-with no new source/metadata request. Those runs do not yet prove a later due
-source update or successful metadata refetch. No legacy payload migration or
+HTTPS readback of all96files/616444bytes. The initial feed was2,718bytes/generation1. A subsequent natural due run
+43433017023 passed allfive jobs and served generation2, advancing source validation
+from12:13to13:25UTC on2026-11-13, with unchanged map/asset pins. Earlier metadata
+HTTP failure remains recorded; later metadata made4requests but its global refresh
+is still partial. Native G1-to-G2 revalidation and physical delivery stay separate. No legacy payload migration or
 reader is supported.
 
 [Owner/fork guide](docs/AGENT_SETUP.md) · [Cloud delivery](docs/CLOUD_DELIVERY.md) ·

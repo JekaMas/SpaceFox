@@ -1,0 +1,15 @@
+{
+  "status": "exact-except-authorized-retired-diagnostic",
+  "candidateSourceRevision": "c7ad2c4113de272cd9677842d78047e7e6ffe77b",
+  "candidateReceiptPath": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/candidate-release.json",
+  "candidateReceiptSha256": "f38a42325101fd870ed9ae8470267827380eb7453df16b4261d3178f71ddb2f5",
+  "inputs": 327,
+  "mismatches": [
+    "tools/native_https_observation.py"
+  ],
+  "boundary": "All326remaining candidate inputs are exact. The only source-inventory delta is authorized deletion of unused obsolete diagnostic native_https_observation.py; the original signed candidate remains valid for its original327-input source. Native owners/resources/package bytes unchanged. No rebuild/key/sign/deploy.",
+  "matchingInputs": 326,
+  "retiredInputs": [
+    "tools/native_https_observation.py"
+  ]
+}

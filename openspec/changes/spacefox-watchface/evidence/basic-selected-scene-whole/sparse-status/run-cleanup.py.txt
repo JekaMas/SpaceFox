@@ -1,0 +1,11 @@
+from pathlib import Path
+import json,shutil,subprocess
+from tools.build_watchface import ROOT,NS,discover,run,digest
+p=Path('/Users/jekamas/.codex/tmp/spacefox-selected-scene-builds-20261113/sparse-peer-1');q=p/'cleanup';q.mkdir(exist_ok=True)
+s=ROOT/'openspec/changes/spacefox-watchface/evidence/basic-selected-scene-whole/native-cleanup'; shutil.copytree(s/'probe-resources',q/'probe-resources',dirs_exist_ok=True)
+probe=(s/'Probe.mc').read_text().replace('22c2a88419d847ec9a03862e540cc2c8','b96cd0458c3f42e0aeea52f415de3fd3');(q/'Probe.mc').write_text(probe)
+manifest=(s/'manifest.xml').read_text().replace('22c2a88419d847ec9a03862e540cc2c8','b96cd0458c3f42e0aeea52f415de3fd3');(q/'manifest.xml').write_text(manifest)
+(q/'monkey.jungle').write_text(f'project.manifest = {q}/manifest.xml\nbase.sourcePath = {ROOT}/watchface/source;{q}\nbase.resourcePath = {ROOT}/watchface/resources;{q}/probe-resources\nbase.lang.rus = {ROOT}/watchface/resources-rus\n')
+c=discover(ROOT); prg=q/'cleanup.prg';cmd=[str(c['java']),'-Dfile.encoding=UTF-8','-jar',str(c['compiler']),'-f',str(q/'monkey.jungle'),'-d','fr165','-o',str(prg),'-y',str(c['key']),*c['lock']['compiler_options']];r=run(cmd,q);(q/'compile.log').write_text(r.stdout);(q/'build.json').write_text(json.dumps({'command':cmd,'exitCode':r.returncode,'packageSha256':digest(prg) if prg.exists() else None},indent=2));
+if r.returncode: raise SystemExit('compile failed')
+cmd=[str(c['java']),'-Dfile.encoding=UTF-8','-classpath',str(c['compiler']),'com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux','-f',str(prg),'-d','fr165','-s',str(c['sdk']/'bin/shell')];(q/'command.json').write_text(json.dumps(cmd,indent=2)); f=(q/'cleanup.log').open('w');proc=subprocess.Popen(cmd,stdout=f,stderr=subprocess.STDOUT);print('PID',proc.pid,flush=True);rc=proc.wait(timeout=120);f.close();(q/'execution.json').write_text(json.dumps({'command':cmd,'exitCode':rc},indent=2));print('EXIT',rc,flush=True)

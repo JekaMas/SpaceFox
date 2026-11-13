@@ -1,0 +1,11 @@
+from pathlib import Path
+import json,uuid,os
+from tools.build_watchface import ROOT, NS, digest, discover, validate_manifest,run
+from tools.run_native_tests import observe_program,parse_output
+p=Path('/Users/jekamas/.codex/tmp/spacefox-selected-scene-builds-20261113/sparse-peer-1');p.mkdir(parents=True,exist_ok=True)
+c=discover(ROOT); tree=validate_manifest(ROOT,c['lock']); identity=uuid.uuid4().hex;tree.find('iq:application',NS).set('id',identity);tree.write(p/'manifest.xml')
+(p/'monkey.jungle').write_text(f'project.manifest = {p}/manifest.xml\nbase.sourcePath = {ROOT}/watchface/source;{ROOT}/tests/fixtures/basic_sparse_status\nbase.resourcePath = {ROOT}/watchface/resources\n')
+package=p/'sparse.prg'; cmd=[str(c['java']),'-Dfile.encoding=UTF-8','-jar',str(c['compiler']),'-f',str(p/'monkey.jungle'),'-d','fr165','-o',str(package),'-y',str(c['key']),*c['lock']['compiler_options'],'--unit-test'];res=run(cmd,p);(p/'compile.log').write_text(res.stdout)
+b={'exit_code':res.returncode,'command':cmd,'application_uuid':identity,'source_sha256':{str(f.relative_to(ROOT)):digest(f) for d in ['watchface/source','watchface/resources','tests/fixtures/basic_sparse_status'] for f in (ROOT/d).rglob('*') if f.is_file()},'compiler_sha256':digest(c['compiler']),'profile_sha256':digest(c['profile']),'package_sha256':digest(package) if package.exists() else None};(p/'build.json').write_text(json.dumps(b,indent=2)+'\n')
+if res.returncode: print('COMPILE FAILED',p);raise SystemExit(1)
+a=observe_program(str(package),p,c);parsed=parse_output(a['raw'],a['raw_exit_code'],('sparseStatusAllCombinations',));receipt={**parsed,'build':b,'command':a['command']};(p/'scene-observation.json').write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps({'path':str(p),'uuid':identity,'status':parsed['status'],'raw_exit':a['raw_exit_code']}))

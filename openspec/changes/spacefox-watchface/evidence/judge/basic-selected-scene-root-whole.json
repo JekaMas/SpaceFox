@@ -1,0 +1,51 @@
+{
+  "status": "accepted-and-closed",
+  "sourceCommit": "3785e3db1310b59c56b28629600d803a98e9c463",
+  "closedProperties": [
+    "WF02.P1",
+    "WF04.P1",
+    "WF05.P1",
+    "WF06.P1",
+    "WF07.P1"
+  ],
+  "closedTasks": [
+    "5.2"
+  ],
+  "actualVerifier": {
+    "status": "passed",
+    "cases": 24,
+    "commands": 1,
+    "manifestSha256": "7eabefd5e82977b0a3a1e07a4aca838cc37ea3a9fab46a5595481e6080c362f8",
+    "path": "evidence/basic-selected-scene-whole/independent-sparse-final.json"
+  },
+  "rootRequestedRepair": "Source-string checks for inherited sparse status replaced with one targeted actual native SDK test of all four combinations. Same peer fixed and closed; no third reviewer.",
+  "nativeEvidence": {
+    "existingTests": 11,
+    "targetedSparseTests": 1,
+    "rawLauncherExit": 1,
+    "normalApplicationAndCleanupLaunchers": 0,
+    "sourceUnchanged": true
+  },
+  "priorSevenDefinitionsAndCasesUnchanged": true,
+  "retiredAliasesNotPasses": [
+    "WF02.P2",
+    "WF04.P2",
+    "WF05.P2",
+    "WF06.P2",
+    "WF07.P2",
+    "WF05.P3"
+  ],
+  "currentCounts": {
+    "tasks": 31,
+    "tasks_closed": 13,
+    "requirements": 56,
+    "properties": 148,
+    "cases": 691,
+    "commands": 70,
+    "case_states": {
+      "planned": 515,
+      "implemented": 176
+    }
+  },
+  "scope": "Actual SDK software scene/public cache/point/status; no physical display/AODpower/globalartwork/phone/Store acceptance. Original signed candidate has326/327old inputs in new tree; retired unused diagnostic is explicit delta."
+}

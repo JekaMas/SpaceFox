@@ -135,17 +135,11 @@
       "VC20.P4",
       "WF01.P1",
       "WF02.P1",
-      "WF02.P2",
       "WF03.P1",
       "WF04.P1",
-      "WF04.P2",
       "WF05.P1",
-      "WF05.P2",
-      "WF05.P3",
       "WF06.P1",
-      "WF06.P2",
       "WF07.P1",
-      "WF07.P2",
       "WF08.P1",
       "WF08.P2",
       "WF09.P1",
@@ -167,6 +161,34 @@
       "node::scheduled boundary, failures, concurrency and secret safety",
       "unittest::tests.test_basic_menu_evidence.BasicMenuEvidenceTest.test_actual_menu_missing_glyph_or_changed_label_refuses",
       "unittest::tests.test_basic_menu_evidence.BasicMenuEvidenceTest.test_actual_primary_menu_font_binding",
+      "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_different_launch_negative",
+      "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_known_new_time_positive",
+      "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_unchanged_refresh_negative",
+      "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_withdrawn_time_positive",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_composition_negative",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_composition_positive",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_header_negative",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_header_positive",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_long_negative",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_long_positive",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_marker_negative",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_marker_positive",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_missing_point_negative",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_missing_point_positive",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_models_negative",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_models_positive",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_normal_negative",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_normal_positive",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_point_negative",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_point_positive",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_public_negative",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_public_positive",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_status_negative",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_status_positive",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_unknown_negative",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_unknown_positive",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_worldwide_negative",
+      "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_worldwide_positive",
       "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_battery_negative",
       "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_battery_positive",
       "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_fields_negative",
@@ -340,10 +362,6 @@
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s13_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls09_p2_s01_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls09_p2_s02_negative_current",
-      "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_unchanged_refresh_negative",
-      "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_known_new_time_positive",
-      "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_different_launch_negative",
-      "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_withdrawn_time_positive",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s04_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s04_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p2_s01_negative_current",
@@ -588,18 +606,6 @@
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p4_c03_negative",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p4_c05_negative",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p4_c06_negative",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf02_p2_s01_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf02_p2_s01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf04_p2_s01_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf04_p2_s01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf05_p2_s01_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf05_p2_s01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf06_p2_s01_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf06_p2_s01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf07_p1_motionwhole_negative",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf07_p1_motionwhole_positive",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf07_p2_s01_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf07_p2_s01_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf08_p2_s01_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf08_p2_s01_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf09_p2_s01_negative_current",
@@ -724,16 +730,10 @@
       "unittest::tests.test_native_feed_budget.NativeFeedBudgetTest.test_ls06_p2_s02_positive",
       "unittest::tests.test_native_finite_evidence.NativeFiniteEvidenceTest.test_actual_finite_primary_software_receipt_admits_without_human_flags",
       "unittest::tests.test_native_finite_evidence.NativeFiniteEvidenceTest.test_rehashed_native_log_probe_sdk_and_corpus_corruptions_refuse",
-      "unittest::tests.test_native_geography.NativeGeographyTest.test_coordinates_unavailable_negative",
-      "unittest::tests.test_native_geography.NativeGeographyTest.test_coordinates_unavailable_positive",
       "unittest::tests.test_native_geography.NativeGeographyTest.test_moving_or_unavailable_departure_point_negative",
       "unittest::tests.test_native_geography.NativeGeographyTest.test_moving_or_unavailable_departure_point_positive",
-      "unittest::tests.test_native_geography.NativeGeographyTest.test_site_or_coordinates_change_negative",
-      "unittest::tests.test_native_geography.NativeGeographyTest.test_site_or_coordinates_change_positive",
       "unittest::tests.test_native_geography.NativeGeographyTest.test_small_island_or_date_line_site_negative",
       "unittest::tests.test_native_geography.NativeGeographyTest.test_small_island_or_date_line_site_positive",
-      "unittest::tests.test_native_geography.NativeGeographyTest.test_worldwide_catalog_geography_negative",
-      "unittest::tests.test_native_geography.NativeGeographyTest.test_worldwide_catalog_geography_positive",
       "unittest::tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s01_negative",
       "unittest::tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s01_positive",
       "unittest::tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s02_negative",
@@ -748,22 +748,6 @@
       "unittest::tests.test_native_localization.NativeLocalizationResourcesTest.test_all36_and_settings_preserved",
       "unittest::tests.test_native_localization.NativeLocalizationResourcesTest.test_generation_is_complete_and_repeatable",
       "unittest::tests.test_native_localization.NativeLocalizationResourcesTest.test_missing_translation_or_placeholder_rejected",
-      "unittest::tests.test_native_marker_current.NativeMarkerCurrentTest.test_accepted_marker_negative",
-      "unittest::tests.test_native_marker_current.NativeMarkerCurrentTest.test_accepted_marker_positive",
-      "unittest::tests.test_native_render.NativeRenderTest.test_known_rocket_changes_negative",
-      "unittest::tests.test_native_render.NativeRenderTest.test_known_rocket_changes_positive",
-      "unittest::tests.test_native_render.NativeRenderTest.test_long_or_absent_context_negative",
-      "unittest::tests.test_native_render.NativeRenderTest.test_long_or_absent_context_positive",
-      "unittest::tests.test_native_render.NativeRenderTest.test_no_matching_visual_negative",
-      "unittest::tests.test_native_render.NativeRenderTest.test_no_matching_visual_positive",
-      "unittest::tests.test_native_render.NativeRenderTest.test_normal_schedule_negative",
-      "unittest::tests.test_native_render.NativeRenderTest.test_normal_schedule_positive",
-      "unittest::tests.test_native_render.NativeRenderTest.test_open_the_default_face_negative",
-      "unittest::tests.test_native_render.NativeRenderTest.test_open_the_default_face_positive",
-      "unittest::tests.test_native_render.NativeRenderTest.test_reschedule_and_stale_data_coexist_negative",
-      "unittest::tests.test_native_render.NativeRenderTest.test_reschedule_and_stale_data_coexist_positive",
-      "unittest::tests.test_native_render.NativeRenderTest.test_use_the_accepted_header_negative",
-      "unittest::tests.test_native_render.NativeRenderTest.test_use_the_accepted_header_positive",
       "unittest::tests.test_native_storage.NativeStorageTest.test_cache_is_full_during_an_asset_replacement_negative",
       "unittest::tests.test_native_storage.NativeStorageTest.test_cache_is_full_during_an_asset_replacement_positive",
       "unittest::tests.test_native_storage.NativeStorageTest.test_complete_new_version_negative",
@@ -1108,26 +1092,6 @@
         "WF12.P1"
       ],
       "test_ids": [
-        "unittest::tests.test_native_render.NativeRenderTest.test_use_the_accepted_header_positive",
-        "unittest::tests.test_native_render.NativeRenderTest.test_use_the_accepted_header_negative",
-        "unittest::tests.test_native_render.NativeRenderTest.test_long_or_absent_context_positive",
-        "unittest::tests.test_native_render.NativeRenderTest.test_long_or_absent_context_negative",
-        "unittest::tests.test_native_render.NativeRenderTest.test_known_rocket_changes_positive",
-        "unittest::tests.test_native_render.NativeRenderTest.test_known_rocket_changes_negative",
-        "unittest::tests.test_native_render.NativeRenderTest.test_no_matching_visual_positive",
-        "unittest::tests.test_native_render.NativeRenderTest.test_no_matching_visual_negative",
-        "unittest::tests.test_native_geography.NativeGeographyTest.test_site_or_coordinates_change_positive",
-        "unittest::tests.test_native_geography.NativeGeographyTest.test_site_or_coordinates_change_negative",
-        "unittest::tests.test_native_geography.NativeGeographyTest.test_coordinates_unavailable_positive",
-        "unittest::tests.test_native_geography.NativeGeographyTest.test_coordinates_unavailable_negative",
-        "unittest::tests.test_native_geography.NativeGeographyTest.test_worldwide_catalog_geography_positive",
-        "unittest::tests.test_native_geography.NativeGeographyTest.test_worldwide_catalog_geography_negative",
-        "unittest::tests.test_native_render.NativeRenderTest.test_open_the_default_face_positive",
-        "unittest::tests.test_native_render.NativeRenderTest.test_open_the_default_face_negative",
-        "unittest::tests.test_native_render.NativeRenderTest.test_normal_schedule_positive",
-        "unittest::tests.test_native_render.NativeRenderTest.test_normal_schedule_negative",
-        "unittest::tests.test_native_render.NativeRenderTest.test_reschedule_and_stale_data_coexist_positive",
-        "unittest::tests.test_native_render.NativeRenderTest.test_reschedule_and_stale_data_coexist_negative",
         "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_raise_wrist_positive",
         "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_raise_wrist_negative",
         "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_animation_disabled_or_display_sleeps_positive",
@@ -3805,26 +3769,16 @@
       "id": "D-native-scene-r1",
       "question": "Implement accepted04/full native scene, guarded metrics, independent persisted settings, sparse AOD and short active animation with explicit simulator boundaries.",
       "property_ids": [
-        "WF02.P2",
-        "WF04.P2",
-        "WF05.P2",
-        "WF06.P2",
-        "WF07.P2",
+        "WF02.P1",
+        "WF04.P1",
+        "WF05.P1",
+        "WF06.P1",
+        "WF07.P1",
         "WF08.P2",
         "WF09.P2",
         "WF11.P2"
       ],
       "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf02_p2_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf02_p2_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf04_p2_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf04_p2_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf05_p2_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf05_p2_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf06_p2_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf06_p2_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf07_p2_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf07_p2_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf09_p2_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf09_p2_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf11_p2_s01_positive_current",
@@ -3873,12 +3827,9 @@
       "id": "D-native-marker-independent-r1",
       "question": "Reproduce and repair root exact accepted ring24 glyph finding without changing accepted layout or clock arithmetic.",
       "property_ids": [
-        "WF05.P3"
+        "WF05.P1"
       ],
-      "test_ids": [
-        "unittest::tests.test_native_marker_current.NativeMarkerCurrentTest.test_accepted_marker_positive",
-        "unittest::tests.test_native_marker_current.NativeMarkerCurrentTest.test_accepted_marker_negative"
-      ],
+      "test_ids": [],
       "searches": [
         {
           "kind": "exact",
@@ -3955,7 +3906,7 @@
           "kind": "exact",
           "status": "completed",
           "query": "Root supplied exact App/View/Settings/SceneRenderer and SDK source owners; read actual publisher695 feed schema/fixtures and accepted graphics.py canonical/RAW shard validator.",
-          "outcome": "Implemented real service raw-byte/SHA provisional staging, full foreground raw/schema/catalog/ISO/source admission and persistent cache\u2192production scene. Actual OS service/foreground experiments distinguish61,248/126,784-byte contexts from direct unit mode. Immutable695 ESA24/4096-purpose8192 fixtures and explicit signed64/ISO parity limits are retained; no full-wire/full-visual closure.",
+          "outcome": "Implemented real service raw-byte/SHA provisional staging, full foreground raw/schema/catalog/ISO/source admission and persistent cache→production scene. Actual OS service/foreground experiments distinguish61,248/126,784-byte contexts from direct unit mode. Immutable695 ESA24/4096-purpose8192 fixtures and explicit signed64/ISO parity limits are retained; no full-wire/full-visual closure.",
           "results": [
             {
               "path": "watchface/source/SpaceFoxApp.mc",
@@ -4120,7 +4071,7 @@
         {
           "kind": "exact",
           "status": "completed",
-          "query": "Read explicit tasks7.1\u20137.3, release-lifecycle, docs/RELEASE_AND_UPDATES, build_watchface.py/toolchain lock/manifest and installed SDK help/container/profile metadata.",
+          "query": "Read explicit tasks7.1–7.3, release-lifecycle, docs/RELEASE_AND_UPDATES, build_watchface.py/toolchain lock/manifest and installed SDK help/container/profile metadata.",
           "outcome": "Development build always rewrites UUID and has no IQ owner. SDK -e exports native7z manifest/signatures/public key/device PRG. Original SDK verification API can inspect real signatures; minimal key-discovery split preserves dev/test behavior.",
           "results": [
             {
@@ -4171,7 +4122,7 @@
         {
           "kind": "exact",
           "status": "completed",
-          "query": "Read candidate5803638, actual ebc3375 export, RL01\u201308/P1+P2, release.py/ReleaseInspector.java/build_watchface.py, all release tests, public signing policy and pinned SDK/profile inputs.",
+          "query": "Read candidate5803638, actual ebc3375 export, RL01–08/P1+P2, release.py/ReleaseInspector.java/build_watchface.py, all release tests, public signing policy and pinned SDK/profile inputs.",
           "outcome": "Actual SDK/public CLI red: generated Jungle could redirect IQ source outside snapshot while clean Git and both signatures passed. Pin initial generated hashes and recheck generated/snapshot inputs before and after SDK invocations; same CLI exits2 and three directly affected test identities pass. Initial injected-source compile harness annotation error retained.",
           "results": [
             {
@@ -5649,7 +5600,7 @@
         {
           "kind": "exact",
           "status": "completed",
-          "query": "NativeIncoming.clearForRestore \u2192 SpaceFoxView.onUpdate/maintenance and SpaceFoxApp.restoreFeed; real SDK low background callback source and old/current raw observations.",
+          "query": "NativeIncoming.clearForRestore → SpaceFoxView.onUpdate/maintenance and SpaceFoxApp.restoreFeed; real SDK low background callback source and old/current raw observations.",
           "outcome": "Actual pre-fix minute=null and active-sized fixed-position face; shared sparse AOD/current minute guard repairs with current SDK1+retained2unit greens, actual malformed/stale callbacks, fourcaptures and selected current timing.",
           "results": [
             {
@@ -6268,8 +6219,6 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p4_c03_negative",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p4_c05_negative",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p4_c06_negative",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf07_p1_motionwhole_negative",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf07_p1_motionwhole_positive",
         "unittest::tests.test_native_finite_evidence.NativeFiniteEvidenceTest.test_rehashed_native_log_probe_sdk_and_corpus_corruptions_refuse",
         "unittest::tests.test_native_finite_evidence.NativeFiniteEvidenceTest.test_actual_finite_primary_software_receipt_admits_without_human_flags",
         "unittest::tests.test_geographic_context.GeographicContextTest.test_all_required_source_context_and_marker_visibility",
@@ -6285,10 +6234,6 @@
         "unittest::tests.test_native_localization.NativeLocalizationResourcesTest.test_all36_and_settings_preserved",
         "unittest::tests.test_native_localization.NativeLocalizationResourcesTest.test_generation_is_complete_and_repeatable",
         "unittest::tests.test_native_localization.NativeLocalizationResourcesTest.test_missing_translation_or_placeholder_rejected",
-        "unittest::tests.test_native_render.NativeRenderTest.test_long_or_absent_context_negative",
-        "unittest::tests.test_native_render.NativeRenderTest.test_long_or_absent_context_positive",
-        "unittest::tests.test_native_render.NativeRenderTest.test_use_the_accepted_header_negative",
-        "unittest::tests.test_native_render.NativeRenderTest.test_use_the_accepted_header_positive",
         "unittest::tests.test_publisher_content_integration.PublisherContentIntegrationTest.test_changed_current_content_inputs_reject_without_replacement",
         "unittest::tests.test_publisher_content_integration.PublisherContentIntegrationTest.test_new_current_curation_and_svg_materialize_without_seed_edit",
         "unittest::tests.test_remaining_art.RemainingArtTest.test_all_new_geometry_and_exact_selector_positive",
@@ -6354,14 +6299,6 @@
         "LS07.P2"
       ],
       "test_ids": [
-        "unittest::tests.test_native_render.NativeRenderTest.test_use_the_accepted_header_positive",
-        "unittest::tests.test_native_render.NativeRenderTest.test_use_the_accepted_header_negative",
-        "unittest::tests.test_native_render.NativeRenderTest.test_long_or_absent_context_positive",
-        "unittest::tests.test_native_render.NativeRenderTest.test_long_or_absent_context_negative",
-        "unittest::tests.test_native_render.NativeRenderTest.test_known_rocket_changes_positive",
-        "unittest::tests.test_native_render.NativeRenderTest.test_known_rocket_changes_negative",
-        "unittest::tests.test_native_render.NativeRenderTest.test_no_matching_visual_positive",
-        "unittest::tests.test_native_render.NativeRenderTest.test_no_matching_visual_negative",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p3_s30_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s31_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s32_positive_current",
@@ -6419,8 +6356,7 @@
       ],
       "test_ids": [
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc12_p1_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc12_p1_s01_negative_current",
-        "unittest::tests.test_native_render.NativeRenderTest.test_no_matching_visual_positive"
+        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc12_p1_s01_negative_current"
       ],
       "searches": [
         {
@@ -7438,6 +7374,86 @@
       ],
       "disposition": "current_change",
       "rationale": "CLOSED: different independent whole-unit peer executed all 11 property cases in both actual commands on clean 6dc25745, inspected owner and controls, independently verified candidate signatures, hashes, 327 tracked snapshot inputs, manifest and Jungle. Six prior closures retained without rerun. Physical/phone/Store and unrelated graph cases remain open."
+    },
+    {
+      "id": "D-basic-selected-scene-whole-20261113",
+      "question": "Complete coherent BASIC selected scene full software properties and task5.2 on actual current public feed, retaining exact full clauses and source identity/age/fallback.",
+      "property_ids": [
+        "WF02.P1",
+        "WF04.P1",
+        "WF05.P1",
+        "WF06.P1",
+        "WF07.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_header_positive",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_header_negative",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_long_positive",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_long_negative",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_models_positive",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_models_negative",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_unknown_positive",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_unknown_negative",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_point_positive",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_point_negative",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_missing_point_positive",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_missing_point_negative",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_worldwide_positive",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_worldwide_negative",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_composition_positive",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_composition_negative",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_normal_positive",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_normal_negative",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_status_positive",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_status_negative",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_marker_positive",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_marker_negative",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_public_positive",
+        "unittest::tests.test_basic_selected_scene.BasicSelectedSceneTest.test_public_negative"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read exact current watchface spec/design/tasks,34selected graph cases, ScopeAudit, SceneRenderer/SceneContext/FeedScene/NativeSfrBuild/FeedService, actual corpus, current hosted artifact and retained native/font/UI receipts.",
+          "outcome": "Most planned full-property test paths are absent. Native scene owners already implement accepted behavior. Replaced missing test registrations with actual whole-property native/producer/public/source/pixel witnesses; folded exact aliases without dropping full clauses. No production change.",
+          "results": [
+            {
+              "path": "tests/test_basic_selected_scene.py",
+              "classification": "test_proof",
+              "reason": "Whole24-case selected software verification with actual SDK and public cache/source/screenshot receipts."
+            },
+            {
+              "path": "watchface/source/SceneRenderer.mc",
+              "classification": "reusable_unchanged",
+              "reason": "Unchanged accepted header/font/status/marker draw owner."
+            },
+            {
+              "path": "watchface/source/NativeSfr.mc",
+              "classification": "reusable_unchanged",
+              "reason": "Unchanged actual selected ID/point/role association and downloaded raster owner."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Exact source files and clause identities supplied; direct reads resolved owner.",
+          "reason": "No unknown-owner exploration needed.",
+          "outcome": "No semantic-search evidence claimed.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Known MonkeyC/Python source and actual SDK runtime boundary.",
+          "reason": "No needed indexed symbol operation; no qualified matching index asserted.",
+          "outcome": "Direct source/runtime evidence only.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "CLOSED by one separate peer: independently inspected full clauses, source, native assertions, explicit alias mappings and retained public/cache bindings; clean 8cf3dc32 whole run passed 24/24 cases through one command. Subsequent root-requested repair replaced source-string assertions with targeted native runtime exercise of all four sparse combinations; clean 12887d4d whole rerun passed 24/24. Task 5.2 software is closed; root judgment remains. Physical device, AOD power, animation, global catalog, phone and Store remain open."
     }
   ]
 }

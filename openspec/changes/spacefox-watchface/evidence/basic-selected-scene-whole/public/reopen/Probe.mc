@@ -1,0 +1,30 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.System;
+import Toybox.Background;
+import Toybox.Time;
+
+(:typecheck(false)) class SelectedProxy extends WatchUi.WatchFace {
+ var app;function initialize(a){WatchFace.initialize();app=a;}
+ function onLayout(dc){app.view.onLayout(dc);}function onShow(){app.view.onShow();}function onHide(){app.view.onHide();}
+ function onUpdate(dc){var v=app.view;var reads=app.feed.store.reads;var writes=app.feed.store.writes;v.onUpdate(dc);if(reads!=app.feed.store.reads||writes!=app.feed.store.writes){throw new Lang.InvalidValueException("redraw storage I/O");}app.inspect();}
+}
+(:background,:typecheck(false)) class SfrRuntimeApp extends SpaceFoxApp {
+ var complete=false;var callbacks=0;
+ function initialize(){SpaceFoxApp.initialize();NativeMetrics.ownerTag="d8137fbf2d5f4606b756574b864bef74|reopen|e3fbb187da1d";System.println("SFR_PROBE owner="+NativeMetrics.ownerTag);NativeMetrics.enabled=true;}
+ function getServiceDelegate(){return [new SelectedQuiet()];}
+ (:typecheck(disableBackgroundCheck)) function getInitialView(){Application.Properties.setValue("FeedBaseUrl","https://jekamas.github.io/SpaceFox");Application.Properties.setValue("Language",0);SpaceFoxApp.getInitialView();Background.deleteTemporalEvent();return [new SelectedProxy(self)];}
+ (:typecheck(disableBackgroundCheck)) function onBackgroundData(data as Application.PersistableType) as Void {callbacks+=1;SpaceFoxApp.onBackgroundData(data);}
+ function ensure(ok,message){if(!ok){throw new Lang.InvalidValueException("SELECTED_SCENE "+message);}}
+ (:typecheck(disableBackgroundCheck)) function inspect(){if(complete||view.downloaded==null||view.sfrBuild!=null||view.sfrRequested){return;}var r=view.downloaded;ensure(r instanceof NativeSfrRenderer,"wrong renderer");
+ ensure(System.getSystemStats().totalMemory==126784,"not ordinary heap");
+ ensure(feed.packet.wireHash.equals("86eb3dd2584a960c42e445b44041ff88d7f673c5dc949464fd9478d26f2388a4"),"public feed advanced or bytes mismatch; recapture before asserting");
+ ensure(feed.packet.launchId().equals("ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a"),"selected launch mismatch");
+ ensure(view.context.rocket.equals("Vulcan VC6L")&&view.context.operator.equals("United Launch Alliance")&&view.context.purpose.equals("Communications")&&view.context.site.equals("US · Cape Canaveral SFS, FL, USA"),"context association mismatch");
+ ensure(r.selectionHash.equals("d83091b990069d2b9cd6730b9081dc0b47d1d3cee9b1dbc049a2ab3798f7b739"),"source selection mismatch");
+ ensure(r.scene["position"]!=null&&r.mapBitmap!=null&&r.bitmap!=null&&r.modelOriginBitmap!=null&&r.operatorBitmap!=null,"selected map/model/marks missing");
+ var seal=feed.store.read("sf.commit")["seal"];var active=feed.store.read("sf.raster.active");ensure(active["base"].equals(configuredFeedUrl())&&active["selectionHash"].equals(r.selectionHash),"persistent cache coherence");
+ var snapshot=view.snapshot();System.println("SELECTED_SCENE_COMPLETE mode=reopen callbacks="+callbacks+" generation="+feed.packet.document["publisher"]["generation"]+" sourceEpoch="+feed.packet.validation+" acceptedRawSha256="+feed.packet.wireHash+" selection="+r.selectionHash+" acceptedSeal="+seal+" rocket="+view.context.rocket+" operator="+view.context.operator+" purpose="+view.context.purpose+" site="+view.context.site+" position="+r.scene["position"]+" countdown="+view.presentation.countdown(snapshot,true)+" stale="+feed.packet.stale+" rescheduled="+feed.packet.rescheduled+" ordinaryBytes="+System.getSystemStats().totalMemory+" usedBytes="+System.getSystemStats().usedMemory+" mapBitmap=true rocketBitmap=true modelOrigin=true operatorMark=true markerAnchor=335,165 noDrawIo=true owner="+NativeMetrics.ownerTag);complete=true;}
+}
+(:background,:typecheck(false)) class SelectedQuiet extends FeedService {function onTemporalEvent(){Background.deleteTemporalEvent();Background.exit(null);}}

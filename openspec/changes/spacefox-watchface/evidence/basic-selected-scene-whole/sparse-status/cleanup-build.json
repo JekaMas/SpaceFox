@@ -1,0 +1,23 @@
+{
+  "command": [
+    "/opt/homebrew/Cellar/openjdk@11/11.0.21/libexec/openjdk.jdk/Contents/Home/bin/java",
+    "-Dfile.encoding=UTF-8",
+    "-jar",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+    "-f",
+    "/Users/jekamas/.codex/tmp/spacefox-selected-scene-builds-20261113/sparse-peer-1/cleanup/monkey.jungle",
+    "-d",
+    "fr165",
+    "-o",
+    "/Users/jekamas/.codex/tmp/spacefox-selected-scene-builds-20261113/sparse-peer-1/cleanup/cleanup.prg",
+    "-y",
+    "/Users/jekamas/.codex/tmp/spacefox-sdk-setup-20261111/test-only/spacefox-development.der",
+    "-l",
+    "3",
+    "-O",
+    "2",
+    "-w"
+  ],
+  "exitCode": 0,
+  "packageSha256": "10209b67297d8aeb5b7994eca23925fd118a77d50aad442a5ddeb41583410f5a"
+}

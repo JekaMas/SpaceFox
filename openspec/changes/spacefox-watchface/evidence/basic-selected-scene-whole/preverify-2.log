@@ -1,0 +1,15 @@
+setUpClass (tests.test_basic_selected_scene.BasicSelectedSceneTest) ... ERROR
+
+======================================================================
+ERROR: setUpClass (tests.test_basic_selected_scene.BasicSelectedSceneTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-selected-scene-whole/tests/test_basic_selected_scene.py", line 64, in setUpClass
+    assert cls.parsed['status']=='passed',str(output/'native-tests.log')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-selected-scene-whole/openspec/changes/spacefox-watchface/evidence/basic-selected-scene-whole/native/native-tests.log
+
+----------------------------------------------------------------------
+Ran 0 tests in 24.862s
+
+FAILED (errors=1)
