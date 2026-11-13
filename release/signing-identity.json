@@ -4,8 +4,20 @@
   "entry": "SpaceFoxApp",
   "public_key_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
   "status": "local_production_custody_restored",
-  "latest_release": null,
-  "note": "Stable production identity qualified for local signing and backup restoration. Private key, encrypted backup, recovery password and owner recovery instructions are external. No public release yet; latest_release stays null. Device/Store/final-native qualification remains separate.",
+  "latest_release": {
+    "version": "0.1.0",
+    "package_sha256": "b0126d9ed13cf186f2fc15be984231da06a562070f3aa2d3d5395c7bdefc037a",
+    "kind": "github_prerelease_for_physical_testing",
+    "tag": "v0.1.0-test.1",
+    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.0-test.1",
+    "published_at_utc": "2026-11-13T15:20:11Z",
+    "source_revision": "c7ad2c4113de272cd9677842d78047e7e6ffe77b",
+    "public_source_revision": "1c1eddcd0a1c13b9d7a07d2bd0995422806517ac",
+    "original_receipt_sha256": "f38a42325101fd870ed9ae8470267827380eb7453df16b4261d3178f71ddb2f5",
+    "evidence": "openspec/changes/spacefox-watchface/evidence/published-test-history/publication-readback.json",
+    "proof_boundary": "Published signed GitHub prerelease for physical testing. Not Garmin Store submission/approval, physical installation, phone acceptance or final native qualification."
+  },
+  "note": "Stable production identity with local signing and backup restoration evidence. The signed 0.1.0 GitHub test prerelease is public; future production candidates require its retained original release.json and matching IQ, then a strictly higher native version. Private custody remains external. Device/phone/Store/final-native qualification remains separate.",
   "local_custody": {
     "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
     "public_evidence": "openspec/changes/spacefox-watchface/evidence/production-signing/round1/custody-initialization.json",

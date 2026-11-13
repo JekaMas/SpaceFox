@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "kind": "independent_read_only_receipt_audit",
+  "properties": 6,
+  "cases": 40,
+  "actualPassingMethods": 15,
+  "wholeBehaviorReplay": false,
+  "currentSourceSha256": "614074d666c673d6b56774ec4a92b60995433b517cf6fd0d7bb4a483c7647bd5",
+  "authorInput": "be8f39b18fa9ff473fcac2647969f1b7152f3338",
+  "retainedCleanGateInput": "5d2d6202782965ac10e48b4e9384ccd930575a04",
+  "rootSupportingEvidence": "bae74d8b6b6fe17d0a98e4b581d758634259531d",
+  "rootNativeManifestEntries": {
+    "FILES.json": 47,
+    "FILES-INPLACE.json": 35
+  },
+  "nativeProductionPinsPerBuild": {
+    "public-current": 151,
+    "reopen": 151,
+    "inplace-fixed": 151,
+    "inplace-reopen": 151
+  },
+  "externalRequests": 0,
+  "sdkExecutions": 0
+}

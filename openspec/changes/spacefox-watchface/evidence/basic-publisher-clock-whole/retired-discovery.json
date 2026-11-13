@@ -1,0 +1,254 @@
+{
+  "status": "RETIRED active graph routing, not replayed or passed",
+  "originalReviews": [
+    {
+      "id": "metadata-art-public-r1",
+      "question": "Does the exact public successor combine accepted metadata/art/cloud without data-driven count drift, source epoch mutation or blocked-gate side effects?",
+      "property_ids": [
+        "LS03.P9"
+      ],
+      "test_ids": [
+        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p9_c01_positive_current"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read named accepted metadata/art/cloud commits, source owners, root judgments and public whitelist transform inventory.",
+          "outcome": "Only current public integration is unobserved; one new actual-count/sparse producer/control trace is needed.",
+          "results": [
+            {
+              "path": "tests/test_metadata_art_public.py",
+              "classification": "test_proof",
+              "reason": "New current source/public boundary instead of repeating historical long traces."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Unfamiliar implementation ownership discovery",
+          "outcome": "Exact source owners and accepted commits were supplied and read directly.",
+          "reason": "No unknown ownership or exploratory semantic search question."
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Structural symbol navigation/refactoring",
+          "outcome": "No semantic refactor or symbol discovery needed.",
+          "reason": "Exact local source/test/tool paths were supplied; no index creation requested."
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "The actual public source/data/count integration is new; retained old long greens do not alone prove this successor. One loopback/sparse CLI witness covers current data and required early gates; external hosted/native claims remain forbidden."
+    },
+    {
+      "id": "D-page-art-public-r1",
+      "question": "Does the frozen public successor compose accepted policy/art through a canonical authoring-cwd route with distinct observations while retaining all earlier frozen evidence and a clean checkout?",
+      "property_ids": [
+        "LS03.P11"
+      ],
+      "test_ids": [
+        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_current_public_source_art_composition"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Assigned policy/art heads, public f621 parent, prior accepted export/sparse scripts and exact recipe/metadata owners.",
+          "outcome": "One new real-public local Git/HTTP/producer/sparse composition control; old behavior owners and accepted evidence retained.",
+          "results": [
+            {
+              "path": "tests/test_page_art_public.py",
+              "classification": "change_candidate",
+              "reason": "Direct actual-public integration with literal URLs/raw-prefix/identity/rights and refusal oracle."
+            },
+            {
+              "path": "openspec/changes/spacefox-watchface/evidence/page-art-public/independent-r1/test_graph_route.py",
+              "classification": "change_candidate",
+              "reason": "Frozen R1 cwd/polarity repair source retained unchanged; independent R2 found its negative probe overwrites a tracked prior receipt."
+            },
+            {
+              "path": "openspec/changes/spacefox-watchface/evidence/page-art-public/independent-r2/test_graph_route.py",
+              "classification": "change_candidate",
+              "reason": "R2 canonical route uses unchanged frozen pack/materializer in temporary space and verifies earlier packet hashes before/after."
+            },
+            {
+              "path": "openspec/changes/spacefox-watchface/evidence/page-art-public/independent-r2/probe_relocated_public.py",
+              "classification": "change_candidate",
+              "reason": "Exact R1 behavioral assertions retained; persistent receipt write removed so observations print only."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Exact owners and files supplied by root.",
+          "reason": "No unfamiliar owner/index setup needed.",
+          "outcome": "Direct existing-owner inspection only.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Exact assigned source/test/export owners; no indexed semantic question.",
+          "reason": "No IDE/native run or index setup is needed for bounded direct integration.",
+          "outcome": "No JetBrains/semantic execution claim.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "R1 repaired cwd/polarity; independent R2 demonstrated a tracked actual-ded receipt overwrite in the R1 negative launcher. New R2 probe prints only, temporary launcher copy preserves all frozen R1 files, and pre/post hash/clean checks qualify the repaired canonical route. Original product/public test/pins/old evidence remain exact. DIFFERENT NEW peer/root judgment after repair freeze; no whole-DAG closure."
+    },
+    {
+      "id": "D-public-current-clock-whole-r1",
+      "question": "Does the whole frozen current2026 portable source/export/integration unit bind its actual current graph edge and preserve behavior, provenance, public history and protected boundaries?",
+      "property_ids": [
+        "LS03.P15"
+      ],
+      "test_ids": [
+        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p15_c01_positive_current",
+        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p15_c02_negative_current"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Inspected actual selected source/public git trees, snapshots/transforms, P15 command/cases/discovery, source owners and retained public CLI/sparse/config receipts.",
+          "outcome": "Current P15 incorrectly addressed the held predecessor. Rebind current owner/cases/command; preserve historical command and receipt payloads. Pending-only no-journal readback is coherent with actual recover/Site.observe semantics.",
+          "results": [
+            {
+              "path": "openspec/changes/spacefox-watchface/evidence/public-current-clock/round1/audit.py",
+              "classification": "change_candidate",
+              "reason": "Current read-only source/export audit with six digest falsifications and historical-unit rejection."
+            },
+            {
+              "path": "tests/test_public_provider_art_diagnostics.py",
+              "classification": "interface_dependency",
+              "reason": "Retained exact pending closure and dual-root reread CLI evidence; no semantic input changed."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Exact owner paths supplied and directly inspected.",
+          "reason": "No unknown-owner question.",
+          "outcome": "No semantic/index claim.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Known portable Python, Git inventory and Node clock boundary.",
+          "reason": "No indexed/native structural question.",
+          "outcome": "No SDK or IDE proof claimed.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "Independent whole-unit review found and repaired material current graph binding. Production/public bytes and selected source remain unchanged; retained behavioral receipts remain valid at their exact observed heads. New owner/discriminator cases require a different NEW final whole-unit peer and root judgment. No hosted/native/worldwide completion claim."
+    },
+    {
+      "id": "D-ls03-current-catalog-art-clock",
+      "question": "Does the new portable successor preserve actual public history and bind accepted catalog art and clock source?",
+      "property_ids": [
+        "LS03.P16"
+      ],
+      "test_ids": [
+        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p16_c01_positive_current",
+        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p16_c02_negative_current",
+        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p16_c03_positive_current",
+        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p16_c04_positive_current",
+        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p16_c05_positive_current"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Inspect exact frozen export, binding and accepted root receipts.",
+          "outcome": "Selected1,137files match acceptedac84 with29 explicit transforms; literal684closure and all196old lifecycle decisions preserved. Global13 and accepted-context receipts retain exact scopes.",
+          "results": [
+            {
+              "path": "openspec/changes/spacefox-watchface/evidence/public-current-catalog-art-clock/global14-r3/audit.py",
+              "classification": "test_proof",
+              "reason": "Entire source/public/history/literal data binding."
+            },
+            {
+              "path": "openspec/changes/spacefox-watchface/evidence/public-current-catalog-art-clock/global14-r3/run_current.py",
+              "classification": "test_proof",
+              "reason": "Nine current cases at the frozen clean public source."
+            },
+            {
+              "path": "openspec/changes/spacefox-watchface/evidence/public-current-catalog-art-clock/independent-final-global14/audit.py",
+              "classification": "test_proof",
+              "reason": "Final two-doc and snapshot correction; exact remaining product tree unchanged, old behavior receipts retained."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Known exact source and owner.",
+          "reason": "Known ownership.",
+          "outcome": "No semantic search claim.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Known exact source and owner.",
+          "reason": "No index needed.",
+          "outcome": "No index claim.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "After global13 historical/current test repair, root admitted global14 context sourceac84cf1. Port all accepted owners/data/tests and23-file seed; explicit current count/closure transforms preserve historical tests.9 changed public cases and5 audits pass; next different whole peer/root required. Fresh whole review found only nonmaterial active-count wording. Finala159185 corrects those docs, with2 affected binding audits; no behavior replay. Root judgment pending."
+    },
+    {
+      "id": "D-ls03-new-art-http",
+      "question": "Does reviewed current art survive real portable production and recover, while corruption fails closed?",
+      "property_ids": [
+        "LS03.P17"
+      ],
+      "test_ids": [
+        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p17_c01_positive_current",
+        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p17_c02_negative_current"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Inspect exact frozen export, binding and accepted root receipts.",
+          "outcome": "New source revision and sole public successor require distinct binding.",
+          "results": [
+            {
+              "path": "openspec/changes/spacefox-watchface/evidence/public-current-catalog-art-clock/round1/new_art_http.py",
+              "classification": "test_proof",
+              "reason": "Checks fixed source and public snapshot."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Known exact source and owner.",
+          "reason": "Known ownership.",
+          "outcome": "No semantic search claim.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Known exact source and owner.",
+          "reason": "No index needed.",
+          "outcome": "No index claim.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "Actual new0b01214 Hanbit producer/Git/HTTP2/2 after global14 owner/data closure change. Identical literal shard04d81b;source age/state retention and corrupt refusal observed. No hosted/provider qualification."
+    }
+  ]
+}

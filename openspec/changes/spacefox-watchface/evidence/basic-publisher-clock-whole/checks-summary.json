@@ -1,0 +1,51 @@
+{
+  "authorWhole": {
+    "status": "passed",
+    "git": {
+      "dirty": false,
+      "head": "e33561bae19aca2d6e53c4ce27967a6164aa3614",
+      "status": "known"
+    },
+    "cases": 19,
+    "caseStatuses": {
+      "LS03.P1.B01.POSITIVE": "passed",
+      "LS03.P1.B02.POSITIVE": "passed",
+      "LS03.P1.B03.NEGATIVE": "passed",
+      "LS03.P1.B04.POSITIVE": "passed",
+      "LS03.P12.B01.POSITIVE": "passed",
+      "LS03.P12.B02.NEGATIVE": "passed",
+      "LS03.P12.B03.NEGATIVE": "passed",
+      "LS03.P12.B04.NEGATIVE": "passed",
+      "LS03.P3.B01.POSITIVE": "passed",
+      "LS03.P3.B02.NEGATIVE": "passed",
+      "LS03.P3.B03.POSITIVE": "passed",
+      "LS16.P1.B01.POSITIVE": "passed",
+      "LS16.P1.B02.NEGATIVE": "passed",
+      "LS16.P1.B03.POSITIVE": "passed",
+      "LS16.P1.B04.NEGATIVE": "passed",
+      "LS16.P1.B05.POSITIVE": "passed",
+      "LS16.P1.B06.NEGATIVE": "passed",
+      "LS16.P1.B07.POSITIVE": "passed",
+      "LS16.P1.B08.NEGATIVE": "passed"
+    },
+    "commands": 1,
+    "observedTests": 17,
+    "exit": 0
+  },
+  "graph": "passed: graph-final.json",
+  "discovery": "passed: discovery.json",
+  "strictOpenSpec": "passed: original observed strict validation; spec bytes unchanged",
+  "lint": {
+    "tool": "ruff0.1.14",
+    "argv": [
+      "ruff",
+      "check",
+      "tests/test_basic_publisher_clock.py"
+    ],
+    "status": "passed",
+    "invalidation": "Only subsequent removal of two method descriptions changed test-output owner; affected lint reran after this stable repair."
+  },
+  "noNewOriginalNodeOrLinuxExecution": true,
+  "nativeLease": "FREE",
+  "rootOwnedFilesUntouched": true
+}

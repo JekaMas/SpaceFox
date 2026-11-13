@@ -1,0 +1,26 @@
+{
+  "scope": "Source review, not physical/SDK execution",
+  "owners": {
+    "watchface/source/FeedService.mc": "86f6a332a79fffa2385f6005c00821cda71b82ef962c1acf28110ef29518a363",
+    "watchface/source/Fitness.mc": "4514c60764062fcf08aabf253f729629fbb68727789154c801be839a55e581ba",
+    "watchface/source/NativeTransfer.mc": "e75e70cdcc0d6f4982f05d4a89dd1ecbbf9995472b670ad89d975f4162741d70"
+  },
+  "facts": [
+    {
+      "owner": "watchface/source/FeedService.mc",
+      "lines": "13-37",
+      "observation": "configuredFeedUrl reads FeedBaseUrl; requestUrl always joins transfer.base plus slash plus validated immutable path. The only watch makeWebRequest is GET with empty params and Accept application/json; feed.json and NativeBatch reference paths only. No provider token, SpaceFox login, health request parameter or upload."
+    },
+    {
+      "owner": "watchface/source/Fitness.mc",
+      "lines": "23-50",
+      "observation": "Guarded ActivityMonitor/SensorHistory reads produce local values for view display; no Communications import or network call. Full source grep found no other makeWebRequest/transmit owner."
+    },
+    {
+      "owner": "watchface/source/NativeTransfer.mc",
+      "lines": "8-17",
+      "observation": "Configured base requires HTTPS, rejects credentials/query/fragment/path traversal and invalid characters; cache attempts and policy stay local."
+    }
+  ],
+  "qualification": "Default dataflow inspected; actual local current strict projection/rejection tested. Physical phone/watch transfer remains task3.4; no SDK/key/simulator operation."
+}

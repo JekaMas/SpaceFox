@@ -1,0 +1,29 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.System;
+import Toybox.Background;
+import Toybox.Time;
+
+(:typecheck(false)) class SelectedProxy extends WatchUi.WatchFace {
+ var app;function initialize(a){WatchFace.initialize();app=a;}
+ function onLayout(dc){app.view.onLayout(dc);}function onShow(){app.view.onShow();}function onHide(){app.view.onHide();}
+ function onUpdate(dc){var v=app.view;var reads=app.feed.store.reads;var writes=app.feed.store.writes;v.onUpdate(dc);if(reads!=app.feed.store.reads||writes!=app.feed.store.writes){throw new Lang.InvalidValueException("redraw storage I/O");}app.inspect();}
+}
+(:background,:typecheck(false)) class SfrRuntimeApp extends SpaceFoxApp {
+ var complete=false;var callbacks=0;
+ function initialize(){SpaceFoxApp.initialize();NativeMetrics.ownerTag="d8137fbf2d5f4606b756574b864bef74|inplace|e3fbb187da1d";System.println("SFR_PROBE owner="+NativeMetrics.ownerTag);NativeMetrics.enabled=true;}
+ 
+ (:typecheck(disableBackgroundCheck)) function getInitialView(){Application.Properties.setValue("FeedBaseUrl","https://jekamas.github.io/SpaceFox");Application.Properties.setValue("Language",0);SpaceFoxApp.getInitialView();ensure(feed.packet!=null&&feed.packet.document["publisher"]["generation"]==1&&feed.packet.wireHash.equals("86eb3dd2584a960c42e445b44041ff88d7f673c5dc949464fd9478d26f2388a4"),"retained actual G1 public cache unavailable; no in-place update claim");System.println("AUTONOMOUS_INPLACE_INITIAL priorGeneration="+feed.packet.document["publisher"]["generation"]+" priorSource="+feed.packet.validation+" priorWire="+feed.packet.wireHash+" priorRocket="+view.context.rocket+" priorSelection="+feed.packet.document["visualSelection"]["sha256"]+" noSeed=true");return [new SelectedProxy(self)];}
+ (:typecheck(disableBackgroundCheck)) function onBackgroundData(data as Application.PersistableType) as Void {callbacks+=1;SpaceFoxApp.onBackgroundData(data);}
+ function ensure(ok,message){if(!ok){throw new Lang.InvalidValueException("SELECTED_SCENE "+message);}}
+ (:typecheck(disableBackgroundCheck)) function inspect(){if(complete||feed.packet==null||feed.packet.document["publisher"]["generation"]<4||view.downloaded==null||view.sfrBuild!=null||view.sfrRequested){return;}var r=view.downloaded;ensure(r instanceof NativeSfrRenderer,"wrong renderer");
+ ensure(System.getSystemStats().totalMemory==126784,"not ordinary heap");
+ ensure(feed.packet.wireHash.equals("63d2df50b2d6af354d7e2d9aec9cb014676b0b91c6125017f9686b1cde62c0a9"),"public feed advanced or bytes mismatch; recapture before asserting");
+ ensure(feed.packet.launchId().equals("ll2:launch:0f867f0c-5422-4d44-93b8-d7faaae7019b"),"selected launch mismatch");
+ ensure(view.context.rocket.equals("Starship V3")&&view.context.operator.equals("SpaceX")&&view.context.purpose.equals("Communications")&&view.context.site.equals("US · SpaceX Starbase, TX, USA"),"context association mismatch");
+ ensure(r.selectionHash.equals("7f6b599d4479565aaf3b6cadfb4b71e74e6247644f9df8df4091acfcf3f42621"),"source selection mismatch");
+ ensure(r.scene["position"]!=null&&r.mapBitmap!=null&&r.bitmap!=null&&r.modelOriginBitmap!=null&&r.operatorBitmap!=null,"selected map/model/marks missing");
+ var seal=feed.store.read("sf.commit")["seal"];var active=feed.store.read("sf.raster.active");ensure(active["base"].equals(configuredFeedUrl())&&active["selectionHash"].equals(r.selectionHash),"persistent cache coherence");
+ var snapshot=view.snapshot();System.println("SELECTED_SCENE_COMPLETE mode=public-background callbacks="+callbacks+" generation="+feed.packet.document["publisher"]["generation"]+" sourceEpoch="+feed.packet.validation+" acceptedRawSha256="+feed.packet.wireHash+" selection="+r.selectionHash+" acceptedSeal="+seal+" rocket="+view.context.rocket+" operator="+view.context.operator+" purpose="+view.context.purpose+" site="+view.context.site+" position="+r.scene["position"]+" countdown="+view.presentation.countdown(snapshot,true)+" stale="+feed.packet.stale+" rescheduled="+feed.packet.rescheduled+" ordinaryBytes="+System.getSystemStats().totalMemory+" usedBytes="+System.getSystemStats().usedMemory+" mapBitmap=true rocketBitmap=true modelOrigin=true operatorMark=true markerAnchor=335,165 noDrawIo=true owner="+NativeMetrics.ownerTag);complete=true;}
+}

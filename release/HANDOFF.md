@@ -5,8 +5,29 @@ is not an approved Store release. The stable production signing identity is pinn
 External owner-only RSA4096 custody and an encrypted backup with a separately
 stored recovery password have actual local restore/challenge evidence under
 `evidence/production-signing/round1`. All copies remain on the same Mac; offsite
-and disaster recovery are not claimed. `latest_release` remains null until an
-actual public release; this evidence does not qualify the final native product.
+and disaster recovery are not claimed.
+
+The signed [v0.1.0-test.1 GitHub prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.0-test.1)
+is public for physical testing, with native version `0.1.0`. Anonymous download
+readback matched all eight uploaded assets. Its IQ SHA-256 is
+`b0126d9ed13cf186f2fc15be984231da06a562070f3aa2d3d5395c7bdefc037a`;
+its PRG SHA-256 is
+`aa0376f64da4b7a6d9ddcf253c034360c23b1157e2aee9a20953632356a3f788`.
+The frozen signed source is `c7ad2c4113de272cd9677842d78047e7e6ffe77b`;
+the public release target is `1c1eddcd0a1c13b9d7a07d2bd0995422806517ac`.
+`signing-identity.json` now pins this actual latest public native version and IQ
+digest. Keep the original candidate's `release.json` together with `SpaceFox.iq`;
+future production builds must supply that receipt via `--previous` and use a
+strictly higher version with the same UUID and signing identity. The public
+`PROVENANCE.json` is a publication summary, not the tool's original prior-build
+receipt. The original receipt's evidence digest is
+`f38a42325101fd870ed9ae8470267827380eb7453df16b4261d3178f71ddb2f5`.
+See [publication readback and bounded verification](../openspec/changes/spacefox-watchface/evidence/published-test-history/STATUS.md).
+
+This test publication does not qualify the final native product, a physical
+installation, phone/background behavior or a Garmin Store submission/approval.
+The retained candidate still has `publication_ready=false` and
+`official_release=false`; tasks7.1–7.3 remain open.
 
 The release tool retains the actual manifest, generated Jungle, committed source
 inputs, public signing key, SDK/profile pins, package hashes and supplied evidence.

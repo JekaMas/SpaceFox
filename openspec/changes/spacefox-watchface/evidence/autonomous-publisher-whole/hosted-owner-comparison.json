@@ -1,0 +1,67 @@
+{
+  "rootRevision": "2debe540ea906243330deebd2134379761a79210",
+  "allExact": true,
+  "owners": [
+    {
+      "path": ".github/workflows/update-feed.yml",
+      "sha256": "d2eac0a935e1a43ed4856ba4a4062cc36521db7bc42d12281cd8e3adcdd40baa",
+      "exactRootHostedSource": true
+    },
+    {
+      "path": ".github/spacefox-inputs.txt",
+      "sha256": "115af80b2c46b4c8b2b110c84425d4541c2596180630dee04a13a0b01473a025",
+      "exactRootHostedSource": true
+    },
+    {
+      "path": "tools/cloud_feed.py",
+      "sha256": "a5c3da1969a8ea8ebbaabc32af0c0e26228e72871beefc9c863e7a98dc728ba9",
+      "exactRootHostedSource": true
+    },
+    {
+      "path": "tools/cloud_inputs.py",
+      "sha256": "56cdd8d1d2557df82abd21ed7e8a612f9af6fe3335ab283539c7cac2b58a1611",
+      "exactRootHostedSource": true
+    },
+    {
+      "path": "tools/refresh_catalog.py",
+      "sha256": "c4d23fd804c7e51f8d55962134e34eee7d622e4451ea7345a0d8869ea65b435a",
+      "exactRootHostedSource": true
+    },
+    {
+      "path": "tools/spacefox/cloud.py",
+      "sha256": "af58080c75190d8482dd686c5a048e1ebb9a3d332076b4a9ca2c6075fb5a25d5",
+      "exactRootHostedSource": true
+    },
+    {
+      "path": "tools/spacefox/catalog_refresh.py",
+      "sha256": "15fee92f31382190a0371e2adf66ea24a04b2d814608833cfcbf93146fe0f8c5",
+      "exactRootHostedSource": true
+    },
+    {
+      "path": "tools/spacefox/publisher.py",
+      "sha256": "c4377c844c8e0bb9bf0142b693b89fa6801d2b6618ea548e90e5c2f4133a0143",
+      "exactRootHostedSource": true
+    },
+    {
+      "path": "tools/spacefox/provider.py",
+      "sha256": "2f0e07bb8505a099879d80b7c6beea7ff7c933b4c8beb73492037bdba9e06745",
+      "exactRootHostedSource": true
+    },
+    {
+      "path": "tools/spacefox/schedule.py",
+      "sha256": "d4c580e788c248e5cbdf30045746788fb87fd5dac9a2def00c25b9a7c08eaa2c",
+      "exactRootHostedSource": true
+    },
+    {
+      "path": "tools/spacefox/native_motion.py",
+      "sha256": "5d17167d7f65d20ff4798499776d170107777a3ffe6ea9e551713dd1302a0663",
+      "exactRootHostedSource": true
+    },
+    {
+      "path": "tools/spacefox/native_profile.py",
+      "sha256": "43d5e9652cb95f759205a900a7f835344308481ae9325cab90acbcfdc065a81e",
+      "exactRootHostedSource": true
+    }
+  ],
+  "proof": "Read-only local source comparison; no new remote/native observation."
+}

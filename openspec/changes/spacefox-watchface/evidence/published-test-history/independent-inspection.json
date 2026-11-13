@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "reviewed_revision": "7769010359ca9f690cee76d22c7096195dd6d817",
+  "checks": {
+    "receipt_sha_pin": true,
+    "iq_sha_pin": true,
+    "prg_sha_public": true,
+    "actual_iq_spki_pin": true,
+    "actual_iq_version_uuid": true,
+    "candidate_source_clean": true,
+    "candidate_not_final": true,
+    "history_source_retained": true,
+    "custody_source_retained": true,
+    "custody_ast_unchanged": true,
+    "graph-validate.json_retained_hash": true,
+    "discovery-validate.json_retained_hash": true,
+    "graph-query.json_retained_hash": true,
+    "properties_ids_unchanged": true,
+    "cases_ids_unchanged": true,
+    "rl02_statement_unchanged": true,
+    "no_retired_current_selectors": true,
+    "publication_readback_copy_identical": true,
+    "production_native_and_signed_controls_unchanged": true
+  },
+  "behavior_tests_rerun": 0,
+  "retained_behavior_methods": 7,
+  "inspection_correction": "Initial broad text comparison mistakenly included the following retired ProductionIdentityTest class. It returned false; class-specific AST comparison establishes unchanged SigningCustodyTest. No product/test failure occurred.",
+  "proof_boundary": "Independent read-only frozen artifact, source and receipt inspection. Retains original behavior greens. Not fresh external readback, SDK cryptographic verification, production custody, export, device/phone/Store or whole-property closure."
+}

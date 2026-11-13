@@ -17,8 +17,10 @@ One-time Astra fullspec/test audit is DONE; [audit](evidence/basic-main-review/S
 | WF02.P1 / WF04.P1 / WF05.P1 / WF06.P1 / WF07.P1; task5.2 | 24/24cases,1command | [selected scene](evidence/judge/basic-selected-scene-root-whole.json) |
 | LS07.P1 / LS08.P1 / LS09.P1 | 24/24cases,1command | [selection/metadata/UTC](evidence/judge/basic-launch-logic-root-whole.json) |
 | RL01.P1 / WF11.P1; task2.3 | 14/14cases,1command | [platform/metrics](evidence/judge/basic-platform-metrics-root-whole.json) |
+| LS03.P1 / P3 / P12; LS16.P1 | 19/19cases,17methods,1command | [publisher and autonomous clock](evidence/judge/basic-publisher-clock-root-whole.json) |
+| LS03.P4 / P5 / P6 / P7 / P8 / P10; task3.3 | 40cases,15observed methods,1command; valid receipts retained | [whole unattended publisher](evidence/judge/autonomous-publisher-root-whole.json) |
 
-**17 whole software properties are CLOSED.** Root accepted selected-scene peer
+**27 whole software properties are CLOSED.** Root accepted selected-scene peer
 3785e3db after requiring replacement of source-string sparse-status checks with
 one targeted actual SDK test. The same peer fixed all four flag combinations,
 then passed the clean whole24case verifier. No third reviewer or native11 rerun.
@@ -35,11 +37,11 @@ Valid source-bound greens are retained; no rerun for docs/newcommit/workflowstag
 
 ## Exact remaining inventory
 
-Native [tasks.md](tasks.md): **31tasks;14checked /17open**. Foundation:4checked,
-0open. Combined:35tasks;18checked /17open. Native graph: **56requirements /
-142properties /692cases /69commands**. Current accepted17 leave **125properties
-without a closure reconciled in this sequence**.210implemented labels and
-482planned cases across111properties are registrations, not passing totals.
+Native [tasks.md](tasks.md): **31tasks;15checked /16open**. Foundation:4checked,
+0open. Combined:35tasks;19checked /16open. Native graph: **56requirements /
+134properties /673cases /66commands**. Current accepted27 leave **107properties
+without a closure reconciled in this sequence**.257implemented labels and
+416planned cases across93properties are registrations, not passing totals.
 Foundation's4properties/8cases retain their separate original proof boundary.
 
 Remaining coherent groups: selected-launch timing/selection/freshness; automatic
@@ -91,12 +93,12 @@ or claim exact current327/rebuild merelydocs. No native compiler inputs changed.
 
 ## Publication and automatic data
 
-Publicsource **99508106**: twelve-closure code/spec/proof/actualSDKscene export;
-1,895filehashes verified, no private authoring ancestry. Prior dd21a181 matched
+Publicsource **5679b093**: seventeen-closure code/spec/proof/actualSDKscene export;
+2,036filehashes verified, no private authoring ancestry. [Latest export](evidence/basic-publication-20261113/seventeen-closure-publication.json). Prior dd21a181 matched
 then327candidate inputs; later retired diagnostic delta is explicit. ActualUbuntu
 43417089608 passed11tests; publisher/native inputs unchanged, retained without
-rerun. Selected-scene source/proof export is published with exact independently closed
-24case group and root sparse-status repair. [Latest publication](evidence/basic-publication-20261113/twelve-closure-publication.json).
+rerun. Selected scene, logic and platform/metrics source/proof exports are published
+with independently closed24/24/14case groups and root sparse-status repair. [Latest publication](evidence/basic-publication-20261113/twelve-closure-publication.json).
 [Publication](evidence/basic-publication-20261113/seven-closure-publication.json).
 
 Clean map-only bootstrap43423066921 passed all5jobs after old writer drained,
@@ -124,24 +126,126 @@ Code/specMIT; external assets/data retain attribution/licenses.
 
 ## Next unit
 
-Root accepted e25dbbd6 LS07/LS08/LS09 after actual independent whole24/24cases
-through1command on clean5b20926f. One new current exact/MIN native assertion
-filled the real parser gap; previous clock10/reschedule4/scene11 were not rerun.
-Four further exact P2/P3 aliases folded, not extra passes. [Independent report](evidence/basic-launch-logic-whole/INDEPENDENT.md).
-Tasks3.1/3.2 stayopen for remainingrefresh/cache/age/quota obligations. Root accepted8960a8d4 RL01.P1/WF11.P1 and task2.3technical: actual independent
-14/14cases through1command onclean48bc0fcf. Four new SDK boundaryguard methods
-PASS/raw1 with explicitly mapped Toybox doubles; original realSDKsmoke/provenance
-is separate. All30productionnative files/100directSDKreferences are bound to the
-reviewed source set; SDKprofile/API/firmware2502 are actualmetadata, not ownerwatch
-firmware. [Independent report](evidence/basic-platform-metrics-whole/INDEPENDENT.md).
-No production/resource/localepolicy bytes changed. Two aliases folded, notpasses.
-ONE active APPLY `apply_basic_publisher_clock_whole` at7d03a565 owns current
-LS03.P1/P3/P12 and LS16.P1: personalstaticoperation,404budget/currentreadback and
-statelessclock. It retires historical G10/frozenlaunch194/publicsuccessor-specific
-properties with mappings, keeping generic current input/privacy/rights/finality
-obligations. P4/P5/P6/P7/P8/P10 are realcurrentconjuncts and remain truthful/open
-where not fully covered. One whole+selfGREEN then ONEpeer, rootjudgment. No ops,
-providercalls or broaderAstraaudit byworker.  Reuse existing actual corpus,
-clock/scene/native greens; current G2 can carry a real same-asset/source-validation
-update witness. No full-spec Astra repeat, extra reviewers, synthetic display or
-rare stress expansion. Root owns publication/operational readbacks and judgment.
+Current unattended publisher fullyCLOSED: LS03.P1/P3/P12 andLS16.P1 were already
+accepted; LS03.P4/P5/P6/P7/P8/P10 and task3.3 nowclosed after ONEdifferentpeer
+fix/closeafaf7a8f androotjudgment. Originalrichactualgreens retained; no new15
+methodexecution fabricated. Remote/nativeoperationalqualificationdone; no more
+routineupdatewatching required.
+
+Next coherent software unit: current provider/updater cadence and per-record
+source-age/omission policy, LS04.P1/P2/P3 + LS11.P2/P3/P6. Use existingactual
+current captures/validportablegreens; verify as oneunit withdirectlynecessary
+normalpositive/refusalcases, no liveprovider/modelAPI/rare/stress/legacy matrix.
+This prepares task3.1/3.2 closure; separate durable native cache/physical clauses
+staytruthful. Rootplansafteracceptedunit; oneAPPLYselfGREEN then ONEdifferent
+peerfix/CLOSE, rootjudge. Task3.4 otherfamily/phone and physical release remain.
+
+## First signed test release — 2026-11-13 15:20 UTC
+
+User explicitly requested publication and phone testing. Published
+[v0.1.0-test.1](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.0-test.1),
+not draft, marked prerelease, at public target1c1eddcd. Eight assets are genuinely
+public: anonymous HTTPS200 downloads equal uploaded bytes, including production
+PRG/IQ, provenance, checksum list, full archive/licenses, privacy, Russian install
+guide and actual simulator screenshot. Frozen signed sourcec7ad2c41 retained;
+all154native compiler inputs match public source. Original package crypto/SDK
+receipts retained without rebuilding unchanged inputs. [Readback](evidence/test-release-20261113/publication-readback.json),
+[status](evidence/test-release-20261113/STATUS.json). No full product/physical/Store closure.
+
+Garmin submission is DEFERRED by the owner’s later instruction. No upload or
+submission took place; credentials were never requested in chat. [Prepared listing](../../../release/STORE-LISTING.md),
+[phone guide](../../../docs/TESTING_ON_PHONE.ru.md) and privacy are ready.
+Phone installation needs a Connect IQ page accessible to the paired account;
+a GitHub PRG/IQ download alone cannot install from a phone. DefaultFeedBaseUrl
+is blank; enter https://jekamas.github.io/SpaceFox via ConnectIQ settings after
+installation. Garmin beta URLs are account-only per official SDK9.3 docs and
+cannot stand in for public access from another account. Physical/phone/battery
+and task7.3 remain OPEN. SDKleaseFREE; no model API/credits used.
+
+One focused release-history APPLY follows the actual binary publication:
+apply_published_test_history owns only the public version/digest pin and directly
+affected release fixtures/checks; no native changes or broad reruns. Publisher/clock
+author continues its existing coherent unit; no new broad audit.
+
+## Current steering: local acceptance and unattended updates
+
+Owner explicitly deferred Garmin publication and requested complete autonomous
+updates even while the agent’s computer is off. Stop checking every routine
+update: use one bounded chain/architecture/recovery qualification and retained
+greens. GitHub test release already exists; keep accurate history pin.
+
+Root accepted publisher/clock peerf420ee9b:21whole properties nowclosed.
+Original19case/17method/1commandGREEN remains valid; docs-only broad dependency
+staleness is explicitly reconciled without resetting fingerprints or rerunning.
+Root also accepted the bounded published-history peer e9a0c292:5history+2disposable
+custody methods retained,19readonlychecks; no newproperty/taskcount. Combined
+graph/discovery syntax/coverage validates after semantic append-conflict repair.
+
+Current fresh remote observations: Cloudflare savedCron7,22,37,52; encrypted
+productionsecret;4successful natural scheduled events in onehour,0errors.
+Expanded15:22UTC event is stateless/outcomeok, activeversion670096a0 matches
+previously verified exact worker sourceSHA3968e2ac. Actual GitHub-hosted Ubuntu
+due runs43433017023 and43442034551 each completed allfivejobs; G2toG3 source
+validation advances1794576343to1794580012. One publicG3GET is2718B/SHA1b0df384,
+sameimmutablevisualset. No manualdispatch/providerrequest or localpublisher
+was used for these remote events. [Evidence](evidence/autonomous-updates-20261113/).
+Physical computer poweroff was not performed; server execution/dependency evidence
+shows localPC/agent absence from the execution path, not hardware test evidence.
+Phone/physicalFR165 delivery remains unobserved.
+
+Next coherent APPLY: close remaining current personal-publisher/recovery/metadata
+LS03.P4/P5/P6/P7/P8/P10 together through one directly necessary whole verifier.
+Use actual finite data/currentschema only; correct obsolete fixed count/oracle
+text, no new properties/campaigns or rare stress matrix. Task3.3 onlycloses when
+all its real current clauses are proven; task3.4’s fork/phone remains separate.
+Then ONE different peer fixes/closes, rootjudges. Local native delivery gets one
+actual source-validation/cache update using currentpublicfixture, not a replay of
+the alreadygreen scene/font/clockmatrix.
+
+## One local current-CDN acceptance — G4
+
+Fresh owned UUID/no seed automatically fetched actualpublicG4/source1794583991
+through unchanged FeedService. Real selectedscenechanged G3Vulcan/Canaveral
+toG4StarshipV3/SpaceX/Starbase with newvisualselection7f6b599d. Actualordinary
+126784B heap/all4bitmaproles/marker335,165/noDrawIo and acceptedwire
+63d2df50 exactlymatch postnativepublicHTTPS. Coldreopen callbacks0/HTTP0 preserves
+wire/sourceepoch/selection/acceptedseal. Public/reopen/bothcleanup launchers0.
+[Result](evidence/local-autonomous-delivery-20261113/RESULT.json),
+[actual390screen](evidence/local-autonomous-delivery-20261113/starship-current-fr165.png).
+G4run43452902197 all5jobsSUCCESS was PUSH, notnaturalCron. G2/G3naturalproof
+retainedseparate. First observeragainstcapturedG3 refusedactualchangedlaunch
+(exit2); failedsnapshot/cleanup retained; recapturedG4 exactoriginalobserver
+passes. No native/code/resource change, no wholepropertycountadded.
+BothownedUUIDs blankURL/nulltemporal/cachepreserved; officialFileKillDevice
+stoppedvirtualdevice, known launcherPIDs absent; SDKleaseFREE. No physical
+phone/FR165,battery,Store or actualMacpoweroff claim. Six-propertycloud APPLY
+continues independently on its ownworktree; rootoperationalwitness notnewmatrix.
+
+Actual same-namespace update also PASSED: prior genuine persistedG1Vulcan
+wire86eb3dd2/source1794572010 automaticallyfetchesandactivatesG4Starship
+wire63d2df50/source1794583991/newselection7f6b599d; coldreopen0HTTP/0callback
+preservesnewseal17ccd1d9. No seed/reset/sourceclockinjection. Actual three
+ordinarylaunchers0; cleanupblankURL/nulltemporal/cachepreserved. Initial
+postKillDevice startup143/noVM and observerloggingnullfield2 failuresretained;
+fixonlynewlogger, exactG1/G4assertionsunchanged. [In-place receipt](evidence/local-autonomous-delivery-20261113/INPLACE-RESULT.json).
+Cold-reopen observer buildhasdirtytruefromrootresumenote; everyproduction
+native/resourcehash independentlyequalscommitted2debe540bytes. No fakeclean
+wholegateclaim. SDKleaseFREE/allownedPIDsabsent/FileKillDevicestoppedVM.
+
+## Root accepted full unattended publisher — 27 whole properties
+
+Peerafaf7a8f CLOSED the sixcomplete currentLS03properties/40existingcases/15actual
+passingidentities. Task3.3closed for its fullsoftware+requiredretainedhosted scope,
+withtask3.4/fork/physical/Store separate. Source/workflow/native/resourcesunchanged;
+allvalidbehaviorreceipts andoriginalfailures/timingboundariesretained. The
+selected1command isreproducible; clean5d2d6202graph/discovery/strict/query and
+receipt reconciliationpass, not afabricatedfresh15methodrun. Peerfixedonlystale
+task3.3completionprose. [Verdict](evidence/autonomous-publisher-whole/peer-review/FINAL.md),
+[rootjudgment](evidence/judge/autonomous-publisher-root-whole.json).
+
+Actualuserrequestlocally+unattendedupdates isqualified atserver/SDKboundary:
+CFCron->GHAhostedUbuntu->Pages and realG1->G4model/mapdatachange/nativecold
+reopen proven. Source/signingkey/localMac/agentarenot runtime dependencies.
+PhysicalMacshutdown/phone/watch/battery/Store notclaimed; GarminreleaseDEFERRED.
+No ongoingper-updatepolling. SDKleaseFREE; no liveagentafterthisunitclosure.
+Remainingbroaderimplementationgoal staysACTIVE; nextgroupnamedabove.

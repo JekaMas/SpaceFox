@@ -1,0 +1,33 @@
+test_metadata_sparse_resume_304_cadence_source_isolation_and_no_journal (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_sparse_resume_304_cadence_source_isolation_and_no_journal) ... ERROR
+test_metadata_current_policy_cli_refusals_cas_and_failure_preservation (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_current_policy_cli_refusals_cas_and_failure_preservation) ... ok
+
+======================================================================
+ERROR: test_metadata_sparse_resume_304_cadence_source_isolation_and_no_journal (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_sparse_resume_304_cadence_source_isolation_and_no_journal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 576, in test_metadata_sparse_resume_304_cadence_source_isolation_and_no_journal
+    out=self.cli(source,remote,s,'metadata','--interval-seconds',3600,now=NOW+3600)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 255, in cli
+    result = subprocess.run([sys.executable, '-B', '-c', launcher, '--repository', 'local/spacefox',
+        '--remote', str(remote), '--site', service.url + '/site', '--api', service.url,
+        '--origin', service.url, *(['--local-qualification'] if local else []), '--now', str(now), command, *map(str,args)],
+        cwd=source, env=environment, capture_output=True, text=True, timeout=120)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 557, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1221, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 2154, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1268, in _check_timeout
+    raise TimeoutExpired(
+    ...<2 lines>...
+            stderr=b''.join(stderr_seq) if stderr_seq else None)
+subprocess.TimeoutExpired: Command '['/opt/homebrew/opt/python@3.14/bin/python3.14', '-B', '-c', "import os,sys\nfrom pathlib import Path\nimport tools.cloud_feed as m\ndef oidc():\n    print('LOCAL_OIDC_BOUNDARY',file=sys.stderr)\n    return 'local-qualified-oidc'\nm.oidc_token=oidc\nif os.environ.get('RUNTIME_ONLY')=='1':\n    def observer(event,args):\n        if event=='import' and args[0]=='tools.spacefox.catalog_refresh' and os.environ.get('FORBID_CATALOG_IMPORT')=='1':\n            raise AssertionError('blocked command imported metadata collector')\n        if event=='open' and isinstance(args[0],(str,bytes)):\n            p=Path(os.fsdecode(args[0])).resolve()\n            if any(p==Path.cwd()/d or Path.cwd()/d in p.parents for d in ('catalog','assets')):\n                raise AssertionError('runtime read authoring source: '+str(p))\n    sys.addaudithook(observer)\n    def forbidden_builder(*args,**kwargs):\n        raise AssertionError('runtime invoked authoring builder')\n    # Fail-only must-not-call guards, never a successful builder substitute.\n    m.build_catalog=forbidden_builder\n    m.build_artifact=forbidden_builder\nsys.exit(m.main())", '--repository', 'local/spacefox', '--remote', '/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-autonomous-whole-imrlgwlo/checkout-1.git', '--site', 'http://127.0.0.1:63518/site', '--api', 'http://127.0.0.1:63518', '--origin', 'http://127.0.0.1:63518', '--local-qualification', '--now', '1794554792', 'metadata', '--interval-seconds', '3600']' timed out after 120 seconds
+
+----------------------------------------------------------------------
+Ran 2 tests in 548.412s
+
+FAILED (errors=1)

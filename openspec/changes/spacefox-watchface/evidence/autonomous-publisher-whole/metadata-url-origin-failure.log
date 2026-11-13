@@ -1,0 +1,19 @@
+test_metadata_sparse_resume_304_cadence_source_isolation_and_no_journal (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_sparse_resume_304_cadence_source_isolation_and_no_journal) ... FAIL
+test_metadata_zero_work_gates_and_workflow_serialization (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_zero_work_gates_and_workflow_serialization) ... ok
+
+======================================================================
+FAIL: test_metadata_sparse_resume_304_cadence_source_isolation_and_no_journal (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_sparse_resume_304_cadence_source_isolation_and_no_journal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 538, in test_metadata_sparse_resume_304_cadence_source_isolation_and_no_journal
+    out=self.cli(source,remote,s,'metadata','--max-requests',max_requests)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 250, in cli
+    self.assertEqual(result.returncode, 0 if success else 2, result.stdout + result.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 2 != 0 : cloud-feed: wrong-origin or mismatched source row URL
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 146.794s
+
+FAILED (failures=1)

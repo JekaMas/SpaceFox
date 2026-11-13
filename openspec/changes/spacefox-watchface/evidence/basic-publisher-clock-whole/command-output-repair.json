@@ -1,0 +1,16 @@
+{
+  "classification": "test-harness output contract",
+  "firstCleanHead": "7b71b816fe9c2ebc39581420b0da2893032c6495",
+  "actualTests": 17,
+  "actualPassed": 17,
+  "runnerStatus": "incomplete",
+  "missing": [
+    "LS03.P1.B01.POSITIVE",
+    "LS03.P1.B04.POSITIVE"
+  ],
+  "mechanism": "Default unittest descriptions split two identity lines from outcomes. Actual final repair changes those two docstrings into comments and keeps -m unittest; corrected complete event visibility is observed in final clean receipt.",
+  "changedSemanticInput": "Selected command/test-output format only. No test assertion, production owner, fixture, Node/Linux receipt or toolchain changed.",
+  "next": "Completed actual clean whole19/19 at e33561ba. Separate peer now verifies without unneeded behavior replay.",
+  "rejectedAttempt": "Pinned runner correctly refuses python-unittest argv without -m unittest; no behavior executed on rejected formatting-command attempt.",
+  "repair": "Removed only two test-method docstrings (retained as comments), preserving standard -m unittest and complete verbose identity lines. No assertion/fixture/production change."
+}

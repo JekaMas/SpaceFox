@@ -110,7 +110,9 @@ Planned `watchface/` owns Monkey C rendering, settings, local countdowns and cac
 `tools/update_feed.py` normalizes Launch Library 2 data and builds static
 output. `.github/workflows/update-feed.yml` schedules the deterministic
 `tools/cloud_feed.py` adapter and supplies the serialized Pages path. These
-files have local qualification; authentic deployment remains open.
+files have local qualification. The retained current map-only G1/G2 observations
+qualify the owner's finite scheduled publication and HTTPS readback; another
+owner's instance and physical phone/watch acceptance remain open.
 The agent sets up/repairs this automation; it is not an LLM invoked on every run.
 
 ```mermaid
@@ -250,9 +252,9 @@ builds do not validate launches. All scheduled/manual/catalog jobs use the same
 concurrency group with cancellation disabled. Concurrency is not a logical-order
 proof: a late queued run must check current source/state before doing any work.
 
-The durable authority is a dedicated `feed-state-motion-v3` Git branch, not public Pages,
+The durable authority is a dedicated `feed-state-map-v3` Git branch, not public Pages,
 Actions cache or an expiring artifact. Its bootstrap anchor is
-`refs/tags/spacefox-state-bootstrap-motion-v3`. It carries compact active/pending normalized
+`refs/tags/spacefox-state-bootstrap-map-v3`. It carries compact active/pending normalized
 snapshots, per-record validation/flags, monotonic generation, source/catalog/tool
 revisions, due time and quota reservations/backoff. Initial current-ledger budget
 is 64KiB, independent of the8KiB watch feed. Storage schema2 references exact
@@ -291,7 +293,7 @@ retention and the1MiB initial site budget may conflict: record measured reconcil
 before acceptance rather than silently deleting global art or enlarging the budget.
 
 This revises the earlier no-commit/CDN-recovery plan. Durable state checkpoints
-are intentional commits on `feed-state-motion-v3`, not heartbeat commits on source `main`
+are intentional commits on `feed-state-map-v3`, not heartbeat commits on source `main`
 or triggers for Pages builds. Not-due cron wakeups do no provider request, state
 commit or deployment. Use read-only permissions for source/PR checks, `contents:
 write` only for the state writer, and `pages: write`/`id-token: write` for the

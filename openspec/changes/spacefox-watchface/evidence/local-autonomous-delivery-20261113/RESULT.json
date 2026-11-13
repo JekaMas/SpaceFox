@@ -1,0 +1,69 @@
+{
+  "status": "passed_current_public_native_delivery_and_cold_reopen",
+  "observed_at_utc": "2026-11-13T15:59:15.637653+00:00",
+  "source_head": "167d7f1724bf735363dbbbe98ca3a5607dcfd3d3",
+  "source_dirty": false,
+  "sdk": "9.3.0",
+  "device": "fr165 API5.2 ordinary126784B foreground",
+  "fresh_namespace": {
+    "uuid": "b0ae891e31ba4af9af9ee3577441e72c",
+    "basename": "SpaceFoxAutonomousG4Delivery20261113.prg",
+    "url": "https://jekamas.github.io/SpaceFox"
+  },
+  "network": "Unchanged production FeedService actualpublicHTTPS/realSDK background; freshnamespace no seed",
+  "generation": 4,
+  "source_epoch": 1794583991,
+  "accepted_raw_sha256": "63d2df50b2d6af354d7e2d9aec9cb014676b0b91c6125017f9686b1cde62c0a9",
+  "selection_sha256": "7f6b599d4479565aaf3b6cadfb4b71e74e6247644f9df8df4091acfcf3f42621",
+  "accepted_seal": "b1ecddddc13d4c6594ece610d67538738dace85875da914209e7a6f0e33f7b14",
+  "scene": {
+    "launch_id": "ll2:launch:0f867f0c-5422-4d44-93b8-d7faaae7019b",
+    "configuration_id": "ll2:configuration:522",
+    "configuration_name": "Starship V3",
+    "operator_name": "SpaceX",
+    "site_location_name": "SpaceX Starbase, TX, USA",
+    "site_id": "ll2:site:235",
+    "mission_purpose": "Communications"
+  },
+  "actual_change_from_G3": {
+    "prior_generation": 3,
+    "prior_configuration": "Vulcan VC6L",
+    "prior_site": "Cape Canaveral SFS, FL, USA",
+    "prior_visual_selection": "d83091b990069d2b9cd6730b9081dc0b47d1d3cee9b1dbc049a2ab3798f7b739",
+    "selection_changed": true
+  },
+  "remote_g4_run": {
+    "id": 43452902197,
+    "event": "push",
+    "all5jobs": "success",
+    "boundary": "G4was a source-due run triggered by an earlier root source/docs push. Do not call it a naturally timed CF event. G2/G3 separately prove naturalCron all5job completion."
+  },
+  "cold_reopen": {
+    "callbacks": 0,
+    "http_requests": 0,
+    "same_raw_sha": true,
+    "same_source_epoch": true,
+    "same_visual_selection": true,
+    "same_accepted_seal": true
+  },
+  "observation_lines": [
+    "SELECTED_SCENE_COMPLETE mode=public-background callbacks=1 generation=4 sourceEpoch=1794583991 acceptedRawSha256=63d2df50b2d6af354d7e2d9aec9cb014676b0b91c6125017f9686b1cde62c0a9 selection=7f6b599d4479565aaf3b6cadfb4b71e74e6247644f9df8df4091acfcf3f42621 acceptedSeal=b1ecddddc13d4c6594ece610d67538738dace85875da914209e7a6f0e33f7b14 rocket=Starship V3 operator=SpaceX purpose=Communications site=US · SpaceX Starbase, TX, USA position=true countdown=06:54:42 stale=false rescheduled=false ordinaryBytes=126784 usedBytes=94560 mapBitmap=true rocketBitmap=true modelOrigin=true operatorMark=true markerAnchor=335,165 noDrawIo=true owner=b0ae891e31ba4af9af9ee3577441e72c|public-current|e3fbb187da1d",
+    "SELECTED_SCENE_COMPLETE mode=reopen callbacks=0 generation=4 sourceEpoch=1794583991 acceptedRawSha256=63d2df50b2d6af354d7e2d9aec9cb014676b0b91c6125017f9686b1cde62c0a9 selection=7f6b599d4479565aaf3b6cadfb4b71e74e6247644f9df8df4091acfcf3f42621 acceptedSeal=b1ecddddc13d4c6594ece610d67538738dace85875da914209e7a6f0e33f7b14 rocket=Starship V3 operator=SpaceX purpose=Communications site=US · SpaceX Starbase, TX, USA position=true countdown=06:53:00 stale=false rescheduled=false ordinaryBytes=126784 usedBytes=94640 mapBitmap=true rocketBitmap=true modelOrigin=true operatorMark=true markerAnchor=335,165 noDrawIo=true owner=b0ae891e31ba4af9af9ee3577441e72c|reopen|e3fbb187da1d"
+  ],
+  "ordinary_launcher_exits": {
+    "public": 0,
+    "reopen": 0,
+    "cleanup": 0,
+    "failed_fixture_cleanup": 0
+  },
+  "initial_failed_observation": {
+    "exit_code": 2,
+    "reason": "Actualpublicfeedadvanced from capturedG3Vulcan toG4Starship; exact old launch assertion failed. Preserved as failed observer fixture, no productacceptance fromit. RecapturedactualG4 then original exactwire/launch/visual assertions pass."
+  },
+  "cleanup": "Bothowned namespaces blankFeedBaseUrl/nulltemporal/acceptedcachepreserved; officialSimulatorFileKillApp thenFileKillDevice. All3knowncurrent launcherPIDs absent. SDKleaseFREE.",
+  "screenshot": "starship-current-fr165.png",
+  "screenshot_bytes": 35508,
+  "screenshot_sha256": "b9db6eb81cbd0b3fd8d69f41e2b95963df6fac4052fa46aa907a186c2a5f7959",
+  "auxiliary_log_download": "See hosted-g4-log-download.json; download failure is not silently converted to native product failure/pass. Actual allfivejob metadata is separately asserted.",
+  "proof_boundary": "OfficialSimulator actualpublicdata+assets and persistedreopen; no physicalFR165/phone/battery/Store or actualMacpoweroff test. No code/native/resource change or extra wholepropertyclosure."
+}

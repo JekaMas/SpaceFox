@@ -26,15 +26,26 @@
   BASIC reschedule software property LS10.P1 independently verified 4/4 current cases
   through1 command, with actual four-native parser/metadata/view/countdown assertions;
   [report](evidence/basic-reschedule-whole/FINAL.md). Existing MIN comparison was
-  already correct; no production change. Root judgment remains pending.
+  already correct; no production change. Root judgment is accepted in PROGRESS.md.
   Other3.1/3.2 obligations retain their existing open scope.
   BASIC launch selection/context/countdown LS07.P1/LS08.P1/LS09.P1 author whole
   self-verification passed24/24current cases through1command; one focused current
   SDK parser-to-View assertion passed1/1, other valid native receipts reused.
-  [Report](evidence/basic-launch-logic-whole/FINAL.md). One different peer and root
-  judgment remain; these tasks stay open for their other obligations.
+  [Report](evidence/basic-launch-logic-whole/FINAL.md). One different peer and root judgment are accepted; these tasks stay open for their other obligations.
 
-- [ ] 3.3 Implement the standard-runner Actions/custom-Pages workflow with lightweight due checks, serialized updates, bounded artifacts/retention and recovery of accepted state; verify not-due runs perform no provider fetch/publication, first/second validation, failure/overlap handling, unchanged age during catalog-only updates and disabled-schedule recovery. Enable only within an implementation/deployment request.
+- [x] 3.3 Implement the standard-runner Actions/custom-Pages workflow with lightweight due checks, serialized updates, bounded artifacts/retention and recovery of accepted state; verify not-due runs perform no provider fetch/publication, first/second validation, failure/overlap handling, unchanged age during catalog-only updates and disabled-schedule recovery. Enable only within an implementation/deployment request.
+  Current basic publisher/clock unit selects whole LS03.P1/P3/P12 and LS16.P1;
+  [report](evidence/basic-publisher-clock-whole/FINAL.md) records one different peer
+  closure of this selected software/retained operational unit and actual current
+  G1/G2 delivery, source-bound retained clock/Linux observations and new local
+  privacy/HTTP/recipe/readback witnesses. Historical snapshot aliases are retired
+  with explicit generic-clause mappings, never counted as passes. The complete
+  current sparse/recovery/metadata/finality conjuncts are closed by the six-property
+  [publisher review](evidence/autonomous-publisher-whole/peer-review/FINAL.md):
+  40 existing cases, 15 actual passing identities, retained valid receipts and
+  independent source/oracle inspection. [Clause reconciliation](evidence/autonomous-publisher-whole/task3.3-reconciliation.json)
+  includes the required hosted observations. Task3.4 still requires
+  independent-instance and physical readback; Garmin publication is deferred.
 - [ ] 3.4 Rehearse `docs/AGENT_SETUP.md` for the owner's instance and another owner's fork/feed URL; verify prerequisites, Actions/Pages settings, manual recovery, no required author credentials/AWS/recurring LLM calls, and actual HTTPS plus phone/watch readback; retain exact unavailable prerequisites rather than a false setup pass.
 - [x] 3.5 Implement durable feed-state active/pending/quota reservations, monotonic generations and expected-base/CAS; fault-inject before/after reservation, candidate persistence, complete-artifact deploy and promotion. Verify stale queued code rejection, restart reconciliation, lost quota accounting, missing-state stop, source-age preservation and reconstruction after artifact expiration; measure ledger and Git history growth.
 
@@ -51,7 +62,7 @@
 ## 5. Native watch face
 
 - [ ] 5.1 Implement local time, four persisted configurable Garmin fields and the owner-accepted 04/full scene with larger country/site text, header above time and adjacent countdown; verify missing metrics/context, long names, six-role assignments, settings persistence and circular screen fit in simulator and on FR165. Use `prototype/current/selection.json` and the accepted design; historical research does not replace owner selection or device acceptance.
-  Software portion5.1 independently verified and closed in this BASIC unit: WF01.P1/WF03.P1 whole-property verifier10/10 cases through1 command, with P2 conjunctive aliases folded into P1. Actual local API/UTC-clock, circular scene, four independent persisted choices, missing metric truth and separate battery pass within SDK boundary; see [report](evidence/basic-time-fields-whole/FINAL.md) and [run](evidence/basic-time-fields-whole/run-final.json). Task5.1 stays open only for its existing physical FR165 acceptance; no new physical prerequisite or new task is invented. Independent verification is recorded in [report](evidence/basic-time-fields-whole/INDEPENDENT.md); root judgment follows.
+  Software portion5.1 independently verified and closed in this BASIC unit: WF01.P1/WF03.P1 whole-property verifier10/10 cases through1 command, with P2 conjunctive aliases folded into P1. Actual local API/UTC-clock, circular scene, four independent persisted choices, missing metric truth and separate battery pass within SDK boundary; see [report](evidence/basic-time-fields-whole/FINAL.md) and [run](evidence/basic-time-fields-whole/run-final.json). Task5.1 stays open only for its existing physical FR165 acceptance; no new physical prerequisite or new task is invented. Independent verification is recorded in [report](evidence/basic-time-fields-whole/INDEPENDENT.md); root judgment is accepted in PROGRESS.md.
 
 - [x] 5.2 Implement the matching rocket visual, flat-map point and independent compact status indicators; verify known/unknown models and sites, corrected points, combined reschedule/stale state and unknown time without a precise countdown.
   Whole BASIC software properties WF02.P1/WF04.P1/WF05.P1/WF06.P1/WF07.P1 author
@@ -60,7 +71,7 @@
  11/11frameworkPASS, ordinary current public FeedService/cache reopen and source-bound
  390x390 screenshots; [report](evidence/basic-selected-scene-whole/FINAL.md) and
   [whole run](evidence/basic-selected-scene-whole/run-whole-accepted.json). This task is
-  software only. Independent peer VERIFY+FIX is closed; [independent report](evidence/basic-selected-scene-whole/INDEPENDENT.md) and [run](evidence/basic-selected-scene-whole/independent-sparse-final.json); root judgment follows. Existing
+  software only. Independent peer VERIFY+FIX is closed; [independent report](evidence/basic-selected-scene-whole/INDEPENDENT.md) and [run](evidence/basic-selected-scene-whole/independent-sparse-final.json); root judgment is accepted in PROGRESS.md. Existing
   physical task5.1 remains open. No global catalog, animation/AOD power, phone or Store closure.
 - [ ] 5.3 Implement the 2–3-second ignition/ascent animation; verify wrist activation and sleep/low-power stop and readable static fallback; document the measured device/power limits.
 - [x] 5.4 Generate Monkey C resources and manifest languages from `locales/catalog.json`; qualify the five primary locale modes selected by `locales/catalog.json#supportPolicy` using the supported FR165 simulator/font profile for software review; retain the other 31 draft modes as best-effort without mandatory quality expansion, using only complete real launches since 2021-11-13UTC plus ALL published future launches to next=null and actual UI/menu text for glyphs, real site names, memory, fixed 24-hour clock, numeric countdown, locale number formatting, English fallback and preserved metric selections; bind complete corpus/software receipts and production source hashes to explicit softwareQualifiedLocales admission in runtime and manifest, independently of nativeQualified/human/device flags; retain English bootstrap and reject missing/stale proof. Advertise only software-qualified languages. Resource/preview/license foundation is owned by `localize-free-distribution`, not this task. Whole-property closure: WF12.P1/P3/P4, 18 cases through six commands passed in `evidence/basic-main-review/whole-properties-run`, including the actual four-test native wrapper; see `evidence/basic-main-review/FINAL.md`.
@@ -90,3 +101,17 @@ Current decisions, exact graph counts and remaining software/external boundaries
 [evidence/current-only-finite-spec/retirement-inventory.json](evidence/current-only-finite-spec/retirement-inventory.json).
 
 Local task7.1 packaging increment: whole current-source RL02.P2 author apply/verify is GREEN (11cases/2commands, production candidate built) and recorded in `evidence/basic-release-package-whole/STATUS.md`; package readiness does not close physical/phone/Store tasks.
+
+Task3.3 whole current publisher apply/self verification: existing LS03.P4/P5/P6/P7/P8/P10
+are self-green across40 existing cases/15 actual observed methods, with valid
+original greens retained and only changed assertions/fixtures rerun. See
+[evidence/autonomous-publisher-whole/WHOLE-RESULT.json](evidence/autonomous-publisher-whole/WHOLE-RESULT.json)
+and [full clause reconciliation](evidence/autonomous-publisher-whole/task3.3-reconciliation.json).
+Current recipe/source rights, sparse runtime-only current+retained closure,
+source/CAS/quota/age/refusal/finality/recovery and schema3 metadata resume/304/source
+priority execute through real local Git/CLI/loopback HTTP. No production or runtime
+seed changes were required. Required hosted G2/G3 observations remain root-owned
+and source/hash-bound in that evidence; no remote/SDK/provider/account operation
+was performed by this unit. Task3.4 fork/phone and physical/Store tasks remain
+separate. One independent peer review/root judgment remains; self verification
+is not an independent verdict.

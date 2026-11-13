@@ -1,0 +1,50 @@
+[
+  {
+    "name": "graph",
+    "argv": [
+      "python3",
+      "-B",
+      "/Users/jekamas/projects/SpaceFox/.agents/workflow/scripts/requirement_tests.py",
+      "--root",
+      ".",
+      "--change",
+      "spacefox-watchface",
+      "validate"
+    ],
+    "exit": 0,
+    "status": "passed"
+  },
+  {
+    "name": "discovery",
+    "argv": [
+      "python3",
+      "-B",
+      "/Users/jekamas/projects/SpaceFox/.agents/workflow/scripts/discovery_ledger.py",
+      "--root",
+      ".",
+      "--change",
+      "spacefox-watchface",
+      "--properties",
+      "LS03.P1,LS03.P3,LS03.P12,LS16.P1"
+    ],
+    "exit": 0,
+    "status": "passed"
+  },
+  {
+    "name": "query",
+    "argv": [
+      "python3",
+      "-B",
+      "/Users/jekamas/projects/SpaceFox/.agents/workflow/scripts/requirement_tests.py",
+      "--root",
+      ".",
+      "--change",
+      "spacefox-watchface",
+      "query",
+      "--properties",
+      "LS03.P1,LS03.P3,LS03.P12,LS16.P1"
+    ],
+    "exit": 0,
+    "status": "passed"
+  }
+]

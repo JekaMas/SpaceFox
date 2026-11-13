@@ -163,7 +163,9 @@ restore JSON должен иметь совпадающий fingerprint, `restor
 прежним UUID/key, текущие products/languages из pinned manifest и сохранённый IQ с тем же
 digest. После первого выпуска публичный `latest_release` в signing identity
 связывает version/package digest: дальнейшая production сборка требует именно
-этот предыдущий receipt/package. Сейчас `latest_release:null`, выпусков ещё нет.
+этот предыдущий receipt/package. После тестовой публикации `latest_release` указывает на0.1.0 и точный digest IQ;
+следующая production сборка требует сохранённый исходный receipt/IQ и более
+высокую версию. Это не признак одобрения Garmin.
 `--evidence receipt.json` связывает
 публичные JSON receipts с явно указанной `proof_boundary`; хранить там секреты
 нельзя. Новый output обязателен; overwrite и output внутри source worktree запрещены.

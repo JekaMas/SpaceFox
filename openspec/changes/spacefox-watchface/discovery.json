@@ -13,21 +13,13 @@
       "LS02.P5",
       "LS03.P1",
       "LS03.P10",
-      "LS03.P11",
       "LS03.P12",
-      "LS03.P13",
-      "LS03.P14",
-      "LS03.P15",
-      "LS03.P16",
-      "LS03.P17",
-      "LS03.P2",
       "LS03.P3",
       "LS03.P4",
       "LS03.P5",
       "LS03.P6",
       "LS03.P7",
       "LS03.P8",
-      "LS03.P9",
       "LS04.P1",
       "LS04.P2",
       "LS04.P3",
@@ -147,12 +139,21 @@
       "WF12.P4"
     ],
     "test_ids": [
-      "node::clock aborts a stalled real HTTP dispatch near ten seconds",
-      "node::clock configuration checker rejects an omitted preview switch or added route",
-      "node::clock configuration explicitly disables public URLs and has only the Cron trigger",
-      "node::clock isolates rejected wakeups and never follows redirect destinations",
-      "node::dispatch uses a Workers-supported redirect mode",
-      "node::scheduled boundary, failures, concurrency and secret safety",
+      "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_current_live_root_and_immutable_negative",
+      "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_current_source_data_only_extension_and_preserved_refusals",
+      "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_empty_pages_exact_witness_and_nonempty_uncertainty",
+      "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_current_policy_cli_refusals_cas_and_failure_preservation",
+      "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_pending_armed_core_promotion_recovery_and_partial_prefix",
+      "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_source_acceptance_and_adoption_positive",
+      "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_sparse_resume_304_cadence_source_isolation_and_no_journal",
+      "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_zero_work_gates_and_workflow_serialization",
+      "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_pages_empty_identity_and_uncertainty_negative",
+      "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_prepare_not_due_second_validation_and_disabled_schedule_recovery",
+      "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_runtime_only_two_generations_finality_and_exact_readback",
+      "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_saved_faults_stale_source_and_cas_refuse_without_publication",
+      "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_selected_current_bound_and_explicit_unknown_absence",
+      "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_source_materialization_and_prepare_before_authority",
+      "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_source_rights_edits_and_bad_pin_negative",
       "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_context_negative",
       "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_context_positive",
       "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_country_types_negative",
@@ -179,6 +180,37 @@
       "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_wake_positive",
       "unittest::tests.test_basic_menu_evidence.BasicMenuEvidenceTest.test_actual_menu_missing_glyph_or_changed_label_refuses",
       "unittest::tests.test_basic_menu_evidence.BasicMenuEvidenceTest.test_actual_primary_menu_font_binding",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_api_negative",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_api_positive",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_build_negative",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_build_positive",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_denied_negative",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_denied_positive",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_languages_negative",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_languages_positive",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_metrics_negative",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_metrics_positive",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_samples_negative",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_samples_positive",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_unsupported_negative",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_unsupported_positive",
+      "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_clock_operational_negative",
+      "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_clock_operational_positive",
+      "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_clock_retained_configuration",
+      "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_clock_retained_configuration_negative",
+      "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_clock_retained_dispatch_deadline",
+      "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_clock_retained_isolation_negative",
+      "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_current_linux_retained",
+      "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_http404_positive",
+      "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_http_admission_negative",
+      "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_personal_privacy_negative",
+      "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_personal_privacy_positive",
+      "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_personal_publication_positive",
+      "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_readback_immutable_negative",
+      "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_readback_positive",
+      "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_readback_root_negative",
+      "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_readback_unavailable_negative",
+      "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_recipe_closure_and_rights",
       "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_different_launch_negative",
       "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_known_new_time_positive",
       "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_unchanged_refresh_negative",
@@ -232,9 +264,6 @@
       "unittest::tests.test_catalog_core.CatalogCoreTest.test_roles_positive",
       "unittest::tests.test_catalog_core.CatalogCoreTest.test_source_contract_negative",
       "unittest::tests.test_catalog_core.CatalogCoreTest.test_source_contract_positive",
-      "unittest::tests.test_cloud_geography_inputs.CloudGeographyInputsTest.test_changed_source_pin_and_curation_need_no_second_path_list",
-      "unittest::tests.test_cloud_geography_inputs.CloudGeographyInputsTest.test_dirty_inputs_and_ordinary_local_edits_are_preserved",
-      "unittest::tests.test_cloud_geography_inputs.CloudGeographyInputsTest.test_missing_wrong_untracked_source_and_dependencies_reject",
       "unittest::tests.test_current_catalog.CurrentCatalogTest.test_data_only_revision_keeps_evidence_and_reopens_changed_identity",
       "unittest::tests.test_current_catalog.CurrentCatalogTest.test_dated_inventory_produces_closed_current_view_and_preserves_archive",
       "unittest::tests.test_current_catalog.CurrentCatalogTest.test_invalid_or_stale_registry_cannot_activate",
@@ -245,7 +274,6 @@
       "unittest::tests.test_current_catalog_next.CurrentCatalogNextTest.test_literal_new_architecture_mapping_and_origins_positive",
       "unittest::tests.test_current_catalog_next.CurrentCatalogNextTest.test_new_art_wrong_model_rights_digest_and_coordinates_atomic_cli_negative",
       "unittest::tests.test_current_catalog_next.CurrentCatalogNextTest.test_retained_history_and_unrelated_selection_positive",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_current_public_source_art_composition",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls01_p1_s01_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls01_p1_s01_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls01_p2_s01_positive_current",
@@ -264,64 +292,6 @@
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p4_s01_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p5_c03_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p5_c04_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p11_c02_negative",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p12_c01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p12_c02_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p12_c03_negative",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p12_c04_negative",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p12_c05_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p13_c01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p13_c02_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p14_c01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p14_c02_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p15_c01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p15_c02_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p16_c01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p16_c02_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p16_c03_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p16_c04_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p16_c05_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p17_c01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p17_c02_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p2_c01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p2_c02_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p3_c01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p3_c02_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p3_c03_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p4_c01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p4_c05_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p4_c06_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c02_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c03_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c04_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c05_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c06_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p6_c01_positive",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p6_c02_negative",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p6_c04_negative",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p6_c05_positive",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p6_c06_negative",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p6_c07_positive",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p6_c08_negative",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c02_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c03_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c04_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c05_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c06_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c07_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c08_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c09_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c10_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c11_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p8_c01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p8_c02_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p8_c03_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p8_c04_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p8_c05_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p9_c01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p9_c02_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p1_s01_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p1_s01_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p1_s02_negative_current",
@@ -458,8 +428,6 @@
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p6_c02_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p6_c03_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p6_c04_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls16_p1_c07_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls16_p1_c08_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_metadata_current_cli_defaults_and_unsupported_policy_refusal",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_metadata_current_policy_304_resume_and_refusals",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_metadata_current_quota_age_and_cas_refusal",
@@ -705,8 +673,6 @@
       "unittest::tests.test_live_acceptance.LiveAcceptanceTest.test_another_family_uses_the_official_app_positive",
       "unittest::tests.test_live_acceptance.LiveAcceptanceTest.test_package_is_uploaded_but_awaiting_review_negative",
       "unittest::tests.test_live_acceptance.LiveAcceptanceTest.test_package_is_uploaded_but_awaiting_review_positive",
-      "unittest::tests.test_live_acceptance.LiveAcceptanceTest.test_personal_deployment_negative",
-      "unittest::tests.test_live_acceptance.LiveAcceptanceTest.test_personal_deployment_positive",
       "unittest::tests.test_native_aod_recovery.NativeAodRecoveryTest.test_current_low_rejection_reopen_and_sparse_pixels",
       "unittest::tests.test_native_aod_recovery.NativeAodRecoveryTest.test_missing_guard_changed_seal_and_false_pixels_refuse",
       "unittest::tests.test_native_feed.NativeFeedValidationTest.test_ls05_p2_s01_negative",
@@ -771,8 +737,6 @@
       "unittest::tests.test_origin_coverage_whole.OriginCoverageWholeTest.test_missing_provenance_atomic_cli_negative",
       "unittest::tests.test_origin_coverage_whole.OriginCoverageWholeTest.test_unknown_jurisdiction_atomic_cli_negative",
       "unittest::tests.test_origin_coverage_whole.OriginCoverageWholeTest.test_unrelated_falcon9_selected_closure_retained_positive",
-      "unittest::tests.test_publisher_content_integration.PublisherContentIntegrationTest.test_changed_current_content_inputs_reject_without_replacement",
-      "unittest::tests.test_publisher_content_integration.PublisherContentIntegrationTest.test_new_current_curation_and_svg_materialize_without_seed_edit",
       "unittest::tests.test_release.ReleaseTest.test_a_signed_app_release_is_defective_negative",
       "unittest::tests.test_release.ReleaseTest.test_a_signed_app_release_is_defective_positive",
       "unittest::tests.test_release.ReleaseTest.test_added_snapshot_inputs_during_sdk_build_negative",
@@ -790,8 +754,8 @@
       "unittest::tests.test_release.ReleaseTest.test_manifest_source_and_output_negative",
       "unittest::tests.test_release.ReleaseTest.test_sdk_export_and_provenance_positive",
       "unittest::tests.test_release.ReleaseTest.test_update_and_backup_negative",
-      "unittest::tests.test_release_identity.ProductionIdentityTest.test_update_the_official_app_negative",
-      "unittest::tests.test_release_identity.ProductionIdentityTest.test_update_the_official_app_positive",
+      "unittest::tests.test_release_identity.SigningCustodyTest.test_actual_encrypted_restore_and_independent_signature",
+      "unittest::tests.test_release_identity.SigningCustodyTest.test_wrong_corrupt_swapped_and_existing_identity_refused",
       "unittest::tests.test_remaining_art.RemainingArtTest.test_all_new_geometry_and_exact_selector_positive",
       "unittest::tests.test_remaining_art.RemainingArtTest.test_data_only_replacement_reopen_new_generation_positive",
       "unittest::tests.test_remaining_art.RemainingArtTest.test_finite_reviews_and_unchanged_facts_positive",
@@ -805,21 +769,7 @@
       "unittest::tests.test_remaining_art_r3.RemainingArtR3Test.test_malformed_typed_export_root_retains_written_objects",
       "unittest::tests.test_remaining_art_r3.RemainingArtR3Test.test_original_rights_geometry_and_atomic_invalid_source",
       "unittest::tests.test_remaining_art_r3.RemainingArtR3Test.test_other_organization_mark_cannot_activate",
-      "unittest::tests.test_remaining_art_r3.RemainingArtR3Test.test_public_cli_admit_reopen_export_and_atomic_wrong_model",
-      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_build_positive",
-      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_build_negative",
-      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_languages_positive",
-      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_languages_negative",
-      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_api_positive",
-      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_api_negative",
-      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_metrics_positive",
-      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_metrics_negative",
-      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_denied_positive",
-      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_denied_negative",
-      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_unsupported_positive",
-      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_unsupported_negative",
-      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_samples_positive",
-      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_samples_negative"
+      "unittest::tests.test_remaining_art_r3.RemainingArtR3Test.test_public_cli_admit_reopen_export_and_atomic_wrong_model"
     ]
   },
   "reviews": [
@@ -852,8 +802,6 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p1_s02_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p1_s03_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p1_s03_negative_current",
-        "unittest::tests.test_live_acceptance.LiveAcceptanceTest.test_personal_deployment_positive",
-        "unittest::tests.test_live_acceptance.LiveAcceptanceTest.test_personal_deployment_negative",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p1_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p1_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p3_s05_positive_current",
@@ -1152,8 +1100,8 @@
         "RL08.P1"
       ],
       "test_ids": [
-        "unittest::tests.test_release_identity.ProductionIdentityTest.test_update_the_official_app_positive",
-        "unittest::tests.test_release_identity.ProductionIdentityTest.test_update_the_official_app_negative",
+        "unittest::tests.test_release_identity.SigningCustodyTest.test_actual_encrypted_restore_and_independent_signature",
+        "unittest::tests.test_release_identity.SigningCustodyTest.test_wrong_corrupt_swapped_and_existing_identity_refused",
         "unittest::tests.test_release.ReleaseTest.test_adult_owner_publishes_the_app_positive",
         "unittest::tests.test_release.ReleaseTest.test_adult_owner_publishes_the_app_negative",
         "unittest::tests.test_release.ReleaseTest.test_audience_review_identifies_an_applicable_restriction_positive",
@@ -2274,13 +2222,10 @@
       "id": "D-cloud-delivery-r1",
       "question": "Implement real serialized source-pinned GitHub Pages transport with durable unique intent/finality and exact whole-artifact readback.",
       "property_ids": [
-        "LS03.P2",
         "LS13.P4",
         "LS14.P4"
       ],
       "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p2_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p2_c02_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls13_p4_c03_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls13_p4_c05_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p4_c15_positive_current",
@@ -2357,14 +2302,11 @@
         "LS14.P5"
       ],
       "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p3_c03_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p5_c02_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p5_c03_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p3_c01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p5_c01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p5_c04_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p5_c05_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p3_c02_negative_current"
+        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p5_c05_positive_current"
       ],
       "searches": [
         {
@@ -2540,12 +2482,7 @@
       "property_ids": [
         "LS03.P4"
       ],
-      "test_ids": [
-        "unittest::tests.test_cloud_geography_inputs.CloudGeographyInputsTest.test_changed_source_pin_and_curation_need_no_second_path_list",
-        "unittest::tests.test_cloud_geography_inputs.CloudGeographyInputsTest.test_dirty_inputs_and_ordinary_local_edits_are_preserved",
-        "unittest::tests.test_cloud_geography_inputs.CloudGeographyInputsTest.test_missing_wrong_untracked_source_and_dependencies_reject",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p4_c01_positive_current"
-      ],
+      "test_ids": [],
       "searches": [
         {
           "kind": "exact",
@@ -2982,12 +2919,7 @@
       "property_ids": [
         "LS03.P4"
       ],
-      "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p4_c05_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p4_c06_positive_current",
-        "unittest::tests.test_publisher_content_integration.PublisherContentIntegrationTest.test_new_current_curation_and_svg_materialize_without_seed_edit",
-        "unittest::tests.test_publisher_content_integration.PublisherContentIntegrationTest.test_changed_current_content_inputs_reject_without_replacement"
-      ],
+      "test_ids": [],
       "searches": [
         {
           "kind": "exact",
@@ -3028,14 +2960,7 @@
       "property_ids": [
         "LS03.P5"
       ],
-      "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c03_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c04_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c05_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c06_negative_current"
-      ],
+      "test_ids": [],
       "searches": [
         {
           "kind": "exact",
@@ -3081,9 +3006,7 @@
       "property_ids": [
         "LS03.P6"
       ],
-      "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c02_negative_current"
-      ],
+      "test_ids": [],
       "searches": [
         {
           "kind": "exact",
@@ -3124,13 +3047,7 @@
       "property_ids": [
         "LS03.P8"
       ],
-      "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p8_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p8_c02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p8_c03_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p8_c04_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p8_c05_positive_current"
-      ],
+      "test_ids": [],
       "searches": [
         {
           "kind": "exact",
@@ -3368,13 +3285,7 @@
       "property_ids": [
         "LS03.P7"
       ],
-      "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c03_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c04_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c05_positive_current"
-      ],
+      "test_ids": [],
       "searches": [
         {
           "kind": "exact",
@@ -3420,12 +3331,7 @@
       "property_ids": [
         "LS03.P7"
       ],
-      "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c06_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c07_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c08_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c09_positive_current"
-      ],
+      "test_ids": [],
       "searches": [
         {
           "kind": "exact",
@@ -3471,10 +3377,7 @@
       "property_ids": [
         "LS03.P7"
       ],
-      "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c10_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c11_positive_current"
-      ],
+      "test_ids": [],
       "searches": [
         {
           "kind": "exact",
@@ -3568,47 +3471,6 @@
       ],
       "disposition": "current_change",
       "rationale": "Data/art-only apply unit. Preserve old sources/receipts/tests and inherited stale DAG pins. NEW independent verifier and root source/contact-sheet judgment remain required; all known-model work stays open with27 exact gaps."
-    },
-    {
-      "id": "metadata-art-public-r1",
-      "question": "Does the exact public successor combine accepted metadata/art/cloud without data-driven count drift, source epoch mutation or blocked-gate side effects?",
-      "property_ids": [
-        "LS03.P9"
-      ],
-      "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p9_c01_positive_current"
-      ],
-      "searches": [
-        {
-          "kind": "exact",
-          "status": "completed",
-          "query": "Read named accepted metadata/art/cloud commits, source owners, root judgments and public whitelist transform inventory.",
-          "outcome": "Only current public integration is unobserved; one new actual-count/sparse producer/control trace is needed.",
-          "results": [
-            {
-              "path": "tests/test_metadata_art_public.py",
-              "classification": "test_proof",
-              "reason": "New current source/public boundary instead of repeating historical long traces."
-            }
-          ]
-        },
-        {
-          "kind": "semantic",
-          "status": "not_applicable",
-          "query": "Unfamiliar implementation ownership discovery",
-          "outcome": "Exact source owners and accepted commits were supplied and read directly.",
-          "reason": "No unknown ownership or exploratory semantic search question."
-        },
-        {
-          "kind": "jetbrains-index",
-          "status": "not_applicable",
-          "query": "Structural symbol navigation/refactoring",
-          "outcome": "No semantic refactor or symbol discovery needed.",
-          "reason": "Exact local source/test/tool paths were supplied; no index creation requested."
-        }
-      ],
-      "disposition": "current_change",
-      "rationale": "The actual public source/data/count integration is new; retained old long greens do not alone prove this successor. One loopback/sparse CLI witness covers current data and required early gates; external hosted/native claims remain forbidden."
     },
     {
       "id": "D-native-clock-bootstrap",
@@ -4261,64 +4123,6 @@
       "rationale": "Finite data/art applyunit; NEW independent/rootjudgment required. Allknown/global/native/public/Store gates remainopen; oldpins/receiptsnotrefreshed."
     },
     {
-      "id": "D-page-art-public-r1",
-      "question": "Does the frozen public successor compose accepted policy/art through a canonical authoring-cwd route with distinct observations while retaining all earlier frozen evidence and a clean checkout?",
-      "property_ids": [
-        "LS03.P11"
-      ],
-      "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_current_public_source_art_composition"
-      ],
-      "searches": [
-        {
-          "kind": "exact",
-          "status": "completed",
-          "query": "Assigned policy/art heads, public f621 parent, prior accepted export/sparse scripts and exact recipe/metadata owners.",
-          "outcome": "One new real-public local Git/HTTP/producer/sparse composition control; old behavior owners and accepted evidence retained.",
-          "results": [
-            {
-              "path": "tests/test_page_art_public.py",
-              "classification": "change_candidate",
-              "reason": "Direct actual-public integration with literal URLs/raw-prefix/identity/rights and refusal oracle."
-            },
-            {
-              "path": "openspec/changes/spacefox-watchface/evidence/page-art-public/independent-r1/test_graph_route.py",
-              "classification": "change_candidate",
-              "reason": "Frozen R1 cwd/polarity repair source retained unchanged; independent R2 found its negative probe overwrites a tracked prior receipt."
-            },
-            {
-              "path": "openspec/changes/spacefox-watchface/evidence/page-art-public/independent-r2/test_graph_route.py",
-              "classification": "change_candidate",
-              "reason": "R2 canonical route uses unchanged frozen pack/materializer in temporary space and verifies earlier packet hashes before/after."
-            },
-            {
-              "path": "openspec/changes/spacefox-watchface/evidence/page-art-public/independent-r2/probe_relocated_public.py",
-              "classification": "change_candidate",
-              "reason": "Exact R1 behavioral assertions retained; persistent receipt write removed so observations print only."
-            }
-          ]
-        },
-        {
-          "kind": "semantic",
-          "status": "not_applicable",
-          "query": "Exact owners and files supplied by root.",
-          "reason": "No unfamiliar owner/index setup needed.",
-          "outcome": "Direct existing-owner inspection only.",
-          "results": []
-        },
-        {
-          "kind": "jetbrains-index",
-          "status": "not_applicable",
-          "query": "Exact assigned source/test/export owners; no indexed semantic question.",
-          "reason": "No IDE/native run or index setup is needed for bounded direct integration.",
-          "outcome": "No JetBrains/semantic execution claim.",
-          "results": []
-        }
-      ],
-      "disposition": "current_change",
-      "rationale": "R1 repaired cwd/polarity; independent R2 demonstrated a tracked actual-ded receipt overwrite in the R1 negative launcher. New R2 probe prints only, temporary launcher copy preserves all frozen R1 files, and pre/post hash/clean checks qualify the repaired canonical route. Original product/public test/pins/old evidence remain exact. DIFFERENT NEW peer/root judgment after repair freeze; no whole-DAG closure."
-    },
-    {
       "id": "D-provider-detail-efficiency-r1",
       "question": "Can confirmed terminal omissions avoid optional HTTP without losing needed nonterminal detail, contextual mode safety, source facts/age or monotonic quota?",
       "property_ids": [
@@ -4437,11 +4241,7 @@
       "property_ids": [
         "LS03.P12"
       ],
-      "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p12_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p12_c02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p12_c05_negative_current"
-      ],
+      "test_ids": [],
       "searches": [
         {
           "kind": "exact",
@@ -4604,15 +4404,7 @@
       "property_ids": [
         "LS16.P1"
       ],
-      "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls16_p1_c08_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls16_p1_c07_positive_current",
-        "node::clock aborts a stalled real HTTP dispatch near ten seconds",
-        "node::clock configuration checker rejects an omitted preview switch or added route",
-        "node::clock configuration explicitly disables public URLs and has only the Cron trigger",
-        "node::clock isolates rejected wakeups and never follows redirect destinations",
-        "node::scheduled boundary, failures, concurrency and secret safety"
-      ],
+      "test_ids": [],
       "searches": [
         {
           "kind": "exact",
@@ -4668,65 +4460,14 @@
       "rationale": "One whole owning requirement property, all scenarios/positive-negative edges, exact typed Node identities, explicit substituted boundaries and blocked real qualification. Only selected complete-block projection is structurally validated; inherited canonical graph debt remains red. No full task closes."
     },
     {
-      "id": "D-public-current-clock-whole-r1",
-      "question": "Does the whole frozen current2026 portable source/export/integration unit bind its actual current graph edge and preserve behavior, provenance, public history and protected boundaries?",
-      "property_ids": [
-        "LS03.P15"
-      ],
-      "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p15_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p15_c02_negative_current"
-      ],
-      "searches": [
-        {
-          "kind": "exact",
-          "status": "completed",
-          "query": "Inspected actual selected source/public git trees, snapshots/transforms, P15 command/cases/discovery, source owners and retained public CLI/sparse/config receipts.",
-          "outcome": "Current P15 incorrectly addressed the held predecessor. Rebind current owner/cases/command; preserve historical command and receipt payloads. Pending-only no-journal readback is coherent with actual recover/Site.observe semantics.",
-          "results": [
-            {
-              "path": "openspec/changes/spacefox-watchface/evidence/public-current-clock/round1/audit.py",
-              "classification": "change_candidate",
-              "reason": "Current read-only source/export audit with six digest falsifications and historical-unit rejection."
-            },
-            {
-              "path": "tests/test_public_provider_art_diagnostics.py",
-              "classification": "interface_dependency",
-              "reason": "Retained exact pending closure and dual-root reread CLI evidence; no semantic input changed."
-            }
-          ]
-        },
-        {
-          "kind": "semantic",
-          "status": "not_applicable",
-          "query": "Exact owner paths supplied and directly inspected.",
-          "reason": "No unknown-owner question.",
-          "outcome": "No semantic/index claim.",
-          "results": []
-        },
-        {
-          "kind": "jetbrains-index",
-          "status": "not_applicable",
-          "query": "Known portable Python, Git inventory and Node clock boundary.",
-          "reason": "No indexed/native structural question.",
-          "outcome": "No SDK or IDE proof claimed.",
-          "results": []
-        }
-      ],
-      "disposition": "current_change",
-      "rationale": "Independent whole-unit review found and repaired material current graph binding. Production/public bytes and selected source remain unchanged; retained behavioral receipts remain valid at their exact observed heads. New owner/discriminator cases require a different NEW final whole-unit peer and root judgment. No hosted/native/worldwide completion claim."
-    },
-    {
       "id": "D-canonical-evidence-reconcile-20261112",
       "question": "Which exact existing and newly separated case owners retain the frozen historical boundaries while binding current portable source, and what prior identities were superseded?",
       "property_ids": [
         "LS03.P6",
-        "LS03.P9",
         "VC11.P4",
         "RL02.P2"
       ],
       "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p9_c02_negative_current",
         "unittest::tests.test_canonical_sdk_export.CanonicalSdkExport.test_actual_joined_export_and_signature_qualification",
         "unittest::tests.test_further_art_r2.FurtherArtR2Test.test_cli_admission_reopens_and_preserves_retained_objects",
         "unittest::tests.test_canonical_geometry_negative.CanonicalGeometryNegative.test_unsupported_geometry_refuses_without_mutation",
@@ -4792,9 +4533,7 @@
       "property_ids": [
         "LS16.P1"
       ],
-      "test_ids": [
-        "node::dispatch uses a Workers-supported redirect mode"
-      ],
+      "test_ids": [],
       "searches": [
         {
           "kind": "exact",
@@ -4902,10 +4641,7 @@
       "property_ids": [
         "LS16.P1"
       ],
-      "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls16_p1_c07_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls16_p1_c08_negative_current"
-      ],
+      "test_ids": [],
       "searches": [
         {
           "kind": "exact",
@@ -4944,107 +4680,6 @@
       ],
       "disposition": "current_change",
       "rationale": "Two stale blocked manual cases replaced by typed saved-evidence routes; exact prior LS16 graph/discovery copied to packet. Original raw receipts/pins and all unrelated nodes remain intact. This is evidence routing, not live execution. New independent peer/root judgment required after this repair."
-    },
-    {
-      "id": "D-ls03-current-catalog-art-clock",
-      "question": "Does the new portable successor preserve actual public history and bind accepted catalog art and clock source?",
-      "property_ids": [
-        "LS03.P16"
-      ],
-      "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p16_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p16_c02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p16_c03_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p16_c04_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p16_c05_positive_current"
-      ],
-      "searches": [
-        {
-          "kind": "exact",
-          "status": "completed",
-          "query": "Inspect exact frozen export, binding and accepted root receipts.",
-          "outcome": "Selected1,137files match acceptedac84 with29 explicit transforms; literal684closure and all196old lifecycle decisions preserved. Global13 and accepted-context receipts retain exact scopes.",
-          "results": [
-            {
-              "path": "openspec/changes/spacefox-watchface/evidence/public-current-catalog-art-clock/global14-r3/audit.py",
-              "classification": "test_proof",
-              "reason": "Entire source/public/history/literal data binding."
-            },
-            {
-              "path": "openspec/changes/spacefox-watchface/evidence/public-current-catalog-art-clock/global14-r3/run_current.py",
-              "classification": "test_proof",
-              "reason": "Nine current cases at the frozen clean public source."
-            },
-            {
-              "path": "openspec/changes/spacefox-watchface/evidence/public-current-catalog-art-clock/independent-final-global14/audit.py",
-              "classification": "test_proof",
-              "reason": "Final two-doc and snapshot correction; exact remaining product tree unchanged, old behavior receipts retained."
-            }
-          ]
-        },
-        {
-          "kind": "semantic",
-          "status": "not_applicable",
-          "query": "Known exact source and owner.",
-          "reason": "Known ownership.",
-          "outcome": "No semantic search claim.",
-          "results": []
-        },
-        {
-          "kind": "jetbrains-index",
-          "status": "not_applicable",
-          "query": "Known exact source and owner.",
-          "reason": "No index needed.",
-          "outcome": "No index claim.",
-          "results": []
-        }
-      ],
-      "disposition": "current_change",
-      "rationale": "After global13 historical/current test repair, root admitted global14 context sourceac84cf1. Port all accepted owners/data/tests and23-file seed; explicit current count/closure transforms preserve historical tests.9 changed public cases and5 audits pass; next different whole peer/root required. Fresh whole review found only nonmaterial active-count wording. Finala159185 corrects those docs, with2 affected binding audits; no behavior replay. Root judgment pending."
-    },
-    {
-      "id": "D-ls03-new-art-http",
-      "question": "Does reviewed current art survive real portable production and recover, while corruption fails closed?",
-      "property_ids": [
-        "LS03.P17"
-      ],
-      "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p17_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p17_c02_negative_current"
-      ],
-      "searches": [
-        {
-          "kind": "exact",
-          "status": "completed",
-          "query": "Inspect exact frozen export, binding and accepted root receipts.",
-          "outcome": "New source revision and sole public successor require distinct binding.",
-          "results": [
-            {
-              "path": "openspec/changes/spacefox-watchface/evidence/public-current-catalog-art-clock/round1/new_art_http.py",
-              "classification": "test_proof",
-              "reason": "Checks fixed source and public snapshot."
-            }
-          ]
-        },
-        {
-          "kind": "semantic",
-          "status": "not_applicable",
-          "query": "Known exact source and owner.",
-          "reason": "Known ownership.",
-          "outcome": "No semantic search claim.",
-          "results": []
-        },
-        {
-          "kind": "jetbrains-index",
-          "status": "not_applicable",
-          "query": "Known exact source and owner.",
-          "reason": "No index needed.",
-          "outcome": "No index claim.",
-          "results": []
-        }
-      ],
-      "disposition": "current_change",
-      "rationale": "Actual new0b01214 Hanbit producer/Git/HTTP2/2 after global14 owner/data closure change. Identical literal shard04d81b;source age/state retention and corrupt refusal observed. No hosted/provider qualification."
     },
     {
       "id": "D-current-catalog-whole-closure",
@@ -5371,13 +5006,13 @@
     },
     {
       "id": "D-production-signing-whole-r1",
-      "question": "Qualify the original RL02.P1 stable production RSA4096 custody, encrypted backup actual restore and same-identity higher-version SDK candidate update without changing physical/Store boundaries.",
+      "question": "Retain original production-signing historical evidence while routing current custody controls to real disposable identities after public publication.",
       "property_ids": [
         "RL02.P1"
       ],
       "test_ids": [
-        "unittest::tests.test_release_identity.ProductionIdentityTest.test_update_the_official_app_positive",
-        "unittest::tests.test_release_identity.ProductionIdentityTest.test_update_the_official_app_negative"
+        "unittest::tests.test_release_identity.SigningCustodyTest.test_actual_encrypted_restore_and_independent_signature",
+        "unittest::tests.test_release_identity.SigningCustodyTest.test_wrong_corrupt_swapped_and_existing_identity_refused"
       ],
       "searches": [
         {
@@ -5416,7 +5051,7 @@
         }
       ],
       "disposition": "current_change",
-      "rationale": "Original property/case IDs retained. Local same-Mac custody/update proof does not qualify offsite disaster recovery, final native language/globe, physical installation/migration/battery or Store."
+      "rationale": "Historical original production restore/SDK observations remain immutable. Initial-production campaign and production secret-byte scans are retired after public 0.1.0 publication. Current tests prove only disposable OpenSSL custody behavior; supplemental published history admission is separately bounded. No broadened production/device/Store closure."
     },
     {
       "id": "D-native-localization-whole",
@@ -5919,15 +5554,12 @@
         "LS03.P7",
         "VC05.P4",
         "LS05.P5",
-        "LS03.P11",
         "LS01.P3",
         "LS02.P5",
         "LS11.P6",
         "VC11.P5",
         "LS03.P12",
-        "LS03.P13",
         "VC02.P2",
-        "LS03.P14",
         "VC20.P1",
         "VC20.P2",
         "VC20.P3",
@@ -5945,13 +5577,9 @@
         "RL08.P1"
       ],
       "test_ids": [
-        "unittest::tests.test_cloud_geography_inputs.CloudGeographyInputsTest.test_changed_source_pin_and_curation_need_no_second_path_list",
-        "unittest::tests.test_cloud_geography_inputs.CloudGeographyInputsTest.test_dirty_inputs_and_ordinary_local_edits_are_preserved",
-        "unittest::tests.test_cloud_geography_inputs.CloudGeographyInputsTest.test_missing_wrong_untracked_source_and_dependencies_reject",
         "unittest::tests.test_current_catalog.CurrentCatalogTest.test_data_only_revision_keeps_evidence_and_reopens_changed_identity",
         "unittest::tests.test_current_catalog.CurrentCatalogTest.test_dated_inventory_produces_closed_current_view_and_preserves_archive",
         "unittest::tests.test_current_catalog.CurrentCatalogTest.test_invalid_or_stale_registry_cannot_activate",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_current_public_source_art_composition",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls01_p1_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls01_p1_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls01_p2_s01_positive_current",
@@ -5960,48 +5588,6 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls01_p3_c02_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p5_c03_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p5_c04_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p11_c02_negative",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p12_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p12_c02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p12_c03_negative",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p12_c04_negative",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p12_c05_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p13_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p13_c02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p14_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p14_c02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p4_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p4_c05_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p4_c06_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c03_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c04_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c05_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c06_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p6_c01_positive",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p6_c02_negative",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p6_c04_negative",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p6_c05_positive",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p6_c06_negative",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p6_c07_positive",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p6_c08_negative",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c03_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c04_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c05_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c06_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c07_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c08_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c09_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c10_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c11_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p8_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p8_c02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p8_c03_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p8_c04_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p8_c05_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p3_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p3_s02_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p3_s03_positive_current",
@@ -6173,8 +5759,6 @@
         "unittest::tests.test_native_localization.NativeLocalizationResourcesTest.test_all36_and_settings_preserved",
         "unittest::tests.test_native_localization.NativeLocalizationResourcesTest.test_generation_is_complete_and_repeatable",
         "unittest::tests.test_native_localization.NativeLocalizationResourcesTest.test_missing_translation_or_placeholder_rejected",
-        "unittest::tests.test_publisher_content_integration.PublisherContentIntegrationTest.test_changed_current_content_inputs_reject_without_replacement",
-        "unittest::tests.test_publisher_content_integration.PublisherContentIntegrationTest.test_new_current_curation_and_svg_materialize_without_seed_edit",
         "unittest::tests.test_remaining_art.RemainingArtTest.test_all_new_geometry_and_exact_selector_positive",
         "unittest::tests.test_remaining_art.RemainingArtTest.test_finite_reviews_and_unchanged_facts_positive",
         "unittest::tests.test_remaining_art.RemainingArtTest.test_known_unknown_unmapped_and_retained_selectors_positive",
@@ -6477,15 +6061,13 @@
       "question": "Remove old metadata journal/page-policy migration and frozen old-archive requirements while retaining current mechanics.",
       "property_ids": [
         "LS03.P10",
-        "LS03.P11",
         "VC04.P3",
         "VC07.P3"
       ],
       "test_ids": [
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_metadata_current_policy_304_resume_and_refusals",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_metadata_current_cli_defaults_and_unsupported_policy_refusal",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_metadata_current_quota_age_and_cas_refusal",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_current_public_source_art_composition"
+        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_metadata_current_quota_age_and_cas_refusal"
       ],
       "searches": [
         {
@@ -6534,16 +6116,11 @@
         "LS02.P5",
         "LS03.P10",
         "LS03.P12",
-        "LS03.P15",
-        "LS03.P16",
-        "LS03.P17",
-        "LS03.P2",
         "LS03.P3",
         "LS03.P4",
         "LS03.P5",
         "LS03.P7",
         "LS03.P8",
-        "LS03.P9",
         "LS04.P1",
         "LS04.P2",
         "LS04.P3",
@@ -6598,49 +6175,6 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p4_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p5_c03_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p5_c04_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p12_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p12_c02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p12_c05_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p15_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p15_c02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p16_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p16_c02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p16_c03_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p16_c04_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p16_c05_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p17_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p17_c02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p2_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p2_c02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p3_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p3_c02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p3_c03_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p4_c05_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p4_c06_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c03_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c04_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c05_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p5_c06_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c03_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c04_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c05_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c06_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c07_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c08_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c09_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c10_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p7_c11_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p8_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p8_c02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p8_c03_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p8_c04_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p8_c05_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p9_c01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls03_p9_c02_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p1_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p1_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p1_s02_negative_current",
@@ -6769,8 +6303,6 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p6_c02_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p6_c03_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p6_c04_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls16_p1_c07_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls16_p1_c08_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_metadata_current_cli_defaults_and_unsupported_policy_refusal",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_metadata_current_policy_304_resume_and_refusals",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_metadata_current_quota_age_and_cas_refusal",
@@ -7521,6 +7053,271 @@
       ],
       "disposition": "current_change",
       "rationale": "Whole selected software unit self-verified GREEN on clean f658c3f60561e91ca9f2f24d5096d6b40daaf4a9:14/14 actual selected cases,14observed tests,1command exit0. Four new native methods PASS/rawlauncher1; prior valid source-bound observations reused. No material self finding remains. CLOSED for self work, pending one different whole peer VERIFY+FIX/CLOSE and root judgment. No physical prerequisite or observed hardware claim added."
+    },
+    {
+      "id": "D-basic-publisher-clock-whole-20261113",
+      "question": "Whole current staticpublisher/readback/HTTPrecipe and independentclock; retire historicalsnapshot aliases without weakening generic current contracts.",
+      "property_ids": [
+        "LS03.P1",
+        "LS03.P12",
+        "LS03.P3",
+        "LS16.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_clock_operational_negative",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_clock_operational_positive",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_clock_retained_configuration",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_clock_retained_configuration_negative",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_clock_retained_dispatch_deadline",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_clock_retained_isolation_negative",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_current_linux_retained",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_http404_positive",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_http_admission_negative",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_personal_privacy_negative",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_personal_privacy_positive",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_personal_publication_positive",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_readback_immutable_negative",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_readback_positive",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_readback_root_negative",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_readback_unavailable_negative",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_recipe_closure_and_rights"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read allLS03siblings/fullLS03+LS16spec,graph/discovery,current cloud/feed/publisher/recipe/metadata/workflow/clock/testowners and currentG1/G2/Linux/clock/public-source receipts.",
+          "outcome": "Production owners already satisfy selected bounded unit. New actual finitecurrent tests replace absent planned bindings. Historicalalias mappings retain every generic clause. P4/P5/P6/P7/P8/P10 andLS13/14 remain open at own boundaries.",
+          "results": [
+            {
+              "path": "tests/test_basic_publisher_clock.py",
+              "classification": "test_proof",
+              "reason": "Whole selected current behavior/exactsource retained witnesses."
+            },
+            {
+              "path": "tools/spacefox/cloud.py",
+              "classification": "reusable_unchanged",
+              "reason": "BoundedHTTP/complete readback/error diagnostics unchanged."
+            },
+            {
+              "path": "deploy/cloudflare-schedule/worker.mjs",
+              "classification": "reusable_unchanged",
+              "reason": "Fixed oneattempt dispatcher unchanged."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Exact owners supplied byroot.",
+          "reason": "No unknownsubsystem remained.",
+          "outcome": "No semanticsearchclaim.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "KnownPython/Node/MonkeyCowners.",
+          "reason": "No indexed operation needed.",
+          "outcome": "No index/runtimephoneclaim.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "Whole selected author self-verification GREEN at clean e33561bae19aca2d6e53c4ce27967a6164aa3614:19/19caseedges,17actualobservedtestidentities,1command exit0. Initial harness/event-format failures retained. Current runtime/source/fixtures and originalNode6/Linux11 sourcebound; no repeat of original behavior tests. Eight historicalaliases retired with explicit generic mappings, never counted as passes. One different peer still required. Tasks3.3/3.4 remain open for distinct current recovery/metadata/fork/physical obligations."
+    },
+    {
+      "id": "D-basic-publisher-clock-whole-independent-close",
+      "question": "Does the complete current LS03.P1/P3/P12+LS16.P1 unit satisfy full selected clauses and retained evidence without hidden alias/hardware/wholeproject claims?",
+      "property_ids": [
+        "LS03.P1",
+        "LS03.P3",
+        "LS03.P12",
+        "LS16.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_clock_operational_negative",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_clock_operational_positive",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_clock_retained_configuration",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_clock_retained_configuration_negative",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_clock_retained_dispatch_deadline",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_clock_retained_isolation_negative",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_current_linux_retained",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_http404_positive",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_http_admission_negative",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_personal_privacy_negative",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_personal_privacy_positive",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_personal_publication_positive",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_readback_immutable_negative",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_readback_positive",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_readback_root_negative",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_readback_unavailable_negative",
+        "unittest::tests.test_basic_publisher_clock.BasicPublisherClockTest.test_recipe_closure_and_rights"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Direct full selected spec/design/19nodes/tests, all retired originals/mappings, cloud/recipe/workflow/clock/watch source and exact original source/receipt/operational chronology review.",
+          "outcome": "Selected whole software+retained finite operational unit CLOSED. 61hashbindings/742Ubuntu inputpaths/3clock-event-run pairs independently verified; original behavior receipts retained. Two document drift repairs; no behavior semantic input changed. Post-doc query mechanically marks19stale due broad docs dependency, explicitly reconciled without rewriting original fingerprints or rerunning tests.",
+          "results": [
+            {
+              "path": "openspec/changes/spacefox-watchface/evidence/basic-publisher-clock-whole/independent-review/review.json",
+              "classification": "test_proof",
+              "reason": "Independent clause/case/oracle/source/receipt review with exact retained proof boundaries."
+            },
+            {
+              "path": "openspec/changes/spacefox-watchface/design.md",
+              "classification": "change_candidate",
+              "reason": "Correct retired authority refs/deployment wording to actual map-v3 receipt."
+            },
+            {
+              "path": "docs/AGENT_SETUP.md",
+              "classification": "change_candidate",
+              "reason": "Distinguish observed owner cutover from fresh-instance bootstrap/quota requirements."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "All exact owning sources and witnesses supplied.",
+          "reason": "No unfamiliar ownership search required.",
+          "outcome": "No semantic/index claim.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Known source/receipt review only.",
+          "reason": "No indexed operation or SDK needed.",
+          "outcome": "No IDE/native-runtime claim.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "One different peer independently closed only LS03.P1/P3/P12+LS16.P1 software+retained owner operations. Original author19/17/1 and Node6/Ubuntu11 evidence remains immutable; docs-only dependency mismatch is explicitly reconciled, not presented as a new automatic green. Task3.3 otherconjuncts and3.4/fork/phone/watch stayopen. Root owns judgment and publication."
+    },
+    {
+      "id": "D-published-test-history-20261113",
+      "question": "Bind actual published signed 0.1.0 test prerelease to next-production history admission while preserving physical/phone/Store boundaries.",
+      "property_ids": [
+        "RL02.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_release_identity.SigningCustodyTest.test_actual_encrypted_restore_and_independent_signature",
+        "unittest::tests.test_release_identity.SigningCustodyTest.test_wrong_corrupt_swapped_and_existing_identity_refused"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read release identity/HANDOFF, existing release.py history/identity/version admission, actual retained signed candidate receipt and public eight-asset readback, obsolete production initial-export class and exact graph selectors.",
+          "outcome": "Existing admission already requires pinned version/IQ plus actual retained package and identity, followed by strict version increase. No release.py/native owner changed. Initial-production export fixture assumed null history and scanned production secrets; retire that obsolete campaign, preserve disposable custody and existing signed repair controls.",
+          "results": [
+            {
+              "path": "release/signing-identity.json",
+              "classification": "change_candidate",
+              "reason": "Pin the actual publicly downloaded native version/IQ."
+            },
+            {
+              "path": "tests/test_published_release_history.py",
+              "classification": "test_proof",
+              "reason": "Explicitly bounded pre-export admission using actual retained public bytes."
+            },
+            {
+              "path": "tests/test_release_identity.py",
+              "classification": "change_candidate",
+              "reason": "Remove obsolete production initial-release campaign; preserve meaningful disposable custody controls."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Exact owner files supplied by root assignment.",
+          "reason": "Known narrow release owner.",
+          "outcome": "No semantic/index evidence claimed.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Known Python release tests and metadata.",
+          "reason": "No symbol refactor/index required.",
+          "outcome": "Direct reads only.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "Necessary selector repair on existing RL02.P1 only; no new property or case campaign. Two current methods prove disposable custody only. Five supplemental tests.test_published_release_history methods observed passing are bounded pre-export history checks, not production restore or new signed repair proof. Existing RL02.P2 and higher-version signed controls retain original proof boundaries. No publication_ready/official_release change or task7 closure."
+    },
+    {
+      "id": "D-autonomous-publisher-whole-20261113",
+      "question": "Close existing six current personal-publisher/recovery/metadata properties through actual whole local flow while retaining exact generic obligations and valid observations.",
+      "property_ids": [
+        "LS03.P10",
+        "LS03.P4",
+        "LS03.P5",
+        "LS03.P6",
+        "LS03.P7",
+        "LS03.P8"
+      ],
+      "test_ids": [
+        "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_current_live_root_and_immutable_negative",
+        "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_current_source_data_only_extension_and_preserved_refusals",
+        "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_empty_pages_exact_witness_and_nonempty_uncertainty",
+        "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_current_policy_cli_refusals_cas_and_failure_preservation",
+        "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_pending_armed_core_promotion_recovery_and_partial_prefix",
+        "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_source_acceptance_and_adoption_positive",
+        "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_sparse_resume_304_cadence_source_isolation_and_no_journal",
+        "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_zero_work_gates_and_workflow_serialization",
+        "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_pages_empty_identity_and_uncertainty_negative",
+        "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_prepare_not_due_second_validation_and_disabled_schedule_recovery",
+        "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_runtime_only_two_generations_finality_and_exact_readback",
+        "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_saved_faults_stale_source_and_cas_refuse_without_publication",
+        "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_selected_current_bound_and_explicit_unknown_absence",
+        "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_source_materialization_and_prepare_before_authority",
+        "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_source_rights_edits_and_bad_pin_negative"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read exact LS03.P4/P5/P6/P7/P8/P10 statements, retained scenario contracts, task3.3/full launch-schedule spec and actual cloud/publisher/metadata/sparse owners.",
+          "outcome": "Retired fixture bindings referred to absent current-format module, fixed20 dependencies/76 files and old source epochs. Current schema3 validators require renderer but no authoring catalog/art checkout; source/runtime boundary is qualified by actual sparse CLI and fail-only builder/data observers.",
+          "results": [
+            {
+              "path": "tests/test_autonomous_publisher_whole.py",
+              "classification": "test_proof",
+              "reason": "Actual current whole sparse Git/CLI/loopback witnesses."
+            },
+            {
+              "path": "tools/spacefox/cloud.py",
+              "classification": "change_candidate",
+              "reason": "Actual saved file/finality/readback owner inspected; repair only on established product failure."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Exact owner paths supplied by root and graph.",
+          "reason": "Known bounded Python/Git/HTTP owners; no unfamiliar ownership search.",
+          "outcome": "Direct source reads; no semantic search claimed.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Exact Python/runtime paths.",
+          "reason": "No symbol refactor or index needed.",
+          "outcome": "Direct source reads only.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "No new properties or case growth. Only current-format oracle/selector reconciliation and necessary source-bound tests. Original generic materialization/rights/CAS/age/quota/recovery/finality/metadata contracts retained; source-bound prior green observations reused with original scope. Local test self-review is not independent review or remote/physical acceptance."
     }
   ]
 }

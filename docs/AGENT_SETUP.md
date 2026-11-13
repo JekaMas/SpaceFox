@@ -2,8 +2,8 @@
 
 SpaceFox uses **scheduled GitHub Actions → static GitHub Pages → paired phone →
 watch**. The current contract has one canonical public format: native-motion-v3,
-schema-3 SFR1M at /feed.json. Historical deployed observations retain their original
-receipts and do not establish adoption of this current-only contract. Physical
+schema-3 SFR1M at /feed.json. The owner's 2026-11-13 current G1/G2 operation is
+recorded below; each other instance requires its own qualification. Physical
 phone/FR165, battery and Store acceptance remain separate. Runtime deployment and
 recovery commands are owned by [CLOUD_DELIVERY](CLOUD_DELIVERY.md); this contract
 revision grants no deployment or state-reset authority.
@@ -13,8 +13,10 @@ is MIT; original schematics are MIT, and fonts/geography/data retain their disti
 terms in [THIRD_PARTY_NOTICES](../THIRD_PARTY_NOTICES.md). No AWS account, author’s
 account keys, Garmin signing key in a data job, continuously running computer or
 recurring model call is required by this architecture. Existing Python 3.10+, Git and Node are used by the producer; Node runs only the
-off-watch map conversion with pinned vendored scripts. Saved-state jobs use
-Python/Git without a source-data build. Do not install tools implicitly.
+off-watch map conversion with pinned vendored scripts. The standard Ubuntu workflow
+uses the pinned native Linux renderer for producer and saved-artifact validation;
+saved-state jobs do not check out or rebuild source data. Local prerequisites must
+already exist; do not install tools implicitly.
 
 ## Prepare an independent instance
 
@@ -32,9 +34,8 @@ Python/Git without a source-data build. Do not install tools implicitly.
    `https://jekamas.github.io/SpaceFox/feed.json`. `FeedBaseUrl` is the **base**,
    without `/feed.json`. Another family uses its own owner/repository base, or
    sets the repository variable `SPACEFOX_PAGES_URL` to its authorized HTTPS base.
-   The owner's historical first bootstrap used these URLs with the old format;
-   it does not qualify current schema3 delivery. Another instance
-   requires its own deployment and exact readback.
+   The owner's current bootstrap and later natural due update used this base;
+   another instance requires its own deployment and exact readback.
 4. For a genuinely first empty instance only, dispatch the workflow with
    `bootstrap=true`. This explicitly creates durable current-format authority. Do not
    use bootstrap as recovery or delete authority to force a refresh. Once state
@@ -62,13 +63,28 @@ minutes, with explicit persisted fast mode. A not-due run makes no provider
 request. Watch countdown calculation is local. Re-fetching an old file, correcting
 a catalog or rolling back compatible art never renews provider-validation age.
 
-`refs/heads/feed-state-motion-v3` and
-`refs/tags/spacefox-state-bootstrap-motion-v3` are the current durable authority
+`refs/heads/feed-state-map-v3` and
+`refs/tags/spacefox-state-bootstrap-map-v3` are the current durable authority
 and bootstrap anchor. Preserve both. For
 failed/ambiguous deployments, use the runbook’s exact journal/service/HTTPS
 reconciliation; do not reset state, invent a live generation or rebuild pending
 bytes. A disabled or delayed schedule needs inspection and authorized recovery.
 No background model session is part of normal publishing.
+
+The watch's current source reads only its configured HTTPS base: a GET for
+`feed.json` and bounded referenced immutable paths, with empty request parameters.
+Fitness is read locally by `Fitness.mc` for display; no health upload endpoint,
+provider credential or SpaceFox service login is part of that path. The static
+current feed admits only launch/catalog fields. Source inspection and local
+privacy rejection tests do not establish a physical phone/watch transfer.
+
+The owner's current map-only bootstrap run43423066921 and natural due
+run43433017023 completed all five jobs. Source validation advanced from
+1794572010 to1794576343 in the same publisher instance, G1→G2; the complete
+current artifact is96files/616444bytes. See the exact
+[operational receipt](../openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/AUTO-DUE-ACCEPTANCE.json).
+Metadata remained partial at four calls; this is not a complete global refresh,
+an observed GitHub `schedule` event, another owner's setup, or physical acceptance.
 
 Only the current schema-3 SFR1M format is supported; no old endpoint, static exporter,
 legacy migration, old-archive or transition-period qualification is required.
@@ -84,17 +100,22 @@ destination, local qualification and real-event requirements, see
 change the fixed destination for its own repository and qualify its own instance;
 local source or another owner’s observations do not establish its operation.
 
-## Authorized clean cutover sequence
+## Observed cutover and fresh empty instances
 
-After current code/fixtures are accepted and the current Linux qualification passes,
-the separately authorized deployment uses a tiny empty Pages data site and verifies
-`/feed.json` returns404. Then bootstrap a NEW motion-v3 authority namespace and
-publish freshly fetched current-format data. The old instance stops; no old parser,
-snapshot migration or cross-version recovery is involved. Carry only still-live
-quota reservation timestamps, or wait a complete rolling hour before any new
-provider call. Source validation advances only after an actual successful fetch.
-This sequence is a plan, not an observed public cutover or permission supplied by
-this specification-edit unit; root owns the separately authorized execution.
+The earlier clean-cutover plan is historical. The owner's separately authorized
+map-v3 cutover is now observed: the empty HTTPS feed returned404, bootstrap
+run43423066921 published G1, and natural due run43433017023 delivered G2 with
+advancing source validation. The exact receipt and its limits are linked above.
+This observation grants no authority to reset an existing instance.
+
+For a genuinely new empty instance, use qualified current code/fixtures and Linux
+qualification, then the separately authorized empty-site/bootstrap procedure above.
+Keep its authority independent; never reuse bootstrap as recovery. Carry any
+still-live quota reservation timestamps, or wait a complete rolling hour before
+new provider calls. Source validation advances only after an actual successful
+fetch. No old parser, snapshot migration or cross-version recovery is involved.
+Root owns live execution; another owner's setup and phone/watch observations
+remain required for that instance.
 
 Current basic target: fixed 24-hour `HH:mm`, one numeric accumulating-hour
 `HH:mm:ss` countdown, one faded flat map and four fixed positions with six metric

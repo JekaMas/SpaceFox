@@ -50,6 +50,18 @@ The previously deployed version's observed scheduled invocations failed with
 sanitized transport errors; the repaired source requires a fresh reviewed deployment
 and natural event observations before any operational claim.
 
+Those repaired-source observations now exist: the exact deployed1518byte source
+readback has SHA2563968e2ac517aadbc10b785a7b8a180bcc5b77302365e39e47183ff0c3f77eba3,
+and three retained natural Cron events matched43276467981/43279071057/43281697587.
+Their old feed payloads keep their historical boundaries. The dispatcher source
+is unchanged for the current schema3 map-only publication: natural due
+run43433017023 on2026-11-13 advanced actual source validation1794572010→1794576343
+and delivered currentG2 with exact complete closure. See
+[the current receipt](../openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/AUTO-DUE-ACCEPTANCE.json).
+This combines retained actual clock configuration/source/event observations with
+current due-feed evidence; no new dashboard observation or future availability is
+claimed. Current metadata is partial, and phone/watch acceptance remains separate.
+
 The request intentionally pins GitHub REST API `2022-11-28` and accepts only its
 legacy 204 response. GitHub's [version policy](https://docs.github.com/en/rest/about-the-rest-api/api-versions)
 currently supports it through March 10, 2028. The [2026-03-10 breaking change](https://docs.github.com/en/rest/about-the-rest-api/breaking-changes)

@@ -1,0 +1,42 @@
+{
+  "reason": "Existing six-property case rebind leaves these old selectors unreferenced; original definitions/receipts remain historical, not new green commands.",
+  "commands": [
+    {
+      "id": "cloud-geography-inputs-checks",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_cloud_geography_inputs.CloudGeographyInputsTest.test_changed_source_pin_and_curation_need_no_second_path_list",
+        "tests.test_cloud_geography_inputs.CloudGeographyInputsTest.test_dirty_inputs_and_ordinary_local_edits_are_preserved",
+        "tests.test_cloud_geography_inputs.CloudGeographyInputsTest.test_missing_wrong_untracked_source_and_dependencies_reject"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 180,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "Three retained source2 integration methods; retired v1 wire caller is planned separately. Real local Git/CLI only; no provider or GitHub requests."
+    },
+    {
+      "id": "publisher-content-integration-checks",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_publisher_content_integration.PublisherContentIntegrationTest.test_changed_current_content_inputs_reject_without_replacement",
+        "tests.test_publisher_content_integration.PublisherContentIntegrationTest.test_new_current_curation_and_svg_materialize_without_seed_edit"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 240,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "Only exact active method selectors; retired fixture/harness methods are removed. Original observed receipt retains its old command and proof boundary; this scope edit is not a fresh observation."
+    }
+  ]
+}

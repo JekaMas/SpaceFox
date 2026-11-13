@@ -1,0 +1,51 @@
+{
+  "status": "passed_actual_persisted_G1_to_public_G4_and_cold_reopen",
+  "observed_at_utc": "2026-11-13T16:12:58.314816+00:00",
+  "same_original_namespace": {
+    "uuid": "d8137fbf2d5f4606b756574b864bef74",
+    "basename": "SpaceFoxSelectedScene20261113.prg",
+    "url": "https://jekamas.github.io/SpaceFox"
+  },
+  "no_seed_reset_or_time_injection": true,
+  "source_owners_unchanged": true,
+  "initial_actual_G1": "AUTONOMOUS_INPLACE_INITIAL priorGeneration=1 priorSource=1794572010 priorWire=86eb3dd2584a960c42e445b44041ff88d7f673c5dc949464fd9478d26f2388a4 noSeed=true",
+  "current_G4_complete": "SELECTED_SCENE_COMPLETE mode=public-background callbacks=1 generation=4 sourceEpoch=1794583991 acceptedRawSha256=63d2df50b2d6af354d7e2d9aec9cb014676b0b91c6125017f9686b1cde62c0a9 selection=7f6b599d4479565aaf3b6cadfb4b71e74e6247644f9df8df4091acfcf3f42621 acceptedSeal=17ccd1d98ccbd853990f90464a765fc8cfb2cd1d32060c2e83af2cc3d0b960ff rocket=Starship V3 operator=SpaceX purpose=Communications site=US · SpaceX Starbase, TX, USA position=true countdown=06:37:53 stale=false rescheduled=false ordinaryBytes=126784 usedBytes=97632 mapBitmap=true rocketBitmap=true modelOrigin=true operatorMark=true markerAnchor=335,165 noDrawIo=true owner=d8137fbf2d5f4606b756574b864bef74|inplace-fixed|e3fbb187da1d",
+  "cold_reopen_complete": "SELECTED_SCENE_COMPLETE mode=reopen callbacks=0 generation=4 sourceEpoch=1794583991 acceptedRawSha256=63d2df50b2d6af354d7e2d9aec9cb014676b0b91c6125017f9686b1cde62c0a9 selection=7f6b599d4479565aaf3b6cadfb4b71e74e6247644f9df8df4091acfcf3f42621 acceptedSeal=17ccd1d98ccbd853990f90464a765fc8cfb2cd1d32060c2e83af2cc3d0b960ff rocket=Starship V3 operator=SpaceX purpose=Communications site=US · SpaceX Starbase, TX, USA position=true countdown=06:36:18 stale=false rescheduled=false ordinaryBytes=126784 usedBytes=94880 mapBitmap=true rocketBitmap=true modelOrigin=true operatorMark=true markerAnchor=335,165 noDrawIo=true owner=d8137fbf2d5f4606b756574b864bef74|inplace-reopen|e3fbb187da1d",
+  "same_new_commit_seal": "17ccd1d98ccbd853990f90464a765fc8cfb2cd1d32060c2e83af2cc3d0b960ff",
+  "automatic_background_requests": "Real unchanged FeedService requested public feed.json withHTTP2002721B; generation and visual selection changed; old graphic did not satisfy exact new scene/bitmap assertions.",
+  "cached_change": "Actual previously HTTPS-accepted/persisted G1Vulcan/Canaveral to actual public G4Starship/Starbase; exact raw hash and generation required before update, exact G4 raw/model/site/selection required after.",
+  "cold_reopen": {
+    "same_wire_age_selection_and_seal": true,
+    "callbacks": 0,
+    "http_requests": 0
+  },
+  "launcher_exits": {
+    "inplace": 0,
+    "cold_reopen": 0,
+    "cleanup": 0
+  },
+  "retained_nonpassing_attempts": [
+    {
+      "label": "inplace",
+      "exit": 143,
+      "boundary": "No VM output/device after prior FileKillDevice; own launcher terminated, officialSimulator restarted withno cache reset."
+    },
+    {
+      "label": "inplace-restarted",
+      "exit": 2,
+      "boundary": "New observer log dereferenced compacted-away visualSelection document field after production initial/load succeeded; fixedonlythislogger. Original strict assertions retained."
+    }
+  ],
+  "cleanup": "Own originalnamespace blankFeedBaseUrl/nulltemporal/cachepreserved; FileKillApp/FileKillDevice; knownPIDs45168/56311/67292absent; SDKleaseFREE.",
+  "scope": "One ordinary SDK actualcurrent update/reopen observation, not a new property closure; no physicalphone/FR165,code-update install,battery,Store or hardwareMacoff claim.",
+  "source_provenance": {
+    "head": "2debe540ea906243330deebd2134379761a79210",
+    "compile_dirty_flags": {
+      "inplace": false,
+      "inplace-fixed": false,
+      "inplace-reopen": true,
+      "inplace-cleanup": false
+    },
+    "boundary": "Cold-reopen build records dirty=true from root resume-note edits. Every production native/resource hash independently equals committed head bytes. No clean whole-gate claim for that observer build and no fingerprint refresh."
+  }
+}

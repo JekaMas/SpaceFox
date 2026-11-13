@@ -1,0 +1,6 @@
+Affected-only repair run:6tests in28.897s; five corrected behavior methods passed.
+test_current_linux_retained failed before comparing sources: retained log regex
+incorrectly expected module.class rather than actual module.class.method.
+AssertionError: Items in the second set but not the first: all11expected methods.
+Corrected only this observer regex. Actual original Ubuntu11 receipt unchanged;
+this harness failure is neither a Linux/product failure nor a new Linux run.

@@ -1,0 +1,44 @@
+{
+  "observation_at_utc": "2026-11-13T15:37:29.090746+00:00",
+  "method": "CUA current Cloudflare dashboard reload; Settings then Observability Last1hour; actual scheduled event expanded",
+  "worker": "spacefox-schedule-clock",
+  "production_secret": {
+    "name": "GITHUB_DISPATCH_TOKEN",
+    "type": "Secret",
+    "displayed": "Value encrypted",
+    "value_read": false
+  },
+  "runtime_compatibility_date": "2026-11-12",
+  "cron_human": "At 7, 22, 37, and 52 minutes past the hour",
+  "cron": "7,22,37,52 * * * *",
+  "events": {
+    "success": 4,
+    "errors": 0,
+    "timestamps_utc": [
+      "2026-11-13T14:37:03.656Z",
+      "2026-11-13T14:52:03.841Z",
+      "2026-11-13T15:07:04.281Z",
+      "2026-11-13T15:22:03.495Z"
+    ],
+    "ui_timezone": "GMT+4; converted exactly to UTC"
+  },
+  "expanded_event": {
+    "timestamp_utc": "2026-11-13T15:22:03.495Z",
+    "scriptVersion": "670096a0-c53b-4062-908a-d9b7994108e6",
+    "eventType": "scheduled",
+    "executionModel": "stateless",
+    "cron": "7,22,37,52 * * * *",
+    "outcome": "ok",
+    "wallTimeMs": 1640,
+    "cpuTimeMs": 0,
+    "scheduledTime": 1794583321.007,
+    "requestId": "4b818f453f7e88472fd9fbcc8e0b14f9"
+  },
+  "source_binding": {
+    "prior_deployed_source_readback": "openspec/changes/spacefox-watchface/evidence/alternative-schedule-trigger/root-live/fixed-runtime/42-deployed-source-readback.json",
+    "same_active_version_prefix": "670096a0",
+    "worker_source_sha256": "3968e2ac517aadbc10b785a7b8a180bcc5b77302365e39e47183ff0c3f77eba3"
+  },
+  "contradictory_ui": "Legacy Cron Events table says no events; actual persisted Workers Observability shows4success scheduled events. Old already-open Settings tab also initially had stale no-cron state; full reload showed real savedCron. Neither stale UI was treated as operational failure/success. No Cron/secret/deployment mutation was made.",
+  "proof_boundary": "Actual remote scheduled invocations plus persisted secret/config. Does not assert physical Mac powered off, physical watch/phone delivery, SLA or future token renewal."
+}

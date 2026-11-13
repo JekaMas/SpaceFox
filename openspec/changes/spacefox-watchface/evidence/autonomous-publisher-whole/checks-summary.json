@@ -1,0 +1,117 @@
+{
+  "status": "SELF_GREEN_whole6_with_valid_graph_and_discovery",
+  "cleanInputCommit": "5d2d6202782965ac10e48b4e9384ccd930575a04",
+  "cleanInput": true,
+  "productionChanges": false,
+  "existingProperties": 6,
+  "existingCases": 40,
+  "actualMethodIdentities": 15,
+  "retainedIntegrationMethods": 11,
+  "newOppositePolarityMethods": 4,
+  "behaviorReplay": false,
+  "commands": {
+    "wholeBehaviorReceiptReconciliation": {
+      "argv": [
+        "python3",
+        "-B",
+        "openspec/changes/spacefox-watchface/evidence/autonomous-publisher-whole/reconcile.py"
+      ],
+      "exit": 0,
+      "status": "SELF_GREEN_whole_six_existing_properties"
+    },
+    "graphValidation": {
+      "exit": 0,
+      "status": "passed"
+    },
+    "discoveryValidation": {
+      "exit": 0,
+      "status": "passed"
+    },
+    "strictOpenSpec": {
+      "exit": 0,
+      "totals": {
+        "items": 1,
+        "passed": 1,
+        "failed": 0
+      }
+    },
+    "selectedWholeQuery": {
+      "exit": 0,
+      "status": "passed",
+      "selection": {
+        "cases": [
+          "LS03.P10.C02.POSITIVE.CURRENT",
+          "LS03.P10.C03.NEGATIVE.CURRENT",
+          "LS03.P10.C04.NEGATIVE.CURRENT",
+          "LS03.P4.C01.POSITIVE",
+          "LS03.P4.C02.POSITIVE",
+          "LS03.P4.C03.NEGATIVE",
+          "LS03.P4.C04.NEGATIVE",
+          "LS03.P4.C05.POSITIVE.CURRENT",
+          "LS03.P4.C06.POSITIVE.CURRENT",
+          "LS03.P4.C07.POSITIVE",
+          "LS03.P4.C08.NEGATIVE",
+          "LS03.P5.C01.POSITIVE.CURRENT",
+          "LS03.P5.C02.NEGATIVE.CURRENT",
+          "LS03.P5.C03.POSITIVE.CURRENT",
+          "LS03.P5.C04.NEGATIVE.CURRENT",
+          "LS03.P5.C05.NEGATIVE.CURRENT",
+          "LS03.P5.C06.NEGATIVE.CURRENT",
+          "LS03.P6.C01.POSITIVE.CURRENT",
+          "LS03.P6.C02.NEGATIVE.CURRENT",
+          "LS03.P6.C04.NEGATIVE.CURRENT",
+          "LS03.P6.C05.POSITIVE.CURRENT",
+          "LS03.P6.C06.NEGATIVE.CURRENT",
+          "LS03.P6.C07.POSITIVE.CURRENT",
+          "LS03.P6.C08.NEGATIVE.CURRENT",
+          "LS03.P7.C01.POSITIVE.CURRENT",
+          "LS03.P7.C02.NEGATIVE.CURRENT",
+          "LS03.P7.C03.NEGATIVE.CURRENT",
+          "LS03.P7.C04.POSITIVE.CURRENT",
+          "LS03.P7.C05.POSITIVE.CURRENT",
+          "LS03.P7.C06.POSITIVE.CURRENT",
+          "LS03.P7.C07.NEGATIVE.CURRENT",
+          "LS03.P7.C08.NEGATIVE.CURRENT",
+          "LS03.P7.C09.POSITIVE.CURRENT",
+          "LS03.P7.C10.NEGATIVE.CURRENT",
+          "LS03.P7.C11.POSITIVE.CURRENT",
+          "LS03.P8.C01.POSITIVE.CURRENT",
+          "LS03.P8.C02.NEGATIVE.CURRENT",
+          "LS03.P8.C03.NEGATIVE.CURRENT",
+          "LS03.P8.C04.POSITIVE.CURRENT",
+          "LS03.P8.C05.POSITIVE.CURRENT"
+        ],
+        "commands": [
+          "autonomous-publisher-whole"
+        ],
+        "properties": [
+          "LS03.P10",
+          "LS03.P4",
+          "LS03.P5",
+          "LS03.P6",
+          "LS03.P7",
+          "LS03.P8"
+        ],
+        "requirements": [
+          "LS03"
+        ]
+      },
+      "proof": "Definition/source-bound selected closure, not a fresh behavior execution."
+    },
+    "sourceWhitespace": {
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "167d7f17..HEAD",
+        "--",
+        ".",
+        ":!*.log"
+      ],
+      "exit": 0,
+      "note": "Original captured raw logs retain trailing whitespace; excluded from code/spec whitespace gate."
+    }
+  },
+  "task33": "Software and required retained hosted scope satisfied; checked. Separate3.4/phone/physical/Store and root single-peer judgment remain.",
+  "remaining": "ONE root-assigned independent peer VERIFY+FIX/CLOSE. No behavior failure, operational call or optional campaign remains in this apply unit."
+}

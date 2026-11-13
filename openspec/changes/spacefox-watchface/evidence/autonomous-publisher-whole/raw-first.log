@@ -1,0 +1,204 @@
+test_empty_pages_exact_witness_and_nonempty_uncertainty (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_empty_pages_exact_witness_and_nonempty_uncertainty) ... ERROR
+test_metadata_current_policy_cli_refusals_cas_and_failure_preservation (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_current_policy_cli_refusals_cas_and_failure_preservation) ... ERROR
+test_metadata_pending_armed_core_promotion_recovery_and_partial_prefix (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_pending_armed_core_promotion_recovery_and_partial_prefix) ... ERROR
+test_metadata_sparse_resume_304_cadence_source_isolation_and_no_journal (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_sparse_resume_304_cadence_source_isolation_and_no_journal) ... ERROR
+test_metadata_zero_work_gates_and_workflow_serialization (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_zero_work_gates_and_workflow_serialization) ... 
+  test_metadata_zero_work_gates_and_workflow_serialization (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_zero_work_gates_and_workflow_serialization) (state='due') ... ERROR
+  test_metadata_zero_work_gates_and_workflow_serialization (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_zero_work_gates_and_workflow_serialization) (state='backoff') ... ERROR
+  test_metadata_zero_work_gates_and_workflow_serialization (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_zero_work_gates_and_workflow_serialization) (state='uncertain') ... ERROR
+  test_metadata_zero_work_gates_and_workflow_serialization (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_zero_work_gates_and_workflow_serialization) (state='headroom') ... ERROR
+  test_metadata_zero_work_gates_and_workflow_serialization (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_zero_work_gates_and_workflow_serialization) (state='fast') ... ERROR
+test_metadata_zero_work_gates_and_workflow_serialization (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_zero_work_gates_and_workflow_serialization) ... ERROR
+test_runtime_only_two_generations_finality_and_exact_readback (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_runtime_only_two_generations_finality_and_exact_readback) ... ERROR
+test_saved_faults_stale_source_and_cas_refuse_without_publication (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_saved_faults_stale_source_and_cas_refuse_without_publication) ... ERROR
+test_source_materialization_and_prepare_before_authority (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_source_materialization_and_prepare_before_authority) ... ok
+
+======================================================================
+ERROR: test_empty_pages_exact_witness_and_nonempty_uncertainty (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_empty_pages_exact_witness_and_nonempty_uncertainty)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 365, in test_empty_pages_exact_witness_and_nonempty_uncertainty
+    with self.authority() as (source,remote,store,pub), Service().serving() as s:
+         ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 194, in authority
+    store.bootstrap(self.code, policy); pub = Publisher(store, self.code); pub.reconcile(None)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tools/spacefox/publisher.py", line 565, in bootstrap
+    raise StateError('validated refresh policy required')
+tools.spacefox.publisher.StateError: validated refresh policy required
+
+======================================================================
+ERROR: test_metadata_current_policy_cli_refusals_cas_and_failure_preservation (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_current_policy_cli_refusals_cas_and_failure_preservation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 509, in test_metadata_current_policy_cli_refusals_cas_and_failure_preservation
+    with self.authority() as (source,remote,store,pub),Service().serving() as s:
+         ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 194, in authority
+    store.bootstrap(self.code, policy); pub = Publisher(store, self.code); pub.reconcile(None)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tools/spacefox/publisher.py", line 565, in bootstrap
+    raise StateError('validated refresh policy required')
+tools.spacefox.publisher.StateError: validated refresh policy required
+
+======================================================================
+ERROR: test_metadata_pending_armed_core_promotion_recovery_and_partial_prefix (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_pending_armed_core_promotion_recovery_and_partial_prefix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 452, in test_metadata_pending_armed_core_promotion_recovery_and_partial_prefix
+    with self.authority() as (source,remote,store,pub), Service().serving() as s:
+         ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 194, in authority
+    store.bootstrap(self.code, policy); pub = Publisher(store, self.code); pub.reconcile(None)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tools/spacefox/publisher.py", line 565, in bootstrap
+    raise StateError('validated refresh policy required')
+tools.spacefox.publisher.StateError: validated refresh policy required
+
+======================================================================
+ERROR: test_metadata_sparse_resume_304_cadence_source_isolation_and_no_journal (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_sparse_resume_304_cadence_source_isolation_and_no_journal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 414, in test_metadata_sparse_resume_304_cadence_source_isolation_and_no_journal
+    with self.authority() as (source,remote,store,pub), Service().serving() as s:
+         ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 194, in authority
+    store.bootstrap(self.code, policy); pub = Publisher(store, self.code); pub.reconcile(None)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tools/spacefox/publisher.py", line 565, in bootstrap
+    raise StateError('validated refresh policy required')
+tools.spacefox.publisher.StateError: validated refresh policy required
+
+======================================================================
+ERROR: test_metadata_zero_work_gates_and_workflow_serialization (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_zero_work_gates_and_workflow_serialization) (state='due')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 485, in test_metadata_zero_work_gates_and_workflow_serialization
+    with self.subTest(state=state),self.authority(policy=policy) as (source,remote,store,pub),Service().serving() as s:
+                                   ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 194, in authority
+    store.bootstrap(self.code, policy); pub = Publisher(store, self.code); pub.reconcile(None)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tools/spacefox/publisher.py", line 565, in bootstrap
+    raise StateError('validated refresh policy required')
+tools.spacefox.publisher.StateError: validated refresh policy required
+
+======================================================================
+ERROR: test_metadata_zero_work_gates_and_workflow_serialization (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_zero_work_gates_and_workflow_serialization) (state='backoff')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 485, in test_metadata_zero_work_gates_and_workflow_serialization
+    with self.subTest(state=state),self.authority(policy=policy) as (source,remote,store,pub),Service().serving() as s:
+                                   ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 194, in authority
+    store.bootstrap(self.code, policy); pub = Publisher(store, self.code); pub.reconcile(None)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tools/spacefox/publisher.py", line 565, in bootstrap
+    raise StateError('validated refresh policy required')
+tools.spacefox.publisher.StateError: validated refresh policy required
+
+======================================================================
+ERROR: test_metadata_zero_work_gates_and_workflow_serialization (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_zero_work_gates_and_workflow_serialization) (state='uncertain')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 485, in test_metadata_zero_work_gates_and_workflow_serialization
+    with self.subTest(state=state),self.authority(policy=policy) as (source,remote,store,pub),Service().serving() as s:
+                                   ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 194, in authority
+    store.bootstrap(self.code, policy); pub = Publisher(store, self.code); pub.reconcile(None)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tools/spacefox/publisher.py", line 565, in bootstrap
+    raise StateError('validated refresh policy required')
+tools.spacefox.publisher.StateError: validated refresh policy required
+
+======================================================================
+ERROR: test_metadata_zero_work_gates_and_workflow_serialization (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_zero_work_gates_and_workflow_serialization) (state='headroom')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 485, in test_metadata_zero_work_gates_and_workflow_serialization
+    with self.subTest(state=state),self.authority(policy=policy) as (source,remote,store,pub),Service().serving() as s:
+                                   ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 194, in authority
+    store.bootstrap(self.code, policy); pub = Publisher(store, self.code); pub.reconcile(None)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tools/spacefox/publisher.py", line 565, in bootstrap
+    raise StateError('validated refresh policy required')
+tools.spacefox.publisher.StateError: validated refresh policy required
+
+======================================================================
+ERROR: test_metadata_zero_work_gates_and_workflow_serialization (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_zero_work_gates_and_workflow_serialization) (state='fast')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 496, in test_metadata_zero_work_gates_and_workflow_serialization
+    self.assertEqual(self.pub(store).head,head);self.assertIsNone(self.pub(store).ledger['catalog_refresh'])
+                                                                  ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+KeyError: 'catalog_refresh'
+
+======================================================================
+ERROR: test_metadata_zero_work_gates_and_workflow_serialization (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_zero_work_gates_and_workflow_serialization)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 498, in test_metadata_zero_work_gates_and_workflow_serialization
+    with self.authority() as (source,remote,store,pub),Service().serving() as s:
+         ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 194, in authority
+    store.bootstrap(self.code, policy); pub = Publisher(store, self.code); pub.reconcile(None)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tools/spacefox/publisher.py", line 565, in bootstrap
+    raise StateError('validated refresh policy required')
+tools.spacefox.publisher.StateError: validated refresh policy required
+
+======================================================================
+ERROR: test_runtime_only_two_generations_finality_and_exact_readback (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_runtime_only_two_generations_finality_and_exact_readback)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 290, in test_runtime_only_two_generations_finality_and_exact_readback
+    with self.authority() as (source,remote,store,pub), Service().serving() as s:
+         ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 194, in authority
+    store.bootstrap(self.code, policy); pub = Publisher(store, self.code); pub.reconcile(None)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tools/spacefox/publisher.py", line 565, in bootstrap
+    raise StateError('validated refresh policy required')
+tools.spacefox.publisher.StateError: validated refresh policy required
+
+======================================================================
+ERROR: test_saved_faults_stale_source_and_cas_refuse_without_publication (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_saved_faults_stale_source_and_cas_refuse_without_publication)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 329, in test_saved_faults_stale_source_and_cas_refuse_without_publication
+    with self.authority() as (source,remote,store,pub), Service().serving() as s:
+         ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 194, in authority
+    store.bootstrap(self.code, policy); pub = Publisher(store, self.code); pub.reconcile(None)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tools/spacefox/publisher.py", line 565, in bootstrap
+    raise StateError('validated refresh policy required')
+tools.spacefox.publisher.StateError: validated refresh policy required
+
+----------------------------------------------------------------------
+Ran 8 tests in 62.264s
+
+FAILED (errors=12)

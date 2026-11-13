@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/opt/homebrew/Cellar/openjdk@11/11.0.21/libexec/openjdk.jdk/Contents/Home/bin/java",
+    "-Dfile.encoding=UTF-8",
+    "-classpath",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+    "com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux",
+    "-f",
+    "/Users/jekamas/.codex/tmp/spacefox-autonomous-delivery-20261113/public/SpaceFoxAutonomousDelivery20261113.prg",
+    "-d",
+    "fr165",
+    "-s",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/shell"
+  ],
+  "exitCode": 2,
+  "status": "exited",
+  "elapsedSeconds": 15.720136540941894,
+  "vmOutputObserved": true,
+  "observation": "native-failure"
+}

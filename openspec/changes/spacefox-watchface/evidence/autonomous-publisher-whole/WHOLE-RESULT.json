@@ -1,0 +1,174 @@
+{
+  "status": "SELF_GREEN_whole_six_existing_properties",
+  "properties": [
+    "LS03.P10",
+    "LS03.P4",
+    "LS03.P5",
+    "LS03.P6",
+    "LS03.P7",
+    "LS03.P8"
+  ],
+  "cases": [
+    "LS03.P4.C01.POSITIVE",
+    "LS03.P4.C02.POSITIVE",
+    "LS03.P4.C03.NEGATIVE",
+    "LS03.P4.C04.NEGATIVE",
+    "LS03.P4.C07.POSITIVE",
+    "LS03.P4.C08.NEGATIVE",
+    "LS03.P6.C01.POSITIVE.CURRENT",
+    "LS03.P6.C02.NEGATIVE.CURRENT",
+    "LS03.P6.C04.NEGATIVE.CURRENT",
+    "LS03.P6.C05.POSITIVE.CURRENT",
+    "LS03.P6.C06.NEGATIVE.CURRENT",
+    "LS03.P6.C07.POSITIVE.CURRENT",
+    "LS03.P6.C08.NEGATIVE.CURRENT",
+    "LS03.P10.C02.POSITIVE.CURRENT",
+    "LS03.P10.C03.NEGATIVE.CURRENT",
+    "LS03.P10.C04.NEGATIVE.CURRENT",
+    "LS03.P4.C05.POSITIVE.CURRENT",
+    "LS03.P4.C06.POSITIVE.CURRENT",
+    "LS03.P5.C01.POSITIVE.CURRENT",
+    "LS03.P5.C02.NEGATIVE.CURRENT",
+    "LS03.P5.C03.POSITIVE.CURRENT",
+    "LS03.P5.C04.NEGATIVE.CURRENT",
+    "LS03.P5.C05.NEGATIVE.CURRENT",
+    "LS03.P5.C06.NEGATIVE.CURRENT",
+    "LS03.P8.C01.POSITIVE.CURRENT",
+    "LS03.P8.C02.NEGATIVE.CURRENT",
+    "LS03.P8.C03.NEGATIVE.CURRENT",
+    "LS03.P8.C04.POSITIVE.CURRENT",
+    "LS03.P8.C05.POSITIVE.CURRENT",
+    "LS03.P7.C01.POSITIVE.CURRENT",
+    "LS03.P7.C02.NEGATIVE.CURRENT",
+    "LS03.P7.C03.NEGATIVE.CURRENT",
+    "LS03.P7.C04.POSITIVE.CURRENT",
+    "LS03.P7.C05.POSITIVE.CURRENT",
+    "LS03.P7.C06.POSITIVE.CURRENT",
+    "LS03.P7.C07.NEGATIVE.CURRENT",
+    "LS03.P7.C08.NEGATIVE.CURRENT",
+    "LS03.P7.C09.POSITIVE.CURRENT",
+    "LS03.P7.C10.NEGATIVE.CURRENT",
+    "LS03.P7.C11.POSITIVE.CURRENT"
+  ],
+  "caseCount": 40,
+  "observedMethods": [
+    {
+      "method": "test_source_materialization_and_prepare_before_authority",
+      "receipt": "raw-first.log",
+      "observedGreenLine": "test_source_materialization_and_prepare_before_authority (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_source_materialization_and_prepare_before_authority) ... ok",
+      "receiptSha256": "f616630d07165ab5d88b5c9fa95469f217f781107c9827dc192b2eb67819923f",
+      "currentMethodAstSha256": "312ca6182f8014dde50273ec2ac3e8caddf4df80b979ba93992926120cb2b37d"
+    },
+    {
+      "method": "test_source_rights_edits_and_bad_pin_negative",
+      "receipt": "opposite-identities-green.log",
+      "observedGreenLine": "test_source_rights_edits_and_bad_pin_negative (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_source_rights_edits_and_bad_pin_negative) ... ok",
+      "receiptSha256": "1683512167bd8cc87f8195621d02240bffbe61757ad5e5d2b06f37ff4ca148f0",
+      "currentMethodAstSha256": "9302ae4fe44a27656ed902c4e6daaee0577c0b1b2c1996ae6253cbbb5a9b9770"
+    },
+    {
+      "method": "test_current_live_root_and_immutable_negative",
+      "receipt": "opposite-identities-green.log",
+      "observedGreenLine": "test_current_live_root_and_immutable_negative (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_current_live_root_and_immutable_negative) ... ok",
+      "receiptSha256": "1683512167bd8cc87f8195621d02240bffbe61757ad5e5d2b06f37ff4ca148f0",
+      "currentMethodAstSha256": "a50ff18a198d9ace2a4a1a62f4f27dd11c52e0b90e4780525a695f2fc5d9485b"
+    },
+    {
+      "method": "test_pages_empty_identity_and_uncertainty_negative",
+      "receipt": "pages-negative-green.log",
+      "observedGreenLine": "test_pages_empty_identity_and_uncertainty_negative (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_pages_empty_identity_and_uncertainty_negative) ... ok",
+      "receiptSha256": "607f72073006d26a4054393fbed7c226f03f1ca0cf6719d870fe23a31c1f2396",
+      "currentMethodAstSha256": "f0c42b203f8cf203ba2beba220f3d185aff358aff079f85fdd62d78d0550af9b"
+    },
+    {
+      "method": "test_metadata_source_acceptance_and_adoption_positive",
+      "receipt": "opposite-identities-green.log",
+      "observedGreenLine": "test_metadata_source_acceptance_and_adoption_positive (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_source_acceptance_and_adoption_positive) ... ok",
+      "receiptSha256": "1683512167bd8cc87f8195621d02240bffbe61757ad5e5d2b06f37ff4ca148f0",
+      "currentMethodAstSha256": "01f8839ff82f8ce4e512d33fe76937acff0b71147d3f7be15fdb7143f3cccf61"
+    },
+    {
+      "method": "test_current_source_data_only_extension_and_preserved_refusals",
+      "receipt": "source-green-pending-interrupted.log",
+      "observedGreenLine": "test_current_source_data_only_extension_and_preserved_refusals (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_current_source_data_only_extension_and_preserved_refusals) ... ok",
+      "receiptSha256": "21b7e9684bc75a3dbe9c36eecec9b3474fdcde8d468c059e8ab38b91901c205a",
+      "currentMethodAstSha256": "4aca0914496da792d993d3474a98478231952861bc538b8d34e5425ae6dec513"
+    },
+    {
+      "method": "test_selected_current_bound_and_explicit_unknown_absence",
+      "receipt": "absence-current-green.log",
+      "observedGreenLine": "test_selected_current_bound_and_explicit_unknown_absence (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_selected_current_bound_and_explicit_unknown_absence) ... ok",
+      "receiptSha256": "61a9d9e09bb9a702ac16330d31812274d14105ef6d848acb78eba0b6cfbb8877",
+      "currentMethodAstSha256": "825e798377bb5eda0ef62daeaa168024219d18e4b81914fb6c4904825e0edcce"
+    },
+    {
+      "method": "test_prepare_not_due_second_validation_and_disabled_schedule_recovery",
+      "receipt": "due-current-green.log",
+      "observedGreenLine": "test_prepare_not_due_second_validation_and_disabled_schedule_recovery (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_prepare_not_due_second_validation_and_disabled_schedule_recovery) ... ok",
+      "receiptSha256": "335ca91dca5e82a416fbc9443f1b8c012dec4320f5283e4f35cf810972c30704",
+      "currentMethodAstSha256": "c6e27095c6942cc46b7b75bbb76d48e8bbec366c15c77b06951837b04a714940"
+    },
+    {
+      "method": "test_empty_pages_exact_witness_and_nonempty_uncertainty",
+      "receipt": "stable-partial-green.log",
+      "observedGreenLine": "test_empty_pages_exact_witness_and_nonempty_uncertainty (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_empty_pages_exact_witness_and_nonempty_uncertainty) ... ok",
+      "receiptSha256": "12a0ccb1ffff211e9faad485e095942293158608cc543a36d0296880c097231a",
+      "currentMethodAstSha256": "c9228c660bf5309a5e2a0e72e601ceaeaddf7029850dbda430d73cefb6d5a8d5"
+    },
+    {
+      "method": "test_metadata_zero_work_gates_and_workflow_serialization",
+      "receipt": "metadata-url-origin-failure.log",
+      "observedGreenLine": "test_metadata_zero_work_gates_and_workflow_serialization (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_zero_work_gates_and_workflow_serialization) ... ok",
+      "receiptSha256": "70ade75e09035a9069cb010ace1ad5996e0fd3f49e09f8ce7347bc6fdfdb5bc8",
+      "currentMethodAstSha256": "0effa7f878367fad898ede8322d6bdcce5dd01795fbfb4eb94d958104a014837"
+    },
+    {
+      "method": "test_runtime_only_two_generations_finality_and_exact_readback",
+      "receipt": "runtime-current-green.log",
+      "observedGreenLine": "test_runtime_only_two_generations_finality_and_exact_readback (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_runtime_only_two_generations_finality_and_exact_readback) ... ok",
+      "receiptSha256": "1cf9edb95de212594fc5da082d259d905dcf588175ca58382268b3e58de587b2",
+      "currentMethodAstSha256": "d0dcbb12f5ffd4f2ea0d04e857870b4e8709a1a10970e527469158fc22313921"
+    },
+    {
+      "method": "test_saved_faults_stale_source_and_cas_refuse_without_publication",
+      "receipt": "runtime-current-green.log",
+      "observedGreenLine": "test_saved_faults_stale_source_and_cas_refuse_without_publication (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_saved_faults_stale_source_and_cas_refuse_without_publication) ... ok",
+      "receiptSha256": "1cf9edb95de212594fc5da082d259d905dcf588175ca58382268b3e58de587b2",
+      "currentMethodAstSha256": "c3256773ed244edfe941934504e3b6ab6b37294f8ae57bc74d05fb0b7c2e050c"
+    },
+    {
+      "method": "test_metadata_pending_armed_core_promotion_recovery_and_partial_prefix",
+      "receipt": "pending-current-green.log",
+      "observedGreenLine": "test_metadata_pending_armed_core_promotion_recovery_and_partial_prefix (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_pending_armed_core_promotion_recovery_and_partial_prefix) ... ok",
+      "receiptSha256": "76e41470447297ed5593092e462b0971e0fca4837a2cfe37d849f804006b7ecf",
+      "currentMethodAstSha256": "87d21855d1e4446112ac92395d4898d90461b5b3083c2081ff87f420c8115a83"
+    },
+    {
+      "method": "test_metadata_sparse_resume_304_cadence_source_isolation_and_no_journal",
+      "receipt": "metadata-current-green.log",
+      "observedGreenLine": "test_metadata_sparse_resume_304_cadence_source_isolation_and_no_journal (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_sparse_resume_304_cadence_source_isolation_and_no_journal) ... ok",
+      "receiptSha256": "a3d2e3e96d3dd6ddabaad1a4598628858a2c4068937d8a6e5b4e3e980dd6cc8a",
+      "currentMethodAstSha256": "baa87162efafb985056067beeff01bce92e767c73481545347b3401667bf0815"
+    },
+    {
+      "method": "test_metadata_current_policy_cli_refusals_cas_and_failure_preservation",
+      "receipt": "metadata-120s-failure-policy-green.log",
+      "observedGreenLine": "test_metadata_current_policy_cli_refusals_cas_and_failure_preservation (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_metadata_current_policy_cli_refusals_cas_and_failure_preservation) ... ok",
+      "receiptSha256": "f47fb2a7e839e0d13f86dd090e0d8883c8f688ceb3391190a4aea350c069f004",
+      "currentMethodAstSha256": "8395c6711e8612d9c665d8b8721b910762ab38e625b326eb2dd01a05024fc70d"
+    }
+  ],
+  "methodCount": 15,
+  "retainedIntegrationMethods": 11,
+  "freshOppositePolarityMethods": 4,
+  "reproducibleWholeCommand": "python3 -B -m unittest -v tests.test_autonomous_publisher_whole",
+  "freshWholeSuiteReplay": false,
+  "reconciliation": "Actual per-method green receipts retained from affected local executions. An interrupted or mixed-result suite is never relabeled as an all-green command; only completed exact green methods are reused. Remaining changed-fixture methods have their new complete green command receipts.",
+  "sourceSha256": "614074d666c673d6b56774ec4a92b60995433b517cf6fd0d7bb4a483c7647bd5",
+  "sourceChanges": "No production, workflow, runtime seed, catalog or native resource change. Current oracle/selector/test/evidence corrections only.",
+  "fixtureBoundary": "Actual captured launch and closed real USA2/SpaceX121/Starship522/pad235 metadata records. Technical count/pagination and LL2 URL-origin rebasing are controlled loopback fields; no new complete-provider observation.",
+  "retainedSemantics": "Unused metadata-service fixture branches changed after some accepted source/status/gate/runtime receipts. Those methods never fetch metadata (asserted), and their test bodies and relevant product/source/provider/Pages inputs remain unchanged. Only the three methods exercising the changed metadata rows were rerun. Earlier source SVG and due assertions were rerun when changed. The last sparse304 method was rerun after correcting its arbitrary120s harness timeout to the real metadata-job ceiling300s; the other10 methods completed under the stronger120s ceiling and were not replayed.",
+  "proofBoundary": "Real temporary Git/sparse YAML shell/CLI/production HTTP against loopback; substituted provider/Pages/Actions/OIDC responses. Existing root hosted evidence is separately hash-bound. No remote/provider/account/SDK/paid/physical operation by this unit.",
+  "polarityRepair": "Pinned graph requires disjoint positive/negative identities. Four genuine minimal production-owner witnesses execute independently; original11 mixed integration observations remain valid support and were not replayed for renaming. No property/case growth.",
+  "independentReview": "CLOSED/GREEN by root-assigned different peer; see peer-review/FINAL.md and peer-review/receipt-audit.json. Root integration judgment remains. No behavior replay or production/test change."
+}

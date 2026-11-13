@@ -1,0 +1,20 @@
+Background: SFR_PROBE owner=d8137fbf2d5f4606b756574b864bef74|inplace|e3fbb187da1d
+SFR_PROBE owner=d8137fbf2d5f4606b756574b864bef74|inplace|e3fbb187da1d
+NATIVE_METRIC phase=load-bytes-assembled used=80392 free=46392 total=126784 sampledHigh=80392 utc=1794585871 ms=14185 owner=d8137fbf2d5f4606b756574b864bef74|inplace|e3fbb187da1d
+NATIVE_METRIC phase=load-raw-assembled used=80032 free=46752 total=126784 sampledHigh=80392 utc=1794585871 ms=14185 owner=d8137fbf2d5f4606b756574b864bef74|inplace|e3fbb187da1d
+NATIVE_METRIC phase=bridge-catalog-before-parse used=81984 free=44800 total=126784 sampledHigh=81984 utc=1794585871 ms=14187 owner=d8137fbf2d5f4606b756574b864bef74|inplace|e3fbb187da1d
+NATIVE_METRIC phase=json-parsed used=85152 free=41632 total=126784 sampledHigh=85152 utc=1794585871 ms=14218 owner=d8137fbf2d5f4606b756574b864bef74|inplace|e3fbb187da1d
+NATIVE_METRIC phase=bridge-catalog-projected used=82336 free=44448 total=126784 sampledHigh=85152 utc=1794585871 ms=14219 owner=d8137fbf2d5f4606b756574b864bef74|inplace|e3fbb187da1d
+NATIVE_METRIC phase=json-parsed used=90120 free=36664 total=126784 sampledHigh=90120 utc=1794585871 ms=14276 owner=d8137fbf2d5f4606b756574b864bef74|inplace|e3fbb187da1d
+NATIVE_METRIC phase=bridge-header-start used=89608 free=37176 total=126784 sampledHigh=90120 utc=1794585871 ms=14277 owner=d8137fbf2d5f4606b756574b864bef74|inplace|e3fbb187da1d
+NATIVE_METRIC phase=bridge-header-refs used=90352 free=36432 total=126784 sampledHigh=90352 utc=1794585871 ms=14277 owner=d8137fbf2d5f4606b756574b864bef74|inplace|e3fbb187da1d
+NATIVE_METRIC phase=bridge-catalog-admitted used=91160 free=35624 total=126784 sampledHigh=91160 utc=1794585871 ms=14278 owner=d8137fbf2d5f4606b756574b864bef74|inplace|e3fbb187da1d
+NATIVE_METRIC phase=feed-validated used=89696 free=37088 total=126784 sampledHigh=91160 utc=1794585871 ms=14282 owner=d8137fbf2d5f4606b756574b864bef74|inplace|e3fbb187da1d
+NATIVE_DISPLAY mode=0 active=true bitmap=false decoding=false ms=14284 owner=d8137fbf2d5f4606b756574b864bef74|inplace|e3fbb187da1d
+NATIVE_METRIC phase=foreground-initial-complete used=79224 free=47560 total=126784 sampledHigh=91160 utc=1794585871 ms=14284 owner=d8137fbf2d5f4606b756574b864bef74|inplace|e3fbb187da1d
+
+Error: Unhandled Exception
+Exception: UnexpectedTypeException: Expected Object/Array/Dictionary/ByteArray, given null
+Stack: 
+  - getInitialView() at /Users/jekamas/.codex/tmp/spacefox-autonomous-delivery-20261113/inplace/Probe.mc:17 0x100011fa 
+Encountered an app crash.

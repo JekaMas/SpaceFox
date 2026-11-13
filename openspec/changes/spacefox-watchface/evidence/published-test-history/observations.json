@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "record_kind": "Author transcription of observed exec_command results, not a shared-runner execution receipt",
+  "authoring_baseline": "177d739a97370662068d59a8e5a05d32cf7b680a",
+  "source_dirty_during_behavior_observations": true,
+  "checks": [
+    {
+      "command": "SPACEFOX_PUBLISHED_RELEASE_RECEIPT=/Users/jekamas/.local/share/SpaceFox-release-basic-five-20261113/candidate-c7ad2c41/release.json python3 -B -m unittest -v tests.test_published_release_history",
+      "exit_code": 0,
+      "tests_run": 5,
+      "elapsed_reported_seconds": 0.031,
+      "test_source": "tests/test_published_release_history.py",
+      "observed_source_sha256": "1c5e1bb90084c862efee4f6968fcade0a5fa09c387ca91b2770785cabe366c70",
+      "observed_stdout_excerpt": "Ran 5 tests in 0.031s\n\nOK",
+      "proof_boundary": "Real retained public receipt/IQ/PRG/SPKI facts and production history admission; explicit upstream doubles and deliberate pre-export stop. No source-cleanliness/key/toolchain/native/export acceptance."
+    },
+    {
+      "command": "python3 -B -m unittest -v tests.test_release_identity.SigningCustodyTest",
+      "exit_code": 0,
+      "tests_run": 2,
+      "elapsed_reported_seconds": 0.926,
+      "test_source": "tests/test_release_identity.py",
+      "observed_source_sha256": "0208d8743c7383c8dde59dcf373bc7212471f0d136273e5e2edccdf68ef1b898",
+      "current_source_sha256": "0d07cca6d599adc8be45d890be4fec8156637107de7847d11fc6ea846e9901e8",
+      "source_change_after_observation": "Removed one trailing blank line only to fix git diff --check; assertions, fixtures, production/dependencies and execution unchanged. Original observed hash retained.",
+      "observed_stdout_excerpt": "Ran 2 tests in 0.926s\n\nOK",
+      "proof_boundary": "Real OpenSSL with disposable external RSA4096 identity/backup/password only; no production secret bytes, SDK/compiler or native candidate."
+    }
+  ],
+  "retained_previous_receipt": "/Users/jekamas/.local/share/SpaceFox-release-basic-five-20261113/candidate-c7ad2c41/release.json",
+  "no_private_custody_access": true,
+  "proof_boundary": "Bounded published history metadata and pre-export admission plus disposable custody. Historical native/production receipts retained separately; no physical/phone/Store or whole-property closure."
+}

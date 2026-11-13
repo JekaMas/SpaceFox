@@ -1,0 +1,70 @@
+{
+  "receiptCandidate": "9f3b9a415cdc3352214a38ca3a05a59fde2592d6",
+  "receipts": [
+    "../basic-main-review/metadata-tests.log",
+    "../language-settings-whole/publisher-remaining.log"
+  ],
+  "ownerComparisons": [
+    {
+      "path": "tests/test_current_metadata_publisher.py",
+      "receiptCandidateSha256": "6380a2dc1bbd59815fbbf122cc1c6c4542c8a011767fce686ee3b0919eb2cb52",
+      "currentSha256": "6380a2dc1bbd59815fbbf122cc1c6c4542c8a011767fce686ee3b0919eb2cb52",
+      "exact": true
+    },
+    {
+      "path": "tests/test_current_motion_publisher.py",
+      "receiptCandidateSha256": "17c27ffa41843c9adeba722affc28575dd8929ed4b6edad3810d5742845f8308",
+      "currentSha256": "bfe73af23cbfacd34e29912cc914c62246cc21e377e1580ba3938daa8fe3216b",
+      "exact": false
+    },
+    {
+      "path": "tools/spacefox/catalog_refresh.py",
+      "receiptCandidateSha256": "15fee92f31382190a0371e2adf66ea24a04b2d814608833cfcbf93146fe0f8c5",
+      "currentSha256": "15fee92f31382190a0371e2adf66ea24a04b2d814608833cfcbf93146fe0f8c5",
+      "exact": true
+    },
+    {
+      "path": "tools/spacefox/publisher.py",
+      "receiptCandidateSha256": "909570ec51858a39b417dca72eca4d3361d8a3012fd6bf18a1155a0345258404",
+      "currentSha256": "c4377c844c8e0bb9bf0142b693b89fa6801d2b6618ea548e90e5c2f4133a0143",
+      "exact": false
+    },
+    {
+      "path": "tools/spacefox/provider.py",
+      "receiptCandidateSha256": "2f0e07bb8505a099879d80b7c6beea7ff7c933b4c8beb73492037bdba9e06745",
+      "currentSha256": "2f0e07bb8505a099879d80b7c6beea7ff7c933b4c8beb73492037bdba9e06745",
+      "exact": true
+    },
+    {
+      "path": "tools/spacefox/schedule.py",
+      "receiptCandidateSha256": "d4c580e788c248e5cbdf30045746788fb87fd5dac9a2def00c25b9a7c08eaa2c",
+      "currentSha256": "d4c580e788c248e5cbdf30045746788fb87fd5dac9a2def00c25b9a7c08eaa2c",
+      "exact": true
+    },
+    {
+      "path": "tools/spacefox/native_motion.py",
+      "receiptCandidateSha256": "5d17167d7f65d20ff4798499776d170107777a3ffe6ea9e551713dd1302a0663",
+      "currentSha256": "5d17167d7f65d20ff4798499776d170107777a3ffe6ea9e551713dd1302a0663",
+      "exact": true
+    },
+    {
+      "path": "tools/spacefox/native_profile.py",
+      "receiptCandidateSha256": "43d5e9652cb95f759205a900a7f835344308481ae9325cab90acbcfdc065a81e",
+      "currentSha256": "43d5e9652cb95f759205a900a7f835344308481ae9325cab90acbcfdc065a81e",
+      "exact": true
+    },
+    {
+      "path": "tools/refresh_catalog.py",
+      "receiptCandidateSha256": "c4d23fd804c7e51f8d55962134e34eee7d622e4451ea7345a0d8869ea65b435a",
+      "currentSha256": "c4d23fd804c7e51f8d55962134e34eee7d622e4451ea7345a0d8869ea65b435a",
+      "exact": true
+    }
+  ],
+  "allExact": false,
+  "proof": "Reuse actual recorded current schema3 33-page traversal, expired current-prefix restart, metadata source headroom, policy and publisher current/quota observations with their original local boundary. No new execution label and no remote/physical inference.",
+  "semanticComparison": {
+    "publisher.py": "Only STATE_REF/ANCHOR_REF literal changes motion-v3 to map-v3; no quota/cadence/catalog/source/saved-state algorithm change. Original traversal/headroom receipts retain that original namespace boundary; new whole suite exercises map-v3 actual bootstrap/CLI/recovery, and namespace-history-tests.log retains explicit original namespace isolation qualification. Do not relabel old receipt as fresh current-ref execution.",
+    "test_current_motion_publisher.py": "Only cloud-journal namespace test gains assertions that current names are map-v3 and old refs remain unchanged. The metadata4, policy, integer and rolling quota method bodies are unchanged. Changed journal test is not re-used as new proof; current suite exercises actual current journal namespace."
+  },
+  "supplementalNamespaceReceipt": "../basic-main-review/namespace-history-tests.log"
+}

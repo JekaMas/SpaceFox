@@ -1,0 +1,80 @@
+{
+  "deployedRuntime": {
+    ".github/scripts/install-native-linux-renderer.sh": "ce5b8d2635e092512740715b3fe370296396ff1f414b203a7479de03df4d6dd9",
+    ".github/spacefox-inputs.txt": "115af80b2c46b4c8b2b110c84425d4541c2596180630dee04a13a0b01473a025",
+    ".github/workflows/update-feed.yml": "d2eac0a935e1a43ed4856ba4a4062cc36521db7bc42d12281cd8e3adcdd40baa",
+    "tools/cloud_feed.py": "a5c3da1969a8ea8ebbaabc32af0c0e26228e72871beefc9c863e7a98dc728ba9",
+    "tools/cloud_inputs.py": "56cdd8d1d2557df82abd21ed7e8a612f9af6fe3335ab283539c7cac2b58a1611",
+    "tools/refresh_catalog.py": "c4d23fd804c7e51f8d55962134e34eee7d622e4451ea7345a0d8869ea65b435a",
+    "tools/spacefox/__init__.py": "8168184472a2e477449456ad126b183f5205dddc24141d5479c86a9cc1b5a778",
+    "tools/spacefox/bridge_map.py": "4fdf539907da6bde387d16e9b2f38b583e1c06e94b60212cd15339da76e1363e",
+    "tools/spacefox/bridge_map_render.js": "a89478f79e3ba5e831074effc88552ee1e2752277104d6ca5a037cd65eb14b24",
+    "tools/spacefox/catalog.py": "2ad9e6f65634bcd8e29b2f471625745117a24537d03399e9ac0b5cb424802de3",
+    "tools/spacefox/catalog_refresh.py": "15fee92f31382190a0371e2adf66ea24a04b2d814608833cfcbf93146fe0f8c5",
+    "tools/spacefox/cloud.py": "af58080c75190d8482dd686c5a048e1ebb9a3d332076b4a9ca2c6075fb5a25d5",
+    "tools/spacefox/current_catalog.py": "6480f83b607fa9859900a1cd06220562b7f8c6e004ad68e32c43e796223baf6c",
+    "tools/spacefox/current_context.py": "8527166540bfbca108b9861da6602df21346f3db263778da2bfe395178fb5be4",
+    "tools/spacefox/feed.py": "cc15828f5b078e45acc5c1da22370b157d9be675f434200f33e41e697ac8545c",
+    "tools/spacefox/geographic_context.py": "23ed1a99f5e08b22430ba151c57c96d7237a7fcf0881dd6211fdf69872a5fc03",
+    "tools/spacefox/global_map.py": "a50687db161af083cba24330a719984747d58ea1c9cb90950169741ca7f5496d",
+    "tools/spacefox/graphics.py": "e4d26f23771504a6aeb7654487d1479074cc0d29d829c652bfa0b3bbbe83cf5a",
+    "tools/spacefox/native_motion.py": "5d17167d7f65d20ff4798499776d170107777a3ffe6ea9e551713dd1302a0663",
+    "tools/spacefox/native_profile.py": "43d5e9652cb95f759205a900a7f835344308481ae9325cab90acbcfdc065a81e",
+    "tools/spacefox/provider.py": "2f0e07bb8505a099879d80b7c6beea7ff7c933b4c8beb73492037bdba9e06745",
+    "tools/spacefox/publisher.py": "c4377c844c8e0bb9bf0142b693b89fa6801d2b6618ea548e90e5c2f4133a0143",
+    "tools/spacefox/schedule.py": "d4c580e788c248e5cbdf30045746788fb87fd5dac9a2def00c25b9a7c08eaa2c",
+    "tools/spacefox/visual_bridge.py": "6fd23b13695a281c89e86a5f89d8986b796525b156f0d51599abfe0ee06b939f",
+    "tools/spacefox/wire.py": "fa6ce600915618d7997b0d6d229feb7492aca03e77c6ada02fafa3e2222f2cc2",
+    "tools/update_feed.py": "e63f1c7d847e37502c238a6b1f062b93c1e88cc76801cf748e8c5a6a082c5132"
+  },
+  "clockSources": {
+    "deploy/cloudflare-schedule/worker.mjs": "3968e2ac517aadbc10b785a7b8a180bcc5b77302365e39e47183ff0c3f77eba3",
+    "deploy/cloudflare-schedule/wrangler.toml": "fc43ed808bced42ea733c7bff3f2228a1b08dfb29331d838c5f83188e762e337",
+    "tests/test_schedule_clock.mjs": "ac798100ed899de5b0589f14d8f7e04f1bb9a73bc40793da8c1941ecb0b0c863",
+    "tests/test_schedule_clock_deadline.mjs": "d1748c53b815faf15fa69b671437e2ccec6c38cafdc18751b4549924ba67c558",
+    "tests/test_schedule_clock_configuration.mjs": "130a1830c7aaf01dfa351bf5832813614cb810b7894bcc56c4769896e739698a"
+  },
+  "clockReceipts": [
+    {
+      "kind": "dispatch",
+      "path": "openspec/changes/spacefox-watchface/evidence/alternative-schedule-trigger/runtime-redirect-fix/affected-green-final.tap",
+      "sha256": "f0cfbec5cf74ed52a4211316064bf643be8a6fe0293db04a9d947856130a2253"
+    },
+    {
+      "kind": "configuration",
+      "path": "openspec/changes/spacefox-watchface/evidence/public-current-clock/round1/clock-config-public-final.log",
+      "sha256": "fe73652ec5cb7186b0ac581a0f8157ea25048a96ace68143af3106f0087dd085"
+    }
+  ],
+  "operationalReceipts": {
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/AUTO-DUE-ACCEPTANCE.json": "b8f5db2619e01bf7ebd9ccd7e590134fc75a9481103e34c6e7e701ba18fa8b9c",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/auto-due-feed.json": "e33f21ffe9b183c4846a7cc727071aa9915a8fa9f5539fcf8cad352e1c222731",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/auto-due-jobs.json": "0ee21fa00b3b8917ce1057bf0318d80f05ec43f773d2e8a9d6ab0b097c69f4dd",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/bootstrap-131880523132.log": "b56ac37250e7677dba817c8e4988cea34cf4f5e8a481bda62f562625f043a114",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/auto-due-131913989770.log": "bd48ef677fee20478a568defe3e7c37586dcb9f88d699da3264f66868ecd1105",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/timer-43426689644-131889722886.log": "ba708c3042a5a5c7d49e9f48dc187fbbd724918d41270f45704087835dd5b636",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/bootstrap-jobs.json": "1b3e68ba6b93a90f7779dd8058680baabd6736e6163f39298b2c0cf476c2f8a5",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/map-only-pages-replacement.json": "961fbf03f77f5e2a0f70c72ec6b7e573c7907ae106eb5f4e3ae62d0188a72c79",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/map-only-public-readback.json": "f115a08a2b36ad8bcc51ef80856382e3cfe1c7f95136ad8546f4c45fa6b7575b",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/map-only-complete-artifact-readback.json": "5e8e82e21ad0fadb12113fce3d05c7abe204b55f9f98d5101911eb7365e6c407",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/timer-43424540872.json": "c3eafa43a5127e4bcdfdbe5a972d1d593964b60d2f9bece42adf1b2e1b5e2be9",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/timer-43426689644-131890906742.log": "b57fa86af83f7c97a64edcf7ebdd7ee52b9dfac1103ab6b7e23d70067976bdf0",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/timer-43424540872-131882616484.log": "cdc499b5398be6fb5f30db3416c4eea585238ea1ac6d972aea90337faba05d9f",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/auto-due-131914580871.log": "31925893bea2d1e952ebe9165a1054c599abe9567c9281672f100736f8c2e102",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/auto-due-131911006393.log": "7ceebc9706634424a2e1de6a424253e789d9d214984da752b9bd28688a3146ea",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/empty-map-site-readback-final.json": "6eec667fd26d2ba104845b37d07c4e57d074f80e609ca43d32c759c2c05e3ad7",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/ROOT-JUDGMENT.json": "d660831eda65c96828860cfeed2808d1ec88f29809514c19d5960a6f2d74e7bf",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/empty-map-site-readback.json": "b5a8cd9e726619e7d074ed9dfe1c3edf8965332dd874d942699219e80c504c1f",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/timer-43426689644.json": "6f3cfbdc8f290d16b5d55ad45f130d5e81f48cb1712853cf1a3ea684f0d4bbf2",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/bootstrap-131877587512.log": "1a83920a81d9d58616c2c11edab9cb187a98b52e085cd0dd5dd83dd16d9f5c00",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/auto-due-public-readback.json": "73ae00b035836cf3fc0cb40de59d5ba397fa7ccffbe1bd87155e4c5af63deb07",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/seven-closure-publication.json": "3c71467ceab8af98e8c85bceb22e88378eacd8842db8f0a59ae1d5949c0456db",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/timer-43424540872-131884507163.log": "cb7915e5a44e56a7fe07a95a055c84a4b6d81f955b642c8279576871153c7938",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/map-only-public-feed.json": "86eb3dd2584a960c42e445b44041ff88d7f673c5dc949464fd9478d26f2388a4",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/empty-map-site-after-ttl.json": "d268ac31c7f489d23d08420a20d76aaaafdb5f1c7ce7aafd4cc6a89f8a51c761",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/bootstrap-131879639711.log": "3c300b27f4e50f70c2640d5f883f06160591996e13d8a82d6b714315a6ae7d35",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/twelve-closure-publication.json": "4b6d04f4b3075eddeaf1a19fa62d8795709053df5fd30a4a4f4306291f293f6d",
+    "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/ubuntu-43417089608.log": "aaa15b328d51c61b416aee4186705f424e74528651bf52d6517ab45c31d684cd"
+  },
+  "proofBoundary": "Exact current runtime/deployed-source bindings and immutable original observations; documentation, graph and unrelated native sources excluded. Retained Node6 and Linux11 behavior is reused, not rerun. No new provider/Pages/Cloudflare/phone observation."
+}

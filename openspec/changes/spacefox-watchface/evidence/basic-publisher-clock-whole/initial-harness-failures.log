@@ -1,0 +1,93 @@
+ok
+test_readback_unavailable_negative (tests.test_basic_publisher_clock.BasicPublisherClockTest.test_readback_unavailable_negative) ... ok
+test_recipe_closure_and_rights (tests.test_basic_publisher_clock.BasicPublisherClockTest.test_recipe_closure_and_rights) ... ERROR
+
+======================================================================
+ERROR: test_clock_operational_negative (tests.test_basic_publisher_clock.BasicPublisherClockTest.test_clock_operational_negative)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-publisher-clock-whole/tests/test_basic_publisher_clock.py", line 374, in test_clock_operational_negative
+    changed[2]['sourceValidatedUtc'] = changed[1]['sourceValidatedUtc']
+                                       ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'sourceValidatedUtc'
+
+======================================================================
+ERROR: test_clock_operational_positive (tests.test_basic_publisher_clock.BasicPublisherClockTest.test_clock_operational_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-publisher-clock-whole/tests/test_basic_publisher_clock.py", line 360, in test_clock_operational_positive
+    self.operational()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-publisher-clock-whole/tests/test_basic_publisher_clock.py", line 354, in operational
+    qualify_observation(*args)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-publisher-clock-whole/tests/test_basic_publisher_clock.py", line 135, in qualify_observation
+    assert after['sourceValidatedUtc'] > before['sourceValidatedUtc']
+           ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'sourceValidatedUtc'
+
+======================================================================
+ERROR: test_personal_privacy_positive (tests.test_basic_publisher_clock.BasicPublisherClockTest.test_personal_privacy_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-publisher-clock-whole/tests/test_basic_publisher_clock.py", line 212, in test_personal_privacy_positive
+    self.assertEqual(feed['sourceValidatedUtc'], NOW)
+                     ~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'sourceValidatedUtc'
+
+======================================================================
+ERROR: test_personal_publication_positive (tests.test_basic_publisher_clock.BasicPublisherClockTest.test_personal_publication_positive)
+Actual current G1/G2, complete artifact and exact unchanged deployed owners.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-publisher-clock-whole/tests/test_basic_publisher_clock.py", line 186, in test_personal_publication_positive
+    observation = self.operational()
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-publisher-clock-whole/tests/test_basic_publisher_clock.py", line 354, in operational
+    qualify_observation(*args)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-publisher-clock-whole/tests/test_basic_publisher_clock.py", line 135, in qualify_observation
+    assert after['sourceValidatedUtc'] > before['sourceValidatedUtc']
+           ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'sourceValidatedUtc'
+
+======================================================================
+ERROR: test_recipe_closure_and_rights (tests.test_basic_publisher_clock.BasicPublisherClockTest.test_recipe_closure_and_rights)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-publisher-clock-whole/tests/test_basic_publisher_clock.py", line 285, in test_recipe_closure_and_rights
+    raw = canonical_bytes(row)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-publisher-clock-whole/tools/spacefox/catalog.py", line 233, in canonical_bytes
+    return encode(value).encode('utf-8')
+           ~~~~~~^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-publisher-clock-whole/tools/spacefox/catalog.py", line 230, in encode
+    return '{' + ','.join(encode(k) + ':' + encode(item[k]) for k in sorted(item)) + '}'
+                 ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-publisher-clock-whole/tools/spacefox/catalog.py", line 230, in <genexpr>
+    return '{' + ','.join(encode(k) + ':' + encode(item[k]) for k in sorted(item)) + '}'
+                                            ~~~~~~^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-publisher-clock-whole/tools/spacefox/catalog.py", line 227, in encode
+    return '[' + ','.join(encode(x) for x in item) + ']'
+                 ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-publisher-clock-whole/tools/spacefox/catalog.py", line 227, in <genexpr>
+    return '[' + ','.join(encode(x) for x in item) + ']'
+                          ~~~~~~^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-publisher-clock-whole/tools/spacefox/catalog.py", line 230, in encode
+    return '{' + ','.join(encode(k) + ':' + encode(item[k]) for k in sorted(item)) + '}'
+                 ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-publisher-clock-whole/tools/spacefox/catalog.py", line 230, in <genexpr>
+    return '{' + ','.join(encode(k) + ':' + encode(item[k]) for k in sorted(item)) + '}'
+                                            ~~~~~~^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-publisher-clock-whole/tools/spacefox/catalog.py", line 230, in encode
+    return '{' + ','.join(encode(k) + ':' + encode(item[k]) for k in sorted(item)) + '}'
+                 ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-publisher-clock-whole/tools/spacefox/catalog.py", line 230, in <genexpr>
+    return '{' + ','.join(encode(k) + ':' + encode(item[k]) for k in sorted(item)) + '}'
+                                            ~~~~~~^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-publisher-clock-whole/tools/spacefox/catalog.py", line 231, in encode
+    raise CatalogError(f'unsupported JSON type {type(item).__name__}; use Decimal for decimals')
+tools.spacefox.catalog.CatalogError: unsupported JSON type float; use Decimal for decimals
+
+----------------------------------------------------------------------
+Ran 14 tests in 109.515s
+
+FAILED (errors=5)

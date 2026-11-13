@@ -1,0 +1,44 @@
+{
+  "platform": "macOS-14.7-arm64-arm-64bit-Mach-O",
+  "tools": [
+    {
+      "argv": [
+        "python3",
+        "--version"
+      ],
+      "exitCode": 0,
+      "stdout": "Python 3.14.7",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--version"
+      ],
+      "exitCode": 0,
+      "stdout": "git version 2.37.0",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "--version"
+      ],
+      "exitCode": 0,
+      "stdout": "v22.22.0",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "rsvg-convert",
+        "--version"
+      ],
+      "exitCode": 0,
+      "stdout": "rsvg-convert version 2.57.0",
+      "stderr": ""
+    }
+  ],
+  "sharedWorkflowPin": "f8e7ba481bf356600925e01936d7e9f3f1ac0084",
+  "sharedWorkflowSource": "Existing exact-pin main checkout; no submodule initialization/install.",
+  "remoteOrSdkCalls": 0
+}

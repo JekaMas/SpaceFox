@@ -1,0 +1,1689 @@
+prepare	UNKNOWN STEP	﻿2026-11-13T13:22:09.0262276Z Current runner version: '2.338.2'
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0290848Z ##[group]Runner Image Provisioner
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0292087Z Hosted Compute Agent
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0292736Z Version: 20261103.629
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0293654Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0294412Z Build Date: 2026-11-03T17:26:59Z
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0295157Z Worker ID: {775efceb-6a7a-46ed-bed4-5a3388439b2d}
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0296000Z Region: centralus
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0296594Z Cloud: Azure
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0297163Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0298489Z ##[group]Operating System
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0299338Z Ubuntu
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0299953Z 24.04.5
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0300528Z LTS
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0301080Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0301652Z ##[group]Runner Image
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0302269Z Image: ubuntu-24.04
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0303094Z Version: 20261111.370.1
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0304420Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261111.370/images/ubuntu/Ubuntu2404-Readme.md
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0306018Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261111.370
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0306989Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0308366Z ##[group]GITHUB_TOKEN Permissions
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0310678Z Actions: read
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0311648Z Contents: write
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0312210Z Metadata: read
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0312750Z Pages: read
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0313568Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0315982Z Secret source: Actions
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0316865Z Cache mode: write
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0317902Z Prepare workflow directory
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0777485Z Prepare all required actions
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.0827762Z Getting action download info
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.3397474Z Download action repository 'actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.4443084Z Download action repository 'actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b' (SHA:7b1f4a764d45c48632c6b24a0339c27f5614fb0b)
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.7293934Z Getting action download info
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.8152554Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+prepare	UNKNOWN STEP	2026-11-13T13:22:09.9559709Z Complete job name: prepare
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0089938Z ##[group]Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0090485Z with:
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0090760Z   ref: dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0091114Z   persist-credentials: false
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0091423Z   sparse-checkout-cone-mode: false
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0091764Z   sparse-checkout: /.github/spacefox-inputs.txt
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0092116Z   repository: JekaMas/SpaceFox
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0094466Z   token: ***
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0094712Z   ssh-strict: true
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0094961Z   ssh-user: git
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0095203Z   clean: true
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0095445Z   fetch-depth: 1
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0095708Z   fetch-tags: false
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0095959Z   show-progress: true
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0096239Z   lfs: false
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0096473Z   submodules: false
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0096732Z   set-safe-directory: true
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0097020Z   allow-unsafe-pr-checkout: false
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0097423Z env:
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0097668Z   PYTHONDONTWRITEBYTECODE: 1
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0098011Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.0098362Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2526287Z Syncing repository: JekaMas/SpaceFox
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2527911Z ##[group]Getting Git version info
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2528541Z Working directory is '/home/runner/work/SpaceFox/SpaceFox'
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2534086Z [command]/usr/bin/git version
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2663577Z git version 2.56.1
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2681461Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2699976Z Temporarily overriding HOME='/home/runner/work/_temp/668bf8a4-8136-453f-92d0-de835d18e81f' before making global git config changes
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2701608Z Adding repository directory to the temporary git global config as a safe directory
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2705346Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/SpaceFox/SpaceFox
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2763875Z Deleting the contents of '/home/runner/work/SpaceFox/SpaceFox'
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2769433Z ##[group]Determining repository object format
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2770581Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2771370Z ##[group]Initializing the repository
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2775764Z [command]/usr/bin/git init /home/runner/work/SpaceFox/SpaceFox
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2890010Z hint: Using 'master' as the name for the initial branch. This default branch name
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2890993Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2891925Z hint: to use in all of your new repositories, which will suppress this warning,
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2892604Z hint: call:
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2893203Z hint:
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2893681Z hint: 	git config --global init.defaultBranch <name>
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2894227Z hint:
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2894736Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2895781Z hint: 'development'. The just-created branch can be renamed via this command:
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2896544Z hint:
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2896978Z hint: 	git branch -m <name>
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2897488Z hint:
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2898273Z hint: Disable this message with "git config set advice.defaultBranchName false"
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2899656Z Initialized empty Git repository in /home/runner/work/SpaceFox/SpaceFox/.git/
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2909214Z [command]/usr/bin/git remote add origin https://github.com/JekaMas/SpaceFox
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2966482Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2967275Z ##[group]Disabling automatic garbage collection
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.2969939Z [command]/usr/bin/git config --local gc.auto 0
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.3011062Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.3012445Z ##[group]Setting up auth
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.3013362Z Removing SSH command configuration
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.3020506Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.3068936Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.3432217Z Removing HTTP extra header
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.3437919Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.3481880Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.3688025Z Removing includeIf entries pointing to credentials config files
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.3693767Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.3737148Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.3954594Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-e6714369-9c55-47f8-9604-aa79f5762335.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.4000329Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path /home/runner/work/_temp/git-credentials-e6714369-9c55-47f8-9604-aa79f5762335.config
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.4040862Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-e6714369-9c55-47f8-9604-aa79f5762335.config
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.4086615Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-e6714369-9c55-47f8-9604-aa79f5762335.config
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.4127983Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-e6714369-9c55-47f8-9604-aa79f5762335.config
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.4165819Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.4166547Z ##[group]Fetching the repository
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.4173257Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.8041575Z From https://github.com/JekaMas/SpaceFox
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.8042450Z  * branch            dd21a1811e028fbf8a3e6f5d95fac0a406888c5f -> FETCH_HEAD
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.8052104Z [command]/usr/bin/git rev-parse --verify --quiet dd21a1811e028fbf8a3e6f5d95fac0a406888c5f^{object}
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.8091244Z dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.8102478Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.8103525Z ##[group]Determining the checkout info
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.8104373Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.8105093Z ##[group]Setting up sparse checkout
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.8107152Z [command]/usr/bin/git config core.sparseCheckout true
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.8154053Z [command]/usr/bin/git rev-parse --git-path info/sparse-checkout
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.8187961Z .git/info/sparse-checkout
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.8195363Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.8196004Z ##[group]Checking out the ref
+prepare	UNKNOWN STEP	2026-11-13T13:22:10.8198943Z [command]/usr/bin/git checkout --progress --force dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1043212Z Note: switching to 'dd21a1811e028fbf8a3e6f5d95fac0a406888c5f'.
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1043913Z 
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1044290Z You are in 'detached HEAD' state. You can look around, make experimental
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1045004Z changes and commit them, and you can discard any commits you make in this
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1045743Z state without impacting any branches by switching back to a branch.
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1046105Z 
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1046516Z If you want to create a new branch to retain commits you create, you may
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1047219Z do so (now or later) by using -c with the switch command. Example:
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1047621Z 
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1047879Z   git switch -c <new-branch-name>
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1048173Z 
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1048677Z Or undo this operation with:
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1048965Z 
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1049199Z   git switch -
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1049481Z 
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1049877Z Turn off this advice by setting config variable advice.detachedHead to false
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1050342Z 
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1050881Z HEAD is now at dd21a18 Publish verified five-language signed packaging and whole software closures
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1053107Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1102700Z [command]/usr/bin/git log -1 --format=%H
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1138294Z dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1146991Z ##[group]Removing auth
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1147599Z Removing SSH command configuration
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1149771Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1189305Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1415554Z Removing HTTP extra header
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1417176Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1458321Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1672951Z Removing includeIf entries pointing to credentials config files
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1674596Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1710219Z includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1711726Z includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1712619Z includeif.gitdir:/github/workspace/.git.path
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1713718Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1721242Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1759508Z /home/runner/work/_temp/git-credentials-e6714369-9c55-47f8-9604-aa79f5762335.config
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1770656Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path /home/runner/work/_temp/git-credentials-e6714369-9c55-47f8-9604-aa79f5762335.config
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1817346Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1848930Z /home/runner/work/_temp/git-credentials-e6714369-9c55-47f8-9604-aa79f5762335.config
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1857654Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-e6714369-9c55-47f8-9604-aa79f5762335.config
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1901810Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1936561Z /github/runner_temp/git-credentials-e6714369-9c55-47f8-9604-aa79f5762335.config
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1943131Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-e6714369-9c55-47f8-9604-aa79f5762335.config
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.1985468Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.2015503Z /github/runner_temp/git-credentials-e6714369-9c55-47f8-9604-aa79f5762335.config
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.2021444Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-e6714369-9c55-47f8-9604-aa79f5762335.config
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.2062427Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.2269697Z Removing credentials config '/home/runner/work/_temp/git-credentials-e6714369-9c55-47f8-9604-aa79f5762335.config'
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.2279021Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.2550045Z ##[group]Run git sparse-checkout set --no-cone --stdin < .github/spacefox-inputs.txt
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.2551073Z ^[[36;1mgit sparse-checkout set --no-cone --stdin < .github/spacefox-inputs.txt^[[0m
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.2551786Z ^[[36;1mpython3 -B tools/cloud_inputs.py^[[0m
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.2573431Z shell: /usr/bin/bash -e {0}
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.2573997Z env:
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.2574508Z   PYTHONDONTWRITEBYTECODE: 1
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.2575134Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+prepare	UNKNOWN STEP	2026-11-13T13:22:11.2575721Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:24:57.2315452Z {"catalogInputs": 710, "catalogVersion": "2026-11-12.global.21.blk3-whole1"}
+prepare	UNKNOWN STEP	2026-11-13T13:24:57.3233770Z ##[group]Run bash .github/scripts/install-native-linux-renderer.sh
+prepare	UNKNOWN STEP	2026-11-13T13:24:57.3234108Z ^[[36;1mbash .github/scripts/install-native-linux-renderer.sh^[[0m
+prepare	UNKNOWN STEP	2026-11-13T13:24:57.3252037Z shell: /usr/bin/bash -e {0}
+prepare	UNKNOWN STEP	2026-11-13T13:24:57.3252187Z env:
+prepare	UNKNOWN STEP	2026-11-13T13:24:57.3252338Z   PYTHONDONTWRITEBYTECODE: 1
+prepare	UNKNOWN STEP	2026-11-13T13:24:57.3252559Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+prepare	UNKNOWN STEP	2026-11-13T13:24:57.3252742Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:24:57.3399038Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+prepare	UNKNOWN STEP	2026-11-13T13:24:57.3399694Z                                  Dload  Upload   Total   Spent    Left  Speed
+prepare	UNKNOWN STEP	2026-11-13T13:24:57.3400296Z 
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.3234870Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.3957599Z  60 2246k   60 1367k    0     0  1389k      0  0:00:01 --:--:--  0:00:01 1389k
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.3958557Z 100 2246k  100 2246k    0     0  2127k      0  0:00:01  0:00:01 --:--:-- 2129k
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.4015655Z /home/runner/work/_temp/native-linux-prerequisites/librsvg2-bin.deb: OK
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.4699586Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.5308544Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.5312246Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.5374799Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.5403145Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.5434532Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.6406592Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [697 kB]
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.6653715Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1450 kB]
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.6681604Z Get:15 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [767 kB]
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.6704380Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [315 kB]
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.6722012Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1713 kB]
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.6800522Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [345 kB]
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.6825425Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1883 kB]
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.6995854Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [430 kB]
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.7016182Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [14.6 kB]
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.7585777Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1195 kB]
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.7627521Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [238 kB]
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.7646447Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1228 kB]
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.8126014Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [248 kB]
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.8148602Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1788 kB]
+prepare	UNKNOWN STEP	2026-11-13T13:24:58.8200132Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [411 kB]
+prepare	UNKNOWN STEP	2026-11-13T13:25:03.7539937Z Fetched 13.1 MB in 1s (12.0 MB/s)
+prepare	UNKNOWN STEP	2026-11-13T13:25:04.5437979Z Reading package lists...
+prepare	UNKNOWN STEP	2026-11-13T13:25:04.6104940Z Reading package lists...
+prepare	UNKNOWN STEP	2026-11-13T13:25:04.7986942Z Building dependency tree...
+prepare	UNKNOWN STEP	2026-11-13T13:25:04.7993619Z Reading state information...
+prepare	UNKNOWN STEP	2026-11-13T13:25:04.9210936Z The following additional packages will be installed:
+prepare	UNKNOWN STEP	2026-11-13T13:25:04.9215042Z   librsvg2-2
+prepare	UNKNOWN STEP	2026-11-13T13:25:04.9221861Z Recommended packages:
+prepare	UNKNOWN STEP	2026-11-13T13:25:04.9222275Z   librsvg2-common
+prepare	UNKNOWN STEP	2026-11-13T13:25:04.9407234Z The following NEW packages will be installed:
+prepare	UNKNOWN STEP	2026-11-13T13:25:04.9408516Z   librsvg2-2 librsvg2-bin
+prepare	UNKNOWN STEP	2026-11-13T13:25:04.9677637Z 0 upgraded, 2 newly installed, 0 to remove and 20 not upgraded.
+prepare	UNKNOWN STEP	2026-11-13T13:25:04.9677991Z Need to get 4442 kB of archives.
+prepare	UNKNOWN STEP	2026-11-13T13:25:04.9678292Z After this operation, 14.2 MB of additional disk space will be used.
+prepare	UNKNOWN STEP	2026-11-13T13:25:04.9678650Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+prepare	UNKNOWN STEP	2026-11-13T13:25:05.0310256Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 librsvg2-2 amd64 2.58.0+dfsg-1ubuntu0.1 [2141 kB]
+prepare	UNKNOWN STEP	2026-11-13T13:25:05.1312685Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 librsvg2-bin amd64 2.58.0+dfsg-1ubuntu0.1 [2301 kB]
+prepare	UNKNOWN STEP	2026-11-13T13:25:05.3457290Z Fetched 4442 kB in 0s (23.1 MB/s)
+prepare	UNKNOWN STEP	2026-11-13T13:25:05.3664380Z Selecting previously unselected package librsvg2-2:amd64.
+prepare	UNKNOWN STEP	2026-11-13T13:25:05.3944633Z (Reading database ... 
+prepare	UNKNOWN STEP	2026-11-13T13:25:05.3945045Z (Reading database ... 5%
+prepare	UNKNOWN STEP	2026-11-13T13:25:05.3945370Z (Reading database ... 10%
+prepare	UNKNOWN STEP	2026-11-13T13:25:05.3945700Z (Reading database ... 15%
+prepare	UNKNOWN STEP	2026-11-13T13:25:05.3945894Z (Reading database ... 20%
+prepare	UNKNOWN STEP	2026-11-13T13:25:05.3946086Z (Reading database ... 25%
+prepare	UNKNOWN STEP	2026-11-13T13:25:05.3946279Z (Reading database ... 30%
+prepare	UNKNOWN STEP	2026-11-13T13:25:05.3946462Z (Reading database ... 35%
+prepare	UNKNOWN STEP	2026-11-13T13:25:05.3946605Z (Reading database ... 40%
+prepare	UNKNOWN STEP	2026-11-13T13:25:05.3946772Z (Reading database ... 45%
+prepare	UNKNOWN STEP	2026-11-13T13:25:05.3946949Z (Reading database ... 50%
+prepare	UNKNOWN STEP	2026-11-13T13:25:05.3992307Z (Reading database ... 55%
+prepare	UNKNOWN STEP	2026-11-13T13:25:05.5139586Z (Reading database ... 60%
+prepare	UNKNOWN STEP	2026-11-13T13:25:05.6757608Z (Reading database ... 65%
+prepare	UNKNOWN STEP	2026-11-13T13:25:05.8705598Z (Reading database ... 70%
+prepare	UNKNOWN STEP	2026-11-13T13:25:06.0761786Z (Reading database ... 75%
+prepare	UNKNOWN STEP	2026-11-13T13:25:06.1289837Z (Reading database ... 80%
+prepare	UNKNOWN STEP	2026-11-13T13:25:06.2218408Z (Reading database ... 85%
+prepare	UNKNOWN STEP	2026-11-13T13:25:06.3156257Z (Reading database ... 90%
+prepare	UNKNOWN STEP	2026-11-13T13:25:06.3834236Z (Reading database ... 95%
+prepare	UNKNOWN STEP	2026-11-13T13:25:06.3834450Z (Reading database ... 100%
+prepare	UNKNOWN STEP	2026-11-13T13:25:06.3834655Z (Reading database ... 216752 files and directories currently installed.)
+prepare	UNKNOWN STEP	2026-11-13T13:25:06.3873755Z Preparing to unpack .../librsvg2-2_2.58.0+dfsg-1ubuntu0.1_amd64.deb ...
+prepare	UNKNOWN STEP	2026-11-13T13:25:06.3967428Z Unpacking librsvg2-2:amd64 (2.58.0+dfsg-1ubuntu0.1) ...
+prepare	UNKNOWN STEP	2026-11-13T13:25:06.4639737Z Selecting previously unselected package librsvg2-bin.
+prepare	UNKNOWN STEP	2026-11-13T13:25:06.4754566Z Preparing to unpack .../librsvg2-bin_2.58.0+dfsg-1ubuntu0.1_amd64.deb ...
+prepare	UNKNOWN STEP	2026-11-13T13:25:06.4761451Z Unpacking librsvg2-bin (2.58.0+dfsg-1ubuntu0.1) ...
+prepare	UNKNOWN STEP	2026-11-13T13:25:06.5622206Z Setting up librsvg2-2:amd64 (2.58.0+dfsg-1ubuntu0.1) ...
+prepare	UNKNOWN STEP	2026-11-13T13:25:06.5638451Z Setting up librsvg2-bin (2.58.0+dfsg-1ubuntu0.1) ...
+prepare	UNKNOWN STEP	2026-11-13T13:25:06.5655093Z Processing triggers for man-db (2.12.0-4build2) ...
+prepare	UNKNOWN STEP	2026-11-13T13:25:06.5674433Z Not building database; man-db/auto-update is not 'true'.
+prepare	UNKNOWN STEP	2026-11-13T13:25:06.5682703Z Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+prepare	UNKNOWN STEP	2026-11-13T13:25:07.2931398Z 
+prepare	UNKNOWN STEP	2026-11-13T13:25:07.2932004Z Running kernel seems to be up-to-date.
+prepare	UNKNOWN STEP	2026-11-13T13:25:07.2932246Z 
+prepare	UNKNOWN STEP	2026-11-13T13:25:07.2932340Z No services need to be restarted.
+prepare	UNKNOWN STEP	2026-11-13T13:25:07.2932491Z 
+prepare	UNKNOWN STEP	2026-11-13T13:25:07.2932583Z No containers need to be restarted.
+prepare	UNKNOWN STEP	2026-11-13T13:25:07.2932739Z 
+prepare	UNKNOWN STEP	2026-11-13T13:25:07.2933005Z No user sessions are running outdated binaries.
+prepare	UNKNOWN STEP	2026-11-13T13:25:07.2933183Z 
+prepare	UNKNOWN STEP	2026-11-13T13:25:07.2933345Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+prepare	UNKNOWN STEP	2026-11-13T13:25:08.0517945Z rsvg-convert version 2.58.0
+prepare	UNKNOWN STEP	2026-11-13T13:25:08.0804314Z ##[group]Run args=()
+prepare	UNKNOWN STEP	2026-11-13T13:25:08.0804496Z ^[[36;1margs=()^[[0m
+prepare	UNKNOWN STEP	2026-11-13T13:25:08.0804671Z ^[[36;1mif [ "$FIRST_BOOTSTRAP" = true ]; then args+=(--bootstrap); fi^[[0m
+prepare	UNKNOWN STEP	2026-11-13T13:25:08.0805061Z ^[[36;1mpython3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" prepare --output "$RUNNER_TEMP/spacefox-site" "${args[@]}"^[[0m
+prepare	UNKNOWN STEP	2026-11-13T13:25:08.0821563Z shell: /usr/bin/bash -e {0}
+prepare	UNKNOWN STEP	2026-11-13T13:25:08.0821703Z env:
+prepare	UNKNOWN STEP	2026-11-13T13:25:08.0821827Z   PYTHONDONTWRITEBYTECODE: 1
+prepare	UNKNOWN STEP	2026-11-13T13:25:08.0822010Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+prepare	UNKNOWN STEP	2026-11-13T13:25:08.0823656Z   GH_TOKEN: ***
+prepare	UNKNOWN STEP	2026-11-13T13:25:08.0823782Z   FIRST_BOOTSTRAP: false
+prepare	UNKNOWN STEP	2026-11-13T13:25:08.0823920Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.0065319Z {"detailFailures": [], "exportedBytes": 616444, "exportedFiles": 96, "feedBytes": 2718, "head": "6c34ec7e53a4d0510ec836d50f8046ec3ef5aa7a", "pending": "true", "requests": 2, "result": "pending", "revision": {"artifact_revision": "0911e4e73361876f6f09a3cd7d1331dfa9a385bddb1b6fe24a388cd9c3a9b1ef", "generation": 2}, "traversal": {"complete": false, "detailRequests": 0, "query": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?mode=normal&limit=10&ordering=net&include_suborbital=true&hide_recent_previous=false", "receivedUpcoming": 20, "reportedCount": 476, "worldwideCompleteness": false}}
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1134201Z ##[group]Run actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1134631Z with:
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1134777Z   path: /home/runner/work/_temp/spacefox-site
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1134947Z   retention-days: 1
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1135075Z   name: github-pages
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1135200Z env:
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1135324Z   PYTHONDONTWRITEBYTECODE: 1
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1135507Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1135688Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1185374Z ##[start-action display=Archive artifact;id=upload.__run]
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1204966Z ##[group]Run echo ::group::Archive artifact
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1205178Z ^[[36;1mecho ::group::Archive artifact^[[0m
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1205334Z ^[[36;1mtar \^[[0m
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1205490Z ^[[36;1m  --dereference --hard-dereference \^[[0m
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1205672Z ^[[36;1m  --directory "$INPUT_PATH" \^[[0m
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1205886Z ^[[36;1m  -cvf "$RUNNER_TEMP/artifact.tar" \^[[0m
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1206068Z ^[[36;1m  --exclude=.git \^[[0m
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1206213Z ^[[36;1m  --exclude=.github \^[[0m
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1206356Z ^[[36;1m  --exclude=".[^/]*" \^[[0m
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1206492Z ^[[36;1m  .^[[0m
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1206614Z ^[[36;1mecho ::endgroup::^[[0m
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1233198Z shell: /usr/bin/sh -e {0}
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1233345Z env:
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1233471Z   PYTHONDONTWRITEBYTECODE: 1
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1233653Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1233860Z   INPUT_PATH: /home/runner/work/_temp/spacefox-site
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1234033Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1268838Z ##[group]Archive artifact
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1281467Z ./
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1281799Z ./rasters/
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1282131Z ./rasters/2a09c8ea59ca32d5ee8ea4e5520682de56a7539b86e434b804f96ffeca0cecd6.sfr
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1282468Z ./rasters/180d4d090c41fddf2fd1d79dd46405bbf9d13569ec151440658ec50208b5eb5b.sfr
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1283126Z ./rasters/671a4b8da3f5c272f41a709b7b72285ee96247eed72d4b3c521bc13884bb6153.sfr
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1283588Z ./rasters/eeaefa0a3910f493ba1409eca38c0473fa68b6b99da810696788b8338b01fddd.sfr
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1284066Z ./rasters/6d4ab3dc509e305150b3e44adc2df9d6c70416ec01f09751f1a66c2418cc18e9.sfr
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1284544Z ./rasters/0f6ced072b08fe37b64b1944b2c3e01aead22000bd18ef580f4c60b4728070e4.sfr
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1285036Z ./rasters/989c9613e5fa53e38fb64f788cec13deb7c37e9b2c0d3c3752e188bc9b81a42f.sfr
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1285505Z ./rasters/4d28962616ea3056f6ce6fde40f6904f9d9dee2e657f67f988b4eaa4d31e8e92.sfr
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1285954Z ./rasters/653939e2711ce529f39617eb84040f245960720925e27e70d270247940553e3a.sfr
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1286408Z ./rasters/db31d9ab634adaa54e03c7c96a2eee50064466b0565444a8bda1145a520ac301.sfr
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1286872Z ./rasters/697b580f41521ace59315e84264ddbfb4dee9d77b50f3d2e256ad10b7a6a56cf.sfr
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1287337Z ./rasters/07924fc156dcfcd1725e9dce51567b9d04b13933fe56f89a0255b3ffcc914580.sfr
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1287802Z ./rasters/0936caabf3d961df403c05a1a35a5436d5842c45de0077cfd7053118a6e7ca29.sfr
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1288259Z ./rasters/9107867a46a828266cdc4669352d110734f23c385ef52bc1ca7073709bb415ee.sfr
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1288611Z ./descriptors/
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1288938Z ./descriptors/014ceb0a1d66a8dd02f4b9cb6d5f20c2b2e743d381e7d8b3ce56bc326f47a8f6.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1289441Z ./descriptors/fa1ce2fb63460529994358836426ed6530359c74e8f75d1c11b326d3781c0d17.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1289938Z ./descriptors/0eb77528bc1a7cbf49fc502de5decf79c8284bfd04ae6e9207244023a1beb75d.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1290453Z ./descriptors/a363ca0b9e5e3b0ddfdbe60fbf8dca1e8a4acaf2f5f6f537453ffdec3d480e3e.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1290963Z ./descriptors/881d843c99abf317d7f1d81eceb6a2f3e898f86e92336c2fd1220a21eb2a6f24.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1291464Z ./descriptors/e1e4eca29715248e1a9ef3f5d519b1a88208b97ca39dcdbea3280567bfae4f9f.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1292222Z ./descriptors/1983539eff01007c6469a16c7b6afdbffb570c90c131b51303cffe0eccf3ab76.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1292969Z ./descriptors/ea159b1b5b743bc76414ba0ad88c5f3009a13cd9438c303bb7987490bb8e4add.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1293460Z ./descriptors/03cf912282654dcd7a8f6449066c701416a188243dcc423a84c1b621f5456755.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1293946Z ./descriptors/c541feb661618db71a4959632cc78dddd505242caaf616cdf9490a557835645d.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1294438Z ./descriptors/c66f2df8e267d51034c4b875c9d9accad41ebdea35eaf120e11d0f2f71e352b9.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1294886Z ./descriptors/85d39f0fdf4bd3b220df9fe905d0362b80095e040c893f57c7fd7e85b39a5147.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1295214Z ./descriptors/0be9d992f13dca424ba2fa290fddcc8fe43433cc0256ba21644cbd30fb7aec04.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1295623Z ./descriptors/3ecbd7d016bd63d7d97b78e78383d094610d893b3d6330b4c662ae6aa33cdae0.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1296014Z ./descriptors/04b464a0ed18ce2563030e0255a43f9d2252bd0356516464046e42a9da82658b.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1296493Z ./descriptors/46f66f71d461860b16fa8362b959239f2b29e18dedf2dc837125b2a25a1f24e7.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1296814Z ./descriptors/367772aa758e4d5e5a91892b841d56b9b53f411ed97238ec870c37a37328e74e.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1297261Z ./descriptors/a28ecf80077c51aa47efd45080f6c965500ac437d53cc042b34b3a5b8f42c7ce.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1297765Z ./descriptors/1aa3aa9b699e921193cde3955f43f7ec300158129bb085446c525974f78c3623.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1298305Z ./descriptors/e7d2910c95458e2caac9aa589c23c91348bf9487fcaaca615488c2c1dc38e4e3.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1298884Z ./descriptors/8926043a5bf2546fefde9e4dd204f36c955dba664ed1f51533ade8c7e0ada9fe.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1299385Z ./descriptors/2d7770611bc041d80c17ce90fd92335129ce86e607d74763b114c1c0b3ff295a.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1299938Z ./descriptors/bbf23c21ba0f90f6ebaf23d6f5b5b2a552d579a13dc8f5c96a53c134a6e22e50.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1300432Z ./descriptors/aea0a3f290f49e40c9b79af18699aa1c677d9c9213034566c68ae669b3f17e5a.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1300994Z ./descriptors/ceb2969fb516647343abe298291ab3ff3b98e4f435db0923b68bbbca6578ced7.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1301519Z ./descriptors/f42f43b55a45ec8b1f6792ae4f08b3cd25f4f0216df7be310232408e9eed487f.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1302053Z ./descriptors/f8a14e2df0245b475990b21c3cb102d219adb7d8b4e8fbf520437c5ec62a7b7f.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1302577Z ./descriptors/1995a50d59280cf5e3f4cef7d4051dd5fcbed51ce571135c118c06e37d7c64f5.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1303191Z ./descriptors/d83091b990069d2b9cd6730b9081dc0b47d1d3cee9b1dbc049a2ab3798f7b739.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1303506Z ./descriptors/1ed9b35f67033e3ac4aa2e1d1a189b3349eb7ab898240ba53291e3d8446fe760.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1303823Z ./descriptors/fcac640b67445b57b84635762a9a191c6be01994eeef2e8eeca0b294a87917b3.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1304141Z ./descriptors/e4ab1cae49093691d716636139bb6a35bc9c20eb25dbb95a07a3ac08b2e8b7b9.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1304453Z ./descriptors/897de021e07272311468762225cc637ec6bfa00e20ed9e3e39f95a9e843cb801.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1304776Z ./descriptors/58f6ad0086d01b814a37c5fdd7b89cacaa297d7eb2920055ab9d11b68a94b47d.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1305114Z ./descriptors/e6bdea8e8de98afe1a3bc77ba103a4c8859d3c351b79c472308b05c12da6ff84.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1305566Z ./descriptors/faa30a0cb30b3f4c00254a2d393bee8329cf189dcb869049c1ab8b37a27cf260.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1306054Z ./descriptors/6be91466d91c0abd7b822bd6f18520577c6359f8d92723d37a162cd5a475e85f.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1306413Z ./feed.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1306580Z ./sources/
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1306879Z ./sources/c22245823c0a2ae06c1005783fc60988a4482950eb7bbf363caa1503dba9e451.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1307357Z ./sources/c655ae80d1ee963969d438319ee592b11ad1b2f209f19158f488f56dab508716.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1307724Z ./sources/ebf95ac02874a3b7b6486e40011f3f19867eec79f9a3fc60a2f7f3ed0f0b5f00.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1308025Z ./sources/1dc3fd9308da23cebd9698b198448f8ee09dd42c485e6325e53ff383c96c405c.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1308325Z ./sources/1f62d4593448a0acf8cd8e13cd46c230910188df60038272d82964a952b138f6.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1308748Z ./sources/0e327258fa1e795f91fb61e8e6f59985582a5b89748e1b97c7b418c36f58d5f3.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1309050Z ./wire3/
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1309159Z ./wire3/catalogs/
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1309374Z ./wire3/catalogs/09d14343e538fc1e6abcbdd1add8f5a2883e77a9d99169218f91f53a569d891b.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1309615Z ./objects/
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1309802Z ./objects/a19afb5ce4e5cab0d937e3014bd64d7776244a5cc323e899f0c297529de0f526.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1310112Z ./objects/ac3910e91614a8a64bf350a3aaccec543d93e0dd9f1f2e4a9d964cdf014417fb.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1310414Z ./objects/48285204cfc3d53e0a6a9ff597e010481cd1e64f548a137a5bea7876c698af4d.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1310714Z ./objects/dd7c22ef94a538e4c767ce52dcba255cc6841d4c5972a592b92f3e4f177d04be.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1311010Z ./objects/32902211a3bb6a9ac9b1250891407a79c763380bc791b482e056946f320167e0.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1311305Z ./objects/a98e26d7c9c2183e9da9830c6e346e3dccdd9657448ab0e9bcde39f5e67f123d.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1311615Z ./objects/ae10a6f2b5891b98ef0c0acdce3fade08ed72752669fda880a407e703bb6f66f.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1311926Z ./objects/3bd0067a7bb444bd704161283cb1ac26703de404fc4c52fb8a1e411fcd3dd68f.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1312228Z ./objects/7aeb1c5dc21656935ac420401dca38c95c383b47da6e4ec8f9186eaa14286b95.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1312536Z ./objects/da5bb8413d728160a0b9de9ab8ee8fd259458b183482baedaa2d69a800f29bb0.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1312991Z ./objects/f54b75238744712b5ae81f47260a6033410a3180f099549c4b912f6d6e2f38bb.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1313460Z ./objects/fefa3b2c322fcfdddd1ca569a568a96cce680c5b51d5c745883f078622b9efa2.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1329906Z ./objects/67e60d1ac7d14aec63a47d1a20949a134cab20fb478c508198e5a71845432bbe.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1330399Z ./objects/d1906b8f1d948f6fec96d31f039bd590c701cfbe480943a79ec13b1a434d9df4.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1330872Z ./objects/86358a8dff04233edaff5aa14ebbaf5fab09b1c4153b28ea7f46f406320cfb7c.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1331350Z ./objects/0d225bfd751ead6f6af0fabc812ac2836e8c3d23a79ff92d05b14cd641337aae.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1331810Z ./objects/9e0c56d11b7b640bc175727273687236284d19f9e35468b759c4a047f6b6e8a2.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1332184Z ./objects/acba1436df4f42996e930e4ff585ccb4458fdfd1fe3fd5761bb145516c77fd27.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1332502Z ./objects/49adca8cdd63a45defc5d421921d7bcb35c2c02558d73c67e0cf307021ab2ce9.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1332990Z ./objects/1bf9aeba631336754a41f88dded01355016072849605b6da5389859133a993b5.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1333285Z ./objects/984717f011e990a4d8b47748c236cf033a819213f74dc18231277f564ed44f59.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1333583Z ./objects/a4b0793dc5fb046cf0447c5eecc3299ee5731a777525e75adbc33249965fc5cc.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1333888Z ./objects/a7dc03499ad02b3ec47fd748b928426dcd3ad6c48b1ca4aafc3a1332bf382720.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1334194Z ./objects/8f0bcd5c7f4f9896faac017018a4a088d3ec59515c18ae97cac533acc465a6e5.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1334503Z ./objects/8745b46c98beaed2c3599a1c3a5cb78bdaeb0d401ddebf2c04455e28803677cd.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1334811Z ./objects/a9f8be3d69d5c5b4369f46a4fd342e7da6534a097227c9e1ea7a307b8890b474.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1335121Z ./objects/cc4f6220b45af914c1823a606bcfbb89ea7172f65dbdc1b842e22ca337a92583.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1335433Z ./objects/4228d30690a292fad3c6ca3c859e09dd24433c15cdcafb2b61476e373f6fe177.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1335731Z ./objects/cf268d86066938007089d2c24980fdb3f99042dc2716bcfdd2391b60f6f8bb4c.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1336029Z ./objects/88693f81a5ddc949237afcf2fbd279feed206d377b0adf0d3c7ec49d5d348762.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1336332Z ./objects/d4e52f11cf736e44d93adc8e9552b8b34c164f8e0995d468f005d895d696e71a.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1336628Z ./objects/0018ac76abc70949513a814a868749f2600624f518dfc5268033eeda88b16ce4.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1336926Z ./objects/0d626e1f8ab1edb566961df8a2e1b5d9fb1794d8db7030f55cb89b115300aaed.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1337235Z ./objects/1a23eed05b29d46fa7db20241cd96ebfc2dba429cbf27da4c70b765c7b5c3c5f.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1337686Z ./objects/344f7ff6febde7efe21e90074637a2cc54563a25efd16237886d0fd6e2ee68b0.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1338081Z ./objects/ce1ca65a9557b61ed45cf6cc2e873503e1fbb9efea8bbbc85a874716c04a9ec3.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1338385Z ./objects/21952c3ce65986eed59d701fa17b4646e51ce730375a2eedb48b56df7f95180a.json
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1338766Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1345464Z ##[end-action id=upload.__run;outcome=success;conclusion=success;duration_ms=15]
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1347654Z ##[start-action display=Archive artifact;id=upload.__run_2]
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1350762Z ##[end-action id=upload.__run_2;outcome=skipped;conclusion=skipped;duration_ms=0]
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1352193Z ##[start-action display=Archive artifact;id=upload.__run_3]
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1354322Z ##[end-action id=upload.__run_3;outcome=skipped;conclusion=skipped;duration_ms=0]
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1355249Z ##[start-action display=Upload artifact;id=upload.upload-artifact]
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1383716Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1383956Z with:
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1384082Z   name: github-pages
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1384229Z   path: /home/runner/work/_temp/artifact.tar
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1384391Z   retention-days: 1
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1384519Z   if-no-files-found: error
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1384658Z   compression-level: 6
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1384785Z   overwrite: false
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1384912Z   include-hidden-files: false
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1385053Z env:
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1385172Z   PYTHONDONTWRITEBYTECODE: 1
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1385349Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.1385526Z ##[endgroup]
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.2612495Z (node:16180) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.2613099Z (Use `node --trace-deprecation ...` to show where the warning was created)
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.2645174Z With the provided path, there will be 1 file uploaded
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.2655928Z Artifact name is valid!
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.2665824Z Root directory input is valid!
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.5490729Z Beginning upload of artifact content to blob storage
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.5814878Z (node:16180) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.8157150Z Uploaded bytes 196406
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.8575905Z Finished uploading artifact content to blob storage!
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.8576457Z SHA256 digest of uploaded artifact zip is ec96781be30bec9ab9d89c7423453e0ed3a50922d9c1ad3b3cf63c34e94ab15b
+prepare	UNKNOWN STEP	2026-11-13T13:26:16.8577717Z Finalizing artifact upload
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.2222598Z Artifact github-pages.zip successfully finalized. Artifact ID 14040501876
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.2223439Z Artifact github-pages has been successfully uploaded! Final size is 196406 bytes. Artifact ID is 14040501876
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.2228111Z Artifact download URL: https://github.com/JekaMas/SpaceFox/actions/runs/43433017023/artifacts/14040501876
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.2345233Z ##[end-action id=upload.upload-artifact;outcome=success;conclusion=success;duration_ms=1098]
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.2440197Z Post job cleanup.
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.3016667Z [command]/usr/bin/git version
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.3050876Z git version 2.56.1
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.3079948Z Temporarily overriding HOME='/home/runner/work/_temp/d4db3207-96b9-442b-9f6f-e9a0a4371ab8' before making global git config changes
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.3080552Z Adding repository directory to the temporary git global config as a safe directory
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.3083939Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/SpaceFox/SpaceFox
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.3115013Z Removing SSH command configuration
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.3119566Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.3151099Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.3374208Z Removing HTTP extra header
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.3385721Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.3418424Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.3649221Z Removing includeIf entries pointing to credentials config files
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.3657143Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.3699643Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.4037392Z Evaluate and set job outputs
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.4043176Z Set output 'pending'
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.4044358Z Set output 'head'
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.4044643Z Set output 'artifact_id'
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.4044994Z Cleaning up orphan processes
+prepare	UNKNOWN STEP	2026-11-13T13:26:17.4289115Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+arm	UNKNOWN STEP	﻿2026-11-13T13:26:23.2589766Z Current runner version: '2.338.2'
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2612360Z ##[group]Runner Image Provisioner
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2613243Z Hosted Compute Agent
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2613752Z Version: 20261028.624
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2614322Z Commit: 54898b74c23fde5556c9b3c3a2290865feef0dfe
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2614959Z Build Date: 2026-10-28T21:51:42Z
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2615548Z Worker ID: {9fb131e2-d688-4bad-981c-6fe229db290b}
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2616272Z Region: westus2
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2616761Z Cloud: Azure
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2617427Z ##[endgroup]
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2618630Z ##[group]Operating System
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2619198Z Ubuntu
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2619751Z 24.04.5
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2620214Z LTS
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2620653Z ##[endgroup]
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2621190Z ##[group]Runner Image
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2621716Z Image: ubuntu-24.04
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2622328Z Version: 20261101.360.1
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2623395Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261101.360/images/ubuntu/Ubuntu2404-Readme.md
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2624741Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261101.360
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2625629Z ##[endgroup]
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2626605Z ##[group]GITHUB_TOKEN Permissions
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2628492Z Contents: write
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2629469Z Metadata: read
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2629969Z ##[endgroup]
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2631782Z Secret source: Actions
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2632718Z Cache mode: write
+arm	UNKNOWN STEP	2026-11-13T13:26:23.2633312Z Prepare workflow directory
+arm	UNKNOWN STEP	2026-11-13T13:26:23.3089798Z Prepare all required actions
+arm	UNKNOWN STEP	2026-11-13T13:26:23.3132360Z Getting action download info
+arm	UNKNOWN STEP	2026-11-13T13:26:23.6262680Z Download action repository 'actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+arm	UNKNOWN STEP	2026-11-13T13:26:23.7736860Z Complete job name: arm
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8539735Z ##[group]Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8540830Z with:
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8541251Z   ref: dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8541749Z   persist-credentials: false
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8542187Z   sparse-checkout-cone-mode: false
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8542675Z   sparse-checkout: /.github/spacefox-inputs.txt
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8543168Z   repository: JekaMas/SpaceFox
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8546479Z   token: ***
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8546844Z   ssh-strict: true
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8547350Z   ssh-user: git
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8547707Z   clean: true
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8548063Z   fetch-depth: 1
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8548429Z   fetch-tags: false
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8548796Z   show-progress: true
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8549166Z   lfs: false
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8549518Z   submodules: false
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8549900Z   set-safe-directory: true
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8550318Z   allow-unsafe-pr-checkout: false
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8551011Z env:
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8551361Z   PYTHONDONTWRITEBYTECODE: 1
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8551851Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+arm	UNKNOWN STEP	2026-11-13T13:26:23.8552367Z ##[endgroup]
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1245685Z Syncing repository: JekaMas/SpaceFox
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1247834Z ##[group]Getting Git version info
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1248495Z Working directory is '/home/runner/work/SpaceFox/SpaceFox'
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1250054Z [command]/usr/bin/git version
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1311558Z git version 2.56.0
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1331072Z ##[endgroup]
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1345555Z Temporarily overriding HOME='/home/runner/work/_temp/5c2bac42-85e5-4fd8-8612-f604dc7e8370' before making global git config changes
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1346933Z Adding repository directory to the temporary git global config as a safe directory
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1351001Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/SpaceFox/SpaceFox
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1398772Z Deleting the contents of '/home/runner/work/SpaceFox/SpaceFox'
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1402235Z ##[group]Determining repository object format
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1404162Z ##[endgroup]
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1405154Z ##[group]Initializing the repository
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1408752Z [command]/usr/bin/git init /home/runner/work/SpaceFox/SpaceFox
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1488918Z hint: Using 'master' as the name for the initial branch. This default branch name
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1490378Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1491708Z hint: to use in all of your new repositories, which will suppress this warning,
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1492778Z hint: call:
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1493479Z hint:
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1494116Z hint: 	git config --global init.defaultBranch <name>
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1494709Z hint:
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1495189Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1496038Z hint: 'development'. The just-created branch can be renamed via this command:
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1496954Z hint:
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1497681Z hint: 	git branch -m <name>
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1498186Z hint:
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1498990Z hint: Disable this message with "git config set advice.defaultBranchName false"
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1500042Z Initialized empty Git repository in /home/runner/work/SpaceFox/SpaceFox/.git/
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1507548Z [command]/usr/bin/git remote add origin https://github.com/JekaMas/SpaceFox
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1551667Z ##[endgroup]
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1552325Z ##[group]Disabling automatic garbage collection
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1555616Z [command]/usr/bin/git config --local gc.auto 0
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1587019Z ##[endgroup]
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1588318Z ##[group]Setting up auth
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1594242Z Removing SSH command configuration
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1602317Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1629975Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1951742Z Removing HTTP extra header
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1958911Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+arm	UNKNOWN STEP	2026-11-13T13:26:24.1997750Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+arm	UNKNOWN STEP	2026-11-13T13:26:24.2211605Z Removing includeIf entries pointing to credentials config files
+arm	UNKNOWN STEP	2026-11-13T13:26:24.2217717Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+arm	UNKNOWN STEP	2026-11-13T13:26:24.2258035Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+arm	UNKNOWN STEP	2026-11-13T13:26:24.2485669Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-84e47244-4788-4db5-914b-54c836095df4.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+arm	UNKNOWN STEP	2026-11-13T13:26:24.2529688Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path /home/runner/work/_temp/git-credentials-84e47244-4788-4db5-914b-54c836095df4.config
+arm	UNKNOWN STEP	2026-11-13T13:26:24.2566048Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-84e47244-4788-4db5-914b-54c836095df4.config
+arm	UNKNOWN STEP	2026-11-13T13:26:24.2610344Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-84e47244-4788-4db5-914b-54c836095df4.config
+arm	UNKNOWN STEP	2026-11-13T13:26:24.2644589Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-84e47244-4788-4db5-914b-54c836095df4.config
+arm	UNKNOWN STEP	2026-11-13T13:26:24.2677331Z ##[endgroup]
+arm	UNKNOWN STEP	2026-11-13T13:26:24.2678002Z ##[group]Fetching the repository
+arm	UNKNOWN STEP	2026-11-13T13:26:24.2684067Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+arm	UNKNOWN STEP	2026-11-13T13:26:24.5786762Z From https://github.com/JekaMas/SpaceFox
+arm	UNKNOWN STEP	2026-11-13T13:26:24.5787810Z  * branch            dd21a1811e028fbf8a3e6f5d95fac0a406888c5f -> FETCH_HEAD
+arm	UNKNOWN STEP	2026-11-13T13:26:24.5796674Z [command]/usr/bin/git rev-parse --verify --quiet dd21a1811e028fbf8a3e6f5d95fac0a406888c5f^{object}
+arm	UNKNOWN STEP	2026-11-13T13:26:24.5829575Z dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+arm	UNKNOWN STEP	2026-11-13T13:26:24.5834258Z ##[endgroup]
+arm	UNKNOWN STEP	2026-11-13T13:26:24.5835581Z ##[group]Determining the checkout info
+arm	UNKNOWN STEP	2026-11-13T13:26:24.5836928Z ##[endgroup]
+arm	UNKNOWN STEP	2026-11-13T13:26:24.5838274Z ##[group]Setting up sparse checkout
+arm	UNKNOWN STEP	2026-11-13T13:26:24.5839791Z [command]/usr/bin/git config core.sparseCheckout true
+arm	UNKNOWN STEP	2026-11-13T13:26:24.5880900Z [command]/usr/bin/git rev-parse --git-path info/sparse-checkout
+arm	UNKNOWN STEP	2026-11-13T13:26:24.5910789Z .git/info/sparse-checkout
+arm	UNKNOWN STEP	2026-11-13T13:26:24.5917237Z ##[endgroup]
+arm	UNKNOWN STEP	2026-11-13T13:26:24.5918135Z ##[group]Checking out the ref
+arm	UNKNOWN STEP	2026-11-13T13:26:24.5921073Z [command]/usr/bin/git checkout --progress --force dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8143125Z Note: switching to 'dd21a1811e028fbf8a3e6f5d95fac0a406888c5f'.
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8143704Z 
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8144048Z You are in 'detached HEAD' state. You can look around, make experimental
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8144816Z changes and commit them, and you can discard any commits you make in this
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8145578Z state without impacting any branches by switching back to a branch.
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8146035Z 
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8146347Z If you want to create a new branch to retain commits you create, you may
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8147261Z do so (now or later) by using -c with the switch command. Example:
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8147771Z 
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8147976Z   git switch -c <new-branch-name>
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8148262Z 
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8148724Z Or undo this operation with:
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8149007Z 
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8149175Z   git switch -
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8149401Z 
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8149788Z Turn off this advice by setting config variable advice.detachedHead to false
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8150271Z 
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8150932Z HEAD is now at dd21a18 Publish verified five-language signed packaging and whole software closures
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8153230Z ##[endgroup]
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8199262Z [command]/usr/bin/git log -1 --format=%H
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8231045Z dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8239507Z ##[group]Removing auth
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8240234Z Removing SSH command configuration
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8242917Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8279837Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8504776Z Removing HTTP extra header
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8506345Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8544957Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8763142Z Removing includeIf entries pointing to credentials config files
+arm	UNKNOWN STEP	2026-11-13T13:26:24.8765337Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9079363Z includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9080898Z includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9082076Z includeif.gitdir:/github/workspace/.git.path
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9083008Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9090336Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9129245Z /home/runner/work/_temp/git-credentials-84e47244-4788-4db5-914b-54c836095df4.config
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9139538Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path /home/runner/work/_temp/git-credentials-84e47244-4788-4db5-914b-54c836095df4.config
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9183146Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9213888Z /home/runner/work/_temp/git-credentials-84e47244-4788-4db5-914b-54c836095df4.config
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9223882Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-84e47244-4788-4db5-914b-54c836095df4.config
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9267601Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9298264Z /github/runner_temp/git-credentials-84e47244-4788-4db5-914b-54c836095df4.config
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9304641Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-84e47244-4788-4db5-914b-54c836095df4.config
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9345346Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9373838Z /github/runner_temp/git-credentials-84e47244-4788-4db5-914b-54c836095df4.config
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9380723Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-84e47244-4788-4db5-914b-54c836095df4.config
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9420996Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9638512Z Removing credentials config '/home/runner/work/_temp/git-credentials-84e47244-4788-4db5-914b-54c836095df4.config'
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9646065Z ##[endgroup]
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9838737Z ##[group]Run # Prepare alone builds source data. Later jobs validate immutable Git files.
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9839806Z ^[[36;1m# Prepare alone builds source data. Later jobs validate immutable Git files.^[[0m
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9840650Z ^[[36;1msed '\|^/catalog/source.json$|d' .github/spacefox-inputs.txt |^[[0m
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9841359Z ^[[36;1m  git sparse-checkout set --no-cone --stdin^[[0m
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9862708Z shell: /usr/bin/bash -e {0}
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9863180Z env:
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9863561Z   PYTHONDONTWRITEBYTECODE: 1
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9864096Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+arm	UNKNOWN STEP	2026-11-13T13:26:24.9864642Z ##[endgroup]
+arm	UNKNOWN STEP	2026-11-13T13:26:25.2567320Z ##[group]Run bash .github/scripts/install-native-linux-renderer.sh
+arm	UNKNOWN STEP	2026-11-13T13:26:25.2568520Z ^[[36;1mbash .github/scripts/install-native-linux-renderer.sh^[[0m
+arm	UNKNOWN STEP	2026-11-13T13:26:25.2587630Z shell: /usr/bin/bash -e {0}
+arm	UNKNOWN STEP	2026-11-13T13:26:25.2588425Z env:
+arm	UNKNOWN STEP	2026-11-13T13:26:25.2589111Z   PYTHONDONTWRITEBYTECODE: 1
+arm	UNKNOWN STEP	2026-11-13T13:26:25.2590023Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+arm	UNKNOWN STEP	2026-11-13T13:26:25.2590921Z ##[endgroup]
+arm	UNKNOWN STEP	2026-11-13T13:26:25.2741489Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+arm	UNKNOWN STEP	2026-11-13T13:26:25.2743077Z                                  Dload  Upload   Total   Spent    Left  Speed
+arm	UNKNOWN STEP	2026-11-13T13:26:25.2743780Z 
+arm	UNKNOWN STEP	2026-11-13T13:26:26.2653457Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+arm	UNKNOWN STEP	2026-11-13T13:26:26.8108701Z   5 2246k    5  132k    0     0   133k      0  0:00:16 --:--:--  0:00:16  133k
+arm	UNKNOWN STEP	2026-11-13T13:26:26.8179561Z 100 2246k  100 2246k    0     0  1461k      0  0:00:01  0:00:01 --:--:-- 1462k
+arm	UNKNOWN STEP	2026-11-13T13:26:26.8180739Z /home/runner/work/_temp/native-linux-prerequisites/librsvg2-bin.deb: OK
+arm	UNKNOWN STEP	2026-11-13T13:26:26.8967061Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+arm	UNKNOWN STEP	2026-11-13T13:26:26.9193402Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+arm	UNKNOWN STEP	2026-11-13T13:26:26.9284129Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+arm	UNKNOWN STEP	2026-11-13T13:26:26.9302877Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:26.9359906Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:26.9379420Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:26.9894160Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [697 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:27.0059111Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [12.6 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:27.0113722Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [767 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:27.0885986Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1450 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:27.0962826Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [315 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:27.1006617Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1713 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:27.1107601Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [345 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:27.1148287Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1883 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:27.1210852Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [430 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:27.1244724Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [50.7 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:27.1265296Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [14.6 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:27.1810511Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1195 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:27.1865731Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [238 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:27.2338799Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1228 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:27.2390523Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [248 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:27.2414522Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1788 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:27.2498692Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [411 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:27.2526226Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [45.4 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:27.2540439Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse Translation-en [12.4 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:31.2901916Z Fetched 13.2 MB in 1s (11.9 MB/s)
+arm	UNKNOWN STEP	2026-11-13T13:26:32.2992725Z Reading package lists...
+arm	UNKNOWN STEP	2026-11-13T13:26:32.3762313Z Reading package lists...
+arm	UNKNOWN STEP	2026-11-13T13:26:32.6708852Z Building dependency tree...
+arm	UNKNOWN STEP	2026-11-13T13:26:32.6715054Z Reading state information...
+arm	UNKNOWN STEP	2026-11-13T13:26:32.8491279Z The following additional packages will be installed:
+arm	UNKNOWN STEP	2026-11-13T13:26:32.8496338Z   librsvg2-2
+arm	UNKNOWN STEP	2026-11-13T13:26:32.8502410Z Recommended packages:
+arm	UNKNOWN STEP	2026-11-13T13:26:32.8502684Z   librsvg2-common
+arm	UNKNOWN STEP	2026-11-13T13:26:32.9006289Z The following NEW packages will be installed:
+arm	UNKNOWN STEP	2026-11-13T13:26:32.9013294Z   librsvg2-2 librsvg2-bin
+arm	UNKNOWN STEP	2026-11-13T13:26:32.9289189Z 0 upgraded, 2 newly installed, 0 to remove and 54 not upgraded.
+arm	UNKNOWN STEP	2026-11-13T13:26:32.9289698Z Need to get 4442 kB of archives.
+arm	UNKNOWN STEP	2026-11-13T13:26:32.9290117Z After this operation, 14.2 MB of additional disk space will be used.
+arm	UNKNOWN STEP	2026-11-13T13:26:32.9290639Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+arm	UNKNOWN STEP	2026-11-13T13:26:33.0227620Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 librsvg2-2 amd64 2.58.0+dfsg-1ubuntu0.1 [2141 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:33.3563413Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 librsvg2-bin amd64 2.58.0+dfsg-1ubuntu0.1 [2301 kB]
+arm	UNKNOWN STEP	2026-11-13T13:26:33.6601043Z Fetched 4442 kB in 0s (9115 kB/s)
+arm	UNKNOWN STEP	2026-11-13T13:26:33.6814121Z Selecting previously unselected package librsvg2-2:amd64.
+arm	UNKNOWN STEP	2026-11-13T13:26:33.7009357Z (Reading database ... 
+arm	UNKNOWN STEP	2026-11-13T13:26:33.7009622Z (Reading database ... 5%
+arm	UNKNOWN STEP	2026-11-13T13:26:33.7009829Z (Reading database ... 10%
+arm	UNKNOWN STEP	2026-11-13T13:26:33.7010025Z (Reading database ... 15%
+arm	UNKNOWN STEP	2026-11-13T13:26:33.7010215Z (Reading database ... 20%
+arm	UNKNOWN STEP	2026-11-13T13:26:33.7012164Z (Reading database ... 25%
+arm	UNKNOWN STEP	2026-11-13T13:26:33.7012628Z (Reading database ... 30%
+arm	UNKNOWN STEP	2026-11-13T13:26:33.7012903Z (Reading database ... 35%
+arm	UNKNOWN STEP	2026-11-13T13:26:33.7013159Z (Reading database ... 40%
+arm	UNKNOWN STEP	2026-11-13T13:26:33.7013530Z (Reading database ... 45%
+arm	UNKNOWN STEP	2026-11-13T13:26:33.7013804Z (Reading database ... 50%
+arm	UNKNOWN STEP	2026-11-13T13:26:33.7051691Z (Reading database ... 55%
+arm	UNKNOWN STEP	2026-11-13T13:26:33.8099734Z (Reading database ... 60%
+arm	UNKNOWN STEP	2026-11-13T13:26:33.9626521Z (Reading database ... 65%
+arm	UNKNOWN STEP	2026-11-13T13:26:34.1687497Z (Reading database ... 70%
+arm	UNKNOWN STEP	2026-11-13T13:26:34.3170711Z (Reading database ... 75%
+arm	UNKNOWN STEP	2026-11-13T13:26:34.5750594Z (Reading database ... 80%
+arm	UNKNOWN STEP	2026-11-13T13:26:34.7208163Z (Reading database ... 85%
+arm	UNKNOWN STEP	2026-11-13T13:26:34.8238795Z (Reading database ... 90%
+arm	UNKNOWN STEP	2026-11-13T13:26:34.8752920Z (Reading database ... 95%
+arm	UNKNOWN STEP	2026-11-13T13:26:34.8753200Z (Reading database ... 100%
+arm	UNKNOWN STEP	2026-11-13T13:26:34.8753487Z (Reading database ... 215960 files and directories currently installed.)
+arm	UNKNOWN STEP	2026-11-13T13:26:34.8797714Z Preparing to unpack .../librsvg2-2_2.58.0+dfsg-1ubuntu0.1_amd64.deb ...
+arm	UNKNOWN STEP	2026-11-13T13:26:34.8892891Z Unpacking librsvg2-2:amd64 (2.58.0+dfsg-1ubuntu0.1) ...
+arm	UNKNOWN STEP	2026-11-13T13:26:34.9606201Z Selecting previously unselected package librsvg2-bin.
+arm	UNKNOWN STEP	2026-11-13T13:26:34.9732350Z Preparing to unpack .../librsvg2-bin_2.58.0+dfsg-1ubuntu0.1_amd64.deb ...
+arm	UNKNOWN STEP	2026-11-13T13:26:34.9738880Z Unpacking librsvg2-bin (2.58.0+dfsg-1ubuntu0.1) ...
+arm	UNKNOWN STEP	2026-11-13T13:26:35.3435414Z Setting up librsvg2-2:amd64 (2.58.0+dfsg-1ubuntu0.1) ...
+arm	UNKNOWN STEP	2026-11-13T13:26:35.3452033Z Setting up librsvg2-bin (2.58.0+dfsg-1ubuntu0.1) ...
+arm	UNKNOWN STEP	2026-11-13T13:26:35.3470188Z Processing triggers for man-db (2.12.0-4build2) ...
+arm	UNKNOWN STEP	2026-11-13T13:26:35.3489591Z Not building database; man-db/auto-update is not 'true'.
+arm	UNKNOWN STEP	2026-11-13T13:26:35.3500165Z Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+arm	UNKNOWN STEP	2026-11-13T13:26:36.0669820Z 
+arm	UNKNOWN STEP	2026-11-13T13:26:36.0670412Z Running kernel seems to be up-to-date.
+arm	UNKNOWN STEP	2026-11-13T13:26:36.0670703Z 
+arm	UNKNOWN STEP	2026-11-13T13:26:36.0670825Z No services need to be restarted.
+arm	UNKNOWN STEP	2026-11-13T13:26:36.0671033Z 
+arm	UNKNOWN STEP	2026-11-13T13:26:36.0671144Z No containers need to be restarted.
+arm	UNKNOWN STEP	2026-11-13T13:26:36.0671355Z 
+arm	UNKNOWN STEP	2026-11-13T13:26:36.0671495Z No user sessions are running outdated binaries.
+arm	UNKNOWN STEP	2026-11-13T13:26:36.0671758Z 
+arm	UNKNOWN STEP	2026-11-13T13:26:36.0671992Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+arm	UNKNOWN STEP	2026-11-13T13:26:37.2665543Z rsvg-convert version 2.58.0
+arm	UNKNOWN STEP	2026-11-13T13:26:37.2993774Z ##[group]Run python3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" arm --expected-base "$EXPECTED_BASE" --artifact-id "$ARTIFACT_ID"
+arm	UNKNOWN STEP	2026-11-13T13:26:37.2994497Z ^[[36;1mpython3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" arm --expected-base "$EXPECTED_BASE" --artifact-id "$ARTIFACT_ID"^[[0m
+arm	UNKNOWN STEP	2026-11-13T13:26:37.3013449Z shell: /usr/bin/bash -e {0}
+arm	UNKNOWN STEP	2026-11-13T13:26:37.3013666Z env:
+arm	UNKNOWN STEP	2026-11-13T13:26:37.3013847Z   PYTHONDONTWRITEBYTECODE: 1
+arm	UNKNOWN STEP	2026-11-13T13:26:37.3014114Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+arm	UNKNOWN STEP	2026-11-13T13:26:37.3016445Z   GH_TOKEN: ***
+arm	UNKNOWN STEP	2026-11-13T13:26:37.3016682Z   EXPECTED_BASE: 6c34ec7e53a4d0510ec836d50f8046ec3ef5aa7a
+arm	UNKNOWN STEP	2026-11-13T13:26:37.3016952Z   ARTIFACT_ID: 14040501876
+arm	UNKNOWN STEP	2026-11-13T13:26:37.3017471Z ##[endgroup]
+arm	UNKNOWN STEP	2026-11-13T13:27:00.6013297Z {"build_version": "6c34ec7e53a4d0510ec836d50f8046ec3ef5aa7a", "head": "bf9c164e16377b3fc192f88e948686ed8aefe861"}
+arm	UNKNOWN STEP	2026-11-13T13:27:00.6264413Z Post job cleanup.
+arm	UNKNOWN STEP	2026-11-13T13:27:00.7010067Z [command]/usr/bin/git version
+arm	UNKNOWN STEP	2026-11-13T13:27:00.7078058Z git version 2.56.0
+arm	UNKNOWN STEP	2026-11-13T13:27:00.7111569Z Temporarily overriding HOME='/home/runner/work/_temp/05ef78a7-e901-4778-a649-2538cde9255d' before making global git config changes
+arm	UNKNOWN STEP	2026-11-13T13:27:00.7112582Z Adding repository directory to the temporary git global config as a safe directory
+arm	UNKNOWN STEP	2026-11-13T13:27:00.7116152Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/SpaceFox/SpaceFox
+arm	UNKNOWN STEP	2026-11-13T13:27:00.7152159Z Removing SSH command configuration
+arm	UNKNOWN STEP	2026-11-13T13:27:00.7158741Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+arm	UNKNOWN STEP	2026-11-13T13:27:00.7443812Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+arm	UNKNOWN STEP	2026-11-13T13:27:00.7445668Z Removing HTTP extra header
+arm	UNKNOWN STEP	2026-11-13T13:27:00.7450909Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+arm	UNKNOWN STEP	2026-11-13T13:27:00.7492410Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+arm	UNKNOWN STEP	2026-11-13T13:27:00.7723765Z Removing includeIf entries pointing to credentials config files
+arm	UNKNOWN STEP	2026-11-13T13:27:00.7730936Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+arm	UNKNOWN STEP	2026-11-13T13:27:00.7777809Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+arm	UNKNOWN STEP	2026-11-13T13:27:00.8169922Z Evaluate and set job outputs
+arm	UNKNOWN STEP	2026-11-13T13:27:00.8175606Z Set output 'head'
+arm	UNKNOWN STEP	2026-11-13T13:27:00.8177549Z Cleaning up orphan processes
+deploy	UNKNOWN STEP	﻿2026-11-13T13:27:10.3916505Z Current runner version: '2.338.2'
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3937513Z ##[group]Runner Image Provisioner
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3938237Z Hosted Compute Agent
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3938757Z Version: 20261103.629
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3939353Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3940003Z Build Date: 2026-11-03T17:26:59Z
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3940576Z Worker ID: {0c76cdeb-5d7b-48b2-be29-625bbdfca70f}
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3941244Z Region: westus3
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3941725Z Cloud: Azure
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3942214Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3943405Z ##[group]Operating System
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3943914Z Ubuntu
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3944437Z 24.04.5
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3944884Z LTS
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3945557Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3946070Z ##[group]Runner Image
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3946593Z Image: ubuntu-24.04
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3947111Z Version: 20261111.370.1
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3948165Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261111.370/images/ubuntu/Ubuntu2404-Readme.md
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3949501Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261111.370
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3950300Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3951335Z ##[group]GITHUB_TOKEN Permissions
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3952834Z Contents: read
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3953787Z Metadata: read
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3954314Z Pages: write
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3954814Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3956716Z Secret source: Actions
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3957464Z Cache mode: write
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.3958159Z Prepare workflow directory
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.4403213Z Prepare all required actions
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.4442704Z Getting action download info
+deploy	UNKNOWN STEP	2026-11-13T13:27:10.7390497Z Download action repository 'actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0250341Z Complete job name: deploy
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0973695Z ##[group]Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0974615Z with:
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0975181Z   ref: dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0975739Z   persist-credentials: false
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0976220Z   sparse-checkout-cone-mode: false
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0976747Z   sparse-checkout: /.github/spacefox-inputs.txt
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0977279Z   repository: JekaMas/SpaceFox
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0980725Z   token: ***
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0981120Z   ssh-strict: true
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0981513Z   ssh-user: git
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0981896Z   clean: true
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0982263Z   fetch-depth: 1
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0982652Z   fetch-tags: false
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0983050Z   show-progress: true
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0983489Z   lfs: false
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0983862Z   submodules: false
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0984265Z   set-safe-directory: true
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0984715Z   allow-unsafe-pr-checkout: false
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0985459Z env:
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0985858Z   PYTHONDONTWRITEBYTECODE: 1
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0986388Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.0986946Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.6650702Z Syncing repository: JekaMas/SpaceFox
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.6652387Z ##[group]Getting Git version info
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.6653018Z Working directory is '/home/runner/work/SpaceFox/SpaceFox'
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.6653900Z [command]/usr/bin/git version
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.6797835Z git version 2.56.1
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.6803488Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.6811121Z Temporarily overriding HOME='/home/runner/work/_temp/ab75e87a-fd81-44ac-bdf8-cce50e7e166a' before making global git config changes
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.6813143Z Adding repository directory to the temporary git global config as a safe directory
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.6819784Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/SpaceFox/SpaceFox
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7221035Z Deleting the contents of '/home/runner/work/SpaceFox/SpaceFox'
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7230640Z ##[group]Determining repository object format
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7232177Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7247652Z ##[group]Initializing the repository
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7248651Z [command]/usr/bin/git init /home/runner/work/SpaceFox/SpaceFox
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7319020Z hint: Using 'master' as the name for the initial branch. This default branch name
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7320204Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7321213Z hint: to use in all of your new repositories, which will suppress this warning,
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7321951Z hint: call:
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7322542Z hint:
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7323263Z hint: 	git config --global init.defaultBranch <name>
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7324111Z hint:
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7324899Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7326098Z hint: 'development'. The just-created branch can be renamed via this command:
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7326728Z hint:
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7327127Z hint: 	git branch -m <name>
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7327649Z hint:
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7328576Z hint: Disable this message with "git config set advice.defaultBranchName false"
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7329938Z Initialized empty Git repository in /home/runner/work/SpaceFox/SpaceFox/.git/
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7333846Z [command]/usr/bin/git remote add origin https://github.com/JekaMas/SpaceFox
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7382001Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7382677Z ##[group]Disabling automatic garbage collection
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7385351Z [command]/usr/bin/git config --local gc.auto 0
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7420087Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7421413Z ##[group]Setting up auth
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7422157Z Removing SSH command configuration
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7425488Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7462583Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7746247Z Removing HTTP extra header
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7751727Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7787989Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7983103Z Removing includeIf entries pointing to credentials config files
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.7988633Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.8024186Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.8228639Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-20943570-56e6-4154-a1f7-78664997512d.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.8269007Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path /home/runner/work/_temp/git-credentials-20943570-56e6-4154-a1f7-78664997512d.config
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.8304029Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-20943570-56e6-4154-a1f7-78664997512d.config
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.8348871Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-20943570-56e6-4154-a1f7-78664997512d.config
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.8384208Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-20943570-56e6-4154-a1f7-78664997512d.config
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.8415867Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.8416607Z ##[group]Fetching the repository
+deploy	UNKNOWN STEP	2026-11-13T13:27:11.8422637Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.4099565Z From https://github.com/JekaMas/SpaceFox
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.4101223Z  * branch            dd21a1811e028fbf8a3e6f5d95fac0a406888c5f -> FETCH_HEAD
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.4110021Z [command]/usr/bin/git rev-parse --verify --quiet dd21a1811e028fbf8a3e6f5d95fac0a406888c5f^{object}
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.4141333Z dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.4145932Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.4147154Z ##[group]Determining the checkout info
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.4148341Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.4149450Z ##[group]Setting up sparse checkout
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.4150656Z [command]/usr/bin/git config core.sparseCheckout true
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.4185794Z [command]/usr/bin/git rev-parse --git-path info/sparse-checkout
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.4212137Z .git/info/sparse-checkout
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.4218063Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.4219171Z ##[group]Checking out the ref
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.4221314Z [command]/usr/bin/git checkout --progress --force dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8621612Z Note: switching to 'dd21a1811e028fbf8a3e6f5d95fac0a406888c5f'.
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8622990Z 
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8623914Z You are in 'detached HEAD' state. You can look around, make experimental
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8626330Z changes and commit them, and you can discard any commits you make in this
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8628623Z state without impacting any branches by switching back to a branch.
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8629969Z 
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8630920Z If you want to create a new branch to retain commits you create, you may
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8633230Z do so (now or later) by using -c with the switch command. Example:
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8634514Z 
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8635300Z   git switch -c <new-branch-name>
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8636220Z 
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8637186Z Or undo this operation with:
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8638084Z 
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8638643Z   git switch -
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8639363Z 
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8640452Z Turn off this advice by setting config variable advice.detachedHead to false
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8641944Z 
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8643455Z HEAD is now at dd21a18 Publish verified five-language signed packaging and whole software closures
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8649123Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8677472Z [command]/usr/bin/git log -1 --format=%H
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8707848Z dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8715745Z ##[group]Removing auth
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8716908Z Removing SSH command configuration
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8719930Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8758058Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8977334Z Removing HTTP extra header
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.8982597Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9023673Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9236466Z Removing includeIf entries pointing to credentials config files
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9238964Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9270705Z includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9272512Z includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9274653Z includeif.gitdir:/github/workspace/.git.path
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9276307Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9285750Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9313980Z /home/runner/work/_temp/git-credentials-20943570-56e6-4154-a1f7-78664997512d.config
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9324567Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path /home/runner/work/_temp/git-credentials-20943570-56e6-4154-a1f7-78664997512d.config
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9363729Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9390642Z /home/runner/work/_temp/git-credentials-20943570-56e6-4154-a1f7-78664997512d.config
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9399949Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-20943570-56e6-4154-a1f7-78664997512d.config
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9437844Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9467196Z /github/runner_temp/git-credentials-20943570-56e6-4154-a1f7-78664997512d.config
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9473744Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-20943570-56e6-4154-a1f7-78664997512d.config
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9510740Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9536912Z /github/runner_temp/git-credentials-20943570-56e6-4154-a1f7-78664997512d.config
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9543038Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-20943570-56e6-4154-a1f7-78664997512d.config
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9578797Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9800840Z Removing credentials config '/home/runner/work/_temp/git-credentials-20943570-56e6-4154-a1f7-78664997512d.config'
+deploy	UNKNOWN STEP	2026-11-13T13:27:12.9808394Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-11-13T13:27:13.0022871Z ##[group]Run # Prepare alone builds source data. Later jobs validate immutable Git files.
+deploy	UNKNOWN STEP	2026-11-13T13:27:13.0025132Z ^[[36;1m# Prepare alone builds source data. Later jobs validate immutable Git files.^[[0m
+deploy	UNKNOWN STEP	2026-11-13T13:27:13.0026898Z ^[[36;1msed '\|^/catalog/source.json$|d' .github/spacefox-inputs.txt |^[[0m
+deploy	UNKNOWN STEP	2026-11-13T13:27:13.0028320Z ^[[36;1m  git sparse-checkout set --no-cone --stdin^[[0m
+deploy	UNKNOWN STEP	2026-11-13T13:27:13.0050733Z shell: /usr/bin/bash -e {0}
+deploy	UNKNOWN STEP	2026-11-13T13:27:13.0051588Z env:
+deploy	UNKNOWN STEP	2026-11-13T13:27:13.0052303Z   PYTHONDONTWRITEBYTECODE: 1
+deploy	UNKNOWN STEP	2026-11-13T13:27:13.0053365Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+deploy	UNKNOWN STEP	2026-11-13T13:27:13.0054452Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-11-13T13:27:13.5203625Z ##[group]Run bash .github/scripts/install-native-linux-renderer.sh
+deploy	UNKNOWN STEP	2026-11-13T13:27:13.5204051Z ^[[36;1mbash .github/scripts/install-native-linux-renderer.sh^[[0m
+deploy	UNKNOWN STEP	2026-11-13T13:27:13.5222211Z shell: /usr/bin/bash -e {0}
+deploy	UNKNOWN STEP	2026-11-13T13:27:13.5222420Z env:
+deploy	UNKNOWN STEP	2026-11-13T13:27:13.5222597Z   PYTHONDONTWRITEBYTECODE: 1
+deploy	UNKNOWN STEP	2026-11-13T13:27:13.5222981Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+deploy	UNKNOWN STEP	2026-11-13T13:27:13.5223246Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-11-13T13:27:13.5363931Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+deploy	UNKNOWN STEP	2026-11-13T13:27:13.5364540Z                                  Dload  Upload   Total   Spent    Left  Speed
+deploy	UNKNOWN STEP	2026-11-13T13:27:13.5364742Z 
+deploy	UNKNOWN STEP	2026-11-13T13:27:14.4037157Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.0482439Z   3 2246k    3 87898    0     0    98k      0  0:00:22 --:--:--  0:00:22   98k
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.0483010Z 100 2246k  100 2246k    0     0  1486k      0  0:00:01  0:00:01 --:--:-- 1486k
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.0539840Z /home/runner/work/_temp/native-linux-prerequisites/librsvg2-bin.deb: OK
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.1266387Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.1540293Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.1551917Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.1558042Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.1645962Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.1665339Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.2669568Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [697 kB]
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.2849224Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [767 kB]
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.3094873Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1450 kB]
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.3153433Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [315 kB]
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.3171046Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1713 kB]
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.3238197Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [345 kB]
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.3324552Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1883 kB]
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.3336005Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [430 kB]
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.3359564Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [14.6 kB]
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.4058356Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1195 kB]
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.4113190Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [238 kB]
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.4132427Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1228 kB]
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.4611147Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [248 kB]
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.4630419Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1788 kB]
+deploy	UNKNOWN STEP	2026-11-13T13:27:15.4706869Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [411 kB]
+deploy	UNKNOWN STEP	2026-11-13T13:27:21.2854542Z Fetched 13.1 MB in 1s (12.0 MB/s)
+deploy	UNKNOWN STEP	2026-11-13T13:27:22.2251847Z Reading package lists...
+deploy	UNKNOWN STEP	2026-11-13T13:27:22.2962555Z Reading package lists...
+deploy	UNKNOWN STEP	2026-11-13T13:27:22.5695917Z Building dependency tree...
+deploy	UNKNOWN STEP	2026-11-13T13:27:22.5705841Z Reading state information...
+deploy	UNKNOWN STEP	2026-11-13T13:27:22.7365319Z The following additional packages will be installed:
+deploy	UNKNOWN STEP	2026-11-13T13:27:22.7369541Z   librsvg2-2
+deploy	UNKNOWN STEP	2026-11-13T13:27:22.7375451Z Recommended packages:
+deploy	UNKNOWN STEP	2026-11-13T13:27:22.7375809Z   librsvg2-common
+deploy	UNKNOWN STEP	2026-11-13T13:27:22.7591458Z The following NEW packages will be installed:
+deploy	UNKNOWN STEP	2026-11-13T13:27:22.7598454Z   librsvg2-2 librsvg2-bin
+deploy	UNKNOWN STEP	2026-11-13T13:27:22.7866320Z 0 upgraded, 2 newly installed, 0 to remove and 20 not upgraded.
+deploy	UNKNOWN STEP	2026-11-13T13:27:22.7866777Z Need to get 4442 kB of archives.
+deploy	UNKNOWN STEP	2026-11-13T13:27:22.7867080Z After this operation, 14.2 MB of additional disk space will be used.
+deploy	UNKNOWN STEP	2026-11-13T13:27:22.7867469Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+deploy	UNKNOWN STEP	2026-11-13T13:27:22.8532751Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 librsvg2-2 amd64 2.58.0+dfsg-1ubuntu0.1 [2141 kB]
+deploy	UNKNOWN STEP	2026-11-13T13:27:22.9126650Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 librsvg2-bin amd64 2.58.0+dfsg-1ubuntu0.1 [2301 kB]
+deploy	UNKNOWN STEP	2026-11-13T13:27:23.1776188Z Fetched 4442 kB in 0s (28.5 MB/s)
+deploy	UNKNOWN STEP	2026-11-13T13:27:23.2000749Z Selecting previously unselected package librsvg2-2:amd64.
+deploy	UNKNOWN STEP	2026-11-13T13:27:23.2220078Z (Reading database ... 
+deploy	UNKNOWN STEP	2026-11-13T13:27:23.2220418Z (Reading database ... 5%
+deploy	UNKNOWN STEP	2026-11-13T13:27:23.2220746Z (Reading database ... 10%
+deploy	UNKNOWN STEP	2026-11-13T13:27:23.2221028Z (Reading database ... 15%
+deploy	UNKNOWN STEP	2026-11-13T13:27:23.2221304Z (Reading database ... 20%
+deploy	UNKNOWN STEP	2026-11-13T13:27:23.2222360Z (Reading database ... 25%
+deploy	UNKNOWN STEP	2026-11-13T13:27:23.2222649Z (Reading database ... 30%
+deploy	UNKNOWN STEP	2026-11-13T13:27:23.2222923Z (Reading database ... 35%
+deploy	UNKNOWN STEP	2026-11-13T13:27:23.2223499Z (Reading database ... 40%
+deploy	UNKNOWN STEP	2026-11-13T13:27:23.2223773Z (Reading database ... 45%
+deploy	UNKNOWN STEP	2026-11-13T13:27:23.2224055Z (Reading database ... 50%
+deploy	UNKNOWN STEP	2026-11-13T13:27:23.2255635Z (Reading database ... 55%
+deploy	UNKNOWN STEP	2026-11-13T13:27:23.3624353Z (Reading database ... 60%
+deploy	UNKNOWN STEP	2026-11-13T13:27:23.6111041Z (Reading database ... 65%
+deploy	UNKNOWN STEP	2026-11-13T13:27:23.8032385Z (Reading database ... 70%
+deploy	UNKNOWN STEP	2026-11-13T13:27:24.0087358Z (Reading database ... 75%
+deploy	UNKNOWN STEP	2026-11-13T13:27:24.1610248Z (Reading database ... 80%
+deploy	UNKNOWN STEP	2026-11-13T13:27:24.3082669Z (Reading database ... 85%
+deploy	UNKNOWN STEP	2026-11-13T13:27:24.4729165Z (Reading database ... 90%
+deploy	UNKNOWN STEP	2026-11-13T13:27:24.5710126Z (Reading database ... 95%
+deploy	UNKNOWN STEP	2026-11-13T13:27:24.5710535Z (Reading database ... 100%
+deploy	UNKNOWN STEP	2026-11-13T13:27:24.5710830Z (Reading database ... 216752 files and directories currently installed.)
+deploy	UNKNOWN STEP	2026-11-13T13:27:24.5755568Z Preparing to unpack .../librsvg2-2_2.58.0+dfsg-1ubuntu0.1_amd64.deb ...
+deploy	UNKNOWN STEP	2026-11-13T13:27:24.5867109Z Unpacking librsvg2-2:amd64 (2.58.0+dfsg-1ubuntu0.1) ...
+deploy	UNKNOWN STEP	2026-11-13T13:27:24.6753779Z Selecting previously unselected package librsvg2-bin.
+deploy	UNKNOWN STEP	2026-11-13T13:27:24.6888239Z Preparing to unpack .../librsvg2-bin_2.58.0+dfsg-1ubuntu0.1_amd64.deb ...
+deploy	UNKNOWN STEP	2026-11-13T13:27:24.6895279Z Unpacking librsvg2-bin (2.58.0+dfsg-1ubuntu0.1) ...
+deploy	UNKNOWN STEP	2026-11-13T13:27:24.7886173Z Setting up librsvg2-2:amd64 (2.58.0+dfsg-1ubuntu0.1) ...
+deploy	UNKNOWN STEP	2026-11-13T13:27:24.7904172Z Setting up librsvg2-bin (2.58.0+dfsg-1ubuntu0.1) ...
+deploy	UNKNOWN STEP	2026-11-13T13:27:24.7923301Z Processing triggers for man-db (2.12.0-4build2) ...
+deploy	UNKNOWN STEP	2026-11-13T13:27:24.7941977Z Not building database; man-db/auto-update is not 'true'.
+deploy	UNKNOWN STEP	2026-11-13T13:27:24.7953844Z Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+deploy	UNKNOWN STEP	2026-11-13T13:27:25.7265239Z 
+deploy	UNKNOWN STEP	2026-11-13T13:27:25.7265752Z Running kernel seems to be up-to-date.
+deploy	UNKNOWN STEP	2026-11-13T13:27:25.7266065Z 
+deploy	UNKNOWN STEP	2026-11-13T13:27:25.7266199Z No services need to be restarted.
+deploy	UNKNOWN STEP	2026-11-13T13:27:25.7266416Z 
+deploy	UNKNOWN STEP	2026-11-13T13:27:25.7266522Z No containers need to be restarted.
+deploy	UNKNOWN STEP	2026-11-13T13:27:25.7266665Z 
+deploy	UNKNOWN STEP	2026-11-13T13:27:25.7266781Z No user sessions are running outdated binaries.
+deploy	UNKNOWN STEP	2026-11-13T13:27:25.7266960Z 
+deploy	UNKNOWN STEP	2026-11-13T13:27:25.7267120Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+deploy	UNKNOWN STEP	2026-11-13T13:27:26.7212535Z rsvg-convert version 2.58.0
+deploy	UNKNOWN STEP	2026-11-13T13:27:26.7527125Z ##[group]Run python3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" deploy --expected-base "$EXPECTED_BASE"
+deploy	UNKNOWN STEP	2026-11-13T13:27:26.7528121Z ^[[36;1mpython3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" deploy --expected-base "$EXPECTED_BASE"^[[0m
+deploy	UNKNOWN STEP	2026-11-13T13:27:26.7545472Z shell: /usr/bin/bash -e {0}
+deploy	UNKNOWN STEP	2026-11-13T13:27:26.7545678Z env:
+deploy	UNKNOWN STEP	2026-11-13T13:27:26.7545852Z   PYTHONDONTWRITEBYTECODE: 1
+deploy	UNKNOWN STEP	2026-11-13T13:27:26.7546119Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+deploy	UNKNOWN STEP	2026-11-13T13:27:26.7548440Z   GH_TOKEN: ***
+deploy	UNKNOWN STEP	2026-11-13T13:27:26.7548673Z   EXPECTED_BASE: bf9c164e16377b3fc192f88e948686ed8aefe861
+deploy	UNKNOWN STEP	2026-11-13T13:27:26.7548932Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-11-13T13:28:09.7911802Z {"status": "succeed"}
+deploy	UNKNOWN STEP	2026-11-13T13:28:09.8121318Z Post job cleanup.
+deploy	UNKNOWN STEP	2026-11-13T13:28:09.8859861Z [command]/usr/bin/git version
+deploy	UNKNOWN STEP	2026-11-13T13:28:09.8897709Z git version 2.56.1
+deploy	UNKNOWN STEP	2026-11-13T13:28:09.8929728Z Temporarily overriding HOME='/home/runner/work/_temp/e2ff007d-9078-4324-89de-f9585ddec641' before making global git config changes
+deploy	UNKNOWN STEP	2026-11-13T13:28:09.8930711Z Adding repository directory to the temporary git global config as a safe directory
+deploy	UNKNOWN STEP	2026-11-13T13:28:09.8934445Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/SpaceFox/SpaceFox
+deploy	UNKNOWN STEP	2026-11-13T13:28:09.8965377Z Removing SSH command configuration
+deploy	UNKNOWN STEP	2026-11-13T13:28:09.8978513Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+deploy	UNKNOWN STEP	2026-11-13T13:28:09.9009415Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+deploy	UNKNOWN STEP	2026-11-13T13:28:09.9242877Z Removing HTTP extra header
+deploy	UNKNOWN STEP	2026-11-13T13:28:09.9248048Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+deploy	UNKNOWN STEP	2026-11-13T13:28:09.9306950Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+deploy	UNKNOWN STEP	2026-11-13T13:28:09.9544276Z Removing includeIf entries pointing to credentials config files
+deploy	UNKNOWN STEP	2026-11-13T13:28:09.9544868Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+deploy	UNKNOWN STEP	2026-11-13T13:28:09.9579666Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+deploy	UNKNOWN STEP	2026-11-13T13:28:09.9942558Z Evaluate and set environment url
+deploy	UNKNOWN STEP	2026-11-13T13:28:09.9947598Z Evaluated environment url: https://JekaMas.github.io/SpaceFox
+deploy	UNKNOWN STEP	2026-11-13T13:28:09.9948313Z Cleaning up orphan processes
+promote	UNKNOWN STEP	﻿2026-11-13T13:28:16.2577682Z Current runner version: '2.338.2'
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2611118Z ##[group]Runner Image Provisioner
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2612483Z Hosted Compute Agent
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2613346Z Version: 20261103.629
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2614293Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2615336Z Build Date: 2026-11-03T17:26:59Z
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2616294Z Worker ID: {4fae108b-2e95-4123-af82-eb653350f86e}
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2617348Z Region: centralus
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2618117Z Cloud: Azure
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2618924Z ##[endgroup]
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2620797Z ##[group]Operating System
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2621627Z Ubuntu
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2622598Z 24.04.5
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2623326Z LTS
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2624049Z ##[endgroup]
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2624795Z ##[group]Runner Image
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2625627Z Image: ubuntu-24.04
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2626484Z Version: 20261111.370.1
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2628281Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261111.370/images/ubuntu/Ubuntu2404-Readme.md
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2630526Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261111.370
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2631872Z ##[endgroup]
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2634029Z ##[group]GITHUB_TOKEN Permissions
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2637117Z Actions: read
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2638041Z Contents: write
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2638825Z Metadata: read
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2640045Z Pages: read
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2640827Z ##[endgroup]
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2643991Z Secret source: Actions
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2645391Z Cache mode: write
+promote	UNKNOWN STEP	2026-11-13T13:28:16.2646826Z Prepare workflow directory
+promote	UNKNOWN STEP	2026-11-13T13:28:16.3182596Z Prepare all required actions
+promote	UNKNOWN STEP	2026-11-13T13:28:16.3233141Z Getting action download info
+promote	UNKNOWN STEP	2026-11-13T13:28:16.5807299Z Download action repository 'actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+promote	UNKNOWN STEP	2026-11-13T13:28:16.7808151Z Complete job name: promote
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8537249Z ##[group]Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8538393Z with:
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8538978Z   ref: dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8539662Z   persist-credentials: false
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8540371Z   sparse-checkout-cone-mode: false
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8541059Z   sparse-checkout: /.github/spacefox-inputs.txt
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8541863Z   repository: JekaMas/SpaceFox
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8545909Z   token: ***
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8546428Z   ssh-strict: true
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8547023Z   ssh-user: git
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8547548Z   clean: true
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8548063Z   fetch-depth: 1
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8548602Z   fetch-tags: false
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8549135Z   show-progress: true
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8549713Z   lfs: false
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8550221Z   submodules: false
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8550798Z   set-safe-directory: true
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8551409Z   allow-unsafe-pr-checkout: false
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8552296Z env:
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8553042Z   PYTHONDONTWRITEBYTECODE: 1
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8553760Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+promote	UNKNOWN STEP	2026-11-13T13:28:16.8554469Z ##[endgroup]
+promote	UNKNOWN STEP	2026-11-13T13:28:17.0924970Z Syncing repository: JekaMas/SpaceFox
+promote	UNKNOWN STEP	2026-11-13T13:28:17.0927893Z ##[group]Getting Git version info
+promote	UNKNOWN STEP	2026-11-13T13:28:17.0929344Z Working directory is '/home/runner/work/SpaceFox/SpaceFox'
+promote	UNKNOWN STEP	2026-11-13T13:28:17.0931309Z [command]/usr/bin/git version
+promote	UNKNOWN STEP	2026-11-13T13:28:17.0949343Z git version 2.56.1
+promote	UNKNOWN STEP	2026-11-13T13:28:17.0969194Z ##[endgroup]
+promote	UNKNOWN STEP	2026-11-13T13:28:17.0985259Z Temporarily overriding HOME='/home/runner/work/_temp/83351b80-af0d-4e2f-b89d-c1ddb32b669b' before making global git config changes
+promote	UNKNOWN STEP	2026-11-13T13:28:17.0988471Z Adding repository directory to the temporary git global config as a safe directory
+promote	UNKNOWN STEP	2026-11-13T13:28:17.0991119Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/SpaceFox/SpaceFox
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1032514Z Deleting the contents of '/home/runner/work/SpaceFox/SpaceFox'
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1036305Z ##[group]Determining repository object format
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1038653Z ##[endgroup]
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1040314Z ##[group]Initializing the repository
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1042457Z [command]/usr/bin/git init /home/runner/work/SpaceFox/SpaceFox
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1145403Z hint: Using 'master' as the name for the initial branch. This default branch name
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1146785Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1148077Z hint: to use in all of your new repositories, which will suppress this warning,
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1149011Z hint: call:
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1149551Z hint:
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1150318Z hint: 	git config --global init.defaultBranch <name>
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1151407Z hint:
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1152782Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1154571Z hint: 'development'. The just-created branch can be renamed via this command:
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1155960Z hint:
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1157122Z hint: 	git branch -m <name>
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1158791Z hint:
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1160593Z hint: Disable this message with "git config set advice.defaultBranchName false"
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1164224Z Initialized empty Git repository in /home/runner/work/SpaceFox/SpaceFox/.git/
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1169322Z [command]/usr/bin/git remote add origin https://github.com/JekaMas/SpaceFox
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1219788Z ##[endgroup]
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1220921Z ##[group]Disabling automatic garbage collection
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1224931Z [command]/usr/bin/git config --local gc.auto 0
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1257376Z ##[endgroup]
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1258933Z ##[group]Setting up auth
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1259837Z Removing SSH command configuration
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1266677Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1302148Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1631338Z Removing HTTP extra header
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1638118Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1675496Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1878322Z Removing includeIf entries pointing to credentials config files
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1886166Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+promote	UNKNOWN STEP	2026-11-13T13:28:17.1919273Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+promote	UNKNOWN STEP	2026-11-13T13:28:17.2111430Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-5f261851-4c2c-4c41-8f11-22e5e23021f7.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+promote	UNKNOWN STEP	2026-11-13T13:28:17.2153081Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path /home/runner/work/_temp/git-credentials-5f261851-4c2c-4c41-8f11-22e5e23021f7.config
+promote	UNKNOWN STEP	2026-11-13T13:28:17.2200524Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-5f261851-4c2c-4c41-8f11-22e5e23021f7.config
+promote	UNKNOWN STEP	2026-11-13T13:28:17.2236152Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-5f261851-4c2c-4c41-8f11-22e5e23021f7.config
+promote	UNKNOWN STEP	2026-11-13T13:28:17.2274665Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-5f261851-4c2c-4c41-8f11-22e5e23021f7.config
+promote	UNKNOWN STEP	2026-11-13T13:28:17.2301056Z ##[endgroup]
+promote	UNKNOWN STEP	2026-11-13T13:28:17.2303010Z ##[group]Fetching the repository
+promote	UNKNOWN STEP	2026-11-13T13:28:17.2309820Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+promote	UNKNOWN STEP	2026-11-13T13:28:17.6022112Z From https://github.com/JekaMas/SpaceFox
+promote	UNKNOWN STEP	2026-11-13T13:28:17.6023564Z  * branch            dd21a1811e028fbf8a3e6f5d95fac0a406888c5f -> FETCH_HEAD
+promote	UNKNOWN STEP	2026-11-13T13:28:17.6035805Z [command]/usr/bin/git rev-parse --verify --quiet dd21a1811e028fbf8a3e6f5d95fac0a406888c5f^{object}
+promote	UNKNOWN STEP	2026-11-13T13:28:17.6066152Z dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+promote	UNKNOWN STEP	2026-11-13T13:28:17.6069596Z ##[endgroup]
+promote	UNKNOWN STEP	2026-11-13T13:28:17.6071042Z ##[group]Determining the checkout info
+promote	UNKNOWN STEP	2026-11-13T13:28:17.6072127Z ##[endgroup]
+promote	UNKNOWN STEP	2026-11-13T13:28:17.6073380Z ##[group]Setting up sparse checkout
+promote	UNKNOWN STEP	2026-11-13T13:28:17.6074988Z [command]/usr/bin/git config core.sparseCheckout true
+promote	UNKNOWN STEP	2026-11-13T13:28:17.6111182Z [command]/usr/bin/git rev-parse --git-path info/sparse-checkout
+promote	UNKNOWN STEP	2026-11-13T13:28:17.6133955Z .git/info/sparse-checkout
+promote	UNKNOWN STEP	2026-11-13T13:28:17.6140234Z ##[endgroup]
+promote	UNKNOWN STEP	2026-11-13T13:28:17.6141262Z ##[group]Checking out the ref
+promote	UNKNOWN STEP	2026-11-13T13:28:17.6144830Z [command]/usr/bin/git checkout --progress --force dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9242624Z Note: switching to 'dd21a1811e028fbf8a3e6f5d95fac0a406888c5f'.
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9244033Z 
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9245053Z You are in 'detached HEAD' state. You can look around, make experimental
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9247194Z changes and commit them, and you can discard any commits you make in this
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9249286Z state without impacting any branches by switching back to a branch.
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9250570Z 
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9251462Z If you want to create a new branch to retain commits you create, you may
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9253692Z do so (now or later) by using -c with the switch command. Example:
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9254797Z 
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9255391Z   git switch -c <new-branch-name>
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9256153Z 
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9257031Z Or undo this operation with:
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9257885Z 
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9258314Z   git switch -
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9258989Z 
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9259924Z Turn off this advice by setting config variable advice.detachedHead to false
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9261274Z 
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9262737Z HEAD is now at dd21a18 Publish verified five-language signed packaging and whole software closures
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9356137Z ##[endgroup]
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9401341Z [command]/usr/bin/git log -1 --format=%H
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9430001Z dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9438764Z ##[group]Removing auth
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9440037Z Removing SSH command configuration
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9443177Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9475203Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9676807Z Removing HTTP extra header
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9679996Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9712246Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9903873Z Removing includeIf entries pointing to credentials config files
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9907259Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9932044Z includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9936374Z includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9940023Z includeif.gitdir:/github/workspace/.git.path
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9943279Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9949609Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9969241Z /home/runner/work/_temp/git-credentials-5f261851-4c2c-4c41-8f11-22e5e23021f7.config
+promote	UNKNOWN STEP	2026-11-13T13:28:17.9981090Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path /home/runner/work/_temp/git-credentials-5f261851-4c2c-4c41-8f11-22e5e23021f7.config
+promote	UNKNOWN STEP	2026-11-13T13:28:18.0014924Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path
+promote	UNKNOWN STEP	2026-11-13T13:28:18.0038173Z /home/runner/work/_temp/git-credentials-5f261851-4c2c-4c41-8f11-22e5e23021f7.config
+promote	UNKNOWN STEP	2026-11-13T13:28:18.0050106Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-5f261851-4c2c-4c41-8f11-22e5e23021f7.config
+promote	UNKNOWN STEP	2026-11-13T13:28:18.0083961Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+promote	UNKNOWN STEP	2026-11-13T13:28:18.0107015Z /github/runner_temp/git-credentials-5f261851-4c2c-4c41-8f11-22e5e23021f7.config
+promote	UNKNOWN STEP	2026-11-13T13:28:18.0126012Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-5f261851-4c2c-4c41-8f11-22e5e23021f7.config
+promote	UNKNOWN STEP	2026-11-13T13:28:18.0161099Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+promote	UNKNOWN STEP	2026-11-13T13:28:18.0182226Z /github/runner_temp/git-credentials-5f261851-4c2c-4c41-8f11-22e5e23021f7.config
+promote	UNKNOWN STEP	2026-11-13T13:28:18.0191119Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-5f261851-4c2c-4c41-8f11-22e5e23021f7.config
+promote	UNKNOWN STEP	2026-11-13T13:28:18.0224326Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+promote	UNKNOWN STEP	2026-11-13T13:28:18.0418345Z Removing credentials config '/home/runner/work/_temp/git-credentials-5f261851-4c2c-4c41-8f11-22e5e23021f7.config'
+promote	UNKNOWN STEP	2026-11-13T13:28:18.0427466Z ##[endgroup]
+promote	UNKNOWN STEP	2026-11-13T13:28:18.0686869Z ##[group]Run # Prepare alone builds source data. Later jobs validate immutable Git files.
+promote	UNKNOWN STEP	2026-11-13T13:28:18.0689792Z ^[[36;1m# Prepare alone builds source data. Later jobs validate immutable Git files.^[[0m
+promote	UNKNOWN STEP	2026-11-13T13:28:18.0692293Z ^[[36;1msed '\|^/catalog/source.json$|d' .github/spacefox-inputs.txt |^[[0m
+promote	UNKNOWN STEP	2026-11-13T13:28:18.0694499Z ^[[36;1m  git sparse-checkout set --no-cone --stdin^[[0m
+promote	UNKNOWN STEP	2026-11-13T13:28:18.0716719Z shell: /usr/bin/bash -e {0}
+promote	UNKNOWN STEP	2026-11-13T13:28:18.0718046Z env:
+promote	UNKNOWN STEP	2026-11-13T13:28:18.0719108Z   PYTHONDONTWRITEBYTECODE: 1
+promote	UNKNOWN STEP	2026-11-13T13:28:18.0720575Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+promote	UNKNOWN STEP	2026-11-13T13:28:18.0722112Z ##[endgroup]
+promote	UNKNOWN STEP	2026-11-13T13:28:18.4778062Z ##[group]Run bash .github/scripts/install-native-linux-renderer.sh
+promote	UNKNOWN STEP	2026-11-13T13:28:18.4780176Z ^[[36;1mbash .github/scripts/install-native-linux-renderer.sh^[[0m
+promote	UNKNOWN STEP	2026-11-13T13:28:18.4798792Z shell: /usr/bin/bash -e {0}
+promote	UNKNOWN STEP	2026-11-13T13:28:18.4800014Z env:
+promote	UNKNOWN STEP	2026-11-13T13:28:18.4801044Z   PYTHONDONTWRITEBYTECODE: 1
+promote	UNKNOWN STEP	2026-11-13T13:28:18.4802810Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+promote	UNKNOWN STEP	2026-11-13T13:28:18.4804271Z ##[endgroup]
+promote	UNKNOWN STEP	2026-11-13T13:28:18.4968477Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+promote	UNKNOWN STEP	2026-11-13T13:28:18.4970995Z                                  Dload  Upload   Total   Spent    Left  Speed
+promote	UNKNOWN STEP	2026-11-13T13:28:19.0805024Z 
+promote	UNKNOWN STEP	2026-11-13T13:28:19.0805886Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+promote	UNKNOWN STEP	2026-11-13T13:28:19.0806770Z 100 2246k  100 2246k    0     0  3848k      0 --:--:-- --:--:-- --:--:-- 3853k
+promote	UNKNOWN STEP	2026-11-13T13:28:19.0874089Z /home/runner/work/_temp/native-linux-prerequisites/librsvg2-bin.deb: OK
+promote	UNKNOWN STEP	2026-11-13T13:28:19.1703404Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+promote	UNKNOWN STEP	2026-11-13T13:28:19.2363852Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+promote	UNKNOWN STEP	2026-11-13T13:28:19.2453716Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+promote	UNKNOWN STEP	2026-11-13T13:28:19.2463103Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+promote	UNKNOWN STEP	2026-11-13T13:28:19.2493656Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+promote	UNKNOWN STEP	2026-11-13T13:28:19.2535210Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+promote	UNKNOWN STEP	2026-11-13T13:28:19.2994852Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [767 kB]
+promote	UNKNOWN STEP	2026-11-13T13:28:19.3186987Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [697 kB]
+promote	UNKNOWN STEP	2026-11-13T13:28:19.4005239Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1450 kB]
+promote	UNKNOWN STEP	2026-11-13T13:28:19.4085658Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [315 kB]
+promote	UNKNOWN STEP	2026-11-13T13:28:19.4113840Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1713 kB]
+promote	UNKNOWN STEP	2026-11-13T13:28:19.4203761Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [345 kB]
+promote	UNKNOWN STEP	2026-11-13T13:28:19.4233789Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1883 kB]
+promote	UNKNOWN STEP	2026-11-13T13:28:19.4353728Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [430 kB]
+promote	UNKNOWN STEP	2026-11-13T13:28:19.4363835Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [14.6 kB]
+promote	UNKNOWN STEP	2026-11-13T13:28:19.5054053Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1195 kB]
+promote	UNKNOWN STEP	2026-11-13T13:28:19.5116112Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [238 kB]
+promote	UNKNOWN STEP	2026-11-13T13:28:19.5135156Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1228 kB]
+promote	UNKNOWN STEP	2026-11-13T13:28:19.5617725Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [248 kB]
+promote	UNKNOWN STEP	2026-11-13T13:28:19.5638537Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1788 kB]
+promote	UNKNOWN STEP	2026-11-13T13:28:19.5721147Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [411 kB]
+promote	UNKNOWN STEP	2026-11-13T13:28:26.2494649Z Fetched 13.1 MB in 1s (9023 kB/s)
+promote	UNKNOWN STEP	2026-11-13T13:28:27.4860875Z Reading package lists...
+promote	UNKNOWN STEP	2026-11-13T13:28:27.5858558Z Reading package lists...
+promote	UNKNOWN STEP	2026-11-13T13:28:27.8670933Z Building dependency tree...
+promote	UNKNOWN STEP	2026-11-13T13:28:27.8680931Z Reading state information...
+promote	UNKNOWN STEP	2026-11-13T13:28:28.0593284Z The following additional packages will be installed:
+promote	UNKNOWN STEP	2026-11-13T13:28:28.0599878Z   librsvg2-2
+promote	UNKNOWN STEP	2026-11-13T13:28:28.0608720Z Recommended packages:
+promote	UNKNOWN STEP	2026-11-13T13:28:28.0609185Z   librsvg2-common
+promote	UNKNOWN STEP	2026-11-13T13:28:28.0921924Z The following NEW packages will be installed:
+promote	UNKNOWN STEP	2026-11-13T13:28:28.0926413Z   librsvg2-2 librsvg2-bin
+promote	UNKNOWN STEP	2026-11-13T13:28:28.1169301Z 0 upgraded, 2 newly installed, 0 to remove and 20 not upgraded.
+promote	UNKNOWN STEP	2026-11-13T13:28:28.1170077Z Need to get 4442 kB of archives.
+promote	UNKNOWN STEP	2026-11-13T13:28:28.1170822Z After this operation, 14.2 MB of additional disk space will be used.
+promote	UNKNOWN STEP	2026-11-13T13:28:28.1171716Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+promote	UNKNOWN STEP	2026-11-13T13:28:28.1729727Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 librsvg2-2 amd64 2.58.0+dfsg-1ubuntu0.1 [2141 kB]
+promote	UNKNOWN STEP	2026-11-13T13:28:28.2181716Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 librsvg2-bin amd64 2.58.0+dfsg-1ubuntu0.1 [2301 kB]
+promote	UNKNOWN STEP	2026-11-13T13:28:28.5315201Z Fetched 4442 kB in 0s (33.9 MB/s)
+promote	UNKNOWN STEP	2026-11-13T13:28:28.5549412Z Selecting previously unselected package librsvg2-2:amd64.
+promote	UNKNOWN STEP	2026-11-13T13:28:28.5721241Z (Reading database ... 
+promote	UNKNOWN STEP	2026-11-13T13:28:28.5721719Z (Reading database ... 5%
+promote	UNKNOWN STEP	2026-11-13T13:28:28.5722101Z (Reading database ... 10%
+promote	UNKNOWN STEP	2026-11-13T13:28:28.5722603Z (Reading database ... 15%
+promote	UNKNOWN STEP	2026-11-13T13:28:28.5723035Z (Reading database ... 20%
+promote	UNKNOWN STEP	2026-11-13T13:28:28.5723375Z (Reading database ... 25%
+promote	UNKNOWN STEP	2026-11-13T13:28:28.5724155Z (Reading database ... 30%
+promote	UNKNOWN STEP	2026-11-13T13:28:28.5724587Z (Reading database ... 35%
+promote	UNKNOWN STEP	2026-11-13T13:28:28.5724992Z (Reading database ... 40%
+promote	UNKNOWN STEP	2026-11-13T13:28:28.5725579Z (Reading database ... 45%
+promote	UNKNOWN STEP	2026-11-13T13:28:28.5725965Z (Reading database ... 50%
+promote	UNKNOWN STEP	2026-11-13T13:28:28.5762007Z (Reading database ... 55%
+promote	UNKNOWN STEP	2026-11-13T13:28:28.6938837Z (Reading database ... 60%
+promote	UNKNOWN STEP	2026-11-13T13:28:28.8979671Z (Reading database ... 65%
+promote	UNKNOWN STEP	2026-11-13T13:28:29.0878483Z (Reading database ... 70%
+promote	UNKNOWN STEP	2026-11-13T13:28:29.2899760Z (Reading database ... 75%
+promote	UNKNOWN STEP	2026-11-13T13:28:29.4040699Z (Reading database ... 80%
+promote	UNKNOWN STEP	2026-11-13T13:28:29.6048867Z (Reading database ... 85%
+promote	UNKNOWN STEP	2026-11-13T13:28:29.7989027Z (Reading database ... 90%
+promote	UNKNOWN STEP	2026-11-13T13:28:29.9506215Z (Reading database ... 95%
+promote	UNKNOWN STEP	2026-11-13T13:28:29.9507270Z (Reading database ... 100%
+promote	UNKNOWN STEP	2026-11-13T13:28:29.9508162Z (Reading database ... 216752 files and directories currently installed.)
+promote	UNKNOWN STEP	2026-11-13T13:28:29.9567671Z Preparing to unpack .../librsvg2-2_2.58.0+dfsg-1ubuntu0.1_amd64.deb ...
+promote	UNKNOWN STEP	2026-11-13T13:28:29.9695818Z Unpacking librsvg2-2:amd64 (2.58.0+dfsg-1ubuntu0.1) ...
+promote	UNKNOWN STEP	2026-11-13T13:28:30.0460370Z Selecting previously unselected package librsvg2-bin.
+promote	UNKNOWN STEP	2026-11-13T13:28:30.0613503Z Preparing to unpack .../librsvg2-bin_2.58.0+dfsg-1ubuntu0.1_amd64.deb ...
+promote	UNKNOWN STEP	2026-11-13T13:28:30.0627302Z Unpacking librsvg2-bin (2.58.0+dfsg-1ubuntu0.1) ...
+promote	UNKNOWN STEP	2026-11-13T13:28:30.1898827Z Setting up librsvg2-2:amd64 (2.58.0+dfsg-1ubuntu0.1) ...
+promote	UNKNOWN STEP	2026-11-13T13:28:30.1924054Z Setting up librsvg2-bin (2.58.0+dfsg-1ubuntu0.1) ...
+promote	UNKNOWN STEP	2026-11-13T13:28:30.1948871Z Processing triggers for man-db (2.12.0-4build2) ...
+promote	UNKNOWN STEP	2026-11-13T13:28:30.1971018Z Not building database; man-db/auto-update is not 'true'.
+promote	UNKNOWN STEP	2026-11-13T13:28:30.1983314Z Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+promote	UNKNOWN STEP	2026-11-13T13:28:32.4200362Z 
+promote	UNKNOWN STEP	2026-11-13T13:28:32.4201196Z Running kernel seems to be up-to-date.
+promote	UNKNOWN STEP	2026-11-13T13:28:32.4201578Z 
+promote	UNKNOWN STEP	2026-11-13T13:28:32.4201780Z No services need to be restarted.
+promote	UNKNOWN STEP	2026-11-13T13:28:32.4202032Z 
+promote	UNKNOWN STEP	2026-11-13T13:28:32.4202648Z No containers need to be restarted.
+promote	UNKNOWN STEP	2026-11-13T13:28:32.4202894Z 
+promote	UNKNOWN STEP	2026-11-13T13:28:32.4203138Z No user sessions are running outdated binaries.
+promote	UNKNOWN STEP	2026-11-13T13:28:32.4203411Z 
+promote	UNKNOWN STEP	2026-11-13T13:28:32.4203682Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+promote	UNKNOWN STEP	2026-11-13T13:28:33.5685039Z rsvg-convert version 2.58.0
+promote	UNKNOWN STEP	2026-11-13T13:28:33.6121603Z ##[group]Run python3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" recover
+promote	UNKNOWN STEP	2026-11-13T13:28:33.6122262Z ^[[36;1mpython3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" recover^[[0m
+promote	UNKNOWN STEP	2026-11-13T13:28:33.6140392Z shell: /usr/bin/bash -e {0}
+promote	UNKNOWN STEP	2026-11-13T13:28:33.6140760Z env:
+promote	UNKNOWN STEP	2026-11-13T13:28:33.6141094Z   PYTHONDONTWRITEBYTECODE: 1
+promote	UNKNOWN STEP	2026-11-13T13:28:33.6141557Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+promote	UNKNOWN STEP	2026-11-13T13:28:33.6144651Z   GH_TOKEN: ***
+promote	UNKNOWN STEP	2026-11-13T13:28:33.6144974Z ##[endgroup]
+promote	UNKNOWN STEP	2026-11-13T13:29:23.9250274Z {"head": "bc1f029750918b256cd8e77bdc005e7e11ad19e9", "pending": "false"}
+promote	UNKNOWN STEP	2026-11-13T13:29:23.9546227Z Post job cleanup.
+promote	UNKNOWN STEP	2026-11-13T13:29:24.0443649Z [command]/usr/bin/git version
+promote	UNKNOWN STEP	2026-11-13T13:29:24.0503361Z git version 2.56.1
+promote	UNKNOWN STEP	2026-11-13T13:29:24.0520063Z Temporarily overriding HOME='/home/runner/work/_temp/41a39c85-fdbd-4c36-af8a-8d9a18d372ba' before making global git config changes
+promote	UNKNOWN STEP	2026-11-13T13:29:24.0521719Z Adding repository directory to the temporary git global config as a safe directory
+promote	UNKNOWN STEP	2026-11-13T13:29:24.0526465Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/SpaceFox/SpaceFox
+promote	UNKNOWN STEP	2026-11-13T13:29:24.0559710Z Removing SSH command configuration
+promote	UNKNOWN STEP	2026-11-13T13:29:24.0566502Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+promote	UNKNOWN STEP	2026-11-13T13:29:24.0602515Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+promote	UNKNOWN STEP	2026-11-13T13:29:24.0852921Z Removing HTTP extra header
+promote	UNKNOWN STEP	2026-11-13T13:29:24.0857953Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+promote	UNKNOWN STEP	2026-11-13T13:29:24.0889922Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+promote	UNKNOWN STEP	2026-11-13T13:29:24.1099304Z Removing includeIf entries pointing to credentials config files
+promote	UNKNOWN STEP	2026-11-13T13:29:24.1106871Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+promote	UNKNOWN STEP	2026-11-13T13:29:24.1145334Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+promote	UNKNOWN STEP	2026-11-13T13:29:24.1565050Z Cleaning up orphan processes
+metadata	UNKNOWN STEP	﻿2026-11-13T13:29:29.7561025Z Current runner version: '2.338.2'
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7587019Z ##[group]Runner Image Provisioner
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7588195Z Hosted Compute Agent
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7588927Z Version: 20261103.629
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7589640Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7590410Z Build Date: 2026-11-03T17:26:59Z
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7591211Z Worker ID: {7f9eafea-39fe-4c23-b7a7-7c53d68333f4}
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7591972Z Region: westus
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7592575Z Cloud: Azure
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7593187Z ##[endgroup]
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7594728Z ##[group]Operating System
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7595531Z Ubuntu
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7596124Z 24.04.5
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7596693Z LTS
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7597292Z ##[endgroup]
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7597875Z ##[group]Runner Image
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7598779Z Image: ubuntu-24.04
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7599467Z Version: 20261111.370.1
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7600910Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261111.370/images/ubuntu/Ubuntu2404-Readme.md
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7602531Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261111.370
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7603588Z ##[endgroup]
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7604878Z ##[group]GITHUB_TOKEN Permissions
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7607020Z Actions: read
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7607671Z Contents: write
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7609004Z Metadata: read
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7609608Z Pages: read
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7610139Z ##[endgroup]
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7612573Z Secret source: Actions
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7613532Z Cache mode: write
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.7614379Z Prepare workflow directory
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.8222073Z Prepare all required actions
+metadata	UNKNOWN STEP	2026-11-13T13:29:29.8271837Z Getting action download info
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.1899679Z Download action repository 'actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.4292619Z Complete job name: metadata
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5230045Z ##[group]Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5231182Z with:
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5231678Z   ref: dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5232327Z   persist-credentials: false
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5232966Z   sparse-checkout-cone-mode: false
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5233818Z   sparse-checkout: /.github/spacefox-inputs.txt
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5234472Z   repository: JekaMas/SpaceFox
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5239666Z   token: ***
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5240149Z   ssh-strict: true
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5240636Z   ssh-user: git
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5241100Z   clean: true
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5241548Z   fetch-depth: 1
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5242008Z   fetch-tags: false
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5242491Z   show-progress: true
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5243020Z   lfs: false
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5243512Z   submodules: false
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5244210Z   set-safe-directory: true
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5244821Z   allow-unsafe-pr-checkout: false
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5245821Z env:
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5246346Z   PYTHONDONTWRITEBYTECODE: 1
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5247035Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.5247733Z ##[endgroup]
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9150729Z Syncing repository: JekaMas/SpaceFox
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9153355Z ##[group]Getting Git version info
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9154541Z Working directory is '/home/runner/work/SpaceFox/SpaceFox'
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9156171Z [command]/usr/bin/git version
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9283104Z git version 2.56.1
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9312192Z ##[endgroup]
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9329660Z Temporarily overriding HOME='/home/runner/work/_temp/2939b5e4-521d-4ee4-8e76-63ab3532f87c' before making global git config changes
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9332348Z Adding repository directory to the temporary git global config as a safe directory
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9336390Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/SpaceFox/SpaceFox
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9416642Z Deleting the contents of '/home/runner/work/SpaceFox/SpaceFox'
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9423126Z ##[group]Determining repository object format
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9427480Z ##[endgroup]
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9429618Z ##[group]Initializing the repository
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9434588Z [command]/usr/bin/git init /home/runner/work/SpaceFox/SpaceFox
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9575862Z hint: Using 'master' as the name for the initial branch. This default branch name
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9577535Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9579564Z hint: to use in all of your new repositories, which will suppress this warning,
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9580712Z hint: call:
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9581310Z hint:
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9582491Z hint: 	git config --global init.defaultBranch <name>
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9584020Z hint:
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9585412Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9587422Z hint: 'development'. The just-created branch can be renamed via this command:
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9588947Z hint:
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9589707Z hint: 	git branch -m <name>
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9590911Z hint:
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9592259Z hint: Disable this message with "git config set advice.defaultBranchName false"
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9594441Z Initialized empty Git repository in /home/runner/work/SpaceFox/SpaceFox/.git/
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9601152Z [command]/usr/bin/git remote add origin https://github.com/JekaMas/SpaceFox
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9691128Z ##[endgroup]
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9692308Z ##[group]Disabling automatic garbage collection
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9696688Z [command]/usr/bin/git config --local gc.auto 0
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9739482Z ##[endgroup]
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9741615Z ##[group]Setting up auth
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9743615Z Removing SSH command configuration
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9748704Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+metadata	UNKNOWN STEP	2026-11-13T13:29:30.9814224Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.0326659Z Removing HTTP extra header
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.0335466Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.0386140Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.0639851Z Removing includeIf entries pointing to credentials config files
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.0648819Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.0703992Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.0981317Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-0d7278e9-e1a6-46fe-80b0-337553b912d3.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.1035603Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path /home/runner/work/_temp/git-credentials-0d7278e9-e1a6-46fe-80b0-337553b912d3.config
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.1082522Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-0d7278e9-e1a6-46fe-80b0-337553b912d3.config
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.1130966Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-0d7278e9-e1a6-46fe-80b0-337553b912d3.config
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.1174246Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-0d7278e9-e1a6-46fe-80b0-337553b912d3.config
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.1213222Z ##[endgroup]
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.1214193Z ##[group]Fetching the repository
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.1224644Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.5015383Z From https://github.com/JekaMas/SpaceFox
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.5016730Z  * branch            dd21a1811e028fbf8a3e6f5d95fac0a406888c5f -> FETCH_HEAD
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.5027865Z [command]/usr/bin/git rev-parse --verify --quiet dd21a1811e028fbf8a3e6f5d95fac0a406888c5f^{object}
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.5066293Z dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.5073215Z ##[endgroup]
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.5075210Z ##[group]Determining the checkout info
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.5079769Z ##[endgroup]
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.5081795Z ##[group]Setting up sparse checkout
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.5083559Z [command]/usr/bin/git config core.sparseCheckout true
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.5129019Z [command]/usr/bin/git rev-parse --git-path info/sparse-checkout
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.5163290Z .git/info/sparse-checkout
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.5176292Z ##[endgroup]
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.5178166Z ##[group]Checking out the ref
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.5181550Z [command]/usr/bin/git checkout --progress --force dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8074153Z Note: switching to 'dd21a1811e028fbf8a3e6f5d95fac0a406888c5f'.
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8076615Z 
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8080677Z You are in 'detached HEAD' state. You can look around, make experimental
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8084418Z changes and commit them, and you can discard any commits you make in this
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8088275Z state without impacting any branches by switching back to a branch.
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8090599Z 
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8092467Z If you want to create a new branch to retain commits you create, you may
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8096029Z do so (now or later) by using -c with the switch command. Example:
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8098454Z 
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8099378Z   git switch -c <new-branch-name>
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8100799Z 
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8102132Z Or undo this operation with:
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8103732Z 
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8104677Z   git switch -
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8105846Z 
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8107566Z Turn off this advice by setting config variable advice.detachedHead to false
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8110474Z 
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8112684Z HEAD is now at dd21a18 Publish verified five-language signed packaging and whole software closures
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8121439Z ##[endgroup]
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8152341Z [command]/usr/bin/git log -1 --format=%H
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8192422Z dd21a1811e028fbf8a3e6f5d95fac0a406888c5f
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8201059Z ##[group]Removing auth
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8202877Z Removing SSH command configuration
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8206234Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8252791Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8542437Z Removing HTTP extra header
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8547663Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8604789Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8888584Z Removing includeIf entries pointing to credentials config files
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8892733Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8938385Z includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8942207Z includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8945513Z includeif.gitdir:/github/workspace/.git.path
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8948806Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.8954975Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.9024223Z /home/runner/work/_temp/git-credentials-0d7278e9-e1a6-46fe-80b0-337553b912d3.config
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.9041640Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path /home/runner/work/_temp/git-credentials-0d7278e9-e1a6-46fe-80b0-337553b912d3.config
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.9098921Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.9140076Z /home/runner/work/_temp/git-credentials-0d7278e9-e1a6-46fe-80b0-337553b912d3.config
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.9157760Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-0d7278e9-e1a6-46fe-80b0-337553b912d3.config
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.9222171Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.9265749Z /github/runner_temp/git-credentials-0d7278e9-e1a6-46fe-80b0-337553b912d3.config
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.9282011Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-0d7278e9-e1a6-46fe-80b0-337553b912d3.config
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.9342025Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.9382697Z /github/runner_temp/git-credentials-0d7278e9-e1a6-46fe-80b0-337553b912d3.config
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.9393832Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-0d7278e9-e1a6-46fe-80b0-337553b912d3.config
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.9443594Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.9734644Z Removing credentials config '/home/runner/work/_temp/git-credentials-0d7278e9-e1a6-46fe-80b0-337553b912d3.config'
+metadata	UNKNOWN STEP	2026-11-13T13:29:31.9743568Z ##[endgroup]
+metadata	UNKNOWN STEP	2026-11-13T13:29:32.0026253Z ##[group]Run # Metadata reads its auxiliary corpus from Git, never source/art inputs.
+metadata	UNKNOWN STEP	2026-11-13T13:29:32.0029246Z ^[[36;1m# Metadata reads its auxiliary corpus from Git, never source/art inputs.^[[0m
+metadata	UNKNOWN STEP	2026-11-13T13:29:32.0031495Z ^[[36;1msed '\|^/catalog/source.json$|d' .github/spacefox-inputs.txt |^[[0m
+metadata	UNKNOWN STEP	2026-11-13T13:29:32.0033326Z ^[[36;1m  git sparse-checkout set --no-cone --stdin^[[0m
+metadata	UNKNOWN STEP	2026-11-13T13:29:32.0060590Z shell: /usr/bin/bash -e {0}
+metadata	UNKNOWN STEP	2026-11-13T13:29:32.0061682Z env:
+metadata	UNKNOWN STEP	2026-11-13T13:29:32.0062586Z   PYTHONDONTWRITEBYTECODE: 1
+metadata	UNKNOWN STEP	2026-11-13T13:29:32.0063915Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+metadata	UNKNOWN STEP	2026-11-13T13:29:32.0065309Z ##[endgroup]
+metadata	UNKNOWN STEP	2026-11-13T13:29:32.4067300Z ##[group]Run bash .github/scripts/install-native-linux-renderer.sh
+metadata	UNKNOWN STEP	2026-11-13T13:29:32.4069634Z ^[[36;1mbash .github/scripts/install-native-linux-renderer.sh^[[0m
+metadata	UNKNOWN STEP	2026-11-13T13:29:32.4092626Z shell: /usr/bin/bash -e {0}
+metadata	UNKNOWN STEP	2026-11-13T13:29:32.4093682Z env:
+metadata	UNKNOWN STEP	2026-11-13T13:29:32.4094591Z   PYTHONDONTWRITEBYTECODE: 1
+metadata	UNKNOWN STEP	2026-11-13T13:29:32.4095879Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+metadata	UNKNOWN STEP	2026-11-13T13:29:32.4097231Z ##[endgroup]
+metadata	UNKNOWN STEP	2026-11-13T13:29:32.4314146Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+metadata	UNKNOWN STEP	2026-11-13T13:29:32.4318342Z                                  Dload  Upload   Total   Spent    Left  Speed
+metadata	UNKNOWN STEP	2026-11-13T13:29:32.4319881Z 
+metadata	UNKNOWN STEP	2026-11-13T13:29:33.3688909Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+metadata	UNKNOWN STEP	2026-11-13T13:29:33.9284652Z   5 2246k    5  117k    0     0   124k      0  0:00:17 --:--:--  0:00:17  124k
+metadata	UNKNOWN STEP	2026-11-13T13:29:33.9286239Z 100 2246k  100 2246k    0     0  1500k      0  0:00:01  0:00:01 --:--:-- 1500k
+metadata	UNKNOWN STEP	2026-11-13T13:29:33.9362362Z /home/runner/work/_temp/native-linux-prerequisites/librsvg2-bin.deb: OK
+metadata	UNKNOWN STEP	2026-11-13T13:29:34.0475125Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+metadata	UNKNOWN STEP	2026-11-13T13:29:34.0826160Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+metadata	UNKNOWN STEP	2026-11-13T13:29:34.0866423Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+metadata	UNKNOWN STEP	2026-11-13T13:29:34.0899043Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+metadata	UNKNOWN STEP	2026-11-13T13:29:34.0909002Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+metadata	UNKNOWN STEP	2026-11-13T13:29:34.0944314Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+metadata	UNKNOWN STEP	2026-11-13T13:29:34.2363117Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1450 kB]
+metadata	UNKNOWN STEP	2026-11-13T13:29:34.2499913Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [315 kB]
+metadata	UNKNOWN STEP	2026-11-13T13:29:34.2522759Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1713 kB]
+metadata	UNKNOWN STEP	2026-11-13T13:29:34.2619682Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [345 kB]
+metadata	UNKNOWN STEP	2026-11-13T13:29:34.2641087Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1883 kB]
+metadata	UNKNOWN STEP	2026-11-13T13:29:34.2727690Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [430 kB]
+metadata	UNKNOWN STEP	2026-11-13T13:29:34.2752290Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [14.6 kB]
+metadata	UNKNOWN STEP	2026-11-13T13:29:34.3599491Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1195 kB]
+metadata	UNKNOWN STEP	2026-11-13T13:29:34.3791927Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [238 kB]
+metadata	UNKNOWN STEP	2026-11-13T13:29:34.3794226Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1228 kB]
+metadata	UNKNOWN STEP	2026-11-13T13:29:34.4201886Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [248 kB]
+metadata	UNKNOWN STEP	2026-11-13T13:29:34.4204603Z Get:20 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [697 kB]
+metadata	UNKNOWN STEP	2026-11-13T13:29:34.4220285Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1788 kB]
+metadata	UNKNOWN STEP	2026-11-13T13:29:34.4302355Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [411 kB]
+metadata	UNKNOWN STEP	2026-11-13T13:29:34.4315614Z Get:21 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [767 kB]
+metadata	UNKNOWN STEP	2026-11-13T13:29:38.3384859Z Fetched 13.1 MB in 1s (9733 kB/s)
+metadata	UNKNOWN STEP	2026-11-13T13:29:39.6368991Z Reading package lists...
+metadata	UNKNOWN STEP	2026-11-13T13:29:39.7337626Z Reading package lists...
+metadata	UNKNOWN STEP	2026-11-13T13:29:40.0459731Z Building dependency tree...
+metadata	UNKNOWN STEP	2026-11-13T13:29:40.0467327Z Reading state information...
+metadata	UNKNOWN STEP	2026-11-13T13:29:40.2456506Z The following additional packages will be installed:
+metadata	UNKNOWN STEP	2026-11-13T13:29:40.2461565Z   librsvg2-2
+metadata	UNKNOWN STEP	2026-11-13T13:29:40.2467627Z Recommended packages:
+metadata	UNKNOWN STEP	2026-11-13T13:29:40.2468904Z   librsvg2-common
+metadata	UNKNOWN STEP	2026-11-13T13:29:40.3058515Z The following NEW packages will be installed:
+metadata	UNKNOWN STEP	2026-11-13T13:29:40.3067698Z   librsvg2-2 librsvg2-bin
+metadata	UNKNOWN STEP	2026-11-13T13:29:40.3429386Z 0 upgraded, 2 newly installed, 0 to remove and 20 not upgraded.
+metadata	UNKNOWN STEP	2026-11-13T13:29:40.3429902Z Need to get 4442 kB of archives.
+metadata	UNKNOWN STEP	2026-11-13T13:29:40.3430620Z After this operation, 14.2 MB of additional disk space will be used.
+metadata	UNKNOWN STEP	2026-11-13T13:29:40.3431265Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+metadata	UNKNOWN STEP	2026-11-13T13:29:40.4260936Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 librsvg2-2 amd64 2.58.0+dfsg-1ubuntu0.1 [2141 kB]
+metadata	UNKNOWN STEP	2026-11-13T13:29:40.9495310Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 librsvg2-bin amd64 2.58.0+dfsg-1ubuntu0.1 [2301 kB]
+metadata	UNKNOWN STEP	2026-11-13T13:29:41.7312196Z Fetched 4442 kB in 1s (4030 kB/s)
+metadata	UNKNOWN STEP	2026-11-13T13:29:41.7599026Z Selecting previously unselected package librsvg2-2:amd64.
+metadata	UNKNOWN STEP	2026-11-13T13:29:41.7941792Z (Reading database ... 
+metadata	UNKNOWN STEP	2026-11-13T13:29:41.7942432Z (Reading database ... 5%
+metadata	UNKNOWN STEP	2026-11-13T13:29:41.7942837Z (Reading database ... 10%
+metadata	UNKNOWN STEP	2026-11-13T13:29:41.7943178Z (Reading database ... 15%
+metadata	UNKNOWN STEP	2026-11-13T13:29:41.7943503Z (Reading database ... 20%
+metadata	UNKNOWN STEP	2026-11-13T13:29:41.7943829Z (Reading database ... 25%
+metadata	UNKNOWN STEP	2026-11-13T13:29:41.7944370Z (Reading database ... 30%
+metadata	UNKNOWN STEP	2026-11-13T13:29:41.7945529Z (Reading database ... 35%
+metadata	UNKNOWN STEP	2026-11-13T13:29:41.7945853Z (Reading database ... 40%
+metadata	UNKNOWN STEP	2026-11-13T13:29:41.7946172Z (Reading database ... 45%
+metadata	UNKNOWN STEP	2026-11-13T13:29:41.7946489Z (Reading database ... 50%
+metadata	UNKNOWN STEP	2026-11-13T13:29:41.8016871Z (Reading database ... 55%
+metadata	UNKNOWN STEP	2026-11-13T13:29:41.9305578Z (Reading database ... 60%
+metadata	UNKNOWN STEP	2026-11-13T13:29:42.1321994Z (Reading database ... 65%
+metadata	UNKNOWN STEP	2026-11-13T13:29:42.2982347Z (Reading database ... 70%
+metadata	UNKNOWN STEP	2026-11-13T13:29:42.5370616Z (Reading database ... 75%
+metadata	UNKNOWN STEP	2026-11-13T13:29:42.6398796Z (Reading database ... 80%
+metadata	UNKNOWN STEP	2026-11-13T13:29:42.8469690Z (Reading database ... 85%
+metadata	UNKNOWN STEP	2026-11-13T13:29:43.0424496Z (Reading database ... 90%
+metadata	UNKNOWN STEP	2026-11-13T13:29:43.1877300Z (Reading database ... 95%
+metadata	UNKNOWN STEP	2026-11-13T13:29:43.1877847Z (Reading database ... 100%
+metadata	UNKNOWN STEP	2026-11-13T13:29:43.1878809Z (Reading database ... 216752 files and directories currently installed.)
+metadata	UNKNOWN STEP	2026-11-13T13:29:43.1931403Z Preparing to unpack .../librsvg2-2_2.58.0+dfsg-1ubuntu0.1_amd64.deb ...
+metadata	UNKNOWN STEP	2026-11-13T13:29:43.1970370Z Unpacking librsvg2-2:amd64 (2.58.0+dfsg-1ubuntu0.1) ...
+metadata	UNKNOWN STEP	2026-11-13T13:29:43.2663056Z Selecting previously unselected package librsvg2-bin.
+metadata	UNKNOWN STEP	2026-11-13T13:29:43.2819020Z Preparing to unpack .../librsvg2-bin_2.58.0+dfsg-1ubuntu0.1_amd64.deb ...
+metadata	UNKNOWN STEP	2026-11-13T13:29:43.2829257Z Unpacking librsvg2-bin (2.58.0+dfsg-1ubuntu0.1) ...
+metadata	UNKNOWN STEP	2026-11-13T13:29:43.3744777Z Setting up librsvg2-2:amd64 (2.58.0+dfsg-1ubuntu0.1) ...
+metadata	UNKNOWN STEP	2026-11-13T13:29:43.3768575Z Setting up librsvg2-bin (2.58.0+dfsg-1ubuntu0.1) ...
+metadata	UNKNOWN STEP	2026-11-13T13:29:43.3794765Z Processing triggers for man-db (2.12.0-4build2) ...
+metadata	UNKNOWN STEP	2026-11-13T13:29:43.3839656Z Not building database; man-db/auto-update is not 'true'.
+metadata	UNKNOWN STEP	2026-11-13T13:29:43.3853434Z Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+metadata	UNKNOWN STEP	2026-11-13T13:29:44.2445212Z 
+metadata	UNKNOWN STEP	2026-11-13T13:29:44.2446051Z Running kernel seems to be up-to-date.
+metadata	UNKNOWN STEP	2026-11-13T13:29:44.2446666Z 
+metadata	UNKNOWN STEP	2026-11-13T13:29:44.2446954Z No services need to be restarted.
+metadata	UNKNOWN STEP	2026-11-13T13:29:44.2447442Z 
+metadata	UNKNOWN STEP	2026-11-13T13:29:44.2447774Z No containers need to be restarted.
+metadata	UNKNOWN STEP	2026-11-13T13:29:44.2448524Z 
+metadata	UNKNOWN STEP	2026-11-13T13:29:44.2448903Z No user sessions are running outdated binaries.
+metadata	UNKNOWN STEP	2026-11-13T13:29:44.2449510Z 
+metadata	UNKNOWN STEP	2026-11-13T13:29:44.2450079Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+metadata	UNKNOWN STEP	2026-11-13T13:29:45.5057238Z rsvg-convert version 2.58.0
+metadata	UNKNOWN STEP	2026-11-13T13:29:45.5586324Z ##[group]Run python3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" metadata
+metadata	UNKNOWN STEP	2026-11-13T13:29:45.5587060Z ^[[36;1mpython3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" metadata^[[0m
+metadata	UNKNOWN STEP	2026-11-13T13:29:45.5609152Z shell: /usr/bin/bash -e {0}
+metadata	UNKNOWN STEP	2026-11-13T13:29:45.5609463Z env:
+metadata	UNKNOWN STEP	2026-11-13T13:29:45.5609724Z   PYTHONDONTWRITEBYTECODE: 1
+metadata	UNKNOWN STEP	2026-11-13T13:29:45.5610139Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+metadata	UNKNOWN STEP	2026-11-13T13:29:45.5614227Z   GH_TOKEN: ***
+metadata	UNKNOWN STEP	2026-11-13T13:29:45.5614496Z ##[endgroup]
+metadata	UNKNOWN STEP	2026-11-13T13:32:07.7099797Z {"completed": null, "head": "f043b2096b421f9e2a30761fc26296ab908f0081", "requests": 4, "status": "partial"}
+metadata	UNKNOWN STEP	2026-11-13T13:32:07.7392780Z Post job cleanup.
+metadata	UNKNOWN STEP	2026-11-13T13:32:07.8305535Z [command]/usr/bin/git version
+metadata	UNKNOWN STEP	2026-11-13T13:32:07.8354994Z git version 2.56.1
+metadata	UNKNOWN STEP	2026-11-13T13:32:07.8434758Z Temporarily overriding HOME='/home/runner/work/_temp/f1a6a5a7-8772-4b00-bf08-d64bf9ea2ca6' before making global git config changes
+metadata	UNKNOWN STEP	2026-11-13T13:32:07.8436485Z Adding repository directory to the temporary git global config as a safe directory
+metadata	UNKNOWN STEP	2026-11-13T13:32:07.8441557Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/SpaceFox/SpaceFox
+metadata	UNKNOWN STEP	2026-11-13T13:32:07.8481365Z Removing SSH command configuration
+metadata	UNKNOWN STEP	2026-11-13T13:32:07.8489894Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+metadata	UNKNOWN STEP	2026-11-13T13:32:07.8534173Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+metadata	UNKNOWN STEP	2026-11-13T13:32:07.8847777Z Removing HTTP extra header
+metadata	UNKNOWN STEP	2026-11-13T13:32:07.8849127Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+metadata	UNKNOWN STEP	2026-11-13T13:32:07.8900975Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+metadata	UNKNOWN STEP	2026-11-13T13:32:07.9185567Z Removing includeIf entries pointing to credentials config files
+metadata	UNKNOWN STEP	2026-11-13T13:32:07.9198031Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+metadata	UNKNOWN STEP	2026-11-13T13:32:07.9250525Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+metadata	UNKNOWN STEP	2026-11-13T13:32:07.9732207Z Cleaning up orphan processes

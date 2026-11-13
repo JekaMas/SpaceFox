@@ -1,8 +1,8 @@
 # SpaceFox 0.1.0 — prepared Connect IQ listing
 
 Submission preparation, 2026-11-13. **Not yet uploaded or approved by Garmin.**
-The owner has authorized free publication. The browser is waiting for the owner
-to sign in. Use the existing signed IQ from the test release; do not rebuild or
+The owner has authorized free publication. The owner subsequently deferred Garmin publication; no sign-in, upload or
+submission is being requested now. Use the existing signed IQ from the test release; do not rebuild or
 change its UUID merely to upload it. This is a normal public listing submission,
 subject to Garmin review. An owner-only beta with a different UUID cannot provide
 access to a different son's account and does not satisfy public distribution.

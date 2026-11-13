@@ -12,6 +12,17 @@ cutover plan; this document does not itself execute a deployment.
 
 ## Historical hosted observations
 
+For the current map-only authority, the owner's separately authorized
+2026-11-13 bootstrap43423066921 and natural due update43433017023 each completed
+all five jobs. G1→G2 kept the instance and95immutable files while advancing
+source validation1794572010→1794576343. Exact current96file/616444byte closure
+and new HTTPS root are recorded in
+[AUTO-DUE-ACCEPTANCE](../openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/AUTO-DUE-ACCEPTANCE.json).
+This is observed Cloudflare-triggered delivery, not GitHub `schedule` execution,
+a future SLA, physical transfer, complete metadata refresh or current remote
+failure/cancellation recovery qualification. The older observations below keep
+their original format and proof boundaries; they are not current replay gates.
+
 `tools/cloud_feed.py` is the stdlib GitHub/Pages adapter. The workflow is
 `.github/workflows/update-feed.yml`. The original public source `2171fcb` completed
 its [first explicit bootstrap run](https://github.com/jekamas/SpaceFox/actions/runs/43150627242):
@@ -191,7 +202,7 @@ The historical first authentic Actions cycle and exact readback are recorded abo
 validation/update and exact fault recovery remain required before closing the
 whole cloud boundary.
 
-Automatic scheduling is not qualified. No `schedule` event was observed at 03:52
+GitHub-native scheduling was not qualified. No `schedule` event was observed at 03:52
 or 04:07 UTC, or by 04:24 after the 04:22 slot on 2026-11-12, despite an active
 workflow on non-fork default `main` and operational GitHub service status. The
 [second manual due-recovery run](https://github.com/jekamas/SpaceFox/actions/runs/43154719080)
@@ -227,5 +238,6 @@ uses the existing quota/CAS authority, a daily completion cadence and at most4
 reserved calls per invocation. Candidate data stays off-watch and requires
 separate reviewed export/adoption. No source/field age is refreshed by metadata.
 See [GLOBAL_METADATA_REFRESH.md](GLOBAL_METADATA_REFRESH.md). Four equivalent
-literal cron entries are a registration diagnostic; authentic scheduling remains
-to be observed, with no known cause/fix claim.
+literal cron entries are a registration diagnostic; GitHub-native scheduling
+remains unobserved. The separately qualified external clock's current natural
+due delivery is recorded above; its dispatch does not force provider work.

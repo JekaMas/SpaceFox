@@ -1,0 +1,66 @@
+test_empty_pages_exact_witness_and_nonempty_uncertainty (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_empty_pages_exact_witness_and_nonempty_uncertainty) ... Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/__main__.py", line 18, in <module>
+    main(module=None)
+    ~~~~^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/main.py", line 104, in __init__
+    self.runTests()
+    ~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/main.py", line 270, in runTests
+    self.result = testRunner.run(self.test)
+                  ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/runner.py", line 257, in run
+    test(result)
+    ~~~~^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ~~~~~~~~^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/suite.py", line 122, in run
+    test(result)
+    ~~~~^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ~~~~~~~~^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/suite.py", line 122, in run
+    test(result)
+    ~~~~^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/case.py", line 725, in __call__
+    return self.run(*args, **kwds)
+           ~~~~~~~~^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/case.py", line 669, in run
+    self._callTestMethod(testMethod)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/case.py", line 615, in _callTestMethod
+    result = method()
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tests/test_autonomous_publisher_whole.py", line 377, in test_empty_pages_exact_witness_and_nonempty_uncertainty
+    s.files[path]=good
+    
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tools/spacefox/cloud.py", line 433, in recover
+    value = journal(pub)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tools/spacefox/cloud.py", line 287, in journal
+    delivery_files(pub, value['files'])
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tools/spacefox/cloud.py", line 323, in delivery_files
+    cache[key] = snapshot_files(pub.store, *key)[1]
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tools/spacefox/cloud.py", line 241, in snapshot_files
+    validate_snapshot(snapshot, files, refresh_policy=doc['refresh_policy'], instance=doc['instance_id'],
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                      selection_validated_utc=doc.get('selection_validated_utc'),
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                      require_selection_epoch=snapshot is doc['pending'])
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tools/spacefox/cloud.py", line 250, in validate_snapshot
+    if validate_snapshot_artifact(snapshot, files, refresh_policy=refresh_policy, instance=instance, selection_validated_utc=selection_validated_utc,
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                  require_selection_epoch=require_selection_epoch) is None:
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tools/spacefox/publisher.py", line 194, in validate_snapshot_artifact
+    feed = _product_files(files, snapshot['artifact_profile'])
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tools/spacefox/publisher.py", line 186, in _product_files
+    return validate_artifact(files)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole/tools/spacefox/native_motion.py", line 399, in validate_artifact
+    require(type(pin) is dict and set(pin)=={'path','sha256','decodedBytes'}
+                                  ~~~^^^^^
+KeyboardInterrupt

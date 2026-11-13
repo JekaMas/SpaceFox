@@ -1,0 +1,11 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.System;
+import Toybox.Background;
+import Toybox.Time;
+(:typecheck(false)) function sfrCleanupSnapshot(){var store=new NativeStore();var hash=new NativeCanonical();var keys=["sf.commit","sf.recovery","sf.pins"];for(var i=0;i<keys.size();i+=1){hash.quoted(keys[i]);hash.emit(store.read(keys[i]));}return hash.digest();}
+(:typecheck(false)) function sfrQuiesce(){var old=Background.getTemporalEventRegisteredTime();var before=sfrCleanupSnapshot();Application.Properties.setValue("FeedBaseUrl","");Background.deleteTemporalEvent();var after=sfrCleanupSnapshot();System.println("SFR_CLEANUP oldTemporal="+(old==null?"null":old.value())+" newTemporal="+(Background.getTemporalEventRegisteredTime()==null?"null":"present")+" blank="+configuredFeedUrl().equals("")+" acceptedBefore="+before+" acceptedAfter="+after+" preserved="+before.equals(after)+" owner="+NativeMetrics.ownerTag);}
+(:background,:typecheck(false)) class SfrRuntimeApp extends SpaceFoxApp {function initialize(){SpaceFoxApp.initialize();NativeMetrics.ownerTag="b0ae891e31ba4af9af9ee3577441e72c|cleanup|e3fbb187da1d";System.println("SFR_PROBE owner="+NativeMetrics.ownerTag);NativeMetrics.enabled=true;}(:typecheck(disableBackgroundCheck)) function getInitialView() as [Views] or [Views,InputDelegates]{sfrQuiesce();return [new WatchUi.WatchFace()];}
+function getServiceDelegate() as [System.ServiceDelegate]{return [new SfrQuiet()];}(:typecheck(disableBackgroundCheck)) function onBackgroundData(data as Application.PersistableType) as Void {sfrQuiesce();}}
+(:background,:typecheck(false)) class SfrQuiet extends FeedService{function onTemporalEvent() as Void{Background.deleteTemporalEvent();Background.exit(null);}}

@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "sourceInputCommit": "be8f39b18fa9ff473fcac2647969f1b7152f3338",
+  "worktree": "/Users/jekamas/projects/SpaceFox-worktrees/apply-autonomous-publisher-whole",
+  "selection": {"properties": 6, "existingCases": 40, "actualPassingIdentities": 15, "wholeCommands": 1},
+  "newObservations": [
+    {
+      "command": "python3 -B openspec/changes/spacefox-watchface/evidence/autonomous-publisher-whole/peer-review/audit_receipts.py --root-checkout /Users/jekamas/projects/SpaceFox",
+      "exit": 0,
+      "receipt": "receipt-audit.json",
+      "purpose": "New read-only independent audit, including actual root supporting manifests and source-owner bindings. Not behavior execution."
+    },
+    {
+      "command": "python3 -B openspec/changes/spacefox-watchface/evidence/autonomous-publisher-whole/reconcile.py",
+      "exit": 0,
+      "receipt": "reconcile.json",
+      "changedInput": "Reconciler independentReview completion metadata changed; all source/method/receipt hashes and proof claims retained."
+    }
+  ],
+  "retainedValidGates": "Original checks-summary.json and final-*.json at clean5d2d6202; graph/discovery/strict1/1 and selected6properties/40cases/1command are retained at their original revision, not refreshed to a peer revision.",
+  "retainedValidBehavior": "WHOLE-RESULT.json maps15 actual observed passes to original raw receipts and final source ASTs. No production/assertion/fixture/toolchain/contract change, no valid-green replay.",
+  "peerScriptNonpassingAttempt": {"error": "KeyError: owner_replaced", "reason": "Initial audit incorrectly required replacement fields for NO_TEST_DOUBLE source-only cases", "disposition": "Audit classification logic repaired; expanded final read-only audit exit0. No product/test change or failure inferred."},
+  "externalRequests": 0,
+  "sdkExecutions": 0,
+  "publication": "Deferred"
+}
