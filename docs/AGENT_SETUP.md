@@ -1,18 +1,38 @@
 # Personal publisher and feed setup
 
 SpaceFox uses **scheduled GitHub Actions → static GitHub Pages → paired phone →
-watch**. The publisher, tracked-input materializer and serialized delivery adapter
-have local qualification. The published old-v1 source `ea272b2` has observed
-manual bootstrap, second due cycle, optimized generation3 and pre-arm cancellation/
-recovery into generation4 (3184-byte exact HTTPS closure). Those historical receipts do not qualify automatic cron or remote started-Pages cancellation.
-Observed workflow times174s versus474/595s are three runs, not a controlled benchmark.
-The later public6494602 dual-wire recovery reached active generation5 with
-zero reported provider requests and exact109-file/372331-byte HTTPS union.
-The owner’s later public generation13 adopted metadata/art content with zero
-provider requests and preserved the earlier source age; it is not a new source
-validation. Authentic metadata and automatic cron qualification remain separate. Native fetch/cache/rendering,
-phone/physical FR165 and Store acceptance remain pending. See the actual
-[CLOUD_DELIVERY runbook](CLOUD_DELIVERY.md) for permissions, recovery and limits.
+watch**. The public baseline `a159185` supplied the finite global14 `visual-v2` publisher;
+its source/public export and hosted generation16 were independently reviewed and
+root accepted. Content-onlyG16 used zero provider requests, preserved source age
+and had an exact77-file/521074-byte current+prior HTTPS readback. The later natural
+due dispatch [G17](https://github.com/JekaMas/SpaceFox/actions/runs/43299585828)
+made four provider requests and published a new source validation at
+2026-11-12T20:25:59Z; all five jobs succeeded and exact75-file/518844-byte HTTPS
+readback passed. These are finite observations, not a continuous scheduling SLA or
+worldwide source completeness. Root records live in the native change's
+`evidence/public-current-catalog-art-clock/root-natural-g17/` and
+`evidence/judge/public-global14-hosted-root-whole.json`.
+
+A later observation at2026-11-13T00:18:58Z found three dispatched runs failing only
+the auxiliary metadata job with `duplicate source identity`. The23:37 run's primary
+prepare/deploy/promote succeeded, made four provider requests and deliveredG20;
+a root HTTPS feed read showed source validation2026-11-12T23:39:54Z. That single
+feed read is not a fresh75-file closure audit or proof of complete job health.
+See `evidence/judge/live-schedule-20261113/`. The recovery code was later published as `8586cab`. Its push run adopted the
+new source and yielded with zero requests under existing backoff. The01:07
+automatic dispatch visibly refused a duplicate and discarded only the incomplete
+sites table; all30 earlier pages and their dates remained exact. The01:22 attempt
+also received duplicate data after a fresh first sites page. An explicitly
+ordered traversal is under separate review; no complete live metadata candidate
+or resolved upstream cause is claimed here.
+
+Native raster/globe and language candidates have separate source-bound local
+receipts. Production remains `visual-v2`; the new offline Linux static-native
+qualification is described in [NATIVE_LINUX_QUALIFICATION](NATIVE_LINUX_QUALIFICATION.md).
+It grants no wire3 activation. Physical paired-phone/FR165, battery, release and
+Store acceptance remain separate. See the [CLOUD_DELIVERY runbook](CLOUD_DELIVERY.md)
+for permissions, recovery and limits. Earlier old-v1/global4 bootstrap and timing
+observations remain historical evidence, rather than the current public inventory.
 
 Each family should own its own publisher fork and feed-state authority. The source
 is MIT; original schematics are MIT, and fonts/geography/data retain their distinct
@@ -52,21 +72,20 @@ Python/Git without a source-data build. Do not install tools implicitly.
 6. When a qualified native release exists, configure its `FeedBaseUrl`, verify
    phone/watch readback, offline wake, stale/reschedule behavior, independent host
    namespaces and update migration. Native/Store and language claims follow actual
-   qualified firmware and device observations. The 36 translations are draft
-   resources; Arabic shaping, glyphs and complete native language coverage remain
-   unqualified.
+   qualified firmware and device observations. Local language/resource or Simulator
+   observations retain their exact build and test boundaries; qualify the chosen
+   physical firmware and language separately.
 
 ## Operate and maintain
 
 The configured offset fifteen-minute cron is intended to wake a lightweight due
-check. Qualify naturally scheduled execution and fresh-source delivery for each
-instance using the external-clock runbook; the historical observations above do
-not describe current account state. A manual due-recovery dispatch with
-`bootstrap=false` preserves cadence and quota; it does not qualify cron. Normal source
-validation is hourly and near-launch validation every fifteen minutes, with
-explicit persisted fast mode. A not-due run makes no provider request. Watch
-countdown calculation is local. Re-fetching an old file, correcting a catalog or
-rolling back compatible art never renews provider-validation age.
+check. The finite natural external-clock dispatches above establish only their
+observed runs; they do not prove GitHub `schedule` event execution or future SLA.
+A manual due-recovery dispatch with `bootstrap=false` preserves cadence and quota.
+Normal source validation is hourly and near-launch validation every fifteen
+minutes, with explicit persisted fast mode. A not-due run makes no provider
+request. Watch countdown calculation is local. Re-fetching an old file, correcting
+a catalog or rolling back compatible art never renews provider-validation age.
 
 `feed-state` and its bootstrap anchor are durable authority. Preserve both. For
 failed/ambiguous deployments, use the runbook’s exact journal/service/HTTPS
@@ -74,24 +93,18 @@ reconciliation; do not reset state, invent a live generation or rebuild pending
 bytes. A disabled or delayed schedule needs inspection and authorized recovery.
 No background model session is part of normal publishing.
 
-The current portable source is `2026-11-12.global.14.current-context1`:
-683 pinned inputs plus the recipe (684 materialized files), with 23 runtime files
-when the recipe is excluded. Its dated current counts and command are in
-[GLOBAL_VISUAL_CATALOG.md](GLOBAL_VISUAL_CATALOG.md). The historical counts below
-remain attached to their original receipts.
-
-The hosted generation5 includes both v1 and v2. The historical global.4 local
-successor preserved both, each feed≤8192 decoded UTF-8 bytes, with complete
-current+prior artifact≤1MiB/256files. Prepare follows632 canonical inputs plus the recipe (633materialized files); the21-file runtime
-seed excludes source data. The accepted historical global.4.bridge1 catalog had598assets and art for
-144/171 then-required configurations, with27exact art gaps. These historical
-counts are not the 2026+ current scope; see GLOBAL_VISUAL_CATALOG.md for the
-provisional local candidate and unresolved review. Source2 provenance remains
-explicit and off-watch; its roughly1.47MB input corpus is not the served budget.
-The full selected flat-map scene needs71GETs; native batching/cadence, globe,
-worldwide coverage,36native languages, phone/watch and Store remain unqualified.
-V1 is retained indefinitely. Future source/feed publication determines the actual
-transition announcement; no elapsed90day support is claimed.
+Both v1 and v2 remain supported. Each feed is bounded to8192 decoded UTF-8 bytes;
+the complete current+prior served artifact stays within1MiB/256files. The accepted
+finite global14 source had684materialized inputs including its recipe and a
+23-file sparse runtime seed. It classified198identities as139current,54review and
+5placeholders;128current configurations had specific/reviewed shared art and11
+retained generic gaps, with638retained assets. Seven dated context records covered
+three sites. Those are dated finite catalog counts, not worldwide/native
+completeness or an assertion about every future public generation. New local
+catalog/native profiles require their own review and public uptake evidence.
+Historical global4/global13 counts retain their original receipts. V1 is retained
+indefinitely; no elapsed90day transition support is claimed. See
+[GLOBAL_VISUAL_CATALOG](GLOBAL_VISUAL_CATALOG.md) for scope and unresolved coverage.
 
 For the independent Cloudflare clock, its separate account, credential, fixed
 destination, local qualification and real-event requirements, see

@@ -1,0 +1,148 @@
+{
+  "actualLinux": false,
+  "boundary": "New retained Mac static flat/globe baseline only; A factual frozen producer, B controlled synthetic palette/position revision. No current event, surveyed correction, native timing or public activation.",
+  "elapsedSeconds": 9.550511125009507,
+  "productionSourceUnchangedFromBase": "cc56923c0263861760749d17be4b38f585c8bc56",
+  "sourceDirty": true,
+  "sourceFilesCapturedAfterExecution": {
+    "tools/spacefox/__init__.py": {
+      "bytes": 77,
+      "sha256": "8168184472a2e477449456ad126b183f5205dddc24141d5479c86a9cc1b5a778"
+    },
+    "tools/spacefox/bridge_map.py": {
+      "bytes": 11073,
+      "sha256": "4fdf539907da6bde387d16e9b2f38b583e1c06e94b60212cd15339da76e1363e"
+    },
+    "tools/spacefox/catalog.py": {
+      "bytes": 77868,
+      "sha256": "2ad9e6f65634bcd8e29b2f471625745117a24537d03399e9ac0b5cb424802de3"
+    },
+    "tools/spacefox/feed.py": {
+      "bytes": 3537,
+      "sha256": "cc15828f5b078e45acc5c1da22370b157d9be675f434200f33e41e697ac8545c"
+    },
+    "tools/spacefox/global_map.py": {
+      "bytes": 33115,
+      "sha256": "f4c836a3b585f38729fbd128505b8d1f7dcf80f880b1991717890451863a1451"
+    },
+    "tools/spacefox/graphics.py": {
+      "bytes": 47339,
+      "sha256": "c9627d24880cbfbdf504a24736a42aea5c8c96de298db39f86e88194748e7d30"
+    },
+    "tools/spacefox/native_globe.py": {
+      "bytes": 5483,
+      "sha256": "e988d5a3be5449ef7ee62965c74d0c896d7672449e2b4bb783501334ea465af4"
+    },
+    "tools/spacefox/native_profile.py": {
+      "bytes": 24066,
+      "sha256": "57d0ef1967a98e65d85af3066a4beecc3fcfa2b7204c00df8ac28e4743ea2e40"
+    },
+    "tools/spacefox/schedule.py": {
+      "bytes": 25229,
+      "sha256": "d4c580e788c248e5cbdf30045746788fb87fd5dac9a2def00c25b9a7c08eaa2c"
+    },
+    "tools/spacefox/visual_bridge.py": {
+      "bytes": 23120,
+      "sha256": "1ada2da6779d935c5483317426b7a81761c50497f509bc7d5c993b72da5adc6b"
+    },
+    "tools/spacefox/wire.py": {
+      "bytes": 13870,
+      "sha256": "52f76a09f0c39f46b8390ad18acbf09a369b308b641d6321ab7ef5ed22dbc43c"
+    }
+  },
+  "sourceHead": "4c20ad03e2a57af690047db658bd28f8110a34f4",
+  "toolchain": {
+    "dependencyBoundary": "Direct dylibs only; transitive dependencies and dyld-cache bytes not independently frozen",
+    "dyldCacheOrUnresolvedLibraries": [
+      "/usr/lib/libz.1.dylib",
+      "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+      "/usr/lib/libxml2.2.dylib",
+      "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation",
+      "/usr/lib/libSystem.B.dylib",
+      "/usr/lib/libobjc.A.dylib",
+      "/usr/lib/libiconv.2.dylib"
+    ],
+    "libraries": {
+      "/opt/homebrew/opt/cairo/lib/libcairo-gobject.2.dylib": {
+        "bytes": 75936,
+        "sha256": "db204bdb0ee6a615ab995bdb32eabc3fd9e4df70292486ba12505ab6645d9f78"
+      },
+      "/opt/homebrew/opt/cairo/lib/libcairo.2.dylib": {
+        "bytes": 1178112,
+        "sha256": "8c100c47084336680e7ddb3395dc64f85e92f50cbf58c727ae60279a4959fd55"
+      },
+      "/opt/homebrew/opt/fontconfig/lib/libfontconfig.1.dylib": {
+        "bytes": 305024,
+        "sha256": "a9e4ce7b81148238c40c6c1a1ff0316164b23db9df7871bb0ede635f654f5b08"
+      },
+      "/opt/homebrew/opt/freetype/lib/libfreetype.6.dylib": {
+        "bytes": 641824,
+        "sha256": "cd832dd0bec574aa033b5d32030d71b93ca1c60ad6937f7017c71c94d15f852d"
+      },
+      "/opt/homebrew/opt/gdk-pixbuf/lib/libgdk_pixbuf-2.0.0.dylib": {
+        "bytes": 221216,
+        "sha256": "fe285fdc5431572a61d892cb778b7cc2632562f271a4fb19344f5855b4687f3b"
+      },
+      "/opt/homebrew/opt/gettext/lib/libintl.8.dylib": {
+        "bytes": 212176,
+        "sha256": "781b6b16c6f22d5efa088d5b3b5b7c78c368aaaacd4664cafa290e65779f236d"
+      },
+      "/opt/homebrew/opt/glib/lib/libgio-2.0.0.dylib": {
+        "bytes": 1824368,
+        "sha256": "1bc3a6a3eab7636dc44f05e5df290831457e6c020999b21bb70e7e6d310fd24e"
+      },
+      "/opt/homebrew/opt/glib/lib/libglib-2.0.0.dylib": {
+        "bytes": 1199008,
+        "sha256": "46c653109771eb1a36cc50ad93ee4bf0b616685ecb1f550623c7841fec8d9799"
+      },
+      "/opt/homebrew/opt/glib/lib/libgobject-2.0.0.dylib": {
+        "bytes": 370080,
+        "sha256": "573bc9cbe70543bb9c6f2d46761ac211c35ae2e34e11e10c545424115788e93b"
+      },
+      "/opt/homebrew/opt/harfbuzz/lib/libharfbuzz.0.dylib": {
+        "bytes": 1189152,
+        "sha256": "c1688171652c920737efa8f5bdc7bf992e4a08c209bc10bb01f9b8a30d2dabf0"
+      },
+      "/opt/homebrew/opt/libpng/lib/libpng16.16.dylib": {
+        "bytes": 209584,
+        "sha256": "f90331ed3ca936a388bf6b3851e353a28b2c8753589991089f039a162bb138f2"
+      },
+      "/opt/homebrew/opt/pango/lib/libpango-1.0.0.dylib": {
+        "bytes": 393744,
+        "sha256": "b519f690872001e5872886dbcdec0205d1f754544c36fcfe9ace8fcff5cf062b"
+      },
+      "/opt/homebrew/opt/pango/lib/libpangocairo-1.0.0.dylib": {
+        "bytes": 154560,
+        "sha256": "30910303050835094e19c09392612c676801c82c7fafd51984e4488971373010"
+      },
+      "/opt/homebrew/opt/pango/lib/libpangoft2-1.0.0.dylib": {
+        "bytes": 138112,
+        "sha256": "8cead562dda9d4ee8201ed166f4b8aa2041ccf02d3eb00ee3dbc5a71c69525d6"
+      }
+    },
+    "linker": "/opt/homebrew/Cellar/librsvg/2.57.0/bin/rsvg-convert:\n\t/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.12)\n\t/opt/homebrew/opt/cairo/lib/libcairo.2.dylib (compatibility version 2.0.0, current version 2.0.0)\n\t/opt/homebrew/opt/libpng/lib/libpng16.16.dylib (compatibility version 57.0.0, current version 57.0.0)\n\t/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 2048.1.255)\n\t/opt/homebrew/opt/cairo/lib/libcairo-gobject.2.dylib (compatibility version 2.0.0, current version 2.0.0)\n\t/opt/homebrew/opt/gdk-pixbuf/lib/libgdk_pixbuf-2.0.0.dylib (compatibility version 4201.0.0, current version 4201.10.0)\n\t/opt/homebrew/opt/glib/lib/libgio-2.0.0.dylib (compatibility version 7801.0.0, current version 7801.1.0)\n\t/usr/lib/libxml2.2.dylib (compatibility version 10.0.0, current version 10.9.0)\n\t/opt/homebrew/opt/pango/lib/libpangocairo-1.0.0.dylib (compatibility version 5001.0.0, current version 5001.14.0)\n\t/opt/homebrew/opt/pango/lib/libpangoft2-1.0.0.dylib (compatibility version 5001.0.0, current version 5001.14.0)\n\t/opt/homebrew/opt/pango/lib/libpango-1.0.0.dylib (compatibility version 5001.0.0, current version 5001.14.0)\n\t/opt/homebrew/opt/glib/lib/libgobject-2.0.0.dylib (compatibility version 7801.0.0, current version 7801.1.0)\n\t/opt/homebrew/opt/glib/lib/libglib-2.0.0.dylib (compatibility version 7801.0.0, current version 7801.1.0)\n\t/opt/homebrew/opt/gettext/lib/libintl.8.dylib (compatibility version 13.0.0, current version 13.0.0)\n\t/opt/homebrew/opt/harfbuzz/lib/libharfbuzz.0.dylib (compatibility version 60822.0.0, current version 60822.0.0)\n\t/opt/homebrew/opt/fontconfig/lib/libfontconfig.1.dylib (compatibility version 14.0.0, current version 14.0.0)\n\t/opt/homebrew/opt/freetype/lib/libfreetype.6.dylib (compatibility version 27.0.0, current version 27.1.0)\n\t/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation (compatibility version 300.0.0, current version 2048.1.255)\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1336.0.0)\n\t/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 228.0.0)\n\t/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)",
+    "machine": "arm64",
+    "platform": "macOS-14.7-arm64-arm-64bit-Mach-O",
+    "python": {
+      "executable": "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "sha256": "f245e89c269b4f4b92efced9c0ef59677a12467c62b9aa370151fdb12938adb6",
+      "version": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 16.0.0 (clang-1600.0.26.6)]"
+    },
+    "renderer": {
+      "bytes": 6530640,
+      "path": "/opt/homebrew/Cellar/librsvg/2.57.0/bin/rsvg-convert",
+      "sha256": "3fd3fc519935ed989cc2d232b7e8b8cd231c86791e77ed65d401eb9ef122a87e",
+      "version": "rsvg-convert version 2.57.0"
+    },
+    "runner": {
+      "GITHUB_RUN_ATTEMPT": null,
+      "GITHUB_RUN_ID": null,
+      "GITHUB_SHA": null,
+      "ImageOS": null,
+      "ImageVersion": null,
+      "RUNNER_ARCH": null,
+      "RUNNER_OS": null
+    },
+    "system": "Darwin"
+  }
+}
