@@ -1,0 +1,65 @@
+test_battery_negative (tests.test_basic_time_fields.BasicTimeFieldsTest.test_battery_negative) ... ok
+test_battery_positive (tests.test_basic_time_fields.BasicTimeFieldsTest.test_battery_positive) ... ok
+test_fields_negative (tests.test_basic_time_fields.BasicTimeFieldsTest.test_fields_negative) ... ok
+test_fields_positive (tests.test_basic_time_fields.BasicTimeFieldsTest.test_fields_positive) ... ok
+test_local_time_negative (tests.test_basic_time_fields.BasicTimeFieldsTest.test_local_time_negative) ... FAIL
+test_local_time_positive (tests.test_basic_time_fields.BasicTimeFieldsTest.test_local_time_positive) ... FAIL
+test_main_values_negative (tests.test_basic_time_fields.BasicTimeFieldsTest.test_main_values_negative) ... FAIL
+test_main_values_positive (tests.test_basic_time_fields.BasicTimeFieldsTest.test_main_values_positive) ... FAIL
+test_unavailable_negative (tests.test_basic_time_fields.BasicTimeFieldsTest.test_unavailable_negative) ... ok
+test_unavailable_positive (tests.test_basic_time_fields.BasicTimeFieldsTest.test_unavailable_positive) ... ok
+
+======================================================================
+FAIL: test_local_time_negative (tests.test_basic_time_fields.BasicTimeFieldsTest.test_local_time_negative)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-time-fields-whole/tests/test_basic_time_fields.py", line 161, in test_local_time_negative
+    current_sources(self, receipt['build'], 'source_sha256')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-time-fields-whole/tests/test_basic_time_fields.py", line 33, in current_sources
+    test.assertEqual({k: v for k, v in hashes.items() if k.startswith('watchface/source/')}, current)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'watchface/source/FeedScene.mc': '7d6199840031c2862875ddd36a[3130 chars]3d1'} != {'watchface/source/Fitness.mc': '4514c60764062fcf08aabf253f72[3130 chars]c80'}
+Diff is 3403 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_local_time_positive (tests.test_basic_time_fields.BasicTimeFieldsTest.test_local_time_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-time-fields-whole/tests/test_basic_time_fields.py", line 142, in test_local_time_positive
+    current_sources(self, receipt['build'], 'source_sha256')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-time-fields-whole/tests/test_basic_time_fields.py", line 33, in current_sources
+    test.assertEqual({k: v for k, v in hashes.items() if k.startswith('watchface/source/')}, current)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'watchface/source/FeedScene.mc': '7d6199840031c2862875ddd36a[3130 chars]3d1'} != {'watchface/source/Fitness.mc': '4514c60764062fcf08aabf253f72[3130 chars]c80'}
+Diff is 3403 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_main_values_negative (tests.test_basic_time_fields.BasicTimeFieldsTest.test_main_values_negative)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-time-fields-whole/tests/test_basic_time_fields.py", line 185, in test_main_values_negative
+    assert_geometry(self, rows)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-time-fields-whole/tests/test_basic_time_fields.py", line 87, in assert_geometry
+    test.assertFalse(a[0] < b[2] and b[0] < a[2] and a[1] < b[3] and b[1] < a[3], (row, other))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : ({'kind': 'vector', 'x': 155.0, 'y': 43.0, 'width': 110.0, 'height': 26.0, 'text': 'Starship V3', 'box': (99.0, 42.0, 211.0, 70.0)}, {'kind': 'vector', 'x': 195.0, 'y': 70.0, 'width': 144.0, 'height': 22.0, 'text': 'Communications', 'box': (122.0, 69.0, 268.0, 93.0)})
+
+======================================================================
+FAIL: test_main_values_positive (tests.test_basic_time_fields.BasicTimeFieldsTest.test_main_values_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-time-fields-whole/tests/test_basic_time_fields.py", line 171, in test_main_values_positive
+    assert_geometry(self, geometry(self.raw))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-time-fields-whole/tests/test_basic_time_fields.py", line 87, in assert_geometry
+    test.assertFalse(a[0] < b[2] and b[0] < a[2] and a[1] < b[3] and b[1] < a[3], (row, other))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : ({'kind': 'vector', 'x': 155.0, 'y': 43.0, 'width': 110.0, 'height': 26.0, 'text': 'Starship V3', 'box': (99.0, 42.0, 211.0, 70.0)}, {'kind': 'vector', 'x': 195.0, 'y': 70.0, 'width': 144.0, 'height': 22.0, 'text': 'Communications', 'box': (122.0, 69.0, 268.0, 93.0)})
+
+----------------------------------------------------------------------
+Ran 10 tests in 14.893s
+
+FAILED (failures=4)

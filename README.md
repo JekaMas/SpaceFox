@@ -13,7 +13,9 @@ additional setup controls. There is no layout/projection/clock-format selector.
 ## Verified software scope
 
 The current basic language properties WF12.P1/P3/P4 and task5.4 passed the actual
-18-case/six-command verifier after independent review and repair. Actual FR165 SDK
+18-case/six-command verifier after independent review and repair. Basic time and
+fields WF01.P1/WF03.P1 subsequently passed10/10cases through one command in an
+independent verification; physical task5.1 remains open. Actual FR165 SDK
 observations cover five languages, the captured1,822-launch/413-composition corpus,
 menu glyphs, normal settings activation, numeric clock and fixed scene. Read the
 [exact report](openspec/changes/spacefox-watchface/evidence/basic-main-review/FINAL.md)

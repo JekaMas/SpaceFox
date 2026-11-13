@@ -1,0 +1,45 @@
+{
+  "status": "accepted-and-closed",
+  "sourceCommit": "b4d02332",
+  "closedProperties": [
+    "WF01.P1",
+    "WF03.P1"
+  ],
+  "foldedAliases": [
+    "WF01.P2",
+    "WF03.P2"
+  ],
+  "actualVerifier": {
+    "status": "passed",
+    "cases": 10,
+    "commands": 1,
+    "manifestSha256": "5ac16e770c1f2d9d24fed01581b31ef2a8ba3a9c05696d2dd389b0b4226d73c3",
+    "path": "evidence/basic-time-fields-whole/independent-run.json"
+  },
+  "nativeSourceHashesChecked": 30,
+  "receiptsChecked": 30,
+  "noMismatch": true,
+  "priorWF12": "Requirement/property/case nodes byte-equivalent to acceptedc215; native production/resources unchanged. Prior18-case green retained with original receipt/manifest, not rerun or rehashed.",
+  "rootVisualEvidence": "Accepted basic-five-current-map.png composition remains unchanged; software geometry only.",
+  "task51": "Remains open for physical FR165/phone/health acceptance.",
+  "inventory": {
+    "tasks": 31,
+    "checkedTasks": 12,
+    "openTasks": 19,
+    "requirements": 56,
+    "properties": 154,
+    "cases": 701,
+    "commands": 69,
+    "states": {
+      "planned": 553,
+      "implemented": 148
+    },
+    "propertiesWithPlanned": 132
+  },
+  "notClaimed": [
+    "full DAG",
+    "physical watch or phone",
+    "battery",
+    "Store approval"
+  ]
+}

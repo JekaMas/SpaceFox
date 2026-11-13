@@ -1,0 +1,619 @@
+{
+  "change": "spacefox-watchface",
+  "manifest": "openspec/changes/spacefox-watchface/verification.json",
+  "manifest_sha256": "2d91b6696f9fc811b313789648bf529b08ef4ba2bee98e7ff25f847ae59ae949",
+  "nodes": {
+    "cases": {
+      "WF01.P1.S01.NEGATIVE": {
+        "command_id": "basic-time-fields-whole",
+        "current_evidence_fingerprint": "1c272adbbefc395d0c4760d9743fe2cd5901e7ff88934f08a9c3f15c3e87d7f6",
+        "green_expectation": "Captured real country/site label fits with production ellipsis; independent detector rejects clipping/overlap and source strings remain intact.",
+        "id": "WF01.P1.S01.NEGATIVE",
+        "implementation_note": "Whole BASIC unit; P2 software subset folded into P1; external acceptance stays explicitly open in existing release tasks.",
+        "invalidation_dependencies": [
+          "tests/test_basic_time_fields.py",
+          "tests/fixtures/basic_time_fields/**",
+          "tools/build_watchface.py",
+          "tools/run_native_tests.py",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "watchface/manifest.xml",
+          "locales/catalog.json",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-clock/**",
+          "watchface/tests/NativeClockTests.mc",
+          "openspec/changes/spacefox-watchface/evidence/basic-main-review/main-use/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-map/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-current-map.png",
+          "tests/fixtures/map-only/feed.json"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "Captured real country/site label fits with production ellipsis; independent detector rejects clipping/overlap and source strings remain intact.",
+        "polarity": "negative",
+        "property_id": "WF01.P1",
+        "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
+        "scenario": "Main values remain visible",
+        "scenario_fingerprint": "7ba321eed113d8ef4f1289bf0dd40277aa35ca02af6ff59241bd175c02b4f366",
+        "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
+        "source_path": "tests/test_basic_time_fields.py",
+        "source_sha256": "674eb4650073406fe8d9fa388d7f744b44e03f83c105e1f7f5d17f717f34bd25",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Whole defined software property, including retained source-bound real Garmin API smoke and ordinary simulator rendering/settings observations.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Physical FR165 readability, firmware, health-source delivery or battery-life qualification",
+            "Paired phone/settings UI/installation acceptance",
+            "Live provider/geographic truth/Store/release acceptance"
+          ],
+          "owner_replaced": "Physical FR165 VM by pinned SDK simulator; numeric telemetry/clock inputs only by explicit technical test adapters. Actual native clock/Fitness/renderer/Properties/app/settings owners unchanged."
+        },
+        "test_id": "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_main_values_negative"
+      },
+      "WF01.P1.S01.POSITIVE": {
+        "command_id": "basic-time-fields-whole",
+        "current_evidence_fingerprint": "950b91f2f21d95be61c9aef6ad081dc28bea3b1a436639f6652ecc114a4a720f",
+        "green_expectation": "Actual current production draw calls preserve main time/countdown/four metrics/captured launch labels inside circle and without text overlap; current map screenshot remains source-bound.",
+        "id": "WF01.P1.S01.POSITIVE",
+        "implementation_note": "Whole BASIC unit; P2 software subset folded into P1; external acceptance stays explicitly open in existing release tasks.",
+        "invalidation_dependencies": [
+          "tests/test_basic_time_fields.py",
+          "tests/fixtures/basic_time_fields/**",
+          "tools/build_watchface.py",
+          "tools/run_native_tests.py",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "watchface/manifest.xml",
+          "locales/catalog.json",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-clock/**",
+          "watchface/tests/NativeClockTests.mc",
+          "openspec/changes/spacefox-watchface/evidence/basic-main-review/main-use/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-map/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-current-map.png",
+          "tests/fixtures/map-only/feed.json"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "Actual current production draw calls preserve main time/countdown/four metrics/captured launch labels inside circle and without text overlap; current map screenshot remains source-bound.",
+        "polarity": "positive",
+        "property_id": "WF01.P1",
+        "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
+        "scenario": "Main values remain visible",
+        "scenario_fingerprint": "7ba321eed113d8ef4f1289bf0dd40277aa35ca02af6ff59241bd175c02b4f366",
+        "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
+        "source_path": "tests/test_basic_time_fields.py",
+        "source_sha256": "674eb4650073406fe8d9fa388d7f744b44e03f83c105e1f7f5d17f717f34bd25",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Whole defined software property, including retained source-bound real Garmin API smoke and ordinary simulator rendering/settings observations.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Physical FR165 readability, firmware, health-source delivery or battery-life qualification",
+            "Paired phone/settings UI/installation acceptance",
+            "Live provider/geographic truth/Store/release acceptance"
+          ],
+          "owner_replaced": "Physical FR165 VM by pinned SDK simulator; numeric telemetry/clock inputs only by explicit technical test adapters. Actual native clock/Fitness/renderer/Properties/app/settings owners unchanged."
+        },
+        "test_id": "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_main_values_positive"
+      },
+      "WF01.P1.S02.NEGATIVE": {
+        "command_id": "basic-time-fields-whole",
+        "current_evidence_fingerprint": "f6ef262b58f192b5fb27c683767cc4cce24164dc92605f61bee1039a65b16cef",
+        "green_expectation": "Native23:59\u219200:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
+        "id": "WF01.P1.S02.NEGATIVE",
+        "implementation_note": "Whole BASIC unit; P2 software subset folded into P1; external acceptance stays explicitly open in existing release tasks.",
+        "invalidation_dependencies": [
+          "tests/test_basic_time_fields.py",
+          "tests/fixtures/basic_time_fields/**",
+          "tools/build_watchface.py",
+          "tools/run_native_tests.py",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "watchface/manifest.xml",
+          "locales/catalog.json",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-clock/**",
+          "watchface/tests/NativeClockTests.mc",
+          "openspec/changes/spacefox-watchface/evidence/basic-main-review/main-use/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-map/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-current-map.png",
+          "tests/fixtures/map-only/feed.json"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "Native23:59\u219200:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
+        "polarity": "negative",
+        "property_id": "WF01.P1",
+        "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
+        "scenario": "Local time changes",
+        "scenario_fingerprint": "6c19dec060e1a363b43b81ce7217fe43f54e21f99774bbc449c34bd3a3688013",
+        "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
+        "source_path": "tests/test_basic_time_fields.py",
+        "source_sha256": "674eb4650073406fe8d9fa388d7f744b44e03f83c105e1f7f5d17f717f34bd25",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Whole defined software property, including retained source-bound real Garmin API smoke and ordinary simulator rendering/settings observations.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Physical FR165 readability, firmware, health-source delivery or battery-life qualification",
+            "Paired phone/settings UI/installation acceptance",
+            "Live provider/geographic truth/Store/release acceptance"
+          ],
+          "owner_replaced": "Physical FR165 VM by pinned SDK simulator; numeric telemetry/clock inputs only by explicit technical test adapters. Actual native clock/Fitness/renderer/Properties/app/settings owners unchanged."
+        },
+        "test_id": "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_local_time_negative"
+      },
+      "WF01.P1.S02.POSITIVE": {
+        "command_id": "basic-time-fields-whole",
+        "current_evidence_fingerprint": "adcd3ad95ba5de8459d38bd5ace0b95414bdc00147a244c7a7fc4cd0f4227e82",
+        "green_expectation": "Retained actual Garmin API smoke and native literal local08:00\u219212:00 with unchangedUTC duration7200; ordinary live clock advances.",
+        "id": "WF01.P1.S02.POSITIVE",
+        "implementation_note": "Whole BASIC unit; P2 software subset folded into P1; external acceptance stays explicitly open in existing release tasks.",
+        "invalidation_dependencies": [
+          "tests/test_basic_time_fields.py",
+          "tests/fixtures/basic_time_fields/**",
+          "tools/build_watchface.py",
+          "tools/run_native_tests.py",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "watchface/manifest.xml",
+          "locales/catalog.json",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-clock/**",
+          "watchface/tests/NativeClockTests.mc",
+          "openspec/changes/spacefox-watchface/evidence/basic-main-review/main-use/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-map/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-current-map.png",
+          "tests/fixtures/map-only/feed.json"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "Retained actual Garmin API smoke and native literal local08:00\u219212:00 with unchangedUTC duration7200; ordinary live clock advances.",
+        "polarity": "positive",
+        "property_id": "WF01.P1",
+        "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
+        "scenario": "Local time changes",
+        "scenario_fingerprint": "6c19dec060e1a363b43b81ce7217fe43f54e21f99774bbc449c34bd3a3688013",
+        "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
+        "source_path": "tests/test_basic_time_fields.py",
+        "source_sha256": "674eb4650073406fe8d9fa388d7f744b44e03f83c105e1f7f5d17f717f34bd25",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Whole defined software property, including retained source-bound real Garmin API smoke and ordinary simulator rendering/settings observations.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Physical FR165 readability, firmware, health-source delivery or battery-life qualification",
+            "Paired phone/settings UI/installation acceptance",
+            "Live provider/geographic truth/Store/release acceptance"
+          ],
+          "owner_replaced": "Physical FR165 VM by pinned SDK simulator; numeric telemetry/clock inputs only by explicit technical test adapters. Actual native clock/Fitness/renderer/Properties/app/settings owners unchanged."
+        },
+        "test_id": "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_local_time_positive"
+      },
+      "WF03.P1.S01.NEGATIVE": {
+        "command_id": "basic-time-fields-whole",
+        "current_evidence_fingerprint": "d03d2b52b5074fe7bf7411c6bccf1eb2eec5e0584b2bfcd1e2cb61bf9dde8842",
+        "green_expectation": "Only invalid second persisted field defaults toenergy while calories/battery/calories remain unchanged across reopen.",
+        "id": "WF03.P1.S01.NEGATIVE",
+        "implementation_note": "Whole BASIC unit; P2 software subset folded into P1; external acceptance stays explicitly open in existing release tasks.",
+        "invalidation_dependencies": [
+          "tests/test_basic_time_fields.py",
+          "tests/fixtures/basic_time_fields/**",
+          "tools/build_watchface.py",
+          "tools/run_native_tests.py",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "watchface/manifest.xml",
+          "locales/catalog.json",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-clock/**",
+          "watchface/tests/NativeClockTests.mc",
+          "openspec/changes/spacefox-watchface/evidence/basic-main-review/main-use/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-map/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-current-map.png",
+          "tests/fixtures/map-only/feed.json"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "Only invalid second persisted field defaults toenergy while calories/battery/calories remain unchanged across reopen.",
+        "polarity": "negative",
+        "property_id": "WF03.P1",
+        "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
+        "scenario": "Configure fields",
+        "scenario_fingerprint": "87ff6c0af4570beb6a414a0a0cf90a8a073cdce23e1cb8660e97dcab55155bb2",
+        "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
+        "source_path": "tests/test_basic_time_fields.py",
+        "source_sha256": "674eb4650073406fe8d9fa388d7f744b44e03f83c105e1f7f5d17f717f34bd25",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Whole defined software property, including retained source-bound real Garmin API smoke and ordinary simulator rendering/settings observations.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Physical FR165 readability, firmware, health-source delivery or battery-life qualification",
+            "Paired phone/settings UI/installation acceptance",
+            "Live provider/geographic truth/Store/release acceptance"
+          ],
+          "owner_replaced": "Physical FR165 VM by pinned SDK simulator; numeric telemetry/clock inputs only by explicit technical test adapters. Actual native clock/Fitness/renderer/Properties/app/settings owners unchanged."
+        },
+        "test_id": "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_fields_negative"
+      },
+      "WF03.P1.S01.POSITIVE": {
+        "command_id": "basic-time-fields-whole",
+        "current_evidence_fingerprint": "99fbe99f8e966f6a3b8bacf501141c675d0dae943306288864e73dd9db285b60",
+        "green_expectation": "Actual Properties persist four choices including duplicate calories; app callback changes only second position; ordinary six-role cycle retained.",
+        "id": "WF03.P1.S01.POSITIVE",
+        "implementation_note": "Whole BASIC unit; P2 software subset folded into P1; external acceptance stays explicitly open in existing release tasks.",
+        "invalidation_dependencies": [
+          "tests/test_basic_time_fields.py",
+          "tests/fixtures/basic_time_fields/**",
+          "tools/build_watchface.py",
+          "tools/run_native_tests.py",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "watchface/manifest.xml",
+          "locales/catalog.json",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-clock/**",
+          "watchface/tests/NativeClockTests.mc",
+          "openspec/changes/spacefox-watchface/evidence/basic-main-review/main-use/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-map/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-current-map.png",
+          "tests/fixtures/map-only/feed.json"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "Actual Properties persist four choices including duplicate calories; app callback changes only second position; ordinary six-role cycle retained.",
+        "polarity": "positive",
+        "property_id": "WF03.P1",
+        "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
+        "scenario": "Configure fields",
+        "scenario_fingerprint": "87ff6c0af4570beb6a414a0a0cf90a8a073cdce23e1cb8660e97dcab55155bb2",
+        "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
+        "source_path": "tests/test_basic_time_fields.py",
+        "source_sha256": "674eb4650073406fe8d9fa388d7f744b44e03f83c105e1f7f5d17f717f34bd25",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Whole defined software property, including retained source-bound real Garmin API smoke and ordinary simulator rendering/settings observations.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Physical FR165 readability, firmware, health-source delivery or battery-life qualification",
+            "Paired phone/settings UI/installation acceptance",
+            "Live provider/geographic truth/Store/release acceptance"
+          ],
+          "owner_replaced": "Physical FR165 VM by pinned SDK simulator; numeric telemetry/clock inputs only by explicit technical test adapters. Actual native clock/Fitness/renderer/Properties/app/settings owners unchanged."
+        },
+        "test_id": "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_fields_positive"
+      },
+      "WF03.P1.S02.NEGATIVE": {
+        "command_id": "basic-time-fields-whole",
+        "current_evidence_fingerprint": "6ba9f617205bb7100e7ac9bdeb7d75558be66275c8778bd2c982bf27697cacb7",
+        "green_expectation": "Actual view refresh discards former72/68 samples; no invented zero,301-second/future samples unavailable; valid stepszero remainszero.",
+        "id": "WF03.P1.S02.NEGATIVE",
+        "implementation_note": "Whole BASIC unit; P2 software subset folded into P1; external acceptance stays explicitly open in existing release tasks.",
+        "invalidation_dependencies": [
+          "tests/test_basic_time_fields.py",
+          "tests/fixtures/basic_time_fields/**",
+          "tools/build_watchface.py",
+          "tools/run_native_tests.py",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "watchface/manifest.xml",
+          "locales/catalog.json",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-clock/**",
+          "watchface/tests/NativeClockTests.mc",
+          "openspec/changes/spacefox-watchface/evidence/basic-main-review/main-use/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-map/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-current-map.png",
+          "tests/fixtures/map-only/feed.json"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "Actual view refresh discards former72/68 samples; no invented zero,301-second/future samples unavailable; valid stepszero remainszero.",
+        "polarity": "negative",
+        "property_id": "WF03.P1",
+        "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
+        "scenario": "Health data unavailable",
+        "scenario_fingerprint": "7b5b3268cc24c98f5677806a6a1f09ad53b0c29f13e40f602bed556df109a885",
+        "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
+        "source_path": "tests/test_basic_time_fields.py",
+        "source_sha256": "674eb4650073406fe8d9fa388d7f744b44e03f83c105e1f7f5d17f717f34bd25",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Whole defined software property, including retained source-bound real Garmin API smoke and ordinary simulator rendering/settings observations.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Physical FR165 readability, firmware, health-source delivery or battery-life qualification",
+            "Paired phone/settings UI/installation acceptance",
+            "Live provider/geographic truth/Store/release acceptance"
+          ],
+          "owner_replaced": "Physical FR165 VM by pinned SDK simulator; numeric telemetry/clock inputs only by explicit technical test adapters. Actual native clock/Fitness/renderer/Properties/app/settings owners unchanged."
+        },
+        "test_id": "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_unavailable_negative"
+      },
+      "WF03.P1.S02.POSITIVE": {
+        "command_id": "basic-time-fields-whole",
+        "current_evidence_fingerprint": "e7a5a9fcf062628551f5a4b69c2d5dbc328743fd39874872697877eaf4b6201c",
+        "green_expectation": "Actual Garmin API adapter smoke remains callable; controlled null sample shows unavailable for selected missing roles while steps and local time continue.",
+        "id": "WF03.P1.S02.POSITIVE",
+        "implementation_note": "Whole BASIC unit; P2 software subset folded into P1; external acceptance stays explicitly open in existing release tasks.",
+        "invalidation_dependencies": [
+          "tests/test_basic_time_fields.py",
+          "tests/fixtures/basic_time_fields/**",
+          "tools/build_watchface.py",
+          "tools/run_native_tests.py",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "watchface/manifest.xml",
+          "locales/catalog.json",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-clock/**",
+          "watchface/tests/NativeClockTests.mc",
+          "openspec/changes/spacefox-watchface/evidence/basic-main-review/main-use/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-map/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-current-map.png",
+          "tests/fixtures/map-only/feed.json"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "Actual Garmin API adapter smoke remains callable; controlled null sample shows unavailable for selected missing roles while steps and local time continue.",
+        "polarity": "positive",
+        "property_id": "WF03.P1",
+        "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
+        "scenario": "Health data unavailable",
+        "scenario_fingerprint": "7b5b3268cc24c98f5677806a6a1f09ad53b0c29f13e40f602bed556df109a885",
+        "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
+        "source_path": "tests/test_basic_time_fields.py",
+        "source_sha256": "674eb4650073406fe8d9fa388d7f744b44e03f83c105e1f7f5d17f717f34bd25",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Whole defined software property, including retained source-bound real Garmin API smoke and ordinary simulator rendering/settings observations.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Physical FR165 readability, firmware, health-source delivery or battery-life qualification",
+            "Paired phone/settings UI/installation acceptance",
+            "Live provider/geographic truth/Store/release acceptance"
+          ],
+          "owner_replaced": "Physical FR165 VM by pinned SDK simulator; numeric telemetry/clock inputs only by explicit technical test adapters. Actual native clock/Fitness/renderer/Properties/app/settings owners unchanged."
+        },
+        "test_id": "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_unavailable_positive"
+      },
+      "WF03.P1.S03.NEGATIVE": {
+        "command_id": "basic-time-fields-whole",
+        "current_evidence_fingerprint": "45a30e8fd0051c1137429ddedcfd38d12ce8dc78df1229f9ddeb413c2d9d56cc",
+        "green_expectation": "Missing watch charge showsunavailable whileBodyBattery68 remains68; four slots unchanged, no borrowed energy.",
+        "id": "WF03.P1.S03.NEGATIVE",
+        "implementation_note": "Whole BASIC unit; P2 software subset folded into P1; external acceptance stays explicitly open in existing release tasks.",
+        "invalidation_dependencies": [
+          "tests/test_basic_time_fields.py",
+          "tests/fixtures/basic_time_fields/**",
+          "tools/build_watchface.py",
+          "tools/run_native_tests.py",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "watchface/manifest.xml",
+          "locales/catalog.json",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-clock/**",
+          "watchface/tests/NativeClockTests.mc",
+          "openspec/changes/spacefox-watchface/evidence/basic-main-review/main-use/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-map/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-current-map.png",
+          "tests/fixtures/map-only/feed.json"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "Missing watch charge showsunavailable whileBodyBattery68 remains68; four slots unchanged, no borrowed energy.",
+        "polarity": "negative",
+        "property_id": "WF03.P1",
+        "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
+        "scenario": "Separate watch battery",
+        "scenario_fingerprint": "632caa00f52a0d8d526932609875b23d1ea354173d522f923bc50006f8e8782b",
+        "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
+        "source_path": "tests/test_basic_time_fields.py",
+        "source_sha256": "674eb4650073406fe8d9fa388d7f744b44e03f83c105e1f7f5d17f717f34bd25",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Whole defined software property, including retained source-bound real Garmin API smoke and ordinary simulator rendering/settings observations.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Physical FR165 readability, firmware, health-source delivery or battery-life qualification",
+            "Paired phone/settings UI/installation acceptance",
+            "Live provider/geographic truth/Store/release acceptance"
+          ],
+          "owner_replaced": "Physical FR165 VM by pinned SDK simulator; numeric telemetry/clock inputs only by explicit technical test adapters. Actual native clock/Fitness/renderer/Properties/app/settings owners unchanged."
+        },
+        "test_id": "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_battery_negative"
+      },
+      "WF03.P1.S03.POSITIVE": {
+        "command_id": "basic-time-fields-whole",
+        "current_evidence_fingerprint": "2ce18ff960586f95e818b05f5ac809c60b3e2057cc7acd9f7f5c0096197ef314",
+        "green_expectation": "Watch charge82% remains different fromBodyBattery68; four chosen slots remain and native top battery draw is separate.",
+        "id": "WF03.P1.S03.POSITIVE",
+        "implementation_note": "Whole BASIC unit; P2 software subset folded into P1; external acceptance stays explicitly open in existing release tasks.",
+        "invalidation_dependencies": [
+          "tests/test_basic_time_fields.py",
+          "tests/fixtures/basic_time_fields/**",
+          "tools/build_watchface.py",
+          "tools/run_native_tests.py",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "watchface/manifest.xml",
+          "locales/catalog.json",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-clock/**",
+          "watchface/tests/NativeClockTests.mc",
+          "openspec/changes/spacefox-watchface/evidence/basic-main-review/main-use/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-map/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-current-map.png",
+          "tests/fixtures/map-only/feed.json"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "Watch charge82% remains different fromBodyBattery68; four chosen slots remain and native top battery draw is separate.",
+        "polarity": "positive",
+        "property_id": "WF03.P1",
+        "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
+        "scenario": "Separate watch battery",
+        "scenario_fingerprint": "632caa00f52a0d8d526932609875b23d1ea354173d522f923bc50006f8e8782b",
+        "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
+        "source_path": "tests/test_basic_time_fields.py",
+        "source_sha256": "674eb4650073406fe8d9fa388d7f744b44e03f83c105e1f7f5d17f717f34bd25",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Whole defined software property, including retained source-bound real Garmin API smoke and ordinary simulator rendering/settings observations.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Physical FR165 readability, firmware, health-source delivery or battery-life qualification",
+            "Paired phone/settings UI/installation acceptance",
+            "Live provider/geographic truth/Store/release acceptance"
+          ],
+          "owner_replaced": "Physical FR165 VM by pinned SDK simulator; numeric telemetry/clock inputs only by explicit technical test adapters. Actual native clock/Fitness/renderer/Properties/app/settings owners unchanged."
+        },
+        "test_id": "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_battery_positive"
+      }
+    },
+    "commands": {
+      "basic-time-fields-whole": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "-v",
+          "tests.test_basic_time_fields"
+        ],
+        "authority": "local",
+        "cwd": ".",
+        "id": "basic-time-fields-whole",
+        "notes": "Actual seven new compiled Monkey C assertions and ten exact Python property observers; unchanged ten native clock tests/ordinary UI sources reused through original source-bound receipts, not rerun. External SDK/Java/disposable test key required.",
+        "runner": "python-unittest",
+        "timeout_seconds": 300
+      }
+    },
+    "properties": {
+      "WF01.P1": {
+        "id": "WF01.P1",
+        "oracle": "Retained exact ten-test SDK clock table (including actual Garmin Time.now/System.getClockTime smoke and literal7200 seconds despite local changes); new actual production text draw calls checked by independent circle/rectangle geometry and resource glyph bounds; retained source-bound current map screenshot inspected. No recreated Python clock/layout model.",
+        "owner": "watchface/source/WatchClock.mc; watchface/source/SpaceFoxView.mc; watchface/source/SceneRenderer.mc",
+        "planning_status": "Implemented whole software property; actual selected verifier receipt required. P2 conjunctive alias folded, external release obligations retained.",
+        "requirement_id": "WF01",
+        "scenarios": [
+          "Main values remain visible",
+          "Local time changes"
+        ],
+        "source_globs": [
+          "tests/test_basic_time_fields.py",
+          "tests/fixtures/basic_time_fields/**",
+          "tools/build_watchface.py",
+          "tools/run_native_tests.py",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "watchface/manifest.xml",
+          "locales/catalog.json",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-clock/**",
+          "watchface/tests/NativeClockTests.mc",
+          "openspec/changes/spacefox-watchface/evidence/basic-main-review/main-use/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-map/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-current-map.png",
+          "tests/fixtures/map-only/feed.json"
+        ],
+        "statement": "Software boundary: the unchanged compiled native watch face displays Garmin local time as primary fixed24-hour HH:mm, with UTC countdown independent of local-zone presentation. Actual captured real launch text, countdown and four selected metrics remain readable within the390\u00d7390 circular active scene using accepted fixed geometry and bounded labels. Physical readability remains release task5.1/6.1."
+      },
+      "WF03.P1": {
+        "id": "WF03.P1",
+        "oracle": "Actual SDK Properties reopen and app settings callback with literal independent/duplicate choices; one invalid persisted selection preserves the other three; actual view refresh replaces old values with missing sample; literal300-second recency and301/future rejection; watch82% distinct from energy68. Retained ordinary six-callback/four-slot/six-role observation uses real Garmin adapter.",
+        "owner": "watchface/source/SceneSettings.mc; watchface/source/SpaceFoxApp.mc; watchface/source/SpaceFoxView.mc; watchface/source/Fitness.mc; watchface/source/SceneRenderer.mc",
+        "planning_status": "Implemented whole software property; actual selected verifier receipt required. P2 conjunctive alias folded, external release obligations retained.",
+        "requirement_id": "WF03",
+        "scenarios": [
+          "Configure fields",
+          "Health data unavailable",
+          "Separate watch battery"
+        ],
+        "source_globs": [
+          "tests/test_basic_time_fields.py",
+          "tests/fixtures/basic_time_fields/**",
+          "tools/build_watchface.py",
+          "tools/run_native_tests.py",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "watchface/manifest.xml",
+          "locales/catalog.json",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-clock/**",
+          "watchface/tests/NativeClockTests.mc",
+          "openspec/changes/spacefox-watchface/evidence/basic-main-review/main-use/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-map/**",
+          "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-current-map.png",
+          "tests/fixtures/map-only/feed.json"
+        ],
+        "statement": "Software boundary: four fixed fields independently persist any of six Garmin metric roles including duplicates; only an invalid individual choice defaults. Missing/recent-history-invalid samples display unavailable without invented zero or previous-sample reuse. A fixed separate watch-battery display reads charge, distinct from Body Battery. Physical health-source/phone/battery acceptance remains tasks5.1,5.5,6.1."
+      }
+    },
+    "requirements": {
+      "WF01": {
+        "capability": "watchface",
+        "fingerprint": "bcf24d02d0e31dd1f431f5444e39676ce0d8451169ba71e20507d092cd69e9ac",
+        "id": "WF01",
+        "title": "Readable space-themed home screen"
+      },
+      "WF03": {
+        "capability": "watchface",
+        "fingerprint": "58147288d31e3610ad2a3d12a9570d01b1e7156b4d92a433d21e045831b5e073",
+        "id": "WF03",
+        "title": "Four configurable fitness fields"
+      }
+    }
+  },
+  "requested_selectors": {
+    "all": false,
+    "cases": [],
+    "changed_paths": [],
+    "commands": [],
+    "owners": [],
+    "properties": [
+      "WF01.P1",
+      "WF03.P1"
+    ],
+    "requirements": [],
+    "scenarios": [],
+    "tests": []
+  },
+  "selection": {
+    "cases": [
+      "WF01.P1.S01.NEGATIVE",
+      "WF01.P1.S01.POSITIVE",
+      "WF01.P1.S02.NEGATIVE",
+      "WF01.P1.S02.POSITIVE",
+      "WF03.P1.S01.NEGATIVE",
+      "WF03.P1.S01.POSITIVE",
+      "WF03.P1.S02.NEGATIVE",
+      "WF03.P1.S02.POSITIVE",
+      "WF03.P1.S03.NEGATIVE",
+      "WF03.P1.S03.POSITIVE"
+    ],
+    "commands": [
+      "basic-time-fields-whole"
+    ],
+    "properties": [
+      "WF01.P1",
+      "WF03.P1"
+    ],
+    "requirements": [
+      "WF01",
+      "WF03"
+    ]
+  },
+  "specifications": {
+    "WF01": "bcf24d02d0e31dd1f431f5444e39676ce0d8451169ba71e20507d092cd69e9ac",
+    "WF03": "58147288d31e3610ad2a3d12a9570d01b1e7156b4d92a433d21e045831b5e073"
+  },
+  "status": "passed",
+  "substitution_gaps": []
+}

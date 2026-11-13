@@ -1,0 +1,54 @@
+------------------------------------------------------------------------------
+Executing test basicLayoutPositive...
+DEBUG (15:23): BASIC_TEXT|vector|155|43|110|26|Starship V3
+DEBUG (15:23): BASIC_TEXT|vector|218|47|5|22|·
+DEBUG (15:23): BASIC_TEXT|vector|258|47|64|22|SpaceX
+DEBUG (15:23): BASIC_TEXT|vector|195|70|144|22|Communications
+DEBUG (15:23): BASIC_TEXT|vector|195|319|233|26|US · SpaceX Starbase, …
+DEBUG (15:23): BASIC_TEXT|vector|207|24|25|15|82%
+DEBUG (15:23): BASIC_TEXT|time|195|120|188|93|08:08
+DEBUG (15:23): BASIC_TEXT|vector|195|202|118|36|02:00:00
+DEBUG (15:23): BASIC_TEXT|metric|123|240|87|36|12,345
+DEBUG (15:23): BASIC_TEXT|metric|319|240|32|36|68
+DEBUG (15:23): BASIC_TEXT|metric|96|278|32|36|72
+DEBUG (15:23): BASIC_TEXT|metric|319|278|32|36|47
+DEBUG (15:23): actual production text draw calls, source captured launch, controlled ordinary numeric telemetry
+PASS
+------------------------------------------------------------------------------
+Executing test basicFieldsPositive...
+DEBUG (15:23): actual Properties and app callback: duplicate selections persist; only second field changes
+PASS
+------------------------------------------------------------------------------
+Executing test basicFieldsNegative...
+DEBUG (15:23): only invalid second persisted field defaults; other three including duplicates unchanged
+PASS
+------------------------------------------------------------------------------
+Executing test basicUnavailablePositive...
+DEBUG (15:23): real Garmin adapter API smoke separately; controlled missing sample exercises actual view/formatter
+PASS
+------------------------------------------------------------------------------
+Executing test basicUnavailableNegative...
+DEBUG (15:23): new missing sample replaces former72/68; age300 accepted,301 or future unavailable; real zero allowed only for applicable metrics
+PASS
+------------------------------------------------------------------------------
+Executing test basicBatteryPositive...
+DEBUG (15:23): top battery reads watch82%; BodyBattery68 remains different; four slots including duplicate energy survive
+PASS
+------------------------------------------------------------------------------
+Executing test basicBatteryNegative...
+DEBUG (15:23): missing watch charge cannot borrowBodyBattery68; dedicated battery not a fifth configurable field
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+basicLayoutPositive                 PASS
+basicFieldsPositive                 PASS
+basicFieldsNegative                 PASS
+basicUnavailablePositive            PASS
+basicUnavailableNegative            PASS
+basicBatteryPositive                PASS
+basicBatteryNegative                PASS
+Ran 7 tests
+
+PASSED (passed=7, failed=0, errors=0)

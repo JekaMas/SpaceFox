@@ -134,11 +134,9 @@
       "VC20.P3",
       "VC20.P4",
       "WF01.P1",
-      "WF01.P2",
       "WF02.P1",
       "WF02.P2",
       "WF03.P1",
-      "WF03.P2",
       "WF04.P1",
       "WF04.P2",
       "WF05.P1",
@@ -169,6 +167,16 @@
       "node::scheduled boundary, failures, concurrency and secret safety",
       "unittest::tests.test_basic_menu_evidence.BasicMenuEvidenceTest.test_actual_menu_missing_glyph_or_changed_label_refuses",
       "unittest::tests.test_basic_menu_evidence.BasicMenuEvidenceTest.test_actual_primary_menu_font_binding",
+      "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_battery_negative",
+      "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_battery_positive",
+      "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_fields_negative",
+      "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_fields_positive",
+      "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_local_time_negative",
+      "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_local_time_positive",
+      "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_main_values_negative",
+      "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_main_values_positive",
+      "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_unavailable_negative",
+      "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_unavailable_positive",
       "unittest::tests.test_canonical_geometry_negative.CanonicalGeometryNegative.test_unsupported_geometry_refuses_without_mutation",
       "unittest::tests.test_canonical_geometry_negative.CanonicalGeometryPositive.test_qualified_selection_reopens_and_reuses_objects",
       "unittest::tests.test_canonical_sdk_export.CanonicalSdkExport.test_actual_joined_export_and_signature_qualification",
@@ -580,12 +588,8 @@
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p4_c03_negative",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p4_c05_negative",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p4_c06_negative",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf01_p2_s01_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf01_p2_s01_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf02_p2_s01_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf02_p2_s01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf03_p2_s01_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf03_p2_s01_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf04_p2_s01_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf04_p2_s01_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf05_p2_s01_negative_current",
@@ -624,8 +628,6 @@
       "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_connected_refresh_positive",
       "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_enter_always_on_mode_negative",
       "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_enter_always_on_mode_positive",
-      "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_health_data_unavailable_negative",
-      "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_health_data_unavailable_positive",
       "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_offline_startup_without_a_cache_negative",
       "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_offline_startup_without_a_cache_positive",
       "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_pilot_works_in_the_simulator_only_negative",
@@ -634,8 +636,6 @@
       "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_raise_wrist_positive",
       "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_response_exceeds_native_parser_capacity_negative",
       "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_response_exceeds_native_parser_capacity_positive",
-      "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_separate_watch_battery_negative",
-      "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_separate_watch_battery_positive",
       "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_wrist_gestures_disabled_negative",
       "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_wrist_gestures_disabled_positive",
       "unittest::tests.test_further_art_r2.FurtherArtR2Test.test_all12_actual_export_cli_exact_identity_rights_and_geometry",
@@ -754,8 +754,6 @@
       "unittest::tests.test_native_render.NativeRenderTest.test_known_rocket_changes_positive",
       "unittest::tests.test_native_render.NativeRenderTest.test_long_or_absent_context_negative",
       "unittest::tests.test_native_render.NativeRenderTest.test_long_or_absent_context_positive",
-      "unittest::tests.test_native_render.NativeRenderTest.test_main_values_remain_visible_negative",
-      "unittest::tests.test_native_render.NativeRenderTest.test_main_values_remain_visible_positive",
       "unittest::tests.test_native_render.NativeRenderTest.test_no_matching_visual_negative",
       "unittest::tests.test_native_render.NativeRenderTest.test_no_matching_visual_positive",
       "unittest::tests.test_native_render.NativeRenderTest.test_normal_schedule_negative",
@@ -770,8 +768,6 @@
       "unittest::tests.test_native_storage.NativeStorageTest.test_cache_is_full_during_an_asset_replacement_positive",
       "unittest::tests.test_native_storage.NativeStorageTest.test_complete_new_version_negative",
       "unittest::tests.test_native_storage.NativeStorageTest.test_complete_new_version_positive",
-      "unittest::tests.test_native_storage.NativeStorageTest.test_configure_and_hide_fields_negative",
-      "unittest::tests.test_native_storage.NativeStorageTest.test_configure_and_hide_fields_positive",
       "unittest::tests.test_native_storage.NativeStorageTest.test_new_launch_arrives_before_optional_artwork_negative",
       "unittest::tests.test_native_storage.NativeStorageTest.test_new_launch_arrives_before_optional_artwork_positive",
       "unittest::tests.test_native_storage.NativeStorageTest.test_transfer_interrupted_negative",
@@ -786,8 +782,6 @@
       "unittest::tests.test_native_timing.NativeTimingTest.test_faster_checking_ends_while_data_is_stale_positive",
       "unittest::tests.test_native_timing.NativeTimingTest.test_freshness_threshold_reached_negative",
       "unittest::tests.test_native_timing.NativeTimingTest.test_freshness_threshold_reached_positive",
-      "unittest::tests.test_native_timing.NativeTimingTest.test_local_time_changes_negative",
-      "unittest::tests.test_native_timing.NativeTimingTest.test_local_time_changes_positive",
       "unittest::tests.test_native_timing.NativeTimingTest.test_offline_countdown_after_sleep_negative",
       "unittest::tests.test_native_timing.NativeTimingTest.test_offline_countdown_after_sleep_positive",
       "unittest::tests.test_native_timing.NativeTimingTest.test_publisher_stops_but_the_file_remains_available_negative",
@@ -1114,20 +1108,10 @@
         "WF12.P1"
       ],
       "test_ids": [
-        "unittest::tests.test_native_render.NativeRenderTest.test_main_values_remain_visible_positive",
-        "unittest::tests.test_native_render.NativeRenderTest.test_main_values_remain_visible_negative",
-        "unittest::tests.test_native_timing.NativeTimingTest.test_local_time_changes_positive",
-        "unittest::tests.test_native_timing.NativeTimingTest.test_local_time_changes_negative",
         "unittest::tests.test_native_render.NativeRenderTest.test_use_the_accepted_header_positive",
         "unittest::tests.test_native_render.NativeRenderTest.test_use_the_accepted_header_negative",
         "unittest::tests.test_native_render.NativeRenderTest.test_long_or_absent_context_positive",
         "unittest::tests.test_native_render.NativeRenderTest.test_long_or_absent_context_negative",
-        "unittest::tests.test_native_storage.NativeStorageTest.test_configure_and_hide_fields_positive",
-        "unittest::tests.test_native_storage.NativeStorageTest.test_configure_and_hide_fields_negative",
-        "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_health_data_unavailable_positive",
-        "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_health_data_unavailable_negative",
-        "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_separate_watch_battery_positive",
-        "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_separate_watch_battery_negative",
         "unittest::tests.test_native_render.NativeRenderTest.test_known_rocket_changes_positive",
         "unittest::tests.test_native_render.NativeRenderTest.test_known_rocket_changes_negative",
         "unittest::tests.test_native_render.NativeRenderTest.test_no_matching_visual_positive",
@@ -3821,9 +3805,7 @@
       "id": "D-native-scene-r1",
       "question": "Implement accepted04/full native scene, guarded metrics, independent persisted settings, sparse AOD and short active animation with explicit simulator boundaries.",
       "property_ids": [
-        "WF01.P2",
         "WF02.P2",
-        "WF03.P2",
         "WF04.P2",
         "WF05.P2",
         "WF06.P2",
@@ -3833,12 +3815,8 @@
         "WF11.P2"
       ],
       "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf01_p2_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf01_p2_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf02_p2_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf02_p2_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf03_p2_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf03_p2_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf04_p2_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf04_p2_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf05_p2_s01_positive_current",
@@ -6376,14 +6354,10 @@
         "LS07.P2"
       ],
       "test_ids": [
-        "unittest::tests.test_native_render.NativeRenderTest.test_main_values_remain_visible_positive",
-        "unittest::tests.test_native_render.NativeRenderTest.test_main_values_remain_visible_negative",
         "unittest::tests.test_native_render.NativeRenderTest.test_use_the_accepted_header_positive",
         "unittest::tests.test_native_render.NativeRenderTest.test_use_the_accepted_header_negative",
         "unittest::tests.test_native_render.NativeRenderTest.test_long_or_absent_context_positive",
         "unittest::tests.test_native_render.NativeRenderTest.test_long_or_absent_context_negative",
-        "unittest::tests.test_native_storage.NativeStorageTest.test_configure_and_hide_fields_positive",
-        "unittest::tests.test_native_storage.NativeStorageTest.test_configure_and_hide_fields_negative",
         "unittest::tests.test_native_render.NativeRenderTest.test_known_rocket_changes_positive",
         "unittest::tests.test_native_render.NativeRenderTest.test_known_rocket_changes_negative",
         "unittest::tests.test_native_render.NativeRenderTest.test_no_matching_visual_positive",
@@ -7267,6 +7241,69 @@
       ],
       "disposition": "current_change",
       "rationale": "Basic scope retirement, no replacement globe matrix or phone layout claim."
+    },
+    {
+      "id": "BASIC-TIME-FIELDS-WHOLE",
+      "question": "Close only BASIC current local time/UTC-independent countdown and four persisted truthful Garmin fields at whole software boundary.",
+      "property_ids": [
+        "WF01.P1",
+        "WF03.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_main_values_positive",
+        "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_main_values_negative",
+        "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_local_time_positive",
+        "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_local_time_negative",
+        "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_fields_positive",
+        "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_fields_negative",
+        "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_unavailable_positive",
+        "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_unavailable_negative",
+        "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_battery_positive",
+        "unittest::tests.test_basic_time_fields.BasicTimeFieldsTest.test_battery_negative"
+      ],
+      "searches": [
+        {
+          "kind": "semantic",
+          "status": "unavailable",
+          "query": "jbcontext search current native Garmin clock, four persisted metric choices and source-bound SDK evidence owners",
+          "reason": "Actual CLI refused: login to JetBrains AI Platform required; no login/install/new index.",
+          "outcome": "No semantic evidence claimed.",
+          "results": []
+        },
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read current WatchClock, SceneSettings, SpaceFoxApp/View, Fitness/SceneRenderer, current ten-clock SDK table, current main-use/scene/map receipts and four selected graph properties.",
+          "outcome": "Production already implements basics. Preserve unchanged greens; add missing actual one-invalid-field, sample replacement, distinct battery and geometry assertions. Fold P2 aliases into whole P1 software properties; external release obligations explicit.",
+          "results": [
+            {
+              "path": "watchface/source/WatchClock.mc",
+              "classification": "reusable_unchanged",
+              "reason": "Garmin local clock versus UTC source already separate."
+            },
+            {
+              "path": "watchface/source/SceneSettings.mc",
+              "classification": "reusable_unchanged",
+              "reason": "Four independently loaded defaults and six roles already implemented."
+            },
+            {
+              "path": "tests/test_basic_time_fields.py",
+              "classification": "test_proof",
+              "reason": "Source-bound retained evidence plus actual new compiled assertions; no duplicate full clock rerun."
+            }
+          ]
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "unavailable",
+          "query": "Exact isolated SpaceFox worktree index qualification",
+          "reason": "No matching qualified index selected; supplied exact owner files inspected directly.",
+          "outcome": "No semantic/index claim.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "Single coherent BASIC unit, no product/resource edits, no stress/Unicode/full-geography expansion and no physical acceptance claim."
     }
   ]
 }

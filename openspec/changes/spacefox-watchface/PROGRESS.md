@@ -28,14 +28,42 @@ or quality expansion to31 additional languages. Five-mode UI/normal admission,
 menu glyphs, numeric clock and source-bound proofs pass; human/physical/phone
 rendering is unobserved. All36 internal IDs/resources remain.
 
+## BASIC current time and four fields — independent verification
+
+WF01.P1 and WF03.P1 now have whole defined software-property evidence:
+**10/10 cases through1/1command**, [actual selected run](evidence/basic-time-fields-whole/run-final.json).
+WF01.P2→WF01.P1 and WF03.P2→WF03.P1 were folded as exact conjunctive software aliases,
+with their old case mappings retained in [fold rationale](evidence/basic-time-fields-whole/folded-aliases.json).
+Seven new actual SDK assertions pass; the unchanged ten-clock API/UTC tests and
+ordinary six-role callback/map screenshot retain their original receipts.
+No native production/resource bytes changed and no WF12 software observation was rerun.
+Only the unused obsolete minute-format diagnostic was removed from tools.
+[Self-verification report](evidence/basic-time-fields-whole/FINAL.md) records the
+initial harness/oracle failures and corrections. Independent VERIFY closed both software properties; [independent report](evidence/basic-time-fields-whole/INDEPENDENT.md) and [selected run](evidence/basic-time-fields-whole/independent-run.json) record the evidence. Root judgment remains next. Physical clauses of task5.1/5.5/6.1/7.x remain open as before.
+
+## Next accepted closure — basic time and four fields
+
+Root accepted `b4d02332` after APPLY agent ran its own whole verify and a different
+independent agent repeated it and closed **WF01.P1 and WF03.P1**: **10/10cases,
+1/1command**. Two duplicate P2 subsets were folded, not counted as extra passes.
+Seven exact native SDK assertions are reused after source/resource/fixture/profile
+checks; their original frameworkPASS/raw launcher1 distinction stays visible.
+All native production/resources are unchanged. No new feature or format added.
+[Independent verifier](evidence/basic-time-fields-whole/independent-run.json) ·
+[Root judgment](evidence/judge/basic-time-fields-root-whole.json).
+
+**Five whole software properties are now closed in this sequence:**
+WF12.P1/P3/P4 and WF01.P1/WF03.P1. Task5.4 is checked. Task5.1 still awaits its
+separate physical acceptance; software observations do not check that box.
+
 ## Exact remaining inventory
 
 [tasks.md](tasks.md) is the only task list: **31 tasks;12 checked /19 open**.
-Watchface graph: **56 requirements /156 properties /705 cases /68 commands**.
-**138 implemented labels /567 planned cases across136 properties.** These are
-registrations, not passed totals.20 properties have no planned cases; only
-explicit actual whole-property receipts establish closure. This iteration closes
-three whole properties. Other already implemented groups need their actual
+Watchface graph: **56 requirements /154 properties /701 cases /69 commands**.
+**148 implemented labels /553 planned cases across132 properties.** These are
+registrations, not passed totals.22 properties have no planned cases; only
+explicit actual whole-property receipts establish closure. The accepted prior unit closed
+three whole properties; the independent BASIC verification closed two more. Other implemented groups need their actual
 selected verifier reconciled; no new feature is needed merely to refresh evidence.
 
 Remaining work groups: current basic time/fields/map/status property closure;
