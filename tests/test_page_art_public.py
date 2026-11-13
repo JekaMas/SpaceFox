@@ -56,6 +56,8 @@ class PageArtPublicTest(unittest.TestCase):
             base = Path(folder)
             remote = base / 'authority.git'
             subprocess.run(['git', 'init', '--bare', '-q', str(remote)], check=True)
+            # The disposable authority accepts the exact shallow public OID.
+            git(remote, 'config', 'receive.shallowUpdate', 'true')
             code = git(ROOT, 'rev-parse', 'HEAD')
             subprocess.run(['git', '-C', str(ROOT), 'push', '-q', str(remote),
                             'HEAD:refs/heads/main'], check=True)
@@ -132,7 +134,7 @@ class PageArtPublicTest(unittest.TestCase):
                             '/2.3.0/agencies/?format=json&limit=100&mode=normal',
                             '/2.3.0/launcher_configurations/?format=json&limit=100&mode=detailed']
                 self.assertEqual(expected, calls)
-                collector = CatalogRefresh(pub, transport=Relay())
+                collector = CatalogRefresh(pub, stable_sites_order=True, transport=Relay())
                 self.assertEqual(prefix, collector.journal['staging']['pages'][:4])
                 self.assertEqual(dict(countries=20, organizations=100, models=100, sites=100),
                                  collector.journal['staging']['pageSizes'])
@@ -142,7 +144,7 @@ class PageArtPublicTest(unittest.TestCase):
                 self.assertEqual(source['requests'], pub.ledger['requests'][:-4])
                 stable = pub.head
                 with self.assertRaises(StateError):
-                    CatalogRefresh(pub, page_size=20, transport=Relay())
+                    CatalogRefresh(pub, page_size=20, stable_sites_order=True, transport=Relay())
                 self.assertEqual(stable, pub.head)
                 self.assertEqual(4, len(calls))
             finally:
