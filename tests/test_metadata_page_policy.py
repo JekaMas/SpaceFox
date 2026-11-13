@@ -30,10 +30,10 @@ def encoded(value):
     return json.dumps(value, ensure_ascii=False, separators=(',', ':')).encode()
 
 
-def suffix(index, size, offset=0):
+def suffix(index, size, offset=0, ordered=False):
     # Independent literal endpoint/mode/query oracle; never calls collector URL.
     mode = ('', '&mode=normal', '&mode=detailed', '&mode=detailed')[index]
-    return PATHS[index] + '?format=json&limit=' + str(size) + mode + ('&offset=' + str(offset) if offset else '')
+    return PATHS[index] + '?format=json&limit=' + str(size) + mode + ('&ordering=id' if ordered and index == 3 else '') + ('&offset=' + str(offset) if offset else '')
 
 
 def rows(origin, counts, required=None):
@@ -83,13 +83,16 @@ def source_server(remote, *, official=False, counts=None, required=None):
             collection = TABLES[index]
             query = parse_qs(parsed.query)
             size, offset = int(query['limit'][0]), int(query.get('offset', ['0'])[0])
+            ordered = query.get('ordering') == ['id']
             available = state['rows'][collection]
+            if ordered:
+                available = sorted(available, key=lambda row: row['id'])
             batch = available[offset:offset + min(size, state['cap'] or size)]
             body = state['overrides'].get(self.path)
             if body is None:
-                body = encoded(dict(count=len(available), next=state['source_origin'] + suffix(index, size, offset + len(batch))
+                body = encoded(dict(count=len(available), next=state['source_origin'] + suffix(index, size, offset + len(batch), ordered)
                     if offset + len(batch) < len(available) else None,
-                    previous=None if offset == 0 else state['source_origin'] + suffix(index, size, max(0, offset - size)), results=batch))
+                    previous=None if offset == 0 else state['source_origin'] + suffix(index, size, max(0, offset - size), ordered), results=batch))
             tag = '"' + hashlib.sha256(body).hexdigest() + '"'
             unchanged = state['conditional'] and self.headers.get('If-None-Match') == tag
             self.send_response_only(304 if unchanged else 200)
@@ -143,7 +146,7 @@ class MetadataPagePolicyTest(unittest.TestCase):
             self.assertEqual(before, self.preserve(pub))
             status = outcome['status'] if scheduled_default else outcome.status
             if status == 'complete':
-                return CatalogRefresh(pub, **options).current()
+                return CatalogRefresh(pub, stable_sites_order=scheduled_default, **options).current()
             if status == 'yielded':
                 now += 3601
                 self.primary(pub, now)
@@ -261,6 +264,44 @@ class MetadataPagePolicyTest(unittest.TestCase):
                 with self.assertRaisesRegex(StateError,'stale'):
                     scheduled(pub,4803,**options)
                 self.assertEqual((head,calls),(store.load()[0],len(state['calls'])))
+
+    def test_public_cli_defaults_migration_and_scheduled_ordering(self):
+        with CatalogRefreshTest().authority(real_source=True,with_launch=False) as (root,source,remote,store,pub,_):
+            with source_server(remote,counts=dict.fromkeys(TABLES,1)) as (state,_,origin):
+                options=dict(origin=origin,local_http=True)
+                live=root/'live.json';live.write_text('null')
+                def cli(*extra,okay=True):
+                    args=[sys.executable,'-B',str(source/'tools/refresh_catalog.py'),*extra,'--remote',str(remote),'--local-http','--origin',origin]
+                    result=subprocess.run(args,capture_output=True,timeout=90)
+                    self.assertEqual(0 if okay else 2,result.returncode,result.stderr.decode())
+                    return json.loads(result.stdout) if okay else result.stderr.decode()
+                first=cli('collect','--expected-head',pub.head,'--live-observation',str(live),'--now','1001')
+                self.assertEqual('partial',first['status'])
+                pub=self.reopen(store,pub)
+                before=CatalogRefresh(pub,**options).journal['staging']['pages']
+                head=pub.head
+                cli('status','--page-size','100',okay=False)
+                self.assertEqual(head,store.load()[0])
+                migrated=cli('collect','--expected-head',head,'--live-observation',str(live),'--now','1001','--max-requests','3','--page-size','100','--migrate-page-size')
+                self.assertEqual('complete',migrated['status'])
+                pub=self.reopen(store,pub)
+                candidate=CatalogRefresh(pub,page_size=100,**options).current()
+                self.assertEqual(before,candidate['coverage']['pages'][:1])
+                self.assertEqual([suffix(0,20),suffix(1,100),suffix(2,100),suffix(3,100)],[p for p,_ in state['calls']])
+                head=pub.head
+                cli('status',okay=False)  # explicit standalone default20 cannot downgrade
+                self.assertEqual(head,store.load()[0])
+                cli('status','--page-size','100')
+                # A fresh automatic scheduled writer needs no operator edits.
+        with CatalogRefreshTest().authority(with_launch=False) as (_,_,remote,_,pub,_):
+            with source_server(remote,counts=dict.fromkeys(TABLES,1)) as (state,_,origin):
+                result=scheduled(pub,1001,origin=origin,local_http=True)
+                self.assertEqual(('complete',4),(result['status'],result['requests']))
+                self.assertEqual([suffix(i,100,ordered=True) for i in range(4)],[p for p,_ in state['calls']])
+                head=pub.head
+                self.assertEqual('not_due',scheduled(pub,1002,origin=origin,local_http=True)['status'])
+                self.assertEqual((head,4),(pub.head,len(state['calls'])))
+
 
 
 if __name__ == '__main__':

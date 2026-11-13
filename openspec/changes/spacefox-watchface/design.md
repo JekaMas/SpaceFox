@@ -881,3 +881,16 @@ freshly validated page proofs; existing source dates SHALL never be rewritten.
 All count, link, duplicate, completeness and source-age checks still apply.
 This supports recovery but cannot guarantee progress under a persistently invalid
 or changing provider, and does not establish a transactional source snapshot.
+
+### Versioned metadata sites ordering
+
+Scheduled metadata uses the schema-3 writer policy with sites `ordering=id`
+and strictly increasing site IDs. Complete earlier tables, raw page proofs,
+source ages, current/previous candidates and URL-scoped cache survive migration;
+an incomplete unordered sites prefix is discarded. A fully saved legacy stage
+finalizes under its original candidate policy while atomically checkpointing
+the new writer policy. Expiry or explicit restart checkpoints schema 3 before
+replacement HTTP. Legacy candidates retain their own query policy, and a writer
+without the explicit ordering policy refuses schema 3 before HTTP. Standalone
+commands opt in with `--stable-sites-order`; page-size migration is separate.
+This query policy provides no transactional snapshot or hosted-completion claim.

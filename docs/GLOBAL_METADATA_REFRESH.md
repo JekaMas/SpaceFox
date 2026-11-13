@@ -251,3 +251,29 @@ requires separate measurement. Requested100 never relaxes2MiB/page,64MiB/corpus,
 4metadata/invocation,15shared/hour, primary priority/headroom or source-age rules.
 Pagination advances by actual returned rows; changed/unsafe link policies refuse.
 Root must separately qualify actual LL2 response behavior and hosted adoption.
+
+### Versioned pads ordering
+
+Scheduled metadata selects journal/candidate schema 3 with `ordering=id` for
+pads. The provider's PadList interface documents `id` as an available ordering
+field (https://ll.thespacedevs.com/2.3.0/pads/?format=api&offset=220&ordering=name).
+The collector checks strictly increasing site IDs and continues to reject
+repeated IDs, drifting counts and unsafe pagination links. Ordering does not
+make a multi-request traversal transactional: upstream insertion, deletion or
+invalid responses can still prevent completion. The exact response rejected in
+the hosted incidents was not captured; the upstream cause remains unproved.
+
+Migration preserves completed earlier tables, their raw pages and source ages,
+original current/previous candidates and existing URL-scoped cache entries. An
+incomplete old pads prefix is abandoned because it cannot be combined with the
+new ordering. If all old pages were already durably saved before a crash, the
+collector finalizes their complete candidate under its legacy policy and saves
+the new writer policy in the same checkpoint, with no HTTP. A later traversal
+uses the new ordering. If expiry or explicit restart abandons that complete legacy
+stage instead, schema 3 is checkpointed before replacement HTTP. Its legacy cache
+URL cannot satisfy the new query. Schema 1/2
+candidates replay under their original policy; schema 3 candidates bind their
+own explicit pads ordering. Older and non-opted-in writers refuse schema 3
+before HTTP. Standalone `collect`, `status` and `export` use
+`--stable-sites-order` to opt into this policy; continue supplying the correct
+page-size and source-age settings. The page-size migration remains separate.

@@ -34,12 +34,12 @@ class MetadataCadenceTest(unittest.TestCase):
             settings = dict(transport=transport)
             first = scheduled(pub, 1001, max_requests=2, **settings)
             self.assertEqual(('partial', 2), (first['status'], first['requests']))
-            self.assertEqual(2, len(CatalogRefresh(pub, **settings).journal['staging']['pages']))
+            self.assertEqual(2, len(CatalogRefresh(pub, stable_sites_order=True, **settings).journal['staging']['pages']))
             transport.now = 1002
             second = scheduled(pub, 1002, max_requests=2, **settings)
             self.assertEqual(('complete', 2), (second['status'], second['requests']))
             saved = pub.head
-            current = CatalogRefresh(pub, **settings).current()
+            current = CatalogRefresh(pub, stable_sites_order=True, **settings).current()
             self.assertEqual({'countries': 2, 'organizations': 1, 'models': 2, 'sites': 1}, current['coverage']['counts'])
             self.assertEqual([1001, 1001, 1002, 1002], [p['validatedUtc'] for p in current['coverage']['pages']])
             # Completion age, not current source age or wall tick, controls due.
@@ -55,7 +55,7 @@ class MetadataCadenceTest(unittest.TestCase):
             transport.conditional = True
             result = scheduled(pub, 87402, **settings)
             self.assertEqual(('complete', 4), (result['status'], result['requests']))
-            collector = CatalogRefresh(pub, **settings)
+            collector = CatalogRefresh(pub, stable_sites_order=True, **settings)
             self.assertEqual(second['completed'], collector.journal['previous'])
             self.assertEqual([304] * 4, [p['status'] for p in collector.current()['coverage']['pages']])
             self.assertEqual(87402, collector.current()['source']['completedUtc'])
@@ -228,7 +228,7 @@ class MetadataCloudTest(unittest.TestCase):
         first = self.cli('metadata', '--max-requests', '2')
         self.assertEqual(('partial', 2), (first['status'], first['requests']))
         pub = self.publisher()
-        collector = CatalogRefresh(pub, origin=self.metadata_origin, local_http=True)
+        collector = CatalogRefresh(pub, origin=self.metadata_origin, local_http=True, stable_sites_order=True)
         self.assertEqual(2, len(collector.journal['staging']['pages']))
         corpus = git_tree(self.remote, pub.head, 'catalog-refresh')
         # Real source writer event retains exact auxiliary tree and source date.
@@ -238,7 +238,7 @@ class MetadataCloudTest(unittest.TestCase):
         self.assertEqual(corpus, git_tree(self.remote, pub.head, 'catalog-refresh'))
         second = self.cli('metadata', '--max-requests', '2')
         self.assertEqual(('complete', 2), (second['status'], second['requests']))
-        pub = self.publisher(); collector = CatalogRefresh(pub, origin=self.metadata_origin, local_http=True)
+        pub = self.publisher(); collector = CatalogRefresh(pub, origin=self.metadata_origin, local_http=True, stable_sites_order=True)
         candidate = collector.current()
         self.assertEqual({'countries': [2], 'organizations': [121], 'models': [164], 'sites': [80]}, candidate['coverage']['distinctIds'])
         self.assertEqual([NOW - 2] * 4, [p['validatedUtc'] for p in candidate['coverage']['pages']])
