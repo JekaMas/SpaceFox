@@ -68,6 +68,8 @@ def server(remote, now):
             expected = {'format': ['json'], 'limit': ['100']}
             if index:
                 expected['mode'] = ['normal' if index == 1 else 'detailed']
+            if index == 3:
+                expected['ordering'] = ['id']
             if query != expected:
                 world['failures'].append(query)
             tag = '"metadata-r1-' + str(index) + '"'
