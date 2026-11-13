@@ -29,7 +29,7 @@ The specification now has its own `openspec/LICENSE` and MIT scope README.
 See `docs/PUBLICATION.md` for exact branch/source provenance and readback checks.
 This source publication does not close native implementation or device tasks.
 
-2026-11-13 authorized quality-scope revision: retain36 locales/resources; catalog supportPolicy selects26 primary locale modes for mandatory
+Historical first 2026-11-13 scope (superseded by five-primary basic scope): retained36 locales/resources and selected26 primary modes for mandatory
 finite-real-corpus software review, ten best-effort. Whole scope policy implemented and
 positive/negative checks green; no nativeQualified flags promoted. See
 `../spacefox-watchface/evidence/primary-language-scope/PROGRESS.md`. Original
@@ -38,3 +38,5 @@ foundation receipts retain their proof boundary; native task5.4 stays open.
 2026-11-13 current-only revision supersedes the earlier mandatory all26 human/device
 policy and retained Unicode-vector gate. Human review is optional/unobserved;
 physical release acceptance remains separate. No native task is checked off.
+
+2026-11-13 later basic-scope decision supersedes the preceding 26-primary partition: five primary modes (en, ru, de, fr, es), 31 best-effort. Renew source-bound software qualification for the fixed numeric countdown and actual menus; earlier observations stay historical.

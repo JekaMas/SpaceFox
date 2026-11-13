@@ -1,5 +1,14 @@
 # Producer visual bridge v2
 
+This document preserves the historical v1/v2 visual bridge and its original
+observations. Its dual endpoints, profile defaults and old-wire readback gates
+below are retired, not current operating instructions. The sole current public
+target is native-motion-v3 schema3/SFR1M at `/feed.json`; see
+[NATIVE_MOTION_V3.md](NATIVE_MOTION_V3.md) and
+[PROVIDER_PIPELINE.md](PROVIDER_PIPELINE.md). Shared source-art geometry and
+raster primitives remain dependencies; this record does not restore an old
+public profile or migration requirement.
+
 Local producer contract; native implementation and device qualification are separate.
 The same FeedBaseUrl serves root `feed.json` (closed v1) and `wire2/feed.json`
 (explicit wire major2). Both are built from one accepted schedule, publisher
@@ -84,3 +93,47 @@ least90days from that actual announcement. The advertised February10 lower bound
 is not an automated retirement date; this producer continues v1 indefinitely.
 No local file proves a public announcement or elapsed90day hosted interval.
 
+
+Independent producer review R1 found and repaired admission gaps, with retained
+red/green evidence under evidence/publisher-visual-bridge/verify-r1. Compact rows
+must match the retained canonical v1 names/kinds/source coordinates, contain
+exactly selected dependencies, and bind every optional visual to a selected role.
+Origins/site countries require country identities; role art requires a canonical
+asset identity, and geography binds source coordinates/mode even when its active
+point is unavailable. Map style/marker JSON types, source hashes and context
+limits are closed. Feed-bound durable prepare rejects incomplete legacy or
+versioned closure before saving a pending generation. Exact cloud observation
+rereads both mutable wire-major roots after the immutable union. Frozen A/B files,
+geometry, source recipe, quotas and historical execution receipts are unchanged.
+These repairs require a NEW independent verifier; R1 does not certify its fixes.
+
+Independent producer review R2 reproduced an additional mode-intent gap: the
+real visual producer accepted a complete legacy v1 subset when its v2 output
+was missing. Both current producer paths now pass `artifact_profile: visual-v2`
+independently of the returned files. Every new product snapshot persists its
+concrete `feed-v1` or `visual-v2` profile inside the artifact revision. Prepare,
+Git-state write/reopen and the cloud reader check the complete declared closure,
+generation/instance/catalog/source binding and exact selected schedule facts.
+Pending selection-validation age must equal the durable ledger epoch, so a
+rehashed candidate cannot renew age without a qualified accepted source event.
+Removing an envelope argument does not turn recognizable product output into an
+opaque state artifact. Compatibility policy JSON types are closed as well.
+
+Legacy bound API calls without a profile still accept a complete valid v1 or
+complete valid dual artifact and persist the resolved concrete profile. A first
+unqualified legacy call supplying complete v1 cannot reveal whether its caller
+intended v2; it proves only v1 admission. It is not the current producer route.
+Historical unmarked v1/dual pending/current snapshots remain readable with exact
+bytes through code adoption and pending recovery. A dual producer cannot silently
+regress to v1, and stripping a current pending profile/revision is refused by the
+durable transition checks. This is an additive offwatch snapshot contract; root
+feed v1 grammar/bytes and native dictionaries are unchanged. R2 changed production
+and must stop at a clean freeze for a different NEW independent verifier.
+
+Independent R3 reproduced a remaining cloud-origin namespace gap: the separate
+origin reader checked file integrity and selected facts without supplying the
+origin ledger instance to the shared guard. It now binds both current and prior
+snapshot feeds to that durable instance, including historical unmarked v1/dual
+snapshots. Rehashed wrong-instance roots are refused during complete delivery
+and HTTP observation; valid historical bytes retain their original interpretation.
+R3 changed production and requires a different NEW independent verifier/root judge.

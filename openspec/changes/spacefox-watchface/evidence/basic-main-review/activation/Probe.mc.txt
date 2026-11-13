@@ -1,0 +1,22 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.System;
+import Toybox.Background;
+import Toybox.Time;
+import Toybox.Timer;
+
+(:background,:typecheck(false)) class FiniteQuiet extends System.ServiceDelegate {function onTemporalEvent(){Background.deleteTemporalEvent();Background.exit(null);}}
+(:background,:typecheck(false)) class SfrRuntimeApp extends SpaceFoxApp {
+ var timer=null;var checks=0;var at=0;var indices=[0,1,2,3,4];var locales=["en","ru","de","fr","es"];var bitmap=null;var age=null;var seal=null;var signature=null;
+ function initialize(){SpaceFoxApp.initialize();NativeMetrics.ownerTag="76d3631756c843ea8adf201cd7ca207f|activation|e3fbb187da1d";System.println("SFR_PROBE owner="+NativeMetrics.ownerTag);NativeMetrics.enabled=false;}
+ function getServiceDelegate(){return [new FiniteQuiet()];}
+ function ensure(ok,message){if(!ok){throw new Lang.InvalidValueException("FINITE_ACTIVATION "+message);}}
+ function state(){var hash=new NativeCanonical();hash.emit(view.settings.slots);return hash.digest();}
+ (:typecheck(disableBackgroundCheck)) function getInitialView(){Application.Properties.setValue("FeedBaseUrl","https://astra-basic-native.invalid");Application.Properties.setValue("Language",0);SpaceFoxApp.getInitialView();view.pendingLoader=method(:begin);return [view];}
+ (:typecheck(disableBackgroundCheck)) function begin(){SpaceFoxApp.reloadFeed();timer=new Timer.Timer();timer.start(method(:tick),100,false);}
+ (:typecheck(disableBackgroundCheck)) function tick(){checks+=1;Background.deleteTemporalEvent();ensure(!view.presentation.qualificationMode,"diagnostic bypass enabled");ensure(System.getSystemStats().totalMemory==126784,"not ordinary heap");if(view.downloaded==null||view.sfrBuild!=null||view.sfrRequested){ensure(checks<400,"source scene timeout");timer.start(method(:tick),100,false);return;}if(bitmap==null){bitmap=view.downloaded;age=feed.packet.validation;seal=feed.store.read("sf.commit")["seal"];signature=state();}
+  if(at>=indices.size()){Application.Properties.setValue("Language",0);SpaceFoxApp.onSettingsChanged();Background.deleteTemporalEvent();timer.stop();timer=null;System.println("FINITE_ACTIVATION COMPLETE locales="+indices.size()+" diagnosticBypass=false settingsPreserved=true sameBitmap=true sourceEpoch="+age+" ordinaryBytes=126784 owner="+NativeMetrics.ownerTag);return;}
+  Application.Properties.setValue("Language",indices[at]);SpaceFoxApp.onSettingsChanged();Background.deleteTemporalEvent();ensure(SceneStrings.available(indices[at]),"unavailable generated index");ensure(view.presentation.locale.equals(locales[at]),"production locale fallback "+locales[at]);ensure(signature.equals(state()),"unrelated settings changed");ensure(view.downloaded==bitmap&&feed.packet.validation==age&&feed.store.read("sf.commit")["seal"].equals(seal),"source/bitmap changed");System.println("FINITE_ACTIVATION READY locale="+locales[at]+" diagnosticBypass=false sameBitmap=true settingsPreserved=true owner="+NativeMetrics.ownerTag);at+=1;timer.start(method(:tick),1500,false);
+ }
+}

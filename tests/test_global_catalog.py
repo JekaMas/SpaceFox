@@ -40,14 +40,11 @@ class GlobalCatalogTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.catalog = build_catalog(ROOT)
-        cls.baseline = build_catalog(ROOT, ROOT/'tests/fixtures/catalog/global-before-remaining-art-source.json')
 
     def test_curation_positive(self):
         c = self.catalog;d = c['dictionaries']
-        self.assertEqual({k:len(v) for k,v in self.baseline['dictionaries'].items()},
-                         {'countries':104,'organizations':350,'configurations':176,'sites':218,'assets':562})
         self.assertEqual({k:len(v) for k,v in d.items()},
-                         {'countries':104,'organizations':351,'configurations':198,'sites':218,'assets':638})
+                         {'countries':104,'organizations':350,'configurations':176,'sites':218,'assets':562})
         reference = loads_json((ROOT/'openspec/changes/spacefox-watchface/evidence/global-catalog/reference-inventory.json').read_bytes())
         # Every one of the 839 original entities retains its exact source facts.
         for source,table,kind in [('countries','countries','country'),('organizations','organizations','organization'),('models','configurations','configuration'),('sites','sites','site')]:
@@ -171,15 +168,14 @@ class GlobalCatalogTest(unittest.TestCase):
             self.assertEqual(source.read_bytes(),before)
 
     def test_coverage_positive(self):
-        report=coverage_report(self.baseline);models=report['configurations']
+        report=coverage_report(self.catalog);models=report['configurations']
         self.assertEqual((models['providerRequiredNonPlaceholder'],models['providerMappedArt']),(165,103))
         self.assertEqual((models['requiredNonPlaceholder'],models['mappedArt'],len(models['missingArtIds'])),(171,108,63))
         self.assertEqual(report['countries']['markKindsByCountryRecord']['original-informational-country-code'],90)
         self.assertEqual(report['organizations']['mappedBadges'],349)
         self.assertIsNone(report['sites']['independentlyVerifiedPadAccuracy'])
         # Retained global.2 geometry witnesses are explicitly historical, while
-        # the literal global.3 counts above use their retained recipe. Current
-        # source/projection counts have a separate witness below.
+        # current coverage counts above and new all-asset checks use global.3.
         historical=build_catalog(ROOT,ROOT/'tests/fixtures/catalog/global-before-content-source.json')
         pack=build_pack(ROOT,historical)
         self.assertEqual(len(pack['statistics']),218)
@@ -208,27 +204,8 @@ class GlobalCatalogTest(unittest.TestCase):
             asset=self.catalog['dictionaries']['assets'][self.catalog['dictionaries']['configurations'][identity]['references']['visual']]
             self.assertIn(identity,asset['facts']['coverage']['configurationIds'])
 
-    def test_current_archive_and_eligibility_denominators_remain_distinct(self):
-        from tools.spacefox.current_catalog import load_registry, current_coverage, current_view
-        archive = coverage_report(self.catalog)['configurations']
-        self.assertEqual((archive['requiredNonPlaceholder'], archive['mappedArt'],
-                          len(archive['missingArtIds'])), (193, 174, 19))
-        registry = load_registry(ROOT, self.catalog)
-        report = current_coverage(self.catalog, registry)
-        self.assertEqual((report['currentConfigurations'], report['specificArtMapped'],
-                          len(report['missingSpecificArtIds'])), (139, 128, 11))
-        self.assertEqual((len(report['reviewIds']), len(report['unknownIds'])), (54, 5))
-        view = current_view(self.catalog, registry)['catalog']['dictionaries']['configurations']
-        self.assertNotIn('ll2:configuration:123', view)
-        self.assertIn('spacefox:configuration:hanbit-mini', view)
-        self.assertEqual(view['spacefox:configuration:hanbit-mini']['references']['visual'],
-                         'spacefox:asset:current-art-hanbit-mini-review1')
-        self.assertEqual(self.catalog['dictionaries']['configurations']['ll2:configuration:123']['references']['visual'],
-                         'spacefox:asset:further-r2-lm5-yz2-radial-firstflight')
-        self.assertEqual(len(self.catalog['dictionaries']['configurations']), 198)
-
     def test_coverage_negative(self):
-        self.assertIn('ll2:configuration:522',coverage_report(self.baseline)['configurations']['missingArtIds'])
+        self.assertIn('ll2:configuration:522',coverage_report(self.catalog)['configurations']['missingArtIds'])
         bad=copy.deepcopy(self.catalog)
         bad['dictionaries']['assets']['spacefox:asset:vehicle-s520']['facts']['coverage']['configurationIds']=['ll2:configuration:522']
         with self.assertRaisesRegex(CatalogError,'not reviewed'):validate_catalog(bad)

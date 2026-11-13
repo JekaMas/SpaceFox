@@ -4,6 +4,8 @@ The active recipe now uses the compatible producer-2 curation extension.
 See [maintained global visual catalog](../docs/GLOBAL_VISUAL_CATALOG.md) for
 working add/correct/replace commands, official additions, coverage and geography.
 The schema-1 import contract below remains supported as a compatibility lane.
+Current candidate `2026-11-12.global.18.origin-review1` and its finite factual/art
+boundaries are recorded in [the whole closure packet](../openspec/changes/spacefox-watchface/evidence/current-catalog-closure/README.md).
 
 `source.json` is the one active authored catalog input. It pins immutable import
 seeds by repository-relative path and SHA-256. The initial version adapts the

@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "sdk_version": "9.3.0",
+  "sdk_directory": "connectiq-sdk-mac-9.3.0-2026-10-20-95888f262",
+  "compiler_sha256": "e1a6f9018b0c2f7552e25a41b7a6e621e4322bda6916bfd7177e9f7538c385c8",
+  "java_major": 11,
+  "product": "fr165",
+  "profile_api": "5.2.0",
+  "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
+  "compiler_profile_sha256": "ed45eb28ba928e2d2bda1bf8c567401232ab226889b87712fef5713e7f9a4fa8",
+  "simulator_profile_sha256": "c4e771539f1ccc68f1464ced980cd493d57d0cd8e46fa9e844ada36df9631fee",
+  "min_api": "5.1.0",
+  "official_uuid": "ec8b7c8a8ea54ee9ac91ee6e7a674d15",
+  "development_uuid": "f2295855b20d43f7be595c065fe94c31",
+  "test_uuid": "5bb6fca4fe174f9da6bfdc2ac6d70b59",
+  "languages": [
+    "eng"
+  ],
+  "qualification": "Native scene API/resource candidate eng/rus SDKfr165; physical/full36locale/release remains open; documented SDK fast optimization -O2 candidate for measured background transfer quota",
+  "declared_not_measured_bytes": {
+    "watchface": 131072,
+    "background": 65536,
+    "graphics": 2097152,
+    "storage": 10485760
+  },
+  "dependencies": [],
+  "compiler_options": [
+    "-l",
+    "3",
+    "-O",
+    "2",
+    "-w"
+  ],
+  "jungle_sha256": "abe93f12654450100407e84232b4c6dc0e7c9b1707499d7fd8e118fce040f0c4",
+  "sdk_input_sha256": {
+    "bin/api.db": "2baa720b0efabd643bd66f61a28101fe755c24f96f44c13ccf3005d0851396c3",
+    "bin/api.mir": "6898cd11464f0f5800a1055c112defd886ca94f0a9137867457f3dfce875ab63",
+    "bin/api.debug.xml": "313b222a5b2f976b27b87bf6d6754a1a86d0ada50c727b8ca98331bff4b1909e",
+    "bin/compilerInfo.xml": "f67cfa58cb67385e06e9ee123679f378a2b353cd37edc58188d46cff3556f85f",
+    "bin/projectInfo.xml": "6d4df60df3cd99ad5962830c33410cd7da29e33af641ffa53269952befd958bb",
+    "bin/shell": "5a55d2cc30a0aa5479cd8a31f716337530bdcbe9f8b288701183551e15dfe94c",
+    "bin/ConnectIQ.app/Contents/MacOS/simulator": "a2bf41bf1aa247fed71e87fb7ab0f9c32b4fb7f0d305c09ab49beddc7001127a",
+    "bin/default.jungle": "f1bea680dfd01f380cac249409ae2475eb185fee959fa4514c788c0b9d19672f"
+  },
+  "profile_input_sha256": {
+    "fr165/fr165.bin": "83aab1a5ae1e18a29f3c0e60ea71eb2623221a9435eaf4220d8911261db9a67e",
+    "fr165/fr165.api.debug.xml": "fb42beeb47badbba9a51003e75a204d5087cdd57c1d306fa9760134dd80af58b"
+  },
+  "permissions": [
+    "SensorHistory",
+    "Communications",
+    "Background"
+  ],
+  "java_file_encoding": "UTF-8"
+}

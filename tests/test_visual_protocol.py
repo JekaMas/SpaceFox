@@ -10,7 +10,7 @@ import sys
 import tempfile
 import unittest
 
-from tools.spacefox.catalog import build_catalog, canonical_bytes, loads_json
+from tools.spacefox.catalog import build_catalog, canonical_bytes
 from tools.spacefox.graphics import (
     VisualError, export_svg, validate_visual, loads_visual, canonical_visual,
     visual_digest, build_pack, write_pack, metrics, split_visual, assemble_visual, loads_shard,
@@ -49,36 +49,7 @@ class VisualProtocolTest(unittest.TestCase):
         self.assertLessEqual(error, 1/32 + math.sqrt(2)/64)
         return error
 
-    def fixture_recipe(self, directory):
-        directory = Path(directory)
-        source = loads_json((ROOT/'catalog/source.json').read_bytes())
-        # Retain the schema1 registry mutation fixture as a compatibility lane;
-        # the maintained producer2 path has separate real-input/CLI cases.
-        for key in ('producerVersion', 'curations', 'geography'):
-            source.pop(key, None)
-        for key in ('reference', 'assetSeed'):
-            path = ROOT/source[key]['path']
-            target = directory/('inputs/'+key+'.json')
-            target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_bytes(path.read_bytes())
-            source[key]['path'] = target.relative_to(directory).as_posix()
-        registry = loads_json((directory/source['assetSeed']['path']).read_bytes())
-        for group in ('models', 'companies', 'countries'):
-            for row in registry[group]:
-                path = directory/'inputs'/row['file']
-                path.parent.mkdir(parents=True, exist_ok=True)
-                path.write_bytes((ROOT/'assets/rocket-pack'/row['file']).read_bytes())
-        recipe = directory/'source.json'
-        recipe.write_bytes(canonical_bytes(source))
-        return recipe
 
-    def revise_registry(self, directory, recipe, change):
-        source = loads_json(recipe.read_bytes()); path = Path(directory)/source['assetSeed']['path']
-        registry = loads_json(path.read_bytes()); change(registry)
-        data = canonical_bytes(registry); path.write_bytes(data)
-        source['assetSeed']['sha256'] = hashlib.sha256(data).hexdigest()
-        source['catalogVersion'] += '.next'
-        recipe.write_bytes(canonical_bytes(source))
 
     def test_geometry_positive(self):
         self.assertEqual(export_svg((FIX/'literal.svg').read_bytes(), [10,10]), self.literal())
@@ -207,13 +178,24 @@ class VisualProtocolTest(unittest.TestCase):
         self.assertGreater(counts['spacefox:asset:falcon-heavy'],counts['spacefox:asset:falcon-9'])
 
     def test_all_sources_negative(self):
-        with tempfile.TemporaryDirectory() as d:
-            recipe=self.fixture_recipe(d);c=build_catalog(d,recipe)
-            row=c['dictionaries']['assets']['spacefox:asset:generic'];path=Path(d)/row['content']['path']
+        # Current selected-source producer guards survive removal of the old
+        # registry recipe. Use the actual catalog and one isolated source asset.
+        with tempfile.TemporaryDirectory() as directory:
+            catalog = build_catalog(ROOT)
+            identity = 'spacefox:asset:generic'
+            row = catalog['dictionaries']['assets'][identity]
+            path = Path(directory) / row['content']['path']
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes((ROOT / row['content']['path']).read_bytes())
+            self.assertIn(identity, build_pack(directory, catalog, roots=[identity])['manifest']['assets'])
             path.write_bytes(svg('<path d="M0 0C1 1 2 2 3 3"/>'))
-            with self.assertRaisesRegex(VisualError,'digest'):build_pack(d,c)
-            data=path.read_bytes();row['content'].update(sha256=hashlib.sha256(data).hexdigest(),bytes=len(data));c['inputDigests'][row['content']['path']]=row['content']['sha256']
-            with self.assertRaisesRegex(VisualError,'generic.*unsupported|unsupported.*generic'):build_pack(d,c)
+            with self.assertRaisesRegex(VisualError, 'digest'):
+                build_pack(directory, catalog, roots=[identity])
+            data = path.read_bytes()
+            row['content'].update(sha256=hashlib.sha256(data).hexdigest(), bytes=len(data))
+            catalog['inputDigests'][row['content']['path']] = row['content']['sha256']
+            with self.assertRaisesRegex(VisualError, 'generic.*unsupported|unsupported.*generic'):
+                build_pack(directory, catalog, roots=[identity])
         for body in ('<script>alert(1)</script>','<image href="https://x/y"/>','<rect width="1" height="1" onclick="x"/>','<rect width="1" height="1" fill="url(#x)"/>','<style>path{fill:red}</style>'):
             with self.subTest(body=body),self.assertRaises(VisualError):export_svg(svg(body),[10,10])
         with self.assertRaises(VisualError):export_svg(b'<!DOCTYPE svg [<!ENTITY x "abc">]><svg viewBox="0 0 1 1">&x;</svg>',[10,10])
@@ -278,37 +260,10 @@ class VisualProtocolTest(unittest.TestCase):
         c=build_catalog(ROOT);c['dictionaries']['configurations']['ll2:configuration:164']['references']['visual']='ll2:site:65'
         with self.assertRaises(VisualError):build_pack(ROOT,c)
 
-    def test_data_only_positive(self):
-        with tempfile.TemporaryDirectory() as d:
-            recipe=self.fixture_recipe(d)
-            def add(registry):
-                a=copy.deepcopy(registry['models'][0]);a.update(id='new-data-only',file='svg/new.svg',name='New data-only shape');registry['models'].append(a)
-            self.revise_registry(d,recipe,add)
-            path=Path(d)/'inputs/svg/new.svg';path.write_bytes((FIX/'literal.svg').read_bytes())
-            source=loads_json(recipe.read_bytes());ref_path=Path(d)/source['reference']['path']
-            reference=loads_json(ref_path.read_bytes())
-            model=next(x for x in reference['models'] if x['sourceId'] == 164)
-            model['currentPackAssetId']='new-data-only'
-            ref_data=canonical_bytes(reference);ref_path.write_bytes(ref_data)
-            source['reference']['sha256']=hashlib.sha256(ref_data).hexdigest();recipe.write_bytes(canonical_bytes(source))
-            c=build_catalog(d,recipe);p=build_pack(d,c);r=p['manifest']['assets']['spacefox:asset:new-data-only'];first=r['sha256']
-            self.assertEqual(len(p['manifest']['assets']),14)
-            selected=build_pack(d,c,roots=['ll2:configuration:164'])
-            self.assertIn('spacefox:asset:new-data-only',selected['manifest']['assets'])
-            self.assertNotIn('spacefox:asset:falcon-9',selected['manifest']['assets'])
-            self.assertEqual(r['catalogRecord']['facts']['name'],'New data-only shape')
-            path.write_bytes(svg('<path d="M0 0H10L5 10Z" fill="#456"/>'))
-            p2=build_pack(d,build_catalog(d,recipe));self.assertNotEqual(first,p2['manifest']['assets']['spacefox:asset:new-data-only']['sha256'])
-            # Only data/SVG fixture changed; no layout/renderer or Python source was copied or edited.
-            self.assertFalse((Path(d)/'watchface').exists())
 
     def test_data_only_negative(self):
-        with tempfile.TemporaryDirectory() as d:
-            recipe=self.fixture_recipe(d)
-            self.revise_registry(d,recipe,lambda r:r['models'][0].update(file='../outside.svg'))
-            with self.assertRaises(ValueError):build_catalog(d,recipe)
-            c=build_catalog(ROOT);row=c['dictionaries']['assets']['spacefox:asset:generic'];row['content']['path']='../outside.svg'
-            with self.assertRaises(VisualError):build_pack(ROOT,c)
+        c=build_catalog(ROOT);row=c['dictionaries']['assets']['spacefox:asset:generic'];row['content']['path']='../outside.svg'
+        with self.assertRaises(VisualError):build_pack(ROOT,c)
 
     def test_atomic_positive(self):
         with tempfile.TemporaryDirectory() as d:

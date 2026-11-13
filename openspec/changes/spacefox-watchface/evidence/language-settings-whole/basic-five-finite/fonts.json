@@ -1,0 +1,75 @@
+{
+  "status": "passed",
+  "corpusSha256": "6e918179a639eca400ca3346601b1ec73807ce83fad651c356de54c400324171",
+  "primaryLocales": [
+    "en",
+    "ru",
+    "de",
+    "fr",
+    "es"
+  ],
+  "fonts": {
+    "RobotoRegular": {
+      "fileName": "Roboto-Regular.ttf",
+      "sha256": "31d218ca177e4c2191134f9c14fb43027f8a38622476db14038fd8ff186f875e"
+    },
+    "NotoNaskhArabicRegular": {
+      "fileName": "NotoNaskhArabic-Regular.ttf",
+      "sha256": "a0bc0de437cc88f0ad0eed9c8e9fb9d7de41fd3da87ed7f4ac1cd0143151e4fa"
+    },
+    "NotoSansHebrewRegular": {
+      "fileName": "NotoSansHebrew-Regular.ttf",
+      "sha256": "f51d96a6e503d195320fffbdd6e76aceefb7d88839e2cf0df75fb74449e18abd"
+    },
+    "NotoSansSCMedium": {
+      "fileName": "NotoSansSC-Medium.ttf",
+      "sha256": "e4c7ab18be6bb1bfca4d1755bd259a441c9c04ced874d024d86dbdbacc3473a5"
+    },
+    "KosugiRegular": {
+      "fileName": "Kosugi-Regular.ttf",
+      "sha256": "2125264db9a509b7bd1e97386217958ffbd9dbc33c236839d81b4ecf8b7b39e3"
+    },
+    "NanumGothicBold": {
+      "fileName": "NanumGothic-Bold.ttf",
+      "sha256": "9c5c9877e835017c53dffa434e57e8200457e7fa2fdbee03ddab71742003d5ad"
+    },
+    "PridiRegular": {
+      "fileName": "Pridi-Regular.ttf",
+      "sha256": "f5b1a5d8e79de7f19a34295835dc14ce1030fc020248d4664a1dbe0e4efc3323"
+    }
+  },
+  "commonRoleMissingCodepoints": [],
+  "ui": [
+    {
+      "locale": "en",
+      "face": "RobotoRegular",
+      "missingCodepoints": [],
+      "shaping": []
+    },
+    {
+      "locale": "ru",
+      "face": "RobotoRegular",
+      "missingCodepoints": [],
+      "shaping": []
+    },
+    {
+      "locale": "de",
+      "face": "RobotoRegular",
+      "missingCodepoints": [],
+      "shaping": []
+    },
+    {
+      "locale": "fr",
+      "face": "RobotoRegular",
+      "missingCodepoints": [],
+      "shaping": []
+    },
+    {
+      "locale": "es",
+      "face": "RobotoRegular",
+      "missingCodepoints": [],
+      "shaping": []
+    }
+  ],
+  "proofBoundary": "Exact installed SDK font cmap union and host HarfBuzz shaping for finite real provider roles/numeric face tokens. Native ordinary rendering has separate actual SDK observations; no phone/device/speaker claim."
+}

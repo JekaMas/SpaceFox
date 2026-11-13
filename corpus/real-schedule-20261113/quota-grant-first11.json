@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "id": "root-quiesced-corpus-first11-20261113",
+  "coordination": "Root reserved LL2 for this collector; updater disabled and all active runs ended. Root message2026-11-13T05:29UTC.",
+  "notBefore": "2026-11-13T05:28:57Z",
+  "expires": "2026-11-13T06:30:00Z",
+  "maxRequests": 11,
+  "quotaSeed": {
+    "schemaVersion": 1,
+    "observedUtc": "2026-11-13T05:28:57Z",
+    "repository": "JekaMas/SpaceFox",
+    "workflowId": 415481085,
+    "workflowState": "disabled_manually",
+    "lastRun": {
+      "id": 43371553186,
+      "status": "completed",
+      "conclusion": "success",
+      "updatedUtc": "2026-11-13T05:28:38Z"
+    },
+    "noActiveRunsObserved": true,
+    "reason": "User forbids legacy support; quiesce old publisher for current-only replacement and one shared governed real-corpus acquisition.",
+    "providerLimitPerRollingHour": 15,
+    "ledgerGeneration": 25,
+    "pending": null,
+    "sourceAgePreserved": true,
+    "backoffUntilUtc": 1794537098,
+    "foreignRequests": [
+      {
+        "at_utc": 1794547527,
+        "id": "22acef7ec2d323c3f2438622c27d5a5b9711cd0ff0ef309ebd7401b9e53bc3c0",
+        "outcome": "success",
+        "purpose": "schedule",
+        "trigger": "scheduled"
+      },
+      {
+        "accepted_source": true,
+        "at_utc": 1794547537,
+        "id": "df62d0837c6d95b7d89d0e8aa882ba12559d24ad339a880505eb19428551e359",
+        "outcome": "success",
+        "purpose": "schedule",
+        "trigger": "extra"
+      },
+      {
+        "at_utc": 1794547547,
+        "id": "4250831801997a0f3ffca080ac1e00dc1eccae306424b43503d461cb985812ce",
+        "outcome": "success",
+        "purpose": "schedule",
+        "trigger": "extra"
+      },
+      {
+        "at_utc": 1794547558,
+        "id": "48178d29c4619ee329e24e5584c86432cd39d90d91a6b55d3b30bdf5ef0338ad",
+        "outcome": "success",
+        "purpose": "schedule",
+        "trigger": "extra"
+      }
+    ],
+    "proofBoundary": "Quota seed for subsequent acquisition, not provider/history/corpus completion. Existing served snapshot remains unchanged while old scheduler is disabled."
+  }
+}

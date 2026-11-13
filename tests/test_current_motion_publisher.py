@@ -93,6 +93,8 @@ class CurrentMotionPublisherTest(unittest.TestCase):
     def test_cloud_journal_updates_current_state_ref(self):
         from tools.spacefox.cloud import write_journal
         from tools.spacefox.publisher import ANCHOR_REF, STATE_REF, Conflict
+        self.assertEqual(STATE_REF, 'refs/heads/feed-state-map-v3')
+        self.assertEqual(ANCHOR_REF, 'refs/tags/spacefox-state-bootstrap-map-v3')
         with tempfile.TemporaryDirectory(prefix='spacefox-journal-') as tmp:
             path = Path(tmp); remote = path / 'remote.git'; source = path / 'source'; source.mkdir()
             subprocess.run(['git', 'init', '--bare', '-q', str(remote)], check=True)
@@ -101,6 +103,9 @@ class CurrentMotionPublisherTest(unittest.TestCase):
             git(source, 'commit', '--allow-empty', '-qm', 'source')
             code = git(source, 'rev-parse', 'HEAD')
             git(source, 'push', '-q', str(remote), 'HEAD:refs/heads/main')
+            old_state = 'refs/heads/feed-state-motion-v3'
+            old_anchor = 'refs/tags/spacefox-state-bootstrap-motion-v3'
+            git(source, 'push', '-q', str(remote), code+':'+old_state, code+':'+old_anchor)
             store = GitState(str(remote))
             try:
                 store.bootstrap(code)
@@ -116,6 +121,7 @@ class CurrentMotionPublisherTest(unittest.TestCase):
                 self.assertEqual(store._refs(STATE_REF)[STATE_REF], updated.head)
                 self.assertEqual(store._refs(ANCHOR_REF)[ANCHOR_REF], before)
                 self.assertEqual(store._refs('refs/heads/feed-state'), {})
+                self.assertEqual(store._refs(old_state, old_anchor), {old_state: code, old_anchor: code})
             finally:
                 store.close()
 

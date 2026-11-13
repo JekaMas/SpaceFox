@@ -1,0 +1,18 @@
+SFR_PROBE owner=7af62b7a43d84afcb21e8d935670c105|ui|74607ea24ed7
+
+Error: Illegal Access (Out of Bounds)
+Details: Could not access symbol 'Rez'
+Stack: 
+  - <init>() at /Users/jekamas/.codex/tmp/spacefox-basic-five/ui/Probe.mc:12 0x100000a0 
+  - selectSystemLanguage() at /Users/jekamas/projects/SpaceFox-worktrees/apply-main-language-settings-whole/watchface/source/SceneSettings.mc:24 0x80000000 
+FINITE_UI WORDS locale=en keys=0 countFontHeight=36 smallFontHeight=22 owner=7af62b7a43d84afcb21e8d935670c105|ui|74607ea24ed7
+FINITE_UI READY locale=en words=0 renderedStates=10 sourceEpoch=1794551192 sameBitmap=true sampledHigh=101688 phoneSettingsRendered=false owner=7af62b7a43d84afcb21e8d935670c105|ui|74607ea24ed7
+FINITE_UI WORDS locale=ru keys=0 countFontHeight=36 smallFontHeight=22 owner=7af62b7a43d84afcb21e8d935670c105|ui|74607ea24ed7
+FINITE_UI READY locale=ru words=0 renderedStates=10 sourceEpoch=1794551192 sameBitmap=true sampledHigh=101688 phoneSettingsRendered=false owner=7af62b7a43d84afcb21e8d935670c105|ui|74607ea24ed7
+FINITE_UI WORDS locale=de keys=0 countFontHeight=36 smallFontHeight=22 owner=7af62b7a43d84afcb21e8d935670c105|ui|74607ea24ed7
+FINITE_UI READY locale=de words=0 renderedStates=10 sourceEpoch=1794551192 sameBitmap=true sampledHigh=101688 phoneSettingsRendered=false owner=7af62b7a43d84afcb21e8d935670c105|ui|74607ea24ed7
+FINITE_UI WORDS locale=fr keys=0 countFontHeight=36 smallFontHeight=22 owner=7af62b7a43d84afcb21e8d935670c105|ui|74607ea24ed7
+FINITE_UI READY locale=fr words=0 renderedStates=10 sourceEpoch=1794551192 sameBitmap=true sampledHigh=101688 phoneSettingsRendered=false owner=7af62b7a43d84afcb21e8d935670c105|ui|74607ea24ed7
+FINITE_UI WORDS locale=es keys=0 countFontHeight=36 smallFontHeight=22 owner=7af62b7a43d84afcb21e8d935670c105|ui|74607ea24ed7
+FINITE_UI READY locale=es words=0 renderedStates=10 sourceEpoch=1794551192 sameBitmap=true sampledHigh=101688 phoneSettingsRendered=false owner=7af62b7a43d84afcb21e8d935670c105|ui|74607ea24ed7
+FINITE_UI COMPLETE locales=5 ordinaryBytes=126784 sampledHigh=101688 sameBitmap=true sourceEpoch=1794551192 physicalDevice=false speakerReview=false owner=7af62b7a43d84afcb21e8d935670c105|ui|74607ea24ed7

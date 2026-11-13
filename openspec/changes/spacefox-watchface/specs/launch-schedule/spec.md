@@ -146,11 +146,7 @@ than reuse another launch's context or invent a mission task.
 
 ### Requirement: UTC countdown and precision
 
-The watch SHALL calculate the countdown locally as validated launch UTC minus
-its current UTC clock, recomputing on redraw and wake without phone/network
-access. It SHALL show days/hours/minutes for distant launches and seconds only
-while active when supported. Sleep MUST NOT freeze or accumulate timer drift.
-A date-only, missing or invalid timestamp SHALL not produce an exact countdown.
+The watch SHALL recompute validated launch UTC minus current UTC on redraw and wake without connectivity, displaying numeric `HH:mm:ss` with accumulating hours. Validated nominal-minute targets use the same arithmetic without upgrading source precision. Missing target displays `--:--:--`; zero displays `00:00:00` without claiming liftoff. Sleep MUST NOT accumulate drift.
 
 #### Scenario: Exact time available
 - **WHEN** an accepted launch has an exact UTC timestamp and the watch time zone changes
@@ -158,7 +154,7 @@ A date-only, missing or invalid timestamp SHALL not produce an exact countdown.
 
 #### Scenario: Date known but time uncertain
 - **WHEN** the provider gives only a date, coarse window or invalid/missing exact timestamp
-- **THEN** the watch displays that uncertainty without inventing second-level precision
+- **THEN** the watch displays `--:--:--`; a validated nominal-minute target may count to its nominal UTC without changing the source precision
 
 #### Scenario: Offline countdown after sleep
 - **WHEN** the watch wakes after two hours asleep without connectivity and its cached exact launch is still in the future
@@ -177,7 +173,7 @@ clear the flag; selecting a different launch SHALL not inherit it.
 
 #### Scenario: New time withdrawn
 - **WHEN** a previously timed launch is postponed with no valid replacement time
-- **THEN** the change flag remains set and the watch displays an uncertainty label instead of the old exact countdown
+- **THEN** the change flag remains set and the watch displays `--:--:--` instead of the old exact countdown
 
 ### Requirement: Cached schedule freshness
 

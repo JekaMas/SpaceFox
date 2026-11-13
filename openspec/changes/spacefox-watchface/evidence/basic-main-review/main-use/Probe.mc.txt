@@ -1,0 +1,45 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.System;
+import Toybox.Background;
+import Toybox.Time;
+import Toybox.Timer;
+(:background,:typecheck(false)) class MotionQuiet extends System.ServiceDelegate {function onTemporalEvent(){Background.deleteTemporalEvent();Background.exit(null);}}
+(:typecheck(false)) class MotionProxy extends WatchUi.WatchFace {
+ var app;function initialize(a){WatchFace.initialize();app=a;}
+ function onLayout(dc){app.view.onLayout(dc);}function onShow(){app.view.onShow();}function onHide(){app.view.onHide();}
+ function onUpdate(dc){var v=app.view;var reads=app.feed.store.reads;var writes=app.feed.store.writes;var loads=v.presentation.loads;var resources=v.renderer==null?0:v.renderer.resourceLoads;var r=v.downloaded;var bitmap=r==null?null:r.bitmap;var matrix=r==null?null:r.transform;v.onUpdate(dc);if(reads!=app.feed.store.reads||writes!=app.feed.store.writes||loads!=v.presentation.loads||v.renderer!=null&&resources!=v.renderer.resourceLoads||r!=null&&(r.bitmap!=bitmap||r.transform!=matrix)){throw new Lang.InvalidValueException("motion redraw I/O/resources");}app.draws+=1;}
+}
+(:background,:extendedCode,:typecheck(false)) class SfrRuntimeApp extends SpaceFoxApp {
+ var observer=null;var requested=0;var checks=0;var sampledHigh=0;var beforeWrites=0;var draws=0;var phase=0;var firstUtc=null;var settingPhase=0;var rich=null;var age=null;var seal=null;var point=null;var frameValue=0.0;var deferredAdmitted=false;
+ function initialize(){SpaceFoxApp.initialize();NativeMetrics.ownerTag="76d3631756c843ea8adf201cd7ca207f|main-use|e3fbb187da1d";System.println("SFR_PROBE owner="+NativeMetrics.ownerTag);NativeMetrics.enabled=false;NativeMetrics.traceStores=false;}
+ function getServiceDelegate(){return [new MotionQuiet()];}
+ (:typecheck(disableBackgroundCheck)) function getInitialView(){
+ Application.Properties.setValue("FeedBaseUrl","https://astra-basic-native.invalid");Application.Properties.setValue("Language",0);Application.Properties.setValue("Field1",0);Application.Properties.setValue("Field2",4);Application.Properties.setValue("Field3",5);Application.Properties.setValue("Field4",3);
+ var chosenFrame=0.0;frameValue=(chosenFrame instanceof Number||chosenFrame instanceof Float)?chosenFrame.toFloat():0.0;if(frameValue<0||frameValue>1){frameValue=0.0;}SpaceFoxApp.getInitialView();view.pendingLoader=method(:begin);Background.deleteTemporalEvent();return [new MotionProxy(self)];}
+ (:typecheck(disableBackgroundCheck)) function begin(){requested=System.getTimer();beforeWrites=feed.store.writes;SpaceFoxApp.reloadFeed();observer=new Timer.Timer();observer.start(method(:ready),50,false);}
+ function ensure(ok,message){if(!ok){throw new Lang.InvalidValueException(message);}}
+ (:typecheck(disableBackgroundCheck)) function ready(){
+ Background.deleteTemporalEvent();checks+=1;var used=System.getSystemStats().usedMemory;if(used>sampledHigh){sampledHigh=used;}
+ if(view.downloaded==null||view.sfrBuild!=null||view.sfrRequested){if(checks>250){System.println("MOTION_FAILED fullSceneMissing checks="+checks+" generation="+(feed.packet==null?-1:feed.packet.document["publisher"]["generation"]));observer.stop();observer=null;return;}observer.start(method(:ready),50,false);return;}
+ rich=view.downloaded;ensure(rich instanceof NativeSfrRenderer,"wrong renderer");ensure(rich.selectionHash.equals(feed.packet.bridge["selection"]["sha256"]),"selection mismatch");age=feed.packet.validation;seal=feed.store.read("sf.commit")["seal"];point=view.context.point;
+ var elapsed=System.getTimer()-requested;ensure(elapsed<8000,"strict preparation phase exceeded8s");ensure(System.getSystemStats().totalMemory==126784,"not ordinary foreground");
+ view.animationProgress=frameValue;WatchUi.requestUpdate();System.println("MOTION_READY profile="+"SFR1M"+" phase="+phase+" generation="+feed.packet.document["publisher"]["generation"]+" validation="+age+" elapsedMs="+elapsed+" sampledHigh="+sampledHigh+" total="+System.getSystemStats().totalMemory+" writes="+(feed.store.writes-beforeWrites)+" modelFlag="+(rich.modelOriginBitmap!=null)+" frame="+view.animationProgress+" canvas="+rich.manifest["canvas"]+" duration="+rich.duration()+" draws="+draws+" noDrawIo=true");
+ firstUtc=Time.now().value();observer.start(method(:settingsPulse),1100,false);
+ }
+
+ (:typecheck(disableBackgroundCheck)) function settingsPulse(){
+ var names=["steps","energy","heart","stress","calories","battery"];
+ var selected=[];for(var i=0;i<4;i+=1){var index=(settingPhase+i)%6;Application.Properties.setValue("Field"+(i+1),index);selected.add(names[index]);}
+ SpaceFoxApp.onSettingsChanged();Background.deleteTemporalEvent();
+ var loaded=new SceneSettings(null).load();for(var j=0;j<4;j+=1){ensure(view.settings.slots[j].equals(selected[j])&&loaded.slots[j].equals(selected[j]),"four field property/load/callback mismatch");var value=view.fitness.display(view.values,selected[j]);ensure(value instanceof String,"metric unavailable formatting failed");}
+ ensure(view.downloaded==rich&&feed.packet.validation==age&&feed.store.read("sf.commit")["seal"].equals(seal),"settings changed scene/source");
+ ensure(view.sfrBuild==null&&!view.sfrRequested,"field settings rebuilt scene");
+ var now=Time.now().value();var snapshot=view.snapshot();var clock=System.getClockTime();var hour=clock.hour;var expected=hour.format("%02d")+":"+clock.min.format("%02d");
+ ensure(snapshot.localTime.equals(expected),"current native clock mismatch");ensure(now>firstUtc,"native clock did not advance");ensure(snapshot.remaining==null||snapshot.remaining>=0,"negative countdown");
+ System.println("CURRENT_MAIN_FIELDS phase="+settingPhase+" slots="+selected+" local="+snapshot.localTime+" utc="+now+" countdown="+snapshot.countdown+" sameBitmap=true sameSource=true persistentProperties=true realFitnessApi=true ordinaryBytes="+System.getSystemStats().totalMemory+" owner="+NativeMetrics.ownerTag);
+ WatchUi.requestUpdate();settingPhase+=1;if(settingPhase<6){observer.start(method(:settingsPulse),1100,false);}else{observer.stop();observer=null;System.println("CURRENT_MAIN_COMPLETE fields=4 roles=6 nativeClockAdvancing=true settingsCallbacks=6 sameBitmap=true sameSource=true owner="+NativeMetrics.ownerTag);}
+ }
+
+}

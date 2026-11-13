@@ -16,10 +16,10 @@ The resource validator MUST reject incomplete or inconsistent entries.
 
 #### Scenario: Scope mandatory language qualification
 - **WHEN** release language-quality readiness is assessed
-- **THEN** all 26 primary modes require finite-real-corpus FR165 glyph/layout review;
+- **THEN** all five primary modes require finite-real-corpus FR165 glyph/layout review;
   a missing software observation keeps that gate incomplete; human review is optional
   and physical product/release acceptance stays separate
-- **AND** missing quality observations for the ten retained best-effort modes do
+- **AND** missing quality observations for the 31 retained best-effort modes do
   not block that gate; unsupported, duplicate or non-catalog primary IDs are rejected
 - **AND** qualification flags and release manifest admission are not promoted by scope;
   actual source-bound finite-corpus software proof governs production/manifest admission
@@ -41,16 +41,19 @@ The resource validator MUST reject incomplete or inconsistent entries.
 
 The preview SHALL offer every catalog locale, select a recognized saved choice
 before browser preferences, and use English for unsupported inputs. Changing
-language MUST preserve launch, projection, schedule and fitness selections.
-Arabic and Hebrew MUST use RTL text while clock/countdown and the physical
-Earth/rocket/information order remain stable.
+language MUST preserve launch, schedule and fitness selections.
+The fixed map, numeric countdown and physical scene order remain stable.
 
 #### Scenario: Resolve a preview language
 - **WHEN** the preview receives a saved locale or browser language preferences
 - **THEN** it selects the first supported choice, including Chinese script/region
   matching, or English when none match
 - **AND** language changes update visible and accessible labels without resetting
-  the selected data; RTL text does not mirror the geographic projection
+  the selected data; the fixed map and physical scene order remain unchanged
+
+The native settings menu SHALL expose Auto (ID36) and only the five primary
+choices (IDs0–4). All36 translation resources and internal IDs remain intact;
+unqualified system selections use the existing English fallback.
 
 Display testing SHALL use only launches since 2021-11-13T00:00:00Z, ALL published
 future launches paginated until next=null, and actual UI/menu strings. Exact source

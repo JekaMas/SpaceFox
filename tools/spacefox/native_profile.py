@@ -14,7 +14,6 @@ import zlib
 from .catalog import canonical_bytes, loads_json
 from .visual_bridge import build_source, read_ref, put, sha
 from .graphics import assemble_visual
-from . import native_globe
 
 LAYOUT_REVISION = 'native-04-v1'
 ROLE_CANVAS = {'map': (390,390), 'rocket': (54,124),
@@ -161,7 +160,7 @@ def _map_visuals(files,desc):
     return out
 
 
-def _single_profile(files, old, old_catalog, *, globe=False):
+def _single_profile(files, old, old_catalog):
     """Render one source selection into native raster primitives."""
     files=dict(files)
     sel=None if old['visualSelection'] is None else loads_json(read_ref(old['visualSelection'],files))
@@ -176,7 +175,7 @@ def _single_profile(files, old, old_catalog, *, globe=False):
             if role=='map':
                 map_source=desc
                 if desc['position'] is None:continue
-                visuals=native_globe.visuals(files,desc) if globe else _map_visuals(files,desc);width=height=390;channels=3
+                visuals=_map_visuals(files,desc);width=height=390;channels=3
             else:
                 visual,desc=_asset(files,binding['descriptor']);visuals=[visual]
                 width,height=ROLE_CANVAS[role];channels=4
@@ -189,7 +188,7 @@ def _single_profile(files, old, old_catalog, *, globe=False):
                 pixelSha256=sha(pixels),sourceDescriptor=binding['descriptor'],sourceSemanticSha256=None if role=='map' else desc['sha256'],animation=[0,[]] if role=='map' else desc['animation'],shards=refs)
             raster_roles[role]=dict(entityId=binding['entityId'],descriptor=put(files,value))
             rendered[role]=dict(png=png,svg=svg,pixels=pixels)
-        root=put(files,dict(type='native-scene',schemaVersion=3,rendererProfile='SFR1',layoutRevision=native_globe.LAYOUT if globe else LAYOUT_REVISION,
+        root=put(files,dict(type='native-scene',schemaVersion=3,rendererProfile='SFR1',layoutRevision=LAYOUT_REVISION,
             sourceSelection=old['visualSelection'],launchId=sel['launchId'],modelId=sel['modelId'],operatorId=sel['operatorId'],siteId=sel['siteId'],countryId=sel['countryId'],originMode=sel['originMode'],originId=sel['originId'],
             sourcePosition=None if map_source is None else map_source['sourcePosition'],position=None if map_source is None else map_source['position'],positionMode=None if map_source is None else map_source['positionMode'],
             mapDefinitionSha256=None if map_source is None else map_source['definitionSha256'],mapSource=None if map_source is None else map_source['source'],marker=None if map_source is None else map_source['marker'],roles=raster_roles))
@@ -208,24 +207,7 @@ def _single_profile(files, old, old_catalog, *, globe=False):
     return files,feed,catalog,rendered
 
 
-def _view_paths(files, selection, transfer):
-    paths={transfer['path']}
-    if selection is not None:
-        scene=loads_json(read_ref(selection,files));paths.add(selection['path'])
-        for binding in scene['roles'].values():
-            if binding is None:continue
-            ref=binding['descriptor'];paths.add(ref['path'])
-            paths.update(r['path'] for r in loads_json(read_ref(ref,files))['shards'])
-    return paths
-
-
 def build_artifact(*args,**kwargs):
     source,base,catalog=build_source(*args,**kwargs)
-    files,feed,catalog,rendered=_single_profile(source,base,catalog)
-    if feed['visualSelection'] is not None:
-        alternate,globe,_,globe_rendered=_single_profile(source,base,catalog,globe=True)
-        feed.update(globeSelection=globe['visualSelection'],globeTransfer=globe['nativeTransfer'])
-        for path in _view_paths(alternate,feed['globeSelection'],feed['globeTransfer']):
-            files[path]=alternate[path]
-        rendered['globe']=globe_rendered.get('map')
+    files,feed,catalog,_rendered=_single_profile(source,base,catalog)
     return files,feed,catalog

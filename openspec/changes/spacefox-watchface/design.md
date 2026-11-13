@@ -39,12 +39,12 @@ four independently configurable32px values in2×2, larger country/site below the
 fields and separate small watch battery above. Rocket and operator read together
 above time (`Falcon9 · SpaceX`), mission purpose on the next line. Long values
 wrap or abbreviate without inventing missing context; full supplied values remain
-in the accepted data. Globe remains an available planned setting.
+in the accepted data. The only map is the accepted faded flat map. The current clock is fixed 24-hour HH:mm; the four fixed positions independently select one of six roles. Only role, language and feed URL settings remain.
 
 Amber countdown means reschedule; a dotted underline independently means stale.
 There is no exclamation/cloud badge or permanent last-update row. Watch charge
 and Body Battery have distinct Garmin sources. The initial five model drawings,
-curated model/operator-origin flags and original company letter marks use the
+curated model-origin flags and original company letter marks use the
 single `assets/rocket-pack/registry.source.json`. Origin is never inferred from
 the launch country. Official logos are not included under an invented MIT grant.
 
@@ -355,8 +355,7 @@ gaps. Official photos/logos are not automatically MIT. Reuse the authored
 `assets/rocket-pack/registry.source.json` through one catalog workflow; migration
 must not create another independently maintained asset or site lookup in layout.
 
-Use shared sourced world geometry for the accepted full-screen map and optional
-globe. Prepare bounded regional detail when 110m geometry omits small islands.
+Use shared sourced world geometry for the accepted full-screen flat map. Prepare bounded regional detail when 110m geometry omits small islands.
 Qualify every required sourced pad, date-line/polar cases and missing/mobile
 positions. A departure's event position must not be replaced with a port, airport,
 headquarters or unverified zero. The historic snapshot includes 216 provider-active pads, but that flag alone
@@ -442,7 +441,7 @@ The intended maintenance interface is:
 | `catalog/rockets.json` | Stable model IDs, explicit provider mappings, asset/frame references and attribution |
 | `catalog/sites.json` | Stable pad/site IDs, country/place, coordinates and source |
 | `catalog/source-overrides.json` | Reviewed official-source supplements/corrections, retaining source values and review dates |
-| `catalog/geography.json` | Shared world/regional geometry or prepared map/globe shard references and provenance |
+| `catalog/geography.json` | Shared world/regional geometry or prepared flat-map shard references and provenance |
 | `catalog/coverage.json` | Dated expected/observed IDs, source pages and separate metadata/visual/mark/coordinate/map coverage |
 | `assets/rockets/<model-id>/<revision>/` | Watch-compatible still images and optional short frame packs |
 | `tools/catalog.py` | Validate inputs and build a versioned static manifest/package |
@@ -502,8 +501,8 @@ separate supported SFR1 endpoint. Retain the literal existing feed/object/transf
 cache/time bounds. A measured conflict must be reported and repaired without a
 silent cap increase or a five-model hardcoded substitute.
 
-The selected current SFR1M flat-map or orthographic-globe scene derives from
-qualified sourced geometry and its existing bounded raster/view objects. Orientation and the pin
+The selected current SFR1M flat-map scene derives from
+qualified sourced geometry and its existing bounded raster/view objects. The map and pin
 come from the same sourced site coordinates/projection metadata. Regional detail
 must preserve small islands, poles and date-line context. Bounded on-watch manifests
 must not grow with the full worldwide asset inventory. Bundled generic/map basics
@@ -522,7 +521,7 @@ on the active face. Keep the dedicated battery separate from the four slots.
 
 Use a prepared still/frame pack or simple native ignition/ascent translation over
 2–3 seconds on active wrist viewing. Stop on sleep/low-power entry; preserve a
-static visual and user disable setting. Reuse a generic animation/fallback when
+static visual. Reuse a generic animation/fallback when
 an exact model's optional frames are absent. No animation or zero crossing is
 recorded as real launch evidence.
 
@@ -629,7 +628,7 @@ Unsupported input is refused while accepted current-format cache retains honest 
 and an actionable settings/update message; no older feed or migration is offered.
 
 Validate current-format persistent settings/cache and test same-format reopen. Preserve four assignments,
-language, projection and feed URL; validate before committing new cache keys.
+language and feed URL; validate before committing new cache keys.
 Isolate launch/flag/age state when FeedBaseUrl changes; identical verified content
 may reuse digest cache. Do not promise lossless sideload-to-Store/beta-to-production
 migration or uninstall survival without observing it. Document backup/reconfiguration
@@ -684,10 +683,10 @@ display names. Do not expand display work with synthetic mixed scripts, arbitrar
 Unicode or normative edgecase vectors. Grapheme/input integrity is required for
 this real corpus; source-time/arithmetic/error boundaries remain technical contracts.
 
-All 36 locale resources and selection IDs remain. The existing 26 primary modes
-have mandatory finite-corpus FR165 font/glyph/RTL/layout checks; ten are best-effort.
+All 36 locale resources and selection IDs remain. The five primary modes
+have mandatory finite-corpus FR165 font/glyph/layout checks; 31 are best-effort.
 `tools/language_support.py` reports software observations separately from unobserved
-human and physical evidence. Human translation review is not an extra all26 software
+human and physical evidence. Human translation review is not an extra five-language software
 prerequisite. Physical product acceptance remains a separate existing release task.
 Criterion booleans alone do not admit languages. Production selection and manifest
 admission use `supportPolicy.softwareQualifiedLocales` only after validation of its
@@ -697,12 +696,11 @@ software admission. Translations remain draft until actually reviewed.
 
 ## Software language admission
 
-`supportPolicy.softwareQualifiedLocales` starts empty and
-`supportPolicy.softwareQualificationProof` starts null. Nonempty admission is
-currently refused: binding hashes to a self-asserted receipt does not establish
-complete real provider pages or actual FR165 observations. Implement and validate
-those evidence owners before enabling any additional locale. The native owner alone
-records actual observations. The provisional binding format has schemaVersion 1, corpusPath/corpusSha256,
+The bootstrap state has an empty `supportPolicy.softwareQualifiedLocales` and
+null `supportPolicy.softwareQualificationProof`. A self-asserted receipt alone
+does not establish complete real provider pages or actual FR165 observations.
+Additional admission requires validated corpus and native observations. The native
+owner alone records actual observations. The binding format has schemaVersion 1, corpusPath/corpusSha256,
 receiptPath/receiptSha256 and productionSources mapping the exact text/selection/
 time/maintenance owners, jungle/toolchain pins, settings XML, primary canonical
 and runtime locale JSON and strings XML inputs to SHA-256. The closure follows
@@ -716,11 +714,10 @@ every static generated byte while excluding only that availability expression,
 and build admission compares the complete generated output, including availability,
 against the admitted IDs. This permits regeneration without a hash cycle while
 refusing stale/tampered locale mappings and availability bypasses.
-The provisional binding has scope `finite-primary-software`, physicalDeviceObserved false and
-nativeSpeakerReviewed false for this software-only observation. The generator and
-build currently refuse all nonempty admission; future validation must establish
+The binding has scope `finite-primary-software`, physicalDeviceObserved false and
+nativeSpeakerReviewed false for this software-only observation. The generator and build validate
 actual corpus and software observations as well as the bound files and hashes.
-Production locale selection and the manifest will admit only validated primary IDs
+Production locale selection and the manifest admit only validated primary IDs
 plus English bootstrap. A qualification
 mode may inspect candidates but must not silently enable them in production.
 Missing, altered or stale proof refuses additional admission. Criterion booleans
@@ -729,7 +726,9 @@ in `tools/language_support.py` only exercise/report scope and are not that proof
 All36 locale rows/resources and selection IDs remain unchanged. Their historical
 nativeQualified false and draft/human/device statuses remain truthful; these flags
 are not software admission gates. Native/phone/physical and Store release tasks
-remain separate. This specification records no actual proof or admitted IDs.
+remain separate. The earlier 2026-11-13 actual 26-primary software admission is historical after
+the map-only/settings source change; current admission requires renewed proof.
+Neither historical nor current software evidence establishes physical or human review.
 
 ## Authorized clean cutover sequence
 
@@ -742,3 +741,21 @@ quota reservation timestamps, or wait a complete rolling hour before any new
 provider call. Source validation advances only after an actual successful fetch.
 This sequence is a plan, not an observed public cutover or permission supplied by
 this specification-edit unit; root owns the separately authorized execution.
+
+
+## 2026-11-13 fixed map and settings cutover
+
+The sole current schema-3 SFR1M envelope has one accepted flat-map selection and
+transfer; globe fields, selection settings, and operator-origin flag are retired,
+not passed compatibility features. The current clock is always 24-hour `HH:mm`;
+the four fixed positions choose one of six metric roles, with invalid values
+falling back individually. Animation is active-only, the separate watch battery
+is shown, and the rocket model determines its origin flag. Language and feed URL
+remain configurable. Existing public dual-scene feed and old cache are historical;
+a new authority/bootstrap and preserved rolling quota are required for a separately
+authorized cutover. No old-format parser or state migration is required.
+
+
+## 2026-11-13 five-language numeric countdown revision
+
+Mandatory software qualification covers en, ru, de, fr and es; 31 remaining resources are best-effort. The only countdown is numeric `HH:mm:ss`, with accumulating hours. Validated nominal-minute UTC uses local arithmetic without changing source precision. Missing target yields `--:--:--`, and zero yields `00:00:00` without claiming launch. Active redraws recompute against UTC; sparse AOD keeps minute lifecycle and formats each permitted snapshot in the same form, with no per-second AOD redraw claim. Earlier 26-language, translated countdown and RTL layout observations remain historical.

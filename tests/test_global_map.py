@@ -93,11 +93,6 @@ class GlobalMapTest(unittest.TestCase):
         self.assertEqual(visuals['objects'],grown['objects'])
         self.assertLessEqual(len(canonical_bytes(view['manifest'])),8192)
         self.assertTrue(all(len(b)<=4096 and loads_shard(b) for b in view['objects'].values()))
-        # The new attribution/binding fields are additive: a retained schema1
-        # geography manifest from before their introduction remains admissible.
-        legacy=copy.deepcopy(view)
-        legacy['manifest']['site'].pop('sourceUrl');legacy['manifest']['site'].pop('definitionSha256')
-        build_bundle(None,[legacy])
         mobile=build_site_view(ROOT,catalog,'ll2:site:13')
         unknown=build_site_view(ROOT,catalog,'ll2:site:101')
         event={'latitude':Decimal('0.0000'),'longitude':Decimal('-179.9999999999999999'),

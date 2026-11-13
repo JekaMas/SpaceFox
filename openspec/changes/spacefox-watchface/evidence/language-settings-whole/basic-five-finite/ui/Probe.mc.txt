@@ -1,0 +1,29 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.System;
+import Toybox.Background;
+import Toybox.Time;
+import Toybox.Graphics;
+import Toybox.Timer;
+
+(:background,:typecheck(false)) class FiniteQuiet extends System.ServiceDelegate {function onTemporalEvent(){Background.deleteTemporalEvent();Background.exit(null);}}
+(:background,:typecheck(false)) class SfrRuntimeApp extends SpaceFoxApp {
+ var observer=null;var phase=0;var stage=0;var checks=0;var targets=[Rez.JsonData.FiniteLocale0,Rez.JsonData.FiniteLocale1,Rez.JsonData.FiniteLocale2,Rez.JsonData.FiniteLocale3,Rez.JsonData.FiniteLocale4];var indices=[0,1,2,3,4];var image=null;var dc=null;var bitmap=null;var epoch=null;var seal=null;var sharedLabel=null;var sharedSmall=null;var expected=null;var loads=0;var high=0;var drawState=0;
+ function initialize(){SpaceFoxApp.initialize();NativeMetrics.ownerTag="7af62b7a43d84afcb21e8d935670c105|ui|74607ea24ed7";System.println("SFR_PROBE owner="+NativeMetrics.ownerTag);NativeMetrics.enabled=false;}
+ function ensure(ok,message){if(!ok){throw new Lang.InvalidValueException("FINITE_UI "+message);}}
+ function log(text){System.println("FINITE_UI "+text+" owner="+NativeMetrics.ownerTag);}
+ function getServiceDelegate(){return [new FiniteQuiet()];}
+ (:typecheck(disableBackgroundCheck)) function getInitialView(){Application.Properties.setValue("FeedBaseUrl","https://map-only-native.invalid");Application.Properties.setValue("Language",0);SpaceFoxApp.getInitialView();view.presentation.qualificationMode=true;view.pendingLoader=method(:begin);return [view];}
+ (:typecheck(disableBackgroundCheck)) function begin(){SpaceFoxApp.reloadFeed();if(observer==null){observer=new Timer.Timer();}observer.start(method(:tick),100,false);}
+ (:typecheck(disableBackgroundCheck)) function tick(){
+  Background.deleteTemporalEvent();checks+=1;var used=System.getSystemStats().usedMemory;if(used>high){high=used;}ensure(System.getSystemStats().totalMemory==126784,"not ordinary memory");
+  if(view.downloaded==null||view.sfrBuild!=null||view.sfrRequested){ensure(checks<400,"initial complete scene timeout");observer.start(method(:tick),100,false);return;}
+  if(bitmap==null){bitmap=view.downloaded;epoch=feed.packet.validation;seal=feed.store.read("sf.commit")["seal"];sharedLabel=view.presentation.label;sharedSmall=view.presentation.latinSmall;image=Graphics.createBufferedBitmap({:width=>390,:height=>390,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();dc=image.getDc();}
+  ensure(view.downloaded==bitmap&&feed.packet.validation==epoch&&feed.store.read("sf.commit")["seal"].equals(seal),"locale changed source or bitmap");
+  if(phase>=targets.size()){observer.stop();observer=null;image=null;dc=null;log("COMPLETE locales="+phase+" ordinaryBytes=126784 sampledHigh="+high+" sameBitmap=true sourceEpoch="+epoch+" physicalDevice=false speakerReview=false");return;}
+  if(stage==0){expected=WatchUi.loadResource(targets[phase]);Application.Properties.setValue("Language",indices[phase]);SpaceFoxApp.onSettingsChanged();Background.deleteTemporalEvent();ensure(view.presentation.locale.equals(expected["locale"]),"locale fallback "+expected["locale"]);ensure(view.presentation.label==sharedLabel&&view.presentation.latinSmall==sharedSmall,"shared proper-name fonts changed");var keys=[];for(var k=0;k<keys.size();k+=1){var raw=view.presentation.word(keys[k]);ensure(raw.equals(expected["words"][keys[k]]),"wrong word "+keys[k]);var font=dc.getTextWidthInPixels(raw,view.presentation.count)>275?view.presentation.small:view.presentation.count;var shown=view.presentation.fit(dc,raw,font,275);ensure(!shown.equals("")&&dc.getTextWidthInPixels(shown,font)<=275,"word overflow "+keys[k]);dc.drawText(195,202,font,shown,Graphics.TEXT_JUSTIFY_CENTER);}loads=view.presentation.loads;drawState=0;stage=1;log("WORDS locale="+expected["locale"]+" keys=0 countFontHeight="+dc.getFontHeight(view.presentation.count)+" smallFontHeight="+dc.getFontHeight(view.presentation.small));observer.start(method(:tick),100,false);return;}
+  if(drawState<10){var labels=["NO SCHEDULE","DATE ONLY","LAUNCH WINDOW","TIME UNKNOWN",""];var snapshot=new ClockSnapshot("23:59",drawState<4?labels[drawState]:"");if(drawState>=4&&drawState<9){snapshot.remaining=[0,59,3599,3600,93784][drawState-4];}if(drawState==9){snapshot=view.snapshot();ensure(snapshot.remaining!=null,"actual minute target missing");ensure(view.presentation.countdown(snapshot,true).equals(CountdownFormat.format(snapshot.remaining)),"nominal minute countdown mismatch");}view.renderer.active(dc,snapshot,view.settings,view.values,view.fitness,0.0);var raw=view.presentation.countdown(snapshot,true);if(drawState<9){var literals=["--:--:--","--:--:--","--:--:--","--:--:--","00:00:00","00:00:59","00:59:59","01:00:00","26:03:04"];ensure(raw.equals(literals[drawState]),"numeric countdown differs");}var font=dc.getTextWidthInPixels(raw,view.presentation.count)>275?view.presentation.small:view.presentation.count;var shown=view.presentation.fit(dc,raw,font,275);ensure(!shown.equals("")&&dc.getTextWidthInPixels(shown,font)<=275,"countdown overflow");ensure(view.presentation.loads==loads,"dictionary allocation during draw");drawState+=1;observer.start(method(:tick),100,false);return;}
+  log("READY locale="+expected["locale"]+" words=0 renderedStates=10 sourceEpoch="+epoch+" sameBitmap=true sampledHigh="+high+" phoneSettingsRendered=false");WatchUi.requestUpdate();phase+=1;stage=0;expected=null;observer.start(method(:tick),1500,false);
+ }
+}

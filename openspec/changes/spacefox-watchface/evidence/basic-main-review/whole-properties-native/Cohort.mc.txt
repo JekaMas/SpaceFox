@@ -1,0 +1,1 @@
+import Toybox.Application;import Toybox.WatchUi; class LocaleCohortApp extends Application.AppBase { function initialize(){AppBase.initialize();} (:typecheck(disableBackgroundCheck)) function getInitialView(){return [new WatchUi.WatchFace()];}}

@@ -87,7 +87,7 @@ source validation SHALL remain distinct; content builds SHALL NOT renew source a
 
 ### Requirement: Current format and state recovery
 
-Releases SHALL preserve field assignments, locale, projection and feed URL through
+Releases SHALL preserve field assignments, locale and feed URL through
 same-current-format updates and recovery. The sole supported public format SHALL
 be native-motion-v3 / SFR1M envelope schema 3 at /feed.json. Unsupported input SHALL
 retain accepted current-format data with honest age and an actionable explanation.

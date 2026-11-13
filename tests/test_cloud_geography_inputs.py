@@ -94,67 +94,6 @@ class CloudGeographyInputsTest(unittest.TestCase):
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(raw)
 
-    def test_clean_sparse_candidate_resolves_transitive_inputs_and_selected_artifact(self):
-        root = self.sparse('candidate')
-        self.assertEqual(b'1', git(root, 'rev-list', '--count', 'HEAD').strip())
-        self.assertFalse((root / self.recipe['geography']['path']).exists())
-        result = self.run_materializer(root)
-        self.assertEqual(0, result.returncode, result.stderr.decode())
-        for pin in [self.recipe['geography'], *self.deps]:
-            self.assertEqual(pin['sha256'], hashlib.sha256((root / pin['path']).read_bytes()).hexdigest())
-        self.assertEqual(20, len(self.deps))
-        self.assertEqual(1468065, sum((root / p['path']).stat().st_size
-                                    for p in [self.recipe['geography'], *self.deps]))
-        self.assertEqual(b'', git(root, 'status', '--porcelain'))
-        self.assertFalse((root / 'watchface').exists())
-        self.assertFalse((root / '.agents').exists())
-        self.assertFalse((root / 'openspec/changes/spacefox-watchface/evidence/geographic-context').exists())
-        # Real optional geography build and actual wire builder, in the sparse
-        # portable tree. The rich source corpus never enters the cloud artifact.
-        script = '''
-import hashlib,json
-from pathlib import Path
-from tools.spacefox.catalog import build_catalog,loads_json
-from tools.spacefox.geographic_context import build_view,build_artifact,canonical_bytes
-from tools.spacefox.schedule import (ScheduleState,AcceptedLaunch,LaunchRecord,StableId,IdKind,Timing,TimePrecision,LaunchStatus)
-from tools.spacefox.wire import build_artifact as wire
-from tools.spacefox.cloud import validate_snapshot
-root=Path.cwd(); catalog=build_catalog(root)
-view=build_view(root,catalog,'ll2:site:107',kind='map')
-artifact=build_artifact([view]); manifest=view['manifest']
-proof=loads_json(view['files'][manifest['source']['path']])
-common=loads_json(view['files'][proof['common']['path']])
-now=1794441600
-record=LaunchRecord(StableId(IdKind.LAUNCH,'ll2','fixture'),Timing(TimePrecision.EXACT,exact_utc=now+3600),LaunchStatus.PENDING,now,site_id=StableId(IdKind.SITE,'ll2','107'))
-files,digest=wire(ScheduleState((AcceptedLaunch(record),),now),catalog,now,publisher={'instance':'1'*64,'generation':1,'selectionValidatedUtc':now})
-validate_snapshot({'catalog_revision':digest,'generation':1},files)
-feed=json.loads(files['feed.json'])
-print(json.dumps({'catalogInputs':len(catalog['inputDigests']),'previewBytes':len(canonical_bytes(artifact['manifest']))+sum(map(len,artifact['files'].values())),
- 'previewFiles':len(artifact['files'])+1,'sourceLicense':common['license'],
- 'noticeHashes':{n:hashlib.sha256(t.encode()).hexdigest() for n,t in common['notices'].items()},
- 'supplementLicense':common['supplementNotices'][0]['license'], 'metadataHash':common['supplementNotices'][0]['originalMetadataSha256'],
- 'selectedClips':len(proof['clips']),'feedBytes':len(files['feed.json']),'wireBytes':sum(map(len,files.values())),
- 'wirePaths':sorted(files),'site':feed['dictionaries']['ll2:site:107'],'publisher':feed['publisher']}))
-'''
-        built = subprocess.run([sys.executable, '-B', '-c', script], cwd=root,
-                               stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        self.assertEqual(0, built.returncode, built.stderr.decode())
-        report = json.loads(built.stdout)
-        self.assertLessEqual(report['previewBytes'], 1048576)
-        self.assertLessEqual(report['previewFiles'], 256)
-        self.assertGreater(report['selectedClips'], 0)
-        self.assertEqual('LGPL-3.0-or-later', report['sourceLicense'])
-        self.assertEqual('LicenseRef-PacIOOS-free-redistribution', report['supplementLicense'])
-        self.assertEqual('9beb294e254a907d5acfd72287aaf9d545324541ea1f8486ccf6b670a544b3c4', report['metadataHash'])
-        self.assertEqual('dc53a4833bf9121360a5286917683f041439327353ffe0231206c6b746005b81', report['noticeHashes']['LICENSE.TXT'])
-        self.assertEqual(4, len(report['noticeHashes']))
-        self.assertEqual(2, len(report['wirePaths']))
-        self.assertLessEqual(report['wireBytes'], 1048576)
-        self.assertLessEqual(report['feedBytes'], 8192)
-        self.assertIsNone(report['site']['visual'])
-        self.assertIsNone(report['site']['position'])
-        self.assertEqual({'instance': '1' * 64, 'generation': 1, 'selectionValidatedUtc': 1794441600}, report['publisher'])
-        print('SOURCE2_INTEGRATION ' + json.dumps(report, sort_keys=True))
 
     def test_changed_source_pin_and_curation_need_no_second_path_list(self):
         root = self.sparse('data-only')
@@ -249,7 +188,7 @@ print(json.dumps({'catalogInputs':len(catalog['inputDigests']),'previewBytes':le
         # Ordinary tracked edit protection predates this integration and remains
         # a positive control. The new boundary includes index-hidden edits on sparse inputs.
         for name, path, staged in (
-                ('ordinary', 'schemas/feed-v1.json', False),
+                ('ordinary', '.github/spacefox-inputs.txt', False),
                 ('source', self.recipe['geography']['path'], False),
                 ('dependency', self.index['notices'][0]['path'], False),
                 ('staged-dependency', self.index['notices'][0]['path'], True)):

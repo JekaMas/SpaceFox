@@ -1,8 +1,8 @@
 # Serialized current cloud delivery
 
 Current operation publishes the sole schema3/SFR1M native-motion-v3 `/feed.json`.
-The current authority is `refs/heads/feed-state-motion-v3`, anchored by
-`refs/tags/spacefox-state-bootstrap-motion-v3`; cloud.json remains its auxiliary
+The current authority is `refs/heads/feed-state-map-v3`, anchored by
+`refs/tags/spacefox-state-bootstrap-map-v3`; cloud.json remains its auxiliary
 cloud journal. Only packed schema2 authority and current-format exact saved
 artifact recovery are supported. No old feed roots, prior-major retention, old
 state import/migration or transition-period gate applies. Source age, rolling
@@ -34,9 +34,8 @@ boundary. Remote started-Pages cancellation remains open.
 
 The metadata/art successor is locally integrated and requires separate later
 publication and hosted qualification. The rich global catalog stays off-watch;
-full selected map71GET, flat-map-only, native efficiency/globe, worldwide,
-primary26 finite software qualification, phone/FR165 and Store remain separate
-open requirements. The historical v1/v2 observations do not imply current service
+The current basic unit uses one flat map and five primary languages.
+Broader worldwide artwork, phone/FR165 and Store acceptance remain separate. The historical v1/v2 observations do not imply current service
 adoption; their former indefinite/90day compatibility policies are retired. Genuine cron had zero observed executions
 through2026-11-12 08:56UTC. Four literal UTC-minute entries are diagnostic
 re-registration, not a proven repair or an observed scheduled cycle.
