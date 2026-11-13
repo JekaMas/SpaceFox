@@ -95,3 +95,8 @@ quota reservation timestamps, or wait a complete rolling hour before any new
 provider call. Source validation advances only after an actual successful fetch.
 This sequence is a plan, not an observed public cutover or permission supplied by
 this specification-edit unit; root owns the separately authorized execution.
+
+Current basic target: fixed 24-hour `HH:mm`, one numeric accumulating-hour
+`HH:mm:ss` countdown, one faded flat map and four fixed positions with six metric
+roles. Settings expose Auto plus en/ru/de/fr/es and FeedBaseUrl; retain all36
+internal language resources. No globe, projection or hiding/layout choices.

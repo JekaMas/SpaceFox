@@ -84,13 +84,18 @@ display names. Do not expand display work with synthetic mixed scripts, arbitrar
 Unicode or normative edgecase vectors. Grapheme/input integrity is required for
 this real corpus; source-time/arithmetic/error boundaries remain technical contracts.
 
-All 36 locale resources and selection IDs remain. The existing 26 primary modes
-have mandatory finite-corpus FR165 font/glyph/RTL/layout checks; ten are best-effort.
+All 36 locale resources and selection IDs remain. The five primary modes
+have mandatory finite-corpus FR165 font/glyph/layout checks; 31 are best-effort.
 `tools/language_support.py` reports software observations separately from unobserved
-human and physical evidence. Human translation review is not an extra all26 software
+human and physical evidence. Human translation review is not an extra five-language software
 prerequisite. Physical product acceptance remains a separate existing release task.
 Criterion booleans alone do not admit languages. Production selection and manifest
 admission use `supportPolicy.softwareQualifiedLocales` only after validation of its
 source-bound finite-corpus software proof; English remains the bootstrap fallback.
 Per-row `nativeQualified`, human and physical flags stay truthful and do not control
 software admission. Translations remain draft until actually reviewed.
+
+
+## 2026-11-13 basic five-language cutover
+
+The mandatory primary set is English, Russian, German, French and Spanish; the remaining 31 catalog resources are best-effort. The face uses numeric `HH:mm:ss` countdowns and fixed flat-map geometry. Earlier 26-language and RTL observations are historical, not expanded current gates. Current admission remains fail-closed and source-bound; physical and human observations remain separate.

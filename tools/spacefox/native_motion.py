@@ -1,4 +1,4 @@
-"""Current source-bound SFR1M motion artifact with two origin marks.
+"""Current source-bound SFR1M motion artifact with a fixed model-origin mark.
 
 SFR1 is the finite pixel codec; source records retain producer provenance.
 """
@@ -14,8 +14,7 @@ PROFILE = 'native-motion-v3'
 FEED_PATH = 'feed.json'
 RENDERER = 'SFR1M'
 LAYOUT = 'native-04-motion-v1'
-GLOBE_LAYOUT = 'native-04-globe-motion-v1'
-ROLES = ('map', 'rocket', 'operator', 'modelOrigin', 'operatorOrigin')
+ROLES = ('map', 'rocket', 'operator', 'modelOrigin')
 
 
 def require(ok, reason):
@@ -233,12 +232,11 @@ def build_artifact(state, catalog, now, *, publisher, policy=None, traversal=Non
                               sourceCanvas=visual[3], motionSource=motion, animation=animation)
             rocket = dict(entityId=original_rocket['entityId'], descriptor=put(files, descriptor))
         origin_roles = {}
-        for kind in ('model', 'operator'):
+        for kind in ('model',):
             value = source_read(files, origins[kind]['sourceRecord'])
             origin_roles[kind + 'Origin'] = None if value['asset'] is None else dict(
                 entityId=origins[kind]['countryId'], descriptor=_raster(files, value['asset']['sourceDescriptor']))
-        for selection_key, transfer_key, layout in (('visualSelection', 'nativeTransfer', LAYOUT),
-                ('globeSelection', 'globeTransfer', GLOBE_LAYOUT)):
+        for selection_key, transfer_key, layout in (('visualSelection', 'nativeTransfer', LAYOUT),):
             if selection_key not in old:
                 continue
             scene = loads_json(read_ref(old[selection_key], files))
@@ -307,7 +305,7 @@ def validate_artifact(files):
     if feed['launch'] is None:
         require(not entries and not cat['unresolved'] and feed['visualSelection'] is None, 'empty selection catalog')
     first = None
-    for selection_key, transfer_key, layout in (('visualSelection', 'nativeTransfer', LAYOUT), ('globeSelection', 'globeTransfer', GLOBE_LAYOUT)):
+    for selection_key, transfer_key, layout in (('visualSelection', 'nativeTransfer', LAYOUT),):
         if selection_key not in feed:
             continue
         ref = feed[selection_key]
@@ -357,6 +355,8 @@ def validate_artifact(files):
                 if owner is not None:
                     name=owner['facts'].get('fullName') or owner['facts'].get('name')
                     require(scene[key] in entries and entries[scene[key]]['name']==name, 'catalog owner name')
+                if kind == 'operator':
+                    continue
                 binding = scene['roles'][kind+'Origin']
                 if source['asset'] is None:
                     require(binding is None, 'missing origin mark')
@@ -388,7 +388,7 @@ def validate_artifact(files):
                         and type(rd['shards']) is list and 1 <= len(rd['shards']) <= 32, 'raster shape')
                 if role == 'map':
                     require(rd['sourceSemanticSha256'] is None, 'map semantic digest')
-                    visuals = static.native_globe.visuals(files,source_desc) if layout == GLOBE_LAYOUT else static._map_visuals(files,source_desc)
+                    visuals = static._map_visuals(files,source_desc)
                 else:
                     visual,_ = static._asset(files,source['descriptor']); visuals=[visual]
                     require(rd['sourceSemanticSha256'] == source_desc['sha256'], 'visual source digest')

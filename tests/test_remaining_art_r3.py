@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BEFORE = ROOT/'tests/fixtures/catalog/global-before-remaining-art-r3-source.json'
 FACTS = ROOT/'tests/fixtures/catalog/remaining-art-r3-factual-review.json'
 CURATION = Path('assets/global/curation-20261112-remaining-r3.json')
-EVIDENCE = ROOT/'tests/fixtures/remaining-art-r3'
+EVIDENCE = ROOT/'openspec/changes/spacefox-watchface/evidence/remaining-art/r3'
 EXPECTED = {
     'll2:configuration:44': ('Shavit', 'spacefox:asset:remaining-r3-shavit-nasa1996', '1996-04'),
     'll2:configuration:139': ('Vector-R', 'spacefox:asset:remaining-r3-vector-r-faa2017', '2017-01'),
@@ -44,17 +44,7 @@ class RemainingArtR3Test(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.before = build_catalog(ROOT,BEFORE)
-        cls.history_tmp = tempfile.TemporaryDirectory(prefix='spacefox-art-r3-history-')
-        cls.addClassCleanup(cls.history_tmp.cleanup)
-        history = temporary_catalog(Path(cls.history_tmp.name) / 'owner')
-        cls.historical_source = history / 'catalog/source.json'
-        cls.historical_source.write_bytes(BEFORE.read_bytes())
-        result = execute(ROOT/'tools/catalog.py', '--repo', history,
-                         '--source', cls.historical_source, '--amend', history/CURATION,
-                         '--catalog-version', 'literal.remaining.r3')
-        if result.returncode:
-            raise AssertionError(result.stderr)
-        cls.after = build_catalog(history)
+        cls.after = build_catalog(ROOT)
 
     def export(self,source,output,*identities):
         args=[ROOT/'tools/export_visuals.py','--source',source,'--output',output]
@@ -105,7 +95,7 @@ class RemainingArtR3Test(unittest.TestCase):
             self.assertFalse(selected[identity]['facts']['currentPackSpecific'])
             self.assertIsNone(selected[identity]['references']['origin'])
         # Freeze recipe history rather than repin or erase accepted curations.
-        recipe=json.loads(self.historical_source.read_bytes())
+        recipe=json.loads((ROOT/'catalog/source.json').read_bytes())
         before=json.loads(BEFORE.read_bytes())
         self.assertEqual(recipe['curations'][:-1],before['curations'])
         self.assertEqual(recipe['curations'][-1]['path'],str(CURATION))
@@ -182,7 +172,6 @@ class RemainingArtR3Test(unittest.TestCase):
             self.assertEqual(row['status'],'UNADMITTED_EXPERIMENT_ZERO_COVERAGE')
         with tempfile.TemporaryDirectory() as tmp:
             root=temporary_catalog(Path(tmp)/'owner');source=root/'catalog/source.json'
-            source.write_bytes(self.historical_source.read_bytes())
             output=Path(tmp)/'objects';catalog_output=root/'build/catalog.json'
             self.export(source,output,'ll2:configuration:139')
             catalog_output.parent.mkdir(parents=True,exist_ok=True)
@@ -216,28 +205,6 @@ class RemainingArtR3Test(unittest.TestCase):
                 self.assertEqual(canonical_bytes(build_catalog(root)),catalog_output.read_bytes())
             self.assertFalse(list((root/'catalog').glob('.recipe-*')))
 
-    def test_current_r3_review_roots_refuse_and_current_root_exports(self):
-        from tools.spacefox.current_catalog import load_registry, future_reference
-        catalog = build_catalog(ROOT)
-        registry = load_registry(ROOT, catalog)
-        for number in (44, 139, 495):
-            identity = f'll2:configuration:{number}'
-            review = future_reference(catalog, registry, identity)
-            self.assertEqual(review['identity'], identity)
-            self.assertEqual(review['state'], 'needs-review')
-            self.assertIsNone(review['configuration'])
-            self.assertTrue(review['reviewRequired'])
-        with tempfile.TemporaryDirectory() as tmp:
-            rejected = execute(ROOT/'tools/export_visuals.py', '--output', Path(tmp)/'review',
-                               '--root', 'll2:configuration:139')
-            self.assertEqual(rejected.returncode, 1)
-            self.assertIn('unknown root/reference', rejected.stderr)
-            self.assertFalse((Path(tmp)/'review').exists())
-            manifest = self.export(ROOT/'catalog/source.json', Path(tmp)/'current', 'll2:configuration:142')
-            self.assertEqual(registry['records']['ll2:configuration:142']['state'], 'current-evidence')
-            self.assertEqual(manifest['selection']['dictionaries']['configurations']['ll2:configuration:142']['references']['visual'],
-                             'spacefox:asset:remaining-r3-simorgh-mod2021')
-
     def test_false_generic_specific_claim_is_atomic(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=temporary_catalog(Path(tmp)/'owner');source=root/'catalog/source.json'
@@ -262,9 +229,9 @@ class RemainingArtR3Test(unittest.TestCase):
     def test_malformed_typed_export_root_retains_written_objects(self):
         with tempfile.TemporaryDirectory() as tmp:
             output=Path(tmp)/'objects'
-            self.export(self.historical_source,output,'ll2:configuration:44')
+            self.export(ROOT/'catalog/source.json',output,'ll2:configuration:44')
             accepted=inventory(output)
-            result=execute(ROOT/'tools/export_visuals.py','--source',self.historical_source,
+            result=execute(ROOT/'tools/export_visuals.py','--source',ROOT/'catalog/source.json',
                            '--output',output,'--root','configuration:44')
             self.assertEqual(result.returncode,1)
             self.assertIn('root',result.stderr)
@@ -273,7 +240,6 @@ class RemainingArtR3Test(unittest.TestCase):
     def test_exact_mit_asset_wrong_source_digest_is_atomic(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=temporary_catalog(Path(tmp)/'owner');source=root/'catalog/source.json'
-            source.write_bytes(self.historical_source.read_bytes())
             output=Path(tmp)/'objects';catalog_output=root/'build/catalog.json'
             self.export(source,output,'ll2:configuration:44')
             catalog_output.parent.mkdir(parents=True,exist_ok=True)

@@ -53,7 +53,7 @@ country SHALL NOT automatically become vehicle origin or launch country.
 
 #### Scenario: Vehicle launches abroad
 - **WHEN** an operator and rocket originate in one jurisdiction and launch from another
-- **THEN** place text and map use the launch site while the body flag uses only the selected verified origin mode and the company mark identifies the supplied launch operator
+- **THEN** place text and map use the launch site while the body flag uses only the verified model origin and the company mark identifies the supplied launch operator
 
 #### Scenario: Government or multinational operator
 - **WHEN** the organization is an agency or has several associated countries
@@ -96,7 +96,7 @@ substitute for completing the known-model artwork acceptance gate.
 ### Requirement: Geographic coverage for every launch point
 
 Every required site SHALL retain its pad-level identity and sourced coordinates
-or an explicit unavailable state. Full-screen map and globe SHALL work
+or an explicit unavailable state. The full-screen flat map SHALL work
 worldwide, including small islands, polar regions, the date line, sea/air launches
 and foreign-operated pads. Shared world geometry or qualified regional detail
 SHALL serve the point; missing country artwork SHALL NOT suppress a valid point.
@@ -264,15 +264,14 @@ third-party rights remain separate.
 
 ### Requirement: Curated origin and independent operator marks
 
-Graphics MAY carry body origin/company marks. Origin SHALL use curated model or
-selected-operator provenance, never launch country or cross-mode fallback. Missing
+Graphics MAY carry body origin/company marks. Origin SHALL use curated model provenance, never launch country or operator fallback. Missing
 identity SHALL omit its mark; regions SHALL remain explicit. Readable model/operator
 labels SHALL remain. Official artwork SHALL retain separately established terms;
 original letter badges MAY substitute.
 
 #### Scenario: Origin differs from launch country
-- **WHEN** a rocket launches abroad or the user switches model-origin to operator-origin
-- **THEN** the body flag follows only the selected curated origin, the company mark follows only the supplied operator, the launch-site map stays unchanged, and absent selected provenance does not become a guessed national flag
+- **WHEN** a rocket launches abroad
+- **THEN** the body flag follows only the curated model origin, the company mark follows only the supplied operator, the launch-site map stays unchanged, and absent model-origin provenance does not become a guessed national flag
 
 ### Requirement: Bounded selection manifest
 
@@ -336,7 +335,7 @@ The sole `native-motion-v3` producer SHALL publish schema-3 SFR1M through
 /feed.json with the existing immutable scene agreement. Lossless selected
 pixels, typed identities, source provenance and ages SHALL remain digest bound;
 finite bounds and ordinary native lifecycle SHALL satisfy the scenarios below.
-This profile SHALL NOT establish physical, globe, catalog-frame or locale acceptance.
+This profile SHALL NOT establish physical, catalog-frame or locale acceptance.
 
 #### Scenario: Complete selected scene within native budgets
 - **WHEN** the selected full actual producer scene is cold, warm or reopened on the qualified FR1655.2 Simulator with HTTPS requirements enabled

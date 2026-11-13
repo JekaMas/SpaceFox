@@ -1,0 +1,123 @@
+{
+  "reason": "The current named case pairs use the identical executed test assertion and scenario; retain one observation, not duplicate proof. Prior N16/N17 aliases transitively follow these mappings.",
+  "aliases": {
+    "WF12.P1.N14.POSITIVE.CURRENT": "WF12.P1.S01.POSITIVE",
+    "WF12.P1.N15.NEGATIVE.CURRENT": "WF12.P1.S02.NEGATIVE"
+  },
+  "originalCases": [
+    {
+      "id": "WF12.P1.N14.POSITIVE.CURRENT",
+      "property_id": "WF12.P1",
+      "polarity": "positive",
+      "scenario": "Supported language changes",
+      "scenario_fingerprint": "9034d5d164cf09649f64aca615dfb6a1fc4a38eb7220e5028ab8fbd1f86d4ecb",
+      "setup": "Use exact captured real launch records and actual UI/menu text in the sole schema3 /feed.json SFR1M envelope; valid current candidate and same-format accepted recovery state.",
+      "observable": "Retain all36 resource/selection modes with English fallback. Qualify primary26 only on complete real launches since2021-11-13UTC plus all published future pages to next=null and actual UI/menu strings; preserve real graphemes, glyphs, RTL, physical scene order, date/number/time/slot identity and memory bounds. Human review is optional/unobserved; physical release proof is separate; no invented display strings or normative Unicode edgecase gate. Scenario: Supported language changes.",
+      "red_expectation": "A violated current scenario, false completeness, mixed identity, changed source age/quota or invalid activation must fail this case.",
+      "green_expectation": "Observe the named current-owner outcome with exact source/identity/age/quota and resource bounds; no old-format or invented-display pass substitutes.",
+      "invalidation_dependencies": [
+        "corpus/real-schedule-20261113/**",
+        "locales/**",
+        "tests/test_current_format_acceptance.py",
+        "tests/test_native_locale_runtime.py",
+        "tools/build_native_graphemes.py",
+        "tools/build_native_localization.py",
+        "tools/language_support.py",
+        "tools/run_native_localization.py",
+        "tools/spacefox/native_motion.py",
+        "watchface/localization-tests/**",
+        "watchface/resources*/**",
+        "watchface/scene-tests/**",
+        "watchface/source/LocalePresentation.mc",
+        "watchface/source/SceneSettings.mc",
+        "watchface/source/WatchClock.mc",
+        "watchface/source/generated/LocaleGraphemes.mc",
+        "watchface/source/generated/SceneStrings.mc",
+        "watchface/toolchain-lock.json",
+        "tests/test_language_settings_evidence.py",
+        "tests/test_native_finite_evidence.py",
+        "tests/test_native_language_policy.py",
+        "tools/native_language_policy.py",
+        "tools/qualify_native_finite.py",
+        "tools/native_finite_display.py",
+        "openspec/changes/spacefox-watchface/evidence/language-settings-whole/**"
+      ],
+      "test_id": "unittest::tests.test_language_settings_evidence.LanguageSettingsEvidenceTest.test_normal_admission_and_current_settings",
+      "command_id": "language-settings-source-bound-evidence",
+      "state": "planned",
+      "source_path": "tests/test_language_settings_evidence.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical firmware/hardware replaced by actual official Garmin simulator; native app classes/fonts and SDKGraphics execute.",
+        "allowed_proof": "Exact native simulator behavior and selected assertions. Unit framework uses enlarged heap; ordinary-app memory/glyph screenshots require their distinct observers.",
+        "forbidden_claims": [
+          "Physical WW/APAC glyph/BLE/battery or Store acceptance",
+          "Human native-speaker review",
+          "Resource count is language qualification",
+          "Unit-test heap is ordinary126784-byte heap"
+        ]
+      },
+      "source_sha256": "734d66baca54b55ee0a877ba2532ecbb73ca84bbb8c7e9eb92d6ba7b57be2375",
+      "distinct_reason": "Scenario Supported language changes: current cases sharing this exact assertion are duplicate contracts and bind the same one execution plus complementary source-bound native receipts; no duplicate SDK run is asserted.",
+      "implementation_note": "See evidence/language-settings-whole/RESUME.md for exact clause mapping, corruption controls, actual source/launcher boundaries, independent visual scope and the deliberately retained old observations.",
+      "planning_note": "Previously observed receipt is historical after fixed-map/settings cutover. Rebind only after its complete current assertion is revalidated."
+    },
+    {
+      "id": "WF12.P1.N15.NEGATIVE.CURRENT",
+      "property_id": "WF12.P1",
+      "polarity": "negative",
+      "scenario": "Unsupported language or glyphs",
+      "scenario_fingerprint": "6448843b97991417c43f268b426a0530db4a8ea85cf595acdbc0066653eef735",
+      "setup": "Use exact captured real launch records and actual UI/menu text in the sole schema3 /feed.json SFR1M envelope; mutate actual record/object fields or interrupt at the named technical failure boundary.",
+      "observable": "Retain all36 resource/selection modes with English fallback. Qualify primary26 only on complete real launches since2021-11-13UTC plus all published future pages to next=null and actual UI/menu strings; preserve real graphemes, glyphs, RTL, physical scene order, date/number/time/slot identity and memory bounds. Human review is optional/unobserved; physical release proof is separate; no invented display strings or normative Unicode edgecase gate. Scenario: Unsupported language or glyphs.",
+      "red_expectation": "A violated current scenario, false completeness, mixed identity, changed source age/quota or invalid activation must fail this case.",
+      "green_expectation": "Observe the named current-owner outcome with exact source/identity/age/quota and resource bounds; no old-format or invented-display pass substitutes.",
+      "invalidation_dependencies": [
+        "corpus/real-schedule-20261113/**",
+        "locales/**",
+        "tests/test_current_format_acceptance.py",
+        "tests/test_native_locale_runtime.py",
+        "tools/build_native_graphemes.py",
+        "tools/build_native_localization.py",
+        "tools/language_support.py",
+        "tools/run_native_localization.py",
+        "tools/spacefox/native_motion.py",
+        "watchface/localization-tests/**",
+        "watchface/resources*/**",
+        "watchface/scene-tests/**",
+        "watchface/source/LocalePresentation.mc",
+        "watchface/source/SceneSettings.mc",
+        "watchface/source/WatchClock.mc",
+        "watchface/source/generated/LocaleGraphemes.mc",
+        "watchface/source/generated/SceneStrings.mc",
+        "watchface/toolchain-lock.json",
+        "tests/test_language_settings_evidence.py",
+        "tests/test_native_finite_evidence.py",
+        "tests/test_native_language_policy.py",
+        "tools/native_language_policy.py",
+        "tools/qualify_native_finite.py",
+        "tools/native_finite_display.py",
+        "openspec/changes/spacefox-watchface/evidence/language-settings-whole/**"
+      ],
+      "test_id": "unittest::tests.test_native_finite_evidence.NativeFiniteEvidenceTest.test_rehashed_native_log_probe_sdk_and_corpus_corruptions_refuse",
+      "command_id": "current-finite-observation-admission",
+      "state": "planned",
+      "source_path": "tests/test_native_finite_evidence.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical firmware/hardware replaced by actual official Garmin simulator; native app classes/fonts and SDKGraphics execute.",
+        "allowed_proof": "Exact native simulator behavior and selected assertions. Unit framework uses enlarged heap; ordinary-app memory/glyph screenshots require their distinct observers.",
+        "forbidden_claims": [
+          "Physical WW/APAC glyph/BLE/battery or Store acceptance",
+          "Human native-speaker review",
+          "Resource count is language qualification",
+          "Unit-test heap is ordinary126784-byte heap"
+        ]
+      },
+      "source_sha256": "9f7264734dd7b061c66bade1697cc4dd7ae9dc219b84309a152d4c040b771b79",
+      "distinct_reason": "Scenario Unsupported language or glyphs: current cases sharing this exact assertion are duplicate contracts and bind the same one execution plus complementary source-bound native receipts; no duplicate SDK run is asserted.",
+      "implementation_note": "See evidence/language-settings-whole/RESUME.md for exact clause mapping, corruption controls, actual source/launcher boundaries, independent visual scope and the deliberately retained old observations.",
+      "planning_note": "Previously observed receipt is historical after fixed-map/settings cutover. Rebind only after its complete current assertion is revalidated."
+    }
+  ]
+}

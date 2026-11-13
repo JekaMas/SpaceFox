@@ -13,21 +13,12 @@ in this same format, require a strictly higher generation. Current-format
 accepted/pending recovery preserves exact bytes, immutable closure, quota and
 source-validation times; no old-format migration or adoption is required.
 
-The new closed scene layouts are `native-04-motion-v1` and
-`native-04-globe-motion-v1`. Both carry independently typed model and supplied
-operator origin bindings. Each binding contains its exact owner ID, nullable
-country ID, and a digest-addressed canonical owner source record. Five roles
-bind the map, rocket, supplied company mark, model-origin flag and operator-origin
-flag. The site country remains a separate site fact. Unknown origin provenance
-does not borrow the other origin or site country. A null role means no verified
-licensed mark is available. When both owners have the same country and flag,
-their explicit owner bindings remain separate while the exact descriptor,
-transfer bytes, decoder and completed bitmap are shared.
-
-After a complete scene activates, changing Origin between model, operator and
-hidden selects its already prepared flag bitmap. The supplied company mark is
-independent of that setting. No source age, publisher generation, geography,
-accepted seal or optional transfer is changed by this choice.
+The sole closed scene layout is `native-04-motion-v1`. Its four raster roles are
+map, rocket, supplied operator mark and model-origin flag. Source records retain
+separate model and operator identity/provenance, but no operator-origin raster or
+origin choice is exposed. Unknown model origin never borrows operator or site
+country. The site marker stays tied to the selected source point. Globe fields,
+alternate scene roots and projection settings are rejected by the closed format.
 
 Static source artwork and motion have separate representations. The original
 asset remains a real static SVG/SFV image with its source, license and content
@@ -48,9 +39,9 @@ time equals duration, translations lie in ±2048, and scale lies in128–512.
 The source canvas has two integer dimensions in1–256. Rendering fits that
 canvas uniformly into the existing54×124 bay using
 `s = min(54 / width, 124 / height)`. Both translations use `s / 32`, and scale
-uses `/256` around the fitted bay's center(27,62). The body, company and chosen
+uses `/256` around the fitted bay's center(27,62). The body, company and model-origin
 flag use the same transform and clipping rectangle. The existing generic ascent
-is applied to their common position; the site marker stays on the map/globe.
+is applied to their common position; the site marker stays on the flat map.
 Transforms, draw options and bitmaps are prepared once, outside redraw.
 
 An image or timeline replacement is a catalog data operation. It creates new

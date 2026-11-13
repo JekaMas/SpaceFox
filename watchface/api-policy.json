@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "scope": "Explicit API inventory candidate for SDKfr165 scene; simulator runtime evidence required and physical qualification remains open",
+  "qualified_source_apis": [
+    "Application.AppBase.initialize/getInitialView",
+    "WatchUi.WatchFace.initialize/onUpdate/onEnterSleep/onExitSleep",
+    "WatchUi.requestUpdate",
+    "Time.now/Moment.value",
+    "System.getClockTime/getDeviceSettings.is24Hour",
+    "Graphics.Dc.clear/setColor/drawText/getWidth",
+    "Graphics.FONT_NUMBER_HOT/FONT_SMALL/TEXT_JUSTIFY_CENTER",
+    "Lang.Number.toLong/Lang.Long.toLong",
+    "Application.Properties.getValue/setValue and AppBase.onSettingsChanged",
+    "ActivityMonitor.getInfo/Info.steps/calories guarded",
+    "System.getSystemStats.battery",
+    "SensorHistory.getHeartRateHistory/getBodyBatteryHistory/getStressHistory one newest sample and SensorSample.when/data guarded; permission SensorHistory",
+    "Graphics.Dc.drawBitmap/drawCircle/fillCircle/setPenWidth/drawRectangle/drawLine/fillPolygon/drawEllipse/getTextWidthInPixels",
+    "Graphics.COLOR_TRANSPARENT; sparse font is derived licensed Aod40 custom resource",
+    "WatchUi.loadResource/animate/cancelAllAnimations; animate only actual VM high-power onExitSleep2.5seconds; synthetic View flag is not API admission",
+    "Background temporal registration/getLastTemporalEventTime/getTemporalEventRegisteredTime API3 diagnosticreadback/deleteTemporalEvent/exit; actual OS service context experiments separate from unit mode",
+    "Communications.makeWebRequest GET, TEXT_PLAIN on application/json empirically pinnedSDK5.2; no octet-stream",
+    "Application.Storage string-key read/write/delete; actual context/serialized bounds measured separately",
+    "Cryptography.Hash SHA256/update(ByteArray)/digest, UTF8 chunks; actual native literal agreement",
+    "Lang.String.compareTo and Array.sort(null) API5.0 with minAPI5.1; Number/Long narrowing before Array indexes",
+    "Graphics.createBufferedBitmap alpha-blending, AffineTransform.setToTranslation/scale API4.2 cached outside redraw, drawBitmap2, setClip/clearClip; cached bitmap built at activation, runtime proof separate",
+    "StringUtil.convertEncodedString UTF8 ByteArray\u2192String API3.0; one-time persistent reassembly, ordinary heap experiment separate",
+    "Compiler :extendedCode API5.1; parser/source/raster validation classes paged; redraw/clock remain resident, actualFR165 runtime/statistics required",
+    "AppBase.onDisplayModeChanged/System.getDisplayMode API5.0 HIGH/LOW/OFF; actual current SDK mode0/1 synchronization, animation still only real onExitSleep",
+    "Graphics.getVectorFont API4.2.1 using :face/:size on pinnedFR165 API5.2; shared Roboto proper names and locale fonts loaded at prepare, actual fullstore callbacks/captures and same-font redraw proof; :font/:scale API5.1 not used here"
+  ],
+  "runtime_api": "5.2.0",
+  "evidenced_rejections": [
+    {
+      "symbol": "HTTP_RESPONSE_CONTENT_TYPE_OCTET_STREAM",
+      "since": "6.0.3",
+      "reason": "Official SDK docs place this octet-stream response feature after the FR165 API5.2 baseline; empirical compiler accepts an inlined constant, so compile alone is insufficient"
+    }
+  ],
+  "limitations": "This explicit symbol admission guard does not establish alias-aware/general API compatibility. New APIs need source review/profile qualification; full RL01.P1 stays planned.",
+  "qualified_test_only_apis": [
+    "Graphics.createBufferedBitmap/get/getDc API4 on pinned5.2runtime; deprecatedBufferedBitmapconstructor compile-only counterexample retained"
+  ]
+}

@@ -124,11 +124,16 @@ Existing bundled preview fonts retain their respective SIL OFL notices. No new
 native font family, native localization qualification or Garmin SDK content is
 included in this publisher/content snapshot.
 
-## Captured publisher test data
+## Unicode segmentation data
 
-`tests/fixtures/provider/current-starship/` and
-`tests/fixtures/metadata-current/` contain retained Launch Library 2 response
-bytes for offline qualification. Their accompanying receipts pin the captured
-bytes and provenance. These upstream responses are not relicensed by the project
-MIT license; The Space Devs' source terms and attribution apply. The replay does
-not represent a new provider observation.
+Unicode 17.0.0 GraphemeBreakProperty, GraphemeBreakTest, emoji-data and
+DerivedCoreProperties are pinned under `tests/fixtures/native_localization/unicode17`.
+They and the generated compact runtime property table retain the
+[Unicode License V3](tests/fixtures/native_localization/unicode17/LICENSE.txt),
+copyright © 1991–2026 Unicode, Inc. Official source is
+[Unicode UCD 17.0.0](https://www.unicode.org/Public/17.0.0/ucd/); the retained
+license was retrieved from https://www.unicode.org/license.txt.
+`tools/build_native_graphemes.py` derives the compact table;
+`tools/build_native_locale_oracle.py` independently transcribes the normative
+break markers into native tests. This data license is distinct from SpaceFox MIT.
+Built-in Garmin font names are API references; SDK font files remain external.

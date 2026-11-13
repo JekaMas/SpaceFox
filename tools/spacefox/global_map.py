@@ -33,21 +33,13 @@ def position(latitude, longitude):
 
 
 def project(latitude, longitude, *, kind='map', center=(0, 0), size=256):
-    """Equirectangular or orthographic projection; None is the back hemisphere."""
+    """The current flat equirectangular map projection."""
     lat, lon = position(latitude, longitude)
-    lat0, lon0 = position(*center)
-    _require(kind in ('map', 'globe') and type(size) is int and 8 <= size <= 256, 'unsupported projection/canvas')
-    # One-pixel inset retains points at the poles/date line inside the canvas.
+    _, lon0 = position(*center)
+    _require(kind == 'map' and type(size) is int and 8 <= size <= 256, 'unsupported projection/canvas')
     extent = size - 2
-    if kind == 'map':
-        delta = (lon - lon0 + 180) % 360 - 180
-        return (1 + (delta + 180) / 360 * extent, 1 + (90 - lat) / 180 * extent)
-    phi, lam, phi0 = math.radians(lat), math.radians(lon - lon0), math.radians(lat0)
-    z = math.sin(phi0)*math.sin(phi) + math.cos(phi0)*math.cos(phi)*math.cos(lam)
-    if z < -1e-12:
-        return None
-    return (size/2 + extent/2*math.cos(phi)*math.sin(lam),
-            size/2 - extent/2*(math.cos(phi0)*math.sin(phi)-math.sin(phi0)*math.cos(phi)*math.cos(lam)))
+    delta = (lon - lon0 + 180) % 360 - 180
+    return (1 + (delta + 180) / 360 * extent, 1 + (90 - lat) / 180 * extent)
 
 
 def load_world(root, catalog):
@@ -76,12 +68,6 @@ def load_world(root, catalog):
     return world
 
 
-def _xyz(lat, lon, center):
-    phi, lam, phi0 = math.radians(lat), math.radians(lon-center[1]), math.radians(center[0])
-    return (math.cos(phi)*math.sin(lam), math.cos(phi0)*math.sin(phi)-math.sin(phi0)*math.cos(phi)*math.cos(lam),
-            math.sin(phi0)*math.sin(phi)+math.cos(phi0)*math.cos(phi)*math.cos(lam))
-
-
 def _segments(a, b, kind, center, size):
     """Clip each geographic source segment at the date line or visible limb."""
     n = size - 2
@@ -96,14 +82,7 @@ def _segments(a, b, kind, center, size):
         t = (edge-x)/dx; lat = float(a[1])+t*(float(b[1])-float(a[1]))
         return [(screen(x,float(a[1])),screen(edge,lat)),
                 (screen(-edge,lat),screen(end-2*edge,float(b[1])))]
-    u, v = _xyz(float(a[1]),float(a[0]),center), _xyz(float(b[1]),float(b[0]),center)
-    if u[2] < 0 and v[2] < 0: return []
-    if (u[2] < 0) != (v[2] < 0):
-        t = u[2]/(u[2]-v[2]); h = tuple(u[i]+t*(v[i]-u[i]) for i in range(3))
-        length = math.hypot(h[0],h[1]); h = (h[0]/length,h[1]/length,0)
-        if u[2] < 0: u = h
-        else: v = h
-    return [((size/2+n/2*u[0],size/2-n/2*u[1]),(size/2+n/2*v[0],size/2-n/2*v[1]))]
+    raise GeographyError('unsupported projection')
 
 
 def world_visuals(world, *, kind='map', center=(0, 0), size=256):
@@ -149,7 +128,8 @@ def build_site_view(root, catalog, site_id, *, kind='map', event_position=None):
             position(event_position['latitude'],event_position['longitude'])
             pos = event_position
         elif mode == 'mobile-reference-no-event': pos = None
-        center = (pos['latitude'],pos['longitude']) if kind == 'globe' and pos else (0,0)
+        _require(kind == 'map', 'unsupported projection')
+        center = (0,0)
         marker = project(pos['latitude'],pos['longitude'],kind=kind,center=center) if pos else None
         world = load_world(root,catalog); objects = {}; layers = []
         for value in world_visuals(world,kind=kind,center=center):
@@ -159,7 +139,7 @@ def build_site_view(root, catalog, site_id, *, kind='map', event_position=None):
                 parts.append({'sha256':digest,'decodedBytes':len(data)})
             layers.append({'sha256':hashlib.sha256(canonical_visual(value)).hexdigest(),'shards':parts})
         manifest = {'schemaVersion':1,'rendererVersion':1,'qualification':'producer-only-not-native-or-pad-accuracy',
-                    'projection':{'kind':kind,'convention':'equirectangular-degrees-v1' if kind == 'map' else 'orthographic-visible-hemisphere-v1',
+                    'projection':{'kind':kind,'convention':'equirectangular-degrees-v1',
                                   'center':list(center),'canvas':[256,256],'units':UNITS,'bounds':[0,0,8192,8192]},
                     'site':{'id':site_id,'name':site['facts']['name'],'sourcePosition':site['position'],
                             'positionMode':mode,'eventPosition':event_position,
@@ -185,17 +165,12 @@ def audit_sites(root, catalog, *, render_contexts=False):
         map_digest = hashlib.sha256(b''.join(canonical_visual(v) for v in base)).hexdigest()
     for identity, site in sorted(catalog['dictionaries']['sites'].items()):
         pos = site['position']; mode = site['facts'].get('positionMode','fixed-source')
-        row = {'id':identity,'sourcePosition':pos,'positionMode':mode,'map':None,'globe':None,
+        row = {'id':identity,'sourcePosition':pos,'positionMode':mode,'map':None,
                'eventPointEligible':pos is not None and mode == 'fixed-source'}
         if pos:
             center = (pos['latitude'],pos['longitude'])
             row['map'] = [round(x*UNITS) for x in project(*center)]
-            row['globe'] = [round(x*UNITS) for x in project(*center,kind='globe',center=center)]
             if render_contexts:
-                values = world_visuals(world,kind='globe',center=center)
-                shards = [part for value in values for part in split_visual(value)]
-                row['globeContextSha256'] = hashlib.sha256(b''.join(canonical_visual(v) for v in values)).hexdigest()
-                row['globeShards'] = len(shards); row['maxShardBytes'] = max(map(len,shards))
                 row['sharedMapContextSha256'] = map_digest
         rows.append(row)
     return {'qualification':'source-coordinate-render-validity-not-pad-accuracy-or-native',
@@ -221,7 +196,7 @@ def _validate_geography_metadata(record):
     projection, site = record.get('projection'), record.get('site')
     _require(isinstance(projection,dict) and set(projection) == {'kind','convention','center','canvas','units','bounds'},'invalid geography projection')
     kind=projection['kind']
-    _require(kind in ('map','globe') and projection['convention'] == ('equirectangular-degrees-v1' if kind == 'map' else 'orthographic-visible-hemisphere-v1'),'unsupported geography projection')
+    _require(kind == 'map' and projection['convention'] == 'equirectangular-degrees-v1','unsupported geography projection')
     _require(all(isinstance(projection[k],list) and all(type(x) is int for x in projection[k]) for k in ('canvas','bounds')) and projection['canvas'] == [256,256] and type(projection['units']) is int and projection['units'] == UNITS and projection['bounds'] == [0,0,8192,8192],'geography projection metadata mismatch')
     center=projection['center']
     _require(isinstance(center,list) and len(center) == 2,'invalid geography center')
@@ -245,7 +220,7 @@ def _validate_geography_metadata(record):
     if 'definitionSha256' in site:
         _require(isinstance(site['definitionSha256'],str) and re.fullmatch('[0-9a-f]{64}',site['definitionSha256']) is not None,'invalid geography site binding')
     active=event if event is not None else source if mode == 'fixed-source' else None
-    expected_center=[active['latitude'],active['longitude']] if kind == 'globe' and active is not None else [0,0]
+    expected_center=[0,0]
     _require(center == expected_center,'geography center/position mismatch')
     point=None if active is None else project(active['latitude'],active['longitude'],kind=kind,center=center)
     expected=None if point is None else [round(x*UNITS) for x in point]

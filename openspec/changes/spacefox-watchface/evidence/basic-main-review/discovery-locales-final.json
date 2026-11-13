@@ -1,0 +1,29 @@
+{
+  "change": "localize-free-distribution",
+  "ledger": "openspec/changes/localize-free-distribution/discovery.json",
+  "properties": [
+    "R1.P1",
+    "R1.P2",
+    "R2.P1",
+    "R3.P1"
+  ],
+  "reviews": [
+    "BASIC-FIVE-NUMERIC-CUTOVER",
+    "CURRENT-ONLY-FINITE-20261113",
+    "D1",
+    "FINITE-SOFTWARE-RESOURCE-CLOSURE-R4",
+    "PRIMARY26-SCOPE",
+    "SOURCE-BOUND-SOFTWARE-ADMISSION-R3"
+  ],
+  "status": "passed",
+  "tests": [
+    "unittest::tests.test_foundation.FoundationTest.test_catalog_complete",
+    "unittest::tests.test_foundation.FoundationTest.test_catalog_rejects_corruption",
+    "unittest::tests.test_foundation.FoundationTest.test_distribution_inventory",
+    "unittest::tests.test_foundation.FoundationTest.test_language_preferences",
+    "unittest::tests.test_foundation.FoundationTest.test_unlicensed_distribution_rejected",
+    "unittest::tests.test_foundation.FoundationTest.test_unsupported_and_invalid_inputs",
+    "unittest::tests.test_language_support.LanguageSupportTest.test_bound_software_state_cannot_disagree_with_status",
+    "unittest::tests.test_native_language_policy.NativeSoftwareAdmissionTest.test_bound_receipt_and_each_source_drift_refuse"
+  ]
+}

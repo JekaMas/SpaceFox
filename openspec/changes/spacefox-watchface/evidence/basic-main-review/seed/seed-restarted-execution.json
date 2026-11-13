@@ -1,0 +1,33 @@
+{
+  "command": [
+    "/opt/homebrew/Cellar/openjdk@11/11.0.21/libexec/openjdk.jdk/Contents/Home/bin/java",
+    "-Dfile.encoding=UTF-8",
+    "-classpath",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+    "com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux",
+    "-f",
+    "/Users/jekamas/.codex/tmp/spacefox-astra-basic-review/seed/SpaceFoxAstraBasic76d36317.prg",
+    "-d",
+    "fr165",
+    "-s",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/shell",
+    "-t"
+  ],
+  "exitCode": 1,
+  "status": "exited",
+  "elapsedSeconds": 3.688465042039752,
+  "vmOutputObserved": true,
+  "observation": "observed-output-requires-case-assertions",
+  "framework": {
+    "status": "passed",
+    "raw_exit_code": 1,
+    "expected_tests": [
+      "motionSeed"
+    ],
+    "observed_tests": {
+      "motionSeed": "PASS"
+    },
+    "observed_count": 1,
+    "launcher_nonzero_framework_pass": true
+  }
+}

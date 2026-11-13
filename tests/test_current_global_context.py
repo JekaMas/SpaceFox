@@ -1,6 +1,7 @@
 """Whole source-dated context property at actual local admission/map boundaries."""
 import copy
 import hashlib
+import json
 from pathlib import Path
 import subprocess
 import sys
@@ -29,16 +30,16 @@ class CurrentGlobalContextTest(unittest.TestCase):
 
     def test_exact_current_context_and_archive_positive(self):
         c = self.catalog
-        self.assertEqual(len(c['dictionaries']['configurations']), 198)
-        self.assertEqual(sum(r['state'] == 'current-evidence' for r in self.registry['records'].values()), 139)
-        self.assertEqual(sum(r['state'] == 'needs-review' for r in self.registry['records'].values()), 54)
-        self.assertEqual(len(c['dictionaries']['assets']), 638)
+        self.assertEqual(len(c['dictionaries']['configurations']), 211)
+        self.assertEqual(sum(r['state'] == 'current-evidence' for r in self.registry['records'].values()), 152)
+        self.assertEqual(sum(r['state'] == 'needs-review' for r in self.registry['records'].values()), 53)
+        self.assertEqual(len(c['dictionaries']['assets']), 656)
         for identity in NEW:
             row = c['dictionaries']['configurations'][identity]
-            self.assertIsNone(row['references']['manufacturer'])
-            self.assertIsNone(row['references']['origin'])
-            self.assertIsNone(row['references']['visual'])
-            self.assertFalse(row['facts']['currentPackSpecific'])
+            self.assertEqual(row['references']['manufacturer'], 'spacefox:organization:bayern-chemie' if identity.endswith('red-kite-red-kite') else None)
+            self.assertEqual(row['references']['origin'], 'll2:country:4' if identity.endswith('red-kite-red-kite') else 'll2:country:26')
+            self.assertIsNotNone(row['references']['visual'])
+            self.assertTrue(row['facts']['currentPackSpecific'])
         self.assertEqual(c['dictionaries']['configurations']['spacefox:configuration:black-brant-v-single-stage']['facts']['stages'], 1)
         self.assertEqual(c['dictionaries']['configurations']['spacefox:configuration:red-kite-red-kite']['facts']['stages'], 2)
         self.assertIn('ll2:configuration:481', c['dictionaries']['configurations'])
@@ -61,7 +62,7 @@ class CurrentGlobalContextTest(unittest.TestCase):
             actual = loads_json(output.read_bytes())
             self.assertEqual((actual['scope'], actual['siteRows'], actual['numericSourcePairs'], actual['unknownPositions']), ('current', 3, 2, 1))
             self.assertEqual(actual['currentContextCoverage']['contextRecords'], 7)
-            self.assertTrue(all(x['globeContextSha256'] for x in actual['rows'] if x['sourcePosition']))
+            self.assertTrue(all(x['sharedMapContextSha256'] for x in actual['rows'] if x['sourcePosition']))
         # Exact source fields survive; the context layer does not claim pad survey accuracy.
         self.assertIsNone(build_site_view(ROOT, projected, ESRANGE)['manifest']['marker'])
         self.assertEqual(build_site_view(ROOT, projected, 'll2:site:50')['manifest']['site']['sourcePosition'], c['dictionaries']['sites']['ll2:site:50']['position'])
@@ -118,7 +119,7 @@ class CurrentGlobalContextTest(unittest.TestCase):
         self.assertEqual(c['dictionaries']['configurations']['spacefox:configuration:vsb30']['references']['origin'], 'll2:country:24')
         self.assertEqual(c['dictionaries']['organizations']['ll2:organization:151']['references']['origin'], 'll2:country:15')
         self.assertEqual(c['dictionaries']['organizations']['ll2:organization:29']['references']['origin'], 'll2:country:4')
-        self.assertIsNone(c['dictionaries']['organizations']['spacefox:organization:nsil']['references']['origin'])
+        self.assertEqual(c['dictionaries']['organizations']['spacefox:organization:nsil']['references']['origin'], 'll2:country:9')
         roots = ['spacefox:configuration:vsb30', 'll2:organization:151', ESRANGE]
         before = build_pack(ROOT, c, roots=roots)
         grown = copy.deepcopy(c)
@@ -158,22 +159,156 @@ class CurrentGlobalContextTest(unittest.TestCase):
             self.assertEqual(load_contexts(root, reopened), self.context)
 
     def test_tracked_context_source_closure_positive_and_negative(self):
-        from tools.cloud_inputs import materialize
+        # This oracle reads the committed recipe and its declarative pins with
+        # stdlib JSON/Git only. Neither build_catalog/inputDigests nor the
+        # materializer's report determines the expected version or path set.
+        def git_bytes(name):
+            path = Path(name)
+            self.assertFalse(path.is_absolute() or '..' in path.parts, name)
+            return subprocess.run(['git', 'show', 'HEAD:'+name], cwd=ROOT,
+                                  check=True, capture_output=True).stdout
+
+        source_bytes = {'catalog/source.json': git_bytes('catalog/source.json')}
+        recipe = json.loads(source_bytes['catalog/source.json'])
+        asset_seed = recipe['assetSeed']['path']
+        curations = {item['path'] for item in recipe.get('curations', [])}
+
+        def pins(value):
+            if isinstance(value, dict):
+                if {'path', 'sha256'} <= value.keys():
+                    yield value
+                for child in value.values():
+                    yield from pins(child)
+            elif isinstance(value, list):
+                for child in value:
+                    yield from pins(child)
+
+        pending = ['catalog/source.json']
+        visited = set()
+        while pending:
+            name = pending.pop()
+            if name in visited:
+                continue
+            visited.add(name)
+            raw = source_bytes[name]
+            try:
+                value = json.loads(raw)
+            except (ValueError, UnicodeDecodeError):
+                continue  # Binary clips, notices, vendor scripts and SVG bytes.
+            for item in pins(value):
+                data = git_bytes(item['path'])
+                self.assertEqual(hashlib.sha256(data).hexdigest(), item['sha256'], item['path'])
+                source_bytes[item['path']] = data
+                pending.append(item['path'])
+            if name == asset_seed:
+                assets = [row for kind in ('models', 'companies', 'countries') for row in value[kind]]
+            elif name in curations:
+                assets = [row['facts'] for row in value['assets']]
+            else:
+                assets = []
+            for facts in assets:
+                relative = (Path(name).parent / facts['file']).as_posix()
+                data = git_bytes(relative)
+                if 'sourceSha256' in facts:
+                    self.assertEqual(hashlib.sha256(data).hexdigest(), facts['sourceSha256'], relative)
+                source_bytes[relative] = data
+        seed_raw = git_bytes('.github/spacefox-inputs.txt')
+        tracked = set(subprocess.run(['git', 'ls-tree', '-r', '--name-only', 'HEAD'],
+                                     cwd=ROOT, check=True, capture_output=True, text=True).stdout.splitlines())
+        # Sparse patterns can name absent optional files (tools/__init__.py).
+        seed = {line.removeprefix('/') for line in seed_raw.decode().splitlines()
+                if line.removeprefix('/') in tracked}
+        runtime_bytes = {name: git_bytes(name) for name in seed}
+        expected = {**runtime_bytes, **source_bytes}
+        for name, raw in expected.items():
+            self.assertEqual((ROOT/name).read_bytes(), raw, 'uncommitted source input: '+name)
+        # The current flat-map producer comes from the actual sparse seed.
+        self.assertIn('tools/spacefox/native_profile.py', runtime_bytes)
+        self.assertEqual(runtime_bytes['catalog/source.json'], source_bytes['catalog/source.json'])
+
         with tempfile.TemporaryDirectory() as tmp:
-            root = temporary_catalog(tmp)
-            for args in [('init', '-q'), ('add', '.'), ('-c', 'user.name=Local test', '-c', 'user.email=test@example.invalid', 'commit', '-qm', 'literal catalog fixture')]:
-                subprocess.run(['git', *args], cwd=root, check=True, capture_output=True)
-            context_path = root/self.catalog['source']['currentContexts']['path']
-            expected = context_path.read_bytes()
-            subprocess.run(['git', 'update-index', '--skip-worktree', self.catalog['source']['currentContexts']['path']], cwd=root, check=True, capture_output=True)
-            context_path.unlink()
-            actual = materialize(root)
-            self.assertEqual(context_path.read_bytes(), expected)
-            self.assertEqual(actual['catalogInputs'], len(self.catalog['inputDigests'])+1)
-            self.assertEqual(actual['catalogVersion'], '2026-11-12.global.14.current-context1')
+            root = Path(tmp)
+            for name, raw in expected.items():
+                target = root/name
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(raw)
+
+            def git(*args, data=None):
+                return subprocess.run(['git', *args], cwd=root, input=data,
+                                      check=True, capture_output=True).stdout
+
+            for args in [('init', '-q'), ('add', '.'), ('-c', 'user.name=Local test', '-c', 'user.email=test@example.invalid', 'commit', '-qm', 'committed runtime and catalog closure')]:
+                git(*args)
+            git('sparse-checkout', 'set', '--no-cone', '--stdin', data=seed_raw)
+
+            def files():
+                return {path.relative_to(root).as_posix(): path.read_bytes()
+                        for path in root.rglob('*')
+                        if '.git' not in path.relative_to(root).parts and path.is_file()}
+
+            self.assertEqual(files(), runtime_bytes)
+            command = [sys.executable, '-B', str(root/'tools/cloud_inputs.py')]
+            actual = subprocess.run(command, cwd=root, capture_output=True, timeout=180)
+            self.assertEqual(actual.returncode, 0, actual.stderr)
+            self.assertEqual(actual.stderr, b'')
+            self.assertEqual(json.loads(actual.stdout), {
+                'catalogInputs': len(source_bytes), 'catalogVersion': recipe['catalogVersion']})
+            self.assertEqual(files(), expected)  # Every old/new source and seed byte, no extras.
+            self.assertEqual(git('status', '--porcelain'), b'')
+            runtime_command = [sys.executable, '-B', '-c',
+                               'import json; from pathlib import Path; '
+                               'from tools.spacefox import native_profile; '
+                               'modules={m.__name__:str(Path(m.__file__).resolve()) '
+                               'for m in (native_profile,)}; '
+                               'assert all(Path(path)==Path.cwd()/Path(*name.split(".")).with_suffix(".py") '
+                               'for name,path in modules.items()); '
+                               'print("RUNTIME_IMPORT_WITNESS "+json.dumps(modules,sort_keys=True)); '
+                               'import runpy; runpy.run_module("tools.cloud_feed", run_name="__main__")',
+                               '--repository', 'owner/SpaceFox', '--site', 'https://example.invalid', 'prepare', '--help']
+            runtime = subprocess.run(runtime_command, cwd=root, capture_output=True, timeout=30)
+            self.assertEqual(runtime.returncode, 0, runtime.stderr)
+            self.assertEqual(runtime.stderr, b'')
+            self.assertIn(b'--native-profile', runtime.stdout)
+            self.assertIn(b'RUNTIME_IMPORT_WITNESS ', runtime.stdout)
+            self.assertEqual(files(), expected)
+            # Preserve the original explicit skip-worktree corruption control.
+            # A status refresh of restored sparse files can clear implicit bits.
+            git('sparse-checkout', 'disable')
+            git('update-index', '--skip-worktree', recipe['currentContexts']['path'])
+            head = git('rev-parse', 'HEAD')
+            index = git('ls-files', '--stage', '-v')
+            context_path = root/recipe['currentContexts']['path']
             context_path.write_bytes(b'local corrupt context')
-            with self.assertRaises(CatalogError): materialize(root)
+            corrupt = files()
+            # Sparse bits hide this corruption from ordinary Git diff: the
+            # actual CLI must authenticate bytes before activation/checkout.
+            git('diff', '--quiet', 'HEAD', '--')
+            refused = subprocess.run(command, cwd=root, capture_output=True, timeout=180)
+            self.assertEqual(refused.returncode, 2)
+            self.assertEqual(refused.stdout, b'')
+            self.assertEqual(refused.stderr, b'cloud-inputs: tracked catalog closure could not be materialized\n')
+            self.assertEqual(files(), corrupt)
             self.assertEqual(context_path.read_bytes(), b'local corrupt context')
+            self.assertEqual(git('rev-parse', 'HEAD'), head)
+            self.assertEqual(git('ls-files', '--stage', '-v'), index)
+            self.assertEqual(git('status', '--porcelain'), b'')
+            print('SOURCE_CLOSURE_RECEIPT '+json.dumps({
+                'catalogVersion': recipe['catalogVersion'],
+                'catalogInputs': len(source_bytes),
+                'seedPatterns': len(seed_raw.decode().splitlines()),
+                'trackedSeedFiles': len(runtime_bytes),
+                'runtimeSourceFiles': len(expected),
+                'recipeSha256': hashlib.sha256(source_bytes['catalog/source.json']).hexdigest(),
+                'sourcePaths': {name: hashlib.sha256(raw).hexdigest() for name, raw in sorted(source_bytes.items())},
+                'runtimeSeedPaths': {name: hashlib.sha256(raw).hexdigest() for name, raw in sorted(runtime_bytes.items())},
+                'positive': {'argv': command, 'exit': actual.returncode,
+                             'stdout': actual.stdout.decode(), 'stderr': actual.stderr.decode()},
+                'runtimeImportHelp': {'argv': runtime_command, 'exit': runtime.returncode,
+                                     'stdout': runtime.stdout.decode(), 'stderr': runtime.stderr.decode()},
+                'corruptNegative': {'argv': command, 'exit': refused.returncode,
+                                    'stdout': refused.stdout.decode(), 'stderr': refused.stderr.decode()},
+                'proof': ['exact all-file bytes', 'corrupt bytes preserved', 'HEAD/index unchanged', 'clean Git trace']
+            }, sort_keys=True))
 
     def test_invalid_origin_amendment_is_atomic_negative(self):
         with tempfile.TemporaryDirectory() as tmp:

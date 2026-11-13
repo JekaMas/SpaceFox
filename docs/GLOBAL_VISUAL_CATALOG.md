@@ -1,43 +1,54 @@
 # Maintained global visual catalog
 
-The portable dated 2026+ source is `2026-11-12.global.14.current-context1`. Its sole
-recipe-pinned [eligibility registry](../catalog/current-2026.json) retains 198
-identities: 139 source-qualified current configurations, 54 under review and 5
-placeholders. Specific or reviewed shared artwork covers 128/139; the 11 generic
-gaps include the newly distinct Red Kite/Red Kite and single-stage Black Brant V.
-Neither is an alias for Red Kite/Improved Malemute or Black Brant IX. These are
-qualified-so-far counts, not the final worldwide denominator. A selected future
-reference in review or absent from the registry retains its identity and source
-age with an unresolved marker and generic fallback.
+The local 2026+ candidate is `2026-11-12.global.18.origin-review1`. The sole
+recipe-pinned [eligibility registry](../catalog/current-2026.json) retains 210
+identities: 151 source-qualified current configurations, 53 under review,
+one source-supported current-view exclusion and five placeholders. Specific or
+reviewed shared artwork covers 142/151; nine identities retain generic art.
+These are qualified-so-far counts, not a final worldwide denominator. Future
+unknown or disputed references retain their identity, source age and fallback.
 
-The [current context source](../catalog/current-context-20261112-r1.json) separately
-binds seven dated 2026 events to three sites in Sweden, the United States and India.
-It records exact organization roles; manufacturers, contractors, collaborators and
-launch service providers are not interchangeable. Esrange's precise pad position
-remains unknown. The two numeric site references are rendering inputs, not surveyed
-pad accuracy. `python3 -B tools/build_global_map.py --audit --output
-build/current-site-audit.json` audits this nonempty current closure and reports
-explicit model-origin, associated-organization, event-role and launch-jurisdiction
-denominators. `--scope archive` separately audits all 218 retained source sites,
-including 29 mobile references and 5 unavailable positions. An empty audit refuses.
-The model-only catalog report remains `python3 -B tools/catalog.py --check --report
-build/current-coverage.json`; its model dependencies are not launch countries.
+The [whole closure packet](../openspec/changes/spacefox-watchface/evidence/current-catalog-closure/README.md)
+records fresh primary research for all 54 predecessor review identities and all
+11 predecessor art gaps. It adds 12 exact complete-vehicle official offerings,
+14 original source-dated profiles, a sourced Bayern-Chemie manufacturer role and
+67 independent origin assertions across the two immutable amendments. Model
+origin coverage is 109/151 and associated-organization origin coverage is 39/48.
+The [independent whole review and repair](../openspec/changes/spacefox-watchface/evidence/current-catalog-closure/independent-r1/README.md) appends explicit national-identity or incorporation sources for five organizations whose original citations relied on headquarters or factory locations. Countries, artwork, lifecycle and event records are unchanged; a different final whole peer remains required.
+An agency/company origin does not imply every vehicle or motor has that origin.
+Original facts, 638 predecessor assets, all 218 site rows and 197 unchanged
+lifecycle decisions remain retained. The current archive has 652 assets.
 
-Source-dated entity origin can now be curated independently of optional artwork.
-The current revision adds directly sourced Brazilian VSB-30 origin, Swedish SSC
-origin and German DLR origin. These assertions do not turn vehicle manufacture,
-corporate origin or launch location into event operator evidence. NSIL is a
-separate sourced commercial launch-service organization with badge and curated
-origin still unknown. Existing graphics, original facts and prior lifecycle
-reviews remain retained. The literal source records carry their dated URLs and uncertainty; this public source contains no private acceptance packet.
-Task 4.3, worldwide source coverage, remaining specific art, pad accuracy, native,
-public and Store acceptance remain open; global.9/global.12 receipts are history.
+SLS Block 1B (exact ID205) is excluded from the current view because the
+[July2026 GAO report](https://files.gao.gov/reports/GAO-26-108556/index.html)
+records NASA's actual May2026 cancellation and EUS contract termination. Its
+contradictory earlier official pages, archive identity/art and future-reference
+review behavior are retained. No conclusion is transferred to Block2.
 
-For the current page-policy/art and runtime closure probe, run
-`python3 -B -m unittest -v tests.test_page_art_public`.
+The [current context source](../catalog/current-context-20261112-r2.json) still
+binds seven dated2026 events to three sites in Sweden, the United States and
+India. Esrange's precise pad location remains unknown; the two numeric site
+references are unsurveyed rendering inputs. Manufacturer, contractor,
+collaborator and launch-service roles remain distinct. NSIL now has independently
+sourced Indian corporate origin; its badge remains unknown.
 
-The following sections describe historical producer revision 5, not the current registry.
+`python3 -B tools/build_global_map.py --audit --output build/current-site-audit.json`
+audits the nonempty current context closure and its separate origin/role/country
+denominators. `--scope archive` audits 218 retained sites, including 29 mobile
+references and five unavailable positions. The model-only report is
+`python3 -B tools/catalog.py --check --report build/current-coverage.json`;
+its 18 dependency jurisdictions are not launch-country coverage.
 
+Fourteen local converter/RGB565 small-slot observations do not establish native
+or public acceptance. All remaining facts and acquired leads are enumerated in
+the packet. Task4.3, worldwide completeness, nine art gaps, pad accuracy and
+native/public/Store acceptance remain open. Different whole independent review
+and root judgment are required for this candidate.
+
+The following table and counts describe a historical revision; they are not the
+2026+ product target.
+
+## Historical producer revision 5 review1
 
 The single active recipe is `catalog/source.json`. The November 11 reference,
 original registry, 13 original SVGs, browser sources and their old evidence remain
@@ -53,7 +64,7 @@ content coverage, pad accuracy, native transport, hosting or Store acceptance.
 | Additional identities | 3 JAXA and 2 NASA sounding configurations, separate MIURA9 metadata, plus 2 official launch-area identities with unresolved pad points |
 | Required known configurations | 165 original non-placeholders + 6 official supplements = 171 |
 | Specific/reviewed shared mappings | 150/165 original configurations; 156/171 with supplements; the preceding revision recorded144/171 |
-| Remaining specific-art gaps | 15 exact configuration IDs with unresolved primary shape/identity limits; all27 inherited gaps researched,12 mappings accepted after separate independent/root review |
+| Remaining specific-art gaps | 15 exact configuration IDs in evidence/remaining-art/r2/remaining-art-gaps.json; all27 inherited gaps researched,12 mappings accepted after separate independent/root review |
 | Original art added | 12 new immutable original schematics in R2, after the accepted36 remaining-r1 records (34 originals and2 reviewed copies). Earlier48 content-r1 assets and all older artwork remain immutable |
 | Source SVGs exported | 611 total: preceding598 +12 originals +1 immutable radial LM5 replacement; full-global export exceeds 1MiB and is not a delivery requirement |
 | Country marks | 8 original national flags (AU/JP/CN/RU/IN/DE/ES/KR), 90 currently selected informational code badges, 4 retained marks and Europe region; all old code badges remain immutable. Unknown omitted |
@@ -64,19 +75,22 @@ content coverage, pad accuracy, native transport, hosting or Store acceptance.
 | Mobile reference positions | 29 source sea/air rows; absent event positions omit the marker |
 | Fixed source points eligible for a marker | 185; 213 numeric = 185 fixed + 28 mobile numeric. The 29 mobile rows include the unknown `ll2:site:101`; numeric/range/render validity does not prove pad accuracy |
 
-`python3 -B tools/catalog.py --check --report build/global-coverage.json` emits the
-exact denominators, mapping types, missing IDs, source-coordinate gaps and pending
-worldwide/upcoming/native obligations. Counts of country labels, SVG files or
+`python3 -B tools/catalog.py --check --report build/global-coverage.json` emits the current provisional counts, exact review IDs and specific-art gaps;
+site counts cover only supplied event references. Counts of country labels, SVG files or
 generic fallback shapes do not close known-model art coverage. Organization
 availability does not establish that it operates a particular launch. Provider
 active/pending flags retain their original meaning; they are not current in-service
 proof. Official additions have null provider flags/counts and a separate official
 lifecycle assertion, rather than invented provider records.
 
-The accepted finite review accounts for all27 inherited gaps and separates12
-source-bound mappings from15 unresolved identities. The original profiles and
-immutable radial LM5 append retain their named/source-dated limitations. Actual
-54×124 portable visual inspection is separate from native/device execution.
+The accepted [remaining-art R1 source review](../openspec/changes/spacefox-watchface/evidence/remaining-art/r1/SOURCE_REVIEW.md)
+accounts for its earlier63 exact gaps. The new [R2 research packet](../openspec/changes/spacefox-watchface/evidence/remaining-art/r2/README.md)
+accounts for every27 inherited gap and separates12 source-bound original candidates
+from15 unresolved identities. All12 actual production SFV profiles were inspected
+at the true54×124 native slot on bright and faded maps. This portable Pillow
+review uses immutable e0613491 native-source inputs, and proves no native/device
+execution. The twelve profiles and radial LM5 repair are accepted under their
+bounded independent and root review; full known-model coverage remains open.
 
 A published source-dated exterior representative can support a schematic when
 its exact name/configuration and limits are explicit. Approximate plotting
@@ -96,7 +110,7 @@ DeepBlue image is Nebula2 and is excluded. Qased uses the original agency-credit
 no guessed booster/head choice. No picture changes a provider fact, lifecycle,
 operator/manufacturer/origin/site role or original source history.
 
-The older562/108/63 and 598/144/27 count receipts remain historical. New data-dependent
+The older562/108/63 and598/144/27 count receipts remain historical. New data-dependent
 count/geometry/selector checks use the frozen revision4 recipe as baseline;
 unrelated valid publisher/native/global checks and the earlier36-specific proof
 boundary are retained without rerunning. Full known-model art, worldwide/current
@@ -289,9 +303,10 @@ are not part of a Pages artifact and must not be copied indiscriminately.
 The frozen global.2 full218-asset pack was independently admissible; retaining two whole
 global manifests exceeds the same 1MiB bound even when geometry objects are
 shared, and is rejected. The current562-asset full-global pack exceeds1MiB and rejects. Selected delivery fits while the maintained global catalog and full provenance stay publisher-side. No budget is raised and no art
-coverage is silently removed to pass. Production retention for the required
-90-day compatibility policy, native persistence/activation/RAM and the schedule's
+coverage is silently removed to pass. Current same-format accepted/recovery closure,
+native persistence/activation/RAM and the schedule's
 separate 8KiB wire integration still require their own evidence.
+The former 90-day previous-wire-major policy is retired, not a remaining gate.
 
 ```sh
 python3 -B tools/build_global_map.py --audit --output build/global-site-audit.json
@@ -299,11 +314,15 @@ python3 -B -m unittest -v tests.test_catalog_core tests.test_visual_protocol \
   tests.test_global_catalog tests.test_global_map
 ```
 
+Independent round1 repair appends `assets/global/curation-20261112-independent-r1.json` without changing the earlier curation or SVG. The current SpaceShipTwo original has separate outboard tailbooms, checked against the Scaled Composites engineering drawing reproduced in NTSB/AAR-15/02 (printed p5, PDF p17) and Virgin Galactic’s 2024 fact sheet (PDF p7). The earlier central-tail schematic remains an immutable superseded asset and is not the selected configuration visual. Current and retained bundle metadata now rechecks admitted rights, canvas/geometry agreement and exact referenced-file closure before activation. See `evidence/global-visual-catalog/independent-r1/README.md` in the active change; fresh R2 and root judgment are required.
+
 Independent R3 found that bundle re-admission did not check an explicit visual
 shard path against its digest. Pack creation and current/retained bundle admission
 now share the same visual shard-reference validator. Missing paths, mismatched
 digest paths and external URL paths reject before activation; recorded source URLs
-remain attribution only. Full content/native qualification remains separate.
+remain attribution only. See the active change's
+`evidence/global-visual-catalog/independent-r3/README.md`; this repair requires a
+NEW independent R4 and root judgment and does not close the content/native gaps.
 
 A separate candidate now repairs fine source context without replacing the active
 recipe: see [Source-backed regional geography](GEOGRAPHIC_CONTEXT.md). It pins
@@ -314,7 +333,7 @@ transitive materializer/native bridge are explicitly unqualified for watch use;
 task4.3 and the complete worldwide/native/device gates remain open.
 ## Global content R1 evidence and open work
 
-Source images were inspected; unpublished dimensions and payload envelopes are explicitly schematic. Historic FAA2017 material supports historic shape only. Lifecycle assertions preserve source conflicts, and no launch/manufacturer country supplies an unsourced origin. European vehicle origin remains distinct from FrenchGuiana site jurisdiction; Electron modelNZ versus operatorUS is preserved.
+See [source and per-ID review](../openspec/changes/spacefox-watchface/evidence/global-content/r1/source-review.md), original contact sheets and machine coverage in that directory. Source images were inspected; unpublished dimensions and payload envelopes are explicitly schematic. Historic FAA2017 material supports historic shape only. Lifecycle assertions preserve source conflicts, and no launch/manufacturer country supplies an unsourced origin. European vehicle origin remains distinct from FrenchGuiana site jurisdiction; Electron modelNZ versus operatorUS is preserved.
 
 Full-global catalog stays publisher-side. Every asset must pass export admission; the producer retains its fixed64KiB selection,1MiB artifact and4KiB shard caps. The separate native8KiB wire budget is unchanged; this batch does not qualify rich selections for that wire. Historical global.2 full-pack tests use an explicitly frozen recipe; new current tests cover the larger source, real over-budget rejection, bounded all-asset validation, selected closure, immutable mark rollback and atomic malformed-art rejection. Neither these checks nor the counts complete task4.3. Worldwide/upcoming collection, exact pad accuracy, Omelek/Kwajalein/Guam detail, rich10481B native fit, actual phone/FR165/cloud90day resilience and Store acceptance remain open.
 
@@ -331,8 +350,11 @@ for the selected native interface and its separate offwatch/device proof limits.
 ## Remaining-art revision and retained selection example
 
 The remaining-art R1 increment adds36 exact mappings after reviewing all63 earlier
-gaps:34 dedicated originals and2 newly reviewed copies of prior originals. Source/identity/shape review remains in the additive curation;15 exact gaps
-and the aggregate known-model gate remain open.
+gaps:34 dedicated originals and2 newly reviewed copies of prior originals. The
+complete per-ID fact/shape review and27 open conditions are in
+`evidence/remaining-art/r1/SOURCE_REVIEW.md` under the change. Current source pins
+and actual six-method observations are recorded in that packet. The aggregate
+known-model gate remains open.
 
 The same existing producer ports can reopen the earlier recipe and produce its
 original selected bytes alongside the current selection, without a layout edit:
@@ -369,5 +391,26 @@ is occluded. This is a source-bound silhouette improvement, not an engineering
 reconstruction or a new global envelope rule. The current accepted finite revision is
 `2026-11-12.global.5.review1.bridge1`:156/171 mappings,611 assets and15 exact gaps.
 Other11 selected R2 originals and all prior facts/roles/origin unknowns remain.
-The repaired finite increment has independent and root review. Complete
-artwork, native and public-delivery acceptance remain separate.
+See the change's `evidence/remaining-art/r2/independent-v1/README.md` for exact
+new/invalidated checks and source/actual-size boundaries. A DIFFERENT NEW verifier
+and root judgment accepted the repaired finite increment. Complete artwork,
+native and public-delivery acceptance remain separate.
+
+
+## Exact BLK3 whole profile — November13 filename, November12 UTC review
+
+The current global21 data revision adds one immutable original SpaceFox BLK3
+profile from EXOS’s July2026 Payload User Guide page4, linked by its current
+[pricing page](https://www.exosaero.com/pricing). The complete dimensioned profile
+uses10.82m total,635mm body and the seven printed module lengths. It is distinct
+from SARGE197. Only visible opposed fin projections are represented; hidden fin
+count/nozzle/current livery are not claimed. The guide drawing/PDF remains outside
+Git; the new flat vector contains no source pixels, lettering or logo.
+
+Current finite artwork coverage is147/152specific,5generic/unqualified gaps; archive
+211identities/657assets/218sites and all211eligibility decisions remain. All prior
+656asset rows/bytes,7current contexts, country/origin/manufacturer/operator facts
+and source history are retained. Primary-source/geometry peer and root judgment
+remain required; this one artwork does not close task4.3. Local production54x124
+raster/staticSFR1 and selected update evidence: `evidence/blk3-art-whole/` in the
+active change. Native motion/SDK/device/cloud/release acceptance is separate.

@@ -6,13 +6,13 @@
       "id": "R1",
       "capability": "localization",
       "title": "Complete language catalog",
-      "fingerprint": "e388b741f93e452ae82d22748f9d94c316290973164cb4c7ef4fa4aeed225386"
+      "fingerprint": "1d57e5455094fdd510cb2101440f697ad93bf7f8e55babac6ce767b717448a34"
     },
     {
       "id": "R2",
       "capability": "localization",
       "title": "Predictable preview language selection",
-      "fingerprint": "639fcc36d0982089be132c9cad4a37014210ff8e01a44bedc78de21163c04641"
+      "fingerprint": "a4c2e99acb645813030c2b4ae199298586e2957d6c26d25bc3d3db96495bccec"
     },
     {
       "id": "R3",
@@ -77,7 +77,7 @@
       "scenarios": [
         "Scope mandatory language qualification"
       ],
-      "statement": "Retain36 locale resources and exact26primary/10best-effort partition. Status, production selection and manifest consume one validated source-bound software qualification state. Missing primary corpus/receipt/source proof or malformed policy refuses software readiness; controlled booleans and nativeQualified flags cannot grant admission. Human and physical observations remain separate.",
+      "statement": "Retain36 locale resources and exact5primary/31best-effort partition. Status, production selection and manifest consume one validated source-bound software qualification state. Missing primary corpus/receipt/source proof or malformed policy refuses software readiness; controlled booleans and nativeQualified flags cannot grant admission. Human and physical observations remain separate.",
       "owner": "language-support-scope",
       "oracle": "Independently expected primary IDs and exact source-bound proof files/hashes, including real resource XML mappings, grapheme blob and referenced BMFont PNG pages; missing, tampered and stale proof refuses. English bootstrap is independent of additional-language admission. Controlled receipts test only the mechanism, not actual corpus/SDK qualification.",
       "source_globs": [
@@ -214,13 +214,14 @@
       ],
       "test_id": "unittest::tests.test_foundation.FoundationTest.test_catalog_complete",
       "command_id": "foundation-tests",
-      "state": "implemented",
+      "state": "planned",
       "source_path": "tests/test_foundation.py",
       "distinct_reason": "catalog positive fixture",
       "substitution": {
         "classification": "NO_TEST_DOUBLE"
       },
-      "source_sha256": "35c83a91d9ee68d9ac4a946ae6e2360ebc8a49bf8468328696ed7c8aeb08cddc"
+      "source_sha256": "35c83a91d9ee68d9ac4a946ae6e2360ebc8a49bf8468328696ed7c8aeb08cddc",
+      "planning_note": "Superseded by five-language numeric-countdown cutover; previous observation is historical until a directly matching current assertion is observed."
     },
     {
       "id": "R1.P1.NEGATIVE",
@@ -239,20 +240,21 @@
       ],
       "test_id": "unittest::tests.test_foundation.FoundationTest.test_catalog_rejects_corruption",
       "command_id": "foundation-tests",
-      "state": "implemented",
+      "state": "planned",
       "source_path": "tests/test_foundation.py",
       "distinct_reason": "catalog negative fixture",
       "substitution": {
         "classification": "NO_TEST_DOUBLE"
       },
-      "source_sha256": "35c83a91d9ee68d9ac4a946ae6e2360ebc8a49bf8468328696ed7c8aeb08cddc"
+      "source_sha256": "35c83a91d9ee68d9ac4a946ae6e2360ebc8a49bf8468328696ed7c8aeb08cddc",
+      "planning_note": "Superseded by five-language numeric-countdown cutover; previous observation is historical until a directly matching current assertion is observed."
     },
     {
       "id": "R2.P1.POSITIVE",
       "property_id": "R2.P1",
       "polarity": "positive",
       "scenario": "Resolve a preview language",
-      "scenario_fingerprint": "8f634c185ea96e5539e3202a5467e1859b33f153c9127b7b679f03cc79c48bad",
+      "scenario_fingerprint": "6535d04233200e427322c0145107fd04a529d735fefc18f2f28cd8f4be531235",
       "setup": "Invoke the real prototype/i18n.js resolver in Node with literal saved/browser preferences, all 36 locale IDs, Chinese regions/scripts and malformed inputs.",
       "observable": "Saved choices, language preferences and literal Chinese script/region examples resolve to the expected supported locale.",
       "red_expectation": "A saved choice is ignored, a Chinese script is confused, or unsupported input leaks through.",
@@ -265,20 +267,21 @@
       ],
       "test_id": "unittest::tests.test_foundation.FoundationTest.test_language_preferences",
       "command_id": "foundation-tests",
-      "state": "implemented",
+      "state": "planned",
       "source_path": "tests/test_foundation.py",
       "distinct_reason": "preview-i18n positive fixture",
       "substitution": {
         "classification": "NO_TEST_DOUBLE"
       },
-      "source_sha256": "35c83a91d9ee68d9ac4a946ae6e2360ebc8a49bf8468328696ed7c8aeb08cddc"
+      "source_sha256": "35c83a91d9ee68d9ac4a946ae6e2360ebc8a49bf8468328696ed7c8aeb08cddc",
+      "planning_note": "Superseded by five-language numeric-countdown cutover; previous observation is historical until a directly matching current assertion is observed."
     },
     {
       "id": "R2.P1.NEGATIVE",
       "property_id": "R2.P1",
       "polarity": "negative",
       "scenario": "Resolve a preview language",
-      "scenario_fingerprint": "8f634c185ea96e5539e3202a5467e1859b33f153c9127b7b679f03cc79c48bad",
+      "scenario_fingerprint": "6535d04233200e427322c0145107fd04a529d735fefc18f2f28cd8f4be531235",
       "setup": "Invoke the real prototype/i18n.js resolver in Node with literal saved/browser preferences, all 36 locale IDs, Chinese regions/scripts and malformed inputs.",
       "observable": "Unsupported or malformed values never produce an unknown locale; explicit fallback examples return English.",
       "red_expectation": "A saved choice is ignored, a Chinese script is confused, or unsupported input leaks through.",
@@ -291,13 +294,14 @@
       ],
       "test_id": "unittest::tests.test_foundation.FoundationTest.test_unsupported_and_invalid_inputs",
       "command_id": "foundation-tests",
-      "state": "implemented",
+      "state": "planned",
       "source_path": "tests/test_foundation.py",
       "distinct_reason": "preview-i18n negative fixture",
       "substitution": {
         "classification": "NO_TEST_DOUBLE"
       },
-      "source_sha256": "35c83a91d9ee68d9ac4a946ae6e2360ebc8a49bf8468328696ed7c8aeb08cddc"
+      "source_sha256": "35c83a91d9ee68d9ac4a946ae6e2360ebc8a49bf8468328696ed7c8aeb08cddc",
+      "planning_note": "Superseded by five-language numeric-countdown cutover; previous observation is historical until a directly matching current assertion is observed."
     },
     {
       "id": "R3.P1.POSITIVE",
@@ -360,7 +364,7 @@
       "property_id": "R1.P2",
       "polarity": "positive",
       "scenario": "Scope mandatory language qualification",
-      "scenario_fingerprint": "c59badba7e110195cb1adedff28b38fbd0bb93c38ed3f99ba895bdde99feb247",
+      "scenario_fingerprint": "233ab3306ad264ccbfece627134bcb7ae0e943200d455328eac75f976e67599c",
       "setup": "Real retained36locale catalog and exact26/10 partition; source-bound native_language_policy helper supplies authoritative admitted IDs. Empty/missing/malformed/tampered/stale proof and primary membership alone must not qualify additional languages.",
       "observable": "Status, runtime and manifest use one validated software qualification state; missing primary proof keeps software readiness false while human/device evidence remains separate and nativeQualified rows unchanged.",
       "red_expectation": "Controlled observation booleans, primary membership or nativeQualified flags can grant software readiness without the validated corpus/receipt/production-source binding.",
@@ -481,20 +485,21 @@
       ],
       "test_id": "unittest::tests.test_language_support.LanguageSupportTest.test_bound_software_state_cannot_disagree_with_status",
       "command_id": "primary-language-scope-tests",
-      "state": "planned",
+      "state": "implemented",
       "source_path": "tests/test_language_support.py",
       "substitution": {
         "classification": "NO_TEST_DOUBLE",
         "allowed_proof": "Local policy/source-proof validation only; no actual glyph, complete corpus, human or physical proof inferred from this gate test."
       },
-      "planning_note": "Actual source-bound gate mechanism has focused positive/negative observations, including real runtime resource mutation refusal. This broader admission contract remains planned until native integration and actual complete finite corpus/software observations are bound; controlled receipts confer no SDK or corpus qualification."
+      "source_sha256": "3ec725b4213ca62ed127eaa7cb329b31c6710163e01f0f61675cfd14046a399b",
+      "implementation_note": "Current exact five-primary policy and proof refusal observed in spacefox-watchface/evidence/language-settings-whole/host-final.log; finite actual SDK evidence is separate in basic-five-finite."
     },
     {
       "id": "R1.P2.NEGATIVE",
       "property_id": "R1.P2",
       "polarity": "negative",
       "scenario": "Scope mandatory language qualification",
-      "scenario_fingerprint": "c59badba7e110195cb1adedff28b38fbd0bb93c38ed3f99ba895bdde99feb247",
+      "scenario_fingerprint": "233ab3306ad264ccbfece627134bcb7ae0e943200d455328eac75f976e67599c",
       "setup": "Real retained36locale catalog and exact26/10 partition; source-bound native_language_policy helper supplies authoritative admitted IDs. Empty/missing/malformed/tampered/stale proof and primary membership alone must not qualify additional languages.",
       "observable": "Status, runtime and manifest use one validated software qualification state; missing primary proof keeps software readiness false while human/device evidence remains separate and nativeQualified rows unchanged.",
       "red_expectation": "Controlled observation booleans, primary membership or nativeQualified flags can grant software readiness without the validated corpus/receipt/production-source binding.",
@@ -615,13 +620,14 @@
       ],
       "test_id": "unittest::tests.test_native_language_policy.NativeSoftwareAdmissionTest.test_bound_receipt_and_each_source_drift_refuse",
       "command_id": "primary-language-scope-tests",
-      "state": "planned",
+      "state": "implemented",
       "source_path": "tests/test_native_language_policy.py",
       "substitution": {
         "classification": "NO_TEST_DOUBLE",
         "allowed_proof": "Local policy/source-proof validation only; no actual glyph, complete corpus, human or physical proof inferred from this gate test."
       },
-      "planning_note": "Actual source-bound gate mechanism has focused positive/negative observations, including real runtime resource mutation refusal. This broader admission contract remains planned until native integration and actual complete finite corpus/software observations are bound; controlled receipts confer no SDK or corpus qualification."
+      "source_sha256": "c34de426e27f4d27cd59729d32f48f16cc0b97b362785799964b247ab60af789",
+      "implementation_note": "Current exact five-primary policy and proof refusal observed in spacefox-watchface/evidence/language-settings-whole/host-final.log; finite actual SDK evidence is separate in basic-five-finite."
     }
   ],
   "commands": [

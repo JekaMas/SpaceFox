@@ -66,7 +66,7 @@ def main():
     parser.add_argument('--catalog-source',type=Path,default=ROOT/'catalog/source.json')
     parser.add_argument('--geography-source',type=Path,required=True)
     parser.add_argument('--site',action='append',required=True)
-    parser.add_argument('--kind',choices=['map','globe','both'],default='both')
+    parser.add_argument('--kind',choices=['map'],default='map')
     parser.add_argument('--profile',choices=['regional','accepted04-full'],default='regional')
     parser.add_argument('--output',type=Path,required=True)
     parser.add_argument('--reference-context',action='store_true',help='diagnostic camera on reference; never activates mobile marker')
@@ -78,7 +78,7 @@ def main():
         source=args.geography_source.resolve()
         pin={'path':str(source.relative_to(ROOT)),'sha256':hashlib.sha256(source.read_bytes()).hexdigest()}
         catalog=build_catalog(ROOT,args.catalog_source)
-        views=[build_view(ROOT,catalog,site,source_pin=pin,kind=kind,profile=args.profile,reference_context=args.reference_context) for site in args.site for kind in (('map','globe') if args.kind=='both' else (args.kind,))]
+        views=[build_view(ROOT,catalog,site,source_pin=pin,kind=kind,profile=args.profile,reference_context=args.reference_context) for site in args.site for kind in (args.kind,)]
         previous=read_artifact(args.retain_directory) if args.retain_directory else None
         artifact=build_artifact(views,previous);write_artifact(output,artifact)
         for number,view in enumerate(views):

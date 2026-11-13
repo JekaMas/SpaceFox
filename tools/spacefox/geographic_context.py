@@ -174,10 +174,8 @@ def _rotated(lon,lat,center):
 
 def project_profile(latitude,longitude,*,kind,center,scale):
     position(latitude,longitude); position(*center)
-    _require(kind in ('map','globe') and type(scale) in (int,float) and math.isfinite(scale) and 1 <= scale <= 500000, 'invalid preview camera')
+    _require(kind == 'map' and type(scale) in (int,float) and math.isfinite(scale) and 1 <= scale <= 500000, 'invalid preview camera')
     x,y,gx,gy,z=_rotated(float(longitude),float(latitude),tuple(map(float,center)))
-    if kind == 'globe' and z < -1e-12:return None
-    if kind == 'globe':return (335+gx*scale,165-gy*scale)
     return (335+math.radians(x)*scale,165-math.radians(y)*scale)
 
 
@@ -276,7 +274,7 @@ def build_view(root,catalog,site_id,*,source_pin=None,kind='map',profile='region
     validate_catalog(catalog)
     _require(site_id in catalog['dictionaries']['sites'],'unknown site identity')
     _require(profile in ('regional','accepted04-full'),'unsupported preview profile')
-    _require(profile != 'accepted04-full' or kind == 'map','owner accepted04 profile is map only; globe is a separate regional study')
+    _require(profile != 'accepted04-full' or kind == 'map','owner accepted04 profile is map only')
     source=load_source(root,source_pin or catalog['source']['geography'])
     site=catalog['dictionaries']['sites'][site_id];mode=site['facts'].get('positionMode','fixed-source')
     active=site['position'] if mode == 'fixed-source' else None
@@ -395,8 +393,8 @@ def validate_view(manifest,files):
     _require(camera['center']==center and camera['markerAnchor']==[335,165] and camera['canvas']==[390,390] and camera['sfvCanvas']==[256,256],'preview camera/source mismatch')
     _require(manifest['marker'] == ([335,165] if active else None),'mobile/unknown/point alignment mismatch')
     _require(proof.get('derivation',{}).get('rotation') == 'spherical-site-centered-v1', 'unsupported corresponding derivation')
-    _require(camera['kind'] in ('map','globe') and camera['profile'] in ('regional','accepted04-full') and 1 <= camera['scale'] <= 500000 and (camera['profile'] != 'accepted04-full' or camera['scale'] == 145), 'preview camera contract')
-    _require(camera['profile'] != 'accepted04-full' or camera['kind'] == 'map','owner accepted04 profile is map only; globe is a separate regional study')
+    _require(camera['kind'] == 'map' and camera['profile'] in ('regional','accepted04-full') and 1 <= camera['scale'] <= 500000 and (camera['profile'] != 'accepted04-full' or camera['scale'] == 145), 'preview camera contract')
+    _require(camera['profile'] != 'accepted04-full' or camera['kind'] == 'map','owner accepted04 profile is map only')
     _require(isinstance(manifest.get('layers'),list) and bool(manifest['layers']), 'preview layers required')
     for layer in manifest['layers']:
         parts=[]

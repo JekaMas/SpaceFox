@@ -46,10 +46,9 @@ The worker uses `manual` and accepts exactly HTTP 204, rejecting redirects witho
 following their Location. Node supports `error`; previous Node-only tests therefore
 passed while the deployed Worker failed before issuing a subrequest. A local
 Workers-mode substitute tests that contract but is not a Cloudflare runtime test.
-The historical transport failure explains the source correction; it is not a
-statement about any instance's current deployment. Deployment and naturally
-scheduled observations must bind the exact repaired source for each instance
-before claiming its operation. Local tests do not supply that evidence.
+The previously deployed version's observed scheduled invocations failed with
+sanitized transport errors; the repaired source requires a fresh reviewed deployment
+and natural event observations before any operational claim.
 
 The request intentionally pins GitHub REST API `2022-11-28` and accepts only its
 legacy 204 response. GitHub's [version policy](https://docs.github.com/en/rest/about-the-rest-api/api-versions)
@@ -59,14 +58,14 @@ explicit source/test revision. The clock never reads or logs response bodies.
 
 ## Dashboard setup, qualification and recovery
 
-Provisioning and qualification are per instance. This portable runbook does not
-include private operator records or attest the current state of the author's
-account. Each operator must inspect and qualify their own account and instance.
-A saved trigger, a successful dispatch, fresh source publication and successful
-completion of the entire workflow are separate observations. Even a successful
-primary feed publication does not make a later metadata-job failure a green
-whole-workflow run. Retain exact source and deployment IDs, UTC event/run times
-and public readback in that instance's own records.
+Provisioning and qualification are per instance. On 2026-11-12 the owner’s
+operator recorded an active reviewed Worker and encrypted Production secret,
+with workers.dev and preview URLs disabled and no routes or domains. An initial
+Cron Add was only staged; after the global Save and a full reload, the exact
+Cron was present at 16:49:41 UTC. That is configuration evidence, not proof of
+natural execution or automatic freshness. The correction and durable readback
+are retained in the change’s `evidence/alternative-schedule-trigger/root-live/`
+records. Each operator must inspect and qualify their own account and instance.
 
 Only after source review and explicit deployment authority:
 

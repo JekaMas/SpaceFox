@@ -1,0 +1,121 @@
+"""Source-bound finite software admission, separate from human/device review."""
+import hashlib,json,re
+from pathlib import Path
+from xml.etree import ElementTree as ET
+ROOT=Path(__file__).resolve().parents[1]
+OWNERS=('tools/native_language_policy.py','tools/build_native_localization.py','tools/build_watchface.py',
+        'watchface/source/LocalePresentation.mc','watchface/source/SceneRenderer.mc',
+        'watchface/source/SceneSettings.mc','watchface/source/SpaceFoxView.mc',
+        'watchface/source/WatchClock.mc','watchface/source/Fitness.mc',
+        'watchface/source/ScheduleState.mc','watchface/source/SceneContext.mc',
+        'watchface/source/FeedScene.mc','watchface/source/generated/LocaleGraphemes.mc')
+
+def input_paths(catalog,root=ROOT):
+ """Exact common typography and primary text closure, including resource bindings.
+
+ SceneStrings/manifest availability is generated from admission itself and is
+ excluded to avoid a hash cycle. Their generator, locale JSON bindings, settings,
+ text owners and independent jungle/toolchain inputs remain bound.
+ """
+ root=Path(root).resolve()
+ rows=catalog['locales'];primary=set(catalog['supportPolicy']['primaryLocales']);paths=list(OWNERS)
+ paths.extend(('watchface/monkey.jungle','watchface/toolchain-lock.json',
+               'watchface/resources/settings/settings.xml','watchface/resources/settings/properties.xml'))
+ def dependency(binding,filename):
+  if not isinstance(filename,str) or not filename or Path(filename).is_absolute():raise ValueError('invalid software resource dependency')
+  path=(root/Path(binding).parent/filename).resolve()
+  if not path.is_relative_to(root) or not path.is_file():raise ValueError('software resource dependency unavailable: '+filename)
+  return path.relative_to(root).as_posix()
+ def bindings(name,tag):
+  paths.append(name)
+  try:items=list(ET.parse(root/name).getroot().iter(tag))
+  except (OSError,ET.ParseError) as error:raise ValueError('invalid software resource binding: '+name) from error
+  result={}
+  for item in items:
+   identity=item.get('id')
+   if not identity or identity in result:raise ValueError('duplicate/missing software resource ID: '+name)
+   result[identity]=item.get('filename')
+  return result
+ locale_binding='watchface/resources/json/locales.xml';locale_files=bindings(locale_binding,'jsonData')
+ for index,row in enumerate(rows):
+  if row['id'] not in primary:continue
+  code={'chs':'zhs','cht':'zht'}.get(row['garmin'],row['garmin']);folder='resources' if row['id']=='en' else 'resources-'+code
+  paths.extend(('locales/'+row['id']+'.json',dependency(locale_binding,locale_files.get('Locale'+str(index))),'watchface/'+folder+'/strings/strings.xml'))
+ grapheme_binding='watchface/resources/json/graphemes.xml';grapheme_files=bindings(grapheme_binding,'jsonData')
+ paths.append(dependency(grapheme_binding,grapheme_files.get('GraphemeProperties')))
+ font_binding='watchface/resources/fonts/fonts.xml';font_files=bindings(font_binding,'font')
+ # Follow actual Rez.Fonts references, then BMFont page references. Unused
+ # legacy font atlases and best-effort translations do not enter this closure.
+ font_ids=set()
+ for name in OWNERS:
+  if name.endswith('.mc'):font_ids.update(re.findall(r'\bRez\.Fonts\.([A-Za-z0-9_]+)',(root/name).read_text()))
+ for identity in sorted(font_ids):
+  font=dependency(font_binding,font_files.get(identity));paths.append(font)
+  pages=re.findall(r'^page\s+[^\n]*\bfile="([^"]+)"',(root/font).read_text(),re.MULTILINE)
+  if not pages:raise ValueError('software font has no bitmap pages: '+font)
+  paths.extend(dependency(font,page) for page in pages)
+ return tuple(dict.fromkeys(paths))
+
+def validate_generated_locale_source(root,catalog,qualified,*,include_availability=True):
+ """Verify generated mappings without a proof→availability→proof hash cycle."""
+ try:
+  from tools.build_native_localization import scene_strings
+ except ModuleNotFoundError:
+  from build_native_localization import scene_strings
+ path=Path(root)/'watchface/source/generated/SceneStrings.mc'
+ try:actual=path.read_text()
+ except OSError as error:raise ValueError('generated locale source unavailable') from error
+ expected=scene_strings(catalog['locales'],qualified)
+ if not include_availability:
+  def static(source):
+   # Exclude only the return expression of the one generated availability
+   # function. All ID/code/resource mappings and every other byte stay checked.
+   result,count=re.subn(r'(?m)^( function available\(index as Number\) as Boolean \{return )[^{}\n]*(;\})$',r'\1<admission>\2',source)
+   if count!=1:raise ValueError('generated locale availability function differs')
+   return result
+  actual=static(actual);expected=static(expected)
+ if actual!=expected:raise ValueError('generated locale source differs from source-bound admission')
+
+def software_locales(root,catalog=None):
+ root=Path(root).resolve();catalog=catalog or json.loads((root/'locales/catalog.json').read_text());policy=catalog['supportPolicy'];qualified=policy['softwareQualifiedLocales'];proof=policy['softwareQualificationProof']
+ if (not isinstance(qualified,list) or any(not isinstance(v,str) for v in qualified)
+     or len(set(qualified))!=len(qualified) or not set(qualified)<=set(policy['primaryLocales'])):
+  raise ValueError('software locale IDs must be unique primary modes')
+ if not qualified:
+  if proof is not None:raise ValueError('empty software admission must have no proof')
+  return []
+ qualified=_validate_bound_files(root,catalog)
+ # Byte binding alone cannot establish complete source pagination or a native
+ # cohort. Reconcile the actual source/SDK evidence before granting admission.
+ try:
+  try:
+   from tools.qualify_native_finite import validate_bound_observation
+  except ModuleNotFoundError:
+   from qualify_native_finite import validate_bound_observation
+  validate_bound_observation(root,catalog)
+ except (KeyError,TypeError,OSError,json.JSONDecodeError) as error:
+  raise ValueError('invalid complete-corpus/native observation proof') from error
+ return qualified
+
+def _validate_bound_files(root,catalog):
+ """Exercise source/byte binding only; this helper never grants admission."""
+ root=Path(root).resolve();policy=catalog['supportPolicy'];qualified=policy['softwareQualifiedLocales'];proof=policy['softwareQualificationProof']
+ keys={'schemaVersion','corpusPath','corpusSha256','receiptPath','receiptSha256','productionSources','scope','physicalDeviceObserved','nativeSpeakerReviewed'}
+ if (not isinstance(proof,dict) or set(proof)!=keys or type(proof['schemaVersion']) is not int or proof['schemaVersion']!=1
+     or proof['scope']!='finite-primary-software' or proof['physicalDeviceObserved'] is not False
+     or proof['nativeSpeakerReviewed'] is not False):raise ValueError('invalid finite software proof shape/boundary')
+ def checked(name,digest):
+  if not isinstance(name,str) or not name or Path(name).is_absolute() or '..' in Path(name).parts:raise ValueError('software proof path must be repository-relative')
+  path=(root/name).resolve()
+  if not path.is_relative_to(root) or not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest()!=digest:raise ValueError('software proof input changed: '+name)
+  return path
+ if not isinstance(proof['productionSources'],dict):raise ValueError('finite software source closure differs')
+ for name,digest in proof['productionSources'].items():checked(name,digest)
+ if set(proof['productionSources'])!=set(input_paths(catalog,root)):raise ValueError('finite software source closure differs')
+ checked(proof['corpusPath'],proof['corpusSha256'])
+ receipt=json.loads(checked(proof['receiptPath'],proof['receiptSha256']).read_text())
+ if (receipt.get('status')!='passed' or receipt.get('qualifiedLocales')!=qualified
+     or receipt.get('corpusSha256')!=proof['corpusSha256']
+     or receipt.get('productionSources')!=proof['productionSources']):raise ValueError('finite software receipt does not bind admission')
+ validate_generated_locale_source(root,catalog,qualified,include_availability=False)
+ return qualified

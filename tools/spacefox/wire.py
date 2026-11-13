@@ -89,8 +89,7 @@ def validate_current_feed(raw, *, now=None):
     keys = {'schemaVersion','publisher','catalogRevision','catalogDigest','catalogPath','unresolvedCatalogIds',
             'launch','timingState','refreshPolicy','pollIntervalSeconds','sourceContentRevision','selection',
             'providerTraversal','visualSelection','catalogSourceDigest','dictionaryMode','rendererProfile','nativeTransfer'}
-    optional = {'globeSelection','globeTransfer'}
-    if (type(doc) is not dict or not keys <= set(doc) or set(doc)-keys-optional
+    if (type(doc) is not dict or set(doc) != keys
             or type(doc['schemaVersion']) is not int or doc['schemaVersion'] != 3
             or doc['rendererProfile'] != 'SFR1M' or doc['dictionaryMode'] != 'immutable-catalog'):
         raise ValueError('unsupported feed schema/fields')
@@ -132,13 +131,6 @@ def validate_current_feed(raw, *, now=None):
     from .visual_bridge import validate_ref
     if doc['visualSelection'] is not None: validate_ref(doc['visualSelection'])
     validate_ref(doc['nativeTransfer'])
-    if ('globeSelection' in doc) != ('globeTransfer' in doc):
-        raise ValueError('incomplete globe selection')
-    if 'globeSelection' in doc:
-        if doc['visualSelection'] is None: raise ValueError('globe needs selected scene')
-        validate_ref(doc['globeSelection']);validate_ref(doc['globeTransfer'])
-        if doc['globeSelection']==doc['visualSelection'] or doc['globeTransfer']==doc['nativeTransfer']:
-            raise ValueError('view references must differ')
     traversal = doc['providerTraversal']
     if traversal is not None:
         if (type(traversal) is not dict or set(traversal) != {'query', 'complete', 'reportedCount', 'receivedUpcoming', 'detailRequests', 'worldwideCompleteness'}

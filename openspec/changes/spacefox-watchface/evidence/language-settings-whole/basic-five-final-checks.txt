@@ -1,0 +1,4 @@
+ruff E9,F63,F7,F82: passed
+git diff --check with blank-at-eof excluded: passed (two existing modified Monkey C files have a final blank line)
+strict OpenSpec validation: both changes passed
+watchface and localization graph/discovery: passed

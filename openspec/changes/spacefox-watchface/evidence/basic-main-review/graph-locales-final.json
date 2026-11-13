@@ -1,0 +1,39 @@
+{
+  "change": "localize-free-distribution",
+  "manifest": "openspec/changes/localize-free-distribution/verification.json",
+  "manifest_sha256": "e2d88a56d82c6f0166821706fae35eb92d95e21311a828a484d108f5dee055fb",
+  "selection": {
+    "cases": [
+      "R1.P1.NEGATIVE",
+      "R1.P1.POSITIVE",
+      "R1.P2.NEGATIVE",
+      "R1.P2.POSITIVE",
+      "R2.P1.NEGATIVE",
+      "R2.P1.POSITIVE",
+      "R3.P1.NEGATIVE",
+      "R3.P1.POSITIVE"
+    ],
+    "commands": [
+      "foundation-tests",
+      "primary-language-scope-tests"
+    ],
+    "properties": [
+      "R1.P1",
+      "R1.P2",
+      "R2.P1",
+      "R3.P1"
+    ],
+    "requirements": [
+      "R1",
+      "R2",
+      "R3"
+    ]
+  },
+  "specifications": {
+    "R1": "1d57e5455094fdd510cb2101440f697ad93bf7f8e55babac6ce767b717448a34",
+    "R2": "a4c2e99acb645813030c2b4ae199298586e2957d6c26d25bc3d3db96495bccec",
+    "R3": "0bee41230a898da59b31ea48eee7cb96907342e2710454b780eeba363273592f"
+  },
+  "status": "passed",
+  "substitution_gaps": []
+}

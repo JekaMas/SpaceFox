@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 HISTORICAL = ROOT/'tests/fixtures/catalog/global-before-further-art-r2-source.json'
 CURATION = Path('assets/global/curation-20261112-further-r2.json')
 RADIAL_CURATION = Path('assets/global/curation-20261112-further-r2-independent-v1.json')
-EVIDENCE = ROOT/'tests/fixtures/further-art-r2'
+EVIDENCE = ROOT/'openspec/changes/spacefox-watchface/evidence/remaining-art/r2'
 EXPECTED = {
     123:('Long March 5/YZ-2','lm5-yz2-radial-firstflight'),
     197:('SARGE','sarge-published2016'),

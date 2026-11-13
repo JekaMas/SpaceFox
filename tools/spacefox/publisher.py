@@ -28,8 +28,8 @@ MAX_CATALOG_CORPUS_BYTES = 67108864
 MAX_CATALOG_OBJECTS = 4096
 REQUESTS_PER_HOUR = 15
 UNCERTAIN_DELAY_SECONDS = 60
-STATE_REF = 'refs/heads/feed-state-motion-v3'
-ANCHOR_REF = 'refs/tags/spacefox-state-bootstrap-motion-v3'
+STATE_REF = 'refs/heads/feed-state-map-v3'
+ANCHOR_REF = 'refs/tags/spacefox-state-bootstrap-map-v3'
 _HEX = re.compile(r'[0-9a-f]+\Z')
 
 

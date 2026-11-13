@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "scope": "One actual captured Starbase launch, current native flat-map/rocket scene and screenshot. This is not exhaustive worldwide marker or physical-device qualification.",
+  "feedPath": "tests/fixtures/map-only/feed.json",
+  "feedSha256": "f87270b02391d76962fcf216481ea62052aed7b9102aeb8d03a4fdf0a28d36b4",
+  "selectionPath": "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-map/selection.json",
+  "selectionSha256": "7f6b599d4479565aaf3b6cadfb4b71e74e6247644f9df8df4091acfcf3f42621",
+  "screenshotPath": "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-current-map.png",
+  "screenshotSha256": "f3e64d7de1b8e94e6cb2da8b7df3d04437a5e6a727f9709b88748337775e7c5a",
+  "markerCenter": [
+    335,
+    165
+  ],
+  "markerCenterRgb": [
+    255,
+    210,
+    98
+  ],
+  "siteId": "ll2:site:235",
+  "modelId": "ll2:configuration:522",
+  "sourcePosition": {
+    "encoding": "decimal-text-v1",
+    "latitude": "25.99677",
+    "longitude": "-97.15799",
+    "qualification": "unverified-reference",
+    "units": "degrees"
+  },
+  "runtimeSelectionSha256": "7f6b599d4479565aaf3b6cadfb4b71e74e6247644f9df8df4091acfcf3f42621",
+  "runtimeLog": "basic-map/map.log",
+  "note": "Native renderer discards siteId after checking scene identity against the accepted bridge to save heap; the runtime log therefore prints siteId=null. The verified selected-root digest binds the retained raw descriptor containing the exact site and position."
+}

@@ -10,7 +10,7 @@ the layout, but live updates and a maintainable visual catalog are still missing
 ## What Changes
 
 - Define a Forerunner 165 watch face with four configurable fitness fields, a
-  local countdown, a model-specific rocket image and a launch-site globe/map.
+  local countdown, a model-specific rocket image and a launch-site flat map.
   Use the accepted full-screen flat map with gradual fading and no clock tile:
   rocket/company and mission purpose above time, countdown adjacent to time,
   four large fields in 2×2, country/site below the fields and a large left rocket.

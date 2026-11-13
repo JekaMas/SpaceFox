@@ -1,0 +1,10 @@
+test_captured_whole_traversal_reopens_preserves_ages_and_source_headroom (tests.test_current_metadata_publisher.CurrentMetadataPublisherTest.test_captured_whole_traversal_reopens_preserves_ages_and_source_headroom) ... ok
+test_current_policy_is_the_only_default (tests.test_current_metadata_publisher.CurrentMetadataPublisherTest.test_current_policy_is_the_only_default) ... ok
+test_expired_current_prefix_restarts_without_renewing_source_or_quota (tests.test_current_metadata_publisher.CurrentMetadataPublisherTest.test_expired_current_prefix_restarts_without_renewing_source_or_quota) ... ok
+test_obsolete_metadata_journals_are_refused (tests.test_current_metadata_publisher.CurrentMetadataPublisherTest.test_obsolete_metadata_journals_are_refused) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 104.844s
+
+OK
+{"control": "captured-current3-whole", "pages": 33, "fixtureSha256": "b42ed84082efc9ff7550eb2752132c96f1d6b568dada430ff0ca13eaf954f2a1", "yields": 5, "sourceAgePreserved": 1794541187, "counts": {"countries": 103, "models": 532, "organizations": 350, "sites": 251}}

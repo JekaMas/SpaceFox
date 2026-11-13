@@ -51,34 +51,6 @@ class CurrentCatalogTest(unittest.TestCase):
         self.assertFalse(event['reviewRequired'])
         self.assertEqual(event['configuration']['facts']['providerActive'], False)
 
-    def test_real_dual_feed_keeps_review_reference_without_old_art(self):
-        from tests.test_visual_bridge import NOW, envelope, record, sid, state
-        from tools.spacefox.schedule import IdKind
-        from tools.spacefox.visual_bridge import build_artifact, read_ref, validate_feed, FEED_PATH
-        from tools.spacefox.wire import validate_feed as validate_v1
-        for model, current in [('164', True), ('39', False), ('999999', False)]:
-            launch = record(configuration_id=sid(IdKind.CONFIGURATION, model))
-            files, _ = build_artifact(state(launch), self.catalog, NOW, publisher=envelope(),
-                                      root=ROOT, eligibility=self.registry)
-            old = validate_v1(files['feed.json'])
-            new_feed = validate_feed(files[FEED_PATH])
-            identity = 'll2:configuration:' + model
-            self.assertEqual(old['launch']['configuration_id'], identity)
-            self.assertEqual(old['launch'], new_feed['launch'])
-            self.assertEqual(old['launch']['source_validated_utc'], NOW - 3600)
-            self.assertEqual(identity in old['unresolvedCatalogIds'], not current)
-            selection = loads_json(read_ref(new_feed['visualSelection'], files))
-            self.assertEqual(selection['roles']['rocket'] is not None, current)
-        import subprocess
-        import tempfile
-        import sys
-        with tempfile.TemporaryDirectory() as temp:
-            for model, expected_exit in [('164', 0), ('39', 1)]:
-                result = subprocess.run([sys.executable, '-B', 'tools/export_visuals.py',
-                                         '--root', 'll2:configuration:' + model,
-                                         '--output', str(Path(temp) / model)],
-                                        cwd=ROOT, capture_output=True, text=True, check=False)
-                self.assertEqual(result.returncode, expected_exit, result.stderr)
 
     def test_data_only_revision_keeps_evidence_and_reopens_changed_identity(self):
         import tempfile

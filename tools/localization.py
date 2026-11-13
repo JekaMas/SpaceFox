@@ -73,7 +73,7 @@ def validate_inventory(root, inventory):
         if not isinstance(included, bool):
             raise ValueError(f'{name}: inclusion must be explicit')
         if included:
-            if item.get('license') not in {'MIT', 'ISC', 'OFL-1.1', 'LicenseRef-Public-Domain-Natural-Earth'}:
+            if item.get('license') not in {'MIT', 'ISC', 'OFL-1.1', 'Unicode-3.0', 'LicenseRef-Public-Domain-Natural-Earth'}:
                 raise ValueError(f'{name}: unqualified redistribution license')
             if not item.get('source') or not item.get('notice'):
                 raise ValueError(f'{name}: missing provenance or notice')
