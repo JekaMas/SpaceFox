@@ -1,0 +1,1608 @@
+{
+  "base": "5534b675",
+  "retiredProperties": [
+    {
+      "id": "LS07.P2",
+      "requirement_id": "LS07",
+      "scenarios": [
+        "Earlier launch added"
+      ],
+      "statement": "Additional normalized publisher ordering edge: preserve exact/date/window/unknown facts; sort known lower bounds (intersecting supplied date/window) without treating them as exact; use a sole upper bound if no lower bound exists; wholly unknown timing stays eligible after sortable candidates. Stable namespace/value breaks ties. Missing mappings/new IDs cannot filter launches. Selection cannot claim no uncertain launch could occur earlier. Original LS07.P1 selection remains conjunctive.",
+      "owner": "tools/spacefox/schedule.py",
+      "oracle": "Independent literal 2027-01-16 UTC boundary1800057600, exact before/after values, supplied window1799999999..1800001000, intersecting afternoon bound, all six A/Z/unknown input orders, known-later plus fully unknown and null mappings. All coarse selected values yield uncertain/no seconds/hourly.",
+      "source_globs": [
+        "corpus/real-schedule-20261113/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/spacefox/__init__.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/schedule.py"
+      ],
+      "planning_status": "Current-only witnesses remain planned after executed fixture/harness closure retirement. Retained historical observations do not execute this graph or close product acceptance."
+    },
+    {
+      "id": "LS08.P2",
+      "requirement_id": "LS08",
+      "scenarios": [
+        "Provider omits mission details"
+      ],
+      "statement": "Actual LL2 normal-mode source context adaptation: configuration/operator/mission/pad-country follow the same launch; blank/omitted context becomes explicit null and never borrows another record. Explicitly sourced nullable alpha2/alpha3 country_code and pad.location.name site_location_name preserve short-country/cosmodrome context for unknown IDs. First fresh qualification may enrich these prior-unknown additive fields without changing modification time; already known/conflicting/removed same-revision facts reject.",
+      "owner": "tools/update_feed.py; tools/spacefox/provider.py; tools/spacefox/wire.py; tools/spacefox/publisher.py; tools/spacefox/schedule.py",
+      "oracle": "Independent literal fixtures and typed event checkpoints in tests/test_schedule_provider.py; actual persisted Git refs/bytes are observed. Known site65 coordinates -39.262833/177.864469, null and signed-zero/full decimal text; source UTC1794441600/1794268800, 12:00 target1794484800,20minute move1794486000, quota15, crash delay60, terminal144events/current16/archive128 are separately specified; no SUT-derived expected flags or source-age facts. Literal unknown IDs9999/77777 carry NZ/New Cosmodrome; optional unknown codes ??/??? are null, explicit alpha3 fallback USA, no known-site switch or name guessing.",
+      "source_globs": [
+        "assets/rocket-pack/registry.source.json",
+        "assets/rocket-pack/svg/**",
+        "catalog/source.json",
+        "corpus/real-schedule-20261113/**",
+        "openspec/changes/spacefox-watchface/evidence/global-catalog/reference-inventory.json",
+        "tests/__init__.py",
+        "tests/fixtures/provider/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/__init__.py",
+        "tools/spacefox/__init__.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/spacefox/wire.py",
+        "tools/update_feed.py"
+      ],
+      "planning_status": "Current-only witnesses remain planned after executed fixture/harness closure retirement. Retained historical observations do not execute this graph or close product acceptance."
+    },
+    {
+      "id": "LS09.P2",
+      "requirement_id": "LS09",
+      "scenarios": [
+        "Date known but time uncertain"
+      ],
+      "statement": "Provider precision adaptation conjunct: only whole-second Second0/SEC creates exact target; preserve raw nominal NET, precision and supplied windows for minute/local/day/future/missing precision with no invented UTCdate or bounds. Started6/9 is explicit and never completed; native countdown remains planned.",
+      "owner": "tools/update_feed.py; tools/spacefox/provider.py; tools/spacefox/wire.py; tools/spacefox/publisher.py; tools/spacefox/schedule.py",
+      "oracle": "Independent literal fixtures and typed event checkpoints in tests/test_schedule_provider.py; actual persisted Git refs/bytes are observed. Known site65 coordinates -39.262833/177.864469, null and signed-zero/full decimal text; source UTC1794441600/1794268800, 12:00 target1794484800,20minute move1794486000, quota15, crash delay60, terminal144events/current16/archive128 are separately specified; no SUT-derived expected flags or source-age facts.",
+      "source_globs": [
+        "assets/rocket-pack/registry.source.json",
+        "assets/rocket-pack/svg/**",
+        "catalog/source.json",
+        "corpus/real-schedule-20261113/**",
+        "openspec/changes/spacefox-watchface/evidence/global-catalog/reference-inventory.json",
+        "tests/__init__.py",
+        "tests/fixtures/provider/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/__init__.py",
+        "tools/spacefox/__init__.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/spacefox/wire.py",
+        "tools/update_feed.py"
+      ],
+      "planning_status": "Current-only witnesses remain planned after executed fixture/harness closure retirement. Retained historical observations do not execute this graph or close product acceptance."
+    },
+    {
+      "id": "LS09.P3",
+      "requirement_id": "LS09",
+      "scenarios": [
+        "Exact time available",
+        "Date known but time uncertain",
+        "Offline countdown after sleep"
+      ],
+      "statement": "Compiled native core computes current UTC differences for exact and validated nominal-minute targets; fixed numeric display and unknown/zero semantics apply in active and sparse snapshots. Full accepted-feed, lifecycle and physical binding remain separate.",
+      "owner": "watchface/source/ScheduleState.mc",
+      "oracle": "Literal SDK tests include 7200 seconds, 93784 seconds as 26:03:04, nominal minute, absent targets, zero and offline wake. Actual framework result identities and failures remain explicit.",
+      "source_globs": [
+        "tests/fixtures/build/**",
+        "tests/test_native_build.py",
+        "tests/test_native_clock.py",
+        "tools/build_watchface.py",
+        "tools/run_native_tests.py",
+        "watchface/api-policy.json",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources/**",
+        "watchface/source/**",
+        "watchface/tests/**",
+        "watchface/toolchain-lock.json"
+      ],
+      "planning_status": "implemented source/observers; candidate awaits clean selected execution and independent verification; full original property remains planned"
+    }
+  ],
+  "retiredCases": [
+    {
+      "id": "LS09.P1.S01.POSITIVE",
+      "property_id": "LS09.P1",
+      "polarity": "positive",
+      "scenario": "Exact time available",
+      "scenario_fingerprint": "b66ffc7cec26906e8ad944abf56410f184372aaed28929616cb3f338823a71b7",
+      "setup": "launch1800007200 and now1800000000; local zone changes UTC toUTC+4",
+      "observable": "duration remains7200seconds while local clock moves four hours",
+      "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: duration remains7200seconds while local clock moves four hours",
+      "green_expectation": "duration remains7200seconds while local clock moves four hours",
+      "invalidation_dependencies": [
+        "assets/fonts/**",
+        "schemas/**",
+        "tests/fixtures/native_timing/**",
+        "tests/test_native_timing.py",
+        "tools/build_native_resources.py",
+        "tools/build_watchface.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/update_feed.py",
+        "watchface/generated/**",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources*/**",
+        "watchface/source/**",
+        "watchface/source/ScheduleState.mc",
+        "watchface/toolchain-lock.json"
+      ],
+      "test_id": "unittest::tests.test_native_timing.NativeTimingTest.test_exact_time_available_positive",
+      "command_id": "native_timing-checks",
+      "state": "planned",
+      "source_path": "tests/test_native_timing.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 firmware/hardware, clock/time-zone input, and Garmin Storage in the compiled SDK simulator harness",
+        "allowed_proof": "Current byte-identical compiled Monkey C native cache, feed, view and scheduling behavior against literal vectors; controlled clock and in-memory Storage adapter. No physical sleep, persistent Garmin Storage or paired-phone proof.",
+        "forbidden_claims": [
+          "Physical FR165 RAM/storage/battery/glyph qualification",
+          "Real paired-phone background delivery",
+          "Garmin Store approval or approved binary install"
+        ]
+      },
+      "planning_note": "Superseded by five-language numeric-countdown cutover; previous observation is historical until a directly matching current assertion is observed.",
+      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; current-source compiled tests/builds have retained observations in evidence/original-scope-reconciliation/current-native-clock-build. Review and root case-promotion judgment remain pending. Physical-device proof remains absent.",
+      "implementation_note": "Root accepts exact original software case after whole APPLY, material midpoint fixture repair and different final whole review. See evidence/judge/current-native-clock-build-root-whole.json for actual compiled-function versus wrapper receipt and controlled clock/storage/API policy limits.",
+      "source_sha256": "df666fb946539a339662bc8121bc4386ac004227f32d18d36c4cc6b518edc82b"
+    },
+    {
+      "id": "LS09.P1.S01.NEGATIVE",
+      "property_id": "LS09.P1",
+      "polarity": "negative",
+      "scenario": "Exact time available",
+      "scenario_fingerprint": "b66ffc7cec26906e8ad944abf56410f184372aaed28929616cb3f338823a71b7",
+      "setup": "device local time formatted through timezone-offset arithmetic applied twice",
+      "observable": "native test rejects changed duration and verifies UTC Time.now path with fixed expected7200",
+      "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: native test rejects changed duration and verifies UTC Time.now path with fixed expected7200",
+      "green_expectation": "native test rejects changed duration and verifies UTC Time.now path with fixed expected7200",
+      "invalidation_dependencies": [
+        "assets/fonts/**",
+        "schemas/**",
+        "tests/fixtures/native_timing/**",
+        "tests/test_native_timing.py",
+        "tools/build_native_resources.py",
+        "tools/build_watchface.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/update_feed.py",
+        "watchface/generated/**",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources*/**",
+        "watchface/source/**",
+        "watchface/source/ScheduleState.mc",
+        "watchface/toolchain-lock.json"
+      ],
+      "test_id": "unittest::tests.test_native_timing.NativeTimingTest.test_exact_time_available_negative",
+      "command_id": "native_timing-checks",
+      "state": "planned",
+      "source_path": "tests/test_native_timing.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 firmware/hardware, clock/time-zone input, and Garmin Storage in the compiled SDK simulator harness",
+        "allowed_proof": "Current byte-identical compiled Monkey C native cache, feed, view and scheduling behavior against literal vectors; controlled clock and in-memory Storage adapter. No physical sleep, persistent Garmin Storage or paired-phone proof.",
+        "forbidden_claims": [
+          "Physical FR165 RAM/storage/battery/glyph qualification",
+          "Real paired-phone background delivery",
+          "Garmin Store approval or approved binary install"
+        ]
+      },
+      "planning_note": "Superseded by five-language numeric-countdown cutover; previous observation is historical until a directly matching current assertion is observed.",
+      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; current-source compiled tests/builds have retained observations in evidence/original-scope-reconciliation/current-native-clock-build. Review and root case-promotion judgment remain pending. Physical-device proof remains absent.",
+      "implementation_note": "Root accepts exact original software case after whole APPLY, material midpoint fixture repair and different final whole review. See evidence/judge/current-native-clock-build-root-whole.json for actual compiled-function versus wrapper receipt and controlled clock/storage/API policy limits.",
+      "source_sha256": "df666fb946539a339662bc8121bc4386ac004227f32d18d36c4cc6b518edc82b"
+    },
+    {
+      "id": "LS09.P1.S02.POSITIVE",
+      "property_id": "LS09.P1",
+      "polarity": "positive",
+      "scenario": "Date known but time uncertain",
+      "scenario_fingerprint": "9a366ad7ba43e2ebc7a81330997b651a5674da69622e5e43dd8d9ffcb207b402",
+      "setup": "date-only2027-01-15, coarse window and null exact UTC variants",
+      "observable": "uncertainty label and no precise seconds countdown",
+      "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: uncertainty label and no precise seconds countdown",
+      "green_expectation": "uncertainty label and no precise seconds countdown",
+      "invalidation_dependencies": [
+        "assets/fonts/**",
+        "schemas/**",
+        "tests/fixtures/native_timing/**",
+        "tests/test_native_timing.py",
+        "tools/build_native_resources.py",
+        "tools/build_watchface.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/update_feed.py",
+        "watchface/generated/**",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources*/**",
+        "watchface/source/**",
+        "watchface/source/ScheduleState.mc",
+        "watchface/toolchain-lock.json"
+      ],
+      "test_id": "unittest::tests.test_native_timing.NativeTimingTest.test_date_known_but_time_uncertain_positive",
+      "command_id": "native_timing-checks",
+      "state": "planned",
+      "source_path": "tests/test_native_timing.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 firmware/hardware, clock/time-zone input, and Garmin Storage in the compiled SDK simulator harness",
+        "allowed_proof": "Current byte-identical compiled Monkey C native cache, feed, view and scheduling behavior against literal vectors; controlled clock and in-memory Storage adapter. No physical sleep, persistent Garmin Storage or paired-phone proof.",
+        "forbidden_claims": [
+          "Physical FR165 RAM/storage/battery/glyph qualification",
+          "Real paired-phone background delivery",
+          "Garmin Store approval or approved binary install"
+        ]
+      },
+      "planning_note": "Superseded by five-language numeric-countdown cutover; previous observation is historical until a directly matching current assertion is observed.",
+      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; current-source compiled tests/builds have retained observations in evidence/original-scope-reconciliation/current-native-clock-build. Review and root case-promotion judgment remain pending. Physical-device proof remains absent.",
+      "implementation_note": "Root accepts exact original software case after whole APPLY, material midpoint fixture repair and different final whole review. See evidence/judge/current-native-clock-build-root-whole.json for actual compiled-function versus wrapper receipt and controlled clock/storage/API policy limits.",
+      "source_sha256": "df666fb946539a339662bc8121bc4386ac004227f32d18d36c4cc6b518edc82b"
+    },
+    {
+      "id": "LS09.P1.S02.NEGATIVE",
+      "property_id": "LS09.P1",
+      "polarity": "negative",
+      "scenario": "Date known but time uncertain",
+      "scenario_fingerprint": "9a366ad7ba43e2ebc7a81330997b651a5674da69622e5e43dd8d9ffcb207b402",
+      "setup": "record carries a nominal midpoint while precision remainsdate/window",
+      "observable": "ignore nominal midpoint for exact countdown; never present false precision",
+      "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: ignore nominal midpoint for exact countdown; never present false precision",
+      "green_expectation": "ignore nominal midpoint for exact countdown; never present false precision",
+      "invalidation_dependencies": [
+        "assets/fonts/**",
+        "schemas/**",
+        "tests/fixtures/native_timing/**",
+        "tests/test_native_timing.py",
+        "tools/build_native_resources.py",
+        "tools/build_watchface.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/update_feed.py",
+        "watchface/generated/**",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources*/**",
+        "watchface/source/**",
+        "watchface/source/ScheduleState.mc",
+        "watchface/toolchain-lock.json"
+      ],
+      "test_id": "unittest::tests.test_native_timing.NativeTimingTest.test_date_known_but_time_uncertain_negative",
+      "command_id": "native_timing-checks",
+      "state": "planned",
+      "source_path": "tests/test_native_timing.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 firmware/hardware, clock/time-zone input, and Garmin Storage in the compiled SDK simulator harness",
+        "allowed_proof": "Current byte-identical compiled Monkey C native cache, feed, view and scheduling behavior against literal vectors; controlled clock and in-memory Storage adapter. No physical sleep, persistent Garmin Storage or paired-phone proof.",
+        "forbidden_claims": [
+          "Physical FR165 RAM/storage/battery/glyph qualification",
+          "Real paired-phone background delivery",
+          "Garmin Store approval or approved binary install"
+        ]
+      },
+      "planning_note": "Superseded by five-language numeric-countdown cutover; previous observation is historical until a directly matching current assertion is observed.",
+      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; current-source compiled tests/builds have retained observations in evidence/original-scope-reconciliation/current-native-clock-build. Review and root case-promotion judgment remain pending. Physical-device proof remains absent.",
+      "implementation_note": "Root accepts exact original software case after whole APPLY, material midpoint fixture repair and different final whole review. See evidence/judge/current-native-clock-build-root-whole.json for actual compiled-function versus wrapper receipt and controlled clock/storage/API policy limits.",
+      "source_sha256": "df666fb946539a339662bc8121bc4386ac004227f32d18d36c4cc6b518edc82b"
+    },
+    {
+      "id": "LS09.P1.S03.POSITIVE",
+      "property_id": "LS09.P1",
+      "polarity": "positive",
+      "scenario": "Offline countdown after sleep",
+      "scenario_fingerprint": "bc98a8ce618d57f9fc07baf181faff70f1a8e9b08792171e617d35bf2f1913f5",
+      "setup": "native cache launch1800010800, clock1800000000 then two-hour wake1800007200 with no network",
+      "observable": "remaining duration changes10800to3600 immediately after wake",
+      "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: remaining duration changes10800to3600 immediately after wake",
+      "green_expectation": "remaining duration changes10800to3600 immediately after wake",
+      "invalidation_dependencies": [
+        "assets/fonts/**",
+        "schemas/**",
+        "tests/fixtures/native_timing/**",
+        "tests/test_native_timing.py",
+        "tools/build_native_resources.py",
+        "tools/build_watchface.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/update_feed.py",
+        "watchface/generated/**",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources*/**",
+        "watchface/source/**",
+        "watchface/source/ScheduleState.mc",
+        "watchface/toolchain-lock.json"
+      ],
+      "test_id": "unittest::tests.test_native_timing.NativeTimingTest.test_offline_countdown_after_sleep_positive",
+      "command_id": "native_timing-checks",
+      "state": "planned",
+      "source_path": "tests/test_native_timing.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 firmware/hardware, clock/time-zone input, and Garmin Storage in the compiled SDK simulator harness",
+        "allowed_proof": "Current byte-identical compiled Monkey C native cache, feed, view and scheduling behavior against literal vectors; controlled clock and in-memory Storage adapter. No physical sleep, persistent Garmin Storage or paired-phone proof.",
+        "forbidden_claims": [
+          "Physical FR165 RAM/storage/battery/glyph qualification",
+          "Real paired-phone background delivery",
+          "Garmin Store approval or approved binary install"
+        ]
+      },
+      "planning_note": "Superseded by five-language numeric-countdown cutover; previous observation is historical until a directly matching current assertion is observed.",
+      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; current-source compiled tests/builds have retained observations in evidence/original-scope-reconciliation/current-native-clock-build. Review and root case-promotion judgment remain pending. Physical-device proof remains absent.",
+      "implementation_note": "Root accepts exact original software case after whole APPLY, material midpoint fixture repair and different final whole review. See evidence/judge/current-native-clock-build-root-whole.json for actual compiled-function versus wrapper receipt and controlled clock/storage/API policy limits.",
+      "source_sha256": "df666fb946539a339662bc8121bc4386ac004227f32d18d36c4cc6b518edc82b"
+    },
+    {
+      "id": "LS09.P1.S03.NEGATIVE",
+      "property_id": "LS09.P1",
+      "polarity": "negative",
+      "scenario": "Offline countdown after sleep",
+      "scenario_fingerprint": "bc98a8ce618d57f9fc07baf181faff70f1a8e9b08792171e617d35bf2f1913f5",
+      "setup": "no timer callbacks occur during sleep, then clock jumps backwards/forwards within documented watch behavior",
+      "observable": "recompute from current UTC, not accumulated ticks, and record clock-change handling without assuming synced network time",
+      "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: recompute from current UTC, not accumulated ticks, and record clock-change handling without assuming synced network time",
+      "green_expectation": "recompute from current UTC, not accumulated ticks, and record clock-change handling without assuming synced network time",
+      "invalidation_dependencies": [
+        "assets/fonts/**",
+        "schemas/**",
+        "tests/fixtures/native_timing/**",
+        "tests/test_native_timing.py",
+        "tools/build_native_resources.py",
+        "tools/build_watchface.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/update_feed.py",
+        "watchface/generated/**",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources*/**",
+        "watchface/source/**",
+        "watchface/source/ScheduleState.mc",
+        "watchface/toolchain-lock.json"
+      ],
+      "test_id": "unittest::tests.test_native_timing.NativeTimingTest.test_offline_countdown_after_sleep_negative",
+      "command_id": "native_timing-checks",
+      "state": "planned",
+      "source_path": "tests/test_native_timing.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 firmware/hardware, clock/time-zone input, and Garmin Storage in the compiled SDK simulator harness",
+        "allowed_proof": "Current byte-identical compiled Monkey C native cache, feed, view and scheduling behavior against literal vectors; controlled clock and in-memory Storage adapter. No physical sleep, persistent Garmin Storage or paired-phone proof.",
+        "forbidden_claims": [
+          "Physical FR165 RAM/storage/battery/glyph qualification",
+          "Real paired-phone background delivery",
+          "Garmin Store approval or approved binary install"
+        ]
+      },
+      "planning_note": "Superseded by five-language numeric-countdown cutover; previous observation is historical until a directly matching current assertion is observed.",
+      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; current-source compiled tests/builds have retained observations in evidence/original-scope-reconciliation/current-native-clock-build. Review and root case-promotion judgment remain pending. Physical-device proof remains absent.",
+      "implementation_note": "Root accepts exact original software case after whole APPLY, material midpoint fixture repair and different final whole review. See evidence/judge/current-native-clock-build-root-whole.json for actual compiled-function versus wrapper receipt and controlled clock/storage/API policy limits.",
+      "source_sha256": "df666fb946539a339662bc8121bc4386ac004227f32d18d36c4cc6b518edc82b"
+    },
+    {
+      "id": "LS09.P3.S01.POSITIVE",
+      "property_id": "LS09.P3",
+      "polarity": "positive",
+      "scenario": "Exact time available",
+      "scenario_fingerprint": "b66ffc7cec26906e8ad944abf56410f184372aaed28929616cb3f338823a71b7",
+      "setup": "launch1800007200 and now1800000000; local zone changes UTC toUTC+4; exact-1/current-61=>60 and exact1800000000/current-1000000000=>2800000000 test signed UTC and widened subtraction",
+      "observable": "duration remains7200seconds while local clock moves four hours; signed UTC values and Number-width differences retain exact duration",
+      "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: duration remains7200seconds while local clock moves four hours",
+      "green_expectation": "duration remains7200seconds while local clock moves four hours",
+      "invalidation_dependencies": [
+        "tests/fixtures/build/**",
+        "tests/test_native_build.py",
+        "tests/test_native_clock.py",
+        "tools/build_watchface.py",
+        "tools/run_native_tests.py",
+        "watchface/api-policy.json",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources/**",
+        "watchface/source/**",
+        "watchface/tests/**",
+        "watchface/toolchain-lock.json"
+      ],
+      "test_id": "unittest::tests.test_native_clock.NativeClockTest.test_exact_utc_positive",
+      "command_id": "native-clock-checks",
+      "state": "planned",
+      "source_path": "tests/test_native_clock.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 VM/firmware with SDK fr165 simulator; WatchClock UTC/local sources with explicit controlled Clock adapter for literal vectors. SDK live clock adapter gets separate bounded smoke test. No Storage adapter or persistence is exercised.",
+        "allowed_proof": "Actual compiled Monkey C arithmetic, production snapshot/lifecycle methods and FR165-profile compilation under these controlled simulator inputs.",
+        "forbidden_claims": [
+          "Physical time-zone/DST/sleep wake behavior, battery, RAM or storage qualification",
+          "Accepted feed parsing, persistent cache restart, phone/network delivery",
+          "Full04 scene, Garmin language qualification, production release identity/key backup or Store approval"
+        ]
+      },
+      "source_sha256": "a7b8843031d72e91c5720a5b729cee972dc1dd9ef5bd0dd815f7fee2cf6fbddf",
+      "native_test_ids": [
+        "clockExactPositive",
+        "clockExactNegative",
+        "clockAdapterSmoke",
+        "formatLocalSettings"
+      ],
+      "invalidation_note": "Fixture setup now copies required canonical locales; clock/parser production owner unchanged. Historical clock receipts retain original source hashes; no fresh clock-suite observation claimed by this metadata update.",
+      "planning_note": "Superseded by five-language numeric-countdown cutover; previous observation is historical until a directly matching current assertion is observed."
+    },
+    {
+      "id": "LS09.P3.S01.NEGATIVE",
+      "property_id": "LS09.P3",
+      "polarity": "negative",
+      "scenario": "Exact time available",
+      "scenario_fingerprint": "b66ffc7cec26906e8ad944abf56410f184372aaed28929616cb3f338823a71b7",
+      "setup": "device local time formatted through timezone-offset arithmetic applied twice",
+      "observable": "Native fixed7200 UTC assertions reject changed duration; actual compiled false/error/unknown-ID/empty controls and malformed/contradictory output reject false framework success, retaining raw launcher exit.",
+      "red_expectation": "Changed duration, missing/extra/contradictory execution outcome/table/count/summary, any unknown output or actual native failure must not normalize raw launcher1 as passed.",
+      "green_expectation": "Real complete native PASS observation normalizes only with exact matching execution outcomes/table/count/summary; native and damaged-output negative controls reject.",
+      "invalidation_dependencies": [
+        "tests/fixtures/build/**",
+        "tests/test_native_build.py",
+        "tests/test_native_clock.py",
+        "tools/build_watchface.py",
+        "tools/run_native_tests.py",
+        "watchface/api-policy.json",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources/**",
+        "watchface/source/**",
+        "watchface/tests/**",
+        "watchface/toolchain-lock.json"
+      ],
+      "test_id": "unittest::tests.test_native_clock.NativeClockTest.test_exact_utc_negative",
+      "command_id": "native-clock-checks",
+      "state": "planned",
+      "source_path": "tests/test_native_clock.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 VM/firmware with SDK fr165 simulator; WatchClock UTC/local sources with explicit controlled Clock adapter for literal vectors. SDK live clock adapter gets separate bounded smoke test. No Storage adapter or persistence is exercised.",
+        "allowed_proof": "Actual compiled Monkey C arithmetic, production snapshot/lifecycle methods and FR165-profile compilation under these controlled simulator inputs.",
+        "forbidden_claims": [
+          "Physical time-zone/DST/sleep wake behavior, battery, RAM or storage qualification",
+          "Accepted feed parsing, persistent cache restart, phone/network delivery",
+          "Full04 scene, Garmin language qualification, production release identity/key backup or Store approval"
+        ]
+      },
+      "source_sha256": "a7b8843031d72e91c5720a5b729cee972dc1dd9ef5bd0dd815f7fee2cf6fbddf",
+      "native_test_ids": [
+        "clockExactPositive",
+        "clockExactNegative",
+        "clockAdapterSmoke",
+        "formatLocalSettings"
+      ],
+      "invalidation_note": "Fixture setup now copies required canonical locales; clock/parser production owner unchanged. Historical clock receipts retain original source hashes; no fresh clock-suite observation claimed by this metadata update.",
+      "planning_note": "Superseded by five-language numeric-countdown cutover; previous observation is historical until a directly matching current assertion is observed."
+    },
+    {
+      "id": "LS09.P3.S02.POSITIVE",
+      "property_id": "LS09.P3",
+      "polarity": "positive",
+      "scenario": "Date known but time uncertain",
+      "scenario_fingerprint": "9a366ad7ba43e2ebc7a81330997b651a5674da69622e5e43dd8d9ffcb207b402",
+      "setup": "date-only2027-01-15, coarse window and null exact UTC variants",
+      "observable": "uncertainty label and no precise seconds countdown",
+      "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: uncertainty label and no precise seconds countdown",
+      "green_expectation": "uncertainty label and no precise seconds countdown",
+      "invalidation_dependencies": [
+        "tests/fixtures/build/**",
+        "tests/test_native_build.py",
+        "tests/test_native_clock.py",
+        "tools/build_watchface.py",
+        "tools/run_native_tests.py",
+        "watchface/api-policy.json",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources/**",
+        "watchface/source/**",
+        "watchface/tests/**",
+        "watchface/toolchain-lock.json"
+      ],
+      "test_id": "unittest::tests.test_native_clock.NativeClockTest.test_uncertainty_positive",
+      "command_id": "native-clock-checks",
+      "state": "planned",
+      "source_path": "tests/test_native_clock.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 VM/firmware with SDK fr165 simulator; WatchClock UTC/local sources with explicit controlled Clock adapter for literal vectors. SDK live clock adapter gets separate bounded smoke test. No Storage adapter or persistence is exercised.",
+        "allowed_proof": "Actual compiled Monkey C arithmetic, production snapshot/lifecycle methods and FR165-profile compilation under these controlled simulator inputs.",
+        "forbidden_claims": [
+          "Physical time-zone/DST/sleep wake behavior, battery, RAM or storage qualification",
+          "Accepted feed parsing, persistent cache restart, phone/network delivery",
+          "Full04 scene, Garmin language qualification, production release identity/key backup or Store approval"
+        ]
+      },
+      "source_sha256": "a7b8843031d72e91c5720a5b729cee972dc1dd9ef5bd0dd815f7fee2cf6fbddf",
+      "native_test_ids": [
+        "uncertaintyPositive",
+        "uncertaintyNegative"
+      ],
+      "invalidation_note": "Fixture setup now copies required canonical locales; clock/parser production owner unchanged. Historical clock receipts retain original source hashes; no fresh clock-suite observation claimed by this metadata update.",
+      "planning_note": "Superseded by five-language numeric-countdown cutover; previous observation is historical until a directly matching current assertion is observed."
+    },
+    {
+      "id": "LS09.P3.S02.NEGATIVE",
+      "property_id": "LS09.P3",
+      "polarity": "negative",
+      "scenario": "Date known but time uncertain",
+      "scenario_fingerprint": "9a366ad7ba43e2ebc7a81330997b651a5674da69622e5e43dd8d9ffcb207b402",
+      "setup": "record carries a nominal midpoint while precision remainsdate/window; null/fraction/string/boolean exact values are invalid while Number0/Long0/negative integer UTC are present",
+      "observable": "ignore nominal midpoint for exact countdown; never present false precision; valid elapsed epoch0/negative timestamps yield awaiting-update rather than unknown",
+      "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: ignore nominal midpoint for exact countdown; never present false precision; reject false uncertainty for supplied valid integer0/negative UTC and signed32-bit overflow",
+      "green_expectation": "ignore nominal midpoint for exact countdown; never present false precision; exact Number0/Long0/negative values remain present and elapsed targets await update",
+      "invalidation_dependencies": [
+        "tests/fixtures/build/**",
+        "tests/test_native_build.py",
+        "tests/test_native_clock.py",
+        "tools/build_watchface.py",
+        "tools/run_native_tests.py",
+        "watchface/api-policy.json",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources/**",
+        "watchface/source/**",
+        "watchface/tests/**",
+        "watchface/toolchain-lock.json"
+      ],
+      "test_id": "unittest::tests.test_native_clock.NativeClockTest.test_uncertainty_negative",
+      "command_id": "native-clock-checks",
+      "state": "planned",
+      "source_path": "tests/test_native_clock.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 VM/firmware with SDK fr165 simulator; WatchClock UTC/local sources with explicit controlled Clock adapter for literal vectors. SDK live clock adapter gets separate bounded smoke test. No Storage adapter or persistence is exercised.",
+        "allowed_proof": "Actual compiled Monkey C arithmetic, production snapshot/lifecycle methods and FR165-profile compilation under these controlled simulator inputs.",
+        "forbidden_claims": [
+          "Physical time-zone/DST/sleep wake behavior, battery, RAM or storage qualification",
+          "Accepted feed parsing, persistent cache restart, phone/network delivery",
+          "Full04 scene, Garmin language qualification, production release identity/key backup or Store approval"
+        ]
+      },
+      "source_sha256": "a7b8843031d72e91c5720a5b729cee972dc1dd9ef5bd0dd815f7fee2cf6fbddf",
+      "native_test_ids": [
+        "uncertaintyPositive",
+        "uncertaintyNegative"
+      ],
+      "invalidation_note": "Fixture setup now copies required canonical locales; clock/parser production owner unchanged. Historical clock receipts retain original source hashes; no fresh clock-suite observation claimed by this metadata update.",
+      "planning_note": "Superseded by five-language numeric-countdown cutover; previous observation is historical until a directly matching current assertion is observed."
+    },
+    {
+      "id": "LS09.P3.S03.POSITIVE",
+      "property_id": "LS09.P3",
+      "polarity": "positive",
+      "scenario": "Offline countdown after sleep",
+      "scenario_fingerprint": "bc98a8ce618d57f9fc07baf181faff70f1a8e9b08792171e617d35bf2f1913f5",
+      "setup": "native cache launch1800010800, clock1800000000 then two-hour wake1800007200 with no network",
+      "observable": "remaining duration changes10800to3600 immediately after wake",
+      "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: remaining duration changes10800to3600 immediately after wake",
+      "green_expectation": "remaining duration changes10800to3600 immediately after wake",
+      "invalidation_dependencies": [
+        "tests/fixtures/build/**",
+        "tests/test_native_build.py",
+        "tests/test_native_clock.py",
+        "tools/build_watchface.py",
+        "tools/run_native_tests.py",
+        "watchface/api-policy.json",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources/**",
+        "watchface/source/**",
+        "watchface/tests/**",
+        "watchface/toolchain-lock.json"
+      ],
+      "test_id": "unittest::tests.test_native_clock.NativeClockTest.test_offline_wake_positive",
+      "command_id": "native-clock-checks",
+      "state": "planned",
+      "source_path": "tests/test_native_clock.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 VM/firmware with SDK fr165 simulator; WatchClock UTC/local sources with explicit controlled Clock adapter for literal vectors. SDK live clock adapter gets separate bounded smoke test. No Storage adapter or persistence is exercised.",
+        "allowed_proof": "Actual compiled Monkey C arithmetic, production snapshot/lifecycle methods and FR165-profile compilation under these controlled simulator inputs.",
+        "forbidden_claims": [
+          "Physical time-zone/DST/sleep wake behavior, battery, RAM or storage qualification",
+          "Accepted feed parsing, persistent cache restart, phone/network delivery",
+          "Full04 scene, Garmin language qualification, production release identity/key backup or Store approval"
+        ]
+      },
+      "source_sha256": "a7b8843031d72e91c5720a5b729cee972dc1dd9ef5bd0dd815f7fee2cf6fbddf",
+      "native_test_ids": [
+        "offlineWakePositive",
+        "offlineWakeNegative",
+        "precisionTransitions",
+        "emptyStartup"
+      ],
+      "invalidation_note": "Fixture setup now copies required canonical locales; clock/parser production owner unchanged. Historical clock receipts retain original source hashes; no fresh clock-suite observation claimed by this metadata update.",
+      "planning_note": "Superseded by five-language numeric-countdown cutover; previous observation is historical until a directly matching current assertion is observed."
+    },
+    {
+      "id": "LS09.P3.S03.NEGATIVE",
+      "property_id": "LS09.P3",
+      "polarity": "negative",
+      "scenario": "Offline countdown after sleep",
+      "scenario_fingerprint": "bc98a8ce618d57f9fc07baf181faff70f1a8e9b08792171e617d35bf2f1913f5",
+      "setup": "no timer callbacks occur during sleep, then clock jumps backwards/forwards within documented watch behavior",
+      "observable": "recompute from current UTC, not accumulated ticks, and record clock-change handling without assuming synced network time",
+      "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: recompute from current UTC, not accumulated ticks, and record clock-change handling without assuming synced network time",
+      "green_expectation": "recompute from current UTC, not accumulated ticks, and record clock-change handling without assuming synced network time",
+      "invalidation_dependencies": [
+        "tests/fixtures/build/**",
+        "tests/test_native_build.py",
+        "tests/test_native_clock.py",
+        "tools/build_watchface.py",
+        "tools/run_native_tests.py",
+        "watchface/api-policy.json",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources/**",
+        "watchface/source/**",
+        "watchface/tests/**",
+        "watchface/toolchain-lock.json"
+      ],
+      "test_id": "unittest::tests.test_native_clock.NativeClockTest.test_offline_wake_negative",
+      "command_id": "native-clock-checks",
+      "state": "planned",
+      "source_path": "tests/test_native_clock.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 VM/firmware with SDK fr165 simulator; WatchClock UTC/local sources with explicit controlled Clock adapter for literal vectors. SDK live clock adapter gets separate bounded smoke test. No Storage adapter or persistence is exercised.",
+        "allowed_proof": "Actual compiled Monkey C arithmetic, production snapshot/lifecycle methods and FR165-profile compilation under these controlled simulator inputs.",
+        "forbidden_claims": [
+          "Physical time-zone/DST/sleep wake behavior, battery, RAM or storage qualification",
+          "Accepted feed parsing, persistent cache restart, phone/network delivery",
+          "Full04 scene, Garmin language qualification, production release identity/key backup or Store approval"
+        ]
+      },
+      "source_sha256": "a7b8843031d72e91c5720a5b729cee972dc1dd9ef5bd0dd815f7fee2cf6fbddf",
+      "native_test_ids": [
+        "offlineWakePositive",
+        "offlineWakeNegative",
+        "precisionTransitions",
+        "emptyStartup"
+      ],
+      "invalidation_note": "Fixture setup now copies required canonical locales; clock/parser production owner unchanged. Historical clock receipts retain original source hashes; no fresh clock-suite observation claimed by this metadata update.",
+      "planning_note": "Superseded by five-language numeric-countdown cutover; previous observation is historical until a directly matching current assertion is observed."
+    },
+    {
+      "id": "LS07.P1.S01.POSITIVE.CURRENT",
+      "property_id": "LS07.P1",
+      "polarity": "positive",
+      "scenario": "Earlier launch added",
+      "scenario_fingerprint": "64018fdb7df715a5155b1d80ec10dcd04ad1c7c0356a658b5ae04180b50aa0fc",
+      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
+      "observable": "At the current owner, observe this exact retained contract: B selected and its model/site/time/context move together. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
+      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
+      "green_expectation": "The retained scenario-specific positive contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS07.P1.S01.POSITIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "invalidation_dependencies": [
+        "corpus/real-schedule-20261113/**",
+        "schemas/**",
+        "tests/fixtures/timing/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s01_positive_current",
+      "command_id": "current-format-acceptance-planned",
+      "state": "planned",
+      "source_path": "tests/test_current_format_acceptance.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+    },
+    {
+      "id": "LS07.P1.S01.NEGATIVE.CURRENT",
+      "property_id": "LS07.P1",
+      "polarity": "negative",
+      "scenario": "Earlier launch added",
+      "scenario_fingerprint": "64018fdb7df715a5155b1d80ec10dcd04ad1c7c0356a658b5ae04180b50aa0fc",
+      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
+      "observable": "At the current owner, observe this exact retained contract: C excluded; elapsed unconfirmed records are not marked completed from clock alone. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
+      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
+      "green_expectation": "The retained scenario-specific negative contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS07.P1.S01.NEGATIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "invalidation_dependencies": [
+        "corpus/real-schedule-20261113/**",
+        "schemas/**",
+        "tests/fixtures/timing/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s01_negative_current",
+      "command_id": "current-format-acceptance-planned",
+      "state": "planned",
+      "source_path": "tests/test_current_format_acceptance.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+    },
+    {
+      "id": "LS07.P1.S02.POSITIVE.CURRENT",
+      "property_id": "LS07.P1",
+      "polarity": "positive",
+      "scenario": "Estimated time passes without confirmation",
+      "scenario_fingerprint": "0b571f24b73e0eabaca773e0da89c3dea893ffcf7b2ae346f7df069dda73c862",
+      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
+      "observable": "At the current owner, observe this exact retained contract: awaiting-update state with no negative countdown or liftoff claim. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
+      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
+      "green_expectation": "The retained scenario-specific positive contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS07.P1.S02.POSITIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "invalidation_dependencies": [
+        "corpus/real-schedule-20261113/**",
+        "schemas/**",
+        "tests/fixtures/timing/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s02_positive_current",
+      "command_id": "current-format-acceptance-planned",
+      "state": "planned",
+      "source_path": "tests/test_current_format_acceptance.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+    },
+    {
+      "id": "LS07.P1.S02.NEGATIVE.CURRENT",
+      "property_id": "LS07.P1",
+      "polarity": "negative",
+      "scenario": "Estimated time passes without confirmation",
+      "scenario_fingerprint": "0b571f24b73e0eabaca773e0da89c3dea893ffcf7b2ae346f7df069dda73c862",
+      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
+      "observable": "At the current owner, observe this exact retained contract: remain unconfirmed and return to hourly policy; no invented completion. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
+      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
+      "green_expectation": "The retained scenario-specific negative contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS07.P1.S02.NEGATIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "invalidation_dependencies": [
+        "corpus/real-schedule-20261113/**",
+        "schemas/**",
+        "tests/fixtures/timing/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s02_negative_current",
+      "command_id": "current-format-acceptance-planned",
+      "state": "planned",
+      "source_path": "tests/test_current_format_acceptance.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+    },
+    {
+      "id": "LS08.P1.S01.POSITIVE.CURRENT",
+      "property_id": "LS08.P1",
+      "polarity": "positive",
+      "scenario": "Context follows the selected launch",
+      "scenario_fingerprint": "26fd66224c32320742eca08360f096a1fc8fdaa76322a1e880f130a2a1164cbe",
+      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
+      "observable": "At the current owner, observe this exact retained contract: all context fields belong to B in one accepted state. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
+      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
+      "green_expectation": "The retained scenario-specific positive contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS08.P1.S01.POSITIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "invalidation_dependencies": [
+        "corpus/real-schedule-20261113/**",
+        "schemas/**",
+        "tests/fixtures/schedule/**",
+        "tests/fixtures/timing/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p1_s01_positive_current",
+      "command_id": "current-format-acceptance-planned",
+      "state": "planned",
+      "source_path": "tests/test_current_format_acceptance.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+    },
+    {
+      "id": "LS08.P1.S01.NEGATIVE.CURRENT",
+      "property_id": "LS08.P1",
+      "polarity": "negative",
+      "scenario": "Context follows the selected launch",
+      "scenario_fingerprint": "26fd66224c32320742eca08360f096a1fc8fdaa76322a1e880f130a2a1164cbe",
+      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
+      "observable": "At the current owner, observe this exact retained contract: no carryover of SpaceX or communications into B. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
+      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
+      "green_expectation": "The retained scenario-specific negative contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS08.P1.S01.NEGATIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "invalidation_dependencies": [
+        "corpus/real-schedule-20261113/**",
+        "schemas/**",
+        "tests/fixtures/schedule/**",
+        "tests/fixtures/timing/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p1_s01_negative_current",
+      "command_id": "current-format-acceptance-planned",
+      "state": "planned",
+      "source_path": "tests/test_current_format_acceptance.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+    },
+    {
+      "id": "LS08.P1.S02.NEGATIVE.CURRENT",
+      "property_id": "LS08.P1",
+      "polarity": "negative",
+      "scenario": "Provider omits mission details",
+      "scenario_fingerprint": "a335ef010194310a46c063f83e75dfb135637920d9d24349a1635b434ba104b8",
+      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
+      "observable": "At the current owner, observe this exact retained contract: normalize to explicit missing according to schema without manufacturing a task or borrowing previous text. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
+      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
+      "green_expectation": "The retained scenario-specific negative contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS08.P1.S02.NEGATIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "invalidation_dependencies": [
+        "assets/rocket-pack/**",
+        "catalog/**",
+        "corpus/real-schedule-20261113/**",
+        "schemas/**",
+        "tests/fixtures/provider/**",
+        "tests/fixtures/schedule/**",
+        "tests/fixtures/timing/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/spacefox/wire.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p1_s02_negative_current",
+      "command_id": "current-format-acceptance-planned",
+      "state": "planned",
+      "source_path": "tests/test_current_format_acceptance.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Provider/phone/platform failure boundary only as explicitly selected by the future actual current-format witness.",
+        "allowed_proof": "Only the retained scenario-specific current-format local/native observation, with exact actual source and toolchain.",
+        "forbidden_claims": [
+          "Complete real provider corpus or worldwide coverage from a fixture",
+          "Phone/physical/Store/cloud/public acceptance without actual observation"
+        ]
+      },
+      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate.",
+      "distinct_reason": "Scenario Provider omits mission details: this edge remains limited to its stated conjunct. Original planned P1 includes whole provider/global/native/cloud obligations; the new provider conjunct uses actual portable adaptation/local Git/artifact observations and does not close P1."
+    },
+    {
+      "id": "LS07.P2.S01.POSITIVE.CURRENT",
+      "property_id": "LS07.P2",
+      "polarity": "positive",
+      "scenario": "Earlier launch added",
+      "scenario_fingerprint": "64018fdb7df715a5155b1d80ec10dcd04ad1c7c0356a658b5ae04180b50aa0fc",
+      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
+      "observable": "At the current owner, observe this exact retained contract: Earliest supplied supported anchor wins coherently; date boundary orders between exact before/after without countdown; wholly unknown remains selectable and equal anchors use stableID.. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
+      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
+      "green_expectation": "The retained scenario-specific positive contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS07.P2.S01.POSITIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "invalidation_dependencies": [
+        "corpus/real-schedule-20261113/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/spacefox/__init__.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/schedule.py"
+      ],
+      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p2_s01_positive_current",
+      "command_id": "current-format-acceptance-planned",
+      "state": "planned",
+      "source_path": "tests/test_current_format_acceptance.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+    },
+    {
+      "id": "LS07.P2.S01.NEGATIVE.CURRENT",
+      "property_id": "LS07.P2",
+      "polarity": "negative",
+      "scenario": "Earlier launch added",
+      "scenario_fingerprint": "64018fdb7df715a5155b1d80ec10dcd04ad1c7c0356a658b5ae04180b50aa0fc",
+      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
+      "observable": "At the current owner, observe this exact retained contract: All uncertain timings retain null exact/remaining values, uncertain label and normal cadence; unfamiliar eligible record is preserved unchanged.. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
+      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
+      "green_expectation": "The retained scenario-specific negative contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS07.P2.S01.NEGATIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "invalidation_dependencies": [
+        "corpus/real-schedule-20261113/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/spacefox/__init__.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/schedule.py"
+      ],
+      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p2_s01_negative_current",
+      "command_id": "current-format-acceptance-planned",
+      "state": "planned",
+      "source_path": "tests/test_current_format_acceptance.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+    },
+    {
+      "id": "LS08.P2.S01.POSITIVE.CURRENT",
+      "property_id": "LS08.P2",
+      "polarity": "positive",
+      "scenario": "Provider omits mission details",
+      "scenario_fingerprint": "a335ef010194310a46c063f83e75dfb135637920d9d24349a1635b434ba104b8",
+      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
+      "observable": "At the current owner, observe this exact retained contract: provider omits mission details positive: assert literal records, forbidden effects and real HTTP/Git/artifact observations in exact test body.. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
+      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
+      "green_expectation": "The retained scenario-specific positive contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS08.P2.S01.POSITIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "invalidation_dependencies": [
+        "assets/rocket-pack/registry.source.json",
+        "assets/rocket-pack/svg/**",
+        "catalog/source.json",
+        "corpus/real-schedule-20261113/**",
+        "openspec/changes/spacefox-watchface/evidence/global-catalog/reference-inventory.json",
+        "tests/__init__.py",
+        "tests/fixtures/provider/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/__init__.py",
+        "tools/spacefox/__init__.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/spacefox/wire.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s01_positive_current",
+      "command_id": "current-format-acceptance-planned",
+      "state": "planned",
+      "source_path": "tests/test_current_format_acceptance.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Provider/phone/platform failure boundary only as explicitly selected by the future actual current-format witness.",
+        "allowed_proof": "Only the retained scenario-specific current-format local/native observation, with exact actual source and toolchain.",
+        "forbidden_claims": [
+          "Complete real provider corpus or worldwide coverage from a fixture",
+          "Phone/physical/Store/cloud/public acceptance without actual observation"
+        ]
+      },
+      "distinct_reason": "Scenario Provider omits mission details: this edge remains limited to its stated conjunct. Original planned P1 includes whole provider/global/native/cloud obligations; the new provider conjunct uses actual portable adaptation/local Git/artifact observations and does not close P1.",
+      "retained_test_identity_note": "Exact predecessor body retained under explicit name; no renewed runtime claim. See evidence/original-producer-contract/retention.json.",
+      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+    },
+    {
+      "id": "LS08.P2.S02.NEGATIVE.CURRENT",
+      "property_id": "LS08.P2",
+      "polarity": "negative",
+      "scenario": "Provider omits mission details",
+      "scenario_fingerprint": "a335ef010194310a46c063f83e75dfb135637920d9d24349a1635b434ba104b8",
+      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
+      "observable": "At the current owner, observe this exact retained contract: provider omits mission details negative: assert literal records, forbidden effects and real HTTP/Git/artifact observations in exact test body.. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
+      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
+      "green_expectation": "The retained scenario-specific negative contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS08.P2.S02.NEGATIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "invalidation_dependencies": [
+        "assets/rocket-pack/registry.source.json",
+        "assets/rocket-pack/svg/**",
+        "catalog/source.json",
+        "corpus/real-schedule-20261113/**",
+        "openspec/changes/spacefox-watchface/evidence/global-catalog/reference-inventory.json",
+        "tests/__init__.py",
+        "tests/fixtures/provider/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/__init__.py",
+        "tools/spacefox/__init__.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/spacefox/wire.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s02_negative_current",
+      "command_id": "current-format-acceptance-planned",
+      "state": "planned",
+      "source_path": "tests/test_current_format_acceptance.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Provider/phone/platform failure boundary only as explicitly selected by the future actual current-format witness.",
+        "allowed_proof": "Only the retained scenario-specific current-format local/native observation, with exact actual source and toolchain.",
+        "forbidden_claims": [
+          "Complete real provider corpus or worldwide coverage from a fixture",
+          "Phone/physical/Store/cloud/public acceptance without actual observation"
+        ]
+      },
+      "distinct_reason": "Scenario Provider omits mission details: this edge remains limited to its stated conjunct. Original planned P1 includes whole provider/global/native/cloud obligations; the new provider conjunct uses actual portable adaptation/local Git/artifact observations and does not close P1.",
+      "retained_test_identity_note": "Exact predecessor body retained under explicit name; no renewed runtime claim. See evidence/original-producer-contract/retention.json.",
+      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+    },
+    {
+      "id": "LS09.P2.S01.POSITIVE.CURRENT",
+      "property_id": "LS09.P2",
+      "polarity": "positive",
+      "scenario": "Date known but time uncertain",
+      "scenario_fingerprint": "9a366ad7ba43e2ebc7a81330997b651a5674da69622e5e43dd8d9ffcb207b402",
+      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
+      "observable": "At the current owner, observe this exact retained contract: precision and started phases positive: assert literal records, forbidden effects and real HTTP/Git/artifact observations in exact test body.. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
+      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
+      "green_expectation": "The retained scenario-specific positive contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS09.P2.S01.POSITIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "invalidation_dependencies": [
+        "assets/rocket-pack/registry.source.json",
+        "assets/rocket-pack/svg/**",
+        "catalog/source.json",
+        "corpus/real-schedule-20261113/**",
+        "openspec/changes/spacefox-watchface/evidence/global-catalog/reference-inventory.json",
+        "tests/__init__.py",
+        "tests/fixtures/provider/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/__init__.py",
+        "tools/spacefox/__init__.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/spacefox/wire.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls09_p2_s01_positive_current",
+      "command_id": "current-format-acceptance-planned",
+      "state": "planned",
+      "source_path": "tests/test_current_format_acceptance.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Provider/phone/platform failure boundary only as explicitly selected by the future actual current-format witness.",
+        "allowed_proof": "Only the retained scenario-specific current-format local/native observation, with exact actual source and toolchain.",
+        "forbidden_claims": [
+          "Complete real provider corpus or worldwide coverage from a fixture",
+          "Phone/physical/Store/cloud/public acceptance without actual observation"
+        ]
+      },
+      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+    },
+    {
+      "id": "LS09.P2.S02.NEGATIVE.CURRENT",
+      "property_id": "LS09.P2",
+      "polarity": "negative",
+      "scenario": "Date known but time uncertain",
+      "scenario_fingerprint": "9a366ad7ba43e2ebc7a81330997b651a5674da69622e5e43dd8d9ffcb207b402",
+      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
+      "observable": "At the current owner, observe this exact retained contract: precision and started phases negative: assert literal records, forbidden effects and real HTTP/Git/artifact observations in exact test body.. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
+      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
+      "green_expectation": "The retained scenario-specific negative contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS09.P2.S02.NEGATIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "invalidation_dependencies": [
+        "assets/rocket-pack/registry.source.json",
+        "assets/rocket-pack/svg/**",
+        "catalog/source.json",
+        "corpus/real-schedule-20261113/**",
+        "openspec/changes/spacefox-watchface/evidence/global-catalog/reference-inventory.json",
+        "tests/__init__.py",
+        "tests/fixtures/provider/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/__init__.py",
+        "tools/spacefox/__init__.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/spacefox/wire.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls09_p2_s02_negative_current",
+      "command_id": "current-format-acceptance-planned",
+      "state": "planned",
+      "source_path": "tests/test_current_format_acceptance.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Provider/phone/platform failure boundary only as explicitly selected by the future actual current-format witness.",
+        "allowed_proof": "Only the retained scenario-specific current-format local/native observation, with exact actual source and toolchain.",
+        "forbidden_claims": [
+          "Complete real provider corpus or worldwide coverage from a fixture",
+          "Phone/physical/Store/cloud/public acceptance without actual observation"
+        ]
+      },
+      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+    },
+    {
+      "id": "LS08.P2.S10.POSITIVE.CURRENT",
+      "property_id": "LS08.P2",
+      "polarity": "positive",
+      "scenario": "Provider omits mission details",
+      "scenario_fingerprint": "a335ef010194310a46c063f83e75dfb135637920d9d24349a1635b434ba104b8",
+      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
+      "observable": "At the current owner, observe this exact retained contract: test_unknown_identity_footer_roundtrips_real_http_git_and_wire. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
+      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
+      "green_expectation": "The retained scenario-specific positive contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS08.P2.S10.POSITIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "invalidation_dependencies": [
+        "assets/rocket-pack/registry.source.json",
+        "assets/rocket-pack/svg/**",
+        "catalog/source.json",
+        "corpus/real-schedule-20261113/**",
+        "openspec/changes/spacefox-watchface/evidence/global-catalog/reference-inventory.json",
+        "tests/__init__.py",
+        "tests/fixtures/provider/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/__init__.py",
+        "tools/spacefox/__init__.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/spacefox/wire.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s10_positive_current",
+      "command_id": "current-format-acceptance-planned",
+      "state": "planned",
+      "source_path": "tests/test_current_format_acceptance.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Provider/phone/platform failure boundary only as explicitly selected by the future actual current-format witness.",
+        "allowed_proof": "Only the retained scenario-specific current-format local/native observation, with exact actual source and toolchain.",
+        "forbidden_claims": [
+          "Complete real provider corpus or worldwide coverage from a fixture",
+          "Phone/physical/Store/cloud/public acceptance without actual observation"
+        ]
+      },
+      "distinct_reason": "Scenario Provider omits mission details: this edge remains limited to its stated conjunct. Original planned P1 includes whole provider/global/native/cloud obligations; the new provider conjunct uses actual portable adaptation/local Git/artifact observations and does not close P1.",
+      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+    },
+    {
+      "id": "LS08.P2.S11.NEGATIVE.CURRENT",
+      "property_id": "LS08.P2",
+      "polarity": "negative",
+      "scenario": "Provider omits mission details",
+      "scenario_fingerprint": "a335ef010194310a46c063f83e75dfb135637920d9d24349a1635b434ba104b8",
+      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
+      "observable": "At the current owner, observe this exact retained contract: test_nullable_unknown_alpha3_and_invalid_source_context. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
+      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
+      "green_expectation": "The retained scenario-specific negative contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS08.P2.S11.NEGATIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "invalidation_dependencies": [
+        "assets/rocket-pack/registry.source.json",
+        "assets/rocket-pack/svg/**",
+        "catalog/source.json",
+        "corpus/real-schedule-20261113/**",
+        "openspec/changes/spacefox-watchface/evidence/global-catalog/reference-inventory.json",
+        "tests/__init__.py",
+        "tests/fixtures/provider/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/__init__.py",
+        "tools/spacefox/__init__.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/spacefox/wire.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s11_negative_current",
+      "command_id": "current-format-acceptance-planned",
+      "state": "planned",
+      "source_path": "tests/test_current_format_acceptance.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Provider/phone/platform failure boundary only as explicitly selected by the future actual current-format witness.",
+        "allowed_proof": "Only the retained scenario-specific current-format local/native observation, with exact actual source and toolchain.",
+        "forbidden_claims": [
+          "Complete real provider corpus or worldwide coverage from a fixture",
+          "Phone/physical/Store/cloud/public acceptance without actual observation"
+        ]
+      },
+      "distinct_reason": "Scenario Provider omits mission details: this edge remains limited to its stated conjunct. Original planned P1 includes whole provider/global/native/cloud obligations; the new provider conjunct uses actual portable adaptation/local Git/artifact observations and does not close P1.",
+      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+    },
+    {
+      "id": "LS08.P2.S13.NEGATIVE.CURRENT",
+      "property_id": "LS08.P2",
+      "polarity": "negative",
+      "scenario": "Provider omits mission details",
+      "scenario_fingerprint": "a335ef010194310a46c063f83e75dfb135637920d9d24349a1635b434ba104b8",
+      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
+      "observable": "At the current owner, observe this exact retained contract: test_wire_footer_fields_are_required_nullable_and_typed. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
+      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
+      "green_expectation": "The retained scenario-specific negative contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS08.P2.S13.NEGATIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "invalidation_dependencies": [
+        "assets/rocket-pack/registry.source.json",
+        "assets/rocket-pack/svg/**",
+        "catalog/source.json",
+        "corpus/real-schedule-20261113/**",
+        "openspec/changes/spacefox-watchface/evidence/global-catalog/reference-inventory.json",
+        "tests/__init__.py",
+        "tests/fixtures/provider/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/__init__.py",
+        "tools/spacefox/__init__.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/spacefox/wire.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s13_negative_current",
+      "command_id": "current-format-acceptance-planned",
+      "state": "planned",
+      "source_path": "tests/test_current_format_acceptance.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Provider/phone/platform failure boundary only as explicitly selected by the future actual current-format witness.",
+        "allowed_proof": "Only the retained scenario-specific current-format local/native observation, with exact actual source and toolchain.",
+        "forbidden_claims": [
+          "Complete real provider corpus or worldwide coverage from a fixture",
+          "Phone/physical/Store/cloud/public acceptance without actual observation"
+        ]
+      },
+      "distinct_reason": "Scenario Provider omits mission details: this edge remains limited to its stated conjunct. Original planned P1 includes whole provider/global/native/cloud obligations; the new provider conjunct uses actual portable adaptation/local Git/artifact observations and does not close P1.",
+      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+    },
+    {
+      "id": "LS08.P1.S02.POSITIVE.CURRENT",
+      "property_id": "LS08.P1",
+      "polarity": "positive",
+      "scenario": "Provider omits mission details",
+      "scenario_fingerprint": "a335ef010194310a46c063f83e75dfb135637920d9d24349a1635b434ba104b8",
+      "setup": "Use actual captured real launch/catalog/page records in sole-current schema3/SFR1M /feed.json, current packed2 authority and fixed schema3 metadata20/20/100/100 plus pads ordering=id where applicable; mutate technical fields only and retain exact display text. No retired builder/profile/parser/policy/old archive.",
+      "observable": "preserve absence and display supported unavailable context",
+      "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: preserve absence and display supported unavailable context",
+      "green_expectation": "preserve absence and display supported unavailable context This is the same-current-format actual-record contract; no old wire/profile, synthetic display or frozen archive setup is a current gate.",
+      "invalidation_dependencies": [
+        "assets/rocket-pack/**",
+        "catalog/**",
+        "corpus/real-schedule-20261113/**",
+        "schemas/**",
+        "tests/fixtures/provider/**",
+        "tests/fixtures/schedule/**",
+        "tests/fixtures/timing/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "tools/spacefox/wire.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p1_s02_positive_current",
+      "command_id": "current-format-acceptance-planned",
+      "state": "planned",
+      "source_path": "tests/test_current_format_acceptance.py",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "Launch Library 2 HTTP server; only deterministic provider responses are supplied",
+        "allowed_proof": "Real updater normalization/failure/freshness behavior against controlled HTTP or response fixtures.",
+        "forbidden_claims": [
+          "Current worldwide provider completeness",
+          "Live provider quota or phone/watch delivery",
+          "Successful production Pages deployment"
+        ]
+      },
+      "planning_note": "PLANNED current-format replacement; method and observations are not claimed. Exact original scenario contract is retained in R6 audit.",
+      "distinct_reason": "Scenario Provider omits mission details: this edge remains limited to its stated conjunct. Original planned P1 includes whole provider/global/native/cloud obligations; the new provider conjunct uses actual portable adaptation/local Git/artifact observations and does not close P1."
+    }
+  ],
+  "retiredCommands": [
+    {
+      "id": "native-clock-checks",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_native_clock.NativeClockTest.test_exact_utc_negative",
+        "tests.test_native_clock.NativeClockTest.test_exact_utc_positive",
+        "tests.test_native_clock.NativeClockTest.test_offline_wake_negative",
+        "tests.test_native_clock.NativeClockTest.test_offline_wake_positive",
+        "tests.test_native_clock.NativeClockTest.test_uncertainty_negative",
+        "tests.test_native_clock.NativeClockTest.test_uncertainty_positive"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "notes": "Portable Python observer must build and run actual SDK Monkey C; missing SDK/key/simulator is a failing required prerequisite, never skip/pass. No private workflow import."
+    }
+  ],
+  "propertyAliases": {
+    "LS07.P2": "LS07.P1",
+    "LS08.P2": "LS08.P1",
+    "LS09.P2": "LS09.P1",
+    "LS09.P3": "LS09.P1"
+  },
+  "caseMappings": [
+    {
+      "retiredCase": "LS09.P1.S01.POSITIVE",
+      "replacementCases": [
+        "LS09.P1.S01.POSITIVE",
+        "LS09.P1.S01.NEGATIVE"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS09.P1.S01.NEGATIVE",
+      "replacementCases": [
+        "LS09.P1.S01.POSITIVE",
+        "LS09.P1.S01.NEGATIVE"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS09.P1.S02.POSITIVE",
+      "replacementCases": [
+        "LS09.P1.S02.POSITIVE",
+        "LS09.P1.S02.NEGATIVE"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS09.P1.S02.NEGATIVE",
+      "replacementCases": [
+        "LS09.P1.S02.POSITIVE",
+        "LS09.P1.S02.NEGATIVE"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS09.P1.S03.POSITIVE",
+      "replacementCases": [
+        "LS09.P1.S03.POSITIVE",
+        "LS09.P1.S03.NEGATIVE"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS09.P1.S03.NEGATIVE",
+      "replacementCases": [
+        "LS09.P1.S03.POSITIVE",
+        "LS09.P1.S03.NEGATIVE"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS09.P3.S01.POSITIVE",
+      "replacementCases": [
+        "LS09.P1.S01.POSITIVE",
+        "LS09.P1.S01.NEGATIVE"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS09.P3.S01.NEGATIVE",
+      "replacementCases": [
+        "LS09.P1.S01.POSITIVE",
+        "LS09.P1.S01.NEGATIVE"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS09.P3.S02.POSITIVE",
+      "replacementCases": [
+        "LS09.P1.S02.POSITIVE",
+        "LS09.P1.S02.NEGATIVE"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS09.P3.S02.NEGATIVE",
+      "replacementCases": [
+        "LS09.P1.S02.POSITIVE",
+        "LS09.P1.S02.NEGATIVE"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS09.P3.S03.POSITIVE",
+      "replacementCases": [
+        "LS09.P1.S03.POSITIVE",
+        "LS09.P1.S03.NEGATIVE"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS09.P3.S03.NEGATIVE",
+      "replacementCases": [
+        "LS09.P1.S03.POSITIVE",
+        "LS09.P1.S03.NEGATIVE"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS07.P1.S01.POSITIVE.CURRENT",
+      "replacementCases": [
+        "LS07.P1.S01.POSITIVE.CURRENT",
+        "LS07.P1.S01.NEGATIVE.CURRENT"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS07.P1.S01.NEGATIVE.CURRENT",
+      "replacementCases": [
+        "LS07.P1.S01.POSITIVE.CURRENT",
+        "LS07.P1.S01.NEGATIVE.CURRENT"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS07.P1.S02.POSITIVE.CURRENT",
+      "replacementCases": [
+        "LS07.P1.S02.POSITIVE.CURRENT",
+        "LS07.P1.S02.NEGATIVE.CURRENT"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS07.P1.S02.NEGATIVE.CURRENT",
+      "replacementCases": [
+        "LS07.P1.S02.POSITIVE.CURRENT",
+        "LS07.P1.S02.NEGATIVE.CURRENT"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS08.P1.S01.POSITIVE.CURRENT",
+      "replacementCases": [
+        "LS08.P1.S01.POSITIVE.CURRENT",
+        "LS08.P1.S01.NEGATIVE.CURRENT",
+        "LS08.P1.S02.POSITIVE.CURRENT",
+        "LS08.P1.S02.NEGATIVE.CURRENT"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS08.P1.S01.NEGATIVE.CURRENT",
+      "replacementCases": [
+        "LS08.P1.S01.POSITIVE.CURRENT",
+        "LS08.P1.S01.NEGATIVE.CURRENT",
+        "LS08.P1.S02.POSITIVE.CURRENT",
+        "LS08.P1.S02.NEGATIVE.CURRENT"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS08.P1.S02.NEGATIVE.CURRENT",
+      "replacementCases": [
+        "LS08.P1.S02.POSITIVE.CURRENT",
+        "LS08.P1.S02.NEGATIVE.CURRENT"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS07.P2.S01.POSITIVE.CURRENT",
+      "replacementCases": [
+        "LS07.P1.S03.POSITIVE.CURRENT",
+        "LS07.P1.S03.NEGATIVE.CURRENT"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS07.P2.S01.NEGATIVE.CURRENT",
+      "replacementCases": [
+        "LS07.P1.S03.POSITIVE.CURRENT",
+        "LS07.P1.S03.NEGATIVE.CURRENT"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS08.P2.S01.POSITIVE.CURRENT",
+      "replacementCases": [
+        "LS08.P1.S01.POSITIVE.CURRENT",
+        "LS08.P1.S01.NEGATIVE.CURRENT",
+        "LS08.P1.S02.POSITIVE.CURRENT",
+        "LS08.P1.S02.NEGATIVE.CURRENT",
+        "LS08.P1.S03.POSITIVE.CURRENT",
+        "LS08.P1.S03.NEGATIVE.CURRENT",
+        "LS08.P1.S04.POSITIVE.CURRENT",
+        "LS08.P1.S04.NEGATIVE.CURRENT"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS08.P2.S02.NEGATIVE.CURRENT",
+      "replacementCases": [
+        "LS08.P1.S01.POSITIVE.CURRENT",
+        "LS08.P1.S01.NEGATIVE.CURRENT",
+        "LS08.P1.S02.POSITIVE.CURRENT",
+        "LS08.P1.S02.NEGATIVE.CURRENT",
+        "LS08.P1.S03.POSITIVE.CURRENT",
+        "LS08.P1.S03.NEGATIVE.CURRENT",
+        "LS08.P1.S04.POSITIVE.CURRENT",
+        "LS08.P1.S04.NEGATIVE.CURRENT"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS09.P2.S01.POSITIVE.CURRENT",
+      "replacementCases": [
+        "LS07.P1.S02.POSITIVE.CURRENT",
+        "LS07.P1.S02.NEGATIVE.CURRENT",
+        "LS09.P1.S04.POSITIVE",
+        "LS09.P1.S04.NEGATIVE"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS09.P2.S02.NEGATIVE.CURRENT",
+      "replacementCases": [
+        "LS07.P1.S02.POSITIVE.CURRENT",
+        "LS07.P1.S02.NEGATIVE.CURRENT",
+        "LS09.P1.S04.POSITIVE",
+        "LS09.P1.S04.NEGATIVE"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS08.P2.S10.POSITIVE.CURRENT",
+      "replacementCases": [
+        "LS08.P1.S03.POSITIVE.CURRENT",
+        "LS08.P1.S03.NEGATIVE.CURRENT",
+        "LS08.P1.S04.POSITIVE.CURRENT",
+        "LS08.P1.S04.NEGATIVE.CURRENT"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS08.P2.S11.NEGATIVE.CURRENT",
+      "replacementCases": [
+        "LS08.P1.S03.POSITIVE.CURRENT",
+        "LS08.P1.S03.NEGATIVE.CURRENT",
+        "LS08.P1.S04.POSITIVE.CURRENT",
+        "LS08.P1.S04.NEGATIVE.CURRENT"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS08.P2.S13.NEGATIVE.CURRENT",
+      "replacementCases": [
+        "LS08.P1.S03.POSITIVE.CURRENT",
+        "LS08.P1.S03.NEGATIVE.CURRENT",
+        "LS08.P1.S04.POSITIVE.CURRENT",
+        "LS08.P1.S04.NEGATIVE.CURRENT"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    },
+    {
+      "retiredCase": "LS08.P1.S02.POSITIVE.CURRENT",
+      "replacementCases": [
+        "LS08.P1.S02.POSITIVE.CURRENT",
+        "LS08.P1.S02.NEGATIVE.CURRENT"
+      ],
+      "disposition": "Whole direct current-software behavior retained under parent; duplicate conjunct is not an extra pass. Historical whole-owner HTTP/Git/quota/resource wrappers are not independent LS07-09 behaviors and remain under their existing LS02/LS05/LS11/LS13/LS14/LS15/VC/RL contracts. Retired old wire/static fixtures and obsolete countdown labels are not rerun."
+    }
+  ],
+  "extraDistinctParentCases": [
+    "LS09.P1.S05.POSITIVE",
+    "LS09.P1.S05.NEGATIVE"
+  ],
+  "proofBoundary": "Only exact conjunctive LS07.P2/LS08.P2/LS09.P2/P3 software subsets folded; all direct behavior remains. Generic transport/durable Git/request quota/CAS/resource/recovery obligations stay in their own existing properties and are not claimed passed. Original definitions retained, never aliases counted as observations."
+}

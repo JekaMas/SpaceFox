@@ -1,0 +1,240 @@
+{
+  "settings" : [ {
+    "key" : "Field1",
+    "valueType" : "number",
+    "defaultValue" : 0,
+    "configTitle" : "Field1",
+    "configPrompt" : null,
+    "configType" : "list",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : [ {
+      "display" : "Steps",
+      "value" : 0
+    }, {
+      "display" : "Energy",
+      "value" : 1
+    }, {
+      "display" : "Heart",
+      "value" : 2
+    }, {
+      "display" : "Stress",
+      "value" : 3
+    }, {
+      "display" : "Calories",
+      "value" : 4
+    }, {
+      "display" : "Battery",
+      "value" : 5
+    } ],
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  }, {
+    "key" : "Field2",
+    "valueType" : "number",
+    "defaultValue" : 1,
+    "configTitle" : "Field2",
+    "configPrompt" : null,
+    "configType" : "list",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : [ {
+      "display" : "Steps",
+      "value" : 0
+    }, {
+      "display" : "Energy",
+      "value" : 1
+    }, {
+      "display" : "Heart",
+      "value" : 2
+    }, {
+      "display" : "Stress",
+      "value" : 3
+    }, {
+      "display" : "Calories",
+      "value" : 4
+    }, {
+      "display" : "Battery",
+      "value" : 5
+    } ],
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  }, {
+    "key" : "Field3",
+    "valueType" : "number",
+    "defaultValue" : 2,
+    "configTitle" : "Field3",
+    "configPrompt" : null,
+    "configType" : "list",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : [ {
+      "display" : "Steps",
+      "value" : 0
+    }, {
+      "display" : "Energy",
+      "value" : 1
+    }, {
+      "display" : "Heart",
+      "value" : 2
+    }, {
+      "display" : "Stress",
+      "value" : 3
+    }, {
+      "display" : "Calories",
+      "value" : 4
+    }, {
+      "display" : "Battery",
+      "value" : 5
+    } ],
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  }, {
+    "key" : "Field4",
+    "valueType" : "number",
+    "defaultValue" : 3,
+    "configTitle" : "Field4",
+    "configPrompt" : null,
+    "configType" : "list",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : [ {
+      "display" : "Steps",
+      "value" : 0
+    }, {
+      "display" : "Energy",
+      "value" : 1
+    }, {
+      "display" : "Heart",
+      "value" : 2
+    }, {
+      "display" : "Stress",
+      "value" : 3
+    }, {
+      "display" : "Calories",
+      "value" : 4
+    }, {
+      "display" : "Battery",
+      "value" : 5
+    } ],
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  }, {
+    "key" : "Language",
+    "valueType" : "number",
+    "defaultValue" : 36,
+    "configTitle" : "Language",
+    "configPrompt" : null,
+    "configType" : "list",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : [ {
+      "display" : "Locale0",
+      "value" : 0
+    }, {
+      "display" : "Locale1",
+      "value" : 1
+    }, {
+      "display" : "Locale2",
+      "value" : 2
+    }, {
+      "display" : "Locale3",
+      "value" : 3
+    }, {
+      "display" : "Locale4",
+      "value" : 4
+    }, {
+      "display" : "Auto",
+      "value" : 36
+    } ],
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  }, {
+    "key" : "FeedBaseUrl",
+    "valueType" : "string",
+    "defaultValue" : "",
+    "configTitle" : "FeedBaseUrl",
+    "configPrompt" : null,
+    "configType" : "alphaNumeric",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : null,
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  } ],
+  "supportsLiveValidation" : false,
+  "languages" : {
+    "valyrian" : {
+      "Heart" : "Heart rate",
+      "Russian" : "Русский",
+      "Locale19" : "Dansk",
+      "Locale17" : "Ελληνικά",
+      "Locale18" : "Türkçe",
+      "Locale0" : "English",
+      "Locale1" : "Русский",
+      "Battery" : "Watch battery",
+      "Locale6" : "Português",
+      "Locale26" : "简体中文",
+      "Locale7" : "Nederlands",
+      "Locale27" : "繁體中文",
+      "Locale8" : "Polski",
+      "Locale24" : "Latviešu",
+      "Locale9" : "Українська",
+      "Locale25" : "Lietuvių",
+      "FeedBaseUrl" : "Feed URL",
+      "Locale2" : "Deutsch",
+      "Locale22" : "Suomi",
+      "Locale3" : "Français",
+      "Locale23" : "Eesti",
+      "Locale4" : "Español",
+      "Locale20" : "Svenska",
+      "Locale5" : "Italiano",
+      "Locale21" : "Norsk bokmål",
+      "Locale15" : "Hrvatski",
+      "Locale16" : "Slovenščina",
+      "Locale13" : "Română",
+      "Locale14" : "Български",
+      "Locale11" : "Slovenčina",
+      "Locale12" : "Magyar",
+      "Locale10" : "Čeština",
+      "Steps" : "Steps",
+      "AppName" : "SpaceFox",
+      "Auto" : "Automatic",
+      "Energy" : "Body Battery",
+      "Language" : "Language",
+      "Locale28" : "日本語",
+      "Locale29" : "한국어",
+      "Stress" : "Stress",
+      "Calories" : "Calories",
+      "Field4" : "Field 4",
+      "English" : "English",
+      "Locale30" : "العربية",
+      "Field2" : "Field 2",
+      "Field3" : "Field 3",
+      "Locale35" : "ไทย",
+      "Locale33" : "Bahasa Melayu",
+      "Field1" : "Field 1",
+      "Locale34" : "Tiếng Việt",
+      "Locale31" : "עברית",
+      "Locale32" : "Bahasa Indonesia"
+    }
+  }
+}

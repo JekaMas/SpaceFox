@@ -1,0 +1,13 @@
+{
+  "command": [
+    "python3",
+    "-B",
+    "/Users/jekamas/projects/SpaceFox/.agents/workflow/scripts/requirement_tests.py",
+    "--root",
+    ".",
+    "--change",
+    "spacefox-watchface",
+    "validate"
+  ],
+  "exitCode": 0
+}

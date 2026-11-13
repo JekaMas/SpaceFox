@@ -15,8 +15,10 @@ One-time Astra fullspec/test audit is DONE; [audit](evidence/basic-main-review/S
 | LS10.P1 | 4/4cases,1command | [reschedule](evidence/judge/basic-reschedule-root-whole.json) |
 | RL02.P2 | 11/11cases,2commands | [signed package](evidence/judge/basic-release-package-root-whole.json) |
 | WF02.P1 / WF04.P1 / WF05.P1 / WF06.P1 / WF07.P1; task5.2 | 24/24cases,1command | [selected scene](evidence/judge/basic-selected-scene-root-whole.json) |
+| LS07.P1 / LS08.P1 / LS09.P1 | 24/24cases,1command | [selection/metadata/UTC](evidence/judge/basic-launch-logic-root-whole.json) |
+| RL01.P1 / WF11.P1; task2.3 | 14/14cases,1command | [platform/metrics](evidence/judge/basic-platform-metrics-root-whole.json) |
 
-**12 whole software properties are CLOSED.** Root accepted selected-scene peer
+**17 whole software properties are CLOSED.** Root accepted selected-scene peer
 3785e3db after requiring replacement of source-string sparse-status checks with
 one targeted actual SDK test. The same peer fixed all four flag combinations,
 then passed the clean whole24case verifier. No third reviewer or native11 rerun.
@@ -33,11 +35,11 @@ Valid source-bound greens are retained; no rerun for docs/newcommit/workflowstag
 
 ## Exact remaining inventory
 
-Native [tasks.md](tasks.md): **31tasks;13checked /18open**. Foundation:4checked,
-0open. Combined:35tasks;17checked /18open. Native graph: **56requirements /
-148properties /691cases /70commands**. Current accepted12 leave **136properties
-without a closure reconciled in this sequence**.176implemented labels and
-515planned cases across120properties are registrations, not passing totals.
+Native [tasks.md](tasks.md): **31tasks;14checked /17open**. Foundation:4checked,
+0open. Combined:35tasks;18checked /17open. Native graph: **56requirements /
+142properties /692cases /69commands**. Current accepted17 leave **125properties
+without a closure reconciled in this sequence**.210implemented labels and
+482planned cases across111properties are registrations, not passing totals.
 Foundation's4properties/8cases retain their separate original proof boundary.
 
 Remaining coherent groups: selected-launch timing/selection/freshness; automatic
@@ -89,10 +91,12 @@ or claim exact current327/rebuild merelydocs. No native compiler inputs changed.
 
 ## Publication and automatic data
 
-Publicsource **dd21a181**: seven-closure code/spec/proof export;1640filehashes and
-then327candidate inputs verified; no private authoring ancestry. ActualUbuntu
+Publicsource **99508106**: twelve-closure code/spec/proof/actualSDKscene export;
+1,895filehashes verified, no private authoring ancestry. Prior dd21a181 matched
+then327candidate inputs; later retired diagnostic delta is explicit. ActualUbuntu
 43417089608 passed11tests; publisher/native inputs unchanged, retained without
-rerun. Selected-scene source/proof export follows this root judgment.
+rerun. Selected-scene source/proof export is published with exact independently closed
+24case group and root sparse-status repair. [Latest publication](evidence/basic-publication-20261113/twelve-closure-publication.json).
 [Publication](evidence/basic-publication-20261113/seven-closure-publication.json).
 
 Clean map-only bootstrap43423066921 passed all5jobs after old writer drained,
@@ -120,10 +124,24 @@ Code/specMIT; external assets/data retain attribution/licenses.
 
 ## Next unit
 
-ONE active APPLY `apply_basic_launch_logic_whole` now owns LS07.P1/LS08.P1/LS09.P1
-and their directlyconjunctive subsets at base5534b675: earliestselection, exact
-metadata and UTCnumericcountdown. It must finish whole+selfGREEN, then ONE peer
-VERIFY+FIX+CLOSE. LS11cache/freshnessfaults are a separate futureunit. Reuse existing actual corpus,
+Root accepted e25dbbd6 LS07/LS08/LS09 after actual independent whole24/24cases
+through1command on clean5b20926f. One new current exact/MIN native assertion
+filled the real parser gap; previous clock10/reschedule4/scene11 were not rerun.
+Four further exact P2/P3 aliases folded, not extra passes. [Independent report](evidence/basic-launch-logic-whole/INDEPENDENT.md).
+Tasks3.1/3.2 stayopen for remainingrefresh/cache/age/quota obligations. Root accepted8960a8d4 RL01.P1/WF11.P1 and task2.3technical: actual independent
+14/14cases through1command onclean48bc0fcf. Four new SDK boundaryguard methods
+PASS/raw1 with explicitly mapped Toybox doubles; original realSDKsmoke/provenance
+is separate. All30productionnative files/100directSDKreferences are bound to the
+reviewed source set; SDKprofile/API/firmware2502 are actualmetadata, not ownerwatch
+firmware. [Independent report](evidence/basic-platform-metrics-whole/INDEPENDENT.md).
+No production/resource/localepolicy bytes changed. Two aliases folded, notpasses.
+ONE active APPLY `apply_basic_publisher_clock_whole` at7d03a565 owns current
+LS03.P1/P3/P12 and LS16.P1: personalstaticoperation,404budget/currentreadback and
+statelessclock. It retires historical G10/frozenlaunch194/publicsuccessor-specific
+properties with mappings, keeping generic current input/privacy/rights/finality
+obligations. P4/P5/P6/P7/P8/P10 are realcurrentconjuncts and remain truthful/open
+where not fully covered. One whole+selfGREEN then ONEpeer, rootjudgment. No ops,
+providercalls or broaderAstraaudit byworker.  Reuse existing actual corpus,
 clock/scene/native greens; current G2 can carry a real same-asset/source-validation
 update witness. No full-spec Astra repeat, extra reviewers, synthetic display or
 rare stress expansion. Root owns publication/operational readbacks and judgment.

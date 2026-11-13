@@ -20,8 +20,12 @@ local signed packaging RL02.P2 passed11/11cases through two commands and an
 independent check of both actual PRG/IQ signatures and all327source inputs.
 Header, model visual, map/point, composition and compact statuses subsequently
 passed24/24cases through one whole command after an independent targeted sparse
-status repair. **Twelve whole software properties and tasks5.2/5.4 are closed.**
-The native task list is13closed/18open;148properties retain136unreconciled closures.
+status repair. **Seventeen whole software properties and tasks2.3/5.2/5.4 are closed.**
+Selection, source metadata and UTC timing passed24/24current cases; platform/API
+and Garmin metric guards passed14/14. The native task list is14closed/17open;
+142properties retain125unreconciled closures. Native framework PASS/rawlauncher1
+is recorded separately from ordinary application/cleanup exit0. Boundary doubles
+for permission/unsupported cases do not establish physical permission or health.
 Physical task5.1 remains open. Actual FR165 SDK
 observations cover five languages, the captured1,822-launch/413-composition corpus,
 menu glyphs, normal settings activation, numeric clock and fixed scene. Read the

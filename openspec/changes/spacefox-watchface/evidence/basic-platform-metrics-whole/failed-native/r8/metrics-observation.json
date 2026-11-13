@@ -1,0 +1,62 @@
+{
+  "status": "failed",
+  "raw_exit_code": 1,
+  "expected_tests": [
+    "metricUnsupported"
+  ],
+  "observed_tests": {
+    "metricUnsupported": "FAIL"
+  },
+  "observed_count": 1,
+  "launcher_nonzero_framework_pass": false,
+  "command": [
+    "/opt/homebrew/Cellar/openjdk@11/11.0.21/libexec/openjdk.jdk/Contents/Home/bin/java",
+    "-Dfile.encoding=UTF-8",
+    "-classpath",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+    "com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux",
+    "-f",
+    "/Users/jekamas/.codex/tmp/spacefox-platform-metrics-20261113/native-r8/metrics.prg",
+    "-d",
+    "fr165",
+    "-s",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/shell",
+    "-t",
+    "metricUnsupported"
+  ],
+  "build": {
+    "command": [
+      "/opt/homebrew/Cellar/openjdk@11/11.0.21/libexec/openjdk.jdk/Contents/Home/bin/java",
+      "-Dfile.encoding=UTF-8",
+      "-jar",
+      "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+      "-f",
+      "/Users/jekamas/.codex/tmp/spacefox-platform-metrics-20261113/native-r8/monkey.jungle",
+      "-d",
+      "fr165",
+      "-o",
+      "/Users/jekamas/.codex/tmp/spacefox-platform-metrics-20261113/native-r8/metrics.prg",
+      "-y",
+      "/Users/jekamas/.codex/tmp/spacefox-sdk-setup-20261111/test-only/spacefox-development.der",
+      "-l",
+      "3",
+      "-O",
+      "2",
+      "-w",
+      "--unit-test"
+    ],
+    "exit_code": 0,
+    "application_uuid": "94561c390798412db00590acf82ba465",
+    "package_sha256": "c3bf359eaee608e66873cc4b5525ec91dc82c4f161edce3824fa90be863fb487",
+    "source_sha256": {
+      "watchface/source/Fitness.mc": "4514c60764062fcf08aabf253f729629fbb68727789154c801be839a55e581ba",
+      "tests/fixtures/basic_platform_metrics/MetricBoundary.mc": "4eb990c931e986b7495e10ea20fef59345335f2515dc312aad8228450c14d4f6"
+    },
+    "transformed_fitness_sha256": "52ba33aabd69f4b213d7a115072b7527f5c523d63a43104188fd8cb30dffc23c",
+    "compiler_sha256": "e1a6f9018b0c2f7552e25a41b7a6e621e4322bda6916bfd7177e9f7538c385c8",
+    "profile_sha256": "ed45eb28ba928e2d2bda1bf8c567401232ab226889b87712fef5713e7f9a4fa8",
+    "sdk_version": "9.3.0",
+    "profile_api": "5.2.0"
+  },
+  "boundary": "SDK FR165 VM; Garmin module/member boundary substitutes only; exact Fitness body with explicit external-reference and sample-type mapping. No physical permission revocation, health or actual unsupported firmware."
+}

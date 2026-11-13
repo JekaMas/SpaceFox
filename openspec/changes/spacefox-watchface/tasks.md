@@ -17,7 +17,7 @@
 - [x] 2.1 Before semantic implementation, establish the real owners/tests and author the pinned workflow's verification/discovery records; verify all selected requirements/scenarios have meaningful positive and negative cases and graph validation passes.
 - [ ] 2.2 Qualify the FR165 SDK path for static HTTPS feed fetch through Garmin Connect, background parse/time/memory bounds, compatible image/frame transfer and persisted last-working cache; measure decoded feed≤8192bytes, transfer/parse/activation peak RAM, decoded graphics, serialized per-value/total storage and staging/recovery peak. Establish actual supported types, limits and write/error behavior; do not infer RAM from compressed bytes. Record a successful native experiment plus failure behavior.
 
-- [ ] 2.3 Pin SDK/device profile/firmware and only qualified APIs/products/permissions. The owner is the adult official publisher and has confirmed the relevant intended-use age condition. No age clarification remains open; only technical qualification remains in this task. Keep the separate under13 audience/use rule in release review7.3, without publishing private ages or assuming an exemption.
+- [x] 2.3 Pin SDK/device profile/firmware and only qualified APIs/products/permissions. The owner is the adult official publisher and has confirmed the relevant intended-use age condition. No age clarification remains open; only technical qualification remains in this task. Keep the separate under13 audience/use rule in release review7.3, without publishing private ages or assuming an exemption. Technical whole RL01/WF11 source-bound qualification: [evidence/basic-platform-metrics-whole/FINAL.md](evidence/basic-platform-metrics-whole/FINAL.md). SDK9.3/compiler and FR165 API5.2 profile firmwareVersion2502 are pinned; manifest minAPI5.1, stable watchface UUID, five software-qualified languages and only necessary permissions. Actual physical firmware/installation remains separately open in5.1/7.1.
 
 ## 3. Launch schedule
 
@@ -28,6 +28,11 @@
   [report](evidence/basic-reschedule-whole/FINAL.md). Existing MIN comparison was
   already correct; no production change. Root judgment remains pending.
   Other3.1/3.2 obligations retain their existing open scope.
+  BASIC launch selection/context/countdown LS07.P1/LS08.P1/LS09.P1 author whole
+  self-verification passed24/24current cases through1command; one focused current
+  SDK parser-to-View assertion passed1/1, other valid native receipts reused.
+  [Report](evidence/basic-launch-logic-whole/FINAL.md). One different peer and root
+  judgment remain; these tasks stay open for their other obligations.
 
 - [ ] 3.3 Implement the standard-runner Actions/custom-Pages workflow with lightweight due checks, serialized updates, bounded artifacts/retention and recovery of accepted state; verify not-due runs perform no provider fetch/publication, first/second validation, failure/overlap handling, unchanged age during catalog-only updates and disabled-schedule recovery. Enable only within an implementation/deployment request.
 - [ ] 3.4 Rehearse `docs/AGENT_SETUP.md` for the owner's instance and another owner's fork/feed URL; verify prerequisites, Actions/Pages settings, manual recovery, no required author credentials/AWS/recurring LLM calls, and actual HTTPS plus phone/watch readback; retain exact unavailable prerequisites rather than a false setup pass.

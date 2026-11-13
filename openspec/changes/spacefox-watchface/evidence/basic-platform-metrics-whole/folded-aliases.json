@@ -1,0 +1,452 @@
+{
+  "retiredConjunctiveProperties": {
+    "RL01.P2": "RL01.P1",
+    "WF11.P2": "WF11.P1"
+  },
+  "mappings": [
+    {
+      "oldCase": "RL01.P1.S01.POSITIVE",
+      "oldTest": "unittest::tests.test_native_build_original.OriginalNativeBuildTest.test_a_newer_sdk_offers_an_unavailable_api_positive",
+      "currentCase": "RL01.P1.S01.POSITIVE",
+      "reason": "Direct conjunctive software behavior retained in whole parent; old partial label is not an additional pass. Original hardware substitute registration replaced with executable software qualification; physical release tasks remain separate."
+    },
+    {
+      "oldCase": "RL01.P1.S01.NEGATIVE",
+      "oldTest": "unittest::tests.test_native_build_original.OriginalNativeBuildTest.test_a_newer_sdk_offers_an_unavailable_api_negative",
+      "currentCase": "RL01.P1.S01.NEGATIVE",
+      "reason": "Direct conjunctive software behavior retained in whole parent; old partial label is not an additional pass. Original hardware substitute registration replaced with executable software qualification; physical release tasks remain separate."
+    },
+    {
+      "oldCase": "WF11.P1.S01.POSITIVE",
+      "oldTest": "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_a_selected_history_metric_is_unavailable_positive",
+      "currentCase": "WF11.P1.S01.POSITIVE",
+      "reason": "Direct conjunctive software behavior retained in whole parent; old partial label is not an additional pass. Original hardware substitute registration replaced with executable software qualification; physical release tasks remain separate."
+    },
+    {
+      "oldCase": "WF11.P1.S01.NEGATIVE",
+      "oldTest": "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_a_selected_history_metric_is_unavailable_negative",
+      "currentCase": "WF11.P1.S01.NEGATIVE",
+      "reason": "Direct conjunctive software behavior retained in whole parent; old partial label is not an additional pass. Original hardware substitute registration replaced with executable software qualification; physical release tasks remain separate."
+    },
+    {
+      "oldCase": "RL01.P2.S01.POSITIVE",
+      "oldTest": "unittest::tests.test_native_build.NativeBuildTest.test_target_build_positive",
+      "currentCase": "RL01.P1.S01.POSITIVE",
+      "reason": "Direct conjunctive software behavior retained in whole parent; old partial label is not an additional pass. Original hardware substitute registration replaced with executable software qualification; physical release tasks remain separate."
+    },
+    {
+      "oldCase": "RL01.P2.S01.NEGATIVE",
+      "oldTest": "unittest::tests.test_native_build.NativeBuildTest.test_target_build_negative",
+      "currentCase": "RL01.P1.S01.NEGATIVE",
+      "reason": "Direct conjunctive software behavior retained in whole parent; old partial label is not an additional pass. Original hardware substitute registration replaced with executable software qualification; physical release tasks remain separate."
+    },
+    {
+      "oldCase": "WF11.P2.S01.POSITIVE.CURRENT",
+      "oldTest": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf11_p2_s01_positive_current",
+      "currentCase": "WF11.P1.C04.POSITIVE",
+      "reason": "Direct conjunctive software behavior retained in whole parent; old partial label is not an additional pass. Original hardware substitute registration replaced with executable software qualification; physical release tasks remain separate."
+    },
+    {
+      "oldCase": "WF11.P2.S01.NEGATIVE.CURRENT",
+      "oldTest": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf11_p2_s01_negative_current",
+      "currentCase": "WF11.P1.C04.NEGATIVE",
+      "reason": "Direct conjunctive software behavior retained in whole parent; old partial label is not an additional pass. Original hardware substitute registration replaced with executable software qualification; physical release tasks remain separate."
+    }
+  ],
+  "oldSelectedCases": [
+    {
+      "id": "RL01.P1.S01.POSITIVE",
+      "property_id": "RL01.P1",
+      "polarity": "positive",
+      "scenario": "A newer SDK offers an unavailable API",
+      "scenario_fingerprint": "3acd8cd39831d2bcb46c4959d3a5e862ca5270ce00889cb8e5301619868796ff",
+      "setup": "FR165 profile API5.2 and source using only qualified APIs pinned by reproducible build config",
+      "observable": "device build succeeds with recorded SDK/profile/source/package identity",
+      "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: device build succeeds with recorded SDK/profile/source/package identity",
+      "green_expectation": "device build succeeds with recorded SDK/profile/source/package identity",
+      "invalidation_dependencies": [
+        "assets/fonts/**",
+        "assets/rocket-pack/catalog.json",
+        "assets/rocket-pack/registry.source.json",
+        "catalog/**",
+        "locales/**",
+        "schemas/**",
+        "tests/fixtures/build/**",
+        "tests/test_native_build.py",
+        "tools/build_native_resources.py",
+        "tools/build_watchface.py",
+        "tools/localization.py",
+        "watchface/generated/**",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources*/**",
+        "watchface/source/**",
+        "watchface/toolchain-lock.json",
+        "tests/test_native_build_original.py"
+      ],
+      "test_id": "unittest::tests.test_native_build_original.OriginalNativeBuildTest.test_a_newer_sdk_offers_an_unavailable_api_positive",
+      "command_id": "original-native-build-checks",
+      "state": "implemented",
+      "source_path": "tests/test_native_build_original.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 firmware/hardware when running the actual Monkey C unit/simulator harness",
+        "allowed_proof": "Only actual compiled Monkey C or simulator behavior and measured simulator limits once those tools/tests exist.",
+        "forbidden_claims": [
+          "Physical FR165 RAM/storage/battery/glyph qualification",
+          "Real paired-phone background delivery",
+          "Garmin Store approval or approved binary install"
+        ]
+      },
+      "planning_note": "Exact original source and executable identity now implemented; current-source observation awaits independent review before case promotion. Compiler acceptance and policy rejection are distinct.",
+      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; current-source compiled tests/builds have retained observations in evidence/original-scope-reconciliation/current-native-clock-build. Review and root case-promotion judgment remain pending. Physical-device proof remains absent.",
+      "implementation_note": "Root accepts exact original software case after whole APPLY, material midpoint fixture repair and different final whole review. See evidence/judge/current-native-clock-build-root-whole.json for actual compiled-function versus wrapper receipt and controlled clock/storage/API policy limits.",
+      "source_sha256": "0bec222f7f5d08e19d8d1b04ba916cce733d57a617f38b9406ee8e41dfb5e030"
+    },
+    {
+      "id": "RL01.P1.S01.NEGATIVE",
+      "property_id": "RL01.P1",
+      "polarity": "negative",
+      "scenario": "A newer SDK offers an unavailable API",
+      "scenario_fingerprint": "3acd8cd39831d2bcb46c4959d3a5e862ca5270ce00889cb8e5301619868796ff",
+      "setup": "compile deliberately gated path requiring API6-only octet-stream on FR165",
+      "observable": "build/compatibility qualification rejects it or supported path is chosen, not desktop-SDK-version proof",
+      "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: build/compatibility qualification rejects it or supported path is chosen, not desktop-SDK-version proof",
+      "green_expectation": "build/compatibility qualification rejects it or supported path is chosen, not desktop-SDK-version proof",
+      "invalidation_dependencies": [
+        "assets/fonts/**",
+        "assets/rocket-pack/catalog.json",
+        "assets/rocket-pack/registry.source.json",
+        "catalog/**",
+        "locales/**",
+        "schemas/**",
+        "tests/fixtures/build/**",
+        "tests/test_native_build.py",
+        "tools/build_native_resources.py",
+        "tools/build_watchface.py",
+        "tools/localization.py",
+        "watchface/generated/**",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources*/**",
+        "watchface/source/**",
+        "watchface/toolchain-lock.json",
+        "tests/test_native_build_original.py"
+      ],
+      "test_id": "unittest::tests.test_native_build_original.OriginalNativeBuildTest.test_a_newer_sdk_offers_an_unavailable_api_negative",
+      "command_id": "original-native-build-checks",
+      "state": "implemented",
+      "source_path": "tests/test_native_build_original.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 firmware/hardware when running the actual Monkey C unit/simulator harness",
+        "allowed_proof": "Only actual compiled Monkey C or simulator behavior and measured simulator limits once those tools/tests exist.",
+        "forbidden_claims": [
+          "Physical FR165 RAM/storage/battery/glyph qualification",
+          "Real paired-phone background delivery",
+          "Garmin Store approval or approved binary install"
+        ]
+      },
+      "planning_note": "Exact original source and executable identity now implemented; current-source observation awaits independent review before case promotion. Compiler acceptance and policy rejection are distinct.",
+      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; current-source compiled tests/builds have retained observations in evidence/original-scope-reconciliation/current-native-clock-build. Review and root case-promotion judgment remain pending. Physical-device proof remains absent.",
+      "implementation_note": "Root accepts exact original software case after whole APPLY, material midpoint fixture repair and different final whole review. See evidence/judge/current-native-clock-build-root-whole.json for actual compiled-function versus wrapper receipt and controlled clock/storage/API policy limits.",
+      "source_sha256": "0bec222f7f5d08e19d8d1b04ba916cce733d57a617f38b9406ee8e41dfb5e030"
+    },
+    {
+      "id": "WF11.P1.S01.POSITIVE",
+      "property_id": "WF11.P1",
+      "polarity": "positive",
+      "scenario": "A selected history metric is unavailable",
+      "scenario_fingerprint": "78978dd19c8060d28d950e8feea317337a73f8e44028a355a40b90fcb9b17226",
+      "setup": "FR165fieldsetBodyBattery/stress/heart withmissingAPI/deniedpermission/norecentsample",
+      "observable": "unavailablemarkerandothertime/fieldscorrect",
+      "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: unavailablemarkerandothertime/fieldscorrect",
+      "green_expectation": "unavailablemarkerandothertime/fieldscorrect",
+      "invalidation_dependencies": [
+        "assets/fonts/**",
+        "prototype/current/selection.json",
+        "schemas/**",
+        "tests/fixtures/device/**",
+        "tests/test_device_acceptance.py",
+        "tools/build_native_resources.py",
+        "tools/build_watchface.py",
+        "watchface/generated/**",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources*/**",
+        "watchface/source/**",
+        "watchface/source/SpaceFoxApp.mc",
+        "watchface/toolchain-lock.json"
+      ],
+      "test_id": "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_a_selected_history_metric_is_unavailable_positive",
+      "command_id": "device-checks",
+      "state": "planned",
+      "source_path": "tests/test_device_acceptance.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Unavailable physical FR165/paired phone",
+        "allowed_proof": "No claim until actual source-bound external observation and its negative/failure counterpart are obtained. Receipt-file existence alone is not product proof.",
+        "forbidden_claims": [
+          "A synthetic receipt or simulator is a real device observation",
+          "A source tag or green local workflow establishes deployment/Store approval",
+          "Private account credentials or physical operations are implicitly available"
+        ]
+      },
+      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review.",
+      "prerequisite": "No attached FR165; actual phone/hardware observations not available."
+    },
+    {
+      "id": "WF11.P1.S01.NEGATIVE",
+      "property_id": "WF11.P1",
+      "polarity": "negative",
+      "scenario": "A selected history metric is unavailable",
+      "scenario_fingerprint": "78978dd19c8060d28d950e8feea317337a73f8e44028a355a40b90fcb9b17226",
+      "setup": "fallbackpathtriesrawSensorstream/fullhistoryoruploadsmetric",
+      "observable": "nativeAPI/permissiontracefailsqualification;nosubstitutedfitnessdataorGPSrequest",
+      "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: nativeAPI/permissiontracefailsqualification;nosubstitutedfitnessdataorGPSrequest",
+      "green_expectation": "nativeAPI/permissiontracefailsqualification;nosubstitutedfitnessdataorGPSrequest",
+      "invalidation_dependencies": [
+        "assets/fonts/**",
+        "prototype/current/selection.json",
+        "schemas/**",
+        "tests/fixtures/device/**",
+        "tests/test_device_acceptance.py",
+        "tools/build_native_resources.py",
+        "tools/build_watchface.py",
+        "watchface/generated/**",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources*/**",
+        "watchface/source/**",
+        "watchface/source/SpaceFoxApp.mc",
+        "watchface/toolchain-lock.json"
+      ],
+      "test_id": "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_a_selected_history_metric_is_unavailable_negative",
+      "command_id": "device-checks",
+      "state": "planned",
+      "source_path": "tests/test_device_acceptance.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Unavailable physical FR165/paired phone",
+        "allowed_proof": "No claim until actual source-bound external observation and its negative/failure counterpart are obtained. Receipt-file existence alone is not product proof.",
+        "forbidden_claims": [
+          "A synthetic receipt or simulator is a real device observation",
+          "A source tag or green local workflow establishes deployment/Store approval",
+          "Private account credentials or physical operations are implicitly available"
+        ]
+      },
+      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review.",
+      "prerequisite": "No attached FR165; actual phone/hardware observations not available."
+    },
+    {
+      "id": "RL01.P2.S01.POSITIVE",
+      "property_id": "RL01.P2",
+      "polarity": "positive",
+      "scenario": "A newer SDK offers an unavailable API",
+      "scenario_fingerprint": "3acd8cd39831d2bcb46c4959d3a5e862ca5270ce00889cb8e5301619868796ff",
+      "setup": "FR165 profile API5.2 and source using only qualified APIs pinned by reproducible build config",
+      "observable": "device build succeeds with recorded SDK/profile/source/package identity",
+      "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: device build succeeds with recorded SDK/profile/source/package identity",
+      "green_expectation": "device build succeeds with recorded SDK/profile/source/package identity",
+      "invalidation_dependencies": [
+        "tests/fixtures/build/**",
+        "tests/test_native_build.py",
+        "tools/build_watchface.py",
+        "watchface/api-policy.json",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources/**",
+        "watchface/source/**",
+        "watchface/tests/**",
+        "watchface/toolchain-lock.json"
+      ],
+      "test_id": "unittest::tests.test_native_build.NativeBuildTest.test_target_build_positive",
+      "command_id": "build-checks",
+      "state": "implemented",
+      "source_path": "tests/test_native_build.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 VM/firmware with SDK fr165 simulator; WatchClock UTC/local sources with explicit controlled Clock adapter for literal vectors. SDK live clock adapter gets separate bounded smoke test. No Storage adapter or persistence is exercised.",
+        "allowed_proof": "Actual compiled Monkey C arithmetic, production snapshot/lifecycle methods and FR165-profile compilation under these controlled simulator inputs.",
+        "forbidden_claims": [
+          "Physical time-zone/DST/sleep wake behavior, battery, RAM or storage qualification",
+          "Accepted feed parsing, persistent cache restart, phone/network delivery",
+          "Full04 scene, Garmin language qualification, production release identity/key backup or Store approval"
+        ]
+      },
+      "source_sha256": "53406cf28095553822fe0fc48877d2d9532baa07eadc0916848e77649e778037",
+      "native_test_ids": [],
+      "source_rebind_note": "See evidence/current-main-use-integration/binding-trace.json. Original registered hash retained there; unchanged method AST or exact affected observation is explicitly distinguished. No new SDK observation follows from graph registration."
+    },
+    {
+      "id": "RL01.P2.S01.NEGATIVE",
+      "property_id": "RL01.P2",
+      "polarity": "negative",
+      "scenario": "A newer SDK offers an unavailable API",
+      "scenario_fingerprint": "3acd8cd39831d2bcb46c4959d3a5e862ca5270ce00889cb8e5301619868796ff",
+      "setup": "Separate original minimal watchface fixture with API6.0.3 octet-stream constant and valid Background/Communications permissions; actual compiler success is retained as counterexample; source/manifest profile/minAPI mutations exercise admission guards.",
+      "observable": "API6.0.3 symbol is explicitly policy-blocked for5.2 despite actual counterexample compile success; minAPI/profile mismatch blocks. No general API compatibility or native runtime feature proof.",
+      "red_expectation": "An accepted incompatible source or unchecked altered profile/minAPI must fail observer. Harness permission/untyped/scoping failures cannot masquerade as API rejection.",
+      "green_expectation": "Actual fixture compile exit0 is retained, explicit unsupported API6.0.3 policy error observed, and minimum API/profile mismatch rejected.",
+      "invalidation_dependencies": [
+        "tests/fixtures/build/**",
+        "tests/test_native_build.py",
+        "tools/build_watchface.py",
+        "watchface/api-policy.json",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources/**",
+        "watchface/source/**",
+        "watchface/tests/**",
+        "watchface/toolchain-lock.json"
+      ],
+      "test_id": "unittest::tests.test_native_build.NativeBuildTest.test_target_build_negative",
+      "command_id": "build-checks",
+      "state": "implemented",
+      "source_path": "tests/test_native_build.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 VM/firmware with SDK fr165 simulator; WatchClock UTC/local sources with explicit controlled Clock adapter for literal vectors. SDK live clock adapter gets separate bounded smoke test. No Storage adapter or persistence is exercised.",
+        "allowed_proof": "Actual compiled Monkey C arithmetic, production snapshot/lifecycle methods and FR165-profile compilation under these controlled simulator inputs.",
+        "forbidden_claims": [
+          "Physical time-zone/DST/sleep wake behavior, battery, RAM or storage qualification",
+          "Accepted feed parsing, persistent cache restart, phone/network delivery",
+          "Full04 scene, Garmin language qualification, production release identity/key backup or Store approval"
+        ]
+      },
+      "source_sha256": "53406cf28095553822fe0fc48877d2d9532baa07eadc0916848e77649e778037",
+      "native_test_ids": [],
+      "source_rebind_note": "See evidence/current-main-use-integration/binding-trace.json. Original registered hash retained there; unchanged method AST or exact affected observation is explicitly distinguished. No new SDK observation follows from graph registration."
+    },
+    {
+      "id": "WF11.P2.S01.POSITIVE.CURRENT",
+      "property_id": "WF11.P2",
+      "polarity": "positive",
+      "scenario": "A selected history metric is unavailable",
+      "scenario_fingerprint": "78978dd19c8060d28d950e8feea317337a73f8e44028a355a40b90fcb9b17226",
+      "setup": "Use actual captured real launch/catalog/page records in sole-current schema3/SFR1M /feed.json, current packed2 authority and fixed schema3 metadata20/20/100/100 plus pads ordering=id where applicable; mutate technical fields only and retain exact display text. No retired builder/profile/parser/policy/old archive.",
+      "observable": "Production guarded ActivityMonitor/System/SensorHistory adapter; bounded one recent sample, absent/denied/null/unavailable andzero preserved; no raw streaming.",
+      "red_expectation": "Reject contradictory/missing real execution or wrong visible/native output; incomplete physical edges remain incomplete.",
+      "green_expectation": "Production guarded ActivityMonitor/System/SensorHistory adapter; bounded one recent sample, absent/denied/null/unavailable andzero preserved; no raw streaming. This is the same-current-format actual-record contract; no old wire/profile, synthetic display or frozen archive setup is a current gate.",
+      "invalidation_dependencies": [
+        "assets/rocket-pack/catalog.json",
+        "assets/rocket-pack/png/**",
+        "corpus/real-schedule-20261113/**",
+        "locales/en.json",
+        "locales/ru.json",
+        "openspec/changes/spacefox-watchface/evidence/native-scene/round1/animation-*.json",
+        "openspec/changes/spacefox-watchface/evidence/native-scene/round1/animation-*.log",
+        "openspec/changes/spacefox-watchface/evidence/native-scene/round1/captures/**",
+        "openspec/changes/spacefox-watchface/evidence/native-scene/round1/preview-builds/**",
+        "prototype/current/current.js",
+        "prototype/current/style.css",
+        "prototype/features/style.css",
+        "prototype/focus/style.css",
+        "prototype/fonts/**",
+        "prototype/fonts/fonts.css",
+        "prototype/qualification/renderer.js",
+        "prototype/qualification/style.css",
+        "prototype/wide-map/renderer.js",
+        "prototype/wide-map/style.css",
+        "tests/test_current_format_acceptance.py",
+        "tools/build_native_resources.py",
+        "tools/build_watchface.py",
+        "tools/native-resources-requirements.txt",
+        "tools/native_map_paths.js",
+        "watchface/api-policy.json",
+        "watchface/lifecycle-preview/**",
+        "watchface/manifest.xml",
+        "watchface/preview/**",
+        "watchface/resource-inputs/**",
+        "watchface/resources-rus/**",
+        "watchface/resources/**",
+        "watchface/scene-tests/**",
+        "watchface/source/**",
+        "watchface/toolchain-lock.json"
+      ],
+      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf11_p2_s01_positive_current",
+      "command_id": "current-format-acceptance-planned",
+      "state": "planned",
+      "source_path": "tests/test_current_format_acceptance.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 VM by SDKfr165; launch/context, clock and optional telemetry inputs by explicit fixtures. Original renderer/settings/metric adapter/lifecycle owners run unchanged.",
+        "allowed_proof": "Bounded actual compiled Monkey C and SDK scene/resource/API behavior only.",
+        "forbidden_claims": [
+          "physical device readability/health/battery/sleep/glyph qualification",
+          "live feed/cache/phone/download acceptance",
+          "worldwide dynamic geography/all36locales/Store/release acceptance"
+        ]
+      },
+      "native_test_ids": [
+        "sceneMetricsPositive"
+      ],
+      "planning_note": "PLANNED current-format replacement; method and observations are not claimed. Exact original scenario contract is retained in R6 audit."
+    },
+    {
+      "id": "WF11.P2.S01.NEGATIVE.CURRENT",
+      "property_id": "WF11.P2",
+      "polarity": "negative",
+      "scenario": "A selected history metric is unavailable",
+      "scenario_fingerprint": "78978dd19c8060d28d950e8feea317337a73f8e44028a355a40b90fcb9b17226",
+      "setup": "Use actual captured real launch/catalog/page records in sole-current schema3/SFR1M /feed.json, current packed2 authority and fixed schema3 metadata20/20/100/100 plus pads ordering=id where applicable; mutate technical fields only and retain exact display text. No retired builder/profile/parser/policy/old archive.",
+      "observable": "Production guarded ActivityMonitor/System/SensorHistory adapter; bounded one recent sample, absent/denied/null/unavailable andzero preserved; no raw streaming.",
+      "red_expectation": "Reject contradictory/missing real execution or wrong visible/native output; incomplete physical edges remain incomplete.",
+      "green_expectation": "Production guarded ActivityMonitor/System/SensorHistory adapter; bounded one recent sample, absent/denied/null/unavailable andzero preserved; no raw streaming. This is the same-current-format actual-record contract; no old wire/profile, synthetic display or frozen archive setup is a current gate.",
+      "invalidation_dependencies": [
+        "assets/rocket-pack/catalog.json",
+        "assets/rocket-pack/png/**",
+        "corpus/real-schedule-20261113/**",
+        "locales/en.json",
+        "locales/ru.json",
+        "openspec/changes/spacefox-watchface/evidence/native-scene/round1/animation-*.json",
+        "openspec/changes/spacefox-watchface/evidence/native-scene/round1/animation-*.log",
+        "openspec/changes/spacefox-watchface/evidence/native-scene/round1/captures/**",
+        "openspec/changes/spacefox-watchface/evidence/native-scene/round1/preview-builds/**",
+        "prototype/current/current.js",
+        "prototype/current/style.css",
+        "prototype/features/style.css",
+        "prototype/focus/style.css",
+        "prototype/fonts/**",
+        "prototype/fonts/fonts.css",
+        "prototype/qualification/renderer.js",
+        "prototype/qualification/style.css",
+        "prototype/wide-map/renderer.js",
+        "prototype/wide-map/style.css",
+        "tests/test_current_format_acceptance.py",
+        "tools/build_native_resources.py",
+        "tools/build_watchface.py",
+        "tools/native-resources-requirements.txt",
+        "tools/native_map_paths.js",
+        "watchface/api-policy.json",
+        "watchface/lifecycle-preview/**",
+        "watchface/manifest.xml",
+        "watchface/preview/**",
+        "watchface/resource-inputs/**",
+        "watchface/resources-rus/**",
+        "watchface/resources/**",
+        "watchface/scene-tests/**",
+        "watchface/source/**",
+        "watchface/toolchain-lock.json"
+      ],
+      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf11_p2_s01_negative_current",
+      "command_id": "current-format-acceptance-planned",
+      "state": "planned",
+      "source_path": "tests/test_current_format_acceptance.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 VM by SDKfr165; launch/context, clock and optional telemetry inputs by explicit fixtures. Original renderer/settings/metric adapter/lifecycle owners run unchanged.",
+        "allowed_proof": "Bounded actual compiled Monkey C and SDK scene/resource/API behavior only.",
+        "forbidden_claims": [
+          "physical device readability/health/battery/sleep/glyph qualification",
+          "live feed/cache/phone/download acceptance",
+          "worldwide dynamic geography/all36locales/Store/release acceptance"
+        ]
+      },
+      "native_test_ids": [
+        "sceneMetricsNegative"
+      ],
+      "planning_note": "PLANNED current-format replacement; method and observations are not claimed. Exact original scenario contract is retained in R6 audit."
+    }
+  ]
+}

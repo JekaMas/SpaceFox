@@ -1,0 +1,39 @@
+{
+  "status": "accepted-and-closed",
+  "sourceCommit": "e25dbbd6",
+  "closedProperties": [
+    "LS07.P1",
+    "LS08.P1",
+    "LS09.P1"
+  ],
+  "actualVerifier": {
+    "status": "passed",
+    "cases": 24,
+    "commands": 1,
+    "manifestSha256": "87aed40f2f0937a595891e2de67872980aef6cdf9b760de6ae88da62c0a9d084",
+    "path": "evidence/basic-launch-logic-whole/independent-corrected.json"
+  },
+  "peerCorrection": "Corrected currentMIN versus reschedule clock-value attribution; no assertion/production change.",
+  "nativeObservation": "One actual currentSEC/MIN/zero/unknown BridgeFeed->FeedScene->View assertion;1PASS/rawlauncher1. Priorclock10/reschedule4/scene11 exactsource-bound reuse; menu/availabilitydelta explicit.",
+  "priorTwelvePropertyDefinitionsAndCasesUnchanged": true,
+  "productionNativeResourcesPublisherUnchanged": true,
+  "retiredAliasesNotPasses": [
+    "LS07.P2",
+    "LS08.P2",
+    "LS09.P2",
+    "LS09.P3"
+  ],
+  "currentCounts": {
+    "tasks": 31,
+    "tasks_closed": 13,
+    "requirements": 56,
+    "properties": 144,
+    "cases": 686,
+    "commands": 70,
+    "case_states": {
+      "planned": 486,
+      "implemented": 200
+    }
+  },
+  "scope": "Selected basic software logic; no cache/freshness/physical/phone/Store/globalcatalog acceptance. Sourcefield/UTC controlledmutations are explicit."
+}

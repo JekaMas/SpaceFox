@@ -1,0 +1,14 @@
+------------------------------------------------------------------------------
+Executing test metricUnsupported...
+DEBUG (18:27): moduleAbsent=false values={heart=>72, calories=>2345, battery=>82, energy=>68, steps=>0, stress=>0} trace=[activity.info, system.stats, heart.open, heart.next, energy.open, energy.next, stress.open, stress.next]
+DEBUG (18:27): functionAbsent values={heart=>null, calories=>null, battery=>82, energy=>null, steps=>null, stress=>null} trace=[system.stats]
+DEBUG (18:27): BOUNDARY absent modules then absent functions; guarded reads omitted; independent system watch charge still available
+FAIL
+
+==============================================================================
+RESULTS
+Test:                               Status:
+metricUnsupported                   FAIL
+Ran 1 test
+
+FAILED (passed=0, failed=1, errors=0)

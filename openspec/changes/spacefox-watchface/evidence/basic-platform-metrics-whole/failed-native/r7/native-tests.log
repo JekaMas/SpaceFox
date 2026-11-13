@@ -1,0 +1,27 @@
+------------------------------------------------------------------------------
+Executing test metricAvailable...
+DEBUG (18:26): BOUNDARY available distinct sources; steps/stress legitimate zero; exact one newest sample per history API; no network/raw-sensor objects
+PASS
+------------------------------------------------------------------------------
+Executing test metricDenied...
+DEBUG (18:26): BOUNDARY denied/unavailable calls throw; all six null without crash; each independent source attempted; no fabricated replacement
+PASS
+------------------------------------------------------------------------------
+Executing test metricUnsupported...
+DEBUG (18:26): BOUNDARY absent modules then absent functions; guarded reads omitted; independent system watch charge still available
+FAIL
+------------------------------------------------------------------------------
+Executing test metricMissing...
+DEBUG (18:26): BOUNDARY missing info fields and absent history samples retain null; charge remains real boundary value82; old history beyond300seconds unavailable
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+metricAvailable                     PASS
+metricDenied                        PASS
+metricUnsupported                   FAIL
+metricMissing                       PASS
+Ran 4 tests
+
+FAILED (passed=3, failed=1, errors=0)

@@ -1,0 +1,11 @@
+{
+  "command": [
+    "ruff",
+    "check",
+    "tests/test_basic_launch_logic.py"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "",
+  "invalidation": "New focused exact-feed native observer and generated-packet source assertion changed the selected test input after original stable lint."
+}

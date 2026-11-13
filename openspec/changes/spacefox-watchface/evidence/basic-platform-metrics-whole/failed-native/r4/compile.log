@@ -1,0 +1,11 @@
+2026-11-13 18:21:26.192 java[84550:153119176] WARNING: Secure coding is automatically enabled for restorable state! However, not on all supported macOS versions of this application. Opt-in to secure coding explicitly by implementing NSApplicationDelegate.applicationSupportsSecureRestorableState:.
+WARNING: fr165: The 'Background' permission was enabled but no source code was annotated. The entire application will be loaded as a background process.
+WARNING: fr165: /Users/jekamas/.codex/tmp/spacefox-platform-metrics-20261113/native-r4/gen/006-B4432-00/source/Rez.mcgen:638: Background applications are not supported on device 'fr165' with minimum API Level 5.2.0. The (:background) annotation will be ignored.
+ERROR: fr165: /Users/jekamas/.codex/tmp/spacefox-platform-metrics-20261113/native-r4/Fitness.mc:28,16: Cannot find symbol ':getInfo' on type '$.NoApis'.
+ERROR: fr165: /Users/jekamas/.codex/tmp/spacefox-platform-metrics-20261113/native-r4/Fitness.mc:40,68: Cannot find symbol ':getHeartRateHistory' on type '$.MissingHistory'.
+ERROR: fr165: /Users/jekamas/.codex/tmp/spacefox-platform-metrics-20261113/native-r4/Fitness.mc:41,70: Cannot find symbol ':getBodyBatteryHistory' on type '$.MissingHistory'.
+ERROR: fr165: /Users/jekamas/.codex/tmp/spacefox-platform-metrics-20261113/native-r4/Fitness.mc:42,65: Cannot find symbol ':getStressHistory' on type '$.MissingHistory'.
+ERROR: fr165: /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-platform-metrics-whole/tests/fixtures/basic_platform_metrics/MetricBoundary.mc:7: Member '$.MetricSDK.api' may not be initialized but does not accept Null.
+ERROR: fr165: /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-platform-metrics-whole/tests/fixtures/basic_platform_metrics/MetricBoundary.mc:8: Member '$.MetricSDK.activity' may not be initialized but does not accept Null.
+ERROR: fr165: /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-platform-metrics-whole/tests/fixtures/basic_platform_metrics/MetricBoundary.mc:9: Member '$.MetricSDK.history' may not be initialized but does not accept Null.
+ERROR: fr165: /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-platform-metrics-whole/tests/fixtures/basic_platform_metrics/MetricBoundary.mc:10: Member '$.MetricSDK.system' may not be initialized but does not accept Null.

@@ -1,0 +1,164 @@
+test_context_negative (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_context_negative) ... ok
+test_context_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_context_positive) ... FAIL
+test_country_types_negative (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_country_types_negative) ... ok
+test_country_types_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_country_types_positive) ... ok
+test_earlier_negative (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_earlier_negative) ... ok
+test_earlier_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_earlier_positive) ... ok
+test_elapsed_negative (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_elapsed_negative) ... ok
+test_elapsed_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_elapsed_positive) ... FAIL
+test_exact_negative (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_exact_negative) ... FAIL
+test_exact_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_exact_positive) ... FAIL
+test_footer_enrichment_negative (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_footer_enrichment_negative) ... ok
+test_footer_enrichment_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_footer_enrichment_positive) ... ok
+test_minute_negative (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_minute_negative) ... ok
+test_minute_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_minute_positive) ... FAIL
+test_missing_context_negative (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_missing_context_negative) ... ok
+test_missing_context_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_missing_context_positive) ... ok
+test_ordering_negative (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_ordering_negative) ... ok
+test_ordering_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_ordering_positive) ... ok
+test_provider_precision_negative (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_provider_precision_negative) ... ok
+test_provider_precision_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_provider_precision_positive) ... ok
+test_uncertain_negative (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_uncertain_negative) ... FAIL
+test_uncertain_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_uncertain_positive) ... FAIL
+test_wake_negative (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_wake_negative) ... FAIL
+test_wake_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_wake_positive) ... FAIL
+
+======================================================================
+FAIL: test_context_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_context_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/tests/test_basic_launch_logic.py", line 211, in test_context_positive
+    self.assertEqual(launch[key], value, key)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'll2:configuration:479' != 'll2:configuration:769'
+- ll2:configuration:479
+?                   -
++ ll2:configuration:769
+?                    +
+ : configuration_id
+
+======================================================================
+FAIL: test_elapsed_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_elapsed_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/tests/test_basic_launch_logic.py", line 149, in test_elapsed_positive
+    self.clock('offlineWakeNegative')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/tests/test_basic_launch_logic.py", line 95, in clock
+    self.assertEqual(digest(ROOT / key), value, key)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'e7f4b1405489d38b213815a266d88bdc9db4ff7858083ea512fa102b7f47559b' != '42e29fd19c9ba4341640a2f6f500baae7365af447ffaeda187b94fc2e087a5ed'
+- e7f4b1405489d38b213815a266d88bdc9db4ff7858083ea512fa102b7f47559b
++ 42e29fd19c9ba4341640a2f6f500baae7365af447ffaeda187b94fc2e087a5ed
+ : watchface/resources/settings/settings.xml
+
+======================================================================
+FAIL: test_exact_negative (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_exact_negative)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/tests/test_basic_launch_logic.py", line 308, in test_exact_negative
+    raw, receipt = self.clock('clockExactNegative')
+                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/tests/test_basic_launch_logic.py", line 95, in clock
+    self.assertEqual(digest(ROOT / key), value, key)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'e7f4b1405489d38b213815a266d88bdc9db4ff7858083ea512fa102b7f47559b' != '42e29fd19c9ba4341640a2f6f500baae7365af447ffaeda187b94fc2e087a5ed'
+- e7f4b1405489d38b213815a266d88bdc9db4ff7858083ea512fa102b7f47559b
++ 42e29fd19c9ba4341640a2f6f500baae7365af447ffaeda187b94fc2e087a5ed
+ : watchface/resources/settings/settings.xml
+
+======================================================================
+FAIL: test_exact_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_exact_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/tests/test_basic_launch_logic.py", line 305, in test_exact_positive
+    self.clock('clockExactPositive', 'clockAdapterSmoke', 'precisionTransitions')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/tests/test_basic_launch_logic.py", line 95, in clock
+    self.assertEqual(digest(ROOT / key), value, key)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'e7f4b1405489d38b213815a266d88bdc9db4ff7858083ea512fa102b7f47559b' != '42e29fd19c9ba4341640a2f6f500baae7365af447ffaeda187b94fc2e087a5ed'
+- e7f4b1405489d38b213815a266d88bdc9db4ff7858083ea512fa102b7f47559b
++ 42e29fd19c9ba4341640a2f6f500baae7365af447ffaeda187b94fc2e087a5ed
+ : watchface/resources/settings/settings.xml
+
+======================================================================
+FAIL: test_minute_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_minute_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/tests/test_basic_launch_logic.py", line 377, in test_minute_positive
+    self.clock('precisionTransitions')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/tests/test_basic_launch_logic.py", line 95, in clock
+    self.assertEqual(digest(ROOT / key), value, key)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'e7f4b1405489d38b213815a266d88bdc9db4ff7858083ea512fa102b7f47559b' != '42e29fd19c9ba4341640a2f6f500baae7365af447ffaeda187b94fc2e087a5ed'
+- e7f4b1405489d38b213815a266d88bdc9db4ff7858083ea512fa102b7f47559b
++ 42e29fd19c9ba4341640a2f6f500baae7365af447ffaeda187b94fc2e087a5ed
+ : watchface/resources/settings/settings.xml
+
+======================================================================
+FAIL: test_uncertain_negative (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_uncertain_negative)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/tests/test_basic_launch_logic.py", line 330, in test_uncertain_negative
+    self.clock('uncertaintyNegative', 'emptyStartup')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/tests/test_basic_launch_logic.py", line 95, in clock
+    self.assertEqual(digest(ROOT / key), value, key)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'e7f4b1405489d38b213815a266d88bdc9db4ff7858083ea512fa102b7f47559b' != '42e29fd19c9ba4341640a2f6f500baae7365af447ffaeda187b94fc2e087a5ed'
+- e7f4b1405489d38b213815a266d88bdc9db4ff7858083ea512fa102b7f47559b
++ 42e29fd19c9ba4341640a2f6f500baae7365af447ffaeda187b94fc2e087a5ed
+ : watchface/resources/settings/settings.xml
+
+======================================================================
+FAIL: test_uncertain_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_uncertain_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/tests/test_basic_launch_logic.py", line 321, in test_uncertain_positive
+    self.clock('uncertaintyPositive')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/tests/test_basic_launch_logic.py", line 95, in clock
+    self.assertEqual(digest(ROOT / key), value, key)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'e7f4b1405489d38b213815a266d88bdc9db4ff7858083ea512fa102b7f47559b' != '42e29fd19c9ba4341640a2f6f500baae7365af447ffaeda187b94fc2e087a5ed'
+- e7f4b1405489d38b213815a266d88bdc9db4ff7858083ea512fa102b7f47559b
++ 42e29fd19c9ba4341640a2f6f500baae7365af447ffaeda187b94fc2e087a5ed
+ : watchface/resources/settings/settings.xml
+
+======================================================================
+FAIL: test_wake_negative (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_wake_negative)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/tests/test_basic_launch_logic.py", line 336, in test_wake_negative
+    self.clock('offlineWakeNegative', 'clockAdapterSmoke')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/tests/test_basic_launch_logic.py", line 95, in clock
+    self.assertEqual(digest(ROOT / key), value, key)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'e7f4b1405489d38b213815a266d88bdc9db4ff7858083ea512fa102b7f47559b' != '42e29fd19c9ba4341640a2f6f500baae7365af447ffaeda187b94fc2e087a5ed'
+- e7f4b1405489d38b213815a266d88bdc9db4ff7858083ea512fa102b7f47559b
++ 42e29fd19c9ba4341640a2f6f500baae7365af447ffaeda187b94fc2e087a5ed
+ : watchface/resources/settings/settings.xml
+
+======================================================================
+FAIL: test_wake_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_wake_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/tests/test_basic_launch_logic.py", line 333, in test_wake_positive
+    self.clock('offlineWakePositive')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/tests/test_basic_launch_logic.py", line 95, in clock
+    self.assertEqual(digest(ROOT / key), value, key)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'e7f4b1405489d38b213815a266d88bdc9db4ff7858083ea512fa102b7f47559b' != '42e29fd19c9ba4341640a2f6f500baae7365af447ffaeda187b94fc2e087a5ed'
+- e7f4b1405489d38b213815a266d88bdc9db4ff7858083ea512fa102b7f47559b
++ 42e29fd19c9ba4341640a2f6f500baae7365af447ffaeda187b94fc2e087a5ed
+ : watchface/resources/settings/settings.xml
+
+----------------------------------------------------------------------
+Ran 24 tests in 9.356s
+
+FAILED (failures=9)
+Reused four exact unchanged native LS10 inputs/packets: /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native

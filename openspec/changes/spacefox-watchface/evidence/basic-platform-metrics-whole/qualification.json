@@ -1,0 +1,969 @@
+{
+  "schema": 1,
+  "scope": "Whole RL01/WF11 source-bound native software qualification; physical tasks5.1/7.1 and Store7.x remain separate",
+  "sourceHead": "86427800",
+  "nativeSources": {
+    "watchface/source/Fitness.mc": "4514c60764062fcf08aabf253f729629fbb68727789154c801be839a55e581ba",
+    "watchface/source/NativeSourceTimes.mc": "86abcd251ed68f88055279e0d98ca3adc7f017a86d7fa2bd14f91c44cb6bb4dc",
+    "watchface/source/NativeBridgeFeed.mc": "c3e819bb2d9eb9e787b72c136efc327eaeca7e34c5ecf6c69abac4bb729f8e59",
+    "watchface/source/LocalePresentation.mc": "48b06db4e79ea9c6d55372eb35889aa59c46fd53d01eaa4aebfe3901b48bc6e6",
+    "watchface/source/NativeRenderSource.mc": "20d03ace03827092fa6bfc1615c3a76badc8c9114693dc0ce4a6f942b4f5ae0d",
+    "watchface/source/NativeIncoming.mc": "539ba27c83398920565dfab2951ab019bf4eb1befe835f16daf3c7272f3e18d3",
+    "watchface/source/SceneRenderer.mc": "f38f5fce7ade1069c5e7e5f1cc871c4fd3a9bad233e55f05353f8278dfb3050c",
+    "watchface/source/SpaceFoxApp.mc": "9487597b184c6c50c8a7338c3fe92f8e20005e0ad5dcf2bc5c8b023ae867db2b",
+    "watchface/source/NativeAssetTypes.mc": "c8c88856183a367c3a2de000da16421b783bfaac0e267bcc936477e1d71e234a",
+    "watchface/source/NativeFeed.mc": "88917653c7ef30ef0436abcc88f9420b1937ce35cade35197606fda137771bac",
+    "watchface/source/NativeTransfer.mc": "e75e70cdcc0d6f4982f05d4a89dd1ecbbf9995472b670ad89d975f4162741d70",
+    "watchface/source/NativeMetrics.mc": "8e16ac99b9958a459d7b93d4403c8be2c24d99dd7b53fa18f0b76e6911e6b79c",
+    "watchface/source/FeedService.mc": "86f6a332a79fffa2385f6005c00821cda71b82ef962c1acf28110ef29518a363",
+    "watchface/source/NativeCache.mc": "0cbd6852aa1dad19e9ebadcb4fd4f8b43138b9bbefaf21bfb3dd160270d21fcb",
+    "watchface/source/NativeAnimation.mc": "87d1baaad814772abfd06c83c2bbef7b1be29ce8b6b73670f240e2971ae226d8",
+    "watchface/source/SpaceFoxView.mc": "217ecdeb552b4da5c47e829cff59d6977c66ab8f5acb57d931f36fb3560d9d5c",
+    "watchface/source/NativeJson.mc": "302096d42f1751ab2e0afa2e7e104bdba86de33f276dede4c4bacf30e8c92bb3",
+    "watchface/source/FeedScene.mc": "7d6199840031c2862875ddd36ac451aa20f332e3497bcff774242d9ca78f01b1",
+    "watchface/source/SceneContext.mc": "174c1bed0b10e68b54cd6e649b1565f347782a704418748354a263d049c91c57",
+    "watchface/source/SceneSettings.mc": "00e600585e217a77428835bba5cf977c16a8c0fb7e675e6e4b1e25fc3dc684b6",
+    "watchface/source/NativeSfr.mc": "dcc92f25acead54be40c880812a35f28e8d7bd31bc0f6b8352d17fe2db93481c",
+    "watchface/source/ScheduleState.mc": "b3f4e0eb4c9d843a457b621a9bb9e3107ca3cae89e0b9e12eb7d52986cacdfaa",
+    "watchface/source/NativeForegroundApp.mc": "9a039b28753859df30bf973bb36d158a0a0ad15df444839afcd1bc3dc3410c40",
+    "watchface/source/WatchClock.mc": "e3e84a0277fc0442918bb0fad45daaf232ebf93e9eac4e24a8da072d356101fb",
+    "watchface/source/NativeVisualRenderer.mc": "0e27cf42430fee315f26cd73df6d590f024f2aac600a053c8982e38416aaeee7",
+    "watchface/source/NativeImmutable.mc": "6c4fa7e067a94b90a3461b9a69a8a512ee519a8c2b45df6f16b474ae5e213737",
+    "watchface/source/NativeForegroundCache.mc": "0ceb2a65a26d6d9b0924134a97aabe71515369bde0f004bd9df3ba0c17c28746",
+    "watchface/source/generated/NativeAssets.mc": "925ace5843dfe56bf4ef085e09d711bc515aa263f99e8344bded3cccd52f40ed",
+    "watchface/source/generated/SceneStrings.mc": "dd8a910b53d2493ec8760e0148186c9535c05a5e0644ae5b6e6eccb6dd651109",
+    "watchface/source/generated/LocaleGraphemes.mc": "5ad65d6328908a7f251cd5ddbac83244de9b51929c2c46cb746bfb168a4f6c80"
+  },
+  "reviewedBuildInputs": {
+    "tools/build_watchface.py": "cea335148abb1984e4e8c3880a87e1df57fcbf7f6446d70a92206dd4e913a35f",
+    "tools/build_native_resources.py": "494f5b955b4ad49b13ea48d048d6ce647499c22b7395080033ac452943926820",
+    "watchface/toolchain-lock.json": "948c281801f4596cd6f904428f385adf85ebfe63f89d3c416b959cddf7bed389",
+    "watchface/manifest.xml": "fff69b825cb42a6d19e5e6c82a0d767e71bd96897b5ed0cfdbd973f0423db001",
+    "watchface/monkey.jungle": "abe93f12654450100407e84232b4c6dc0e7c9b1707499d7fd8e118fce040f0c4",
+    "watchface/api-policy.json": "5e6b5b7999ba4fa0c3a639336d773b8433e5b8b2ae897a456843f386118f108c"
+  },
+  "sdkVersion": "9.3.0",
+  "runtimeApi": "5.2.0",
+  "minimumApi": "5.1.0",
+  "firmwareProfile": {
+    "firmwareVersion": 2502,
+    "partNumber": "006-B4432-00",
+    "deviceVersion": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
+    "compilerProfileSha256": "ed45eb28ba928e2d2bda1bf8c567401232ab226889b87712fef5713e7f9a4fa8",
+    "meaning": "Pinned SDK FR165 profile firmwareVersion metadata, not a readback or installation on a physical owner watch. No guessed formatting of numeric firmwareVersion."
+  },
+  "directSdkReferences": [
+    "ActivityMonitor.getInfo",
+    "Application.AppBase",
+    "Application.PersistableType",
+    "Application.Properties.getValue",
+    "Application.Storage.deleteValue",
+    "Application.Storage.getValue",
+    "Application.Storage.setValue",
+    "Background.deleteTemporalEvent",
+    "Background.exit",
+    "Background.getLastTemporalEventTime",
+    "Background.getTemporalEventRegisteredTime",
+    "Background.registerForTemporalEvent",
+    "Communications.HTTP_REQUEST_METHOD_GET",
+    "Communications.HTTP_RESPONSE_CONTENT_TYPE_TEXT_PLAIN",
+    "Communications.makeWebRequest",
+    "Cryptography.HASH_SHA256",
+    "Cryptography.Hash",
+    "Graphics.ALPHA_BLENDING_FULL",
+    "Graphics.AffineTransform",
+    "Graphics.BitmapType",
+    "Graphics.COLOR_BLACK",
+    "Graphics.COLOR_TRANSPARENT",
+    "Graphics.Dc",
+    "Graphics.FONT_LARGE",
+    "Graphics.FONT_NUMBER_MILD",
+    "Graphics.FONT_SMALL",
+    "Graphics.FONT_TINY",
+    "Graphics.FONT_XTINY",
+    "Graphics.FontType",
+    "Graphics.TEXT_JUSTIFY_CENTER",
+    "Graphics.createBufferedBitmap",
+    "Graphics.createColor",
+    "Graphics.getVectorFont",
+    "SensorHistory.ORDER_NEWEST_FIRST",
+    "SensorHistory.SensorSample",
+    "SensorHistory.getBodyBatteryHistory",
+    "SensorHistory.getHeartRateHistory",
+    "SensorHistory.getStressHistory",
+    "StringUtil.CHAR_ENCODING_UTF8",
+    "StringUtil.REPRESENTATION_BYTE_ARRAY",
+    "StringUtil.REPRESENTATION_STRING_BASE64",
+    "StringUtil.REPRESENTATION_STRING_HEX",
+    "StringUtil.REPRESENTATION_STRING_PLAIN_TEXT",
+    "StringUtil.convertEncodedString",
+    "System.DISPLAY_MODE_HIGH_POWER",
+    "System.DisplayMode",
+    "System.LANGUAGE_ARA",
+    "System.LANGUAGE_BUL",
+    "System.LANGUAGE_CES",
+    "System.LANGUAGE_CHS",
+    "System.LANGUAGE_CHT",
+    "System.LANGUAGE_DAN",
+    "System.LANGUAGE_DEU",
+    "System.LANGUAGE_DUT",
+    "System.LANGUAGE_ENG",
+    "System.LANGUAGE_EST",
+    "System.LANGUAGE_FIN",
+    "System.LANGUAGE_FRE",
+    "System.LANGUAGE_GRE",
+    "System.LANGUAGE_HEB",
+    "System.LANGUAGE_HRV",
+    "System.LANGUAGE_HUN",
+    "System.LANGUAGE_IND",
+    "System.LANGUAGE_ITA",
+    "System.LANGUAGE_JPN",
+    "System.LANGUAGE_KOR",
+    "System.LANGUAGE_LAV",
+    "System.LANGUAGE_LIT",
+    "System.LANGUAGE_NOB",
+    "System.LANGUAGE_POL",
+    "System.LANGUAGE_POR",
+    "System.LANGUAGE_RON",
+    "System.LANGUAGE_RUS",
+    "System.LANGUAGE_SLO",
+    "System.LANGUAGE_SLV",
+    "System.LANGUAGE_SPA",
+    "System.LANGUAGE_SWE",
+    "System.LANGUAGE_THA",
+    "System.LANGUAGE_TUR",
+    "System.LANGUAGE_UKR",
+    "System.LANGUAGE_VIE",
+    "System.LANGUAGE_ZSM",
+    "System.ServiceDelegate",
+    "System.getClockTime",
+    "System.getDeviceSettings",
+    "System.getDisplayMode",
+    "System.getSystemStats",
+    "System.getTimer",
+    "System.println",
+    "Time.Duration",
+    "Time.Moment",
+    "Time.now",
+    "Timer.Timer",
+    "WatchUi.ANIM_TYPE_LINEAR",
+    "WatchUi.Resource",
+    "WatchUi.WatchFace",
+    "WatchUi.animate",
+    "WatchUi.cancelAllAnimations",
+    "WatchUi.loadResource",
+    "WatchUi.requestUpdate"
+  ],
+  "reviewedMethods": [
+    {
+      "path": "doc/Toybox/ActivityMonitor.html",
+      "anchor": "getInfo-instance_function",
+      "since": "1.0.0",
+      "sha256": "854c272303d708e3b2d93855b5a795b61421bf850fa2f5e9dde71a1c453bca96"
+    },
+    {
+      "path": "doc/Toybox/ActivityMonitor/Info.html",
+      "anchor": "steps-var",
+      "since": "1.0.0",
+      "sha256": "43d989cd8d41b74df942888115dd1d1494086316552336e4518b1ecae611b26e"
+    },
+    {
+      "path": "doc/Toybox/ActivityMonitor/Info.html",
+      "anchor": "calories-var",
+      "since": "1.0.0",
+      "sha256": "43d989cd8d41b74df942888115dd1d1494086316552336e4518b1ecae611b26e"
+    },
+    {
+      "path": "doc/Toybox/SensorHistory.html",
+      "anchor": "getHeartRateHistory-instance_function",
+      "since": "2.1.0",
+      "sha256": "c53037adc44ad3caf72a54abe8ffdc08dcdf6d15013c7bc66b89b0b6f46d7a67"
+    },
+    {
+      "path": "doc/Toybox/SensorHistory.html",
+      "anchor": "getBodyBatteryHistory-instance_function",
+      "since": "3.3.0",
+      "sha256": "c53037adc44ad3caf72a54abe8ffdc08dcdf6d15013c7bc66b89b0b6f46d7a67"
+    },
+    {
+      "path": "doc/Toybox/SensorHistory.html",
+      "anchor": "getStressHistory-instance_function",
+      "since": "3.3.0",
+      "sha256": "c53037adc44ad3caf72a54abe8ffdc08dcdf6d15013c7bc66b89b0b6f46d7a67"
+    },
+    {
+      "path": "doc/Toybox/SensorHistory/SensorHistoryIterator.html",
+      "anchor": "next-instance_function",
+      "since": "2.1.0",
+      "sha256": "ce5f80ede60d6f5e6579ad46c27e2f58b00feb82ec72e67b7b06d82756545cbc"
+    },
+    {
+      "path": "doc/Toybox/SensorHistory/SensorSample.html",
+      "anchor": "data-var",
+      "since": "2.1.0",
+      "sha256": "b13ba89e53bea4021c508e0d7f44820866213139b282b7521dd2b8baab98e7cb"
+    },
+    {
+      "path": "doc/Toybox/SensorHistory/SensorSample.html",
+      "anchor": "when-var",
+      "since": "2.1.0",
+      "sha256": "b13ba89e53bea4021c508e0d7f44820866213139b282b7521dd2b8baab98e7cb"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "getClockTime-instance_function",
+      "since": "1.0.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "getDeviceSettings-instance_function",
+      "since": "1.0.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "getDisplayMode-instance_function",
+      "since": "5.0.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "getSystemStats-instance_function",
+      "since": "1.0.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "getTimer-instance_function",
+      "since": "1.0.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "println-instance_function",
+      "since": "1.0.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System/Stats.html",
+      "anchor": "battery-var",
+      "since": "1.0.0",
+      "sha256": "94764f8b8cfb398a240aca134fadada8343e02800d5024923d35962aec060845"
+    },
+    {
+      "path": "doc/Toybox/Application/Properties.html",
+      "anchor": "getValue-instance_function",
+      "since": "2.4.0",
+      "sha256": "6243a1145f69c5235af0498d24fb247e20bc9398d068fca41844f871cdd00dea"
+    },
+    {
+      "path": "doc/Toybox/Application/Storage.html",
+      "anchor": "getValue-instance_function",
+      "since": "2.4.0",
+      "sha256": "24257bac39f4ef2ac8bde57fc5cbc546e393eba9aade7156d4bef86f7fb23d88"
+    },
+    {
+      "path": "doc/Toybox/Application/Storage.html",
+      "anchor": "setValue-instance_function",
+      "since": "2.4.0",
+      "sha256": "24257bac39f4ef2ac8bde57fc5cbc546e393eba9aade7156d4bef86f7fb23d88"
+    },
+    {
+      "path": "doc/Toybox/Application/Storage.html",
+      "anchor": "deleteValue-instance_function",
+      "since": "2.4.0",
+      "sha256": "24257bac39f4ef2ac8bde57fc5cbc546e393eba9aade7156d4bef86f7fb23d88"
+    },
+    {
+      "path": "doc/Toybox/Background.html",
+      "anchor": "registerForTemporalEvent-instance_function",
+      "since": "2.3.0",
+      "sha256": "b80ec7fad1107a2d6d8b4a97e842c39e185ded59363363a8e84d5819a7990ac5"
+    },
+    {
+      "path": "doc/Toybox/Background.html",
+      "anchor": "deleteTemporalEvent-instance_function",
+      "since": "2.3.0",
+      "sha256": "b80ec7fad1107a2d6d8b4a97e842c39e185ded59363363a8e84d5819a7990ac5"
+    },
+    {
+      "path": "doc/Toybox/Background.html",
+      "anchor": "exit-instance_function",
+      "since": "2.3.0",
+      "sha256": "b80ec7fad1107a2d6d8b4a97e842c39e185ded59363363a8e84d5819a7990ac5"
+    },
+    {
+      "path": "doc/Toybox/Background.html",
+      "anchor": "getLastTemporalEventTime-instance_function",
+      "since": "2.3.0",
+      "sha256": "b80ec7fad1107a2d6d8b4a97e842c39e185ded59363363a8e84d5819a7990ac5"
+    },
+    {
+      "path": "doc/Toybox/Background.html",
+      "anchor": "getTemporalEventRegisteredTime-instance_function",
+      "since": "3.0.0",
+      "sha256": "b80ec7fad1107a2d6d8b4a97e842c39e185ded59363363a8e84d5819a7990ac5"
+    },
+    {
+      "path": "doc/Toybox/Communications.html",
+      "anchor": "makeWebRequest-instance_function",
+      "since": "1.3.0",
+      "sha256": "eb03eaa51faa6894d48bd5e23bdd49da149b83bb0121bd6add74a9571e900079"
+    },
+    {
+      "path": "doc/Toybox/Cryptography/Hash.html",
+      "anchor": "initialize-instance_function",
+      "since": "3.0.0",
+      "sha256": "d1b6b9be9bba3f8c228479177199af3f1c6b897bb95bf6ddf5598ae2ad083526"
+    },
+    {
+      "path": "doc/Toybox/Cryptography/Hash.html",
+      "anchor": "update-instance_function",
+      "since": "3.0.0",
+      "sha256": "d1b6b9be9bba3f8c228479177199af3f1c6b897bb95bf6ddf5598ae2ad083526"
+    },
+    {
+      "path": "doc/Toybox/Cryptography/Hash.html",
+      "anchor": "digest-instance_function",
+      "since": "3.0.0",
+      "sha256": "d1b6b9be9bba3f8c228479177199af3f1c6b897bb95bf6ddf5598ae2ad083526"
+    },
+    {
+      "path": "doc/Toybox/Graphics.html",
+      "anchor": "getVectorFont-instance_function",
+      "since": "4.2.1",
+      "sha256": "043538924b1e5b2951e3d33826ff20746208f682048428216f038994562593bb"
+    },
+    {
+      "path": "doc/Toybox/Graphics.html",
+      "anchor": "createBufferedBitmap-instance_function",
+      "since": "4.0.0",
+      "sha256": "043538924b1e5b2951e3d33826ff20746208f682048428216f038994562593bb"
+    },
+    {
+      "path": "doc/Toybox/Graphics.html",
+      "anchor": "createColor-instance_function",
+      "since": "4.0.0",
+      "sha256": "043538924b1e5b2951e3d33826ff20746208f682048428216f038994562593bb"
+    },
+    {
+      "path": "doc/Toybox/Graphics/Dc.html",
+      "anchor": "clear-instance_function",
+      "since": "1.0.0",
+      "sha256": "2d778fd1ba3429f8dbe6310bbef22e0e8eab93d436d31078887842e9f6b7f543"
+    },
+    {
+      "path": "doc/Toybox/Graphics/Dc.html",
+      "anchor": "clearClip-instance_function",
+      "since": "2.3.0",
+      "sha256": "2d778fd1ba3429f8dbe6310bbef22e0e8eab93d436d31078887842e9f6b7f543"
+    },
+    {
+      "path": "doc/Toybox/Graphics/Dc.html",
+      "anchor": "drawBitmap-instance_function",
+      "since": "1.0.0",
+      "sha256": "2d778fd1ba3429f8dbe6310bbef22e0e8eab93d436d31078887842e9f6b7f543"
+    },
+    {
+      "path": "doc/Toybox/Graphics/Dc.html",
+      "anchor": "drawBitmap2-instance_function",
+      "since": "4.2.1",
+      "sha256": "2d778fd1ba3429f8dbe6310bbef22e0e8eab93d436d31078887842e9f6b7f543"
+    },
+    {
+      "path": "doc/Toybox/Graphics/Dc.html",
+      "anchor": "drawLine-instance_function",
+      "since": "1.0.0",
+      "sha256": "2d778fd1ba3429f8dbe6310bbef22e0e8eab93d436d31078887842e9f6b7f543"
+    },
+    {
+      "path": "doc/Toybox/Graphics/Dc.html",
+      "anchor": "drawRectangle-instance_function",
+      "since": "1.0.0",
+      "sha256": "2d778fd1ba3429f8dbe6310bbef22e0e8eab93d436d31078887842e9f6b7f543"
+    },
+    {
+      "path": "doc/Toybox/Graphics/Dc.html",
+      "anchor": "drawText-instance_function",
+      "since": "1.0.0",
+      "sha256": "2d778fd1ba3429f8dbe6310bbef22e0e8eab93d436d31078887842e9f6b7f543"
+    },
+    {
+      "path": "doc/Toybox/Graphics/Dc.html",
+      "anchor": "fillCircle-instance_function",
+      "since": "1.0.0",
+      "sha256": "2d778fd1ba3429f8dbe6310bbef22e0e8eab93d436d31078887842e9f6b7f543"
+    },
+    {
+      "path": "doc/Toybox/Graphics/Dc.html",
+      "anchor": "fillPolygon-instance_function",
+      "since": "1.0.0",
+      "sha256": "2d778fd1ba3429f8dbe6310bbef22e0e8eab93d436d31078887842e9f6b7f543"
+    },
+    {
+      "path": "doc/Toybox/Graphics/Dc.html",
+      "anchor": "fillRectangle-instance_function",
+      "since": "1.0.0",
+      "sha256": "2d778fd1ba3429f8dbe6310bbef22e0e8eab93d436d31078887842e9f6b7f543"
+    },
+    {
+      "path": "doc/Toybox/Graphics/Dc.html",
+      "anchor": "getTextWidthInPixels-instance_function",
+      "since": "1.0.0",
+      "sha256": "2d778fd1ba3429f8dbe6310bbef22e0e8eab93d436d31078887842e9f6b7f543"
+    },
+    {
+      "path": "doc/Toybox/Graphics/Dc.html",
+      "anchor": "setClip-instance_function",
+      "since": "2.3.0",
+      "sha256": "2d778fd1ba3429f8dbe6310bbef22e0e8eab93d436d31078887842e9f6b7f543"
+    },
+    {
+      "path": "doc/Toybox/Graphics/Dc.html",
+      "anchor": "setColor-instance_function",
+      "since": "1.0.0",
+      "sha256": "2d778fd1ba3429f8dbe6310bbef22e0e8eab93d436d31078887842e9f6b7f543"
+    },
+    {
+      "path": "doc/Toybox/Graphics/AffineTransform.html",
+      "anchor": "initialize-instance_function",
+      "since": "4.2.0",
+      "sha256": "3f565746b715bcafa3d93e08d74ae290a1d5ae20ec81e51509747d321a550476"
+    },
+    {
+      "path": "doc/Toybox/Graphics/AffineTransform.html",
+      "anchor": "scale-instance_function",
+      "since": "4.2.0",
+      "sha256": "3f565746b715bcafa3d93e08d74ae290a1d5ae20ec81e51509747d321a550476"
+    },
+    {
+      "path": "doc/Toybox/Graphics/AffineTransform.html",
+      "anchor": "setToTranslation-instance_function",
+      "since": "4.2.0",
+      "sha256": "3f565746b715bcafa3d93e08d74ae290a1d5ae20ec81e51509747d321a550476"
+    },
+    {
+      "path": "doc/Toybox/Graphics/BufferedBitmap.html",
+      "anchor": "getDc-instance_function",
+      "since": "2.3.0",
+      "sha256": "7026243dbf503a892e81b04dd09cbff7e8f00ef47f8110a7f48415280dda2fc7"
+    },
+    {
+      "path": "doc/Toybox/WatchUi.html",
+      "anchor": "animate-instance_function",
+      "since": "1.0.0",
+      "sha256": "c8526ec78f7d18e0e687e301cd30c970220a9559683e5f7f404cc1e9d25bd3d2"
+    },
+    {
+      "path": "doc/Toybox/WatchUi.html",
+      "anchor": "cancelAllAnimations-instance_function",
+      "since": "3.1.7",
+      "sha256": "c8526ec78f7d18e0e687e301cd30c970220a9559683e5f7f404cc1e9d25bd3d2"
+    },
+    {
+      "path": "doc/Toybox/WatchUi.html",
+      "anchor": "loadResource-instance_function",
+      "since": "1.0.0",
+      "sha256": "c8526ec78f7d18e0e687e301cd30c970220a9559683e5f7f404cc1e9d25bd3d2"
+    },
+    {
+      "path": "doc/Toybox/WatchUi.html",
+      "anchor": "requestUpdate-instance_function",
+      "since": "1.0.0",
+      "sha256": "c8526ec78f7d18e0e687e301cd30c970220a9559683e5f7f404cc1e9d25bd3d2"
+    },
+    {
+      "path": "doc/Toybox/Time.html",
+      "anchor": "now-instance_function",
+      "since": "1.0.0",
+      "sha256": "0c8a6ba61f13ee96327d87001b85e95be5b28e0dce46a7f4a1b2159d72627e46"
+    },
+    {
+      "path": "doc/Toybox/Time/Moment.html",
+      "anchor": "initialize-instance_function",
+      "since": "1.1.2",
+      "sha256": "3028cdbef3f63f2d6f60aba779e7820b758364a37f12bc65a6191470bcc782cf"
+    },
+    {
+      "path": "doc/Toybox/Time/Moment.html",
+      "anchor": "value-instance_function",
+      "since": "1.0.0",
+      "sha256": "3028cdbef3f63f2d6f60aba779e7820b758364a37f12bc65a6191470bcc782cf"
+    },
+    {
+      "path": "doc/Toybox/Time/Duration.html",
+      "anchor": "initialize-instance_function",
+      "since": "1.0.0",
+      "sha256": "f525804c57b875a933fd8cfd51341d19e162d6363a78aff5916d55c5e5483f8b"
+    },
+    {
+      "path": "doc/Toybox/StringUtil.html",
+      "anchor": "convertEncodedString-instance_function",
+      "since": "3.0.0",
+      "sha256": "2ba516355060738080099cabe53e20af7591bbdb168dd8d07c833dd5ece31dce"
+    },
+    {
+      "path": "doc/Toybox/Timer/Timer.html",
+      "anchor": "start-instance_function",
+      "since": "1.0.0",
+      "sha256": "d6deb0d181089e96dcf2189e01a0d02b1a3ff47b2dd701738e3d72c324b67db0"
+    },
+    {
+      "path": "doc/Toybox/Timer/Timer.html",
+      "anchor": "stop-instance_function",
+      "since": "1.0.0",
+      "sha256": "d6deb0d181089e96dcf2189e01a0d02b1a3ff47b2dd701738e3d72c324b67db0"
+    },
+    {
+      "path": "doc/Toybox/Lang/String.html",
+      "anchor": "compareTo-instance_function",
+      "since": "5.0.0",
+      "sha256": "e2cc5001e82df6df0443b08a02fcdb54edbd2d57f2ccc4ceb74932cdda4dd2b9"
+    },
+    {
+      "path": "doc/Toybox/Lang/String.html",
+      "anchor": "toCharArray-instance_function",
+      "since": "1.3.0",
+      "sha256": "e2cc5001e82df6df0443b08a02fcdb54edbd2d57f2ccc4ceb74932cdda4dd2b9"
+    },
+    {
+      "path": "doc/Toybox/Lang/String.html",
+      "anchor": "toLong-instance_function",
+      "since": "3.1.0",
+      "sha256": "e2cc5001e82df6df0443b08a02fcdb54edbd2d57f2ccc4ceb74932cdda4dd2b9"
+    },
+    {
+      "path": "doc/Toybox/Lang/String.html",
+      "anchor": "toLower-instance_function",
+      "since": "1.0.0",
+      "sha256": "e2cc5001e82df6df0443b08a02fcdb54edbd2d57f2ccc4ceb74932cdda4dd2b9"
+    },
+    {
+      "path": "doc/Toybox/Lang/String.html",
+      "anchor": "substring-instance_function",
+      "since": "1.0.0",
+      "sha256": "e2cc5001e82df6df0443b08a02fcdb54edbd2d57f2ccc4ceb74932cdda4dd2b9"
+    },
+    {
+      "path": "doc/Toybox/Lang/String.html",
+      "anchor": "find-instance_function",
+      "since": "1.0.0",
+      "sha256": "e2cc5001e82df6df0443b08a02fcdb54edbd2d57f2ccc4ceb74932cdda4dd2b9"
+    },
+    {
+      "path": "doc/Toybox/Lang/Array.html",
+      "anchor": "sort-instance_function",
+      "since": "5.0.0",
+      "sha256": "0914d1f6871b05fae52516fbf4014468779a258c2163bb694a4eb67d8d7111a6"
+    },
+    {
+      "path": "doc/Toybox/Lang/Array.html",
+      "anchor": "slice-instance_function",
+      "since": "1.3.0",
+      "sha256": "0914d1f6871b05fae52516fbf4014468779a258c2163bb694a4eb67d8d7111a6"
+    },
+    {
+      "path": "doc/Toybox/Lang/Array.html",
+      "anchor": "addAll-instance_function",
+      "since": "1.3.0",
+      "sha256": "0914d1f6871b05fae52516fbf4014468779a258c2163bb694a4eb67d8d7111a6"
+    },
+    {
+      "path": "doc/Toybox/Lang/Number.html",
+      "anchor": "toLong-instance_function",
+      "since": "1.0.0",
+      "sha256": "c352ee79b025c5e7fa1cddb1f28f399c06c306005151d9c075d559ec0922b90c"
+    },
+    {
+      "path": "doc/Toybox/Lang/Number.html",
+      "anchor": "toChar-instance_function",
+      "since": "1.3.0",
+      "sha256": "c352ee79b025c5e7fa1cddb1f28f399c06c306005151d9c075d559ec0922b90c"
+    },
+    {
+      "path": "doc/Toybox/Lang/Long.html",
+      "anchor": "toLong-instance_function",
+      "since": "1.0.0",
+      "sha256": "4745da86e128ba7f88900faa85b6188505c96058cfa6e07bae1428d882168b28"
+    }
+  ],
+  "languageAndConstantReview": "All actual30 source files including generated mappings reviewed. Stable basic Lang collection/numeric/string operations and inherited AppBase/WatchFace/ServiceDelegate lifecycle APIs are available before5.1. System language constants retain36resource mappings. NativeResources reference aliases are source-owned classes, not new device APIs. Explicit references and indirect Dc/Bitmap/Hash/Timer/AffineTransform operations are checked against pinned local official docs. This is a reviewed finite current source inventory, not general or alias-aware API analysis.",
+  "extendedCode": {
+    "minimumApi": "5.1.0",
+    "sourceFiles": [
+      "watchface/source/LocalePresentation.mc",
+      "watchface/source/NativeAnimation.mc",
+      "watchface/source/NativeBridgeFeed.mc",
+      "watchface/source/NativeCache.mc",
+      "watchface/source/NativeFeed.mc",
+      "watchface/source/NativeForegroundApp.mc",
+      "watchface/source/NativeForegroundCache.mc",
+      "watchface/source/NativeIncoming.mc",
+      "watchface/source/NativeJson.mc",
+      "watchface/source/NativeRenderSource.mc",
+      "watchface/source/NativeSfr.mc",
+      "watchface/source/SceneContext.mc",
+      "watchface/source/SceneRenderer.mc",
+      "watchface/source/SceneSettings.mc",
+      "watchface/source/SpaceFoxView.mc",
+      "watchface/source/generated/LocaleGraphemes.mc",
+      "watchface/source/generated/SceneStrings.mc"
+    ],
+    "reason": "Current source uses :extendedCode; actual manifest min5.1 retained. SDK9.3 is compiler version, not runtime support.",
+    "documentation": {
+      "path": "doc/docs/Monkey_C/Annotations.html",
+      "sha256": "3753e744b1c4c4e3a1e393791f2f6e1ab5831a24afc0d4420bac31ad92c0e48c"
+    }
+  },
+  "permissions": {
+    "SensorHistory": "Only recent heart/bodybattery/stress source reads in guarded Fitness adapter; one newest sample, no raw sensor streaming.",
+    "Communications": "FeedService public static JSON GET requests with empty request parameters; no health field upload.",
+    "Background": "FeedService temporal event delegate for launch/feed updates, independent of health sampling."
+  },
+  "notDeclared": [
+    "Sensor",
+    "Positioning",
+    "FitContributor",
+    "UserProfile"
+  ],
+  "healthSourceReview": "Fitness has only ActivityMonitor info steps/calories, System stats charge, guarded SensorHistory per-source calls. Each next called once, explicit period1/newest. Only values/null returned to face. No raw sensor/register listener, upload, storage or entire history traversal in field path. FeedService network path sends static GETs with empty request payload, never Fitness values. Source review plus actual bounded trace doubles; not a physical telemetry audit.",
+  "reviewedConstants": [
+    {
+      "path": "doc/Toybox/Communications.html",
+      "anchor": "HTTP_REQUEST_METHOD_GET-const",
+      "since": "1.2.0",
+      "sha256": "eb03eaa51faa6894d48bd5e23bdd49da149b83bb0121bd6add74a9571e900079"
+    },
+    {
+      "path": "doc/Toybox/Communications.html",
+      "anchor": "HTTP_RESPONSE_CONTENT_TYPE_TEXT_PLAIN-const",
+      "since": "3.0.0",
+      "sha256": "eb03eaa51faa6894d48bd5e23bdd49da149b83bb0121bd6add74a9571e900079"
+    },
+    {
+      "path": "doc/Toybox/Cryptography.html",
+      "anchor": "HASH_SHA256-const",
+      "since": "3.0.0",
+      "sha256": "9a7d71e83683470ee7be238a392e3edb4537a994e257363692f12b282a5962ad"
+    },
+    {
+      "path": "doc/Toybox/Graphics.html",
+      "anchor": "ALPHA_BLENDING_FULL-const",
+      "since": "4.0.0",
+      "sha256": "043538924b1e5b2951e3d33826ff20746208f682048428216f038994562593bb"
+    },
+    {
+      "path": "doc/Toybox/Graphics.html",
+      "anchor": "COLOR_BLACK-const",
+      "since": "1.0.0",
+      "sha256": "043538924b1e5b2951e3d33826ff20746208f682048428216f038994562593bb"
+    },
+    {
+      "path": "doc/Toybox/Graphics.html",
+      "anchor": "COLOR_TRANSPARENT-const",
+      "since": "1.0.0",
+      "sha256": "043538924b1e5b2951e3d33826ff20746208f682048428216f038994562593bb"
+    },
+    {
+      "path": "doc/Toybox/Graphics.html",
+      "anchor": "FONT_LARGE-const",
+      "since": "1.0.0",
+      "sha256": "043538924b1e5b2951e3d33826ff20746208f682048428216f038994562593bb"
+    },
+    {
+      "path": "doc/Toybox/Graphics.html",
+      "anchor": "FONT_NUMBER_MILD-const",
+      "since": "1.0.0",
+      "sha256": "043538924b1e5b2951e3d33826ff20746208f682048428216f038994562593bb"
+    },
+    {
+      "path": "doc/Toybox/Graphics.html",
+      "anchor": "FONT_SMALL-const",
+      "since": "1.0.0",
+      "sha256": "043538924b1e5b2951e3d33826ff20746208f682048428216f038994562593bb"
+    },
+    {
+      "path": "doc/Toybox/Graphics.html",
+      "anchor": "FONT_TINY-const",
+      "since": "1.0.0",
+      "sha256": "043538924b1e5b2951e3d33826ff20746208f682048428216f038994562593bb"
+    },
+    {
+      "path": "doc/Toybox/Graphics.html",
+      "anchor": "FONT_XTINY-const",
+      "since": "1.0.0",
+      "sha256": "043538924b1e5b2951e3d33826ff20746208f682048428216f038994562593bb"
+    },
+    {
+      "path": "doc/Toybox/Graphics.html",
+      "anchor": "TEXT_JUSTIFY_CENTER-const",
+      "since": "1.0.0",
+      "sha256": "043538924b1e5b2951e3d33826ff20746208f682048428216f038994562593bb"
+    },
+    {
+      "path": "doc/Toybox/SensorHistory.html",
+      "anchor": "ORDER_NEWEST_FIRST-const",
+      "since": "2.1.0",
+      "sha256": "c53037adc44ad3caf72a54abe8ffdc08dcdf6d15013c7bc66b89b0b6f46d7a67"
+    },
+    {
+      "path": "doc/Toybox/StringUtil.html",
+      "anchor": "CHAR_ENCODING_UTF8-const",
+      "since": "3.0.0",
+      "sha256": "2ba516355060738080099cabe53e20af7591bbdb168dd8d07c833dd5ece31dce"
+    },
+    {
+      "path": "doc/Toybox/StringUtil.html",
+      "anchor": "REPRESENTATION_BYTE_ARRAY-const",
+      "since": "3.0.0",
+      "sha256": "2ba516355060738080099cabe53e20af7591bbdb168dd8d07c833dd5ece31dce"
+    },
+    {
+      "path": "doc/Toybox/StringUtil.html",
+      "anchor": "REPRESENTATION_STRING_BASE64-const",
+      "since": "3.0.0",
+      "sha256": "2ba516355060738080099cabe53e20af7591bbdb168dd8d07c833dd5ece31dce"
+    },
+    {
+      "path": "doc/Toybox/StringUtil.html",
+      "anchor": "REPRESENTATION_STRING_HEX-const",
+      "since": "3.0.0",
+      "sha256": "2ba516355060738080099cabe53e20af7591bbdb168dd8d07c833dd5ece31dce"
+    },
+    {
+      "path": "doc/Toybox/StringUtil.html",
+      "anchor": "REPRESENTATION_STRING_PLAIN_TEXT-const",
+      "since": "3.0.0",
+      "sha256": "2ba516355060738080099cabe53e20af7591bbdb168dd8d07c833dd5ece31dce"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "DISPLAY_MODE_HIGH_POWER-const",
+      "since": "5.0.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_ARA-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_BUL-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_CES-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_CHS-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_CHT-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_DAN-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_DEU-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_DUT-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_ENG-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_EST-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_FIN-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_FRE-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_GRE-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_HEB-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_HRV-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_HUN-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_IND-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_ITA-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_JPN-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_KOR-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_LAV-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_LIT-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_NOB-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_POL-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_POR-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_RON-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_RUS-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_SLO-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_SLV-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_SPA-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_SWE-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_THA-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_TUR-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_UKR-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_VIE-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/System.html",
+      "anchor": "LANGUAGE_ZSM-const",
+      "since": "3.1.0",
+      "sha256": "81d7965ed9392fae9ada943dc0e03ba6397e1650048d68c5eee51e82a1408154"
+    },
+    {
+      "path": "doc/Toybox/WatchUi.html",
+      "anchor": "ANIM_TYPE_LINEAR-const",
+      "since": "1.0.0",
+      "sha256": "c8526ec78f7d18e0e687e301cd30c970220a9559683e5f7f404cc1e9d25bd3d2"
+    }
+  ]
+}

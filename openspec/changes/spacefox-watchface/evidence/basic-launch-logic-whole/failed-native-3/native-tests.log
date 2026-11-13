@@ -1,0 +1,20 @@
+------------------------------------------------------------------------------
+Executing test basicLaunchFeedTiming...
+DEBUG (17:56): current schema3 NativeBridgeFeed->FeedScene->View: SEC=02:00:00; MIN=04:28:17; zero=00:00:00; unknown=--:--:--
+DEBUG (17:56): source facts p=exact id=0 net=null rocket=Vulcan VC6L
+
+Error: Unexpected Type Error
+Details: Failed invoking <symbol>
+Stack: 
+  - basicLaunchFeedTiming() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/tests/fixtures/basic_launch_logic/LaunchLogic.mc:46 0x100037dc 
+  - evaluate_test_entries_0_to_1() at /Users/jekamas/.codex/tmp/spacefox-basic-launch-logic/native/gen/006-B4432-00/source/UnitTests.mcgen:51 0x100076b4 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-basic-launch-logic/native/gen/006-B4432-00/source/UnitTests.mcgen:66 0x10007760 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+basicLaunchFeedTiming               ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

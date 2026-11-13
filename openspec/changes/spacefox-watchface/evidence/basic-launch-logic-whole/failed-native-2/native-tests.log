@@ -1,0 +1,19 @@
+------------------------------------------------------------------------------
+Executing test basicLaunchFeedTiming...
+DEBUG (17:55): current schema3 NativeBridgeFeed->FeedScene->View: SEC=02:00:00; MIN=04:28:17; zero=00:00:00; unknown=--:--:--
+
+Error: Unexpected Type Error
+Details: Failed invoking <symbol>
+Stack: 
+  - basicLaunchFeedTiming() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/tests/fixtures/basic_launch_logic/LaunchLogic.mc:39 0x10003766 
+  - evaluate_test_entries_0_to_1() at /Users/jekamas/.codex/tmp/spacefox-basic-launch-logic/native/gen/006-B4432-00/source/UnitTests.mcgen:51 0x100075cb 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-basic-launch-logic/native/gen/006-B4432-00/source/UnitTests.mcgen:66 0x10007677 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+basicLaunchFeedTiming               ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

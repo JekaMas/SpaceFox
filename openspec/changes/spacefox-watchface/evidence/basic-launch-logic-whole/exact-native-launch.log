@@ -1,0 +1,21 @@
+test_exact_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_exact_positive) ... FAIL
+
+======================================================================
+FAIL: test_exact_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_exact_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/tests/test_basic_launch_logic.py", line 564, in test_exact_positive
+    self.exact_feed_native()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-launch-logic-whole/tests/test_basic_launch_logic.py", line 251, in exact_feed_native
+    self.assertEqual(parsed["status"], "passed")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'failed' != 'passed'
+- failed
++ passed
+
+
+----------------------------------------------------------------------
+Ran 1 test in 16.041s
+
+FAILED (failures=1)

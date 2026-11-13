@@ -43,12 +43,8 @@
       "LS06.P2",
       "LS06.P3",
       "LS07.P1",
-      "LS07.P2",
       "LS08.P1",
-      "LS08.P2",
       "LS09.P1",
-      "LS09.P2",
-      "LS09.P3",
       "LS10.P1",
       "LS11.P1",
       "LS11.P2",
@@ -70,7 +66,6 @@
       "LS15.P1",
       "LS16.P1",
       "RL01.P1",
-      "RL01.P2",
       "RL02.P1",
       "RL02.P2",
       "RL03.P1",
@@ -147,7 +142,6 @@
       "WF09.P3",
       "WF10.P1",
       "WF11.P1",
-      "WF11.P2",
       "WF12.P1",
       "WF12.P3",
       "WF12.P4"
@@ -159,6 +153,30 @@
       "node::clock isolates rejected wakeups and never follows redirect destinations",
       "node::dispatch uses a Workers-supported redirect mode",
       "node::scheduled boundary, failures, concurrency and secret safety",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_context_negative",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_context_positive",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_country_types_negative",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_country_types_positive",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_earlier_negative",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_earlier_positive",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_elapsed_negative",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_elapsed_positive",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_exact_negative",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_exact_positive",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_footer_enrichment_negative",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_footer_enrichment_positive",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_minute_negative",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_minute_positive",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_missing_context_negative",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_missing_context_positive",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_ordering_negative",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_ordering_positive",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_provider_precision_negative",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_provider_precision_positive",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_uncertain_negative",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_uncertain_positive",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_wake_negative",
+      "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_wake_positive",
       "unittest::tests.test_basic_menu_evidence.BasicMenuEvidenceTest.test_actual_menu_missing_glyph_or_changed_label_refuses",
       "unittest::tests.test_basic_menu_evidence.BasicMenuEvidenceTest.test_actual_primary_menu_font_binding",
       "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_different_launch_negative",
@@ -345,23 +363,6 @@
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls06_p1_s01_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls06_p3_s01_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls06_p3_s01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s01_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s02_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s02_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p2_s01_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p2_s01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p1_s01_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p1_s01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p1_s02_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p1_s02_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s02_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s10_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s11_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s13_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls09_p2_s01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls09_p2_s02_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s04_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s04_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p2_s01_negative_current",
@@ -610,8 +611,6 @@
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf08_p2_s01_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf09_p2_s01_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf09_p2_s01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf11_p2_s01_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf11_p2_s01_positive_current",
       "unittest::tests.test_current_global_context.CurrentGlobalContextTest.test_empty_corrupt_and_unbound_context_negative",
       "unittest::tests.test_current_global_context.CurrentGlobalContextTest.test_exact_current_context_and_archive_positive",
       "unittest::tests.test_current_global_context.CurrentGlobalContextTest.test_invalid_origin_amendment_is_atomic_negative",
@@ -622,8 +621,6 @@
       "unittest::tests.test_current_motion_publisher.CurrentMotionPublisherTest.test_actual_launch_whole_publication_and_refusal",
       "unittest::tests.test_current_motion_publisher.CurrentMotionPublisherTest.test_current_integer_discriminators",
       "unittest::tests.test_current_motion_publisher.CurrentMotionPublisherTest.test_shared_rolling_hour_quota_survives_reopen",
-      "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_a_selected_history_metric_is_unavailable_negative",
-      "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_a_selected_history_metric_is_unavailable_positive",
       "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_animation_disabled_or_display_sleeps_negative",
       "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_animation_disabled_or_display_sleeps_positive",
       "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_background_process_is_interrupted_negative",
@@ -712,16 +709,6 @@
       "unittest::tests.test_live_acceptance.LiveAcceptanceTest.test_personal_deployment_positive",
       "unittest::tests.test_native_aod_recovery.NativeAodRecoveryTest.test_current_low_rejection_reopen_and_sparse_pixels",
       "unittest::tests.test_native_aod_recovery.NativeAodRecoveryTest.test_missing_guard_changed_seal_and_false_pixels_refuse",
-      "unittest::tests.test_native_build.NativeBuildTest.test_target_build_negative",
-      "unittest::tests.test_native_build.NativeBuildTest.test_target_build_positive",
-      "unittest::tests.test_native_build_original.OriginalNativeBuildTest.test_a_newer_sdk_offers_an_unavailable_api_negative",
-      "unittest::tests.test_native_build_original.OriginalNativeBuildTest.test_a_newer_sdk_offers_an_unavailable_api_positive",
-      "unittest::tests.test_native_clock.NativeClockTest.test_exact_utc_negative",
-      "unittest::tests.test_native_clock.NativeClockTest.test_exact_utc_positive",
-      "unittest::tests.test_native_clock.NativeClockTest.test_offline_wake_negative",
-      "unittest::tests.test_native_clock.NativeClockTest.test_offline_wake_positive",
-      "unittest::tests.test_native_clock.NativeClockTest.test_uncertainty_negative",
-      "unittest::tests.test_native_clock.NativeClockTest.test_uncertainty_positive",
       "unittest::tests.test_native_feed.NativeFeedValidationTest.test_ls05_p2_s01_negative",
       "unittest::tests.test_native_feed.NativeFeedValidationTest.test_ls05_p2_s01_positive",
       "unittest::tests.test_native_feed_budget.NativeFeedBudgetTest.test_ls06_p2_s01_negative",
@@ -758,16 +745,10 @@
       "unittest::tests.test_native_storage.NativeStorageTest.test_transfer_interrupted_positive",
       "unittest::tests.test_native_storage.NativeStorageTest.test_unchanged_launch_gains_a_new_source_validation_negative",
       "unittest::tests.test_native_storage.NativeStorageTest.test_unchanged_launch_gains_a_new_source_validation_positive",
-      "unittest::tests.test_native_timing.NativeTimingTest.test_date_known_but_time_uncertain_negative",
-      "unittest::tests.test_native_timing.NativeTimingTest.test_date_known_but_time_uncertain_positive",
-      "unittest::tests.test_native_timing.NativeTimingTest.test_exact_time_available_negative",
-      "unittest::tests.test_native_timing.NativeTimingTest.test_exact_time_available_positive",
       "unittest::tests.test_native_timing.NativeTimingTest.test_faster_checking_ends_while_data_is_stale_negative",
       "unittest::tests.test_native_timing.NativeTimingTest.test_faster_checking_ends_while_data_is_stale_positive",
       "unittest::tests.test_native_timing.NativeTimingTest.test_freshness_threshold_reached_negative",
       "unittest::tests.test_native_timing.NativeTimingTest.test_freshness_threshold_reached_positive",
-      "unittest::tests.test_native_timing.NativeTimingTest.test_offline_countdown_after_sleep_negative",
-      "unittest::tests.test_native_timing.NativeTimingTest.test_offline_countdown_after_sleep_positive",
       "unittest::tests.test_native_timing.NativeTimingTest.test_publisher_stops_but_the_file_remains_available_negative",
       "unittest::tests.test_native_timing.NativeTimingTest.test_publisher_stops_but_the_file_remains_available_positive",
       "unittest::tests.test_native_visual_transport.NativeVisualTransportTest.test_full_catalog_exceeds_watch_limits_negative",
@@ -824,7 +805,21 @@
       "unittest::tests.test_remaining_art_r3.RemainingArtR3Test.test_malformed_typed_export_root_retains_written_objects",
       "unittest::tests.test_remaining_art_r3.RemainingArtR3Test.test_original_rights_geometry_and_atomic_invalid_source",
       "unittest::tests.test_remaining_art_r3.RemainingArtR3Test.test_other_organization_mark_cannot_activate",
-      "unittest::tests.test_remaining_art_r3.RemainingArtR3Test.test_public_cli_admit_reopen_export_and_atomic_wrong_model"
+      "unittest::tests.test_remaining_art_r3.RemainingArtR3Test.test_public_cli_admit_reopen_export_and_atomic_wrong_model",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_build_positive",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_build_negative",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_languages_positive",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_languages_negative",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_api_positive",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_api_negative",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_metrics_positive",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_metrics_negative",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_denied_positive",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_denied_negative",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_unsupported_positive",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_unsupported_negative",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_samples_positive",
+      "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_samples_negative"
     ]
   },
   "reviews": [
@@ -866,20 +861,6 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p1_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls06_p1_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls06_p1_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s02_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p1_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p1_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p1_s02_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p1_s02_negative_current",
-        "unittest::tests.test_native_timing.NativeTimingTest.test_exact_time_available_positive",
-        "unittest::tests.test_native_timing.NativeTimingTest.test_exact_time_available_negative",
-        "unittest::tests.test_native_timing.NativeTimingTest.test_date_known_but_time_uncertain_positive",
-        "unittest::tests.test_native_timing.NativeTimingTest.test_date_known_but_time_uncertain_negative",
-        "unittest::tests.test_native_timing.NativeTimingTest.test_offline_countdown_after_sleep_positive",
-        "unittest::tests.test_native_timing.NativeTimingTest.test_offline_countdown_after_sleep_negative",
         "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_known_new_time_positive",
         "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_unchanged_refresh_negative",
         "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_withdrawn_time_positive",
@@ -1101,9 +1082,7 @@
         "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_wrist_gestures_disabled_positive",
         "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_wrist_gestures_disabled_negative",
         "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_background_process_is_interrupted_positive",
-        "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_background_process_is_interrupted_negative",
-        "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_a_selected_history_metric_is_unavailable_positive",
-        "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_a_selected_history_metric_is_unavailable_negative"
+        "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_background_process_is_interrupted_negative"
       ],
       "searches": [
         {
@@ -1173,8 +1152,6 @@
         "RL08.P1"
       ],
       "test_ids": [
-        "unittest::tests.test_native_build_original.OriginalNativeBuildTest.test_a_newer_sdk_offers_an_unavailable_api_positive",
-        "unittest::tests.test_native_build_original.OriginalNativeBuildTest.test_a_newer_sdk_offers_an_unavailable_api_negative",
         "unittest::tests.test_release_identity.ProductionIdentityTest.test_update_the_official_app_positive",
         "unittest::tests.test_release_identity.ProductionIdentityTest.test_update_the_official_app_negative",
         "unittest::tests.test_release.ReleaseTest.test_adult_owner_publishes_the_app_positive",
@@ -1462,18 +1439,11 @@
         "LS02.P2",
         "LS05.P3",
         "LS07.P1",
-        "LS07.P2",
         "LS08.P1",
         "LS10.P1",
         "LS11.P2"
       ],
       "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p1_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p1_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s02_positive_current",
         "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_unchanged_refresh_negative",
         "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_known_new_time_positive",
         "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_different_launch_negative",
@@ -1484,8 +1454,6 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p2_s02_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p2_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p2_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p2_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p2_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p3_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p3_s01_positive_current"
       ],
@@ -1711,8 +1679,8 @@
         "LS01.P2",
         "LS04.P3",
         "LS05.P4",
-        "LS08.P2",
-        "LS09.P2",
+        "LS08.P1",
+        "LS09.P1",
         "LS11.P3",
         "LS13.P3",
         "LS14.P3"
@@ -1725,10 +1693,6 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p3_s04_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p3_s05_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p3_s06_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p1_s02_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p1_s02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls09_p2_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls09_p2_s02_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s02_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s03_positive_current",
@@ -1935,7 +1899,7 @@
         "LS11.P3",
         "LS13.P3",
         "LS14.P3",
-        "LS08.P2"
+        "LS08.P1"
       ],
       "test_ids": [
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p3_s30_positive_current",
@@ -1945,10 +1909,7 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p3_s34_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s35_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p3_s36_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p3_s37_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s10_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s11_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s13_negative_current"
+        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p3_s37_negative_current"
       ],
       "searches": [
         {
@@ -3653,19 +3614,10 @@
       "id": "D-native-clock-bootstrap",
       "question": "Original native clock/view core and isolated FR165 build subproperties while retaining whole native/device requirements",
       "property_ids": [
-        "LS09.P3",
-        "RL01.P2"
+        "LS09.P1",
+        "RL01.P1"
       ],
-      "test_ids": [
-        "unittest::tests.test_native_clock.NativeClockTest.test_exact_utc_positive",
-        "unittest::tests.test_native_clock.NativeClockTest.test_exact_utc_negative",
-        "unittest::tests.test_native_clock.NativeClockTest.test_uncertainty_positive",
-        "unittest::tests.test_native_clock.NativeClockTest.test_uncertainty_negative",
-        "unittest::tests.test_native_clock.NativeClockTest.test_offline_wake_positive",
-        "unittest::tests.test_native_clock.NativeClockTest.test_offline_wake_negative",
-        "unittest::tests.test_native_build.NativeBuildTest.test_target_build_positive",
-        "unittest::tests.test_native_build.NativeBuildTest.test_target_build_negative"
-      ],
+      "test_ids": [],
       "searches": [
         {
           "kind": "exact",
@@ -3776,13 +3728,11 @@
         "WF07.P1",
         "WF08.P2",
         "WF09.P2",
-        "WF11.P2"
+        "WF11.P1"
       ],
       "test_ids": [
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf09_p2_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf09_p2_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf11_p2_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf11_p2_s01_negative_current"
+        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf09_p2_s01_negative_current"
       ],
       "searches": [
         {
@@ -5854,11 +5804,7 @@
       "test_ids": [
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls01_p2_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p1_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p1_s02_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p1_s02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls01_p2_s02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s02_negative_current"
+        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls01_p2_s02_negative_current"
       ],
       "searches": [
         {
@@ -5955,8 +5901,8 @@
         "LS01.P2",
         "LS04.P3",
         "LS05.P4",
-        "LS08.P2",
-        "LS09.P2",
+        "LS08.P1",
+        "LS09.P1",
         "LS11.P3",
         "LS13.P3",
         "LS14.P3",
@@ -6074,13 +6020,6 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p5_s02_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p5_s03_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p5_s03_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s10_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s11_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s13_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls09_p2_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls09_p2_s02_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s02_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s03_positive_current",
@@ -6295,8 +6234,8 @@
         "WF12.P1",
         "LS11.P3",
         "LS14.P3",
-        "LS08.P2",
-        "LS07.P2"
+        "LS08.P1",
+        "LS07.P1"
       ],
       "test_ids": [
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p3_s30_positive_current",
@@ -6306,11 +6245,7 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p3_s34_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s35_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p3_s36_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p3_s37_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s10_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s11_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s13_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p2_s01_negative_current"
+        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p3_s37_negative_current"
       ],
       "searches": [
         {
@@ -6621,10 +6556,8 @@
         "LS06.P1",
         "LS06.P3",
         "LS07.P1",
-        "LS07.P2",
         "LS08.P1",
-        "LS08.P2",
-        "LS09.P2",
+        "LS09.P1",
         "LS10.P1",
         "LS11.P2",
         "LS11.P3",
@@ -6742,22 +6675,6 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls06_p1_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls06_p3_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls06_p3_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s02_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p2_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p2_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p1_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p1_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p1_s02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s10_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s11_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s13_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls09_p2_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls09_p2_s02_negative_current",
         "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_unchanged_refresh_negative",
         "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_known_new_time_positive",
         "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_different_launch_negative",
@@ -7454,6 +7371,156 @@
       ],
       "disposition": "current_change",
       "rationale": "CLOSED by one separate peer: independently inspected full clauses, source, native assertions, explicit alias mappings and retained public/cache bindings; clean 8cf3dc32 whole run passed 24/24 cases through one command. Subsequent root-requested repair replaced source-string assertions with targeted native runtime exercise of all four sparse combinations; clean 12887d4d whole rerun passed 24/24. Task 5.2 software is closed; root judgment remains. Physical device, AOD power, animation, global catalog, phone and Store remain open."
+    },
+    {
+      "id": "D-basic-launch-logic-whole-20261113",
+      "question": "Complete whole BASIC earliest stable selection, exact selected metadata and numeric UTC countdown/precision; fold only directly conjunctive software aliases.",
+      "property_ids": [
+        "LS07.P1",
+        "LS08.P1",
+        "LS09.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_earlier_positive",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_earlier_negative",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_elapsed_positive",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_elapsed_negative",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_ordering_positive",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_ordering_negative",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_context_positive",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_context_negative",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_missing_context_positive",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_missing_context_negative",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_footer_enrichment_positive",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_footer_enrichment_negative",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_country_types_positive",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_country_types_negative",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_exact_positive",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_exact_negative",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_uncertain_positive",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_uncertain_negative",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_wake_positive",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_wake_negative",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_provider_precision_positive",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_provider_precision_negative",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_minute_positive",
+        "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_minute_negative"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read full LS07-09 specification/design/scenarios, original29case query, retired scenario contracts, actual schedule/provider/wire/feed/View/ScheduleState/FeedScene owners, complete captured corpus and current native clock/scene/reschedule source/assertions/receipts.",
+          "outcome": "No production defect established. Actual current owners already implement direct whole behavior. Replace absent current registrations/retired timing fixture with24direct current-record/native-reuse cases; preserve all distinct direct clauses and exact retirement mappings. Root boundary check confirmed no retained current SEC parser receipt; added exactly one focused current SDK assertion joining current source/parser/feedScene/View. Initial harness optional projection introspection errors retained and fixed; actual four numeric outcomes passed without product edits.",
+          "results": [
+            {
+              "path": "tests/test_basic_launch_logic.py",
+              "classification": "test_proof",
+              "reason": "Whole current24-case software witness; literal source/time/context oracles and actual source-bound SDK tables."
+            },
+            {
+              "path": "tools/spacefox/schedule.py",
+              "classification": "reusable_unchanged",
+              "reason": "Actual coherent stable-ID selection/status/uncertainty owner."
+            },
+            {
+              "path": "watchface/source/ScheduleState.mc",
+              "classification": "reusable_unchanged",
+              "reason": "Actual native numeric UTC difference, unknown/zero/minute owner; no production edit."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Exact owning files, graph IDs and execution boundaries supplied.",
+          "reason": "No unknown subsystem or owner remained; direct reads resolve selection.",
+          "outcome": "No semantic-search evidence claimed.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Known Python/MonkeyC source and retained actual SDK execution.",
+          "reason": "No indexed symbol operation required or matching qualified index asserted.",
+          "outcome": "Exact source/runtime evidence only.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "CLOSED by one separate peer: inspected full LS07-09 clauses, 29 alias mappings, selected tests and source-bound native observations. Corrected graph description confusing the current MIN 04:28:17 parser-to-view assertion with the separate retained 16:18:18/16:38:18 reschedule assertion. Clean 5b20926f whole run passed 24/24 cases through one command. Root judgment follows; tasks 3.1/3.2 remain open for other properties."
+    },
+    {
+      "id": "D-basic-platform-metrics-whole-20261113",
+      "question": "Whole RL01/WF11 source/SDK/profile/firmware/API/product/language/permissions/metric access qualification with direct P2 conjuncts folded; retain exact valid green observations.",
+      "property_ids": [
+        "RL01.P1",
+        "WF11.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_build_positive",
+        "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_build_negative",
+        "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_languages_positive",
+        "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_languages_negative",
+        "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_api_positive",
+        "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_api_negative",
+        "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_metrics_positive",
+        "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_metrics_negative",
+        "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_denied_positive",
+        "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_denied_negative",
+        "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_unsupported_positive",
+        "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_unsupported_negative",
+        "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_samples_positive",
+        "unittest::tests.test_basic_platform_metrics.BasicPlatformMetricsTest.test_samples_negative"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read full RL01/WF11 specification/task2.3/design, old8case graph query, all30actual native sources and imported SDK APIs, pinned local official SDK method/constant/annotation docs, FR165 compiler/profile, manifest/export snapshots, current finite locale admission, actual current6role app and Fitness/view native assertions.",
+          "outcome": "No production defect. Existing compile/normal/native/finite proof retained under exact binding. Missing actual API unsupported/denied trace was directly necessary:4new compiled tests use exact Fitness bodies with named external reference/type/class mapping. Minimal AppBase harness simulatorsegfault/empty logs and malformed typed/dynamic boundary attempts retained; corrected full known entry plus static present/absent modules passes4/4. Source/resources/build unchanged. Firmware2502 is pinned profile metadata.",
+          "results": [
+            {
+              "path": "tests/test_basic_platform_metrics.py",
+              "classification": "test_proof",
+              "reason": "Whole14case qualification witness, current native/SDK/source bindings and literal metadata/API controls."
+            },
+            {
+              "path": "watchface/source/Fitness.mc",
+              "classification": "reusable_unchanged",
+              "reason": "Actual distinct guarded bounded source owner, no production edits."
+            },
+            {
+              "path": "tools/build_watchface.py",
+              "classification": "reusable_unchanged",
+              "reason": "Actual pinned build/admission owner, no production edits."
+            },
+            {
+              "path": "openspec/changes/spacefox-watchface/evidence/basic-platform-metrics-whole/qualification.json",
+              "classification": "test_proof",
+              "reason": "Finite reviewed current API inventory bound to local official SDKdocs and exact source/profile; no general compatibility analyzer claim."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Exact owner files, methods and graph IDs supplied/read.",
+          "reason": "No unknown owner/subsystem remained; direct source and SDK reads resolve selected question.",
+          "outcome": "No semantic search claimed.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Known Python/MonkeyC owners and actual official SDK evidence.",
+          "reason": "No indexed symbol operation needed or matching qualified index asserted.",
+          "outcome": "Exact source/SDK/runtime evidence only.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "Whole selected software unit self-verified GREEN on clean f658c3f60561e91ca9f2f24d5096d6b40daaf4a9:14/14 actual selected cases,14observed tests,1command exit0. Four new native methods PASS/rawlauncher1; prior valid source-bound observations reused. No material self finding remains. CLOSED for self work, pending one different whole peer VERIFY+FIX/CLOSE and root judgment. No physical prerequisite or observed hardware claim added."
     }
   ]
 }

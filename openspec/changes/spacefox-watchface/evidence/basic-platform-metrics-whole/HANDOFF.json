@@ -1,0 +1,56 @@
+{
+  "status": "INDEPENDENT_WHOLE_CLOSED_PENDING_ROOT_JUDGMENT",
+  "properties": [
+    "RL01.P1",
+    "WF11.P1"
+  ],
+  "wholeCases": 14,
+  "wholeCommands": 1,
+  "productionChanged": false,
+  "nativeNew": {
+    "tests": 4,
+    "frameworkStatus": "PASS",
+    "rawLauncherExit": 1,
+    "receipt": "native/metrics-observation.json"
+  },
+  "foldedAliases": [
+    "RL01.P2",
+    "WF11.P2"
+  ],
+  "task2.3TechnicalClosed": true,
+  "nativeTasks": {
+    "total": 31,
+    "closed": 14,
+    "open": 17
+  },
+  "graph": {
+    "requirements": 56,
+    "properties": 142,
+    "cases": 692,
+    "commands": 69,
+    "implementedLabels": 210,
+    "plannedLabels": 482,
+    "propertiesWithPlannedCases": 111
+  },
+  "sdkLease": "FREE",
+  "next": "Root judgment; publication and operational status remain root-owned.",
+  "verifiedHead": "f658c3f60561e91ca9f2f24d5096d6b40daaf4a9",
+  "verifiedDirty": false,
+  "caseStatus": "14passed/0failed/0skipped/0not_observed",
+  "observedTests": 14,
+  "commandExit": 0,
+  "receipt": "basic-platform-metrics-self-run.json",
+  "exactFinalCleanGate": "build/basic-platform-metrics-final-run.json",
+  "exactFinalCleanGateNote": "Gate executed after final evidence commit; actual exact HEAD is in that ignored build receipt. Committed original source-bound receipt remains immutable.",
+  "independentVerification": {
+    "verifiedHead": "48bc0fcfbfa676918fe1a83ab23da3158f0bfc08",
+    "dirty": false,
+    "receipt": "independent-run.json",
+    "receiptSha256": "7f1a3f4f73dc79dc867d17fbf43782e292605287d882f988e7a113f8066725b6",
+    "cases": "14 passed, 0 failed, 0 skipped, 0 not observed",
+    "commands": 1,
+    "commandExit": 0,
+    "manifestSha256": "970ee65a55c71941888af1688a4558ce6d1a0508f88ceed2c50cf216ac6eba7b",
+    "productionChanges": false
+  }
+}
