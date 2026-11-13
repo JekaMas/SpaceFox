@@ -297,13 +297,19 @@ class CatalogRefreshTest(unittest.TestCase):
                 now = self.next_hour(pub, transport, 4600)
                 transport.mutate = mutate
                 collector = self.collector(pub, transport)
+                prior_cache = deepcopy(collector.journal['cache'])
                 preserved = self.preserved(pub)
                 with self.assertRaises(StateError):
                     collector.run(now, restart=True, max_requests=4)
                 reopened = self.collector(pub, transport)
                 self.assertEqual(previous, reopened.current())
                 self.assertEqual(preserved, self.preserved(pub))
-                self.assertIsNotNone(reopened.journal['staging'])
+                if name == 'duplicate':
+                    self.assertEqual([], reopened.journal['staging']['pages'])
+                    self.assertEqual({url: entry for url, entry in prior_cache.items()
+                                      if '/config/countries/' not in url}, reopened.journal['cache'])
+                else:
+                    self.assertIsNotNone(reopened.journal['staging'])
                 self.assertEqual('failed', pub.ledger['requests'][-1]['outcome'])
         with self.authority() as (_, _, _, _, pub, transport):
             collector = self.collector(pub, transport, page_size=1)
@@ -320,7 +326,9 @@ class CatalogRefreshTest(unittest.TestCase):
             transport.mutate = lambda c, o, p: dict(p, results=[deepcopy(transport.data['countries'][0])]) if c == 'countries' and o else p
             with self.assertRaisesRegex(RefreshError, 'duplicate'):
                 collector.run(1002)
-            self.assertEqual(prefix, self.collector(pub, transport, page_size=1).journal['staging'])
+            reopened = self.collector(pub, transport, page_size=1)
+            self.assertEqual([], reopened.journal['staging']['pages'])
+            self.assertEqual({}, reopened.journal['cache'])
         for issue in ('dangling-manufacturer', 'dangling-country', 'dangling-upcoming'):
             with self.subTest(issue=issue), self.authority() as (_, _, _, _, pub, transport):
                 if issue == 'dangling-manufacturer':

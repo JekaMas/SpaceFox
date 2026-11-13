@@ -77,6 +77,16 @@ without another HTTP request. Invalid count drift/duplicates/truncation, danglin
 relations, wrong-origin/query URLs, unsupported data and bounds reject without
 replacing the previous complete candidate. An explicit restart discards only the
 partial traversal, retains cache and previous complete state, and revalidates pages.
+A duplicate in a newly received page is still refused and recorded as a failed
+request. After that failure, the incomplete collection and its cache are discarded;
+fully completed earlier collections retain their original raw pages and dates.
+The next eligible attempt starts the incomplete collection from offset zero.
+A duplicate already present in a durable checkpoint remains a hard refusal, not an
+automatic repair. Other invalid-source failures retain the checkpoint. If any
+staged page has expired, the next invocation restarts the traversal, discarding
+its staged cache URLs; original page dates are never updated by this restart.
+Previous complete candidates and accepted schedule source ages are unaffected.
+Recovery remains subject to the existing rolling quota and failure backoff.
 
 The working set retains one current and one previous complete candidate, their
 raw-page closure, a bounded URL cache and one staging traversal. Completed refresh

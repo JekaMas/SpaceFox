@@ -40,7 +40,11 @@ _STORED_PAGE_SIZE = object()
 
 
 class RefreshError(StateError):
-    """Preserve checkpoint and previous complete candidate on invalid source."""
+    """Reject invalid source without replacing the previous complete candidate."""
+
+
+class DuplicateSourceIdentity(RefreshError):
+    """A response cannot be incorporated into this traversal."""
 
 
 def require(condition, message):
@@ -703,6 +707,17 @@ class CatalogRefresh:
             self._save(sample())
         if self.journal['staging'] is None:
             return RefreshResult('complete', 0, self.journal['current'])
+        # A traversal cannot become complete with expired raw proofs. Restart
+        # without changing any page's source date or accepted schedule age.
+        stage = self.journal['staging']
+        checked_at = sample()
+        if any(p['validatedUtc'] < checked_at - self.max_age for p in stage['pages']):
+            for page in stage['pages']:
+                self.journal['cache'].pop(page['url'], None)
+            self.journal['staging'] = {'startedUtc': checked_at, 'pages': []}
+            if self.journal['schemaVersion'] == 2:
+                self.journal['staging']['pageSizes'] = {c: self.page_size for c in COLLECTIONS}
+            self._save(checked_at)
         attempts = 0
         for _ in range(max_requests):
             stage = self.journal['staging']
@@ -737,7 +752,8 @@ class CatalogRefresh:
                 total, following, rows = self._page(collection, body, offset, expected, size)
                 old_ids = {row['sourceId'] for row in data[collection]}
                 new_ids = [row['sourceId'] for row in rows]
-                require(len(new_ids) == len(set(new_ids)) and not old_ids.intersection(new_ids), 'duplicate source identity')
+                if len(new_ids) != len(set(new_ids)) or old_ids.intersection(new_ids):
+                    raise DuplicateSourceIdentity('duplicate source identity')
                 page = dict(collection=collection, url=url, body=self._put(body), etag=self._etag(headers.get('etag', etag if response.status == 304 else None)),
                             validatedUtc=epoch, receivedUtc=received_at, status=response.status, count=total, rows=len(rows), next=following)
                 # Validate tentative whole-prefix and resource limits before
@@ -751,7 +767,7 @@ class CatalogRefresh:
                 token = None
                 self.journal = tentative
                 self._save(received_at)
-            except Exception:
+            except Exception as error:
                 # A tentative prefix can fail before _save owns rollback. Its
                 # raw body must not accumulate across valid failure retries.
                 # Durable pages/candidates can be reloaded by content address.
@@ -761,6 +777,18 @@ class CatalogRefresh:
                     throttled = response is not None and response.status == 429
                     self.publisher.finish_request(self.publisher.head, token, failed_at, 'throttled' if throttled else 'failed',
                                                   retry_after_utc=retry_deadline(response.headers, failed_at) if throttled else None)
+                if isinstance(error, DuplicateSourceIdentity):
+                    # A poisoned prefix can reproduce the overlap forever.
+                    # Retain complete earlier tables and their exact ages; the
+                    # current table restarts unconditionally on a later call.
+                    # No invalid response is admitted and failed quota remains.
+                    stage = self.journal['staging']
+                    stage['pages'] = [p for p in stage['pages'] if p['collection'] != collection]
+                    self.journal['cache'] = {key: value for key, value in self.journal['cache'].items()
+                                             if not self._valid_url(collection, key, page_size=(
+                                                 self.journal['pageSize'] if self.journal['schemaVersion'] == 1
+                                                 else value['pageSize']))}
+                    self._save(failed_at)
                 raise
         data, collection, _, _, _ = self._assemble(self.journal['staging']['pages'])
         if collection is None:

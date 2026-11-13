@@ -866,3 +866,18 @@ entity provenance takes precedence over legacy asset provenance; explicit null
 means unavailable without falling back. Unchanged rows preserve legacy origin
 behavior. Origin-only changes do not reopen lifecycle decisions. Asset geometry,
 exact identity and selected-watch size limits remain independent.
+
+
+### Metadata duplicate and expired-prefix recovery
+
+A rejected duplicate source identity SHALL be recorded as a failed reserved
+provider request and remain a visible refusal. The collector may discard the
+incomplete collection and its conditional cache after that refusal, while
+retaining earlier complete collections and their original source dates. It
+SHALL not deduplicate rows or change accepted schedule, prior complete candidate,
+quota, or backoff. The next eligible attempt starts that collection at offset
+zero. If any staged source page has expired, the traversal SHALL restart with
+freshly validated page proofs; existing source dates SHALL never be rewritten.
+All count, link, duplicate, completeness and source-age checks still apply.
+This supports recovery but cannot guarantee progress under a persistently invalid
+or changing provider, and does not establish a transactional source snapshot.
