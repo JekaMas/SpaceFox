@@ -5,7 +5,8 @@
     "property_ids": [
       "R1.P1",
       "R2.P1",
-      "R3.P1"
+      "R3.P1",
+      "R1.P2"
     ],
     "test_ids": [
       "unittest::tests.test_foundation.FoundationTest.test_catalog_complete",
@@ -13,7 +14,9 @@
       "unittest::tests.test_foundation.FoundationTest.test_language_preferences",
       "unittest::tests.test_foundation.FoundationTest.test_unsupported_and_invalid_inputs",
       "unittest::tests.test_foundation.FoundationTest.test_distribution_inventory",
-      "unittest::tests.test_foundation.FoundationTest.test_unlicensed_distribution_rejected"
+      "unittest::tests.test_foundation.FoundationTest.test_unlicensed_distribution_rejected",
+      "unittest::tests.test_language_support.LanguageSupportTest.test_bound_software_state_cannot_disagree_with_status",
+      "unittest::tests.test_native_language_policy.NativeSoftwareAdmissionTest.test_bound_receipt_and_each_source_drift_refuse"
     ]
   },
   "reviews": [
@@ -73,6 +76,198 @@
       ],
       "disposition": "current_change",
       "rationale": "Language and distribution foundation is an independently deliverable change; native implementation remains in the original change."
+    },
+    {
+      "id": "PRIMARY26-SCOPE",
+      "question": "Locate actual catalog, mandatory qualification scope and release manifest admission owners.",
+      "property_ids": [
+        "R1.P2"
+      ],
+      "test_ids": [
+        "unittest::tests.test_language_support.LanguageSupportTest.test_bound_software_state_cannot_disagree_with_status",
+        "unittest::tests.test_native_language_policy.NativeSoftwareAdmissionTest.test_bound_receipt_and_each_source_drift_refuse"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "rg nativeQualified/reviewStatus and direct reads of tools/localization.py, tools/build_native_localization.py, tools/build_watchface.py, both change specs/tasks/verification.",
+          "outcome": "Catalog inventory and explicit manifest admission retained; task5.4/planned device checks previously required36. Added catalog-owned scope evaluator.",
+          "results": [
+            {
+              "path": "tools/language_support.py",
+              "line": 9,
+              "classification": "change_candidate",
+              "reason": "Actual primary-only language-quality status owner."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "unavailable",
+          "query": "jbcontext search language locale release qualification gates and catalog metadata",
+          "reason": "Command returned You need to log in to JetBrains AI Platform first. No auth changes authorized or attempted.",
+          "outcome": "No semantic result claimed.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "unavailable",
+          "query": "SpaceFox isolated primary-language-scope worktree qualification references",
+          "reason": "No qualified index for this isolated worktree; existing index does not prove this source revision.",
+          "outcome": "No IDE evidence claimed.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "Explicit user contract revision: retain all36existing modes, mandatory quality applies26primary only; no fabricated qualification."
+    },
+    {
+      "id": "CURRENT-ONLY-FINITE-20261113",
+      "question": "Reconcile both active graphs with current-only SFR1M and finite real text scope; retire old gates without claiming passes.",
+      "property_ids": [
+        "R1.P2"
+      ],
+      "test_ids": [
+        "unittest::tests.test_language_support.LanguageSupportTest.test_bound_software_state_cannot_disagree_with_status",
+        "unittest::tests.test_native_language_policy.NativeSoftwareAdmissionTest.test_bound_receipt_and_each_source_drift_refuse"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Direct reads of both specs/design/tasks/graphs, language_support.py/catalog policy and rg legacy/v1/v2/90-day/Unicode references.",
+          "outcome": "Found active compatibility/static/Unicode gates and mandatory all26 human/device prerequisite; retired or rebound current reliability obligations, split software versus external evidence.",
+          "results": [
+            {
+              "path": "tools/language_support.py",
+              "line": 1,
+              "classification": "change_candidate",
+              "reason": "Machine policy previously conflated human/physical with finite software scope."
+            },
+            {
+              "path": "openspec/changes/spacefox-watchface/specs/visual-catalog/spec.md",
+              "line": 1,
+              "classification": "change_candidate",
+              "reason": "Authoritative public current format and required reliable current delivery."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "unavailable",
+          "query": "SpaceFox current-format ownership",
+          "reason": "Exact owner paths supplied; no qualified SpaceFox semantic index available in this isolated worktree.",
+          "outcome": "No semantic evidence claimed.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "unavailable",
+          "query": "SpaceFox current-format ownership",
+          "reason": "No qualified isolated SpaceFox worktree IDE index selected; direct owning artifacts used.",
+          "outcome": "No IDE index evidence claimed.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "Explicit user decision changes active acceptance scope; implementation and actual corpus/native evidence remain separately pending."
+    },
+    {
+      "id": "SOURCE-BOUND-SOFTWARE-ADMISSION-R3",
+      "question": "Native helper integration supersedes controlled-boolean policy gate without human/device dependency.",
+      "property_ids": [
+        "R1.P2"
+      ],
+      "test_ids": [
+        "unittest::tests.test_language_support.LanguageSupportTest.test_bound_software_state_cannot_disagree_with_status",
+        "unittest::tests.test_native_language_policy.NativeSoftwareAdmissionTest.test_bound_receipt_and_each_source_drift_refuse"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read complete active spec/design/tasks/policy/docs and every case field; trace remaining CatalogTest setup and manifest assertion, reconcile exact locale rows/resources and retirement inventories.",
+          "outcome": "All32 catalog bindings use planned real-record/current-format replacements; one obsolete nativeQualified manifest assertion replaced. Historical receipts retained. Software admission is explicit and does not require human/device flags.",
+          "results": [
+            {
+              "path": "tests/test_catalog.py",
+              "line": 42,
+              "classification": "change_candidate",
+              "reason": "Shared setup rewrites model display name to NewRocket; future current suite must use real display strings."
+            },
+            {
+              "path": "tests/test_native_localization.py",
+              "line": 29,
+              "classification": "change_candidate",
+              "reason": "Manifest assertion still derives admission from nativeQualified instead of finite software proof."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "unavailable",
+          "query": "Independent current-only finite spec/test-plan review with exact supplied owners",
+          "reason": "No qualified isolated SpaceFox worktree index selected; direct exact owning artifacts inspected.",
+          "outcome": "No semantic or IDE-index evidence claimed.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "unavailable",
+          "query": "Independent current-only finite spec/test-plan review with exact supplied owners",
+          "reason": "No qualified isolated SpaceFox worktree index selected; direct exact owning artifacts inspected.",
+          "outcome": "No semantic or IDE-index evidence claimed.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "Retire historical synthetic/old-admission bindings without deleting their genuine current mechanics obligations. Planned replacements require real records and source-bound software admission; no runtime pass or complete corpus claim. Another different whole peer and root judgment remain required."
+    },
+    {
+      "id": "FINITE-SOFTWARE-RESOURCE-CLOSURE-R4",
+      "question": "Does source-bound software admission follow actual primary/common text resources through XML and font page bindings?",
+      "property_ids": [
+        "R1.P2"
+      ],
+      "test_ids": [
+        "unittest::tests.test_language_support.LanguageSupportTest.test_bound_software_state_cannot_disagree_with_status",
+        "unittest::tests.test_native_language_policy.NativeSoftwareAdmissionTest.test_bound_receipt_and_each_source_drift_refuse"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read LocalePresentation, SceneRenderer, maintenance/settings/clock/metric text owners, generated LocaleGraphemes and actual resource XML/BMFont pages in one batch; mutate actual resource bytes under controlled mechanism proof. Trace generated SceneStrings static mappings and available expression at actual build admission.",
+          "outcome": "Found unbound runtime grapheme JSON, locale/grapheme XML and referenced font resources. Repaired transitive common typography plus primary26 text closure; actual complete corpus/SDK admission remains pending. Pending generated availability bypass also reproduced and repaired: static projection validation plus full expected-output admission, without a proof hash cycle or changed generated bytes.",
+          "results": [
+            {
+              "path": "tools/native_language_policy.py",
+              "line": 15,
+              "classification": "change_candidate",
+              "reason": "Exact common/primary resource dependency closure must bind real runtime blobs and font pages, not only generated algorithms."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "unavailable",
+          "query": "Exact runtime owners and resources supplied/read for isolated worktree",
+          "reason": "No qualified isolated SpaceFox semantic index selected.",
+          "outcome": "No semantic evidence claimed.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "unavailable",
+          "query": "Exact runtime owners and resources supplied/read for isolated worktree",
+          "reason": "No qualified isolated SpaceFox IDE index selected.",
+          "outcome": "No IDE-index evidence claimed.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "Repair source-bound software mechanism without adding display strings, Unicode matrices, human/device prerequisites or promotion of qualification. A different fresh final whole peer and root judgment remain required."
     }
   ]
 }

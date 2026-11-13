@@ -27,3 +27,7 @@ The project code and specifications are MIT licensed. Bundled third-party data,
 fonts and other components retain their own rights and attribution; see
 [third-party notices](THIRD_PARTY_NOTICES.md) and the notices included with
 individual sources.
+
+## Current implementation plan
+
+The current MIT specification and task list are in `openspec/changes/spacefox-watchface/`. They use one schema3/SFR1M feed and a finite real-text corpus with26 primary language modes. This export qualifies the current publisher; native source/proof publication follows its independent main-use acceptance. The whole-project graph still contains planned and external-device work and is not a passing public readiness verdict.

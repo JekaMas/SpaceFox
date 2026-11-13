@@ -22,3 +22,19 @@ checks do not establish native support. Publication remains a later action.
 Current language/license/preview increment is complete; keep its valid source
 checks without rerunning them for this evidence-only completion update. Future
 native entry remains the original task 2.1 and language qualification task 5.4.
+
+Subsequent explicit publication request completed on 2026-11-10:
+`https://github.com/JekaMas/SpaceFox`, public `main` at `d7b3b53`.
+The specification now has its own `openspec/LICENSE` and MIT scope README.
+See `docs/PUBLICATION.md` for exact branch/source provenance and readback checks.
+This source publication does not close native implementation or device tasks.
+
+2026-11-13 authorized quality-scope revision: retain36 locales/resources; catalog supportPolicy selects26 primary locale modes for mandatory
+finite-real-corpus software review, ten best-effort. Whole scope policy implemented and
+positive/negative checks green; no nativeQualified flags promoted. See
+`../spacefox-watchface/evidence/primary-language-scope/PROGRESS.md`. Original
+foundation receipts retain their proof boundary; native task5.4 stays open.
+
+2026-11-13 current-only revision supersedes the earlier mandatory all26 human/device
+policy and retained Unicode-vector gate. Human review is optional/unobserved;
+physical release acceptance remains separate. No native task is checked off.

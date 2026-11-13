@@ -1,12 +1,19 @@
 # Durable publisher-state core
 
+The current target is one native-motion-v3 schema3/SFR1M feed at `/feed.json`,
+with packed schema2 authority in the motion-v3 namespace below. Prior wire/state
+readers, migration, dual roots and transition-period closure are retired. This
+guide states the current contract; historical local observations and remaining
+current implementation checks keep their original boundaries in
+[PROGRESS.md](../openspec/changes/spacefox-watchface/PROGRESS.md).
+
 `tools/spacefox/publisher.py` owns the durable control state. It imports the
 accepted normalized schedule/cadence kernel and uses Git object/ref operations,
 without checking out source files. Python3.10+ and Git are required. There is no
 workflow-package runtime dependency, provider client or Pages deployment client.
 
-`GitState` owns `refs/heads/feed-state` and the independent immutable-by-policy
-`refs/tags/spacefox-state-bootstrap-v1` anchor. Explicit `bootstrap` atomically
+`GitState` owns `refs/heads/feed-state-motion-v3` and the independent immutable-by-policy
+`refs/tags/spacefox-state-bootstrap-motion-v3` anchor. Explicit `bootstrap` atomically
 creates both only when neither exists. Ordinary open refuses missing, corrupt,
 unanchored or regressing authority. Deleting the branch cannot silently trigger
 bootstrap because the anchor survives. Restoring authority is an operator Git
@@ -20,9 +27,9 @@ and request reservations. Exact normalized documents live in `schedules/SHA256.j
 equal snapshots share bytes, and current unreferenced schedule objects are removed
 from the tree while history remains. Referenced objects are checked against exact
 bytes/digest and bounded to1MiBbefore parse, with≤128entries and each record still
-fitting its64KiBretirement archive. Schema1 embedded schedules remain readable;
-the next CAS migrates one way to schema2 without rebuilding old snapshot documents
-through domain defaults. Old pending metadata hashes and actual bytes remain exact. Identity kinds/namespaces, explicit nulls, UTC precision, per-record
+fitting its64KiBretirement archive. Only current packed schema2 authority is
+accepted. Serialized schema1 snapshots are refused without migration or read
+fallback. Same-current-format pending metadata hashes and actual bytes remain exact. Identity kinds/namespaces, explicit nulls, UTC precision, per-record
 validation and stale/reschedule latches survive parsing/reopen. Unknown fields,
 duplicate JSON keys, nonfinite/malformed values, unsupported versions, regressing
 validation/generations/times and invalid artifact digests fail closed. The ledger
@@ -74,8 +81,8 @@ records. `finish_request(success)` records transport success only. Builds,
 catalog/version requests, promotion, live/CDN observations and opaque successful
 HTTP results cannot manufacture source validation. `observe_age` advances the
 existing per-record stale latches without validation. Custom refresh policy is
-persisted at bootstrap; runtime overrides must match it. Policy migration needs
-an explicit future migration rather than an implicit restart default.
+persisted at bootstrap; runtime overrides must match it. A restart cannot
+implicitly change the accepted policy or reset the request allowance.
 
 After every process reopen, `reconcile(live_revision)` compares exact generation
 and artifact digest with durable active/pending. Exact pending visibility promotes
@@ -97,7 +104,8 @@ promote. A wrong readback, lost deploy acknowledgement or lost promotion leaves
 the recoverable candidate intact. The actual Actions/Pages adapter must qualify
 its serialization and exact live manifest readback; this unit does not provide
 or claim those external observations. Declared file digests do not discover the
-complete feed/catalog/90day-compatible asset reference closure. The real artifact
+complete feed/catalog/current-and-recoverable same-format asset reference closure.
+The real artifact
 assembler remains required, including the unchanged-image omission scenario.
 
 Current ledger size and history growth are separate. `GitState.measure()` reports

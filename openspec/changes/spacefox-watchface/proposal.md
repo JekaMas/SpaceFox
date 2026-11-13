@@ -44,7 +44,7 @@ the layout, but live updates and a maintainable visual catalog are still missing
 - Define native development/personal PRG/Store IQ, preserved signing identity,
   truthful free publication, platform eligibility and privacy/rights checks.
   Separate code releases from content updates; qualify FR165 API 5.2, response
-  bounds, AOD, cache migrations and 90-day wire compatibility.
+  bounds, AOD and same-current-format cache recovery.
 - Keep publisher active/pending state and request reservations in a dedicated
   feed-state branch with monotonic/CAS recovery and complete Pages artifacts;
   a public CDN response is not the authoritative recovery ledger.
@@ -68,7 +68,7 @@ the layout, but live updates and a maintainable visual catalog are still missing
 - `visual-catalog`: maintainable, versioned site/rocket metadata and visual assets
   with validation, offline fallback and atomic update activation.
 - `release-lifecycle`: qualified builds, signing, personal installation, free Store
-  distribution and compatible/recoverable code-versus-content updates.
+  distribution and recoverable current-format code-versus-content updates.
 
 ### Modified Capabilities
 
@@ -90,4 +90,6 @@ native acceptance and Store release remain separate authorized work. The
 MIT source/specification remains published in the existing GitHub repository.
 The final source-based review is in `evidence/final-review/`; intended-user
 routine platform review and native/device/Store evidence remain explicit release work.
-Publisher and audience platform requirements remain explicit release-review work.
+The adult owner publishes from their own Garmin account. The owner has confirmed
+both relevant age conditions for this instance; no age clarification remains open.
+Exact private ages are not retained. The reusable audience-review contract remains.

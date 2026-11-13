@@ -30,6 +30,7 @@ reducing primary time or placing text outside the circle.
 #### Scenario: Use the accepted header
 - **WHEN** a launch supplies its rocket name, launch company and mission purpose
 - **THEN** rocket and company read together above time, mission purpose occupies the following line, and full supplied values remain retained without an unneeded duplicate title
+- **AND** displayed purpose uses actual source mission.type/category with explicit absence; full description prose or invented synonyms cannot substitute
 
 #### Scenario: Long or absent context
 - **WHEN** a rocket/company/mission name is long or some context is unavailable
@@ -176,17 +177,38 @@ sensor streaming, parse entire histories or upload personal data.
 
 ### Requirement: Qualified native localization
 
-The native face SHALL consume the shared 36-language catalog and honor the
-watch's supported language and time/number settings, with English fallback.
-Release language claims MUST require actual FR165 font, glyph, RTL/shaping and
-layout qualification. RTL text SHALL preserve the physical scene order, numeric
-countdown, geographic meaning and persisted fitness-slot identity.
+The native face SHALL retain all 36 catalog modes and use English fallback.
+Only the 26 primary modes in `locales/catalog.json#supportPolicy` require mandatory
+finite-real-corpus software qualification using actual FR165 font/glyph and
+RTL/layout observations. Human translation review is separate and not an all26
+software prerequisite; actual physical release acceptance remains separate. RTL SHALL preserve physical
+scene order, numeric countdown and persisted fitness identity.
 
 #### Scenario: Supported language changes
 - **WHEN** a qualified device language changes or a user selects a qualified language
 - **THEN** interface strings and date/number formats change without losing launch, projection or fitness settings
 - **AND** time, status indicators and country/site text remain readable inside the circle
+- **AND** all 26 primary modes require the finite-corpus software observations; membership does not qualify
+- **AND** a valid source-bound software proof enables each admitted primary mode in production and manifest while human/device flags remain unchanged
+- **AND** ten other existing modes remain best-effort without mandatory quality expansion
+- **AND** unbounded rare Unicode, arbitrary mixed-script provider names and perfect
+  display outside primary modes are outside the quality target; input/grapheme
+  integrity, common UI readability, 8192-byte and cache/memory guards remain required
+
+Production language selection and release manifest admission SHALL use an explicit
+`supportPolicy.softwareQualifiedLocales` subset of primary modes backed by a valid
+`softwareQualificationProof` for the complete finite corpus and relevant production
+sources. Empty/missing/stale proof SHALL NOT admit additional languages; English
+SHALL remain available as bootstrap fallback. Per-row `nativeQualified`, human
+review and physical-device flags SHALL NOT control this software admission.
 
 #### Scenario: Unsupported language or glyphs
 - **WHEN** the requested language is unavailable or its glyph/rendering coverage is unqualified
 - **THEN** the supported English fallback remains readable and the release does not advertise the unqualified language as supported
+- **AND** missing, tampered or stale corpus/receipt/production-source proof prevents additional admission even when a locale is primary or its legacy nativeQualified flag is true
+
+Display testing SHALL use only launches since 2021-11-13T00:00:00Z, ALL published
+future launches paginated until next=null, and actual UI/menu strings. Exact source
+proofs and complete counts SHALL be retained; invented names and Unicode edgecase
+expansion SHALL NOT qualify display coverage. Mutations of actual records MAY
+exercise technical failures without fabricating display names.

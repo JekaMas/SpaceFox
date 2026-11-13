@@ -131,7 +131,8 @@ treat a locally elapsed timestamp as confirmation that a launch occurred.
 ### Requirement: Launch context metadata
 
 The accepted launch record SHALL retain the supplied rocket configuration name,
-launch company and concise mission name or purpose when available. These values
+launch company and mission type/category as concise purpose when available; full description prose
+SHALL NOT substitute for the displayed purpose. These values
 SHALL belong to the selected launch and SHALL preserve explicit absence rather
 than reuse another launch's context or invent a mission task.
 

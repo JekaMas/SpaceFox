@@ -1,13 +1,16 @@
 # Declarative original-art producer v1
 
+This document describes the retained publisher-side source-art format and its
+local geometry/rights/integrity checks. It is not a standalone supported public
+watch profile: current delivery rasterizes the selected source into
+native-motion-v3 schema3/SFR1M at `/feed.json`, as specified in
+[NATIVE_MOTION_V3.md](NATIVE_MOTION_V3.md). Historical transport alternatives and
+measurements below do not add old-wire or cross-version acceptance gates.
+
 The SFV renderer contract remains version 1. The compatible producer-2 catalog
 curation and source-driven geography extension are documented in
-[GLOBAL_VISUAL_CATALOG.md](GLOBAL_VISUAL_CATALOG.md). The accepted 13 original
-sources remain unchanged. The 218-asset export and maxima below are historical
-producer-v1 observations. Current default CLI entrypoints project the dated
-eligibility registry; explicit current roots select bounded dependency closures.
-The 638 retained/new assets include historical versions and are not a current
-configuration denominator. A full-catalog export may refuse the unchanged bounds.
+[GLOBAL_VISUAL_CATALOG.md](GLOBAL_VISUAL_CATALOG.md). The accepted 13 sources remain
+unchanged; the current configured export attempts all 218 assets.
 
 This is an implemented **producer contract**, not a Garmin-qualified transport.
 Python 3.10+ standard library is sufficient. No build/test imports `.agents`, SDK,
@@ -202,7 +205,7 @@ normalization and all per-asset analytic ceilings are measured in the round1 sta
 | Complete publisher candidate manifest + unique objects | 1048576 bytes |
 
 These are finite producer limits selected against the13 original sources, not
-measured device capacities. Historical 13-source maxima:309 commands,830 distinct vertices,
+measured device capacities. Current maxima:309 commands,830 distinct vertices,
 1329 references,14733 logical bytes,4 shards/asset and4094 bytes/shard. Static
 shard requests need no new provider calls. JSON containers may consume far more
 RAM than UTF-8 bytes, and a full logical asset need not fit a background heap.

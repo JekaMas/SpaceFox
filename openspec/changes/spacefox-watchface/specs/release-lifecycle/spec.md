@@ -32,7 +32,7 @@ publishing credentials. A forked native product SHALL use its own identity/key.
 ### Requirement: Adult publisher and accurate audience review
 
 The official publisher SHALL be the adult owner using their own Garmin developer
-account. Unknown viewer age alone SHALL NOT
+account; the owner has confirmed adult status. Unknown viewer age alone SHALL NOT
 block implementation. Release review SHALL distinguish the developer-account18+
 condition from the under13 audience/use rule, without claiming adult publication
 or private sideload overrides that rule. Private ages SHALL NOT enter public data.
@@ -85,17 +85,18 @@ source validation SHALL remain distinct; content builds SHALL NOT renew source a
 - **WHEN** new rocket art and corrected site coordinates fit the installed app's schemas
 - **THEN** the data publisher can distribute them without a Store update, while an unsupported drawing operation waits for a native update
 
-### Requirement: Compatibility and state migration
+### Requirement: Current format and state recovery
 
 Releases SHALL preserve field assignments, locale, projection and feed URL through
-versioned migrations. Unsupported feed/renderer versions SHALL retain accepted
-data and expose an actionable settings/update explanation. The publisher SHALL
-keep current and previous wire majors for at least 90 days after an announced major
-transition. A feed-host change SHALL isolate launch state by namespace.
+same-current-format updates and recovery. The sole supported public format SHALL
+be native-motion-v3 / SFR1M envelope schema 3 at /feed.json. Unsupported input SHALL
+retain accepted current-format data with honest age and an actionable explanation.
+No prior wire major, transition period, alternate root, static profile or legacy
+state migration SHALL be required. Feed-host changes SHALL isolate launch state.
 
-#### Scenario: Old app meets a newer feed
-- **WHEN** the app encounters an unsupported version or old cached state
-- **THEN** it uses a supported compatibility feed or last accepted data with honest age, preserves user choices and offers recovery without inventing a fresh schedule
+#### Scenario: Unsupported input reaches the current app
+- **WHEN** the app encounters an unsupported envelope or corrupt current cached state
+- **THEN** it refuses that input, retains valid accepted current-format data with honest age, preserves user choices and offers recovery without inventing a fresh schedule
 
 #### Scenario: Change the personal feed host
 - **WHEN** FeedBaseUrl changes to another instance

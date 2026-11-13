@@ -1,13 +1,28 @@
 # Разработка, выпуск и обновления SpaceFox
 
-Дата проверки первичных источников: **2026-11-11**. Оригинальный документ —
-[MIT](../LICENSE). Это план выпуска с локально проверенной реализацией publisher,
-updater, Actions workflow и экспорта каталогов. Для публичного среза `2171fcb`
+Дата проверки первичных источников: **2026-11-11**; состояние реализации уточнено
+**2026-11-12**. Оригинальный документ — [MIT](../LICENSE).
+
+Текущий публичный publisher/catalog работает на `a159185`: [цикл G16](https://github.com/JekaMas/SpaceFox/actions/runs/43291523940)
+успешно выполнил все пять jobs, а полный HTTPS readback 77 файлов / 521 074 байт
+совпал с принятой поставкой. Это обновление кода/контента без запроса расписания:
+возраст источника 19:10:28 UTC сохранён. Внешний таймер Cloudflare Free отдельно
+прошёл конечную проверку реальных автоматических запусков; сам GitHub schedule
+этим не квалифицирован. [Устройство таймера](EXTERNAL_SCHEDULE_CLOCK.md),
+[runtime publisher](CLOUD_RUNTIME_CHECKOUT.md). Нативная интеграция, физические
+часы/телефон/батарея, signing identity и Store ещё требуют квалификации.
+
+Историческая исходная проверка: для публичного среза `2171fcb`
 [первый ручной bootstrap](https://github.com/jekamas/SpaceFox/actions/runs/43150627242)
 прошёл четыре job, exact HTTPS feed/catalog readback (3475 байт) и promotion
-active generation 1. Автоматический cron, повторный цикл и fault recovery ещё
-не квалифицированы. Новая оптимизация checkout проверена локально, без измерения
-удалённого ускорения. Monkey C, FR165 и Store-релиз ещё требуют квалификации.
+active generation 1. На момент того наблюдения автоматический cron, повторный
+цикл и fault recovery ещё не были квалифицированы; оптимизация checkout была
+проверена только локально.
+
+Возрастные условия издателя и целевого использования подтверждены владельцем;
+возрастных уточнений для этого экземпляра больше нет. Точные возраста публично
+не сохраняются. Коррекция прежнего автоматического возрастного блокера —
+[здесь](../openspec/changes/spacefox-watchface/evidence/publication-owner-review.md).
 Канонические требования — [release-lifecycle](../openspec/changes/spacefox-watchface/specs/release-lifecycle/spec.md),
 [архитектура](../openspec/changes/spacefox-watchface/design.md) и
 [единые задачи](../openspec/changes/spacefox-watchface/tasks.md).
@@ -20,13 +35,13 @@ active generation 1. Автоматический cron, повторный ци�
 | Приложение | Monkey C, manifest с типом, UUID, products, minApiLevel, permissions и languages | Тип watchface; точный product ID из установленного профиля; только реально проверенные устройства и языки |
 | Режимы экрана | Active допускает короткую анимацию; AMOLED AOD обновляется по минутам с ограничением горящих пикселей | Выбранная04/full карта только в active; отдельный разреженный AOD, без карты/секунд/анимации, измерение пикселей и батареи |
 | Сеть | У watchface связь в background; ограничены время и память | Телефон/Garmin Connect, локальный кеш; частями готовить ассеты, прерывания безопасны; не передавать весь feed через Background.exit |
-| Графика | Наличие API в новейшей документации не доказывает его поддержку FR165 | Начальная проба — ограниченная JSON-геометрия; bitmap-путь только после передачи, сохранения, перезагрузки и замеров на FR165 |
+| Графика | Наличие API в новейшей документации не доказывает его поддержку FR165 | Текущий SFR1M: обязательны передача, сохранение, перезагрузка и замеры на FR165 |
 | Частная установка | Build for Device создаёт PRG для устройства; официальный путь — GARMIN/APPS | Сначала личный пилот через проверенный USB/MTP-путь на конкретном компьютере; симулятор не заменяет часы |
 | Настройки через Garmin | Установка PRG не доказывает Store-интеграцию | Проверить URL и четыре поля на реальной установке; при необходимости owner-only beta с отдельным UUID, без обещания переноса её состояния |
 | Подпись | Для обновлений нужен тот же4096-bit RSA developer key | Ключ и резервная копия вне Git/Pages/data job; стабильный production UUID; потеря ключа — блокер обновления этой идентичности |
 | Публичный выпуск | Export Project создаёт IQ; загрузка, описание/скриншоты и review Garmin | Только проверенные products/languages, бесплатные все поля, точные зависимости/пределы/контакты; затем установка именно одобренной версии из Store |
 | Права и данные | У Garmin есть требования к IP, приватности и честному описанию | MIT только для своего; отдельные notices карт/шрифтов/графики; данные здоровья локальны, публичный feed без личности ребёнка |
-| Издатель и аудитория | Аккаунт разработчика18+; отдельно guidelines содержат правило under13 для аудитории/известного использования | Издатель использует собственный соответствующий требованиям аккаунт. Общего запрета разработки при неизвестном возрасте пользователя нет; правило аудитории проверить перед выпуском, без выдуманного исключения для взрослого издателя/PRG |
+| Издатель и аудитория | Аккаунт разработчика18+; отдельно guidelines содержат правило under13 для аудитории/известного использования | Издатель — подтвердивший совершеннолетие владелец. Общего запрета разработки при неизвестном возрасте пользователя нет; правило аудитории проверить перед выпуском, без выдуманного исключения для взрослого издателя/PRG |
 
 Основания: [устройства](https://developer.garmin.com/connect-iq/compatible-devices/),
 [manifest](https://developer.garmin.com/connect-iq/articles/core-topics/Manifest_and_Permissions.html),
@@ -49,20 +64,20 @@ active generation 1. Автоматический cron, повторный ци�
 | Новая модель/знак/кадры, исправленная карта или точка в поддерживаемом формате | Проверка каталога, неизменяемые файлы по digest, новый manifest/поколение Pages, staged activation часов | Нет, если установленный renderer/формат совместим |
 | Время, статус, новый ближайший запуск, настоящая повторная проверка источника | Обычный updater → маленький schedule JSON → фоновое получение через телефон | Нет |
 | Новая версия скрипта/Actions | Проверенный Git diff/commit, затем обычная работа издателя | Не сама по себе; не означает обновление кода на часах |
-| Новый wire major | Совместимый новый app + параллельная выдача старой версии данных | Да для новых возможностей; старый endpoint сохраняется минимум90дней после объявления перехода |
 
 Версии разделены: app/build, wire schema, renderer schema, catalog revision,
 content digest, монотонное publisher generation и проверка источника **по записи**.
 Дата сборки каталога и успешный HTTP200/304 не обновляют возраст источника.
-Совместимые v1/v2 формируются из одного принятого состояния и общей квоты.
+Единственный текущий SFR1M/schema3 формируется из принятого состояния с общей квотой.
 Источник истины координат — каталог, а не вручную нарисованный декоративный pin.
 
-Начальная квалификация графики использует JSON с конечным набором примитивов,
-палитрой и трансформациями анимации; чужой код или произвольный SVG не исполняется.
-Экспортёр из текущих SVG ещё нужно написать. Нельзя обещать, что произвольный PNG
-уже можно надёжно скачать/сохранить в фоне на FR165. Binary octet-stream из новой
-документации появился только в API 6.0.3 и не является нашим исходным протоколом.
-[Communications API](https://developer.garmin.com/connect-iq/api-docs/Toybox/Communications.html).
+Текущий внешний формат — `native-motion-v3`, envelope schema 3 и SFR1M по
+единственному `/feed.json`. Примитивы SFR1 внутри него не являются отдельным
+поддерживаемым профилем. Старые wire-форматы, static-экспортёры, прежние архивы,
+межверсионные тесты и переходные периоды сняты, не засчитаны как пройденные.
+Атомарное обновление, честный source age, точная проверка пикселей/digest,
+восстановление и лимиты текущего формата остаются обязательными. Исторические
+SDK/hosted результаты не подтверждают текущий источник или физические часы.
 
 ## Как будет работать личный издатель
 
@@ -70,7 +85,7 @@ content digest, монотонное publisher generation и проверка и
 flowchart LR
   LL[LL2 и проверенные дополнения] --> A[Обычный скрипт Actions]
   G[Git: каталог и ассеты] --> A
-  S[Git feed-state: active/pending, quota, generation] <--> A
+  S[Git feed-state-motion-v3: active/pending, quota, generation] <--> A
   A --> P[Полный статический Pages artifact]
   P --> C[Garmin Connect]
   C --> W[FR165: accepted cache и свой отсчёт]
@@ -81,7 +96,7 @@ Cron раз в15минут, со смещением от начала часа, 
 Неизвестное время — часовой режим. Пятиминутный режим потребует соответствующего
 cron и соблюдения общей квоты; это опция. Время до старта всегда считают часы.
 
-Издатель хранит **долговечное состояние в отдельной ветке feed-state**: принятый
+Издатель хранит **долговечное состояние в отдельной ветке feed-state-motion-v3**: принятый
 и pending snapshot, source age, переносы, due time, поколения и резерв запросов.
 Текущий ledger первоначально ограничен64КиБ; размер истории Git контролируется
 отдельно. Кеш Actions и однодневный artifact — ускорители/доставка, не единственные
@@ -98,8 +113,8 @@ expected-base/CAS-контроль ветки и поколений. Перед 
 транзакция, которую GitHub предоставляет автоматически.
 
 Начальные бюджеты: schedule≤8192UTF-8байта после распаковки, полный Pages artifact≤1МиБ,
-retention artifacts1день. Они требуют проверки с глобальными ассетами и90-дневным
-окном совместимости. Противоречие бюджета с полным набором нельзя скрыть урезанием
+retention artifacts1день. Они требуют проверки полного текущего и
+восстанавливаемого набора ассетов одного формата. Противоречие бюджета с полным набором нельзя скрыть урезанием
 охвата. На часы идёт ограниченный slice manifest, не весь мировой справочник.
 Сам JSON-ответ Garmin может разобрать до callback: проверка в callback не является
 защитой от уже случившегося выделения памяти; это отдельное испытание task2.2.
@@ -117,6 +132,49 @@ job-у deploy. SDK/signing key ему не нужны. Cron может заде�
 
 ## Первый выпуск и последующие исправления
 
+Локальная упаковка теперь реализована в `tools/release.py`; SDK9.3/Java11 уже
+установлены отдельно. Она не запускает Simulator и не устанавливает/публикует
+приложение. `python3 -B -m tools.release --output /external/new-directory --key
+/external/protected/developer.der` сохраняет production UUID и `SpaceFoxApp`,
+создаёт отдельные подписанные PRG и настоящий Export Project IQ через SDK `-e`.
+Сборка требует чистый Git, существующий внешний PKCS8 DER RSA4096 key с правами
+0600 в каталоге0700 и совпадающий **публичный** SPKI SHA256 в committed
+`release/signing-identity.json`. Production fingerprint теперь закреплён после настоящего локального восстановления
+внешнего RSA4096 ключа из зашифрованного PKCS8 backup и проверки challenge-подписи.
+Два candidate-пакета проверяют прежний UUID/key и более высокую версию; это не
+квалификация финальной native-сборки и не публичный релиз. Development/test build по-прежнему меняет
+UUID и не требует production key.
+
+`--mode official --backup-evidence /external/protected/backup.json` дополнительно
+проверяет явное свидетельство резервной копии/восстановления: тот же
+`public_key_spki_sha256`, `backup_exists:true`, `restore_tested:true`, `observed_at`,
+`attested_by`, `restore_receipt` и его `restore_evidence_sha256`. Указанный внешний
+restore JSON должен иметь совпадающий fingerprint, `restored_public_key_matches:true`
+и `proof_boundary`. Это проверка предоставленного свидетельства и его hash,
+а не самостоятельное наблюдение сохранности/восстановления ключа. Оба production
+режима оставляют `publication_ready:false`: device/phone/battery/Store доказательства
+не возникают из успешного экспорта. Возраст и SDK agreement не запрашиваются снова.
+
+`--previous /external/prior/release.json` требует строго более высокую версию с
+прежним UUID/key, текущие products/languages из pinned manifest и сохранённый IQ с тем же
+digest. После первого выпуска публичный `latest_release` в signing identity
+связывает version/package digest: дальнейшая production сборка требует именно
+этот предыдущий receipt/package. Сейчас `latest_release:null`, выпусков ещё нет.
+`--evidence receipt.json` связывает
+публичные JSON receipts с явно указанной `proof_boundary`; хранить там секреты
+нельзя. Новый output обязателен; overwrite и output внутри source worktree запрещены.
+Каталог сохраняет точные source inputs, generated manifest/Jungle, публичный key,
+SDK/profile pins, logs и digests PRG/IQ. IQ native7z проверяется по manifest,
+part number профиля, языкам/permissions и RSA4096; pinned SDK криптографически
+проверяет IQ и PRG. SDK timestamps/debug paths означают, что побитовая
+воспроизводимость не доказана. [Handoff](../release/HANDOFF.md) сохраняет setup,
+rights/privacy/support и незакрытые реальные границы выпуска.
+
+Для автоматической квалификации упаковщика существует отдельный
+`--mode qualification --qualification-policy /external/control.json` с новым
+disposable key и UUID, отличным от production/development/test. Такой control
+никогда не является production artifact или доказательством backup автора.
+
 1. Публикуем от взрослого владельца; установить инструменты в отдельной разрешённой
    задаче, закрепить профиль/прошивку; проверить API/health, передачу, кеш и AOD.
 2. Реализовать native/updater/catalog/workflow с meaningful positive/negative
@@ -124,7 +182,7 @@ job-у deploy. SDK/signing key ему не нужны. Cron может заде�
 3. Проверить две настоящие проверки источника, две ревизии графики, reboot,
    offline, старый CDN, перенос, неизвестное время и отсутствие ложного взлёта.
 4. Квалифицировать глобальный набор и карты, права, конкретные языки/шрифты,
-   настройки Garmin, миграцию и батарею. Сохранить source/toolchain/package digests.
+   настройки Garmin, восстановление текущего формата и батарею. Сохранить source/toolchain/package digests.
 5. Подготовить бесплатный listing, screenshots, setup/privacy/support и IQ;
    загрузить для review Garmin и проверить установку одобренного Store-релиза.
 6. При исправлении кода выпустить **более высокую версию** с прежней подписью/UUID;
@@ -132,7 +190,7 @@ job-у deploy. SDK/signing key ему не нужны. Cron может заде�
    прежним проверенным asset set; возраст запуска не менять. Данные исправлять
    с честным источником, без поддельной свежести или регрессии принятого состояния.
 
-Версионируемые миграции сохраняют четыре поля, язык, карту и URL. Новая FeedBaseUrl
+Обновления и восстановление текущего формата сохраняют четыре поля, язык, карту и URL. Новая FeedBaseUrl
 изолирует записи/переносы/возраст другого экземпляра; только проверенные одинаковые
 ассеты можно переиспользовать по digest. Перенос настроек PRG→Store и beta→production
 нужно наблюдать, а при раздельной установке дать инструкцию повторной настройки.
@@ -143,3 +201,51 @@ job-у deploy. SDK/signing key ему не нужны. Cron может заде�
 по [AGENT_SETUP.md](AGENT_SETUP.md). Собирать native заново нужно только при изменении
 самого приложения; такой fork получает собственные UUID/key/listing. Ни личный
 ключ автора, ни его аккаунт/сервер для повторения схемы не нужны.
+
+## Локальное хранение production signing identity
+
+`release/signing-identity.json` хранит только публичный SPKI SHA256, digest
+зашифрованного backup и границы доказательства. Ключ RSA4096 PKCS8 DER, backup
+PBES2 AES256/PBKDF2-HMAC-SHA256 (600000 итераций) и случайный пароль находятся
+в разных новых внешних каталогах0700; файлы0600. Пароль передаётся OpenSSL
+через stdin, никогда значением аргумента, в logs, Git, Pages или data workflows.
+Личная `OWNER_RECOVERY.md` рядом с защищённым recovery-файлом содержит точные
+локальные пути и команду. Публичное доказательство:
+`openspec/changes/spacefox-watchface/evidence/production-signing/round1/`.
+
+`python3 -B -m tools.release custody-init --custody-dir NEW-EXTERNAL-KEY-DIR
+--backup-dir NEW-EXTERNAL-BACKUP-DIR --recovery-dir NEW-EXTERNAL-PASSWORD-DIR`
+допускается только при ещё не закреплённой production identity и отказывает
+при существующих каталогах. После закрепления это не способ заменить ключ.
+При потере ключа восстановить именно прежний:
+
+```sh
+python3 -B -m tools.release custody-restore \
+  --backup /protected-backup/developer.encrypted.pk8 \
+  --recovery-file /separate-protected/recovery-password.txt \
+  --output /new-owner-only-directory/developer.der \
+  --expected-fingerprint PUBLIC-SPKI-SHA256 \
+  --expected-backup-sha256 PINNED-ENCRYPTED-BACKUP-SHA256
+```
+
+Команда требует новый output, проверяет pinned backup digest, расшифровывает,
+сверяет SPKI и подписывает/проверяет случайный публичный challenge. Ошибочный
+пароль, corrupt backup или чужая identity оставляют output отсутствующим;
+существующий ключ не перезаписывается. Настоящая проверка original/restored
+ключей также сравнивает их подписи одного challenge и подписи SDK PRG/IQ.
+Все эти локальные копии находятся на одном Mac: потеря компьютера/диска,
+независимое хранение и offsite disaster recovery не проверены. Облачного backup
+не создавалось. Физические часы, Store и финальная36-язычная/globe-сборка
+остаются отдельными границами; `latest_release:null` сохранён.
+
+## Authorized clean cutover sequence
+
+After current code/fixtures are accepted and the current Linux qualification passes,
+the separately authorized deployment uses a tiny empty Pages data site and verifies
+`/feed.json` returns404. Then bootstrap a NEW motion-v3 authority namespace and
+publish freshly fetched current-format data. The old instance stops; no old parser,
+snapshot migration or cross-version recovery is involved. Carry only still-live
+quota reservation timestamps, or wait a complete rolling hour before any new
+provider call. Source validation advances only after an actual successful fetch.
+This sequence is a plan, not an observed public cutover or permission supplied by
+this specification-edit unit; root owns the separately authorized execution.

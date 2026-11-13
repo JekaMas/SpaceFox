@@ -14,6 +14,23 @@ identifiers documented on 2026-11-10. Every locale MUST have the same nonempty U
 keys and placeholders, a unique identifier, a text direction and a review status.
 The resource validator MUST reject incomplete or inconsistent entries.
 
+#### Scenario: Scope mandatory language qualification
+- **WHEN** release language-quality readiness is assessed
+- **THEN** all 26 primary modes require finite-real-corpus FR165 glyph/layout review;
+  a missing software observation keeps that gate incomplete; human review is optional
+  and physical product/release acceptance stays separate
+- **AND** missing quality observations for the ten retained best-effort modes do
+  not block that gate; unsupported, duplicate or non-catalog primary IDs are rejected
+- **AND** qualification flags and release manifest admission are not promoted by scope;
+  actual source-bound finite-corpus software proof governs production/manifest admission
+  through explicit softwareQualifiedLocales, independently of human/device flags
+- **AND** translations, resources, selections and actual UI resources remain; invented display-string and normative Unicode
+  edgecase qualification vectors are retired
+- **AND** unbounded rare Unicode, arbitrary mixed-script provider names and perfect
+  display outside primary modes are outside the quality target; input/grapheme
+  integrity, common UI readability, 8192-byte and cache/memory guards remain required
+
+
 #### Scenario: Validate language resources
 - **WHEN** a contributor validates the catalog
 - **THEN** all 36 complete locales pass and missing keys, duplicate identifiers,
@@ -34,3 +51,9 @@ Earth/rocket/information order remain stable.
   matching, or English when none match
 - **AND** language changes update visible and accessible labels without resetting
   the selected data; RTL text does not mirror the geographic projection
+
+Display testing SHALL use only launches since 2021-11-13T00:00:00Z, ALL published
+future launches paginated until next=null, and actual UI/menu strings. Exact source
+proofs and complete counts SHALL be retained; invented names and Unicode edgecase
+expansion SHALL NOT qualify display coverage. Mutations of actual records MAY
+exercise technical failures without fabricating display names.

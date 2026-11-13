@@ -1,20 +1,14 @@
 # Personal publisher and feed setup
 
 SpaceFox uses **scheduled GitHub Actions → static GitHub Pages → paired phone →
-watch**. The publisher, tracked-input materializer and serialized delivery adapter
-have local qualification. The published old-v1 source `ea272b2` has observed
-manual bootstrap, second due cycle, optimized generation3 and pre-arm cancellation/
-recovery into generation4 (3184-byte exact HTTPS closure). Those historical receipts do not qualify automatic cron or remote started-Pages cancellation.
-Observed workflow times174s versus474/595s are three runs, not a controlled benchmark.
-The later public6494602 dual-wire recovery reached active generation5 with
-zero reported provider requests and exact109-file/372331-byte HTTPS union.
-The owner’s later public generation13 adopted metadata/art content with zero
-provider requests and preserved the earlier source age; it is not a new source
-validation. Authentic metadata and automatic cron qualification remain separate. Native fetch/cache/rendering,
-phone/physical FR165 and Store acceptance remain pending. See the actual
-[CLOUD_DELIVERY runbook](CLOUD_DELIVERY.md) for permissions, recovery and limits.
+watch**. The current contract has one canonical public format: native-motion-v3,
+schema-3 SFR1M at /feed.json. Historical deployed observations retain their original
+receipts and do not establish adoption of this current-only contract. Physical
+phone/FR165, battery and Store acceptance remain separate. Runtime deployment and
+recovery commands are owned by [CLOUD_DELIVERY](CLOUD_DELIVERY.md); this contract
+revision grants no deployment or state-reset authority.
 
-Each family should own its own publisher fork and feed-state authority. The source
+Each family should own its own publisher fork and current authority. The source
 is MIT; original schematics are MIT, and fonts/geography/data retain their distinct
 terms in [THIRD_PARTY_NOTICES](../THIRD_PARTY_NOTICES.md). No AWS account, author’s
 account keys, Garmin signing key in a data job, continuously running computer or
@@ -38,10 +32,11 @@ Python/Git without a source-data build. Do not install tools implicitly.
    `https://jekamas.github.io/SpaceFox/feed.json`. `FeedBaseUrl` is the **base**,
    without `/feed.json`. Another family uses its own owner/repository base, or
    sets the repository variable `SPACEFOX_PAGES_URL` to its authorized HTTPS base.
-   The owner's first bootstrap verified these exact endpoints. Another instance
+   The owner's historical first bootstrap used these URLs with the old format;
+   it does not qualify current schema3 delivery. Another instance
    requires its own deployment and exact readback.
 4. For a genuinely first empty instance only, dispatch the workflow with
-   `bootstrap=true`. This explicitly creates durable feed-state authority. Do not
+   `bootstrap=true`. This explicitly creates durable current-format authority. Do not
    use bootstrap as recovery or delete authority to force a refresh. Once state
    exists, ordinary runs preserve instance identity, generation, quota and source
    age. Unknown service finality blocks another deployment until reconciled.
@@ -51,50 +46,52 @@ Python/Git without a source-data build. Do not install tools implicitly.
    uploaded artifact alone does not establish this boundary.
 6. When a qualified native release exists, configure its `FeedBaseUrl`, verify
    phone/watch readback, offline wake, stale/reschedule behavior, independent host
-   namespaces and update migration. Native/Store and language claims follow actual
-   qualified firmware and device observations. The 36 translations are draft
-   resources; Arabic shaping, glyphs and complete native language coverage remain
-   unqualified.
+   namespaces and same-format cache reopen. Native/Store and language claims follow actual
+   qualified firmware and device observations. Local language/resource or Simulator
+   observations retain their exact build and test boundaries; qualify the chosen
+   physical firmware and language separately.
 
 ## Operate and maintain
 
 The configured offset fifteen-minute cron is intended to wake a lightweight due
-check. Qualify naturally scheduled execution and fresh-source delivery for each
-instance using the external-clock runbook; the historical observations above do
-not describe current account state. A manual due-recovery dispatch with
-`bootstrap=false` preserves cadence and quota; it does not qualify cron. Normal source
-validation is hourly and near-launch validation every fifteen minutes, with
-explicit persisted fast mode. A not-due run makes no provider request. Watch
-countdown calculation is local. Re-fetching an old file, correcting a catalog or
-rolling back compatible art never renews provider-validation age.
+check. The finite natural external-clock dispatches above establish only their
+observed runs; they do not prove GitHub `schedule` event execution or future SLA.
+A manual due-recovery dispatch with `bootstrap=false` preserves cadence and quota.
+Normal source validation is hourly and near-launch validation every fifteen
+minutes, with explicit persisted fast mode. A not-due run makes no provider
+request. Watch countdown calculation is local. Re-fetching an old file, correcting
+a catalog or rolling back compatible art never renews provider-validation age.
 
-`feed-state` and its bootstrap anchor are durable authority. Preserve both. For
+`refs/heads/feed-state-motion-v3` and
+`refs/tags/spacefox-state-bootstrap-motion-v3` are the current durable authority
+and bootstrap anchor. Preserve both. For
 failed/ambiguous deployments, use the runbook’s exact journal/service/HTTPS
 reconciliation; do not reset state, invent a live generation or rebuild pending
 bytes. A disabled or delayed schedule needs inspection and authorized recovery.
 No background model session is part of normal publishing.
 
-The current portable source is `2026-11-12.global.14.current-context1`:
-683 pinned inputs plus the recipe (684 materialized files), with 23 runtime files
-when the recipe is excluded. Its dated current counts and command are in
-[GLOBAL_VISUAL_CATALOG.md](GLOBAL_VISUAL_CATALOG.md). The historical counts below
-remain attached to their original receipts.
-
-The hosted generation5 includes both v1 and v2. The historical global.4 local
-successor preserved both, each feed≤8192 decoded UTF-8 bytes, with complete
-current+prior artifact≤1MiB/256files. Prepare follows632 canonical inputs plus the recipe (633materialized files); the21-file runtime
-seed excludes source data. The accepted historical global.4.bridge1 catalog had598assets and art for
-144/171 then-required configurations, with27exact art gaps. These historical
-counts are not the 2026+ current scope; see GLOBAL_VISUAL_CATALOG.md for the
-provisional local candidate and unresolved review. Source2 provenance remains
-explicit and off-watch; its roughly1.47MB input corpus is not the served budget.
-The full selected flat-map scene needs71GETs; native batching/cadence, globe,
-worldwide coverage,36native languages, phone/watch and Store remain unqualified.
-V1 is retained indefinitely. Future source/feed publication determines the actual
-transition announcement; no elapsed90day support is claimed.
+Only the current schema-3 SFR1M format is supported; no old endpoint, static exporter,
+legacy migration, old-archive or transition-period qualification is required.
+The complete current plus recoverable same-format artifact stays within 1MiB/256
+files, each feed within 8192 decoded UTF-8 bytes. Exact digest/identity closure,
+source-age preservation, shared quota and atomic recovery remain mandatory.
+Dated catalog counts stay in their original receipts; current coverage requires a
+complete source-bound inventory. See [GLOBAL_VISUAL_CATALOG](GLOBAL_VISUAL_CATALOG.md).
 
 For the independent Cloudflare clock, its separate account, credential, fixed
 destination, local qualification and real-event requirements, see
 [External schedule clock](EXTERNAL_SCHEDULE_CLOCK.md). Each fork must review and
 change the fixed destination for its own repository and qualify its own instance;
 local source or another owner’s observations do not establish its operation.
+
+## Authorized clean cutover sequence
+
+After current code/fixtures are accepted and the current Linux qualification passes,
+the separately authorized deployment uses a tiny empty Pages data site and verifies
+`/feed.json` returns404. Then bootstrap a NEW motion-v3 authority namespace and
+publish freshly fetched current-format data. The old instance stops; no old parser,
+snapshot migration or cross-version recovery is involved. Carry only still-live
+quota reservation timestamps, or wait a complete rolling hour before any new
+provider call. Source validation advances only after an actual successful fetch.
+This sequence is a plan, not an observed public cutover or permission supplied by
+this specification-edit unit; root owns the separately authorized execution.

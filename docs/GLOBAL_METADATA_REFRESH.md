@@ -8,9 +8,18 @@ source pins, reviewed corrections, artwork, native resources or the served feed.
 The serialized cloud workflow now invokes the same collector after source delivery. Tasks4.3/4.4 remain open. This is local qualification, with no new live
 collection, authenticated cloud, worldwide supplement, visual or device claim.
 
+The current collector accepts only journal/candidate schema3 with the existing
+fixed page policy (countries20, organizations20, configurations100, pads100)
+and pads ordering=id. Old journal/candidate1/2, import helpers, page-size migration
+and legacy cache/query-policy adoption are retired. Resume/restart/304 reuse is
+required only within the same current format and explicit query policy; it must
+preserve exact raw proofs, per-page source ages, previous current candidate,
+shared quota and accepted schedule/artifact state. Unsupported policy/schema
+refuses without another provider request or authority mutation.
+
 The exact2.3.0 paths are `config/countries/`, `agencies/` in normal mode,
 `launcher_configurations/` in detailed mode and `pads/` in detailed mode. Queries
-are **unfiltered tables**, with `format=json`, bounded `limit` and validated
+are **unfiltered tables**, with `format=json`, the current per-table limit and validated
 `offset`; they retain inactive/pending/placeholder and unknown IDs. They are
 broader than the original November11 active-model UNION inactive-pending-model /
 active-pad audit. Twelve cached original page bodies were matched to that audit's
@@ -34,8 +43,8 @@ UTC. It includes per-record page validation dates, source interval, relation edg
 required active/pending/upcoming IDs, accepted schedule digest/reference dates,
 unknown jurisdictions and unqualified visual/mark/position denominators. Full
 pagination is a nontransactional traversal, not a synchronized worldwide database
-snapshot. Official supplements, unresolved current artwork and precise pad accuracy are
-not closed by this collector.
+snapshot. Official supplements, artwork gaps and precise pad accuracy are not closed by
+this collector; the original15-gap count belongs to its dated inventory.
 
 Every page, including304, needs an existing shared publisher reservation committed
 **before HTTP**. The15/hour rolling allowance, uncertain reservation delay,
@@ -67,7 +76,8 @@ traversal when completion age reaches its configured daily deadline.
 `ledger.json` stays≤65536bytes and contains only an optional journal SHA/byte
 reference. `catalog-refresh/journals/SHA256.json` (≤1MiB) and
 `catalog-refresh/objects/SHA256.json` live alongside `cloud.json` on the same
-`feed-state` authority. Object IDs are SHA256 of exact bytes. Catalog CAS preserves
+`refs/heads/feed-state-motion-v3` authority (bootstrap anchor
+`refs/tags/spacefox-state-bootstrap-motion-v3`). Object IDs are SHA256 of exact bytes. Catalog CAS preserves
 cloud journal, schedule archives and active/pending artifacts; schedule and cloud
 journal writers preserve catalog objects. Partial staging is distinct from the
 accepted complete candidate. A crash after any page resumes at its next URL;
@@ -119,10 +129,9 @@ live readback. `collect` requires `--expected-head` and a trusted caller-owned
 `--live-observation` JSON file containing `null` or exact `generation` and
 `artifact_revision`. Pending publication is refused so the owning cloud recovery
 path can finish it first. The CLI derives running SHA from its actual checkout
-and refuses untracked/dirty collector runtime files. Supply the same page-size /
-source-age options on reopen; an explicit changed query/policy cannot reinterpret
-a journal. An omitted primitive reader page size selects the stored desired policy;
-the standalone CLI keeps its explicit default20.
+and refuses untracked/dirty collector runtime files. Supply the same current source-age policy on reopen; a changed query/policy cannot
+reinterpret a journal. Both standalone and scheduled collectors use the existing
+current schema3,20/20/100/100-row,ordered-pads policy; there is no older-policy reader.
 
 ```sh
 python3 -B tools/refresh_catalog.py status --remote /path/to/authority.git
@@ -135,16 +144,14 @@ python3 -B tools/refresh_catalog.py export --remote /path/to/authority.git \
   --reference-inventory --output /path/to/immutable-reference-inventory.json
 ```
 
-`--max-requests` is1..4 (default1); `--page-size` is1..100 (default20);
+`--max-requests` is1..4 (standalone default1); current page limits are20/20/100/100 by table;
 `--max-source-age-seconds` is60..604800 (default86400);
 `--schedule-max-pages` is1..4 (default2). `--restart` begins a new traversal.
-`--page-size 100 --migrate-page-size` explicitly selects the qualified journal2
-transition. It preserves every saved page/raw hash/date and completes a started
-collection at its old bound size; unstarted collections and subsequent traversals
-use100. Origin/source-age changes and unqualified explicit size changes still
-refuse. Current/prior immutable candidates replay their own original query policy;
-old candidate bytes are never rewritten. Cache entries bind their own query size.
-Old writers refuse journal2; a smaller-size rollback cannot reset the traversal.
+Current invocations use their bound schema3/20/20/100/100-row/ordered query/source-age policy.
+A changed policy cannot reinterpret a saved traversal or cache entry. There is
+no --migrate-page-size transition, no old-policy reader and no old candidate
+rewriting. Current/prior same-format immutable candidates replay their own bound
+schema3 query policy, with exact raw URL/ETag/body/source-age checks.
 No write occurs for status/export, not_due or preflight-yield paths.
 `--source-ref` defaults to `refs/heads/main`. The sole production origin is the
 official LL2 HTTPS host. `--local-http` only accepts an explicit127.0.0.1 port;
@@ -175,11 +182,10 @@ cleared pending state. Explicit `recover` owns journal finality in that case.
 It cannot adopt code, recover a pending deployment, bootstrap
 state, force launch polling or build art/catalog source data. Non-metadata
 arm/deploy/recover paths do not import the collector or read the metadata corpus.
-The current source seed has 23 runtime files, including the lazily used metadata
-entry/collector modules; it excludes the catalog recipe and all source data.
-Prepare authenticates 683 pinned inputs plus the recipe (684 files) before authority.
-The earlier 21-runtime-file and 647-input-plus-recipe/648-file observations remain
-historical and retain their original source boundary.
+Their source seed follows the actual tracked runtime inventory, including lazily
+used metadata entry/collector modules, while excluding catalog recipe/source data.
+Prepare retains full recipe materialization before authority. The earlier21-file
+runtime and647-input+recipe648 observations keep their original source boundaries.
 
 `metadata --interval-seconds` validates3600..604800seconds and defaults to86400.
 The deadline is the last complete candidate's `source.completedUtc` plus the
@@ -187,10 +193,12 @@ interval. A complete current candidate before that deadline returns `not_due`,
 zeroHTTP and no auxiliary write. Partial staging resumes at its next uncommitted
 URL on later normal workflow events, regardless of the old complete candidate's
 age. An overdue complete candidate starts a replacement traversal using its exact
-ETag/raw cache. Automatic scheduled metadata explicitly selects desired100 with this migration,
-including an existing20-row partial collection. No manual database edit is needed.
-The primitive/new standalone explicit default remains20 for compatibility; it
-accepts the existing1..100 range. `--max-requests` validates1..4 and defaults to4 per invocation;
+ETag/raw cache. Automatic scheduled metadata uses the current ordered query policy and its
+fixed per-table limits20/20/100/100 and pads ordering=id. It does not migrate an
+old collection/query policy. Standalone
+uses this same current policy; removed --page-size, --stable-sites-order and
+--migrate-page-size options are not current setup flags. Reopen must match the
+current journal policy without reinterpreting an old prefix. `--max-requests` validates1..4 and defaults to4 per invocation;
 every HTTP still needs its own durable shared reservation. Read-only preflight
 returns `yielded` without initial staging/write for launch-due, backoff, uncertain
 requests, or insufficient conservative primary headroom. Pending publication
@@ -213,36 +221,41 @@ and official current supplements. Only a reviewed new pinned reference/recipe
 revision may activate those data through the existing source/prepare/delivery
 path. Metadata maintenance never edits `catalog/source.json` automatically.
 
-The eleven generic gaps among 139 qualified current configurations, 54 review identities,
-five placeholders, exact pad/map accuracy, worldwide official/upcoming
+Current artwork gaps, exact pad/map accuracy, worldwide official/upcoming
 supplement closure, full native/globe/language/phone/FR165/Store acceptance and
 whole tasks4.3/4.4 remain open. A generic/unknown visual remains explicitly
 unqualified. Candidate corpus64MiB, served artifact1MiB and watch feed8KiB are
 separate limits; finite current state does not bound lifetime Git history.
 
-The portable focused page-policy/art integration command is:
+## Historical page-policy/art observations
+
+The following command and source-specific observations belong to the old
+page-policy transition. They are retained provenance, not current setup or an
+active old-snapshot/old-archive qualification gate:
+
+The original portable focused page-policy/art integration command was:
 
 ```sh
 python3 -B -m unittest -v tests.test_page_art_public
 ```
 
-The current-source real-local-Git/loopback probe preserves four exact public
+The then-current source real-local-Git/loopback probe preserves four exact public
 countries pages (80 rows at20) and uses100 only when new collections start.
 It makes four metadata requests, preserves source/quota prefixes, refuses policy
 rollback without a write, imports every publisher-overlay test, checks the actual
-23-file metadata sparse shell, refuses historical review ID 123/LM5 and invokes
-the actual current Hanbit Mini producer with exact reviewed identity/rights/shards.
+21-file metadata sparse shell and invokes the actual current radial LM5 producer.
 The output remains a partial candidate; no metadata or recipe adoption follows.
 
 The retained earlier `tests.test_metadata_art_public` observation belongs to its
 frozen global.4 recipe: configuration194 gained specific art,106 current/113
 current-prior files (375605bytes),21runtime files,0primary/4metadata/not_due0,
 pending/armed0HTTP/0write, exact map reuse and source-age isolation. Its literal
-count fixture is historical; it is not a current-recipe whole-suite gate.
+count fixture is historical; it is not a current global.5.review1 whole-suite gate.
 Earlier global.3/596-file/76-file collector/bridge receipts likewise retain their
 original boundaries. No local test proves authentic cron/Pages/LL2/native uptake.
 
-The qualified page-policy control is portable in `tests/test_page_art_public.py`. For controlled103countries/350organizations/176models/218sites,
+The page-policy local evidence is `evidence/metadata-page-policy/round1/` in the
+active change. For controlled103countries/350organizations/176models/218sites,
 20-row traversal costs44requests and100-row traversal11. After four saved
 20-row countries pages, preserving that prefix and finishing countries at20
 then starting the other tables at100 reduces remaining calls40to11. These are
@@ -252,7 +265,7 @@ requires separate measurement. Requested100 never relaxes2MiB/page,64MiB/corpus,
 Pagination advances by actual returned rows; changed/unsafe link policies refuse.
 Root must separately qualify actual LL2 response behavior and hosted adoption.
 
-### Versioned pads ordering
+## Current pads ordering
 
 Scheduled metadata selects journal/candidate schema 3 with `ordering=id` for
 pads. The provider's PadList interface documents `id` as an available ordering
@@ -263,17 +276,13 @@ make a multi-request traversal transactional: upstream insertion, deletion or
 invalid responses can still prevent completion. The exact response rejected in
 the hosted incidents was not captured; the upstream cause remains unproved.
 
-Migration preserves completed earlier tables, their raw pages and source ages,
-original current/previous candidates and existing URL-scoped cache entries. An
-incomplete old pads prefix is abandoned because it cannot be combined with the
-new ordering. If all old pages were already durably saved before a crash, the
-collector finalizes their complete candidate under its legacy policy and saves
-the new writer policy in the same checkpoint, with no HTTP. A later traversal
-uses the new ordering. If expiry or explicit restart abandons that complete legacy
-stage instead, schema 3 is checkpointed before replacement HTTP. Its legacy cache
-URL cannot satisfy the new query. Schema 1/2
-candidates replay under their original policy; schema 3 candidates bind their
-own explicit pads ordering. Older and non-opted-in writers refuse schema 3
-before HTTP. Standalone `collect`, `status` and `export` use
-`--stable-sites-order` to opt into this policy; continue supplying the correct
-page-size and source-age settings. The page-size migration remains separate.
+Only schema3 journals and candidates with this explicit ordering are accepted.
+Current same-format staging resumes at its next safe URL, and an expired or
+explicitly restarted traversal revalidates actual pages under that same policy.
+A complete durable current checkpoint may finalize without another HTTP request;
+missing/invalid raw proofs, unsupported query policy and old1/2 state refuse.
+There is no old-prefix migration, completed-legacy-stage adoption or fallback to
+an old URL cache. Current standalone and scheduled paths must select the same
+bound ordered policy; old opt-in/migration instructions above are historical.
+All existing per-page/source-completion age checks, primary schedule priority,
+rolling quota, backoff, exact candidate export and source/artifact isolation remain.

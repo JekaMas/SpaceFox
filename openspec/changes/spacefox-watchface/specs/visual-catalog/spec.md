@@ -288,58 +288,73 @@ Unrelated global growth SHALL NOT enlarge the selected manifest.
 
 ### Requirement: Qualified declarative visual transport
 
-FR165 qualification SHALL start with bounded JSON geometry/palette primitives
-and animation transforms supported by the existing renderer. Remote executable
-code SHALL NOT be accepted. New artwork within the supported schema SHALL be
-data-only. Bitmap/frame transport MAY replace this path only after target
-background transfer, persistence, reboot, integrity and memory proof; API 6-only
-binary responses SHALL NOT be a baseline dependency.
+FR165 qualification SHALL use the current SFR1M data-only profile and its bounded
+SFR1 primitives. Remote executable code and API 6-only binary responses SHALL NOT
+be accepted as baseline dependencies. No standalone vector/static exporter remains
+an externally supported profile.
 
 #### Scenario: Maintainer adds a rocket in the supported drawing schema
-- **WHEN** validated artwork uses only supported bounded primitives and transforms
+- **WHEN** validated artwork uses the current bounded SFR1M primitives and transforms
 - **THEN** its geometry, marks and optional animation can update from static files without an app or layout change
 
 #### Scenario: Artwork requires a new renderer operation
-- **WHEN** a visual requires unknown drawing operations or a different projection convention
-- **THEN** the old app retains a compatible visual and the new capability requires a versioned native release rather than downloaded executable code
+- **WHEN** a visual requires unknown operations or a different projection convention
+- **THEN** the app retains a validated current-format visual or generic fallback and requires a native update rather than downloading executable code
 
-### Requirement: Versioned selected visual bridge
+### Requirement: Current selected visual delivery
 
-V2 SHALL retain closed root v1 and publish selected visuals from the same durable
-source, generation and quota. Immutable identity, lossless facts, separate raw and
-semantic hashes, unchanged source ages and complete bounded delivery SHALL obey
-the scenarios below. Optional visuals SHALL permit generic/no-point schedule
-activation. This producer contract SHALL NOT establish native or elapsed-retention
-acceptance.
+The sole schema-3 native-motion-v3 envelope at /feed.json SHALL preserve selected
+facts, typed role/entity/art/point identity, source age and pixel integrity within
+bounded SFR1M delivery. Content updates and recovery SHALL preserve accepted state,
+shared quota and exact immutable dependencies, with prompt valid-schedule fallback.
 
 #### Scenario: Same identity receives distinct artwork or a corrected point
-- **WHEN** a data-only source revision changes art or a sourced site point and later rolls back to prior compatible content
-- **THEN** each change has a new monotonic generation and immutable selected descriptor binding; unchanged assets reuse their digests and launch validation ages remain unchanged
+- **WHEN** a data-only source revision changes art or a sourced site point and later restores reviewed content in the same current format
+- **THEN** each change has a new monotonic generation and immutable identity binding; unchanged assets reuse digests and launch validation ages remain unchanged
 
-The publisher SHALL retain the closed data-only root feed v1 and publish an
-explicit v2 endpoint below the same FeedBaseUrl from the same durable accepted
-state, generation and quota. The v2 projection SHALL preserve selected launch
-facts, exact typed identity, null/zero/Unicode/precision and source-validation
-age, and include only the selected configuration, supplied operator, selected
-curated origin and actual site/jurisdiction dependencies. Immutable descriptor
-digests SHALL bind exact role/entity identity, logical asset identity and sourced
-point/camera independently of catalog/envelope digests. Raw shard bytes/path/size
-and full canonical semantic SFV digests SHALL be checked separately. Optional
-visual downloads SHALL permit prompt schedule activation using generic/no-point
-fallback; an old same-ID visual SHALL NOT be relabeled as a new asset revision.
+The sole schema-3 native-motion-v3 envelope at /feed.json SHALL preserve selected
+facts, typed role/entity/art identity, source provenance and source-validation age.
+Only the selected dependencies SHALL enter bounded immutable SFR1M delivery.
+Raw object bytes/path/size and decoded pixel integrity SHALL be checked separately.
+Optional visual work SHALL allow prompt valid schedule activation with generic or
+no-point fallback; an old same-ID image SHALL NOT be relabeled as new art.
+A content-only change SHALL allocate a monotonic pending generation without
+provider polling or renewing source age. Recovery SHALL reuse exact durable bytes.
+Complete current and recoverable same-format closure and exact HTTPS readback
+SHALL stay within 1MiB/256 files, 8192-byte feed and 4096-byte object bounds.
+No v1/v2 endpoints, old exporter, legacy archive or transition-period gate applies.
 
-A data/art-only input change SHALL allocate a new monotonic pending generation
-without provider polling or renewing source-validation times. Pending recovery
-SHALL reuse exact durable bytes. Complete current/prior file closure and exact
-HTTPS readback SHALL include both wire majors and every immutable dependency
-within the existing1MiB/256file,8KiBfeed and4KiBshard bounds. Announced compatibility
-SHALL last at least90days; dual files alone SHALL NOT prove elapsed retention.
-Accepted04/full sourced map camera, bright land/ocean/coast, directed fade,
-transparent time area and unfaded28pxmarker SHALL remain the producer target;
-full native composition, heap/storage and physical acceptance remain separate.
-The supported producer profile SHALL be accepted04-full flat map only; its
-acceptance SHALL NOT establish globe support or close global map/globe coverage.
+
 
 #### Scenario: Corrupt or replayed optional visual dependency
-- **WHEN** a selected descriptor, shard, index, major or immutable reference is missing, corrupt, stale or incompatible
-- **THEN** producer complete-closure admission rejects it without replacing accepted state, while a consumer can activate valid schedule metadata with explicit generic/no-point fallback
+- **WHEN** a selected descriptor, object, index or immutable reference is missing, corrupt, stale or unsupported
+- **THEN** complete-closure admission rejects it without replacing accepted state, while a consumer can activate valid schedule metadata with explicit generic/no-point fallback
+
+### Requirement: Finite native full visual profile
+
+The sole `native-motion-v3` producer SHALL publish schema-3 SFR1M through
+/feed.json with the existing immutable scene agreement. Lossless selected
+pixels, typed identities, source provenance and ages SHALL remain digest bound;
+finite bounds and ordinary native lifecycle SHALL satisfy the scenarios below.
+This profile SHALL NOT establish physical, globe, catalog-frame or locale acceptance.
+
+#### Scenario: Complete selected scene within native budgets
+- **WHEN** the selected full actual producer scene is cold, warm or reopened on the qualified FR1655.2 Simulator with HTTPS requirements enabled
+- **THEN** ordinary126784B foreground and61248B background contexts preserve the full scene, real background exits within30s and schedules temporal work at least300s apart, while bytes, requests, writes, first verified map, full activation and sampled heap are reported separately without physical or phone timing claims
+
+Source geometry SHALL rasterize losslessly with uniform aspect fit into390square
+map,54x124 rocket,20x38 operator and20x12 origin. Raw and decoded pixel hashes,
+complete selected typed identity, original source/model/operator/origin/site
+point and source-validation ages SHALL remain bound. Original source provenance
+SHALL be fully validated before projection. The complete artifact stays within
+1MiB/256files; feed8192B, immutable raw4096B, selected raster98304B/32chunks and
+transfer40objects/114688B caps SHALL remain. No lossy palette, unselected stand-in
+pixel, hidden cap increase or executable drawing grammar SHALL establish equivalence.
+
+#### Scenario: Source update and display lifecycle reuse
+- **WHEN** an up-to8192B valid source-only generation retains the same immutable selection, or high power enters low/off/hide and returns
+- **THEN** identical optional graphics are downloaded zero times, matching complete graphics may stay resident, local transparent time and adjacent countdown plus four large fields remain readable, redraw performs no I/O/parser/resource construction, and partial work or animation cannot continue in low/off/hide
+
+#### Scenario: Incomplete or incompatible scene retains coherent fallback
+- **WHEN** changed model/place/art, interruption, full storage, corrupt raw/pixels, unknown point, malformed late provenance or an endpoint/layout mismatch occurs
+- **THEN** durable source/publisher floors and old immutable objects remain intact, new metadata uses generic/no-point fallback until its own complete validated scene is ready, no old cross-model/place graphic is relabeled, and restart independently validates persisted raw/schema/identity/source/pixel closure before activation
