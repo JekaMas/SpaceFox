@@ -140,7 +140,7 @@ class IndependentMetadataCadenceR1(unittest.TestCase):
                 world['now'] = 4603
                 second = scheduled(pub, 4603, max_requests=3, **options)
                 self.assertEqual(('complete', 3), (second['status'], second['requests']))
-                candidate = CatalogRefresh(pub, **options).current()
+                candidate = CatalogRefresh(pub, stable_sites_order=True, **options).current()
                 self.assertEqual([1001, 4601, 4601, 4601], [p['validatedUtc'] for p in candidate['coverage']['pages']])
                 self.assertEqual(world['hashes'], [p['body']['sha256'] for p in candidate['coverage']['pages']])
                 self.assertEqual({'countries': [103], 'organizations': [203], 'models': [303], 'sites': [403]},
@@ -161,7 +161,7 @@ class IndependentMetadataCadenceR1(unittest.TestCase):
                 world.update(now=8203, conditional=True)
                 replacement = scheduled(pub, 8203, interval_seconds=3600, **options)
                 self.assertEqual(('complete', 4), (replacement['status'], replacement['requests']))
-                candidate = CatalogRefresh(pub, **options).current()
+                candidate = CatalogRefresh(pub, stable_sites_order=True, **options).current()
                 self.assertEqual([304] * 4, [p['status'] for p in candidate['coverage']['pages']])
                 self.assertEqual([8201] * 4, [p['validatedUtc'] for p in candidate['coverage']['pages']])
                 self.assertEqual(['"metadata-r1-' + str(i) + '"' for i in range(4)],
@@ -285,7 +285,7 @@ class IndependentMetadataCliR1(unittest.TestCase):
             result = self.cli('metadata')
             self.assertEqual(('complete', 4), (result['status'], result['requests']))
             pub = self.publisher()
-            candidate = CatalogRefresh(pub, origin=self.origin, local_http=True).current()
+            candidate = CatalogRefresh(pub, origin=self.origin, local_http=True, stable_sites_order=True).current()
             self.assertEqual(world['hashes'], [p['body']['sha256'] for p in candidate['coverage']['pages']])
             self.assertEqual([runtime.NOW - 2] * 4, [p['validatedUtc'] for p in candidate['coverage']['pages']])
             self.assertEqual(original, {k: pub.ledger[k] for k in original})

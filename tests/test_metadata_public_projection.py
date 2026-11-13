@@ -1,7 +1,8 @@
 """Independent public cloud CLI witness; all Git/HTTP are disposable and local.
 
-This module must execute in a clean projection of the named public base with
-only the recovery owner and source-only tests added. It never contacts LL2.
+Run from a clean public source checkout. The source-adoption event uses two
+real disposable Git revisions with the same available tree; this is not an
+old-code execution witness. No ancestor objects or live LL2 are required.
 """
 from copy import deepcopy
 import hashlib
@@ -20,7 +21,6 @@ from tools.spacefox.catalog_refresh import CatalogRefresh, RefreshError
 from tools.spacefox.publisher import GitState, Publisher
 
 ROOT = Path(__file__).resolve().parents[1]
-PUBLIC_BASE = 'a159185796dbe5767d41926ba8b49647c8d4b484'
 
 
 def preserved(pub):
@@ -35,12 +35,18 @@ class PublicMetadataProjectionTest(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix='spacefox-public-cli-') as folder:
             remote = Path(folder) / 'remote.git'
             subprocess.run(['git', 'clone', '--bare', '--no-hardlinks', '-q', str(ROOT), str(remote)], check=True)
-            git(remote, 'update-ref', 'refs/heads/main', PUBLIC_BASE)
+            # A distinct source event exercises real adoption without requiring
+            # historical Git objects in a single-commit/shallow public checkout.
+            initial_code = git(remote, '-c', 'user.name=Public source fixture',
+                               '-c', 'user.email=fixture@example.invalid',
+                               'commit-tree', code + '^{tree}', '-m', 'Initial source authority fixture')
+            self.assertNotEqual(code, initial_code)
+            git(remote, 'update-ref', 'refs/heads/main', initial_code)
             store = GitState(str(remote))
             world = World(remote)
             try:
-                store.bootstrap(PUBLIC_BASE)
-                pub = Publisher(store, PUBLIC_BASE)
+                store.bootstrap(initial_code)
+                pub = Publisher(store, initial_code)
                 pub.reconcile(None)
                 slot = pub.reserve(pub.head, 1000, trigger='manual')
                 pub.accept_source(pub.head, slot, (), 1000)
@@ -73,20 +79,25 @@ class PublicMetadataProjectionTest(unittest.TestCase):
                     self.assertEqual(before, preserved(pub))
                     self.assertEqual(code, pub.ledger['code_revision'])
                     old_requests = deepcopy(pub.ledger['requests'])
-                    path = suffix(3, 1, 1)
-                    state['overrides'][path] = encoded(dict(count=2, next=None, previous=origin + suffix(3, 1),
+                    # Migration restarts pads with ordering=id; inject the same
+                    # typed overlap on its second page, with coherent links.
+                    path = suffix(3, 1, 1, True)
+                    state['overrides'][path] = encoded(dict(count=2, next=None, previous=origin + suffix(3, 1, ordered=True),
                         results=[deepcopy(state['rows']['sites'][0])]))
                     state['now'] = 1002
                     self.assertIn('duplicate source identity', cli(expected=2).stderr)
                     pub = Publisher(store, code); pub.reconcile(None)
-                    recovered = CatalogRefresh(pub, origin=origin, local_http=True)
-                    self.assertEqual(2, recovered.journal['schemaVersion'])
+                    recovered = CatalogRefresh(pub, origin=origin, local_http=True, stable_sites_order=True)
+                    self.assertEqual(3, recovered.journal['schemaVersion'])
                     self.assertEqual(prefix[:3], recovered.journal['staging']['pages'])
                     self.assertEqual(before, preserved(pub))
-                    self.assertEqual(old_requests, pub.ledger['requests'][:-1])
+                    self.assertEqual(old_requests, pub.ledger['requests'][:-2])
+                    self.assertEqual(['success', 'failed'], [r['outcome'] for r in pub.ledger['requests'][-2:]])
                     self.assertEqual('failed', pub.ledger['requests'][-1]['outcome'])
                     self.assertGreater(pub.ledger['backoff_until_utc'], 1002)
-                    expected_cache = {url: dict(meta, pageSize=1) for url, meta in cache.items() if '/pads/' not in url}
+                    # The abandoned unordered URL stays separately cached; failed
+                    # ordered pages cannot populate or evict that other query.
+                    expected_cache = {url: dict(meta, pageSize=1) for url, meta in cache.items()}
                     self.assertEqual(expected_cache, recovered.journal['cache'])
                     self.assertEqual(bodies, {p['body']['sha256']: recovered._read(p['body']) for p in prefix[:3]})
                     calls = list(state['calls']); failed_head = pub.head
@@ -103,9 +114,9 @@ class PublicMetadataProjectionTest(unittest.TestCase):
                     state['now'] = 5001
                     finished = json.loads(cli(now=5001).stdout)
                     self.assertEqual(('complete', 2), (finished['status'], finished['requests']))
-                    self.assertEqual([(suffix(3, 1), None), (suffix(3, 1, 1), None)], state['calls'][-2:])
+                    self.assertEqual([(suffix(3, 1, ordered=True), None), (suffix(3, 1, 1, True), None)], state['calls'][-2:])
                     pub = Publisher(store, code); pub.reconcile(None)
-                    current = CatalogRefresh(pub, origin=origin, local_http=True).current()
+                    current = CatalogRefresh(pub, origin=origin, local_http=True, stable_sites_order=True).current()
                     self.assertEqual(prefix[:3], current['coverage']['pages'][:3])
                     self.assertEqual(dict(countries=1, organizations=1, models=1, sites=2), current['coverage']['counts'])
                     self.assertEqual(before, preserved(pub))
