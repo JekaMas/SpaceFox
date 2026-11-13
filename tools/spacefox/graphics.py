@@ -682,6 +682,13 @@ def build_pack(root,catalog,*,roots=None):
                 with path.open('rb') as source_stream:data=source_stream.read(LIMITS['sourceBytes']+1)
                 _require(type(content['bytes']) is int and len(data) == content['bytes'] and hashlib.sha256(data).hexdigest() == content['sha256'],'source digest/length mismatch')
                 value,stats=_export_svg(data,facts.get('exportSize'),facts.get('visualAnimation'))
+                if 'nativeMotion' in facts:
+                    # Validate opt-in motion before immutable recipe activation;
+                    # the compatible legacy source and its SFV bytes stay static.
+                    _require(value[7] == [0,[]], 'native motion requires a static source image')
+                    _require(row['seedCollection'] == 'models' or facts['nativeMotion'] == [0,[]], 'animated marks unsupported')
+                    motion_value=deepcopy(value);motion_value[7]=facts['nativeMotion']
+                    validate_visual(motion_value)
                 encoded=canonical_visual(value);digest=hashlib.sha256(encoded).hexdigest()
                 shards=split_visual(value);parts=[]
                 for fragment in shards:

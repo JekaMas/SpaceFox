@@ -340,7 +340,7 @@ def delivery_files(pub, manifest):
     if current is origin['pending'] and origin['active'] is not None:
         prior=origin['active']
         for path,meta in prior['files'].items():
-            if path not in ('feed.json','wire2/feed.json'):
+            if path not in ('feed.json','wire2/feed.json','wire3/feed.json','wire3/motion/feed.json'):
                 required[path]=dict(meta,state=state,generation=prior['generation'],role='previous')
     for path,meta in current['files'].items():
         required[path]=dict(meta,state=state,generation=generation,role='current')
@@ -361,7 +361,7 @@ def delivery(pub):
     active = pub.ledger['active']
     if active is not None:
         for path, meta in active['files'].items():
-            if path not in ('feed.json', 'wire2/feed.json'):
+            if path not in ('feed.json', 'wire2/feed.json', 'wire3/feed.json', 'wire3/motion/feed.json'):
                 manifest[path] = dict(meta, state=pub.head, generation=active['generation'], role='previous')
     for path, meta in snap['files'].items():
         manifest[path] = dict(meta, state=pub.head, generation=snap['generation'], role='current')
@@ -374,7 +374,7 @@ def _readback_error(message, path, expected, status, actual, *, phase='closure')
     # fixed metadata and digests, never URLs, credentials or response bodies.
     context = {
         'path': path,
-        'kind': 'mutable-root' if path in ('feed.json', 'wire2/feed.json') else 'immutable-file',
+        'kind': 'mutable-root' if path in ('feed.json', 'wire2/feed.json', 'wire3/feed.json', 'wire3/motion/feed.json') else 'immutable-file',
         'phase': phase, 'status': status,
         'expected': None if expected is None else {'bytes': len(expected), 'sha256': _sha(expected)},
         'actual': {'bytes': len(actual), 'sha256': _sha(actual)},
@@ -418,17 +418,18 @@ class Site:
                     continue
                 code, actual = self.get(path, len(raw))
                 if code != 200 or actual != raw:
-                    kind = 'mutable root' if path == 'wire2/feed.json' else 'immutable file'
+                    kind = 'mutable root' if path in ('wire2/feed.json', 'wire3/feed.json', 'wire3/motion/feed.json') else 'immutable file'
                     raise _readback_error('live ' + kind + ' missing, mixed or corrupt',
                                           path, raw, code, actual)
-            # Both wire-major roots are mutable. A stable v1 root cannot prove
-            # wire2 remained coherent after its first read during the closure.
-            if 'wire2/feed.json' in expected:
-                code, actual = self.get('wire2/feed.json', 8192)
-                if (code, actual) != (200, expected['wire2/feed.json']):
-                    raise _readback_error('live versioned feed changed during exact closure observation',
-                                          'wire2/feed.json', expected['wire2/feed.json'], code, actual,
-                                          phase='after-closure')
+            # Versioned roots are mutable. A stable v1 root cannot prove they
+            # remained coherent after their first read during the closure.
+            for root_path in ('wire2/feed.json', 'wire3/feed.json', 'wire3/motion/feed.json'):
+                if root_path in expected:
+                    code, actual = self.get(root_path, 8192)
+                    if (code, actual) != (200, expected[root_path]):
+                        raise _readback_error('live versioned feed changed during exact closure observation',
+                                              root_path, expected[root_path], code, actual,
+                                              phase='after-closure')
             code, actual = self.get('feed.json', 8192)
             if (code, actual) != (200, feed):
                 raise _readback_error('live feed changed during exact closure observation',

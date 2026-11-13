@@ -1,0 +1,604 @@
+{
+  "schemaVersion": 1,
+  "id": "origin-whole-20261112-r1",
+  "reviewedAt": "2026-11-12",
+  "sources": [
+    "https://cnes.fr/projets/callisto",
+    "https://edocs.tib.eu/files/e01mr24/1891513125.pdf",
+    "https://elib.dlr.de/211012/1/Flight%20Qualification%20of%20the%20Red%20Kite%20Solid%20Rocket%20Motor.pdf",
+    "https://elib.dlr.de/82084/",
+    "https://iki.cosmos.ru/news/pribory-iki-ran-na-bortu-elektro-l-no5",
+    "https://kw.beijing.gov.cn/ztzl/rdzt/kjrmt/202409/t20240910_3806951.html",
+    "https://link.springer.com/article/10.1007/s12567-026-00733-z",
+    "https://magellan.aero/press-release/magellan-aerospace-black-brant-rocket-successfully-launched/",
+    "https://moraba.de/en/current-moraba-missions/mapheus/",
+    "https://moraba.de/en/equipment/rocket-systems/",
+    "https://moraba.de/wp-content/uploads/2020/11/MORABA_Launch_Vehicles_2020-05.pdf",
+    "https://rscience.gsfc.nasa.gov/keydocs/Sounding_Rockets_Annual_Report_2012.pdf",
+    "https://sscspace.com/news/german-science-rocket-mapheus-11-launched-from-esrange/",
+    "https://sscspace.com/news/news-mapheus-16-launched/",
+    "https://static.sse.com.cn/stock/disclosure/announcement/c/202603/002180_20260331_AA6Y.pdf",
+    "https://un-spider.org/network/regional-support-offices/iranian-space-agency-isa",
+    "https://www.aevum.com/",
+    "https://www.aevum.com/careers",
+    "https://www.ariane.group/en/governance/",
+    "https://www.asi.it/2021/07/vega-e-esa-e-avio-firmano-un-nuovo-contratto/",
+    "https://www.cnsa.gov.cn/english/n6465652/n6465653/c6806992/content.html",
+    "https://www.dia.mil/Portals/27/Documents/News/Military%20Power%20Publications/Iran_Military_Power_LR.pdf",
+    "https://www.dlr.de/en/images/2021/4/design-mapheus-10-rocket",
+    "https://www.dlr.de/en/latest/news/2023/04/successful-first-flight-of-red-kite",
+    "https://www.dlr.de/en/latest/news/2024/four-hundred-kilograms-of-research-in-microgravity",
+    "https://www.dlr.de/en/latest/news/2025/athea-flight-experiment-successfully-launched",
+    "https://www.dlr.de/en/latest/news/2025/two-red-kite-motors-propel-500-kilograms-of-experiments-into-microgravity",
+    "https://www.e-disclosure.ru/portal/event.aspx?EventId=OhHcaWPLS0mTnQx3bHJ4cw-B-B",
+    "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2011%20devcon%20report.pdf",
+    "https://www.gov.br/aeb/pt-br/programa-espacial-brasileiro/cooperacao-internacional/alemanha",
+    "https://www.ilslaunch.com/services/launch-vehicles/",
+    "https://www.imech.cas.cn/research/kyjz/202601/t20260122_8117916.html",
+    "https://www.landspace.com/news-detail.html?itemid=71",
+    "https://www.nasa.gov/image-article/wallops-sounding-rocket-launch-jan-11-2012/",
+    "https://www.nasa.gov/wp-content/uploads/2023/12/newsnotes-40-4-winter-2023.pdf",
+    "https://www.researchgate.net/publication/306253319_THE_IMPROVED_ORION_SOUNDING_ROCKET_AS_A_VEHICLE_FOR_STUDENT_EXPERIMENTS",
+    "https://www.sbir.gov/awards/190511",
+    "https://www.tasnimnews.ir/en/news/2026/02/10/3513467/iran-s-latest-satellite-launcher-innovations-target-higher-horizons"
+  ],
+  "reason": "Complete36-record origin provenance review; country programme and corporate origin remain independent of launch geography, suppliers and operators. Explicit joint/unknown origins retained with exact evidence gaps. No lifecycle changes.",
+  "assets": [],
+  "updates": [
+    {
+      "identity": "ll2:configuration:46",
+      "sources": [
+        "https://www.ilslaunch.com/services/launch-vehicles/",
+        "https://iki.cosmos.ru/news/pribory-iki-ran-na-bortu-elektro-l-no5"
+      ],
+      "changes": {
+        "curatedOriginId": null,
+        "curatedOriginSources": [
+          "https://www.ilslaunch.com/services/launch-vehicles/",
+          "https://iki.cosmos.ru/news/pribory-iki-ran-na-bortu-elektro-l-no5"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "unresolved-exact-programme: Russian Proton family and exact DM03 flight are supported, but the acquired first-party pages do not independently state complete exact-configuration development provenance. The February2026 flight is not treated as retirement. Needed: Primary whole-programme national development statement for ProtonM with DM03, or an explicit sourced complete-variant relationship to the nationally attributed programme."
+      }
+    },
+    {
+      "identity": "ll2:configuration:142",
+      "sources": [
+        "https://www.tasnimnews.ir/en/news/2026/02/10/3513467/iran-s-latest-satellite-launcher-innovations-target-higher-horizons"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:32",
+        "curatedOriginSources": [
+          "https://www.tasnimnews.ir/en/news/2026/02/10/3513467/iran-s-latest-satellite-launcher-innovations-target-higher-horizons"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-programme: Iranian national indigenous whole-launcher programme, explicitly named by its agency head; independent of manufacturer and launch site."
+      }
+    },
+    {
+      "identity": "ll2:configuration:217",
+      "sources": [
+        "https://www.tasnimnews.ir/en/news/2026/02/10/3513467/iran-s-latest-satellite-launcher-innovations-target-higher-horizons"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:32",
+        "curatedOriginSources": [
+          "https://www.tasnimnews.ir/en/news/2026/02/10/3513467/iran-s-latest-satellite-launcher-innovations-target-higher-horizons"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-programme: Iranian national indigenous whole-launcher programme, explicitly named by its agency head; independent of manufacturer and launch site."
+      }
+    },
+    {
+      "identity": "ll2:configuration:481",
+      "sources": [
+        "https://www.nasa.gov/wp-content/uploads/2023/12/newsnotes-40-4-winter-2023.pdf",
+        "https://magellan.aero/press-release/magellan-aerospace-black-brant-rocket-successfully-launched/"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:26",
+        "curatedOriginSources": [
+          "https://www.nasa.gov/wp-content/uploads/2023/12/newsnotes-40-4-winter-2023.pdf",
+          "https://magellan.aero/press-release/magellan-aerospace-black-brant-rocket-successfully-launched/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-programme: Canadian-designed Black Brant IX family programme; NASA operation and US Terrier booster are distinct from whole-programme origin."
+      }
+    },
+    {
+      "identity": "ll2:configuration:524",
+      "sources": [
+        "https://cnes.fr/projets/callisto"
+      ],
+      "changes": {
+        "curatedOriginId": null,
+        "curatedOriginSources": [
+          "https://cnes.fr/projets/callisto"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "reviewed-multinational: Joint French/German/Japanese CNES-DLR-JAXA CALLISTO development. Needed: A scalar country cannot faithfully represent this sourced joint programme; retain null pending multi-origin representation."
+      }
+    },
+    {
+      "identity": "ll2:configuration:543",
+      "sources": [
+        "https://kw.beijing.gov.cn/ztzl/rdzt/kjrmt/202409/t20240910_3806951.html"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://kw.beijing.gov.cn/ztzl/rdzt/kjrmt/202409/t20240910_3806951.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-programme: Exact Hyperbola-3 independent Chinese development programme; not inferred from i-Space headquarters."
+      }
+    },
+    {
+      "identity": "ll2:configuration:549",
+      "sources": [
+        "https://www.asi.it/2021/07/vega-e-esa-e-avio-firmano-un-nuovo-contratto/"
+      ],
+      "changes": {
+        "curatedOriginId": null,
+        "curatedOriginSources": [
+          "https://www.asi.it/2021/07/vega-e-esa-e-avio-firmano-un-nuovo-contratto/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "reviewed-multinational: Vega-E is an ESA European development programme with Italian industrial leadership. Leadership alone cannot establish an exclusive Italian origin. Needed: A sourced scalar-origin attribution for the full European programme, or a multi-origin representation; do not substitute lead contractor country."
+      }
+    },
+    {
+      "identity": "ll2:configuration:556",
+      "sources": [
+        "https://www.landspace.com/news-detail.html?itemid=71"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://www.landspace.com/news-detail.html?itemid=71"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-programme: Exact lengthened ZQ-2E Block2 architecture matches the developer national programme assertion for55.9m Y5; not transferred from earlier ZQ-2E variants."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:terrier-improved-orion",
+      "sources": [
+        "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2011%20devcon%20report.pdf"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2011%20devcon%20report.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-programme: US NASA SRPO complete two-stage government vehicle programme, with exact stage topology distinguished from supplier nationality."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:terrier-improved-malemute",
+      "sources": [
+        "https://www.nasa.gov/image-article/wallops-sounding-rocket-launch-jan-11-2012/",
+        "https://rscience.gsfc.nasa.gov/keydocs/Sounding_Rockets_Annual_Report_2012.pdf"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://www.nasa.gov/image-article/wallops-sounding-rocket-launch-jan-11-2012/",
+          "https://rscience.gsfc.nasa.gov/keydocs/Sounding_Rockets_Annual_Report_2012.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-programme: NASA explicitly developed and qualified the exact complete two-stage research vehicle; foreign launch sites do not change that US programme origin."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:red-kite-improved-malemute",
+      "sources": [
+        "https://www.dlr.de/en/latest/news/2024/four-hundred-kilograms-of-research-in-microgravity",
+        "https://moraba.de/en/current-moraba-missions/mapheus/"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:4",
+        "curatedOriginSources": [
+          "https://www.dlr.de/en/latest/news/2024/four-hundred-kilograms-of-research-in-microgravity",
+          "https://moraba.de/en/current-moraba-missions/mapheus/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-programme: German MAPHEUS14 complete rocket-system programme with exact RK/IM architecture; Swedish launch services and payload partners remain separate."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:improved-orion",
+      "sources": [
+        "https://www.researchgate.net/publication/306253319_THE_IMPROVED_ORION_SOUNDING_ROCKET_AS_A_VEHICLE_FOR_STUDENT_EXPERIMENTS",
+        "https://moraba.de/wp-content/uploads/2020/11/MORABA_Launch_Vehicles_2020-05.pdf",
+        "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2011%20devcon%20report.pdf"
+      ],
+      "changes": {
+        "curatedOriginId": null,
+        "curatedOriginSources": [
+          "https://www.researchgate.net/publication/306253319_THE_IMPROVED_ORION_SOUNDING_ROCKET_AS_A_VEHICLE_FOR_STUDENT_EXPERIMENTS",
+          "https://moraba.de/wp-content/uploads/2020/11/MORABA_Launch_Vehicles_2020-05.pdf",
+          "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2011%20devcon%20report.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "unresolved-exact-programme: REXUS single-stage Improved Orion identity is documented. Acquired sources describe US motor heritage, NASA use and German/Swedish student-flight operations without establishing exact complete-vehicle development origin. Needed: A primary statement identifying the national development origin or shared development of the exact REXUS single-stage Improved Orion vehicle; motor or operator country is insufficient."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:kinetica2h",
+      "sources": [
+        "https://static.sse.com.cn/stock/disclosure/announcement/c/202603/002180_20260331_AA6Y.pdf"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://static.sse.com.cn/stock/disclosure/announcement/c/202603/002180_20260331_AA6Y.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-programme: Exact future whole-vehicle development programme in the Chinese issuer prospectus. Kinetica2H57m/1021t and Kinetica3 91m/1940t are separately specified; no transfer from older different architectures."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:kinetica3",
+      "sources": [
+        "https://static.sse.com.cn/stock/disclosure/announcement/c/202603/002180_20260331_AA6Y.pdf"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://static.sse.com.cn/stock/disclosure/announcement/c/202603/002180_20260331_AA6Y.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-programme: Exact future whole-vehicle development programme in the Chinese issuer prospectus. Kinetica2H57m/1021t and Kinetica3 91m/1940t are separately specified; no transfer from older different architectures."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:lihong1-y1-test",
+      "sources": [
+        "https://static.sse.com.cn/stock/disclosure/announcement/c/202603/002180_20260331_AA6Y.pdf",
+        "https://www.imech.cas.cn/research/kyjz/202601/t20260122_8117916.html"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://static.sse.com.cn/stock/disclosure/announcement/c/202603/002180_20260331_AA6Y.pdf",
+          "https://www.imech.cas.cn/research/kyjz/202601/t20260122_8117916.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-programme: Exact Chinese Lihong1 Y1 suborbital development test programme; no generalisation to an orbital model."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:vs50",
+      "sources": [
+        "https://www.gov.br/aeb/pt-br/programa-espacial-brasileiro/cooperacao-internacional/alemanha",
+        "https://moraba.de/wp-content/uploads/2020/11/MORABA_Launch_Vehicles_2020-05.pdf"
+      ],
+      "changes": {
+        "curatedOriginId": null,
+        "curatedOriginSources": [
+          "https://www.gov.br/aeb/pt-br/programa-espacial-brasileiro/cooperacao-internacional/alemanha",
+          "https://moraba.de/wp-content/uploads/2020/11/MORABA_Launch_Vehicles_2020-05.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "reviewed-multinational: Explicit joint Brazilian/German complete-vehicle development. Needed: A scalar country cannot represent the joint programme; retain null pending multi-origin representation."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:vlm1",
+      "sources": [
+        "https://www.gov.br/aeb/pt-br/programa-espacial-brasileiro/cooperacao-internacional/alemanha",
+        "https://moraba.de/wp-content/uploads/2020/11/MORABA_Launch_Vehicles_2020-05.pdf"
+      ],
+      "changes": {
+        "curatedOriginId": null,
+        "curatedOriginSources": [
+          "https://www.gov.br/aeb/pt-br/programa-espacial-brasileiro/cooperacao-internacional/alemanha",
+          "https://moraba.de/wp-content/uploads/2020/11/MORABA_Launch_Vehicles_2020-05.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "reviewed-multinational: Explicit joint Brazilian/German complete-vehicle development. Needed: A scalar country cannot represent the joint programme; retain null pending multi-origin representation."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:red-kite-red-kite",
+      "sources": [
+        "https://www.dlr.de/en/latest/news/2025/two-red-kite-motors-propel-500-kilograms-of-experiments-into-microgravity",
+        "https://sscspace.com/news/news-mapheus-16-launched/"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:4",
+        "curatedOriginSources": [
+          "https://www.dlr.de/en/latest/news/2025/two-red-kite-motors-propel-500-kilograms-of-experiments-into-microgravity",
+          "https://sscspace.com/news/news-mapheus-16-launched/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-programme: German-developed exact two-stage RK/RK MAPHEUS16 programme, independently corroborated by its Swedish launch partner; not inherited from RK/BB."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:black-brant-v-single-stage",
+      "sources": [
+        "https://www.nasa.gov/wp-content/uploads/2023/12/newsnotes-40-4-winter-2023.pdf",
+        "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2011%20devcon%20report.pdf"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:26",
+        "curatedOriginSources": [
+          "https://www.nasa.gov/wp-content/uploads/2023/12/newsnotes-40-4-winter-2023.pdf",
+          "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2011%20devcon%20report.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-programme: Canadian-designed Black Brant family; FAA explicitly identifies V as its single-stage complete-vehicle member, distinct from multistage configurations."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:improved-malemute",
+      "sources": [
+        "https://elib.dlr.de/82084/",
+        "https://moraba.de/wp-content/uploads/2020/11/MORABA_Launch_Vehicles_2020-05.pdf"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:4",
+        "curatedOriginSources": [
+          "https://elib.dlr.de/82084/",
+          "https://moraba.de/wp-content/uploads/2020/11/MORABA_Launch_Vehicles_2020-05.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-programme: German MORABA complete research-vehicle design documented individually for single IM and two-stage IM/IO. US military motor heritage and international flight qualification remain separate facts."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:red-kite-single-stage",
+      "sources": [
+        "https://elib.dlr.de/211012/1/Flight%20Qualification%20of%20the%20Red%20Kite%20Solid%20Rocket%20Motor.pdf",
+        "https://www.dlr.de/en/latest/news/2023/04/successful-first-flight-of-red-kite"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:4",
+        "curatedOriginSources": [
+          "https://elib.dlr.de/211012/1/Flight%20Qualification%20of%20the%20Red%20Kite%20Solid%20Rocket%20Motor.pdf",
+          "https://www.dlr.de/en/latest/news/2023/04/successful-first-flight-of-red-kite"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-programme: German SOAR single-stage complete-vehicle development, explicitly evidenced separately from motor manufacture and other Red Kite combinations."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:improved-malemute-improved-orion",
+      "sources": [
+        "https://elib.dlr.de/82084/",
+        "https://moraba.de/wp-content/uploads/2020/11/MORABA_Launch_Vehicles_2020-05.pdf"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:4",
+        "curatedOriginSources": [
+          "https://elib.dlr.de/82084/",
+          "https://moraba.de/wp-content/uploads/2020/11/MORABA_Launch_Vehicles_2020-05.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-programme: German MORABA complete research-vehicle design documented individually for single IM and two-stage IM/IO. US military motor heritage and international flight qualification remain separate facts."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:vs31-improved-orion",
+      "sources": [
+        "https://moraba.de/en/equipment/rocket-systems/",
+        "https://moraba.de/wp-content/uploads/2020/11/MORABA_Launch_Vehicles_2020-05.pdf"
+      ],
+      "changes": {
+        "curatedOriginId": null,
+        "curatedOriginSources": [
+          "https://moraba.de/en/equipment/rocket-systems/",
+          "https://moraba.de/wp-content/uploads/2020/11/MORABA_Launch_Vehicles_2020-05.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "reviewed-multinational: Exact S31/IO, S30/IO, S31/IM or S31/S30/IO topology belongs to the vehicle family MORABA explicitly develops with Brazilian IAE/DCTA/AEB; DLR design contribution does not erase joint programme provenance. Needed: A country attribution for the complete combination which resolves the explicitly joint Brazilian/German family development, or multi-origin representation."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:vs30-improved-orion",
+      "sources": [
+        "https://moraba.de/en/equipment/rocket-systems/",
+        "https://moraba.de/wp-content/uploads/2020/11/MORABA_Launch_Vehicles_2020-05.pdf"
+      ],
+      "changes": {
+        "curatedOriginId": null,
+        "curatedOriginSources": [
+          "https://moraba.de/en/equipment/rocket-systems/",
+          "https://moraba.de/wp-content/uploads/2020/11/MORABA_Launch_Vehicles_2020-05.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "reviewed-multinational: Exact S31/IO, S30/IO, S31/IM or S31/S30/IO topology belongs to the vehicle family MORABA explicitly develops with Brazilian IAE/DCTA/AEB; DLR design contribution does not erase joint programme provenance. Needed: A country attribution for the complete combination which resolves the explicitly joint Brazilian/German family development, or multi-origin representation."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:improved-malemute-improved-malemute",
+      "sources": [
+        "https://edocs.tib.eu/files/e01mr24/1891513125.pdf",
+        "https://sscspace.com/news/german-science-rocket-mapheus-11-launched-from-esrange/",
+        "https://www.dlr.de/en/images/2021/4/design-mapheus-10-rocket"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:4",
+        "curatedOriginSources": [
+          "https://edocs.tib.eu/files/e01mr24/1891513125.pdf",
+          "https://sscspace.com/news/german-science-rocket-mapheus-11-launched-from-esrange/",
+          "https://www.dlr.de/en/images/2021/4/design-mapheus-10-rocket"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-programme: German MORABA development and qualification of the exact IM/IM combination for MAPHEUS11, corroborated by SSC programme and DLR topology sources. US surplus motors are not relabelled."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:vs31-improved-malemute",
+      "sources": [
+        "https://moraba.de/en/equipment/rocket-systems/",
+        "https://moraba.de/wp-content/uploads/2020/11/MORABA_Launch_Vehicles_2020-05.pdf"
+      ],
+      "changes": {
+        "curatedOriginId": null,
+        "curatedOriginSources": [
+          "https://moraba.de/en/equipment/rocket-systems/",
+          "https://moraba.de/wp-content/uploads/2020/11/MORABA_Launch_Vehicles_2020-05.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "reviewed-multinational: Exact S31/IO, S30/IO, S31/IM or S31/S30/IO topology belongs to the vehicle family MORABA explicitly develops with Brazilian IAE/DCTA/AEB; DLR design contribution does not erase joint programme provenance. Needed: A country attribution for the complete combination which resolves the explicitly joint Brazilian/German family development, or multi-origin representation."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:vsb30-improved-orion",
+      "sources": [
+        "https://moraba.de/en/equipment/rocket-systems/",
+        "https://moraba.de/wp-content/uploads/2020/11/MORABA_Launch_Vehicles_2020-05.pdf",
+        "https://link.springer.com/article/10.1007/s12567-026-00733-z"
+      ],
+      "changes": {
+        "curatedOriginId": null,
+        "curatedOriginSources": [
+          "https://moraba.de/en/equipment/rocket-systems/",
+          "https://moraba.de/wp-content/uploads/2020/11/MORABA_Launch_Vehicles_2020-05.pdf",
+          "https://link.springer.com/article/10.1007/s12567-026-00733-z"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "reviewed-multinational: Exact S31/IO, S30/IO, S31/IM or S31/S30/IO topology belongs to the vehicle family MORABA explicitly develops with Brazilian IAE/DCTA/AEB; DLR design contribution does not erase joint programme provenance. Needed: A country attribution for the complete combination which resolves the explicitly joint Brazilian/German family development, or multi-origin representation."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:red-kite-black-brant",
+      "sources": [
+        "https://www.dlr.de/en/latest/news/2025/athea-flight-experiment-successfully-launched"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:4",
+        "curatedOriginSources": [
+          "https://www.dlr.de/en/latest/news/2025/athea-flight-experiment-successfully-launched"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-programme: German MORABA-developed complete ATHEAt RK/BB configuration. Its Black Brant second stage is Canadian; this country assertion describes programme origin, not all components."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:aevum-erv-a",
+      "sources": [
+        "https://www.aevum.com/",
+        "https://www.sbir.gov/awards/190511"
+      ],
+      "changes": {
+        "curatedOriginId": null,
+        "curatedOriginSources": [
+          "https://www.aevum.com/",
+          "https://www.sbir.gov/awards/190511"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "unresolved-exact-programme: Exact new Aevum vehicle is publicly specified, but US offices and an earlier unspecified SBIR launch system cannot prove this configuration national development origin. Needed: An explicit national development-origin statement for the exact ERV-A or RRV-A whole programme; do not inherit a company or RavnX flag."
+      }
+    },
+    {
+      "identity": "spacefox:configuration:aevum-rrv-a",
+      "sources": [
+        "https://www.aevum.com/",
+        "https://www.sbir.gov/awards/190511"
+      ],
+      "changes": {
+        "curatedOriginId": null,
+        "curatedOriginSources": [
+          "https://www.aevum.com/",
+          "https://www.sbir.gov/awards/190511"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "unresolved-exact-programme: Exact new Aevum vehicle is publicly specified, but US offices and an earlier unspecified SBIR launch system cannot prove this configuration national development origin. Needed: An explicit national development-origin statement for the exact ERV-A or RRV-A whole programme; do not inherit a company or RavnX flag."
+      }
+    },
+    {
+      "identity": "ll2:organization:34",
+      "sources": [
+        "https://un-spider.org/network/regional-support-offices/iranian-space-agency-isa"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:32",
+        "curatedOriginSources": [
+          "https://un-spider.org/network/regional-support-offices/iranian-space-agency-isa"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-organization: Iran national space agency identity, independently asserted by its UN programme partner."
+      }
+    },
+    {
+      "identity": "ll2:organization:103",
+      "sources": [
+        "https://www.e-disclosure.ru/portal/event.aspx?EventId=OhHcaWPLS0mTnQx3bHJ4cw-B-B"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:5",
+        "curatedOriginSources": [
+          "https://www.e-disclosure.ru/portal/event.aspx?EventId=OhHcaWPLS0mTnQx3bHJ4cw-B-B"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-organization: Exact RKK Energia corporate entity registered in Russia, supported by issuer disclosure of state registration."
+      }
+    },
+    {
+      "identity": "ll2:organization:274",
+      "sources": [
+        "https://www.cnsa.gov.cn/english/n6465652/n6465653/c6806992/content.html"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://www.cnsa.gov.cn/english/n6465652/n6465653/c6806992/content.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-organization: CNSA explicitly identifies i-Space as a Chinese private company; not inferred from its address."
+      }
+    },
+    {
+      "identity": "ll2:organization:282",
+      "sources": [
+        "https://www.aevum.com/",
+        "https://www.aevum.com/careers",
+        "https://www.sbir.gov/awards/190511"
+      ],
+      "changes": {
+        "curatedOriginId": null,
+        "curatedOriginSources": [
+          "https://www.aevum.com/",
+          "https://www.aevum.com/careers",
+          "https://www.sbir.gov/awards/190511"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "unresolved-exact-organization: Aevum exact corporate identity and US operations are supported. The official USPTO page exposed no case data; unofficial Delaware registration mirrors were not admitted. Needed: Primary corporate nationality/incorporation assertion for Aevum Inc, independently of US headquarters or customer contracts."
+      }
+    },
+    {
+      "identity": "ll2:organization:1032",
+      "sources": [
+        "https://www.dia.mil/Portals/27/Documents/News/Military%20Power%20Publications/Iran_Military_Power_LR.pdf"
+      ],
+      "changes": {
+        "curatedOriginId": "ll2:country:32",
+        "curatedOriginSources": [
+          "https://www.dia.mil/Portals/27/Documents/News/Military%20Power%20Publications/Iran_Military_Power_LR.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "verified-single-country-organization: Exact IRGC Aerospace Force is an Iranian armed-force branch, distinct from its deployment geography."
+      }
+    },
+    {
+      "identity": "ll2:organization:1044",
+      "sources": [
+        "https://www.ariane.group/en/governance/"
+      ],
+      "changes": {
+        "curatedOriginId": null,
+        "curatedOriginSources": [
+          "https://www.ariane.group/en/governance/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "reviewed-multinational: Exact ArianeGroup group spans national operational companies in France and Germany. French SAS incorporation cannot silently replace the group identity. Needed: A group-level national-origin assertion that resolves the exact entity, or multi-origin representation; not French subsidiary registration."
+      }
+    }
+  ],
+  "additions": []
+}

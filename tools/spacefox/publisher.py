@@ -155,7 +155,7 @@ def _snapshot(value):
         return
     _optional_keys(value, 'generation code_revision catalog_revision artifact_revision files schedule', 'artifact_profile')
     if 'artifact_profile' in value and (type(value['artifact_profile']) is not str
-                                      or value['artifact_profile'] not in ('feed-v1', 'visual-v2')):
+                                      or value['artifact_profile'] not in ('feed-v1', 'visual-v2', 'native-raster-v3', 'native-motion-v3')):
         raise StateError('unsupported artifact profile')
     _integer(value['generation'], 1)
     _digest(value['code_revision'], git=True)
@@ -185,7 +185,7 @@ def _feed_artifact(files):
     Old state-machine-only users may have an opaque feed.json. Product feeds
     have a schemaVersion, or use the reserved wire2 namespace.
     """
-    if any(type(path) is str and path.startswith('wire2/') for path in files):
+    if any(type(path) is str and path.startswith(('wire2/','wire3/')) for path in files):
         return True
     try:
         value = json.loads(files.get('feed.json', b''))
@@ -196,11 +196,17 @@ def _feed_artifact(files):
 
 def _product_files(files, profile):
     """Validate the independently selected profile, including its complete union."""
-    if type(profile) is not str or profile not in ('feed-v1', 'visual-v2'):
+    if type(profile) is not str or profile not in ('feed-v1', 'visual-v2', 'native-raster-v3', 'native-motion-v3'):
         raise StateError('unsupported artifact profile')
     from .wire import validate_feed
     try:
-        if profile == 'visual-v2':
+        if profile == 'native-motion-v3':
+            from .native_motion import validate_artifact
+            validate_artifact(files)
+        elif profile == 'native-raster-v3':
+            from .native_profile import validate_artifact
+            validate_artifact(files)
+        elif profile == 'visual-v2':
             from .visual_bridge import validate_artifact
             validate_artifact(files)
         feed = validate_feed(files.get('feed.json'))
@@ -225,6 +231,12 @@ def _legacy_product_profile(files):
     Current producer call sites always request visual-v2 independently.
     """
     try:
+        if 'wire3/motion/feed.json' in files:
+            _product_files(files, 'native-motion-v3')
+            return 'native-motion-v3'
+        if 'wire3/feed.json' in files:
+            _product_files(files, 'native-raster-v3')
+            return 'native-raster-v3'
         _product_files(files, 'feed-v1')
         return 'feed-v1'
     except StateError:
@@ -243,7 +255,7 @@ def validate_snapshot_artifact(snapshot, files, *, instance=None, selection_vali
     if profile is None:
         if not _feed_artifact(files):
             return None
-        profile = 'visual-v2' if 'wire2/feed.json' in snapshot['files'] else 'feed-v1'
+        profile = 'native-motion-v3' if 'wire3/motion/feed.json' in snapshot['files'] else 'native-raster-v3' if 'wire3/feed.json' in snapshot['files'] else 'visual-v2' if 'wire2/feed.json' in snapshot['files'] else 'feed-v1'
     feed = _product_files(files, profile)
     if require_selection_epoch and feed['publisher']['selectionValidatedUtc'] != selection_validated_utc:
         raise StateError('pending feed does not bind durable selection-validation age')
@@ -438,9 +450,10 @@ def _transition(old, new, archive_lookup=None):
             raise StateError('new candidate must pin current accepted state and tool')
         active = old['active']
         pending = new['pending']
-        if (active is not None and (active.get('artifact_profile') == 'visual-v2'
-                                   or 'wire2/feed.json' in active['files'])
-                and pending.get('artifact_profile', 'visual-v2' if 'wire2/feed.json' in pending['files'] else 'feed-v1') != 'visual-v2'):
+        profile_order={'feed-v1':1,'visual-v2':2,'native-raster-v3':3,'native-motion-v3':4}
+        def mode(snapshot):
+            return snapshot.get('artifact_profile','native-motion-v3' if 'wire3/motion/feed.json' in snapshot['files'] else 'native-raster-v3' if 'wire3/feed.json' in snapshot['files'] else 'visual-v2' if 'wire2/feed.json' in snapshot['files'] else 'feed-v1')
+        if active is not None and profile_order[mode(pending)]<profile_order[mode(active)]:
             raise StateError('versioned producer profile cannot silently regress')
     old_requests = {r['id']: r for r in old['requests']}
     new_requests = {r['id']: r for r in new['requests']}
