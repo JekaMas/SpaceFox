@@ -1,0 +1,14 @@
+setUpClass (tests.test_basic_reschedule.BasicRescheduleTest) ... ERROR
+
+======================================================================
+ERROR: setUpClass (tests.test_basic_reschedule.BasicRescheduleTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/tests/test_basic_reschedule.py", line 129, in setUpClass
+    raise AssertionError('native LS10 framework incomplete: ' + str(output / 'native-tests.log'))
+AssertionError: native LS10 framework incomplete: /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/native-tests.log
+
+----------------------------------------------------------------------
+Ran 0 tests in 26.413s
+
+FAILED (errors=1)

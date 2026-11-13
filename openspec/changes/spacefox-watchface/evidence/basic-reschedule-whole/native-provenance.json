@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "files": {
+    "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/build.json": "f6faefa77dd86ef030c63e724ebbae4b45032951681a2a262a4399b791bb8e49",
+    "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/compile.log": "4e446d6fe8fbce1494d941193aacb723b4cfb0b10b13539c350e27397c96b00a",
+    "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/reschedule-observation.json": "a3c4ac32cd878eb03ff1d57e7fa6e9ae415457498a1ff60d2f1bf3d5105b1bd2",
+    "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/native-tests.log": "2a676e7fa0964dad0252969bb8c510c64d1b3eab4b2e3dbef54e268d020cd25e",
+    "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/input/ReschedulePackets.mc": "69e27bd64317169208b2117e2e784d73e06c77d450f1f714e027ebdcb6e2509c",
+    "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/SpaceFox-reschedule-tests.prg": "bd2242f7acc9180d0eda377298c22bba3954e6fbbfe41cb4bf8b48b915519149"
+  },
+  "compiled_input_rule": "Native production/resources/test fixture/captured catalog plus generated current packet bytes and pinned compiler/profile are exact. Original build.json retains prior Python-driver hash honestly; subsequent driver-only receipt-reuse/absence-assertion/formatting edits do not change compiled inputs. Whole graph run regenerates and byte-checks the producer packet input rather than refreshing the original receipt.",
+  "original_driver": "The original driver digest in build.json is historical, not asserted equal to current wrapper."
+}

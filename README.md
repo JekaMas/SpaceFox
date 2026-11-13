@@ -15,7 +15,10 @@ additional setup controls. There is no layout/projection/clock-format selector.
 The current basic language properties WF12.P1/P3/P4 and task5.4 passed the actual
 18-case/six-command verifier after independent review and repair. Basic time and
 fields WF01.P1/WF03.P1 subsequently passed10/10cases through one command in an
-independent verification; physical task5.1 remains open. Actual FR165 SDK
+independent verification. Reschedule LS10.P1 passed4/4cases through one command;
+local signed packaging RL02.P2 passed11/11cases through two commands and an
+independent check of both actual PRG/IQ signatures and all327source inputs.
+Seven whole software properties are closed; physical task5.1 remains open. Actual FR165 SDK
 observations cover five languages, the captured1,822-launch/413-composition corpus,
 menu glyphs, normal settings activation, numeric clock and fixed scene. Read the
 [exact report](openspec/changes/spacefox-watchface/evidence/basic-main-review/FINAL.md)
@@ -35,8 +38,12 @@ local seconds arithmetic without improving source accuracy. Unknown time is
 
 The current map-only writer uses fresh `feed-state-map-v3` and
 `spacefox-state-bootstrap-map-v3` authority refs. The prior public writer is
-quiesced for a clean cutover; its data remains historical until a new qualified
-bootstrap is observed. No legacy payload migration or reader is supported.
+quiesced; a clean map-only bootstrap passed allfive jobs, followed by actual
+HTTPS readback of all96files/616444bytes. The live feed is2,718bytes, generation1.
+A subsequent metadata HTTP timeout remains recorded; the next timed run passed
+with no new source/metadata request. Those runs do not yet prove a later due
+source update or successful metadata refetch. No legacy payload migration or
+reader is supported.
 
 [Owner/fork guide](docs/AGENT_SETUP.md) · [Cloud delivery](docs/CLOUD_DELIVERY.md) ·
 [Native scene](docs/NATIVE_SCENE.md) · [Release/update guide](docs/RELEASE_AND_UPDATES.md).

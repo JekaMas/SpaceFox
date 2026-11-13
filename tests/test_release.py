@@ -13,6 +13,7 @@ import tempfile
 import threading
 import time
 import unittest
+from unittest.mock import patch
 import xml.etree.ElementTree as ET
 
 from tools import release
@@ -27,11 +28,12 @@ class ReleaseTest(unittest.TestCase):
         cls.base.chmod(0o700)
         cls.root = cls.base / "source"
         cls.root.mkdir()
-        for directory in ("watchface", "release", "licenses"):
-            shutil.copytree(ROOT / directory, cls.root / directory)
-        for name in ("tools/release.py", "tools/build_watchface.py", "tools/ReleaseInspector.java",
-                     "LICENSE", "THIRD_PARTY_NOTICES.md", "assets/rocket-pack/LICENSE",
-                     "docs/AGENT_SETUP.md", "docs/RELEASE_AND_UPDATES.md"):
+        # Admission now validates complete source-bound finite-language proof.
+        # Preserve its actual tracked closure, never invent a passing proof.
+        tracked = release.source_state(ROOT)["inputs"]
+        for name in tracked:
+            if not name or not (ROOT / name).is_file():
+                continue  # A Git submodule entry is not a source file.
             target = cls.root / name
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(ROOT / name, target)
@@ -63,7 +65,7 @@ class ReleaseTest(unittest.TestCase):
     @classmethod
     def commit(cls, message):
         cls.git("add", ".")
-        cls.git("commit", "-q", "-m", message)
+        cls.git("commit", "-q", "--allow-empty", "-m", message)
 
     @classmethod
     def make_key(cls, name, bits):
@@ -101,7 +103,7 @@ class ReleaseTest(unittest.TestCase):
         self.assertEqual(receipt["entry"], "SpaceFoxApp")
         self.assertEqual(receipt["version"], "0.1.0")
         self.assertEqual(receipt["products"], ["fr165"])
-        self.assertEqual(receipt["languages"], ["eng", "rus"])
+        self.assertEqual(receipt["languages"], ["eng", "rus", "deu", "fre", "spa"])
         self.assertFalse(receipt["official_release"])
         self.assertFalse(receipt["publication_ready"])
         self.assertFalse(receipt["production_identity"])
@@ -124,12 +126,24 @@ class ReleaseTest(unittest.TestCase):
         self.assertEqual(app.get("id"), "955b26e54df04e069c23cd95f9df5f01")
         self.assertEqual(app.get("version"), "0.1.0")
         self.assertEqual(app.find("iq:products/iq:product", NS).get("partNumber"), "006-B4432-00")
-        self.assertEqual([x.text for x in app.findall("iq:languages/iq:language", NS)], ["eng", "rus"])
+        self.assertEqual([x.text for x in app.findall("iq:languages/iq:language", NS)], ["deu", "eng", "fre", "rus", "spa"])
         text = (self.base / "first/release.json").read_text()
         self.assertNotIn(str(self.key), text)
         self.assertNotIn("PRIVATE KEY", text)
         self.assertIn("bitwise reproducibility is not claimed", receipt["reproducibility"])
         inputs = self.base / "first/inputs"
+        fields = dict(line.split(" = ", 1) for line in (inputs / "monkey.jungle").read_text().splitlines())
+        expected_fields = {"project.manifest": "manifest.xml", "base.sourcePath": "watchface/source",
+                           "base.resourcePath": "watchface/resources"}
+        internal = "rus deu fre spa ita por dut pol ukr ces slo hun ron bul hrv slv gre tur dan swe nob fin est lav lit zhs zht jpn kor ara heb ind zsm vie tha".split()
+        expected_fields.update({"base.lang." + code: "watchface/resources-" + code for code in internal})
+        self.assertEqual(fields, expected_fields)
+        for code in internal:
+            self.assertTrue((inputs / ("watchface/resources-" + code) / "strings/strings.xml").is_file())
+        for name in ("locales/catalog.json", "tools/native_language_policy.py",
+                     "corpus/real-schedule-basic-five-20261113/collection.json",
+                     "openspec/changes/spacefox-watchface/evidence/basic-main-review/finite/software-qualification.json"):
+            self.assertIn(name, receipt["source_inputs_sha256"])
         for name, expected in receipt["source_inputs_sha256"].items():
             self.assertEqual(hashlib.sha256((inputs / name).read_bytes()).hexdigest(), expected)
         self.assertEqual(self.git("status", "--porcelain"), "")
@@ -171,7 +185,7 @@ class ReleaseTest(unittest.TestCase):
                 self.git("reset", "--hard", self.base_revision)
         manifest = self.root / "watchface/manifest.xml"
         for old, new, message in ((b'id="fr165"', b'id="fr165m"', "products/languages"),
-                                   (b"<iq:language>rus</iq:language>", b"<iq:language>deu</iq:language>", "products/languages")):
+                                   (b"<iq:language>rus</iq:language>", b"<iq:language>ita</iq:language>", "products/languages")):
             original = manifest.read_bytes()
             manifest.write_bytes(original.replace(old, new))
             self.commit("Unqualified product/language control")
@@ -273,6 +287,33 @@ class ReleaseTest(unittest.TestCase):
         with self.assertRaisesRegex(BuildBlocked, "cryptographic"):
             release.inspect_iq(first / "SpaceFox.iq", altered, first / "developer-public.spki", self.context,
                                tree.getroot().find("iq:application", NS), ROOT / "tools/ReleaseInspector.java")
+        # Replace only tar's exported manifest view to exercise admission at its
+        # exact boundary. Actual signed export and tampered PRG above remain real.
+        real_run = subprocess.run
+        original_manifest = real_run(["/usr/bin/tar", "-xOf", str(first / "SpaceFox.iq"),
+                                      "manifest.xml"], capture_output=True, check=True).stdout
+        language_sets = (["eng", "rus", "deu", "fre"],
+                         ["eng", "rus", "deu", "fre", "spa", "ita"],
+                         ["eng", "rus", "deu", "fre", "spa", "spa"],
+                         ["eng", "rus", "deu", "fre", "es"],
+                         ["eng", "rus", "deu", "fre", None])
+        for languages in language_sets:
+            with self.subTest(exported_languages=languages):
+                changed = ET.fromstring(original_manifest)
+                nodes = changed.find("iq:application/iq:languages", NS)
+                nodes.clear()
+                for language in languages:
+                    ET.SubElement(nodes, "{" + NS["iq"] + "}language").text = language
+                mutated = ET.tostring(changed)
+                def read_changed_manifest(args, *positional, **kwargs):
+                    if args[:2] == ["/usr/bin/tar", "-xOf"] and args[-1] == "manifest.xml":
+                        return subprocess.CompletedProcess(args, 0, mutated, b"")
+                    return real_run(args, *positional, **kwargs)
+                with patch.object(release.subprocess, "run", side_effect=read_changed_manifest):
+                    with self.assertRaisesRegex(BuildBlocked, "IQ language mismatch"):
+                        release.inspect_iq(first / "SpaceFox.iq", first / "SpaceFox.prg",
+                            first / "developer-public.spki", self.context,
+                            tree.getroot().find("iq:application", NS), ROOT / "tools/ReleaseInspector.java")
         fake_iq = self.base / "renamed.iq"
         shutil.copyfile(first / "SpaceFox.prg", fake_iq)
         with self.assertRaisesRegex(BuildBlocked, "native 7z"):
@@ -388,18 +429,10 @@ class ReleaseTest(unittest.TestCase):
                 os.environ["SPACEFOX_TEST_KEY"] = previous
 
     def test_future_committed_min_api_admission_positive(self):
-        path = self.root / "watchface/manifest.xml"
-        tree = ET.parse(path)
-        tree.getroot().find("iq:application", NS).set("minApiLevel", "5.1.0")
-        tree.write(path, encoding="utf-8", xml_declaration=True)
-        path = self.root / "watchface/toolchain-lock.json"
-        lock = json.loads(path.read_text())
-        lock["min_api"] = "5.1.0"
-        path.write_text(json.dumps(lock))
-        self.commit("Qualified future minAPI admission control only")
+        # The once-future API5.1 is now the committed qualified source. Changing
+        # the proof-bound lock just to reserialize it would invalidate admission.
         actual = discover_toolchain(self.root)
         admitted = validate_manifest(self.root, actual["lock"])
         self.assertEqual(admitted.getroot().find("iq:application", NS).get("minApiLevel"), "5.1.0")
         self.assertEqual(actual["lock"]["profile_api"], "5.2.0")
-        # This asserts admission flexibility only. Native integration separately
-        # compiles/runs extended-code paging; it is not exercised by this check.
+        self.assertEqual(actual["lock"]["min_api"], "5.1.0")

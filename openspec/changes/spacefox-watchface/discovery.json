@@ -340,10 +340,10 @@
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s13_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls09_p2_s01_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls09_p2_s02_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls10_p1_s01_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls10_p1_s01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls10_p1_s02_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls10_p1_s02_positive_current",
+      "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_unchanged_refresh_negative",
+      "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_known_new_time_positive",
+      "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_different_launch_negative",
+      "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_withdrawn_time_positive",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s04_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s04_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p2_s01_negative_current",
@@ -896,10 +896,10 @@
         "unittest::tests.test_native_timing.NativeTimingTest.test_date_known_but_time_uncertain_negative",
         "unittest::tests.test_native_timing.NativeTimingTest.test_offline_countdown_after_sleep_positive",
         "unittest::tests.test_native_timing.NativeTimingTest.test_offline_countdown_after_sleep_negative",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls10_p1_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls10_p1_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls10_p1_s02_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls10_p1_s02_negative_current",
+        "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_known_new_time_positive",
+        "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_unchanged_refresh_negative",
+        "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_withdrawn_time_positive",
+        "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_different_launch_negative",
         "unittest::tests.test_native_timing.NativeTimingTest.test_freshness_threshold_reached_positive",
         "unittest::tests.test_native_timing.NativeTimingTest.test_freshness_threshold_reached_negative",
         "unittest::tests.test_device_acceptance.DeviceAcceptanceTest.test_offline_startup_without_a_cache_positive",
@@ -1510,10 +1510,10 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s02_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls07_p1_s02_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls10_p1_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls10_p1_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls10_p1_s02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls10_p1_s02_positive_current",
+        "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_unchanged_refresh_negative",
+        "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_known_new_time_positive",
+        "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_different_launch_negative",
+        "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_withdrawn_time_positive",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p2_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p2_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p2_s02_negative_current",
@@ -6822,10 +6822,10 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls08_p2_s13_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls09_p2_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls09_p2_s02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls10_p1_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls10_p1_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls10_p1_s02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls10_p1_s02_positive_current",
+        "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_unchanged_refresh_negative",
+        "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_known_new_time_positive",
+        "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_different_launch_negative",
+        "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_withdrawn_time_positive",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p2_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p2_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p2_s02_negative_current",
@@ -7304,6 +7304,140 @@
       ],
       "disposition": "current_change",
       "rationale": "Single coherent BASIC unit, no product/resource edits, no stress/Unicode/full-geography expansion and no physical acceptance claim."
+    },
+    {
+      "id": "D-basic-reschedule-whole",
+      "question": "Close only LS10.P1 four BASIC cases through captured-current producer feed and actual native countdown/status owners.",
+      "property_ids": [
+        "LS10.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_known_new_time_positive",
+        "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_unchanged_refresh_negative",
+        "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_withdrawn_time_positive",
+        "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_different_launch_negative"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read named schedule.py merge, provider.normalize_launch, wire.project_schedule/current validator, NativeFeed metadata/timing identity, FeedScene, ScheduleState and SpaceFoxView; inspect real captured MIN and SEC records, current envelope, graph and four test methods.",
+          "outcome": "Existing coarse Timing comparison already latches real MIN +20; exact-only defect hypothesis refuted, no production fix needed. Four direct witnesses replace planned LS10 bindings. No unchanged SDK/finite-language tests rerun.",
+          "results": [
+            {
+              "path": "tools/spacefox/schedule.py",
+              "classification": "reusable_unchanged",
+              "reason": "Timing comparison handles exact UTC equivalence and coarse/withdrawn target changes."
+            },
+            {
+              "path": "tools/spacefox/wire.py",
+              "classification": "reusable_unchanged",
+              "reason": "Real current schedule facts/flag projection and canonical schema3 admission."
+            },
+            {
+              "path": "watchface/source/NativeFeed.mc",
+              "classification": "reusable_unchanged",
+              "reason": "Actual native per-ID metadata latch and accepted current envelope parser."
+            },
+            {
+              "path": "watchface/source/FeedScene.mc",
+              "classification": "reusable_unchanged",
+              "reason": "MIN nominal target maps to minute arithmetic without source exact-time promotion."
+            },
+            {
+              "path": "tests/test_basic_reschedule.py",
+              "classification": "test_proof",
+              "reason": "Four direct actual-record producer/native cases and literal relations."
+            },
+            {
+              "path": "tests/fixtures/basic_reschedule/BasicReschedule.mc",
+              "classification": "test_proof",
+              "reason": "Four new native assertions consume generated real current packets."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "unavailable",
+          "query": "Exact owner paths supplied by assignment and current graph.",
+          "reason": "No selected isolated worktree semantic index; no index/login created.",
+          "outcome": "No semantic evidence claimed.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "unavailable",
+          "query": "Exact source/test paths supplied.",
+          "reason": "No qualified worktree index selected.",
+          "outcome": "No IDE semantic evidence claimed.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "One BASIC software property only. No production/resource changes, publisher/SDK gates outside changed test inputs retain original green receipts. Generic unrelated obligations stay in own properties."
+    },
+    {
+      "id": "D-basic-release-package-whole-20261113",
+      "question": "Repair actual five-language SDK IQ admission and self-verify the whole local signed package property on clean committed current source.",
+      "property_ids": [
+        "RL02.P2"
+      ],
+      "test_ids": [
+        "unittest::tests.test_release.ReleaseTest.test_sdk_export_and_provenance_positive",
+        "unittest::tests.test_release.ReleaseTest.test_development_discovery_boundary_preserved",
+        "unittest::tests.test_release.ReleaseTest.test_key_and_production_identity_negative",
+        "unittest::tests.test_release.ReleaseTest.test_manifest_source_and_output_negative",
+        "unittest::tests.test_release.ReleaseTest.test_container_and_signature_tamper_negative",
+        "unittest::tests.test_release.ReleaseTest.test_changed_source_during_sdk_build_negative",
+        "unittest::tests.test_release.ReleaseTest.test_update_and_backup_negative",
+        "unittest::tests.test_release.ReleaseTest.test_future_committed_min_api_admission_positive",
+        "unittest::tests.test_release.ReleaseTest.test_changed_generated_inputs_during_sdk_build_negative",
+        "unittest::tests.test_release.ReleaseTest.test_added_snapshot_inputs_during_sdk_build_negative",
+        "unittest::tests.test_canonical_sdk_export.CanonicalSdkExport.test_actual_joined_export_and_signature_qualification"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read release.py, original Java signature inspector, current build_manifest policy/native language proof closure, release tests, canonical SDK adapter, RL02.P2 graph, release lifecycle and actual rejected SDK manifest.",
+          "outcome": "Actual SDK sorts five exact language IDs. Ordered comparison falsely refused. Existing test fixture lacked finite proof closure and had obsolete two-language/API5.0/unqualified production assertions; current typed witnesses now preserve literal facts and existing safety guards. Snapshot provenance now retains admission proof inputs too. First actual whole run additionally detected stale lock-only receipt language provenance and same-version fixture empty-commit failure. Retain all pinned Jungle locale bindings and derive receipt languages from validated manifest; independent literal all36 resource/Jungle assertions added. Independent peer inspected these changes and candidate, reran the whole selected property successfully, and verified signatures and 327 Git-bound snapshot inputs; no additional production repair was necessary.",
+          "results": [
+            {
+              "path": "tools/release.py",
+              "classification": "change_candidate",
+              "reason": "Narrow exact unique language collection admission plus retention of actual source-bound admission inputs."
+            },
+            {
+              "path": "tests/test_release.py",
+              "classification": "test_proof",
+              "reason": "Current tracked source fixture and literal five-ID expectations retain original crypto/key/race/output controls; malformed manifest extraction view is explicitly substituted."
+            },
+            {
+              "path": "tests/test_canonical_sdk_export.py",
+              "classification": "test_proof",
+              "reason": "Actual public CLI current-source qualification export without editing historical receipts."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Named release owner and exact failing code/artifact supplied by root.",
+          "reason": "No unknown owner or subsystem discovery needed.",
+          "outcome": "Direct source/artifact reads; no semantic evidence claimed.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Known Python release and XML/SDK artifact boundary.",
+          "reason": "No symbol/refactor/index operation needed.",
+          "outcome": "Direct exact source reads; no index evidence claimed.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "CLOSED: different independent whole-unit peer executed all 11 property cases in both actual commands on clean 6dc25745, inspected owner and controls, independently verified candidate signatures, hashes, 327 tracked snapshot inputs, manifest and Jungle. Six prior closures retained without rerun. Physical/phone/Store and unrelated graph cases remain open."
     }
   ]
 }

@@ -29,14 +29,11 @@ The specification now has its own `openspec/LICENSE` and MIT scope README.
 See `docs/PUBLICATION.md` for exact branch/source provenance and readback checks.
 This source publication does not close native implementation or device tasks.
 
-Historical first 2026-11-13 scope (superseded by five-primary basic scope): retained36 locales/resources and selected26 primary modes for mandatory
-finite-real-corpus software review, ten best-effort. Whole scope policy implemented and
-positive/negative checks green; no nativeQualified flags promoted. See
-`../spacefox-watchface/evidence/primary-language-scope/PROGRESS.md`. Original
-foundation receipts retain their proof boundary; native task5.4 stays open.
-
-2026-11-13 current-only revision supersedes the earlier mandatory all26 human/device
-policy and retained Unicode-vector gate. Human review is optional/unobserved;
-physical release acceptance remains separate. No native task is checked off.
-
-2026-11-13 later basic-scope decision supersedes the preceding 26-primary partition: five primary modes (en, ru, de, fr, es), 31 best-effort. Renew source-bound software qualification for the fixed numeric countdown and actual menus; earlier observations stay historical.
+Current native scope (2026-11-13): five primary modes en/ru/de/fr/es, with all36
+internal resources retained and31 best-effort. Actual finite-corpus software
+qualification and menu/native checks closed native task5.4 and WF12.P1/P3/P4;
+see [current progress](../spacefox-watchface/PROGRESS.md) and
+[whole verifier](../spacefox-watchface/evidence/basic-main-review/whole-properties-run).
+The older26-language, Unicode-vector and globe gates are retired, not passed.
+Human review remains optional/unobserved; physical/phone/Store acceptance remains
+separate. This does not change or rerun the foundation's original proof boundary.

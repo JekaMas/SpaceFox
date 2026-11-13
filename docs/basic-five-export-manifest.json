@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "scope": "Reviewed basic map-only source plus closed WF12.P1/P3/P4 and WF01.P1/WF03.P1 software properties. Actual Ubuntu11-case publisher run passed at4db280e9; supplemental changes are assertion/evidence/docs and one unreferenced obsolete diagnostic deletion, with unchanged publisher runtime/data/native resources.",
+  "scope": "Reviewed basic map-only source and seven independently closed software properties: WF12.P1/P3/P4, WF01.P1/WF03.P1, LS10.P1, RL02.P2. Actual Ubuntu11-case publisher run retained; native/publisher inputs unchanged. Signed packaging owner repaired and actual local candidate verified; physical/phone/Store acceptance remains open.",
   "privateHistoryIsPublicParent": false,
-  "sourceCommit": "c21534073ddcf3416fa44136b6380b6fbf5d9d0c",
+  "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
   "files": [
     {
       "path": ".github/scripts/install-native-linux-renderer.sh",
@@ -5676,9 +5676,9 @@
     },
     {
       "path": "openspec/changes/localize-free-distribution/tasks.md",
-      "sourceCommit": "c21534073ddcf3416fa44136b6380b6fbf5d9d0c",
-      "gitBlob": "9ece045f348c965afdf4bb57f16de9ae191386c1",
-      "sha256": "9ab5fdbcf6e0c4df6520514577ded98893da9bdf2f14847f181ee0ef89ddf379"
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "e1bc20a90b2803c9a98575eb491330d16df707c8",
+      "sha256": "cf43920bee8fb8374864040bb050d3384541c8761feae29ee173420be4ca4f9a"
     },
     {
       "path": "openspec/changes/localize-free-distribution/verification.json",
@@ -5688,9 +5688,9 @@
     },
     {
       "path": "openspec/changes/spacefox-watchface/PROGRESS.md",
-      "sourceCommit": "987af71b22752096f876d210156d3d0af740abba",
-      "gitBlob": "59fb0cd2e755d4a9d9db93ea1dd5d5c8bc3791f0",
-      "sha256": "8aa8891d82ad140118882b940ed79d4a963b675bcfe15a7d90e3e5d3132024d6"
+      "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
+      "gitBlob": "ebb3ac20ed4040b69a03ba0d4594de9f7456bd9d",
+      "sha256": "41b2fac253738e10da4abffbec3852bb363b1ebccea8255d58a5035ab77b3d6a"
     },
     {
       "path": "openspec/changes/spacefox-watchface/ROOT-STATUS.md",
@@ -5706,9 +5706,9 @@
     },
     {
       "path": "openspec/changes/spacefox-watchface/discovery.json",
-      "sourceCommit": "987af71b22752096f876d210156d3d0af740abba",
-      "gitBlob": "61d9d927dae0f109e2fd17e8bf88919f1aa616ec",
-      "sha256": "f50b349147d3c208b5d343fee238de43858adf979e6b11e38d576e6fc085d462"
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "ae0941244d35e7770abfb43d9b205ca0f918059f",
+      "sha256": "90422965a7441e7e9841e7fbf7ea3324c6c5018019f67efbc28c36e4775e6c20"
     },
     {
       "path": "openspec/changes/spacefox-watchface/evidence/basic-main-review/FINAL-VERIFICATION.json",
@@ -6341,6 +6341,714 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/ROOT-JUDGMENT.json",
+      "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
+      "gitBlob": "302b3fcf3fc28196d50db38052406dcba503b2c7",
+      "sha256": "d660831eda65c96828860cfeed2808d1ec88f29809514c19d5960a6f2d74e7bf"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/bootstrap-131877587512.log",
+      "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
+      "gitBlob": "7e311b34924390565f426063b2d52d2e1723fcac",
+      "sha256": "1a83920a81d9d58616c2c11edab9cb187a98b52e085cd0dd5dd83dd16d9f5c00"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/bootstrap-131879639711.log",
+      "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
+      "gitBlob": "e30c31693a67f4cf941ef4a0947917b662e9255c",
+      "sha256": "3c300b27f4e50f70c2640d5f883f06160591996e13d8a82d6b714315a6ae7d35"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/bootstrap-131880523132.log",
+      "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
+      "gitBlob": "427e711db91d41c424fa91ab006e84d5e806a669",
+      "sha256": "b56ac37250e7677dba817c8e4988cea34cf4f5e8a481bda62f562625f043a114"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/bootstrap-jobs.json",
+      "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
+      "gitBlob": "aa942f8480cd6f7b92c8f30686fb617c4040de82",
+      "sha256": "1b3e68ba6b93a90f7779dd8058680baabd6736e6163f39298b2c0cf476c2f8a5"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/empty-map-site-after-ttl.json",
+      "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
+      "gitBlob": "9fb6a7e878951d2c26d346dfe763e9e36944d11e",
+      "sha256": "d268ac31c7f489d23d08420a20d76aaaafdb5f1c7ce7aafd4cc6a89f8a51c761"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/empty-map-site-readback-final.json",
+      "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
+      "gitBlob": "bac1b14be1b5c8e785cfc8607144fa1877e1e9e0",
+      "sha256": "6eec667fd26d2ba104845b37d07c4e57d074f80e609ca43d32c759c2c05e3ad7"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/empty-map-site-readback.json",
+      "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
+      "gitBlob": "78a8671c9deba8bfa3e7faea3d3d9dd0871ed6a8",
+      "sha256": "b5a8cd9e726619e7d074ed9dfe1c3edf8965332dd874d942699219e80c504c1f"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/map-only-complete-artifact-readback.json",
+      "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
+      "gitBlob": "44c0f6862c2a1101c886bdc9584b1702472b0cf8",
+      "sha256": "5e8e82e21ad0fadb12113fce3d05c7abe204b55f9f98d5101911eb7365e6c407"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/map-only-pages-replacement.json",
+      "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
+      "gitBlob": "9332c757eac1f0617ee4e37411c83a3a5ecce439",
+      "sha256": "961fbf03f77f5e2a0f70c72ec6b7e573c7907ae106eb5f4e3ae62d0188a72c79"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/map-only-public-feed.json",
+      "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
+      "gitBlob": "4d7a97e980c9cd186a66fb6570052358127955d2",
+      "sha256": "86eb3dd2584a960c42e445b44041ff88d7f673c5dc949464fd9478d26f2388a4"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/map-only-public-readback.json",
+      "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
+      "gitBlob": "15f57fefe3a9fcbe22f401b06cacb2255d6dda89",
+      "sha256": "f115a08a2b36ad8bcc51ef80856382e3cfe1c7f95136ad8546f4c45fa6b7575b"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/pre-map-cutover-feed.json",
+      "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
+      "gitBlob": "5f41d77d985f60fbc8c084672785fffa8ba8ad5f",
+      "sha256": "45f8a15552dd4814a9c14e592b31e1e14c50ad948edef3c8ae320a8004adaa27"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/timer-43424540872-131882616484.log",
+      "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
+      "gitBlob": "60b7ef7a2aea83c04365533ccfce14535f643698",
+      "sha256": "cdc499b5398be6fb5f30db3416c4eea585238ea1ac6d972aea90337faba05d9f"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/timer-43424540872-131884507163.log",
+      "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
+      "gitBlob": "726826fcc022276c2c00031ab0e141b64281f34a",
+      "sha256": "cb7915e5a44e56a7fe07a95a055c84a4b6d81f955b642c8279576871153c7938"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/timer-43424540872.json",
+      "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
+      "gitBlob": "e037a0cb87dca723ce29e01d9ade5e2acd0d5b37",
+      "sha256": "c3eafa43a5127e4bcdfdbe5a972d1d593964b60d2f9bece42adf1b2e1b5e2be9"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/timer-43426689644-131889722886.log",
+      "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
+      "gitBlob": "db4ec43666e8d922efd2b3a8443ae426f54a4f01",
+      "sha256": "ba708c3042a5a5c7d49e9f48dc187fbbd724918d41270f45704087835dd5b636"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/timer-43426689644-131890906742.log",
+      "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
+      "gitBlob": "008b2d720b9e166565b9cbc22672ef609927ff78",
+      "sha256": "b57fa86af83f7c97a64edcf7ebdd7ee52b9dfac1103ab6b7e23d70067976bdf0"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/timer-43426689644.json",
+      "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
+      "gitBlob": "aa3ee59c555ec9444e2c1957bdf13834213dd497",
+      "sha256": "6f3cfbdc8f290d16b5d55ad45f130d5e81f48cb1712853cf1a3ea684f0d4bbf2"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-publication-20261113/ubuntu-43417089608.log",
+      "sourceCommit": "5839b245c18143b3c6b2908dbbdbb1b0a6309202",
+      "gitBlob": "169401ab09ae07c4b66859e043a801e53601a77f",
+      "sha256": "aaa15b328d51c61b416aee4186705f424e74528651bf52d6517ab45c31d684cd"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/FINAL.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "0092c719b799782f14cbf5a9bdc4d523ee178c6d",
+      "sha256": "a7a7fbdfd4959314af0a24f2306bc86e06a8ecf05f05a2a7b1175a6945cb3990"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/HANDOFF.md",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "78c4b8a7f6518396ae7ab4fe6f102612d4743302",
+      "sha256": "8945ba4104d8d8dd59fd488209390b27d111cdff7addf7fa4a05bfd79070564e"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/STATUS.md",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "3d31793be01a6fdcfd4cffe484569e685b00d613",
+      "sha256": "a6b8d61d495f769d36e08d770ae9fc08b8c46e0e941c7538376418a8b965e53b"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/artifact-hashes.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "5aee2c60fed36677e29584df9ad893d04e52bd55",
+      "sha256": "9906971f63e9ca9540e15bcb2ca3d72dce777d90bb5354fae32e7c4795019e6c"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/baseline-build.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "f6abba865a9a8afa1044287d8fe03a7de85f4c00",
+      "sha256": "33fea1e1a3881e17cdbd764c5a8dca710d31dec81fe0b63a86eb9d62ed647fa5"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/baseline-export-manifest.xml",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "047b11427fca9f47135d85d5e2339c20d10866c5",
+      "sha256": "2e48da35b43eddda8688fbaf82cb868485977720c230fd43f1f182b7834a521c"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/baseline-query.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "150d00f835f9f4e8e883b7af696f9906808e5a62",
+      "sha256": "70f85bbf24600feb95f5951ae65c72187173c839daa84c8a39a2c08e9ee516f0"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/candidate-build.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "96dcb5418365c1eb87e68007a275c13fbba1d973",
+      "sha256": "02e9a274896c2af31ff1f281bc535796ffe9d01ed700bca245d0276d30915686"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/candidate-export-manifest.xml",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "28c1264d98d8dfd434b837bac703117ce6023129",
+      "sha256": "c9bb00cc01c320fa499b4f03e377340f7f6b691a19691669c12babe95739a26e"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/candidate-input-manifest.xml",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "df85c2343412c97c52301bb0a2c527fd673516e6",
+      "sha256": "fff69b825cb42a6d19e5e6c82a0d767e71bd96897b5ed0cfdbd973f0423db001"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/candidate-input-monkey.jungle",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "caefd48245b7628733b4f8f37e967b5b24219984",
+      "sha256": "1be181917bdfaa84e815f40bcb86d84eee191142dbf4e498068cf75cc5b907be"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/candidate-iq-compile.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "dd8e3037aec7c9ce4972e04b456c740be5d9770f",
+      "sha256": "66c4e67ed955db9713756a8f286fa1369614c5c51ad3bef26fd1dd116a073222"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/candidate-prg-compile.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "18ae650aed067040171bd38ceabcef0f83392700",
+      "sha256": "abf261813063dc7b8c6f8a136cf4bada2beaa24621d748f32410614df6d41eab"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/candidate-release.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "818af35b63d81387162437c0b81fed308d34606e",
+      "sha256": "f38a42325101fd870ed9ae8470267827380eb7453df16b4261d3178f71ddb2f5"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/discovery-validate.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "12c5142e0dfdbfd3aa6cbf9c0c1d3f999c681023",
+      "sha256": "ac9e3b71c71f50c2f4c72dcdc9f12cf74a96af8be272495f9b764c920fd2f7ad"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/failed-author-1/author-whole-1.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "f072c48b3dae116576047479b6df21109727cffd",
+      "sha256": "bc9eb0c9cc7f94e50ab65660dac77b514a69fdbfc473f1de5a1d03dc0266a154"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/failed-author-1/author-whole-1.json.canonical-core-release-sdk-export.stderr.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "8e39825bf52596a470994705a067c2834af0ccc5",
+      "sha256": "d056e42a896b60b33165445103073c326f9b411d9b891bc914af14452ddbf7e1"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/failed-author-1/author-whole-1.json.canonical-core-release-sdk-export.stdout.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/failed-author-1/author-whole-1.json.release-package-whole-checks.stderr.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "6448873b8ea828df7f8819b8de207bccf12c1feb",
+      "sha256": "8e48ef92558b2102e33073cf69537991a872ec9c70313241c657605fac07c3ca"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/failed-author-1/author-whole-1.json.release-package-whole-checks.stdout.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/graph-validate.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "f9a24cd34544ca5b8614ad55ae5990b96c75cc39",
+      "sha256": "04adb82bb374f783c1898c41fbacd3ab9fcdbf267b09d1492cb40776c75f8dda"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/green-author-2/author-whole-2.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "bba865d2f166e11df9bff203475490df80cc8792",
+      "sha256": "c65cbd5939ec9bebd3b900a81994b695efacd2f2a8e08a50734a88063238425f"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/green-author-2/author-whole-2.json.canonical-core-release-sdk-export.stderr.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "68e84d88599da1cfed2c19899b7fd9cb92e33b0e",
+      "sha256": "419f818fe57111b75b967e8d99f90138a4fa1b5a96bf9b8aad7a2c3dfa980291"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/green-author-2/author-whole-2.json.canonical-core-release-sdk-export.stdout.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/green-author-2/author-whole-2.json.release-package-whole-checks.stderr.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "38d0fd57e6d7393067aba40f26e6a2c2247d3d0e",
+      "sha256": "2b1fc6dd394080863ccd1e7f61ffb7c6a248cbe9c99c7e4cc0bbe1a05cb066d4"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/green-author-2/author-whole-2.json.release-package-whole-checks.stdout.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/independent-green/candidate-verification.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "943ee4b8c9521031b089b28fe1154f6332652fec",
+      "sha256": "fa1eeee85d931627269938f06c4d8f72efa76781e461e9c7f323b5dfa64daf14"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/independent-green/independent-discovery-validate.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "57d8af93e54e7e4ea05c6735674b04a29308a499",
+      "sha256": "f6f59a1648d5127dfe99b278bb2da14d5a7d4f8d0b3c2c0b551ff11da24cbd41"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/independent-green/independent-graph-validate.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "88b7194e157495cc325a96290c597678f78bd12e",
+      "sha256": "923961edcb41325986149c645b6e575d83e1a0db5050324043844d2c4fa3eb0f"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/independent-green/independent-loaded.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "c3fadaab2eebec12a76fe3183cd3d002a6d53f24",
+      "sha256": "a2f98f788559c6d3b604cf3ee612a5a3519d53ee7341987ede26865114b72dbc"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/independent-green/independent-run.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "e3e82b8bb2e6696aba1cab950100beda2045700b",
+      "sha256": "622babb47afd17d44f228a6ab27943359ee04c2167d418d4e099d2ebb4613fd5"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/independent-green/independent-run.json.canonical-core-release-sdk-export.stderr.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "f3da17d9856a571b08fe5479d5ac86fe983dc1a8",
+      "sha256": "10cade4b1752ca9aa6a6a1984e2d6f5c9f657972757159bc0b8206b2cc3135ca"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/independent-green/independent-run.json.canonical-core-release-sdk-export.stdout.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/independent-green/independent-run.json.release-package-whole-checks.stderr.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "8b2e2e014a9773a5836acb39653c3d3ac805e5bc",
+      "sha256": "d90652de3b7d9eb2bbef77e56a5aaf34199f0256d08ec5ca9f83ed69269a36be"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/independent-green/independent-run.json.release-package-whole-checks.stdout.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/query-before-green.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "c87f3c5d81a41fd83ee82251711789e551679e42",
+      "sha256": "d1b32d405800148e4e1849a0d2eaa0df7979e98f4d0eab1a655e5327a85c89fc"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/query-loaded-green.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "c3fadaab2eebec12a76fe3183cd3d002a6d53f24",
+      "sha256": "a2f98f788559c6d3b604cf3ee612a5a3519d53ee7341987ede26865114b72dbc"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/runner-external-output-refusal.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "fe416b7b229aca83e791609107e960607c626ce2",
+      "sha256": "84a7b97debefa7735add22ba19b2b46b596f5f653d1dd304f2a2ae2b3a03ee94"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-release-package-whole/source-hashes.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "1f4d38439fb745a0d844dc68d74a94c36ff73a70",
+      "sha256": "71b33d2e2583e4a0bd8f76f23263672d242b864190e20ad6791f123e89bed967"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/FINAL.md",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "9aff8dadf908a548cde01983d367a14bc8726bfb",
+      "sha256": "fbefc8738c2647b8137b18ea8eac79715572a5c5080e50977ac5bc0b02a3fdac"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/HANDOFF.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "eee7fb28400dc6164b2e481c2b9018d00a99250b",
+      "sha256": "1357de12b78d38ee5b134056f384733e50593b0ba5f9ac258c649bf7c016e183"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/compile-r2.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "628851c188254232e3585c88367581f57819d6de",
+      "sha256": "cd12365fdb4eb0b0b69bed5033ebaef1be58d25eb8e7d0603cfe3bf488909d2e"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/compile-r3.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "d8b7d7c21157b01865420a94bd23293b686025b3",
+      "sha256": "6720afc0f46cfc5716ee162f6086b4ea61aa7f0f9cce22f4ad97bf690a9ac430"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/discovery-validate.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "7205e1793b9340786dcf7ddc1660eb344a356f59",
+      "sha256": "1ef7a39a012144e714177654a4e4486ed100861c73dda934f27bdcc2843c540f"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/graph-validate.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "f40c5d68aff7ca759d019343b60bdae2ee20929c",
+      "sha256": "4679d56c4d5afb338731724c8975115eb68381eca942395659d3d81ac18f49f6"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/independent-query.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "526af68d6644ccfa6f1998fb1aae54644def7986",
+      "sha256": "93106624ba8a3e00d850975d6a535894719d37b1b5c5b5d5cf5f4f9df1d27905"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/independent-run.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "30899e398b01760fba68c8bcc8ed048267ecd834",
+      "sha256": "0f22783274c3bc3e5aee7503a2b459f04d7d97d84bb546ef48e72f0e3211c552"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/independent-run.stderr.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "99be7c520cc280a0bda17dc5a57bee1b23c559cc",
+      "sha256": "9644733c4fc2ee9ee511e841eb81d6694ffa1783ec3188e329309c3aec55e57c"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/independent-run.stdout.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "5a5c85c1683244e2bd52a81ddf6f8b508d0b44dc",
+      "sha256": "027de761c84461e7e1870009b9151476078f327684c17301cdfe4a9e5de52617"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/lint.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "9e9943ab2bdb124e2a174fe0283e15a8e2ee0e88",
+      "sha256": "9d2d18ce56a52f8971c4b61f9968f8b7cc8e2adfd113970e2b2b7eb78a8e0727"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native-provenance.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "b39bd8d0fdba847bbe8e6726a56b81c0fba77b07",
+      "sha256": "8475996ded0d88119d2cf38d24a3b7c5acd8e70a3fd011a5b99966a7c2633a7d"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native-r4.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "4d0a32ab44f6ee2ca3a5a3025b33c97a964df5ab",
+      "sha256": "b03a7909cc2eca0bb78c68c2391e94a40ad888ce522f3baff4a847e8116521c8"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native-r5.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "1e3fd2333679221658efd2aee75dc9eef34f0f19",
+      "sha256": "45a0419f331af36d3fb2bc3abf2408bcc667a0c31a45c33342242d218d451913"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/build.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "bd0a5b9d1e4cfd9607c58e55ec6ad538c2b59e5b",
+      "sha256": "f6faefa77dd86ef030c63e724ebbae4b45032951681a2a262a4399b791bb8e49"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/compile.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "c21ca1f89e2391230c0bc07f2dbf454283f5f1c7",
+      "sha256": "4e446d6fe8fbce1494d941193aacb723b4cfb0b10b13539c350e27397c96b00a"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/input/ReschedulePackets.mc",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "4d82bccb9b87442a6aa8b0fd95c7a0ec412adf46",
+      "sha256": "69e27bd64317169208b2117e2e784d73e06c77d450f1f714e027ebdcb6e2509c"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/manifest.xml",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "a83d4b4b3e773dc341d7d6ebac978375031e0e99",
+      "sha256": "0c5f0e734bd3abb7e6743bf5c930ada011c4e641ed7828ba3e671af30dfd9792"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/monkey.jungle",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "8f638ee6c9f3b975f30ca628154899daa4d27649",
+      "sha256": "925be0e0f6e15186fa7ffc97ad19cbc3ee0753d0e4566ded25dcd35131136c4f"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/native-tests.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "e402b83f2d89dcb5e170a06115f72d9e5b4f5dbe",
+      "sha256": "2a676e7fa0964dad0252969bb8c510c64d1b3eab4b2e3dbef54e268d020cd25e"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/reschedule-observation.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "28ce4820d05641eb9b1c31c4841711d5681d3c78",
+      "sha256": "a3c4ac32cd878eb03ff1d57e7fa6e9ae415457498a1ff60d2f1bf3d5105b1bd2"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/openspec-strict.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "f709ff8ecdf26d8c89a6717ea40401089f554dac",
+      "sha256": "bb30962e45232b83c62b3042793fcb7ef7c964886fe8219404d2d8b1d9c6429c"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/query-before-run.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "ec3d46d4fdcd759a9ffa71b9e49c5231671c4050",
+      "sha256": "28d7209414509f8bd7fac0aa7b88a0485086f772771433cf145bcf83b3144ddb"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/query-final-closed.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "526af68d6644ccfa6f1998fb1aae54644def7986",
+      "sha256": "93106624ba8a3e00d850975d6a535894719d37b1b5c5b5d5cf5f4f9df1d27905"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/query-green.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "8f707b5073616b0960fc22b2bd6c0ba7b0c292a4",
+      "sha256": "09cd112c54d00a7d9092e2b812329834b11a4ecd36453a3c6c50188c87cfb247"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-closed.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "5797adeb3d55ded9468e302087a3fe965ff5dfad",
+      "sha256": "eb7df72fb516417850f5b4ed0854e7a154696a37fc733237d0fca9b2d808ea1d"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-closed.json.basic-reschedule-whole.stderr.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "c94987f5c8e4c7c9f0ba420d9f0d4faa1753634c",
+      "sha256": "64beee182ba066ea7f38e7d1499d0cd6c0660e01312366c8baf57b4caeb188ed"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-closed.json.basic-reschedule-whole.stdout.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "673af1970bb6c63a9be10e32e57de3640842cf27",
+      "sha256": "f7dd95e9a290f187b6d5a44a2365fa62d34d54b1362c98b6cb5156f96b9f321d"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-final-closed.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "7c701a832b23460d201ab356a74aa2b1cf4d1352",
+      "sha256": "54fa400c6421f7aa930899af11f40faf8cad1ad145db12629a99c068d290649b"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-final-closed.json.basic-reschedule-whole.stderr.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "c4ee39427a54e3ddcae5b1573103a79040f018f0",
+      "sha256": "f1a6902d872bee020fc8aac7a9918cec670bf1551989302d140481121bcf3956"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-final-closed.json.basic-reschedule-whole.stdout.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "673af1970bb6c63a9be10e32e57de3640842cf27",
+      "sha256": "f7dd95e9a290f187b6d5a44a2365fa62d34d54b1362c98b6cb5156f96b9f321d"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-final.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "d782b6f4865bf8512410070b5c4f11006d168da0",
+      "sha256": "7a4506f4dda71bfc0aac4f363fa03b44217198104c43f9c64aa7a01a7ffc2432"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-final.json.basic-reschedule-whole.stderr.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "a4fd643fa479a2ef3fcea5a4c1ac2220b21539bc",
+      "sha256": "9dbc06fadc2712e29265b00f6544a0ed02a4153616e281aee7e3ba58f281666d"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-final.json.basic-reschedule-whole.stdout.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "673af1970bb6c63a9be10e32e57de3640842cf27",
+      "sha256": "f7dd95e9a290f187b6d5a44a2365fa62d34d54b1362c98b6cb5156f96b9f321d"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-green-r2.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "f60acb5dbaa36cc46a236535245244643a56f5ad",
+      "sha256": "6ab5db156a8bb3f68b2d18c13cc0fd680b0a4acc736f48dea8d03667da5c8828"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-green-r2.json.basic-reschedule-whole.stderr.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "d21fa0e742661210a5113bbe929c4084d4fe49d2",
+      "sha256": "bc8cf95cd60b272e9a313d1477cff0941f4ecdd5efec391dee028bc1d0116994"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-green-r2.json.basic-reschedule-whole.stdout.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "673af1970bb6c63a9be10e32e57de3640842cf27",
+      "sha256": "f7dd95e9a290f187b6d5a44a2365fa62d34d54b1362c98b6cb5156f96b9f321d"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-green.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "aeb8a296bca246954d793b85a639630fac2a11bc",
+      "sha256": "6ddd0ff634a6209dff7683b20a0f149798146e047606e8eb6ee51731a82bdd0e"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-green.json.basic-reschedule-whole.stderr.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "d04ffdf376ce6ff047b6069560645a9d1b995c20",
+      "sha256": "d30ad3425719012d3d594c46ee825ab992f877f4181c36f0a51778251e8e6b78"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-green.json.basic-reschedule-whole.stdout.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "673af1970bb6c63a9be10e32e57de3640842cf27",
+      "sha256": "f7dd95e9a290f187b6d5a44a2365fa62d34d54b1362c98b6cb5156f96b9f321d"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-initial.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "e39c147d097eeb110660817c3de1244717f2e160",
+      "sha256": "4d366e9e78429cca64bc1fc8fb7bca5f828812836b854946ad9185dd59802a97"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-initial.json.basic-reschedule-whole.stderr.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "c42af709e544ea9f3e864aecd997189ffdfdb9ef",
+      "sha256": "cc555feaef1cc45b717a8067e5cffbab9c47e08f31c33cfc595dbd4376f1cf16"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-initial.json.basic-reschedule-whole.stdout.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-r2.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "3d87e6c9514c051f3ea55483a834acdec490677a",
+      "sha256": "57ef8f0d2c3f47009fbcedf2560a80e4a6cbf48bd080e7d8df898c76a15e29da"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-r2.json.basic-reschedule-whole.stderr.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "7d7433bd7a9d4656838673aede1fe2ca05bd98e5",
+      "sha256": "4eda0d85e84ae6c06a09f3653cffdbc2dfddef1bd2a2f6285379e873e816dd86"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-r2.json.basic-reschedule-whole.stdout.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-r3.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "8cbdecbc8cd493eb9acfa5638bbbf4a2d7acf8af",
+      "sha256": "a4c005bbf643afbc32df772d867f5d16b99b1704380d27071e4ce98c8632ecf6"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-r3.json.basic-reschedule-whole.stderr.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "52ee367e8dcb188d48ed2aa9b68e4791c2b3ab50",
+      "sha256": "ea556414455ff04ef17b73c5a61c2295d0975ab4c4dee1a93550827ee9201a95"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-r3.json.basic-reschedule-whole.stdout.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-r4.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "a6626964fadc11b33a18fadc236bd754100c2e23",
+      "sha256": "183057bd240453636b1cfae9802fb69e65502613e4f2a02754f5c928311d9133"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-r4.json.basic-reschedule-whole.stderr.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "5aee8b9babdff76d40b571bb796c96fe99279015",
+      "sha256": "4b165ae873a1ea02841862123f687a60ab0d9ebc2e62c42e431d95d251853abf"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-r4.json.basic-reschedule-whole.stdout.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-r5.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "f4091c685ec664a3fea59478bd228bdeef0cfd86",
+      "sha256": "e666f267e0dda87d82db95ed98e23db32d6bb66a805af55fcaefd78c18bfaee1"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-r5.json.basic-reschedule-whole.stderr.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "877b6e73fad1e641c6480aabf482c22379598fb0",
+      "sha256": "607cf227f9a2cfe3e3f73d7854c785071dcec87180afa2afb7b066ae8c30963e"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-r5.json.basic-reschedule-whole.stdout.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-r6.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "40a125bb5f4696fdfaecbbd91d626fcf03285589",
+      "sha256": "b7c8e69fcf44d02a5987d1da9dacc437f923ce880c52e852c65dad1cbc9949ae"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-r6.json.basic-reschedule-whole.stderr.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "f75e85f1ef23aeb12ea85942d2c54c84ec5ac2b7",
+      "sha256": "14e7f08c0ad0e9b4aad665c00f7108fb143dcc9f0fc1b5f535f15632bba303d1"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-r6.json.basic-reschedule-whole.stdout.log",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/timeout-r6.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "c6afecc795618741ee61875ae6549076393ca3c8",
+      "sha256": "430e596d8f26936b5fc593f36077fc47bf23be5ce222b387368cb55a14172ac8"
+    },
+    {
       "path": "openspec/changes/spacefox-watchface/evidence/basic-time-fields-whole/FINAL-VERIFICATION.json",
       "sourceCommit": "987af71b22752096f876d210156d3d0af740abba",
       "gitBlob": "3a61dbf54d07b5a37a5ea117b1b2274b2cd2cda6",
@@ -6573,6 +7281,18 @@
       "sourceCommit": "987af71b22752096f876d210156d3d0af740abba",
       "gitBlob": "812a0f133dbf638e993733179222e6e72d20eaf3",
       "sha256": "1bb097e62de28789301e6f5777e61a0d1ce6a638691ebf9066f998e0c35139fc"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/judge/basic-release-package-root-whole.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "d07a3e8aeb90da046e1bee64eaefa800d5b395d7",
+      "sha256": "ef537c6e442a8d02a9be258d0351020c495de913a03b269e36a8aeb24150cca5"
+    },
+    {
+      "path": "openspec/changes/spacefox-watchface/evidence/judge/basic-reschedule-root-whole.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "9adee905251c38fdf20f775fa8df2cd8708c84d3",
+      "sha256": "4264e698ad2c1aff16b053bbcb21f81b3750e9b5e126b79ad9b5a4e8014c5445"
     },
     {
       "path": "openspec/changes/spacefox-watchface/evidence/judge/basic-time-fields-root-whole.json",
@@ -6924,15 +7644,15 @@
     },
     {
       "path": "openspec/changes/spacefox-watchface/tasks.md",
-      "sourceCommit": "987af71b22752096f876d210156d3d0af740abba",
-      "gitBlob": "a408a5706ff0ce7ab0300e9ddbbd5412d66e6426",
-      "sha256": "69f0057b48d826531e89386e0feafe38ed9d43570e67ea1bb91bde465caf022f"
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "f1d26dafdb4a97ab03c9b0e5da537009b868f41a",
+      "sha256": "1ddb909b96c7e37e8ec24109ce6a59626b4984fe3737cab630f9aaf328c69383"
     },
     {
       "path": "openspec/changes/spacefox-watchface/verification.json",
-      "sourceCommit": "987af71b22752096f876d210156d3d0af740abba",
-      "gitBlob": "2ee0abd276b44bdfb0f0e08bc57a48f13560a790",
-      "sha256": "5ac16e770c1f2d9d24fed01581b31ef2a8ba3a9c05696d2dd389b0b4226d73c3"
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "ed241a615d5dd7c57999cae9f9031e6a44e310aa",
+      "sha256": "97bfec659ab7ac1d3b68a2d02bb03a9ae2aaaa9a1d822ed062c331f06cfdf90d"
     },
     {
       "path": "release/HANDOFF.md",
@@ -6963,6 +7683,18 @@
       "sourceCommit": "c21534073ddcf3416fa44136b6380b6fbf5d9d0c",
       "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/fixtures/basic_reschedule/BasicReschedule.mc",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "50e8c54cf59f1b34e180db1332efd24ea13dc101",
+      "sha256": "45dc22fe303e80ecf77b3d30dc058e7f7f8a3689beaa938b550fc3ad4d1b17be"
+    },
+    {
+      "path": "tests/fixtures/basic_reschedule/catalog.json",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "6438959f57206acab5ff962e99ed200d275bca83",
+      "sha256": "5a2e753c268be3a02728a78733c8d3d22f44058c6b9076d1e43acb86c8ca23ad"
     },
     {
       "path": "tests/fixtures/basic_time_fields/BasicTimeFields.mc",
@@ -7223,6 +7955,12 @@
       "sha256": "a17545f3936da5f69e513d4760669366d8fa0ef2ecb11b837c75b1bb6d71f4e8"
     },
     {
+      "path": "tests/test_basic_reschedule.py",
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "2e0cd63767de2c9b33accb09447d93c27117e356",
+      "sha256": "71b47050336ccd1ba622c9c9d4fbe5f06d2c9801ed8cfc4851941ea5040486a2"
+    },
+    {
       "path": "tests/test_basic_time_fields.py",
       "sourceCommit": "987af71b22752096f876d210156d3d0af740abba",
       "gitBlob": "29f8a3e5f8626ce35661a0e7f76b6e641324188c",
@@ -7242,9 +7980,9 @@
     },
     {
       "path": "tests/test_canonical_sdk_export.py",
-      "sourceCommit": "c21534073ddcf3416fa44136b6380b6fbf5d9d0c",
-      "gitBlob": "28ea0621468eb2f1cca3b9e3f5aa986e187be642",
-      "sha256": "290b75486f2a2a7b67d2502bb22021079a6737466484f59e1c79f2b49fbf6fb0"
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "1d8bdc049cb5568816e1c90ab49f006f33ec4585",
+      "sha256": "d1a41df3134a7b77c35d271f45516d42f980b1ecfae8d985ab7316eb91a2d48d"
     },
     {
       "path": "tests/test_catalog.py",
@@ -7560,9 +8298,9 @@
     },
     {
       "path": "tests/test_release.py",
-      "sourceCommit": "c21534073ddcf3416fa44136b6380b6fbf5d9d0c",
-      "gitBlob": "0e83163e2a008a5bb3ec240cd635c424a0d0bf2e",
-      "sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6"
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "bceb842f0d1b56936bf21f24548eb88805b6ae0f",
+      "sha256": "54b3e05a7db1f9b3a2fc5a6b1d89f7f92eaa4f5fb43a32fc9293ee7f34f569dd"
     },
     {
       "path": "tests/test_release_identity.py",
@@ -7962,9 +8700,9 @@
     },
     {
       "path": "tools/release.py",
-      "sourceCommit": "c21534073ddcf3416fa44136b6380b6fbf5d9d0c",
-      "gitBlob": "25a5ecbe28c0b4dfa4aff70881b08e8fd44136ce",
-      "sha256": "96d22d67572016d7e9c2e41f4dcea0ddc839fdb81315bd417549e444c84ab0ff"
+      "sourceCommit": "6e48ee17f722360b0a65aded398b48298ce391f9",
+      "gitBlob": "69e5e006ec7fdd1d60761a54c5dcfb5de0bb102b",
+      "sha256": "62755115097770cee6d3224f5ba839cdf5c0f6d6eee762fe0131bd112984fc0c"
     },
     {
       "path": "tools/rocket_contact_sheet.py",

@@ -1,0 +1,33 @@
+{
+  "status": "accepted-operational-map-only-bootstrap",
+  "observedAt": "2026-11-13T12:25:34.815651+00:00",
+  "publicSource": "ae473f7eaddd0e0cf0eecd594b6612b36831676b",
+  "workflowRun": 43423066921,
+  "allFiveJobsPassed": true,
+  "actualHttpsCompleteClosure": {
+    "files": 96,
+    "bytes": 616444,
+    "feedSha256": "86eb3dd2584a960c42e445b44041ff88d7f673c5dc949464fd9478d26f2388a4",
+    "generation": 1
+  },
+  "sourceNamespace": {
+    "state": "refs/heads/feed-state-map-v3",
+    "anchor": "refs/tags/spacefox-state-bootstrap-map-v3"
+  },
+  "scope": "Root operational observation only; not an extra independent property closure. Provider metadata partial; no physical/Store/current SDK claim.",
+  "receipts": {
+    "bootstrap-131877587512.log": "1a83920a81d9d58616c2c11edab9cb187a98b52e085cd0dd5dd83dd16d9f5c00",
+    "bootstrap-131879639711.log": "3c300b27f4e50f70c2640d5f883f06160591996e13d8a82d6b714315a6ae7d35",
+    "bootstrap-131880523132.log": "b56ac37250e7677dba817c8e4988cea34cf4f5e8a481bda62f562625f043a114",
+    "bootstrap-jobs.json": "1b3e68ba6b93a90f7779dd8058680baabd6736e6163f39298b2c0cf476c2f8a5",
+    "empty-map-site-after-ttl.json": "d268ac31c7f489d23d08420a20d76aaaafdb5f1c7ce7aafd4cc6a89f8a51c761",
+    "empty-map-site-readback-final.json": "6eec667fd26d2ba104845b37d07c4e57d074f80e609ca43d32c759c2c05e3ad7",
+    "empty-map-site-readback.json": "b5a8cd9e726619e7d074ed9dfe1c3edf8965332dd874d942699219e80c504c1f",
+    "map-only-complete-artifact-readback.json": "5e8e82e21ad0fadb12113fce3d05c7abe204b55f9f98d5101911eb7365e6c407",
+    "map-only-pages-replacement.json": "961fbf03f77f5e2a0f70c72ec6b7e573c7907ae106eb5f4e3ae62d0188a72c79",
+    "map-only-public-feed.json": "86eb3dd2584a960c42e445b44041ff88d7f673c5dc949464fd9478d26f2388a4",
+    "map-only-public-readback.json": "f115a08a2b36ad8bcc51ef80856382e3cfe1c7f95136ad8546f4c45fa6b7575b",
+    "pre-map-cutover-feed.json": "45f8a15552dd4814a9c14e592b31e1e14c50ad948edef3c8ae320a8004adaa27",
+    "ubuntu-43417089608.log": "aaa15b328d51c61b416aee4186705f424e74528651bf52d6517ab45c31d684cd"
+  }
+}

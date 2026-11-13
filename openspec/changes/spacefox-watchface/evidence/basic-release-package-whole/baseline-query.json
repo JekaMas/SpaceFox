@@ -1,0 +1,668 @@
+{
+  "change": "spacefox-watchface",
+  "manifest": "openspec/changes/spacefox-watchface/verification.json",
+  "manifest_sha256": "22b14580d6d35753c85c92e41adbd59235a4f82fc7657755bce15655db3d58f3",
+  "nodes": {
+    "cases": {
+      "RL02.P2.S01.POSITIVE": {
+        "command_id": "release-checks",
+        "current_evidence_fingerprint": "299147422a3519417854d73163a32a96b4b860795e03fc9334e7bba5e3c6469a",
+        "green_expectation": "Real SDK exports and signature checks pass only within declared control boundary; invalid identity/key/source/version/container/output/evidence refuses.",
+        "id": "RL02.P2.S01.POSITIVE",
+        "invalidation_dependencies": [
+          "tools/release.py",
+          "tools/ReleaseInspector.java",
+          "tools/build_watchface.py",
+          "tests/test_release.py",
+          "release/**",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/manifest.xml",
+          "watchface/monkey.jungle",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "LICENSE",
+          "THIRD_PARTY_NOTICES.md",
+          "docs/AGENT_SETUP.md",
+          "licenses/**",
+          "assets/rocket-pack/LICENSE",
+          "docs/RELEASE_AND_UPDATES.md"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "sdk export and provenance positive",
+        "polarity": "positive",
+        "property_id": "RL02.P2",
+        "red_expectation": "Fail if package/public identity/provenance differs from literal expectation, required refusal does not occur, or rejected SDK artifacts retain distributable suffix/success receipt.",
+        "scenario": "Update the official app",
+        "scenario_fingerprint": "689f2b4e1a999b0886430b8793af3c4007b0e6af2ac7cd1b659daf93e79dea29",
+        "setup": "Isolated clean controlled Git copy of actual native source; fresh external disposable RSA4096 key and unrelated qualification UUID; installed pinned SDK9.3/Java11, compiler-only; no Simulator.",
+        "source_path": "tests/test_release.py",
+        "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Actual pinned SDK PRG/IQ generation and cryptographic inspection, release admission/refusal and version/identity/provenance behavior under declared control inputs.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Production key custody, backup or actual restore",
+            "Physical FR165/phone/Simulator runtime, battery, languages or settings migration acceptance",
+            "Store submission/approval/approved installation, publication readiness or whole RL02/RL08/task7 completion"
+          ],
+          "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked."
+        },
+        "test_id": "unittest::tests.test_release.ReleaseTest.test_sdk_export_and_provenance_positive"
+      },
+      "RL02.P2.S02.POSITIVE": {
+        "command_id": "release-checks",
+        "current_evidence_fingerprint": "159ff6cde00739035e0d16d60e2959484fcaacb838ac3b4de33bda7a2f34be3e",
+        "green_expectation": "Real SDK exports and signature checks pass only within declared control boundary; invalid identity/key/source/version/container/output/evidence refuses.",
+        "id": "RL02.P2.S02.POSITIVE",
+        "invalidation_dependencies": [
+          "tools/release.py",
+          "tools/ReleaseInspector.java",
+          "tools/build_watchface.py",
+          "tests/test_release.py",
+          "release/**",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/manifest.xml",
+          "watchface/monkey.jungle",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "LICENSE",
+          "THIRD_PARTY_NOTICES.md",
+          "docs/AGENT_SETUP.md",
+          "licenses/**",
+          "assets/rocket-pack/LICENSE",
+          "docs/RELEASE_AND_UPDATES.md"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "development discovery boundary preserved",
+        "polarity": "positive",
+        "property_id": "RL02.P2",
+        "red_expectation": "Fail if package/public identity/provenance differs from literal expectation, required refusal does not occur, or rejected SDK artifacts retain distributable suffix/success receipt.",
+        "scenario": "Update the official app",
+        "scenario_fingerprint": "689f2b4e1a999b0886430b8793af3c4007b0e6af2ac7cd1b659daf93e79dea29",
+        "setup": "Isolated clean controlled Git copy of actual native source; fresh external disposable RSA4096 key and unrelated qualification UUID; installed pinned SDK9.3/Java11, compiler-only; no Simulator.",
+        "source_path": "tests/test_release.py",
+        "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Actual pinned SDK PRG/IQ generation and cryptographic inspection, release admission/refusal and version/identity/provenance behavior under declared control inputs.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Production key custody, backup or actual restore",
+            "Physical FR165/phone/Simulator runtime, battery, languages or settings migration acceptance",
+            "Store submission/approval/approved installation, publication readiness or whole RL02/RL08/task7 completion"
+          ],
+          "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked."
+        },
+        "test_id": "unittest::tests.test_release.ReleaseTest.test_development_discovery_boundary_preserved"
+      },
+      "RL02.P2.S03.NEGATIVE": {
+        "command_id": "release-checks",
+        "current_evidence_fingerprint": "4bc6ce499d4a23674e221be13f2ab0d7931017769df4a6bb1cedcc5e69b7fd4f",
+        "green_expectation": "Real SDK exports and signature checks pass only within declared control boundary; invalid identity/key/source/version/container/output/evidence refuses.",
+        "id": "RL02.P2.S03.NEGATIVE",
+        "invalidation_dependencies": [
+          "tools/release.py",
+          "tools/ReleaseInspector.java",
+          "tools/build_watchface.py",
+          "tests/test_release.py",
+          "release/**",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/manifest.xml",
+          "watchface/monkey.jungle",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "LICENSE",
+          "THIRD_PARTY_NOTICES.md",
+          "docs/AGENT_SETUP.md",
+          "licenses/**",
+          "assets/rocket-pack/LICENSE",
+          "docs/RELEASE_AND_UPDATES.md"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "key and production identity negative",
+        "polarity": "negative",
+        "property_id": "RL02.P2",
+        "red_expectation": "Fail if package/public identity/provenance differs from literal expectation, required refusal does not occur, or rejected SDK artifacts retain distributable suffix/success receipt.",
+        "scenario": "Update the official app",
+        "scenario_fingerprint": "689f2b4e1a999b0886430b8793af3c4007b0e6af2ac7cd1b659daf93e79dea29",
+        "setup": "Isolated clean controlled Git copy of actual native source; fresh external disposable RSA4096 key and unrelated qualification UUID; installed pinned SDK9.3/Java11, compiler-only; no Simulator.",
+        "source_path": "tests/test_release.py",
+        "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Actual pinned SDK PRG/IQ generation and cryptographic inspection, release admission/refusal and version/identity/provenance behavior under declared control inputs.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Production key custody, backup or actual restore",
+            "Physical FR165/phone/Simulator runtime, battery, languages or settings migration acceptance",
+            "Store submission/approval/approved installation, publication readiness or whole RL02/RL08/task7 completion"
+          ],
+          "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked."
+        },
+        "test_id": "unittest::tests.test_release.ReleaseTest.test_key_and_production_identity_negative"
+      },
+      "RL02.P2.S04.NEGATIVE": {
+        "command_id": "release-checks",
+        "current_evidence_fingerprint": "8133535309df646b7c39f5f8c8fd82326e679c82c1573340ba384f1a93bfccd4",
+        "green_expectation": "Real SDK exports and signature checks pass only within declared control boundary; invalid identity/key/source/version/container/output/evidence refuses.",
+        "id": "RL02.P2.S04.NEGATIVE",
+        "invalidation_dependencies": [
+          "tools/release.py",
+          "tools/ReleaseInspector.java",
+          "tools/build_watchface.py",
+          "tests/test_release.py",
+          "release/**",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/manifest.xml",
+          "watchface/monkey.jungle",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "LICENSE",
+          "THIRD_PARTY_NOTICES.md",
+          "docs/AGENT_SETUP.md",
+          "licenses/**",
+          "assets/rocket-pack/LICENSE",
+          "docs/RELEASE_AND_UPDATES.md"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "manifest source and output negative",
+        "polarity": "negative",
+        "property_id": "RL02.P2",
+        "red_expectation": "Fail if package/public identity/provenance differs from literal expectation, required refusal does not occur, or rejected SDK artifacts retain distributable suffix/success receipt.",
+        "scenario": "Update the official app",
+        "scenario_fingerprint": "689f2b4e1a999b0886430b8793af3c4007b0e6af2ac7cd1b659daf93e79dea29",
+        "setup": "Isolated clean controlled Git copy of actual native source; fresh external disposable RSA4096 key and unrelated qualification UUID; installed pinned SDK9.3/Java11, compiler-only; no Simulator.",
+        "source_path": "tests/test_release.py",
+        "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Actual pinned SDK PRG/IQ generation and cryptographic inspection, release admission/refusal and version/identity/provenance behavior under declared control inputs.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Production key custody, backup or actual restore",
+            "Physical FR165/phone/Simulator runtime, battery, languages or settings migration acceptance",
+            "Store submission/approval/approved installation, publication readiness or whole RL02/RL08/task7 completion"
+          ],
+          "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked."
+        },
+        "test_id": "unittest::tests.test_release.ReleaseTest.test_manifest_source_and_output_negative"
+      },
+      "RL02.P2.S05.NEGATIVE": {
+        "command_id": "release-checks",
+        "current_evidence_fingerprint": "5b2bc56182eff0e99abfb6b37c94935d263795d644b2a1bba682f2c60137896f",
+        "green_expectation": "Real SDK exports and signature checks pass only within declared control boundary; invalid identity/key/source/version/container/output/evidence refuses.",
+        "id": "RL02.P2.S05.NEGATIVE",
+        "invalidation_dependencies": [
+          "tools/release.py",
+          "tools/ReleaseInspector.java",
+          "tools/build_watchface.py",
+          "tests/test_release.py",
+          "release/**",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/manifest.xml",
+          "watchface/monkey.jungle",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "LICENSE",
+          "THIRD_PARTY_NOTICES.md",
+          "docs/AGENT_SETUP.md",
+          "licenses/**",
+          "assets/rocket-pack/LICENSE",
+          "docs/RELEASE_AND_UPDATES.md"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "container and signature tamper negative",
+        "polarity": "negative",
+        "property_id": "RL02.P2",
+        "red_expectation": "Fail if package/public identity/provenance differs from literal expectation, required refusal does not occur, or rejected SDK artifacts retain distributable suffix/success receipt.",
+        "scenario": "Update the official app",
+        "scenario_fingerprint": "689f2b4e1a999b0886430b8793af3c4007b0e6af2ac7cd1b659daf93e79dea29",
+        "setup": "Isolated clean controlled Git copy of actual native source; fresh external disposable RSA4096 key and unrelated qualification UUID; installed pinned SDK9.3/Java11, compiler-only; no Simulator.",
+        "source_path": "tests/test_release.py",
+        "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Actual pinned SDK PRG/IQ generation and cryptographic inspection, release admission/refusal and version/identity/provenance behavior under declared control inputs.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Production key custody, backup or actual restore",
+            "Physical FR165/phone/Simulator runtime, battery, languages or settings migration acceptance",
+            "Store submission/approval/approved installation, publication readiness or whole RL02/RL08/task7 completion"
+          ],
+          "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked."
+        },
+        "test_id": "unittest::tests.test_release.ReleaseTest.test_container_and_signature_tamper_negative"
+      },
+      "RL02.P2.S06.NEGATIVE": {
+        "command_id": "release-checks",
+        "current_evidence_fingerprint": "9a0a1ea57db2b7dda60ed3d090a6d0c3dbbe3061f538baa2d34c32411e981351",
+        "green_expectation": "Real SDK exports and signature checks pass only within declared control boundary; invalid identity/key/source/version/container/output/evidence refuses.",
+        "id": "RL02.P2.S06.NEGATIVE",
+        "invalidation_dependencies": [
+          "tools/release.py",
+          "tools/ReleaseInspector.java",
+          "tools/build_watchface.py",
+          "tests/test_release.py",
+          "release/**",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/manifest.xml",
+          "watchface/monkey.jungle",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "LICENSE",
+          "THIRD_PARTY_NOTICES.md",
+          "docs/AGENT_SETUP.md",
+          "licenses/**",
+          "assets/rocket-pack/LICENSE",
+          "docs/RELEASE_AND_UPDATES.md"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "changed source during sdk build negative",
+        "polarity": "negative",
+        "property_id": "RL02.P2",
+        "red_expectation": "Fail if package/public identity/provenance differs from literal expectation, required refusal does not occur, or rejected SDK artifacts retain distributable suffix/success receipt.",
+        "scenario": "Update the official app",
+        "scenario_fingerprint": "689f2b4e1a999b0886430b8793af3c4007b0e6af2ac7cd1b659daf93e79dea29",
+        "setup": "Isolated clean controlled Git copy of actual native source; fresh external disposable RSA4096 key and unrelated qualification UUID; installed pinned SDK9.3/Java11, compiler-only; no Simulator.",
+        "source_path": "tests/test_release.py",
+        "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Actual pinned SDK PRG/IQ generation and cryptographic inspection, release admission/refusal and version/identity/provenance behavior under declared control inputs.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Production key custody, backup or actual restore",
+            "Physical FR165/phone/Simulator runtime, battery, languages or settings migration acceptance",
+            "Store submission/approval/approved installation, publication readiness or whole RL02/RL08/task7 completion"
+          ],
+          "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked."
+        },
+        "test_id": "unittest::tests.test_release.ReleaseTest.test_changed_source_during_sdk_build_negative"
+      },
+      "RL02.P2.S07.NEGATIVE": {
+        "command_id": "release-checks",
+        "current_evidence_fingerprint": "b01a55b146304b944eeed1f608c3f82d09ed9ac1a3e350085796830eedf49953",
+        "distinct_reason": "Update the official app: RL02 proves external backup/restore declaration/content/identity admission. A signed app release is defective: RL08 proves strict version increase and retained update identity. Both scenario-specific distinct assertions execute in this exact test.",
+        "green_expectation": "Real SDK exports and signature checks pass only within declared control boundary; invalid identity/key/source/version/container/output/evidence refuses.",
+        "id": "RL02.P2.S07.NEGATIVE",
+        "invalidation_dependencies": [
+          "tools/release.py",
+          "tools/ReleaseInspector.java",
+          "tools/build_watchface.py",
+          "tests/test_release.py",
+          "release/**",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/manifest.xml",
+          "watchface/monkey.jungle",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "LICENSE",
+          "THIRD_PARTY_NOTICES.md",
+          "docs/AGENT_SETUP.md",
+          "licenses/**",
+          "assets/rocket-pack/LICENSE",
+          "docs/RELEASE_AND_UPDATES.md"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "update and backup negative",
+        "polarity": "negative",
+        "property_id": "RL02.P2",
+        "red_expectation": "Fail if package/public identity/provenance differs from literal expectation, required refusal does not occur, or rejected SDK artifacts retain distributable suffix/success receipt.",
+        "scenario": "Update the official app",
+        "scenario_fingerprint": "689f2b4e1a999b0886430b8793af3c4007b0e6af2ac7cd1b659daf93e79dea29",
+        "setup": "Isolated clean controlled Git copy of actual native source; fresh external disposable RSA4096 key and unrelated qualification UUID; installed pinned SDK9.3/Java11, compiler-only; no Simulator.",
+        "source_path": "tests/test_release.py",
+        "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Actual pinned SDK PRG/IQ generation and cryptographic inspection, release admission/refusal and version/identity/provenance behavior under declared control inputs.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Production key custody, backup or actual restore",
+            "Physical FR165/phone/Simulator runtime, battery, languages or settings migration acceptance",
+            "Store submission/approval/approved installation, publication readiness or whole RL02/RL08/task7 completion"
+          ],
+          "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked."
+        },
+        "test_id": "unittest::tests.test_release.ReleaseTest.test_update_and_backup_negative"
+      },
+      "RL02.P2.S08.POSITIVE": {
+        "command_id": "release-checks",
+        "current_evidence_fingerprint": "22d9a45f0af902d704eb1618d951a513b1b59f1700e23848885929964c2a8de6",
+        "green_expectation": "Real SDK exports and signature checks pass only within declared control boundary; invalid identity/key/source/version/container/output/evidence refuses.",
+        "id": "RL02.P2.S08.POSITIVE",
+        "invalidation_dependencies": [
+          "tools/release.py",
+          "tools/ReleaseInspector.java",
+          "tools/build_watchface.py",
+          "tests/test_release.py",
+          "release/**",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/manifest.xml",
+          "watchface/monkey.jungle",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "LICENSE",
+          "THIRD_PARTY_NOTICES.md",
+          "docs/AGENT_SETUP.md",
+          "licenses/**",
+          "assets/rocket-pack/LICENSE",
+          "docs/RELEASE_AND_UPDATES.md"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "Committed manifest/lock minimumAPI5.1.0 admits against unchanged pinned FR1655.2 without hardcoding old5.0; admission-only boundary, no paging/runtime claim.",
+        "polarity": "positive",
+        "property_id": "RL02.P2",
+        "red_expectation": "Fail if package/public identity/provenance differs from literal expectation, required refusal does not occur, or rejected SDK artifacts retain distributable suffix/success receipt.",
+        "scenario": "Update the official app",
+        "scenario_fingerprint": "689f2b4e1a999b0886430b8793af3c4007b0e6af2ac7cd1b659daf93e79dea29",
+        "setup": "Isolated clean controlled Git copy of actual native source; fresh external disposable RSA4096 key and unrelated qualification UUID; installed pinned SDK9.3/Java11, compiler-only; no Simulator.",
+        "source_path": "tests/test_release.py",
+        "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Actual pinned SDK PRG/IQ generation and cryptographic inspection, release admission/refusal and version/identity/provenance behavior under declared control inputs.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Production key custody, backup or actual restore",
+            "Physical FR165/phone/Simulator runtime, battery, languages or settings migration acceptance",
+            "Store submission/approval/approved installation, publication readiness or whole RL02/RL08/task7 completion"
+          ],
+          "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked."
+        },
+        "test_id": "unittest::tests.test_release.ReleaseTest.test_future_committed_min_api_admission_positive"
+      },
+      "RL02.P2.S09.NEGATIVE": {
+        "command_id": "release-checks",
+        "current_evidence_fingerprint": "57b16326e93c561ffc31fc5bd5cc1c9c5383cdbae51267523ac6e013d58393a8",
+        "distinct_reason": "Generated build settings choose the files consumed by SDK invocations. This separately detects redirection outside the immutable source snapshot; existing source mutation checks do not inspect these generated paths.",
+        "green_expectation": "Real SDK exports and signature checks pass only within declared control boundary; invalid identity/key/source/version/container/output/evidence refuses.",
+        "id": "RL02.P2.S09.NEGATIVE",
+        "invalidation_dependencies": [
+          "tools/release.py",
+          "tools/ReleaseInspector.java",
+          "tools/build_watchface.py",
+          "tests/test_release.py",
+          "release/**",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/manifest.xml",
+          "watchface/monkey.jungle",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "LICENSE",
+          "THIRD_PARTY_NOTICES.md",
+          "docs/AGENT_SETUP.md",
+          "licenses/**",
+          "assets/rocket-pack/LICENSE",
+          "docs/RELEASE_AND_UPDATES.md"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "Concurrent generated Jungle sourcePath redirection and generated manifest mutation during real SDK compile are refused before a second export, with rejected PRG/no success receipt.",
+        "polarity": "negative",
+        "property_id": "RL02.P2",
+        "red_expectation": "Fail if package/public identity/provenance differs from literal expectation, required refusal does not occur, or rejected SDK artifacts retain distributable suffix/success receipt.",
+        "scenario": "Update the official app",
+        "scenario_fingerprint": "689f2b4e1a999b0886430b8793af3c4007b0e6af2ac7cd1b659daf93e79dea29",
+        "setup": "Isolated clean controlled Git copy of actual native source; fresh external disposable RSA4096 key and unrelated qualification UUID; installed pinned SDK9.3/Java11, compiler-only; no Simulator.",
+        "source_path": "tests/test_release.py",
+        "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Actual pinned SDK PRG/IQ generation and cryptographic inspection, release admission/refusal and version/identity/provenance behavior under declared control inputs.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Production key custody, backup or actual restore",
+            "Physical FR165/phone/Simulator runtime, battery, languages or settings migration acceptance",
+            "Store submission/approval/approved installation, publication readiness or whole RL02/RL08/task7 completion"
+          ],
+          "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked."
+        },
+        "test_id": "unittest::tests.test_release.ReleaseTest.test_changed_generated_inputs_during_sdk_build_negative"
+      },
+      "RL02.P2.S10.NEGATIVE": {
+        "command_id": "release-checks",
+        "current_evidence_fingerprint": "32617dc051e341621a844a44021d381a28213945ee97da1f3973aa3fdfcb849c",
+        "distinct_reason": "SDK source/resource paths discover files by directory; unchanged generated files and recorded file hashes do not exclude additional compiler inputs or replaced parent directories.",
+        "green_expectation": "Real SDK exports and signature checks pass only within declared control boundary; invalid identity/key/source/version/container/output/evidence refuses.",
+        "id": "RL02.P2.S10.NEGATIVE",
+        "invalidation_dependencies": [
+          "tools/release.py",
+          "tools/ReleaseInspector.java",
+          "tools/build_watchface.py",
+          "tests/test_release.py",
+          "release/**",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/manifest.xml",
+          "watchface/monkey.jungle",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "LICENSE",
+          "THIRD_PARTY_NOTICES.md",
+          "docs/AGENT_SETUP.md",
+          "licenses/**",
+          "assets/rocket-pack/LICENSE",
+          "docs/RELEASE_AND_UPDATES.md"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "Adding snapshot-only source or resource files, an empty directory, or replacing a snapshot directory with a symlink during real SDK compilation is refused before a second export, with rejected PRG/no success receipt.",
+        "polarity": "negative",
+        "property_id": "RL02.P2",
+        "red_expectation": "Fail if package/public identity/provenance differs from literal expectation, required refusal does not occur, or rejected SDK artifacts retain distributable suffix/success receipt.",
+        "scenario": "Update the official app",
+        "scenario_fingerprint": "689f2b4e1a999b0886430b8793af3c4007b0e6af2ac7cd1b659daf93e79dea29",
+        "setup": "Isolated clean controlled Git copy of actual native source; fresh external disposable RSA4096 key and unrelated qualification UUID; installed pinned SDK9.3/Java11, compiler-only; no Simulator.",
+        "source_path": "tests/test_release.py",
+        "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Actual pinned SDK PRG/IQ generation and cryptographic inspection, release admission/refusal and version/identity/provenance behavior under declared control inputs.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Production key custody, backup or actual restore",
+            "Physical FR165/phone/Simulator runtime, battery, languages or settings migration acceptance",
+            "Store submission/approval/approved installation, publication readiness or whole RL02/RL08/task7 completion"
+          ],
+          "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked."
+        },
+        "test_id": "unittest::tests.test_release.ReleaseTest.test_added_snapshot_inputs_during_sdk_build_negative"
+      },
+      "RL02.P2.S11.POSITIVE": {
+        "command_id": "canonical-core-release-sdk-export",
+        "current_evidence_fingerprint": "1dcd5bc0a298b8447c1f5ba347a9520fdf0aecba30419b4299260e99883adb90",
+        "green_expectation": "One clean actual-worktree compiler/export result has both actual SDK signatures verified and exact committed snapshot provenance; unrelated disposable identity leaves reserved production fingerprint null.",
+        "id": "RL02.P2.S11.POSITIVE",
+        "implementation_note": "Typed wrapper invokes original actual SDK export and its literal assertions; current wrapper has not been executed. Historical marker receipt stays at its original source and is not an observation of this identity.",
+        "invalidation_dependencies": [
+          "tools/release.py",
+          "tools/ReleaseInspector.java",
+          "tools/build_watchface.py",
+          "tests/test_release.py",
+          "release/**",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/manifest.xml",
+          "watchface/monkey.jungle",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "LICENSE",
+          "THIRD_PARTY_NOTICES.md",
+          "docs/AGENT_SETUP.md",
+          "licenses/**",
+          "assets/rocket-pack/LICENSE",
+          "docs/RELEASE_AND_UPDATES.md",
+          "openspec/changes/spacefox-watchface/evidence/core-release-integration/round1/run_joined_export.py",
+          "tests/test_canonical_sdk_export.py"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "Actual merged SpaceFoxApp plus toolchain-only discovery/API helper/release wrapper export valid independently signed native7z IQ and PRG with literal source, entry, identity, subset and provenance observations.",
+        "polarity": "positive",
+        "property_id": "RL02.P2",
+        "red_expectation": "Public CLI failure, wrong source/entry/identity/subset, missing native7z header, invalid real SDK signature, source mutation or production fingerprint qualification prevents the marker.",
+        "scenario": "Update the official app",
+        "scenario_fingerprint": "689f2b4e1a999b0886430b8793af3c4007b0e6af2ac7cd1b659daf93e79dea29",
+        "setup": "Actual clean committed integration worktree; protected disposable external RSA4096 and unrelated generated UUID; installed pinned SDK9.3/Java11; no Simulator.",
+        "source_path": "tests/test_canonical_sdk_export.py",
+        "source_sha256": "290b75486f2a2a7b67d2502bb22021079a6737466484f59e1c79f2b49fbf6fb0",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Actual pinned SDK PRG/IQ generation and cryptographic inspection, release admission/refusal and version/identity/provenance behavior under declared control inputs.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Production key custody, backup or actual restore",
+            "Physical FR165/phone/Simulator runtime, battery, languages or settings migration acceptance",
+            "Store submission/approval/approved installation, publication readiness or whole RL02/RL08/task7 completion"
+          ],
+          "owner_replaced": "Production signing identity by protected fresh disposable external RSA4096 and unrelated UUID only. Actual clean merged worktree, installed pinned compiler/export/SDK verifier and production entry are used."
+        },
+        "test_id": "unittest::tests.test_canonical_sdk_export.CanonicalSdkExport.test_actual_joined_export_and_signature_qualification"
+      }
+    },
+    "commands": {
+      "canonical-core-release-sdk-export": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "-v",
+          "tests.test_canonical_sdk_export.CanonicalSdkExport.test_actual_joined_export_and_signature_qualification"
+        ],
+        "authority": "local",
+        "cwd": ".",
+        "id": "canonical-core-release-sdk-export",
+        "notes": "Actual SDK export through unchanged historical owner; adapter not observed in canonical reconciliation. Requires explicit SDK execution authority.",
+        "planned_boundary": "EXTERNAL_BOUNDARY",
+        "runner": "python-unittest",
+        "timeout_seconds": 700
+      },
+      "release-checks": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "-v",
+          "tests.test_release.ReleaseTest.test_a_signed_app_release_is_defective_negative",
+          "tests.test_release.ReleaseTest.test_a_signed_app_release_is_defective_positive",
+          "tests.test_release.ReleaseTest.test_added_snapshot_inputs_during_sdk_build_negative",
+          "tests.test_release.ReleaseTest.test_adult_owner_publishes_the_app_negative",
+          "tests.test_release.ReleaseTest.test_adult_owner_publishes_the_app_positive",
+          "tests.test_release.ReleaseTest.test_audience_review_identifies_an_applicable_restriction_negative",
+          "tests.test_release.ReleaseTest.test_audience_review_identifies_an_applicable_restriction_positive",
+          "tests.test_release.ReleaseTest.test_changed_generated_inputs_during_sdk_build_negative",
+          "tests.test_release.ReleaseTest.test_changed_source_during_sdk_build_negative",
+          "tests.test_release.ReleaseTest.test_container_and_signature_tamper_negative",
+          "tests.test_release.ReleaseTest.test_development_discovery_boundary_preserved",
+          "tests.test_release.ReleaseTest.test_future_committed_min_api_admission_positive",
+          "tests.test_release.ReleaseTest.test_higher_version_signed_repair_positive",
+          "tests.test_release.ReleaseTest.test_key_and_production_identity_negative",
+          "tests.test_release.ReleaseTest.test_manifest_source_and_output_negative",
+          "tests.test_release.ReleaseTest.test_sdk_export_and_provenance_positive",
+          "tests.test_release.ReleaseTest.test_update_and_backup_negative"
+        ],
+        "authority": "local",
+        "cwd": ".",
+        "id": "release-checks",
+        "notes": "Actual local SDK compiler-only exports and original Java SDK-verifier adapter. All keys/control Git copies/artifacts external and disposable; no Simulator or production-key qualification.",
+        "planned_boundary": "NO_TEST_DOUBLE",
+        "runner": "python-unittest",
+        "timeout_seconds": 600
+      }
+    },
+    "properties": {
+      "RL02.P2": {
+        "id": "RL02.P2",
+        "oracle": "Actual installed SDK package-app export, literal native-container manifest facts, SDK cryptographic IQ/PRG verification and deliberate signed-byte corruption; independent expected UUID/version/products/languages and refusal facts. Disposable control identities never qualify the production key.",
+        "owner": "tools/release.py; tools/ReleaseInspector.java",
+        "planning_status": "Implemented bounded local unit; fresh independent verification/root judgment pending. Original P1/external release obligations remain planned.",
+        "requirement_id": "RL02",
+        "scenarios": [
+          "Update the official app"
+        ],
+        "source_globs": [
+          "tools/release.py",
+          "tools/ReleaseInspector.java",
+          "tools/build_watchface.py",
+          "tests/test_release.py",
+          "release/**",
+          "watchface/source/**",
+          "watchface/resources*/**",
+          "watchface/manifest.xml",
+          "watchface/monkey.jungle",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "LICENSE",
+          "THIRD_PARTY_NOTICES.md",
+          "docs/AGENT_SETUP.md",
+          "licenses/**",
+          "assets/rocket-pack/LICENSE",
+          "docs/RELEASE_AND_UPDATES.md",
+          "tests/test_canonical_sdk_export.py"
+        ],
+        "statement": "Bounded local release packaging: clean committed source plus pinned SDK/profile inputs and an external protected RSA4096 key produce separately signed device PRG and real SDK IQ. Production candidate preserves reserved UUID/SpaceFoxApp and committed public fingerprint; qualification uses an unrelated UUID and disposable external key. Retain exact source/generated inputs, package and public signing provenance; reject wrong keys/identity, unqualified subsets, dirty or changed inputs, unsafe output, overwrite and cryptographic tamper. Official mode requires explicit hash-bound external backup/restore declarations; tool never infers real custody or Store readiness."
+      }
+    },
+    "requirements": {
+      "RL02": {
+        "capability": "release-lifecycle",
+        "fingerprint": "aa169a1f90bb07dd425bb6eb42241723eacc119908f0fcb95ad1df6d64f9d845",
+        "id": "RL02",
+        "title": "Preserved signing identity"
+      }
+    }
+  },
+  "requested_selectors": {
+    "all": false,
+    "cases": [],
+    "changed_paths": [],
+    "commands": [],
+    "owners": [],
+    "properties": [
+      "RL02.P2"
+    ],
+    "requirements": [],
+    "scenarios": [],
+    "tests": []
+  },
+  "selection": {
+    "cases": [
+      "RL02.P2.S01.POSITIVE",
+      "RL02.P2.S02.POSITIVE",
+      "RL02.P2.S03.NEGATIVE",
+      "RL02.P2.S04.NEGATIVE",
+      "RL02.P2.S05.NEGATIVE",
+      "RL02.P2.S06.NEGATIVE",
+      "RL02.P2.S07.NEGATIVE",
+      "RL02.P2.S08.POSITIVE",
+      "RL02.P2.S09.NEGATIVE",
+      "RL02.P2.S10.NEGATIVE",
+      "RL02.P2.S11.POSITIVE"
+    ],
+    "commands": [
+      "canonical-core-release-sdk-export",
+      "release-checks"
+    ],
+    "properties": [
+      "RL02.P2"
+    ],
+    "requirements": [
+      "RL02"
+    ]
+  },
+  "specifications": {
+    "RL02": "aa169a1f90bb07dd425bb6eb42241723eacc119908f0fcb95ad1df6d64f9d845"
+  },
+  "status": "passed",
+  "substitution_gaps": []
+}

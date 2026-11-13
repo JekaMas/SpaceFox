@@ -592,19 +592,34 @@
         "New time withdrawn"
       ],
       "statement": "The system SHALL identify a reschedule when the accepted target time changes for\nthe same launch identifier, recalculate the countdown and retain a change flag\nfor that selected launch. An unchanged successful refresh SHALL not create or\nclear the flag; selecting a different launch SHALL not inherit it.",
-      "owner": "tools/spacefox/schedule.py",
-      "oracle": "Independent literal fixture values and prohibited outcomes, not implementation roundtrip equivalence. Known new launch time: literal expected remaining duration increases1200seconds and A reschedule flag is set; counterexample must yield no new flag on identical validation and B does not inherit A flag. New time withdrawn: literal expected flag stays set and exact countdown becomes uncertainty; counterexample must yield do not restore old exact target or clear either state merely because another refresh succeeds. Agreeing date/window enrichment/removal at unchanged exact UTC is not a target move and cannot create the reschedule flag; it cannot clear an existing flag either.",
+      "owner": "tools/spacefox/schedule.py; tools/spacefox/wire.py; watchface/source/NativeFeed.mc; watchface/source/FeedScene.mc; watchface/source/ScheduleState.mc; watchface/source/SpaceFoxView.mc",
+      "oracle": "Literal current MIN target1794609900→1794611100 at clock1794551202 produces58698→59898 seconds (16:18:18→16:38:18), +1200 and same-ID flag. Unchanged validation cannot create or clear it. Withdrawal gives null remaining and --:--:--; next timed launch identity cannot inherit prior latch. Actual captured SEC merge additionally retains unchanged-exact-UTC metadata behavior. Provider precision and exact_utc=null remain intact for MIN. Native assertions execute production classes rather than a Python countdown model.",
       "source_globs": [
-        "corpus/real-schedule-20261113/**",
-        "schemas/**",
-        "tests/fixtures/timing/**",
-        "tests/test_current_format_acceptance.py",
+        "tests/test_basic_reschedule.py",
+        "tests/fixtures/basic_reschedule/**",
+        "tests/fixtures/provider/current-starship/**",
+        "tests/fixtures/map-only/feed.json",
+        "tools/spacefox/schedule.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/wire.py",
         "tools/spacefox/feed.py",
         "tools/spacefox/publisher.py",
-        "tools/spacefox/schedule.py",
-        "tools/update_feed.py"
+        "tools/spacefox/catalog.py",
+        "catalog/**",
+        "tools/build_watchface.py",
+        "tools/run_native_tests.py",
+        "watchface/source/**",
+        "watchface/resources/**",
+        "watchface/toolchain-lock.json",
+        "watchface/api-policy.json",
+        "watchface/manifest.xml",
+        "locales/catalog.json",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/reschedule-observation.json",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/native-tests.log",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/input/ReschedulePackets.mc",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/build.json"
       ],
-      "planning_status": "Current-only witnesses remain planned after executed fixture/harness closure retirement. Retained historical observations do not execute this graph or close product acceptance."
+      "planning_status": "Implemented BASIC whole software property: four current cases through actual captured record normalization/merge/current envelope/native parser/metadata/FeedScene/view/countdown. Actual selected verifier receipt required; physical/phone/provider/publication acceptance stays in existing tasks."
     },
     {
       "id": "LS11.P1",
@@ -1500,7 +1515,7 @@
         "Main values remain visible",
         "Local time changes"
       ],
-      "statement": "Software boundary: the unchanged compiled native watch face displays Garmin local time as primary fixed24-hour HH:mm, with UTC countdown independent of local-zone presentation. Actual captured real launch text, countdown and four selected metrics remain readable within the390\u00d7390 circular active scene using accepted fixed geometry and bounded labels. Physical readability remains release task5.1/6.1.",
+      "statement": "Software boundary: the unchanged compiled native watch face displays Garmin local time as primary fixed24-hour HH:mm, with UTC countdown independent of local-zone presentation. Actual captured real launch text, countdown and four selected metrics remain readable within the390×390 circular active scene using accepted fixed geometry and bounded labels. Physical readability remains release task5.1/6.1.",
       "owner": "watchface/source/WatchClock.mc; watchface/source/SpaceFoxView.mc; watchface/source/SceneRenderer.mc",
       "oracle": "Retained exact ten-test SDK clock table (including actual Garmin Time.now/System.getClockTime smoke and literal7200 seconds despite local changes); new actual production text draw calls checked by independent circle/rectangle geometry and resource glyph bounds; retained source-bound current map screenshot inspected. No recreated Python clock/layout model.",
       "source_globs": [
@@ -1531,7 +1546,7 @@
         "Use the accepted header",
         "Long or absent context"
       ],
-      "statement": "The active scene SHALL pair rocket and operator above time, with mission purpose\non the following line, as in the accepted 04/full layout. Long values MAY wrap or\nuse bounded short labels. Association and missing context SHALL remain clear.\nThe country/site label SHALL use at least 16 display pixels at 390\u00d7390 without\nreducing primary time or placing text outside the circle. Display mission purpose is exact source mission.type/category; unavailable remains explicit, no full description or invented synonym.",
+      "statement": "The active scene SHALL pair rocket and operator above time, with mission purpose\non the following line, as in the accepted 04/full layout. Long values MAY wrap or\nuse bounded short labels. Association and missing context SHALL remain clear.\nThe country/site label SHALL use at least 16 display pixels at 390×390 without\nreducing primary time or placing text outside the circle. Display mission purpose is exact source mission.type/category; unavailable remains explicit, no full description or invented synonym.",
       "owner": "watchface/source/SpaceFoxView.mc",
       "oracle": "Independent literal fixture values and prohibited outcomes, not implementation roundtrip equivalence. Use the accepted header: literal expected rocketandoperatorpairedabovetime; purposefollowingline andfullvaluesretained; counterexample must yield boundedwrap/ellipsiswithclearassociation,noduplicateunneededtitleorborrowedpurpose. Long or absent context: literal expected largersitelabelatleast16pixels,notoutsidecircleorovercountdown; counterexample must yield explicitempty/missingcontext andboundedlabels,notinventedtextorclippedglyphs.",
       "source_globs": [
@@ -1662,7 +1677,7 @@
       "scenarios": [
         "Open the default face"
       ],
-      "statement": "The default active composition SHALL use a 390\u00d7390 full-screen flat-map window with\ndirected gradual fading, transparent text backgrounds and dark glyph contours.\nThe source-derived site marker SHALL remain unfaded. Preserve the accepted\nrocket/company header, mission purpose, primary time, adjacent countdown, four\nlarge configurable fields and separate watch battery.",
+      "statement": "The default active composition SHALL use a 390×390 full-screen flat-map window with\ndirected gradual fading, transparent text backgrounds and dark glyph contours.\nThe source-derived site marker SHALL remain unfaded. Preserve the accepted\nrocket/company header, mission purpose, primary time, adjacent countdown, four\nlarge configurable fields and separate watch battery.",
       "owner": "watchface/source/SpaceFoxView.mc",
       "oracle": "Independent literal fixture values and prohibited outcomes, not implementation roundtrip equivalence. Open the default face: literal expected 390fullmapdirectedfade,unfadedsourcepin,transparentclockwithdarkglyphcontours; counterexample must yield nativevisualcomparisonrejectswrongdefaultorhiddenpinwhilechecking4slots/header/countdown.",
       "source_globs": [
@@ -3744,9 +3759,13 @@
         "licenses/**",
         "assets/rocket-pack/LICENSE",
         "docs/RELEASE_AND_UPDATES.md",
-        "tests/test_canonical_sdk_export.py"
+        "tests/test_canonical_sdk_export.py",
+        "tools/*.py",
+        "locales/**",
+        "corpus/real-schedule-basic-five-20261113/**",
+        "openspec/changes/spacefox-watchface/evidence/basic-main-review/finite/**"
       ],
-      "planning_status": "Implemented bounded local unit; fresh independent verification/root judgment pending. Original P1/external release obligations remain planned."
+      "planning_status": "Whole current-source author implementation and verification in progress; one different whole-unit peer remains required. External/device/Store obligations stay open."
     },
     {
       "id": "RL08.P2",
@@ -6140,7 +6159,8 @@
       "substitution": {
         "classification": "NO_TEST_DOUBLE"
       },
-      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review."
+      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review.",
+      "source_sha256": "54b3e05a7db1f9b3a2fc5a6b1d89f7f92eaa4f5fb43a32fc9293ee7f34f569dd"
     },
     {
       "id": "RL03.P1.S01.NEGATIVE",
@@ -6164,7 +6184,8 @@
       "substitution": {
         "classification": "NO_TEST_DOUBLE"
       },
-      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review."
+      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review.",
+      "source_sha256": "54b3e05a7db1f9b3a2fc5a6b1d89f7f92eaa4f5fb43a32fc9293ee7f34f569dd"
     },
     {
       "id": "RL03.P1.S02.POSITIVE",
@@ -6188,7 +6209,8 @@
       "substitution": {
         "classification": "NO_TEST_DOUBLE"
       },
-      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review."
+      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review.",
+      "source_sha256": "54b3e05a7db1f9b3a2fc5a6b1d89f7f92eaa4f5fb43a32fc9293ee7f34f569dd"
     },
     {
       "id": "RL03.P1.S02.NEGATIVE",
@@ -6212,7 +6234,8 @@
       "substitution": {
         "classification": "NO_TEST_DOUBLE"
       },
-      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review."
+      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review.",
+      "source_sha256": "54b3e05a7db1f9b3a2fc5a6b1d89f7f92eaa4f5fb43a32fc9293ee7f34f569dd"
     },
     {
       "id": "RL04.P1.S01.POSITIVE",
@@ -6816,7 +6839,8 @@
       "substitution": {
         "classification": "NO_TEST_DOUBLE"
       },
-      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review."
+      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review.",
+      "source_sha256": "54b3e05a7db1f9b3a2fc5a6b1d89f7f92eaa4f5fb43a32fc9293ee7f34f569dd"
     },
     {
       "id": "RL08.P1.S02.NEGATIVE",
@@ -6844,7 +6868,8 @@
       "substitution": {
         "classification": "NO_TEST_DOUBLE"
       },
-      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review."
+      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review.",
+      "source_sha256": "54b3e05a7db1f9b3a2fc5a6b1d89f7f92eaa4f5fb43a32fc9293ee7f34f569dd"
     },
     {
       "id": "VC01.P1.S01.POSITIVE.CURRENT",
@@ -9905,9 +9930,9 @@
       "scenario": "Local time changes",
       "scenario_fingerprint": "6c19dec060e1a363b43b81ce7217fe43f54e21f99774bbc449c34bd3a3688013",
       "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
-      "observable": "Retained actual Garmin API smoke and native literal local08:00\u219212:00 with unchangedUTC duration7200; ordinary live clock advances.",
+      "observable": "Retained actual Garmin API smoke and native literal local08:00→12:00 with unchangedUTC duration7200; ordinary live clock advances.",
       "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
-      "green_expectation": "Retained actual Garmin API smoke and native literal local08:00\u219212:00 with unchangedUTC duration7200; ordinary live clock advances.",
+      "green_expectation": "Retained actual Garmin API smoke and native literal local08:00→12:00 with unchangedUTC duration7200; ordinary live clock advances.",
       "invalidation_dependencies": [
         "tests/test_basic_time_fields.py",
         "tests/fixtures/basic_time_fields/**",
@@ -9951,9 +9976,9 @@
       "scenario": "Local time changes",
       "scenario_fingerprint": "6c19dec060e1a363b43b81ce7217fe43f54e21f99774bbc449c34bd3a3688013",
       "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
-      "observable": "Native23:59\u219200:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
+      "observable": "Native23:59→00:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
       "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
-      "green_expectation": "Native23:59\u219200:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
+      "green_expectation": "Native23:59→00:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
       "invalidation_dependencies": [
         "tests/test_basic_time_fields.py",
         "tests/fixtures/basic_time_fields/**",
@@ -16493,7 +16518,7 @@
       "setup": "Frozen revision3 recipe plus actual admitted remaining-art sources and literal exact identity sets; isolated local catalog copies, fixture SVGs, real selected export and immutable local file writer. Primary photos/PDFs and full world/provider/native owners are not substituted.",
       "observable": "test_all_new_geometry_and_exact_selector_positive",
       "red_expectation": "Any newly mapped asset is unconvertible, unlicensed, misbound to an exact configuration or over existing polygon/shard/selection caps.",
-      "green_expectation": "Every new asset converts through production SVG\u2192SFV and exact selected roots with declared MIT attribution, complete assembled digest and unchanged caps; representative distinct models have distinct geometry.",
+      "green_expectation": "Every new asset converts through production SVG→SFV and exact selected roots with declared MIT attribution, complete assembled digest and unchanged caps; representative distinct models have distinct geometry.",
       "invalidation_dependencies": [
         "catalog/source.json",
         "assets/global/curation-20261112-remaining-r1.json",
@@ -17285,13 +17310,17 @@
         "docs/AGENT_SETUP.md",
         "licenses/**",
         "assets/rocket-pack/LICENSE",
-        "docs/RELEASE_AND_UPDATES.md"
+        "docs/RELEASE_AND_UPDATES.md",
+        "tools/*.py",
+        "locales/**",
+        "corpus/real-schedule-basic-five-20261113/**",
+        "openspec/changes/spacefox-watchface/evidence/basic-main-review/finite/**"
       ],
       "test_id": "unittest::tests.test_release.ReleaseTest.test_sdk_export_and_provenance_positive",
-      "command_id": "release-checks",
+      "command_id": "release-package-whole-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+      "source_sha256": "54b3e05a7db1f9b3a2fc5a6b1d89f7f92eaa4f5fb43a32fc9293ee7f34f569dd",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -17330,13 +17359,17 @@
         "docs/AGENT_SETUP.md",
         "licenses/**",
         "assets/rocket-pack/LICENSE",
-        "docs/RELEASE_AND_UPDATES.md"
+        "docs/RELEASE_AND_UPDATES.md",
+        "tools/*.py",
+        "locales/**",
+        "corpus/real-schedule-basic-five-20261113/**",
+        "openspec/changes/spacefox-watchface/evidence/basic-main-review/finite/**"
       ],
       "test_id": "unittest::tests.test_release.ReleaseTest.test_development_discovery_boundary_preserved",
-      "command_id": "release-checks",
+      "command_id": "release-package-whole-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+      "source_sha256": "54b3e05a7db1f9b3a2fc5a6b1d89f7f92eaa4f5fb43a32fc9293ee7f34f569dd",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -17375,13 +17408,17 @@
         "docs/AGENT_SETUP.md",
         "licenses/**",
         "assets/rocket-pack/LICENSE",
-        "docs/RELEASE_AND_UPDATES.md"
+        "docs/RELEASE_AND_UPDATES.md",
+        "tools/*.py",
+        "locales/**",
+        "corpus/real-schedule-basic-five-20261113/**",
+        "openspec/changes/spacefox-watchface/evidence/basic-main-review/finite/**"
       ],
       "test_id": "unittest::tests.test_release.ReleaseTest.test_key_and_production_identity_negative",
-      "command_id": "release-checks",
+      "command_id": "release-package-whole-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+      "source_sha256": "54b3e05a7db1f9b3a2fc5a6b1d89f7f92eaa4f5fb43a32fc9293ee7f34f569dd",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -17420,13 +17457,17 @@
         "docs/AGENT_SETUP.md",
         "licenses/**",
         "assets/rocket-pack/LICENSE",
-        "docs/RELEASE_AND_UPDATES.md"
+        "docs/RELEASE_AND_UPDATES.md",
+        "tools/*.py",
+        "locales/**",
+        "corpus/real-schedule-basic-five-20261113/**",
+        "openspec/changes/spacefox-watchface/evidence/basic-main-review/finite/**"
       ],
       "test_id": "unittest::tests.test_release.ReleaseTest.test_manifest_source_and_output_negative",
-      "command_id": "release-checks",
+      "command_id": "release-package-whole-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+      "source_sha256": "54b3e05a7db1f9b3a2fc5a6b1d89f7f92eaa4f5fb43a32fc9293ee7f34f569dd",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -17445,7 +17486,7 @@
       "scenario": "Update the official app",
       "scenario_fingerprint": "689f2b4e1a999b0886430b8793af3c4007b0e6af2ac7cd1b659daf93e79dea29",
       "setup": "Isolated clean controlled Git copy of actual native source; fresh external disposable RSA4096 key and unrelated qualification UUID; installed pinned SDK9.3/Java11, compiler-only; no Simulator.",
-      "observable": "container and signature tamper negative",
+      "observable": "Real program cryptographic tamper/native-container refusal plus exact exported language membership, missing/extra/duplicate/alias/empty refusal.",
       "red_expectation": "Fail if package/public identity/provenance differs from literal expectation, required refusal does not occur, or rejected SDK artifacts retain distributable suffix/success receipt.",
       "green_expectation": "Real SDK exports and signature checks pass only within declared control boundary; invalid identity/key/source/version/container/output/evidence refuses.",
       "invalidation_dependencies": [
@@ -17465,16 +17506,20 @@
         "docs/AGENT_SETUP.md",
         "licenses/**",
         "assets/rocket-pack/LICENSE",
-        "docs/RELEASE_AND_UPDATES.md"
+        "docs/RELEASE_AND_UPDATES.md",
+        "tools/*.py",
+        "locales/**",
+        "corpus/real-schedule-basic-five-20261113/**",
+        "openspec/changes/spacefox-watchface/evidence/basic-main-review/finite/**"
       ],
       "test_id": "unittest::tests.test_release.ReleaseTest.test_container_and_signature_tamper_negative",
-      "command_id": "release-checks",
+      "command_id": "release-package-whole-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+      "source_sha256": "54b3e05a7db1f9b3a2fc5a6b1d89f7f92eaa4f5fb43a32fc9293ee7f34f569dd",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
-        "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
+        "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked. For malformed exported-language controls only, tar manifest extraction returns a mutated view of the real exported XML; all other subprocesses and real signature checks are retained.",
         "allowed_proof": "Actual pinned SDK PRG/IQ generation and cryptographic inspection, release admission/refusal and version/identity/provenance behavior under declared control inputs.",
         "forbidden_claims": [
           "Production key custody, backup or actual restore",
@@ -17510,13 +17555,17 @@
         "docs/AGENT_SETUP.md",
         "licenses/**",
         "assets/rocket-pack/LICENSE",
-        "docs/RELEASE_AND_UPDATES.md"
+        "docs/RELEASE_AND_UPDATES.md",
+        "tools/*.py",
+        "locales/**",
+        "corpus/real-schedule-basic-five-20261113/**",
+        "openspec/changes/spacefox-watchface/evidence/basic-main-review/finite/**"
       ],
       "test_id": "unittest::tests.test_release.ReleaseTest.test_changed_source_during_sdk_build_negative",
-      "command_id": "release-checks",
+      "command_id": "release-package-whole-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+      "source_sha256": "54b3e05a7db1f9b3a2fc5a6b1d89f7f92eaa4f5fb43a32fc9293ee7f34f569dd",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -17555,13 +17604,17 @@
         "docs/AGENT_SETUP.md",
         "licenses/**",
         "assets/rocket-pack/LICENSE",
-        "docs/RELEASE_AND_UPDATES.md"
+        "docs/RELEASE_AND_UPDATES.md",
+        "tools/*.py",
+        "locales/**",
+        "corpus/real-schedule-basic-five-20261113/**",
+        "openspec/changes/spacefox-watchface/evidence/basic-main-review/finite/**"
       ],
       "test_id": "unittest::tests.test_release.ReleaseTest.test_update_and_backup_negative",
-      "command_id": "release-checks",
+      "command_id": "release-package-whole-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+      "source_sha256": "54b3e05a7db1f9b3a2fc5a6b1d89f7f92eaa4f5fb43a32fc9293ee7f34f569dd",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -17607,7 +17660,7 @@
       "command_id": "release-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+      "source_sha256": "54b3e05a7db1f9b3a2fc5a6b1d89f7f92eaa4f5fb43a32fc9293ee7f34f569dd",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -17652,7 +17705,7 @@
       "command_id": "release-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+      "source_sha256": "54b3e05a7db1f9b3a2fc5a6b1d89f7f92eaa4f5fb43a32fc9293ee7f34f569dd",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -17672,7 +17725,7 @@
       "scenario": "Update the official app",
       "scenario_fingerprint": "689f2b4e1a999b0886430b8793af3c4007b0e6af2ac7cd1b659daf93e79dea29",
       "setup": "Isolated clean controlled Git copy of actual native source; fresh external disposable RSA4096 key and unrelated qualification UUID; installed pinned SDK9.3/Java11, compiler-only; no Simulator.",
-      "observable": "Committed manifest/lock minimumAPI5.1.0 admits against unchanged pinned FR1655.2 without hardcoding old5.0; admission-only boundary, no paging/runtime claim.",
+      "observable": "Current committed API5.1 manifest admission with actual retained finite-language proof and pinned FR165 API5.2 profile.",
       "red_expectation": "Fail if package/public identity/provenance differs from literal expectation, required refusal does not occur, or rejected SDK artifacts retain distributable suffix/success receipt.",
       "green_expectation": "Real SDK exports and signature checks pass only within declared control boundary; invalid identity/key/source/version/container/output/evidence refuses.",
       "invalidation_dependencies": [
@@ -17692,13 +17745,17 @@
         "docs/AGENT_SETUP.md",
         "licenses/**",
         "assets/rocket-pack/LICENSE",
-        "docs/RELEASE_AND_UPDATES.md"
+        "docs/RELEASE_AND_UPDATES.md",
+        "tools/*.py",
+        "locales/**",
+        "corpus/real-schedule-basic-five-20261113/**",
+        "openspec/changes/spacefox-watchface/evidence/basic-main-review/finite/**"
       ],
       "test_id": "unittest::tests.test_release.ReleaseTest.test_future_committed_min_api_admission_positive",
-      "command_id": "release-checks",
+      "command_id": "release-package-whole-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+      "source_sha256": "54b3e05a7db1f9b3a2fc5a6b1d89f7f92eaa4f5fb43a32fc9293ee7f34f569dd",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -17737,13 +17794,17 @@
         "docs/AGENT_SETUP.md",
         "licenses/**",
         "assets/rocket-pack/LICENSE",
-        "docs/RELEASE_AND_UPDATES.md"
+        "docs/RELEASE_AND_UPDATES.md",
+        "tools/*.py",
+        "locales/**",
+        "corpus/real-schedule-basic-five-20261113/**",
+        "openspec/changes/spacefox-watchface/evidence/basic-main-review/finite/**"
       ],
       "test_id": "unittest::tests.test_release.ReleaseTest.test_changed_generated_inputs_during_sdk_build_negative",
-      "command_id": "release-checks",
+      "command_id": "release-package-whole-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+      "source_sha256": "54b3e05a7db1f9b3a2fc5a6b1d89f7f92eaa4f5fb43a32fc9293ee7f34f569dd",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -17783,13 +17844,17 @@
         "docs/AGENT_SETUP.md",
         "licenses/**",
         "assets/rocket-pack/LICENSE",
-        "docs/RELEASE_AND_UPDATES.md"
+        "docs/RELEASE_AND_UPDATES.md",
+        "tools/*.py",
+        "locales/**",
+        "corpus/real-schedule-basic-five-20261113/**",
+        "openspec/changes/spacefox-watchface/evidence/basic-main-review/finite/**"
       ],
       "test_id": "unittest::tests.test_release.ReleaseTest.test_added_snapshot_inputs_during_sdk_build_negative",
-      "command_id": "release-checks",
+      "command_id": "release-package-whole-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "039dc296d19403f424702382a6a7b8ef8ee9f0f55896034d165e0c3823f625c6",
+      "source_sha256": "54b3e05a7db1f9b3a2fc5a6b1d89f7f92eaa4f5fb43a32fc9293ee7f34f569dd",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -17810,8 +17875,8 @@
       "scenario_fingerprint": "689f2b4e1a999b0886430b8793af3c4007b0e6af2ac7cd1b659daf93e79dea29",
       "setup": "Actual clean committed integration worktree; protected disposable external RSA4096 and unrelated generated UUID; installed pinned SDK9.3/Java11; no Simulator.",
       "observable": "Actual merged SpaceFoxApp plus toolchain-only discovery/API helper/release wrapper export valid independently signed native7z IQ and PRG with literal source, entry, identity, subset and provenance observations.",
-      "red_expectation": "Public CLI failure, wrong source/entry/identity/subset, missing native7z header, invalid real SDK signature, source mutation or production fingerprint qualification prevents the marker.",
-      "green_expectation": "One clean actual-worktree compiler/export result has both actual SDK signatures verified and exact committed snapshot provenance; unrelated disposable identity leaves reserved production fingerprint null.",
+      "red_expectation": "Public CLI failure, wrong current source/entry/identity/languages/API, missing native7z header, invalid real SDK signature or source/production identity mutation prevents success.",
+      "green_expectation": "One clean actual-worktree current five-language API5.1 compiler/export result has both actual SDK signatures verified and exact committed snapshot provenance; unrelated disposable identity leaves bound production identity unchanged.",
       "invalidation_dependencies": [
         "tools/release.py",
         "tools/ReleaseInspector.java",
@@ -17830,14 +17895,17 @@
         "licenses/**",
         "assets/rocket-pack/LICENSE",
         "docs/RELEASE_AND_UPDATES.md",
-        "openspec/changes/spacefox-watchface/evidence/core-release-integration/round1/run_joined_export.py",
-        "tests/test_canonical_sdk_export.py"
+        "tests/test_canonical_sdk_export.py",
+        "tools/*.py",
+        "locales/**",
+        "corpus/real-schedule-basic-five-20261113/**",
+        "openspec/changes/spacefox-watchface/evidence/basic-main-review/finite/**"
       ],
       "test_id": "unittest::tests.test_canonical_sdk_export.CanonicalSdkExport.test_actual_joined_export_and_signature_qualification",
       "command_id": "canonical-core-release-sdk-export",
       "state": "implemented",
       "source_path": "tests/test_canonical_sdk_export.py",
-      "source_sha256": "290b75486f2a2a7b67d2502bb22021079a6737466484f59e1c79f2b49fbf6fb0",
+      "source_sha256": "d1a41df3134a7b77c35d271f45516d42f980b1ecfae8d985ab7316eb91a2d48d",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production signing identity by protected fresh disposable external RSA4096 and unrelated UUID only. Actual clean merged worktree, installed pinned compiler/export/SDK verifier and production entry are used.",
@@ -17848,7 +17916,7 @@
           "Store submission/approval/approved installation, publication readiness or whole RL02/RL08/task7 completion"
         ]
       },
-      "implementation_note": "Typed wrapper invokes original actual SDK export and its literal assertions; current wrapper has not been executed. Historical marker receipt stays at its original source and is not an observation of this identity."
+      "implementation_note": "Current typed owner executes real public CLI; frozen historical script and receipts remain unchanged at original proof boundary."
     },
     {
       "id": "LS03.P10.C02.POSITIVE.CURRENT",
@@ -18874,10 +18942,10 @@
       "polarity": "positive",
       "scenario": "Mark would identify a different organization",
       "scenario_fingerprint": "cb0d6061ccc6b0883ba6dbfc29656bb6c856c0c20136f01cda22250d03973d1e",
-      "setup": "Actualpublicexport withliteral JAXA/37 root plusFalcon9/164 manufacturerSpaceX/121; separatepublicamendmentwrongmark37\u219234 inatemporarysource/catalog/objectstore. Synthetic typed-rolecontext, noactualmission orwatchfaceclaim.",
+      "setup": "Actualpublicexport withliteral JAXA/37 root plusFalcon9/164 manufacturerSpaceX/121; separatepublicamendmentwrongmark37→34 inatemporarysource/catalog/objectstore. Synthetic typed-rolecontext, noactualmission orwatchfaceclaim.",
       "observable": "Explicit JAXA root retains its own content-r1 mark while Falcon9 retains separate SpaceX manufacturer mark.",
       "red_expectation": "ProducerborrowsSpaceX/manufacturerorIranianSpaceAgencybadgeforJAXA, orwrongmarkcurationmutatesacceptedoutput.",
-      "green_expectation": "Explicit37and121retainseparatelynamedoriginalmarks; wrong37\u219234mappingrefusesatomically.",
+      "green_expectation": "Explicit37and121retainseparatelynamedoriginalmarks; wrong37→34mappingrefusesatomically.",
       "invalidation_dependencies": [
         "catalog/source.json",
         "assets/global/curation-20261112-remaining-r3.json",
@@ -18914,10 +18982,10 @@
       "polarity": "negative",
       "scenario": "Mark would identify a different organization",
       "scenario_fingerprint": "cb0d6061ccc6b0883ba6dbfc29656bb6c856c0c20136f01cda22250d03973d1e",
-      "setup": "Actualpublicexport withliteral JAXA/37 root plusFalcon9/164 manufacturerSpaceX/121; separatepublicamendmentwrongmark37\u219234 inatemporarysource/catalog/objectstore. Synthetic typed-rolecontext, noactualmission orwatchfaceclaim.",
+      "setup": "Actualpublicexport withliteral JAXA/37 root plusFalcon9/164 manufacturerSpaceX/121; separatepublicamendmentwrongmark37→34 inatemporarysource/catalog/objectstore. Synthetic typed-rolecontext, noactualmission orwatchfaceclaim.",
       "observable": "Wrong IranianSpaceAgency mark cannotactivate for JAXA; source/catalog/store unchanged.",
       "red_expectation": "ProducerborrowsSpaceX/manufacturerorIranianSpaceAgencybadgeforJAXA, orwrongmarkcurationmutatesacceptedoutput.",
-      "green_expectation": "Explicit37and121retainseparatelynamedoriginalmarks; wrong37\u219234mappingrefusesatomically.",
+      "green_expectation": "Explicit37and121retainseparatelynamedoriginalmarks; wrong37→34mappingrefusesatomically.",
       "invalidation_dependencies": [
         "catalog/source.json",
         "assets/global/curation-20261112-remaining-r3.json",
@@ -21873,7 +21941,7 @@
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Physical FR165 replaced by pinned ordinary SDK simulator; network inputs are exact owned fixture bytes. This command reads retained source-bound observations; it does not execute a new SDK run.",
-        "allowed_proof": "Six independent literal SDKtransformPoint anchors plus native pixel comparison prove rest repair60\u21920differences and transformed-path preservation; tall/wide endpoints retain pixels.",
+        "allowed_proof": "Six independent literal SDKtransformPoint anchors plus native pixel comparison prove rest repair60→0differences and transformed-path preservation; tall/wide endpoints retain pixels.",
         "forbidden_claims": [
           "Physical/human/phone/BLE/battery/Store acceptance",
           "Public HTTPS/Linux motion delivery or universal/peak performance",
@@ -22975,28 +23043,51 @@
       "polarity": "positive",
       "scenario": "Known new launch time",
       "scenario_fingerprint": "ff1c31bcd1c140b6f53cf040269e54e738d75e18e6819320bba99350d5d04a39",
-      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
-      "observable": "At the current owner, observe this exact retained contract: remaining duration increases1200seconds and A reschedule flag is set. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
-      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
-      "green_expectation": "The retained scenario-specific positive contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS10.P1.S01.POSITIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "setup": "Retained raw captured Starship MIN record; technical UTC/ID mutations only, verbatim display text. Current schema3 SFR1M captured envelope with actual production schedule projection. Pinned FR165 SDK uses four new test-only native assertions and numeric clock. Captured historical SEC record supplies agreeing-target metadata merge assertion.",
+      "observable": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698→59898, text16:18:18→16:38:18, flag true.",
+      "red_expectation": "Fails if the stated literal relation, latch, identity or precision assertion is false, or the exact native framework test is missing/fails.",
+      "green_expectation": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698→59898, text16:18:18→16:38:18, flag true.",
       "invalidation_dependencies": [
-        "corpus/real-schedule-20261113/**",
-        "schemas/**",
-        "tests/fixtures/timing/**",
-        "tests/test_current_format_acceptance.py",
+        "tests/test_basic_reschedule.py",
+        "tests/fixtures/basic_reschedule/**",
+        "tests/fixtures/provider/current-starship/**",
+        "tests/fixtures/map-only/feed.json",
+        "tools/spacefox/schedule.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/wire.py",
         "tools/spacefox/feed.py",
         "tools/spacefox/publisher.py",
-        "tools/spacefox/schedule.py",
-        "tools/update_feed.py"
+        "tools/spacefox/catalog.py",
+        "catalog/**",
+        "tools/build_watchface.py",
+        "tools/run_native_tests.py",
+        "watchface/source/**",
+        "watchface/resources/**",
+        "watchface/toolchain-lock.json",
+        "watchface/api-policy.json",
+        "watchface/manifest.xml",
+        "locales/catalog.json",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/reschedule-observation.json",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/native-tests.log",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/input/ReschedulePackets.mc",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/build.json"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls10_p1_s01_positive_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_known_new_time_positive",
+      "command_id": "basic-reschedule-whole",
+      "state": "implemented",
+      "source_path": "tests/test_basic_reschedule.py",
       "substitution": {
-        "classification": "NO_TEST_DOUBLE"
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 by pinned SDK simulator; controlled numeric WatchClock. Real captured provider records replayed with technical time/ID mutations; captured visual references reused only as current feed envelope. Read-only adapter replaces immutable catalog storage, returning exact retained schema3 catalog bytes bound by feed catalogDigest.",
+        "allowed_proof": "Whole defined BASIC reschedule software property through actual normalize/merge/project/serialize/schema and NativeFeed metadata/FeedScene/view/countdown owners.",
+        "forbidden_claims": [
+          "Fresh provider observation or hosted/phone/physical delivery",
+          "Renderer/global artwork/catalog qualification, shared quota/CAS/persistence/recovery or resource measurements",
+          "Physical FR165/Store/release acceptance"
+        ]
       },
-      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+      "source_sha256": "71b47050336ccd1ba622c9c9d4fbe5f06d2c9801ed8cfc4851941ea5040486a2",
+      "implementation_note": "Four direct BASIC current cases. Generic quota/CAS/global-art/resource/depth obligations remain in their own existing properties; no replacement matrix or legacy support."
     },
     {
       "id": "LS10.P1.S01.NEGATIVE.CURRENT",
@@ -23004,28 +23095,51 @@
       "polarity": "negative",
       "scenario": "Known new launch time",
       "scenario_fingerprint": "ff1c31bcd1c140b6f53cf040269e54e738d75e18e6819320bba99350d5d04a39",
-      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
-      "observable": "At the current owner, observe this exact retained contract: Same exact UTC metadata changes do not create reschedule; a real move latches it, agreeing metadata cannot clear it, and B does not inherit A flag.. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
-      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
-      "green_expectation": "The retained scenario-specific negative contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS10.P1.S01.NEGATIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "setup": "Retained raw captured Starship MIN record; technical UTC/ID mutations only, verbatim display text. Current schema3 SFR1M captured envelope with actual production schedule projection. Pinned FR165 SDK uses four new test-only native assertions and numeric clock. Captured historical SEC record supplies agreeing-target metadata merge assertion.",
+      "observable": "Successful unchanged refresh neither creates nor clears reschedule; actual captured SEC target with changed agreeing window metadata neither creates nor clears flag. Native MIN remaining stays59898.",
+      "red_expectation": "Fails if the stated literal relation, latch, identity or precision assertion is false, or the exact native framework test is missing/fails.",
+      "green_expectation": "Successful unchanged refresh neither creates nor clears reschedule; actual captured SEC target with changed agreeing window metadata neither creates nor clears flag. Native MIN remaining stays59898.",
       "invalidation_dependencies": [
-        "corpus/real-schedule-20261113/**",
-        "schemas/**",
-        "tests/fixtures/timing/**",
-        "tests/test_current_format_acceptance.py",
+        "tests/test_basic_reschedule.py",
+        "tests/fixtures/basic_reschedule/**",
+        "tests/fixtures/provider/current-starship/**",
+        "tests/fixtures/map-only/feed.json",
+        "tools/spacefox/schedule.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/wire.py",
         "tools/spacefox/feed.py",
         "tools/spacefox/publisher.py",
-        "tools/spacefox/schedule.py",
-        "tools/update_feed.py"
+        "tools/spacefox/catalog.py",
+        "catalog/**",
+        "tools/build_watchface.py",
+        "tools/run_native_tests.py",
+        "watchface/source/**",
+        "watchface/resources/**",
+        "watchface/toolchain-lock.json",
+        "watchface/api-policy.json",
+        "watchface/manifest.xml",
+        "locales/catalog.json",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/reschedule-observation.json",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/native-tests.log",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/input/ReschedulePackets.mc",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/build.json"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls10_p1_s01_negative_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_unchanged_refresh_negative",
+      "command_id": "basic-reschedule-whole",
+      "state": "implemented",
+      "source_path": "tests/test_basic_reschedule.py",
       "substitution": {
-        "classification": "NO_TEST_DOUBLE"
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 by pinned SDK simulator; controlled numeric WatchClock. Real captured provider records replayed with technical time/ID mutations; captured visual references reused only as current feed envelope. Read-only adapter replaces immutable catalog storage, returning exact retained schema3 catalog bytes bound by feed catalogDigest.",
+        "allowed_proof": "Whole defined BASIC reschedule software property through actual normalize/merge/project/serialize/schema and NativeFeed metadata/FeedScene/view/countdown owners.",
+        "forbidden_claims": [
+          "Fresh provider observation or hosted/phone/physical delivery",
+          "Renderer/global artwork/catalog qualification, shared quota/CAS/persistence/recovery or resource measurements",
+          "Physical FR165/Store/release acceptance"
+        ]
       },
-      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+      "source_sha256": "71b47050336ccd1ba622c9c9d4fbe5f06d2c9801ed8cfc4851941ea5040486a2",
+      "implementation_note": "Four direct BASIC current cases. Generic quota/CAS/global-art/resource/depth obligations remain in their own existing properties; no replacement matrix or legacy support."
     },
     {
       "id": "LS10.P1.S02.POSITIVE.CURRENT",
@@ -23033,28 +23147,51 @@
       "polarity": "positive",
       "scenario": "New time withdrawn",
       "scenario_fingerprint": "0a2a1afa6193c51b6fd8adc755ab492754101ee54626ab65519ac9061d530714",
-      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
-      "observable": "At the current owner, observe this exact retained contract: flag stays set and exact countdown becomes uncertainty. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
-      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
-      "green_expectation": "The retained scenario-specific positive contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS10.P1.S02.POSITIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "setup": "Retained raw captured Starship MIN record; technical UTC/ID mutations only, verbatim display text. Current schema3 SFR1M captured envelope with actual production schedule projection. Pinned FR165 SDK uses four new test-only native assertions and numeric clock. Captured historical SEC record supplies agreeing-target metadata merge assertion.",
+      "observable": "Target withdrawal preserves selected launch flag and removes exact/nominal target; current envelope uncertain; actual native remaining=null and --:--:--.",
+      "red_expectation": "Fails if the stated literal relation, latch, identity or precision assertion is false, or the exact native framework test is missing/fails.",
+      "green_expectation": "Target withdrawal preserves selected launch flag and removes exact/nominal target; current envelope uncertain; actual native remaining=null and --:--:--.",
       "invalidation_dependencies": [
-        "corpus/real-schedule-20261113/**",
-        "schemas/**",
-        "tests/fixtures/timing/**",
-        "tests/test_current_format_acceptance.py",
+        "tests/test_basic_reschedule.py",
+        "tests/fixtures/basic_reschedule/**",
+        "tests/fixtures/provider/current-starship/**",
+        "tests/fixtures/map-only/feed.json",
+        "tools/spacefox/schedule.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/wire.py",
         "tools/spacefox/feed.py",
         "tools/spacefox/publisher.py",
-        "tools/spacefox/schedule.py",
-        "tools/update_feed.py"
+        "tools/spacefox/catalog.py",
+        "catalog/**",
+        "tools/build_watchface.py",
+        "tools/run_native_tests.py",
+        "watchface/source/**",
+        "watchface/resources/**",
+        "watchface/toolchain-lock.json",
+        "watchface/api-policy.json",
+        "watchface/manifest.xml",
+        "locales/catalog.json",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/reschedule-observation.json",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/native-tests.log",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/input/ReschedulePackets.mc",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/build.json"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls10_p1_s02_positive_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_withdrawn_time_positive",
+      "command_id": "basic-reschedule-whole",
+      "state": "implemented",
+      "source_path": "tests/test_basic_reschedule.py",
       "substitution": {
-        "classification": "NO_TEST_DOUBLE"
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 by pinned SDK simulator; controlled numeric WatchClock. Real captured provider records replayed with technical time/ID mutations; captured visual references reused only as current feed envelope. Read-only adapter replaces immutable catalog storage, returning exact retained schema3 catalog bytes bound by feed catalogDigest.",
+        "allowed_proof": "Whole defined BASIC reschedule software property through actual normalize/merge/project/serialize/schema and NativeFeed metadata/FeedScene/view/countdown owners.",
+        "forbidden_claims": [
+          "Fresh provider observation or hosted/phone/physical delivery",
+          "Renderer/global artwork/catalog qualification, shared quota/CAS/persistence/recovery or resource measurements",
+          "Physical FR165/Store/release acceptance"
+        ]
       },
-      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+      "source_sha256": "71b47050336ccd1ba622c9c9d4fbe5f06d2c9801ed8cfc4851941ea5040486a2",
+      "implementation_note": "Four direct BASIC current cases. Generic quota/CAS/global-art/resource/depth obligations remain in their own existing properties; no replacement matrix or legacy support."
     },
     {
       "id": "LS10.P1.S02.NEGATIVE.CURRENT",
@@ -23062,28 +23199,51 @@
       "polarity": "negative",
       "scenario": "New time withdrawn",
       "scenario_fingerprint": "0a2a1afa6193c51b6fd8adc755ab492754101ee54626ab65519ac9061d530714",
-      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
-      "observable": "At the current owner, observe this exact retained contract: do not restore old exact target or clear either state merely because another refresh succeeds. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
-      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
-      "green_expectation": "The retained scenario-specific negative contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS10.P1.S02.NEGATIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "setup": "Retained raw captured Starship MIN record; technical UTC/ID mutations only, verbatim display text. Current schema3 SFR1M captured envelope with actual production schedule projection. Pinned FR165 SDK uses four new test-only native assertions and numeric clock. Captured historical SEC record supplies agreeing-target metadata merge assertion.",
+      "observable": "Unchanged withdrawn refresh remains unknown/latched; selecting a different timed launch ID cannot inherit flag. Original accepted ID remains latched; native returns16:18:18 without inherited flag.",
+      "red_expectation": "Fails if the stated literal relation, latch, identity or precision assertion is false, or the exact native framework test is missing/fails.",
+      "green_expectation": "Unchanged withdrawn refresh remains unknown/latched; selecting a different timed launch ID cannot inherit flag. Original accepted ID remains latched; native returns16:18:18 without inherited flag.",
       "invalidation_dependencies": [
-        "corpus/real-schedule-20261113/**",
-        "schemas/**",
-        "tests/fixtures/timing/**",
-        "tests/test_current_format_acceptance.py",
+        "tests/test_basic_reschedule.py",
+        "tests/fixtures/basic_reschedule/**",
+        "tests/fixtures/provider/current-starship/**",
+        "tests/fixtures/map-only/feed.json",
+        "tools/spacefox/schedule.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/wire.py",
         "tools/spacefox/feed.py",
         "tools/spacefox/publisher.py",
-        "tools/spacefox/schedule.py",
-        "tools/update_feed.py"
+        "tools/spacefox/catalog.py",
+        "catalog/**",
+        "tools/build_watchface.py",
+        "tools/run_native_tests.py",
+        "watchface/source/**",
+        "watchface/resources/**",
+        "watchface/toolchain-lock.json",
+        "watchface/api-policy.json",
+        "watchface/manifest.xml",
+        "locales/catalog.json",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/reschedule-observation.json",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/native-tests.log",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/input/ReschedulePackets.mc",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/build.json"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls10_p1_s02_negative_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_different_launch_negative",
+      "command_id": "basic-reschedule-whole",
+      "state": "implemented",
+      "source_path": "tests/test_basic_reschedule.py",
       "substitution": {
-        "classification": "NO_TEST_DOUBLE"
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 by pinned SDK simulator; controlled numeric WatchClock. Real captured provider records replayed with technical time/ID mutations; captured visual references reused only as current feed envelope. Read-only adapter replaces immutable catalog storage, returning exact retained schema3 catalog bytes bound by feed catalogDigest.",
+        "allowed_proof": "Whole defined BASIC reschedule software property through actual normalize/merge/project/serialize/schema and NativeFeed metadata/FeedScene/view/countdown owners.",
+        "forbidden_claims": [
+          "Fresh provider observation or hosted/phone/physical delivery",
+          "Renderer/global artwork/catalog qualification, shared quota/CAS/persistence/recovery or resource measurements",
+          "Physical FR165/Store/release acceptance"
+        ]
       },
-      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+      "source_sha256": "71b47050336ccd1ba622c9c9d4fbe5f06d2c9801ed8cfc4851941ea5040486a2",
+      "implementation_note": "Four direct BASIC current cases. Generic quota/CAS/global-art/resource/depth obligations remain in their own existing properties; no replacement matrix or legacy support."
     },
     {
       "id": "LS13.P1.S01.POSITIVE.CURRENT",
@@ -33750,7 +33910,7 @@
       "timeout_seconds": 700,
       "authority": "local",
       "planned_boundary": "EXTERNAL_BOUNDARY",
-      "notes": "Actual SDK export through unchanged historical owner; adapter not observed in canonical reconciliation. Requires explicit SDK execution authority."
+      "notes": "Actual current clean-worktree five-language API5.1 export through public CLI; disposable external key and unrelated UUID; bound production policy unchanged."
     },
     {
       "id": "canonical-geometry-positive",
@@ -34137,6 +34297,49 @@
       "timeout_seconds": 300,
       "authority": "local",
       "notes": "Actual seven new compiled Monkey C assertions and ten exact Python property observers; unchanged ten native clock tests/ordinary UI sources reused through original source-bound receipts, not rerun. External SDK/Java/disposable test key required."
+    },
+    {
+      "id": "basic-reschedule-whole",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_basic_reschedule"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "notes": "Four direct captured-current BASIC LS10 cases, four new actual native assertions; no provider/hosted calls, no renderer/full publisher/locale rerun. Existing SDK/Java/disposable test key required."
+    },
+    {
+      "id": "release-package-whole-checks",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_release.ReleaseTest.test_added_snapshot_inputs_during_sdk_build_negative",
+        "tests.test_release.ReleaseTest.test_changed_generated_inputs_during_sdk_build_negative",
+        "tests.test_release.ReleaseTest.test_changed_source_during_sdk_build_negative",
+        "tests.test_release.ReleaseTest.test_container_and_signature_tamper_negative",
+        "tests.test_release.ReleaseTest.test_development_discovery_boundary_preserved",
+        "tests.test_release.ReleaseTest.test_future_committed_min_api_admission_positive",
+        "tests.test_release.ReleaseTest.test_higher_version_signed_repair_positive",
+        "tests.test_release.ReleaseTest.test_key_and_production_identity_negative",
+        "tests.test_release.ReleaseTest.test_manifest_source_and_output_negative",
+        "tests.test_release.ReleaseTest.test_sdk_export_and_provenance_positive",
+        "tests.test_release.ReleaseTest.test_update_and_backup_negative"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 900,
+      "authority": "local",
+      "planned_boundary": "EXTERNAL_BOUNDARY",
+      "notes": "Actual pinned SDK exports and original key/identity/source/generated/inventory/atomic/crypto controls on current finite-five qualified source. Disposable external identity. No Simulator, production custody, device or Store claim."
     }
   ]
 }

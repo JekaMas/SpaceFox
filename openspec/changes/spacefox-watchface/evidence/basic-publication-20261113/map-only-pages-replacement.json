@@ -1,0 +1,39 @@
+{
+  "status": "pages-recreated-awaiting-canonical-404",
+  "quotaWindowExpiredUtc": "2026-11-13T11:58:24Z",
+  "checkedUtc": "2026-11-13T11:59:59.673095+00:00",
+  "before": {
+    "status": 200,
+    "readUtc": "2026-11-13T11:59:59.673095+00:00",
+    "bytes": 3129,
+    "sha256": "45f8a15552dd4814a9c14e592b31e1e14c50ad948edef3c8ae320a8004adaa27",
+    "publisher": {
+      "generation": 3,
+      "instance": "c976dc96c09fbf0598ebf69e8b5f755c745123bcda0fd03aaa4664b2216f6ca5",
+      "selectionValidatedUtc": 1794566525
+    },
+    "dualScene": true
+  },
+  "operations": [
+    {
+      "operation": "DELETE",
+      "utc": "2026-11-13T12:00:00.044003+00:00",
+      "exit": 0,
+      "stderr": ""
+    },
+    {
+      "operation": "POST",
+      "utc": "2026-11-13T12:00:00.741100+00:00",
+      "exit": 0,
+      "stderr": "",
+      "response": {
+        "build_type": "workflow",
+        "html_url": "https://jekamas.github.io/SpaceFox/",
+        "https_enforced": true,
+        "status": null,
+        "cname": null
+      }
+    }
+  ],
+  "scope": "Current map-only clean bootstrap; old authority refs/history untouched; no old payload or quota import."
+}

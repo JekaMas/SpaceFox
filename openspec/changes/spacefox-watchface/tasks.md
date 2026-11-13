@@ -23,6 +23,12 @@
 
 - [ ] 3.1 Implement `tools/update_feed.py`, its accepted state, bounded feed and refresh-policy metadata using a qualified LL2 query; verify 60/15-minute due checks and optional fast mode, earlier/cancelled/omitted identities, missing context, uncertain UTC, malformed/regressing data, unchanged validation, quota and 429; document the exact contract.
 - [ ] 3.2 Implement `FeedBaseUrl`, adaptive polling/cache, clock-derived local countdown and reschedule flags; verify two-hour offline sleep/wake without timer drift or network-on-redraw, exact window boundaries/return to hourly, old 200/304, per-record age and stale latch on window exit, +20-minute/unknown updates, restart, invalid feed and zero without confirmation.
+  BASIC reschedule software property LS10.P1 independently verified 4/4 current cases
+  through1 command, with actual four-native parser/metadata/view/countdown assertions;
+  [report](evidence/basic-reschedule-whole/FINAL.md). Existing MIN comparison was
+  already correct; no production change. Root judgment remains pending.
+  Other3.1/3.2 obligations retain their existing open scope.
+
 - [ ] 3.3 Implement the standard-runner Actions/custom-Pages workflow with lightweight due checks, serialized updates, bounded artifacts/retention and recovery of accepted state; verify not-due runs perform no provider fetch/publication, first/second validation, failure/overlap handling, unchanged age during catalog-only updates and disabled-schedule recovery. Enable only within an implementation/deployment request.
 - [ ] 3.4 Rehearse `docs/AGENT_SETUP.md` for the owner's instance and another owner's fork/feed URL; verify prerequisites, Actions/Pages settings, manual recovery, no required author credentials/AWS/recurring LLM calls, and actual HTTPS plus phone/watch readback; retain exact unavailable prerequisites rather than a false setup pass.
 - [x] 3.5 Implement durable feed-state active/pending/quota reservations, monotonic generations and expected-base/CAS; fault-inject before/after reservation, candidate persistence, complete-artifact deploy and promotion. Verify stale queued code rejection, restart reconciliation, lost quota accounting, missing-state stop, source-age preservation and reconstruction after artifact expiration; measure ledger and Git history growth.
@@ -69,3 +75,5 @@ checkboxes or acceptance obligations.
 Current decisions, exact graph counts and remaining software/external boundaries:
 [PROGRESS.md](PROGRESS.md). Retired IDs and reasons:
 [evidence/current-only-finite-spec/retirement-inventory.json](evidence/current-only-finite-spec/retirement-inventory.json).
+
+Local task7.1 packaging increment: whole current-source RL02.P2 author apply/verify is GREEN (11cases/2commands, production candidate built) and recorded in `evidence/basic-release-package-whole/STATUS.md`; package readiness does not close physical/phone/Store tasks.

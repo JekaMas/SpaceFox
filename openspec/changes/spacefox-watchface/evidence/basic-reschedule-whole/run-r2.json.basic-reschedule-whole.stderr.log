@@ -1,0 +1,14 @@
+setUpClass (tests.test_basic_reschedule.BasicRescheduleTest) ... ERROR
+
+======================================================================
+ERROR: setUpClass (tests.test_basic_reschedule.BasicRescheduleTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/tests/test_basic_reschedule.py", line 118, in setUpClass
+    raise AssertionError('reschedule compilation failed: ' + str(output / 'compile.log'))
+AssertionError: reschedule compilation failed: /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/compile.log
+
+----------------------------------------------------------------------
+Ran 0 tests in 8.285s
+
+FAILED (errors=1)

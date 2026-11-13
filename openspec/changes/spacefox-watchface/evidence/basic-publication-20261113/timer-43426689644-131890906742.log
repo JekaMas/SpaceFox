@@ -1,0 +1,302 @@
+﻿2026-11-13T12:39:37.5298960Z Current runner version: '2.338.2'
+2026-11-13T12:39:37.5325739Z ##[group]Runner Image Provisioner
+2026-11-13T12:39:37.5326666Z Hosted Compute Agent
+2026-11-13T12:39:37.5327435Z Version: 20261103.629
+2026-11-13T12:39:37.5328222Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+2026-11-13T12:39:37.5328998Z Build Date: 2026-11-03T17:26:59Z
+2026-11-13T12:39:37.5329824Z Worker ID: {82293c6c-c001-4a3f-8446-670f7fa3db2c}
+2026-11-13T12:39:37.5330614Z Region: southcentralus
+2026-11-13T12:39:37.5331320Z Cloud: Azure
+2026-11-13T12:39:37.5331948Z ##[endgroup]
+2026-11-13T12:39:37.5333578Z ##[group]Operating System
+2026-11-13T12:39:37.5334368Z Ubuntu
+2026-11-13T12:39:37.5334962Z 24.04.5
+2026-11-13T12:39:37.5335564Z LTS
+2026-11-13T12:39:37.5336266Z ##[endgroup]
+2026-11-13T12:39:37.5336899Z ##[group]Runner Image
+2026-11-13T12:39:37.5337605Z Image: ubuntu-24.04
+2026-11-13T12:39:37.5338241Z Version: 20261111.370.1
+2026-11-13T12:39:37.5339689Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261111.370/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-13T12:39:37.5341342Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261111.370
+2026-11-13T12:39:37.5343126Z ##[endgroup]
+2026-11-13T12:39:37.5345238Z ##[group]GITHUB_TOKEN Permissions
+2026-11-13T12:39:37.5348473Z Actions: read
+2026-11-13T12:39:37.5349458Z Contents: write
+2026-11-13T12:39:37.5350757Z Metadata: read
+2026-11-13T12:39:37.5351848Z Pages: read
+2026-11-13T12:39:37.5352985Z ##[endgroup]
+2026-11-13T12:39:37.5355722Z Secret source: Actions
+2026-11-13T12:39:37.5357227Z Cache mode: write
+2026-11-13T12:39:37.5358807Z Prepare workflow directory
+2026-11-13T12:39:37.6006615Z Prepare all required actions
+2026-11-13T12:39:37.6076296Z Getting action download info
+2026-11-13T12:39:37.8671968Z Download action repository 'actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+2026-11-13T12:39:38.1092901Z Complete job name: metadata
+2026-11-13T12:39:38.1991024Z ##[group]Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+2026-11-13T12:39:38.1992083Z with:
+2026-11-13T12:39:38.1992766Z   ref: ae473f7eaddd0e0cf0eecd594b6612b36831676b
+2026-11-13T12:39:38.1993405Z   persist-credentials: false
+2026-11-13T12:39:38.1993946Z   sparse-checkout-cone-mode: false
+2026-11-13T12:39:38.1994554Z   sparse-checkout: /.github/spacefox-inputs.txt
+2026-11-13T12:39:38.1995182Z   repository: JekaMas/SpaceFox
+2026-11-13T12:39:38.1999333Z   token: ***
+2026-11-13T12:39:38.1999800Z   ssh-strict: true
+2026-11-13T12:39:38.2000259Z   ssh-user: git
+2026-11-13T12:39:38.2000698Z   clean: true
+2026-11-13T12:39:38.2001137Z   fetch-depth: 1
+2026-11-13T12:39:38.2001696Z   fetch-tags: false
+2026-11-13T12:39:38.2002228Z   show-progress: true
+2026-11-13T12:39:38.2002807Z   lfs: false
+2026-11-13T12:39:38.2003303Z   submodules: false
+2026-11-13T12:39:38.2003843Z   set-safe-directory: true
+2026-11-13T12:39:38.2004371Z   allow-unsafe-pr-checkout: false
+2026-11-13T12:39:38.2005204Z env:
+2026-11-13T12:39:38.2005652Z   PYTHONDONTWRITEBYTECODE: 1
+2026-11-13T12:39:38.2006273Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+2026-11-13T12:39:38.2006913Z ##[endgroup]
+2026-11-13T12:39:38.4113144Z Syncing repository: JekaMas/SpaceFox
+2026-11-13T12:39:38.4115435Z ##[group]Getting Git version info
+2026-11-13T12:39:38.4116492Z Working directory is '/home/runner/work/SpaceFox/SpaceFox'
+2026-11-13T12:39:38.4117896Z [command]/usr/bin/git version
+2026-11-13T12:39:38.4157589Z git version 2.56.1
+2026-11-13T12:39:38.4183272Z ##[endgroup]
+2026-11-13T12:39:38.4199142Z Temporarily overriding HOME='/home/runner/work/_temp/daa5ceee-24da-4ec4-be5e-649f50b5f7e8' before making global git config changes
+2026-11-13T12:39:38.4200682Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-13T12:39:38.4204986Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/SpaceFox/SpaceFox
+2026-11-13T12:39:38.4255063Z Deleting the contents of '/home/runner/work/SpaceFox/SpaceFox'
+2026-11-13T12:39:38.4260452Z ##[group]Determining repository object format
+2026-11-13T12:39:38.4262217Z ##[endgroup]
+2026-11-13T12:39:38.4263515Z ##[group]Initializing the repository
+2026-11-13T12:39:38.4266772Z [command]/usr/bin/git init /home/runner/work/SpaceFox/SpaceFox
+2026-11-13T12:39:38.4360945Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-13T12:39:38.4362703Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-13T12:39:38.4363825Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-13T12:39:38.4364575Z hint: call:
+2026-11-13T12:39:38.4365001Z hint:
+2026-11-13T12:39:38.4365546Z hint: 	git config --global init.defaultBranch <name>
+2026-11-13T12:39:38.4366184Z hint:
+2026-11-13T12:39:38.4366784Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-13T12:39:38.4367744Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-13T12:39:38.4368484Z hint:
+2026-11-13T12:39:38.4368935Z hint: 	git branch -m <name>
+2026-11-13T12:39:38.4369423Z hint:
+2026-11-13T12:39:38.4370067Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-13T12:39:38.4376486Z Initialized empty Git repository in /home/runner/work/SpaceFox/SpaceFox/.git/
+2026-11-13T12:39:38.4393389Z [command]/usr/bin/git remote add origin https://github.com/JekaMas/SpaceFox
+2026-11-13T12:39:38.4477370Z ##[endgroup]
+2026-11-13T12:39:38.4478599Z ##[group]Disabling automatic garbage collection
+2026-11-13T12:39:38.4482009Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-13T12:39:38.4519322Z ##[endgroup]
+2026-11-13T12:39:38.4521030Z ##[group]Setting up auth
+2026-11-13T12:39:38.4522006Z Removing SSH command configuration
+2026-11-13T12:39:38.4528000Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-13T12:39:38.4569373Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-13T12:39:38.4963597Z Removing HTTP extra header
+2026-11-13T12:39:38.4974307Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-13T12:39:38.5024984Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-13T12:39:38.5294112Z Removing includeIf entries pointing to credentials config files
+2026-11-13T12:39:38.5302113Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-13T12:39:38.5352639Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-13T12:39:38.5618599Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-531e4308-84cd-4476-bd05-c2167aec7410.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-13T12:39:38.5677418Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path /home/runner/work/_temp/git-credentials-531e4308-84cd-4476-bd05-c2167aec7410.config
+2026-11-13T12:39:38.5728656Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-531e4308-84cd-4476-bd05-c2167aec7410.config
+2026-11-13T12:39:38.5777330Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-531e4308-84cd-4476-bd05-c2167aec7410.config
+2026-11-13T12:39:38.5824431Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-531e4308-84cd-4476-bd05-c2167aec7410.config
+2026-11-13T12:39:38.5865545Z ##[endgroup]
+2026-11-13T12:39:38.5866748Z ##[group]Fetching the repository
+2026-11-13T12:39:38.5874805Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin ae473f7eaddd0e0cf0eecd594b6612b36831676b
+2026-11-13T12:39:38.9991608Z From https://github.com/JekaMas/SpaceFox
+2026-11-13T12:39:38.9992890Z  * branch            ae473f7eaddd0e0cf0eecd594b6612b36831676b -> FETCH_HEAD
+2026-11-13T12:39:39.0003408Z [command]/usr/bin/git rev-parse --verify --quiet ae473f7eaddd0e0cf0eecd594b6612b36831676b^{object}
+2026-11-13T12:39:39.0043360Z ae473f7eaddd0e0cf0eecd594b6612b36831676b
+2026-11-13T12:39:39.0048864Z ##[endgroup]
+2026-11-13T12:39:39.0050080Z ##[group]Determining the checkout info
+2026-11-13T12:39:39.0051427Z ##[endgroup]
+2026-11-13T12:39:39.0052766Z ##[group]Setting up sparse checkout
+2026-11-13T12:39:39.0056027Z [command]/usr/bin/git config core.sparseCheckout true
+2026-11-13T12:39:39.0100431Z [command]/usr/bin/git rev-parse --git-path info/sparse-checkout
+2026-11-13T12:39:39.0135474Z .git/info/sparse-checkout
+2026-11-13T12:39:39.0143088Z ##[endgroup]
+2026-11-13T12:39:39.0143917Z ##[group]Checking out the ref
+2026-11-13T12:39:39.0148982Z [command]/usr/bin/git checkout --progress --force ae473f7eaddd0e0cf0eecd594b6612b36831676b
+2026-11-13T12:39:39.2898031Z Note: switching to 'ae473f7eaddd0e0cf0eecd594b6612b36831676b'.
+2026-11-13T12:39:39.2903174Z 
+2026-11-13T12:39:39.2905277Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-11-13T12:39:39.2906903Z changes and commit them, and you can discard any commits you make in this
+2026-11-13T12:39:39.2908245Z state without impacting any branches by switching back to a branch.
+2026-11-13T12:39:39.2909003Z 
+2026-11-13T12:39:39.2909526Z If you want to create a new branch to retain commits you create, you may
+2026-11-13T12:39:39.2910756Z do so (now or later) by using -c with the switch command. Example:
+2026-11-13T12:39:39.2911627Z 
+2026-11-13T12:39:39.2911955Z   git switch -c <new-branch-name>
+2026-11-13T12:39:39.2912768Z 
+2026-11-13T12:39:39.2913629Z Or undo this operation with:
+2026-11-13T12:39:39.2914186Z 
+2026-11-13T12:39:39.2914487Z   git switch -
+2026-11-13T12:39:39.2914907Z 
+2026-11-13T12:39:39.2915636Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-11-13T12:39:39.2916606Z 
+2026-11-13T12:39:39.2917174Z HEAD is now at ae473f7 Record closed basic time and field verification
+2026-11-13T12:39:39.2924774Z ##[endgroup]
+2026-11-13T12:39:39.2969755Z [command]/usr/bin/git log -1 --format=%H
+2026-11-13T12:39:39.3011119Z ae473f7eaddd0e0cf0eecd594b6612b36831676b
+2026-11-13T12:39:39.3019106Z ##[group]Removing auth
+2026-11-13T12:39:39.3020189Z Removing SSH command configuration
+2026-11-13T12:39:39.3023238Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-13T12:39:39.3069197Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-13T12:39:39.3366482Z Removing HTTP extra header
+2026-11-13T12:39:39.3368768Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-13T12:39:39.3417165Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-13T12:39:39.3684100Z Removing includeIf entries pointing to credentials config files
+2026-11-13T12:39:39.3686958Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-13T12:39:39.3725972Z includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path
+2026-11-13T12:39:39.3727774Z includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path
+2026-11-13T12:39:39.3729467Z includeif.gitdir:/github/workspace/.git.path
+2026-11-13T12:39:39.3730638Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-13T12:39:39.3739135Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path
+2026-11-13T12:39:39.3778562Z /home/runner/work/_temp/git-credentials-531e4308-84cd-4476-bd05-c2167aec7410.config
+2026-11-13T12:39:39.3793468Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path /home/runner/work/_temp/git-credentials-531e4308-84cd-4476-bd05-c2167aec7410.config
+2026-11-13T12:39:39.3841893Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path
+2026-11-13T12:39:39.3876576Z /home/runner/work/_temp/git-credentials-531e4308-84cd-4476-bd05-c2167aec7410.config
+2026-11-13T12:39:39.3889513Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-531e4308-84cd-4476-bd05-c2167aec7410.config
+2026-11-13T12:39:39.3938797Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-11-13T12:39:39.3974324Z /github/runner_temp/git-credentials-531e4308-84cd-4476-bd05-c2167aec7410.config
+2026-11-13T12:39:39.3984389Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-531e4308-84cd-4476-bd05-c2167aec7410.config
+2026-11-13T12:39:39.4044867Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-13T12:39:39.4071854Z /github/runner_temp/git-credentials-531e4308-84cd-4476-bd05-c2167aec7410.config
+2026-11-13T12:39:39.4081532Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-531e4308-84cd-4476-bd05-c2167aec7410.config
+2026-11-13T12:39:39.4126847Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-13T12:39:39.4399013Z Removing credentials config '/home/runner/work/_temp/git-credentials-531e4308-84cd-4476-bd05-c2167aec7410.config'
+2026-11-13T12:39:39.4404075Z ##[endgroup]
+2026-11-13T12:39:39.4664585Z ##[group]Run # Metadata reads its auxiliary corpus from Git, never source/art inputs.
+2026-11-13T12:39:39.4667144Z [36;1m# Metadata reads its auxiliary corpus from Git, never source/art inputs.[0m
+2026-11-13T12:39:39.4669364Z [36;1msed '\|^/catalog/source.json$|d' .github/spacefox-inputs.txt |[0m
+2026-11-13T12:39:39.4671334Z [36;1m  git sparse-checkout set --no-cone --stdin[0m
+2026-11-13T12:39:39.4698270Z shell: /usr/bin/bash -e {0}
+2026-11-13T12:39:39.4699367Z env:
+2026-11-13T12:39:39.4700261Z   PYTHONDONTWRITEBYTECODE: 1
+2026-11-13T12:39:39.4701589Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+2026-11-13T12:39:39.4703208Z ##[endgroup]
+2026-11-13T12:39:39.8547972Z ##[group]Run bash .github/scripts/install-native-linux-renderer.sh
+2026-11-13T12:39:39.8548751Z [36;1mbash .github/scripts/install-native-linux-renderer.sh[0m
+2026-11-13T12:39:39.8571275Z shell: /usr/bin/bash -e {0}
+2026-11-13T12:39:39.8571797Z env:
+2026-11-13T12:39:39.8572290Z   PYTHONDONTWRITEBYTECODE: 1
+2026-11-13T12:39:39.8573126Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+2026-11-13T12:39:39.8573682Z ##[endgroup]
+2026-11-13T12:39:39.8744859Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-11-13T12:39:39.8746004Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-11-13T12:39:39.8746537Z 
+2026-11-13T12:39:40.4683789Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-11-13T12:39:41.1354105Z   1 2246k    1 23898    0     0  40231      0  0:00:57 --:--:--  0:00:57 40232
+2026-11-13T12:39:41.1354845Z 100 2246k  100 2246k    0     0  1781k      0  0:00:01  0:00:01 --:--:-- 1783k
+2026-11-13T12:39:41.1427595Z /home/runner/work/_temp/native-linux-prerequisites/librsvg2-bin.deb: OK
+2026-11-13T12:39:41.2351544Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-11-13T12:39:41.2596827Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-11-13T12:39:41.2617786Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-11-13T12:39:41.2670743Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-11-13T12:39:41.2693448Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-11-13T12:39:41.3796881Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-11-13T12:39:41.3894701Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1450 kB]
+2026-11-13T12:39:41.4049065Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [315 kB]
+2026-11-13T12:39:41.4084429Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1713 kB]
+2026-11-13T12:39:41.4157211Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [345 kB]
+2026-11-13T12:39:41.4182836Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1883 kB]
+2026-11-13T12:39:41.4284878Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [430 kB]
+2026-11-13T12:39:41.4314636Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [14.6 kB]
+2026-11-13T12:39:41.5114951Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1195 kB]
+2026-11-13T12:39:41.5249048Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [238 kB]
+2026-11-13T12:39:41.5250016Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1228 kB]
+2026-11-13T12:39:41.5678990Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [248 kB]
+2026-11-13T12:39:41.5694979Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1788 kB]
+2026-11-13T12:39:41.5713964Z Get:20 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [767 kB]
+2026-11-13T12:39:41.5778327Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [411 kB]
+2026-11-13T12:39:41.5806720Z Get:21 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [697 kB]
+2026-11-13T12:39:45.1706475Z Fetched 13.1 MB in 1s (9619 kB/s)
+2026-11-13T12:39:46.3529345Z Reading package lists...
+2026-11-13T12:39:46.4440706Z Reading package lists...
+2026-11-13T12:39:46.7639865Z Building dependency tree...
+2026-11-13T12:39:46.7650224Z Reading state information...
+2026-11-13T12:39:46.9441844Z The following additional packages will be installed:
+2026-11-13T12:39:46.9446999Z   librsvg2-2
+2026-11-13T12:39:46.9454767Z Recommended packages:
+2026-11-13T12:39:46.9455222Z   librsvg2-common
+2026-11-13T12:39:46.9740668Z The following NEW packages will be installed:
+2026-11-13T12:39:46.9746092Z   librsvg2-2 librsvg2-bin
+2026-11-13T12:39:47.0088858Z 0 upgraded, 2 newly installed, 0 to remove and 20 not upgraded.
+2026-11-13T12:39:47.0089912Z Need to get 4442 kB of archives.
+2026-11-13T12:39:47.0090482Z After this operation, 14.2 MB of additional disk space will be used.
+2026-11-13T12:39:47.0091196Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-11-13T12:39:47.0888191Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 librsvg2-2 amd64 2.58.0+dfsg-1ubuntu0.1 [2141 kB]
+2026-11-13T12:39:47.3285742Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 librsvg2-bin amd64 2.58.0+dfsg-1ubuntu0.1 [2301 kB]
+2026-11-13T12:39:47.6568783Z Fetched 4442 kB in 0s (12.0 MB/s)
+2026-11-13T12:39:47.6818142Z Selecting previously unselected package librsvg2-2:amd64.
+2026-11-13T12:39:47.7030368Z (Reading database ... 
+2026-11-13T12:39:47.7031122Z (Reading database ... 5%
+2026-11-13T12:39:47.7031620Z (Reading database ... 10%
+2026-11-13T12:39:47.7032040Z (Reading database ... 15%
+2026-11-13T12:39:47.7032789Z (Reading database ... 20%
+2026-11-13T12:39:47.7033205Z (Reading database ... 25%
+2026-11-13T12:39:47.7033594Z (Reading database ... 30%
+2026-11-13T12:39:47.7033958Z (Reading database ... 35%
+2026-11-13T12:39:47.7034839Z (Reading database ... 40%
+2026-11-13T12:39:47.7035216Z (Reading database ... 45%
+2026-11-13T12:39:47.7035582Z (Reading database ... 50%
+2026-11-13T12:39:47.7080031Z (Reading database ... 55%
+2026-11-13T12:39:47.8182129Z (Reading database ... 60%
+2026-11-13T12:39:48.0223714Z (Reading database ... 65%
+2026-11-13T12:39:48.1811149Z (Reading database ... 70%
+2026-11-13T12:39:48.3695038Z (Reading database ... 75%
+2026-11-13T12:39:48.4774651Z (Reading database ... 80%
+2026-11-13T12:39:48.5771158Z (Reading database ... 85%
+2026-11-13T12:39:48.7316330Z (Reading database ... 90%
+2026-11-13T12:39:48.7918135Z (Reading database ... 95%
+2026-11-13T12:39:48.7918603Z (Reading database ... 100%
+2026-11-13T12:39:48.7919020Z (Reading database ... 216752 files and directories currently installed.)
+2026-11-13T12:39:48.7974656Z Preparing to unpack .../librsvg2-2_2.58.0+dfsg-1ubuntu0.1_amd64.deb ...
+2026-11-13T12:39:48.8005954Z Unpacking librsvg2-2:amd64 (2.58.0+dfsg-1ubuntu0.1) ...
+2026-11-13T12:39:48.8523459Z Selecting previously unselected package librsvg2-bin.
+2026-11-13T12:39:48.8670787Z Preparing to unpack .../librsvg2-bin_2.58.0+dfsg-1ubuntu0.1_amd64.deb ...
+2026-11-13T12:39:48.8678077Z Unpacking librsvg2-bin (2.58.0+dfsg-1ubuntu0.1) ...
+2026-11-13T12:39:48.9453924Z Setting up librsvg2-2:amd64 (2.58.0+dfsg-1ubuntu0.1) ...
+2026-11-13T12:39:48.9479569Z Setting up librsvg2-bin (2.58.0+dfsg-1ubuntu0.1) ...
+2026-11-13T12:39:48.9499801Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-11-13T12:39:48.9520837Z Not building database; man-db/auto-update is not 'true'.
+2026-11-13T12:39:48.9531448Z Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+2026-11-13T12:39:49.6392171Z 
+2026-11-13T12:39:49.6393013Z Running kernel seems to be up-to-date.
+2026-11-13T12:39:49.6393297Z 
+2026-11-13T12:39:49.6393414Z No services need to be restarted.
+2026-11-13T12:39:49.6393595Z 
+2026-11-13T12:39:49.6393706Z No containers need to be restarted.
+2026-11-13T12:39:49.6393880Z 
+2026-11-13T12:39:49.6394030Z No user sessions are running outdated binaries.
+2026-11-13T12:39:49.6394236Z 
+2026-11-13T12:39:49.6394438Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-11-13T12:39:50.8046245Z rsvg-convert version 2.58.0
+2026-11-13T12:39:50.8456391Z ##[group]Run python3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" metadata
+2026-11-13T12:39:50.8456930Z [36;1mpython3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" metadata[0m
+2026-11-13T12:39:50.8478908Z shell: /usr/bin/bash -e {0}
+2026-11-13T12:39:50.8479167Z env:
+2026-11-13T12:39:50.8479385Z   PYTHONDONTWRITEBYTECODE: 1
+2026-11-13T12:39:50.8479714Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+2026-11-13T12:39:50.8482764Z   GH_TOKEN: ***
+2026-11-13T12:39:50.8482994Z ##[endgroup]
+2026-11-13T12:40:35.2071719Z {"completed": null, "head": "1692e924a2726027f26e0838f0b81033a98cdcf6", "requests": 0, "status": "yielded"}
+2026-11-13T12:40:35.2336280Z Post job cleanup.
+2026-11-13T12:40:35.3273360Z [command]/usr/bin/git version
+2026-11-13T12:40:35.3315857Z git version 2.56.1
+2026-11-13T12:40:35.3360751Z Temporarily overriding HOME='/home/runner/work/_temp/786137f2-1c21-4424-b684-ec36d53271fb' before making global git config changes
+2026-11-13T12:40:35.3362115Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-13T12:40:35.3368121Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/SpaceFox/SpaceFox
+2026-11-13T12:40:35.3414584Z Removing SSH command configuration
+2026-11-13T12:40:35.3422280Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-13T12:40:35.3465828Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-13T12:40:35.3749664Z Removing HTTP extra header
+2026-11-13T12:40:35.3756597Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-13T12:40:35.3800849Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-13T12:40:35.4113149Z Removing includeIf entries pointing to credentials config files
+2026-11-13T12:40:35.4120386Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-13T12:40:35.4169298Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-13T12:40:35.4660143Z Cleaning up orphan processes
+

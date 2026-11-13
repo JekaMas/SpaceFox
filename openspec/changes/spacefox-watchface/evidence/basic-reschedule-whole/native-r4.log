@@ -1,0 +1,80 @@
+------------------------------------------------------------------------------
+Executing test rescheduleView...
+
+Error: Symbol Not Found Error
+Details: Could not find symbol 'document'
+Stack: 
+  - feedScene() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/watchface/source/FeedScene.mc:5 0x10003cb7 
+  - setPacket() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/watchface/source/SpaceFoxView.mc:59 0x50003dd3 
+  - rescheduleView() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/tests/fixtures/basic_reschedule/BasicReschedule.mc:13 0x100035c6 
+  - evaluate_test_entries_0_to_5() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/gen/006-B4432-00/source/UnitTests.mcgen:55 0x10007781 
+  - runTest() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/gen/006-B4432-00/source/UnitTests.mcgen:78 0x10007849 
+ERROR
+------------------------------------------------------------------------------
+Executing test rescheduleMove...
+
+Error: Unhandled Exception
+Exception: Invalid current feed:header
+Stack: 
+  - fail() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/watchface/source/NativeFeed.mc:9 0x1000563c 
+  - header() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/watchface/source/NativeFeed.mc:40 0x1000566c 
+  - validate() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/watchface/source/NativeFeed.mc:44 0x50003491 
+  - initialize() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/watchface/source/NativeFeed.mc:6 0x10005984 
+  - rescheduleMove() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/tests/fixtures/basic_reschedule/BasicReschedule.mc:17 0x10002b8e 
+  - evaluate_test_entries_0_to_5() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/gen/006-B4432-00/source/UnitTests.mcgen:57 0x1000779c 
+  - runTest() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/gen/006-B4432-00/source/UnitTests.mcgen:78 0x10007849 
+ERROR
+------------------------------------------------------------------------------
+Executing test rescheduleRefresh...
+
+Error: Unhandled Exception
+Exception: Invalid current feed:header
+Stack: 
+  - fail() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/watchface/source/NativeFeed.mc:9 0x1000563c 
+  - header() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/watchface/source/NativeFeed.mc:40 0x1000566c 
+  - validate() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/watchface/source/NativeFeed.mc:44 0x50003491 
+  - initialize() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/watchface/source/NativeFeed.mc:6 0x10005984 
+  - rescheduleRefresh() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/tests/fixtures/basic_reschedule/BasicReschedule.mc:29 0x100043c1 
+  - evaluate_test_entries_0_to_5() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/gen/006-B4432-00/source/UnitTests.mcgen:59 0x100077b7 
+  - runTest() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/gen/006-B4432-00/source/UnitTests.mcgen:78 0x10007849 
+ERROR
+------------------------------------------------------------------------------
+Executing test rescheduleWithdraw...
+
+Error: Unhandled Exception
+Exception: Invalid current feed:header
+Stack: 
+  - fail() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/watchface/source/NativeFeed.mc:9 0x1000563c 
+  - header() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/watchface/source/NativeFeed.mc:40 0x1000566c 
+  - validate() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/watchface/source/NativeFeed.mc:44 0x50003491 
+  - initialize() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/watchface/source/NativeFeed.mc:6 0x10005984 
+  - rescheduleWithdraw() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/tests/fixtures/basic_reschedule/BasicReschedule.mc:40 0x10002e41 
+  - evaluate_test_entries_0_to_5() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/gen/006-B4432-00/source/UnitTests.mcgen:61 0x100077d2 
+  - runTest() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/gen/006-B4432-00/source/UnitTests.mcgen:78 0x10007849 
+ERROR
+------------------------------------------------------------------------------
+Executing test rescheduleDifferent...
+
+Error: Unhandled Exception
+Exception: Invalid current feed:header
+Stack: 
+  - fail() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/watchface/source/NativeFeed.mc:9 0x1000563c 
+  - header() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/watchface/source/NativeFeed.mc:40 0x1000566c 
+  - validate() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/watchface/source/NativeFeed.mc:44 0x50003491 
+  - initialize() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/watchface/source/NativeFeed.mc:6 0x10005984 
+  - rescheduleDifferent() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/tests/fixtures/basic_reschedule/BasicReschedule.mc:49 0x100037b3 
+  - evaluate_test_entries_0_to_5() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/gen/006-B4432-00/source/UnitTests.mcgen:63 0x100077ed 
+  - runTest() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/gen/006-B4432-00/source/UnitTests.mcgen:78 0x10007849 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+rescheduleView                      ERROR
+rescheduleMove                      ERROR
+rescheduleRefresh                   ERROR
+rescheduleWithdraw                  ERROR
+rescheduleDifferent                 ERROR
+Ran 5 tests
+
+FAILED (passed=0, failed=0, errors=5)

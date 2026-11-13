@@ -1,0 +1,22 @@
+test_actual_joined_export_and_signature_qualification (tests.test_canonical_sdk_export.CanonicalSdkExport.test_actual_joined_export_and_signature_qualification) ... FAIL
+
+======================================================================
+FAIL: test_actual_joined_export_and_signature_qualification (tests.test_canonical_sdk_export.CanonicalSdkExport.test_actual_joined_export_and_signature_qualification)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-release-package-whole/tests/test_canonical_sdk_export.py", line 47, in test_actual_joined_export_and_signature_qualification
+    self.assertEqual(receipt["languages"], ["eng", "rus", "deu", "fre", "spa"])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['eng'] != ['eng', 'rus', 'deu', 'fre', 'spa']
+
+Second list contains 4 additional elements.
+First extra element 1:
+'rus'
+
+- ['eng']
++ ['eng', 'rus', 'deu', 'fre', 'spa']
+
+----------------------------------------------------------------------
+Ran 1 test in 20.395s
+
+FAILED (failures=1)

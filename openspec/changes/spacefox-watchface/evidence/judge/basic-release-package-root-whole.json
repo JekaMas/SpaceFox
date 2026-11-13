@@ -1,0 +1,38 @@
+{
+  "status": "accepted-and-closed",
+  "sourceCommit": "8bbfa81b2d042c7c0e28791dc5aea6082902b928",
+  "closedProperties": [
+    "RL02.P2"
+  ],
+  "actualVerifier": {
+    "status": "passed",
+    "cases": 11,
+    "commands": 2,
+    "manifestSha256": "97bfec659ab7ac1d3b68a2d02bb03a9ae2aaaa9a1d822ed062c331f06cfdf90d",
+    "path": "evidence/basic-release-package-whole/independent-green/independent-run.json"
+  },
+  "rootChecked": "Exact verifier manifest/result and external actual candidate package/release hashes. Production native/resources/build_watchface unchanged; no invalidated prior behavior proof.",
+  "candidate": "/Users/jekamas/.local/share/SpaceFox-release-basic-five-20261113/candidate-c7ad2c41",
+  "publicationReady": false,
+  "retainedClosedProperties": [
+    "WF12.P1",
+    "WF12.P3",
+    "WF12.P4",
+    "WF01.P1",
+    "WF03.P1",
+    "LS10.P1"
+  ],
+  "currentCounts": {
+    "tasks": 31,
+    "tasks_closed": 12,
+    "requirements": 56,
+    "properties": 154,
+    "cases": 701,
+    "commands": 71,
+    "case_states": {
+      "planned": 549,
+      "implemented": 152
+    }
+  },
+  "scope": "Bounded actual signed local PRG/IQ; no physical/phone/Store acceptance."
+}

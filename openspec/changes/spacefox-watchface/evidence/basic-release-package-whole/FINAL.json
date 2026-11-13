@@ -1,0 +1,78 @@
+{
+  "status": "closed_independent_whole_green",
+  "property": "RL02.P2",
+  "source_revision": "c7ad2c4113de272cd9677842d78047e7e6ffe77b",
+  "source_dirty": false,
+  "selected_cases": 11,
+  "selected_commands": 2,
+  "all_selected_cases": "passed",
+  "commands": [
+    {
+      "id": "canonical-core-release-sdk-export",
+      "exit_code": 0,
+      "duration_seconds": 20.672748957760632,
+      "observed_tests": {
+        "unittest::tests.test_canonical_sdk_export.CanonicalSdkExport.test_actual_joined_export_and_signature_qualification": "pass"
+      }
+    },
+    {
+      "id": "release-package-whole-checks",
+      "exit_code": 0,
+      "duration_seconds": 122.7210195409134,
+      "observed_tests": {
+        "unittest::tests.test_release.ReleaseTest.test_added_snapshot_inputs_during_sdk_build_negative": "pass",
+        "unittest::tests.test_release.ReleaseTest.test_changed_generated_inputs_during_sdk_build_negative": "pass",
+        "unittest::tests.test_release.ReleaseTest.test_changed_source_during_sdk_build_negative": "pass",
+        "unittest::tests.test_release.ReleaseTest.test_container_and_signature_tamper_negative": "pass",
+        "unittest::tests.test_release.ReleaseTest.test_development_discovery_boundary_preserved": "pass",
+        "unittest::tests.test_release.ReleaseTest.test_future_committed_min_api_admission_positive": "pass",
+        "unittest::tests.test_release.ReleaseTest.test_higher_version_signed_repair_positive": "pass",
+        "unittest::tests.test_release.ReleaseTest.test_key_and_production_identity_negative": "pass",
+        "unittest::tests.test_release.ReleaseTest.test_manifest_source_and_output_negative": "pass",
+        "unittest::tests.test_release.ReleaseTest.test_sdk_export_and_provenance_positive": "pass",
+        "unittest::tests.test_release.ReleaseTest.test_update_and_backup_negative": "pass"
+      }
+    }
+  ],
+  "whole_result": "green-author-2/author-whole-2.json",
+  "whole_result_sha256": "c65cbd5939ec9bebd3b900a81994b695efacd2f2a8e08a50734a88063238425f",
+  "candidate_output": "/Users/jekamas/.local/share/SpaceFox-release-basic-five-20261113/candidate-c7ad2c41",
+  "production_uuid": "ec8b7c8a8ea54ee9ac91ee6e7a674d15",
+  "public_key_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
+  "version": "0.1.0",
+  "languages": [
+    "eng",
+    "rus",
+    "deu",
+    "fre",
+    "spa"
+  ],
+  "minimum_api": "5.1.0",
+  "runtime_api": "5.2.0",
+  "packages": {
+    "prg": {
+      "path": "SpaceFox.prg",
+      "sha256": "aa0376f64da4b7a6d9ddcf253c034360c23b1157e2aee9a20953632356a3f788",
+      "bytes": 1150316
+    },
+    "iq": {
+      "path": "SpaceFox.iq",
+      "sha256": "b0126d9ed13cf186f2fc15be984231da06a562070f3aa2d3d5395c7bdefc037a",
+      "bytes": 291495
+    }
+  },
+  "source_input_count": 327,
+  "candidate_release_sha256": "f38a42325101fd870ed9ae8470267827380eb7453df16b4261d3178f71ddb2f5",
+  "publication_ready": false,
+  "native_resource_build_owner_unchanged_from_baseline": true,
+  "retained_six_prior_software_closures": "No native/resource/build_watchface or their semantic inputs changed; original receipts retain original proof boundaries. No duplicate rerun.",
+  "invalidation_boundary": "Whole second execution required because release compiler Jungle generation, release receipt language source, current fixture/test assertions and release provenance snapshot inputs changed. Final evidence-only commit does not change these semantic inputs.",
+  "remaining": "Physical FR165/phone/Store tasks 7.1\u20137.3 and unrelated properties remain open.",
+  "independent_source_revision": "6dc25745f93a56e4bd8b7900050ed5d175d19db8",
+  "independent_source_dirty": false,
+  "independent_result": "independent-green/independent-run.json",
+  "independent_result_sha256": "622babb47afd17d44f228a6ab27943359ee04c2167d418d4e099d2ebb4613fd5",
+  "independent_selected_cases": 11,
+  "independent_selected_commands": 2,
+  "independent_candidate_verification": "Artifact hashes, byte sizes, 327 snapshot input hashes against Git c7ad2c41, source/generated manifest and Jungle, real RSA4096 IQ/PRG signatures and public-key match passed. Candidate retained without rebuild."
+}

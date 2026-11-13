@@ -1,0 +1,27 @@
+test_different_launch_negative (tests.test_basic_reschedule.BasicRescheduleTest.test_different_launch_negative) ... ERROR
+test_known_new_time_positive (tests.test_basic_reschedule.BasicRescheduleTest.test_known_new_time_positive) ... ok
+test_unchanged_refresh_negative (tests.test_basic_reschedule.BasicRescheduleTest.test_unchanged_refresh_negative) ... ok
+test_withdrawn_time_positive (tests.test_basic_reschedule.BasicRescheduleTest.test_withdrawn_time_positive) ... ERROR
+
+======================================================================
+ERROR: test_different_launch_negative (tests.test_basic_reschedule.BasicRescheduleTest.test_different_launch_negative)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/tests/test_basic_reschedule.py", line 206, in test_different_launch_negative
+    self.assertIsNone(self.feeds['withdrawn_refresh']['launch']['timing']['nominal_utc'])
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+KeyError: 'nominal_utc'
+
+======================================================================
+ERROR: test_withdrawn_time_positive (tests.test_basic_reschedule.BasicRescheduleTest.test_withdrawn_time_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/tests/test_basic_reschedule.py", line 200, in test_withdrawn_time_positive
+    self.assertIsNone(launch['timing']['nominal_utc']); self.assertIsNone(launch['timing']['exact_utc'])
+                      ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+KeyError: 'nominal_utc'
+
+----------------------------------------------------------------------
+Ran 4 tests in 3.158s
+
+FAILED (errors=2)

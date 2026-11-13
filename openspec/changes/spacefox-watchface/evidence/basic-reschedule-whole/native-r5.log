@@ -1,0 +1,35 @@
+------------------------------------------------------------------------------
+Executing test rescheduleMove...
+DEBUG (15:53): actual producer MIN/null-exact envelope: 16:18:18 -> 16:38:18; reschedule latched
+PASS
+------------------------------------------------------------------------------
+Executing test rescheduleRefresh...
+
+Error: Unhandled Exception
+Exception: Invalid current feed:traversal
+Stack: 
+  - fail() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/watchface/source/NativeFeed.mc:9 0x10005702 
+  - metadata() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/watchface/source/NativeFeed.mc:108 0x10004ed0 
+  - rescheduleRefresh() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/tests/fixtures/basic_reschedule/BasicReschedule.mc:37 0x100044df 
+  - evaluate_test_entries_0_to_4() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/gen/006-B4432-00/source/UnitTests.mcgen:56 0x100078cd 
+  - runTest() at /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/gen/006-B4432-00/source/UnitTests.mcgen:75 0x10007876 
+ERROR
+------------------------------------------------------------------------------
+Executing test rescheduleWithdraw...
+DEBUG (15:53): withdrawn current target: --:--:--, no prior nominal target, reschedule still set
+PASS
+------------------------------------------------------------------------------
+Executing test rescheduleDifferent...
+DEBUG (15:53): withdrawn unchanged refresh stays unknown/latched; next identity never inherits old flag
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+rescheduleMove                      PASS
+rescheduleRefresh                   ERROR
+rescheduleWithdraw                  PASS
+rescheduleDifferent                 PASS
+Ran 4 tests
+
+FAILED (passed=3, failed=0, errors=1)

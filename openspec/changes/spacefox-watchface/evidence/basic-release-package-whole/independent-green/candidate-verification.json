@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "candidate": "/Users/jekamas/.local/share/SpaceFox-release-basic-five-20261113/candidate-c7ad2c41",
+  "source_revision": "c7ad2c4113de272cd9677842d78047e7e6ffe77b",
+  "tracked_snapshot_inputs_git_sha256_verified": 327,
+  "artifact_sizes_and_sha256_verified": true,
+  "prg_sha256": "aa0376f64da4b7a6d9ddcf253c034360c23b1157e2aee9a20953632356a3f788",
+  "iq_sha256": "b0126d9ed13cf186f2fc15be984231da06a562070f3aa2d3d5395c7bdefc037a",
+  "release_sha256": "f38a42325101fd870ed9ae8470267827380eb7453df16b4261d3178f71ddb2f5",
+  "iq_signature_verified": true,
+  "prg_signature_verified": true,
+  "prg_public_key_matches": true,
+  "rsa_bits": 4096,
+  "public_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
+  "uuid": "ec8b7c8a8ea54ee9ac91ee6e7a674d15",
+  "version": "0.1.0",
+  "manifest_minimum_api": "5.1.0",
+  "device_runtime_api": "5.2.0",
+  "sdk_export_metadata_api": "6.0.4",
+  "manifest_languages": [
+    "eng",
+    "rus",
+    "deu",
+    "fre",
+    "spa"
+  ],
+  "jungle_source_relocation_verified": true,
+  "native_resources_manifest_jungle_lock_build_owner_unchanged_from_baseline": true,
+  "publication_ready": false,
+  "method": "Artifact hashes checked against author manifest; each snapshot input checked against recorded hash and git show c7ad2c41; manifest parsed and generated Jungle compared to transformed source; current release.inspect_iq invoked SDK Java verifier on actual candidate IQ/PRG and public SPKI. No private key accessed."
+}

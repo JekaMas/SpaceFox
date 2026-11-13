@@ -1,0 +1,27 @@
+------------------------------------------------------------------------------
+Executing test rescheduleMove...
+DEBUG (15:56): actual producer MIN/null-exact envelope: 16:18:18 -> 16:38:18; reschedule latched
+PASS
+------------------------------------------------------------------------------
+Executing test rescheduleRefresh...
+DEBUG (15:56): successful unchanged validations neither create nor clear current launch latch
+PASS
+------------------------------------------------------------------------------
+Executing test rescheduleWithdraw...
+DEBUG (15:56): withdrawn current target: --:--:--, no prior nominal target, reschedule still set
+PASS
+------------------------------------------------------------------------------
+Executing test rescheduleDifferent...
+DEBUG (15:56): withdrawn unchanged refresh stays unknown/latched; next identity never inherits old flag
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+rescheduleMove                      PASS
+rescheduleRefresh                   PASS
+rescheduleWithdraw                  PASS
+rescheduleDifferent                 PASS
+Ran 4 tests
+
+PASSED (passed=4, failed=0, errors=0)

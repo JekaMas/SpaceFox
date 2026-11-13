@@ -56,10 +56,28 @@ def source_state(root: Path) -> dict:
     require(not git(root, "status", "--porcelain", "--untracked-files=all").strip(),
             "release source must be clean, including untracked inputs")
     paths = git(root, "ls-files", "-z").split("\0")
+    # Preserve the proof actually used by manifest admission, alongside compiler
+    # inputs. Its retained raw pages are replayed locally, never fetched here.
+    catalog = json.loads((root / "locales/catalog.json").read_text())
+    proof = catalog["supportPolicy"]["softwareQualificationProof"]
+    admission = {"locales/catalog.json"}
+    if proof is not None:
+        for name in (proof["corpusPath"], proof["receiptPath"]):
+            require(isinstance(name, str) and name and not PurePosixPath(name).is_absolute() and
+                    ".." not in PurePosixPath(name).parts, "unsafe language proof path")
+            admission.add(name)
+        receipt = json.loads((root / proof["receiptPath"]).read_text())
+        admission.update(proof["productionSources"])
+        admission.update(receipt["observations"])
+        corpus_directory = PurePosixPath(proof["corpusPath"]).parent
+        admission.update(name for name in paths if PurePosixPath(name).is_relative_to(corpus_directory))
+    require(admission <= set(paths), "language admission inputs must be tracked")
     inputs = {}
     for name in paths:
         if not name or not (name.startswith("watchface/") or name.startswith("release/") or
-                             name.startswith("licenses/") or name == "assets/rocket-pack/LICENSE" or
+                             name.startswith("licenses/") or name.startswith("locales/") or
+                             (name.startswith("tools/") and name.endswith(".py")) or name in admission or
+                             name == "assets/rocket-pack/LICENSE" or
                              name in ("tools/release.py", "tools/ReleaseInspector.java", "tools/build_watchface.py",
                                       "LICENSE", "THIRD_PARTY_NOTICES.md", "docs/AGENT_SETUP.md",
                                       "docs/RELEASE_AND_UPDATES.md")):
@@ -339,8 +357,13 @@ def inspect_iq(iq: Path, prg: Path, public: Path, context: dict, expected: ET.El
     require(app is not None, "IQ application manifest missing")
     for key in ("id", "entry", "type", "version"):
         require(app.get(key) == expected.get(key), "IQ manifest " + key + " mismatch")
-    require([x.text for x in app.findall("iq:languages/iq:language", NS)] ==
-            [x.text for x in expected.findall("iq:languages/iq:language", NS)], "IQ language mismatch")
+    exported_languages = [x.text for x in app.findall("iq:languages/iq:language", NS)]
+    expected_languages = [x.text for x in expected.findall("iq:languages/iq:language", NS)]
+    # SDK package-app sorts this unordered manifest collection. Exact IDs and
+    # cardinality remain mandatory; a set comparison alone would hide duplicates.
+    require(len(exported_languages) == len(set(exported_languages)) and
+            len(expected_languages) == len(set(expected_languages)) and
+            set(exported_languages) == set(expected_languages), "IQ language mismatch")
     require(sorted(x.get("id") for x in app.findall("iq:permissions/*", NS)) ==
             sorted(x.get("id") for x in expected.findall("iq:permissions/*", NS)), "IQ permission mismatch")
     require(not app.findall("iq:barrels/*", NS), "IQ has unexpected dependencies")
@@ -426,8 +449,12 @@ def build_release(output: Path, *, key: Path, root: Path = ROOT, mode: str = "ca
     generated = inputs / "manifest.xml"
     tree.write(generated, encoding="utf-8", xml_declaration=True)
     jungle = inputs / "monkey.jungle"
-    jungle.write_text("project.manifest = manifest.xml\nbase.sourcePath = watchface/source\n"
-                      "base.resourcePath = watchface/resources\nbase.lang.rus = watchface/resources-rus\n")
+    # Retain every pinned locale resource binding. Only relocate paths from the
+    # original watchface directory to this exact root-level source snapshot.
+    jungle.write_text((inputs / "watchface/monkey.jungle").read_text()
+                      .replace("base.sourcePath = source\n", "base.sourcePath = watchface/source\n")
+                      .replace("base.resourcePath = resources\n", "base.resourcePath = watchface/resources\n")
+                      .replace(" = resources-", " = watchface/resources-"))
     generated_hashes = {path: digest(path) for path in (generated, jungle)}
     expected_files = set(before["inputs"]) | {"manifest.xml", "monkey.jungle"}
     expected_directories = {str(parent) for name in expected_files
@@ -496,7 +523,8 @@ def build_release(output: Path, *, key: Path, root: Path = ROOT, mode: str = "ca
                    "official_release": False, "publication_ready": False,
                    "production_identity": mode != "qualification", "application_uuid": app.get("id"),
                    "entry": app.get("entry"), "version": app.get("version"),
-                   "products": [lock["product"]], "languages": lock["languages"],
+                   "products": [lock["product"]],
+                   "languages": [node.text for node in app.findall("iq:languages/iq:language", NS)],
                    "minimum_api": app.get("minApiLevel"), "permissions": lock["permissions"],
                    "public_key_spki_sha256": fingerprint, "backup": backup_info,
                    "source_revision": before["revision"], "source_dirty": False,

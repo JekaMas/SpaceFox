@@ -1,0 +1,40 @@
+{
+  "status": "INDEPENDENT_VERIFIED_CLOSED_ROOT_JUDGMENT_PENDING",
+  "property": "LS10.P1",
+  "case_count": 4,
+  "command_count": 1,
+  "native_case_count": 4,
+  "run": "run-final-closed.json",
+  "run_status": "passed",
+  "run_git": {
+    "dirty": false,
+    "head": "97fc17ee1d9b84fa5e21116a00953e2556cae2ca",
+    "status": "known"
+  },
+  "manifest_sha256": "22b14580d6d35753c85c92e41adbd59235a4f82fc7657755bce15655db3d58f3",
+  "native_raw_exit": 1,
+  "native_status": "passed",
+  "production_changes": [],
+  "scope": "Four BASIC current cases only; no publisher/native/resource change, no closed finite-language/SDK/property/publisher rerun.",
+  "graph_counts": {
+    "requirements": 56,
+    "properties": 154,
+    "cases": 701,
+    "commands": 70,
+    "implemented_labels": 152,
+    "planned_cases": 549,
+    "properties_with_planned": 131
+  },
+  "task_counts": {
+    "total": 31,
+    "checked": 12,
+    "open": 19
+  },
+  "next": "Root judgment; no further independent reviewer requested.",
+  "native_lease": "released; no further simulator use planned",
+  "independent_run": "independent-run.json",
+  "independent_query": "independent-query.json",
+  "independent_head": "074abd179c80c0f249e7f4f33d8ff48f684cc0de",
+  "independent_cases_passed": 4,
+  "independent_commands_passed": 1
+}

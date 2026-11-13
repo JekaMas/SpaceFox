@@ -1,0 +1,55 @@
+test_added_snapshot_inputs_during_sdk_build_negative (tests.test_release.ReleaseTest.test_added_snapshot_inputs_during_sdk_build_negative) ... ok
+test_changed_generated_inputs_during_sdk_build_negative (tests.test_release.ReleaseTest.test_changed_generated_inputs_during_sdk_build_negative) ... ok
+test_changed_source_during_sdk_build_negative (tests.test_release.ReleaseTest.test_changed_source_during_sdk_build_negative) ... ok
+test_container_and_signature_tamper_negative (tests.test_release.ReleaseTest.test_container_and_signature_tamper_negative) ... ok
+test_development_discovery_boundary_preserved (tests.test_release.ReleaseTest.test_development_discovery_boundary_preserved) ... ok
+test_future_committed_min_api_admission_positive (tests.test_release.ReleaseTest.test_future_committed_min_api_admission_positive) ... ok
+test_higher_version_signed_repair_positive (tests.test_release.ReleaseTest.test_higher_version_signed_repair_positive) ... ok
+test_key_and_production_identity_negative (tests.test_release.ReleaseTest.test_key_and_production_identity_negative) ... ok
+test_manifest_source_and_output_negative (tests.test_release.ReleaseTest.test_manifest_source_and_output_negative) ... ok
+test_sdk_export_and_provenance_positive (tests.test_release.ReleaseTest.test_sdk_export_and_provenance_positive) ... FAIL
+test_update_and_backup_negative (tests.test_release.ReleaseTest.test_update_and_backup_negative) ... ERROR
+
+======================================================================
+ERROR: test_update_and_backup_negative (tests.test_release.ReleaseTest.test_update_and_backup_negative)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-release-package-whole/tests/test_release.py", line 204, in test_update_and_backup_negative
+    self.edit_manifest("version", value)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-release-package-whole/tests/test_release.py", line 98, in edit_manifest
+    self.commit("Qualification-only invalid manifest")
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-release-package-whole/tests/test_release.py", line 68, in commit
+    cls.git("commit", "-q", "-m", message)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-release-package-whole/tests/test_release.py", line 62, in git
+    return subprocess.run(["git", *args], cwd=cls.root, capture_output=True,
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                          text=True, check=True).stdout
+                          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 578, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['git', 'commit', '-q', '-m', 'Qualification-only invalid manifest']' returned non-zero exit status 1.
+
+======================================================================
+FAIL: test_sdk_export_and_provenance_positive (tests.test_release.ReleaseTest.test_sdk_export_and_provenance_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-release-package-whole/tests/test_release.py", line 106, in test_sdk_export_and_provenance_positive
+    self.assertEqual(receipt["languages"], ["eng", "rus", "deu", "fre", "spa"])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['eng'] != ['eng', 'rus', 'deu', 'fre', 'spa']
+
+Second list contains 4 additional elements.
+First extra element 1:
+'rus'
+
+- ['eng']
++ ['eng', 'rus', 'deu', 'fre', 'spa']
+
+----------------------------------------------------------------------
+Ran 11 tests in 118.762s
+
+FAILED (failures=1, errors=1)

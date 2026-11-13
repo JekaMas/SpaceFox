@@ -1,0 +1,11 @@
+{
+  "command": [
+    "ruff",
+    "check",
+    "tests/test_basic_reschedule.py"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "",
+  "reason": "Final directly affected assertion strengthened: originally unflagged real reducer withdrawal; no native input changed."
+}

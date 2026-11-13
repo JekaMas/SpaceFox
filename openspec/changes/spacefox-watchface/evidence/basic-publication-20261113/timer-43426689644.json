@@ -1,0 +1,21 @@
+{
+  "status": "workflow-passed-source-not-due-metadata-yielded",
+  "workflowRun": 43426689644,
+  "event": "workflow_dispatch",
+  "createdUtc": "2026-11-13T12:37:03Z",
+  "publicSource": "ae473f7eaddd0e0cf0eecd594b6612b36831676b",
+  "prepare": {
+    "result": "not_due",
+    "requests": 0
+  },
+  "metadata": {
+    "status": "yielded",
+    "requests": 0,
+    "completed": null
+  },
+  "scope": "Actual timed continuation passed, but did not fetch metadata or perform a due source update. Does not prove successful metadata retry after prior transport failure. No Pages replacement.",
+  "receipts": {
+    "timer-43426689644-131889722886.log": "ba708c3042a5a5c7d49e9f48dc187fbbd724918d41270f45704087835dd5b636",
+    "timer-43426689644-131890906742.log": "b57fa86af83f7c97a64edcf7ebdd7ee52b9dfac1103ab6b7e23d70067976bdf0"
+  }
+}

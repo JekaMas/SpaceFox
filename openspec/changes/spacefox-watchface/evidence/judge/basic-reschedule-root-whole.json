@@ -1,0 +1,25 @@
+{
+  "status": "accepted-and-closed",
+  "sourceCommit": "7b3e5604",
+  "closedProperties": [
+    "LS10.P1"
+  ],
+  "actualVerifier": {
+    "status": "passed",
+    "cases": 4,
+    "commands": 1,
+    "manifestSha256": "22b14580d6d35753c85c92e41adbd59235a4f82fc7657755bce15655db3d58f3",
+    "path": "evidence/basic-reschedule-whole/independent-run.json"
+  },
+  "productionResourcesUnchanged": true,
+  "nativeEvidence": "Four actual current-envelope NativeBridgeFeed/FeedScene/View assertions; source/input/compiler/profile/packet checks in independent verification. Original4/4frameworkPASS/rawlauncher1 retained.",
+  "priorClosedPropertiesRetained": [
+    "WF12.P1",
+    "WF12.P3",
+    "WF12.P4",
+    "WF01.P1",
+    "WF03.P1"
+  ],
+  "hypothesis": "Exact-only defect refuted; existing reducer already handles known MIN. No product fix needed.",
+  "scope": "Real captured launch with controlled timing/id changes; no physical/provider/live/Store claim."
+}

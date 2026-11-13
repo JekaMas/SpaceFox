@@ -1,0 +1,479 @@
+﻿2026-11-13T12:11:30.4437709Z Current runner version: '2.338.2'
+2026-11-13T12:11:30.4476185Z ##[group]Runner Image Provisioner
+2026-11-13T12:11:30.4477605Z Hosted Compute Agent
+2026-11-13T12:11:30.4478784Z Version: 20261103.629
+2026-11-13T12:11:30.4479957Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+2026-11-13T12:11:30.4481419Z Build Date: 2026-11-03T17:26:59Z
+2026-11-13T12:11:30.4482847Z Worker ID: {32984625-aa89-45f9-87ba-d2b30518c9a1}
+2026-11-13T12:11:30.4484371Z Region: eastus
+2026-11-13T12:11:30.4485929Z Cloud: Azure
+2026-11-13T12:11:30.4486839Z ##[endgroup]
+2026-11-13T12:11:30.4489279Z ##[group]Operating System
+2026-11-13T12:11:30.4490462Z Ubuntu
+2026-11-13T12:11:30.4491311Z 24.04.5
+2026-11-13T12:11:30.4492235Z LTS
+2026-11-13T12:11:30.4493348Z ##[endgroup]
+2026-11-13T12:11:30.4494408Z ##[group]Runner Image
+2026-11-13T12:11:30.4495413Z Image: ubuntu-24.04
+2026-11-13T12:11:30.4496375Z Version: 20261111.370.1
+2026-11-13T12:11:30.4498722Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261111.370/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-13T12:11:30.4501702Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261111.370
+2026-11-13T12:11:30.4503734Z ##[endgroup]
+2026-11-13T12:11:30.4506195Z ##[group]GITHUB_TOKEN Permissions
+2026-11-13T12:11:30.4509458Z Actions: read
+2026-11-13T12:11:30.4510702Z Contents: write
+2026-11-13T12:11:30.4511703Z Metadata: read
+2026-11-13T12:11:30.4512713Z Pages: read
+2026-11-13T12:11:30.4514289Z ##[endgroup]
+2026-11-13T12:11:30.4517550Z Secret source: Actions
+2026-11-13T12:11:30.4519300Z Cache mode: write
+2026-11-13T12:11:30.4520472Z Prepare workflow directory
+2026-11-13T12:11:30.5324967Z Prepare all required actions
+2026-11-13T12:11:30.5375601Z Getting action download info
+2026-11-13T12:11:30.6967872Z Download action repository 'actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+2026-11-13T12:11:30.8420659Z Download action repository 'actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b' (SHA:7b1f4a764d45c48632c6b24a0339c27f5614fb0b)
+2026-11-13T12:11:31.0309392Z Getting action download info
+2026-11-13T12:11:31.1070113Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-11-13T12:11:31.2450824Z Complete job name: prepare
+2026-11-13T12:11:31.3303937Z ##[group]Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+2026-11-13T12:11:31.3305106Z with:
+2026-11-13T12:11:31.3305618Z   ref: ae473f7eaddd0e0cf0eecd594b6612b36831676b
+2026-11-13T12:11:31.3306254Z   persist-credentials: false
+2026-11-13T12:11:31.3306804Z   sparse-checkout-cone-mode: false
+2026-11-13T12:11:31.3307432Z   sparse-checkout: /.github/spacefox-inputs.txt
+2026-11-13T12:11:31.3308076Z   repository: JekaMas/SpaceFox
+2026-11-13T12:11:31.3311837Z   token: ***
+2026-11-13T12:11:31.3312293Z   ssh-strict: true
+2026-11-13T12:11:31.3312752Z   ssh-user: git
+2026-11-13T12:11:31.3313595Z   clean: true
+2026-11-13T12:11:31.3314045Z   fetch-depth: 1
+2026-11-13T12:11:31.3314522Z   fetch-tags: false
+2026-11-13T12:11:31.3315034Z   show-progress: true
+2026-11-13T12:11:31.3315494Z   lfs: false
+2026-11-13T12:11:31.3315918Z   submodules: false
+2026-11-13T12:11:31.3316378Z   set-safe-directory: true
+2026-11-13T12:11:31.3316897Z   allow-unsafe-pr-checkout: false
+2026-11-13T12:11:31.3317795Z env:
+2026-11-13T12:11:31.3318253Z   PYTHONDONTWRITEBYTECODE: 1
+2026-11-13T12:11:31.3318867Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+2026-11-13T12:11:31.3319499Z ##[endgroup]
+2026-11-13T12:11:31.6510601Z Syncing repository: JekaMas/SpaceFox
+2026-11-13T12:11:31.6512851Z ##[group]Getting Git version info
+2026-11-13T12:11:31.6514158Z Working directory is '/home/runner/work/SpaceFox/SpaceFox'
+2026-11-13T12:11:31.6515615Z [command]/usr/bin/git version
+2026-11-13T12:11:31.6619886Z git version 2.56.1
+2026-11-13T12:11:31.6646858Z ##[endgroup]
+2026-11-13T12:11:31.6662578Z Temporarily overriding HOME='/home/runner/work/_temp/3fdd2b82-be65-4ac5-9684-889e26ef48e8' before making global git config changes
+2026-11-13T12:11:31.6665414Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-13T12:11:31.6669566Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/SpaceFox/SpaceFox
+2026-11-13T12:11:31.6732686Z Deleting the contents of '/home/runner/work/SpaceFox/SpaceFox'
+2026-11-13T12:11:31.6736855Z ##[group]Determining repository object format
+2026-11-13T12:11:31.6739397Z ##[endgroup]
+2026-11-13T12:11:31.6740496Z ##[group]Initializing the repository
+2026-11-13T12:11:31.6745133Z [command]/usr/bin/git init /home/runner/work/SpaceFox/SpaceFox
+2026-11-13T12:11:31.6864762Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-13T12:11:31.6866591Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-13T12:11:31.6868087Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-13T12:11:31.6868904Z hint: call:
+2026-11-13T12:11:31.6869382Z hint:
+2026-11-13T12:11:31.6869930Z hint: 	git config --global init.defaultBranch <name>
+2026-11-13T12:11:31.6870678Z hint:
+2026-11-13T12:11:31.6871281Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-13T12:11:31.6872842Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-13T12:11:31.6874257Z hint:
+2026-11-13T12:11:31.6874904Z hint: 	git branch -m <name>
+2026-11-13T12:11:31.6875832Z hint:
+2026-11-13T12:11:31.6877073Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-13T12:11:31.6879348Z Initialized empty Git repository in /home/runner/work/SpaceFox/SpaceFox/.git/
+2026-11-13T12:11:31.6888986Z [command]/usr/bin/git remote add origin https://github.com/JekaMas/SpaceFox
+2026-11-13T12:11:31.6947962Z ##[endgroup]
+2026-11-13T12:11:31.6949329Z ##[group]Disabling automatic garbage collection
+2026-11-13T12:11:31.6951270Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-13T12:11:31.6987341Z ##[endgroup]
+2026-11-13T12:11:31.6989081Z ##[group]Setting up auth
+2026-11-13T12:11:31.6989995Z Removing SSH command configuration
+2026-11-13T12:11:31.6996946Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-13T12:11:31.7046655Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-13T12:11:31.7477441Z Removing HTTP extra header
+2026-11-13T12:11:31.7486768Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-13T12:11:31.7534040Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-13T12:11:31.7770999Z Removing includeIf entries pointing to credentials config files
+2026-11-13T12:11:31.7778144Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-13T12:11:31.7823750Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-13T12:11:31.8068295Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-99a21d29-8f81-4220-95ca-79b122887fbd.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-13T12:11:31.8119818Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path /home/runner/work/_temp/git-credentials-99a21d29-8f81-4220-95ca-79b122887fbd.config
+2026-11-13T12:11:31.8164434Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-99a21d29-8f81-4220-95ca-79b122887fbd.config
+2026-11-13T12:11:31.8209083Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-99a21d29-8f81-4220-95ca-79b122887fbd.config
+2026-11-13T12:11:31.8254994Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-99a21d29-8f81-4220-95ca-79b122887fbd.config
+2026-11-13T12:11:31.8294631Z ##[endgroup]
+2026-11-13T12:11:31.8296174Z ##[group]Fetching the repository
+2026-11-13T12:11:31.8304640Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin ae473f7eaddd0e0cf0eecd594b6612b36831676b
+2026-11-13T12:11:32.0557315Z From https://github.com/JekaMas/SpaceFox
+2026-11-13T12:11:32.0559901Z  * branch            ae473f7eaddd0e0cf0eecd594b6612b36831676b -> FETCH_HEAD
+2026-11-13T12:11:32.0571144Z [command]/usr/bin/git rev-parse --verify --quiet ae473f7eaddd0e0cf0eecd594b6612b36831676b^{object}
+2026-11-13T12:11:32.0608110Z ae473f7eaddd0e0cf0eecd594b6612b36831676b
+2026-11-13T12:11:32.0614705Z ##[endgroup]
+2026-11-13T12:11:32.0616425Z ##[group]Determining the checkout info
+2026-11-13T12:11:32.0618274Z ##[endgroup]
+2026-11-13T12:11:32.0619494Z ##[group]Setting up sparse checkout
+2026-11-13T12:11:32.0621047Z [command]/usr/bin/git config core.sparseCheckout true
+2026-11-13T12:11:32.0665897Z [command]/usr/bin/git rev-parse --git-path info/sparse-checkout
+2026-11-13T12:11:32.0700225Z .git/info/sparse-checkout
+2026-11-13T12:11:32.0709776Z ##[endgroup]
+2026-11-13T12:11:32.0711622Z ##[group]Checking out the ref
+2026-11-13T12:11:32.0714481Z [command]/usr/bin/git checkout --progress --force ae473f7eaddd0e0cf0eecd594b6612b36831676b
+2026-11-13T12:11:32.2503783Z Note: switching to 'ae473f7eaddd0e0cf0eecd594b6612b36831676b'.
+2026-11-13T12:11:32.2505406Z 
+2026-11-13T12:11:32.2506120Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-11-13T12:11:32.2507593Z changes and commit them, and you can discard any commits you make in this
+2026-11-13T12:11:32.2509014Z state without impacting any branches by switching back to a branch.
+2026-11-13T12:11:32.2509864Z 
+2026-11-13T12:11:32.2510580Z If you want to create a new branch to retain commits you create, you may
+2026-11-13T12:11:32.2512180Z do so (now or later) by using -c with the switch command. Example:
+2026-11-13T12:11:32.2513603Z 
+2026-11-13T12:11:32.2514316Z   git switch -c <new-branch-name>
+2026-11-13T12:11:32.2515364Z 
+2026-11-13T12:11:32.2516471Z Or undo this operation with:
+2026-11-13T12:11:32.2517438Z 
+2026-11-13T12:11:32.2518066Z   git switch -
+2026-11-13T12:11:32.2518840Z 
+2026-11-13T12:11:32.2519984Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-11-13T12:11:32.2521377Z 
+2026-11-13T12:11:32.2522351Z HEAD is now at ae473f7 Record closed basic time and field verification
+2026-11-13T12:11:32.2528155Z ##[endgroup]
+2026-11-13T12:11:32.2576724Z [command]/usr/bin/git log -1 --format=%H
+2026-11-13T12:11:32.2612673Z ae473f7eaddd0e0cf0eecd594b6612b36831676b
+2026-11-13T12:11:32.2622829Z ##[group]Removing auth
+2026-11-13T12:11:32.2624234Z Removing SSH command configuration
+2026-11-13T12:11:32.2627212Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-13T12:11:32.2669233Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-13T12:11:32.2928569Z Removing HTTP extra header
+2026-11-13T12:11:32.2933968Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-13T12:11:32.2979482Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-13T12:11:32.3236261Z Removing includeIf entries pointing to credentials config files
+2026-11-13T12:11:32.3241216Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-13T12:11:32.3281522Z includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path
+2026-11-13T12:11:32.3284706Z includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path
+2026-11-13T12:11:32.3287038Z includeif.gitdir:/github/workspace/.git.path
+2026-11-13T12:11:32.3289088Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-13T12:11:32.3297189Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path
+2026-11-13T12:11:32.3338998Z /home/runner/work/_temp/git-credentials-99a21d29-8f81-4220-95ca-79b122887fbd.config
+2026-11-13T12:11:32.3351945Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git.path /home/runner/work/_temp/git-credentials-99a21d29-8f81-4220-95ca-79b122887fbd.config
+2026-11-13T12:11:32.3398322Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path
+2026-11-13T12:11:32.3431639Z /home/runner/work/_temp/git-credentials-99a21d29-8f81-4220-95ca-79b122887fbd.config
+2026-11-13T12:11:32.3444486Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/SpaceFox/SpaceFox/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-99a21d29-8f81-4220-95ca-79b122887fbd.config
+2026-11-13T12:11:32.3494116Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-11-13T12:11:32.3527293Z /github/runner_temp/git-credentials-99a21d29-8f81-4220-95ca-79b122887fbd.config
+2026-11-13T12:11:32.3536701Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-99a21d29-8f81-4220-95ca-79b122887fbd.config
+2026-11-13T12:11:32.3591887Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-13T12:11:32.3624884Z /github/runner_temp/git-credentials-99a21d29-8f81-4220-95ca-79b122887fbd.config
+2026-11-13T12:11:32.3634933Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-99a21d29-8f81-4220-95ca-79b122887fbd.config
+2026-11-13T12:11:32.3681291Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-13T12:11:32.3928987Z Removing credentials config '/home/runner/work/_temp/git-credentials-99a21d29-8f81-4220-95ca-79b122887fbd.config'
+2026-11-13T12:11:32.3937482Z ##[endgroup]
+2026-11-13T12:11:32.4264445Z ##[group]Run git sparse-checkout set --no-cone --stdin < .github/spacefox-inputs.txt
+2026-11-13T12:11:32.4266106Z [36;1mgit sparse-checkout set --no-cone --stdin < .github/spacefox-inputs.txt[0m
+2026-11-13T12:11:32.4267317Z [36;1mpython3 -B tools/cloud_inputs.py[0m
+2026-11-13T12:11:32.4293479Z shell: /usr/bin/bash -e {0}
+2026-11-13T12:11:32.4294357Z env:
+2026-11-13T12:11:32.4295115Z   PYTHONDONTWRITEBYTECODE: 1
+2026-11-13T12:11:32.4296084Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+2026-11-13T12:11:32.4297056Z ##[endgroup]
+2026-11-13T12:13:08.4429611Z {"catalogInputs": 710, "catalogVersion": "2026-11-12.global.21.blk3-whole1"}
+2026-11-13T12:13:08.5338887Z ##[group]Run bash .github/scripts/install-native-linux-renderer.sh
+2026-11-13T12:13:08.5339407Z [36;1mbash .github/scripts/install-native-linux-renderer.sh[0m
+2026-11-13T12:13:08.5359544Z shell: /usr/bin/bash -e {0}
+2026-11-13T12:13:08.5359797Z env:
+2026-11-13T12:13:08.5360003Z   PYTHONDONTWRITEBYTECODE: 1
+2026-11-13T12:13:08.5360434Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+2026-11-13T12:13:08.5360751Z ##[endgroup]
+2026-11-13T12:13:08.5526184Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-11-13T12:13:08.5527073Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-11-13T12:13:08.5527492Z 
+2026-11-13T12:13:09.2943457Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-11-13T12:13:09.6086628Z   9 2246k    9  218k    0     0   294k      0  0:00:07 --:--:--  0:00:07  294k
+2026-11-13T12:13:09.6088165Z 100 2246k  100 2246k    0     0  2127k      0  0:00:01  0:00:01 --:--:-- 2129k
+2026-11-13T12:13:09.6153275Z /home/runner/work/_temp/native-linux-prerequisites/librsvg2-bin.deb: OK
+2026-11-13T12:13:09.7117164Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-11-13T12:13:09.7445156Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-11-13T12:13:09.7544522Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-11-13T12:13:09.7562324Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-11-13T12:13:09.7606421Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-11-13T12:13:09.7639761Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-11-13T12:13:09.8234983Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [767 kB]
+2026-11-13T12:13:09.8427323Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [697 kB]
+2026-11-13T12:13:09.9407801Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1450 kB]
+2026-11-13T12:13:09.9485304Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [315 kB]
+2026-11-13T12:13:09.9507072Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1713 kB]
+2026-11-13T12:13:09.9620759Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [345 kB]
+2026-11-13T12:13:09.9643221Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1883 kB]
+2026-11-13T12:13:09.9753997Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [430 kB]
+2026-11-13T12:13:09.9783556Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [14.6 kB]
+2026-11-13T12:13:10.0600709Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1195 kB]
+2026-11-13T12:13:10.0661201Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [238 kB]
+2026-11-13T12:13:10.0683424Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1228 kB]
+2026-11-13T12:13:10.1192199Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [248 kB]
+2026-11-13T12:13:10.1215506Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1788 kB]
+2026-11-13T12:13:10.1315604Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [411 kB]
+2026-11-13T12:13:13.4299584Z Fetched 13.1 MB in 1s (10.1 MB/s)
+2026-11-13T12:13:14.6036847Z Reading package lists...
+2026-11-13T12:13:14.6972418Z Reading package lists...
+2026-11-13T12:13:14.9450746Z Building dependency tree...
+2026-11-13T12:13:14.9458485Z Reading state information...
+2026-11-13T12:13:15.0995184Z The following additional packages will be installed:
+2026-11-13T12:13:15.0998729Z   librsvg2-2
+2026-11-13T12:13:15.1004628Z Recommended packages:
+2026-11-13T12:13:15.1005034Z   librsvg2-common
+2026-11-13T12:13:15.1431628Z The following NEW packages will be installed:
+2026-11-13T12:13:15.1436274Z   librsvg2-2 librsvg2-bin
+2026-11-13T12:13:15.1743766Z 0 upgraded, 2 newly installed, 0 to remove and 20 not upgraded.
+2026-11-13T12:13:15.1744333Z Need to get 4442 kB of archives.
+2026-11-13T12:13:15.1744694Z After this operation, 14.2 MB of additional disk space will be used.
+2026-11-13T12:13:15.1745136Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-11-13T12:13:15.2884769Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 librsvg2-2 amd64 2.58.0+dfsg-1ubuntu0.1 [2141 kB]
+2026-11-13T12:13:15.3939440Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 librsvg2-bin amd64 2.58.0+dfsg-1ubuntu0.1 [2301 kB]
+2026-11-13T12:13:15.7114999Z Fetched 4442 kB in 0s (17.2 MB/s)
+2026-11-13T12:13:15.7943541Z Selecting previously unselected package librsvg2-2:amd64.
+2026-11-13T12:13:15.8670251Z (Reading database ... 
+2026-11-13T12:13:15.8671271Z (Reading database ... 5%
+2026-11-13T12:13:15.8671975Z (Reading database ... 10%
+2026-11-13T12:13:15.8672464Z (Reading database ... 15%
+2026-11-13T12:13:15.8672782Z (Reading database ... 20%
+2026-11-13T12:13:15.8673427Z (Reading database ... 25%
+2026-11-13T12:13:15.8673845Z (Reading database ... 30%
+2026-11-13T12:13:15.8674314Z (Reading database ... 35%
+2026-11-13T12:13:15.8674775Z (Reading database ... 40%
+2026-11-13T12:13:15.8675276Z (Reading database ... 45%
+2026-11-13T12:13:15.8675809Z (Reading database ... 50%
+2026-11-13T12:13:15.8797454Z (Reading database ... 55%
+2026-11-13T12:13:16.0391711Z (Reading database ... 60%
+2026-11-13T12:13:16.2278976Z (Reading database ... 65%
+2026-11-13T12:13:16.4206842Z (Reading database ... 70%
+2026-11-13T12:13:16.6268235Z (Reading database ... 75%
+2026-11-13T12:13:16.7712029Z (Reading database ... 80%
+2026-11-13T12:13:16.9798551Z (Reading database ... 85%
+2026-11-13T12:13:17.1867411Z (Reading database ... 90%
+2026-11-13T12:13:17.3215275Z (Reading database ... 95%
+2026-11-13T12:13:17.3215946Z (Reading database ... 100%
+2026-11-13T12:13:17.3216494Z (Reading database ... 216752 files and directories currently installed.)
+2026-11-13T12:13:17.3263469Z Preparing to unpack .../librsvg2-2_2.58.0+dfsg-1ubuntu0.1_amd64.deb ...
+2026-11-13T12:13:17.3384651Z Unpacking librsvg2-2:amd64 (2.58.0+dfsg-1ubuntu0.1) ...
+2026-11-13T12:13:17.4136140Z Selecting previously unselected package librsvg2-bin.
+2026-11-13T12:13:17.4281480Z Preparing to unpack .../librsvg2-bin_2.58.0+dfsg-1ubuntu0.1_amd64.deb ...
+2026-11-13T12:13:17.4295585Z Unpacking librsvg2-bin (2.58.0+dfsg-1ubuntu0.1) ...
+2026-11-13T12:13:17.5229129Z Setting up librsvg2-2:amd64 (2.58.0+dfsg-1ubuntu0.1) ...
+2026-11-13T12:13:17.5267505Z Setting up librsvg2-bin (2.58.0+dfsg-1ubuntu0.1) ...
+2026-11-13T12:13:17.5304652Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-11-13T12:13:17.5334162Z Not building database; man-db/auto-update is not 'true'.
+2026-11-13T12:13:17.5354256Z Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+2026-11-13T12:13:18.3636069Z 
+2026-11-13T12:13:18.3636637Z Running kernel seems to be up-to-date.
+2026-11-13T12:13:18.3636931Z 
+2026-11-13T12:13:18.3637039Z No services need to be restarted.
+2026-11-13T12:13:18.3637248Z 
+2026-11-13T12:13:18.3637394Z No containers need to be restarted.
+2026-11-13T12:13:18.3637581Z 
+2026-11-13T12:13:18.3637749Z No user sessions are running outdated binaries.
+2026-11-13T12:13:18.3637968Z 
+2026-11-13T12:13:18.3638178Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-11-13T12:13:19.4480016Z rsvg-convert version 2.58.0
+2026-11-13T12:13:19.5011336Z ##[group]Run args=()
+2026-11-13T12:13:19.5011619Z [36;1margs=()[0m
+2026-11-13T12:13:19.5011923Z [36;1mif [ "$FIRST_BOOTSTRAP" = true ]; then args+=(--bootstrap); fi[0m
+2026-11-13T12:13:19.5012590Z [36;1mpython3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" prepare --output "$RUNNER_TEMP/spacefox-site" "${args[@]}"[0m
+2026-11-13T12:13:19.5032511Z shell: /usr/bin/bash -e {0}
+2026-11-13T12:13:19.5032767Z env:
+2026-11-13T12:13:19.5033249Z   PYTHONDONTWRITEBYTECODE: 1
+2026-11-13T12:13:19.5033576Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+2026-11-13T12:13:19.5036057Z   GH_TOKEN: ***
+2026-11-13T12:13:19.5036276Z   FIRST_BOOTSTRAP: true
+2026-11-13T12:13:19.5036499Z ##[endgroup]
+2026-11-13T12:13:56.4076637Z {"detailFailures": [], "exportedBytes": 616444, "exportedFiles": 96, "feedBytes": 2718, "head": "c375671469043e9c19f1aff2e082c7622998cc1e", "pending": "true", "requests": 2, "result": "pending", "revision": {"artifact_revision": "fdb07bebf3d8bed1102bc2b9f13ffe617c2104683c5982ecc2aa9ecc37a65037", "generation": 1}, "traversal": {"complete": false, "detailRequests": 0, "query": "https://ll.thespacedevs.com/2.3.0/launches/upcoming/?mode=normal&limit=10&ordering=net&include_suborbital=true&hide_recent_previous=false", "receivedUpcoming": 20, "reportedCount": 476, "worldwideCompleteness": false}}
+2026-11-13T12:13:56.5194168Z ##[group]Run actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b
+2026-11-13T12:13:56.5194825Z with:
+2026-11-13T12:13:56.5195063Z   path: /home/runner/work/_temp/spacefox-site
+2026-11-13T12:13:56.5195357Z   retention-days: 1
+2026-11-13T12:13:56.5195574Z   name: github-pages
+2026-11-13T12:13:56.5195773Z env:
+2026-11-13T12:13:56.5195966Z   PYTHONDONTWRITEBYTECODE: 1
+2026-11-13T12:13:56.5196264Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+2026-11-13T12:13:56.5196578Z ##[endgroup]
+2026-11-13T12:13:56.5264370Z ##[start-action display=Archive artifact;id=upload.__run]
+2026-11-13T12:13:56.5290414Z ##[group]Run echo ::group::Archive artifact
+2026-11-13T12:13:56.5290741Z [36;1mecho ::group::Archive artifact[0m
+2026-11-13T12:13:56.5291001Z [36;1mtar \[0m
+2026-11-13T12:13:56.5291256Z [36;1m  --dereference --hard-dereference \[0m
+2026-11-13T12:13:56.5291582Z [36;1m  --directory "$INPUT_PATH" \[0m
+2026-11-13T12:13:56.5291920Z [36;1m  -cvf "$RUNNER_TEMP/artifact.tar" \[0m
+2026-11-13T12:13:56.5292207Z [36;1m  --exclude=.git \[0m
+2026-11-13T12:13:56.5292460Z [36;1m  --exclude=.github \[0m
+2026-11-13T12:13:56.5292701Z [36;1m  --exclude=".[^/]*" \[0m
+2026-11-13T12:13:56.5293274Z [36;1m  .[0m
+2026-11-13T12:13:56.5293490Z [36;1mecho ::endgroup::[0m
+2026-11-13T12:13:56.5322782Z shell: /usr/bin/sh -e {0}
+2026-11-13T12:13:56.5323201Z env:
+2026-11-13T12:13:56.5323401Z   PYTHONDONTWRITEBYTECODE: 1
+2026-11-13T12:13:56.5323702Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+2026-11-13T12:13:56.5324072Z   INPUT_PATH: /home/runner/work/_temp/spacefox-site
+2026-11-13T12:13:56.5324359Z ##[endgroup]
+2026-11-13T12:13:56.5366391Z ##[group]Archive artifact
+2026-11-13T12:13:56.5379716Z ./
+2026-11-13T12:13:56.5380050Z ./rasters/
+2026-11-13T12:13:56.5380625Z ./rasters/2a09c8ea59ca32d5ee8ea4e5520682de56a7539b86e434b804f96ffeca0cecd6.sfr
+2026-11-13T12:13:56.5381535Z ./rasters/180d4d090c41fddf2fd1d79dd46405bbf9d13569ec151440658ec50208b5eb5b.sfr
+2026-11-13T12:13:56.5382443Z ./rasters/671a4b8da3f5c272f41a709b7b72285ee96247eed72d4b3c521bc13884bb6153.sfr
+2026-11-13T12:13:56.5383577Z ./rasters/eeaefa0a3910f493ba1409eca38c0473fa68b6b99da810696788b8338b01fddd.sfr
+2026-11-13T12:13:56.5384329Z ./rasters/6d4ab3dc509e305150b3e44adc2df9d6c70416ec01f09751f1a66c2418cc18e9.sfr
+2026-11-13T12:13:56.5384874Z ./rasters/0f6ced072b08fe37b64b1944b2c3e01aead22000bd18ef580f4c60b4728070e4.sfr
+2026-11-13T12:13:56.5385408Z ./rasters/989c9613e5fa53e38fb64f788cec13deb7c37e9b2c0d3c3752e188bc9b81a42f.sfr
+2026-11-13T12:13:56.5385916Z ./rasters/4d28962616ea3056f6ce6fde40f6904f9d9dee2e657f67f988b4eaa4d31e8e92.sfr
+2026-11-13T12:13:56.5386403Z ./rasters/653939e2711ce529f39617eb84040f245960720925e27e70d270247940553e3a.sfr
+2026-11-13T12:13:56.5386900Z ./rasters/db31d9ab634adaa54e03c7c96a2eee50064466b0565444a8bda1145a520ac301.sfr
+2026-11-13T12:13:56.5387399Z ./rasters/697b580f41521ace59315e84264ddbfb4dee9d77b50f3d2e256ad10b7a6a56cf.sfr
+2026-11-13T12:13:56.5387903Z ./rasters/07924fc156dcfcd1725e9dce51567b9d04b13933fe56f89a0255b3ffcc914580.sfr
+2026-11-13T12:13:56.5394043Z ./rasters/0936caabf3d961df403c05a1a35a5436d5842c45de0077cfd7053118a6e7ca29.sfr
+2026-11-13T12:13:56.5394788Z ./rasters/9107867a46a828266cdc4669352d110734f23c385ef52bc1ca7073709bb415ee.sfr
+2026-11-13T12:13:56.5395283Z ./descriptors/
+2026-11-13T12:13:56.5395695Z ./descriptors/014ceb0a1d66a8dd02f4b9cb6d5f20c2b2e743d381e7d8b3ce56bc326f47a8f6.json
+2026-11-13T12:13:56.5396597Z ./descriptors/fa1ce2fb63460529994358836426ed6530359c74e8f75d1c11b326d3781c0d17.json
+2026-11-13T12:13:56.5397436Z ./descriptors/0eb77528bc1a7cbf49fc502de5decf79c8284bfd04ae6e9207244023a1beb75d.json
+2026-11-13T12:13:56.5398398Z ./descriptors/a363ca0b9e5e3b0ddfdbe60fbf8dca1e8a4acaf2f5f6f537453ffdec3d480e3e.json
+2026-11-13T12:13:56.5399245Z ./descriptors/881d843c99abf317d7f1d81eceb6a2f3e898f86e92336c2fd1220a21eb2a6f24.json
+2026-11-13T12:13:56.5400201Z ./descriptors/e1e4eca29715248e1a9ef3f5d519b1a88208b97ca39dcdbea3280567bfae4f9f.json
+2026-11-13T12:13:56.5401403Z ./descriptors/1983539eff01007c6469a16c7b6afdbffb570c90c131b51303cffe0eccf3ab76.json
+2026-11-13T12:13:56.5402529Z ./descriptors/ea159b1b5b743bc76414ba0ad88c5f3009a13cd9438c303bb7987490bb8e4add.json
+2026-11-13T12:13:56.5403748Z ./descriptors/03cf912282654dcd7a8f6449066c701416a188243dcc423a84c1b621f5456755.json
+2026-11-13T12:13:56.5404623Z ./descriptors/c541feb661618db71a4959632cc78dddd505242caaf616cdf9490a557835645d.json
+2026-11-13T12:13:56.5405273Z ./descriptors/c66f2df8e267d51034c4b875c9d9accad41ebdea35eaf120e11d0f2f71e352b9.json
+2026-11-13T12:13:56.5405821Z ./descriptors/85d39f0fdf4bd3b220df9fe905d0362b80095e040c893f57c7fd7e85b39a5147.json
+2026-11-13T12:13:56.5406367Z ./descriptors/0be9d992f13dca424ba2fa290fddcc8fe43433cc0256ba21644cbd30fb7aec04.json
+2026-11-13T12:13:56.5406908Z ./descriptors/3ecbd7d016bd63d7d97b78e78383d094610d893b3d6330b4c662ae6aa33cdae0.json
+2026-11-13T12:13:56.5407630Z ./descriptors/04b464a0ed18ce2563030e0255a43f9d2252bd0356516464046e42a9da82658b.json
+2026-11-13T12:13:56.5408638Z ./descriptors/46f66f71d461860b16fa8362b959239f2b29e18dedf2dc837125b2a25a1f24e7.json
+2026-11-13T12:13:56.5409773Z ./descriptors/367772aa758e4d5e5a91892b841d56b9b53f411ed97238ec870c37a37328e74e.json
+2026-11-13T12:13:56.5410363Z ./descriptors/a28ecf80077c51aa47efd45080f6c965500ac437d53cc042b34b3a5b8f42c7ce.json
+2026-11-13T12:13:56.5410901Z ./descriptors/1aa3aa9b699e921193cde3955f43f7ec300158129bb085446c525974f78c3623.json
+2026-11-13T12:13:56.5411434Z ./descriptors/e7d2910c95458e2caac9aa589c23c91348bf9487fcaaca615488c2c1dc38e4e3.json
+2026-11-13T12:13:56.5412000Z ./descriptors/8926043a5bf2546fefde9e4dd204f36c955dba664ed1f51533ade8c7e0ada9fe.json
+2026-11-13T12:13:56.5412576Z ./descriptors/2d7770611bc041d80c17ce90fd92335129ce86e607d74763b114c1c0b3ff295a.json
+2026-11-13T12:13:56.5413388Z ./descriptors/bbf23c21ba0f90f6ebaf23d6f5b5b2a552d579a13dc8f5c96a53c134a6e22e50.json
+2026-11-13T12:13:56.5413941Z ./descriptors/aea0a3f290f49e40c9b79af18699aa1c677d9c9213034566c68ae669b3f17e5a.json
+2026-11-13T12:13:56.5414493Z ./descriptors/ceb2969fb516647343abe298291ab3ff3b98e4f435db0923b68bbbca6578ced7.json
+2026-11-13T12:13:56.5415034Z ./descriptors/f42f43b55a45ec8b1f6792ae4f08b3cd25f4f0216df7be310232408e9eed487f.json
+2026-11-13T12:13:56.5415584Z ./descriptors/f8a14e2df0245b475990b21c3cb102d219adb7d8b4e8fbf520437c5ec62a7b7f.json
+2026-11-13T12:13:56.5416127Z ./descriptors/1995a50d59280cf5e3f4cef7d4051dd5fcbed51ce571135c118c06e37d7c64f5.json
+2026-11-13T12:13:56.5416673Z ./descriptors/d83091b990069d2b9cd6730b9081dc0b47d1d3cee9b1dbc049a2ab3798f7b739.json
+2026-11-13T12:13:56.5417209Z ./descriptors/1ed9b35f67033e3ac4aa2e1d1a189b3349eb7ab898240ba53291e3d8446fe760.json
+2026-11-13T12:13:56.5417747Z ./descriptors/fcac640b67445b57b84635762a9a191c6be01994eeef2e8eeca0b294a87917b3.json
+2026-11-13T12:13:56.5418289Z ./descriptors/e4ab1cae49093691d716636139bb6a35bc9c20eb25dbb95a07a3ac08b2e8b7b9.json
+2026-11-13T12:13:56.5418817Z ./descriptors/897de021e07272311468762225cc637ec6bfa00e20ed9e3e39f95a9e843cb801.json
+2026-11-13T12:13:56.5419354Z ./descriptors/58f6ad0086d01b814a37c5fdd7b89cacaa297d7eb2920055ab9d11b68a94b47d.json
+2026-11-13T12:13:56.5419897Z ./descriptors/e6bdea8e8de98afe1a3bc77ba103a4c8859d3c351b79c472308b05c12da6ff84.json
+2026-11-13T12:13:56.5420467Z ./descriptors/faa30a0cb30b3f4c00254a2d393bee8329cf189dcb869049c1ab8b37a27cf260.json
+2026-11-13T12:13:56.5421007Z ./descriptors/6be91466d91c0abd7b822bd6f18520577c6359f8d92723d37a162cd5a475e85f.json
+2026-11-13T12:13:56.5421399Z ./feed.json
+2026-11-13T12:13:56.5421575Z ./sources/
+2026-11-13T12:13:56.5421888Z ./sources/c22245823c0a2ae06c1005783fc60988a4482950eb7bbf363caa1503dba9e451.json
+2026-11-13T12:13:56.5422422Z ./sources/c655ae80d1ee963969d438319ee592b11ad1b2f209f19158f488f56dab508716.json
+2026-11-13T12:13:56.5423159Z ./sources/ebf95ac02874a3b7b6486e40011f3f19867eec79f9a3fc60a2f7f3ed0f0b5f00.json
+2026-11-13T12:13:56.5423679Z ./sources/1dc3fd9308da23cebd9698b198448f8ee09dd42c485e6325e53ff383c96c405c.json
+2026-11-13T12:13:56.5424182Z ./sources/1f62d4593448a0acf8cd8e13cd46c230910188df60038272d82964a952b138f6.json
+2026-11-13T12:13:56.5424878Z ./sources/0e327258fa1e795f91fb61e8e6f59985582a5b89748e1b97c7b418c36f58d5f3.json
+2026-11-13T12:13:56.5425381Z ./wire3/
+2026-11-13T12:13:56.5425559Z ./wire3/catalogs/
+2026-11-13T12:13:56.5425923Z ./wire3/catalogs/09d14343e538fc1e6abcbdd1add8f5a2883e77a9d99169218f91f53a569d891b.json
+2026-11-13T12:13:56.5426352Z ./objects/
+2026-11-13T12:13:56.5426680Z ./objects/a19afb5ce4e5cab0d937e3014bd64d7776244a5cc323e899f0c297529de0f526.json
+2026-11-13T12:13:56.5427206Z ./objects/ac3910e91614a8a64bf350a3aaccec543d93e0dd9f1f2e4a9d964cdf014417fb.json
+2026-11-13T12:13:56.5427717Z ./objects/48285204cfc3d53e0a6a9ff597e010481cd1e64f548a137a5bea7876c698af4d.json
+2026-11-13T12:13:56.5428224Z ./objects/dd7c22ef94a538e4c767ce52dcba255cc6841d4c5972a592b92f3e4f177d04be.json
+2026-11-13T12:13:56.5428725Z ./objects/32902211a3bb6a9ac9b1250891407a79c763380bc791b482e056946f320167e0.json
+2026-11-13T12:13:56.5429219Z ./objects/a98e26d7c9c2183e9da9830c6e346e3dccdd9657448ab0e9bcde39f5e67f123d.json
+2026-11-13T12:13:56.5429740Z ./objects/ae10a6f2b5891b98ef0c0acdce3fade08ed72752669fda880a407e703bb6f66f.json
+2026-11-13T12:13:56.5430256Z ./objects/3bd0067a7bb444bd704161283cb1ac26703de404fc4c52fb8a1e411fcd3dd68f.json
+2026-11-13T12:13:56.5430762Z ./objects/7aeb1c5dc21656935ac420401dca38c95c383b47da6e4ec8f9186eaa14286b95.json
+2026-11-13T12:13:56.5431272Z ./objects/da5bb8413d728160a0b9de9ab8ee8fd259458b183482baedaa2d69a800f29bb0.json
+2026-11-13T12:13:56.5431769Z ./objects/f54b75238744712b5ae81f47260a6033410a3180f099549c4b912f6d6e2f38bb.json
+2026-11-13T12:13:56.5432272Z ./objects/fefa3b2c322fcfdddd1ca569a568a96cce680c5b51d5c745883f078622b9efa2.json
+2026-11-13T12:13:56.5432793Z ./objects/67e60d1ac7d14aec63a47d1a20949a134cab20fb478c508198e5a71845432bbe.json
+2026-11-13T12:13:56.5433567Z ./objects/d1906b8f1d948f6fec96d31f039bd590c701cfbe480943a79ec13b1a434d9df4.json
+2026-11-13T12:13:56.5434082Z ./objects/86358a8dff04233edaff5aa14ebbaf5fab09b1c4153b28ea7f46f406320cfb7c.json
+2026-11-13T12:13:56.5434607Z ./objects/0d225bfd751ead6f6af0fabc812ac2836e8c3d23a79ff92d05b14cd641337aae.json
+2026-11-13T12:13:56.5435113Z ./objects/9e0c56d11b7b640bc175727273687236284d19f9e35468b759c4a047f6b6e8a2.json
+2026-11-13T12:13:56.5435620Z ./objects/acba1436df4f42996e930e4ff585ccb4458fdfd1fe3fd5761bb145516c77fd27.json
+2026-11-13T12:13:56.5436133Z ./objects/49adca8cdd63a45defc5d421921d7bcb35c2c02558d73c67e0cf307021ab2ce9.json
+2026-11-13T12:13:56.5436641Z ./objects/1bf9aeba631336754a41f88dded01355016072849605b6da5389859133a993b5.json
+2026-11-13T12:13:56.5437133Z ./objects/984717f011e990a4d8b47748c236cf033a819213f74dc18231277f564ed44f59.json
+2026-11-13T12:13:56.5437627Z ./objects/a4b0793dc5fb046cf0447c5eecc3299ee5731a777525e75adbc33249965fc5cc.json
+2026-11-13T12:13:56.5438142Z ./objects/a7dc03499ad02b3ec47fd748b928426dcd3ad6c48b1ca4aafc3a1332bf382720.json
+2026-11-13T12:13:56.5438666Z ./objects/8f0bcd5c7f4f9896faac017018a4a088d3ec59515c18ae97cac533acc465a6e5.json
+2026-11-13T12:13:56.5439181Z ./objects/8745b46c98beaed2c3599a1c3a5cb78bdaeb0d401ddebf2c04455e28803677cd.json
+2026-11-13T12:13:56.5439699Z ./objects/a9f8be3d69d5c5b4369f46a4fd342e7da6534a097227c9e1ea7a307b8890b474.json
+2026-11-13T12:13:56.5440215Z ./objects/cc4f6220b45af914c1823a606bcfbb89ea7172f65dbdc1b842e22ca337a92583.json
+2026-11-13T12:13:56.5440724Z ./objects/4228d30690a292fad3c6ca3c859e09dd24433c15cdcafb2b61476e373f6fe177.json
+2026-11-13T12:13:56.5441225Z ./objects/cf268d86066938007089d2c24980fdb3f99042dc2716bcfdd2391b60f6f8bb4c.json
+2026-11-13T12:13:56.5441725Z ./objects/88693f81a5ddc949237afcf2fbd279feed206d377b0adf0d3c7ec49d5d348762.json
+2026-11-13T12:13:56.5442232Z ./objects/d4e52f11cf736e44d93adc8e9552b8b34c164f8e0995d468f005d895d696e71a.json
+2026-11-13T12:13:56.5442727Z ./objects/0018ac76abc70949513a814a868749f2600624f518dfc5268033eeda88b16ce4.json
+2026-11-13T12:13:56.5443455Z ./objects/0d626e1f8ab1edb566961df8a2e1b5d9fb1794d8db7030f55cb89b115300aaed.json
+2026-11-13T12:13:56.5443969Z ./objects/1a23eed05b29d46fa7db20241cd96ebfc2dba429cbf27da4c70b765c7b5c3c5f.json
+2026-11-13T12:13:56.5444618Z ./objects/344f7ff6febde7efe21e90074637a2cc54563a25efd16237886d0fd6e2ee68b0.json
+2026-11-13T12:13:56.5445240Z ./objects/ce1ca65a9557b61ed45cf6cc2e873503e1fbb9efea8bbbc85a874716c04a9ec3.json
+2026-11-13T12:13:56.5445755Z ./objects/21952c3ce65986eed59d701fa17b4646e51ce730375a2eedb48b56df7f95180a.json
+2026-11-13T12:13:56.5446332Z ##[endgroup]
+2026-11-13T12:13:56.5478200Z ##[end-action id=upload.__run;outcome=success;conclusion=success;duration_ms=21]
+2026-11-13T12:13:56.5481305Z ##[start-action display=Archive artifact;id=upload.__run_2]
+2026-11-13T12:13:56.5486292Z ##[end-action id=upload.__run_2;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-11-13T12:13:56.5488864Z ##[start-action display=Archive artifact;id=upload.__run_3]
+2026-11-13T12:13:56.5492273Z ##[end-action id=upload.__run_3;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-11-13T12:13:56.5494570Z ##[start-action display=Upload artifact;id=upload.upload-artifact]
+2026-11-13T12:13:56.5538102Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+2026-11-13T12:13:56.5538524Z with:
+2026-11-13T12:13:56.5538718Z   name: github-pages
+2026-11-13T12:13:56.5538967Z   path: /home/runner/work/_temp/artifact.tar
+2026-11-13T12:13:56.5539246Z   retention-days: 1
+2026-11-13T12:13:56.5539453Z   if-no-files-found: error
+2026-11-13T12:13:56.5539678Z   compression-level: 6
+2026-11-13T12:13:56.5539886Z   overwrite: false
+2026-11-13T12:13:56.5540092Z   include-hidden-files: false
+2026-11-13T12:13:56.5540322Z env:
+2026-11-13T12:13:56.5540511Z   PYTHONDONTWRITEBYTECODE: 1
+2026-11-13T12:13:56.5540800Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+2026-11-13T12:13:56.5541112Z ##[endgroup]
+2026-11-13T12:13:56.7323624Z (node:10689) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-13T12:13:56.7325038Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-13T12:13:56.7374467Z With the provided path, there will be 1 file uploaded
+2026-11-13T12:13:56.7403517Z Artifact name is valid!
+2026-11-13T12:13:56.7404050Z Root directory input is valid!
+2026-11-13T12:13:56.9536259Z Beginning upload of artifact content to blob storage
+2026-11-13T12:13:57.0013397Z (node:10689) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-13T12:13:57.0670739Z Uploaded bytes 196409
+2026-11-13T12:13:57.0876568Z Finished uploading artifact content to blob storage!
+2026-11-13T12:13:57.0877635Z SHA256 digest of uploaded artifact zip is 9671514cc24f21368f100b77cf2d4d8ff01ba54ecc1b50d67c00fdb5f0cc98dc
+2026-11-13T12:13:57.0879704Z Finalizing artifact upload
+2026-11-13T12:13:57.4390194Z Artifact github-pages.zip successfully finalized. Artifact ID 14034678844
+2026-11-13T12:13:57.4391391Z Artifact github-pages has been successfully uploaded! Final size is 196409 bytes. Artifact ID is 14034678844
+2026-11-13T12:13:57.4397944Z Artifact download URL: https://github.com/JekaMas/SpaceFox/actions/runs/43423066921/artifacts/14034678844
+2026-11-13T12:13:57.4526783Z ##[end-action id=upload.upload-artifact;outcome=success;conclusion=success;duration_ms=903]
+2026-11-13T12:13:57.4663914Z Post job cleanup.
+2026-11-13T12:13:57.5547044Z [command]/usr/bin/git version
+2026-11-13T12:13:57.5590867Z git version 2.56.1
+2026-11-13T12:13:57.5665963Z Temporarily overriding HOME='/home/runner/work/_temp/586f2c7e-572f-4c46-8d02-9cb42345e52a' before making global git config changes
+2026-11-13T12:13:57.5667246Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-13T12:13:57.5672185Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/SpaceFox/SpaceFox
+2026-11-13T12:13:57.5709979Z Removing SSH command configuration
+2026-11-13T12:13:57.5718043Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-13T12:13:57.5759253Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-13T12:13:57.6034422Z Removing HTTP extra header
+2026-11-13T12:13:57.6041871Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-13T12:13:57.6086898Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-13T12:13:57.6355524Z Removing includeIf entries pointing to credentials config files
+2026-11-13T12:13:57.6383658Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-13T12:13:57.6432455Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-13T12:13:57.6863380Z Evaluate and set job outputs
+2026-11-13T12:13:57.6870038Z Set output 'pending'
+2026-11-13T12:13:57.6871706Z Set output 'head'
+2026-11-13T12:13:57.6872129Z Set output 'artifact_id'
+2026-11-13T12:13:57.6873510Z Cleaning up orphan processes
+2026-11-13T12:13:57.7331370Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

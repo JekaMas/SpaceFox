@@ -1,0 +1,22 @@
+{
+  "status": "source-not-due-metadata-transport-failure",
+  "workflowRun": 43424540872,
+  "event": "workflow_dispatch",
+  "createdUtc": "2026-11-13T12:22:03Z",
+  "publicSource": "ae473f7eaddd0e0cf0eecd594b6612b36831676b",
+  "prepare": {
+    "result": "not_due",
+    "requests": 0,
+    "head": "07e5b6c13e9a77be9f89aba79b6cd3c895d2c841"
+  },
+  "metadata": {
+    "exitCode": 2,
+    "message": "catalog HTTP deadline or worker failed",
+    "at": "2026-11-13T12:27:16Z"
+  },
+  "scope": "Automatic timed workflow observed. No due schedule provider request or Pages replacement. Auxiliary metadata network attempt failed. Exact cause not proved; not recorded as passing. Next natural retry remains authorized under durable shared budget.",
+  "receipts": {
+    "timer-43424540872-131882616484.log": "cdc499b5398be6fb5f30db3416c4eea585238ea1ac6d972aea90337faba05d9f",
+    "timer-43424540872-131884507163.log": "cb7915e5a44e56a7fe07a95a055c84a4b6d81f955b642c8279576871153c7938"
+  }
+}

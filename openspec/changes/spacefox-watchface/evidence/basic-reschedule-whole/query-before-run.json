@@ -1,0 +1,305 @@
+{
+  "change": "spacefox-watchface",
+  "manifest": "openspec/changes/spacefox-watchface/verification.json",
+  "manifest_sha256": "904aa648096965e0cacd50fa3f9d51440cb2924998d33686e888db4e065f97f1",
+  "nodes": {
+    "cases": {
+      "LS10.P1.S01.NEGATIVE.CURRENT": {
+        "command_id": "basic-reschedule-whole",
+        "current_evidence_fingerprint": "2d04d664784dfe56b306bfcf0ba8210be23ecc03730d69c236f0d86310eab303",
+        "green_expectation": "Successful unchanged refresh neither creates nor clears reschedule; actual captured SEC target with changed agreeing window metadata neither creates nor clears flag. Native MIN remaining stays59898.",
+        "id": "LS10.P1.S01.NEGATIVE.CURRENT",
+        "implementation_note": "Four direct BASIC current cases. Generic quota/CAS/global-art/resource/depth obligations remain in their own existing properties; no replacement matrix or legacy support.",
+        "invalidation_dependencies": [
+          "tests/test_basic_reschedule.py",
+          "tests/fixtures/basic_reschedule/**",
+          "tests/fixtures/provider/current-starship/**",
+          "tests/fixtures/map-only/feed.json",
+          "tools/spacefox/schedule.py",
+          "tools/spacefox/provider.py",
+          "tools/spacefox/wire.py",
+          "tools/spacefox/feed.py",
+          "tools/spacefox/publisher.py",
+          "tools/spacefox/catalog.py",
+          "catalog/**",
+          "tools/build_watchface.py",
+          "tools/run_native_tests.py",
+          "watchface/source/**",
+          "watchface/resources/**",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "watchface/manifest.xml",
+          "locales/catalog.json"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "Successful unchanged refresh neither creates nor clears reschedule; actual captured SEC target with changed agreeing window metadata neither creates nor clears flag. Native MIN remaining stays59898.",
+        "polarity": "negative",
+        "property_id": "LS10.P1",
+        "red_expectation": "Fails if the stated literal relation, latch, identity or precision assertion is false, or the exact native framework test is missing/fails.",
+        "scenario": "Known new launch time",
+        "scenario_fingerprint": "ff1c31bcd1c140b6f53cf040269e54e738d75e18e6819320bba99350d5d04a39",
+        "setup": "Retained raw captured Starship MIN record; technical UTC/ID mutations only, verbatim display text. Current schema3 SFR1M captured envelope with actual production schedule projection. Pinned FR165 SDK uses four new test-only native assertions and numeric clock. Captured historical SEC record supplies agreeing-target metadata merge assertion.",
+        "source_path": "tests/test_basic_reschedule.py",
+        "source_sha256": "32288c07b3dba8dc43ee64193116450626b1c0bc2869b6b90ac4a88623e0d6f3",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Whole defined BASIC reschedule software property through actual normalize/merge/project/serialize/schema and NativeFeed metadata/FeedScene/view/countdown owners.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Fresh provider observation or hosted/phone/physical delivery",
+            "Renderer/global artwork/catalog qualification, shared quota/CAS/persistence/recovery or resource measurements",
+            "Physical FR165/Store/release acceptance"
+          ],
+          "owner_replaced": "Physical FR165 by pinned SDK simulator; controlled numeric WatchClock. Real captured provider records replayed with technical time/ID mutations; captured visual references reused only as current feed envelope."
+        },
+        "test_id": "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_unchanged_refresh_negative"
+      },
+      "LS10.P1.S01.POSITIVE.CURRENT": {
+        "command_id": "basic-reschedule-whole",
+        "current_evidence_fingerprint": "17fda6f2922d87f0e904b1d1bbe763ca60356c42e13691fe5853f80336034b47",
+        "green_expectation": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698\u219259898, text16:18:18\u219216:38:18, flag true.",
+        "id": "LS10.P1.S01.POSITIVE.CURRENT",
+        "implementation_note": "Four direct BASIC current cases. Generic quota/CAS/global-art/resource/depth obligations remain in their own existing properties; no replacement matrix or legacy support.",
+        "invalidation_dependencies": [
+          "tests/test_basic_reschedule.py",
+          "tests/fixtures/basic_reschedule/**",
+          "tests/fixtures/provider/current-starship/**",
+          "tests/fixtures/map-only/feed.json",
+          "tools/spacefox/schedule.py",
+          "tools/spacefox/provider.py",
+          "tools/spacefox/wire.py",
+          "tools/spacefox/feed.py",
+          "tools/spacefox/publisher.py",
+          "tools/spacefox/catalog.py",
+          "catalog/**",
+          "tools/build_watchface.py",
+          "tools/run_native_tests.py",
+          "watchface/source/**",
+          "watchface/resources/**",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "watchface/manifest.xml",
+          "locales/catalog.json"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698\u219259898, text16:18:18\u219216:38:18, flag true.",
+        "polarity": "positive",
+        "property_id": "LS10.P1",
+        "red_expectation": "Fails if the stated literal relation, latch, identity or precision assertion is false, or the exact native framework test is missing/fails.",
+        "scenario": "Known new launch time",
+        "scenario_fingerprint": "ff1c31bcd1c140b6f53cf040269e54e738d75e18e6819320bba99350d5d04a39",
+        "setup": "Retained raw captured Starship MIN record; technical UTC/ID mutations only, verbatim display text. Current schema3 SFR1M captured envelope with actual production schedule projection. Pinned FR165 SDK uses four new test-only native assertions and numeric clock. Captured historical SEC record supplies agreeing-target metadata merge assertion.",
+        "source_path": "tests/test_basic_reschedule.py",
+        "source_sha256": "32288c07b3dba8dc43ee64193116450626b1c0bc2869b6b90ac4a88623e0d6f3",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Whole defined BASIC reschedule software property through actual normalize/merge/project/serialize/schema and NativeFeed metadata/FeedScene/view/countdown owners.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Fresh provider observation or hosted/phone/physical delivery",
+            "Renderer/global artwork/catalog qualification, shared quota/CAS/persistence/recovery or resource measurements",
+            "Physical FR165/Store/release acceptance"
+          ],
+          "owner_replaced": "Physical FR165 by pinned SDK simulator; controlled numeric WatchClock. Real captured provider records replayed with technical time/ID mutations; captured visual references reused only as current feed envelope."
+        },
+        "test_id": "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_known_new_time_positive"
+      },
+      "LS10.P1.S02.NEGATIVE.CURRENT": {
+        "command_id": "basic-reschedule-whole",
+        "current_evidence_fingerprint": "a5bfef0c8a67ffbac01f70eefc9f327714332569747fc4feff651ca7879304e2",
+        "green_expectation": "Unchanged withdrawn refresh remains unknown/latched; selecting a different timed launch ID cannot inherit flag. Original accepted ID remains latched; native returns16:18:18 without inherited flag.",
+        "id": "LS10.P1.S02.NEGATIVE.CURRENT",
+        "implementation_note": "Four direct BASIC current cases. Generic quota/CAS/global-art/resource/depth obligations remain in their own existing properties; no replacement matrix or legacy support.",
+        "invalidation_dependencies": [
+          "tests/test_basic_reschedule.py",
+          "tests/fixtures/basic_reschedule/**",
+          "tests/fixtures/provider/current-starship/**",
+          "tests/fixtures/map-only/feed.json",
+          "tools/spacefox/schedule.py",
+          "tools/spacefox/provider.py",
+          "tools/spacefox/wire.py",
+          "tools/spacefox/feed.py",
+          "tools/spacefox/publisher.py",
+          "tools/spacefox/catalog.py",
+          "catalog/**",
+          "tools/build_watchface.py",
+          "tools/run_native_tests.py",
+          "watchface/source/**",
+          "watchface/resources/**",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "watchface/manifest.xml",
+          "locales/catalog.json"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "Unchanged withdrawn refresh remains unknown/latched; selecting a different timed launch ID cannot inherit flag. Original accepted ID remains latched; native returns16:18:18 without inherited flag.",
+        "polarity": "negative",
+        "property_id": "LS10.P1",
+        "red_expectation": "Fails if the stated literal relation, latch, identity or precision assertion is false, or the exact native framework test is missing/fails.",
+        "scenario": "New time withdrawn",
+        "scenario_fingerprint": "0a2a1afa6193c51b6fd8adc755ab492754101ee54626ab65519ac9061d530714",
+        "setup": "Retained raw captured Starship MIN record; technical UTC/ID mutations only, verbatim display text. Current schema3 SFR1M captured envelope with actual production schedule projection. Pinned FR165 SDK uses four new test-only native assertions and numeric clock. Captured historical SEC record supplies agreeing-target metadata merge assertion.",
+        "source_path": "tests/test_basic_reschedule.py",
+        "source_sha256": "32288c07b3dba8dc43ee64193116450626b1c0bc2869b6b90ac4a88623e0d6f3",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Whole defined BASIC reschedule software property through actual normalize/merge/project/serialize/schema and NativeFeed metadata/FeedScene/view/countdown owners.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Fresh provider observation or hosted/phone/physical delivery",
+            "Renderer/global artwork/catalog qualification, shared quota/CAS/persistence/recovery or resource measurements",
+            "Physical FR165/Store/release acceptance"
+          ],
+          "owner_replaced": "Physical FR165 by pinned SDK simulator; controlled numeric WatchClock. Real captured provider records replayed with technical time/ID mutations; captured visual references reused only as current feed envelope."
+        },
+        "test_id": "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_different_launch_negative"
+      },
+      "LS10.P1.S02.POSITIVE.CURRENT": {
+        "command_id": "basic-reschedule-whole",
+        "current_evidence_fingerprint": "2a36c186c0689ecffe7223c0ca22ed0793916ac20360f1b4b7e24ad711970e9e",
+        "green_expectation": "Target withdrawal preserves selected launch flag and removes exact/nominal target; current envelope uncertain; actual native remaining=null and --:--:--.",
+        "id": "LS10.P1.S02.POSITIVE.CURRENT",
+        "implementation_note": "Four direct BASIC current cases. Generic quota/CAS/global-art/resource/depth obligations remain in their own existing properties; no replacement matrix or legacy support.",
+        "invalidation_dependencies": [
+          "tests/test_basic_reschedule.py",
+          "tests/fixtures/basic_reschedule/**",
+          "tests/fixtures/provider/current-starship/**",
+          "tests/fixtures/map-only/feed.json",
+          "tools/spacefox/schedule.py",
+          "tools/spacefox/provider.py",
+          "tools/spacefox/wire.py",
+          "tools/spacefox/feed.py",
+          "tools/spacefox/publisher.py",
+          "tools/spacefox/catalog.py",
+          "catalog/**",
+          "tools/build_watchface.py",
+          "tools/run_native_tests.py",
+          "watchface/source/**",
+          "watchface/resources/**",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "watchface/manifest.xml",
+          "locales/catalog.json"
+        ],
+        "latest_observed_status": "not_loaded",
+        "observable": "Target withdrawal preserves selected launch flag and removes exact/nominal target; current envelope uncertain; actual native remaining=null and --:--:--.",
+        "polarity": "positive",
+        "property_id": "LS10.P1",
+        "red_expectation": "Fails if the stated literal relation, latch, identity or precision assertion is false, or the exact native framework test is missing/fails.",
+        "scenario": "New time withdrawn",
+        "scenario_fingerprint": "0a2a1afa6193c51b6fd8adc755ab492754101ee54626ab65519ac9061d530714",
+        "setup": "Retained raw captured Starship MIN record; technical UTC/ID mutations only, verbatim display text. Current schema3 SFR1M captured envelope with actual production schedule projection. Pinned FR165 SDK uses four new test-only native assertions and numeric clock. Captured historical SEC record supplies agreeing-target metadata merge assertion.",
+        "source_path": "tests/test_basic_reschedule.py",
+        "source_sha256": "32288c07b3dba8dc43ee64193116450626b1c0bc2869b6b90ac4a88623e0d6f3",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Whole defined BASIC reschedule software property through actual normalize/merge/project/serialize/schema and NativeFeed metadata/FeedScene/view/countdown owners.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Fresh provider observation or hosted/phone/physical delivery",
+            "Renderer/global artwork/catalog qualification, shared quota/CAS/persistence/recovery or resource measurements",
+            "Physical FR165/Store/release acceptance"
+          ],
+          "owner_replaced": "Physical FR165 by pinned SDK simulator; controlled numeric WatchClock. Real captured provider records replayed with technical time/ID mutations; captured visual references reused only as current feed envelope."
+        },
+        "test_id": "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_withdrawn_time_positive"
+      }
+    },
+    "commands": {
+      "basic-reschedule-whole": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "-v",
+          "tests.test_basic_reschedule"
+        ],
+        "authority": "local",
+        "cwd": ".",
+        "id": "basic-reschedule-whole",
+        "notes": "Four direct captured-current BASIC LS10 cases, four new actual native assertions; no provider/hosted calls, no renderer/full publisher/locale rerun. Existing SDK/Java/disposable test key required.",
+        "runner": "python-unittest",
+        "timeout_seconds": 300
+      }
+    },
+    "properties": {
+      "LS10.P1": {
+        "id": "LS10.P1",
+        "oracle": "Literal current MIN target1794609900\u21921794611100 at clock1794551202 produces58698\u219259898 seconds (16:18:18\u219216:38:18), +1200 and same-ID flag. Unchanged validation cannot create or clear it. Withdrawal gives null remaining and --:--:--; next timed launch identity cannot inherit prior latch. Actual captured SEC merge additionally retains unchanged-exact-UTC metadata behavior. Provider precision and exact_utc=null remain intact for MIN. Native assertions execute production classes rather than a Python countdown model.",
+        "owner": "tools/spacefox/schedule.py; tools/spacefox/wire.py; watchface/source/NativeFeed.mc; watchface/source/FeedScene.mc; watchface/source/ScheduleState.mc; watchface/source/SpaceFoxView.mc",
+        "planning_status": "Implemented BASIC whole software property: four current cases through actual captured record normalization/merge/current envelope/native parser/metadata/FeedScene/view/countdown. Actual selected verifier receipt required; physical/phone/provider/publication acceptance stays in existing tasks.",
+        "requirement_id": "LS10",
+        "scenarios": [
+          "Known new launch time",
+          "New time withdrawn"
+        ],
+        "source_globs": [
+          "tests/test_basic_reschedule.py",
+          "tests/fixtures/basic_reschedule/**",
+          "tests/fixtures/provider/current-starship/**",
+          "tests/fixtures/map-only/feed.json",
+          "tools/spacefox/schedule.py",
+          "tools/spacefox/provider.py",
+          "tools/spacefox/wire.py",
+          "tools/spacefox/feed.py",
+          "tools/spacefox/publisher.py",
+          "tools/spacefox/catalog.py",
+          "catalog/**",
+          "tools/build_watchface.py",
+          "tools/run_native_tests.py",
+          "watchface/source/**",
+          "watchface/resources/**",
+          "watchface/toolchain-lock.json",
+          "watchface/api-policy.json",
+          "watchface/manifest.xml",
+          "locales/catalog.json"
+        ],
+        "statement": "The system SHALL identify a reschedule when the accepted target time changes for\nthe same launch identifier, recalculate the countdown and retain a change flag\nfor that selected launch. An unchanged successful refresh SHALL not create or\nclear the flag; selecting a different launch SHALL not inherit it."
+      }
+    },
+    "requirements": {
+      "LS10": {
+        "capability": "launch-schedule",
+        "fingerprint": "26cafee374449f79ed73cf7ab148c9d9b12e286238a7d7d4f2c0fc7ca97e896f",
+        "id": "LS10",
+        "title": "Reschedule detection"
+      }
+    }
+  },
+  "requested_selectors": {
+    "all": false,
+    "cases": [],
+    "changed_paths": [],
+    "commands": [],
+    "owners": [],
+    "properties": [
+      "LS10.P1"
+    ],
+    "requirements": [],
+    "scenarios": [],
+    "tests": []
+  },
+  "selection": {
+    "cases": [
+      "LS10.P1.S01.NEGATIVE.CURRENT",
+      "LS10.P1.S01.POSITIVE.CURRENT",
+      "LS10.P1.S02.NEGATIVE.CURRENT",
+      "LS10.P1.S02.POSITIVE.CURRENT"
+    ],
+    "commands": [
+      "basic-reschedule-whole"
+    ],
+    "properties": [
+      "LS10.P1"
+    ],
+    "requirements": [
+      "LS10"
+    ]
+  },
+  "specifications": {
+    "LS10": "26cafee374449f79ed73cf7ab148c9d9b12e286238a7d7d4f2c0fc7ca97e896f"
+  },
+  "status": "passed",
+  "substitution_gaps": []
+}

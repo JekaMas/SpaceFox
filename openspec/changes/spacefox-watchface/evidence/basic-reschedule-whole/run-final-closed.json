@@ -1,0 +1,239 @@
+{
+  "cases": {
+    "LS10.P1.S01.NEGATIVE.CURRENT": {
+      "evidence_fingerprint": "6ad19fb545d4d8c97c1a24a166b7b5cb2d0c3aca684b685f761bec30460b32ee",
+      "green_expectation": "Successful unchanged refresh neither creates nor clears reschedule; actual captured SEC target with changed agreeing window metadata neither creates nor clears flag. Native MIN remaining stays59898.",
+      "invalidation_dependencies": [
+        "tests/test_basic_reschedule.py",
+        "tests/fixtures/basic_reschedule/**",
+        "tests/fixtures/provider/current-starship/**",
+        "tests/fixtures/map-only/feed.json",
+        "tools/spacefox/schedule.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/wire.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/catalog.py",
+        "catalog/**",
+        "tools/build_watchface.py",
+        "tools/run_native_tests.py",
+        "watchface/source/**",
+        "watchface/resources/**",
+        "watchface/toolchain-lock.json",
+        "watchface/api-policy.json",
+        "watchface/manifest.xml",
+        "locales/catalog.json",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/reschedule-observation.json",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/native-tests.log",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/input/ReschedulePackets.mc",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/build.json"
+      ],
+      "observable": "Successful unchanged refresh neither creates nor clears reschedule; actual captured SEC target with changed agreeing window metadata neither creates nor clears flag. Native MIN remaining stays59898.",
+      "polarity": "negative",
+      "property_id": "LS10.P1",
+      "red_expectation": "Fails if the stated literal relation, latch, identity or precision assertion is false, or the exact native framework test is missing/fails.",
+      "scenario": "Known new launch time",
+      "scenario_fingerprint": "ff1c31bcd1c140b6f53cf040269e54e738d75e18e6819320bba99350d5d04a39",
+      "setup": "Retained raw captured Starship MIN record; technical UTC/ID mutations only, verbatim display text. Current schema3 SFR1M captured envelope with actual production schedule projection. Pinned FR165 SDK uses four new test-only native assertions and numeric clock. Captured historical SEC record supplies agreeing-target metadata merge assertion.",
+      "source_path": "tests/test_basic_reschedule.py",
+      "source_sha256": "71b47050336ccd1ba622c9c9d4fbe5f06d2c9801ed8cfc4851941ea5040486a2",
+      "status": "passed",
+      "test_id": "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_unchanged_refresh_negative"
+    },
+    "LS10.P1.S01.POSITIVE.CURRENT": {
+      "evidence_fingerprint": "4f6af5c7122088f3ec35e746a48f1a0aab116db71746baf23d3bbd99a90490c2",
+      "green_expectation": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698\u219259898, text16:18:18\u219216:38:18, flag true.",
+      "invalidation_dependencies": [
+        "tests/test_basic_reschedule.py",
+        "tests/fixtures/basic_reschedule/**",
+        "tests/fixtures/provider/current-starship/**",
+        "tests/fixtures/map-only/feed.json",
+        "tools/spacefox/schedule.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/wire.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/catalog.py",
+        "catalog/**",
+        "tools/build_watchface.py",
+        "tools/run_native_tests.py",
+        "watchface/source/**",
+        "watchface/resources/**",
+        "watchface/toolchain-lock.json",
+        "watchface/api-policy.json",
+        "watchface/manifest.xml",
+        "locales/catalog.json",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/reschedule-observation.json",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/native-tests.log",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/input/ReschedulePackets.mc",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/build.json"
+      ],
+      "observable": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698\u219259898, text16:18:18\u219216:38:18, flag true.",
+      "polarity": "positive",
+      "property_id": "LS10.P1",
+      "red_expectation": "Fails if the stated literal relation, latch, identity or precision assertion is false, or the exact native framework test is missing/fails.",
+      "scenario": "Known new launch time",
+      "scenario_fingerprint": "ff1c31bcd1c140b6f53cf040269e54e738d75e18e6819320bba99350d5d04a39",
+      "setup": "Retained raw captured Starship MIN record; technical UTC/ID mutations only, verbatim display text. Current schema3 SFR1M captured envelope with actual production schedule projection. Pinned FR165 SDK uses four new test-only native assertions and numeric clock. Captured historical SEC record supplies agreeing-target metadata merge assertion.",
+      "source_path": "tests/test_basic_reschedule.py",
+      "source_sha256": "71b47050336ccd1ba622c9c9d4fbe5f06d2c9801ed8cfc4851941ea5040486a2",
+      "status": "passed",
+      "test_id": "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_known_new_time_positive"
+    },
+    "LS10.P1.S02.NEGATIVE.CURRENT": {
+      "evidence_fingerprint": "e581df6dc1425f3de8f26284c9ca9a469378a6f10715ffcfd35797f8dbf86224",
+      "green_expectation": "Unchanged withdrawn refresh remains unknown/latched; selecting a different timed launch ID cannot inherit flag. Original accepted ID remains latched; native returns16:18:18 without inherited flag.",
+      "invalidation_dependencies": [
+        "tests/test_basic_reschedule.py",
+        "tests/fixtures/basic_reschedule/**",
+        "tests/fixtures/provider/current-starship/**",
+        "tests/fixtures/map-only/feed.json",
+        "tools/spacefox/schedule.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/wire.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/catalog.py",
+        "catalog/**",
+        "tools/build_watchface.py",
+        "tools/run_native_tests.py",
+        "watchface/source/**",
+        "watchface/resources/**",
+        "watchface/toolchain-lock.json",
+        "watchface/api-policy.json",
+        "watchface/manifest.xml",
+        "locales/catalog.json",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/reschedule-observation.json",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/native-tests.log",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/input/ReschedulePackets.mc",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/build.json"
+      ],
+      "observable": "Unchanged withdrawn refresh remains unknown/latched; selecting a different timed launch ID cannot inherit flag. Original accepted ID remains latched; native returns16:18:18 without inherited flag.",
+      "polarity": "negative",
+      "property_id": "LS10.P1",
+      "red_expectation": "Fails if the stated literal relation, latch, identity or precision assertion is false, or the exact native framework test is missing/fails.",
+      "scenario": "New time withdrawn",
+      "scenario_fingerprint": "0a2a1afa6193c51b6fd8adc755ab492754101ee54626ab65519ac9061d530714",
+      "setup": "Retained raw captured Starship MIN record; technical UTC/ID mutations only, verbatim display text. Current schema3 SFR1M captured envelope with actual production schedule projection. Pinned FR165 SDK uses four new test-only native assertions and numeric clock. Captured historical SEC record supplies agreeing-target metadata merge assertion.",
+      "source_path": "tests/test_basic_reschedule.py",
+      "source_sha256": "71b47050336ccd1ba622c9c9d4fbe5f06d2c9801ed8cfc4851941ea5040486a2",
+      "status": "passed",
+      "test_id": "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_different_launch_negative"
+    },
+    "LS10.P1.S02.POSITIVE.CURRENT": {
+      "evidence_fingerprint": "e1c72939d8ee59e37a893dd7a835b4215aa37f2bfeccee5664c167340a4b0d55",
+      "green_expectation": "Target withdrawal preserves selected launch flag and removes exact/nominal target; current envelope uncertain; actual native remaining=null and --:--:--.",
+      "invalidation_dependencies": [
+        "tests/test_basic_reschedule.py",
+        "tests/fixtures/basic_reschedule/**",
+        "tests/fixtures/provider/current-starship/**",
+        "tests/fixtures/map-only/feed.json",
+        "tools/spacefox/schedule.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/wire.py",
+        "tools/spacefox/feed.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/catalog.py",
+        "catalog/**",
+        "tools/build_watchface.py",
+        "tools/run_native_tests.py",
+        "watchface/source/**",
+        "watchface/resources/**",
+        "watchface/toolchain-lock.json",
+        "watchface/api-policy.json",
+        "watchface/manifest.xml",
+        "locales/catalog.json",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/reschedule-observation.json",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/native-tests.log",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/input/ReschedulePackets.mc",
+        "openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native/build.json"
+      ],
+      "observable": "Target withdrawal preserves selected launch flag and removes exact/nominal target; current envelope uncertain; actual native remaining=null and --:--:--.",
+      "polarity": "positive",
+      "property_id": "LS10.P1",
+      "red_expectation": "Fails if the stated literal relation, latch, identity or precision assertion is false, or the exact native framework test is missing/fails.",
+      "scenario": "New time withdrawn",
+      "scenario_fingerprint": "0a2a1afa6193c51b6fd8adc755ab492754101ee54626ab65519ac9061d530714",
+      "setup": "Retained raw captured Starship MIN record; technical UTC/ID mutations only, verbatim display text. Current schema3 SFR1M captured envelope with actual production schedule projection. Pinned FR165 SDK uses four new test-only native assertions and numeric clock. Captured historical SEC record supplies agreeing-target metadata merge assertion.",
+      "source_path": "tests/test_basic_reschedule.py",
+      "source_sha256": "71b47050336ccd1ba622c9c9d4fbe5f06d2c9801ed8cfc4851941ea5040486a2",
+      "status": "passed",
+      "test_id": "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_withdrawn_time_positive"
+    }
+  },
+  "change": "spacefox-watchface",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_basic_reschedule"
+      ],
+      "cwd": "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole",
+      "duration_seconds": 3.365814750082791,
+      "exit_code": 0,
+      "id": "basic-reschedule-whole",
+      "observed_tests": {
+        "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_different_launch_negative": "pass",
+        "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_known_new_time_positive": "pass",
+        "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_unchanged_refresh_negative": "pass",
+        "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_withdrawn_time_positive": "pass"
+      },
+      "status": "exited",
+      "stderr": "test_different_launch_negative (tests.test_basic_reschedule.BasicRescheduleTest.test_different_launch_negative) ... ok\ntest_known_new_time_positive (tests.test_basic_reschedule.BasicRescheduleTest.test_known_new_time_positive) ... ok\ntest_unchanged_refresh_negative (tests.test_basic_reschedule.BasicRescheduleTest.test_unchanged_refresh_negative) ... ok\ntest_withdrawn_time_positive (tests.test_basic_reschedule.BasicRescheduleTest.test_withdrawn_time_positive) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 3.158s\n\nOK\n",
+      "stderr_artifact": "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-final-closed.json.basic-reschedule-whole.stderr.log",
+      "stderr_truncated": false,
+      "stdout": "Reused four exact unchanged native LS10 inputs/packets: /Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/native\n",
+      "stdout_artifact": "/Users/jekamas/projects/SpaceFox-worktrees/apply-basic-reschedule-whole/openspec/changes/spacefox-watchface/evidence/basic-reschedule-whole/run-final-closed.json.basic-reschedule-whole.stdout.log",
+      "stdout_truncated": false
+    }
+  ],
+  "finished_at": "2026-11-13T12:02:34.829510+00:00",
+  "git": {
+    "dirty": false,
+    "head": "97fc17ee1d9b84fa5e21116a00953e2556cae2ca",
+    "status": "known"
+  },
+  "manifest": "openspec/changes/spacefox-watchface/verification.json",
+  "manifest_sha256": "22b14580d6d35753c85c92e41adbd59235a4f82fc7657755bce15655db3d58f3",
+  "requested_selectors": {
+    "all": false,
+    "cases": [],
+    "changed_paths": [],
+    "commands": [],
+    "owners": [],
+    "properties": [
+      "LS10.P1"
+    ],
+    "requirements": [],
+    "scenarios": [],
+    "tests": []
+  },
+  "schema_version": 2,
+  "selection": {
+    "cases": [
+      "LS10.P1.S01.NEGATIVE.CURRENT",
+      "LS10.P1.S01.POSITIVE.CURRENT",
+      "LS10.P1.S02.NEGATIVE.CURRENT",
+      "LS10.P1.S02.POSITIVE.CURRENT"
+    ],
+    "commands": [
+      "basic-reschedule-whole"
+    ],
+    "properties": [
+      "LS10.P1"
+    ],
+    "requirements": [
+      "LS10"
+    ]
+  },
+  "specifications": {
+    "LS10": "26cafee374449f79ed73cf7ab148c9d9b12e286238a7d7d4f2c0fc7ca97e896f"
+  },
+  "started_at": "2026-11-13T12:02:30.847245+00:00",
+  "status": "passed",
+  "substitution_gaps": []
+}
