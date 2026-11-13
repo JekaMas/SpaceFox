@@ -1,72 +1,85 @@
 # SpaceFox
 
-SpaceFox is a free, independent space-themed Garmin Forerunner 165 watch face.
-The current source implements fixed24-hour `HH:mm`, one numeric accumulating-hour
-`HH:mm:ss` launch countdown, four fixed configurable metric slots, a model-specific
-rocket and a source launch-site point on one large faded flat map.
+Космический циферблат для **Garmin Forerunner 165**: текущее время, четыре
+настраиваемых фитнес-поля, ближайший запуск ракеты, изображение модели и точка
+космодрома на карте. Выбранная композиция — **04/full** в
+[основном браузерном макете](prototype/current/index.html). Макет использует
+условные расписание и фитнес-значения.
 
-The primary menu languages are English, Russian, German, French and Spanish,
-plus automatic selection. All36 existing resource IDs/translations are retained;
-the remaining31 are best-effort. Language and the personal feed URL are the only
-additional setup controls. There is no layout/projection/clock-format selector.
+## Текущее состояние
 
-## Verified software scope
+Текущий контракт использует один формат: `native-motion-v3`, envelope schema 3,
+SFR1M и единственный endpoint `/feed.json`. Старые wire-версии, отдельные static
+экспортёры, переходные периоды и проверки совместимости сняты по решению владельца;
+это не пройденные проверки. Исторические результаты сохранены с исходными границами.
+Текущий публичный экземпляр уже переключён на одну плоскую карту: актуальные
+Ubuntu/HTTPS-наблюдения и автоматическое обновление записаны в прогрессе.
+[Тестовый выпуск0.1.0](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.0-test.1)
+содержит подписанные PRG/IQ; [установка с телефона и проверка](docs/TESTING_ON_PHONE.ru.md)
+требуют доступной страницы Connect IQ. Публикация на GitHub не означает одобрение Garmin.
+[Живое расписание](https://jekamas.github.io/SpaceFox/feed.json).
 
-The current basic language properties WF12.P1/P3/P4 and task5.4 passed the actual
-18-case/six-command verifier after independent review and repair. Basic time and
-fields WF01.P1/WF03.P1 subsequently passed10/10cases through one command in an
-independent verification. Reschedule LS10.P1 passed4/4cases through one command;
-local signed packaging RL02.P2 passed11/11cases through two commands and an
-independent check of both actual PRG/IQ signatures and all327source inputs.
-Header, model visual, map/point, composition and compact statuses subsequently
-passed24/24cases through one whole command after an independent targeted sparse
-status repair. **Seventeen whole software properties and tasks2.3/5.2/5.4 are closed.**
-Selection, source metadata and UTC timing passed24/24current cases; platform/API
-and Garmin metric guards passed14/14. The native task list is14closed/17open;
-142properties retain125unreconciled closures. Native framework PASS/rawlauncher1
-is recorded separately from ordinary application/cleanup exit0. Boundary doubles
-for permission/unsupported cases do not establish physical permission or health.
-Physical task5.1 remains open. Actual FR165 SDK
-observations cover five languages, the captured1,822-launch/413-composition corpus,
-menu glyphs, normal settings activation, numeric clock and fixed scene. Read the
-[exact report](openspec/changes/spacefox-watchface/evidence/basic-main-review/FINAL.md)
-and [current progress](openspec/changes/spacefox-watchface/PROGRESS.md).
+Реализованы LL2 publisher, долговечное состояние, Actions/Pages и каталог.
+Сохраняются атомарное обновление и восстановление в текущем формате, проверка
+полной зависимости по digest, честный возраст источника и общая квота запросов.
+Feed ограничен 8192 UTF-8 байтами, текущий и восстанавливаемый artifact — 1MiB
+и 256 файлами. Полный каталог остаётся вне часов.
 
-This is prerelease source. Physical watch/phone, battery and Garmin Store
-acceptance are not established. A simulator screenshot uses captured launch data
-and simulator/test telemetry; it does not represent a physical health reading.
+Текущий основной сценарий: фиксированные часы `HH:mm` (24 часа), один числовой
+отсчёт `HH:mm:ss` с накапливающимися часами, большая затухающая плоская карта,
+четыре постоянные позиции с выбором из шести метрик. Неизвестная цель — `--:--:--`,
+истёкшая — `00:00:00`; ноль не подтверждает старт. Доступны язык, HTTPS URL
+источника и четыре назначения метрик. Анимация, верхняя батарея и происхождение
+модели фиксированы. Независимая проверка и исправления этого блока ведутся в
+[текущем протоколе](openspec/changes/spacefox-watchface/evidence/basic-main-review/PHASE1.md).
 
-## Updates and setup
+Все 36 языковых ресурсов и внутренние ID сохранены. Основные режимы — английский,
+русский, немецкий, французский и испанский; меню предлагает Auto и эти пять языков.
+Остальные 31 ресурс — best-effort. Конечная программная проверка охватывает 1822
+реальных запуска с 2021-11-13 UTC, все опубликованные будущие страницы до
+`next=null` и фактические оставшиеся тексты меню. Физические FR165/телефон,
+батарея и Store остаются отдельными границами приёмки. Назначение миссии показывает
+исходную `mission.type/category`; отсутствие значения остаётся явным.
 
-A deterministic GitHub Actions publisher serves the single schema3/SFR1M
-`/feed.json` through static GitHub Pages. The face computes its own countdown;
-provider polling is ordinarily hourly. A nominal-minute launch target permits
-local seconds arithmetic without improving source accuracy. Unknown time is
-`--:--:--`; reaching zero does not prove liftoff.
+[Точный текущий прогресс и инвентарь](openspec/changes/spacefox-watchface/PROGRESS.md),
+[задачи](openspec/changes/spacefox-watchface/tasks.md),
+[CLOUD_DELIVERY](docs/CLOUD_DELIVERY.md),
+[AGENT_SETUP](docs/AGENT_SETUP.md), [каталог](docs/GLOBAL_VISUAL_CATALOG.md).
+Исследования ниже — исторические визуальные ориентиры, а не текущая матрица
+приёмки строк. AWS, постоянно работающий компьютер и регулярные вызовы модели
+для издателя не нужны. Каждый владелец использует собственный fork и HTTPS URL.
+Оригинальные source/spec/рисунки — [MIT](LICENSE); отдельные условия геоданных,
+шрифтов и иных материалов сохранены в [уведомлениях](THIRD_PARTY_NOTICES.md).
 
-The current map-only writer uses fresh `feed-state-map-v3` and
-`spacefox-state-bootstrap-map-v3` authority refs. The prior public writer is
-quiesced; a clean map-only bootstrap passed allfive jobs, followed by actual
-HTTPS readback of all96files/616444bytes. The initial feed was2,718bytes/generation1. A subsequent natural due run
-43433017023 passed allfive jobs and served generation2, advancing source validation
-from12:13to13:25UTC on2026-11-13, with unchanged map/asset pins. Earlier metadata
-HTTP failure remains recorded; later metadata made4requests but its global refresh
-is still partial. Native G1-to-G2 revalidation and physical delivery stay separate. No legacy payload migration or
-reader is supported.
+## Выбранный дизайн
 
-[Owner/fork guide](docs/AGENT_SETUP.md) · [Cloud delivery](docs/CLOUD_DELIVERY.md) ·
-[Native scene](docs/NATIVE_SCENE.md) · [Release/update guide](docs/RELEASE_AND_UPDATES.md).
-No AWS account, always-running computer or recurring model API calls are required.
-Other owners use their own data-publisher fork and HTTPS URL. A native source fork
-uses its own signing UUID/key; signing secrets are never published here.
+[04/full](prototype/current/index.html): полноэкранная карта с постепенным
+затуханием, время без чёрной подложки, соседний отсчёт, ракета с происхождением
+и знаком оператора, модель и компания наверху, цель миссии отдельной строкой,
+четыре настраиваемых поля и место запуска внизу. В браузере используются
+условные данные; фактические SDK-наблюдения связаны с текущим прогрессом.
+Ранние исследования остаются историческими материалами и не участвуют в
+текущей матрице приёмки конечного словаря.
 
-The renderer/publisher qualification workflow uses Ubuntu24.04 and controlled
-local provider fixtures. Native builds require the separately installed official
-Garmin Connect IQ SDK9.3.0/profileFR165 and Java11. The full project evidence graph
-contains planned/external work and is not a full-product readiness verdict.
+Для согласованной ручной проверки recovery workflow имеет необязательный input
+`qualify_pre_post_recovery=true`: после сохранения intent arm намеренно завершится
+с ошибкой, deploy будет пропущен. Следующий обычный dispatch с inputfalse проверяет
+точный завершённый старый run до повторной публикации. Значение по умолчанию false;
+это операторский fault-тест из [runbook](docs/CLOUD_DELIVERY.md).
 
-Code and original specifications are [MIT](LICENSE). Third-party maps, fonts and
-source data retain their conditions and attribution in
-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The export preserves public-only
-Git ancestry; [source inventory](docs/basic-five-export-manifest.json) records the
-reviewed bytes, not an additional behavioral test.
+## Процесс разработки
+
+Подключён JekaMas SDD / `agent-workflow` как закреплённый подмодуль.
+Начните с [локального процесса](docs/PROJECT_WORKFLOW.md) и
+[сгенерированной инструкции](docs/SDD_WORKFLOW.md).
+
+```sh
+openspec status --change spacefox-watchface --json
+openspec validate spacefox-watchface --strict --json
+```
+
+Текущий pin процесса `f8e7ba481bf356600925e01936d7e9f3f1ac0084` получен из точной
+локальной установленной версии: GitHub отказал в получении этого commit.
+На этом компьютере подмодуль работает; для воспроизведения на другой машине
+потребуется источник этого же pin. Подробности и восстановление описаны в
+[записи настройки](openspec/changes/spacefox-watchface/evidence/setup-report.md).
