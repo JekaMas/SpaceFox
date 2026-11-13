@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "version": "0.1.0",
+  "application_uuid": "ec8b7c8a8ea54ee9ac91ee6e7a674d15",
+  "entry": "SpaceFoxApp",
+  "products": [
+    "fr165"
+  ],
+  "languages": [
+    "eng",
+    "rus",
+    "deu",
+    "fre",
+    "spa"
+  ],
+  "minimum_api": "5.1.0",
+  "permissions": [
+    "SensorHistory",
+    "Communications",
+    "Background"
+  ],
+  "public_key_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
+  "source_revision": "c7ad2c4113de272cd9677842d78047e7e6ffe77b",
+  "source_dirty": false,
+  "compiler_sha256": "e1a6f9018b0c2f7552e25a41b7a6e621e4322bda6916bfd7177e9f7538c385c8",
+  "sdk_version": "9.3.0",
+  "sdk_input_sha256": {
+    "bin/api.db": "2baa720b0efabd643bd66f61a28101fe755c24f96f44c13ccf3005d0851396c3",
+    "bin/api.mir": "6898cd11464f0f5800a1055c112defd886ca94f0a9137867457f3dfce875ab63",
+    "bin/api.debug.xml": "313b222a5b2f976b27b87bf6d6754a1a86d0ada50c727b8ca98331bff4b1909e",
+    "bin/compilerInfo.xml": "f67cfa58cb67385e06e9ee123679f378a2b353cd37edc58188d46cff3556f85f",
+    "bin/projectInfo.xml": "6d4df60df3cd99ad5962830c33410cd7da29e33af641ffa53269952befd958bb",
+    "bin/shell": "5a55d2cc30a0aa5479cd8a31f716337530bdcbe9f8b288701183551e15dfe94c",
+    "bin/ConnectIQ.app/Contents/MacOS/simulator": "a2bf41bf1aa247fed71e87fb7ab0f9c32b4fb7f0d305c09ab49beddc7001127a",
+    "bin/default.jungle": "f1bea680dfd01f380cac249409ae2475eb185fee959fa4514c788c0b9d19672f"
+  },
+  "profile_input_sha256": {
+    "fr165/fr165.bin": "83aab1a5ae1e18a29f3c0e60ea71eb2623221a9435eaf4220d8911261db9a67e",
+    "fr165/fr165.api.debug.xml": "fb42beeb47badbba9a51003e75a204d5087cdd57c1d306fa9760134dd80af58b"
+  },
+  "profile_sha256": "ed45eb28ba928e2d2bda1bf8c567401232ab226889b87712fef5713e7f9a4fa8",
+  "simulator_profile_sha256": "c4e771539f1ccc68f1464ced980cd493d57d0cd8e46fa9e844ada36df9631fee",
+  "generated_manifest_sha256": "fff69b825cb42a6d19e5e6c82a0d767e71bd96897b5ed0cfdbd973f0423db001",
+  "generated_jungle_sha256": "1be181917bdfaa84e815f40bcb86d84eee191142dbf4e498068cf75cc5b907be",
+  "inspection": {
+    "iq_signature_verified": true,
+    "prg_signature_verified": true,
+    "prg_public_key_matches": true,
+    "rsa_bits": 4096,
+    "container": "SDK native 7z",
+    "members": [
+      "manifest.xml",
+      "manifest.sig2",
+      "dev_key.pub",
+      "006-B4432-00/SpaceFox.prg",
+      "006-B4432-00/debug.xml",
+      "006-B4432-00/006-B4432-00-settings.json"
+    ],
+    "export_manifest_sha256": "c9bb00cc01c320fa499b4f03e377340f7f6b691a19691669c12babe95739a26e",
+    "embedded_program_sha256": "aa0376f64da4b7a6d9ddcf253c034360c23b1157e2aee9a20953632356a3f788",
+    "embedded_program_bytes": 1150316,
+    "part_number": "006-B4432-00",
+    "minimum_firmware": "2502",
+    "export_api_version": "6.0.4",
+    "runtime_api": "5.2.0",
+    "signature_profile": "rsa-4096"
+  },
+  "package_sha256": "b0126d9ed13cf186f2fc15be984231da06a562070f3aa2d3d5395c7bdefc037a",
+  "distribution": "GitHub prerelease for physical testing; not Garmin Store approval",
+  "public_source_revision": "5679b09359074addebe4b088635ca86858624c09",
+  "packages": {
+    "prg": {
+      "file": "SpaceFox.prg",
+      "sha256": "aa0376f64da4b7a6d9ddcf253c034360c23b1157e2aee9a20953632356a3f788",
+      "bytes": 1150316
+    },
+    "iq": {
+      "file": "SpaceFox.iq",
+      "sha256": "b0126d9ed13cf186f2fc15be984231da06a562070f3aa2d3d5395c7bdefc037a",
+      "bytes": 291495
+    }
+  },
+  "publication_ready": false,
+  "original_receipt_sha256": "f38a42325101fd870ed9ae8470267827380eb7453df16b4261d3178f71ddb2f5",
+  "evidence_boundary": "Existing SDK9.3.0 export/signature inspection and accepted source-bound simulator checks retained. No phone/physical device/battery/Store acceptance. Screenshot uses simulator health values, not a real user. Public source includes later test/evidence changes; native compiler inputs are compared separately.",
+  "feed_base_url": "https://jekamas.github.io/SpaceFox",
+  "initial_feed_base_url": "",
+  "created_at_utc": "2026-11-13T15:19:03.372894+00:00",
+  "native_compiler_inputs_exact_public_source_count": 154,
+  "public_release_target": "1c1eddcd"
+}
