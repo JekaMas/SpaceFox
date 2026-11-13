@@ -183,6 +183,9 @@ class CloudRuntimeCheckoutTest(unittest.TestCase):
         git(self.source, 'checkout', '-q')
         self.remote = self.base / 'authority.git'
         subprocess.run(['git', 'init', '--bare', '-q', str(self.remote)], check=True)
+        # A public source snapshot may itself be a shallow checkout. Preserve its
+        # exact source OID when seeding this disposable local test authority.
+        git(self.remote, 'config', 'receive.shallowUpdate', 'true')
         git(self.source, 'push', '-q', str(self.remote), 'HEAD:refs/heads/main')
         self.code = git(self.source, 'rev-parse', 'HEAD')
         self.service = Service(self.remote)
