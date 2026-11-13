@@ -208,7 +208,7 @@ def _normalize_launch(row, validated_utc, *, detail):
                             country_id=_id(country, IdKind.COUNTRY),
                             configuration_name=_text(configuration.get('full_name') or configuration.get('name'), limit=256),
                             operator_name=_text(operator.get('name'), limit=256), mission_name=_text(mission.get('name'), limit=256),
-                            mission_purpose=_text(mission.get('description')), source_updated_utc=source_updated,
+                            mission_purpose=_text(mission.get('type')), source_updated_utc=source_updated,
                             source_updated_iso=row['last_updated'],
                             source_updated_subsecond=datetime.fromisoformat(row['last_updated'].replace('Z', '+00:00')).microsecond,
                             source_status_id=status_id, source_status_name=_text(status.get('name'), limit=100),

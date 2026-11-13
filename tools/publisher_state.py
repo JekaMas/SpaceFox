@@ -15,6 +15,7 @@ if __package__ in (None, ''):
 from tools.spacefox.publisher import (GitState, Publisher, StateError, LiveRevision,
                                      MAX_ARTIFACT_BYTES, MAX_ARTIFACT_FILES,
                                      _schedule, MAX_LEDGER_BYTES)
+from tools.spacefox.native_motion import PROFILE
 
 
 def bounded_read(path, limit):
@@ -109,7 +110,8 @@ def main(argv=None):
                         if total > MAX_ARTIFACT_BYTES or len(files) >= MAX_ARTIFACT_FILES:
                             raise StateError('artifact size/file-count limit exceeded')
                         files[path.relative_to(directory).as_posix()] = value
-                result = vars(pub.prepare(pub.head, args.now, files, args.catalog_revision))
+                result = vars(pub.prepare(pub.head, args.now, files, args.catalog_revision,
+                                          artifact_profile=PROFILE))
             elif args.command == 'export-pending':
                 files = pub.pending_files()
                 args.directory.mkdir(parents=False, exist_ok=False)

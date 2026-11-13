@@ -1,0 +1,1161 @@
+{
+  "schemaVersion": 1,
+  "id": "current-closure-20261112-r1",
+  "reviewedAt": "2026-11-12",
+  "sources": [
+    "https://moraba.de/en/",
+    "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file",
+    "https://sscspace.com/news/suborbital-express-5-to-launch-12-experiments-to-space/",
+    "https://sscspace.com/wp-content/uploads/2026/04/S1X5-cad.webp",
+    "https://www.aevum.com/",
+    "https://www.exosaero.com/press",
+    "https://www.isro.gov.in/media_isro/pdf/ResourcesPdf/SpaceIndia/publication(57).pdf",
+    "https://www.isro.gov.in/media_isro/pdf/ResourcesPdf/SpaceIndia/publication%2832%29.pdf",
+    "https://www.isro.gov.in/NSIL.html",
+    "https://nasa.gov/wp-content/uploads/2023/11/fy2023-afr-111323-version5-d-final-tagged.pdf",
+    "https://cnes.fr/en/at-a-glance",
+    "https://www.maia-space.com/maiaspace-legal-notices-general-terms-and-conditions-of-use-of-the-website/",
+    "https://www.maia-space.com/news/french-minister-sebastien-lecornus-visit/",
+    "https://skyrora.com/skyrora-opens-the-uks-largest-rocket-engine-manufacturing-facility-to-bolster-british-launch-capabilities/",
+    "https://skyrora.com/",
+    "https://www.pldspace.com/en/news/sateliot-pld-space-sign-first-commercial-contract-dedicated-launch-two-trito-satellites-miura5.html",
+    "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2024_25_Eng.pdf",
+    "https://bayern-chemie.com/en/about/"
+  ],
+  "reason": "Current official service offerings, exact source-dated whole-vehicle original artwork, separate origin facts and retained uncertainty.",
+  "assets": [
+    {
+      "collection": "models",
+      "facts": {
+        "id": "closure-black-brant-v-single-stage-r1",
+        "name": "Black Brant V",
+        "file": "current-20261112-closure/svg/black-brant-v-single-stage.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational schematic. DLR/SSC reference graphics retain their own rights; no copied source pixels, lettering or logos.",
+        "sourceSha256": "e241eda0763f7e7ec64fff076d50af8764a1fd716ea573d408217715dac9cb81",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:black-brant-v-single-stage"
+          ],
+          "features": [
+            "Exact Black Brant V full profile identified by DLR Fig5-1; pointed payload and 1 separated visible fin stations.",
+            "Independently drawn simplified colour blocks and approximate visible stations; no stage count inferred from fin count."
+          ],
+          "limitations": "Source-dated representative only, not a claim about every payload or a specific 2026 flight. Fin projection, dimensions, stations and paint are approximate. No source logo or pixels; no lifecycle, manufacturer or origin inferred from geometry."
+        },
+        "geometryReference": {
+          "basis": "DLR MORABA portfolio 2025-08-28, printed p14 Fig5-1",
+          "reviewedAt": "2026-11-12",
+          "representativeDate": "2025-08-28",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "closure-red-kite-improved-malemute-r1",
+        "name": "Red Kite / Improved Malemute",
+        "file": "current-20261112-closure/svg/red-kite-improved-malemute.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational schematic. DLR/SSC reference graphics retain their own rights; no copied source pixels, lettering or logos.",
+        "sourceSha256": "b696a8dcb41f09ed5b1fa69520468f710f04175d4a65860e2cb296b816446153",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:red-kite-improved-malemute"
+          ],
+          "features": [
+            "Exact Red Kite / Improved Malemute full profile identified by DLR Fig5-1; pointed payload and 2 separated visible fin stations.",
+            "Independently drawn simplified colour blocks and approximate visible stations; no stage count inferred from fin count."
+          ],
+          "limitations": "Source-dated representative only, not a claim about every payload or a specific 2026 flight. Fin projection, dimensions, stations and paint are approximate. No source logo or pixels; no lifecycle, manufacturer or origin inferred from geometry."
+        },
+        "geometryReference": {
+          "basis": "DLR MORABA portfolio 2025-08-28, printed p14 Fig5-1",
+          "reviewedAt": "2026-11-12",
+          "representativeDate": "2025-08-28",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "closure-red-kite-red-kite-r1",
+        "name": "Red Kite / Red Kite",
+        "file": "current-20261112-closure/svg/red-kite-red-kite.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational schematic. DLR/SSC reference graphics retain their own rights; no copied source pixels, lettering or logos.",
+        "sourceSha256": "b3b25529b2712235e1278952f4efb7c8367d4beab6853a9ba7dcb8629d280608",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://sscspace.com/news/suborbital-express-5-to-launch-12-experiments-to-space/",
+          "https://sscspace.com/wp-content/uploads/2026/04/S1X5-cad.webp",
+          "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:red-kite-red-kite"
+          ],
+          "features": [
+            "Exact Red Kite / Red Kite full profile identified by DLR Fig5-1; pointed payload and 2 separated visible fin stations.",
+            "Independently drawn simplified colour blocks and approximate visible stations; no stage count inferred from fin count."
+          ],
+          "limitations": "Source-dated representative only, not a claim about every payload or a specific 2026 flight. Fin projection, dimensions, stations and paint are approximate. No source logo or pixels; no lifecycle, manufacturer or origin inferred from geometry."
+        },
+        "geometryReference": {
+          "basis": "DLR MORABA portfolio 2025-08-28, printed p14 Fig5-1; SSC S1X5 2026 whole-vehicle CAD",
+          "reviewedAt": "2026-11-12",
+          "representativeDate": "2026-04",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "closure-improved-malemute-r1",
+        "name": "Improved Malemute",
+        "file": "current-20261112-closure/svg/improved-malemute.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational schematic. DLR/SSC reference graphics retain their own rights; no copied source pixels, lettering or logos.",
+        "sourceSha256": "cadf7921e1877be9b8be63eb81289fec23538c9a5b5fa4763d08f2678ff75548",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:improved-malemute"
+          ],
+          "features": [
+            "Exact Improved Malemute full profile identified by DLR Fig5-1; pointed payload and 1 separated visible fin stations.",
+            "Independently drawn simplified colour blocks and approximate visible stations; no stage count inferred from fin count."
+          ],
+          "limitations": "Source-dated representative only, not a claim about every payload or a specific 2026 flight. Fin projection, dimensions, stations and paint are approximate. No source logo or pixels; no lifecycle, manufacturer or origin inferred from geometry."
+        },
+        "geometryReference": {
+          "basis": "DLR MORABA portfolio 2025-08-28, printed p14 Fig5-1",
+          "reviewedAt": "2026-11-12",
+          "representativeDate": "2025-08-28",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "closure-red-kite-single-stage-r1",
+        "name": "Red Kite (single-stage)",
+        "file": "current-20261112-closure/svg/red-kite-single-stage.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational schematic. DLR/SSC reference graphics retain their own rights; no copied source pixels, lettering or logos.",
+        "sourceSha256": "0c9b01a682c63993c34c1d9a388c93e05b37c26bdd4e3e3e93919d26407176e5",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:red-kite-single-stage"
+          ],
+          "features": [
+            "Exact Red Kite (single-stage) full profile identified by DLR Fig5-1; pointed payload and 1 separated visible fin stations.",
+            "Independently drawn simplified colour blocks and approximate visible stations; no stage count inferred from fin count."
+          ],
+          "limitations": "Source-dated representative only, not a claim about every payload or a specific 2026 flight. Fin projection, dimensions, stations and paint are approximate. No source logo or pixels; no lifecycle, manufacturer or origin inferred from geometry."
+        },
+        "geometryReference": {
+          "basis": "DLR MORABA portfolio 2025-08-28, printed p14 Fig5-1",
+          "reviewedAt": "2026-11-12",
+          "representativeDate": "2025-08-28",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "closure-improved-malemute-improved-orion-r1",
+        "name": "Improved Malemute / Improved Orion",
+        "file": "current-20261112-closure/svg/improved-malemute-improved-orion.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational schematic. DLR/SSC reference graphics retain their own rights; no copied source pixels, lettering or logos.",
+        "sourceSha256": "66e8680eeef1ed49b412dfc003725949ed8c4ba380a1c8e82bedc49ca32b1b13",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:improved-malemute-improved-orion"
+          ],
+          "features": [
+            "Exact Improved Malemute / Improved Orion full profile identified by DLR Fig5-1; pointed payload and 2 separated visible fin stations.",
+            "Independently drawn simplified colour blocks and approximate visible stations; no stage count inferred from fin count."
+          ],
+          "limitations": "Source-dated representative only, not a claim about every payload or a specific 2026 flight. Fin projection, dimensions, stations and paint are approximate. No source logo or pixels; no lifecycle, manufacturer or origin inferred from geometry."
+        },
+        "geometryReference": {
+          "basis": "DLR MORABA portfolio 2025-08-28, printed p14 Fig5-1",
+          "reviewedAt": "2026-11-12",
+          "representativeDate": "2025-08-28",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "closure-vs31-improved-orion-r1",
+        "name": "VS-31 / Improved Orion",
+        "file": "current-20261112-closure/svg/vs31-improved-orion.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational schematic. DLR/SSC reference graphics retain their own rights; no copied source pixels, lettering or logos.",
+        "sourceSha256": "a908b3dbbb90e3849f175fe99312b0240ada403f786c665794e44c225f75b6d3",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:vs31-improved-orion"
+          ],
+          "features": [
+            "Exact VS-31 / Improved Orion full profile identified by DLR Fig5-1; pointed payload and 2 separated visible fin stations.",
+            "Independently drawn simplified colour blocks and approximate visible stations; no stage count inferred from fin count."
+          ],
+          "limitations": "Source-dated representative only, not a claim about every payload or a specific 2026 flight. Fin projection, dimensions, stations and paint are approximate. No source logo or pixels; no lifecycle, manufacturer or origin inferred from geometry."
+        },
+        "geometryReference": {
+          "basis": "DLR MORABA portfolio 2025-08-28, printed p14 Fig5-1",
+          "reviewedAt": "2026-11-12",
+          "representativeDate": "2025-08-28",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "closure-vs30-improved-orion-r1",
+        "name": "VS-30 / Improved Orion",
+        "file": "current-20261112-closure/svg/vs30-improved-orion.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational schematic. DLR/SSC reference graphics retain their own rights; no copied source pixels, lettering or logos.",
+        "sourceSha256": "b41f7d11d8e5aec73147505f1e58bcbb6a6c13c35efa65ad819dc3bf3b4604b9",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:vs30-improved-orion"
+          ],
+          "features": [
+            "Exact VS-30 / Improved Orion full profile identified by DLR Fig5-1; pointed payload and 2 separated visible fin stations.",
+            "Independently drawn simplified colour blocks and approximate visible stations; no stage count inferred from fin count."
+          ],
+          "limitations": "Source-dated representative only, not a claim about every payload or a specific 2026 flight. Fin projection, dimensions, stations and paint are approximate. No source logo or pixels; no lifecycle, manufacturer or origin inferred from geometry."
+        },
+        "geometryReference": {
+          "basis": "DLR MORABA portfolio 2025-08-28, printed p14 Fig5-1",
+          "reviewedAt": "2026-11-12",
+          "representativeDate": "2025-08-28",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "closure-improved-malemute-improved-malemute-r1",
+        "name": "Improved Malemute / Improved Malemute",
+        "file": "current-20261112-closure/svg/improved-malemute-improved-malemute.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational schematic. DLR/SSC reference graphics retain their own rights; no copied source pixels, lettering or logos.",
+        "sourceSha256": "e4c44b385bf6995dea01a06a35b1ae7ccfa366a225d1ed8098ba47adba4da64a",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:improved-malemute-improved-malemute"
+          ],
+          "features": [
+            "Exact Improved Malemute / Improved Malemute full profile identified by DLR Fig5-1; pointed payload and 2 separated visible fin stations.",
+            "Independently drawn simplified colour blocks and approximate visible stations; no stage count inferred from fin count."
+          ],
+          "limitations": "Source-dated representative only, not a claim about every payload or a specific 2026 flight. Fin projection, dimensions, stations and paint are approximate. No source logo or pixels; no lifecycle, manufacturer or origin inferred from geometry."
+        },
+        "geometryReference": {
+          "basis": "DLR MORABA portfolio 2025-08-28, printed p14 Fig5-1",
+          "reviewedAt": "2026-11-12",
+          "representativeDate": "2025-08-28",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "closure-vs31-improved-malemute-r1",
+        "name": "VS-31 / Improved Malemute",
+        "file": "current-20261112-closure/svg/vs31-improved-malemute.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational schematic. DLR/SSC reference graphics retain their own rights; no copied source pixels, lettering or logos.",
+        "sourceSha256": "be14f1d68c31d65134931da8080bb34492797e985356faf70d1a384e7a042e43",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:vs31-improved-malemute"
+          ],
+          "features": [
+            "Exact VS-31 / Improved Malemute full profile identified by DLR Fig5-1; pointed payload and 2 separated visible fin stations.",
+            "Independently drawn simplified colour blocks and approximate visible stations; no stage count inferred from fin count."
+          ],
+          "limitations": "Source-dated representative only, not a claim about every payload or a specific 2026 flight. Fin projection, dimensions, stations and paint are approximate. No source logo or pixels; no lifecycle, manufacturer or origin inferred from geometry."
+        },
+        "geometryReference": {
+          "basis": "DLR MORABA portfolio 2025-08-28, printed p14 Fig5-1",
+          "reviewedAt": "2026-11-12",
+          "representativeDate": "2025-08-28",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "closure-vsb30-improved-orion-r1",
+        "name": "VSB-30 / Improved Orion",
+        "file": "current-20261112-closure/svg/vsb30-improved-orion.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational schematic. DLR/SSC reference graphics retain their own rights; no copied source pixels, lettering or logos.",
+        "sourceSha256": "349b85e3632e30fe2b83b8556329725befdf2dbede3eb6e931b5793616b81185",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:vsb30-improved-orion"
+          ],
+          "features": [
+            "Exact VSB-30 / Improved Orion full profile identified by DLR Fig5-1; pointed payload and 3 separated visible fin stations.",
+            "Independently drawn simplified colour blocks and approximate visible stations; no stage count inferred from fin count."
+          ],
+          "limitations": "Source-dated representative only, not a claim about every payload or a specific 2026 flight. Fin projection, dimensions, stations and paint are approximate. No source logo or pixels; no lifecycle, manufacturer or origin inferred from geometry."
+        },
+        "geometryReference": {
+          "basis": "DLR MORABA portfolio 2025-08-28, printed p14 Fig5-1",
+          "reviewedAt": "2026-11-12",
+          "representativeDate": "2025-08-28",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "closure-red-kite-black-brant-r1",
+        "name": "Red Kite / Black Brant",
+        "file": "current-20261112-closure/svg/red-kite-black-brant.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational schematic. DLR/SSC reference graphics retain their own rights; no copied source pixels, lettering or logos.",
+        "sourceSha256": "d2e3039491e6024701c6872bbe303be930579029102ef896721c648386890a05",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:red-kite-black-brant"
+          ],
+          "features": [
+            "Exact Red Kite / Black Brant full profile identified by DLR Fig5-1; pointed payload and 2 separated visible fin stations.",
+            "Independently drawn simplified colour blocks and approximate visible stations; no stage count inferred from fin count."
+          ],
+          "limitations": "Source-dated representative only, not a claim about every payload or a specific 2026 flight. Fin projection, dimensions, stations and paint are approximate. No source logo or pixels; no lifecycle, manufacturer or origin inferred from geometry."
+        },
+        "geometryReference": {
+          "basis": "DLR MORABA portfolio 2025-08-28, printed p14 Fig5-1",
+          "reviewedAt": "2026-11-12",
+          "representativeDate": "2025-08-28",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "closure-rh200-r1",
+        "name": "Rohini RH-200",
+        "file": "current-20261112-closure/svg/rh200.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox schematic; primary reference images retain their own rights. No source pixels, logos or lettering copied.",
+        "sources": [
+          "https://www.isro.gov.in/media_isro/pdf/ResourcesPdf/SpaceIndia/publication(57).pdf"
+        ],
+        "sourceSha256": "6d7012b14d908692e23c3fa8e280be23bf931d0be307da1f5b4799685fdc26bf",
+        "exportSize": [
+          64,
+          128
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:rh200"
+          ],
+          "features": [
+            "Exact RH-200 diagram with slender pointed upper body, small intermediate rectangular fins and separate swept aft fins.",
+            "Historical1988 representative; no rail shape copied and no current-flight equivalence."
+          ],
+          "limitations": "Source-dated approximate representative only, not engineering geometry or current flight/payload appearance. Original simplified proportions and symbolic projected parts. No source image included."
+        },
+        "geometryReference": {
+          "basis": "ISRO SPACE India Jan-Mar1988 printed p8, labeled RH-200 silhouette; p6 photograph is supporting colour only.",
+          "reviewedAt": "2026-11-12",
+          "representativeDate": "1988-01",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "closure-nglv-no-solid-strap-ons-r1",
+        "name": "NGLV core-alone (2025 representative)",
+        "file": "current-20261112-closure/svg/nglv-no-solid-strap-ons.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox schematic; primary reference images retain their own rights. No source pixels, logos or lettering copied.",
+        "sources": [
+          "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2024_25_Eng.pdf"
+        ],
+        "sourceSha256": "490538805017e03ccdc0e6bc3b7902425ca21b78a3a878c5e656b676541fa8a4",
+        "exportSize": [
+          64,
+          128
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:nglv-no-solid-strap-ons"
+          ],
+          "features": [
+            "Exact NGLV-CA labeled full profile without solid strap-on boosters; pale body, fairing, grid fins and folded landing structures.",
+            "Published2025 design representative only; no current geometry equivalence, precise engine count, dimension, or solids-variant mapping."
+          ],
+          "limitations": "Source-dated approximate representative only, not engineering geometry or current flight/payload appearance. Original simplified proportions and symbolic projected parts. No source image included."
+        },
+        "geometryReference": {
+          "basis": "ISRO2024-25 annual report printed p82/PDFp83 exact NGLV-CA whole-profile caption beside two-variant description.",
+          "reviewedAt": "2026-11-12",
+          "representativeDate": "2025",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    }
+  ],
+  "updates": [
+    {
+      "identity": "spacefox:configuration:black-brant-v-single-stage",
+      "changes": {
+        "currentPackAssetId": "closure-black-brant-v-single-stage-r1",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:red-kite-improved-malemute",
+      "changes": {
+        "currentPackAssetId": "closure-red-kite-improved-malemute-r1",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:red-kite-red-kite",
+      "changes": {
+        "currentPackAssetId": "closure-red-kite-red-kite-r1",
+        "currentPackSpecific": true,
+        "manufacturerId": "spacefox:organization:bayern-chemie",
+        "manufacturerCountryIds": [
+          "ll2:country:4"
+        ]
+      },
+      "sources": [
+        "https://sscspace.com/news/suborbital-express-5-to-launch-12-experiments-to-space/",
+        "https://sscspace.com/wp-content/uploads/2026/04/S1X5-cad.webp",
+        "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file",
+        "https://bayern-chemie.com/en/about/"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:rh200",
+      "changes": {
+        "curatedOriginId": "ll2:country:9",
+        "curatedOriginSources": [
+          "https://www.isro.gov.in/media_isro/pdf/ResourcesPdf/SpaceIndia/publication(57).pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "ISRO Space India Jan-Mar1988 printed p6 explicitly describes indigenous Rohini development/production and lists operational RH200; historical origin, not current paint geometry.",
+        "currentPackAssetId": "closure-rh200-r1",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.isro.gov.in/media_isro/pdf/ResourcesPdf/SpaceIndia/publication(57).pdf"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:rh300-mk2",
+      "changes": {
+        "curatedOriginId": "ll2:country:9",
+        "curatedOriginSources": [
+          "https://www.isro.gov.in/media_isro/pdf/ResourcesPdf/SpaceIndia/publication%2832%29.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "ISRO Space India1997 names RH300 MkII in the Indian indigenous sounding-rocket programme; origin is independent of source-dated artwork."
+      },
+      "sources": [
+        "https://www.isro.gov.in/media_isro/pdf/ResourcesPdf/SpaceIndia/publication%2832%29.pdf"
+      ]
+    },
+    {
+      "identity": "spacefox:organization:nsil",
+      "changes": {
+        "curatedOriginId": "ll2:country:9",
+        "curatedOriginSources": [
+          "https://www.isro.gov.in/NSIL.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "ISRO identifies NSIL as an incorporated wholly owned Government of India company; distinct from ISRO and launch-site jurisdiction."
+      },
+      "sources": [
+        "https://www.isro.gov.in/NSIL.html"
+      ]
+    },
+    {
+      "identity": "ll2:organization:44",
+      "changes": {
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://nasa.gov/wp-content/uploads/2023/11/fy2023-afr-111323-version5-d-final-tagged.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "NASA agency financial report identifies this exact reporting entity as a US Government agency established by Congress."
+      },
+      "sources": [
+        "https://nasa.gov/wp-content/uploads/2023/11/fy2023-afr-111323-version5-d-final-tagged.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:organization:46",
+      "changes": {
+        "curatedOriginId": "ll2:country:1",
+        "curatedOriginSources": [
+          "https://cnes.fr/en/at-a-glance"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "CNES identifies itself as the French space agency implementing France space policy."
+      },
+      "sources": [
+        "https://cnes.fr/en/at-a-glance"
+      ]
+    },
+    {
+      "identity": "ll2:organization:1103",
+      "changes": {
+        "curatedOriginId": "ll2:country:1",
+        "curatedOriginSources": [
+          "https://www.maia-space.com/maiaspace-legal-notices-general-terms-and-conditions-of-use-of-the-website/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact MaiaSpace SAS legal notice records French company registration and registered office; not all-European supply chain origin."
+      },
+      "sources": [
+        "https://www.maia-space.com/maiaspace-legal-notices-general-terms-and-conditions-of-use-of-the-website/"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:547",
+      "changes": {
+        "curatedOriginId": "ll2:country:1",
+        "curatedOriginSources": [
+          "https://www.maia-space.com/news/french-minister-sebastien-lecornus-visit/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Manufacturer explicitly locates Maia launcher development in Vernon, France; European partners and foreign launch site remain separate."
+      },
+      "sources": [
+        "https://www.maia-space.com/news/french-minister-sebastien-lecornus-visit/"
+      ]
+    },
+    {
+      "identity": "ll2:organization:1042",
+      "changes": {
+        "curatedOriginId": "ll2:country:10",
+        "curatedOriginSources": [
+          "https://skyrora.com/skyrora-opens-the-uks-largest-rocket-engine-manufacturing-facility-to-bolster-british-launch-capabilities/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Manufacturer describes Skyrora as British; historical founding and multinational workforce not conflated with launch site."
+      },
+      "sources": [
+        "https://skyrora.com/skyrora-opens-the-uks-largest-rocket-engine-manufacturing-facility-to-bolster-british-launch-capabilities/"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:485",
+      "changes": {
+        "curatedOriginId": "ll2:country:10",
+        "curatedOriginSources": [
+          "https://skyrora.com/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Manufacturer explicitly offers named Skyrora XL among UK-manufactured launch vehicles; no launch-country inference."
+      },
+      "sources": [
+        "https://skyrora.com/"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:509",
+      "changes": {
+        "curatedOriginId": "ll2:country:7",
+        "curatedOriginSources": [
+          "https://www.pldspace.com/en/news/sateliot-pld-space-sign-first-commercial-contract-dedicated-launch-two-trito-satellites-miura5.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Manufacturer identifies MIURA5 manufacturing as part of the Spanish mission industrial chain; this is vehicle origin, not a geographic launch-site assertion."
+      },
+      "sources": [
+        "https://www.pldspace.com/en/news/sateliot-pld-space-sign-first-commercial-contract-dedicated-launch-two-trito-satellites-miura5.html"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:nglv-no-solid-strap-ons",
+      "changes": {
+        "currentPackAssetId": "closure-nglv-no-solid-strap-ons-r1",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2024_25_Eng.pdf"
+      ]
+    }
+  ],
+  "additions": [
+    {
+      "identity": "spacefox:organization:bayern-chemie",
+      "facts": {
+        "sourceId": "bayern-chemie",
+        "name": "Bayern-Chemie GmbH",
+        "abbrev": "Bayern-Chemie",
+        "sourceUrl": "https://bayern-chemie.com/en/about/",
+        "type": {
+          "name": "Commercial"
+        },
+        "countryIds": [
+          "ll2:country:4"
+        ],
+        "providerPendingLaunches": null,
+        "providerTotalLaunches": null,
+        "referenceRoles": [
+          "source-dated-manufacturer"
+        ],
+        "currentPackBadgeId": null,
+        "curatedOriginId": "ll2:country:4",
+        "curatedOriginSources": [
+          "https://bayern-chemie.com/en/about/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact German legal company, Traunstein HRB9186. Corporate origin does not determine origin of any mixed rocket or its payload."
+      },
+      "references": {
+        "countries": [
+          "ll2:country:4"
+        ],
+        "badge": null,
+        "origin": "ll2:country:4"
+      }
+    },
+    {
+      "identity": "spacefox:configuration:improved-malemute",
+      "facts": {
+        "sourceId": "improved-malemute",
+        "name": "Improved Malemute",
+        "fullName": "Improved Malemute",
+        "variant": "exact named complete vehicle",
+        "sourceUrl": "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": "closure-improved-malemute-r1",
+        "currentPackSpecific": true,
+        "officialLifecycle": "operating",
+        "officialLifecycleSource": "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "Currently linked DLR MORABA service portfolio names and depicts this complete vehicle; dated 2025 representative, not a 2026 flight assertion.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [],
+        "variantUnspecified": false
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": "spacefox:asset:closure-improved-malemute-r1",
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:red-kite-single-stage",
+      "facts": {
+        "sourceId": "red-kite-single-stage",
+        "name": "Red Kite (single-stage)",
+        "fullName": "Red Kite (single-stage)",
+        "variant": "exact named complete vehicle",
+        "sourceUrl": "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": "closure-red-kite-single-stage-r1",
+        "currentPackSpecific": true,
+        "officialLifecycle": "operating",
+        "officialLifecycleSource": "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "Currently linked DLR MORABA service portfolio names and depicts this complete vehicle; dated 2025 representative, not a 2026 flight assertion.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [],
+        "variantUnspecified": false
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": "spacefox:asset:closure-red-kite-single-stage-r1",
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:improved-malemute-improved-orion",
+      "facts": {
+        "sourceId": "improved-malemute-improved-orion",
+        "name": "Improved Malemute / Improved Orion",
+        "fullName": "Improved Malemute / Improved Orion",
+        "variant": "exact named complete vehicle",
+        "sourceUrl": "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": "closure-improved-malemute-improved-orion-r1",
+        "currentPackSpecific": true,
+        "officialLifecycle": "operating",
+        "officialLifecycleSource": "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "Currently linked DLR MORABA service portfolio names and depicts this complete vehicle; dated 2025 representative, not a 2026 flight assertion.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [],
+        "variantUnspecified": false
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": "spacefox:asset:closure-improved-malemute-improved-orion-r1",
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:vs31-improved-orion",
+      "facts": {
+        "sourceId": "vs31-improved-orion",
+        "name": "VS-31 / Improved Orion",
+        "fullName": "VS-31 / Improved Orion",
+        "variant": "exact named complete vehicle",
+        "sourceUrl": "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": "closure-vs31-improved-orion-r1",
+        "currentPackSpecific": true,
+        "officialLifecycle": "operating",
+        "officialLifecycleSource": "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "Currently linked DLR MORABA service portfolio names and depicts this complete vehicle; dated 2025 representative, not a 2026 flight assertion.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [],
+        "variantUnspecified": false
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": "spacefox:asset:closure-vs31-improved-orion-r1",
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:vs30-improved-orion",
+      "facts": {
+        "sourceId": "vs30-improved-orion",
+        "name": "VS-30 / Improved Orion",
+        "fullName": "VS-30 / Improved Orion",
+        "variant": "exact named complete vehicle",
+        "sourceUrl": "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": "closure-vs30-improved-orion-r1",
+        "currentPackSpecific": true,
+        "officialLifecycle": "operating",
+        "officialLifecycleSource": "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "Currently linked DLR MORABA service portfolio names and depicts this complete vehicle; dated 2025 representative, not a 2026 flight assertion.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [],
+        "variantUnspecified": false
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": "spacefox:asset:closure-vs30-improved-orion-r1",
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:improved-malemute-improved-malemute",
+      "facts": {
+        "sourceId": "improved-malemute-improved-malemute",
+        "name": "Improved Malemute / Improved Malemute",
+        "fullName": "Improved Malemute / Improved Malemute",
+        "variant": "exact named complete vehicle",
+        "sourceUrl": "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": "closure-improved-malemute-improved-malemute-r1",
+        "currentPackSpecific": true,
+        "officialLifecycle": "operating",
+        "officialLifecycleSource": "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "Currently linked DLR MORABA service portfolio names and depicts this complete vehicle; dated 2025 representative, not a 2026 flight assertion.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [],
+        "variantUnspecified": false
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": "spacefox:asset:closure-improved-malemute-improved-malemute-r1",
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:vs31-improved-malemute",
+      "facts": {
+        "sourceId": "vs31-improved-malemute",
+        "name": "VS-31 / Improved Malemute",
+        "fullName": "VS-31 / Improved Malemute",
+        "variant": "exact named complete vehicle",
+        "sourceUrl": "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": "closure-vs31-improved-malemute-r1",
+        "currentPackSpecific": true,
+        "officialLifecycle": "operating",
+        "officialLifecycleSource": "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "Currently linked DLR MORABA service portfolio names and depicts this complete vehicle; dated 2025 representative, not a 2026 flight assertion.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [],
+        "variantUnspecified": false
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": "spacefox:asset:closure-vs31-improved-malemute-r1",
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:vsb30-improved-orion",
+      "facts": {
+        "sourceId": "vsb30-improved-orion",
+        "name": "VSB-30 / Improved Orion",
+        "fullName": "VSB-30 / Improved Orion",
+        "variant": "exact named complete vehicle",
+        "sourceUrl": "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": "closure-vsb30-improved-orion-r1",
+        "currentPackSpecific": true,
+        "officialLifecycle": "operating",
+        "officialLifecycleSource": "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "Currently linked DLR MORABA service portfolio names and depicts this complete vehicle; dated 2025 representative, not a 2026 flight assertion.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [],
+        "variantUnspecified": false
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": "spacefox:asset:closure-vsb30-improved-orion-r1",
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:red-kite-black-brant",
+      "facts": {
+        "sourceId": "red-kite-black-brant",
+        "name": "Red Kite / Black Brant",
+        "fullName": "Red Kite / Black Brant",
+        "variant": "exact named complete vehicle",
+        "sourceUrl": "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": "closure-red-kite-black-brant-r1",
+        "currentPackSpecific": true,
+        "officialLifecycle": "operating",
+        "officialLifecycleSource": "https://www.dlr.de/en/rb/research-operation/portfolio/dlr_rb_portfolio_moraba-sounding-rocket-flight-experiments.pdf/@@download/file",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "Currently linked DLR MORABA service portfolio names and depicts this complete vehicle; dated 2025 representative, not a 2026 flight assertion.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [],
+        "variantUnspecified": false
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": "spacefox:asset:closure-red-kite-black-brant-r1",
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:aevum-erv-a",
+      "facts": {
+        "sourceId": "aevum-erv-a",
+        "name": "Aevum ERV-A",
+        "fullName": "Aevum ERV-A",
+        "variant": "exact named complete vehicle",
+        "sourceUrl": "https://www.aevum.com/",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "development",
+        "officialLifecycleSource": "https://www.aevum.com/",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "Official current complete-vehicle offering; separate from older carrier/platform identity. No flight date, stage count, exact dimensions or exterior equivalence asserted.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [],
+        "variantUnspecified": false
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:aevum-rrv-a",
+      "facts": {
+        "sourceId": "aevum-rrv-a",
+        "name": "Aevum RRV-A",
+        "fullName": "Aevum RRV-A",
+        "variant": "exact named complete vehicle",
+        "sourceUrl": "https://www.aevum.com/",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "development",
+        "officialLifecycleSource": "https://www.aevum.com/",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "Official current complete-vehicle offering; separate from older carrier/platform identity. No flight date, stage count, exact dimensions or exterior equivalence asserted.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [],
+        "variantUnspecified": false
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    },
+    {
+      "identity": "spacefox:configuration:exos-blk3",
+      "facts": {
+        "sourceId": "exos-blk3",
+        "name": "EXOS BLK3",
+        "fullName": "EXOS BLK3",
+        "variant": "exact named complete vehicle",
+        "sourceUrl": "https://www.exosaero.com/press",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "development",
+        "officialLifecycleSource": "https://www.exosaero.com/press",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "Official current complete-vehicle offering; separate from older carrier/platform identity. No flight date, stage count, exact dimensions or exterior equivalence asserted.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [],
+        "variantUnspecified": false
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    }
+  ]
+}

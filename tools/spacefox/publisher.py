@@ -17,7 +17,7 @@ import uuid
 from .schedule import (AcceptedLaunch, IdKind, LaunchRecord, LaunchStatus,
                        ScheduleError, ScheduleState, StableId, TimePrecision,
                        Timing, advance_schedule, merge_schedule, compact_schedule, poll_due, select_next,
-                       DEFAULT_POLICY, RefreshPolicy)
+                       DEFAULT_POLICY, RefreshPolicy, cadence_seconds)
 
 MAX_LEDGER_BYTES = 65536
 MAX_ARTIFACT_BYTES = 1048576
@@ -28,8 +28,8 @@ MAX_CATALOG_CORPUS_BYTES = 67108864
 MAX_CATALOG_OBJECTS = 4096
 REQUESTS_PER_HOUR = 15
 UNCERTAIN_DELAY_SECONDS = 60
-STATE_REF = 'refs/heads/feed-state'
-ANCHOR_REF = 'refs/tags/spacefox-state-bootstrap-v1'
+STATE_REF = 'refs/heads/feed-state-motion-v3'
+ANCHOR_REF = 'refs/tags/spacefox-state-bootstrap-motion-v3'
 _HEX = re.compile(r'[0-9a-f]+\Z')
 
 
@@ -153,9 +153,8 @@ def _path(value):
 def _snapshot(value):
     if value is None:
         return
-    _optional_keys(value, 'generation code_revision catalog_revision artifact_revision files schedule', 'artifact_profile')
-    if 'artifact_profile' in value and (type(value['artifact_profile']) is not str
-                                      or value['artifact_profile'] not in ('feed-v1', 'visual-v2')):
+    _keys(value, 'generation code_revision catalog_revision artifact_revision files schedule artifact_profile')
+    if type(value['artifact_profile']) is not str or value['artifact_profile'] != 'native-motion-v3':
         raise StateError('unsupported artifact profile')
     _integer(value['generation'], 1)
     _digest(value['code_revision'], git=True)
@@ -179,72 +178,20 @@ def _snapshot(value):
         raise StateError('artifact metadata revision mismatch')
 
 
-def _feed_artifact(files):
-    """Recognize reserved product output, without selecting its expected profile.
-
-    Old state-machine-only users may have an opaque feed.json. Product feeds
-    have a schemaVersion, or use the reserved wire2 namespace.
-    """
-    if any(type(path) is str and path.startswith('wire2/') for path in files):
-        return True
-    try:
-        value = json.loads(files.get('feed.json', b''))
-        return type(value) is dict and 'schemaVersion' in value
-    except (ValueError, TypeError, UnicodeError):
-        return False
-
-
 def _product_files(files, profile):
-    """Validate the independently selected profile, including its complete union."""
-    if type(profile) is not str or profile not in ('feed-v1', 'visual-v2'):
-        raise StateError('unsupported artifact profile')
-    from .wire import validate_feed
+    if profile != 'native-motion-v3':
+        raise StateError('unsupported artifact profile; native-motion-v3 required')
     try:
-        if profile == 'visual-v2':
-            from .visual_bridge import validate_artifact
-            validate_artifact(files)
-        feed = validate_feed(files.get('feed.json'))
-        if profile == 'feed-v1':
-            from .catalog import canonical_bytes
-            dictionary = {'schemaVersion': 1, 'catalogVersion': feed['catalogRevision'],
-                          'qualification': 'publisher-metadata-only', 'entries': feed['dictionaries'],
-                          'unresolved': feed['unresolvedCatalogIds']}
-            if (set(files) != {'feed.json', feed['catalogPath']}
-                    or files[feed['catalogPath']] != canonical_bytes(dictionary)):
-                raise StateError('invalid complete v1 data-only artifact')
-        return feed
+        from .native_motion import validate_artifact
+        return validate_artifact(files)
     except (ValueError, KeyError, TypeError) as error:
-        raise StateError('invalid complete ' + profile + ' artifact') from error
+        raise StateError('invalid complete native-motion-v3 artifact') from error
 
 
-def _legacy_product_profile(files):
-    """Compatibility only: legacy callers supplied no out-of-band mode intent.
-
-    Accept only an entirely valid old v1 or dual artifact. This cannot prove
-    that v2 was intended when a first legacy caller supplies a complete v1 set.
-    Current producer call sites always request visual-v2 independently.
-    """
-    try:
-        _product_files(files, 'feed-v1')
-        return 'feed-v1'
-    except StateError:
-        _product_files(files, 'visual-v2')
-        return 'visual-v2'
-
-
-def validate_snapshot_artifact(snapshot, files, *, instance=None, selection_validated_utc=None,
+def validate_snapshot_artifact(snapshot, files, *, refresh_policy, instance=None, selection_validated_utc=None,
                                require_selection_epoch=False):
-    """Admission on write and authenticated reopen, with legacy byte preservation.
-
-    Historical unmarked snapshots retain their original v1/dual interpretation;
-    every newly prepared product snapshot persists its independently chosen mode.
-    """
-    profile = snapshot.get('artifact_profile')
-    if profile is None:
-        if not _feed_artifact(files):
-            return None
-        profile = 'visual-v2' if 'wire2/feed.json' in snapshot['files'] else 'feed-v1'
-    feed = _product_files(files, profile)
+    """Admit current-format product snapshots on write and reopen."""
+    feed = _product_files(files, snapshot['artifact_profile'])
     if require_selection_epoch and feed['publisher']['selectionValidatedUtc'] != selection_validated_utc:
         raise StateError('pending feed does not bind durable selection-validation age')
     source = _schedule(snapshot['schedule'])
@@ -254,6 +201,12 @@ def validate_snapshot_artifact(snapshot, files, *, instance=None, selection_vali
             or feed['sourceContentRevision'] != source.content_revision):
         raise StateError('artifact does not bind durable generation/source/catalog/instance')
     selected = select_next(source)
+    policy = RefreshPolicy(**refresh_policy)
+    record = None if selected.entry is None else selected.entry.record
+    if (feed['refreshPolicy'] != refresh_policy
+            or source.evaluated_at_utc is None
+            or feed['pollIntervalSeconds'] != cadence_seconds(record, source.evaluated_at_utc, policy)):
+        raise StateError('artifact refresh policy/cadence disagrees with durable authority')
     launch = None
     if selected.entry is not None:
         record = selected.entry.record
@@ -288,10 +241,10 @@ def _pack_ledger(document):
     """Schema2 stores lossless schedule objects once, outside the small ledger.
 
     Snapshot metadata/digests still describe the original expanded schedule,
-    including legacy field absence. Never reconstruct it through domain defaults.
+    without reconstructing it through domain defaults.
     """
     doc = json.loads(_canonical(document))
-    if type(doc.get('schema_version')) is not int or doc['schema_version'] not in (1, 2):
+    if type(doc.get('schema_version')) is not int or doc['schema_version'] != 2:
         raise StateError('unsupported publisher-state schema')
     doc['schema_version'] = 2
     objects = {}
@@ -313,7 +266,7 @@ def decode_ledger(raw, schedule_lookup=None):
               'last_event_utc last_poll_utc backoff_until_utc requests', 'selection_validated_utc catalog_refresh')
         if 'catalog_refresh' in doc:
             _catalog_ref(doc['catalog_refresh'])
-        if type(doc['schema_version']) is not int or doc['schema_version'] not in (1, 2):
+        if type(doc['schema_version']) is not int or doc['schema_version'] != 2:
             raise StateError('unsupported publisher-state schema')
         if doc['schema_version'] == 2:
             for holder, field in [(doc, 'accepted')] + [(s, 'schedule') for s in (doc['active'], doc['pending']) if s is not None]:
@@ -436,12 +389,6 @@ def _transition(old, new, archive_lookup=None):
     if old['pending'] is None and new['pending'] is not None:
         if new['pending']['schedule'] != new['accepted'] or new['pending']['code_revision'] != new['code_revision']:
             raise StateError('new candidate must pin current accepted state and tool')
-        active = old['active']
-        pending = new['pending']
-        if (active is not None and (active.get('artifact_profile') == 'visual-v2'
-                                   or 'wire2/feed.json' in active['files'])
-                and pending.get('artifact_profile', 'visual-v2' if 'wire2/feed.json' in pending['files'] else 'feed-v1') != 'visual-v2'):
-            raise StateError('versioned producer profile cannot silently regress')
     old_requests = {r['id']: r for r in old['requests']}
     new_requests = {r['id']: r for r in new['requests']}
     for token, request in old_requests.items():
@@ -459,7 +406,7 @@ def _transition(old, new, archive_lookup=None):
             if old['pending'] is not None or new['pending'] is None:
                 raise StateError('source reservation consumption requires a new durable candidate')
         if current is not None and 'accepted_source' in current and 'accepted_source' not in request and request['outcome'] != 'reserved':
-            raise StateError('completed legacy reservation cannot acquire source permission')
+            raise StateError('completed reservation cannot acquire source permission')
 
 
 class GitState:
@@ -579,7 +526,7 @@ class GitState:
                     raise StateError('durable artifact file digest mismatch')
                 result[key] = data
                 product[path] = data
-            validate_snapshot_artifact(snapshot, product, instance=doc['instance_id'],
+            validate_snapshot_artifact(snapshot, product, refresh_policy=doc['refresh_policy'], instance=doc['instance_id'],
                                        selection_validated_utc=doc.get('selection_validated_utc'),
                                        require_selection_epoch=snapshot is doc['pending'])
         return result
@@ -616,7 +563,7 @@ class GitState:
             raise StateError('stale source code cannot bootstrap')
         if type(policy) is not RefreshPolicy:
             raise StateError('validated refresh policy required')
-        doc = dict(schema_version=1, instance_id=_sha(uuid.uuid4().bytes),
+        doc = dict(schema_version=2, instance_id=_sha(uuid.uuid4().bytes),
                    refresh_policy=dict(vars(policy)),
                    code_revision=running_code, generation=0, accepted=schedule_document(ScheduleState()),
                    active=None, pending=None, last_event_utc=None, last_poll_utc=None,
@@ -673,10 +620,7 @@ class GitState:
                         raise StateError('candidate lacks exact durable artifact bytes')
                     needed[key] = data
                     product[path] = data
-                if (snap is candidate['pending'] and previous['pending'] is None
-                        and _feed_artifact(product) and 'artifact_profile' not in snap):
-                    raise StateError('new product snapshot requires an explicit artifact profile')
-                validate_snapshot_artifact(snap, product, instance=candidate['instance_id'],
+                validate_snapshot_artifact(snap, product, refresh_policy=candidate['refresh_policy'], instance=candidate['instance_id'],
                                            selection_validated_utc=candidate.get('selection_validated_utc'),
                                            require_selection_epoch=snap is candidate['pending'])
         retained = {e.record.launch_id.key for e in _schedule(candidate['accepted']).entries}
@@ -904,7 +848,7 @@ class Publisher:
         """Tentative next revision at this exact head; CAS allocates it later.
 
         Only a qualified primary observation may supply a new epoch. None means
-        preserve accepted/legacy-unknown age, including metadata-only rebuilds.
+        preserve accepted source age, including metadata-only rebuilds.
         """
         doc = self._context(self.head)
         self._ready(doc)
@@ -1003,22 +947,15 @@ class Publisher:
         _digest(catalog_revision)
         generation = doc['generation'] + 1
         profile = artifact_profile
-        if feed_publisher is not None or profile is not None:
-            # Preserve complete legacy API inputs, while current producer
-            # intent comes from its explicit call-site profile. Persist the
-            # resolved concrete mode even for a legacy compatibility call.
-            profile = _legacy_product_profile(files) if profile is None else profile
-            feed = _product_files(files, profile)
-            from .wire import validate_feed
-            validate_feed(files['feed.json'], now=doc['last_event_utc'])
-            expected = dict(instance=doc['instance_id'], generation=generation,
-                            selectionValidatedUtc=doc.get('selection_validated_utc'))
-            if (feed_publisher is not None and feed_publisher != expected or feed['publisher'] != expected
-                    or feed['sourceContentRevision'] != _schedule(doc['accepted']).content_revision
-                    or feed['catalogDigest'] != catalog_revision):
-                raise StateError('feed does not bind allocated publisher revision/source/catalog')
-        elif _feed_artifact(files):
-            raise StateError('product artifacts require an explicit profile or bound legacy feed')
+        feed = _product_files(files, profile)
+        from .native_motion import validate_feed
+        validate_feed(files['feed.json'], now=doc['last_event_utc'])
+        expected = dict(instance=doc['instance_id'], generation=generation,
+                        selectionValidatedUtc=doc.get('selection_validated_utc'))
+        if (feed_publisher is not None and feed_publisher != expected or feed['publisher'] != expected
+                or feed['sourceContentRevision'] != _schedule(doc['accepted']).content_revision
+                or feed['catalogDigest'] != catalog_revision):
+            raise StateError('feed does not bind allocated publisher revision/source/catalog')
         manifest, durable_files = {}, {}
         for path, data in files.items():
             _path(path)
@@ -1028,11 +965,10 @@ class Publisher:
             durable_files[f'artifacts/{generation}/{path}'] = data
         candidate = dict(generation=generation, code_revision=self.running_code,
                          catalog_revision=catalog_revision, files=manifest, schedule=doc['accepted'])
-        if profile is not None:
-            candidate['artifact_profile'] = profile
+        candidate['artifact_profile'] = profile
         candidate['artifact_revision'] = _sha(_canonical(candidate))
         _snapshot(candidate)
-        validate_snapshot_artifact(candidate, files, instance=doc['instance_id'],
+        validate_snapshot_artifact(candidate, files, refresh_policy=doc['refresh_policy'], instance=doc['instance_id'],
                                    selection_validated_utc=doc.get('selection_validated_utc'), require_selection_epoch=True)
         doc['generation'], doc['pending'] = generation, candidate
         self._save(doc, durable_files)
@@ -1076,15 +1012,3 @@ class Publisher:
         self._context(expected)
         port.deploy(visible, _live(doc['pending']), files)
         return self.reconcile(port.readback())
-
-    def import_ledger(self, expected, raw):
-        """Validate a supplied current copy; never import arbitrary replacement state.
-
-        Recovery reads authenticated Git. This inspection seam cannot reset quota,
-        normalize an old CDN snapshot, or install user-edited publication metadata.
-        """
-        doc = self._context(expected)
-        supplied = decode_ledger(raw)
-        if supplied != doc:
-            raise StateError('external ledger replacement is forbidden; recover Git authority')
-        return self.head

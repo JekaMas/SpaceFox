@@ -1,38 +1,16 @@
 # Serialized cloud delivery
 
-`tools/cloud_feed.py` is the stdlib GitHub/Pages adapter. The workflow is
-`.github/workflows/update-feed.yml`. The original public source `2171fcb` completed
-its [first explicit bootstrap run](https://github.com/jekamas/SpaceFox/actions/runs/43150627242):
-prepare, arm, deploy and promote all succeeded. Active generation 1, pending null,
-the exact Pages build-version success and exact HTTPS feed/catalog/root re-read
-were observed: 2857 + 618 = 3475 bytes. This qualifies that first data-only cycle.
-The later-job checkout optimization was subsequently observed on public`ea272b2`:
-174s workflow versus474/595s earlier runs, with later checkouts1/0/1s. These are
-three observations, not a controlled benchmark. Old-v1 generation4 was recovered
-from exact pending bytes after cancellation before arm (runs43166274512→43166780103),
-with zero recovery provider requests and3184-byte exact HTTPS readback.
-Actual dual-wire generation5 recovery was subsequently observed on public
-`6494602` in [push run43184519278](https://github.com/jekamas/SpaceFox/actions/runs/43184519278).
-All four jobs succeeded; the exact completed old skipped-deploy attempt was the
-positive no-start witness. A new bound intent reused the exact pending artifact,
-source ages and quota with zero reported provider requests. Pages reached
-`succeed`; read-only HTTPS checked109files/372331bytes and both roots before and
-after the current/prior immutable union. This qualifies that recovery/static
-boundary. Remote started-Pages cancellation remains open.
-
-The metadata/art successor is locally integrated and requires separate later
-publication and hosted qualification. The rich global catalog stays off-watch;
-full selected map71GET, flat-map-only, native efficiency/globe, worldwide,
-36languages, phone/FR165, elapsed90day support and Store remain separate open
-requirements. V1 remains indefinitely. Genuine cron had zero observed executions
-through2026-11-12 08:56UTC. Four literal UTC-minute entries are diagnostic
-re-registration, not a proven repair or an observed scheduled cycle.
+`tools/cloud_feed.py` is the GitHub/Pages adapter, run by
+`.github/workflows/update-feed.yml`. The sole public feed is `/feed.json`, with
+schema 3 and the `SFR1M` renderer profile. Current-format activation, scheduled
+runs and device acceptance require their own observations; older hosted runs do
+not establish them.
 
 One workflow concurrency group covers recovery, provider work, candidate build,
 artifact upload, intent, asynchronous deployment, HTTPS observation and active
 promotion. It never cancels a running workflow to replace it. Pending jobs can
 be replaced or start out of chronological order; the current authenticated Git
-source ref and exact feed-state CAS decide permission. Only trusted main pushes,
+source ref and exact motion-v3 state CAS decide permission. Only trusted main pushes,
 schedules and explicit dispatch run it. The offset15minute cron checks the
 persisted hourly/near15minute cadence; push/dispatch does not force a provider
 request. Optional fast mode is an explicit bootstrap policy, unchanged by restart.
@@ -46,10 +24,8 @@ this boundary. In prepare, `tools/cloud_inputs.py` follows the single
 relative SVG facts from the clean tracked Git index. It materializes only this
 closure and validates it with the unchanged catalog builder. The documented
 `tools/catalog.py --amend` route therefore needs no second input-list edit when
-adding a curation or SVG; unrelated research/private files stay absent. The portable
-current global.14.current-context1 recipe resolves to 683 pinned inputs plus
-the recipe (684 materialized files), with a 23-file runtime/schema seed when the
-recipe is excluded. The earlier global.4/633/21 observations remain historical. For an explicit source2 candidate, the materializer
+adding a curation or SVG; unrelated research/private files stay absent. The current
+catalog recipe and the sparse Python runtime seed. For an explicit source2 candidate, the materializer
 uses `geographic_context.dependencies` to obtain every base-world, clip, notice,
 supplement and metadata pin, checks their tracked bytes and SHA-256, then calls
 `load_source` and the actual catalog builder for full source/rights admission.
@@ -85,7 +61,7 @@ add an outer bound; uncertain async activity is still retained after cancellatio
 
 The publisher's ledger, schedule, quotas, active/pending snapshots and their raw
 files remain unchanged. `cloud.json` is an auxiliary object in the same linear
-feed-state tree. A journal write uses the same actual Git ref CAS and preserves
+motion-v3 state tree. A journal write uses the same actual Git ref CAS and preserves
 all ledger fields. Ordinary publisher commits preserve the journal. The intent
 binds the exact candidate state/generation/artifact digest, current source/ref,
 repository, workflow run/attempt and uploaded artifact ID before any Pages POST.
@@ -123,7 +99,7 @@ or the explicitly skipped POST step establish `not_started`. Missing, truncated,
 wrong-identity, still-running or merely cancelled records do not. A new unique
 attempt then reuses the exact same pending bytes, quota and source age. Historical
 record expiry or an uncertain started step still needs actual service
-reconciliation; no operator-supplied `--live` or feed-state reset is accepted.
+reconciliation; no operator-supplied `--live` or state reset is accepted.
 An empty response alone never proves no deployment. Any nonempty status observed
 in that polling window disables the empty-only fallback, including when a later
 response becomes empty or404. Malformed responses and HTTP/transport errors stop
@@ -140,8 +116,8 @@ cannot select a smaller closure from a preliminary read. Status success alone
 never promotes. Failed terminal attempts retain
 the same pending generation and may arm a new unique attempt; no provider poll
 or rebuild is needed. Code adoption keeps the original source revision, raw bytes,
-generation and source-validation times. Unsupported legacy wire stops safely;
-storage schema1 remains readable and its original artifacts are not rebuilt.
+generation and source-validation times. Unsupported artifact or state versions
+are rejected; the motion-v3 namespace starts independently.
 
 ## Complete delivery and bounded retention
 
@@ -155,43 +131,27 @@ workspace and Actions artifacts expire, including after promotion. Combined
 delivery is at most1MiB and256files. The current wire's feed stays at most8192
 decoded UTF8bytes; no truncation or field omission is allowed to meet the budget.
 
-The closure validator currently handles the actual data-only feed/catalog schema.
-It rejects undeclared/mismatched/missing files and unsupported visual schemas.
-Connecting graphics requires an explicit reference traversal/validation extension,
-without changing this exact-readback protocol. This is not the planned complete
-graphics artifact or the current/previous **wire major**90day announced transition.
-Those release mechanics remain required; no policy retaining every daily catalog
-for90days was invented as a substitute.
+The closure validator checks the current motion feed, its selected immutable
+sources and source-derived raster pixels. Unsupported or corrupt artifacts stop
+publication. The single current feed is read before and after its full closure.
 
 ## Configuration and qualification
 
-Use a separate fork for each family’s publisher and feed-state authority. Enable Pages with workflow
+Use a separate fork for each family’s publisher and motion-v3 state authority. Enable Pages with workflow
 build type and the github-pages environment, then use a trusted manual dispatch
 with bootstrap=true only for the first empty site. Existing/missing/partial
 authority is never silently bootstrapped. Set repository variable
 SPACEFOX_PAGES_URL for another HTTPS base; otherwise the owner/repository Pages
 URL is used. No signing key or provider secret belongs in these jobs.
 
-Local tests use actual bare Git, actual loopback HTTP, local async/status/cancel
-faults, literal independent files/counts and a sparse clean copied CLI. They
-substitute GitHub/LL2 and artifact upload. They cannot establish GitHub token/OIDC
-permissions, real Pages async behavior, live provider truth or watch transfer.
-The first authentic Actions cycle and exact readback are observed above. A second
-validation/update and exact fault recovery remain required before closing the
-whole cloud boundary.
-
-The following is a historical 2026-11-12 GitHub-schedule observation, not a
-statement of current instance state. No `schedule` event was observed at 03:52
-or 04:07 UTC, or by 04:24 after the 04:22 slot on 2026-11-12, despite an active
-workflow on non-fork default `main` and operational GitHub service status. The
-[second manual due-recovery run](https://github.com/jekamas/SpaceFox/actions/runs/43154719080)
-uses `bootstrap=false`, no force, and the unchanged persisted cadence/quota; its
-outcome is not asserted by this source snapshot. Manual runs do not prove cron.
+Local tests use bare Git and loopback services; they cannot establish GitHub
+permissions, Pages asynchronous behavior, live provider truth or device transfer.
+Automatic scheduling and the current-format hosted cutover remain unqualified.
 
 The per-family setup guide is [AGENT_SETUP.md](AGENT_SETUP.md). The planned
 watch setting is a base URL such as `https://jekamas.github.io/SpaceFox`; the
 feed endpoint is that base plus [`/feed.json`](https://jekamas.github.io/SpaceFox/feed.json).
-The first readback proves its recorded cycle, not continuing availability or cron.
+Live readback is needed to establish the deployed current-format closure.
 
 ## Explicit pre-POST recovery qualification
 
@@ -217,7 +177,5 @@ uses the existing quota/CAS authority, a daily completion cadence and at most4
 reserved calls per invocation. Candidate data stays off-watch and requires
 separate reviewed export/adoption. No source/field age is refreshed by metadata.
 See [GLOBAL_METADATA_REFRESH.md](GLOBAL_METADATA_REFRESH.md). Four equivalent
-literal cron entries retain their historical registration-diagnostic scope.
-For the optional external clock and per-instance natural-event, whole-workflow
-and due-source/readback qualification, see [EXTERNAL_SCHEDULE_CLOCK.md](EXTERNAL_SCHEDULE_CLOCK.md).
-This source snapshot does not attest any instance's current operation.
+literal cron entries are a registration diagnostic; authentic scheduling remains
+to be observed, with no known cause/fix claim.

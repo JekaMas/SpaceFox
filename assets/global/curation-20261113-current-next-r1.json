@@ -1,0 +1,532 @@
+{
+  "schemaVersion": 1,
+  "id": "current-next-20261113-r1",
+  "reviewedAt": "2026-11-12",
+  "sources": [
+    "https://www.aevum.com/",
+    "https://www.aevum.com/sil-erva.png",
+    "https://www.aevum.com/sil-rrva.png",
+    "https://www.kari.re.kr/kor/contents/50",
+    "https://www.kari.re.kr/cms/attach/961b51db9be32c8f80aefa4767244323/9a9db098b587ee18b321c826f3707a49",
+    "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2024_25_Eng.pdf",
+    "https://www.isro.gov.in/ISRO_SOLVE.html",
+    "https://newsroom.ulalaunch.com/releases/united-launch-alliance-is-collaborating-with-nasa-for-the-development-of-a-centaur-upper-stage-for-artemis-missions",
+    "https://files.gao.gov/reports/GAO-26-108556/index.html",
+    "https://www.i-space.com.cn/",
+    "https://www.cnsa.gov.cn/english/n6465652/n6465653/c10517149/content.html",
+    "https://english.www.gov.cn/news/202409/24/content_WS66f25e40c6d0868f4e8eb32c.html",
+    "https://www.cnsa.gov.cn/n6758823/n6758838/c10077700/content.html",
+    "https://www.calt.com/n482/n498/c2562559/content.html",
+    "https://www.calt.com/n482/n498/c2579124/content.html",
+    "https://npcap.ru/napravleniya-deyatelnosti/kosmicheskie-proekty/",
+    "https://www.kasa.go.kr/prog/plcyBrf/brief/kor/sub01_01_04/view.do?plcyBrfNo=370",
+    "https://www.lamoncloa.gob.es/lang/en/presidente/news/Paginas/2026/20260910-visit-to-pld-space-company.aspx",
+    "https://www.stokespace.com/news/scaling-nova",
+    "https://www.innospc.com/shop_contents/myboard_read.htm?category_idx=&h_search_c=0&h_search_v=&idx=1012135&load_type=&me_popup=&myboard_code=sub04_02&page=1&page_idx=0&page_limit=5&tag_on=",
+    "https://www.sec.gov/Archives/edgar/data/820736/000082073614000039/form10q.htm",
+    "https://www.sec.gov/Archives/edgar/data/866121/000086612118000014/oa-1231201710xk.htm",
+    "https://www.sastind.gov.cn/n10086200/n10086344/c10188493/content.html",
+    "https://www.sastind.gov.cn/n10086200/n10086344/c10201338/content.html",
+    "https://www.exosaero.com/press",
+    "https://www.exosaero.com/blog/suborbital-reusable-rockets-emerge-as-risk-and-cost-reducing-platforms-for-orbital-launcher-development",
+    "https://www.exosaero.com/about",
+    "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/jul/doc2025730594501.pdf",
+    "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2025_26_Eng_29042026_Rev.pdf"
+  ],
+  "reason": "Fresh complete-programme architecture, exact source-dated whole-profile original schematics and independent programme/corporate origins; immutable history retained.",
+  "assets": [
+    {
+      "collection": "models",
+      "facts": {
+        "id": "next-aevum-erv-a-r1",
+        "name": "Aevum ERV-A",
+        "file": "current-20261113-next/svg/aevum-erv-a.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational schematic. Primary reference media retain separate rights; no source pixels, lettering, fonts or logos redistributed.",
+        "sourceSha256": "08db5daf8a08dc84e453a78d576116de284dd2117a0377734c1293f8eec30896",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.aevum.com/",
+          "https://www.aevum.com/sil-erva.png"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:aevum-erv-a"
+          ],
+          "features": [
+            "Long slender blunt-rounded nose and cylindrical body in the published ERV-A projection.",
+            "Two visible aft nozzle projections; total propulsion count and hidden details are not inferred."
+          ],
+          "limitations": "Approximate source-dated whole projected representative, not an engineering drawing or exact future flight appearance. Neutral informational colours are used where the source is only a silhouette. Visible projections do not establish total hidden fin/leg/engine counts. Dimensions, section stations and source perspective are illustrative. No lifecycle, origin or manufacturer is inferred from geometry."
+        },
+        "geometryReference": {
+          "basis": "Official current Aevum ERV-A section and its separately associated whole projected silhouette; acquired2026-11-13, publication date unstated.",
+          "reviewedAt": "2026-11-12",
+          "representativeDate": "undated-current-page-observed-2026-11-12-UTC",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "next-aevum-rrv-a-r1",
+        "name": "Aevum RRV-A",
+        "file": "current-20261113-next/svg/aevum-rrv-a.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational schematic. Primary reference media retain separate rights; no source pixels, lettering, fonts or logos redistributed.",
+        "sourceSha256": "1f0aeff35a54bd71b961cc207a0f95cbf8f9d0ab93b05409ff7816aa39de9e7b",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.aevum.com/",
+          "https://www.aevum.com/sil-rrva.png"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:aevum-rrv-a"
+          ],
+          "features": [
+            "Rounded nose, wider visible forward aerodynamic surfaces and long slender aft body.",
+            "Visible aft projections simplified from the oblique source; hidden surfaces and their total count are unspecified."
+          ],
+          "limitations": "Approximate source-dated whole projected representative, not an engineering drawing or exact future flight appearance. Neutral informational colours are used where the source is only a silhouette. Visible projections do not establish total hidden fin/leg/engine counts. Dimensions, section stations and source perspective are illustrative. No lifecycle, origin or manufacturer is inferred from geometry."
+        },
+        "geometryReference": {
+          "basis": "Official current Aevum RRV-A section and separately associated oblique whole silhouette; acquired2026-11-13, publication date unstated.",
+          "reviewedAt": "2026-11-12",
+          "representativeDate": "undated-current-page-observed-2026-11-12-UTC",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "next-korean-next-generation-methane-r1",
+        "name": "Korean next-generation methane reusable launcher",
+        "file": "current-20261113-next/svg/korean-next-generation-methane.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational schematic. Primary reference media retain separate rights; no source pixels, lettering, fonts or logos redistributed.",
+        "sourceSha256": "31a9abc1e8f991a927984188a0f5c22d5921c977da3f3feb5d9809a089749386",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.kari.re.kr/kor/contents/50",
+          "https://www.kari.re.kr/cms/attach/961b51db9be32c8f80aefa4767244323/9a9db098b587ee18b321c826f3707a49"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:korean-next-generation-methane"
+          ],
+          "features": [
+            "Source-attached revised methane-programme whole rendering: long nearly constant-width body, rounded pointed nose and visible red folded lower projections.",
+            "No copied lettering/flags/logos; no hidden leg count, engine projection count or exact future flight paint asserted."
+          ],
+          "limitations": "Approximate source-dated whole projected representative, not an engineering drawing or exact future flight appearance. Neutral informational colours are used where the source is only a silhouette. Visible projections do not establish total hidden fin/leg/engine counts. Dimensions, section stations and source perspective are illustrative. No lifecycle, origin or manufacturer is inferred from geometry."
+        },
+        "geometryReference": {
+          "basis": "KARI current revised methane/reusable programme page, whole image beside70m/4.2m/9+1-engine table; acquired2026-11-13, image publication date unstated.",
+          "reviewedAt": "2026-11-12",
+          "representativeDate": "undated-current-page-observed-2026-11-12-UTC",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "next-solve-r1",
+        "name": "SOLVE",
+        "file": "current-20261113-next/svg/solve.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational schematic. Primary reference media retain separate rights; no source pixels, lettering, fonts or logos redistributed.",
+        "sourceSha256": "440dcd99f95c616c0ecf8a7ff7a184d461257fe01c0366bb3081fe513b4942bc",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2024_25_Eng.pdf",
+          "https://www.isro.gov.in/ISRO_SOLVE.html"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "spacefox:configuration:solve"
+          ],
+          "features": [
+            "Wide blunt crew-module test mass above a narrow long solid-motor body and visible lower fins.",
+            "Complete SOLVE illustration, distinct from the separate TV-D2 photo on the same page and July2026 ground-tested motor alone."
+          ],
+          "limitations": "Approximate source-dated whole projected representative, not an engineering drawing or exact future flight appearance. Neutral informational colours are used where the source is only a silhouette. Visible projections do not establish total hidden fin/leg/engine counts. Dimensions, section stations and source perspective are illustrative. No lifecycle, origin or manufacturer is inferred from geometry."
+        },
+        "geometryReference": {
+          "basis": "ISRO2024-25 annual report printed92/PDF93 complete labelledSOLVE illustration beside Integrated Parachute Test paragraph; confirmed whole programme by July4 2026 source.",
+          "reviewedAt": "2026-11-12",
+          "representativeDate": "2024-2025",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    }
+  ],
+  "updates": [
+    {
+      "identity": "spacefox:configuration:aevum-erv-a",
+      "changes": {
+        "currentPackAssetId": "next-aevum-erv-a-r1",
+        "currentPackSpecific": true,
+        "manufacturerId": 282
+      },
+      "sources": [
+        "https://www.aevum.com/",
+        "https://www.aevum.com/sil-erva.png"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:aevum-rrv-a",
+      "changes": {
+        "currentPackAssetId": "next-aevum-rrv-a-r1",
+        "currentPackSpecific": true,
+        "manufacturerId": 282
+      },
+      "sources": [
+        "https://www.aevum.com/",
+        "https://www.aevum.com/sil-rrva.png"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:korean-next-generation-methane",
+      "changes": {
+        "currentPackAssetId": "next-korean-next-generation-methane-r1",
+        "currentPackSpecific": true,
+        "curatedOriginId": "ll2:country:35",
+        "curatedOriginSources": [
+          "https://www.kari.re.kr/kor/contents/50",
+          "https://www.kasa.go.kr/prog/plcyBrf/brief/kor/sub01_01_04/view.do?plcyBrfNo=370"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "KARI/KASA identify revised methane reusable vehicle as the national independent-space-exploration development programme with Korean domestic expert/system design review; not an old kerosene KSLV3 identity or Brazilian launch-country flag."
+      },
+      "sources": [
+        "https://www.kari.re.kr/kor/contents/50",
+        "https://www.kari.re.kr/cms/attach/961b51db9be32c8f80aefa4767244323/9a9db098b587ee18b321c826f3707a49",
+        "https://www.kasa.go.kr/prog/plcyBrf/brief/kor/sub01_01_04/view.do?plcyBrfNo=370"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:solve",
+      "changes": {
+        "currentPackAssetId": "next-solve-r1",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2024_25_Eng.pdf",
+        "https://www.isro.gov.in/ISRO_SOLVE.html"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:193",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://www.i-space.com.cn/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Manufacturer labels exact SQX-1 its first rocket and explicitly describes the first Chinese private commercial orbital rocket breakthrough; whole vehicle programme origin, not launch location."
+      },
+      "sources": [
+        "https://www.i-space.com.cn/"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:194",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://www.cnsa.gov.cn/english/n6465652/n6465653/c10517149/content.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "CNSA developer-attributed account explicitly identifies China’s commercial Kuaizhou programme and names complete Kuaizhou 11 development by Expace; this does not qualify a different Kuaizhou 1A variant lifecycle."
+      },
+      "sources": [
+        "https://www.cnsa.gov.cn/english/n6465652/n6465653/c10517149/content.html"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:484",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://english.www.gov.cn/news/202409/24/content_WS66f25e40c6d0868f4e8eb32c.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Government developer-attributed account explicitly identifies China’s Smart Dragon 3 and its complete development by CALT/CASC; programme origin is separate from maritime launch jurisdiction."
+      },
+      "sources": [
+        "https://english.www.gov.cn/news/202409/24/content_WS66f25e40c6d0868f4e8eb32c.html"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:536",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://www.cnsa.gov.cn/n6758823/n6758838/c10077700/content.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "CALT primary statement published byCNSA explicitly describes Chinese scientists developing complete Long March 10 for the national crewed lunar programme; not inferred from a rocket engine."
+      },
+      "sources": [
+        "https://www.cnsa.gov.cn/n6758823/n6758838/c10077700/content.html"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:537",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://www.calt.com/n482/n498/c2562559/content.html",
+          "https://www.cnsa.gov.cn/n6758823/n6758838/c10077700/content.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact CALT 2026 Long March 10A derivative development linked to the explicitly Chinese national Long March 10 whole-vehicle programme; a named derivative, not a motor nationality inference."
+      },
+      "sources": [
+        "https://www.calt.com/n482/n498/c2562559/content.html",
+        "https://www.cnsa.gov.cn/n6758823/n6758838/c10077700/content.html"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:554",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://www.calt.com/n482/n498/c2579124/content.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact CALT 2026 Long March 10B whole-vehicle development statement by the Chinese national rocket institute; programme origin, not first-flight site or component origin."
+      },
+      "sources": [
+        "https://www.calt.com/n482/n498/c2579124/content.html"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:73",
+      "changes": {
+        "curatedOriginId": "ll2:country:5",
+        "curatedOriginSources": [
+          "https://npcap.ru/napravleniya-deyatelnosti/kosmicheskie-proekty/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Programme participant explicitly describes Angara as a new generation of Russian launch vehicles and names exact Angara A5 within that development programme; no Baikonur/Vostochny jurisdiction shortcut."
+      },
+      "sources": [
+        "https://npcap.ru/napravleniya-deyatelnosti/kosmicheskie-proekty/"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:miura9",
+      "changes": {
+        "curatedOriginId": "ll2:country:7",
+        "curatedOriginSources": [
+          "https://www.lamoncloa.gob.es/lang/en/presidente/news/Paginas/2026/20260910-visit-to-pld-space-company.aspx"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Spanish Government primary visit statement explicitly includes new MIURA 9 in Spain own-capability/Spanish-technology development programme; exact newvehicle, not MIURA 5 renaming or Kourou origin."
+      },
+      "sources": [
+        "https://www.lamoncloa.gob.es/lang/en/presidente/news/Paginas/2026/20260910-visit-to-pld-space-company.aspx"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:nova-block-2",
+      "changes": {
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://www.stokespace.com/news/scaling-nova"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Stoke own programme announcement explicitly describes its U.S. launch company and team developing exact larger Nova Block 2 in parallel; wholeprogramme assertion independent of provider manufacturer-country facts."
+      },
+      "sources": [
+        "https://www.stokespace.com/news/scaling-nova"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:sebit",
+      "changes": {
+        "curatedOriginId": "ll2:country:35",
+        "curatedOriginSources": [
+          "https://www.innospc.com/shop_contents/myboard_read.htm?category_idx=&h_search_c=0&h_search_v=&idx=1012135&load_type=&me_popup=&myboard_code=sub04_02&page=1&page_idx=0&page_limit=5&tag_on="
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "INNOSPACE primary report explicitly identifies the South Korean launch company and its developed exact SEBIT rocket; source distinguishes Brazilian range/operator roles. Programme origin, not allcomponent nationality."
+      },
+      "sources": [
+        "https://www.innospc.com/shop_contents/myboard_read.htm?category_idx=&h_search_c=0&h_search_v=&idx=1012135&load_type=&me_popup=&myboard_code=sub04_02&page=1&page_idx=0&page_limit=5&tag_on="
+      ]
+    },
+    {
+      "identity": "ll2:organization:100",
+      "changes": {
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://www.sec.gov/Archives/edgar/data/820736/000082073614000039/form10q.htm"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact Orbital Sciences Corporation SEC issuer filing states Delaware corporation/state of incorporation; historical corporate origin, not headquarters or all successor entities."
+      },
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/820736/000082073614000039/form10q.htm"
+      ]
+    },
+    {
+      "identity": "ll2:organization:179",
+      "changes": {
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://www.sec.gov/Archives/edgar/data/866121/000086612118000014/oa-1231201710xk.htm"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact Orbital ATK Inc. SEC issuer filing states incorporated in Delaware in 1990; historical corporate origin, distinct from Orbital Sciences subsidiary and later Northrop ownership."
+      },
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/866121/000086612118000014/oa-1231201710xk.htm"
+      ]
+    },
+    {
+      "identity": "ll2:organization:194",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://www.sastind.gov.cn/n10086200/n10086344/c10188493/content.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "CASIC primary account published bySASTIND explicitly records Expace rocket company registration/founding in Wuhan in February 2016; corporate origin independent of headquarters and parentcountry inference."
+      },
+      "sources": [
+        "https://www.sastind.gov.cn/n10086200/n10086344/c10188493/content.html"
+      ]
+    },
+    {
+      "identity": "ll2:organization:272",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://www.sastind.gov.cn/n10086200/n10086344/c10201338/content.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "CASC primary account published bySASTIND explicitly records China Rocket public establishment in Beijing on October 19, 2016. Country-level founding evidence; not an unsupported claim that this was its earliest legal registration date."
+      },
+      "sources": [
+        "https://www.sastind.gov.cn/n10086200/n10086344/c10201338/content.html"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:exos-blk3",
+      "changes": {
+        "manufacturerId": 1001,
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://www.exosaero.com/blog/suborbital-reusable-rockets-emerge-as-risk-and-cost-reducing-platforms-for-orbital-launcher-development"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "EXOS identifies its exact BLK3 development and states that all early programme phases and flight operations occur in the United States. Vehicle programme origin is separate from launch-site jurisdiction and every component nationality."
+      },
+      "sources": [
+        "https://www.exosaero.com/press",
+        "https://www.exosaero.com/blog/suborbital-reusable-rockets-emerge-as-risk-and-cost-reducing-platforms-for-orbital-launcher-development"
+      ]
+    },
+    {
+      "identity": "ll2:organization:1001",
+      "changes": {
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://www.exosaero.com/about"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "EXOS explicitly identifies itself as one of three U.S. companies licensed for reusable rockets. Corporate nationality is sourced from that statement, independently of its Texas address or provider country field."
+      },
+      "sources": [
+        "https://www.exosaero.com/about"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:nglv-solid-strap-ons",
+      "changes": {
+        "officialLifecycle": "development",
+        "officialLifecycleSource": "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2025_26_Eng_29042026_Rev.pdf",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "ISRO 2025–26 annual report explicitly plans the complete NGLV variant with solid strap-ons. The separate PIB backgrounder of 30 July 2025, PDF page8, describes two solid strap-on boosters in its dated baseline. This narrows the count research gap but does not establish the final 2026 exterior, exact booster geometry or a new model alias."
+      },
+      "sources": [
+        "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2025_26_Eng_29042026_Rev.pdf",
+        "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/jul/doc2025730594501.pdf"
+      ]
+    }
+  ],
+  "additions": [
+    {
+      "identity": "spacefox:configuration:sls-centaur-exploration",
+      "facts": {
+        "sourceId": "sls-centaur-exploration",
+        "name": "SLS with Centaur Exploration",
+        "fullName": "Space Launch System with 180K Centaur V Exploration upper stage",
+        "variant": "planned standardized SLS / Centaur Exploration",
+        "sourceUrl": "https://newsroom.ulalaunch.com/releases/united-launch-alliance-is-collaborating-with-nasa-for-the-development-of-a-centaur-upper-stage-for-artemis-missions",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "development",
+        "officialLifecycleSource": "https://newsroom.ulalaunch.com/releases/united-launch-alliance-is-collaborating-with-nasa-for-the-development-of-a-centaur-upper-stage-for-artemis-missions",
+        "officialLifecycleReviewedAt": "2026-11-12",
+        "officialLifecycleNote": "ULA Oct23 2026 identifies complete SLS integration for future Artemis missions with a longer 180K Centaur V stage. This supersedes the earlier minor-modification description;2028 is a target, not a precise launch or qualification. No alias/equivalence with ICPS Block 1 ID143, cancelled EUS Block 1B 205 or conditional Block 2. Whole exterior and integrated manufacturer remain unqualified.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [],
+        "variantUnspecified": false,
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://newsroom.ulalaunch.com/releases/united-launch-alliance-is-collaborating-with-nasa-for-the-development-of-a-centaur-upper-stage-for-artemis-missions",
+          "https://files.gao.gov/reports/GAO-26-108556/index.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Separately sourced United States Artemis/SLS development programme; not inferred from launch site or ULA country field, and not a statement that every component is domestic."
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": "ll2:country:2"
+      }
+    }
+  ]
+}

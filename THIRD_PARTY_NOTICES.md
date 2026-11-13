@@ -123,3 +123,12 @@ The Git source corpus of 1,468,065 bytes is a publisher input, separate from the
 Existing bundled preview fonts retain their respective SIL OFL notices. No new
 native font family, native localization qualification or Garmin SDK content is
 included in this publisher/content snapshot.
+
+## Captured publisher test data
+
+`tests/fixtures/provider/current-starship/` and
+`tests/fixtures/metadata-current/` contain retained Launch Library 2 response
+bytes for offline qualification. Their accompanying receipts pin the captured
+bytes and provenance. These upstream responses are not relicensed by the project
+MIT license; The Space Devs' source terms and attribution apply. The replay does
+not represent a new provider observation.
