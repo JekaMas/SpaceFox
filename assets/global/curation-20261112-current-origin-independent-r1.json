@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "id": "current-origin-independent-20261112-r1",
+  "reviewedAt": "2026-11-12",
+  "sources": [
+    "https://www.nasa.gov/news-release/new-companies-join-growing-ranks-of-nasa-partners-for-artemis-program/",
+    "https://www.rfa.space/rfa-atmos-yuri-launch-biotech-microgravity-service/",
+    "https://www.sec.gov/Archives/edgar/data/1861415/000186141525000001/xslFormDX08/primary_doc.xml",
+    "https://www.nasa.gov/news-release/nasa-partners-with-american-companies-on-key-moon-exploration-tech/",
+    "https://www.sec.gov/Archives/edgar/data/1814329/000119312524155158/d844517d8k.htm"
+  ],
+  "reason": "Independent whole review found five organization origin citations based on headquarters or manufacturing location. Replace their active justification with explicit national identity or incorporation, preserving the same countries and all prior source history. No lifecycle, artwork, model origin, event or launch-source age is revised.",
+  "assets": [],
+  "additions": [],
+  "updates": [
+    {
+      "identity": "ll2:organization:141",
+      "changes": {
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://www.nasa.gov/news-release/new-companies-join-growing-ranks-of-nasa-partners-for-artemis-program/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "NASA expressly identifies its five new CLPS participants as American companies and lists Blue Origin. This supports the exact organization; the earlier Kent headquarters opening alone did not establish origin."
+      },
+      "sources": [
+        "https://www.nasa.gov/news-release/new-companies-join-growing-ranks-of-nasa-partners-for-artemis-program/"
+      ]
+    },
+    {
+      "identity": "ll2:organization:1045",
+      "changes": {
+        "curatedOriginId": "ll2:country:4",
+        "curatedOriginSources": [
+          "https://www.rfa.space/rfa-atmos-yuri-launch-biotech-microgravity-service/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Rocket Factory Augsburg explicitly identifies itself, Yuri and ATMOS as three German companies. This supplies national identity independently of its Augsburg offices, construction location or UK launch site."
+      },
+      "sources": [
+        "https://www.rfa.space/rfa-atmos-yuri-launch-biotech-microgravity-service/"
+      ]
+    },
+    {
+      "identity": "ll2:organization:1048",
+      "changes": {
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://www.sec.gov/Archives/edgar/data/1861415/000186141525000001/xslFormDX08/primary_doc.xml"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "The issuer filing names STOKE Space Technologies, Inc. and gives Delaware as its jurisdiction of incorporation. This is corporate provenance, separate from the Kent engineering location."
+      },
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1861415/000186141525000001/xslFormDX08/primary_doc.xml"
+      ]
+    },
+    {
+      "identity": "ll2:organization:124",
+      "changes": {
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://www.nasa.gov/news-release/nasa-partners-with-american-companies-on-key-moon-exploration-tech/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "NASA expressly identifies the selected eleven companies as U.S. companies and lists United Launch Alliance. This establishes the organization independently of its Denver engineering and Decatur manufacturing sites."
+      },
+      "sources": [
+        "https://www.nasa.gov/news-release/nasa-partners-with-american-companies-on-key-moon-exploration-tech/"
+      ]
+    },
+    {
+      "identity": "ll2:organization:285",
+      "changes": {
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://www.sec.gov/Archives/edgar/data/1814329/000119312524155158/d844517d8k.htm"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "The issuer filing names Astra Space, Inc. and gives Delaware as its jurisdiction of incorporation. This establishes corporate provenance separately from Rocket 4 design and manufacturing in Alameda."
+      },
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1814329/000119312524155158/d844517d8k.htm"
+      ]
+    }
+  ]
+}

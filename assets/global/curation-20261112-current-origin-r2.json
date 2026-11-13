@@ -1,0 +1,839 @@
+{
+  "schemaVersion": 1,
+  "id": "current-origin-20261112-r2",
+  "reviewedAt": "2026-11-12",
+  "sources": [
+    "https://www.mhi.com/business/products-services/space-defense/launch-service/launch-vehicles",
+    "https://www.mhi.com/company/overview/profile",
+    "https://www.esa.int/media/rfa-team-in-front-of-first-rfa-one-rocket-on-the-launch-pad-at-saxavord-spaceport",
+    "https://www.rfa.space/rfa-ships-stages-to-saxavord-spaceport/",
+    "https://isaraerospace.com/images/Press-Release_Isar-Aerospace-clears-final-tests-for-second-Spectrum-launch_22.12.2025_2025-12-19-165916_juub.pdf",
+    "https://www.dlr.de/de/ra/forschung-transfer/ausgruendungen/hyimpulse-technologies-gmbh",
+    "https://www.ulalaunch.com/about",
+    "https://www.asi.it/en/2022/07/vega-c-321-liftoff/",
+    "https://www.avio.com/sites/avio.com/files/downloads/2023_Avio-bilancio-2022-NON-ESEF-%28firme-rel-rev-col-sin%29_media-ris_DEF_ENG_3_20230331_091620.pdf",
+    "https://www.isro.gov.in/First_private_orbital_launch_lifts_from_Sriharikota.html",
+    "https://www.space-one.co.jp/news/news_20250831_e.pdf",
+    "https://magellan.aero/wp-content/uploads/2025%20Magellan%20Annual%20Information.pdf",
+    "https://www.blueorigin.com/pt-BR/news/blue-origin-opens-new-headquarters-in-kent-washington",
+    "https://www.stokespace.com/locations/kent",
+    "https://www.spacechina.com/n25/n142/n152/n164/index.html",
+    "https://www.cnsa.gov.cn/n6759533/c6811390/content.html",
+    "https://www.spacechina.com/n25/n1991299/n1991333/c2615010/content.html",
+    "https://www.spacechina.com/n25/n2014789/n2888836/c4100777/content.html",
+    "https://www.cnsa.gov.cn/n6758823/n6758838/c10580420/content.html",
+    "https://www.cnsa.gov.cn/n6758823/n6758838/c10734600/content.html",
+    "https://www.ihi.co.jp/en/all_news/2020/aeroengine_space_defense/1196644_2038.html",
+    "https://samspace.ru/news/press_relizy/20638/",
+    "https://samspace.ru/",
+    "https://astra.com/wp-content/uploads/2022/11/Rocket-4-Payload-Users-Guide-v1.1-November-22.pdf",
+    "https://fireflyspace.com/company/",
+    "https://investors.fireflyspace.com/node/8031/pdf",
+    "https://www.hypr-space.com/hyprspace-reaches-a-historic-milestone-the-baguette-one-launcher-will-take-off-from-mainland-france.html",
+    "https://www.innospc.com/shop_contents/myboard_read.htm?category_idx=&h_search_c=0&h_search_v=&idx=1023665&load_type=&me_popup=&myboard_code=sub04_02&page=1&page_idx=0&page_limit=5&tag_on=",
+    "https://www.innospc.com/myboard/sub04_02/172071",
+    "https://www.ilslaunch.com/successful-first-flight-for-proton-m/",
+    "https://www.ilslaunch.com/khrunichev-purchases-majority-interest-in-international-launch-services/",
+    "https://www.ilslaunch.com/wp-content/uploads/2018/07/Proton-Breeze-M-Brochure.pdf",
+    "https://www.spacex.com/launches",
+    "https://www.landspace.com/en/about.html",
+    "https://www.galactic-energy.cn/index.php/List/cid/10",
+    "https://www.galactic-energy.cn/index.php/Show/cid/11/aid/278",
+    "https://www.orienspace.com/aboutPage",
+    "https://dbaspace.com/about_s.html",
+    "https://spacepioneer.cc/about",
+    "https://en.cas-space.com/list/5.html",
+    "https://www.isro.gov.in/ISRO_SOLVE.html",
+    "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2025_26_Eng_29042026_Rev.pdf",
+    "https://www.gov.br/aeb/pt-br/acoes-e-programas/aplicacoes-espaciais/transporte-espacial/vs-30"
+  ],
+  "reason": "One independent origin-only source batch. No lifecycle, current art, geometry, manufacturer or event roles changed.",
+  "assets": [],
+  "additions": [],
+  "updates": [
+    {
+      "identity": "ll2:configuration:30",
+      "changes": {
+        "curatedOriginId": "ll2:country:28",
+        "curatedOriginSources": [
+          "https://www.mhi.com/business/products-services/space-defense/launch-service/launch-vehicles"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "MHI identifies H3 as Japan's flagship jointly developed by JAXA/MHI; country-level vehicle origin applies to the family without choosing a booster/fairing variant."
+      },
+      "sources": [
+        "https://www.mhi.com/business/products-services/space-defense/launch-service/launch-vehicles"
+      ]
+    },
+    {
+      "identity": "ll2:organization:98",
+      "changes": {
+        "curatedOriginId": "ll2:country:28",
+        "curatedOriginSources": [
+          "https://www.mhi.com/company/overview/profile"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact Mitsubishi Heavy Industries Ltd legal corporate profile lists registered office and establishment in Japan; not inferred from product launch sites."
+      },
+      "sources": [
+        "https://www.mhi.com/company/overview/profile"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:488",
+      "changes": {
+        "curatedOriginId": "ll2:country:4",
+        "curatedOriginSources": [
+          "https://www.esa.int/media/rfa-team-in-front-of-first-rfa-one-rocket-on-the-launch-pad-at-saxavord-spaceport"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "ESA names exact RFA One development in Augsburg, Germany. UK launch site is not its development origin."
+      },
+      "sources": [
+        "https://www.esa.int/media/rfa-team-in-front-of-first-rfa-one-rocket-on-the-launch-pad-at-saxavord-spaceport"
+      ]
+    },
+    {
+      "identity": "ll2:organization:1045",
+      "changes": {
+        "curatedOriginId": "ll2:country:4",
+        "curatedOriginSources": [
+          "https://www.rfa.space/rfa-ships-stages-to-saxavord-spaceport/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "RFA exact company release dateline Augsburg Germany and own stage construction/testing there; German corporate home distinct from UK launch operations."
+      },
+      "sources": [
+        "https://www.rfa.space/rfa-ships-stages-to-saxavord-spaceport/"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:491",
+      "changes": {
+        "curatedOriginId": "ll2:country:4",
+        "curatedOriginSources": [
+          "https://isaraerospace.com/images/Press-Release_Isar-Aerospace-clears-final-tests-for-second-Spectrum-launch_22.12.2025_2025-12-19-165916_juub.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact Spectrum is designed/manufactured almost entirely in-house at Munich facility; source separately identifies German headquarters. No launch-origin substitution."
+      },
+      "sources": [
+        "https://isaraerospace.com/images/Press-Release_Isar-Aerospace-clears-final-tests-for-second-Spectrum-launch_22.12.2025_2025-12-19-165916_juub.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:499",
+      "changes": {
+        "curatedOriginId": "ll2:country:4",
+        "curatedOriginSources": [
+          "https://www.dlr.de/de/ra/forschung-transfer/ausgruendungen/hyimpulse-technologies-gmbh"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "DLR spin-off owner identifies German HyImpulse development and exact SR75 and SL1 products. Component supply and Scottish/Australian launch locations do not alter vehicle development origin."
+      },
+      "sources": [
+        "https://www.dlr.de/de/ra/forschung-transfer/ausgruendungen/hyimpulse-technologies-gmbh"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:531",
+      "changes": {
+        "curatedOriginId": "ll2:country:4",
+        "curatedOriginSources": [
+          "https://www.dlr.de/de/ra/forschung-transfer/ausgruendungen/hyimpulse-technologies-gmbh"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "DLR spin-off owner identifies German HyImpulse development and exact SR75 and SL1 products. Component supply and Scottish/Australian launch locations do not alter vehicle development origin."
+      },
+      "sources": [
+        "https://www.dlr.de/de/ra/forschung-transfer/ausgruendungen/hyimpulse-technologies-gmbh"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:200",
+      "changes": {
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://www.ulalaunch.com/about"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "ULA identifies Vulcan as America's rocket and engineering HQ Denver, manufacturing/integration Decatur. This is source-backed vehicle development/corporate home, not an arbitrary specific Vulcan geometry."
+      },
+      "sources": [
+        "https://www.ulalaunch.com/about"
+      ]
+    },
+    {
+      "identity": "ll2:organization:124",
+      "changes": {
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://www.ulalaunch.com/about"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "ULA identifies Vulcan as America's rocket and engineering HQ Denver, manufacturing/integration Decatur. This is source-backed vehicle development/corporate home, not an arbitrary specific Vulcan geometry."
+      },
+      "sources": [
+        "https://www.ulalaunch.com/about"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:548",
+      "changes": {
+        "curatedOriginId": "ll2:country:3",
+        "curatedOriginSources": [
+          "https://www.asi.it/en/2022/07/vega-c-321-liftoff/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "ASI explicitly says exact Vega-C designed and manufactured in Italy, while calling its supply chain/programme European; origin here denotes vehicle development, not all component nationalities."
+      },
+      "sources": [
+        "https://www.asi.it/en/2022/07/vega-c-321-liftoff/"
+      ]
+    },
+    {
+      "identity": "ll2:organization:159",
+      "changes": {
+        "curatedOriginId": "ll2:country:3",
+        "curatedOriginSources": [
+          "https://www.avio.com/sites/avio.com/files/downloads/2023_Avio-bilancio-2022-NON-ESEF-%28firme-rel-rev-col-sin%29_media-ris_DEF_ENG_3_20230331_091620.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact Avio SpA financial report says incorporated in Italy, registered Rome; not unrelated similarly named AVIO Group logistics company."
+      },
+      "sources": [
+        "https://www.avio.com/sites/avio.com/files/downloads/2023_Avio-bilancio-2022-NON-ESEF-%28firme-rel-rev-col-sin%29_media-ris_DEF_ENG_3_20230331_091620.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:532",
+      "changes": {
+        "curatedOriginId": "ll2:country:9",
+        "curatedOriginSources": [
+          "https://www.isro.gov.in/First_private_orbital_launch_lifts_from_Sriharikota.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "ISRO explicitly identifies exact Vikram-I developed by Indian startup Skyroot Aerospace. No origin inference merely from Sriharikota launch."
+      },
+      "sources": [
+        "https://www.isro.gov.in/First_private_orbital_launch_lifts_from_Sriharikota.html"
+      ]
+    },
+    {
+      "identity": "ll2:organization:1099",
+      "changes": {
+        "curatedOriginId": "ll2:country:9",
+        "curatedOriginSources": [
+          "https://www.isro.gov.in/First_private_orbital_launch_lifts_from_Sriharikota.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "ISRO explicitly identifies exact Vikram-I developed by Indian startup Skyroot Aerospace. No origin inference merely from Sriharikota launch."
+      },
+      "sources": [
+        "https://www.isro.gov.in/First_private_orbital_launch_lifts_from_Sriharikota.html"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:507",
+      "changes": {
+        "curatedOriginId": "ll2:country:28",
+        "curatedOriginSources": [
+          "https://www.space-one.co.jp/news/news_20250831_e.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "SPACE ONE identifies itself as Japanese launch provider and exact KAIROS as its in-house developed launch vehicle; domestic developer context supports Japanese development origin independently of pad geography."
+      },
+      "sources": [
+        "https://www.space-one.co.jp/news/news_20250831_e.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:organization:1083",
+      "changes": {
+        "curatedOriginId": "ll2:country:28",
+        "curatedOriginSources": [
+          "https://www.space-one.co.jp/news/news_20250831_e.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "SPACE ONE identifies itself as Japanese launch provider and exact KAIROS as its in-house developed launch vehicle; domestic developer context supports Japanese development origin independently of pad geography."
+      },
+      "sources": [
+        "https://www.space-one.co.jp/news/news_20250831_e.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:organization:1039",
+      "changes": {
+        "curatedOriginId": "ll2:country:26",
+        "curatedOriginSources": [
+          "https://magellan.aero/wp-content/uploads/2025%20Magellan%20Annual%20Information.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact Magellan Aerospace Corporation incorporated under Ontario Business Corporations Act in 1996; registered/head office Ontario. Subsidiary Services Ltd is a separate identity."
+      },
+      "sources": [
+        "https://magellan.aero/wp-content/uploads/2025%20Magellan%20Annual%20Information.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:organization:141",
+      "changes": {
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://www.blueorigin.com/pt-BR/news/blue-origin-opens-new-headquarters-in-kent-washington"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Blue Origin own headquarters/R&D announcement establishes US corporate home; does not assign origin to every mixed rocket using a Blue motor."
+      },
+      "sources": [
+        "https://www.blueorigin.com/pt-BR/news/blue-origin-opens-new-headquarters-in-kent-washington"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:533",
+      "changes": {
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://www.stokespace.com/locations/kent"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact Stoke headquarters hosts vertically integrated rocket design/manufacturing in Kent Washington; page identifies Nova stage2. Programme country is US, not launch site or all component origin."
+      },
+      "sources": [
+        "https://www.stokespace.com/locations/kent"
+      ]
+    },
+    {
+      "identity": "ll2:organization:1048",
+      "changes": {
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://www.stokespace.com/locations/kent"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact Stoke headquarters hosts vertically integrated rocket design/manufacturing in Kent Washington; page identifies Nova stage2. Programme country is US, not launch site or all component origin."
+      },
+      "sources": [
+        "https://www.stokespace.com/locations/kent"
+      ]
+    },
+    {
+      "identity": "ll2:organization:88",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://www.spacechina.com/n25/n142/n152/n164/index.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "CASC corporate history describes Chinese state-owned entity established 1999 from Chinese ministry research institutes; headquarters/supply-chain flags are not the sole evidence."
+      },
+      "sources": [
+        "https://www.spacechina.com/n25/n142/n152/n164/index.html"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:216",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://www.cnsa.gov.cn/n6759533/c6811390/content.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "CNSA names exact Long March7A as domestic Chinese new-generation rocket developed by CASC First Academy; source distinguishes it from base Long March7."
+      },
+      "sources": [
+        "https://www.cnsa.gov.cn/n6759533/c6811390/content.html"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:478",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://www.spacechina.com/n25/n1991299/n1991333/c2615010/content.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "CASC names exact Long March6A as domestically developed first Chinese liquid-solid combination rocket. This concerns whole vehicle development, not merely engine nationality."
+      },
+      "sources": [
+        "https://www.spacechina.com/n25/n1991299/n1991333/c2615010/content.html"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:510",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://www.spacechina.com/n25/n2014789/n2888836/c4100777/content.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "CASC explicitly describes national Chinese Long March6C programme developed by Eighth Academy."
+      },
+      "sources": [
+        "https://www.spacechina.com/n25/n2014789/n2888836/c4100777/content.html"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:517",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://www.cnsa.gov.cn/n6758823/n6758838/c10580420/content.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "CNSA/CASC identifies exact Long March12 as domestic 4m-class vehicle and Eighth Academy development team, not later12A/12B."
+      },
+      "sources": [
+        "https://www.cnsa.gov.cn/n6758823/n6758838/c10580420/content.html"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:518",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://www.cnsa.gov.cn/n6758823/n6758838/c10734600/content.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "CNSA/CASC explicitly names Long March8A independently developed by China; exact8A whole vehicle not interchangeable variants."
+      },
+      "sources": [
+        "https://www.cnsa.gov.cn/n6758823/n6758838/c10734600/content.html"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:115",
+      "changes": {
+        "curatedOriginId": "ll2:country:28",
+        "curatedOriginSources": [
+          "https://www.ihi.co.jp/en/all_news/2020/aeroengine_space_defense/1196644_2038.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact Epsilon S development agreement between Japanese IHI Aerospace and JAXA, based on Japanese national Epsilon technology; not a bare Epsilon-to-S lifecycle inference."
+      },
+      "sources": [
+        "https://www.ihi.co.jp/en/all_news/2020/aeroengine_space_defense/1196644_2038.html"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:521",
+      "changes": {
+        "curatedOriginId": "ll2:country:5",
+        "curatedOriginSources": [
+          "https://samspace.ru/news/press_relizy/20638/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Developer explicitly calls exact Soyuz-5 a Russian launch vehicle created at Progress; Baikonur launch site in Kazakhstan is distinct."
+      },
+      "sources": [
+        "https://samspace.ru/news/press_relizy/20638/"
+      ]
+    },
+    {
+      "identity": "ll2:organization:111",
+      "changes": {
+        "curatedOriginId": "ll2:country:5",
+        "curatedOriginSources": [
+          "https://samspace.ru/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact Progress corporate origin from merger of Samara plant and Central Specialized Design Bureau; design/production units in Samara and Russian corporate-law disclosure."
+      },
+      "sources": [
+        "https://samspace.ru/"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:526",
+      "changes": {
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://astra.com/wp-content/uploads/2022/11/Rocket-4-Payload-Users-Guide-v1.1-November-22.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact Rocket4 user guide p6 describes Astra designing and manufacturing all its rockets at Alameda California campus; organization campus and development origin independent of multiple proposed launch countries."
+      },
+      "sources": [
+        "https://astra.com/wp-content/uploads/2022/11/Rocket-4-Payload-Users-Guide-v1.1-November-22.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:organization:285",
+      "changes": {
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://astra.com/wp-content/uploads/2022/11/Rocket-4-Payload-Users-Guide-v1.1-November-22.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact Rocket4 user guide p6 describes Astra designing and manufacturing all its rockets at Alameda California campus; organization campus and development origin independent of multiple proposed launch countries."
+      },
+      "sources": [
+        "https://astra.com/wp-content/uploads/2022/11/Rocket-4-Payload-Users-Guide-v1.1-November-22.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:organization:265",
+      "changes": {
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://fireflyspace.com/company/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Firefly explicitly describes itself as Texas-born, formed2017 north of Austin, with own HQ and rocket-production facilities. No parent-acquisition inference."
+      },
+      "sources": [
+        "https://fireflyspace.com/company/"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:551",
+      "changes": {
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://investors.fireflyspace.com/node/8031/pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact Alpha BlockII qualification/development release places whole programme at Firefly Rocket Ranch Briggs Texas; flight8 configuration development, not generic Alpha assumed current."
+      },
+      "sources": [
+        "https://investors.fireflyspace.com/node/8031/pdf"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:535",
+      "changes": {
+        "curatedOriginId": "ll2:country:1",
+        "curatedOriginSources": [
+          "https://www.hypr-space.com/hyprspace-reaches-a-historic-milestone-the-baguette-one-launcher-will-take-off-from-mainland-france.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Company describes French NewSpace developer and exact Baguette-One as its indigenous suborbital development with French DGA tests; separate from orbital OB1."
+      },
+      "sources": [
+        "https://www.hypr-space.com/hyprspace-reaches-a-historic-milestone-the-baguette-one-launcher-will-take-off-from-mainland-france.html"
+      ]
+    },
+    {
+      "identity": "ll2:organization:1101",
+      "changes": {
+        "curatedOriginId": "ll2:country:1",
+        "curatedOriginSources": [
+          "https://www.hypr-space.com/hyprspace-reaches-a-historic-milestone-the-baguette-one-launcher-will-take-off-from-mainland-france.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Company describes French NewSpace developer and exact Baguette-One as its indigenous suborbital development with French DGA tests; separate from orbital OB1."
+      },
+      "sources": [
+        "https://www.hypr-space.com/hyprspace-reaches-a-historic-milestone-the-baguette-one-launcher-will-take-off-from-mainland-france.html"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:530",
+      "changes": {
+        "curatedOriginId": "ll2:country:35",
+        "curatedOriginSources": [
+          "https://www.innospc.com/shop_contents/myboard_read.htm?category_idx=&h_search_c=0&h_search_v=&idx=1023665&load_type=&me_popup=&myboard_code=sub04_02&page=1&page_idx=0&page_limit=5&tag_on="
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact South Korean INNOSPACE corporate description and in-house-developed HANBIT-Nano named explicitly; Brazilian launch location does not determine origin."
+      },
+      "sources": [
+        "https://www.innospc.com/shop_contents/myboard_read.htm?category_idx=&h_search_c=0&h_search_v=&idx=1023665&load_type=&me_popup=&myboard_code=sub04_02&page=1&page_idx=0&page_limit=5&tag_on="
+      ]
+    },
+    {
+      "identity": "ll2:organization:1098",
+      "changes": {
+        "curatedOriginId": "ll2:country:35",
+        "curatedOriginSources": [
+          "https://www.innospc.com/shop_contents/myboard_read.htm?category_idx=&h_search_c=0&h_search_v=&idx=1023665&load_type=&me_popup=&myboard_code=sub04_02&page=1&page_idx=0&page_limit=5&tag_on="
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact South Korean INNOSPACE corporate description and in-house-developed HANBIT-Nano named explicitly; Brazilian launch location does not determine origin."
+      },
+      "sources": [
+        "https://www.innospc.com/shop_contents/myboard_read.htm?category_idx=&h_search_c=0&h_search_v=&idx=1023665&load_type=&me_popup=&myboard_code=sub04_02&page=1&page_idx=0&page_limit=5&tag_on="
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:hanbit-micro",
+      "changes": {
+        "curatedOriginId": "ll2:country:35",
+        "curatedOriginSources": [
+          "https://www.innospc.com/myboard/sub04_02/172071"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Company publication explicitly names South Korean Innospace developing each HANBIT mini/micro/nano vehicle; Norwegian site partnership is separately described. Development-origin fact only; old timeline not used as current-flight proof."
+      },
+      "sources": [
+        "https://www.innospc.com/myboard/sub04_02/172071"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:hanbit-mini",
+      "changes": {
+        "curatedOriginId": "ll2:country:35",
+        "curatedOriginSources": [
+          "https://www.innospc.com/myboard/sub04_02/172071"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Company publication explicitly names South Korean Innospace developing each HANBIT mini/micro/nano vehicle; Norwegian site partnership is separately described. Development-origin fact only; old timeline not used as current-flight proof."
+      },
+      "sources": [
+        "https://www.innospc.com/myboard/sub04_02/172071"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:152",
+      "changes": {
+        "curatedOriginId": "ll2:country:5",
+        "curatedOriginSources": [
+          "https://www.ilslaunch.com/successful-first-flight-for-proton-m/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact ProtonM development is attributed to Khrunichev within Russian Proton family; Kazakhstan launch jurisdiction and US marketer are distinct. No unqualified geometry or other upper-stage mapping inferred."
+      },
+      "sources": [
+        "https://www.ilslaunch.com/successful-first-flight-for-proton-m/"
+      ]
+    },
+    {
+      "identity": "ll2:organization:96",
+      "changes": {
+        "curatedOriginId": "ll2:country:5",
+        "curatedOriginSources": [
+          "https://www.ilslaunch.com/khrunichev-purchases-majority-interest-in-international-launch-services/"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Khrunichev-owned ILS explicitly describes exact Khrunichev as Moscow research/design center and Russian aerospace company, distinct from US-incorporated ILS."
+      },
+      "sources": [
+        "https://www.ilslaunch.com/khrunichev-purchases-majority-interest-in-international-launch-services/"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:136",
+      "changes": {
+        "curatedOriginId": "ll2:country:5",
+        "curatedOriginSources": [
+          "https://www.ilslaunch.com/wp-content/uploads/2018/07/Proton-Breeze-M-Brochure.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Manufacturer-owned launch-service brochure explicitly names Angara1.2 among vehicles developed and built by Khrunichev of Moscow. Vehicle development origin, not lifecycle."
+      },
+      "sources": [
+        "https://www.ilslaunch.com/wp-content/uploads/2018/07/Proton-Breeze-M-Brochure.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:522",
+      "changes": {
+        "curatedOriginId": "ll2:country:2",
+        "curatedOriginSources": [
+          "https://www.spacex.com/launches"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "SpaceX explicitly places development/manufacturing of complete Starship+SuperHeavy system at Starbase Texas; named whole system, not only launch site."
+      },
+      "sources": [
+        "https://www.spacex.com/launches"
+      ]
+    },
+    {
+      "identity": "ll2:organization:259",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://www.landspace.com/en/about.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "LandSpace explicitly identifies itself as founded2015 among earliest private commercial rocket companies in China; company origin independent of vehicle variants."
+      },
+      "sources": [
+        "https://www.landspace.com/en/about.html"
+      ]
+    },
+    {
+      "identity": "ll2:organization:1021",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://www.galactic-energy.cn/index.php/List/cid/10"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Official corporate profile describes Chinese domestic private rocket company, national enterprise and Beijing base; independent organization origin."
+      },
+      "sources": [
+        "https://www.galactic-energy.cn/index.php/List/cid/10"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:546",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://www.galactic-energy.cn/index.php/Show/cid/11/aid/278"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Official exact Ceres2 whole vehicle development by domestic Galactic Energy, with national programme context; not inferred only from Jiuquan site."
+      },
+      "sources": [
+        "https://www.galactic-energy.cn/index.php/Show/cid/11/aid/278"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:544",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://www.orienspace.com/aboutPage"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Official company history establishes Beijing/Shandong founding and own complete Gravity2 design/development, distinguished from national launch-site jurisdiction."
+      },
+      "sources": [
+        "https://www.orienspace.com/aboutPage"
+      ]
+    },
+    {
+      "identity": "ll2:organization:1080",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://www.orienspace.com/aboutPage"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Official company history establishes Beijing/Shandong founding and own complete Gravity2 design/development, distinguished from national launch-site jurisdiction."
+      },
+      "sources": [
+        "https://www.orienspace.com/aboutPage"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:545",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://dbaspace.com/about_s.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact Jiangsu Deep Blue company established/developing Nebula1 and Nebula2; site explicitly places rocket design Beijing and whole-vehicle manufacturing Wuxi, China. No1A substitution or current-flight inference."
+      },
+      "sources": [
+        "https://dbaspace.com/about_s.html"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:nebula2",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://dbaspace.com/about_s.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact Jiangsu Deep Blue company established/developing Nebula1 and Nebula2; site explicitly places rocket design Beijing and whole-vehicle manufacturing Wuxi, China. No1A substitution or current-flight inference."
+      },
+      "sources": [
+        "https://dbaspace.com/about_s.html"
+      ]
+    },
+    {
+      "identity": "ll2:organization:1102",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://dbaspace.com/about_s.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Exact Jiangsu Deep Blue company established/developing Nebula1 and Nebula2; site explicitly places rocket design Beijing and whole-vehicle manufacturing Wuxi, China. No1A substitution or current-flight inference."
+      },
+      "sources": [
+        "https://dbaspace.com/about_s.html"
+      ]
+    },
+    {
+      "identity": "ll2:organization:1049",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://spacepioneer.cc/about"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Official profile explicitly describes Chinese company founded2019 with national rocket development capability and Beijing corporate identity; timelines are not independently treated as accomplished flights."
+      },
+      "sources": [
+        "https://spacepioneer.cc/about"
+      ]
+    },
+    {
+      "identity": "ll2:organization:1040",
+      "changes": {
+        "curatedOriginId": "ll2:country:6",
+        "curatedOriginSources": [
+          "https://en.cas-space.com/list/5.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "CAS Space explicitly describes itself as Chinese commercial company founded December2018, rooted in Chinese national space programme."
+      },
+      "sources": [
+        "https://en.cas-space.com/list/5.html"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:solve",
+      "changes": {
+        "curatedOriginId": "ll2:country:9",
+        "curatedOriginSources": [
+          "https://www.isro.gov.in/ISRO_SOLVE.html"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "ISRO explicitly develops complete SOLVE for its Gaganyaan national crew-module programme; only geometry remains unresolved. Indian development origin independent of Sriharikota test location."
+      },
+      "sources": [
+        "https://www.isro.gov.in/ISRO_SOLVE.html"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:nglv-no-solid-strap-ons",
+      "changes": {
+        "curatedOriginId": "ll2:country:9",
+        "curatedOriginSources": [
+          "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2025_26_Eng_29042026_Rev.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Government of India/ISRO NGLV development programme explicitly describes both with/without solid strap-on configurations in same national programme; country origin does not assert finalized geometry or all-Indian component provenance."
+      },
+      "sources": [
+        "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2025_26_Eng_29042026_Rev.pdf"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:nglv-solid-strap-ons",
+      "changes": {
+        "curatedOriginId": "ll2:country:9",
+        "curatedOriginSources": [
+          "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2025_26_Eng_29042026_Rev.pdf"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "Government of India/ISRO NGLV development programme explicitly describes both with/without solid strap-on configurations in same national programme; country origin does not assert finalized geometry or all-Indian component provenance."
+      },
+      "sources": [
+        "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2025_26_Eng_29042026_Rev.pdf"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:vs30",
+      "changes": {
+        "curatedOriginId": "ll2:country:24",
+        "curatedOriginSources": [
+          "https://www.gov.br/aeb/pt-br/acoes-e-programas/aplicacoes-espaciais/transporte-espacial/vs-30"
+        ],
+        "curatedOriginReviewedAt": "2026-11-12",
+        "curatedOriginNote": "AEB explicitly traces complete single-stage VS30 development to Brazilian IAE in1980s; this is independent from other mixed-stage VS30/Orion combinations."
+      },
+      "sources": [
+        "https://www.gov.br/aeb/pt-br/acoes-e-programas/aplicacoes-espaciais/transporte-espacial/vs-30"
+      ]
+    }
+  ]
+}

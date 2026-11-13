@@ -13,7 +13,8 @@ if __package__ in (None, ''):
 from tools.spacefox.catalog import build_catalog, canonical_bytes
 from tools.spacefox.cloud import (CloudError, Pages, Site, arm, delivery, delivery_files,
                                   deploy, git_credentials, journal, oidc_token, recover)
-from tools.spacefox.visual_bridge import (build_artifact as build_visual_artifact, FEED_PATH, sha, validate_feed as validate_visual_feed)
+from tools.spacefox.visual_bridge import sha
+from tools.spacefox.native_motion import build_artifact, validate_feed, PROFILE, FEED_PATH
 from tools.spacefox.provider import LL2Client
 from tools.spacefox.publisher import GitState, Publisher, StateError
 from tools.spacefox.schedule import RefreshPolicy
@@ -60,25 +61,21 @@ def prepare_content(pub, client, now, catalog, *, root, clock=None):
     from tools.spacefox.current_catalog import load_registry
     eligibility = load_registry(root, catalog)
     def builder(*args, **kwargs):
-        return build_visual_artifact(*args, **kwargs, root=root, eligibility=eligibility)
+        return build_artifact(*args, **kwargs, root=root, eligibility=eligibility)
     active=pub.ledger['active']
     if active is not None:
         path=f'artifacts/{active["generation"]}/{FEED_PATH}'
         previous=None
-        if FEED_PATH in active['files']:
-            previous=validate_visual_feed(pub.store._blob(pub.head,path,8192))
+        if FEED_PATH not in active['files']:
+            raise CloudError('current-format active feed missing')
+        previous=validate_feed(pub.store._blob(pub.head,path,8192))
         if previous is None or previous['catalogSourceDigest'] != sha(canonical_bytes(catalog)):
             publisher=pub.publisher_envelope(now)
-            traversal=None
-            if previous is not None:
-                traversal=previous['providerTraversal']
-            else:
-                from tools.spacefox.wire import validate_feed
-                traversal=validate_feed(pub.store._blob(pub.head,f'artifacts/{active["generation"]}/feed.json',8192))['providerTraversal']
+            traversal=previous['providerTraversal'] if previous is not None else None
             files,digest=builder(pub.schedule,catalog,now,publisher=publisher,policy=pub.policy,traversal=traversal)
-            revision=pub.prepare(pub.head,now,files,digest,feed_publisher=publisher,artifact_profile='visual-v2')
+            revision=pub.prepare(pub.head,now,files,digest,feed_publisher=publisher,artifact_profile=PROFILE)
             return {'result':'content_pending','requests':0,'revision':vars(revision)}
-    return update(pub,client,now,catalog,trigger='scheduled',clock=clock,artifact_builder=builder,artifact_profile='visual-v2')
+    return update(pub,client,now,catalog,trigger='scheduled',clock=clock,artifact_builder=builder,artifact_profile=PROFILE)
 
 
 def main(argv=None):

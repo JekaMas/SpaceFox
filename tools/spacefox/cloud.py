@@ -17,7 +17,7 @@ from urllib.parse import quote, urlsplit
 from urllib.request import HTTPRedirectHandler, ProxyHandler, Request, build_opener
 
 from .provider import bounded_json
-from .publisher import (Conflict, LiveRevision, MAX_ARTIFACT_BYTES,
+from .publisher import (Conflict, LiveRevision, MAX_ARTIFACT_BYTES, STATE_REF,
                         MAX_ARTIFACT_FILES, Publisher, StateError, _canonical,
                         _digest, _path, _sha, validate_snapshot_artifact)
 
@@ -238,16 +238,16 @@ def snapshot_files(store, state, generation):
     for path, raw in files.items():
         if snapshot['files'][path] != {'sha256': _sha(raw), 'bytes': len(raw)}:
             raise CloudError('durable snapshot file is corrupt')
-    validate_snapshot(snapshot, files, instance=doc['instance_id'],
+    validate_snapshot(snapshot, files, refresh_policy=doc['refresh_policy'], instance=doc['instance_id'],
                       selection_validated_utc=doc.get('selection_validated_utc'),
                       require_selection_epoch=snapshot is doc['pending'])
     return snapshot, files
 
 
-def validate_snapshot(snapshot, files, *, instance=None, selection_validated_utc=None, require_selection_epoch=False):
-    """Use the durable expected profile; old unmarked v1 snapshots still read."""
+def validate_snapshot(snapshot, files, *, refresh_policy, instance=None, selection_validated_utc=None, require_selection_epoch=False):
+    """Validate the durable current-format snapshot."""
     try:
-        if validate_snapshot_artifact(snapshot, files, instance=instance, selection_validated_utc=selection_validated_utc,
+        if validate_snapshot_artifact(snapshot, files, refresh_policy=refresh_policy, instance=instance, selection_validated_utc=selection_validated_utc,
                                       require_selection_epoch=require_selection_epoch) is None:
             raise StateError('cloud delivery requires a supported product feed')
     except (ValueError, KeyError, TypeError) as error:
@@ -298,8 +298,8 @@ def write_journal(pub, value):
         raise CloudError('cloud journal exceeds bound')
     files[JOURNAL] = raw
     commit = pub.store._commit(pub.ledger, head, files)
-    result = pub.store._git('push', f'--force-with-lease=refs/heads/feed-state:{head}',
-                            pub.store.remote, f'{commit}:refs/heads/feed-state', check=False)
+    result = pub.store._git('push', f'--force-with-lease={STATE_REF}:{head}',
+                            pub.store.remote, f'{commit}:{STATE_REF}', check=False)
     if result.returncode:
         raise Conflict('cloud journal CAS failed')
     return Publisher(pub.store, pub.running_code)
@@ -340,7 +340,7 @@ def delivery_files(pub, manifest):
     if current is origin['pending'] and origin['active'] is not None:
         prior=origin['active']
         for path,meta in prior['files'].items():
-            if path not in ('feed.json','wire2/feed.json'):
+            if path != 'feed.json':
                 required[path]=dict(meta,state=state,generation=prior['generation'],role='previous')
     for path,meta in current['files'].items():
         required[path]=dict(meta,state=state,generation=generation,role='current')
@@ -357,11 +357,11 @@ def delivery(pub):
         raise CloudError('pending candidate required')
     manifest = {}
     # Carry all current active immutable files in the complete replacement. This
-    # is a two-generation data closure, not previous-wire-major90day support.
+    # preserves one same-format generation for readers during replacement.
     active = pub.ledger['active']
     if active is not None:
         for path, meta in active['files'].items():
-            if path not in ('feed.json', 'wire2/feed.json'):
+            if path != 'feed.json':
                 manifest[path] = dict(meta, state=pub.head, generation=active['generation'], role='previous')
     for path, meta in snap['files'].items():
         manifest[path] = dict(meta, state=pub.head, generation=snap['generation'], role='current')
@@ -374,7 +374,7 @@ def _readback_error(message, path, expected, status, actual, *, phase='closure')
     # fixed metadata and digests, never URLs, credentials or response bodies.
     context = {
         'path': path,
-        'kind': 'mutable-root' if path in ('feed.json', 'wire2/feed.json') else 'immutable-file',
+        'kind': 'mutable-root' if path == 'feed.json' else 'immutable-file',
         'phase': phase, 'status': status,
         'expected': None if expected is None else {'bytes': len(expected), 'sha256': _sha(expected)},
         'actual': {'bytes': len(actual), 'sha256': _sha(actual)},
@@ -418,17 +418,8 @@ class Site:
                     continue
                 code, actual = self.get(path, len(raw))
                 if code != 200 or actual != raw:
-                    kind = 'mutable root' if path == 'wire2/feed.json' else 'immutable file'
-                    raise _readback_error('live ' + kind + ' missing, mixed or corrupt',
+                    raise _readback_error('live immutable file missing, mixed or corrupt',
                                           path, raw, code, actual)
-            # Both wire-major roots are mutable. A stable v1 root cannot prove
-            # wire2 remained coherent after its first read during the closure.
-            if 'wire2/feed.json' in expected:
-                code, actual = self.get('wire2/feed.json', 8192)
-                if (code, actual) != (200, expected['wire2/feed.json']):
-                    raise _readback_error('live versioned feed changed during exact closure observation',
-                                          'wire2/feed.json', expected['wire2/feed.json'], code, actual,
-                                          phase='after-closure')
             code, actual = self.get('feed.json', 8192)
             if (code, actual) != (200, feed):
                 raise _readback_error('live feed changed during exact closure observation',

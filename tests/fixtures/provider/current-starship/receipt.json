@@ -1,0 +1,16 @@
+{
+  "compressedSha256": "9057fc2386591a5328602393caaed92b4c4c766c99c57f226d0de434ff922a5d",
+  "launchId": "0f867f0c-5422-4d44-93b8-d7faaae7019b",
+  "qualification": "Exact captured 100-row LL2 launches page from real-schedule-20261113; tests extract the unchanged Starship record. This broad-query raw page is not an upcoming-query response or a <=80-row wrapper; no new provider request is made by tests.",
+  "rawPageBytes": 933218,
+  "rawPageSha256": "b8193158aa573007aa47c2bff7993171056c72876dc5992e4b4794cbb7dff4a9",
+  "receivedAtUtc": 1794551192,
+  "recordSha256": "e1364b0838ca3ff9cfb253e0e6be2ba6b4f31100265ed82210f42804828b6bc8",
+  "schemaVersion": 1,
+  "sourceHeaders": {
+    "content-type": "application/json",
+    "date": "Fri, 13 Nov 2026 06:26:32 GMT"
+  },
+  "sourceUrl": "https://ll.thespacedevs.com/2.3.0/launches/?format=json&limit=100&mode=normal&net__gte=2021-11-13T00%3A00%3A00Z&offset=1300&ordering=net%2Cid",
+  "validatedAtUtc": 1794551192
+}

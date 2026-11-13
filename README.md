@@ -1,139 +1,29 @@
 # SpaceFox
 
-Космический циферблат для **Garmin Forerunner 165**: текущее время, четыре
-настраиваемых фитнес-поля, ближайший запуск ракеты, изображение модели и точка
-космодрома на карте. Выбранная композиция — **04/full** в
-[основном браузерном макете](prototype/current/index.html). Макет использует
-условные расписание и фитнес-значения.
+SpaceFox is an independent space-themed watch face for Garmin Forerunner 165.
+The [browser prototype](prototype/current/index.html) uses illustrative launch
+and fitness data. Native integration, phone and device qualification, and Store
+release remain separate work and are not established by this publisher snapshot.
 
-## Текущее состояние
+## Publisher
 
-Реализованы publisher Launch Library 2, долговечное состояние `feed-state`,
-сериализованный workflow Actions/Pages, экспорт графики и versioned catalog.
-Опубликованный срез `6494602` прошёл восстановление dual-wire generation 5
-после сохранённого arm и пропущенного deploy: точный завершённый старый run стал
-свидетелем отсутствия POST; новый intent доставил прежние pending-байты без
-provider-запроса. [Фактический push-цикл](https://github.com/jekamas/SpaceFox/actions/runs/43184519278)
-завершился успешно; точный HTTPS readback проверил **109 файлов / 372331 байт**,
-оба корня и current/prior closure. Источник и возраст данных сохранены.
-Ранее data-only v1 достиг generation 4. Наблюдения 174 с против 474/595 с относятся
-к разным workflow; это не контролируемый benchmark и не гарантия.
+This source candidate produces a single schema 3 `feed.json` and SFR1M motion
+artifacts. Durable publisher authority uses the current packed generation and
+metadata collection uses schema 3, with fixed page sizes of 20 countries, 20
+organizations, 100 models and 100 sites ordered by site ID. The current catalog
+recipe is `2026-11-12.global.21.blk3-whole1`. Provider identity, source freshness,
+quota and recovery are maintained by the publisher; a countdown reaching zero
+does not establish liftoff. Metadata collection creates candidates for review,
+not automatic catalog admission.
 
-Текущий локальный successor объединяет этот cloud repair, metadata collector и
-принятые рисунки. Его публикация и отдельная проверка ещё впереди. Metadata
-создаёт только кандидаты для review/export и не принимает их в активный каталог.
-Подлинный cron не наблюдался по состоянию на 2026-11-12 08:56 UTC; четыре literal
-cron entries — диагностическая повторная регистрация, без заявления об исправлении.
-Полная плоская карта использует 71 GET. Native transport/полная сцена, глобус,
-полное worldwide-содержимое, одиннадцать пробелов рисунков среди подтверждённых ID, 36 языков на часах,
-телефон/FR165, 90-дневное наблюдение совместимости и Store остаются открытыми.
-V1 сохраняется бессрочно; локальные даты compatibility не доказывают истёкший
-период hosted-поддержки.
+[Cloud delivery](docs/CLOUD_DELIVERY.md) and [runtime checkout](docs/CLOUD_RUNTIME_CHECKOUT.md)
+describe operation. Python 3.10+, Git and the renderer are required; the
+Ubuntu qualification workflow installs its pinned renderer. Local test fixtures
+are captured provider responses and do not establish a new live provider or
+hosted observation. Deployment and initial state creation require a separate
+controlled setup.
 
-[CLOUD_DELIVERY](docs/CLOUD_DELIVERY.md) описывает настоящий workflow и recovery;
-[AGENT_SETUP](docs/AGENT_SETUP.md) — отдельный fork и URL для каждой семьи.
-AWS, постоянно работающий компьютер, аккаунтные ключи автора и регулярные вызовы
-модели для этой архитектуры не нужны. Python 3.10+ и Git достаточны для publisher.
-
-Планируемая настройка `FeedBaseUrl` содержит **базовый адрес**:
-[https://jekamas.github.io/SpaceFox](https://jekamas.github.io/SpaceFox). Сам JSON endpoint —
-[feed.json](https://jekamas.github.io/SpaceFox/feed.json). Первый точный readback
-этих адресов наблюдался в указанном bootstrap; для другой семьи оба адреса
-получаются из её собственного fork и требуют отдельной проверки.
-
-## Каталог и пределы
-
-Активный `catalog/source.json` — `2026-11-12.global.14.current-context1`.
-Датированный реестр содержит 198 ID: 139 подтверждённых конфигураций, 54 на
-проверке и пять заполнителей. Для 128 подтверждённых ID есть конкретный или
-проверенно общий рисунок; одиннадцать используют generic. Это конечный проверенный
-набор, а не полная мировая оценка. Ссылки новых и спорных запусков сохраняют
-идентичность и возраст данных с безопасным fallback.
-
-Сохранены 839 исходных записей и все прежние рисунки. Корпус из 638 активов
-включает исторические и заменённые версии и не служит знаменателем актуальности.
-Рецепт имеет 683 pinned input; materializer проверяет 684 файла вместе с рецептом.
-Runtime seed без рецепта содержит 23 tracked файла; source/artwork не нужны для
-arm/deploy/recover/metadata. Схемы сохраняют версии, атрибуцию и отдельные права
-источников; они не обещают точность всех инженерных конструкций.
-[Подробности и команды](docs/GLOBAL_VISUAL_CATALOG.md).
-
-Первый publisher wire — draft-v1 metadata для выбранного запуска, с `visual` и
-проверенными `position` равными null. Feed ограничен 8192 UTF-8 байтами; полный
-текущий и сохранённый site — 1MiB и 256 файлами. Богатый глобальный каталог
-остаётся на стороне publisher; полный graphic export может превысить 1MiB.
-Source2 regional geography включается явно и остаётся off-watch. Его около
-1.47MB Git-источников — отдельная граница от размера served site.
-
-Оригинальные source/spec/рисунки SpaceFox — [MIT](LICENSE). Геоданные и шрифты
-сохраняют собственные public-domain, LGPL3+, PacIOOS и OFL условия:
-[уведомления](THIRD_PARTY_NOTICES.md). Фотографии и официальные логотипы под MIT
-не выдаются. 36 переводов остаются черновыми ресурсами, без native/glyph/RTL
-квалификации. Полные контракты и открытые задачи находятся в
-[OpenSpec](openspec/changes/spacefox-watchface/proposal.md).
-
-## Макет
-
-**[Предыдущие пять предложений](prototype/features/review.html)** — «Центр управления»,
-«Билет на старт», «Миссия в фокусе», «Восход Земли» и «Атлас». Последний цикл:
-12 признаков, отдельные и совместные поколения, 280 наборов параметров. Пятёрка
-прошла 128 известных и 24 новых закрытых сцены каждый; техническое и визуальное
-ревью проведены отдельно. [Отчёт](docs/FEATURE_RESEARCH.md) ·
-[матрица мутаций](docs/FEATURE_MUTATION_MATRIX.md) ·
-[лаборатория](prototype/features/index.html) ·
-[цель и прогресс](openspec/changes/expand-feature-research/PROGRESS.md).
-
-**[Предыдущая тройка после независимого ревью](prototype/qualification/review.html)** —
-«Центр управления», «Восход Земли» и «Атлас». Предыдущий цикл: 48 → 24 → 12,
-затем восемь ремонтных вариантов, отдельный контроль и слепое визуальное ревью.
-[Обоснования, результаты и ограничения](docs/LAYOUT_QUALIFICATION.md).
-
-**[Предыдущее исследование гипотез](prototype/research/index.html)** —
-319 уникальных наборов визуальных параметров, семь поколений с журналом отсева
-и проверкой реального браузерного рендера. Нажмите «Загрузить сохранённый прогон».
-[Цель, референсы и результаты](docs/LAYOUT_AUTORESEARCH.md).
-
-Ранние варианты: **[галерея восьми компоновок](prototype/layouts.html)** — глобус,
-плоская карта, четверть/треть/половина экрана, разные положения и четыре шрифта.
-В ней можно менять ракету, состояние, наклон, цифры и язык подписей.
-[Сравнение и рекомендация по эргономике](docs/DESIGN_RESEARCH.md).
-
-См. [описание и просмотр макета](prototype/README.md). Это визуальный ориентир,
-не установочный файл Garmin и не доказательство работы живого расписания.
-
-Для согласованной ручной проверки recovery workflow имеет необязательный input
-`qualify_pre_post_recovery=true`: после сохранения intent arm намеренно завершится
-с ошибкой, deploy будет пропущен. Следующий обычный dispatch с inputfalse проверяет
-точный завершённый старый run до повторной публикации. Значение по умолчанию false;
-это операторский fault-тест из [runbook](docs/CLOUD_DELIVERY.md).
-
-## Работа со спецификацией и макетом
-
-Спецификация находится в [openspec/](openspec/README.md) и тоже лицензирована по MIT.
-Для проверки структуры используйте установленный OpenSpec; исходный проект проверен
-с OpenSpec 1.14.3. Python 3.10+ и Node нужны для локальных проверок ресурсов.
-
-```sh
-openspec validate spacefox-watchface --strict --json
-openspec validate localize-free-distribution --strict --json
-python3 -B -m unittest -v tests.test_foundation
-python3 -B tools/build_preview.py --check
-```
-
-Откройте `prototype/index.html` для просмотра. Это браузерный макет с условными
-данными; нативное приложение Garmin ещё не квалифицировано. Publisher и первый
-ручной Actions/Pages/HTTPS цикл имеют исторические наблюдения. Естественные
-события, весь workflow и свежую доставку каждый экземпляр квалифицирует отдельно
-по [инструкции внешнего clock](docs/EXTERNAL_SCHEDULE_CLOCK.md).
-
-Этот публичный репозиторий содержит текущий срез проекта: спецификацию, исходники
-макета, переводы, тесты и лицензии. Локальные интеграции процесса разработки и
-история раннего экспорта служебной оболочки в него не включены. Их сторонние
-права не переходят под MIT SpaceFox. Подробности — в [уведомлениях](THIRD_PARTY_NOTICES.md).
-
-
-Датированный контекст global.14 связывает семь событий и программ с тремя площадками.
-`python3 -B tools/build_global_map.py --audit --output build/current-site-audit.json`
-проверяет этот непустой набор; `--scope archive` отдельно проверяет 218 исторических площадок.
-Позиция Esrange неизвестна, а два числовых ориентира не подтверждают точность площадок.
-Два новых точных ID — Red Kite/Red Kite и одноступенчатый Black Brant V — используют generic.
+The project code and specifications are MIT licensed. Bundled third-party data,
+fonts and other components retain their own rights and attribution; see
+[third-party notices](THIRD_PARTY_NOTICES.md) and the notices included with
+individual sources.

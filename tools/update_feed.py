@@ -22,14 +22,14 @@ from tools.spacefox.provider import (LL2Client, ProviderError, normalize_detail_
 from tools.spacefox.publisher import (GitState, Publisher, StateError, LiveRevision,
                                      AllowanceUnavailable)
 from tools.spacefox.schedule import RefreshPolicy, LaunchStatus
-from tools.spacefox.wire import build_artifact
+from tools.spacefox.native_motion import build_artifact, PROFILE
 
 
 def utc_now():
     return int(datetime.now(timezone.utc).timestamp())
 
 
-def update(pub, client, now, catalog, *, trigger='scheduled', max_pages=2, detail_limit=2, clock=None, artifact_builder=None, artifact_profile='feed-v1'):
+def update(pub, client, now, catalog, *, trigger='scheduled', max_pages=2, detail_limit=2, clock=None, artifact_builder=None, artifact_profile=PROFILE):
     """Real vertical path. Required pagination is atomic; details are optional.
 
     Pagination stops within explicit request/record bounds and reports partial;
@@ -238,8 +238,7 @@ def main(argv=None):
             from tools.spacefox.current_catalog import load_registry, view_for_schedule
             eligibility = load_registry(root, catalog)
             def current_builder(state, source, instant, *, publisher, policy, traversal):
-                projected = source if eligibility is None else view_for_schedule(source, eligibility, state, instant, policy)['catalog']
-                return build_artifact(state, projected, instant, publisher=publisher, policy=policy, traversal=traversal)
+                return build_artifact(state, source, instant, publisher=publisher, policy=policy, traversal=traversal, root=root, eligibility=eligibility)
             result = update(pub, client, now, catalog, trigger=args.trigger, artifact_builder=current_builder,
                             max_pages=args.max_pages, detail_limit=args.detail_limit,
                             clock=None if args.now is not None else utc_now)
