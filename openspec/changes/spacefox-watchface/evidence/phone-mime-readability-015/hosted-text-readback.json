@@ -1,0 +1,2162 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-11-14T10:34:07.798058+00:00",
+  "base": "https://jekamas.github.io/SpaceFox",
+  "localHttpQualification": false,
+  "artifactFiles": 113,
+  "artifactBytes": 650742,
+  "transportFiles": 20,
+  "transportBytes": 55707,
+  "status": "passed",
+  "responses": [
+    {
+      "path": "descriptors/3e4b028f9bfdf0355c3a801bbb1ef452511c15bdcd877be23a74b667ddcc8cb4.json.txt",
+      "logicalPath": "descriptors/3e4b028f9bfdf0355c3a801bbb1ef452511c15bdcd877be23a74b667ddcc8cb4.json",
+      "expectedBytes": 1567,
+      "expectedSha256": "3e4b028f9bfdf0355c3a801bbb1ef452511c15bdcd877be23a74b667ddcc8cb4",
+      "status": 200,
+      "headers": [
+        [
+          "Connection",
+          "close"
+        ],
+        [
+          "Content-Length",
+          "1567"
+        ],
+        [
+          "Server",
+          "GitHub.com"
+        ],
+        [
+          "Content-Type",
+          "text/plain; charset=utf-8"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 10:32:39 GMT"
+        ],
+        [
+          "Access-Control-Allow-Origin",
+          "*"
+        ],
+        [
+          "ETag",
+          "\"6af838c7-61f\""
+        ],
+        [
+          "expires",
+          "Sat, 14 Nov 2026 10:44:01 GMT"
+        ],
+        [
+          "Cache-Control",
+          "max-age=600"
+        ],
+        [
+          "x-proxy-cache",
+          "MISS"
+        ],
+        [
+          "X-GitHub-Request-Id",
+          "7720:3380:232F5A7:236BCF2:6AF83919"
+        ],
+        [
+          "x-github-edge-region",
+          "fra"
+        ],
+        [
+          "Accept-Ranges",
+          "bytes"
+        ],
+        [
+          "Age",
+          "0"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:34:01 GMT"
+        ],
+        [
+          "Via",
+          "1.1 varnish"
+        ],
+        [
+          "X-Served-By",
+          "cache-fra-eddf8230061-FRA"
+        ],
+        [
+          "X-Cache",
+          "MISS"
+        ],
+        [
+          "X-Cache-Hits",
+          "0"
+        ],
+        [
+          "X-Timer",
+          "S1794652441.152478,VS0,VE117"
+        ],
+        [
+          "Vary",
+          "Accept-Encoding"
+        ],
+        [
+          "X-Fastly-Request-ID",
+          "e5cd7ad140ac073e8d2d42c2cd61afdeb36b93f6"
+        ]
+      ],
+      "contentType": "text/plain; charset=utf-8",
+      "contentEncoding": null,
+      "charset": "utf-8",
+      "firstBytesHex": "7b226f626a65637473223a5b5b302c22",
+      "utf8Bom": false,
+      "actualBytes": 1567,
+      "actualSha256": "3e4b028f9bfdf0355c3a801bbb1ef452511c15bdcd877be23a74b667ddcc8cb4",
+      "passed": true
+    },
+    {
+      "path": "descriptors/4bd2d3481d55abfee7218de203a679389d27f03647c2e7bc3d190119068aca03.json.txt",
+      "logicalPath": "descriptors/4bd2d3481d55abfee7218de203a679389d27f03647c2e7bc3d190119068aca03.json",
+      "expectedBytes": 908,
+      "expectedSha256": "4bd2d3481d55abfee7218de203a679389d27f03647c2e7bc3d190119068aca03",
+      "status": 200,
+      "headers": [
+        [
+          "Connection",
+          "close"
+        ],
+        [
+          "Content-Length",
+          "908"
+        ],
+        [
+          "Server",
+          "GitHub.com"
+        ],
+        [
+          "Content-Type",
+          "text/plain; charset=utf-8"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 10:32:39 GMT"
+        ],
+        [
+          "Access-Control-Allow-Origin",
+          "*"
+        ],
+        [
+          "ETag",
+          "\"6af838c7-38c\""
+        ],
+        [
+          "expires",
+          "Sat, 14 Nov 2026 10:44:01 GMT"
+        ],
+        [
+          "Cache-Control",
+          "max-age=600"
+        ],
+        [
+          "x-proxy-cache",
+          "MISS"
+        ],
+        [
+          "X-GitHub-Request-Id",
+          "47A0:2CBF76:25A6371:25E4DB1:6AF83919"
+        ],
+        [
+          "x-github-edge-region",
+          "fra"
+        ],
+        [
+          "Accept-Ranges",
+          "bytes"
+        ],
+        [
+          "Age",
+          "0"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:34:01 GMT"
+        ],
+        [
+          "Via",
+          "1.1 varnish"
+        ],
+        [
+          "X-Served-By",
+          "cache-fra-eddf8230214-FRA"
+        ],
+        [
+          "X-Cache",
+          "MISS"
+        ],
+        [
+          "X-Cache-Hits",
+          "0"
+        ],
+        [
+          "X-Timer",
+          "S1794652442.575170,VS0,VE108"
+        ],
+        [
+          "Vary",
+          "Accept-Encoding"
+        ],
+        [
+          "X-Fastly-Request-ID",
+          "a75743e5ab888ea89b787e09395aeeb5cc07b91d"
+        ]
+      ],
+      "contentType": "text/plain; charset=utf-8",
+      "contentEncoding": null,
+      "charset": "utf-8",
+      "firstBytesHex": "7b22616e696d6174696f6e223a5b302c",
+      "utf8Bom": false,
+      "actualBytes": 908,
+      "actualSha256": "4bd2d3481d55abfee7218de203a679389d27f03647c2e7bc3d190119068aca03",
+      "passed": true
+    },
+    {
+      "path": "descriptors/77d4b3173b019ee84b7eb751e81ccb7a47edfba560a54166bfb47f441e8b7b37.json.txt",
+      "logicalPath": "descriptors/77d4b3173b019ee84b7eb751e81ccb7a47edfba560a54166bfb47f441e8b7b37.json",
+      "expectedBytes": 3073,
+      "expectedSha256": "77d4b3173b019ee84b7eb751e81ccb7a47edfba560a54166bfb47f441e8b7b37",
+      "status": 200,
+      "headers": [
+        [
+          "Connection",
+          "close"
+        ],
+        [
+          "Content-Length",
+          "3073"
+        ],
+        [
+          "Server",
+          "GitHub.com"
+        ],
+        [
+          "Content-Type",
+          "text/plain; charset=utf-8"
+        ],
+        [
+          "x-origin-cache",
+          "HIT"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 10:32:39 GMT"
+        ],
+        [
+          "Access-Control-Allow-Origin",
+          "*"
+        ],
+        [
+          "ETag",
+          "\"6af838c7-c01\""
+        ],
+        [
+          "expires",
+          "Sat, 14 Nov 2026 10:44:01 GMT"
+        ],
+        [
+          "Cache-Control",
+          "max-age=600"
+        ],
+        [
+          "x-proxy-cache",
+          "MISS"
+        ],
+        [
+          "X-GitHub-Request-Id",
+          "8118:2684BB:2489552:24C7EBC:6AF83919"
+        ],
+        [
+          "x-github-edge-region",
+          "fra"
+        ],
+        [
+          "Accept-Ranges",
+          "bytes"
+        ],
+        [
+          "Age",
+          "0"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:34:02 GMT"
+        ],
+        [
+          "Via",
+          "1.1 varnish"
+        ],
+        [
+          "X-Served-By",
+          "cache-fra-eddf8230187-FRA"
+        ],
+        [
+          "X-Cache",
+          "MISS"
+        ],
+        [
+          "X-Cache-Hits",
+          "0"
+        ],
+        [
+          "X-Timer",
+          "S1794652442.924002,VS0,VE103"
+        ],
+        [
+          "Vary",
+          "Accept-Encoding"
+        ],
+        [
+          "X-Fastly-Request-ID",
+          "1fc3191713c3f0755b427be5f47d3a0e6d9ef40b"
+        ]
+      ],
+      "contentType": "text/plain; charset=utf-8",
+      "contentEncoding": null,
+      "charset": "utf-8",
+      "firstBytesHex": "7b22636f756e7472794964223a226c6c",
+      "utf8Bom": false,
+      "actualBytes": 3073,
+      "actualSha256": "77d4b3173b019ee84b7eb751e81ccb7a47edfba560a54166bfb47f441e8b7b37",
+      "passed": true
+    },
+    {
+      "path": "descriptors/a28ecf80077c51aa47efd45080f6c965500ac437d53cc042b34b3a5b8f42c7ce.json.txt",
+      "logicalPath": "descriptors/a28ecf80077c51aa47efd45080f6c965500ac437d53cc042b34b3a5b8f42c7ce.json",
+      "expectedBytes": 2462,
+      "expectedSha256": "a28ecf80077c51aa47efd45080f6c965500ac437d53cc042b34b3a5b8f42c7ce",
+      "status": 200,
+      "headers": [
+        [
+          "Connection",
+          "close"
+        ],
+        [
+          "Content-Length",
+          "2462"
+        ],
+        [
+          "Server",
+          "GitHub.com"
+        ],
+        [
+          "Content-Type",
+          "text/plain; charset=utf-8"
+        ],
+        [
+          "x-origin-cache",
+          "HIT"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 10:32:39 GMT"
+        ],
+        [
+          "Access-Control-Allow-Origin",
+          "*"
+        ],
+        [
+          "ETag",
+          "\"6af838c7-99e\""
+        ],
+        [
+          "expires",
+          "Sat, 14 Nov 2026 10:44:02 GMT"
+        ],
+        [
+          "Cache-Control",
+          "max-age=600"
+        ],
+        [
+          "x-proxy-cache",
+          "MISS"
+        ],
+        [
+          "X-GitHub-Request-Id",
+          "BB02:9D4E3:2478E7C:24B7880:6AF83919"
+        ],
+        [
+          "x-github-edge-region",
+          "fra"
+        ],
+        [
+          "Accept-Ranges",
+          "bytes"
+        ],
+        [
+          "Age",
+          "0"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:34:02 GMT"
+        ],
+        [
+          "Via",
+          "1.1 varnish"
+        ],
+        [
+          "X-Served-By",
+          "cache-fra-eddf8230190-FRA"
+        ],
+        [
+          "X-Cache",
+          "MISS"
+        ],
+        [
+          "X-Cache-Hits",
+          "0"
+        ],
+        [
+          "X-Timer",
+          "S1794652442.303933,VS0,VE111"
+        ],
+        [
+          "Vary",
+          "Accept-Encoding"
+        ],
+        [
+          "X-Fastly-Request-ID",
+          "b4c57a4de97f8fcc46bb9b8ade0dc8a9026920a8"
+        ]
+      ],
+      "contentType": "text/plain; charset=utf-8",
+      "contentEncoding": null,
+      "charset": "utf-8",
+      "firstBytesHex": "7b22616e696d6174696f6e223a5b302c",
+      "utf8Bom": false,
+      "actualBytes": 2462,
+      "actualSha256": "a28ecf80077c51aa47efd45080f6c965500ac437d53cc042b34b3a5b8f42c7ce",
+      "passed": true
+    },
+    {
+      "path": "descriptors/f8a14e2df0245b475990b21c3cb102d219adb7d8b4e8fbf520437c5ec62a7b7f.json.txt",
+      "logicalPath": "descriptors/f8a14e2df0245b475990b21c3cb102d219adb7d8b4e8fbf520437c5ec62a7b7f.json",
+      "expectedBytes": 681,
+      "expectedSha256": "f8a14e2df0245b475990b21c3cb102d219adb7d8b4e8fbf520437c5ec62a7b7f",
+      "status": 200,
+      "headers": [
+        [
+          "Connection",
+          "close"
+        ],
+        [
+          "Content-Length",
+          "681"
+        ],
+        [
+          "Server",
+          "GitHub.com"
+        ],
+        [
+          "Content-Type",
+          "text/plain; charset=utf-8"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 10:32:39 GMT"
+        ],
+        [
+          "Access-Control-Allow-Origin",
+          "*"
+        ],
+        [
+          "ETag",
+          "\"6af838c7-2a9\""
+        ],
+        [
+          "expires",
+          "Sat, 14 Nov 2026 10:44:02 GMT"
+        ],
+        [
+          "Cache-Control",
+          "max-age=600"
+        ],
+        [
+          "x-proxy-cache",
+          "MISS"
+        ],
+        [
+          "X-GitHub-Request-Id",
+          "9F56:2CBF76:25A6584:25E4FD8:6AF8391A"
+        ],
+        [
+          "x-github-edge-region",
+          "fra"
+        ],
+        [
+          "Accept-Ranges",
+          "bytes"
+        ],
+        [
+          "Age",
+          "0"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:34:02 GMT"
+        ],
+        [
+          "Via",
+          "1.1 varnish"
+        ],
+        [
+          "X-Served-By",
+          "cache-fra-eddf8230024-FRA"
+        ],
+        [
+          "X-Cache",
+          "MISS"
+        ],
+        [
+          "X-Cache-Hits",
+          "0"
+        ],
+        [
+          "X-Timer",
+          "S1794652443.655194,VS0,VE135"
+        ],
+        [
+          "Vary",
+          "Accept-Encoding"
+        ],
+        [
+          "X-Fastly-Request-ID",
+          "d0dcd98b71cb33bb8bce27ffe999801ebea4bb5d"
+        ]
+      ],
+      "contentType": "text/plain; charset=utf-8",
+      "contentEncoding": null,
+      "charset": "utf-8",
+      "firstBytesHex": "7b22616e696d6174696f6e223a5b302c",
+      "utf8Bom": false,
+      "actualBytes": 681,
+      "actualSha256": "f8a14e2df0245b475990b21c3cb102d219adb7d8b4e8fbf520437c5ec62a7b7f",
+      "passed": true
+    },
+    {
+      "path": "feed.json.txt",
+      "logicalPath": "feed.json",
+      "expectedBytes": 2743,
+      "expectedSha256": "4fbb49a10269c92719cf23c219da090050d984e99b32719ebdd44ca2090947e0",
+      "status": 200,
+      "headers": [
+        [
+          "Connection",
+          "close"
+        ],
+        [
+          "Content-Length",
+          "2743"
+        ],
+        [
+          "Server",
+          "GitHub.com"
+        ],
+        [
+          "Content-Type",
+          "text/plain; charset=utf-8"
+        ],
+        [
+          "x-origin-cache",
+          "HIT"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 10:32:39 GMT"
+        ],
+        [
+          "Access-Control-Allow-Origin",
+          "*"
+        ],
+        [
+          "ETag",
+          "\"6af838c7-ab7\""
+        ],
+        [
+          "expires",
+          "Sat, 14 Nov 2026 10:44:03 GMT"
+        ],
+        [
+          "Cache-Control",
+          "max-age=600"
+        ],
+        [
+          "x-proxy-cache",
+          "MISS"
+        ],
+        [
+          "X-GitHub-Request-Id",
+          "623E:46A11:24CA151:2508BBC:6AF8391A"
+        ],
+        [
+          "x-github-edge-region",
+          "fra"
+        ],
+        [
+          "Accept-Ranges",
+          "bytes"
+        ],
+        [
+          "Age",
+          "0"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:34:03 GMT"
+        ],
+        [
+          "Via",
+          "1.1 varnish"
+        ],
+        [
+          "X-Served-By",
+          "cache-fra-eddf8230046-FRA"
+        ],
+        [
+          "X-Cache",
+          "MISS"
+        ],
+        [
+          "X-Cache-Hits",
+          "0"
+        ],
+        [
+          "X-Timer",
+          "S1794652443.008080,VS0,VE101"
+        ],
+        [
+          "Vary",
+          "Accept-Encoding"
+        ],
+        [
+          "X-Fastly-Request-ID",
+          "5d114be0e6ab122e1fbab9dbd3359251b2cf4190"
+        ]
+      ],
+      "contentType": "text/plain; charset=utf-8",
+      "contentEncoding": null,
+      "charset": "utf-8",
+      "firstBytesHex": "7b22636174616c6f6744696765737422",
+      "utf8Bom": false,
+      "actualBytes": 2743,
+      "actualSha256": "4fbb49a10269c92719cf23c219da090050d984e99b32719ebdd44ca2090947e0",
+      "passed": true
+    },
+    {
+      "path": "rasters/07924fc156dcfcd1725e9dce51567b9d04b13933fe56f89a0255b3ffcc914580.sfr.txt",
+      "logicalPath": "rasters/07924fc156dcfcd1725e9dce51567b9d04b13933fe56f89a0255b3ffcc914580.sfr",
+      "expectedBytes": 4048,
+      "expectedSha256": "07924fc156dcfcd1725e9dce51567b9d04b13933fe56f89a0255b3ffcc914580",
+      "status": 200,
+      "headers": [
+        [
+          "Connection",
+          "close"
+        ],
+        [
+          "Content-Length",
+          "4048"
+        ],
+        [
+          "Server",
+          "GitHub.com"
+        ],
+        [
+          "Content-Type",
+          "text/plain; charset=utf-8"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 10:32:39 GMT"
+        ],
+        [
+          "Access-Control-Allow-Origin",
+          "*"
+        ],
+        [
+          "ETag",
+          "\"6af838c7-fd0\""
+        ],
+        [
+          "expires",
+          "Sat, 14 Nov 2026 10:44:03 GMT"
+        ],
+        [
+          "Cache-Control",
+          "max-age=600"
+        ],
+        [
+          "x-proxy-cache",
+          "MISS"
+        ],
+        [
+          "X-GitHub-Request-Id",
+          "44A2:1D07EC:23B985E:23F81C5:6AF8391B"
+        ],
+        [
+          "x-github-edge-region",
+          "fra"
+        ],
+        [
+          "Accept-Ranges",
+          "bytes"
+        ],
+        [
+          "Age",
+          "0"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:34:03 GMT"
+        ],
+        [
+          "Via",
+          "1.1 varnish"
+        ],
+        [
+          "X-Served-By",
+          "cache-fra-eddf8230173-FRA"
+        ],
+        [
+          "X-Cache",
+          "MISS"
+        ],
+        [
+          "X-Cache-Hits",
+          "0"
+        ],
+        [
+          "X-Timer",
+          "S1794652443.361968,VS0,VE115"
+        ],
+        [
+          "Vary",
+          "Accept-Encoding"
+        ],
+        [
+          "X-Fastly-Request-ID",
+          "5dfb81d8d58fda365b2d9d0591f8d28c960a250b"
+        ]
+      ],
+      "contentType": "text/plain; charset=utf-8",
+      "contentEncoding": null,
+      "charset": "utf-8",
+      "firstBytesHex": "534652313a3232363a33363a69424541",
+      "utf8Bom": false,
+      "actualBytes": 4048,
+      "actualSha256": "07924fc156dcfcd1725e9dce51567b9d04b13933fe56f89a0255b3ffcc914580",
+      "passed": true
+    },
+    {
+      "path": "rasters/0936caabf3d961df403c05a1a35a5436d5842c45de0077cfd7053118a6e7ca29.sfr.txt",
+      "logicalPath": "rasters/0936caabf3d961df403c05a1a35a5436d5842c45de0077cfd7053118a6e7ca29.sfr",
+      "expectedBytes": 4004,
+      "expectedSha256": "0936caabf3d961df403c05a1a35a5436d5842c45de0077cfd7053118a6e7ca29",
+      "status": 200,
+      "headers": [
+        [
+          "Connection",
+          "close"
+        ],
+        [
+          "Content-Length",
+          "4004"
+        ],
+        [
+          "Server",
+          "GitHub.com"
+        ],
+        [
+          "Content-Type",
+          "text/plain; charset=utf-8"
+        ],
+        [
+          "x-origin-cache",
+          "HIT"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 10:32:39 GMT"
+        ],
+        [
+          "Access-Control-Allow-Origin",
+          "*"
+        ],
+        [
+          "ETag",
+          "\"6af838c7-fa4\""
+        ],
+        [
+          "expires",
+          "Sat, 14 Nov 2026 10:44:03 GMT"
+        ],
+        [
+          "Cache-Control",
+          "max-age=600"
+        ],
+        [
+          "x-proxy-cache",
+          "MISS"
+        ],
+        [
+          "X-GitHub-Request-Id",
+          "A58C:2684BB:248992A:24C829E:6AF83918"
+        ],
+        [
+          "x-github-edge-region",
+          "fra"
+        ],
+        [
+          "Accept-Ranges",
+          "bytes"
+        ],
+        [
+          "Age",
+          "0"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:34:03 GMT"
+        ],
+        [
+          "Via",
+          "1.1 varnish"
+        ],
+        [
+          "X-Served-By",
+          "cache-fra-eddf8230157-FRA"
+        ],
+        [
+          "X-Cache",
+          "MISS"
+        ],
+        [
+          "X-Cache-Hits",
+          "0"
+        ],
+        [
+          "X-Timer",
+          "S1794652444.790771,VS0,VE104"
+        ],
+        [
+          "Vary",
+          "Accept-Encoding"
+        ],
+        [
+          "X-Fastly-Request-ID",
+          "4303b12ed6b259b2126d0a908fec092daf244ec4"
+        ]
+      ],
+      "contentType": "text/plain; charset=utf-8",
+      "contentEncoding": null,
+      "charset": "utf-8",
+      "firstBytesHex": "534652313a3133363a32393a69786341",
+      "utf8Bom": false,
+      "actualBytes": 4004,
+      "actualSha256": "0936caabf3d961df403c05a1a35a5436d5842c45de0077cfd7053118a6e7ca29",
+      "passed": true
+    },
+    {
+      "path": "rasters/0f6ced072b08fe37b64b1944b2c3e01aead22000bd18ef580f4c60b4728070e4.sfr.txt",
+      "logicalPath": "rasters/0f6ced072b08fe37b64b1944b2c3e01aead22000bd18ef580f4c60b4728070e4.sfr",
+      "expectedBytes": 378,
+      "expectedSha256": "0f6ced072b08fe37b64b1944b2c3e01aead22000bd18ef580f4c60b4728070e4",
+      "status": 200,
+      "headers": [
+        [
+          "Connection",
+          "close"
+        ],
+        [
+          "Content-Length",
+          "378"
+        ],
+        [
+          "Server",
+          "GitHub.com"
+        ],
+        [
+          "Content-Type",
+          "text/plain; charset=utf-8"
+        ],
+        [
+          "x-origin-cache",
+          "HIT"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 10:32:39 GMT"
+        ],
+        [
+          "Access-Control-Allow-Origin",
+          "*"
+        ],
+        [
+          "ETag",
+          "\"6af838c7-17a\""
+        ],
+        [
+          "expires",
+          "Sat, 14 Nov 2026 10:44:04 GMT"
+        ],
+        [
+          "Cache-Control",
+          "max-age=600"
+        ],
+        [
+          "x-proxy-cache",
+          "MISS"
+        ],
+        [
+          "X-GitHub-Request-Id",
+          "52BC:2684BB:24899CB:24C8347:6AF8391C"
+        ],
+        [
+          "x-github-edge-region",
+          "fra"
+        ],
+        [
+          "Accept-Ranges",
+          "bytes"
+        ],
+        [
+          "Age",
+          "0"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:34:04 GMT"
+        ],
+        [
+          "Via",
+          "1.1 varnish"
+        ],
+        [
+          "X-Served-By",
+          "cache-fra-eddf8230022-FRA"
+        ],
+        [
+          "X-Cache",
+          "MISS"
+        ],
+        [
+          "X-Cache-Hits",
+          "0"
+        ],
+        [
+          "X-Timer",
+          "S1794652444.115902,VS0,VE108"
+        ],
+        [
+          "Vary",
+          "Accept-Encoding"
+        ],
+        [
+          "X-Fastly-Request-ID",
+          "0c6731b5163219bdbcc08bee0d8478b6602cc00b"
+        ]
+      ],
+      "contentType": "text/plain; charset=utf-8",
+      "contentEncoding": null,
+      "charset": "utf-8",
+      "firstBytesHex": "534652313a303a31323a42344e67664a",
+      "utf8Bom": false,
+      "actualBytes": 378,
+      "actualSha256": "0f6ced072b08fe37b64b1944b2c3e01aead22000bd18ef580f4c60b4728070e4",
+      "passed": true
+    },
+    {
+      "path": "rasters/180d4d090c41fddf2fd1d79dd46405bbf9d13569ec151440658ec50208b5eb5b.sfr.txt",
+      "logicalPath": "rasters/180d4d090c41fddf2fd1d79dd46405bbf9d13569ec151440658ec50208b5eb5b.sfr",
+      "expectedBytes": 4080,
+      "expectedSha256": "180d4d090c41fddf2fd1d79dd46405bbf9d13569ec151440658ec50208b5eb5b",
+      "status": 200,
+      "headers": [
+        [
+          "Connection",
+          "close"
+        ],
+        [
+          "Content-Length",
+          "4080"
+        ],
+        [
+          "Server",
+          "GitHub.com"
+        ],
+        [
+          "Content-Type",
+          "text/plain; charset=utf-8"
+        ],
+        [
+          "x-origin-cache",
+          "HIT"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 10:32:39 GMT"
+        ],
+        [
+          "Access-Control-Allow-Origin",
+          "*"
+        ],
+        [
+          "ETag",
+          "\"6af838c7-ff0\""
+        ],
+        [
+          "expires",
+          "Sat, 14 Nov 2026 10:44:04 GMT"
+        ],
+        [
+          "Cache-Control",
+          "max-age=600"
+        ],
+        [
+          "x-proxy-cache",
+          "MISS"
+        ],
+        [
+          "X-GitHub-Request-Id",
+          "92B0:2684BB:2489AA7:24C8422:6AF8391C"
+        ],
+        [
+          "x-github-edge-region",
+          "fra"
+        ],
+        [
+          "Accept-Ranges",
+          "bytes"
+        ],
+        [
+          "Age",
+          "0"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:34:04 GMT"
+        ],
+        [
+          "Via",
+          "1.1 varnish"
+        ],
+        [
+          "X-Served-By",
+          "cache-fra-eddf8230065-FRA"
+        ],
+        [
+          "X-Cache",
+          "MISS"
+        ],
+        [
+          "X-Cache-Hits",
+          "0"
+        ],
+        [
+          "X-Timer",
+          "S1794652444.485282,VS0,VE103"
+        ],
+        [
+          "Vary",
+          "Accept-Encoding"
+        ],
+        [
+          "X-Fastly-Request-ID",
+          "b9e9757478591567bf80930c4950b4dc4c983b37"
+        ]
+      ],
+      "contentType": "text/plain; charset=utf-8",
+      "contentEncoding": null,
+      "charset": "utf-8",
+      "firstBytesHex": "534652313a3130383a32383a6c423041",
+      "utf8Bom": false,
+      "actualBytes": 4080,
+      "actualSha256": "180d4d090c41fddf2fd1d79dd46405bbf9d13569ec151440658ec50208b5eb5b",
+      "passed": true
+    },
+    {
+      "path": "rasters/2a09c8ea59ca32d5ee8ea4e5520682de56a7539b86e434b804f96ffeca0cecd6.sfr.txt",
+      "logicalPath": "rasters/2a09c8ea59ca32d5ee8ea4e5520682de56a7539b86e434b804f96ffeca0cecd6.sfr",
+      "expectedBytes": 4038,
+      "expectedSha256": "2a09c8ea59ca32d5ee8ea4e5520682de56a7539b86e434b804f96ffeca0cecd6",
+      "status": 200,
+      "headers": [
+        [
+          "Connection",
+          "close"
+        ],
+        [
+          "Content-Length",
+          "4038"
+        ],
+        [
+          "Server",
+          "GitHub.com"
+        ],
+        [
+          "Content-Type",
+          "text/plain; charset=utf-8"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 10:32:39 GMT"
+        ],
+        [
+          "Access-Control-Allow-Origin",
+          "*"
+        ],
+        [
+          "ETag",
+          "\"6af838c7-fc6\""
+        ],
+        [
+          "expires",
+          "Sat, 14 Nov 2026 10:44:04 GMT"
+        ],
+        [
+          "Cache-Control",
+          "max-age=600"
+        ],
+        [
+          "x-proxy-cache",
+          "MISS"
+        ],
+        [
+          "X-GitHub-Request-Id",
+          "62BC:306733:245B504:2499DB1:6AF8391C"
+        ],
+        [
+          "x-github-edge-region",
+          "fra"
+        ],
+        [
+          "Accept-Ranges",
+          "bytes"
+        ],
+        [
+          "Age",
+          "0"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:34:04 GMT"
+        ],
+        [
+          "Via",
+          "1.1 varnish"
+        ],
+        [
+          "X-Served-By",
+          "cache-fra-eddf8230026-FRA"
+        ],
+        [
+          "X-Cache",
+          "MISS"
+        ],
+        [
+          "X-Cache-Hits",
+          "0"
+        ],
+        [
+          "X-Timer",
+          "S1794652445.776975,VS0,VE116"
+        ],
+        [
+          "Vary",
+          "Accept-Encoding"
+        ],
+        [
+          "X-Fastly-Request-ID",
+          "d830fda75094da2cfeaf8be51b19d46420bf9eb7"
+        ]
+      ],
+      "contentType": "text/plain; charset=utf-8",
+      "contentEncoding": null,
+      "charset": "utf-8",
+      "firstBytesHex": "534652313a303a33373a2f3638424141",
+      "utf8Bom": false,
+      "actualBytes": 4038,
+      "actualSha256": "2a09c8ea59ca32d5ee8ea4e5520682de56a7539b86e434b804f96ffeca0cecd6",
+      "passed": true
+    },
+    {
+      "path": "rasters/4d28962616ea3056f6ce6fde40f6904f9d9dee2e657f67f988b4eaa4d31e8e92.sfr.txt",
+      "logicalPath": "rasters/4d28962616ea3056f6ce6fde40f6904f9d9dee2e657f67f988b4eaa4d31e8e92.sfr",
+      "expectedBytes": 3971,
+      "expectedSha256": "4d28962616ea3056f6ce6fde40f6904f9d9dee2e657f67f988b4eaa4d31e8e92",
+      "status": 200,
+      "headers": [
+        [
+          "Connection",
+          "close"
+        ],
+        [
+          "Content-Length",
+          "3971"
+        ],
+        [
+          "Server",
+          "GitHub.com"
+        ],
+        [
+          "Content-Type",
+          "text/plain; charset=utf-8"
+        ],
+        [
+          "x-origin-cache",
+          "HIT"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 10:32:39 GMT"
+        ],
+        [
+          "Access-Control-Allow-Origin",
+          "*"
+        ],
+        [
+          "ETag",
+          "\"6af838c7-f83\""
+        ],
+        [
+          "expires",
+          "Sat, 14 Nov 2026 10:44:05 GMT"
+        ],
+        [
+          "Cache-Control",
+          "max-age=600"
+        ],
+        [
+          "x-proxy-cache",
+          "MISS"
+        ],
+        [
+          "X-GitHub-Request-Id",
+          "EECC:7100C:24D9942:251833A:6AF8391D"
+        ],
+        [
+          "x-github-edge-region",
+          "fra"
+        ],
+        [
+          "Accept-Ranges",
+          "bytes"
+        ],
+        [
+          "Age",
+          "0"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:34:05 GMT"
+        ],
+        [
+          "Via",
+          "1.1 varnish"
+        ],
+        [
+          "X-Served-By",
+          "cache-fra-eddf8230142-FRA"
+        ],
+        [
+          "X-Cache",
+          "MISS"
+        ],
+        [
+          "X-Cache-Hits",
+          "0"
+        ],
+        [
+          "X-Timer",
+          "S1794652445.063574,VS0,VE97"
+        ],
+        [
+          "Vary",
+          "Accept-Encoding"
+        ],
+        [
+          "X-Fastly-Request-ID",
+          "8448b59ae421dd29463663be8e173968b8c6848b"
+        ]
+      ],
+      "contentType": "text/plain; charset=utf-8",
+      "contentEncoding": null,
+      "charset": "utf-8",
+      "firstBytesHex": "534652313a33373a31393a33794d4141",
+      "utf8Bom": false,
+      "actualBytes": 3971,
+      "actualSha256": "4d28962616ea3056f6ce6fde40f6904f9d9dee2e657f67f988b4eaa4d31e8e92",
+      "passed": true
+    },
+    {
+      "path": "rasters/653939e2711ce529f39617eb84040f245960720925e27e70d270247940553e3a.sfr.txt",
+      "logicalPath": "rasters/653939e2711ce529f39617eb84040f245960720925e27e70d270247940553e3a.sfr",
+      "expectedBytes": 4088,
+      "expectedSha256": "653939e2711ce529f39617eb84040f245960720925e27e70d270247940553e3a",
+      "status": 200,
+      "headers": [
+        [
+          "Connection",
+          "close"
+        ],
+        [
+          "Content-Length",
+          "4088"
+        ],
+        [
+          "Server",
+          "GitHub.com"
+        ],
+        [
+          "Content-Type",
+          "text/plain; charset=utf-8"
+        ],
+        [
+          "x-origin-cache",
+          "HIT"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 10:32:39 GMT"
+        ],
+        [
+          "Access-Control-Allow-Origin",
+          "*"
+        ],
+        [
+          "ETag",
+          "\"6af838c7-ff8\""
+        ],
+        [
+          "expires",
+          "Sat, 14 Nov 2026 10:44:05 GMT"
+        ],
+        [
+          "Cache-Control",
+          "max-age=600"
+        ],
+        [
+          "x-proxy-cache",
+          "MISS"
+        ],
+        [
+          "X-GitHub-Request-Id",
+          "9666:24B793:25E443E:2622EAC:6AF8391D"
+        ],
+        [
+          "x-github-edge-region",
+          "fra"
+        ],
+        [
+          "Accept-Ranges",
+          "bytes"
+        ],
+        [
+          "Age",
+          "0"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:34:05 GMT"
+        ],
+        [
+          "Via",
+          "1.1 varnish"
+        ],
+        [
+          "X-Served-By",
+          "cache-fra-eddf8230169-FRA"
+        ],
+        [
+          "X-Cache",
+          "MISS"
+        ],
+        [
+          "X-Cache-Hits",
+          "0"
+        ],
+        [
+          "X-Timer",
+          "S1794652445.355302,VS0,VE101"
+        ],
+        [
+          "Vary",
+          "Accept-Encoding"
+        ],
+        [
+          "X-Fastly-Request-ID",
+          "640f6e60b3476e3c2120fd7775aa3e0b9cd92a91"
+        ]
+      ],
+      "contentType": "text/plain; charset=utf-8",
+      "contentEncoding": null,
+      "charset": "utf-8",
+      "firstBytesHex": "534652313a3139323a33343a69425141",
+      "utf8Bom": false,
+      "actualBytes": 4088,
+      "actualSha256": "653939e2711ce529f39617eb84040f245960720925e27e70d270247940553e3a",
+      "passed": true
+    },
+    {
+      "path": "rasters/671a4b8da3f5c272f41a709b7b72285ee96247eed72d4b3c521bc13884bb6153.sfr.txt",
+      "logicalPath": "rasters/671a4b8da3f5c272f41a709b7b72285ee96247eed72d4b3c521bc13884bb6153.sfr",
+      "expectedBytes": 4003,
+      "expectedSha256": "671a4b8da3f5c272f41a709b7b72285ee96247eed72d4b3c521bc13884bb6153",
+      "status": 200,
+      "headers": [
+        [
+          "Connection",
+          "close"
+        ],
+        [
+          "Content-Length",
+          "4003"
+        ],
+        [
+          "Server",
+          "GitHub.com"
+        ],
+        [
+          "Content-Type",
+          "text/plain; charset=utf-8"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 10:32:39 GMT"
+        ],
+        [
+          "Access-Control-Allow-Origin",
+          "*"
+        ],
+        [
+          "ETag",
+          "\"6af838c7-fa3\""
+        ],
+        [
+          "expires",
+          "Sat, 14 Nov 2026 10:44:05 GMT"
+        ],
+        [
+          "Cache-Control",
+          "max-age=600"
+        ],
+        [
+          "x-proxy-cache",
+          "MISS"
+        ],
+        [
+          "X-GitHub-Request-Id",
+          "F484:25B5AE:24826DE:24C10BF:6AF8391D"
+        ],
+        [
+          "x-github-edge-region",
+          "fra"
+        ],
+        [
+          "Accept-Ranges",
+          "bytes"
+        ],
+        [
+          "Age",
+          "0"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:34:05 GMT"
+        ],
+        [
+          "Via",
+          "1.1 varnish"
+        ],
+        [
+          "X-Served-By",
+          "cache-fra-eddf8230208-FRA"
+        ],
+        [
+          "X-Cache",
+          "MISS"
+        ],
+        [
+          "X-Cache-Hits",
+          "0"
+        ],
+        [
+          "X-Timer",
+          "S1794652446.655180,VS0,VE129"
+        ],
+        [
+          "Vary",
+          "Accept-Encoding"
+        ],
+        [
+          "X-Fastly-Request-ID",
+          "d431f213fd23763760afef1c0de18566432667ce"
+        ]
+      ],
+      "contentType": "text/plain; charset=utf-8",
+      "contentEncoding": null,
+      "charset": "utf-8",
+      "firstBytesHex": "534652313a35363a32313a75796b4141",
+      "utf8Bom": false,
+      "actualBytes": 4003,
+      "actualSha256": "671a4b8da3f5c272f41a709b7b72285ee96247eed72d4b3c521bc13884bb6153",
+      "passed": true
+    },
+    {
+      "path": "rasters/697b580f41521ace59315e84264ddbfb4dee9d77b50f3d2e256ad10b7a6a56cf.sfr.txt",
+      "logicalPath": "rasters/697b580f41521ace59315e84264ddbfb4dee9d77b50f3d2e256ad10b7a6a56cf.sfr",
+      "expectedBytes": 4085,
+      "expectedSha256": "697b580f41521ace59315e84264ddbfb4dee9d77b50f3d2e256ad10b7a6a56cf",
+      "status": 200,
+      "headers": [
+        [
+          "Connection",
+          "close"
+        ],
+        [
+          "Content-Length",
+          "4085"
+        ],
+        [
+          "Server",
+          "GitHub.com"
+        ],
+        [
+          "Content-Type",
+          "text/plain; charset=utf-8"
+        ],
+        [
+          "x-origin-cache",
+          "HIT"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 10:32:39 GMT"
+        ],
+        [
+          "Access-Control-Allow-Origin",
+          "*"
+        ],
+        [
+          "ETag",
+          "\"6af838c7-ff5\""
+        ],
+        [
+          "expires",
+          "Sat, 14 Nov 2026 10:44:06 GMT"
+        ],
+        [
+          "Cache-Control",
+          "max-age=600"
+        ],
+        [
+          "x-proxy-cache",
+          "MISS"
+        ],
+        [
+          "X-GitHub-Request-Id",
+          "638A:2DCE87:23DB6E5:241A076:6AF8391D"
+        ],
+        [
+          "x-github-edge-region",
+          "fra"
+        ],
+        [
+          "Accept-Ranges",
+          "bytes"
+        ],
+        [
+          "Age",
+          "0"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:34:06 GMT"
+        ],
+        [
+          "Via",
+          "1.1 varnish"
+        ],
+        [
+          "X-Served-By",
+          "cache-fra-eddf8230101-FRA"
+        ],
+        [
+          "X-Cache",
+          "MISS"
+        ],
+        [
+          "X-Cache-Hits",
+          "0"
+        ],
+        [
+          "X-Timer",
+          "S1794652446.015746,VS0,VE101"
+        ],
+        [
+          "Vary",
+          "Accept-Encoding"
+        ],
+        [
+          "X-Fastly-Request-ID",
+          "2d4e4b901b08abf65f2174455c401fa93711ca69"
+        ]
+      ],
+      "contentType": "text/plain; charset=utf-8",
+      "contentEncoding": null,
+      "charset": "utf-8",
+      "firstBytesHex": "534652313a3236323a3130383a6a686f",
+      "utf8Bom": false,
+      "actualBytes": 4085,
+      "actualSha256": "697b580f41521ace59315e84264ddbfb4dee9d77b50f3d2e256ad10b7a6a56cf",
+      "passed": true
+    },
+    {
+      "path": "rasters/6d4ab3dc509e305150b3e44adc2df9d6c70416ec01f09751f1a66c2418cc18e9.sfr.txt",
+      "logicalPath": "rasters/6d4ab3dc509e305150b3e44adc2df9d6c70416ec01f09751f1a66c2418cc18e9.sfr",
+      "expectedBytes": 1791,
+      "expectedSha256": "6d4ab3dc509e305150b3e44adc2df9d6c70416ec01f09751f1a66c2418cc18e9",
+      "status": 200,
+      "headers": [
+        [
+          "Connection",
+          "close"
+        ],
+        [
+          "Content-Length",
+          "1791"
+        ],
+        [
+          "Server",
+          "GitHub.com"
+        ],
+        [
+          "Content-Type",
+          "text/plain; charset=utf-8"
+        ],
+        [
+          "x-origin-cache",
+          "HIT"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 10:32:39 GMT"
+        ],
+        [
+          "Access-Control-Allow-Origin",
+          "*"
+        ],
+        [
+          "ETag",
+          "\"6af838c7-6ff\""
+        ],
+        [
+          "expires",
+          "Sat, 14 Nov 2026 10:44:06 GMT"
+        ],
+        [
+          "Cache-Control",
+          "max-age=600"
+        ],
+        [
+          "x-proxy-cache",
+          "MISS"
+        ],
+        [
+          "X-GitHub-Request-Id",
+          "46BC:818BB:2525AAB:2564552:6AF8391E"
+        ],
+        [
+          "x-github-edge-region",
+          "fra"
+        ],
+        [
+          "Accept-Ranges",
+          "bytes"
+        ],
+        [
+          "Age",
+          "0"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:34:06 GMT"
+        ],
+        [
+          "Via",
+          "1.1 varnish"
+        ],
+        [
+          "X-Served-By",
+          "cache-fra-eddf8230062-FRA"
+        ],
+        [
+          "X-Cache",
+          "MISS"
+        ],
+        [
+          "X-Cache-Hits",
+          "0"
+        ],
+        [
+          "X-Timer",
+          "S1794652446.283169,VS0,VE99"
+        ],
+        [
+          "Vary",
+          "Accept-Encoding"
+        ],
+        [
+          "X-Fastly-Request-ID",
+          "59058b7ef3ef6b25833fd77967e329b09a06df0e"
+        ]
+      ],
+      "contentType": "text/plain; charset=utf-8",
+      "contentEncoding": null,
+      "charset": "utf-8",
+      "firstBytesHex": "534652313a303a3132343a7462573174",
+      "utf8Bom": false,
+      "actualBytes": 1791,
+      "actualSha256": "6d4ab3dc509e305150b3e44adc2df9d6c70416ec01f09751f1a66c2418cc18e9",
+      "passed": true
+    },
+    {
+      "path": "rasters/9107867a46a828266cdc4669352d110734f23c385ef52bc1ca7073709bb415ee.sfr.txt",
+      "logicalPath": "rasters/9107867a46a828266cdc4669352d110734f23c385ef52bc1ca7073709bb415ee.sfr",
+      "expectedBytes": 336,
+      "expectedSha256": "9107867a46a828266cdc4669352d110734f23c385ef52bc1ca7073709bb415ee",
+      "status": 200,
+      "headers": [
+        [
+          "Connection",
+          "close"
+        ],
+        [
+          "Content-Length",
+          "336"
+        ],
+        [
+          "Server",
+          "GitHub.com"
+        ],
+        [
+          "Content-Type",
+          "text/plain; charset=utf-8"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 10:32:39 GMT"
+        ],
+        [
+          "Access-Control-Allow-Origin",
+          "*"
+        ],
+        [
+          "ETag",
+          "\"6af838c7-150\""
+        ],
+        [
+          "expires",
+          "Sat, 14 Nov 2026 10:44:06 GMT"
+        ],
+        [
+          "Cache-Control",
+          "max-age=600"
+        ],
+        [
+          "x-proxy-cache",
+          "MISS"
+        ],
+        [
+          "X-GitHub-Request-Id",
+          "B43E:2684BB:2489F09:24C8878:6AF8391E"
+        ],
+        [
+          "x-github-edge-region",
+          "fra"
+        ],
+        [
+          "Accept-Ranges",
+          "bytes"
+        ],
+        [
+          "Age",
+          "0"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:34:06 GMT"
+        ],
+        [
+          "Via",
+          "1.1 varnish"
+        ],
+        [
+          "X-Served-By",
+          "cache-fra-eddf8230085-FRA"
+        ],
+        [
+          "X-Cache",
+          "MISS"
+        ],
+        [
+          "X-Cache-Hits",
+          "0"
+        ],
+        [
+          "X-Timer",
+          "S1794652447.558828,VS0,VE111"
+        ],
+        [
+          "Vary",
+          "Accept-Encoding"
+        ],
+        [
+          "X-Fastly-Request-ID",
+          "4feca1a8a087158bd4a39d93cb4446cf5cec30dc"
+        ]
+      ],
+      "contentType": "text/plain; charset=utf-8",
+      "contentEncoding": null,
+      "charset": "utf-8",
+      "firstBytesHex": "534652313a3337303a32303a2f353545",
+      "utf8Bom": false,
+      "actualBytes": 336,
+      "actualSha256": "9107867a46a828266cdc4669352d110734f23c385ef52bc1ca7073709bb415ee",
+      "passed": true
+    },
+    {
+      "path": "rasters/db31d9ab634adaa54e03c7c96a2eee50064466b0565444a8bda1145a520ac301.sfr.txt",
+      "logicalPath": "rasters/db31d9ab634adaa54e03c7c96a2eee50064466b0565444a8bda1145a520ac301.sfr",
+      "expectedBytes": 4032,
+      "expectedSha256": "db31d9ab634adaa54e03c7c96a2eee50064466b0565444a8bda1145a520ac301",
+      "status": 200,
+      "headers": [
+        [
+          "Connection",
+          "close"
+        ],
+        [
+          "Content-Length",
+          "4032"
+        ],
+        [
+          "Server",
+          "GitHub.com"
+        ],
+        [
+          "Content-Type",
+          "text/plain; charset=utf-8"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 10:32:39 GMT"
+        ],
+        [
+          "Access-Control-Allow-Origin",
+          "*"
+        ],
+        [
+          "ETag",
+          "\"6af838c7-fc0\""
+        ],
+        [
+          "expires",
+          "Sat, 14 Nov 2026 10:44:06 GMT"
+        ],
+        [
+          "Cache-Control",
+          "max-age=600"
+        ],
+        [
+          "x-proxy-cache",
+          "MISS"
+        ],
+        [
+          "X-GitHub-Request-Id",
+          "1F12:8F0F6:24F6865:25352B5:6AF8391C"
+        ],
+        [
+          "x-github-edge-region",
+          "fra"
+        ],
+        [
+          "Accept-Ranges",
+          "bytes"
+        ],
+        [
+          "Age",
+          "0"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:34:07 GMT"
+        ],
+        [
+          "Via",
+          "1.1 varnish"
+        ],
+        [
+          "X-Served-By",
+          "cache-fra-eddf8230227-FRA"
+        ],
+        [
+          "X-Cache",
+          "MISS"
+        ],
+        [
+          "X-Cache-Hits",
+          "0"
+        ],
+        [
+          "X-Timer",
+          "S1794652447.880230,VS0,VE124"
+        ],
+        [
+          "Vary",
+          "Accept-Encoding"
+        ],
+        [
+          "X-Fastly-Request-ID",
+          "0762d4201bf5a79858a6389207983590144a72d5"
+        ]
+      ],
+      "contentType": "text/plain; charset=utf-8",
+      "contentEncoding": null,
+      "charset": "utf-8",
+      "firstBytesHex": "534652313a3136353a32373a68526341",
+      "utf8Bom": false,
+      "actualBytes": 4032,
+      "actualSha256": "db31d9ab634adaa54e03c7c96a2eee50064466b0565444a8bda1145a520ac301",
+      "passed": true
+    },
+    {
+      "path": "rasters/eeaefa0a3910f493ba1409eca38c0473fa68b6b99da810696788b8338b01fddd.sfr.txt",
+      "logicalPath": "rasters/eeaefa0a3910f493ba1409eca38c0473fa68b6b99da810696788b8338b01fddd.sfr",
+      "expectedBytes": 4027,
+      "expectedSha256": "eeaefa0a3910f493ba1409eca38c0473fa68b6b99da810696788b8338b01fddd",
+      "status": 200,
+      "headers": [
+        [
+          "Connection",
+          "close"
+        ],
+        [
+          "Content-Length",
+          "4027"
+        ],
+        [
+          "Server",
+          "GitHub.com"
+        ],
+        [
+          "Content-Type",
+          "text/plain; charset=utf-8"
+        ],
+        [
+          "x-origin-cache",
+          "HIT"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 10:32:39 GMT"
+        ],
+        [
+          "Access-Control-Allow-Origin",
+          "*"
+        ],
+        [
+          "ETag",
+          "\"6af838c7-fbb\""
+        ],
+        [
+          "expires",
+          "Sat, 14 Nov 2026 10:44:07 GMT"
+        ],
+        [
+          "Cache-Control",
+          "max-age=600"
+        ],
+        [
+          "x-proxy-cache",
+          "MISS"
+        ],
+        [
+          "X-GitHub-Request-Id",
+          "41A2:1D07EC:23BA1BC:23F8B32:6AF8391F"
+        ],
+        [
+          "x-github-edge-region",
+          "fra"
+        ],
+        [
+          "Accept-Ranges",
+          "bytes"
+        ],
+        [
+          "Age",
+          "0"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:34:07 GMT"
+        ],
+        [
+          "Via",
+          "1.1 varnish"
+        ],
+        [
+          "X-Served-By",
+          "cache-fra-eddf8230103-FRA"
+        ],
+        [
+          "X-Cache",
+          "MISS"
+        ],
+        [
+          "X-Cache-Hits",
+          "0"
+        ],
+        [
+          "X-Timer",
+          "S1794652447.251596,VS0,VE98"
+        ],
+        [
+          "Vary",
+          "Accept-Encoding"
+        ],
+        [
+          "X-Fastly-Request-ID",
+          "f03e1f56062e3ca38ad4740dfb0cb8b4b2200584"
+        ]
+      ],
+      "contentType": "text/plain; charset=utf-8",
+      "contentEncoding": null,
+      "charset": "utf-8",
+      "firstBytesHex": "534652313a37373a33313a7067414141",
+      "utf8Bom": false,
+      "actualBytes": 4027,
+      "actualSha256": "eeaefa0a3910f493ba1409eca38c0473fa68b6b99da810696788b8338b01fddd",
+      "passed": true
+    },
+    {
+      "path": "wire3/catalogs/8b308cb08a31aed3f8877d687e1f3bfc15c1b612713edc2f8c8df8f8d5d8c45c.json.txt",
+      "logicalPath": "wire3/catalogs/8b308cb08a31aed3f8877d687e1f3bfc15c1b612713edc2f8c8df8f8d5d8c45c.json",
+      "expectedBytes": 1392,
+      "expectedSha256": "8b308cb08a31aed3f8877d687e1f3bfc15c1b612713edc2f8c8df8f8d5d8c45c",
+      "status": 200,
+      "headers": [
+        [
+          "Connection",
+          "close"
+        ],
+        [
+          "Content-Length",
+          "1392"
+        ],
+        [
+          "Server",
+          "GitHub.com"
+        ],
+        [
+          "Content-Type",
+          "text/plain; charset=utf-8"
+        ],
+        [
+          "x-origin-cache",
+          "HIT"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 10:32:39 GMT"
+        ],
+        [
+          "Access-Control-Allow-Origin",
+          "*"
+        ],
+        [
+          "ETag",
+          "\"6af838c7-570\""
+        ],
+        [
+          "expires",
+          "Sat, 14 Nov 2026 10:44:07 GMT"
+        ],
+        [
+          "Cache-Control",
+          "max-age=600"
+        ],
+        [
+          "x-proxy-cache",
+          "MISS"
+        ],
+        [
+          "X-GitHub-Request-Id",
+          "4492:2DCE87:23DBA8D:241A42F:6AF8391F"
+        ],
+        [
+          "x-github-edge-region",
+          "fra"
+        ],
+        [
+          "Accept-Ranges",
+          "bytes"
+        ],
+        [
+          "Age",
+          "0"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:34:07 GMT"
+        ],
+        [
+          "Via",
+          "1.1 varnish"
+        ],
+        [
+          "X-Served-By",
+          "cache-fra-eddf8230203-FRA"
+        ],
+        [
+          "X-Cache",
+          "MISS"
+        ],
+        [
+          "X-Cache-Hits",
+          "0"
+        ],
+        [
+          "X-Timer",
+          "S1794652448.653025,VS0,VE130"
+        ],
+        [
+          "Vary",
+          "Accept-Encoding"
+        ],
+        [
+          "X-Fastly-Request-ID",
+          "bbce9ffc2e0b9b0958664569423ee318a16e9e9a"
+        ]
+      ],
+      "contentType": "text/plain; charset=utf-8",
+      "contentEncoding": null,
+      "charset": "utf-8",
+      "firstBytesHex": "7b22636174616c6f6756657273696f6e",
+      "utf8Bom": false,
+      "actualBytes": 1392,
+      "actualSha256": "8b308cb08a31aed3f8877d687e1f3bfc15c1b612713edc2f8c8df8f8d5d8c45c",
+      "passed": true
+    }
+  ],
+  "proofBoundary": "Exact HTTP MIME/raw bytes against saved artifact only; no paired phone or physical watch acceptance."
+}

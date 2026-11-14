@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "software": "GREEN: apply, fresh independent verify, root judgment",
+  "sourceRevision": "18305ba295fc6e7895e1c0c30bea619bb96872d2",
+  "publicMainRevision": "b47b71bc5169c908908de13e77417df9f2af3c1e",
+  "iqSha256": "339a9ce9a6b22bc3914bbe62ca6b34910ce5b43699a11dd7346c2a68744cd688",
+  "pages": {
+    "runId": 43585376753,
+    "url": "https://github.com/JekaMas/SpaceFox/actions/runs/43585376753",
+    "status": "completed",
+    "conclusion": "success",
+    "artifactTarSha256": "d8866c35211cfa0717e6b90fe85d7af1006355e4bcd1d6cb2476e34977772d61",
+    "readbackStatus": "passed",
+    "readbackObservedAtUtc": "2026-11-14T10:34:07.798058+00:00",
+    "transportFiles": 20,
+    "artifactFiles": 113,
+    "artifactBytes": 650742
+  },
+  "garmin": {
+    "url": "https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3",
+    "appId": "ec8b7c8a8ea54ee9ac91ee6e7a674d15",
+    "fileVersion": "0.1.5",
+    "fileStatus": "Verified",
+    "signature": "Verified",
+    "visibleCardVersion": "0.1.5",
+    "visibleInternalVersion": 4,
+    "compatibleProducts": 9,
+    "device": "Forerunner 165 Music",
+    "installationQueue": "Got it! SpaceFox will be installed the next time your device syncs.",
+    "publicApproval": "NOT OBSERVED: card still shows App pending",
+    "actualInstallation": "NOT OBSERVED",
+    "screenPreview": "NOT DONE: native 390x390 inline image decoded, saved screenshot endpoint ResourceNotFoundException persists after Change and remove/re-add saves"
+  },
+  "notification": {
+    "recipient": "Ivan Danilenko",
+    "channel": "Telegram",
+    "status": "outgoing message observed",
+    "purpose": "same-card 0.1.5 installation link and synchronization/readback instructions"
+  },
+  "physicalIncident": "NOT DONE: paired phone/watch readback required",
+  "proofBoundary": "Hosted raw HTTPS responses and Store submitted-file/card/queue observations; not physical device success."
+}

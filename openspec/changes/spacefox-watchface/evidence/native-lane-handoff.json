@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "worktree": "/Users/jekamas/projects/SpaceFox-worktrees/verify-first-install-incident-20261114",
+  "candidateSource": "18305ba295fc6e7895e1c0c30bea619bb96872d2",
+  "independentEvidenceHead": "af675a409f511fa1719a08f8b4259cf42d7f3aef",
+  "publicImplementationHead": "b47b71bc5169c908908de13e77417df9f2af3c1e",
+  "softwareGroup": "GREEN and closed after fresh independent verify and root judgment",
+  "incident014Source": "3b95dee18cb56d704970aa1e330cd93030193ffc",
+  "incident014Evidence": "first-install-incident/ROOT-JUDGMENT.md",
+  "phone015ChangedNativeFiles": [
+    "watchface/incident-tests/FirstInstallTests.mc",
+    "watchface/manifest.xml",
+    "watchface/resources/fonts/Battery13.fnt",
+    "watchface/resources/fonts/Battery13.png",
+    "watchface/resources/fonts/Metric32.fnt",
+    "watchface/resources/fonts/Metric32.png",
+    "watchface/resources/resource-build.json",
+    "watchface/source/FeedService.mc",
+    "watchface/source/LocalePresentation.mc",
+    "watchface/source/SceneRenderer.mc",
+    "watchface/source/SpaceFoxView.mc"
+  ],
+  "phone015Evidence": "phone-mime-readability-015/STATUS.md",
+  "phone015Independent": "phone-mime-readability-015/INDEPENDENT-RESULT.md",
+  "phone015SourceBoundProof": "phone-mime-readability-015/phone-delta.json",
+  "hostedRollout": "phone-mime-readability-015/PUBLICATION.md",
+  "dateAndOnWatchSettings289dIncluded": false,
+  "organizationProducerFieldIncluded": false,
+  "simulator": {
+    "lease": "released",
+    "httpsRequirements": "restored enabled",
+    "ble": "connected",
+    "ownTemporalEvents": "cleared",
+    "ownFeedUrls": "blank; accepted test cache seal preserved",
+    "otherApps": "preserved"
+  },
+  "runtimeTransport": "same schema3/SFR1M; HTTP .txt aliases for logical NativeBatch objects, byte identical; default base unchanged",
+  "ordinaryCandidate": {
+    "version": "0.1.5",
+    "iqSha256": "339a9ce9a6b22bc3914bbe62ca6b34910ce5b43699a11dd7346c2a68744cd688",
+    "uuid": "ec8b7c8a8ea54ee9ac91ee6e7a674d15",
+    "products": 9,
+    "store": "submitted Verified; visible0.1.5/Internal4; FR165Music installation queued"
+  },
+  "openBoundaries": [
+    "physical paired-phone FR165Music Feed -400 repair readback",
+    "actual installed version",
+    "public Store approval",
+    "Store screenshot service ResourceNotFound"
+  ],
+  "coordination": "Integrate reviewed public-only commits/hunks; preserve unrelated dirty work. Private authoring ancestry must not be pushed. Keep other producer deltas separate and do not activate unsupported fields. Existing valid greens retain original source/proof boundaries."
+}
