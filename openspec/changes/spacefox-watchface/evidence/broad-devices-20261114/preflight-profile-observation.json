@@ -1,0 +1,67 @@
+{
+  "observation": "disposable SDK compilation of the initial 19-profile cohort before font filter",
+  "source_revision": "87b8ae5f",
+  "source_delta": "Only manifest products and version were changed in the compiler input; runtime and resources were unchanged.",
+  "target_exit_codes": {
+    "approachs50": 0,
+    "approachs7042mm": 0,
+    "descentg2": 0,
+    "descentmk343mm": 0,
+    "epix2pro42mm": 0,
+    "fr165": 0,
+    "fr165m": 0,
+    "fr170": 0,
+    "fr170m": 0,
+    "fr57042mm": 0,
+    "fr70": 0,
+    "instinct3amoled45mm": 0,
+    "instinctcrossoveramoled": 0,
+    "marq2": 0,
+    "marq2aviator": 0,
+    "venu3s": 0,
+    "venu441mm": 0,
+    "vivoactive5": 0,
+    "vivoactive6": 0
+  },
+  "selected_profiles": [
+    "fr165",
+    "fr165m",
+    "fr170",
+    "fr170m",
+    "fr57042mm",
+    "fr70",
+    "venu3s",
+    "venu441mm",
+    "vivoactive6"
+  ],
+  "disposable_prg": {
+    "fr165": {
+      "bytes": 1153708,
+      "sha256": "0a23e59eab65abb95622e37486dc0a138a6580b0450bc5f82045e36eaf01c1d5"
+    },
+    "fr165m": {
+      "bytes": 1153708,
+      "sha256": "0a23e59eab65abb95622e37486dc0a138a6580b0450bc5f82045e36eaf01c1d5"
+    }
+  },
+  "compiler_profile_changed_top_level_keys": [
+    "appTypes",
+    "deviceId",
+    "displayName",
+    "hardwarePartNumber",
+    "imageFormats",
+    "imageUrl",
+    "partNumbers",
+    "worldWidePartNumber"
+  ],
+  "simulator_profile_changed_top_level_keys": [
+    "display",
+    "image",
+    "keys"
+  ],
+  "display_changed_fields": [
+    "location"
+  ],
+  "music_addition": "The additional compiler app type is audioContentProvider; SpaceFox is a watch face and does not use that app type.",
+  "proof_boundary": "Actual disposable compiler outputs, profile metadata comparison and equality of these two PRG bytes. No simulator, physical device, Store, background runtime or battery observation."
+}
