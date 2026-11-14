@@ -1,0 +1,12 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.System;
+import Toybox.Background;
+import Toybox.Time;
+(:typecheck(false)) class MenuFitness extends Fitness {function sample(now as Number or Long) as Dictionary<String,Number or Null>{return {"steps"=>12345,"energy"=>68,"heart"=>72,"stress"=>47,"calories"=>2345,"battery"=>82};}}
+(:typecheck(false)) class MenuFace extends WatchUi.View {var app;function initialize(a){View.initialize();app=a;}function onLayout(dc){app.view.onLayout(dc);}function onShow(){app.view.onShow();}function onHide(){app.view.onHide();}function onUpdate(dc){app.view.onUpdate(dc);System.println("UX_MENU_RENDER field4="+app.view.settings.slots[3]+" color="+app.view.settings.fieldColors[3]+" battery="+app.view.fitness.display(app.view.values,"battery"));}}
+(:background,:typecheck(false)) class SfrRuntimeApp extends SpaceFoxApp {
+ function initialize(){SpaceFoxApp.initialize();NativeMetrics.ownerTag="6a160f1e038a4e89a82b70f659e01046|spacefox-ux016-independent-menu-render|e558b36d2da9";System.println("SFR_PROBE owner="+NativeMetrics.ownerTag);}
+ function getInitialView(){Application.Properties.setValue("FeedBaseUrl","");Background.deleteTemporalEvent();view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));view.fitness=new MenuFitness();view.setSettings(new SceneSettings(null).load());view.syncDisplayMode(System.getDisplayMode());System.println("UX_MENU_REOPEN field4="+Application.Properties.getValue("Field4")+" color="+Application.Properties.getValue("Field4Color"));return [new MenuFace(self)];}
+}

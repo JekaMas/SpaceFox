@@ -1,0 +1,16 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.System;
+import Toybox.Background;
+import Toybox.Time;
+(:background,:typecheck(false)) class SfrRuntimeApp extends SpaceFoxApp {
+ function initialize(){SpaceFoxApp.initialize();NativeMetrics.ownerTag="6a160f1e038a4e89a82b70f659e01046|spacefox-ux016-independent-menu-app|e558b36d2da9";System.println("SFR_PROBE owner="+NativeMetrics.ownerTag);}
+ function getInitialView(){
+  Application.Properties.setValue("FeedBaseUrl","");Background.deleteTemporalEvent();
+  view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));view.setSettings(new SceneSettings(null).load());
+  System.println("UX_MENU_START field4="+Application.Properties.getValue("Field4")+" color="+Application.Properties.getValue("Field4Color"));
+  return SpaceFoxApp.getSettingsView();
+ }
+ function onSettingsChanged(){SpaceFoxApp.onSettingsChanged();System.println("UX_MENU_CHANGED field4="+Application.Properties.getValue("Field4")+" color="+Application.Properties.getValue("Field4Color")+" role="+view.settings.slots[3]+" rendercolor="+view.settings.fieldColors[3]);Background.deleteTemporalEvent();}
+}
