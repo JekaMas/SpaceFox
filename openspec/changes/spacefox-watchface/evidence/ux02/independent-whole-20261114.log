@@ -1,0 +1,18 @@
+test_battery_grows (tests.test_ux02_baseline.Ux02NativePixels.test_battery_grows) ... ok
+test_calendar_grows (tests.test_ux02_baseline.Ux02NativePixels.test_calendar_grows) ... ok
+test_clock_keeps_selected_mint (tests.test_ux02_baseline.Ux02NativePixels.test_clock_keeps_selected_mint) ... ok
+test_countdown_keeps_selected_mint (tests.test_ux02_baseline.Ux02NativePixels.test_countdown_keeps_selected_mint) ... ok
+test_finite_real_countdowns_fit_and_preserve_gutters (tests.test_ux02_geometry.Ux02CountdownCorpus.test_finite_real_countdowns_fit_and_preserve_gutters) ... ok
+test_real_time_variants_have_gutters_center_and_budget (tests.test_ux02_geometry.Ux02Geometry.test_real_time_variants_have_gutters_center_and_budget) ... ok
+test_status_color_gaps_and_budget (tests.test_ux02_geometry.Ux02Statuses.test_status_color_gaps_and_budget) ... ok
+test_each_battery_slot_fits_circle_and_keeps_icon_gap (tests.test_ux02_battery_grid.BatteryGrid.test_each_battery_slot_fits_circle_and_keeps_icon_gap) ... ok
+test_lower_row_100_percent_and_12345_steps_do_not_overlap (tests.test_ux02_battery_grid.BatteryGrid.test_lower_row_100_percent_and_12345_steps_do_not_overlap) ... ok
+test_four_phases_fit_and_every_pixel_rests (tests.test_ux02_pixel_rest.PixelRest.test_four_phases_fit_and_every_pixel_rests) ... ok
+test_mask_only_removes_pixels_without_changing_rgb (tests.test_ux02_pixel_rest.PixelRest.test_mask_only_removes_pixels_without_changing_rgb) ... ok
+test_callback_admission_and_resume_owners_retained (tests.test_ux02_reuse.RetainedRecovery.test_callback_admission_and_resume_owners_retained) ... ok
+test_historical_root_replays_and_changed_current_owner_is_rejected (tests.test_ux02_admission.HistoricalAdmission.test_historical_root_replays_and_changed_current_owner_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 3.600s
+
+OK
