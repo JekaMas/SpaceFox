@@ -15,6 +15,8 @@ class LocalePresentation {
     var latinSmall as Graphics.FontType or Null=null;
     var count as Graphics.FontType or Null=null;
     var calendarFont as Graphics.FontType or Null=null;
+    var aodContextFont as Graphics.FontType or Null=null;
+    var aodBatteryFont as Graphics.FontType or Null=null;
     var loads=0;
     function initialize(){
         // Proper names use a shared Latin face, independent of UI language.
@@ -23,6 +25,10 @@ class LocalePresentation {
         if(label==null){label=Graphics.FONT_TINY;}if(latinSmall==null){latinSmall=Graphics.FONT_XTINY;}
         try{calendarFont=Graphics.getVectorFont({:face=>"RobotoRegular",:size=>36});}catch(e){}
         if(calendarFont==null){calendarFont=Graphics.FONT_TINY;}
+        try{aodContextFont=Graphics.getVectorFont({:face=>"RobotoRegular",:size=>47});}catch(e){}
+        if(aodContextFont==null){aodContextFont=calendarFont;}
+        try{aodBatteryFont=Graphics.getVectorFont({:face=>"RobotoRegular",:size=>51});}catch(e){}
+        if(aodBatteryFont==null){aodBatteryFont=aodContextFont;}
         LocaleGraphemes.load();prepare("en");
     }
     function prepare(requested) {
@@ -98,7 +104,7 @@ class LocalePresentation {
     function assetStatus(stage as String,detail as String) as String {
         if(stage.equals("incomplete")){if(locale.equals("ru")){return "Загрузка прервана";} if(locale.equals("de")){return "Bildladen unterbrochen";} if(locale.equals("fr")){return "Image interrompue";} if(locale.equals("es")){return "Imagen interrumpida";} return "Artwork interrupted";}
         var code=detail.find(": ");var suffix=code==null?"":detail.substring(code+2,detail.length());
-        if(locale.equals("ru")){return "Изображение: "+suffix;} if(locale.equals("de")){return "Bild: "+suffix;} if(locale.equals("fr")){return "Image : "+suffix;} if(locale.equals("es")){return "Imagen: "+suffix;} return "Artwork: "+suffix;
+        if(locale.equals("ru")){return "Изобр.: "+suffix;} if(locale.equals("de")){return "Bild: "+suffix;} if(locale.equals("fr")){return "Image : "+suffix;} if(locale.equals("es")){return "Imagen: "+suffix;} return "Artwork: "+suffix;
     }
     function mission(value as String) as String {
         // The provider category remains retained verbatim; only this known

@@ -23,7 +23,6 @@ class SceneRenderer {
         var roles=["steps","energy","heart","stress","calories","battery"];
         for(var i=0;i<roles.size();i+=1){icons[roles[i]]=load(NativeAssets.icons[roles[i]] as ResourceId) as Graphics.BitmapType;}
         marker=load(Rez.Drawables.LaunchMarker) as Graphics.BitmapType;
-        fonts["battery"] = load(Rez.Fonts.Battery13) as Graphics.FontType;
         fonts["aod"] = load(Rez.Fonts.Aod40) as Graphics.FontType;
         fonts["time"] = load(Rez.Fonts.Time80) as Graphics.FontType;
         fonts["metric"] = load(Rez.Fonts.Metric32) as Graphics.FontType;
@@ -140,8 +139,8 @@ class SceneRenderer {
             var label=metricText(fitness,values,role,settings);
             label=fit(dc,label,fonts["metric"] as Graphics.FontType,128);
             var width=dc.getTextWidthInPixels(label,fonts["metric"] as Graphics.FontType);
-            var left=i%2==0?55:335-width;var rowTop=i<2?244:282;var y=rowTop-4;
-            icon(dc,left-25,rowTop+5,role);
+            var left=i%2==0?55:335-width;if(i==2&&role.equals("battery")){left+=18;}var rowTop=i<2?244:282;var y=rowTop-4;
+            icon(dc,left-(role.equals("battery")?31:25),rowTop+(role.equals("battery")?2:5),role);
             text(dc,left+width/2,y,fonts["metric"] as Graphics.FontType,label,settings.fieldColors[i],128,1);
         }
     }
@@ -158,37 +157,37 @@ class SceneRenderer {
     function icon(dc as Graphics.Dc,x as Numeric,y as Numeric,role as String) as Void {
         if(icons.hasKey(role)){dc.drawBitmap(x,y,icons[role] as Graphics.BitmapType);}
     }
-    function aod(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long) as Void {
+    function aod(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,settings as SceneSettings) as Void {
         current.rescheduled=current.rescheduled||fullContext!=null&&fullContext.rescheduled;
         current.stale=current.stale||fullContext!=null&&fullContext.stale;
-        SceneAod.draw(dc,current,minute,presentation,fonts["aod"] as Graphics.FontType);
+        SceneAod.draw(dc,current,minute,presentation,fonts["aod"] as Graphics.FontType,settings);
     }
 }
 
 // Shared by complete rendering and deferred-admission maintenance. The caller
 // owns the once-per-minute guard; fonts/dictionary are prepared outside redraw.
 module SceneAod {
-    function draw(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,presentation as LocalePresentation,font as Graphics.FontType) as Void {
+    function draw(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,presentation as LocalePresentation,font as Graphics.FontType,settings as SceneSettings) as Void {
         dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();
         var positions=[[-1,-1],[1,-1],[-1,1],[1,1]];var phase=((minute%4+4)%4).toNumber();var p=positions[phase];
-        dc.setColor(0x888888,Graphics.COLOR_TRANSPARENT);
+        dc.setColor(settings.clockColor,Graphics.COLOR_TRANSPARENT);
         // Monospaced advance boxes do not imply symmetric digit ink. The
-        // bundled AOD atlas has 60px advances; these are the fully lit left
+        // bundled AOD atlas has 67px advances; these are the fully lit left
         // and exclusive right edges of each digit. Center actual time ink,
         // then apply at most one pixel of minute-based burn-in movement.
-        var leftEdges=[6,10,6,5,4,7,6,4,7,6];
-        var rightEdges=[55,41,56,54,56,55,55,55,54,54];
+        var leftEdges=[7,10,5,5,4,7,6,5,6,6];
+        var rightEdges=[61,46,62,60,63,62,62,62,61,60];
         var first="0123456789".find(current.localTime.substring(0,1) as String);
         var last="0123456789".find(current.localTime.substring(4,5) as String);
-        var correction=first==null||last==null?0:(61-leftEdges[first as Number]-rightEdges[last as Number])/2;
-        dc.drawText(195+p[0]+correction,130+p[1],font,current.localTime,Graphics.TEXT_JUSTIFY_CENTER);
-        var calendarFont=presentation.calendarFont as Graphics.FontType;
-        if(current.localCalendar!=null){dc.setColor(0xA0A0A0,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],98+p[1],calendarFont,presentation.calendar(current.localCalendar as Array<Number>),Graphics.TEXT_JUSTIFY_CENTER);}
-        var color=current.rescheduled?0xA8752D:0x558A78;
-        var countFont=presentation.calendarFont as Graphics.FontType;
-        var value=presentation.fit(dc,presentation.countdown(current,false),countFont,260);
+        var correction=first==null||last==null?0:(68-leftEdges[first as Number]-rightEdges[last as Number])/2;
+        dc.drawText(195+p[0]+correction,123+p[1],font,current.localTime,Graphics.TEXT_JUSTIFY_CENTER);
+        var calendarFont=presentation.aodContextFont as Graphics.FontType;
+        if(current.localCalendar!=null){dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],98+p[1],calendarFont,presentation.calendar(current.localCalendar as Array<Number>),Graphics.TEXT_JUSTIFY_CENTER);}
+        var color=current.rescheduled?0xF3C37A:settings.countdownColor;
+        var countFont=presentation.aodContextFont as Graphics.FontType;
+        var value=presentation.fit(dc,presentation.countdown(current,false),countFont,300);
         dc.setColor(color,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],247+p[1],countFont,value,Graphics.TEXT_JUSTIFY_CENTER);
-        dc.setColor(0xA0A0A0,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],280+p[1],calendarFont,current.battery,Graphics.TEXT_JUSTIFY_CENTER);
-        if(current.stale){var width=dc.getTextWidthInPixels(value,countFont);for(var x=195+p[0]-width/2;x<=195+p[0]+width/2;x+=5){dc.fillCircle(x,276+p[1],1);}}
+        dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],286+p[1],presentation.aodBatteryFont as Graphics.FontType,current.battery,Graphics.TEXT_JUSTIFY_CENTER);
+        if(current.stale){dc.setColor(color,Graphics.COLOR_TRANSPARENT);var width=dc.getTextWidthInPixels(value,countFont);for(var x=195+p[0]-width/2;x<=195+p[0]+width/2;x+=5){dc.fillCircle(x,287+p[1],1);}}
     }
 }

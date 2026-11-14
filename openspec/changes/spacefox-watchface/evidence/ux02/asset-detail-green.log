@@ -1,0 +1,20 @@
+------------------------------------------------------------------------------
+Executing test uxUpgradeAttemptVersion...
+DEBUG (18:37): UX_UPGRADE old_attempt=due new_attempt=bounded actual_storage=true
+PASS
+------------------------------------------------------------------------------
+Executing test uxAssetErrorDetailsFit...
+DEBUG (18:37): UX_ASSET_ERROR locale=en code=-400 width=161 label=Artwork: 0.1.6 -400
+DEBUG (18:37): UX_ASSET_ERROR locale=en code=-104 width=161 label=Artwork: 0.1.6 -104
+DEBUG (18:37): UX_ASSET_ERROR locale=ru code=-400 width=158 label=Изобр.: 0.1.6 -400
+DEBUG (18:37): UX_ASSET_ERROR locale=ru code=-104 width=158 label=Изобр.: 0.1.6 -104
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+uxUpgradeAttemptVersion             PASS
+uxAssetErrorDetailsFit              PASS
+Ran 2 tests
+
+PASSED (passed=2, failed=0, errors=0)

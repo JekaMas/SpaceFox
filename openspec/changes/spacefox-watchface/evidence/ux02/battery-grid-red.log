@@ -1,0 +1,17 @@
+test_each_battery_slot_fits_circle_and_keeps_icon_gap (tests.test_ux02_battery_grid.BatteryGrid.test_each_battery_slot_fits_circle_and_keeps_icon_gap) ... 
+  test_each_battery_slot_fits_circle_and_keeps_icon_gap (tests.test_ux02_battery_grid.BatteryGrid.test_each_battery_slot_fits_circle_and_keeps_icon_gap) (slot=3) ... FAIL
+test_lower_row_100_percent_and_12345_steps_do_not_overlap (tests.test_ux02_battery_grid.BatteryGrid.test_lower_row_100_percent_and_12345_steps_do_not_overlap) ... ok
+
+======================================================================
+FAIL: test_each_battery_slot_fits_circle_and_keeps_icon_gap (tests.test_ux02_battery_grid.BatteryGrid.test_each_battery_slot_fits_circle_and_keeps_icon_gap) (slot=3)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-native-ux02-readability-20261114/tests/test_ux02_battery_grid.py", line 20, in test_each_battery_slot_fits_circle_and_keeps_icon_gap
+    self.assertTrue(all((x-195)**2+(y-195)**2 < 191**2 for x,y in icon+value), f'circle margin violated: {name}')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : circle margin violated: ux02-battery-slot3-100-red.png
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.024s
+
+FAILED (failures=1)

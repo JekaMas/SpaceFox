@@ -2,9 +2,13 @@
 
 SpaceFox is an independent space-themed watch face for selected Garmin watches, including Forerunner 165 and 165 Music. It shows a 24-hour clock, four activity fields, the next launch, rocket artwork and a launch-site map.
 
-![SpaceFox in the FR165 simulator](docs/images/simulator-fr165-0.1.6.png)
+![SpaceFox on Forerunner 165 Music in the Garmin simulator](docs/images/simulator-fr165-0.1.6.png)
 
-The [supported devices](docs/SUPPORTED_DEVICES.md) are listed with qualification boundaries. The image is a Garmin simulator capture of the current native composition using a retained launch and simulated time and activity values. The test package and installation boundaries are described in [TESTING.md](TESTING.md). Find releases and report issues on [GitHub](https://github.com/JekaMas/SpaceFox). The public schedule is at [feed.json](https://jekamas.github.io/SpaceFox/feed.json).
+![Always-On display in the Garmin simulator](docs/images/simulator-fr165-low-0.1.6.png)
+
+![SpaceFox on Forerunner 965 in the Garmin simulator](docs/images/simulator-fr965-0.1.6.png)
+
+The [supported devices](docs/SUPPORTED_DEVICES.md) are listed with qualification boundaries. These images are Garmin simulator captures of the current native composition using a retained launch and simulated time and activity values. The test package and installation boundaries are described in [TESTING.md](TESTING.md). Find releases and report issues on [GitHub](https://github.com/JekaMas/SpaceFox). The public schedule is at [feed.json](https://jekamas.github.io/SpaceFox/feed.json).
 
 The countdown shows `T-` before a known target, `T+` after it, and `--:--:--` when the time is unknown. Passing zero does not establish that a launch occurred. The watch retains an accepted schedule for offline use. Stale and rescheduled data have separate indicators.
 

@@ -11,7 +11,7 @@ class NativeTransfer {
     }
     function utc(v){return (v instanceof Number||v instanceof Long)&&v>= -62135596800l&&v<=253402300799l;}
     function load(){
-        if(base.equals("")){return;}var attempt=store.read("sf.attempt");if(attempt instanceof Dictionary&&attempt["base"] instanceof String&&attempt["base"].equals(base)&&utc(attempt["utc"])){lastAttempt=attempt["utc"].toLong();}
+        if(base.equals("")){return;}var attempt=store.read("sf.attempt");if(attempt instanceof Dictionary&&attempt["base"] instanceof String&&attempt["base"].equals(base)&&attempt["build"] instanceof String&&attempt["build"].equals(NativeVersion.BUILD)&&utc(attempt["utc"])){lastAttempt=attempt["utc"].toLong();}
     }
     function interval(now){
         // A first-install failure must not defer the next attempt for an hour.
@@ -20,7 +20,7 @@ class NativeTransfer {
         var plan=store.read("sf.transfer.plan");if(!(plan instanceof Dictionary)||!(plan["base"] instanceof String)||!plan["base"].equals(base)){return 3600;}var p=plan["policy"];if(!(p instanceof Array)||p.size()!=3){return 3600;}for(var i=0;i<3;i+=1){if(p[i]!=null&&(!(p[i] instanceof Number||p[i] instanceof Long)||p[i]<300)){return 3600;}}if(p[0]==null||p[1]==null||p[1]>p[0]||p[2]!=null&&p[2]>p[1]){return 3600;}if(p[2]!=null){return p[2];}var target=plan["target"];return utc(target)&&now>=target-7200&&now<=target+1800?p[1]:p[0];
     }
     function due(now){return !base.equals("")&&(lastAttempt==null||now<lastAttempt||now-lastAttempt>=interval(now));}
-    function attempted(now){lastAttempt=now.toLong();store.write("sf.attempt",{"base"=>base,"utc"=>lastAttempt});}
+    function attempted(now){lastAttempt=now.toLong();store.write("sf.attempt",{"base"=>base,"utc"=>lastAttempt,"build"=>NativeVersion.BUILD});}
     function nextWake(now){
         var cadence=interval(now);var remaining=lastAttempt==null||now<lastAttempt?0:cadence-(now-lastAttempt);var next=remaining<=0?now:now+(remaining>86400?86400:remaining);var p=store.read("sf.transfer.plan");if(p instanceof Dictionary&&p["base"] instanceof String&&p["base"].equals(base)&&utc(p["target"])){var start=p["target"]-7200;var end=p["target"]+1801;if(now<start&&next>start){next=start;}else if(now<end&&next>end){next=end;}}return next;
     }

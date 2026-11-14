@@ -1,5 +1,9 @@
 # SpaceFox current progress
 
+## Current UX02 candidate
+
+Self-verification covers the changed EN/RU LOW readability/colors, four-field battery, FR165 Music and FR965 layout, bounded four-phase pixel rest, and actual 0.1.5→0.1.6 SDK retry/cache handoff. See [UX02 evidence and boundaries](evidence/ux02/STATUS.md). The current hosted accepted scene reopened within 8 seconds on both simulator profiles; a diagnostic-heavy 19.252 s run remains recorded separately. Existing WF01.P1/WF03.P1 proof is supplemented for changed geometry; WF09.P2/P3 software components are reconciled to retained and current evidence, subject to the required fresh independent whole verifier and root judgment. WF09.P1 physical behavior and WF10.P1's entire background/memory obligations remain open. These observations do not change the accepted closure counts below.
+
 ## Accepted whole software closures
 
 One APPLY agent implements a coherent unit and runs its whole verify to green.
@@ -58,8 +62,7 @@ expired00:00:00 never assert liftoff. A nominal-minute source target permits loc
 seconds arithmetic while keeping exact_utc=null and source precision. One full
 large-right faded flat map, unfaded ring24pin; transparent outlined time. Header
 pairs rocket/operator then actual mission.type. Larger21px site, four permanent
-32px metric positions with six independent roles/duplicates allowed, separate
-battery. Fixed short animation, model-origin flag and supplied operator logo.
+32px metric positions with six independent roles/duplicates allowed; battery is selectable within those fields and has no separate active indicator. Fixed short animation; rocket remains unmarked and the country flag sits by the site footer.
 Reschedule amber; otherwise mint. Stale dotted underline is independent. No!cloud
 badges/update timestamp. Menu Auto+en/ru/de/fr/es, four role choices and FeedBaseUrl.
 All36 resource IDs remain;31 best-effort. No globe, Off/hide, layouts, analog,
@@ -375,3 +378,5 @@ The baseline LOW renderer hardcodes gray/muted colors and390px coordinates. Pres
 Update recovery must execute the actual native storage/settings/startup and background writer paths with retained0.1.4/0.1.5 failed status, existing valid cache and no-cache states as relevant: the old error must not prevent fresh retry, accepted upcoming metadata must survive a transient error, current writer version must replace old status after success, and four-field/color/URL settings must persist. Distinguish this controlled SDK upgrade proof from unobserved phone installation. Keep default URL/text/plain and existing cache/protocol unchanged unless a reproduced defect needs repair; no legacy format/migration support. Preserve original RED and final GREEN receipts; retain non-invalidated UX01 proofs.
 
 OriginalStore card, UUID/key and actual published predecessor0.1.5 remain fixed.0.1.6 has never been submitted and its old IQ must be superseded before upload. Physical installation/readback and system-settings entry remain external open gates. Native simulator lease is requested back after the previously granted short parser batch, with task-owned state snapshot/restore and no global reset.
+
+UX02 expanded within the same iteration: validate external-data prefetch, bounded retry and background cadence, current-code refresh after an older persisted error, accepted-cache survival and invalidation only on a validated new identity. A code version change must schedule a fresh update at the next permitted background opportunity without discarding valid accepted content; redraw must not perform network requests. Existing source-bound proofs remain reusable only where their production owners and dependencies are unchanged. Store propagation and actual installed watch version are separate root-owned observations.

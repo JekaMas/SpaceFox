@@ -1,0 +1,25 @@
+NATIVE_DISPLAY mode=0 active=true bitmap=false decoding=false ms=2573468 owner=
+NATIVE_METRIC phase=foreground-initial-complete used=75192 free=51592 total=126784 sampledHigh=75192 utc=1794664670 ms=2573469 owner=
+HANDOFF_OLD startup=0.1.5 settings=written
+NATIVE_DISPLAY mode=0 active=true bitmap=false decoding=false ms=2573469 owner=
+NATIVE_METRIC phase=foreground-incoming-complete used=82896 free=43888 total=126784 sampledHigh=82896 utc=1794664670 ms=2573472 owner=
+NATIVE_METRIC phase=foreground-before-view used=82888 free=43896 total=126784 sampledHigh=82896 utc=1794664670 ms=2573472 owner=
+NATIVE_WRITES phase=foreground-reload-total count=0 owner=
+NATIVE_SCHEDULE now=1794664670 requested=1794664670 registered=1794664670 last=null owner=
+NATIVE_METRIC phase=temporal-scheduled used=83120 free=43664 total=126784 sampledHigh=83120 utc=1794664670 ms=2573478 owner=
+Background: NATIVE_METRIC phase=temporal-start used=23544 free=37704 total=61248 sampledHigh=23544 utc=1794664670 ms=2573531 owner=
+Background: NATIVE_METRIC phase=pre-request used=24080 free=37168 total=61248 sampledHigh=24080 utc=1794664670 ms=2573532 owner=
+Background: NATIVE_SCHEDULE now=1794664670 requested=1794664970 registered=1794664970 last=1794664670 owner=
+Background: NATIVE_METRIC phase=temporal-scheduled used=24336 free=36912 total=61248 sampledHigh=24336 utc=1794664670 ms=2573534 owner=
+Background: HANDOFF_OLD request=feed.json
+Background: NATIVE_METRIC phase=feed-transfer-complete used=24256 free=36992 total=61248 sampledHigh=24336 utc=1794664670 ms=2573535 owner=
+Background: NATIVE_RESPONSE feed code=-400 characters=-1 owner=
+Background: NATIVE_SCHEDULE now=1794664670 requested=1794664970 registered=1794664970 last=1794664670 owner=
+Background: NATIVE_METRIC phase=temporal-scheduled used=24512 free=36736 total=61248 sampledHigh=24512 utc=1794664670 ms=2573537 owner=
+Background: NATIVE_WRITES phase=background-total count=3 owner=
+Background: NATIVE_METRIC phase=background-exit used=24248 free=37000 total=61248 sampledHigh=24512 utc=1794664670 ms=2573537 owner=
+NATIVE_METRIC phase=foreground-incoming-complete used=83408 free=43376 total=126784 sampledHigh=83408 utc=1794664670 ms=2573540 owner=
+NATIVE_METRIC phase=foreground-before-view used=83400 free=43384 total=126784 sampledHigh=83408 utc=1794664670 ms=2573540 owner=
+NATIVE_WRITES phase=foreground-reload-total count=0 owner=
+NATIVE_SCHEDULE now=1794664670 requested=1794664970 registered=1794664970 last=1794664670 owner=
+NATIVE_METRIC phase=temporal-scheduled used=83768 free=43016 total=126784 sampledHigh=83768 utc=1794664670 ms=2573546 owner=
