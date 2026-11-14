@@ -294,7 +294,14 @@ source-bound locale/device admission replayed successfully for its original
 five-language boundary, with EN/RU incident evidence separately bound. Strict
 OpenSpec validation also passes. The beta wrapper checked the retained 0.1.3
 receipt and matching IQ as a same-identity higher-version predecessor. Local
-signed update candidates, independent verification and real-device readback remain open.
+0.1.4 candidate exports from clean public-only source `2a7b1c97` completed:
+the owner beta IQ SHA-256 is `2380a995f5e889ccf48baf47df72211cddda82366c37442cacb9f384bab18840`
+and the ordinary candidate IQ SHA-256 is `ea63fca451d859685c8a7511b5403a76e418c911eda627ff8ed600e1aa29a970`.
+Both retain their respective identities and validate their actual 0.1.3/0.1.2
+predecessor receipts and IQs. Outputs and detailed receipts remain under
+`~/.codex/tmp/spacefox-incident-{beta,production}-014-20261114/`. They are
+local candidates, not publication, installation or independent review.
+Independent verification and real-device readback remain open.
 All nine task-owned simulator event registrations were cleared; no other app
 files were removed. Shared simulator `sys.nfm` and `CIQ_LOG.YML` changed during
 the observations, with all 308 pre-existing files still present.

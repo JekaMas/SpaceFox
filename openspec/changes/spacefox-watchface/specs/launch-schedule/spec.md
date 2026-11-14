@@ -38,7 +38,8 @@ requests. Delivery delay SHALL remain explicit.
 
 #### Scenario: First-install refresh interrupted or unsuccessful
 - **WHEN** the selected feed has no accepted schedule and its first background attempt fails or the platform ends the service before a callback
-- **THEN** the next attempt is registered before the request and is due no sooner than the platform's five-minute minimum, with no redraw-triggered network request
+- **THEN** the app registers the next attempt before the request for the first permitted slot, five minutes after the later of the last temporal event and the attempt, with no redraw-triggered network request
+- **AND** actual execution may occur later if the platform or phone delays delivery
 - **AND** the ordinary hourly/near-launch policy resumes after a schedule is accepted
 
 #### Scenario: Missing or intentionally blank feed property
