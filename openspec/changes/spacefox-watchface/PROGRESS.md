@@ -532,3 +532,9 @@ predecessor is preserved. See [root judgment](evidence/delivery01/ROOT-JUDGMENT.
 Signed inputs remain unchanged by root metadata. Task 3.2 and physical delivery
 remain NOT DONE: the owner still observed 0.1.6 after a full power cycle.
 Main/tag, package and Store results are separate from actual watch execution.
+
+DELIVERY01 publication checkpoint: main/tag v0.1.9 published at c7642184; all17
+GitHub release asset bodies anonymously downloaded and hash-matched. Original
+Garmin form is prepared but submission has NOT occurred; action-time agreement
+confirmation is pending. Physical watch remains observed0.1.6. See
+[publication checkpoint](evidence/delivery01-publication/PUBLICATION.md).

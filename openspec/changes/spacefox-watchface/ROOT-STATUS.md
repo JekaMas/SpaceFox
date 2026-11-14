@@ -23,8 +23,10 @@ matching launch and stable physical modes remain required. Do not ask for those
 old-version diagnostic steps again. The delivery cause remains unconfirmed;
 preview, compatibility response and unversioned queue do not identify installed code.
 
-Root next: public main/tag and package publication, original ordinary Garmin card
-submission, and actual delivery readback. Record each boundary separately. No new
+Main/tag v0.1.9 and the GitHub package are published; all 17 anonymous asset
+downloads returned HTTP200 and matched hashes. Garmin submission has NOT occurred: the
+verified package is selected in the original form, awaiting action-time binding-terms
+confirmation. Root next: original ordinary Garmin submission and actual delivery readback. Record each boundary separately. No new
 task/property group starts while this delivery unit is open. Broader phone,
 physical, battery and Store requirements retain their own open scope. The private
 workflow runner is unavailable and was not installed or silently substituted.
