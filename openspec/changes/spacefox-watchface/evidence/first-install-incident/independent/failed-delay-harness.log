@@ -1,0 +1,11 @@
+Background: SFR_PROBE owner=ded2463627d44c199200564d1c8effc5|spacefox-verify-aod-delayed-20261114|b19e23442206
+SFR_PROBE owner=ded2463627d44c199200564d1c8effc5|spacefox-verify-aod-delayed-20261114|b19e23442206
+NATIVE_DISPLAY mode=0 active=true bitmap=false decoding=false ms=3654983 owner=ded2463627d44c199200564d1c8effc5|spacefox-verify-aod-delayed-20261114|b19e23442206
+NATIVE_METRIC phase=foreground-initial-complete used=74584 free=52200 total=126784 sampledHigh=74584 utc=1794647165 ms=3654984 owner=ded2463627d44c199200564d1c8effc5|spacefox-verify-aod-delayed-20261114|b19e23442206
+
+Error: Permission Required
+Details: Symbol 'start' not available to 'Watch Face'
+Stack: 
+  - getInitialView() at /private/tmp/spacefox-verify-aod-delayed-20261114/Probe.mc:8 0x1000118a 
+NATIVE_DISPLAY mode=0 active=true bitmap=false decoding=false ms=3654987 owner=ded2463627d44c199200564d1c8effc5|spacefox-verify-aod-delayed-20261114|b19e23442206
+Encountered an app crash.

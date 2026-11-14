@@ -1,0 +1,8 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.System;
+import Toybox.Background;
+import Toybox.Time;
+(:background,:typecheck(false)) class SfrRuntimeApp extends SpaceFoxApp {function initialize(){SpaceFoxApp.initialize();NativeMetrics.ownerTag="0f9f907697664ec396a8ce9d3400dba6|spacefox-verify-aod-offline-20261114|b19e23442206";System.println("SFR_PROBE owner="+NativeMetrics.ownerTag);NativeMetrics.enabled=true;} (:typecheck(disableBackgroundCheck)) function onBackgroundData(d){System.println("VERIFY_CALLBACK display="+System.getDisplayMode()+" beforePacket="+(feed!=null&&feed.packet!=null));SpaceFoxApp.onBackgroundData(d);System.println("VERIFY_AFTER display="+System.getDisplayMode()+" packet="+(feed!=null&&feed.packet!=null)+" context="+(view!=null&&view.context!=null));}(:typecheck(disableBackgroundCheck)) function getInitialView() as [Views] or [Views,InputDelegates]{Application.Properties.setValue("FeedBaseUrl","https://jekamas.github.io/SpaceFox");var result=SpaceFoxApp.getInitialView();return result;}
+}

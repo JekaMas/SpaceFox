@@ -320,3 +320,12 @@ OpenSpec validation and source-bound five-locale admission pass. This is static
 coverage, not a new DE/FR/ES native visual observation or human translation
 review. The actual AOD first-arrival observation and physical FR165 readback
 remain open until separately observed.
+
+Independent FR165 Music SDK verification observed the first successful feed
+admission while the display was already in AOD, followed by a high-power wake
+showing the selected schedule. The test used an owned retry timestamp change
+and manual temporal event, not the natural deadline. The detailed source,
+log, failed harness and exact boundaries are in
+[evidence](evidence/first-install-incident/independent/RESULT.md). The real
+physical device and phone remain unverified. Candidate builds from the prior
+code commit are local-only and retain their own signed receipts.
