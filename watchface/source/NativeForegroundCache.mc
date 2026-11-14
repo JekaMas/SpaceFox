@@ -12,7 +12,12 @@ class NativeCache extends NativeCacheCore {
         if(!rawHash(raw).equals(marker["rawHash"])){return null;}var original=null;var current=raw;
         if(!marker["wireHash"].equals(marker["rawHash"])){var spans=value["mutableSpans"];original=pieces(raw,spans);current=replaceSpans(raw,spans,marker["mutable"]);}
         value=null;raw=null;var p=parseFeed(current,now);current=null;
-        if(!p.wireHash.equals(marker["wireHash"])||!p.contentHash.equals(marker["contentHash"])||p.validation!=marker["validation"]||!priorHash(priorFrom(p)).equals(marker["priorHash"])){return null;}
+        var observedPrior=priorFrom(p);var storedLaunch=marker["prior"][0]["launch"];
+        // Current-format projections created before MIN refresh targeting omit
+        // this derived field. Verify their original seal, then reconstruct it
+        // from the independently parsed current raw feed for the active view.
+        if(storedLaunch!=null&&!storedLaunch["timing"].hasKey("refresh_utc")&&observedPrior[0]["launch"]!=null){observedPrior[0]["launch"]["timing"].remove("refresh_utc");}
+        if(!p.wireHash.equals(marker["wireHash"])||!p.contentHash.equals(marker["contentHash"])||p.validation!=marker["validation"]||!priorHash(observedPrior).equals(marker["priorHash"])){return null;}
         // The inverse uses spans discovered by the FULL current-feed parser,
         // not cached positions. It must reproduce the unchanged durable raw.
         if(original!=null&&!hashReplaced(p.raw,p.ignored,original).equals(marker["rawHash"])){return null;}

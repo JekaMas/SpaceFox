@@ -25,6 +25,22 @@
     "tests/test_ux02_reuse.py": {
       "path": "openspec/changes/spacefox-watchface/evidence/release-cache-port/prior/test_ux02_reuse.py",
       "sha256": "b4f3d7fe1aeea2a5ef4e0a2910579b7e33c639b49da600db48e045af1c3b62c3"
+    },
+    "watchface/source/NativeCache.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/release-cache-port/prior/NativeCache.mc",
+      "sha256": "df4fe63556691734e561ccdcb8e499c97cbe40504db35567c03168f8646b621d"
+    },
+    "watchface/source/NativeFeed.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/release-cache-port/prior/NativeFeed.mc",
+      "sha256": "94164ebef3b3e53bc2e2d08fe4caef4014aeaf9574750028a005264e80ceb994"
+    },
+    "watchface/source/NativeForegroundApp.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/release-cache-port/prior/NativeForegroundApp.mc",
+      "sha256": "1a03f71384de226b9d5bba0ec75f33555ae1610df2fc8d3d90dcd99e3bd9b243"
+    },
+    "watchface/source/NativeForegroundCache.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/release-cache-port/prior/NativeForegroundCache.mc",
+      "sha256": "0ceb2a65a26d6d9b0924134a97aabe71515369bde0f004bd9df3ba0c17c28746"
     }
   },
   "sources": {
@@ -42,7 +58,7 @@
     },
     "tools/native_cache_port_requalification.py": {
       "path": "tools/native_cache_port_requalification.py",
-      "sha256": "56c793c5a2070608e1a2fa385c2d070f3748a8e1767432bd69be26850049d9b3"
+      "sha256": "7f29bacee638d48116b4f23591bb636a408405ba7d7030e1765b34cc573214c5"
     },
     "watchface/source/generated/NativeVersion.mc": {
       "path": "watchface/source/generated/NativeVersion.mc",
@@ -50,7 +66,23 @@
     },
     "tests/test_ux02_reuse.py": {
       "path": "tests/test_ux02_reuse.py",
-      "sha256": "f9528cb67df2a3c2ef564fabf06cb403ad40a2ba94e122ae1e7e93a18e50d2cf"
+      "sha256": "925b21d65fc1ddc5ad704df9983b1f87b6e6acca7ec6806e37d45a9e919b1d15"
+    },
+    "watchface/source/NativeCache.mc": {
+      "path": "watchface/source/NativeCache.mc",
+      "sha256": "6a708556c0035ed5cf49e3d6214b8d3df5c90d7bcdb60448022c857a71866f86"
+    },
+    "watchface/source/NativeFeed.mc": {
+      "path": "watchface/source/NativeFeed.mc",
+      "sha256": "95d83aa0df920020e13dfccb12b204ebe79c00d535b67a43f3f2df017fcf1f48"
+    },
+    "watchface/source/NativeForegroundApp.mc": {
+      "path": "watchface/source/NativeForegroundApp.mc",
+      "sha256": "e45bf81cebb89da46be678ae00d67046fdbaefcd4b3691c70f782211fb4f446f"
+    },
+    "watchface/source/NativeForegroundCache.mc": {
+      "path": "watchface/source/NativeForegroundCache.mc",
+      "sha256": "106c3649836c7b82f4ad47dc88df036224987ce50d014d2011019e88d1a54523"
     }
   },
   "cacheObservation": {

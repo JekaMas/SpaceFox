@@ -14,9 +14,10 @@ class NativeStore {
 
 (:typecheck(false))
 class NativePrior {
-    var identity;var publisher;var validation;var stale;var rescheduled;var contentHash;var wireHash;var timingKey;var recordHash;
-    function initialize(p){identity=p.launchId();publisher=p.document["publisher"];validation=p.validation;stale=p.stale;rescheduled=p.rescheduled;contentHash=p.contentHash;wireHash=p.wireHash;timingKey=p.timingKey;recordHash=p.recordHash;}
+    var identity;var refresh;var publisher;var validation;var stale;var rescheduled;var contentHash;var wireHash;var timingKey;var recordHash;
+    function initialize(p){identity=p.launchId();refresh=p.refreshTarget();publisher=p.document["publisher"];validation=p.validation;stale=p.stale;rescheduled=p.rescheduled;contentHash=p.contentHash;wireHash=p.wireHash;timingKey=p.timingKey;recordHash=p.recordHash;}
     function launchId(){return identity;}
+    function refreshTarget(){return refresh;}
 }
 
 // Foreground-only admission/storage owner. FeedService uses NativeTransfer,
@@ -65,14 +66,14 @@ class NativeCacheCore {
     }
     function priorFrom(packet){return [packet.priorDocument(),packet.timingKey,packet.recordHash];}
     function priorHash(prior){
-        var h=new NativeWireHash();var d=prior[0];var l=d["launch"];h.put("[\""+d["catalogDigest"]+"\",\""+prior[1]+"\",\""+prior[2]+"\",");h.scalar(l==null?null:l["launch_id"]);h.put(",");h.scalar(l==null?null:l["configuration_id"]);h.put(",");h.scalar(l==null?null:l["timing"]["exact_utc"]);var policy=d["refreshPolicy"];var keys=["normal_interval_seconds","near_interval_seconds","fast_interval_seconds","stale_cycles"];for(var i=0;i<keys.size();i+=1){h.put(",");h.scalar(policy[keys[i]]);}h.put("]");return h.digest();
+        var h=new NativeWireHash();var d=prior[0];var l=d["launch"];h.put("[\""+d["catalogDigest"]+"\",\""+prior[1]+"\",\""+prior[2]+"\",");h.scalar(l==null?null:l["launch_id"]);h.put(",");h.scalar(l==null?null:l["configuration_id"]);h.put(",");h.scalar(l==null?null:l["timing"]["exact_utc"]);if(l!=null&&l["timing"].hasKey("refresh_utc")){h.put(",");h.scalar(l["timing"]["refresh_utc"]);}var policy=d["refreshPolicy"];var keys=["normal_interval_seconds","near_interval_seconds","fast_interval_seconds","stale_cycles"];for(var i=0;i<keys.size();i+=1){h.put(",");h.scalar(policy[keys[i]]);}h.put("]");return h.digest();
     }
     function checkedProjection(marker,now){
         if(!(marker instanceof Dictionary)||marker["v"]!=6||!(marker["base"] instanceof String)||!marker["base"].equals(base)||!(marker["prior"] instanceof Array)||marker["prior"].size()!=3||!(marker["prior"][0] instanceof Dictionary)){return null;}
         var p=new NativeCachedPacket(marker);var d=marker["prior"][0];p.shape(d,["catalogDigest","refreshPolicy","launch"],[]);var l=d["launch"];var policy=d["refreshPolicy"];p.shape(policy,["normal_interval_seconds","near_interval_seconds","fast_interval_seconds","stale_cycles"],[]);
         if(!p.integer(marker["slot"])||marker["slot"]<0||marker["slot"]>2||!p.integer(marker["generation"])||marker["generation"]<1||!(marker["stale"] instanceof Boolean)||!(marker["rescheduled"] instanceof Boolean)||!hex(marker["seal"])||!hex(marker["rawHash"])||!hex(marker["wireHash"])||!hex(marker["contentHash"])||!hex(marker["priorHash"])||!hex(d["catalogDigest"])||!hex(p.recordHash)||!(p.timingKey instanceof String)||p.timingKey.length()>80){return null;}
         var pub=marker["publisher"];p.shape(pub,["instance","generation","selectionValidatedUtc"],[]);if(!hex(pub["instance"])||!p.integer(pub["generation"])||pub["generation"]<1||pub["generation"]>253402300799l||!p.utc(pub["selectionValidatedUtc"])||pub["selectionValidatedUtc"]>now){return null;}
-        if(l==null){if(marker["validation"]!=null){return null;}}else{p.shape(l,["launch_id","configuration_id","timing"],[]);p.shape(l["timing"],["exact_utc"],[]);if(!p.id(l["launch_id"],"launch",false)||!p.id(l["configuration_id"],"configuration",true)||l["timing"]["exact_utc"]!=null&&!p.utc(l["timing"]["exact_utc"])||!p.utc(marker["validation"])||marker["validation"]>pub["selectionValidatedUtc"]){return null;}}
+        if(l==null){if(marker["validation"]!=null){return null;}}else{p.shape(l,["launch_id","configuration_id","timing"],[]);p.shape(l["timing"],["exact_utc"],["refresh_utc"]);if(!p.id(l["launch_id"],"launch",false)||!p.id(l["configuration_id"],"configuration",true)||l["timing"]["exact_utc"]!=null&&!p.utc(l["timing"]["exact_utc"])||l["timing"].hasKey("refresh_utc")&&(l["timing"]["exact_utc"]!=null||!p.utc(l["timing"]["refresh_utc"]))||!p.utc(marker["validation"])||marker["validation"]>pub["selectionValidatedUtc"]){return null;}}
         if(l==null?!p.timingKey.equals("empty"):p.target()!=null?!p.timingKey.equals("exact:"+p.target()):!hex(p.timingKey)){return null;}
         var normal=policy["normal_interval_seconds"];var near=policy["near_interval_seconds"];var fast=policy["fast_interval_seconds"];if(!p.integer(normal)||normal<300||!p.integer(near)||near<300||near>normal||fast!=null&&(!p.integer(fast)||fast<300||fast>near)||!p.integer(policy["stale_cycles"])||policy["stale_cycles"]<1||!priorHash(marker["prior"]).equals(marker["priorHash"])||!seal(marker).equals(marker["seal"])){return null;}return p;
     }
@@ -121,7 +122,7 @@ class NativeCacheCore {
     function attempted(now){lastAttempt=now.toLong();try{store.write("sf.attempt",{"base"=>base,"utc"=>lastAttempt});return true;}catch(e){failure="storage-full";return false;}}
     function due(now){if(base.equals("")){return false;}var cadence=packet==null?3600:packet.interval(now);return lastAttempt==null||now<lastAttempt||now-lastAttempt>=cadence;}
     function nextWake(now){
-        if(requestWake!=null){return requestWake;}var interval=packet==null?3600:packet.interval(now);var remaining=lastAttempt==null||now<lastAttempt?0:interval-(now-lastAttempt);var next=remaining<=0?now:now+(remaining>86400?86400:remaining);var target=packet==null?null:packet.target();
+        if(requestWake!=null){return requestWake;}var interval=packet==null?3600:packet.interval(now);var remaining=lastAttempt==null||now<lastAttempt?0:interval-(now-lastAttempt);var next=remaining<=0?now:now+(remaining>86400?86400:remaining);var target=packet==null?null:packet.refreshTarget();
         if(target!=null){if(now<target-7200&&next>target-7200){next=target-7200;}else if(now<target+1801&&next>target+1801){next=target+1801;}}if(next<now){next=now;}if(next>now+86400){next=now+86400;}return next;
     }
 }
