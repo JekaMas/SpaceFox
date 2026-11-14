@@ -1,162 +1,14 @@
-# Локализация SpaceFox
+# SpaceFox localization
 
-Добавлены **36 языков × 36 UI-строк** — полный набор идентификаторов языков
-из [Connect IQ System API](https://developer.garmin.com/connect-iq/api-docs/Toybox/System.html),
-проверенный 10 ноября 2026 года. Это набор ресурсов проекта; доступность каждого
-языка в конкретной региональной прошивке Forerunner 165 ещё не подтверждена.
-Это не обещание поддержки всех языков мира: например, отдельного кода хинди в
-этом перечислении Garmin нет.
+English is the default; Auto and English, Russian, German, French and Spanish are offered in the menu. Retain all 36 internal language IDs and resources; the other 31 are best effort. UI translations remain drafts until reviewed. Provider mission names and source values retain their original text rather than being invented or translated as evidence.
 
-Все переводы имеют статус **draft**, `nativeQualified: false`. Проверка носителями языка остаётся отдельной необязательной оценкой. Обязательна
-проверка глифов, арабского соединения букв, RTL, реальных строк конечного корпуса
-и расхода памяти на Garmin для 26 основных режимов. Ни браузерная проверка, ни количество
-переведённых ключей не подтверждают нативную поддержку.
+Keep software, human translation and physical-device observations distinct. Use the finite real corpus and actual menu text described below, not arbitrary invented display names. The native watch, browser prototype and provider evidence have separate proof boundaries.
 
-## Языки
+## Editing resources
 
-| Язык | BCP-47 / файл | Connect IQ | Направление |
-| --- | --- | --- | --- |
-| English | `en` | `eng` | LTR |
-| Русский | `ru` | `rus` | LTR |
-| Deutsch | `de` | `deu` | LTR |
-| Français | `fr` | `fre` | LTR |
-| Español | `es` | `spa` | LTR |
-| Italiano | `it` | `ita` | LTR |
-| Português | `pt` | `por` | LTR |
-| Nederlands | `nl` | `dut` | LTR |
-| Polski | `pl` | `pol` | LTR |
-| Українська | `uk` | `ukr` | LTR |
-| Čeština | `cs` | `ces` | LTR |
-| Slovenčina | `sk` | `slo` | LTR |
-| Magyar | `hu` | `hun` | LTR |
-| Română | `ro` | `ron` | LTR |
-| Български | `bg` | `bul` | LTR |
-| Hrvatski | `hr` | `hrv` | LTR |
-| Slovenščina | `sl` | `slv` | LTR |
-| Ελληνικά | `el` | `gre` | LTR |
-| Türkçe | `tr` | `tur` | LTR |
-| Dansk | `da` | `dan` | LTR |
-| Svenska | `sv` | `swe` | LTR |
-| Norsk bokmål | `nb` | `nob` | LTR |
-| Suomi | `fi` | `fin` | LTR |
-| Eesti | `et` | `est` | LTR |
-| Latviešu | `lv` | `lav` | LTR |
-| Lietuvių | `lt` | `lit` | LTR |
-| 简体中文 | `zh-Hans` | `chs` | LTR |
-| 繁體中文 | `zh-Hant` | `cht` | LTR |
-| 日本語 | `ja` | `jpn` | LTR |
-| 한국어 | `ko` | `kor` | LTR |
-| العربية | `ar` | `ara` | RTL |
-| עברית | `he` | `heb` | RTL |
-| Bahasa Indonesia | `id` | `ind` | LTR |
-| Bahasa Melayu | `ms` | `zsm` | LTR |
-| Tiếng Việt | `vi` | `vie` | LTR |
-| ไทย | `th` | `tha` | LTR |
+`locales/catalog.json` is the language catalog and the adjacent JSON files own the strings. English defines keys and placeholders; preserve `{n}`, names of rockets, companies and official sites, and `Body Battery`. When changing a resource, preserve the keys and placeholders. Validate supported language IDs against Garmin's System API before changing their explicit set in `tools/localization.py`. Regional firmware availability of each ID remains unverified.
 
-## Редактирование и проверка
-
-`locales/catalog.json` — единственный каталог языков. Строки каждого языка находятся
-в соседнем JSON-файле. Английский задаёт набор ключей и подстановок; `Body Battery`,
-названия ракет, компаний и официальные названия площадок сохраняются как имена.
-Названия стран сокращены для круглого экрана. Исходные значения расписания и
-фитнес-полей в макете демонстрационные.
-
-1. Исправьте нужный JSON, сохранив ключи и подстановку `{n}`.
-2. Для нового кода языка обновите явный проверяемый набор кодов в
-   `tools/localization.py` после сверки с актуальной документацией Garmin.
-3. Выполните `python3 -B tools/build_preview.py` — он проверит ресурсы и обновит
-   оба HTML-файла из `prototype/mission.template.html`, `mission.js` и `i18n.js`.
-4. Откройте `prototype/index.html`, выберите язык и проверьте карту/глобус,
-   три ракеты, неизвестное время, перенос и устаревание вместе.
-
-Проверки без сторонних Python-пакетов (тестам выбора языка нужен установленный Node):
-
-```sh
-python3 -B -m unittest -v tests.test_foundation
-python3 -B tools/build_preview.py --check
-```
-
-`--check` ничего не пишет и обнаруживает устаревший HTML. Исходные переводы не
-заменяются английскими строками при сборке: отсутствие ключа вызывает ошибку.
-В интерфейсе неизвестный язык устройства/браузера приводит к английскому.
-Сохранённый поддерживаемый выбор имеет приоритет; затем проверяется список
-языков браузера. Китайский различает Hans/Hant, включая регионы TW/HK/MO.
-
-RTL применяется к тексту, а физический порядок Земля → ракета → сведения,
-географические координаты, часы, числовой отсчёт и порядок фитнес-полей сохраняются.
-При смене языка выбранные запуск, состояние расписания, карта и поля не сбрасываются.
-Макет сохраняет настройки локально в браузере; подключения к API запусков нет.
-Время берётся в Asia/Dubai для макета; нативная версия использует настройки часов.
-
-## Нативная версия
-
-`tools/build_native_localization.py` читает общий каталог и создаёт отдельный
-JSON-словарь для каждого из 36 языков, системные строки настроек и manifest.
-Коды каталога `chs`/`cht` соответствуют ресурсам Garmin `zhs`/`zht`. Генератор
-сохраняет FeedBaseUrl, проекцию карты/глобуса, анимацию и все четыре поля.
-Сохранённые Language=0 (English) и Language=1 (Русский) не меняют смысл;
-новое значение 36 означает Auto и используется для новой установки.
-
-`LocalePresentation` — общий владелец словаря и шрифтов активного экрана,
-AOD и служебного экрана обновления. Смена языка освобождает предыдущие ресурсы
-и загружает один словарь и два размера встроенного в Garmin шрифта языка
-вне отрисовки. Имена моделей и компаний, часы и числовые фитнес-поля используют
-общие латинские/числовые шрифты. Два общих Roboto-хэндла 22/26 px сохраняются
-между сменами языка; для Roboto-языков малый хэндл используется повторно. Шрифтовые файлы SDK в репозиторий не копируются.
-Семейства: RobotoRegular для латиницы, кириллицы и греческого;
-NotoNaskhArabicRegular для арабского, NotoSansHebrewRegular для иврита,
-NotoSansSCMedium для китайского, KosugiRegular для японского,
-NanumGothicBold для корейского, PridiRegular для тайского. Массив с RobotoRegular
-сам по себе не доказывает подстановку каждого отсутствующего глифа: для этого
-нужны реальные наблюдения в целевом профиле.
-
-Настройка `is24Hour` берётся из DeviceSettings; часы используют локальное время
-Garmin. Дата запуска с точностью до дня остаётся гражданской датой `date_utc`
-из расписания, без выдуманного точного времени или сдвига часового пояса.
-Порядок даты и разделитель групп разрядов заданы явно для каждого языка в
-генераторе; API отдельной пользовательской настройки этих двух форматов здесь
-не заявляется. Цифры используются ASCII. Полночь/полдень в 12-часовом режиме
-показываются как 12:xx. Число и единица арабского/ивритского отсчёта заключены
-в Unicode LRI/PDI, сохраняя последовательность дней, часов, минут и секунд.
-Текст не разворачивается по кодовым точкам. Обрезка должна сохранять графемы реально встречающихся строк конечного корпуса;
-старые нормативные Unicode-векторы не являются активным приёмочным барьером.
-
-Релизный manifest и рабочий выбор языка допускают только English и режимы
-из `supportPolicy.softwareQualifiedLocales` с проверенным доказательством
-конечной программной квалификации; English служит резервом. Пока проверка полноты
-реального корпуса и фактических наблюдений FR165 не реализована, допуск дополнительных
-языков закрыт: совпадения хешей и самоподтверждённого отчёта недостаточно.
-Режим квалификации тестового приложения позволяет проверить все 36 кандидатов без
-объявления их поддержанными в релизе. `nativeQualified`
-не выводится из числа ресурсов или языков в профиле SDK. Технические наблюдения
-FR165 Simulator API 5.2 / профиль 2502 отделены от проверки на физических
-WW/APAC-часах и от проверки переводов носителями языка. Все переводы остаются
-`draft`; human/native-speaker review не получен. Полный статус и незакрытые
-ограничения находятся в `evidence/native-localization/whole-apply/PROGRESS.md`
-основного изменения; задача 5.4 пока не закрыта.
-
-Оригинальные переводы SpaceFox распространяются по MIT. Сторонние имена,
-шрифты, география и библиотеки сохраняют собственные условия: см.
-`THIRD_PARTY_NOTICES.md`.
-
-## Основные языки: объём обязательной проверки (2026-11-13)
-
-Политика `locales/catalog.json#supportPolicy` выбирает 26 режимов из неизменного
-каталога `locales/catalog.json`: en, ru, de, fr, es, it, pt, nl, pl, uk, cs, hu, ro,
-el, tr, sv, zh-Hans, zh-Hant, ja, ko, ar, he, th, id, ms, vi. Это 25 языков,
-китайский в двух письменностях. bg, hr, sk, sl, da, nb, fi, et, lv, lt сохранены
-как best-effort: обязательную доводку отображения для них не требуем.
-Переводы, ресурсы и номера выбора всех 36 режимов сохранены.
-`python3 -B tools/language_support.py` показывает недостающие обязательные
-проверки отображения основных языков на реальном конечном корпусе. Проверка
-носителями языка необязательна и не наблюдалась; физические часы ещё не проверены
-и остаются отдельной границей приёмки продукта;
-принадлежность к основным языкам сама не меняет `nativeQualified` и не даёт
-допуск в manifest. Допуск требует отдельного проверенного software proof;
-непроверенные human/device-флаги не блокируют этот программный допуск.
-Целостность ввода/графем, обычный UI, предел 8192 байт и защита памяти/кэша
-остаются обязательными. Не расширяем матрицу ради редкого Unicode и произвольных
-смешанных письменностей в именах провайдера.
+For the browser foundation, `python3 -B tools/build_preview.py` validates resources and rebuilds the read-only preview and retained geometry data; `python3 -B tools/build_preview.py --check` checks those outputs without writing; the original Mission fragment remains a frozen historical fixture. `python3 -B -m unittest -v tests.test_foundation` exercises the foundation and needs existing Node. Browser results do not prove native display or physical support. The original language inventory and historical workflow remain in the previous public document linked below; current product requirements take precedence over old prototype choices.
 
 ## Current-only format and finite text qualification — 2026-11-13
 
@@ -193,3 +45,5 @@ admission use `supportPolicy.softwareQualifiedLocales` only after validation of 
 source-bound finite-corpus software proof; English remains the bootstrap fallback.
 Per-row `nativeQualified`, human and physical flags stay truthful and do not control
 software admission. Translations remain draft until actually reviewed.
+
+The [previous public document](https://github.com/JekaMas/SpaceFox/blob/59f16c43b453db0573a43d5ebec98a0b019a08fd/docs/LOCALIZATION.md) retains the original dated research and source links. Historical observations retain their original evidence boundaries.

@@ -1,61 +1,9 @@
-# «Миссия в фокусе»: верхний блок миссии
+# Historical browser study: mission header
 
-2026-11-11. По просьбе владельца сравниваются два способа собрать метаданные
-над временем. Основа — M2-31 с выбранной умеренно светлой картой.
-[Открыть сравнение](../prototype/relay/header.html).
+On 11 November 2026 the owner chose the rocket-and-company header with mission purpose on the next line, after comparing it with rocket-and-purpose above the company. The comparison used the moderately bright M2-31 map. The [browser comparison](../prototype/relay/header.html), [image](../openspec/changes/compose-brighter-geography/evidence/relay-header/two-options.jpg), [observations](../openspec/changes/compose-brighter-geography/evidence/relay-header/browser.json) and [summary](../openspec/changes/compose-brighter-geography/evidence/relay-header/summary.json) are historical; this selection did not establish native Garmin acceptance.
 
-![Слева ракета с задачей, справа ракета с компанией](../openspec/changes/compose-brighter-geography/evidence/relay-header/two-options.jpg)
+Long names wrap without shortening or reducing the font, hiding the decorative separator on a line break. The browser study recorded 28 new states (two variants × 14 RU/EN scenes), plus 14 prior controls reused after source and scene hash checks. The two variants retained 280 label comparisons and 196 fixed-label rectangle/style comparisons; no overlap, circle escape or semantic error was reported in that finite set. Minimum calculated contrast was 11.31 for the purpose pair and 13.37 for the company pair. The company fitted beside the rocket in 6/14 scenes, the purpose in 2/14. Metadata could cover roughly 23% more map signal in long-string cases or up to 2.5% less in others, without recoloring the map. These results are not a claim of universal readability.
 
-- **Ракета + компания:** `Falcon 9 · SpaceX`, ниже — `Связь`.
-- **Ракета + задача:** `Falcon 9 · Связь`, ниже — `SpaceX`.
+The designer performed this visual/browser review; human reading, the child's preference and native Garmin were not observed. This English condensation is not a rerun. The complete original authored report is available as the [previous public report](https://github.com/JekaMas/SpaceFox/blob/59f16c43b453db0573a43d5ebec98a0b019a08fd/docs/RELAY_HEADER.md); exact localized examples and raw observations retain their original values. Current requirements are in the [watch-face change](../openspec/changes/spacefox-watchface/design.md).
 
-Оба варианта переносят задачу в верхний блок и освобождают строку под временем.
-Первый рекомендован автором макета: модель и компания образуют одну сущность,
-а задача миссии получает отдельную строку. В последующем сообщении 2026-11-11
-владелец однозначно выбрал эту группировку. В переключателе сохранены оба варианта.
-Следующая [доработка полей и карты](FOCUS_LAYOUT.md) использует выбранный верх.
-Выбор группировки сам по себе не означает нативную приёмку Garmin.
-
-Пара помещается в одну строку, только если её измеренная ширина безопасна для
-верхней части круглого экрана. Длинные названия переходят в три строки без
-сокращений и уменьшения шрифта. Декоративная точка-разделитель при переносе
-скрывается. Все подписи сохраняют прежние Noto Sans и размеры; время — Barlow
-Condensed. Положение/размер времени, четырёх полей, ракеты, места и отсчёта,
-проекция и координата старта не меняются.
-
-## Проверка и компромиссы
-
-Измерены 28 новых состояний: два варианта × 14 RU/EN-сцен. Четырнадцать прежних
-контролей светлой карты использованы из сохранённого браузерного экспорта после
-проверки точного состава сцен и хешей исходников; они не пересняты как новые.
-
-В обоих вариантах:
-
-- Сохранены все исходные значения и стили шрифтов: 280 сравнений подписей.
-- Семь неподвижных подписей сохраняют полные прямоугольники/стили: 196 сравнений.
-- Совпадают геометрия переднего плана и пути/координаты географии.
-- На этом наборе нет наложений, выхода за круг и ошибок семантики.
-- Минимальный расчётный контраст текста — 11,31 у пары с задачей и 13,37 у пары
-  с компанией. Используется прежний консервативный DOM/SVG-измеритель.
-
-Цвета карты сохранены, но площадь, закрытая метаданными, меняется. Для длинных
-строк интегральный сигнал карты может снизиться примерно на 23% относительно
-предыдущей светлой версии; в отдельных сценах он повышается до 2,5%. Это
-изменение перекрытия, а не перекраска карты. Поэтому группировка не объявляется
-безусловным улучшением всей композиции. Под временем остаётся больше свободного
-пространства; поля намеренно не сдвигались в рамках этой проверки.
-
-В данном конечном наборе компания помещалась рядом с ракетой в 6 из 14 сцен,
-задача — в 2 из 14; остальные использовали перенос. Это описание выбранных
-сцен, не прогноз для всех реальных запусков.
-
-[Наблюдения](../openspec/changes/compose-brighter-geography/evidence/relay-header/browser.json)
-и [сводка](../openspec/changes/compose-brighter-geography/evidence/relay-header/summary.json)
-сохранены вместе с точными измеренными исходниками. После измерения уточнено
-только слово в подписи интерфейса: «яркость сохранена» → «цвета сохранены»;
-параметры и рендереры часов не менялись. Исходная светлая версия остаётся
-[отдельно доступной](../prototype/relay/index.html).
-
-Проверка визуальная и браузерная, выполнена автором макета. Человеческое чтение,
-предпочтения ребёнка и нативный Garmin не проверялись. Код, спецификация и отчёт
-распространяются по MIT; прежние лицензии шрифтов сохранены.
+The [previous public document](https://github.com/JekaMas/SpaceFox/blob/59f16c43b453db0573a43d5ebec98a0b019a08fd/docs/RELAY_HEADER.md) retains the original dated research and source links. Historical observations retain their original evidence boundaries.
