@@ -58,6 +58,68 @@ class MemoryHTTP:
 
 
 class CurrentMotionPublisherTest(unittest.TestCase):
+    def test_schedule_change_keeps_referenced_raster_and_rejects_omission(self):
+        # Replay an authentic record; only its technical schedule timestamps change.
+        with tempfile.TemporaryDirectory(prefix='spacefox-closure-') as tmp:
+            path = Path(tmp)
+            remote = path / 'remote.git'
+            source = path / 'source'
+            source.mkdir()
+            subprocess.run(['git', 'init', '--bare', '-q', str(remote)], check=True)
+            git(source, 'init', '-q')
+            git(source, 'config', 'user.name', 'Local qualification')
+            git(source, 'config', 'user.email', 'local@example.invalid')
+            git(source, 'commit', '--allow-empty', '-qm', 'source')
+            code = git(source, 'rev-parse', 'HEAD')
+            git(source, 'push', '-q', str(remote), 'HEAD:refs/heads/main')
+            store = GitState(str(remote))
+            try:
+                store.bootstrap(code)
+                pub = Publisher(store, code)
+                pub.reconcile(None)
+                row = captured_starship()
+                token = pub.reserve(pub.head, NOW, trigger='manual')
+                pub.accept_source(pub.head, token, (normalize_launch(row, NOW),), NOW, selection_validated_utc=NOW)
+                catalog = build_catalog(ROOT)
+                envelope = pub.publisher_envelope(NOW)
+                first, digest = build_artifact(pub.schedule, catalog, NOW, publisher=envelope, root=ROOT)
+                revision = pub.prepare(pub.head, NOW, first, digest, feed_publisher=envelope, artifact_profile=PROFILE)
+                self.assertEqual(pub.reconcile(revision), 'promoted')
+                changed = dict(row, net='2026-11-13T23:00:00Z', window_start='2026-11-13T23:00:00Z',
+                               last_updated='2026-11-13T07:20:00Z')
+                later = NOW + 3601
+                token = pub.reserve(pub.head, later, trigger='scheduled')
+                pub.accept_source(pub.head, token, (normalize_launch(changed, later),), later,
+                                  selection_validated_utc=later)
+                self.assertTrue(pub.schedule.entries[0].rescheduled)
+                pub = Publisher(store, code)
+                pub.reconcile(revision)
+                self.assertTrue(pub.schedule.entries[0].rescheduled)
+                self.assertEqual(pub.ledger['selection_validated_utc'], later)
+                envelope = pub.publisher_envelope(later)
+                second, digest = build_artifact(pub.schedule, catalog, later, publisher=envelope, root=ROOT)
+                self.assertEqual(json.loads(second['feed.json'])['launch']['timing']['source_net'], '2026-11-13T23:00:00Z')
+                self.assertEqual(json.loads(first['feed.json'])['launch']['timing']['source_net'], '2026-11-13T22:45:00Z')
+                first_feed = json.loads(first['feed.json'])
+                scene = json.loads(first[first_feed['visualSelection']['path']])
+                rocket = json.loads(first[scene['roles']['rocket']['descriptor']['path']])
+                raster = rocket['shards'][0]['path']
+                self.assertEqual(second[raster], first[raster])
+                broken = dict(second)
+                del broken[raster]
+                broken.pop(raster + '.txt', None)
+                before = pub.head
+                with self.assertRaises((ValueError, RuntimeError)):
+                    pub.prepare(before, later, broken, digest, feed_publisher=envelope, artifact_profile=PROFILE)
+                self.assertEqual(pub.head, before)
+                self.assertIsNone(pub.ledger['pending'])
+                pub.prepare(before, later, second, digest, feed_publisher=envelope, artifact_profile=PROFILE)
+                complete = delivery_files(pub, delivery(pub))
+                self.assertEqual(complete[raster], first[raster])
+                self.assertEqual(complete['feed.json'], second['feed.json'])
+            finally:
+                store.close()
+
     def test_operator_cli_prepares_current_artifact(self):
         import sys
         with tempfile.TemporaryDirectory(prefix='spacefox-operator-') as tmp:
