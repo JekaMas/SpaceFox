@@ -1,0 +1,31 @@
+{
+  "scope": "native-cache-budget-delta",
+  "status": "passed",
+  "base": "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole",
+  "sources": {
+    "watchface/source/NativeImmutable.mc": "9e057314adb88757e37009945bc8c6e99f6fcd8508daeff7c1154bcc9252c6a9",
+    "tools/native_language_policy.py": "ea13ea8c82a41b1cd6b15c8fad952bfc3bff297deb6a8aeda453d54f388721f6",
+    "tools/native_cache_requalification.py": "292149ac8206aecec18b32589808e86d27fe5e10cff0cb2ba4d3ad9aa319dda8"
+  },
+  "priorSnapshots": {
+    "watchface/source/NativeImmutable.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole/prior-NativeImmutable.mc.gz",
+      "sha256": "089ec0b26b2e9bff39aba33b874d7903001c93d3b03445e5a74c52fddd3039c5",
+      "sourceSha256": "6c4fa7e067a94b90a3461b9a69a8a512ee519a8c2b45df6f16b474ae5e213737"
+    },
+    "tools/native_language_policy.py": {
+      "path": "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole/prior-native_language_policy.py.gz",
+      "sha256": "29110bbc7b319f3f1aa054d3306646b722d6a0fd01c9d8018942ce5e99906bf3",
+      "sourceSha256": "a9f770f94629655e95746f91a8d28ce9c83033f1d79793eea40992e39832af95"
+    }
+  },
+  "evidence": {
+    "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole/abc/build.json": "797304040b9e5b7226da84d2330bd7bc3d9d3fdd560ecbe54387a65d4d75ddbb",
+    "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole/abc/Probe.mc": "5610d2f6b1c29cd94cbb495057bdc2416bfe9b1b0678bffbc46e421107b88521",
+    "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole/abc/stable-c.log": "3642e85973c29c65829e23b28af3d5b3558d67103fe7be79ff23e7df0fb809e2",
+    "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole/sdk-storage/build.json": "67018849583c01a644f2c8ab342e6f8adc37c8dcb35f96c73d7749c45754f70e",
+    "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole/sdk-storage/Probe.mc": "44cdf74df8381e832c987ba29e3cf8c96a3521e8a19abee344b57280a154b75a",
+    "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole/sdk-storage/final-r2.log": "950c8a9acb8e19564e0f70d18317ff1776fc288b09915780ad79226a7e3bd14b"
+  },
+  "boundary": "Controlled SDK cache/storage observations; retained prior typography and composed native evidence remain historical. No physical device, phone or Store claim."
+}
