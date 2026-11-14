@@ -1,4 +1,4 @@
-# UX03 apply evidence, in progress
+# UX03 bounded software evidence
 
 Scope: public-only branch, 0.1.7 source; Garmin SDK 9.3 on FR165 Music and FR965. This record does not establish phone installation, physical readability, Store delivery or independent review. The single task list remains `tasks.md`.
 
@@ -12,7 +12,7 @@ The actual 0.1.6 active fallback had clock ink y130–202, countdown y210–237,
 
 The native finite examples `active-under-minute-390.png` and `active-elapsed-390.png` show T−00:00:59 and T+00:15:01. The first elapsed fixture used `clock.now+-901.toLong()` and produced future remaining +901 (`elapsed-harness-red.log`, `active-elapsed-390-red.png`); explicit `clock.now-901l` produced −901 and T+ (`elapsed-final.log`). This was a test-input failure, not evidence of a production countdown failure.
 
-Still required before self-GREEN: final source-bound admission and clean-source signed 0.1.7 runtime evidence; 390/454 signed production programs with actual known state; graph/release checks as applicable; simulator owned-file restoration and lease release. A separate fresh verifier and root judgment remain required. Pending flag availability, unmatched bundled-map fallback, actual phone/watch installation and all physical checks remain explicitly open.
+**Historical checkpoint, before author self-GREEN:** final source-bound admission and clean-source signed 0.1.7 runtime evidence; 390/454 signed production programs with actual known state; graph/release checks as applicable; simulator owned-file restoration and lease release. A separate fresh verifier and root judgment remain required. Pending flag availability, unmatched bundled-map fallback, actual phone/watch installation and all physical checks remain explicitly open.
 
 Clean-source release admission test passed at `847e713b`. The first candidate export refused because the committed signing-identity history still named 0.1.5 while the actual published predecessor is 0.1.6; `candidate-predecessor-red.log` preserves that refusal. The public identity history is updated from the exact existing 0.1.6 receipt and package; the UUID/key are unchanged. This is a history correction, not a new Store submission.
 
@@ -29,3 +29,7 @@ Focused command `python -m unittest -v tests.test_ux03_admission tests.test_ux02
 Simulator cleanup: production-signed, production-UUID test-key, hosted, unit, visual and maintenance cleanup observers reported null temporal event and blank URL. Eleven pre-lease task-owned files were restored with matching SHA-256 and new task-owned files removed. A subsequent simulator restart changed the previously restored hosted IMT; the first maintenance cleanup mistakenly released the lease despite the failing hash check. That one file was immediately re-restored and all eleven hashes matched, and the incident is recorded in `signed/maintenance-cleanup.json`; the second bound run again verified the hashes and `signed/final-cleanup.json`. Other apps and shared `sys.nfm` were not overwritten. The canonical lease is released.
 
 Author software verdict is GREEN for this bounded group; independent verify/fix and root judgment are still required. No physical watch/phone installation, Store propagation/approval, power/battery acceptance, global catalog closure, or whole-product completion is claimed. Pending fallback flag remains deliberately unavailable until an identity-qualified SFR1M flag is admitted; points outside the matched bundled views await their own complete downloaded map.
+
+## Independent bounded software verification
+
+The fresh independent verifier reviewed the production change, native witnesses, image measurements and actual signed gallery, and reran the focused five tests successfully. The stale screenshot filename in `signed/receipt.json` is corrected to the actual loaded image. See [independent verification](../ux03-independent-final/VERIFY.md). The final clean-source export and root judgment are separate; external and pending-flag boundaries above remain open.

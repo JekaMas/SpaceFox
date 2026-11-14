@@ -430,3 +430,7 @@ The production-UUID controlled trace reproduced a pending-assets window in which
 ### UX03 author self-verify checkpoint
 
 The bounded author software group is GREEN at the source candidate `84d9da10`: source-bound pending and maintenance tests, measured 390/454 active/LOW captures, retained UX02 proof replay, strict OpenSpec, and an actual 0.1.7 signed-program full-scene SDK observation after manual temporal events. The exact local candidate and proof boundaries are recorded in [UX03 status](evidence/ux03/STATUS.md). The signed pending frame was not captured before asset activation and is not misclassified. Simulator cleanup and its briefly premature lease-release correction are documented; the lane is now released. Fresh independent verification/fix, final clean-source export and root judgment remain open; all physical and Store gates remain unobserved.
+
+### UX03 independent verification checkpoint
+
+The bounded software group is independently GREEN; focused current admission and pixel tests passed 5/5, and the retained native/signed witnesses were inspected. See [independent verification](evidence/ux03-independent-final/VERIFY.md). Final clean-source export and root judgment are separate; physical and Store acceptance remain open.
