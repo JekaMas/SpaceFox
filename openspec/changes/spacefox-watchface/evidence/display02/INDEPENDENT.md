@@ -16,3 +16,5 @@ replayed against its original owners. The tests compare the full required closur
 and check drift through the symlinked prior reconstruction. Nine focused admission
 and drift tests passed. Current test-key evidence does not prove production-signed
 runtime or physical watch behavior. LOW seconds remain a minute-rate snapshot.
+
+The first strict candidate export failed closed: `production update requires the committed latest release receipt/package`. The identity record still named 0.1.8 despite the actual published 0.1.9 receipt and package. It now names the verified 0.1.9 predecessor; no admission bypass was used.

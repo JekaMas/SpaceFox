@@ -7,6 +7,10 @@ stored recovery password have actual local restore/challenge evidence in
 the owner-held signing records. All copies remain on the same Mac; offsite
 and disaster recovery are not claimed.
 
+## Current candidate
+
+The 0.1.10 candidate follows the published 0.1.9 GitHub test prerelease using the same production identity. Its signed simulator observation and physical delivery remain separate gates. The owner last observed 0.1.6 on the watch; a queue acknowledgement does not establish installation.
+
 ## Historical test releases
 
 The signed [v0.1.0-test.1 GitHub prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.0-test.1)
