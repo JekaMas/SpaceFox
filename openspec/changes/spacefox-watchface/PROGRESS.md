@@ -462,3 +462,31 @@ observed submission/queue from unobserved phone/watch installation and public
 approval. The selected apply → independent verify/fix → root acceptance →
 integration/tag/publication iteration is complete. Physical testing remains
 the next external task; no physical checkbox or unrelated property is closed.
+
+## DELIVERY01 — actual phone/watch incident reopened
+
+Owner evidence after 0.1.7 submission shows the ordinary phone listing with
+0.1.2 release notes, the Beta listing with 0.1.3 release notes, no available
+updates, and a physical watch displaying Data not ready without a selected
+launch or countdown. Installed code identity is unknown; the phone notes alone
+do not identify the running binary. This invalidates delivery and end-to-end
+success claims. The previous software/SDK receipts retain only their measured
+boundaries. Upload/preview/queue success cannot close actual delivery.
+
+The raw owner photos contain personal activity readings and remain outside
+public Git. Preserve their local hashes; public evidence must retain only the
+necessary sanitized incident facts. One coherent apply/self-GREEN group owns
+reproducible RED delivery-admission and real public-feed/native-loading tests,
+the directly required fixes, affected specifications and truthful progress.
+Root investigates the actual Garmin installable/approved versus publisher
+preview versions and owns publication; the author owns production code/tests.
+A fresh independent verify/fix agent follows only after author self-GREEN.
+
+Acceptance requires identifying the corrected build actually executing on the
+physical watch and observing fresh selected launch data. Until those are
+observed, the incident and current goal remain NOT DONE. Manual simulator
+events, injected caches, publisher preview, HTTP200 queue acknowledgement and
+gallery images cannot satisfy that external gate. Do not invent a root cause,
+erase a valid cache, bump versions blindly or weaken a failing gate. Run only
+checks invalidated by the concrete owner/contract changes. Existing tasks
+2.2/3.2/6.1/7.2/7.3 remain the sole numbered task scope.
