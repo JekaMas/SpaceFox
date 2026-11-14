@@ -102,6 +102,22 @@ def source_state(root: Path) -> dict:
                         "missing historical admission source snapshot: " + name)
             else:
                 admission.add(name)
+        if "display02DeltaProof" in proof:
+            delta_path = proof["display02DeltaProof"]["path"]
+            require(delta_path in paths, "DISPLAY02 admission proof must be tracked")
+            delta = json.loads((root / delta_path).read_text())
+            admission.update((delta_path, delta["priorCatalog"]["path"]))
+            admission.update(delta["inputs"])
+            admission.update(item["path"] for item in delta["priorSnapshots"].values())
+            admission.update(item["path"] for item in delta["evidence"].values())
+            # Older delta inventories may name a now-retired source. The current
+            # validator reconstructs that exact path from its preserved snapshot.
+            for name, snapshot in delta["priorSnapshots"].items():
+                if name in admission and name not in paths:
+                    require(snapshot["path"] in paths and digest(root / snapshot["path"]) == snapshot["sha256"],
+                            "missing DISPLAY02 historical source snapshot: " + name)
+                    admission.remove(name)
+                    admission.add(snapshot["path"])
         admission.update(receipt["observations"])
         corpus_directory = PurePosixPath(proof["corpusPath"]).parent
         admission.update(name for name in paths if PurePosixPath(name).is_relative_to(corpus_directory))

@@ -18,7 +18,7 @@ class DeliveryAdmission(unittest.TestCase):
                        ROOT/'openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-sleep-final-receipt.json'):
             def changed(path):
                 raw=real(path)
-                return raw+b'\nchanged' if path == target else raw
+                return raw+b'\nchanged' if path.resolve() == target.resolve() else raw
             with self.subTest(target=target), patch.object(Path,'read_bytes',changed):
                 with self.assertRaises(ValueError): software_locales(ROOT)
 
@@ -40,6 +40,15 @@ class DeliveryAdmission(unittest.TestCase):
         required |= set(cache['sources'])
         required |= {item['path'] for item in cache['priorSnapshots'].values()}
         required |= {item['path'] for item in cache['evidence'].values()}
+        display_path = 'openspec/changes/spacefox-watchface/evidence/display02/display02-delta.json'
+        display = json.loads((ROOT/display_path).read_text())
+        required |= {display_path, display['priorCatalog']['path']} | set(display['inputs'])
+        required |= {item['path'] for item in display['priorSnapshots'].values()}
+        required |= {item['path'] for item in display['evidence'].values()}
+        for name, snapshot in display['priorSnapshots'].items():
+            if name in required and not (ROOT/name).is_file():
+                required.remove(name)
+                required.add(snapshot['path'])
         self.assertFalse(required - set(inputs), sorted(required - set(inputs)))
 
 if __name__ == '__main__': unittest.main()
