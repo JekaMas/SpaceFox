@@ -21,7 +21,7 @@ class NativeIncoming {
         needsRestore=false;restoreSeal=cache.commit instanceof Dictionary?cache.commit["seal"]:null;
         var pending=store.read("sf.incoming.feed");var done=store.read("sf.incoming.feed.processed");if(!(pending instanceof Dictionary)||cache.packet!=null&&pending["sha256"] instanceof String&&done instanceof String&&token(pending).equals(done)){return false;}
         var commitKey=cache.commitKey;cache.releaseForTransfer(now);var accepted=false;
-        var row=null;try{row=read("feed",cache.packet==null);if(row!=null&&row[0]["kind"] instanceof String&&row[0]["kind"].equals("feed")){accepted=cache.accept(takeRaw(row),now);if(!accepted&&!cache.failure.equals("")){try{store.write("sf.sync.admission",{"base"=>base,"reason"=>cache.failureReason});}catch(e){}}else if(accepted){try{store.remove("sf.sync.admission");}catch(e){}}if(accepted||!cache.failure.equals("admission-retry")){processed("feed",row[0]);}}}catch(e){NativeMetrics.failure(e.getErrorMessage());}
+        var row=null;try{row=read("feed",cache.packet==null);if(row!=null&&row[0]["kind"] instanceof String&&row[0]["kind"].equals("feed")){accepted=cache.accept(takeRaw(row),now);if(accepted||!cache.failure.equals("admission-retry")){processed("feed",row[0]);}}}catch(e){}
         row=null;pending=null;done=null;
         // A failed promotion restores the FULL durable feed under loaded UI
         // residency. Release reconstructible view state before strict old8KiB
@@ -30,6 +30,6 @@ class NativeIncoming {
         // outside redraw. Durable raw, age, floor and accepted seal stay intact.
         // Successful source-only admission keeps its completed bitmap.
         if(!accepted){if(view!=null){view.clearForRestore();}cache.packet=null;cache.commit=null;cache.commitKey=commitKey;if(view==null){cache.restoreAccepted(now,restoreSeal);}else{needsRestore=true;}}
-        NativeMetrics.sample("foreground-feed-admission");return accepted;
+        return accepted;
     }
 }

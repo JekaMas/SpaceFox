@@ -7,7 +7,7 @@ import Toybox.Test;
  Test.assert(view.context!=null);
  Test.assert(view.context.launchId.equals("accepted-launch"));
  Test.assert(view.context.rocket.equals("Vulcan VC6L"));
- Test.assert(view.snapshot().remaining!=null);
+ Test.assert(!view.snapshot().countdown.equals("--:--:--"));
  logger.debug("UX_RESTORE acceptedMetadata=true schedule=true errorDoesNotReplace=true");return true;
 }
 

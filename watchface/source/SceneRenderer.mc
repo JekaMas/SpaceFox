@@ -11,17 +11,16 @@ class SceneRenderer {
     var marker as Graphics.BitmapType;
     var art as Graphics.BitmapType or Null;
     var map as Graphics.BitmapType or Null;
+    var mapScale as Dictionary;
     var pin as Boolean = false;
     var pinX as Number = 335; var pinY as Number = 165;
     var fullContext as SceneContext or Null;
     var downloaded as NativeVisualRenderer or Null=null;
-    var syncStatus as String="waiting";
-    var syncDetail as String="";
     var resourceLoads as Number = 0;
     (:extendedCode)
     function initialize(owner as LocalePresentation or Null) {
         presentation=owner==null?new LocalePresentation():owner;
-        fonts = {};icons={};
+        fonts = {};icons={};var transform=new Graphics.AffineTransform();transform.scale(2.0,2.0);mapScale={:transform=>transform,:filterMode=>Graphics.FILTER_MODE_BILINEAR};
         var roles=["steps","energy","heart","stress","calories","battery"];
         for(var i=0;i<roles.size();i+=1){icons[roles[i]]=load(NativeAssets.icons[roles[i]] as ResourceId) as Graphics.BitmapType;}
         marker=load(Rez.Drawables.LaunchMarker) as Graphics.BitmapType;
@@ -84,14 +83,11 @@ class SceneRenderer {
         dc.drawText(x, y, font, content, Graphics.TEXT_JUSTIFY_CENTER);
         return content;
     }
-    function active(dc as Graphics.Dc, current as ClockSnapshot, settings as SceneSettings, values as Dictionary<String, Number or Null>, fitness as Fitness, progress as Float) as Void {
+    (:typecheck(false)) function active(dc as Graphics.Dc, current as ClockSnapshot, settings as SceneSettings, values as Dictionary<String, Number or Null>, fitness as Fitness, progress as Float) as Void {
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK); dc.clear();
         var rich=downloaded instanceof NativeSfrRenderer?downloaded:null;
-        if(rich!=null){rich.drawBackground(dc,settings,marker);}else if (map != null) { dc.drawBitmap(0,0,map); }
-        if (rich==null&&pin) {
-            // Accepted 28px ring, centered on the matching map projection.
-            dc.drawBitmap(pinX-14,pinY-14,marker);
-        }
+        // The same catalog-derived map stays selected before and after artwork.
+        if(map!=null){dc.drawBitmap2(0,0,map,mapScale);}
         var context = fullContext;
         if (context != null) {
             // Match the existing unavailable health marker without changing the
@@ -114,10 +110,6 @@ class SceneRenderer {
             if(gap>0){text(dc,left+rocketWidth+8,47,fonts["nameSmall"] as Graphics.FontType,"·",0x96B8C9,16,1);}
             text(dc,left+rocketWidth+gap+operatorWidth/2,47,fonts["nameSmall"] as Graphics.FontType,operatorTitle,0xD4DFEB,238,1);
             text(dc,195,70,(fonts["small"] as Graphics.FontType),purposeText,0xD4DFEB,282,1);
-            // Optional art can fail after schedule admission. Expose the bounded
-            // reason until the matching visual is ready, without changing the
-            // selected mission or the independent countdown status colors.
-            if(downloaded==null&&(syncStatus.equals("assetFailed")||syncStatus.equals("incomplete")&&syncDetail.equals("Assets"))){text(dc,195,345,(fonts["small"] as Graphics.FontType),presentation.assetStatus(syncStatus,syncDetail),0xD4DFEB,175,1);}
             var ascent = progress > 0 && progress < 1 ? (progress * 9).toNumber() : 0;
             if(downloaded!=null&&downloaded.bitmap!=null){downloaded.draw(dc,progress,ascent);}else{dc.drawBitmap(22,118-ascent,art as Graphics.BitmapType);}
             // Flags and operator marks are never attached to the rocket.
@@ -134,15 +126,11 @@ class SceneRenderer {
             if(flag!=null){dc.drawBitmap(footerLeft,325,flag as Graphics.BitmapType);}
             text(dc,footerLeft+flagWidth+footerWidth/2,319,footerFont,footer,0xD4DFEB,footerBudget,1);
         }
-        if(context==null){
-            text(dc,195,50,fonts["small"] as Graphics.FontType,presentation.syncStatus(syncStatus),0xD4DFEB,282,1);
-            if(!syncDetail.equals("")){text(dc,195,75,fonts["small"] as Graphics.FontType,syncDetail,0xAFC3CE,282,1);}
-            if(art!=null){dc.drawBitmap(22,118,art as Graphics.BitmapType);}
-        }
+        if(context==null && art!=null){dc.drawBitmap(22,118,art as Graphics.BitmapType);}
         if(current.localCalendar!=null){text(dc,195,95,presentation.calendarFont as Graphics.FontType,presentation.calendar(current.localCalendar as Array<Number>),0xD4DFEB,200,1);}
         text(dc,195,109,(fonts["time"] as Graphics.FontType),current.localTime,settings.clockColor,250,1);
         var color = (current.rescheduled || context != null && context.rescheduled) ? 0xF3C37A : settings.countdownColor;
-        var countdownLabel=displayCountdown(current,settings);
+        var countdownLabel=current.countdown;
         var countFont = dc.getTextWidthInPixels(countdownLabel,fonts["count"] as Graphics.FontType) > 275 ? (fonts["small"] as Graphics.FontType) : (fonts["count"] as Graphics.FontType);
         var shown = text(dc,195,202,countFont,countdownLabel,color,275,1);
         if ((current.stale || context != null && context.stale)) { underline(dc,195,241,dc.getTextWidthInPixels(shown,countFont),color); }
@@ -155,9 +143,7 @@ class SceneRenderer {
             icon(dc,left-(role.equals("battery")?31:25),rowTop+(role.equals("battery")?2:5),role);
             text(dc,left+width/2,y,fonts["metric"] as Graphics.FontType,label,settings.fieldColors[i],128,1);
         }
-    }
-    function displayCountdown(current as ClockSnapshot,settings as SceneSettings) as String {
-        return presentation.countdown(current,true);
+        if(pin){dc.drawBitmap(pinX-14,pinY-14,marker);}
     }
     function metricText(fitness as Fitness,values as Dictionary<String,Number or Null>,role as String,settings as SceneSettings) as String {
         return presentation.metric(fitness,values,role);
@@ -176,7 +162,7 @@ class SceneRenderer {
     }
 }
 
-// Shared by complete rendering and deferred-admission maintenance. The caller
+// LOW rendering uses the same clock snapshot as the active scene. The caller
 // owns the once-per-minute guard; fonts/dictionary are prepared outside redraw.
 module SceneAod {
     function draw(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,presentation as LocalePresentation,font as Graphics.FontType,settings as SceneSettings) as Void {
@@ -184,20 +170,20 @@ module SceneAod {
         var positions=[[-1,-1],[1,-1],[-1,1],[1,1]];var phase=((minute%4+4)%4).toNumber();var p=positions[phase];
         dc.setColor(settings.clockColor,Graphics.COLOR_TRANSPARENT);
         // Monospaced advance boxes do not imply symmetric digit ink. The
-        // bundled AOD atlas has 67px advances; these are the fully lit left
+        // bundled AOD atlas has 68px advances; these are the fully lit left
         // and exclusive right edges of each digit. Center actual time ink,
         // then apply at most one pixel of minute-based burn-in movement.
-        var leftEdges=[7,10,5,5,4,7,6,5,6,6];
-        var rightEdges=[61,46,62,60,63,62,62,62,61,60];
+        var leftEdges=[7,11,5,5,4,7,7,5,7,6];
+        var rightEdges=[62,47,63,61,64,62,63,63,61,61];
         var first="0123456789".find(current.localTime.substring(0,1) as String);
         var last="0123456789".find(current.localTime.substring(4,5) as String);
-        var correction=first==null||last==null?0:(68-leftEdges[first as Number]-rightEdges[last as Number])/2;
+        var correction=first==null||last==null?0:(69-leftEdges[first as Number]-rightEdges[last as Number])/2;
         dc.drawText(195+p[0]+correction,123+p[1],font,current.localTime,Graphics.TEXT_JUSTIFY_CENTER);
         var calendarFont=presentation.aodContextFont as Graphics.FontType;
         if(current.localCalendar!=null){dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],98+p[1],calendarFont,presentation.calendar(current.localCalendar as Array<Number>),Graphics.TEXT_JUSTIFY_CENTER);}
         var color=current.rescheduled?0xF3C37A:settings.countdownColor;
         var countFont=presentation.aodContextFont as Graphics.FontType;
-        var value=presentation.fit(dc,presentation.countdown(current,false),countFont,300);
+        var value=presentation.fit(dc,current.countdown,countFont,300);
         dc.setColor(color,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],247+p[1],countFont,value,Graphics.TEXT_JUSTIFY_CENTER);
         dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],286+p[1],presentation.aodBatteryFont as Graphics.FontType,current.battery,Graphics.TEXT_JUSTIFY_CENTER);
         if(current.stale){dc.setColor(color,Graphics.COLOR_TRANSPARENT);var width=dc.getTextWidthInPixels(value,countFont);for(var x=195+p[0]-width/2;x<=195+p[0]+width/2;x+=5){dc.fillCircle(x,287+p[1],1);}}

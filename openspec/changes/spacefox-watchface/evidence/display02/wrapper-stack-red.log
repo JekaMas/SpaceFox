@@ -1,0 +1,165 @@
+------------------------------------------------------------------------------
+Executing test displaySeed73...
+
+Error: Stack Overflow Error
+Details: Failed invoking <symbol>
+Stack: 
+  - peek() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:27 0x5000942b 
+  - need() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:32 0x50009197 
+  - string() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:62 0x5000877a 
+  - rowKey() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:40 0x50009540 
+  - object() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:38 0x5000961f 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:34 0x50009108 
+  - object() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:38 0x50009716 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:34 0x50009108 
+  - object() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:38 0x50009716 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:34 0x50009108 
+  - object() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:38 0x50009716 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:34 0x50009108 
+  - parse() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:25 0x500092c5 
+  - parse() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeBridgeFeed.mc:24 0x50007db3 
+  - initialize() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeFeed.mc:6 0x100076d1 
+  - initialize() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeBridgeFeed.mc:18 0x50008410 
+  - parseFeed() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeForegroundCache.mc:7 0x500079a7 
+  - readCommit() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeForegroundCache.mc:14 0x50007692 
+  - load() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeCache.mc:49 0x50001f28 
+  - displayEventSequence() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/display02-tests/Display02Tests.mc:60 0x1000590f 
+  - displaySeed73() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/display02-tests/Display02Tests.mc:73 0x10002ff9 
+  - evaluate_test_entries_0_to_10() at /Users/jekamas/.codex/tmp/spacefox-display02-author/gen/006-B4432-00/source/UnitTests.mcgen:60 0x10009198 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-display02-author/gen/006-B4432-00/source/UnitTests.mcgen:93 0x10009328 
+ERROR
+------------------------------------------------------------------------------
+Executing test displaySeed191...
+
+Error: Stack Overflow Error
+Details: Failed invoking <symbol>
+Stack: 
+  - peek() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:27 0x5000942b 
+  - need() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:32 0x50009197 
+  - string() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:62 0x5000877a 
+  - rowKey() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:40 0x50009540 
+  - object() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:38 0x5000961f 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:34 0x50009108 
+  - object() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:38 0x50009716 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:34 0x50009108 
+  - object() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:38 0x50009716 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:34 0x50009108 
+  - object() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:38 0x50009716 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:34 0x50009108 
+  - parse() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:25 0x500092c5 
+  - parse() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeBridgeFeed.mc:24 0x50007db3 
+  - initialize() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeFeed.mc:6 0x100076d1 
+  - initialize() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeBridgeFeed.mc:18 0x50008410 
+  - parseFeed() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeForegroundCache.mc:7 0x500079a7 
+  - readCommit() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeForegroundCache.mc:14 0x50007692 
+  - load() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeCache.mc:49 0x50001f28 
+  - displayEventSequence() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/display02-tests/Display02Tests.mc:60 0x1000590f 
+  - displaySeed191() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/display02-tests/Display02Tests.mc:74 0x10002bdf 
+  - evaluate_test_entries_0_to_10() at /Users/jekamas/.codex/tmp/spacefox-display02-author/gen/006-B4432-00/source/UnitTests.mcgen:62 0x100091b3 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-display02-author/gen/006-B4432-00/source/UnitTests.mcgen:93 0x10009328 
+ERROR
+------------------------------------------------------------------------------
+Executing test displaySeed433...
+
+Error: Stack Overflow Error
+Details: Failed invoking <symbol>
+Stack: 
+  - peek() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:27 0x5000942b 
+  - need() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:32 0x50009197 
+  - string() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:62 0x5000877a 
+  - rowKey() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:40 0x50009540 
+  - object() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:38 0x5000961f 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:34 0x50009108 
+  - object() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:38 0x50009716 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:34 0x50009108 
+  - object() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:38 0x50009716 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:34 0x50009108 
+  - object() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:38 0x50009716 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:34 0x50009108 
+  - parse() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:25 0x500092c5 
+  - parse() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeBridgeFeed.mc:24 0x50007db3 
+  - initialize() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeFeed.mc:6 0x100076d1 
+  - initialize() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeBridgeFeed.mc:18 0x50008410 
+  - parseFeed() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeForegroundCache.mc:7 0x500079a7 
+  - readCommit() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeForegroundCache.mc:14 0x50007692 
+  - load() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeCache.mc:49 0x50001f28 
+  - displayEventSequence() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/display02-tests/Display02Tests.mc:60 0x1000590f 
+  - displaySeed433() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/display02-tests/Display02Tests.mc:75 0x10003f32 
+  - evaluate_test_entries_0_to_10() at /Users/jekamas/.codex/tmp/spacefox-display02-author/gen/006-B4432-00/source/UnitTests.mcgen:64 0x100091ce 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-display02-author/gen/006-B4432-00/source/UnitTests.mcgen:93 0x10009328 
+ERROR
+------------------------------------------------------------------------------
+Executing test displaySeed719...
+
+Error: Stack Overflow Error
+Details: Failed invoking <symbol>
+Stack: 
+  - peek() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:27 0x5000942b 
+  - need() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:32 0x50009197 
+  - string() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:62 0x5000877a 
+  - rowKey() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:40 0x50009540 
+  - object() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:38 0x5000961f 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:34 0x50009108 
+  - object() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:38 0x50009716 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:34 0x50009108 
+  - object() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:38 0x50009716 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:34 0x50009108 
+  - object() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:38 0x50009716 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:34 0x50009108 
+  - parse() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeJson.mc:25 0x500092c5 
+  - parse() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeBridgeFeed.mc:24 0x50007db3 
+  - initialize() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeFeed.mc:6 0x100076d1 
+  - initialize() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeBridgeFeed.mc:18 0x50008410 
+  - parseFeed() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeForegroundCache.mc:7 0x500079a7 
+  - readCommit() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeForegroundCache.mc:14 0x50007692 
+  - load() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/NativeCache.mc:49 0x50001f28 
+  - displayEventSequence() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/display02-tests/Display02Tests.mc:60 0x1000590f 
+  - displaySeed719() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/display02-tests/Display02Tests.mc:76 0x10004142 
+  - evaluate_test_entries_0_to_10() at /Users/jekamas/.codex/tmp/spacefox-display02-author/gen/006-B4432-00/source/UnitTests.mcgen:66 0x100091e9 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-display02-author/gen/006-B4432-00/source/UnitTests.mcgen:93 0x10009328 
+ERROR
+------------------------------------------------------------------------------
+Executing test displayRealSiteMarker...
+DEBUG (03:06): MARKER real Starbase and captured Launch Area 96A; missing point rejected
+PASS
+------------------------------------------------------------------------------
+Executing test displayCapturedZhuqueMarker...
+DEBUG (03:06): CAPTURED_ZHUQUE pin=true
+PASS
+------------------------------------------------------------------------------
+Executing test displayAssetJobSequence...
+DEBUG (03:06): JOB replace request duplicate begin cancel staleComplete fail blocked retry newBatch complete
+PASS
+------------------------------------------------------------------------------
+Executing test displayPairedInputs...
+DEBUG (03:06): PAIR utc=1794433377 target=1794609900 active=T- 49:02:03 low=T- 49:02:03 oracle=T- 49:02:03
+DEBUG (03:06): PAIR utc=1794609841 target=1794609900 active=T- 00:00:59 low=T- 00:00:59 oracle=T- 00:00:59
+DEBUG (03:06): PAIR utc=1794609900 target=1794609900 active=T+ 00:00:00 low=T+ 00:00:00 oracle=T+ 00:00:00
+DEBUG (03:06): PAIR utc=1794609901 target=1794609900 active=T+ 00:00:01 low=T+ 00:00:01 oracle=T+ 00:00:01
+DEBUG (03:06): PAIR utc=1794610801 target=1794609900 active=T+ 00:15:01 low=T+ 00:15:01 oracle=T+ 00:15:01
+PASS
+------------------------------------------------------------------------------
+Executing test displayBatchRetry...
+DEBUG (03:06): BATCH_RETRY sameBatchNoMutation=true newSerialApplied=true staleCompletionRejected=true
+PASS
+------------------------------------------------------------------------------
+Executing test displayHighBeforeShow...
+DEBUG (03:06): HIGH_BEFORE_SHOW productionReloadWired=true completedBatch=true queued=true timer=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+displaySeed73                       ERROR
+displaySeed191                      ERROR
+displaySeed433                      ERROR
+displaySeed719                      ERROR
+displayRealSiteMarker               PASS
+displayCapturedZhuqueMarker         PASS
+displayAssetJobSequence             PASS
+displayPairedInputs                 PASS
+displayBatchRetry                   PASS
+displayHighBeforeShow               PASS
+Ran 10 tests
+
+FAILED (passed=6, failed=0, errors=4)

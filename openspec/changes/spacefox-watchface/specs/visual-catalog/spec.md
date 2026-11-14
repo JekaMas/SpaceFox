@@ -248,7 +248,7 @@ with assets from an unaccepted version.
 
 #### Scenario: New launch arrives before optional artwork
 - **WHEN** valid new schedule metadata arrives while its optional model/map assets are still downloading
-- **THEN** time/status/identity activate with a compatible generic or no-point fallback, never a previous model's image relabeled as the new rocket, and optional artwork cannot indefinitely block schedule freshness
+- **THEN** time/status/identity activate in the normal scene with a source-qualified point on its matching map for a covered fixed site, and generic rocket art where necessary; no old model is relabeled and optional artwork cannot indefinitely block schedule freshness
 
 ### Requirement: Redistributable asset provenance
 
@@ -315,8 +315,10 @@ The sole schema-3 native-motion-v3 envelope at /feed.json SHALL preserve selecte
 facts, typed role/entity/art identity, source provenance and source-validation age.
 Only the selected dependencies SHALL enter bounded immutable SFR1M delivery.
 Raw object bytes/path/size and decoded pixel integrity SHALL be checked separately.
-Optional visual work SHALL allow prompt valid schedule activation with generic or
-no-point fallback; an old same-ID image SHALL NOT be relabeled as new art.
+Optional visual work SHALL allow prompt valid schedule activation in the normal
+scene with its matching source-qualified point for a covered fixed site; unknown
+or mobile-reference sites remain unmarked. An old same-ID image SHALL NOT be
+relabeled as new art.
 A content-only change SHALL allocate a monotonic pending generation without
 provider polling or renewing source age. Recovery SHALL reuse exact durable bytes.
 Complete current and recoverable same-format closure and exact HTTPS readback
@@ -327,7 +329,7 @@ No v1/v2 endpoints, old exporter, legacy archive or transition-period gate appli
 
 #### Scenario: Corrupt or replayed optional visual dependency
 - **WHEN** a selected descriptor, object, index or immutable reference is missing, corrupt, stale or unsupported
-- **THEN** complete-closure admission rejects it without replacing accepted state, while a consumer can activate valid schedule metadata with explicit generic/no-point fallback
+- **THEN** complete-closure admission rejects it without replacing accepted state, while valid schedule metadata can activate in the normal scene with a matching covered fixed-site point and generic rocket art if needed
 
 ### Requirement: Finite native full visual profile
 

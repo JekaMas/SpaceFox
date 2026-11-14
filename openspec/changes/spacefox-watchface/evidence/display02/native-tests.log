@@ -1,0 +1,49 @@
+------------------------------------------------------------------------------
+Executing test displayEventSequence...
+DEBUG (03:31): DISPLAY02 seed=73 generated=drawHigh,drawHigh,drawLow,drawLow,off,off,off,drawHigh,drawHigh,off,drawLow,drawLow,drawLow,off,drawLow,drawHigh, applied=33 observed_no_mutation=13 includes_rejected=1 skipped=0
+DEBUG (03:31): DISPLAY02 seed=191 generated=drawLow,off,drawLow,drawHigh,drawLow,drawLow,drawLow,drawHigh,off,drawLow,off,off,drawHigh,off,drawHigh,drawHigh, applied=34 observed_no_mutation=12 includes_rejected=1 skipped=0
+DEBUG (03:31): DISPLAY02 seed=433 generated=off,off,drawHigh,drawLow,drawLow,off,drawLow,drawLow,drawLow,off,drawHigh,drawHigh,drawLow,drawHigh,drawHigh,drawHigh, applied=34 observed_no_mutation=12 includes_rejected=1 skipped=0
+DEBUG (03:31): DISPLAY02 seed=719 generated=off,drawLow,drawHigh,off,off,drawHigh,drawLow,off,drawLow,off,drawLow,off,off,off,drawHigh,drawLow, applied=32 observed_no_mutation=14 includes_rejected=1 skipped=0
+PASS
+------------------------------------------------------------------------------
+Executing test displayRealSiteMarker...
+DEBUG (03:31): MARKER real Starbase and captured Launch Area 96A; missing point rejected
+PASS
+------------------------------------------------------------------------------
+Executing test displayCapturedZhuqueMarker...
+DEBUG (03:31): CAPTURED_ZHUQUE pin=true
+PASS
+------------------------------------------------------------------------------
+Executing test displayAssetJobSequence...
+DEBUG (03:31): JOB replace request duplicate begin cancel staleComplete fail blocked retry newBatch complete
+PASS
+------------------------------------------------------------------------------
+Executing test displayPairedInputs...
+DEBUG (03:31): PAIR utc=1794433377 target=1794609900 active=T- 49:02:03 low=T- 49:02:03 oracle=T- 49:02:03
+DEBUG (03:31): PAIR utc=1794609841 target=1794609900 active=T- 00:00:59 low=T- 00:00:59 oracle=T- 00:00:59
+DEBUG (03:31): PAIR utc=1794609900 target=1794609900 active=T+ 00:00:00 low=T+ 00:00:00 oracle=T+ 00:00:00
+DEBUG (03:31): PAIR utc=1794609901 target=1794609900 active=T+ 00:00:01 low=T+ 00:00:01 oracle=T+ 00:00:01
+DEBUG (03:31): PAIR utc=1794610801 target=1794609900 active=T+ 00:15:01 low=T+ 00:15:01 oracle=T+ 00:15:01
+PASS
+------------------------------------------------------------------------------
+Executing test displayBatchRetry...
+DEBUG (03:31): BATCH_RETRY sameBatchNoMutation=true newSerialApplied=true staleCompletionRejected=true
+PASS
+------------------------------------------------------------------------------
+Executing test displayHighBeforeShow...
+DEBUG (03:31): HIGH_BEFORE_SHOW productionReloadWired=true completedBatch=true queued=true timer=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+displayEventSequence                PASS
+displayRealSiteMarker               PASS
+displayCapturedZhuqueMarker         PASS
+displayAssetJobSequence             PASS
+displayPairedInputs                 PASS
+displayBatchRetry                   PASS
+displayHighBeforeShow               PASS
+Ran 7 tests
+
+PASSED (passed=7, failed=0, errors=0)

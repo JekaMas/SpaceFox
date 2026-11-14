@@ -69,51 +69,11 @@ class LocalePresentation {
         if(key.equals("day")){return "d";}if(key.equals("hour")){return "h";}if(key.equals("minute")){return "m";}if(key.equals("second")){return "s";}
         return "Time unknown";
     }
-    function syncStatus(stage as String) as String {
-        if(locale.equals("ru")){
-            if(stage.equals("url")){return "Нет адреса данных";}
-            if(stage.equals("failed")||stage.equals("feedFailed")||stage.equals("assetFailed")){return "Ошибка обновления";}
-            if(stage.equals("incomplete")){return "Синхронизация не завершена";}
-            if(stage.equals("received")){return "Данные ещё не готовы";}
-            if(stage.equals("assets")){return "Загрузка данных запуска";}
-            if(stage.equals("requesting")){return "Обновление данных";}
-            if(stage.equals("unscheduled")){return "Синхронизация не запланирована";}
-            return "Ожидание синхронизации";
-        }
-        if(locale.equals("de")){
-            if(stage.equals("url")){return "Datenadresse fehlt";} if(stage.equals("failed")||stage.equals("feedFailed")||stage.equals("assetFailed")){return "Aktualisierung fehlgeschlagen";}
-            if(stage.equals("incomplete")){return "Sync unterbrochen";} if(stage.equals("received")){return "Daten noch nicht bereit";} if(stage.equals("assets")){return "Startdaten werden geladen";} if(stage.equals("requesting")){return "Daten werden aktualisiert";} if(stage.equals("unscheduled")){return "Sync nicht geplant";} return "Warte auf Sync";
-        }
-        if(locale.equals("fr")){
-            if(stage.equals("url")){return "Adresse des données absente";} if(stage.equals("failed")||stage.equals("feedFailed")||stage.equals("assetFailed")){return "Échec de mise à jour";}
-            if(stage.equals("incomplete")){return "Sync interrompue";} if(stage.equals("received")){return "Données pas encore prêtes";} if(stage.equals("assets")){return "Chargement du lancement";} if(stage.equals("requesting")){return "Mise à jour des données";} if(stage.equals("unscheduled")){return "Sync non planifiée";} return "En attente de sync";
-        }
-        if(locale.equals("es")){
-            if(stage.equals("url")){return "Falta la URL de datos";} if(stage.equals("failed")||stage.equals("feedFailed")||stage.equals("assetFailed")){return "Error de actualización";}
-            if(stage.equals("incomplete")){return "Sincronización interrumpida";} if(stage.equals("received")){return "Datos aún no disponibles";} if(stage.equals("assets")){return "Cargando lanzamiento";} if(stage.equals("requesting")){return "Actualizando datos";} if(stage.equals("unscheduled")){return "Sincronización no programada";} return "Esperando sincronización";
-        }
-        if(stage.equals("url")){return "Feed URL unavailable";}
-        if(stage.equals("failed")||stage.equals("feedFailed")||stage.equals("assetFailed")){return "Update failed";}
-        if(stage.equals("incomplete")){return "Sync incomplete";}
-        if(stage.equals("received")){return "Data not ready";}
-        if(stage.equals("assets")){return "Loading launch data";}
-        if(stage.equals("requesting")){return "Updating data";}
-        if(stage.equals("unscheduled")){return "Sync not scheduled";}
-        return "Waiting for sync";
-    }
-    function assetStatus(stage as String,detail as String) as String {
-        if(stage.equals("incomplete")){if(locale.equals("ru")){return "Загрузка прервана";} if(locale.equals("de")){return "Bildladen unterbrochen";} if(locale.equals("fr")){return "Image interrompue";} if(locale.equals("es")){return "Imagen interrumpida";} return "Artwork interrupted";}
-        var code=detail.find(": ");var suffix=code==null?"":detail.substring(code+2,detail.length());
-        if(locale.equals("ru")){return "Изобр.: "+suffix;} if(locale.equals("de")){return "Bild: "+suffix;} if(locale.equals("fr")){return "Image : "+suffix;} if(locale.equals("es")){return "Imagen: "+suffix;} return "Artwork: "+suffix;
-    }
     function mission(value as String) as String {
         // The provider category remains retained verbatim; only this known
         // semantic category has an existing locale resource mapping.
         if(value.equals("Communications")&&dictionary!=null&&dictionary.hasKey("communications")){return dictionary["communications"];}
         return value;
-    }
-    function countdown(current, active) as String {
-        return CountdownFormat.format(current.remaining);
     }
     function number(raw) as String {
         if(raw.equals("—")){return raw;}

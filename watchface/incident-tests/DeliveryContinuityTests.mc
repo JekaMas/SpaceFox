@@ -1,42 +1,15 @@
+import Toybox.Background;
 import Toybox.Lang;
+import Toybox.System;
+import Toybox.Time;
 import Toybox.Test;
 
 (:test,:typecheck(false)) function deliveryModeCallbacksAreIdempotent(logger){
-    // Each row is event, expected active state, and cancellation count. Three
-    // legal callback orders cover LOW/OFF, unknown, and duplicates. Expected
-    // values come from the event history, never from the implementation.
-    var traces=[
-        [["wake",true,0],["high",true,0],["unknown",true,0],["sleep",false,1],["low",false,1],["sleep",false,1],["off",false,1],["wake",true,1]],
-        [["high",true,0],["wake",true,0],["low",false,1],["sleep",false,1],["unknown",false,1],["off",false,1],["high",true,1],["wake",true,1]],
-        [["high",true,0],["off",false,1],["low",false,1],["wake",true,1]]
-    ];
-    var applied=0;var unchanged=0;var matrix={};
-    for(var trace=0;trace<traces.size();trace+=1){
-        var view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));
-        view.onShow();var previous=false;
-        for(var i=0;i<traces[trace].size();i+=1){
-            var row=traces[trace][i];var event=row[0];
-            if(event.equals("wake")){view.onExitSleep();}
-            else if(event.equals("sleep")){view.onEnterSleep();}
-            else if(event.equals("high")){view.syncDisplayMode(System.DISPLAY_MODE_HIGH_POWER);}
-            else if(event.equals("low")){view.syncDisplayMode(System.DISPLAY_MODE_LOW_POWER);}
-            else if(event.equals("off")){view.syncDisplayMode(System.DISPLAY_MODE_OFF);}
-            else{view.syncDisplayMode(99);}
-            Test.assert(view.canForegroundWork()==row[1]);
-            Test.assert(view.sceneLifecycle.generation==row[2]);
-            Test.assert((view.fitnessTimer!=null)==row[1]);
-            var disposition=previous!=row[1]?"applied":"observedNoMutation";
-            var key=event+":"+disposition;matrix[key]=matrix.hasKey(key)?matrix[key]+1:1;
-            if(disposition.equals("applied")){applied+=1;}else{unchanged+=1;}
-            previous=row[1];
-        }
-        view.onHide();
-    }
-    Test.assert(applied==9&&unchanged==11);
-    var required=["wake:applied","wake:observedNoMutation","high:applied","high:observedNoMutation","sleep:applied","sleep:observedNoMutation","low:applied","low:observedNoMutation","off:applied","off:observedNoMutation","unknown:observedNoMutation"];
-    for(var j=0;j<required.size();j+=1){var key=required[j];Test.assert(matrix.hasKey(key)&&matrix[key]>0);}
-    logger.debug("MODE_CALLBACKS applied=9 observedNoMutation=11 skipped=0");
-    return true;
+ var view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));
+ var modes=[System.DISPLAY_MODE_HIGH_POWER,System.DISPLAY_MODE_HIGH_POWER,System.DISPLAY_MODE_LOW_POWER,System.DISPLAY_MODE_LOW_POWER,System.DISPLAY_MODE_OFF,System.DISPLAY_MODE_HIGH_POWER];
+ var expected=[view.NOT_LOW,view.NOT_LOW,view.LOW,view.LOW,view.LOW,view.NOT_LOW];
+ for(var i=0;i<modes.size();i+=1){view.syncDisplayMode(modes[i]);Test.assert(view.displayMode()==expected[i]);}
+ view.onEnterSleep();Test.assert(view.displayMode()==view.LOW);logger.debug("MODE highLowOff normalized; duplicate callbacks stable");return true;
 }
 
 // Isolated view boundary only. A separate live-feed run establishes that the
@@ -74,23 +47,7 @@ import Toybox.Test;
 }
 
 (:test,:typecheck(false)) function deliverySceneEventsAndLateCompletion(logger){
-    // Independent expected phases for this trace: accepted fallback (1),
-    // requested before painting (3), painted (4), build running (5), cancelled
-    // (2), new build (5), committed rich scene (6), new launch fallback (1).
-    var machine=new SceneLifecycle();var applied=0;var rejected=0;
-    machine.replace(true);applied+=1;Test.assert(machine.phase==1);
-    Test.assert(machine.request());applied+=1;Test.assert(machine.phase==3);
-    machine.painted();applied+=1;Test.assert(machine.phase==4);
-    var old=machine.begin();applied+=1;Test.assert(old!=null&&machine.phase==5);
-    machine.cancel();applied+=1;Test.assert(machine.phase==2);
-    Test.assert(!machine.complete(old));rejected+=1;Test.assert(machine.phase==2);
-    Test.assert(machine.request());applied+=1;Test.assert(machine.phase==4);
-    var current=machine.begin();applied+=1;Test.assert(current!=null&&machine.phase==5);
-    Test.assert(machine.complete(current));applied+=1;Test.assert(machine.phase==6);
-    machine.replace(true);applied+=1;Test.assert(machine.phase==1);
-    Test.assert(!machine.complete(current));rejected+=1;Test.assert(machine.phase==1);
-    Test.assert(applied==9&&rejected==2);
-    logger.debug("SCENE_EVENTS applied=9 observedNoMutation=2 skipped=0");return true;
+ var job=new SceneLifecycle();job.replace();Test.assert(job.request(1));Test.assert(!job.request(1));var old=job.begin();job.cancel();Test.assert(!job.complete(old));Test.assert(job.request(2));var current=job.begin();Test.assert(job.complete(current));job.replace();Test.assert(!job.complete(current));logger.debug("JOB duplicate blocked; cancelled and old completion rejected; current applied");return true;
 }
 
 (:typecheck(false)) class DeliveryKeyPacket {
@@ -152,39 +109,30 @@ import Toybox.Test;
     var view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));
     view.setContext(new SceneContext({"id"=>"ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a"}));
     var source=new NativeRenderSource(store,base,bridge);view.setAssetCache(source);
-    Test.assert(!source.ready&&view.sceneLifecycle.phase==1);
+    Test.assert(!source.ready&&view.sceneLifecycle.job==null);
     // A decode failure is not retried merely because the same batch was seen.
-    view.sceneLifecycle.painted();Test.assert(view.sceneLifecycle.request());var token=view.sceneLifecycle.begin();view.sceneLifecycle.fail(token);
-    view.setAssetCache(new NativeRenderSource(store,base,bridge));Test.assert(view.sceneLifecycle.phase==7);
+    Test.assert(view.sceneLifecycle.request(0));var token=view.sceneLifecycle.begin();view.sceneLifecycle.fail(token);
+    view.setAssetCache(new NativeRenderSource(store,base,bridge));Test.assert(view.sceneLifecycle.job!=null&&view.sceneLifecycle.job.state==view.sceneLifecycle.job.FAILED);
     var ref=batch.next();Test.assert(batch.immutable.put(ref,catalog));
     ref=batch.next();Test.assert(batch.immutable.put(ref,index));Test.assert(batch.next()==null);
-    source=new NativeRenderSource(store,base,bridge);view.setAssetCache(source);Test.assert(source.ready&&view.sceneLifecycle.phase==2);
+    source=new NativeRenderSource(store,base,bridge);view.setAssetCache(source);Test.assert(source.ready&&view.sceneLifecycle.job==null);
     Test.assert(!new NativeRenderSource(store,base,{"catalogDigest"=>"other","transfer"=>bridge["transfer"]}).ready);
     Test.assert(!new NativeRenderSource(store,base,{"catalogDigest"=>catalogHash,"transfer"=>{"sha256"=>"other"}}).ready);
-    Test.assert(view.sceneLifecycle.request());token=view.sceneLifecycle.begin();view.sceneLifecycle.fail(token);
-    view.setAssetCache(new NativeRenderSource(store,base,bridge));Test.assert(view.sceneLifecycle.phase==7);
+    Test.assert(view.sceneLifecycle.request(source.serial));token=view.sceneLifecycle.begin();view.sceneLifecycle.fail(token);
+    view.setAssetCache(new NativeRenderSource(store,base,bridge));Test.assert(view.sceneLifecycle.job!=null&&view.sceneLifecycle.job.state==view.sceneLifecycle.job.FAILED);
     // A dependency becomes unavailable and is then repaired. The production
     // batch transitions through pending and emits a new completion serial.
     store.unavailable="sf.obj."+indexHash;store.failWrite="sf.batch.head";
     var failed=false;try{batch.next();}catch(e){failed=true;}
     Test.assert(failed&&!new NativeRenderSource(store,base,bridge).ready);
     store.failWrite=null;store.unavailable=null;batch=new NativeBatch(store,base);Test.assert(batch.next()==null);
-    view.setAssetCache(new NativeRenderSource(store,base,bridge));Test.assert(view.sceneLifecycle.phase==2);
+    view.setAssetCache(new NativeRenderSource(store,base,bridge));Test.assert(view.sceneLifecycle.job==null);
     Test.assert(!new NativeRenderSource(store,"https://other.test",bridge).ready);
     var partial=new DeliveryScheduleStore();partial.failWrite="sf.batch.pending";
     var selection=new NativeBatch(partial,base);failed=false;
     try{selection.select(bridge);}catch(e){failed=true;}
     Test.assert(failed&&batchPending(new NativeTransfer(base,partial)));
     logger.debug("VISUAL_BATCH pendingAndWrongIdentityRejected=true completedMatchingBatchApplied=true");return true;
-}
-
-(:test,:typecheck(false)) function deliveryPendingAssetsAreNotIncomplete(logger){
-    Test.assert(!NativeForegroundApp.incomplete("assets",1100l,1000l,true,1300l,1000l));
-    Test.assert(!NativeForegroundApp.incomplete("assets",1400l,1000l,true,1300l,1000l));
-    Test.assert(NativeForegroundApp.incomplete("assets",1400l,1000l,true,1300l,1300l));
-    Test.assert(NativeForegroundApp.incomplete("assets",1400l,1000l,true,null,1000l));
-    Test.assert(NativeForegroundApp.incomplete("requesting",1100l,1000l,true,1300l,1000l));
-    logger.debug("PENDING_STATUS scheduledOrLateWait=true consumedOrMissingReported=true");return true;
 }
 
 (:test,:typecheck(false)) function deliveryRealRegisteredDeadline(logger){
@@ -214,18 +162,18 @@ import Toybox.Test;
 (:test,:typecheck(false)) function deliveryDuplicateCallbackDoesNotInvalidateBuild(logger){
     var store=new DeliveryScheduleStore();var cache=new DeliveryAdmissionCache(store);
     var incoming=new NativeIncoming(store,"https://jekamas.github.io/SpaceFox");
-    var machine=new SceneLifecycle();machine.replace(true);machine.painted();
-    Test.assert(machine.request());var token=machine.begin();Test.assert(token!=null);
+    var machine=new SceneLifecycle();machine.replace();
+    Test.assert(machine.request(1));var token=machine.begin();Test.assert(token!=null);
     // No response, then a response already processed: both reach the production
     // decision seam and leave the in-progress generation unchanged.
     Test.assert(!NativeForegroundApp.hasNewIncoming(cache,incoming));
-    Test.assert(machine.phase==5);
+    Test.assert(machine.pending());
     var marker={"sha256"=>"same","sequence"=>1};store.write("sf.incoming.feed",marker);
     store.write("sf.incoming.feed.processed",incoming.token(marker));
     Test.assert(!NativeForegroundApp.hasNewIncoming(cache,incoming));
-    Test.assert(machine.phase==5&&machine.generation==token);
+    Test.assert(machine.pending()&&machine.generation==token);
     store.write("sf.incoming.feed",{"sha256"=>"new","sequence"=>2});
     Test.assert(NativeForegroundApp.hasNewIncoming(cache,incoming));
-    machine.cancel();Test.assert(!machine.complete(token));Test.assert(machine.phase==2);
+    machine.cancel();Test.assert(!machine.complete(token));Test.assert(machine.job==null);
     logger.debug("CALLBACKS duplicateNoMutation=2 newCandidateApplied=1 staleCompletionRejected=1");return true;
 }

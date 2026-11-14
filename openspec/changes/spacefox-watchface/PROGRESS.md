@@ -546,3 +546,15 @@ flags/debug/alternate layouts, one countdown calculation and focused event PBT.
 One grouped author apply/self-GREEN, then one fresh independent verify/fix, root
 judge and higher-version publication are planned in [DISPLAY02](evidence/display02/PLAN.md).
 Existing0.1.9 Garmin form is superseded before submission; physicalwatch remains0.1.6.
+
+### DISPLAY02 author checkpoint — two modes and visible point
+
+The author-side implementation and focused source/test-key SDK verification are
+recorded in [DISPLAY02 status](evidence/display02/STATUS.md). The captured 0.1.9
+Zhuque point failure, exact failing harness/SDK controls, four-seed event run,
+current map coverage and restored simulator state remain visible there. This is
+**NOT DONE** overall: a fresh independent verification/fix, root judgment,
+production-signed export and publication, and physical watch execution with fresh
+matching launch and stable modes remain open. Do not treat the owner's observed
+0.1.6, a queued update, a test-key SDK capture or a signed predecessor as the
+corrected physical outcome.

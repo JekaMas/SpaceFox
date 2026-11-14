@@ -83,9 +83,9 @@ SHALL not create a false geographic point.
 - **WHEN** the site has no valid coordinates
 - **THEN** its available text remains visible and the geographic point is omitted rather than placed at a fabricated location
 
-#### Scenario: A matching bundled map precedes the optional scene
-- **WHEN** the accepted current catalog supplies a fixed site point while its downloaded scene is pending or unavailable
-- **THEN** the face MAY show that point on a bundled map only when the map's known projection matches that point; otherwise it retains an unmarked fallback until the matching scene is validated
+#### Scenario: A matching map precedes the optional scene
+- **WHEN** the accepted current catalog supplies a fixed site point while optional artwork is pending or unavailable
+- **THEN** the normal scene shows the source point on its matching bundled catalog map in the same source-coordinate projection used after artwork is ready
 - **AND** a country flag remains absent until the selected site's country identity and flag are independently bound
 
 #### Scenario: Worldwide catalog geography
@@ -105,18 +105,17 @@ battery, globe or projection choice remains.
 - **THEN** the full-screen flat map is used without a black clock tile, the source point stays visible, and all accepted foreground values remain readable inside the circle
 
 #### Scenario: Active stale countdown
-- **WHEN** stale data is shown in normal or maintenance rendering
+- **WHEN** stale data is shown in the normal active rendering
 - **THEN** its dotted underline remains separate from countdown ink and the first field row
 
 #### Scenario: No accepted launch yet
 - **WHEN** the watch has no accepted launch data, including offline first use
 - **THEN** it displays an unmarked generic rocket and neutral map without a launch point, place, operator or invented target
-- **AND** the header identifies the current synchronization state, including a bounded background or admission failure detail when available
 - **AND** four configurable fields remain available, including watch battery as a selectable role, with no separate active battery
 
 #### Scenario: Selected launch waiting on artwork after a failure
 - **WHEN** a validated launch is displayed with generic art and its matching asset transfer fails or is interrupted
-- **THEN** the launch metadata and independent stale/reschedule indicators remain intact while the header shows a compact bounded artwork failure detail until the selected visual is ready
+- **THEN** the launch metadata and independent stale/reschedule indicators remain intact until the selected visual is ready
 
 ### Requirement: Compact exceptional-state indicators
 
@@ -228,9 +227,9 @@ exercise technical failures without fabricating display names.
 
 
 #### Scenario: Owner readability revision after physical first use
-- **WHEN** the active face or its temporary maintenance view draws known or unknown countdown data
+- **WHEN** the active face draws known or unknown countdown data
 - **THEN** on a 390×390 display actual ink heights target at least 72px for time, 32px for field values, and 28px for countdown; measurements must expose any contradiction
-- **AND** unknown `--:--:--` and maintenance countdown use the same persisted countdown palette and render style as the normal countdown; an actual reschedule independently retains its amber semantic override
+- **AND** unknown `--:--:--` uses the same persisted countdown palette and render style as the normal countdown; an actual reschedule independently retains its amber semantic override
 - **AND** no standalone battery appears in active mode; battery is independently selectable in each of four fixed positions, with all six roles, circular fit, unmarked rocket and country-footer flag intact
 
 #### Scenario: Settings, AOD, and cached scene remain coherent
@@ -243,42 +242,40 @@ exercise technical failures without fabricating display names.
 - **WHEN** the wearer opens the on-watch settings
 - **THEN** the settings title displays the actual build version and all existing field, color, language and feed settings remain available
 
-#### Scenario: Background error identifies its actual writer
+### Requirement: Two display modes and one UTC countdown
 
-- **WHEN** a background feed or artwork request writes an error status and no launch is accepted
-- **THEN** the detail includes the background build version recorded with that status and error code; a legacy status without a version is shown as unknown rather than assigned the foreground version
+LOW and NOT_LOW SHALL be the only app-visible modes. HIGH selects NOT_LOW;
+LOW selects LOW; OFF stops drawing and active work while retaining LOW as the
+app state. Loading, errors, retries and asset readiness SHALL NOT choose a mode.
+The version belongs in settings, not on the face.
 
-### Requirement: Executing build identification on an empty face
+#### Scenario: Draw arrives before the power callback
+- **WHEN** the system reports LOW before delivering its sleep callback
+- **THEN** the draw uses LOW and active work is stopped without waiting for the callback
 
-When no schedule is accepted, the active face SHALL provide a readable runtime
-build identifier along with applicable sync error information. The identifier
-SHALL identify the foreground executable rather than rely on phone listing notes
-or a previously persisted background status. Build tooling SHALL reject a stale
-identifier after native source, resource, or manifest inputs change.
+### Requirement: Shared countdown snapshot
 
-#### Scenario: Fresh installation has no background result
+A single selected-launch and UTC snapshot SHALL supply identical formatted
+countdown text to both renderers. LOW shows a permitted minute snapshot and
+wake recomputes from UTC.
 
-- **WHEN** the watch face has no accepted schedule and no background status
-- **THEN** the active face identifies the executing foreground build without waiting for a network response
-
-#### Scenario: An earlier background error remains in storage
-
-- **WHEN** the empty face reads an earlier error after a code update
-- **THEN** its foreground build identifier remains that of the executing code and the error remains visible
+#### Scenario: Same target and UTC in either mode
+- **WHEN** the selected target and UTC are identical at both render boundaries
+- **THEN** the text is identical, with accumulating hours and seconds across zero
 
 ### Requirement: Continuous accepted scene across optional work
 
-Active and ambient SHALL be the only intentional visible modes for an accepted
+NOT_LOW and LOW SHALL be the only intentional visible modes for an accepted
 scene. Optional downloads, decoding, retries and rejected updates SHALL NOT
 replace the visible scene with a separate maintenance layout. A same visual
 identity SHALL retain its accepted bitmap and scene through sleep, wake and
 unchanged or rejected feed callbacks. Ambient operation SHALL not initiate
 network, visual decoding or active sensor sampling.
 
-#### Scenario: Accepted fallback while optional visuals decode
+#### Scenario: Accepted scene while optional visuals decode
 
 - **WHEN** metadata is accepted before its matching optional visual is ready
-- **THEN** the normal matching fallback remains visible during decoding until the complete matching visual is admitted
+- **THEN** the normal accepted scene remains visible during decoding until the complete matching visual is admitted
 
 #### Scenario: A same-identity candidate is rejected
 
@@ -289,7 +286,7 @@ network, visual decoding or active sensor sampling.
 
 The visual identity SHALL include selected art/map digest, launch and model
 identity, site/country identity, and qualified site position. Changed visual
-facts SHALL use their own coherent fallback until matching assets are ready; old
+facts SHALL use their own coherent scene until matching assets are ready; old
 artwork or a point SHALL NOT be relabeled as the new selection. Late build
 completions SHALL NOT replace a newer selection.
 

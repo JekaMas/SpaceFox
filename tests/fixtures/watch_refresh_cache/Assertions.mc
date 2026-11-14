@@ -119,11 +119,11 @@ class RefreshSdkStore {
     p.advance(1794579042l);Test.assert(!p.stale);p.advance(1794579043l);Test.assert(p.stale);
     p.advance(1794585344l);Test.assert(p.stale);Test.assertEqual(p.interval(1794585344l),3600);
     var c=new ScheduleState(1794583543l,"exact");
-    Test.assertEqual(c.display(1794407020l,true),"T- 49:02:03");
-    Test.assertEqual(c.display(1794583484l,true),"T- 00:00:59");
-    Test.assertEqual(c.display(1794583542l,true),"T- 00:00:01");
-    Test.assertEqual(c.display(1794583543l,true),"T+ 00:00:00");
-    Test.assertEqual(c.display(1794584443l,true),"T+ 00:15:00");
+    Test.assertEqual(c.display(1794407020l),"T- 49:02:03");
+    Test.assertEqual(c.display(1794583484l),"T- 00:00:59");
+    Test.assertEqual(c.display(1794583542l),"T- 00:00:01");
+    Test.assertEqual(c.display(1794583543l),"T+ 00:00:00");
+    Test.assertEqual(c.display(1794584443l),"T+ 00:15:00");
     log.debug("inclusive cadence edges, near stale latch on exit, clock-derived long/final/elapsed values");return true;
 }
 
