@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "scope": "phone-text-readability-en-ru",
+  "status": "passed",
+  "priorCatalog": {
+    "name": "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/prior/locales__catalog.json",
+    "digest": "bff7ceb614122ece670514520af4046b71d855228e30ed90ac071b1b56233289"
+  },
+  "sources": {
+    "tools/build_native_resources.py": "eab2c7d774afa84b0b61e08d0e5c57acaa91d612a29a0c82851934ff2ce6ae49",
+    "tools/native_incident_requalification.py": "24b89b029b1197f4a88400a2038e94d25fb77e1b67751fd06ed41dd0bda511c1",
+    "tools/native_phone_incident_observation.py": "39c03540286d8de03c4372c78fd7422ffd32d1b6109a6f96f2a3b3a67b80b8a4",
+    "watchface/incident-tests/FirstInstallTests.mc": "f01f6e659aed88ae8ceb26305e4cf274ad502f68a1ba9225829d69bcbcf757fa",
+    "watchface/resources/fonts/Battery13.fnt": "58b7dc2ad5fb7fc06cf715faf82d0189f725f9c79bfbb1bd1dbc7939f0e3ee67",
+    "watchface/resources/fonts/Battery13.png": "6188066183326cf21409532d9ba7a29cfc29262f7ec8bd141186fb752ccf8d3d",
+    "watchface/resources/fonts/Metric32.fnt": "5086a224ed22d94e33c526f3a7e70a0196b6dadd6cf405c60314e20787f6a978",
+    "watchface/resources/fonts/Metric32.png": "52abe66bb59c28055a7b56ab4e8551277d23cfe294440cb6ae58e76b081c41fd",
+    "watchface/source/FeedService.mc": "166e6e3560bb66b4a2ba8fefc40b36bbe5ec06e530f9d9d419675580ab1fc8fe",
+    "watchface/source/LocalePresentation.mc": "adacb5b6ce1640ea23de2042cf9ee525d994ae87aab7fc9e143faf119a0815f5",
+    "watchface/source/SceneRenderer.mc": "b20067ef862832b98a1935b9aa7bf99c541d4af214259f49e66e9f31985522dc",
+    "watchface/source/SpaceFoxView.mc": "41e07e58848ccaef95c2b257c68fd1c43c220a7a780da6df72458a0f14b43854"
+  },
+  "priorSnapshots": {
+    "tools/native_incident_requalification.py": {
+      "name": "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/prior/tools__native_incident_requalification.py",
+      "digest": "1568248c5b39f8306441f0057a7ec469dd965342be47282b95b8457011e3ec0b"
+    },
+    "watchface/source/SceneRenderer.mc": {
+      "name": "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/prior/watchface__source__SceneRenderer.mc",
+      "digest": "3909386042c9489b5ba782639bde593a687672fed50d3472e7406439e0c1b4a0"
+    },
+    "watchface/resources/fonts/Metric32.fnt": {
+      "name": "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/prior/watchface__resources__fonts__Metric32.fnt",
+      "digest": "7466ec74812c63701803c58d4d2a3c71285429e9872ac29264eba7ea153a788b"
+    },
+    "watchface/resources/fonts/Battery13.png": {
+      "name": "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/prior/watchface__resources__fonts__Battery13.png",
+      "digest": "ff2512749509a9792d05842eec6d53d2d21daa78f820c2d115d76301b2b60901"
+    },
+    "watchface/source/LocalePresentation.mc": {
+      "name": "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/prior/watchface__source__LocalePresentation.mc",
+      "digest": "c01fca07e75a595fac453e8ffc723661d606fd12be69cd06cb7e6f0820208952"
+    },
+    "watchface/resources/fonts/Battery13.fnt": {
+      "name": "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/prior/watchface__resources__fonts__Battery13.fnt",
+      "digest": "f24b59cbe818b32ca7650c39908878b982ec250c418eb263cc1754fdfd0db2f4"
+    },
+    "watchface/resources/fonts/Metric32.png": {
+      "name": "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/prior/watchface__resources__fonts__Metric32.png",
+      "digest": "b1f28b8ce7f75ccbc7a1fb6ed2a960541f35200e28aa177d2d64fbd220448806"
+    },
+    "watchface/incident-tests/FirstInstallTests.mc": {
+      "name": "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/prior/watchface__incident-tests__FirstInstallTests.mc",
+      "digest": "fd9566a364b092497640cfb06d7b1b964d307d8f9d96d5d2f2e28a1dba0476f2"
+    },
+    "tools/build_native_resources.py": {
+      "name": "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/prior/tools__build_native_resources.py",
+      "digest": "c15ae4e76794fed844ac7da608d24acb5667fd5ac0de17a77f3ecf82783c8407"
+    },
+    "watchface/source/FeedService.mc": {
+      "name": "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/prior/watchface__source__FeedService.mc",
+      "digest": "9de0dfff01f48e287937a507efb1e9a9a28a6dbc828937f4268da5404a831e07"
+    },
+    "watchface/source/SpaceFoxView.mc": {
+      "name": "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/prior/watchface__source__SpaceFoxView.mc",
+      "digest": "7e3d3af389a675b4ef21ffe6d72dea2220239815a9cb66000c9cb7b424467f0b"
+    }
+  },
+  "evidence": {
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/build.json": "bd2c07af8d0064339c9bc02b12f71423c27847c2b3668d3421fc4545a861ec97",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/cleanup.log": "4353f4259a2d5d37ad2ce1a2f3f54f9346bf9cc0edfc6b9ea6999f7316f1b232",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/current-publisher-first-failure.log.gz": "8251ccfc962ed05b9384c9b9f16441e1531a96895671f5466c50d08ef8a7b357",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/failed-maintenance-icon-overlap.png": "dee1baac023f67421225e9cf851537587487b2735b0b3fa9bc18fbcc1eb6a0c1",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/frame-0.png": "27434a1f0740bba35976eddef27ed17b066b0936b7820b86cd69e0256a44d0a1",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/frame-1.png": "9d5d2531bf3a4a0bf3b591dc77dacd571f8947d3cd5b944580f3f5529eef0353",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/frame-2.png": "40530725d869fca026feaa93d850e7eb8d97d98412cc3754c2ccb84197361ef5",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/frame-3.png": "a8d6a75c6bc131a67cd35e81442bb79154c6b1a3cf243f08b389f2fc36eb9ed4",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/frame-4.png": "09bfb9a602801191f8c5d2db6d99baccd6c9103ca05adb1b3908b87d90ed4e4c",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/frame-5.png": "2c7ce55588f97e49925d873a0489bb9acde4e8beccb7f24dc33589103b389d35",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/frame-6.png": "7477181aec5b792f54dc1a3514de18aec140c4af602c5ddcaaa17402593ae0a8",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/frame-7.png": "96f65e3484fe0c72c67ea048e50abaf98c111d9666e201919ac4db78700aa60c",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/frame-8.png": "b7cc028ef8fcef6650b2c405a5f8ac204bfc2158eea74732dfc94b005b113266",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/frame-9.png": "041f2e7e64c346f4b900deabf6a16f5bcf9fe4b910c336faa06d8d3fbcd3c46d",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/hosted-before-feed.json": "944e92892fdf190fd5ebeb1c880c2eea6d7318b47523a4d0104d23e94f3a22bf",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/hosted-before.headers": "078c266151d401f15d99b7bc0ea7d952581098f3303e6dab197cf73a8a2efb18",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/known-build.json": "9bb4138b375359fc6b08832ada4343757059592aaa6ff2f107101b6497258b3e",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/known-observer.mc": "446f9a10eeec2ec7fefcbbce693ef1f8cfd40ec1e7dd0ea65f278af14b8efa2c",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/known.log": "cb556cbdbdcc7088d2301e16ec1eef09b4d805a66b04d3a697f429819d43b290",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/loopback-readback.json": "49dd3f05d26ac2262da82e82e8b4e7ba87ffbfca5963bac4f8774dd7b142cf0d",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/network-and-first-failure.log": "c9b1c3ac21b3035c5061b2872a2c9c7c0f7f2b2a1c881def964440d81b8b2b36",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/network-build.json": "baab1963ca66599a9d6854a611021873679f3cd183dc042cb9466770cca685da",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/observer-first-compile-failure.log": "dabd1be6fec3036177e27abf5c4ea9b9e4916314610c9c6f07190d260aa16d83",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/observer.log": "9be014af64f6f10b54df669b5e8edf93071411f22c3668c5d5b8f5a4754b8a07",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/observer.mc": "d42d1580d353e4babbbb4bcf047b12441b45d934975c58337f41bd08a62f3379",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/spacefox-015-current-publisher-repair.log": "179fadfec9c59473649c6178b0fba9acf50deef76d3211f47a3ae9238ca90fe5",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/spacefox-015-current-retained-final.log": "7d51886278b410b0cd72d62e27228caf052bcb95cfa2f3d6c557a4bd10b1c98e",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/spacefox-015-transport-final.log": "a1dcc302424a59744f453fd0a4c2827dadf3fdc01b69171922d93a797553cc5f",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/spacefox-015-transport-first.log": "8e1b2b8e31e90a879435993dcc5bc6e70d5ae679612cb2d76a50e65fdf5608aa",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/unit.log": "35bebc8d1028c8507d5dfb5823463510a8915b86828a62ac3fc2dd7f33ef776d",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/visual-review.json": "863342c80d5f60f80f892e4c064a97fb135808b15f67f918f6cc5e99ac36b8f5",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/spacefox-015-openspec-final.json": "9c8a3319a40626a3856d0f7c95796119c3a9626099078c49212c5d362195b11a",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/spacefox-015-language-policy-baseline.log": "97ae7cc55b708b88dc7c15997f4b84cb43c61c2d06a2bd9b639db17031516cd4",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/spacefox-015-content-only-final.log": "7455948fe6a1748e4560e611efa796d0a42912e70fdbdd6e964f224a22ae6b7f",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/content-only-first-failure.log": "fff157e98fb1765573e218f8aba4119a6d3203f8b3bcf6c1b028a030fc86bfcb",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/spacefox-015-release-identity.log": "c1e87e7372b6081b0c770369c15c5e1c18f0add91c52473547d1e7b5300db0a3",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/spacefox-015-language-policy.log": "51481e4102d8a1744f6850611992a037cd322c4c56951ba2feab2e212919e2e6",
+    "openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/language-policy-final.log": "b0841bd452d244b98bfff77d4f4670eb6a06a76a6654f06b4de0e8816b65c3ec"
+  },
+  "proofBoundary": "EN/RU changed numeric/layout/status scenes plus unchanged native HTTP transport owners observed via isolated loopback; total126784 foreground heap is a budget, sampledHigh is not allocator peak; no hosted new .txt or physical phone acceptance."
+}

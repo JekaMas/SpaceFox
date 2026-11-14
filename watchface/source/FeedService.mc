@@ -11,14 +11,14 @@ class FeedService extends System.ServiceDelegate {
     function createTransfer() as NativeTransfer {return new NativeTransfer(configuredFeedUrl(),null);}
     (:typecheck(false)) function diagnostic(stage) as Void {diagnosticCode(stage,null);}
     (:typecheck(false)) function diagnosticCode(stage,code) as Void {try{if(transfer!=null){transfer.store.write("sf.sync.status",{"base"=>transfer.base,"stage"=>stage,"code"=>code,"utc"=>Time.now().value().toLong()});}}catch(e){}}
-    function requestUrl(path as String) as String {return ((transfer as NativeTransfer).base as String)+"/"+path;}
+    function requestUrl(path as String) as String {return ((transfer as NativeTransfer).base as String)+"/"+path+".txt";}
     (:typecheck(false))
     function onTemporalEvent() as Void {
         started=System.getTimer();requests=0;NativeMetrics.sample("temporal-start");try{Background.registerForTemporalEvent(new Time.Duration(3600));}catch(e){}
         try{transfer=createTransfer();if(transfer.base.equals("")){Background.deleteTemporalEvent();Background.exit(null);return;}batch=new NativeBatch(transfer.store,transfer.base);transfer.load();var now=Time.now().value().toLong();NativeMetrics.sample("pre-request");if(transfer.due(now)){transfer.attempted(now);diagnostic("requesting");armFeed(transfer,now);request("feed.json",method(:receive));}else{optional();}}catch(e){diagnostic("failed");finish();}
     }
     (:typecheck(false))
-    function request(path as String,callback as Method) as Void {if(requests>=44||System.getTimer()-started>=22000){finish();return;}requests+=1;try{if(NativeMetrics.enabled){System.println("NATIVE_GET path="+path+" n="+requests+" owner="+NativeMetrics.ownerTag);}Communications.makeWebRequest(requestUrl(path),{}, {:method=>Communications.HTTP_REQUEST_METHOD_GET,:headers=>{"Accept"=>"application/json"},:responseType=>Communications.HTTP_RESPONSE_CONTENT_TYPE_TEXT_PLAIN},callback);}catch(e){diagnostic("failed");finish();}}
+    function request(path as String,callback as Method) as Void {if(requests>=44||System.getTimer()-started>=22000){finish();return;}requests+=1;try{if(NativeMetrics.enabled){System.println("NATIVE_GET path="+path+" n="+requests+" owner="+NativeMetrics.ownerTag);}Communications.makeWebRequest(requestUrl(path),{}, {:method=>Communications.HTTP_REQUEST_METHOD_GET,:headers=>{"Accept"=>"text/plain"},:responseType=>Communications.HTTP_RESPONSE_CONTENT_TYPE_TEXT_PLAIN},callback);}catch(e){diagnostic("failed");finish();}}
     (:typecheck(false))
     function receive(code as Number,data as Dictionary or String or Null) as Void {
         NativeMetrics.sample("feed-transfer-complete");if(NativeMetrics.enabled){System.println("NATIVE_RESPONSE feed code="+code+" characters="+(data instanceof String?data.length():-1)+" owner="+NativeMetrics.ownerTag);}

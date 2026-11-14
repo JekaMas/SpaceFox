@@ -13,15 +13,19 @@
   function draw(){
    const original=scenes[+$('#scene').value],scene=structuredClone(original);
    scene.deviceBattery=original.fields.find(f=>f.role==='battery')?.value??null;
-   scene.originMode=$('#origin').value;
+   scene.originMode='rocket';
    scene.fields=selectors.map(e=>structuredClone(original.fields.find(f=>f.role===e.value)||{role:e.value,value:null,displayLabel:'—'}));
    const face=SpaceFoxWideMap.render(pack,variant,scene,parent,paint,size,true);
    $('#gallery').replaceChildren(face);SpaceFoxWideMap.finish(face);
+   const battery=face.querySelector('.device-battery');Object.assign(battery.style,{left:'30px',top:'96px',fontSize:'15px',width:'75px',justifyContent:'center',transform:'none'});
+   face.querySelectorAll('[data-decoration]').forEach(e=>e.remove());
+   face.querySelectorAll('.field-value').forEach(e=>e.style.fontSize='38px');
+   face.querySelector('[data-role=countdown]').style.fontSize='32px';
    $('#status').textContent='Выбран вариант 04 · Весь экран';
   }
   scenes.forEach((s,i)=>$('#scene').add(new Option((i===2||i===3?'Длинные подписи':s.fixture.site.displayLabel)+' · '+s.language.toUpperCase(),i)));
   choice.defaultFields.forEach((role,i)=>{const label=document.createElement('label');label.textContent='Поле '+(i+1)+' ';const select=document.createElement('select');select.setAttribute('aria-label','Поле '+(i+1));Object.entries(roles).forEach(([v,t])=>select.add(new Option(t,v)));select.value=role;select.onchange=draw;selectors.push(select);label.append(select);$('#slots').append(label);});
-  $('#scene').onchange=draw;$('#origin').onchange=draw;
+  $('#scene').onchange=draw;
   await Promise.all(["600 80px 'Roboto Condensed'","500 21px 'Noto Sans'"].map(f=>document.fonts.load(f,'Россия USA')));await document.fonts.ready;draw();
  }catch(e){$('#status').textContent='Ошибка: '+e.message;throw e;}
 })();

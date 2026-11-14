@@ -35,6 +35,8 @@ def validate(root, catalog):
     from tools.run_native_tests import parse_output
     root = Path(root).resolve()
     proof = catalog['supportPolicy']['softwareQualificationProof']
+    if 'phoneDeltaProof' in proof:
+        return validate_phone_delta(root, catalog)
 
     def checked(path, sha256):
         name = Path(path)
@@ -141,4 +143,80 @@ def validate(root, catalog):
         shutil.rmtree(target / 'watchface/incident-tests')
         if prior_validate(target, old) != old['supportPolicy']['softwareQualifiedLocales']:
             raise ValueError('retained device qualification failed')
+    return catalog['supportPolicy']['softwareQualifiedLocales']
+
+
+PHONE_BASE = 'openspec/changes/spacefox-watchface/evidence/phone-mime-readability-015/'
+PHONE_SOURCES = {
+    'watchface/source/FeedService.mc', 'watchface/source/LocalePresentation.mc',
+    'watchface/source/SceneRenderer.mc', 'watchface/source/SpaceFoxView.mc',
+    'watchface/incident-tests/FirstInstallTests.mc',
+    'watchface/resources/fonts/Battery13.fnt', 'watchface/resources/fonts/Battery13.png',
+    'watchface/resources/fonts/Metric32.fnt', 'watchface/resources/fonts/Metric32.png',
+    'tools/native_incident_requalification.py', 'tools/native_phone_incident_observation.py',
+    'tools/build_native_resources.py',
+}
+
+def validate_phone_delta(root, catalog):
+    """Retain five-language glyph proof; bind focused changed EN/RU observations."""
+    root=Path(root).resolve();proof=catalog['supportPolicy']['softwareQualificationProof']
+    def checked(name,digest):
+        path=Path(name)
+        if path.is_absolute() or '..' in path.parts or not (root/path).is_file() or hashlib.sha256((root/path).read_bytes()).hexdigest()!=digest:
+            raise ValueError('phone delta proof input changed: '+name)
+        return root/path
+    ref=proof['phoneDeltaProof'];record=json.loads(checked(ref['path'],ref['sha256']).read_text())
+    if record.get('scope')!='phone-text-readability-en-ru' or record.get('status')!='passed':
+        raise ValueError('phone delta not qualified')
+    old=json.loads(checked(**record['priorCatalog']).read_text());prior=old['supportPolicy']['softwareQualificationProof']
+    if {k:v for k,v in proof.items() if k!='phoneDeltaProof'}!=prior:
+        raise ValueError('retained locale proof metadata changed')
+    comparable=json.loads(json.dumps(catalog));comparable['supportPolicy']['softwareQualificationProof']=prior
+    if comparable!=old or set(record['sources'])!=PHONE_SOURCES:
+        raise ValueError('phone delta source or catalog closure differs')
+    for name,digest in record['sources'].items():checked(name,digest)
+    required={PHONE_BASE+n for n in ('unit.log','observer.log','known.log','build.json','known-build.json','visual-review.json')}|{PHONE_BASE+f'frame-{n}.png' for n in range(10)}
+    if not required<=set(record['evidence']):raise ValueError('phone delta evidence closure incomplete')
+    for name,digest in record['evidence'].items():checked(name,digest)
+    from tools.run_native_tests import parse_output
+    unit=(root/PHONE_BASE/'unit.log').read_text()
+    if parse_output(unit,1,('firstInstallDefaultsAndRetry','phoneTextTransportAndColors'))['status']!='passed':
+        raise ValueError('phone delta SDK assertions failed')
+    log=(root/PHONE_BASE/'observer.log').read_text()
+    if 'PHONE_HTTP_COMPLETE packet=true map=true rocket=true ordinaryBytes=126784' not in log:
+        raise ValueError('complete native HTTP scene not observed')
+    for frame in range(9):
+        if 'PHONE_FRAME_READY frame='+str(frame)+' ' not in log:raise ValueError('missing focused EN/RU frame')
+    build=json.loads((root/PHONE_BASE/'build.json').read_text())
+    if build['exitCode']!=0 or build['productionSourceScope']!='all-native':raise ValueError('phone delta build failed')
+    for name,digest in {**build['productionSources'],**build['productionResources']}.items():checked(name,digest)
+    known=(root/PHONE_BASE/'known.log').read_text()
+    if 'PHONE_FRAME_READY frame=9 language=ru phase=1 configured=13481983 countdown=T- 49:02:03' not in known:
+        raise ValueError('known configured countdown color not observed')
+    known_build=json.loads((root/PHONE_BASE/'known-build.json').read_text())
+    if known_build['productionSources']!=build['productionSources'] or known_build['productionResources']!=build['productionResources'] or known_build['exitCode']!=0:
+        raise ValueError('known color observation source differs')
+    network=json.loads((root/PHONE_BASE/'network-build.json').read_text())
+    changed={n for n,d in network['productionSources'].items() if build['productionSources'].get(n)!=d}
+    if set(network['productionSources'])!=set(build['productionSources']) or changed!={'watchface/source/SpaceFoxView.mc'} or network['exitCode']!=0:
+        raise ValueError('native network observation owner changed')
+    for n,d in network['productionResources'].items():
+        if n!='watchface/resources/resource-build.json' and build['productionResources'].get(n)!=d:
+            raise ValueError('network runtime resources changed')
+    network_log=(root/PHONE_BASE/'network-and-first-failure.log').read_text()
+    for token in ('NATIVE_RESPONSE feed code=200','PHONE_HTTP logical=wire3/catalogs/','PHONE_HTTP logical=rasters/','PHONE_HTTP_COMPLETE packet=true map=true rocket=true'):
+        if token not in network_log:raise ValueError('native text network observation incomplete')
+    review=json.loads((root/PHONE_BASE/'visual-review.json').read_text())
+    if set(review.get('observed',{}))!={str(n) for n in range(10)} or not all(len(v)>30 for v in review['observed'].values()):
+        raise ValueError('focused actual EN/RU review incomplete')
+    for frame in range(10):
+        name=PHONE_BASE+f'frame-{frame}.png'
+        if name not in record['evidence'] or (root/name).read_bytes()[:8]!=b'\x89PNG\r\n\x1a\n':raise ValueError('missing screenshot '+name)
+    with tempfile.TemporaryDirectory(prefix='spacefox-phone-prior-') as temporary:
+        target=Path(temporary)
+        for folder in ('watchface','locales','tools'):shutil.copytree(root/folder,target/folder,ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
+        for folder in ('openspec','corpus','tests','assets','catalog','schemas'):(target/folder).symlink_to(root/folder,target_is_directory=True)
+        for name,item in record['priorSnapshots'].items():
+            destination=target/name;destination.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(checked(**item),destination)
+        if validate(target,old)!=old['supportPolicy']['softwareQualifiedLocales']:raise ValueError('retained five-language proof failed')
     return catalog['supportPolicy']['softwareQualifiedLocales']

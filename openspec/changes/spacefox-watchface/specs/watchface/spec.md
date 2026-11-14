@@ -105,7 +105,7 @@ large configurable fields and separate watch battery. No globe or projection cho
 - **WHEN** the watch has no accepted launch data, including offline first use
 - **THEN** it displays an unmarked generic rocket and neutral map without a launch point, place, operator or invented target
 - **AND** the header identifies the current synchronization state, including a bounded background or admission failure detail when available
-- **AND** the separate battery remains centered at the top as in the selected prototype; four configurable fields remain available
+- **AND** the separate battery sits on the left above the rocket, near x65/y105 in the 390px composition, with 15px battery text; four configurable fields remain available
 
 #### Scenario: Selected launch waiting on artwork after a failure
 - **WHEN** a validated launch is displayed with generic art and its matching asset transfer fails or is interrupted
@@ -217,3 +217,10 @@ future launches paginated until next=null, and actual UI/menu strings. Exact sou
 proofs and complete counts SHALL be retained; invented names and Unicode edgecase
 expansion SHALL NOT qualify display coverage. Mutations of actual records MAY
 exercise technical failures without fabricating display names.
+
+
+#### Scenario: Owner readability revision after physical first use
+- **WHEN** the active face or its temporary maintenance view draws known or unknown countdown data
+- **THEN** the four metric values use the enlarged 38px numeric face, the countdown uses approximately 32px visible glyphs (40px scalable font request), and the key time remains unchanged
+- **AND** unknown `--:--:--` and maintenance countdown use the same persisted countdown palette and render style as the normal countdown; an actual reschedule independently retains its amber semantic override
+- **AND** the dedicated battery remains separate on the left above the rocket; the four fixed positions, six assignable roles, circular fit, unmarked rocket and country-footer flag remain intact

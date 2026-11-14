@@ -1,0 +1,754 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-11-14T10:08:32.357711+00:00",
+  "base": "http://127.0.0.1:18795",
+  "localHttpQualification": true,
+  "artifactFiles": 113,
+  "artifactBytes": 650231,
+  "transportFiles": 20,
+  "transportBytes": 55453,
+  "status": "passed",
+  "responses": [
+    {
+      "path": "descriptors/1ffdf397e79433e07fc263e684dec7a38d94a80e99a3bef3922c539ca7d5f3bc.json.txt",
+      "logicalPath": "descriptors/1ffdf397e79433e07fc263e684dec7a38d94a80e99a3bef3922c539ca7d5f3bc.json",
+      "expectedBytes": 908,
+      "expectedSha256": "1ffdf397e79433e07fc263e684dec7a38d94a80e99a3bef3922c539ca7d5f3bc",
+      "status": 200,
+      "headers": [
+        [
+          "Server",
+          "SimpleHTTP/0.6 Python/3.14.7"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:08:32 GMT"
+        ],
+        [
+          "Content-type",
+          "text/plain"
+        ],
+        [
+          "Content-Length",
+          "908"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 09:55:52 GMT"
+        ]
+      ],
+      "contentType": "text/plain",
+      "contentEncoding": null,
+      "charset": null,
+      "firstBytesHex": "7b22616e696d6174696f6e223a5b302c",
+      "utf8Bom": false,
+      "actualBytes": 908,
+      "actualSha256": "1ffdf397e79433e07fc263e684dec7a38d94a80e99a3bef3922c539ca7d5f3bc",
+      "passed": true
+    },
+    {
+      "path": "descriptors/584769813730b377510b2c44367330495adf09cc035a4a337512a6d26cb5944a.json.txt",
+      "logicalPath": "descriptors/584769813730b377510b2c44367330495adf09cc035a4a337512a6d26cb5944a.json",
+      "expectedBytes": 1567,
+      "expectedSha256": "584769813730b377510b2c44367330495adf09cc035a4a337512a6d26cb5944a",
+      "status": 200,
+      "headers": [
+        [
+          "Server",
+          "SimpleHTTP/0.6 Python/3.14.7"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:08:32 GMT"
+        ],
+        [
+          "Content-type",
+          "text/plain"
+        ],
+        [
+          "Content-Length",
+          "1567"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 09:55:52 GMT"
+        ]
+      ],
+      "contentType": "text/plain",
+      "contentEncoding": null,
+      "charset": null,
+      "firstBytesHex": "7b226f626a65637473223a5b5b302c22",
+      "utf8Bom": false,
+      "actualBytes": 1567,
+      "actualSha256": "584769813730b377510b2c44367330495adf09cc035a4a337512a6d26cb5944a",
+      "passed": true
+    },
+    {
+      "path": "descriptors/a28ecf80077c51aa47efd45080f6c965500ac437d53cc042b34b3a5b8f42c7ce.json.txt",
+      "logicalPath": "descriptors/a28ecf80077c51aa47efd45080f6c965500ac437d53cc042b34b3a5b8f42c7ce.json",
+      "expectedBytes": 2462,
+      "expectedSha256": "a28ecf80077c51aa47efd45080f6c965500ac437d53cc042b34b3a5b8f42c7ce",
+      "status": 200,
+      "headers": [
+        [
+          "Server",
+          "SimpleHTTP/0.6 Python/3.14.7"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:08:32 GMT"
+        ],
+        [
+          "Content-type",
+          "text/plain"
+        ],
+        [
+          "Content-Length",
+          "2462"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 09:55:52 GMT"
+        ]
+      ],
+      "contentType": "text/plain",
+      "contentEncoding": null,
+      "charset": null,
+      "firstBytesHex": "7b22616e696d6174696f6e223a5b302c",
+      "utf8Bom": false,
+      "actualBytes": 2462,
+      "actualSha256": "a28ecf80077c51aa47efd45080f6c965500ac437d53cc042b34b3a5b8f42c7ce",
+      "passed": true
+    },
+    {
+      "path": "descriptors/ddef3be6db53150c8c9b4b1712c758cde77d2a2137a981cfcf5a3876aa014d0c.json.txt",
+      "logicalPath": "descriptors/ddef3be6db53150c8c9b4b1712c758cde77d2a2137a981cfcf5a3876aa014d0c.json",
+      "expectedBytes": 3073,
+      "expectedSha256": "ddef3be6db53150c8c9b4b1712c758cde77d2a2137a981cfcf5a3876aa014d0c",
+      "status": 200,
+      "headers": [
+        [
+          "Server",
+          "SimpleHTTP/0.6 Python/3.14.7"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:08:32 GMT"
+        ],
+        [
+          "Content-type",
+          "text/plain"
+        ],
+        [
+          "Content-Length",
+          "3073"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 09:55:52 GMT"
+        ]
+      ],
+      "contentType": "text/plain",
+      "contentEncoding": null,
+      "charset": null,
+      "firstBytesHex": "7b22636f756e7472794964223a226c6c",
+      "utf8Bom": false,
+      "actualBytes": 3073,
+      "actualSha256": "ddef3be6db53150c8c9b4b1712c758cde77d2a2137a981cfcf5a3876aa014d0c",
+      "passed": true
+    },
+    {
+      "path": "descriptors/f8a14e2df0245b475990b21c3cb102d219adb7d8b4e8fbf520437c5ec62a7b7f.json.txt",
+      "logicalPath": "descriptors/f8a14e2df0245b475990b21c3cb102d219adb7d8b4e8fbf520437c5ec62a7b7f.json",
+      "expectedBytes": 681,
+      "expectedSha256": "f8a14e2df0245b475990b21c3cb102d219adb7d8b4e8fbf520437c5ec62a7b7f",
+      "status": 200,
+      "headers": [
+        [
+          "Server",
+          "SimpleHTTP/0.6 Python/3.14.7"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:08:32 GMT"
+        ],
+        [
+          "Content-type",
+          "text/plain"
+        ],
+        [
+          "Content-Length",
+          "681"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 09:55:52 GMT"
+        ]
+      ],
+      "contentType": "text/plain",
+      "contentEncoding": null,
+      "charset": null,
+      "firstBytesHex": "7b22616e696d6174696f6e223a5b302c",
+      "utf8Bom": false,
+      "actualBytes": 681,
+      "actualSha256": "f8a14e2df0245b475990b21c3cb102d219adb7d8b4e8fbf520437c5ec62a7b7f",
+      "passed": true
+    },
+    {
+      "path": "feed.json.txt",
+      "logicalPath": "feed.json",
+      "expectedBytes": 2490,
+      "expectedSha256": "7a268dbdd3fe2e14788e7ebb706801a5ecfb456ba45e258fb3b446abb2a6ce1b",
+      "status": 200,
+      "headers": [
+        [
+          "Server",
+          "SimpleHTTP/0.6 Python/3.14.7"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:08:32 GMT"
+        ],
+        [
+          "Content-type",
+          "text/plain"
+        ],
+        [
+          "Content-Length",
+          "2490"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 09:55:52 GMT"
+        ]
+      ],
+      "contentType": "text/plain",
+      "contentEncoding": null,
+      "charset": null,
+      "firstBytesHex": "7b22636174616c6f6744696765737422",
+      "utf8Bom": false,
+      "actualBytes": 2490,
+      "actualSha256": "7a268dbdd3fe2e14788e7ebb706801a5ecfb456ba45e258fb3b446abb2a6ce1b",
+      "passed": true
+    },
+    {
+      "path": "rasters/07924fc156dcfcd1725e9dce51567b9d04b13933fe56f89a0255b3ffcc914580.sfr.txt",
+      "logicalPath": "rasters/07924fc156dcfcd1725e9dce51567b9d04b13933fe56f89a0255b3ffcc914580.sfr",
+      "expectedBytes": 4048,
+      "expectedSha256": "07924fc156dcfcd1725e9dce51567b9d04b13933fe56f89a0255b3ffcc914580",
+      "status": 200,
+      "headers": [
+        [
+          "Server",
+          "SimpleHTTP/0.6 Python/3.14.7"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:08:32 GMT"
+        ],
+        [
+          "Content-type",
+          "text/plain"
+        ],
+        [
+          "Content-Length",
+          "4048"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 09:55:52 GMT"
+        ]
+      ],
+      "contentType": "text/plain",
+      "contentEncoding": null,
+      "charset": null,
+      "firstBytesHex": "534652313a3232363a33363a69424541",
+      "utf8Bom": false,
+      "actualBytes": 4048,
+      "actualSha256": "07924fc156dcfcd1725e9dce51567b9d04b13933fe56f89a0255b3ffcc914580",
+      "passed": true
+    },
+    {
+      "path": "rasters/0936caabf3d961df403c05a1a35a5436d5842c45de0077cfd7053118a6e7ca29.sfr.txt",
+      "logicalPath": "rasters/0936caabf3d961df403c05a1a35a5436d5842c45de0077cfd7053118a6e7ca29.sfr",
+      "expectedBytes": 4004,
+      "expectedSha256": "0936caabf3d961df403c05a1a35a5436d5842c45de0077cfd7053118a6e7ca29",
+      "status": 200,
+      "headers": [
+        [
+          "Server",
+          "SimpleHTTP/0.6 Python/3.14.7"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:08:32 GMT"
+        ],
+        [
+          "Content-type",
+          "text/plain"
+        ],
+        [
+          "Content-Length",
+          "4004"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 09:55:52 GMT"
+        ]
+      ],
+      "contentType": "text/plain",
+      "contentEncoding": null,
+      "charset": null,
+      "firstBytesHex": "534652313a3133363a32393a69786341",
+      "utf8Bom": false,
+      "actualBytes": 4004,
+      "actualSha256": "0936caabf3d961df403c05a1a35a5436d5842c45de0077cfd7053118a6e7ca29",
+      "passed": true
+    },
+    {
+      "path": "rasters/0f6ced072b08fe37b64b1944b2c3e01aead22000bd18ef580f4c60b4728070e4.sfr.txt",
+      "logicalPath": "rasters/0f6ced072b08fe37b64b1944b2c3e01aead22000bd18ef580f4c60b4728070e4.sfr",
+      "expectedBytes": 378,
+      "expectedSha256": "0f6ced072b08fe37b64b1944b2c3e01aead22000bd18ef580f4c60b4728070e4",
+      "status": 200,
+      "headers": [
+        [
+          "Server",
+          "SimpleHTTP/0.6 Python/3.14.7"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:08:32 GMT"
+        ],
+        [
+          "Content-type",
+          "text/plain"
+        ],
+        [
+          "Content-Length",
+          "378"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 09:55:52 GMT"
+        ]
+      ],
+      "contentType": "text/plain",
+      "contentEncoding": null,
+      "charset": null,
+      "firstBytesHex": "534652313a303a31323a42344e67664a",
+      "utf8Bom": false,
+      "actualBytes": 378,
+      "actualSha256": "0f6ced072b08fe37b64b1944b2c3e01aead22000bd18ef580f4c60b4728070e4",
+      "passed": true
+    },
+    {
+      "path": "rasters/180d4d090c41fddf2fd1d79dd46405bbf9d13569ec151440658ec50208b5eb5b.sfr.txt",
+      "logicalPath": "rasters/180d4d090c41fddf2fd1d79dd46405bbf9d13569ec151440658ec50208b5eb5b.sfr",
+      "expectedBytes": 4080,
+      "expectedSha256": "180d4d090c41fddf2fd1d79dd46405bbf9d13569ec151440658ec50208b5eb5b",
+      "status": 200,
+      "headers": [
+        [
+          "Server",
+          "SimpleHTTP/0.6 Python/3.14.7"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:08:32 GMT"
+        ],
+        [
+          "Content-type",
+          "text/plain"
+        ],
+        [
+          "Content-Length",
+          "4080"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 09:55:52 GMT"
+        ]
+      ],
+      "contentType": "text/plain",
+      "contentEncoding": null,
+      "charset": null,
+      "firstBytesHex": "534652313a3130383a32383a6c423041",
+      "utf8Bom": false,
+      "actualBytes": 4080,
+      "actualSha256": "180d4d090c41fddf2fd1d79dd46405bbf9d13569ec151440658ec50208b5eb5b",
+      "passed": true
+    },
+    {
+      "path": "rasters/2a09c8ea59ca32d5ee8ea4e5520682de56a7539b86e434b804f96ffeca0cecd6.sfr.txt",
+      "logicalPath": "rasters/2a09c8ea59ca32d5ee8ea4e5520682de56a7539b86e434b804f96ffeca0cecd6.sfr",
+      "expectedBytes": 4038,
+      "expectedSha256": "2a09c8ea59ca32d5ee8ea4e5520682de56a7539b86e434b804f96ffeca0cecd6",
+      "status": 200,
+      "headers": [
+        [
+          "Server",
+          "SimpleHTTP/0.6 Python/3.14.7"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:08:32 GMT"
+        ],
+        [
+          "Content-type",
+          "text/plain"
+        ],
+        [
+          "Content-Length",
+          "4038"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 09:55:52 GMT"
+        ]
+      ],
+      "contentType": "text/plain",
+      "contentEncoding": null,
+      "charset": null,
+      "firstBytesHex": "534652313a303a33373a2f3638424141",
+      "utf8Bom": false,
+      "actualBytes": 4038,
+      "actualSha256": "2a09c8ea59ca32d5ee8ea4e5520682de56a7539b86e434b804f96ffeca0cecd6",
+      "passed": true
+    },
+    {
+      "path": "rasters/4d28962616ea3056f6ce6fde40f6904f9d9dee2e657f67f988b4eaa4d31e8e92.sfr.txt",
+      "logicalPath": "rasters/4d28962616ea3056f6ce6fde40f6904f9d9dee2e657f67f988b4eaa4d31e8e92.sfr",
+      "expectedBytes": 3971,
+      "expectedSha256": "4d28962616ea3056f6ce6fde40f6904f9d9dee2e657f67f988b4eaa4d31e8e92",
+      "status": 200,
+      "headers": [
+        [
+          "Server",
+          "SimpleHTTP/0.6 Python/3.14.7"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:08:32 GMT"
+        ],
+        [
+          "Content-type",
+          "text/plain"
+        ],
+        [
+          "Content-Length",
+          "3971"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 09:55:52 GMT"
+        ]
+      ],
+      "contentType": "text/plain",
+      "contentEncoding": null,
+      "charset": null,
+      "firstBytesHex": "534652313a33373a31393a33794d4141",
+      "utf8Bom": false,
+      "actualBytes": 3971,
+      "actualSha256": "4d28962616ea3056f6ce6fde40f6904f9d9dee2e657f67f988b4eaa4d31e8e92",
+      "passed": true
+    },
+    {
+      "path": "rasters/653939e2711ce529f39617eb84040f245960720925e27e70d270247940553e3a.sfr.txt",
+      "logicalPath": "rasters/653939e2711ce529f39617eb84040f245960720925e27e70d270247940553e3a.sfr",
+      "expectedBytes": 4088,
+      "expectedSha256": "653939e2711ce529f39617eb84040f245960720925e27e70d270247940553e3a",
+      "status": 200,
+      "headers": [
+        [
+          "Server",
+          "SimpleHTTP/0.6 Python/3.14.7"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:08:32 GMT"
+        ],
+        [
+          "Content-type",
+          "text/plain"
+        ],
+        [
+          "Content-Length",
+          "4088"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 09:55:52 GMT"
+        ]
+      ],
+      "contentType": "text/plain",
+      "contentEncoding": null,
+      "charset": null,
+      "firstBytesHex": "534652313a3139323a33343a69425141",
+      "utf8Bom": false,
+      "actualBytes": 4088,
+      "actualSha256": "653939e2711ce529f39617eb84040f245960720925e27e70d270247940553e3a",
+      "passed": true
+    },
+    {
+      "path": "rasters/671a4b8da3f5c272f41a709b7b72285ee96247eed72d4b3c521bc13884bb6153.sfr.txt",
+      "logicalPath": "rasters/671a4b8da3f5c272f41a709b7b72285ee96247eed72d4b3c521bc13884bb6153.sfr",
+      "expectedBytes": 4003,
+      "expectedSha256": "671a4b8da3f5c272f41a709b7b72285ee96247eed72d4b3c521bc13884bb6153",
+      "status": 200,
+      "headers": [
+        [
+          "Server",
+          "SimpleHTTP/0.6 Python/3.14.7"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:08:32 GMT"
+        ],
+        [
+          "Content-type",
+          "text/plain"
+        ],
+        [
+          "Content-Length",
+          "4003"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 09:55:52 GMT"
+        ]
+      ],
+      "contentType": "text/plain",
+      "contentEncoding": null,
+      "charset": null,
+      "firstBytesHex": "534652313a35363a32313a75796b4141",
+      "utf8Bom": false,
+      "actualBytes": 4003,
+      "actualSha256": "671a4b8da3f5c272f41a709b7b72285ee96247eed72d4b3c521bc13884bb6153",
+      "passed": true
+    },
+    {
+      "path": "rasters/697b580f41521ace59315e84264ddbfb4dee9d77b50f3d2e256ad10b7a6a56cf.sfr.txt",
+      "logicalPath": "rasters/697b580f41521ace59315e84264ddbfb4dee9d77b50f3d2e256ad10b7a6a56cf.sfr",
+      "expectedBytes": 4085,
+      "expectedSha256": "697b580f41521ace59315e84264ddbfb4dee9d77b50f3d2e256ad10b7a6a56cf",
+      "status": 200,
+      "headers": [
+        [
+          "Server",
+          "SimpleHTTP/0.6 Python/3.14.7"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:08:32 GMT"
+        ],
+        [
+          "Content-type",
+          "text/plain"
+        ],
+        [
+          "Content-Length",
+          "4085"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 09:55:52 GMT"
+        ]
+      ],
+      "contentType": "text/plain",
+      "contentEncoding": null,
+      "charset": null,
+      "firstBytesHex": "534652313a3236323a3130383a6a686f",
+      "utf8Bom": false,
+      "actualBytes": 4085,
+      "actualSha256": "697b580f41521ace59315e84264ddbfb4dee9d77b50f3d2e256ad10b7a6a56cf",
+      "passed": true
+    },
+    {
+      "path": "rasters/6d4ab3dc509e305150b3e44adc2df9d6c70416ec01f09751f1a66c2418cc18e9.sfr.txt",
+      "logicalPath": "rasters/6d4ab3dc509e305150b3e44adc2df9d6c70416ec01f09751f1a66c2418cc18e9.sfr",
+      "expectedBytes": 1791,
+      "expectedSha256": "6d4ab3dc509e305150b3e44adc2df9d6c70416ec01f09751f1a66c2418cc18e9",
+      "status": 200,
+      "headers": [
+        [
+          "Server",
+          "SimpleHTTP/0.6 Python/3.14.7"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:08:32 GMT"
+        ],
+        [
+          "Content-type",
+          "text/plain"
+        ],
+        [
+          "Content-Length",
+          "1791"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 09:55:52 GMT"
+        ]
+      ],
+      "contentType": "text/plain",
+      "contentEncoding": null,
+      "charset": null,
+      "firstBytesHex": "534652313a303a3132343a7462573174",
+      "utf8Bom": false,
+      "actualBytes": 1791,
+      "actualSha256": "6d4ab3dc509e305150b3e44adc2df9d6c70416ec01f09751f1a66c2418cc18e9",
+      "passed": true
+    },
+    {
+      "path": "rasters/9107867a46a828266cdc4669352d110734f23c385ef52bc1ca7073709bb415ee.sfr.txt",
+      "logicalPath": "rasters/9107867a46a828266cdc4669352d110734f23c385ef52bc1ca7073709bb415ee.sfr",
+      "expectedBytes": 336,
+      "expectedSha256": "9107867a46a828266cdc4669352d110734f23c385ef52bc1ca7073709bb415ee",
+      "status": 200,
+      "headers": [
+        [
+          "Server",
+          "SimpleHTTP/0.6 Python/3.14.7"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:08:32 GMT"
+        ],
+        [
+          "Content-type",
+          "text/plain"
+        ],
+        [
+          "Content-Length",
+          "336"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 09:55:52 GMT"
+        ]
+      ],
+      "contentType": "text/plain",
+      "contentEncoding": null,
+      "charset": null,
+      "firstBytesHex": "534652313a3337303a32303a2f353545",
+      "utf8Bom": false,
+      "actualBytes": 336,
+      "actualSha256": "9107867a46a828266cdc4669352d110734f23c385ef52bc1ca7073709bb415ee",
+      "passed": true
+    },
+    {
+      "path": "rasters/db31d9ab634adaa54e03c7c96a2eee50064466b0565444a8bda1145a520ac301.sfr.txt",
+      "logicalPath": "rasters/db31d9ab634adaa54e03c7c96a2eee50064466b0565444a8bda1145a520ac301.sfr",
+      "expectedBytes": 4032,
+      "expectedSha256": "db31d9ab634adaa54e03c7c96a2eee50064466b0565444a8bda1145a520ac301",
+      "status": 200,
+      "headers": [
+        [
+          "Server",
+          "SimpleHTTP/0.6 Python/3.14.7"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:08:32 GMT"
+        ],
+        [
+          "Content-type",
+          "text/plain"
+        ],
+        [
+          "Content-Length",
+          "4032"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 09:55:52 GMT"
+        ]
+      ],
+      "contentType": "text/plain",
+      "contentEncoding": null,
+      "charset": null,
+      "firstBytesHex": "534652313a3136353a32373a68526341",
+      "utf8Bom": false,
+      "actualBytes": 4032,
+      "actualSha256": "db31d9ab634adaa54e03c7c96a2eee50064466b0565444a8bda1145a520ac301",
+      "passed": true
+    },
+    {
+      "path": "rasters/eeaefa0a3910f493ba1409eca38c0473fa68b6b99da810696788b8338b01fddd.sfr.txt",
+      "logicalPath": "rasters/eeaefa0a3910f493ba1409eca38c0473fa68b6b99da810696788b8338b01fddd.sfr",
+      "expectedBytes": 4027,
+      "expectedSha256": "eeaefa0a3910f493ba1409eca38c0473fa68b6b99da810696788b8338b01fddd",
+      "status": 200,
+      "headers": [
+        [
+          "Server",
+          "SimpleHTTP/0.6 Python/3.14.7"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:08:32 GMT"
+        ],
+        [
+          "Content-type",
+          "text/plain"
+        ],
+        [
+          "Content-Length",
+          "4027"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 09:55:52 GMT"
+        ]
+      ],
+      "contentType": "text/plain",
+      "contentEncoding": null,
+      "charset": null,
+      "firstBytesHex": "534652313a37373a33313a7067414141",
+      "utf8Bom": false,
+      "actualBytes": 4027,
+      "actualSha256": "eeaefa0a3910f493ba1409eca38c0473fa68b6b99da810696788b8338b01fddd",
+      "passed": true
+    },
+    {
+      "path": "wire3/catalogs/cb5f620536cc8d98efcd5f4a8201bde9e71ac4cc23f56a4eefd8d07f50d20900.json.txt",
+      "logicalPath": "wire3/catalogs/cb5f620536cc8d98efcd5f4a8201bde9e71ac4cc23f56a4eefd8d07f50d20900.json",
+      "expectedBytes": 1391,
+      "expectedSha256": "cb5f620536cc8d98efcd5f4a8201bde9e71ac4cc23f56a4eefd8d07f50d20900",
+      "status": 200,
+      "headers": [
+        [
+          "Server",
+          "SimpleHTTP/0.6 Python/3.14.7"
+        ],
+        [
+          "Date",
+          "Sat, 14 Nov 2026 10:08:32 GMT"
+        ],
+        [
+          "Content-type",
+          "text/plain"
+        ],
+        [
+          "Content-Length",
+          "1391"
+        ],
+        [
+          "Last-Modified",
+          "Sat, 14 Nov 2026 09:55:52 GMT"
+        ]
+      ],
+      "contentType": "text/plain",
+      "contentEncoding": null,
+      "charset": null,
+      "firstBytesHex": "7b22636174616c6f6756657273696f6e",
+      "utf8Bom": false,
+      "actualBytes": 1391,
+      "actualSha256": "cb5f620536cc8d98efcd5f4a8201bde9e71ac4cc23f56a4eefd8d07f50d20900",
+      "passed": true
+    }
+  ],
+  "proofBoundary": "Exact HTTP MIME/raw bytes against saved artifact only; no paired phone or physical watch acceptance."
+}

@@ -52,6 +52,33 @@ def closure(files, roots):
     return seen
 
 
+def native_transport_paths(files):
+    """Only the exact NativeBatch download set; logical content refs stay unchanged."""
+    feed = loads_json(files[FEED_PATH])
+    index_ref = feed['nativeTransfer']
+    index = loads_json(files[index_ref['path']])
+    paths = {FEED_PATH, feed['catalogPath'], index_ref['path']}
+    for kind, digest, size in index['objects']:
+        path = f'rasters/{digest}.sfr' if kind == 1 else f'descriptors/{digest}.json'
+        require(path in files and len(files[path]) == size and sha(files[path]) == digest,
+                'native transport object pin')
+        paths.add(path)
+    require(len(paths) <= 43 and sum(len(files[p]) for p in paths) <= 131072,
+            'native transport closure bound')
+    return paths
+
+
+def with_text_transport(files):
+    """Copy final raw bytes, after metadata stamping; never parse/reserialize them."""
+    logical = {p: raw for p, raw in files.items() if not p.endswith('.txt')}
+    paths = native_transport_paths(logical)
+    result = dict(logical)
+    result.update({p + '.txt': logical[p] for p in paths})
+    require(len(result) <= 256 and sum(map(len, result.values())) <= 1048576,
+            'complete artifact including text transport bound')
+    return result
+
+
 def source_put(files, value):
     raw = canonical_bytes(value)
     require(len(raw) <= 1048576, 'source record bound')
@@ -282,6 +309,7 @@ def build_artifact(state, catalog, now, *, publisher, policy=None, traversal=Non
     raw = canonical_bytes(cat); feed['catalogDigest'] = sha(raw); feed['catalogPath'] = f'wire3/catalogs/{sha(raw)}.json'
     files[feed['catalogPath']] = raw; files[FEED_PATH] = canonical_bytes(feed)
     files = {path: files[path] for path in closure(files, [FEED_PATH])}
+    files = with_text_transport(files)
     validate_artifact(files)
     return files, feed['catalogDigest']
 
@@ -459,5 +487,11 @@ def validate_artifact(files):
                 require(all(scene[k]==first[k] for k in scene if k not in ('layoutRevision','roles'))
                         and all(scene['roles'][r]==first['roles'][r] for r in ROLES if r!='map'), 'view agreement')
         require(read_ref(feed[transfer_key],files)==canonical_bytes(_index(files,ref)), 'transfer closure')
-    require(set(files) == closure(files,[FEED_PATH]), 'complete immutable closure')
+    logical = {p: raw for p, raw in files.items() if not p.endswith('.txt')}
+    require(set(logical) == closure(logical,[FEED_PATH]), 'complete immutable closure')
+    # Already accepted same-format snapshots may predate HTTP sidecars. If any
+    # sidecar is present, require the complete exact set and byte identity. New
+    # preparation always adds the complete set, including the final mutable root.
+    if len(logical) != len(files):
+        require(files == with_text_transport(logical), 'complete byte-identical text transport')
     return feed

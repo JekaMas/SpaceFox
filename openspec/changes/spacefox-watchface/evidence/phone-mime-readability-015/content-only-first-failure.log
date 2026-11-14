@@ -1,0 +1,21 @@
+test_transport_only_prepare_uses_saved_source_without_provider_or_quota (tests.test_phone_text_transport.PhoneTextTransportTest.test_transport_only_prepare_uses_saved_source_without_provider_or_quota) ... FAIL
+
+======================================================================
+FAIL: test_transport_only_prepare_uses_saved_source_without_provider_or_quota (tests.test_phone_text_transport.PhoneTextTransportTest.test_transport_only_prepare_uses_saved_source_without_provider_or_quota)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/phone-mime-readability-015-20261114/tests/test_phone_text_transport.py", line 125, in test_transport_only_prepare_uses_saved_source_without_provider_or_quota
+    self.assertEqual(after.ledger[key],before[key])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'entries': [], 'evaluated_at_utc': 1794551193} != {'entries': [], 'evaluated_at_utc': 1794551192}
+- {'entries': [], 'evaluated_at_utc': 1794551193}
+?                                              ^
+
++ {'entries': [], 'evaluated_at_utc': 1794551192}
+?                                              ^
+
+
+----------------------------------------------------------------------
+Ran 1 test in 9.590s
+
+FAILED (failures=1)

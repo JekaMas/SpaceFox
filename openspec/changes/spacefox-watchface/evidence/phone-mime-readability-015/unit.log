@@ -1,0 +1,17 @@
+------------------------------------------------------------------------------
+Executing test firstInstallDefaultsAndRetry...
+DEBUG (13:56): FIRST_INSTALL default=true blankDisabled=true coldRetry=300 acceptedRetry=3600
+PASS
+------------------------------------------------------------------------------
+Executing test phoneTextTransportAndColors...
+DEBUG (13:56): PHONE_TEXT logicalRefsUnchanged=true allNativeGetSuffix=txt persistedCountdownPalette=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+firstInstallDefaultsAndRetry        PASS
+phoneTextTransportAndColors         PASS
+Ran 2 tests
+
+PASSED (passed=2, failed=0, errors=0)

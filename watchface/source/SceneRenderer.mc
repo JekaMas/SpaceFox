@@ -128,8 +128,8 @@ class SceneRenderer {
             if(!syncDetail.equals("")){text(dc,195,75,fonts["small"] as Graphics.FontType,syncDetail,0xAFC3CE,282,1);}
             if(art!=null){dc.drawBitmap(22,118,art as Graphics.BitmapType);}
         }
-        dc.setColor(0xB2C3CE,Graphics.COLOR_TRANSPARENT); dc.drawRectangle(173,27,13,8); dc.drawLine(187,29,187,33);
-        text(dc,207,24,(fonts["battery"] as Graphics.FontType),fitness.display(values,"battery"),0xB2C3CE,65,1);
+        dc.setColor(0xB2C3CE,Graphics.COLOR_TRANSPARENT); dc.drawRectangle(30,101,13,8); dc.drawLine(44,103,44,107);
+        text(dc,70,96,(fonts["battery"] as Graphics.FontType),fitness.display(values,"battery"),0xB2C3CE,65,1);
         text(dc,195,120,(fonts["time"] as Graphics.FontType),current.localTime,settings.clockColor,250,1);
         var color = (current.rescheduled || context != null && context.rescheduled) ? 0xF3C37A : settings.countdownColor;
         var countdownLabel=displayCountdown(current,settings);

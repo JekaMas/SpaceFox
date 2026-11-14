@@ -15,7 +15,7 @@ import unittest
 
 from tools.spacefox.catalog import build_catalog
 from tools.spacefox.cloud import arm, delivery, delivery_files, journal, recover, Site
-from tools.spacefox.native_motion import PROFILE, build_artifact, validate_artifact, validate_feed
+from tools.spacefox.native_motion import PROFILE, build_artifact, validate_artifact, validate_feed, with_text_transport
 from tools.spacefox.provider import normalize_launch
 from tools.spacefox.publisher import AllowanceUnavailable, GitState, Publisher
 
@@ -168,7 +168,7 @@ class CurrentMotionPublisherTest(unittest.TestCase):
                          ('cadence', dict(original, pollIntervalSeconds=1800))]
                 for name, feed in cases:
                     with self.subTest(boundary='prepare', mutation=name):
-                        altered = dict(files, **{'feed.json': canonical_bytes(feed)})
+                        altered = with_text_transport(dict(files, **{'feed.json': canonical_bytes(feed)}))
                         validate_artifact(altered)  # Structurally valid current packet.
                         before = store.load()[0]
                         try:
@@ -189,9 +189,10 @@ class CurrentMotionPublisherTest(unittest.TestCase):
                     # Re-pin actual current bytes and snapshot hash so ordinary
                     # hash/transition checks cannot mask the semantic guard.
                     changed = deepcopy(doc)
-                    altered = dict(files, **{'feed.json': canonical_bytes(feed)})
+                    altered = with_text_transport(dict(files, **{'feed.json': canonical_bytes(feed)}))
                     snap = changed['pending']
-                    snap['files']['feed.json'] = dict(sha256=_sha(altered['feed.json']), bytes=len(altered['feed.json']))
+                    for path in ('feed.json', 'feed.json.txt'):
+                        snap['files'][path] = dict(sha256=_sha(altered[path]), bytes=len(altered[path]))
                     snap['artifact_revision'] = _sha(_canonical({k: v for k, v in snap.items() if k != 'artifact_revision'}))
                     bad = store._commit(changed, anchor, {f'artifacts/1/{k}': v for k, v in altered.items()})
                     for boundary in ('reopen', 'cloud-origin'):
@@ -259,7 +260,7 @@ class CurrentMotionPublisherTest(unittest.TestCase):
                     row.update(catalogPath=pin['path'], catalogDigest=pin['sha256'])
                 return row
             document('feed.json')
-            return rebuilt
+            return with_text_transport(rebuilt)
 
         feed = loads_json(files['feed.json'])
         scene_path = feed['visualSelection']['path']
@@ -330,7 +331,12 @@ class CurrentMotionPublisherTest(unittest.TestCase):
                 with self.assertRaises(ValueError): validate_feed(canonical_bytes(wrong))
                 wrong=json.loads(files['feed.json']);wrong['launch']=list(wrong['launch'].items())
                 with self.assertRaises(ValueError): validate_feed(canonical_bytes(wrong))
-                revision = pub.prepare(pub.head, NOW, files, digest, feed_publisher=envelope, artifact_profile=PROFILE)
+                # Qualify an already accepted same-format snapshot from before
+                # MIME sidecars, then upgrade its retained selected closure.
+                from unittest.mock import patch
+                files = {p: raw for p, raw in files.items() if not p.endswith('.txt')}
+                with patch('tools.spacefox.native_motion.with_text_transport', lambda value: value):
+                    revision = pub.prepare(pub.head, NOW, files, digest, feed_publisher=envelope, artifact_profile=PROFILE)
                 delivered = delivery_files(pub, delivery(pub))
                 self.assertEqual(delivered, files)
                 pub, intent = arm(pub, expected=pub.head, repository='local/spacefox',
@@ -360,8 +366,12 @@ class CurrentMotionPublisherTest(unittest.TestCase):
                 second_revision=pub.prepare(pub.head,NOW+1,second,second_digest,
                                             feed_publisher=second_envelope,artifact_profile=PROFILE)
                 retained=delivery_files(pub,delivery(pub))
-                self.assertTrue(all(retained[p]==v for p,v in files.items() if p!='feed.json'))
+                self.assertTrue(all(retained[p]==v for p,v in files.items() if p not in ('feed.json','feed.json.txt')))
                 self.assertEqual(retained['feed.json'],second['feed.json'])
+                self.assertEqual(retained['feed.json.txt'],second['feed.json'])
+                from tools.spacefox.native_motion import native_transport_paths
+                for path in native_transport_paths(files)-{'feed.json'}:
+                    self.assertEqual(retained[path+'.txt'],files[path])
                 pub=Publisher(store,code)
                 self.assertEqual(pub.reconcile(revision),'retry_pending')
                 self.assertEqual(pub.pending_files(),second)

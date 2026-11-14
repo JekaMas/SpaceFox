@@ -956,6 +956,9 @@ class Publisher:
                 or feed['sourceContentRevision'] != _schedule(doc['accepted']).content_revision
                 or feed['catalogDigest'] != catalog_revision):
             raise StateError('feed does not bind allocated publisher revision/source/catalog')
+        # Final byte copies join the same atomic durable snapshot and CAS manifest.
+        from .native_motion import with_text_transport
+        files = with_text_transport(files)
         manifest, durable_files = {}, {}
         for path, data in files.items():
             _path(path)

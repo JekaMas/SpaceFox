@@ -77,6 +77,8 @@ def _http_direct(document):
             raise CloudError('redirect response refused')
         if response.headers.get('Content-Encoding', 'identity') != 'identity':
             raise CloudError('encoded response refused')
+        if url.endswith('.txt') and response.headers.get_content_type() != 'text/plain':
+            raise CloudError('native text transport response must be text/plain')
         length = response.headers.get('Content-Length')
         if length is not None and (not length.isascii() or not length.isdigit() or int(length) > limit):
             raise CloudError('response length exceeds exact bound')
@@ -305,6 +307,20 @@ def write_journal(pub, value):
     return Publisher(pub.store, pub.running_code)
 
 
+def retained_files(snapshot, files, *, text_transport):
+    """Protected same-format closure only; derive missing copies from pinned bytes.
+
+    A pre-sidecar accepted snapshot remains immutable. The delivery journal pins
+    each extra HTTP name to the same authenticated raw content hash and size.
+    Old in-flight journals keep their original exact manifest unchanged.
+    """
+    if text_transport:
+        from .native_motion import with_text_transport
+        files = with_text_transport(files)
+    return {path: {'sha256': _sha(raw), 'bytes': len(raw)}
+            for path, raw in files.items() if path not in ('feed.json', 'feed.json.txt')}
+
+
 def delivery_files(pub, manifest):
     if type(manifest) is not dict or not 1 <= len(manifest) <= MAX_ARTIFACT_FILES:
         raise CloudError('complete delivery exceeds file bound')
@@ -322,6 +338,11 @@ def delivery_files(pub, manifest):
         if key not in cache:
             cache[key] = snapshot_files(pub.store, *key)[1]
         raw = cache[key].get(path)
+        if raw is None and meta['role'] == 'previous' and path.endswith('.txt'):
+            from .native_motion import native_transport_paths
+            logical = path[:-4]
+            if logical != 'feed.json' and logical in native_transport_paths(cache[key]):
+                raw = cache[key][logical]
         if raw is None or {'sha256': _sha(raw), 'bytes': len(raw)} != {k: meta[k] for k in ('sha256', 'bytes')}:
             raise CloudError('delivery bytes disagree with authenticated Git')
         result[path] = raw
@@ -339,9 +360,9 @@ def delivery_files(pub, manifest):
     required={}
     if current is origin['pending'] and origin['active'] is not None:
         prior=origin['active']
-        for path,meta in prior['files'].items():
-            if path != 'feed.json':
-                required[path]=dict(meta,state=state,generation=prior['generation'],role='previous')
+        _, prior_files = snapshot_files(pub.store, state, prior['generation'])
+        for path,meta in retained_files(prior, prior_files, text_transport='feed.json.txt' in current['files']).items():
+            required[path]=dict(meta,state=state,generation=prior['generation'],role='previous')
     for path,meta in current['files'].items():
         required[path]=dict(meta,state=state,generation=generation,role='current')
     if manifest!=required:
@@ -360,9 +381,9 @@ def delivery(pub):
     # preserves one same-format generation for readers during replacement.
     active = pub.ledger['active']
     if active is not None:
-        for path, meta in active['files'].items():
-            if path != 'feed.json':
-                manifest[path] = dict(meta, state=pub.head, generation=active['generation'], role='previous')
+        _, prior_files = snapshot_files(pub.store, pub.head, active['generation'])
+        for path, meta in retained_files(active, prior_files, text_transport='feed.json.txt' in snap['files']).items():
+            manifest[path] = dict(meta, state=pub.head, generation=active['generation'], role='previous')
     for path, meta in snap['files'].items():
         manifest[path] = dict(meta, state=pub.head, generation=snap['generation'], role='current')
     delivery_files(pub, manifest)
@@ -374,7 +395,7 @@ def _readback_error(message, path, expected, status, actual, *, phase='closure')
     # fixed metadata and digests, never URLs, credentials or response bodies.
     context = {
         'path': path,
-        'kind': 'mutable-root' if path == 'feed.json' else 'immutable-file',
+        'kind': 'mutable-root' if path in ('feed.json', 'feed.json.txt') else 'immutable-file',
         'phase': phase, 'status': status,
         'expected': None if expected is None else {'bytes': len(expected), 'sha256': _sha(expected)},
         'actual': {'bytes': len(actual), 'sha256': _sha(actual)},

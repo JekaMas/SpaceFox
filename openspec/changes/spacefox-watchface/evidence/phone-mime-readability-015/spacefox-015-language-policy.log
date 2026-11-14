@@ -1,0 +1,34 @@
+test_bound_receipt_and_each_source_drift_refuse (tests.test_native_language_policy.NativeSoftwareAdmissionTest.test_bound_receipt_and_each_source_drift_refuse) ... ERROR
+test_pending_build_refuses_generated_availability_bypass (tests.test_native_language_policy.NativeSoftwareAdmissionTest.test_pending_build_refuses_generated_availability_bypass) ... ok
+test_pending_does_not_enable_primary_membership (tests.test_native_language_policy.NativeSoftwareAdmissionTest.test_pending_does_not_enable_primary_membership) ... ok
+test_runtime_grapheme_and_locale_resource_binding_drift_refuse (tests.test_native_language_policy.NativeSoftwareAdmissionTest.test_runtime_grapheme_and_locale_resource_binding_drift_refuse) ... ERROR
+test_self_asserted_receipt_and_incomplete_corpus_cannot_admit (tests.test_native_language_policy.NativeSoftwareAdmissionTest.test_self_asserted_receipt_and_incomplete_corpus_cannot_admit) ... ok
+
+======================================================================
+ERROR: test_bound_receipt_and_each_source_drift_refuse (tests.test_native_language_policy.NativeSoftwareAdmissionTest.test_bound_receipt_and_each_source_drift_refuse)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/phone-mime-readability-015-20261114/tests/test_native_language_policy.py", line 96, in test_bound_receipt_and_each_source_drift_refuse
+    self.assertEqual(_validate_bound_files(root,c),['en','ru'])
+                     ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/phone-mime-readability-015-20261114/tools/native_language_policy.py", line 133, in _validate_bound_files
+    if set(proof['productionSources'])!=set(input_paths(catalog,root)):raise ValueError('finite software source closure differs')
+                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: finite software source closure differs
+
+======================================================================
+ERROR: test_runtime_grapheme_and_locale_resource_binding_drift_refuse (tests.test_native_language_policy.NativeSoftwareAdmissionTest.test_runtime_grapheme_and_locale_resource_binding_drift_refuse)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/phone-mime-readability-015-20261114/tests/test_native_language_policy.py", line 55, in test_runtime_grapheme_and_locale_resource_binding_drift_refuse
+    self.assertEqual(_validate_bound_files(root,c),['ru'])
+                     ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/phone-mime-readability-015-20261114/tools/native_language_policy.py", line 133, in _validate_bound_files
+    if set(proof['productionSources'])!=set(input_paths(catalog,root)):raise ValueError('finite software source closure differs')
+                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: finite software source closure differs
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.160s
+
+FAILED (errors=2)

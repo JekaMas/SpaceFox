@@ -343,3 +343,8 @@ These supersede the earlier local candidates for any next upload. See the
 incident remains NOT DONE pending installation and readback; publication had
 not occurred at this checkpoint. No recursive third-agent review is required
 for corrections made and verified by the assigned independent fixer.
+
+
+## 2026-11-14 phone MIME and readability follow-up
+
+The owner observed running ordinary0.1.4 at the correct default base with exact `Feed -400`, empty countdown, small fonts and top battery. The current hosted feed declares application/json while native requests declare TEXT_PLAIN. The bounded local repair adds exact text/plain sidecars for the NativeBatch current/protected closure, preserves current raw wire/cache identities and source age, and moves/enlarges the fixed numeric layout. Native EN/RU selected/unknown/maintenance/error/reschedule observations and real Git retention/CAS/recovery checks are retained in [STATUS](evidence/phone-mime-readability-015/STATUS.md). Hosted new-sidecar HTTPS readback and actual phone/watch acceptance remain NOT DONE. The sole numbered task list is unchanged.

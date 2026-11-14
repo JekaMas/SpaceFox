@@ -69,7 +69,7 @@ def prepare_content(pub, client, now, catalog, *, root, clock=None):
         if FEED_PATH not in active['files']:
             raise CloudError('current-format active feed missing')
         previous=validate_feed(pub.store._blob(pub.head,path,8192))
-        if previous is None or previous['catalogSourceDigest'] != sha(canonical_bytes(catalog)):
+        if previous is None or previous['catalogSourceDigest'] != sha(canonical_bytes(catalog)) or 'feed.json.txt' not in active['files']:
             publisher=pub.publisher_envelope(now)
             traversal=previous['providerTraversal'] if previous is not None else None
             files,digest=builder(pub.schedule,catalog,now,publisher=publisher,policy=pub.policy,traversal=traversal)

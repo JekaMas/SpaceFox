@@ -32,7 +32,7 @@ class LocalePresentation {
             dictionary=WatchUi.loadResource(SceneStrings.resource(index));loads+=1;
             var face=dictionary["face"];
             small=face.equals("RobotoRegular")?latinSmall:Graphics.getVectorFont({:face=>[face,"RobotoRegular"],:size=>22});
-            count=Graphics.getVectorFont({:face=>[face,"RobotoRegular"],:size=>36});
+            count=Graphics.getVectorFont({:face=>[face,"RobotoRegular"],:size=>40});
             if(small==null||label==null||count==null){throw new Lang.InvalidValueException("locale font unavailable");}
             locale=next;
         } catch(e) {

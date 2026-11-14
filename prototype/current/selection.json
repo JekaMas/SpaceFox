@@ -1,7 +1,19 @@
 {
   "status": "owner-accepted",
-  "acceptedOn": "2026-11-11",
+  "acceptedOn": "2026-11-14",
   "variantId": "full",
   "variantSource": "../wide-map/variants.json",
-  "defaultFields": ["steps", "energy", "heart", "stress"]
+  "defaultFields": [
+    "steps",
+    "energy",
+    "heart",
+    "stress"
+  ],
+  "readabilityRevision": {
+    "battery": "left above rocket, center near x65 y105; 15px",
+    "metricValuesPx": 38,
+    "countdownVisiblePx": 32,
+    "nativeScalableCountdownPx": 40,
+    "clock": "unchanged"
+  }
 }

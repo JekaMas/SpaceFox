@@ -762,3 +762,12 @@ authorized cutover. No old-format parser or state migration is required.
 ## 2026-11-13 five-language numeric countdown revision
 
 Mandatory software qualification covers en, ru, de, fr and es; 31 remaining resources are best-effort. The only countdown is numeric `HH:mm:ss`, with accumulating hours. Validated nominal-minute UTC uses local arithmetic without changing source precision. Missing target yields `--:--:--`, and zero yields `00:00:00` without claiming launch. Active redraws recompute against UTC; sparse AOD keeps minute lifecycle and formats each permitted snapshot in the same form, with no per-second AOD redraw claim. Earlier 26-language, translated countdown and RTL layout observations remain historical.
+
+
+## 2026-11-14 physical Feed -400 and readability repair
+
+The owner observed ordinary0.1.4 running (generic rocket, empty countdown, battery at top), then exact `Feed -400` at the correct default base. GitHub Pages currently serves `/feed.json` as application/json; the native SDK declares TEXT_PLAIN. Garmin defines -400 as a body invalid for the request type. Earlier simulator200 did not qualify the paired-phone MIME boundary.
+
+The fixed current design moves the separate battery left above the rocket (icon x30/y101, text center x70/y96; combined center near x65/y105), increases its font13→15, increases four metrics32→38 and scalable countdown36→40 (about32px visible glyphs), and keeps time unchanged. Unknown/maintenance countdown preserves the configured color and normal font/fit. A real reschedule keeps its independent amber override. Only EN/RU changed-scene visuals are newly observed; prior five-primary glyph/corpus proof is replayed on original bytes, and31 other resources remain best-effort.
+
+Static transport uses `.txt` copies for only NativeBatch's exact current selected download closure. Native GET maps the logical path to that HTTP path and declares Accept:text/plain/TEXT_PLAIN. No Dictionary reserialization, parser/wire revision, new backend, global catalog duplication, freshness renewal or provider call is introduced. Copies join atomic snapshot/CAS/artifact/readback/recovery manifests; both mutable roots are excluded from prior immutable retention. Already accepted current-format snapshots retain their original identities and remain recoverable; new candidates always include complete copies. Exact measured bounds and focused receipts are in evidence/phone-mime-readability-015. Hosted HTTPS MIME and actual phone/watch readback remain open.

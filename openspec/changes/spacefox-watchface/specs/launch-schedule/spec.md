@@ -274,3 +274,24 @@ measured separately.
 #### Scenario: Response exceeds native parser capacity
 - **WHEN** an untrusted or corrupt host returns a response beyond the qualified size or shape
 - **THEN** the error path preserves accepted storage, subsequent startup remains usable and no callback-only check is reported as preventing an earlier allocation
+
+
+### Requirement: Byte-identical plain-text native HTTP transport
+
+All native feed, catalog, transfer-index, scene/descriptor and raster GETs SHALL declare `HTTP_RESPONSE_CONTENT_TYPE_TEXT_PLAIN` and request byte-identical `.txt` sidecars served as `text/plain` from the same configured static HTTPS base. Logical JSON/SFR1M paths, raw UTF-8 bytes, digest identities, ordering, precision, cache keys and parser contracts SHALL remain unchanged.
+
+#### Scenario: Final metadata and atomic protected delivery
+- **WHEN** a current candidate is prepared
+- **THEN** copies are generated after final feed metadata for only the bounded NativeBatch closure, including already protected same-format recovery objects
+- **AND** they join the same durable snapshot or authenticated delivery journal, artifact, manifest, CAS, retention, recovery and exact readback within the existing 1MiB/256-file complete delivery bound
+- **AND** transport-only preparation preserves source age, provider priority, selection epoch and quota and makes no provider request
+
+
+#### Scenario: Phone enforces response MIME
+- **WHEN** Garmin Connect fulfills a native plain-text request
+- **THEN** the requested `logical-path.txt` response is `text/plain` and its body matches the logical content byte for byte, including the final mutable feed metadata
+- **AND** a simulator HTTP200 with a mismatched MIME SHALL NOT establish paired-phone acceptance
+
+#### Scenario: Exact transport closure or readback is incomplete
+- **WHEN** a sidecar is missing, stale, corrupt, unexpected or has the wrong MIME type
+- **THEN** the candidate/readback is refused without source-age renewal, reconstruction of pending bytes or loss of the accepted same-format recovery state

@@ -7,7 +7,7 @@ class NativeSoftwareAdmissionTest(unittest.TestCase):
  def setUp(self):self.catalog=json.loads((ROOT/'locales/catalog.json').read_text())
  def test_self_asserted_receipt_and_incomplete_corpus_cannot_admit(self):
   with tempfile.TemporaryDirectory() as temp:
-   root=Path(temp);c=copy.deepcopy(self.catalog);policy=c['supportPolicy'];policy['softwareQualifiedLocales']=['ru']
+   root=Path(temp);c=copy.deepcopy(self.catalog);policy=c['supportPolicy'];policy['softwareQualifiedLocales']=['ru'];policy['softwareQualificationProof']=None
    sources={}
    for name in input_paths(c):
     p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes((ROOT/name).read_bytes());sources[name]=hashlib.sha256(p.read_bytes()).hexdigest()
@@ -44,7 +44,7 @@ class NativeSoftwareAdmissionTest(unittest.TestCase):
             'watchface/resources/fonts/Time80.fnt',
             'watchface/resources/fonts/Time80.png')
   with tempfile.TemporaryDirectory() as temp:
-   root=Path(temp);c=copy.deepcopy(self.catalog);policy=c['supportPolicy'];policy['softwareQualifiedLocales']=['ru']
+   root=Path(temp);c=copy.deepcopy(self.catalog);policy=c['supportPolicy'];policy['softwareQualifiedLocales']=['ru'];policy['softwareQualificationProof']=None
    for name in set(input_paths(c))|set(bindings):
     p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes((ROOT/name).read_bytes())
    generated=root/'watchface/source/generated/SceneStrings.mc';generated.write_bytes((ROOT/'watchface/source/generated/SceneStrings.mc').read_bytes())
@@ -86,7 +86,7 @@ class NativeSoftwareAdmissionTest(unittest.TestCase):
    with self.assertRaises(ValueError):software_locales(ROOT,c)
  def test_bound_receipt_and_each_source_drift_refuse(self):
   with tempfile.TemporaryDirectory() as temp:
-   root=Path(temp);c=copy.deepcopy(self.catalog);policy=c['supportPolicy'];policy['softwareQualifiedLocales']=['en','ru'];sources={}
+   root=Path(temp);c=copy.deepcopy(self.catalog);policy=c['supportPolicy'];policy['softwareQualifiedLocales']=['en','ru'];policy['softwareQualificationProof']=None;sources={}
    for name in input_paths(c):
     p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes((ROOT/name).read_bytes());sources[name]=hashlib.sha256(p.read_bytes()).hexdigest()
    (root/'watchface/source/generated/SceneStrings.mc').write_bytes((ROOT/'watchface/source/generated/SceneStrings.mc').read_bytes())
@@ -102,4 +102,12 @@ class NativeSoftwareAdmissionTest(unittest.TestCase):
     original=proof[key];proof[key]=value
     with self.subTest(field=key),self.assertRaises(ValueError):_validate_bound_files(root,c)
     proof[key]=original
+ def test_current_phone_delta_source_drift_refuses(self):
+  self.assertEqual(software_locales(ROOT,self.catalog),['en','ru','de','fr','es'])
+  with tempfile.TemporaryDirectory() as temp:
+   root=Path(temp)
+   for folder in ('watchface','locales','tools'):shutil.copytree(ROOT/folder,root/folder,ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
+   for folder in ('openspec','corpus','tests','assets','catalog','schemas'):(root/folder).symlink_to(ROOT/folder,target_is_directory=True)
+   changed=root/'watchface/source/SceneRenderer.mc';changed.write_bytes(changed.read_bytes()+b' ')
+   with self.assertRaisesRegex(ValueError,'phone delta proof input changed'):software_locales(root,self.catalog)
 if __name__=='__main__':unittest.main()

@@ -5,20 +5,15 @@
   "public_key_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
   "status": "local_production_custody_restored",
   "latest_release": {
-    "version": "0.1.2",
-    "package_sha256": "46f1c44c18a54134a97a3b003a00376891b64c087d691041430421b1e142a530",
-    "kind": "github_prerelease_for_physical_testing",
-    "tag": "v0.1.2-test.1",
-    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.2-test.1",
-    "published_at_utc": "2026-11-14T06:41:15Z",
-    "source_revision": "612afd49ebf6497b29251258c5debf8f1cbac07e",
-    "public_source_revision": "f34b1edad7dcfcdd4c01c8f1a6562af9333b954e",
-    "original_receipt_sha256": "d342af7415fcb51fe26c1151b55ac2a85be22fe61536bed8a3c1ce7d1c66455e",
-    "original_receipt": "openspec/changes/spacefox-watchface/evidence/published-test-history/v0.1.2-test.1/release.json",
-    "evidence": "openspec/changes/spacefox-watchface/evidence/published-test-history/v0.1.2-test.1/publication-readback.json",
-    "proof_boundary": "Published signed GitHub prerelease; Garmin submission pending review. No Store approval, physical installation or phone acceptance."
+    "version": "0.1.4",
+    "package_sha256": "71fba19a849750628cfc1a3c7f5074a2ca4209115f76c8f34475cde0bcd22455",
+    "kind": "garmin_ordinary_store_submission",
+    "url": "https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3",
+    "source_revision": "3b95dee18cb56d704970aa1e330cd93030193ffc",
+    "original_receipt_sha256": "a04b32fcdaeefd47f8bbbd460ea314d1652ab17487abf1faafe9f91402736ae4",
+    "proof_boundary": "Owner reported ordinary 0.1.4 uploaded and Signature Verified on same Store card; App Info still showed 0.1.2. Manual queued download led to physical Feed -400; no physical acceptance and no GitHub 0.1.4 tag published."
   },
-  "note": "Stable production identity. The 0.1.2 test prerelease is public; future production candidates require its retained original release.json and matching IQ together, then a strictly higher native version. Private custody remains external. Device, phone and final Store approval remain separate.",
+  "note": "Stable production UUID/key. Ordinary 0.1.4 was submitted to the same Garmin card. Next candidate requires retained 0.1.4 receipt/IQ and strictly higher version. Physical phone/FR165 acceptance remains open.",
   "local_custody": {
     "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
     "public_evidence": "openspec/changes/spacefox-watchface/evidence/production-signing/round1/custody-initialization.json",
