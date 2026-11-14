@@ -1,0 +1,6575 @@
+{
+  "status": "passed",
+  "frameCount": 20,
+  "geometryBoundary": "All actual SDK draw widths/heights and retained bitmap glyph ink boxes fit circle and do not overlap. Matching-color pixel bounds are measured within each text ROI and may include other text of the same color; they are not isolated glyph ink bounds. Palette quantization reads actual exported PNGs and does not claim all antialiased ink or a physical panel. 1px black contour follows unchanged source draw loop and visual review.",
+  "frames": [
+    {
+      "label": "en-long",
+      "file": "frames/held-en-long.png",
+      "pngSha256": "ebaab5c2334cdcb2840a358a461bb90ea8d803431ac4a129b049794178f8b0fb",
+      "texts": [
+        {
+          "kind": "vector",
+          "x": 141.0,
+          "y": 43.0,
+          "width": 115.0,
+          "height": 26.0,
+          "color": 14213869,
+          "text": "Vulcan VC…",
+          "conservativeBox": [
+            83.5,
+            43.0,
+            198.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            222,
+            226,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            85,
+            47,
+            196,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 47.0,
+          "width": 5.0,
+          "height": 22.0,
+          "color": 9877705,
+          "text": "·",
+          "conservativeBox": [
+            204.5,
+            47.0,
+            209.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            148,
+            186,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            207,
+            57,
+            208,
+            58
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 261.0,
+          "y": 47.0,
+          "width": 92.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "United La…",
+          "conservativeBox": [
+            215.0,
+            47.0,
+            307.0,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            217,
+            50,
+            305,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 70.0,
+          "width": 144.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "Communications",
+          "conservativeBox": [
+            123.0,
+            70.0,
+            267.0,
+            92.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            125,
+            75,
+            265,
+            87
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 319.0,
+          "width": 240.0,
+          "height": 26.0,
+          "color": 13950955,
+          "text": "US · Cape Canaveral SF…",
+          "conservativeBox": [
+            75.0,
+            319.0,
+            315.0,
+            345.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            77,
+            323,
+            312,
+            344
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 24.0,
+          "width": 25.0,
+          "height": 15.0,
+          "color": 11715534,
+          "text": "82%",
+          "conservativeBox": [
+            194.5,
+            24.0,
+            219.5,
+            39.0
+          ],
+          "sdkQuantizedFillRgb": [
+            180,
+            194,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            196,
+            28,
+            220,
+            37
+          ]
+        },
+        {
+          "kind": "time",
+          "x": 195.0,
+          "y": 120.0,
+          "width": 188.0,
+          "height": 93.0,
+          "color": 8382406,
+          "text": "08:08",
+          "conservativeBox": [
+            101.0,
+            136.0,
+            290.0,
+            196.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            105,
+            138,
+            285,
+            213
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 202.0,
+          "width": 154.0,
+          "height": 36.0,
+          "color": 8382406,
+          "text": "T- 49:02:03",
+          "conservativeBox": [
+            118.0,
+            202.0,
+            272.0,
+            238.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            119,
+            209,
+            270,
+            231
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 123.0,
+          "y": 240.0,
+          "width": 87.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "12,345",
+          "conservativeBox": [
+            79.5,
+            247.0,
+            166.5,
+            275.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            83,
+            248,
+            166,
+            275
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 240.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "68",
+          "conservativeBox": [
+            303.0,
+            245.0,
+            335.0,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            305,
+            247,
+            333,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 96.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "72",
+          "conservativeBox": [
+            80.0,
+            285.0,
+            112.0,
+            307.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            81,
+            286,
+            110,
+            308
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "47",
+          "conservativeBox": [
+            303.0,
+            285.0,
+            335.0,
+            307.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            304,
+            286,
+            334,
+            308
+          ]
+        }
+      ],
+      "underlineBrightPixels": 0,
+      "status": "passed"
+    },
+    {
+      "label": "en-seconds59",
+      "file": "frames/held-en-seconds59.png",
+      "pngSha256": "880bc4a6663555dc0951d3f7df586e7250c60e0ef44e18951038ef46e67f49a3",
+      "texts": [
+        {
+          "kind": "vector",
+          "x": 141.0,
+          "y": 43.0,
+          "width": 115.0,
+          "height": 26.0,
+          "color": 14213869,
+          "text": "Vulcan VC…",
+          "conservativeBox": [
+            83.5,
+            43.0,
+            198.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            222,
+            226,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            85,
+            47,
+            196,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 47.0,
+          "width": 5.0,
+          "height": 22.0,
+          "color": 9877705,
+          "text": "·",
+          "conservativeBox": [
+            204.5,
+            47.0,
+            209.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            148,
+            186,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            207,
+            57,
+            208,
+            58
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 261.0,
+          "y": 47.0,
+          "width": 92.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "United La…",
+          "conservativeBox": [
+            215.0,
+            47.0,
+            307.0,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            217,
+            50,
+            305,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 70.0,
+          "width": 144.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "Communications",
+          "conservativeBox": [
+            123.0,
+            70.0,
+            267.0,
+            92.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            125,
+            75,
+            265,
+            87
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 319.0,
+          "width": 240.0,
+          "height": 26.0,
+          "color": 13950955,
+          "text": "US · Cape Canaveral SF…",
+          "conservativeBox": [
+            75.0,
+            319.0,
+            315.0,
+            345.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            77,
+            323,
+            312,
+            344
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 24.0,
+          "width": 25.0,
+          "height": 15.0,
+          "color": 11715534,
+          "text": "82%",
+          "conservativeBox": [
+            194.5,
+            24.0,
+            219.5,
+            39.0
+          ],
+          "sdkQuantizedFillRgb": [
+            180,
+            194,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            196,
+            28,
+            220,
+            37
+          ]
+        },
+        {
+          "kind": "time",
+          "x": 195.0,
+          "y": 120.0,
+          "width": 188.0,
+          "height": 93.0,
+          "color": 8382406,
+          "text": "08:08",
+          "conservativeBox": [
+            101.0,
+            136.0,
+            290.0,
+            196.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            105,
+            138,
+            285,
+            213
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 202.0,
+          "width": 154.0,
+          "height": 36.0,
+          "color": 8382406,
+          "text": "T- 00:00:59",
+          "conservativeBox": [
+            118.0,
+            202.0,
+            272.0,
+            238.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            119,
+            209,
+            270,
+            231
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 115.0,
+          "y": 240.0,
+          "width": 71.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "2,345",
+          "conservativeBox": [
+            79.5,
+            247.0,
+            150.5,
+            275.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            81,
+            248,
+            150,
+            275
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 309.0,
+          "y": 240.0,
+          "width": 52.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "82%",
+          "conservativeBox": [
+            283.0,
+            245.0,
+            335.0,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            285,
+            247,
+            335,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 123.0,
+          "y": 278.0,
+          "width": 87.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "12,345",
+          "conservativeBox": [
+            79.5,
+            285.0,
+            166.5,
+            313.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            83,
+            286,
+            166,
+            313
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "68",
+          "conservativeBox": [
+            303.0,
+            283.0,
+            335.0,
+            308.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            305,
+            285,
+            333,
+            308
+          ]
+        }
+      ],
+      "underlineBrightPixels": 0,
+      "status": "passed"
+    },
+    {
+      "label": "en-seconds1",
+      "file": "frames/held-en-seconds1.png",
+      "pngSha256": "02a7e9a400eb494ad5106452346189c6a897dc3134d66715e9c82b7a06af4181",
+      "texts": [
+        {
+          "kind": "vector",
+          "x": 141.0,
+          "y": 43.0,
+          "width": 115.0,
+          "height": 26.0,
+          "color": 14213869,
+          "text": "Vulcan VC…",
+          "conservativeBox": [
+            83.5,
+            43.0,
+            198.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            222,
+            226,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            85,
+            47,
+            196,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 47.0,
+          "width": 5.0,
+          "height": 22.0,
+          "color": 9877705,
+          "text": "·",
+          "conservativeBox": [
+            204.5,
+            47.0,
+            209.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            148,
+            186,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            207,
+            57,
+            208,
+            58
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 261.0,
+          "y": 47.0,
+          "width": 92.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "United La…",
+          "conservativeBox": [
+            215.0,
+            47.0,
+            307.0,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            217,
+            50,
+            305,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 70.0,
+          "width": 144.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "Communications",
+          "conservativeBox": [
+            123.0,
+            70.0,
+            267.0,
+            92.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            125,
+            75,
+            265,
+            87
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 319.0,
+          "width": 240.0,
+          "height": 26.0,
+          "color": 13950955,
+          "text": "US · Cape Canaveral SF…",
+          "conservativeBox": [
+            75.0,
+            319.0,
+            315.0,
+            345.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            77,
+            323,
+            312,
+            344
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 24.0,
+          "width": 25.0,
+          "height": 15.0,
+          "color": 11715534,
+          "text": "82%",
+          "conservativeBox": [
+            194.5,
+            24.0,
+            219.5,
+            39.0
+          ],
+          "sdkQuantizedFillRgb": [
+            180,
+            194,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            196,
+            28,
+            220,
+            37
+          ]
+        },
+        {
+          "kind": "time",
+          "x": 195.0,
+          "y": 120.0,
+          "width": 188.0,
+          "height": 93.0,
+          "color": 8382406,
+          "text": "08:08",
+          "conservativeBox": [
+            101.0,
+            136.0,
+            290.0,
+            196.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            105,
+            138,
+            285,
+            213
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 202.0,
+          "width": 154.0,
+          "height": 36.0,
+          "color": 8382406,
+          "text": "T- 00:00:01",
+          "conservativeBox": [
+            118.0,
+            202.0,
+            272.0,
+            238.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            119,
+            209,
+            266,
+            231
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 123.0,
+          "y": 240.0,
+          "width": 87.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "12,345",
+          "conservativeBox": [
+            79.5,
+            247.0,
+            166.5,
+            275.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            83,
+            248,
+            166,
+            275
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 240.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "68",
+          "conservativeBox": [
+            303.0,
+            245.0,
+            335.0,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            305,
+            247,
+            333,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 96.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "72",
+          "conservativeBox": [
+            80.0,
+            285.0,
+            112.0,
+            307.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            81,
+            286,
+            110,
+            308
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "47",
+          "conservativeBox": [
+            303.0,
+            285.0,
+            335.0,
+            307.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            304,
+            286,
+            334,
+            308
+          ]
+        }
+      ],
+      "underlineBrightPixels": 0,
+      "status": "passed"
+    },
+    {
+      "label": "en-zero",
+      "file": "frames/held-en-zero.png",
+      "pngSha256": "139638e93c15f5674a5426d95ba32db2df9d24536eff87d9dd190bdfafd296c3",
+      "texts": [
+        {
+          "kind": "vector",
+          "x": 141.0,
+          "y": 43.0,
+          "width": 115.0,
+          "height": 26.0,
+          "color": 14213869,
+          "text": "Vulcan VC…",
+          "conservativeBox": [
+            83.5,
+            43.0,
+            198.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            222,
+            226,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            85,
+            47,
+            196,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 47.0,
+          "width": 5.0,
+          "height": 22.0,
+          "color": 9877705,
+          "text": "·",
+          "conservativeBox": [
+            204.5,
+            47.0,
+            209.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            148,
+            186,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            207,
+            57,
+            208,
+            58
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 261.0,
+          "y": 47.0,
+          "width": 92.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "United La…",
+          "conservativeBox": [
+            215.0,
+            47.0,
+            307.0,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            217,
+            50,
+            305,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 70.0,
+          "width": 144.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "Communications",
+          "conservativeBox": [
+            123.0,
+            70.0,
+            267.0,
+            92.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            125,
+            75,
+            265,
+            87
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 319.0,
+          "width": 240.0,
+          "height": 26.0,
+          "color": 13950955,
+          "text": "US · Cape Canaveral SF…",
+          "conservativeBox": [
+            75.0,
+            319.0,
+            315.0,
+            345.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            77,
+            323,
+            312,
+            344
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 24.0,
+          "width": 25.0,
+          "height": 15.0,
+          "color": 11715534,
+          "text": "82%",
+          "conservativeBox": [
+            194.5,
+            24.0,
+            219.5,
+            39.0
+          ],
+          "sdkQuantizedFillRgb": [
+            180,
+            194,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            196,
+            28,
+            220,
+            37
+          ]
+        },
+        {
+          "kind": "time",
+          "x": 195.0,
+          "y": 120.0,
+          "width": 188.0,
+          "height": 93.0,
+          "color": 8382406,
+          "text": "08:08",
+          "conservativeBox": [
+            101.0,
+            136.0,
+            290.0,
+            196.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            105,
+            138,
+            285,
+            213
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 202.0,
+          "width": 163.0,
+          "height": 36.0,
+          "color": 8382406,
+          "text": "T+ 00:00:00",
+          "conservativeBox": [
+            113.5,
+            202.0,
+            276.5,
+            238.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            115,
+            209,
+            275,
+            231
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 115.0,
+          "y": 240.0,
+          "width": 71.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "2,345",
+          "conservativeBox": [
+            79.5,
+            247.0,
+            150.5,
+            275.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            81,
+            248,
+            150,
+            275
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 309.0,
+          "y": 240.0,
+          "width": 52.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "82%",
+          "conservativeBox": [
+            283.0,
+            245.0,
+            335.0,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            285,
+            247,
+            335,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 123.0,
+          "y": 278.0,
+          "width": 87.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "12,345",
+          "conservativeBox": [
+            79.5,
+            285.0,
+            166.5,
+            313.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            83,
+            286,
+            166,
+            313
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "68",
+          "conservativeBox": [
+            303.0,
+            283.0,
+            335.0,
+            308.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            305,
+            285,
+            333,
+            308
+          ]
+        }
+      ],
+      "underlineBrightPixels": 0,
+      "status": "passed"
+    },
+    {
+      "label": "en-elapsed899",
+      "file": "frames/held-en-elapsed899.png",
+      "pngSha256": "7b8984e4ae0f418abf8ce2db94afe99dab633e90f8ace4647df5ab3fa3dabc5b",
+      "texts": [
+        {
+          "kind": "vector",
+          "x": 141.0,
+          "y": 43.0,
+          "width": 115.0,
+          "height": 26.0,
+          "color": 14213869,
+          "text": "Vulcan VC…",
+          "conservativeBox": [
+            83.5,
+            43.0,
+            198.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            222,
+            226,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            85,
+            47,
+            196,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 47.0,
+          "width": 5.0,
+          "height": 22.0,
+          "color": 9877705,
+          "text": "·",
+          "conservativeBox": [
+            204.5,
+            47.0,
+            209.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            148,
+            186,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            207,
+            57,
+            208,
+            58
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 261.0,
+          "y": 47.0,
+          "width": 92.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "United La…",
+          "conservativeBox": [
+            215.0,
+            47.0,
+            307.0,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            217,
+            50,
+            305,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 70.0,
+          "width": 144.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "Communications",
+          "conservativeBox": [
+            123.0,
+            70.0,
+            267.0,
+            92.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            125,
+            75,
+            265,
+            87
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 319.0,
+          "width": 240.0,
+          "height": 26.0,
+          "color": 13950955,
+          "text": "US · Cape Canaveral SF…",
+          "conservativeBox": [
+            75.0,
+            319.0,
+            315.0,
+            345.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            77,
+            323,
+            312,
+            344
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 24.0,
+          "width": 25.0,
+          "height": 15.0,
+          "color": 11715534,
+          "text": "82%",
+          "conservativeBox": [
+            194.5,
+            24.0,
+            219.5,
+            39.0
+          ],
+          "sdkQuantizedFillRgb": [
+            180,
+            194,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            196,
+            28,
+            220,
+            37
+          ]
+        },
+        {
+          "kind": "time",
+          "x": 195.0,
+          "y": 120.0,
+          "width": 188.0,
+          "height": 93.0,
+          "color": 8382406,
+          "text": "08:08",
+          "conservativeBox": [
+            101.0,
+            136.0,
+            290.0,
+            196.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            105,
+            138,
+            285,
+            213
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 202.0,
+          "width": 163.0,
+          "height": 36.0,
+          "color": 8382406,
+          "text": "T+ 00:14:59",
+          "conservativeBox": [
+            113.5,
+            202.0,
+            276.5,
+            238.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            115,
+            209,
+            275,
+            231
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 123.0,
+          "y": 240.0,
+          "width": 87.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "12,345",
+          "conservativeBox": [
+            79.5,
+            247.0,
+            166.5,
+            275.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            83,
+            248,
+            166,
+            275
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 240.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "68",
+          "conservativeBox": [
+            303.0,
+            245.0,
+            335.0,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            305,
+            247,
+            333,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 96.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "72",
+          "conservativeBox": [
+            80.0,
+            285.0,
+            112.0,
+            307.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            81,
+            286,
+            110,
+            308
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "47",
+          "conservativeBox": [
+            303.0,
+            285.0,
+            335.0,
+            307.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            304,
+            286,
+            334,
+            308
+          ]
+        }
+      ],
+      "underlineBrightPixels": 0,
+      "status": "passed"
+    },
+    {
+      "label": "en-elapsed901",
+      "file": "frames/held-en-elapsed901.png",
+      "pngSha256": "2fc5ab124b14d9869250158b239ba160aa35789f9d8effe51a87747cfa9131e0",
+      "texts": [
+        {
+          "kind": "vector",
+          "x": 141.0,
+          "y": 43.0,
+          "width": 115.0,
+          "height": 26.0,
+          "color": 14213869,
+          "text": "Vulcan VC…",
+          "conservativeBox": [
+            83.5,
+            43.0,
+            198.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            222,
+            226,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            85,
+            47,
+            196,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 47.0,
+          "width": 5.0,
+          "height": 22.0,
+          "color": 9877705,
+          "text": "·",
+          "conservativeBox": [
+            204.5,
+            47.0,
+            209.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            148,
+            186,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            207,
+            57,
+            208,
+            58
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 261.0,
+          "y": 47.0,
+          "width": 92.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "United La…",
+          "conservativeBox": [
+            215.0,
+            47.0,
+            307.0,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            217,
+            50,
+            305,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 70.0,
+          "width": 144.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "Communications",
+          "conservativeBox": [
+            123.0,
+            70.0,
+            267.0,
+            92.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            125,
+            75,
+            265,
+            87
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 319.0,
+          "width": 240.0,
+          "height": 26.0,
+          "color": 13950955,
+          "text": "US · Cape Canaveral SF…",
+          "conservativeBox": [
+            75.0,
+            319.0,
+            315.0,
+            345.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            77,
+            323,
+            312,
+            344
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 24.0,
+          "width": 25.0,
+          "height": 15.0,
+          "color": 11715534,
+          "text": "82%",
+          "conservativeBox": [
+            194.5,
+            24.0,
+            219.5,
+            39.0
+          ],
+          "sdkQuantizedFillRgb": [
+            180,
+            194,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            196,
+            28,
+            220,
+            37
+          ]
+        },
+        {
+          "kind": "time",
+          "x": 195.0,
+          "y": 120.0,
+          "width": 188.0,
+          "height": 93.0,
+          "color": 8382406,
+          "text": "08:08",
+          "conservativeBox": [
+            101.0,
+            136.0,
+            290.0,
+            196.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            105,
+            138,
+            285,
+            213
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 202.0,
+          "width": 163.0,
+          "height": 36.0,
+          "color": 8382406,
+          "text": "T+ 00:15:01",
+          "conservativeBox": [
+            113.5,
+            202.0,
+            276.5,
+            238.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            115,
+            209,
+            271,
+            231
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 115.0,
+          "y": 240.0,
+          "width": 71.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "2,345",
+          "conservativeBox": [
+            79.5,
+            247.0,
+            150.5,
+            275.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            81,
+            248,
+            150,
+            275
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 309.0,
+          "y": 240.0,
+          "width": 52.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "82%",
+          "conservativeBox": [
+            283.0,
+            245.0,
+            335.0,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            285,
+            247,
+            335,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 123.0,
+          "y": 278.0,
+          "width": 87.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "12,345",
+          "conservativeBox": [
+            79.5,
+            285.0,
+            166.5,
+            313.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            83,
+            286,
+            166,
+            313
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "68",
+          "conservativeBox": [
+            303.0,
+            283.0,
+            335.0,
+            308.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            305,
+            285,
+            333,
+            308
+          ]
+        }
+      ],
+      "underlineBrightPixels": 0,
+      "status": "passed"
+    },
+    {
+      "label": "en-reschedule",
+      "file": "frames/held-en-reschedule.png",
+      "pngSha256": "9b2194226ef3a4f4e6e71b720a852bd9caccc0f912ea391d634e3659c7a6a3aa",
+      "texts": [
+        {
+          "kind": "vector",
+          "x": 141.0,
+          "y": 43.0,
+          "width": 115.0,
+          "height": 26.0,
+          "color": 14213869,
+          "text": "Vulcan VC…",
+          "conservativeBox": [
+            83.5,
+            43.0,
+            198.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            222,
+            226,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            85,
+            47,
+            196,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 47.0,
+          "width": 5.0,
+          "height": 22.0,
+          "color": 9877705,
+          "text": "·",
+          "conservativeBox": [
+            204.5,
+            47.0,
+            209.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            148,
+            186,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            207,
+            57,
+            208,
+            58
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 261.0,
+          "y": 47.0,
+          "width": 92.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "United La…",
+          "conservativeBox": [
+            215.0,
+            47.0,
+            307.0,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            217,
+            50,
+            305,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 70.0,
+          "width": 144.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "Communications",
+          "conservativeBox": [
+            123.0,
+            70.0,
+            267.0,
+            92.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            125,
+            75,
+            265,
+            87
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 319.0,
+          "width": 240.0,
+          "height": 26.0,
+          "color": 13950955,
+          "text": "US · Cape Canaveral SF…",
+          "conservativeBox": [
+            75.0,
+            319.0,
+            315.0,
+            345.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            77,
+            323,
+            312,
+            344
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 24.0,
+          "width": 25.0,
+          "height": 15.0,
+          "color": 11715534,
+          "text": "82%",
+          "conservativeBox": [
+            194.5,
+            24.0,
+            219.5,
+            39.0
+          ],
+          "sdkQuantizedFillRgb": [
+            180,
+            194,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            196,
+            28,
+            220,
+            37
+          ]
+        },
+        {
+          "kind": "time",
+          "x": 195.0,
+          "y": 120.0,
+          "width": 188.0,
+          "height": 93.0,
+          "color": 8382406,
+          "text": "08:08",
+          "conservativeBox": [
+            101.0,
+            136.0,
+            290.0,
+            196.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            105,
+            138,
+            285,
+            196
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 202.0,
+          "width": 154.0,
+          "height": 36.0,
+          "color": 15975290,
+          "text": "T- 01:00:00",
+          "conservativeBox": [
+            118.0,
+            202.0,
+            272.0,
+            238.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            194,
+            123
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            119,
+            209,
+            270,
+            231
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 123.0,
+          "y": 240.0,
+          "width": 87.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "12,345",
+          "conservativeBox": [
+            79.5,
+            247.0,
+            166.5,
+            275.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            83,
+            248,
+            166,
+            275
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 240.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "68",
+          "conservativeBox": [
+            303.0,
+            245.0,
+            335.0,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            305,
+            247,
+            333,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 96.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "72",
+          "conservativeBox": [
+            80.0,
+            285.0,
+            112.0,
+            307.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            81,
+            286,
+            110,
+            308
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "47",
+          "conservativeBox": [
+            303.0,
+            285.0,
+            335.0,
+            307.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            304,
+            286,
+            334,
+            308
+          ]
+        }
+      ],
+      "underlineBrightPixels": 0,
+      "status": "passed"
+    },
+    {
+      "label": "en-unknown",
+      "file": "frames/held-en-unknown.png",
+      "pngSha256": "0eb38002db5124fa7c20696312bea704e06de2fe6dbd447ec4afe033ff26552a",
+      "texts": [
+        {
+          "kind": "vector",
+          "x": 141.0,
+          "y": 43.0,
+          "width": 115.0,
+          "height": 26.0,
+          "color": 14213869,
+          "text": "Vulcan VC…",
+          "conservativeBox": [
+            83.5,
+            43.0,
+            198.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            222,
+            226,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            85,
+            47,
+            196,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 47.0,
+          "width": 5.0,
+          "height": 22.0,
+          "color": 9877705,
+          "text": "·",
+          "conservativeBox": [
+            204.5,
+            47.0,
+            209.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            148,
+            186,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            207,
+            57,
+            208,
+            58
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 261.0,
+          "y": 47.0,
+          "width": 92.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "United La…",
+          "conservativeBox": [
+            215.0,
+            47.0,
+            307.0,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            217,
+            50,
+            305,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 70.0,
+          "width": 144.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "Communications",
+          "conservativeBox": [
+            123.0,
+            70.0,
+            267.0,
+            92.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            125,
+            75,
+            265,
+            87
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 319.0,
+          "width": 240.0,
+          "height": 26.0,
+          "color": 13950955,
+          "text": "US · Cape Canaveral SF…",
+          "conservativeBox": [
+            75.0,
+            319.0,
+            315.0,
+            345.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            77,
+            323,
+            312,
+            344
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 24.0,
+          "width": 25.0,
+          "height": 15.0,
+          "color": 11715534,
+          "text": "82%",
+          "conservativeBox": [
+            194.5,
+            24.0,
+            219.5,
+            39.0
+          ],
+          "sdkQuantizedFillRgb": [
+            180,
+            194,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            196,
+            28,
+            220,
+            37
+          ]
+        },
+        {
+          "kind": "time",
+          "x": 195.0,
+          "y": 120.0,
+          "width": 188.0,
+          "height": 93.0,
+          "color": 8382406,
+          "text": "08:08",
+          "conservativeBox": [
+            101.0,
+            136.0,
+            290.0,
+            196.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            105,
+            138,
+            285,
+            196
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 202.0,
+          "width": 70.0,
+          "height": 36.0,
+          "color": 15975290,
+          "text": "--:--:--",
+          "conservativeBox": [
+            160.0,
+            202.0,
+            230.0,
+            238.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            194,
+            123
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            159,
+            215,
+            232,
+            238
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 115.0,
+          "y": 240.0,
+          "width": 71.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "2,345",
+          "conservativeBox": [
+            79.5,
+            247.0,
+            150.5,
+            275.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            81,
+            248,
+            150,
+            275
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 309.0,
+          "y": 240.0,
+          "width": 52.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "82%",
+          "conservativeBox": [
+            283.0,
+            245.0,
+            335.0,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            285,
+            247,
+            335,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 123.0,
+          "y": 278.0,
+          "width": 87.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "12,345",
+          "conservativeBox": [
+            79.5,
+            285.0,
+            166.5,
+            313.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            83,
+            286,
+            166,
+            313
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "68",
+          "conservativeBox": [
+            303.0,
+            283.0,
+            335.0,
+            308.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            305,
+            285,
+            333,
+            308
+          ]
+        }
+      ],
+      "underlineBrightPixels": 75,
+      "status": "passed",
+      "unknownComponents": [
+        [
+          161,
+          220,
+          168,
+          222,
+          14
+        ],
+        [
+          170,
+          220,
+          177,
+          222,
+          14
+        ],
+        [
+          180,
+          214,
+          183,
+          217,
+          7
+        ],
+        [
+          180,
+          228,
+          183,
+          231,
+          7
+        ],
+        [
+          187,
+          220,
+          194,
+          222,
+          14
+        ],
+        [
+          196,
+          220,
+          203,
+          222,
+          14
+        ],
+        [
+          206,
+          214,
+          209,
+          217,
+          7
+        ],
+        [
+          206,
+          228,
+          209,
+          231,
+          7
+        ],
+        [
+          213,
+          220,
+          220,
+          222,
+          14
+        ],
+        [
+          222,
+          220,
+          229,
+          222,
+          14
+        ]
+      ],
+      "manualPixelReadback": "--:--:--",
+      "manualBoundary": "Exact six distinct horizontal dash strokes and four colon dots in actual native pixels; OCR yielded no text, no digit corrections applied."
+    },
+    {
+      "label": "en-stale",
+      "file": "frames/held-en-stale.png",
+      "pngSha256": "38c50d7a306fbf37f8047bb4492e31216125302f02b0334da83bad20322da71e",
+      "texts": [
+        {
+          "kind": "vector",
+          "x": 141.0,
+          "y": 43.0,
+          "width": 115.0,
+          "height": 26.0,
+          "color": 14213869,
+          "text": "Vulcan VC…",
+          "conservativeBox": [
+            83.5,
+            43.0,
+            198.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            222,
+            226,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            85,
+            47,
+            196,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 47.0,
+          "width": 5.0,
+          "height": 22.0,
+          "color": 9877705,
+          "text": "·",
+          "conservativeBox": [
+            204.5,
+            47.0,
+            209.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            148,
+            186,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            207,
+            57,
+            208,
+            58
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 261.0,
+          "y": 47.0,
+          "width": 92.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "United La…",
+          "conservativeBox": [
+            215.0,
+            47.0,
+            307.0,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            217,
+            50,
+            305,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 70.0,
+          "width": 144.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "Communications",
+          "conservativeBox": [
+            123.0,
+            70.0,
+            267.0,
+            92.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            125,
+            75,
+            265,
+            87
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 319.0,
+          "width": 240.0,
+          "height": 26.0,
+          "color": 13950955,
+          "text": "US · Cape Canaveral SF…",
+          "conservativeBox": [
+            75.0,
+            319.0,
+            315.0,
+            345.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            77,
+            323,
+            312,
+            344
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 24.0,
+          "width": 25.0,
+          "height": 15.0,
+          "color": 11715534,
+          "text": "82%",
+          "conservativeBox": [
+            194.5,
+            24.0,
+            219.5,
+            39.0
+          ],
+          "sdkQuantizedFillRgb": [
+            180,
+            194,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            196,
+            28,
+            220,
+            37
+          ]
+        },
+        {
+          "kind": "time",
+          "x": 195.0,
+          "y": 120.0,
+          "width": 188.0,
+          "height": 93.0,
+          "color": 8382406,
+          "text": "08:08",
+          "conservativeBox": [
+            101.0,
+            136.0,
+            290.0,
+            196.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            105,
+            138,
+            285,
+            213
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 202.0,
+          "width": 163.0,
+          "height": 36.0,
+          "color": 8382406,
+          "text": "T+ 00:05:00",
+          "conservativeBox": [
+            113.5,
+            202.0,
+            276.5,
+            238.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            113,
+            209,
+            276,
+            238
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 123.0,
+          "y": 240.0,
+          "width": 87.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "12,345",
+          "conservativeBox": [
+            79.5,
+            247.0,
+            166.5,
+            275.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            83,
+            248,
+            166,
+            275
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 240.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "68",
+          "conservativeBox": [
+            303.0,
+            245.0,
+            335.0,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            305,
+            247,
+            333,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 96.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "72",
+          "conservativeBox": [
+            80.0,
+            285.0,
+            112.0,
+            307.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            81,
+            286,
+            110,
+            308
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "47",
+          "conservativeBox": [
+            303.0,
+            285.0,
+            335.0,
+            307.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            304,
+            286,
+            334,
+            308
+          ]
+        }
+      ],
+      "underlineBrightPixels": 165,
+      "status": "passed"
+    },
+    {
+      "label": "en-appearance",
+      "file": "frames/held-en-appearance.png",
+      "pngSha256": "7b45a9f03e35da8e0d84d9e959d18a3bdc6c9b48ce2aa37c71b92772c430c7f1",
+      "texts": [
+        {
+          "kind": "vector",
+          "x": 141.0,
+          "y": 43.0,
+          "width": 115.0,
+          "height": 26.0,
+          "color": 14213869,
+          "text": "Vulcan VC…",
+          "conservativeBox": [
+            83.5,
+            43.0,
+            198.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            222,
+            226,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            85,
+            47,
+            196,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 47.0,
+          "width": 5.0,
+          "height": 22.0,
+          "color": 9877705,
+          "text": "·",
+          "conservativeBox": [
+            204.5,
+            47.0,
+            209.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            148,
+            186,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            207,
+            57,
+            208,
+            58
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 261.0,
+          "y": 47.0,
+          "width": 92.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "United La…",
+          "conservativeBox": [
+            215.0,
+            47.0,
+            307.0,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            217,
+            50,
+            305,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 70.0,
+          "width": 144.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "Communications",
+          "conservativeBox": [
+            123.0,
+            70.0,
+            267.0,
+            92.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            125,
+            75,
+            265,
+            87
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 319.0,
+          "width": 240.0,
+          "height": 26.0,
+          "color": 13950955,
+          "text": "US · Cape Canaveral SF…",
+          "conservativeBox": [
+            75.0,
+            319.0,
+            315.0,
+            345.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            77,
+            323,
+            312,
+            344
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 24.0,
+          "width": 25.0,
+          "height": 15.0,
+          "color": 11715534,
+          "text": "82%",
+          "conservativeBox": [
+            194.5,
+            24.0,
+            219.5,
+            39.0
+          ],
+          "sdkQuantizedFillRgb": [
+            180,
+            194,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            196,
+            28,
+            220,
+            37
+          ]
+        },
+        {
+          "kind": "time",
+          "x": 195.0,
+          "y": 120.0,
+          "width": 188.0,
+          "height": 93.0,
+          "color": 10147327,
+          "text": "08:08",
+          "conservativeBox": [
+            101.0,
+            136.0,
+            290.0,
+            196.0
+          ],
+          "sdkQuantizedFillRgb": [
+            156,
+            214,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            105,
+            138,
+            285,
+            196
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 202.0,
+          "width": 154.0,
+          "height": 36.0,
+          "color": 13481983,
+          "text": "T- 49:02:03",
+          "conservativeBox": [
+            118.0,
+            202.0,
+            272.0,
+            238.0
+          ],
+          "sdkQuantizedFillRgb": [
+            205,
+            182,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            119,
+            209,
+            270,
+            231
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 115.0,
+          "y": 240.0,
+          "width": 71.0,
+          "height": 36.0,
+          "color": 8382406,
+          "text": "2,345",
+          "conservativeBox": [
+            79.5,
+            247.0,
+            150.5,
+            275.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            81,
+            248,
+            150,
+            275
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 309.0,
+          "y": 240.0,
+          "width": 52.0,
+          "height": 36.0,
+          "color": 16766598,
+          "text": "82%",
+          "conservativeBox": [
+            283.0,
+            245.0,
+            335.0,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            255,
+            214,
+            131
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            285,
+            247,
+            335,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 123.0,
+          "y": 278.0,
+          "width": 87.0,
+          "height": 36.0,
+          "color": 16756687,
+          "text": "12,345",
+          "conservativeBox": [
+            79.5,
+            285.0,
+            166.5,
+            313.0
+          ],
+          "sdkQuantizedFillRgb": [
+            255,
+            174,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            83,
+            286,
+            166,
+            313
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "68",
+          "conservativeBox": [
+            303.0,
+            283.0,
+            335.0,
+            308.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            305,
+            285,
+            333,
+            308
+          ]
+        }
+      ],
+      "underlineBrightPixels": 0,
+      "status": "passed"
+    },
+    {
+      "label": "ru-long",
+      "file": "frames/held-ru-long.png",
+      "pngSha256": "b58ea4ab56fb3a92372874423ba69776b248ddf33752a1ed6d767a5c85083a55",
+      "texts": [
+        {
+          "kind": "vector",
+          "x": 141.0,
+          "y": 43.0,
+          "width": 115.0,
+          "height": 26.0,
+          "color": 14213869,
+          "text": "Vulcan VC…",
+          "conservativeBox": [
+            83.5,
+            43.0,
+            198.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            222,
+            226,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            85,
+            47,
+            196,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 47.0,
+          "width": 5.0,
+          "height": 22.0,
+          "color": 9877705,
+          "text": "·",
+          "conservativeBox": [
+            204.5,
+            47.0,
+            209.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            148,
+            186,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            207,
+            57,
+            208,
+            58
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 261.0,
+          "y": 47.0,
+          "width": 92.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "United La…",
+          "conservativeBox": [
+            215.0,
+            47.0,
+            307.0,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            217,
+            50,
+            305,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 70.0,
+          "width": 144.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "Communications",
+          "conservativeBox": [
+            123.0,
+            70.0,
+            267.0,
+            92.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            125,
+            75,
+            265,
+            87
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 319.0,
+          "width": 240.0,
+          "height": 26.0,
+          "color": 13950955,
+          "text": "US · Cape Canaveral SF…",
+          "conservativeBox": [
+            75.0,
+            319.0,
+            315.0,
+            345.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            77,
+            323,
+            312,
+            344
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 24.0,
+          "width": 25.0,
+          "height": 15.0,
+          "color": 11715534,
+          "text": "82%",
+          "conservativeBox": [
+            194.5,
+            24.0,
+            219.5,
+            39.0
+          ],
+          "sdkQuantizedFillRgb": [
+            180,
+            194,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            196,
+            28,
+            220,
+            37
+          ]
+        },
+        {
+          "kind": "time",
+          "x": 195.0,
+          "y": 120.0,
+          "width": 188.0,
+          "height": 93.0,
+          "color": 8382406,
+          "text": "08:08",
+          "conservativeBox": [
+            101.0,
+            136.0,
+            290.0,
+            196.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            105,
+            138,
+            285,
+            213
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 202.0,
+          "width": 154.0,
+          "height": 36.0,
+          "color": 8382406,
+          "text": "T- 49:02:03",
+          "conservativeBox": [
+            118.0,
+            202.0,
+            272.0,
+            238.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            119,
+            209,
+            270,
+            231
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 123.0,
+          "y": 240.0,
+          "width": 87.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "12 345",
+          "conservativeBox": [
+            79.5,
+            247.0,
+            166.5,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            83,
+            248,
+            166,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 240.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "68",
+          "conservativeBox": [
+            303.0,
+            245.0,
+            335.0,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            305,
+            247,
+            333,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 96.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "72",
+          "conservativeBox": [
+            80.0,
+            285.0,
+            112.0,
+            307.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            81,
+            286,
+            110,
+            308
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "47",
+          "conservativeBox": [
+            303.0,
+            285.0,
+            335.0,
+            307.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            304,
+            286,
+            334,
+            308
+          ]
+        }
+      ],
+      "underlineBrightPixels": 0,
+      "status": "passed"
+    },
+    {
+      "label": "ru-seconds59",
+      "file": "frames/held-ru-seconds59.png",
+      "pngSha256": "1c5aa6987b066745b1272155002a636d1e4ac05922ace90c21801d9115606df6",
+      "texts": [
+        {
+          "kind": "vector",
+          "x": 141.0,
+          "y": 43.0,
+          "width": 115.0,
+          "height": 26.0,
+          "color": 14213869,
+          "text": "Vulcan VC…",
+          "conservativeBox": [
+            83.5,
+            43.0,
+            198.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            222,
+            226,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            85,
+            47,
+            196,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 47.0,
+          "width": 5.0,
+          "height": 22.0,
+          "color": 9877705,
+          "text": "·",
+          "conservativeBox": [
+            204.5,
+            47.0,
+            209.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            148,
+            186,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            207,
+            57,
+            208,
+            58
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 261.0,
+          "y": 47.0,
+          "width": 92.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "United La…",
+          "conservativeBox": [
+            215.0,
+            47.0,
+            307.0,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            217,
+            50,
+            305,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 70.0,
+          "width": 144.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "Communications",
+          "conservativeBox": [
+            123.0,
+            70.0,
+            267.0,
+            92.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            125,
+            75,
+            265,
+            87
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 319.0,
+          "width": 240.0,
+          "height": 26.0,
+          "color": 13950955,
+          "text": "US · Cape Canaveral SF…",
+          "conservativeBox": [
+            75.0,
+            319.0,
+            315.0,
+            345.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            77,
+            323,
+            312,
+            344
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 24.0,
+          "width": 25.0,
+          "height": 15.0,
+          "color": 11715534,
+          "text": "82%",
+          "conservativeBox": [
+            194.5,
+            24.0,
+            219.5,
+            39.0
+          ],
+          "sdkQuantizedFillRgb": [
+            180,
+            194,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            196,
+            28,
+            220,
+            37
+          ]
+        },
+        {
+          "kind": "time",
+          "x": 195.0,
+          "y": 120.0,
+          "width": 188.0,
+          "height": 93.0,
+          "color": 8382406,
+          "text": "08:08",
+          "conservativeBox": [
+            101.0,
+            136.0,
+            290.0,
+            196.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            105,
+            138,
+            285,
+            213
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 202.0,
+          "width": 154.0,
+          "height": 36.0,
+          "color": 8382406,
+          "text": "T- 00:00:59",
+          "conservativeBox": [
+            118.0,
+            202.0,
+            272.0,
+            238.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            119,
+            209,
+            270,
+            231
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 115.0,
+          "y": 240.0,
+          "width": 71.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "2 345",
+          "conservativeBox": [
+            79.5,
+            247.0,
+            150.5,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            81,
+            248,
+            150,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 309.0,
+          "y": 240.0,
+          "width": 52.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "82%",
+          "conservativeBox": [
+            283.0,
+            245.0,
+            335.0,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            285,
+            247,
+            335,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 123.0,
+          "y": 278.0,
+          "width": 87.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "12 345",
+          "conservativeBox": [
+            79.5,
+            285.0,
+            166.5,
+            308.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            83,
+            286,
+            166,
+            308
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "68",
+          "conservativeBox": [
+            303.0,
+            283.0,
+            335.0,
+            308.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            305,
+            285,
+            333,
+            308
+          ]
+        }
+      ],
+      "underlineBrightPixels": 0,
+      "status": "passed"
+    },
+    {
+      "label": "ru-seconds1",
+      "file": "frames/held-ru-seconds1.png",
+      "pngSha256": "64e3e8d12e148adcdbe7ec32844b6ad1f4f8e53e7d57a9b7ece024c48464e600",
+      "texts": [
+        {
+          "kind": "vector",
+          "x": 141.0,
+          "y": 43.0,
+          "width": 115.0,
+          "height": 26.0,
+          "color": 14213869,
+          "text": "Vulcan VC…",
+          "conservativeBox": [
+            83.5,
+            43.0,
+            198.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            222,
+            226,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            85,
+            47,
+            196,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 47.0,
+          "width": 5.0,
+          "height": 22.0,
+          "color": 9877705,
+          "text": "·",
+          "conservativeBox": [
+            204.5,
+            47.0,
+            209.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            148,
+            186,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            207,
+            57,
+            208,
+            58
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 261.0,
+          "y": 47.0,
+          "width": 92.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "United La…",
+          "conservativeBox": [
+            215.0,
+            47.0,
+            307.0,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            217,
+            50,
+            305,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 70.0,
+          "width": 144.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "Communications",
+          "conservativeBox": [
+            123.0,
+            70.0,
+            267.0,
+            92.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            125,
+            75,
+            265,
+            87
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 319.0,
+          "width": 240.0,
+          "height": 26.0,
+          "color": 13950955,
+          "text": "US · Cape Canaveral SF…",
+          "conservativeBox": [
+            75.0,
+            319.0,
+            315.0,
+            345.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            77,
+            323,
+            312,
+            344
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 24.0,
+          "width": 25.0,
+          "height": 15.0,
+          "color": 11715534,
+          "text": "82%",
+          "conservativeBox": [
+            194.5,
+            24.0,
+            219.5,
+            39.0
+          ],
+          "sdkQuantizedFillRgb": [
+            180,
+            194,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            196,
+            28,
+            220,
+            37
+          ]
+        },
+        {
+          "kind": "time",
+          "x": 195.0,
+          "y": 120.0,
+          "width": 188.0,
+          "height": 93.0,
+          "color": 8382406,
+          "text": "08:08",
+          "conservativeBox": [
+            101.0,
+            136.0,
+            290.0,
+            196.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            105,
+            138,
+            285,
+            213
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 202.0,
+          "width": 154.0,
+          "height": 36.0,
+          "color": 8382406,
+          "text": "T- 00:00:01",
+          "conservativeBox": [
+            118.0,
+            202.0,
+            272.0,
+            238.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            119,
+            209,
+            266,
+            231
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 123.0,
+          "y": 240.0,
+          "width": 87.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "12 345",
+          "conservativeBox": [
+            79.5,
+            247.0,
+            166.5,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            83,
+            248,
+            166,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 240.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "68",
+          "conservativeBox": [
+            303.0,
+            245.0,
+            335.0,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            305,
+            247,
+            333,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 96.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "72",
+          "conservativeBox": [
+            80.0,
+            285.0,
+            112.0,
+            307.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            81,
+            286,
+            110,
+            308
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "47",
+          "conservativeBox": [
+            303.0,
+            285.0,
+            335.0,
+            307.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            304,
+            286,
+            334,
+            308
+          ]
+        }
+      ],
+      "underlineBrightPixels": 0,
+      "status": "passed"
+    },
+    {
+      "label": "ru-zero",
+      "file": "frames/held-ru-zero.png",
+      "pngSha256": "8b32c70b7cd2e447f1164b1ac12db8c182ef7cf484b73c51f071e4dca72a0283",
+      "texts": [
+        {
+          "kind": "vector",
+          "x": 141.0,
+          "y": 43.0,
+          "width": 115.0,
+          "height": 26.0,
+          "color": 14213869,
+          "text": "Vulcan VC…",
+          "conservativeBox": [
+            83.5,
+            43.0,
+            198.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            222,
+            226,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            85,
+            47,
+            196,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 47.0,
+          "width": 5.0,
+          "height": 22.0,
+          "color": 9877705,
+          "text": "·",
+          "conservativeBox": [
+            204.5,
+            47.0,
+            209.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            148,
+            186,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            207,
+            57,
+            208,
+            58
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 261.0,
+          "y": 47.0,
+          "width": 92.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "United La…",
+          "conservativeBox": [
+            215.0,
+            47.0,
+            307.0,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            217,
+            50,
+            305,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 70.0,
+          "width": 144.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "Communications",
+          "conservativeBox": [
+            123.0,
+            70.0,
+            267.0,
+            92.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            125,
+            75,
+            265,
+            87
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 319.0,
+          "width": 240.0,
+          "height": 26.0,
+          "color": 13950955,
+          "text": "US · Cape Canaveral SF…",
+          "conservativeBox": [
+            75.0,
+            319.0,
+            315.0,
+            345.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            77,
+            323,
+            312,
+            344
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 24.0,
+          "width": 25.0,
+          "height": 15.0,
+          "color": 11715534,
+          "text": "82%",
+          "conservativeBox": [
+            194.5,
+            24.0,
+            219.5,
+            39.0
+          ],
+          "sdkQuantizedFillRgb": [
+            180,
+            194,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            196,
+            28,
+            220,
+            37
+          ]
+        },
+        {
+          "kind": "time",
+          "x": 195.0,
+          "y": 120.0,
+          "width": 188.0,
+          "height": 93.0,
+          "color": 8382406,
+          "text": "08:08",
+          "conservativeBox": [
+            101.0,
+            136.0,
+            290.0,
+            196.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            105,
+            138,
+            285,
+            213
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 202.0,
+          "width": 163.0,
+          "height": 36.0,
+          "color": 8382406,
+          "text": "T+ 00:00:00",
+          "conservativeBox": [
+            113.5,
+            202.0,
+            276.5,
+            238.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            115,
+            209,
+            275,
+            231
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 115.0,
+          "y": 240.0,
+          "width": 71.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "2 345",
+          "conservativeBox": [
+            79.5,
+            247.0,
+            150.5,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            81,
+            248,
+            150,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 309.0,
+          "y": 240.0,
+          "width": 52.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "82%",
+          "conservativeBox": [
+            283.0,
+            245.0,
+            335.0,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            285,
+            247,
+            335,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 123.0,
+          "y": 278.0,
+          "width": 87.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "12 345",
+          "conservativeBox": [
+            79.5,
+            285.0,
+            166.5,
+            308.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            83,
+            286,
+            166,
+            308
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "68",
+          "conservativeBox": [
+            303.0,
+            283.0,
+            335.0,
+            308.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            305,
+            285,
+            333,
+            308
+          ]
+        }
+      ],
+      "underlineBrightPixels": 0,
+      "status": "passed"
+    },
+    {
+      "label": "ru-elapsed899",
+      "file": "frames/held-ru-elapsed899.png",
+      "pngSha256": "fe8f78e9bda17b07257f5a70897569f48d9504ae884bd524bc9e29bc34f6492a",
+      "texts": [
+        {
+          "kind": "vector",
+          "x": 141.0,
+          "y": 43.0,
+          "width": 115.0,
+          "height": 26.0,
+          "color": 14213869,
+          "text": "Vulcan VC…",
+          "conservativeBox": [
+            83.5,
+            43.0,
+            198.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            222,
+            226,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            85,
+            47,
+            196,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 47.0,
+          "width": 5.0,
+          "height": 22.0,
+          "color": 9877705,
+          "text": "·",
+          "conservativeBox": [
+            204.5,
+            47.0,
+            209.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            148,
+            186,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            207,
+            57,
+            208,
+            58
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 261.0,
+          "y": 47.0,
+          "width": 92.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "United La…",
+          "conservativeBox": [
+            215.0,
+            47.0,
+            307.0,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            217,
+            50,
+            305,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 70.0,
+          "width": 144.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "Communications",
+          "conservativeBox": [
+            123.0,
+            70.0,
+            267.0,
+            92.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            125,
+            75,
+            265,
+            87
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 319.0,
+          "width": 240.0,
+          "height": 26.0,
+          "color": 13950955,
+          "text": "US · Cape Canaveral SF…",
+          "conservativeBox": [
+            75.0,
+            319.0,
+            315.0,
+            345.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            77,
+            323,
+            312,
+            344
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 24.0,
+          "width": 25.0,
+          "height": 15.0,
+          "color": 11715534,
+          "text": "82%",
+          "conservativeBox": [
+            194.5,
+            24.0,
+            219.5,
+            39.0
+          ],
+          "sdkQuantizedFillRgb": [
+            180,
+            194,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            196,
+            28,
+            220,
+            37
+          ]
+        },
+        {
+          "kind": "time",
+          "x": 195.0,
+          "y": 120.0,
+          "width": 188.0,
+          "height": 93.0,
+          "color": 8382406,
+          "text": "08:08",
+          "conservativeBox": [
+            101.0,
+            136.0,
+            290.0,
+            196.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            105,
+            138,
+            285,
+            213
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 202.0,
+          "width": 163.0,
+          "height": 36.0,
+          "color": 8382406,
+          "text": "T+ 00:14:59",
+          "conservativeBox": [
+            113.5,
+            202.0,
+            276.5,
+            238.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            115,
+            209,
+            275,
+            231
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 123.0,
+          "y": 240.0,
+          "width": 87.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "12 345",
+          "conservativeBox": [
+            79.5,
+            247.0,
+            166.5,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            83,
+            248,
+            166,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 240.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "68",
+          "conservativeBox": [
+            303.0,
+            245.0,
+            335.0,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            305,
+            247,
+            333,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 96.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "72",
+          "conservativeBox": [
+            80.0,
+            285.0,
+            112.0,
+            307.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            81,
+            286,
+            110,
+            308
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "47",
+          "conservativeBox": [
+            303.0,
+            285.0,
+            335.0,
+            307.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            304,
+            286,
+            334,
+            308
+          ]
+        }
+      ],
+      "underlineBrightPixels": 0,
+      "status": "passed"
+    },
+    {
+      "label": "ru-elapsed901",
+      "file": "frames/held-ru-elapsed901.png",
+      "pngSha256": "ce5b4cf4db224128511278ff42f630becab1c6fbc03db164fb6cb72c37b08389",
+      "texts": [
+        {
+          "kind": "vector",
+          "x": 141.0,
+          "y": 43.0,
+          "width": 115.0,
+          "height": 26.0,
+          "color": 14213869,
+          "text": "Vulcan VC…",
+          "conservativeBox": [
+            83.5,
+            43.0,
+            198.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            222,
+            226,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            85,
+            47,
+            196,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 47.0,
+          "width": 5.0,
+          "height": 22.0,
+          "color": 9877705,
+          "text": "·",
+          "conservativeBox": [
+            204.5,
+            47.0,
+            209.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            148,
+            186,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            207,
+            57,
+            208,
+            58
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 261.0,
+          "y": 47.0,
+          "width": 92.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "United La…",
+          "conservativeBox": [
+            215.0,
+            47.0,
+            307.0,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            217,
+            50,
+            305,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 70.0,
+          "width": 144.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "Communications",
+          "conservativeBox": [
+            123.0,
+            70.0,
+            267.0,
+            92.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            125,
+            75,
+            265,
+            87
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 319.0,
+          "width": 240.0,
+          "height": 26.0,
+          "color": 13950955,
+          "text": "US · Cape Canaveral SF…",
+          "conservativeBox": [
+            75.0,
+            319.0,
+            315.0,
+            345.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            77,
+            323,
+            312,
+            344
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 24.0,
+          "width": 25.0,
+          "height": 15.0,
+          "color": 11715534,
+          "text": "82%",
+          "conservativeBox": [
+            194.5,
+            24.0,
+            219.5,
+            39.0
+          ],
+          "sdkQuantizedFillRgb": [
+            180,
+            194,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            196,
+            28,
+            220,
+            37
+          ]
+        },
+        {
+          "kind": "time",
+          "x": 195.0,
+          "y": 120.0,
+          "width": 188.0,
+          "height": 93.0,
+          "color": 8382406,
+          "text": "08:08",
+          "conservativeBox": [
+            101.0,
+            136.0,
+            290.0,
+            196.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            105,
+            138,
+            285,
+            213
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 202.0,
+          "width": 163.0,
+          "height": 36.0,
+          "color": 8382406,
+          "text": "T+ 00:15:01",
+          "conservativeBox": [
+            113.5,
+            202.0,
+            276.5,
+            238.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            115,
+            209,
+            271,
+            231
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 115.0,
+          "y": 240.0,
+          "width": 71.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "2 345",
+          "conservativeBox": [
+            79.5,
+            247.0,
+            150.5,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            81,
+            248,
+            150,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 309.0,
+          "y": 240.0,
+          "width": 52.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "82%",
+          "conservativeBox": [
+            283.0,
+            245.0,
+            335.0,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            285,
+            247,
+            335,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 123.0,
+          "y": 278.0,
+          "width": 87.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "12 345",
+          "conservativeBox": [
+            79.5,
+            285.0,
+            166.5,
+            308.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            83,
+            286,
+            166,
+            308
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "68",
+          "conservativeBox": [
+            303.0,
+            283.0,
+            335.0,
+            308.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            305,
+            285,
+            333,
+            308
+          ]
+        }
+      ],
+      "underlineBrightPixels": 0,
+      "status": "passed"
+    },
+    {
+      "label": "ru-reschedule",
+      "file": "frames/held-ru-reschedule.png",
+      "pngSha256": "15e663eb6a2c165b023567f78f6ea720c67aa265caa28778076b5fccf7988680",
+      "texts": [
+        {
+          "kind": "vector",
+          "x": 141.0,
+          "y": 43.0,
+          "width": 115.0,
+          "height": 26.0,
+          "color": 14213869,
+          "text": "Vulcan VC…",
+          "conservativeBox": [
+            83.5,
+            43.0,
+            198.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            222,
+            226,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            85,
+            47,
+            196,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 47.0,
+          "width": 5.0,
+          "height": 22.0,
+          "color": 9877705,
+          "text": "·",
+          "conservativeBox": [
+            204.5,
+            47.0,
+            209.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            148,
+            186,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            207,
+            57,
+            208,
+            58
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 261.0,
+          "y": 47.0,
+          "width": 92.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "United La…",
+          "conservativeBox": [
+            215.0,
+            47.0,
+            307.0,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            217,
+            50,
+            305,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 70.0,
+          "width": 144.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "Communications",
+          "conservativeBox": [
+            123.0,
+            70.0,
+            267.0,
+            92.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            125,
+            75,
+            265,
+            87
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 319.0,
+          "width": 240.0,
+          "height": 26.0,
+          "color": 13950955,
+          "text": "US · Cape Canaveral SF…",
+          "conservativeBox": [
+            75.0,
+            319.0,
+            315.0,
+            345.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            77,
+            323,
+            312,
+            344
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 24.0,
+          "width": 25.0,
+          "height": 15.0,
+          "color": 11715534,
+          "text": "82%",
+          "conservativeBox": [
+            194.5,
+            24.0,
+            219.5,
+            39.0
+          ],
+          "sdkQuantizedFillRgb": [
+            180,
+            194,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            196,
+            28,
+            220,
+            37
+          ]
+        },
+        {
+          "kind": "time",
+          "x": 195.0,
+          "y": 120.0,
+          "width": 188.0,
+          "height": 93.0,
+          "color": 8382406,
+          "text": "08:08",
+          "conservativeBox": [
+            101.0,
+            136.0,
+            290.0,
+            196.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            105,
+            138,
+            285,
+            196
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 202.0,
+          "width": 154.0,
+          "height": 36.0,
+          "color": 15975290,
+          "text": "T- 01:00:00",
+          "conservativeBox": [
+            118.0,
+            202.0,
+            272.0,
+            238.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            194,
+            123
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            119,
+            209,
+            270,
+            231
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 123.0,
+          "y": 240.0,
+          "width": 87.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "12 345",
+          "conservativeBox": [
+            79.5,
+            247.0,
+            166.5,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            83,
+            248,
+            166,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 240.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "68",
+          "conservativeBox": [
+            303.0,
+            245.0,
+            335.0,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            305,
+            247,
+            333,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 96.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "72",
+          "conservativeBox": [
+            80.0,
+            285.0,
+            112.0,
+            307.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            81,
+            286,
+            110,
+            308
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "47",
+          "conservativeBox": [
+            303.0,
+            285.0,
+            335.0,
+            307.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            304,
+            286,
+            334,
+            308
+          ]
+        }
+      ],
+      "underlineBrightPixels": 0,
+      "status": "passed"
+    },
+    {
+      "label": "ru-unknown",
+      "file": "frames/held-ru-unknown.png",
+      "pngSha256": "6f310470b0b56d02bd15718d2052e1b6b0c29cb900efca74932b116e1cd80be4",
+      "texts": [
+        {
+          "kind": "vector",
+          "x": 141.0,
+          "y": 43.0,
+          "width": 115.0,
+          "height": 26.0,
+          "color": 14213869,
+          "text": "Vulcan VC…",
+          "conservativeBox": [
+            83.5,
+            43.0,
+            198.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            222,
+            226,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            85,
+            47,
+            196,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 47.0,
+          "width": 5.0,
+          "height": 22.0,
+          "color": 9877705,
+          "text": "·",
+          "conservativeBox": [
+            204.5,
+            47.0,
+            209.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            148,
+            186,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            207,
+            57,
+            208,
+            58
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 261.0,
+          "y": 47.0,
+          "width": 92.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "United La…",
+          "conservativeBox": [
+            215.0,
+            47.0,
+            307.0,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            217,
+            50,
+            305,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 70.0,
+          "width": 144.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "Communications",
+          "conservativeBox": [
+            123.0,
+            70.0,
+            267.0,
+            92.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            125,
+            75,
+            265,
+            87
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 319.0,
+          "width": 240.0,
+          "height": 26.0,
+          "color": 13950955,
+          "text": "US · Cape Canaveral SF…",
+          "conservativeBox": [
+            75.0,
+            319.0,
+            315.0,
+            345.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            77,
+            323,
+            312,
+            344
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 24.0,
+          "width": 25.0,
+          "height": 15.0,
+          "color": 11715534,
+          "text": "82%",
+          "conservativeBox": [
+            194.5,
+            24.0,
+            219.5,
+            39.0
+          ],
+          "sdkQuantizedFillRgb": [
+            180,
+            194,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            196,
+            28,
+            220,
+            37
+          ]
+        },
+        {
+          "kind": "time",
+          "x": 195.0,
+          "y": 120.0,
+          "width": 188.0,
+          "height": 93.0,
+          "color": 8382406,
+          "text": "08:08",
+          "conservativeBox": [
+            101.0,
+            136.0,
+            290.0,
+            196.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            105,
+            138,
+            285,
+            196
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 202.0,
+          "width": 70.0,
+          "height": 36.0,
+          "color": 15975290,
+          "text": "--:--:--",
+          "conservativeBox": [
+            160.0,
+            202.0,
+            230.0,
+            238.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            194,
+            123
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            159,
+            215,
+            232,
+            238
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 115.0,
+          "y": 240.0,
+          "width": 71.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "2 345",
+          "conservativeBox": [
+            79.5,
+            247.0,
+            150.5,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            81,
+            248,
+            150,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 309.0,
+          "y": 240.0,
+          "width": 52.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "82%",
+          "conservativeBox": [
+            283.0,
+            245.0,
+            335.0,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            285,
+            247,
+            335,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 123.0,
+          "y": 278.0,
+          "width": 87.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "12 345",
+          "conservativeBox": [
+            79.5,
+            285.0,
+            166.5,
+            308.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            83,
+            286,
+            166,
+            308
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "68",
+          "conservativeBox": [
+            303.0,
+            283.0,
+            335.0,
+            308.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            305,
+            285,
+            333,
+            308
+          ]
+        }
+      ],
+      "underlineBrightPixels": 75,
+      "status": "passed",
+      "unknownComponents": [
+        [
+          161,
+          220,
+          168,
+          222,
+          14
+        ],
+        [
+          170,
+          220,
+          177,
+          222,
+          14
+        ],
+        [
+          180,
+          214,
+          183,
+          217,
+          7
+        ],
+        [
+          180,
+          228,
+          183,
+          231,
+          7
+        ],
+        [
+          187,
+          220,
+          194,
+          222,
+          14
+        ],
+        [
+          196,
+          220,
+          203,
+          222,
+          14
+        ],
+        [
+          206,
+          214,
+          209,
+          217,
+          7
+        ],
+        [
+          206,
+          228,
+          209,
+          231,
+          7
+        ],
+        [
+          213,
+          220,
+          220,
+          222,
+          14
+        ],
+        [
+          222,
+          220,
+          229,
+          222,
+          14
+        ]
+      ],
+      "manualPixelReadback": "--:--:--",
+      "manualBoundary": "Exact six distinct horizontal dash strokes and four colon dots in actual native pixels; OCR yielded no text, no digit corrections applied."
+    },
+    {
+      "label": "ru-stale",
+      "file": "frames/held-ru-stale.png",
+      "pngSha256": "9af05435a221bad05e26cddc5f6e69038d2c3d895d9e201585821b418d6a74e7",
+      "texts": [
+        {
+          "kind": "vector",
+          "x": 141.0,
+          "y": 43.0,
+          "width": 115.0,
+          "height": 26.0,
+          "color": 14213869,
+          "text": "Vulcan VC…",
+          "conservativeBox": [
+            83.5,
+            43.0,
+            198.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            222,
+            226,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            85,
+            47,
+            196,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 47.0,
+          "width": 5.0,
+          "height": 22.0,
+          "color": 9877705,
+          "text": "·",
+          "conservativeBox": [
+            204.5,
+            47.0,
+            209.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            148,
+            186,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            207,
+            57,
+            208,
+            58
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 261.0,
+          "y": 47.0,
+          "width": 92.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "United La…",
+          "conservativeBox": [
+            215.0,
+            47.0,
+            307.0,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            217,
+            50,
+            305,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 70.0,
+          "width": 144.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "Communications",
+          "conservativeBox": [
+            123.0,
+            70.0,
+            267.0,
+            92.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            125,
+            75,
+            265,
+            87
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 319.0,
+          "width": 240.0,
+          "height": 26.0,
+          "color": 13950955,
+          "text": "US · Cape Canaveral SF…",
+          "conservativeBox": [
+            75.0,
+            319.0,
+            315.0,
+            345.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            77,
+            323,
+            312,
+            344
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 24.0,
+          "width": 25.0,
+          "height": 15.0,
+          "color": 11715534,
+          "text": "82%",
+          "conservativeBox": [
+            194.5,
+            24.0,
+            219.5,
+            39.0
+          ],
+          "sdkQuantizedFillRgb": [
+            180,
+            194,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            196,
+            28,
+            220,
+            37
+          ]
+        },
+        {
+          "kind": "time",
+          "x": 195.0,
+          "y": 120.0,
+          "width": 188.0,
+          "height": 93.0,
+          "color": 8382406,
+          "text": "08:08",
+          "conservativeBox": [
+            101.0,
+            136.0,
+            290.0,
+            196.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            105,
+            138,
+            285,
+            213
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 202.0,
+          "width": 163.0,
+          "height": 36.0,
+          "color": 8382406,
+          "text": "T+ 00:05:00",
+          "conservativeBox": [
+            113.5,
+            202.0,
+            276.5,
+            238.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            113,
+            209,
+            276,
+            238
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 123.0,
+          "y": 240.0,
+          "width": 87.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "12 345",
+          "conservativeBox": [
+            79.5,
+            247.0,
+            166.5,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            83,
+            248,
+            166,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 240.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "68",
+          "conservativeBox": [
+            303.0,
+            245.0,
+            335.0,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            305,
+            247,
+            333,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 96.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "72",
+          "conservativeBox": [
+            80.0,
+            285.0,
+            112.0,
+            307.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            81,
+            286,
+            110,
+            308
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "47",
+          "conservativeBox": [
+            303.0,
+            285.0,
+            335.0,
+            307.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            304,
+            286,
+            334,
+            308
+          ]
+        }
+      ],
+      "underlineBrightPixels": 165,
+      "status": "passed"
+    },
+    {
+      "label": "ru-appearance",
+      "file": "frames/held-ru-appearance.png",
+      "pngSha256": "ddae2b5bb3a80b180ba646f8c80cadf799b161940f1e5579ee09c055c4f57f30",
+      "texts": [
+        {
+          "kind": "vector",
+          "x": 141.0,
+          "y": 43.0,
+          "width": 115.0,
+          "height": 26.0,
+          "color": 14213869,
+          "text": "Vulcan VC…",
+          "conservativeBox": [
+            83.5,
+            43.0,
+            198.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            222,
+            226,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            85,
+            47,
+            196,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 47.0,
+          "width": 5.0,
+          "height": 22.0,
+          "color": 9877705,
+          "text": "·",
+          "conservativeBox": [
+            204.5,
+            47.0,
+            209.5,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            148,
+            186,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            207,
+            57,
+            208,
+            58
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 261.0,
+          "y": 47.0,
+          "width": 92.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "United La…",
+          "conservativeBox": [
+            215.0,
+            47.0,
+            307.0,
+            69.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            217,
+            50,
+            305,
+            64
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 70.0,
+          "width": 144.0,
+          "height": 22.0,
+          "color": 13950955,
+          "text": "Communications",
+          "conservativeBox": [
+            123.0,
+            70.0,
+            267.0,
+            92.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            125,
+            75,
+            265,
+            87
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 319.0,
+          "width": 240.0,
+          "height": 26.0,
+          "color": 13950955,
+          "text": "US · Cape Canaveral SF…",
+          "conservativeBox": [
+            75.0,
+            319.0,
+            315.0,
+            345.0
+          ],
+          "sdkQuantizedFillRgb": [
+            213,
+            222,
+            238
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            77,
+            323,
+            312,
+            344
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 207.0,
+          "y": 24.0,
+          "width": 25.0,
+          "height": 15.0,
+          "color": 11715534,
+          "text": "82%",
+          "conservativeBox": [
+            194.5,
+            24.0,
+            219.5,
+            39.0
+          ],
+          "sdkQuantizedFillRgb": [
+            180,
+            194,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            196,
+            28,
+            220,
+            37
+          ]
+        },
+        {
+          "kind": "time",
+          "x": 195.0,
+          "y": 120.0,
+          "width": 188.0,
+          "height": 93.0,
+          "color": 10147327,
+          "text": "08:08",
+          "conservativeBox": [
+            101.0,
+            136.0,
+            290.0,
+            196.0
+          ],
+          "sdkQuantizedFillRgb": [
+            156,
+            214,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            105,
+            138,
+            285,
+            196
+          ]
+        },
+        {
+          "kind": "vector",
+          "x": 195.0,
+          "y": 202.0,
+          "width": 154.0,
+          "height": 36.0,
+          "color": 13481983,
+          "text": "T- 49:02:03",
+          "conservativeBox": [
+            118.0,
+            202.0,
+            272.0,
+            238.0
+          ],
+          "sdkQuantizedFillRgb": [
+            205,
+            182,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            119,
+            209,
+            270,
+            231
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 115.0,
+          "y": 240.0,
+          "width": 71.0,
+          "height": 36.0,
+          "color": 8382406,
+          "text": "2 345",
+          "conservativeBox": [
+            79.5,
+            247.0,
+            150.5,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            123,
+            230,
+            197
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            81,
+            248,
+            150,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 309.0,
+          "y": 240.0,
+          "width": 52.0,
+          "height": 36.0,
+          "color": 16766598,
+          "text": "82%",
+          "conservativeBox": [
+            283.0,
+            245.0,
+            335.0,
+            270.0
+          ],
+          "sdkQuantizedFillRgb": [
+            255,
+            214,
+            131
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            285,
+            247,
+            335,
+            270
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 123.0,
+          "y": 278.0,
+          "width": 87.0,
+          "height": 36.0,
+          "color": 16756687,
+          "text": "12 345",
+          "conservativeBox": [
+            79.5,
+            285.0,
+            166.5,
+            308.0
+          ],
+          "sdkQuantizedFillRgb": [
+            255,
+            174,
+            205
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            83,
+            286,
+            166,
+            308
+          ]
+        },
+        {
+          "kind": "metric",
+          "x": 319.0,
+          "y": 278.0,
+          "width": 32.0,
+          "height": 36.0,
+          "color": 16251388,
+          "text": "68",
+          "conservativeBox": [
+            303.0,
+            283.0,
+            335.0,
+            308.0
+          ],
+          "sdkQuantizedFillRgb": [
+            246,
+            250,
+            255
+          ],
+          "matchingColorPixelsWithinRoiBounds": [
+            305,
+            285,
+            333,
+            308
+          ]
+        }
+      ],
+      "underlineBrightPixels": 0,
+      "status": "passed"
+    }
+  ]
+}

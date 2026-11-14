@@ -26,5 +26,5 @@ import Toybox.WatchUi;
  var w=new WatchClock();Test.assertEqual(w.formatLocal(0,0),"00:00");Test.assertEqual(w.formatLocal(12,0),"12:00");Test.assertEqual(w.formatLocal(23,7),"23:07");return true;
 }
 (:test,:typecheck(false)) function localeFormatsNegative(logger){
- var p=new LocalePresentation();p.prepare("en");Test.assertEqual(p.number("—"),"—");var c=new ClockSnapshot("08:08","TIME UNKNOWN");Test.assertEqual(p.countdown(c,true),"--:--:--");c.remaining=0;Test.assertEqual(p.countdown(c,false),"00:00:00");return true;
+ var p=new LocalePresentation();p.prepare("en");Test.assertEqual(p.number("—"),"—");var c=new ClockSnapshot("08:08","TIME UNKNOWN");Test.assertEqual(p.countdown(c,true),"--:--:--");c.remaining=0;Test.assertEqual(p.countdown(c,false),"T+ 00:00:00");return true;
 }

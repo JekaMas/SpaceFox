@@ -39,6 +39,16 @@ def generate(root=ROOT):
  for index,row in enumerate(rows):
   loc=row['id'];d=labels[loc];code=resource_code(row)
   texts={'AppName':'SpaceFox','Energy':'Body Battery','Language':d['language'],'FeedBaseUrl':d['feedUrl'],'Auto':d['auto'],'English':'English','Russian':'Русский'}
+  appearance={
+   'en':['Clock color','Countdown color','Field {n} color','Mint','White','Ice blue','Lavender','Gold','Pink'],
+   'ru':['Цвет часов','Цвет отсчёта','Цвет поля {n}','Мятный','Белый','Голубой','Сиреневый','Золотой','Розовый'],
+   'de':['Uhrfarbe','Countdown-Farbe','Farbe Feld {n}','Mint','Weiß','Hellblau','Lavendel','Gold','Rosa'],
+   'fr':['Couleur heure','Couleur décompte','Couleur champ {n}','Menthe','Blanc','Bleu clair','Lavande','Or','Rose'],
+   'es':['Color de hora','Color de cuenta','Color campo {n}','Menta','Blanco','Azul claro','Lavanda','Dorado','Rosa']}
+  colors=appearance.get(loc,appearance['en'])
+  texts.update({'ClockColor':colors[0],'CountdownColor':colors[1]})
+  texts.update({'Field'+str(i)+'Color':colors[2].replace('{n}',str(i)) for i in range(1,5)})
+  texts.update({'Color'+str(i):value for i,value in enumerate(colors[3:])})
   texts.update({k.capitalize():d[k] for k in ['steps','heart','stress','battery','calories']})
   texts.update({'Field'+str(i):d['field'].replace('{n}',str(i)) for i in range(1,5)})
   texts.update({'Locale'+str(i):r['name'] for i,r in enumerate(rows)})
@@ -46,7 +56,7 @@ def generate(root=ROOT):
   write(directory/'strings/strings.xml',strings_xml(texts))
   # JSON resources do not allocate a global dictionary for every language.
   ident='Locale'+str(index);json_ids.append(ident)
-  payload={k:d[k] for k in ['hour','minute','day','second','noSchedule','dateOnly','window','timeUnknown','awaitUpdate','companyUnknown','missionUnknown']}
+  payload={k:d[k] for k in ['hour','minute','day','second','noSchedule','dateOnly','window','timeUnknown','awaitUpdate','companyUnknown','missionUnknown','communications']}
   payload.update(locale=loc,face=FACES.get(loc,'RobotoRegular'),rtl=row['direction']=='rtl',group=(' ' if loc in 'ru uk pl cs sk hu ro bg hr sl fi sv nb et lv lt fr'.split() else '.' if loc in 'de es it pt nl el tr da id'.split() else ','),dateOrder=('ymd' if loc in ['zh-Hans','zh-Hant','ja','ko','hu','lt','sv'] else 'mdy' if loc=='en' else 'dmy'))
   write(res/'json'/f'{ident}.json',json.dumps(payload,ensure_ascii=False,separators=(',',':'))+'\n')
  write(res/'json/locales.xml','<resources>\n'+''.join(f'<jsonData id="{i}" filename="{i}.json"/>\n' for i in json_ids)+'</resources>\n')
@@ -55,7 +65,10 @@ def generate(root=ROOT):
   props.append(f'<property id="Field{i}" type="number">{i-1}</property>')
   settings.append(f'<setting propertyKey="@Properties.Field{i}" title="@Strings.Field{i}"><settingConfig type="list">'+''.join(f'<listEntry value="{n}">@Strings.{role}</listEntry>' for n,role in enumerate(roles))+'</settingConfig></setting>')
  options=[(i,'Locale'+str(i)) for i,row in enumerate(rows) if row['id'] in catalog['supportPolicy']['primaryLocales']]+[(36,'Auto')]
- props.append('<property id="Language" type="number">36</property>');settings.append('<setting propertyKey="@Properties.Language" title="@Strings.Language"><settingConfig type="list">'+''.join(f'<listEntry value="{n}">@Strings.{role}</listEntry>' for n,role in options)+'</settingConfig></setting>')
+ props.append('<property id="Language" type="number">0</property>');settings.append('<setting propertyKey="@Properties.Language" title="@Strings.Language"><settingConfig type="list">'+''.join(f'<listEntry value="{n}">@Strings.{role}</listEntry>' for n,role in options)+'</settingConfig></setting>')
+ for key,default in [('ClockColor',0),('CountdownColor',0)]+[('Field'+str(i)+'Color',1) for i in range(1,5)]:
+  props.append(f'<property id="{key}" type="number">{default}</property>')
+  settings.append(f'<setting propertyKey="@Properties.{key}" title="@Strings.{key}"><settingConfig type="list">'+''.join(f'<listEntry value="{n}">@Strings.Color{n}</listEntry>' for n in range(6))+'</settingConfig></setting>')
  props.append('<property id="FeedBaseUrl" type="string"></property>');settings.append('<setting propertyKey="@Properties.FeedBaseUrl" title="@Strings.FeedBaseUrl"><settingConfig type="alphaNumeric"/></setting>')
  write(res/'settings/properties.xml','\n'.join(props+['</properties>'])+'\n');write(res/'settings/settings.xml','\n'.join(settings+['</settings>'])+'\n')
  write(gen/'SceneStrings.mc',scene_strings(rows,qualified))

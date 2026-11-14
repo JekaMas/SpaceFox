@@ -60,7 +60,17 @@ def source_state(root: Path) -> dict:
     # inputs. Its retained raw pages are replayed locally, never fetched here.
     catalog = json.loads((root / "locales/catalog.json").read_text())
     proof = catalog["supportPolicy"]["softwareQualificationProof"]
-    admission = {"locales/catalog.json"}
+    admission = {"locales/catalog.json", "release/native-admission-inputs.json"}
+    # The retained delta validators reconstruct historical source trees. Their
+    # exact proof inputs must travel with a release and isolated qualification.
+    additional = json.loads((root / "release/native-admission-inputs.json").read_text())
+    require(isinstance(additional, list) and len(additional) == len(set(additional)),
+            "invalid native admission input manifest")
+    for name in additional:
+        require(isinstance(name, str) and name.startswith("openspec/changes/spacefox-watchface/evidence/")
+                and ".." not in PurePosixPath(name).parts and name in paths,
+                "unsafe or untracked native admission input")
+        admission.add(name)
     if proof is not None:
         for name in (proof["corpusPath"], proof["receiptPath"]):
             require(isinstance(name, str) and name and not PurePosixPath(name).is_absolute() and

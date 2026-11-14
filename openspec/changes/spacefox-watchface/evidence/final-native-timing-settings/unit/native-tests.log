@@ -1,0 +1,87 @@
+------------------------------------------------------------------------------
+Executing test clockExactPositive...
+DEBUG (22:31): literal7200 second=T- 02:00:00 reads=3 cross=T- 777777:46:40
+PASS
+------------------------------------------------------------------------------
+Executing test clockExactNegative...
+DEBUG (22:31): prohibit offset arithmetic and cached countdown on local change
+PASS
+------------------------------------------------------------------------------
+Executing test uncertaintyPositive...
+DEBUG (22:31): date/window ignore nominal midpoint; exact countdown remains null
+PASS
+------------------------------------------------------------------------------
+Executing test uncertaintyNegative...
+DEBUG (22:31): null/fraction/date/string/boolean cannot create precision; signed integer UTC is present
+PASS
+------------------------------------------------------------------------------
+Executing test offlineWakePositive...
+DEBUG (22:31): offline before=T- 03:00:00 after=T- 01:00:00 reads=4
+PASS
+------------------------------------------------------------------------------
+Executing test offlineWakeNegative...
+DEBUG (22:31): forward/zero/backward: T+00:01:40,T+00:00:00,T- 01:00:00
+PASS
+------------------------------------------------------------------------------
+Executing test precisionTransitions...
+DEBUG (22:31): fixed numeric countdown; minute target uses nominal arithmetic
+PASS
+------------------------------------------------------------------------------
+Executing test emptyStartup...
+DEBUG (22:31): real App initial view has no invented launch
+PASS
+------------------------------------------------------------------------------
+Executing test clockAdapterSmoke...
+DEBUG (22:31): live SDK Time.now adapter observed=1794594699
+PASS
+------------------------------------------------------------------------------
+Executing test formatLocalSettings...
+DEBUG (22:31): watch12/24 settings formatter: midnight/noon/23h
+PASS
+------------------------------------------------------------------------------
+Executing test finalTimingPositive...
+DEBUG (22:31): production schema3 parser->FeedScene->ScheduleState->View: all7literal states exact and nominalMIN precision preserved; no local liftoff state
+PASS
+------------------------------------------------------------------------------
+Executing test finalTimingNegative...
+DEBUG (22:31): unknown/date cannot inherit a precise timer; clock correction unlatches elapsed; signed Long UTC does not wrap
+PASS
+------------------------------------------------------------------------------
+Executing test finalParserUpdatePositive...
+DEBUG (22:31): accepted sameID reschedule/targetwithdrawal replaces elapsed coherently through actual parser/context
+PASS
+------------------------------------------------------------------------------
+Executing test finalParserUpdateNegative...
+DEBUG (22:31): contradictory exact target/sourceNET is rejected; nominalMIN never relabelled exact
+PASS
+------------------------------------------------------------------------------
+Executing test finalSettingsPositive...
+DEBUG (22:31): actual Properties/app.onSettingsChanged/load; distinct6colors+RU, retained4roles andFeedBaseUrl; UI/mobile selection not claimed
+PASS
+------------------------------------------------------------------------------
+Executing test finalSettingsNegative...
+DEBUG (22:31): unknown or wrongtyped palette values default individually; Auto+36 internalIDs retained; no new layout/clock options
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+clockExactPositive                  PASS
+clockExactNegative                  PASS
+uncertaintyPositive                 PASS
+uncertaintyNegative                 PASS
+offlineWakePositive                 PASS
+offlineWakeNegative                 PASS
+precisionTransitions                PASS
+emptyStartup                        PASS
+clockAdapterSmoke                   PASS
+formatLocalSettings                 PASS
+finalTimingPositive                 PASS
+finalTimingNegative                 PASS
+finalParserUpdatePositive           PASS
+finalParserUpdateNegative           PASS
+finalSettingsPositive               PASS
+finalSettingsNegative               PASS
+Ran 16 tests
+
+PASSED (passed=16, failed=0, errors=0)

@@ -78,7 +78,7 @@ def source(identity, feed, reopen=False):
  ensure(r.selectionHash.equals("""
         + literal(feed["visualSelection"]["sha256"])
         + """),"source selection mismatch");
- ensure(r.scene["position"]!=null&&r.mapBitmap!=null&&r.bitmap!=null&&r.modelOriginBitmap!=null&&r.operatorBitmap!=null,"selected map/model/marks missing");
+ ensure(r.scene["position"]!=null&&r.mapBitmap!=null&&r.bitmap!=null&&r.siteCountryBitmap!=null,"selected map/model/site-country flag missing");
  var seal=feed.store.read("sf.commit")["seal"];var active=feed.store.read("sf.raster.active");ensure(active["base"].equals(configuredFeedUrl())&&active["selectionHash"].equals(r.selectionHash),"persistent cache coherence");
  var snapshot=view.snapshot();System.println("SELECTED_SCENE_COMPLETE mode="""
         + ("reopen" if reopen else "public-background")

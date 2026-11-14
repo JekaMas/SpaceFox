@@ -1,94 +1,15 @@
 # SpaceFox
 
-Космический циферблат для **Garmin Forerunner 165**: текущее время, четыре
-настраиваемых фитнес-поля, ближайший запуск ракеты, изображение модели и точка
-космодрома на карте. Выбранная композиция — **04/full** в
-[основном браузерном макете](prototype/current/index.html). Макет использует
-условные расписание и фитнес-значения.
+SpaceFox is an independent space-themed watch face for Garmin Forerunner 165. It shows a 24-hour clock, four activity fields, the next launch, rocket artwork and a launch-site map.
 
-## Текущее состояние
+![SpaceFox in the FR165 simulator](docs/images/simulator-fr165-0.1.1.png)
 
-Текущий контракт использует один формат: `native-motion-v3`, envelope schema 3,
-SFR1M и единственный endpoint `/feed.json`. Старые wire-версии, отдельные static
-экспортёры, переходные периоды и проверки совместимости сняты по решению владельца;
-это не пройденные проверки. Исторические результаты сохранены с исходными границами.
-Текущий публичный экземпляр уже переключён на одну плоскую карту: актуальные
-Ubuntu/HTTPS-наблюдения и автоматическое обновление записаны в прогрессе.
-[Тестовый выпуск0.1.0](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.0-test.1)
-содержит подписанные PRG/IQ; [установка с телефона и проверка](docs/TESTING_ON_PHONE.ru.md)
-требуют доступной страницы Connect IQ. Публикация на GitHub не означает одобрение Garmin.
-[Живое расписание](https://jekamas.github.io/SpaceFox/feed.json).
+The image is a retained Garmin simulator observation of the native design. Its activity values are simulated. The test package and installation boundaries are described in [TESTING.md](TESTING.md). Find releases and report issues on [GitHub](https://github.com/JekaMas/SpaceFox). The public schedule is at [feed.json](https://jekamas.github.io/SpaceFox/feed.json).
 
-Реализованы LL2 publisher, долговечное состояние, Actions/Pages и каталог.
-Сохраняются атомарное обновление и восстановление в текущем формате, проверка
-полной зависимости по digest, честный возраст источника и общая квота запросов.
-Feed ограничен 8192 UTF-8 байтами, текущий и восстанавливаемый artifact — 1MiB
-и 256 файлами. Полный каталог остаётся вне часов.
+The countdown shows `T-` before a known target, `T+` after it, and `--:--:--` when the time is unknown. Passing zero does not establish that a launch occurred. The watch retains an accepted schedule for offline use. Stale and rescheduled data have separate indicators.
 
-Текущий основной сценарий: фиксированные часы `HH:mm` (24 часа), один числовой
-отсчёт `HH:mm:ss` с накапливающимися часами, большая затухающая плоская карта,
-четыре постоянные позиции с выбором из шести метрик. Неизвестная цель — `--:--:--`,
-истёкшая — `00:00:00`; ноль не подтверждает старт. Доступны язык, HTTPS URL
-источника и четыре назначения метрик. Анимация, верхняя батарея и происхождение
-модели фиксированы. Основной сценарий принят по независимым проверкам; точные границы приведены
-[в прогрессе](openspec/changes/spacefox-watchface/PROGRESS.md).
+The default language is English. Four fixed positions can show supported Garmin activity metrics; unavailable readings remain unavailable. Primary software-supported languages are English, Russian, German, French and Spanish. On-watch settings navigation and phone/device behavior require separate verification for this test build. Artwork and catalogue coverage are still being developed.
 
-Все 36 языковых ресурсов и внутренние ID сохранены. Основные режимы — английский,
-русский, немецкий, французский и испанский; меню предлагает Auto и эти пять языков.
-Остальные 31 ресурс — best-effort. Конечная программная проверка охватывает 1822
-реальных запуска с 2021-11-13 UTC, все опубликованные будущие страницы до
-`next=null` и фактические оставшиеся тексты меню. Физические FR165/телефон,
-батарея и Store остаются отдельными границами приёмки. Назначение миссии показывает
-исходную `mission.type/category`; отсутствие значения остаётся явным.
+Developers can read [project setup](docs/AGENT_SETUP.md), [the update pipeline](docs/CLOUD_DELIVERY.md), and the [project workflow](docs/PROJECT_WORKFLOW.md). Contributions and bug reports are welcome through [GitHub Issues](https://github.com/JekaMas/SpaceFox/issues); do not include private health data or credentials.
 
-Автономная цепочка расписания проверена: Cloudflare Cron → GitHub-hosted Ubuntu
-→ GitHub Pages. Компьютер с агентом для неё не нужен. Локальный официальный
-симулятор получил новую ракету/карту с публичного адреса и обновил настоящий
-сохранённый кеш с Vulcan до Starship; повторное открытие прошло без HTTP.
-[Как устроены обновления и что проверено](docs/AUTONOMOUS_UPDATES.ru.md).
-Автоматический издатель (задача3.3) закрыт после независимого ревью. Общий
-прогресс —27закрытых свойств; физические часы/телефон, батарея и Store остаются
-отдельными этапами. Публикация в Garmin отложена владельцем.
-
-[Точный текущий прогресс и инвентарь](openspec/changes/spacefox-watchface/PROGRESS.md),
-[задачи](openspec/changes/spacefox-watchface/tasks.md),
-[CLOUD_DELIVERY](docs/CLOUD_DELIVERY.md),
-[AGENT_SETUP](docs/AGENT_SETUP.md), [каталог](docs/GLOBAL_VISUAL_CATALOG.md).
-Исследования ниже — исторические визуальные ориентиры, а не текущая матрица
-приёмки строк. AWS, постоянно работающий компьютер и регулярные вызовы модели
-для издателя не нужны. Каждый владелец использует собственный fork и HTTPS URL.
-Оригинальные source/spec/рисунки — [MIT](LICENSE); отдельные условия геоданных,
-шрифтов и иных материалов сохранены в [уведомлениях](THIRD_PARTY_NOTICES.md).
-
-## Выбранный дизайн
-
-[04/full](prototype/current/index.html): полноэкранная карта с постепенным
-затуханием, время без чёрной подложки, соседний отсчёт, ракета с происхождением
-и знаком оператора, модель и компания наверху, цель миссии отдельной строкой,
-четыре настраиваемых поля и место запуска внизу. В браузере используются
-условные данные; фактические SDK-наблюдения связаны с текущим прогрессом.
-Ранние исследования остаются историческими материалами и не участвуют в
-текущей матрице приёмки конечного словаря.
-
-Для согласованной ручной проверки recovery workflow имеет необязательный input
-`qualify_pre_post_recovery=true`: после сохранения intent arm намеренно завершится
-с ошибкой, deploy будет пропущен. Следующий обычный dispatch с inputfalse проверяет
-точный завершённый старый run до повторной публикации. Значение по умолчанию false;
-это операторский fault-тест из [runbook](docs/CLOUD_DELIVERY.md).
-
-## Процесс разработки
-
-Подключён JekaMas SDD / `agent-workflow` как закреплённый подмодуль.
-Начните с [локального процесса](docs/PROJECT_WORKFLOW.md) и
-[сгенерированной инструкции](docs/SDD_WORKFLOW.md).
-
-```sh
-openspec status --change spacefox-watchface --json
-openspec validate spacefox-watchface --strict --json
-```
-
-Текущий pin процесса `f8e7ba481bf356600925e01936d7e9f3f1ac0084` получен из точной
-локальной установленной версии: GitHub отказал в получении этого commit.
-На этом компьютере подмодуль работает; для воспроизведения на другой машине
-потребуется источник этого же pin. Подробности и восстановление описаны в
-[записи настройки](openspec/changes/spacefox-watchface/evidence/setup-report.md).
+SpaceFox is available under the [MIT license](LICENSE). Fonts, data and other third-party materials retain their [notices](THIRD_PARTY_NOTICES.md). See the [privacy policy](docs/PRIVACY.md).

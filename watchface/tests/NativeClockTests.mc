@@ -31,11 +31,11 @@ function clockExactPositive(logger as Test.Logger) as Boolean {
     var crossWidth = new ScheduleState(1800000000, "exact");
     logger.debug("literal7200 second=" + second.countdown + " reads=" + input.reads + " cross=" + crossWidth.display(-1000000000, true));
     return schedule.remainingSeconds(input.utc) == 7200 &&
-        first.countdown.equals("02:00:00") && second.countdown.equals("02:00:00") &&
+        first.countdown.equals("T- 02:00:00") && second.countdown.equals("T- 02:00:00") &&
         first.localTime.equals("08:00") && second.localTime.equals("12:00") && input.reads == 3 &&
-        new ScheduleState(-1, "exact").display(-61, true).equals("00:01:00") &&
+        new ScheduleState(-1, "exact").display(-61, true).equals("T- 00:01:00") &&
         crossWidth.remainingSeconds(-1000000000) == 2800000000l &&
-        crossWidth.display(-1000000000, true).equals("777777:46:40");
+        crossWidth.display(-1000000000, true).equals("T- 777777:46:40");
 }
 
 (:test)
@@ -47,7 +47,7 @@ function clockExactNegative(logger as Test.Logger) as Boolean {
     input.local = "00:01"; // local date/zone shift must not change UTC duration
     var two = view.snapshot();
     logger.debug("prohibit offset arithmetic and cached countdown on local change");
-    return one.countdown.equals("02:00:00") && two.countdown.equals("02:00:00");
+    return one.countdown.equals("T- 02:00:00") && two.countdown.equals("T- 02:00:00");
 }
 
 (:test)
@@ -74,8 +74,9 @@ function uncertaintyNegative(logger as Test.Logger) as Boolean {
     var valid = [0, 0l, -1, -1000000000, -62135596800l];
     for (var index = 0; index < valid.size(); index += 1) {
         var schedule = new ScheduleState(valid[index], "exact");
-        if (schedule.remainingSeconds(1800000000) != 0 ||
-            !schedule.display(1800000000, true).equals("00:00:00")) { return false; }
+        if (schedule.remainingSeconds(1800000000) == null ||
+            (schedule.remainingSeconds(1800000000) as Number or Long) >= 0 ||
+            schedule.display(1800000000, true).find("T+ ") != 0) { return false; }
     }
     return true;
 }
@@ -94,8 +95,8 @@ function offlineWakePositive(logger as Test.Logger) as Boolean {
     view.onExitSleep();
     var after = view.snapshot();
     logger.debug("offline before="+before.countdown+" after="+after.countdown+" reads="+input.reads);
-    return remainingBefore == 10800 && before.countdown.equals("03:00:00") &&
-        schedule.remainingSeconds(input.utc) == 3600 && after.countdown.equals("01:00:00") && input.reads == 4;
+    return remainingBefore == 10800 && before.countdown.equals("T- 03:00:00") &&
+        schedule.remainingSeconds(input.utc) == 3600 && after.countdown.equals("T- 01:00:00") && input.reads == 4;
 }
 
 (:test)
@@ -103,15 +104,15 @@ function offlineWakeNegative(logger as Test.Logger) as Boolean {
     var input = new ControlledClock(1800000000, "08:00");
     var view = new SpaceFoxView(input, new ScheduleState(1800007200, "exact"));
     view.onExitSleep();
-    input.utc = 1800007300; // jump past target: no negative time or liftoff
+    input.utc = 1800007300; // jump past target: elapsed time, no liftoff claim
     var elapsed = view.snapshot();
     input.utc = 1800007200; // exactly zero is still awaiting
     var zero = view.snapshot();
     input.utc = 1800003600; // backward clock correction: recompute, no latched zero
     var backwards = view.snapshot();
-    logger.debug("forward/zero/backward: 00:00:00, 00:00:00,01:00:00");
-    return elapsed.countdown.equals("00:00:00") && zero.countdown.equals("00:00:00") &&
-        backwards.countdown.equals("01:00:00");
+    logger.debug("forward/zero/backward: T+00:01:40,T+00:00:00,T- 01:00:00");
+    return elapsed.countdown.equals("T+ 00:01:40") && zero.countdown.equals("T+ 00:00:00") &&
+        backwards.countdown.equals("T- 01:00:00");
 }
 
 (:test)
@@ -126,9 +127,9 @@ function precisionTransitions(logger as Test.Logger) as Boolean {
     var asleep = view.snapshot();
     var distant = new ScheduleState(1800176580, "exact");
     logger.debug("fixed numeric countdown; minute target uses nominal arithmetic");
-    return initial.countdown.equals("01:01:01") && active.countdown.equals("01:01:01") &&
-        asleep.countdown.equals("01:01:00") && distant.display(1800000000, true).equals("49:03:00") &&
-        new ScheduleState(1800003661,"minute").display(1800000000,true).equals("01:01:01") &&
+    return initial.countdown.equals("T- 01:01:01") && active.countdown.equals("T- 01:01:01") &&
+        asleep.countdown.equals("T- 01:01:00") && distant.display(1800000000, true).equals("T- 49:03:00") &&
+        new ScheduleState(1800003661,"minute").display(1800000000,true).equals("T- 01:01:01") &&
         new ScheduleState(null,"window").display(1800000000,true).equals("--:--:--");
 }
 

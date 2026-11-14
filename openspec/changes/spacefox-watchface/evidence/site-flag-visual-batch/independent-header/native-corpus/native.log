@@ -1,0 +1,17 @@
+------------------------------------------------------------------------------
+Executing test capturedHeaderChoice...
+DEBUG (01:28): HEADER_CHOICE language=en raw=SpaceX abbreviation=SpX shown=SpaceX model=Falcon 9 Block… bounds=true
+DEBUG (01:28): HEADER_CHOICE language=en raw=United Launch Alliance abbreviation=ULA shown=ULA model=Vulcan VC6L bounds=true
+DEBUG (01:28): HEADER_CHOICE language=ru raw=SpaceX abbreviation=SpX shown=SpaceX model=Falcon 9 Block… bounds=true
+DEBUG (01:28): HEADER_CHOICE language=ru raw=United Launch Alliance abbreviation=ULA shown=ULA model=Vulcan VC6L bounds=true
+DEBUG (01:28): HEADER_CORPUS_BOUNDS headers=170 languages=2 valid=true
+DEBUG (01:28): HEADER_CHOICE_PASS captured=2 languages=2 fullFieldsRetained=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+capturedHeaderChoice                PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

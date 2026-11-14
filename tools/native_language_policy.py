@@ -19,6 +19,10 @@ def input_paths(catalog,root=ROOT):
  """
  root=Path(root).resolve()
  rows=catalog['locales'];primary=set(catalog['supportPolicy']['primaryLocales']);paths=list(OWNERS)
+ if isinstance(catalog['supportPolicy']['softwareQualificationProof'],dict) and 'sourceDeltaProof' in catalog['supportPolicy']['softwareQualificationProof']:
+  paths.extend(('tools/native_timing_requalification.py','tools/native_timing_settings.py','tools/spacefox/native_profile.py','watchface/tests/NativeClockTests.mc','tests/fixtures/final_native_timing_settings/Assertions.mc','watchface/source/NativeFeed.mc','watchface/source/NativeJson.mc','tests/fixtures/sourced_ascent_end/Assertions.mc'))
+ if isinstance(catalog['supportPolicy']['softwareQualificationProof'],dict) and 'visualDeltaProof' in catalog['supportPolicy']['softwareQualificationProof']:
+  paths.extend(('tools/native_site_flag_requalification.py','tools/native_site_flag_tests.py','tools/native_site_flag_observer.py','watchface/source/NativeSfr.mc','watchface/source/NativeVisualRenderer.mc','watchface/source/NativeAssetTypes.mc','watchface/source/generated/NativeAssets.mc','watchface/resources/drawables/drawables.xml'))
  paths.extend(('watchface/monkey.jungle','watchface/toolchain-lock.json',
                'watchface/resources/settings/settings.xml','watchface/resources/settings/properties.xml'))
  def dependency(binding,filename):
@@ -84,6 +88,15 @@ def software_locales(root,catalog=None):
  if not qualified:
   if proof is not None:raise ValueError('empty software admission must have no proof')
   return []
+ if isinstance(proof,dict) and 'bootstrapDeltaProof' in proof:
+  from tools.native_bootstrap_requalification import validate
+  return validate(root,catalog)
+ if isinstance(proof,dict) and 'visualDeltaProof' in proof:
+  from tools.native_site_flag_requalification import validate
+  return validate(root,catalog)
+ if isinstance(proof,dict) and 'sourceDeltaProof' in proof:
+  from tools.native_timing_requalification import validate
+  return validate(root,catalog)
  qualified=_validate_bound_files(root,catalog)
  # Byte binding alone cannot establish complete source pagination or a native
  # cohort. Reconcile the actual source/SDK evidence before granting admission.

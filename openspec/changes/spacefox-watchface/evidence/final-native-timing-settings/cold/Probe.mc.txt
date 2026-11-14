@@ -1,0 +1,72 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.System;
+import Toybox.Background;
+import Toybox.Time;
+import Toybox.Graphics;
+import Toybox.Timer;
+(:typecheck(false)) class FinalClock extends WatchClock {
+ var now=0l;function utcSeconds(){return now;}function localTimeText(){return "08:08";}
+}
+(:typecheck(false)) class FinalDrawing extends SceneRenderer {
+ var app;var recording=false;
+ function initialize(a,p){SceneRenderer.initialize(p);app=a;}
+ function text(dc as Graphics.Dc,x as Numeric,y as Numeric,font as Graphics.FontType,value as String,color as Number,width as Number,contour as Number) as String {
+  var shown=SceneRenderer.text(dc,x,y,font,value,color,width,contour);
+  if(recording){var kind=font==fonts["time"]?"time":font==fonts["metric"]?"metric":"vector";System.println("FINAL_TEXT|"+app.label()+"|"+kind+"|"+x+"|"+y+"|"+dc.getTextWidthInPixels(shown,font)+"|"+dc.getFontHeight(font)+"|"+color+"|"+shown);}
+  return shown;
+ }
+}
+(:typecheck(false)) class FinalProxy extends WatchUi.WatchFace {
+ var app;function initialize(a){WatchFace.initialize();app=a;}
+ function onLayout(dc){app.view.onLayout(dc);}function onShow(){app.view.onShow();}function onHide(){app.view.onHide();}
+ function onUpdate(dc){app.view.onUpdate(dc);app.drawn(dc);}
+}
+(:background,:typecheck(false)) class FinalQuiet extends System.ServiceDelegate {function onTemporalEvent(){Background.deleteTemporalEvent();Background.exit(null);}}
+(:background,:extendedCode,:typecheck(false)) class SfrRuntimeApp extends SpaceFoxApp {
+ var observer=null;var clock=null;var rich=null;var sourceContext=null;var sourceTarget=null;var checks=0;var frame=-1;var recorded=false;var cold=false;var fields=null;
+ function initialize(){SpaceFoxApp.initialize();NativeMetrics.ownerTag="7af62b7a43d84afcb21e8d935670c107|observer-prefix3|705e75b7854c";System.println("SFR_PROBE owner="+NativeMetrics.ownerTag);NativeMetrics.enabled=false;}
+ function ensure(ok,message){if(!ok){throw new Lang.InvalidValueException("FINAL_NATIVE "+message);}}
+ function getServiceDelegate(){return [new FinalQuiet()];}
+ (:typecheck(disableBackgroundCheck)) function getInitialView(){
+  Application.Properties.setValue("FeedBaseUrl","https://final-native-timing.invalid");
+  cold=Application.Storage.getValue("final.capture.prefix.complete")==true;
+  // This held capture reuses the previously observed namespace; fresh English
+  // defaults were asserted by the first native startup, not reset here.
+  clock=new FinalClock();clock.now=Time.now().value().toLong();view=new SpaceFoxView(clock,new ScheduleState(null,"unknown"));
+  view.setSettings(new SceneSettings(null).load());feed=new NativeCache(configuredFeedUrl(),null);feed.load(Time.now().value().toLong());NativeForegroundApp.display(self,feed);view.pendingLoader=method(:begin);view.syncDisplayMode(System.getDisplayMode());return [new FinalProxy(self)];
+ }
+ (:typecheck(disableBackgroundCheck)) function begin(){SpaceFoxApp.reloadFeed();observer=new Timer.Timer();observer.start(method(:ready),50,false);}
+ (:typecheck(disableBackgroundCheck)) function ready(){
+  Background.deleteTemporalEvent();checks+=1;ensure(checks<=500,"full captured scene timeout");
+  if(view.downloaded==null||view.sfrBuild!=null||view.sfrRequested){observer.start(method(:ready),50,false);return;}
+  ensure(System.getSystemStats().totalMemory==126784,"ordinary heap required");rich=view.downloaded;ensure(rich.mapBitmap!=null&&rich.bitmap!=null,"actual full map and rocket required");sourceContext=view.context;sourceTarget=feed.packet.target();
+  if(sourceTarget==null){sourceTarget=sourceContext.schedule.remainingSeconds(0);}
+  ensure(sourceTarget!=null,"captured nominal-minute target missing");
+  if(cold){frame=19;fields=[4,5,0,1];ensure(view.settings.language.equals("ru")&&view.settings.clockColor==0x9ad5ff&&view.settings.countdownColor==0xcdb7ff,"cold persisted language/clock/countdown");ensure(view.settings.slots[0].equals("calories")&&view.settings.slots[1].equals("battery")&&view.settings.slots[2].equals("steps")&&view.settings.slots[3].equals("energy")&&Application.Properties.getValue("FeedBaseUrl").equals("https://final-native-timing.invalid"),"cold four roles and feed URL");ensure(view.settings.fieldColors[0]==0x7fe7c6&&view.settings.fieldColors[1]==0xffd686&&view.settings.fieldColors[2]==0xffafcf&&view.settings.fieldColors[3]==0xf7f9fc,"cold persisted four colors");System.println("FINAL_COLD_REOPEN Properties=true locale=ru colors=6 fields=4 sourceSame=true owner="+NativeMetrics.ownerTag);applyFrame(false);}
+  else{frame=0;applyFrame(true);}
+ }
+ (:typecheck(disableBackgroundCheck)) function onDisplayModeChanged(){var high=System.getDisplayMode()==System.DISPLAY_MODE_HIGH_POWER;SpaceFoxApp.onDisplayModeChanged();if(high&&rich!=null&&!cold){next();}}
+ function label(){return (frame<10?"en":"ru")+"-"+["long","seconds59","seconds1","zero","elapsed899","elapsed901","reschedule","unknown","stale","appearance"][frame%10];}
+ (:typecheck(disableBackgroundCheck)) function next(){if(rich==null||frame<0||cold){return;}if(frame<19){frame+=1;applyFrame(true);}else{System.println("FINAL_NATIVE COMPLETE frames=20 callbacks=20 ordinaryBytes=126784 owner="+NativeMetrics.ownerTag);}}
+ (:typecheck(disableBackgroundCheck)) function applyFrame(change){
+  var state=frame%10;var lang=frame<10?0:1;var colors=state==9?[2,3,0,4,5,1]:[0,0,1,1,1,1];
+  if(change){Application.Properties.setValue("Language",lang);var names=["ClockColor","CountdownColor","Field1Color","Field2Color","Field3Color","Field4Color"];for(var i=0;i<names.size();i+=1){Application.Properties.setValue(names[i],colors[i]);}var roleSets=[[0,1,2,3],[4,5,0,1]];fields=roleSets[state%2];for(var j=0;j<4;j+=1){Application.Properties.setValue("Field"+(j+1),fields[j]);}SpaceFoxApp.onSettingsChanged();Background.deleteTemporalEvent();}
+  var loaded=new SceneSettings(null).load();ensure(loaded.language.equals(lang==0?"en":"ru")&&view.settings.language.equals(loaded.language),"callback persisted locale");
+  ensure(view.presentation.locale.equals(loaded.language)&&!view.presentation.qualificationMode,"actual regular locale selection");
+  ensure(view.downloaded==rich,"appearance changed full bitmap");ensure(Application.Properties.getValue("FeedBaseUrl").equals("https://final-native-timing.invalid"),"callback retained feed URL");for(var z=0;z<4;z+=1){ensure(view.settings.slots[z].equals(["steps","energy","heart","stress","calories","battery"][fields[z]]),"callback retained role");}
+  var deltas=[176523,59,1,0,-899,-901,3600,0,-300,176523];clock.now=sourceTarget.toLong()-deltas[state];
+  // Explicit display seam: no changed launch names or forged provider facts.
+  sourceContext.schedule=new ScheduleState(state==7?null:sourceTarget,state==7?"unknown":"minute");sourceContext.rescheduled=state==6||state==7;sourceContext.stale=state==7||state==8;
+  view.setContext(sourceContext);view.downloaded=rich;view.packet=null;view.renderer=new FinalDrawing(self,view.presentation);view.renderer.prepare(sourceContext,view.settings);view.renderer.downloaded=rich;
+  view.values={"steps"=>12345,"energy"=>68,"heart"=>72,"stress"=>47,"calories"=>2345,"battery"=>82};view.animationProgress=0.0;view.stopAnimation();recorded=false;
+  var expected=["T- 49:02:03","T- 00:00:59","T- 00:00:01","T+ 00:00:00","T+ 00:14:59","T+ 00:15:01","T- 01:00:00","--:--:--","T+ 00:05:00","T- 49:02:03"];var current=view.snapshot();ensure(current.countdown.equals(expected[state])&&view.presentation.countdown(current,true).equals(expected[state]),"countdown/model/view mismatch");
+  if(frame==19){Application.Storage.setValue("final.settings.complete",true);Application.Storage.setValue("final.capture.prefix.complete",true);}
+  WatchUi.requestUpdate();
+ }
+ function drawn(dc){
+  if(rich==null||recorded||view.renderer==null){return;}var drawing=view.renderer;drawing.recording=true;var writes=feed.store.writes;var reads=feed.store.reads;view.onUpdate(dc);drawing.recording=false;ensure(writes==feed.store.writes&&reads==feed.store.reads,"redraw storage IO");recorded=true;
+  System.println("FINAL_FRAME_READY label="+label()+" ms="+System.getTimer()+" utc="+clock.now+" countdown="+view.snapshot().countdown+" slots="+view.settings.slots+" clockColor="+view.settings.clockColor+" countdownColor="+view.settings.countdownColor+" fieldColors="+view.settings.fieldColors+" source="+feed.packet.wireHash+" bitmap=true map=true callback="+!cold+" ordinaryBytes="+System.getSystemStats().totalMemory+" owner="+NativeMetrics.ownerTag);
+ }
+}

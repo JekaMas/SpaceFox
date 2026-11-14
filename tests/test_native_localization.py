@@ -9,7 +9,7 @@ class NativeLocalizationResourcesTest(unittest.TestCase):
  def test_all36_and_settings_preserved(self):
   loaded=load_locales(ROOT);rows=loaded['catalog']['locales'];self.assertEqual(len(rows),36)
   settings=ET.parse(ROOT/'watchface/resources/settings/settings.xml');props=ET.parse(ROOT/'watchface/resources/settings/properties.xml')
-  self.assertEqual({p.attrib['id'] for p in props.getroot()}, {'Field1','Field2','Field3','Field4','Language','FeedBaseUrl'})
+  self.assertEqual({p.attrib['id'] for p in props.getroot()}, {'Field1','Field2','Field3','Field4','Language','ClockColor','CountdownColor','Field1Color','Field2Color','Field3Color','Field4Color','FeedBaseUrl'})
   language=next(s for s in settings.getroot() if s.attrib['propertyKey']=='@Properties.Language')
   options={int(x.attrib['value']):x.text for x in language.find('settingConfig')};self.assertEqual(options,{0:'@Strings.Locale0',1:'@Strings.Locale1',2:'@Strings.Locale2',3:'@Strings.Locale3',4:'@Strings.Locale4',36:'@Strings.Auto'})
   self.assertEqual(rows[0]['id'],'en');self.assertEqual(rows[1]['id'],'ru')
@@ -25,6 +25,8 @@ class NativeLocalizationResourcesTest(unittest.TestCase):
      target=root/name;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ROOT/name,target)
     corpus_dir=Path(proof['corpusPath']).parent;shutil.copytree(ROOT/corpus_dir,root/corpus_dir)
     receipt_dir=Path(proof['receiptPath']).parent;shutil.copytree(ROOT/receipt_dir,root/receipt_dir)
+   if proof and 'sourceDeltaProof' in proof:
+    folder=Path(proof['sourceDeltaProof']['path']).parent;shutil.copytree(ROOT/folder,root/folder,dirs_exist_ok=True)
    generate(root)
    before={str(p.relative_to(root)):p.read_bytes() for p in (root/'watchface').rglob('*') if p.is_file()};generate(root);self.assertEqual(before,{str(p.relative_to(root)):p.read_bytes() for p in (root/'watchface').rglob('*') if p.is_file()})
    for name,raw in before.items():self.assertEqual(raw,(ROOT/name).read_bytes(),name)

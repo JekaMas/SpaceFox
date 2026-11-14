@@ -8,6 +8,7 @@ class SceneContext {
     var launchId as String;
     var rocket as String;
     var operator as String;
+    var operatorShort as String;
     var purpose as String;
     var site as String;
     var modelId as String;
@@ -19,7 +20,7 @@ class SceneContext {
     function initialize(data as Dictionary<String, Object or Null>) {
         launchId = text(data, "id");
         if(data.hasKey("date")&&data["date"] instanceof String){date=data["date"] as String;}
-        rocket = text(data, "rocket"); operator = text(data, "operator");
+        rocket = text(data, "rocket"); operator = text(data, "operator"); operatorShort = text(data, "operatorShort");
         purpose = text(data, "purpose"); site = text(data, "site");
         modelId = text(data, "modelId"); operatorId = text(data, "operatorId");
         point = null;

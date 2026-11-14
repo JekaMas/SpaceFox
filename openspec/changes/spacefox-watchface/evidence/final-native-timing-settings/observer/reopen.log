@@ -1,0 +1,10 @@
+Background: SFR_PROBE owner=7af62b7a43d84afcb21e8d935670c107|observer-prefix2|705e75b7854c
+SFR_PROBE owner=7af62b7a43d84afcb21e8d935670c107|observer-prefix2|705e75b7854c
+FINAL_COLD_REOPEN Properties=true locale=ru colors=6 fields=4 sourceSame=true owner=7af62b7a43d84afcb21e8d935670c107|observer-prefix2|705e75b7854c
+
+Error: Unhandled Exception
+Exception: UnexpectedTypeException: Expected Object/Array/Dictionary/ByteArray, given null
+Stack: 
+  - applyFrame() at /Users/jekamas/.codex/tmp/spacefox-final-native-timing-20261113/observer-prefix2/Probe.mc:58 0x50000458 
+  - ready() at /Users/jekamas/.codex/tmp/spacefox-final-native-timing-20261113/observer-prefix2/Probe.mc:47 0x50000987 
+Encountered an app crash.

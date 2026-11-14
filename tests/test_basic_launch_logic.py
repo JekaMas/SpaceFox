@@ -375,7 +375,7 @@ class BasicLaunchLogicTest(unittest.TestCase):
                 timing=Timing(TimePrecision.EXACT, exact_utc=NOW - 1),
             )
             for i, status in enumerate(
-                (LaunchStatus.CANCELLED, LaunchStatus.COMPLETED, LaunchStatus.STARTED)
+                (LaunchStatus.CANCELLED, LaunchStatus.COMPLETED)
             )
         ]
         accepted = state(*excluded, self.records[VULCAN])

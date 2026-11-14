@@ -31,7 +31,7 @@ def anchors():
  r.prepareCanvas([32,256]);near(r.fitScale,0.484375);anchor(r,0.0,0,49.0,180.0,39.0,170.0);anchor(r,0.5,0,49.96875,178.0625,34.96875,163.0625);anchor(r,1.0,0,50.9375,176.125,30.9375,156.125);
  r.prepareCanvas([256,32]);near(r.fitScale,0.2109375);anchor(r,0.0,0,49.0,180.0,39.0,170.0);anchor(r,0.5,0,49.421875,179.15625,34.421875,164.15625);anchor(r,1.0,9,49.84375,169.3125,29.84375,149.3125);
  if(matrix!=r.transform||options!=r.drawOptions){throw new Lang.InvalidValueException("transform reallocated");}
- System.println("MOTION_ANCHORS_COMPLETE tall=3 wide=3 sourceScale=uniform SDKtransformPoint=true pivot=27,62 marksAttached=true identityPreserved=true memory="+System.getSystemStats().usedMemory);return [new WatchUi.WatchFace()];}
+ System.println("MOTION_ANCHORS_COMPLETE tall=3 wide=3 sourceScale=uniform SDKtransformPoint=true pivot=27,62 rocketOnlyTransform=true identityPreserved=true memory="+System.getSystemStats().usedMemory);return [new WatchUi.WatchFace()];}
 }
 '''
 
@@ -86,7 +86,7 @@ def observe(url, frame=0.0, trace=False, defer_pending=False, refusal=False):
  if(view.downloaded==null||view.sfrBuild!=null||view.sfrRequested){if(checks>250){System.println("MOTION_FAILED fullSceneMissing checks="+checks+" generation="+(feed.packet==null?-1:feed.packet.document["publisher"]["generation"]));observer.stop();observer=null;return;}observer.start(method(:ready),50,false);return;}
  rich=view.downloaded;ensure(rich instanceof NativeSfrRenderer,"wrong renderer");ensure(rich.selectionHash.equals(feed.packet.bridge["selection"]["sha256"]),"selection mismatch");age=feed.packet.validation;seal=feed.store.read("sf.commit")["seal"];point=view.context.point;
  ''' + ('''if(!deferredAdmitted){deferredAdmitted=true;var priorBitmap=rich;var priorGeneration=feed.packet.document["publisher"]["generation"];var priorAge=feed.packet.validation;SpaceFoxApp.reloadFeed();ensure(view.downloaded==priorBitmap,"source-only admission lost accepted bitmap");System.println("CURRENT_SAME_SESSION oldGeneration="+priorGeneration+" newGeneration="+feed.packet.document["publisher"]["generation"]+" oldAge="+priorAge+" newAge="+feed.packet.validation+" sameBitmap=true");age=feed.packet.validation;seal=feed.store.read("sf.commit")["seal"];}''' if defer_pending else '') + '''var elapsed=System.getTimer()-requested;ensure(elapsed<8000,"strict preparation phase exceeded8s");ensure(System.getSystemStats().totalMemory==126784,"not ordinary foreground");
- view.animationProgress=frameValue;WatchUi.requestUpdate();System.println("MOTION_READY profile="+"SFR1M"+" phase="+phase+" generation="+feed.packet.document["publisher"]["generation"]+" validation="+age+" elapsedMs="+elapsed+" sampledHigh="+sampledHigh+" total="+System.getSystemStats().totalMemory+" writes="+(feed.store.writes-beforeWrites)+" modelFlag="+(rich.modelOriginBitmap!=null)+" frame="+view.animationProgress+" canvas="+rich.manifest["canvas"]+" duration="+rich.duration()+" draws="+draws+" noDrawIo=true");
+ view.animationProgress=frameValue;WatchUi.requestUpdate();System.println("MOTION_READY profile="+"SFR1M"+" phase="+phase+" generation="+feed.packet.document["publisher"]["generation"]+" validation="+age+" elapsedMs="+elapsed+" sampledHigh="+sampledHigh+" total="+System.getSystemStats().totalMemory+" writes="+(feed.store.writes-beforeWrites)+" siteCountryFlag="+(rich.siteCountryBitmap!=null)+" frame="+view.animationProgress+" canvas="+rich.manifest["canvas"]+" duration="+rich.duration()+" draws="+draws+" noDrawIo=true");
  observer.stop();observer=null;
  }
 

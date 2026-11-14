@@ -94,8 +94,8 @@ def build_source(state, catalog, now, *, publisher, policy=None, traversal=None,
         roles[name] = {'entityId':entity,'descriptor':ref}
     if launch is not None:
         role('rocket',launch['configuration_id'],'visual')
-        role('operator',launch['operator_id'],'badge')
-        role('origin',origin_id,'mark')
+        # Operator and origin remain metadata facts, never body-mark visuals.
+        gaps.extend(('operator', 'origin'))
         role('siteCountry',jurisdiction_id,'mark')
     for key in selected_ids:
         row = all_rows.get(key)

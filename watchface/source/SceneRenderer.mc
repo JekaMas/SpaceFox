@@ -9,8 +9,6 @@ class SceneRenderer {
     var icons as Dictionary<String,Graphics.BitmapType>;
     var marker as Graphics.BitmapType;
     var art as Graphics.BitmapType or Null;
-    var country as Graphics.BitmapType or Null;
-    var company as Graphics.BitmapType or Null;
     var map as Graphics.BitmapType or Null;
     var pin as Boolean = false;
     var fullContext as SceneContext or Null;
@@ -31,24 +29,17 @@ class SceneRenderer {
         fonts["nameSmall"] = presentation.latinSmall as Graphics.FontType;
         fonts["small"] = presentation.small as Graphics.FontType;
         fonts["count"] = presentation.count as Graphics.FontType;
-        model = null; art = null; country = null; company = null; map = null;
+        model = null; art = null; map = null;
     }
     (:extendedCode)
     function load(id as ResourceId) as WatchUi.Resource { resourceLoads += 1; return WatchUi.loadResource(id); }
     (:extendedCode)
     function prepare(context as SceneContext or Null, settings as SceneSettings) as Void {
         presentation.prepare(settings.language);fonts["label"]=presentation.label as Graphics.FontType;fonts["small"]=presentation.small as Graphics.FontType;fonts["count"]=presentation.count as Graphics.FontType;
-        fullContext = context; model = null; art = null; country = null; company = null; map = null; pin = false;
+        fullContext = context; model = null; art = null; map = null; pin = false;
         if (context == null) { return; }
         var id = NativeAssets.models.hasKey(context.modelId) ? context.modelId : "generic";
         model = NativeAssets.models[id] as NativeModel; art = load((model as NativeModel).resource) as Graphics.BitmapType;
-        var originCode = (model as NativeModel).origin;
-        // An operator mark is used only for the selected supplied operator ID.
-        if (!context.operator.equals("") && NativeAssets.companies.hasKey(context.operatorId)) {
-            var operatorAsset = NativeAssets.companies[context.operatorId] as NativeCompany;
-            company = load(operatorAsset.resource) as Graphics.BitmapType;
-        }
-        if (NativeAssets.countries.hasKey(originCode)) { country = load(NativeAssets.countries[originCode] as ResourceId) as Graphics.BitmapType; }
         if (context.point != null) {
             for (var i = 0; i < NativeAssets.maps.size(); i += 1) {
                 var view = NativeAssets.maps[i];
@@ -88,10 +79,16 @@ class SceneRenderer {
         if (context != null) {
             // Match the existing unavailable health marker without changing the
             // accepted context: absent company/mission stay empty in storage.
-            var operatorText=context.operator.equals("")?"—":context.operator;
-            var purposeText=context.purpose.equals("")?"—":context.purpose;
-            var rocketTitle=fit(dc,context.rocket,fonts["label"] as Graphics.FontType,122);
-            var operatorTitle=fit(dc,operatorText,fonts["nameSmall"] as Graphics.FontType,context.rocket.equals("")?238:100);
+            var operatorText=context.operator.equals("")?(context.operatorShort.equals("")?"—":context.operatorShort):context.operator;
+            var purposeText=context.purpose.equals("")?"—":presentation.mission(context.purpose);
+            var naturalOperator=dc.getTextWidthInPixels(operatorText,fonts["nameSmall"] as Graphics.FontType);
+            if(!context.operatorShort.equals("")&&!context.operator.equals("")&&naturalOperator>(context.rocket.equals("")?238:100)){
+                operatorText=context.operatorShort;naturalOperator=dc.getTextWidthInPixels(operatorText,fonts["nameSmall"] as Graphics.FontType);
+            }
+            var operatorBudget=context.rocket.equals("")?238:(naturalOperator<100?naturalOperator:100);
+            var rocketBudget=238-operatorBudget-(context.rocket.equals("")?0:16);
+            var rocketTitle=fit(dc,context.rocket,fonts["label"] as Graphics.FontType,rocketBudget);
+            var operatorTitle=fit(dc,operatorText,fonts["nameSmall"] as Graphics.FontType,operatorBudget);
             var rocketWidth=dc.getTextWidthInPixels(rocketTitle,fonts["label"] as Graphics.FontType);
             var operatorWidth=dc.getTextWidthInPixels(operatorTitle,fonts["nameSmall"] as Graphics.FontType);
             var gap=rocketTitle.equals("")||operatorTitle.equals("")?0:16;
@@ -99,21 +96,27 @@ class SceneRenderer {
             text(dc,left+rocketWidth/2,43,fonts["label"] as Graphics.FontType,rocketTitle,0xD8E2ED,238,1);
             if(gap>0){text(dc,left+rocketWidth+8,47,fonts["nameSmall"] as Graphics.FontType,"·",0x96B8C9,16,1);}
             text(dc,left+rocketWidth+gap+operatorWidth/2,47,fonts["nameSmall"] as Graphics.FontType,operatorTitle,0xD4DFEB,238,1);
-            text(dc,195,70,(fonts["nameSmall"] as Graphics.FontType),purposeText,0xD4DFEB,282,1);
+            text(dc,195,70,(fonts["small"] as Graphics.FontType),purposeText,0xD4DFEB,282,1);
             var ascent = progress > 0 && progress < 1 ? (progress * 9).toNumber() : 0;
             if(downloaded!=null&&downloaded.bitmap!=null){downloaded.draw(dc,progress,ascent);}else{dc.drawBitmap(22,118-ascent,art as Graphics.BitmapType);}
-            if(rich!=null){if(rich.bitmap==null){rich.prepareFrame(progress,ascent);}rich.drawMarks(dc,settings,ascent);}else{
-            if (country != null) { dc.drawBitmap(22+(model as NativeModel).country[0],118+(model as NativeModel).country[1]-ascent,country); }
-            if (company != null) { dc.drawBitmap(22+(model as NativeModel).company[0],118+(model as NativeModel).company[1]-ascent,company); }}
+            // Flags and operator marks are never attached to the rocket.
             if (progress > 0 && progress < 1) {
                 dc.setColor(0xF7AE4F,Graphics.COLOR_TRANSPARENT); dc.fillPolygon([[45,239-ascent],[53,239-ascent],[49,248-ascent]]);
             }
-            text(dc,195,319,(fonts["label"] as Graphics.FontType),context.site,0xD4DFEB,242,1);
+            var flag=rich==null?null:rich.siteCountryBitmap;
+            var footerBudget=flag==null?242:216;
+            var footerFont=dc.getTextWidthInPixels(context.site,fonts["label"] as Graphics.FontType)>footerBudget?fonts["nameSmall"] as Graphics.FontType:fonts["label"] as Graphics.FontType;
+            var footer=fit(dc,context.site,footerFont,footerBudget);
+            var footerWidth=dc.getTextWidthInPixels(footer,footerFont);
+            var flagWidth=flag==null?0:26;
+            var footerLeft=195-(footerWidth+flagWidth)/2;
+            if(flag!=null){dc.drawBitmap(footerLeft,325,flag as Graphics.BitmapType);}
+            text(dc,footerLeft+flagWidth+footerWidth/2,319,footerFont,footer,0xD4DFEB,footerBudget,1);
         }
         dc.setColor(0xB2C3CE,Graphics.COLOR_TRANSPARENT); dc.drawRectangle(173,27,13,8); dc.drawLine(187,29,187,33);
         text(dc,207,24,(fonts["battery"] as Graphics.FontType),fitness.display(values,"battery"),0xB2C3CE,65,1);
-        text(dc,195,120,(fonts["time"] as Graphics.FontType),current.localTime,0x7FE7C6,250,1);
-        var color = (current.rescheduled || context != null && context.rescheduled) ? 0xF3C37A : 0x71E4C0;
+        text(dc,195,120,(fonts["time"] as Graphics.FontType),current.localTime,settings.clockColor,250,1);
+        var color = (current.rescheduled || context != null && context.rescheduled) ? 0xF3C37A : settings.countdownColor;
         var countdownLabel=displayCountdown(current,settings);
         var countFont = dc.getTextWidthInPixels(countdownLabel,fonts["count"] as Graphics.FontType) > 275 ? (fonts["small"] as Graphics.FontType) : (fonts["count"] as Graphics.FontType);
         var shown = text(dc,195,202,countFont,countdownLabel,color,275,1);
@@ -125,7 +128,7 @@ class SceneRenderer {
             var width=dc.getTextWidthInPixels(label,fonts["metric"] as Graphics.FontType);
             var left=i%2==0?80:335-width;var rowTop=i<2?244:282;var y=rowTop-4;
             icon(dc,left-25,rowTop+5,role);
-            text(dc,left+width/2,y,fonts["metric"] as Graphics.FontType,label,0xD4DFEB,112,1);
+            text(dc,left+width/2,y,fonts["metric"] as Graphics.FontType,label,settings.fieldColors[i],112,1);
         }
     }
     function displayCountdown(current as ClockSnapshot,settings as SceneSettings) as String {

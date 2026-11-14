@@ -125,14 +125,14 @@ def _schedule(value):
         r = entry['record']
         _optional_keys(r, 'launch_id configuration_id operator_id site_id country_id configuration_name '
               'operator_name mission_name mission_purpose timing status source_validated_utc',
-              'source_updated_utc source_updated_subsecond source_updated_iso source_status_id source_status_name site_name country_name country_code site_location_name')
+              'source_updated_utc source_updated_subsecond source_updated_iso source_status_id source_status_name site_name country_name country_code site_location_name operator_abbrev ascent_end')
         _optional_keys(r['timing'], 'precision exact_utc date_utc window_start_utc window_end_utc',
                        'nominal_utc source_net source_precision_id source_precision_name source_precision_abbrev source_precision_description')
         timing = dict(r['timing'])
         timing['precision'] = TimePrecision(timing['precision'])
         fields = {k: _identity(r[k]) for k in ('launch_id', 'configuration_id', 'operator_id', 'site_id', 'country_id')}
         fields.update({k: r[k] for k in ('configuration_name', 'operator_name', 'mission_name', 'mission_purpose', 'source_validated_utc')})
-        fields.update({k: r[k] for k in ('source_updated_utc', 'source_updated_subsecond', 'source_updated_iso', 'source_status_id', 'source_status_name', 'site_name', 'country_name', 'country_code', 'site_location_name') if k in r})
+        fields.update({k: r[k] for k in ('source_updated_utc', 'source_updated_subsecond', 'source_updated_iso', 'source_status_id', 'source_status_name', 'site_name', 'country_name', 'country_code', 'site_location_name', 'operator_abbrev', 'ascent_end') if k in r})
         record = LaunchRecord(**fields, timing=Timing(**timing), status=LaunchStatus(r['status']))
         entries.append(AcceptedLaunch(record, entry['rescheduled'], entry['stale']))
     return ScheduleState(tuple(entries), value['evaluated_at_utc'])

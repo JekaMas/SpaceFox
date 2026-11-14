@@ -166,7 +166,7 @@ def _single_profile(files, old, old_catalog):
     sel=None if old['visualSelection'] is None else loads_json(read_ref(old['visualSelection'],files))
     root=None;rendered={}
     if sel is not None:
-        raster_roles={k:None for k in ('map','rocket','operator','origin')};map_source=None
+        raster_roles={k:None for k in ('map','rocket')};map_source=None
         for role in raster_roles:
             source_role='geography' if role=='map' else role
             binding=sel['roles'][source_role]
@@ -195,7 +195,7 @@ def _single_profile(files, old, old_catalog):
     refs=[]
     if root is not None:
         refs.append(root)
-        for role in ('map','rocket','operator','origin'):
+        for role in ('map','rocket'):
             binding=raster_roles[role]
             if binding is None:continue
             refs.append(binding['descriptor'])

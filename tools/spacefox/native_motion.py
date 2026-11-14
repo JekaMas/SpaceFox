@@ -1,4 +1,4 @@
-"""Current source-bound SFR1M motion artifact with a fixed model-origin mark.
+"""Current source-bound SFR1M motion artifact with a launch-site country flag.
 
 SFR1 is the finite pixel codec; source records retain producer provenance.
 """
@@ -14,7 +14,7 @@ PROFILE = 'native-motion-v3'
 FEED_PATH = 'feed.json'
 RENDERER = 'SFR1M'
 LAYOUT = 'native-04-motion-v1'
-ROLES = ('map', 'rocket', 'operator', 'modelOrigin')
+ROLES = ('map', 'rocket', 'siteCountry')
 
 
 def require(ok, reason):
@@ -119,11 +119,8 @@ def _origin(files, root, catalog, digest, owner_id, kind):
     owner = catalog['dictionaries'][collection].get(owner_id)
     country_id = None if owner is None else owner['references']['origin']
     country = catalog['dictionaries']['countries'].get(country_id)
-    asset_id = None if country is None else country['references']['mark']
+    # Preserve origin provenance without materializing a discarded hull mark.
     asset = None
-    if asset_id is not None:
-        descriptor = _asset(files, root, catalog, asset_id)
-        asset = _asset_source(root, catalog, asset_id, descriptor)
     selection = None
     if owner is not None:
         selected = dependency_closure(catalog, [owner_id], expected_revision=catalog['catalogVersion'])
@@ -161,13 +158,37 @@ def _assert_origin(files, binding, owner_id, kind, digest, version):
                 and country['kind'] == 'country' and owner.get('originSources'), 'verified country provenance')
     else:
         require(country is None and value['asset'] is None, 'missing origin cannot borrow a mark')
-    asset_id = None if country is None else country['references']['mark']
-    require((value['asset'] is None) == (asset_id is None), 'country asset availability')
-    if value['asset'] is not None:
-        require(value['asset']['assetId'] == asset_id, 'country mark relation')
-        _assert_asset(files, value['asset'])
-        require(value['asset']['asset']['facts'].get('nativeMotion', [0, []]) == [0, []], 'animated marks unsupported')
+    require(value['asset'] is None, 'origin source must not materialize a hull mark')
     return value
+
+
+def _site_country_source(files, catalog, digest, site_id):
+    site = catalog['dictionaries']['sites'].get(site_id)
+    selection = None
+    if site is not None:
+        chosen = dependency_closure(catalog, [site_id], expected_revision=catalog['catalogVersion'])
+        selection = {key: deepcopy(chosen[key]) for key in ('schemaVersion', 'catalogVersion', 'roots', 'dictionaries')}
+    return source_put(files, dict(type='site-country-source', schemaVersion=1,
+        catalogSourceDigest=digest, siteId=site_id, catalogSelection=selection))
+
+
+def _assert_site_country(files, ref, site_id, country_id, digest, version):
+    record = source_read(files, ref)
+    require(set(record) == {'type','schemaVersion','catalogSourceDigest','siteId','catalogSelection'}
+            and record['type'] == 'site-country-source' and type(record['schemaVersion']) is int
+            and record['schemaVersion'] == 1 and record['catalogSourceDigest'] == digest
+            and record['siteId'] == site_id, 'site country source grammar')
+    selection = record['catalogSelection']
+    if selection is None:
+        require(country_id is None, 'unresolved site has no country')
+        return None
+    selection = deepcopy(selection)
+    assets = selection['dictionaries'].pop('assets')
+    validate_catalog_selection(selection, assets, expected_version=version)
+    site = selection['dictionaries']['sites'].get(site_id)
+    require(selection['roots'] == [site_id] and site is not None
+            and site['references']['country'] == country_id, 'site country source relation')
+    return selection['dictionaries']['countries'].get(country_id)
 
 
 def _raster(files, source):
@@ -231,19 +252,28 @@ def build_artifact(state, catalog, now, *, publisher, policy=None, traversal=Non
             descriptor.update(schemaVersion=2, rendererProfile=RENDERER,
                               sourceCanvas=visual[3], motionSource=motion, animation=animation)
             rocket = dict(entityId=original_rocket['entityId'], descriptor=put(files, descriptor))
-        origin_roles = {}
-        for kind in ('model',):
-            value = source_read(files, origins[kind]['sourceRecord'])
-            origin_roles[kind + 'Origin'] = None if value['asset'] is None else dict(
-                entityId=origins[kind]['countryId'], descriptor=_raster(files, value['asset']['sourceDescriptor']))
+        selected_source = loads_json(read_ref(original['sourceSelection'], files))
+        site_source = _site_country_source(files, catalog, old['catalogSourceDigest'], selected_source['siteId'])
+        site_record = catalog['dictionaries']['sites'].get(selected_source['siteId'])
+        country_record = None if site_record is None else catalog['dictionaries']['countries'].get(site_record['references']['country'])
+        country_codes = () if country_record is None else (country_record['facts'].get('alpha2'), country_record['facts'].get('alpha3'))
+        site_country = selected_source['roles']['siteCountry']
+        # Both sources must identify the same country before displaying its mark.
+        # A stale or unknown site jurisdiction remains an honest missing flag.
+        if site_country is not None and loads_json(read_ref(site_country['descriptor'], files))['assetId'].startswith('spacefox:asset:country-code-'):
+            site_country = None  # Letter badges are not national flags.
+        if site_country is not None and feed['launch']['country_code'] is not None and feed['launch']['country_code'] in country_codes and selected_source['siteCountryId'] == selected_source['countryId']:
+            site_country = dict(entityId=site_country['entityId'],
+                                descriptor=_raster(files, site_country['descriptor']))
+        else:
+            site_country = None
         for selection_key, transfer_key, layout in (('visualSelection', 'nativeTransfer', LAYOUT),):
             if selection_key not in old:
                 continue
             scene = loads_json(read_ref(old[selection_key], files))
             scene.pop('originMode'); scene.pop('originId')
-            scene.update(rendererProfile=RENDERER, layoutRevision=layout, origins=origins)
-            scene['roles'] = dict(map=scene['roles']['map'], rocket=rocket,
-                                  operator=scene['roles']['operator'], **origin_roles)
+            scene.update(rendererProfile=RENDERER, layoutRevision=layout, origins=origins, siteCountrySource=site_source)
+            scene['roles'] = dict(map=scene['roles']['map'], rocket=rocket, siteCountry=site_country)
             feed[selection_key] = put(files, scene)
             feed[transfer_key] = put(files, _index(files, feed[selection_key]))
     else:
@@ -315,7 +345,7 @@ def validate_artifact(files):
             scene = loads_json(read_ref(ref, files))
             require(scene.get('type') == 'native-scene' and type(scene.get('schemaVersion')) is int and scene['schemaVersion'] == 3
                     and scene.get('rendererProfile') == RENDERER and scene.get('layoutRevision') == layout
-                    and set(scene) == {'type','schemaVersion','rendererProfile','layoutRevision','sourceSelection','launchId','modelId','operatorId','siteId','countryId','sourcePosition','position','positionMode','mapDefinitionSha256','mapSource','marker','roles','origins'}, 'scene grammar')
+                    and set(scene) == {'type','schemaVersion','rendererProfile','layoutRevision','sourceSelection','launchId','modelId','operatorId','siteId','countryId','sourcePosition','position','positionMode','mapDefinitionSha256','mapSource','marker','roles','origins','siteCountrySource'}, 'scene grammar')
             source_raw=read_ref(scene['sourceSelection'], files)
             original = loads_json(source_raw)
             require(canonical_bytes(original)==source_raw, 'canonical source selection')
@@ -355,19 +385,22 @@ def validate_artifact(files):
                 if owner is not None:
                     name=owner['facts'].get('fullName') or owner['facts'].get('name')
                     require(scene[key] in entries and entries[scene[key]]['name']==name, 'catalog owner name')
-                if kind == 'operator':
-                    continue
-                binding = scene['roles'][kind+'Origin']
-                if source['asset'] is None:
-                    require(binding is None, 'missing origin mark')
-                else:
-                    require(binding == dict(entityId=source['countryId'], descriptor=_raster(dict(files), source['asset']['sourceDescriptor'])), 'origin raster equality')
+            country_record = _assert_site_country(files, scene['siteCountrySource'], original['siteId'], original['siteCountryId'], feed['catalogSourceDigest'], feed['catalogRevision'])
+            country_codes = () if country_record is None else (country_record['facts'].get('alpha2'), country_record['facts'].get('alpha3'))
+            country_source = original['roles']['siteCountry']
+            country_binding = scene['roles']['siteCountry']
+            badge = country_source is not None and loads_json(read_ref(country_source['descriptor'], files))['assetId'].startswith('spacefox:asset:country-code-')
+            if country_source is None or badge or launch['country_code'] is None or launch['country_code'] not in country_codes or original['siteCountryId'] != original['countryId']:
+                require(country_binding is None, 'unmatched site country flag')
+            else:
+                require(country_binding == dict(entityId=original['siteCountryId'],
+                        descriptor=_raster(dict(files), country_source['descriptor'])), 'site country raster equality')
             map_source=original['roles']['geography']
             md=None if map_source is None else loads_json(read_ref(map_source['descriptor'],files))
             for a,b in (('sourcePosition','sourcePosition'),('position','position'),('positionMode','positionMode'),
                         ('mapDefinitionSha256','definitionSha256'),('mapSource','source'),('marker','marker')):
                 require(scene[a] == (None if md is None else md[b]), 'map provenance')
-            for role in ('map','rocket','operator'):
+            for role in ('map','rocket'):
                 binding = scene['roles'][role]
                 source = original['roles']['geography' if role == 'map' else role]
                 if binding is None:

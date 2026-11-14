@@ -21,7 +21,7 @@ class ScheduleState {
     function remainingSeconds(nowUtc as Number or Long) as Number or Long or Null {
         if (_exactUtc == null) { return null; }
         var remaining = _exactUtc - nowUtc.toLong();
-        return remaining > 0 ? remaining : 0;
+        return remaining;
     }
 
     function display(nowUtc as Number or Long, active as Boolean) as String {
@@ -33,10 +33,11 @@ module CountdownFormat {
     function format(seconds as Number or Long or Null) as String {
         if (seconds == null) { return "--:--:--"; }
         var n = seconds.toLong();
-        if (n < 0) { n = 0; }
+        var elapsed = n <= 0;
+        if (n < 0) { n = -n; }
         var hours = (n / 3600).toNumber();
         var minutes = ((n % 3600) / 60).toNumber();
         var remaining = (n % 60).toNumber();
-        return hours.format("%02d") + ":" + minutes.format("%02d") + ":" + remaining.format("%02d");
+        return (elapsed ? "T+ " : "T- ") + hours.format("%02d") + ":" + minutes.format("%02d") + ":" + remaining.format("%02d");
     }
 }

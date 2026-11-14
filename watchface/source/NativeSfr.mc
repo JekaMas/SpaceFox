@@ -63,18 +63,16 @@ class NativeSfrDecoder {
 
 (:typecheck(false))
 class NativeSfrRenderer extends NativeVisualRenderer {
-    var modelOriginBitmap=null;var mapBitmap=null;var operatorBitmap=null;var scene=null;var selectionHash="";
+    var siteCountryBitmap=null;var mapBitmap=null;var scene=null;var selectionHash="";
     function initialize(){NativeVisualRenderer.initialize();}
     function drawBackground(dc,settings,marker){if(mapBitmap!=null){dc.drawBitmap(0,0,mapBitmap);if(scene["position"]!=null){dc.drawBitmap(321,151,marker);}}}
-    function drawMarks(dc,settings,ascent){
-        drawAttached(dc,operatorBitmap,19,68,ascent);var selected=modelOriginBitmap;drawAttached(dc,selected,17,52,ascent);
-    }
+
 }
 
 (:extendedCode, :typecheck(false))
 class NativeSfrBuild {
     var store;var base;var packet;var immutable;var scene;var descriptors={};var expected=[];var role=0;var decoder=null;var result;var complete=false;var closureChecked=false;var closureAt=0;var selection;var rasterBytes=0;var rasterObjects=0;var readKind=0;var names;
-    function initialize(adapter,url,p){NativeMetrics.sample("sfr-build-start");store=adapter;base=url;packet=p;immutable=new NativeImmutable(store);selection=p.bridge["selection"];names=["map","rocket","operator","modelOrigin"];result=new NativeSfrRenderer();NativeMetrics.sample("sfr-build-reader");begin();}
+    function initialize(adapter,url,p){NativeMetrics.sample("sfr-build-start");store=adapter;base=url;packet=p;immutable=new NativeImmutable(store);selection=p.bridge["selection"];names=["map","rocket","siteCountry"];result=new NativeSfrRenderer();NativeMetrics.sample("sfr-build-reader");begin();}
     function fail(){throw new Lang.InvalidValueException("Invalid native SFR1M scene");}
     function same(a,b){return nativeSame(a,b);}
     function ref(r,prefix){packet.ref(r,prefix);return r;}
@@ -85,6 +83,7 @@ class NativeSfrBuild {
         if(path.equals("/mapSource")){if(key.equals("corresponding")||key.equals("notices")){sourceRef(value);}else if(key.equals("recipeSha256")||key.equals("worldSha256")){if(!packet.hex(value)){fail();}}else{fail();}return null;}
         if(path.find("/roles/")==0&&key.equals("descriptor")){ref(value,"descriptors");return [value["sha256"],value["decodedBytes"]];}
         if((path.equals("/origins/model")||path.equals("/origins/operator"))&&key.equals("sourceRecord")){if(value!=null){sourceRef(value);}return value==null?null:true;}
+        if(path.equals("")&&key.equals("siteCountrySource")){sourceRef(value);return true;}
         if(path.equals("")&&key.equals("motionSource")){sourceRef(value);return true;}
         if(path.equals("")&&key.equals("sourceDescriptor")){ref(value,"descriptors");return null;}
         if(path.equals("")&&key.equals("scene")&&value!=null){ref(value,"descriptors");return [value["sha256"],value["decodedBytes"]];}
@@ -111,7 +110,7 @@ class NativeSfrBuild {
         else if(path.equals("/mapSource")){allowed=["recipeSha256","worldSha256","corresponding","notices"];}
         else if(path.equals("/marker")){allowed=["anchor","diameter","colors"];}
         else if(path.equals("/position")||path.equals("/sourcePosition")){allowed=["encoding","latitude","longitude","units","qualification"];}
-        else if(path.equals("/roles/map")||path.equals("/roles/rocket")||path.equals("/roles/operator")||path.equals("/roles/modelOrigin")){allowed=["entityId","descriptor"];}
+        else if(path.equals("/roles/map")||path.equals("/roles/rocket")||path.equals("/roles/siteCountry")){allowed=["entityId","descriptor"];}
         else{allowed=["path","sha256","decodedBytes"];}
         if(path.equals("")){if(readKind==0){allowed=sceneKeys();}else if(readKind==1){allowed=allowed.slice(0,allowed.size());allowed.add("sourceCanvas");allowed.add("motionSource");}}
         if(allowed.indexOf(key)<0){fail();}
@@ -125,7 +124,7 @@ class NativeSfrBuild {
         if(key.equals("mapSource")){if(value!=null){packet.shape(value,["recipeSha256","worldSha256","corresponding","notices"],[]);}return value==null?null:true;}
         return value;
     }
-    function sceneKeys(){var keys=["type","schemaVersion","rendererProfile","layoutRevision","sourceSelection","launchId","modelId","operatorId","siteId","countryId","sourcePosition","position","positionMode","mapDefinitionSha256","mapSource","marker","roles"];keys.add("origins");return keys;}
+    function sceneKeys(){var keys=["type","schemaVersion","rendererProfile","layoutRevision","sourceSelection","launchId","modelId","operatorId","siteId","countryId","sourcePosition","position","positionMode","mapDefinitionSha256","mapSource","marker","roles"];keys.add("origins");keys.add("siteCountrySource");return keys;}
     function admitOrigins(){
         var origins=scene["origins"];packet.shape(origins,["model","operator"],[]);var modes=["model","operator"];for(var i=0;i<2;i+=1){var origin=origins[modes[i]];packet.shape(origin,["ownerId","countryId","sourceRecord"],[]);var owner=scene[i==0?"modelId":"operatorId"];if(!same(origin["ownerId"],owner)||!packet.id(origin["countryId"],"country",true)||owner==null&&origin["countryId"]!=null||origin["sourceRecord"]!=true){fail();}origin.remove("sourceRecord");}
     }
@@ -134,14 +133,14 @@ class NativeSfrBuild {
         if(!packet.same(scene["type"],"native-scene")||!packet.integer(scene["schemaVersion"])||scene["schemaVersion"]!=3||!packet.same(scene["rendererProfile"],"SFR1M")||!packet.same(scene["layoutRevision"],"native-04-motion-v1")){fail();}var keys=["launchId","modelId","operatorId","siteId","countryId"];for(var i=0;i<keys.size();i+=1){if(!same(scene[keys[i]],packet.bridge["ids"][i])){fail();}}
         var site=packet.bridge["site"];if(!same(scene["positionMode"],site==null?null:site["positionMode"])){fail();}
         if(scene["position"]!=null){if(scene["mapDefinitionSha256"]!=true||scene["marker"]!=true||scene["mapSource"]!=true){fail();}}
-        admitOrigins();packet.shape(scene["roles"],names,[]);if(scene["position"]==null&&(scene["roles"]["map"]!=null||scene["marker"]!=null)){fail();}add(selection);
+        admitOrigins();if(scene["siteCountrySource"]!=true){fail();}scene.remove("siteCountrySource");packet.shape(scene["roles"],names,[]);if(scene["position"]==null&&(scene["roles"]["map"]!=null||scene["marker"]!=null)){fail();}add(selection);
         // Provenance is digest-bound by the raw root. Only current scene facts
         // and selected role references need to remain resident after admission.
         scene.remove("mapSource");scene.remove("sourceSelection");scene.remove("sourcePosition");scene.remove("mapDefinitionSha256");scene.remove("marker");result.scene=scene;result.selectionHash=selection["sha256"];
     }
     function prepareRole(name){
-        var binding=scene["roles"][name];if(binding==null){return null;}packet.shape(binding,["entityId","descriptor"],[]);var identity=name.equals("map")?scene["siteId"]:name.equals("rocket")?scene["modelId"]:name.equals("operator")?scene["operatorId"]:scene["origins"]["model"]["countryId"];if(identity==null||!packet.same(binding["entityId"],identity)){fail();}var tuple=binding["descriptor"];var r={"sha256"=>tuple[0],"decodedBytes"=>tuple[1]};add(r);readKind=1;var d=read(r);var moving=name.equals("rocket");packet.shape(d,["type","schemaVersion","rendererProfile","canvas","channels","pixelSha256","sourceDescriptor","sourceSemanticSha256","animation","shards"],moving?["sourceCanvas","motionSource"]:[]);if(moving&&(!d.hasKey("sourceCanvas")||!d.hasKey("motionSource"))){fail();}
-        var size=name.equals("map")?[390,390]:name.equals("rocket")?[54,124]:name.equals("operator")?[20,38]:[20,12];
+        var binding=scene["roles"][name];if(binding==null){return null;}packet.shape(binding,["entityId","descriptor"],[]);var identity=name.equals("map")?scene["siteId"]:name.equals("rocket")?scene["modelId"]:scene["countryId"];if(identity==null||!packet.same(binding["entityId"],identity)){fail();}var tuple=binding["descriptor"];var r={"sha256"=>tuple[0],"decodedBytes"=>tuple[1]};add(r);readKind=1;var d=read(r);var moving=name.equals("rocket");packet.shape(d,["type","schemaVersion","rendererProfile","canvas","channels","pixelSha256","sourceDescriptor","sourceSemanticSha256","animation","shards"],moving?["sourceCanvas","motionSource"]:[]);if(moving&&(!d.hasKey("sourceCanvas")||!d.hasKey("motionSource"))){fail();}
+        var size=name.equals("map")?[390,390]:name.equals("rocket")?[54,124]:[20,12];
         if(!packet.same(d["type"],"raster")||!packet.integer(d["schemaVersion"])||d["schemaVersion"]!=(moving?2:1)||!packet.same(d["rendererProfile"],moving?"SFR1M":"SFR1")||!same(d["canvas"],size)||!packet.integer(d["channels"])||d["channels"]!=(name.equals("map")?3:4)||!packet.hex(d["pixelSha256"])||!name.equals("map")&&!packet.hex(d["sourceSemanticSha256"])||name.equals("map")&&d["sourceSemanticSha256"]!=null||!(d["shards"] instanceof Array)||d["shards"].size()<1||d["shards"].size()>32){fail();}var total=0;for(var i=0;i<d["shards"].size();i+=1){var shard=d["shards"][i];if(addTuple(1,shard[0],shard[1])){total+=shard[1];rasterObjects+=1;}}rasterBytes+=total;if(rasterBytes>98304||rasterObjects>32){fail();}
         if(!moving&&!same(d["animation"],[0,[]])){fail();}if(moving){var canvas=d["sourceCanvas"];if(!(canvas instanceof Array)||canvas.size()!=2||!packet.integer(canvas[0])||!packet.integer(canvas[1])||canvas[0]<1||canvas[0]>256||canvas[1]<1||canvas[1]>256||d["motionSource"]!=true){fail();}}
         new NativeAnimation().validate(d["animation"]);if(name.equals("rocket")){result.manifest={"canvas"=>moving?d["sourceCanvas"]:size,"animation"=>d["animation"]};result.animations=d["animation"];result.prepareCanvas(result.manifest["canvas"]);}
@@ -158,6 +157,6 @@ class NativeSfrBuild {
     function displayScene(){return {"position"=>scene["position"]};}
     function step(){
         if(role>=names.size()){if(!closureChecked){checkIndex();closureChecked=true;scene=displayScene();result.scene=scene;return false;}if(closureAt<expected.size()){var start=System.getTimer();var checked=0;while(closureAt<expected.size()&&checked<4&&(checked==0||System.getTimer()-start<18)){checkRaw(expected[closureAt]);closureAt+=1;checked+=1;}return false;}closure();return true;}var name=names[role];if(decoder==null){var d=prepareRole(name);if(d==null){role+=1;return false;}decoder=new NativeSfrDecoder(store,d);}
-        if(decoder.step()){if(name.equals("map")){result.mapBitmap=decoder.bitmap;NativeMetrics.sample("sfr-first-map-verified");}else if(name.equals("rocket")){result.bitmap=decoder.bitmap;}else if(name.equals("operator")){result.operatorBitmap=decoder.bitmap;}else if(name.equals("modelOrigin")){result.modelOriginBitmap=decoder.bitmap;}decoder=null;role+=1;}return false;
+        if(decoder.step()){if(name.equals("map")){result.mapBitmap=decoder.bitmap;NativeMetrics.sample("sfr-first-map-verified");}else if(name.equals("rocket")){result.bitmap=decoder.bitmap;}else if(name.equals("siteCountry")){result.siteCountryBitmap=decoder.bitmap;}decoder=null;role+=1;}return false;
     }
 }

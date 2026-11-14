@@ -18,14 +18,4 @@ class NativeVisualRenderer {
         if(bitmap==null){return;}prepareFrame(progress,ascent);
         dc.setClip(22,118-ascent,54,124);dc.drawBitmap2(frameX,frameY,bitmap,drawOptions);dc.clearClip();
     }
-    // Bitmap-local transforms share the body's pivot. Translate each attached
-    // local anchor by the same scale; the reused matrix/resources allocate once.
-    function drawAttached(dc,mark,ox,oy,ascent){
-        if(mark==null){return;}dc.setClip(22,118-ascent,54,124);
-        // The SDK's transformed identity draw includes an extra edge sample.
-        // Keep resting marks pixel-identical to the legacy static projection.
-        if(frameScale==1.0&&frameX==22.0&&frameY==118.0-ascent){dc.drawBitmap(22+ox,118-ascent+oy,mark);}
-        else{dc.drawBitmap2(frameX+ox*frameScale,frameY+oy*frameScale,mark,drawOptions);}
-        dc.clearClip();
-    }
 }

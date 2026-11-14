@@ -1,0 +1,127 @@
+import Toybox.Cryptography;
+import Toybox.Lang;
+import Toybox.StringUtil;
+
+// JSON integers need not fit the VM's arithmetic types. Keep an overflow
+// token as its exact canonical decimal lexeme. Domain validators must choose
+// explicitly whether that field is metadata or a bounded arithmetic value.
+(:typecheck(false))
+class NativeIntegerLexeme {
+    var text;
+    function initialize(value){text=value;}
+    function nonnegative(){return !text.substring(0,1).equals("-");}
+}
+
+// Runtime-checked JSON boundary. Only integer JSON is admitted by current feed/descriptor objects.
+// Dynamic containers are deliberately checked here before domain construction.
+(:extendedCode, :typecheck(false))
+class NativeJson {
+    var source; var index; var nodes;var hasDel=false; var feedMode=false;var catalogMode=false;var keepCatalogNames=true;var rowOwner=null;var rootOwner=null;var nodeOwner=null;var commonKeys=["kind","name","visual","position","sourcePosition"];var path="";var spans={};var ignored=[];
+    function initialize(){source="";index=0;nodes=0;}
+    function fail(){throw new Lang.InvalidValueException("Invalid bounded JSON");}
+    function byteSize(value){var total=0;for(var i=0;i<value.length();i+=64){var end=i+64;if(end>value.length()){end=value.length();}total+=StringUtil.convertEncodedString(value.substring(i,end),{:fromRepresentation=>StringUtil.REPRESENTATION_STRING_PLAIN_TEXT,:toRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:encoding=>StringUtil.CHAR_ENCODING_UTF8}).size();}return total;}
+    function parse(raw,maxBytes){
+        if(!(raw instanceof String) || raw.length()>maxBytes || byteSize(raw)>maxBytes){fail();}
+        source=raw;hasDel=source.find(127.toChar().toString())!=null;index=0;nodes=0;path="";spans={};ignored=[];for(var ctrl=0;ctrl<32;ctrl+=1){if(!feedMode&&(ctrl==9||ctrl==10||ctrl==13)){continue;}var character=ctrl.toChar().toString();if(character.length()>0&&source.find(character)!=null){fail();}}var value=read(0);white();if(index!=source.length()){fail();}source="";NativeMetrics.sample("json-parsed");return value;
+    }
+    function peek(){return index<source.length()?source.substring(index,index+1):"";}
+    // In canonical feed mode every caller requires its next delimiter/token.
+    // Whitespace outside a String fails there; avoid four VM substring probes
+    // at every grammar boundary. Generic metadata parsing permits JSON whitespace.
+    function white(){if(feedMode){return;}while(index<source.length() && (peek().equals(" ")||peek().equals("\n")||peek().equals("\r")||peek().equals("\t"))){index+=1;}}
+    function need(c){if(!peek().equals(c)){fail();}index+=1;}
+    function read(depth){
+        nodes+=1;if(depth>8||nodes>5000){fail();}white();var c=peek();if(c.equals("\"")){return string();}if(c.equals("{")){return object(depth);}if(c.equals("[")){return list(depth);}if(c.equals("n")){literal("null");return null;}if(c.equals("t")){literal("true");return true;}if(c.equals("f")){literal("false");return false;}return number();
+    }
+    function object(depth){
+        need("{");white();var result={};if(peek().equals("}")){index+=1;return result;}var previous=null;var count=0;var rowFields=feedMode&&(path.find("/dictionaries/")==0||catalogMode&&path.find("/entries/")==0);
+        while(true){count+=1;if(count>4096){fail();}white();if(!peek().equals("\"")){fail();}var key=rowFields?rowKey():string();if(nodeOwner!=null){nodeOwner.knownField(path,key);}if(catalogMode&&depth==0&&["schemaVersion","catalogVersion","projection","entries","unresolved","visualSelection"].indexOf(key)<0){fail();}if(feedMode){var common=commonKeys.indexOf(key);if(common>=0){key=commonKeys[common];}}if(result.hasKey(key)||feedMode&&previous!=null&&previous.compareTo(key)>=0){fail();}previous=key;white();need(":");var oldPath=path;path=oldPath+"/"+key;var begin=index;var child=read(depth+1);var finish=index;if(feedMode){if(oldPath.equals("")&&["/catalogRevision","/dictionaries","/unresolvedCatalogIds","/launch"].indexOf(path)>=0){spans[path]=[begin,finish];}if(path.equals("/publisher")||path.equals("/launch/source_validated_utc")||path.equals("/launch/stale")||path.equals("/launch/rescheduled")||path.equals("/pollIntervalSeconds")||path.equals("/timingState")){ignored.add([begin,finish]);}child=projection(path,child);}if(rowOwner!=null&&(oldPath.equals("/dictionaries")||catalogMode&&oldPath.equals("/entries"))){child=rowOwner.dictionaryRow(key,child);}if(nodeOwner!=null){child=nodeOwner.objectField(oldPath,key,child);}if(rootOwner!=null&&oldPath.equals("")){child=rootOwner.sceneField(key,child);}result[key]=child;path=oldPath;white();if(peek().equals("}")){index+=1;return result;}need(",");}
+    }
+    function rowKey(){var end=index+8;if(end<=source.length()){var prefix=source.substring(index,end);if(prefix.find("\"kind\"")==0){index+=6;return "kind";}if(prefix.find("\"name\"")==0){index+=6;return "name";}if(prefix.equals("\"visual\"")){index+=8;return "visual";}}return string();}
+    function list(depth){if(catalogMode&&!path.equals("/unresolved")){fail();}need("[");white();var result=[];if(peek().equals("]")){index+=1;return result;}while(true){if(result.size()>=4096){fail();}var child=read(depth+1);if(catalogMode&&!(child instanceof String)){fail();}if(nodeOwner!=null){child=nodeOwner.arrayElement(path,result.size(),child,depth);}result.add(child);white();if(peek().equals("]")){index+=1;return result;}need(",");}}
+    function number(){
+        var start=index;if(peek().equals("-")){index+=1;}var first=peek();if(first.equals("")){fail();}if(first.equals("0")){index+=1;}else{if(!digit(first)){fail();}while(digit(peek())){index+=1;}}
+        var text=source.substring(start,index);if(text.equals("-")||feedMode&&text.equals("-0")){fail();}var negative=text.substring(0,1).equals("-");var digits=negative?text.substring(1,text.length()):text;if(digits.length()>19||digits.length()==19&&digits.compareTo(negative?"9223372036854775808":"9223372036854775807")>0){return new NativeIntegerLexeme(text);}var n=text.toLong();if(n==null){fail();}return n>= -2147483648l&&n<=2147483647l?n.toNumber():n;
+    }
+    function projection(key,value){
+        if(!(value instanceof String)){return value;}
+        if(key.find("/dictionaries/")==0){
+            if(key.length()<5||!key.substring(key.length()-5,key.length()).equals("/name")){return value;}
+            if(!keepCatalogNames){return null;}return value;
+        }
+        if(key.find("/launch/")!=0){return value;}
+        if(!nativeNormalizedEdges(value)){fail();}
+        var unused=["/launch/mission_name","/launch/source_status_name","/launch/timing/source_precision_name","/launch/timing/source_precision_abbrev","/launch/timing/source_precision_description"];
+        var display=["/launch/configuration_name","/launch/operator_name","/launch/mission_purpose","/launch/site_name","/launch/country_name","/launch/site_location_name"];
+        var skip=unused.indexOf(key)>=0;if(skip||display.indexOf(key)>=0){if(skip){return null;}if(value.length()>64){return value.substring(0,63)+"…";}}return value;
+    }
+    function digit(c){return !c.equals("") && "0123456789".find(c)!=null;}
+    function literal(text){if(index+text.length()>source.length() || !source.substring(index,index+text.length()).equals(text)){fail();}index+=text.length();}
+    function hex4(){var n=0;for(var i=0;i<4;i+=1){var c=peek().toLower();var v="0123456789abcdef".find(c);if(c.equals("")||v==null){fail();}n=n*16+v;index+=1;}return n;}
+    function string(){
+        need("\"");var result="";var start=index;var normalized=feedMode&&(path.find("/launch/")==0||path.equals("/dictionaries")||path.equals("/unresolvedCatalogIds"));
+        while(index<source.length()){
+            var end=index+128;if(end>source.length()){end=source.length();}var piece=source.substring(index,end);var quote=piece.find("\"");var slash=piece.find("\\");var stop=piece.length();
+            if(quote!=null&&quote<stop){stop=quote;}if(slash!=null&&slash<stop){stop=slash;}
+            if(!feedMode){var prefix=piece.substring(0,stop);if(prefix.find("\n")!=null||prefix.find("\r")!=null||prefix.find("\t")!=null){fail();}}
+            if(hasDel&&normalized&&piece.substring(0,stop).find(127.toChar().toString())!=null){fail();}index+=stop;if(stop==piece.length()){continue;}
+            if(quote!=null&&stop==quote){result=result.length()==0?source.substring(start,index):result+source.substring(start,index);index+=1;if(!feedMode&&byteSize(result)>2048){fail();}return result;}
+            result+=source.substring(start,index);index+=1;var c=peek();index+=1;if(normalized&&["b","f","n","r","t","u"].indexOf(c)>=0){fail();}
+            if(c.equals("\"")||c.equals("\\")||!feedMode&&c.equals("/")){result+=c;}
+            else if(c.equals("b")){result+=8.toChar().toString();}else if(c.equals("f")){result+=12.toChar().toString();}
+            else if(c.equals("n")){result+="\n";}else if(c.equals("r")){result+="\r";}else if(c.equals("t")){result+="\t";}
+            else if(c.equals("u")){var hexStart=index;var code=hex4();if(feedMode&&(code>=32||code==8||code==9||code==10||code==12||code==13||!source.substring(hexStart,index).equals(source.substring(hexStart,index).toLower()))){fail();}if(code>=0xD800 && code<=0xDBFF){need("\\");need("u");var low=hex4();if(low<0xDC00||low>0xDFFF){fail();}code=0x10000+(code-0xD800)*1024+low-0xDC00;}else if(code>=0xDC00 && code<=0xDFFF){fail();}result+=code.toChar().toString();}
+            else{fail();}start=index;
+        }fail();return null;
+    }
+
+}
+
+(:background, :typecheck(false))
+class NativeWireHash {
+    var hash;var count=0;var buffer="";
+    function initialize(){hash=new Cryptography.Hash({:algorithm=>Cryptography.HASH_SHA256});}
+    function flush(){if(buffer.length()==0){return;}var b=StringUtil.convertEncodedString(buffer,{:fromRepresentation=>StringUtil.REPRESENTATION_STRING_PLAIN_TEXT,:toRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:encoding=>StringUtil.CHAR_ENCODING_UTF8});hash.update(b);count+=b.size();if(count>65536){throw new Lang.InvalidValueException("Canonical byte bound");}buffer="";}
+    function put(text){
+        if(buffer.length()+text.length()<=128){buffer+=text;return;}
+        flush();for(var i=0;i<text.length();i+=128){var end=i+128;if(end>text.length()){end=text.length();}buffer=text.substring(i,end);flush();}
+    }
+    function range(text,start,end){while(start<end){var next=start+128;if(next>end){next=end;}put(text.substring(start,next));start=next;}}
+    function update(bytes){hash.update(bytes);count+=bytes.size();if(count>65536){throw new Lang.InvalidValueException("Canonical byte bound");}}
+    function scalar(value){if(value==null){put("null");}else if(value instanceof String){quoted(value);}else if(value instanceof Number||value instanceof Long){put(value.toString());}else{throw new Lang.InvalidValueException("Invalid scalar");}}
+    function quoted(text){
+        var chars=text.toCharArray();var special=false;for(var i=0;i<chars.size();i+=1){var n=chars[i].toNumber();if(n<32||n==34||n==92){special=true;break;}}
+        if(!special){put("\""+text+"\"");return;}
+        put("\"");var start=0;for(var j=0;j<chars.size();j+=1){var n=chars[j].toNumber();if(n<32||n==34||n==92){put(text.substring(start,j));if(n==34||n==92){put("\\"+chars[j].toString());}else if(n==8){put("\\b");}else if(n==9){put("\\t");}else if(n==10){put("\\n");}else if(n==12){put("\\f");}else if(n==13){put("\\r");}else{put("\\u"+n.format("%04x"));}start=j+1;}}put(text.substring(start,text.length()));put("\"");
+    }
+    function digest(){flush();return StringUtil.convertEncodedString(hash.digest(),{:fromRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:toRepresentation=>StringUtil.REPRESENTATION_STRING_HEX}).toLower();}
+}
+
+(:typecheck(false))
+class NativeCanonical extends NativeWireHash {
+    var nodes=0;
+    function initialize(){NativeWireHash.initialize();}
+    function emit(value){write(value,0);}
+    function write(value,depth){
+        nodes+=1;if(depth>16||nodes>20000){throw new Lang.InvalidValueException("Canonical work bound");}
+        if(value==null){put("null");}else if(value instanceof String){quoted(value);}else if(value instanceof Boolean){put(value?"true":"false");}
+        else if(value instanceof Number||value instanceof Long){put(value.toString());}
+        else if(value instanceof NativeIntegerLexeme){put(value.text);}
+        else if(value instanceof Array){put("[");for(var i=0;i<value.size();i+=1){if(i>0){put(",");}write(value[i],depth+1);}put("]");}
+        else if(value instanceof Dictionary){var keys=value.keys();for(var k=0;k<keys.size();k+=1){if(!(keys[k] instanceof String)){throw new Lang.InvalidValueException("Canonical key type");}}keys.sort(null);put("{");for(var j=0;j<keys.size();j+=1){if(j>0){put(",");}quoted(keys[j]);put(":");write(value[keys[j]],depth+1);}put("}");}
+        else{throw new Lang.InvalidValueException("Unsupported canonical type");}
+    }
+}
+
+// Native canonical HEX round-trip avoids hundreds of per-character VM calls.
+// Decoder permissiveness cannot admit punctuation/case: exact re-encoding wins.
+(:background, :typecheck(false))
+function nativeHex(value){
+    if(!(value instanceof String)||value.length()!=64){return false;}
+    try{var bytes=StringUtil.convertEncodedString(value,{:fromRepresentation=>StringUtil.REPRESENTATION_STRING_HEX,:toRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY});var encoded=StringUtil.convertEncodedString(bytes,{:fromRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:toRepresentation=>StringUtil.REPRESENTATION_STRING_HEX});return bytes.size()==32&&encoded.toLower().equals(value);}catch(e){return false;}
+}
+
+(:typecheck(false))
+function nativeSpace(n){return n<=32||n==133||n==160||n==5760||n>=8192&&n<=8202||n==8232||n==8233||n==8239||n==8287||n==12288;}
+(:typecheck(false))
+function nativeNormalizedEdges(value){if(!(value instanceof String)||value.length()==0){return false;}var first=value.substring(0,1).toCharArray()[0].toNumber();var last=value.substring(value.length()-1,value.length()).toCharArray()[0].toNumber();return !nativeSpace(first)&&!nativeSpace(last);}

@@ -257,9 +257,11 @@ class CurrentGlobalContextTest(unittest.TestCase):
             self.assertEqual(git('status', '--porcelain'), b'')
             runtime_command = [sys.executable, '-B', '-c',
                                'import json; from pathlib import Path; '
-                               'from tools.spacefox import native_profile; '
+                               'from tools.spacefox import native_profile, ascent_supplement; '
+                               'assert ascent_supplement.load_supplement(Path("catalog/ascent-end-supplement.json")) == (); '
+                               'from tools.spacefox.native_motion import PROFILE; assert PROFILE == "native-motion-v3"; '
                                'modules={m.__name__:str(Path(m.__file__).resolve()) '
-                               'for m in (native_profile,)}; '
+                               'for m in (native_profile, ascent_supplement)}; '
                                'assert all(Path(path)==Path.cwd()/Path(*name.split(".")).with_suffix(".py") '
                                'for name,path in modules.items()); '
                                'print("RUNTIME_IMPORT_WITNESS "+json.dumps(modules,sort_keys=True)); '
@@ -268,7 +270,8 @@ class CurrentGlobalContextTest(unittest.TestCase):
             runtime = subprocess.run(runtime_command, cwd=root, capture_output=True, timeout=30)
             self.assertEqual(runtime.returncode, 0, runtime.stderr)
             self.assertEqual(runtime.stderr, b'')
-            self.assertIn(b'--native-profile', runtime.stdout)
+            self.assertIn(b'--output', runtime.stdout)
+            self.assertNotIn(b'--native-profile', runtime.stdout)
             self.assertIn(b'RUNTIME_IMPORT_WITNESS ', runtime.stdout)
             self.assertEqual(files(), expected)
             # Preserve the original explicit skip-worktree corruption control.

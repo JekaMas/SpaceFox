@@ -47,7 +47,7 @@ function basicLaunchFeedTiming(logger as Test.Logger) as Boolean {
     Test.assert(exact[2].equals("Vulcan VC6L"));
     Test.assert(exact[3].equals("United Launch Alliance"));
     Test.assert(zero[0].remaining == 0);
-    Test.assert(zero[0].countdown.equals("00:00:00"));
+    Test.assert(zero[0].countdown.equals("T+ 00:00:00"));
     Test.assert(minute[0].remaining == 16097);
     Test.assert(minute[0].countdown.equals("04:28:17"));
     Test.assert(minute[1][0].equals("source-coarse"));

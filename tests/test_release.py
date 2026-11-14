@@ -101,7 +101,7 @@ class ReleaseTest(unittest.TestCase):
         receipt = self.original
         self.assertEqual(receipt["application_uuid"], "955b26e54df04e069c23cd95f9df5f01")
         self.assertEqual(receipt["entry"], "SpaceFoxApp")
-        self.assertEqual(receipt["version"], "0.1.0")
+        self.assertEqual(receipt["version"], "0.1.1")
         self.assertEqual(receipt["products"], ["fr165"])
         self.assertEqual(receipt["languages"], ["eng", "rus", "deu", "fre", "spa"])
         self.assertFalse(receipt["official_release"])
@@ -124,7 +124,7 @@ class ReleaseTest(unittest.TestCase):
                               capture_output=True, check=True).stdout
         app = ET.fromstring(data).find("iq:application", NS)
         self.assertEqual(app.get("id"), "955b26e54df04e069c23cd95f9df5f01")
-        self.assertEqual(app.get("version"), "0.1.0")
+        self.assertEqual(app.get("version"), "0.1.1")
         self.assertEqual(app.find("iq:products/iq:product", NS).get("partNumber"), "006-B4432-00")
         self.assertEqual([x.text for x in app.findall("iq:languages/iq:language", NS)], ["deu", "eng", "fre", "rus", "spa"])
         text = (self.base / "first/release.json").read_text()
@@ -202,9 +202,9 @@ class ReleaseTest(unittest.TestCase):
             self.build(self.root / "unsafe-output")
 
     def test_higher_version_signed_repair_positive(self):
-        self.edit_manifest("version", "0.1.1")
+        self.edit_manifest("version", "0.1.2")
         receipt = self.build(self.base / "repair", previous=self.base / "first/release.json")
-        self.assertEqual(receipt["version"], "0.1.1")
+        self.assertEqual(receipt["version"], "0.1.2")
         self.assertEqual(receipt["application_uuid"], self.original["application_uuid"])
         self.assertEqual(receipt["public_key_spki_sha256"], self.fingerprint)
         self.assertEqual(receipt["update"]["kind"], "higher_version_repair")
@@ -212,12 +212,12 @@ class ReleaseTest(unittest.TestCase):
         self.assertFalse(receipt["update"]["store_downgrade_assumed"])
 
     def test_update_and_backup_negative(self):
-        for value in ("0.1.0", "0.0.9"):
+        for value in ("0.1.1", "0.1.0", "0.0.9"):
             self.edit_manifest("version", value)
             with self.assertRaisesRegex(BuildBlocked, "strictly increase"):
                 self.build(self.base / "downgrade", previous=self.base / "first/release.json")
             self.git("reset", "--hard", self.base_revision)
-        self.edit_manifest("version", "0.1.1")
+        self.edit_manifest("version", "0.1.2")
         bad_previous = dict(self.original, public_key_spki_sha256="0" * 64)
         path = self.base / "wrong-previous.json"
         # Keep the real prior artifact available: this control must reach identity.

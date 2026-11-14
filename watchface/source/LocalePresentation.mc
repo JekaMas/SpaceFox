@@ -51,6 +51,12 @@ class LocalePresentation {
         if(key.equals("day")){return "d";}if(key.equals("hour")){return "h";}if(key.equals("minute")){return "m";}if(key.equals("second")){return "s";}
         return "Time unknown";
     }
+    function mission(value as String) as String {
+        // The provider category remains retained verbatim; only this known
+        // semantic category has an existing locale resource mapping.
+        if(value.equals("Communications")&&dictionary!=null&&dictionary.hasKey("communications")){return dictionary["communications"];}
+        return value;
+    }
     function countdown(current, active) as String {
         return CountdownFormat.format(current.remaining);
     }

@@ -1,0 +1,30 @@
+------------------------------------------------------------------------------
+Executing test siteFlagPositive...
+DEBUG (01:00): SITE_FLAG_POSITIVE realVulcan=true operator=ULA country=US staticFlag=true roleCount=3 completeAtomicDecode=true rasterReopenWrites=0
+PASS
+------------------------------------------------------------------------------
+Executing test siteFlagNegative...
+DEBUG (01:00): SITE_NEG step=country
+DEBUG (01:00): SITE_NEG step=model
+DEBUG (01:00): SITE_NEG step=corrupt
+DEBUG (01:00): SITE_NEG step=unknown
+DEBUG (01:00): SITE_NEG step=zero-and-swap
+DEBUG (01:00): SITE_NEG step=metadata
+DEBUG (01:00): SITE_NEG step=cache
+DEBUG (01:00): SITE_NEG step=absent
+DEBUG (01:00): SITE_FLAG_NEGATIVE wrongCountryAndModelRejected=true corruptRasterRefRejected=true unknownPadNoPin=true zeroValid=true identitySwapClears=true missingExplicit=true metadataReopenAgePreserved=true invalidUpdateRetainsPrior=true
+PASS
+------------------------------------------------------------------------------
+Executing test siteCorpusBounds...
+DEBUG (01:00): SITE_CORPUS_BOUNDS rows=257 languages=2 sourceLaunches=1822 valid=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+siteFlagPositive                    PASS
+siteFlagNegative                    PASS
+siteCorpusBounds                    PASS
+Ran 3 tests
+
+PASSED (passed=3, failed=0, errors=0)

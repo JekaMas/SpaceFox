@@ -120,8 +120,14 @@ def build_map(root,catalog,site_id,files):
         coords=[q(c) for p in ((a[0]+ox,a[1]+oy),(b[0]+ox,b[1]+oy),(b[0]-ox,b[1]-oy),(a[0]-ox,a[1]-oy)) for c in p]
         alpha=_fade((a[0]+b[0])/2,(a[1]+b[1])/2)
         rgb=[round(v*alpha) for v in (0x84,0xba,0xd0)];color=rgb[0]*65536+rgb[1]*256+rgb[2]
-        try:_pooled([256,256],[(color,coords)])
-        except ValueError:continue
+        # Quantization can collapse a subpixel coastline strip. _pooled only
+        # assembles indices; validate the resulting wire polygon before adding
+        # it to a layer so an invisible degenerate strip cannot abort the map.
+        try: canonical_visual(_pooled([256,256],[(color,coords)]))
+        except ValueError as error:
+            if str(error) in ('zero-area wire polygon', 'duplicate polygon vertex', 'unsupported self-intersecting fill/polygon'):
+                continue
+            raise
         coast.append((color,coords))
     layers.extend(_layers(files,coast,'coast'))
     # Corresponding source and exact original notices are delivered offwatch.
