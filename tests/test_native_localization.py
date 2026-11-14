@@ -25,7 +25,18 @@ class NativeLocalizationResourcesTest(unittest.TestCase):
      target=root/name;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ROOT/name,target)
     corpus_dir=Path(proof['corpusPath']).parent;shutil.copytree(ROOT/corpus_dir,root/corpus_dir)
     receipt_dir=Path(proof['receiptPath']).parent;shutil.copytree(ROOT/receipt_dir,root/receipt_dir)
-   if proof and 'sourceDeltaProof' in proof:
+   if proof and 'uxDeltaProof' in proof:
+    shutil.copytree(ROOT/'tools',root/'tools',dirs_exist_ok=True,ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
+    for folder in ('tests','assets','catalog','schemas'):
+     if not (root/folder).exists():(root/folder).symlink_to(ROOT/folder,target_is_directory=True)
+    for name in json.loads((ROOT/'release/native-admission-inputs.json').read_text()):
+     target=root/name;target.parent.mkdir(parents=True,exist_ok=True)
+     if not target.exists():shutil.copyfile(ROOT/name,target)
+    ux=json.loads((ROOT/proof['uxDeltaProof']['path']).read_text())
+    for name in ux['sources']:
+     target=root/name;target.parent.mkdir(parents=True,exist_ok=True)
+     if not target.exists():shutil.copyfile(ROOT/name,target)
+   elif proof and 'sourceDeltaProof' in proof:
     folder=Path(proof['sourceDeltaProof']['path']).parent;shutil.copytree(ROOT/folder,root/folder,dirs_exist_ok=True)
    generate(root)
    before={str(p.relative_to(root)):p.read_bytes() for p in (root/'watchface').rglob('*') if p.is_file()};generate(root);self.assertEqual(before,{str(p.relative_to(root)):p.read_bytes() for p in (root/'watchface').rglob('*') if p.is_file()})

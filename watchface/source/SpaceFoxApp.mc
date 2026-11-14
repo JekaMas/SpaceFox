@@ -17,6 +17,9 @@ class SpaceFoxApp extends Application.AppBase {
         return NativeForegroundApp.initial(self);
     }
 
+    (:typecheck(disableBackgroundCheck))
+    function getSettingsView() as [Views] or [Views, InputDelegates] or Null {return SettingsMenu.root(self);}
+
     function getServiceDelegate() as [System.ServiceDelegate] {return [new FeedService()];}
     (:typecheck(disableBackgroundCheck)) function refreshSyncStatus() as Void {if(view!=null&&feed!=null){NativeForegroundApp.status(self,feed);}}
     (:typecheck(disableBackgroundCheck))

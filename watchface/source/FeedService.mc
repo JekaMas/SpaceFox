@@ -10,7 +10,7 @@ class FeedService extends System.ServiceDelegate {
     function initialize(){ServiceDelegate.initialize();transfer=null;assetRequest=null;}
     function createTransfer() as NativeTransfer {return new NativeTransfer(configuredFeedUrl(),null);}
     (:typecheck(false)) function diagnostic(stage) as Void {diagnosticCode(stage,null);}
-    (:typecheck(false)) function diagnosticCode(stage,code) as Void {try{if(transfer!=null){transfer.store.write("sf.sync.status",{"base"=>transfer.base,"stage"=>stage,"code"=>code,"utc"=>Time.now().value().toLong()});}}catch(e){}}
+    (:typecheck(false)) function diagnosticCode(stage,code) as Void {try{if(transfer!=null){transfer.store.write("sf.sync.status",{"base"=>transfer.base,"stage"=>stage,"code"=>code,"utc"=>Time.now().value().toLong(),"build"=>NativeVersion.BUILD});}}catch(e){}}
     function requestUrl(path as String) as String {return ((transfer as NativeTransfer).base as String)+"/"+path+".txt";}
     (:typecheck(false))
     function onTemporalEvent() as Void {

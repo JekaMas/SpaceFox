@@ -1646,9 +1646,14 @@
         "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-map/**",
         "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-current-map.png",
         "tests/fixtures/map-only/feed.json",
-        "openspec/changes/spacefox-watchface/evidence/basic-time-fields-whole/native/**"
+        "openspec/changes/spacefox-watchface/evidence/basic-time-fields-whole/native/**",
+        "tests/test_ux016_*.py",
+        "watchface/ux-tests/**",
+        "tools/native_ux_*",
+        "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
-      "planning_status": "Implemented whole software property; actual selected verifier receipt required. P2 conjunctive alias folded, external release obligations retained."
+      "planning_status": "Implemented whole software property; actual selected verifier receipt required. P2 conjunctive alias folded, external release obligations retained.",
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF02.P1",
@@ -1722,9 +1727,14 @@
         "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-map/**",
         "openspec/changes/spacefox-watchface/evidence/language-settings-whole/basic-five-current-map.png",
         "tests/fixtures/map-only/feed.json",
-        "openspec/changes/spacefox-watchface/evidence/basic-time-fields-whole/native/**"
+        "openspec/changes/spacefox-watchface/evidence/basic-time-fields-whole/native/**",
+        "tests/test_ux016_*.py",
+        "watchface/ux-tests/**",
+        "tools/native_ux_*",
+        "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
-      "planning_status": "Implemented whole software property; actual selected verifier receipt required. P2 conjunctive alias folded, external release obligations retained."
+      "planning_status": "Implemented whole software property; actual selected verifier receipt required. P2 conjunctive alias folded, external release obligations retained.",
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF04.P1",
@@ -1981,9 +1991,14 @@
         "watchface/resources*/**",
         "watchface/source/**",
         "watchface/source/SpaceFoxApp.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tests/test_ux016_*.py",
+        "watchface/ux-tests/**",
+        "tools/native_ux_*",
+        "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
-      "planning_status": "planned; no acceptance or implementation is inferred by this evidence topology"
+      "planning_status": "planned; no acceptance or implementation is inferred by this evidence topology",
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF10.P1",
@@ -3455,9 +3470,14 @@
         "watchface/resources/strings/strings.xml",
         "watchface/source/**",
         "watchface/toolchain-lock.json",
-        "watchface/transport-tests/**"
+        "watchface/transport-tests/**",
+        "tests/test_ux016_*.py",
+        "watchface/ux-tests/**",
+        "tools/native_ux_*",
+        "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
-      "planning_status": "Current-only witnesses remain planned after executed fixture/harness closure retirement. Retained historical observations do not execute this graph or close product acceptance."
+      "planning_status": "Current-only witnesses remain planned after executed fixture/harness closure retirement. Retained historical observations do not execute this graph or close product acceptance.",
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "LS05.P7",

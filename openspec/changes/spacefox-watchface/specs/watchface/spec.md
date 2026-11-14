@@ -144,11 +144,11 @@ occurred merely because an animation played or the countdown reached zero.
 
 ### Requirement: Qualified AMOLED always-on display
 
-The sparse AOD SHALL show thin time and the same numeric countdown or uncertainty, recomputed at most once per minute. It SHALL meet lit-pixel and burn-in rules, omit the full map and animation, and stop active timers on sleep. Returning active restores the accepted composition and clock calculation. Reschedule and stale states remain distinguishable.
+The sparse AOD SHALL show centered large thin time, localized current date and weekday, the numeric countdown or uncertainty, and watch battery, recomputed at most once per minute. It SHALL meet lit-pixel and burn-in rules, omit the full map and animation, and stop active timers on sleep. Returning active restores the accepted composition and clock calculation. Reschedule and stale states remain distinguishable.
 
 #### Scenario: Enter always-on mode
 - **WHEN** FR165 enters low-power always-on mode
-- **THEN** the sparse scene stays within the applicable 10-percent lit-pixel limit and device burn-in rules, timers stop and no full-screen map or launch animation remains lit; the numeric seconds reflect each permitted snapshot without a per-second AOD redraw promise
+- **THEN** the sparse scene stays within the applicable 10-percent lit-pixel limit and device burn-in rules, timers stop and no full-screen map or launch animation remains lit; countdown retains seconds at each permitted minute snapshot without a per-second AOD redraw promise
 
 #### Scenario: Wrist gestures disabled
 - **WHEN** the user disables wrist wake and keeps AOD enabled
@@ -221,6 +221,21 @@ exercise technical failures without fabricating display names.
 
 #### Scenario: Owner readability revision after physical first use
 - **WHEN** the active face or its temporary maintenance view draws known or unknown countdown data
-- **THEN** the four metric values use the enlarged 38px numeric face, the countdown uses approximately 32px visible glyphs (40px scalable font request), and the key time remains unchanged
+- **THEN** on a 390×390 display actual ink heights target at least 72px for time, 32px for field values, and 28px for countdown; measurements must expose any contradiction
 - **AND** unknown `--:--:--` and maintenance countdown use the same persisted countdown palette and render style as the normal countdown; an actual reschedule independently retains its amber semantic override
-- **AND** the dedicated battery remains separate on the left above the rocket; the four fixed positions, six assignable roles, circular fit, unmarked rocket and country-footer flag remain intact
+- **AND** no standalone battery appears in active mode; battery is independently selectable in each of four fixed positions, with all six roles, circular fit, unmarked rocket and country-footer flag intact
+
+#### Scenario: Settings, AOD, and cached scene remain coherent
+- **WHEN** any field is selected through settings, including battery in field four, then settings change and the application restarts
+- **THEN** the exact role, icon, value and selected color persist and render in that field
+- **AND** the AOD time ink is centered within two pixels of the 390×390 display center and at least 84 pixels high; localized date and weekday at least 18 pixels high, countdown including seconds at least 22 pixels high updated at minute cadence, and current system battery at least 20 pixels high remain visible, including first entry into LOW and each permitted later minute within the applicable 10-percent lit-pixel and burn-in constraints
+- **AND** a transient update or partial staging failure retains the last accepted launch and compatible scene across restart, while validated new metadata can display before its matching optional artwork without relabeling old artwork
+
+#### Scenario: Identify the running installed build
+- **WHEN** the wearer opens the on-watch settings
+- **THEN** the settings title displays the actual build version and all existing field, color, language and feed settings remain available
+
+#### Scenario: Background error identifies its actual writer
+
+- **WHEN** a background feed or artwork request writes an error status and no launch is accepted
+- **THEN** the detail includes the background build version recorded with that status and error code; a legacy status without a version is shown as unknown rather than assigned the foreground version

@@ -1,0 +1,68 @@
+test_ux01_active_clock_ink (tests.test_ux016_pixels.NativeUxPixels.test_ux01_active_clock_ink) ... FAIL
+test_ux01_active_countdown_ink (tests.test_ux016_pixels.NativeUxPixels.test_ux01_active_countdown_ink) ... FAIL
+test_ux01_active_field_ink (tests.test_ux016_pixels.NativeUxPixels.test_ux01_active_field_ink) ... FAIL
+test_ux01_aod_lit_pixel_limit (tests.test_ux016_pixels.NativeUxPixels.test_ux01_aod_lit_pixel_limit) ... ok
+test_ux01_aod_time_ink_and_center (tests.test_ux016_pixels.NativeUxPixels.test_ux01_aod_time_ink_and_center) ... FAIL
+test_ux01_aod_visible_context (tests.test_ux016_pixels.NativeUxPixels.test_ux01_aod_visible_context) ... FAIL
+test_ux01_no_standalone_battery (tests.test_ux016_pixels.NativeUxPixels.test_ux01_no_standalone_battery) ... FAIL
+
+======================================================================
+FAIL: test_ux01_active_clock_ink (tests.test_ux016_pixels.NativeUxPixels.test_ux01_active_clock_ink)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-native-ux-red-green-016-20261114/tests/test_ux016_pixels.py", line 29, in test_ux01_active_clock_ink
+    self.assertGreaterEqual(b[3]-b[1]+1,72, f'clock ink bbox {b}')
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 58 not greater than or equal to 72 : clock ink bbox (105, 138, 284, 195)
+
+======================================================================
+FAIL: test_ux01_active_countdown_ink (tests.test_ux016_pixels.NativeUxPixels.test_ux01_active_countdown_ink)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-native-ux-red-green-016-20261114/tests/test_ux016_pixels.py", line 32, in test_ux01_active_countdown_ink
+    self.assertGreaterEqual(b[3]-b[1]+1,28, f'countdown ink bbox {b}')
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 24 not greater than or equal to 28 : countdown ink bbox (113, 210, 275, 233)
+
+======================================================================
+FAIL: test_ux01_active_field_ink (tests.test_ux016_pixels.NativeUxPixels.test_ux01_active_field_ink)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-native-ux-red-green-016-20261114/tests/test_ux016_pixels.py", line 35, in test_ux01_active_field_ink
+    self.assertGreaterEqual(b[3]-b[1]+1,32, f'field ink bbox {b}')
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 27 not greater than or equal to 32 : field ink bbox (299, 248, 332, 274)
+
+======================================================================
+FAIL: test_ux01_aod_time_ink_and_center (tests.test_ux016_pixels.NativeUxPixels.test_ux01_aod_time_ink_and_center)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-native-ux-red-green-016-20261114/tests/test_ux016_pixels.py", line 52, in test_ux01_aod_time_ink_and_center
+    self.assertGreaterEqual(b[3]-b[1]+1,64, f'AOD clock ink bbox {b}')
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 28 not greater than or equal to 64 : AOD clock ink bbox (110, 115, 196, 142)
+
+======================================================================
+FAIL: test_ux01_aod_visible_context (tests.test_ux016_pixels.NativeUxPixels.test_ux01_aod_visible_context)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-native-ux-red-green-016-20261114/tests/test_ux016_pixels.py", line 58, in test_ux01_aod_visible_context
+    b=bounds(pixels(AOD,box,bright))
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-native-ux-red-green-016-20261114/tests/test_ux016_pixels.py", line 23, in bounds
+    if not points: raise AssertionError('expected ink absent')
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: expected ink absent
+
+======================================================================
+FAIL: test_ux01_no_standalone_battery (tests.test_ux016_pixels.NativeUxPixels.test_ux01_no_standalone_battery)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-native-ux-red-green-016-20261114/tests/test_ux016_pixels.py", line 38, in test_ux01_no_standalone_battery
+    self.assertEqual(len(p),0, f'standalone battery icon ink: {len(p)} pixels')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 42 != 0 : standalone battery icon ink: 42 pixels
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.829s
+
+FAILED (failures=6)

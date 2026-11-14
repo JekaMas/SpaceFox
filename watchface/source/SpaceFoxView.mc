@@ -9,6 +9,8 @@ class ClockSnapshot {
     var countdown as String;
     var stale as Boolean=false;var rescheduled as Boolean=false;
     var date as String or Null=null;
+    var localCalendar as Array<Number> or Null=null;
+    var battery as String="—";
     var remaining as Number or Long or Null=null;
     function initialize(local as String, launch as String) { localTime=local;countdown=launch; }
 }
@@ -54,7 +56,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     (:extendedCode)
     function refreshFitness() as Void {if(!_active){return;}var now=_clock.utcSeconds();var minute=utcMinute(now);if(metricsMinute==null||metricsMinute!=minute){values=fitness.sample(now);metricsMinute=minute;}if(_shown&&fitnessTimer==null){fitnessTimer=new Timer.Timer();fitnessTimer.start(method(:refreshFitness),60000,true);}WatchUi.requestUpdate();}
     function stopFitness() as Void {if(fitnessTimer!=null){fitnessTimer.stop();fitnessTimer=null;}}
-    function snapshot() as ClockSnapshot {var now=_clock.utcSeconds();var current=new ClockSnapshot(_clock.localTimeText(),_schedule.display(now,_active));current.remaining=_schedule.remainingSeconds(now);current.date=context==null?null:context.date;return current;}
+    function snapshot() as ClockSnapshot {var now=_clock.utcSeconds();var current=new ClockSnapshot(_clock.localTimeText(),_schedule.display(now,_active));current.remaining=_schedule.remainingSeconds(now);current.date=context==null?null:context.date;current.localCalendar=_clock.localCalendar();current.battery=fitness.display(values,"battery");return current;}
     (:extendedCode)
     function setSettings(next as SceneSettings) as Void { settings=next;aodMinute=null;presentation.prepare(settings.language);stopAnimation();if(renderer!=null){renderer.prepare(context,settings);(renderer as SceneRenderer).downloaded=downloaded;} }
     function refreshLocale() as Void {var previous=settings.language;settings.refreshLanguage();if(!previous.equals(settings.language)){setSettings(settings);}}
@@ -78,7 +80,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     }
     function canForegroundWork() as Boolean {return _shown&&_active;}
     (:typecheck(false))
-    function clearForRestore() as Void {var schedule=_schedule;var stale=packet!=null?packet.stale:(context!=null&&context.stale);var rescheduled=packet!=null?packet.rescheduled:(context!=null&&context.rescheduled);setPacket(null);_schedule=schedule;restoreStatus=true;restoreStale=stale;restoreRescheduled=rescheduled;visualMaintenance=true;releaseRenderer();}
+    function clearForRestore() as Void {var schedule=_schedule;var accepted=context;var stale=packet!=null?packet.stale:(context!=null&&context.stale);var rescheduled=packet!=null?packet.rescheduled:(context!=null&&context.rescheduled);setPacket(null);context=accepted;_schedule=schedule;restoreStatus=true;restoreStale=stale;restoreRescheduled=rescheduled;visualMaintenance=true;releaseRenderer();}
     function setSyncStatus(value as String,detail as String) as Void {syncStatus=value;syncDetail=detail;if(renderer!=null){renderer.syncStatus=value;renderer.syncDetail=detail;}}
     function prepareRenderer() as Void { maintenanceIcons=null;maintenanceTimeFont=null;maintenanceCountFont=null;maintenanceMetricFont=null;renderer=new SceneRenderer(presentation);renderer.prepare(context,settings);maintenanceAodFont=(renderer as SceneRenderer).fonts["aod"];(renderer as SceneRenderer).downloaded=downloaded;(renderer as SceneRenderer).syncStatus=syncStatus;(renderer as SceneRenderer).syncDetail=syncDetail; }
     function releaseRenderer() as Void {stopAnimation();if(renderer!=null){maintenanceIcons=renderer.icons;}renderer=null;}
@@ -91,9 +93,12 @@ class SpaceFoxView extends WatchUi.WatchFace {
     function onUpdate(dc as Graphics.Dc) as Void {
         var now=_clock.utcSeconds();var minute=utcMinute(now);
         if(!_active && aodMinute!=null && aodMinute==minute){return;}
+        // One inexpensive system battery read per permitted LOW snapshot.
+        // Do not start the active health sampler or any timer in LOW.
+        if(!_active){try{values["battery"]=fitness.number(System.getSystemStats().battery,100);}catch(e){values["battery"]=null;}}
         if(visualMaintenance||renderer==null){maintenance(dc);if(!_active){aodMinute=minute;}return;}
         if(packet!=null){(packet as NativeFeed).advance(now);if(context!=null){(context as SceneContext).stale=(packet as NativeFeed).stale as Boolean;}}
-        var current=new ClockSnapshot(_clock.localTimeText(),_schedule.display(now,_active));current.remaining=_schedule.remainingSeconds(now);current.date=context==null?null:context.date;
+        var current=new ClockSnapshot(_clock.localTimeText(),_schedule.display(now,_active));current.remaining=_schedule.remainingSeconds(now);current.date=context==null?null:context.date;current.localCalendar=_clock.localCalendar();current.battery=fitness.display(values,"battery");
         if(packet!=null){current.stale=(packet as NativeFeed).stale as Boolean;current.rescheduled=(packet as NativeFeed).rescheduled as Boolean;}else if(restoreStatus){current.stale=restoreStale;current.rescheduled=restoreRescheduled;}
         var drawing=renderer as SceneRenderer;
         if(_active){drawing.active(dc,current,settings,values,fitness,animationProgress);fallbackPainted=true;}
@@ -101,18 +106,19 @@ class SpaceFoxView extends WatchUi.WatchFace {
     }
     // Resident built-in fonts keep the clock/countdown and four cached fields
     // live while the reconstructible full renderer is released for admission.
-    // No network, storage, sensor call, parser or resource construction here.
+    // No network, storage, health sampling, parser or resource construction here.
     function maintenance(dc as Graphics.Dc) as Void {
-        var now=_clock.utcSeconds();var current=context;var selected=packet;var stale=restoreStatus?restoreStale:current!=null&&current.stale;var rescheduled=restoreStatus?restoreRescheduled:current!=null&&current.rescheduled;if(selected!=null){selected.advance(now);stale=selected.stale;rescheduled=selected.rescheduled;}var remaining=_schedule.remainingSeconds(now);var snapshot=new ClockSnapshot(_clock.localTimeText(),_schedule.display(now,_active));snapshot.remaining=remaining;snapshot.date=context==null?null:context.date;snapshot.stale=stale as Boolean;snapshot.rescheduled=rescheduled as Boolean;
+        var now=_clock.utcSeconds();var current=context;var selected=packet;var stale=restoreStatus?restoreStale:current!=null&&current.stale;var rescheduled=restoreStatus?restoreRescheduled:current!=null&&current.rescheduled;if(selected!=null){selected.advance(now);stale=selected.stale;rescheduled=selected.rescheduled;}var remaining=_schedule.remainingSeconds(now);var snapshot=new ClockSnapshot(_clock.localTimeText(),_schedule.display(now,_active));snapshot.remaining=remaining;snapshot.date=context==null?null:context.date;snapshot.localCalendar=_clock.localCalendar();snapshot.battery=fitness.display(values,"battery");snapshot.stale=stale as Boolean;snapshot.rescheduled=rescheduled as Boolean;
         // Failed admission may wait here until HIGH. Keep the same sparse AOD
         // geometry/font/phase and minute guard as the complete-renderer path.
         if(!_active){SceneAod.draw(dc,snapshot,utcMinute(now),presentation,maintenanceAodFont==null?Graphics.FONT_XTINY:maintenanceAodFont);return;}
         var count=presentation.countdown(snapshot,true);
         dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();dc.setColor(settings.clockColor,Graphics.COLOR_TRANSPARENT);
-        dc.drawText(195,120,maintenanceTimeFont==null?Graphics.FONT_NUMBER_MILD:maintenanceTimeFont,_clock.localTimeText(),Graphics.TEXT_JUSTIFY_CENTER);
+        if(snapshot.localCalendar!=null){dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(195,95,presentation.calendarFont as Graphics.FontType,presentation.calendar(snapshot.localCalendar as Array<Number>),Graphics.TEXT_JUSTIFY_CENTER);}
+        dc.setColor(settings.clockColor,Graphics.COLOR_TRANSPARENT);dc.drawText(195,109,maintenanceTimeFont==null?Graphics.FONT_NUMBER_MILD:maintenanceTimeFont,_clock.localTimeText(),Graphics.TEXT_JUSTIFY_CENTER);
         var countFont=(dc.getTextWidthInPixels(count,presentation.count as Graphics.FontType)>275?presentation.small:presentation.count) as Graphics.FontType;count=presentation.fit(dc,count,countFont,275);dc.setColor(rescheduled?0xF3C37A:settings.countdownColor,Graphics.COLOR_TRANSPARENT);dc.drawText(195,202,countFont,count,Graphics.TEXT_JUSTIFY_CENTER);if(stale){var width=dc.getTextWidthInPixels(count,countFont);if(width>275){width=275;}for(var dot=195-width/2;dot<195+width/2;dot+=5){dc.fillCircle(dot,237,1);}}
         if(context!=null){dc.setColor(0xd4dfeb,Graphics.COLOR_TRANSPARENT);dc.setClip(42,48,306,54);dc.drawText(195,50,presentation.small as Graphics.FontType,presentation.fit(dc,context.rocket,presentation.small,306),Graphics.TEXT_JUSTIFY_CENTER);dc.clearClip();}
-        if(_active){for(var i=0;i<4;i+=1){var role=settings.slots[i];var font=maintenanceMetricFont==null?Graphics.FONT_LARGE:maintenanceMetricFont;var label=presentation.fit(dc,presentation.metric(fitness,values,role),font,112);var width=dc.getTextWidthInPixels(label,font);var left=i%2==0?80:335-width;var rowTop=i<2?244:282;if(maintenanceIcons!=null&&maintenanceIcons.hasKey(role)){dc.drawBitmap(left-25,rowTop+5,maintenanceIcons[role] as Graphics.BitmapType);}dc.setColor(settings.fieldColors[i],Graphics.COLOR_TRANSPARENT);dc.drawText(left+width/2,rowTop-4,font,label,Graphics.TEXT_JUSTIFY_CENTER);}for(var stage=0;stage<4;stage+=1){dc.setColor(sfrBuild!=null&&stage<sfrBuild.role?0x7fe7c6:0x334e5c,Graphics.COLOR_TRANSPARENT);dc.fillRectangle(148+stage*25,355,18,3);}}
+        if(_active){for(var i=0;i<4;i+=1){var role=settings.slots[i];var font=maintenanceMetricFont==null?Graphics.FONT_LARGE:maintenanceMetricFont;var label=presentation.fit(dc,presentation.metric(fitness,values,role),font,128);var width=dc.getTextWidthInPixels(label,font);var left=i%2==0?55:335-width;var rowTop=i<2?244:282;if(maintenanceIcons!=null&&maintenanceIcons.hasKey(role)){dc.drawBitmap(left-25,rowTop+5,maintenanceIcons[role] as Graphics.BitmapType);}dc.setColor(settings.fieldColors[i],Graphics.COLOR_TRANSPARENT);dc.drawText(left+width/2,rowTop-4,font,label,Graphics.TEXT_JUSTIFY_CENTER);}for(var stage=0;stage<4;stage+=1){dc.setColor(sfrBuild!=null&&stage<sfrBuild.role?0x7fe7c6:0x334e5c,Graphics.COLOR_TRANSPARENT);dc.fillRectangle(148+stage*25,355,18,3);}}
     }
     function stopAnimation() as Void{
         if(animationRunning){WatchUi.cancelAllAnimations();}

@@ -117,3 +117,5 @@ and source/hash-bound in that evidence; no remote/SDK/provider/account operation
 was performed by this unit. Task3.4 fork/phone and physical/Store tasks remain
 separate. One independent peer review/root judgment remains; self verification
 is not an independent verdict.
+
+UX01 reopens affected portions of existing tasks 3.2, 5.1, 5.5, 7.2 and 7.3: preserve reproducible baseline RED and unexpected passes, prove settings-to-render persistence and actual pixel/lifecycle geometry, cache failure and restart, and same-identity ordinary package. Physical delivery and acceptance remain open. See PROGRESS.md for the authoritative scope; no additional numbered tasks are introduced.

@@ -106,7 +106,7 @@ class SceneRenderer {
             // Optional art can fail after schedule admission. Expose the bounded
             // reason until the matching visual is ready, without changing the
             // selected mission or the independent countdown status colors.
-            if(downloaded==null&&(syncStatus.equals("assetFailed")||syncStatus.equals("incomplete")&&syncDetail.equals("Assets"))){text(dc,195,95,(fonts["small"] as Graphics.FontType),presentation.assetStatus(syncStatus,syncDetail),0xD4DFEB,282,1);}
+            if(downloaded==null&&(syncStatus.equals("assetFailed")||syncStatus.equals("incomplete")&&syncDetail.equals("Assets"))){text(dc,195,345,(fonts["small"] as Graphics.FontType),presentation.assetStatus(syncStatus,syncDetail),0xD4DFEB,175,1);}
             var ascent = progress > 0 && progress < 1 ? (progress * 9).toNumber() : 0;
             if(downloaded!=null&&downloaded.bitmap!=null){downloaded.draw(dc,progress,ascent);}else{dc.drawBitmap(22,118-ascent,art as Graphics.BitmapType);}
             // Flags and operator marks are never attached to the rocket.
@@ -128,9 +128,8 @@ class SceneRenderer {
             if(!syncDetail.equals("")){text(dc,195,75,fonts["small"] as Graphics.FontType,syncDetail,0xAFC3CE,282,1);}
             if(art!=null){dc.drawBitmap(22,118,art as Graphics.BitmapType);}
         }
-        dc.setColor(0xB2C3CE,Graphics.COLOR_TRANSPARENT); dc.drawRectangle(30,101,13,8); dc.drawLine(44,103,44,107);
-        text(dc,70,96,(fonts["battery"] as Graphics.FontType),fitness.display(values,"battery"),0xB2C3CE,65,1);
-        text(dc,195,120,(fonts["time"] as Graphics.FontType),current.localTime,settings.clockColor,250,1);
+        if(current.localCalendar!=null){text(dc,195,95,presentation.calendarFont as Graphics.FontType,presentation.calendar(current.localCalendar as Array<Number>),0xD4DFEB,200,1);}
+        text(dc,195,109,(fonts["time"] as Graphics.FontType),current.localTime,settings.clockColor,250,1);
         var color = (current.rescheduled || context != null && context.rescheduled) ? 0xF3C37A : settings.countdownColor;
         var countdownLabel=displayCountdown(current,settings);
         var countFont = dc.getTextWidthInPixels(countdownLabel,fonts["count"] as Graphics.FontType) > 275 ? (fonts["small"] as Graphics.FontType) : (fonts["count"] as Graphics.FontType);
@@ -139,11 +138,11 @@ class SceneRenderer {
         for (var i = 0; i < 4; i += 1) {
             var role = settings.slots[i];
             var label=metricText(fitness,values,role,settings);
-            label=fit(dc,label,fonts["metric"] as Graphics.FontType,112);
+            label=fit(dc,label,fonts["metric"] as Graphics.FontType,128);
             var width=dc.getTextWidthInPixels(label,fonts["metric"] as Graphics.FontType);
-            var left=i%2==0?80:335-width;var rowTop=i<2?244:282;var y=rowTop-4;
+            var left=i%2==0?55:335-width;var rowTop=i<2?244:282;var y=rowTop-4;
             icon(dc,left-25,rowTop+5,role);
-            text(dc,left+width/2,y,fonts["metric"] as Graphics.FontType,label,settings.fieldColors[i],112,1);
+            text(dc,left+width/2,y,fonts["metric"] as Graphics.FontType,label,settings.fieldColors[i],128,1);
         }
     }
     function displayCountdown(current as ClockSnapshot,settings as SceneSettings) as String {
@@ -171,14 +170,25 @@ class SceneRenderer {
 module SceneAod {
     function draw(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,presentation as LocalePresentation,font as Graphics.FontType) as Void {
         dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();
-        var positions = [[-42,-36],[42,-36],[-42,36],[42,36]];var phase=((minute%4+4)%4).toNumber();var p=positions[phase];
-        dc.setColor(0x777777,Graphics.COLOR_TRANSPARENT);
-        dc.drawText(195+p[0],142+p[1],font,current.localTime,Graphics.TEXT_JUSTIFY_CENTER);
+        var positions=[[-1,-1],[1,-1],[-1,1],[1,1]];var phase=((minute%4+4)%4).toNumber();var p=positions[phase];
+        dc.setColor(0x888888,Graphics.COLOR_TRANSPARENT);
+        // Monospaced advance boxes do not imply symmetric digit ink. The
+        // bundled AOD atlas has 60px advances; these are the fully lit left
+        // and exclusive right edges of each digit. Center actual time ink,
+        // then apply at most one pixel of minute-based burn-in movement.
+        var leftEdges=[6,10,6,5,4,7,6,4,7,6];
+        var rightEdges=[55,41,56,54,56,55,55,55,54,54];
+        var first="0123456789".find(current.localTime.substring(0,1) as String);
+        var last="0123456789".find(current.localTime.substring(4,5) as String);
+        var correction=first==null||last==null?0:(61-leftEdges[first as Number]-rightEdges[last as Number])/2;
+        dc.drawText(195+p[0]+correction,130+p[1],font,current.localTime,Graphics.TEXT_JUSTIFY_CENTER);
+        var calendarFont=presentation.calendarFont as Graphics.FontType;
+        if(current.localCalendar!=null){dc.setColor(0xA0A0A0,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],98+p[1],calendarFont,presentation.calendar(current.localCalendar as Array<Number>),Graphics.TEXT_JUSTIFY_CENTER);}
         var color=current.rescheduled?0xA8752D:0x558A78;
-        var countFont=presentation.small as Graphics.FontType;
-        var value=presentation.fit(dc,presentation.countdown(current,false),countFont,220);
-        dc.setColor(color,Graphics.COLOR_TRANSPARENT);
-        dc.drawText(195+p[0],190+p[1],countFont,value,Graphics.TEXT_JUSTIFY_CENTER);
-        if(current.stale){var width=dc.getTextWidthInPixels(value,countFont);for(var x=195+p[0]-width/2;x<=195+p[0]+width/2;x+=5){dc.fillCircle(x,214+p[1],1);}}
+        var countFont=presentation.calendarFont as Graphics.FontType;
+        var value=presentation.fit(dc,presentation.countdown(current,false),countFont,260);
+        dc.setColor(color,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],247+p[1],countFont,value,Graphics.TEXT_JUSTIFY_CENTER);
+        dc.setColor(0xA0A0A0,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],280+p[1],calendarFont,current.battery,Graphics.TEXT_JUSTIFY_CENTER);
+        if(current.stale){var width=dc.getTextWidthInPixels(value,countFont);for(var x=195+p[0]-width/2;x<=195+p[0]+width/2;x+=5){dc.fillCircle(x,276+p[1],1);}}
     }
 }

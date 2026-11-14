@@ -14,12 +14,15 @@ class LocalePresentation {
     var label as Graphics.FontType or Null=null;
     var latinSmall as Graphics.FontType or Null=null;
     var count as Graphics.FontType or Null=null;
+    var calendarFont as Graphics.FontType or Null=null;
     var loads=0;
     function initialize(){
         // Proper names use a shared Latin face, independent of UI language.
         // SDK font files stay external; retain only these two common handles.
         try{label=Graphics.getVectorFont({:face=>"RobotoRegular",:size=>26});latinSmall=Graphics.getVectorFont({:face=>"RobotoRegular",:size=>22});}catch(e){}
         if(label==null){label=Graphics.FONT_TINY;}if(latinSmall==null){latinSmall=Graphics.FONT_XTINY;}
+        try{calendarFont=Graphics.getVectorFont({:face=>"RobotoRegular",:size=>36});}catch(e){}
+        if(calendarFont==null){calendarFont=Graphics.FONT_TINY;}
         LocaleGraphemes.load();prepare("en");
     }
     function prepare(requested) {
@@ -32,7 +35,7 @@ class LocalePresentation {
             dictionary=WatchUi.loadResource(SceneStrings.resource(index));loads+=1;
             var face=dictionary["face"];
             small=face.equals("RobotoRegular")?latinSmall:Graphics.getVectorFont({:face=>[face,"RobotoRegular"],:size=>22});
-            count=Graphics.getVectorFont({:face=>[face,"RobotoRegular"],:size=>40});
+            count=Graphics.getVectorFont({:face=>[face,"RobotoRegular"],:size=>46});
             if(small==null||label==null||count==null){throw new Lang.InvalidValueException("locale font unavailable");}
             locale=next;
         } catch(e) {
@@ -41,6 +44,15 @@ class LocalePresentation {
             // Built-in English survives unavailable scalable-font resources.
             locale="en";small=latinSmall;count=Graphics.FONT_SMALL;
         }
+    }
+    function calendar(parts as Array<Number>) as String {
+        var names=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+        if(locale.equals("ru")){names=["Вс","Пн","Вт","Ср","Чт","Пт","Сб"];}
+        else if(locale.equals("de")){names=["So","Mo","Di","Mi","Do","Fr","Sa"];}
+        else if(locale.equals("fr")){names=["dim","lun","mar","mer","jeu","ven","sam"];}
+        else if(locale.equals("es")){names=["dom","lun","mar","mié","jue","vie","sáb"];}
+        if(parts.size()!=3||parts[0]<1||parts[0]>7||parts[1]<1||parts[1]>31||parts[2]<1||parts[2]>12){return "";}
+        return names[parts[0]-1]+" "+parts[1].format("%02d")+"."+parts[2].format("%02d");
     }
     function word(key) as String {
         if(dictionary!=null&&dictionary.hasKey(key)){return dictionary[key];}

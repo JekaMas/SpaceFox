@@ -69,7 +69,7 @@ def generate(root=ROOT):
  for key,default in [('ClockColor',0),('CountdownColor',0)]+[('Field'+str(i)+'Color',1) for i in range(1,5)]:
   props.append(f'<property id="{key}" type="number">{default}</property>')
   settings.append(f'<setting propertyKey="@Properties.{key}" title="@Strings.{key}"><settingConfig type="list">'+''.join(f'<listEntry value="{n}">@Strings.Color{n}</listEntry>' for n in range(6))+'</settingConfig></setting>')
- props.append('<property id="FeedBaseUrl" type="string"></property>');settings.append('<setting propertyKey="@Properties.FeedBaseUrl" title="@Strings.FeedBaseUrl"><settingConfig type="alphaNumeric"/></setting>')
+ props.append('<property id="FeedBaseUrl" type="string">https://jekamas.github.io/SpaceFox</property>');settings.append('<setting propertyKey="@Properties.FeedBaseUrl" title="@Strings.FeedBaseUrl"><settingConfig type="alphaNumeric"/></setting>')
  write(res/'settings/properties.xml','\n'.join(props+['</properties>'])+'\n');write(res/'settings/settings.xml','\n'.join(settings+['</settings>'])+'\n')
  write(gen/'SceneStrings.mc',scene_strings(rows,qualified))
  # Only explicitly software-observed primary modes join English bootstrap.
@@ -79,5 +79,6 @@ def generate(root=ROOT):
  for r in rows:
   if r['id']=='en' or r['id'] in qualified:ET.SubElement(langs,'{'+ns+'}language').text=resource_code(r)
  tree.write(p,encoding='unicode',xml_declaration=True)
+ p.write_text(p.read_text()+'\n')
  write(root/'watchface/monkey.jungle','project.manifest = manifest.xml\nbase.sourcePath = source\nbase.resourcePath = resources\n'+''.join('base.lang.'+resource_code(r)+' = resources-'+resource_code(r)+'\n' for r in rows if r['id']!='en'))
 if __name__=='__main__':generate()

@@ -28,7 +28,7 @@ def font(name,size,files,characters):
  im=im.crop((0,0,width,2**math.ceil(math.log2(max(1,y+row+2)))));directory=RES/'fonts';directory.mkdir(parents=True,exist_ok=True);
  if name == 'Aod40':
   alpha=im.getchannel('A');from PIL import ImageChops
-  edge=ImageChops.subtract(alpha,alpha.filter(ImageFilter.MinFilter(3)));im.putalpha(edge)
+  edge=ImageChops.subtract(alpha,alpha.filter(ImageFilter.MinFilter(5)));im.putalpha(edge)
  coverage=im.getchannel('A')
  im=Image.merge('RGB',(coverage,coverage,coverage))
  im.save(directory/(name+'.png'))
@@ -55,7 +55,7 @@ def main():
  (RES/'drawables/art_unknown.png').write_bytes(subprocess.check_output([renderer,'-w','54','-h','124',str(unknown)]))
  drawables.append('<bitmap id="Art_unknown" filename="art_unknown.png"/>')
  chars=''.join(chr(i)for i in range(32,127))+''.join(chr(i)for i in range(0x410,0x450))+'Ёё—…·–'
- fonts=[font('Aod40',40,['RobotoCondensed-latin-600.woff2'],'0123456789:'),font('Time80',83.3737,['BarlowSemiCondensed-latin-600.woff2'],'0123456789:'),font('Metric32',38,['RobotoCondensed-latin-600.woff2','NotoSans-latin-500.woff2'], '0123456789 ,—%.…'),font('Label21',21,['NotoSans-latin-500.woff2','NotoSans-cyrillic-500.woff2'],chars),font('Label17',17.2,['NotoSans-latin-500.woff2','NotoSans-cyrillic-500.woff2'],chars),font('Battery13',15,['NotoSans-latin-500.woff2'],'0123456789%—'),font('Count31',31,['RobotoCondensed-latin-600.woff2','NotoSans-cyrillic-500.woff2','NotoSans-latin-500.woff2'],chars+'−')]
+ fonts=[font('Aod40',120,['RobotoCondensed-latin-600.woff2'],'0123456789:'),font('Time80',104,['BarlowSemiCondensed-latin-600.woff2'],'0123456789:'),font('Metric32',46,['RobotoCondensed-latin-600.woff2','NotoSans-latin-500.woff2'], '0123456789 ,—%.…'),font('Label21',21,['NotoSans-latin-500.woff2','NotoSans-cyrillic-500.woff2'],chars),font('Label17',17.2,['NotoSans-latin-500.woff2','NotoSans-cyrillic-500.woff2'],chars),font('Battery13',15,['NotoSans-latin-500.woff2'],'0123456789%—'),font('Count31',31,['RobotoCondensed-latin-600.woff2','NotoSans-cyrillic-500.woff2','NotoSans-latin-500.woff2'],chars+'−')]
  (RES/'fonts/fonts.xml').write_text('<fonts>\n'+''.join(f'<font id="{f["name"]}" filename="{f["name"]}.fnt" antialias="true"/>\n'for f in fonts)+'</fonts>\n')
  points=json.loads((ROOT/'watchface/resource-inputs/map-views.json').read_text())['points']
  with tempfile.NamedTemporaryFile('w',suffix='.json')as temp:

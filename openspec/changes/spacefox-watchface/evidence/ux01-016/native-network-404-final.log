@@ -1,0 +1,248 @@
+Background: SFR_PROBE owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+SFR_PROBE owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=load-bytes-assembled used=89784 free=37000 total=126784 sampledHigh=89784 utc=1794658055 ms=1965543 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=load-raw-assembled used=89264 free=37520 total=126784 sampledHigh=89784 utc=1794658055 ms=1965544 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=bridge-catalog-before-parse used=91040 free=35744 total=126784 sampledHigh=91040 utc=1794658055 ms=1965546 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=json-parsed used=94208 free=32576 total=126784 sampledHigh=94208 utc=1794658055 ms=1965601 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=bridge-catalog-projected used=91568 free=35216 total=126784 sampledHigh=94208 utc=1794658055 ms=1965601 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=json-parsed used=99752 free=27032 total=126784 sampledHigh=99752 utc=1794658055 ms=1965731 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=bridge-header-start used=99240 free=27544 total=126784 sampledHigh=99752 utc=1794658055 ms=1965732 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=bridge-header-refs used=99984 free=26800 total=126784 sampledHigh=99984 utc=1794658055 ms=1965732 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=bridge-catalog-admitted used=100792 free=25992 total=126784 sampledHigh=100792 utc=1794658055 ms=1965734 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=feed-validated used=99280 free=27504 total=126784 sampledHigh=100792 utc=1794658055 ms=1965738 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_DISPLAY mode=0 active=true bitmap=false decoding=false ms=1965742 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_SCHEDULE now=1794658055 requested=1794658055 registered=1794658055 last=1794657415 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=temporal-scheduled used=89416 free=37368 total=126784 sampledHigh=100792 utc=1794658055 ms=1965746 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: SFR_PROBE owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_METRIC phase=temporal-start used=25136 free=36112 total=61248 sampledHigh=25136 utc=1794658055 ms=1965757 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_METRIC phase=pre-request used=26464 free=34784 total=61248 sampledHigh=26464 utc=1794658055 ms=1965759 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_SCHEDULE now=1794658055 requested=1794661655 registered=1794661655 last=1794658055 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_METRIC phase=temporal-scheduled used=26952 free=34296 total=61248 sampledHigh=26952 utc=1794658055 ms=1965763 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_GET path=feed.json n=1 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: UX_HTTP logical=feed.json actual=https://jekamas.github.io/SpaceFox/feed.json.txt
+NATIVE_DISPLAY mode=0 active=true bitmap=false decoding=false ms=1965772 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=foreground-incoming-complete used=96672 free=30112 total=126784 sampledHigh=100792 utc=1794658055 ms=1965777 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=foreground-plan-complete used=96672 free=30112 total=126784 sampledHigh=100792 utc=1794658055 ms=1965778 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=foreground-before-view used=96664 free=30120 total=126784 sampledHigh=100792 utc=1794658055 ms=1965778 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=visual-activation-start used=96664 free=30120 total=126784 sampledHigh=100792 utc=1794658055 ms=1965780 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_WRITES phase=foreground-reload-total count=0 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_SCHEDULE now=1794658055 requested=1794661655 registered=1794661655 last=1794658055 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=temporal-scheduled used=97384 free=29400 total=126784 sampledHigh=100792 utc=1794658055 ms=1965784 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=96952 free=29832 total=126784 sampledHigh=100792 utc=1794658055 ms=1965850 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-renderer-released used=94968 free=31816 total=126784 sampledHigh=100792 utc=1794658055 ms=1965851 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-build-start used=95424 free=31360 total=126784 sampledHigh=100792 utc=1794658055 ms=1965851 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-build-reader used=96280 free=30504 total=126784 sampledHigh=100792 utc=1794658055 ms=1965852 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-build-root-raw used=99392 free=27392 total=126784 sampledHigh=100792 utc=1794658055 ms=1965854 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=json-parsed used=103640 free=23144 total=126784 sampledHigh=103640 utc=1794658056 ms=1965987 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-build-root-parsed used=99944 free=26840 total=126784 sampledHigh=103640 utc=1794658056 ms=1965988 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=99368 free=27416 total=126784 sampledHigh=103640 utc=1794658056 ms=1965993 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=json-parsed used=105024 free=21760 total=126784 sampledHigh=105024 utc=1794658056 ms=1966084 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-raw used=107784 free=19000 total=126784 sampledHigh=107784 utc=1794658056 ms=1966087 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-ready used=107952 free=18832 total=126784 sampledHigh=107952 utc=1794658056 ms=1966091 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=107952 free=18832 total=126784 sampledHigh=107952 utc=1794658056 ms=1966092 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=107952 free=18832 total=126784 sampledHigh=107952 utc=1794658056 ms=1966104 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_METRIC phase=feed-transfer-complete used=29368 free=31880 total=61248 sampledHigh=29368 utc=1794658056 ms=1966105 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_RESPONSE feed code=200 characters=2743 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_WRITES phase=provisional-feed count=3 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_METRIC phase=feed-provisional-staged used=29312 free=31936 total=61248 sampledHigh=29368 utc=1794658056 ms=1966113 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_SCHEDULE now=1794658056 requested=1794661655 registered=1794661655 last=1794658055 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_METRIC phase=temporal-scheduled used=36816 free=24432 total=61248 sampledHigh=36816 utc=1794658056 ms=1966143 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_WRITES phase=background-total count=7 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_METRIC phase=background-exit used=36312 free=24936 total=61248 sampledHigh=36816 utc=1794658056 ms=1966144 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=107952 free=18832 total=126784 sampledHigh=107952 utc=1794658056 ms=1966153 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=107952 free=18832 total=126784 sampledHigh=107952 utc=1794658056 ms=1966168 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=foreground-incoming-complete used=97160 free=29624 total=126784 sampledHigh=107952 utc=1794658056 ms=1966173 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=foreground-plan-complete used=97160 free=29624 total=126784 sampledHigh=107952 utc=1794658056 ms=1966174 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=foreground-before-view used=97152 free=29632 total=126784 sampledHigh=107952 utc=1794658056 ms=1966174 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=visual-activation-start used=97152 free=29632 total=126784 sampledHigh=107952 utc=1794658056 ms=1966176 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_WRITES phase=foreground-reload-total count=0 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_SCHEDULE now=1794658056 requested=1794661655 registered=1794661655 last=1794658055 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=temporal-scheduled used=97872 free=28912 total=126784 sampledHigh=107952 utc=1794658056 ms=1966180 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=96984 free=29800 total=126784 sampledHigh=107952 utc=1794658056 ms=1966229 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-renderer-released used=95000 free=31784 total=126784 sampledHigh=107952 utc=1794658056 ms=1966229 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-build-start used=95456 free=31328 total=126784 sampledHigh=107952 utc=1794658056 ms=1966230 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-build-reader used=96312 free=30472 total=126784 sampledHigh=107952 utc=1794658056 ms=1966230 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-build-root-raw used=99408 free=27376 total=126784 sampledHigh=107952 utc=1794658056 ms=1966232 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=json-parsed used=103656 free=23128 total=126784 sampledHigh=107952 utc=1794658056 ms=1966381 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-build-root-parsed used=99960 free=26824 total=126784 sampledHigh=107952 utc=1794658056 ms=1966381 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=99384 free=27400 total=126784 sampledHigh=107952 utc=1794658056 ms=1966384 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=json-parsed used=105040 free=21744 total=126784 sampledHigh=107952 utc=1794658056 ms=1966485 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-raw used=107800 free=18984 total=126784 sampledHigh=107952 utc=1794658056 ms=1966489 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-ready used=107968 free=18816 total=126784 sampledHigh=107968 utc=1794658056 ms=1966493 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=107968 free=18816 total=126784 sampledHigh=107968 utc=1794658056 ms=1966493 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=107968 free=18816 total=126784 sampledHigh=107968 utc=1794658056 ms=1966506 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=107968 free=18816 total=126784 sampledHigh=107968 utc=1794658056 ms=1966586 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=107968 free=18816 total=126784 sampledHigh=107968 utc=1794658056 ms=1966602 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=107968 free=18816 total=126784 sampledHigh=107968 utc=1794658056 ms=1966627 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=103744 free=23040 total=126784 sampledHigh=107968 utc=1794658056 ms=1966632 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=103744 free=23040 total=126784 sampledHigh=107968 utc=1794658056 ms=1966677 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-raw used=107752 free=19032 total=126784 sampledHigh=107968 utc=1794658056 ms=1966679 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-ready used=107936 free=18848 total=126784 sampledHigh=107968 utc=1794658056 ms=1966683 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=107936 free=18848 total=126784 sampledHigh=107968 utc=1794658056 ms=1966727 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=107936 free=18848 total=126784 sampledHigh=107968 utc=1794658056 ms=1966746 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=107936 free=18848 total=126784 sampledHigh=107968 utc=1794658056 ms=1966777 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=103760 free=23024 total=126784 sampledHigh=107968 utc=1794658056 ms=1966789 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=103760 free=23024 total=126784 sampledHigh=107968 utc=1794658056 ms=1966827 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-raw used=107784 free=19000 total=126784 sampledHigh=107968 utc=1794658056 ms=1966829 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-ready used=107960 free=18824 total=126784 sampledHigh=107968 utc=1794658056 ms=1966833 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=107960 free=18824 total=126784 sampledHigh=107968 utc=1794658056 ms=1966878 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=107960 free=18824 total=126784 sampledHigh=107968 utc=1794658056 ms=1966898 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=107960 free=18824 total=126784 sampledHigh=107968 utc=1794658056 ms=1966927 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=107960 free=18824 total=126784 sampledHigh=107968 utc=1794658057 ms=1966947 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=107960 free=18824 total=126784 sampledHigh=107968 utc=1794658057 ms=1966977 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=103760 free=23024 total=126784 sampledHigh=107968 utc=1794658057 ms=1966979 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=103760 free=23024 total=126784 sampledHigh=107968 utc=1794658057 ms=1967027 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-raw used=107808 free=18976 total=126784 sampledHigh=107968 utc=1794658057 ms=1967029 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-ready used=107976 free=18808 total=126784 sampledHigh=107976 utc=1794658057 ms=1967034 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=107976 free=18808 total=126784 sampledHigh=107976 utc=1794658057 ms=1967077 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=107976 free=18808 total=126784 sampledHigh=107976 utc=1794658057 ms=1967098 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=107976 free=18808 total=126784 sampledHigh=107976 utc=1794658057 ms=1967127 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=107976 free=18808 total=126784 sampledHigh=107976 utc=1794658057 ms=1967146 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=107976 free=18808 total=126784 sampledHigh=107976 utc=1794658057 ms=1967177 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=103760 free=23024 total=126784 sampledHigh=107976 utc=1794658057 ms=1967187 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=103760 free=23024 total=126784 sampledHigh=107976 utc=1794658057 ms=1967227 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-raw used=107880 free=18904 total=126784 sampledHigh=107976 utc=1794658057 ms=1967231 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-ready used=108032 free=18752 total=126784 sampledHigh=108032 utc=1794658057 ms=1967235 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=108032 free=18752 total=126784 sampledHigh=108032 utc=1794658057 ms=1967277 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=108032 free=18752 total=126784 sampledHigh=108032 utc=1794658057 ms=1967297 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=108032 free=18752 total=126784 sampledHigh=108032 utc=1794658057 ms=1967327 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=108032 free=18752 total=126784 sampledHigh=108032 utc=1794658057 ms=1967349 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=108032 free=18752 total=126784 sampledHigh=108032 utc=1794658057 ms=1967377 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=108032 free=18752 total=126784 sampledHigh=108032 utc=1794658057 ms=1967400 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=108032 free=18752 total=126784 sampledHigh=108032 utc=1794658057 ms=1967427 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=103776 free=23008 total=126784 sampledHigh=108032 utc=1794658057 ms=1967435 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=103776 free=23008 total=126784 sampledHigh=108032 utc=1794658057 ms=1967477 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-raw used=107800 free=18984 total=126784 sampledHigh=108032 utc=1794658057 ms=1967482 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-ready used=107976 free=18808 total=126784 sampledHigh=108032 utc=1794658057 ms=1967492 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=107976 free=18808 total=126784 sampledHigh=108032 utc=1794658057 ms=1967527 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=107976 free=18808 total=126784 sampledHigh=108032 utc=1794658057 ms=1967549 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=107976 free=18808 total=126784 sampledHigh=108032 utc=1794658057 ms=1967578 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=107976 free=18808 total=126784 sampledHigh=108032 utc=1794658057 ms=1967599 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=107976 free=18808 total=126784 sampledHigh=108032 utc=1794658057 ms=1967627 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=103776 free=23008 total=126784 sampledHigh=108032 utc=1794658057 ms=1967645 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=103776 free=23008 total=126784 sampledHigh=108032 utc=1794658057 ms=1967678 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-raw used=107832 free=18952 total=126784 sampledHigh=108032 utc=1794658057 ms=1967680 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-ready used=107992 free=18792 total=126784 sampledHigh=108032 utc=1794658057 ms=1967684 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=107992 free=18792 total=126784 sampledHigh=108032 utc=1794658057 ms=1967727 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=107992 free=18792 total=126784 sampledHigh=108032 utc=1794658057 ms=1967744 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=107992 free=18792 total=126784 sampledHigh=108032 utc=1794658057 ms=1967777 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=107992 free=18792 total=126784 sampledHigh=108032 utc=1794658057 ms=1967796 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=107992 free=18792 total=126784 sampledHigh=108032 utc=1794658057 ms=1967826 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=103776 free=23008 total=126784 sampledHigh=108032 utc=1794658057 ms=1967829 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=103776 free=23008 total=126784 sampledHigh=108032 utc=1794658057 ms=1967878 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-raw used=107904 free=18880 total=126784 sampledHigh=108032 utc=1794658057 ms=1967885 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-ready used=108048 free=18736 total=126784 sampledHigh=108048 utc=1794658057 ms=1967893 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=108048 free=18736 total=126784 sampledHigh=108048 utc=1794658057 ms=1967927 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=108048 free=18736 total=126784 sampledHigh=108048 utc=1794658058 ms=1967947 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=108048 free=18736 total=126784 sampledHigh=108048 utc=1794658058 ms=1967977 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=108048 free=18736 total=126784 sampledHigh=108048 utc=1794658058 ms=1967992 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=108048 free=18736 total=126784 sampledHigh=108048 utc=1794658058 ms=1968026 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=103792 free=22992 total=126784 sampledHigh=108048 utc=1794658058 ms=1968032 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=103792 free=22992 total=126784 sampledHigh=108048 utc=1794658058 ms=1968081 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-raw used=107880 free=18904 total=126784 sampledHigh=108048 utc=1794658058 ms=1968088 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-ready used=108040 free=18744 total=126784 sampledHigh=108048 utc=1794658058 ms=1968094 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=108040 free=18744 total=126784 sampledHigh=108048 utc=1794658058 ms=1968127 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=108040 free=18744 total=126784 sampledHigh=108048 utc=1794658058 ms=1968147 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=108040 free=18744 total=126784 sampledHigh=108048 utc=1794658058 ms=1968177 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=108040 free=18744 total=126784 sampledHigh=108048 utc=1794658058 ms=1968196 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=108040 free=18744 total=126784 sampledHigh=108048 utc=1794658058 ms=1968228 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=103808 free=22976 total=126784 sampledHigh=108048 utc=1794658058 ms=1968242 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=103808 free=22976 total=126784 sampledHigh=108048 utc=1794658058 ms=1968277 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-raw used=107912 free=18872 total=126784 sampledHigh=108048 utc=1794658058 ms=1968282 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-ready used=108064 free=18720 total=126784 sampledHigh=108064 utc=1794658058 ms=1968290 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=108064 free=18720 total=126784 sampledHigh=108064 utc=1794658058 ms=1968328 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=108064 free=18720 total=126784 sampledHigh=108064 utc=1794658058 ms=1968347 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=108064 free=18720 total=126784 sampledHigh=108064 utc=1794658058 ms=1968377 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=108064 free=18720 total=126784 sampledHigh=108064 utc=1794658058 ms=1968389 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=108064 free=18720 total=126784 sampledHigh=108064 utc=1794658058 ms=1968427 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=108064 free=18720 total=126784 sampledHigh=108064 utc=1794658058 ms=1968439 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=108064 free=18720 total=126784 sampledHigh=108064 utc=1794658058 ms=1968477 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=108064 free=18720 total=126784 sampledHigh=108064 utc=1794658058 ms=1968490 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=108064 free=18720 total=126784 sampledHigh=108064 utc=1794658058 ms=1968527 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=108064 free=18720 total=126784 sampledHigh=108064 utc=1794658058 ms=1968547 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=108064 free=18720 total=126784 sampledHigh=108064 utc=1794658058 ms=1968577 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=108064 free=18720 total=126784 sampledHigh=108064 utc=1794658058 ms=1968589 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=108064 free=18720 total=126784 sampledHigh=108064 utc=1794658058 ms=1968628 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=108064 free=18720 total=126784 sampledHigh=108064 utc=1794658058 ms=1968648 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=108064 free=18720 total=126784 sampledHigh=108064 utc=1794658058 ms=1968677 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=103808 free=22976 total=126784 sampledHigh=108064 utc=1794658058 ms=1968683 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=103808 free=22976 total=126784 sampledHigh=108064 utc=1794658058 ms=1968726 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-raw used=104168 free=22616 total=126784 sampledHigh=108064 utc=1794658058 ms=1968729 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-ready used=105256 free=21528 total=126784 sampledHigh=108064 utc=1794658058 ms=1968736 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=105256 free=21528 total=126784 sampledHigh=108064 utc=1794658058 ms=1968777 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=105256 free=21528 total=126784 sampledHigh=108064 utc=1794658058 ms=1968797 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=105256 free=21528 total=126784 sampledHigh=108064 utc=1794658058 ms=1968827 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=101576 free=25208 total=126784 sampledHigh=108064 utc=1794658058 ms=1968830 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-first-map-verified used=101584 free=25200 total=126784 sampledHigh=108064 utc=1794658058 ms=1968831 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=101112 free=25672 total=126784 sampledHigh=108064 utc=1794658058 ms=1968877 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=json-parsed used=104240 free=22544 total=126784 sampledHigh=108064 utc=1794658059 ms=1968957 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-raw used=105600 free=21184 total=126784 sampledHigh=108064 utc=1794658059 ms=1968959 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-ready used=105632 free=21152 total=126784 sampledHigh=108064 utc=1794658059 ms=1968960 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=105632 free=21152 total=126784 sampledHigh=108064 utc=1794658059 ms=1969030 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=105632 free=21152 total=126784 sampledHigh=108064 utc=1794658059 ms=1969033 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=105632 free=21152 total=126784 sampledHigh=108064 utc=1794658059 ms=1969077 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=105632 free=21152 total=126784 sampledHigh=108064 utc=1794658059 ms=1969082 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=105632 free=21152 total=126784 sampledHigh=108064 utc=1794658059 ms=1969127 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=105632 free=21152 total=126784 sampledHigh=108064 utc=1794658059 ms=1969133 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=105632 free=21152 total=126784 sampledHigh=108064 utc=1794658059 ms=1969177 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=105632 free=21152 total=126784 sampledHigh=108064 utc=1794658059 ms=1969184 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=105632 free=21152 total=126784 sampledHigh=108064 utc=1794658059 ms=1969227 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=105632 free=21152 total=126784 sampledHigh=108064 utc=1794658059 ms=1969238 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=105632 free=21152 total=126784 sampledHigh=108064 utc=1794658059 ms=1969278 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=105632 free=21152 total=126784 sampledHigh=108064 utc=1794658059 ms=1969289 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=105632 free=21152 total=126784 sampledHigh=108064 utc=1794658059 ms=1969328 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=105632 free=21152 total=126784 sampledHigh=108064 utc=1794658059 ms=1969345 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=105632 free=21152 total=126784 sampledHigh=108064 utc=1794658059 ms=1969377 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=102224 free=24560 total=126784 sampledHigh=108064 utc=1794658059 ms=1969382 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=101760 free=25024 total=126784 sampledHigh=108064 utc=1794658059 ms=1969427 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=json-parsed used=104408 free=22376 total=126784 sampledHigh=108064 utc=1794658059 ms=1969489 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-raw used=104376 free=22408 total=126784 sampledHigh=108064 utc=1794658059 ms=1969491 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-chunk-ready used=104464 free=22320 total=126784 sampledHigh=108064 utc=1794658059 ms=1969492 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=104464 free=22320 total=126784 sampledHigh=108064 utc=1794658059 ms=1969493 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-decode-step used=102560 free=24224 total=126784 sampledHigh=108064 utc=1794658059 ms=1969498 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=102096 free=24688 total=126784 sampledHigh=108064 utc=1794658059 ms=1969527 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=json-parsed used=107096 free=19688 total=126784 sampledHigh=108064 utc=1794658059 ms=1969627 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=99464 free=27320 total=126784 sampledHigh=108064 utc=1794658059 ms=1969631 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=99496 free=27288 total=126784 sampledHigh=108064 utc=1794658059 ms=1969677 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=99512 free=27272 total=126784 sampledHigh=108064 utc=1794658059 ms=1969727 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=99528 free=27256 total=126784 sampledHigh=108064 utc=1794658059 ms=1969778 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=99576 free=27208 total=126784 sampledHigh=108064 utc=1794658059 ms=1969827 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-step-enter used=99592 free=27192 total=126784 sampledHigh=108064 utc=1794658059 ms=1969877 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_WRITES phase=raster-activation count=0 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=sfr-full-scene-active used=98504 free=28280 total=126784 sampledHigh=108064 utc=1794658059 ms=1969884 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+PHONE_HTTP_COMPLETE packet=true map=true rocket=true ordinaryBytes=126784
+UX_VALID_SCENE id=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a target=1794677550 readyForControlled404=true
+PHONE_TEXT|0|vector|170|43|124|26|14213869|Vulcan VC6L
+PHONE_TEXT|0|vector|240|47|5|22|9877705|??
+PHONE_TEXT|0|vector|265|47|34|22|13950955|ULA
+PHONE_TEXT|0|vector|195|70|144|22|13950955|Communications
+PHONE_TEXT|0|vector|208|319|206|22|13950955|US ?? Cape Canaveral SFS
+PHONE_TEXT|0|vector|195|95|129|36|13950955|Sat 14.11
+PHONE_TEXT|0|time|195|109|239|116|8382406|08:08
+PHONE_TEXT|0|vector|195|202|194|46|8382406|T- 38:12:30
+PHONE_TEXT|0|metric|118|240|126|52|16251388|12,345
+PHONE_TEXT|0|metric|312|240|46|52|16251388|68
+PHONE_TEXT|0|metric|78|278|46|52|16251388|72
+PHONE_TEXT|0|metric|297|278|75|52|13481983|82%
+PHONE_FRAME_READY frame=0 language=en phase=0 configured=8382406 countdown=T- 38:12:30 maintenance=false ordinary=126784
+Background: SFR_PROBE owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_METRIC phase=temporal-start used=25144 free=36104 total=61248 sampledHigh=25144 utc=1794658077 ms=1987238 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_METRIC phase=pre-request used=26472 free=34776 total=61248 sampledHigh=26472 utc=1794658077 ms=1987240 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_SCHEDULE now=1794658077 requested=1794661677 registered=1794661677 last=1794658077 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_METRIC phase=temporal-scheduled used=26960 free=34288 total=61248 sampledHigh=26960 utc=1794658077 ms=1987247 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_GET path=feed.json n=1 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: UX_HTTP logical=feed.json actual=https://jekamas.github.io/SpaceFox/ux01-missing-feed.json.txt
+Background: NATIVE_METRIC phase=feed-transfer-complete used=36008 free=25240 total=61248 sampledHigh=36008 utc=1794658077 ms=1987606 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_RESPONSE feed code=404 characters=9379 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_SCHEDULE now=1794658077 requested=1794661677 registered=1794661677 last=1794658077 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_METRIC phase=temporal-scheduled used=36504 free=24744 total=61248 sampledHigh=36504 utc=1794658077 ms=1987611 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_WRITES phase=background-total count=3 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+Background: NATIVE_METRIC phase=background-exit used=36000 free=25248 total=61248 sampledHigh=36504 utc=1794658077 ms=1987611 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=foreground-incoming-complete used=99352 free=27432 total=126784 sampledHigh=108064 utc=1794658077 ms=1987625 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=foreground-plan-complete used=99352 free=27432 total=126784 sampledHigh=108064 utc=1794658077 ms=1987626 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=foreground-before-view used=99344 free=27440 total=126784 sampledHigh=108064 utc=1794658077 ms=1987626 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_WRITES phase=foreground-reload-total count=0 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_SCHEDULE now=1794658077 requested=1794661677 registered=1794661677 last=1794658077 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+NATIVE_METRIC phase=temporal-scheduled used=99928 free=26856 total=126784 sampledHigh=108064 utc=1794658077 ms=1987632 owner=6a160f1e038a4e89a82b70f659e01019|spacefox-ux016-network-version|478f2884c762
+PHONE_HTTP_COMPLETE packet=true map=true rocket=true ordinaryBytes=126784
+UX_FAILURE_RETAINED id=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a target=1794677550 bitmap=true status=feedFailed

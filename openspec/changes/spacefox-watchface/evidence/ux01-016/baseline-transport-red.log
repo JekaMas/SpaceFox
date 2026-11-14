@@ -1,0 +1,18 @@
+test_ux01_text_plain_response_matches_request (tests.test_ux016_transport_contract.NativeTransportContract.test_ux01_text_plain_response_matches_request) ... FAIL
+
+======================================================================
+FAIL: test_ux01_text_plain_response_matches_request (tests.test_ux016_transport_contract.NativeTransportContract.test_ux01_text_plain_response_matches_request)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-native-ux-red-green-016-20261114/tests/test_ux016_transport_contract.py", line 22, in test_ux01_text_plain_response_matches_request
+    self.assertEqual(media,'text/plain',f'recorded HTTP response {media} conflicts with SDK TEXT_PLAIN request')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'application/json' != 'text/plain'
+- application/json
++ text/plain
+ : recorded HTTP response application/json conflicts with SDK TEXT_PLAIN request
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)
