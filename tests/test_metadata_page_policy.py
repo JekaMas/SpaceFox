@@ -3,6 +3,7 @@ from copy import deepcopy
 from email.utils import formatdate
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
+import hashlib
 from pathlib import Path
 import subprocess
 import sys
@@ -114,6 +115,55 @@ class MetadataPagePolicyTest(unittest.TestCase):
             self.assertEqual(preserved, helper.preserved(pub))
             self.assertEqual(8, len(transport.calls))
 
+    def test_url_scoped_304_reuses_exact_bodies_and_source_dates(self):
+        candidate, files = fixture.captured()
+        ids = {'countries': 2, 'organizations': 121, 'models': 522, 'sites': 235}
+        raw = {}
+        for kind, identity in ids.items():
+            rows = [r for page in candidate['coverage']['pages'] if page['collection'] == kind
+                    for r in json.loads(files['objects/' + page['body']['sha256'] + '.json'])['results']
+                    if r['id'] == identity]
+            self.assertEqual(1, len(rows))
+            raw[kind] = json.dumps(dict(count=1, next=None, previous=None, results=rows)).encode()
+        urls = [
+            'https://ll.thespacedevs.com/2.3.0/config/countries/?format=json&limit=20',
+            'https://ll.thespacedevs.com/2.3.0/agencies/?format=json&limit=20&mode=normal',
+            'https://ll.thespacedevs.com/2.3.0/launcher_configurations/?format=json&limit=100&mode=detailed',
+            'https://ll.thespacedevs.com/2.3.0/pads/?format=json&limit=100&mode=detailed&ordering=id']
+        kinds = ['countries', 'organizations', 'models', 'sites']
+        tags = ['"capture-' + str(i) + '"' for i in range(4)]
+        class Conditional:
+            def __init__(self): self.now = NOW; self.reuse = False; self.calls = []
+            def get(self, url, etag):
+                self.calls.append((url, etag))
+                index = urls.index(url)
+                headers = {'date': formatdate(self.now, usegmt=True), 'age': '5',
+                           'content-type': 'application/json', 'etag': tags[index]}
+                if self.reuse:
+                    if etag != tags[index]: raise AssertionError('wrong URL-scoped ETag')
+                    return Response(304, headers, b'')
+                if etag is not None: raise AssertionError('unexpected initial condition')
+                return Response(200, headers, raw[kinds[index]])
+        helper = fixture.CurrentMetadataPublisherTest()
+        with helper.authority() as (pub, store, code):
+            helper.primary(pub, NOW, accept=True)
+            preserved = deepcopy(helper.preserved(pub)); service = Conditional()
+            service.now = NOW + 5
+            self.assertEqual('complete', CatalogRefresh(pub, transport=service).run(NOW + 5, max_requests=4).status)
+            first = CatalogRefresh(pub).current()
+            self.assertEqual([hashlib.sha256(raw[k]).hexdigest() for k in kinds],
+                             [p['body']['sha256'] for p in first['coverage']['pages']])
+            self.assertEqual([NOW] * 4, [p['validatedUtc'] for p in first['coverage']['pages']])
+            pub = Publisher(store, code); pub.reconcile(None); helper.primary(pub, NOW + 3600)
+            service.reuse = True; service.now = NOW + 3605
+            self.assertEqual('complete', CatalogRefresh(pub, transport=service).run(NOW + 3605, max_requests=4, restart=True).status)
+            second = CatalogRefresh(Publisher(store, code)).current()
+            self.assertEqual([304] * 4, [p['status'] for p in second['coverage']['pages']])
+            self.assertEqual([NOW + 3600] * 4, [p['validatedUtc'] for p in second['coverage']['pages']])
+            self.assertEqual([p['body'] for p in first['coverage']['pages']], [p['body'] for p in second['coverage']['pages']])
+            self.assertEqual(list(zip(urls, [None] * 4)) + list(zip(urls, tags)), service.calls)
+            self.assertEqual(preserved, helper.preserved(pub))
+
     def test_cli_duplicate_refusal_and_retry(self):
         candidate, files = fixture.captured()
         pages = [p for p in candidate['coverage']['pages'] if p['collection'] == 'countries']
@@ -153,8 +203,14 @@ class MetadataPagePolicyTest(unittest.TestCase):
                         return subprocess.run([sys.executable, '-B', str(root / 'tools/refresh_catalog.py'), 'collect',
                             '--remote', str(remote), '--origin', origin, '--local-http', '--now', str(now),
                             '--expected-head', head, '--live-observation', str(live)], capture_output=True, text=True)
-                    result = invoke(pub.head, NOW)
+                    stale_head = pub.head
+                    result = invoke(stale_head, NOW)
                     self.assertEqual(0, result.returncode, result.stderr)
+                    actual_head = store.load()[0]
+                    result = invoke(stale_head, NOW + 1)
+                    self.assertEqual(2, result.returncode, result.stderr)
+                    self.assertEqual(actual_head, store.load()[0])
+                    self.assertEqual(1, len(state['calls']))
                     state['bad'] = True
                     result = invoke(store.load()[0], NOW + 1)
                     self.assertEqual(2, result.returncode, result.stderr)
