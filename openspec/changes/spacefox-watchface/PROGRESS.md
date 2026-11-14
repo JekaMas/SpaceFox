@@ -385,3 +385,7 @@ UX02 expanded within the same iteration: validate external-data prefetch, bounde
 ## UX02 root closure — 0.1.6 ready for publication
 
 Author fd7aef06 and fresh independent verify/fix1beee4c9 close the selected software unit. Root accepts bounded WF09.P2/P3, bringing the reconciled whole-property count to29/134;105 remain without a closure in this sequence. The31 numbered native tasks remain15checked/16open; physical and whole-release conjuncts were not checked off by SDK observations. The exact signed candidate and proof boundaries are in [ROOT-JUDGMENT](evidence/ux02/ROOT-JUDGMENT.md). Publication and actual phone/watch readback follow on the original ordinary card, using the final IQf0486aec; the older unsubmitted0.1.6 IQ is superseded.
+
+## UX02 publication observed
+
+Public main/tagv0.1.6 and the signed GitHub prerelease are published. Garmin verified the final0.1.6 IQ and the original card now displays0.1.6/Internal5; compatibility usedinternal5 and installationPOST200 queued the existingMusic. The same link and instructions were sent toIvanDanilenko throughTelegram. [Publication receipts](evidence/ux02-delivery/PUBLICATION.md). Actual physical installation/build readback, phone/settings/health/power acceptance and Garmin public approval remain open. No native code was changed by this publication-only status update.

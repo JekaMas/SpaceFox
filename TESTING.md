@@ -2,7 +2,7 @@
 
 ## Ordinary 0.1.6 candidate
 
-The ordinary candidate uses the original [SpaceFox Connect IQ listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3) and the watches in [supported devices](docs/SUPPORTED_DEVICES.md), including Forerunner 165 Music and Forerunner 965. Store submission, delivery and installation of 0.1.6 have not yet been observed. A queue or phone listing label alone does not prove the version running on the watch.
+The ordinary candidate uses the original [SpaceFox Connect IQ listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3) and the watches in [supported devices](docs/SUPPORTED_DEVICES.md), including Forerunner 165 Music and Forerunner 965. Garmin accepted the final0.1.6 package; the saved card shows0.1.6(Internal5) and installation was queued for the owner’s Forerunner165Music. Public approval and physical delivery/installation remain unobserved. See the [publication record](openspec/changes/spacefox-watchface/evidence/ux02-delivery/PUBLICATION.md). A queue or phone listing label alone does not prove the version running on the watch.
 
 In the Connect IQ phone app, open **My Device → Updates → Update All**, then sync through Garmin Connect and select and apply the ordinary SpaceFox watch face. Do not expect tapping an IQ or PRG file on the phone to install it. If an update or feed error persists, record the foreground menu version and, where shown, the background build stamp. Keep the existing cache; deletion and reinstallation are not the first diagnostic step. The actual phone flow, physical settings entry and watch installation remain unverified.
 

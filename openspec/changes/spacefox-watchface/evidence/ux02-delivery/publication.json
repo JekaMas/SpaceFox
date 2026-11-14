@@ -1,0 +1,61 @@
+{
+  "version": "0.1.6",
+  "tag": "v0.1.6",
+  "tagIntegration": "7eb629b4f32a1d7c9e9bb8247da72945d893bcdc",
+  "compiledSource": "4b16cca3f3c29083cbabc92b72f1a09718f77a5e",
+  "independentEvidence": "1beee4c9ad932ec8912fe520a486af9b176f0507",
+  "iqSha256": "f0486aec04a63ed9481caff0376a36930c7175df908ccb3e53f65075059dfc50",
+  "releaseInputsMatched": 1039,
+  "githubRelease": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.6",
+  "githubPrerelease": true,
+  "garminCard": "https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3",
+  "garminVersion": "0.1.6",
+  "garminInternalVersion": 5,
+  "garminStatus": "App pending",
+  "fileStatus": "Verified",
+  "signatureStatus": "Verified",
+  "products": 10,
+  "languages": 5,
+  "programSignatures": 21,
+  "queue": {
+    "observedAt": "2026-11-14T16:08:03.184Z",
+    "appId": "7ef095e4-72fe-44cd-bc39-8987b6ab49e3",
+    "version": "0.1.6",
+    "internalVersion": 5,
+    "target": "Forerunner 165 Music",
+    "compatibleDevicesRequestedInternalVersion": 5,
+    "compatibleDevicesHttpStatus": 200,
+    "installationHttpStatus": 200,
+    "method": "POST",
+    "responseBody": "",
+    "queueMessage": "Got it! SpaceFox will be installed the next time your device syncs.",
+    "proofBoundary": "Server compatibility/install acknowledgement; not actual phone delivery or executing device version."
+  },
+  "screenshots": "Three actual SDK native image previews submitted (390 active,390 Always-On,454 active); saved first preview decoded390x390.",
+  "telegram": {
+    "recipient": "Ivan Danilenko",
+    "status": "Sent; not seen at observation",
+    "content": "Original ordinary0.1.6 link and installation/test instructions; no credentials sent"
+  },
+  "automaticRuns": [
+    {
+      "id": 43613203885,
+      "event": "push",
+      "conclusion": "success",
+      "head": "7eb629b4f32a1d7c9e9bb8247da72945d893bcdc"
+    },
+    {
+      "id": 43613826869,
+      "event": "workflow_dispatch",
+      "conclusion": "success",
+      "head": "7eb629b4f32a1d7c9e9bb8247da72945d893bcdc"
+    }
+  ],
+  "unobserved": [
+    "actual phone delivery",
+    "physical installed foreground/background build",
+    "physical fields/AOD/settings/health/battery",
+    "Garmin public approval"
+  ],
+  "proofBoundary": "Submission, visible exact Store version and compatibility/internal5 plus installationPOST200; does not establish physical installation. The tag matched all1039 inputs before this publication-only documentation update."
+}

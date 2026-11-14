@@ -1,0 +1,15 @@
+# SpaceFox 0.1.6 publication
+
+Public main contains the root-accepted independent UX02 implementation. Annotated tagv0.1.6 points to7eb629b4; the [GitHub prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.6) contains the exact signed IQ, all ten device PRGs, release provenance, notices and testing instructions. GitHub's returned IQ asset digest isf0486aec04a63ed9481caff0376a36930c7175df908ccb3e53f65075059dfc50. All1,039 package inputs matched the clean integration before publication; no old0.1.6 package was uploaded.
+
+Garmin accepted that final IQ at the [original ordinary card](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3), verifying original manifest identity/signature, version0.1.6 and allten models. After the final Submit, the saved card itself displays0.1.6(Internal:5). It still displaysApp pending; public approval is not established. Description/release notes and three actual native preview images were submitted. The saved first image decoded390x390. [File proof](garmin-016-file-verified.jpg), [saved card](garmin-016-card.jpg).
+
+The authenticated owner selected the existingForerunner165Music and accepted its three unchanged permissions. The compatibility request explicitly usedinternalAppVersion=5 and returned200; the installationPOST returned200 with the visible acknowledgement thatSpaceFox will install on the next sync. [Queue proof](garmin-016-install-queued.jpg) and [sanitized queue receipt](garmin-016-queue.json) contain no device identifier or serial. This proves the dispatch boundary, not phone delivery or the code running on a watch. No new Beta/card/account was created.
+
+The original link and phone update/sync/testing instructions were sent once toIvanDanilenko inTelegram. The UI showed the outgoing message; it was not seen at observation. No Telegram history or private conversation screenshot is published.
+
+Normal serialized-feed runs after this native publication succeeded: [push run43613203885](https://github.com/JekaMas/SpaceFox/actions/runs/43613203885) and [dispatch run43613826869](https://github.com/JekaMas/SpaceFox/actions/runs/43613826869), both on7eb629b4. No manual provider refresh, new backend or external model call was introduced. Existing autonomous clock/publisher evidence retains its source boundary; this is not a literal computer-off experiment.
+
+The code update, data refresh and Store label remain distinct. The old attempt deferral defect is repaired and tested. The exact0.1.2 receipt lacks the laterFeed diagnostic UI, so the owner's visibleFeed-400 implies some newer code had executed despite the phone label; exact prior runtime and the cause of stale mobile metadata remain unresolved. Current firmware29.05 is up-to-date, APIminimum5.1, ordinary identity/key and Music target are unchanged. [Investigation](DIAGNOSIS.md) records facts and limits. Actual device foreground/background0.1.6 readback is required to close delivery.
+
+Physical acceptance and Store approval remain OPEN. This publication adds only receipts and current status text after the frozen tag; it does not change native code/assets/data or refresh the original candidate's hashes.
