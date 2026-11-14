@@ -3,8 +3,8 @@
 SpaceFox is free, with no paid fields or activation. A locally exported candidate
 is not an approved Store release. The stable production signing identity is pinned in `signing-identity.json`.
 External owner-only RSA4096 custody and an encrypted backup with a separately
-stored recovery password have actual local restore/challenge evidence under
-`the owner-held signing records`. All copies remain on the same Mac; offsite
+stored recovery password have actual local restore/challenge evidence in
+the owner-held signing records. All copies remain on the same Mac; offsite
 and disaster recovery are not claimed.
 
 ## Historical test releases
@@ -68,6 +68,6 @@ The [v0.1.2-test.1 GitHub prerelease](https://github.com/JekaMas/SpaceFox/releas
 The root release owner also observed Forerunner 165 Music in the Download / Add to Device picker and Garmin confirmed installation is queued for the next sync. This does not establish completion or on-device behavior; the [bounded observation](../openspec/changes/spacefox-watchface/evidence/published-test-history/v0.1.2-test.1/garmin-root-observation.json) omits device identifiers.
 
 
-## Current 0.1.8 test candidate
+## Current 0.1.8 test prerelease
 
-The exact retained predecessor is the ordinary 0.1.7 receipt and IQ with SHA-256 `f8b41e9870654436ea4a8a7be63ca64451a0863254a8731b2f1a50659d91cde5`. Use that receipt and matching IQ together with `--previous`; keep the UUID and signing key and increase the native version. Old private 0.1.0-predecessor packages are not distributable. The 0.1.8 signed candidate uses the ten targets in the current manifest and eleven pinned SDK product parts. Source, package and signing evidence do not establish physical installation or Store approval. The 0.1.7 delivery incident remains open; see [testing](../TESTING.md) for its retraction and current test instructions.
+The exact retained predecessor is the ordinary 0.1.7 receipt and IQ with SHA-256 `f8b41e9870654436ea4a8a7be63ca64451a0863254a8731b2f1a50659d91cde5`. Use that receipt and matching IQ together with `--previous`; keep the UUID and signing key and increase the native version. Old private 0.1.0-predecessor packages are not distributable. The published 0.1.8 signed test prerelease uses the ten targets in the current manifest and eleven pinned SDK product parts. Source, package and signing evidence do not establish physical installation or Store approval. The 0.1.7 delivery incident remains open; see [testing](../TESTING.md) for its retraction and current test instructions.

@@ -1,9 +1,6 @@
 # SpaceFox project workflow
 
-Use the shared lifecycle and operation semantics from
-`.agents/workflow/docs/project-flow.md` at this repository's submodule pin.
-`docs/SDD_WORKFLOW.md` is the generated quickstart. This file supplies project
-context and commands; it does not replace the shared procedures.
+The public source export does not include `.agents/workflow`, `.gitmodules` or the private authoring adapter. Its authoring workflow revision was [f8e7ba481bf356600925e01936d7e9f3f1ac0084](https://github.com/JekaMas/agent-workflow/tree/f8e7ba481bf356600925e01936d7e9f3f1ac0084); that link identifies the reference revision, not a public checkout pin. Follow [the public quickstart](SDD_WORKFLOW.md), this project's instructions and the selected OpenSpec change. Do not run submodule commands or workflow scripts as if they existed in this checkout; setup or installation requires separate authorization.
 
 ## Current scope
 
@@ -35,16 +32,16 @@ openspec validate spacefox-watchface --strict --json
 The native validation above checks artifact structure. It does not execute the
 watch face, qualify live data or replace the implementation evidence graph.
 
-For workflow setup, run the exact `workflow` checks listed in
+If the pinned workflow is separately installed and configured, run the exact `workflow` checks listed in
 `.agents/workflow/docs/project-flow.md`, including ownership status, skill
 packaging, publication inventory, operation routes and the pinned shared
 `make check`. Stage the intended setup sources before publication validation.
 
-For substantial implementation, first follow the installed apply procedure and
+For substantial implementation, follow the applicable configured apply procedure and
 author the change-owned verification/discovery records required by the shared
 workflow. Choose real product commands once the Monkey C and service owners are
 present; do not insert successful-looking placeholder tests or mirror production
-logic in an independent oracle. Before claiming ready, run the pinned ready gate.
+logic in an independent oracle. Project-wide readiness requires the applicable ready gate; this public checkout does not provide the shared runner, so its result cannot be inferred here.
 
 ## Proof boundaries
 

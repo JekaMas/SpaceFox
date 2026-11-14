@@ -1,6 +1,6 @@
 # Portable provider, artwork and readback update
 
-The current recipe is `2026-11-12.global.8.current2026-review1`. Its provisional
+The historical recipe for the following observation was `2026-11-12.global.8.current2026-review1`; the active version is pinned in [`catalog/source.json`](../catalog/source.json). Its provisional
 2026+ registry has 69 source-qualified configurations, 66 with specific artwork;
 three gaps remain: 30, 152 and 200. Another 102 records need review and five are
 placeholders. The earlier 160/171 inventory described a historical, unfiltered

@@ -1,5 +1,7 @@
 # Tasks
 
+> Some historical authoring evidence referenced below is not included in this public export. Statements about those records retain their historical scope and are not independently verifiable from this checkout.
+
 ## 1. Specification foundation — completed authoring increments
 
 - [x] 1.1 Create the independent SpaceFox repository, preserve the unchanged Mission mockup and audit every requested feature; verify the copied SHA-256 and `evidence/baseline-audit.md` coverage table.
@@ -100,7 +102,7 @@ checkboxes or acceptance obligations.
 
 Current decisions, exact graph counts and remaining software/external boundaries:
 [PROGRESS.md](PROGRESS.md). Retired IDs and reasons:
-[evidence/current-only-finite-spec/retirement-inventory.json](evidence/current-only-finite-spec/retirement-inventory.json).
+evidence/current-only-finite-spec/retirement-inventory.json (historical record not included in the public export).
 
 Local task7.1 packaging increment: whole current-source RL02.P2 author apply/verify is GREEN (11cases/2commands, production candidate built) and recorded in `evidence/basic-release-package-whole/STATUS.md`; package readiness does not close physical/phone/Store tasks.
 
