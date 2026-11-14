@@ -138,7 +138,7 @@ treat a locally elapsed timestamp as confirmation that a launch occurred.
 
 #### Scenario: Estimated time passes without confirmation
 - **WHEN** the countdown reaches zero but the provider has not confirmed launch completion or a new time
-- **THEN** the watch shows an awaiting-update state rather than a negative countdown or a false liftoff/completion claim
+- **THEN** the watch continues with the same accumulating `T+ HH:MM:SS` countdown and does not claim liftoff or completion; the selection remains eligible through at least 15 minutes after target or a later validated sourced ascent end
 
 ### Requirement: Launch context metadata
 
@@ -158,7 +158,7 @@ than reuse another launch's context or invent a mission task.
 
 ### Requirement: UTC countdown and precision
 
-The watch SHALL recompute validated launch UTC minus current UTC on redraw and wake without connectivity, displaying numeric `HH:mm:ss` with accumulating hours. Validated nominal-minute targets use the same arithmetic without upgrading source precision. Missing target displays `--:--:--`; zero displays `00:00:00` without claiming liftoff. Sleep MUST NOT accumulate drift.
+The watch SHALL recompute validated launch UTC minus current UTC on redraw and wake without connectivity, displaying `T- HH:MM:SS` before target and `T+ HH:MM:SS` at and after target, with accumulating hours. Validated nominal-minute targets use the same arithmetic without upgrading source precision. Missing target displays `--:--:--`; zero displays `00:00:00` without claiming liftoff. Sleep MUST NOT accumulate drift.
 
 #### Scenario: Exact time available
 - **WHEN** an accepted launch has an exact UTC timestamp and the watch time zone changes

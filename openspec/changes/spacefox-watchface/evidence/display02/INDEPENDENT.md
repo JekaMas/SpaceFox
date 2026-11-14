@@ -27,3 +27,16 @@ quarantined. Adding the three exact tracked dependencies to a disposable copy of
 its snapshot made the full five-language admission replay pass; the production
 inventory now explicitly includes them. Focused current admission/drift checks
 remain 9/9 PASS. This changes packaging inputs, not native behavior.
+
+The old launch-schedule scenario requiring an awaiting-update display after zero
+conflicted with the owner's current T+ instruction. It now specifies the shared
+T+ format and the existing at-least-900-second / later sourced-ascent selection
+retention, without inferring liftoff. The worldwide point requirement remains
+unchanged and open: 54 packaged centers cover the 189 current fixed numeric
+positions; a new point outside them requires refreshed map resources and may
+require code changes. The retained real-schedule corpus has 25 launches whose site IDs are among
+the 29 mobile-mode sites: none exposes an
+event-level latitude, longitude or position field; their pad coordinates alone
+are reference positions, not proof of actual mobile event location. The current
+producer admits only fixed-source points for native display. This is a bounded
+corpus observation, not global mobile-event coverage.
