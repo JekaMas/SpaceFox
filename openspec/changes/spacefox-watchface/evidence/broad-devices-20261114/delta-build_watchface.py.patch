@@ -1,0 +1,43 @@
+--- prior/tools/build_watchface.py
++++ current/tools/build_watchface.py
+@@ -74,7 +74,30 @@
+     # The profile's actual runtime API is authoritative, independent of SDK9.3.
+     if not any(p.get("connectIQVersion") == lock["profile_api"] for p in profile_data.get("partNumbers", [])):
+         raise BuildBlocked("device runtime API differs from pinned FR165 profile")
+-    return {"lock": lock, "sdk": sdk, "java": java, "compiler": compiler,
++    profiles = {}
++    for product, pin in lock["profiles"].items():
++        directory = profile_root / product
++        for name, expected in pin["files_sha256"].items():
++            if not (directory / name).is_file() or digest(directory / name) != expected:
++                raise BuildBlocked("device input differs from pin: " + product + "/" + name)
++        data = json.loads((directory / "compiler.json").read_text())
++        simulator_data = json.loads((directory / "simulator.json").read_text())
++        fonts = {font["name"] for group in simulator_data["fonts"] for font in group["fonts"]}
++        memories = {row["type"]: row["memoryLimit"] for row in data["appTypes"]}
++        parts = [{k: v for k, v in row.items() if k in ("number", "connectIQVersion", "firmwareVersion")} for row in data["partNumbers"]]
++        if (data["deviceId"] != product or data["deviceVersion"] != pin["profile_version"] or
++            data["displayName"] != pin["display_name"] or data["deviceFamily"] != "round-390x390" or
++            data["resolution"] != {"width": 390, "height": 390} or data["displayType"] != "amoled" or
++            memories.get("watchFace", 0) < 131072 or memories.get("background", 0) < 65536 or
++            simulator_data.get("graphicsResourcePoolSize", 0) < 2097152 or
++            simulator_data.get("appStorageCapacity", 0) < 10485760 or
++            simulator_data.get("display", {}).get("shape") != "round" or "RobotoRegular" not in fonts or
++            parts != pin["parts"] or not parts or any(tuple(map(int, p["connectIQVersion"].split("."))) < tuple(map(int, lock["min_api"].split("."))) for p in parts)):
++            raise BuildBlocked("device capabilities differ from pinned cohort: " + product)
++        profiles[product] = data
++    if not profiles or lock["product"] not in profiles:
++        raise BuildBlocked("missing primary product profile")
++    return {"profiles": profiles, "lock": lock, "sdk": sdk, "java": java, "compiler": compiler,
+             "profile": profile, "simulator_profile": simulator_profile,
+             "java_version": java_result.stdout.strip()}
+ 
+@@ -118,7 +141,7 @@
+         validate_generated_locale_source(root, catalog, qualified)
+     except ValueError as error:
+         raise BuildBlocked("native language admission invalid: " + str(error)) from error
+-    if products != [lock["product"]] or languages != ["eng"] + [({"chs":"zhs","cht":"zht"}.get(r["garmin"],r["garmin"])) for r in catalog["locales"] if r["id"]!="en" and r["id"] in qualified]:
++    if products != list(lock["profiles"]) or languages != ["eng"] + [({"chs":"zhs","cht":"zht"}.get(r["garmin"],r["garmin"])) for r in catalog["locales"] if r["id"]!="en" and r["id"] in qualified]:
+         raise BuildBlocked("products/languages differ from simulator-qualified bootstrap subset")
+     permissions = [x.get("id") for x in app.findall("iq:permissions/*", NS)]
+     if permissions != lock.get("permissions", []) or app.findall("iq:barrels/*", NS):

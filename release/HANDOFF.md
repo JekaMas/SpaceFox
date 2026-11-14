@@ -30,6 +30,8 @@ installation, phone/background behavior or Garmin Store approval.
 The retained candidate still has `publication_ready=false` and
 `official_release=false`; tasks7.1–7.3 remain open.
 
+The 0.1.2 candidate uses the [device cohort and exclusions](../docs/SUPPORTED_DEVICES.md). Its per-profile standalone PRGs and all IQ programs must be verified before release; their compile and signature checks do not prove device installation.
+
 The release tool retains the actual manifest, generated Jungle, committed source
 inputs, public signing key, SDK/profile pins, package hashes and supplied evidence.
 The IQ is produced by SDK `--package-app`, inspected as its native 7z container,

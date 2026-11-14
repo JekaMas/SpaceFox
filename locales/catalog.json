@@ -345,9 +345,9 @@
       "receiptPath": "openspec/changes/spacefox-watchface/evidence/basic-main-review/finite/software-qualification.json",
       "receiptSha256": "a26d99cd1f64ce5aa3eacc3829448e9340171728e2c3fdcc1a982a7da2792d01",
       "productionSources": {
-        "tools/native_language_policy.py": "91019078eae2cc477621fbce1b9c46371de0c4d9e4f9d11b03911decb7ab2fdb",
+        "tools/native_language_policy.py": "aa1ae3cb5bf67cee42267cdd9edcf8a25cda3906074fa3c7e5d31b1817e0ac64",
         "tools/build_native_localization.py": "892a21ac0c64d6836acb0f950a9fdf03db81fa04d95b02e872cb8977c7223104",
-        "tools/build_watchface.py": "cea335148abb1984e4e8c3880a87e1df57fcbf7f6446d70a92206dd4e913a35f",
+        "tools/build_watchface.py": "85c4650390cc33912291e152e755225375318865fe05b5038e01b9764a6fc7a4",
         "watchface/source/LocalePresentation.mc": "17b40805db66e304689b07ef4708e886243e6895ed44a09c24a046256d5dd174",
         "watchface/source/SceneRenderer.mc": "2d5485a793859d61d8a99132c498949e4d97acf955dac84197ff3e0d45fc3dd6",
         "watchface/source/SceneSettings.mc": "0ccbbe9901b2217b5e4323064e484dbd32102a238485c8a474239d7fc389f2dc",
@@ -375,7 +375,7 @@
         "watchface/source/generated/NativeAssets.mc": "82d7ff2dcddcb011ed7651230a060f26512661419030ec96e03132f431c7a3c7",
         "watchface/resources/drawables/drawables.xml": "1491e299c4b0a37465b1a1b116e44fd485db11c0e4c95f18c2c606f93c49ee4d",
         "watchface/monkey.jungle": "abe93f12654450100407e84232b4c6dc0e7c9b1707499d7fd8e118fce040f0c4",
-        "watchface/toolchain-lock.json": "948c281801f4596cd6f904428f385adf85ebfe63f89d3c416b959cddf7bed389",
+        "watchface/toolchain-lock.json": "fd6121a8ee63d396c897e533c0ab974f62c9727f68aebd7f12fadd6e7c925dd0",
         "watchface/resources/settings/settings.xml": "deda53fd5f3b8339d13ed8a6e10cc2915790b7fffb133db23d8b3e00605c90ce",
         "watchface/resources/settings/properties.xml": "14fbba62892d64b65787783ebd032bc5d96417a4f100e14602b14a3ce453b357",
         "watchface/resources/json/locales.xml": "15b1c7862c6bf727a195536368db9a26baba2d0ce3c3ed5f07a1682129235c0a",
@@ -420,6 +420,10 @@
       "bootstrapDeltaProof": {
         "path": "openspec/changes/spacefox-watchface/evidence/test-release-20261114/bootstrap-delta.json",
         "sha256": "07f0e2370944577ad22decaad5d42ee554d69bbeef475d09b6ee4ae39d0cfbc9"
+      },
+      "deviceDeltaProof": {
+        "path": "openspec/changes/spacefox-watchface/evidence/broad-devices-20261114/device-delta.json",
+        "sha256": "68cdb51980ec2681becf6f5d6627c8c980f771003edad8a595f864e116ee540c"
       }
     }
   }

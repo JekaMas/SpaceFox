@@ -1,0 +1,35 @@
+{
+  "scope": "Reconstruct and replay FR165 finite locale evidence; add pinned device profiles and manifest admission. Fonts, scene, runtime and resources unchanged. No additional device runtime evidence inferred.",
+  "priorCatalog": {
+    "name": "openspec/changes/spacefox-watchface/evidence/broad-devices-20261114/prior-catalog.json",
+    "sha256": "7d6c99b2fe800256f5a8d890f8cda6dd257e95d2c9d4c1b2df3bcc0faa838411"
+  },
+  "historical": {
+    "tools/build_watchface.py": {
+      "name": "openspec/changes/spacefox-watchface/evidence/broad-devices-20261114/prior-build-watchface.py.txt",
+      "sha256": "cea335148abb1984e4e8c3880a87e1df57fcbf7f6446d70a92206dd4e913a35f"
+    },
+    "tools/native_language_policy.py": {
+      "name": "openspec/changes/spacefox-watchface/evidence/broad-devices-20261114/prior-native-language-policy.py.txt",
+      "sha256": "91019078eae2cc477621fbce1b9c46371de0c4d9e4f9d11b03911decb7ab2fdb"
+    },
+    "watchface/toolchain-lock.json": {
+      "name": "openspec/changes/spacefox-watchface/evidence/broad-devices-20261114/prior-toolchain-lock.json",
+      "sha256": "948c281801f4596cd6f904428f385adf85ebfe63f89d3c416b959cddf7bed389"
+    }
+  },
+  "patches": {
+    "tools/build_watchface.py": {
+      "name": "openspec/changes/spacefox-watchface/evidence/broad-devices-20261114/delta-build_watchface.py.patch",
+      "sha256": "0f27378115f75b2c5416e6263c9bdb392d52ca3feaa42979e28f99cb92c91582"
+    },
+    "tools/native_language_policy.py": {
+      "name": "openspec/changes/spacefox-watchface/evidence/broad-devices-20261114/delta-native_language_policy.py.patch",
+      "sha256": "e8d315ca5abb30b4a14f073cde947e6f7dadb763b473657771395402e8e01cc1"
+    },
+    "watchface/toolchain-lock.json": {
+      "name": "openspec/changes/spacefox-watchface/evidence/broad-devices-20261114/delta-toolchain-lock.json.patch",
+      "sha256": "0b90f53916fc00552debaefd64e625eca668a861dfc8fc6c294aa0a4379c175a"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+# 0.1.2 broad-device release iteration
+
+The isolated public worktree starts at origin/main `87b8ae5f`. The scope is a product-profile expansion with the same watch-face runtime, resources, 24-hour clock, language modes, default feed, wire format and signing identity. The nine selected profiles and ten excluded same-geometry profiles are in `docs/SUPPORTED_DEVICES.md`.
+
+The pinned compiler and simulator profiles bind resolution, display, API, program and background limits, graphics and storage limits, and the scalable font used by all five current locales. SDK compiler preflight built all initial 19 same-geometry profiles; 10 were removed because the installed simulator profile did not declare RobotoRegular. Compiler success does not establish a runtime font or device behavior. Retained FR165 language proof is replayed with a separately bound and reviewable build/profile delta; it remains FR165 evidence, not a new cohort observation. All source and resource production code is unchanged.
+
+A disposable 19-profile SDK export and verification established the multi-product packaging mechanism, not final release qualification. The final nine-profile signed candidate requires its own export and every part/PRG inspection. One FR165 Music EN/RU simulator smoke requires the globally exclusive simulator lease. Actual watch installation, phone settings, battery and Store approval remain unobserved. No provider calls or cloud changes are part of this iteration.

@@ -51,5 +51,164 @@
     "Communications",
     "Background"
   ],
-  "java_file_encoding": "UTF-8"
+  "java_file_encoding": "UTF-8",
+  "profiles": {
+    "fr165": {
+      "display_name": "Forerunner® 165",
+      "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
+      "files_sha256": {
+        "compiler.json": "ed45eb28ba928e2d2bda1bf8c567401232ab226889b87712fef5713e7f9a4fa8",
+        "simulator.json": "c4e771539f1ccc68f1464ced980cd493d57d0cd8e46fa9e844ada36df9631fee",
+        "fr165.bin": "83aab1a5ae1e18a29f3c0e60ea71eb2623221a9435eaf4220d8911261db9a67e",
+        "fr165.api.debug.xml": "fb42beeb47badbba9a51003e75a204d5087cdd57c1d306fa9760134dd80af58b"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "5.2.0",
+          "firmwareVersion": 2502,
+          "number": "006-B4432-00"
+        }
+      ]
+    },
+    "fr165m": {
+      "display_name": "Forerunner® 165 Music",
+      "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
+      "files_sha256": {
+        "compiler.json": "4eefa90b3550e272402aeba6ed49be5e68773db11a46fb29c82ce0e26000d434",
+        "simulator.json": "deed84d706cd045b21611819595b95458cffe6944488c93b4ba5f1218bb652c4",
+        "fr165m.bin": "9a8dcf3ac992ee4268b3255d128c64989a772fc910e07ee2ffbd424849d5996a",
+        "fr165m.api.debug.xml": "6873459986b0e3699782687c2d82e32fa8a34397e6d8b20e0d576efaf55977ac"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "5.2.0",
+          "firmwareVersion": 2502,
+          "number": "006-B4433-00"
+        }
+      ]
+    },
+    "fr170": {
+      "display_name": "Forerunner® 170",
+      "profile_version": "2a089d06d343f3feda75c93ddf12e1fa29abe918",
+      "files_sha256": {
+        "compiler.json": "298a25ad58b08e4544f7d97cb24c3552bdf601230cc96890fcabf577b922d8ba",
+        "simulator.json": "b34c0fd8cfd78ff630609b28a66ff319a7a6383382d7aa0e9819fce476374ab3",
+        "fr170.bin": "4cccbf88efad0ff7a2a5ce8e0c1b4f8955fec936367bb607283be08746d255ec",
+        "fr170.api.debug.xml": "e06d98d56da7ab4adbde99138850e5da37e0dc5434ff751065ea614b643775e9"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 1829,
+          "number": "006-B4815-00"
+        }
+      ]
+    },
+    "fr170m": {
+      "display_name": "Forerunner® 170 Music",
+      "profile_version": "2a089d06d343f3feda75c93ddf12e1fa29abe918",
+      "files_sha256": {
+        "compiler.json": "7619671b7d42ed87c268105c39668dee46ff116605cc99474f3c06b6d784ae77",
+        "simulator.json": "b34c0fd8cfd78ff630609b28a66ff319a7a6383382d7aa0e9819fce476374ab3",
+        "fr170m.bin": "ba88da23ae3af82361600ee59464240367d8a63864a30988488bc2d8fc07ce12",
+        "fr170m.api.debug.xml": "58c029625dba614bc9b67d8562562fd889d78e36aede3f2e5e214e621fbc0d34"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 1829,
+          "number": "006-B4814-00"
+        }
+      ]
+    },
+    "fr57042mm": {
+      "display_name": "Forerunner® 570 42mm",
+      "profile_version": "2a089d06d343f3feda75c93ddf12e1fa29abe918",
+      "files_sha256": {
+        "compiler.json": "8ab38ad5f1a678afe72111ecfe9a1fe0744290d3742b8a92d93df5056ec9d847",
+        "simulator.json": "b8a14221b3f8ff592a4f38a2276af02418e0ce6244674f238bee20f3c6ffd5e7",
+        "fr57042mm.bin": "5a8333dad948ca56545872fdc2cda7c480a80eb2fcc87d4bfe28e8d4cb38ba61",
+        "fr57042mm.api.debug.xml": "9a25ae15776854c1c03546c92398b4d6eb2af79b7be8a58547f05b89e8b2646e"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 1829,
+          "number": "006-B4574-00"
+        }
+      ]
+    },
+    "fr70": {
+      "display_name": "Forerunner® 70",
+      "profile_version": "2a089d06d343f3feda75c93ddf12e1fa29abe918",
+      "files_sha256": {
+        "compiler.json": "3c41ff90068e4df22a0b0e96c9ee51788a0fc0219312095e5e4bf97f483b8d49",
+        "simulator.json": "f129db54cc1e4fdecb9eff04453086a344594981401814c17930cc49ae14a119",
+        "fr70.bin": "3da396ca03dfbd87179dda35acab3e3deb953d561183ac908c4bfc1317455038",
+        "fr70.api.debug.xml": "7f42e2d87fceee41baabf265841c41e751faa4820d613df56d9d5140adb01176"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 1829,
+          "number": "006-B4916-00"
+        },
+        {
+          "connectIQVersion": "6.0.3",
+          "number": "006-B5214-00"
+        }
+      ]
+    },
+    "venu3s": {
+      "display_name": "Venu® 3S",
+      "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
+      "files_sha256": {
+        "compiler.json": "15bbae2d2b55f847f36993a4e54015a516aded10506abb1e371877acc10e10d4",
+        "simulator.json": "45b1afef83c214e627c1d6a7a278edc92f8b6531f8e9e4ae2ed42d65ba8573e5",
+        "venu3s.bin": "fd764b95417774270ec58e86695e5156a43b470479bad5df31117b16e293a8c2",
+        "venu3s.api.debug.xml": "875bd80b78da8836f0fdfcd5b478b991f039ae4b3e930f4c98994c90bc9bf817"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "5.2.0",
+          "firmwareVersion": 1607,
+          "number": "006-B4261-00"
+        }
+      ]
+    },
+    "venu441mm": {
+      "display_name": "Venu® 4 41mm",
+      "profile_version": "eddc2840754f6d29c6c9a3ede43befdaadd25a09",
+      "files_sha256": {
+        "compiler.json": "13a16cc2e597c6756574872dd65508b1f545e68152140955d23e52cb749a66fe",
+        "simulator.json": "7132c5b726ab7c80ef6a87564fbcf065a768781ebefe371f175a177c424e5814",
+        "venu441mm.bin": "422ba94c00d34380fbdce7ab0b44facd76a072fac78a178b28de15fafad75287",
+        "venu441mm.api.debug.xml": "3bcc13ba55646281b60b74d7b7a57c2152ae1fb0125f9c03a07e2e117ccef2a1"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 1830,
+          "number": "006-B4644-00"
+        }
+      ]
+    },
+    "vivoactive6": {
+      "display_name": "vívoactive® 6",
+      "profile_version": "eddc2840754f6d29c6c9a3ede43befdaadd25a09",
+      "files_sha256": {
+        "compiler.json": "05e7f0a65ebf0e10f7b6d824d8796e99f2a225c12f7ba47c8418ec5e111d9efb",
+        "simulator.json": "042ab00f5695f958415e096fbb213d9b97a2b452653ea29cc4a9705ae8adccc5",
+        "vivoactive6.bin": "c51c1ee5b79821ecb678d75186cfd1edd9c94a9a7fe22db492d3433c23eb44ed",
+        "vivoactive6.api.debug.xml": "14b952085a84f65f638cdb2c03329e986bc540b89287ff473f01b5cd62da5ab4"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 1829,
+          "number": "006-B4625-00"
+        }
+      ]
+    }
+  }
 }

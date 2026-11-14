@@ -101,8 +101,8 @@ class ReleaseTest(unittest.TestCase):
         receipt = self.original
         self.assertEqual(receipt["application_uuid"], "955b26e54df04e069c23cd95f9df5f01")
         self.assertEqual(receipt["entry"], "SpaceFoxApp")
-        self.assertEqual(receipt["version"], "0.1.1")
-        self.assertEqual(receipt["products"], ["fr165"])
+        self.assertEqual(receipt["version"], "0.1.2")
+        self.assertEqual(receipt["products"], list(self.context["lock"]["profiles"]))
         self.assertEqual(receipt["languages"], ["eng", "rus", "deu", "fre", "spa"])
         self.assertFalse(receipt["official_release"])
         self.assertFalse(receipt["publication_ready"])
@@ -111,21 +111,22 @@ class ReleaseTest(unittest.TestCase):
         self.assertTrue(receipt["inspection"]["iq_signature_verified"])
         self.assertTrue(receipt["inspection"]["prg_signature_verified"])
         self.assertEqual(receipt["inspection"]["signature_profile"], "rsa-4096")
-        self.assertEqual(receipt["inspection"]["part_number"], "006-B4432-00")
-        self.assertEqual(receipt["inspection"]["members"], ["manifest.xml", "manifest.sig2", "dev_key.pub",
-            "006-B4432-00/SpaceFox.prg", "006-B4432-00/debug.xml", "006-B4432-00/006-B4432-00-settings.json"])
+        expected_parts = {part["number"] for profile in self.context["profiles"].values() for part in profile["partNumbers"]}
+        self.assertEqual(set(receipt["inspection"]["products"]), expected_parts)
+        self.assertEqual(receipt["inspection"]["products"]["006-B4433-00"]["product"], "fr165m")
+        self.assertEqual(receipt["inspection"]["verified_programs"], len(expected_parts) + len(receipt["products"]))
         self.assertEqual(receipt["public_key_spki_sha256"], self.fingerprint)
-        for kind in ("iq", "prg"):
-            data = (self.base / "first" / ("SpaceFox." + kind)).read_bytes()
+        for kind, item in receipt["packages"].items():
+            data = (self.base / "first" / item["path"]).read_bytes()
             self.assertGreater(len(data), 10000)
-            self.assertEqual(hashlib.sha256(data).hexdigest(), receipt["packages"][kind]["sha256"])
+            self.assertEqual(hashlib.sha256(data).hexdigest(), item["sha256"])
         # Inspect the SDK container through a separate literal manifest oracle.
         data = subprocess.run(["/usr/bin/tar", "-xOf", str(self.base / "first/SpaceFox.iq"), "manifest.xml"],
                               capture_output=True, check=True).stdout
         app = ET.fromstring(data).find("iq:application", NS)
         self.assertEqual(app.get("id"), "955b26e54df04e069c23cd95f9df5f01")
-        self.assertEqual(app.get("version"), "0.1.1")
-        self.assertEqual(app.find("iq:products/iq:product", NS).get("partNumber"), "006-B4432-00")
+        self.assertEqual(app.get("version"), "0.1.2")
+        self.assertIn("006-B4433-00", [x.get("partNumber") for x in app.findall("iq:products/iq:product", NS)])
         self.assertEqual([x.text for x in app.findall("iq:languages/iq:language", NS)], ["deu", "eng", "fre", "rus", "spa"])
         text = (self.base / "first/release.json").read_text()
         self.assertNotIn(str(self.key), text)
@@ -202,9 +203,9 @@ class ReleaseTest(unittest.TestCase):
             self.build(self.root / "unsafe-output")
 
     def test_higher_version_signed_repair_positive(self):
-        self.edit_manifest("version", "0.1.2")
+        self.edit_manifest("version", "0.1.3")
         receipt = self.build(self.base / "repair", previous=self.base / "first/release.json")
-        self.assertEqual(receipt["version"], "0.1.2")
+        self.assertEqual(receipt["version"], "0.1.3")
         self.assertEqual(receipt["application_uuid"], self.original["application_uuid"])
         self.assertEqual(receipt["public_key_spki_sha256"], self.fingerprint)
         self.assertEqual(receipt["update"]["kind"], "higher_version_repair")
@@ -212,12 +213,12 @@ class ReleaseTest(unittest.TestCase):
         self.assertFalse(receipt["update"]["store_downgrade_assumed"])
 
     def test_update_and_backup_negative(self):
-        for value in ("0.1.1", "0.1.0", "0.0.9"):
+        for value in ("0.1.2", "0.1.1", "0.0.9"):
             self.edit_manifest("version", value)
             with self.assertRaisesRegex(BuildBlocked, "strictly increase"):
                 self.build(self.base / "downgrade", previous=self.base / "first/release.json")
             self.git("reset", "--hard", self.base_revision)
-        self.edit_manifest("version", "0.1.2")
+        self.edit_manifest("version", "0.1.3")
         bad_previous = dict(self.original, public_key_spki_sha256="0" * 64)
         path = self.base / "wrong-previous.json"
         # Keep the real prior artifact available: this control must reach identity.
@@ -258,7 +259,7 @@ class ReleaseTest(unittest.TestCase):
         def mutate_after_snapshot():
             deadline = time.monotonic() + 180
             while time.monotonic() < deadline:
-                if (output / "SpaceFox.prg").exists():
+                if (output / "SpaceFox-fr165.prg").exists():
                     with (self.root / "watchface/source/SpaceFoxApp.mc").open("a") as stream:
                         stream.write("\n// qualification-only concurrent source mutation\n")
                     observed.set()
@@ -273,19 +274,21 @@ class ReleaseTest(unittest.TestCase):
             self.assertFalse((output / "release.json").exists())
             self.assertTrue((output / "FAILED.json").is_file())
             self.assertFalse((output / "SpaceFox.iq").exists())
-            self.assertTrue((output / "SpaceFox.iq.rejected").exists())
+            self.assertTrue((output / "SpaceFox-fr165.prg.rejected").exists())
         finally:
             writer.join(timeout=1)
 
     def test_container_and_signature_tamper_negative(self):
         first = self.base / "first"
         altered = self.base / "tampered.prg"
-        data = bytearray((first / "SpaceFox.prg").read_bytes())
+        data = bytearray((first / "SpaceFox-fr165.prg").read_bytes())
         data[len(data) // 2] ^= 1
         altered.write_bytes(data)
         tree = ET.parse(first / "inputs/manifest.xml")
+        prgs = {name: first / ("SpaceFox-" + name + ".prg") for name in self.context["profiles"]}
+        altered_prgs = dict(prgs, fr165=altered)
         with self.assertRaisesRegex(BuildBlocked, "cryptographic"):
-            release.inspect_iq(first / "SpaceFox.iq", altered, first / "developer-public.spki", self.context,
+            release.inspect_iq(first / "SpaceFox.iq", altered_prgs, first / "developer-public.spki", self.context,
                                tree.getroot().find("iq:application", NS), ROOT / "tools/ReleaseInspector.java")
         # Replace only tar's exported manifest view to exercise admission at its
         # exact boundary. Actual signed export and tampered PRG above remain real.
@@ -311,14 +314,46 @@ class ReleaseTest(unittest.TestCase):
                     return real_run(args, *positional, **kwargs)
                 with patch.object(release.subprocess, "run", side_effect=read_changed_manifest):
                     with self.assertRaisesRegex(BuildBlocked, "IQ language mismatch"):
-                        release.inspect_iq(first / "SpaceFox.iq", first / "SpaceFox.prg",
+                        release.inspect_iq(first / "SpaceFox.iq", prgs,
                             first / "developer-public.spki", self.context,
                             tree.getroot().find("iq:application", NS), ROOT / "tools/ReleaseInspector.java")
         fake_iq = self.base / "renamed.iq"
-        shutil.copyfile(first / "SpaceFox.prg", fake_iq)
+        shutil.copyfile(first / "SpaceFox-fr165.prg", fake_iq)
         with self.assertRaisesRegex(BuildBlocked, "native 7z"):
-            release.inspect_iq(fake_iq, first / "SpaceFox.prg", first / "developer-public.spki", self.context,
+            release.inspect_iq(fake_iq, prgs, first / "developer-public.spki", self.context,
                                tree.getroot().find("iq:application", NS), ROOT / "tools/ReleaseInspector.java")
+
+    def test_export_product_profile_controls(self):
+        first = self.base / "first"
+        tree = ET.parse(first / "inputs/manifest.xml")
+        expected = tree.getroot().find("iq:application", NS)
+        prgs = {name: first / ("SpaceFox-" + name + ".prg") for name in self.context["profiles"]}
+        real_run = subprocess.run
+        raw = real_run(["/usr/bin/tar", "-xOf", str(first / "SpaceFox.iq"), "manifest.xml"],
+                       capture_output=True, check=True).stdout
+        for kind in ("missing", "duplicate", "api", "firmware", "signature", "program"):
+            with self.subTest(kind=kind):
+                app = ET.fromstring(raw).find("iq:application", NS)
+                parent = app.find("iq:products", NS)
+                products = parent.findall("iq:product", NS)
+                if kind == "missing": parent.remove(products[0])
+                elif kind == "duplicate": products[0].set("partNumber", products[1].get("partNumber"))
+                elif kind == "api": products[0].set("connectIqVersion", "99.0.0")
+                elif kind == "firmware": products[0].set("minFirmwareVersion", "0")
+                elif kind == "signature": products[0].set("sig2", "x" * 1024)
+                else: products[0].set("filename", products[1].get("filename"))
+                mutated = ET.tostring(app)
+                wrapped = ET.Element("{" + NS["iq"] + "}manifest")
+                wrapped.append(ET.fromstring(mutated))
+                data = ET.tostring(wrapped)
+                def read_manifest(args, *positional, **kwargs):
+                    if args[:2] == ["/usr/bin/tar", "-xOf"] and args[-1] == "manifest.xml":
+                        return subprocess.CompletedProcess(args, 0, data, b"")
+                    return real_run(args, *positional, **kwargs)
+                with patch.object(release.subprocess, "run", side_effect=read_manifest):
+                    with self.assertRaises(BuildBlocked):
+                        release.inspect_iq(first / "SpaceFox.iq", prgs, first / "developer-public.spki",
+                                           self.context, expected, ROOT / "tools/ReleaseInspector.java")
 
     def test_changed_generated_inputs_during_sdk_build_negative(self):
         for name in ("monkey.jungle", "manifest.xml"):
@@ -329,7 +364,7 @@ class ReleaseTest(unittest.TestCase):
                 def mutate_after_first_program():
                     deadline = time.monotonic() + 180
                     while time.monotonic() < deadline:
-                        if (output / "SpaceFox.prg").exists():
+                        if (output / "SpaceFox-fr165.prg").exists():
                             path = output / "inputs" / name
                             if name == "monkey.jungle":
                                 # Redirect to the same real source outside the
@@ -354,8 +389,8 @@ class ReleaseTest(unittest.TestCase):
                     self.assertTrue(observed.is_set(), "generated mutation must occur during the real SDK build")
                     self.assertFalse((output / "release.json").exists())
                     self.assertTrue((output / "FAILED.json").is_file())
-                    self.assertFalse((output / "SpaceFox.prg").exists())
-                    self.assertTrue((output / "SpaceFox.prg.rejected").is_file())
+                    self.assertFalse((output / "SpaceFox-fr165.prg").exists())
+                    self.assertTrue((output / "SpaceFox-fr165.prg.rejected").is_file())
                     self.assertFalse((output / "SpaceFox.iq").exists())
                 finally:
                     writer.join(timeout=1)
@@ -372,7 +407,7 @@ class ReleaseTest(unittest.TestCase):
                     try:
                         deadline = time.monotonic() + 180
                         while not stop.is_set() and time.monotonic() < deadline:
-                            if (output / "SpaceFox.prg").is_file():
+                            if (output / "SpaceFox-fr165.prg").is_file():
                                 snapshot = output / "inputs"
                                 if mutation == "source":
                                     (snapshot / "watchface/source/VerifierUntracked.mc").write_text(
@@ -405,8 +440,8 @@ class ReleaseTest(unittest.TestCase):
                     self.assertTrue(observed.is_set(), "inventory mutation must occur during real SDK compilation")
                     self.assertFalse((output / "release.json").exists())
                     self.assertTrue((output / "FAILED.json").is_file())
-                    self.assertFalse((output / "SpaceFox.prg").exists())
-                    self.assertTrue((output / "SpaceFox.prg.rejected").is_file())
+                    self.assertFalse((output / "SpaceFox-fr165.prg").exists())
+                    self.assertTrue((output / "SpaceFox-fr165.prg.rejected").is_file())
                     self.assertFalse((output / "SpaceFox.iq").exists())
                 finally:
                     stop.set()

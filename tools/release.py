@@ -90,7 +90,7 @@ def source_state(root: Path) -> dict:
                              name == "assets/rocket-pack/LICENSE" or
                              name in ("tools/release.py", "tools/ReleaseInspector.java", "tools/build_watchface.py",
                                       "LICENSE", "THIRD_PARTY_NOTICES.md", "docs/AGENT_SETUP.md",
-                                      "docs/RELEASE_AND_UPDATES.md")):
+                                      "docs/RELEASE_AND_UPDATES.md", "docs/SUPPORTED_DEVICES.md", "README.md", "TESTING.md")):
             continue
         path = root / name
         require(path.is_file() and not path.is_symlink(), "release input must be a regular tracked file: " + name)
@@ -347,7 +347,7 @@ def previous_release(path: Path | None) -> dict | None:
     return data
 
 
-def inspect_iq(iq: Path, prg: Path, public: Path, context: dict, expected: ET.Element,
+def inspect_iq(iq: Path, prgs: dict[str, Path], public: Path, context: dict, expected: ET.Element,
                inspector: Path) -> dict:
     require(iq.read_bytes()[:6] == b"7z\xbc\xaf'\x1c", "IQ is not the SDK native 7z container")
     listing = subprocess.run(["/usr/bin/tar", "-tf", str(iq)], cwd=iq.parent,
@@ -362,49 +362,60 @@ def inspect_iq(iq: Path, prg: Path, public: Path, context: dict, expected: ET.El
         result = subprocess.run(["/usr/bin/tar", "-xOf", str(iq), name], capture_output=True, check=False)
         require(result.returncode == 0, "IQ member read failed")
         return result.stdout
-    tree = ET.fromstring(member("manifest.xml"))
-    app = tree.find("iq:application", NS)
+    app = ET.fromstring(member("manifest.xml")).find("iq:application", NS)
     require(app is not None, "IQ application manifest missing")
     for key in ("id", "entry", "type", "version"):
         require(app.get(key) == expected.get(key), "IQ manifest " + key + " mismatch")
     exported_languages = [x.text for x in app.findall("iq:languages/iq:language", NS)]
     expected_languages = [x.text for x in expected.findall("iq:languages/iq:language", NS)]
-    # SDK package-app sorts this unordered manifest collection. Exact IDs and
-    # cardinality remain mandatory; a set comparison alone would hide duplicates.
     require(len(exported_languages) == len(set(exported_languages)) and
             len(expected_languages) == len(set(expected_languages)) and
             set(exported_languages) == set(expected_languages), "IQ language mismatch")
     require(sorted(x.get("id") for x in app.findall("iq:permissions/*", NS)) ==
             sorted(x.get("id") for x in expected.findall("iq:permissions/*", NS)), "IQ permission mismatch")
     require(not app.findall("iq:barrels/*", NS), "IQ has unexpected dependencies")
-    products = app.findall("iq:products/iq:product", NS)
-    profile = json.loads(context["profile"].read_text())
-    supported_parts = {p["number"]: p for p in profile["partNumbers"]}
-    require(len(products) == 1 and products[0].get("partNumber") in supported_parts,
-            "IQ products differ from pinned device profile")
-    product = products[0]
-    require(product.get("connectIqVersion") == context["lock"]["profile_api"] and
-            product.get("minFirmwareVersion") == str(supported_parts[product.get("partNumber")]["firmwareVersion"]) and
-            product.get("sigFormat") == "rsa-4096" and len(product.get("sig2", "")) == 1024,
-            "IQ runtime/signature profile mismatch")
-    embedded = product.get("filename", "")
-    require(embedded.endswith(".prg") and sum(n.endswith(".prg") for n in members) == 1,
-            "IQ must contain exactly the qualified device program")
-    require(member("dev_key.pub") == public.read_bytes(), "IQ public signing identity mismatch")
-    embedded_bytes = member(embedded)
-    # The exported and standalone programs may carry distinct SDK timestamps.
-    # Both signatures are verified; equality is deliberately not assumed.
-    result = run([str(context["java"]), "--class-path", str(context["compiler"]),
-                  str(inspector), str(iq), str(prg), str(public)], iq.parent)
-    require(result.returncode == 0, "SDK cryptographic IQ/PRG verification failed")
-    verified = json.loads(result.stdout.strip().splitlines()[-1])
-    return {**verified, "container": "SDK native 7z", "members": members,
-            "export_manifest_sha256": hashlib.sha256(member("manifest.xml")).hexdigest(),
-            "embedded_program_sha256": hashlib.sha256(embedded_bytes).hexdigest(),
-            "embedded_program_bytes": len(embedded_bytes), "part_number": product.get("partNumber"),
-            "minimum_firmware": product.get("minFirmwareVersion"),
-            "export_api_version": app.get("apiVersion"), "runtime_api": product.get("connectIqVersion"),
-            "signature_profile": product.get("sigFormat")}
+    parts = {}
+    for product, profile in context['profiles'].items():
+        for part in profile['partNumbers']:
+            number = part['number']
+            require(number not in parts, 'duplicate part number in profile cohort')
+            parts[number] = (product, part)
+    products = app.findall('iq:products/iq:product', NS)
+    numbers = [p.get('partNumber') for p in products]
+    require(len(numbers) == len(set(numbers)) and set(numbers) == set(parts), 'IQ products differ from pinned device profiles')
+    require(set(prgs) == set(context['profiles']), 'standalone targets differ from pinned device profiles')
+    require(member('dev_key.pub') == public.read_bytes(), 'IQ public signing identity mismatch')
+    details = {}
+    filenames = set()
+    with tempfile.TemporaryDirectory(prefix='spacefox-inspect-') as temporary:
+        embedded_paths = []
+        for product in products:
+            number = product.get('partNumber')
+            target, part = parts[number]
+            require(product.get('connectIqVersion') == part['connectIQVersion'] and
+                    product.get('minFirmwareVersion') == (str(part['firmwareVersion']) if 'firmwareVersion' in part else None) and
+                    product.get('sigFormat') == 'rsa-4096' and
+                    bool(re.fullmatch(r'[0-9a-fA-F]{1024}', product.get('sig2', ''))),
+                    'IQ runtime/signature profile mismatch: ' + number)
+            filename = product.get('filename', '')
+            require(filename.endswith('.prg') and filename not in filenames, 'duplicate or invalid embedded PRG')
+            filenames.add(filename)
+            data = member(filename)
+            path = Path(temporary) / (number + '.prg')
+            path.write_bytes(data)
+            embedded_paths.append(path)
+            details[number] = {'product': target, 'filename': filename, 'runtime_api': part['connectIQVersion'],
+                               'minimum_firmware': product.get('minFirmwareVersion'),
+                               'embedded_program_sha256': hashlib.sha256(data).hexdigest(),
+                               'embedded_program_bytes': len(data)}
+        require({n for n in members if n.endswith('.prg')} == filenames, 'unexpected IQ PRG inventory')
+        result = run([str(context['java']), '--class-path', str(context['compiler']), str(inspector),
+                      str(iq), str(public), *(str(p) for p in prgs.values()), *(str(p) for p in embedded_paths)], iq.parent)
+        require(result.returncode == 0, 'SDK cryptographic IQ/PRG verification failed')
+        verified = json.loads(result.stdout.strip().splitlines()[-1])
+    return {**verified, 'container': 'SDK native 7z', 'members': members,
+            'export_manifest_sha256': hashlib.sha256(member('manifest.xml')).hexdigest(),
+            'products': details, 'export_api_version': app.get('apiVersion'), 'signature_profile': 'rsa-4096'}
 
 
 def build_release(output: Path, *, key: Path, root: Path = ROOT, mode: str = "candidate",
@@ -494,7 +505,8 @@ def build_release(output: Path, *, key: Path, root: Path = ROOT, mode: str = "ca
     public.write_bytes(pub)
     public.rename(output / "developer-public.spki")
     public = output / "developer-public.spki"
-    packages = {"prg": output / "SpaceFox.prg", "iq": output / "SpaceFox.iq"}
+    prgs = {product: output / ("SpaceFox-" + product + ".prg") for product in lock["profiles"]}
+    packages = {**{product: path for product, path in prgs.items()}, "iq": output / "SpaceFox.iq"}
     commands = []
     try:
         for kind, target in packages.items():
@@ -502,7 +514,7 @@ def build_release(output: Path, *, key: Path, root: Path = ROOT, mode: str = "ca
             args = [str(context["java"]), "-Dfile.encoding=UTF-8", "-jar", str(context["compiler"]),
                     "-f", "monkey.jungle", "-o", str(target), "-y", str(key.expanduser().resolve()),
                     *lock["compiler_options"], "-r"]
-            args.extend(["-e"] if kind == "iq" else ["-d", lock["product"]])
+            args.extend(["-e"] if kind == "iq" else ["-d", kind])
             result = run(args, inputs, timeout=240)
             sanitized = result.stdout.replace(str(key.expanduser().resolve()), "$EXTERNAL_KEY")
             for path, label in ((str(output), "$OUTPUT"), (str(root), "$SOURCE"),
@@ -515,7 +527,7 @@ def build_release(output: Path, *, key: Path, root: Path = ROOT, mode: str = "ca
                                       .replace(str(context["java"]), "$JAVA") for arg in args]})
             require(result.returncode == 0 and target.is_file(), "SDK " + kind + " compilation/export failed")
             validate_build_inputs()
-        inspection = inspect_iq(packages["iq"], packages["prg"], public, context, app,
+        inspection = inspect_iq(packages["iq"], prgs, public, context, app,
                                 inputs / "tools/ReleaseInspector.java")
         require(source_state(root) == before, "source inputs changed during release build")
         validate_build_inputs()
@@ -533,7 +545,7 @@ def build_release(output: Path, *, key: Path, root: Path = ROOT, mode: str = "ca
                    "official_release": False, "publication_ready": False,
                    "production_identity": mode != "qualification", "application_uuid": app.get("id"),
                    "entry": app.get("entry"), "version": app.get("version"),
-                   "products": [lock["product"]],
+                   "products": list(lock["profiles"]),
                    "languages": [node.text for node in app.findall("iq:languages/iq:language", NS)],
                    "minimum_api": app.get("minApiLevel"), "permissions": lock["permissions"],
                    "public_key_spki_sha256": fingerprint, "backup": backup_info,
@@ -543,6 +555,7 @@ def build_release(output: Path, *, key: Path, root: Path = ROOT, mode: str = "ca
                    "sdk_version": lock["sdk_version"], "java_version": context["java_version"],
                    "sdk_input_sha256": lock["sdk_input_sha256"],
                    "profile_input_sha256": lock["profile_input_sha256"],
+                   "profiles": lock["profiles"],
                    "profile_sha256": digest(context["profile"]),
                    "simulator_profile_sha256": digest(context["simulator_profile"]),
                    "commands": commands, "inspection": inspection, "update": update, "evidence": supplied,

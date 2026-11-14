@@ -1,0 +1,426 @@
+{
+  "schemaVersion": 1,
+  "defaultLocale": "en",
+  "source": "https://developer.garmin.com/connect-iq/api-docs/Toybox/System.html",
+  "verifiedOn": "2026-11-10",
+  "locales": [
+    {
+      "id": "en",
+      "garmin": "eng",
+      "name": "English",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "ru",
+      "garmin": "rus",
+      "name": "Русский",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "de",
+      "garmin": "deu",
+      "name": "Deutsch",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "fr",
+      "garmin": "fre",
+      "name": "Français",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "es",
+      "garmin": "spa",
+      "name": "Español",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "it",
+      "garmin": "ita",
+      "name": "Italiano",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "pt",
+      "garmin": "por",
+      "name": "Português",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "nl",
+      "garmin": "dut",
+      "name": "Nederlands",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "pl",
+      "garmin": "pol",
+      "name": "Polski",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "uk",
+      "garmin": "ukr",
+      "name": "Українська",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "cs",
+      "garmin": "ces",
+      "name": "Čeština",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "sk",
+      "garmin": "slo",
+      "name": "Slovenčina",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "hu",
+      "garmin": "hun",
+      "name": "Magyar",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "ro",
+      "garmin": "ron",
+      "name": "Română",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "bg",
+      "garmin": "bul",
+      "name": "Български",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "hr",
+      "garmin": "hrv",
+      "name": "Hrvatski",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "sl",
+      "garmin": "slv",
+      "name": "Slovenščina",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "el",
+      "garmin": "gre",
+      "name": "Ελληνικά",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "tr",
+      "garmin": "tur",
+      "name": "Türkçe",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "da",
+      "garmin": "dan",
+      "name": "Dansk",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "sv",
+      "garmin": "swe",
+      "name": "Svenska",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "nb",
+      "garmin": "nob",
+      "name": "Norsk bokmål",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "fi",
+      "garmin": "fin",
+      "name": "Suomi",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "et",
+      "garmin": "est",
+      "name": "Eesti",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "lv",
+      "garmin": "lav",
+      "name": "Latviešu",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "lt",
+      "garmin": "lit",
+      "name": "Lietuvių",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "zh-Hans",
+      "garmin": "chs",
+      "name": "简体中文",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "zh-Hant",
+      "garmin": "cht",
+      "name": "繁體中文",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "ja",
+      "garmin": "jpn",
+      "name": "日本語",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "ko",
+      "garmin": "kor",
+      "name": "한국어",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "ar",
+      "garmin": "ara",
+      "name": "العربية",
+      "direction": "rtl",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "he",
+      "garmin": "heb",
+      "name": "עברית",
+      "direction": "rtl",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "id",
+      "garmin": "ind",
+      "name": "Bahasa Indonesia",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "ms",
+      "garmin": "zsm",
+      "name": "Bahasa Melayu",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "vi",
+      "garmin": "vie",
+      "name": "Tiếng Việt",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    },
+    {
+      "id": "th",
+      "garmin": "tha",
+      "name": "ไทย",
+      "direction": "ltr",
+      "reviewStatus": "draft",
+      "nativeQualified": false
+    }
+  ],
+  "supportPolicy": {
+    "schemaVersion": 1,
+    "contractRevision": "2026-11-13-current-only-finite-corpus",
+    "primaryLocales": [
+      "en",
+      "ru",
+      "de",
+      "fr",
+      "es"
+    ],
+    "otherCatalogLocales": "best-effort",
+    "qualificationCriteria": [
+      "finiteCorpusGlyphLayoutReview"
+    ],
+    "retainedGuards": [
+      "input-integrity",
+      "grapheme-integrity",
+      "common-ui-readability",
+      "8192-byte-wire-bound",
+      "cache-and-memory-bounds"
+    ],
+    "excludedQualityExpansion": [
+      "unbounded-rare-Unicode",
+      "arbitrary-mixed-script-provider-proper-names",
+      "perfect-display-outside-primary",
+      "invented-display-names",
+      "normative-Unicode-edgecase-matrix"
+    ],
+    "separateEvidenceCriteria": [
+      "nativeSpeakerReview",
+      "physicalDeviceReview"
+    ],
+    "displayCorpus": {
+      "pastStartUtc": "2021-11-13T00:00:00Z",
+      "future": "all published future launches; paginate to next=null",
+      "ui": "actual application and menu text",
+      "inventedDisplayText": false
+    },
+    "softwareQualifiedLocales": [
+      "en",
+      "ru",
+      "de",
+      "fr",
+      "es"
+    ],
+    "softwareQualificationProof": {
+      "schemaVersion": 1,
+      "corpusPath": "corpus/real-schedule-basic-five-20261113/display-corpus.json",
+      "corpusSha256": "3bca4d0abb4798654acfde011c94236fb49d197041fc51f887ace7422a6f4407",
+      "receiptPath": "openspec/changes/spacefox-watchface/evidence/basic-main-review/finite/software-qualification.json",
+      "receiptSha256": "a26d99cd1f64ce5aa3eacc3829448e9340171728e2c3fdcc1a982a7da2792d01",
+      "productionSources": {
+        "tools/native_language_policy.py": "91019078eae2cc477621fbce1b9c46371de0c4d9e4f9d11b03911decb7ab2fdb",
+        "tools/build_native_localization.py": "892a21ac0c64d6836acb0f950a9fdf03db81fa04d95b02e872cb8977c7223104",
+        "tools/build_watchface.py": "cea335148abb1984e4e8c3880a87e1df57fcbf7f6446d70a92206dd4e913a35f",
+        "watchface/source/LocalePresentation.mc": "17b40805db66e304689b07ef4708e886243e6895ed44a09c24a046256d5dd174",
+        "watchface/source/SceneRenderer.mc": "2d5485a793859d61d8a99132c498949e4d97acf955dac84197ff3e0d45fc3dd6",
+        "watchface/source/SceneSettings.mc": "0ccbbe9901b2217b5e4323064e484dbd32102a238485c8a474239d7fc389f2dc",
+        "watchface/source/SpaceFoxView.mc": "477bf29544597bfba53256e9258fff62dd48dcc008bafac551237ba104b0aaa5",
+        "watchface/source/WatchClock.mc": "e3e84a0277fc0442918bb0fad45daaf232ebf93e9eac4e24a8da072d356101fb",
+        "watchface/source/Fitness.mc": "4514c60764062fcf08aabf253f729629fbb68727789154c801be839a55e581ba",
+        "watchface/source/ScheduleState.mc": "c3683799087e404557be7f40dc953fb277140e01819d594f812985098ff82617",
+        "watchface/source/SceneContext.mc": "fd5a3f5a686fe9cff350d7c9be68fca7f945293594a9ab05a045d7340424777e",
+        "watchface/source/FeedScene.mc": "8ffab79a24e5675caf9fb7da0d416ebf08c29759d768ec758615d4db5531564d",
+        "watchface/source/generated/LocaleGraphemes.mc": "5ad65d6328908a7f251cd5ddbac83244de9b51929c2c46cb746bfb168a4f6c80",
+        "tools/native_timing_requalification.py": "f31fecf441f3729f1a0ef18b15ca6047b0f46cb0896a1d902c2b0e504c439203",
+        "tools/native_timing_settings.py": "e31ae26dd77796843d89024a9246a130516fb46ac27d342fdb71def8ec9d15ad",
+        "tools/spacefox/native_profile.py": "71492f1c37bfc044d407fd28257a4d04b30004fa19e11ce9c7c78e53ef357b93",
+        "watchface/tests/NativeClockTests.mc": "3509a9e9b99aacd040d94a4bf4f5f91293bee1f34551df4e50ec8a9948bfe668",
+        "tests/fixtures/final_native_timing_settings/Assertions.mc": "7bd1658814c166caa8cc0d808e725a92a118621a3bf75a705d220a43b79ffd03",
+        "watchface/source/NativeFeed.mc": "94164ebef3b3e53bc2e2d08fe4caef4014aeaf9574750028a005264e80ceb994",
+        "watchface/source/NativeJson.mc": "145df47e02753324bff7c2151c0500b712f123f608e2ca01997b46757fcc4a0a",
+        "tests/fixtures/sourced_ascent_end/Assertions.mc": "c65d82439009ffa9ead953cb2a2dc24c4e67abeaaf729b04d224253cc24d6d40",
+        "tools/native_site_flag_requalification.py": "c8699711ae29c69798c0c158890a50a5526e50afa0afa80c143fadacaa2b5c0d",
+        "tools/native_site_flag_tests.py": "0f3df0eba37a5765630db0b7a00f09c749e9d87736dbd7ff552c1a3cb09485d7",
+        "tools/native_site_flag_observer.py": "90a91333f68062ed6c5b395fe44d3fdd186029d4c477b8d97c5ef970cb0d9c2e",
+        "watchface/source/NativeSfr.mc": "7977e06d11a735cc09ff4ae8fb563c8432b57d383c2ba285bba4ded2c714a1de",
+        "watchface/source/NativeVisualRenderer.mc": "ddd15b430d5c4b747eef17dbbf0123680a08dde843bd09275fdd3f150dc33e37",
+        "watchface/source/NativeAssetTypes.mc": "7898007364c66748377eccc8289863f45764e66479b813c57214a84374b20867",
+        "watchface/source/generated/NativeAssets.mc": "82d7ff2dcddcb011ed7651230a060f26512661419030ec96e03132f431c7a3c7",
+        "watchface/resources/drawables/drawables.xml": "1491e299c4b0a37465b1a1b116e44fd485db11c0e4c95f18c2c606f93c49ee4d",
+        "watchface/monkey.jungle": "abe93f12654450100407e84232b4c6dc0e7c9b1707499d7fd8e118fce040f0c4",
+        "watchface/toolchain-lock.json": "948c281801f4596cd6f904428f385adf85ebfe63f89d3c416b959cddf7bed389",
+        "watchface/resources/settings/settings.xml": "deda53fd5f3b8339d13ed8a6e10cc2915790b7fffb133db23d8b3e00605c90ce",
+        "watchface/resources/settings/properties.xml": "14fbba62892d64b65787783ebd032bc5d96417a4f100e14602b14a3ce453b357",
+        "watchface/resources/json/locales.xml": "15b1c7862c6bf727a195536368db9a26baba2d0ce3c3ed5f07a1682129235c0a",
+        "locales/en.json": "0fd9ee10ba903853f5105dc0c51884b9b2986a1e27f559e1790f5521419538f2",
+        "watchface/resources/json/Locale0.json": "a416bf9017d3493ffff332fc6a44cc1b9534de749e2a253a3134ba87beeb6ca5",
+        "watchface/resources/strings/strings.xml": "1a4a6fd7d5fa8f374f79885e0d7ba10bc2abf7bbd52c705a7096eba6cf0ca04e",
+        "locales/ru.json": "087604228bb305061e65f77a1ce88b45219969918d51cad1afa4b0ce93cd6084",
+        "watchface/resources/json/Locale1.json": "0c8483d2a71025129d5794d93a3ae63e5083f9cf1b92347475537403a81b2fb3",
+        "watchface/resources-rus/strings/strings.xml": "844ee5c40488db4f784bb8a5d2952cc14960ecb056228fb9b78e922eeca1e4c2",
+        "locales/de.json": "f889e4028b5610c25dec36729f30c9527c49c44eac13bbf404b2e72e5a5d14b0",
+        "watchface/resources/json/Locale2.json": "52a2d57f8d2e73a78a3581ca5d893962f664499fd1e65487ebda189cf5d3c74d",
+        "watchface/resources-deu/strings/strings.xml": "3672c91ea64b755e9b2b22f22152de44e791424a7cad84d80ccbd319bdaba454",
+        "locales/fr.json": "a300ea860486bf45f40cb68123249dfc7b32d3e17bd8c7798905c1a571451d22",
+        "watchface/resources/json/Locale3.json": "76fdc9e6a41886722a060b98d546d1eaf9deabaa7baa7cb5b098818b37f7f6bb",
+        "watchface/resources-fre/strings/strings.xml": "a5e26b4bf42506f9b05a8a66a3f56d6f121402408adee093d78627a15988a9ed",
+        "locales/es.json": "aa127e612f1bf8a8cc8ab00457e85a8b29beff78f0a543f6fa78c8ec9f1302b9",
+        "watchface/resources/json/Locale4.json": "29f023d6b291ea15a56dc6e340775a555cc0d196dce88699f79df5cfd5de5d7b",
+        "watchface/resources-spa/strings/strings.xml": "18388cdda0b4d6cab0d41eb7e40eaf9f9ac0753f361bfd0406451b02d27310f9",
+        "watchface/resources/json/graphemes.xml": "dc18fb0a60a2d8e2b4b058f91cd0723ea6cbafee33947429c325db9854f9c1a7",
+        "watchface/resources/json/GraphemeProperties.json": "2b8a5a6541465122288792356878479bdf3d70a4afd47203751d444d9c71b78e",
+        "watchface/resources/fonts/fonts.xml": "b31a9d17c303d7b13202f3b34cbdc1a90213a8ad84e93996adcab8e4e9cff9b0",
+        "watchface/resources/fonts/Aod40.fnt": "e45c894adba1ab52742a9c7982c043a1145e0dd73e773e980ea2d43f4dd124ae",
+        "watchface/resources/fonts/Aod40.png": "1f43b0add832380979d99eec212ab2140ce39ad2c0a83f7d3ea3d23fb1320085",
+        "watchface/resources/fonts/Battery13.fnt": "f24b59cbe818b32ca7650c39908878b982ec250c418eb263cc1754fdfd0db2f4",
+        "watchface/resources/fonts/Battery13.png": "ff2512749509a9792d05842eec6d53d2d21daa78f820c2d115d76301b2b60901",
+        "watchface/resources/fonts/Metric32.fnt": "7466ec74812c63701803c58d4d2a3c71285429e9872ac29264eba7ea153a788b",
+        "watchface/resources/fonts/Metric32.png": "b1f28b8ce7f75ccbc7a1fb6ed2a960541f35200e28aa177d2d64fbd220448806",
+        "watchface/resources/fonts/Time80.fnt": "1562c0807fde9443ef419a3ccc3366da303172948dc2b3929867f22d3d33cfb6",
+        "watchface/resources/fonts/Time80.png": "e13cdd513a8697541e04e1d222d091d4b1128bec09d04c36f082d04aad34ee47"
+      },
+      "scope": "finite-primary-software",
+      "physicalDeviceObserved": false,
+      "nativeSpeakerReviewed": false,
+      "sourceDeltaProof": {
+        "path": "openspec/changes/spacefox-watchface/evidence/final-native-timing-settings/source-delta-qualification.json",
+        "sha256": "64409b2cead6328db979227b74003589500455cc00c93882a9d089e91e68864e"
+      },
+      "visualDeltaProof": {
+        "path": "openspec/changes/spacefox-watchface/evidence/site-flag-visual-batch/independent-header/source-delta-qualification.json",
+        "sha256": "78b9c92ff7a6b69d14142ac7cd5d6ac7fcdc79154b84650502441ba91c3f5302"
+      },
+      "bootstrapDeltaProof": {
+        "path": "openspec/changes/spacefox-watchface/evidence/test-release-20261114/bootstrap-delta.json",
+        "sha256": "07f0e2370944577ad22decaad5d42ee554d69bbeef475d09b6ee4ae39d0cfbc9"
+      }
+    }
+  }
+}
