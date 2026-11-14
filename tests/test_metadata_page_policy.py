@@ -118,51 +118,59 @@ class MetadataPagePolicyTest(unittest.TestCase):
     def test_url_scoped_304_reuses_exact_bodies_and_source_dates(self):
         candidate, files = fixture.captured()
         ids = {'countries': 2, 'organizations': 121, 'models': 522, 'sites': 235}
-        raw = {}
+        rows = {}
         for kind, identity in ids.items():
-            rows = [r for page in candidate['coverage']['pages'] if page['collection'] == kind
-                    for r in json.loads(files['objects/' + page['body']['sha256'] + '.json'])['results']
-                    if r['id'] == identity]
-            self.assertEqual(1, len(rows))
-            raw[kind] = json.dumps(dict(count=1, next=None, previous=None, results=rows)).encode()
-        urls = [
-            'https://ll.thespacedevs.com/2.3.0/config/countries/?format=json&limit=20',
-            'https://ll.thespacedevs.com/2.3.0/agencies/?format=json&limit=20&mode=normal',
-            'https://ll.thespacedevs.com/2.3.0/launcher_configurations/?format=json&limit=100&mode=detailed',
-            'https://ll.thespacedevs.com/2.3.0/pads/?format=json&limit=100&mode=detailed&ordering=id']
+            found = [r for page in candidate['coverage']['pages'] if page['collection'] == kind
+                     for r in json.loads(files['objects/' + page['body']['sha256'] + '.json'])['results']
+                     if r['id'] == identity]
+            self.assertEqual(1, len(found)); rows[kind] = found
+        paths = ['/2.3.0/config/countries/?format=json&limit=20',
+                 '/2.3.0/agencies/?format=json&limit=20&mode=normal',
+                 '/2.3.0/launcher_configurations/?format=json&limit=100&mode=detailed',
+                 '/2.3.0/pads/?format=json&limit=100&mode=detailed&ordering=id']
         kinds = ['countries', 'organizations', 'models', 'sites']
         tags = ['"capture-' + str(i) + '"' for i in range(4)]
-        class Conditional:
-            def __init__(self): self.now = NOW; self.reuse = False; self.calls = []
-            def get(self, url, etag):
-                self.calls.append((url, etag))
-                index = urls.index(url)
-                headers = {'date': formatdate(self.now, usegmt=True), 'age': '5',
-                           'content-type': 'application/json', 'etag': tags[index]}
-                if self.reuse:
-                    if etag != tags[index]: raise AssertionError('wrong URL-scoped ETag')
-                    return Response(304, headers, b'')
-                if etag is not None: raise AssertionError('unexpected initial condition')
-                return Response(200, headers, raw[kinds[index]])
-        helper = fixture.CurrentMetadataPublisherTest()
-        with helper.authority() as (pub, store, code):
-            helper.primary(pub, NOW, accept=True)
-            preserved = deepcopy(helper.preserved(pub)); service = Conditional()
-            service.now = NOW + 5
-            self.assertEqual('complete', CatalogRefresh(pub, transport=service).run(NOW + 5, max_requests=4).status)
-            first = CatalogRefresh(pub).current()
-            self.assertEqual([hashlib.sha256(raw[k]).hexdigest() for k in kinds],
-                             [p['body']['sha256'] for p in first['coverage']['pages']])
-            self.assertEqual([NOW] * 4, [p['validatedUtc'] for p in first['coverage']['pages']])
-            pub = Publisher(store, code); pub.reconcile(None); helper.primary(pub, NOW + 3600)
-            service.reuse = True; service.now = NOW + 3605
-            self.assertEqual('complete', CatalogRefresh(pub, transport=service).run(NOW + 3605, max_requests=4, restart=True).status)
-            second = CatalogRefresh(Publisher(store, code)).current()
-            self.assertEqual([304] * 4, [p['status'] for p in second['coverage']['pages']])
-            self.assertEqual([NOW + 3600] * 4, [p['validatedUtc'] for p in second['coverage']['pages']])
-            self.assertEqual([p['body'] for p in first['coverage']['pages']], [p['body'] for p in second['coverage']['pages']])
-            self.assertEqual(list(zip(urls, [None] * 4)) + list(zip(urls, tags)), service.calls)
-            self.assertEqual(preserved, helper.preserved(pub))
+        state = {'now': NOW + 5, 'reuse': False, 'calls': []}
+        class Handler(BaseHTTPRequestHandler):
+            def log_message(self, *args): pass
+            def do_GET(self):
+                index = paths.index(self.path); etag = self.headers.get('If-None-Match')
+                state['calls'].append((self.path, etag))
+                body = raw[kinds[index]]
+                valid = etag == tags[index] if state['reuse'] else etag is None
+                self.send_response_only((304 if state['reuse'] else 200) if valid else 412)
+                self.send_header('Date', formatdate(state['now'], usegmt=True))
+                self.send_header('Age', '5'); self.send_header('ETag', tags[index])
+                self.send_header('Content-Type', 'application/json')
+                self.send_header('Content-Length', str(0 if state['reuse'] else len(body)))
+                self.end_headers()
+                if not state['reuse']: self.wfile.write(body)
+        server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+        origin = 'http://127.0.0.1:' + str(server.server_port)
+        raw = {k: json.dumps(dict(count=1, next=None, previous=None, results=rows[k])).replace(
+               'https://ll.thespacedevs.com', origin).encode() for k in kinds}
+        thread = threading.Thread(target=server.serve_forever, daemon=True); thread.start()
+        try:
+            helper = fixture.CurrentMetadataPublisherTest()
+            with helper.authority() as (pub, store, code):
+                helper.primary(pub, NOW, accept=True)
+                preserved = deepcopy(helper.preserved(pub)); opts = dict(origin=origin, local_http=True)
+                self.assertEqual('complete', CatalogRefresh(pub, **opts).run(NOW + 5, max_requests=4).status)
+                first = CatalogRefresh(pub, **opts).current()
+                self.assertEqual([hashlib.sha256(raw[k]).hexdigest() for k in kinds],
+                                 [p['body']['sha256'] for p in first['coverage']['pages']])
+                self.assertEqual([NOW] * 4, [p['validatedUtc'] for p in first['coverage']['pages']])
+                pub = Publisher(store, code); pub.reconcile(None); helper.primary(pub, NOW + 3600)
+                state['reuse'] = True; state['now'] = NOW + 3605
+                self.assertEqual('complete', CatalogRefresh(pub, **opts).run(NOW + 3605, max_requests=4, restart=True).status)
+                second = CatalogRefresh(Publisher(store, code), **opts).current()
+                self.assertEqual([304] * 4, [p['status'] for p in second['coverage']['pages']])
+                self.assertEqual([NOW + 3600] * 4, [p['validatedUtc'] for p in second['coverage']['pages']])
+                self.assertEqual([p['body'] for p in first['coverage']['pages']], [p['body'] for p in second['coverage']['pages']])
+                self.assertEqual(list(zip(paths, [None] * 4)) + list(zip(paths, tags)), state['calls'])
+                self.assertEqual(preserved, helper.preserved(pub))
+        finally:
+            server.shutdown(); thread.join(); server.server_close()
 
     def test_cli_duplicate_refusal_and_retry(self):
         candidate, files = fixture.captured()
