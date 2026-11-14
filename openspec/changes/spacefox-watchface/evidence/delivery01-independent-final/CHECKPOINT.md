@@ -43,3 +43,10 @@ malformed subsequent response was rejected while the accepted scene survived.
 No decoder step or unexpected rejection preceded the scheduled event and completed
 batch. The sampled foreground high was 111816 of 126784 bytes, not an allocation
 peak. The captured log and source/launch bindings are `native-cold-final.*`.
+
+The first candidate export was rejected by the independent verifier because its
+input snapshot omitted 60 of 225 required delivery-proof inputs. That export was
+quarantined with `.rejected` suffixes and its discrepancy is recorded in
+`export-inventory-red.json`. Release inventory now includes the complete delivery
+proof closure; a host regression checks that inclusion. Native behavior receipts
+remain valid because this change is confined to the release tool and host test.
