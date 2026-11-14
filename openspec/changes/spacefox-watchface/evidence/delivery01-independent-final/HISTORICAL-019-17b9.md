@@ -1,4 +1,6 @@
-# Independent delivery and integration result
+# Historical integrated candidate - superseded
+
+This earlier 0.1.9 candidate was superseded solely to correct TESTING.md before final export; its signed native behavior inputs were unchanged. Its artifact and receipt use `.superseded` suffixes.
 
 Bounded software verification is **GREEN** at the source, SDK simulator and
 signed-export boundaries below. Overall product and task 3.2 remain **NOT DONE**:
@@ -35,8 +37,8 @@ Validation on the integrated source:
 
 Signed candidate output (external to the repository):
 
-- IQ: `/Users/jekamas/.codex/tmp/spacefox-delivery01-integrated-final-019-20261115/SpaceFox.iq`, SHA-256 `4f382811329d378a733ac5deb8f12d9de622fe73861b5e0579f5cfafb71bc4dd`.
-- Receipt: `/Users/jekamas/.codex/tmp/spacefox-delivery01-integrated-final-019-20261115/release.json`, SHA-256 `c2824f450f3c08865257976eb54fdad7f3c91b8ec6ab443e0b78aa96edd0e080`.
+- IQ: `/Users/jekamas/.codex/tmp/spacefox-delivery01-integrated-final-019-20261115/SpaceFox.iq.superseded`, SHA-256 `4f382811329d378a733ac5deb8f12d9de622fe73861b5e0579f5cfafb71bc4dd`.
+- Receipt: `/Users/jekamas/.codex/tmp/spacefox-delivery01-integrated-final-019-20261115/release.json.superseded`, SHA-256 `c2824f450f3c08865257976eb54fdad7f3c91b8ec6ab443e0b78aa96edd0e080`.
 - Exact predecessor: published 0.1.8 IQ SHA-256 `9003c505801ffaace23efd9b5facb26ce49e68d5ccce2feb3771e9a8b7257cc9`, receipt SHA-256 `6f28e7254a1792fc723365029d3a74612759b1c2b7f9f742e01635f6a9c469da`.
 - UUID `ec8b7c8a8ea54ee9ac91ee6e7a674d15`, public SPKI SHA-256 `84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc`, 10 products, five languages, min API 5.1 and three existing permissions. The inspector verified the IQ signature and 21 program signatures; all 1268 recorded source inputs matched the compiled snapshot and clean source revision. The copied snapshot independently replayed both admission chains.
 

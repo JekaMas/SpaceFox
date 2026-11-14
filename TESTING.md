@@ -25,6 +25,6 @@ Check the clock and four fields, wait for a schedule and rocket/map, and compare
 
 See [privacy](https://github.com/JekaMas/SpaceFox/blob/main/docs/PRIVACY.md), [licenses](https://github.com/JekaMas/SpaceFox/blob/main/THIRD_PARTY_NOTICES.md) and [project setup](https://github.com/JekaMas/SpaceFox/blob/main/docs/AGENT_SETUP.md).
 
-## Candidate 0.1.8 test package
+## Published 0.1.8 test and combined 0.1.9 candidate
 
-A higher-version test candidate is in preparation. Check the GitHub release status and its checksums before use; a draft is not a published release. Match `SpaceFox-fr165m.prg` to the Forerunner 165 Music and `SpaceFox-fr165.prg` to the standard model. For USB installation, simulator steps, offline checks and the phone/pairing distinction, see [installation and testing](docs/TESTING_ON_PHONE.ru.md). The 0.1.7 incident above remains open until the executing version and actual device behavior are observed.
+The [0.1.8 test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.8-test.1) is published on GitHub and was not submitted to Garmin. The combined 0.1.9 repair is a separate local candidate. Check release status and checksums before use. Match `SpaceFox-fr165m.prg` to the Forerunner 165 Music and `SpaceFox-fr165.prg` to the standard model. For USB installation, simulator steps, offline checks and the phone/pairing distinction, see [installation and testing](docs/TESTING_ON_PHONE.ru.md). Physical delivery and the incident remain open until the executing version and actual device behavior are observed.
