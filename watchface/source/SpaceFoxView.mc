@@ -101,6 +101,8 @@ class SpaceFoxView extends WatchUi.WatchFace {
         return minute;
     }
     (:typecheck(false)) function onUpdate(dc as Graphics.Dc) as Void {
+        // Skip the entire LOW update, including mask and scaled-buffer blit.
+        if(!_active && aodMinute!=null && aodMinute==utcMinute(_clock.utcSeconds())){return;}
         if(sceneBuffer!=null){var bitmap=sceneBuffer as Graphics.BufferedBitmap;var target=bitmap.getDc();drawScene(target);applyPixelRest(target);dc.drawBitmap2(0,0,bitmap,sceneScaleOptions);return;}
         drawScene(dc);applyPixelRest(dc);
     }

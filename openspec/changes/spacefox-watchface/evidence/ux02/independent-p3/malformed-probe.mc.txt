@@ -1,0 +1,25 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.System;
+import Toybox.Background;
+import Toybox.Time;
+import Toybox.Timer;
+(:background,:typecheck(false)) class RecoveryBadFeed extends System.ServiceDelegate {
+ function onTemporalEvent() as Void {if(Application.Storage.getValue("p3.armed")!=true){Background.deleteTemporalEvent();Background.exit(null);return;}Application.Storage.deleteValue("p3.armed");var t=new NativeTransfer(configuredFeedUrl(),null);var before=t.store.read("sf.commit");var accepted=t.stage("feed","{\"late\":"+Time.now().value()+",]",{"wireVersion"=>3});System.println("REVIEW_BG stagedMalformed="+accepted+" preserved="+nativeSame(before,t.store.read("sf.commit"))+" total="+System.getSystemStats().totalMemory);Background.deleteTemporalEvent();Background.exit({"provisional"=>true});}
+}
+(:extendedCode,:typecheck(false)) class RecoveryProxy extends WatchUi.WatchFace {
+ var app;function initialize(a){WatchFace.initialize();app=a;}
+ function onLayout(dc){app.view.onLayout(dc);}function onShow(){app.view.onShow();}function onHide(){app.view.onHide();}function onEnterSleep(){app.view.onEnterSleep();}function onExitSleep(){app.view.onExitSleep();}
+ function onUpdate(dc){var v=app.view;v.onUpdate(dc);if(app.restorePending){var first=v.aodMinute;v.onUpdate(dc);System.println("REVIEW_DRAW mode="+System.getDisplayMode()+" pending="+app.restorePending+" maintenance="+v.visualMaintenance+" renderer="+(v.renderer!=null)+" firstMinute="+first+" secondMinute="+v.aodMinute+" bitmap="+(v.downloaded!=null)+" total="+System.getSystemStats().totalMemory+" owner="+NativeMetrics.ownerTag);}}
+}
+(:background,:extendedCode,:typecheck(false)) class SfrRuntimeApp extends SpaceFoxApp {
+ var observer=null;var seen=false;
+ function initialize(){SpaceFoxApp.initialize();NativeMetrics.ownerTag="e87c78f5319f4b3b9a000ad2a267e216|spacefox-independent-p3-malformed|cb33a854cf16";System.println("SFR_PROBE owner="+NativeMetrics.ownerTag);NativeMetrics.enabled=true;}
+ function getServiceDelegate() as [System.ServiceDelegate]{return [new RecoveryBadFeed()];}
+ (:typecheck(disableBackgroundCheck)) function getInitialView(){Application.Properties.setValue("FeedBaseUrl","https://jekamas.github.io/SpaceFox");SpaceFoxApp.getInitialView();view.pendingLoader=method(:begin);return [new RecoveryProxy(self)];}
+ (:typecheck(disableBackgroundCheck)) function begin(){SpaceFoxApp.reloadFeed();Background.deleteTemporalEvent();observer=new Timer.Timer();observer.start(method(:pulse),100,true);}
+ (:typecheck(disableBackgroundCheck)) function pulse(){if(!seen&&view.downloaded!=null){seen=true;System.println("REVIEW_READY seal="+feed.store.read("sf.commit")["seal"]+" age="+feed.packet.validation+" owner="+NativeMetrics.ownerTag);observer.stop();observer=null;}}
+ (:typecheck(disableBackgroundCheck)) function onDisplayModeChanged(){SpaceFoxApp.onDisplayModeChanged();System.println("REVIEW_MODE mode="+System.getDisplayMode()+" pending="+restorePending+" owner="+NativeMetrics.ownerTag);if(System.getDisplayMode()!=System.DISPLAY_MODE_HIGH_POWER){if(observer!=null){observer.stop();observer=null;}Application.Storage.setValue("p3.armed",true);Background.registerForTemporalEvent(new Time.Duration(300));}}
+ (:typecheck(disableBackgroundCheck)) function onBackgroundData(data){System.println("REVIEW_BG_CALLBACK mode="+System.getDisplayMode()+" owner="+NativeMetrics.ownerTag);SpaceFoxApp.onBackgroundData(data);System.println("REVIEW_RESTORE pending="+restorePending+" maintenance="+view.visualMaintenance+" aodMinute="+view.aodMinute+" acceptedSeal="+feed.store.read("sf.commit")["seal"]+" owner="+NativeMetrics.ownerTag);}
+}

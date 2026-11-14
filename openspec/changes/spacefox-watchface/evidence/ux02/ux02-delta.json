@@ -110,7 +110,7 @@
     "watchface/source/FeedService.mc": "d13c2401eb91a8c85544181f1914c91d663605983ce5dfdf31e8d7b805f62b9b",
     "watchface/source/NativeCache.mc": "df4fe63556691734e561ccdcb8e499c97cbe40504db35567c03168f8646b621d",
     "watchface/source/NativeAnimation.mc": "87d1baaad814772abfd06c83c2bbef7b1be29ce8b6b73670f240e2971ae226d8",
-    "watchface/source/SpaceFoxView.mc": "32980f671563ba511b97c758b77a737a7cdb6840bbe2025bbb29a06cfd8cd958",
+    "watchface/source/SpaceFoxView.mc": "de1fd795db5bc06fcab69cdddfebbfb7435620fd7880266eda41bce5caa4bf11",
     "watchface/source/NativeJson.mc": "145df47e02753324bff7c2151c0500b712f123f608e2ca01997b46757fcc4a0a",
     "watchface/source/FeedScene.mc": "8ffab79a24e5675caf9fb7da0d416ebf08c29759d768ec758615d4db5531564d",
     "watchface/source/SceneContext.mc": "fd5a3f5a686fe9cff350d7c9be68fca7f945293594a9ab05a045d7340424777e",
@@ -253,8 +253,8 @@
     "tools/build_native_resources.py": "154767544222674326c9d3b2458b9717724ebb34d00398fba5106555cb6fff42",
     "tools/native_language_policy.py": "980bdef5189d6c5a01fab0d4494e1432249e7f55047b207534beeb83e9fe7c6a",
     "tools/qualify_native_finite.py": "f5923999e810f56f58b0bc42e0b570c0287189414d6d8e759728c5173a018f46",
-    "tools/native_ux02_requalification.py": "1b943683b8e2827509217db21a77546a71039a9f4e8aef3a5795ba2818063bba",
-    "tools/native_ux02_record.py": "d92ad36c78c091ce62965bcb57933cd881279a3a8c2c02d110b5b0ea8f4c8c73",
+    "tools/native_ux02_requalification.py": "e535db472c197f95f1d690a6bda78b361bf4723aced8f8405c792f0515409084",
+    "tools/native_ux02_record.py": "7fad1dda1400a6767c5127c3bf9559c580613d9198ad480ed3ce303f5d20b812",
     "tools/native_ux02_phase_observation.py": "0344729ef063e64cb22b68e43af1f54b32f6e5d89ad53532570a6aa5ae903840",
     "tools/native_ux02_hosted_timing.py": "d84f38f3af14867cf92433f3c62dc6d9afe97490a3063ef40931dd98af045226",
     "tools/native_full_visual_runtime.py": "fad155450903b71df93cddde479db29febd422639aa2b47dc6da09bf47dff157",
@@ -275,7 +275,8 @@
     "tests/test_ux02_pixel_rest.py": "4fb48617f7c960912870446c414ad618da0cf3a1c3ca9ebbc6cb9039d7fb867f",
     "tests/test_ux02_admission.py": "1450a26594fac8358370a8c15c5b21083ddcf8bcdf52b862173374d56a18596a",
     "tests/test_ux02_reuse.py": "b4f3d7fe1aeea2a5ef4e0a2910579b7e33c639b49da600db48e045af1c3b62c3",
-    "watchface/ux-tests/UxUpgradeTests.mc": "0e301284c4a7b66ac6746dbe239f7a06ee2aa7543c6f83f29f82a742f12548e6"
+    "watchface/ux-tests/UxUpgradeTests.mc": "0e301284c4a7b66ac6746dbe239f7a06ee2aa7543c6f83f29f82a742f12548e6",
+    "watchface/ux-tests/UxLowGuardTests.mc": "b6056baad8351a12e48f604374103c16143afd1f4c099b688bfadaac1da635a4"
   },
   "evidence": {
     "openspec/changes/spacefox-watchface/evidence/ux02/time-variants.log": "c4b3aa9a3118d13fcfab2d35ac11e006f3147afc5269145f103a808778726c96",
@@ -327,7 +328,7 @@
     "openspec/changes/spacefox-watchface/evidence/ux02/battery-grid-red.log": "a3a88e1db5f92c71b7b3157e88e14354587b4ffd7f0b3057d8c9f2ebfd4ddb01",
     "openspec/changes/spacefox-watchface/evidence/ux02/ux02-time-0000.png": "5114d89becc86d8f1da13cce538b5d1be007549ab971ff3fff7dc27c6ec61e4b",
     "openspec/changes/spacefox-watchface/evidence/ux02/ux02-ru-count-396h-v2.png": "7a36defa09bc0d5bf3c3a1d263ded6167a7c79930f3ddc84785c6f2c4790d812",
-    "openspec/changes/spacefox-watchface/evidence/ux02/STATUS.md": "2db40dc553cd5b11beb3dcb63d5f49294809f379fc3dbf0c7974a1770b4258ce",
+    "openspec/changes/spacefox-watchface/evidence/ux02/STATUS.md": "f186e79a631cb195de439177c4e774a527359264cb63b5999187909359a2add7",
     "openspec/changes/spacefox-watchface/evidence/ux02/ux02-status-both-454-v3.png": "914be652e2f8abf8171ce45b14461200245babfbaef3ab4380bd19c029517ab3",
     "openspec/changes/spacefox-watchface/evidence/ux02/phase-checker-3.png": "1d635b89cb86354d430794cdc145a774823d53c71304173c52d416e95a6272d7",
     "openspec/changes/spacefox-watchface/evidence/ux02/ux02-status-reschedule-390.png": "b840fe1e1e8fc12491690063f1f12896709d2c050439c338a6e4fb240389e91f",
@@ -344,6 +345,7 @@
     "openspec/changes/spacefox-watchface/evidence/ux02/handoff-old-cached-400.log": "220147010b0194d4f33f3217912064557ac7294bda5083a4f8fb9f0e8f632e9d",
     "openspec/changes/spacefox-watchface/evidence/ux02/upgrade-baseline-red.log": "faa80d243063bbb3d1050e04034f453aa30a216177b3f2227ddcbbb2508d69e3",
     "openspec/changes/spacefox-watchface/evidence/ux02/phase-checker.log": "7d52016c4ceec8d9c42ded552e3f6f4d29fd294cfb9c625c474cf6412a00da6d",
+    "openspec/changes/spacefox-watchface/evidence/ux02/independent-whole-20261114.log": "415269a4161318a58308c1c41c5dadaeadb6af9c5eb621fd3d3fc65d8ad284fb",
     "openspec/changes/spacefox-watchface/evidence/ux02/cleanup.log": "23a992292dcafb6adbdb57a661614f73eb279b940ff31e99ee4b5c0658d1eae8",
     "openspec/changes/spacefox-watchface/evidence/ux02/cleanup-build.json": "aa532c34fa4684fe14edfb3d6adc7c0390e4f4045304243955bb184f48dfc41a",
     "openspec/changes/spacefox-watchface/evidence/ux02/asset-frames.log": "837120d242342951d4585120b6d2f62533753c7e3f7ba1abb7d619589c1e6467",
@@ -389,6 +391,11 @@
     "openspec/changes/spacefox-watchface/evidence/ux02/admission-old-root-red.log": "3d366f1e34635e0d93b3d68af810824be75314bcdb6a80502a6c37868d906fb8",
     "openspec/changes/spacefox-watchface/evidence/ux02/ux02-status-reschedule-390-v3.png": "b840fe1e1e8fc12491690063f1f12896709d2c050439c338a6e4fb240389e91f",
     "openspec/changes/spacefox-watchface/evidence/ux02/ux02-status-stale-390-v3.png": "06116b981098cb5a51178045663fcdb31931166fc3690d044d568d818338a3a0",
-    "openspec/changes/spacefox-watchface/evidence/ux02/status-fr165m.log": "e2b956e9daa2bd5ebfb6b1cc4e0a29efbb4b40b7cfddcb5af22da4af4983995e"
+    "openspec/changes/spacefox-watchface/evidence/ux02/status-fr165m.log": "e2b956e9daa2bd5ebfb6b1cc4e0a29efbb4b40b7cfddcb5af22da4af4983995e",
+    "openspec/changes/spacefox-watchface/evidence/ux02/independent-guard/Probe.mc": "90fdb407f5e13ed9b1bada6b8a830c7ae2c49e5651ccf6d6b707ce8077364823",
+    "openspec/changes/spacefox-watchface/evidence/ux02/independent-guard/native-execution.json": "178dff5c3aff6cdfd298d47bbf27104b7580adee62d156d96ef818d1f8afdeec",
+    "openspec/changes/spacefox-watchface/evidence/ux02/independent-guard/compile.log": "2e52c44be53fff397e8849a965b6248d2466e1dcd066ab0d9cae0079c2c5abcf",
+    "openspec/changes/spacefox-watchface/evidence/ux02/independent-guard/native.log": "b4e638fec744b2b6153d30fac7e9339cdbb4ee289179d1eeeeed10afa13bd12d",
+    "openspec/changes/spacefox-watchface/evidence/ux02/independent-guard/build.json": "6d4588e9c75dff8578705658d34b59a2399637b65c33a04fec94c615179c71cd"
   }
 }

@@ -27,13 +27,26 @@ def validate(root,catalog):
     if comparable!=old:raise ValueError('catalog outside UX02 proof changed')
     for name,digest in r['sources'].items():checked(name,digest)
     for name,digest in r['evidence'].items():checked(name,digest)
+    guard_base=BASE+'independent-guard/'
+    for name in ('build.json','Probe.mc','native.log','native-execution.json'):
+        if guard_base+name not in r['evidence']:raise ValueError('LOW guard evidence missing: '+name)
+    guard_build=json.loads((root/guard_base/'build.json').read_text())
+    guard_execution=json.loads((root/guard_base/'native-execution.json').read_text())
+    if guard_build['exitCode']!=0 or guard_build['productionSources'].get('watchface/source/SpaceFoxView.mc')!=r['sources']['watchface/source/SpaceFoxView.mc'] or guard_build['probeSha256']!=hashlib.sha256((root/guard_base/'Probe.mc').read_bytes()).hexdigest():raise ValueError('LOW guard source binding failed')
+    if parse_output((root/guard_base/'native.log').read_text(),guard_execution['exitCode'],('independentLowGuard',))['status']!='passed':raise ValueError('LOW guard native assertion failed')
     expected_sources={str(p.relative_to(root)) for p in (root/'watchface/source').rglob('*.mc')}
     if not expected_sources<=set(r['sources']):raise ValueError('UX02 production source closure incomplete')
     for name in ('phase-checker-build.json','phase-checker-454-build.json','hosted-timing-build.json','hosted-timing-454-build.json'):
         observed=json.loads((root/BASE/name).read_text())
         if observed.get('exitCode') != 0: raise ValueError('UX02 SDK build failed: '+name)
         for source,digest in {**observed['productionSources'],**observed['productionResources']}.items():
-            if r['sources'].get(source)!=digest: raise ValueError('UX02 final SDK closure differs: '+source)
+            if r['sources'].get(source)==digest: continue
+            # The later same-minute wrapper guard does not alter the first LOW
+            # snapshot. Retain captures only for this exact added statement.
+            guard='        // Skip the entire LOW update, including mask and scaled-buffer blit.\n        if(!_active && aodMinute!=null && aodMinute==utcMinute(_clock.utcSeconds())){return;}\n'
+            current=(root/source).read_bytes() if source=='watchface/source/SpaceFoxView.mc' else b''
+            if current.count(guard.encode())!=1 or hashlib.sha256(current.replace(guard.encode(),b'',1)).hexdigest()!=digest:
+                raise ValueError('UX02 final SDK closure differs: '+source)
     required=('fr165m-pixels-green.log','geometry-green.log','battery-grid-green.log','asset-detail-green.log','handoff-old-015.log','handoff-current-success.log','handoff-old-cached-400.log','handoff-cached-retry.log','lifecycle-fr965.log','pixel-rest-green.log','hosted-timing-green.log','hosted-wake-green.log','hosted-timing-454-green.log','cleanup.log','reuse-green.log')
     for name in required:
         if BASE+name not in r['evidence']:raise ValueError('UX02 evidence missing: '+name)

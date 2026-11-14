@@ -2,7 +2,7 @@
 
 ## Current UX02 candidate
 
-Self-verification covers the changed EN/RU LOW readability/colors, four-field battery, FR165 Music and FR965 layout, bounded four-phase pixel rest, and actual 0.1.5→0.1.6 SDK retry/cache handoff. See [UX02 evidence and boundaries](evidence/ux02/STATUS.md). The current hosted accepted scene reopened within 8 seconds on both simulator profiles; a diagnostic-heavy 19.252 s run remains recorded separately. Existing WF01.P1/WF03.P1 proof is supplemented for changed geometry; WF09.P2/P3 software components are reconciled to retained and current evidence, subject to the required fresh independent whole verifier and root judgment. WF09.P1 physical behavior and WF10.P1's entire background/memory obligations remain open. These observations do not change the accepted closure counts below.
+Self-verification covers the changed EN/RU LOW readability/colors, four-field battery, FR165 Music and FR965 layout, bounded four-phase pixel rest, and actual 0.1.5→0.1.6 SDK retry/cache handoff. See [UX02 evidence and boundaries](evidence/ux02/STATUS.md). The current hosted accepted scene reopened within 8 seconds on both simulator profiles; a diagnostic-heavy 19.252 s run remains recorded separately. Existing WF01.P1/WF03.P1 proof is supplemented for changed geometry; WF09.P2/P3 software components are reconciled to retained and current evidence, with fresh independent whole verification, focused LOW guard repair and current malformed/stale callback evidence; root judgment remains pending. WF09.P1 physical behavior and WF10.P1's entire background/memory obligations remain open. These observations do not change the accepted closure counts below.
 
 ## Accepted whole software closures
 
