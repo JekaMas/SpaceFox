@@ -2,7 +2,7 @@
 
 This is a test build for **Garmin Forerunner 165**. The signed IQ is intended for Garmin's Connect IQ distribution process. A standalone PRG is supplied for a USB test where the device permits it; installation on an actual FR165 has not yet been observed. Do not assume that tapping the IQ or PRG on a phone installs it.
 
-If an approved Connect IQ listing becomes available, install it through Garmin's normal Connect IQ flow for your paired watch and follow the instructions shown by Garmin. Garmin beta availability can be restricted to the developer account; a child using a separate Garmin account may need a public approval or a usable USB installation. A GitHub prerelease is not Garmin approval.
+If an approved Connect IQ listing becomes available, install it through Garmin's normal Connect IQ flow for your paired watch and follow the instructions shown by Garmin. While a normal Store submission is pending review, the developer may have an owner preview; a child using a separate Garmin account needs public approval or a usable USB installation. A GitHub prerelease is not Garmin approval.
 
 For a USB test, connect the FR165 to a computer, copy `SpaceFox.prg` into the watch's `GARMIN/APPS` directory when the device exposes it, safely eject, then select SpaceFox on the watch. File-system access and installation vary by device and computer and have not been verified on this watch. Keep the previous version in case recovery requires it; settings survival and downgrade are not promised.
 

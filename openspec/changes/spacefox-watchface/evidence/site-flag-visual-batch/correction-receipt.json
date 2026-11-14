@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "command": "python3.12 -B -m unittest -v tests.test_site_flag_protocol_working.SiteFlagWorkingTest.test_corrected_site_rebuilds_the_projected_point",
+  "exitCode": 0,
+  "logSha256": "7605cd7510ab781f6b448be72fbb565f924238af097813552cb9df7d734d44d7",
+  "inputs": {
+    "tests/test_site_flag_protocol_working.py": "71ea130aa2242f62ef2b5173a2cbde4bdd5132ce2d05a4f3e76fbe8dc30e10e5",
+    "tools/spacefox/bridge_map.py": "ad0830aba5bbb3011adb5011cd9f280ba0921491bad026425b187cd35613bd75",
+    "tools/spacefox/bridge_map_render.js": "a89478f79e3ba5e831074effc88552ee1e2752277104d6ca5a037cd65eb14b24",
+    "tools/spacefox/geographic_context.py": "23ed1a99f5e08b22430ba151c57c96d7237a7fcf0881dd6211fdf69872a5fc03",
+    "tools/spacefox/global_map.py": "a50687db161af083cba24330a719984747d58ea1c9cb90950169741ca7f5496d",
+    "tools/spacefox/catalog.py": "2ad9e6f65634bcd8e29b2f471625745117a24537d03399e9ac0b5cb424802de3",
+    "catalog/source.json": "3c0af0bcbf0b9526f938182ba5f622eaa0c153941f50a966a354023a4094a8f5"
+  },
+  "boundary": "Exact-source-coordinate technical mutation, regenerated source map and marker identity; not surveyed geography or SDK rendering."
+}
