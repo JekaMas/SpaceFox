@@ -2,12 +2,12 @@
   "release": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.2-test.1",
   "published_at_utc": "2026-11-14T06:41:15Z",
   "target_commit": "f34b1edad7dcfcdd4c01c8f1a6562af9333b954e",
-  "method": "gh release download and compare all downloaded bytes to local publication bundle and GitHub asset SHA-256",
+  "method": "gh release download and compare all downloaded bytes to final local publication bundle and GitHub asset SHA-256; guide and checksums reread after queue update",
   "assets": [
     {
       "name": "GARMIN-INSTALL.md",
       "status": 200,
-      "sha256": "94a784460371a0eeb7d2d20a10173a8e5cfdf90f2c91af63ae855b39bf560dbc",
+      "sha256": "bb2f1f62306a034b141d9510654d7a5b0465aced23279c69e54ec1e33a66487f",
       "matches": true
     },
     {
@@ -49,7 +49,7 @@
     {
       "name": "SHA256SUMS.txt",
       "status": 200,
-      "sha256": "54ea685db68146daf2430bc36c3541ac65c5ae05e118bcf4396d0d766d537bce",
+      "sha256": "ee918680dd554050947f4594bd33e6458dd01ec374d85604ab0f5b6624c513a0",
       "matches": true
     },
     {
