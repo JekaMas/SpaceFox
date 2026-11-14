@@ -2,7 +2,7 @@
 """One-time opaque baseline bridge for the exact pre-cutover active snapshot.
 
 Remove this operator after promotion. It does not interpret or approve historical
-visuals: the complete pinned artifact is admitted only as the old active baseline.
+visuals: the complete pinned artifact is admitted only as the exact old baseline and its original deployment journal origin.
 All candidate snapshots retain the ordinary current-format validator.
 """
 import hashlib
@@ -19,7 +19,7 @@ GENERATION = 12
 original = publisher.validate_snapshot_artifact
 
 def exact_baseline(snapshot, files, instance, require_selection_epoch):
-    if (instance != INSTANCE or require_selection_epoch or
+    if (instance != INSTANCE or
             snapshot.get('artifact_revision') != ARTIFACT or snapshot.get('generation') != GENERATION or
             snapshot.get('artifact_profile') != 'native-motion-v3' or
             publisher._sha(publisher._canonical({k:v for k,v in snapshot.items() if k != 'artifact_revision'})) != ARTIFACT or
@@ -38,7 +38,7 @@ def validate(snapshot, files, *, refresh_policy, instance=None, selection_valida
     publisher._product_files = lambda content, profile: validate_feed(content['feed.json'])
     try:
         return original(snapshot, files, refresh_policy=refresh_policy, instance=instance,
-                        selection_validated_utc=selection_validated_utc, require_selection_epoch=False)
+                        selection_validated_utc=selection_validated_utc, require_selection_epoch=require_selection_epoch)
     finally:
         publisher._product_files = saved
 
