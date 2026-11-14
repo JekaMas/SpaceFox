@@ -72,9 +72,9 @@ class PublishedReleaseHistoryTest(unittest.TestCase):
             return boundary
 
     def test_actual_public_identity_artifact_and_acceptance_boundary(self):
-        self.assertEqual(self.latest['version'], '0.1.0')
+        self.assertEqual(self.latest['version'], '0.1.1')
         self.assertEqual(self.latest['package_sha256'],
-                         'b0126d9ed13cf186f2fc15be984231da06a562070f3aa2d3d5395c7bdefc037a')
+                         '6d6718fed5a79d986ae4193a43ece6b17079c4ce399c690d0369ce82eb298ae3')
         self.assertEqual(self.previous['version'], self.latest['version'])
         self.assertEqual(self.previous['package_sha256'], self.latest['package_sha256'])
         self.assertEqual(self.previous['application_uuid'],
@@ -85,23 +85,23 @@ class PublishedReleaseHistoryTest(unittest.TestCase):
                          self.latest['original_receipt_sha256'])
         prg = self.previous_path.parent / self.previous['packages']['prg']['path']
         self.assertEqual(hashlib.sha256(prg.read_bytes()).hexdigest(),
-                         'aa0376f64da4b7a6d9ddcf253c034360c23b1157e2aee9a20953632356a3f788')
+                         '4f3ceb371705579ed3be851e715ed2c9f0fed7881a0a44574b2f291e4884da29')
         self.assertFalse(self.previous['official_release'])
         self.assertFalse(self.previous['publication_ready'])
         self.assertEqual(self.latest['kind'], 'github_prerelease_for_physical_testing')
-        self.assertEqual(self.latest['tag'], 'v0.1.0-test.1')
+        self.assertEqual(self.latest['tag'], 'v0.1.1-test.1')
         readback = json.loads((ROOT / self.latest['evidence']).read_text())
-        self.assertEqual(readback['release_url'], self.latest['url'])
-        self.assertEqual(len(readback['anonymous_https_downloads']), 8)
-        for asset in readback['anonymous_https_downloads']:
-            self.assertEqual(asset['http_status'], 200)
-            self.assertTrue(asset['matches_uploaded'])
-        iq = next(row for row in readback['anonymous_https_downloads'] if row['name'] == 'SpaceFox.iq')
+        self.assertEqual(readback['release'], self.latest['url'])
+        self.assertEqual(len(readback['assets']), 13)
+        for asset in readback['assets']:
+            self.assertEqual(asset['status'], 200)
+            self.assertTrue(asset['matches'])
+        iq = next(row for row in readback['assets'] if row['name'] == 'SpaceFox.iq')
         self.assertEqual(iq['sha256'], self.latest['package_sha256'])
 
     def test_missing_prior_receipt_refused(self):
         with self.assertRaisesRegex(BuildBlocked, 'committed latest release receipt/package'):
-            self.admit('0.1.1', None)
+            self.admit('0.1.2', None)
 
     def test_different_prior_version_refused(self):
         # Retain the real IQ bytes so this reaches committed history comparison.
@@ -112,14 +112,14 @@ class PublishedReleaseHistoryTest(unittest.TestCase):
         path = directory / 'release.json'
         path.write_text(json.dumps(previous))
         with self.assertRaisesRegex(BuildBlocked, 'committed latest release receipt/package'):
-            self.admit('0.1.1', path)
+            self.admit('0.1.2', path)
 
     def test_same_or_lower_native_version_refused(self):
-        for version in ('0.1.0', '0.0.9'):
+        for version in ('0.1.1', '0.1.0', '0.0.9'):
             with self.subTest(version=version):
                 with self.assertRaisesRegex(BuildBlocked, 'strictly increase'):
                     self.admit(version, self.previous_path)
 
     def test_higher_version_passes_history_admission_only(self):
         with self.assertRaises(ExportBoundaryReached):
-            self.admit('0.1.1', self.previous_path)
+            self.admit('0.1.2', self.previous_path)

@@ -1,0 +1,27 @@
+{
+  "status": "submitted_pending_review",
+  "observation_source": "Root observed the Garmin developer UI in the active session; this is a reported UI observation, not an independent tool replay.",
+  "listing_url": "https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3",
+  "observed_date": "2026-11-14",
+  "ui": {
+    "status": "App pending",
+    "preview_visibility": "Only the submitting account until approval",
+    "review_time_reported": "up to 3 days",
+    "price": "Free 0.0",
+    "version": "0.1.1",
+    "internal_version": 1,
+    "type": "Watch Face",
+    "device": "Forerunner 165",
+    "publisher": "JekaMasSpaceFox",
+    "download": "web page directs installation through mobile Connect IQ; web download disabled"
+  },
+  "signature_observation": "Before submission the upload panel displayed both Verified and Signature check failed. The pinned Garmin SDK locally verified the IQ and PRG signatures. The warning cause is unconfirmed; final submission was accepted pending review.",
+  "linked_evidence": "INDEPENDENT-RELEASE-REVIEW.md",
+  "not_observed": [
+    "Garmin approval",
+    "physical watch installation",
+    "mobile Connect IQ installation",
+    "phone/background synchronization",
+    "battery behavior"
+  ]
+}

@@ -15,17 +15,18 @@ its PRG SHA-256 is
 `aa0376f64da4b7a6d9ddcf253c034360c23b1157e2aee9a20953632356a3f788`.
 The frozen signed source is `c7ad2c4113de272cd9677842d78047e7e6ffe77b`;
 the public release target is `1c1eddcd0a1c13b9d7a07d2bd0995422806517ac`.
-`signing-identity.json` now pins this actual latest public native version and IQ
-digest. Keep the original candidate's `release.json` together with `SpaceFox.iq`;
-future production builds must supply that receipt via `--previous` and use a
-strictly higher version with the same UUID and signing identity. The public
+This is retained historical release evidence. The newer 0.1.1 release below is the current predecessor for future builds. The public
 `PROVENANCE.json` is a publication summary, not the tool's original prior-build
 receipt. The original receipt's evidence digest is
 `f38a42325101fd870ed9ae8470267827380eb7453df16b4261d3178f71ddb2f5`.
 See [publication readback and bounded verification](../openspec/changes/spacefox-watchface/evidence/published-test-history/STATUS.md).
 
+The later [v0.1.1-test.1 GitHub prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.1-test.1) is the current published predecessor. Its IQ SHA-256 is `6d6718fed5a79d986ae4193a43ece6b17079c4ce399c690d0369ce82eb298ae3`; its original [release receipt](../openspec/changes/spacefox-watchface/evidence/published-test-history/v0.1.1-test.1/release.json) is retained in the repository. To supply `--previous` for a future build, place that exact receipt and the matching publicly downloaded `SpaceFox.iq` together outside the source tree. Use a strictly higher native version with the same UUID and signing identity. The retained 0.1.0 receipt continues to document its own historical release.
+
+Garmin has accepted the 0.1.1 submission for review; it is pending, not approved. See [submission receipt](../openspec/changes/spacefox-watchface/evidence/test-release-20261114/garmin-submission.json). The portal displayed a signature warning even though the local SDK verified the package; its cause is unconfirmed.
+
 This test publication does not qualify the final native product, a physical
-installation, phone/background behavior or a Garmin Store submission/approval.
+installation, phone/background behavior or Garmin Store approval.
 The retained candidate still has `publication_ready=false` and
 `official_release=false`; tasks7.1–7.3 remain open.
 
@@ -44,8 +45,7 @@ data/asset revisions. Simulator observations do not close these requirements.
 The Store handoff needs actual screenshots and exact qualified languages,
 permissions, dependencies, privacy, notices and support details. Read the current
 Garmin guidelines/agreement when an actual submission is authorized; adult owner
-confirmation is already recorded. Submission, review and installation of the
-approved Store version remain external evidence.
+confirmation is already recorded. Review and installation of the approved Store version remain external evidence.
 
 Setup: [AGENT_SETUP](../docs/AGENT_SETUP.md). Rights:
 [THIRD_PARTY_NOTICES](../THIRD_PARTY_NOTICES.md) and [LICENSE](../LICENSE).

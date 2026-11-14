@@ -1,6 +1,6 @@
 # SpaceFox 0.1.1 — prepared Connect IQ listing
 
-Prepared 14 November 2026 for an ordinary free public Store submission. Garmin approval and installation on a physical FR165 or phone have not been observed. An owner preview while review is pending does not establish access for other Garmin accounts.
+Submitted 14 November 2026 as an ordinary free public Store submission. The [Garmin listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3) is pending review. Garmin approval and installation on a physical FR165 or phone have not been observed. The owner preview while review is pending does not establish access for other Garmin accounts.
 
 - Name: SpaceFox; type: Watch Face; price: Free
 - Device: Forerunner 165 (`fr165`); version: 0.1.1
@@ -27,4 +27,4 @@ SpaceFox is independent and is not endorsed by Garmin or launch operators. Launc
 
 ## Candidate upload
 
-`SpaceFox.iq` SHA-256: `6d6718fed5a79d986ae4193a43ece6b17079c4ce399c690d0369ce82eb298ae3`. Application UUID: `ec8b7c8a8ea54ee9ac91ee6e7a674d15`. The included 390 × 390 simulator image contains simulated health values; it is not a photograph or physical-device evidence. The GitHub prerelease `v0.1.1-test.1` is planned, not yet published. Record upload validation and review outcomes; task 7.3 also requires actual approved Store installation, settings and update evidence.
+`SpaceFox.iq` SHA-256: `6d6718fed5a79d986ae4193a43ece6b17079c4ce399c690d0369ce82eb298ae3`. Application UUID: `ec8b7c8a8ea54ee9ac91ee6e7a674d15`. The included 390 × 390 simulator image contains simulated health values; it is not a photograph or physical-device evidence. The GitHub prerelease `v0.1.1-test.1` is published. Record upload validation and review outcomes; task 7.3 also requires actual approved Store installation, settings and update evidence.
