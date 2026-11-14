@@ -329,3 +329,17 @@ log, failed harness and exact boundaries are in
 [evidence](evidence/first-install-incident/independent/RESULT.md). The real
 physical device and phone remain unverified. Candidate builds from the prior
 code commit are local-only and retain their own signed receipts.
+
+### Root acceptance of the bounded incident software repair
+
+The author and different independent fixer have completed the bounded software
+verification. Root accepts the actual scene observations, AOD state-path test,
+retained valid checks, primary-language correction and both independently inspected
+replacement packages from source `3b95dee1`. Their beta/ordinary IQ SHA-256 values
+are `8dca40bee7b71ee4ccc995b190ff859ad6e2cdef907a811a71f41825603c092b`
+and `71fba19a849750628cfc1a3c7f5074a2ca4209115f76c8f34475cde0bcd22455`.
+These supersede the earlier local candidates for any next upload. See the
+[root judgment](evidence/first-install-incident/ROOT-JUDGMENT.md). The physical
+incident remains NOT DONE pending installation and readback; publication had
+not occurred at this checkpoint. No recursive third-agent review is required
+for corrections made and verified by the assigned independent fixer.
