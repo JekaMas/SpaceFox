@@ -185,6 +185,19 @@ class MetadataPagePolicyTest(unittest.TestCase):
                 self.assertEqual([p['body'] for p in first['coverage']['pages']], [p['body'] for p in second['coverage']['pages']])
                 self.assertEqual(list(zip(paths, [None] * 4)) + list(zip(paths, tags)), state['calls'])
                 self.assertEqual(preserved, helper.preserved(pub))
+                # Export is read-only; source provenance remains the isolated
+                # bare authority's captured source, not the developer checkout.
+                head = pub.head; calls = len(state['calls'])
+                with tempfile.TemporaryDirectory(prefix='spacefox-metadata-export-') as folder:
+                    target = Path(folder) / 'candidate.json'
+                    root = Path(__file__).resolve().parents[1]
+                    result = subprocess.run([sys.executable, '-B', str(root / 'tools/refresh_catalog.py'),
+                        'export', '--remote', store.remote, '--origin', origin, '--local-http', '--output', str(target)],
+                        capture_output=True, text=True)
+                    self.assertEqual(0, result.returncode, result.stderr)
+                    self.assertEqual('exported', json.loads(result.stdout)['status'])
+                    self.assertEqual(second, json.loads(target.read_bytes()))
+                self.assertEqual(head, store.load()[0]); self.assertEqual(calls, len(state['calls']))
         finally:
             server.shutdown(); thread.join(); server.server_close()
 
