@@ -1,0 +1,49 @@
+test_battery_grows (tests.test_ux02_baseline.Ux02NativePixels.test_battery_grows) ... FAIL
+test_calendar_grows (tests.test_ux02_baseline.Ux02NativePixels.test_calendar_grows) ... FAIL
+test_clock_keeps_selected_mint (tests.test_ux02_baseline.Ux02NativePixels.test_clock_keeps_selected_mint) ... FAIL
+test_countdown_keeps_selected_mint (tests.test_ux02_baseline.Ux02NativePixels.test_countdown_keeps_selected_mint) ... FAIL
+
+======================================================================
+FAIL: test_battery_grows (tests.test_ux02_baseline.Ux02NativePixels.test_battery_grows)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-native-ux02-readability-20261114/tests/test_ux02_baseline.py", line 28, in test_battery_grows
+    self.assertTrue(pixels(FRAME, (50, 285, 340, 330), lambda p: p == NEUTRAL))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_calendar_grows (tests.test_ux02_baseline.Ux02NativePixels.test_calendar_grows)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-native-ux02-readability-20261114/tests/test_ux02_baseline.py", line 24, in test_calendar_grows
+    self.assertTrue(pixels(FRAME, (50, 80, 340, 135), lambda p: p == NEUTRAL))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_clock_keeps_selected_mint (tests.test_ux02_baseline.Ux02NativePixels.test_clock_keeps_selected_mint)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-native-ux02-readability-20261114/tests/test_ux02_baseline.py", line 18, in test_clock_keeps_selected_mint
+    b = bounds(pixels(FRAME, (40, 140, 350, 245), lambda p: p == MINT))
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-native-ux02-readability-20261114/tests/test_ux016_pixels.py", line 23, in bounds
+    if not points: raise AssertionError('expected ink absent')
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: expected ink absent
+
+======================================================================
+FAIL: test_countdown_keeps_selected_mint (tests.test_ux02_baseline.Ux02NativePixels.test_countdown_keeps_selected_mint)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-native-ux02-readability-20261114/tests/test_ux02_baseline.py", line 21, in test_countdown_keeps_selected_mint
+    b = bounds(pixels(FRAME, (50, 245, 340, 283), lambda p: p == MINT))
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-native-ux02-readability-20261114/tests/test_ux016_pixels.py", line 23, in bounds
+    if not points: raise AssertionError('expected ink absent')
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: expected ink absent
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.430s
+
+FAILED (failures=4)

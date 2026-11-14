@@ -25,9 +25,9 @@ def source():
 }
 '''
 
-def build(out):
-    GROUPS['ux-visual']=('6a160f1e038a4e89a82b70f659e01017','SpaceFoxUxVisual016.prg')
+def build(out,device="fr165"):
+    GROUPS['ux-visual']=('c94124c0b87a4565a56ff89f0036d102','SpaceFoxUx02Visual.prg')
     with patch('tools.native_full_visual_runtime.validate_manifest',lambda root,lock:ET.parse(root/'watchface/manifest.xml')):
-        return build_probe(out,source(),group='ux-visual')
+        return build_probe(out,source(),group='ux-visual',device=device)
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);a=p.parse_args();raise SystemExit(build(a.output)['exitCode'])
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--device',default='fr165');a=p.parse_args();raise SystemExit(build(a.output,a.device)['exitCode'])

@@ -1,0 +1,19 @@
+{
+  "status": "observed-simulator-selected-software",
+  "sourceRevision": "4b16cca3f3c29083cbabc92b72f1a09718f77a5e",
+  "iqSha256": "f0486aec04a63ed9481caff0376a36930c7175df908ccb3e53f65075059dfc50",
+  "signedPrograms": {
+    "fr165m": "01e1780311737c3eb3b619dabe11ef8d3557bc8df7879073dc096f5ac6dc2ff8",
+    "fr965": "b378e9b0a57349f0e5e5985d9f818fda28905ca77af833ec0863779f025d0dce"
+  },
+  "observation": "Actual unmodified signed PRGs, byte-identical to corresponding IQ entries per SDK inspection, launched with MonkeyDoDeux on the two profiles. CUA visual inspection observed current Vulcan launch, map, rocket, 24-hour clock, seconds countdown and four field positions on both. No screenshot file was saved. Logs are empty with production diagnostics disabled.",
+  "identityAndInventory": "Release inspector verified IQ signature and all 21 PRG signatures against same 4096-bit public key; 10 products, five primary languages, minimum API 5.1 and three original permissions. 1,039 receipt source inputs were independently hash-compared to clean final source.",
+  "cleanup": "Production UUID initial snapshot had no SPACEFOX-SETTINGS DATA files and two task-owned settings/object files. Native cleanup observed URL blank and temporal null; after stopping, original two files restored to matching hashes. Prior cache incident not repaired.",
+  "notObserved": [
+    "physical watch",
+    "phone settings and delivery",
+    "Store approval",
+    "physical battery and health",
+    "signed watchface system settings entry"
+  ]
+}

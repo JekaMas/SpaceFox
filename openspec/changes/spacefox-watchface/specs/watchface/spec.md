@@ -41,9 +41,7 @@ reducing primary time or placing text outside the circle.
 The watch face SHALL provide four independently configurable fields supporting
 steps, Body Battery, heart rate, stress, calories and watch battery; all four physical positions remain visible. It
 SHALL display Garmin-provided values and an unavailable marker for missing data.
-A fixed compact watch-battery indicator outside the fitness region SHALL NOT
-consume one of the four independently configurable slots. Watch battery and Body
-Battery SHALL remain distinct data sources.
+Active mode SHALL NOT show a separate watch-battery indicator. Watch battery is selectable in any of the four positions; watch battery and Body Battery SHALL remain distinct data sources.
 
 #### Scenario: Configure fields
 - **WHEN** a user assigns metric roles to the four positions
@@ -53,9 +51,9 @@ Battery SHALL remain distinct data sources.
 - **WHEN** Garmin does not supply a selected metric
 - **THEN** that field displays an unavailable marker rather than a fabricated value or a crash
 
-#### Scenario: Separate watch battery
-- **WHEN** the dedicated watch-battery indicator is shown with four fitness metrics
-- **THEN** all four chosen slots remain available, and the separate indicator uses watch charge or an unavailable marker without substituting Body Battery
+#### Scenario: Select watch battery
+- **WHEN** watch battery is assigned to any field
+- **THEN** that position uses watch charge or an unavailable marker without substituting Body Battery, and no standalone active battery appears
 
 ### Requirement: Model-specific rocket visual
 
@@ -95,7 +93,7 @@ The default active composition SHALL use a 390×390 full-screen flat-map window 
 directed gradual fading, transparent text backgrounds and dark glyph contours.
 The source-derived site marker SHALL remain unfaded. Preserve the accepted
 rocket/company header, mission purpose, primary time, adjacent countdown, four
-large configurable fields and separate watch battery. No globe or projection choice remains.
+large configurable fields. No standalone active battery, globe or projection choice remains.
 
 #### Scenario: Open the default face
 - **WHEN** the face is active
@@ -105,7 +103,7 @@ large configurable fields and separate watch battery. No globe or projection cho
 - **WHEN** the watch has no accepted launch data, including offline first use
 - **THEN** it displays an unmarked generic rocket and neutral map without a launch point, place, operator or invented target
 - **AND** the header identifies the current synchronization state, including a bounded background or admission failure detail when available
-- **AND** the separate battery sits on the left above the rocket, near x65/y105 in the 390px composition, with 15px battery text; four configurable fields remain available
+- **AND** four configurable fields remain available, including watch battery as a selectable role, with no separate active battery
 
 #### Scenario: Selected launch waiting on artwork after a failure
 - **WHEN** a validated launch is displayed with generic art and its matching asset transfer fails or is interrupted
@@ -144,7 +142,7 @@ occurred merely because an animation played or the countdown reached zero.
 
 ### Requirement: Qualified AMOLED always-on display
 
-The sparse AOD SHALL show centered large thin time, localized current date and weekday, the numeric countdown or uncertainty, and watch battery, recomputed at most once per minute. It SHALL meet lit-pixel and burn-in rules, omit the full map and animation, and stop active timers on sleep. Returning active restores the accepted composition and clock calculation. Reschedule and stale states remain distinguishable.
+The sparse AOD SHALL show centered readable time, localized current date and weekday, the numeric countdown or uncertainty, and watch battery, recomputed at most once per minute. Time and countdown SHALL use their configured active colors and identical status overrides. It SHALL meet lit-pixel and burn-in rules, omit the full map and animation, and stop active timers on sleep. Returning active restores the accepted composition and clock calculation. Reschedule and stale states remain distinguishable.
 
 #### Scenario: Enter always-on mode
 - **WHEN** FR165 enters low-power always-on mode
@@ -228,7 +226,7 @@ exercise technical failures without fabricating display names.
 #### Scenario: Settings, AOD, and cached scene remain coherent
 - **WHEN** any field is selected through settings, including battery in field four, then settings change and the application restarts
 - **THEN** the exact role, icon, value and selected color persist and render in that field
-- **AND** the AOD time ink is centered within two pixels of the 390×390 display center and at least 84 pixels high; localized date and weekday at least 18 pixels high, countdown including seconds at least 22 pixels high updated at minute cadence, and current system battery at least 20 pixels high remain visible, including first entry into LOW and each permitted later minute within the applicable 10-percent lit-pixel and burn-in constraints
+- **AND** the AOD time ink is centered within two pixels of the 390×390 display center and at least 96 pixels high; localized date and weekday and countdown including seconds at least 28 pixels high, and current system battery at least 32 pixels high remain visible, with countdown updated at minute cadence, including first entry into LOW and each permitted later minute within the applicable 10-percent lit-pixel and burn-in constraints
 - **AND** a transient update or partial staging failure retains the last accepted launch and compatible scene across restart, while validated new metadata can display before its matching optional artwork without relabeling old artwork
 
 #### Scenario: Identify the running installed build

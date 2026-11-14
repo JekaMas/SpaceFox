@@ -1,0 +1,263 @@
+Background: SFR_PROBE owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+SFR_PROBE owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+HANDOFF_NEW prior_status={base=>https://jekamas.github.io/SpaceFox, utc=>1794664670, code=>-400, stage=>feedFailed} attempt={base=>https://jekamas.github.io/SpaceFox, utc=>1794664670} field4=5 clock=3 countdown=4 url=https://jekamas.github.io/SpaceFox
+NATIVE_DISPLAY mode=0 active=true bitmap=false decoding=false ms=2622345 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=foreground-initial-complete used=82728 free=44056 total=126784 sampledHigh=82728 utc=1794664719 ms=2622345 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+HANDOFF_NEW startup=0.1.6 view=true
+NATIVE_DISPLAY mode=0 active=true bitmap=false decoding=false ms=2622346 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=foreground-incoming-complete used=89840 free=36944 total=126784 sampledHigh=89840 utc=1794664719 ms=2622348 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=foreground-before-view used=89832 free=36952 total=126784 sampledHigh=89840 utc=1794664719 ms=2622349 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_WRITES phase=foreground-reload-total count=0 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_SCHEDULE now=1794664719 requested=1794664970 registered=1794664970 last=1794664670 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=temporal-scheduled used=90192 free=36592 total=126784 sampledHigh=90192 utc=1794664719 ms=2622355 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: SFR_PROBE owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=temporal-start used=24256 free=36992 total=61248 sampledHigh=24256 utc=1794664756 ms=2659039 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=pre-request used=24792 free=36456 total=61248 sampledHigh=24792 utc=1794664756 ms=2659041 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_SCHEDULE now=1794664756 requested=1794665056 registered=1794665056 last=1794664756 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=temporal-scheduled used=25032 free=36216 total=61248 sampledHigh=25032 utc=1794664756 ms=2659045 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_GET path=feed.json n=1 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=feed-transfer-complete used=27688 free=33560 total=61248 sampledHigh=27688 utc=1794664756 ms=2659448 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_RESPONSE feed code=200 characters=2743 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_WRITES phase=provisional-feed count=10 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=feed-provisional-staged used=28488 free=32760 total=61248 sampledHigh=28488 utc=1794664756 ms=2659470 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_GET path=wire3/catalogs/8b308cb08a31aed3f8877d687e1f3bfc15c1b612713edc2f8c8df8f8d5d8c45c.json n=2 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=batch-transfer-complete used=27448 free=33800 total=61248 sampledHigh=28488 utc=1794664756 ms=2659770 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_SCHEDULE now=1794664756 requested=1794665056 registered=1794665056 last=1794664756 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=temporal-scheduled used=27976 free=33272 total=61248 sampledHigh=28488 utc=1794664756 ms=2659790 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_WRITES phase=background-total count=16 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=background-exit used=27472 free=33776 total=61248 sampledHigh=28488 utc=1794664756 ms=2659791 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=foreground-renderer-released used=88392 free=38392 total=126784 sampledHigh=90192 utc=1794664756 ms=2659802 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=pre-request-released used=88408 free=38376 total=126784 sampledHigh=90192 utc=1794664756 ms=2659804 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=bridge-catalog-before-parse used=94464 free=32320 total=126784 sampledHigh=94464 utc=1794664756 ms=2659819 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=json-parsed used=97632 free=29152 total=126784 sampledHigh=97632 utc=1794664756 ms=2659913 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=bridge-catalog-projected used=95008 free=31776 total=126784 sampledHigh=97632 utc=1794664756 ms=2659913 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=json-parsed used=103192 free=23592 total=126784 sampledHigh=103192 utc=1794664757 ms=2660066 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=bridge-header-start used=102680 free=24104 total=126784 sampledHigh=103192 utc=1794664757 ms=2660067 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=bridge-header-refs used=103424 free=23360 total=126784 sampledHigh=103424 utc=1794664757 ms=2660067 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=bridge-catalog-admitted used=104232 free=22552 total=126784 sampledHigh=104232 utc=1794664757 ms=2660068 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=feed-validated used=102720 free=24064 total=126784 sampledHigh=104232 utc=1794664757 ms=2660073 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=candidate-and-prior used=103080 free=23704 total=126784 sampledHigh=104232 utc=1794664757 ms=2660073 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=candidate-compacted used=97928 free=28856 total=126784 sampledHigh=104232 utc=1794664757 ms=2660074 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_WRITES phase=promotion count=10 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=cache-committed used=100224 free=26560 total=126784 sampledHigh=104232 utc=1794664757 ms=2660087 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=foreground-feed-admission used=93560 free=33224 total=126784 sampledHigh=104232 utc=1794664757 ms=2660088 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=foreground-incoming-complete used=93528 free=33256 total=126784 sampledHigh=104232 utc=1794664757 ms=2660088 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=foreground-plan-complete used=93536 free=33248 total=126784 sampledHigh=104232 utc=1794664757 ms=2660089 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=foreground-before-view used=93528 free=33256 total=126784 sampledHigh=104232 utc=1794664757 ms=2660089 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=foreground-renderer-restored used=96040 free=30744 total=126784 sampledHigh=104232 utc=1794664757 ms=2660094 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=visual-activation-start used=96032 free=30752 total=126784 sampledHigh=104232 utc=1794664757 ms=2660094 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_WRITES phase=foreground-reload-total count=14 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_SCHEDULE now=1794664756 requested=1794665056 registered=1794665056 last=1794664756 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=temporal-scheduled used=96752 free=30032 total=126784 sampledHigh=104232 utc=1794664757 ms=2660099 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+HANDOFF_NEW after_background status={base=>https://jekamas.github.io/SpaceFox, build=>0.1.6, code=>null, stage=>received, utc=>1794664756} context=true
+NATIVE_METRIC phase=sfr-step-enter used=95864 free=30920 total=126784 sampledHigh=104232 utc=1794664757 ms=2660146 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-renderer-released used=93880 free=32904 total=126784 sampledHigh=104232 utc=1794664757 ms=2660146 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-build-start used=94336 free=32448 total=126784 sampledHigh=104232 utc=1794664757 ms=2660147 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-build-reader used=95192 free=31592 total=126784 sampledHigh=104232 utc=1794664757 ms=2660147 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_REJECTION Invalid native SFR1M scene owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+
+Exception: Invalid native SFR1M scene
+Stack: 
+  - fail() at /Users/jekamas/projects/SpaceFox-worktrees/apply-native-ux02-readability-20261114/watchface/source/NativeSfr.mc:76 0x5000b7d8 
+  - begin() at /Users/jekamas/projects/SpaceFox-worktrees/apply-native-ux02-readability-20261114/watchface/source/NativeSfr.mc:132 0x5000bd53 
+  - initialize() at /Users/jekamas/projects/SpaceFox-worktrees/apply-native-ux02-readability-20261114/watchface/source/NativeSfr.mc:75 0x5000bc30 
+  - sfrStep() at /Users/jekamas/projects/SpaceFox-worktrees/apply-native-ux02-readability-20261114/watchface/source/SpaceFoxView.mc:163 0x10005ca1 
+Background: SFR_PROBE owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=temporal-start used=24392 free=36856 total=61248 sampledHigh=24392 utc=1794664768 ms=2671631 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=pre-request used=25744 free=35504 total=61248 sampledHigh=25744 utc=1794664768 ms=2671634 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_GET path=descriptors/3e4b028f9bfdf0355c3a801bbb1ef452511c15bdcd877be23a74b667ddcc8cb4.json n=1 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=batch-transfer-complete used=27440 free=33808 total=61248 sampledHigh=27440 utc=1794664768 ms=2671947 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_GET path=descriptors/77d4b3173b019ee84b7eb751e81ccb7a47edfba560a54166bfb47f441e8b7b37.json n=2 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=batch-transfer-complete used=35776 free=25472 total=61248 sampledHigh=35776 utc=1794664769 ms=2672244 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_GET path=descriptors/a28ecf80077c51aa47efd45080f6c965500ac437d53cc042b34b3a5b8f42c7ce.json n=3 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=batch-transfer-complete used=35232 free=26016 total=61248 sampledHigh=35776 utc=1794664769 ms=2672561 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_GET path=rasters/2a09c8ea59ca32d5ee8ea4e5520682de56a7539b86e434b804f96ffeca0cecd6.sfr n=4 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=batch-transfer-complete used=36880 free=24368 total=61248 sampledHigh=36880 utc=1794664769 ms=2672890 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_GET path=rasters/4d28962616ea3056f6ce6fde40f6904f9d9dee2e657f67f988b4eaa4d31e8e92.sfr n=5 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=batch-transfer-complete used=36920 free=24328 total=61248 sampledHigh=36920 utc=1794664770 ms=2673213 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_GET path=rasters/671a4b8da3f5c272f41a709b7b72285ee96247eed72d4b3c521bc13884bb6153.sfr n=6 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=batch-transfer-complete used=37048 free=24200 total=61248 sampledHigh=37048 utc=1794664770 ms=2673520 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_GET path=rasters/eeaefa0a3910f493ba1409eca38c0473fa68b6b99da810696788b8338b01fddd.sfr n=7 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=batch-transfer-complete used=37192 free=24056 total=61248 sampledHigh=37192 utc=1794664770 ms=2673830 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_GET path=rasters/180d4d090c41fddf2fd1d79dd46405bbf9d13569ec151440658ec50208b5eb5b.sfr n=8 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=batch-transfer-complete used=37336 free=23912 total=61248 sampledHigh=37336 utc=1794664771 ms=2674173 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_GET path=rasters/0936caabf3d961df403c05a1a35a5436d5842c45de0077cfd7053118a6e7ca29.sfr n=9 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=batch-transfer-complete used=37392 free=23856 total=61248 sampledHigh=37392 utc=1794664771 ms=2674494 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_GET path=rasters/db31d9ab634adaa54e03c7c96a2eee50064466b0565444a8bda1145a520ac301.sfr n=10 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=batch-transfer-complete used=37536 free=23712 total=61248 sampledHigh=37536 utc=1794664771 ms=2674843 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_GET path=rasters/653939e2711ce529f39617eb84040f245960720925e27e70d270247940553e3a.sfr n=11 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=batch-transfer-complete used=37728 free=23520 total=61248 sampledHigh=37728 utc=1794664772 ms=2675178 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_GET path=rasters/07924fc156dcfcd1725e9dce51567b9d04b13933fe56f89a0255b3ffcc914580.sfr n=12 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=batch-transfer-complete used=37856 free=23392 total=61248 sampledHigh=37856 utc=1794664772 ms=2675521 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_GET path=rasters/697b580f41521ace59315e84264ddbfb4dee9d77b50f3d2e256ad10b7a6a56cf.sfr n=13 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=batch-transfer-complete used=38072 free=23176 total=61248 sampledHigh=38072 utc=1794664772 ms=2675846 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_GET path=rasters/9107867a46a828266cdc4669352d110734f23c385ef52bc1ca7073709bb415ee.sfr n=14 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=batch-transfer-complete used=34552 free=26696 total=61248 sampledHigh=38072 utc=1794664773 ms=2676155 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_GET path=descriptors/4bd2d3481d55abfee7218de203a679389d27f03647c2e7bc3d190119068aca03.json n=15 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=batch-transfer-complete used=35304 free=25944 total=61248 sampledHigh=38072 utc=1794664773 ms=2676472 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_GET path=rasters/6d4ab3dc509e305150b3e44adc2df9d6c70416ec01f09751f1a66c2418cc18e9.sfr n=16 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=batch-transfer-complete used=36344 free=24904 total=61248 sampledHigh=38072 utc=1794664773 ms=2676796 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_GET path=descriptors/f8a14e2df0245b475990b21c3cb102d219adb7d8b4e8fbf520437c5ec62a7b7f.json n=17 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=batch-transfer-complete used=35512 free=25736 total=61248 sampledHigh=38072 utc=1794664774 ms=2677123 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_GET path=rasters/0f6ced072b08fe37b64b1944b2c3e01aead22000bd18ef580f4c60b4728070e4.sfr n=18 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=batch-transfer-complete used=35416 free=25832 total=61248 sampledHigh=38072 utc=1794664774 ms=2677474 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_SCHEDULE now=1794664774 requested=1794668356 registered=1794668356 last=1794664768 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=temporal-scheduled used=36120 free=25128 total=61248 sampledHigh=38072 utc=1794664774 ms=2677528 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_WRITES phase=background-total count=41 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+Background: NATIVE_METRIC phase=background-exit used=35616 free=25632 total=61248 sampledHigh=38072 utc=1794664774 ms=2677529 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=foreground-incoming-complete used=96280 free=30504 total=126784 sampledHigh=104232 utc=1794664774 ms=2677545 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=foreground-plan-complete used=96280 free=30504 total=126784 sampledHigh=104232 utc=1794664774 ms=2677546 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=foreground-before-view used=96272 free=30512 total=126784 sampledHigh=104232 utc=1794664774 ms=2677546 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=visual-activation-start used=96272 free=30512 total=126784 sampledHigh=104232 utc=1794664774 ms=2677549 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_WRITES phase=foreground-reload-total count=0 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_SCHEDULE now=1794664774 requested=1794668356 registered=1794668356 last=1794664768 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=temporal-scheduled used=96992 free=29792 total=126784 sampledHigh=104232 utc=1794664774 ms=2677554 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+HANDOFF_NEW after_background status={base=>https://jekamas.github.io/SpaceFox, build=>0.1.6, code=>null, stage=>received, utc=>1794664774} context=true
+NATIVE_METRIC phase=sfr-step-enter used=95976 free=30808 total=126784 sampledHigh=104232 utc=1794664774 ms=2677600 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-renderer-released used=93992 free=32792 total=126784 sampledHigh=104232 utc=1794664774 ms=2677601 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-build-start used=94448 free=32336 total=126784 sampledHigh=104232 utc=1794664774 ms=2677601 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-build-reader used=95304 free=31480 total=126784 sampledHigh=104232 utc=1794664774 ms=2677602 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-build-root-raw used=98416 free=28368 total=126784 sampledHigh=104232 utc=1794664774 ms=2677604 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=json-parsed used=102664 free=24120 total=126784 sampledHigh=104232 utc=1794664774 ms=2677787 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-build-root-parsed used=98968 free=27816 total=126784 sampledHigh=104232 utc=1794664774 ms=2677787 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=98392 free=28392 total=126784 sampledHigh=104232 utc=1794664774 ms=2677791 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=json-parsed used=104048 free=22736 total=126784 sampledHigh=104232 utc=1794664774 ms=2677902 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-raw used=106792 free=19992 total=126784 sampledHigh=106792 utc=1794664774 ms=2677906 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-ready used=106960 free=19824 total=126784 sampledHigh=106960 utc=1794664774 ms=2677910 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=106984 free=19800 total=126784 sampledHigh=106984 utc=1794664774 ms=2677911 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=106984 free=19800 total=126784 sampledHigh=106984 utc=1794664774 ms=2677924 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=106984 free=19800 total=126784 sampledHigh=106984 utc=1794664775 ms=2677998 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=106984 free=19800 total=126784 sampledHigh=106984 utc=1794664775 ms=2678014 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=106984 free=19800 total=126784 sampledHigh=106984 utc=1794664775 ms=2678014 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=102760 free=24024 total=126784 sampledHigh=106984 utc=1794664775 ms=2678019 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=102760 free=24024 total=126784 sampledHigh=106984 utc=1794664775 ms=2678050 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-raw used=106768 free=20016 total=126784 sampledHigh=106984 utc=1794664775 ms=2678052 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-ready used=106952 free=19832 total=126784 sampledHigh=106984 utc=1794664775 ms=2678056 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=106952 free=19832 total=126784 sampledHigh=106984 utc=1794664775 ms=2678100 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=106952 free=19832 total=126784 sampledHigh=106984 utc=1794664775 ms=2678118 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=106952 free=19832 total=126784 sampledHigh=106984 utc=1794664775 ms=2678151 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=102776 free=24008 total=126784 sampledHigh=106984 utc=1794664775 ms=2678165 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=102776 free=24008 total=126784 sampledHigh=106984 utc=1794664775 ms=2678201 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-raw used=106816 free=19968 total=126784 sampledHigh=106984 utc=1794664775 ms=2678203 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-ready used=106992 free=19792 total=126784 sampledHigh=106992 utc=1794664775 ms=2678207 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=106992 free=19792 total=126784 sampledHigh=106992 utc=1794664775 ms=2678250 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=106992 free=19792 total=126784 sampledHigh=106992 utc=1794664775 ms=2678269 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=106992 free=19792 total=126784 sampledHigh=106992 utc=1794664775 ms=2678300 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=106992 free=19792 total=126784 sampledHigh=106992 utc=1794664775 ms=2678319 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=106992 free=19792 total=126784 sampledHigh=106992 utc=1794664775 ms=2678350 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=102792 free=23992 total=126784 sampledHigh=106992 utc=1794664775 ms=2678354 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=102792 free=23992 total=126784 sampledHigh=106992 utc=1794664775 ms=2678401 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-raw used=106856 free=19928 total=126784 sampledHigh=106992 utc=1794664775 ms=2678403 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-ready used=107024 free=19760 total=126784 sampledHigh=107024 utc=1794664775 ms=2678407 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107024 free=19760 total=126784 sampledHigh=107024 utc=1794664775 ms=2678451 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=107024 free=19760 total=126784 sampledHigh=107024 utc=1794664775 ms=2678471 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107024 free=19760 total=126784 sampledHigh=107024 utc=1794664775 ms=2678501 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=107024 free=19760 total=126784 sampledHigh=107024 utc=1794664775 ms=2678519 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107024 free=19760 total=126784 sampledHigh=107024 utc=1794664775 ms=2678551 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=102808 free=23976 total=126784 sampledHigh=107024 utc=1794664775 ms=2678559 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=102808 free=23976 total=126784 sampledHigh=107024 utc=1794664775 ms=2678601 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-raw used=106928 free=19856 total=126784 sampledHigh=107024 utc=1794664775 ms=2678608 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-ready used=107080 free=19704 total=126784 sampledHigh=107080 utc=1794664775 ms=2678612 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107080 free=19704 total=126784 sampledHigh=107080 utc=1794664775 ms=2678650 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=107080 free=19704 total=126784 sampledHigh=107080 utc=1794664775 ms=2678669 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107080 free=19704 total=126784 sampledHigh=107080 utc=1794664775 ms=2678700 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=107080 free=19704 total=126784 sampledHigh=107080 utc=1794664775 ms=2678719 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107080 free=19704 total=126784 sampledHigh=107080 utc=1794664775 ms=2678750 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=102824 free=23960 total=126784 sampledHigh=107080 utc=1794664775 ms=2678763 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=102824 free=23960 total=126784 sampledHigh=107080 utc=1794664775 ms=2678800 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-raw used=106848 free=19936 total=126784 sampledHigh=107080 utc=1794664775 ms=2678805 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-ready used=107024 free=19760 total=126784 sampledHigh=107080 utc=1794664775 ms=2678809 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107024 free=19760 total=126784 sampledHigh=107080 utc=1794664775 ms=2678850 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=107024 free=19760 total=126784 sampledHigh=107080 utc=1794664775 ms=2678870 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107024 free=19760 total=126784 sampledHigh=107080 utc=1794664775 ms=2678900 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=107024 free=19760 total=126784 sampledHigh=107080 utc=1794664775 ms=2678919 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107024 free=19760 total=126784 sampledHigh=107080 utc=1794664775 ms=2678951 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=102824 free=23960 total=126784 sampledHigh=107080 utc=1794664775 ms=2678955 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=102824 free=23960 total=126784 sampledHigh=107080 utc=1794664776 ms=2679005 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-raw used=106880 free=19904 total=126784 sampledHigh=107080 utc=1794664776 ms=2679022 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-ready used=107040 free=19744 total=126784 sampledHigh=107080 utc=1794664776 ms=2679030 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107040 free=19744 total=126784 sampledHigh=107080 utc=1794664776 ms=2679050 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=107040 free=19744 total=126784 sampledHigh=107080 utc=1794664776 ms=2679065 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107040 free=19744 total=126784 sampledHigh=107080 utc=1794664776 ms=2679100 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=102824 free=23960 total=126784 sampledHigh=107080 utc=1794664776 ms=2679115 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=102824 free=23960 total=126784 sampledHigh=107080 utc=1794664776 ms=2679151 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-raw used=106936 free=19848 total=126784 sampledHigh=107080 utc=1794664776 ms=2679153 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-ready used=107080 free=19704 total=126784 sampledHigh=107080 utc=1794664776 ms=2679157 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107080 free=19704 total=126784 sampledHigh=107080 utc=1794664776 ms=2679201 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=107080 free=19704 total=126784 sampledHigh=107080 utc=1794664776 ms=2679221 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107080 free=19704 total=126784 sampledHigh=107080 utc=1794664776 ms=2679251 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=107080 free=19704 total=126784 sampledHigh=107080 utc=1794664776 ms=2679271 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107080 free=19704 total=126784 sampledHigh=107080 utc=1794664776 ms=2679301 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=107080 free=19704 total=126784 sampledHigh=107080 utc=1794664776 ms=2679319 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107080 free=19704 total=126784 sampledHigh=107080 utc=1794664776 ms=2679350 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=102824 free=23960 total=126784 sampledHigh=107080 utc=1794664776 ms=2679353 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=102824 free=23960 total=126784 sampledHigh=107080 utc=1794664776 ms=2679400 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-raw used=106912 free=19872 total=126784 sampledHigh=107080 utc=1794664776 ms=2679403 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-ready used=107072 free=19712 total=126784 sampledHigh=107080 utc=1794664776 ms=2679412 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107072 free=19712 total=126784 sampledHigh=107080 utc=1794664776 ms=2679450 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=107072 free=19712 total=126784 sampledHigh=107080 utc=1794664776 ms=2679471 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107072 free=19712 total=126784 sampledHigh=107080 utc=1794664776 ms=2679500 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=107072 free=19712 total=126784 sampledHigh=107080 utc=1794664776 ms=2679517 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107072 free=19712 total=126784 sampledHigh=107080 utc=1794664776 ms=2679550 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=102840 free=23944 total=126784 sampledHigh=107080 utc=1794664776 ms=2679559 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=102840 free=23944 total=126784 sampledHigh=107080 utc=1794664776 ms=2679601 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-raw used=106944 free=19840 total=126784 sampledHigh=107080 utc=1794664776 ms=2679606 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-ready used=107096 free=19688 total=126784 sampledHigh=107096 utc=1794664776 ms=2679616 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107096 free=19688 total=126784 sampledHigh=107096 utc=1794664776 ms=2679651 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=107096 free=19688 total=126784 sampledHigh=107096 utc=1794664776 ms=2679671 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107096 free=19688 total=126784 sampledHigh=107096 utc=1794664776 ms=2679700 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=107096 free=19688 total=126784 sampledHigh=107096 utc=1794664776 ms=2679713 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107096 free=19688 total=126784 sampledHigh=107096 utc=1794664776 ms=2679750 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=107096 free=19688 total=126784 sampledHigh=107096 utc=1794664776 ms=2679764 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107096 free=19688 total=126784 sampledHigh=107096 utc=1794664776 ms=2679800 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=107096 free=19688 total=126784 sampledHigh=107096 utc=1794664776 ms=2679816 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107096 free=19688 total=126784 sampledHigh=107096 utc=1794664776 ms=2679850 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=107096 free=19688 total=126784 sampledHigh=107096 utc=1794664776 ms=2679863 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107096 free=19688 total=126784 sampledHigh=107096 utc=1794664776 ms=2679900 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=107096 free=19688 total=126784 sampledHigh=107096 utc=1794664776 ms=2679911 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=107096 free=19688 total=126784 sampledHigh=107096 utc=1794664776 ms=2679950 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=102840 free=23944 total=126784 sampledHigh=107096 utc=1794664776 ms=2679965 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=102840 free=23944 total=126784 sampledHigh=107096 utc=1794664777 ms=2680000 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-raw used=103200 free=23584 total=126784 sampledHigh=107096 utc=1794664777 ms=2680002 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-ready used=104288 free=22496 total=126784 sampledHigh=107096 utc=1794664777 ms=2680006 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=104288 free=22496 total=126784 sampledHigh=107096 utc=1794664777 ms=2680049 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=104288 free=22496 total=126784 sampledHigh=107096 utc=1794664777 ms=2680069 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=104288 free=22496 total=126784 sampledHigh=107096 utc=1794664777 ms=2680100 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=100608 free=26176 total=126784 sampledHigh=107096 utc=1794664777 ms=2680103 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-first-map-verified used=100616 free=26168 total=126784 sampledHigh=107096 utc=1794664777 ms=2680103 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=100144 free=26640 total=126784 sampledHigh=107096 utc=1794664777 ms=2680151 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=json-parsed used=103256 free=23528 total=126784 sampledHigh=107096 utc=1794664777 ms=2680230 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-raw used=104600 free=22184 total=126784 sampledHigh=107096 utc=1794664777 ms=2680232 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-ready used=104632 free=22152 total=126784 sampledHigh=107096 utc=1794664777 ms=2680233 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=104632 free=22152 total=126784 sampledHigh=107096 utc=1794664777 ms=2680234 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=104632 free=22152 total=126784 sampledHigh=107096 utc=1794664777 ms=2680237 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=104632 free=22152 total=126784 sampledHigh=107096 utc=1794664777 ms=2680250 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=104632 free=22152 total=126784 sampledHigh=107096 utc=1794664777 ms=2680254 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=104632 free=22152 total=126784 sampledHigh=107096 utc=1794664777 ms=2680300 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=104632 free=22152 total=126784 sampledHigh=107096 utc=1794664777 ms=2680304 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=104632 free=22152 total=126784 sampledHigh=107096 utc=1794664777 ms=2680350 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=104632 free=22152 total=126784 sampledHigh=107096 utc=1794664777 ms=2680356 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=104632 free=22152 total=126784 sampledHigh=107096 utc=1794664777 ms=2680401 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=104632 free=22152 total=126784 sampledHigh=107096 utc=1794664777 ms=2680415 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=104632 free=22152 total=126784 sampledHigh=107096 utc=1794664777 ms=2680450 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=104632 free=22152 total=126784 sampledHigh=107096 utc=1794664777 ms=2680458 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=104632 free=22152 total=126784 sampledHigh=107096 utc=1794664777 ms=2680501 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=104632 free=22152 total=126784 sampledHigh=107096 utc=1794664777 ms=2680516 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=104632 free=22152 total=126784 sampledHigh=107096 utc=1794664777 ms=2680549 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=101224 free=25560 total=126784 sampledHigh=107096 utc=1794664777 ms=2680555 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=100760 free=26024 total=126784 sampledHigh=107096 utc=1794664777 ms=2680600 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=json-parsed used=103392 free=23392 total=126784 sampledHigh=107096 utc=1794664777 ms=2680679 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-raw used=103360 free=23424 total=126784 sampledHigh=107096 utc=1794664777 ms=2680682 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-chunk-ready used=103448 free=23336 total=126784 sampledHigh=107096 utc=1794664777 ms=2680683 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=103448 free=23336 total=126784 sampledHigh=107096 utc=1794664777 ms=2680683 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-decode-step used=101544 free=25240 total=126784 sampledHigh=107096 utc=1794664777 ms=2680689 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=101080 free=25704 total=126784 sampledHigh=107096 utc=1794664777 ms=2680700 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=json-parsed used=106080 free=20704 total=126784 sampledHigh=107096 utc=1794664777 ms=2680743 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=98448 free=28336 total=126784 sampledHigh=107096 utc=1794664777 ms=2680750 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=98480 free=28304 total=126784 sampledHigh=107096 utc=1794664777 ms=2680800 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=98512 free=28272 total=126784 sampledHigh=107096 utc=1794664777 ms=2680850 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=98560 free=28224 total=126784 sampledHigh=107096 utc=1794664777 ms=2680901 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=98608 free=28176 total=126784 sampledHigh=107096 utc=1794664777 ms=2680949 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-step-enter used=98624 free=28160 total=126784 sampledHigh=107096 utc=1794664778 ms=2680999 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_WRITES phase=raster-activation count=1 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153
+NATIVE_METRIC phase=sfr-full-scene-active used=97544 free=29240 total=126784 sampledHigh=107096 utc=1794664778 ms=2681006 owner=e87c78f5319f4b3b9a000ad2a267e216|spacefox-ux02-handoff-current|05b599470153

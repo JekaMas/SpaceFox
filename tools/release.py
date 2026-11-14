@@ -77,7 +77,24 @@ def source_state(root: Path) -> dict:
                     ".." not in PurePosixPath(name).parts, "unsafe language proof path")
             admission.add(name)
         receipt = json.loads((root / proof["receiptPath"]).read_text())
-        admission.update(proof["productionSources"])
+        historical = {}
+        if "ux02DeltaProof" in proof:
+            delta_path = proof["ux02DeltaProof"]["path"]
+            require(delta_path in paths, "UX02 admission proof must be tracked")
+            delta = json.loads((root / delta_path).read_text())
+            historical = delta["priorSnapshots"]
+            admission.add(delta_path)
+            admission.add(delta["priorCatalog"]["path"])
+            admission.update(item["path"] for item in historical.values())
+            admission.update(delta["evidence"])
+            admission.update(delta["sources"])
+        for name, expected in proof["productionSources"].items():
+            if name not in paths and name in historical:
+                snapshot = historical[name]
+                require(snapshot["path"] in admission and digest(root / snapshot["path"]) == snapshot["sha256"],
+                        "missing historical admission source snapshot: " + name)
+            else:
+                admission.add(name)
         admission.update(receipt["observations"])
         corpus_directory = PurePosixPath(proof["corpusPath"]).parent
         admission.update(name for name in paths if PurePosixPath(name).is_relative_to(corpus_directory))

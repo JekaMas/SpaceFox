@@ -86,8 +86,8 @@ def discover_toolchain(root: Path = ROOT) -> dict:
         memories = {row["type"]: row["memoryLimit"] for row in data["appTypes"]}
         parts = [{k: v for k, v in row.items() if k in ("number", "connectIQVersion", "firmwareVersion")} for row in data["partNumbers"]]
         if (data["deviceId"] != product or data["deviceVersion"] != pin["profile_version"] or
-            data["displayName"] != pin["display_name"] or data["deviceFamily"] != "round-390x390" or
-            data["resolution"] != {"width": 390, "height": 390} or data["displayType"] != "amoled" or
+            data["displayName"] != pin["display_name"] or data["deviceFamily"] != pin.get("device_family", "round-390x390") or
+            data["resolution"] != pin.get("resolution", {"width": 390, "height": 390}) or data["displayType"] != "amoled" or
             memories.get("watchFace", 0) < 131072 or memories.get("background", 0) < 65536 or
             simulator_data.get("graphicsResourcePoolSize", 0) < 2097152 or
             simulator_data.get("appStorageCapacity", 0) < 10485760 or

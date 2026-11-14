@@ -17,8 +17,13 @@ from tools.build_watchface import ROOT,NS,discover,validate_manifest,validate_ap
 
 GROUPS={'current':('2bf62b7a43d84afcb21e8d935670c101','SpaceFoxCurrent20261113.prg')}
 
-def build_probe(output,source,*,group,tests=False,source_files=None,probe_resources=None):
-    out=output.resolve();out.mkdir(parents=True,exist_ok=True);c=discover();validate_api_policy(ROOT,c['lock']);tree=validate_manifest(ROOT,c['lock']);app=tree.getroot().find('iq:application',NS);app.set('id',GROUPS[group][0]);app.set('entry','SfrRuntimeApp');app.set('name','@Strings.SfrProbeName');tree.write(out/'manifest.xml')
+def build_probe(output,source,*,group,tests=False,source_files=None,probe_resources=None,device="fr165"):
+    out=output.resolve();out.mkdir(parents=True,exist_ok=True);c=discover();validate_api_policy(ROOT,c['lock']);tree=validate_manifest(ROOT,c['lock']);app=tree.getroot().find('iq:application',NS);app.set('id',GROUPS[group][0]);app.set('entry','SfrRuntimeApp');app.set('name','@Strings.SfrProbeName');
+    products=app.find('iq:products',NS)
+    if not any(node.get('id')==device for node in products):
+        from xml.etree import ElementTree as ET
+        ET.SubElement(products,'{http://www.garmin.com/xml/connectiq}product',{'id':device})
+    tree.write(out/'manifest.xml')
     selected_sources=list((ROOT/'watchface/source').rglob('*.mc')) if source_files is None else [ROOT/p for p in source_files]
     production_sources={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in selected_sources}
     source_path=str(ROOT/'watchface/source')+';'+str(out)
@@ -39,7 +44,7 @@ def build_probe(output,source,*,group,tests=False,source_files=None,probe_resour
     probe_resource_hashes={str(p.relative_to(resources)):hashlib.sha256(p.read_bytes()).hexdigest() for p in resources.rglob('*') if p.is_file()}
     (out/'Probe.mc').write_text(source)
     (out/'monkey.jungle').write_text('project.manifest = '+str(out/'manifest.xml')+'\nbase.sourcePath = '+source_path+'\nbase.resourcePath = '+str(ROOT/'watchface/resources')+';'+str(resources)+'\nbase.lang.rus = '+str(ROOT/'watchface/resources-rus')+'\n')
-    package=out/GROUPS[group][1];command=[str(c['java']),'-Dfile.encoding=UTF-8','-jar',str(c['compiler']),'-f',str(out/'monkey.jungle'),'-d','fr165','-o',str(package),'-y',str(c['key']),*c['lock']['compiler_options']]
+    package=out/GROUPS[group][1];command=[str(c['java']),'-Dfile.encoding=UTF-8','-jar',str(c['compiler']),'-f',str(out/'monkey.jungle'),'-d',device,'-o',str(package),'-y',str(c['key']),*c['lock']['compiler_options']]
     if tests:command.append('--unit-test')
     result=run(command,out);(out/'compile.log').write_text(result.stdout)
     # Retain exact source bytes beside package/MIR/debug artifacts. The .txt
@@ -48,7 +53,7 @@ def build_probe(output,source,*,group,tests=False,source_files=None,probe_resour
         raw=(ROOT/relative).read_bytes()
         if hashlib.sha256(raw).hexdigest()!=expected:raise RuntimeError('production source changed during compile: '+relative)
         snapshot=out/'production-snapshot'/(relative+'.txt');snapshot.parent.mkdir(parents=True,exist_ok=True);snapshot.write_bytes(raw)
-    record=dict(schemaVersion=1,group=group,tests=tests,ownerTag=owner_tag,sourceSetSha256=source_set,sourceHead=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),sourceDirty=bool(subprocess.check_output(['git','status','--porcelain'],cwd=ROOT)),command=command,exitCode=result.returncode,packageName=package.name,packageSha256=hashlib.sha256(package.read_bytes()).hexdigest() if package.exists() else None,productionSources=production_sources,productionResources=production_resources,probeResources=probe_resource_hashes,probeSha256=hashlib.sha256(source.encode()).hexdigest(),applicationUuid=GROUPS[group][0],productionSourceScope="all-native" if source_files is None else "explicit-setup-only-subset",proofBoundary=__doc__)
+    record=dict(schemaVersion=1,group=group,device=device,tests=tests,ownerTag=owner_tag,sourceSetSha256=source_set,sourceHead=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),sourceDirty=bool(subprocess.check_output(['git','status','--porcelain'],cwd=ROOT)),command=command,exitCode=result.returncode,packageName=package.name,packageSha256=hashlib.sha256(package.read_bytes()).hexdigest() if package.exists() else None,productionSources=production_sources,productionResources=production_resources,probeResources=probe_resource_hashes,probeSha256=hashlib.sha256(source.encode()).hexdigest(),applicationUuid=GROUPS[group][0],productionSourceScope="all-native" if source_files is None else "explicit-setup-only-subset",proofBoundary=__doc__)
     (out/'build.json').write_text(json.dumps(record,indent=2)+'\n')
     return record
 
@@ -89,7 +94,7 @@ def main():
         if b['productionSourceScope']=='all-native' and set(b['productionSources'])!={str(p.relative_to(ROOT)) for p in (ROOT/'watchface/source').rglob('*.mc')}:changed.append('all-native source closure')
         changed += ['probe-resource/'+name for name,digest in b.get('probeResources',{}).items() if not (out/'probe-resources'/name).is_file() or hashlib.sha256((out/'probe-resources'/name).read_bytes()).hexdigest()!=digest]
         if changed:raise RuntimeError('Refusing stale native package: '+', '.join(changed[:8]))
-        c=discover();command=[str(c['java']),'-Dfile.encoding=UTF-8','-classpath',str(c['compiler']),'com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux','-f',str(out/b['packageName']),'-d','fr165','-s',str(c['sdk']/'bin/shell')]
+        c=discover();command=[str(c['java']),'-Dfile.encoding=UTF-8','-classpath',str(c['compiler']),'com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux','-f',str(out/b['packageName']),'-d',b.get('device','fr165'),'-s',str(c['sdk']/'bin/shell')]
         if b['tests']:command.append('-t')
         start=time.monotonic()
         with (out/(a.label+'.log')).open('w') as log:
