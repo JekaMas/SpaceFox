@@ -140,8 +140,8 @@ class MetadataPagePolicyTest(unittest.TestCase):
             with tempfile.TemporaryDirectory(prefix='spacefox-metadata-cli-') as folder:
                 root = Path(__file__).resolve().parents[1]; remote = Path(folder) / 'remote.git'
                 code = subprocess.check_output(['git', '-C', str(root), 'rev-parse', 'HEAD'], text=True).strip()
-                subprocess.run(['git', 'clone', '--bare', '--shared', '-q', str(root), str(remote)], check=True)
-                subprocess.run(['git', '-C', str(remote), 'update-ref', 'refs/heads/main', code], check=True)
+                subprocess.run(['git', 'init', '--bare', '-q', str(remote)], check=True)
+                subprocess.run(['git', '-C', str(remote), 'fetch', '-q', str(root), code + ':refs/heads/main'], check=True)
                 from tools.spacefox.publisher import GitState
                 store = GitState(str(remote))
                 try:
