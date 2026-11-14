@@ -5,6 +5,10 @@ worldwide-completeness evidence. No historical result is rehashed as current.
 """
 import hashlib
 import json
+import shutil
+import subprocess
+import sys
+import tempfile
 from copy import deepcopy
 from pathlib import Path
 import unittest
@@ -30,18 +34,42 @@ class FinalSiteFlagTest(unittest.TestCase):
         prior=ROOT/proof['priorInputReceipt']
         self.assertEqual(sha(prior),proof['priorInputReceiptSha256'])
         old=json.loads(prior.read_text())
+        snapshots=E.parent/'test-release-20261114'
+        historical={'tools/spacefox/native_profile.py':snapshots/'prior-native-profile.py.txt',
+                    'tools/spacefox/catalog.py':snapshots/'prior-audit/catalog.py.txt',
+                    'catalog/source.json':snapshots/'prior-audit/source.json.txt'}
         for name,digest in old['inputs'].items():
-            if name!='tools/audit_site_flag_batch.py':self.assertEqual(sha(ROOT/name),digest,name)
+            if name!='tools/audit_site_flag_batch.py':self.assertEqual(sha(historical.get(name,ROOT/name)),digest,name)
         self.assertEqual(sha(ROOT/'tools/audit_site_flag_batch.py'),proof['changedInventorySourceSha256'])
         self.assertEqual(sha(ROOT/'tools/extend_site_flag_audit.py'),proof['extensionSourceSha256'])
         self.assertEqual(sha(E/'source-pixel-audit.json'),proof['combinedAuditSha256'])
         correction=json.loads((E/'correction-receipt.json').read_text())
         self.assertEqual((correction['status'],correction['exitCode']),('passed',0))
         self.assertEqual(sha(E/'correction-test.log'),correction['logSha256'])
-        for name,digest in correction['inputs'].items():self.assertEqual(sha(ROOT/name),digest,name)
+        for name,digest in correction['inputs'].items():self.assertEqual(sha(historical.get(name,ROOT/name)),digest,name)
         pixels=json.loads((E/'source-pixel-audit.json').read_text());inventory=audit()
-        self.assertEqual(pixels['inventory'],inventory)
-        self.assertEqual((inventory['selectedEvents'],len(inventory['modelsCurrentOrEventReferenced']),len(inventory['eventAndAnnouncedSites'])),(474,164,56))
+        # The captured audit belongs to the old catalog. Reproduce it against its
+        # exact prior inputs, then independently check the current site cohort.
+        with tempfile.TemporaryDirectory(prefix='spacefox-historical-site-audit-') as tmp:
+            prior=Path(tmp)
+            for folder in ('tools','catalog','assets','corpus','licenses'):
+                shutil.copytree(ROOT/folder,prior/folder,ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
+            for folder in ('openspec','schemas','locales','watchface'):
+                (prior/folder).symlink_to(ROOT/folder,target_is_directory=True)
+            for name,path in historical.items():
+                shutil.copyfile(path,prior/name)
+            current_catalog=snapshots/'prior-audit/current_catalog.py.txt'
+            self.assertEqual(sha(current_catalog),'6480f83b607fa9859900a1cd06220562b7f8c6e004ad68e32c43e796223baf6c')
+            shutil.copyfile(current_catalog,prior/'tools/spacefox/current_catalog.py')
+            result=subprocess.run([sys.executable,'-B','-c',
+                'import json; from tools.audit_site_flag_batch import audit; print(json.dumps(audit()))'],
+                cwd=prior,check=True,stdout=subprocess.PIPE,text=True)
+            self.assertEqual(pixels['inventory'],json.loads(result.stdout))
+        for key in set(inventory)-{'catalogVersion','modelsCurrentOrEventReferenced'}:
+            self.assertEqual(pixels['inventory'][key],inventory[key],key)
+        self.assertEqual(len(inventory['modelsCurrentOrEventReferenced']),180)
+
+        self.assertEqual((inventory['selectedEvents'],len(inventory['modelsCurrentOrEventReferenced']),len(inventory['eventAndAnnouncedSites'])),(474,180,56))
         self.assertEqual((len(pixels['flags']),len(pixels['maps'])),(16,56))
         self.assertEqual(sum(x['position'] is None for x in pixels['maps']),6)
         self.assertTrue(all(x.get('status')!='missing-or-badge' for x in pixels['flags']))
@@ -87,7 +115,9 @@ class FinalSiteFlagTest(unittest.TestCase):
         correction=json.loads((E/'correction-receipt.json').read_text())
         self.assertEqual(correction['status'],'passed');self.assertEqual(correction['exitCode'],0)
         self.assertEqual(sha(E/'correction-test.log'),correction['logSha256'])
-        for name,digest in correction['inputs'].items():self.assertEqual(sha(ROOT/name),digest,name)
+        snapshots=E.parent/'test-release-20261114/prior-audit'
+        historical={'tools/spacefox/catalog.py':snapshots/'catalog.py.txt','catalog/source.json':snapshots/'source.json.txt'}
+        for name,digest in correction['inputs'].items():self.assertEqual(sha(historical.get(name,ROOT/name)),digest,name)
         log=(E/'native-unit-stable/native-tests.log').read_text()
         for token in ('wrongCountryAndModelRejected=true','corruptRasterRefRejected=true','invalidUpdateRetainsPrior=true','unknownPadNoPin=true','zeroValid=true','identitySwapClears=true','missingExplicit=true','metadataReopenAgePreserved=true','rasterReopenWrites=0'):
             self.assertIn(token,log)
