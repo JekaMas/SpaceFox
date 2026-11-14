@@ -7,7 +7,7 @@ function feedScene(packet,now){
     if(rocket==null&&row["configuration_id"]!=null&&dictionaries.hasKey(row["configuration_id"])){rocket=packet.catalogName(row["configuration_id"]);}
     if(operator==null&&row["operator_id"]!=null&&dictionaries.hasKey(row["operator_id"])){operator=packet.catalogName(row["operator_id"]);}
     if(site==null&&row["site_id"]!=null&&dictionaries.hasKey(row["site_id"])){site=packet.catalogName(row["site_id"]);}
-    var operatorShort=row["operator_abbrev"];
+    var operatorShort=row["operator_abbrev"];if(operatorShort==null){operatorShort=packet.catalogOperatorShort;}
     // Keep full source text in the accepted feed; derive only a compact place
     // label by removing an exact operator prefix and comma-delimited region.
     if(site!=null){var comma=site.find(",");if(comma!=null&&comma>0){site=site.substring(0,comma);}var prefix=row["operator_name"];if(prefix!=null&&!prefix.equals("")&&site.find(prefix+" ")==0){site=site.substring(prefix.length()+1,site.length());}}

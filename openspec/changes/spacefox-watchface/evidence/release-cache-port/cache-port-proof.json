@@ -1,0 +1,135 @@
+{
+  "scope": "public-ux03-cache-port",
+  "status": "passed",
+  "priorCatalog": {
+    "path": "openspec/changes/spacefox-watchface/evidence/release-cache-port/prior/catalog.json",
+    "sha256": "f1bb594687307cd52b261c5aaefaa1baba880ce51364afeab5e081ccbbadb7df"
+  },
+  "priorSnapshots": {
+    "watchface/source/NativeImmutable.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/release-cache-port/prior/NativeImmutable.mc",
+      "sha256": "6c4fa7e067a94b90a3461b9a69a8a512ee519a8c2b45df6f16b474ae5e213737"
+    },
+    "watchface/manifest.xml": {
+      "path": "openspec/changes/spacefox-watchface/evidence/release-cache-port/prior/manifest.xml",
+      "sha256": "cdee87896ca8cf0136c31014c42e9b01dbd53e52e135c2b35463581bd6b430d9"
+    },
+    "tools/native_language_policy.py": {
+      "path": "openspec/changes/spacefox-watchface/evidence/release-cache-port/prior/native_language_policy.py",
+      "sha256": "15059c3fb1c03d83ba78e979b51662c4e07d2f8d29f62075b3d60d93ab63353c"
+    },
+    "watchface/source/generated/NativeVersion.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/release-cache-port/prior/NativeVersion.mc",
+      "sha256": "1252e9985f556153f1eaf9f3ceb3417f3a982630911688f159eada156711c9a6"
+    },
+    "tests/test_ux02_reuse.py": {
+      "path": "openspec/changes/spacefox-watchface/evidence/release-cache-port/prior/test_ux02_reuse.py",
+      "sha256": "b4f3d7fe1aeea2a5ef4e0a2910579b7e33c639b49da600db48e045af1c3b62c3"
+    },
+    "watchface/source/NativeCache.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/release-cache-port/prior/NativeCache.mc",
+      "sha256": "df4fe63556691734e561ccdcb8e499c97cbe40504db35567c03168f8646b621d"
+    },
+    "watchface/source/NativeFeed.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/release-cache-port/prior/NativeFeed.mc",
+      "sha256": "94164ebef3b3e53bc2e2d08fe4caef4014aeaf9574750028a005264e80ceb994"
+    },
+    "watchface/source/NativeForegroundApp.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/release-cache-port/prior/NativeForegroundApp.mc",
+      "sha256": "1a03f71384de226b9d5bba0ec75f33555ae1610df2fc8d3d90dcd99e3bd9b243"
+    },
+    "watchface/source/NativeForegroundCache.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/release-cache-port/prior/NativeForegroundCache.mc",
+      "sha256": "0ceb2a65a26d6d9b0924134a97aabe71515369bde0f004bd9df3ba0c17c28746"
+    },
+    "watchface/source/NativeBridgeFeed.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/release-cache-port/prior/NativeBridgeFeed.mc",
+      "sha256": "c3e819bb2d9eb9e787b72c136efc327eaeca7e34c5ecf6c69abac4bb729f8e59"
+    },
+    "watchface/source/FeedScene.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/release-cache-port/prior/FeedScene.mc",
+      "sha256": "54ed293549c928fa026bf6ce22c404f7d1efe20d43533a108512c75d438eb1fa"
+    }
+  },
+  "sources": {
+    "watchface/source/NativeImmutable.mc": {
+      "path": "watchface/source/NativeImmutable.mc",
+      "sha256": "9e057314adb88757e37009945bc8c6e99f6fcd8508daeff7c1154bcc9252c6a9"
+    },
+    "watchface/manifest.xml": {
+      "path": "watchface/manifest.xml",
+      "sha256": "c60b2fec7186b364b265a41b6e92590144eb299fba8f157444156c8ab8329692"
+    },
+    "tools/native_language_policy.py": {
+      "path": "tools/native_language_policy.py",
+      "sha256": "b4756e0204a92c4c2ec31e8137545187d1b783354ef54f64f31b9c4736cad05a"
+    },
+    "tools/native_cache_port_requalification.py": {
+      "path": "tools/native_cache_port_requalification.py",
+      "sha256": "8b186e64c22b68e0ac94a9e5490f38a93bd6ef43969133e7ae7b78de17f1715a"
+    },
+    "watchface/source/generated/NativeVersion.mc": {
+      "path": "watchface/source/generated/NativeVersion.mc",
+      "sha256": "859bb7cb7925d8074381eeedd5eb87be30714f250f834822036d4bc233f2fd0c"
+    },
+    "tests/test_ux02_reuse.py": {
+      "path": "tests/test_ux02_reuse.py",
+      "sha256": "925b21d65fc1ddc5ad704df9983b1f87b6e6acca7ec6806e37d45a9e919b1d15"
+    },
+    "watchface/source/NativeCache.mc": {
+      "path": "watchface/source/NativeCache.mc",
+      "sha256": "6a708556c0035ed5cf49e3d6214b8d3df5c90d7bcdb60448022c857a71866f86"
+    },
+    "watchface/source/NativeFeed.mc": {
+      "path": "watchface/source/NativeFeed.mc",
+      "sha256": "95d83aa0df920020e13dfccb12b204ebe79c00d535b67a43f3f2df017fcf1f48"
+    },
+    "watchface/source/NativeForegroundApp.mc": {
+      "path": "watchface/source/NativeForegroundApp.mc",
+      "sha256": "e45bf81cebb89da46be678ae00d67046fdbaefcd4b3691c70f782211fb4f446f"
+    },
+    "watchface/source/NativeForegroundCache.mc": {
+      "path": "watchface/source/NativeForegroundCache.mc",
+      "sha256": "106c3649836c7b82f4ad47dc88df036224987ce50d014d2011019e88d1a54523"
+    },
+    "watchface/source/NativeBridgeFeed.mc": {
+      "path": "watchface/source/NativeBridgeFeed.mc",
+      "sha256": "c64bf9a0f2260efa4dec8d8b84dfb0ac896d43239a485b23ef5631742ff9f1a5"
+    },
+    "watchface/source/FeedScene.mc": {
+      "path": "watchface/source/FeedScene.mc",
+      "sha256": "7216343e1be1478e189f3364b2e3141f58dc437ccef49f63a6ab48b2fd7d62e0"
+    }
+  },
+  "cacheObservation": {
+    "path": "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole/admission-proof.json",
+    "sha256": "2138d04599ce1bac0bb8d6785fabae8cf31c646ea0b72a9fab7bf84217bc78f3"
+  },
+  "evidence": {
+    "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole/abc/build.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole/abc/build.json",
+      "sha256": "797304040b9e5b7226da84d2330bd7bc3d9d3fdd560ecbe54387a65d4d75ddbb"
+    },
+    "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole/abc/Probe.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole/abc/Probe.mc",
+      "sha256": "5610d2f6b1c29cd94cbb495057bdc2416bfe9b1b0678bffbc46e421107b88521"
+    },
+    "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole/abc/stable-c.log": {
+      "path": "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole/abc/stable-c.log",
+      "sha256": "3642e85973c29c65829e23b28af3d5b3558d67103fe7be79ff23e7df0fb809e2"
+    },
+    "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole/sdk-storage/build.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole/sdk-storage/build.json",
+      "sha256": "67018849583c01a644f2c8ab342e6f8adc37c8dcb35f96c73d7749c45754f70e"
+    },
+    "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole/sdk-storage/Probe.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole/sdk-storage/Probe.mc",
+      "sha256": "44cdf74df8381e832c987ba29e3cf8c96a3521e8a19abee344b57280a154b75a"
+    },
+    "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole/sdk-storage/final-r2.log": {
+      "path": "openspec/changes/spacefox-watchface/evidence/native-cache-budget-whole/sdk-storage/final-r2.log",
+      "sha256": "950c8a9acb8e19564e0f70d18317ff1776fc288b09915780ad79226a7e3bd14b"
+    }
+  },
+  "boundary": "Retained public UX03 and authoring cache observations; no physical, phone or Store claim."
+}

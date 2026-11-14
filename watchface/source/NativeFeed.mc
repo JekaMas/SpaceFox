@@ -102,20 +102,24 @@ class NativeFeed {
     function timingIdentity(){var l=document["launch"];if(l==null){return "empty";}var t=l["timing"];if(t["exact_utc"]!=null){return "exact:"+t["exact_utc"];}var h=new NativeWireHash();h.put("[\""+t["precision"]+"\",\""+(t["date_utc"]==null?"":t["date_utc"])+"\"");var fields=["window_start_utc","window_end_utc","nominal_utc"];for(var i=0;i<fields.size();i+=1){var v=t[fields[i]];h.put(","+(v==null?"null":v.toString()));}h.put("]");return h.digest();}
     function priorDocument(){
         var l=document["launch"];var row=l==null?null:{"launch_id"=>l["launch_id"],"configuration_id"=>l["configuration_id"],"timing"=>{"exact_utc"=>l["timing"]["exact_utc"]}};
+        if(row!=null){var refresh=refreshTarget();if(row["timing"]["exact_utc"]==null&&refresh!=null){row["timing"]["refresh_utc"]=refresh;}}
         return {"catalogDigest"=>document["catalogDigest"],"refreshPolicy"=>document["refreshPolicy"],"launch"=>row};
     }
     function mutableWire(){var pieces=[];for(var i=0;i<ignored.size();i+=1){var span=ignored[i];pieces.add(raw.substring(span[0],span[1]));}return pieces;}
     function compact(){var pub=document["publisher"];document=priorDocument();document["publisher"]=pub;raw="";spans=null;ignored=null;}
     function target(){return document["launch"]==null?null:document["launch"]["timing"]["exact_utc"];}
+    // Source precision MIN is an actionable nominal-minute target, just as in FeedScene.
+    // Cached projections retain it separately so exact_utc remains source truthful.
+    function refreshTarget(){var l=document["launch"];if(l==null){return null;}var t=l["timing"];if(t["exact_utc"]!=null){return t["exact_utc"];}if(t.hasKey("refresh_utc")){return t["refresh_utc"];}return t["precision"] instanceof String&&t["precision"].equals("source-coarse")&&t["source_precision_id"]==1?t["nominal_utc"]:null;}
     function launchId(){return document["launch"]==null?null:document["launch"]["launch_id"];}
-    function interval(now){var p=document["refreshPolicy"];if(p["fast_interval_seconds"]!=null){return p["fast_interval_seconds"];}var t=target();return t!=null && now>=t-7200 && now<=t+1800?p["near_interval_seconds"]:p["normal_interval_seconds"];}
+    function interval(now){var p=document["refreshPolicy"];if(p["fast_interval_seconds"]!=null){return p["fast_interval_seconds"];}var t=refreshTarget();return t!=null && now>=t-7200 && now<=t+1800?p["near_interval_seconds"]:p["normal_interval_seconds"];}
     function advance(now){
         var checked=validation==null?document["publisher"]["selectionValidatedUtc"]:validation;if(checked==null){return;}var p=document["refreshPolicy"];var age=now-checked;if(age<0){age=0;}var cycles=p["stale_cycles"];
         if(p["fast_interval_seconds"]!=null){stale=stale||age/p["fast_interval_seconds"]>=cycles;return;}
-        stale=stale||age/p["normal_interval_seconds"]>=cycles;var t=target();if(t!=null){var end=now<t+1800?now:t+1800;stale=stale||end>=t-7200&&end>=checked&&(end-checked)/p["near_interval_seconds"]>=cycles;}
+        stale=stale||age/p["normal_interval_seconds"]>=cycles;var t=refreshTarget();if(t!=null){var end=now<t+1800?now:t+1800;stale=stale||end>=t-7200&&end>=checked&&(end-checked)/p["near_interval_seconds"]>=cycles;}
     }
     function metadata(previous,now){
-        if(previous!=null&&launchId()!=null&&launchId().equals(previous.launchId())){if(validation<previous.validation){fail();}if(validation==previous.validation&&!sameRecordOrEnrichment(previous)){fail();}rescheduled=rescheduled||previous.rescheduled;if(!timingKey.equals(previous.timingKey)){rescheduled=true;}if(validation==previous.validation){stale=stale||previous.stale;}}
+        if(previous!=null&&launchId()!=null&&launchId().equals(previous.launchId())){if(validation<previous.validation){fail();}if(validation==previous.validation&&!sameRecordOrEnrichment(previous)){fail();}rescheduled=rescheduled||previous.rescheduled;if(!timingKey.equals(previous.timingKey)){var before=previous.refreshTarget();var after=refreshTarget();if(before==null||after==null||before!=after){rescheduled=true;}}if(validation==previous.validation){stale=stale||previous.stale;}}
         advance(now);
     }
 }

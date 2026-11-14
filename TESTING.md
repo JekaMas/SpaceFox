@@ -18,3 +18,7 @@ A clean install defaults to English; Field 1 steps, Field 2 Body Battery, Field 
 Check the clock and four fields, wait for a schedule and rocket/map, and compare the launch against its source. Confirm `T-` before a known target and `T+` after it if that situation is encountered; zero alone is not confirmation of liftoff. Try offline display, reconnection and reboot. Note the watch firmware, app version, phone model, approximate time and steps for any problem. Report at [GitHub Issues](https://github.com/JekaMas/SpaceFox/issues), omitting health readings or other private details from screenshots.
 
 See [privacy](https://github.com/JekaMas/SpaceFox/blob/main/docs/PRIVACY.md), [licenses](https://github.com/JekaMas/SpaceFox/blob/main/THIRD_PARTY_NOTICES.md) and [project setup](https://github.com/JekaMas/SpaceFox/blob/main/docs/AGENT_SETUP.md).
+
+## Candidate 0.1.8 test package
+
+A higher-version test candidate is in preparation. Check the GitHub release status and its checksums before use; a draft is not a published release. Match `SpaceFox-fr165m.prg` to the Forerunner 165 Music and `SpaceFox-fr165.prg` to the standard model. For USB installation, simulator steps, offline checks and the phone/pairing distinction, see [installation and testing](docs/TESTING_ON_PHONE.ru.md). The 0.1.7 incident above remains open until the executing version and actual device behavior are observed.

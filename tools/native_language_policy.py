@@ -1,8 +1,9 @@
 """Source-bound finite software admission, separate from human/device review."""
-import hashlib,json,re
+import hashlib,json,re,sys
 from pathlib import Path
 from xml.etree import ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path: sys.path.insert(0, str(ROOT))
 OWNERS=('tools/native_language_policy.py','tools/build_native_localization.py','tools/build_watchface.py',
         'watchface/source/LocalePresentation.mc','watchface/source/SceneRenderer.mc',
         'watchface/source/SceneSettings.mc','watchface/source/SpaceFoxView.mc',
@@ -88,6 +89,9 @@ def software_locales(root,catalog=None):
  if not qualified:
   if proof is not None:raise ValueError('empty software admission must have no proof')
   return []
+ if isinstance(proof,dict) and 'cachePortDeltaProof' in proof:
+  from tools.native_cache_port_requalification import validate
+  return validate(root,catalog)
  if isinstance(proof,dict) and 'ux03DeltaProof' in proof:
   from tools.native_ux03_requalification import validate
   return validate(root,catalog)
