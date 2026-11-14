@@ -538,3 +538,11 @@ GitHub release asset bodies anonymously downloaded and hash-matched. Original
 Garmin form is prepared but submission has NOT occurred; action-time agreement
 confirmation is pending. Physical watch remains observed0.1.6. See
 [publication checkpoint](evidence/delivery01-publication/PUBLICATION.md).
+
+### DISPLAY02 current owner correction — apply pending
+
+Owner still sees no launch point and requires only LOW/NOT_LOW, no special mode
+flags/debug/alternate layouts, one countdown calculation and focused event PBT.
+One grouped author apply/self-GREEN, then one fresh independent verify/fix, root
+judge and higher-version publication are planned in [DISPLAY02](evidence/display02/PLAN.md).
+Existing0.1.9 Garmin form is superseded before submission; physicalwatch remains0.1.6.
