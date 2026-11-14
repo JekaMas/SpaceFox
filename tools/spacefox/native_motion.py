@@ -426,7 +426,9 @@ def validate_artifact(files):
                     visual,_ = static._asset(files,source['descriptor']); visuals=[visual]
                     require(rd['sourceSemanticSha256'] == source_desc['sha256'], 'visual source digest')
                 pixels,_,_ = static.rasterize(visuals,width,height,opaque=role=='map')
-                if channels == 3: pixels=bytes(c for i,c in enumerate(pixels) if i%4 != 3)
+                if channels == 3:
+                    pixels=bytes(c for i,c in enumerate(pixels) if i%4 != 3)
+                    pixels,_ = static.map_raster(pixels, source['descriptor'])
                 chunks = []
                 for pin in rd['shards']:
                     require(type(pin) is dict and set(pin)=={'path','sha256','decodedBytes'}

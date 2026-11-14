@@ -1,0 +1,58 @@
+{
+  "ll2:configuration:135": {
+    "state": "current-evidence",
+    "reason": "State broadcaster reports Kuaizhou-1A as named member of a 2026-11-09 three-year launch programme; dated securities prospectus separately describes it as operating.",
+    "sources": [
+      "https://news.cri.cn/20261109/317e45d8-2181-1dd2-bb05-863fd14bc277.html",
+      "https://static.sse.com.cn/stock/disclosure/announcement/c/202512/002174_20251231_1QK0.pdf"
+    ],
+    "asOf": "2026-11-13",
+    "uncertainty": "The programme is not a claim about any exact launch date, success or available rocket inventory."
+  },
+  "ll2:configuration:206": {
+    "state": "current-evidence",
+    "reason": "Aevum currently offers Ravn X as a mobile launch aircraft and names separate ERV-A orbital rocket in the launch architecture.",
+    "sources": [
+      "https://www.aevum.com/"
+    ],
+    "asOf": "2026-11-13",
+    "uncertainty": "Company programme claim is not proof of an orbital launch, readiness, launch location, or equivalence of carrier aircraft to the separate rocket."
+  },
+  "ll2:configuration:519": {
+    "state": "current-evidence",
+    "reason": "LandSpace directly reports a 2026-10-14 Zhuque-2E Y4 launch and continuing Zhuque-2E commercial service.",
+    "sources": [
+      "https://www.landspace.com/news-detail.html?itemid=78"
+    ],
+    "asOf": "2026-11-13",
+    "uncertainty": "Retained specific artwork is a source-dated earlier 2024 representative; the later flight or its dimensions are not claimed to match that artwork."
+  },
+  "ll2:configuration:477": {
+    "state": "current-evidence",
+    "reason": "A 2025 report quotes the Long March 8 launcher team describing its no-booster serial configuration as a distinct member of its planned launch-capability family.",
+    "sources": [
+      "https://epaper.guilinlife.com/glrbh5/glrb/20250212/Page05BC.htm"
+    ],
+    "asOf": "2026-11-13",
+    "uncertainty": "A family capability statement is not a confirmed future launch, vehicle allocation, site or retirement decision."
+  },
+  "ll2:configuration:40": {
+    "state": "excluded",
+    "reason": "Roscosmos states that the 2019-12-27 flight ended operation of that Rokot modification; the agency identifies the Rokot configuration with Briz-KM on the same archive page.",
+    "sources": [
+      "https://www.roscosmos.ru/tag/pleseck/"
+    ],
+    "asOf": "2026-11-13",
+    "uncertainty": "This decision applies to the retained Rokot/Briz-KM identity, not any separate Rokot-M successor or its development status."
+  },
+  "ll2:configuration:196": {
+    "state": "current-evidence",
+    "reason": "The Russian Academy of Sciences presentation of 2024-05-27, page 31, explicitly named Angara A5 plus DM-03 for the Venera-D programme. The IKI RAS 2025 programme update still places that mission in 2036.",
+    "sources": [
+      "https://gpad.ac.ru/wp-content/uploads/2024/05/gm/GM_2024-05-27_5-1.pdf",
+      "https://iki.cosmos.ru/en/news/space-science-days-2025-dedicated-ikis-60th-anniversary"
+    ],
+    "asOf": "2026-11-13",
+    "uncertainty": "The later 2036 mission update does not reconfirm its launcher; the older assignment is an announced candidate rather than a confirmed flight selection or date. Orion is not equated with DM-03."
+  }
+}

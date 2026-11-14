@@ -111,7 +111,11 @@ observer combines unchanged historical semantic proofs, R3 causal recovery
 receipts and current measured workloads without relabeling historical execution.
 A different fresh whole-unit peer and root judgment remain required.
 
-## Production activation handoff
+## Historical production activation handoff
+
+The route and blank-default statements in this historical handoff are superseded
+by the current sole schema-3 `/feed.json` route and the 0.1.1 test default
+`https://jekamas.github.io/SpaceFox`.
 
 `FeedBaseUrl` remains blank by default. With an explicitly configured trusted
 HTTPS base, the device requests `<base>/wire3/feed.json`, then on404 only

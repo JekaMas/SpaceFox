@@ -9,7 +9,7 @@ local display. SpaceFox does not upload them to its launch-feed publisher or
 include them in network requests. An unavailable Garmin value is displayed as
 unavailable. Garmin's own apps and services have their separate privacy policies.
 
-The default HTTPS FeedBaseUrl is https://jekamas.github.io/SpaceFox; configuration availability depends on the installation. The watch requests public launch schedules,
+The default HTTPS FeedBaseUrl is https://jekamas.github.io/SpaceFox; it can be overridden when settings are available for the installation. The watch requests public launch schedules,
 rocket artwork and launch-site map data from that host through Garmin's
 communication facilities. The map point is a launch site; SpaceFox does not
 request your GPS location. Requests do not include a SpaceFox user identifier,

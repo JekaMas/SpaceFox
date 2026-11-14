@@ -85,7 +85,31 @@ def materialize(root):
         return loads_json(pin_bytes(item))
 
     recipe = loads_json(checkout('catalog/source.json'))
-    pin(recipe['reference'])
+    reference = pin(recipe['reference'])
+    # Source-reference records can carry their own authenticated capture
+    # dependencies. Materialize those pins as well as the reference itself.
+    # Descend into pinned JSON so nested reference dependencies cannot be lost.
+    seen_reference_pins = set()
+
+    def reference_dependencies(value):
+        if isinstance(value, dict):
+            if {'path', 'sha256'} <= value.keys():
+                name = value['path']
+                raw = pin_bytes(value)
+                if name not in seen_reference_pins:
+                    seen_reference_pins.add(name)
+                    try:
+                        nested = loads_json(raw)
+                    except (ValueError, UnicodeDecodeError):
+                        nested = None
+                    reference_dependencies(nested)
+            for child in value.values():
+                reference_dependencies(child)
+        elif isinstance(value, list):
+            for child in value:
+                reference_dependencies(child)
+
+    reference_dependencies(reference)
     registry = pin(recipe['assetSeed'])
     if 'eligibility' in recipe:
         pin(recipe['eligibility'])

@@ -1,4 +1,5 @@
-"""Validate a URL-default-only delta while retaining the original visual proof."""
+"""Validate a URL default and server map-raster delta while retaining the original visual proof."""
+import copy
 import hashlib
 import json
 from pathlib import Path
@@ -26,15 +27,22 @@ def validate(root, catalog):
     old = prior['supportPolicy']['softwareQualificationProof']
     if set(proof) != set(old) | {'bootstrapDeltaProof'} or any(proof[k] != old[k] for k in old if k != 'productionSources'):
         raise ValueError('prior qualification metadata changed')
+    comparable = copy.deepcopy(catalog)
+    comparable['supportPolicy']['softwareQualificationProof'] = old
+    if comparable != prior:
+        raise ValueError('catalog outside bootstrap proof changed')
     sources = proof['productionSources']
     changed = {name for name in old['productionSources'] if old['productionSources'][name] != sources.get(name)}
-    expected = {'watchface/resources/settings/properties.xml', 'tools/native_language_policy.py'}
+    expected = {'watchface/resources/settings/properties.xml', 'tools/native_language_policy.py', 'tools/spacefox/native_profile.py'}
     if set(sources) != set(old['productionSources']) or changed != expected:
         raise ValueError('unexpected bootstrap source delta')
     for name, digest in sources.items():
         checked(name, digest)
     previous = checked(record['properties']['path'], record['properties']['sha256'])
     previous_policy = checked(record['policy']['path'], record['policy']['sha256'])
+    previous_profile = checked(record['profile']['path'], record['profile']['sha256'])
+    if sha(previous_profile) != old['productionSources']['tools/spacefox/native_profile.py'] or sha(root / 'tools/spacefox/native_profile.py') != record['profile']['currentSha256']:
+        raise ValueError('server map profile delta differs')
     if sha(previous) != old['productionSources']['watchface/resources/settings/properties.xml'] or sha(previous_policy) != old['productionSources']['tools/native_language_policy.py']:
         raise ValueError('historical bootstrap inputs differ')
     old_policy = previous_policy.read_text()
@@ -60,6 +68,8 @@ def validate(root, catalog):
             (oldroot / folder).symlink_to(root / folder, target_is_directory=True)
         shutil.copyfile(previous, oldroot / 'watchface/resources/settings/properties.xml')
         shutil.copyfile(previous_policy, oldroot / 'tools/native_language_policy.py')
-        if prior_validate(oldroot, prior) != prior['supportPolicy']['softwareQualifiedLocales']:
+        shutil.copyfile(previous_profile, oldroot / 'tools/spacefox/native_profile.py')
+        qualified = prior_validate(oldroot, prior)
+        if qualified != prior['supportPolicy']['softwareQualifiedLocales']:
             raise ValueError('retained visual qualification failed')
-    return catalog['supportPolicy']['softwareQualifiedLocales']
+    return qualified

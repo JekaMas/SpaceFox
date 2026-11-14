@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "id": "current-mir-20261114-r1",
+  "reviewedAt": "2026-11-14",
+  "sources": [
+    "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000280868&chrClsCd=010201",
+    "https://www.mk.co.kr/news/politics/10890128"
+  ],
+  "reason": "Source-qualified original representative for named Korean Mir launch programme.",
+  "assets": [
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-family-mir-20261114",
+        "name": "Mir solid-propellant launcher programme representative",
+        "file": "current-catalog-art-20261114/mir.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational vector; source image and text are not redistributed.",
+        "sourceSha256": "2569e7e57295f121a1dbe16e99f71ce9aec86360a9137f6c266bea70684ca7c8",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000280868&chrClsCd=010201",
+          "https://www.mk.co.kr/news/politics/10890128"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "reviewed-shared",
+          "configurationIds": [
+            "ll2:configuration:502"
+          ],
+          "features": [
+            "Named Mir programme and 2026 launch licensing acknowledged by Korea AeroSpace Administration notice.",
+            "2023 Defence Ministry published a final four-stage programme concept with a cylindrical first stage, upper stages and pointed fairing; its illustration is reproduced by Maeil Business News with Ministry attribution."
+          ],
+          "limitations": "Source-dated programme representative only, not engineering geometry or a specific launch livery; no source pixels, lettering or national markings copied. Stage lengths, widths, joints, nozzle and final integrated exterior are approximate; test missions have differed and a future flight configuration is not established."
+        },
+        "geometryReference": {
+          "basis": "Ministry of National Defense 2023 illustrated test versus final configuration, reproduced with attribution by Maeil; KASA 2026 notice confirms named programme.",
+          "reviewedAt": "2026-11-14",
+          "representativeDate": "2023-12",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    }
+  ],
+  "updates": [
+    {
+      "identity": "ll2:configuration:502",
+      "changes": {
+        "currentPackAssetId": "current-family-mir-20261114",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000280868&chrClsCd=010201",
+        "https://www.mk.co.kr/news/politics/10890128"
+      ]
+    }
+  ],
+  "additions": []
+}

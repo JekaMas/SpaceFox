@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 1,
+  "id": "current-art-flags-20261114-r1",
+  "reviewedAt": "2026-11-14",
+  "sources": [
+    "https://www.unodc.org/cld/uploads/res/uncac/LegalLibrary/Iran/Laws/Constitution%20of%20the%20Islamic%20Republic%20of%20Iran%20%281992%29.pdf",
+    "https://www.constituteproject.org/constitution/Peoples_Republic_of_Korea_2016?lang=en",
+    "https://www.ilslaunch.com/wp-content/uploads/pdf/Proton-Mission-Planners-Guide-Revision-7-LKEB-9812-1990.pdf",
+    "https://www.ulalaunch.com/rockets/vulcan-centaur",
+    "https://www.ulalaunch.com/docs/default-source/rockets/2023_vulcan_user_guide.pdf",
+    "https://global.jaxa.jp/activity/pr/brochure/files/rocket09.pdf",
+    "https://global.jaxa.jp/projects/result.html",
+    "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2025_26_Eng_29042026_Rev.pdf",
+    "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/jul/doc2025730594501.pdf",
+    "https://newsroom.ulalaunch.com/releases/united-launch-alliance-is-collaborating-with-nasa-for-the-development-of-a-centaur-upper-stage-for-artemis-missions",
+    "https://www.nasa.gov/wp-content/uploads/2026/10/artemis-acceleration-readiness-oct-2026.pdf",
+    "https://www.nasa.gov/wp-content/uploads/2026/01/a2-reference-guide-012825.pdf"
+  ],
+  "reason": "Source-qualified family and planned-programme schematic representatives and launch-country flags; exact source identities are retained.",
+  "assets": [
+    {
+      "collection": "countries",
+      "facts": {
+        "id": "site-flag-ir-20261114",
+        "name": "Iran national flag",
+        "file": "site-flags-20261114/flag-ir.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original geometric rendering; no third-party image bytes or endorsement.",
+        "sourceSha256": "dbe9fb9155b768d9b7f3d0ea819ff3bf1f3a661cfc993bef20475f011f662589",
+        "exportSize": [
+          48,
+          28
+        ],
+        "sources": [
+          "https://www.unodc.org/cld/uploads/res/uncac/LegalLibrary/Iran/Laws/Constitution%20of%20the%20Islamic%20Republic%20of%20Iran%20%281992%29.pdf"
+        ],
+        "codes": [
+          "IR"
+        ],
+        "depictedCode": "IR",
+        "kind": "original-national-flag",
+        "jurisdictionId": "ll2:country:32",
+        "rightsBasis": "Original geometry based on constitutional description; MIT applies to this drawing, not the national symbol.",
+        "limitations": "Schematic red emblem and omitted tiny motto at watch scale; no claim of exact official construction or color."
+      }
+    },
+    {
+      "collection": "countries",
+      "facts": {
+        "id": "site-flag-kp-20261114",
+        "name": "North Korea national flag",
+        "file": "site-flags-20261114/flag-kp.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original geometric rendering; no third-party image bytes or endorsement.",
+        "sourceSha256": "aeda291be1e22c05eeb6109a50dddddbc40d8f76e9be2e4b94c30160ede7f0a5",
+        "exportSize": [
+          48,
+          24
+        ],
+        "sources": [
+          "https://www.constituteproject.org/constitution/Peoples_Republic_of_Korea_2016?lang=en"
+        ],
+        "codes": [
+          "KP"
+        ],
+        "depictedCode": "KP",
+        "kind": "original-national-flag",
+        "jurisdictionId": "ll2:country:53",
+        "rightsBasis": "Original geometry based on constitutional description; MIT applies to this drawing, not the national symbol.",
+        "limitations": "Original small geometric rendition; aspect ratio and RGB approximate; white disc and five-point star shown."
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-family-proton-family-20261114",
+        "name": "Proton-M family representative",
+        "file": "current-catalog-art-20261114/proton-family.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox schematic adapted from prior original MIT SpaceFox geometry; cited primary sources provide vehicle facts, not redistributed artwork.",
+        "sourceSha256": "b7680cece5c43568c35fa1cc04d338b46b774236fab9471a3fe0f23080fc3b52",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.ilslaunch.com/wp-content/uploads/pdf/Proton-Mission-Planners-Guide-Revision-7-LKEB-9812-1990.pdf"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "reviewed-shared",
+          "configurationIds": [
+            "ll2:configuration:152"
+          ],
+          "features": [
+            "Three core stages and six outboard first-stage fuel tanks/engines; upper stage and payload are enclosed by a representative fairing."
+          ],
+          "limitations": "Family-level representative uses existing original Proton-M/Briz-M profile. Provider does not identify upper stage or exact fairing; image does not assert Briz-M for this event. Scale and section boundaries are schematic; no mission livery."
+        },
+        "geometryReference": {
+          "basis": "Source-dated informational family or development-programme representative; see cited primary descriptions and explicit limitations.",
+          "reviewedAt": "2026-11-14",
+          "representativeDate": "2026-11",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-family-vulcan-family-20261114",
+        "name": "Vulcan family representative",
+        "file": "current-catalog-art-20261114/vulcan-family.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox schematic adapted from prior original MIT SpaceFox geometry; cited primary sources provide vehicle facts, not redistributed artwork.",
+        "sourceSha256": "bfbe4b23084514fc29bfa95737e12c8f56a53e9e299dced9fb40944c23659bf0",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.ulalaunch.com/rockets/vulcan-centaur",
+          "https://www.ulalaunch.com/docs/default-source/rockets/2023_vulcan_user_guide.pdf"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "reviewed-shared",
+          "configurationIds": [
+            "ll2:configuration:200"
+          ],
+          "features": [
+            "Vulcan core and Centaur V with a fairing; existing original VC2S profile serves as the family representative."
+          ],
+          "limitations": "ULA offers 0/2/4/6 solid boosters and standard or long fairing. This representative shows two boosters and a short fairing only as a reviewed family example; provider ID does not specify either for the selected flight. No flight-specific paint."
+        },
+        "geometryReference": {
+          "basis": "Source-dated informational family or development-programme representative; see cited primary descriptions and explicit limitations.",
+          "reviewedAt": "2026-11-14",
+          "representativeDate": "2026-11",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-family-h3-family-20261114",
+        "name": "H3 family representative",
+        "file": "current-catalog-art-20261114/h3-family.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox schematic adapted from prior original MIT SpaceFox geometry; cited primary sources provide vehicle facts, not redistributed artwork.",
+        "sourceSha256": "2899b2da2b49f0955e939b9fc5d93fe834a679333aca021f3f29a533b2ee6f8b",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://global.jaxa.jp/activity/pr/brochure/files/rocket09.pdf",
+          "https://global.jaxa.jp/projects/result.html"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "reviewed-shared",
+          "configurationIds": [
+            "ll2:configuration:30"
+          ],
+          "features": [
+            "Existing original H3-30 family profile depicts the core, upper stage and representative short fairing."
+          ],
+          "limitations": "JAXA documents variants with two or three core engines and zero, two or four solid boosters and two fairings. This zero-booster image is a family representative only, not an asserted flight configuration. No exact flight paint."
+        },
+        "geometryReference": {
+          "basis": "Source-dated informational family or development-programme representative; see cited primary descriptions and explicit limitations.",
+          "reviewedAt": "2026-11-14",
+          "representativeDate": "2026-11",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-family-nglv-solid-20261114",
+        "name": "NGLV solid-strap-on concept",
+        "file": "current-catalog-art-20261114/nglv-solid.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox schematic adapted from prior original MIT SpaceFox geometry; cited primary sources provide vehicle facts, not redistributed artwork.",
+        "sourceSha256": "eb3db0faeadbbb69ce9829af0ddd0aaef3b4a15cc7098746985050de3a3a1c0c",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2025_26_Eng_29042026_Rev.pdf",
+          "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/jul/doc2025730594501.pdf"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "reviewed-shared",
+          "configurationIds": [
+            "spacefox:configuration:nglv-solid-strap-ons"
+          ],
+          "features": [
+            "Three-stage NGLV with two solid side boosters from the 2025 PIB programme description; original 2025 NGLV core-alone schematic provides a dated family reference."
+          ],
+          "limitations": "Source-qualified concept, not finalized geometry. Booster length, diameter, attachment, fairing, engine placement and colors are indicative schematic choices, not sourced dimensions or flight appearance; the current ISRO report confirms development of a solid-strap-on variant but does not publish final exterior."
+        },
+        "geometryReference": {
+          "basis": "Source-dated informational family or development-programme representative; see cited primary descriptions and explicit limitations.",
+          "reviewedAt": "2026-11-14",
+          "representativeDate": "2026-11",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-family-sls-centaur-20261114",
+        "name": "SLS Centaur Exploration concept",
+        "file": "current-catalog-art-20261114/sls-centaur.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox schematic adapted from prior original MIT SpaceFox geometry; cited primary sources provide vehicle facts, not redistributed artwork.",
+        "sourceSha256": "07a95c4b6b3b68b6f177f498a8d003ba072b5b1b4f16c379e378e307014e46b4",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://newsroom.ulalaunch.com/releases/united-launch-alliance-is-collaborating-with-nasa-for-the-development-of-a-centaur-upper-stage-for-artemis-missions",
+          "https://www.nasa.gov/wp-content/uploads/2026/10/artemis-acceleration-readiness-oct-2026.pdf",
+          "https://www.nasa.gov/wp-content/uploads/2026/01/a2-reference-guide-012825.pdf"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "reviewed-shared",
+          "configurationIds": [
+            "spacefox:configuration:sls-centaur-exploration"
+          ],
+          "features": [
+            "SLS core and two solid boosters with Orion above a Centaur upper-stage section, based on ULA and NASA descriptions."
+          ],
+          "limitations": "Concept schematic adapts the original SLS Block 1 illustration with a distinct upper section. NASA reports enhanced Centaur height definition progressing; adapter geometry, length, proportions and final integrated exterior are not established here. It is not ICPS, EUS, or a flight-specific depiction."
+        },
+        "geometryReference": {
+          "basis": "Source-dated informational family or development-programme representative; see cited primary descriptions and explicit limitations.",
+          "reviewedAt": "2026-11-14",
+          "representativeDate": "2026-11",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    }
+  ],
+  "additions": [],
+  "updates": [
+    {
+      "identity": "ll2:country:32",
+      "changes": {
+        "currentPackFlagId": "site-flag-ir-20261114"
+      },
+      "sources": [
+        "https://www.unodc.org/cld/uploads/res/uncac/LegalLibrary/Iran/Laws/Constitution%20of%20the%20Islamic%20Republic%20of%20Iran%20%281992%29.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:country:53",
+      "changes": {
+        "currentPackFlagId": "site-flag-kp-20261114"
+      },
+      "sources": [
+        "https://www.constituteproject.org/constitution/Peoples_Republic_of_Korea_2016?lang=en"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:152",
+      "changes": {
+        "currentPackAssetId": "current-family-proton-family-20261114",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.ilslaunch.com/wp-content/uploads/pdf/Proton-Mission-Planners-Guide-Revision-7-LKEB-9812-1990.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:200",
+      "changes": {
+        "currentPackAssetId": "current-family-vulcan-family-20261114",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.ulalaunch.com/rockets/vulcan-centaur",
+        "https://www.ulalaunch.com/docs/default-source/rockets/2023_vulcan_user_guide.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:30",
+      "changes": {
+        "currentPackAssetId": "current-family-h3-family-20261114",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://global.jaxa.jp/activity/pr/brochure/files/rocket09.pdf",
+        "https://global.jaxa.jp/projects/result.html"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:nglv-solid-strap-ons",
+      "changes": {
+        "currentPackAssetId": "current-family-nglv-solid-20261114",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.isro.gov.in/media_isro/pdf/AnnualReport/Annual_Report_2025_26_Eng_29042026_Rev.pdf",
+        "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/jul/doc2025730594501.pdf"
+      ]
+    },
+    {
+      "identity": "spacefox:configuration:sls-centaur-exploration",
+      "changes": {
+        "currentPackAssetId": "current-family-sls-centaur-20261114",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://newsroom.ulalaunch.com/releases/united-launch-alliance-is-collaborating-with-nasa-for-the-development-of-a-centaur-upper-stage-for-artemis-missions",
+        "https://www.nasa.gov/wp-content/uploads/2026/10/artemis-acceleration-readiness-oct-2026.pdf",
+        "https://www.nasa.gov/wp-content/uploads/2026/01/a2-reference-guide-012825.pdf"
+      ]
+    }
+  ]
+}

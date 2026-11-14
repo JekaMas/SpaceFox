@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "id": "programme-review-20261114-r1",
+  "reviewedAt": "2026-11-14",
+  "sources": [
+    "https://astrokobi.com/blog/ula-final-atlas-v-551-amazon-leo-launch/",
+    "https://calt.spacechina.com/n482/n505/index.html",
+    "https://europeanspaceflight.com/portugals-omnidea-acquires-orbex-assets-plans-primeneo-rocket/",
+    "https://ll.thespacedevs.com/2.3.0/launches/a0e0f590-1cb4-4b6b-845c-0087633af132/?format=json",
+    "https://www.blueorigin.com/news/new-shepard-to-pause-flights",
+    "https://www.gov.uk/government/speeches/minister-lloyd-speech-at-space-comm-expo-2026",
+    "https://www.ulalaunch.com/missions/next-launch/atlas-v-amazon-leo-8"
+  ],
+  "reason": "Source-dated lifecycle distinctions and separately announced successor identity; no historic event or provider facts rewritten.",
+  "assets": [],
+  "updates": [],
+  "additions": [
+    {
+      "identity": "spacefox:configuration:primeneo",
+      "facts": {
+        "sourceId": "primeneo",
+        "name": "PrimeNEO",
+        "fullName": "PrimeNEO",
+        "variant": "",
+        "sourceUrl": "https://europeanspaceflight.com/portugals-omnidea-acquires-orbex-assets-plans-primeneo-rocket/",
+        "providerActive": null,
+        "providerPendingLaunches": null,
+        "placeholder": false,
+        "familyIds": [],
+        "manufacturerId": null,
+        "manufacturerCountryIds": [],
+        "currentPackAssetId": null,
+        "currentPackSpecific": false,
+        "officialLifecycle": "development",
+        "officialLifecycleSource": "https://europeanspaceflight.com/portugals-omnidea-acquires-orbex-assets-plans-primeneo-rocket/",
+        "officialLifecycleReviewedAt": "2026-11-13",
+        "officialLifecycleNote": "Omnidea announced a planned redesigned successor using acquired Orbex assets; no equivalence to Orbex Prime and no finalized geometry, exact launch date or launch site asserted.",
+        "providerCoverage": "curator-addition-not-LL2-import",
+        "aliases": [],
+        "variantUnspecified": true
+      },
+      "references": {
+        "manufacturer": null,
+        "manufacturerCountries": [],
+        "visual": null,
+        "origin": null
+      }
+    }
+  ]
+}

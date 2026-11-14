@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "id": "independent-primary-20261114-r1",
+  "reviewedAt": "2026-11-14",
+  "sources": [
+    "https://gpad.ac.ru/wp-content/uploads/2024/05/gm/GM_2024-05-27_5-1.pdf",
+    "https://iki.cosmos.ru/en/news/space-science-days-2025-dedicated-ikis-60th-anniversary",
+    "https://www.ilslaunch.com/the-heavy-lift-angara-a5-1l-launch-vehicle-launched-successfully-from-the-plesetsk-launch-site-in-maiden-flight/"
+  ],
+  "reason": "Source-dated official candidate and separate original reviewed-shared A5 exterior; no assertion of a current flight assignment.",
+  "assets": [
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-angara-a5-dm03-20261114",
+        "name": "Angara A5 / DM-03 representative",
+        "file": "current-catalog-art-20261114/angara-a5-dm03.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox geometric schematic; cited sources supply configuration and family facts, not copied image bytes.",
+        "sourceSha256": "7aabdf5743a0ceedbfd19b24603ec463ecec0301f5a3e35d0227472cce214e62",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://gpad.ac.ru/wp-content/uploads/2024/05/gm/GM_2024-05-27_5-1.pdf",
+          "https://iki.cosmos.ru/en/news/space-science-days-2025-dedicated-ikis-60th-anniversary",
+          "https://www.ilslaunch.com/the-heavy-lift-angara-a5-1l-launch-vehicle-launched-successfully-from-the-plesetsk-launch-site-in-maiden-flight/"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "reviewed-shared",
+          "configurationIds": [
+            "ll2:configuration:196"
+          ],
+          "features": [
+            "Angara A5 representative with central core and four outboard URM-1 boosters; upper stage is enclosed in the fairing."
+          ],
+          "limitations": "The Russian Academy presentation named A5 and DM-03 as a 2024 Venera-D candidate; a later 2025 mission schedule did not reconfirm the launcher. This does not claim a flight assignment, exact fairing, proportion, colour or payload. The enclosed upper stage is not depicted; Orion is not identified with DM-03."
+        },
+        "geometryReference": {
+          "basis": "Angara A5 family arrangement, with exact DM-03 upper stage hidden and separately identified by the 2024 RAS candidate; schematic, not an engineering drawing.",
+          "reviewedAt": "2026-11-14",
+          "representativeDate": "2024-05",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    }
+  ],
+  "updates": [
+    {
+      "identity": "ll2:configuration:196",
+      "changes": {
+        "currentPackAssetId": "current-angara-a5-dm03-20261114",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://gpad.ac.ru/wp-content/uploads/2024/05/gm/GM_2024-05-27_5-1.pdf",
+        "https://iki.cosmos.ru/en/news/space-science-days-2025-dedicated-ikis-60th-anniversary",
+        "https://www.ilslaunch.com/the-heavy-lift-angara-a5-1l-launch-vehicle-launched-successfully-from-the-plesetsk-launch-site-in-maiden-flight/"
+      ]
+    }
+  ],
+  "additions": []
+}

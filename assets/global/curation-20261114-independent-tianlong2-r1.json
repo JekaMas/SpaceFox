@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "id": "independent-tianlong2-family-20261114-r1",
+  "reviewedAt": "2026-11-14",
+  "sources": [
+    "https://spacepioneer.cc/tianlong/TL2",
+    "https://spacepioneer.cc/about",
+    "https://ll.thespacedevs.com/2.3.0/launcher_configurations/492/?format=api"
+  ],
+  "reason": "Named source-identity family representative from current manufacturer product; preserve first-flight and subsequent-vehicle uncertainty.",
+  "assets": [
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-family-tianlong2-20261114",
+        "name": "Tianlong-2 current family representative",
+        "file": "current-catalog-art-20261114/tianlong2-family.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox geometric schematic from reviewed manufacturer facts and profile; no third-party image bytes, logos, letters or insignia redistributed.",
+        "sourceSha256": "8dc83392febf5a020d4a616aac0e866b148b435df4bae631f252448cf4b30774",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://spacepioneer.cc/tianlong/TL2",
+          "https://spacepioneer.cc/about"
+        ],
+        "kind": "specific",
+        "familyIdentityOnly": true,
+        "familySourceIds": [],
+        "coverage": {
+          "type": "reviewed-shared",
+          "configurationIds": [
+            "ll2:configuration:492"
+          ],
+          "features": [
+            "Current manufacturer TL-2 product presents a 42 m, 3.35 m unboosted stack, three first-stage engines and an illustrated slim body with nose, bands and lower fins."
+          ],
+          "limitations": "Source-dated current product family example, not an assertion that the 2023 maiden used this 42 m, three TH-12 configuration or that any future mission will do so. Provider detail reports 32.8 m, earlier engine facts and a different proposed later engine plan; preserve this disagreement rather than merging stages, dates or flight identities. Nose contour, fins, bands and stage stations are illustrative and do not assert engineering dimensions or precise flight livery."
+        },
+        "geometryReference": {
+          "basis": "Manufacturer current TL-2 product proportions and depicted broad external features only; schematic, not a mechanical drawing.",
+          "reviewedAt": "2026-11-14",
+          "representativeDate": "2026-11",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    }
+  ],
+  "updates": [
+    {
+      "identity": "ll2:configuration:492",
+      "changes": {
+        "currentPackAssetId": "current-family-tianlong2-20261114",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://spacepioneer.cc/tianlong/TL2",
+        "https://spacepioneer.cc/about",
+        "https://ll.thespacedevs.com/2.3.0/launcher_configurations/492/?format=api"
+      ]
+    }
+  ],
+  "additions": []
+}

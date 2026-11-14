@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "id": "current-gravity-20261114-r1",
+  "reviewedAt": "2026-11-14",
+  "sources": [
+    "https://kjj.gz.gov.cn/xydt/content/post_9438867.html",
+    "https://english.beijing.gov.cn/latest/news/202609/t20260921_4873252.html"
+  ],
+  "reason": "Original source-qualified Gravity-1 specific geometry for current captured identity.",
+  "assets": [
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-family-gravity-1-20261114",
+        "name": "Gravity-1 source-qualified original",
+        "file": "current-catalog-art-20261114/gravity-1.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational schematic; no third-party artwork, lettering or logos redistributed.",
+        "sourceSha256": "a3728092f70dbf7dc9f86254a8dbbc7c9fcc15450d18235f2bd92125dd40c9b1",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://kjj.gz.gov.cn/xydt/content/post_9438867.html",
+          "https://english.beijing.gov.cn/latest/news/202609/t20260921_4873252.html"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "specific",
+          "configurationIds": [
+            "ll2:configuration:503"
+          ],
+          "features": [
+            "Three solid core stages and four solid strap-ons; approximately 30 m total height with 4.2 m fairing and 2.65 m core/strap-on diameter as reported by Guangzhou Science and Technology Bureau.",
+            "Four boosters are spread in the schematic side projection to show their total count."
+          ],
+          "limitations": "Original simplified illustration, not an engineering drawing or actual flight livery. The four strap-ons surround the core; a flat spread depicts the count, not the true front silhouette. Stage boundaries, proportions, fairing contour and colors are approximate."
+        },
+        "geometryReference": {
+          "basis": "Guangzhou government dimensions and configuration; Beijing government September 2026 flight and ongoing programme.",
+          "reviewedAt": "2026-11-14",
+          "representativeDate": "2026-09",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    }
+  ],
+  "updates": [
+    {
+      "identity": "ll2:configuration:503",
+      "changes": {
+        "currentPackAssetId": "current-family-gravity-1-20261114",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://kjj.gz.gov.cn/xydt/content/post_9438867.html",
+        "https://english.beijing.gov.cn/latest/news/202609/t20260921_4873252.html"
+      ]
+    }
+  ],
+  "additions": []
+}

@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "id": "current-known-families-20261114-r1",
+  "reviewedAt": "2026-11-14",
+  "sources": [
+    "https://www.ariane.group/en/space-transportation/ariane-6/",
+    "https://new.spacex.com/vehicles/starship",
+    "https://www.spacex.com/launches/starship-flight-12"
+  ],
+  "reason": "Named source-family representatives retain placeholder variant uncertainty and exact captured labels.",
+  "assets": [
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-family-ariane-family-20261114",
+        "name": "Ariane 6 family representative",
+        "file": "current-catalog-art-20261114/ariane-family.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original prior SpaceFox MIT geometry reused as reviewed family representation; primary sources provide factual scope.",
+        "sourceSha256": "16f4f0c3dd7919cefb01d4354e448d769a38517bedc611f8d417d7c0389db417",
+        "exportSize": [
+          54,
+          124
+        ],
+        "sources": [
+          "https://www.ariane.group/en/space-transportation/ariane-6/"
+        ],
+        "kind": "specific",
+        "familyIdentityOnly": true,
+        "coverage": {
+          "type": "reviewed-shared",
+          "configurationIds": [
+            "ll2:configuration:506"
+          ],
+          "features": [
+            "Original Ariane 62 geometry with two boosters is a source-reviewed Ariane 6 family example."
+          ],
+          "limitations": "Ariane 6 has two- and four-booster versions and two fairing lengths. Provider marks the specific variant unknown; drawing does not assert a mission variant or specific flight livery."
+        },
+        "familySourceIds": [
+          59,
+          62
+        ]
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-family-starship-family-20261114",
+        "name": "Starship family representative",
+        "file": "current-catalog-art-20261114/starship-family.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original prior SpaceFox MIT geometry reused as reviewed family representation; primary sources provide factual scope.",
+        "sourceSha256": "56357261fd806d966e136c3ba4229b5c49382920b85eacb42beef4fa2188b352",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://new.spacex.com/vehicles/starship",
+          "https://www.spacex.com/launches/starship-flight-12"
+        ],
+        "kind": "specific",
+        "familyIdentityOnly": true,
+        "coverage": {
+          "type": "reviewed-shared",
+          "configurationIds": [
+            "ll2:configuration:528"
+          ],
+          "features": [
+            "Original Starship V3 and Super Heavy stack represents the known Starship launch-system family; two stages and external flaps are shown."
+          ],
+          "limitations": "Provider marks specific variant unknown. V3 profile is a family example, not a claim the event uses V3, crew/cargo configuration or a particular flight livery."
+        },
+        "familySourceIds": [
+          156
+        ]
+      }
+    }
+  ],
+  "updates": [
+    {
+      "identity": "ll2:configuration:506",
+      "changes": {
+        "currentPackAssetId": "current-family-ariane-family-20261114",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.ariane.group/en/space-transportation/ariane-6/"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:528",
+      "changes": {
+        "currentPackAssetId": "current-family-starship-family-20261114",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://new.spacex.com/vehicles/starship",
+        "https://www.spacex.com/launches/starship-flight-12"
+      ]
+    }
+  ],
+  "additions": []
+}

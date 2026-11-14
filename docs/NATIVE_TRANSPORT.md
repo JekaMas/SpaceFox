@@ -19,7 +19,7 @@ paging annotation. String comparison, sorting and display synchronization need5.
 redraw, clock and drawing remain resident. The actual target remainsFR1655.2.
 No older-firmware compatibility is inferred from compilation.
 
-`FeedBaseUrl` is a personal HTTPS base URL with an empty default. Blank/invalid
+`FeedBaseUrl` is an HTTPS base URL; the 0.1.1 test build defaults to `https://jekamas.github.io/SpaceFox`. Blank/invalid
 configuration has no temporal fetch and starts at No Schedule, with actual Garmin
 fitness values or unavailable dashes. A configured URL is a separate cache
 namespace including its complete path. Data enters the scene only through the

@@ -73,6 +73,12 @@ class FinalSiteFlagTest(unittest.TestCase):
         old=(E/'source-before/watchface/source/NativeVisualRenderer.mc').read_text();new=(ROOT/'watchface/source/NativeVisualRenderer.mc').read_text()
         self.assertEqual(old[:old.index('    // Bitmap-local transforms')].strip(),new[:new.rfind('}')].strip())
 
+    def test_bootstrap_rejects_changed_qualification(self):
+        catalog=json.loads((ROOT/'locales/catalog.json').read_text())
+        catalog['supportPolicy']['softwareQualifiedLocales'].pop()
+        with self.assertRaisesRegex(ValueError, 'catalog outside bootstrap proof changed'):
+            software_locales(ROOT,catalog)
+
     def test_negative(self):
         working.SiteFlagWorkingTest.setUpClass()
         case=working.SiteFlagWorkingTest("test_selected_country_and_mismatch")

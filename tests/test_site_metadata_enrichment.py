@@ -68,6 +68,7 @@ class MetadataProofCorruptionTest(unittest.TestCase):
             base = root/'openspec/changes/spacefox-watchface/evidence/test-release-20261114'
             shutil.copyfile(base/'prior-properties.xml', destination/'watchface/resources/settings/properties.xml')
             shutil.copyfile(base/'prior-native-language-policy.py.txt', destination/'tools/native_language_policy.py')
+            shutil.copyfile(base/'prior-native-profile.py.txt', destination/'tools/spacefox/native_profile.py')
             log = destination/log_path
             raw = log.read_bytes()
             changed = raw.replace(b'enrichmentAdmission                 PASS', b'enrichmentAdmission                 FAIL')
@@ -113,6 +114,7 @@ class MetadataProofCorruptionTest(unittest.TestCase):
             base = root/'openspec/changes/spacefox-watchface/evidence/test-release-20261114'
             shutil.copyfile(base/'prior-properties.xml', destination/'watchface/resources/settings/properties.xml')
             shutil.copyfile(base/'prior-native-language-policy.py.txt', destination/'tools/native_language_policy.py')
+            shutil.copyfile(base/'prior-native-profile.py.txt', destination/'tools/spacefox/native_profile.py')
             log = destination/log_path
             raw = log.read_bytes()
             changed = raw.replace(b'capturedHeaderChoice                PASS', b'capturedHeaderChoice                FAIL')

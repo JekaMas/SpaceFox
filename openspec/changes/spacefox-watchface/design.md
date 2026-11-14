@@ -131,8 +131,9 @@ public; it contains launch/catalog data, never the child's health or identity.
 Other families install the official free binary and fork only the data publisher,
 then set their own feed URL; they do not need the author's key or SDK. A native
 code fork uses its own application UUID/key/listing. No shared author service is
-required. The initial FeedBaseUrl is blank with explicit setup; time/fields and
-bundled generic geography/rocket remain usable before the first sync. Do not make their watch silently depend on JekaMas's feed.
+required for a separately configured fork. The test release defaults FeedBaseUrl to
+`https://jekamas.github.io/SpaceFox`; a user can configure another publisher.
+Time/fields and bundled generic geography/rocket remain usable before the first sync.
 
 Direct per-watch provider polling is not the default: the provider recommends
 shared caching and its normal response is unsuitable to assume fits a background

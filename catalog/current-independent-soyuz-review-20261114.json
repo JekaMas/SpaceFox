@@ -1,0 +1,88 @@
+{
+  "ll2:configuration:135": {
+    "state": "current-evidence",
+    "reason": "State broadcaster reports Kuaizhou-1A as named member of a 2026-11-09 three-year launch programme; dated securities prospectus separately describes it as operating.",
+    "sources": [
+      "https://news.cri.cn/20261109/317e45d8-2181-1dd2-bb05-863fd14bc277.html",
+      "https://static.sse.com.cn/stock/disclosure/announcement/c/202512/002174_20251231_1QK0.pdf"
+    ],
+    "asOf": "2026-11-13",
+    "uncertainty": "The programme is not a claim about any exact launch date, success or available rocket inventory."
+  },
+  "ll2:configuration:206": {
+    "state": "current-evidence",
+    "reason": "Aevum currently offers Ravn X as a mobile launch aircraft and names separate ERV-A orbital rocket in the launch architecture.",
+    "sources": [
+      "https://www.aevum.com/"
+    ],
+    "asOf": "2026-11-13",
+    "uncertainty": "Company programme claim is not proof of an orbital launch, readiness, launch location, or equivalence of carrier aircraft to the separate rocket."
+  },
+  "ll2:configuration:519": {
+    "state": "current-evidence",
+    "reason": "LandSpace directly reports a 2026-10-14 Zhuque-2E Y4 launch and continuing Zhuque-2E commercial service.",
+    "sources": [
+      "https://www.landspace.com/news-detail.html?itemid=78"
+    ],
+    "asOf": "2026-11-13",
+    "uncertainty": "Retained specific artwork is a source-dated earlier 2024 representative; the later flight or its dimensions are not claimed to match that artwork."
+  },
+  "ll2:configuration:477": {
+    "state": "current-evidence",
+    "reason": "A 2025 report quotes the Long March 8 launcher team describing its no-booster serial configuration as a distinct member of its planned launch-capability family.",
+    "sources": [
+      "https://epaper.guilinlife.com/glrbh5/glrb/20250212/Page05BC.htm"
+    ],
+    "asOf": "2026-11-13",
+    "uncertainty": "A family capability statement is not a confirmed future launch, vehicle allocation, site or retirement decision."
+  },
+  "ll2:configuration:40": {
+    "state": "excluded",
+    "reason": "Roscosmos states that the 2019-12-27 flight ended operation of that Rokot modification; the agency identifies the Rokot configuration with Briz-KM on the same archive page.",
+    "sources": [
+      "https://www.roscosmos.ru/tag/pleseck/"
+    ],
+    "asOf": "2026-11-13",
+    "uncertainty": "This decision applies to the retained Rokot/Briz-KM identity, not any separate Rokot-M successor or its development status."
+  },
+  "ll2:configuration:196": {
+    "state": "current-evidence",
+    "reason": "The Russian Academy of Sciences presentation of 2024-05-27, page 31, explicitly named Angara A5 plus DM-03 for the Venera-D programme. The IKI RAS 2025 programme update still places that mission in 2036.",
+    "sources": [
+      "https://gpad.ac.ru/wp-content/uploads/2024/05/gm/GM_2024-05-27_5-1.pdf",
+      "https://iki.cosmos.ru/en/news/space-science-days-2025-dedicated-ikis-60th-anniversary"
+    ],
+    "asOf": "2026-11-13",
+    "uncertainty": "The later 2036 mission update does not reconfirm its launcher; the older assignment is an announced candidate rather than a confirmed flight selection or date. Orion is not equated with DM-03."
+  },
+  "ll2:configuration:39": {
+    "state": "excluded",
+    "reason": "2026 US Defense Intelligence Agency assessment, p. 54, states MODAFL's two-stage Safir SLV was retired in 2020; 2020 Iranian reporting identifies Safir-1B as an improved Safir-1.",
+    "sources": [
+      "https://intelligence-platform.org/wp-content/uploads/2026/10/Challenges_Security_Space_2026.pdf",
+      "https://www.mashreghnews.ir/news/1036082/"
+    ],
+    "asOf": "2026-11-13",
+    "uncertainty": "Attributed DIA assessment based on public reporting, not a directly read Iranian operator retirement announcement. Applies to the retained Safir/Safir-1B identities only; does not classify the separately named Safir-2/Simorgh or infer any later programme status. Original provider active bit remains unchanged."
+  },
+  "ll2:configuration:74": {
+    "state": "excluded",
+    "reason": "2026 US Defense Intelligence Agency assessment, p. 54, states MODAFL's two-stage Safir SLV was retired in 2020; 2020 Iranian reporting identifies Safir-1B as an improved Safir-1.",
+    "sources": [
+      "https://intelligence-platform.org/wp-content/uploads/2026/10/Challenges_Security_Space_2026.pdf",
+      "https://www.mashreghnews.ir/news/1036082/"
+    ],
+    "asOf": "2026-11-13",
+    "uncertainty": "Attributed DIA assessment based on public reporting, not a directly read Iranian operator retirement announcement. Applies to the retained Safir/Safir-1B identities only; does not classify the separately named Safir-2/Simorgh or infer any later programme status. Original provider active bit remains unchanged."
+  },
+  "ll2:configuration:96": {
+    "state": "excluded",
+    "reason": "Progress manufacturer identifies 11A511 Soyuz as flying 32 times in its 1966–1976 service period, first flight 1966-11-28. The separately accessed LL2 development detail for ID 96 matches that maiden flight and 32 flights and points to the original Soyuz rocket, rather than modern Soyuz-2.",
+    "sources": [
+      "https://en.samspace.ru/news/press_relizy/8929/",
+      "https://lldev.thespacedevs.com/2.3.0/launcher_configurations/96/?format=api"
+    ],
+    "asOf": "2026-11-13",
+    "uncertainty": "Identity crosswalk is inferred from matching name, maiden date, count and historical launch associations, not an explicit 11A511 field in the retained source projection; the supplemental LL2 development detail is not the original pinned raw capture. The provider active bit remains preserved; modern Soyuz variants are separate and unaffected."
+  }
+}

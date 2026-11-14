@@ -85,7 +85,7 @@
 ## 7. Native release and maintenance
 
 - [ ] 7.1 Establish production UUID and securely backed-up 4096-bit signing key outside Git/data workflows; create reproducible source/SDK/profile/package provenance, only qualified manifest products/languages and permissions. Verify device-targeted PRG installation through the actual USB/MTP GARMIN/APPS route after applicable native/platform checks; distinguish simulator from real-device evidence.
-- [ ] 7.2 Qualify current-format settings/cache recovery, initial blank FeedBaseUrl and independent host namespaces; retire old wire majors, migration and transition gates; observe PRG/Store and any beta/production boundaries without assuming state survival. Test unsupported schema/renderer, higher-version signed code repair and new-generation asset rollback with unchanged source age.
+- [ ] 7.2 Qualify current-format settings/cache recovery, the default FeedBaseUrl, explicitly blank URL behavior and independent host namespaces; retire old wire majors, migration and transition gates; observe PRG/Store and any beta/production boundaries without assuming state survival. Test unsupported schema/renderer, higher-version signed code repair and new-generation asset rollback with unchanged source age.
 - [ ] 7.3 Prepare accurate free Store listing, actual screenshots, setup/dependencies/permissions/privacy/rights/support and tested Export Project IQ. Recheck current guidelines/agreement, submit within an authorized release request, record Garmin disposition and qualify the approved Store installation/settings/update path. Source publication or owner-only beta does not close this task.
 
 ## Current checkpoint

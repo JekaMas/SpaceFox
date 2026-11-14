@@ -1,5 +1,5 @@
 {
-  "scope": "Exact HTTPS URL default only; retained historical language/layout proof; no fresh simulator or physical-device claim",
+  "scope": "URL default and reviewed server map-raster delta; retained historical language/layout proof; no fresh simulator or physical-device claim",
   "priorCatalog": {
     "path": "openspec/changes/spacefox-watchface/evidence/test-release-20261114/prior-locale-catalog.json",
     "sha256": "2ae679e4d7aef67cf6beb6672d157be9cac4f73cf641a261cb03a312b22269c6"
@@ -11,5 +11,11 @@
   "policy": {
     "path": "openspec/changes/spacefox-watchface/evidence/test-release-20261114/prior-native-language-policy.py.txt",
     "sha256": "9849c2bbaf0c9d6e64c46cc70c35a8a562d9c2309bbf611f561486b9bebcaf47"
+  },
+  "profile": {
+    "path": "openspec/changes/spacefox-watchface/evidence/test-release-20261114/prior-native-profile.py.txt",
+    "sha256": "7b1f34ca13e99edc202b1e91225822747235064167245acad02c5231c15368b9",
+    "currentSha256": "71492f1c37bfc044d407fd28257a4d04b30004fa19e11ce9c7c78e53ef357b93",
+    "reason": "Server map raster only: preserve geometry and select bounded color rounding when needed."
   }
 }

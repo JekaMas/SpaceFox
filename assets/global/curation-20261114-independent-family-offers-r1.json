@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "id": "independent-family-offers-20261114-r1",
+  "reviewedAt": "2026-11-14",
+  "sources": [
+    "https://global.jaxa.jp/projects/rockets/epsilon/index.html",
+    "https://www.rocket.jaxa.jp/e/rocket/epsilon/ability.html",
+    "https://www.rocket.jaxa.jp/rocket/epsilon/firingtest.html",
+    "https://ll.thespacedevs.com/2.3.0/launcher_configurations/112/?format=api",
+    "https://www.iai.co.il/wp-content/uploads/2026/04/2015-Sustainability-Report.pdf",
+    "https://icdk.dk/media/djyb43hq/israel-space-sector-mapping-report-innovation-centre-denmark-tel-aviv.pdf",
+    "https://ll.thespacedevs.com/2.3.0/launcher_configurations/44/?format=api",
+    "https://cn.cgwic.com/Launchservice/LM3B.html",
+    "https://cn.cgwic.com/Launchservice/LM3A.html",
+    "https://cn.cgwic.com/Launchservice/LM3C.html"
+  ],
+  "reason": "Explicit named-family art review and exact source-dated product and historical-variant reviews.",
+  "assets": [
+    {
+      "collection": "models",
+      "facts": {
+        "id": "current-family-epsilon-20261114",
+        "name": "Epsilon family representative",
+        "file": "current-catalog-art-20261114/epsilon-family.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original prior SpaceFox MIT schematic reused as a reviewed family representative; cited sources provide facts, not image bytes.",
+        "sourceSha256": "9557e156b99caaf642108f69029bfa9fa41f232196d0ba975351c27b0c34fe2a",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://global.jaxa.jp/projects/rockets/epsilon/index.html",
+          "https://www.rocket.jaxa.jp/e/rocket/epsilon/ability.html",
+          "https://www.rocket.jaxa.jp/rocket/epsilon/firingtest.html"
+        ],
+        "kind": "specific",
+        "familyIdentityOnly": true,
+        "familySourceIds": [
+          78
+        ],
+        "coverage": {
+          "type": "reviewed-shared",
+          "configurationIds": [
+            "ll2:configuration:112"
+          ],
+          "features": [
+            "Enhanced Epsilon source-dated original schematic shows an unboosted stack with an exposed second stage and enclosed third stage."
+          ],
+          "limitations": "ID 112 is reviewed as a named Epsilon family record because provider combines the initial and enhanced flight history and specifications; placeholder=false remains unchanged. Existing schematic uses an Enhanced Epsilon example, not an assertion that any event uses that exact version. Epsilon S has a different arrangement and is not depicted; its development establishes the continuing programme, not flight identity or a specific exterior."
+        },
+        "geometryReference": {
+          "basis": "Original enhanced-Epsilon family example; no exact Epsilon-S or flight geometry claimed.",
+          "reviewedAt": "2026-11-14",
+          "representativeDate": "2018",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    }
+  ],
+  "updates": [
+    {
+      "identity": "ll2:configuration:112",
+      "changes": {
+        "currentPackAssetId": "current-family-epsilon-20261114",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://global.jaxa.jp/projects/rockets/epsilon/index.html",
+        "https://www.rocket.jaxa.jp/e/rocket/epsilon/ability.html",
+        "https://www.rocket.jaxa.jp/rocket/epsilon/firingtest.html",
+        "https://ll.thespacedevs.com/2.3.0/launcher_configurations/112/?format=api"
+      ]
+    }
+  ],
+  "additions": []
+}
