@@ -30,9 +30,10 @@
     "lease": "released",
     "httpsRequirements": "restored enabled",
     "ble": "connected",
-    "ownTemporalEvents": "cleared",
-    "ownFeedUrls": "blank; accepted test cache seal preserved",
-    "otherApps": "preserved"
+    "ownTemporalEvents": "UX02 handoff null; isolated observers delete their own events",
+    "ownFeedUrls": "UX02 handoff blank; accepted cache seal preserved",
+    "otherApps": "preserved",
+    "leaseNote": "UX02 signed PRG photo observations complete. Production UUID cleanup observed blank URL and null event, then the four pre-existing task-owned files restored with matching hashes; earlier production cache-loss remains unresolved."
   },
   "runtimeTransport": "same schema3/SFR1M; HTTP .txt aliases for logical NativeBatch objects, byte identical; default base unchanged",
   "ordinaryCandidate": {
@@ -52,11 +53,11 @@
   "coordination": "Integrate reviewed public-only commits/hunks; preserve unrelated dirty work. Private authoring ancestry must not be pushed. Keep other producer deltas separate and do not activate unsupported fields. Existing valid greens retain original source/proof boundaries.",
   "activeFollowUp": {
     "group": "UX02",
-    "owner": "verify_fix_ux016",
+    "owner": "verify_fix_native_ux02",
     "worktree": "/Users/jekamas/projects/SpaceFox-worktrees/verify-fix-ux016-20261114",
     "base": "bad44087",
     "scope": "settings/render/AOD/last-accepted-cache native lifecycle plus reproducible baseline RED; no producer changes",
-    "simulatorLease": "UX02 requests return after prior short fresh-UUID parser batch. New author must coordinate, snapshot task-owned state, preserve other apps and avoid simultaneous SDK writers.",
+    "simulatorLease": "RESERVED SHORT final unmodified signed PRG photo/launcher receipts FR165M and FR965; no other SDK writers until explicit release.",
     "warning": "Do not independently reimplement native3.2 while this group applies; integration handoff will follow fresh independent GREEN.",
     "countdownContract": {
       "active": "T- HH:MM:SS / T+ HH:MM:SS, accumulating hours and seconds",
@@ -66,7 +67,7 @@
       "interimDisposition": "HH:MM-only AOD candidate invalid; retained as interim failed evidence; author acknowledged restoration to HH:MM:SS"
     },
     "aodContent": "Centered large time, localized date + weekday, countdown and battery; supersedes historical date-free AOD",
-    "stage": "Owner reopened readability/colors/larger-screen/update-recovery; unsubmitted0.1.6 on hold",
+    "stage": "Author fd7aef06 self-GREEN 13/13; fresh independent VERIFY+FIX and final signed package in progress",
     "latestEvidence": {
       "baselinePixelRed": "tests.test_ux016_pixels, original5failures; corrected/extended baseline6RED+lit-budgetPASS retained",
       "httpContract": "baseline0.1.4+saved application/json RED;0.1.5 text/plain GREEN; not phone reproduction",
