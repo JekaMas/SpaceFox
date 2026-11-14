@@ -62,7 +62,11 @@ def cache_rows(files):
     feed,_,index=documents(files)
     # NativeImmutable pins selected catalog, transfer descriptor, then index rows.
     paths=[feed['catalogPath'],feed['nativeTransfer']['path']]
-    paths += [('rasters/' if kind else 'descriptors/')+sha+('.sfr' if kind else '.json') for kind,sha,_ in index['objects']]
+    for kind, sha, size in index['objects']:
+        path = ('rasters/' if kind else 'descriptors/') + sha + ('.sfr' if kind else '.json')
+        if kind not in (0, 1) or digest(files[path]) != sha or len(files[path]) != size:
+            raise ValueError('transfer object pin')
+        paths.append(path)
     return {digest(files[path]):len(files[path]) for path in paths}
 
 class Sfr1mOfflineCurrent(unittest.TestCase):
@@ -90,9 +94,15 @@ class Sfr1mOfflineCurrent(unittest.TestCase):
         self.assertIsNone(feed['launch']['timing']['exact_utc'])
         self.assertEqual(feed['launch']['timing']['nominal_utc'],1794609900)
         self.assertEqual((scene['position']['latitude'],scene['position']['longitude']),('25.99677','-97.15799'))
+        self.assertEqual(set(scene['roles']), {'map', 'rocket', 'siteCountry'})
+        expected_roles = {'map': ('ll2:site:235', [390, 390], 3),
+                          'rocket': ('ll2:configuration:522', [54, 124], 4),
+                          'siteCountry': ('ll2:country:2', [20, 12], 4)}
         for role,binding in scene['roles'].items():
             self.assertIsNotNone(binding)
+            self.assertEqual(binding['entityId'], expected_roles[role][0])
             desc=json.loads(files[binding['descriptor']['path']]);compressed=(ROOT/'tests/fixtures/sfr1m-current'/f'{role}.rgba.gz').read_bytes();raw=gzip.decompress(compressed)
+            self.assertEqual((desc['canvas'], desc['channels']), expected_roles[role][1:])
             self.assertEqual((digest(raw),digest(compressed)),PINS[role]);self.assertEqual(desc['pixelSha256'],PINS[role][0])
             chunks=[files[x['path']] for x in desc['shards']]
             for pin,chunk in zip(desc['shards'],chunks):self.assertEqual((digest(chunk),len(chunk)),(pin['sha256'],pin['decodedBytes']))
@@ -104,6 +114,7 @@ class Sfr1mOfflineCurrent(unittest.TestCase):
         a,b=cache_rows(files),cache_rows(self.recovery);self.assertNotEqual(set(a),set(b))
         union=a|b;self.assertLessEqual(len(union),56);self.assertLessEqual(sum(union.values()),229376)
         self.assertEqual(validate_artifact(files),feed)
+        self.assertEqual(validate_artifact(self.recovery), documents(self.recovery)[0])
         print('SFR1M selected/current+recovery',len(rows),sum(x[2] for x in rows),len(a),len(b),len(union),sum(union.values()))
 
     def test_global_growth_retains_selected_closure_bound(self):
