@@ -1,4 +1,10 @@
-# Testing SpaceFox 0.1.2 candidate
+# Testing SpaceFox
+
+## Owner-only beta 0.1.3
+
+Use the separate [SpaceFox Beta listing](https://apps.garmin.com/apps/db2b9b57-0d38-4df5-ae04-8cfabc0b81c9) and sign in on the phone with the Garmin account that submitted it. This beta has its own app identity and settings. Garmin accepted the beta and confirmed it is queued for the owner's Forerunner 165 Music at the next sync. Open Garmin Connect and sync the paired watch, then select SpaceFox on the watch after installation. The signed package passed independent SDK signature inspection; the queue confirmation does not prove phone sync or physical installation. See [private beta details](release/PRIVATE-BETA.md).
+
+## Ordinary 0.1.2 candidate
 
 This candidate targets the watches listed in [supported devices](docs/SUPPORTED_DEVICES.md), including **Garmin Forerunner 165 Music**. The signed IQ is intended for Garmin's Connect IQ distribution process. A standalone PRG is supplied for a USB test where the device permits it; installation on an actual FR165 has not yet been observed. Do not assume that tapping the IQ or PRG on a phone installs it.
 

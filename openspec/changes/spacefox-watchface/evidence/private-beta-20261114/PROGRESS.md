@@ -1,6 +1,6 @@
 # Private beta packaging
 
-Intent: use the current public runtime with a persistent separate beta UUID and existing production signing identity, version 0.1.3 and all nine 0.1.2 product profiles. Keep production manifest and release policy unchanged. Build and inspect the real SDK export, preserving the physical/phone/Store boundaries. No deployment or simulator run in this task.
+Intent: use the current public runtime with a persistent separate beta UUID and existing production signing identity, version 0.1.3 and all nine 0.1.2 product profiles. Keep production manifest and release policy unchanged. Build and inspect the real SDK export, preserving the physical/phone/Store boundaries. The packaging phase did not deploy or run the simulator; the later beta submission is recorded below.
 
 ## Observed 2026-11-14
 
@@ -9,11 +9,18 @@ Intent: use the current public runtime with a persistent separate beta UUID and 
 - Output `/Users/jekamas/.codex/tmp/spacefox-private-beta-20261114/SpaceFox.iq`, SHA-256 `fd531ef34804bb551dc5a768b4edca1115ac72f472db317f53c225c8bc922e14`. Complete source snapshot, nine standalone PRGs, compiler logs, generated manifest and machine receipt are retained alongside it.
 - Focused verification GREEN: all ten SDK invocations succeeded; output IQ uses exact same nine product IDs as retained 0.1.2 (including `fr165m`), covering ten SDK part numbers. Existing inspector verified RSA4096 IQ signature, 19 standalone/embedded program signatures and matching public key; SPKI SHA-256 `84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc` matches production. Recomputed package hash, compared generated/production manifest structure and checked Git diff for production runtime/identity are green.
 - Retained listing assets: `/Users/jekamas/.codex/tmp/spacefox-test-release-20261114-assets-r5/store-cover-500.png` (500×500, 108877 bytes) and `docs/images/simulator-fr165-0.1.1.png` (390×390, 36170 bytes, simulated activity data).
-- Boundary: local package and cryptographic inspection only; no new simulator, physical watch, phone sync, beta distribution, Store acceptance or publication observation. Earlier package and native observations retain their own boundaries.
+- Boundary at the time of packaging: local package and cryptographic inspection only; no new simulator, physical watch, phone sync, beta distribution, Store acceptance or publication observation. Earlier package and native observations retain their own boundaries.
 
 ## Independent bounded verification 2026-11-14: GREEN
 
 - Independently checked clean source `2fec0f63d2164218a4608620cbb1615f2f856c6f` against production base `18b30a46cac8c7907530437e5cd45d213a0fd950`: the only changes are beta config, beta build entry point, beta instructions and this evidence. Production manifest, release policy, runtime, resources and defaults are unchanged. All 703 retained source input hashes match both the checkout and the package input snapshot; the actual signed build source is `ae3e2717c3566764b2c24d6898b87a9611693d53` (the later commit adds evidence only).
 - Recomputed the candidate IQ SHA-256 as `fd531ef34804bb551dc5a768b4edca1115ac72f472db317f53c225c8bc922e14`. Compared parsed generated and production input manifests after substituting only application ID and version: otherwise identical. The production identity is `ec8b7c8a8ea54ee9ac91ee6e7a674d15` / `0.1.2`; beta is `a9b1d582d9494e6e862a513a8fbf820e` / `0.1.3`.
 - Re-ran the retained SDK cryptographic container inspector against the actual IQ, nine standalone programs, generated beta manifest, installed pinned SDK and nine pinned device profiles. Its complete result matches `release.json`: RSA4096 container signature and all 19 embedded/standalone program signatures valid, public key matches production policy (SPKI SHA-256 `84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc`), ten part numbers map to exactly `fr165`, `fr165m`, `fr170`, `fr170m`, `fr57042mm`, `fr70`, `venu3s`, `venu441mm`, `vivoactive6`, and each part matches its pinned runtime and firmware profile. No new compile was necessary.
-- This closes the bounded packaging verification only. Store admission, beta distribution, phone sync and physical installation remain unobserved.
+- At the time of this check, Store admission, beta distribution, phone sync and physical installation were unobserved; see the subsequent submission record below.
+
+## Garmin beta submission and queue observed 2026-11-14
+
+- The owner submitted the signed 0.1.3 package with the Beta checkbox selected on the Beta App form. Garmin accepted the submission and displayed [SpaceFox Beta](https://apps.garmin.com/apps/db2b9b57-0d38-4df5-ae04-8cfabc0b81c9), version 0.1.3 Internal 1, with the owner-only banner: “Only you will be able to download and test the app...” The native beta AppID is `a9b1d582d9494e6e862a513a8fbf820e`.
+- The upload showed Status Verified alongside a first-upload “Signature check failed” warning. Preserve this warning: independent SDK cryptographic verification of the signed IQ and all 19 programs was GREEN, but that does not turn the Garmin warning into Signature Verified. The separate production 0.1.2 upload had Signature Verified.
+- Download was initially disabled and became enabled after one reload. The owner selected the existing Forerunner 165 Music and authorized background, sensor history and internet permissions. Garmin confirmed: “Got it! SpaceFox Beta will be installed the next time your device syncs.” Beta submission and queue are GREEN; phone sync, installation and device operation remain unobserved.
+- The ordinary 0.1.2 listing remains separate. The owner saw 0.1.1 on the phone there; the cause of that discrepancy is not established.
