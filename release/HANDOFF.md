@@ -15,13 +15,13 @@ its PRG SHA-256 is
 `aa0376f64da4b7a6d9ddcf253c034360c23b1157e2aee9a20953632356a3f788`.
 The frozen signed source is `c7ad2c4113de272cd9677842d78047e7e6ffe77b`;
 the public release target is `1c1eddcd0a1c13b9d7a07d2bd0995422806517ac`.
-This is retained historical release evidence. The newer 0.1.1 release below is the current predecessor for future builds. The public
+This is retained historical release evidence. The later releases below preserve the predecessor history. The public
 `PROVENANCE.json` is a publication summary, not the tool's original prior-build
 receipt. The original receipt's evidence digest is
 `f38a42325101fd870ed9ae8470267827380eb7453df16b4261d3178f71ddb2f5`.
 See [publication readback and bounded verification](../openspec/changes/spacefox-watchface/evidence/published-test-history/STATUS.md).
 
-The later [v0.1.1-test.1 GitHub prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.1-test.1) is the current published predecessor. Its IQ SHA-256 is `6d6718fed5a79d986ae4193a43ece6b17079c4ce399c690d0369ce82eb298ae3`; its original [release receipt](../openspec/changes/spacefox-watchface/evidence/published-test-history/v0.1.1-test.1/release.json) is retained in the repository. To supply `--previous` for a future build, place that exact receipt and the matching publicly downloaded `SpaceFox.iq` together outside the source tree. Use a strictly higher native version with the same UUID and signing identity. The retained 0.1.0 receipt continues to document its own historical release.
+The later [v0.1.1-test.1 GitHub prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.1-test.1) is the previous published test release. Its IQ SHA-256 is `6d6718fed5a79d986ae4193a43ece6b17079c4ce399c690d0369ce82eb298ae3`; its original [release receipt](../openspec/changes/spacefox-watchface/evidence/published-test-history/v0.1.1-test.1/release.json) is retained in the repository. The retained 0.1.0 receipt continues to document its own historical release.
 
 Garmin has accepted the 0.1.1 submission for review; it is pending, not approved. See [submission receipt](../openspec/changes/spacefox-watchface/evidence/test-release-20261114/garmin-submission.json). The portal displayed a signature warning even though the local SDK verified the package; its cause is unconfirmed.
 
@@ -60,3 +60,7 @@ lossless PRG-to-Store/beta-to-production migration or uninstall survival. Retain
 the prior package and evidence; re-enter settings if the observed installation
 boundary requires it. Content rollback is a new monotonic generation selecting
 prior compatible bytes, without renewing launch-source validation.
+
+The [v0.1.2-test.1 GitHub prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.2-test.1) is the current published predecessor. Its IQ SHA-256 is `46f1c44c18a54134a97a3b003a00376891b64c087d691041430421b1e142a530`; its original [receipt](../openspec/changes/spacefox-watchface/evidence/published-test-history/v0.1.2-test.1/release.json) is retained. All 21 downloaded release assets matched their uploaded bytes and GitHub digests. To supply `--previous`, place this exact receipt and matching downloaded IQ together outside the source tree. Use a strictly higher native version with the same UUID and signing identity. The owner observed Garmin accept 0.1.2 for review, with status and signature verified and all nine target devices listed. The app is pending review, not approved. Fresh Music simulator and physical installation remain unobserved.
+
+The root release owner also observed Forerunner 165 Music in the Download / Add to Device picker and Garmin confirmed installation is queued for the next sync. This does not establish completion or on-device behavior; the [bounded observation](../openspec/changes/spacefox-watchface/evidence/published-test-history/v0.1.2-test.1/garmin-root-observation.json) omits device identifiers.
