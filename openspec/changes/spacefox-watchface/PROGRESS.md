@@ -389,3 +389,48 @@ Author fd7aef06 and fresh independent verify/fix1beee4c9 close the selected soft
 ## UX02 publication observed
 
 Public main/tagv0.1.6 and the signed GitHub prerelease are published. Garmin verified the final0.1.6 IQ and the original card now displays0.1.6/Internal5; compatibility usedinternal5 and installationPOST200 queued the existingMusic. The same link and instructions were sent toIvanDanilenko throughTelegram. [Publication receipts](evidence/ux02-delivery/PUBLICATION.md). Actual physical installation/build readback, phone/settings/health/power acceptance and Garmin public approval remain open. No native code was changed by this publication-only status update.
+
+## UX03 — 0.1.7 launch point, colors and composition
+
+The owner has moved physical readback to the next release and requested a new
+public-only branch/worktree for 0.1.7. The 0.1.6 software/publication iteration is
+finished; its unobserved physical gates remain unobserved, not passed. Base:
+public main `24ab0283`. Working branch: `fix/spacefox-017-composition-20261114`.
+
+One sequential group owns the missing launch-site marker, active clock color,
+active/LOW countdown color consistency, and measured spacing between clock,
+countdown, battery and configurable fields. In particular, the source-bound
+0.1.6 scene shows a pin but the actual signed-runtime screenshots do not. This
+discrepancy must be reproduced and traced through accepted coordinates, matching
+map/assets, loading/restoration and final native drawing. A mockup or injected
+renderer alone cannot close the signed-runtime counterexample. No fictitious
+location may be placed on an unrelated map.
+
+Execution plan: a fresh Terra 6.1 apply agent implements this entire group,
+updates affected specifications/tests and finishes with its own GREEN verify;
+a different fresh agent independently verifies and fixes until GREEN; root
+judges the complete evidence, then merges public main, tags v0.1.7 and submits
+the same-identity signed package at the original ordinary Garmin card. Use
+existing numbered tasks 5.1/5.2/5.5/7.2/7.3; tasks.md remains the sole task list.
+
+Acceptance uses actual native EN/RU pixels on FR165 Music 390 and FR965 454,
+normal/rescheduled/stale colors, default and persisted color selections, a
+known real launch point, and the real finite countdown/metric texts. Record
+actual ink bounds, circular fit, alignment, gaps/overlaps and LOW lit-pixel
+budget for the final design. Reuse unaffected valid greens; run only checks
+invalidated by this group. Preserve failed observations and distinguish SDK,
+signed export, Store submission/queue and actual physical installation.
+No new layout controls, legacy compatibility, all-locale sweep, stress campaign,
+paid/model API calls or extra recursive reviewer are part of this iteration.
+
+### UX03 author checkpoint — not yet self-GREEN
+
+The production-UUID controlled trace reproduced a pending-assets window in which accepted Cape coordinates existed but the 0.1.6 fallback had no marker. Current candidate matches only a nearby bundled map's known projection and otherwise omits the point until validated SFR1M arrives; no arbitrary position or country flag is inferred. Active stale dots had overlapped countdown ink and were moved down in both normal and maintenance paths. Measured native 390/454 frames, actual-source boundaries, diagnostic failures and the elapsed harness correction are in [UX03 status](evidence/ux03/STATUS.md). Final source-bound admission, signed runtime evidence, simulator cleanup and fresh independent verification remain open; no physical or release closure is claimed.
+
+### UX03 author self-verify checkpoint
+
+The bounded author software group is GREEN at the source candidate `84d9da10`: source-bound pending and maintenance tests, measured 390/454 active/LOW captures, retained UX02 proof replay, strict OpenSpec, and an actual 0.1.7 signed-program full-scene SDK observation after manual temporal events. The exact local candidate and proof boundaries are recorded in [UX03 status](evidence/ux03/STATUS.md). The signed pending frame was not captured before asset activation and is not misclassified. Simulator cleanup and its briefly premature lease-release correction are documented; the lane is now released. Fresh independent verification/fix, final clean-source export and root judgment remain open; all physical and Store gates remain unobserved.
+
+### UX03 independent verification checkpoint
+
+The bounded software group is independently GREEN; focused current admission and pixel tests passed 5/5, and the retained native/signed witnesses were inspected. See [independent verification](evidence/ux03-independent-final/VERIFY.md). Final clean-source export and root judgment are separate; physical and Store acceptance remain open.

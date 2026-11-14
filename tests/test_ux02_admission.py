@@ -19,5 +19,5 @@ class HistoricalAdmission(unittest.TestCase):
             for folder in ('watchface','locales','tools'): shutil.copytree(ROOT/folder,root/folder,ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
             for folder in ('openspec','corpus','tests','assets','catalog','schemas'): (root/folder).symlink_to(ROOT/folder,target_is_directory=True)
             owner=root/'watchface/source/SceneRenderer.mc';owner.write_text(owner.read_text()+'\n// tampered current owner\n')
-            with self.assertRaisesRegex(ValueError,'UX02 proof input changed'): software_locales(root)
+            with self.assertRaisesRegex(ValueError,'UX03 proof input changed'): software_locales(root)
 if __name__=='__main__': unittest.main()

@@ -1,0 +1,9 @@
+test_low_selected_colors_and_lit_budget (tests.test_ux03_pixels.Ux03Pixels.test_low_selected_colors_and_lit_budget) ... /Users/jekamas/projects/SpaceFox-worktrees/apply-spacefox017-20261114/tests/test_ux03_pixels.py:42: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im=Image.open(E/name).convert('RGB');pixels=list(im.getdata());lit=sum(any(c) for c in pixels)
+ok
+test_stale_ink_marker_fields_and_gutters (tests.test_ux03_pixels.Ux03Pixels.test_stale_ink_marker_fields_and_gutters) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.165s
+
+OK

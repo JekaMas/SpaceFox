@@ -5,6 +5,21 @@
   "public_key_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
   "status": "local_production_custody_restored",
   "latest_release": {
+    "version": "0.1.6",
+    "package_sha256": "f0486aec04a63ed9481caff0376a36930c7175df908ccb3e53f65075059dfc50",
+    "kind": "garmin_ordinary_store_submission",
+    "url": "https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3",
+    "source_revision": "4b16cca3f3c29083cbabc92b72f1a09718f77a5e",
+    "original_receipt_sha256": "b333a5df9c0333f125960e16dcc7ebae90a8800d84e4c29df2af088f95e691ac",
+    "proof_boundary": "Ordinary 0.1.6 signed IQ verified on the original Store card and existing watch installation queued; physical installation and acceptance remain unobserved."
+  },
+  "note": "Stable production UUID/key. Next candidate uses the actual retained 0.1.6 receipt and IQ as predecessor; physical phone/FR165 acceptance and Store delivery remain open.",
+  "local_custody": {
+    "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
+    "public_evidence": "openspec/changes/spacefox-watchface/evidence/production-signing/round1/custody-initialization.json",
+    "proof_boundary": "External owner-only production RSA4096 key and encrypted backup with separately stored password; actual local restore and public signing challenge. Same Mac only; no offsite/disaster recovery."
+  },
+  "previous_release": {
     "version": "0.1.5",
     "package_sha256": "339a9ce9a6b22bc3914bbe62ca6b34910ce5b43699a11dd7346c2a68744cd688",
     "kind": "signed_candidate_built",
@@ -12,20 +27,5 @@
     "source_revision": "18305ba295fc6e7895e1c0c30bea619bb96872d2",
     "original_receipt_sha256": "b2bcc7e6b5ae7ff4e3da86988fd94cd013c83d40d350f05874ef4b68fd5047b3",
     "proof_boundary": "Signed ordinary 0.1.5 candidate retained; Store internal preview observed, installed binary and physical phone acceptance unverified."
-  },
-  "note": "Stable production UUID/key. Next candidate uses the retained actual 0.1.5 receipt and IQ as predecessor; physical phone/FR165 acceptance and Store delivery remain open.",
-  "local_custody": {
-    "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
-    "public_evidence": "openspec/changes/spacefox-watchface/evidence/production-signing/round1/custody-initialization.json",
-    "proof_boundary": "External owner-only production RSA4096 key and encrypted backup with separately stored password; actual local restore and public signing challenge. Same Mac only; no offsite/disaster recovery."
-  },
-  "previous_release": {
-    "version": "0.1.4",
-    "package_sha256": "71fba19a849750628cfc1a3c7f5074a2ca4209115f76c8f34475cde0bcd22455",
-    "kind": "garmin_ordinary_store_submission",
-    "url": "https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3",
-    "source_revision": "3b95dee18cb56d704970aa1e330cd93030193ffc",
-    "original_receipt_sha256": "a04b32fcdaeefd47f8bbbd460ea314d1652ab17487abf1faafe9f91402736ae4",
-    "proof_boundary": "Owner reported ordinary 0.1.4 uploaded and Signature Verified on same Store card; App Info still showed 0.1.2. Manual queued download led to physical Feed -400; no physical acceptance and no GitHub 0.1.4 tag published."
   }
 }

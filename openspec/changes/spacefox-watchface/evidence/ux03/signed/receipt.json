@@ -1,0 +1,23 @@
+{
+  "sourceRevision": "84d9da10a0a5b5c38e6978602f201dc1bff9185a",
+  "iqSha256": "3e1108d6c47d44bc3aa7aae94802b93b662242f0fec3c4d53baac943413f1629",
+  "receiptSha256": "dea02ff6174d37e07cadbfbb1ca89a8bef132fa142a4913ee556021a5b8993b4",
+  "signedPrograms": {
+    "fr165m": {
+      "part": "006-B4433-00",
+      "sha256": "6dfb0301a3b17c6e8bfb335c079fac4eb5aa124110fb68498ae6aa61f0c8bce0"
+    },
+    "fr965": {
+      "part": "006-B4315-00",
+      "sha256": "32456da54924d6119d134639e09f2fd0761d979a182c611ecb15ef0ad42931e7"
+    }
+  },
+  "screens": {
+    "signed017-loaded-390.png": "d65691135eba1f81c58790c7f3b5a8331ad822079d3c55a1f87620df83897523",
+    "signed017-loaded-454.png": "e620cb09de49b754f6cae61946785b0694f18bf7d4b209331d823b613f25cbf7",
+    "signed017-low-390.png": "16c24b45f2137b32efbca6b8c5300792d80cd23ce89ae7468aff81f0562b4b89",
+    "signed017-menu-454.png": "099c23315423c8dba6b905aa3930a8c655bee9af44ab7afc69561c7822e1b9cc",
+    "misnamed-pending-was-loaded.png": "b28ae46e054826e6ae0c0d24c6ab7c5fbe93eaf9403aa300e6f09d08381873d6"
+  },
+  "observation": "Actual unmodified IQ-identical PRGs, signed application native own state, manual temporal event(s); loaded artwork and site flag visible. Prior live pending screen was observed but the save completed after activation; the saved image named pending is loaded, not a pending receipt. SDK only."
+}
