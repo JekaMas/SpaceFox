@@ -64,14 +64,14 @@
     }
   },
   "sources": {
-    "tools/native_incident_requalification.py": "8fc7a8cfa4f2a0568959a79f158d32df00473587ff6868347db8732883c65e06",
+    "tools/native_incident_requalification.py": "1568248c5b39f8306441f0057a7ec469dd965342be47282b95b8457011e3ec0b",
     "tools/native_language_policy.py": "b67f6cfbad62f611f37a274dbd4731d8bc74c4f4012848e11bda1fea39996ae9",
     "watchface/incident-tests/FirstInstallTests.mc": "fd9566a364b092497640cfb06d7b1b964d307d8f9d96d5d2f2e28a1dba0476f2",
     "watchface/resource-inputs/art-unknown.svg": "5b870dbbeda65e6643f05e09803659e213d7239e73093e9b5dfaa5e63dc5c2ee",
     "watchface/resources/drawables/art_unknown.png": "6c4343b3fd2a54c0a897080677ea7188d22b61cf0cb5fed178e30aea14e02ac1",
     "watchface/resources/drawables/drawables.xml": "e7b7c337d45cecd9feb3002a18ac3ecb6a2844a229e8a9a313f415c1f44040d5",
     "watchface/source/FeedService.mc": "9de0dfff01f48e287937a507efb1e9a9a28a6dbc828937f4268da5404a831e07",
-    "watchface/source/LocalePresentation.mc": "5b82947f695a11ff77f6833cb58ddd56144c9207e1dbf72a8c3372fc45d7061f",
+    "watchface/source/LocalePresentation.mc": "c01fca07e75a595fac453e8ffc723661d606fd12be69cd06cb7e6f0820208952",
     "watchface/source/NativeCache.mc": "df4fe63556691734e561ccdcb8e499c97cbe40504db35567c03168f8646b621d",
     "watchface/source/NativeForegroundApp.mc": "97cfd235c33768b6b02a64ddf6373a4b76651b3a37b542da327a14a9f6c9a0e0",
     "watchface/source/NativeIncoming.mc": "ce16926b98ccab287dbb3416893e40280826caf5196df6fcf446b8fcca1dc3b7",
@@ -91,7 +91,8 @@
     "openspec/changes/spacefox-watchface/evidence/first-install-incident/selected-en.png": "ee60e41514c710e3ab8b0b1f81a258fab17ea4a7c151e982bab8b37c70aeaff3",
     "openspec/changes/spacefox-watchface/evidence/first-install-incident/selected-ru.png": "3fcbb4111ae0eebdbd4f6f9f76078034903ae6235d8c2a4ea235f4c063cff648",
     "openspec/changes/spacefox-watchface/evidence/first-install-incident/unit.log": "134ee2334776f2c5f28c4a87c8451bb01e8e83fb99831de28a681d35bfd5217b",
-    "openspec/changes/spacefox-watchface/evidence/first-install-incident/visual-review.json": "c254329c7f04b817f566b04725d872887e28d75175285a0f4a0e7853d6b4436a"
+    "openspec/changes/spacefox-watchface/evidence/first-install-incident/visual-review.json": "c254329c7f04b817f566b04725d872887e28d75175285a0f4a0e7853d6b4436a",
+    "openspec/changes/spacefox-watchface/evidence/first-install-incident/prior/LocalePresentation-before-primary-status.mc": "5b82947f695a11ff77f6833cb58ddd56144c9207e1dbf72a8c3372fc45d7061f"
   },
   "proofBoundary": "Replays original software locale qualification on original bytes plus targeted EN/RU simulator observations; physical device remains unqualified."
 }

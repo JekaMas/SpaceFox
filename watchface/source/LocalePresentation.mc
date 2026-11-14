@@ -62,6 +62,18 @@ class LocalePresentation {
             if(stage.equals("unscheduled")){return "Синхронизация не запланирована";}
             return "Ожидание синхронизации";
         }
+        if(locale.equals("de")){
+            if(stage.equals("url")){return "Datenadresse fehlt";} if(stage.equals("failed")||stage.equals("feedFailed")||stage.equals("assetFailed")){return "Aktualisierung fehlgeschlagen";}
+            if(stage.equals("incomplete")){return "Sync unterbrochen";} if(stage.equals("received")){return "Daten noch nicht bereit";} if(stage.equals("assets")){return "Startdaten werden geladen";} if(stage.equals("requesting")){return "Daten werden aktualisiert";} if(stage.equals("unscheduled")){return "Sync nicht geplant";} return "Warte auf Sync";
+        }
+        if(locale.equals("fr")){
+            if(stage.equals("url")){return "Adresse des données absente";} if(stage.equals("failed")||stage.equals("feedFailed")||stage.equals("assetFailed")){return "Échec de mise à jour";}
+            if(stage.equals("incomplete")){return "Sync interrompue";} if(stage.equals("received")){return "Données pas encore prêtes";} if(stage.equals("assets")){return "Chargement du lancement";} if(stage.equals("requesting")){return "Mise à jour des données";} if(stage.equals("unscheduled")){return "Sync non planifiée";} return "En attente de sync";
+        }
+        if(locale.equals("es")){
+            if(stage.equals("url")){return "Falta la URL de datos";} if(stage.equals("failed")||stage.equals("feedFailed")||stage.equals("assetFailed")){return "Error de actualización";}
+            if(stage.equals("incomplete")){return "Sincronización interrumpida";} if(stage.equals("received")){return "Datos aún no disponibles";} if(stage.equals("assets")){return "Cargando lanzamiento";} if(stage.equals("requesting")){return "Actualizando datos";} if(stage.equals("unscheduled")){return "Sincronización no programada";} return "Esperando sincronización";
+        }
         if(stage.equals("url")){return "Feed URL unavailable";}
         if(stage.equals("failed")||stage.equals("feedFailed")||stage.equals("assetFailed")){return "Update failed";}
         if(stage.equals("incomplete")){return "Sync incomplete";}
@@ -72,9 +84,9 @@ class LocalePresentation {
         return "Waiting for sync";
     }
     function assetStatus(stage as String,detail as String) as String {
-        if(stage.equals("incomplete")){return locale.equals("ru")?"Загрузка прервана":"Artwork interrupted";}
+        if(stage.equals("incomplete")){if(locale.equals("ru")){return "Загрузка прервана";} if(locale.equals("de")){return "Bildladen unterbrochen";} if(locale.equals("fr")){return "Image interrompue";} if(locale.equals("es")){return "Imagen interrumpida";} return "Artwork interrupted";}
         var code=detail.find(": ");var suffix=code==null?"":detail.substring(code+2,detail.length());
-        return (locale.equals("ru")?"Изображение: ":"Artwork: ")+suffix;
+        if(locale.equals("ru")){return "Изображение: "+suffix;} if(locale.equals("de")){return "Bild: "+suffix;} if(locale.equals("fr")){return "Image : "+suffix;} if(locale.equals("es")){return "Imagen: "+suffix;} return "Artwork: "+suffix;
     }
     function mission(value as String) as String {
         // The provider category remains retained verbatim; only this known

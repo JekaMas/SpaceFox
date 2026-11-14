@@ -7,6 +7,7 @@ delivery path; they do not claim physical-device or other-language review.
 import hashlib
 import gzip
 import json
+import re
 from pathlib import Path
 import shutil
 import tempfile
@@ -24,7 +25,7 @@ SOURCES = {
 EVIDENCE = {
     'unit.log', 'isolate.log.gz', 'observer.mc', 'offline-en.png', 'offline-ru.png',
     'selected-en.png', 'selected-ru.png', 'asset-failure-en.png', 'asset-failure-ru.png',
-    'visual-review.json', 'build.json',
+    'visual-review.json', 'build.json', 'prior/LocalePresentation-before-primary-status.mc',
 }
 BASE = 'openspec/changes/spacefox-watchface/evidence/first-install-incident/'
 
@@ -66,15 +67,35 @@ def validate(root, catalog):
     build = json.loads((root / BASE / 'build.json').read_text())
     if build['profile'] != 'fr165m' or build['sdk'] != '9.3.0' or build['status'] != 'compiled':
         raise ValueError('first-install SDK build not observed')
+    baseline_path = BASE + 'prior/LocalePresentation-before-primary-status.mc'
+    baseline = (root / baseline_path).read_text()
     for name, digest in build['nativeSources'].items():
-        checked(name, digest)
+        if name == 'watchface/source/LocalePresentation.mc':
+            if hashlib.sha256(baseline.encode()).hexdigest() != digest:
+                raise ValueError('original compiled locale source changed')
+        else:
+            checked(name, digest)
+    # The new primary-language status labels are the only delta from the
+    # observed EN/RU source; remove those exact branches before comparison.
+    current = (root / 'watchface/source/LocalePresentation.mc').read_text()
+    normalized = re.sub(r'        if\(locale\.equals\("(?:de|fr|es)"\)\)\{\n.*?\n        \}\n', '', current, flags=re.S)
+    normalized = re.sub(r' if\(locale\.equals\("(?:de|fr|es)"\)\)\{return "[^"\n]*";\}', '', normalized)
+    normalized = re.sub(r' if\(locale\.equals\("(?:de|fr|es)"\)\)\{return "[^"\n]*"\+suffix;\}', '', normalized)
+    normalized = normalized.replace('if(stage.equals("incomplete")){if(locale.equals("ru")){return "Загрузка прервана";} return "Artwork interrupted";}', 'if(stage.equals("incomplete")){return locale.equals("ru")?"Загрузка прервана":"Artwork interrupted";}')
+    normalized = normalized.replace('if(locale.equals("ru")){return "Изображение: "+suffix;} return "Artwork: "+suffix;', 'return (locale.equals("ru")?"Изображение: ":"Artwork: ")+suffix;')
+    if normalized != baseline:
+        raise ValueError('unreviewed change outside primary status labels')
+    for lang in ('de', 'fr', 'es'):
+        if current.count('locale.equals("' + lang + '")') < 3:
+            raise ValueError('missing primary status translation: ' + lang)
+
     # Normal/offline observations predate the short asset-only error label.
     # Verify the precise conditional delta and retain the earlier build hashes.
     for name, item in build['previousVisualSources'].items():
         old_source = checked(item['path'], item['sha256']).read_text()
         if item['sha256'] != build['observedNativeSources'][name]:
             raise ValueError('earlier observed source changed: ' + name)
-        current = (root / name).read_text()
+        current = baseline if name.endswith('LocalePresentation.mc') else (root / name).read_text()
         if name.endswith('SceneRenderer.mc'):
             expected = old_source.replace('presentation.syncStatus(syncStatus)+" · "+syncDetail', 'presentation.assetStatus(syncStatus,syncDetail)')
         elif name.endswith('LocalePresentation.mc'):

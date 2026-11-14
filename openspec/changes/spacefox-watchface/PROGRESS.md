@@ -305,3 +305,18 @@ Independent verification and real-device readback remain open.
 All nine task-owned simulator event registrations were cleared; no other app
 files were removed. Shared simulator `sys.nfm` and `CIQ_LOG.YML` changed during
 the observations, with all 308 pre-existing files still present.
+
+### Independent incident verification — primary status labels
+
+Independent verification found that the new synchronization and artwork status
+labels fell back to English in the three other qualified primary modes. German,
+French and Spanish labels are now provided for every new status and artwork
+failure; the English/Russian strings and renderer are byte-equivalent after
+removing the new locale branches. The original five-language corpus and its
+SDK font evidence remain bound and replayed, with the original compiled source
+retained separately. The installed SDK Roboto font's SHA-256 matches the prior
+receipt and covers every character in these finite status literals. Strict
+OpenSpec validation and source-bound five-locale admission pass. This is static
+coverage, not a new DE/FR/ES native visual observation or human translation
+review. The actual AOD first-arrival observation and physical FR165 readback
+remain open until separately observed.
