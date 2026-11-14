@@ -389,3 +389,36 @@ Author fd7aef06 and fresh independent verify/fix1beee4c9 close the selected soft
 ## UX02 publication observed
 
 Public main/tagv0.1.6 and the signed GitHub prerelease are published. Garmin verified the final0.1.6 IQ and the original card now displays0.1.6/Internal5; compatibility usedinternal5 and installationPOST200 queued the existingMusic. The same link and instructions were sent toIvanDanilenko throughTelegram. [Publication receipts](evidence/ux02-delivery/PUBLICATION.md). Actual physical installation/build readback, phone/settings/health/power acceptance and Garmin public approval remain open. No native code was changed by this publication-only status update.
+
+## UX03 — 0.1.7 launch point, colors and composition
+
+The owner has moved physical readback to the next release and requested a new
+public-only branch/worktree for 0.1.7. The 0.1.6 software/publication iteration is
+finished; its unobserved physical gates remain unobserved, not passed. Base:
+public main `24ab0283`. Working branch: `fix/spacefox-017-composition-20261114`.
+
+One sequential group owns the missing launch-site marker, active clock color,
+active/LOW countdown color consistency, and measured spacing between clock,
+countdown, battery and configurable fields. In particular, the source-bound
+0.1.6 scene shows a pin but the actual signed-runtime screenshots do not. This
+discrepancy must be reproduced and traced through accepted coordinates, matching
+map/assets, loading/restoration and final native drawing. A mockup or injected
+renderer alone cannot close the signed-runtime counterexample. No fictitious
+location may be placed on an unrelated map.
+
+Execution plan: a fresh Terra 6.1 apply agent implements this entire group,
+updates affected specifications/tests and finishes with its own GREEN verify;
+a different fresh agent independently verifies and fixes until GREEN; root
+judges the complete evidence, then merges public main, tags v0.1.7 and submits
+the same-identity signed package at the original ordinary Garmin card. Use
+existing numbered tasks 5.1/5.2/5.5/7.2/7.3; tasks.md remains the sole task list.
+
+Acceptance uses actual native EN/RU pixels on FR165 Music 390 and FR965 454,
+normal/rescheduled/stale colors, default and persisted color selections, a
+known real launch point, and the real finite countdown/metric texts. Record
+actual ink bounds, circular fit, alignment, gaps/overlaps and LOW lit-pixel
+budget for the final design. Reuse unaffected valid greens; run only checks
+invalidated by this group. Preserve failed observations and distinguish SDK,
+signed export, Store submission/queue and actual physical installation.
+No new layout controls, legacy compatibility, all-locale sweep, stress campaign,
+paid/model API calls or extra recursive reviewer are part of this iteration.
