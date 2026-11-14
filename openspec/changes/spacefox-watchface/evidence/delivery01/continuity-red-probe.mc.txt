@@ -1,0 +1,19 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.System;
+import Toybox.Background;
+import Toybox.Time;
+import Toybox.Timer;
+(:typecheck(false)) class ProbeProxy extends WatchUi.WatchFace {var app;function initialize(a){WatchFace.initialize();app=a;} function onLayout(dc){app.view.onLayout(dc);} function onShow(){app.view.onShow();app.beginProbe();} function onHide(){app.view.onHide();} function onUpdate(dc){app.view.onUpdate(dc);} function onEnterSleep(){app.view.onEnterSleep();} function onExitSleep(){app.view.onExitSleep();}}
+(:background,:typecheck(false)) class SfrRuntimeApp extends SpaceFoxApp {
+ var probeTimer=null;var count=0;var tried=false;
+ function initialize(){SpaceFoxApp.initialize();NativeMetrics.ownerTag="729ab3fec80142719192a8a16e914c08|repro|0208a5a5d0e0";System.println("SFR_PROBE owner="+NativeMetrics.ownerTag);NativeMetrics.enabled=true;}
+ function getServiceDelegate(){NativeMetrics.enabled=true;return [new FeedService()];}
+ (:typecheck(disableBackgroundCheck)) function getInitialView() as [Views] or [Views,InputDelegates]{SpaceFoxApp.getInitialView();return [new ProbeProxy(self)];}
+ (:typecheck(disableBackgroundCheck)) function beginProbe(){probeTimer=new Timer.Timer();probeTimer.start(method(:observe),500,true);}
+ (:typecheck(disableBackgroundCheck)) function observe(){
+ count+=1;if(tried||view==null||view.downloaded==null||feed==null||feed.packet==null){if(count>800){System.println("CONTINUITY_TIMEOUT");probeTimer.stop();}return;}
+ tried=true;probeTimer.stop();var old=view.downloaded;var id=view.context.launchId;System.println("CONTINUITY_READY id="+id+" bitmap="+(old!=null)+" renderer="+(view.renderer!=null));
+ var incoming=new NativeIncoming(feed.store,feed.base);var row=incoming.read("feed",true);if(row==null){System.println("CONTINUITY_NO_RAW");return;}var raw=row[1];var needle="\"schemaVersion\":3";var at=raw.find(needle);if(at==null){System.println("CONTINUITY_NO_SCHEMA");return;}var broken=raw.substring(0,at)+"\"schemaVersion\":2"+raw.substring(at+needle.length(),raw.length());var tr=new NativeTransfer(feed.base,feed.store);var staged=tr.stage("feed",broken,null);System.println("CONTINUITY_RESPONSE staged="+staged);SpaceFoxApp.reloadFeed();System.println("CONTINUITY_AFTER id="+(view.context==null?"null":view.context.launchId)+" bitmapSame="+(view.downloaded==old)+" renderer="+(view.renderer!=null)+" maintenance="+view.visualMaintenance+" restorePending="+restorePending);}
+}

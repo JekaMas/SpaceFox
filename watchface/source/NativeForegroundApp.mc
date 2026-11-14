@@ -17,8 +17,45 @@ module NativeForegroundApp {
         status(app,cache);
     }
     function errorDetail(stage,value){var version=value["build"] instanceof String?value["build"]:"?";return (stage.equals("feedFailed")?"Feed: ":"Assets: ")+version+" "+value["code"]; }
-    function status(app,cache){
-        var result="waiting";var detail="";if(cache.base.equals("")){result="url";}else{try{var value=cache.store.read("sf.sync.status");if(value instanceof Dictionary&&value["base"] instanceof String&&value["base"].equals(cache.base)&&value["stage"] instanceof String){var stage=value["stage"];if(stage.equals("failed")||stage.equals("feedFailed")||stage.equals("assetFailed")||stage.equals("received")||stage.equals("requesting")||stage.equals("assets")){result=stage;if((stage.equals("feedFailed")||stage.equals("assetFailed"))&&(value["code"] instanceof Number)){detail=errorDetail(stage,value); }if((stage.equals("requesting")||stage.equals("assets"))&&(value["utc"] instanceof Number||value["utc"] instanceof Long)&&Time.now().value().toLong()-value["utc"]>60){result="incomplete";detail=stage.equals("assets")?"Assets":"Feed";}}}else if(Background.getTemporalEventRegisteredTime()==null){result="unscheduled";}if(result.equals("received")||result.equals("assets")){var admission=cache.store.read("sf.sync.admission");if(admission instanceof Dictionary&&admission["base"] instanceof String&&admission["base"].equals(cache.base)&&admission["reason"] instanceof String){detail="Admission: "+admission["reason"];}}}catch(e){}}
+    function status(app, cache) {
+        var result = "waiting";
+        var detail = "";
+        if (cache.base.equals("")) {
+            result = "url";
+        } else {
+            try {
+                var value = cache.store.read("sf.sync.status");
+                if (value instanceof Dictionary && value["base"] instanceof String &&
+                    value["base"].equals(cache.base) && value["stage"] instanceof String) {
+                    var stage = value["stage"];
+                    if (["failed","feedFailed","assetFailed","received","requesting","assets"].indexOf(stage) >= 0) {
+                        result = stage;
+                        if ((stage.equals("feedFailed") || stage.equals("assetFailed")) && value["code"] instanceof Number) {
+                            detail = cache.packet == null ? ""+value["code"] : errorDetail(stage,value);
+                        }
+                        if ((stage.equals("requesting") || stage.equals("assets")) &&
+                            (value["utc"] instanceof Number || value["utc"] instanceof Long) &&
+                            Time.now().value().toLong()-value["utc"] > 60) {
+                            result = "incomplete";
+                            detail = stage.equals("assets") ? "Assets" : "Feed";
+                        }
+                    }
+                } else if (Background.getTemporalEventRegisteredTime() == null) {
+                    result = "unscheduled";
+                }
+                if (result.equals("received") || result.equals("assets")) {
+                    var admission = cache.store.read("sf.sync.admission");
+                    if (admission instanceof Dictionary && admission["base"] instanceof String &&
+                        admission["base"].equals(cache.base) && admission["reason"] instanceof String) {
+                        detail = "Admission: "+admission["reason"];
+                    }
+                }
+            } catch(e) {}
+        }
+        // Identify this foreground executable even before a background callback.
+        if (cache.packet == null) {
+            detail = NativeVersion.BUILD+" "+NativeVersion.ID+(detail.equals("") ? "" : " "+detail);
+        }
         app.view.setSyncStatus(result,detail);
     }
     function savePlan(cache,p){
@@ -28,37 +65,70 @@ module NativeForegroundApp {
         var selected=app.feed;var url=new NativeTransfer(configuredFeedUrl(),null).base;
         if(!(selected instanceof NativeCache)||!selected.base.equals(url)){app.restoreSeal=null;reload(app);return;}
         var now=Time.now().value().toLong();var before=selected.store.writes;
-        selected.restoreAccepted(now,app.restoreSeal);app.restoreSeal=null;display(app,selected);app.view.prepareRenderer();
+        // Detach only for this synchronous parse and rebind before returning to
+        // the UI. Preserve the accepted scene if strict restore cannot complete.
+        app.view.releaseRenderer();
+        try{selected.restoreAccepted(now,app.restoreSeal);if(selected.packet!=null){app.restoreSeal=null;display(app,selected);}else{app.restorePending=true;}}
+        finally{app.view.prepareRenderer();}
         if(System.getDisplayMode()==System.DISPLAY_MODE_HIGH_POWER){app.view.prepareVisual();}
         NativeMetrics.writes("foreground-restore-total",selected.store.writes-before);NativeMetrics.sample("foreground-restore-complete");
         var transfer=new NativeTransfer(selected.base,selected.store);transfer.load();armFeed(transfer,now);status(app,selected);
     }
-    function reload(app){
-        if(app.view!=null&&(app.view.sfrBuild!=null||app.view.sfrRequested)){app.view.cancelSfrBuild();}
-        var url=new NativeTransfer(configuredFeedUrl(),null).base;var selected=app.feed;var now=Time.now().value().toLong();var before=0;var rebuild=false;var deferred=false;
-        try{
-        if(!(selected instanceof NativeCache)||!selected.base.equals(url)){
-            // Reopening another namespace reconstructs a complete raw feed too.
-            // A changed host owns a different identity namespace. Clear the old
-            // scene before reconstruction so its packet/bitmap cannot compete
-            // with the new full raw feed or appear under the new host.
-            if(app.view!=null&&app.view.renderer!=null){rebuild=true;app.view.releaseRenderer();NativeMetrics.sample("foreground-renderer-released");}
-            if(app.view!=null){app.view.setPacket(null);}
-            selected=new NativeCache(url,null);app.feed=selected;before=selected.store.writes;selected.load(now);
-        }else{before=selected.store.writes;}
-        if(!selected.base.equals("")){
-            var incoming=new NativeIncoming(selected.store,selected.base);var pending=selected.store.read("sf.incoming.feed");var done=selected.store.read("sf.incoming.feed.processed");
-            // Admission can allocate the full 8KiB raw document and parser AST.
-            // Keep the working scene/packet/optional bitmap, but release the
-            // reconstructible renderer resources for this synchronous work.
-            // Rebind them here, outside redraw, even when admission rejects.
-            if(app.view!=null&&app.view.renderer!=null&&pending instanceof Dictionary&&(selected.packet==null||!(pending["sha256"] instanceof String&&done instanceof String&&incoming.token(pending).equals(done)))){rebuild=true;app.view.releaseRenderer();app.view.packet=null;NativeMetrics.sample("foreground-renderer-released");}
-            pending=null;done=null;incoming.admitFeedForView(selected,now,app.view);if(incoming.needsRestore){deferred=true;app.restoreSeal=incoming.restoreSeal;app.restorePending=true;app.queueRestore();NativeMetrics.sample("foreground-restore-queued");return;}
-            NativeMetrics.sample("foreground-incoming-complete");if(selected.packet!=null){var policy=selected.packet.document["refreshPolicy"];savePlan(selected,policy);NativeMetrics.sample("foreground-plan-complete");}
+    // Only a new provisional feed can replace the scene. Duplicate callbacks
+    // leave an in-progress visual build and its generation untouched.
+    function hasNewIncoming(cache, incoming) {
+        var pending = cache.store.read("sf.incoming.feed");
+        if (!(pending instanceof Dictionary)) { return false; }
+        var done = cache.store.read("sf.incoming.feed.processed");
+        return cache.packet == null || !(pending["sha256"] instanceof String &&
+            done instanceof String && incoming.token(pending).equals(done));
+    }
+
+    function reload(app) {
+        var url = new NativeTransfer(configuredFeedUrl(),null).base;
+        var selected = app.feed;
+        var now = Time.now().value().toLong();
+        var before = 0;
+        var rebuild = false;
+        try {
+            if (!(selected instanceof NativeCache) || !selected.base.equals(url)) {
+                // Host changes own a separate identity namespace.
+                if (app.view != null && app.view.renderer != null) {
+                    rebuild=true;app.view.releaseRenderer();NativeMetrics.sample("foreground-renderer-released");
+                }
+                if (app.view != null) { app.view.setPacket(null); }
+                selected=new NativeCache(url,null);app.feed=selected;
+                before=selected.store.writes;selected.load(now);
+            } else {
+                before=selected.store.writes;
+            }
+            if (!selected.base.equals("")) {
+                var incoming=new NativeIncoming(selected.store,selected.base);
+                var admission=hasNewIncoming(selected,incoming);
+                if (admission && app.view != null) {
+                    if (app.view.sceneLifecycle.pending()) { app.view.cancelSfrBuild(); }
+                    if (app.view.renderer != null) {
+                        rebuild=true;app.view.releaseRenderer();app.view.packet=null;
+                        NativeMetrics.sample("foreground-renderer-released");
+                    }
+                }
+                incoming.admitFeedForView(selected,now,app.view);
+                if (incoming.needsRestore) {
+                    app.restoreSeal=incoming.restoreSeal;app.restorePending=true;
+                    app.queueRestore();NativeMetrics.sample("foreground-restore-queued");return;
+                }
+                NativeMetrics.sample("foreground-incoming-complete");
+                if (selected.packet != null) {
+                    savePlan(selected,selected.packet.document["refreshPolicy"]);
+                    NativeMetrics.sample("foreground-plan-complete");
+                }
+            }
+            NativeMetrics.sample("foreground-before-view");display(app,selected);
+        } finally {
+            if (rebuild) { app.view.prepareRenderer();NativeMetrics.sample("foreground-renderer-restored"); }
         }
-        NativeMetrics.sample("foreground-before-view");display(app,selected);
-        }finally{if(rebuild&&!deferred){app.view.prepareRenderer();NativeMetrics.sample("foreground-renderer-restored");}}
-        if(app.view!=null&&System.getDisplayMode()==System.DISPLAY_MODE_HIGH_POWER){app.view.prepareVisual();}
-        NativeMetrics.writes("foreground-reload-total",selected.store.writes-before);var transfer=new NativeTransfer(selected.base,selected.store);transfer.load();armFeed(transfer,now);status(app,selected);
+        if (app.view != null && System.getDisplayMode() == System.DISPLAY_MODE_HIGH_POWER) { app.view.prepareVisual(); }
+        NativeMetrics.writes("foreground-reload-total",selected.store.writes-before);
+        var transfer=new NativeTransfer(selected.base,selected.store);transfer.load();armFeed(transfer,now);status(app,selected);
     }
 }

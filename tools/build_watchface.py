@@ -168,6 +168,14 @@ def validate_api_policy(root: Path, lock: dict) -> None:
 
 def build(output: Path, *, root: Path = ROOT, tests: bool = False, test_scope: str = "clock", preview: Path | None = None) -> dict:
     root = root.resolve()
+    try:
+        from tools.generate_native_version import validate as validate_identity
+    except ModuleNotFoundError:
+        from generate_native_version import validate as validate_identity
+    try:
+        validate_identity(root)
+    except ValueError as error:
+        raise BuildBlocked(str(error)) from error
     context = discover(root)
     lock = context["lock"]
     validate_api_policy(root, lock)

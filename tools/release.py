@@ -442,6 +442,14 @@ def build_release(output: Path, *, key: Path, root: Path = ROOT, mode: str = "ca
                   backup: Path | None = None, evidence: list[Path] | None = None) -> dict:
     root = root.resolve()
     require(mode in ("candidate", "official", "qualification"), "unknown release mode")
+    try:
+        from tools.generate_native_version import validate as validate_identity
+    except ModuleNotFoundError:
+        from generate_native_version import validate as validate_identity
+    try:
+        validate_identity(root)
+    except ValueError as error:
+        raise ReleaseBlocked(str(error)) from error
     before = source_state(root)
     context = discover_toolchain(root)
     lock = context["lock"]

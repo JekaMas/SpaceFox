@@ -1,0 +1,24 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.System;
+import Toybox.Background;
+import Toybox.Time;
+(:background) class SfrRuntimeApp extends SpaceFoxApp {function initialize(){SpaceFoxApp.initialize();}}
+import Toybox.Lang;
+import Toybox.Test;
+
+// Isolated view boundary only. A separate live-feed run establishes that the
+// selected visual was acquired by the same native application before rejection.
+(:test,:typecheck(false)) function deliveryRejectedResponseRetainsScene(logger){
+    var view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));
+    var scene=new SceneContext({"id"=>"ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a","rocket"=>"Vulcan VC6L","site"=>"US · Cape Canaveral SFS","target"=>1794762690l,"precision"=>"exact"});
+    view.setContext(scene);view.prepareRenderer();
+    var visual=new NativeSfrRenderer();view.downloaded=visual;view.renderer.downloaded=visual;
+    view.clearForRestore();
+    Test.assert(view.context==scene);
+    Test.assert(view.downloaded==visual);
+    Test.assert(view.renderer!=null&&view.renderer.downloaded==visual);
+    logger.debug("REJECTED_RESPONSE retainedAcceptedScene=true");return true;
+}
+

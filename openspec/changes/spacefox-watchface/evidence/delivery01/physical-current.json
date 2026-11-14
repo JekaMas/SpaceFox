@@ -1,0 +1,36 @@
+{
+  "observedAtUtc": "2026-11-14T19:22:19.787790+00:00",
+  "cardId": "7ef095e4-72fe-44cd-bc39-8987b6ab49e3",
+  "publisher": {
+    "status": "PENDING",
+    "betaApp": false,
+    "latestExternalVersion": "0.1.7",
+    "latestInternalVersion": 6,
+    "hasVersionPendingScan": false
+  },
+  "public": {
+    "authentication": "none; no cookies or token",
+    "httpStatus": 404,
+    "bodySha256": "05263ef9c6a06e0319293eeaa36741a96f02caa404bffe19526b21ef6378fe84",
+    "versionMetadata": {}
+  },
+  "installedBuild": {
+    "build": "0.1.6",
+    "method": "watch-runtime",
+    "evidence": "owner-reported physical on-watch settings header",
+    "observedAtUtc": null,
+    "timeNote": "Placeholder time is NOT a capture timestamp; exclude from acceptance pending exact owner evidence."
+  },
+  "watchLaunch": null,
+  "notes": "Current owner reports on-watch 0.1.6 and visible launch. Exact capture time is not yet pinned; no inferred target-build or freshness acceptance.",
+  "physicalObservation": {
+    "scene": "Vulcan VC6L; ULA; Communications; Cape; finite T- countdown",
+    "transitions": "full scene then black maintenance then LOW",
+    "qualification": "Owner-reported physical observations; exact capture times and source-validation identity remain unpinned.",
+    "privacy": "raw images remain local",
+    "deliveryAttempts": [
+      "Owner selected a stock face and reselected SpaceFox; settings header remained 0.1.6.",
+      "Owner powered the watch off and on; SpaceFox settings header remained 0.1.6."
+    ]
+  }
+}

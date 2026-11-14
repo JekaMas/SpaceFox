@@ -490,3 +490,13 @@ gallery images cannot satisfy that external gate. Do not invent a root cause,
 erase a valid cache, bump versions blindly or weaken a failing gate. Run only
 checks invalidated by the concrete owner/contract changes. Existing tasks
 2.2/3.2/6.1/7.2/7.3 remain the sole numbered task scope.
+
+### DELIVERY01 author checkpoint — physical acceptance NOT DONE
+
+The owner reports the physical watch executing 0.1.6 after face reselect and
+full restart; a later Vulcan scene transitioned through black maintenance to
+ambient. Physical cause is unproven. The 0.1.8 source repair, preserved REDs,
+actual native cold/retained and real-packet identity evidence, scheduler
+counterexample, hosted feed boundaries, simulator restoration caveat and
+remaining peer/physical/Store gates are in [DELIVERY01 status](evidence/delivery01/STATUS.md).
+The active tasks remain 2.2, 3.2, 6.1, 7.2 and 7.3; this checkpoint adds no task.

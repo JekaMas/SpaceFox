@@ -1,0 +1,14 @@
+test_changed_runtime_or_native_receipt_is_rejected (tests.test_delivery_admission.DeliveryAdmission.test_changed_runtime_or_native_receipt_is_rejected) ... ok
+test_current_delta_and_prior_language_proof (tests.test_delivery_admission.DeliveryAdmission.test_current_delta_and_prior_language_proof) ... ok
+test_changed_native_input_requires_regeneration (tests.test_delivery_build_identity.NativeBuildIdentity.test_changed_native_input_requires_regeneration) ... ok
+test_current_identity_matches_native_inputs (tests.test_delivery_build_identity.NativeBuildIdentity.test_current_identity_matches_native_inputs) ... ok
+test_actual_incident_is_not_done (tests.test_delivery_incident_gate.DeliveryGate.test_actual_incident_is_not_done) ... ok
+test_compatibility_and_unversioned_queue_do_not_prove_delivery (tests.test_delivery_incident_gate.DeliveryGate.test_compatibility_and_unversioned_queue_do_not_prove_delivery) ... ok
+test_independent_required_observations_and_disagreements (tests.test_delivery_incident_gate.DeliveryGate.test_independent_required_observations_and_disagreements) ... ok
+test_mode_evidence_must_show_coherent_round_trip (tests.test_delivery_incident_gate.DeliveryGate.test_mode_evidence_must_show_coherent_round_trip) ... ok
+test_settings_title_matches_manifest_version (tests.test_ux016_version.WatchVersion.test_settings_title_matches_manifest_version) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 3.313s
+
+OK

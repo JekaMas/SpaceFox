@@ -35,9 +35,58 @@ class FeedService extends System.ServiceDelegate {
     (:typecheck(false))
     function finish() as Void {try{if(transfer!=null){armFeed(transfer,Time.now().value().toLong());}}catch(e){}if(transfer!=null){NativeMetrics.writes("background-total",transfer.store.writes);}NativeMetrics.sample("background-exit");Background.exit({"provisional"=>true});}
 }
+// Keep a pending download's earliest registered deadline across foreground
+// wakes. The OS enforces five minutes since the last dispatched event.
 (:background, :typecheck(false))
-function armFeed(cache,now){
-    if(cache.base.equals("")){try{Background.deleteTemporalEvent();}catch(e){}return;}var next=cache.nextWake(now);try{var batch=cache.store.read("sf.batch.pending");if(batch instanceof Dictionary&&batch["base"] instanceof String&&batch["base"].equals(cache.base)&&batch["pending"]==true&&next>now+300){next=now+300;}}catch(e){}var last=Background.getLastTemporalEventTime();if(last!=null&&next<last.value().toLong()+300){next=last.value().toLong()+300;}try{Background.registerForTemporalEvent(new Time.Moment(next.toNumber()));if(NativeMetrics.enabled){var registered=Background.getTemporalEventRegisteredTime();System.println("NATIVE_SCHEDULE now="+now+" requested="+next+" registered="+(registered==null?"null":registered.value())+" last="+(last==null?"null":last.value())+" owner="+NativeMetrics.ownerTag);NativeMetrics.sample("temporal-scheduled");}}catch(e){NativeMetrics.failure(e.getErrorMessage());}
+function pendingWake(now, next, registered, last, pending) {
+    if (pending) {
+        if (next > now + 300) { next = now + 300; }
+        if (registered != null) {
+            var due = registered > now ? registered : now;
+            if (due < next) { next = due; }
+        }
+    }
+    if (last != null && next < last + 300) { next = last + 300; }
+    return next;
+}
+
+// A registered event newer than the last dispatched event belongs to the OS,
+// even if its dispatch is late. Do not replace it during foreground reload.
+(:background, :typecheck(false))
+function registrationNeeded(now, next, registered, last, pending) {
+    if (registered == null) { return true; }
+    if (registered == next) { return false; }
+    if (pending && registered <= now &&
+        (last == null || (registered > last && registered >= last + 300))) { return false; }
+    return true;
+}
+
+(:background, :typecheck(false))
+function armFeed(cache, now) {
+    if (cache.base.equals("")) {
+        try { Background.deleteTemporalEvent(); } catch(e) {}
+        return;
+    }
+    var pending = false;
+    try {
+        var batch = cache.store.read("sf.batch.pending");
+        pending = batch instanceof Dictionary && batch["base"] instanceof String &&
+            batch["base"].equals(cache.base) && batch["pending"] == true;
+    } catch(e) {}
+    var registered = Background.getTemporalEventRegisteredTime();
+    var last = Background.getLastTemporalEventTime();
+    var registeredAt = registered == null ? null : registered.value().toLong();
+    var lastAt = last == null ? null : last.value().toLong();
+    var next = pendingWake(now, cache.nextWake(now), registeredAt, lastAt, pending);
+    if (!registrationNeeded(now, next, registeredAt, lastAt, pending)) { return; }
+    try {
+        Background.registerForTemporalEvent(new Time.Moment(next.toNumber()));
+        if (NativeMetrics.enabled) {
+            registered = Background.getTemporalEventRegisteredTime();
+            System.println("NATIVE_SCHEDULE now="+now+" requested="+next+" registered="+(registered==null?"null":registered.value())+" last="+(last==null?"null":last.value())+" owner="+NativeMetrics.ownerTag);
+            NativeMetrics.sample("temporal-scheduled");
+        }
+    } catch(e) { NativeMetrics.failure(e.getErrorMessage()); }
 }
 (:background)
 function feedUrlValue(value as Object or Null) as String {return value instanceof String?value:"https://jekamas.github.io/SpaceFox";}

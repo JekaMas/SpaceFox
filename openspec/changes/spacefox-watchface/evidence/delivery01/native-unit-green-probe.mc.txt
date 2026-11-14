@@ -1,0 +1,62 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.System;
+import Toybox.Background;
+import Toybox.Time;
+(:background) class SfrRuntimeApp extends SpaceFoxApp {function initialize(){SpaceFoxApp.initialize();}}
+import Toybox.Lang;
+import Toybox.Test;
+
+// Isolated view boundary only. A separate live-feed run establishes that the
+// selected visual was acquired by the same native application before rejection.
+(:test,:typecheck(false)) function deliveryRejectedResponseRetainsScene(logger){
+    var view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));
+    var scene=new SceneContext({"id"=>"ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a","rocket"=>"Vulcan VC6L","site"=>"US · Cape Canaveral SFS","target"=>1794762690l,"precision"=>"exact"});
+    view.setContext(scene);view.prepareRenderer();
+    var visual=new NativeSfrRenderer();view.downloaded=visual;view.renderer.downloaded=visual;
+    view.clearForRestore();
+    Test.assert(view.context==scene);
+    Test.assert(view.downloaded==visual);
+    Test.assert(view.renderer!=null&&view.renderer.downloaded==visual);
+    logger.debug("REJECTED_RESPONSE retainedAcceptedScene=true");return true;
+}
+
+(:test,:typecheck(false)) function deliveryPendingDeadlineDoesNotMove(logger){
+    // Expected deadlines are stated from the event history, not read back from
+    // the production helper. The OS minimum may delay an impossible event.
+    var last=1000l;var deadline=pendingWake(1000l,4600l,null,last,true);
+    Test.assert(deadline==1300l);
+    deadline=pendingWake(1100l,4700l,deadline,last,true);
+    Test.assert(deadline==1300l);
+    deadline=pendingWake(1200l,4800l,deadline,last,true);
+    Test.assert(deadline==1300l);
+    Test.assert(pendingWake(1200l,4800l,1100l,800l,true)==1200l);
+    Test.assert(pendingWake(1300l,4900l,1300l,1300l,true)==1600l);
+    Test.assert(pendingWake(1200l,1250l,1300l,1000l,false)==1300l);
+    Test.assert(!registrationNeeded(1200l,1300l,1300l,1000l,true));
+    Test.assert(!registrationNeeded(1301l,1301l,1300l,1000l,true));
+    Test.assert(registrationNeeded(1361l,1361l,1300l,1000l,true));
+    Test.assert(registrationNeeded(1301l,1600l,1300l,1300l,true));
+    logger.debug("PENDING_DEADLINE first=1300 wake=1300 reload=1300 osMinimum=1600");return true;
+}
+
+(:test,:typecheck(false)) function deliverySceneEventsAndLateCompletion(logger){
+    // Independent expected phases for this trace: accepted fallback (1),
+    // requested before painting (3), painted (4), build running (5), cancelled
+    // (2), new build (5), committed rich scene (6), new launch fallback (1).
+    var machine=new SceneLifecycle();var applied=0;var rejected=0;
+    machine.replace(true);applied+=1;Test.assert(machine.phase==1);
+    Test.assert(machine.request());applied+=1;Test.assert(machine.phase==3);
+    machine.painted();applied+=1;Test.assert(machine.phase==4);
+    var old=machine.begin();applied+=1;Test.assert(old!=null&&machine.phase==5);
+    machine.cancel();applied+=1;Test.assert(machine.phase==2);
+    Test.assert(!machine.complete(old));rejected+=1;Test.assert(machine.phase==2);
+    Test.assert(machine.request());applied+=1;Test.assert(machine.phase==4);
+    var current=machine.begin();applied+=1;Test.assert(current!=null&&machine.phase==5);
+    Test.assert(machine.complete(current));applied+=1;Test.assert(machine.phase==6);
+    machine.replace(true);applied+=1;Test.assert(machine.phase==1);
+    Test.assert(!machine.complete(current));rejected+=1;Test.assert(machine.phase==1);
+    Test.assert(applied==9&&rejected==2);
+    logger.debug("SCENE_EVENTS applied=9 observedNoMutation=2 skipped=0");return true;
+}

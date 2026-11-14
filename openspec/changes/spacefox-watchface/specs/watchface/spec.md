@@ -247,3 +247,53 @@ exercise technical failures without fabricating display names.
 
 - **WHEN** a background feed or artwork request writes an error status and no launch is accepted
 - **THEN** the detail includes the background build version recorded with that status and error code; a legacy status without a version is shown as unknown rather than assigned the foreground version
+
+### Requirement: Executing build identification on an empty face
+
+When no schedule is accepted, the active face SHALL provide a readable runtime
+build identifier along with applicable sync error information. The identifier
+SHALL identify the foreground executable rather than rely on phone listing notes
+or a previously persisted background status. Build tooling SHALL reject a stale
+identifier after native source, resource, or manifest inputs change.
+
+#### Scenario: Fresh installation has no background result
+
+- **WHEN** the watch face has no accepted schedule and no background status
+- **THEN** the active face identifies the executing foreground build without waiting for a network response
+
+#### Scenario: An earlier background error remains in storage
+
+- **WHEN** the empty face reads an earlier error after a code update
+- **THEN** its foreground build identifier remains that of the executing code and the error remains visible
+
+### Requirement: Continuous accepted scene across optional work
+
+Active and ambient SHALL be the only intentional visible modes for an accepted
+scene. Optional downloads, decoding, retries and rejected updates SHALL NOT
+replace the visible scene with a separate maintenance layout. A same visual
+identity SHALL retain its accepted bitmap and scene through sleep, wake and
+unchanged or rejected feed callbacks. Ambient operation SHALL not initiate
+network, visual decoding or active sensor sampling.
+
+#### Scenario: Accepted fallback while optional visuals decode
+
+- **WHEN** metadata is accepted before its matching optional visual is ready
+- **THEN** the normal matching fallback remains visible during decoding until the complete matching visual is admitted
+
+#### Scenario: A same-identity candidate is rejected
+
+- **WHEN** the current accepted scene is visible and a later feed candidate fails validation
+- **THEN** the accepted scene and visual remain visible while its durable packet is restored
+
+### Requirement: Bind each scene to its visual identity
+
+The visual identity SHALL include selected art/map digest, launch and model
+identity, site/country identity, and qualified site position. Changed visual
+facts SHALL use their own coherent fallback until matching assets are ready; old
+artwork or a point SHALL NOT be relabeled as the new selection. Late build
+completions SHALL NOT replace a newer selection.
+
+#### Scenario: A late visual build belongs to an older selection
+
+- **WHEN** a visual build finishes after that selection was cancelled or replaced
+- **THEN** it does not change the current scene

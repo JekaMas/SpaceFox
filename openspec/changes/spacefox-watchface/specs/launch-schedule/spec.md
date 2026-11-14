@@ -295,3 +295,16 @@ All native feed, catalog, transfer-index, scene/descriptor and raster GETs SHALL
 #### Scenario: Exact transport closure or readback is incomplete
 - **WHEN** a sidecar is missing, stale, corrupt, unexpected or has the wrong MIME type
 - **THEN** the candidate/readback is refused without source-age renewal, reconstruction of pending bytes or loss of the accepted same-format recovery state
+
+### Requirement: Preserve the pending visual deadline
+
+A foreground wake or duplicate callback SHALL NOT postpone an already
+registered pending visual-download event. A registered event newer than the last
+dispatched event remains pending even if the operating system dispatches it
+late. A consumed or absent event SHALL be scheduled subject to the operating
+system's five-minute minimum since the last dispatched temporal event.
+
+#### Scenario: Several foreground wakes before or after the registered deadline
+
+- **WHEN** a pending temporal event has not yet been dispatched and the face wakes or reloads
+- **THEN** the registered deadline is retained without redundant re-registration

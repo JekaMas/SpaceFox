@@ -1,0 +1,73 @@
+Background: SFR_PROBE owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+SFR_PROBE owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_DISPLAY mode=0 active=true bitmap=false decoding=false ms=10775 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=foreground-initial-complete used=83776 free=43008 total=126784 sampledHigh=83776 utc=1794688260 ms=10775 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+DELIVERY_START version=0.1.8 id=4544aa8b detail=0.1.8 4544aa8b
+NATIVE_METRIC phase=foreground-incoming-complete used=91720 free=35064 total=126784 sampledHigh=91720 utc=1794688260 ms=10777 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=foreground-before-view used=91712 free=35072 total=126784 sampledHigh=91720 utc=1794688260 ms=10778 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_WRITES phase=foreground-reload-total count=0 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_SCHEDULE now=1794688260 requested=1794688260 registered=1794688260 last=null owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=temporal-scheduled used=91944 free=34840 total=126784 sampledHigh=91944 utc=1794688260 ms=10780 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+DELIVERY_RELOAD id=none registered=1794688260
+Background: SFR_PROBE owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+Background: NATIVE_METRIC phase=temporal-start used=26216 free=35032 total=61248 sampledHigh=26216 utc=1794688260 ms=10823 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+Background: NATIVE_METRIC phase=pre-request used=26752 free=34496 total=61248 sampledHigh=26752 utc=1794688260 ms=10823 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+Background: NATIVE_SCHEDULE now=1794688260 requested=1794688560 registered=1794688560 last=1794688260 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+Background: NATIVE_METRIC phase=temporal-scheduled used=27056 free=34192 total=61248 sampledHigh=27056 utc=1794688260 ms=10824 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+Background: NATIVE_GET path=feed.json n=1 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+Background: NATIVE_METRIC phase=feed-transfer-complete used=29664 free=31584 total=61248 sampledHigh=29664 utc=1794688261 ms=11025 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+Background: NATIVE_RESPONSE feed code=200 characters=2743 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+Background: NATIVE_WRITES phase=provisional-feed count=10 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+Background: NATIVE_METRIC phase=feed-provisional-staged used=30448 free=30800 total=61248 sampledHigh=30448 utc=1794688261 ms=11029 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+Background: NATIVE_GET path=wire3/catalogs/8b308cb08a31aed3f8877d687e1f3bfc15c1b612713edc2f8c8df8f8d5d8c45c.json n=2 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+Background: NATIVE_METRIC phase=batch-transfer-complete used=29408 free=31840 total=61248 sampledHigh=30448 utc=1794688261 ms=11261 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+Background: NATIVE_WRITES phase=background-total count=16 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+Background: NATIVE_METRIC phase=background-exit used=29448 free=31800 total=61248 sampledHigh=30448 utc=1794688261 ms=11268 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=foreground-renderer-released used=87336 free=39448 total=126784 sampledHigh=91944 utc=1794688261 ms=11271 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=pre-request-released used=87992 free=38792 total=126784 sampledHigh=91944 utc=1794688261 ms=11271 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=bridge-catalog-before-parse used=94048 free=32736 total=126784 sampledHigh=94048 utc=1794688261 ms=11274 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=json-parsed used=97216 free=29568 total=126784 sampledHigh=97216 utc=1794688261 ms=11320 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=bridge-catalog-projected used=94592 free=32192 total=126784 sampledHigh=97216 utc=1794688261 ms=11320 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=json-parsed used=102776 free=24008 total=126784 sampledHigh=102776 utc=1794688261 ms=11392 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=bridge-header-start used=102264 free=24520 total=126784 sampledHigh=102776 utc=1794688261 ms=11393 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=bridge-header-refs used=103008 free=23776 total=126784 sampledHigh=103008 utc=1794688261 ms=11394 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=bridge-catalog-admitted used=103816 free=22968 total=126784 sampledHigh=103816 utc=1794688261 ms=11394 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=feed-validated used=102304 free=24480 total=126784 sampledHigh=103816 utc=1794688261 ms=11398 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=candidate-and-prior used=102664 free=24120 total=126784 sampledHigh=103816 utc=1794688261 ms=11399 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=candidate-compacted used=97552 free=29232 total=126784 sampledHigh=103816 utc=1794688261 ms=11399 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_WRITES phase=promotion count=10 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=cache-committed used=99888 free=26896 total=126784 sampledHigh=103816 utc=1794688261 ms=11406 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=foreground-feed-admission used=93224 free=33560 total=126784 sampledHigh=103816 utc=1794688261 ms=11406 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=foreground-incoming-complete used=93192 free=33592 total=126784 sampledHigh=103816 utc=1794688261 ms=11406 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=foreground-plan-complete used=93200 free=33584 total=126784 sampledHigh=103816 utc=1794688261 ms=11407 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=foreground-before-view used=93192 free=33592 total=126784 sampledHigh=103816 utc=1794688261 ms=11407 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=foreground-renderer-restored used=98128 free=28656 total=126784 sampledHigh=103816 utc=1794688261 ms=11409 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_WRITES phase=foreground-reload-total count=14 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+DELIVERY_RELOAD id=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a registered=1794688560
+NATIVE_METRIC phase=sfr-step-enter used=97968 free=28816 total=126784 sampledHigh=103816 utc=1794688261 ms=11466 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=sfr-build-start used=98432 free=28352 total=126784 sampledHigh=103816 utc=1794688261 ms=11466 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=sfr-build-reader used=99288 free=27496 total=126784 sampledHigh=103816 utc=1794688261 ms=11466 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_REJECTION Invalid native SFR1M scene owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+
+Exception: Invalid native SFR1M scene
+Stack: 
+  - fail() at /Users/jekamas/projects/SpaceFox-worktrees/apply-delivery-data-incident-20261114/watchface/source/NativeSfr.mc:76 0x5000b7d8 
+  - begin() at /Users/jekamas/projects/SpaceFox-worktrees/apply-delivery-data-incident-20261114/watchface/source/NativeSfr.mc:132 0x5000bd53 
+  - initialize() at /Users/jekamas/projects/SpaceFox-worktrees/apply-delivery-data-incident-20261114/watchface/source/NativeSfr.mc:75 0x5000bc30 
+  - sfrStep() at /Users/jekamas/projects/SpaceFox-worktrees/apply-delivery-data-incident-20261114/watchface/source/SpaceFoxView.mc:180 0x1000640d 
+NATIVE_METRIC phase=foreground-incoming-complete used=98176 free=28608 total=126784 sampledHigh=103816 utc=1794688284 ms=33895 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=foreground-plan-complete used=98176 free=28608 total=126784 sampledHigh=103816 utc=1794688284 ms=33896 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=foreground-before-view used=98168 free=28616 total=126784 sampledHigh=103816 utc=1794688284 ms=33896 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_WRITES phase=foreground-reload-total count=0 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+DELIVERY_RELOAD id=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a registered=1794688560
+NATIVE_METRIC phase=sfr-step-enter used=97968 free=28816 total=126784 sampledHigh=103816 utc=1794688284 ms=33948 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=sfr-build-start used=98432 free=28352 total=126784 sampledHigh=103816 utc=1794688284 ms=33949 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_METRIC phase=sfr-build-reader used=99288 free=27496 total=126784 sampledHigh=103816 utc=1794688284 ms=33949 owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+NATIVE_REJECTION Invalid native SFR1M scene owner=b9197821e56f4ee38c8d35f4286d172e|fresh-final|f84198d43faf
+
+Exception: Invalid native SFR1M scene
+Stack: 
+  - fail() at /Users/jekamas/projects/SpaceFox-worktrees/apply-delivery-data-incident-20261114/watchface/source/NativeSfr.mc:76 0x5000b7d8 
+  - begin() at /Users/jekamas/projects/SpaceFox-worktrees/apply-delivery-data-incident-20261114/watchface/source/NativeSfr.mc:132 0x5000bd53 
+  - initialize() at /Users/jekamas/projects/SpaceFox-worktrees/apply-delivery-data-incident-20261114/watchface/source/NativeSfr.mc:75 0x5000bc30 
+  - sfrStep() at /Users/jekamas/projects/SpaceFox-worktrees/apply-delivery-data-incident-20261114/watchface/source/SpaceFoxView.mc:180 0x1000640d 

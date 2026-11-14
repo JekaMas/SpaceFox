@@ -1,0 +1,22 @@
+------------------------------------------------------------------------------
+Executing test deliveryRejectedResponseRetainsScene...
+DEBUG (00:04): REJECTED_RESPONSE retainedAcceptedScene=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryPendingDeadlineDoesNotMove...
+DEBUG (00:04): PENDING_DEADLINE first=1300 wake=1300 reload=1300 osMinimum=1600
+PASS
+------------------------------------------------------------------------------
+Executing test deliverySceneEventsAndLateCompletion...
+DEBUG (00:04): SCENE_EVENTS applied=9 observedNoMutation=2 skipped=0
+PASS
+
+==============================================================================
+RESULTS
+Test:                                Status:
+deliveryRejectedResponseRetainsScene PASS
+deliveryPendingDeadlineDoesNotMove   PASS
+deliverySceneEventsAndLateCompletion PASS
+Ran 3 tests
+
+PASSED (passed=3, failed=0, errors=0)

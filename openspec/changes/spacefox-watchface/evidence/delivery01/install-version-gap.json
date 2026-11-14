@@ -1,0 +1,25 @@
+{
+  "observedRequestAt": "2026-11-14T17:44:42.324Z",
+  "inspectedAt": "2026-11-14T19:26:04.206Z",
+  "appId": "7ef095e4-72fe-44cd-bc39-8987b6ab49e3",
+  "publisherPreview": {
+    "externalVersion": "0.1.7",
+    "internalVersion": 6,
+    "status": "PENDING"
+  },
+  "compatibilityRequest": {
+    "method": "GET",
+    "internalAppVersion": 6,
+    "status": 200
+  },
+  "installationRequest": {
+    "method": "POST",
+    "url": "/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3/install?unitId=[private]",
+    "postDataPresent": false,
+    "versionParameterPresent": false,
+    "status": 200
+  },
+  "executingPhysicalBuild": null,
+  "freshLaunchOnPhysicalWatch": false,
+  "verdict": "FAIL: queue acknowledgement does not establish the selected or delivered binary version"
+}
