@@ -3,6 +3,10 @@ from copy import deepcopy
 from email.utils import formatdate
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
+from pathlib import Path
+import subprocess
+import sys
+import tempfile
 import threading
 import unittest
 from unittest.mock import patch
@@ -109,6 +113,70 @@ class MetadataPagePolicyTest(unittest.TestCase):
             self.assertEqual(NOW + 3604, second['source']['completedUtc'])
             self.assertEqual(preserved, helper.preserved(pub))
             self.assertEqual(8, len(transport.calls))
+
+    def test_cli_duplicate_refusal_and_retry(self):
+        candidate, files = fixture.captured()
+        pages = [p for p in candidate['coverage']['pages'] if p['collection'] == 'countries']
+        state = {'now': NOW, 'bad': False, 'calls': []}
+        class Handler(BaseHTTPRequestHandler):
+            def log_message(self, *args): pass
+            def do_GET(self):
+                state['calls'].append(self.path)
+                page = next(p for p in pages if urlsplit(p['url']).path + '?' + urlsplit(p['url']).query == self.path)
+                doc = json.loads(files['objects/' + page['body']['sha256'] + '.json'])
+                if state['bad']:
+                    first = json.loads(files['objects/' + pages[0]['body']['sha256'] + '.json'])
+                    doc['results'][0] = first['results'][0]
+                raw = json.dumps(doc).replace('https://ll.thespacedevs.com', origin).encode()
+                self.send_response_only(200)
+                self.send_header('Date', formatdate(state['now'], usegmt=True))
+                self.send_header('Content-Type', 'application/json')
+                self.send_header('Content-Length', str(len(raw)))
+                self.end_headers(); self.wfile.write(raw)
+        server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+        origin = 'http://127.0.0.1:' + str(server.server_port)
+        thread = threading.Thread(target=server.serve_forever, daemon=True); thread.start()
+        try:
+            with tempfile.TemporaryDirectory(prefix='spacefox-metadata-cli-') as folder:
+                root = Path(__file__).resolve().parents[1]; remote = Path(folder) / 'remote.git'
+                code = subprocess.check_output(['git', '-C', str(root), 'rev-parse', 'HEAD'], text=True).strip()
+                subprocess.run(['git', 'clone', '--bare', '--shared', '-q', str(root), str(remote)], check=True)
+                subprocess.run(['git', '-C', str(remote), 'update-ref', 'refs/heads/main', code], check=True)
+                from tools.spacefox.publisher import GitState
+                store = GitState(str(remote))
+                try:
+                    store.bootstrap(code); pub = Publisher(store, code); pub.reconcile(None)
+                    helper = fixture.CurrentMetadataPublisherTest(); helper.primary(pub, NOW, accept=True)
+                    preserved = deepcopy(helper.preserved(pub))
+                    live = Path(folder) / 'live.json'; live.write_text('null')
+                    def invoke(head, now):
+                        return subprocess.run([sys.executable, '-B', str(root / 'tools/refresh_catalog.py'), 'collect',
+                            '--remote', str(remote), '--origin', origin, '--local-http', '--now', str(now),
+                            '--expected-head', head, '--live-observation', str(live)], capture_output=True, text=True)
+                    result = invoke(pub.head, NOW)
+                    self.assertEqual(0, result.returncode, result.stderr)
+                    state['bad'] = True
+                    result = invoke(store.load()[0], NOW + 1)
+                    self.assertEqual(2, result.returncode, result.stderr)
+                    self.assertIn('duplicate source identity', result.stderr)
+                    pub = Publisher(store, code); pub.reconcile(None)
+                    collector = CatalogRefresh(pub, origin=origin, local_http=True)
+                    self.assertEqual([], collector.journal['staging']['pages'])
+                    self.assertEqual('failed', pub.ledger['requests'][-1]['outcome'])
+                    self.assertEqual(preserved, helper.preserved(pub))
+                    state['bad'] = False; state['now'] = NOW + 301
+                    result = invoke(pub.head, state['now'])
+                    self.assertEqual(0, result.returncode, result.stderr)
+                    self.assertEqual('partial', json.loads(result.stdout)['status'])
+                    self.assertEqual(['/2.3.0/config/countries/?format=json&limit=20',
+                        '/2.3.0/config/countries/?format=json&limit=20&offset=20',
+                        '/2.3.0/config/countries/?format=json&limit=20'], state['calls'])
+                    pub = Publisher(store, code)
+                    self.assertEqual(NOW + 301, CatalogRefresh(pub, origin=origin, local_http=True).journal['staging']['pages'][0]['validatedUtc'])
+                    self.assertEqual(preserved, helper.preserved(pub))
+                finally: store.close()
+        finally:
+            server.shutdown(); thread.join(); server.server_close()
 
     def test_duplicate_discards_only_current_collection_and_preserves_epochs(self):
         expected, files = fixture.captured()
