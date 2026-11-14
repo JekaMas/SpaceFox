@@ -1,5 +1,6 @@
 import Toybox.Graphics;
 import Toybox.Lang;
+import Toybox.Math;
 import Toybox.WatchUi;
 
 class SceneRenderer {
@@ -11,6 +12,7 @@ class SceneRenderer {
     var art as Graphics.BitmapType or Null;
     var map as Graphics.BitmapType or Null;
     var pin as Boolean = false;
+    var pinX as Number = 335; var pinY as Number = 165;
     var fullContext as SceneContext or Null;
     var downloaded as NativeVisualRenderer or Null=null;
     var syncStatus as String="waiting";
@@ -47,7 +49,18 @@ class SceneRenderer {
         if (context.point != null) {
             for (var i = 0; i < NativeAssets.maps.size(); i += 1) {
                 var view = NativeAssets.maps[i];
-                if ((context.point as Array<Numeric>)[0] == view.longitude && (context.point as Array<Numeric>)[1] == view.latitude) {
+                var point=context.point as Array<Numeric>;
+                // These bitmaps use D3's rotated equirectangular projection.
+                // Admit only points within a quarter degree of the bitmap's
+                // actual center, where its site remains legible beside time.
+                var lonDelta=point[0]-view.longitude;var latDelta=point[1]-view.latitude;
+                if (lonDelta>=-0.25 && lonDelta<=0.25 && latDelta>=-0.25 && latDelta<=0.25) {
+                    var rad=0.017453292519943295;
+                    var lambda=(point[0]-view.longitude)*rad;var phi=point[1]*rad;var delta=-view.latitude*rad;
+                    var x=Math.cos(lambda)*Math.cos(phi);var y=Math.sin(lambda)*Math.cos(phi);var z=Math.sin(phi);
+                    var projectedX=335+145*Math.atan2(y,x*Math.cos(delta)-z*Math.sin(delta));
+                    var projectedY=165-145*Math.asin(z*Math.cos(delta)+x*Math.sin(delta));
+                    pinX=(projectedX+0.5).toNumber();pinY=(projectedY+0.5).toNumber();
                     mapResource=view.resource; pin = true; break;
                 }
             }
@@ -76,9 +89,8 @@ class SceneRenderer {
         var rich=downloaded instanceof NativeSfrRenderer?downloaded:null;
         if(rich!=null){rich.drawBackground(dc,settings,marker);}else if (map != null) { dc.drawBitmap(0,0,map); }
         if (rich==null&&pin) {
-            // Accepted ring24 SVG: opaque backplate, white halo, yellow core.
-            // 28px resource center14 preserves the source-projected335/165 point.
-            dc.drawBitmap(321,151,marker);
+            // Accepted 28px ring, centered on the matching map projection.
+            dc.drawBitmap(pinX-14,pinY-14,marker);
         }
         var context = fullContext;
         if (context != null) {
@@ -133,7 +145,7 @@ class SceneRenderer {
         var countdownLabel=displayCountdown(current,settings);
         var countFont = dc.getTextWidthInPixels(countdownLabel,fonts["count"] as Graphics.FontType) > 275 ? (fonts["small"] as Graphics.FontType) : (fonts["count"] as Graphics.FontType);
         var shown = text(dc,195,202,countFont,countdownLabel,color,275,1);
-        if ((current.stale || context != null && context.stale)) { underline(dc,195,237,dc.getTextWidthInPixels(shown,countFont),color); }
+        if ((current.stale || context != null && context.stale)) { underline(dc,195,241,dc.getTextWidthInPixels(shown,countFont),color); }
         for (var i = 0; i < 4; i += 1) {
             var role = settings.slots[i];
             var label=metricText(fitness,values,role,settings);

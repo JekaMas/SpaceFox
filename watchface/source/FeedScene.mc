@@ -12,12 +12,15 @@ function feedScene(packet,now){
     // label by removing an exact operator prefix and comma-delimited region.
     if(site!=null){var comma=site.find(",");if(comma!=null&&comma>0){site=site.substring(0,comma);}var prefix=row["operator_name"];if(prefix!=null&&!prefix.equals("")&&site.find(prefix+" ")==0){site=site.substring(prefix.length()+1,site.length());}}
     var country=row["country_code"]==null?row["country_name"]:row["country_code"];if(country!=null&&!country.equals("")){site=site==null||site.equals("")?country:country+" · "+site;}
-    // Source positions are explicitly unverified. Generic/no-point is coherent
-    // for every model until an exact qualified visual envelope is available.
+    // A schema-3 fixed site has already been validated against the catalog.
+    // Keep its source qualification: the renderer uses it only with a matching
+    // bundled projection or a validated downloaded scene, never a generic map.
+    var point=null;var siteData=packet.bridge==null?null:packet.bridge["site"];
+    if(siteData!=null&&siteData["positionMode"].equals("fixed-source")&&siteData["position"]!=null){var position=siteData["position"];point=[position["longitude"].toFloat(),position["latitude"].toFloat()];}
     var timing=row["timing"];var precision=timing["precision"];var target=timing["exact_utc"];
     // LL2 MIN is a usable nominal minute, not an exact second. Keep its
     // approximate display precision separate from the accepted feed identity.
     if(precision.equals("source-coarse")&&timing["source_precision_id"]==1&&timing["nominal_utc"]!=null){precision="minute";target=timing["nominal_utc"];}
     else if(precision.equals("source-coarse")&&(timing["window_start_utc"]!=null||timing["window_end_utc"]!=null)){precision="window";}
-    return new SceneContext({"id"=>row["launch_id"],"rocket"=>rocket,"operator"=>operator,"operatorShort"=>operatorShort,"purpose"=>row["mission_purpose"],"site"=>site,"modelId"=>row["configuration_id"],"operatorId"=>row["operator_id"],"point"=>null,"target"=>target,"precision"=>precision,"date"=>timing["date_utc"],"rescheduled"=>packet.rescheduled,"stale"=>packet.stale});
+    return new SceneContext({"id"=>row["launch_id"],"rocket"=>rocket,"operator"=>operator,"operatorShort"=>operatorShort,"purpose"=>row["mission_purpose"],"site"=>site,"modelId"=>row["configuration_id"],"operatorId"=>row["operator_id"],"point"=>point,"target"=>target,"precision"=>precision,"date"=>timing["date_utc"],"rescheduled"=>packet.rescheduled,"stale"=>packet.stale});
 }

@@ -422,3 +422,7 @@ invalidated by this group. Preserve failed observations and distinguish SDK,
 signed export, Store submission/queue and actual physical installation.
 No new layout controls, legacy compatibility, all-locale sweep, stress campaign,
 paid/model API calls or extra recursive reviewer are part of this iteration.
+
+### UX03 author checkpoint — not yet self-GREEN
+
+The production-UUID controlled trace reproduced a pending-assets window in which accepted Cape coordinates existed but the 0.1.6 fallback had no marker. Current candidate matches only a nearby bundled map's known projection and otherwise omits the point until validated SFR1M arrives; no arbitrary position or country flag is inferred. Active stale dots had overlapped countdown ink and were moved down in both normal and maintenance paths. Measured native 390/454 frames, actual-source boundaries, diagnostic failures and the elapsed harness correction are in [UX03 status](evidence/ux03/STATUS.md). Final source-bound admission, signed runtime evidence, simulator cleanup and fresh independent verification remain open; no physical or release closure is claimed.

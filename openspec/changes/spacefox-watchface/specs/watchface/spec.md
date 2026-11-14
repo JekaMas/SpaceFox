@@ -83,21 +83,30 @@ SHALL not create a false geographic point.
 - **WHEN** the site has no valid coordinates
 - **THEN** its available text remains visible and the geographic point is omitted rather than placed at a fabricated location
 
+#### Scenario: A matching bundled map precedes the optional scene
+- **WHEN** the accepted current catalog supplies a fixed site point while its downloaded scene is pending or unavailable
+- **THEN** the face MAY show that point on a bundled map only when the map's known projection matches that point; otherwise it retains an unmarked fallback until the matching scene is validated
+- **AND** a country flag remains absent until the selected site's country identity and flag are independently bound
+
 #### Scenario: Worldwide catalog geography
 - **WHEN** a valid selected site is outside the original demonstration countries, on a small island, near a pole or across the date line
 - **THEN** its source-derived point and country/place are displayed in the accepted full-screen map without a country whitelist or a launch-country substitution for rocket origin
 
 ### Requirement: Accepted full-screen map composition
 
-The default active composition SHALL use a 390×390 full-screen flat-map window with
-directed gradual fading, transparent text backgrounds and dark glyph contours.
-The source-derived site marker SHALL remain unfaded. Preserve the accepted
-rocket/company header, mission purpose, primary time, adjacent countdown, four
-large configurable fields. No standalone active battery, globe or projection choice remains.
+The active composition SHALL use a 390×390 full-screen flat map with directed
+gradual fading, transparent text backgrounds and dark glyph contours. The site
+marker SHALL remain source-derived and unfaded. Preserve the accepted rocket/company header, mission purpose,
+primary time, adjacent countdown and four large configurable fields. No standalone active
+battery, globe or projection choice remains.
 
 #### Scenario: Open the default face
 - **WHEN** the face is active
 - **THEN** the full-screen flat map is used without a black clock tile, the source point stays visible, and all accepted foreground values remain readable inside the circle
+
+#### Scenario: Active stale countdown
+- **WHEN** stale data is shown in normal or maintenance rendering
+- **THEN** its dotted underline remains separate from countdown ink and the first field row
 
 #### Scenario: No accepted launch yet
 - **WHEN** the watch has no accepted launch data, including offline first use
@@ -142,7 +151,7 @@ occurred merely because an animation played or the countdown reached zero.
 
 ### Requirement: Qualified AMOLED always-on display
 
-The sparse AOD SHALL show centered readable time, localized current date and weekday, the numeric countdown or uncertainty, and watch battery, recomputed at most once per minute. Time and countdown SHALL use their configured active colors and identical status overrides. It SHALL meet lit-pixel and burn-in rules, omit the full map and animation, and stop active timers on sleep. Returning active restores the accepted composition and clock calculation. Reschedule and stale states remain distinguishable.
+The AOD SHALL show centered readable time, localized current date and weekday, the numeric countdown or uncertainty, and watch battery, recomputed at most once per minute. Time and countdown SHALL use their configured active colors and identical status overrides. It SHALL meet lit-pixel and burn-in rules, omit the full map and animation, and stop active timers on sleep. Returning active restores the accepted composition and clock calculation. Reschedule and stale states remain distinguishable.
 
 #### Scenario: Enter always-on mode
 - **WHEN** FR165 enters low-power always-on mode

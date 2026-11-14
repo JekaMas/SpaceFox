@@ -1,0 +1,20 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.System;
+import Toybox.Background;
+import Toybox.Time;
+(:background,:typecheck(false)) class SfrRuntimeApp extends SpaceFoxApp { function initialize(){SpaceFoxApp.initialize();} }
+import Toybox.Test;
+import Toybox.Graphics;
+(:test,:typecheck(false)) function ux03MatchingFallback(logger){
+ var r=new SceneRenderer(null);var s=new SceneSettings(null);
+ var cape=new SceneContext({"id"=>"ll2:launch:known","point"=>[-80.58303644,28.58341025]});
+ r.prepare(cape,s);Test.assert(r.pin&&r.pinX==335&&r.pinY==165);
+ var nz=new SceneContext({"id"=>"ll2:launch:known","point"=>[166.463,-39.261]});
+ r.prepare(nz,s);Test.assert(r.pin&&r.pinX==335&&r.pinY==165);
+ var unknown=new SceneContext({"id"=>"ll2:launch:known","point"=>null});r.prepare(unknown,s);Test.assert(!r.pin);
+ var unmatched=new SceneContext({"id"=>"ll2:launch:known","point"=>[-80.0,28.0]});r.prepare(unmatched,s);Test.assert(!r.pin);
+ var mobile=new SceneContext({"id"=>"ll2:launch:known","moving"=>true,"point"=>[-80.58303644,28.58341025]});r.prepare(mobile,s);Test.assert(!r.pin);
+ logger.debug("matching fixed Cape and NZ point; unmatched, absent and moving omit point");return true;
+}

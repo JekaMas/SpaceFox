@@ -1,0 +1,12 @@
+test_primary_qualification_and_changed_renderer_refusal (tests.test_ux03_admission.Ux03Admission.test_primary_qualification_and_changed_renderer_refusal) ... ok
+test_historical_root_replays_and_changed_current_owner_is_rejected (tests.test_ux02_admission.HistoricalAdmission.test_historical_root_replays_and_changed_current_owner_is_rejected) ... ok
+test_callback_admission_and_resume_owners_retained (tests.test_ux02_reuse.RetainedRecovery.test_callback_admission_and_resume_owners_retained) ... ok
+test_low_selected_colors_and_lit_budget (tests.test_ux03_pixels.Ux03Pixels.test_low_selected_colors_and_lit_budget) ... /Users/jekamas/projects/SpaceFox-worktrees/apply-spacefox017-20261114/tests/test_ux03_pixels.py:42: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  im=Image.open(E/name).convert('RGB');pixels=list(im.getdata());lit=sum(any(c) for c in pixels)
+ok
+test_stale_ink_marker_fields_and_gutters (tests.test_ux03_pixels.Ux03Pixels.test_stale_ink_marker_fields_and_gutters) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 4.367s
+
+OK
