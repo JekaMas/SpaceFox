@@ -42,12 +42,12 @@ def validate(root, catalog):
         checked(row)
     baseline = json.loads(checked(oldproof['ux03DeltaProof']).read_text())
     replaced = set(record['priorSnapshots'])
-    if replaced != {'watchface/source/NativeImmutable.mc', 'watchface/manifest.xml', 'tools/native_language_policy.py', 'watchface/source/generated/NativeVersion.mc'}:
+    if replaced != {'watchface/source/NativeImmutable.mc', 'watchface/manifest.xml', 'tools/native_language_policy.py', 'watchface/source/generated/NativeVersion.mc', 'tests/test_ux02_reuse.py'}:
         raise ValueError('unexpected cache port source changes')
     for name, expected in baseline['sources'].items():
         path = checked(record['priorSnapshots'][name]) if name in replaced else root / name
         if not path.is_file() or digest(path) != expected:
-            raise ValueError('UX03 source outside cache port changed: ' + name)
+            raise ValueError('UX03 proof input changed: ' + name)
     observed = json.loads(checked(record['cacheObservation']).read_text())
     if observed['scope'] != 'native-cache-budget-delta' or observed['status'] != 'passed':
         raise ValueError('cache observation incomplete')

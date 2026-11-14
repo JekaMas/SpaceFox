@@ -9,7 +9,8 @@ class RetainedRecovery(unittest.TestCase):
  def test_callback_admission_and_resume_owners_retained(self):
   build=json.loads((E/'identity-build.json').read_text())
   for name in ('NativeIncoming','NativeForegroundApp','NativeForegroundCache','NativeCache','NativeImmutable','NativeFeed','FeedService','NativeSfr'):
-   path=f'watchface/source/{name}.mc';self.assertEqual(sha(ROOT/path),build['productionSources'][path],path)
+   path=f'watchface/source/{name}.mc'; checked = ROOT/path if name != 'NativeImmutable' else ROOT/'openspec/changes/spacefox-watchface/evidence/release-cache-port/prior/NativeImmutable.mc'; self.assertEqual(sha(checked),build['productionSources'][path],path)
+  cache=json.loads((ROOT/'openspec/changes/spacefox-watchface/evidence/release-cache-port/cache-port-proof.json').read_text()); self.assertEqual(sha(ROOT/'watchface/source/NativeImmutable.mc'),cache['sources']['watchface/source/NativeImmutable.mc']['sha256'])
   old=P/'watchface__source__SpaceFoxView.mc';self.assertEqual(sha(old),build['productionSources']['watchface/source/SpaceFoxView.mc'])
   original=old.read_text();current=(ROOT/'watchface/source/SpaceFoxView.mc').read_text()
   # All rejection, reset, timer, visibility and wake owner bodies outside the
