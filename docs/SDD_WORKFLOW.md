@@ -1,17 +1,6 @@
 # Developer workflow: quickstart
 
-Open the intended repository in Codex or Claude. Initialize its pinned workflow
-with `git submodule update --init .agents/workflow` when needed. Use the installed
-OpenSpec setup; do not regenerate the project's integrations. Make is optional.
-
-## First-time setup
-
-If the repository already has `.agents/workflow`, initialize the pinned submodule;
-do not reinstall. Otherwise ask the agent: “Adopt JekaMas/agent-workflow here;
-preserve existing instructions and active OpenSpec changes, inspect the proposed
-migration, apply it and validate the wiring.” The shared package's docs/adoption.md
-contains the preview/apply commands for new repositories and the reviewed migration
-path for existing OpenSpec setups. This requires no Makefile or personal plugin.
+The public export has no `.agents/workflow` submodule or workflow adapter. The authoring project used [agent-workflow at f8e7ba481bf356600925e01936d7e9f3f1ac0084](https://github.com/JekaMas/agent-workflow/tree/f8e7ba481bf356600925e01936d7e9f3f1ac0084); this reference does not install it or establish a pin in this checkout. Use this repository's `AGENTS.md`, [project workflow](PROJECT_WORKFLOW.md), existing OpenSpec change, and proportionate checks. Do not initialize a non-existent submodule or silently install prerequisites. If adopting the shared workflow is requested, inspect its adoption instructions and proposed changes first; preserve this project's contracts and current evidence.
 
 ## Develop a task
 
@@ -32,6 +21,8 @@ path for existing OpenSpec setups. This requires no Makefile or personal plugin.
    without closing the change. Archive closes completed work and can also sync;
    a prior sync is optional. Inspect the resulting diff and strictly validate
    affected main specs. An archive command's success alone is insufficient.
+
+The following optional command names apply only when their corresponding integrations are installed and configured; this public checkout does not supply them.
 
 | Action | Codex | Claude |
 |---|---|---|
@@ -90,8 +81,8 @@ Both stay within the current task and authority. Go hang diagnosis, performance 
 language-independent event-sequence testing load only for the relevant risk.
 The project pin supplies shared procedures; project commands and contracts stay local.
 
-For detailed loading and completion rules, read `.agents/workflow/docs/project-flow.md`
-and the relevant part of `.agents/workflow/docs/operations.md`. For workflow changes
+When that exact workflow is separately configured, consult its `docs/project-flow.md`
+and `docs/operations.md`. For workflow changes
 use `$workflow-maintenance` or `/opsx:maintain`. Refresh client discovery if entries
 are missing; file checks alone do not establish UI availability.
 

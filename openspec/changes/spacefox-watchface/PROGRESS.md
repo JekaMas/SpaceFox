@@ -1,5 +1,7 @@
 # SpaceFox current progress
 
+> Some historical authoring evidence referenced below is not included in this public export. Statements about those records retain their historical scope and are not independently verifiable from this checkout.
+
 ## Current UX02 candidate
 
 Self-verification covers the changed EN/RU LOW readability/colors, four-field battery, FR165 Music and FR965 layout, bounded four-phase pixel rest, and actual 0.1.5→0.1.6 SDK retry/cache handoff. See [UX02 evidence and boundaries](evidence/ux02/STATUS.md). The current hosted accepted scene reopened within 8 seconds on both simulator profiles; a diagnostic-heavy 19.252 s run remains recorded separately. Existing WF01.P1/WF03.P1 proof is supplemented for changed geometry; WF09.P2/P3 software components are reconciled to retained and current evidence, with fresh independent whole verification, focused LOW guard repair and current malformed/stale callback evidence; root judgment remains pending. WF09.P1 physical behavior and WF10.P1's entire background/memory obligations remain open. These observations do not change the accepted closure counts below.
@@ -14,7 +16,7 @@ One-time Astra fullspec/test audit is DONE; [audit](evidence/basic-main-review/S
 
 | Closed properties | Actual independent whole verifier | Root judgment |
 | --- | --- | --- |
-| WF12.P1 / P3 / P4; task5.4 | 18/18cases,6commands | [five primary languages](evidence/judge/basic-five-root-whole.json) |
+| WF12.P1 / P3 / P4; task5.4 | 18/18cases,6commands | five primary languages (historical record not included in the public export) |
 | WF01.P1 / WF03.P1 | 10/10cases,1command | [time and four fields](evidence/judge/basic-time-fields-root-whole.json) |
 | LS10.P1 | 4/4cases,1command | [reschedule](evidence/judge/basic-reschedule-root-whole.json) |
 | RL02.P2 | 11/11cases,2commands | [signed package](evidence/judge/basic-release-package-root-whole.json) |
@@ -98,12 +100,12 @@ or claim exact current327/rebuild merelydocs. No native compiler inputs changed.
 ## Publication and automatic data
 
 Publicsource **5679b093**: seventeen-closure code/spec/proof/actualSDKscene export;
-2,036filehashes verified, no private authoring ancestry. [Latest export](evidence/basic-publication-20261113/seventeen-closure-publication.json). Prior dd21a181 matched
+2,036filehashes verified, no private authoring ancestry. Latest export (historical record not included in the public export). Prior dd21a181 matched
 then327candidate inputs; later retired diagnostic delta is explicit. ActualUbuntu
 43417089608 passed11tests; publisher/native inputs unchanged, retained without
 rerun. Selected scene, logic and platform/metrics source/proof exports are published
-with independently closed24/24/14case groups and root sparse-status repair. [Latest publication](evidence/basic-publication-20261113/twelve-closure-publication.json).
-[Publication](evidence/basic-publication-20261113/seven-closure-publication.json).
+with independently closed24/24/14case groups and root sparse-status repair. Latest publication (historical record not included in the public export).
+Publication (historical record not included in the public export).
 
 Clean map-only bootstrap43423066921 passed all5jobs after old writer drained,
 full rolling quota hour and canonical404. Sole current authority refs are
