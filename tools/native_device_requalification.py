@@ -3,6 +3,7 @@
 This preserves the original observation boundary: it does not claim that a
 new device has been observed or that compilation proves on-device rendering.
 """
+import base64
 import copy
 import difflib
 import hashlib
@@ -49,7 +50,7 @@ def validate(root, catalog):
         patch = ''.join(difflib.unified_diff(previous.read_text().splitlines(keepends=True),
                                             (root / name).read_text().splitlines(keepends=True),
                                             fromfile='prior/' + name, tofile='current/' + name))
-        if patch != checked(**record['patches'][name]).read_text():
+        if patch != base64.b64decode(checked(**record['patches'][name]).read_bytes(), validate=True).decode():
             raise ValueError('unreviewed source delta: ' + name)
     with tempfile.TemporaryDirectory(prefix='spacefox-device-prior-') as tmp:
         oldroot = Path(tmp)

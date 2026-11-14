@@ -1,12 +1,1 @@
---- prior/tools/native_language_policy.py
-+++ current/tools/native_language_policy.py
-@@ -88,6 +88,9 @@
-  if not qualified:
-   if proof is not None:raise ValueError('empty software admission must have no proof')
-   return []
-+ if isinstance(proof,dict) and 'deviceDeltaProof' in proof:
-+  from tools.native_device_requalification import validate
-+  return validate(root,catalog)
-  if isinstance(proof,dict) and 'bootstrapDeltaProof' in proof:
-   from tools.native_bootstrap_requalification import validate
-   return validate(root,catalog)
+LS0tIHByaW9yL3Rvb2xzL25hdGl2ZV9sYW5ndWFnZV9wb2xpY3kucHkKKysrIGN1cnJlbnQvdG9vbHMvbmF0aXZlX2xhbmd1YWdlX3BvbGljeS5weQpAQCAtODgsNiArODgsOSBAQAogIGlmIG5vdCBxdWFsaWZpZWQ6CiAgIGlmIHByb29mIGlzIG5vdCBOb25lOnJhaXNlIFZhbHVlRXJyb3IoJ2VtcHR5IHNvZnR3YXJlIGFkbWlzc2lvbiBtdXN0IGhhdmUgbm8gcHJvb2YnKQogICByZXR1cm4gW10KKyBpZiBpc2luc3RhbmNlKHByb29mLGRpY3QpIGFuZCAnZGV2aWNlRGVsdGFQcm9vZicgaW4gcHJvb2Y6CisgIGZyb20gdG9vbHMubmF0aXZlX2RldmljZV9yZXF1YWxpZmljYXRpb24gaW1wb3J0IHZhbGlkYXRlCisgIHJldHVybiB2YWxpZGF0ZShyb290LGNhdGFsb2cpCiAgaWYgaXNpbnN0YW5jZShwcm9vZixkaWN0KSBhbmQgJ2Jvb3RzdHJhcERlbHRhUHJvb2YnIGluIHByb29mOgogICBmcm9tIHRvb2xzLm5hdGl2ZV9ib290c3RyYXBfcmVxdWFsaWZpY2F0aW9uIGltcG9ydCB2YWxpZGF0ZQogICByZXR1cm4gdmFsaWRhdGUocm9vdCxjYXRhbG9nKQo=
