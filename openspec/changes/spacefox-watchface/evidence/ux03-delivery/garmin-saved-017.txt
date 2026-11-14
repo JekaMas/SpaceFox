@@ -1,0 +1,141 @@
+- navigation:
+  - link "GarminConnect IQDEVELOPER":
+    - /url: /developer/dashboard
+    - generic: GarminConnect IQDEVELOPER
+  - textbox "Search by App Title or Description"
+  - button "Search":
+    - generic: 
+  - generic: ☰
+  - list:
+    - generic: JekaMasSpaceFox
+    - link "Dashboard":
+      - /url: /developer/dashboard
+    - link "Resources":
+      - /url: https://developer.garmin.com/connect-iq/overview
+    - link "Help":
+      - /url: https://support.garmin.com/en-US/?productID=616398&tab=topics
+    - button "Sign Out"
+    - combobox "Select a Language":
+      - option "Русский"
+      - option "Bahasa Indonesia"
+      - option "Bahasa Melayu"
+      - option "Čeština"
+      - option "Dansk"
+      - option "Deutsch"
+      - option "English" [selected]
+      - option "Español"
+      - option "Français"
+      - option "Hrvatski"
+      - option "Italiano"
+      - option "Magyar"
+      - option "Nederlands"
+      - option "Norsk"
+      - option "Polski"
+      - option "Português (Brasil)"
+      - option "Português (Portugal)"
+      - option "Slovenčina"
+      - option "Slovenščina"
+      - option "Suomi"
+      - option "Svenska"
+      - option "Ελληνικά"
+      - option "עברית"
+      - option "ไทย"
+      - option "한국어"
+      - option "日本語"
+      - option "简体中文"
+      - option "繁體中文"
+  - link "Terms of Use":
+    - /url: https://www.garmin.com/en-US/legal/terms-of-use/
+  - text: •
+  - link "Privacy":
+    - /url: https://www.garmin.com/en-US/privacy/connectiq/policy/
+  - text: •
+  - link "Security":
+    - /url: https://www.garmin.com/en-US/legal/security/
+  - generic: Copyright © 1996-2026 Garmin Ltd. or its subsidiaries
+  - complementary "Open Cookie Preferences Modal":
+    - link "Cookie Preferences, opens a dedicated popup modal window": Cookie Preferences
+- main:
+  - text: To install this app, please visit the
+  - link "Connect IQ app":
+    - /url: https://www.garmin.com/en-US/p/616398/pn/010-CONIQ-00
+  - text: on your mobile device.
+  - generic: App pending
+  - generic: This page is in preview mode and only visible to your account until your app is approved. This process could take up to 3 days.
+  - heading "Manage Your App" [level=2]
+  - button "Upload New Version":
+    - generic: 
+    - generic: Upload New Version
+  - button "Edit Details":
+    - generic "edit": 
+    - generic: Edit Details
+  - button "Remove":
+    - generic: 
+    - generic: Remove
+  - button "Download icon Download":
+    - img "Download icon"
+    - generic: Download
+  - img "SpaceFox App Icon"
+  - img "App Type Icon"
+  - generic: Watch face
+  - heading "SpaceFox" [level=1]
+  - link "JekaMasSpaceFox":
+    - /url: /developer/db2f9b44-caf0-4c04-9642-62226a1ccc21/apps
+    - generic "JekaMasSpaceFox"
+  - generic: Free
+  - generic: "0.0"
+  - generic: 
+  - generic: 0 Reviews
+  - generic: 0 Downloads
+  - tablist:
+    - tab "App Info" [selected]:
+      - generic: App Info
+    - tab "Compatible Devices":
+      - generic: Compatible Devices
+    - tab "Statistics":
+      - generic: Statistics
+  - heading "Description" [level=2]
+  - paragraph: SpaceFox is a free, open-source space-themed watch face with a large 24-hour clock, four configurable Garmin activity fields, and the next available rocket launch with rocket artwork and a launch-site map. No ads, payments, subscriptions or SpaceFox account.
+  - paragraph
+  - paragraph:
+    - text: The countdown shows T- before a known launch time and T+ afterwards, with accumulating hours and active-screen seconds. The selected launch remains visible for at least 15 minutes after its scheduled time, or through a reviewed sourced ascent end. Reaching zero is not confirmation of liftoff. Rescheduled and stale information have separate indicators.…
+    - button "More"
+  - generic: Preview
+  - img "SpaceFox preview image"
+  - img "SpaceFox preview image"
+  - img "SpaceFox preview image"
+  - heading "What’s New" [level=2]
+  - generic: Version 0.1.7
+  - paragraph: 0.1.7 fixes a missing launch-site point while optional graphics are loading for qualified built-in map views. Other sites use their matching downloaded map; unknown or moving references do not get a fabricated point. The stale-schedule dotted line now stays clear of countdown digits. Active and Always-On clock/countdown colors were verified with default and saved choices, including amber for a rescheduled launch. Native English/Russian spacing, field icons, circular fit and Always-On pixel limits were checked on Forerunner 165 Music and Forerunner 965. Updated screenshots show the exact signed 0.1.7 programs. All 21 packaged program signatures passed; the original identity, ten models, five languages, four fields and feed URL are retained. Physical phone/watch delivery and battery-life confirmation remain pending.
+  - separator
+  - heading "Ratings and Reviews See All" [level=2]:
+    - generic: Ratings and Reviews
+    - generic: See All
+  - paragraph: There are no reviews yet.
+  - heading "App Permissions See Details" [level=3]:
+    - generic: App Permissions
+    - button "See Details"
+  - paragraph: "This app requires the following:"
+  - list:
+    - text: Communication & Data Transmission
+    - text: Background Activity
+    - text: Fitness & Sensor Data
+  - heading "Additional Information" [level=3]
+  - list:
+    - paragraph: Latest Release
+    - text: November 14, 2026
+    - paragraph: Version
+    - generic: "0.1.7 (Internal: 6)"
+    - text: Size
+    - text: 1 MB
+  - link "Privacy Policy":
+    - /url: https://github.com/JekaMas/SpaceFox/blob/main/docs/PRIVACY.md
+    - text: Privacy Policy
+  - link "Source Code":
+    - /url: https://github.com/JekaMas/SpaceFox
+    - text: Source Code
+  - button "Report a Problem":
+    - text: Report a Problem
+  - button "Contact Developer":
+    - text: Contact Developer
+- alert: SpaceFox | Connect IQ Store

@@ -1,0 +1,57 @@
+{
+  "version": "0.1.7",
+  "tag": "v0.1.7",
+  "tagIntegration": "bb08bf25a5834071f3cd2690a4c29851eadcddce",
+  "compiledSource": "a3a19216d1c8c21de40695ee206eacfc626866e0",
+  "iqSha256": "f8b41e9870654436ea4a8a7be63ca64451a0863254a8731b2f1a50659d91cde5",
+  "releaseReceiptSha256": "9b9f4d843c836e03b9a16395b0ddebd2e81d686bc13af102ec26a848af0e3674",
+  "releaseInputsMatchedAtTag": 1087,
+  "githubRelease": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.7",
+  "githubPrerelease": true,
+  "githubAssetsUploaded": 17,
+  "githubIqDigestMatched": true,
+  "garminCard": "https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3",
+  "garminVersion": "0.1.7",
+  "garminInternalVersion": 6,
+  "garminStatus": "App pending",
+  "fileStatus": "Verified",
+  "signatureStatus": "Verified",
+  "products": 10,
+  "languages": 5,
+  "programSignatures": 21,
+  "queue": {
+    "observedAt": "2026-11-14T17:44:42.324Z",
+    "version": "0.1.7",
+    "internalVersion": 6,
+    "target": "Forerunner 165 Music",
+    "requests": [
+      {
+        "method": "GET",
+        "url": "https://apps.garmin.com/api/appsLibraryExternalServices/api/asw/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3/compatibleDevices?internalAppVersion=6",
+        "status": 200
+      },
+      {
+        "method": "POST",
+        "url": "https://apps.garmin.com/api/appsLibraryExternalServices/api/asw/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3/install?unitId=[private]",
+        "status": 200
+      }
+    ],
+    "queueMessage": "Got it! SpaceFox will be installed the next time your device syncs.",
+    "proofBoundary": "Server queue acknowledgement; physical installation and executing watch version unobserved."
+  },
+  "screenshots": "Three exact signed SDK frames submitted: FR165 Music active/LOW390 and FR965 active454.",
+  "telegram": {
+    "recipient": "Ivan Danilenko",
+    "version": "0.1.7",
+    "observedAt": "2026-11-14T17:46:15.668Z",
+    "status": "Sent; not seen at observation",
+    "content": "Original ordinary SpaceFox link, version Internal6, sync/apply instructions and testing boundaries",
+    "proofBoundary": "Observed sent message; recipient reading not established"
+  },
+  "unobserved": [
+    "physical installation and executing foreground/background build",
+    "phone and physical settings/health/power",
+    "Garmin public approval"
+  ],
+  "proofBoundary": "Observed Store submission, saved exact version and server installation queue; not actual watch installation. Tag matches all release inputs; later publication status/history bookkeeping does not change native code or the signed IQ."
+}

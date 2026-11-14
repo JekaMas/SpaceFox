@@ -449,3 +449,16 @@ The existing numbered tasks remain truthful about physical and whole-release
 conjuncts; no global property count is inflated by this bounded requalification.
 Integration, tag and same-card submission now follow. Physical installation,
 phone/settings/power and public approval remain unobserved.
+
+### UX03 publication — current iteration complete
+
+Public main/tag `v0.1.7` and the signed GitHub prerelease are published. Garmin
+verified the exact final IQ, saved 0.1.7/Internal6 at the original ordinary card,
+and acknowledged the existing FR165 Music installation after an explicit
+Internal6 compatibility request. Actual native gallery images and updated
+instructions are published; Ivan Danilenko received the same link and steps.
+[Publication evidence](evidence/ux03-delivery/PUBLICATION.md) separates the
+observed submission/queue from unobserved phone/watch installation and public
+approval. The selected apply → independent verify/fix → root acceptance →
+integration/tag/publication iteration is complete. Physical testing remains
+the next external task; no physical checkbox or unrelated property is closed.

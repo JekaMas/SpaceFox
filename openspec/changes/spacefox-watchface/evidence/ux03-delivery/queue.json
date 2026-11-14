@@ -1,0 +1,20 @@
+{
+  "observedAt": "2026-11-14T17:44:42.324Z",
+  "version": "0.1.7",
+  "internalVersion": 6,
+  "target": "Forerunner 165 Music",
+  "requests": [
+    {
+      "method": "GET",
+      "url": "https://apps.garmin.com/api/appsLibraryExternalServices/api/asw/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3/compatibleDevices?internalAppVersion=6",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "url": "https://apps.garmin.com/api/appsLibraryExternalServices/api/asw/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3/install?unitId=[private]",
+      "status": 200
+    }
+  ],
+  "queueMessage": "Got it! SpaceFox will be installed the next time your device syncs.",
+  "proofBoundary": "Server queue acknowledgement; physical installation and executing watch version unobserved."
+}
