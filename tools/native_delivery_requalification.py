@@ -14,7 +14,7 @@ CASES = ('deliveryRejectedResponseRetainsScene', 'deliveryPendingDeadlineDoesNot
          'deliveryPendingAssetsAreNotIncomplete')
 
 def validate(root, catalog):
-    from tools.native_ux03_requalification import validate as prior_validate
+    from tools.native_cache_port_requalification import validate as prior_validate
     from tools.generate_native_version import validate as validate_identity
     from tools.run_native_tests import parse_output
     root = Path(root).resolve()
@@ -106,6 +106,34 @@ def validate(root, catalog):
     low = sleep[positions[1]:positions[3]]
     if 'NATIVE_RESPONSE' in low or 'sfr-step-enter' in low:
         raise ValueError('instrumented activity occurred during low mode')
+    integration_runs = {}
+    for kind in ('combined','typed'):
+        observed_build = json.loads(checked(record['evidence']['integration-'+kind+'-build']).read_text())
+        observed_probe = checked(record['evidence']['integration-'+kind+'-probe'])
+        observed_execution = json.loads(checked(record['evidence']['integration-'+kind+'-execution']).read_text())
+        integration_runs[kind] = observed_execution
+        if observed_build['exitCode'] != 0 or hashlib.sha256(observed_probe.read_bytes()).hexdigest() != observed_build['probeSha256']:
+            raise ValueError('integrated native build differs: '+kind)
+        if (observed_execution.get('programSha256') != observed_build['packageSha256'] or
+            observed_execution.get('applicationUuid') != observed_build['applicationUuid'] or
+            observed_execution.get('sourceSetSha256') != observed_build['sourceSetSha256']):
+            raise ValueError('integrated native launch differs: '+kind)
+        for source,digest in {**observed_build['productionSources'],**observed_build['productionResources']}.items():
+            if record['sources'].get(source) != digest: raise ValueError('integrated native input differs: '+source)
+        for resource,digest in observed_build['probeResources'].items():
+            if hashlib.sha256(checked(record['evidence']['integration-'+kind+'-resource-'+resource]).read_bytes()).hexdigest() != digest:
+                raise ValueError('integrated native fixture differs: '+resource)
+    selected = ('moreMinuteRefresh','moreNearLatchReopen','moreRescheduledStale',
+                'moreServiceAcceptAndReplay','refreshCacheSequence','refreshTransferBoundaries')
+    for name in selected:
+        raw = checked(record['evidence']['integration-test-'+name]).read_text()
+        run = integration_runs['combined']['cases'].get(name, {})
+        if not run.get('command') or run['command'][-1] != name or parse_output(raw,run.get('exitCode'),(name,))['status'] != 'passed':
+            raise ValueError('integrated native case failed: '+name)
+    typed = checked(record['evidence']['integration-test-typed']).read_text()
+    typed_run = integration_runs['typed']['cases'].get('typedOperatorCombined', {})
+    if not typed_run.get('command') or parse_output(typed,typed_run.get('exitCode'),('typedOperatorCombined',))['status'] != 'passed':
+        raise ValueError('integrated typed operator case failed')
     with tempfile.TemporaryDirectory(prefix='spacefox-delivery-prior-') as temporary:
         target = Path(temporary)
         for folder in ('watchface','locales','tools','tests'):

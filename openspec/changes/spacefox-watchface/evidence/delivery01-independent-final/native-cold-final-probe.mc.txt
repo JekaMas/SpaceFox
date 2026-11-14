@@ -20,8 +20,9 @@ import Toybox.Timer;
 }
 (:background,:typecheck(false)) class SfrRuntimeApp extends SpaceFoxApp {
     var timer=null;var observed=false;var checkedRestore=false;var buildFrame=false;var prior=null;var launch=null;var cycles=0;var duplicateChecked=false;
-    function initialize(){SpaceFoxApp.initialize();NativeMetrics.ownerTag="b9197821e56f4ee38c8d35f4286d172e|cold-atomic|fdc4c5b26946";System.println("SFR_PROBE owner="+NativeMetrics.ownerTag);NativeMetrics.enabled=true;}
+    function initialize(){SpaceFoxApp.initialize();NativeMetrics.ownerTag="b9197821e56f4ee38c8d35f4286d172e|cold-rearm|7c6edd591566";System.println("SFR_PROBE owner="+NativeMetrics.ownerTag);NativeMetrics.enabled=true;}
     function getServiceDelegate(){NativeMetrics.enabled=true;return [new FeedService()];}
+ (:typecheck(disableBackgroundCheck)) function onBackgroundData(data as Application.PersistableType) as Void {SpaceFoxApp.onBackgroundData(data);System.println("DIAG background-rearm");startProbe();}
     (:typecheck(disableBackgroundCheck)) function getInitialView() as [Views] or [Views,InputDelegates] {
         SpaceFoxApp.getInitialView();
         System.println("DELIVERY_START version="+NativeVersion.BUILD+" id="+NativeVersion.ID+" detail="+view.syncDetail);

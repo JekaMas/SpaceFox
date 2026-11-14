@@ -387,15 +387,15 @@ def cadence_seconds(record: LaunchRecord | None, now_utc: int,
                     policy: RefreshPolicy = DEFAULT_POLICY) -> int:
     """Return configured cadence only; no wakeup, request or budget reservation.
 
-    Near mode includes T-7200 and T+1800 and only exact, eligible targets. All
-    uncertain timing uses normal mode unless the explicit fast mode is enabled.
+    Near mode includes T-7200 and T+1800 for an exact or sourced MIN target.
+    Date/window/unknown timing uses normal mode unless fast mode is enabled.
     """
     _arguments(record, now_utc, policy)
     if policy.fast_interval_seconds is not None:
         return policy.fast_interval_seconds
     if (record is not None and record.status not in (LaunchStatus.CANCELLED, LaunchStatus.COMPLETED, LaunchStatus.STARTED)
-            and record.timing.exact_utc is not None
-            and record.timing.exact_utc - 7200 <= now_utc <= record.timing.exact_utc + 1800):
+            and record.timing.countdown_utc is not None
+            and record.timing.countdown_utc - 7200 <= now_utc <= record.timing.countdown_utc + 1800):
         return policy.near_interval_seconds
     return policy.normal_interval_seconds
 
@@ -422,7 +422,7 @@ def _stale(record, now_utc, policy):
         return now_utc - validated >= policy.fast_interval_seconds * policy.stale_cycles
     if now_utc - validated >= policy.normal_interval_seconds * policy.stale_cycles:
         return True
-    target = record.timing.exact_utc
+    target = record.timing.countdown_utc
     if target is None or record.status in (LaunchStatus.CANCELLED, LaunchStatus.COMPLETED, LaunchStatus.STARTED):
         return False
     # Include a threshold crossed while the caller slept through the near window.
@@ -501,12 +501,12 @@ def merge_schedule(state: ScheduleState, incoming: tuple[LaunchRecord, ...], now
                 # provider validation epoch or clearing the stale latch.
                 by_id[key] = AcceptedLaunch(record, prior.rescheduled, prior.stale)
                 continue
-        # Exact targets are authoritative: adding/removing agreeing date/window
-        # context changes content, not the target. Coarse changes and transitions
-        # to/from exact timing still record a changed or withdrawn target.
+        # An exact or sourced MIN target is authoritative: changes to agreeing
+        # date/window context alone do not change that target. Unknown/coarse
+        # transitions retain their existing withdrawal/reschedule semantics.
         target_changed = prior is not None and prior.record.timing != record.timing
-        if prior is not None and prior.record.timing.exact_utc is not None and record.timing.exact_utc is not None:
-            target_changed = prior.record.timing.exact_utc != record.timing.exact_utc
+        if prior is not None and prior.record.timing.countdown_utc is not None and record.timing.countdown_utc is not None:
+            target_changed = prior.record.timing.countdown_utc != record.timing.countdown_utc
         rescheduled = prior is not None and (prior.rescheduled or target_changed)
         by_id[key] = AcceptedLaunch(record, rescheduled, _stale(record, now_utc, policy))
     return ScheduleState(tuple(by_id[key] for key in sorted(by_id)), now_utc)

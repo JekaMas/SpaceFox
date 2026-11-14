@@ -7,25 +7,28 @@ function nativeHeaderText(raw,key){var prefix="\""+key+"\":\"";var at=raw.find(p
 // written by background. Active/recovery/feed pins protect referenced content.
 (:background, :typecheck(false))
 class NativeImmutable {
+    // A selected batch contains at most 40 objects plus its catalog and
+    // transfer descriptor. Keep room for three observed current revisions while
+    // retaining a bound below the measured SDK index-write failure.
+    const MAX_ENTRIES=56;const MAX_OBJECT_BYTES=229376;
     var store;
     function initialize(adapter){store=adapter;}
     function raw(ref){
         var value=store.read("sf.obj."+ref["sha256"]);if(!(value instanceof String)||value.length()>4096){return null;}var h=new NativeWireHash();h.put(value);var digest=h.digest();if(h.count>4096||ref["decodedBytes"]!=null&&h.count!=ref["decodedBytes"]||!digest.equals(ref["sha256"])){return null;}return value;
     }
-    function protectedHash(digest){
-        // Called only when a candidate eviction is actually needed. Scan one
-        // durable record at a time; do not retain a second whole active +
-        // recovery + pending graph during a raw response allocation.
-        var keys=["sf.commit","sf.recovery","sf.raster.active","sf.raster.recovery","sf.batch.head","sf.batch.refs"];
-        for(var i=0;i<keys.size();i+=1){var m=store.read(keys[i]);if(m instanceof Dictionary){if(m["prior"] instanceof Array&&m["prior"].size()==3&&m["prior"][0] instanceof Dictionary&&m["prior"][0]["catalogDigest"] instanceof String&&m["prior"][0]["catalogDigest"].equals(digest)){return true;}if(m["catalogDigest"] instanceof String&&m["catalogDigest"].equals(digest)){return true;}if(m["transfer"] instanceof Dictionary&&m["transfer"]["sha256"] instanceof String&&m["transfer"]["sha256"].equals(digest)){return true;}if(m["refs"] instanceof Array){for(var j=0;j<m["refs"].size();j+=1){var r=m["refs"][j];if(r instanceof Dictionary&&r["sha256"] instanceof String&&r["sha256"].equals(digest)){return true;}if(r instanceof Array&&r.size()==3&&r[1] instanceof String&&r[1].equals(digest)){return true;}}}}}
-        return false;
+    function protectedHashes(){
+        // Scan durable protection roots once per eviction. Repeatedly scanning
+        // every reference for each indexed entry can trip the watch watchdog.
+        var pins={};var keys=["sf.commit","sf.recovery","sf.raster.active","sf.raster.recovery","sf.batch.head","sf.batch.refs"];
+        for(var i=0;i<keys.size();i+=1){var m=store.read(keys[i]);if(m instanceof Dictionary){if(m["prior"] instanceof Array&&m["prior"].size()==3&&m["prior"][0] instanceof Dictionary&&m["prior"][0]["catalogDigest"] instanceof String){pins[m["prior"][0]["catalogDigest"]]=true;}if(m["catalogDigest"] instanceof String){pins[m["catalogDigest"]]=true;}if(m["transfer"] instanceof Dictionary&&m["transfer"]["sha256"] instanceof String){pins[m["transfer"]["sha256"]]=true;}if(m["refs"] instanceof Array){for(var j=0;j<m["refs"].size();j+=1){var r=m["refs"][j];if(r instanceof Dictionary&&r["sha256"] instanceof String){pins[r["sha256"]]=true;}if(r instanceof Array&&r.size()==3&&r[1] instanceof String){pins[r[1]]=true;}}}}}
+        return pins;
     }
     function put(ref,value){
         if(!(value instanceof String)||value.length()>4096||!nativeHex(ref["sha256"])){return false;}var h=new NativeWireHash();h.put(value);var digest=h.digest();if(h.count<1||h.count>4096||ref["decodedBytes"]!=null&&h.count!=ref["decodedBytes"]||!digest.equals(ref["sha256"])){return false;}if(raw(ref)!=null){return true;}
         var index=store.read("sf.objects");if(index==null){index=[];}if(!(index instanceof Array)||index.size()>96){return false;}var total=h.count;var next=[];
         for(var i=0;i<index.size();i+=1){var r=index[i];if(!(r instanceof Array)||r.size()!=2||!nativeHex(r[0])||!(r[1] instanceof Number||r[1] instanceof Long)||r[1]<1||r[1]>4096){return false;}if(!r[0].equals(ref["sha256"])){total+=r[1];next.add(r);}}
-        var retained=[];for(var j=0;j<next.size();j+=1){var r=next[j];if((total>393216||next.size()-j+retained.size()>=96)&&!protectedHash(r[0])){store.remove("sf.obj."+r[0]);total-=r[1];}else{retained.add(r);}}
-        if(total>393216||retained.size()>=96){return false;}retained.add([ref["sha256"],h.count]);store.write("sf.objects",retained);store.write("sf.obj."+ref["sha256"],value);if(raw(ref)==null){return false;}return true;
+        var pins=null;if(total>MAX_OBJECT_BYTES||next.size()>=MAX_ENTRIES){pins=protectedHashes();}var retained=[];for(var j=0;j<next.size();j+=1){var r=next[j];if((total>MAX_OBJECT_BYTES||next.size()-j+retained.size()>=MAX_ENTRIES)&&!pins.hasKey(r[0])){store.remove("sf.obj."+r[0]);total-=r[1];}else{retained.add(r);}}
+        if(total>MAX_OBJECT_BYTES||retained.size()>=MAX_ENTRIES){return false;}retained.add([ref["sha256"],h.count]);pins=null;next=null;index=null;store.write("sf.objects",retained);store.write("sf.obj."+ref["sha256"],value);if(raw(ref)==null){return false;}return true;
     }
 }
 

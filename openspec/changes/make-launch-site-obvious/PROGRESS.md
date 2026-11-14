@@ -1,31 +1,11 @@
-# SpaceFox: заметность места старта
+# Historical progress: launch-site marker
 
-**Статус: завершено и опубликовано под MIT.** Выполнены три новых поколения **30 → 20 → 10** и пять точных прежних контролей. [Отчёт](../../../docs/MARKER_RESEARCH.md) · [результаты JSON](evidence/RESULTS.json) · [воспроизведение](evidence/REPLAY.md). История исправлений сохранена в [журнале](evidence/progress-journal.md); единственный список работ — [tasks.md](tasks.md).
+This 11 November 2026 browser research reported three generations of 30 → 20 → 10 candidates, plus five prior controls, and publication under MIT. See the [report](../../../docs/MARKER_RESEARCH.md), [results](evidence/RESULTS.json), [replay](evidence/REPLAY.md), [journal](evidence/progress-journal.md) and historical [task list](tasks.md). Thresholds were engineering heuristics, not human reading-speed or Garmin-device evidence.
 
-**Последующее сравнение целого экрана,2026-11-11:** [отчёт](../../../docs/FINALISTS_COMPARISON.md)
-и [парная галерея](../../../prototype/marker/compare.html). В15 одинаковых парах
-геометрия/стили150 основных подписей не изменились; у слова СТАРТ в «Билете»
-найдено смещение12,85 px влево от маркера (LAUNCH3,27 px). Общий выигрыш композиции
-не доказан. Текущие пять — технический маркерный финал; визуальная рекомендация —
-«Миссия в фокусе», затем отдельная доработка «Билета», «Пульт» как контроль.
-Нового независимого/человеческого испытания целого экрана не было. Исторические
-результаты и критерии ниже сохранены; параметры финалистов не изменены.
+G1 used 32 author scenes at three scales, native-size pairs and 40 images; 15 new proposals and one prior control passed the criterion intersection. G2's 20 passed the main set and 60/60 native-size trials; 24 separately inspected images had no material errors. G3 covered 32 author and 24 known scenes, 30 native-size trials and 12 images; only the labelled Ticket variant passed the intersection. Five finalists were frozen before confirmation: 120/120 semantic records, 360/360 geometry and native-size trials, and 300 nonzero masks without lost artwork were reported.
 
-Цель: пять разных компоновок сохраняют время, четыре поля, ракету, компанию, задачу, полное место и отсчёт; знак проходит геометрию, фактический сигнал и отдельное определение положения/смысла по изображениям. Пороги — инженерные эвристики; скорость чтения человеком и работа на Garmin этим раундом не доказаны.
+Two independent image reviews reported 60 correct positive answers, 53 confident negative answers, seven uncertain negatives and zero false locations. This is not 120/120 correct decisions. Six uncertainties concerned artificial hidden-marker frames that retained the literal launch label; one concerned a small status marker with no coordinates. See [adjudication](evidence/negative-uncertainty-adjudication.md). An additional new-geography supplement recorded 30 correct positives, four confident negatives, one uncertain negative and zero false points across 35 images, not a new sealed bank or generation. Shared and repeated frames do not become independent observations.
 
-| Этап | Проверки и решение |
-|---|---|
-| G1: 30 + 5 контролей | 32 авторские сцены, три масштаба, нативные пары,40 изображений. 15 новых предложений и1 старый контроль проходят пересечение критериев. Увеличение не исправляет тесную область; ромб часто непонятен как старт. |
-| G2: 20 | Все20 проходят основной набор;60/60 нативных испытаний. Отдельный просмотр24 без существенных ошибок. Screening:10 новых родителей прошли24 сцены и нативную выборку4; два старых контроля сохранили слабую малую обводку. |
-| G3: 10 | 32 авторские и24 уже известные сцены,30 нативных испытаний,12 изображений. Только «Билет» с подписью проходит пересечение слоёв. Все отказы сохранены. |
-| Финал: 5 из G2/G3 | Точные параметры,53 зависимости браузера,23 средства проверки и неизменяемый архив зафиксированы до confirm24. Без подстройки:120/120 семантических записей,360/360 геометрии и нативных испытаний;300 ненулевых масок без потери рисунка. |
+A later [whole-screen comparison](../../../docs/FINALISTS_COMPARISON.md) found unchanged geometry/styles for 150 labels in 15 pairs but a 12.85 px offset for the Russian Ticket label and 3.27 px for its English label. It did not establish an overall composition win or a new independent human study. Publication readback refers to [commit 33e0a62](https://github.com/JekaMas/SpaceFox/commit/33e0a62ddc3b75c0da93e82cced703d797b00da7). Current product requirements are in the [watch-face design](../spacefox-watchface/design.md). This English condensation is not a rerun; original report: [previous public report](https://github.com/JekaMas/SpaceFox/blob/59f16c43b453db0573a43d5ebec98a0b019a08fd/openspec/changes/make-launch-site-obvious/PROGRESS.md).
 
-**Два новых независимых просмотра:**60 правильных положительных ответов,53 уверенных отрицательных «нет»,7 отрицательных сомнений,0 ложных указаний. Это **не120/120 правильных решений**. Шесть сомнений возникли в искусственном состоянии «маркер скрыт, слово СТАРТ осталось»; одно — у маленького статусного значка без координат. Такое различение задано до G1, см. [разъяснение](evidence/negative-uncertainty-adjudication.md).
-
-Основной RU/EN-отбор оказался одним местом в двух языках. Отдельное дополнение без изменения пяти/исходников проверило два других географических ракурса:35 изображений, новый контекст;30 положительных ответов правильны,4 отрицательных «нет»,1 отрицательное сомнение,0 ложных точек. Это дополнительная проверка, не новый закрытый банк/поколение.
-
-Финалисты: **M2-11 Пульт орбиты; M3-21 Билет на старт; M2-31 Миссия в фокусе; M2-41 Восход Земли; M2-51 Атлас запуска.**
-
-Сохранены652 исходных нативных JPEG с2 844 наблюдениями кругов; общие кадры и повторы не являются независимыми наблюдениями. Включены48 дополнительных наблюдений для прямой проверки нового «Билета». Первые72 уменьшенных снимка/420 наблюдений отклонены и хранятся отдельно. Девять прежних владельцев и пять прежних объектов контроля не изменены.
-
-Галерея: [пять направлений](../../../prototype/marker/review.html). Переключение Канаверал/Махия/Куру, соответствующих ракет, RU/EN и явное демо взлёта проверены. Все оригинальные код, спека и отчёты — MIT; шрифты — OFL. Обновлено2026-11-11. Источник опубликован в [JekaMas/SpaceFox](https://github.com/JekaMas/SpaceFox/commit/33e0a62ddc3b75c0da93e82cced703d797b00da7); удалённый HEAD и чтение отчёта, независимого вердикта и MIT-лицензии через GitHub проверены. Последующий коммит сохраняет эту квитанцию без изменения проверенных исходников.
+The [previous public report](https://github.com/JekaMas/SpaceFox/blob/59f16c43b453db0573a43d5ebec98a0b019a08fd/openspec/changes/make-launch-site-obvious/PROGRESS.md) retains its original evidence and source links.

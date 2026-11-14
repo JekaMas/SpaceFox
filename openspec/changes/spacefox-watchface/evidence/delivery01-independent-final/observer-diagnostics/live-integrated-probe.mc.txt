@@ -1,0 +1,73 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.System;
+import Toybox.Background;
+import Toybox.Time;
+import Toybox.Timer;
+(:typecheck(false)) class DeliveryProxy extends WatchUi.WatchFace {
+    var app;function initialize(a){WatchFace.initialize();app=a;}
+    function onLayout(dc){app.view.onLayout(dc);}
+    function onShow(){app.view.onShow();app.startProbe();}
+    function onHide(){app.view.onHide();}
+    function onEnterSleep(){app.view.onEnterSleep();}
+    function onExitSleep(){app.view.onExitSleep();app.startProbe();}
+    function onUpdate(dc){
+        if(app.view.context!=null&&app.view.renderer==null){throw new Lang.InvalidValueException("DELIVERY_FRAME_MISSING_RENDERER");}
+        app.view.onUpdate(dc);
+        if(app.view.context!=null&&app.view.sfrBuild!=null&&!app.buildFrame){app.buildFrame=true;System.println("DELIVERY_BUILD_FRAME normalRenderer=true rich="+(app.view.downloaded!=null)+" id="+app.view.context.launchId);}
+    }
+}
+(:background,:typecheck(false)) class SfrRuntimeApp extends SpaceFoxApp {
+    var timer=null;var observed=false;var checkedRestore=false;var buildFrame=false;var prior=null;var launch=null;var cycles=0;var duplicateChecked=false;
+    function initialize(){SpaceFoxApp.initialize();NativeMetrics.ownerTag="cedb9328da25469ba0c647cae90b1b23|live-integrated|7c6edd591566";System.println("SFR_PROBE owner="+NativeMetrics.ownerTag);NativeMetrics.enabled=true;}
+    function getServiceDelegate(){NativeMetrics.enabled=true;return [new FeedService()];}
+    (:typecheck(disableBackgroundCheck)) function getInitialView() as [Views] or [Views,InputDelegates] {
+        SpaceFoxApp.getInitialView();
+        System.println("DELIVERY_START version="+NativeVersion.BUILD+" id="+NativeVersion.ID+" detail="+view.syncDetail);
+        return [new DeliveryProxy(self)];
+    }
+    (:typecheck(disableBackgroundCheck)) function reloadFeed() {
+        SpaceFoxApp.reloadFeed();
+        var registered=Background.getTemporalEventRegisteredTime();
+        System.println("DELIVERY_RELOAD id="+(view.context==null?"none":view.context.launchId)+" registered="+(registered==null?"null":registered.value()));
+    }
+    (:typecheck(disableBackgroundCheck)) function startProbe(){if(timer==null){timer=new Timer.Timer();}else{timer.stop();}timer.start(method(:observe),500,true);}
+    (:typecheck(disableBackgroundCheck)) function observe(){
+        cycles+=1;
+        if(view.sfrBuild!=null){
+            WatchUi.requestUpdate();
+            if(!duplicateChecked&&!NativeForegroundApp.hasNewIncoming(feed,new NativeIncoming(feed.store,feed.base))){
+                duplicateChecked=true;var build=view.sfrBuild;var generation=view.sceneLifecycle.generation;
+                SpaceFoxApp.onBackgroundData({"provisional"=>true});
+                if(view.sfrBuild!=build||view.sceneLifecycle.generation!=generation){throw new Lang.InvalidValueException("DELIVERY_DUPLICATE_CANCELLED_BUILD");}
+                System.println("DELIVERY_DUPLICATE_RETAINED generation="+generation);
+            }
+        }
+        if(!observed&&view.downloaded!=null&&view.context!=null&&feed!=null&&feed.packet!=null){
+            observed=true;prior=view.downloaded;launch=view.context.launchId;
+            System.println("DELIVERY_READY id="+launch+" renderer="+(view.renderer!=null)+" buildFrame="+buildFrame);
+            var slot=feed.commit["slot"];var saved=feed.store.read("sf.feed."+slot);var raw=feed.readRaw(saved,slot);
+            var needle="\"schemaVersion\":3";var at=raw.find(needle);
+            if(at==null){throw new Lang.InvalidValueException("DELIVERY_EXPECTED_SCHEMA_ABSENT");}
+            var broken=raw.substring(0,at)+"\"schemaVersion\":2"+raw.substring(at+needle.length(),raw.length())+" ";
+            // The current incoming marker may already be a processed invalid
+            // response. Change the staged bytes so this exercises rejection,
+            // rather than silently reusing the earlier processed token.
+            var marker=feed.store.read("sf.incoming.feed");var hash=new NativeWireHash();hash.put(broken);
+            if(marker instanceof Dictionary&&marker["sha256"] instanceof String&&marker["sha256"].equals(hash.digest())){broken+=" ";}
+            hash=null;marker=null;
+            var transfer=new NativeTransfer(feed.base,feed.store);
+            if(!transfer.stage("feed",broken,null)){throw new Lang.InvalidValueException("DELIVERY_STAGE_FAILED");}
+            SpaceFoxApp.reloadFeed();
+            if(view.downloaded!=prior||view.renderer==null||view.context==null||!view.context.launchId.equals(launch)){throw new Lang.InvalidValueException("DELIVERY_REJECTION_LOST_SCENE");}
+            System.println("DELIVERY_REJECTED_RETAINED id="+launch+" pendingRestore="+restorePending);
+        }
+        if(observed&&!checkedRestore&&!restorePending&&feed.packet!=null){
+            if(view.downloaded!=prior||view.renderer==null||!view.context.launchId.equals(launch)){throw new Lang.InvalidValueException("DELIVERY_RESTORE_LOST_SCENE");}
+            checkedRestore=true;System.println("DELIVERY_RESTORE_RETAINED id="+launch+" buildFrame="+buildFrame);
+            timer.stop();timer=null;
+        }
+        if(cycles>800){timer.stop();timer=null;System.println("DELIVERY_TIMEOUT noCompletedScene=true");}
+    }
+}

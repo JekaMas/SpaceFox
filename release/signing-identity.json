@@ -5,6 +5,21 @@
   "public_key_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
   "status": "local_production_custody_restored",
   "latest_release": {
+    "version": "0.1.8",
+    "package_sha256": "9003c505801ffaace23efd9b5facb26ce49e68d5ccce2feb3771e9a8b7257cc9",
+    "kind": "github_test_prerelease",
+    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.8-test.1",
+    "source_revision": "389cb785970a672351ef75828c8a623d049de15f",
+    "original_receipt_sha256": "6f28e7254a1792fc723365029d3a74612759b1c2b7f9f742e01635f6a9c469da",
+    "proof_boundary": "Signed GitHub test prerelease; no Garmin Store submission or physical delivery established."
+  },
+  "note": "Stable production UUID/key. Next candidate uses the actual published 0.1.8 test receipt and IQ as predecessor. Physical phone/watch acceptance and Store delivery remain open.",
+  "local_custody": {
+    "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
+    "public_evidence": "openspec/changes/spacefox-watchface/evidence/production-signing/round1/custody-initialization.json",
+    "proof_boundary": "External owner-only production RSA4096 key and encrypted backup with separately stored password; actual local restore and public signing challenge. Same Mac only; no offsite/disaster recovery."
+  },
+  "previous_release": {
     "version": "0.1.7",
     "package_sha256": "f8b41e9870654436ea4a8a7be63ca64451a0863254a8731b2f1a50659d91cde5",
     "kind": "garmin_ordinary_store_submission",
@@ -13,13 +28,7 @@
     "original_receipt_sha256": "9b9f4d843c836e03b9a16395b0ddebd2e81d686bc13af102ec26a848af0e3674",
     "proof_boundary": "Original ordinary Garmin card saved 0.1.7/Internal6 with verified signature; installation queued for existing Forerunner165Music. Physical installation and public approval remain unobserved."
   },
-  "note": "Stable production UUID/key. Next candidate must use the actual published 0.1.7 receipt and IQ as predecessor. Physical phone/watch acceptance and Store delivery remain open.",
-  "local_custody": {
-    "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
-    "public_evidence": "openspec/changes/spacefox-watchface/evidence/production-signing/round1/custody-initialization.json",
-    "proof_boundary": "External owner-only production RSA4096 key and encrypted backup with separately stored password; actual local restore and public signing challenge. Same Mac only; no offsite/disaster recovery."
-  },
-  "previous_release": {
+  "earlier_release": {
     "version": "0.1.6",
     "package_sha256": "f0486aec04a63ed9481caff0376a36930c7175df908ccb3e53f65075059dfc50",
     "kind": "garmin_ordinary_store_submission",

@@ -5,7 +5,7 @@ watch settings even after reselecting the face and after a full power cycle. A
 later scene displayed Vulcan VC6L, ULA, Communications, Cape and a countdown,
 then black maintenance and ambient. The physical transition's trigger is not
 known. The first scene may have been a fallback. Original photos stay local.
-The independently repaired source is 0.1.8, runtime ID `65b7215d`; no claim is made that the
+The integrated repair targets 0.1.9, runtime ID `d04c16ef`, has completed the bounded simulator replay; no claim is made that the
 owner's watch executes it. A target-signed artifact, target runtime on that
 watch, matching fresh feed and coherent active → ambient → active observations
 remain required. `physical-gate-018-current-red.json` records the current RED;

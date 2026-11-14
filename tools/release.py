@@ -78,7 +78,7 @@ def source_state(root: Path) -> dict:
             admission.add(name)
         receipt = json.loads((root / proof["receiptPath"]).read_text())
         historical = {}
-        for proof_key in ("ux02DeltaProof", "ux03DeltaProof", "deliveryDeltaProof"):
+        for proof_key in ("ux02DeltaProof", "ux03DeltaProof", "cachePortDeltaProof", "deliveryDeltaProof"):
             if proof_key not in proof:
                 continue
             delta_path = proof[proof_key]["path"]
@@ -88,8 +88,10 @@ def source_state(root: Path) -> dict:
             admission.add(delta_path)
             admission.add(delta["priorCatalog"]["path"])
             admission.update(item["path"] for item in historical.values())
-            if proof_key == "deliveryDeltaProof":
+            if proof_key in ("cachePortDeltaProof", "deliveryDeltaProof"):
                 admission.update(item["path"] for item in delta["evidence"].values())
+                if proof_key == "cachePortDeltaProof":
+                    admission.add(delta["cacheObservation"]["path"])
             else:
                 admission.update(delta["evidence"])
             admission.update(delta["sources"])

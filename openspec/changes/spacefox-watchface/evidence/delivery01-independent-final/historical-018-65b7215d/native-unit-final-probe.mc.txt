@@ -1,0 +1,238 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.System;
+import Toybox.Background;
+import Toybox.Time;
+(:background) class SfrRuntimeApp extends SpaceFoxApp {function initialize(){SpaceFoxApp.initialize();}}
+import Toybox.Lang;
+import Toybox.Test;
+
+(:test,:typecheck(false)) function deliveryModeCallbacksAreIdempotent(logger){
+    // Each row is event, expected active state, and cancellation count. Three
+    // legal callback orders cover LOW/OFF, unknown, and duplicates. Expected
+    // values come from the event history, never from the implementation.
+    var traces=[
+        [["wake",true,0],["high",true,0],["unknown",true,0],["sleep",false,1],["low",false,1],["sleep",false,1],["off",false,1],["wake",true,1]],
+        [["high",true,0],["wake",true,0],["low",false,1],["sleep",false,1],["unknown",false,1],["off",false,1],["high",true,1],["wake",true,1]],
+        [["high",true,0],["off",false,1],["low",false,1],["wake",true,1]]
+    ];
+    var applied=0;var unchanged=0;var matrix={};
+    for(var trace=0;trace<traces.size();trace+=1){
+        var view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));
+        view.onShow();var previous=false;
+        for(var i=0;i<traces[trace].size();i+=1){
+            var row=traces[trace][i];var event=row[0];
+            if(event.equals("wake")){view.onExitSleep();}
+            else if(event.equals("sleep")){view.onEnterSleep();}
+            else if(event.equals("high")){view.syncDisplayMode(System.DISPLAY_MODE_HIGH_POWER);}
+            else if(event.equals("low")){view.syncDisplayMode(System.DISPLAY_MODE_LOW_POWER);}
+            else if(event.equals("off")){view.syncDisplayMode(System.DISPLAY_MODE_OFF);}
+            else{view.syncDisplayMode(99);}
+            Test.assert(view.canForegroundWork()==row[1]);
+            Test.assert(view.sceneLifecycle.generation==row[2]);
+            Test.assert((view.fitnessTimer!=null)==row[1]);
+            var disposition=previous!=row[1]?"applied":"observedNoMutation";
+            var key=event+":"+disposition;matrix[key]=matrix.hasKey(key)?matrix[key]+1:1;
+            if(disposition.equals("applied")){applied+=1;}else{unchanged+=1;}
+            previous=row[1];
+        }
+        view.onHide();
+    }
+    Test.assert(applied==9&&unchanged==11);
+    var required=["wake:applied","wake:observedNoMutation","high:applied","high:observedNoMutation","sleep:applied","sleep:observedNoMutation","low:applied","low:observedNoMutation","off:applied","off:observedNoMutation","unknown:observedNoMutation"];
+    for(var j=0;j<required.size();j+=1){var key=required[j];Test.assert(matrix.hasKey(key)&&matrix[key]>0);}
+    logger.debug("MODE_CALLBACKS applied=9 observedNoMutation=11 skipped=0");
+    return true;
+}
+
+// Isolated view boundary only. A separate live-feed run establishes that the
+// selected visual was acquired by the same native application before rejection.
+(:test,:typecheck(false)) function deliveryRejectedResponseRetainsScene(logger){
+    var view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));
+    var scene=new SceneContext({"id"=>"ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a","rocket"=>"Vulcan VC6L","site"=>"US · Cape Canaveral SFS","target"=>1794762690l,"precision"=>"exact"});
+    view.setContext(scene);view.prepareRenderer();
+    var visual=new NativeSfrRenderer();view.downloaded=visual;view.renderer.downloaded=visual;
+    view.clearForRestore();
+    Test.assert(view.context==scene);
+    Test.assert(view.downloaded==visual);
+    Test.assert(view.renderer!=null&&view.renderer.downloaded==visual);
+    logger.debug("REJECTED_RESPONSE retainedAcceptedScene=true");return true;
+}
+
+(:test,:typecheck(false)) function deliveryPendingDeadlineDoesNotMove(logger){
+    // Expected deadlines are stated from the event history, not read back from
+    // the production helper. The OS minimum may delay an impossible event.
+    var last=1000l;var deadline=pendingWake(1000l,4600l,null,last,true);
+    Test.assert(deadline==1300l);
+    deadline=pendingWake(1100l,4700l,deadline,last,true);
+    Test.assert(deadline==1300l);
+    deadline=pendingWake(1200l,4800l,deadline,last,true);
+    Test.assert(deadline==1300l);
+    Test.assert(pendingWake(1200l,4800l,1100l,800l,true)==1200l);
+    Test.assert(pendingWake(1300l,4900l,1300l,1300l,true)==1600l);
+    Test.assert(pendingWake(1200l,1250l,1300l,1000l,false)==1300l);
+    Test.assert(!registrationNeeded(1200l,1300l,1300l,1000l,true));
+    Test.assert(!registrationNeeded(1301l,1301l,1300l,1000l,true));
+    Test.assert(!registrationNeeded(1361l,1361l,1300l,1000l,true));
+    Test.assert(registrationNeeded(1301l,1600l,1300l,1300l,true));
+    Test.assert(registrationNeeded(1200l,1300l,1100l,1000l,true));
+    logger.debug("PENDING_DEADLINE first=1300 wake=1300 reload=1300 osMinimum=1600");return true;
+}
+
+(:test,:typecheck(false)) function deliverySceneEventsAndLateCompletion(logger){
+    // Independent expected phases for this trace: accepted fallback (1),
+    // requested before painting (3), painted (4), build running (5), cancelled
+    // (2), new build (5), committed rich scene (6), new launch fallback (1).
+    var machine=new SceneLifecycle();var applied=0;var rejected=0;
+    machine.replace(true);applied+=1;Test.assert(machine.phase==1);
+    Test.assert(machine.request());applied+=1;Test.assert(machine.phase==3);
+    machine.painted();applied+=1;Test.assert(machine.phase==4);
+    var old=machine.begin();applied+=1;Test.assert(old!=null&&machine.phase==5);
+    machine.cancel();applied+=1;Test.assert(machine.phase==2);
+    Test.assert(!machine.complete(old));rejected+=1;Test.assert(machine.phase==2);
+    Test.assert(machine.request());applied+=1;Test.assert(machine.phase==4);
+    var current=machine.begin();applied+=1;Test.assert(current!=null&&machine.phase==5);
+    Test.assert(machine.complete(current));applied+=1;Test.assert(machine.phase==6);
+    machine.replace(true);applied+=1;Test.assert(machine.phase==1);
+    Test.assert(!machine.complete(current));rejected+=1;Test.assert(machine.phase==1);
+    Test.assert(applied==9&&rejected==2);
+    logger.debug("SCENE_EVENTS applied=9 observedNoMutation=2 skipped=0");return true;
+}
+
+(:typecheck(false)) class DeliveryKeyPacket {
+    var bridge;var generation;var target;
+    function initialize(model,site,position,mode,selection,generationValue,targetValue){
+        bridge={"selection"=>{"sha256"=>selection},
+            "ids"=>["ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a",model,"ll2:organization:124",site,"ll2:country:2"],
+            "site"=>{"position"=>position,"positionMode"=>mode}};
+        generation=generationValue;target=targetValue;
+    }
+}
+
+(:test,:typecheck(false)) function deliveryVisualIdentityCases(logger){
+    var view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));
+    var selection="77d4b3173b019ee84b7eb751e81ccb7a47edfba560a54166bfb47f441e8b7b37";
+    var position={"longitude"=>"-80.58303644","latitude"=>"28.58341025","qualification"=>"unverified-reference"};
+    var original=new DeliveryKeyPacket("ll2:configuration:479","ll2:site:29",position,"fixed-source",selection,24,1794762690l);
+    var key=view.packetVisualKey(original);
+    // Validation generation and T0 can advance without changing the visual.
+    var update=new DeliveryKeyPacket("ll2:configuration:479","ll2:site:29",position,"fixed-source",selection,25,1794762750l);
+    Test.assert(nativeSame(key,view.packetVisualKey(update)));
+    var changedModel=new DeliveryKeyPacket("ll2:configuration:99","ll2:site:29",position,"fixed-source",selection,25,1794762750l);
+    var changedSite=new DeliveryKeyPacket("ll2:configuration:479","ll2:site:30",position,"fixed-source",selection,25,1794762750l);
+    var changedPoint=new DeliveryKeyPacket("ll2:configuration:479","ll2:site:29",{"longitude"=>"-80.5","latitude"=>"28.58341025","qualification"=>"unverified-reference"},"fixed-source",selection,25,1794762750l);
+    var changedQualification=new DeliveryKeyPacket("ll2:configuration:479","ll2:site:29",{"longitude"=>"-80.58303644","latitude"=>"28.58341025","qualification"=>"different"},"fixed-source",selection,25,1794762750l);
+    var changedMode=new DeliveryKeyPacket("ll2:configuration:479","ll2:site:29",position,"mobile-reference-no-event",selection,25,1794762750l);
+    var changedArt=new DeliveryKeyPacket("ll2:configuration:479","ll2:site:29",position,"fixed-source","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",25,1794762750l);
+    Test.assert(!nativeSame(key,view.packetVisualKey(changedModel)));
+    Test.assert(!nativeSame(key,view.packetVisualKey(changedSite)));
+    Test.assert(!nativeSame(key,view.packetVisualKey(changedPoint)));
+    Test.assert(!nativeSame(key,view.packetVisualKey(changedQualification)));
+    Test.assert(!nativeSame(key,view.packetVisualKey(changedMode)));
+    Test.assert(!nativeSame(key,view.packetVisualKey(changedArt)));
+    logger.debug("VISUAL_KEY sameT0AndGeneration=true modelSitePointQualificationArtChangesDistinct=true");return true;
+}
+
+(:typecheck(false)) class DeliveryScheduleStore {
+    var data={};var unavailable=null;var failWrite=null;
+    function read(key){
+        if(key.equals(unavailable)||!data.hasKey(key)){return null;}
+        var value=data[key];
+        if(key.equals("sf.batch.head")&&value instanceof Dictionary){return {"base"=>value["base"],"pending"=>value["pending"],"catalogDigest"=>value["catalogDigest"],"transfer"=>value["transfer"],"serial"=>value["serial"]};}
+        return value;
+    }
+    function write(key,value){
+        if(key.equals(failWrite)){throw new Lang.InvalidValueException("injected write failure");}
+        data[key]=key.equals("sf.batch.head")?{"base"=>value["base"],"pending"=>value["pending"],"catalogDigest"=>value["catalogDigest"],"transfer"=>value["transfer"],"serial"=>value["serial"]}:value;
+    }
+    function remove(key){data.remove(key);}
+}
+
+(:test,:typecheck(false)) function deliveryVisualWaitsForMatchingBatch(logger){
+    var store=new DeliveryScheduleStore();var base="https://example.test";
+    var catalog="{}";var index="{\"objects\":[]}";
+    var h=new NativeWireHash();h.put(catalog);var catalogHash=h.digest();
+    h=new NativeWireHash();h.put(index);var indexHash=h.digest();
+    var bridge={"catalogDigest"=>catalogHash,"transfer"=>{"sha256"=>indexHash,"path"=>"descriptors/"+indexHash+".json","decodedBytes"=>index.length()}};
+    var batch=new NativeBatch(store,base);batch.select(bridge);
+    var view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));
+    view.setContext(new SceneContext({"id"=>"ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a"}));
+    var source=new NativeRenderSource(store,base,bridge);view.setAssetCache(source);
+    Test.assert(!source.ready&&view.sceneLifecycle.phase==1);
+    // A decode failure is not retried merely because the same batch was seen.
+    view.sceneLifecycle.painted();Test.assert(view.sceneLifecycle.request());var token=view.sceneLifecycle.begin();view.sceneLifecycle.fail(token);
+    view.setAssetCache(new NativeRenderSource(store,base,bridge));Test.assert(view.sceneLifecycle.phase==7);
+    var ref=batch.next();Test.assert(batch.immutable.put(ref,catalog));
+    ref=batch.next();Test.assert(batch.immutable.put(ref,index));Test.assert(batch.next()==null);
+    source=new NativeRenderSource(store,base,bridge);view.setAssetCache(source);Test.assert(source.ready&&view.sceneLifecycle.phase==2);
+    Test.assert(!new NativeRenderSource(store,base,{"catalogDigest"=>"other","transfer"=>bridge["transfer"]}).ready);
+    Test.assert(!new NativeRenderSource(store,base,{"catalogDigest"=>catalogHash,"transfer"=>{"sha256"=>"other"}}).ready);
+    Test.assert(view.sceneLifecycle.request());token=view.sceneLifecycle.begin();view.sceneLifecycle.fail(token);
+    view.setAssetCache(new NativeRenderSource(store,base,bridge));Test.assert(view.sceneLifecycle.phase==7);
+    // A dependency becomes unavailable and is then repaired. The production
+    // batch transitions through pending and emits a new completion serial.
+    store.unavailable="sf.obj."+indexHash;store.failWrite="sf.batch.head";
+    var failed=false;try{batch.next();}catch(e){failed=true;}
+    Test.assert(failed&&!new NativeRenderSource(store,base,bridge).ready);
+    store.failWrite=null;store.unavailable=null;batch=new NativeBatch(store,base);Test.assert(batch.next()==null);
+    view.setAssetCache(new NativeRenderSource(store,base,bridge));Test.assert(view.sceneLifecycle.phase==2);
+    Test.assert(!new NativeRenderSource(store,"https://other.test",bridge).ready);
+    var partial=new DeliveryScheduleStore();partial.failWrite="sf.batch.pending";
+    var selection=new NativeBatch(partial,base);failed=false;
+    try{selection.select(bridge);}catch(e){failed=true;}
+    Test.assert(failed&&batchPending(new NativeTransfer(base,partial)));
+    logger.debug("VISUAL_BATCH pendingAndWrongIdentityRejected=true completedMatchingBatchApplied=true");return true;
+}
+
+(:test,:typecheck(false)) function deliveryPendingAssetsAreNotIncomplete(logger){
+    Test.assert(!NativeForegroundApp.incomplete("assets",1100l,1000l,true,1300l,1000l));
+    Test.assert(!NativeForegroundApp.incomplete("assets",1400l,1000l,true,1300l,1000l));
+    Test.assert(NativeForegroundApp.incomplete("assets",1400l,1000l,true,1300l,1300l));
+    Test.assert(NativeForegroundApp.incomplete("assets",1400l,1000l,true,null,1000l));
+    Test.assert(NativeForegroundApp.incomplete("requesting",1100l,1000l,true,1300l,1000l));
+    logger.debug("PENDING_STATUS scheduledOrLateWait=true consumedOrMissingReported=true");return true;
+}
+
+(:test,:typecheck(false)) function deliveryRealRegisteredDeadline(logger){
+    var now=Time.now().value().toLong();var store=new DeliveryScheduleStore();
+    var transfer=new NativeTransfer("https://jekamas.github.io/SpaceFox",store);
+    store.write("sf.transfer.ready",{"base"=>transfer.base,"accepted"=>true});
+    store.write("sf.batch.pending",{"base"=>transfer.base,"pending"=>true});
+    transfer.attempted(now);
+    var due=now+300;
+    try{
+        Background.registerForTemporalEvent(new Time.Moment(due.toNumber()));
+        Test.assert(Background.getTemporalEventRegisteredTime().value().toLong()==due);
+        armFeed(transfer,now+60);
+        Test.assert(Background.getTemporalEventRegisteredTime().value().toLong()==due);
+        armFeed(transfer,now+120);
+        Test.assert(Background.getTemporalEventRegisteredTime().value().toLong()==due);
+        logger.debug("REGISTERED_DEADLINE preserved=true wakeAndReload=true");
+    }finally{Background.deleteTemporalEvent();}
+    return true;
+}
+
+(:typecheck(false)) class DeliveryAdmissionCache {
+    var store;var packet;
+    function initialize(adapter){store=adapter;packet=true;}
+}
+
+(:test,:typecheck(false)) function deliveryDuplicateCallbackDoesNotInvalidateBuild(logger){
+    var store=new DeliveryScheduleStore();var cache=new DeliveryAdmissionCache(store);
+    var incoming=new NativeIncoming(store,"https://jekamas.github.io/SpaceFox");
+    var machine=new SceneLifecycle();machine.replace(true);machine.painted();
+    Test.assert(machine.request());var token=machine.begin();Test.assert(token!=null);
+    // No response, then a response already processed: both reach the production
+    // decision seam and leave the in-progress generation unchanged.
+    Test.assert(!NativeForegroundApp.hasNewIncoming(cache,incoming));
+    Test.assert(machine.phase==5);
+    var marker={"sha256"=>"same","sequence"=>1};store.write("sf.incoming.feed",marker);
+    store.write("sf.incoming.feed.processed",incoming.token(marker));
+    Test.assert(!NativeForegroundApp.hasNewIncoming(cache,incoming));
+    Test.assert(machine.phase==5&&machine.generation==token);
+    store.write("sf.incoming.feed",{"sha256"=>"new","sequence"=>2});
+    Test.assert(NativeForegroundApp.hasNewIncoming(cache,incoming));
+    machine.cancel();Test.assert(!machine.complete(token));Test.assert(machine.phase==2);
+    logger.debug("CALLBACKS duplicateNoMutation=2 newCandidateApplied=1 staleCompletionRejected=1");return true;
+}

@@ -1,0 +1,24 @@
+{
+  "observedAt": "2026-11-14T21:43:16.827Z",
+  "page": "https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3",
+  "clientSource": "https://apps.garmin.com/_next/static/chunks/pages/_app-0e2c735a1a779095.js",
+  "installMutationInputs": [
+    "appId",
+    "deviceId"
+  ],
+  "installMethod": "POST",
+  "installUrlTemplate": "/apps/{appId}/install?unitId={deviceId}",
+  "installVersionParameter": false,
+  "compatibilityMethod": "GET",
+  "compatibilityVersionParameter": "internalAppVersion",
+  "downloadCallbackArguments": [
+    "appId",
+    "deviceId"
+  ],
+  "previewStatusesAllowed": [
+    "APPROVED",
+    "PENDING",
+    "PENDING_REAPPROVAL"
+  ],
+  "conclusion": "The current official web client does not bind an installation version. No supported explicit-version option was found in this inspected download path. This does not identify which build the server selected or prove the cause of the old physical build."
+}

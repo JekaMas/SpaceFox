@@ -1,5 +1,9 @@
 # Independent verification boundary
 
+This checkpoint describes the earlier 0.1.8/65b7215d verification. Public main
+subsequently advanced and published an independent 0.1.8 test prerelease; the
+combined 0.1.9 candidate requires fresh integrated proof and export.
+
 The physical delivery remains **NOT DONE**. The owner observed 0.1.6. No target
 binary execution, fresh matching physical launch, or stable physical mode round trip was
 observed. Neither a simulator nor a test-key installation establishes this.

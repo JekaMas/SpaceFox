@@ -1,0 +1,52 @@
+------------------------------------------------------------------------------
+Executing test deliveryModeCallbacksAreIdempotent...
+DEBUG (01:22): MODE_CALLBACKS applied=9 observedNoMutation=11 skipped=0
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryRejectedResponseRetainsScene...
+DEBUG (01:22): REJECTED_RESPONSE retainedAcceptedScene=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryPendingDeadlineDoesNotMove...
+DEBUG (01:22): PENDING_DEADLINE first=1300 wake=1300 reload=1300 osMinimum=1600
+PASS
+------------------------------------------------------------------------------
+Executing test deliverySceneEventsAndLateCompletion...
+DEBUG (01:22): SCENE_EVENTS applied=9 observedNoMutation=2 skipped=0
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryVisualIdentityCases...
+DEBUG (01:22): VISUAL_KEY sameT0AndGeneration=true modelSitePointQualificationArtChangesDistinct=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryVisualWaitsForMatchingBatch...
+DEBUG (01:22): VISUAL_BATCH pendingAndWrongIdentityRejected=true completedMatchingBatchApplied=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryPendingAssetsAreNotIncomplete...
+DEBUG (01:22): PENDING_STATUS scheduledOrLateWait=true consumedOrMissingReported=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryRealRegisteredDeadline...
+DEBUG (01:22): REGISTERED_DEADLINE preserved=true wakeAndReload=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryDuplicateCallbackDoesNotInvalidateBuild...
+DEBUG (01:22): CALLBACKS duplicateNoMutation=2 newCandidateApplied=1 staleCompletionRejected=1
+PASS
+
+==============================================================================
+RESULTS
+Test:                                           Status:
+deliveryModeCallbacksAreIdempotent              PASS
+deliveryRejectedResponseRetainsScene            PASS
+deliveryPendingDeadlineDoesNotMove              PASS
+deliverySceneEventsAndLateCompletion            PASS
+deliveryVisualIdentityCases                     PASS
+deliveryVisualWaitsForMatchingBatch             PASS
+deliveryPendingAssetsAreNotIncomplete           PASS
+deliveryRealRegisteredDeadline                  PASS
+deliveryDuplicateCallbackDoesNotInvalidateBuild PASS
+Ran 9 tests
+
+PASSED (passed=9, failed=0, errors=0)

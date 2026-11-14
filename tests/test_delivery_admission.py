@@ -34,6 +34,12 @@ class DeliveryAdmission(unittest.TestCase):
         required = {delta_path, delta['priorCatalog']['path']} | set(delta['sources'])
         required |= {item['path'] for item in delta['priorSnapshots'].values()}
         required |= {item['path'] for item in delta['evidence'].values()}
+        cache_path = 'openspec/changes/spacefox-watchface/evidence/release-cache-port/cache-port-proof.json'
+        cache = json.loads((ROOT/cache_path).read_text())
+        required |= {cache_path, cache['priorCatalog']['path'], cache['cacheObservation']['path']}
+        required |= set(cache['sources'])
+        required |= {item['path'] for item in cache['priorSnapshots'].values()}
+        required |= {item['path'] for item in cache['evidence'].values()}
         self.assertFalse(required - set(inputs), sorted(required - set(inputs)))
 
 if __name__ == '__main__': unittest.main()

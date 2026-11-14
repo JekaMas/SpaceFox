@@ -36,8 +36,8 @@ class DeliveryGate(unittest.TestCase):
         r=copy.deepcopy(self.receipt);r['watchModes']['events'][1]['coherentScene']=False
         self.assertIn('stable active and ambient transitions on the physical watch are not observed',evaluate(r,'x')['failures'])
     def test_actual_incident_is_not_done(self):
-        p=ROOT/'openspec/changes/spacefox-watchface/evidence/delivery01/physical-current.json'
-        result=evaluate(json.loads(p.read_text()), '0.1.7')
+        p=ROOT/'openspec/changes/spacefox-watchface/evidence/delivery01/physical-after-restart.json'
+        result=evaluate(json.loads(p.read_text()), '0.1.9')
         self.assertEqual(result['status'],'NOT DONE')
         self.assertEqual(len(result['failures']),5)
 

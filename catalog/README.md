@@ -1,11 +1,12 @@
 # Publisher catalog core
 
+> Some historical authoring evidence referenced below is not included in this public export. Statements about those records retain their historical scope and are not independently verifiable from this checkout.
+
 The active recipe now uses the compatible producer-2 curation extension.
 See [maintained global visual catalog](../docs/GLOBAL_VISUAL_CATALOG.md) for
 working add/correct/replace commands, official additions, coverage and geography.
 The schema-1 import contract below remains supported as a compatibility lane.
-Current candidate `2026-11-12.global.18.origin-review1` and its finite factual/art
-boundaries are recorded in [the whole closure packet](../openspec/changes/spacefox-watchface/evidence/current-catalog-closure/README.md).
+The active recipe identifies `2026-11-14.global.40.best-effort-r1` in `source.json`; its pinned eligibility and curation inputs are authoritative. The earlier global.18 closure packet is historical and is not included in this public export.
 
 `source.json` is the one active authored catalog input. It pins immutable import
 seeds by repository-relative path and SHA-256. The initial version adapts the

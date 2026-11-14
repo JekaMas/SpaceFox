@@ -7,9 +7,15 @@ phone release notes and an empty Updates list do not identify executing code.
 Keep the existing cache; corrected-build delivery and stable scene transitions
 remain NOT DONE. See the [corrected record](openspec/changes/spacefox-watchface/evidence/ux03-delivery/PUBLICATION.md).
 
-## Ordinary 0.1.7 candidate
+## Current testing and ordinary 0.1.7
 
-The ordinary candidate uses the original [SpaceFox Connect IQ listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3) and the watches in [supported devices](docs/SUPPORTED_DEVICES.md), including Forerunner 165 Music and Forerunner 965. Garmin accepted 0.1.7 at the original card, which now shows 0.1.7 (Internal 6). The existing Forerunner 165 Music installation was queued using Internal 6 compatibility; physical delivery/installation and public approval remain unobserved. See the [0.1.7 publication record](openspec/changes/spacefox-watchface/evidence/ux03-delivery/PUBLICATION.md). A queue or phone listing label alone does not prove the version running on the watch.
+The combined 0.1.9 repair is a local candidate; the latest published 0.1.8 is
+a GitHub test prerelease, not a Garmin submission. The owner last observed 0.1.6
+on the physical watch after a power cycle. Simulator observations use isolated
+test identities and do not establish installation or behavior of the signed
+candidate on that watch.
+
+The ordinary candidate uses the original [SpaceFox Connect IQ listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3) and the watches in [supported devices](docs/SUPPORTED_DEVICES.md), including Forerunner 165 Music and Forerunner 965. Garmin accepted 0.1.7 at the original card, which shows 0.1.7 (Internal 6) in the publisher preview. An installation request was acknowledged without specifying a version; it does not establish which build was queued or installed. Physical delivery/installation and public approval remain unobserved. See the [0.1.7 publication record](openspec/changes/spacefox-watchface/evidence/ux03-delivery/PUBLICATION.md).
 
 In the Connect IQ phone app, open **My Device → Updates → Update All**, then sync through Garmin Connect and select and apply the ordinary SpaceFox watch face. Do not expect tapping an IQ or PRG file on the phone to install it. If an update or feed error persists, record the foreground menu version and, where shown, the background build stamp. Keep the existing cache; deletion and reinstallation are not the first diagnostic step. The actual phone flow, physical settings entry and watch installation remain unverified.
 
@@ -18,3 +24,7 @@ A clean install defaults to English; Field 1 steps, Field 2 Body Battery, Field 
 Check the clock and four fields, wait for a schedule and rocket/map, and compare the launch against its source. Confirm `T-` before a known target and `T+` after it if that situation is encountered; zero alone is not confirmation of liftoff. Try offline display, reconnection and reboot. Note the watch firmware, app version, phone model, approximate time and steps for any problem. Report at [GitHub Issues](https://github.com/JekaMas/SpaceFox/issues), omitting health readings or other private details from screenshots.
 
 See [privacy](https://github.com/JekaMas/SpaceFox/blob/main/docs/PRIVACY.md), [licenses](https://github.com/JekaMas/SpaceFox/blob/main/THIRD_PARTY_NOTICES.md) and [project setup](https://github.com/JekaMas/SpaceFox/blob/main/docs/AGENT_SETUP.md).
+
+## Candidate 0.1.8 test package
+
+A higher-version test candidate is in preparation. Check the GitHub release status and its checksums before use; a draft is not a published release. Match `SpaceFox-fr165m.prg` to the Forerunner 165 Music and `SpaceFox-fr165.prg` to the standard model. For USB installation, simulator steps, offline checks and the phone/pairing distinction, see [installation and testing](docs/TESTING_ON_PHONE.ru.md). The 0.1.7 incident above remains open until the executing version and actual device behavior are observed.

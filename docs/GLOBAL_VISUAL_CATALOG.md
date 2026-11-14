@@ -1,20 +1,22 @@
 # Maintained global visual catalog
 
-The local 2026+ candidate is `2026-11-12.global.18.origin-review1`. The sole
-recipe-pinned [eligibility registry](../catalog/current-2026.json) retains 210
-identities: 151 source-qualified current configurations, 53 under review,
-one source-supported current-view exclusion and five placeholders. Specific or
-reviewed shared artwork covers 142/151; nine identities retain generic art.
-These are qualified-so-far counts, not a final worldwide denominator. Future
-unknown or disputed references retain their identity, source age and fallback.
+> Some historical authoring evidence referenced below is not included in this public export. Statements about those records retain their historical scope and are not independently verifiable from this checkout.
 
-The [whole closure packet](../openspec/changes/spacefox-watchface/evidence/current-catalog-closure/README.md)
+The active source recipe is [`catalog/source.json`](../catalog/source.json), version `2026-11-14.global.40.best-effort-r1`; follow its pinned eligibility and curation inputs rather than older counts below. Those historical observations are not current coverage or a worldwide completeness claim. Future unknown or disputed references retain their identity, source age and fallback.
+
+The sections below retain version-specific research and instructions; verify each recipe and count against the active pinned inputs before use.
+
+## Historical global.18 observations
+
+The earlier `2026-11-12.global.18.origin-review1` snapshot recorded 210 identities: 151 source-qualified configurations, 53 under review, one source-supported exclusion and five placeholders. Specific or reviewed shared artwork covered 142/151; nine retained generic art. These counts describe that snapshot only.
+
+The whole closure packet (historical record not included in the public export)
 records fresh primary research for all 54 predecessor review identities and all
 11 predecessor art gaps. It adds 12 exact complete-vehicle official offerings,
 14 original source-dated profiles, a sourced Bayern-Chemie manufacturer role and
 67 independent origin assertions across the two immutable amendments. Model
 origin coverage is 109/151 and associated-organization origin coverage is 39/48.
-The [independent whole review and repair](../openspec/changes/spacefox-watchface/evidence/current-catalog-closure/independent-r1/README.md) appends explicit national-identity or incorporation sources for five organizations whose original citations relied on headquarters or factory locations. Countries, artwork, lifecycle and event records are unchanged; a different final whole peer remains required.
+The independent whole review and repair (historical record not included in the public export) appends explicit national-identity or incorporation sources for five organizations whose original citations relied on headquarters or factory locations. Countries, artwork, lifecycle and event records are unchanged; a different final whole peer remains required.
 An agency/company origin does not imply every vehicle or motor has that origin.
 Original facts, 638 predecessor assets, all 218 site rows and 197 unchanged
 lifecycle decisions remain retained. The current archive has 652 assets.
@@ -83,8 +85,8 @@ active/pending flags retain their original meaning; they are not current in-serv
 proof. Official additions have null provider flags/counts and a separate official
 lifecycle assertion, rather than invented provider records.
 
-The accepted [remaining-art R1 source review](../openspec/changes/spacefox-watchface/evidence/remaining-art/r1/SOURCE_REVIEW.md)
-accounts for its earlier63 exact gaps. The new [R2 research packet](../openspec/changes/spacefox-watchface/evidence/remaining-art/r2/README.md)
+The accepted remaining-art R1 source review (historical record not included in the public export)
+accounts for its earlier63 exact gaps. The new R2 research packet (historical record not included in the public export)
 accounts for every27 inherited gap and separates12 source-bound original candidates
 from15 unresolved identities. All12 actual production SFV profiles were inspected
 at the true54×124 native slot on bright and faded maps. This portable Pillow
@@ -333,7 +335,7 @@ transitive materializer/native bridge are explicitly unqualified for watch use;
 task4.3 and the complete worldwide/native/device gates remain open.
 ## Global content R1 evidence and open work
 
-See [source and per-ID review](../openspec/changes/spacefox-watchface/evidence/global-content/r1/source-review.md), original contact sheets and machine coverage in that directory. Source images were inspected; unpublished dimensions and payload envelopes are explicitly schematic. Historic FAA2017 material supports historic shape only. Lifecycle assertions preserve source conflicts, and no launch/manufacturer country supplies an unsourced origin. European vehicle origin remains distinct from FrenchGuiana site jurisdiction; Electron modelNZ versus operatorUS is preserved.
+See source and per-ID review (historical record not included in the public export), original contact sheets and machine coverage in that directory. Source images were inspected; unpublished dimensions and payload envelopes are explicitly schematic. Historic FAA2017 material supports historic shape only. Lifecycle assertions preserve source conflicts, and no launch/manufacturer country supplies an unsourced origin. European vehicle origin remains distinct from FrenchGuiana site jurisdiction; Electron modelNZ versus operatorUS is preserved.
 
 Full-global catalog stays publisher-side. Every asset must pass export admission; the producer retains its fixed64KiB selection,1MiB artifact and4KiB shard caps. The separate native8KiB wire budget is unchanged; this batch does not qualify rich selections for that wire. Historical global.2 full-pack tests use an explicitly frozen recipe; new current tests cover the larger source, real over-budget rejection, bounded all-asset validation, selected closure, immutable mark rollback and atomic malformed-art rejection. Neither these checks nor the counts complete task4.3. Worldwide/upcoming collection, exact pad accuracy, Omelek/Kwajalein/Guam detail, rich10481B native fit, actual phone/FR165/cloud90day resilience and Store acceptance remain open.
 

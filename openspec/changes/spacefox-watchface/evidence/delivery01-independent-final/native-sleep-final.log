@@ -1,174 +1,210 @@
-Background: SFR_PROBE owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-Background: NATIVE_METRIC phase=temporal-start used=26008 free=35240 total=61248 sampledHigh=26008 utc=1794691425 ms=8366 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-Background: NATIVE_METRIC phase=pre-request used=27360 free=33888 total=61248 sampledHigh=27360 utc=1794691425 ms=8367 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-Background: NATIVE_SCHEDULE now=1794691425 requested=1794692814 registered=1794692814 last=1794691425 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-Background: NATIVE_METRIC phase=temporal-scheduled used=34720 free=26528 total=61248 sampledHigh=34720 utc=1794691425 ms=8388 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-Background: NATIVE_WRITES phase=background-total count=0 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-Background: NATIVE_METRIC phase=background-exit used=34408 free=26840 total=61248 sampledHigh=34720 utc=1794691425 ms=8388 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-SFR_PROBE owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=foreground-deferred-before-view used=74024 free=52760 total=126784 sampledHigh=74024 utc=1794691425 ms=8391 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=load-bytes-assembled used=90408 free=36376 total=126784 sampledHigh=90408 utc=1794691425 ms=8399 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=load-raw-assembled used=89888 free=36896 total=126784 sampledHigh=90408 utc=1794691425 ms=8399 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=bridge-catalog-before-parse used=92304 free=34480 total=126784 sampledHigh=92304 utc=1794691425 ms=8401 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=json-parsed used=95472 free=31312 total=126784 sampledHigh=95472 utc=1794691425 ms=8437 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=bridge-catalog-projected used=92832 free=33952 total=126784 sampledHigh=95472 utc=1794691425 ms=8437 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=json-parsed used=101016 free=25768 total=126784 sampledHigh=101016 utc=1794691425 ms=8499 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=bridge-header-start used=100504 free=26280 total=126784 sampledHigh=101016 utc=1794691425 ms=8500 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=bridge-header-refs used=101248 free=25536 total=126784 sampledHigh=101248 utc=1794691425 ms=8500 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=bridge-catalog-admitted used=102056 free=24728 total=126784 sampledHigh=102056 utc=1794691425 ms=8501 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=feed-validated used=100576 free=26208 total=126784 sampledHigh=102056 utc=1794691425 ms=8505 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_DISPLAY active=true bitmap=false decoding=false ms=8509 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=foreground-initial-complete used=89200 free=37584 total=126784 sampledHigh=102056 utc=1794691425 ms=8510 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-SLEEP_START build=0.1.8 id=65b7215d
-NATIVE_METRIC phase=foreground-incoming-complete used=97144 free=29640 total=126784 sampledHigh=102056 utc=1794691425 ms=8513 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=foreground-plan-complete used=97144 free=29640 total=126784 sampledHigh=102056 utc=1794691425 ms=8513 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=foreground-before-view used=97136 free=29648 total=126784 sampledHigh=102056 utc=1794691425 ms=8513 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_WRITES phase=foreground-reload-total count=0 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=97440 free=29344 total=126784 sampledHigh=102056 utc=1794691425 ms=8631 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-build-start used=97904 free=28880 total=126784 sampledHigh=102056 utc=1794691425 ms=8632 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-build-reader used=98760 free=28024 total=126784 sampledHigh=102056 utc=1794691425 ms=8632 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-build-root-raw used=101856 free=24928 total=126784 sampledHigh=102056 utc=1794691425 ms=8634 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=json-parsed used=106104 free=20680 total=126784 sampledHigh=106104 utc=1794691425 ms=8710 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-build-root-parsed used=102408 free=24376 total=126784 sampledHigh=106104 utc=1794691425 ms=8710 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=101832 free=24952 total=126784 sampledHigh=106104 utc=1794691425 ms=8717 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=json-parsed used=107488 free=19296 total=126784 sampledHigh=107488 utc=1794691425 ms=8765 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-raw used=110232 free=16552 total=126784 sampledHigh=110232 utc=1794691425 ms=8767 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-ready used=110400 free=16384 total=126784 sampledHigh=110400 utc=1794691425 ms=8772 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110400 free=16384 total=126784 sampledHigh=110400 utc=1794691425 ms=8874 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=110400 free=16384 total=126784 sampledHigh=110400 utc=1794691425 ms=8887 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110400 free=16384 total=126784 sampledHigh=110400 utc=1794691425 ms=8916 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=110400 free=16384 total=126784 sampledHigh=110400 utc=1794691426 ms=8932 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110400 free=16384 total=126784 sampledHigh=110400 utc=1794691426 ms=8967 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=106176 free=20608 total=126784 sampledHigh=110400 utc=1794691426 ms=8973 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=106176 free=20608 total=126784 sampledHigh=110400 utc=1794691426 ms=9017 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-raw used=110184 free=16600 total=126784 sampledHigh=110400 utc=1794691426 ms=9018 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-ready used=110368 free=16416 total=126784 sampledHigh=110400 utc=1794691426 ms=9022 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110368 free=16416 total=126784 sampledHigh=110400 utc=1794691426 ms=9067 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=110368 free=16416 total=126784 sampledHigh=110400 utc=1794691426 ms=9086 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110368 free=16416 total=126784 sampledHigh=110400 utc=1794691426 ms=9116 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=106192 free=20592 total=126784 sampledHigh=110400 utc=1794691426 ms=9131 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=106192 free=20592 total=126784 sampledHigh=110400 utc=1794691426 ms=9167 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-raw used=110216 free=16568 total=126784 sampledHigh=110400 utc=1794691426 ms=9169 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-ready used=110392 free=16392 total=126784 sampledHigh=110400 utc=1794691426 ms=9173 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110392 free=16392 total=126784 sampledHigh=110400 utc=1794691426 ms=9217 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=110392 free=16392 total=126784 sampledHigh=110400 utc=1794691426 ms=9238 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110392 free=16392 total=126784 sampledHigh=110400 utc=1794691426 ms=9267 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=106192 free=20592 total=126784 sampledHigh=110400 utc=1794691426 ms=9286 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=106192 free=20592 total=126784 sampledHigh=110400 utc=1794691426 ms=9316 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-raw used=110256 free=16528 total=126784 sampledHigh=110400 utc=1794691426 ms=9318 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-ready used=110424 free=16360 total=126784 sampledHigh=110424 utc=1794691426 ms=9322 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110424 free=16360 total=126784 sampledHigh=110424 utc=1794691426 ms=9367 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=110424 free=16360 total=126784 sampledHigh=110424 utc=1794691426 ms=9385 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110424 free=16360 total=126784 sampledHigh=110424 utc=1794691426 ms=9417 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=110424 free=16360 total=126784 sampledHigh=110424 utc=1794691426 ms=9435 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110424 free=16360 total=126784 sampledHigh=110424 utc=1794691426 ms=9466 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=106208 free=20576 total=126784 sampledHigh=110424 utc=1794691426 ms=9472 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=106208 free=20576 total=126784 sampledHigh=110424 utc=1794691426 ms=9517 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-raw used=110328 free=16456 total=126784 sampledHigh=110424 utc=1794691426 ms=9518 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-ready used=110480 free=16304 total=126784 sampledHigh=110480 utc=1794691426 ms=9522 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110480 free=16304 total=126784 sampledHigh=110480 utc=1794691426 ms=9567 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=110480 free=16304 total=126784 sampledHigh=110480 utc=1794691426 ms=9588 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110480 free=16304 total=126784 sampledHigh=110480 utc=1794691426 ms=9617 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=106224 free=20560 total=126784 sampledHigh=110480 utc=1794691426 ms=9637 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=106224 free=20560 total=126784 sampledHigh=110480 utc=1794691426 ms=9667 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-raw used=110248 free=16536 total=126784 sampledHigh=110480 utc=1794691426 ms=9669 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-ready used=110424 free=16360 total=126784 sampledHigh=110480 utc=1794691426 ms=9673 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110424 free=16360 total=126784 sampledHigh=110480 utc=1794691426 ms=9717 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=110424 free=16360 total=126784 sampledHigh=110480 utc=1794691426 ms=9736 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110424 free=16360 total=126784 sampledHigh=110480 utc=1794691426 ms=9767 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=106224 free=20560 total=126784 sampledHigh=110480 utc=1794691426 ms=9785 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=106224 free=20560 total=126784 sampledHigh=110480 utc=1794691426 ms=9816 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-raw used=110296 free=16488 total=126784 sampledHigh=110480 utc=1794691426 ms=9817 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-ready used=110456 free=16328 total=126784 sampledHigh=110480 utc=1794691426 ms=9821 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110456 free=16328 total=126784 sampledHigh=110480 utc=1794691426 ms=9867 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=110456 free=16328 total=126784 sampledHigh=110480 utc=1794691426 ms=9881 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110456 free=16328 total=126784 sampledHigh=110480 utc=1794691426 ms=9917 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=106240 free=20544 total=126784 sampledHigh=110480 utc=1794691427 ms=9931 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=106240 free=20544 total=126784 sampledHigh=110480 utc=1794691427 ms=9966 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-raw used=110368 free=16416 total=126784 sampledHigh=110480 utc=1794691427 ms=9967 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-ready used=110512 free=16272 total=126784 sampledHigh=110512 utc=1794691427 ms=9971 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110512 free=16272 total=126784 sampledHigh=110512 utc=1794691427 ms=10017 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=110512 free=16272 total=126784 sampledHigh=110512 utc=1794691427 ms=10030 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110512 free=16272 total=126784 sampledHigh=110512 utc=1794691427 ms=10068 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=110512 free=16272 total=126784 sampledHigh=110512 utc=1794691427 ms=10080 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110512 free=16272 total=126784 sampledHigh=110512 utc=1794691427 ms=10118 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=106256 free=20528 total=126784 sampledHigh=110512 utc=1794691427 ms=10119 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=106256 free=20528 total=126784 sampledHigh=110512 utc=1794691427 ms=10168 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-raw used=110344 free=16440 total=126784 sampledHigh=110512 utc=1794691427 ms=10169 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-ready used=110504 free=16280 total=126784 sampledHigh=110512 utc=1794691427 ms=10173 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110504 free=16280 total=126784 sampledHigh=110512 utc=1794691427 ms=10217 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=110504 free=16280 total=126784 sampledHigh=110512 utc=1794691427 ms=10233 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110504 free=16280 total=126784 sampledHigh=110512 utc=1794691427 ms=10268 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=110504 free=16280 total=126784 sampledHigh=110512 utc=1794691427 ms=10278 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110504 free=16280 total=126784 sampledHigh=110512 utc=1794691427 ms=10317 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=106272 free=20512 total=126784 sampledHigh=110512 utc=1794691427 ms=10321 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=106272 free=20512 total=126784 sampledHigh=110512 utc=1794691427 ms=10366 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-raw used=110392 free=16392 total=126784 sampledHigh=110512 utc=1794691427 ms=10368 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-ready used=110544 free=16240 total=126784 sampledHigh=110544 utc=1794691427 ms=10373 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110544 free=16240 total=126784 sampledHigh=110544 utc=1794691427 ms=10417 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=110544 free=16240 total=126784 sampledHigh=110544 utc=1794691427 ms=10431 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110544 free=16240 total=126784 sampledHigh=110544 utc=1794691427 ms=10466 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=110544 free=16240 total=126784 sampledHigh=110544 utc=1794691427 ms=10473 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110544 free=16240 total=126784 sampledHigh=110544 utc=1794691427 ms=10515 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=110544 free=16240 total=126784 sampledHigh=110544 utc=1794691427 ms=10522 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110544 free=16240 total=126784 sampledHigh=110544 utc=1794691427 ms=10567 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=110544 free=16240 total=126784 sampledHigh=110544 utc=1794691427 ms=10575 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110544 free=16240 total=126784 sampledHigh=110544 utc=1794691427 ms=10618 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=110544 free=16240 total=126784 sampledHigh=110544 utc=1794691427 ms=10628 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110544 free=16240 total=126784 sampledHigh=110544 utc=1794691427 ms=10667 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=110544 free=16240 total=126784 sampledHigh=110544 utc=1794691427 ms=10679 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=110544 free=16240 total=126784 sampledHigh=110544 utc=1794691427 ms=10718 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=106288 free=20496 total=126784 sampledHigh=110544 utc=1794691427 ms=10730 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=106288 free=20496 total=126784 sampledHigh=110544 utc=1794691427 ms=10768 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-raw used=106648 free=20136 total=126784 sampledHigh=110544 utc=1794691427 ms=10769 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-ready used=107736 free=19048 total=126784 sampledHigh=110544 utc=1794691427 ms=10772 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=107736 free=19048 total=126784 sampledHigh=110544 utc=1794691427 ms=10815 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=107736 free=19048 total=126784 sampledHigh=110544 utc=1794691427 ms=10829 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=107736 free=19048 total=126784 sampledHigh=110544 utc=1794691427 ms=10866 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=104056 free=22728 total=126784 sampledHigh=110544 utc=1794691427 ms=10867 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-first-map-verified used=104064 free=22720 total=126784 sampledHigh=110544 utc=1794691427 ms=10867 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=103592 free=23192 total=126784 sampledHigh=110544 utc=1794691427 ms=10916 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=json-parsed used=106720 free=20064 total=126784 sampledHigh=110544 utc=1794691428 ms=10937 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-raw used=108080 free=18704 total=126784 sampledHigh=110544 utc=1794691428 ms=10939 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-ready used=108112 free=18672 total=126784 sampledHigh=110544 utc=1794691428 ms=10941 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=108112 free=18672 total=126784 sampledHigh=110544 utc=1794691428 ms=11033 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=108112 free=18672 total=126784 sampledHigh=110544 utc=1794691428 ms=11037 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=108112 free=18672 total=126784 sampledHigh=110544 utc=1794691428 ms=11067 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=108112 free=18672 total=126784 sampledHigh=110544 utc=1794691428 ms=11072 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=108112 free=18672 total=126784 sampledHigh=110544 utc=1794691428 ms=11117 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=108112 free=18672 total=126784 sampledHigh=110544 utc=1794691428 ms=11121 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=108112 free=18672 total=126784 sampledHigh=110544 utc=1794691428 ms=11167 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=108112 free=18672 total=126784 sampledHigh=110544 utc=1794691428 ms=11170 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=108112 free=18672 total=126784 sampledHigh=110544 utc=1794691428 ms=11217 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=108112 free=18672 total=126784 sampledHigh=110544 utc=1794691428 ms=11227 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=108112 free=18672 total=126784 sampledHigh=110544 utc=1794691428 ms=11267 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=108112 free=18672 total=126784 sampledHigh=110544 utc=1794691428 ms=11271 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=108112 free=18672 total=126784 sampledHigh=110544 utc=1794691428 ms=11318 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=108112 free=18672 total=126784 sampledHigh=110544 utc=1794691428 ms=11326 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=108112 free=18672 total=126784 sampledHigh=110544 utc=1794691428 ms=11367 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=104704 free=22080 total=126784 sampledHigh=110544 utc=1794691428 ms=11369 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=104240 free=22544 total=126784 sampledHigh=110544 utc=1794691428 ms=11417 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=json-parsed used=106872 free=19912 total=126784 sampledHigh=110544 utc=1794691428 ms=11435 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-raw used=106856 free=19928 total=126784 sampledHigh=110544 utc=1794691428 ms=11437 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-chunk-ready used=106944 free=19840 total=126784 sampledHigh=110544 utc=1794691428 ms=11438 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=106944 free=19840 total=126784 sampledHigh=110544 utc=1794691428 ms=11468 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-decode-step used=105040 free=21744 total=126784 sampledHigh=110544 utc=1794691428 ms=11473 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=104576 free=22208 total=126784 sampledHigh=110544 utc=1794691428 ms=11517 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=json-parsed used=109592 free=17192 total=126784 sampledHigh=110544 utc=1794691428 ms=11539 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=101960 free=24824 total=126784 sampledHigh=110544 utc=1794691428 ms=11567 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=102008 free=24776 total=126784 sampledHigh=110544 utc=1794691428 ms=11618 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=102056 free=24728 total=126784 sampledHigh=110544 utc=1794691428 ms=11667 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=102104 free=24680 total=126784 sampledHigh=110544 utc=1794691428 ms=11716 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=102136 free=24648 total=126784 sampledHigh=110544 utc=1794691428 ms=11766 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-step-enter used=102152 free=24632 total=126784 sampledHigh=110544 utc=1794691428 ms=11815 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_WRITES phase=raster-activation count=0 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
-NATIVE_METRIC phase=sfr-full-scene-active used=99200 free=27584 total=126784 sampledHigh=110544 utc=1794691428 ms=11816 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
+Background: SFR_PROBE owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+Background: SFR_PROBE owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+Background: NATIVE_METRIC phase=temporal-start used=26080 free=35168 total=61248 sampledHigh=26080 utc=1794693137 ms=8366 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+Background: NATIVE_METRIC phase=pre-request used=27408 free=33840 total=61248 sampledHigh=27408 utc=1794693137 ms=8367 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+Background: NATIVE_SCHEDULE now=1794693137 requested=1794696737 registered=1794696737 last=1794693137 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+Background: NATIVE_METRIC phase=temporal-scheduled used=27696 free=33552 total=61248 sampledHigh=27696 utc=1794693137 ms=8370 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+Background: NATIVE_GET path=feed.json n=1 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+SFR_PROBE owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=load-bytes-assembled used=90952 free=35832 total=126784 sampledHigh=90952 utc=1794693137 ms=8379 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=load-raw-assembled used=90432 free=36352 total=126784 sampledHigh=90952 utc=1794693137 ms=8379 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=bridge-catalog-before-parse used=92912 free=33872 total=126784 sampledHigh=92912 utc=1794693137 ms=8381 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=json-parsed used=96080 free=30704 total=126784 sampledHigh=96080 utc=1794693137 ms=8413 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=bridge-catalog-projected used=93456 free=33328 total=126784 sampledHigh=96080 utc=1794693137 ms=8414 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=json-parsed used=101640 free=25144 total=126784 sampledHigh=101640 utc=1794693137 ms=8477 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=bridge-header-start used=101128 free=25656 total=126784 sampledHigh=101640 utc=1794693137 ms=8477 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=bridge-header-refs used=101872 free=24912 total=126784 sampledHigh=101872 utc=1794693137 ms=8478 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=bridge-catalog-admitted used=102680 free=24104 total=126784 sampledHigh=102680 utc=1794693137 ms=8479 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=feed-validated used=101184 free=25600 total=126784 sampledHigh=102680 utc=1794693137 ms=8483 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_DISPLAY active=true bitmap=false decoding=false ms=8487 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=foreground-initial-complete used=89808 free=36976 total=126784 sampledHigh=102680 utc=1794693137 ms=8487 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+SLEEP_START build=0.1.9 id=d04c16ef
+NATIVE_METRIC phase=foreground-incoming-complete used=97752 free=29032 total=126784 sampledHigh=102680 utc=1794693137 ms=8490 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=foreground-plan-complete used=97752 free=29032 total=126784 sampledHigh=102680 utc=1794693137 ms=8490 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=foreground-before-view used=97744 free=29040 total=126784 sampledHigh=102680 utc=1794693137 ms=8491 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_WRITES phase=foreground-reload-total count=0 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=98048 free=28736 total=126784 sampledHigh=102680 utc=1794693137 ms=8564 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-build-start used=98512 free=28272 total=126784 sampledHigh=102680 utc=1794693137 ms=8564 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-build-reader used=99368 free=27416 total=126784 sampledHigh=102680 utc=1794693137 ms=8565 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-build-root-raw used=102480 free=24304 total=126784 sampledHigh=102680 utc=1794693137 ms=8566 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=json-parsed used=106728 free=20056 total=126784 sampledHigh=106728 utc=1794693137 ms=8640 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-build-root-parsed used=103032 free=23752 total=126784 sampledHigh=106728 utc=1794693137 ms=8640 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=102456 free=24328 total=126784 sampledHigh=106728 utc=1794693137 ms=8642 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=json-parsed used=108128 free=18656 total=126784 sampledHigh=108128 utc=1794693137 ms=8692 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-raw used=110888 free=15896 total=126784 sampledHigh=110888 utc=1794693137 ms=8695 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-ready used=111056 free=15728 total=126784 sampledHigh=111056 utc=1794693137 ms=8699 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+Background: NATIVE_METRIC phase=feed-transfer-complete used=30304 free=30944 total=61248 sampledHigh=30304 utc=1794693137 ms=8700 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+Background: NATIVE_RESPONSE feed code=200 characters=2743 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+Background: NATIVE_WRITES phase=provisional-feed count=7 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+Background: NATIVE_METRIC phase=feed-provisional-staged used=30376 free=30872 total=61248 sampledHigh=30376 utc=1794693137 ms=8705 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+Background: NATIVE_WRITES phase=background-total count=11 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+Background: NATIVE_METRIC phase=background-exit used=37360 free=23888 total=61248 sampledHigh=37360 utc=1794693137 ms=8721 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=foreground-renderer-released used=93344 free=33440 total=126784 sampledHigh=111056 utc=1794693137 ms=8727 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=pre-request-released used=91592 free=35192 total=126784 sampledHigh=111056 utc=1794693137 ms=8728 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=bridge-catalog-before-parse used=97712 free=29072 total=126784 sampledHigh=111056 utc=1794693137 ms=8731 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=json-parsed used=100880 free=25904 total=126784 sampledHigh=111056 utc=1794693137 ms=8774 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=bridge-catalog-projected used=98256 free=28528 total=126784 sampledHigh=111056 utc=1794693137 ms=8775 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=json-parsed used=106440 free=20344 total=126784 sampledHigh=111056 utc=1794693137 ms=8858 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=bridge-header-start used=105928 free=20856 total=126784 sampledHigh=111056 utc=1794693137 ms=8859 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=bridge-header-refs used=106672 free=20112 total=126784 sampledHigh=111056 utc=1794693137 ms=8859 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=bridge-catalog-admitted used=107480 free=19304 total=126784 sampledHigh=111056 utc=1794693137 ms=8860 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=feed-validated used=105968 free=20816 total=126784 sampledHigh=111056 utc=1794693137 ms=8864 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=candidate-and-prior used=106328 free=20456 total=126784 sampledHigh=111056 utc=1794693137 ms=8865 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=candidate-compacted used=101216 free=25568 total=126784 sampledHigh=111056 utc=1794693137 ms=8866 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_WRITES phase=promotion count=10 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=cache-committed used=102640 free=24144 total=126784 sampledHigh=111056 utc=1794693137 ms=8872 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=foreground-feed-admission used=95560 free=31224 total=126784 sampledHigh=111056 utc=1794693137 ms=8873 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=foreground-incoming-complete used=95528 free=31256 total=126784 sampledHigh=111056 utc=1794693137 ms=8873 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=foreground-plan-complete used=95528 free=31256 total=126784 sampledHigh=111056 utc=1794693137 ms=8874 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=foreground-before-view used=95520 free=31264 total=126784 sampledHigh=111056 utc=1794693137 ms=8874 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=foreground-renderer-restored used=98328 free=28456 total=126784 sampledHigh=111056 utc=1794693137 ms=8876 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_WRITES phase=foreground-reload-total count=12 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+DIAG background-rearm
+NATIVE_METRIC phase=sfr-step-enter used=98080 free=28704 total=126784 sampledHigh=111056 utc=1794693137 ms=8929 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-build-start used=98544 free=28240 total=126784 sampledHigh=111056 utc=1794693137 ms=8929 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-build-reader used=99400 free=27384 total=126784 sampledHigh=111056 utc=1794693137 ms=8930 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-build-root-raw used=102496 free=24288 total=126784 sampledHigh=111056 utc=1794693137 ms=8931 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=json-parsed used=106744 free=20040 total=126784 sampledHigh=111056 utc=1794693138 ms=9028 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-build-root-parsed used=103048 free=23736 total=126784 sampledHigh=111056 utc=1794693138 ms=9029 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=102472 free=24312 total=126784 sampledHigh=111056 utc=1794693138 ms=9036 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=json-parsed used=108128 free=18656 total=126784 sampledHigh=111056 utc=1794693138 ms=9101 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-raw used=110888 free=15896 total=126784 sampledHigh=111056 utc=1794693138 ms=9105 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-ready used=111056 free=15728 total=126784 sampledHigh=111056 utc=1794693138 ms=9108 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111056 free=15728 total=126784 sampledHigh=111056 utc=1794693138 ms=9109 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=111056 free=15728 total=126784 sampledHigh=111056 utc=1794693138 ms=9122 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111056 free=15728 total=126784 sampledHigh=111056 utc=1794693138 ms=9128 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=111056 free=15728 total=126784 sampledHigh=111056 utc=1794693138 ms=9144 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111056 free=15728 total=126784 sampledHigh=111056 utc=1794693138 ms=9179 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=106832 free=19952 total=126784 sampledHigh=111056 utc=1794693138 ms=9184 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=106832 free=19952 total=126784 sampledHigh=111056 utc=1794693138 ms=9229 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-raw used=110840 free=15944 total=126784 sampledHigh=111056 utc=1794693138 ms=9231 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-ready used=111024 free=15760 total=126784 sampledHigh=111056 utc=1794693138 ms=9236 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111024 free=15760 total=126784 sampledHigh=111056 utc=1794693138 ms=9279 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=111024 free=15760 total=126784 sampledHigh=111056 utc=1794693138 ms=9299 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111024 free=15760 total=126784 sampledHigh=111056 utc=1794693138 ms=9329 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=106848 free=19936 total=126784 sampledHigh=111056 utc=1794693138 ms=9343 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=106848 free=19936 total=126784 sampledHigh=111056 utc=1794693138 ms=9380 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-raw used=110888 free=15896 total=126784 sampledHigh=111056 utc=1794693138 ms=9381 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-ready used=111064 free=15720 total=126784 sampledHigh=111064 utc=1794693138 ms=9385 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111064 free=15720 total=126784 sampledHigh=111064 utc=1794693138 ms=9428 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=111064 free=15720 total=126784 sampledHigh=111064 utc=1794693138 ms=9447 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111064 free=15720 total=126784 sampledHigh=111064 utc=1794693138 ms=9480 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=106864 free=19920 total=126784 sampledHigh=111064 utc=1794693138 ms=9498 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=106864 free=19920 total=126784 sampledHigh=111064 utc=1794693138 ms=9529 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-raw used=110928 free=15856 total=126784 sampledHigh=111064 utc=1794693138 ms=9531 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-ready used=111096 free=15688 total=126784 sampledHigh=111096 utc=1794693138 ms=9535 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111096 free=15688 total=126784 sampledHigh=111096 utc=1794693138 ms=9580 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=111096 free=15688 total=126784 sampledHigh=111096 utc=1794693138 ms=9598 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111096 free=15688 total=126784 sampledHigh=111096 utc=1794693138 ms=9627 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=111096 free=15688 total=126784 sampledHigh=111096 utc=1794693138 ms=9645 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111096 free=15688 total=126784 sampledHigh=111096 utc=1794693138 ms=9678 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=106880 free=19904 total=126784 sampledHigh=111096 utc=1794693138 ms=9684 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=106880 free=19904 total=126784 sampledHigh=111096 utc=1794693138 ms=9729 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-raw used=110984 free=15800 total=126784 sampledHigh=111096 utc=1794693138 ms=9731 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-ready used=111136 free=15648 total=126784 sampledHigh=111136 utc=1794693138 ms=9735 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111136 free=15648 total=126784 sampledHigh=111136 utc=1794693138 ms=9779 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=111136 free=15648 total=126784 sampledHigh=111136 utc=1794693138 ms=9799 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111136 free=15648 total=126784 sampledHigh=111136 utc=1794693138 ms=9829 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=106880 free=19904 total=126784 sampledHigh=111136 utc=1794693138 ms=9849 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=106880 free=19904 total=126784 sampledHigh=111136 utc=1794693138 ms=9879 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-raw used=110920 free=15864 total=126784 sampledHigh=111136 utc=1794693138 ms=9881 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-ready used=111096 free=15688 total=126784 sampledHigh=111136 utc=1794693138 ms=9885 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111096 free=15688 total=126784 sampledHigh=111136 utc=1794693138 ms=9928 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=111096 free=15688 total=126784 sampledHigh=111136 utc=1794693138 ms=9949 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111096 free=15688 total=126784 sampledHigh=111136 utc=1794693139 ms=10047 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=106896 free=19888 total=126784 sampledHigh=111136 utc=1794693139 ms=10061 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=106896 free=19888 total=126784 sampledHigh=111136 utc=1794693139 ms=10077 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-raw used=110968 free=15816 total=126784 sampledHigh=111136 utc=1794693139 ms=10079 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-ready used=111128 free=15656 total=126784 sampledHigh=111136 utc=1794693139 ms=10083 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111128 free=15656 total=126784 sampledHigh=111136 utc=1794693139 ms=10127 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=111128 free=15656 total=126784 sampledHigh=111136 utc=1794693139 ms=10142 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111128 free=15656 total=126784 sampledHigh=111136 utc=1794693139 ms=10178 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=106912 free=19872 total=126784 sampledHigh=111136 utc=1794693139 ms=10191 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=106912 free=19872 total=126784 sampledHigh=111136 utc=1794693139 ms=10229 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-raw used=111040 free=15744 total=126784 sampledHigh=111136 utc=1794693139 ms=10231 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-ready used=111184 free=15600 total=126784 sampledHigh=111184 utc=1794693139 ms=10235 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111184 free=15600 total=126784 sampledHigh=111184 utc=1794693139 ms=10278 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=111184 free=15600 total=126784 sampledHigh=111184 utc=1794693139 ms=10293 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111184 free=15600 total=126784 sampledHigh=111184 utc=1794693139 ms=10327 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=111184 free=15600 total=126784 sampledHigh=111184 utc=1794693139 ms=10339 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111184 free=15600 total=126784 sampledHigh=111184 utc=1794693139 ms=10378 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=106928 free=19856 total=126784 sampledHigh=111184 utc=1794693139 ms=10380 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=106928 free=19856 total=126784 sampledHigh=111184 utc=1794693139 ms=10430 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-raw used=111000 free=15784 total=126784 sampledHigh=111184 utc=1794693139 ms=10432 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-ready used=111160 free=15624 total=126784 sampledHigh=111184 utc=1794693139 ms=10437 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111160 free=15624 total=126784 sampledHigh=111184 utc=1794693139 ms=10480 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=111160 free=15624 total=126784 sampledHigh=111184 utc=1794693139 ms=10498 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111160 free=15624 total=126784 sampledHigh=111184 utc=1794693139 ms=10527 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=111160 free=15624 total=126784 sampledHigh=111184 utc=1794693139 ms=10537 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111160 free=15624 total=126784 sampledHigh=111184 utc=1794693139 ms=10580 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=106928 free=19856 total=126784 sampledHigh=111184 utc=1794693139 ms=10584 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=106928 free=19856 total=126784 sampledHigh=111184 utc=1794693139 ms=10628 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-raw used=111048 free=15736 total=126784 sampledHigh=111184 utc=1794693139 ms=10630 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-ready used=111200 free=15584 total=126784 sampledHigh=111200 utc=1794693139 ms=10636 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111200 free=15584 total=126784 sampledHigh=111200 utc=1794693139 ms=10679 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=111200 free=15584 total=126784 sampledHigh=111200 utc=1794693139 ms=10691 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111200 free=15584 total=126784 sampledHigh=111200 utc=1794693139 ms=10729 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=111200 free=15584 total=126784 sampledHigh=111200 utc=1794693139 ms=10737 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111200 free=15584 total=126784 sampledHigh=111200 utc=1794693139 ms=10779 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=111200 free=15584 total=126784 sampledHigh=111200 utc=1794693139 ms=10788 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111200 free=15584 total=126784 sampledHigh=111200 utc=1794693139 ms=10829 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=111200 free=15584 total=126784 sampledHigh=111200 utc=1794693139 ms=10838 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111200 free=15584 total=126784 sampledHigh=111200 utc=1794693139 ms=10878 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=111200 free=15584 total=126784 sampledHigh=111200 utc=1794693139 ms=10892 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111200 free=15584 total=126784 sampledHigh=111200 utc=1794693139 ms=10929 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=111200 free=15584 total=126784 sampledHigh=111200 utc=1794693139 ms=10941 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=111200 free=15584 total=126784 sampledHigh=111200 utc=1794693140 ms=10979 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=106944 free=19840 total=126784 sampledHigh=111200 utc=1794693140 ms=10989 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=106944 free=19840 total=126784 sampledHigh=111200 utc=1794693140 ms=11029 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-raw used=107304 free=19480 total=126784 sampledHigh=111200 utc=1794693140 ms=11030 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-ready used=108392 free=18392 total=126784 sampledHigh=111200 utc=1794693140 ms=11033 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=108392 free=18392 total=126784 sampledHigh=111200 utc=1794693140 ms=11080 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=108392 free=18392 total=126784 sampledHigh=111200 utc=1794693140 ms=11092 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=108392 free=18392 total=126784 sampledHigh=111200 utc=1794693140 ms=11129 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=104712 free=22072 total=126784 sampledHigh=111200 utc=1794693140 ms=11130 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-first-map-verified used=104720 free=22064 total=126784 sampledHigh=111200 utc=1794693140 ms=11130 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=104248 free=22536 total=126784 sampledHigh=111200 utc=1794693140 ms=11179 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=json-parsed used=107376 free=19408 total=126784 sampledHigh=111200 utc=1794693140 ms=11217 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-raw used=108736 free=18048 total=126784 sampledHigh=111200 utc=1794693140 ms=11219 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-ready used=108768 free=18016 total=126784 sampledHigh=111200 utc=1794693140 ms=11220 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=108768 free=18016 total=126784 sampledHigh=111200 utc=1794693140 ms=11229 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=108768 free=18016 total=126784 sampledHigh=111200 utc=1794693140 ms=11232 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=108768 free=18016 total=126784 sampledHigh=111200 utc=1794693140 ms=11278 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=108768 free=18016 total=126784 sampledHigh=111200 utc=1794693140 ms=11283 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=108768 free=18016 total=126784 sampledHigh=111200 utc=1794693140 ms=11329 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=108768 free=18016 total=126784 sampledHigh=111200 utc=1794693140 ms=11333 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=108768 free=18016 total=126784 sampledHigh=111200 utc=1794693140 ms=11379 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=108768 free=18016 total=126784 sampledHigh=111200 utc=1794693140 ms=11383 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=108768 free=18016 total=126784 sampledHigh=111200 utc=1794693140 ms=11430 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=108768 free=18016 total=126784 sampledHigh=111200 utc=1794693140 ms=11441 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=108768 free=18016 total=126784 sampledHigh=111200 utc=1794693140 ms=11479 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=108768 free=18016 total=126784 sampledHigh=111200 utc=1794693140 ms=11485 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=108768 free=18016 total=126784 sampledHigh=111200 utc=1794693140 ms=11529 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=108768 free=18016 total=126784 sampledHigh=111200 utc=1794693140 ms=11537 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=108768 free=18016 total=126784 sampledHigh=111200 utc=1794693140 ms=11577 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=105360 free=21424 total=126784 sampledHigh=111200 utc=1794693140 ms=11579 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=104896 free=21888 total=126784 sampledHigh=111200 utc=1794693140 ms=11629 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=json-parsed used=107528 free=19256 total=126784 sampledHigh=111200 utc=1794693140 ms=11657 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-raw used=107512 free=19272 total=126784 sampledHigh=111200 utc=1794693140 ms=11658 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-chunk-ready used=107600 free=19184 total=126784 sampledHigh=111200 utc=1794693140 ms=11659 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=107600 free=19184 total=126784 sampledHigh=111200 utc=1794693140 ms=11679 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-decode-step used=105696 free=21088 total=126784 sampledHigh=111200 utc=1794693140 ms=11685 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=105232 free=21552 total=126784 sampledHigh=111200 utc=1794693140 ms=11729 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=json-parsed used=110232 free=16552 total=126784 sampledHigh=111200 utc=1794693140 ms=11786 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=102600 free=24184 total=126784 sampledHigh=111200 utc=1794693140 ms=11788 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=102664 free=24120 total=126784 sampledHigh=111200 utc=1794693140 ms=11829 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=102680 free=24104 total=126784 sampledHigh=111200 utc=1794693140 ms=11879 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=102712 free=24072 total=126784 sampledHigh=111200 utc=1794693140 ms=11929 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=102760 free=24024 total=126784 sampledHigh=111200 utc=1794693141 ms=12023 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-step-enter used=102760 free=24024 total=126784 sampledHigh=111200 utc=1794693141 ms=12028 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_WRITES phase=raster-activation count=0 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
+NATIVE_METRIC phase=sfr-full-scene-active used=99808 free=26976 total=126784 sampledHigh=111200 utc=1794693141 ms=12029 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
 SLEEP_READY launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a bitmap=true renderer=true
-NATIVE_DISPLAY active=false bitmap=true decoding=false ms=24248 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
+NATIVE_DISPLAY active=false bitmap=true decoding=false ms=21312 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
 SLEEP_CHECK event=sleep-callback mode=1 sameBitmap=true sameRenderer=true sameLaunch=true decoding=false checks=1
 SLEEP_CHECK event=display-mode mode=1 sameBitmap=true sameRenderer=true sameLaunch=true decoding=false checks=2
 SLEEP_CHECK event=low-frame mode=1 sameBitmap=true sameRenderer=true sameLaunch=true decoding=false checks=3
 SLEEP_CHECK event=low-frame mode=1 sameBitmap=true sameRenderer=true sameLaunch=true decoding=false checks=4
-NATIVE_DISPLAY active=true bitmap=true decoding=false ms=29294 owner=cedb9328da25469ba0c647cae90b1b23|sleep-atomic|fdc4c5b26946
+NATIVE_DISPLAY active=true bitmap=true decoding=false ms=26470 owner=cedb9328da25469ba0c647cae90b1b23|sleep-rearm|7c6edd591566
 SLEEP_CHECK event=wake-callback mode=0 sameBitmap=true sameRenderer=true sameLaunch=true decoding=false checks=5
 SLEEP_CHECK event=display-mode mode=0 sameBitmap=true sameRenderer=true sameLaunch=true decoding=false checks=6

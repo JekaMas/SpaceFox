@@ -1,0 +1,17 @@
+import Toybox.Background;import Toybox.Time;import Toybox.Application;import Toybox.Lang;import Toybox.System;import Toybox.WatchUi;
+(:typecheck(false)) class BudgetRealStore extends NativeStore {function initialize(){NativeStore.initialize();} function write(k,v){System.println("WRITE_START "+k+" used="+System.getSystemStats().usedMemory);NativeStore.write(k,v);}}
+(:typecheck(false)) class BudgetView extends WatchUi.WatchFace {var app;function initialize(a){WatchFace.initialize();app=a;}function onUpdate(dc){app.step();}}
+(:background,:typecheck(false)) class BudgetService extends FeedService {
+ function onTemporalEvent() as Void {var st=new NativeStore();transfer=new NativeTransfer("https://selected.invalid",st);batch=new NativeBatch(st,transfer.base);var raw=st.read("sf.control.raw");assetRequest=st.read("sf.control.ref");System.println("BG_ENTER used="+System.getSystemStats().usedMemory);receiveBatch(200,raw);}
+ function optional() as Void {var st=transfer.store;var refs=st.read("sf.raster.active")["refs"];var evicted=st.read("sf.control.evicted");var live=st.read("sf.obj."+refs[0][1]);var absent=st.read("sf.obj."+evicted)==null;var valid=batch.immutable.raw(assetRequest)!=null;var count=st.read("sf.objects").size();if(live==null||!absent||!valid||count!=56){System.println("BG_FAIL active="+(live!=null)+" evicted="+absent+" valid="+valid+" count="+count);Background.exit(null);return;}System.println("BG_OK active=true evicted=true digest=true entries="+count+" used="+System.getSystemStats().usedMemory);Background.exit(null);}
+ function finish() as Void {System.println("BG_REFUSED used="+System.getSystemStats().usedMemory);Background.exit(null);}
+}
+(:background,:typecheck(false)) class SfrRuntimeApp extends Application.AppBase {
+ function getServiceDelegate(){return [new BudgetService()];}
+ var store;var cache;var base;var n=0;var done=false;
+ function initialize(){AppBase.initialize();NativeMetrics.ownerTag="f26bd75da4004ec999608894d38173d4|combined-bg-final|bd8b6c5e3e13";System.println("SFR_PROBE owner="+NativeMetrics.ownerTag);}
+ function ensure(v,s){if(!v){System.println("STORAGE_FAIL "+s);throw new Lang.InvalidValueException(s);}}
+ function getInitialView(){store=new BudgetRealStore();cache=new NativeImmutable(store);base=WatchUi.loadResource(Rez.JsonData.Object)["raw"];ensure(store.read("sf.objects")==null,"fresh");return [new BudgetView(self)];}
+ function step(){if(done){return;}if(n<56){var suffix="00"+n; suffix=suffix.substring(suffix.length()-3,suffix.length());var raw=base.substring(0,base.length()-3)+suffix;var h=new NativeWireHash();h.put(raw);var ref={"sha256"=>h.digest(),"decodedBytes"=>4096};ensure(cache.put(ref,raw),"put "+n);n+=1;if(n%16==0){System.println("STORAGE_PROGRESS entries="+n);}WatchUi.requestUpdate();return;}
+ var rows=store.read("sf.objects");var refs=[];for(var i=0;i<55;i+=1){refs.add([0,rows[i][0],4096]);}store.write("sf.raster.active",{"refs"=>refs.slice(0,18)});store.write("sf.raster.recovery",{"refs"=>refs.slice(18,37)});store.write("sf.batch.refs",{"refs"=>refs.slice(37,55)});var raw=base.substring(0,base.length()-3)+"056";var h=new NativeWireHash();h.put(raw);var ref={"path"=>"rasters/test.sfr","sha256"=>h.digest(),"decodedBytes"=>4096};store.write("sf.control.evicted",rows[55][0]);store.write("sf.control.raw",raw);store.write("sf.control.ref",ref);Background.registerForTemporalEvent(new Time.Duration(300));System.println("BG_WAITING entries=56");done=true;}
+}

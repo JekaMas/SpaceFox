@@ -1,61 +1,9 @@
-# «Миссия в фокусе»: более заметная карта
+# Historical browser study: brighter map
 
-2026-11-11. По решению владельца за основу дальнейшего макета взята
-**«Миссия в фокусе» M2-31**, основанная на прежней R4-05.
-[Открыть сравнение](../prototype/relay/index.html).
+On 11 November 2026 the owner chose M2-31, based on R4-05, for further work. This refinement compared a clearer map and a brighter alternative while retaining the layout, text, foreground, projection and launch point. The [comparison](../prototype/relay/index.html), [selected image](../openspec/changes/compose-brighter-geography/evidence/relay-refinement/selected-clear.jpg), [raw observations](../openspec/changes/compose-brighter-geography/evidence/relay-refinement/browser.json) and [summary](../openspec/changes/compose-brighter-geography/evidence/relay-refinement/summary.json) are historical browser evidence.
 
-![Основной вариант: прежняя композиция с более заметной картой](../openspec/changes/compose-brighter-geography/evidence/relay-refinement/selected-clear.jpg)
+Fourteen RU/EN scenes across three treatments produced 42 observations. The two new treatments retained 280 pairs of label values, rectangles and styles; map paths, foreground and point coordinates remained the same. The study reported no foreground overlap or semantic error in this set. A company-label ink bound extended about 0.36 px below its backing; a one-pixel dark backing margin was added without moving or restyling the text. The original export and first source remain in the evidence. This precaution does not establish that the earlier version was unreadable.
 
-Это небольшое уточнение оформления карты. Сохранены компоновка, большое мятное
-время, ракета слева, полные подписи, четыре поля, нижние место/отсчёт, проекция
-и точка космодрома. Прежний рендерер и его данные остаются неизменными; новый
-слой меняет только заливку моря/суши, берег, сетку и силу географической тени.
+Relative to M2-31, mean linear map Y increased 4.54–7.67 times in the clearer variant and 8.70–15.23 times in the brighter one; minimum calculated text contrast was 13.37. These browser measurements are not AMOLED photometry, battery measurements or a claim that the earlier full matrix passed. No new independent review, human measurement or native Garmin test was performed. This English condensation is not a rerun; the original report is available as the [previous public report](https://github.com/JekaMas/SpaceFox/blob/59f16c43b453db0573a43d5ebec98a0b019a08fd/docs/RELAY_REFINEMENT.md).
 
-Два варианта:
-
-- **Карта заметнее** — основной: синеватая суша, более ясный берег и мягкая тень.
-- **Карта ярче** — альтернативный: светлее суша и море, ещё меньше затемнение.
-
-Оба используют прежние Barlow Condensed для чисел и Noto Sans для подписей.
-Масштаб карты не увеличивается, текст не переносится в другие области.
-
-## Проверка
-
-Сравнение выполняется в браузере на 14 прежних основных/дополнительных RU/EN-сценах,
-включая Канаверал, Махию, Куру, длинные подписи и отсутствие координаты. Для
-каждого варианта проверяются точное совпадение геометрии/стилей текста, рисунков
-переднего плана, путей географии и исходной координаты с M2-31. Цель карты —
-минимум удвоенный интегральный световой сигнал при сохранённых текстах и точке.
-
-У строки компании обнаружен пограничный случай: консервативный прямоугольник
-чернил выступает примерно на 0,36 px ниже прежней CSS-подложки. Яркий берег под
-этим краем снижал расчётный контраст. Добавлен запас тёмной подложки на 1 исходный
-пиксель в рисунке карты; сама строка и её стили/положение не меняются. Первый
-экспорт и первые исходники сохранены отдельно. Это защитная мера для края,
-а не доказательство плохого чтения человеком в первоначальном варианте.
-
-Используется исправленный SVG-диагностический измеритель предыдущего раунда.
-Его Y/сигнал описывают браузерное изображение карты, а не физические ниты или
-расход батареи часов. Нового независимого ревью, человеческих измерений и
-нативного Garmin-теста это уточнение не добавляет.
-
-Итог: 14 сцен × 3 оформления = 42 наблюдения. Для двух новых оформлений
-совпали 280 пар основных подписей: значения, прямоугольники, шрифты, размеры,
-цвета и выравнивание. Не меняются пути карты, передний план и координаты точки;
-новый защитный прямоугольник относится только к рисунку подложки.
-Наложений переднего плана и ошибок семантики в этом наборе нет.
-
-Средний линейный Y карты относительно исходника вырос в 4,54–7,67 раза у
-основного варианта и в 8,70–15,23 раза у яркого. Минимальный расчётный контраст
-текста — 13,37. Это относительное сравнение именно M2-31; прохождение всей
-матрицы и абсолютных порогов предыдущего большого композиционного раунда не
-заявляется. Сохранённый рисунок карты может по-прежнему перекрываться большими
-цифрами — это сознательно сохранённая основа владельца.
-
-[Сырые наблюдения](../openspec/changes/compose-brighter-geography/evidence/relay-refinement/browser.json),
-[сводка](../openspec/changes/compose-brighter-geography/evidence/relay-refinement/summary.json)
-и первые отказы сохранены. Новые исходники проходят проверку синтаксиса;
-53 прежних браузерных владельца остались неизменными. Неизменённые старые тесты
-не перезапускались.
-Исходники, исходная спека и этот отчёт распространяются по MIT; лицензии прежних
-шрифтов и сторонних ресурсов сохранены.
+The [previous public document](https://github.com/JekaMas/SpaceFox/blob/59f16c43b453db0573a43d5ebec98a0b019a08fd/docs/RELAY_REFINEMENT.md) retains the original dated research and source links. Historical observations retain their original evidence boundaries.

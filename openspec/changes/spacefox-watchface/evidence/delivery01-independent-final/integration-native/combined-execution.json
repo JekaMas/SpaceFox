@@ -1,0 +1,116 @@
+{
+  "programSha256": "30b60ef4da2d43a55d6c24165b8eb2b4333c24f23233cc176c7aaa0fccb896ac",
+  "applicationUuid": "836b9d7cc3a54301bfe5032988a36c77",
+  "sourceSetSha256": "7c6edd59156600d2bea0f6875726c0a059615439ccfabcb7fcc471cda62b405b",
+  "cases": {
+    "moreMinuteRefresh": {
+      "command": [
+        "/opt/homebrew/opt/openjdk@11/bin/java",
+        "-Dfile.encoding=UTF-8",
+        "-classpath",
+        "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+        "com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux",
+        "-f",
+        "/Users/jekamas/.codex/tmp/spacefox-delivery-independent-20261115/combined-integrated2/RefreshCombined.prg",
+        "-d",
+        "fr165m",
+        "-s",
+        "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/shell",
+        "-t",
+        "moreMinuteRefresh"
+      ],
+      "exitCode": 1
+    },
+    "moreNearLatchReopen": {
+      "command": [
+        "/opt/homebrew/opt/openjdk@11/bin/java",
+        "-Dfile.encoding=UTF-8",
+        "-classpath",
+        "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+        "com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux",
+        "-f",
+        "/Users/jekamas/.codex/tmp/spacefox-delivery-independent-20261115/combined-integrated2/RefreshCombined.prg",
+        "-d",
+        "fr165m",
+        "-s",
+        "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/shell",
+        "-t",
+        "moreNearLatchReopen"
+      ],
+      "exitCode": 1
+    },
+    "moreRescheduledStale": {
+      "command": [
+        "/opt/homebrew/opt/openjdk@11/bin/java",
+        "-Dfile.encoding=UTF-8",
+        "-classpath",
+        "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+        "com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux",
+        "-f",
+        "/Users/jekamas/.codex/tmp/spacefox-delivery-independent-20261115/combined-integrated2/RefreshCombined.prg",
+        "-d",
+        "fr165m",
+        "-s",
+        "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/shell",
+        "-t",
+        "moreRescheduledStale"
+      ],
+      "exitCode": 1
+    },
+    "moreServiceAcceptAndReplay": {
+      "command": [
+        "/opt/homebrew/opt/openjdk@11/bin/java",
+        "-Dfile.encoding=UTF-8",
+        "-classpath",
+        "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+        "com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux",
+        "-f",
+        "/Users/jekamas/.codex/tmp/spacefox-delivery-independent-20261115/combined-integrated2/RefreshCombined.prg",
+        "-d",
+        "fr165m",
+        "-s",
+        "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/shell",
+        "-t",
+        "moreServiceAcceptAndReplay"
+      ],
+      "exitCode": 1
+    },
+    "refreshCacheSequence": {
+      "command": [
+        "/opt/homebrew/opt/openjdk@11/bin/java",
+        "-Dfile.encoding=UTF-8",
+        "-classpath",
+        "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+        "com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux",
+        "-f",
+        "/Users/jekamas/.codex/tmp/spacefox-delivery-independent-20261115/combined-integrated2/RefreshCombined.prg",
+        "-d",
+        "fr165m",
+        "-s",
+        "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/shell",
+        "-t",
+        "refreshCacheSequence"
+      ],
+      "exitCode": 1
+    },
+    "refreshTransferBoundaries": {
+      "command": [
+        "/opt/homebrew/opt/openjdk@11/bin/java",
+        "-Dfile.encoding=UTF-8",
+        "-classpath",
+        "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+        "com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux",
+        "-f",
+        "/Users/jekamas/.codex/tmp/spacefox-delivery-independent-20261115/combined-integrated2/RefreshCombined.prg",
+        "-d",
+        "fr165m",
+        "-s",
+        "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/shell",
+        "-t",
+        "refreshTransferBoundaries"
+      ],
+      "exitCode": 1
+    }
+  },
+  "boundary": "SDK isolated test key; not signed production or physical"
+}

@@ -3,60 +3,60 @@
   "scope": "delivery01-native-continuity",
   "status": "passed",
   "priorCatalog": {
-    "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/catalog.json",
-    "sha256": "f1bb594687307cd52b261c5aaefaa1baba880ce51364afeab5e081ccbbadb7df"
+    "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/main-cache-port/locales__catalog.json.txt",
+    "sha256": "d1febbc75bc1d5bad1ce966b208e5b8050e240ee4209dd88165380e84204da4e"
   },
   "priorSnapshots": {
     "watchface/source/FeedService.mc": {
-      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/FeedService.mc.txt",
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/main-cache-port/watchface__source__FeedService.mc.txt",
       "sha256": "d13c2401eb91a8c85544181f1914c91d663605983ce5dfdf31e8d7b805f62b9b"
     },
     "watchface/source/NativeForegroundApp.mc": {
-      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/NativeForegroundApp.mc.txt",
-      "sha256": "1a03f71384de226b9d5bba0ec75f33555ae1610df2fc8d3d90dcd99e3bd9b243"
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/main-cache-port/watchface__source__NativeForegroundApp.mc.txt",
+      "sha256": "e45bf81cebb89da46be678ae00d67046fdbaefcd4b3691c70f782211fb4f446f"
     },
     "watchface/source/SpaceFoxView.mc": {
-      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/SpaceFoxView.mc.txt",
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/main-cache-port/watchface__source__SpaceFoxView.mc.txt",
       "sha256": "561b31dfac1f17642270d19645b60fc048dc177015d2527f68aea8f4848b1eb6"
     },
     "watchface/source/generated/NativeVersion.mc": {
-      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/NativeVersion.mc.txt",
-      "sha256": "1252e9985f556153f1eaf9f3ceb3417f3a982630911688f159eada156711c9a6"
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/main-cache-port/watchface__source__generated__NativeVersion.mc.txt",
+      "sha256": "859bb7cb7925d8074381eeedd5eb87be30714f250f834822036d4bc233f2fd0c"
     },
     "watchface/source/SettingsMenu.mc": {
-      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/SettingsMenu.mc.txt",
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/main-cache-port/watchface__source__SettingsMenu.mc.txt",
       "sha256": "5f2d87d0dee00ea9fd425ae9ddea4e076f33857ce5b3148d0da8c9799e6b96c3"
     },
     "watchface/manifest.xml": {
-      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/manifest.xml.txt",
-      "sha256": "cdee87896ca8cf0136c31014c42e9b01dbd53e52e135c2b35463581bd6b430d9"
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/main-cache-port/watchface__manifest.xml.txt",
+      "sha256": "c60b2fec7186b364b265a41b6e92590144eb299fba8f157444156c8ab8329692"
     },
     "tools/native_language_policy.py": {
-      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/native_language_policy.py.txt",
-      "sha256": "15059c3fb1c03d83ba78e979b51662c4e07d2f8d29f62075b3d60d93ab63353c"
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/main-cache-port/tools__native_language_policy.py.txt",
+      "sha256": "b4756e0204a92c4c2ec31e8137545187d1b783354ef54f64f31b9c4736cad05a"
     },
     "tools/build_watchface.py": {
-      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/build_watchface.py.txt",
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/main-cache-port/tools__build_watchface.py.txt",
       "sha256": "f9c22c7ce3e195b387c21b320dc115782f02c043d554e2607fdb986fe6b17261"
     },
     "tools/generate_native_version.py": {
-      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/generate_native_version.py.txt",
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/main-cache-port/tools__generate_native_version.py.txt",
       "sha256": "3a864d78e91ac1c47eb4b5e6f19ca1789f7ea5e8afe48f323b47ca9235f7dd10"
     },
     "tools/release.py": {
-      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/release.py.txt",
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/main-cache-port/tools__release.py.txt",
       "sha256": "a107db7cdb92e46ea40efd45bb2e240739667532ecba9b1846e82b7328826a33"
     },
     "watchface/source/SpaceFoxApp.mc": {
-      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/SpaceFoxApp.mc.txt",
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/main-cache-port/watchface__source__SpaceFoxApp.mc.txt",
       "sha256": "6d6d8bd7c83b2f12aef7a974f905f4b983a9475dfd198b7923b822d9186f6c4f"
     },
     "watchface/source/NativeImmutable.mc": {
-      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/NativeImmutable.mc.txt",
-      "sha256": "6c4fa7e067a94b90a3461b9a69a8a512ee519a8c2b45df6f16b474ae5e213737"
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/main-cache-port/watchface__source__NativeImmutable.mc.txt",
+      "sha256": "9e057314adb88757e37009945bc8c6e99f6fcd8508daeff7c1154bcc9252c6a9"
     },
     "watchface/source/NativeRenderSource.mc": {
-      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/NativeRenderSource.mc.txt",
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/prior/main-cache-port/watchface__source__NativeRenderSource.mc.txt",
       "sha256": "20d03ace03827092fa6bfc1615c3a76badc8c9114693dc0ce4a6f942b4f5ae0d"
     }
   },
@@ -65,16 +65,16 @@
   ],
   "sources": {
     "tests/test_delivery_build_identity.py": "bf07c87ebb7ad591a2a5d751141767a05ed7383d46354325ed01344295b73b47",
-    "tests/test_delivery_incident_gate.py": "27e6ea930d0d28a89a43823dfd910b121d92bba837b657ebc1d97e4d86e8e796",
+    "tests/test_delivery_incident_gate.py": "26b1c7f064e6d57c0efc212841f9077e255b30e10c19cba18ad863bcb11dc64f",
     "tools/build_watchface.py": "16c275d188f2297b9ad3362f14e5108753d065c4024a59939afa9eb25b51d168",
     "tools/delivery_incident_gate.py": "94cc1e70a19dcdbcf8698473727d70dc8797a92735f549c67413a29607c9e61e",
     "tools/generate_native_version.py": "7f209587d4e3ebbcc6c56dd6e89f6994c33cb23bdc4c642cb38e615074f38600",
     "tools/native_delivery_observer.py": "930dceae696001bc861fe98498c784fa0274e0efd6b432ec1092bd2651093cb1",
-    "tools/native_delivery_requalification.py": "c79e56e206ae4b735fd8103a37487e222d8668c2e3f5d4851b0fdaaba928c2c3",
-    "tools/native_language_policy.py": "b0b285ee5f8394a358b3a087c1987934b2fee010cf05e619945dd1478d4c1f0b",
-    "tools/release.py": "66b28fa470c5ea57a15649bae81bfc14a4a92cfba41c358facb84261f9ef5103",
+    "tools/native_delivery_requalification.py": "0f4d876bc3b4f9331c5e25af9a7e2b15c4c1ffc290fe91ed9203e605de11db87",
+    "tools/native_language_policy.py": "24ba9e9bf69fa2a6d27b8bc416f425ff1c5da7b775e981bff823688230477c88",
+    "tools/release.py": "24f8af0638e256fa19b54ff8ecb70d7918e97916537119da68e452dc608aecb5",
     "watchface/incident-tests/DeliveryContinuityTests.mc": "a205bdd60581aea7e430c6e8eb0a4885e5038b28d3c1c6541990d81b14e90885",
-    "watchface/manifest.xml": "c60b2fec7186b364b265a41b6e92590144eb299fba8f157444156c8ab8329692",
+    "watchface/manifest.xml": "52b637d35e827a1a7316c5e98b690237d3337093d1f86478d5cef98b7aafea5d",
     "watchface/resources-ara/strings/strings.xml": "2289e9655b4c4205688cf7b1633425a490b5b345e48cdf728600943cd00f001d",
     "watchface/resources-bul/strings/strings.xml": "a68e8e90671e2fcc9bf5565ceba1d6d48cf6521a4b868655b817fc4a0fb255a0",
     "watchface/resources-ces/strings/strings.xml": "14cc4700f4927d42bd55af5953d4efda6e954ef9352443df0fe7225c1832c1b8",
@@ -196,18 +196,18 @@
     "watchface/resources/settings/properties.xml": "14fbba62892d64b65787783ebd032bc5d96417a4f100e14602b14a3ce453b357",
     "watchface/resources/settings/settings.xml": "deda53fd5f3b8339d13ed8a6e10cc2915790b7fffb133db23d8b3e00605c90ce",
     "watchface/resources/strings/strings.xml": "1a4a6fd7d5fa8f374f79885e0d7ba10bc2abf7bbd52c705a7096eba6cf0ca04e",
-    "watchface/source/FeedScene.mc": "54ed293549c928fa026bf6ce22c404f7d1efe20d43533a108512c75d438eb1fa",
+    "watchface/source/FeedScene.mc": "7216343e1be1478e189f3364b2e3141f58dc437ccef49f63a6ab48b2fd7d62e0",
     "watchface/source/FeedService.mc": "936fb4646ae26b1d95ea491eb2e7d4e3d3ba49988cfdd0602a32714fa53c828b",
     "watchface/source/Fitness.mc": "4514c60764062fcf08aabf253f729629fbb68727789154c801be839a55e581ba",
     "watchface/source/LocalePresentation.mc": "439b20f3d8139dfe8b0af0c8f475b0c870f674e8b799ac76c75ed899fc613a5b",
     "watchface/source/NativeAnimation.mc": "87d1baaad814772abfd06c83c2bbef7b1be29ce8b6b73670f240e2971ae226d8",
     "watchface/source/NativeAssetTypes.mc": "7898007364c66748377eccc8289863f45764e66479b813c57214a84374b20867",
-    "watchface/source/NativeBridgeFeed.mc": "c3e819bb2d9eb9e787b72c136efc327eaeca7e34c5ecf6c69abac4bb729f8e59",
-    "watchface/source/NativeCache.mc": "df4fe63556691734e561ccdcb8e499c97cbe40504db35567c03168f8646b621d",
-    "watchface/source/NativeFeed.mc": "94164ebef3b3e53bc2e2d08fe4caef4014aeaf9574750028a005264e80ceb994",
-    "watchface/source/NativeForegroundApp.mc": "f1cf4e9189130d93c9a5d79b7fd69ecc7dbfe575382a6dd9dd89e1f8f27e55e8",
-    "watchface/source/NativeForegroundCache.mc": "0ceb2a65a26d6d9b0924134a97aabe71515369bde0f004bd9df3ba0c17c28746",
-    "watchface/source/NativeImmutable.mc": "7e5e893dbd105fa97f894d66bb9fee969de56591b28e678c085f2dfc34b5c41a",
+    "watchface/source/NativeBridgeFeed.mc": "c64bf9a0f2260efa4dec8d8b84dfb0ac896d43239a485b23ef5631742ff9f1a5",
+    "watchface/source/NativeCache.mc": "6a708556c0035ed5cf49e3d6214b8d3df5c90d7bcdb60448022c857a71866f86",
+    "watchface/source/NativeFeed.mc": "95d83aa0df920020e13dfccb12b204ebe79c00d535b67a43f3f2df017fcf1f48",
+    "watchface/source/NativeForegroundApp.mc": "7157002fb07e238fd2a168917f891fe0dd29b5aec7c1dd536c21de3516e5ed91",
+    "watchface/source/NativeForegroundCache.mc": "106c3649836c7b82f4ad47dc88df036224987ce50d014d2011019e88d1a54523",
+    "watchface/source/NativeImmutable.mc": "4e56746909147976638304d234d4a41e7a7bb8b3184958b519aa3c7d98428717",
     "watchface/source/NativeIncoming.mc": "ce16926b98ccab287dbb3416893e40280826caf5196df6fcf446b8fcca1dc3b7",
     "watchface/source/NativeJson.mc": "145df47e02753324bff7c2151c0500b712f123f608e2ca01997b46757fcc4a0a",
     "watchface/source/NativeMetrics.mc": "8e16ac99b9958a459d7b93d4403c8be2c24d99dd7b53fa18f0b76e6911e6b79c",
@@ -228,15 +228,15 @@
     "watchface/source/WatchClock.mc": "e1cb5dd3ac35fb8bc52efad2ef85c7b909cb15fe7a04b4710302d4d34ddec100",
     "watchface/source/generated/LocaleGraphemes.mc": "5ad65d6328908a7f251cd5ddbac83244de9b51929c2c46cb746bfb168a4f6c80",
     "watchface/source/generated/NativeAssets.mc": "82d7ff2dcddcb011ed7651230a060f26512661419030ec96e03132f431c7a3c7",
-    "watchface/source/generated/NativeVersion.mc": "0cfc36f9d84b5187a0b9e09092d5d065ab3e3ae27ec6b8ccf7934026ed4253f5",
+    "watchface/source/generated/NativeVersion.mc": "d137b004d6d0ee16d613c7d71f9454b9cc66112c4ef006093114c0e349763b01",
     "watchface/source/generated/SceneStrings.mc": "dd8a910b53d2493ec8760e0148186c9535c05a5e0644ae5b6e6eccb6dd651109",
     "tools/native_delivery_identity.py": "88af5a0405056bcbeb65ed03bffc91dfde752abd342b52612a91d7f710b51dd7",
-    "tests/test_delivery_admission.py": "90630790e3876f675dfa9bbace8bb9519e08f5045e1da3ca8f61fccb97e1004a"
+    "tests/test_delivery_admission.py": "e04a9040d596dca385ea337d651cc155662b93faaa99c070fff09306079b6ffa"
   },
   "evidence": {
     "native-unit-final-build": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-unit-final-build.json",
-      "sha256": "aa64a3af2c22094bef04ba748b0d15ca8b9688262fa1426db2a3f5667463abab"
+      "sha256": "02b5906a91194ad4d10df36a1a310a198b385d6345cd0d7713f912858a7b1a2a"
     },
     "native-unit-final-probe": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-unit-final-probe.mc.txt",
@@ -244,31 +244,31 @@
     },
     "native-unit-final-log": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-unit-final.log",
-      "sha256": "c1d6a85a2ac12d5508957c3821f49501ccd5ed09d7a4890af9b7d771c62557d0"
+      "sha256": "5832ad7e447680df066e27355de4eca9a22b43d4ad11f52932f1a3c6501fee20"
     },
     "native-cold-final-build": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-cold-final-build.json",
-      "sha256": "b4f407b903e320a98c5513fd87bd8b24642339af1830e9eddec4123dcf6fd765"
+      "sha256": "ebfdbb4763a1746a5d455ab239dad41c4194eeab74f68aafcb538164988fc034"
     },
     "native-cold-final-probe": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-cold-final-probe.mc.txt",
-      "sha256": "0fdbd3dd3666621215d315da8ee58584911a0e054f8d52558b09dfcbc6d70cca"
+      "sha256": "ecde79a0e691d84995867e0959ac21df801a0fa8a62a86f503a690b951822151"
     },
     "native-cold-final-log": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-cold-final.log",
-      "sha256": "369f3c8bf20672d8e5a284f772ca387c141fa989418b376624a64e99df458b46"
+      "sha256": "20c5cb4c59efbf72b4b3bd03335b8216b453f7dd4a711e4128cfd19d13b30660"
     },
     "native-retained-final-build": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-retained-final-build.json",
-      "sha256": "079a17b5253706e8e74e544c69ae01b15a86248ba10fdfbabc3ad4ea36ab2b57"
+      "sha256": "f20918ff1dcf3292afcf2f1275609cbc33b40c2a97947452b515a2c119f47bb1"
     },
     "native-retained-final-probe": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-retained-final-probe.mc.txt",
-      "sha256": "9a95a925abe144c051a0e8fac3bef4013360420c66df4841ad380a3e7567e8fe"
+      "sha256": "99c5279653678591402df9895ffbc693e63f85fcbbeb61c39deb65a7873cb4b7"
     },
     "native-retained-final-log": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-retained-final.log",
-      "sha256": "4a81c23f589d90a1d42740cfdf9530ec8a2dffc4aae993f3b9b40790da6735cc"
+      "sha256": "fa263bba3ec1d8dd9323156efeb35136579451d46510dd5aacb9400027413e32"
     },
     "native-unit-red.log": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01/native-unit-red.log",
@@ -332,7 +332,7 @@
     },
     "native-identity-build": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-identity-build.json",
-      "sha256": "b1fdffbabfe90e14b76e22ef939a3bbceb60d2a7efcf678ebdb6067f79bc67a9"
+      "sha256": "1b470064745a43e3ffcdce1c070c887f6b57735c4f19f8eca05bd6c88570f215"
     },
     "native-identity-probe": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-identity-probe.mc.txt",
@@ -340,11 +340,11 @@
     },
     "native-identity-log": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-identity.log",
-      "sha256": "ceecc97a55c87d01dc3676e44bf7ac9a81bcca6fd8d1276e240d90577899f1e4"
+      "sha256": "ebf78eaaf6c0d9ad13b1dbb228c8bb99689e70dea58c01f8f55dfcda2dcaf71e"
     },
     "native-identity-execution": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-identity-execution.json",
-      "sha256": "ae586527f90bd2a5aa12b9fa49a5b08d2f629f57718434bceaa0c9903c033318"
+      "sha256": "28fa282285f15a9483d29bd0e84c573a858498c1933d7d9ad2f31e7316283f47"
     },
     "generation25": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01/hosted-generation25.body",
@@ -360,19 +360,19 @@
     },
     "native-sleep-final-build": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-sleep-final-build.json",
-      "sha256": "0e20388ceaf8d03179f643e84981967aa02b5fdfe32c7931c7efea4b32b0d877"
+      "sha256": "4945d1d442a3a8c03620bfd1318af88c2506bee2b713f5c7b8d955f3bb36653e"
     },
     "native-sleep-final-probe": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-sleep-final-probe.mc.txt",
-      "sha256": "a9c27ae4c4932af6e82e5e10fb2e391de3bb5e9538e8b2eb4e9c7e899ce40fa0"
+      "sha256": "09e6e535928e31c2a16de85745ba9812f747fd3e0ae25aa48059407c34fbafe9"
     },
     "native-sleep-final-log": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-sleep-final.log",
-      "sha256": "002a0957f383e94847da76db21db0b62a0aa66cff37c8b94bab06e4280c48dc9"
+      "sha256": "eec38353d33225beb800383df5cdad052a30f22a1d0c131f6144a4f797b39efa"
     },
     "native-sleep-final-receipt": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-sleep-final-receipt.json",
-      "sha256": "aea83db13e999ddde17dad4f44d9c047d8a3960cbbc4e13ea7813b265470f4fa"
+      "sha256": "b35e99d5f311a779adf36321cd2fe8eebf16e99f7e20e0927966bc6c02752c25"
     },
     "author-native-unit-final-execution.json": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01/native-unit-final-execution.json",
@@ -380,7 +380,7 @@
     },
     "native-unit-final-execution": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-unit-final-execution.json",
-      "sha256": "43bb15e26c6f0b78839220c9fe91538e6436fd217545bf694235a5d5351bf76e"
+      "sha256": "d6663701a6f608950031a9d6f18316e117dc28be633e8e04c5dac7993ae09cb6"
     },
     "author-native-cold-final-execution.json": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01/native-cold-final-execution.json",
@@ -388,7 +388,7 @@
     },
     "native-cold-final-execution": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-cold-final-execution.json",
-      "sha256": "0ec437872cdefab1d84e779271de5fd2dafd45c9650b3091c9b28a0942d93417"
+      "sha256": "43dc17c556f33bd870965f3963be796ec13af936cdeb30b246ae96d230834836"
     },
     "author-native-retained-final-execution.json": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01/native-retained-final-execution.json",
@@ -396,11 +396,375 @@
     },
     "native-retained-final-execution": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-retained-final-execution.json",
-      "sha256": "22cc45660a7d5c0d0b03de62aba01ec068915ab12fcf93e6778230520bfb1ff3"
+      "sha256": "a0c3df65b867c7c71e8982e2844e8a699e747f134901b51b82263f7b3463a519"
     },
     "native-sleep-final-execution": {
       "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-sleep-final-execution.json",
-      "sha256": "b8e0887c054479c02cd50c123c8049f944261ed8392f9438477f99662da9f130"
+      "sha256": "99f34a3d78d9cb204a4268a55da8e00335b3e2ae9dedd82a323d94111b254ff1"
+    },
+    "integration-combined-build": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-build.json",
+      "sha256": "72b6df2d434ad1fc12151ea071c50c57956f679ad386502d48f8961a5ccb629e"
+    },
+    "integration-combined-probe": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-probe.mc.txt",
+      "sha256": "f7491f91b712a87d01a9389b25397cde65992d1d622dfe8c1e2383edd2a98158"
+    },
+    "integration-combined-execution": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-execution.json",
+      "sha256": "31ece9e28c1f17edb568d7821012312de2998324e5e4713a054d86307e0d99bd"
+    },
+    "integration-combined-resource-IntegrityNanGeometry.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityNanGeometry.json",
+      "sha256": "a72a3f84f1ccac6562597ac5d41a1a80c1bdb2c1abb42508b3124ff3f1458a3d"
+    },
+    "integration-combined-resource-RefreshMoved.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/RefreshMoved.json",
+      "sha256": "222e4a91aa02d21ae3f81db23323f2f6b18d97a6218e48daf77c7734d5c957ea"
+    },
+    "integration-combined-resource-IntegrityAscentBadTarget.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityAscentBadTarget.json",
+      "sha256": "5454f69cf128a419d22b506ac4c21aab90aaba8760137f64e6895c4784d7b117"
+    },
+    "integration-combined-resource-RefreshRefresh.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/RefreshRefresh.json",
+      "sha256": "6a58bece10d01b19def01b68782129b220b07ec0a34ece549795c25e11f6b295"
+    },
+    "integration-combined-resource-IntegrityNegativeId.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityNegativeId.json",
+      "sha256": "d584fbe42a4d39fa3429a136c6b9db041c002c44e6ef487363895ced84db37ca"
+    },
+    "integration-combined-resource-IntegrityBadSchema.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityBadSchema.json",
+      "sha256": "be08b27888bf7e0860de9d829c9237dcb9ac165f72293da6b2b5ae3f3cf84039"
+    },
+    "integration-combined-resource-RefreshDifferent.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/RefreshDifferent.json",
+      "sha256": "52d5e73e8376ccbd2961e18175f5f97faca21e86669898b571a720e4e7524f36"
+    },
+    "integration-combined-resource-IntegrityCatalog.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityCatalog.json",
+      "sha256": "d5871dfe4f15402c24857d73b97c0ba6121934ffeaf014801d3287f0f27ec929"
+    },
+    "integration-combined-resource-IntegrityBadGeometry.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityBadGeometry.json",
+      "sha256": "af9d27eb3a5d4ac9a3d656f6e564599461a2d27789641889412415322e6169bc"
+    },
+    "integration-combined-resource-RefreshWithdrawnRefresh.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/RefreshWithdrawnRefresh.json",
+      "sha256": "90ec4b6f2a6f0893bf1d8f4b461b32916dd613f6691e69e1125fb930955236d2"
+    },
+    "integration-combined-resource-UnresolvedReal4.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/UnresolvedReal4.json",
+      "sha256": "4214c4e502083e9d427d7895c78e78c53d2c33b34a896af18ee22206af8ec17e"
+    },
+    "integration-combined-resource-UnresolvedTechnicalCatalog.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/UnresolvedTechnicalCatalog.json",
+      "sha256": "1e3dca2cd871e2caa0f0ba3c763375323e3bb4f3c24aa3a26c051645f629e69c"
+    },
+    "integration-combined-resource-IntegrityWide.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityWide.json",
+      "sha256": "395564a942f6e9eb3834a4beea64f9aa49c9d8811bf7436f5027c96d4134253c"
+    },
+    "integration-combined-resource-UnresolvedEmpty1.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/UnresolvedEmpty1.json",
+      "sha256": "623a555f051032495269abb1919dc8ee16f5e7db87061c02e251d612a787e1da"
+    },
+    "integration-combined-resource-FinalCatalog.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/FinalCatalog.json",
+      "sha256": "85504124218adf26ccacc5d9b511b11ebb630e340ec2b7d1f8be6aba4bee9d41"
+    },
+    "integration-combined-resource-IntegrityNanCatalog.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityNanCatalog.json",
+      "sha256": "e0a6ed70165f3178fdda6bf2a4343d04fcf763e87845c9774d4af3a0538457fc"
+    },
+    "integration-combined-resource-IntegrityBoolPolicy.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityBoolPolicy.json",
+      "sha256": "7a2a2c2cb51f37118de84539f4e07c040ab92e4c508ea0f5cb57071e4b55ebc0"
+    },
+    "integration-combined-resource-IntegrityNullId.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityNullId.json",
+      "sha256": "0f0aed842a0ba09aa01ee501f019a32bd9ae54ea00a202ec5af7910d576f869d"
+    },
+    "integration-combined-resource-UnresolvedRealCatalog.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/UnresolvedRealCatalog.json",
+      "sha256": "3cd95b94e50246d57eaa824ccdbe7348c3af1859bdbdb02c9ebdd1d8e421e097"
+    },
+    "integration-combined-resource-IntegrityNullSelection.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityNullSelection.json",
+      "sha256": "1c266be788a61609d38a7917fe117a909ecf2a01a134b788de6c39154600b7ea"
+    },
+    "integration-combined-resource-IntegrityFinalRefresh.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityFinalRefresh.json",
+      "sha256": "07bae3ad38d7de75ad812eb029a0157f239b99a7c06866807a54f3e8ec8dd4be"
+    },
+    "integration-combined-resource-IntegrityAscentBadId.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityAscentBadId.json",
+      "sha256": "870f69cc4de1c9bef8e6be9faf80f5ed35e02017a0157c8a9df2c0dca632d6a8"
+    },
+    "integration-combined-resource-RefreshUnchanged.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/RefreshUnchanged.json",
+      "sha256": "a91e0c227cc9dc748efa9fee544a519cb8ba54c37e2d25a0201782fc039bbebc"
+    },
+    "integration-combined-resource-RefreshInitial.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/RefreshInitial.json",
+      "sha256": "d1d9ae61ffcc0ad175da9f3f093b27514f9dbfaa50525a18494bb7745b347522"
+    },
+    "integration-combined-resource-IntegrityMinuteContext.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityMinuteContext.json",
+      "sha256": "3f8f7830fc6930f7c54a518691884eebd6a947cc4f747823a7971aaf0b56d946"
+    },
+    "integration-combined-resource-IntegrityAscentBadEnd.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityAscentBadEnd.json",
+      "sha256": "fef59b9521f5b21e6ac956b8541d04deaecf7e14486d7eafb046e63a72ccbdd0"
+    },
+    "integration-combined-resource-UnresolvedReal2.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/UnresolvedReal2.json",
+      "sha256": "9853653c6d71b9a9674db45dc7d359930694c65709710db87efc1b465cabfed5"
+    },
+    "integration-combined-resource-UnresolvedEmptyCatalog.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/UnresolvedEmptyCatalog.json",
+      "sha256": "bcaafa055fcedad5a0406a77011b96ceb8fb205d50110143d17609410d7e37c0"
+    },
+    "integration-combined-resource-IntegrityQuotedId.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityQuotedId.json",
+      "sha256": "043696768c3a9dc3b27654504fe2ebf46cbccf76c33062d244ec6e06e2352a08"
+    },
+    "integration-combined-resource-UnresolvedRealScene.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/UnresolvedRealScene.json",
+      "sha256": "9dde928c3f640526f6af439043f0dd53e193c0df171fcb58f8ae63a3fe0ac899"
+    },
+    "integration-combined-resource-integrity.xml": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/integrity.xml",
+      "sha256": "b33066f5180f6f9a203f2b40446b51773d6fd402a66edc8bbd5d24235564dbbf"
+    },
+    "integration-combined-resource-IntegrityWidePrecision.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityWidePrecision.json",
+      "sha256": "80b43ac11865ac5117faed2a90ee42ee20170f621a45f1a31a2dc84498edbba6"
+    },
+    "integration-combined-resource-probe.xml": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/probe.xml",
+      "sha256": "7c105e53a637c742efe3d03d421b5bc73ff4d936487dac4ce1b63ead848ebc8d"
+    },
+    "integration-combined-resource-IntegrityAscentGood.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityAscentGood.json",
+      "sha256": "159f4c05e3edcc973cef7ee09211e80ebee27944a8c0b6b8b9c60b325c2a1a66"
+    },
+    "integration-combined-resource-IntegrityMinuteDate.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityMinuteDate.json",
+      "sha256": "1822b1ebf36469f9a7348e4508c7999f30f53dc38f2c7bcfb2a6abf846c07991"
+    },
+    "integration-combined-resource-IntegrityMinuteNear.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityMinuteNear.json",
+      "sha256": "48e7ceab0bc335acac51ee0819e67c20db492343e1afce08841d576ea7cf205e"
+    },
+    "integration-combined-resource-FinalExact.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/FinalExact.json",
+      "sha256": "a28707995b8c6996d7a76c2ca5c2673d91a3382ba9c83d35f592b0e9e4aab23a"
+    },
+    "integration-combined-resource-OmissionOmitted.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/OmissionOmitted.json",
+      "sha256": "eb6ba1a437a8607d9bda5ffc4e2cd4a8b29b72207aace2a7cd30b776faefd77e"
+    },
+    "integration-combined-resource-RefreshWithdrawn.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/RefreshWithdrawn.json",
+      "sha256": "6e3bff828d5d5da57a8e6516d8a670c9307c23a1d4601df1b80715b0f4005510"
+    },
+    "integration-combined-resource-IntegrityBadPolicy.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityBadPolicy.json",
+      "sha256": "10d69721c2b045281512786734ed146cda1d5d53afe34c781579bfc209fd5af5"
+    },
+    "integration-combined-resource-IntegrityMissingId.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityMissingId.json",
+      "sha256": "236bcbd72839b07813327355e9434c387f3a7365a138f483ff6f5750f262f07a"
+    },
+    "integration-combined-resource-IntegrityChangedInstance.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityChangedInstance.json",
+      "sha256": "3edd62240902e3ca40176a2051526f2996cb7fd87bd363eea8a2d9165e560c26"
+    },
+    "integration-combined-resource-IntegrityBoolId.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityBoolId.json",
+      "sha256": "2c530c9f2b8f6ce8901ae69c413ac554eabf176eed81e90a4fbfef1784ffbfb4"
+    },
+    "integration-combined-resource-RefreshCatalogInitial.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/RefreshCatalogInitial.json",
+      "sha256": "1130202cf8c081e9cc4a540021f26f7e21f1c2dea0805a506c34c2a98ef0a8ae"
+    },
+    "integration-combined-resource-RefreshCatalogDifferent.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/RefreshCatalogDifferent.json",
+      "sha256": "4a74557d5a688ae0e12a7f641086aa2fc1a4e6a3648092d68ae2cde114a691f5"
+    },
+    "integration-combined-resource-IntegrityMinuteWindow.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityMinuteWindow.json",
+      "sha256": "41c96061bc46899afc8d4dae07d6ad3db3a257cce9c9b268167ea2371ce4c72e"
+    },
+    "integration-combined-resource-IntegrityMinuteNewer.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityMinuteNewer.json",
+      "sha256": "da285d83d7a655904f6484ea24ee9d2bae8491eb09dd72251264b8681742c0b3"
+    },
+    "integration-combined-resource-IntegrityNegativePolicy.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityNegativePolicy.json",
+      "sha256": "764b32176fa8a08e39a71ba7be6d9e434d4e0883cae56828eabcbd5c553b29f5"
+    },
+    "integration-combined-resource-FinalInvalid.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/FinalInvalid.json",
+      "sha256": "1ad89dcd095d9bdee6bdc13091101e991f3eb517020d6a3df90cb40fec1a7d82"
+    },
+    "integration-combined-resource-IntegrityAscentBadFuture.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityAscentBadFuture.json",
+      "sha256": "23eebe2880594f0be5806932cc812b9f0b862362c0403425e2c3c283d2ac8245"
+    },
+    "integration-combined-resource-IntegrityBadIso.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityBadIso.json",
+      "sha256": "d720c28fc784df91e0868c26ace56a1e9fbeb250afd481470db507548dcbcbba"
+    },
+    "integration-combined-resource-IntegrityBadUtc.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityBadUtc.json",
+      "sha256": "4a05f7aad10f2a0288ebbf5d7cccb8ca1ac3858df2921af938bc1eaaae023ccc"
+    },
+    "integration-combined-resource-IntegrityRegressedOrigin.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityRegressedOrigin.json",
+      "sha256": "07b2936eaa2c4a223b37833f3f63869ae60af6fc633a5445e88244c009662495"
+    },
+    "integration-combined-resource-UnresolvedTechnicalScene.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/UnresolvedTechnicalScene.json",
+      "sha256": "9ea03552123fe7d004720507eb2a417996a71e871521fa5cff67bf374924f5be"
+    },
+    "integration-combined-resource-IntegrityAscentBadUrl.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/IntegrityAscentBadUrl.json",
+      "sha256": "4b6db9db5efb560c09df6db5084a603375cb51f717d545c2b83e479942a4421b"
+    },
+    "integration-combined-resource-UnresolvedTechnical1.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/UnresolvedTechnical1.json",
+      "sha256": "caf45610eaf35e5225de33389f9e4786f8889b17815bdd5c981e5d4e43690d3e"
+    },
+    "integration-combined-resource-UnresolvedEmpty3.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/UnresolvedEmpty3.json",
+      "sha256": "ebab77f426c036c730ab5c14ff98764d08381b48025f0a9cd6a9b378fdb1819b"
+    },
+    "integration-combined-resource-refresh.xml": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/refresh.xml",
+      "sha256": "edf04b254470b99ea30b5283c62ba4c21185cee216985a20792ed20a3e6eee96"
+    },
+    "integration-combined-resource-OmissionInitial.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/combined-resources/OmissionInitial.json",
+      "sha256": "a4f5f6b9462554231e70c3371b9a79cfe75115aa73cabf1f1f52c27d5539bee4"
+    },
+    "integration-typed-build": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/typed-build.json",
+      "sha256": "f90e36015c6e598ca7d991f35c2c34636fca18011d09ee5d367d0683fed437ea"
+    },
+    "integration-typed-probe": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/typed-probe.mc.txt",
+      "sha256": "6aef1001469bb6e2fa86c815ca9188fdd5ae19bae82e66d26dbf5aaabbabbd11"
+    },
+    "integration-typed-execution": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/typed-execution.json",
+      "sha256": "f15798e1a7ab1d4dfb7b9a91e10323a48b3bf21fb5ab418dcca621fbc756d119"
+    },
+    "integration-typed-resource-probe.xml": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/typed-resources/probe.xml",
+      "sha256": "40f70e9e5e049b10b4dfea90138299096c5032ed50d4f5c3bfe54c5222beeb51"
+    },
+    "integration-test-moreMinuteRefresh": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/moreMinuteRefresh.log",
+      "sha256": "933cf6391c33eaed58971e4c9a1a47004adf83f3d38b3c3cee352f1e75ab44f4"
+    },
+    "integration-test-moreNearLatchReopen": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/moreNearLatchReopen.log",
+      "sha256": "0e1dc2937d2c7d9d8eb04926ba3058b5692059a7cf06be98bb08cb1e7b18d0b7"
+    },
+    "integration-test-moreRescheduledStale": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/moreRescheduledStale.log",
+      "sha256": "1cbc6b5aa2f8faa393ef83ac91912765131cd55d5a37a60292ad9e1138aba67f"
+    },
+    "integration-test-moreServiceAcceptAndReplay": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/moreServiceAcceptAndReplay.log",
+      "sha256": "53f36e953ed0e97a3a3be509a62f4781c6235d633fbb771f9f90bafd06b7ae8f"
+    },
+    "integration-test-refreshCacheSequence": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/refreshCacheSequence.log",
+      "sha256": "20d7d1f7e865f89f64bc6dab5f1ef97df040a7a8045a4c2bd20171db77e76e8f"
+    },
+    "integration-test-refreshTransferBoundaries": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/refreshTransferBoundaries.log",
+      "sha256": "df70d8fc87a50b09e37e881d3c692ee44f9ca4106372d2ea78f3596bd9581802"
+    },
+    "integration-test-typed": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/integration-native/typed.log",
+      "sha256": "11ed3febd2dbd432b8b0a37256262cf975ffeeeef6e799b51be4f05c546fb660"
+    },
+    "observer-diagnostic-live-diag-probe.mc.txt": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/observer-diagnostics/live-diag-probe.mc.txt",
+      "sha256": "3523c50381fe3f3c60fc8727162acc96869d5d34b265d27ddad74cbd7d646d47"
+    },
+    "observer-diagnostic-live-integrated-build.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/observer-diagnostics/live-integrated-build.json",
+      "sha256": "249cd244fc02b3c061946fe78e6d5720b3b706189c6874c2e0609d11b3c9fef5"
+    },
+    "observer-diagnostic-live-rearm.log": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/observer-diagnostics/live-rearm.log",
+      "sha256": "fa263bba3ec1d8dd9323156efeb35136579451d46510dd5aacb9400027413e32"
+    },
+    "observer-diagnostic-live-rearm-probe.mc.txt": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/observer-diagnostics/live-rearm-probe.mc.txt",
+      "sha256": "99c5279653678591402df9895ffbc693e63f85fcbbeb61c39deb65a7873cb4b7"
+    },
+    "observer-diagnostic-live-control-build.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/observer-diagnostics/live-control-build.json",
+      "sha256": "46f198a2c06a17c99c454bd0442dc3633873d0ba0a3acf1f220fefcfbdf510bf"
+    },
+    "observer-diagnostic-live-control.log": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/observer-diagnostics/live-control.log",
+      "sha256": "7358ef16e739851c88adb52ff5cfe9e85f3134144bbfbedf0b49e3b93d33c26a"
+    },
+    "observer-diagnostic-live-integrated-probe.mc.txt": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/observer-diagnostics/live-integrated-probe.mc.txt",
+      "sha256": "2a60fea0fcbfae6fcffa34290850f84012bba17b214ab68601ae78e7935e7a1c"
+    },
+    "observer-diagnostic-live-diag-build.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/observer-diagnostics/live-diag-build.json",
+      "sha256": "ba9b80e954266ddca083d1ada3429835abbe549ff70517443d628397d0788d4f"
+    },
+    "observer-diagnostic-combined-missing-resource-probe.mc.txt": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/observer-diagnostics/combined-missing-resource-probe.mc.txt",
+      "sha256": "f7491f91b712a87d01a9389b25397cde65992d1d622dfe8c1e2383edd2a98158"
+    },
+    "observer-diagnostic-live-control-probe.mc.txt": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/observer-diagnostics/live-control-probe.mc.txt",
+      "sha256": "704bab37de2ef735bdc4fb2427a796b6f92ca331001901f900947dc0e3890bff"
+    },
+    "observer-diagnostic-combined-missing-resource-compile.log": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/observer-diagnostics/combined-missing-resource-compile.log",
+      "sha256": "669f626f6d14c48dd082a85d420d29bf90bdb388074f0679c15dae033abbb066"
+    },
+    "observer-diagnostic-live-control2.log": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/observer-diagnostics/live-control2.log",
+      "sha256": "ee261a818dd50d6ab454d48216aaf2910b28df928f0d3cd458c7fb81b7d939e0"
+    },
+    "observer-diagnostic-live-integrated.log": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/observer-diagnostics/live-integrated.log",
+      "sha256": "9e2c7bbf5616e6a3163ae9d8de83c6edd01ac674f0ff390ee3059ca8c9eb23d8"
+    },
+    "observer-diagnostic-live-diag.log": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/observer-diagnostics/live-diag.log",
+      "sha256": "5f196e29315f62dcc024edf62f552684cfb1cbad852e3dd1c1d97772fe2135ba"
+    },
+    "observer-diagnostic-combined-missing-resource-build.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/observer-diagnostics/combined-missing-resource-build.json",
+      "sha256": "9cf4b200834d5621419dce21a940aecd8f729bffe15a45776368977f5e11c5ee"
+    },
+    "observer-diagnostic-live-rearm-build.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/observer-diagnostics/live-rearm-build.json",
+      "sha256": "f20918ff1dcf3292afcf2f1275609cbc33b40c2a97947452b515a2c119f47bb1"
+    },
+    "physical-after-restart-019": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01/physical-after-restart.json",
+      "sha256": "6954a6c2a43d7744e5edcc89e3f0e360623d186ac5ea6fd9e5d51aac006f35ca"
+    },
+    "physical-gate-019": {
+      "path": "openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/physical-current-gate-019.json",
+      "sha256": "d0f28a52801ad0cd3dd38eb442d18ee1a243fa0acf650911f6dff1a1a0a959f0"
     }
   },
   "proofBoundary": "Selected source-bound SDK software evidence only. Physical 0.1.8 installation and observed fresh launch remain open."
