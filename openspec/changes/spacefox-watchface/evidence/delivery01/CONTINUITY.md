@@ -22,10 +22,10 @@ late completion after each event; the actual-parser view unit checks G24→G25
 retention and a changed-launch fallback. Actual retained-cache runtime checks
 acquisition, duplicate callback, rejected input and restore. These tests have
 different boundaries; a unit-inserted visual is not acquisition evidence.
-LOW must not start network, decode, or health work. Current final-source
-runtime evidence does not show a rich READY → LOW → HIGH round trip; an older
-UX01 trace did, but predates the changed lifecycle. A final-source physical
-round trip remains required, and this gap is available to independent review.
+LOW must not start network, decode, or health work. The final 0.1.8 runtime trace now records rich READY → LOW → HIGH through actual
+simulator callbacks with the same bitmap, renderer and launch. The companion
+frames show normal active and ambient layouts. The physical corrected-build
+round trip remains required; the simulator trace is not device evidence.
 
 The first SDK observer acquired the real public feed and catalog naturally,
 admitted the launch in about one second, and naturally loaded optional visuals

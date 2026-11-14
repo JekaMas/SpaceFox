@@ -500,3 +500,12 @@ actual native cold/retained and real-packet identity evidence, scheduler
 counterexample, hosted feed boundaries, simulator restoration caveat and
 remaining peer/physical/Store gates are in [DELIVERY01 status](evidence/delivery01/STATUS.md).
 The active tasks remain 2.2, 3.2, 6.1, 7.2 and 7.3; this checkpoint adds no task.
+
+DELIVERY01 final bounded author SDK addition: 0.1.8/4544aa8b rich READY →
+LOW → HIGH passed using the retained test identity with actual simulator
+callbacks; the same bitmap, renderer and launch survived and active/ambient
+frames were captured. See `evidence/delivery01/native-sleep-final-receipt.json`
+for the source and state boundary. Author software checks are GREEN within
+that boundary; fresh independent review, signed release and physical corrected
+build, fresh data and mode acceptance remain open. The simulator runtime was
+restored and lease released with original temporal registration unverified.

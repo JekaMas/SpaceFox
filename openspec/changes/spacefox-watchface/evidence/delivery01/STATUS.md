@@ -47,8 +47,11 @@ naturally fetches and admits the current feed and catalog, and retains the same
 registered asset deadline across two reloads. The prior natural five-minute
 acquisition (`natural-baseline.log` and `native-five-minute.log`) has its own
 source/build boundaries and was not rerun solely for the generated build ID.
-The final-source trace does not show a rich READY → LOW → HIGH round trip;
-the earlier UX01 trace predates the lifecycle change. SDK test framework uses
+The final-source `native-sleep-final` trace and 390×390 simulator frames show
+rich READY → LOW → HIGH with the same bitmap, renderer and launch across actual
+simulator callbacks. In the LOW interval the instrumented trace recorded no
+requests or decoder steps; it cannot establish behavior of uninstrumented calls.
+The frames use simulator data, not the owner’s photos. SDK test framework uses
 exit code 1 even for passing cases; inspect parsed test status, not process code
 alone.
 
@@ -74,3 +77,8 @@ simulator state; `tools/native_delivery_identity.py --output <empty-dir>` builds
 the actual-parser identity unit with the existing test key. The private pinned
 workflow runner is unavailable and is not replaced. Peer review and final
 signed export remain separate.
+
+The bounded DELIVERY01 software author verification is GREEN at the stated
+SDK and test-key boundaries, with prior locale evidence reused through the
+source-bound delivery delta. Independent peer review and physical acceptance
+remain open; neither has been inferred from this checkpoint.

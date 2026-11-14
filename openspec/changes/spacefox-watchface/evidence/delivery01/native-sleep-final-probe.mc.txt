@@ -1,0 +1,26 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.System;
+import Toybox.Background;
+import Toybox.Time;
+import Toybox.Timer;
+(:typecheck(false)) class SleepProxy extends WatchUi.WatchFace {
+ var app;function initialize(a){WatchFace.initialize();app=a;}
+ function onLayout(dc){app.view.onLayout(dc);}
+ function onShow(){app.view.onShow();app.probe();}
+ function onHide(){app.view.onHide();}
+ function onEnterSleep(){app.view.onEnterSleep();app.check("sleep-callback");}
+ function onExitSleep(){app.view.onExitSleep();app.check("wake-callback");}
+ function onUpdate(dc){app.view.onUpdate(dc);if(app.saved!=null&&System.getDisplayMode()!=System.DISPLAY_MODE_HIGH_POWER){app.check("low-frame");}}
+}
+(:background,:typecheck(false)) class SfrRuntimeApp extends SpaceFoxApp {
+ var timer=null;var saved=null;var savedRenderer=null;var launch=null;var checks=0;
+ function initialize(){SpaceFoxApp.initialize();NativeMetrics.ownerTag="cedb9328da25469ba0c647cae90b1b23|sleep-final|f84198d43faf";System.println("SFR_PROBE owner="+NativeMetrics.ownerTag);NativeMetrics.enabled=true;}
+ function getServiceDelegate(){NativeMetrics.enabled=true;return [new FeedService()];}
+ (:typecheck(disableBackgroundCheck)) function getInitialView() as [Views] or [Views,InputDelegates]{SpaceFoxApp.getInitialView();System.println("SLEEP_START build="+NativeVersion.BUILD+" id="+NativeVersion.ID);return [new SleepProxy(self)];}
+ (:typecheck(disableBackgroundCheck)) function onDisplayModeChanged() as Void {SpaceFoxApp.onDisplayModeChanged();check("display-mode");}
+ (:typecheck(disableBackgroundCheck)) function probe(){if(timer==null){timer=new Timer.Timer();}timer.start(method(:observe),500,true);}
+ (:typecheck(disableBackgroundCheck)) function observe(){if(saved==null&&view.downloaded!=null&&view.renderer!=null&&view.context!=null){saved=view.downloaded;savedRenderer=view.renderer;launch=view.context.launchId;System.println("SLEEP_READY launch="+launch+" bitmap=true renderer=true");timer.stop();timer=null;}}
+ (:typecheck(disableBackgroundCheck)) function check(event){if(saved==null){return;}if(view.downloaded!=saved||view.renderer!=savedRenderer||view.context==null||!view.context.launchId.equals(launch)||view.sfrBuild!=null){throw new Lang.InvalidValueException("SLEEP_CONTINUITY_FAILED "+event);}checks+=1;System.println("SLEEP_CHECK event="+event+" mode="+System.getDisplayMode()+" sameBitmap=true sameRenderer=true sameLaunch=true decoding=false checks="+checks);}
+}

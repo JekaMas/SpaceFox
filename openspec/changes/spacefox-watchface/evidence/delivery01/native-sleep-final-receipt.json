@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "boundary": "Isolated SDK test UUID/key and retained public-feed state; physical watch not observed. Screenshot values are simulator inputs. LOW was observed for the interval between the logged callbacks; tracing rules out logged requests and decoder steps during that interval, not uninstrumented operations.",
+  "build": "0.1.8",
+  "runtimeId": "4544aa8b",
+  "programSha256": "53c983d43137842eca862ba0874c7f59e1a6886189505d0c61acedd04b27c46e",
+  "installedProgramSha256": "53c983d43137842eca862ba0874c7f59e1a6886189505d0c61acedd04b27c46e",
+  "launcherExitCode": 143,
+  "launcherExitNote": "Terminated intentionally after observation before restoring runtime.",
+  "events": [
+    "rich-ready",
+    "sleep-callback",
+    "low-display",
+    "low-frame",
+    "wake-callback",
+    "high-display"
+  ],
+  "sameBitmapRendererAndLaunch": true,
+  "lowDecoderActive": false,
+  "originalRuntimeFilesRestored": 636,
+  "originalRuntimeHashMismatches": 0,
+  "simulatorIniSha256": "af6a29db0a1e0af918405dbee68901fff38ce9921cdd330a3838214a21d0aedb",
+  "originalTemporalRegistration": "unverified",
+  "sha256": {
+    "native-sleep-final.log": "9f77523cf5e580a38f3bc420fe01a9e352512756b3dfd8994b7dc7d29ccdfb13",
+    "native-sleep-final-build.json": "18b428e427814bf930295439224c5de3897968eacbed248dee033e41f579d64e",
+    "native-sleep-final-probe.mc.txt": "88949b9830cd94606b86c68e02f64c1401817c4ff49647782be8384ef703cc93",
+    "native-sleep-final-ambient.png": "30c19671b70559054a93eb0d75749cabdc7163c99396330ef4e26ea90e40d9ec",
+    "native-sleep-final-active.png": "3aaa5d1b4477da05961da115cec426e067d15fc70a33c3d8f81047a94bdfb321",
+    "native-sleep-final-builder.py.txt": "1889ff701c907d7b129265cec3f50aea9c99e5068b25c2164813b91e49e16608"
+  }
+}
