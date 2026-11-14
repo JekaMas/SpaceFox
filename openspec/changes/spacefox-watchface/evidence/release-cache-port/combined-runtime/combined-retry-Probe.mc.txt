@@ -1,0 +1,45 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.System;
+import Toybox.Background;
+import Toybox.Time;
+import Toybox.Graphics;
+(:background) class SfrRuntimeApp extends SpaceFoxApp {function initialize(){SpaceFoxApp.initialize();}}
+import Toybox.Application;
+import Toybox.Background;
+import Toybox.Lang;
+import Toybox.Test;
+import Toybox.Time;
+
+// A retained pre-0.1.6 attempt may have been recorded immediately before the
+// new code starts. Its old cadence must not suppress the new code's first try.
+(:test, :typecheck(false)) function uxUpgradeAttemptVersion(logger) {
+    var store=new NativeStore();var base="https://jekamas.github.io/SpaceFox";var now=Time.now().value().toLong();
+    var previous=store.read("sf.attempt");
+    try {
+        store.write("sf.attempt",{"base"=>base,"utc"=>now});
+        var transfer=new NativeTransfer(base,store);transfer.load();
+        Test.assert(transfer.due(now));
+        Test.assert(transfer.nextWake(now)==now);
+        transfer.attempted(now);
+        var reopened=new NativeTransfer(base,store);reopened.load();
+        Test.assert(!reopened.due(now));
+        Test.assert(!reopened.due(now+299));
+        logger.debug("UX_UPGRADE old_attempt=due new_attempt=bounded actual_storage=true");
+    } finally {if(previous==null){Application.Storage.deleteValue("sf.attempt");}else{store.write("sf.attempt",previous);}}
+    return true;
+}
+
+(:test, :typecheck(false)) function uxAssetErrorDetailsFit(logger) {
+    var p=new LocalePresentation();p.qualificationMode=true;
+    var canvas=Graphics.createBufferedBitmap({:width=>390,:height=>390,:colorDepth=>16}).get();var dc=canvas.getDc();
+    var locales=["en","ru"];var codes=[-400,-104];
+    for(var i=0;i<locales.size();i+=1){p.prepare(locales[i]);for(var j=0;j<codes.size();j+=1){
+        var detail=NativeForegroundApp.errorDetail("assetFailed",{"build"=>NativeVersion.BUILD,"code"=>codes[j]});
+        var label=p.assetStatus("assetFailed",detail);var width=dc.getTextWidthInPixels(label,p.small);
+        logger.debug("UX_ASSET_ERROR locale="+locales[i]+" code="+codes[j]+" width="+width+" label="+label);
+        Test.assert(label.find(NativeVersion.BUILD)!=null&&label.find(codes[j].toString())!=null);
+        Test.assert(width<=175);
+    }}return true;
+}
