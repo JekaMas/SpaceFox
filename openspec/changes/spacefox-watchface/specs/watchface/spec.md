@@ -121,7 +121,8 @@ battery, globe or projection choice remains.
 ### Requirement: Compact exceptional-state indicators
 
 The active home face SHALL omit a persistent update timestamp and service-status badges.
-A reschedule SHALL use an amber countdown; otherwise it SHALL use mint. Unknown
+A reschedule SHALL use an amber countdown; otherwise it SHALL use the selected
+countdown color, mint by default. Unknown
 new time SHALL replace the precise countdown with an uncertainty label. Stale data
 SHALL add a dotted countdown underline, independently of rescheduling. No
 exclamation or cloud-off badge SHALL occupy the face.
