@@ -1,52 +1,31 @@
-# SpaceFox root checkpoint
+# SpaceFox current root checkpoint
 
-LatestuserDEFERGarminpublication; localtestandprovefullunattendedupdates
-evenagentPCoff; stopwatchingeveryroutineupdate. Thisoperationalrequestdone
-atserver/SDKboundary. BroadergoalACTIVE,notcomplete. No paidmodelAPI/keys/
-credits/extraAstra. OnceAstraauditDONE. No newSDK/API/provideropsneedednow.
+Current unit: DELIVERY01 scene continuity, deterministic modes, pending graphics
+and public-main cache/refresh integration. Root accepted the bounded software
+repair after author self-GREEN and fresh independent verify/fix GREEN.
 
-27wholepropertiesCLOSED: prior21 +LS03.P4/P5/P6/P7/P8/P10. Task3.3CLOSED
-afterauthorbe8f39b1/ONEpeerafaf7a8f/rootacceptedintegrated51fba7af. Whole40cases,
-15actualidentities (11retainedrich+4minimaloppositepolarity),1reproduciblecommand.
-Originalfailures/531smetadata/correct300sperCLIboundremaintruthful. No fakefresh
-15suiteexecution; clean5d2d6202 structural/query/receipt reconciliationpassed.
-Peerfixedonlycontradictorytask3.3prose; node/property/casecountnotgrown.
-Native31tasks15checked/16open; foundation4checked0open;
-combined35tasks19checked/16open. Graph56req134props
-673cases66commands;27actualwholeclosures
-107unreconciled. 257implementedlabels/416plannedcases
-across93props arenotpass totals. Fixed5primary/oneclock/onecounter/oneflatmap/4fields;
-all36IDsretained31besteffort. No legacy/stress/displaypermutation.
+Corrected candidate: **0.1.9 / d04c16ef**, compiled clean source aa79b73c, peer
+report head 2ef509b6. Public main 4cb6f75f is included through merge 17b9fe0d.
+The published 0.1.8 test prerelease is retained as the exact predecessor.
 
-Currentoperationalproofs: docs/AUTONOMOUS_UPDATES.ru.md and evidence/
-autonomous-updates-20261113; naturalCF4successscheduled0errors, persistedCron
-7,22,37,52/encryptedsecret; version670096a0/source3968e2ac. RealG2/G3runs
-43433017023/43442034551 all5jobsonGitHubhostedUbuntu; sourceepoch
-1794576343->1794580012. Tokenexpires2027-11-12. Macnot actuallypoweredoff;
-serverdependencyandexecutionevidenceprovesPCnotinchain. No localdaemon/LLM.
+Validation: 11 host and 17 native cases; natural +300-second acquisition and
+rejection/restoration; READY → LOW → HIGH; IQ and 21 program signatures. All
+1,268 signed inputs matched. See [root judgment](evidence/delivery01/ROOT-JUDGMENT.md)
+and [peer result](evidence/delivery01-independent-final/FINAL.md).
 
-Nativeproofs evidence/local-autonomous-delivery-20261113: freshnoSeedG4
-Starship/SpaceX/Starbase63d2df50/source1794583991/selection7f6, all4bitmaps,
-ordinary126784/noDrawIo. GenuinepersistedG1Vulcan86eb/source1794572010 same
-originalUUIDd813...autoacceptsG4; coldreopen0HTTP/0callback/sameseal17ccd1d9.
-Successfulordinarylaunchers0; failuresG3expecteddataadvance2/startup143noVM/
-observerlogger2 retainedseparate. Reopenbuilddirtytrueonlyresumenotes, allnative/
-resourcepinsmatchGit2debe540. BotholdFILESmanifestandnewFILES-INPLACE
-retained. All3ownedNSblankURL/nulltemporal/cachepreserved, FileKillDevice stopped
-VM, knownPIDsabsent; SDKleaseFREE, allCUAcompletion_summariesdone. Peer
-independentlyaudited82manifestentries/151nativepinsin4builds. G4run43452902197
-wasPUSH all5success, not thirdnaturalCron. No physicalphone/FR165/battery/Store.
+The SDK original snapshot and simulator.ini are restored with the SDK stopped.
+Original temporal registration remains unverified. The simulator lease is released.
+Raw owner photos, health data, credentials and full SDK state stay local.
 
-PublicGitHubprereleasev0.1.0-test.1 actual8anonymous200/hashmatch; immutable
-PRGaa0376f6/IQb0126d9e/sourcec7ad2c41. Latestidentitypins0.1.0; nextprodcode
-requiresoriginalretainedreceipt+higher version. Publicmainlastd2e239c6; root
-mustpublishonepublicprojectionbatch(including27closures/history/nativeops),
-neverpushprivateauthoringmain. Publicworktree /private/tmp/spacefox-public-current-only-20261113.
-Garminpublicationdeferred, noUpload; GitHubreleasebodycorrecteddeferred.
+**Overall goal and task 3.2 remain NOT DONE.** The owner saw 0.1.6 after both a
+stock-face round trip and a normal power cycle. Corrected-code execution, fresh
+matching launch and stable physical modes remain required. Do not ask for those
+old-version diagnostic steps again. The delivery cause remains unconfirmed;
+preview, compatibility response and unversioned queue do not identify installed code.
 
-Nextcoherentunit: LS04.P1/P2/P3 +LS11.P2/P3/P6 currentprovider/cadence/
-per-recordage/omission, usingretainedactualcurrentcaptures/validportablegreens
-withoutliveprovider/modelcalls; no rare/stress/legacycampaign. OneAPPLYfull
-selfGREEN->ONEdifferentpeerVERIFYFIXCLOSE->rootjudge. Do not holdtask3.3
-openforunrelated3.4fork/physicalclauses. Rootcurrentlyno liveagents; perform
-finalpublicbatchandcurrentuserreport, continueoverallgoalfromnextgroup.
+Root next: public main/tag and package publication, original ordinary Garmin card
+submission, and actual delivery readback. Record each boundary separately. No new
+task/property group starts while this delivery unit is open. Broader phone,
+physical, battery and Store requirements retain their own open scope. The private
+workflow runner is unavailable and was not installed or silently substituted.
+No paid model API, new backend/account or installation was used in this unit.

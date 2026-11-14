@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "worktree": "/Users/jekamas/projects/SpaceFox-worktrees/verify-first-install-incident-20261114",
-  "candidateSource": "a3a19216d1c8c21de40695ee206eacfc626866e0",
-  "independentEvidenceHead": "a3a19216d1c8c21de40695ee206eacfc626866e0",
+  "candidateSource": "aa79b73c218e84774421180acdac94132e52b5f1",
+  "independentEvidenceHead": "2ef509b60eb7db00b39f599fabe147a59264ff7b",
   "publicImplementationHead": "b47b71bc5169c908908de13e77417df9f2af3c1e",
-  "softwareGroup": "UX03 0.1.7 bounded software CLOSED after author self-GREEN, fresh independent verify/fix GREEN and root judgment; physical/Store gates separate",
+  "softwareGroup": "DELIVERY01 0.1.9 bounded software CLOSED after author self-GREEN, fresh independent verify/fix GREEN and root judgment; physical delivery remains NOT DONE",
   "incident014Source": "3b95dee18cb56d704970aa1e330cd93030193ffc",
   "incident014Evidence": "first-install-incident/ROOT-JUDGMENT.md",
   "phone015ChangedNativeFiles": [
@@ -30,10 +30,17 @@
     "lease": "released",
     "httpsRequirements": "restored enabled",
     "ble": "connected",
-    "ownTemporalEvents": "UX02 handoff null; isolated observers delete their own events",
-    "ownFeedUrls": "UX02 handoff blank; accepted cache seal preserved",
+    "ownTemporalEvents": "Original snapshot temporal registration unverified; no null claim.",
+    "ownFeedUrls": "Original snapshot task-owned URL state unverified; no blank claim.",
     "otherApps": "preserved",
-    "leaseNote": "UX03 maintenance frame source/log binding verified; fresh UUID null temporal/blank URL, fresh files removed; 11 original task-owned hashes match, sys.nfm and other apps not overwritten. Earlier premature release and IMT restoration are recorded in UX03 evidence."
+    "leaseNote": "Independent retained-state replay restored exact pre-run snapshot and simulator.ini; temporal registration remains unverified.",
+    "status": "RESTORED_SNAPSHOT_SDK_STOPPED",
+    "temporalRegistrationUnverified": true,
+    "localSnapshotManifest": "/Users/jekamas/.codex/tmp/spacefox-delivery-incident-20261114/runtime-original-manifest.json",
+    "localOwnedQuarantines": [
+      "/Users/jekamas/.codex/tmp/spacefox-delivery-incident-20261114/quarantine",
+      "/Users/jekamas/.codex/tmp/spacefox-delivery-incident-20261114/quarantine-unit"
+    ]
   },
   "runtimeTransport": "same schema3/SFR1M; HTTP .txt aliases for logical NativeBatch objects, byte identical; default base unchanged",
   "ordinaryCandidate": {
@@ -52,6 +59,30 @@
   ],
   "coordination": "Integrate reviewed public-only commits/hunks; preserve unrelated dirty work. Private authoring ancestry must not be pushed. Keep other producer deltas separate and do not activate unsupported fields. Existing valid greens retain original source/proof boundaries.",
   "activeFollowUp": {
+    "group": "DELIVERY01",
+    "owner": "root",
+    "stage": "bounded software accepted; publication and physical delivery separate",
+    "version": "0.1.9",
+    "runtimeId": "d04c16ef",
+    "compiledSource": "aa79b73c218e84774421180acdac94132e52b5f1",
+    "evidence": "delivery01/ROOT-JUDGMENT.md",
+    "simulatorLease": "released; RESTORED_SNAPSHOT_SDK_STOPPED; original temporal registration unverified"
+  },
+  "latestPhysicalReport": {
+    "source": "owner on-watch settings after stock-face round trip and normal full power cycle",
+    "versionReported": "0.1.6",
+    "correctedVersionExecuted": false,
+    "freshMatchingLaunchAccepted": false,
+    "deliveryStatus": "RED: corrected build not observed; installation request has no version selector"
+  },
+  "settingsSchemaAudit": "/Users/jekamas/.codex/tmp/spacefox-ux016-root-20261114/settings-schema-comparison.json: actual0.1.2/014/015 FR165M settings.json identical, Battery=5",
+  "ux03FinalCandidate": {
+    "version": "0.1.7",
+    "iqSha256": "f8b41e9870654436ea4a8a7be63ca64451a0863254a8731b2f1a50659d91cde5",
+    "compiledSource": "a3a19216d1c8c21de40695ee206eacfc626866e0",
+    "evidence": "ux03/ROOT-JUDGMENT.md"
+  },
+  "ux02FollowUpHistory": {
     "group": "UX02",
     "owner": "root",
     "worktree": "/Users/jekamas/projects/SpaceFox-worktrees/verify-fix-ux016-20261114",
@@ -90,7 +121,7 @@
     },
     "independentMenuEvidence": "ux01-016/independent-menu"
   },
-  "latestPhysicalReport": {
+  "historicalPhysicalReport012": {
     "source": "owner reply after 0.1.5 queue",
     "versionReported": "0.1.2",
     "feedCode": -400,
@@ -99,11 +130,12 @@
     "deliveryStatus": "RED: queued or Store preview version did not establish updated runtime",
     "phoneAccounts": "Owner confirmed Garmin Connect and Connect IQ both use current publisher account; mismatch excluded by owner report"
   },
-  "settingsSchemaAudit": "/Users/jekamas/.codex/tmp/spacefox-ux016-root-20261114/settings-schema-comparison.json: actual0.1.2/014/015 FR165M settings.json identical, Battery=5",
-  "ux03FinalCandidate": {
-    "version": "0.1.7",
-    "iqSha256": "f8b41e9870654436ea4a8a7be63ca64451a0863254a8731b2f1a50659d91cde5",
-    "compiledSource": "a3a19216d1c8c21de40695ee206eacfc626866e0",
-    "evidence": "ux03/ROOT-JUDGMENT.md"
+  "delivery019Candidate": {
+    "version": "0.1.9",
+    "runtimeId": "d04c16ef",
+    "iqSha256": "5ec5ca0135f6f3a9ab24efa7082fa558d4977e7da2e0023487b4cb8d0186fd4d",
+    "compiledSource": "aa79b73c218e84774421180acdac94132e52b5f1",
+    "evidence": "delivery01/ROOT-JUDGMENT.md",
+    "physicalStatus": "NOT DONE"
   }
 }

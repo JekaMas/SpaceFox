@@ -521,3 +521,14 @@ source-bound batch readiness. Final-source evidence is retained under
 These software observations do not establish physical delivery. The owner's watch
 still reports 0.1.6; the corrected 0.1.9 binary, matching fresh launch, and stable
 active/ambient/active round trip on that watch remain unobserved.
+
+### DELIVERY01 root acceptance — software closed, physical delivery open
+
+Root accepted the independently verified combined 0.1.9/d04c16ef software at
+compiled aa79b73c and peer report 2ef509b6, including public-main 4cb6f75f.
+Eleven host and seventeen native cases, natural asset event/recovery and mode
+round trip passed; IQ and 21 program signatures passed. The published 0.1.8
+predecessor is preserved. See [root judgment](evidence/delivery01/ROOT-JUDGMENT.md).
+Signed inputs remain unchanged by root metadata. Task 3.2 and physical delivery
+remain NOT DONE: the owner still observed 0.1.6 after a full power cycle.
+Main/tag, package and Store results are separate from actual watch execution.
