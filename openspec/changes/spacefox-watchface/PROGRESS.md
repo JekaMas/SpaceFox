@@ -23,8 +23,9 @@ One-time Astra fullspec/test audit is DONE; [audit](evidence/basic-main-review/S
 | RL01.P1 / WF11.P1; task2.3 | 14/14cases,1command | [platform/metrics](evidence/judge/basic-platform-metrics-root-whole.json) |
 | LS03.P1 / P3 / P12; LS16.P1 | 19/19cases,17methods,1command | [publisher and autonomous clock](evidence/judge/basic-publisher-clock-root-whole.json) |
 | LS03.P4 / P5 / P6 / P7 / P8 / P10; task3.3 | 40cases,15observed methods,1command; valid receipts retained | [whole unattended publisher](evidence/judge/autonomous-publisher-root-whole.json) |
+| WF09.P2 / WF09.P3 | Native current callback/guard, four-phase pixel and production-timing proof; retained cadence | [UX02 root judgment](evidence/ux02/ROOT-JUDGMENT.md) |
 
-**27 whole software properties are CLOSED.** Root accepted selected-scene peer
+**29 whole software properties are CLOSED.** Root accepted selected-scene peer
 3785e3db after requiring replacement of source-string sparse-status checks with
 one targeted actual SDK test. The same peer fixed all four flag combinations,
 then passed the clean whole24case verifier. No third reviewer or native11 rerun.
@@ -43,7 +44,7 @@ Valid source-bound greens are retained; no rerun for docs/newcommit/workflowstag
 
 Native [tasks.md](tasks.md): **31tasks;15checked /16open**. Foundation:4checked,
 0open. Combined:35tasks;19checked /16open. Native graph: **56requirements /
-134properties /673cases /66commands**. Current accepted27 leave **107properties
+134properties /673cases /66commands**. Current accepted29 leave **105properties
 without a closure reconciled in this sequence**.257implemented labels and
 416planned cases across93properties are registrations, not passing totals.
 Foundation's4properties/8cases retain their separate original proof boundary.
@@ -380,3 +381,7 @@ Update recovery must execute the actual native storage/settings/startup and back
 OriginalStore card, UUID/key and actual published predecessor0.1.5 remain fixed.0.1.6 has never been submitted and its old IQ must be superseded before upload. Physical installation/readback and system-settings entry remain external open gates. Native simulator lease is requested back after the previously granted short parser batch, with task-owned state snapshot/restore and no global reset.
 
 UX02 expanded within the same iteration: validate external-data prefetch, bounded retry and background cadence, current-code refresh after an older persisted error, accepted-cache survival and invalidation only on a validated new identity. A code version change must schedule a fresh update at the next permitted background opportunity without discarding valid accepted content; redraw must not perform network requests. Existing source-bound proofs remain reusable only where their production owners and dependencies are unchanged. Store propagation and actual installed watch version are separate root-owned observations.
+
+## UX02 root closure — 0.1.6 ready for publication
+
+Author fd7aef06 and fresh independent verify/fix1beee4c9 close the selected software unit. Root accepts bounded WF09.P2/P3, bringing the reconciled whole-property count to29/134;105 remain without a closure in this sequence. The31 numbered native tasks remain15checked/16open; physical and whole-release conjuncts were not checked off by SDK observations. The exact signed candidate and proof boundaries are in [ROOT-JUDGMENT](evidence/ux02/ROOT-JUDGMENT.md). Publication and actual phone/watch readback follow on the original ordinary card, using the final IQf0486aec; the older unsubmitted0.1.6 IQ is superseded.
