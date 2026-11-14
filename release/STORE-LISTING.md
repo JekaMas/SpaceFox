@@ -27,4 +27,4 @@ SpaceFox is independent and is not endorsed by Garmin or launch operators. Launc
 
 ## Candidate upload
 
-`SpaceFox.iq` SHA-256: `22bf05e847394864db890a7d2f8e7a15c9528ea90e06eb747bdeca086e36a28d`. Application UUID: `ec8b7c8a8ea54ee9ac91ee6e7a674d15`. The included 390 × 390 simulator image contains simulated health values; it is not a photograph or physical-device evidence. The GitHub prerelease `v0.1.1-test.1` is planned, not yet published. Record upload validation and review outcomes; task 7.3 also requires actual approved Store installation, settings and update evidence.
+`SpaceFox.iq` SHA-256: `6d6718fed5a79d986ae4193a43ece6b17079c4ce399c690d0369ce82eb298ae3`. Application UUID: `ec8b7c8a8ea54ee9ac91ee6e7a674d15`. The included 390 × 390 simulator image contains simulated health values; it is not a photograph or physical-device evidence. The GitHub prerelease `v0.1.1-test.1` is planned, not yet published. Record upload validation and review outcomes; task 7.3 also requires actual approved Store installation, settings and update evidence.
