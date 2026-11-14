@@ -434,3 +434,18 @@ The bounded author software group is GREEN at the source candidate `84d9da10`: s
 ### UX03 independent verification checkpoint
 
 The bounded software group is independently GREEN; focused current admission and pixel tests passed 5/5, and the retained native/signed witnesses were inspected. See [independent verification](evidence/ux03-independent-final/VERIFY.md). Final clean-source export and root judgment are separate; physical and Store acceptance remain open.
+
+### UX03 root closure — 0.1.7 ready for publication
+
+The selected software group is CLOSED after author self-GREEN and a different
+independent verify/fix GREEN. Final clean-source export `a3a19216` passed all
+1,087 receipt-input comparisons and SDK IQ/21-program signature checks; both
+observed device programs are byte-identical to the signed gallery members.
+Root accepts the point/projection repair, color consistency, measured spacing,
+normal/maintenance stale-dot correction and retained valid LOW/runtime receipts
+in [ROOT-JUDGMENT](evidence/ux03/ROOT-JUDGMENT.md). Exact final IQ SHA-256 is
+`f8b41e9870654436ea4a8a7be63ca64451a0863254a8731b2f1a50659d91cde5`.
+The existing numbered tasks remain truthful about physical and whole-release
+conjuncts; no global property count is inflated by this bounded requalification.
+Integration, tag and same-card submission now follow. Physical installation,
+phone/settings/power and public approval remain unobserved.

@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "worktree": "/Users/jekamas/projects/SpaceFox-worktrees/verify-first-install-incident-20261114",
-  "candidateSource": "4b16cca3f3c29083cbabc92b72f1a09718f77a5e",
-  "independentEvidenceHead": "1beee4c9ad932ec8912fe520a486af9b176f0507",
+  "candidateSource": "a3a19216d1c8c21de40695ee206eacfc626866e0",
+  "independentEvidenceHead": "a3a19216d1c8c21de40695ee206eacfc626866e0",
   "publicImplementationHead": "b47b71bc5169c908908de13e77417df9f2af3c1e",
-  "softwareGroup": "UX02 bounded software CLOSED by independent verify/fix and root; physical/Store gates remain open",
+  "softwareGroup": "UX03 0.1.7 bounded software CLOSED after author self-GREEN, fresh independent verify/fix GREEN and root judgment; physical/Store gates separate",
   "incident014Source": "3b95dee18cb56d704970aa1e330cd93030193ffc",
   "incident014Evidence": "first-install-incident/ROOT-JUDGMENT.md",
   "phone015ChangedNativeFiles": [
@@ -33,7 +33,7 @@
     "ownTemporalEvents": "UX02 handoff null; isolated observers delete their own events",
     "ownFeedUrls": "UX02 handoff blank; accepted cache seal preserved",
     "otherApps": "preserved",
-    "leaseNote": "UX02 signed PRG photo observations complete. Production UUID cleanup observed blank URL and null event, then the four pre-existing task-owned files restored with matching hashes; earlier production cache-loss remains unresolved."
+    "leaseNote": "UX03 maintenance frame source/log binding verified; fresh UUID null temporal/blank URL, fresh files removed; 11 original task-owned hashes match, sys.nfm and other apps not overwritten. Earlier premature release and IMT restoration are recorded in UX03 evidence."
   },
   "runtimeTransport": "same schema3/SFR1M; HTTP .txt aliases for logical NativeBatch objects, byte identical; default base unchanged",
   "ordinaryCandidate": {
@@ -99,5 +99,11 @@
     "deliveryStatus": "RED: queued or Store preview version did not establish updated runtime",
     "phoneAccounts": "Owner confirmed Garmin Connect and Connect IQ both use current publisher account; mismatch excluded by owner report"
   },
-  "settingsSchemaAudit": "/Users/jekamas/.codex/tmp/spacefox-ux016-root-20261114/settings-schema-comparison.json: actual0.1.2/014/015 FR165M settings.json identical, Battery=5"
+  "settingsSchemaAudit": "/Users/jekamas/.codex/tmp/spacefox-ux016-root-20261114/settings-schema-comparison.json: actual0.1.2/014/015 FR165M settings.json identical, Battery=5",
+  "ux03FinalCandidate": {
+    "version": "0.1.7",
+    "iqSha256": "f8b41e9870654436ea4a8a7be63ca64451a0863254a8731b2f1a50659d91cde5",
+    "compiledSource": "a3a19216d1c8c21de40695ee206eacfc626866e0",
+    "evidence": "ux03/ROOT-JUDGMENT.md"
+  }
 }
