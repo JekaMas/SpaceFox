@@ -22,7 +22,6 @@
   "queue": {
     "observedAt": "2026-11-14T17:44:42.324Z",
     "version": "0.1.7",
-    "internalVersion": 6,
     "target": "Forerunner 165 Music",
     "requests": [
       {
@@ -37,7 +36,11 @@
       }
     ],
     "queueMessage": "Got it! SpaceFox will be installed the next time your device syncs.",
-    "proofBoundary": "Server queue acknowledgement; physical installation and executing watch version unobserved."
+    "proofBoundary": "Unversioned server queue acknowledgement only; no proof of target binary delivery.",
+    "publisherPreviewInternalVersion": 6,
+    "requestedInstallInternalVersion": null,
+    "installRequestPostDataPresent": false,
+    "correction": "The original internalVersion6 label came from publisher preview and compatibility GET, not from the installation POST. The POST selected no explicit version."
   },
   "screenshots": "Three exact signed SDK frames submitted: FR165 Music active/LOW390 and FR965 active454.",
   "telegram": {
@@ -53,5 +56,14 @@
     "phone and physical settings/health/power",
     "Garmin public approval"
   ],
-  "proofBoundary": "Observed Store submission, saved exact version and server installation queue; not actual watch installation. Tag matches all release inputs; later publication status/history bookkeeping does not change native code or the signed IQ."
+  "proofBoundary": "Signed0.1.7 upload, preview and unversioned queue observed. Actual corrected-build delivery failed acceptance; physical0.1.6 is reported. SDK checks do not close this incident.",
+  "garminVersionContext": "Authenticated publisher preview; not proof of installability or on-watch code",
+  "deliveryVerdict": "FAIL: owner reports executing0.1.6 after switching away and back; target0.1.7 not observed",
+  "latestPhysicalReadback": {
+    "executingVersion": "0.1.6",
+    "afterStockFaceAndReselect": "0.1.6",
+    "launchVisible": true,
+    "sceneContinuity": "FAIL: active fallback/full scene, black maintenance/progress layout and Always-On reported",
+    "source": "Owner text and photos; activity readings retained privately"
+  }
 }

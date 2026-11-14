@@ -1,5 +1,12 @@
 # Testing SpaceFox
 
+**Delivery incident open:** the owner reports0.1.6 executing after a stock-face
+round trip, despite the0.1.7 developer preview and queue acknowledgement. The
+installation POST did not select an explicit version. A successful queue, old
+phone release notes and an empty Updates list do not identify executing code.
+Keep the existing cache; corrected-build delivery and stable scene transitions
+remain NOT DONE. See the [corrected record](openspec/changes/spacefox-watchface/evidence/ux03-delivery/PUBLICATION.md).
+
 ## Ordinary 0.1.7 candidate
 
 The ordinary candidate uses the original [SpaceFox Connect IQ listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3) and the watches in [supported devices](docs/SUPPORTED_DEVICES.md), including Forerunner 165 Music and Forerunner 965. Garmin accepted 0.1.7 at the original card, which now shows 0.1.7 (Internal 6). The existing Forerunner 165 Music installation was queued using Internal 6 compatibility; physical delivery/installation and public approval remain unobserved. See the [0.1.7 publication record](openspec/changes/spacefox-watchface/evidence/ux03-delivery/PUBLICATION.md). A queue or phone listing label alone does not prove the version running on the watch.

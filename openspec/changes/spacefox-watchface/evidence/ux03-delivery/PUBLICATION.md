@@ -1,5 +1,19 @@
 # SpaceFox 0.1.7 publication
 
+## Delivery correction — incident DELIVERY01
+
+The owner reports the watch executing **0.1.6**, including after selecting a
+stock face and returning to SpaceFox. The phone still shows old release notes
+and no available update. The original installation POST contained no version
+parameter or body; only its preceding compatibility GET specified Internal6.
+The prior queue label therefore did not prove delivery of0.1.7. Target-build
+delivery is **FAIL / NOT DONE**. The authenticated publisher preview and IQ
+verification below remain their original observations. The new physical scene
+loss/rebuilding report is part of the reopened incident. Raw activity photos
+remain outside public Git.
+
+## Original publication observations
+
 Public main and tag `v0.1.7` were published at `bb08bf25`; the signed
 [GitHub prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.7)
 contains the IQ, ten PRGs, receipts, instructions and license notices. GitHub
