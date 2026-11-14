@@ -1,0 +1,50 @@
+------------------------------------------------------------------------------
+Executing test deliveryModeCallbacksAreIdempotent...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - deliveryModeCallbacksAreIdempotent() at /Users/jekamas/.codex/tmp/spacefox-delivery-independent-20261115/mode-red/Probe.mc:31 0x1000316b 
+  - evaluate_test_entries_0_to_7() at /Users/jekamas/.codex/tmp/spacefox-delivery-independent-20261115/mode-red/gen/006-B4433-00/source/UnitTests.mcgen:57 0x10008826 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-delivery-independent-20261115/mode-red/gen/006-B4433-00/source/UnitTests.mcgen:84 0x100089c2 
+ERROR
+------------------------------------------------------------------------------
+Executing test deliveryRejectedResponseRetainsScene...
+DEBUG (00:59): REJECTED_RESPONSE retainedAcceptedScene=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryPendingDeadlineDoesNotMove...
+DEBUG (00:59): PENDING_DEADLINE first=1300 wake=1300 reload=1300 osMinimum=1600
+PASS
+------------------------------------------------------------------------------
+Executing test deliverySceneEventsAndLateCompletion...
+DEBUG (00:59): SCENE_EVENTS applied=9 observedNoMutation=2 skipped=0
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryVisualIdentityCases...
+DEBUG (00:59): VISUAL_KEY sameT0AndGeneration=true modelSitePointQualificationArtChangesDistinct=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryRealRegisteredDeadline...
+DEBUG (00:59): REGISTERED_DEADLINE preserved=true wakeAndReload=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryDuplicateCallbackDoesNotInvalidateBuild...
+DEBUG (00:59): CALLBACKS duplicateNoMutation=2 newCandidateApplied=1 staleCompletionRejected=1
+PASS
+
+==============================================================================
+RESULTS
+Test:                                           Status:
+deliveryModeCallbacksAreIdempotent              ERROR
+deliveryRejectedResponseRetainsScene            PASS
+deliveryPendingDeadlineDoesNotMove              PASS
+deliverySceneEventsAndLateCompletion            PASS
+deliveryVisualIdentityCases                     PASS
+deliveryRealRegisteredDeadline                  PASS
+deliveryDuplicateCallbackDoesNotInvalidateBuild PASS
+Ran 7 tests
+
+FAILED (passed=6, failed=0, errors=1)

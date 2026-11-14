@@ -34,7 +34,13 @@ class SpaceFoxApp extends Application.AppBase {
     (:typecheck(disableBackgroundCheck))
     function restoreFeed() as Void {restoreTimer=null;if(!restorePending||view==null||!view.canForegroundWork()||System.getDisplayMode()!=System.DISPLAY_MODE_HIGH_POWER){return;}restorePending=false;NativeForegroundApp.restore(self);}
     (:typecheck(disableBackgroundCheck))
-    function onDisplayModeChanged() as Void {var current=view;if(current!=null){current.syncDisplayMode(System.getDisplayMode());if(System.getDisplayMode()==System.DISPLAY_MODE_HIGH_POWER){if(restorePending){queueRestore();}else{current.prepareVisual();}}else if(restoreTimer!=null){restoreTimer.stop();restoreTimer=null;}}}
+    function onDisplayModeChanged() as Void {
+        var current=view;var mode=System.getDisplayMode();
+        if(current==null){return;}
+        current.syncDisplayMode(mode);
+        if(mode==System.DISPLAY_MODE_HIGH_POWER){if(restorePending){queueRestore();}else{current.prepareVisual();}}
+        else if((mode==System.DISPLAY_MODE_LOW_POWER||mode==System.DISPLAY_MODE_OFF)&&restoreTimer!=null){restoreTimer.stop();restoreTimer=null;}
+    }
     (:typecheck(disableBackgroundCheck))
     function onSettingsChanged() as Void {if(view!=null){view.setSettings(new SceneSettings(null).load());reloadFeed();WatchUi.requestUpdate();}}
 }

@@ -5,7 +5,7 @@ watch settings even after reselecting the face and after a full power cycle. A
 later scene displayed Vulcan VC6L, ULA, Communications, Cape and a countdown,
 then black maintenance and ambient. The physical transition's trigger is not
 known. The first scene may have been a fallback. Original photos stay local.
-The corrected source is 0.1.8, runtime ID `4544aa8b`; no claim is made that the
+The independently repaired source is 0.1.8, runtime ID `65b7215d`; no claim is made that the
 owner's watch executes it. A target-signed artifact, target runtime on that
 watch, matching fresh feed and coherent active → ambient → active observations
 remain required. `physical-gate-018-current-red.json` records the current RED;
@@ -13,6 +13,12 @@ the separate historical 0.1.7 and initial receipts are retained. Actual target
 execution can establish owner installation; public Store approval is separate.
 
 ## Reproduced defects and fix
+
+The details below preserve the author's earlier `4544aa8b` checkpoint. The
+independent verifier found and repaired additional identity, callback ordering,
+and asset-readiness defects; the new source-bound evidence is in
+[`delivery01-independent-final`](../delivery01-independent-final/). Physical
+and Store acceptance remain open.
 
 * Baseline `native-unit-red.log` ran `deliveryRejectedResponseRetainsScene` and
   failed `ASSERTION FAILED` (0 passed, 1 error). Exact SDK command and program

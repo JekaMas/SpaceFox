@@ -9,7 +9,9 @@ from pathlib import Path
 BASE = 'openspec/changes/spacefox-watchface/evidence/delivery01/'
 CASES = ('deliveryRejectedResponseRetainsScene', 'deliveryPendingDeadlineDoesNotMove',
          'deliverySceneEventsAndLateCompletion', 'deliveryVisualIdentityCases',
-         'deliveryRealRegisteredDeadline', 'deliveryDuplicateCallbackDoesNotInvalidateBuild')
+         'deliveryRealRegisteredDeadline', 'deliveryDuplicateCallbackDoesNotInvalidateBuild',
+         'deliveryModeCallbacksAreIdempotent', 'deliveryVisualWaitsForMatchingBatch',
+         'deliveryPendingAssetsAreNotIncomplete')
 
 def validate(root, catalog):
     from tools.native_ux03_requalification import validate as prior_validate
@@ -41,11 +43,19 @@ def validate(root, catalog):
     validate_identity(root)
     native = {str(p.relative_to(root)) for p in (root/'watchface/source').rglob('*.mc')}
     if not native <= set(record['sources']): raise ValueError('delivery native source closure incomplete')
-    for name in ('native-unit-final','native-cold-final','native-retained-final','native-identity'):
+    for name in ('native-unit-final','native-cold-final','native-retained-final','native-identity','native-sleep-final'):
         build = json.loads(checked(record['evidence'][name+'-build']).read_text())
         probe = checked(record['evidence'][name+'-probe'])
+        execution = json.loads(checked(record['evidence'][name+'-execution']).read_text())
         if build['exitCode'] != 0 or hashlib.sha256(probe.read_bytes()).hexdigest() != build['probeSha256']:
             raise ValueError('delivery SDK build differs: '+name)
+        if (execution.get('programSha256') != build['packageSha256'] or
+            execution.get('applicationUuid') != build['applicationUuid'] or
+            execution.get('sourceSetSha256') != build['sourceSetSha256']):
+            raise ValueError('delivery SDK launch binding differs: '+name)
+        if name in ('native-cold-final','native-retained-final','native-sleep-final'):
+            if execution.get('preLaunchCopiedSha256') != build['packageSha256'] or build['ownerTag'] not in checked(record['evidence'][name+'-log']).read_text():
+                raise ValueError('delivery SDK executing owner differs: '+name)
         for source,digest in {**build['productionSources'],**build['productionResources']}.items():
             if record['sources'].get(source) != digest: raise ValueError('delivery SDK input differs: '+source)
     unit = checked(record['evidence']['native-unit-final-log']).read_text()
@@ -65,6 +75,14 @@ def validate(root, catalog):
     pending = next((row[2] for row in schedules if int(row[1])-int(row[0]) == 300 and row[1] == row[2]),None)
     if pending is None or cold.count(' registered='+pending) < 3:
         raise ValueError('pending deadline was not observed across reload')
+    timed = [(int(m.group(1)),m.start()) for m in re.finditer(r'NATIVE_METRIC phase=temporal-start[^\n]* utc=(\d+)',cold)]
+    due_event = next((pos for when,pos in timed if when >= int(pending)),None)
+    build_at = cold.find('NATIVE_METRIC phase=sfr-build-start')
+    ready_at = cold.find('DELIVERY_READY id=')
+    if (due_event is None or build_at < due_event or ready_at < build_at or
+        'NATIVE_GET path=descriptors/' not in cold[due_event:build_at] or
+        'NATIVE_REJECTION' in cold[:ready_at] or 'Out Of Memory' in cold[:ready_at]):
+        raise ValueError('natural pending batch did not produce its complete visual')
     for token in ('DELIVERY_BUILD_FRAME normalRenderer=true rich=false',
                   'DELIVERY_DUPLICATE_RETAINED', 'DELIVERY_READY id=',
                   'DELIVERY_REJECTED_RETAINED id=', 'pendingRestore=true',
@@ -72,6 +90,22 @@ def validate(root, catalog):
         if token not in retained: raise ValueError('delivery native observation missing: '+token)
     if 'Out Of Memory' in cold or 'Out Of Memory' in retained:
         raise ValueError('delivery native memory failure')
+    sleep = checked(record['evidence']['native-sleep-final-log']).read_text()
+    receipt = json.loads(checked(record['evidence']['native-sleep-final-receipt']).read_text())
+    sleep_build = json.loads(checked(record['evidence']['native-sleep-final-build']).read_text())
+    if receipt.get('inputProgramSha256') != sleep_build.get('packageSha256') or receipt.get('preLaunchCopiedSha256') != sleep_build.get('packageSha256'):
+        raise ValueError('sleep launch input does not match compiled program')
+    if ('SLEEP_START build='+match.group(1)+' id='+match.group(2)) not in sleep or sleep_build['ownerTag'] not in sleep:
+        raise ValueError('sleep runtime source identity missing')
+    events = ('SLEEP_READY launch=', 'SLEEP_CHECK event=sleep-callback mode=1',
+              'SLEEP_CHECK event=low-frame mode=1', 'SLEEP_CHECK event=wake-callback mode=0',
+              'SLEEP_CHECK event=display-mode mode=0')
+    positions = [sleep.find(event) for event in events]
+    if min(positions) < 0 or positions != sorted(positions) or 'SLEEP_CONTINUITY_FAILED' in sleep:
+        raise ValueError('sleep round trip is incomplete')
+    low = sleep[positions[1]:positions[3]]
+    if 'NATIVE_RESPONSE' in low or 'sfr-step-enter' in low:
+        raise ValueError('instrumented activity occurred during low mode')
     with tempfile.TemporaryDirectory(prefix='spacefox-delivery-prior-') as temporary:
         target = Path(temporary)
         for folder in ('watchface','locales','tools','tests'):

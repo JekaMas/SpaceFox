@@ -8,7 +8,7 @@ SpaceFox is an independent space-themed watch face for selected Garmin watches, 
 
 ![SpaceFox on Forerunner 965 in the Garmin simulator](docs/images/simulator-fr965-0.1.7.png)
 
-The [supported devices](docs/SUPPORTED_DEVICES.md) are listed with qualification boundaries. These images are Garmin simulator captures of the current native composition using a loaded launch after manually triggered simulator events and simulated time and activity values. The test package and installation boundaries are described in [TESTING.md](TESTING.md). Find releases and report issues on [GitHub](https://github.com/JekaMas/SpaceFox). The public schedule is at [feed.json](https://jekamas.github.io/SpaceFox/feed.json).
+The [supported devices](docs/SUPPORTED_DEVICES.md) are listed with qualification boundaries. These images are Garmin simulator captures from version 0.1.7 using a loaded launch after manually triggered simulator events and simulated time and activity values. The local 0.1.8 repair is not yet confirmed on the owner's watch. The test package and installation boundaries are described in [TESTING.md](TESTING.md). Find releases and report issues on [GitHub](https://github.com/JekaMas/SpaceFox). The public schedule is at [feed.json](https://jekamas.github.io/SpaceFox/feed.json).
 
 The countdown shows `T-` before a known target, `T+` after it, and `--:--:--` when the time is unknown. Passing zero does not establish that a launch occurred. The watch retains an accepted schedule for offline use. Stale and rescheduled data have separate indicators.
 

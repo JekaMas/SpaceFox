@@ -1,0 +1,73 @@
+Background: SFR_PROBE owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+SFR_PROBE owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_DISPLAY active=true bitmap=false decoding=false ms=8357 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=foreground-initial-complete used=83560 free=43224 total=126784 sampledHigh=83560 utc=1794690363 ms=8357 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+DELIVERY_START version=0.1.8 id=93a93ac1 detail=0.1.8 93a93ac1
+NATIVE_METRIC phase=foreground-incoming-complete used=91504 free=35280 total=126784 sampledHigh=91504 utc=1794690363 ms=8360 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=foreground-before-view used=91496 free=35288 total=126784 sampledHigh=91504 utc=1794690363 ms=8360 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_WRITES phase=foreground-reload-total count=0 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_SCHEDULE now=1794690363 requested=1794690363 registered=1794690363 last=null owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=temporal-scheduled used=91728 free=35056 total=126784 sampledHigh=91728 utc=1794690363 ms=8362 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+DELIVERY_RELOAD id=none registered=1794690363
+Background: SFR_PROBE owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+Background: NATIVE_METRIC phase=temporal-start used=26256 free=34992 total=61248 sampledHigh=26256 utc=1794690363 ms=8406 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+Background: NATIVE_METRIC phase=pre-request used=26792 free=34456 total=61248 sampledHigh=26792 utc=1794690363 ms=8406 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+Background: NATIVE_SCHEDULE now=1794690363 requested=1794690663 registered=1794690663 last=1794690363 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+Background: NATIVE_METRIC phase=temporal-scheduled used=27096 free=34152 total=61248 sampledHigh=27096 utc=1794690363 ms=8408 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+Background: NATIVE_GET path=feed.json n=1 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+Background: NATIVE_METRIC phase=feed-transfer-complete used=29704 free=31544 total=61248 sampledHigh=29704 utc=1794690363 ms=8695 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+Background: NATIVE_RESPONSE feed code=200 characters=2743 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+Background: NATIVE_WRITES phase=provisional-feed count=10 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+Background: NATIVE_METRIC phase=feed-provisional-staged used=30488 free=30760 total=61248 sampledHigh=30488 utc=1794690363 ms=8701 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+Background: NATIVE_GET path=wire3/catalogs/8b308cb08a31aed3f8877d687e1f3bfc15c1b612713edc2f8c8df8f8d5d8c45c.json n=2 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+Background: NATIVE_METRIC phase=batch-transfer-complete used=29448 free=31800 total=61248 sampledHigh=30488 utc=1794690363 ms=9004 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+Background: NATIVE_WRITES phase=background-total count=16 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+Background: NATIVE_METRIC phase=background-exit used=29488 free=31760 total=61248 sampledHigh=30488 utc=1794690363 ms=9011 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=foreground-renderer-released used=87120 free=39664 total=126784 sampledHigh=91728 utc=1794690363 ms=9015 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=pre-request-released used=87776 free=39008 total=126784 sampledHigh=91728 utc=1794690363 ms=9016 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=bridge-catalog-before-parse used=93832 free=32952 total=126784 sampledHigh=93832 utc=1794690363 ms=9022 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=json-parsed used=97000 free=29784 total=126784 sampledHigh=97000 utc=1794690363 ms=9076 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=bridge-catalog-projected used=94376 free=32408 total=126784 sampledHigh=97000 utc=1794690363 ms=9077 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=json-parsed used=102560 free=24224 total=126784 sampledHigh=102560 utc=1794690363 ms=9150 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=bridge-header-start used=102048 free=24736 total=126784 sampledHigh=102560 utc=1794690363 ms=9150 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=bridge-header-refs used=102792 free=23992 total=126784 sampledHigh=102792 utc=1794690363 ms=9151 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=bridge-catalog-admitted used=103600 free=23184 total=126784 sampledHigh=103600 utc=1794690363 ms=9152 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=feed-validated used=102104 free=24680 total=126784 sampledHigh=103600 utc=1794690363 ms=9156 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=candidate-and-prior used=102464 free=24320 total=126784 sampledHigh=103600 utc=1794690363 ms=9156 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=candidate-compacted used=97352 free=29432 total=126784 sampledHigh=103600 utc=1794690363 ms=9157 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_WRITES phase=promotion count=10 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=cache-committed used=99656 free=27128 total=126784 sampledHigh=103600 utc=1794690363 ms=9162 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=foreground-feed-admission used=92992 free=33792 total=126784 sampledHigh=103600 utc=1794690363 ms=9163 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=foreground-incoming-complete used=92960 free=33824 total=126784 sampledHigh=103600 utc=1794690363 ms=9163 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=foreground-plan-complete used=92968 free=33816 total=126784 sampledHigh=103600 utc=1794690363 ms=9164 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=foreground-before-view used=92960 free=33824 total=126784 sampledHigh=103600 utc=1794690363 ms=9164 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=foreground-renderer-restored used=97896 free=28888 total=126784 sampledHigh=103600 utc=1794690363 ms=9166 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_WRITES phase=foreground-reload-total count=14 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+DELIVERY_RELOAD id=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a registered=1794690663
+NATIVE_METRIC phase=sfr-step-enter used=97736 free=29048 total=126784 sampledHigh=103600 utc=1794690364 ms=9224 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=sfr-build-start used=98200 free=28584 total=126784 sampledHigh=103600 utc=1794690364 ms=9225 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=sfr-build-reader used=99056 free=27728 total=126784 sampledHigh=103600 utc=1794690364 ms=9226 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_REJECTION Invalid native SFR1M scene owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+
+Exception: Invalid native SFR1M scene
+Stack: 
+  - fail() at /Users/jekamas/projects/SpaceFox-worktrees/verify-delivery-data-incident-20261115/watchface/source/NativeSfr.mc:76 0x5000b7d8 
+  - begin() at /Users/jekamas/projects/SpaceFox-worktrees/verify-delivery-data-incident-20261115/watchface/source/NativeSfr.mc:132 0x5000bd53 
+  - initialize() at /Users/jekamas/projects/SpaceFox-worktrees/verify-delivery-data-incident-20261115/watchface/source/NativeSfr.mc:75 0x5000bc30 
+  - sfrStep() at /Users/jekamas/projects/SpaceFox-worktrees/verify-delivery-data-incident-20261115/watchface/source/SpaceFoxView.mc:190 0x10006435 
+NATIVE_METRIC phase=foreground-incoming-complete used=97824 free=28960 total=126784 sampledHigh=103600 utc=1794690367 ms=12368 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=foreground-plan-complete used=97824 free=28960 total=126784 sampledHigh=103600 utc=1794690367 ms=12368 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=foreground-before-view used=97816 free=28968 total=126784 sampledHigh=103600 utc=1794690367 ms=12369 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_WRITES phase=foreground-reload-total count=0 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+DELIVERY_RELOAD id=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a registered=1794690663
+NATIVE_METRIC phase=sfr-step-enter used=97736 free=29048 total=126784 sampledHigh=103600 utc=1794690367 ms=12421 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=sfr-build-start used=98200 free=28584 total=126784 sampledHigh=103600 utc=1794690367 ms=12422 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_METRIC phase=sfr-build-reader used=99056 free=27728 total=126784 sampledHigh=103600 utc=1794690367 ms=12422 owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+NATIVE_REJECTION Invalid native SFR1M scene owner=b9197821e56f4ee38c8d35f4286d172e|cold-proof-final2|d0acb6abbf15
+
+Exception: Invalid native SFR1M scene
+Stack: 
+  - fail() at /Users/jekamas/projects/SpaceFox-worktrees/verify-delivery-data-incident-20261115/watchface/source/NativeSfr.mc:76 0x5000b7d8 
+  - begin() at /Users/jekamas/projects/SpaceFox-worktrees/verify-delivery-data-incident-20261115/watchface/source/NativeSfr.mc:132 0x5000bd53 
+  - initialize() at /Users/jekamas/projects/SpaceFox-worktrees/verify-delivery-data-incident-20261115/watchface/source/NativeSfr.mc:75 0x5000bc30 
+  - sfrStep() at /Users/jekamas/projects/SpaceFox-worktrees/verify-delivery-data-incident-20261115/watchface/source/SpaceFoxView.mc:190 0x10006435 

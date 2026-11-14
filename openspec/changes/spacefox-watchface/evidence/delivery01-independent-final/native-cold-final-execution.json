@@ -1,0 +1,24 @@
+{
+  "command": [
+    "/opt/homebrew/opt/openjdk@11/bin/java",
+    "-Dfile.encoding=UTF-8",
+    "-classpath",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+    "com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux",
+    "-f",
+    "/Users/jekamas/.codex/tmp/spacefox-delivery-independent-20261115/cold-atomic/Delivery01Fresh.prg",
+    "-d",
+    "fr165m",
+    "-s",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/shell"
+  ],
+  "programSha256": "dd7baf25fb9e4a28aad376a651fdac8d0629cf9303ffcef512de504f3b2b5e0e",
+  "applicationUuid": "b9197821e56f4ee38c8d35f4286d172e",
+  "sourceSetSha256": "fdc4c5b269462e93ec6c00026a1fbc0a416465b42331cf23037edf79a1b68371",
+  "launcherExitCode": null,
+  "launcherExitNote": "terminated after observation",
+  "boundary": "isolated SDK test key; not production signed or physical",
+  "preLaunchCopiedSha256": "dd7baf25fb9e4a28aad376a651fdac8d0629cf9303ffcef512de504f3b2b5e0e",
+  "postStartSdkFileSha256": "6b4033b331e7c2ce9079744e02414d6063b3955fbba1ddeaf3710c3756f2b352",
+  "postStartTransformation": "unknown"
+}

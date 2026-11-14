@@ -13,7 +13,8 @@ class DeliveryAdmission(unittest.TestCase):
     def test_changed_runtime_or_native_receipt_is_rejected(self):
         real = Path.read_bytes
         for target in (ROOT/'watchface/source/SpaceFoxView.mc',
-                       ROOT/'openspec/changes/spacefox-watchface/evidence/delivery01/native-retained-final.log'):
+                       ROOT/'openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-retained-final.log',
+                       ROOT/'openspec/changes/spacefox-watchface/evidence/delivery01-independent-final/native-sleep-final-receipt.json'):
             def changed(path):
                 raw=real(path)
                 return raw+b'\nchanged' if path == target else raw

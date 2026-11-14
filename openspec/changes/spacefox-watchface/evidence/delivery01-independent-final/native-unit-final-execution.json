@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/opt/homebrew/opt/openjdk@11/bin/java",
+    "-Dfile.encoding=UTF-8",
+    "-classpath",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+    "com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux",
+    "-f",
+    "/Users/jekamas/.codex/tmp/spacefox-delivery-independent-20261115/unit-atomic-final/VerifyDelivery.prg",
+    "-d",
+    "fr165m",
+    "-s",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/shell",
+    "-t"
+  ],
+  "programSha256": "526885f5ef56a4b4d455d1c2366c2f90b8e359e6845dccf53dda9b2609fe1f49",
+  "applicationUuid": "f1c18b29f9924fb5bc188e41ada4f111",
+  "sourceSetSha256": "fdc4c5b269462e93ec6c00026a1fbc0a416465b42331cf23037edf79a1b68371",
+  "launcherExitCode": 1,
+  "launcherExitNote": "SDK test runner reports exit 1 for framework passes",
+  "boundary": "isolated SDK test key; not production signed or physical"
+}

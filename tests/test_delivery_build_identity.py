@@ -24,5 +24,21 @@ class NativeBuildIdentity(unittest.TestCase):
             path.write_bytes(path.read_bytes()+b' ')
             with self.assertRaisesRegex(ValueError,'identity is stale'):
                 validate(root)
+    def test_each_localized_resource_is_part_of_identity(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            shutil.copytree(ROOT/'watchface', root/'watchface')
+            original = render(root)
+            for directory in sorted((root/'watchface').glob('resources-*')):
+                if not directory.is_dir():
+                    continue
+                path = next(p for p in directory.rglob('*') if p.is_file())
+                content = path.read_bytes()
+                path.write_bytes(content + b' ')
+                with self.subTest(locale=directory.name):
+                    self.assertNotEqual(original, render(root))
+                path.write_bytes(content)
+            (root/'README.md').write_text('documentation only')
+            self.assertEqual(original, render(root))
 
 if __name__ == '__main__': unittest.main()

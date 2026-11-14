@@ -62,17 +62,30 @@ function registrationNeeded(now, next, registered, last, pending) {
 }
 
 (:background, :typecheck(false))
-function armFeed(cache, now) {
-    if (cache.base.equals("")) {
-        try { Background.deleteTemporalEvent(); } catch(e) {}
-        return;
-    }
+function batchPending(cache) {
     var pending = false;
     try {
         var batch = cache.store.read("sf.batch.pending");
         pending = batch instanceof Dictionary && batch["base"] instanceof String &&
             batch["base"].equals(cache.base) && batch["pending"] == true;
     } catch(e) {}
+    // Either half may survive a failed paired write. Preserve the early
+    // wake until the batch scanner reconciles both durable markers.
+    try {
+        var head = cache.store.read("sf.batch.head");
+        pending = pending || (head instanceof Dictionary && head["base"] instanceof String &&
+            head["base"].equals(cache.base) && head["pending"] == true);
+    } catch(e) {}
+    return pending;
+}
+
+(:background, :typecheck(false))
+function armFeed(cache, now) {
+    if (cache.base.equals("")) {
+        try { Background.deleteTemporalEvent(); } catch(e) {}
+        return;
+    }
+    var pending = batchPending(cache);
     var registered = Background.getTemporalEventRegisteredTime();
     var last = Background.getLastTemporalEventTime();
     var registeredAt = registered == null ? null : registered.value().toLong();

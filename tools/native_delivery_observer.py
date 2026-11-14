@@ -8,6 +8,9 @@ from pathlib import Path
 from unittest.mock import patch
 from xml.etree import ElementTree as ET
 import argparse
+import sys
+if __package__ in (None, ''):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from tools.native_full_visual_runtime import GROUPS, IMPORTS, build_probe
 
 GROUPS['delivery01-runtime']=('cedb9328da25469ba0c647cae90b1b23','Delivery01Live.prg')

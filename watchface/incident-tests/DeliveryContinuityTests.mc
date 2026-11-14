@@ -1,6 +1,44 @@
 import Toybox.Lang;
 import Toybox.Test;
 
+(:test,:typecheck(false)) function deliveryModeCallbacksAreIdempotent(logger){
+    // Each row is event, expected active state, and cancellation count. Three
+    // legal callback orders cover LOW/OFF, unknown, and duplicates. Expected
+    // values come from the event history, never from the implementation.
+    var traces=[
+        [["wake",true,0],["high",true,0],["unknown",true,0],["sleep",false,1],["low",false,1],["sleep",false,1],["off",false,1],["wake",true,1]],
+        [["high",true,0],["wake",true,0],["low",false,1],["sleep",false,1],["unknown",false,1],["off",false,1],["high",true,1],["wake",true,1]],
+        [["high",true,0],["off",false,1],["low",false,1],["wake",true,1]]
+    ];
+    var applied=0;var unchanged=0;var matrix={};
+    for(var trace=0;trace<traces.size();trace+=1){
+        var view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));
+        view.onShow();var previous=false;
+        for(var i=0;i<traces[trace].size();i+=1){
+            var row=traces[trace][i];var event=row[0];
+            if(event.equals("wake")){view.onExitSleep();}
+            else if(event.equals("sleep")){view.onEnterSleep();}
+            else if(event.equals("high")){view.syncDisplayMode(System.DISPLAY_MODE_HIGH_POWER);}
+            else if(event.equals("low")){view.syncDisplayMode(System.DISPLAY_MODE_LOW_POWER);}
+            else if(event.equals("off")){view.syncDisplayMode(System.DISPLAY_MODE_OFF);}
+            else{view.syncDisplayMode(99);}
+            Test.assert(view.canForegroundWork()==row[1]);
+            Test.assert(view.sceneLifecycle.generation==row[2]);
+            Test.assert((view.fitnessTimer!=null)==row[1]);
+            var disposition=previous!=row[1]?"applied":"observedNoMutation";
+            var key=event+":"+disposition;matrix[key]=matrix.hasKey(key)?matrix[key]+1:1;
+            if(disposition.equals("applied")){applied+=1;}else{unchanged+=1;}
+            previous=row[1];
+        }
+        view.onHide();
+    }
+    Test.assert(applied==9&&unchanged==11);
+    var required=["wake:applied","wake:observedNoMutation","high:applied","high:observedNoMutation","sleep:applied","sleep:observedNoMutation","low:applied","low:observedNoMutation","off:applied","off:observedNoMutation","unknown:observedNoMutation"];
+    for(var j=0;j<required.size();j+=1){var key=required[j];Test.assert(matrix.hasKey(key)&&matrix[key]>0);}
+    logger.debug("MODE_CALLBACKS applied=9 observedNoMutation=11 skipped=0");
+    return true;
+}
+
 // Isolated view boundary only. A separate live-feed run establishes that the
 // selected visual was acquired by the same native application before rejection.
 (:test,:typecheck(false)) function deliveryRejectedResponseRetainsScene(logger){
@@ -90,10 +128,63 @@ import Toybox.Test;
 }
 
 (:typecheck(false)) class DeliveryScheduleStore {
-    var data={};
-    function read(key){return data.hasKey(key)?data[key]:null;}
-    function write(key,value){data[key]=value;}
+    var data={};var unavailable=null;var failWrite=null;
+    function read(key){
+        if(key.equals(unavailable)||!data.hasKey(key)){return null;}
+        var value=data[key];
+        if(key.equals("sf.batch.head")&&value instanceof Dictionary){return {"base"=>value["base"],"pending"=>value["pending"],"catalogDigest"=>value["catalogDigest"],"transfer"=>value["transfer"],"serial"=>value["serial"]};}
+        return value;
+    }
+    function write(key,value){
+        if(key.equals(failWrite)){throw new Lang.InvalidValueException("injected write failure");}
+        data[key]=key.equals("sf.batch.head")?{"base"=>value["base"],"pending"=>value["pending"],"catalogDigest"=>value["catalogDigest"],"transfer"=>value["transfer"],"serial"=>value["serial"]}:value;
+    }
     function remove(key){data.remove(key);}
+}
+
+(:test,:typecheck(false)) function deliveryVisualWaitsForMatchingBatch(logger){
+    var store=new DeliveryScheduleStore();var base="https://example.test";
+    var catalog="{}";var index="{\"objects\":[]}";
+    var h=new NativeWireHash();h.put(catalog);var catalogHash=h.digest();
+    h=new NativeWireHash();h.put(index);var indexHash=h.digest();
+    var bridge={"catalogDigest"=>catalogHash,"transfer"=>{"sha256"=>indexHash,"path"=>"descriptors/"+indexHash+".json","decodedBytes"=>index.length()}};
+    var batch=new NativeBatch(store,base);batch.select(bridge);
+    var view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));
+    view.setContext(new SceneContext({"id"=>"ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a"}));
+    var source=new NativeRenderSource(store,base,bridge);view.setAssetCache(source);
+    Test.assert(!source.ready&&view.sceneLifecycle.phase==1);
+    // A decode failure is not retried merely because the same batch was seen.
+    view.sceneLifecycle.painted();Test.assert(view.sceneLifecycle.request());var token=view.sceneLifecycle.begin();view.sceneLifecycle.fail(token);
+    view.setAssetCache(new NativeRenderSource(store,base,bridge));Test.assert(view.sceneLifecycle.phase==7);
+    var ref=batch.next();Test.assert(batch.immutable.put(ref,catalog));
+    ref=batch.next();Test.assert(batch.immutable.put(ref,index));Test.assert(batch.next()==null);
+    source=new NativeRenderSource(store,base,bridge);view.setAssetCache(source);Test.assert(source.ready&&view.sceneLifecycle.phase==2);
+    Test.assert(!new NativeRenderSource(store,base,{"catalogDigest"=>"other","transfer"=>bridge["transfer"]}).ready);
+    Test.assert(!new NativeRenderSource(store,base,{"catalogDigest"=>catalogHash,"transfer"=>{"sha256"=>"other"}}).ready);
+    Test.assert(view.sceneLifecycle.request());token=view.sceneLifecycle.begin();view.sceneLifecycle.fail(token);
+    view.setAssetCache(new NativeRenderSource(store,base,bridge));Test.assert(view.sceneLifecycle.phase==7);
+    // A dependency becomes unavailable and is then repaired. The production
+    // batch transitions through pending and emits a new completion serial.
+    store.unavailable="sf.obj."+indexHash;store.failWrite="sf.batch.head";
+    var failed=false;try{batch.next();}catch(e){failed=true;}
+    Test.assert(failed&&!new NativeRenderSource(store,base,bridge).ready);
+    store.failWrite=null;store.unavailable=null;batch=new NativeBatch(store,base);Test.assert(batch.next()==null);
+    view.setAssetCache(new NativeRenderSource(store,base,bridge));Test.assert(view.sceneLifecycle.phase==2);
+    Test.assert(!new NativeRenderSource(store,"https://other.test",bridge).ready);
+    var partial=new DeliveryScheduleStore();partial.failWrite="sf.batch.pending";
+    var selection=new NativeBatch(partial,base);failed=false;
+    try{selection.select(bridge);}catch(e){failed=true;}
+    Test.assert(failed&&batchPending(new NativeTransfer(base,partial)));
+    logger.debug("VISUAL_BATCH pendingAndWrongIdentityRejected=true completedMatchingBatchApplied=true");return true;
+}
+
+(:test,:typecheck(false)) function deliveryPendingAssetsAreNotIncomplete(logger){
+    Test.assert(!NativeForegroundApp.incomplete("assets",1100l,1000l,true,1300l,1000l));
+    Test.assert(!NativeForegroundApp.incomplete("assets",1400l,1000l,true,1300l,1000l));
+    Test.assert(NativeForegroundApp.incomplete("assets",1400l,1000l,true,1300l,1300l));
+    Test.assert(NativeForegroundApp.incomplete("assets",1400l,1000l,true,null,1000l));
+    Test.assert(NativeForegroundApp.incomplete("requesting",1100l,1000l,true,1300l,1000l));
+    logger.debug("PENDING_STATUS scheduledOrLateWait=true consumedOrMissingReported=true");return true;
 }
 
 (:test,:typecheck(false)) function deliveryRealRegisteredDeadline(logger){

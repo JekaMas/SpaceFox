@@ -509,3 +509,13 @@ for the source and state boundary. Author software checks are GREEN within
 that boundary; fresh independent review, signed release and physical corrected
 build, fresh data and mode acceptance remain open. The simulator runtime was
 restored and lease released with original temporal registration unverified.
+
+### DELIVERY01 independent verification
+
+The independent verifier reproduced additional callback-order and cold optional-asset
+failures, then repaired runtime identity coverage, display mode idempotence, and
+source-bound batch readiness. Final-source evidence is retained under
+[evidence/delivery01-independent-final](evidence/delivery01-independent-final/).
+These software observations do not establish physical delivery. The owner's watch
+still reports 0.1.6; the corrected 0.1.8 binary, matching fresh launch, and stable
+active/ambient/active round trip on that watch remain unobserved.

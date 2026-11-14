@@ -12,8 +12,13 @@ def render(root=ROOT):
     if not all(part.isdigit() for part in version.split('.')) or len(version.split('.')) != 3:
         raise ValueError('invalid native version')
     paths = [root/'watchface/manifest.xml', root/'watchface/monkey.jungle']
-    for name in ('source', 'resources', 'resources-rus'):
-        paths.extend(p for p in (root/'watchface'/name).rglob('*') if p.is_file())
+    watchface = root/'watchface'
+    # The generated release jungle includes every native language resource
+    # directory. Bind all of them, including currently unqualified locales.
+    inputs = [watchface/'source', watchface/'resources']
+    inputs.extend(p for p in watchface.glob('resources-*') if p.is_dir())
+    for directory in inputs:
+        paths.extend(p for p in directory.rglob('*') if p.is_file())
     digest = hashlib.sha256()
     for path in sorted(paths):
         relative = path.relative_to(root).as_posix()

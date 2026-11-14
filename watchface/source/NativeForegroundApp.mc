@@ -10,13 +10,20 @@ module NativeForegroundApp {
         app.view.setSettings(new SceneSettings(null).load());var selected=new NativeCache(configuredFeedUrl(),null);app.feed=selected;var now=Time.now().value().toLong();selected.load(now);display(app,selected);app.view.pendingLoader=app.method(:reloadFeed);app.view.statusLoader=app.method(:refreshSyncStatus);app.view.syncDisplayMode(System.getDisplayMode());NativeMetrics.sample("foreground-initial-complete");return [app.view as WatchUi.WatchFace];
     }
     function display(app,cache){
-        if(app.view==null){return;}if(cache.packet==null||cache.packet.document.hasKey("dictionaries")||app.view.context!=cache.packet.presentation){app.view.setPacket(cache.packet);}if(cache.packet!=null){app.view.setAssetCache(new NativeRenderSource(cache.store,cache.base));}
+        if(app.view==null){return;}if(cache.packet==null||cache.packet.document.hasKey("dictionaries")||app.view.context!=cache.packet.presentation){app.view.setPacket(cache.packet);}if(cache.packet!=null){app.view.setAssetCache(new NativeRenderSource(cache.store,cache.base,cache.packet.bridge));}
         // Background uses this compact source-bound result rather than treating
         // an unvalidated commit marker as an accepted schedule.
         try{var accepted=cache.packet!=null;var prior=cache.store.read("sf.transfer.ready");if(!(prior instanceof Dictionary)||!(prior["base"] instanceof String)||!prior["base"].equals(cache.base)||prior["accepted"]!=accepted){cache.store.write("sf.transfer.ready",{"base"=>cache.base,"accepted"=>accepted});}}catch(e){}
         status(app,cache);
     }
     function errorDetail(stage,value){var version=value["build"] instanceof String?value["build"]:"?";return (stage.equals("feedFailed")?"Feed: ":"Assets: ")+version+" "+value["code"]; }
+    function incomplete(stage, now, utc, pending, registered, last) {
+        if (now-utc<=60) { return false; }
+        // A pending asset batch with an unconsumed OS registration remains a
+        // normal wait, including a delayed OS dispatch after its deadline.
+        if (stage.equals("assets") && pending && registered!=null && (last==null || registered>last)) { return false; }
+        return true;
+    }
     function status(app, cache) {
         var result = "waiting";
         var detail = "";
@@ -33,9 +40,15 @@ module NativeForegroundApp {
                         if ((stage.equals("feedFailed") || stage.equals("assetFailed")) && value["code"] instanceof Number) {
                             detail = cache.packet == null ? ""+value["code"] : errorDetail(stage,value);
                         }
+                        var pending=false;var registeredAt=null;var lastAt=null;
+                        if(stage.equals("assets")){
+                            pending=batchPending(cache);
+                            var registered=Background.getTemporalEventRegisteredTime();var last=Background.getLastTemporalEventTime();
+                            registeredAt=registered==null?null:registered.value().toLong();lastAt=last==null?null:last.value().toLong();
+                        }
                         if ((stage.equals("requesting") || stage.equals("assets")) &&
                             (value["utc"] instanceof Number || value["utc"] instanceof Long) &&
-                            Time.now().value().toLong()-value["utc"] > 60) {
+                            incomplete(stage,Time.now().value().toLong(),value["utc"],pending,registeredAt,lastAt)) {
                             result = "incomplete";
                             detail = stage.equals("assets") ? "Assets" : "Feed";
                         }

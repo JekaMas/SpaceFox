@@ -48,7 +48,23 @@ class SpaceFoxView extends WatchUi.WatchFace {
         WatchFace.initialize();_clock=clock;_schedule=schedule;
         presentation=new LocalePresentation();settings=new SceneSettings(null);context=null;renderer=null;fitness=new Fitness();values={};sceneLifecycle=new SceneLifecycle();
     }
-    function syncDisplayMode(mode as System.DisplayMode) as Void { _active=mode==System.DISPLAY_MODE_HIGH_POWER;aodMinute=null;metricsMinute=null;if(!_active){stopAnimation();cancelSfrBuild();stopFitness();}else{refreshFitness();}if(NativeMetrics.enabled){System.println("NATIVE_DISPLAY mode="+mode+" active="+_active+" bitmap="+(downloaded!=null)+" decoding="+(sfrBuild!=null)+" ms="+System.getTimer()+" owner="+NativeMetrics.ownerTag);}WatchUi.requestUpdate(); }
+    function syncDisplayMode(mode as System.DisplayMode) as Void {
+        if (mode==System.DISPLAY_MODE_HIGH_POWER) { setActive(true); }
+        else if (mode==System.DISPLAY_MODE_LOW_POWER || mode==System.DISPLAY_MODE_OFF) { setActive(false); }
+    }
+    function setActive(active as Boolean) as Void {
+        if (_active==active) { return; }
+        _active=active;aodMinute=null;metricsMinute=null;
+        if (!active) { stopAnimation();cancelSfrBuild();stopFitness(); }
+        else {
+            refreshLocale();
+            if(downloaded==null&&statusLoader!=null){statusLoader.invoke();}
+            refreshFitness();prepareVisual();
+            if(_shown&&context!=null){var duration=downloaded==null?2.5:((downloaded as NativeVisualRenderer).duration() as Float);animationRunning=true;WatchUi.animate(self,:animationProgress,WatchUi.ANIM_TYPE_LINEAR,0.0,1.0,duration,method(:animationDone));}
+        }
+        if(NativeMetrics.enabled){System.println("NATIVE_DISPLAY active="+_active+" bitmap="+(downloaded!=null)+" decoding="+(sfrBuild!=null)+" ms="+System.getTimer()+" owner="+NativeMetrics.ownerTag);}
+        WatchUi.requestUpdate();
+    }
     function onShow() as Void {_shown=true;refreshLocale();if(pendingLoader!=null){pendingLoader.invoke();}if(_active){refreshFitness();}}
     (:extendedCode)
     function refreshFitness() as Void {if(!_active){return;}var now=_clock.utcSeconds();var minute=utcMinute(now);if(metricsMinute==null||metricsMinute!=minute){values=fitness.sample(now);metricsMinute=minute;}if(_shown&&fitnessTimer==null){fitnessTimer=new Timer.Timer();fitnessTimer.start(method(:refreshFitness),60000,true);}WatchUi.requestUpdate();}
@@ -74,10 +90,13 @@ class SpaceFoxView extends WatchUi.WatchFace {
         if(renderer!=null){renderer.downloaded=downloaded;}
         if(packet!=null){packet.compact();}
     }
-    function setAssetCache(cache as NativeRenderSource) as Void {assetCache=cache;sceneLifecycle.allowRetry();}
+    function setAssetCache(cache as NativeRenderSource) as Void {
+        var newlyReady=cache.ready && (assetCache==null || !assetCache.ready || assetCache.serial!=cache.serial);
+        assetCache=cache;if(newlyReady){sceneLifecycle.allowRetry();}
+    }
     (:extendedCode, :typecheck(false))
     function prepareVisual() as Void {
-        if (!_shown || assetCache == null || packet == null || packet.bridge == null) { return; }
+        if (!_shown || assetCache == null || !assetCache.ready || packet == null || packet.bridge == null) { return; }
         if (sceneLifecycle.pending()) { startSfrTimer(); return; }
         var selection=packet.bridge["selection"];
         if (selection == null) { return; }
@@ -148,14 +167,8 @@ class SpaceFoxView extends WatchUi.WatchFace {
         animationRunning=false;animationProgress=0.0;
     }
     function animationDone() as Void{animationRunning=false;animationProgress=0.0;WatchUi.requestUpdate();}
-    function onEnterSleep() as Void {if(NativeMetrics.enabled){System.println("NATIVE_LIFECYCLE sleep bitmap="+(downloaded!=null)+" decoding="+(sfrBuild!=null)+" ms="+System.getTimer()+" owner="+NativeMetrics.ownerTag);}_active=false;stopAnimation();cancelSfrBuild();stopFitness();aodMinute=null;WatchUi.requestUpdate();}
-    function onExitSleep() as Void {
-        refreshLocale();
-        if(downloaded==null&&statusLoader!=null){statusLoader.invoke();}
-        if(NativeMetrics.enabled){System.println("NATIVE_LIFECYCLE wake bitmap="+(downloaded!=null)+" decoding="+(sfrBuild!=null)+" ms="+System.getTimer()+" owner="+NativeMetrics.ownerTag);}_active=true;aodMinute=null;metricsMinute=null;refreshFitness();prepareVisual();
-        if(_shown&&context!=null){var duration=downloaded==null?2.5:((downloaded as NativeVisualRenderer).duration() as Float);animationRunning=true;WatchUi.animate(self,:animationProgress,WatchUi.ANIM_TYPE_LINEAR,0.0,1.0,duration,method(:animationDone));}
-        WatchUi.requestUpdate();
-    }
+    function onEnterSleep() as Void { setActive(false); }
+    function onExitSleep() as Void { setActive(true); }
     function onHide() as Void {_shown=false;stopAnimation();cancelSfrBuild();stopFitness();}
     (:typecheck(false))
     // Fixed SDK-minimum cadence; repeated preparation cannot postpone a pending
