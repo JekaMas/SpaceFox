@@ -45,6 +45,22 @@ class MetadataPagePolicyTest(unittest.TestCase):
                     collector._page('countries', json.dumps(doc).encode(), 20, 103)
                 self.assertEqual(head, store.load()[0])
 
+    def test_dangling_real_relation_refuses_candidate(self):
+        candidate, files = fixture.captured()
+        helper = fixture.CurrentMetadataPublisherTest()
+        with helper.authority() as (pub, store, code):
+            collector = CatalogRefresh(pub)
+            collector.objects = {'catalog-refresh/' + name: data for name, data in files.items()
+                                 if name.startswith('objects/')}
+            data = deepcopy(candidate['reference'])
+            data['organizations'] = [r for r in data['organizations'] if r['sourceId'] != 121]
+            self.assertTrue(any(r['manufacturerId'] == 121 for r in data['models']))
+            before = pub.head
+            with self.assertRaisesRegex(RefreshError, 'dangling organizations relation'):
+                collector._candidate(data, candidate['coverage']['pages'], NOW + 18000)
+            self.assertEqual(before, store.load()[0])
+            self.assertIsNone(collector.current())
+
     def test_omissions_keep_original_record_dates_and_facts(self):
         candidate, files = fixture.captured()
         selected = {'countries': {1, 2}, 'organizations': {121},
