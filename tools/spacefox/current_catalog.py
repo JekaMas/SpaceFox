@@ -83,6 +83,19 @@ def current_view(catalog, registry, *, referenced_ids=(), require_complete_eligi
         if identity in tables['configurations']:
             if records[identity]['state'] != 'current-evidence':
                 event_review.add(identity)
+                row = tables['configurations'][identity]
+                asset = tables['assets'].get(row['references']['visual'])
+                if (records[identity]['state'] == 'unknown-reference' and asset is not None
+                        and asset['facts'].get('familyIdentityOnly') is True):
+                    # Keep variant review open; a source-qualified family asset
+                    # may accompany this exact captured event identity.
+                    eligible_event_roots.add(identity)
+                elif (records[identity]['state'] == 'needs-review' and asset is not None
+                      and row['facts']['currentPackSpecific']
+                      and identity in asset['facts'].get('coverage', {}).get('configurationIds', [])):
+                    # Visual review and current lifecycle are independent. Keep
+                    # the exact source identity and unresolved lifecycle status.
+                    eligible_event_roots.add(identity)
         elif any(identity in tables[name] for name in ('sites', 'organizations', 'countries')):
             eligible_event_roots.add(identity)
         else:
@@ -111,15 +124,19 @@ def current_coverage(catalog, registry, *, referenced_ids=(), require_complete_e
                           require_complete_eligibility=require_complete_eligibility)
     dictionaries = result['catalog']['dictionaries']
     missing = []
-    for identity, row in dictionaries['configurations'].items():
+    current_ids = {identity for identity in dictionaries['configurations']
+                   if registry['records'][identity]['state'] == 'current-evidence'}
+    for identity in current_ids:
+        row = dictionaries['configurations'][identity]
         asset = dictionaries['assets'].get(row['references']['visual'])
         if asset is None or not row['facts']['currentPackSpecific']:
             missing.append(identity)
     return {'catalogVersion': catalog['catalogVersion'],
             'asOf': registry['reviewedAt'], 'registryDigest': catalog['source']['eligibility']['sha256'],
             'qualification': 'provisional-review-incomplete' if result['provisional'] else 'dated-current-view',
-            'currentConfigurations': len(dictionaries['configurations']),
-            'specificArtMapped': len(dictionaries['configurations']) - len(missing),
+            'currentConfigurations': len(current_ids),
+            'specificArtMapped': len(current_ids) - len(missing),
+            'selectedReviewArtIds': sorted(set(dictionaries['configurations']) - current_ids),
             'missingSpecificArtIds': sorted(missing),
             'reviewIds': result['reviewIds'], 'unknownIds': result['unknownIds'],
             'excludedIds': result['excludedIds'], 'eventReviewIds': result['eventReviewIds'],

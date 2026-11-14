@@ -744,7 +744,15 @@ def _check_identity_constraints(d):
             _require(review['type'] in ('specific', 'reviewed-shared') and identity in _strings(review['configurationIds'], 'review configurations'), 'art not reviewed for this exact configuration')
             _require(bool(_strings(review['features'], 'reviewed shape features')), 'shape features required')
             _text(review['limitations'], 'shape limitations')
-            _require(not row['facts']['placeholder'], 'placeholder cannot claim specific art')
+            if row['facts']['placeholder']:
+                # A named family can use a reviewed representative without
+                # claiming that its unspecified flight variant is known.
+                facts = d['assets'][visual]['facts']
+                _require(facts.get('familyIdentityOnly') is True and review['type'] == 'reviewed-shared'
+                         and source_facts['name'].strip().casefold().split()[0] != 'unknown'
+                         and bool(source_facts['familyIds'])
+                         and facts.get('familySourceIds') == source_facts['familyIds'],
+                         'placeholder requires an explicitly reviewed named-family representative')
         elif visual is not None and row['facts']['currentPackSpecific'] and 'curation' in row:
             original = row.get('originalFacts', {})
             _require(original.get('currentPackSpecific') is True and original.get('currentPackAssetId') == d['assets'][visual]['facts']['id'], 'new legacy specific-art mapping requires explicit shape review')

@@ -156,10 +156,17 @@ def validate_current_feed(raw, *, now=None):
             if value is not None:
                 namespace, kind, identity = value.split(':', 2)
                 record[key] = dict(kind=kind, namespace=namespace, value=identity)
+        evaluation = now
+        if evaluation is None:
+            # Shape-only callers have no trusted clock. Publisher selection and
+            # native admission separately enforce the review-time boundary.
+            review = record.get('ascent_end')
+            reviewed = review.get('reviewed_utc') if isinstance(review, dict) else None
+            evaluation = max(record['source_validated_utc'], reviewed) if type(reviewed) is int else record['source_validated_utc']
         normalized = _schedule({'entries': [dict(record=record, **flags)],
-                   'evaluated_at_utc': record['source_validated_utc']}).entries[0].record
+                   'evaluated_at_utc': evaluation}).entries[0].record
         from .schedule import LaunchStatus
-        if normalized.status in (LaunchStatus.COMPLETED, LaunchStatus.CANCELLED, LaunchStatus.STARTED):
+        if normalized.status in (LaunchStatus.COMPLETED, LaunchStatus.CANCELLED):
             raise ValueError('selected launch is no longer upcoming')
         if (state is TimingState.NO_SCHEDULE or (normalized.timing.exact_utc is None) != (state is TimingState.UNCERTAIN)):
             raise ValueError('selected precision and timing state disagree')

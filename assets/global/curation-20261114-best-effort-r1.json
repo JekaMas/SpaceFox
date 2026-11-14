@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "id": "best-effort-family-representatives-20261114",
+  "reviewedAt": "2026-11-14",
+  "sources": [
+    "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2017_ast_compendium.pdf",
+    "https://www.ilslaunch.com/wp-content/uploads/pdf/Proton-Mission-Planners-Guide-Revision-7-LKEB-9812-1990.pdf"
+  ],
+  "reason": "Owner-approved low-confidence family approximations; preserve lifecycle uncertainty and source identities.",
+  "assets": [
+    {
+      "collection": "models",
+      "facts": {
+        "id": "best-effort-unha-family-20261114",
+        "name": "Best-effort Unha family representative",
+        "file": "content-20261112-r1/svg/vehicle-unha3.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox informational artwork. No third-party graphic bytes or official logo are redistributed.",
+        "sourceSha256": "4048cc03b4d1cd3ba9c36dbcdc4d898981938e58ca74571019ceddd1af08b04c",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2017_ast_compendium.pdf"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "reviewed-shared",
+          "configurationIds": [
+            "ll2:configuration:86"
+          ],
+          "features": [
+            "Existing family example used only as a low-confidence visual approximation; exact configuration remains unverified."
+          ],
+          "limitations": "Unha-3 family example; provider does not identify the precise Unha variant; approximation, not flight geometry or lifecycle proof. Original source-dated schematic, not engineering reconstruction, launch photography, exact paintwork, or event-specific option selection. Published overall/core dimensions set aspect ratios where stated; fairing lengths, unpublished fairing diameters and collar stations are illustrative image proportions, not measured dimensions. Flattened side-booster layout shows the total count, not a physical perspective. Provider lifecycle flags and exact configuration labels are retained."
+        },
+        "geometryReference": {
+          "lengthMetres": "32",
+          "coreDiameterMetres": "2.4",
+          "fairingDiameterMetres": "1.3",
+          "fairingLengthMetres": "3.5",
+          "reviewedAt": "2026-11-12",
+          "basis": "Rendering parameters: overall length/core diameter from cited specifications except Eris25m earlier-programme/image scale and BlackBrantIX representative16m canvas. Fairing length and unpublished fairing diameter are approximate inspected-image proportions; collars are illustrative. Not engineering or surveyed geometry."
+        }
+      }
+    },
+    {
+      "collection": "models",
+      "facts": {
+        "id": "best-effort-proton-family-20261114",
+        "name": "Best-effort Proton-M DM-2 Enhanced family representative",
+        "file": "current-catalog-art-20261114/proton-family.svg",
+        "creator": "SpaceFox contributors",
+        "license": "MIT",
+        "credit": "Original SpaceFox schematic adapted from prior original MIT SpaceFox geometry; cited primary sources provide vehicle facts, not redistributed artwork.",
+        "sourceSha256": "b7680cece5c43568c35fa1cc04d338b46b774236fab9471a3fe0f23080fc3b52",
+        "exportSize": [
+          64,
+          128
+        ],
+        "sources": [
+          "https://www.ilslaunch.com/wp-content/uploads/pdf/Proton-Mission-Planners-Guide-Revision-7-LKEB-9812-1990.pdf"
+        ],
+        "kind": "specific",
+        "coverage": {
+          "type": "reviewed-shared",
+          "configurationIds": [
+            "ll2:configuration:94"
+          ],
+          "features": [
+            "Existing family example used only as a low-confidence visual approximation; exact configuration remains unverified."
+          ],
+          "limitations": "Proton-M family example; DM-2 Enhanced upper-stage configuration and fairing are not established by this representative; approximation, not exact geometry or lifecycle proof. Family-level representative uses existing original Proton-M/Briz-M profile. Provider does not identify upper stage or exact fairing; image does not assert Briz-M for this event. Scale and section boundaries are schematic; no mission livery."
+        },
+        "geometryReference": {
+          "basis": "Source-dated informational family or development-programme representative; see cited primary descriptions and explicit limitations.",
+          "reviewedAt": "2026-11-14",
+          "representativeDate": "2026-11",
+          "lengthIsIllustrative": true,
+          "diameterIsIllustrative": true
+        }
+      }
+    }
+  ],
+  "additions": [],
+  "updates": [
+    {
+      "identity": "ll2:configuration:86",
+      "changes": {
+        "currentPackAssetId": "best-effort-unha-family-20261114",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.faa.gov/about/office_org/headquarters_offices/ast/media/2017_ast_compendium.pdf"
+      ]
+    },
+    {
+      "identity": "ll2:configuration:94",
+      "changes": {
+        "currentPackAssetId": "best-effort-proton-family-20261114",
+        "currentPackSpecific": true
+      },
+      "sources": [
+        "https://www.ilslaunch.com/wp-content/uploads/pdf/Proton-Mission-Planners-Guide-Revision-7-LKEB-9812-1990.pdf"
+      ]
+    }
+  ]
+}

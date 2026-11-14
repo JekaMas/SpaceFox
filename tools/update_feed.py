@@ -29,7 +29,7 @@ def utc_now():
     return int(datetime.now(timezone.utc).timestamp())
 
 
-def update(pub, client, now, catalog, *, trigger='scheduled', max_pages=2, detail_limit=2, clock=None, artifact_builder=None, artifact_profile=PROFILE):
+def update(pub, client, now, catalog, *, trigger='scheduled', max_pages=2, detail_limit=2, clock=None, artifact_builder=None, artifact_profile=PROFILE, ascent_supplement=None):
     """Real vertical path. Required pagination is atomic; details are optional.
 
     Pagination stops within explicit request/record bounds and reports partial;
@@ -37,6 +37,9 @@ def update(pub, client, now, catalog, *, trigger='scheduled', max_pages=2, detai
     detail reconciliation in oldest-validation order, independent of page
     completeness. Confirmed terminal history keeps its existing facts and age.
     """
+    if ascent_supplement is None:
+        from tools.spacefox.ascent_supplement import load_supplement
+        ascent_supplement = load_supplement(Path(__file__).resolve().parents[1]/'catalog/ascent-end-supplement.json')
     if type(max_pages) is not int or not 1 <= max_pages <= 4 or type(detail_limit) is not int or not 0 <= detail_limit <= 4:
         raise ProviderError('bounded max_pages1..4/detail_limit0..4 required')
     # Fixed now is the explicit replay seam. Runtime callers sample wall time at
@@ -58,6 +61,8 @@ def update(pub, client, now, catalog, *, trigger='scheduled', max_pages=2, detai
         for page_number in range(max_pages):
             page_at = sample()
             page, page_records = client.page(response, page_at)
+            from tools.spacefox.ascent_supplement import attach
+            page_records = tuple(attach(record, ascent_supplement) for record in page_records)
             primary_epochs.append(validation_epoch(response, page_at))
             if expected_count is None:
                 expected_count = page['count']
@@ -121,6 +126,7 @@ def update(pub, client, now, catalog, *, trigger='scheduled', max_pages=2, detai
                 if response.status != 200:
                     raise ProviderError('detail response did not validate a record')
                 record = normalize_detail_launch(bounded_json(response.body), validation_epoch(response, sample()))
+                record = attach(record, ascent_supplement)
                 if record.launch_id != prior.launch_id:
                     raise ProviderError('detail response identity mismatch')
                 try:
@@ -204,6 +210,7 @@ def main(argv=None):
     run.add_argument('--max-pages', type=int, default=2)
     run.add_argument('--detail-limit', type=int, default=2)
     run.add_argument('--page-size', type=int, default=10)
+    run.add_argument('--ascent-supplement', type=Path, help='operator-reviewed source assertions; optional')
     run.add_argument('--output', type=Path, required=True, help='new directory for exact durable pending bytes')
     export = sub.add_parser('export-pending', help='recover exact saved candidate without provider traffic')
     export.add_argument('--output', type=Path, required=True)
@@ -239,7 +246,9 @@ def main(argv=None):
             eligibility = load_registry(root, catalog)
             def current_builder(state, source, instant, *, publisher, policy, traversal):
                 return build_artifact(state, source, instant, publisher=publisher, policy=policy, traversal=traversal, root=root, eligibility=eligibility)
-            result = update(pub, client, now, catalog, trigger=args.trigger, artifact_builder=current_builder,
+            from tools.spacefox.ascent_supplement import load_supplement
+            supplement = load_supplement(args.ascent_supplement) if args.ascent_supplement else None
+            result = update(pub, client, now, catalog, trigger=args.trigger, artifact_builder=current_builder, ascent_supplement=supplement,
                             max_pages=args.max_pages, detail_limit=args.detail_limit,
                             clock=None if args.now is not None else utc_now)
             if result['result'] == 'pending':

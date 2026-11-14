@@ -118,6 +118,27 @@ def encode_raster(pixels,width,height,channels=4):
     return chunks
 
 
+def map_raster(pixels, source_descriptor):
+    """Select the least map color rounding that fits existing wire bounds.
+
+    Geometry and source position are unchanged; this bounds antialias colors,
+    not the launch marker or the underlying map coordinates.
+    """
+    for step in (1, 4, 8, 16):
+        candidate = pixels if step == 1 else bytes(min(255, ((x + step//2)//step)*step) for x in pixels)
+        try:
+            chunks = encode_raster(candidate, 390, 390, 3)
+        except ValueError:
+            continue
+        refs = [dict(path='rasters/'+sha(raw)+'.sfr', sha256=sha(raw), decodedBytes=len(raw)) for raw in chunks]
+        descriptor = dict(type='raster', schemaVersion=1, rendererProfile='SFR1', canvas=[390,390], channels=3,
+            pixelSha256=sha(candidate), sourceDescriptor=source_descriptor, sourceSemanticSha256=None,
+            animation=[0,[]], shards=refs)
+        if len(canonical_bytes(descriptor)) <= 4096:
+            return candidate, chunks
+    raise ValueError('native profile: map exceeds bounded raster capacity')
+
+
 def decode_raster(chunks,width,height,channels):
     """Strict reference decoder. Test oracle independently reconstructs tokens."""
     require(type(width) is int and type(height) is int and 1<=width<=390 and 1<=height<=390 and channels in (3,4),'canvas bound')
@@ -166,7 +187,7 @@ def _single_profile(files, old, old_catalog):
     sel=None if old['visualSelection'] is None else loads_json(read_ref(old['visualSelection'],files))
     root=None;rendered={}
     if sel is not None:
-        raster_roles={k:None for k in ('map','rocket','operator','origin')};map_source=None
+        raster_roles={k:None for k in ('map','rocket')};map_source=None
         for role in raster_roles:
             source_role='geography' if role=='map' else role
             binding=sel['roles'][source_role]
@@ -181,7 +202,11 @@ def _single_profile(files, old, old_catalog):
                 width,height=ROLE_CANVAS[role];channels=4
             rgba,png,svg=rasterize(visuals,width,height,opaque=role=='map')
             pixels=bytes(c for i,c in enumerate(rgba) if channels==4 or i%4!=3)
-            chunks=encode_raster(pixels,width,height,channels);refs=[]
+            if role=='map':
+                pixels,chunks=map_raster(pixels,binding['descriptor'])
+            else:
+                chunks=encode_raster(pixels,width,height,channels)
+            refs=[]
             for raw in chunks:
                 digest=sha(raw);path=f'rasters/{digest}.sfr';files[path]=raw;refs.append(dict(path=path,sha256=digest,decodedBytes=len(raw)))
             value=dict(type='raster',schemaVersion=1,rendererProfile='SFR1',canvas=[width,height],channels=channels,
@@ -195,7 +220,7 @@ def _single_profile(files, old, old_catalog):
     refs=[]
     if root is not None:
         refs.append(root)
-        for role in ('map','rocket','operator','origin'):
+        for role in ('map','rocket'):
             binding=raster_roles[role]
             if binding is None:continue
             refs.append(binding['descriptor'])

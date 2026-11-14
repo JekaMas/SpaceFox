@@ -10,6 +10,8 @@ from enum import Enum
 import hashlib
 import json
 import re
+from collections.abc import Mapping
+from types import MappingProxyType
 
 
 class ScheduleError(ValueError):
@@ -164,6 +166,19 @@ class Timing:
             raise ScheduleError('unknown precision cannot carry a known date/window')
 
     @property
+    def countdown_utc(self):
+        """Only exact seconds or LL2's explicitly identified nominal minute.
+
+        Captured LL2 records provide no trustworthy ascent-end timestamp. The
+        selection fallback is900seconds; window_end is never an ascent end.
+        """
+        if self.exact_utc is not None:
+            return self.exact_utc
+        if self.precision is TimePrecision.SOURCE_COARSE and self.source_precision_id == 1:
+            return self.nominal_utc
+        return None
+
+    @property
     def ordering_utc(self):
         """A supplied ordering anchor, never an invented exact launch target.
 
@@ -192,6 +207,7 @@ class LaunchRecord:
     country_id: StableId | None = None
     configuration_name: str | None = None
     operator_name: str | None = None
+    operator_abbrev: str | None = None
     mission_name: str | None = None
     mission_purpose: str | None = None
     source_updated_utc: int | None = None
@@ -203,6 +219,7 @@ class LaunchRecord:
     country_name: str | None = None
     country_code: str | None = None
     site_location_name: str | None = None
+    ascent_end: dict | None = None
 
     def __post_init__(self):
         for field, kind in (('launch_id', IdKind.LAUNCH),
@@ -229,8 +246,27 @@ class LaunchRecord:
         _source_iso(self.source_updated_iso, self.source_updated_utc, self.source_updated_subsecond)
         if self.source_status_id is not None and (type(self.source_status_id) is not int or self.source_status_id < 0):
             raise ScheduleError('invalid source status identity')
-        for field in ('configuration_name', 'operator_name', 'mission_name', 'mission_purpose', 'source_status_name', 'site_name', 'country_name', 'site_location_name'):
+        for field in ('configuration_name', 'operator_name', 'operator_abbrev', 'mission_name', 'mission_purpose', 'source_status_name', 'site_name', 'country_name', 'site_location_name'):
             _text(getattr(self, field), field, optional=True)
+        if self.ascent_end is not None:
+            from urllib.parse import urlsplit
+            a = self.ascent_end
+            if not isinstance(a, Mapping) or set(a) != {'launch_id', 'target_utc', 'end_utc', 'source_url', 'reviewed_utc'}:
+                raise ScheduleError('invalid sourced ascent end shape')
+            if a['launch_id'] != f'{self.launch_id.namespace}:launch:{self.launch_id.value}':
+                raise ScheduleError('ascent end launch identity mismatch')
+            for field in ('target_utc', 'end_utc', 'reviewed_utc'):
+                _utc(a[field], field)
+            if (self.timing.countdown_utc is None or a['target_utc'] != self.timing.countdown_utc
+                    or a['end_utc'] < a['target_utc']):
+                raise ScheduleError('ascent end target or review mismatch')
+            url = a['source_url']
+            _text(url, 'ascent source URL')
+            parts = urlsplit(url)
+            if (len(url) > 512 or re.fullmatch(r'https://[A-Za-z0-9.-]+(?::[0-9]{1,5})?(?:[/?][A-Za-z0-9._~/%?=&+-]*)?', url) is None
+                    or parts.scheme != 'https' or not parts.hostname or parts.username or parts.password or parts.fragment):
+                raise ScheduleError('ascent source requires bounded HTTPS URL')
+            object.__setattr__(self, 'ascent_end', MappingProxyType(dict(a)))
         if self.country_code is not None and (type(self.country_code) is not str
                 or re.fullmatch(r'[A-Z]{2,3}', self.country_code) is None):
             raise ScheduleError('country code must be explicitly sourced alpha2/alpha3 or null')
@@ -257,9 +293,11 @@ class LaunchRecord:
                 result['timing'][field] = getattr(timing, field)
         if self.source_updated_subsecond:
             result['source_updated_subsecond'] = self.source_updated_subsecond
-        for field in ('source_updated_utc', 'source_updated_iso', 'source_status_id', 'source_status_name', 'site_name', 'country_name', 'country_code', 'site_location_name'):
+        for field in ('source_updated_utc', 'source_updated_iso', 'source_status_id', 'source_status_name', 'site_name', 'country_name', 'country_code', 'site_location_name', 'operator_abbrev'):
             if getattr(self, field) is not None:
                 result[field] = getattr(self, field)
+        if self.ascent_end is not None:
+            result['ascent_end'] = dict(self.ascent_end)
         result['status'] = self.status.value
         return result
 
@@ -300,6 +338,8 @@ class ScheduleState:
             seen.add(key)
             if entry.record.source_validated_utc > self.evaluated_at_utc:
                 raise ScheduleError('source validation cannot be in the future')
+            if entry.record.ascent_end is not None and entry.record.ascent_end['reviewed_utc'] > self.evaluated_at_utc:
+                raise ScheduleError('ascent review cannot be in the future')
 
     @property
     def content_revision(self):
@@ -427,28 +467,39 @@ def merge_schedule(state: ScheduleState, incoming: tuple[LaunchRecord, ...], now
         seen.add(key)
         if record.source_validated_utc > now_utc:
             raise ScheduleError('source validation cannot be in the future')
+        if record.ascent_end is not None and record.ascent_end['reviewed_utc'] > now_utc:
+            raise ScheduleError('ascent review cannot be in the future')
         prior = by_id.get(key)
         if prior is not None:
             old = prior.record
             if old.source_updated_utc is not None and (record.source_updated_utc is None or (record.source_updated_utc, record.source_updated_subsecond) < (old.source_updated_utc, old.source_updated_subsecond)):
                 raise ScheduleError('source content modification cannot regress')
             comparable = record.content()
+            old_content = old.content()
+            # Curated supplement is a distinct source from the LL2 content epoch.
+            comparable.pop('ascent_end', None)
+            old_content.pop('ascent_end', None)
             # Additive model qualification: old null/absent newly modeled footer
             # facts are unknown, not a negative assertion. A fresh origin may
             # supply them without changing last_updated. Known facts cannot be
             # cleared or contradicted at the same source modification epoch.
-            if record.source_validated_utc > old.source_validated_utc:
-                for field in ('country_code', 'site_location_name'):
-                    if getattr(old, field) is None:
-                        comparable.pop(field, None)
+            for field in ('country_code', 'site_location_name', 'operator_abbrev'):
+                if getattr(old, field) is None:
+                    comparable.pop(field, None)
             if (old.source_updated_utc is not None and (record.source_updated_utc, record.source_updated_subsecond) == (old.source_updated_utc, old.source_updated_subsecond)
-                    and comparable != old.content()):
+                    and comparable != old_content):
                 raise ScheduleError('source content conflicts at same modification epoch')
             if record.source_validated_utc < old.source_validated_utc:
                 raise ScheduleError('source validation cannot regress')
             if record.source_validated_utc == old.source_validated_utc:
-                if record != old:
+                if comparable != old_content:
                     raise ScheduleError('conflicting content at the same source validation')
+                before, after = old.ascent_end, record.ascent_end
+                if before is not None and after is not None and before != after and after['reviewed_utc'] <= before['reviewed_utc']:
+                    raise ScheduleError('ascent review cannot regress or conflict')
+                # Independent reviewed metadata can change without renewing the
+                # provider validation epoch or clearing the stale latch.
+                by_id[key] = AcceptedLaunch(record, prior.rescheduled, prior.stale)
                 continue
         # Exact targets are authoritative: adding/removing agreeing date/window
         # context changes content, not the target. Coarse changes and transitions
@@ -477,8 +528,16 @@ def select_next(state: ScheduleState) -> Selection:
     """
     if type(state) is not ScheduleState:
         raise ScheduleError('state must be ScheduleState')
+    def retention_end(record):
+        target = record.timing.countdown_utc
+        return max(target + 900, record.ascent_end['end_utc'] if record.ascent_end else target + 900)
+
     eligible = [entry for entry in state.entries
-                if entry.record.status not in (LaunchStatus.CANCELLED, LaunchStatus.COMPLETED, LaunchStatus.STARTED)]
+                if entry.record.status not in (LaunchStatus.CANCELLED, LaunchStatus.COMPLETED)
+                and (entry.record.status is not LaunchStatus.STARTED
+                     or entry.record.timing.countdown_utc is not None
+                     and entry.record.timing.countdown_utc <= state.evaluated_at_utc
+                     <= retention_end(entry.record))]
     if not eligible:
         return Selection(None, TimingState.NO_SCHEDULE, None)
 
@@ -486,7 +545,14 @@ def select_next(state: ScheduleState) -> Selection:
         anchor = entry.record.timing.ordering_utc
         return anchor is None, anchor if anchor is not None else 0, entry.record.launch_id.key
 
-    entry = min(eligible, key=ordering)
+    # Keep the earliest selected timed launch throughout its15minute phase.
+    # Once its local phase expires, prefer the next still-eligible record. If
+    # no such record exists, retain the old source rather than infer completion.
+    current = [entry for entry in eligible if entry.record.timing.countdown_utc is None
+               or state.evaluated_at_utc <= retention_end(entry.record)]
+    entry = min(current or eligible, key=ordering)
+    # Wire timingState preserves source precision; native MIN arithmetic is a
+    # separate nominal display phase, never upgraded to exact-second knowledge.
     exact = entry.record.timing.exact_utc
     if exact is None:
         return Selection(entry, TimingState.UNCERTAIN, None)
