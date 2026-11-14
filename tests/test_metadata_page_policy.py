@@ -346,6 +346,104 @@ class MetadataPagePolicyTest(unittest.TestCase):
             thread.join()
             server.server_close()
 
+    def test_cli_refuses_unsupported_schema_and_policy_before_http(self):
+        calls = []
+
+        class Handler(BaseHTTPRequestHandler):
+            def log_message(self, *args):
+                pass
+
+            def do_GET(self):
+                calls.append(self.path)
+                self.send_response_only(500)
+                self.end_headers()
+
+        server = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
+        origin = "http://127.0.0.1:" + str(server.server_port)
+        thread = threading.Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            with tempfile.TemporaryDirectory(
+                prefix="spacefox-metadata-cli-policy-"
+            ) as folder:
+                root = Path(__file__).resolve().parents[1]
+                remote = Path(folder) / "remote.git"
+                code = subprocess.check_output(
+                    ["git", "-C", str(root), "rev-parse", "HEAD"], text=True
+                ).strip()
+                subprocess.run(["git", "init", "--bare", "-q", str(remote)], check=True)
+                subprocess.run(
+                    [
+                        "git",
+                        "-C",
+                        str(remote),
+                        "fetch",
+                        "-q",
+                        str(root),
+                        code + ":refs/heads/main",
+                    ],
+                    check=True,
+                )
+                from tools.spacefox.publisher import GitState, _canonical, _catalog_ref
+
+                store = GitState(str(remote))
+                try:
+                    store.bootstrap(code)
+                    pub = Publisher(store, code)
+                    pub.reconcile(None)
+                    fixture.CurrentMetadataPublisherTest().primary(
+                        pub, NOW, accept=True
+                    )
+                    valid = CatalogRefresh(pub, origin=origin, local_http=True).journal
+                    live = Path(folder) / "live.json"
+                    live.write_text("null")
+                    for defect in ("schema1", "schema2", "query"):
+                        bad = deepcopy(valid)
+                        if defect == "schema1":
+                            bad["schemaVersion"] = 1
+                        elif defect == "schema2":
+                            bad["schemaVersion"] = 2
+                        else:
+                            bad["pageSize"] = 20
+                        raw = _canonical(bad)
+                        ref = dict(
+                            sha256=hashlib.sha256(raw).hexdigest(), bytes=len(raw)
+                        )
+                        pub.checkpoint_catalog(
+                            pub.head, NOW, ref, {_catalog_ref(ref): raw}
+                        )
+                        before = pub.head
+                        result = subprocess.run(
+                            [
+                                sys.executable,
+                                "-B",
+                                str(root / "tools/refresh_catalog.py"),
+                                "collect",
+                                "--remote",
+                                str(remote),
+                                "--origin",
+                                origin,
+                                "--local-http",
+                                "--now",
+                                str(NOW),
+                                "--expected-head",
+                                before,
+                                "--live-observation",
+                                str(live),
+                            ],
+                            capture_output=True,
+                            text=True,
+                        )
+                        self.assertEqual(2, result.returncode, result.stderr)
+                        self.assertEqual(before, store.load()[0])
+                        self.assertEqual([], calls)
+                finally:
+                    store.close()
+        finally:
+            server.shutdown()
+            thread.join()
+            server.server_close()
+
     def test_cli_duplicate_refusal_and_retry(self):
         candidate, files = fixture.captured()
         pages = [
