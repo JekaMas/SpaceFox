@@ -56,6 +56,32 @@ class MetadataPagePolicyTest(unittest.TestCase):
                     collector._page("countries", json.dumps(doc).encode(), 20, 103)
                 self.assertEqual(head, store.load()[0])
 
+    def test_nonincreasing_captured_pad_ids_are_rejected(self):
+        candidate, files = fixture.captured()
+        pages = deepcopy(candidate["coverage"]["pages"])
+        page = pages[-1]
+        self.assertEqual("sites", page["collection"])
+        raw = json.loads(files["objects/" + page["body"]["sha256"] + ".json"])
+        self.assertGreater(len(raw["results"]), 1)
+        raw["results"][0], raw["results"][1] = raw["results"][1], raw["results"][0]
+        body = json.dumps(raw).encode()
+        digest = hashlib.sha256(body).hexdigest()
+        page["body"] = dict(sha256=digest, bytes=len(body))
+        helper = fixture.CurrentMetadataPublisherTest()
+        with helper.authority() as (pub, store, code):
+            collector = CatalogRefresh(pub)
+            collector.objects = {
+                "catalog-refresh/" + name: data
+                for name, data in files.items()
+                if name.startswith("objects/")
+            }
+            collector.objects["catalog-refresh/objects/" + digest + ".json"] = body
+            before = pub.head
+            with self.assertRaisesRegex(RefreshError, "misordered sites identity"):
+                collector._assemble(pages)
+            self.assertEqual(before, store.load()[0])
+            self.assertIsNone(collector.current())
+
     def test_dangling_real_relation_refuses_candidate(self):
         candidate, files = fixture.captured()
         helper = fixture.CurrentMetadataPublisherTest()
