@@ -1,6 +1,7 @@
 # SpaceFox 0.1.9 publication checkpoint
 
-Public main and tag v0.1.9 point to root acceptance c7642184, with clean compiled
+Public main includes root acceptance c7642184, and tag v0.1.9 points to that
+acceptance commit, with clean compiled
 source aa79b73c and runtime0.1.9/d04c16ef. The GitHub prerelease is published:
 https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.9
 
