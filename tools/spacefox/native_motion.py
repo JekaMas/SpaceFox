@@ -279,6 +279,12 @@ def build_artifact(state, catalog, now, *, publisher, policy=None, traversal=Non
             descriptor.update(schemaVersion=2, rendererProfile=RENDERER,
                               sourceCanvas=visual[3], motionSource=motion, animation=animation)
             rocket = dict(entityId=original_rocket['entityId'], descriptor=put(files, descriptor))
+        # Presentation metadata is catalog-qualified and never changes launch facts.
+        operator_id = feed['launch']['operator_id']
+        owner = catalog['dictionaries']['organizations'].get(operator_id)
+        abbrev = None if owner is None else owner['facts'].get('abbrev')
+        if feed['launch'].get('operator_abbrev') is None and isinstance(abbrev, str) and abbrev:
+            cat['entries'][operator_id]['abbrev'] = abbrev
         selected_source = loads_json(read_ref(original['sourceSelection'], files))
         site_source = _site_country_source(files, catalog, old['catalogSourceDigest'], selected_source['siteId'])
         site_record = catalog['dictionaries']['sites'].get(selected_source['siteId'])
@@ -353,6 +359,11 @@ def validate_artifact(files):
         require(kind in ('configuration','organization','site','country'), 'catalog kind')
         StableId(IdKind(kind),namespace,token)
         fields={'kind','name','visual'} | ({'position','sourcePosition','positionMode'} if kind=='site' else set())
+        if kind == 'organization' and 'abbrev' in row:
+            fields.add('abbrev')
+            require(feed['launch'] is not None and identity == feed['launch']['operator_id']
+                    and feed['launch'].get('operator_abbrev') is None
+                    and type(row['abbrev']) is str and bool(row['abbrev']), 'catalog abbreviation')
         require(type(row) is dict and set(row)==fields and row['kind']==kind
                 and (row['name'] is None or type(row['name']) is str), 'catalog row')
         if row['visual'] is not None: validate_ref(row['visual'])
@@ -413,6 +424,11 @@ def validate_artifact(files):
                 if owner is not None:
                     name=owner['facts'].get('fullName') or owner['facts'].get('name')
                     require(scene[key] in entries and entries[scene[key]]['name']==name, 'catalog owner name')
+                if kind == 'operator':
+                    expected = None if owner is None or launch.get('operator_abbrev') is not None else owner['facts'].get('abbrev')
+                    expected = expected if isinstance(expected, str) and expected else None
+                    actual = entries.get(scene[key], {}).get('abbrev')
+                    require(actual is None or actual == expected, 'catalog operator presentation binding')
             country_record = _assert_site_country(files, scene['siteCountrySource'], original['siteId'], original['siteCountryId'], feed['catalogSourceDigest'], feed['catalogRevision'])
             country_codes = () if country_record is None else (country_record['facts'].get('alpha2'), country_record['facts'].get('alpha3'))
             country_source = original['roles']['siteCountry']
