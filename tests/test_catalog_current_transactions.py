@@ -1,5 +1,4 @@
 """Current catalog CLI transactions on captured data, local files only."""
-from copy import deepcopy
 from decimal import Decimal
 import hashlib
 import json
@@ -54,6 +53,9 @@ def candidate(root, defect=None):
     elif defect == 'geometry':
         new = b'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><image href="https://example.org/a.png"/></svg>'
         path.write_bytes(new); fact['sourceSha256'] = digest(new)
+    elif defect == 'zero-area':
+        new = b'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 128"><path d="M1 1L2 2L3 3Z" fill="#fff"/></svg>'
+        path.write_bytes(new); fact['sourceSha256'] = digest(new)
     if defect:
         # A valid first update must not commit when a later asset is invalid.
         c['updates'].insert(0, {'identity': SITE, 'sources': ['https://ll.thespacedevs.com/2.3.0/pads/29/?format=json'],
@@ -94,6 +96,10 @@ class CurrentCatalogTransactions(unittest.TestCase):
             for p, data in inputs.items(): self.assertEqual((root / p).read_bytes(), data, p)
             self.assertNotEqual(old_art.read_bytes(), new_art.read_bytes())
             pack = build_pack(root, after, roots=[MODEL]); write_pack(store, pack)
+            self.assertEqual(pack['manifest']['selection']['roots'], [MODEL])
+            selected_asset = pack['manifest']['assets']['spacefox:asset:technical-current-blk3-replacement']
+            self.assertEqual(selected_asset['rights']['license'], 'MIT')
+            self.assertEqual(selected_asset['catalogRecord']['facts']['coverage']['configurationIds'], [MODEL])
             self.assertEqual(snapshot(store / 'objects') | old_objects, snapshot(store / 'objects'))
             for p, data in old_objects.items(): self.assertEqual((store / 'objects' / p).read_bytes(), data)
             self.assertEqual(json.loads((store / 'manifest.json').read_bytes())['catalogVersion'], 'technical.blk3.v2')
@@ -102,7 +108,7 @@ class CurrentCatalogTransactions(unittest.TestCase):
             self.assertEqual(write_pack(store, pack)['objectsReused'], len(pack['objects']))
 
     def test_invalid_amendments_preserve_all_files(self):
-        for defect in ('wrong-model', 'rights', 'source', 'geometry'):
+        for defect in ('wrong-model', 'rights', 'source', 'geometry', 'zero-area'):
             with self.subTest(defect=defect), tempfile.TemporaryDirectory() as tmp:
                 root = temporary_catalog(tmp); catalog = build_catalog(root)
                 store = root / 'selected'; write_pack(store, build_pack(root, catalog, roots=[MODEL]))
@@ -112,7 +118,7 @@ class CurrentCatalogTransactions(unittest.TestCase):
                 self.assertNotEqual(result.returncode, 0, result.stdout)
                 self.assertIn({'wrong-model': 'art not reviewed for this exact configuration',
                                'rights': 'MIT rights', 'source': 'asset sources required',
-                               'geometry': 'unsupported source element image'}[defect], result.stderr)
+                               'geometry': 'unsupported source element image', 'zero-area': 'empty'}[defect], result.stderr)
                 self.assertEqual(snapshot(root), before, result.stderr)
                 self.assertEqual(build_catalog(root)['catalogVersion'], catalog['catalogVersion'])
                 write_pack(store, build_pack(root, build_catalog(root), roots=[MODEL]))
