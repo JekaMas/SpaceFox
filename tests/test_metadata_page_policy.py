@@ -5,13 +5,16 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 import threading
 import unittest
+from unittest.mock import patch
 from urllib.parse import urlsplit
 
 from tests import test_current_metadata_publisher as fixture
 
 NOW = fixture.NOW
+from tools.spacefox import catalog_refresh as refresh_module
 from tools.spacefox.catalog_refresh import CatalogRefresh, RefreshError
 from tools.spacefox.publisher import Publisher
+from tools.spacefox.provider import Response
 
 
 class MetadataPagePolicyTest(unittest.TestCase):
@@ -36,6 +39,76 @@ class MetadataPagePolicyTest(unittest.TestCase):
                 with self.subTest(defect=defect), self.assertRaises(RefreshError):
                     collector._page('countries', json.dumps(doc).encode(), 20, 103)
                 self.assertEqual(head, store.load()[0])
+
+    def test_omissions_keep_original_record_dates_and_facts(self):
+        candidate, files = fixture.captured()
+        selected = {'countries': {1, 2}, 'organizations': {121},
+                    'models': {133, 522}, 'sites': {235}}
+        rows = {}
+        for kind, ids in selected.items():
+            rows[kind] = [r for page in candidate['coverage']['pages'] if page['collection'] == kind
+                          for r in json.loads(files['objects/' + page['body']['sha256'] + '.json'])['results']
+                          if r['id'] in ids]
+            self.assertEqual(ids, {r['id'] for r in rows[kind]})
+        class CapturedSubset:
+            def __init__(self): self.now = NOW; self.omit = False; self.calls = []
+            def get(self, url, etag):
+                self.calls.append((url, etag))
+                paths = {'/2.3.0/config/countries/': 'countries', '/2.3.0/agencies/': 'organizations',
+                         '/2.3.0/launcher_configurations/': 'models', '/2.3.0/pads/': 'sites'}
+                kind = paths[urlsplit(url).path]
+                current = [r for r in rows[kind] if not self.omit or
+                           (kind, r['id']) not in {('countries', 1), ('models', 133)}]
+                body = json.dumps(dict(count=len(current), next=None, previous=None, results=current)).encode()
+                return Response(200, {'date': formatdate(self.now, usegmt=True), 'content-type': 'application/json'}, body)
+        helper = fixture.CurrentMetadataPublisherTest()
+        with helper.authority() as (pub, store, code):
+            helper.primary(pub, NOW, accept=True)
+            transport = CapturedSubset()
+            for step in range(4):
+                transport.now = NOW + step + 1
+                result = CatalogRefresh(pub, transport=transport).run(transport.now)
+            self.assertEqual('complete', result.status)
+            first = CatalogRefresh(pub).current()
+            country = next(r for r in first['reference']['countries'] if r['sourceId'] == 1)
+            model = next(r for r in first['reference']['models'] if r['sourceId'] == 133)
+            preserved = deepcopy(helper.preserved(pub))
+            pub = Publisher(store, code); pub.reconcile(None)
+            helper.primary(pub, NOW + 3600)
+            transport.omit = True
+            for step in range(3):
+                transport.now = NOW + 3601 + step
+                self.assertEqual('partial', CatalogRefresh(pub, transport=transport).run(transport.now, restart=(step == 0)).status)
+            transport.now = NOW + 3604
+            collector = CatalogRefresh(pub, transport=transport)
+            build = collector._candidate
+            def fail_final_save(*args):
+                value = build(*args)
+                refresh_module.MAX_CATALOG_OBJECTS = 1
+                return value
+            # Lower only the final candidate's save capacity, after the fourth
+            # page itself has durably checkpointed. This is a technical fault.
+            with patch.object(refresh_module, 'MAX_CATALOG_OBJECTS', refresh_module.MAX_CATALOG_OBJECTS):
+                with patch.object(collector, '_candidate', side_effect=fail_final_save):
+                    with self.assertRaisesRegex(RefreshError, 'catalog corpus exceeds'):
+                        collector.run(transport.now)
+            self.assertEqual({}, collector.objects)
+            durable = CatalogRefresh(Publisher(store, code))
+            self.assertEqual(first, collector.current())
+            self.assertEqual(first, durable.current())
+            self.assertEqual(durable.journal, collector.journal)
+            self.assertEqual(4, len(durable.journal['staging']['pages']))
+            calls = len(transport.calls)
+            self.assertEqual('complete', collector.run(transport.now).status)
+            self.assertEqual(calls, len(transport.calls))
+            second = CatalogRefresh(Publisher(store, code)).current()
+            self.assertEqual([1], second['missingComparedToPrevious']['countries'])
+            self.assertEqual([133], second['missingComparedToPrevious']['models'])
+            self.assertEqual([{'fact': country, 'lastObservedUtc': NOW + 1}], second['retainedMissing']['countries'])
+            self.assertEqual([{'fact': model, 'lastObservedUtc': NOW + 3}], second['retainedMissing']['models'])
+            self.assertEqual(NOW + 3604, second['source']['completedUtc'])
+            self.assertEqual(preserved, helper.preserved(pub))
+            self.assertEqual(8, len(transport.calls))
 
     def test_duplicate_discards_only_current_collection_and_preserves_epochs(self):
         expected, files = fixture.captured()
@@ -99,6 +172,34 @@ class MetadataPagePolicyTest(unittest.TestCase):
                 stage = CatalogRefresh(Publisher(store, code), **opts).journal['staging']['pages']
                 self.assertEqual(prior[:6], stage[:6])
                 self.assertEqual(NOW + 3901, stage[-1]['validatedUtc'])
+                self.assertEqual(preserved, helper.preserved(pub))
+                # The same overlap a second time must not poison the durable
+                # prefix or make the next traversal repeat offset 20 forever.
+                state['bad'] = True
+                with self.assertRaisesRegex(RefreshError, 'duplicate source identity'):
+                    CatalogRefresh(pub, **opts).run(state['now'] + 1)
+                self.assertEqual('failed', pub.ledger['requests'][-1]['outcome'])
+                self.assertEqual(prior[:6], CatalogRefresh(pub, **opts).journal['staging']['pages'])
+                state['bad'] = False
+                complete = False
+                for hour in range(2, 9):
+                    state['now'] = NOW + hour * 3600
+                    pub = Publisher(store, code); pub.reconcile(None)
+                    helper.primary(pub, state['now'])
+                    for _ in range(7):
+                        collector = CatalogRefresh(pub, **opts)
+                        result = collector.run(state['now'])
+                        if result.status == 'complete':
+                            complete = True
+                            break
+                        if result.status == 'yielded':
+                            break
+                    if complete: break
+                self.assertTrue(complete)
+                current = CatalogRefresh(Publisher(store, code), **opts).current()
+                self.assertEqual({'countries': 103, 'organizations': 350, 'models': 532, 'sites': 251},
+                                 current['coverage']['counts'])
+                self.assertEqual(prior[:6], current['coverage']['pages'][:6])
                 self.assertEqual(preserved, helper.preserved(pub))
         finally:
             server.shutdown(); thread.join(); server.server_close()
