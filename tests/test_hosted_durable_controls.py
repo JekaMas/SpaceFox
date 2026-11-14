@@ -49,6 +49,30 @@ class DurableAuthorityWholeTest(unittest.TestCase):
         git(self.remote, 'update-ref', STATE_REF, self.anchor)
         self.assertEqual(self.anchor, Publisher(self.store, self.code).head)
 
+    def test_full_quota_reopen_refuses_actual_client_before_http(self):
+        from tests.test_current_motion_publisher import captured_starship, NOW
+        from tools.spacefox.provider import LL2Client, normalize_launch
+        from tools.spacefox.publisher import AllowanceUnavailable
+        token = self.pub.reserve(self.pub.head, NOW, trigger='manual')
+        self.pub.accept_source(self.pub.head, token, (normalize_launch(captured_starship(), NOW),), NOW,
+                               selection_validated_utc=NOW)
+        for _ in range(14):
+            token = self.pub.reserve(self.pub.head, NOW, trigger='extra')
+            self.pub.finish_request(self.pub.head, token, NOW, 'success')
+        saved = self.pub.head
+        class NoTransport:
+            def get(self, url):
+                raise AssertionError('quota refusal must precede HTTP')
+        reopened = Publisher(self.store, self.code)
+        reopened.reconcile(None)
+        client = LL2Client(transport=NoTransport())
+        with self.assertRaises(AllowanceUnavailable):
+            client.request(reopened, NOW + 1, trigger='extra')
+        self.assertEqual(client.requests_started, 0)
+        self.assertEqual(reopened.head, saved)
+        self.assertEqual(len(reopened.ledger['requests']), 15)
+        self.assertEqual(reopened.ledger['selection_validated_utc'], NOW)
+
 
     def test_actual_http_then_process_death_retains_consumed_permission(self):
         from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer

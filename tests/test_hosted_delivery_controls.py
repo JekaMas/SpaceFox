@@ -272,6 +272,96 @@ sys.exit(m.main())'''
     def stable(self, pub):
         return {k: pub.ledger[k] for k in ('accepted','active','pending','generation','selection_validated_utc')}
 
+    def test_missing_authority_refuses_actual_updater_with_usable_provider(self):
+        source = self.checkout()
+        materialize = subprocess.run(['bash', '-ec', shell_step('Materialize exact reviewed runtime and catalog closure')],
+                                     cwd=source, capture_output=True)
+        self.assertEqual(materialize.returncode, 0, materialize.stderr)
+        remote = self.base / 'missing-authority.git'
+        subprocess.run(['git', 'init', '--bare', '-q', str(remote)], check=True)
+        git(source, 'push', '-q', str(remote), 'HEAD:refs/heads/main')
+        with Service().serving() as service:
+            result = self.cli(source, remote, service, 'prepare', '--bootstrap', '--output',
+                              self.base / 'initial-pending', runtime=False)
+            self.assertEqual((result['pending'], result['requests']), ('true', 1))
+            store = GitState(str(remote))
+            try:
+                pub = self.pub(store)
+                self.assertIsNotNone(pub.ledger['pending'])
+                pending = pub.pending_files()
+                service.files = pending
+                old_head = pub.head
+                anchor = store._refs('refs/tags/spacefox-state-bootstrap-map-v3')
+                git(remote, 'update-ref', '-d', STATE_REF, old_head)
+                before_calls = len(service.calls)
+                refused = self.cli(source, remote, service, 'prepare', '--output',
+                                   self.base / 'missing-pending', runtime=False, success=False)
+                self.assertTrue(refused.stderr.strip())
+                self.assertEqual(store._refs(STATE_REF), {})
+                self.assertEqual(store._refs('refs/tags/spacefox-state-bootstrap-map-v3'), anchor)
+                self.assertFalse(any('/2.3.0/' in c[1] for c in service.calls[before_calls:]))
+                self.assertEqual(service.files, pending)
+                self.cli(source, remote, service, 'prepare', '--bootstrap', '--output',
+                         self.base / 'missing-bootstrap', runtime=False, success=False)
+                self.assertEqual(store._refs(STATE_REF), {})
+                self.assertEqual(store._refs('refs/tags/spacefox-state-bootstrap-map-v3'), anchor)
+            finally:
+                store.close()
+
+    def test_restart_promotes_exact_pending_before_generation_three(self):
+        with self.authority() as (source, remote, store, pub), Service().serving() as service:
+            first, first_revision = self.active(pub, service)
+            second, second_revision = self.prepare(pub, NOW + 1)
+            service.files = delivery_files(pub, delivery(pub))
+            pending_head = pub.head
+            restarted = self.pub(store)
+            observed = Site(service.url + '/site', local_http=True).observe(restarted)
+            self.assertEqual(observed, second_revision)
+            self.assertEqual(restarted.reconcile(observed), 'promoted')
+            self.assertNotEqual(restarted.head, pending_head)
+            self.assertEqual(restarted.ledger['active']['generation'], 2)
+            self.assertIsNone(restarted.ledger['pending'])
+            self.assertEqual(snapshot_files(store, restarted.head, 2)[1], second)
+            third, _ = self.prepare(restarted, NOW + 2)
+            self.assertEqual(restarted.ledger['active']['generation'], 2)
+            self.assertEqual(restarted.ledger['pending']['generation'], 3)
+            self.assertEqual(restarted.pending_files(), third)
+            self.assertEqual(service.files['feed.json'], second['feed.json'])
+            self.assertNotEqual(first['feed.json'], second['feed.json'])
+
+    def test_stale_worker_cannot_request_after_new_pending(self):
+        with self.authority() as (source, remote, store, pub), Service().serving() as service:
+            first, revision = self.active(pub, service)
+            script = '''import json,sys
+from tools.spacefox.publisher import GitState,Publisher,LiveRevision,StateError
+from tools.spacefox.provider import LL2Client
+s=GitState(sys.argv[1]); p=Publisher(s,sys.argv[2]); p.reconcile(LiveRevision(**json.loads(sys.argv[3])))
+print('ready',flush=True); sys.stdin.readline()
+try: LL2Client(origin=sys.argv[4],local_http=True).request(p,int(sys.argv[5]),trigger='extra')
+except StateError: sys.exit(0)
+sys.exit(3)
+'''
+            child = subprocess.Popen([sys.executable, '-B', '-c', script, str(remote), self.code,
+                                      json.dumps(vars(revision)), service.url, str(NOW + 2)],
+                                     cwd=ROOT, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                                     stderr=subprocess.PIPE, text=True)
+            try:
+                self.assertEqual(child.stdout.readline().strip(), 'ready')
+                second, _ = self.prepare(pub, NOW + 1)
+                service.files = delivery_files(pub, delivery(pub))
+                saved = pub.head
+                calls = len(service.calls)
+                out, err = child.communicate('\n', timeout=30)
+                self.assertEqual(child.returncode, 0, out + err)
+                self.assertEqual(store._refs(STATE_REF)[STATE_REF], saved)
+                self.assertFalse(any('/2.3.0/' in c[1] for c in service.calls[calls:]))
+                self.assertEqual(service.files['feed.json'], second['feed.json'])
+                self.assertNotEqual(first['feed.json'], second['feed.json'])
+            finally:
+                if child.poll() is None:
+                    child.kill()
+                    child.communicate()
+
 
     def test_runtime_only_two_generations_finality_and_exact_readback(self):
         with self.authority() as (source,remote,store,pub), Service().serving() as s:
