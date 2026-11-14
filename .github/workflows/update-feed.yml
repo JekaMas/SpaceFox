@@ -66,7 +66,7 @@ jobs:
         run: |
           args=()
           if [ "$FIRST_BOOTSTRAP" = true ]; then args+=(--bootstrap); fi
-          python3 -B tools/one_time_feed_cutover.py --site "$SPACEFOX_SITE" prepare --output "$RUNNER_TEMP/spacefox-site" "${args[@]}"
+          python3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" prepare --output "$RUNNER_TEMP/spacefox-site" "${args[@]}"
       - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
         id: upload
         if: steps.prepare.outputs.pending == 'true'
@@ -103,7 +103,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           EXPECTED_BASE: ${{ needs.prepare.outputs.head }}
           ARTIFACT_ID: ${{ needs.prepare.outputs.artifact_id }}
-        run: python3 -B tools/one_time_feed_cutover.py --site "$SPACEFOX_SITE" arm --expected-base "$EXPECTED_BASE" --artifact-id "$ARTIFACT_ID"
+        run: python3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" arm --expected-base "$EXPECTED_BASE" --artifact-id "$ARTIFACT_ID"
       - name: Qualify recovery after intent before Pages POST
         if: github.event_name == 'workflow_dispatch' && inputs.qualify_pre_post_recovery
         run: |
@@ -139,7 +139,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           EXPECTED_BASE: ${{ needs.arm.outputs.head }}
-        run: python3 -B tools/one_time_feed_cutover.py --site "$SPACEFOX_SITE" deploy --expected-base "$EXPECTED_BASE"
+        run: python3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" deploy --expected-base "$EXPECTED_BASE"
 
   promote:
     needs: [prepare, arm, deploy]
@@ -167,7 +167,7 @@ jobs:
       - name: Require async finality and complete exact HTTPS files before promotion
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python3 -B tools/one_time_feed_cutover.py --site "$SPACEFOX_SITE" recover
+        run: python3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" recover
 
   metadata:
     needs: [prepare, arm, deploy, promote]
@@ -195,4 +195,4 @@ jobs:
       - name: Resume due metadata candidate within shared source-first allowance
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python3 -B tools/one_time_feed_cutover.py --site "$SPACEFOX_SITE" metadata
+        run: python3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" metadata
