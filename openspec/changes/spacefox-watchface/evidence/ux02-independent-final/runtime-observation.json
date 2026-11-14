@@ -1,0 +1,74 @@
+{
+  "candidateIq": "/Users/jekamas/.codex/tmp/spacefox-phone-016-ux02-production-20261114/SpaceFox.iq",
+  "candidateIqSha256": "f0486aec04a63ed9481caff0376a36930c7175df908ccb3e53f65075059dfc50",
+  "candidateSourceRevision": "4b16cca3f3c29083cbabc92b72f1a09718f77a5e",
+  "runtimePrograms": {
+    "fr165m": "01e1780311737c3eb3b619dabe11ef8d3557bc8df7879073dc096f5ac6dc2ff8",
+    "fr965": "b378e9b0a57349f0e5e5985d9f818fda28905ca77af833ec0863779f025d0dce"
+  },
+  "iqEmbeddedProgramHashes": {
+    "fr165m": "01e1780311737c3eb3b619dabe11ef8d3557bc8df7879073dc096f5ac6dc2ff8",
+    "fr965": "b378e9b0a57349f0e5e5985d9f818fda28905ca77af833ec0863779f025d0dce"
+  },
+  "observed": "Two unmodified signed IQ-identical programs displayed Vulcan VC6L, ULA, map, rocket, clock, countdown and four fields. FR965 simulator system Trigger App Settings opened actual menu SpaceFox 0.1.6. FR165M trigger was disabled during observation.",
+  "sceneProvenance": "Not established. Snapshot showed no SPACEFOX-SETTINGS DAT/IDX/IMT files before launching; remaining settings, object and PRG files were inventoried, but no cache or request timeline was instrumented. Do not infer RAM, disk or network origin.",
+  "captureMethod": "CUA simulator-window screenshots; no modification of program or diagnostic settings. Empty production logs do not prove network behavior.",
+  "cleanup": "Native cleanup observed blank URL, null temporal event and preserved accepted digest; then exactly four pre-snapshot task-owned files restored and hash-verified. Prior production simulator cache-loss incident remains unresolved.",
+  "files": {
+    "fr165m.png": {
+      "sha256": "59ee3f0d557c58a4d20b4a15e4920b3d742fbdb2bdcb39f860cc75dceb941f26",
+      "bytes": 226648,
+      "modifiedUtc": "2026-11-14T15:50:04.945673+00:00"
+    },
+    "snapshot-inventory.json": {
+      "sha256": "eb53ce50d9d1ca78f05ff894aae47a55d0bfc47f21c532bfadae84d26537a23d",
+      "bytes": 770,
+      "modifiedUtc": "2026-11-14T15:49:27.700801+00:00"
+    },
+    "fr165m-launch.json": {
+      "sha256": "42fe53733ce607d19c73987dcac340e7f9b6f063e0b6931c47aa7df0e7e6041d",
+      "bytes": 1049,
+      "modifiedUtc": "2026-11-14T15:50:30.572808+00:00"
+    },
+    "restore.json": {
+      "sha256": "33e6f3fe8de85345c874db1022c72685b7167f303a166ab37fc36cd1253d55ca",
+      "bytes": 257,
+      "modifiedUtc": "2026-11-14T15:52:39.239089+00:00"
+    },
+    "fr965-launch.json": {
+      "sha256": "0bbe14a1b918797c7ce4a547161a3846d9544210f1e6009844247f818023966c",
+      "bytes": 1046,
+      "modifiedUtc": "2026-11-14T15:52:03.102176+00:00"
+    },
+    "fr965.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "modifiedUtc": "2026-11-14T15:50:27.892620+00:00"
+    },
+    "fr965-menu-016.png": {
+      "sha256": "33d517607478fbc34769c3bad05d62235b98d6af09d86ee66ad13477bf6acfe8",
+      "bytes": 242960,
+      "modifiedUtc": "2026-11-14T15:51:35.055678+00:00"
+    },
+    "fr965.png": {
+      "sha256": "f09ff26e41ea8cca32bc9707af0f883744e33b4a807485ed452bbe64ed544f1e",
+      "bytes": 299712,
+      "modifiedUtc": "2026-11-14T15:51:17.509179+00:00"
+    },
+    "cleanup.log": {
+      "sha256": "6783aa51a4501a8ec0194bceb069d6629d69d8754685fe88d54bce890346adc1",
+      "bytes": 539,
+      "modifiedUtc": "2026-11-14T15:52:19.808907+00:00"
+    },
+    "fr165m-settings-menu.txt": {
+      "sha256": "8cf6d1d8eb193361bea6d095500614814c04fbd38a1254c9cdb120aa61f71757",
+      "bytes": 7393,
+      "modifiedUtc": "2026-11-14T15:50:21.530580+00:00"
+    },
+    "fr165m.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "modifiedUtc": "2026-11-14T15:49:49.420942+00:00"
+    }
+  }
+}

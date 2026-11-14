@@ -1,0 +1,24 @@
+{
+  "device": "fr165m",
+  "program": "/Users/jekamas/.codex/tmp/spacefox-phone-016-ux02-production-20261114/SpaceFox-fr165m.prg",
+  "programSha256": "01e1780311737c3eb3b619dabe11ef8d3557bc8df7879073dc096f5ac6dc2ff8",
+  "command": [
+    "/opt/homebrew/opt/openjdk@11/bin/java",
+    "-Dfile.encoding=UTF-8",
+    "-classpath",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+    "com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux",
+    "-f",
+    "/Users/jekamas/.codex/tmp/spacefox-phone-016-ux02-production-20261114/SpaceFox-fr165m.prg",
+    "-d",
+    "fr165m",
+    "-s",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/shell"
+  ],
+  "startedUtc": "2026-11-14T15:49:49.420612+00:00",
+  "log": "/Users/jekamas/.codex/tmp/spacefox-ux02-independent-final-20261114/fr165m.log",
+  "pid": 88021,
+  "finishedUtc": "2026-11-14T15:50:30.569913+00:00",
+  "exitCode": 0,
+  "launcherState": "exited"
+}
