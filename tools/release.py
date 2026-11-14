@@ -79,8 +79,15 @@ def source_state(root: Path) -> dict:
         receipt = json.loads((root / proof["receiptPath"]).read_text())
         historical = {}
         if "ux02DeltaProof" in proof:
-            delta = json.loads((root / proof["ux02DeltaProof"]["path"]).read_text())
+            delta_path = proof["ux02DeltaProof"]["path"]
+            require(delta_path in paths, "UX02 admission proof must be tracked")
+            delta = json.loads((root / delta_path).read_text())
             historical = delta["priorSnapshots"]
+            admission.add(delta_path)
+            admission.add(delta["priorCatalog"]["path"])
+            admission.update(item["path"] for item in historical.values())
+            admission.update(delta["evidence"])
+            admission.update(delta["sources"])
         for name, expected in proof["productionSources"].items():
             if name not in paths and name in historical:
                 snapshot = historical[name]
