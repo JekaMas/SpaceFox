@@ -17,7 +17,7 @@ from tests import test_current_metadata_publisher as fixture
 
 from tools.spacefox import catalog_refresh as refresh_module
 from tools.spacefox.catalog_refresh import CatalogRefresh, RefreshError
-from tools.spacefox.publisher import Publisher
+from tools.spacefox.publisher import Publisher, StateError
 from tools.spacefox.provider import Response
 
 NOW = fixture.NOW
@@ -488,6 +488,183 @@ class MetadataPagePolicyTest(unittest.TestCase):
             server.shutdown()
             thread.join()
             server.server_close()
+
+    def test_capacity_refusal_clears_scratch_and_resumes(self):
+        expected, files = fixture.captured()
+        helper = fixture.CurrentMetadataPublisherTest()
+        with helper.authority() as (pub, store, code):
+            helper.primary(pub, NOW, accept=True)
+            preserved = deepcopy(helper.preserved(pub))
+            transport = fixture.CapturedTransport(pub, expected, files)
+            transport.epoch = NOW
+            collector = CatalogRefresh(pub, transport=transport)
+            with patch.object(refresh_module, "MAX_CATALOG_JOURNAL_BYTES", 600):
+                with self.assertRaisesRegex(RefreshError, "journal byte budget"):
+                    collector.run(NOW)
+            self.assertEqual({}, collector.objects)
+            durable = CatalogRefresh(Publisher(store, code))
+            self.assertEqual([], durable.journal["staging"]["pages"])
+            self.assertEqual({}, durable.journal["cache"])
+            self.assertEqual("failed", pub.ledger["requests"][-1]["outcome"])
+            self.assertEqual(preserved, helper.preserved(pub))
+            transport.epoch = NOW + 301
+            self.assertEqual("partial", collector.run(NOW + 301).status)
+            self.assertEqual(2, len(transport.calls))
+            self.assertEqual(transport.calls[0]["url"], transport.calls[1]["url"])
+            self.assertEqual(
+                NOW + 301, collector.journal["staging"]["pages"][0]["validatedUtc"]
+            )
+            self.assertEqual(
+                ["success", "failed", "success"],
+                [r["outcome"] for r in pub.ledger["requests"]],
+            )
+            self.assertEqual(preserved, helper.preserved(pub))
+
+    def test_inflight_source_and_base_changes_keep_prefix_and_reservation(self):
+        candidate, files = fixture.captured()
+        pages = [
+            p for p in candidate["coverage"]["pages"] if p["collection"] == "countries"
+        ]
+        paths = [
+            "/2.3.0/config/countries/?format=json&limit=20",
+            "/2.3.0/config/countries/?format=json&limit=20&offset=20",
+        ]
+        for mode in ("base", "source"):
+            with self.subTest(mode=mode):
+                state = {"calls": [], "hook": None, "now": NOW}
+
+                class Handler(BaseHTTPRequestHandler):
+                    def log_message(self, *args):
+                        pass
+
+                    def do_GET(self):
+                        state["calls"].append(self.path)
+                        if state["hook"]:
+                            hook, state["hook"] = state["hook"], None
+                            hook()
+                        page = pages[paths.index(self.path)]
+                        body = files[
+                            "objects/" + page["body"]["sha256"] + ".json"
+                        ].replace(b"https://ll.thespacedevs.com", origin.encode())
+                        self.send_response_only(200)
+                        self.send_header("Date", formatdate(state["now"], usegmt=True))
+                        self.send_header("Content-Type", "application/json")
+                        self.send_header("Content-Length", str(len(body)))
+                        self.end_headers()
+                        self.wfile.write(body)
+
+                server = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
+                origin = "http://127.0.0.1:" + str(server.server_port)
+                thread = threading.Thread(target=server.serve_forever, daemon=True)
+                thread.start()
+                try:
+                    helper = fixture.CurrentMetadataPublisherTest()
+                    with helper.authority() as (pub, store, code):
+                        helper.primary(pub, NOW, accept=True)
+                        preserved = deepcopy(helper.preserved(pub))
+                        opts = dict(origin=origin, local_http=True)
+                        self.assertEqual(
+                            "partial", CatalogRefresh(pub, **opts).run(NOW).status
+                        )
+                        prefix = deepcopy(
+                            CatalogRefresh(pub, **opts).journal["staging"]["pages"]
+                        )
+                        newcode = [None]
+
+                        def concurrent_change():
+                            if mode == "base":
+                                other = Publisher(store, code)
+                                other.reconcile(None)
+                                token = other.reserve(
+                                    other.head,
+                                    NOW + 61,
+                                    purpose="version",
+                                    trigger="extra",
+                                )
+                                other.finish_request(
+                                    other.head, token, NOW + 61, "success"
+                                )
+                            else:
+                                tree = subprocess.check_output(
+                                    [
+                                        "git",
+                                        "-C",
+                                        store.remote,
+                                        "rev-parse",
+                                        code + "^{tree}",
+                                    ],
+                                    text=True,
+                                ).strip()
+                                newcode[0] = subprocess.check_output(
+                                    [
+                                        "git",
+                                        "-C",
+                                        store.remote,
+                                        "-c",
+                                        "user.name=Metadata test",
+                                        "-c",
+                                        "user.email=metadata@example.invalid",
+                                        "commit-tree",
+                                        tree,
+                                        "-p",
+                                        code,
+                                    ],
+                                    input="new source\n",
+                                    text=True,
+                                ).strip()
+                                subprocess.run(
+                                    [
+                                        "git",
+                                        "-C",
+                                        store.remote,
+                                        "update-ref",
+                                        "refs/heads/main",
+                                        newcode[0],
+                                        code,
+                                    ],
+                                    check=True,
+                                )
+
+                        state["now"] = NOW + 1
+                        state["hook"] = concurrent_change
+                        with self.assertRaises(StateError):
+                            CatalogRefresh(pub, **opts).run(NOW + 1)
+                        if mode == "source":
+                            self.assertIsNotNone(newcode[0])
+                        code_after = newcode[0] or code
+                        reopened = Publisher(store, code_after)
+                        stage = CatalogRefresh(reopened, **opts).journal["staging"][
+                            "pages"
+                        ]
+                        self.assertEqual(prefix, stage)
+                        self.assertEqual(
+                            "reserved",
+                            [
+                                r
+                                for r in reopened.ledger["requests"]
+                                if r["purpose"] == "catalog"
+                            ][-1]["outcome"],
+                        )
+                        self.assertEqual(preserved, helper.preserved(reopened))
+                        if mode == "source":
+                            reopened.adopt_code(reopened.head)
+                        reopened.reconcile(None)
+                        state["now"] = NOW + 62
+                        self.assertEqual(
+                            "partial",
+                            CatalogRefresh(reopened, **opts).run(NOW + 62).status,
+                        )
+                        self.assertEqual([paths[0], paths[1], paths[1]], state["calls"])
+                        resumed = CatalogRefresh(
+                            Publisher(store, code_after), **opts
+                        ).journal["staging"]["pages"]
+                        self.assertEqual(prefix, resumed[:1])
+                        self.assertEqual(2, len(resumed))
+                        self.assertEqual(preserved, helper.preserved(reopened))
+                finally:
+                    server.shutdown()
+                    thread.join()
+                    server.server_close()
 
     def test_duplicate_discards_only_current_collection_and_preserves_epochs(self):
         expected, files = fixture.captured()
