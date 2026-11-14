@@ -51,12 +51,12 @@
   ],
   "coordination": "Integrate reviewed public-only commits/hunks; preserve unrelated dirty work. Private authoring ancestry must not be pushed. Keep other producer deltas separate and do not activate unsupported fields. Existing valid greens retain original source/proof boundaries.",
   "activeFollowUp": {
-    "group": "UX01",
+    "group": "UX02",
     "owner": "verify_fix_ux016",
     "worktree": "/Users/jekamas/projects/SpaceFox-worktrees/verify-fix-ux016-20261114",
     "base": "bad44087",
     "scope": "settings/render/AOD/last-accepted-cache native lifecycle plus reproducible baseline RED; no producer changes",
-    "simulatorLease": "RELEASED by UX01. Explicit short lease granted to apply-watch-refresh-cache-whole-20261114 for its fresh-UUID parser/cache batch; no productionUUID/global reset/UX01 state writes. Release after batch.",
+    "simulatorLease": "UX02 requests return after prior short fresh-UUID parser batch. New author must coordinate, snapshot task-owned state, preserve other apps and avoid simultaneous SDK writers.",
     "warning": "Do not independently reimplement native3.2 while this group applies; integration handoff will follow fresh independent GREEN.",
     "countdownContract": {
       "active": "T- HH:MM:SS / T+ HH:MM:SS, accumulating hours and seconds",
@@ -66,7 +66,7 @@
       "interimDisposition": "HH:MM-only AOD candidate invalid; retained as interim failed evidence; author acknowledged restoration to HH:MM:SS"
     },
     "aodContent": "Centered large time, localized date + weekday, countdown and battery; supersedes historical date-free AOD",
-    "stage": "Author apply+selfverify and fresh independent menu verify complete; root merging/publishing0.1.6",
+    "stage": "Owner reopened readability/colors/larger-screen/update-recovery; unsubmitted0.1.6 on hold",
     "latestEvidence": {
       "baselinePixelRed": "tests.test_ux016_pixels, original5failures; corrected/extended baseline6RED+lit-budgetPASS retained",
       "httpContract": "baseline0.1.4+saved application/json RED;0.1.5 text/plain GREEN; not phone reproduction",
