@@ -1,0 +1,81 @@
+{
+  "status": "partial",
+  "proofBoundary": "Unmodified signed IQ FR165 Music member exercised in Garmin SDK simulator after one manual temporal event; physical watch, phone delivery and on-watch settings navigation remain unobserved.",
+  "iqSha256": "efeb2b4fb0edaba4b0a9a1714e429aef4c5e1cfe6cbb9b7e6f5147da054dc079",
+  "member": "006-B4433-00/SpaceFox.prg",
+  "memberSha256": "9c26a112621dcb8caba4291b563f134820e38cec22db08508a04e98cbba33992",
+  "activePngSha256": "8bc94723e5e6bfb1a470a1482c11e51a55fc4b438ecba68a6ec580561e3aa26c",
+  "aodPngSha256": "7ef9d000411c4cda1757f13ee163d61af42968315eb7d125601379877502ff89",
+  "measurements": {
+    "activeClock": {
+      "bbox": [
+        83,
+        130,
+        309,
+        201
+      ],
+      "height": 72
+    },
+    "activeCountdown": {
+      "bbox": [
+        99,
+        210,
+        289,
+        237
+      ],
+      "height": 28
+    },
+    "activeField": {
+      "bbox": [
+        292,
+        249,
+        331,
+        281
+      ],
+      "height": 33
+    },
+    "aodDate": {
+      "bbox": [
+        132,
+        106,
+        252,
+        127
+      ],
+      "height": 22
+    },
+    "aodCountdown": {
+      "bbox": [
+        118,
+        255,
+        268,
+        276
+      ],
+      "height": 22
+    },
+    "aodBattery": {
+      "bbox": [
+        169,
+        288,
+        220,
+        309
+      ],
+      "height": 22
+    }
+  },
+  "aodClockBbox": [
+    67,
+    154,
+    322,
+    240
+  ],
+  "aodClockCenter": [
+    194.5,
+    197.0
+  ],
+  "litPixels": 6841,
+  "litPixelLimit": 11945,
+  "visualObservation": "Actual full Vulcan artwork, matching point, ULA, mission and site after SDK temporal event; LOW shows localized date, seconds-bearing countdown and system battery.",
+  "nativeSettings": "Simulator menu controls disabled; compiled program contains SpaceFox 0.1.6. Settings screen in unmodified program not directly observed.",
+  "productionStateRestoration": "Six pre-test task-owned files restored by hash; SDK event null before and after; global sys.nfm not overwritten.",
+  "pixelAndSceneStatus": "passed"
+}

@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "worktree": "/Users/jekamas/projects/SpaceFox-worktrees/verify-first-install-incident-20261114",
-  "candidateSource": "18305ba295fc6e7895e1c0c30bea619bb96872d2",
-  "independentEvidenceHead": "af675a409f511fa1719a08f8b4259cf42d7f3aef",
+  "candidateSource": "a62f947b32bd208239de10d95ebb8a7041a7b3b5",
+  "independentEvidenceHead": "5dc33475",
   "publicImplementationHead": "b47b71bc5169c908908de13e77417df9f2af3c1e",
-  "softwareGroup": "GREEN and closed after fresh independent verify and root judgment",
+  "softwareGroup": "UX01 selected source/SDK behavior verified; physical/system integration remains open",
   "incident014Source": "3b95dee18cb56d704970aa1e330cd93030193ffc",
   "incident014Evidence": "first-install-incident/ROOT-JUDGMENT.md",
   "phone015ChangedNativeFiles": [
@@ -24,7 +24,7 @@
   "phone015Independent": "phone-mime-readability-015/INDEPENDENT-RESULT.md",
   "phone015SourceBoundProof": "phone-mime-readability-015/phone-delta.json",
   "hostedRollout": "phone-mime-readability-015/PUBLICATION.md",
-  "dateAndOnWatchSettings289dIncluded": false,
+  "dateAndOnWatchSettings289dIncluded": "Reviewed date/menu behavior ported/adapted; active+LOWdate/weekday and on-watch settings included. Not a merge of private ancestry.",
   "organizationProducerFieldIncluded": false,
   "simulator": {
     "lease": "released",
@@ -43,10 +43,59 @@
     "store": "submitted Verified; visible0.1.5/Internal4; FR165Music installation queued"
   },
   "openBoundaries": [
-    "physical paired-phone FR165Music Feed -400 repair readback",
-    "actual installed version",
-    "public Store approval",
-    "Store screenshot service ResourceNotFound"
+    "actual physical installed foreground/backgroundversion and phone-400readback",
+    "signed watchface system settingsentry onphysicaldevice",
+    "physical sleep/fieldsettings acceptance",
+    "Store submission/approval/delivery for0.1.6",
+    "priorGarminpreviewResourceNotFound"
   ],
-  "coordination": "Integrate reviewed public-only commits/hunks; preserve unrelated dirty work. Private authoring ancestry must not be pushed. Keep other producer deltas separate and do not activate unsupported fields. Existing valid greens retain original source/proof boundaries."
+  "coordination": "Integrate reviewed public-only commits/hunks; preserve unrelated dirty work. Private authoring ancestry must not be pushed. Keep other producer deltas separate and do not activate unsupported fields. Existing valid greens retain original source/proof boundaries.",
+  "activeFollowUp": {
+    "group": "UX01",
+    "owner": "verify_fix_ux016",
+    "worktree": "/Users/jekamas/projects/SpaceFox-worktrees/verify-fix-ux016-20261114",
+    "base": "bad44087",
+    "scope": "settings/render/AOD/last-accepted-cache native lifecycle plus reproducible baseline RED; no producer changes",
+    "simulatorLease": "RELEASED by UX01. Explicit short lease granted to apply-watch-refresh-cache-whole-20261114 for its fresh-UUID parser/cache batch; no productionUUID/global reset/UX01 state writes. Release after batch.",
+    "warning": "Do not independently reimplement native3.2 while this group applies; integration handoff will follow fresh independent GREEN.",
+    "countdownContract": {
+      "active": "T- HH:MM:SS / T+ HH:MM:SS, accumulating hours and seconds",
+      "aod": "SAME HH:MM:SS seconds-bearing snapshot on permitted minute update;87pxclock/22pxcontext, no1Hzpromise",
+      "clock": "24-hour HH:MM",
+      "provenance": "Persistent explicit human one-format countdown-to-seconds requirement and existing watchface spec line151; root corrected initial compact HH:MM AOD assumption before final evidence",
+      "interimDisposition": "HH:MM-only AOD candidate invalid; retained as interim failed evidence; author acknowledged restoration to HH:MM:SS"
+    },
+    "aodContent": "Centered large time, localized date + weekday, countdown and battery; supersedes historical date-free AOD",
+    "stage": "Author apply+selfverify and fresh independent menu verify complete; root merging/publishing0.1.6",
+    "latestEvidence": {
+      "baselinePixelRed": "tests.test_ux016_pixels, original5failures; corrected/extended baseline6RED+lit-budgetPASS retained",
+      "httpContract": "baseline0.1.4+saved application/json RED;0.1.5 text/plain GREEN; not phone reproduction",
+      "settings": "0.1.5 actual Properties/callback/render/no-data/maintenance/restart PASS including Field4=5=battery; physical report remains unresolved",
+      "actualExport015": "unmodified signed FR165M PRG from uploadedIQ executed inSDK and loaded actual hosted full launch/point via.txt",
+      "cache": "actual native clearForRestore baseline loses context: RED; same accepted launch/target/bitmap retained after controlled realHTTP404 in final source, BGbuild0.1.6 observed",
+      "aod": "selected largerclock87px, centeredwithin2px, supplementary22px,6462litpixels; LOWminuteupdates/wake observed, protectionON/burninNO; finalsourceproof/admission still pending",
+      "active": "clock72px,countdown28px,field33px; accepted scene+point; reviewedactive date row restored",
+      "simulatorIncident": "Production task-owned cache changed without promised full snapshot; original threefiles not established restored. Failure/harness/cleanup evidence required in finalhandoff."
+    },
+    "remainingAuthorWork": "none; root-owned publication and physical readback pending",
+    "source": "a62f947b32bd208239de10d95ebb8a7041a7b3b5",
+    "settingsEvidenceCorrection": "Author earlier navigation claim retracted. New peer actually navigated production Menu2/delegates in source-bound watch-app host, selected Field4Battery/Lavender, restarted and renderedpersistedchoice. Signed watchface system entry remains unobserved.",
+    "candidate": {
+      "version": "0.1.6",
+      "iqSha256": "efeb2b4fb0edaba4b0a9a1714e429aef4c5e1cfe6cbb9b7e6f5147da054dc079",
+      "path": "/Users/jekamas/.codex/tmp/spacefox-phone-016-production-20261114/SpaceFox.iq",
+      "actualSignedRuntime": "ux01-016/signed-runtime/runtime-observation.json"
+    },
+    "independentMenuEvidence": "ux01-016/independent-menu"
+  },
+  "latestPhysicalReport": {
+    "source": "owner reply after 0.1.5 queue",
+    "versionReported": "0.1.2",
+    "feedCode": -400,
+    "launchPoint": false,
+    "countdown": false,
+    "deliveryStatus": "RED: queued or Store preview version did not establish updated runtime",
+    "phoneAccounts": "Owner confirmed Garmin Connect and Connect IQ both use current publisher account; mismatch excluded by owner report"
+  },
+  "settingsSchemaAudit": "/Users/jekamas/.codex/tmp/spacefox-ux016-root-20261114/settings-schema-comparison.json: actual0.1.2/014/015 FR165M settings.json identical, Battery=5"
 }
