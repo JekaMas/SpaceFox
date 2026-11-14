@@ -60,7 +60,11 @@ def source_state(root: Path) -> dict:
     # inputs. Its retained raw pages are replayed locally, never fetched here.
     catalog = json.loads((root / "locales/catalog.json").read_text())
     proof = catalog["supportPolicy"]["softwareQualificationProof"]
-    admission = {"locales/catalog.json", "release/native-admission-inputs.json"}
+    admission = {"locales/catalog.json", "release/native-admission-inputs.json",
+                 # The historical site-flag observer imports these test modules
+                 # while reconstructing the generator used by its proof.
+                 "tests/__init__.py", "tests/test_basic_launch_logic.py",
+                 "tests/test_basic_time_fields.py"}
     # The retained delta validators reconstruct historical source trees. Their
     # exact proof inputs must travel with a release and isolated qualification.
     additional = json.loads((root / "release/native-admission-inputs.json").read_text())

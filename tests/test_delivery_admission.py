@@ -45,6 +45,7 @@ class DeliveryAdmission(unittest.TestCase):
         required |= {display_path, display['priorCatalog']['path']} | set(display['inputs'])
         required |= {item['path'] for item in display['priorSnapshots'].values()}
         required |= {item['path'] for item in display['evidence'].values()}
+        required |= {'tests/__init__.py', 'tests/test_basic_launch_logic.py', 'tests/test_basic_time_fields.py'}
         for name, snapshot in display['priorSnapshots'].items():
             if name in required and not (ROOT/name).is_file():
                 required.remove(name)

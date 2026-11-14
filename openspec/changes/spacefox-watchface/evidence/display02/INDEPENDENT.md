@@ -18,3 +18,12 @@ and drift tests passed. Current test-key evidence does not prove production-sign
 runtime or physical watch behavior. LOW seconds remain a minute-rate snapshot.
 
 The first strict candidate export failed closed: `production update requires the committed latest release receipt/package`. The identity record still named 0.1.8 despite the actual published 0.1.9 receipt and package. It now names the verified 0.1.9 predecessor; no admission bypass was used.
+
+The first signed export at cdbc16e5 produced an IQ and passed signature checks,
+but independent replay from its copied input snapshot failed with `ImportError`
+for `tests.test_basic_launch_logic`. This exposed three historical site-flag
+observer import dependencies missing from the inventory. The candidate is
+quarantined. Adding the three exact tracked dependencies to a disposable copy of
+its snapshot made the full five-language admission replay pass; the production
+inventory now explicitly includes them. Focused current admission/drift checks
+remain 9/9 PASS. This changes packaging inputs, not native behavior.
