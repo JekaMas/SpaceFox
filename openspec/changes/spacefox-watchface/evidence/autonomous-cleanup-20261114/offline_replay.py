@@ -22,14 +22,14 @@ EXPECTED = '1eba6cbad4de4ed99e7d7f8ec07fd5bec11c85d3'
 CODE = '5d679795d470b2db25cdee744793fe94d6e2e393'
 JOURNAL_SHA = '11ed4c3d67676ab6c73eeed0214e676354adfe0708491a09d09b3a3e91bd46eb'
 
-def guard(doc, value, raw):
+def guard(doc, value, raw, *, writer_terminal):
     if (doc['pending'] is not None or value['status'] != 'succeed'
         or value['intent']['generation'] != doc['active']['generation']
         or value['intent']['artifactRevision'] != doc['active']['artifact_revision']
         or hashlib.sha256(raw).hexdigest() != JOURNAL_SHA):
         raise ValueError('retirement preconditions not met')
-    if any(r['outcome'] == 'reserved' for r in doc['requests']):
-        raise ValueError('unsettled provider reservation')
+    if not writer_terminal:
+        raise ValueError('state writer may still be active')
 
 class NoNetwork:
     def get(self, url):
@@ -65,15 +65,15 @@ with tempfile.TemporaryDirectory(prefix='spacefox-cleanup-offline-') as temp:
         except CloudError as error:
             assert 'invalid complete durable product closure' in str(error)
         else: raise AssertionError('old journal unexpectedly valid in normal runtime')
-        try: guard(before, value, raw)
-        except ValueError as error: assert str(error) == 'unsettled provider reservation'
-        else: raise AssertionError('reserved request was accepted')
-        settled = copy.deepcopy(before)
-        settled['requests'] = [dict(r, outcome='success') if r['outcome'] == 'reserved' else r for r in settled['requests']]
-        guard(settled, value, raw)
-        pending = copy.deepcopy(settled)
+        try: guard(before, value, raw, writer_terminal=False)
+        except ValueError as error: assert str(error) == 'state writer may still be active'
+        else: raise AssertionError('active writer was accepted')
+        # This is a simulated terminal observation; it does not establish live
+        # finality. The actual reserved quota entry remains byte-for-byte intact.
+        guard(before, value, raw, writer_terminal=True)
+        pending = copy.deepcopy(before)
         pending['pending'] = pending['active']
-        try: guard(pending, value, raw)
+        try: guard(pending, value, raw, writer_terminal=True)
         except ValueError: pass
         else: raise AssertionError('pending retirement accepted')
         # Simulated local-only deletion despite the observed reservation: this
@@ -118,7 +118,7 @@ with tempfile.TemporaryDirectory(prefix='spacefox-cleanup-offline-') as temp:
         reopened = Publisher(store, CODE)
         assert reopened.ledger == after
         print(json.dumps({'snapshot':EXPECTED,'journal_sha256':JOURNAL_SHA,
-            'normal_old_journal':'refused','guard_reserved':'refused','guard_pending':'refused',
+            'normal_old_journal':'refused','guard_live_writer':'refused','guard_pending':'refused',
             'local_fast_forward':'passed','stale_sibling_push':'refused',
             'ledger_preserved':'passed','normal_reopen_reconcile':'passed',
             'not_due':'passed','transport_calls':client.requests_started,
