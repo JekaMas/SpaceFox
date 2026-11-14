@@ -2,14 +2,23 @@ import Toybox.Time;
 import Toybox.Lang;
 import Toybox.WatchUi;
 import Toybox.System;
+import Toybox.Background;
 (:extendedCode, :typecheck(false))
 module NativeForegroundApp {
     function initial(app) as [WatchUi.WatchFace] {
         app.view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));
-        app.view.setSettings(new SceneSettings(null).load());var selected=new NativeCache(configuredFeedUrl(),null);app.feed=selected;var now=Time.now().value().toLong();selected.load(now);display(app,selected);app.view.pendingLoader=app.method(:reloadFeed);app.view.syncDisplayMode(System.getDisplayMode());NativeMetrics.sample("foreground-initial-complete");return [app.view as WatchUi.WatchFace];
+        app.view.setSettings(new SceneSettings(null).load());var selected=new NativeCache(configuredFeedUrl(),null);app.feed=selected;var now=Time.now().value().toLong();selected.load(now);display(app,selected);app.view.pendingLoader=app.method(:reloadFeed);app.view.statusLoader=app.method(:refreshSyncStatus);app.view.syncDisplayMode(System.getDisplayMode());NativeMetrics.sample("foreground-initial-complete");return [app.view as WatchUi.WatchFace];
     }
     function display(app,cache){
         if(app.view==null){return;}if(cache.packet==null||cache.packet.document.hasKey("dictionaries")||app.view.context!=cache.packet.presentation){app.view.setPacket(cache.packet);}if(cache.packet!=null){app.view.setAssetCache(new NativeRenderSource(cache.store,cache.base));}
+        // Background uses this compact source-bound result rather than treating
+        // an unvalidated commit marker as an accepted schedule.
+        try{var accepted=cache.packet!=null;var prior=cache.store.read("sf.transfer.ready");if(!(prior instanceof Dictionary)||!(prior["base"] instanceof String)||!prior["base"].equals(cache.base)||prior["accepted"]!=accepted){cache.store.write("sf.transfer.ready",{"base"=>cache.base,"accepted"=>accepted});}}catch(e){}
+        status(app,cache);
+    }
+    function status(app,cache){
+        var result="waiting";var detail="";if(cache.base.equals("")){result="url";}else{try{var value=cache.store.read("sf.sync.status");if(value instanceof Dictionary&&value["base"] instanceof String&&value["base"].equals(cache.base)&&value["stage"] instanceof String){var stage=value["stage"];if(stage.equals("failed")||stage.equals("feedFailed")||stage.equals("assetFailed")||stage.equals("received")||stage.equals("requesting")||stage.equals("assets")){result=stage;if((stage.equals("feedFailed")||stage.equals("assetFailed"))&&(value["code"] instanceof Number)){detail=(stage.equals("feedFailed")?"Feed: ":"Assets: ")+value["code"]; }if((stage.equals("requesting")||stage.equals("assets"))&&(value["utc"] instanceof Number||value["utc"] instanceof Long)&&Time.now().value().toLong()-value["utc"]>60){result="incomplete";detail=stage.equals("assets")?"Assets":"Feed";}}}else if(Background.getTemporalEventRegisteredTime()==null){result="unscheduled";}if(result.equals("received")||result.equals("assets")){var admission=cache.store.read("sf.sync.admission");if(admission instanceof Dictionary&&admission["base"] instanceof String&&admission["base"].equals(cache.base)&&admission["reason"] instanceof String){detail="Admission: "+admission["reason"];}}}catch(e){}}
+        app.view.setSyncStatus(result,detail);
     }
     function savePlan(cache,p){
         var next=[p["normal_interval_seconds"],p["near_interval_seconds"],p["fast_interval_seconds"]];var old=cache.store.read("sf.transfer.plan");if(old instanceof Dictionary&&old["base"] instanceof String&&old["base"].equals(cache.base)&&old["target"]==cache.packet.target()&&old["policy"] instanceof Array&&old["policy"].size()==3&&old["policy"][0]==next[0]&&old["policy"][1]==next[1]&&old["policy"][2]==next[2]){return;}cache.store.write("sf.transfer.plan",{"base"=>cache.base,"target"=>cache.packet.target(),"policy"=>next});
@@ -21,7 +30,7 @@ module NativeForegroundApp {
         selected.restoreAccepted(now,app.restoreSeal);app.restoreSeal=null;display(app,selected);app.view.prepareRenderer();
         if(System.getDisplayMode()==System.DISPLAY_MODE_HIGH_POWER){app.view.prepareVisual();}
         NativeMetrics.writes("foreground-restore-total",selected.store.writes-before);NativeMetrics.sample("foreground-restore-complete");
-        var transfer=new NativeTransfer(selected.base,selected.store);transfer.load();armFeed(transfer,now);
+        var transfer=new NativeTransfer(selected.base,selected.store);transfer.load();armFeed(transfer,now);status(app,selected);
     }
     function reload(app){
         if(app.view!=null&&(app.view.sfrBuild!=null||app.view.sfrRequested)){app.view.cancelSfrBuild();}
@@ -49,6 +58,6 @@ module NativeForegroundApp {
         NativeMetrics.sample("foreground-before-view");display(app,selected);
         }finally{if(rebuild&&!deferred){app.view.prepareRenderer();NativeMetrics.sample("foreground-renderer-restored");}}
         if(app.view!=null&&System.getDisplayMode()==System.DISPLAY_MODE_HIGH_POWER){app.view.prepareVisual();}
-        NativeMetrics.writes("foreground-reload-total",selected.store.writes-before);var transfer=new NativeTransfer(selected.base,selected.store);transfer.load();armFeed(transfer,now);
+        NativeMetrics.writes("foreground-reload-total",selected.store.writes-before);var transfer=new NativeTransfer(selected.base,selected.store);transfer.load();armFeed(transfer,now);status(app,selected);
     }
 }

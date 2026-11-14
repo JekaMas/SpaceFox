@@ -249,3 +249,52 @@ reopen proven. Source/signingkey/localMac/agentarenot runtime dependencies.
 PhysicalMacshutdown/phone/watch/battery/Store notclaimed; GarminreleaseDEFERRED.
 No ongoingper-updatepolling. SDKleaseFREE; no liveagentafterthisunitclosure.
 Remainingbroaderimplementationgoal staysACTIVE; nextgroupnamedabove.
+
+## First-install incident — 2026-11-14, in progress
+
+Public-only branch `apply/first-install-scene-20261114`, based on public
+`a436f980`; no private branch or integration-tree source was transferred. The
+physical FR165 Music remains blank after waiting, and its configured URL was
+reported correct. The physical cause is **not established**. An earlier native
+renderer inspection found that absent launch context loaded neither map nor
+rocket. The original transfer also waited until the optional batch completed or
+the service ended before notifying foreground, and an interrupted first attempt
+could leave an hourly registration. Candidate changes and scenarios are in the
+existing task and specs; all completion gates remain open.
+
+Pinned SDK 9.3/API 5.2 FR165 Music, external test key only: a real fresh-UUID
+first startup fetched the public schema-3 feed and catalog and displayed Vulcan
+VC6L/ULA, countdown and Cape Canaveral before optional artwork. An offline fresh
+run reported `Feed: -104` and showed the neutral map and unmarked rocket with no
+invented location or target. A manual permitted-event simulation after restoring
+connectivity downloaded the actual public raster closure and activated matching
+art; this does not prove automatic event delivery or a physical fix. One
+cached sleep/wake observation restored the full scene. Battery centering was
+checked against `prototype/countdown-status/countdown-status.js` and retained;
+the initial provisional right-shift screenshots are superseded.
+
+Original failed wrapper compile is retained: source-bound locale/device proof
+rejects changed `SceneRenderer.mc`. Test-only SDK compilation does not replace
+production admission. The first test-only manifest error and local-variable
+type compilation error remain in `/tmp/spacefox-first-install-incident/`; the
+corrected narrow native default/blank/retry test passed 1/1 with SDK launcher
+exit 1 and complete framework PASS table. `/tmp/spacefox-first-install-incident/`
+contains source hashes, raw logs, simulator images and the simulator hang
+sample; these local paths are not publication or hardware evidence. One
+fresh, isolated automatic continuation registered `1794645389`, ran at that
+event, and activated the complete matching SFR1M scene at `1794645396`; there
+was no manual event or clock warp in that run. EN/RU selected and offline
+screens were observed, and the focused unit passed with unchanged transport owners.
+The first Russian artwork-failure line clipped its callback code; it was
+shortened and the affected EN/RU branches were observed again with the entire
+`-104` visible. The unchanged normal/offline and automatic delivery receipts
+retain their original source and behavioral boundaries. The first admission
+attempt failed on an incorrect helper keyword; after correction the retained
+source-bound locale/device admission replayed successfully for its original
+five-language boundary, with EN/RU incident evidence separately bound. Strict
+OpenSpec validation also passes. The beta wrapper checked the retained 0.1.3
+receipt and matching IQ as a same-identity higher-version predecessor. Local
+signed update candidates, independent verification and real-device readback remain open.
+All nine task-owned simulator event registrations were cleared; no other app
+files were removed. Shared simulator `sys.nfm` and `CIQ_LOG.YML` changed during
+the observations, with all 308 pre-existing files still present.

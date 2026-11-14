@@ -13,6 +13,8 @@ class SceneRenderer {
     var pin as Boolean = false;
     var fullContext as SceneContext or Null;
     var downloaded as NativeVisualRenderer or Null=null;
+    var syncStatus as String="waiting";
+    var syncDetail as String="";
     var resourceLoads as Number = 0;
     (:extendedCode)
     function initialize(owner as LocalePresentation or Null) {
@@ -36,18 +38,22 @@ class SceneRenderer {
     (:extendedCode)
     function prepare(context as SceneContext or Null, settings as SceneSettings) as Void {
         presentation.prepare(settings.language);fonts["label"]=presentation.label as Graphics.FontType;fonts["small"]=presentation.small as Graphics.FontType;fonts["count"]=presentation.count as Graphics.FontType;
+        // The bundled view is geographical backdrop only: no location marker is
+        // shown unless the selected launch supplies a qualified matching point.
         fullContext = context; model = null; art = null; map = null; pin = false;
-        if (context == null) { return; }
+        var mapResource=Rez.Drawables.MapView0;
+        if (context == null) { map=load(mapResource) as Graphics.BitmapType; art = load(Rez.Drawables.Art_unknown) as Graphics.BitmapType; return; }
         var id = NativeAssets.models.hasKey(context.modelId) ? context.modelId : "generic";
-        model = NativeAssets.models[id] as NativeModel; art = load((model as NativeModel).resource) as Graphics.BitmapType;
+        model = NativeAssets.models[id] as NativeModel; art = load(id.equals("generic") ? Rez.Drawables.Art_unknown : (model as NativeModel).resource) as Graphics.BitmapType;
         if (context.point != null) {
             for (var i = 0; i < NativeAssets.maps.size(); i += 1) {
                 var view = NativeAssets.maps[i];
                 if ((context.point as Array<Numeric>)[0] == view.longitude && (context.point as Array<Numeric>)[1] == view.latitude) {
-                    map = load(view.resource) as Graphics.BitmapType; pin = true; break;
+                    mapResource=view.resource; pin = true; break;
                 }
             }
         }
+        map=load(mapResource) as Graphics.BitmapType;
     }
     function fit(dc as Graphics.Dc, text as String, font as Graphics.FontType, width as Number) as String {
         return presentation.fit(dc,text,font,width);
@@ -97,6 +103,10 @@ class SceneRenderer {
             if(gap>0){text(dc,left+rocketWidth+8,47,fonts["nameSmall"] as Graphics.FontType,"·",0x96B8C9,16,1);}
             text(dc,left+rocketWidth+gap+operatorWidth/2,47,fonts["nameSmall"] as Graphics.FontType,operatorTitle,0xD4DFEB,238,1);
             text(dc,195,70,(fonts["small"] as Graphics.FontType),purposeText,0xD4DFEB,282,1);
+            // Optional art can fail after schedule admission. Expose the bounded
+            // reason until the matching visual is ready, without changing the
+            // selected mission or the independent countdown status colors.
+            if(downloaded==null&&(syncStatus.equals("assetFailed")||syncStatus.equals("incomplete")&&syncDetail.equals("Assets"))){text(dc,195,95,(fonts["small"] as Graphics.FontType),presentation.assetStatus(syncStatus,syncDetail),0xD4DFEB,282,1);}
             var ascent = progress > 0 && progress < 1 ? (progress * 9).toNumber() : 0;
             if(downloaded!=null&&downloaded.bitmap!=null){downloaded.draw(dc,progress,ascent);}else{dc.drawBitmap(22,118-ascent,art as Graphics.BitmapType);}
             // Flags and operator marks are never attached to the rocket.
@@ -112,6 +122,11 @@ class SceneRenderer {
             var footerLeft=195-(footerWidth+flagWidth)/2;
             if(flag!=null){dc.drawBitmap(footerLeft,325,flag as Graphics.BitmapType);}
             text(dc,footerLeft+flagWidth+footerWidth/2,319,footerFont,footer,0xD4DFEB,footerBudget,1);
+        }
+        if(context==null){
+            text(dc,195,50,fonts["small"] as Graphics.FontType,presentation.syncStatus(syncStatus),0xD4DFEB,282,1);
+            if(!syncDetail.equals("")){text(dc,195,75,fonts["small"] as Graphics.FontType,syncDetail,0xAFC3CE,282,1);}
+            if(art!=null){dc.drawBitmap(22,118,art as Graphics.BitmapType);}
         }
         dc.setColor(0xB2C3CE,Graphics.COLOR_TRANSPARENT); dc.drawRectangle(173,27,13,8); dc.drawLine(187,29,187,33);
         text(dc,207,24,(fonts["battery"] as Graphics.FontType),fitness.display(values,"battery"),0xB2C3CE,65,1);

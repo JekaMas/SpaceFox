@@ -24,7 +24,7 @@ def beta_manifest(root, lock):
     release.require(config == CONFIG, 'beta configuration changed during build')
     release.require(list(lock['profiles']) == PRODUCTS, 'beta product cohort changed')
     app = tree.getroot().find('iq:application', release.NS)
-    release.require(app.get('id') == lock['official_uuid'] and app.get('version') == '0.1.2', 'unexpected production baseline')
+    release.require(app.get('id') == lock['official_uuid'] and app.get('version') == '0.1.4', 'unexpected production baseline')
     app.set('version', CONFIG['version'])
     return tree
 
@@ -34,7 +34,7 @@ def beta_policy(root, mode, lock, control):
     config = json.loads((root / 'release/private-beta.json').read_text())
     release.require(config == CONFIG and config['purpose'] == 'owner-private-beta', 'beta config changed')
     release.require(re.fullmatch(r'[0-9a-f]{32}', config['application_uuid']) is not None and config['application_uuid'] not in (lock['official_uuid'], lock['development_uuid'], lock['test_uuid']), 'invalid beta UUID')
-    release.require(config['version'] == '0.1.3' and config['store_title'] == 'SpaceFox Beta', 'unexpected beta release')
+    release.require(config['version'] == '0.1.4' and config['store_title'] == 'SpaceFox Beta', 'unexpected beta release')
     return {'application_uuid': config['application_uuid'], 'entry': production['entry'], 'public_key_spki_sha256': production['public_key_spki_sha256']}
 
 CONFIG = json.loads((ROOT / 'release/private-beta.json').read_text())
@@ -43,10 +43,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--key', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--previous', type=Path, required=True, help='retained 0.1.3 beta receipt and matching IQ')
     args = parser.parse_args()
     release.validate_manifest = beta_manifest
     release.identity_policy = beta_policy
-    result = release.build_release(args.output, key=args.key, root=ROOT, mode='qualification')
+    result = release.build_release(args.output, key=args.key, root=ROOT, mode='qualification', previous=args.previous)
     result['mode'] = 'private_beta'
     result['store_title'] = CONFIG['store_title']
     result['handoff']['document'] = 'inputs/release/PRIVATE-BETA.md'

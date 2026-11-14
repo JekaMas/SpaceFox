@@ -23,6 +23,7 @@
 
 - [ ] 3.1 Implement `tools/update_feed.py`, its accepted state, bounded feed and refresh-policy metadata using a qualified LL2 query; verify 60/15-minute due checks and optional fast mode, earlier/cancelled/omitted identities, missing context, uncertain UTC, malformed/regressing data, unchanged validation, quota and 429; document the exact contract.
 - [ ] 3.2 Implement `FeedBaseUrl`, adaptive polling/cache, clock-derived local countdown and reschedule flags; verify two-hour offline sleep/wake without timer drift or network-on-redraw, exact window boundaries/return to hourly, old 200/304, per-record age and stale latch on window exit, +20-minute/unknown updates, restart, invalid feed and zero without confirmation.
+  First-install incident remains open: missing/null property default, explicit blank disable, five-minute cold retry armed before request, durable bounded diagnostics, and schedule-first/catalog promotion are under focused FR165 Music verification. Physical acquisition cause is not established; record the actual SDK and subsequent device observations in PROGRESS.md.
   BASIC reschedule software property LS10.P1 independently verified 4/4 current cases
   through1 command, with actual four-native parser/metadata/view/countdown assertions;
   [report](evidence/basic-reschedule-whole/FINAL.md). Existing MIN comparison was

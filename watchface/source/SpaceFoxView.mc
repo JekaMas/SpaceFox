@@ -27,7 +27,10 @@ class SpaceFoxView extends WatchUi.WatchFace {
     var sfrBuild as NativeSfrBuild or Null=null;var sfrTimer as Timer.Timer or Null=null;
     var sfrRequested as Boolean=false;var visualMaintenance as Boolean=false;var fallbackPainted as Boolean=false;
     var pendingLoader as Method or Null=null;
+    var statusLoader as Method or Null=null;
     var renderer as SceneRenderer or Null;
+    var syncStatus as String="waiting";
+    var syncDetail as String="";
     var fitness as Fitness;
     var values as Dictionary<String, Number or Null>;
     var animationProgress as Float = 0.0;
@@ -76,7 +79,8 @@ class SpaceFoxView extends WatchUi.WatchFace {
     function canForegroundWork() as Boolean {return _shown&&_active;}
     (:typecheck(false))
     function clearForRestore() as Void {var schedule=_schedule;var stale=packet!=null?packet.stale:(context!=null&&context.stale);var rescheduled=packet!=null?packet.rescheduled:(context!=null&&context.rescheduled);setPacket(null);_schedule=schedule;restoreStatus=true;restoreStale=stale;restoreRescheduled=rescheduled;visualMaintenance=true;releaseRenderer();}
-    function prepareRenderer() as Void { maintenanceIcons=null;maintenanceTimeFont=null;maintenanceCountFont=null;maintenanceMetricFont=null;renderer=new SceneRenderer(presentation);renderer.prepare(context,settings);maintenanceAodFont=(renderer as SceneRenderer).fonts["aod"];(renderer as SceneRenderer).downloaded=downloaded; }
+    function setSyncStatus(value as String,detail as String) as Void {syncStatus=value;syncDetail=detail;if(renderer!=null){renderer.syncStatus=value;renderer.syncDetail=detail;}}
+    function prepareRenderer() as Void { maintenanceIcons=null;maintenanceTimeFont=null;maintenanceCountFont=null;maintenanceMetricFont=null;renderer=new SceneRenderer(presentation);renderer.prepare(context,settings);maintenanceAodFont=(renderer as SceneRenderer).fonts["aod"];(renderer as SceneRenderer).downloaded=downloaded;(renderer as SceneRenderer).syncStatus=syncStatus;(renderer as SceneRenderer).syncDetail=syncDetail; }
     function releaseRenderer() as Void {stopAnimation();if(renderer!=null){maintenanceIcons=renderer.icons;}renderer=null;}
     function onLayout(dc as Graphics.Dc) as Void {prepareRenderer();}
     function utcMinute(now as Number or Long) as Long {
@@ -118,6 +122,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     function onEnterSleep() as Void {if(NativeMetrics.enabled){System.println("NATIVE_LIFECYCLE sleep bitmap="+(downloaded!=null)+" decoding="+(sfrBuild!=null)+" ms="+System.getTimer()+" owner="+NativeMetrics.ownerTag);}_active=false;stopAnimation();cancelSfrBuild();stopFitness();aodMinute=null;WatchUi.requestUpdate();}
     function onExitSleep() as Void {
         refreshLocale();
+        if(downloaded==null&&statusLoader!=null){statusLoader.invoke();}
         if(NativeMetrics.enabled){System.println("NATIVE_LIFECYCLE wake bitmap="+(downloaded!=null)+" decoding="+(sfrBuild!=null)+" ms="+System.getTimer()+" owner="+NativeMetrics.ownerTag);}_active=true;aodMinute=null;metricsMinute=null;refreshFitness();prepareVisual();
         if(_shown&&context!=null){var duration=downloaded==null?2.5:((downloaded as NativeVisualRenderer).duration() as Float);animationRunning=true;WatchUi.animate(self,:animationProgress,WatchUi.ANIM_TYPE_LINEAR,0.0,1.0,duration,method(:animationDone));}
         WatchUi.requestUpdate();

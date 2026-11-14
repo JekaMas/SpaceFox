@@ -14,6 +14,9 @@ class NativeTransfer {
         if(base.equals("")){return;}var attempt=store.read("sf.attempt");if(attempt instanceof Dictionary&&attempt["base"] instanceof String&&attempt["base"].equals(base)&&utc(attempt["utc"])){lastAttempt=attempt["utc"].toLong();}
     }
     function interval(now){
+        // A first-install failure must not defer the next attempt for an hour.
+        // Accepted content retains its existing feed-driven cadence.
+        var ready=store.read("sf.transfer.ready");if(!(ready instanceof Dictionary)||!(ready["base"] instanceof String)||!ready["base"].equals(base)||ready["accepted"]!=true){return 300;}
         var plan=store.read("sf.transfer.plan");if(!(plan instanceof Dictionary)||!(plan["base"] instanceof String)||!plan["base"].equals(base)){return 3600;}var p=plan["policy"];if(!(p instanceof Array)||p.size()!=3){return 3600;}for(var i=0;i<3;i+=1){if(p[i]!=null&&(!(p[i] instanceof Number||p[i] instanceof Long)||p[i]<300)){return 3600;}}if(p[0]==null||p[1]==null||p[1]>p[0]||p[2]!=null&&p[2]>p[1]){return 3600;}if(p[2]!=null){return p[2];}var target=plan["target"];return utc(target)&&now>=target-7200&&now<=target+1800?p[1]:p[0];
     }
     function due(now){return !base.equals("")&&(lastAttempt==null||now<lastAttempt||now-lastAttempt>=interval(now));}

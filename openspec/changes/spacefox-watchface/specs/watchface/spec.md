@@ -101,6 +101,16 @@ large configurable fields and separate watch battery. No globe or projection cho
 - **WHEN** the face is active
 - **THEN** the full-screen flat map is used without a black clock tile, the source point stays visible, and all accepted foreground values remain readable inside the circle
 
+#### Scenario: No accepted launch yet
+- **WHEN** the watch has no accepted launch data, including offline first use
+- **THEN** it displays an unmarked generic rocket and neutral map without a launch point, place, operator or invented target
+- **AND** the header identifies the current synchronization state, including a bounded background or admission failure detail when available
+- **AND** the separate battery remains centered at the top as in the selected prototype; four configurable fields remain available
+
+#### Scenario: Selected launch waiting on artwork after a failure
+- **WHEN** a validated launch is displayed with generic art and its matching asset transfer fails or is interrupted
+- **THEN** the launch metadata and independent stale/reschedule indicators remain intact while the header shows a compact bounded artwork failure detail until the selected visual is ready
+
 ### Requirement: Compact exceptional-state indicators
 
 The active home face SHALL omit a persistent update timestamp and service-status badges.

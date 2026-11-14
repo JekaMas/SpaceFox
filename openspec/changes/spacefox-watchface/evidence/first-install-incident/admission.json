@@ -1,0 +1,97 @@
+{
+  "scope": "first-install-scene-en-ru",
+  "status": "passed",
+  "priorCatalog": {
+    "path": "openspec/changes/spacefox-watchface/evidence/first-install-incident/prior/locales__catalog.json",
+    "sha256": "1dda675fe0b78c5f9193137df844724a5b6726912de8be73c37ee448a2cea5a6"
+  },
+  "priorSnapshots": {
+    "tools/build_native_resources.py": {
+      "path": "openspec/changes/spacefox-watchface/evidence/first-install-incident/prior/tools__build_native_resources.py",
+      "sha256": "38ab0e3f4cc9a9e4e151ae96e166321fe9de9e2d048fbd30539be6990f292ebd"
+    },
+    "tools/native_language_policy.py": {
+      "path": "openspec/changes/spacefox-watchface/evidence/first-install-incident/prior/tools__native_language_policy.py",
+      "sha256": "aa1ae3cb5bf67cee42267cdd9edcf8a25cda3906074fa3c7e5d31b1817e0ac64"
+    },
+    "watchface/manifest.xml": {
+      "path": "openspec/changes/spacefox-watchface/evidence/first-install-incident/prior/watchface__manifest.xml.gz",
+      "sha256": "85cf433f4a31818a275ab36f4a26e38e43f57c8bb14a5a1d27c7edb0b7ad03b5"
+    },
+    "watchface/resources/drawables/drawables.xml": {
+      "path": "openspec/changes/spacefox-watchface/evidence/first-install-incident/prior/watchface__resources__drawables__drawables.xml",
+      "sha256": "1491e299c4b0a37465b1a1b116e44fd485db11c0e4c95f18c2c606f93c49ee4d"
+    },
+    "watchface/resources/resource-build.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/first-install-incident/prior/watchface__resources__resource-build.json",
+      "sha256": "e3a9c1b6f4145730f03ae1997ee50566210f46faa72c94c18904232f19e236f2"
+    },
+    "watchface/source/FeedService.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/first-install-incident/prior/watchface__source__FeedService.mc.gz",
+      "sha256": "dfcc33edaca0bdba5bad4b0555bad87c1deb81703a0282c2b51336b1ef4c2e0e"
+    },
+    "watchface/source/LocalePresentation.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/first-install-incident/prior/watchface__source__LocalePresentation.mc",
+      "sha256": "17b40805db66e304689b07ef4708e886243e6895ed44a09c24a046256d5dd174"
+    },
+    "watchface/source/NativeCache.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/first-install-incident/prior/watchface__source__NativeCache.mc",
+      "sha256": "0cbd6852aa1dad19e9ebadcb4fd4f8b43138b9bbefaf21bfb3dd160270d21fcb"
+    },
+    "watchface/source/NativeForegroundApp.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/first-install-incident/prior/watchface__source__NativeForegroundApp.mc",
+      "sha256": "9a039b28753859df30bf973bb36d158a0a0ad15df444839afcd1bc3dc3410c40"
+    },
+    "watchface/source/NativeIncoming.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/first-install-incident/prior/watchface__source__NativeIncoming.mc",
+      "sha256": "539ba27c83398920565dfab2951ab019bf4eb1befe835f16daf3c7272f3e18d3"
+    },
+    "watchface/source/NativeTransfer.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/first-install-incident/prior/watchface__source__NativeTransfer.mc",
+      "sha256": "e75e70cdcc0d6f4982f05d4a89dd1ecbbf9995472b670ad89d975f4162741d70"
+    },
+    "watchface/source/SceneRenderer.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/first-install-incident/prior/watchface__source__SceneRenderer.mc",
+      "sha256": "2d5485a793859d61d8a99132c498949e4d97acf955dac84197ff3e0d45fc3dd6"
+    },
+    "watchface/source/SpaceFoxApp.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/first-install-incident/prior/watchface__source__SpaceFoxApp.mc",
+      "sha256": "9487597b184c6c50c8a7338c3fe92f8e20005e0ad5dcf2bc5c8b023ae867db2b"
+    },
+    "watchface/source/SpaceFoxView.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/first-install-incident/prior/watchface__source__SpaceFoxView.mc",
+      "sha256": "477bf29544597bfba53256e9258fff62dd48dcc008bafac551237ba104b0aaa5"
+    }
+  },
+  "sources": {
+    "tools/native_incident_requalification.py": "8fc7a8cfa4f2a0568959a79f158d32df00473587ff6868347db8732883c65e06",
+    "tools/native_language_policy.py": "b67f6cfbad62f611f37a274dbd4731d8bc74c4f4012848e11bda1fea39996ae9",
+    "watchface/incident-tests/FirstInstallTests.mc": "fd9566a364b092497640cfb06d7b1b964d307d8f9d96d5d2f2e28a1dba0476f2",
+    "watchface/resource-inputs/art-unknown.svg": "5b870dbbeda65e6643f05e09803659e213d7239e73093e9b5dfaa5e63dc5c2ee",
+    "watchface/resources/drawables/art_unknown.png": "6c4343b3fd2a54c0a897080677ea7188d22b61cf0cb5fed178e30aea14e02ac1",
+    "watchface/resources/drawables/drawables.xml": "e7b7c337d45cecd9feb3002a18ac3ecb6a2844a229e8a9a313f415c1f44040d5",
+    "watchface/source/FeedService.mc": "9de0dfff01f48e287937a507efb1e9a9a28a6dbc828937f4268da5404a831e07",
+    "watchface/source/LocalePresentation.mc": "5b82947f695a11ff77f6833cb58ddd56144c9207e1dbf72a8c3372fc45d7061f",
+    "watchface/source/NativeCache.mc": "df4fe63556691734e561ccdcb8e499c97cbe40504db35567c03168f8646b621d",
+    "watchface/source/NativeForegroundApp.mc": "97cfd235c33768b6b02a64ddf6373a4b76651b3a37b542da327a14a9f6c9a0e0",
+    "watchface/source/NativeIncoming.mc": "ce16926b98ccab287dbb3416893e40280826caf5196df6fcf446b8fcca1dc3b7",
+    "watchface/source/NativeTransfer.mc": "a09c6bffc11392b2ca5b2d41c8e8020401ccae169068917893cfcd26d0664b2c",
+    "watchface/source/SceneRenderer.mc": "3909386042c9489b5ba782639bde593a687672fed50d3472e7406439e0c1b4a0",
+    "watchface/source/SpaceFoxApp.mc": "3a0ef7fd9b7fa230ceb3d6c23919217a0eb21f35237411f2284f22e1bbf76e12",
+    "watchface/source/SpaceFoxView.mc": "7e3d3af389a675b4ef21ffe6d72dea2220239815a9cb66000c9cb7b424467f0b"
+  },
+  "evidence": {
+    "openspec/changes/spacefox-watchface/evidence/first-install-incident/asset-failure-en.png": "33fea1a5f3326e3907f11d25fdcfc9a50a297a1c216606f54846d88777564c81",
+    "openspec/changes/spacefox-watchface/evidence/first-install-incident/asset-failure-ru.png": "a47bd7a78e86bcaae7db18901081b5279e978fec94dc0e8b5ab88a8832eedebc",
+    "openspec/changes/spacefox-watchface/evidence/first-install-incident/build.json": "d7201df986f52ee9b0151dfcb4ad4f22806244f273cbee6459a8bd88a570fcf1",
+    "openspec/changes/spacefox-watchface/evidence/first-install-incident/isolate.log.gz": "3b71c6b332dff1944f7536504047cc58db9240b3a398b7c8a83011474c7ef51e",
+    "openspec/changes/spacefox-watchface/evidence/first-install-incident/observer.mc": "1e2a9be0870fcce661af8d7d6d322fcd11a6277c5f2146c7b357d988d9097505",
+    "openspec/changes/spacefox-watchface/evidence/first-install-incident/offline-en.png": "0663f8c5220964c0ff7e4de60a1b0594f37b121333d0b8fce23f691039193021",
+    "openspec/changes/spacefox-watchface/evidence/first-install-incident/offline-ru.png": "0b46776d0ff90651eb7ba85ab14ac49a1fbfb511f72a4bf8c17282007a2044bf",
+    "openspec/changes/spacefox-watchface/evidence/first-install-incident/selected-en.png": "ee60e41514c710e3ab8b0b1f81a258fab17ea4a7c151e982bab8b37c70aeaff3",
+    "openspec/changes/spacefox-watchface/evidence/first-install-incident/selected-ru.png": "3fcbb4111ae0eebdbd4f6f9f76078034903ae6235d8c2a4ea235f4c063cff648",
+    "openspec/changes/spacefox-watchface/evidence/first-install-incident/unit.log": "134ee2334776f2c5f28c4a87c8451bb01e8e83fb99831de28a681d35bfd5217b",
+    "openspec/changes/spacefox-watchface/evidence/first-install-incident/visual-review.json": "c254329c7f04b817f566b04725d872887e28d75175285a0f4a0e7853d6b4436a"
+  },
+  "proofBoundary": "Replays original software locale qualification on original bytes plus targeted EN/RU simulator observations; physical device remains unqualified."
+}

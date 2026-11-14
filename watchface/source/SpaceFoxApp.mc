@@ -18,6 +18,7 @@ class SpaceFoxApp extends Application.AppBase {
     }
 
     function getServiceDelegate() as [System.ServiceDelegate] {return [new FeedService()];}
+    (:typecheck(disableBackgroundCheck)) function refreshSyncStatus() as Void {if(view!=null&&feed!=null){NativeForegroundApp.status(self,feed);}}
     (:typecheck(disableBackgroundCheck))
     function onBackgroundData(data as Application.PersistableType) as Void {if(view==null){NativeMetrics.sample("foreground-deferred-before-view");return;}try{reloadFeed();}catch(e){NativeMetrics.failure(e.getErrorMessage());if(NativeMetrics.enabled){e.printStackTrace();}}WatchUi.requestUpdate();}
     (:typecheck(disableBackgroundCheck))

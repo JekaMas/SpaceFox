@@ -51,6 +51,31 @@ class LocalePresentation {
         if(key.equals("day")){return "d";}if(key.equals("hour")){return "h";}if(key.equals("minute")){return "m";}if(key.equals("second")){return "s";}
         return "Time unknown";
     }
+    function syncStatus(stage as String) as String {
+        if(locale.equals("ru")){
+            if(stage.equals("url")){return "Нет адреса данных";}
+            if(stage.equals("failed")||stage.equals("feedFailed")||stage.equals("assetFailed")){return "Ошибка обновления";}
+            if(stage.equals("incomplete")){return "Синхронизация не завершена";}
+            if(stage.equals("received")){return "Данные ещё не готовы";}
+            if(stage.equals("assets")){return "Загрузка данных запуска";}
+            if(stage.equals("requesting")){return "Обновление данных";}
+            if(stage.equals("unscheduled")){return "Синхронизация не запланирована";}
+            return "Ожидание синхронизации";
+        }
+        if(stage.equals("url")){return "Feed URL unavailable";}
+        if(stage.equals("failed")||stage.equals("feedFailed")||stage.equals("assetFailed")){return "Update failed";}
+        if(stage.equals("incomplete")){return "Sync incomplete";}
+        if(stage.equals("received")){return "Data not ready";}
+        if(stage.equals("assets")){return "Loading launch data";}
+        if(stage.equals("requesting")){return "Updating data";}
+        if(stage.equals("unscheduled")){return "Sync not scheduled";}
+        return "Waiting for sync";
+    }
+    function assetStatus(stage as String,detail as String) as String {
+        if(stage.equals("incomplete")){return locale.equals("ru")?"Загрузка прервана":"Artwork interrupted";}
+        var code=detail.find(": ");var suffix=code==null?"":detail.substring(code+2,detail.length());
+        return (locale.equals("ru")?"Изображение: ":"Artwork: ")+suffix;
+    }
     function mission(value as String) as String {
         // The provider category remains retained verbatim; only this known
         // semantic category has an existing locale resource mapping.

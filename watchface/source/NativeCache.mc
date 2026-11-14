@@ -23,7 +23,7 @@ class NativePrior {
 // not this class; clock/renderer arithmetic remains resident.
 (:extendedCode, :typecheck(false))
 class NativeCacheCore {
-    var store;var base;var pinKey;var packet=null;var commit=null;var lastAttempt=null;var failure="";var backgroundMode=true;var requestWake=null;var commitKey="sf.commit";var detached=false;
+    var store;var base;var pinKey;var packet=null;var commit=null;var lastAttempt=null;var failure="";var failureReason="";var backgroundMode=true;var requestWake=null;var commitKey="sf.commit";var detached=false;
     function initialize(url,adapter){base=normalize(url);pinKey="sf.pin."+rawHash(base);store=adapter==null?new NativeStore():adapter;}
     function normalize(value){
         if(!(value instanceof String)||value.length()<9||value.length()>240||!value.substring(0,8).equals("https://")){return "";}
@@ -103,11 +103,11 @@ class NativeCacheCore {
         requestWake=nextWake(now);detached=true;if(packet!=null){packet=new NativePrior(packet);}if(commit!=null){commit={"slot"=>commit["slot"],"generation"=>commit["generation"],"rawHash"=>commit["rawHash"],"seal"=>commit["seal"]};}NativeMetrics.sample("pre-request-released");
     }
     function accept(raw,now){
-        var operation="parse";failure="";try{
+        var operation="parse";failure="";failureReason="";try{
             var promotionWrites=store.writes;var candidate=parseFeed(raw,now);var pub=candidate.document["publisher"];
-            if(base.equals("")||pub["selectionValidatedUtc"]==null){return false;}
-            operation="lookup";if(!checkPublisher(pub,candidate.wireHash)){return false;}
-            if(packet!=null){var previous=packet instanceof NativePrior?packet.publisher:packet.document["publisher"];if(!pub["instance"].equals(previous["instance"])||pub["generation"]<previous["generation"]||pub["selectionValidatedUtc"]<previous["selectionValidatedUtc"]){return false;}if(pub["generation"]==previous["generation"]){if(!candidate.wireHash.equals(packet.wireHash)){return false;}if(packet instanceof NativePrior){operation="metadata";candidate.metadata(packet,now);if(!backgroundMode){candidate.presentation=feedScene(candidate,now);}candidate.compact();packet=candidate;requestWake=null;}else{packet.advance(now);}return true;}}
+            if(base.equals("")||pub["selectionValidatedUtc"]==null){failure="update-rejected";failureReason="publisher";return false;}
+            operation="lookup";if(!checkPublisher(pub,candidate.wireHash)){failure="update-rejected";failureReason="publisher";return false;}
+            if(packet!=null){var previous=packet instanceof NativePrior?packet.publisher:packet.document["publisher"];if(!pub["instance"].equals(previous["instance"])||pub["generation"]<previous["generation"]||pub["selectionValidatedUtc"]<previous["selectionValidatedUtc"]){failure="update-rejected";failureReason="publisher";return false;}if(pub["generation"]==previous["generation"]){if(!candidate.wireHash.equals(packet.wireHash)){failure="update-rejected";failureReason="publisher";return false;}if(packet instanceof NativePrior){operation="metadata";candidate.metadata(packet,now);if(!backgroundMode){candidate.presentation=feedScene(candidate,now);}candidate.compact();packet=candidate;requestWake=null;}else{packet.advance(now);}return true;}}
             var mutable=candidate.mutableWire();var mutableSpans=candidate.ignored;operation="metadata";candidate.metadata(packet,now);NativeMetrics.sample("candidate-and-prior");if(!backgroundMode){candidate.presentation=feedScene(candidate,now);}candidate.compact();NativeMetrics.sample("candidate-compacted");operation="persist";var same=packet!=null&&candidate.contentHash.equals(packet.contentHash);var slot=same?commit["slot"]:freeSlot();var rawDigest=same?commit["rawHash"]:candidate.wireHash;
             var marker={"v"=>6,"base"=>base,"slot"=>slot,"generation"=>commit==null?1:commit["generation"]+1,"rawHash"=>rawDigest,"contentHash"=>candidate.contentHash,"validation"=>candidate.validation,"stale"=>candidate.stale,"rescheduled"=>candidate.rescheduled,"publisher"=>pub,"wireHash"=>candidate.wireHash,"mutable"=>mutable};marker["prior"]=priorFrom(candidate);marker["priorHash"]=priorHash(marker["prior"]);marker["seal"]=seal(marker);
             if(!same){var chunks=0;for(var offset=0;offset<raw.length();offset+=512){var end=offset+512;if(end>raw.length()){end=raw.length();}var part=raw.substring(offset,end);var key="sf.feed."+slot+"."+chunks;store.write(key,part);var verify=store.read(key);if(!(verify instanceof String)||!verify.equals(part)){throw new Lang.InvalidValueException("Chunk readback mismatch");}verify=null;part=null;chunks+=1;}store.write("sf.feed."+slot,{"v"=>2,"base"=>base,"chunks"=>chunks,"rawHash"=>rawDigest,"mutableSpans"=>mutableSpans});}
@@ -116,7 +116,7 @@ class NativeCacheCore {
             raw=null;
             rememberPublisher(pub,candidate.wireHash);if(commit!=null){store.write("sf.recovery",detached?store.read(commitKey):commit);}store.write("sf.commit",marker);var observed=store.read("sf.commit");if(!(observed instanceof Dictionary)||!(observed["seal"] instanceof String)||!observed["seal"].equals(marker["seal"])||!seal(observed).equals(marker["seal"])){throw new Lang.InvalidValueException("Commit readback mismatch");}
             commit=backgroundMode?marker:detachedCommit(marker);packet=candidate;commitKey="sf.commit";detached=!backgroundMode;requestWake=null;failure="";NativeMetrics.writes("promotion",store.writes-promotionWrites);NativeMetrics.sample("cache-committed");return true;
-        }catch(e){failure=operation.equals("lookup")||operation.equals("persist")||e.getErrorMessage().equals("Bridge catalog incomplete")?"admission-retry":"update-rejected";NativeMetrics.failure(e.getErrorMessage());return false;}
+        }catch(e){var message=e.getErrorMessage();failure=operation.equals("lookup")||operation.equals("persist")||message.equals("Bridge catalog incomplete")?"admission-retry":"update-rejected";failureReason=operation;if(message.equals("Bridge catalog incomplete")){failureReason="catalog incomplete";}else if(message instanceof String&&message.find("Invalid current feed:")==0){var phase=message.substring(21,message.length());if(["header","publisher","policy","dictionaries","catalog-hash","selection","launch","traversal"].indexOf(phase)>=0){failureReason="feed "+phase;}}NativeMetrics.failure(message);return false;}
     }
     function attempted(now){lastAttempt=now.toLong();try{store.write("sf.attempt",{"base"=>base,"utc"=>lastAttempt});return true;}catch(e){failure="storage-full";return false;}}
     function due(now){if(base.equals("")){return false;}var cadence=packet==null?3600:packet.interval(now);return lastAttempt==null||now<lastAttempt||now-lastAttempt>=cadence;}

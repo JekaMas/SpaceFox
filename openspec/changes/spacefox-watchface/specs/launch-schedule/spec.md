@@ -30,10 +30,21 @@ requests. Delivery delay SHALL remain explicit.
 #### Scenario: Connected refresh
 - **WHEN** a scheduled background refresh is permitted and the phone has connectivity
 - **THEN** the watch receives the accepted static schedule without manual refresh, provider credentials or a custom phone application, and uses its updated launch times
+- **AND** physical evidence uses the selected watch face; simulator background execution while another face is active does not establish physical behavior
 
 #### Scenario: Provider unavailable or rate limited
 - **WHEN** a refresh fails, times out or is rate limited
 - **THEN** the last accepted schedule remains available and retries respect platform/provider limits without a per-second request loop
+
+#### Scenario: First-install refresh interrupted or unsuccessful
+- **WHEN** the selected feed has no accepted schedule and its first background attempt fails or the platform ends the service before a callback
+- **THEN** the next attempt is registered before the request and is due no sooner than the platform's five-minute minimum, with no redraw-triggered network request
+- **AND** the ordinary hourly/near-launch policy resumes after a schedule is accepted
+
+#### Scenario: Missing or intentionally blank feed property
+- **WHEN** the FeedBaseUrl property is missing, null or cannot be read
+- **THEN** the watch uses the published default HTTPS base
+- **AND** an explicitly stored blank string remains an intentional disabled feed and does not silently select the default
 
 #### Scenario: Refresh window changes
 - **WHEN** the cached exact launch time enters the two-hour window or passes thirty minutes without confirmation
