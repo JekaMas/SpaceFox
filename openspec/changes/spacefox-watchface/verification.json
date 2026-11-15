@@ -601,7 +601,7 @@
       ],
       "statement": "The system SHALL identify a reschedule when the accepted target time changes for\nthe same launch identifier, recalculate the countdown and retain a change flag\nfor that selected launch. An unchanged successful refresh SHALL not create or\nclear the flag; selecting a different launch SHALL not inherit it.",
       "owner": "tools/spacefox/schedule.py; tools/spacefox/wire.py; watchface/source/NativeFeed.mc; watchface/source/FeedScene.mc; watchface/source/ScheduleState.mc; watchface/source/SpaceFoxView.mc",
-      "oracle": "Literal current MIN target1794609900\u21921794611100 at clock1794551202 produces58698\u219259898 seconds (16:18:18\u219216:38:18), +1200 and same-ID flag. Unchanged validation cannot create or clear it. Withdrawal gives null remaining and --:--:--; next timed launch identity cannot inherit prior latch. Actual captured SEC merge additionally retains unchanged-exact-UTC metadata behavior. Provider precision and exact_utc=null remain intact for MIN. Native assertions execute production classes rather than a Python countdown model.",
+      "oracle": "Literal current MIN target1794609900→1794611100 at clock1794551202 produces58698→59898 seconds (16:18:18→16:38:18), +1200 and same-ID flag. Unchanged validation cannot create or clear it. Withdrawal gives null remaining and --:--:--; next timed launch identity cannot inherit prior latch. Actual captured SEC merge additionally retains unchanged-exact-UTC metadata behavior. Provider precision and exact_utc=null remain intact for MIN. Native assertions execute production classes rather than a Python countdown model.",
       "source_globs": [
         "tests/test_basic_reschedule.py",
         "tests/fixtures/basic_reschedule/**",
@@ -1394,7 +1394,7 @@
         "Main values remain visible",
         "Local time changes"
       ],
-      "statement": "Software boundary: the unchanged compiled native watch face displays Garmin local time as primary fixed24-hour HH:mm, with UTC countdown independent of local-zone presentation. Actual captured real launch text, countdown and four selected metrics remain readable within the390\u00d7390 circular active scene using accepted fixed geometry and bounded labels. Physical readability remains release task5.1/6.1.",
+      "statement": "Software boundary: the unchanged compiled native watch face displays Garmin local time as primary fixed24-hour HH:mm, with UTC countdown independent of local-zone presentation. Actual captured real launch text, countdown and four selected metrics remain readable within the390×390 circular active scene using accepted fixed geometry and bounded labels. Physical readability remains release task5.1/6.1.",
       "owner": "watchface/source/WatchClock.mc; watchface/source/SpaceFoxView.mc; watchface/source/SceneRenderer.mc",
       "oracle": "Retained exact ten-test SDK clock table (including actual Garmin Time.now/System.getClockTime smoke and literal7200 seconds despite local changes); new actual production text draw calls checked by independent circle/rectangle geometry and resource glyph bounds; retained source-bound current map screenshot inspected. No recreated Python clock/layout model.",
       "source_globs": [
@@ -1421,7 +1421,7 @@
         "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
       "planning_status": "Implemented whole software property; actual selected verifier receipt required. P2 conjunctive alias folded, external release obligations retained.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF02.P1",
@@ -1729,7 +1729,7 @@
         "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
       "planning_status": "planned; no acceptance or implementation is inferred by this evidence topology",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF10.P1",
@@ -2831,7 +2831,7 @@
         "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
       "planning_status": "Current-only witnesses remain planned after executed fixture/harness closure retirement. Retained historical observations do not execute this graph or close product acceptance.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "LS05.P7",
@@ -3437,7 +3437,7 @@
         "Raise wrist",
         "Display sleeps"
       ],
-      "statement": "Whole simulator software animation: active wake starts a 2\u20133s rocket-only animation, valid frame duration is bounded, natural completion resets, sleep/hide/low-power stops, static fallback remains readable and no liftoff is inferred. Physical wrist activation and power measurements remain task 5.3.",
+      "statement": "Whole simulator software animation: active wake starts a 2–3s rocket-only animation, valid frame duration is bounded, natural completion resets, sleep/hide/low-power stops, static fallback remains readable and no liftoff is inferred. Physical wrist activation and power measurements remain task 5.3.",
       "owner": "watchface/source/SpaceFoxView.mc; watchface/source/SceneRenderer.mc",
       "oracle": "Actual source-bound SDK framework/lifecycle and bitmap captures with literal time/pixel bounds, plus independent receipt corruption refusal; physical watch remains separate.",
       "source_globs": [
@@ -8713,9 +8713,9 @@
       "scenario": "Local time changes",
       "scenario_fingerprint": "6c19dec060e1a363b43b81ce7217fe43f54e21f99774bbc449c34bd3a3688013",
       "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
-      "observable": "Retained actual Garmin API smoke and native literal local08:00\u219212:00 with unchangedUTC duration7200; ordinary live clock advances.",
+      "observable": "Retained actual Garmin API smoke and native literal local08:00→12:00 with unchangedUTC duration7200; ordinary live clock advances.",
       "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
-      "green_expectation": "Retained actual Garmin API smoke and native literal local08:00\u219212:00 with unchangedUTC duration7200; ordinary live clock advances.",
+      "green_expectation": "Retained actual Garmin API smoke and native literal local08:00→12:00 with unchangedUTC duration7200; ordinary live clock advances.",
       "invalidation_dependencies": [
         "tests/test_basic_time_fields.py",
         "tests/fixtures/basic_time_fields/**",
@@ -8759,9 +8759,9 @@
       "scenario": "Local time changes",
       "scenario_fingerprint": "6c19dec060e1a363b43b81ce7217fe43f54e21f99774bbc449c34bd3a3688013",
       "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
-      "observable": "Native23:59\u219200:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
+      "observable": "Native23:59→00:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
       "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
-      "green_expectation": "Native23:59\u219200:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
+      "green_expectation": "Native23:59→00:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
       "invalidation_dependencies": [
         "tests/test_basic_time_fields.py",
         "tests/fixtures/basic_time_fields/**",
@@ -15241,7 +15241,7 @@
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Physical FR165 replaced by pinned ordinary SDK simulator; network inputs are exact owned fixture bytes. This command reads retained source-bound observations; it does not execute a new SDK run.",
-        "allowed_proof": "Six independent literal SDKtransformPoint anchors plus native pixel comparison prove rest repair60\u21920differences and transformed-path preservation; tall/wide endpoints retain pixels.",
+        "allowed_proof": "Six independent literal SDKtransformPoint anchors plus native pixel comparison prove rest repair60→0differences and transformed-path preservation; tall/wide endpoints retain pixels.",
         "forbidden_claims": [
           "Physical/human/phone/BLE/battery/Store acceptance",
           "Public HTTPS/Linux motion delivery or universal/peak performance",
@@ -15756,9 +15756,9 @@
       "scenario": "Known new launch time",
       "scenario_fingerprint": "ff1c31bcd1c140b6f53cf040269e54e738d75e18e6819320bba99350d5d04a39",
       "setup": "Retained raw captured Starship MIN record; technical UTC/ID mutations only, verbatim display text. Current schema3 SFR1M captured envelope with actual production schedule projection. Pinned FR165 SDK uses four new test-only native assertions and numeric clock. Captured historical SEC record supplies agreeing-target metadata merge assertion.",
-      "observable": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698\u219259898, text16:18:18\u219216:38:18, flag true.",
+      "observable": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698→59898, text16:18:18→16:38:18, flag true.",
       "red_expectation": "Fails if the stated literal relation, latch, identity or precision assertion is false, or the exact native framework test is missing/fails.",
-      "green_expectation": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698\u219259898, text16:18:18\u219216:38:18, flag true.",
+      "green_expectation": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698→59898, text16:18:18→16:38:18, flag true.",
       "invalidation_dependencies": [
         "tests/test_basic_reschedule.py",
         "tests/fixtures/basic_reschedule/**",
@@ -20789,25 +20789,33 @@
         "watchface/resources/strings/strings.xml",
         "watchface/source/**",
         "watchface/toolchain-lock.json",
-        "watchface/transport-tests/**"
+        "watchface/transport-tests/**",
+        "tests/test_native_feed_bounds.py",
+        "tests/native_scene_diagnostics/build_feed_bounds.py",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/p3/**",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/feed-controls/**",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/receipt-hashes.json"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls06_p3_s01_positive_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_provisional_and_raw_positive",
+      "command_id": "native-feed-bounds-current",
+      "state": "implemented",
+      "source_path": "tests/test_native_feed_bounds.py",
       "native_test_ids": [
-        "transportBudgetPositive"
+        "p3ProvisionalForeground"
       ],
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
-        "owner_replaced": "Provider/phone/platform failure boundary only as explicitly selected by the future actual current-format witness.",
-        "allowed_proof": "Only the retained scenario-specific current-format local/native observation, with exact actual source and toolchain.",
+        "owner_replaced": "Network response and controlled service finish/optional work, in-memory store and injected time at directed SDK test seam; physical watch and phone unavailable.",
+        "allowed_proof": "Compiled current Monkey C service callback, provisional staging, actual foreground callback and native cache validation; SDK unit heap and source-bound controlled-store interruption only. Retained ordinary OS experiment remains historical.",
         "forbidden_claims": [
-          "Complete real provider corpus or worldwide coverage from a fixture",
-          "Phone/physical/Store/cloud/public acceptance without actual observation"
+          "Paired-phone or physical FR165 acceptance",
+          "True allocation or storage peak",
+          "Callback guard prevented allocation before callback",
+          "Current ordinary OS background transfer established by unit heap"
         ]
       },
-      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+      "source_sha256": "6c3a48e13f92a021d591567cb6ae0ee1498b67c12febdebff47aa8924d6b934f",
+      "implementation_note": "Current compiled source-bound SDK observation and host receipt reader; controlled store, finish and optional stage are disclosed. Retained ordinary OS experiment remains historical; P2 and physical boundaries remain planned."
     },
     {
       "id": "LS06.P3.S01.NEGATIVE.CURRENT",
@@ -20831,25 +20839,33 @@
         "watchface/resources/strings/strings.xml",
         "watchface/source/**",
         "watchface/toolchain-lock.json",
-        "watchface/transport-tests/**"
+        "watchface/transport-tests/**",
+        "tests/test_native_feed_bounds.py",
+        "tests/native_scene_diagnostics/build_feed_bounds.py",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/p3/**",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/feed-controls/**",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/receipt-hashes.json"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls06_p3_s01_negative_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_raw_depth_and_storage_negative",
+      "command_id": "native-feed-bounds-current",
+      "state": "implemented",
+      "source_path": "tests/test_native_feed_bounds.py",
       "native_test_ids": [
-        "transportBudgetNegative"
+        "p3BoundsRetain"
       ],
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
-        "owner_replaced": "Provider/phone/platform failure boundary only as explicitly selected by the future actual current-format witness.",
-        "allowed_proof": "Only the retained scenario-specific current-format local/native observation, with exact actual source and toolchain.",
+        "owner_replaced": "Network response and controlled service finish/optional work, in-memory store and injected time at directed SDK test seam; physical watch and phone unavailable.",
+        "allowed_proof": "Compiled current Monkey C service callback, provisional staging, actual foreground callback and native cache validation; SDK unit heap and source-bound controlled-store interruption only. Retained ordinary OS experiment remains historical.",
         "forbidden_claims": [
-          "Complete real provider corpus or worldwide coverage from a fixture",
-          "Phone/physical/Store/cloud/public acceptance without actual observation"
+          "Paired-phone or physical FR165 acceptance",
+          "True allocation or storage peak",
+          "Callback guard prevented allocation before callback",
+          "Current ordinary OS background transfer established by unit heap"
         ]
       },
-      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+      "source_sha256": "6c3a48e13f92a021d591567cb6ae0ee1498b67c12febdebff47aa8924d6b934f",
+      "implementation_note": "Current compiled source-bound SDK observation and host receipt reader; controlled store, finish and optional stage are disclosed. Retained ordinary OS experiment remains historical; P2 and physical boundaries remain planned."
     },
     {
       "id": "LS02.P4.S01.POSITIVE.CURRENT",
@@ -35149,6 +35165,22 @@
       "timeout_seconds": 900,
       "authority": "local",
       "notes": "Uses the tracked source-bound native-all-site-maps evidence by default; SPACEFOX_NATIVE_ALL_SITE_EVIDENCE may select an explicit alternative. Does not start SDK or claim physical/resource acceptance."
+    },
+    {
+      "id": "native-feed-bounds-current",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_native_feed_bounds"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "notes": "Validates exact compiler, probe, current checkout source and named SDK outcomes; does not launch simulator. Ordinary OS and physical P2 remain separate."
     }
   ]
 }
