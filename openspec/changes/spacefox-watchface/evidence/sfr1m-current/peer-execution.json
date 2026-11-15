@@ -1,0 +1,241 @@
+{
+  "cases": {
+    "VC18.P1.S01.NEGATIVE.CURRENT": {
+      "evidence_fingerprint": "29f17084ae6ed7d6e3dd22131e6d53631fc0aa0df96b7a3273ef5cf753840c8f",
+      "green_expectation": "Observe the named current-owner outcome with exact source/identity/age/quota and resource bounds; no old-format or invented-display pass substitutes.",
+      "invalidation_dependencies": [
+        "assets/fonts/**",
+        "assets/rocket-pack/catalog.json",
+        "assets/rocket-pack/registry.source.json",
+        "catalog/**",
+        "schemas/**",
+        "tests/test_native_visual_transport.py",
+        "tools/build_native_resources.py",
+        "tools/build_watchface.py",
+        "watchface/generated/**",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources*/**",
+        "watchface/source/**",
+        "watchface/source/VisualCatalog.mc",
+        "watchface/toolchain-lock.json",
+        "tests/test_current_format_acceptance.py",
+        "tools/spacefox/native_motion.py",
+        "corpus/real-schedule-20261113/**",
+        "tests/test_sfr1m_current_receipts.py",
+        "tests/test_sfr1m_current_animation.py",
+        "tests/test_sfr1m_offline_current.py",
+        "openspec/changes/spacefox-watchface/evidence/sfr1m-current/raw/**",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/p3/**"
+      ],
+      "observable": "Current SFR1M data-only raster/animation admission and bounded SFR1 primitives; unknown operations fail closed, no executable download/API6 dependency. Same-format background transfer, persistence, reboot, integrity and memory remain required. Scenario: Maintainer adds a rocket in the supported drawing schema.",
+      "polarity": "negative",
+      "property_id": "VC18.P1",
+      "red_expectation": "A violated current scenario, false completeness, mixed identity, changed source age/quota or invalid activation must fail this case.",
+      "scenario": "Maintainer adds a rocket in the supported drawing schema",
+      "scenario_fingerprint": "af96df88ac6a3c552a0689bc5155e6f63a8824d430d3ca2a9fbe591766cc9037",
+      "setup": "Use exact captured real launch records and actual UI/menu text in the sole schema3 /feed.json SFR1M envelope; mutate actual record/object fields or interrupt at the named technical failure boundary.",
+      "source_path": "tests/test_sfr1m_current_receipts.py",
+      "source_sha256": "2cc4b4f9fbfcd3854da0d78fdd9a8e923233d720353df0f616b1928f69729cea",
+      "status": "passed",
+      "test_id": "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s01_negative"
+    },
+    "VC18.P1.S01.POSITIVE.CURRENT": {
+      "evidence_fingerprint": "b8cea295c048a48fd1f302a88a93699994a5f0f73f6a53cdb235e1a6a99e63c5",
+      "green_expectation": "Observe the named current-owner outcome with exact source/identity/age/quota and resource bounds; no old-format or invented-display pass substitutes.",
+      "invalidation_dependencies": [
+        "assets/fonts/**",
+        "assets/rocket-pack/catalog.json",
+        "assets/rocket-pack/registry.source.json",
+        "catalog/**",
+        "schemas/**",
+        "tests/test_native_visual_transport.py",
+        "tools/build_native_resources.py",
+        "tools/build_watchface.py",
+        "watchface/generated/**",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources*/**",
+        "watchface/source/**",
+        "watchface/source/VisualCatalog.mc",
+        "watchface/toolchain-lock.json",
+        "tests/test_current_format_acceptance.py",
+        "tools/spacefox/native_motion.py",
+        "corpus/real-schedule-20261113/**",
+        "tests/test_sfr1m_current_receipts.py",
+        "tests/test_sfr1m_current_animation.py",
+        "tests/test_sfr1m_offline_current.py",
+        "openspec/changes/spacefox-watchface/evidence/sfr1m-current/raw/**",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/p3/**"
+      ],
+      "observable": "Current SFR1M data-only raster/animation admission and bounded SFR1 primitives; unknown operations fail closed, no executable download/API6 dependency. Same-format background transfer, persistence, reboot, integrity and memory remain required. Scenario: Maintainer adds a rocket in the supported drawing schema.",
+      "polarity": "positive",
+      "property_id": "VC18.P1",
+      "red_expectation": "A violated current scenario, false completeness, mixed identity, changed source age/quota or invalid activation must fail this case.",
+      "scenario": "Maintainer adds a rocket in the supported drawing schema",
+      "scenario_fingerprint": "af96df88ac6a3c552a0689bc5155e6f63a8824d430d3ca2a9fbe591766cc9037",
+      "setup": "Use exact captured real launch records and actual UI/menu text in the sole schema3 /feed.json SFR1M envelope; valid current candidate and same-format accepted recovery state.",
+      "source_path": "tests/test_sfr1m_current_receipts.py",
+      "source_sha256": "2cc4b4f9fbfcd3854da0d78fdd9a8e923233d720353df0f616b1928f69729cea",
+      "status": "passed",
+      "test_id": "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s01_positive"
+    },
+    "VC18.P1.S02.NEGATIVE.CURRENT": {
+      "evidence_fingerprint": "a8acf1b0549488bbf107c01a5dc452616c40876156b91dfa3fe9308d690e0916",
+      "green_expectation": "Observe the named current-owner outcome with exact source/identity/age/quota and resource bounds; no old-format or invented-display pass substitutes.",
+      "invalidation_dependencies": [
+        "assets/fonts/**",
+        "assets/rocket-pack/catalog.json",
+        "assets/rocket-pack/registry.source.json",
+        "catalog/**",
+        "schemas/**",
+        "tests/test_native_visual_transport.py",
+        "tools/build_native_resources.py",
+        "tools/build_watchface.py",
+        "watchface/generated/**",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources*/**",
+        "watchface/source/**",
+        "watchface/source/VisualCatalog.mc",
+        "watchface/toolchain-lock.json",
+        "tests/test_current_format_acceptance.py",
+        "tools/spacefox/native_motion.py",
+        "corpus/real-schedule-20261113/**",
+        "tests/test_sfr1m_current_receipts.py",
+        "tests/test_sfr1m_current_animation.py",
+        "tests/test_sfr1m_offline_current.py",
+        "openspec/changes/spacefox-watchface/evidence/sfr1m-current/raw/**",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/p3/**"
+      ],
+      "observable": "Current SFR1M data-only raster/animation admission and bounded SFR1 primitives; unknown operations fail closed, no executable download/API6 dependency. Same-format background transfer, persistence, reboot, integrity and memory remain required. Scenario: Artwork requires a new renderer operation.",
+      "polarity": "negative",
+      "property_id": "VC18.P1",
+      "red_expectation": "A violated current scenario, false completeness, mixed identity, changed source age/quota or invalid activation must fail this case.",
+      "scenario": "Artwork requires a new renderer operation",
+      "scenario_fingerprint": "8e1bea9d874f7773e904a1f6eeedd8a9bc947d9a2b10cd2eb3bda0c1871594a8",
+      "setup": "Use exact captured real launch records and actual UI/menu text in the sole schema3 /feed.json SFR1M envelope; mutate actual record/object fields or interrupt at the named technical failure boundary.",
+      "source_path": "tests/test_sfr1m_current_receipts.py",
+      "source_sha256": "2cc4b4f9fbfcd3854da0d78fdd9a8e923233d720353df0f616b1928f69729cea",
+      "status": "passed",
+      "test_id": "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s02_negative"
+    },
+    "VC18.P1.S02.POSITIVE.CURRENT": {
+      "evidence_fingerprint": "4d456a5b18eef8015a4fced1b2b13ba75efc4d66f6c46d38ba605c415f1299bd",
+      "green_expectation": "Observe the named current-owner outcome with exact source/identity/age/quota and resource bounds; no old-format or invented-display pass substitutes.",
+      "invalidation_dependencies": [
+        "assets/fonts/**",
+        "assets/rocket-pack/catalog.json",
+        "assets/rocket-pack/registry.source.json",
+        "catalog/**",
+        "schemas/**",
+        "tests/test_native_visual_transport.py",
+        "tools/build_native_resources.py",
+        "tools/build_watchface.py",
+        "watchface/generated/**",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources*/**",
+        "watchface/source/**",
+        "watchface/source/VisualCatalog.mc",
+        "watchface/toolchain-lock.json",
+        "tests/test_current_format_acceptance.py",
+        "tools/spacefox/native_motion.py",
+        "corpus/real-schedule-20261113/**",
+        "tests/test_sfr1m_current_receipts.py",
+        "tests/test_sfr1m_current_animation.py",
+        "tests/test_sfr1m_offline_current.py",
+        "openspec/changes/spacefox-watchface/evidence/sfr1m-current/raw/**",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/p3/**"
+      ],
+      "observable": "Current SFR1M data-only raster/animation admission and bounded SFR1 primitives; unknown operations fail closed, no executable download/API6 dependency. Same-format background transfer, persistence, reboot, integrity and memory remain required. Scenario: Artwork requires a new renderer operation.",
+      "polarity": "positive",
+      "property_id": "VC18.P1",
+      "red_expectation": "A violated current scenario, false completeness, mixed identity, changed source age/quota or invalid activation must fail this case.",
+      "scenario": "Artwork requires a new renderer operation",
+      "scenario_fingerprint": "8e1bea9d874f7773e904a1f6eeedd8a9bc947d9a2b10cd2eb3bda0c1871594a8",
+      "setup": "Use exact captured real launch records and actual UI/menu text in the sole schema3 /feed.json SFR1M envelope; valid current candidate and same-format accepted recovery state.",
+      "source_path": "tests/test_sfr1m_current_receipts.py",
+      "source_sha256": "2cc4b4f9fbfcd3854da0d78fdd9a8e923233d720353df0f616b1928f69729cea",
+      "status": "passed",
+      "test_id": "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s02_positive"
+    }
+  },
+  "change": "spacefox-watchface",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_sfr1m_current_receipts",
+        "tests.test_sfr1m_current_animation"
+      ],
+      "cwd": "/Users/jekamas/projects/SpaceFox-worktrees/verify-sfr1m-current-public",
+      "duration_seconds": 7.545848208013922,
+      "exit_code": 0,
+      "id": "sfr1m-current-sdk",
+      "observed_tests": {
+        "unittest::tests.test_sfr1m_current_animation.CurrentAnimationTest.test_captured_artwork_timeline_and_pixels": "pass",
+        "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s01_negative": "pass",
+        "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s01_positive": "pass",
+        "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s02_negative": "pass",
+        "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s02_positive": "pass"
+      },
+      "status": "exited",
+      "stderr": "test_s01_negative (tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s01_negative) ... ok\ntest_s01_positive (tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s01_positive) ... ok\ntest_s02_negative (tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s02_negative) ... ok\ntest_s02_positive (tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s02_positive) ... ok\ntest_captured_artwork_timeline_and_pixels (tests.test_sfr1m_current_animation.CurrentAnimationTest.test_captured_artwork_timeline_and_pixels) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 7.161s\n\nOK\n",
+      "stderr_artifact": "/Users/jekamas/projects/SpaceFox-worktrees/verify-sfr1m-current-public/openspec/changes/spacefox-watchface/evidence/sfr1m-current/peer-execution.json.sfr1m-current-sdk.stderr.log",
+      "stderr_truncated": false,
+      "stdout": "",
+      "stdout_artifact": "/Users/jekamas/projects/SpaceFox-worktrees/verify-sfr1m-current-public/openspec/changes/spacefox-watchface/evidence/sfr1m-current/peer-execution.json.sfr1m-current-sdk.stdout.log",
+      "stdout_truncated": false
+    }
+  ],
+  "finished_at": "2026-11-15T08:41:18.161585+00:00",
+  "git": {
+    "dirty": true,
+    "head": "0f3952757ceac70cc96e557d7b22ff8ca8a8bc8f",
+    "status": "known"
+  },
+  "manifest": "openspec/changes/spacefox-watchface/verification.json",
+  "manifest_sha256": "624e5f4a069d68b4bfe44efbf51fccad5b3add485bbcc490d55b84943d785ae1",
+  "requested_selectors": {
+    "all": false,
+    "cases": [],
+    "changed_paths": [],
+    "commands": [],
+    "owners": [],
+    "properties": [
+      "VC18.P1"
+    ],
+    "requirements": [],
+    "scenarios": [],
+    "tests": []
+  },
+  "schema_version": 2,
+  "selection": {
+    "cases": [
+      "VC18.P1.S01.NEGATIVE.CURRENT",
+      "VC18.P1.S01.POSITIVE.CURRENT",
+      "VC18.P1.S02.NEGATIVE.CURRENT",
+      "VC18.P1.S02.POSITIVE.CURRENT"
+    ],
+    "commands": [
+      "sfr1m-current-sdk"
+    ],
+    "properties": [
+      "VC18.P1"
+    ],
+    "requirements": [
+      "VC18"
+    ]
+  },
+  "specifications": {
+    "VC18": "9703f8d92e2bf50883a11ae4e1ba36c121b6b707d688f1d0ec825eb8569a628e"
+  },
+  "started_at": "2026-11-15T08:41:10.129108+00:00",
+  "status": "passed",
+  "substitution_gaps": []
+}

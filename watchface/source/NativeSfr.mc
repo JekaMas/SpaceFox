@@ -10,11 +10,11 @@ import Toybox.System;
 // paged. NativeCacheCore paging funds this within the same foreground cap.
 (:typecheck(false))
 class NativeSfrDecoder {
-    var immutable;var descriptor;var bitmap;var dc;var hash;var row=[]b;var colors=[];var width;var height;var channels;var rgbRowBitmap=null;var rgbRowDc=null;var outlineBitmap=null;var outlineDc=null;var outlinePrevious=[]b;var y=0;var shard=0;var data=null;var offset=0;var endRow=0;var done=false;
+    var encodedRaw=null;var encodedAt=0;var decodedTotal=0;var skipOutline=false;var immutable;var descriptor;var bitmap;var dc;var hash;var row=[]b;var colors=[];var width;var height;var channels;var rgbRowBitmap=null;var rgbRowDc=null;var outlineBitmap=null;var outlineDc=null;var outlinePrevious=[]b;var y=0;var shard=0;var data=null;var offset=0;var endRow=0;var done=false;
     (:extendedCode)
     function initialize(adapter,d){
-        immutable=new NativeImmutable(adapter);descriptor=d;width=d["canvas"][0];height=d["canvas"][1];channels=d["channels"];hash=new Cryptography.Hash({:algorithm=>Cryptography.HASH_SHA256});
-        bitmap=Graphics.createBufferedBitmap({:width=>width,:height=>height,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();dc=bitmap.getDc();dc.setColor(Graphics.COLOR_TRANSPARENT,Graphics.COLOR_TRANSPARENT);dc.clear();if(channels==3){rgbRowBitmap=Graphics.createBufferedBitmap({:width=>width,:height=>1,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();rgbRowDc=rgbRowBitmap.getDc();outlineBitmap=Graphics.createBufferedBitmap({:width=>390,:height=>390,:palette=>[Graphics.COLOR_BLACK,0xBEE1F0],:colorDepth=>1}).get();outlineDc=outlineBitmap.getDc();outlineDc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);outlineDc.clear();outlineDc.setColor(0xBEE1F0,Graphics.COLOR_TRANSPARENT);for(var i=0;i<1170;i+=1){outlinePrevious.add(0);}}
+        skipOutline=d.hasKey("__localBundledOutline")&&d["__localBundledOutline"]==true;d.remove("__localBundledOutline");immutable=new NativeImmutable(adapter);descriptor=d;width=d["canvas"][0];height=d["canvas"][1];channels=d["channels"];hash=new Cryptography.Hash({:algorithm=>Cryptography.HASH_SHA256});
+        bitmap=Graphics.createBufferedBitmap({:width=>width,:height=>height,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();dc=bitmap.getDc();dc.setColor(Graphics.COLOR_TRANSPARENT,Graphics.COLOR_TRANSPARENT);dc.clear();if(channels==3){rgbRowBitmap=Graphics.createBufferedBitmap({:width=>width,:height=>1,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();rgbRowDc=rgbRowBitmap.getDc();if(!skipOutline){outlineBitmap=Graphics.createBufferedBitmap({:width=>390,:height=>390,:palette=>[Graphics.COLOR_BLACK,0xBEE1F0],:colorDepth=>1}).get();outlineDc=outlineBitmap.getDc();outlineDc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);outlineDc.clear();outlineDc.setColor(0xBEE1F0,Graphics.COLOR_TRANSPARENT);for(var i=0;i<1170;i+=1){outlinePrevious.add(0);}}}
     }
     (:extendedCode)
     function fail(){throw new Lang.InvalidValueException("Invalid SFR1 raster");}
@@ -35,19 +35,33 @@ class NativeSfrDecoder {
         var rest=tail.substring(a+1,tail.length());
         var b=rest.find(":");if(b==null){fail();}
         var count=rest.substring(0,b);
-        var encoded=raw.substring(5+a+b+2,raw.length());
-        raw=null;tail=null;rest=null;
+        var encodedStart=5+a+b+2;
         if(!start.equals(y.toString())||count.length()<1||count.length()>3||count.substring(0,1).equals("0")){fail();}
         for(var i=0;i<count.length();i+=1){if("0123456789".find(count.substring(i,i+1))==null){fail();}}
         var rows=count.toNumber();if(rows==null||rows<1||y+rows>height){fail();}
-        if(encoded.length()==0||encoded.length()%4!=0){fail();}var padding=encoded.find("=");if(padding!=null){if(padding<encoded.length()-2){fail();}for(var pad=padding;pad<encoded.length();pad+=1){if(!encoded.substring(pad,pad+1).equals("=")){fail();}}}
-        // Decode once, then validate canonical128-character slices. Growing
-        // a3072B ByteArray from32 tiny blocks transiently retained old/new
-        // capacities alongside the4KiB input in the ordinary heap.
-        data=StringUtil.convertEncodedString(encoded,{:fromRepresentation=>StringUtil.REPRESENTATION_STRING_BASE64,:toRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY});if(data.size()>3072){fail();}
-        for(var begin=0;begin<encoded.length();begin+=128){var end=begin+128;if(end>encoded.length()){end=encoded.length();}var last=(begin/4*3+96);if(last>data.size()){last=data.size();}var bytes=data.slice(begin/4*3,last);var canonical=StringUtil.convertEncodedString(bytes,{:fromRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:toRepresentation=>StringUtil.REPRESENTATION_STRING_BASE64});if(!canonical.equals(encoded.substring(begin,end))){fail();}}
-        encoded=null;offset=0;endRow=y+rows;for(var j=0;j<width*channels;j+=1){row.add(0);}if(channels==3){rgbRowDc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);rgbRowDc.clear();}else{for(var pixel=0;pixel<width;pixel+=1){colors.add(Graphics.COLOR_TRANSPARENT);}}shard+=1;
+        // Stream authenticated RGB shards in canonical bounded slices; keep
+        // only one full shard live, including across the next immutable read.
+        if(channels==3){
+            var length=raw.length()-encodedStart;if(length==0||length%4!=0){fail();}var padding=raw.find("=");if(padding!=null){if(padding<raw.length()-2){fail();}for(var pad=padding;pad<raw.length();pad+=1){if(!raw.substring(pad,pad+1).equals("=")){fail();}}}
+            encodedRaw=raw;encodedAt=encodedStart;decodedTotal=0;data=[]b;raw=null;tail=null;rest=null;
+        }else{
+            var encoded=raw.substring(encodedStart,raw.length());raw=null;tail=null;rest=null;
+            if(encoded.length()==0||encoded.length()%4!=0){fail();}var padding=encoded.find("=");if(padding!=null){if(padding<encoded.length()-2){fail();}for(var pad=padding;pad<encoded.length();pad+=1){if(!encoded.substring(pad,pad+1).equals("=")){fail();}}}
+            data=StringUtil.convertEncodedString(encoded,{:fromRepresentation=>StringUtil.REPRESENTATION_STRING_BASE64,:toRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY});if(data.size()>3072){fail();}
+            for(var begin=0;begin<encoded.length();begin+=128){var end=begin+128;if(end>encoded.length()){end=encoded.length();}var last=(begin/4*3+96);if(last>data.size()){last=data.size();}var bytes=data.slice(begin/4*3,last);var canonical=StringUtil.convertEncodedString(bytes,{:fromRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:toRepresentation=>StringUtil.REPRESENTATION_STRING_BASE64});if(!canonical.equals(encoded.substring(begin,end))){fail();}}
+            encoded=null;
+        }
+        offset=0;endRow=y+rows;for(var j=0;j<width*channels;j+=1){row.add(0);}if(channels==3){rgbRowDc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);rgbRowDc.clear();}else{for(var pixel=0;pixel<width;pixel+=1){colors.add(Graphics.COLOR_TRANSPARENT);}}shard+=1;
     }
+    // A completed shard releases encodedRaw and data before the next read.
+    (:extendedCode) function loadRgbBlock(){
+        if(encodedRaw==null||encodedAt>=encodedRaw.length()){fail();}
+        var end=encodedAt+128;if(end>encodedRaw.length()){end=encodedRaw.length();}
+        var part=encodedRaw.substring(encodedAt,end);var bytes=StringUtil.convertEncodedString(part,{:fromRepresentation=>StringUtil.REPRESENTATION_STRING_BASE64,:toRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY});
+        if(bytes.size()==0){fail();}var canonical=StringUtil.convertEncodedString(bytes,{:fromRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:toRepresentation=>StringUtil.REPRESENTATION_STRING_BASE64});if(!canonical.equals(part)){fail();}
+        decodedTotal+=bytes.size();if(decodedTotal>3072){fail();}data=bytes;offset=0;encodedAt=end;
+    }
+    function rgbByte(){if(offset>=data.size()){loadRgbBlock();}var value=data[offset];offset+=1;return value;}
     function color(at){var alpha=channels==3?255:data[at+3];return alpha==255?data[at]*65536+data[at+1]*256+data[at+2]:alpha==0?Graphics.COLOR_TRANSPARENT:Graphics.createColor(alpha,data[at],data[at+1],data[at+2]);}
     function span(x,length,value){if(value!=Graphics.COLOR_TRANSPARENT){if(channels==3){rgbRowDc.setColor(value,Graphics.COLOR_TRANSPARENT);rgbRowDc.fillRectangle(x,0,length,1);}else{dc.setColor(value,Graphics.COLOR_TRANSPARENT);dc.fillRectangle(x,y,length,1);}}}
     function paintCopy(x,length){
@@ -66,22 +80,22 @@ class NativeSfrDecoder {
     }
     function oneRow(){
         if(data==null){chunk();}var x=0;
-        while(x<width){if(offset>=data.size()){fail();}var token=data[offset];offset+=1;var count=(token&127)+1;if(x+count>width){fail();}if(token<128){if(offset+channels>data.size()){fail();}var value=color(offset);if(channels==3){for(var n=0;n<count;n+=1){var at=(x+n)*3;row[at]=data[offset];row[at+1]=data[offset+1];row[at+2]=data[offset+2];}}else{for(var n=0;n<count;n+=1){colors[x+n]=value;for(var c=0;c<channels;c+=1){row[(x+n)*channels+c]=data[offset+c];}}}offset+=channels;span(x,count,value);}else if(channels==4){paintCopy(x,count);}x+=count;}
-        if(channels==3){dc.drawBitmap(0,y,rgbRowBitmap);outlineRow();}hash.update(row);y+=1;if(y==endRow){if(offset!=data.size()){fail();}data=null;row=[]b;colors=[];}if(y==height){if(shard!=descriptor["shards"].size()||data!=null){fail();}var digest=StringUtil.convertEncodedString(hash.digest(),{:fromRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:toRepresentation=>StringUtil.REPRESENTATION_STRING_HEX}).toLower();if(!digest.equals(descriptor["pixelSha256"])){fail();}done=true;row=[]b;colors=[];outlinePrevious=[]b;outlineDc=null;descriptor=null;dc=null;hash=null;rgbRowDc=null;rgbRowBitmap=null;}
+        while(x<width){var token;if(channels==3){token=rgbByte();}else{if(offset>=data.size()){fail();}token=data[offset];offset+=1;}var count=(token&127)+1;if(x+count>width){fail();}if(token<128){var value;if(channels==3){var rr=rgbByte();var gg=rgbByte();var bb=rgbByte();value=rr*65536+gg*256+bb;for(var n=0;n<count;n+=1){var at=(x+n)*3;row[at]=rr;row[at+1]=gg;row[at+2]=bb;}}else{if(offset+channels>data.size()){fail();}value=color(offset);for(var n=0;n<count;n+=1){colors[x+n]=value;for(var c=0;c<channels;c+=1){row[(x+n)*channels+c]=data[offset+c];}}offset+=channels;}span(x,count,value);}else if(channels==4){paintCopy(x,count);}x+=count;}
+        if(channels==3){dc.drawBitmap(0,y,rgbRowBitmap);if(!skipOutline){outlineRow();}}hash.update(row);y+=1;if(y==endRow){if(offset!=data.size()||channels==3&&(encodedRaw==null||encodedAt!=encodedRaw.length())){fail();}encodedRaw=null;data=null;row=[]b;colors=[];}if(y==height){if(shard!=descriptor["shards"].size()||data!=null){fail();}var digest=StringUtil.convertEncodedString(hash.digest(),{:fromRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:toRepresentation=>StringUtil.REPRESENTATION_STRING_HEX}).toLower();if(!digest.equals(descriptor["pixelSha256"])){fail();}done=true;row=[]b;colors=[];outlinePrevious=[]b;outlineDc=null;descriptor=null;dc=null;hash=null;rgbRowDc=null;rgbRowBitmap=null;}
     }
-    function step(){if(data==null&&!done){chunk();return false;}var start=System.getTimer();var rows=0;while(!done&&rows<(channels==3?1:16)&&(rows==0||System.getTimer()-start<18)){oneRow();rows+=1;if(data==null){break;}}return done;}
+    function step(){if(data==null&&!done){chunk();return false;}var start=System.getTimer();var rows=0;while(!done&&rows<(channels==3?(skipOutline?5:1):16)&&(rows==0||System.getTimer()-start<(channels==3&&skipOutline?12:18))){oneRow();rows+=1;if(data==null){break;}}return done;}
 }
 
 (:typecheck(false))
 class NativeSfrRenderer extends NativeVisualRenderer {
-    var siteCountryBitmap=null;var mapBitmap=null;var mapOutline=null;var scene=null;var selectionHash="";
+    var bundledOutline=false;var siteCountryBitmap=null;var mapBitmap=null;var mapOutline=null;var scene=null;var selectionHash="";
     function initialize(){NativeVisualRenderer.initialize();}
 
 }
 
 (:extendedCode, :typecheck(false))
 class NativeSfrBuild {
-    var store;var base;var packet;var immutable;var scene;var descriptors={};var expected=[];var role=0;var decoder=null;var result;var complete=false;var closureChecked=false;var closureAt=0;var selection;var rasterBytes=0;var rasterObjects=0;var readKind=0;var names;
+    var preferBundled=false;var store;var base;var packet;var immutable;var scene;var descriptors={};var expected=[];var role=0;var decoder=null;var result;var complete=false;var closureChecked=false;var closureAt=0;var selection;var rasterBytes=0;var rasterObjects=0;var readKind=0;var names;
     function initialize(adapter,url,p){store=adapter;base=url;packet=p;immutable=new NativeImmutable(store);selection=p.bridge["selection"];names=["map","rocket","siteCountry"];result=new NativeSfrRenderer();begin();}
     function fail(){throw new Lang.InvalidValueException("Invalid native SFR1M scene");}
     function same(a,b){return nativeSame(a,b);}
@@ -166,7 +180,7 @@ class NativeSfrBuild {
     }
     function displayScene(){return {"position"=>scene["position"]};}
     function step(){
-        if(role>=names.size()){if(!closureChecked){checkIndex();closureChecked=true;scene=displayScene();result.scene=scene;return false;}if(closureAt<expected.size()){var start=System.getTimer();var checked=0;while(closureAt<expected.size()&&checked<4&&(checked==0||System.getTimer()-start<18)){checkRaw(expected[closureAt]);closureAt+=1;checked+=1;}return false;}closure();return true;}var name=names[role];if(decoder==null){var d=prepareRole(name);if(d==null){role+=1;return false;}decoder=new NativeSfrDecoder(store,d);}
+        if(role>=names.size()){if(!closureChecked){checkIndex();closureChecked=true;scene=displayScene();result.scene=scene;return false;}if(closureAt<expected.size()){var start=System.getTimer();var checked=0;while(closureAt<expected.size()&&checked<4&&(checked==0||System.getTimer()-start<18)){checkRaw(expected[closureAt]);closureAt+=1;checked+=1;}return false;}closure();return true;}var name=names[role];if(decoder==null){var d=prepareRole(name);if(d==null){role+=1;return false;}if(name.equals("map")&&preferBundled){d["__localBundledOutline"]=true;result.bundledOutline=true;}decoder=new NativeSfrDecoder(store,d);}
         if(decoder.step()){if(name.equals("map")){result.mapBitmap=decoder.bitmap;result.mapOutline=decoder.outlineBitmap;}else if(name.equals("rocket")){result.bitmap=decoder.bitmap;}else if(name.equals("siteCountry")){result.siteCountryBitmap=decoder.bitmap;}decoder=null;role+=1;}return false;
     }
 }

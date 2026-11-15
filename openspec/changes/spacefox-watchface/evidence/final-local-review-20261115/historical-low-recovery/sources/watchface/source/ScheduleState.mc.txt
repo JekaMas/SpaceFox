@@ -1,0 +1,46 @@
+import Toybox.Lang;
+
+// Consumes an exact UTC value supplied by a future accepted-feed boundary. This
+// class does not parse a date/window or infer a launch. It never counts ticks.
+class ScheduleState {
+    private var _exactUtc as Long or Null;
+    private var _precision as String;
+
+    function initialize(exactUtc as Object or Null, precision as String) {
+        _precision = precision;
+        _exactUtc = null;
+        // Validated Unix UTC includes epoch zero and pre-1970 timestamps. Null
+        // denotes absence; sign does not. Promote before arithmetic so accepted
+        // integer UTC differences cannot wrap at the signed Number boundary.
+        if (precision.equals("exact") &&
+            (exactUtc instanceof Number || exactUtc instanceof Long)) {
+            _exactUtc = exactUtc.toLong();
+        }
+    }
+
+    function remainingSeconds(nowUtc as Number or Long) as Number or Long or Null {
+        if (_exactUtc == null) { return null; }
+        var remaining = _exactUtc - nowUtc.toLong();
+        return remaining > 0 ? remaining : 0;
+    }
+
+    function display(nowUtc as Number or Long, active as Boolean) as String {
+        var remaining = remainingSeconds(nowUtc);
+        if (remaining == null) {
+            if (_precision.equals("empty")) { return "NO SCHEDULE"; }
+            if (_precision.equals("date")) { return "DATE ONLY"; }
+            if (_precision.equals("window")) { return "LAUNCH WINDOW"; }
+            return "TIME UNKNOWN";
+        }
+        if (remaining == 0) { return "AWAITING UPDATE"; }
+        var days = (remaining / 86400).toNumber();
+        var hours = ((remaining % 86400) / 3600).toNumber();
+        var minutes = ((remaining % 3600) / 60).toNumber();
+        if (days > 0) {
+            return days.format("%d") + "d " + hours.format("%02d") + "h " + minutes.format("%02d") + "m";
+        }
+        var text = hours.format("%02d") + ":" + minutes.format("%02d");
+        if (active) { text += ":" + (remaining % 60).format("%02d"); }
+        return text;
+    }
+}

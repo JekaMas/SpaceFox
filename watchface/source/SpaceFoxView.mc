@@ -222,7 +222,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
                 var token=sceneLifecycle.begin();
                 if (token==null) { return; }
                 sfrGeneration=token;
-                sfrBuild=new NativeSfrBuild(assetCache.store,assetCache.base,packet);
+                sfrBuild=new NativeSfrBuild(assetCache.store,assetCache.base,packet);sfrBuild.preferBundled=renderer!=null&&renderer.aodPin&&renderer.aodResource!=null;
                 return;
             }
             if (sfrBuild.step()) {

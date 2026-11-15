@@ -1,0 +1,25 @@
+{
+  "hostSourcePin": "fe0eacfaa5cd8c5bc22670f9adb4f0de179964386d65eb2aed86c9bc7621e922",
+  "protectedOwnerCount": 12,
+  "protectedOwners": [
+    "catalog/source.json",
+    "tests/fixtures/global_geography/required-regional-details.json",
+    "tools/spacefox/bridge_map.py",
+    "tools/spacefox/bridge_map_render.js",
+    "tools/spacefox/catalog.py",
+    "tools/spacefox/geographic_context.py",
+    "tools/spacefox/global_map.py",
+    "tools/spacefox/graphics.py",
+    "tools/spacefox/wire.py",
+    "tools/spacefox/visual_bridge.py",
+    "tools/spacefox/publisher.py",
+    "tools/spacefox/native_profile.py"
+  ],
+  "changedTrackedPaths": [
+    "openspec/changes/spacefox-watchface/discovery.json",
+    "openspec/changes/spacefox-watchface/verification.json"
+  ],
+  "affectedProtectedOwners": [],
+  "nativeProductionChanges": false,
+  "conclusion": "Existing all224map-source/projection bindings and selected native producer/reader applicability are not invalidated. No native/map rerender or broadhashrefresh. Retained SDK evidence remains watch-app diagnostic781880heap/resource-storage scope, not ordinary or physical qualification."
+}

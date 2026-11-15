@@ -1,0 +1,15 @@
+test_captured_artwork_timeline_and_pixels (tests.test_sfr1m_current_animation.CurrentAnimationTest.test_captured_artwork_timeline_and_pixels) ... ok
+setUpClass (tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts) ... ERROR
+
+======================================================================
+ERROR: setUpClass (tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-public-final-integration/tests/test_sfr1m_current_receipts.py", line 38, in setUpClass
+    raise AssertionError('resource inventory ' + name)
+AssertionError: resource inventory phases-r2
+
+----------------------------------------------------------------------
+Ran 1 test in 7.849s
+
+FAILED (errors=1)

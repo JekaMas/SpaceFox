@@ -1,0 +1,10 @@
+TIMED_MAP_START intervalMs=50
+
+Error: Watchdog Tripped Error - Code Executed Too Long
+Details: Failed invoking <symbol>
+Stack: 
+  - outlineRow() at /src/watchface/source/NativeSfr.mc:64 0x50005557 
+  - oneRow() at /src/watchface/source/NativeSfr.mc:70 0x10007e4f 
+  - step() at /src/watchface/source/NativeSfr.mc:72 0x1000801b 
+  - tick() at /out/timed-decode/Probe.mc:5 0x10008858 
+Encountered an app crash.

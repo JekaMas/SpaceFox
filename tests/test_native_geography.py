@@ -73,7 +73,9 @@ class NativeGeographyTest(unittest.TestCase):
         context=context.replace(b'    var operator as String;\n',b'    var operator as String;\n    var operatorShort as String;\n').replace(b'rocket = text(data, "rocket"); operator = text(data, "operator");',b'rocket = text(data, "rocket"); operator = text(data, "operator"); operatorShort = text(data, "operatorShort");')
         schedule=schedule.replace(b'    private var _precision as String;\n',b'').replace(b'        _precision = precision;\n',b'').replace(b'function display(nowUtc as Number or Long, active as Boolean)',b'function display(nowUtc as Number or Long)')
         self.assertEqual(context,(ROOT/'watchface/source/SceneContext.mc').read_bytes())
-        self.assertEqual(schedule,(ROOT/'watchface/source/ScheduleState.mc').read_bytes())
+        self.assertEqual(schedule,(ROOT/'tests/fixtures/retained-pre-display03/watchface/source/ScheduleState.mc').read_bytes())
+        from tests.retained_native_binding import verify_current
+        verify_current()  # DISPLAY03 binds current owners; the zero probe remains historical.
         raw=(prior/'native-tests.log').read_text();execution=json.loads((prior/'execution.json').read_text())
         self.assertIn('zeroValid=true',raw)
         self.assertEqual(parse_output(raw,execution['rawExitCode'],('siteFlagPositive','siteFlagNegative','siteCorpusBounds'))['status'],'passed')

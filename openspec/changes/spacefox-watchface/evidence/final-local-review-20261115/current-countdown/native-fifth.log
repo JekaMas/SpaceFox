@@ -1,0 +1,16 @@
+------------------------------------------------------------------------------
+Executing test peerCurrentCountdownTable...
+DEBUG (09:44): PAIR offset=-176523 active=T- 49:02:03 low=T- 49:03 sameTarget=true
+DEBUG (09:44): PAIR offset=-59 active=T- 00:00:59 low=T- 00:01 sameTarget=true
+DEBUG (09:44): PAIR offset=0 active=T+ 00:00:00 low=T+ 00:00 sameTarget=true
+DEBUG (09:44): PAIR offset=1 active=T+ 00:00:01 low=T+ 00:00 sameTarget=true
+DEBUG (09:44): PAIR offset=901 active=T+ 00:15:01 low=T+ 00:15 sameTarget=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+peerCurrentCountdownTable           PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

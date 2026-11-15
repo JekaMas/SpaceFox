@@ -1,0 +1,77 @@
+{
+  "qualification": "Public current source, local finite software cases only. No private checkout/Git object required.",
+  "cases": [
+    {
+      "id": "VC01.P1.S01.POSITIVE.CURRENT",
+      "testId": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc01_s01_positive",
+      "observation": "passed",
+      "receipt": "public-current.log"
+    },
+    {
+      "id": "VC01.P1.S01.NEGATIVE.CURRENT",
+      "testId": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc01_s01_negative",
+      "observation": "passed",
+      "receipt": "public-current.log"
+    },
+    {
+      "id": "VC01.P1.S02.POSITIVE.CURRENT",
+      "testId": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc01_s02_positive",
+      "observation": "passed",
+      "receipt": "public-current.log"
+    },
+    {
+      "id": "VC01.P1.S02.NEGATIVE.CURRENT",
+      "testId": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc01_s02_negative",
+      "observation": "passed",
+      "receipt": "public-current.log"
+    },
+    {
+      "id": "VC04.P1.S01.POSITIVE.CURRENT",
+      "testId": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc04_s01_positive",
+      "observation": "passed",
+      "receipt": "public-current.log"
+    },
+    {
+      "id": "VC04.P1.S01.NEGATIVE.CURRENT",
+      "testId": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc04_s01_negative",
+      "observation": "passed",
+      "receipt": "public-current.log"
+    },
+    {
+      "id": "VC04.P1.S02.POSITIVE.CURRENT",
+      "testId": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc04_s02_positive",
+      "observation": "passed",
+      "receipt": "public-current.log"
+    },
+    {
+      "id": "VC04.P1.S02.NEGATIVE.CURRENT",
+      "testId": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc04_s02_negative",
+      "observation": "passed",
+      "receipt": "public-current.log"
+    },
+    {
+      "id": "VC07.P1.S01.POSITIVE",
+      "testId": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s01_positive",
+      "observation": "passed",
+      "receipt": "public-current.log"
+    },
+    {
+      "id": "VC07.P1.S01.NEGATIVE",
+      "testId": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s01_negative",
+      "observation": "passed",
+      "receipt": "public-current.log"
+    },
+    {
+      "id": "VC07.P1.S02.POSITIVE.CURRENT",
+      "testId": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_positive",
+      "observation": "passed",
+      "receipt": "public-current.log"
+    },
+    {
+      "id": "VC07.P1.S02.NEGATIVE.CURRENT",
+      "testId": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_negative",
+      "observation": "passed",
+      "receipt": "public-current.log"
+    }
+  ]
+}

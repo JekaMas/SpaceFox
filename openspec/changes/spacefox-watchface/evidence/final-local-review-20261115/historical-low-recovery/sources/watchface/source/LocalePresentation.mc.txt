@@ -1,0 +1,135 @@
+import Toybox.Graphics;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.System;
+
+// One foreground owner survives renderer release, so active/AOD/maintenance
+// share the same dictionary and fonts. All resources are prepared off redraw.
+(:extendedCode, :typecheck(false))
+class LocalePresentation {
+    var qualificationMode as Boolean=false;
+    var locale as String="";
+    var dictionary=null;
+    var small as Graphics.FontType or Null=null;
+    var label as Graphics.FontType or Null=null;
+    var latinSmall as Graphics.FontType or Null=null;
+    var count as Graphics.FontType or Null=null;
+    var loads=0;
+    function initialize(){
+        // Proper names use a shared Latin face, independent of UI language.
+        // SDK font files stay external; retain only these two common handles.
+        try{label=Graphics.getVectorFont({:face=>"RobotoRegular",:size=>26});latinSmall=Graphics.getVectorFont({:face=>"RobotoRegular",:size=>22});}catch(e){}
+        if(label==null){label=Graphics.FONT_TINY;}if(latinSmall==null){latinSmall=Graphics.FONT_XTINY;}
+        LocaleGraphemes.load();prepare("en");
+    }
+    function prepare(requested) {
+        var index=SceneStrings.index(requested);
+        if(!qualificationMode&&!SceneStrings.qualified(index)){index=0;}
+        var next=SceneStrings.locale(index);
+        if(next.equals(locale)){return;}
+        dictionary=null;small=null;count=null;locale="";
+        try {
+            dictionary=WatchUi.loadResource(SceneStrings.resource(index));loads+=1;
+            var face=dictionary["face"];
+            small=face.equals("RobotoRegular")?latinSmall:Graphics.getVectorFont({:face=>[face,"RobotoRegular"],:size=>22});
+            count=Graphics.getVectorFont({:face=>[face,"RobotoRegular"],:size=>36});
+            if(small==null||label==null||count==null){throw new Lang.InvalidValueException("locale font unavailable");}
+            locale=next;
+        } catch(e) {
+            dictionary=null;small=null;count=null;
+            if(!next.equals("en")){prepare("en");return;}
+            // Built-in English survives unavailable scalable-font resources.
+            locale="en";small=latinSmall;count=Graphics.FONT_SMALL;
+        }
+    }
+    function word(key) as String {
+        if(dictionary!=null&&dictionary.hasKey(key)){return dictionary[key];}
+        if(key.equals("noSchedule")){return "No schedule";}
+        if(key.equals("dateOnly")){return "Date only";}
+        if(key.equals("window")){return "Launch window";}
+        if(key.equals("awaitUpdate")){return "Awaiting update";}
+        if(key.equals("day")){return "d";}if(key.equals("hour")){return "h";}if(key.equals("minute")){return "m";}if(key.equals("second")){return "s";}
+        return "Time unknown";
+    }
+    function countdown(current, active) as String {
+        var seconds=current.remaining;
+        if(seconds==null){
+            var raw=current.countdown;
+            if(raw.equals("NO SCHEDULE")){return word("noSchedule");}
+            if(raw.equals("DATE ONLY")){return current.date==null?word("dateOnly"):date(current.date);}
+            if(raw.equals("LAUNCH WINDOW")){return word("window");}
+            return word("timeUnknown");
+        }
+        if(seconds<=0){return word("awaitUpdate");}
+        var hours=seconds/3600;var minutes=(seconds%3600)/60;
+        // Numeric token ordering remains LTR even when the localized unit is RTL.
+        // Whole-string ordering is performed by the native shaper; no reversal.
+        var value="";
+        if(seconds>=86400){value=token(seconds/86400,"day")+" "+token(hours%24,"hour")+" "+token(minutes,"minute");}
+        else if(seconds>=3600||!active){value=token(hours,"hour")+" "+token(minutes,"minute");}
+        else{value=token(minutes,"minute")+" "+token(seconds%60,"second");}
+        return "T−"+value;
+    }
+    function token(value,key) as String {var text=value+word(key);return dictionary!=null&&dictionary["rtl"]?"⁦"+text+"⁩":text;}
+    function number(raw) as String {
+        if(raw.equals("—")){return raw;}
+        var separator=dictionary==null?",":dictionary["group"];var result="";
+        while(raw.length()>3){result=separator+raw.substring(raw.length()-3,raw.length())+result;raw=raw.substring(0,raw.length()-3);}
+        return raw+result;
+    }
+    function metric(fitness,values,role) as String {var raw=fitness.display(values,role);return role.equals("steps")||role.equals("calories")?number(raw):raw;}
+    function date(iso) as String {
+        // Provider date is a UTC civil date, never a fabricated midnight moment.
+        // Garmin exposes no date-order preference: explicit locale rule.
+        if(iso.length()!=10){return word("dateOnly");}
+        var y=iso.substring(0,4);var m=iso.substring(5,7);var d=iso.substring(8,10);
+        var order=dictionary==null?"mdy":dictionary["dateOrder"];
+        if(order.equals("ymd")){return y+"/"+m+"/"+d;}
+        return order.equals("mdy")?m+"/"+d+"/"+y:d+"/"+m+"/"+y;
+    }
+    function fit(dc,value,font,width) as String {
+        if(dc.getTextWidthInPixels(value,font)<=width){return value;}
+        if(dc.getTextWidthInPixels("…",font)>width){return "";}
+        // Check growing whole clusters, stopping at the first overflowing
+        // prefix: bounded by the visible line, not repeated scans of a long
+        // provider string. Prefix substring conversion avoids a full char array.
+        var best="…";var end=1;
+        while(end<=value.length()){
+            var prefix=value.substring(0,end);
+            var probe=end<value.length()?value.substring(0,end+1):prefix;
+            if(end==value.length()||previousCluster(probe,end+1)==end){
+                var candidate=prefix+"…";
+                if(dc.getTextWidthInPixels(candidate,font)>width){break;}
+                best=candidate;
+            }
+            end+=1;
+        }
+        return best;
+    }
+    function previousCluster(value,end) as Number {
+        return previousPoints(value.toCharArray(),end);
+    }
+    function previousPoints(chars,end) as Number {
+        var boundary=0;var ri=0;
+        for(var i=1;i<end;i+=1){
+            var a=chars[i-1].toNumber();var b=chars[i].toNumber();
+            if(a>=0x1f1e6&&a<=0x1f1ff){ri+=1;}else{ri=0;}
+            var join=false;
+            if(a==13&&b==10){join=true;}
+            else if(!LocaleGraphemes.control(a)&&!LocaleGraphemes.control(b)){
+                join=LocaleGraphemes.extend(b)||b==0x200d||LocaleGraphemes.spacing(b)||LocaleGraphemes.prepend(a)||(a>=0x1f1e6&&a<=0x1f1ff&&b>=0x1f1e6&&b<=0x1f1ff&&ri%2==1)||LocaleGraphemes.hangul(a,b);
+                if(!join&&a==0x200d&&LocaleGraphemes.pictographic(b)){
+                    var j=i-2;while(j>=0&&LocaleGraphemes.extend(chars[j].toNumber())){j-=1;}
+                    join=j>=0&&LocaleGraphemes.pictographic(chars[j].toNumber());
+                }
+                if(!join&&LocaleGraphemes.incbConsonant(b)){
+                    var j=i-1;var linker=false;
+                    while(j>=0&&(LocaleGraphemes.incbExtend(chars[j].toNumber())||LocaleGraphemes.incbLinker(chars[j].toNumber()))){if(LocaleGraphemes.incbLinker(chars[j].toNumber())){linker=true;}j-=1;}
+                    join=linker&&j>=0&&LocaleGraphemes.incbConsonant(chars[j].toNumber());
+                }
+            }
+            if(!join){boundary=i;}
+        }
+        return boundary;
+    }
+}

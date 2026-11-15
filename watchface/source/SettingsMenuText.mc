@@ -2,11 +2,11 @@ import Toybox.Lang;
 // Menu text mirrors the five existing settings string resources.
 (:extendedCode, :typecheck(false)) module SettingsMenuText {
  function rejected(locale) {
-  if(locale.equals("ru")){return ["Данные отклонены", "Проверьте URL или обновите SpaceFox"];}
-  if(locale.equals("de")){return ["Daten abgelehnt", "URL prüfen oder SpaceFox aktualisieren"];}
-  if(locale.equals("fr")){return ["Données refusées", "Vérifiez l’URL ou mettez SpaceFox à jour"];}
-  if(locale.equals("es")){return ["Datos rechazados", "Compruebe la URL o actualice SpaceFox"];}
-  return ["Feed rejected", "Check URL or update SpaceFox"];
+  if(locale.equals("ru")){return ["Ошибка данных", "URL / обновить"];}
+  if(locale.equals("de")){return ["Daten abgelehnt", "URL / App-Update"];}
+  if(locale.equals("fr")){return ["Données refusées", "URL / mise à jour"];}
+  if(locale.equals("es")){return ["Datos rechazados", "URL / actualizar"];}
+  return ["Feed rejected", "Check URL / update"];
  }
  function values(locale,group) {
   if(locale.equals("en")) { return [["Language", "Field 1", "Field 2", "Field 3", "Field 4", "Clock color", "Countdown color", "Field 1 color", "Field 2 color", "Field 3 color", "Field 4 color", "Feed URL"], ["English", "Русский", "Deutsch", "Français", "Español", "Automatic"], ["Steps", "Body Battery", "Heart rate", "Stress", "Calories", "Watch battery"], ["Mint", "White", "Ice blue", "Lavender", "Gold", "Pink"]][group]; }
