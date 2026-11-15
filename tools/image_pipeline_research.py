@@ -44,7 +44,7 @@ def read_png(path):
     raw = path.read_bytes()
     if len(raw) > 2 * 1024 * 1024 or not raw.startswith(b'\x89PNG\r\n\x1a\n'):
         raise ValueError('PNG signature or bound')
-    at = 8; seen_header = False; seen_idat = False; ended_idat = False
+    at = 8; seen_header = False; seen_idat = False; ended_idat = False; seen_palette = False
     compressed = bytearray(); dimensions = None
     while at < len(raw):
         if len(raw)-at < 12: raise ValueError('truncated PNG chunk')
@@ -61,6 +61,10 @@ def read_png(path):
                 raise ValueError('RGB/RGBA8 PNG required')
             dimensions=(w,h,3 if color==2 else 4);seen_header=True
         elif kind == b'IHDR': raise ValueError('duplicate PNG header')
+        elif kind == b'PLTE':
+            if seen_palette or seen_idat or not 3 <= size <= 768 or size % 3:
+                raise ValueError('PNG palette')
+            seen_palette=True
         elif kind == b'tRNS': raise ValueError('PNG transparency chunk unsupported')
         elif kind == b'IDAT':
             if ended_idat: raise ValueError('nonconsecutive PNG data')

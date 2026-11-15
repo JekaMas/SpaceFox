@@ -85,6 +85,11 @@ class ImagePipelineTest(unittest.TestCase):
             ihdr_end=8+12+13
             rgb=(b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',struct.pack('>IIBBBBB',1,1,8,2,0,0,0))
                  +chunk(b'tRNS',b'\x00'*6)+chunk(b'IDAT',zlib.compress(b'\x00\x00\x00\x00'))+chunk(b'IEND',b''))
+            # Optional suggested RGB palette is legal and must remain accepted.
+            rgb_palette=(b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',struct.pack('>IIBBBBB',1,1,8,2,0,0,0))
+                         +chunk(b'PLTE',b'\x00\x00\x00')+chunk(b'IDAT',zlib.compress(b'\x00\x00\x00\x00'))+chunk(b'IEND',b''))
+            valid=Path(tmp)/'palette.png'; valid.write_bytes(rgb_palette)
+            self.assertEqual(study.read_png(valid)[1],(1,1,b'\x00\x00\x00\xff'))
             cases=(rgb, original[:-12], original[:29]+bytes([original[29]^1])+original[30:],
                    original[:-1], original[:ihdr_end]+chunk(b'tRNS',b'\x00'*6)+original[ihdr_end:],
                    original+b'extra')
