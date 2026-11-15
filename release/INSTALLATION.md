@@ -1,21 +1,13 @@
 # SpaceFox installation
 
-The [0.1.15 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.15-test.1) is available for a separate USB/MTP test; use its [installation](INSTALLATION-0.1.15.md) and [testing](TESTING-0.1.15.md) guides. It has not been submitted to Garmin. A local PRG or IQ cannot be installed by tapping it on a phone.
+The [0.1.16 regular GitHub release](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.16) is available with signed device-specific PRGs. The original [SpaceFox Connect IQ listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3) shows 0.1.16/Internal 9 **PENDING** in owner preview; public approval is not yet established. An installation request for Forerunner 165 Music was submitted after accepting its six permissions. Completion and on-watch installation have not been observed.
 
-The [0.1.14 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.14-test.1) is available for a separate USB/MTP test; use its [installation](INSTALLATION-0.1.14.md) and [testing](TESTING-0.1.14.md) guides. It has not been submitted to Garmin.
+For an existing installation, use normal Garmin Connect synchronization with the paired watch nearby. When the update is available and installed, check that SpaceFox settings show **0.1.16**. Preserve settings and cache; no uninstall or reset is required.
 
-## Garmin 0.1.13
+For a separate USB/MTP installation, download the program matching the watch from the [release](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.16): `SpaceFox-fr165m.prg` for Forerunner 165 Music or `SpaceFox-fr165.prg` for Forerunner 165. With a computer and data cable, copy it to `GARMIN/APPS`, eject safely and select SpaceFox. An IQ or PRG cannot be installed by tapping it on a phone; the IQ is the Store export. Neither route establishes physical settings or cache survival.
 
-Use the [original SpaceFox Connect IQ listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3). Garmin displays 0.1.13/Internal 8 in owner preview, PENDING; public approval and physical delivery remain unobserved. The Music installation request was accepted. For an existing installation, use normal Garmin Connect synchronization with the paired watch nearby. Expected SpaceFox settings version on the watch: **0.1.13**. Preserve settings/cache; no uninstall or reset is required.
+English and `https://jekamas.github.io/SpaceFox` are defaults. Active mode has four configurable fields and seconds; always-on mode shows the map outline and point, clock, date, minute countdown and battery without those four fields. Accepted data remains available offline. Passing T0 is not proof of liftoff.
 
-The [GitHub release](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.13) also provides signed PRGs. For a separate USB/MTP test, choose the matching device program: `SpaceFox-fr165m.prg` for Forerunner 165 Music, `SpaceFox-fr165.prg` for Forerunner 165. Connect the watch with a computer/data cable, copy the program into `GARMIN/APPS`, eject safely and select SpaceFox. The PRG/IQ cannot be installed by tapping it on a phone; IQ is the developer export. Changing installation routes does not establish physical settings/cache survival.
+Version 0.1.16 declares six Garmin permissions: SensorHistory for recent heart/stress samples; ComplicationSubscriber for current Body Battery when selected; Communications for the public feed; Background for scheduled refresh; Notifications for enabled launch reminders; and UserProfile for quiet-time settings. Body Battery availability depends on the watch and its permissions. Reminders are off by default.
 
-English and `https://jekamas.github.io/SpaceFox` are defaults. The paired phone supplies normal Garmin communications. Active has four configurable fields and seconds; LOW has full contour map/point, clock, date/weekday, minute countdown and battery without four fields. Accepted data remains available offline. Passing T0 is not proof of liftoff.
-
-The signed SDK run and package checks are documented in [testing](../TESTING.md). Phone delivery, physical behavior and battery use remain separate. Do not include credentials or private health data in reports.
-
-The 0.1.16 candidate declares six Garmin permissions: SensorHistory for recent
-heart/stress samples, ComplicationSubscriber for current Body Battery when selected,
-Communications for the public feed, Background for scheduled refresh, Notifications
-for enabled launch reminders, and UserProfile for quiet-time settings. Actual Body
-Battery availability depends on the watch and its permissions.
+The signed SDK run and package checks are documented in [testing](../TESTING.md) and the [publication record](../openspec/changes/spacefox-watchface/evidence/display04-publication/PUBLICATION.md). Physical delivery, actual watch and phone behavior, wake time and battery use remain unverified. Do not include credentials or private health data in reports.
