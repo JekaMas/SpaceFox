@@ -86,8 +86,10 @@ class SceneRenderer {
     (:typecheck(false)) function active(dc as Graphics.Dc, current as ClockSnapshot, settings as SceneSettings, values as Dictionary<String, Number or Null>, fitness as Fitness, progress as Float) as Void {
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK); dc.clear();
         var rich=downloaded instanceof NativeSfrRenderer?downloaded:null;
-        // The same catalog-derived map stays selected before and after artwork.
-        if(map!=null){dc.drawBitmap2(0,0,map,mapScale);}
+        // A complete selected scene owns its validated map; the bundled map
+        // remains the fallback while that scene is absent or incomplete.
+        var selectedMap=rich!=null && rich.mapBitmap!=null;
+        if(selectedMap){dc.drawBitmap(0,0,rich.mapBitmap);}else if(map!=null){dc.drawBitmap2(0,0,map,mapScale);}
         var context = fullContext;
         if (context != null) {
             // Match the existing unavailable health marker without changing the
@@ -143,7 +145,8 @@ class SceneRenderer {
             icon(dc,left-(role.equals("battery")?31:25),rowTop+(role.equals("battery")?2:5),role);
             text(dc,left+width/2,y,fonts["metric"] as Graphics.FontType,label,settings.fieldColors[i],128,1);
         }
-        if(pin){dc.drawBitmap(pinX-14,pinY-14,marker);}
+        if(selectedMap){if(rich.scene!=null && rich.scene["position"]!=null){dc.drawBitmap(321,151,marker);}}
+        else if(pin){dc.drawBitmap(pinX-14,pinY-14,marker);}
     }
     function metricText(fitness as Fitness,values as Dictionary<String,Number or Null>,role as String,settings as SceneSettings) as String {
         return presentation.metric(fitness,values,role);
