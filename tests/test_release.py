@@ -175,7 +175,7 @@ class ReleaseTest(unittest.TestCase):
                 os.environ["SPACEFOX_TEST_KEY"] = old
 
     def test_manifest_source_and_output_negative(self):
-        for attribute, value, message in (("entry", "SfrRuntimeAppUUIDs", "entry"),
+        for attribute, value, message in (("entry", "SfrRuntimeAppUUIDs", "release manifest differs beyond approved version"),
                                           ("version", "01.2.3", "version"),
                                           ("id", "955b26e54df04e069c23cd95f9df5f01", "UUID"),
                                           ("minApiLevel", "6.0.3", "minimum API")):
@@ -185,8 +185,8 @@ class ReleaseTest(unittest.TestCase):
                     self.build(self.base / "invalid-manifest")
                 self.git("reset", "--hard", self.base_revision)
         manifest = self.root / "watchface/manifest.xml"
-        for old, new, message in ((b'id="fr165"', b'id="fr165m"', "products/languages"),
-                                   (b"<iq:language>rus</iq:language>", b"<iq:language>ita</iq:language>", "products/languages")):
+        for old, new, message in ((b'id="fr165"', b'id="fr165m"', "release manifest differs beyond approved version"),
+                                   (b"<iq:language>rus</iq:language>", b"<iq:language>ita</iq:language>", "release manifest differs beyond approved version")):
             original = manifest.read_bytes()
             manifest.write_bytes(original.replace(old, new))
             self.commit("Unqualified product/language control")
