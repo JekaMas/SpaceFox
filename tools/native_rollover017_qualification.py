@@ -11,7 +11,7 @@ import tarfile
 import tempfile
 
 PARENT_SHA = '09e3ed20e5c7964b8d0907fe94a49c4c3ee8627bd82ab47fddfd07c2dbdd7ca7'
-NAMES = ('queueSequence', 'successorNearWake', 'forwardJumpAndPending', 'sourcedAscentWindowAndReschedule', 'realStorageQueue', 'longIdentityCache')
+NAMES = ('queueSequence', 'successorNearWake', 'forwardJumpAndPending', 'sourcedAscentWindowAndReschedule', 'realStorageQueue', 'longIdentityCache', 'savedQueueWake', 'photoExactGreen')
 
 def sha(data):
     return hashlib.sha256(data).hexdigest()
@@ -119,7 +119,7 @@ def validate(root, catalog):
             raise ValueError('rollover photo input changed: ' + name)
     if photo['probeResources']['packets.json'] != sha(files['nativePackets']) or photo['probeResources']['variants.json'] != sha(files['nativeVariants']):
         raise ValueError('rollover photo fixtures differ')
-    if parse_output(files['photoLog'].decode(), json.loads(files['photoObservation'])['rawExit'], ('photoExactGreen',))['status'] != 'passed' or 'PHOTO_3584 Starship Starbase active=T- 00:40:16 low=T- 00:41' not in files['photoLog'].decode():
+    if parse_output(files['photoLog'].decode(), json.loads(files['photoObservation'])['rawExit'], NAMES)['status'] != 'passed' or 'PHOTO_3584 Starship Starbase active=T- 00:40:16 low=T- 00:41' not in files['photoLog'].decode():
         raise ValueError('rollover exact photo witness failed')
     stock = json.loads(files['stockBuild'])
     observed = json.loads(files['stockObservation'])
@@ -128,7 +128,7 @@ def validate(root, catalog):
     for name, expected in stock['sources'].items():
         if sha((root / name).read_bytes()) != expected:
             raise ValueError('rollover stock source changed: ' + name)
-    if observed['result'] != 'READY' or observed['nativeId'] != 'cad2f4d3' or observed['memoryKiB'] > observed['limitKiB'] or observed['peakKiB'] > observed['limitKiB'] or len(observed['loadedSuccessorIds']) != 2 or observed['physicalDeviceObserved'] is not False:
+    if observed['result'] != 'READY' or observed['nativeId'] != '2e6fc8c4' or observed['memoryKiB'] > observed['limitKiB'] or observed['peakKiB'] > observed['limitKiB'] or len(observed['loadedSuccessorIds']) != 2 or observed['physicalDeviceObserved'] is not False:
         raise ValueError('rollover stock observation invalid')
     if not files['stockImage'].startswith(b'\x89PNG\r\n\x1a\n'):
         raise ValueError('rollover stock image invalid')

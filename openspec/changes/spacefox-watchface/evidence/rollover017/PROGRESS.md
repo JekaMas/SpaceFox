@@ -31,3 +31,14 @@ The optional same-generation future metadata, source-bound terminal updates, bou
 The exact +3,584 native counterexample now passes against preloaded Starship, its own UTC target and Starbase point (`photo-final.log`); LOW rounds the future 40:16 up to 41 minutes. The first incorrect test oracle and raw failure remain in `photo-exact-initial-*`. This added only a focused test and proof inputs; the exact-ID stock and six-test observations remain valid.
 
 Final strict photo-bound exported admission passed from checkpoint `079b54a484e737a29f8cc618c39f95f7d13fb93f` with 5,651 tracked inputs and all five primary locales (`export-bound-final.log`). Final native source and ID are unchanged from the stock and six-test passes. Author incident checks are GREEN; root-owned independent peer, live feed activation, publication and physical observation remain open.
+
+## Independent peer correction
+
+The peer found that omissions could preserve the successor queue while dropping
+its near-window refresh target. The foreground plan now derives targets after
+merging the saved queue on startup, admission and recovery. Final ID `2e6fc8c4`:
+FR165M eight named native tests passed, including omitted/empty/restart wake and
+photo +3584; uninstrumented stock used 105.8/123.8 KiB, peak 121.8, decoded
+visual and two successors, zero new last-frame resources. SDK lanes restored.
+The first probe failure (missing readiness setup) and stale-ID diagnostic are
+retained. Strict final exported admission and root release gates remain open.
