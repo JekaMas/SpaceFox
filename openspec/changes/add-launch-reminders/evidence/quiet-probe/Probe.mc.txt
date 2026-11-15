@@ -1,0 +1,26 @@
+import Toybox.ActivityMonitor;
+import Toybox.Application;
+import Toybox.Background;
+import Toybox.Lang;
+import Toybox.System;
+import Toybox.Time;
+import Toybox.UserProfile;
+import Toybox.WatchUi;
+(:background,:typecheck(false)) function inspectQuiet(label){
+ try{var d=System.getDeviceSettings();System.println(label+" dnd_has="+(d has :doNotDisturb)+" dnd_boolean="+((d has :doNotDisturb)&&(d.doNotDisturb instanceof Boolean))+" vibration_has="+(d has :vibrateOn)+" vibration_boolean="+((d has :vibrateOn)&&(d.vibrateOn instanceof Boolean)));}catch(e){System.println(label+" device_settings_exception");}
+ try{var i=ActivityMonitor.getInfo();System.println(label+" activity_null="+(i==null)+" sleep_has="+(i!=null&&(i has :isSleepMode))+" sleep_boolean="+(i!=null&&(i has :isSleepMode)&&(i.isSleepMode instanceof Boolean))+" sleep_null="+(i!=null&&(i has :isSleepMode)&&i.isSleepMode==null));}catch(e){System.println(label+" activity_exception");}
+ try{var p=UserProfile.getProfile();System.println(label+" profile_null="+(p==null)+" sleep_has="+(p!=null&&(p has :sleepTime))+" wake_has="+(p!=null&&(p has :wakeTime))+" sleep_duration="+(p!=null&&(p has :sleepTime)&&(p.sleepTime instanceof Time.Duration))+" wake_duration="+(p!=null&&(p has :wakeTime)&&(p.wakeTime instanceof Time.Duration))+" sleep_null="+(p!=null&&(p has :sleepTime)&&p.sleepTime==null)+" wake_null="+(p!=null&&(p has :wakeTime)&&p.wakeTime==null));}catch(e){System.println(label+" profile_exception");}
+}
+(:background) class ProbeApp extends Application.AppBase {
+ function initialize(){AppBase.initialize();}
+ (:typecheck(disableBackgroundCheck)) function getInitialView(){return [new ProbeFace()];}
+ function getServiceDelegate(){return [new ProbeService()];}
+}
+(:typecheck(false)) class ProbeFace extends WatchUi.WatchFace {
+ var sent=false;function initialize(){WatchFace.initialize();}
+ function onUpdate(dc){if(!sent){sent=true;inspectQuiet("FOREGROUND");Background.registerForTemporalEvent(Time.now());}}
+}
+(:background) class ProbeService extends System.ServiceDelegate {
+ function initialize(){ServiceDelegate.initialize();}
+ function onTemporalEvent(){inspectQuiet("BACKGROUND");Background.exit(null);}
+}

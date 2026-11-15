@@ -23,10 +23,12 @@
     "Cryptography.Hash SHA256/update(ByteArray)/digest, UTF8 chunks; actual native literal agreement",
     "Lang.String.compareTo and Array.sort(null) API5.0 with minAPI5.1; Number/Long narrowing before Array indexes",
     "Graphics.createBufferedBitmap alpha-blending, AffineTransform.setToTranslation/scale API4.2 cached outside redraw, drawBitmap2, setClip/clearClip; cached bitmap built at activation, runtime proof separate",
-    "StringUtil.convertEncodedString UTF8 ByteArray\u2192String API3.0; one-time persistent reassembly, ordinary heap experiment separate",
+    "StringUtil.convertEncodedString UTF8 ByteArray→String API3.0; one-time persistent reassembly, ordinary heap experiment separate",
     "Compiler :extendedCode API5.1; parser/source/raster validation classes paged; redraw/clock remain resident, actualFR165 runtime/statistics required",
     "AppBase.onDisplayModeChanged/System.getDisplayMode API5.0 HIGH/LOW/OFF; actual current SDK mode0/1 synchronization, animation still only real onExitSleep",
-    "Graphics.getVectorFont API4.2.1 using :face/:size on pinnedFR165 API5.2; shared Roboto proper names and locale fonts loaded at prepare, actual fullstore callbacks/captures and same-font redraw proof; :font/:scale API5.1 not used here"
+    "Graphics.getVectorFont API4.2.1 using :face/:size on pinnedFR165 API5.2; shared Roboto proper names and locale fonts loaded at prepare, actual fullstore callbacks/captures and same-font redraw proof; :font/:scale API5.1 not used here",
+    "Notifications.showNotification API5.1 in watch-face/background, permission Notifications; SDK call-return observed, not physical notification/vibration delivery",
+    "System.DeviceSettings.doNotDisturb/vibrateOn, guarded UserProfile sleep/wake durations and ActivityMonitor.Info.isSleepMode; UserProfile permission; SDK field types only, physical quiet behavior unproved"
   ],
   "runtime_api": "5.2.0",
   "evidenced_rejections": [

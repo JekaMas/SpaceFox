@@ -12,7 +12,7 @@ These Forerunner 165 Music SDK captures show the production-signed 0.1.13 build 
 
 The [0.1.14 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.14-test.1) has separate [installation](release/INSTALLATION-0.1.14.md) and [testing](release/TESTING-0.1.14.md) guides; its [qualification](openspec/changes/spacefox-watchface/evidence/version-014/PEER-014-FINAL.md) retains the original 0.1.13 evidence boundaries. A separate [signed 0.1.14 SDK observation](openspec/changes/spacefox-watchface/evidence/signed-014-runtime/RESULT.md) shows one offline seeded scene; it does not establish physical delivery.
 
-[Launch vibration reminders are not currently available](docs/LAUNCH_REMINDERS.md); the requested cadence and quiet behavior remain unimplemented.
+Version 0.1.15 adds [launch reminders](docs/LAUNCH_REMINDERS.md), an opt-in, quiet-aware system notification feature scheduled every five minutes from T−15; actual vibration and timing depend on Garmin settings and background scheduling.
 
 The clock uses fixed 24-hour `HH:mm` and the current local weekday and `DD.MM` date. The active countdown shows `T- HH:mm:ss` before a known target and `T+ HH:mm:ss` from zero onward, with accumulating hours. Always-on uses minute precision; an unknown target is shown as dashes. Passing zero does not establish liftoff. The selected launch remains for at least 15 minutes, or through a later sourced ascent end. The watch retains an accepted schedule for offline use; stale and rescheduled data have separate indicators.
 

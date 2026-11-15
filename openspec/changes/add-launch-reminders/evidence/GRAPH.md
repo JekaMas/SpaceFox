@@ -1,0 +1,3 @@
+# Author graph execution
+
+The change-owned DAG was run with `--all --require-clean` on a clean author source after the stable implementation batch. All four properties, eight cases and their one deduplicated Python evidence-reader command passed. The reader verifies the exact source-bound FR165 thirteen-case SDK framework table; the simulator and controlled-state proof boundaries in the native receipt still apply. Structural OpenSpec, DAG and discovery validation also passed. This is author evidence; independent peer review remains pending. The raw executor record is retained in the private task diagnostics because it embeds local absolute worktree paths and private checkout provenance.

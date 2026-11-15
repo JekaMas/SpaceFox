@@ -1,3 +1,5 @@
+> Historical investigation: the original T−60-to-minute request was replaced on 2026-11-15 by a five-minute request from T−15. The decision below applies to the original cadence; see the current design and tasks for the revised implementation.
+
 # SpaceFox launch reminders — API feasibility memo
 
 Captured 2026-11-15T16:10:56Z. Read-only research; no repository edits, installs, accounts, or paid/model API calls. Official web API references and Garmin HTML guides were read live. The Notifications and Backgrounding guide bodies were retrieved with Python stdlib HTTPS because the web parser failed. No physical FR165 or vibration test was performed.

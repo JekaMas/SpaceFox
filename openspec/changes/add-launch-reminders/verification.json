@@ -1,0 +1,355 @@
+{
+  "schema_version": 2,
+  "change": "add-launch-reminders",
+  "requirements": [
+    {
+      "id": "LR1",
+      "capability": "launch-reminders",
+      "title": "Opt-in scheduled notifications",
+      "fingerprint": "67904e6020ac7c37f6e000c9389a06e55783d7e60b6e111fa006b6421703d860"
+    },
+    {
+      "id": "LR2",
+      "capability": "launch-reminders",
+      "title": "Quiet periods",
+      "fingerprint": "b549fcfccb07e95c91758cefd90be1db88ff330b01147a770f98f8cdd2598b45"
+    },
+    {
+      "id": "LR3",
+      "capability": "launch-reminders",
+      "title": "Reliable launch identity and timing",
+      "fingerprint": "631208276cfb50b59476190e2c6d0b2ab08e9ac6c1a304a2c35e93dea30bc869"
+    },
+    {
+      "id": "LR4",
+      "capability": "launch-reminders",
+      "title": "Shared background scheduling",
+      "fingerprint": "32e5195ac1c213eca1cff0eaaae767b5cd46e8e9058eb45b79cd5761ec7d7630"
+    }
+  ],
+  "properties": [
+    {
+      "id": "LR1.P1",
+      "requirement_id": "LR1",
+      "scenarios": [
+        "Disabled or enabled"
+      ],
+      "statement": "Opt-in scheduled notifications",
+      "owner": "settings",
+      "oracle": "Literal clock, state and call-count expectations against production Monkey C owner; simulated OS and physical limits remain separate.",
+      "source_globs": [
+        "watchface/source/**",
+        "watchface/reminder-tests/**",
+        "tests/test_launch_reminders.py",
+        "openspec/changes/add-launch-reminders/evidence/native-reminder-tests/**"
+      ]
+    },
+    {
+      "id": "LR2.P1",
+      "requirement_id": "LR2",
+      "scenarios": [
+        "Quiet or unknown"
+      ],
+      "statement": "Quiet periods",
+      "owner": "quiet",
+      "oracle": "Literal clock, state and call-count expectations against production Monkey C owner; simulated OS and physical limits remain separate.",
+      "source_globs": [
+        "watchface/source/**",
+        "watchface/reminder-tests/**",
+        "tests/test_launch_reminders.py",
+        "openspec/changes/add-launch-reminders/evidence/native-reminder-tests/**"
+      ]
+    },
+    {
+      "id": "LR3.P1",
+      "requirement_id": "LR3",
+      "scenarios": [
+        "Eligibility and deduplication"
+      ],
+      "statement": "Reliable launch identity and timing",
+      "owner": "eligibility",
+      "oracle": "Literal clock, state and call-count expectations against production Monkey C owner; simulated OS and physical limits remain separate.",
+      "source_globs": [
+        "watchface/source/**",
+        "watchface/reminder-tests/**",
+        "tests/test_launch_reminders.py",
+        "openspec/changes/add-launch-reminders/evidence/native-reminder-tests/**"
+      ]
+    },
+    {
+      "id": "LR4.P1",
+      "requirement_id": "LR4",
+      "scenarios": [
+        "Competing wake or notification failure"
+      ],
+      "statement": "Shared background scheduling",
+      "owner": "scheduler",
+      "oracle": "Literal clock, state and call-count expectations against production Monkey C owner; simulated OS and physical limits remain separate.",
+      "source_globs": [
+        "watchface/source/**",
+        "watchface/reminder-tests/**",
+        "tests/test_launch_reminders.py",
+        "openspec/changes/add-launch-reminders/evidence/native-reminder-tests/**"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "LR1.P1.POSITIVE",
+      "property_id": "LR1.P1",
+      "polarity": "positive",
+      "scenario": "Disabled or enabled",
+      "scenario_fingerprint": "56e254aa7f851b4364d022f3915dfde6a9d8fe88eda61262d7a53ce66f6e4a0d",
+      "setup": "Read the source-bound strict FR165 SDK test table; the compiled production helper ran with controlled clock, quiet and storage boundaries.",
+      "observable": "cadence positive literal expected notification and state transitions",
+      "red_expectation": "Incorrect notification, lost feed schedule, duplicate or unsafe quiet attempt violates the independent expected result.",
+      "green_expectation": "The production owner matches the explicit expected outcome and forbidden effects remain absent.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/reminder-tests/**",
+        "tests/test_launch_reminders.py",
+        "openspec/changes/add-launch-reminders/evidence/native-reminder-tests/**"
+      ],
+      "test_id": "unittest::tests.test_launch_reminders.ReminderTest.test_cadence_positive",
+      "command_id": "native-reminder-tests",
+      "state": "implemented",
+      "source_path": "tests/test_launch_reminders.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165, OS scheduling, real quiet state and notification delivery are replaced by simulator and controlled time/state; Python reads the bound native table.",
+        "forbidden_claims": [
+          "Physical vibration, exact OS wake timing, phone integration or hardware quiet behavior."
+        ],
+        "allowed_proof": "Actual FR165 SDK compiled Monkey C production helper with controlled state and explicit test expectations."
+      },
+      "source_sha256": "f0b7cf57412d697f6eb75a36ef958f36448ec4fc41ffc260d64e6285c33643a0"
+    },
+    {
+      "id": "LR1.P1.NEGATIVE",
+      "property_id": "LR1.P1",
+      "polarity": "negative",
+      "scenario": "Disabled or enabled",
+      "scenario_fingerprint": "56e254aa7f851b4364d022f3915dfde6a9d8fe88eda61262d7a53ce66f6e4a0d",
+      "setup": "Read the source-bound strict FR165 SDK test table; the compiled production helper ran with controlled clock, quiet and storage boundaries.",
+      "observable": "cadence negative literal expected notification and state transitions",
+      "red_expectation": "Incorrect notification, lost feed schedule, duplicate or unsafe quiet attempt violates the independent expected result.",
+      "green_expectation": "The production owner matches the explicit expected outcome and forbidden effects remain absent.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/reminder-tests/**",
+        "tests/test_launch_reminders.py",
+        "openspec/changes/add-launch-reminders/evidence/native-reminder-tests/**"
+      ],
+      "test_id": "unittest::tests.test_launch_reminders.ReminderTest.test_cadence_negative",
+      "command_id": "native-reminder-tests",
+      "state": "implemented",
+      "source_path": "tests/test_launch_reminders.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165, OS scheduling, real quiet state and notification delivery are replaced by simulator and controlled time/state; Python reads the bound native table.",
+        "forbidden_claims": [
+          "Physical vibration, exact OS wake timing, phone integration or hardware quiet behavior."
+        ],
+        "allowed_proof": "Actual FR165 SDK compiled Monkey C production helper with controlled state and explicit test expectations."
+      },
+      "source_sha256": "f0b7cf57412d697f6eb75a36ef958f36448ec4fc41ffc260d64e6285c33643a0"
+    },
+    {
+      "id": "LR2.P1.POSITIVE",
+      "property_id": "LR2.P1",
+      "polarity": "positive",
+      "scenario": "Quiet or unknown",
+      "scenario_fingerprint": "7f4167dcd3baa492f0f1fad377d8228748bac7367b32a10b3c2ed31e9767b946",
+      "setup": "Read the source-bound strict FR165 SDK test table; the compiled production helper ran with controlled clock, quiet and storage boundaries.",
+      "observable": "quiet positive literal expected notification and state transitions",
+      "red_expectation": "Incorrect notification, lost feed schedule, duplicate or unsafe quiet attempt violates the independent expected result.",
+      "green_expectation": "The production owner matches the explicit expected outcome and forbidden effects remain absent.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/reminder-tests/**",
+        "tests/test_launch_reminders.py",
+        "openspec/changes/add-launch-reminders/evidence/native-reminder-tests/**"
+      ],
+      "test_id": "unittest::tests.test_launch_reminders.ReminderTest.test_quiet_positive",
+      "command_id": "native-reminder-tests",
+      "state": "implemented",
+      "source_path": "tests/test_launch_reminders.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165, OS scheduling, real quiet state and notification delivery are replaced by simulator and controlled time/state; Python reads the bound native table.",
+        "forbidden_claims": [
+          "Physical vibration, exact OS wake timing, phone integration or hardware quiet behavior."
+        ],
+        "allowed_proof": "Actual FR165 SDK compiled Monkey C production helper with controlled state and explicit test expectations."
+      },
+      "source_sha256": "f0b7cf57412d697f6eb75a36ef958f36448ec4fc41ffc260d64e6285c33643a0"
+    },
+    {
+      "id": "LR2.P1.NEGATIVE",
+      "property_id": "LR2.P1",
+      "polarity": "negative",
+      "scenario": "Quiet or unknown",
+      "scenario_fingerprint": "7f4167dcd3baa492f0f1fad377d8228748bac7367b32a10b3c2ed31e9767b946",
+      "setup": "Read the source-bound strict FR165 SDK test table; the compiled production helper ran with controlled clock, quiet and storage boundaries.",
+      "observable": "quiet negative literal expected notification and state transitions",
+      "red_expectation": "Incorrect notification, lost feed schedule, duplicate or unsafe quiet attempt violates the independent expected result.",
+      "green_expectation": "The production owner matches the explicit expected outcome and forbidden effects remain absent.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/reminder-tests/**",
+        "tests/test_launch_reminders.py",
+        "openspec/changes/add-launch-reminders/evidence/native-reminder-tests/**"
+      ],
+      "test_id": "unittest::tests.test_launch_reminders.ReminderTest.test_quiet_negative",
+      "command_id": "native-reminder-tests",
+      "state": "implemented",
+      "source_path": "tests/test_launch_reminders.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165, OS scheduling, real quiet state and notification delivery are replaced by simulator and controlled time/state; Python reads the bound native table.",
+        "forbidden_claims": [
+          "Physical vibration, exact OS wake timing, phone integration or hardware quiet behavior."
+        ],
+        "allowed_proof": "Actual FR165 SDK compiled Monkey C production helper with controlled state and explicit test expectations."
+      },
+      "source_sha256": "f0b7cf57412d697f6eb75a36ef958f36448ec4fc41ffc260d64e6285c33643a0"
+    },
+    {
+      "id": "LR3.P1.POSITIVE",
+      "property_id": "LR3.P1",
+      "polarity": "positive",
+      "scenario": "Eligibility and deduplication",
+      "scenario_fingerprint": "998c58459fea47c3dbce6302f8243074d729e93edf39c932734b5f9482a16953",
+      "setup": "Read the source-bound strict FR165 SDK test table; the compiled production helper ran with controlled clock, quiet and storage boundaries.",
+      "observable": "identity positive literal expected notification and state transitions",
+      "red_expectation": "Incorrect notification, lost feed schedule, duplicate or unsafe quiet attempt violates the independent expected result.",
+      "green_expectation": "The production owner matches the explicit expected outcome and forbidden effects remain absent.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/reminder-tests/**",
+        "tests/test_launch_reminders.py",
+        "openspec/changes/add-launch-reminders/evidence/native-reminder-tests/**"
+      ],
+      "test_id": "unittest::tests.test_launch_reminders.ReminderTest.test_identity_positive",
+      "command_id": "native-reminder-tests",
+      "state": "implemented",
+      "source_path": "tests/test_launch_reminders.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165, OS scheduling, real quiet state and notification delivery are replaced by simulator and controlled time/state; Python reads the bound native table.",
+        "forbidden_claims": [
+          "Physical vibration, exact OS wake timing, phone integration or hardware quiet behavior."
+        ],
+        "allowed_proof": "Actual FR165 SDK compiled Monkey C production helper with controlled state and explicit test expectations."
+      },
+      "source_sha256": "f0b7cf57412d697f6eb75a36ef958f36448ec4fc41ffc260d64e6285c33643a0"
+    },
+    {
+      "id": "LR3.P1.NEGATIVE",
+      "property_id": "LR3.P1",
+      "polarity": "negative",
+      "scenario": "Eligibility and deduplication",
+      "scenario_fingerprint": "998c58459fea47c3dbce6302f8243074d729e93edf39c932734b5f9482a16953",
+      "setup": "Read the source-bound strict FR165 SDK test table; the compiled production helper ran with controlled clock, quiet and storage boundaries.",
+      "observable": "identity negative literal expected notification and state transitions",
+      "red_expectation": "Incorrect notification, lost feed schedule, duplicate or unsafe quiet attempt violates the independent expected result.",
+      "green_expectation": "The production owner matches the explicit expected outcome and forbidden effects remain absent.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/reminder-tests/**",
+        "tests/test_launch_reminders.py",
+        "openspec/changes/add-launch-reminders/evidence/native-reminder-tests/**"
+      ],
+      "test_id": "unittest::tests.test_launch_reminders.ReminderTest.test_identity_negative",
+      "command_id": "native-reminder-tests",
+      "state": "implemented",
+      "source_path": "tests/test_launch_reminders.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165, OS scheduling, real quiet state and notification delivery are replaced by simulator and controlled time/state; Python reads the bound native table.",
+        "forbidden_claims": [
+          "Physical vibration, exact OS wake timing, phone integration or hardware quiet behavior."
+        ],
+        "allowed_proof": "Actual FR165 SDK compiled Monkey C production helper with controlled state and explicit test expectations."
+      },
+      "source_sha256": "f0b7cf57412d697f6eb75a36ef958f36448ec4fc41ffc260d64e6285c33643a0"
+    },
+    {
+      "id": "LR4.P1.POSITIVE",
+      "property_id": "LR4.P1",
+      "polarity": "positive",
+      "scenario": "Competing wake or notification failure",
+      "scenario_fingerprint": "5d07d48431d13e5ecf1385ad9f0b23a0c3a02e2336fcac5775d0b8aeb37f1012",
+      "setup": "Read the source-bound strict FR165 SDK test table; the compiled production helper ran with controlled clock, quiet and storage boundaries.",
+      "observable": "scheduler positive literal expected notification and state transitions",
+      "red_expectation": "Incorrect notification, lost feed schedule, duplicate or unsafe quiet attempt violates the independent expected result.",
+      "green_expectation": "The production owner matches the explicit expected outcome and forbidden effects remain absent.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/reminder-tests/**",
+        "tests/test_launch_reminders.py",
+        "openspec/changes/add-launch-reminders/evidence/native-reminder-tests/**"
+      ],
+      "test_id": "unittest::tests.test_launch_reminders.ReminderTest.test_scheduler_positive",
+      "command_id": "native-reminder-tests",
+      "state": "implemented",
+      "source_path": "tests/test_launch_reminders.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165, OS scheduling, real quiet state and notification delivery are replaced by simulator and controlled time/state; Python reads the bound native table.",
+        "forbidden_claims": [
+          "Physical vibration, exact OS wake timing, phone integration or hardware quiet behavior."
+        ],
+        "allowed_proof": "Actual FR165 SDK compiled Monkey C production helper with controlled state and explicit test expectations."
+      },
+      "source_sha256": "f0b7cf57412d697f6eb75a36ef958f36448ec4fc41ffc260d64e6285c33643a0"
+    },
+    {
+      "id": "LR4.P1.NEGATIVE",
+      "property_id": "LR4.P1",
+      "polarity": "negative",
+      "scenario": "Competing wake or notification failure",
+      "scenario_fingerprint": "5d07d48431d13e5ecf1385ad9f0b23a0c3a02e2336fcac5775d0b8aeb37f1012",
+      "setup": "Read the source-bound strict FR165 SDK test table; the compiled production helper ran with controlled clock, quiet and storage boundaries.",
+      "observable": "scheduler negative literal expected notification and state transitions",
+      "red_expectation": "Incorrect notification, lost feed schedule, duplicate or unsafe quiet attempt violates the independent expected result.",
+      "green_expectation": "The production owner matches the explicit expected outcome and forbidden effects remain absent.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/reminder-tests/**",
+        "tests/test_launch_reminders.py",
+        "openspec/changes/add-launch-reminders/evidence/native-reminder-tests/**"
+      ],
+      "test_id": "unittest::tests.test_launch_reminders.ReminderTest.test_scheduler_negative",
+      "command_id": "native-reminder-tests",
+      "state": "implemented",
+      "source_path": "tests/test_launch_reminders.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165, OS scheduling, real quiet state and notification delivery are replaced by simulator and controlled time/state; Python reads the bound native table.",
+        "forbidden_claims": [
+          "Physical vibration, exact OS wake timing, phone integration or hardware quiet behavior."
+        ],
+        "allowed_proof": "Actual FR165 SDK compiled Monkey C production helper with controlled state and explicit test expectations."
+      },
+      "source_sha256": "f0b7cf57412d697f6eb75a36ef958f36448ec4fc41ffc260d64e6285c33643a0"
+    }
+  ],
+  "commands": [
+    {
+      "id": "native-reminder-tests",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_launch_reminders"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local"
+    }
+  ]
+}
