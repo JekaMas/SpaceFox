@@ -602,3 +602,15 @@ The current delivery incident, goal and physical task obligations remain NOT DON
 Android fresh-process/direct-listing result and physical computer/USB availability
 are requested; corrected execution, matching fresh launch/point and stable modes
 remain unobserved. See [root judgment](evidence/display02-publication/RECHECK-ROOT-JUDGMENT.md).
+
+### DISPLAY03 owner runtime report — author apply pending
+
+Owner reports after an update: active countdown frozen, LOW countdown advancing,
+missing active launch point and very slow LOW-to-active wake. Exact executing
+version, launch identity and approximate delay were requested; no version is
+inferred from the word updated. This is the SAME open delivery incident and one
+related iteration. Required evidence now includes automatic redraw liveness,
+measured callback-to-first-frame latency and actual marker pixels, not only
+same-UTC arithmetic. See [DISPLAY03 plan](evidence/display03-active-tick-wake/PLAN.md).
+One author apply/self-GREEN then one fresh independent verify/fix, root judge and
+original-card release follow. Existing tasks and physical acceptance remain open.
