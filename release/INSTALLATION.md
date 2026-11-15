@@ -1,4 +1,8 @@
-# SpaceFox 0.1.13 installation
+# SpaceFox installation
+
+The [0.1.14 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.14-test.1) is available for a separate USB/MTP test; use its [installation](INSTALLATION-0.1.14.md) and [testing](TESTING-0.1.14.md) guides. It has not been submitted to Garmin.
+
+## Garmin 0.1.13
 
 Use the [original SpaceFox Connect IQ listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3). Garmin displays 0.1.13/Internal 8 in owner preview, PENDING; public approval and physical delivery remain unobserved. The Music installation request was accepted. For an existing installation, use normal Garmin Connect synchronization with the paired watch nearby. Expected SpaceFox settings version on the watch: **0.1.13**. Preserve settings/cache; no uninstall or reset is required.
 

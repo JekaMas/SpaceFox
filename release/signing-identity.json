@@ -5,6 +5,23 @@
   "public_key_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
   "status": "local_production_custody_restored",
   "latest_release": {
+    "version": "0.1.14",
+    "package_sha256": "6c80caef8ec6527ae3a3cdc3129e8be1fb581c5a2e1d85634b963f1b92a26a27",
+    "kind": "github_test_prerelease",
+    "tag": "v0.1.14-test.1",
+    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.14-test.1",
+    "source_revision": "1bebd706649176b562681685d33b3cfcc7c9d4dd",
+    "tag_revision": "918c64f9a447cb8f3d61204bb7e37a8e2f255710",
+    "original_receipt_sha256": "491362b67469489d6d833668f2e509a38fd98b611df44586a178417cb281b480",
+    "proof_boundary": "Published signed GitHub test prerelease; no 0.1.14 Garmin submission, physical execution or delivery established."
+  },
+  "note": "Stable production UUID/key. Published 0.1.14 receipt and IQ are the predecessor for the next candidate. Garmin 0.1.13 remains PENDING in owner preview; physical acceptance remains open.",
+  "local_custody": {
+    "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
+    "public_evidence": "openspec/changes/spacefox-watchface/evidence/production-signing/round1/custody-initialization.json",
+    "proof_boundary": "External owner-only production RSA4096 key and encrypted backup with separately stored password; actual local restore and public signing challenge. Same Mac only; no offsite/disaster recovery."
+  },
+  "previous_release": {
     "version": "0.1.13",
     "package_sha256": "bf69a0df9b11f15c676be4cb6a0ce7d388c11688f11fefb3d8b0ed1544005896",
     "kind": "garmin_ordinary_store_submission",
@@ -15,23 +32,6 @@
     "tag_revision": "1eca186c5da803d801b5ebca3e58df8f37ac5876",
     "original_receipt_sha256": "ef32f0f1482ea3199b31aaceeb30ea532947393e481fbb48df2c411050ef61a1",
     "proof_boundary": "Signed GitHub release and original Garmin card0.1.13/Internal8 PENDING; Music request accepted. Physical execution/delivery and public Store approval unobserved."
-  },
-  "note": "Stable production UUID/key. Published0.1.13 receipt and IQ are the predecessor for the next candidate. Physical acceptance and Store delivery remain open.",
-  "local_custody": {
-    "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
-    "public_evidence": "openspec/changes/spacefox-watchface/evidence/production-signing/round1/custody-initialization.json",
-    "proof_boundary": "External owner-only production RSA4096 key and encrypted backup with separately stored password; actual local restore and public signing challenge. Same Mac only; no offsite/disaster recovery."
-  },
-  "previous_release": {
-    "version": "0.1.12",
-    "package_sha256": "283864f66833b47b2afa0c016948d892c7ecc65ababf5bd72f76f0495551c989",
-    "kind": "github_test_prerelease",
-    "tag": "v0.1.12-test.1",
-    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.12-test.1",
-    "source_revision": "14679651a3c169a6f15eb9309c28478ae50c6463",
-    "tag_revision": "bfc1007904807a50c9c08bc5343a144f9bac81d7",
-    "original_receipt_sha256": "81c5b2f928a4fb92e0881eb7748d0ab1e58af1c3f93d980a40029b01d24fe0ed",
-    "proof_boundary": "Signed GitHub test prerelease; no physical delivery or Store acceptance established."
   },
   "earlier_release": {
     "version": "0.1.6",
@@ -60,6 +60,17 @@
     "source_revision": "245293d9f089a57755d0d1830973243363ab5098",
     "tag_revision": "9f1f05076155e10bdafc92614fbfcc5068b451f7",
     "original_receipt_sha256": "61e99358506bec77b4d8939ec22b89630d10dfd1a38041f8a2b047ed21973993",
+    "proof_boundary": "Signed GitHub test prerelease; no physical delivery or Store acceptance established."
+  },
+  "historical_release_012": {
+    "version": "0.1.12",
+    "package_sha256": "283864f66833b47b2afa0c016948d892c7ecc65ababf5bd72f76f0495551c989",
+    "kind": "github_test_prerelease",
+    "tag": "v0.1.12-test.1",
+    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.12-test.1",
+    "source_revision": "14679651a3c169a6f15eb9309c28478ae50c6463",
+    "tag_revision": "bfc1007904807a50c9c08bc5343a144f9bac81d7",
+    "original_receipt_sha256": "81c5b2f928a4fb92e0881eb7748d0ab1e58af1c3f93d980a40029b01d24fe0ed",
     "proof_boundary": "Signed GitHub test prerelease; no physical delivery or Store acceptance established."
   }
 }
