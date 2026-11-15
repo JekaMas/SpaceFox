@@ -1,0 +1,3 @@
+# Peer storage reopen
+
+The repaired native owner and actual `NativeStore`/`Application.Storage` ran in an isolated network-none SDK 9.3 FR165 simulator with a disposable UUID and test key. A first app process consumed a controlled quiet slot and reported `REOPEN_SEED stored=true calls=0`; `monkeydo` was terminated by the intentional timeout (exit 124). A second process used the SDK `DeviceChannel.openApp` route without pushing a program, observed the new nested history row, and reported `persisted=true calls=0 duplicateSuppressed=true`; it exited 0. See the probe and raw compile, seed and reopen logs. This is process-level storage reopening, not a physical reboot, physical vibration or an OS-scheduled reminder.

@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "change": "add-launch-reminders",
+  "scope": {
+    "property_ids": [
+      "LR1.P1",
+      "LR2.P1",
+      "LR3.P1",
+      "LR4.P1"
+    ],
+    "test_ids": [
+      "unittest::tests.test_launch_reminders.ReminderTest.test_cadence_positive",
+      "unittest::tests.test_launch_reminders.ReminderTest.test_cadence_negative",
+      "unittest::tests.test_launch_reminders.ReminderTest.test_quiet_positive",
+      "unittest::tests.test_launch_reminders.ReminderTest.test_quiet_negative",
+      "unittest::tests.test_launch_reminders.ReminderTest.test_identity_positive",
+      "unittest::tests.test_launch_reminders.ReminderTest.test_identity_negative",
+      "unittest::tests.test_launch_reminders.ReminderTest.test_scheduler_positive",
+      "unittest::tests.test_launch_reminders.ReminderTest.test_scheduler_negative"
+    ]
+  },
+  "reviews": [
+    {
+      "id": "D1",
+      "question": "Existing launch selection, notification, quiet and temporal scheduling owners",
+      "property_ids": [
+        "LR1.P1",
+        "LR2.P1",
+        "LR3.P1",
+        "LR4.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_launch_reminders.ReminderTest.test_cadence_positive",
+        "unittest::tests.test_launch_reminders.ReminderTest.test_cadence_negative",
+        "unittest::tests.test_launch_reminders.ReminderTest.test_quiet_positive",
+        "unittest::tests.test_launch_reminders.ReminderTest.test_quiet_negative",
+        "unittest::tests.test_launch_reminders.ReminderTest.test_identity_positive",
+        "unittest::tests.test_launch_reminders.ReminderTest.test_identity_negative",
+        "unittest::tests.test_launch_reminders.ReminderTest.test_scheduler_positive",
+        "unittest::tests.test_launch_reminders.ReminderTest.test_scheduler_negative"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read FeedService, NativeTransfer, NativeForegroundApp, NativeFeed, SettingsMenu and manifest",
+          "outcome": "Integrate the sole temporal event and accepted snapshot; preserve feed quotas.",
+          "results": [
+            {
+              "path": "watchface/source/FeedService.mc",
+              "line": 14,
+              "classification": "change_candidate",
+              "reason": "Existing shared temporal event owner."
+            },
+            {
+              "path": "watchface/source/NativeForegroundApp.mc",
+              "line": 12,
+              "classification": "change_candidate",
+              "reason": "Accepted selection boundary."
+            },
+            {
+              "path": "watchface/source/SettingsMenu.mc",
+              "line": 7,
+              "classification": "change_candidate",
+              "reason": "Watch settings owner."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Known owners and exact files",
+          "reason": "Owners were established from existing sources; no unknown discovery lane.",
+          "outcome": "No semantic evidence claimed.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Exact scheduling and settings files",
+          "reason": "No semantic indexed operation was needed.",
+          "outcome": "No index evidence claimed.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "The revised reminder contract extends the existing watch face and shared scheduler."
+    }
+  ]
+}

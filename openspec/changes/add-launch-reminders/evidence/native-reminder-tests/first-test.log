@@ -1,0 +1,69 @@
+------------------------------------------------------------------------------
+Executing test reminderFixture...
+
+Error: Too Many Arguments Error
+Details: Failed invoking <symbol>
+Stack: 
+  - reminderFixture() at /source/watchface/reminder-tests/ReminderTests.mc:19 0x1000503a 
+  - evaluate_test_entries_0_to_10() at /task/fulltest/gen/006-B4432-00/source/UnitTests.mcgen:60 0x100099cd 
+  - runTest() at /task/fulltest/gen/006-B4432-00/source/UnitTests.mcgen:93 0x10009b5d 
+ERROR
+------------------------------------------------------------------------------
+Executing test reminderReady...
+
+Error: Symbol Not Found Error
+Details: Could not find symbol 'store'
+Stack: 
+  - reminderReady() at /source/watchface/reminder-tests/ReminderTests.mc:22 0x1000372c 
+  - evaluate_test_entries_0_to_10() at /task/fulltest/gen/006-B4432-00/source/UnitTests.mcgen:62 0x100099e8 
+  - runTest() at /task/fulltest/gen/006-B4432-00/source/UnitTests.mcgen:93 0x10009b5d 
+ERROR
+------------------------------------------------------------------------------
+Executing test cadencePositive...
+PASS
+------------------------------------------------------------------------------
+Executing test cadenceNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test quietPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test quietNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test identityPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test identityNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test schedulerPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test schedulerNegative...
+
+Error: Unexpected Type Error
+Details: Failed invoking <symbol>
+Stack: 
+  - API code 0x300001ae 
+  - schedulerNegative() at /source/watchface/reminder-tests/ReminderTests.mc:49 0x10005cdf 
+  - evaluate_test_entries_0_to_10() at /task/fulltest/gen/006-B4432-00/source/UnitTests.mcgen:78 0x10009ac0 
+  - runTest() at /task/fulltest/gen/006-B4432-00/source/UnitTests.mcgen:93 0x10009b5d 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+reminderFixture                     ERROR
+reminderReady                       ERROR
+cadencePositive                     PASS
+cadenceNegative                     PASS
+quietPositive                       PASS
+quietNegative                       PASS
+identityPositive                    PASS
+identityNegative                    PASS
+schedulerPositive                   PASS
+schedulerNegative                   ERROR
+Ran 10 tests
+
+FAILED (passed=7, failed=0, errors=3)

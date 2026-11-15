@@ -1,0 +1,6 @@
+import Toybox.Application;
+import Toybox.WatchUi;
+(:background,:typecheck(false)) class MenuProbeApp extends SpaceFoxApp {
+function initialize(){SpaceFoxApp.initialize();}
+(:typecheck(disableBackgroundCheck)) function getInitialView(){Application.Properties.setValue("Language",1);var rows=SettingsMenu.root(self);rows[0].setFocus(12);System.println("MENU_PROBE ru focus=12");return rows;}
+}

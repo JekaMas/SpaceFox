@@ -1,0 +1,29 @@
+import Toybox.Application;
+import Toybox.Background;
+import Toybox.Lang;
+import Toybox.Notifications;
+import Toybox.System;
+import Toybox.Time;
+import Toybox.WatchUi;
+(:background,:typecheck(false)) class BackgroundProbeApp extends Application.AppBase {
+ function initialize(){AppBase.initialize();}
+ (:typecheck(disableBackgroundCheck)) function getInitialView(){return [new BackgroundProbeFace()];}
+ function getServiceDelegate(){return [new BackgroundProbeService()];}
+}
+(:typecheck(false)) class BackgroundProbeFace extends WatchUi.WatchFace {
+ var started=false;function initialize(){WatchFace.initialize();}
+ function onUpdate(dc){if(started){return;}started=true;Application.Properties.setValue("LaunchReminders",1);var raw=reminderRawFixture();var s=new NativeStore();var h=new NativeWireHash();h.put(raw);var sha=h.digest();var parts=[];var n=0;
+  for(var offset=0;offset<raw.length();offset+=512){var end=offset+512;if(end>raw.length()){end=raw.length();}s.write("sf.incoming.feed.0."+n,raw.substring(offset,end));parts.add(0);n+=1;}
+  s.write("sf.incoming.feed",{"v"=>2,"kind"=>"feed","parts"=>parts,"sha256"=>sha,"sequence"=>1,"bytes"=>h.count});Background.registerForTemporalEvent(Time.now());System.println("BG_PROBE_REGISTERED");}
+}
+(:background,:typecheck(false)) class BackgroundProbeService extends System.ServiceDelegate {
+ function initialize(){ServiceDelegate.initialize();}
+ function send(slot,s){Notifications.showNotification("Launch probe","Controlled background",{:dismissPrevious=>true});System.println("BG_PROBE_NOTIFICATION_RETURNED slot="+slot);}
+ function sendThrow(slot,s){System.println("BG_PROBE_THROW_INJECTED");throw new Lang.InvalidValueException("controlled notification failure");}
+ function onTemporalEvent(){try{
+  var before=System.getSystemStats().usedMemory;var store=new NativeStore();var m=store.read("sf.incoming.feed");var accepted={"instance"=>"40655f8a46c4c47ecb6f6d4a8608bde8396c6c440807e09d962b1f7fde006204","generation"=>13,"precision"=>"exact","validated"=>1794631193l,"content"=>"9d14709938e9f89c0a078037fe55adab16b4d037ea0d8a64eca10313e64e4d2f","wire"=>"prior","policy"=>[3600,900,null,3]};
+  var same=LaunchReminder.sameIncoming(store,accepted,m,1794631300l);System.println("BG_PROBE_COMPARE same="+same+" usedBefore="+before+" usedAfter="+System.getSystemStats().usedMemory);
+  store.remove("sf.incoming.feed");var now=Time.now().value().toLong();var base="https://example.invalid";var cache=new NativeTransfer(base,store);store.write("sf.commit",{"base"=>base,"seal"=>"test"});store.write("sf.reminder.control",{"enabled"=>true,"since"=>now-1});var snapshot={"base"=>base,"id"=>"probe-one","target"=>now+900,"title"=>"Controlled","validated"=>now,"since"=>now-1,"stale"=>false,"policy"=>[3600,900,null,3],"seal"=>"test","commitKey"=>"sf.commit"};store.write("sf.reminder.snapshot",snapshot);
+  LaunchReminder.wakeWith(cache,now,true,method(:send));var a=store.read("sf.reminder.attempt");System.println("BG_PROBE_SUPPRESSED consumed="+(a!=null));LaunchReminder.wakeWith(cache,now,false,method(:send));snapshot["id"]="probe-two";store.write("sf.reminder.snapshot",snapshot);LaunchReminder.wakeWith(cache,now,false,method(:send));LaunchReminder.wakeWith(cache,now,false,method(:send));snapshot["id"]="probe-three";store.write("sf.reminder.snapshot",snapshot);LaunchReminder.wakeWith(cache,now,false,method(:sendThrow));LaunchReminder.wakeWith(cache,now,false,method(:send));System.println("BG_PROBE_EXCEPTION_CONSUMED");System.println("BG_PROBE_COMPLETE");
+ }catch(e){System.println("BG_PROBE_EXCEPTION "+e.getErrorMessage());}Background.exit(null);}
+}

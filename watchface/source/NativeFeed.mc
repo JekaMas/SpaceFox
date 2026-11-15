@@ -2,8 +2,17 @@ import Toybox.Lang;
 
 (:typecheck(false))
 class NativeFeed {
-    var bridge=null;var presentation=null;var backgroundNames=false;var document;var raw;var contentHash;var wireHash;var spans;var ignored;var timingKey="";var recordHash="";var phase="header";var validation;var stale=false;var rescheduled=false;
-    function initialize(text,now){raw=text;parse(text);validate(now);validation=document["launch"]==null?null:document["launch"]["source_validated_utc"];stale=document["launch"]!=null && document["launch"]["stale"];rescheduled=document["launch"]!=null && document["launch"]["rescheduled"];contentHash=semanticHash();wireHash=hashRaw(raw);timingKey=timingIdentity();recordHash=recordIdentity(0);}
+    var bridge=null;var presentation=null;var reminderData=null;var backgroundNames=false;var document;var raw;var contentHash;var wireHash;var spans;var ignored;var timingKey="";var recordHash="";var phase="header";var validation;var stale=false;var rescheduled=false;
+    function initialize(text,now){raw=text;parse(text);validate(now);validation=document["launch"]==null?null:document["launch"]["source_validated_utc"];stale=document["launch"]!=null && document["launch"]["stale"];rescheduled=document["launch"]!=null && document["launch"]["rescheduled"];contentHash=semanticHash();wireHash=hashRaw(raw);timingKey=timingIdentity();recordHash=recordIdentity(0);reminderData=reminderProjection();}
+    function reminderProjection(){
+        var l=document["launch"];if(l==null||!same(l["status"],"pending")){return null;}var t=l["timing"];
+        var target=refreshTarget();if(target==null||!(same(t["precision"],"exact")||same(t["precision"],"source-coarse")&&t["source_precision_id"]==1)){return null;}
+        // Bounds accompanying a nominal target must actually contain it.
+        if(t["window_start_utc"]!=null&&target<t["window_start_utc"]||t["window_end_utc"]!=null&&target>t["window_end_utc"]){return null;}
+        var rocket=l["configuration_name"];var mission=l["mission_purpose"];var title=rocket instanceof String?rocket:"";
+        if(mission instanceof String&&mission.length()>0){title+=(title.length()>0?" · ":"")+mission;}if(title.length()==0){title="Launch";}
+        return {"id"=>l["launch_id"],"target"=>target,"precision"=>t["precision"],"title"=>title};
+    }
     function hashRaw(text){var wire=new NativeWireHash();wire.put(text);return wire.digest();}
     function parse(text){var parser=new NativeJson();parser.feedMode=true;parser.keepCatalogNames=!backgroundNames;parser.rowOwner=self;document=parser.parse(text,8192);spans=parser.spans;ignored=parser.ignored;}
     function fail(){throw new Lang.InvalidValueException("Invalid current feed:"+phase);}

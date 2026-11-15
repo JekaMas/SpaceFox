@@ -1,0 +1,87 @@
+------------------------------------------------------------------------------
+Executing test settingsPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test cadencePositive...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x300001ba 
+  - cadencePositive() at /source/watchface/reminder-tests/ReminderTests.mc:35 0x100075de 
+  - evaluate_test_entries_0_to_13() at /task/fulltest/gen/006-B4432-00/source/UnitTests.mcgen:65 0x1000965c 
+  - runTest() at /task/fulltest/gen/006-B4432-00/source/UnitTests.mcgen:102 0x10009822 
+ERROR
+------------------------------------------------------------------------------
+Executing test cadenceNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test quietPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test quietNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test identityPositive...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x300001ba 
+  - identityPositive() at /source/watchface/reminder-tests/ReminderTests.mc:51 0x10005725 
+  - evaluate_test_entries_0_to_13() at /task/fulltest/gen/006-B4432-00/source/UnitTests.mcgen:73 0x100096c8 
+  - runTest() at /task/fulltest/gen/006-B4432-00/source/UnitTests.mcgen:102 0x10009822 
+ERROR
+------------------------------------------------------------------------------
+Executing test identityNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test schedulerPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test schedulerNegative...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x300001ba 
+  - schedulerNegative() at /source/watchface/reminder-tests/ReminderTests.mc:83 0x10005d90 
+  - evaluate_test_entries_0_to_13() at /task/fulltest/gen/006-B4432-00/source/UnitTests.mcgen:79 0x10009719 
+  - runTest() at /task/fulltest/gen/006-B4432-00/source/UnitTests.mcgen:102 0x10009822 
+ERROR
+------------------------------------------------------------------------------
+Executing test equivalencePositive...
+PASS
+------------------------------------------------------------------------------
+Executing test equivalenceNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test sharedRegistration...
+DEBUG (17:34): SHARED_REGISTRATION feed=300 reminder=900
+PASS
+------------------------------------------------------------------------------
+Executing test snapshotWrites...
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+settingsPositive                    PASS
+cadencePositive                     ERROR
+cadenceNegative                     PASS
+quietPositive                       PASS
+quietNegative                       PASS
+identityPositive                    ERROR
+identityNegative                    PASS
+schedulerPositive                   PASS
+schedulerNegative                   ERROR
+equivalencePositive                 PASS
+equivalenceNegative                 PASS
+sharedRegistration                  PASS
+snapshotWrites                      PASS
+Ran 13 tests
+
+FAILED (passed=10, failed=0, errors=3)

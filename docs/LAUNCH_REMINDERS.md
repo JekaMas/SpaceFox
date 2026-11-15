@@ -1,0 +1,13 @@
+# Launch reminders
+
+In version 0.1.15, launch reminders are off by default. Enable **Launch reminders** in the watch-face settings on the watch or in Garmin Connect. SpaceFox attempts a system notification at T−15, T−10, T−5 and the scheduled launch time for the selected eligible launch. The last notification means the scheduled time has arrived; it does not confirm liftoff.
+
+Garmin controls notification presentation and whether it vibrates. Do Not Disturb, disabled vibration, configured sleep and sleep mode suppress reminders. If the watch cannot report the required quiet state or sleep schedule, SpaceFox suppresses reminders rather than assuming it is safe to alert. Set sleep and wake times and check the watch's notification, vibration and quiet settings if reminders do not appear.
+
+Background timing is best effort: Garmin enforces a five-minute gap between app background events, including feed updates. A competing or delayed event can cause a reminder to be skipped; SpaceFox never sends a catch-up burst. Slots more than 90 seconds late are skipped, and the scheduled-time cue is skipped after the scheduled second. Notifications use the last accepted, fresh launch; unsupported-precision or window-only timing, stale or terminal data and changed data awaiting validation suppress them. An unchanged background feed can be recognized without refreshing the accepted source-validation age. The watch face must be selected, and current phone and physical-watch delivery have not been verified.
+
+The original request for one-minute reminders and the API findings are retained in the [feasibility record](../openspec/changes/add-launch-reminders/evidence/FEASIBILITY.md). Simulator observations do not establish actual hardware vibration, sleep detection, wake precision or battery behavior.
+
+If the watch clock moves backwards, or the bounded reminder history fills with still-active schedules, SpaceFox suppresses reminders until the state can be safely used again. An inconsistent target and launch-window bound is also suppressed; missing individual bounds are permitted.
+
+On first install or upgrade without a saved reminder snapshot, SpaceFox can create one after the launch feed is fully verified in the foreground, including when a saved feed passes full verification on reopen. Until then there is no eligible snapshot to alert from.

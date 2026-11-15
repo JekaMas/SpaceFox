@@ -13,7 +13,7 @@ class FeedService extends System.ServiceDelegate {
     (:typecheck(false))
     function onTemporalEvent() as Void {
         started=System.getTimer();requests=0;try{Background.registerForTemporalEvent(new Time.Duration(3600));}catch(e){}
-        try{transfer=createTransfer();if(transfer.base.equals("")){Background.deleteTemporalEvent();Background.exit(null);return;}batch=new NativeBatch(transfer.store,transfer.base);transfer.load();var now=Time.now().value().toLong();if(transfer.due(now)){transfer.attempted(now);armFeed(transfer,now);request("feed.json",method(:receive));}else{optional();}}catch(e){finish();}
+        try{transfer=createTransfer();if(transfer.base.equals("")){Background.deleteTemporalEvent();Background.exit(null);return;}batch=new NativeBatch(transfer.store,transfer.base);transfer.load();var now=Time.now().value().toLong();LaunchReminder.wake(transfer,now);if(transfer.due(now)){transfer.attempted(now);armFeed(transfer,now);request("feed.json",method(:receive));}else{optional();}}catch(e){finish();}
     }
     (:typecheck(false))
     function request(path as String,callback as Method) as Void {if(requests>=44||System.getTimer()-started>=22000){finish();return;}requests+=1;try{Communications.makeWebRequest(requestUrl(path),{}, {:method=>Communications.HTTP_REQUEST_METHOD_GET,:headers=>{"Accept"=>"text/plain"},:responseType=>Communications.HTTP_RESPONSE_CONTENT_TYPE_TEXT_PLAIN},callback);}catch(e){finish();}}
@@ -89,6 +89,8 @@ function armFeed(cache, now) {
     var registeredAt = registered == null ? null : registered.value().toLong();
     var lastAt = last == null ? null : last.value().toLong();
     var next = pendingWake(now, cache.nextWake(now), registeredAt, lastAt, pending);
+    var reminder = LaunchReminder.nextWake(cache, now, lastAt);
+    if (reminder != null && reminder < next) { next = reminder; }
     if (!registrationNeeded(now, next, registeredAt, lastAt, pending)) { return; }
     try {
         Background.registerForTemporalEvent(new Time.Moment(next.toNumber()));

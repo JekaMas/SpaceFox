@@ -1,0 +1,52 @@
+------------------------------------------------------------------------------
+Executing test settingsPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test cadencePositive...
+PASS
+------------------------------------------------------------------------------
+Executing test cadenceNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test quietPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test quietNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test identityPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test identityNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test schedulerPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test schedulerNegative...
+
+Error: Unhandled Exception
+Exception: post
+Stack: 
+  - post() at /source/watchface/reminder-tests/ReminderTests.mc:21 0x1000918f 
+  - wakeWith() at /source/watchface/source/LaunchReminder.mc:60 0x10003788 
+  - schedulerNegative() at /source/watchface/reminder-tests/ReminderTests.mc:60 0x10006095 
+  - evaluate_test_entries_0_to_9() at /task/fulltest/gen/006-B4432-00/source/UnitTests.mcgen:75 0x10009d98 
+  - runTest() at /task/fulltest/gen/006-B4432-00/source/UnitTests.mcgen:90 0x10009f18 
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+settingsPositive                    PASS
+cadencePositive                     PASS
+cadenceNegative                     PASS
+quietPositive                       PASS
+quietNegative                       PASS
+identityPositive                    PASS
+identityNegative                    PASS
+schedulerPositive                   PASS
+schedulerNegative                   PASS
+Ran 9 tests
+
+PASSED (passed=9, failed=0, errors=0)
