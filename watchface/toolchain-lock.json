@@ -48,6 +48,7 @@
   },
   "permissions": [
     "SensorHistory",
+    "ComplicationSubscriber",
     "Communications",
     "Background",
     "Notifications",
@@ -56,7 +57,7 @@
   "java_file_encoding": "UTF-8",
   "profiles": {
     "fr165": {
-      "display_name": "Forerunner® 165",
+      "display_name": "Forerunner\u00ae 165",
       "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
       "files_sha256": {
         "compiler.json": "ed45eb28ba928e2d2bda1bf8c567401232ab226889b87712fef5713e7f9a4fa8",
@@ -73,7 +74,7 @@
       ]
     },
     "fr165m": {
-      "display_name": "Forerunner® 165 Music",
+      "display_name": "Forerunner\u00ae 165 Music",
       "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
       "files_sha256": {
         "compiler.json": "4eefa90b3550e272402aeba6ed49be5e68773db11a46fb29c82ce0e26000d434",
@@ -90,7 +91,7 @@
       ]
     },
     "fr170": {
-      "display_name": "Forerunner® 170",
+      "display_name": "Forerunner\u00ae 170",
       "profile_version": "2a089d06d343f3feda75c93ddf12e1fa29abe918",
       "files_sha256": {
         "compiler.json": "298a25ad58b08e4544f7d97cb24c3552bdf601230cc96890fcabf577b922d8ba",
@@ -107,7 +108,7 @@
       ]
     },
     "fr170m": {
-      "display_name": "Forerunner® 170 Music",
+      "display_name": "Forerunner\u00ae 170 Music",
       "profile_version": "2a089d06d343f3feda75c93ddf12e1fa29abe918",
       "files_sha256": {
         "compiler.json": "7619671b7d42ed87c268105c39668dee46ff116605cc99474f3c06b6d784ae77",
@@ -124,7 +125,7 @@
       ]
     },
     "fr57042mm": {
-      "display_name": "Forerunner® 570 42mm",
+      "display_name": "Forerunner\u00ae 570 42mm",
       "profile_version": "2a089d06d343f3feda75c93ddf12e1fa29abe918",
       "files_sha256": {
         "compiler.json": "8ab38ad5f1a678afe72111ecfe9a1fe0744290d3742b8a92d93df5056ec9d847",
@@ -141,7 +142,7 @@
       ]
     },
     "fr70": {
-      "display_name": "Forerunner® 70",
+      "display_name": "Forerunner\u00ae 70",
       "profile_version": "2a089d06d343f3feda75c93ddf12e1fa29abe918",
       "files_sha256": {
         "compiler.json": "3c41ff90068e4df22a0b0e96c9ee51788a0fc0219312095e5e4bf97f483b8d49",
@@ -162,7 +163,7 @@
       ]
     },
     "venu3s": {
-      "display_name": "Venu® 3S",
+      "display_name": "Venu\u00ae 3S",
       "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
       "files_sha256": {
         "compiler.json": "15bbae2d2b55f847f36993a4e54015a516aded10506abb1e371877acc10e10d4",
@@ -179,7 +180,7 @@
       ]
     },
     "venu441mm": {
-      "display_name": "Venu® 4 41mm",
+      "display_name": "Venu\u00ae 4 41mm",
       "profile_version": "eddc2840754f6d29c6c9a3ede43befdaadd25a09",
       "files_sha256": {
         "compiler.json": "13a16cc2e597c6756574872dd65508b1f545e68152140955d23e52cb749a66fe",
@@ -196,7 +197,7 @@
       ]
     },
     "vivoactive6": {
-      "display_name": "vívoactive® 6",
+      "display_name": "v\u00edvoactive\u00ae 6",
       "profile_version": "eddc2840754f6d29c6c9a3ede43befdaadd25a09",
       "files_sha256": {
         "compiler.json": "05e7f0a65ebf0e10f7b6d824d8796e99f2a225c12f7ba47c8418ec5e111d9efb",
@@ -213,7 +214,7 @@
       ]
     },
     "fr965": {
-      "display_name": "Forerunner® 965",
+      "display_name": "Forerunner\u00ae 965",
       "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
       "device_family": "round-454x454",
       "resolution": {

@@ -16,6 +16,7 @@ class SceneContext {
     var point as Array<Numeric> or Null;
     var rescheduled as Boolean = false;
     var stale as Boolean = false;
+    var sourceHold as Boolean = false;
     var schedule as ScheduleState;
     function initialize(data as Dictionary<String, Object or Null>) {
         launchId = text(data, "id");
@@ -31,6 +32,7 @@ class SceneContext {
         }
         rescheduled = flag(data,"rescheduled");
         stale = flag(data,"stale");
+        sourceHold = flag(data,"sourceHold");
         var target = data.hasKey("target") ? data["target"] as Object or Null : null;
         var precision = text(data, "precision");
         schedule = new ScheduleState(target, precision);

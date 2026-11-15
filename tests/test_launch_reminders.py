@@ -8,6 +8,7 @@ from tools.run_native_tests import parse_output
 
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / 'openspec/changes/add-launch-reminders/evidence/native-reminder-tests'
+INTEGRATED = ROOT / 'openspec/changes/spacefox-watchface/evidence/display04-integrated016/reminder'
 NAMES = ('settingsPositive', 'cadencePositive', 'cadenceNegative', 'quietPositive',
          'quietNegative', 'identityPositive', 'identityNegative', 'schedulerPositive',
          'schedulerNegative', 'equivalencePositive', 'equivalenceNegative', 'sharedRegistration', 'snapshotWrites')
@@ -15,7 +16,7 @@ NAMES = ('settingsPositive', 'cadencePositive', 'cadenceNegative', 'quietPositiv
 class ReminderTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        receipt = json.loads((EVIDENCE / 'peer-stable-binding.json').read_text())
+        receipt = json.loads((INTEGRATED / 'binding.json').read_text())
         for name, expected in receipt['inputs'].items():
             actual = hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
             if actual != expected:
@@ -41,10 +42,10 @@ class ReminderTest(unittest.TestCase):
                                                 separators=(',', ':')).encode()).hexdigest()
         if independent not in source:
             raise AssertionError('independent semantic digest differs')
-        raw = (EVIDENCE / 'peer-stable.log').read_text()
+        raw = (INTEGRATED / 'native-final.log').read_text()
         if hashlib.sha256(raw.encode()).hexdigest() != receipt['logSha256']:
             raise AssertionError('SDK log changed')
-        if 'BUILD SUCCESSFUL' not in (EVIDENCE / 'peer-stable-compile.log').read_text():
+        if 'BUILD SUCCESSFUL' not in (INTEGRATED / 'compile-final.log').read_text():
             raise AssertionError('SDK compile incomplete')
         result = parse_output(raw, receipt['rawExit'], NAMES)
         if result['status'] != 'passed':

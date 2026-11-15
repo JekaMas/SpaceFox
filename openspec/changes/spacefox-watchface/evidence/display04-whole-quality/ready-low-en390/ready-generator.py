@@ -1,0 +1,72 @@
+#!/usr/bin/env python3
+"""Compile a native READY mask observer over a retained real content closure.
+
+The generated test-only resource store exposes the *original*, hash-checked
+feed, catalog, selection, transfer, descriptors and raster shards. Production
+NativeCache, NativeSfrBuild, NativeSfrDecoder and native renderer remain in the
+execution path. No network, user health, release signing or stock-memory claim.
+Caller owns simulator state, screenshot capture and acceptance.
+"""
+import hashlib,json,subprocess,sys
+from xml.etree import ElementTree as ET
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT))
+from tools.native_display04_subset_mask_probe import run as subset
+from tools.native_display03_probe import inputs
+
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def build(out,device,language,names,period='6000',mode='active'):
+ if mode not in ('active','low'):raise ValueError('unsupported READY geometry mode')
+ out=Path(out).resolve();receipt=subset(out,device,language,mode,names,period)
+ artifact=ROOT/'openspec/changes/spacefox-watchface/evidence/site-flag-visual-batch/native-artifact'
+ feed=artifact/'feed.json';f=json.loads(feed.read_text());transfer=artifact/f['nativeTransfer']['path'];index=json.loads(transfer.read_text())
+ refs={tuple(f['nativeTransfer'][k] for k in ('sha256','decodedBytes'))}
+ refs.update((row[1],row[2]) for row in index['objects'])
+ resources=out/'resources';branches=[];resource_paths=[]
+ all_files={p.stem:p for p in artifact.rglob('*') if p.is_file() and len(p.stem)==64}
+ closure={}
+ for i,(digest,length) in enumerate(sorted(refs)):
+  path=all_files.get(digest)
+  if path is None or sha(path)!=digest or path.stat().st_size!=length:raise ValueError('captured READY object mismatch: '+digest)
+  name='D04ReadyObject'+str(i);target=resources/(name+'.json');target.write_text(json.dumps({'raw':path.read_text()},ensure_ascii=False,separators=(',',':')))
+  resource_paths.append(target);branches.append('if(key.equals("sf.obj.'+digest+'")){return WatchUi.loadResource(Rez.JsonData.'+name+')["raw"];}')
+  closure[str(path.relative_to(ROOT))]=digest
+ catalog=artifact/f['catalogPath']
+ if sha(catalog)!=f['catalogDigest']:raise ValueError('captured catalog mismatch')
+ (resources/'D04Catalog.json').write_text(json.dumps({'catalogDigest':f['catalogDigest'],'catalog':catalog.read_text()},ensure_ascii=False,separators=(',',':')))
+ (resources/'D04Feed.json').write_text(json.dumps({'raw':feed.read_text()},ensure_ascii=False,separators=(',',':')))
+ xml=resources/'data.xml';xml.write_text('<resources>'+''.join('<jsonData id="'+p.stem+'" filename="'+p.name+'"/>' for p in [resources/'D04Catalog.json',resources/'D04Feed.json',*resource_paths])+'</resources>')
+ # Watch apps cannot subscribe to complications. This is a test-only copy:
+ # replace only the unused health callback, keeping all production draw/layout
+ # owners and their calls byte-identical. The wrapper never starts sampling.
+ view=out/'source/SpaceFoxView.mc';view_source=view.read_text();start=view_source.index('    function bodyBatteryChanged(');end=view_source.index('    function stopFitness()',start)
+ original=view_source[start:end]
+ if original.count('Complications.COMPLICATION_TYPE_BODY_BATTERY')!=1:raise ValueError('unexpected health callback')
+ view.write_text(view_source[:start]+'    function bodyBatteryChanged(id as Object) as Void {}\n'+view_source[end:])
+ adapter=out/'source/BodyBatterySource.mc';original_adapter=adapter.read_bytes()
+ adapter.write_text('import Toybox.Lang;\n(:typecheck(false)) class BodyBatterySource { var value as Number or Null=null; var observed as Boolean=false; var subscribed as Boolean=false; function start(callback as Method) as Boolean {return false;} function read() as Number or Null {return null;} function stop() as Void {value=null;observed=false;subscribed=false;} }\n')
+ observer=out/'observer/PointObserver.mc';template=(ROOT/'tests/fixtures/display04_ready_mask/ReadyObserver.mc').read_text()
+ if template.count('/* ASSET_BRANCHES */')!=1:raise ValueError('READY store template differs')
+ generated=template.replace('/* ASSET_BRANCHES */',''.join(branches)).replace('{"Language"=>0}','{"Language"=>'+('1' if language=='ru' else '0')+'}')
+ if mode=='low':
+  old='SpaceFoxView.onUpdate(dc);MaskObserver.barcode(dc);';new='aodMinute=null;updateForDisplayMode(dc,System.DISPLAY_MODE_LOW_POWER);MaskObserver.barcode(dc);'
+  if generated.count(old)!=1:raise ValueError('READY LOW test wrapper differs')
+  generated=generated.replace(old,new)
+ observer.write_text(generated)
+ manifest=out/'manifest.xml';ET.register_namespace('iq','http://www.garmin.com/xml/connectiq');tree=ET.parse(manifest);app=tree.getroot().find('{http://www.garmin.com/xml/connectiq}application');app.set('type','watch-app');permissions=app.find('{http://www.garmin.com/xml/connectiq}permissions')
+ for permission in list(permissions):
+  if permission.get('id')=='ComplicationSubscriber':permissions.remove(permission)
+ tree.write(manifest,encoding='utf-8',xml_declaration=True)
+ pre=json.loads((out/'subset-precompile.json').read_text());pre['generatedInputs']['observer/PointObserver.mc']=sha(observer);pre['generatedInputs']['manifest.xml']=sha(manifest);pre['generatedInputs']['source/SpaceFoxView.mc']=sha(view);pre['omittedHealthCallbackSha256']=hashlib.sha256(original.encode()).hexdigest();pre['generatedInputs']['source/BodyBatterySource.mc']=sha(adapter);pre['omittedHealthAdapterSha256']=hashlib.sha256(original_adapter).hexdigest()
+ pre['generatedResources']={p.name:sha(p) for p in sorted(resources.glob('*'))}
+ pre['readyProbeSha256']=sha(Path(__file__));pre['readyTemplateSha256']=sha(ROOT/'tests/fixtures/display04_ready_mask/ReadyObserver.mc');pre['capturedClosure']=closure
+ pre['feedSha256']=sha(feed);pre['catalogSha256']=sha(catalog);pre['selectionSha256']=f['visualSelection']['sha256'];pre['transferSha256']=f['nativeTransfer']['sha256']
+ (out/'ready-precompile.json').write_text(json.dumps(pre,indent=2)+'\n')
+ run=subprocess.run(receipt['command'],text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=120);(out/'ready-compile.log').write_text(run.stdout)
+ if run.returncode:raise RuntimeError('READY observer compiler failed')
+ if pre['sourceInputs']!=inputs() or any(sha(out/n)!=h for n,h in pre['generatedInputs'].items()) or any(sha(resources/n)!=h for n,h in pre['generatedResources'].items()):raise RuntimeError('READY inputs changed during compile')
+ receipt.update({'packageSha256':sha(out/'MaskObserver.prg'),'readyProbeSha256':sha(Path(__file__)),'observerSha256':sha(observer),'readySelection':pre['selectionSha256'],'boundary':'test-only SDK watch-app memory allowance; production cache/build/decoder and native renderer; omits unsupported watch-app ComplicationSubscriber; no health sampling, stock-watchface-memory or physical proof'})
+ (out/'ready-build.json').write_text(json.dumps(receipt,indent=2)+'\n');return receipt
+if __name__=='__main__':
+ result=build(*sys.argv[1:]);print(json.dumps({'status':result['status'],'packageSha256':result['packageSha256'],'selection':result['readySelection']}))

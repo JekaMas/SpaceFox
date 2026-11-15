@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "test": {
+    "status": "passed",
+    "raw_exit_code": 1,
+    "expected_tests": [
+      "display04RealReadyLowTrace"
+    ],
+    "observed_tests": {
+      "display04RealReadyLowTrace": "PASS"
+    },
+    "observed_count": 1,
+    "launcher_nonzero_framework_pass": true
+  },
+  "rawExit": 1,
+  "packageSha256": "155611ba9d16b39d702233604bbf58d4cc842ac02e44b4887e0d9f63eb3a7f68",
+  "launch": [
+    "/opt/homebrew/Cellar/openjdk@11/11.0.21/libexec/openjdk.jdk/Contents/Home/bin/java",
+    "-Dfile.encoding=UTF-8",
+    "-classpath",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+    "com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux",
+    "-f",
+    "/Users/jekamas/.codex/tmp/spacefox-display04-low-dimensions-454/Trace.prg",
+    "-d",
+    "fr965",
+    "-s",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/shell",
+    "-t"
+  ],
+  "boundary": "unit allowance; real production selection/build/decoder and actual EN/RU LOW selection and draw calls, no physical or stock-memory proof"
+}

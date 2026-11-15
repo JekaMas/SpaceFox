@@ -1,0 +1,49 @@
+target /var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-integrated016-export-emghdou6
+exact hashed inputs 5587
+setUpClass (tests.test_current_ui_batch.CurrentUiBatchTest) ... ERROR
+test_cadence_negative (tests.test_launch_reminders.ReminderTest.test_cadence_negative) ... ok
+test_cadence_positive (tests.test_launch_reminders.ReminderTest.test_cadence_positive) ... ok
+test_identity_negative (tests.test_launch_reminders.ReminderTest.test_identity_negative) ... ok
+test_identity_positive (tests.test_launch_reminders.ReminderTest.test_identity_positive) ... ok
+test_quiet_negative (tests.test_launch_reminders.ReminderTest.test_quiet_negative) ... ok
+test_quiet_positive (tests.test_launch_reminders.ReminderTest.test_quiet_positive) ... ok
+test_scheduler_negative (tests.test_launch_reminders.ReminderTest.test_scheduler_negative) ... ok
+test_scheduler_positive (tests.test_launch_reminders.ReminderTest.test_scheduler_positive) ... ok
+test_changed_current_build_id_is_rejected_by_native_readers (tests.test_current_version_binding.CurrentVersionBindingTest.test_changed_current_build_id_is_rejected_by_native_readers) ... ok
+
+======================================================================
+ERROR: setUpClass (tests.test_current_ui_batch.CurrentUiBatchTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-integrated016-export-emghdou6/tests/test_current_ui_batch.py", line 76, in setUpClass
+    cls.result=verify(ROOT)
+               ~~~~~~^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-integrated016-export-emghdou6/tests/test_current_ui_batch.py", line 20, in verify
+    verify_rejection_menu(root)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-integrated016-export-emghdou6/tools/verify_current_ui_batch.py", line 91, in verify_rejection_menu
+    return validate(root, catalog)
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-integrated016-export-emghdou6/tools/native_integrated016_qualification.py", line 198, in validate
+    raise ValueError(label + ' original qualification failed: ' + result.stderr[-3000:])
+ValueError: display04 original qualification failed: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;from pathlib import Path;from tools.native_display04_requalification import validate;p=Path.cwd();c=json.loads((p/"locales/catalog.json").read_text());assert validate(p,c)==c["supportPolicy"]["softwareQualifiedLocales"]
+                                                                                                                                                                              ~~~~~~~~^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-integrated016-_ze_amv5/tools/native_display04_requalification.py", line 113, in validate
+    if sha((root/base/name).read_bytes())!=h:raise ValueError('DISPLAY04 generated compile input differs: '+name)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 777, in read_bytes
+    with self.open(mode='rb', buffering=0) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-integrated016-_ze_amv5/openspec/changes/spacefox-watchface/evidence/display04-whole-quality/rocket-clipping/green/manifest.xml'
+
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.599s
+
+FAILED (errors=1)
+
+exit 1

@@ -29,7 +29,10 @@ class NativeJson {
     // Whitespace outside a String fails there; avoid four VM substring probes
     // at every grammar boundary. Generic metadata parsing permits JSON whitespace.
     function white(){if(feedMode){return;}while(index<source.length() && (peek().equals(" ")||peek().equals("\n")||peek().equals("\r")||peek().equals("\t"))){index+=1;}}
-    function need(c){if(!peek().equals(c)){fail();}index+=1;}
+    // Keep the delimiter check in this frame. Nested feed objects already use
+    // the VM's small call stack; calling peek() here adds a frame at every
+    // deepest string boundary without changing the check.
+    function need(c){if(index>=source.length()||!source.substring(index,index+1).equals(c)){fail();}index+=1;}
     function read(depth){
         nodes+=1;if(depth>8||nodes>5000){fail();}white();var c=peek();if(c.equals("\"")){return string();}if(c.equals("{")){return object(depth);}if(c.equals("[")){return list(depth);}if(c.equals("n")){literal("null");return null;}if(c.equals("t")){literal("true");return true;}if(c.equals("f")){literal("false");return false;}return number();
     }

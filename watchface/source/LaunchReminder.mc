@@ -9,7 +9,7 @@ import Toybox.Time.Gregorian;
 import Toybox.UserProfile;
 
 // One background owner posts; foreground only publishes accepted state and arms.
-(:background, :typecheck(false))
+(:background, :extendedCode, :typecheck(false))
 module LaunchReminder {
  function enabled(){try{return Application.Properties.getValue("LaunchReminders")==1;}catch(e){return false;}}
  function number(v){return v instanceof Number||v instanceof Long;}

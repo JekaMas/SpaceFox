@@ -1,0 +1,82 @@
+target /var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-integrated016-export-9nh4bc6g
+exact hashed inputs 5455
+setUpClass (tests.test_current_ui_batch.CurrentUiBatchTest) ... ERROR
+test_cadence_negative (tests.test_launch_reminders.ReminderTest.test_cadence_negative) ... ok
+test_cadence_positive (tests.test_launch_reminders.ReminderTest.test_cadence_positive) ... ok
+test_identity_negative (tests.test_launch_reminders.ReminderTest.test_identity_negative) ... ok
+test_identity_positive (tests.test_launch_reminders.ReminderTest.test_identity_positive) ... ok
+test_quiet_negative (tests.test_launch_reminders.ReminderTest.test_quiet_negative) ... ok
+test_quiet_positive (tests.test_launch_reminders.ReminderTest.test_quiet_positive) ... ok
+test_scheduler_negative (tests.test_launch_reminders.ReminderTest.test_scheduler_negative) ... ok
+test_scheduler_positive (tests.test_launch_reminders.ReminderTest.test_scheduler_positive) ... ok
+test_changed_current_build_id_is_rejected_by_native_readers (tests.test_current_version_binding.CurrentVersionBindingTest.test_changed_current_build_id_is_rejected_by_native_readers) ... 
+  test_changed_current_build_id_is_rejected_by_native_readers (tests.test_current_version_binding.CurrentVersionBindingTest.test_changed_current_build_id_is_rejected_by_native_readers) (replacement=b'ID = "deadbeef"') ... ERROR
+  test_changed_current_build_id_is_rejected_by_native_readers (tests.test_current_version_binding.CurrentVersionBindingTest.test_changed_current_build_id_is_rejected_by_native_readers) (replacement=b'ID = "de5011f4"') ... ERROR
+
+======================================================================
+ERROR: setUpClass (tests.test_current_ui_batch.CurrentUiBatchTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-integrated016-export-9nh4bc6g/tests/test_current_ui_batch.py", line 76, in setUpClass
+    cls.result=verify(ROOT)
+               ~~~~~~^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-integrated016-export-9nh4bc6g/tests/test_current_ui_batch.py", line 20, in verify
+    verify_rejection_menu(root)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-integrated016-export-9nh4bc6g/tools/verify_current_ui_batch.py", line 91, in verify_rejection_menu
+    return validate(root, catalog)
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-integrated016-export-9nh4bc6g/tools/native_integrated016_qualification.py", line 175, in validate
+    if digest((root / generated / name).read_bytes()) != expected:
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 777, in read_bytes
+    with self.open(mode='rb', buffering=0) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-integrated016-export-9nh4bc6g/openspec/changes/spacefox-watchface/evidence/display04-integrated016/reminder/manifest.xml'
+
+======================================================================
+ERROR: test_changed_current_build_id_is_rejected_by_native_readers (tests.test_current_version_binding.CurrentVersionBindingTest.test_changed_current_build_id_is_rejected_by_native_readers) (replacement=b'ID = "deadbeef"')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-integrated016-export-9nh4bc6g/tests/test_current_version_binding.py", line 22, in test_changed_current_build_id_is_rejected_by_native_readers
+    data_reader.CurrentDataConvergenceTest.setUpClass()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-integrated016-export-9nh4bc6g/tests/test_current_data_convergence.py", line 34, in setUpClass
+    manifest_bytes = (EVIDENCE / 'MANIFEST.json').read_bytes()
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-integrated016-export-9nh4bc6g/tests/test_current_version_binding.py", line 16, in altered
+    data = original(path)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 777, in read_bytes
+    with self.open(mode='rb', buffering=0) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-integrated016-export-9nh4bc6g/openspec/changes/spacefox-watchface/evidence/current-native-data-public/MANIFEST.json'
+
+======================================================================
+ERROR: test_changed_current_build_id_is_rejected_by_native_readers (tests.test_current_version_binding.CurrentVersionBindingTest.test_changed_current_build_id_is_rejected_by_native_readers) (replacement=b'ID = "de5011f4"')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-integrated016-export-9nh4bc6g/tests/test_current_version_binding.py", line 22, in test_changed_current_build_id_is_rejected_by_native_readers
+    data_reader.CurrentDataConvergenceTest.setUpClass()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-integrated016-export-9nh4bc6g/tests/test_current_data_convergence.py", line 34, in setUpClass
+    manifest_bytes = (EVIDENCE / 'MANIFEST.json').read_bytes()
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-integrated016-export-9nh4bc6g/tests/test_current_version_binding.py", line 16, in altered
+    data = original(path)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 777, in read_bytes
+    with self.open(mode='rb', buffering=0) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-integrated016-export-9nh4bc6g/openspec/changes/spacefox-watchface/evidence/current-native-data-public/MANIFEST.json'
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.129s
+
+FAILED (errors=3)
+
+exit 1

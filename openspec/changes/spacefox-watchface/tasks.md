@@ -122,3 +122,10 @@ separate. One independent peer review/root judgment remains; self verification
 is not an independent verdict.
 
 UX01 reopens affected portions of existing tasks 3.2, 5.1, 5.5, 7.2 and 7.3: preserve reproducible baseline RED and unexpected passes, prove settings-to-render persistence and actual pixel/lifecycle geometry, cache failure and restart, and same-identity ordinary package. Physical delivery and acceptance remain open. See PROGRESS.md for the authoritative scope; no additional numbered tasks are introduced.
+
+DISPLAY04 reopens the related native quality portions of existing tasks 3.2,4.4,
+4.5,5.1,5.2,5.5,6.1,7.2 and 7.3. Scope now includes owner-photo point/metric issues,
+actual pixel clipping/overlap bounds, redundant work, memory/performance behavior,
+one Astra spec/test/process review and the expressly requested full final test
+runs. See evidence/display04-whole-quality/PLAN.md. This adds no numbered task or
+new physical prerequisite; the existing external gates remain truthful.

@@ -1,10 +1,10 @@
 import Toybox.Lang;
 
-(:typecheck(false))
+(:extendedCode, :typecheck(false))
 class NativeFeed {
     var bridge=null;var presentation=null;var reminderData=null;var backgroundNames=false;var document;var raw;var contentHash;var wireHash;var spans;var ignored;var timingKey="";var recordHash="";var phase="header";var validation;var stale=false;var rescheduled=false;
     function initialize(text,now){raw=text;parse(text);validate(now);validation=document["launch"]==null?null:document["launch"]["source_validated_utc"];stale=document["launch"]!=null && document["launch"]["stale"];rescheduled=document["launch"]!=null && document["launch"]["rescheduled"];contentHash=semanticHash();wireHash=hashRaw(raw);timingKey=timingIdentity();recordHash=recordIdentity(0);reminderData=reminderProjection();}
-    function reminderProjection(){
+    (:extendedCode) function reminderProjection(){
         var l=document["launch"];if(l==null||!same(l["status"],"pending")){return null;}var t=l["timing"];
         var target=refreshTarget();if(target==null||!(same(t["precision"],"exact")||same(t["precision"],"source-coarse")&&t["source_precision_id"]==1)){return null;}
         // Bounds accompanying a nominal target must actually contain it.
@@ -135,7 +135,7 @@ class NativeFeed {
 
 // A v6 sealed projection is only used after the durable raw SHA is verified.
 // The foreground independently reparses all raw bytes before UI activation.
-(:typecheck(false))
+(:extendedCode, :typecheck(false))
 class NativeCachedPacket extends NativeFeed {
     function initialize(marker){
         var prior=marker["prior"];var d=prior[0];document={"publisher"=>marker["publisher"],"catalogDigest"=>d["catalogDigest"],"refreshPolicy"=>d["refreshPolicy"],"launch"=>d["launch"]};

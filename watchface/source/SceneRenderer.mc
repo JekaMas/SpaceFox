@@ -20,6 +20,7 @@ class SceneRenderer {
     var fullContext as SceneContext or Null;
     var downloaded as NativeVisualRenderer or Null=null;
     var resourceLoads as Number = 0;
+    var prepared as Boolean = false;
     (:extendedCode)
     function initialize(owner as LocalePresentation or Null) {
         presentation=owner==null?new LocalePresentation():owner;
@@ -41,9 +42,16 @@ class SceneRenderer {
     (:extendedCode)
     function prepare(context as SceneContext or Null, settings as SceneSettings) as Void {
         presentation.prepare(settings.language);fonts["label"]=presentation.label as Graphics.FontType;fonts["small"]=presentation.small as Graphics.FontType;fonts["count"]=presentation.count as Graphics.FontType;
+        // Unchanged model and qualified point retain the same bitmaps even if
+        // metadata/settings were refreshed or the accepted scene woke again.
+        var same=prepared && ((context==null && fullContext==null) ||
+            (context!=null && fullContext!=null && context.modelId.equals(fullContext.modelId) && samePoint(context.point,fullContext.point)));
+        fullContext=context;
+        if(same){return;}
+        prepared=true;
         // The bundled view is geographical backdrop only: no location marker is
         // shown unless the selected launch supplies a qualified matching point.
-        fullContext = context; model = null; art = null; map = null; aodMap=null; aodResource=null; pin = false;aodPin=false;
+        model = null; art = null; map = null; aodMap=null; aodResource=null; pin = false;aodPin=false;
         var mapResource=Rez.Drawables.MapView0;
         if (context == null) { map=load(mapResource) as Graphics.BitmapType; art = load(Rez.Drawables.Art_unknown) as Graphics.BitmapType; return; }
         var id = NativeAssets.models.hasKey(context.modelId) ? context.modelId : "generic";
@@ -70,6 +78,10 @@ class SceneRenderer {
             }
         }
         map=load(mapResource) as Graphics.BitmapType;
+    }
+    function samePoint(a as Array<Numeric> or Null,b as Array<Numeric> or Null) as Boolean {
+        if(a==null||b==null){return a==null&&b==null;}
+        return a.size()==2&&b.size()==2&&a[0]==b[0]&&a[1]==b[1];
     }
     function aodCoordinate(data as ByteArray,offset as Number) as Float {return ((data[offset]<<24)|(data[offset+1]<<16)|(data[offset+2]<<8)|data[offset+3])/1000000.0;}
     function projectSite(point as Array<Numeric>,longitude as Numeric,latitude as Numeric) as Array<Number> {
@@ -142,7 +154,9 @@ class SceneRenderer {
         if(context==null && art!=null){dc.drawBitmap(22,118,art as Graphics.BitmapType);}
         if(current.localCalendar!=null){text(dc,195,95,presentation.calendarFont as Graphics.FontType,presentation.calendar(current.localCalendar as Array<Number>),0xD4DFEB,200,1);}
         text(dc,195,109,(fonts["time"] as Graphics.FontType),current.localTime,settings.clockColor,250,1);
-        var color = (current.rescheduled || context != null && context.rescheduled) ? 0xFF6B6B : settings.countdownColor;
+        current.rescheduled=current.rescheduled||context!=null&&context.rescheduled;
+        current.sourceHold=current.sourceHold||context!=null&&context.sourceHold;
+        var color = SceneAod.countdownColor(current,settings);
         var countdownLabel=current.countdown;
         var countFont = dc.getTextWidthInPixels(countdownLabel,fonts["count"] as Graphics.FontType) > 275 ? (fonts["small"] as Graphics.FontType) : (fonts["count"] as Graphics.FontType);
         var shown = text(dc,195,202,countFont,countdownLabel,color,275,1);
@@ -169,24 +183,25 @@ class SceneRenderer {
     function icon(dc as Graphics.Dc,x as Numeric,y as Numeric,role as String) as Void {
         if(icons.hasKey(role)){dc.drawBitmap(x,y,icons[role] as Graphics.BitmapType);}
     }
-    function releaseAod() as Void { aodMap=null; }
+    function prepareAod() as Void {if(aodMap==null && aodResource!=null){aodMap=load(aodResource as ResourceId) as Graphics.BitmapType;}}
     (:typecheck(false)) function aod(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,settings as SceneSettings) as Void {
         current.rescheduled=current.rescheduled||fullContext!=null&&fullContext.rescheduled;
+        current.sourceHold=current.sourceHold||fullContext!=null&&fullContext.sourceHold;
         current.stale=current.stale||fullContext!=null&&fullContext.stale;
         var rich=downloaded instanceof NativeSfrRenderer?downloaded:null;
         var selected=rich!=null && (rich.mapOutline!=null||(rich.bundledOutline&&aodPin&&aodResource!=null)) && rich.scene!=null && rich.scene["position"]!=null;
         // The current finite fixed-site catalog has full outlines at matching
         // centers. Prefer that shape even when the selected scene is READY;
         // unmatched future locations retain their own decoded raster outline.
-        if(aodMap==null && aodResource!=null){aodMap=load(aodResource as ResourceId) as Graphics.BitmapType;}
         var bundled=aodMap!=null && aodPin;
-        SceneAod.draw(dc,current,minute,presentation,fonts["aod"] as Graphics.FontType,settings,bundled?aodMap:(selected?rich.mapOutline:null),bundled||selected,selected?335:aodPinX,selected?165:aodPinY);
+        SceneAod.draw(dc,current,minute,presentation,fonts["aod"] as Graphics.FontType,settings,bundled?aodMap:(selected?rich.mapOutline:null),bundled||selected,bundled?aodPinX:335,bundled?aodPinY:165);
     }
 }
 
 // LOW rendering uses the same clock snapshot as the active scene. The caller
 // owns the once-per-minute guard; fonts/dictionary are prepared outside redraw.
 module SceneAod {
+    function countdownColor(current as ClockSnapshot, settings as SceneSettings) as Number {return current.rescheduled || current.sourceHold ? 0xFF6B6B : settings.countdownColor;}
     function draw(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,presentation as LocalePresentation,font as Graphics.FontType,settings as SceneSettings,map as Graphics.BitmapType or Null,pin as Boolean,pinX as Number,pinY as Number) as Void {
         dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();
         var positions=[[-1,-1],[1,-1],[-1,1],[1,1]];var phase=((minute%4+4)%4).toNumber();var p=positions[phase];
@@ -194,27 +209,30 @@ module SceneAod {
         // Keep the ACTIVE-coordinate coastlines outside the foreground bands.
         // Clearing under the hollow clock also bounds lit pixels on dense maps.
         dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);
-        dc.fillRectangle(35,132,280,39);dc.fillRectangle(20,180,350,108);
-        dc.fillRectangle(40,288,310,39);dc.fillRectangle(125,327,140,43);
+        dc.fillRectangle(35,91,280,39);dc.fillRectangle(45,139,300,108);
+        dc.fillRectangle(40,247,310,39);dc.fillRectangle(125,296,140,43);
         dc.setColor(settings.clockColor,Graphics.COLOR_TRANSPARENT);
         // Monospaced advance boxes do not imply symmetric digit ink. The
-        // bundled AOD atlas has 68px advances; these are the fully lit left
+        // bundled AOD atlas has 53px advances; these are the fully lit left
         // and exclusive right edges of each digit. Center actual time ink,
-        // then apply at most one pixel of minute-based burn-in movement.
-        var leftEdges=[7,11,5,5,4,7,7,5,7,6];
-        var rightEdges=[62,47,63,61,64,62,63,63,61,61];
+        // The glyph baseline stays fixed vertically: native 454px scaling adds a
+        // device-font offset that otherwise shifts the lower phases beyond
+        // the two-pixel center bound. Horizontal movement and the independent
+        // four-phase pixel-rest mask retain the minute-based burn-in pattern.
+        var leftEdges=[5,9,4,4,4,5,5,4,5,5];
+        var rightEdges=[48,37,49,48,50,48,49,49,48,48];
         var first="0123456789".find(current.localTime.substring(0,1) as String);
         var last="0123456789".find(current.localTime.substring(4,5) as String);
-        var correction=first==null||last==null?0:(69-leftEdges[first as Number]-rightEdges[last as Number])/2;
-        dc.setColor(settings.clockColor,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0]+correction,163+p[1],font,current.localTime,Graphics.TEXT_JUSTIFY_CENTER);
+        var correction=first==null||last==null?0:(54-leftEdges[first as Number]-rightEdges[last as Number])/2;
+        dc.setColor(settings.clockColor,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0]+correction,121,font,current.localTime,Graphics.TEXT_JUSTIFY_CENTER);
         var calendarFont=presentation.aodContextFont as Graphics.FontType;
-        if(current.localCalendar!=null){var date=presentation.calendar(current.localCalendar as Array<Number>);dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],130+p[1],calendarFont,date,Graphics.TEXT_JUSTIFY_CENTER);}
-        var color=current.rescheduled?0xFF6B6B:settings.countdownColor;
+        if(current.localCalendar!=null){var date=presentation.calendar(current.localCalendar as Array<Number>);dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],89+p[1],calendarFont,date,Graphics.TEXT_JUSTIFY_CENTER);}
+        var color=countdownColor(current,settings);
         var countFont=presentation.aodContextFont as Graphics.FontType;
         var value=presentation.fit(dc,current.countdown,countFont,300);
-        dc.setColor(color,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],287+p[1],countFont,value,Graphics.TEXT_JUSTIFY_CENTER);
-        dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],326+p[1],presentation.aodBatteryFont as Graphics.FontType,current.battery,Graphics.TEXT_JUSTIFY_CENTER);
-        if(current.stale){dc.setColor(color,Graphics.COLOR_TRANSPARENT);var width=dc.getTextWidthInPixels(value,countFont);for(var x=195+p[0]-width/2;x<=195+p[0]+width/2;x+=5){dc.fillCircle(x,327+p[1],1);}}
+        dc.setColor(color,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],246+p[1],countFont,value,Graphics.TEXT_JUSTIFY_CENTER);
+        dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],295+p[1],presentation.aodBatteryFont as Graphics.FontType,current.battery,Graphics.TEXT_JUSTIFY_CENTER);
+        if(current.stale){dc.setColor(color,Graphics.COLOR_TRANSPARENT);var width=dc.getTextWidthInPixels(value,countFont);for(var x=195+p[0]-width/2;x<=195+p[0]+width/2;x+=5){dc.fillCircle(x,286+p[1],1);}}
         if(map!=null && pin){var x=pinX;var y=pinY;dc.setColor(0xFFFFFF,Graphics.COLOR_TRANSPARENT);dc.fillCircle(x,y,7);dc.setColor(0xFF6B6B,Graphics.COLOR_TRANSPARENT);dc.fillCircle(x,y,4);}
     }
 }

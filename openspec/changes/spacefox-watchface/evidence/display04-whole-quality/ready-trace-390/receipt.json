@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "test": {
+    "status": "passed",
+    "raw_exit_code": 1,
+    "expected_tests": [
+      "display04ReadyOperationTextTrace"
+    ],
+    "observed_tests": {
+      "display04ReadyOperationTextTrace": "PASS"
+    },
+    "observed_count": 1,
+    "launcher_nonzero_framework_pass": true
+  },
+  "rawExit": 1,
+  "packageSha256": "6b5cc0fd69f2a2b750c5c6074f7894601b1cbbbdfb2deee9d40a9a495ba1ffeb",
+  "launch": [
+    "/opt/homebrew/Cellar/openjdk@11/11.0.21/libexec/openjdk.jdk/Contents/Home/bin/java",
+    "-Dfile.encoding=UTF-8",
+    "-classpath",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+    "com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux",
+    "-f",
+    "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/openspec/changes/spacefox-watchface/evidence/display04-whole-quality/ready-trace-390/Trace.prg",
+    "-d",
+    "fr165",
+    "-s",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/shell",
+    "-t"
+  ],
+  "boundary": "real READY-context EN/RU text/icon calls; flag-dependent footer, bitmap, preclip and physical behavior remain open"
+}

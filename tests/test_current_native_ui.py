@@ -8,7 +8,9 @@ from tools.native_language_policy import software_locales
 from tools.run_native_tests import parse_output
 
 ROOT = Path(__file__).resolve().parents[1]
-EVIDENCE = ROOT/'openspec/changes/spacefox-watchface/evidence/current-native-ui'
+HISTORICAL = ROOT/'openspec/changes/spacefox-watchface/evidence/current-native-ui'
+EVIDENCE = ROOT/'openspec/changes/spacefox-watchface/evidence/display04-whole-quality/final-current-native'
+FOLDERS = {'settings':'current_settings_probe','menu':'current_menu_probe','lifecycle':'current_lifecycle_probe'}
 OWNERS = ('watchface/source/SceneSettings.mc', 'watchface/source/SettingsMenu.mc',
           'watchface/source/SettingsMenuText.mc', 'watchface/source/SpaceFoxApp.mc',
           'watchface/source/SpaceFoxView.mc', 'watchface/source/LocalePresentation.mc',
@@ -17,9 +19,10 @@ OWNERS = ('watchface/source/SceneSettings.mc', 'watchface/source/SettingsMenu.mc
 
 class CurrentNativeUiTest(unittest.TestCase):
     def observe(self, folder, test, assertion):
-        directory = EVIDENCE/folder
+        directory = EVIDENCE/FOLDERS[folder]
         receipt = json.loads((directory/'receipt.json').read_text())
         self.assertEqual(receipt['status'], 'passed')
+        self.assertEqual(receipt['packageSha256'], hashlib.sha256((directory/'Display02Tests.prg').read_bytes()).hexdigest())
         self.assertEqual(receipt['inputHashes'][assertion], hashlib.sha256((ROOT/assertion).read_bytes()).hexdigest())
         for name in OWNERS:
             self.assertEqual(receipt['inputHashes'][name], hashlib.sha256((ROOT/name).read_bytes()).hexdigest(), name)
@@ -50,7 +53,7 @@ class CurrentNativeUiTest(unittest.TestCase):
         log = self.observe('settings', 'finalSettingsNegative', 'watchface/current-ui-tests/SettingsTests.mc')
         self.assertIn('Auto+36 internalIDs retained', log)
         real = Path.read_bytes
-        target = EVIDENCE/'settings/native.log'
+        target = HISTORICAL/'settings/native.log'
         def corrupt(path):
             raw = real(path)
             return raw+b'changed' if path.resolve() == target.resolve() else raw

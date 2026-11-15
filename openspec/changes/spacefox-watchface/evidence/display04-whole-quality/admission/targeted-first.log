@@ -1,0 +1,104 @@
+test_current_display_delta_source_drift_refuses (tests.test_native_language_policy.NativeSoftwareAdmissionTest.test_current_display_delta_source_drift_refuses) ... FAIL
+test_actual_finite_primary_software_receipt_admits_without_human_flags (tests.test_native_finite_evidence.NativeFiniteEvidenceTest.test_actual_finite_primary_software_receipt_admits_without_human_flags) ... ok
+test_rehashed_native_log_probe_sdk_and_corpus_corruptions_refuse (tests.test_native_finite_evidence.NativeFiniteEvidenceTest.test_rehashed_native_log_probe_sdk_and_corpus_corruptions_refuse) ... ERROR
+test_current_lifecycle (tests.test_current_native_ui.CurrentNativeUiTest.test_current_lifecycle) ... FAIL
+test_current_menu (tests.test_current_native_ui.CurrentNativeUiTest.test_current_menu) ... FAIL
+test_current_settings_negative (tests.test_current_native_ui.CurrentNativeUiTest.test_current_settings_negative) ... FAIL
+test_current_settings_positive (tests.test_current_native_ui.CurrentNativeUiTest.test_current_settings_positive) ... FAIL
+
+======================================================================
+ERROR: test_rehashed_native_log_probe_sdk_and_corpus_corruptions_refuse (tests.test_native_finite_evidence.NativeFiniteEvidenceTest.test_rehashed_native_log_probe_sdk_and_corpus_corruptions_refuse)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/test_native_finite_evidence.py", line 20, in test_rehashed_native_log_probe_sdk_and_corpus_corruptions_refuse
+    self.assertEqual(software_locales(root),catalog['supportPolicy']['primaryLocales'])
+                     ~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tools/native_language_policy.py", line 94, in software_locales
+    return validate(root,catalog)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tools/native_display04_requalification.py", line 68, in validate
+    record=json.loads(read(proof['display04DeltaProof']))
+                      ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tools/native_display04_requalification.py", line 65, in read
+    raw=(root/name).read_bytes()
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 777, in read_bytes
+    with self.open(mode='rb', buffering=0) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-finite-negative-9janbcdw/openspec/changes/spacefox-watchface/evidence/display04-whole-quality/admission/proof.json'
+
+======================================================================
+FAIL: test_current_display_delta_source_drift_refuses (tests.test_native_language_policy.NativeSoftwareAdmissionTest.test_current_display_delta_source_drift_refuses)
+----------------------------------------------------------------------
+ValueError: DISPLAY04 current native closure changed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/test_native_language_policy.py", line 110, in test_current_display_delta_source_drift_refuses
+    with self.assertRaisesRegex(ValueError,'DISPLAY02 proof input changed'):software_locales(root,self.catalog)
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "DISPLAY02 proof input changed" does not match "DISPLAY04 current native closure changed"
+
+======================================================================
+FAIL: test_current_lifecycle (tests.test_current_native_ui.CurrentNativeUiTest.test_current_lifecycle)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/test_current_native_ui.py", line 71, in test_current_lifecycle
+    self.observe('lifecycle', name, 'watchface/current-lifecycle-tests/LifecycleTests.mc')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/test_current_native_ui.py", line 23, in observe
+    self.assertEqual(receipt['inputHashes'][assertion], hashlib.sha256((ROOT/assertion).read_bytes()).hexdigest())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'a8101fdae12b0dd3e7cd6acd8cf6e5c0905d80627748da763a842d18e3882354' != '388ca82f2a5edaa8d852fcecbf956a331d68b9b79aacf99336402c54491bd05e'
+- a8101fdae12b0dd3e7cd6acd8cf6e5c0905d80627748da763a842d18e3882354
++ 388ca82f2a5edaa8d852fcecbf956a331d68b9b79aacf99336402c54491bd05e
+
+
+======================================================================
+FAIL: test_current_menu (tests.test_current_native_ui.CurrentNativeUiTest.test_current_menu)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/test_current_native_ui.py", line 64, in test_current_menu
+    log = self.observe('menu', 'currentMenuSettings', 'watchface/current-menu-tests/MenuTests.mc')
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/test_current_native_ui.py", line 25, in observe
+    self.assertEqual(receipt['inputHashes'][name], hashlib.sha256((ROOT/name).read_bytes()).hexdigest(), name)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'e572b125816a8e57290cd52de5fccbcca8579c0f1edc17286edb38fbd8e24b2f' != 'da91084b0058211b976011923774750fd5518d4df31101e9b447d7879c41cd42'
+- e572b125816a8e57290cd52de5fccbcca8579c0f1edc17286edb38fbd8e24b2f
++ da91084b0058211b976011923774750fd5518d4df31101e9b447d7879c41cd42
+ : watchface/source/SettingsMenu.mc
+
+======================================================================
+FAIL: test_current_settings_negative (tests.test_current_native_ui.CurrentNativeUiTest.test_current_settings_negative)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/test_current_native_ui.py", line 50, in test_current_settings_negative
+    log = self.observe('settings', 'finalSettingsNegative', 'watchface/current-ui-tests/SettingsTests.mc')
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/test_current_native_ui.py", line 25, in observe
+    self.assertEqual(receipt['inputHashes'][name], hashlib.sha256((ROOT/name).read_bytes()).hexdigest(), name)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'e572b125816a8e57290cd52de5fccbcca8579c0f1edc17286edb38fbd8e24b2f' != 'da91084b0058211b976011923774750fd5518d4df31101e9b447d7879c41cd42'
+- e572b125816a8e57290cd52de5fccbcca8579c0f1edc17286edb38fbd8e24b2f
++ da91084b0058211b976011923774750fd5518d4df31101e9b447d7879c41cd42
+ : watchface/source/SettingsMenu.mc
+
+======================================================================
+FAIL: test_current_settings_positive (tests.test_current_native_ui.CurrentNativeUiTest.test_current_settings_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/test_current_native_ui.py", line 38, in test_current_settings_positive
+    log = self.observe('settings', 'finalSettingsPositive', 'watchface/current-ui-tests/SettingsTests.mc')
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/test_current_native_ui.py", line 25, in observe
+    self.assertEqual(receipt['inputHashes'][name], hashlib.sha256((ROOT/name).read_bytes()).hexdigest(), name)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'e572b125816a8e57290cd52de5fccbcca8579c0f1edc17286edb38fbd8e24b2f' != 'da91084b0058211b976011923774750fd5518d4df31101e9b447d7879c41cd42'
+- e572b125816a8e57290cd52de5fccbcca8579c0f1edc17286edb38fbd8e24b2f
++ da91084b0058211b976011923774750fd5518d4df31101e9b447d7879c41cd42
+ : watchface/source/SettingsMenu.mc
+
+----------------------------------------------------------------------
+Ran 7 tests in 95.410s
+
+FAILED (failures=5, errors=1)

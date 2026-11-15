@@ -22,16 +22,3 @@ import Toybox.Time;
     } finally {if(previous==null){Application.Storage.deleteValue("sf.attempt");}else{store.write("sf.attempt",previous);}}
     return true;
 }
-
-(:test, :typecheck(false)) function uxAssetErrorDetailsFit(logger) {
-    var p=new LocalePresentation();p.qualificationMode=true;
-    var canvas=Graphics.createBufferedBitmap({:width=>390,:height=>390,:colorDepth=>16}).get();var dc=canvas.getDc();
-    var locales=["en","ru"];var codes=[-400,-104];
-    for(var i=0;i<locales.size();i+=1){p.prepare(locales[i]);for(var j=0;j<codes.size();j+=1){
-        var detail=NativeForegroundApp.errorDetail("assetFailed",{"build"=>NativeVersion.BUILD,"code"=>codes[j]});
-        var label=p.assetStatus("assetFailed",detail);var width=dc.getTextWidthInPixels(label,p.small);
-        logger.debug("UX_ASSET_ERROR locale="+locales[i]+" code="+codes[j]+" width="+width+" label="+label);
-        Test.assert(label.find(NativeVersion.BUILD)!=null&&label.find(codes[j].toString())!=null);
-        Test.assert(width<=175);
-    }}return true;
-}

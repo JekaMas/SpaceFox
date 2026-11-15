@@ -4,7 +4,7 @@ import Toybox.Communications;
 import Toybox.Lang;
 import Toybox.System;
 import Toybox.Time;
-(:background)
+(:background, :extendedCode)
 class FeedService extends System.ServiceDelegate {
     var transfer as NativeTransfer or Null;var assetRequest as Dictionary or Null;var batch as NativeBatch or Null=null;var started as Number=0;var requests as Number=0;
     function initialize(){ServiceDelegate.initialize();transfer=null;assetRequest=null;}
@@ -77,7 +77,7 @@ function batchPending(cache) {
     return pending;
 }
 
-(:background, :typecheck(false))
+(:background, :extendedCode, :typecheck(false))
 function armFeed(cache, now) {
     if (cache.base.equals("")) {
         try { Background.deleteTemporalEvent(); } catch(e) {}

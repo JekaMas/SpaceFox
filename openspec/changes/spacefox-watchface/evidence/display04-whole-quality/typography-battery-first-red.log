@@ -1,0 +1,16 @@
+test_available_numeric_components_and_unavailable_dashes (tests.test_display04_typography_bounds.NativeTypographyBoundsTest.test_available_numeric_components_and_unavailable_dashes) ... ok
+test_low_battery_scaled_ink_height (tests.test_display04_typography_bounds.NativeTypographyBoundsTest.test_low_battery_scaled_ink_height) ... FAIL
+
+======================================================================
+FAIL: test_low_battery_scaled_ink_height (tests.test_display04_typography_bounds.NativeTypographyBoundsTest.test_low_battery_scaled_ink_height)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/test_display04_typography_bounds.py", line 48, in test_low_battery_scaled_ink_height
+    self.assertGreaterEqual(height(image),32*454/390,'actual LOW battery colored ink must meet the scaled 32px bound')
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 37 not greater than or equal to 37.251282051282054 : actual LOW battery colored ink must meet the scaled 32px bound
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.311s
+
+FAILED (failures=1)

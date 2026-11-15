@@ -18,7 +18,14 @@ class SceneLifecycle {
     function bindReady() as Void {job=null;}
     function pending() as Boolean {return job!=null && job.state!=job.FAILED;}
     function request(serial as Number or Long) as Boolean {
-        if(job!=null){return false;}
+        if(job!=null){
+            // An immutable job already queued/building is never replaced by a
+            // duplicate publication. A failed read gets one attempt only when
+            // a strictly newer completed batch is admitted; advancing the token
+            // prevents an old callback from publishing into the retry.
+            if(job.state!=job.FAILED || serial<=job.batchSerial){return false;}
+            generation+=1;
+        }
         job=new SceneJob(generation,serial);return true;
     }
     function begin() as Number or Null {

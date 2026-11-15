@@ -22,7 +22,7 @@ class SpaceFoxApp extends Application.AppBase {
 
     function getServiceDelegate() as [System.ServiceDelegate] {return [new FeedService()];}
     (:typecheck(disableBackgroundCheck))
-    function onBackgroundData(data as Application.PersistableType) as Void {if(view==null){return;}if(view.canAcceptBackground()){try{reloadFeed();}catch(e){}}WatchUi.requestUpdate();}
+    function onBackgroundData(data as Application.PersistableType) as Void {if(view==null||System.getDisplayMode()==System.DISPLAY_MODE_OFF){return;}if(view.canAcceptBackground()){try{reloadFeed();}catch(e){}}WatchUi.requestUpdate();}
     (:typecheck(disableBackgroundCheck))
     function reloadFeed() as Void {
         if(restorePending){queueRestore();return;}NativeForegroundApp.reload(self);

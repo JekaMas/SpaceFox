@@ -36,8 +36,9 @@ import Toybox.Time;
     var r=new CurrentColorRenderer();var settings=new SceneSettings({"ClockColor"=>2,"CountdownColor"=>3});var context=new SceneContext({"id"=>"ll2:launch:0f867f0c-5422-4d44-93b8-d7faaae7019b","rocket"=>"Starship V3","operator"=>"SpaceX","purpose"=>"Communications","site"=>"US · SpaceX Starbase, TX, USA"});r.prepare(context,settings);
     var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();var clock=new ClockSnapshot("08:08","T- 01:00:00");
     r.active(dc,clock,settings,{},new Fitness(),0.0);Test.assertEqual(r.timeColor,0x9ad5ff);Test.assertEqual(r.countColor,0xcdb7ff);Test.assertEqual(r.underlines,0);
-    clock.rescheduled=true;r.active(dc,clock,settings,{},new Fitness(),0.0);Test.assertEqual(r.timeColor,0x9ad5ff);Test.assertEqual(r.countColor,0xf3c37a);Test.assertEqual(r.underlines,0);
+    clock.rescheduled=true;r.active(dc,clock,settings,{},new Fitness(),0.0);Test.assertEqual(r.timeColor,0x9ad5ff);Test.assertEqual(r.countColor,0xff6b6b);Test.assertEqual(r.underlines,0);
     clock.rescheduled=false;clock.stale=true;r.active(dc,clock,settings,{},new Fitness(),0.0);Test.assertEqual(r.timeColor,0x9ad5ff);Test.assertEqual(r.countColor,0xcdb7ff);Test.assertEqual(r.underlines,1);
-    clock.rescheduled=true;clock.countdown="--:--:--";r.active(dc,clock,settings,{},new Fitness(),0.0);Test.assertEqual(r.timeColor,0x9ad5ff);Test.assertEqual(r.countColor,0xf3c37a);Test.assertEqual(r.underlines,2);
-    logger.debug("COLORS selected clock and countdown; amber reschedule; stale dots; coexisting unknown preserves clock");return true;
+    clock.rescheduled=true;clock.countdown="--:--:--";r.active(dc,clock,settings,{},new Fitness(),0.0);Test.assertEqual(r.timeColor,0x9ad5ff);Test.assertEqual(r.countColor,0xff6b6b);Test.assertEqual(r.underlines,2);
+    clock.rescheduled=false;clock.sourceHold=true;r.active(dc,clock,settings,{},new Fitness(),0.0);Test.assertEqual(r.countColor,0xff6b6b);Test.assertEqual(r.underlines,3);
+    logger.debug("COLORS selected clock and countdown; coral reschedule or sourced hold; stale dots; coexisting unknown preserves clock");return true;
 }

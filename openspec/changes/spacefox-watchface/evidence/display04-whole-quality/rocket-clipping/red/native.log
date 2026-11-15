@@ -1,0 +1,21 @@
+------------------------------------------------------------------------------
+Executing test display03SkipInvisibleRocket...
+DEBUG (17:52): ROCKET_CLIP invisible draws=1 clips=1
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - display03SkipInvisibleRocket() at /Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/watchface/display03-tests/InvisibleRocketTests.mc:19 0x10007b56 
+  - evaluate_test_entries_0_to_25() at /Users/jekamas/.codex/tmp/spacefox-display04-rocket-red-01/gen/006-B4433-00/source/UnitTests.mcgen:111 0x1000ad06 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-display04-rocket-red-01/gen/006-B4433-00/source/UnitTests.mcgen:138 0x1000ae04 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+display03SkipInvisibleRocket        ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

@@ -1,0 +1,20 @@
+------------------------------------------------------------------------------
+Executing test ux03MatchingFallback...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - ux03MatchingFallback() at /Users/jekamas/.codex/tmp/spacefox-display04-other-full-01/Ux03Tests/tests/Ux03Tests.mc:8 0x10004b58 
+  - evaluate_test_entries_0_to_1() at /Users/jekamas/.codex/tmp/spacefox-display04-other-full-01/Ux03Tests/gen/006-B4433-00/source/UnitTests.mcgen:51 0x10008897 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-display04-other-full-01/Ux03Tests/gen/006-B4433-00/source/UnitTests.mcgen:66 0x10008943 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+ux03MatchingFallback                ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

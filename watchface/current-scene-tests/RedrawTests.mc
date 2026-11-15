@@ -22,7 +22,8 @@ import Toybox.WatchUi;
     view.updateForDisplayMode(image.getDc(),System.DISPLAY_MODE_HIGH_POWER);
     Test.assert(counter.calls==before && view.renderer.resourceLoads==loads);
     Test.assertEqual(view.snapshot().countdown,"T- 16:18:18");
-    view.syncDisplayMode(System.DISPLAY_MODE_HIGH_POWER);
+    view.onExitSleep();view.updateForDisplayMode(image.getDc(),System.DISPLAY_MODE_HIGH_POWER);
+    Test.assert(counter.calls==before);view.resumeAfterFrame();
     Test.assert(counter.calls==before+1);view.onHide();
     logger.debug("DRAW_RESUME deferred=true rendererLoadsStable=true callbackResumesOnce=true");return true;
 }

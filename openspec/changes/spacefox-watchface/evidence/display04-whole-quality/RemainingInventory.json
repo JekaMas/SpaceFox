@@ -1,0 +1,784 @@
+{
+  "status": "SELF-GREEN for current software unit; fresh independent peer and external delivery/physical gates remain",
+  "scope": "finite EN/RU, 390/454, ACTIVE/LOW, pending/READY; conditional flame/stale/flag are required whenever applicable; OFF is not a layout",
+  "contexts": [
+    {
+      "id": "en-390-active-pending",
+      "language": "en",
+      "size": 390,
+      "mode": "active",
+      "stage": "pending",
+      "requiredOperationIds": [
+        "map",
+        "art",
+        "flame",
+        "flag",
+        "point",
+        "header_rocket",
+        "header_separator",
+        "header_operator",
+        "purpose",
+        "footer",
+        "date",
+        "clock",
+        "countdown",
+        "stale",
+        "field_0",
+        "field_1",
+        "field_2",
+        "field_3",
+        "icon_0",
+        "icon_1",
+        "icon_2",
+        "icon_3"
+      ],
+      "captured": [
+        {
+          "operations": "all required IDs, including expected conditional absences",
+          "receipt": "mask-active-en390",
+          "proof": "native paired-background visible support, intended regions, foreground overlap; barcode excluded"
+        }
+      ],
+      "reused": [],
+      "missing": [],
+      "preclip": "source-bound native text/icon/LOW dimensions, bitmap bounds and clip ledger at retained fixture/phase; tests/test_display04_preclip_evidence.py",
+      "conditionalEvidence": "conditional-390 or conditional-454: source-qualified Hold/stale and phase-0.5 ascent in EN with exact same-profile composition; RU conditional rendering is not separately captured"
+    },
+    {
+      "id": "en-390-active-ready",
+      "language": "en",
+      "size": 390,
+      "mode": "active",
+      "stage": "ready",
+      "requiredOperationIds": [
+        "map",
+        "art",
+        "flame",
+        "flag",
+        "point",
+        "header_rocket",
+        "header_separator",
+        "header_operator",
+        "purpose",
+        "footer",
+        "date",
+        "clock",
+        "countdown",
+        "stale",
+        "field_0",
+        "field_1",
+        "field_2",
+        "field_3",
+        "icon_0",
+        "icon_1",
+        "icon_2",
+        "icon_3"
+      ],
+      "captured": [
+        {
+          "operations": "whole decoded scene, rocket, flag, point",
+          "receipt": "ready-postguard",
+          "proof": "visible installed-cache frame; not isolated alpha"
+        },
+        {
+          "operations": [
+            "map",
+            "art",
+            "flag",
+            "point",
+            "header_rocket",
+            "header_separator",
+            "header_operator",
+            "purpose",
+            "footer",
+            "countdown"
+          ],
+          "receipt": "ready-mask-en390",
+          "proof": "22/22 native paired frames; real source-bound builder/decoder in test-only 768 KiB watch-app; individual circle/region/pairwise checks"
+        }
+      ],
+      "reused": [
+        {
+          "operations": [
+            "date",
+            "clock",
+            "field_0",
+            "field_1",
+            "field_2",
+            "field_3",
+            "icon_0",
+            "icon_1",
+            "icon_2",
+            "icon_3"
+          ],
+          "receipt": "mask-active-en390 + ready-trace-390/454 + trace-pending-390 + font-trace-390-corrected",
+          "proof": "same-profile production text/icon arguments, values, font identity and colors match, with source-bound real READY feed and calendar; rocket clip cleared before these operations"
+        }
+      ],
+      "missing": [],
+      "preclip": "source-bound native text/icon/LOW dimensions, bitmap bounds and clip ledger at retained fixture/phase; tests/test_display04_preclip_evidence.py",
+      "conditionalEvidence": "conditional-390 or conditional-454: source-qualified Hold/stale and phase-0.5 ascent in EN with exact same-profile composition; RU conditional rendering is not separately captured"
+    },
+    {
+      "id": "en-390-low-pending",
+      "language": "en",
+      "size": 390,
+      "mode": "low",
+      "stage": "pending",
+      "requiredOperationIds": [
+        "map",
+        "point",
+        "date",
+        "clock",
+        "countdown",
+        "stale",
+        "battery"
+      ],
+      "captured": [
+        {
+          "operations": "all required IDs, including expected stale absence",
+          "receipt": "low-en390 + low-en390-map",
+          "proof": "same-source paired native alpha; 15/16 original plus separately bound targeted map pair; intended regions and foreground pairwise checked"
+        }
+      ],
+      "reused": [],
+      "missing": [],
+      "preclip": "source-bound native text/icon/LOW dimensions, bitmap bounds and clip ledger at retained fixture/phase; tests/test_display04_preclip_evidence.py",
+      "conditionalEvidence": "conditional-390 or conditional-454: source-qualified Hold/stale and phase-0.5 ascent in EN with exact same-profile composition; RU conditional rendering is not separately captured"
+    },
+    {
+      "id": "en-390-low-ready",
+      "language": "en",
+      "size": 390,
+      "mode": "low",
+      "stage": "ready",
+      "requiredOperationIds": [
+        "map",
+        "point",
+        "date",
+        "clock",
+        "countdown",
+        "stale",
+        "battery"
+      ],
+      "captured": [
+        {
+          "operations": [
+            "map",
+            "point",
+            "date",
+            "clock",
+            "countdown",
+            "battery"
+          ],
+          "receipt": "ready-low-en390 + ready-low-en390-clockdate",
+          "proof": "phase-1 actual native paired alpha after real selected build, 768 KiB SDK geometry harness; independent region/circle/pairwise check"
+        }
+      ],
+      "reused": [],
+      "missing": [],
+      "preclip": "source-bound native text/icon/LOW dimensions, bitmap bounds and clip ledger at retained fixture/phase; tests/test_display04_preclip_evidence.py",
+      "conditionalEvidence": "conditional-390 or conditional-454: source-qualified Hold/stale and phase-0.5 ascent in EN with exact same-profile composition; RU conditional rendering is not separately captured"
+    },
+    {
+      "id": "en-454-active-pending",
+      "language": "en",
+      "size": 454,
+      "mode": "active",
+      "stage": "pending",
+      "requiredOperationIds": [
+        "map",
+        "art",
+        "flame",
+        "flag",
+        "point",
+        "header_rocket",
+        "header_separator",
+        "header_operator",
+        "purpose",
+        "footer",
+        "date",
+        "clock",
+        "countdown",
+        "stale",
+        "field_0",
+        "field_1",
+        "field_2",
+        "field_3",
+        "icon_0",
+        "icon_1",
+        "icon_2",
+        "icon_3"
+      ],
+      "captured": [
+        {
+          "operations": "point and 08:38 clock only",
+          "receipt": "pending-point-454 + centered-low-454",
+          "proof": "visible-pixel witness; not full operation masks"
+        },
+        {
+          "operations": [
+            "purpose",
+            "date",
+            "field_0"
+          ],
+          "receipt": "subset-en454",
+          "proof": "native paired-background visible alpha, 16 text/icon composition checked including same-profile trace-backed reuses"
+        }
+      ],
+      "reused": [
+        {
+          "operations": [
+            "header_rocket",
+            "header_separator",
+            "header_operator",
+            "footer",
+            "clock",
+            "countdown",
+            "icon_0",
+            "icon_1",
+            "field_1",
+            "icon_2",
+            "field_2",
+            "icon_3",
+            "field_3"
+          ],
+          "receipt": "mask-active-ru454 + target33 + trace-pending-454 + font-trace-390-corrected + scale-view-454",
+          "proof": "same-profile exact text/icon trace; same fixture, font identity, source and 454 alpha capture; validated by test_display04_operation_trace"
+        },
+        {
+          "operations": [
+            "map",
+            "art",
+            "point",
+            "conditional absence: flame/flag/stale"
+          ],
+          "receipt": "mask-active-ru454 + bitmap-trace-454",
+          "proof": "same-profile native selected resource IDs, dimensions, point and phase match EN/RU; source-bound conditional state and original paired native alpha"
+        }
+      ],
+      "missing": [],
+      "preclip": "source-bound native text/icon/LOW dimensions, bitmap bounds and clip ledger at retained fixture/phase; tests/test_display04_preclip_evidence.py",
+      "conditionalEvidence": "conditional-390 or conditional-454: source-qualified Hold/stale and phase-0.5 ascent in EN with exact same-profile composition; RU conditional rendering is not separately captured"
+    },
+    {
+      "id": "en-454-active-ready",
+      "language": "en",
+      "size": 454,
+      "mode": "active",
+      "stage": "ready",
+      "requiredOperationIds": [
+        "map",
+        "art",
+        "flame",
+        "flag",
+        "point",
+        "header_rocket",
+        "header_separator",
+        "header_operator",
+        "purpose",
+        "footer",
+        "date",
+        "clock",
+        "countdown",
+        "stale",
+        "field_0",
+        "field_1",
+        "field_2",
+        "field_3",
+        "icon_0",
+        "icon_1",
+        "icon_2",
+        "icon_3"
+      ],
+      "captured": [
+        {
+          "operations": [
+            "map",
+            "art",
+            "flag",
+            "point",
+            "header_rocket",
+            "header_separator",
+            "header_operator",
+            "purpose",
+            "footer",
+            "countdown"
+          ],
+          "receipt": "ready-mask-en454",
+          "proof": "22/22 actual 454 native paired frames; source-bound production builder/decoder under SDK watch-app allowance"
+        }
+      ],
+      "reused": [
+        {
+          "operations": [
+            "date",
+            "clock",
+            "field_0",
+            "field_1",
+            "field_2",
+            "field_3",
+            "icon_0",
+            "icon_1",
+            "icon_2",
+            "icon_3"
+          ],
+          "receipt": "mask-active-ru454 + subset-en454 + ready-trace-454 + trace-pending-454",
+          "proof": "same-profile exact production text/icon args, values, font/color and source trace"
+        }
+      ],
+      "missing": [],
+      "preclip": "source-bound native text/icon/LOW dimensions, bitmap bounds and clip ledger at retained fixture/phase; tests/test_display04_preclip_evidence.py",
+      "conditionalEvidence": "conditional-390 or conditional-454: source-qualified Hold/stale and phase-0.5 ascent in EN with exact same-profile composition; RU conditional rendering is not separately captured"
+    },
+    {
+      "id": "en-454-low-pending",
+      "language": "en",
+      "size": 454,
+      "mode": "low",
+      "stage": "pending",
+      "requiredOperationIds": [
+        "map",
+        "point",
+        "date",
+        "clock",
+        "countdown",
+        "stale",
+        "battery"
+      ],
+      "captured": [
+        {
+          "operations": [
+            "date"
+          ],
+          "receipt": "low-en454-date",
+          "proof": "actual same-profile paired native alpha for changed locale date"
+        },
+        {
+          "operations": [
+            "battery"
+          ],
+          "receipt": "low-en454-battery",
+          "proof": "actual same-profile paired native alpha from independently sampled SDK system battery"
+        }
+      ],
+      "reused": [
+        {
+          "operations": [
+            "map",
+            "point",
+            "clock",
+            "countdown",
+            "conditional stale absence"
+          ],
+          "receipt": "mask-low-ru454",
+          "proof": "same-profile source/fixture/phase-frozen geometry; actual localized date captured separately"
+        }
+      ],
+      "missing": [],
+      "preclip": "source-bound native text/icon/LOW dimensions, bitmap bounds and clip ledger at retained fixture/phase; tests/test_display04_preclip_evidence.py",
+      "conditionalEvidence": "conditional-390 or conditional-454: source-qualified Hold/stale and phase-0.5 ascent in EN with exact same-profile composition; RU conditional rendering is not separately captured"
+    },
+    {
+      "id": "en-454-low-ready",
+      "language": "en",
+      "size": 454,
+      "mode": "low",
+      "stage": "ready",
+      "requiredOperationIds": [
+        "map",
+        "point",
+        "date",
+        "clock",
+        "countdown",
+        "stale",
+        "battery"
+      ],
+      "captured": [
+        {
+          "operations": [
+            "map",
+            "point",
+            "date",
+            "clock",
+            "countdown",
+            "battery"
+          ],
+          "receipt": "ready-low-en454-all",
+          "proof": "phase-1 actual native paired alpha after real selected build, 768 KiB SDK geometry harness; independent region/circle/pairwise check"
+        }
+      ],
+      "reused": [],
+      "missing": [],
+      "preclip": "source-bound native text/icon/LOW dimensions, bitmap bounds and clip ledger at retained fixture/phase; tests/test_display04_preclip_evidence.py",
+      "conditionalEvidence": "conditional-390 or conditional-454: source-qualified Hold/stale and phase-0.5 ascent in EN with exact same-profile composition; RU conditional rendering is not separately captured"
+    },
+    {
+      "id": "ru-390-active-pending",
+      "language": "ru",
+      "size": 390,
+      "mode": "active",
+      "stage": "pending",
+      "requiredOperationIds": [
+        "map",
+        "art",
+        "flame",
+        "flag",
+        "point",
+        "header_rocket",
+        "header_separator",
+        "header_operator",
+        "purpose",
+        "footer",
+        "date",
+        "clock",
+        "countdown",
+        "stale",
+        "field_0",
+        "field_1",
+        "field_2",
+        "field_3",
+        "icon_0",
+        "icon_1",
+        "icon_2",
+        "icon_3"
+      ],
+      "captured": [
+        {
+          "operations": [
+            "purpose",
+            "date",
+            "field_0"
+          ],
+          "receipt": "subset-ru390",
+          "proof": "native paired-background visible alpha, 16 text/icon composition checked including same-profile trace-backed reuses"
+        }
+      ],
+      "reused": [
+        {
+          "operations": [
+            "header_rocket",
+            "header_separator",
+            "header_operator",
+            "footer",
+            "clock",
+            "countdown",
+            "icon_0",
+            "icon_1",
+            "field_1",
+            "icon_2",
+            "field_2",
+            "icon_3",
+            "field_3"
+          ],
+          "receipt": "mask-active-en390 + trace-pending-390 + font-trace-390-corrected",
+          "proof": "same-profile exact text/icon trace; same fixture, font identity, source and alpha capture; validated by test_display04_operation_trace"
+        },
+        {
+          "operations": [
+            "map",
+            "art",
+            "point",
+            "conditional absence: flame/flag/stale"
+          ],
+          "receipt": "mask-active-en390 + bitmap-trace-390",
+          "proof": "same-profile native selected resource IDs, dimensions, point and phase match EN/RU; source-bound conditional state and original paired native alpha"
+        }
+      ],
+      "missing": [],
+      "preclip": "source-bound native text/icon/LOW dimensions, bitmap bounds and clip ledger at retained fixture/phase; tests/test_display04_preclip_evidence.py",
+      "conditionalEvidence": "conditional-390 or conditional-454: source-qualified Hold/stale and phase-0.5 ascent in EN with exact same-profile composition; RU conditional rendering is not separately captured"
+    },
+    {
+      "id": "ru-390-active-ready",
+      "language": "ru",
+      "size": 390,
+      "mode": "active",
+      "stage": "ready",
+      "requiredOperationIds": [
+        "map",
+        "art",
+        "flame",
+        "flag",
+        "point",
+        "header_rocket",
+        "header_separator",
+        "header_operator",
+        "purpose",
+        "footer",
+        "date",
+        "clock",
+        "countdown",
+        "stale",
+        "field_0",
+        "field_1",
+        "field_2",
+        "field_3",
+        "icon_0",
+        "icon_1",
+        "icon_2",
+        "icon_3"
+      ],
+      "captured": [],
+      "reused": [
+        {
+          "operations": "all 20 visible owners, with RU purpose/date/steps replacing English masks",
+          "receipt": "ready-mask-en390 + ready-asset-trace-390 + same-profile RU pending masks",
+          "proof": "actual EN/RU production builder completed same digest/bitmap sizes and text/icon arguments; only purpose/date/step differ and match qualified RU pending masks; full circle/region/pairwise composition"
+        }
+      ],
+      "missing": [],
+      "preclip": "source-bound native text/icon/LOW dimensions, bitmap bounds and clip ledger at retained fixture/phase; tests/test_display04_preclip_evidence.py",
+      "conditionalEvidence": "conditional-390 or conditional-454: source-qualified Hold/stale and phase-0.5 ascent in EN with exact same-profile composition; RU conditional rendering is not separately captured"
+    },
+    {
+      "id": "ru-390-low-pending",
+      "language": "ru",
+      "size": 390,
+      "mode": "low",
+      "stage": "pending",
+      "requiredOperationIds": [
+        "map",
+        "point",
+        "date",
+        "clock",
+        "countdown",
+        "stale",
+        "battery"
+      ],
+      "captured": [
+        {
+          "operations": [
+            "date"
+          ],
+          "receipt": "low-ru390-date",
+          "proof": "actual same-profile paired native alpha for changed locale date"
+        },
+        {
+          "operations": [
+            "battery"
+          ],
+          "receipt": "low-ru390-battery",
+          "proof": "actual same-profile paired native alpha from independently sampled SDK system battery"
+        }
+      ],
+      "reused": [
+        {
+          "operations": [
+            "map",
+            "point",
+            "clock",
+            "countdown",
+            "conditional stale absence"
+          ],
+          "receipt": "low-en390 + low-en390-map",
+          "proof": "same-profile source/fixture/phase-frozen geometry; actual localized date captured separately"
+        }
+      ],
+      "missing": [],
+      "preclip": "source-bound native text/icon/LOW dimensions, bitmap bounds and clip ledger at retained fixture/phase; tests/test_display04_preclip_evidence.py",
+      "conditionalEvidence": "conditional-390 or conditional-454: source-qualified Hold/stale and phase-0.5 ascent in EN with exact same-profile composition; RU conditional rendering is not separately captured"
+    },
+    {
+      "id": "ru-390-low-ready",
+      "language": "ru",
+      "size": 390,
+      "mode": "low",
+      "stage": "ready",
+      "requiredOperationIds": [
+        "map",
+        "point",
+        "date",
+        "clock",
+        "countdown",
+        "stale",
+        "battery"
+      ],
+      "captured": [
+        {
+          "operations": [
+            "date",
+            "battery"
+          ],
+          "receipt": "ready-low-ru390-datebattery",
+          "proof": "actual phase-1 locale and own SDK system-battery paired alpha"
+        }
+      ],
+      "reused": [
+        {
+          "operations": [
+            "map",
+            "point",
+            "clock",
+            "countdown"
+          ],
+          "receipt": "ready-low-en390 + ready-low-en390-clockdate + ready-low-trace-fixed-390",
+          "proof": "same-profile native builder/LOW contour resource, position, numeric countdown, font and phase match EN/RU"
+        }
+      ],
+      "missing": [],
+      "preclip": "source-bound native text/icon/LOW dimensions, bitmap bounds and clip ledger at retained fixture/phase; tests/test_display04_preclip_evidence.py",
+      "conditionalEvidence": "conditional-390 or conditional-454: source-qualified Hold/stale and phase-0.5 ascent in EN with exact same-profile composition; RU conditional rendering is not separately captured"
+    },
+    {
+      "id": "ru-454-active-pending",
+      "language": "ru",
+      "size": 454,
+      "mode": "active",
+      "stage": "pending",
+      "requiredOperationIds": [
+        "map",
+        "art",
+        "flame",
+        "flag",
+        "point",
+        "header_rocket",
+        "header_separator",
+        "header_operator",
+        "purpose",
+        "footer",
+        "date",
+        "clock",
+        "countdown",
+        "stale",
+        "field_0",
+        "field_1",
+        "field_2",
+        "field_3",
+        "icon_0",
+        "icon_1",
+        "icon_2",
+        "icon_3"
+      ],
+      "captured": [
+        {
+          "operations": "all required IDs, including expected conditional absences",
+          "receipt": "mask-active-ru454 + mask-active-ru454-target33",
+          "proof": "native paired-background visible support, intended regions, foreground overlap; barcode excluded"
+        }
+      ],
+      "reused": [],
+      "missing": [],
+      "preclip": "source-bound native text/icon/LOW dimensions, bitmap bounds and clip ledger at retained fixture/phase; tests/test_display04_preclip_evidence.py",
+      "conditionalEvidence": "conditional-390 or conditional-454: source-qualified Hold/stale and phase-0.5 ascent in EN with exact same-profile composition; RU conditional rendering is not separately captured"
+    },
+    {
+      "id": "ru-454-active-ready",
+      "language": "ru",
+      "size": 454,
+      "mode": "active",
+      "stage": "ready",
+      "requiredOperationIds": [
+        "map",
+        "art",
+        "flame",
+        "flag",
+        "point",
+        "header_rocket",
+        "header_separator",
+        "header_operator",
+        "purpose",
+        "footer",
+        "date",
+        "clock",
+        "countdown",
+        "stale",
+        "field_0",
+        "field_1",
+        "field_2",
+        "field_3",
+        "icon_0",
+        "icon_1",
+        "icon_2",
+        "icon_3"
+      ],
+      "captured": [],
+      "reused": [
+        {
+          "operations": "all 20 visible owners, with RU purpose/date/steps replacing English masks",
+          "receipt": "ready-mask-en454 + ready-asset-trace-454 + same-profile RU pending masks",
+          "proof": "actual EN/RU production builder completed same digest/bitmap sizes and text/icon arguments; only purpose/date/step differ and match qualified RU pending masks; full circle/region/pairwise composition"
+        }
+      ],
+      "missing": [],
+      "preclip": "source-bound native text/icon/LOW dimensions, bitmap bounds and clip ledger at retained fixture/phase; tests/test_display04_preclip_evidence.py",
+      "conditionalEvidence": "conditional-390 or conditional-454: source-qualified Hold/stale and phase-0.5 ascent in EN with exact same-profile composition; RU conditional rendering is not separately captured"
+    },
+    {
+      "id": "ru-454-low-pending",
+      "language": "ru",
+      "size": 454,
+      "mode": "low",
+      "stage": "pending",
+      "requiredOperationIds": [
+        "map",
+        "point",
+        "date",
+        "clock",
+        "countdown",
+        "stale",
+        "battery"
+      ],
+      "captured": [
+        {
+          "operations": "all required IDs, including expected conditional absences",
+          "receipt": "mask-low-ru454",
+          "proof": "native paired-background visible support, intended regions, foreground overlap; barcode excluded"
+        }
+      ],
+      "reused": [],
+      "missing": [],
+      "preclip": "source-bound native text/icon/LOW dimensions, bitmap bounds and clip ledger at retained fixture/phase; tests/test_display04_preclip_evidence.py",
+      "conditionalEvidence": "conditional-390 or conditional-454: source-qualified Hold/stale and phase-0.5 ascent in EN with exact same-profile composition; RU conditional rendering is not separately captured"
+    },
+    {
+      "id": "ru-454-low-ready",
+      "language": "ru",
+      "size": 454,
+      "mode": "low",
+      "stage": "ready",
+      "requiredOperationIds": [
+        "map",
+        "point",
+        "date",
+        "clock",
+        "countdown",
+        "stale",
+        "battery"
+      ],
+      "captured": [
+        {
+          "operations": [
+            "date",
+            "battery"
+          ],
+          "receipt": "ready-low-ru454-datebattery",
+          "proof": "actual phase-1 locale and own SDK system-battery paired alpha"
+        }
+      ],
+      "reused": [
+        {
+          "operations": [
+            "map",
+            "point",
+            "clock",
+            "countdown"
+          ],
+          "receipt": "ready-low-en454-all + ready-low-trace-fixed-454",
+          "proof": "same-profile native builder/LOW contour resource, position, numeric countdown, font and phase match EN/RU"
+        }
+      ],
+      "missing": [],
+      "preclip": "source-bound native text/icon/LOW dimensions, bitmap bounds and clip ledger at retained fixture/phase; tests/test_display04_preclip_evidence.py",
+      "conditionalEvidence": "conditional-390 or conditional-454: source-qualified Hold/stale and phase-0.5 ascent in EN with exact same-profile composition; RU conditional rendering is not separately captured"
+    }
+  ],
+  "reconciliationRule": "Reuse only after exact operation inputs, native draw path, locale, device scaling, source identity and semantic dependency are demonstrated identical; candidates are not passes. READY may reuse unchanged operands only after that proof; decoded map/rocket/flag and changed text require fresh masks.",
+  "globalMissing": [],
+  "testsTaskList": "openspec/changes/spacefox-watchface/tasks.md",
+  "visibleAlphaStatus": "16 of 16 normal fixture/phase contexts pass; conditional/animation and preclip remain separate and open",
+  "ownerScopeCorrection": "The exploratory fractional scaled 454 LOW battery threshold is deferred by owner steering; actual 37px and the failing check remain in typography-battery-first-red.log and optional-typography-test-snapshot.py. Original 390 32px LOW battery observation remains valid; no 454 fractional pass is claimed.",
+  "conditionalStatus": "Actual sourced Hold/stale and ascent phase 0.5 alpha at 390/454: conditional-390 and conditional-454 plus tests/test_display04_conditional_pixels.py, 2/2 full composition; 390 missing black baseline reused with explicit black/rest-mask equivalence. Other animation extrema and preclip remain separate.",
+  "resourceBoundary": "Retained bounded ordinary sequence, native guard and stock READY app-heap/timers; total graphics-pool peak and physical wake/power remain explicitly unmeasured external bounds.",
+  "scopeDecision": "Owner stopped blanket repeated discovery: retain current and unchanged-source greens, run changed/missing selectors only; interrupted discovery is not a pass."
+}

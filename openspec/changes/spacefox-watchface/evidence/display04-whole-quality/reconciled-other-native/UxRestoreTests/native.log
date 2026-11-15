@@ -1,0 +1,17 @@
+------------------------------------------------------------------------------
+Executing test uxAcceptedSceneDuringRestore...
+DEBUG (21:41): UX_RESTORE acceptedMetadata=true schedule=true errorDoesNotReplace=true
+PASS
+------------------------------------------------------------------------------
+Executing test uxNewIdentityAfterRestore...
+DEBUG (21:41): UX_IDENTITY afterRejectedRestore=newLaunch generic=true oldBitmap=false oldPoint=false
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+uxAcceptedSceneDuringRestore        PASS
+uxNewIdentityAfterRestore           PASS
+Ran 2 tests
+
+PASSED (passed=2, failed=0, errors=0)

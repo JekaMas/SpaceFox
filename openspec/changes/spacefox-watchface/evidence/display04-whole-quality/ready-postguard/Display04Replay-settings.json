@@ -1,0 +1,606 @@
+{
+  "settings": [
+    {
+      "key": "Field1",
+      "valueType": "number",
+      "defaultValue": 0,
+      "configTitle": "Field1",
+      "configPrompt": null,
+      "configType": "list",
+      "configError": null,
+      "configHelpUrl": null,
+      "configReadonly": false,
+      "configRequired": false,
+      "configOptions": [
+        {
+          "display": "Steps",
+          "value": 0
+        },
+        {
+          "display": "Energy",
+          "value": 1
+        },
+        {
+          "display": "Heart",
+          "value": 2
+        },
+        {
+          "display": "Stress",
+          "value": 3
+        },
+        {
+          "display": "Calories",
+          "value": 4
+        },
+        {
+          "display": "Battery",
+          "value": 5
+        }
+      ],
+      "configMin": null,
+      "configMax": null,
+      "configMaxLength": null
+    },
+    {
+      "key": "Field2",
+      "valueType": "number",
+      "defaultValue": 1,
+      "configTitle": "Field2",
+      "configPrompt": null,
+      "configType": "list",
+      "configError": null,
+      "configHelpUrl": null,
+      "configReadonly": false,
+      "configRequired": false,
+      "configOptions": [
+        {
+          "display": "Steps",
+          "value": 0
+        },
+        {
+          "display": "Energy",
+          "value": 1
+        },
+        {
+          "display": "Heart",
+          "value": 2
+        },
+        {
+          "display": "Stress",
+          "value": 3
+        },
+        {
+          "display": "Calories",
+          "value": 4
+        },
+        {
+          "display": "Battery",
+          "value": 5
+        }
+      ],
+      "configMin": null,
+      "configMax": null,
+      "configMaxLength": null
+    },
+    {
+      "key": "Field3",
+      "valueType": "number",
+      "defaultValue": 2,
+      "configTitle": "Field3",
+      "configPrompt": null,
+      "configType": "list",
+      "configError": null,
+      "configHelpUrl": null,
+      "configReadonly": false,
+      "configRequired": false,
+      "configOptions": [
+        {
+          "display": "Steps",
+          "value": 0
+        },
+        {
+          "display": "Energy",
+          "value": 1
+        },
+        {
+          "display": "Heart",
+          "value": 2
+        },
+        {
+          "display": "Stress",
+          "value": 3
+        },
+        {
+          "display": "Calories",
+          "value": 4
+        },
+        {
+          "display": "Battery",
+          "value": 5
+        }
+      ],
+      "configMin": null,
+      "configMax": null,
+      "configMaxLength": null
+    },
+    {
+      "key": "Field4",
+      "valueType": "number",
+      "defaultValue": 3,
+      "configTitle": "Field4",
+      "configPrompt": null,
+      "configType": "list",
+      "configError": null,
+      "configHelpUrl": null,
+      "configReadonly": false,
+      "configRequired": false,
+      "configOptions": [
+        {
+          "display": "Steps",
+          "value": 0
+        },
+        {
+          "display": "Energy",
+          "value": 1
+        },
+        {
+          "display": "Heart",
+          "value": 2
+        },
+        {
+          "display": "Stress",
+          "value": 3
+        },
+        {
+          "display": "Calories",
+          "value": 4
+        },
+        {
+          "display": "Battery",
+          "value": 5
+        }
+      ],
+      "configMin": null,
+      "configMax": null,
+      "configMaxLength": null
+    },
+    {
+      "key": "Language",
+      "valueType": "number",
+      "defaultValue": 0,
+      "configTitle": "Language",
+      "configPrompt": null,
+      "configType": "list",
+      "configError": null,
+      "configHelpUrl": null,
+      "configReadonly": false,
+      "configRequired": false,
+      "configOptions": [
+        {
+          "display": "Locale0",
+          "value": 0
+        },
+        {
+          "display": "Locale1",
+          "value": 1
+        },
+        {
+          "display": "Locale2",
+          "value": 2
+        },
+        {
+          "display": "Locale3",
+          "value": 3
+        },
+        {
+          "display": "Locale4",
+          "value": 4
+        },
+        {
+          "display": "Auto",
+          "value": 36
+        }
+      ],
+      "configMin": null,
+      "configMax": null,
+      "configMaxLength": null
+    },
+    {
+      "key": "ClockColor",
+      "valueType": "number",
+      "defaultValue": 0,
+      "configTitle": "ClockColor",
+      "configPrompt": null,
+      "configType": "list",
+      "configError": null,
+      "configHelpUrl": null,
+      "configReadonly": false,
+      "configRequired": false,
+      "configOptions": [
+        {
+          "display": "Color0",
+          "value": 0
+        },
+        {
+          "display": "Color1",
+          "value": 1
+        },
+        {
+          "display": "Color2",
+          "value": 2
+        },
+        {
+          "display": "Color3",
+          "value": 3
+        },
+        {
+          "display": "Color4",
+          "value": 4
+        },
+        {
+          "display": "Color5",
+          "value": 5
+        }
+      ],
+      "configMin": null,
+      "configMax": null,
+      "configMaxLength": null
+    },
+    {
+      "key": "CountdownColor",
+      "valueType": "number",
+      "defaultValue": 0,
+      "configTitle": "CountdownColor",
+      "configPrompt": null,
+      "configType": "list",
+      "configError": null,
+      "configHelpUrl": null,
+      "configReadonly": false,
+      "configRequired": false,
+      "configOptions": [
+        {
+          "display": "Color0",
+          "value": 0
+        },
+        {
+          "display": "Color1",
+          "value": 1
+        },
+        {
+          "display": "Color2",
+          "value": 2
+        },
+        {
+          "display": "Color3",
+          "value": 3
+        },
+        {
+          "display": "Color4",
+          "value": 4
+        },
+        {
+          "display": "Color5",
+          "value": 5
+        }
+      ],
+      "configMin": null,
+      "configMax": null,
+      "configMaxLength": null
+    },
+    {
+      "key": "Field1Color",
+      "valueType": "number",
+      "defaultValue": 1,
+      "configTitle": "Field1Color",
+      "configPrompt": null,
+      "configType": "list",
+      "configError": null,
+      "configHelpUrl": null,
+      "configReadonly": false,
+      "configRequired": false,
+      "configOptions": [
+        {
+          "display": "Color0",
+          "value": 0
+        },
+        {
+          "display": "Color1",
+          "value": 1
+        },
+        {
+          "display": "Color2",
+          "value": 2
+        },
+        {
+          "display": "Color3",
+          "value": 3
+        },
+        {
+          "display": "Color4",
+          "value": 4
+        },
+        {
+          "display": "Color5",
+          "value": 5
+        }
+      ],
+      "configMin": null,
+      "configMax": null,
+      "configMaxLength": null
+    },
+    {
+      "key": "Field2Color",
+      "valueType": "number",
+      "defaultValue": 1,
+      "configTitle": "Field2Color",
+      "configPrompt": null,
+      "configType": "list",
+      "configError": null,
+      "configHelpUrl": null,
+      "configReadonly": false,
+      "configRequired": false,
+      "configOptions": [
+        {
+          "display": "Color0",
+          "value": 0
+        },
+        {
+          "display": "Color1",
+          "value": 1
+        },
+        {
+          "display": "Color2",
+          "value": 2
+        },
+        {
+          "display": "Color3",
+          "value": 3
+        },
+        {
+          "display": "Color4",
+          "value": 4
+        },
+        {
+          "display": "Color5",
+          "value": 5
+        }
+      ],
+      "configMin": null,
+      "configMax": null,
+      "configMaxLength": null
+    },
+    {
+      "key": "Field3Color",
+      "valueType": "number",
+      "defaultValue": 1,
+      "configTitle": "Field3Color",
+      "configPrompt": null,
+      "configType": "list",
+      "configError": null,
+      "configHelpUrl": null,
+      "configReadonly": false,
+      "configRequired": false,
+      "configOptions": [
+        {
+          "display": "Color0",
+          "value": 0
+        },
+        {
+          "display": "Color1",
+          "value": 1
+        },
+        {
+          "display": "Color2",
+          "value": 2
+        },
+        {
+          "display": "Color3",
+          "value": 3
+        },
+        {
+          "display": "Color4",
+          "value": 4
+        },
+        {
+          "display": "Color5",
+          "value": 5
+        }
+      ],
+      "configMin": null,
+      "configMax": null,
+      "configMaxLength": null
+    },
+    {
+      "key": "Field4Color",
+      "valueType": "number",
+      "defaultValue": 1,
+      "configTitle": "Field4Color",
+      "configPrompt": null,
+      "configType": "list",
+      "configError": null,
+      "configHelpUrl": null,
+      "configReadonly": false,
+      "configRequired": false,
+      "configOptions": [
+        {
+          "display": "Color0",
+          "value": 0
+        },
+        {
+          "display": "Color1",
+          "value": 1
+        },
+        {
+          "display": "Color2",
+          "value": 2
+        },
+        {
+          "display": "Color3",
+          "value": 3
+        },
+        {
+          "display": "Color4",
+          "value": 4
+        },
+        {
+          "display": "Color5",
+          "value": 5
+        }
+      ],
+      "configMin": null,
+      "configMax": null,
+      "configMaxLength": null
+    },
+    {
+      "key": "FeedBaseUrl",
+      "valueType": "string",
+      "defaultValue": "https://fixture.invalid/display04-ready",
+      "configTitle": "FeedBaseUrl",
+      "configPrompt": null,
+      "configType": "alphaNumeric",
+      "configError": null,
+      "configHelpUrl": null,
+      "configReadonly": false,
+      "configRequired": false,
+      "configOptions": null,
+      "configMin": null,
+      "configMax": null,
+      "configMaxLength": null
+    }
+  ],
+  "supportsLiveValidation": false,
+  "languages": {
+    "rus": {
+      "Heart": "\u041f\u0443\u043b\u044c\u0441",
+      "Russian": "\u0420\u0443\u0441\u0441\u043a\u0438\u0439",
+      "Locale19": "Dansk",
+      "Locale17": "\u0395\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ac",
+      "Locale18": "T\u00fcrk\u00e7e",
+      "Locale0": "English",
+      "Locale1": "\u0420\u0443\u0441\u0441\u043a\u0438\u0439",
+      "Battery": "\u0417\u0430\u0440\u044f\u0434 \u0447\u0430\u0441\u043e\u0432",
+      "Locale6": "Portugu\u00eas",
+      "Locale26": "\u7b80\u4f53\u4e2d\u6587",
+      "Locale7": "Nederlands",
+      "Locale27": "\u7e41\u9ad4\u4e2d\u6587",
+      "Locale8": "Polski",
+      "Locale24": "Latvie\u0161u",
+      "Field1Color": "\u0426\u0432\u0435\u0442 \u043f\u043e\u043b\u044f 1",
+      "Locale9": "\u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430",
+      "Locale25": "Lietuvi\u0173",
+      "FeedBaseUrl": "URL \u0434\u0430\u043d\u043d\u044b\u0445",
+      "Locale2": "Deutsch",
+      "Locale22": "Suomi",
+      "Locale3": "Fran\u00e7ais",
+      "Locale23": "Eesti",
+      "Locale4": "Espa\u00f1ol",
+      "Locale20": "Svenska",
+      "Locale5": "Italiano",
+      "Locale21": "Norsk bokm\u00e5l",
+      "ClockColor": "\u0426\u0432\u0435\u0442 \u0447\u0430\u0441\u043e\u0432",
+      "Locale15": "Hrvatski",
+      "Locale16": "Sloven\u0161\u010dina",
+      "Locale13": "Rom\u00e2n\u0103",
+      "Locale14": "\u0411\u044a\u043b\u0433\u0430\u0440\u0441\u043a\u0438",
+      "Locale11": "Sloven\u010dina",
+      "Locale12": "Magyar",
+      "Locale10": "\u010ce\u0161tina",
+      "Steps": "\u0428\u0430\u0433\u0438",
+      "CountdownColor": "\u0426\u0432\u0435\u0442 \u043e\u0442\u0441\u0447\u0451\u0442\u0430",
+      "Field3Color": "\u0426\u0432\u0435\u0442 \u043f\u043e\u043b\u044f 3",
+      "AppName": "SpaceFox",
+      "Auto": "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438",
+      "Energy": "Body Battery",
+      "Language": "\u042f\u0437\u044b\u043a",
+      "Field4Color": "\u0426\u0432\u0435\u0442 \u043f\u043e\u043b\u044f 4",
+      "Locale28": "\u65e5\u672c\u8a9e",
+      "Field2Color": "\u0426\u0432\u0435\u0442 \u043f\u043e\u043b\u044f 2",
+      "Locale29": "\ud55c\uad6d\uc5b4",
+      "Color2": "\u0413\u043e\u043b\u0443\u0431\u043e\u0439",
+      "Color1": "\u0411\u0435\u043b\u044b\u0439",
+      "Color0": "\u041c\u044f\u0442\u043d\u044b\u0439",
+      "Stress": "\u0421\u0442\u0440\u0435\u0441\u0441",
+      "Calories": "\u041a\u0430\u043b\u043e\u0440\u0438\u0438",
+      "Field4": "\u041f\u043e\u043b\u0435 4",
+      "English": "English",
+      "Color5": "\u0420\u043e\u0437\u043e\u0432\u044b\u0439",
+      "Locale30": "\u0627\u0644\u0639\u0631\u0628\u064a\u0629",
+      "Color4": "\u0417\u043e\u043b\u043e\u0442\u043e\u0439",
+      "Field2": "\u041f\u043e\u043b\u0435 2",
+      "Color3": "\u0421\u0438\u0440\u0435\u043d\u0435\u0432\u044b\u0439",
+      "Field3": "\u041f\u043e\u043b\u0435 3",
+      "Locale35": "\u0e44\u0e17\u0e22",
+      "Locale33": "Bahasa Melayu",
+      "Field1": "\u041f\u043e\u043b\u0435 1",
+      "Locale34": "Ti\u1ebfng Vi\u1ec7t",
+      "Locale31": "\u05e2\u05d1\u05e8\u05d9\u05ea",
+      "Locale32": "Bahasa Indonesia"
+    },
+    "valyrian": {
+      "Heart": "Heart rate",
+      "Russian": "\u0420\u0443\u0441\u0441\u043a\u0438\u0439",
+      "Locale19": "Dansk",
+      "Locale17": "\u0395\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ac",
+      "Locale18": "T\u00fcrk\u00e7e",
+      "Locale0": "English",
+      "Locale1": "\u0420\u0443\u0441\u0441\u043a\u0438\u0439",
+      "Battery": "Watch battery",
+      "Locale6": "Portugu\u00eas",
+      "Locale26": "\u7b80\u4f53\u4e2d\u6587",
+      "Locale7": "Nederlands",
+      "Locale27": "\u7e41\u9ad4\u4e2d\u6587",
+      "Locale8": "Polski",
+      "Locale24": "Latvie\u0161u",
+      "Field1Color": "Field 1 color",
+      "Locale9": "\u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430",
+      "Locale25": "Lietuvi\u0173",
+      "FeedBaseUrl": "Feed URL",
+      "Locale2": "Deutsch",
+      "Locale22": "Suomi",
+      "Locale3": "Fran\u00e7ais",
+      "Locale23": "Eesti",
+      "Locale4": "Espa\u00f1ol",
+      "Locale20": "Svenska",
+      "Locale5": "Italiano",
+      "Locale21": "Norsk bokm\u00e5l",
+      "ClockColor": "Clock color",
+      "Locale15": "Hrvatski",
+      "Locale16": "Sloven\u0161\u010dina",
+      "Locale13": "Rom\u00e2n\u0103",
+      "Locale14": "\u0411\u044a\u043b\u0433\u0430\u0440\u0441\u043a\u0438",
+      "Locale11": "Sloven\u010dina",
+      "Locale12": "Magyar",
+      "Locale10": "\u010ce\u0161tina",
+      "Steps": "Steps",
+      "CountdownColor": "Countdown color",
+      "Field3Color": "Field 3 color",
+      "AppName": "SpaceFox",
+      "Auto": "Automatic",
+      "Energy": "Body Battery",
+      "Language": "Language",
+      "Field4Color": "Field 4 color",
+      "Locale28": "\u65e5\u672c\u8a9e",
+      "Field2Color": "Field 2 color",
+      "Locale29": "\ud55c\uad6d\uc5b4",
+      "Color2": "Ice blue",
+      "Color1": "White",
+      "Color0": "Mint",
+      "Stress": "Stress",
+      "Calories": "Calories",
+      "Field4": "Field 4",
+      "English": "English",
+      "Color5": "Pink",
+      "Locale30": "\u0627\u0644\u0639\u0631\u0628\u064a\u0629",
+      "Color4": "Gold",
+      "Field2": "Field 2",
+      "Color3": "Lavender",
+      "Field3": "Field 3",
+      "Locale35": "\u0e44\u0e17\u0e22",
+      "Locale33": "Bahasa Melayu",
+      "Field1": "Field 1",
+      "Locale34": "Ti\u1ebfng Vi\u1ec7t",
+      "Locale31": "\u05e2\u05d1\u05e8\u05d9\u05ea",
+      "Locale32": "Bahasa Indonesia"
+    }
+  }
+}

@@ -2,6 +2,18 @@
 
 > Some historical authoring evidence referenced below is not included in this public export. Statements about those records retain their historical scope and are not independently verifiable from this checkout.
 
+## Current DISPLAY04 whole-quality work
+
+The current 0.1.14 candidate is **NOT DONE**. Its implementation and retained
+simulator witnesses are recorded in [DISPLAY04 PLAN](evidence/display04-whole-quality/PLAN.md);
+all 16 EN/RU × 390/454 × ACTIVE/LOW × pending/READY normal visible-alpha
+compositions now have source-bound native element/overlap coverage at their fixed
+fixtures and phases. Animation/conditional states, complete preclip proof, fresh
+source-bound locale admission, full Python discovery, and complete ordinary
+lifecycle/resource bounds remain open. The earlier UX02 and signed 0.1.13 material below is historical
+and does not qualify this candidate. Current reschedule or structured Hold uses
+coral, independently of staleness. No physical watch or publication is claimed.
+
 ## Current UX02 candidate
 
 Self-verification covers the changed EN/RU LOW readability/colors, four-field battery, FR165 Music and FR965 layout, bounded four-phase pixel rest, and actual 0.1.5→0.1.6 SDK retry/cache handoff. See [UX02 evidence and boundaries](evidence/ux02/STATUS.md). The current hosted accepted scene reopened within 8 seconds on both simulator profiles; a diagnostic-heavy 19.252 s run remains recorded separately. Existing WF01.P1/WF03.P1 proof is supplemented for changed geometry; WF09.P2/P3 software components are reconciled to retained and current evidence, with fresh independent whole verification, focused LOW guard repair and current malformed/stale callback evidence; root judgment remains pending. WF09.P1 physical behavior and WF10.P1's entire background/memory obligations remain open. These observations do not change the accepted closure counts below.
@@ -678,3 +690,60 @@ instruction. No repeated behavior tests or new task group were started.
 See [publication](evidence/display03-publication/PUBLICATION.md). Corrected physical
 execution, fresh data, point, wake and power remain NOT DONE; task external gates
 and the overall delivery/data goal remain open.
+
+### DISPLAY04 owner whole-quality round started
+
+Latest owner photo/report reopens the active point/lightning field, possible LOW
+1px digit clipping and geometry/resource/scheduling behavior. Full final test
+runs and one Astra spec/test/process audit are now explicitly requested. Base is
+public main 8c93f211; current .13 release is compiled from 1eca186c, not the entire
+later main. No 100% physical or all-main publication claim is made. See
+[evidence/display04-whole-quality/PLAN.md](evidence/display04-whole-quality/PLAN.md).
+One Terra author and one fresh independent Terra peer will complete this coherent
+native group before final integrated release. No code/tests have changed yet.
+
+### DISPLAY04 current native quality — in progress
+
+The 0.1.14 test-key candidate now has a bounded ordinary SDK same-seed READY
+replay after repairing decoder heap pressure; it shows the actual selected
+Vulcan, US flag and source-qualified Cape point and retains the scene through
+LOW and wake. The retained feed is deliberately old and does not establish
+current launch delivery. Earlier TypeError/OOM attempts and the measured
+metadata-release witnesses remain recorded in
+[evidence](evidence/display04-whole-quality/PLAN.md). The final decoder-dependent
+DISPLAY03 suite passed 24/24, raw launcher exit 1; other native, host and Node
+observations retain their exact input scopes in that record.
+
+The full actual-alpha/overlap oracle, READY RU/454 coverage, current locale
+admission, complete normal timer/graphics-pool bounds, full Python discovery,
+independent review, signed final integration and physical acceptance are still
+open. No new publication or physical-watch fix is claimed.
+
+The later actual-ink typography audit found a 454 LOW battery RED: 37 px colored ink is below the literal 32 × 454 / 390 = 37.251 px minimum. The prior 16-context visible-alpha observations remain valid for unchanged operands, but LOW battery and its composition/resource effects require repair and revalidation. The raw first failure is retained in `evidence/display04-whole-quality/typography-battery-first-red.log`.
+
+Owner scope correction: the later fractional 454 battery experiment is deferred and is not a release gate or a pass. Its 37 px observation and RED are preserved. The original size-51 battery font and its generated NativeVersion are restored byte-for-byte; the accepted AOD glyph and centering repairs remain. Original 390 battery ink was 32 px. Required conditional, preclip, resource, admission and final full-suite work remains open as recorded in the DISPLAY04 plan.
+
+DISPLAY04 current software unit is self-green at the scoped source/evidence boundary in [FINAL.md](evidence/display04-whole-quality/FINAL.md); a fresh independent peer must still verify/fix. The owner directed reuse of noninvalidated greens and interruption of blanket Python discovery; its two passes and interrupted third case are retained, not described as a full-suite pass. Final integration, signed release/publication, physical wake/power and fresh watch data remain separate open gates.
+
+### DISPLAY04 independent software closure accepted
+
+Root accepts author `5d7b3ec1` and independent peer `7ad65fb5`: the current
+software unit is DONE at its recorded source/fixture/SDK boundaries. See
+[root judgment](evidence/display04-whole-quality/ROOT-JUDGMENT.md) and
+[independent report](evidence/display04-whole-quality/INDEPENDENT.md). No further
+production fix was required by the peer. The optional typography experiment is
+deferred, and valid greens remain reused under the latest owner instruction.
+The interrupted discovery is not a full-suite pass. One final main integration,
+signed-source/package identity, version tag and original-card publication follow;
+physical updated execution, fresh data, wake and power remain NOT DONE.
+
+### Integrated 0.1.16 software and source export accepted
+
+Root accepts merge `068f0011` and fresh peer `53346c2b`, native ID `e513cc6d`:
+[integration judgment](evidence/display04-integrated016/ROOT-JUDGMENT.md).
+The actual cold-stock OOMs were fixed with demand-paged cold parser/scheduler
+code, preserving reminder behavior and the accepted DISPLAY04 UI. Exact final
+offline READY and affected native checks pass; all 5,616 release-source inputs
+match the passing isolated export. This closes the integration software unit,
+not physical or release disposition. Main PR merge, production signing/tag and
+original-card publication/readback follow without repeating valid behavior tests.

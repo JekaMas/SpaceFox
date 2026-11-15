@@ -1,0 +1,61 @@
+import Toybox.Graphics;
+import Toybox.Lang;
+import Toybox.System;
+import Toybox.Test;
+import Toybox.WatchUi;
+
+// The generated store exposes only the original content-addressed inputs.
+(:test,:typecheck(false)) class D04ReadyAssetStore {
+ var data={};
+ function read(key){if(data.hasKey(key)){return data[key];}if(key.equals("sf.obj.07924fc156dcfcd1725e9dce51567b9d04b13933fe56f89a0255b3ffcc914580")){return WatchUi.loadResource(Rez.JsonData.D04ReadyObject0)["raw"];}if(key.equals("sf.obj.0936caabf3d961df403c05a1a35a5436d5842c45de0077cfd7053118a6e7ca29")){return WatchUi.loadResource(Rez.JsonData.D04ReadyObject1)["raw"];}if(key.equals("sf.obj.0f6ced072b08fe37b64b1944b2c3e01aead22000bd18ef580f4c60b4728070e4")){return WatchUi.loadResource(Rez.JsonData.D04ReadyObject2)["raw"];}if(key.equals("sf.obj.180d4d090c41fddf2fd1d79dd46405bbf9d13569ec151440658ec50208b5eb5b")){return WatchUi.loadResource(Rez.JsonData.D04ReadyObject3)["raw"];}if(key.equals("sf.obj.1ffdf397e79433e07fc263e684dec7a38d94a80e99a3bef3922c539ca7d5f3bc")){return WatchUi.loadResource(Rez.JsonData.D04ReadyObject4)["raw"];}if(key.equals("sf.obj.2a09c8ea59ca32d5ee8ea4e5520682de56a7539b86e434b804f96ffeca0cecd6")){return WatchUi.loadResource(Rez.JsonData.D04ReadyObject5)["raw"];}if(key.equals("sf.obj.4d28962616ea3056f6ce6fde40f6904f9d9dee2e657f67f988b4eaa4d31e8e92")){return WatchUi.loadResource(Rez.JsonData.D04ReadyObject6)["raw"];}if(key.equals("sf.obj.584769813730b377510b2c44367330495adf09cc035a4a337512a6d26cb5944a")){return WatchUi.loadResource(Rez.JsonData.D04ReadyObject7)["raw"];}if(key.equals("sf.obj.653939e2711ce529f39617eb84040f245960720925e27e70d270247940553e3a")){return WatchUi.loadResource(Rez.JsonData.D04ReadyObject8)["raw"];}if(key.equals("sf.obj.671a4b8da3f5c272f41a709b7b72285ee96247eed72d4b3c521bc13884bb6153")){return WatchUi.loadResource(Rez.JsonData.D04ReadyObject9)["raw"];}if(key.equals("sf.obj.697b580f41521ace59315e84264ddbfb4dee9d77b50f3d2e256ad10b7a6a56cf")){return WatchUi.loadResource(Rez.JsonData.D04ReadyObject10)["raw"];}if(key.equals("sf.obj.6d4ab3dc509e305150b3e44adc2df9d6c70416ec01f09751f1a66c2418cc18e9")){return WatchUi.loadResource(Rez.JsonData.D04ReadyObject11)["raw"];}if(key.equals("sf.obj.9107867a46a828266cdc4669352d110734f23c385ef52bc1ca7073709bb415ee")){return WatchUi.loadResource(Rez.JsonData.D04ReadyObject12)["raw"];}if(key.equals("sf.obj.a28ecf80077c51aa47efd45080f6c965500ac437d53cc042b34b3a5b8f42c7ce")){return WatchUi.loadResource(Rez.JsonData.D04ReadyObject13)["raw"];}if(key.equals("sf.obj.db31d9ab634adaa54e03c7c96a2eee50064466b0565444a8bda1145a520ac301")){return WatchUi.loadResource(Rez.JsonData.D04ReadyObject14)["raw"];}if(key.equals("sf.obj.ddef3be6db53150c8c9b4b1712c758cde77d2a2137a981cfcf5a3876aa014d0c")){return WatchUi.loadResource(Rez.JsonData.D04ReadyObject15)["raw"];}if(key.equals("sf.obj.eeaefa0a3910f493ba1409eca38c0473fa68b6b99da810696788b8338b01fddd")){return WatchUi.loadResource(Rez.JsonData.D04ReadyObject16)["raw"];}if(key.equals("sf.obj.f8a14e2df0245b475990b21c3cb102d219adb7d8b4e8fbf520437c5ec62a7b7f")){return WatchUi.loadResource(Rez.JsonData.D04ReadyObject17)["raw"];}return null;}
+ function write(key,value){data[key]=value;}
+ function remove(key){data.remove(key);}
+}
+(:test,:typecheck(false)) class D04ReadyAssetDrawing extends SceneRenderer {
+ var logger;var lang;var ids;var refs;
+ function initialize(log,language){logger=log;lang=language;ids=[];refs=[];SceneRenderer.initialize(null);}
+ function load(id){var value=SceneRenderer.load(id);ids.add(id);refs.add(value);return value;}
+ function identity(value){for(var i=0;i<refs.size();i+=1){if(refs[i]==value){return ids[i];}}return null;}
+ function text(dc,x,y,font,value,color,width,contour){
+  var shown=fit(dc,value,font,width);var tag="other";
+  if(font==fonts["time"]){tag="time";}else if(font==fonts["metric"]){tag="metric";}
+  else if(font==fonts["label"]){tag="label";}else if(font==fonts["nameSmall"]){tag="nameSmall";}
+  else if(font==fonts["small"]){tag="small";}else if(font==fonts["count"]){tag="count";}
+  else if(font==presentation.calendarFont){tag="calendar";}
+  logger.debug("D04_READY_TRACE_TEXT|"+lang+"|"+x+"|"+y+"|"+tag+"|"+dc.getTextWidthInPixels(shown,font)+"|"+dc.getFontHeight(font)+"|"+color+"|"+width+"|"+contour+"|"+shown);
+  return SceneRenderer.text(dc,x,y,font,value,color,width,contour);
+ }
+ function icon(dc,x,y,role){if(icons.hasKey(role)){var bmp=icons[role];logger.debug("D04_READY_TRACE_ICON|"+lang+"|"+role+"|"+x+"|"+y+"|"+bmp.getWidth()+"|"+bmp.getHeight());}SceneRenderer.icon(dc,x,y,role);}
+}
+(:typecheck(false)) function dcFont(dc,font){return dc.getFontHeight(font);}
+(:test,:typecheck(false)) function display04RealReadyLowTrace(logger){
+ var priorResource=null;var priorX=null;var priorY=null;var priorCount=null;
+ for(var language=0;language<2;language+=1){
+  var store=new D04ReadyAssetStore();var catalog=WatchUi.loadResource(Rez.JsonData.D04Catalog);store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);
+  var cache=new NativeCache("https://fixture.invalid/display04-ready",store);var raw=WatchUi.loadResource(Rez.JsonData.D04Feed)["raw"];
+  Test.assert(cache.accept(raw,1794576343));var context=feedScene(cache.packet,1794576343);Test.assert(context!=null&&context.point!=null);
+  store.data={};var build=new NativeSfrBuild(store,"https://fixture.invalid/display04-ready",cache.packet);var steps=0;
+  while(!build.step()){steps+=1;Test.assert(steps<5000);}
+  var visual=build.result;Test.assert(visual!=null&&visual.bitmap!=null&&visual.mapBitmap!=null&&visual.siteCountryBitmap!=null&&visual.scene["position"]!=null);
+  logger.debug("D04_READY_ASSETS|"+language+"|selection="+visual.selectionHash+"|map="+visual.mapBitmap.getWidth()+"x"+visual.mapBitmap.getHeight()+"|rocket="+visual.bitmap.getWidth()+"x"+visual.bitmap.getHeight()+"|flag="+visual.siteCountryBitmap.getWidth()+"x"+visual.siteCountryBitmap.getHeight()+"|phase=0|position=true");
+  var settings=new SceneSettings({"Language"=>language});var draw=new D04ReadyAssetDrawing(logger,language);draw.prepare(context,settings);draw.downloaded=visual;
+  var current=new ClockSnapshot("08:38",CountdownFormat.format(context.schedule.remainingSeconds(1794576343)));current.lowCountdown=CountdownFormat.minutes(context.schedule.remainingSeconds(1794576343));current.localCalendar=[1,15,11];current.battery="82%";current.rescheduled=context.rescheduled;current.sourceHold=context.sourceHold;current.stale=context.stale;
+  var canvas=Graphics.createBufferedBitmap({:width=>390,:height=>390,:colorDepth=>16}).get();draw.prepareAod();
+  var bundled=draw.aodMap!=null&&draw.aodPin;Test.assert(bundled&&draw.identity(draw.aodMap)!=null);
+  var chosen=draw.identity(draw.aodMap);var minute=1794576343/60;current.countdown=current.lowCountdown;
+  if(priorResource!=null){Test.assert(chosen==priorResource&&draw.aodPinX==priorX&&draw.aodPinY==priorY&&current.countdown.equals(priorCount));}
+  priorResource=chosen;priorX=draw.aodPinX;priorY=draw.aodPinY;priorCount=current.countdown;
+  logger.debug("D04_READY_LOW|"+language+"|selection="+visual.selectionHash+"|bundled="+bundled+"|mapResource="+chosen+"|mapSize="+draw.aodMap.getWidth()+"x"+draw.aodMap.getHeight()+"|point="+draw.aodPinX+","+draw.aodPinY+"|minutePhase="+(minute%4)+"|clock="+current.localTime+"|count="+current.countdown+"|date="+draw.presentation.calendar(current.localCalendar)+"|aodFont="+dcFont(canvas.getDc(),draw.fonts["aod"])+"|contextFont="+dcFont(canvas.getDc(),draw.presentation.aodContextFont));
+  // Record actual native font metrics at the exact LOW primitive arguments.
+  // The source-bound host oracle checks clip ownership and 454 scaling.
+  var dc=canvas.getDc();var date=draw.presentation.calendar(current.localCalendar);var count=draw.presentation.fit(dc,current.countdown,draw.presentation.aodContextFont,300);
+  var dateWidth=dc.getTextWidthInPixels(date,draw.presentation.aodContextFont);var countWidth=dc.getTextWidthInPixels(count,draw.presentation.aodContextFont);var clockWidth=dc.getTextWidthInPixels(current.localTime,draw.fonts["aod"]);var batteryWidth=dc.getTextWidthInPixels(current.battery,draw.presentation.aodBatteryFont);
+  var contextHeight=dc.getFontHeight(draw.presentation.aodContextFont);var clockHeight=dc.getFontHeight(draw.fonts["aod"]);var batteryHeight=dc.getFontHeight(draw.presentation.aodBatteryFont);
+  var p=(minute%4)==0?[-1,-1]:(minute%4)==1?[1,-1]:(minute%4)==2?[-1,1]:[1,1];
+  Test.assert(dateWidth>0&&dateWidth<350&&countWidth>0&&countWidth<=300&&clockWidth>0&&clockWidth<350&&batteryWidth>0&&batteryWidth<350);
+  Test.assert(89+p[1]>=0&&89+p[1]+contextHeight<=390&&121+clockHeight<=390&&246+p[1]+contextHeight<=390&&295+p[1]+batteryHeight<=390);
+  logger.debug("D04_LOW_BOUNDS|"+language+"|viewport="+dc.getWidth()+"x"+dc.getHeight()+"|phase="+(minute%4)+"|date="+dateWidth+","+contextHeight+"|clock="+clockWidth+","+clockHeight+"|count="+countWidth+","+contextHeight+"|battery="+batteryWidth+","+batteryHeight+"|point="+draw.aodPinX+","+draw.aodPinY);
+  draw.aod(canvas.getDc(),current,minute,settings);
+ }
+ return true;
+}

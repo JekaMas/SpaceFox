@@ -1,0 +1,1 @@
+Proof regeneration after staging first failed because a newly staged fixture was not present in starting HEAD. The generator now records staged additions as prior-absent, preserving the exact old tree. No behavior test was rerun.

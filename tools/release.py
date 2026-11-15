@@ -81,6 +81,17 @@ def source_state(root: Path) -> dict:
                 and ".." not in PurePosixPath(name).parts and name in paths,
                 "unsafe or untracked native admission input")
         admission.add(name)
+    if proof is not None and "integrated016Proof" in proof:
+        # Parent qualification reconstructs exact tracked tools inventories;
+        # include the non-Python entries that the standard export filter omits.
+        admission.update({"prototype/fonts/RobotoCondensed-latin-600.woff2",
+                          "tools/analyze_features.js", "tools/annotate_marker_aa.js",
+                          "tools/audit_marker_native.js", "tools/audit_native_motion_pixels.js",
+                          "tools/native-resources-requirements.txt", "tools/native_map_paths.js",
+                          "tools/native_marker_svg.js", "tools/recheck_feature_records.js",
+                          "tools/recheck_markers.js", "tools/reconcile_composition.js",
+                          "tools/spacefox/bridge_map_render.js", "tools/vendor/d3-7.9.0.min.js",
+                          "tools/vendor/topojson-client-3.1.0.min.js"})
     if proof is not None and "reminder015Proof" in proof:
         admission.update({"openspec/changes/add-launch-reminders/proposal.md",
                           "openspec/changes/add-launch-reminders/design.md",

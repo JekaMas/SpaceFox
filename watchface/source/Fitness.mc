@@ -5,7 +5,11 @@ import Toybox.System;
 import Toybox.Time;
 
 class Fitness {
+    // Null means the unfiltered adapter, used by direct API diagnostics.
+    var selectedRoles as Array<String> or Null = null;
+    var currentBodyBattery as Number or Null = null;
     function initialize() {}
+    function requested(role as String) as Boolean {return selectedRoles==null || (selectedRoles as Array<String>).indexOf(role)>=0;}
     // Only finite nonnegative real Garmin data, no fixtures/default health.
     function number(value as Object or Null, maximum as Number or Null) as Number or Null {
         if (!(value instanceof Number || value instanceof Float || value instanceof Double || value instanceof Long)) { return null; }
@@ -27,7 +31,7 @@ class Fitness {
     function sample(now as Number or Long) as Dictionary<String, Number or Null> {
         var values = {"steps"=>null,"calories"=>null,"battery"=>null,"heart"=>null,"energy"=>null,"stress"=>null};
         try {
-            if (Toybox has :ActivityMonitor && ActivityMonitor has :getInfo) {
+            if ((requested("steps") || requested("calories")) && Toybox has :ActivityMonitor && ActivityMonitor has :getInfo) {
                 var info = ActivityMonitor.getInfo();
                 if (info != null) {
                     if (info has :steps) { values["steps"] = number(info.steps, null); }
@@ -35,14 +39,14 @@ class Fitness {
                 }
             }
         } catch (e) {}
-        try { values["battery"] = number(System.getSystemStats().battery, 100); } catch (e) {}
-        // One latest sample per selected source. No entire-history traversal,
+        try { if(requested("battery")){values["battery"] = number(System.getSystemStats().battery, 100);} } catch (e) {}
+        if(requested("energy")){values["energy"]=currentBodyBattery;}
+        // One latest sample per selected history source. No entire-history traversal,
         // raw Sensor streaming or health upload. Permission/API failures are null.
         if (Toybox has :SensorHistory) {
             var options = {:period=>1, :order=>SensorHistory.ORDER_NEWEST_FIRST};
-            try { if (SensorHistory has :getHeartRateHistory) { values["heart"] = recent(SensorHistory.getHeartRateHistory(options).next(), now, 300, true); } } catch (e) {}
-            try { if (SensorHistory has :getBodyBatteryHistory) { values["energy"] = recent(SensorHistory.getBodyBatteryHistory(options).next(), now, 100, false); } } catch (e) {}
-            try { if (SensorHistory has :getStressHistory) { values["stress"] = recent(SensorHistory.getStressHistory(options).next(), now, 100, false); } } catch (e) {}
+            try { if (requested("heart") && SensorHistory has :getHeartRateHistory) { values["heart"] = recent(SensorHistory.getHeartRateHistory(options).next(), now, 300, true); } } catch (e) {}
+            try { if (requested("stress") && SensorHistory has :getStressHistory) { values["stress"] = recent(SensorHistory.getStressHistory(options).next(), now, 100, false); } } catch (e) {}
         }
         return values;
     }

@@ -13,9 +13,9 @@ class Display02AodFontTest(unittest.TestCase):
     for dy in range(2):
      remaining=[(a,b) for a,b in lit if not(a%2==dx and b%2==dy)];self.assertGreaterEqual(max(b for a,b in remaining)-min(b for a,b in remaining)+1,96,(digit,dx,dy))
    strong=[a for a,b in lit if img.getpixel((x+a,y+b))>=128];edges.append((min(strong),max(strong)+1,fields['xadvance']))
-  left=[7,11,5,5,4,7,7,5,7,6];right=[62,47,63,61,64,62,63,63,61,61]
+  left=[5,9,4,4,4,5,5,4,5,5];right=[48,37,49,48,50,48,49,49,48,48]
   self.assertEqual([(a,b) for a,b,_ in edges],list(zip(left,right)))
   for first in range(10):
    for last in range(10):
-    correction=int((69-left[first]-right[last])/2);ink_center=(left[first]+right[last]-edges[first][2])/2+correction
+    correction=int((54-left[first]-right[last])/2);ink_center=(left[first]+right[last]-edges[first][2])/2+correction
     self.assertLessEqual(abs(ink_center),2,(first,last))

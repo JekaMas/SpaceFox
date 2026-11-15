@@ -3,6 +3,8 @@ import Toybox.Lang;
 import Toybox.System;
 import Toybox.Test;
 import Toybox.WatchUi;
+import Toybox.Time;
+import Toybox.Application;
 
 (:test,:typecheck(false)) class D03Store {
  var data={};var writes=0;function read(k){return data.hasKey(k)?data[k]:null;}function write(k,v){data[k]=v;writes+=1;}function remove(k){data.remove(k);writes+=1;}
@@ -84,4 +86,114 @@ import Toybox.WatchUi;
  v.onExitSleep();app.onBackgroundData({"ready"=>true});Test.assert(app.reloads==1);
  var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assert(d.activeCalls==1&&app.reloads==1);
  app.onBackgroundData({"ready"=>true});Test.assert(app.reloads==1);v.onHide();logger.debug("BACKGROUND sleep_applied=true wake_first_frame no_reload=true");return true;
+}
+
+(:test,:typecheck(false)) class D03TransientStore extends D03Store {
+ var rejected=null;var remaining=0;var selectionReads=0;
+ function read(k){if(rejected!=null&&k.equals(rejected)){selectionReads+=1;if(remaining>0){remaining-=1;throw new Lang.InvalidValueException("transient selected-object read");}}return D03Store.read(k);}
+}
+// Real accepted bridge carries the same transfer and selection identities
+// across batch publication; a failed decode may retry only on a new serial.
+(:test,:typecheck(false)) function display03FailedSameDigestRetry(logger){
+ var store=new D03TransientStore();var clock=new Display03Clock();var catalog=WatchUi.loadResource(Rez.JsonData.DisplayCatalog);
+ store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);var base="https://fixture.invalid/display03-retry";
+ var cache=new NativeCache(base,store);Test.assert(cache.accept(WatchUi.loadResource(Rez.JsonData.DisplayInitial)["raw"],clock.now));
+ var bridge=cache.packet.bridge;Test.assert(bridge["selection"]!=null);
+ var objectKey="sf.obj."+bridge["selection"]["sha256"];store.write(objectKey,WatchUi.loadResource(Rez.JsonData.D03RetrySelection)["raw"]);store.rejected=objectKey;store.remaining=1;
+ store.write("sf.batch.pending",{"base"=>base,"pending"=>false});
+ store.write("sf.batch.head",{"base"=>base,"pending"=>false,"catalogDigest"=>bridge["catalogDigest"],"transfer"=>bridge["transfer"],"serial"=>1});
+ var view=new SpaceFoxView(clock,new ScheduleState(null,"empty"));view.setPacket(cache.packet);view.onShow();
+ view.setAssetCache(new NativeRenderSource(store,base,bridge));view.prepareVisual();Test.assert(view.sceneLifecycle.pending());
+ var old=view.sceneLifecycle.job.token;view.sfrStep();Test.assert(store.selectionReads==1&&view.sceneLifecycle.job.state==view.sceneLifecycle.job.FAILED);
+ view.prepareVisual();Test.assert(!view.sceneLifecycle.pending()&&store.selectionReads==1);
+ store.write("sf.batch.head",{"base"=>base,"pending"=>false,"catalogDigest"=>bridge["catalogDigest"],"transfer"=>bridge["transfer"],"serial"=>2});
+ view.setAssetCache(new NativeRenderSource(store,base,bridge));view.prepareVisual();
+ Test.assertMessage(view.sceneLifecycle.pending(),"same digest new serial must retry failed job");
+ view.sfrStep();Test.assert(store.selectionReads==2&&view.sfrBuild!=null&&view.sceneLifecycle.job.state==view.sceneLifecycle.job.BUILDING);
+ Test.assert(!view.sceneLifecycle.complete(old));view.onHide();Test.assert(!view.sceneLifecycle.complete(old));
+ logger.debug("FAILED_RETRY realTransientSelectionRead=true sameSerialNoSpin=true newSerialBuild=true staleCompletionRejected=true");return true;
+}
+
+// LL2's published structured status 5 means On Hold. The fixture is otherwise
+// the captured accepted packet; elapsed time, unknown and stale are independent.
+(:test,:typecheck(false)) function display03SourcedHoldCache(logger){
+ var catalog=WatchUi.loadResource(Rez.JsonData.DisplayCatalog);var raw=WatchUi.loadResource(Rez.JsonData.DisplayInitial)["raw"];
+ var marker="\"source_status_id\":8";var pos=raw.find(marker);Test.assert(pos!=null);
+ var held=raw.substring(0,pos)+"\"source_status_id\":5"+raw.substring(pos+marker.length(),raw.length());
+ var statusName="\"source_status_name\":\"To Be Confirmed\"";var namePos=held.find(statusName);Test.assert(namePos!=null);
+ held=held.substring(0,namePos)+"\"source_status_name\":\"On Hold\""+held.substring(namePos+statusName.length(),held.length());
+ var settings=new SceneSettings(null);var values=[raw,held];
+ for(var i=0;i<2;i+=1){var store=new D03Store();store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);var base="https://fixture.invalid/hold"+i;var clock=new Display03Clock();clock.now=1794551202;var cache=new NativeCache(base,store);Test.assert(cache.accept(values[i],clock.now));
+  var view=new SpaceFoxView(clock,new ScheduleState(null,"empty"));view.setPacket(cache.packet);Test.assert(view.context.sourceHold==(i==1));
+  var snapshot=view.snapshot();Test.assert(SceneAod.countdownColor(snapshot,settings)==(i==1?0xFF6B6B:settings.countdownColor));
+  snapshot.stale=true;Test.assert(SceneAod.countdownColor(snapshot,settings)==(i==1?0xFF6B6B:settings.countdownColor));
+  var reopened=new NativeCache(base,store);Test.assert(reopened.load(clock.now)!=null);view.setPacket(reopened.packet);Test.assert(view.context.sourceHold==(i==1));
+  snapshot=view.snapshot();Test.assert(SceneAod.countdownColor(snapshot,settings)==(i==1?0xFF6B6B:settings.countdownColor));
+  snapshot.rescheduled=true;Test.assert(SceneAod.countdownColor(snapshot,settings)==0xFF6B6B);
+ }
+ logger.debug("SOURCED_HOLD status5=true staleIndependent=true cacheReopen=true");return true;
+}
+
+(:test,:typecheck(false)) function display03WarmAodResources(logger){
+ var catalog=WatchUi.loadResource(Rez.JsonData.DisplayCatalog);var store=new D03Store();store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);
+ var clock=new Display03Clock();clock.now=1794551202;var cache=new NativeCache("https://fixture.invalid/warm",store);
+ Test.assert(cache.accept(WatchUi.loadResource(Rez.JsonData.DisplayInitial)["raw"],clock.now));
+ var v=new SpaceFoxView(clock,new ScheduleState(null,"empty"));v.setPacket(cache.packet);var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();
+ v.onLayout(dc);Test.assert(v.renderer.aodMap!=null);var loads=v.renderer.resourceLoads;var first=v.renderer.aodMap;
+ v.updateForDisplayMode(dc,System.DISPLAY_MODE_LOW_POWER);v.updateForDisplayMode(dc,System.DISPLAY_MODE_LOW_POWER);
+ Test.assert(v.renderer.resourceLoads==loads&&v.renderer.aodMap==first);
+ v.syncDisplayMode(System.DISPLAY_MODE_HIGH_POWER);v.onEnterSleep();v.updateForDisplayMode(dc,System.DISPLAY_MODE_LOW_POWER);
+ Test.assert(v.renderer.resourceLoads==loads&&v.renderer.aodMap==first);
+ v.renderer.prepare(v.context,v.settings);Test.assert(v.renderer.resourceLoads==loads&&v.renderer.aodMap==first);
+ v.onHide();logger.debug("WARM_AOD drawLoads=0 wakeReloads=0 duplicatePrepareLoads=0");return true;
+}
+
+(:test,:typecheck(false)) function display03SameSceneRefreshKeepsJob(logger){
+ var store=new D03Store();var catalog=WatchUi.loadResource(Rez.JsonData.DisplayCatalog);store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);
+ var clock=new Display03Clock();clock.now=1794551202;var base="https://fixture.invalid/refresh";var cache=new NativeCache(base,store);
+ Test.assert(cache.accept(WatchUi.loadResource(Rez.JsonData.DisplayInitial)["raw"],clock.now));var bridge=cache.packet.bridge;
+ store.write("sf.batch.pending",{"base"=>base,"pending"=>false});store.write("sf.batch.head",{"base"=>base,"pending"=>false,"catalogDigest"=>bridge["catalogDigest"],"transfer"=>bridge["transfer"],"serial"=>1});
+ var v=new SpaceFoxView(clock,new ScheduleState(null,"empty"));v.setPacket(cache.packet);var source=new NativeRenderSource(store,base,bridge);v.setAssetCache(source);Test.assert(v.sceneLifecycle.request(1));
+ var job=v.sceneLifecycle.job;var generation=v.sceneLifecycle.generation;var reopen=new NativeCache(base,store);Test.assert(reopen.load(clock.now)!=null);
+ v.setPacket(reopen.packet);Test.assert(v.sceneLifecycle.job==job&&v.sceneLifecycle.generation==generation&&v.assetCache==source);
+ Test.assert(v.context.launchId.equals("ll2:launch:0f867f0c-5422-4d44-93b8-d7faaae7019b"));v.onHide();
+ logger.debug("SAME_SCENE_REFRESH acceptedReopen=true queuedJobRetained=true assetSourceRetained=true");return true;
+}
+
+// Drive the production foreground admission path with a real staged feed and
+// immutable visual bridge. A duplicate must not cancel, while a changed target
+// must become visible without waiting for optional scene construction.
+(:test,:typecheck(false)) function display03ForegroundReloadDuringBuild(logger){
+ var previousBase=Application.Properties.getValue("FeedBaseUrl");Application.Properties.setValue("FeedBaseUrl","https://fixture.invalid/display03-foreground");
+ try{
+ var catalog=WatchUi.loadResource(Rez.JsonData.DisplayCatalog);var store=new D03Store();store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);
+ var base=new NativeTransfer(configuredFeedUrl(),null).base;Test.assert(!base.equals(""));var now=Time.now().value().toLong();
+ var cache=new NativeCache(base,store);var initial=WatchUi.loadResource(Rez.JsonData.DisplayInitial)["raw"];var moved=WatchUi.loadResource(Rez.JsonData.DisplayMoved)["raw"];
+ Test.assert(cache.accept(initial,now));var bridge=cache.packet.bridge;
+ store.write("sf.batch.pending",{"base"=>base,"pending"=>false});store.write("sf.batch.head",{"base"=>base,"pending"=>false,"catalogDigest"=>bridge["catalogDigest"],"transfer"=>bridge["transfer"],"serial"=>1});
+ var transfer=new NativeTransfer(base,store);Test.assert(transfer.stage("feed",initial,null));var incoming=new NativeIncoming(store,base);store.write("sf.incoming.feed.processed",incoming.token(store.read("sf.incoming.feed")));
+ var app=new SpaceFoxApp();var clock=new Display03Clock();var v=new SpaceFoxView(clock,new ScheduleState(null,"empty"));app.feed=cache;app.view=v;v.setPacket(cache.packet);v.setAssetCache(new NativeRenderSource(store,base,bridge));v.onShow();
+ Test.assert(v.sceneLifecycle.request(1));var token=v.sceneLifecycle.begin();Test.assert(token!=null);var job=v.sceneLifecycle.job;
+ logger.debug("RELOAD_STAGE duplicate");Test.assert(transfer.stage("feed",initial,null));NativeForegroundApp.reload(app);Test.assert(v.sceneLifecycle.job==job);var writes=store.writes;
+ NativeForegroundApp.reload(app);Test.assert(v.sceneLifecycle.job==job&&store.writes==writes);
+ logger.debug("RELOAD_STAGE moved");Test.assert(transfer.stage("feed",moved,null));var start=System.getTimer();NativeForegroundApp.reload(app);var elapsed=System.getTimer()-start;
+ Test.assertMessage(v.context!=null&&v.context.schedule.remainingSeconds(0)==1794611100,"new schedule must activate while optional scene is building");
+ Test.assertMessage(elapsed<3000,"foreground schedule activation exceeded 3 seconds");Test.assert(!v.sceneLifecycle.complete(token));
+ logger.debug("RELOAD_STAGE reject");var before=System.getSystemStats();Test.assert(transfer.stage("feed","{invalid",null));NativeForegroundApp.reload(app);
+ Test.assert(app.restorePending&&v.context.schedule.remainingSeconds(0)==1794611100);logger.debug("RELOAD_STAGE restore");NativeForegroundApp.restore(app);app.restorePending=false;
+ Test.assert(v.context.schedule.remainingSeconds(0)==1794611100);var after=System.getSystemStats();
+ v.onHide();logger.debug("FOREGROUND_RELOAD duplicateJobRetained=true duplicateWrites=0 movedTargetVisible=true oldCompletionRejected=true rejectedRetainsTarget=true elapsedMs="+elapsed+" appUsedBefore="+before.usedMemory+" appUsedAfter="+after.usedMemory+" appTotal="+after.totalMemory);return true;
+ }finally{Application.Properties.setValue("FeedBaseUrl",previousBase);}
+}
+
+// Actual decoder boundary: canonical SFR1 payload succeeds with its independent
+// pixel digest; noncanonical padding and altered pad bits cannot be admitted.
+(:test,:typecheck(false)) function display03StreamWireValidation(logger){
+ var raws=["SFR1:0:1:AAECAw==","SFR1:0:1:AAECAx==","SFR1:0:1:AA=CAw=="];
+ for(var i=0;i<raws.size();i+=1){var store=new D03Store();var h=new NativeWireHash();h.put(raws[i]);var digest=h.digest();store.write("sf.obj."+digest,raws[i]);
+  var descriptor={"canvas"=>[1,1],"channels"=>3,"pixelSha256"=>"039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81","shards"=>[[digest,h.count]]};
+  var accepted=true;try{var decoder=new NativeSfrDecoder(store,descriptor);var steps=0;while(!decoder.step()){steps+=1;Test.assert(steps<10);}Test.assert(decoder.done);}catch(e){accepted=false;}
+  Test.assert(accepted==(i==0));
+ }
+ logger.debug("STREAM_WIRE canonical=true padBitsRejected=true interiorPaddingRejected=true");return true;
 }
