@@ -45,6 +45,12 @@ TEXT_DELTA = ''' function rejected(locale) {
   return ["Feed rejected", "Check URL or update SpaceFox"];
  }
 '''.encode()
+REFRESH_DELTA = b'''    function refreshRejection(menu) {
+        var index=menu.findItemById(:updateRejected);
+        if(index>=0){var help=SettingsMenuText.rejected(locale());var item=menu.getItem(index);item.setLabel(help[0]);item.setSubLabel(help[1]);}
+    }
+'''
+REFRESH_CALL = b'SettingsMenu.refreshRejection(rootMenu);'
 
 
 def historical_owner(root, name):
@@ -55,6 +61,10 @@ def historical_owner(root, name):
         if data.count(delta) != 1:
             raise ValueError('current settings repair delta changed: '+name)
         data = data.replace(delta, b'', 1)
+    if name == 'watchface/source/SettingsMenu.mc':
+        if data.count(REFRESH_DELTA) != 1 or data.count(REFRESH_CALL) != 1:
+            raise ValueError('current settings language refresh delta changed: '+name)
+        data = data.replace(REFRESH_DELTA, b'', 1).replace(REFRESH_CALL, b'', 1)
     return data
 
 
@@ -64,7 +74,7 @@ def owner_digest(root, name):
 
 def verify_rejection_menu(root):
     base = root/'openspec/changes/spacefox-watchface/evidence/release-update-native'
-    pins = {'build.json': '24b32d8bbf0b03095da2e80eaacc2cc12d5d8922787297c3a8fe9df81027b2c0', 'Probe.mc.txt': '01a45b14fdfdee8d26436cac970c4f87e958caab8266a1c13915718a8490e2ea', 'run.log': 'd3ebbb9f466db3961d5aa39c839d007cf5d426dc4b9208995f39019c3f0d4afb', 'exit.txt': '4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865'}
+    pins = {'build.json': '4b9de8393ae22dbb02bd13f3a093906a206d272b38c372065d266925b7b9e1ca', 'Probe.mc.txt': '0713ca67b40d0ce7e22db9d85383591f9e4d859d0497b4b576a9df4fa9f7ead1', 'run.log': '10be30feb2c55fabe58fffc5d6f87f6bda27bffa7e0f363315e5851ae160a2f0', 'exit.txt': '4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865'}
     raw = {name: (base/name).read_bytes() for name in pins}
     for name, expected in pins.items():
         if digest(raw[name]) != expected:
@@ -81,14 +91,13 @@ def verify_rejection_menu(root):
     glyph = json.loads(glyph_raw)
     labels = [s for s in re.findall(r'"([^\"]*)"', TEXT_DELTA.decode())
               if s not in ('ru', 'de', 'fr', 'es')]
-    prior = json.loads((root/'openspec/changes/spacefox-watchface/evidence/basic-main-review/primary-menu-fonts.json').read_text())
     points = {str(ord(c)) for label in labels for c in label}
-    if (glyph['font'] != prior['font'] or glyph['labels'] != labels or
+    if (glyph['font'] != {'fileName': 'Roboto-Regular.ttf', 'sha256': '31d218ca177e4c2191134f9c14fb43027f8a38622476db14038fd8ff186f875e'} or glyph['labels'] != labels or
         set(glyph['glyphs']) != points or any(v in (None, 0, '.notdef') for v in glyph['glyphs'].values())):
         raise ValueError('rejection menu glyph coverage incomplete')
     result = parse_output(raw['run.log'].decode(), int(raw['exit.txt']), ('releaseCurrentHostSchema',))
     if (result['status'] != 'passed' or
-        'deferredRestoreSameCache=1 schemaRefused=1 rendererRefused=1 actionableMenu=1 fiveLocales=1 clearsOnSuccess=1' not in raw['run.log'].decode()):
+        'deferredRestoreSameCache=1 schemaRefused=1 rendererRefused=1 actionableMenu=1 fiveLocales=1 languageRefresh=1 clearsOnSuccess=1' not in raw['run.log'].decode()):
         raise ValueError('rejection menu SDK observation incomplete')
 
 

@@ -13,9 +13,9 @@ from tools.run_native_tests import parse_output
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / 'openspec/changes/spacefox-watchface/evidence/release-update-native'
 PINS = {
-    'build.json': '24b32d8bbf0b03095da2e80eaacc2cc12d5d8922787297c3a8fe9df81027b2c0',
-    'Probe.mc.txt': '01a45b14fdfdee8d26436cac970c4f87e958caab8266a1c13915718a8490e2ea',
-    'run.log': 'd3ebbb9f466db3961d5aa39c839d007cf5d426dc4b9208995f39019c3f0d4afb',
+    'build.json': '4b9de8393ae22dbb02bd13f3a093906a206d272b38c372065d266925b7b9e1ca',
+    'Probe.mc.txt': '0713ca67b40d0ce7e22db9d85383591f9e4d859d0497b4b576a9df4fa9f7ead1',
+    'run.log': '10be30feb2c55fabe58fffc5d6f87f6bda27bffa7e0f363315e5851ae160a2f0',
     'exit.txt': '4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865',
 }
 
@@ -61,7 +61,7 @@ class ReleaseUpdateNativeTest(unittest.TestCase):
         self.assertIn('oldWireRetained=1', self.log)
 
     def test_unsupported_schema_refused_without_replacement(self):
-        self.assertIn('incomingPath=1 deferredRestoreSameCache=1 schemaRefused=1 rendererRefused=1 actionableMenu=1 fiveLocales=1 clearsOnSuccess=1 oldWireRetained=1', self.log)
+        self.assertIn('incomingPath=1 deferredRestoreSameCache=1 schemaRefused=1 rendererRefused=1 actionableMenu=1 fiveLocales=1 languageRefresh=1 clearsOnSuccess=1 oldWireRetained=1', self.log)
         self.assertIn('Check URL or update SpaceFox', self.probe)
         self.assertIn('"schemaVersion\\":4', self.probe)
         with self.assertRaisesRegex(ValueError, 'native observation changed'):
@@ -87,6 +87,12 @@ class ReleaseUpdateNativeTest(unittest.TestCase):
         self.assertIn('SFR-unsupported', self.probe)
         with self.assertRaisesRegex(ValueError, 'native observation changed'):
             check_payload('Probe.mc.txt', (EVIDENCE / 'Probe.mc.txt').read_bytes() + b'changed')
+
+    def test_open_warning_tracks_language_selection(self):
+        self.assertIn('languageRefresh=1', self.log)
+        self.assertIn('choice.onSelect(new WatchUi.MenuItem("Русский",null,:i1,null))', self.probe)
+        self.assertIn('Test.assertEqual(item.getSubLabel(),"Проверьте URL или обновите SpaceFox")', self.probe)
+        self.assertIn('Test.assertEqual(item.getSubLabel(),"Check URL or update SpaceFox")', self.probe)
 
 class ReleaseUpdateAdmissionTest(unittest.TestCase):
     def test_language_admission_refuses_changed_warning_glyph_observation(self):

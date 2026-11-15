@@ -3,8 +3,8 @@
   "group": "grammar",
   "device": "fr165",
   "tests": true,
-  "ownerTag": "19b549be977f4f868a03259b60e965c6|release-cache|38a2ebee2046",
-  "sourceSetSha256": "38a2ebee2046824249560cb243f65c03ab106b4c190217c8f8a6a48a03759e6f",
+  "ownerTag": "fdbacbf26f264ffab866688305b2bd8b|release-cache|a17f5b201376",
+  "sourceSetSha256": "a17f5b201376b23b5b51ca9ee399a62bb579f27c8696f8fa909de1459745f94f",
   "sourceHead": "854a5a30a5bb021d2bac3e2f799b4f6401f269af",
   "sourceDirty": true,
   "command": [
@@ -29,7 +29,7 @@
   ],
   "exitCode": 0,
   "packageName": "RC1.prg",
-  "packageSha256": "107fdeeea78c4a167de58483e3c0b93316052d7de37115efa189c4fa7cb0ac6c",
+  "packageSha256": "3cfd3f49141de2160882af71c3e8238181b54b6007d4ee1c8b7c627cc367b699",
   "productionSources": {
     "watchface/source/Fitness.mc": "4514c60764062fcf08aabf253f729629fbb68727789154c801be839a55e581ba",
     "watchface/source/NativeSourceTimes.mc": "86abcd251ed68f88055279e0d98ca3adc7f017a86d7fa2bd14f91c44cb6bb4dc",
@@ -40,7 +40,7 @@
     "watchface/source/NativeIncoming.mc": "cdcb7a8b8d869b7bbc64686cea937c6044cb3b0769af68c26f8d778d14642132",
     "watchface/source/SceneRenderer.mc": "d460ec37e9c91def9f68c2bf8ec32dd8f9bb0c038fc1791c12966d8117fe373e",
     "watchface/source/SpaceFoxApp.mc": "3139361d58c878d546c696f010579d813e808325b1e69ab4a539ba5c2196c21b",
-    "watchface/source/SettingsMenu.mc": "3d8f4ec91bda011d1b2248c857875e688dbaa7cd017bc5c0ad6ad2743c8e690c",
+    "watchface/source/SettingsMenu.mc": "da91084b0058211b976011923774750fd5518d4df31101e9b447d7879c41cd42",
     "watchface/source/NativeAssetTypes.mc": "7898007364c66748377eccc8289863f45764e66479b813c57214a84374b20867",
     "watchface/source/NativeFeed.mc": "79cf4542d6b74660991366f21160af4b05929070716886adc42cdd9e52d4d53d",
     "watchface/source/NativeTransfer.mc": "80221d6642f0d1301e74217ae0b10465af74980c1b52952805868241a3dd06ad",
@@ -61,7 +61,7 @@
     "watchface/source/NativeImmutable.mc": "4e56746909147976638304d234d4a41e7a7bb8b3184958b519aa3c7d98428717",
     "watchface/source/NativeForegroundCache.mc": "5ecfa85f8cce322725dba136656f54151b9c5c1e5625ae916d7270cf985e8658",
     "watchface/source/generated/NativeAssets.mc": "8c9f597bc889f5f9e15d58ac55a3f4c87b66338993cb3ffa30d1a2e776e00ea2",
-    "watchface/source/generated/NativeVersion.mc": "38b680015c4b6414a6ec81315706dc499dc3f8903bbfa36ae73b9c646f419cfd",
+    "watchface/source/generated/NativeVersion.mc": "b5a2da2d8900ce0da5b81cf5fcd1b71f6ee4e1d186d7d654b4301ac8be6df9e4",
     "watchface/source/generated/SceneStrings.mc": "dd8a910b53d2493ec8760e0148186c9535c05a5e0644ae5b6e6eccb6dd651109",
     "watchface/source/generated/LocaleGraphemes.mc": "5ad65d6328908a7f251cd5ddbac83244de9b51929c2c46cb746bfb168a4f6c80"
   },
@@ -239,8 +239,8 @@
   "probeResources": {
     "probe.xml": "29909c621cc8c049ff7f9210e738daadea10665d9dbee72e54aa5a515f5133a5"
   },
-  "probeSha256": "01a45b14fdfdee8d26436cac970c4f87e958caab8266a1c13915718a8490e2ea",
-  "applicationUuid": "19b549be977f4f868a03259b60e965c6",
+  "probeSha256": "0713ca67b40d0ce7e22db9d85383591f9e4d859d0497b4b576a9df4fa9f7ead1",
+  "applicationUuid": "fdbacbf26f264ffab866688305b2bd8b",
   "productionSourceScope": "all-native",
   "proofBoundary": "Build isolated ordinary or seed-test SFR1 probes from production owners.\n\nEvery UUID has a distinct PRG basename. A seed intentionally replaces network\nonly; a plain observer excludes raw constants and uses ordinary126784B runtime.\n",
   "sourceBinding": "compare productionSources and productionResources to checkout",

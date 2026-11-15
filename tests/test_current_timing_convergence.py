@@ -84,10 +84,10 @@ class CurrentTimingConvergenceTest(unittest.TestCase):
                 data = data.replace(b'version="0.1.12"', b'version="0.1.10"')
             elif name == 'watchface/source/generated/NativeVersion.mc':
                 self.assertEqual(data.count(b'BUILD = "0.1.12"'), 1, name)
-                self.assertEqual(data.count(b'ID = "07120ad9"'), 1, name)
+                self.assertEqual(data.count(b'ID = "225e279c"'), 1, name)
                 data = data.replace(b'BUILD = "0.1.12"', b'BUILD = "0.1.10"')
                 # The build ID is version-derived; bind its earlier exact value.
-                data = data.replace(b'ID = "07120ad9"', b'ID = "de5011f4"')
+                data = data.replace(b'ID = "225e279c"', b'ID = "de5011f4"')
             self.assertEqual(hashlib.sha256(data).hexdigest(), expected, name)
 
     def test_missing_zero_observation_negative(self):

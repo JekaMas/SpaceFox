@@ -17,6 +17,7 @@ bad_renderer=json.loads(initial);bad_renderer['rendererProfile']='SFR-unsupporte
 source += '''
 (:typecheck(false)) class ReleaseTestOwner { var feed; function initialize(cache){feed=cache;} function onSettingsChanged(){} }
 (:test,:typecheck(false)) function releaseCurrentHostSchema(log){
+ Application.Properties.setValue("Language",0);
  var s=new CurrentStore();currentPut(s,CATALOG_A);currentPut(s,CATALOG_B);
  var a=new NativeCache("https://current-native.invalid/first",s);var now=1794551202l;
  Test.assert(a.accept(INITIAL,now));Test.assert(a.accept(MOVED,now));
@@ -40,6 +41,13 @@ source += '''
  Test.assert(SettingsMenuText.rejected("de")[0].equals("Daten abgelehnt"));
  Test.assert(SettingsMenuText.rejected("fr")[0].equals("Données refusées"));
  Test.assert(SettingsMenuText.rejected("es")[0].equals("Datos rechazados"));
+ var choice=new SettingsChoiceDelegate(owner,0,menu);
+ try{choice.onSelect(new WatchUi.MenuItem("Русский",null,:i1,null));}catch(e){} // unit-test watch-face mode refuses the final popView
+ Test.assertEqual(item.getLabel(),"Данные отклонены");
+ Test.assertEqual(item.getSubLabel(),"Проверьте URL или обновите SpaceFox");
+ try{choice.onSelect(new WatchUi.MenuItem("English",null,:i0,null));}catch(e){}
+ Test.assertEqual(item.getLabel(),"Feed rejected");
+ Test.assertEqual(item.getSubLabel(),"Check URL or update SpaceFox");
  Test.assert(transfer.stage("feed",INITIAL,null));Test.assert(incoming.admitFeedForView(b,now,view));var recovered=SettingsMenu.root(owner)[0];
  Test.assert(recovered.findItemById(:updateRejected)==-1);
  var reopened=new NativeCache("https://current-native.invalid/second",s);
@@ -48,7 +56,7 @@ source += '''
  var original=new NativeCache("https://current-native.invalid/first",s);
  Test.assert(original.load(now)==null);Test.assert(!original.accept(INITIAL,now));
  Test.assert(original.accept(MOVED,now));Test.assert(original.packet.validation==1794551193l);
- log.debug("RELEASE_CURRENT incomingPath=1 deferredRestoreSameCache=1 schemaRefused=1 rendererRefused=1 actionableMenu=1 fiveLocales=1 clearsOnSuccess=1 oldWireRetained=1 separateHostAge=1 separateReschedule=1 hostFloor=1");return true;
+ log.debug("RELEASE_CURRENT incomingPath=1 deferredRestoreSameCache=1 schemaRefused=1 rendererRefused=1 actionableMenu=1 fiveLocales=1 languageRefresh=1 clearsOnSuccess=1 oldWireRetained=1 separateHostAge=1 separateReschedule=1 hostFloor=1");return true;
 }
 '''
 items={'CATALOG_A':fixture['catalogs']['initial']['catalog'],'CATALOG_B':fixture['catalogs']['different']['catalog'],'INITIAL':initial,'MOVED':fixture['packets']['moved'],'BADSCHEMA':json.dumps(bad,separators=(',',':')),'BADRENDERER':json.dumps(bad_renderer,separators=(',',':'))}

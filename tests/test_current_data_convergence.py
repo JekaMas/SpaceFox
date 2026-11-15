@@ -63,10 +63,10 @@ class CurrentDataConvergenceTest(unittest.TestCase):
                 from tools.verify_current_ui_batch import historical_owner
                 data = historical_owner(ROOT, name)
             if name == 'watchface/source/generated/NativeVersion.mc':
-                if data.count(b'BUILD = "0.1.12"') != 1 or data.count(b'ID = "07120ad9"') != 1:
+                if data.count(b'BUILD = "0.1.12"') != 1 or data.count(b'ID = "225e279c"') != 1:
                     raise AssertionError('current NativeVersion.mc identity changed')
                 data = data.replace(b'BUILD = "0.1.12"', b'BUILD = "0.1.10"')
-                data = data.replace(b'ID = "07120ad9"', b'ID = "de5011f4"')
+                data = data.replace(b'ID = "225e279c"', b'ID = "de5011f4"')
             if digest(data) != expected:
                 raise AssertionError('source differs: ' + name)
 
@@ -130,6 +130,6 @@ class CurrentDataConvergenceTest(unittest.TestCase):
                 data = data.replace(b'version="0.1.12"', b'version="0.1.10"')
             elif name == 'watchface/source/generated/NativeVersion.mc':
                 self.assertEqual(data.count(b'BUILD = "0.1.12"'), 1, name)
-                self.assertEqual(data.count(b'ID = "07120ad9"'), 1, name)
-                data = data.replace(b'BUILD = "0.1.12"', b'BUILD = "0.1.10"').replace(b'ID = "07120ad9"', b'ID = "de5011f4"')
+                self.assertEqual(data.count(b'ID = "225e279c"'), 1, name)
+                data = data.replace(b'BUILD = "0.1.12"', b'BUILD = "0.1.10"').replace(b'ID = "225e279c"', b'ID = "de5011f4"')
             self.assertEqual(digest(data), expected, name)
