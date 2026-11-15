@@ -1,0 +1,147 @@
+test_changed_current_build_id_is_rejected_by_native_readers (tests.test_current_version_binding.CurrentVersionBindingTest.test_changed_current_build_id_is_rejected_by_native_readers) ... ok
+test_language_admission_refuses_changed_menu_owner (tests.test_release_update_native.ReleaseUpdateAdmissionTest.test_language_admission_refuses_changed_menu_owner) ... FAIL
+test_language_admission_refuses_changed_sdk_observation (tests.test_release_update_native.ReleaseUpdateAdmissionTest.test_language_admission_refuses_changed_sdk_observation) ... FAIL
+test_language_admission_refuses_changed_warning_glyph_observation (tests.test_release_update_native.ReleaseUpdateAdmissionTest.test_language_admission_refuses_changed_warning_glyph_observation) ... FAIL
+test_feed_hosts_keep_independent_age_and_reschedule (tests.test_release_update_native.ReleaseUpdateNativeTest.test_feed_hosts_keep_independent_age_and_reschedule) ... ok
+test_host_publisher_floor_and_owner_mutation_refusal (tests.test_release_update_native.ReleaseUpdateNativeTest.test_host_publisher_floor_and_owner_mutation_refusal) ... ok
+test_open_warning_tracks_language_selection (tests.test_release_update_native.ReleaseUpdateNativeTest.test_open_warning_tracks_language_selection) ... ok
+test_supported_current_cache_reopens (tests.test_release_update_native.ReleaseUpdateNativeTest.test_supported_current_cache_reopens) ... ok
+test_unsupported_renderer_refused (tests.test_release_update_native.ReleaseUpdateNativeTest.test_unsupported_renderer_refused) ... ok
+test_unsupported_schema_refused_without_replacement (tests.test_release_update_native.ReleaseUpdateNativeTest.test_unsupported_schema_refused_without_replacement) ... ok
+test_current_owner_and_tamper_refusal (tests.test_retained_native_binding.CurrentOwnerBindingTest.test_current_owner_and_tamper_refusal) ... ok
+
+======================================================================
+FAIL: test_language_admission_refuses_changed_menu_owner (tests.test_release_update_native.ReleaseUpdateAdmissionTest.test_language_admission_refuses_changed_menu_owner)
+----------------------------------------------------------------------
+ValueError: version native closure changed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-public-014/tests/test_release_update_native.py", line 133, in test_language_admission_refuses_changed_menu_owner
+    with patch.object(Path, 'read_bytes', altered), self.assertRaisesRegex(ValueError, '(settings readability|decoder) native closure changed'):
+                                                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "(settings readability|decoder) native closure changed" does not match "version native closure changed"
+
+======================================================================
+FAIL: test_language_admission_refuses_changed_sdk_observation (tests.test_release_update_native.ReleaseUpdateAdmissionTest.test_language_admission_refuses_changed_sdk_observation)
+----------------------------------------------------------------------
+ValueError: prior decoder reconstruction failed: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;from pathlib import Path;from tools.native_decoder_stream_qualification import validate;p=Path.cwd();c=json.loads((p/"locales/catalog.json").read_text());assert validate(p,c)==c["supportPolicy"]["softwareQualifiedLocales"]
+                                                                                                                                                                                 ~~~~~~~~^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-version14-prior-ivs4g5fi/tools/native_decoder_stream_qualification.py", line 91, in validate
+    if result.returncode: raise ValueError('prior settings reconstruction failed: '+result.stderr[-3000:])
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: prior settings reconstruction failed: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;from pathlib import Path;from tools.native_settings_readability import validate;p=Path.cwd();c=json.loads((p/"locales/catalog.json").read_text());assert validate(p,c)==c["supportPolicy"]["softwareQualifiedLocales"]
+                                                                                                                                                                         ~~~~~~~~^^^^^
+  File "/private/tmp/spacefox-decoder-prior-k9uvkmz3/tools/native_settings_readability.py", line 114, in validate
+    if result.returncode: raise ValueError('prior integration reconstruction failed: '+result.stderr[-3000:])
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: prior integration reconstruction failed: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json; from pathlib import Path; from tools.native_integration13_requalification import validate; p=Path.cwd(); c=json.loads((p/"locales/catalog.json").read_text()); assert validate(p,c)==c["supportPolicy"]["softwareQualifiedLocales"]
+                                                                                                                                                                                       ~~~~~~~~^^^^^
+  File "/private/tmp/spacefox-settings-prior-8u1gb6rj/tools/native_integration13_requalification.py", line 47, in validate
+    raise ValueError('integration support changed: ' + name)
+ValueError: integration support changed: tests/test_current_version_binding.py
+
+
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-public-014/tests/test_release_update_native.py", line 144, in test_language_admission_refuses_changed_sdk_observation
+    with patch.object(Path, 'read_bytes', altered), self.assertRaisesRegex(ValueError, 'rejection menu observation changed'):
+                                                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "rejection menu observation changed" does not match "prior decoder reconstruction failed: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;from pathlib import Path;from tools.native_decoder_stream_qualification import validate;p=Path.cwd();c=json.loads((p/"locales/catalog.json").read_text());assert validate(p,c)==c["supportPolicy"]["softwareQualifiedLocales"]
+                                                                                                                                                                                 ~~~~~~~~^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-version14-prior-ivs4g5fi/tools/native_decoder_stream_qualification.py", line 91, in validate
+    if result.returncode: raise ValueError('prior settings reconstruction failed: '+result.stderr[-3000:])
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: prior settings reconstruction failed: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;from pathlib import Path;from tools.native_settings_readability import validate;p=Path.cwd();c=json.loads((p/"locales/catalog.json").read_text());assert validate(p,c)==c["supportPolicy"]["softwareQualifiedLocales"]
+                                                                                                                                                                         ~~~~~~~~^^^^^
+  File "/private/tmp/spacefox-decoder-prior-k9uvkmz3/tools/native_settings_readability.py", line 114, in validate
+    if result.returncode: raise ValueError('prior integration reconstruction failed: '+result.stderr[-3000:])
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: prior integration reconstruction failed: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json; from pathlib import Path; from tools.native_integration13_requalification import validate; p=Path.cwd(); c=json.loads((p/"locales/catalog.json").read_text()); assert validate(p,c)==c["supportPolicy"]["softwareQualifiedLocales"]
+                                                                                                                                                                                       ~~~~~~~~^^^^^
+  File "/private/tmp/spacefox-settings-prior-8u1gb6rj/tools/native_integration13_requalification.py", line 47, in validate
+    raise ValueError('integration support changed: ' + name)
+ValueError: integration support changed: tests/test_current_version_binding.py
+
+
+"
+
+======================================================================
+FAIL: test_language_admission_refuses_changed_warning_glyph_observation (tests.test_release_update_native.ReleaseUpdateAdmissionTest.test_language_admission_refuses_changed_warning_glyph_observation)
+----------------------------------------------------------------------
+ValueError: prior decoder reconstruction failed: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;from pathlib import Path;from tools.native_decoder_stream_qualification import validate;p=Path.cwd();c=json.loads((p/"locales/catalog.json").read_text());assert validate(p,c)==c["supportPolicy"]["softwareQualifiedLocales"]
+                                                                                                                                                                                 ~~~~~~~~^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-version14-prior-a00ics7x/tools/native_decoder_stream_qualification.py", line 91, in validate
+    if result.returncode: raise ValueError('prior settings reconstruction failed: '+result.stderr[-3000:])
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: prior settings reconstruction failed: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;from pathlib import Path;from tools.native_settings_readability import validate;p=Path.cwd();c=json.loads((p/"locales/catalog.json").read_text());assert validate(p,c)==c["supportPolicy"]["softwareQualifiedLocales"]
+                                                                                                                                                                         ~~~~~~~~^^^^^
+  File "/private/tmp/spacefox-decoder-prior-fvibu985/tools/native_settings_readability.py", line 114, in validate
+    if result.returncode: raise ValueError('prior integration reconstruction failed: '+result.stderr[-3000:])
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: prior integration reconstruction failed: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json; from pathlib import Path; from tools.native_integration13_requalification import validate; p=Path.cwd(); c=json.loads((p/"locales/catalog.json").read_text()); assert validate(p,c)==c["supportPolicy"]["softwareQualifiedLocales"]
+                                                                                                                                                                                       ~~~~~~~~^^^^^
+  File "/private/tmp/spacefox-settings-prior-jlf4nt5a/tools/native_integration13_requalification.py", line 47, in validate
+    raise ValueError('integration support changed: ' + name)
+ValueError: integration support changed: tests/test_current_version_binding.py
+
+
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-public-014/tests/test_release_update_native.py", line 122, in test_language_admission_refuses_changed_warning_glyph_observation
+    with patch.object(Path, 'read_bytes', altered), self.assertRaisesRegex(ValueError, 'glyph observation changed'):
+                                                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "glyph observation changed" does not match "prior decoder reconstruction failed: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;from pathlib import Path;from tools.native_decoder_stream_qualification import validate;p=Path.cwd();c=json.loads((p/"locales/catalog.json").read_text());assert validate(p,c)==c["supportPolicy"]["softwareQualifiedLocales"]
+                                                                                                                                                                                 ~~~~~~~~^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-version14-prior-a00ics7x/tools/native_decoder_stream_qualification.py", line 91, in validate
+    if result.returncode: raise ValueError('prior settings reconstruction failed: '+result.stderr[-3000:])
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: prior settings reconstruction failed: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;from pathlib import Path;from tools.native_settings_readability import validate;p=Path.cwd();c=json.loads((p/"locales/catalog.json").read_text());assert validate(p,c)==c["supportPolicy"]["softwareQualifiedLocales"]
+                                                                                                                                                                         ~~~~~~~~^^^^^
+  File "/private/tmp/spacefox-decoder-prior-fvibu985/tools/native_settings_readability.py", line 114, in validate
+    if result.returncode: raise ValueError('prior integration reconstruction failed: '+result.stderr[-3000:])
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: prior integration reconstruction failed: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json; from pathlib import Path; from tools.native_integration13_requalification import validate; p=Path.cwd(); c=json.loads((p/"locales/catalog.json").read_text()); assert validate(p,c)==c["supportPolicy"]["softwareQualifiedLocales"]
+                                                                                                                                                                                       ~~~~~~~~^^^^^
+  File "/private/tmp/spacefox-settings-prior-jlf4nt5a/tools/native_integration13_requalification.py", line 47, in validate
+    raise ValueError('integration support changed: ' + name)
+ValueError: integration support changed: tests/test_current_version_binding.py
+
+
+"
+
+----------------------------------------------------------------------
+Ran 11 tests in 4.720s
+
+FAILED (failures=3)

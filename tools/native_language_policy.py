@@ -89,6 +89,9 @@ def software_locales(root,catalog=None):
  if not qualified:
   if proof is not None:raise ValueError('empty software admission must have no proof')
   return []
+ if isinstance(proof,dict) and 'version14Proof' in proof:
+  from tools.native_version14_qualification import validate
+  return validate(root,catalog)
  if isinstance(proof,dict) and 'decoderStreamProof' in proof:
   from tools.native_decoder_stream_qualification import validate
   return validate(root,catalog)

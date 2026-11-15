@@ -76,7 +76,8 @@ def observed_input_digest(name, expected):
     live = (ROOT/name).read_bytes()
     if name not in latest['nativeInputs']:
         return hashlib.sha256(live).hexdigest()
-    if hashlib.sha256(live).hexdigest() != latest['nativeInputs'][name]:
+    current_record = json.loads((ROOT/proof['version14Proof']['path']).read_text()) if 'version14Proof' in proof else latest
+    if hashlib.sha256(live).hexdigest() != current_record['nativeInputs'][name]:
         raise AssertionError('current owner changed: '+name)
     snapshots=latest['priorSnapshots']
     if name in ('watchface/source/SpaceFoxView.mc','watchface/source/SceneRenderer.mc'):
@@ -88,7 +89,7 @@ def observed_input_digest(name, expected):
             before=before.replace(b'rich.mapOutline!=null && rich.scene!=null',b'(rich.mapOutline!=null||(rich.bundledOutline&&aodPin&&aodResource!=null)) && rich.scene!=null')
         if before!=live: raise AssertionError('unqualified renderer/view change: '+name)
     candidates = [live]
-    for key in ('decoderStreamProof','settingsReadabilityProof'):
+    for key in ('version14Proof','decoderStreamProof','settingsReadabilityProof'):
         ref=proof.get(key)
         if ref:
             raw=(ROOT/ref['path']).read_bytes()
@@ -139,8 +140,9 @@ def validate_current_stream_log(data):
     ref=proof['decoderStreamProof'];raw=(ROOT/ref['path']).read_bytes()
     if hashlib.sha256(raw).hexdigest()!=ref['sha256']: raise AssertionError('current stream proof changed')
     record=json.loads(raw)
+    current_record=json.loads((ROOT/proof['version14Proof']['path']).read_text()) if 'version14Proof' in proof else record
     for name in ('watchface/source/NativeSfr.mc','watchface/source/SceneRenderer.mc','watchface/source/SpaceFoxView.mc','watchface/source/generated/NativeVersion.mc'):
-        if hashlib.sha256((ROOT/name).read_bytes()).hexdigest()!=record['nativeInputs'][name]: raise AssertionError('current stream owner changed: '+name)
+        if hashlib.sha256((ROOT/name).read_bytes()).hexdigest()!=current_record['nativeInputs'][name]: raise AssertionError('current stream owner changed: '+name)
     if hashlib.sha256(data).hexdigest()!=record['sdkLog']['sha256']:
         raise AssertionError('current stream observation changed')
     for marker in (b'CURRENT_MAP checksum=true outline=true complete=true',b'CURRENT_MAP wrong_pixel_hash_refused=true',b'STREAM_MATCH bitmap=true outlineDeferred=true',b'STREAM_NONCANONICAL refused=true',b'PASSED (passed=2, failed=0, errors=0)'):
@@ -605,8 +607,8 @@ def validate_low_phases():
 
 class WF09CurrentCompositionTest(unittest.TestCase):
     def test_recovery_positive(self):
-        from tools.native_decoder_stream_qualification import validate
-        catalog=json.loads((ROOT/'locales/catalog.json').read_text());validate(ROOT,catalog)
+        from tools.native_language_policy import software_locales
+        catalog=json.loads((ROOT/'locales/catalog.json').read_text());software_locales(ROOT,catalog)
         validate_low_recovery_history()
         CurrentP3ReceiptTest('test_current_p3_positive').test_current_p3_positive()
         CurrentCoreCompositionTest('test_identity_positive').test_identity_positive()

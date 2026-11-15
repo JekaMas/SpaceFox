@@ -11,7 +11,8 @@ BASE = ROOT / 'openspec/changes/spacefox-watchface/evidence/display03-active-tic
 def historical_input(name, expected):
     proof = json.loads((BASE / 'proof.json').read_text())
     catalog = json.loads((ROOT/'locales/catalog.json').read_text())
-    ref = catalog['supportPolicy']['softwareQualificationProof'].get('decoderStreamProof', catalog['supportPolicy']['softwareQualificationProof'].get('settingsReadabilityProof'))
+    refs = catalog['supportPolicy']['softwareQualificationProof']
+    ref = refs.get('version14Proof', refs.get('decoderStreamProof', refs.get('settingsReadabilityProof')))
     if ref:
         raw = (ROOT/ref['path']).read_bytes()
         if hashlib.sha256(raw).hexdigest() != ref['sha256']:

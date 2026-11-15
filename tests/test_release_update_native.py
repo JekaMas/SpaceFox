@@ -32,18 +32,18 @@ def check_payload(name, data):
 def check_sources(build, read):
     from tools.generate_native_version import render
     current_version = read(ROOT / 'watchface/source/generated/NativeVersion.mc').decode()
-    if current_version != render(ROOT) or 'BUILD = "0.1.13"' not in current_version:
+    if current_version != render(ROOT) or 'BUILD = "0.1.14"' not in current_version:
         raise ValueError('current NativeVersion identity differs')
     # The receipt predates DISPLAY03. Bind the live input to the new admission
     # and compare its preserved predecessor bytes to the historical receipt.
     catalog = json.loads((ROOT / 'locales/catalog.json').read_text())
-    refs = catalog['supportPolicy']['softwareQualificationProof']; ref = refs.get('decoderStreamProof', refs.get('settingsReadabilityProof'))
+    refs = catalog['supportPolicy']['softwareQualificationProof']; ref = refs.get('version14Proof', refs.get('decoderStreamProof', refs.get('settingsReadabilityProof')))
     proof = json.loads((ROOT / (ref['path'] if ref else 'openspec/changes/spacefox-watchface/evidence/display03-active-tick-wake/integration13/proof.json')).read_text())
     for name, expected in {**build['productionSources'], **build['productionResources']}.items():
         data = read(ROOT / name)
         if digest(data) != proof['nativeInputs'][name]:
             raise ValueError('native owner changed: ' + name)
-        for prior_ref in (refs.get('decoderStreamProof'), refs.get('settingsReadabilityProof')):
+        for prior_ref in (refs.get('version14Proof'), refs.get('decoderStreamProof'), refs.get('settingsReadabilityProof')):
             if digest(data) == expected: break
             if prior_ref:
                 prior = json.loads((ROOT/prior_ref['path']).read_text())
@@ -130,7 +130,7 @@ class ReleaseUpdateAdmissionTest(unittest.TestCase):
         def altered(path):
             data = original(path)
             return data + b'changed' if path.resolve() == target else data
-        with patch.object(Path, 'read_bytes', altered), self.assertRaisesRegex(ValueError, '(settings readability|decoder) native closure changed'):
+        with patch.object(Path, 'read_bytes', altered), self.assertRaisesRegex(ValueError, '(settings readability|decoder|version) native closure changed'):
             software_locales(ROOT)
 
     def test_language_admission_refuses_changed_sdk_observation(self):
