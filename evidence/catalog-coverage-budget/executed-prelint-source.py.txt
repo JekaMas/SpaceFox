@@ -1,0 +1,345 @@
+"""Finite current catalog cases, real source strings and durable local authority.
+
+Provider response metadata/failures are controlled. No live provider, physical
+watch or worldwide completeness is inferred. Native proof remains independently
+source-qualified in current-native-data-applicability, not replayed here.
+"""
+from copy import deepcopy
+from dataclasses import replace
+import gzip
+from datetime import datetime, timezone
+import hashlib
+import json
+from pathlib import Path
+import tempfile
+import unittest
+
+from tests import test_current_metadata_publisher as metadata
+from tests.test_current_motion_publisher import NOW, captured_starship
+from tools import display_corpus
+from tools.catalog import amend_recipe
+from tools.spacefox.catalog import (CatalogError, build_catalog, canonical_bytes,
+                                    coverage_report, loads_json, validate_catalog)
+from tools.spacefox.catalog_refresh import CatalogRefresh, RefreshError
+from tools.spacefox.current_catalog import load_registry, schedule_catalog_review
+from tools.spacefox.native_motion import build_artifact, validate_artifact
+from tools.spacefox.provider import normalize_launch
+from tools.spacefox.publisher import Publisher, StateError
+from tools.spacefox.schedule import DEFAULT_POLICY, LaunchStatus, ScheduleState, merge_schedule
+from tests.test_global_catalog import temporary_catalog, supplement
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / 'corpus/real-schedule-20261113'
+
+
+class CatalogCoverageBudgetTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.catalog = build_catalog(ROOT)
+        cls.registry = load_registry(ROOT, cls.catalog)
+        cls.collection = json.loads((DATA / 'collection.json').read_bytes())
+        cls.metadata, cls.metadata_files = metadata.captured()
+
+    def event(self, identity):
+        for receipt in self.collection['pages']:
+            if not any(row['id'] == identity for row in receipt['records']):
+                continue
+            raw = gzip.decompress((DATA / receipt['raw']).read_bytes())
+            self.assertEqual(hashlib.sha256(raw).hexdigest(), receipt['responseSha256'])
+            return next(row for row in json.loads(raw)['results'] if row['id'] == identity)
+        self.fail('actual captured launch missing: ' + identity)
+
+    def artifact(self, row, *, catalog=None, registry=None, root=ROOT):
+        # Only technical event status/time changes make historical real records
+        # selectable. Display strings and typed source identities stay verbatim.
+        now = NOW
+        technical = deepcopy(row)
+        if row['status']['id'] in (3, 4, 7):
+            now = int(datetime.fromisoformat(row['net'].replace('Z', '+00:00')).timestamp()) - 3600
+            technical['last_updated'] = datetime.fromtimestamp(now, timezone.utc).isoformat()
+        record = replace(normalize_launch(technical, now), status=LaunchStatus.PENDING)
+        state = merge_schedule(ScheduleState(), (record,), now)
+        files, _ = build_artifact(state, catalog or self.catalog, now, root=root,
+            eligibility=registry or self.registry,
+            publisher=dict(instance='a' * 64, generation=1, selectionValidatedUtc=now))
+        feed = validate_artifact(files)
+        scene = loads_json(files[feed['visualSelection']['path']])
+        return state, files, feed, scene
+
+    def test_vc01_s01_positive(self):
+        row = self.event('e652a538-6d40-4b55-97a6-7c757ec4e1e9')
+        self.assertEqual(row['pad']['country']['alpha_2_code'], 'NO')
+        self.assertEqual(row['rocket']['configuration']['full_name'], 'Spectrum')
+        state, _, feed, scene = self.artifact(row)
+        self.assertEqual(feed['launch']['launch_id'], 'll2:launch:e652a538-6d40-4b55-97a6-7c757ec4e1e9')
+        self.assertEqual(feed['launch']['configuration_name'], 'Spectrum')
+        self.assertEqual(feed['launch']['site_name'], 'Orbital Launch Pad')
+        self.assertEqual(scene['modelId'], 'll2:configuration:' + str(row['rocket']['configuration']['id']))
+        self.assertEqual(scene['siteId'], 'll2:site:' + str(row['pad']['id']))
+        self.assertEqual(feed['launch']['source_validated_utc'], state.evaluated_at_utc)
+
+    def test_vc01_s01_negative(self):
+        row = captured_starship()
+        expected_model = row['rocket']['configuration']['full_name']
+        expected_site = row['pad']['name']
+        row['rocket']['configuration']['id'] = 999991
+        row['pad']['id'] = 999992
+        row['pad']['latitude'] = row['pad']['longitude'] = None
+        row['pad']['country']['id'] = 999993
+        row['launch_service_provider']['id'] = 999994
+        state, _, feed, scene = self.artifact(row)
+        self.assertEqual(feed['launch']['configuration_name'], expected_model)
+        self.assertEqual(feed['launch']['site_name'], expected_site)
+        self.assertEqual(feed['launch']['launch_id'], 'll2:launch:' + row['id'])
+        self.assertIsNone(scene['roles']['rocket'])
+        self.assertIsNone(scene['position'])
+        for identity in ('configuration:999991', 'site:999992', 'country:999993', 'organization:999994'):
+            self.assertIn('ll2:' + identity, feed['unresolvedCatalogIds'])
+        review = schedule_catalog_review(self.catalog, self.registry, state, NOW, DEFAULT_POLICY)
+        self.assertTrue({'ll2:configuration:999991', 'll2:site:999992'} <=
+                        {gap['identity'] for gap in review['gaps']})
+
+    def test_vc01_s02_positive(self):
+        d = self.catalog['dictionaries']
+        model = d['configurations']['spacefox:configuration:s520']
+        site = d['sites']['spacefox:site:uchinoura-sounding-area']
+        recipe = loads_json((ROOT / 'catalog/source.json').read_bytes())
+        reference = loads_json((ROOT / recipe['reference']['path']).read_bytes())
+        self.assertFalse(any(row['name'] == 'S-520' for row in reference['models']))
+        self.assertFalse(any(row['name'] == site['facts']['name'] for row in reference['sites']))
+        self.assertEqual(model['facts']['fullName'], 'S-520 sounding rocket')
+        for row in (model, site):
+            self.assertEqual(row['provenance'], [{'source': 'curation', 'recordId': 'global-curation-20261112'}])
+            self.assertEqual(row['curation']['reviewedAt'], '2026-11-12')
+            self.assertEqual(row['facts']['providerCoverage'], 'curator-addition-not-LL2-import')
+            self.assertIsNone(row['facts']['providerActive'])
+            self.assertTrue(all(url.startswith('https://www.isas.jaxa.jp/') for url in row['curation']['sources']))
+        self.assertEqual(self.registry['records']['spacefox:configuration:s520']['asOf'], '2026-11-12')
+        self.assertIsNone(site['position'])
+
+    def test_vc01_s02_negative(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = temporary_catalog(folder)
+            before = (root / 'catalog/source.json').read_bytes()
+            value = supplement('real-scientific-false-provider')
+            facts = deepcopy(self.catalog['dictionaries']['configurations']['spacefox:configuration:s520']['facts'])
+            facts.update(sourceId=999995, providerCoverage='LL2-import')
+            value['additions'] = [dict(identity='ll2:configuration:999995', facts=facts,
+                references=deepcopy(self.catalog['dictionaries']['configurations']['spacefox:configuration:s520']['references']))]
+            path = root / 'catalog/refused-scientific.json'
+            path.write_bytes(canonical_bytes(value))
+            with self.assertRaisesRegex(CatalogError, 'curated addition requires SpaceFox entity identity'):
+                amend_recipe(root, root / 'catalog/source.json', path, 'refused.scientific')
+            self.assertEqual((root / 'catalog/source.json').read_bytes(), before)
+            self.assertNotIn('ll2:configuration:999995', build_catalog(root)['dictionaries']['configurations'])
+            self.assertIsNone(build_catalog(root)['dictionaries']['sites']['spacefox:site:uchinoura-sounding-area']['position'])
+        forged = deepcopy(self.catalog)
+        forged['dictionaries']['configurations']['spacefox:configuration:s520']['provenance'] = [dict(source='reference', recordId=999995)]
+        with self.assertRaisesRegex(CatalogError, 'curated provenance mismatch'):
+            validate_catalog(forged)
+
+    def test_vc04_s01_positive(self):
+        # Complete raw finite launch history/future, passed through the actual
+        # admission/replay builder rather than trusting its stored complete flag.
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder)
+            (path / 'collection.json').write_bytes((DATA / 'collection.json').read_bytes())
+            (path / 'raw').symlink_to(DATA / 'raw', target_is_directory=True)
+            result = display_corpus.build(path, root=ROOT)
+            self.assertEqual(result['coverage']['sourceCount'], 1822)
+            self.assertEqual(result['coverage']['pageCount'], 19)
+            self.assertIsNone(result['coverage']['terminalNext'])
+            self.assertEqual(len({row[0] for row in result['launches']}), 1822)
+        helper = metadata.CurrentMetadataPublisherTest()
+        with helper.authority() as (pub, _, _):
+            collector = CatalogRefresh(pub)
+            collector.objects = {'catalog-refresh/' + name: raw for name, raw in self.metadata_files.items() if name.startswith('objects/')}
+            data, collection, cursor, offset, expected = collector._assemble(self.metadata['coverage']['pages'])
+            self.assertEqual((collection, cursor, offset, expected), (None, None, 0, None))
+            self.assertEqual({key: len(rows) for key, rows in data.items()},
+                             {'countries': 103, 'organizations': 350, 'models': 532, 'sites': 251})
+            for key, rows in data.items():
+                self.assertEqual(len({row['sourceId'] for row in rows}), len(rows), key)
+            candidate = collector._candidate(data, self.metadata['coverage']['pages'], metadata.NOW + 18000)
+            self.assertTrue(candidate['complete'])
+            self.assertFalse(candidate['coverage']['worldwideOfficialSupplementClosure'])
+            self.assertFalse(candidate['coverage']['artworkQualification'])
+            self.assertTrue(candidate['coverage']['relations'])
+
+    def test_vc04_s01_negative(self):
+        # Production corpus builder refuses page omissions, duplicate IDs and
+        # count drift while preserving previously accepted output bytes.
+        for defect in ('omitted', 'duplicate', 'count'):
+            with self.subTest(defect=defect), tempfile.TemporaryDirectory() as folder:
+                path = Path(folder)
+                state = deepcopy(self.collection)
+                if defect == 'omitted':
+                    state['pages'].pop(1)
+                else:
+                    page = state['pages'][1]
+                    doc = json.loads(gzip.decompress((DATA / page['raw']).read_bytes()))
+                    if defect == 'count':
+                        doc['count'] += 1
+                    else:
+                        first = json.loads(gzip.decompress((DATA / state['pages'][0]['raw']).read_bytes()))
+                        doc['results'][0] = first['results'][0]
+                    raw = json.dumps(doc, ensure_ascii=False).encode()
+                    page['responseSha256'] = hashlib.sha256(raw).hexdigest()
+                    page['raw'] = 'mutated.json.gz'
+                    (path / page['raw']).write_bytes(gzip.compress(raw))
+                (path / 'collection.json').write_bytes(display_corpus.encoded(state))
+                (path / 'raw').symlink_to(DATA / 'raw', target_is_directory=True)
+                accepted = (DATA / 'display-corpus.json').read_bytes()
+                (path / 'display-corpus.json').write_bytes(accepted)
+                with self.assertRaises(ValueError):
+                    display_corpus.build(path, root=ROOT)
+                self.assertEqual((path / 'display-corpus.json').read_bytes(), accepted)
+
+    def test_vc04_s02_positive(self):
+        report = coverage_report(self.catalog)
+        self.assertEqual(report['counts'], dict(countries=104, organizations=352, configurations=215, sites=224, assets=683))
+        self.assertEqual(report['configurations']['requiredNonPlaceholder'], 209)
+        self.assertEqual(report['configurations']['mappedArt'], 203)
+        self.assertEqual(len(report['configurations']['missingArtIds']), 6)
+        self.assertEqual(report['sites']['sourceNumericPairs'], 217)
+        self.assertEqual(len(report['sites']['missingCoordinateIds']), 7)
+        self.assertIsNone(report['sites']['independentlyVerifiedPadAccuracy'])
+        # A real known provider model with generic art remains its exact model.
+        model = self.catalog['dictionaries']['configurations']['ll2:configuration:505']
+        self.assertFalse(model['facts']['currentPackSpecific'])
+        self.assertEqual(model['references']['visual'], 'spacefox:asset:generic')
+        self.assertIn('ll2:configuration:505', report['configurations']['missingArtIds'])
+        self.assertIn('spacefox:site:uchinoura-sounding-area', report['sites']['missingCoordinateIds'])
+        self.assertEqual(report['qualification'], 'finite-producer-coverage-not-worldwide-or-native')
+        from collections import Counter
+        self.assertEqual(Counter(report['configurations']['mappingTypes'].values()),
+                         dict(specific=157, **{'reviewed-shared': 41, 'legacy-specific': 5}))
+
+    def test_vc04_s02_negative(self):
+        # A technically valid generic downgrade and missing point must appear as
+        # gaps in production diagnostics and keep source strings intact.
+        temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(temporary.cleanup)
+        root = temporary_catalog(temporary.name)
+        value = supplement('current-real-starship-generic-gap')
+        value['updates'] = [dict(identity='ll2:configuration:522',
+            changes=dict(currentPackAssetId='generic', currentPackSpecific=False),
+            sources=['https://www.spacex.com/vehicles/starship/'])]
+        path = root / 'catalog/real-generic-gap.json'
+        path.write_bytes(canonical_bytes(value))
+        catalog = amend_recipe(root, root / 'catalog/source.json', path, 'current.real.generic.gap')
+        registry = load_registry(root, catalog)
+        model = catalog['dictionaries']['configurations']['ll2:configuration:522']
+        report = coverage_report(catalog)
+        self.assertIn('ll2:configuration:522', report['configurations']['missingArtIds'])
+        self.assertEqual(report['configurations']['mappedArt'], 202)
+        self.assertNotEqual(report['sites']['sourceNumericPairs'], report['counts']['sites'])
+        row = captured_starship()
+        row['pad']['latitude'] = row['pad']['longitude'] = None
+        row['pad']['id'] = 999996
+        state, _, feed, scene = self.artifact(row, catalog=catalog, registry=registry, root=root)
+        self.assertEqual(feed['launch']['configuration_name'], row['rocket']['configuration']['full_name'])
+        self.assertIsNone(scene['position'])
+        from tools.spacefox.schedule import DEFAULT_POLICY
+        review = schedule_catalog_review(catalog, registry, state, NOW, DEFAULT_POLICY)
+        self.assertIn('specific-visual-not-qualified', {x['reason'] for x in review['gaps']})
+        # A sourced, well-formed amendment may not label generic art specific.
+        false_claim = supplement('current-real-false-specific')
+        false_claim['updates'] = [dict(identity='ll2:configuration:522',
+            changes=dict(currentPackAssetId='generic', currentPackSpecific=True),
+            sources=['https://www.spacex.com/vehicles/starship/'])]
+        refused = root / 'catalog/false-specific.json'
+        refused.write_bytes(canonical_bytes(false_claim))
+        accepted_recipe = (root / 'catalog/source.json').read_bytes()
+        with self.assertRaisesRegex(CatalogError, 'specific-art'):
+            amend_recipe(root, root / 'catalog/source.json', refused, 'refused.false.specific')
+        self.assertEqual((root / 'catalog/source.json').read_bytes(), accepted_recipe)
+
+    def test_vc07_s01_positive(self):
+        _, files, feed, scene = self.artifact(captured_starship())
+        self.assertEqual(feed['schemaVersion'], 3)
+        self.assertLessEqual(len(files['feed.json']), 8192)
+        self.assertLessEqual(sum(map(len, files.values())), 1048576)
+        index = loads_json(files[feed['nativeTransfer']['path']])
+        self.assertLessEqual(len(index['objects']), 40)
+        self.assertTrue(all(0 < size <= 4096 for _, _, size in index['objects']))
+        self.assertEqual(scene['modelId'], 'll2:configuration:522')
+        self.assertEqual(scene['siteId'], 'll2:site:235')
+        # Only dependency objects are delivered; full off-watch reference source
+        # and provider rows have no downloadable path in the selected artifact.
+        self.assertFalse(any(name.startswith('catalog/site-reference-') for name in files))
+        self.assertNotIn('catalog/source.json', files)
+        self.assertLess(len(index['objects']), len(self.catalog['dictionaries']['assets']))
+
+    def test_vc07_s01_negative(self):
+        small = deepcopy(self.catalog)
+        removed = small['dictionaries']['assets'].pop('spacefox:asset:vehicle-spaceshiptwo')
+        self.assertEqual(removed['facts']['id'], 'vehicle-spaceshiptwo')
+        validate_catalog(small)
+        registry = deepcopy(self.registry)
+        registry['dictionaryDigest'] = hashlib.sha256(canonical_bytes(small['dictionaries'])).hexdigest()
+        _, a_files, a, a_scene = self.artifact(captured_starship(), catalog=small, registry=registry)
+        _, b_files, b, b_scene = self.artifact(captured_starship())
+        self.assertNotEqual(a['catalogSourceDigest'], b['catalogSourceDigest'])
+        for key in ('visualSelection', 'nativeTransfer'):
+            self.assertEqual(a[key]['decodedBytes'], b[key]['decodedBytes'])
+        a_rows = loads_json(a_files[a['nativeTransfer']['path']])['objects']
+        b_rows = loads_json(b_files[b['nativeTransfer']['path']])['objects']
+        self.assertEqual([(k, size) for k, _, size in a_rows], [(k, size) for k, _, size in b_rows])
+        self.assertEqual(a_scene['position'], b_scene['position'])
+        self.assertNotIn(removed['content']['sha256'], {digest for _, digest, _ in b_rows})
+
+    def test_vc07_s02_positive(self):
+        helper = metadata.CurrentMetadataPublisherTest()
+        with helper.authority() as (pub, store, code):
+            helper.primary(pub, metadata.NOW, accept=True)
+            preserved = deepcopy(helper.preserved(pub))
+            transport = metadata.CapturedTransport(pub, self.metadata, self.metadata_files)
+            collector = CatalogRefresh(pub, transport=transport)
+            self.assertEqual(collector.run(metadata.NOW, max_requests=1).requests, 1)
+            prefix = deepcopy(collector.journal['staging']['pages'])
+            # Real Git reopen preserves cursor and consumes just the next page.
+            pub = Publisher(store, code)
+            pub.reconcile(None)
+            transport.pub = pub
+            collector = CatalogRefresh(pub, transport=transport)
+            self.assertEqual(collector.run(metadata.NOW, max_requests=4).requests, 4)
+            self.assertEqual(collector.journal['staging']['pages'][:1], prefix)
+            self.assertEqual(collector.run(metadata.NOW).requests, 1)
+            self.assertEqual(collector.run(metadata.NOW).status, 'yielded')
+            self.assertEqual([call['url'] for call in transport.calls],
+                             [page['url'] for page in self.metadata['coverage']['pages'][:6]])
+            self.assertEqual(len(pub.ledger['requests']), 7)
+            self.assertEqual(helper.preserved(pub), preserved)
+            # Eight primary slots remain; a due source check still proceeds.
+            due = metadata.NOW + pub.policy.normal_interval_seconds
+            token = pub.reserve(pub.head, due)
+            self.assertIsNotNone(token)
+            self.assertEqual(pub.ledger['requests'][-1]['purpose'], 'schedule')
+            pub.finish_request(pub.head, token, due, 'success')
+            self.assertEqual(helper.preserved(pub), preserved)
+
+    def test_vc07_s02_negative(self):
+        helper = metadata.CurrentMetadataPublisherTest()
+        with helper.authority() as (pub, store, code):
+            transport = metadata.CapturedTransport(pub, self.metadata, self.metadata_files)
+            # Due schedule preempts catalog before any provider call.
+            collector = CatalogRefresh(pub, transport=transport)
+            self.assertEqual(collector.run(metadata.NOW).status, 'yielded')
+            self.assertEqual(transport.calls, [])
+            helper.primary(pub, metadata.NOW, accept=True)
+            preserved = deepcopy(helper.preserved(pub))
+            token = pub.reserve_catalog(pub.head, metadata.NOW)
+            self.assertIsNotNone(token)
+            reserved_head = pub.head
+            stale = Publisher(store, code)
+            stale.reconcile(None)
+            transport.pub = stale
+            with self.assertRaisesRegex(StateError, 'uncertain request'):
+                CatalogRefresh(stale, transport=transport).run(metadata.NOW)
+            self.assertEqual(transport.calls, [])
+            self.assertEqual(sum(row['outcome'] == 'reserved' for row in stale.ledger['requests']), 1)
+            self.assertEqual(helper.preserved(stale), preserved)
+            self.assertEqual(stale.ledger['requests'][-1]['id'], token)
+            # The original reservation has no implicit source-freshness effect.
+            self.assertEqual(stale.head, reserved_head)
