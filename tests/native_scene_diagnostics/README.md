@@ -68,6 +68,10 @@ same-ID reschedule, unchanged refresh, withdrawal and new-ID latch behavior.
 It uses an in-memory store and does not demonstrate a live provider or natural
 firmware scheduling.
 
+`build_context_header.py` builds `output/context-header/CF7.prg`, checking
+captured context and rendered absent-operator/purpose markers. The null context
+mutation is applied after parsing and is a scene seam, not wire-admission proof.
+
 1. **Recorded-build source applicability:** `python3 -B tests/native_scene_diagnostics/verify_binding.py --public-root "$SCENE_PUBLIC"` compares the public production sources/resources, retained generated probe sources/resources, generators/drivers and A/B fixture bytes to the recorded build bindings. It does not inspect logs, run the simulator, or check an installed SDK. It requires the historical public base in the checkout ancestry. A mismatch or missing file invalidates the affected reuse; it is not repaired by updating a digest.
 2. **Installed runtime comparison:** add `--sdk-root "$SCENE_SDK_COPY" --image "$SCENE_IMAGE"` to the preceding command. This compares the compiler, simulator, profile, API/font inputs and image ID to the historical runtime. It does not execute the SDK. A different runtime requires affected requalification. The archived SDK digest is provenance, not a fresh archive check.
 3. **Fresh SDK replay:** run the isolated setup and relevant generator/package above, save new outputs and separately assess their actual outcomes. A fresh run is not verified by source applicability alone. The default host test suite does not install, invoke or require the SDK.
