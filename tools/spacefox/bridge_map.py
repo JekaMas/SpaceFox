@@ -79,6 +79,35 @@ def _layers(files,draws,label):
     return result
 
 
+def _distance_to_anchor(segment):
+    (x,y),(u,v)=segment;dx,dy=u-x,v-y;length=dx*dx+dy*dy
+    t=max(0,min(1,((335-x)*dx+(165-y)*dy)/length)) if length else 0
+    return math.hypot(x+t*dx-335,y+t*dy-165)
+
+
+def _clip_detail(segment):
+    """Clip source-projected detail into a fixed, visibly framed map inset."""
+    (x,y),(u,v)=segment;dx,dy=u-x,v-y;lo,hi=0.0,1.0
+    for p,q in ((-dx,x-305),(dx,365-x),(-dy,y-135),(dy,195-y)):
+        if p==0:
+            if q<0:return None
+        else:
+            t=q/p
+            if p<0:lo=max(lo,t)
+            else:hi=min(hi,t)
+            if lo>hi:return None
+    return ((x+lo*dx,y+lo*dy),(x+hi*dx,y+hi*dy))
+
+
+def _requires_regional_detail(view):
+    context=view['manifest']['context']
+    # At the accepted145px/radian camera, preserve sourced coastline that
+    # should project within5px but has no surviving local projected segment.
+    expected_px=context['nearestHighResolutionCoastDegrees']*math.pi/180*145
+    return (expected_px<5
+            and min((_distance_to_anchor(s) for s in view['segments']),default=390)>5)
+
+
 def build_map(root,catalog,site_id,files):
     site=catalog['dictionaries']['sites'][site_id]
     mode=site['facts'].get('positionMode','fixed-source')
@@ -130,6 +159,42 @@ def build_map(root,catalog,site_id,files):
             raise
         coast.append((color,coords))
     layers.extend(_layers(files,coast,'coast'))
+    detail_scale=None
+    if _requires_regional_detail(view):
+        detail=build_view(root,catalog,site_id,source_pin=source['index']['regional'],profile='regional')
+        validate_view(detail['manifest'],detail['files'])
+        full_proof=loads_json(view['files'][view['manifest']['source']['path']])
+        detail_proof=loads_json(detail['files'][detail['manifest']['source']['path']])
+        full_clips={sha(canonical_bytes(row)) for row in full_proof['clips']}
+        _require(detail_proof['clips'] and all(sha(canonical_bytes(row)) in full_clips for row in detail_proof['clips']),
+                 'regional inset must use selected source clips')
+        clipped=[part for segment in detail['segments'] if (part:=_clip_detail(segment)) is not None]
+        _require(clipped and any(max(math.hypot(x-335,y-165) for x,y in segment)>16 for segment in clipped),
+                 'regional inset has no source detail beyond marker')
+        detail_scale=detail['manifest']['camera']['scale']
+        def faded(color,x,y):
+            factor=_fade(x,y)
+            rgb=[round(((color >> shift)&255)*factor) for shift in (16,8,0)]
+            return rgb[0]*65536+rgb[1]*256+rgb[2]
+        def rect(color,x0,y0,x1,y1):
+            return (faded(color,(x0+x1)/2,(y0+y1)/2),[q(x0),q(y0),q(x1),q(y0),q(x1),q(y1),q(x0),q(y1)])
+        # The frame marks a local change of scale. The full flat-map backdrop
+        # and exact source point/marker remain in their existing positions.
+        inset=[rect(0x102c43,305,135,365,195),rect(0x52798a,305,135,365,136),
+               rect(0x52798a,305,194,365,195),rect(0x52798a,305,136,306,194),rect(0x52798a,364,136,365,194)]
+        for a,b in clipped:
+            dx,dy=b[0]-a[0],b[1]-a[1];length=math.hypot(dx,dy)
+            if length<.1:continue
+            ox,oy=-dy/length*.45,dx/length*.45
+            coords=[q(c) for p in ((a[0]+ox,a[1]+oy),(b[0]+ox,b[1]+oy),(b[0]-ox,b[1]-oy),(a[0]-ox,a[1]-oy)) for c in p]
+            color=faded(0x84bad0,(a[0]+b[0])/2,(a[1]+b[1])/2)
+            try:canonical_visual(_pooled([256,256],[(color,coords)]))
+            except ValueError as error:
+                if str(error) in ('zero-area wire polygon','duplicate polygon vertex','unsupported self-intersecting fill/polygon'):continue
+                raise
+            inset.append((color,coords))
+        _require(len(inset)>5,'regional inset source lines vanished during quantization')
+        layers.extend(_layers(files,inset,'regional-detail'))
     # Corresponding source and exact original notices are delivered offwatch.
     for path,raw in view['files'].items():
         if path.startswith('sources/'):files[path]=raw
@@ -137,10 +202,12 @@ def build_map(root,catalog,site_id,files):
     notice_raw=canonical_bytes({'format':'accepted04-source-notices-v1','worldSha256':source['index']['originalTopologySha256'],'credit':source['index']['credit'],'sources':source['index']['sources'],'notices':source['notices']})
     notice_ref={'path':'sources/'+sha(notice_raw)+'.json','sha256':sha(notice_raw),'decodedBytes':len(notice_raw)}
     files[notice_ref['path']]=notice_raw
+    limits=['source-reference-not-independent-pad-survey','full-camera-small-islands-may-be-subpixel','native-full-scene-not-observed']
+    if detail_scale is not None:limits.append('source-centered-regional-inset-scale:'+str(detail_scale))
     descriptor.update(center=[str(v) for v in center],marker={'anchor':[335,165],'diameter':28,'colors':[0x000000,0xf7f9fc,0xffd166]},
                       layers=pages,source={'recipeSha256':pin['sha256'],'worldSha256':source['index']['originalTopologySha256'],
                                            'corresponding':view['manifest']['source'],'notices':notice_ref},
-                      contextLimits=['source-reference-not-independent-pad-survey','full-camera-small-islands-may-be-subpixel','native-full-scene-not-observed'])
+                      contextLimits=limits)
     validate_map(descriptor)
     return put(files,descriptor)
 
@@ -166,7 +233,8 @@ def validate_map(value):
                  and canonical_bytes(value['marker'])==canonical_bytes({'anchor':[335,165],'diameter':28,'colors':[0x000000,0xf7f9fc,0xffd166]})
                  and bool(value['layers']) and type(value['source']) is dict
                  and set(value['source'])=={'recipeSha256','worldSha256','corresponding','notices'},'map camera/marker mismatch')
-        _require(value['contextLimits']==['source-reference-not-independent-pad-survey','full-camera-small-islands-may-be-subpixel','native-full-scene-not-observed'], 'map context limits')
+        limits=value['contextLimits'];base=['source-reference-not-independent-pad-survey','full-camera-small-islands-may-be-subpixel','native-full-scene-not-observed']
+        _require(limits[:3]==base and (len(limits)==3 or len(limits)==4 and limits[3].startswith('source-centered-regional-inset-scale:') and limits[3].split(':',1)[1].isdigit() and 1<=int(limits[3].split(':',1)[1])<=500000), 'map context limits')
         from .publisher import _digest
         _digest(value['source']['recipeSha256'])
         _require(value['source']['worldSha256']=='c3791187af0ef51b0d238c156058399fc9603c9974f960eb2889cdbee268a736','unsupported original map source')

@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "scope": "Peer applicability binding for the unchanged author map producer and recovered source-to-raster records. This is a current-source comparison, not a rewritten historical build or a new native observation. Catalog/source.json pins the transitive source data; the catalog builder and regional source loader authenticate those dependencies.",
+  "files": {
+    "catalog/source.json": "a6ec24648f651ffe4a279c1e774b55e5d018e08f791bdeef34f86e63a09eda89",
+    "tests/fixtures/global_geography/required-regional-details.json": "b96cc895aea958637c18a42b676d1b259913e469de6bf65238008ed6f879a4b3",
+    "tools/spacefox/bridge_map.py": "f71d736ded7754f32a10b83f43cf0bcc5e9840e9e9159aa1f33d928014341e80",
+    "tools/spacefox/bridge_map_render.js": "a89478f79e3ba5e831074effc88552ee1e2752277104d6ca5a037cd65eb14b24",
+    "tools/spacefox/catalog.py": "a87b1577cf7c9ab29a0daff049e3c7c6bea1f87749d062988a1ffc1fb5f63a5c",
+    "tools/spacefox/geographic_context.py": "23ed1a99f5e08b22430ba151c57c96d7237a7fcf0881dd6211fdf69872a5fc03",
+    "tools/spacefox/global_map.py": "a50687db161af083cba24330a719984747d58ea1c9cb90950169741ca7f5496d",
+    "tools/spacefox/graphics.py": "e4d26f23771504a6aeb7654487d1479074cc0d29d829c652bfa0b3bbbe83cf5a",
+    "tools/spacefox/wire.py": "4988bfd95f548ab8c442e6a3b07842f4e6d5a9cc2ea5ad6aa1e18c6add768cad",
+    "tools/spacefox/visual_bridge.py": "84943f4086eef7f63b24121661967eee775d5fb1db0a0e41d8eabee850b88acb",
+    "tools/spacefox/publisher.py": "48dbc8d2e8c3b4b9b7db23a260b7487f39b62cb97ff14b823dde5c86432dabb3",
+    "tools/spacefox/native_profile.py": "71492f1c37bfc044d407fd28257a4d04b30004fa19e11ce9c7c78e53ef357b93"
+  }
+}

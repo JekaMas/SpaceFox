@@ -601,7 +601,7 @@
       ],
       "statement": "The system SHALL identify a reschedule when the accepted target time changes for\nthe same launch identifier, recalculate the countdown and retain a change flag\nfor that selected launch. An unchanged successful refresh SHALL not create or\nclear the flag; selecting a different launch SHALL not inherit it.",
       "owner": "tools/spacefox/schedule.py; tools/spacefox/wire.py; watchface/source/NativeFeed.mc; watchface/source/FeedScene.mc; watchface/source/ScheduleState.mc; watchface/source/SpaceFoxView.mc",
-      "oracle": "Literal current MIN target1794609900→1794611100 at clock1794551202 produces58698→59898 seconds (16:18:18→16:38:18), +1200 and same-ID flag. Unchanged validation cannot create or clear it. Withdrawal gives null remaining and --:--:--; next timed launch identity cannot inherit prior latch. Actual captured SEC merge additionally retains unchanged-exact-UTC metadata behavior. Provider precision and exact_utc=null remain intact for MIN. Native assertions execute production classes rather than a Python countdown model.",
+      "oracle": "Literal current MIN target1794609900\u21921794611100 at clock1794551202 produces58698\u219259898 seconds (16:18:18\u219216:38:18), +1200 and same-ID flag. Unchanged validation cannot create or clear it. Withdrawal gives null remaining and --:--:--; next timed launch identity cannot inherit prior latch. Actual captured SEC merge additionally retains unchanged-exact-UTC metadata behavior. Provider precision and exact_utc=null remain intact for MIN. Native assertions execute production classes rather than a Python countdown model.",
       "source_globs": [
         "tests/test_basic_reschedule.py",
         "tests/fixtures/basic_reschedule/**",
@@ -1068,7 +1068,7 @@
         "Site is referenced despite its lifecycle flag"
       ],
       "statement": "Every required site SHALL retain its pad-level identity and sourced coordinates\nor an explicit unavailable state. Full-screen flat map SHALL work\nworldwide, including small islands, polar regions, the date line, sea/air launches\nand foreign-operated pads. Shared world geometry or qualified regional detail\nSHALL serve the point; missing country artwork SHALL NOT suppress a valid point.",
-      "owner": "watchface/source/Geography.mc; tools/catalog.py",
+      "owner": "tools/spacefox/bridge_map.py; tools/spacefox/geographic_context.py; watchface/source/NativeSfr.mc; watchface/source/SceneRenderer.mc",
       "oracle": "Independent literal fixture values and prohibited outcomes, not implementation roundtrip equivalence. Small island or date-line site: literal expected pin/context aligned and inside chosen fullflat map at target390; counterexample must yield native geographic qualification rejects clipping/missing necessary detail without shifting point. Moving or unavailable departure point: literal expected show supplied text and omit launch pin; counterexample must yield reject fabricated coordinate; actual sourced0,0 must remain a distinct valid fact if supplied. Site is referenced despite its lifecycle flag: literal expected pad ID retained in required set with uncertainty; counterexample must yield coverage gate fails instead of inventing position or discarding launch.",
       "source_globs": [
         "assets/fonts/**",
@@ -1092,9 +1092,17 @@
         "watchface/resources*/**",
         "watchface/source/**",
         "watchface/source/Geography.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py",
+        "tests/test_native_current_pad_geography.py",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/proof-input-digests.json",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/host-source-applicability.json"
       ],
-      "planning_status": "Cutover changed native/source/settings owner; prior receipts are historical pending current revalidation."
+      "planning_status": "Independent peer source/assertion/original-observation review and affected repair are complete for the bounded local native map group; root judgment remains pending."
     },
     {
       "id": "VC07.P1",
@@ -1385,7 +1393,7 @@
         "Main values remain visible",
         "Local time changes"
       ],
-      "statement": "Software boundary: the unchanged compiled native watch face displays Garmin local time as primary fixed24-hour HH:mm, with UTC countdown independent of local-zone presentation. Actual captured real launch text, countdown and four selected metrics remain readable within the390×390 circular active scene using accepted fixed geometry and bounded labels. Physical readability remains release task5.1/6.1.",
+      "statement": "Software boundary: the unchanged compiled native watch face displays Garmin local time as primary fixed24-hour HH:mm, with UTC countdown independent of local-zone presentation. Actual captured real launch text, countdown and four selected metrics remain readable within the390\u00d7390 circular active scene using accepted fixed geometry and bounded labels. Physical readability remains release task5.1/6.1.",
       "owner": "watchface/source/WatchClock.mc; watchface/source/SpaceFoxView.mc; watchface/source/SceneRenderer.mc",
       "oracle": "Retained exact ten-test SDK clock table (including actual Garmin Time.now/System.getClockTime smoke and literal7200 seconds despite local changes); new actual production text draw calls checked by independent circle/rectangle geometry and resource glyph bounds; retained source-bound current map screenshot inspected. No recreated Python clock/layout model.",
       "source_globs": [
@@ -1412,7 +1420,7 @@
         "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
       "planning_status": "Implemented whole software property; actual selected verifier receipt required. P2 conjunctive alias folded, external release obligations retained.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF02.P1",
@@ -1720,7 +1728,7 @@
         "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
       "planning_status": "planned; no acceptance or implementation is inferred by this evidence topology",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF10.P1",
@@ -1840,7 +1848,7 @@
         "Site is referenced despite its lifecycle flag"
       ],
       "statement": "Every required site has a source-bound qualification in actual native flat map output, or an explicit unavailable position. Boundary samples alone cannot close the complete required-site set.",
-      "owner": "watchface/source/Geography.mc; catalog/coverage.json; actual native geographic output",
+      "owner": "tools/spacefox/bridge_map.py; tools/spacefox/geographic_context.py; watchface/source/NativeSfr.mc; watchface/source/SceneRenderer.mc",
       "oracle": "Independently reviewed dated required-site IDs and sourced coordinates/unknown states, plus independent numeric projection references and source-bound geometry/context review. Every finite sourced site must be measured on actual compiled native flat map; unknown/mobile positions must not get guessed points. Counts reconcile against actual production artifacts.",
       "source_globs": [
         "assets/fonts/**",
@@ -1863,9 +1871,16 @@
         "watchface/source/**",
         "watchface/source/Geography.mc",
         "watchface/source/VisualCatalog.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/proof-input-digests.json",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/host-source-applicability.json"
       ],
-      "planning_status": "Cutover changed native/source/settings owner; prior receipts are historical pending current revalidation."
+      "planning_status": "Independent peer source/assertion/original-observation review and affected repair are complete for the bounded local native map group; root judgment remains pending."
     },
     {
       "id": "LS06.P2",
@@ -2815,7 +2830,7 @@
         "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
       "planning_status": "Current-only witnesses remain planned after executed fixture/harness closure retirement. Retained historical observations do not execute this graph or close product acceptance.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "LS05.P7",
@@ -3421,7 +3436,7 @@
         "Raise wrist",
         "Display sleeps"
       ],
-      "statement": "Whole simulator software animation: active wake starts a 2–3s rocket-only animation, valid frame duration is bounded, natural completion resets, sleep/hide/low-power stops, static fallback remains readable and no liftoff is inferred. Physical wrist activation and power measurements remain task 5.3.",
+      "statement": "Whole simulator software animation: active wake starts a 2\u20133s rocket-only animation, valid frame duration is bounded, natural completion resets, sleep/hide/low-power stops, static fallback remains readable and no liftoff is inferred. Physical wrist activation and power measurements remain task 5.3.",
       "owner": "watchface/source/SpaceFoxView.mc; watchface/source/SceneRenderer.mc",
       "oracle": "Actual source-bound SDK framework/lifecycle and bitmap captures with literal time/pixel bounds, plus independent receipt corruption refusal; physical watch remains separate.",
       "source_globs": [
@@ -6195,7 +6210,7 @@
         "classification": "NO_TEST_DOUBLE"
       },
       "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review.",
-      "source_sha256": "54b3e05a7db1f9b3a2fc5a6b1d89f7f92eaa4f5fb43a32fc9293ee7f34f569dd"
+      "source_sha256": "5498906ba5b8f70cf377c551de40ee9938e71146a6aecdc042eac28b8797d2d5"
     },
     {
       "id": "RL08.P1.S02.NEGATIVE",
@@ -6224,7 +6239,7 @@
         "classification": "NO_TEST_DOUBLE"
       },
       "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review.",
-      "source_sha256": "54b3e05a7db1f9b3a2fc5a6b1d89f7f92eaa4f5fb43a32fc9293ee7f34f569dd"
+      "source_sha256": "5498906ba5b8f70cf377c551de40ee9938e71146a6aecdc042eac28b8797d2d5"
     },
     {
       "id": "VC01.P1.S01.POSITIVE.CURRENT",
@@ -6716,11 +6731,18 @@
         "watchface/resources*/**",
         "watchface/source/**",
         "watchface/source/Geography.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/proof-input-digests.json",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/host-source-applicability.json"
       ],
       "test_id": "unittest::tests.test_native_geography.NativeGeographyTest.test_small_island_or_date_line_site_positive",
-      "command_id": "geography-checks",
-      "state": "planned",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
       "source_path": "tests/test_native_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
@@ -6732,8 +6754,9 @@
           "Garmin Store approval or approved binary install"
         ]
       },
-      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review.",
-      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; exact native tests/compiles have not yet been implemented or executed. Physical-device proof remains absent."
+      "planning_note": "Author observations independently assessed by the same peer through repair. Peer affected 12-case batch passes; source/evidence manifest drift, identical-map frame swaps and absent nonzero barcode controls are included. Root judgment remains pending.",
+      "source_sha256": "7513e4e2bed5ea01613561cd932d6620312b822680ed2039f01f607a9c188e90",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC06.P1.S01.NEGATIVE",
@@ -6767,11 +6790,18 @@
         "watchface/resources*/**",
         "watchface/source/**",
         "watchface/source/Geography.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/proof-input-digests.json",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/host-source-applicability.json"
       ],
       "test_id": "unittest::tests.test_native_geography.NativeGeographyTest.test_small_island_or_date_line_site_negative",
-      "command_id": "geography-checks",
-      "state": "planned",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
       "source_path": "tests/test_native_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
@@ -6783,8 +6813,9 @@
           "Garmin Store approval or approved binary install"
         ]
       },
-      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review.",
-      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; exact native tests/compiles have not yet been implemented or executed. Physical-device proof remains absent."
+      "planning_note": "Author observations independently assessed by the same peer through repair. Peer affected 12-case batch passes; source/evidence manifest drift, identical-map frame swaps and absent nonzero barcode controls are included. Root judgment remains pending.",
+      "source_sha256": "7513e4e2bed5ea01613561cd932d6620312b822680ed2039f01f607a9c188e90",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC06.P1.S02.POSITIVE",
@@ -6818,11 +6849,18 @@
         "watchface/resources*/**",
         "watchface/source/**",
         "watchface/source/Geography.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/proof-input-digests.json",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/host-source-applicability.json"
       ],
       "test_id": "unittest::tests.test_native_geography.NativeGeographyTest.test_moving_or_unavailable_departure_point_positive",
-      "command_id": "geography-checks",
-      "state": "planned",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
       "source_path": "tests/test_native_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
@@ -6834,8 +6872,9 @@
           "Garmin Store approval or approved binary install"
         ]
       },
-      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review.",
-      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; exact native tests/compiles have not yet been implemented or executed. Physical-device proof remains absent."
+      "planning_note": "Author observations independently assessed by the same peer through repair. Peer affected 12-case batch passes; source/evidence manifest drift, identical-map frame swaps and absent nonzero barcode controls are included. Root judgment remains pending.",
+      "source_sha256": "7513e4e2bed5ea01613561cd932d6620312b822680ed2039f01f607a9c188e90",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC06.P1.S02.NEGATIVE",
@@ -6869,11 +6908,18 @@
         "watchface/resources*/**",
         "watchface/source/**",
         "watchface/source/Geography.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/proof-input-digests.json",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/host-source-applicability.json"
       ],
       "test_id": "unittest::tests.test_native_geography.NativeGeographyTest.test_moving_or_unavailable_departure_point_negative",
-      "command_id": "geography-checks",
-      "state": "planned",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
       "source_path": "tests/test_native_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
@@ -6885,8 +6931,9 @@
           "Garmin Store approval or approved binary install"
         ]
       },
-      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review.",
-      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; exact native tests/compiles have not yet been implemented or executed. Physical-device proof remains absent."
+      "planning_note": "Author observations independently assessed by the same peer through repair. Peer affected 12-case batch passes; source/evidence manifest drift, identical-map frame swaps and absent nonzero barcode controls are included. Root judgment remains pending.",
+      "source_sha256": "7513e4e2bed5ea01613561cd932d6620312b822680ed2039f01f607a9c188e90",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC06.P1.S03.POSITIVE.CURRENT",
@@ -6909,7 +6956,6 @@
         "schemas/**",
         "tests/fixtures/catalog/**",
         "tests/fixtures/geography/**",
-        "tests/test_current_format_acceptance.py",
         "tests/test_native_geography.py",
         "tools/build_native_resources.py",
         "tools/build_watchface.py",
@@ -6920,12 +6966,20 @@
         "watchface/resources*/**",
         "watchface/source/**",
         "watchface/source/Geography.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py",
+        "tests/test_native_current_pad_geography.py",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/proof-input-digests.json",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/host-source-applicability.json"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc06_p1_s03_positive_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_native_current_pad_geography.CurrentPadGeographyTest.test_vc06_p1_s03_positive_current",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
+      "source_path": "tests/test_native_current_pad_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Live provider/source transport and physical device replaced by source-pinned real records, original test artwork and local software execution. Technical identifier/coordinate/rights mutations do not invent display names.",
@@ -6936,7 +6990,9 @@
           "Human, physical device, phone, hosted or Store acceptance"
         ]
       },
-      "planning_note": "Real-record/current-format replacement remains planned. Historical method and receipts retain their original scope; no current execution or acceptance is inferred."
+      "planning_note": "Author observations independently assessed by the same peer through repair. Peer affected 12-case batch passes; source/evidence manifest drift, identical-map frame swaps and absent nonzero barcode controls are included. Root judgment remains pending.",
+      "source_sha256": "71df0025bb1cc23b350c8547afb8236770799a3577fa1d56bf4ef584e5d9c498",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC06.P1.S03.NEGATIVE.CURRENT",
@@ -6959,7 +7015,6 @@
         "schemas/**",
         "tests/fixtures/catalog/**",
         "tests/fixtures/geography/**",
-        "tests/test_current_format_acceptance.py",
         "tests/test_native_geography.py",
         "tools/build_native_resources.py",
         "tools/build_watchface.py",
@@ -6970,12 +7025,20 @@
         "watchface/resources*/**",
         "watchface/source/**",
         "watchface/source/Geography.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py",
+        "tests/test_native_current_pad_geography.py",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/proof-input-digests.json",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/host-source-applicability.json"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc06_p1_s03_negative_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_native_current_pad_geography.CurrentPadGeographyTest.test_vc06_p1_s03_negative_current",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
+      "source_path": "tests/test_native_current_pad_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Live provider/source transport and physical device replaced by source-pinned real records, original test artwork and local software execution. Technical identifier/coordinate/rights mutations do not invent display names.",
@@ -6986,7 +7049,9 @@
           "Human, physical device, phone, hosted or Store acceptance"
         ]
       },
-      "planning_note": "Real-record/current-format replacement remains planned. Historical method and receipts retain their original scope; no current execution or acceptance is inferred."
+      "planning_note": "Author observations independently assessed by the same peer through repair. Peer affected 12-case batch passes; source/evidence manifest drift, identical-map frame swaps and absent nonzero barcode controls are included. Root judgment remains pending.",
+      "source_sha256": "71df0025bb1cc23b350c8547afb8236770799a3577fa1d56bf4ef584e5d9c498",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC07.P1.S01.POSITIVE",
@@ -8211,7 +8276,7 @@
       },
       "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review. Current specification binding only; remains unexecuted and confers no new acceptance.",
       "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; exact native tests/compiles have not yet been implemented or executed. Physical-device proof remains absent.",
-      "source_sha256": "9393bb9025c82fc5cb825fe93479f8eee60f31ffc99718be4b05385118146b86",
+      "source_sha256": "54715d5c54adc4d08ce01dd26cfa457709d66761e38df825276138c6d10cfa16",
       "implementation_note": "Current portable receipt checks executed locally; original tests/receipts remain historical and do not establish current full-DAG passage. Current 8-case source-bound receipt-control module passed locally after adding current 304, freshness, batch and context evidence; prior structural selector SHA ca3f2f8f2c792d134c439223ce11c6e2537962c89bc4c611a751ddc242ec5a12. No new SDK execution.",
       "distinct_reason": "Scenario New launch arrives before optional artwork: VC14.P1 selects B fallback, unmatched projection and no old raster, or preservation through optional-work refusal. Shared receipt suite contains separately named observations; neither edge alone claims the other requirement or physical acceptance."
     },
@@ -8264,7 +8329,7 @@
       },
       "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review. Current specification binding only; remains unexecuted and confers no new acceptance.",
       "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; exact native tests/compiles have not yet been implemented or executed. Physical-device proof remains absent.",
-      "source_sha256": "9393bb9025c82fc5cb825fe93479f8eee60f31ffc99718be4b05385118146b86",
+      "source_sha256": "54715d5c54adc4d08ce01dd26cfa457709d66761e38df825276138c6d10cfa16",
       "implementation_note": "Current portable receipt checks executed locally; original tests/receipts remain historical and do not establish current full-DAG passage. Current 8-case source-bound receipt-control module passed locally after adding current 304, freshness, batch and context evidence; prior structural selector SHA ca3f2f8f2c792d134c439223ce11c6e2537962c89bc4c611a751ddc242ec5a12. No new SDK execution.",
       "distinct_reason": "Scenario New launch arrives before optional artwork: VC14.P1 selects B fallback, unmatched projection and no old raster, or preservation through optional-work refusal. Shared receipt suite contains separately named observations; neither edge alone claims the other requirement or physical acceptance."
     },
@@ -8645,9 +8710,9 @@
       "scenario": "Local time changes",
       "scenario_fingerprint": "6c19dec060e1a363b43b81ce7217fe43f54e21f99774bbc449c34bd3a3688013",
       "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
-      "observable": "Retained actual Garmin API smoke and native literal local08:00→12:00 with unchangedUTC duration7200; ordinary live clock advances.",
+      "observable": "Retained actual Garmin API smoke and native literal local08:00\u219212:00 with unchangedUTC duration7200; ordinary live clock advances.",
       "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
-      "green_expectation": "Retained actual Garmin API smoke and native literal local08:00→12:00 with unchangedUTC duration7200; ordinary live clock advances.",
+      "green_expectation": "Retained actual Garmin API smoke and native literal local08:00\u219212:00 with unchangedUTC duration7200; ordinary live clock advances.",
       "invalidation_dependencies": [
         "tests/test_basic_time_fields.py",
         "tests/fixtures/basic_time_fields/**",
@@ -8691,9 +8756,9 @@
       "scenario": "Local time changes",
       "scenario_fingerprint": "6c19dec060e1a363b43b81ce7217fe43f54e21f99774bbc449c34bd3a3688013",
       "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
-      "observable": "Native23:59→00:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
+      "observable": "Native23:59\u219200:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
       "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
-      "green_expectation": "Native23:59→00:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
+      "green_expectation": "Native23:59\u219200:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
       "invalidation_dependencies": [
         "tests/test_basic_time_fields.py",
         "tests/fixtures/basic_time_fields/**",
@@ -10558,7 +10623,7 @@
         ]
       },
       "planning_note": "A future exact identity, not an implemented source or observed product test.",
-      "source_sha256": "9393bb9025c82fc5cb825fe93479f8eee60f31ffc99718be4b05385118146b86",
+      "source_sha256": "54715d5c54adc4d08ce01dd26cfa457709d66761e38df825276138c6d10cfa16",
       "implementation_note": "Current portable source-bound receipt control executed locally. Original moreSourceIdentity unconditional null point assertion is retired, not reinterpreted; the preserved original cases and raw execution remain historical. Scenario fingerprint updated only for relocation of the already-consolidated contract clauses into an existing scenario; this case proves only its stated conjunct and its original source-bound execution is unchanged. Current 8-case source-bound receipt-control module passed locally after adding current 304, freshness, batch and context evidence; prior structural selector SHA ca3f2f8f2c792d134c439223ce11c6e2537962c89bc4c611a751ddc242ec5a12. No new SDK execution.",
       "distinct_reason": "Scenario Unsupported or inconsistent snapshot: LS05.P2 selects parser/UTC/reschedule and independent post-parse site identity, or malformed/regressive/fault admission. Shared receipt suite contains separately named observations; neither edge alone claims the other requirement or physical acceptance."
     },
@@ -10612,7 +10677,7 @@
         ]
       },
       "planning_note": "A future exact identity, not an implemented source or observed product test.",
-      "source_sha256": "9393bb9025c82fc5cb825fe93479f8eee60f31ffc99718be4b05385118146b86",
+      "source_sha256": "54715d5c54adc4d08ce01dd26cfa457709d66761e38df825276138c6d10cfa16",
       "implementation_note": "Current portable source-bound receipt control executed locally. Original moreSourceIdentity unconditional null point assertion is retired, not reinterpreted; the preserved original cases and raw execution remain historical. Scenario fingerprint updated only for relocation of the already-consolidated contract clauses into an existing scenario; this case proves only its stated conjunct and its original source-bound execution is unchanged. Current 8-case source-bound receipt-control module passed locally after adding current 304, freshness, batch and context evidence; prior structural selector SHA ca3f2f8f2c792d134c439223ce11c6e2537962c89bc4c611a751ddc242ec5a12. No new SDK execution.",
       "distinct_reason": "Scenario Unsupported or inconsistent snapshot: LS05.P2 selects parser/UTC/reschedule and independent post-parse site identity, or malformed/regressive/fault admission. Shared receipt suite contains separately named observations; neither edge alone claims the other requirement or physical acceptance."
     },
@@ -10647,11 +10712,18 @@
         "watchface/source/**",
         "watchface/source/Geography.mc",
         "watchface/source/VisualCatalog.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/proof-input-digests.json",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/host-source-applicability.json"
       ],
       "test_id": "unittest::tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s01_positive",
-      "command_id": "native-global-map-checks",
-      "state": "planned",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
       "source_path": "tests/test_native_global_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
@@ -10663,7 +10735,9 @@
           "Store approval or approved binary installation"
         ]
       },
-      "planning_note": "A future exact identity, not an implemented source or observed product test."
+      "planning_note": "Author observations independently assessed by the same peer through repair. Peer affected 12-case batch passes; source/evidence manifest drift, identical-map frame swaps and absent nonzero barcode controls are included. Root judgment remains pending.",
+      "source_sha256": "2b7c5a59a75382d006db120e14d836d75684cd0d7c28bf0444bdc3e019d29518",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC06.P2.S01.NEGATIVE",
@@ -10696,11 +10770,18 @@
         "watchface/source/**",
         "watchface/source/Geography.mc",
         "watchface/source/VisualCatalog.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/proof-input-digests.json",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/host-source-applicability.json"
       ],
       "test_id": "unittest::tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s01_negative",
-      "command_id": "native-global-map-checks",
-      "state": "planned",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
       "source_path": "tests/test_native_global_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
@@ -10712,7 +10793,9 @@
           "Store approval or approved binary installation"
         ]
       },
-      "planning_note": "A future exact identity, not an implemented source or observed product test."
+      "planning_note": "Author observations independently assessed by the same peer through repair. Peer affected 12-case batch passes; source/evidence manifest drift, identical-map frame swaps and absent nonzero barcode controls are included. Root judgment remains pending.",
+      "source_sha256": "2b7c5a59a75382d006db120e14d836d75684cd0d7c28bf0444bdc3e019d29518",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC06.P2.S02.POSITIVE",
@@ -10745,11 +10828,18 @@
         "watchface/source/**",
         "watchface/source/Geography.mc",
         "watchface/source/VisualCatalog.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/proof-input-digests.json",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/host-source-applicability.json"
       ],
       "test_id": "unittest::tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s02_positive",
-      "command_id": "native-global-map-checks",
-      "state": "planned",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
       "source_path": "tests/test_native_global_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
@@ -10761,7 +10851,9 @@
           "Store approval or approved binary installation"
         ]
       },
-      "planning_note": "A future exact identity, not an implemented source or observed product test."
+      "planning_note": "Author observations independently assessed by the same peer through repair. Peer affected 12-case batch passes; source/evidence manifest drift, identical-map frame swaps and absent nonzero barcode controls are included. Root judgment remains pending.",
+      "source_sha256": "2b7c5a59a75382d006db120e14d836d75684cd0d7c28bf0444bdc3e019d29518",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC06.P2.S02.NEGATIVE",
@@ -10794,11 +10886,18 @@
         "watchface/source/**",
         "watchface/source/Geography.mc",
         "watchface/source/VisualCatalog.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/proof-input-digests.json",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/host-source-applicability.json"
       ],
       "test_id": "unittest::tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s02_negative",
-      "command_id": "native-global-map-checks",
-      "state": "planned",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
       "source_path": "tests/test_native_global_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
@@ -10810,7 +10909,9 @@
           "Store approval or approved binary installation"
         ]
       },
-      "planning_note": "A future exact identity, not an implemented source or observed product test."
+      "planning_note": "Author observations independently assessed by the same peer through repair. Peer affected 12-case batch passes; source/evidence manifest drift, identical-map frame swaps and absent nonzero barcode controls are included. Root judgment remains pending.",
+      "source_sha256": "2b7c5a59a75382d006db120e14d836d75684cd0d7c28bf0444bdc3e019d29518",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC06.P2.S03.POSITIVE",
@@ -10843,11 +10944,18 @@
         "watchface/source/**",
         "watchface/source/Geography.mc",
         "watchface/source/VisualCatalog.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/proof-input-digests.json",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/host-source-applicability.json"
       ],
       "test_id": "unittest::tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s03_positive",
-      "command_id": "native-global-map-checks",
-      "state": "planned",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
       "source_path": "tests/test_native_global_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
@@ -10859,7 +10967,9 @@
           "Store approval or approved binary installation"
         ]
       },
-      "planning_note": "A future exact identity, not an implemented source or observed product test."
+      "planning_note": "Author observations independently assessed by the same peer through repair. Peer affected 12-case batch passes; source/evidence manifest drift, identical-map frame swaps and absent nonzero barcode controls are included. Root judgment remains pending.",
+      "source_sha256": "2b7c5a59a75382d006db120e14d836d75684cd0d7c28bf0444bdc3e019d29518",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC06.P2.S03.NEGATIVE",
@@ -10892,11 +11002,18 @@
         "watchface/source/**",
         "watchface/source/Geography.mc",
         "watchface/source/VisualCatalog.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/proof-input-digests.json",
+        "openspec/changes/spacefox-watchface/evidence/native-all-site-maps/host-source-applicability.json"
       ],
       "test_id": "unittest::tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s03_negative",
-      "command_id": "native-global-map-checks",
-      "state": "planned",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
       "source_path": "tests/test_native_global_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
@@ -10908,7 +11025,9 @@
           "Store approval or approved binary installation"
         ]
       },
-      "planning_note": "A future exact identity, not an implemented source or observed product test."
+      "planning_note": "Author observations independently assessed by the same peer through repair. Peer affected 12-case batch passes; source/evidence manifest drift, identical-map frame swaps and absent nonzero barcode controls are included. Root judgment remains pending.",
+      "source_sha256": "2b7c5a59a75382d006db120e14d836d75684cd0d7c28bf0444bdc3e019d29518",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "LS06.P2.S01.POSITIVE",
@@ -15119,7 +15238,7 @@
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Physical FR165 replaced by pinned ordinary SDK simulator; network inputs are exact owned fixture bytes. This command reads retained source-bound observations; it does not execute a new SDK run.",
-        "allowed_proof": "Six independent literal SDKtransformPoint anchors plus native pixel comparison prove rest repair60→0differences and transformed-path preservation; tall/wide endpoints retain pixels.",
+        "allowed_proof": "Six independent literal SDKtransformPoint anchors plus native pixel comparison prove rest repair60\u21920differences and transformed-path preservation; tall/wide endpoints retain pixels.",
         "forbidden_claims": [
           "Physical/human/phone/BLE/battery/Store acceptance",
           "Public HTTPS/Linux motion delivery or universal/peak performance",
@@ -15634,9 +15753,9 @@
       "scenario": "Known new launch time",
       "scenario_fingerprint": "ff1c31bcd1c140b6f53cf040269e54e738d75e18e6819320bba99350d5d04a39",
       "setup": "Retained raw captured Starship MIN record; technical UTC/ID mutations only, verbatim display text. Current schema3 SFR1M captured envelope with actual production schedule projection. Pinned FR165 SDK uses four new test-only native assertions and numeric clock. Captured historical SEC record supplies agreeing-target metadata merge assertion.",
-      "observable": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698→59898, text16:18:18→16:38:18, flag true.",
+      "observable": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698\u219259898, text16:18:18\u219216:38:18, flag true.",
       "red_expectation": "Fails if the stated literal relation, latch, identity or precision assertion is false, or the exact native framework test is missing/fails.",
-      "green_expectation": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698→59898, text16:18:18→16:38:18, flag true.",
+      "green_expectation": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698\u219259898, text16:18:18\u219216:38:18, flag true.",
       "invalidation_dependencies": [
         "tests/test_basic_reschedule.py",
         "tests/fixtures/basic_reschedule/**",
@@ -26776,7 +26895,7 @@
       "command_id": "current-timing-convergence-controls",
       "state": "implemented",
       "source_path": "tests/test_current_timing_convergence.py",
-      "source_sha256": "d8dc47443dac101e2b9966dc373a85ff489f0cf469f62d2b22b15d38e59f245c",
+      "source_sha256": "588535e6830e9d44690ac9c15ae826484c7a59fca350a836334f5a39fb479860",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "No physical watch or phone; native execution is the retained source-bound simulator receipt.",
@@ -26809,7 +26928,7 @@
       "command_id": "current-timing-convergence-controls",
       "state": "implemented",
       "source_path": "tests/test_current_timing_convergence.py",
-      "source_sha256": "d8dc47443dac101e2b9966dc373a85ff489f0cf469f62d2b22b15d38e59f245c",
+      "source_sha256": "588535e6830e9d44690ac9c15ae826484c7a59fca350a836334f5a39fb479860",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "No physical watch or phone; native execution is the retained source-bound simulator receipt.",
@@ -31314,7 +31433,7 @@
       "command_id": "release-package-whole-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "ec97617318da5113f15952f04961a90e5c366a91167c729b86902fbd3a336147",
+      "source_sha256": "5498906ba5b8f70cf377c551de40ee9938e71146a6aecdc042eac28b8797d2d5",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -31364,7 +31483,7 @@
       "command_id": "release-package-whole-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "ec97617318da5113f15952f04961a90e5c366a91167c729b86902fbd3a336147",
+      "source_sha256": "5498906ba5b8f70cf377c551de40ee9938e71146a6aecdc042eac28b8797d2d5",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -31414,7 +31533,7 @@
       "command_id": "release-package-whole-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "ec97617318da5113f15952f04961a90e5c366a91167c729b86902fbd3a336147",
+      "source_sha256": "5498906ba5b8f70cf377c551de40ee9938e71146a6aecdc042eac28b8797d2d5",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -31464,7 +31583,7 @@
       "command_id": "release-package-whole-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "ec97617318da5113f15952f04961a90e5c366a91167c729b86902fbd3a336147",
+      "source_sha256": "5498906ba5b8f70cf377c551de40ee9938e71146a6aecdc042eac28b8797d2d5",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -31514,7 +31633,7 @@
       "command_id": "release-package-whole-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "ec97617318da5113f15952f04961a90e5c366a91167c729b86902fbd3a336147",
+      "source_sha256": "5498906ba5b8f70cf377c551de40ee9938e71146a6aecdc042eac28b8797d2d5",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked. For malformed exported-language controls only, tar manifest extraction returns a mutated view of the real exported XML; all other subprocesses and real signature checks are retained.",
@@ -31564,7 +31683,7 @@
       "command_id": "release-package-whole-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "ec97617318da5113f15952f04961a90e5c366a91167c729b86902fbd3a336147",
+      "source_sha256": "5498906ba5b8f70cf377c551de40ee9938e71146a6aecdc042eac28b8797d2d5",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -31614,7 +31733,7 @@
       "command_id": "release-package-whole-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "ec97617318da5113f15952f04961a90e5c366a91167c729b86902fbd3a336147",
+      "source_sha256": "5498906ba5b8f70cf377c551de40ee9938e71146a6aecdc042eac28b8797d2d5",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -31661,7 +31780,7 @@
       "command_id": "release-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "ec97617318da5113f15952f04961a90e5c366a91167c729b86902fbd3a336147",
+      "source_sha256": "5498906ba5b8f70cf377c551de40ee9938e71146a6aecdc042eac28b8797d2d5",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -31707,7 +31826,7 @@
       "command_id": "release-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "ec97617318da5113f15952f04961a90e5c366a91167c729b86902fbd3a336147",
+      "source_sha256": "5498906ba5b8f70cf377c551de40ee9938e71146a6aecdc042eac28b8797d2d5",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -31758,7 +31877,7 @@
       "command_id": "release-package-whole-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "ec97617318da5113f15952f04961a90e5c366a91167c729b86902fbd3a336147",
+      "source_sha256": "5498906ba5b8f70cf377c551de40ee9938e71146a6aecdc042eac28b8797d2d5",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -31808,7 +31927,7 @@
       "command_id": "release-package-whole-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "ec97617318da5113f15952f04961a90e5c366a91167c729b86902fbd3a336147",
+      "source_sha256": "5498906ba5b8f70cf377c551de40ee9938e71146a6aecdc042eac28b8797d2d5",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -31859,7 +31978,7 @@
       "command_id": "release-package-whole-checks",
       "state": "implemented",
       "source_path": "tests/test_release.py",
-      "source_sha256": "ec97617318da5113f15952f04961a90e5c366a91167c729b86902fbd3a336147",
+      "source_sha256": "5498906ba5b8f70cf377c551de40ee9938e71146a6aecdc042eac28b8797d2d5",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production developer key/backup and application UUID by fresh disposable external qualification key and unrelated UUID; current worktree by an isolated clean Git copy of actual sources. No runtime or live service is invoked.",
@@ -31911,7 +32030,7 @@
       "command_id": "canonical-core-release-sdk-export",
       "state": "implemented",
       "source_path": "tests/test_canonical_sdk_export.py",
-      "source_sha256": "74a8f2e2554c2c4cbd9e5e8e2307f5736c022b0942f782e364ea6e845145c17d",
+      "source_sha256": "ed005585f3b1097f409e3c9bb2eb18cf26611f15d57b343a17d3dd80f3ba4719",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Production signing identity by protected fresh disposable external RSA4096 and unrelated UUID only. Actual clean merged worktree, installed pinned compiler/export/SDK verifier and production entry are used.",
@@ -33642,7 +33761,7 @@
       "command_id": "current-timing-convergence-controls",
       "state": "implemented",
       "source_path": "tests/test_current_timing_convergence.py",
-      "source_sha256": "d8dc47443dac101e2b9966dc373a85ff489f0cf469f62d2b22b15d38e59f245c",
+      "source_sha256": "588535e6830e9d44690ac9c15ae826484c7a59fca350a836334f5a39fb479860",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "No physical watch or phone; native execution is the retained source-bound simulator receipt.",
@@ -33675,7 +33794,7 @@
       "command_id": "current-timing-convergence-controls",
       "state": "implemented",
       "source_path": "tests/test_current_timing_convergence.py",
-      "source_sha256": "d8dc47443dac101e2b9966dc373a85ff489f0cf469f62d2b22b15d38e59f245c",
+      "source_sha256": "588535e6830e9d44690ac9c15ae826484c7a59fca350a836334f5a39fb479860",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "No physical watch or phone; native execution is the retained source-bound simulator receipt.",
@@ -34025,53 +34144,6 @@
       "authority": "local",
       "planned_boundary": "NATIVE",
       "notes": "Reserved command for planned real tests. It is not executed or credited until cases are implemented and source hashes recorded."
-    },
-    {
-      "id": "geography-checks",
-      "runner": "python-unittest",
-      "argv": [
-        "python3",
-        "-B",
-        "-m",
-        "unittest",
-        "-v",
-        "tests.test_native_geography.NativeGeographyTest.test_coordinates_unavailable_negative",
-        "tests.test_native_geography.NativeGeographyTest.test_coordinates_unavailable_positive",
-        "tests.test_native_geography.NativeGeographyTest.test_moving_or_unavailable_departure_point_negative",
-        "tests.test_native_geography.NativeGeographyTest.test_moving_or_unavailable_departure_point_positive",
-        "tests.test_native_geography.NativeGeographyTest.test_site_or_coordinates_change_negative",
-        "tests.test_native_geography.NativeGeographyTest.test_site_or_coordinates_change_positive",
-        "tests.test_native_geography.NativeGeographyTest.test_small_island_or_date_line_site_negative",
-        "tests.test_native_geography.NativeGeographyTest.test_small_island_or_date_line_site_positive",
-        "tests.test_native_geography.NativeGeographyTest.test_worldwide_catalog_geography_negative",
-        "tests.test_native_geography.NativeGeographyTest.test_worldwide_catalog_geography_positive"
-      ],
-      "cwd": ".",
-      "timeout_seconds": 300,
-      "authority": "local",
-      "planned_boundary": "NATIVE",
-      "notes": "Reserved command for planned real tests. It is not executed or credited until cases are implemented and source hashes recorded."
-    },
-    {
-      "id": "native-global-map-checks",
-      "runner": "python-unittest",
-      "argv": [
-        "python3",
-        "-B",
-        "-m",
-        "unittest",
-        "-v",
-        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s01_negative",
-        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s01_positive",
-        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s02_negative",
-        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s02_positive",
-        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s03_negative",
-        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s03_positive"
-      ],
-      "cwd": ".",
-      "timeout_seconds": 300,
-      "authority": "local",
-      "notes": "Planned typed observer. Native paths must execute actual compiled Monkey C; complete-set paths must consume actual production artifacts and reviewed independent required IDs."
     },
     {
       "id": "native-feed-budget-checks",
@@ -35047,6 +35119,33 @@
       "timeout_seconds": 600,
       "authority": "local",
       "notes": "Whole coherent final timing/selection/settings unit; batched native probe exact assertions and frames, no model/live calls."
+    },
+    {
+      "id": "native-all-site-maps-batch",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_native_geography.NativeGeographyTest.test_small_island_or_date_line_site_positive",
+        "tests.test_native_geography.NativeGeographyTest.test_small_island_or_date_line_site_negative",
+        "tests.test_native_geography.NativeGeographyTest.test_moving_or_unavailable_departure_point_positive",
+        "tests.test_native_geography.NativeGeographyTest.test_moving_or_unavailable_departure_point_negative",
+        "tests.test_native_current_pad_geography.CurrentPadGeographyTest.test_vc06_p1_s03_positive_current",
+        "tests.test_native_current_pad_geography.CurrentPadGeographyTest.test_vc06_p1_s03_negative_current",
+        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s01_positive",
+        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s01_negative",
+        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s02_positive",
+        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s02_negative",
+        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s03_positive",
+        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s03_negative"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 900,
+      "authority": "local",
+      "notes": "Uses the tracked source-bound native-all-site-maps evidence by default; SPACEFOX_NATIVE_ALL_SITE_EVIDENCE may select an explicit alternative. Does not start SDK or claim physical/resource acceptance."
     }
   ]
 }
