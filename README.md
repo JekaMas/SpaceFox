@@ -10,6 +10,8 @@ These Forerunner 165 Music SDK captures show the production-signed 0.1.13 build 
 
 [SpaceFox 0.1.13](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.13) is published and submitted to the [original Connect IQ listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3), which displays 0.1.13/Internal 8 in owner preview (PENDING). Garmin accepted the Music install request; physical installation is not yet observed. Use the existing SpaceFox installation and normal Garmin Connect synchronization. See [installation](release/INSTALLATION.md).
 
+The [0.1.15 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.15-test.1) has separate [installation](release/INSTALLATION-0.1.15.md) and [testing](release/TESTING-0.1.15.md) guides. Physical watch and phone behavior, vibration, battery use and Garmin Store acceptance remain unverified.
+
 The [0.1.14 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.14-test.1) has separate [installation](release/INSTALLATION-0.1.14.md) and [testing](release/TESTING-0.1.14.md) guides; its [qualification](openspec/changes/spacefox-watchface/evidence/version-014/PEER-014-FINAL.md) retains the original 0.1.13 evidence boundaries. A separate [signed 0.1.14 SDK observation](openspec/changes/spacefox-watchface/evidence/signed-014-runtime/RESULT.md) shows one offline seeded scene; it does not establish physical delivery.
 
 Version 0.1.15 adds [launch reminders](docs/LAUNCH_REMINDERS.md), an opt-in, quiet-aware system notification feature scheduled every five minutes from T−15; actual vibration and timing depend on Garmin settings and background scheduling.

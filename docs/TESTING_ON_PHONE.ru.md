@@ -2,6 +2,8 @@
 
 This guide is in English; its filename is retained for existing links. [Install/update the original SpaceFox](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3) through Connect IQ and normal Garmin Connect synchronization. Current submitted version is **0.1.13/Internal 8**, PENDING in owner preview. The accepted installation request does not prove physical delivery. Expected on-watch version is 0.1.13; preserve the existing installation/cache.
 
+For the separate published [0.1.15 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.15-test.1), see its [USB installation](../release/INSTALLATION-0.1.15.md) and [testing](../release/TESTING-0.1.15.md) guides. Phone and physical-watch behavior remain unverified.
+
 For the separate [published 0.1.14 GitHub USB test package](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.14-test.1), see its [installation](../release/INSTALLATION-0.1.14.md) and [testing](../release/TESTING-0.1.14.md) guides. The Garmin listing status above refers to 0.1.13.
 
 See the [current installation guide](../release/INSTALLATION.md) for the separate USB/MTP PRG route and [testing](../TESTING.md) for the exact runtime and physical boundaries. A phone cannot install a local PRG/IQ by tapping it. No repeated reboot/account/firmware diagnostic is requested.

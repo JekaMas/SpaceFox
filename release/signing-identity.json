@@ -5,17 +5,17 @@
   "public_key_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
   "status": "local_production_custody_restored",
   "latest_release": {
-    "version": "0.1.14",
-    "package_sha256": "6c80caef8ec6527ae3a3cdc3129e8be1fb581c5a2e1d85634b963f1b92a26a27",
+    "version": "0.1.15",
+    "package_sha256": "39fc5df506af45a7730f54b2d15666655fb0f9e2d23c1cefe9ced1476937f2b5",
     "kind": "github_test_prerelease",
-    "tag": "v0.1.14-test.1",
-    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.14-test.1",
-    "source_revision": "1bebd706649176b562681685d33b3cfcc7c9d4dd",
-    "tag_revision": "918c64f9a447cb8f3d61204bb7e37a8e2f255710",
-    "original_receipt_sha256": "491362b67469489d6d833668f2e509a38fd98b611df44586a178417cb281b480",
-    "proof_boundary": "Published signed GitHub test prerelease; no 0.1.14 Garmin submission, physical execution or delivery established."
+    "tag": "v0.1.15-test.1",
+    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.15-test.1",
+    "source_revision": "b797fe5af70ff15ac75ad48ab9174577152b57eb",
+    "tag_revision": "119b65522488ef1e436001d8ef7211e9331b130b",
+    "original_receipt_sha256": "357b36af8e5e1d8c876705e0fa9cf52e1936216dcec0730bf1ddb57ed04bce44",
+    "proof_boundary": "Published signed GitHub test prerelease; no 0.1.15 Garmin submission, physical execution or delivery established."
   },
-  "note": "Stable production UUID/key. Published 0.1.14 receipt and IQ are the predecessor for the next candidate. Garmin 0.1.13 remains PENDING in owner preview; physical acceptance remains open.",
+  "note": "Stable production UUID/key. Published 0.1.15 receipt and IQ are the predecessor for the next candidate. Garmin 0.1.13 remains PENDING in owner preview; physical acceptance remains open.",
   "local_custody": {
     "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
     "public_evidence": "openspec/changes/spacefox-watchface/evidence/production-signing/round1/custody-initialization.json",
@@ -72,5 +72,16 @@
     "tag_revision": "bfc1007904807a50c9c08bc5343a144f9bac81d7",
     "original_receipt_sha256": "81c5b2f928a4fb92e0881eb7748d0ab1e58af1c3f93d980a40029b01d24fe0ed",
     "proof_boundary": "Signed GitHub test prerelease; no physical delivery or Store acceptance established."
+  },
+  "historical_release_014": {
+    "version": "0.1.14",
+    "package_sha256": "6c80caef8ec6527ae3a3cdc3129e8be1fb581c5a2e1d85634b963f1b92a26a27",
+    "kind": "github_test_prerelease",
+    "tag": "v0.1.14-test.1",
+    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.14-test.1",
+    "source_revision": "1bebd706649176b562681685d33b3cfcc7c9d4dd",
+    "tag_revision": "918c64f9a447cb8f3d61204bb7e37a8e2f255710",
+    "original_receipt_sha256": "491362b67469489d6d833668f2e509a38fd98b611df44586a178417cb281b480",
+    "proof_boundary": "Published signed GitHub test prerelease; no 0.1.14 Garmin submission, physical execution or delivery established."
   }
 }

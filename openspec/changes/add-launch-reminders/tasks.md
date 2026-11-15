@@ -18,4 +18,6 @@
 - [x] 3.1 Complete one independent peer review and repair findings, with applicable rechecks; see [peer final](evidence/PEER-FINAL.md).
 - [x] 3.2 Prepare the next signed test release and guides using the actual published predecessor, after feature verification; preserve device/phone/Store acceptance limits.
 
+The 0.1.15 GitHub test prerelease was published on 15 November 2026; it does not establish physical watch/phone behavior, vibration, battery or Garmin Store acceptance. Its signed export retains the 0.1.14 predecessor.
+
 Resume: the earlier T−60/per-minute contract is historical and was replaced by the user's T−15 five-minute request. The exact scheduled-time notification is not a liftoff claim; OS scheduling, vibration and quiet-state availability can suppress or delay reminders.
