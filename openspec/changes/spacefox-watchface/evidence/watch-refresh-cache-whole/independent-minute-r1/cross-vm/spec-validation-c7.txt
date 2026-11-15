@@ -1,0 +1,6 @@
+Change 'spacefox-watchface' has issues
+⚠ [WARNING] launch-schedule/spec.md: ADDED "Automatic bounded refresh": Requirement text is very long (>500 characters). Move examples and edge cases into scenarios, or split it into separate requirements that each state one behavior.
+Next steps:
+  - Ensure change has deltas in specs/: use headers ## ADDED/MODIFIED/REMOVED/RENAMED Requirements
+  - Each requirement MUST include at least one #### Scenario: block
+  - Debug parsed deltas: openspec show spacefox-watchface --json --deltas-only

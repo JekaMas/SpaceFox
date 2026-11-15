@@ -1,0 +1,12 @@
+------------------------------------------------------------------------------
+Executing test moreNearLatchReopen...
+DEBUG (14:21): near stale latch survives T+1801 hourly exit, process reopen and old replay; newer source validation clears it
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+moreNearLatchReopen                 PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

@@ -1,0 +1,8 @@
+Background: SFR_PROBE owner=afcb63403b834ed49f7fdc85a32bb319|full-clean|036772376da1
+SFR_PROBE owner=afcb63403b834ed49f7fdc85a32bb319|full-clean|036772376da1
+SFR_QUOTA SNAPSHOT label=begin-clean generation=1 validation=1794551192 seal=a070273cd9aec4269c9f7a910f25bd8447db2fd281993a2fc817be36d3eac990 floor=1 floorUtc=1794551192 owner=afcb63403b834ed49f7fdc85a32bb319|full-clean|036772376da1
+NATIVE_METRIC phase=quota-snapshot used=16752 free=110032 total=126784 sampledHigh=16752 utc=1794697860 ms=496822 owner=afcb63403b834ed49f7fdc85a32bb319|full-clean|036772376da1
+SFR_QUOTA CLEAN removed=329 ownFillerOnly=true owner=afcb63403b834ed49f7fdc85a32bb319|full-clean|036772376da1
+SFR_QUOTA SNAPSHOT label=cleaned generation=1 validation=1794551192 seal=a070273cd9aec4269c9f7a910f25bd8447db2fd281993a2fc817be36d3eac990 floor=1 floorUtc=1794551192 owner=afcb63403b834ed49f7fdc85a32bb319|full-clean|036772376da1
+NATIVE_METRIC phase=quota-snapshot used=15144 free=111640 total=126784 sampledHigh=16752 utc=1794697868 ms=504726 owner=afcb63403b834ed49f7fdc85a32bb319|full-clean|036772376da1
+SFR_QUOTA COMPLETE cleaned=true owner=afcb63403b834ed49f7fdc85a32bb319|full-clean|036772376da1

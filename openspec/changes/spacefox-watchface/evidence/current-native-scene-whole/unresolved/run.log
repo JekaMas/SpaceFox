@@ -1,0 +1,18 @@
+------------------------------------------------------------------------------
+Executing test refreshUnresolvedScene...
+DEBUG (23:16): unresolved nominal=1717457880 config=Chang'e Sample Ascender validation=1794551192
+DEBUG (23:16): current producer???NativeBridgeFeed???feedScene???NativeSfrBuild.begin: exact captured text/UTC, unresolved IDs, no point or bound rocket/map; no drawing
+PASS
+------------------------------------------------------------------------------
+Executing test moreGenericRenderer...
+DEBUG (23:16): actual current parser???context???renderer: captured unresolved names, generic model and no fabricated map point
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+refreshUnresolvedScene              PASS
+moreGenericRenderer                 PASS
+Ran 2 tests
+
+PASSED (passed=2, failed=0, errors=0)

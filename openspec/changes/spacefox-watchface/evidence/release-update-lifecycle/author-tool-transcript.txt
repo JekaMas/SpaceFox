@@ -1,0 +1,22 @@
+The following is a transcription of direct tool-returned output, not a separately captured raw process log.
+
+Command: python3 -B -m unittest -v tests.test_publication_review
+
+test_adult_owner_publishes_the_app_negative (tests.test_publication_review.PublicationReviewTest.test_adult_owner_publishes_the_app_negative) ... ok
+test_adult_owner_publishes_the_app_positive (tests.test_publication_review.PublicationReviewTest.test_adult_owner_publishes_the_app_positive) ... ok
+test_audience_review_identifies_an_applicable_restriction_negative (tests.test_publication_review.PublicationReviewTest.test_audience_review_identifies_an_applicable_restriction_negative) ... ok
+test_audience_review_identifies_an_applicable_restriction_positive (tests.test_publication_review.PublicationReviewTest.test_audience_review_identifies_an_applicable_restriction_positive) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+
+Command: python3 -B -m unittest -v tests.test_release_content_rollback.ContentRollbackTest.test_prior_art_republished_with_new_generation_and_honest_age
+
+test_prior_art_republished_with_new_generation_and_honest_age (tests.test_release_content_rollback.ContentRollbackTest.test_prior_art_republished_with_new_generation_and_honest_age) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 114.295s
+
+OK

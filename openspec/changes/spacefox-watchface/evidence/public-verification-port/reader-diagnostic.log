@@ -1,0 +1,25 @@
+test_ls05_p7_s01_positive_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p7_s01_positive_current) ... ok
+test_negative_replay_floor_and_owned_cleanup (tests.test_cross_vm_persistence.CrossVmPersistenceTest.test_negative_replay_floor_and_owned_cleanup) ... ok
+test_source_bound_same_package_and_storage_restart (tests.test_cross_vm_persistence.CrossVmPersistenceTest.test_source_bound_same_package_and_storage_restart) ... ok
+test_bounded_native_batch_receipt (tests.test_catalog_activation_whole.CurrentSdkSceneReceiptTest.test_bounded_native_batch_receipt) ... ok
+test_current_native_scene_and_motion_grammar_receipt (tests.test_catalog_activation_whole.CurrentSdkSceneReceiptTest.test_current_native_scene_and_motion_grammar_receipt) ... ERROR
+
+======================================================================
+ERROR: test_current_native_scene_and_motion_grammar_receipt (tests.test_catalog_activation_whole.CurrentSdkSceneReceiptTest.test_current_native_scene_and_motion_grammar_receipt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-public-verification-port/tests/test_catalog_activation_whole.py", line 272, in test_current_native_scene_and_motion_grammar_receipt
+    build = json.loads((path / 'build.json').read_text())
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 787, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/jekamas/projects/SpaceFox-worktrees/apply-public-verification-port/openspec/changes/spacefox-watchface/evidence/catalog-activation-whole/sdk-grammar/build.json'
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.234s
+
+FAILED (errors=1)

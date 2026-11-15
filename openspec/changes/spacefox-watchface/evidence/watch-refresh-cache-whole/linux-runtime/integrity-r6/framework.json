@@ -1,0 +1,28 @@
+{
+  "moreWidePolicy": {
+    "status": "passed",
+    "raw_exit_code": 1,
+    "expected_tests": [
+      "moreWidePolicy"
+    ],
+    "observed_tests": {
+      "moreWidePolicy": "PASS"
+    },
+    "observed_count": 1,
+    "launcher_nonzero_framework_pass": true,
+    "stderrEmpty": true
+  },
+  "moreSourcedAscent": {
+    "status": "passed",
+    "raw_exit_code": 1,
+    "expected_tests": [
+      "moreSourcedAscent"
+    ],
+    "observed_tests": {
+      "moreSourcedAscent": "PASS"
+    },
+    "observed_count": 1,
+    "launcher_nonzero_framework_pass": true,
+    "stderrEmpty": true
+  }
+}

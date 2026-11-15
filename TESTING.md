@@ -13,3 +13,34 @@ For this corrected build, observe active seconds and the launch point, then LOW 
 The exact production-signed Music executable ran 240s in SDK 9.3 with retained real Vulcan/Cape READY data. Its hash equals the actual IQ member. A triggered TemporalEvent retained the scene but did not establish a new hosted generation. Signed settings-header observation, physical installation, wake, power and fresh physical data remain open. Simulated activity values in screenshots are not personal health measurements.
 
 See [publication evidence](openspec/changes/spacefox-watchface/evidence/display03-publication/PUBLICATION.md), [signed runtime](openspec/changes/spacefox-watchface/evidence/display03-active-tick-wake/SIGNED-RUNTIME-013.md), [installation](release/INSTALLATION.md) and [tasks](openspec/changes/spacefox-watchface/tasks.md). Historical receipts retain their original source and delivery boundaries; publication updates do not relabel them or invalidate unchanged behavior greens.
+
+## Portable proof and runner inventory
+
+The [public proof port](openspec/changes/spacefox-watchface/evidence/public-verification-port/FINAL.md)
+reconciles the original315 planned public cases with the accepted source-specific
+contract. The graph retains63 requirements and142 properties:648 implemented
+bindings and34 external cases remain across682 cases. The two added cases make
+the previously omitted canonical disabled-wrist obligations explicit. These
+counts describe bindings, not a fresh execution or physical acceptance.
+
+From a standalone public Git checkout, with Python and Git already installed:
+
+```sh
+python3 -B -m unittest -v tests.test_public_proof_portability
+python3 -B -m unittest -v tests.test_public_metadata_faults
+python3 -B -m unittest -v tests.test_current_native_scene_whole tests.test_native_cache_budget_whole
+```
+
+The portability checks authenticate exported original inputs, refuse corrupt or
+missing proof bytes and unknown private-history references, and verify every
+implemented test binding can be loaded. The metadata checks exercise the real
+current collector and local Git with unchanged captured provider bodies and
+controlled failures. The native readers inspect retained SDK observations and
+separate current source applicability; they do not start Garmin software.
+Original raw exits, source hashes, controlled-versus-ordinary boundaries and
+failed attempts remain intact.
+
+No private checkout, private Git object, environment override, installed SDK,
+account, provider fetch or shared-workflow submodule is required by those public
+checks. The complete ready DAG still has external watch/phone/resource/Store
+holds. Do not run it expecting a hardware acceptance verdict.

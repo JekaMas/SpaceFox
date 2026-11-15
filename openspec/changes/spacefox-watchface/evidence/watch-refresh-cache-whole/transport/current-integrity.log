@@ -1,0 +1,19 @@
+test_upcoming_catalog_resolution_keeps_selected_artifact_closure (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_upcoming_catalog_resolution_keeps_selected_artifact_closure) ... FAIL
+test_invalid_current_artifacts_keep_active_and_source (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_invalid_current_artifacts_keep_active_and_source) ... ok
+
+======================================================================
+FAIL: test_upcoming_catalog_resolution_keeps_selected_artifact_closure (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_upcoming_catalog_resolution_keeps_selected_artifact_closure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-watch-refresh-cache-whole-20261114/tests/test_schedule_producer_transport.py", line 470, in test_upcoming_catalog_resolution_keeps_selected_artifact_closure
+    self.assertEqual({k: v for k, v in one.items() if k != 'feed.json'},
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     {k: v for k, v in many.items() if k != 'feed.json'})
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'des[615811 chars]rds":1,"includedRecords":1,"scope":"selected-l[852 chars]A=='} != {'des[615811 chars]rds":4,"includedRecords":1,"scope":"selected-l[852 chars]A=='}
+Diff is 13909598 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 2 tests in 87.074s
+
+FAILED (failures=1)

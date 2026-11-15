@@ -1,0 +1,27 @@
+------------------------------------------------------------------------------
+Executing test currentEnvelope...
+DEBUG (22:55): CURRENT_ENVELOPE unknownVersions=3 oldProfiles=2 extraFields=4 noWrites=true
+PASS
+------------------------------------------------------------------------------
+Executing test currentWideRecovery...
+DEBUG (22:55): CURRENT_WIDE exact8192=true coldWarmReopen=true sourceOnlyRawReuse=true
+PASS
+------------------------------------------------------------------------------
+Executing test currentSourceAge...
+DEBUG (22:55): CURRENT_AGE failedNetworkDoesNotRenew=true staleFromSource=true cadence=true
+PASS
+------------------------------------------------------------------------------
+Executing test currentAtomicRecovery...
+DEBUG (22:55): CURRENT_ATOMIC writeInterruptions=10 lastGoodRecoverable=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+currentEnvelope                     PASS
+currentWideRecovery                 PASS
+currentSourceAge                    PASS
+currentAtomicRecovery               PASS
+Ran 4 tests
+
+PASSED (passed=4, failed=0, errors=0)

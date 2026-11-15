@@ -1,0 +1,14 @@
+test_captured_minute_cadence_and_slept_through_stale (tests.test_minute_refresh.MinuteRefreshTest.test_captured_minute_cadence_and_slept_through_stale) ... ok
+test_cadence_positive (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_cadence_positive) ... ok
+test_cadence_negative (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_cadence_negative) ... ok
+test_earlier_target_stale_and_unchanged_validation (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_earlier_target_stale_and_unchanged_validation) ... ok
+test_stale_thresholds_and_skipped_near_window (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_stale_thresholds_and_skipped_near_window) ... ok
+test_stale_latch_after_near_window_with_literal_epoch (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_stale_latch_after_near_window_with_literal_epoch) ... ok
+test_identity_omission_revalidation_and_atomic_rejection (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_identity_omission_revalidation_and_atomic_rejection) ... ok
+test_record_omission_positive (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_record_omission_positive) ... ok
+test_record_omission_negative (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_record_omission_negative) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 1.831s
+
+OK

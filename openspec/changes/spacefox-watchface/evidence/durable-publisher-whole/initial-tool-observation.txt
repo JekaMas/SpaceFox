@@ -1,0 +1,19 @@
+Direct tool output, original command before receipt redirection:
+python3 -B -m unittest -v tests.test_durable_publisher_whole
+
+First tool output:
+test_anchor_missing_state_refuses_reset (tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_anchor_missing_state_refuses_reset) ... ok
+test_two_process_reservation_cas (tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_two_process_reservation_cas) ...
+
+Continuation output:
+ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 2.035s
+
+OK
+
+The command then selected precisely these two methods. Later additions and the
+separate strengthened bootstrap test did not change the CAS method or its setup;
+unchanged-authority-methods.json records the comparison from the later checkpoint.
+This is a transcription of the observed tool output with trailing whitespace normalized, not a fresh test execution.
