@@ -20667,25 +20667,33 @@
         "watchface/resources/strings/strings.xml",
         "watchface/source/**",
         "watchface/toolchain-lock.json",
-        "watchface/transport-tests/**"
+        "watchface/transport-tests/**",
+        "tests/test_native_feed_bounds.py",
+        "tests/native_scene_diagnostics/build_feed_bounds.py",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/p3/**",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/feed-controls/**",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/receipt-hashes.json"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls06_p3_s01_positive_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_provisional_and_raw_positive",
+      "command_id": "native-feed-bounds-current",
+      "state": "implemented",
+      "source_path": "tests/test_native_feed_bounds.py",
       "native_test_ids": [
-        "transportBudgetPositive"
+        "p3ProvisionalForeground"
       ],
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
-        "owner_replaced": "Provider/phone/platform failure boundary only as explicitly selected by the future actual current-format witness.",
-        "allowed_proof": "Only the retained scenario-specific current-format local/native observation, with exact actual source and toolchain.",
+        "owner_replaced": "Network response and controlled service finish/optional work, in-memory store and injected time at directed SDK test seam; physical watch and phone unavailable.",
+        "allowed_proof": "Compiled current Monkey C service callback, provisional staging, actual foreground callback and native cache validation; SDK unit heap and source-bound controlled-store interruption only. Retained ordinary OS experiment remains historical.",
         "forbidden_claims": [
-          "Complete real provider corpus or worldwide coverage from a fixture",
-          "Phone/physical/Store/cloud/public acceptance without actual observation"
+          "Paired-phone or physical FR165 acceptance",
+          "True allocation or storage peak",
+          "Callback guard prevented allocation before callback",
+          "Current ordinary OS background transfer established by unit heap"
         ]
       },
-      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+      "source_sha256": "6c3a48e13f92a021d591567cb6ae0ee1498b67c12febdebff47aa8924d6b934f",
+      "implementation_note": "Current compiled source-bound SDK observation and host receipt reader; controlled store, finish and optional stage are disclosed. Retained ordinary OS experiment remains historical; P2 and physical boundaries remain planned."
     },
     {
       "id": "LS06.P3.S01.NEGATIVE.CURRENT",
@@ -20709,25 +20717,33 @@
         "watchface/resources/strings/strings.xml",
         "watchface/source/**",
         "watchface/toolchain-lock.json",
-        "watchface/transport-tests/**"
+        "watchface/transport-tests/**",
+        "tests/test_native_feed_bounds.py",
+        "tests/native_scene_diagnostics/build_feed_bounds.py",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/p3/**",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/feed-controls/**",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/receipt-hashes.json"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls06_p3_s01_negative_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_raw_depth_and_storage_negative",
+      "command_id": "native-feed-bounds-current",
+      "state": "implemented",
+      "source_path": "tests/test_native_feed_bounds.py",
       "native_test_ids": [
-        "transportBudgetNegative"
+        "p3BoundsRetain"
       ],
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
-        "owner_replaced": "Provider/phone/platform failure boundary only as explicitly selected by the future actual current-format witness.",
-        "allowed_proof": "Only the retained scenario-specific current-format local/native observation, with exact actual source and toolchain.",
+        "owner_replaced": "Network response and controlled service finish/optional work, in-memory store and injected time at directed SDK test seam; physical watch and phone unavailable.",
+        "allowed_proof": "Compiled current Monkey C service callback, provisional staging, actual foreground callback and native cache validation; SDK unit heap and source-bound controlled-store interruption only. Retained ordinary OS experiment remains historical.",
         "forbidden_claims": [
-          "Complete real provider corpus or worldwide coverage from a fixture",
-          "Phone/physical/Store/cloud/public acceptance without actual observation"
+          "Paired-phone or physical FR165 acceptance",
+          "True allocation or storage peak",
+          "Callback guard prevented allocation before callback",
+          "Current ordinary OS background transfer established by unit heap"
         ]
       },
-      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate."
+      "source_sha256": "6c3a48e13f92a021d591567cb6ae0ee1498b67c12febdebff47aa8924d6b934f",
+      "implementation_note": "Current compiled source-bound SDK observation and host receipt reader; controlled store, finish and optional stage are disclosed. Retained ordinary OS experiment remains historical; P2 and physical boundaries remain planned."
     },
     {
       "id": "LS02.P4.S01.POSITIVE.CURRENT",
@@ -35047,6 +35063,22 @@
       "timeout_seconds": 600,
       "authority": "local",
       "notes": "Whole coherent final timing/selection/settings unit; batched native probe exact assertions and frames, no model/live calls."
+    },
+    {
+      "id": "native-feed-bounds-current",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_native_feed_bounds"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "notes": "Validates exact compiler, probe, current checkout source and named SDK outcomes; does not launch simulator. Ordinary OS and physical P2 remain separate."
     }
   ]
 }

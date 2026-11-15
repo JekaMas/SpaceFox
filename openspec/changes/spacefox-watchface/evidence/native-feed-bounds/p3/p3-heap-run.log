@@ -1,0 +1,17 @@
+------------------------------------------------------------------------------
+Executing test p3ProvisionalForeground...
+DEBUG (07:30): P3_FOREGROUND serviceCallback=true provisionalOnly=true callbackAdmission=true sourceAge=1794554792 heap=8383928
+PASS
+------------------------------------------------------------------------------
+Executing test p3BoundsRetain...
+DEBUG (07:30): P3_REFUSAL oversizeNoWrite=true utf8Bytes=true depth8=true depth9Refused=true failedStageReopens=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+p3ProvisionalForeground             PASS
+p3BoundsRetain                      PASS
+Ran 2 tests
+
+PASSED (passed=2, failed=0, errors=0)
