@@ -1,0 +1,32 @@
+{
+  "status": "signed_candidate_built",
+  "source_revision": "2e393bbff72573d5a422316ccc2b64b5d790b0bb",
+  "public_main": "186a231281c0f4b3e84249474a22fc9d37049219",
+  "iq_sha256": "33842eb2b3c4cb9653046d389a72f0b781d712acbe5ddeea674fce8df476fefc",
+  "receipt_sha256": "b1d42c205daf468ae39388a7695a93da97eb6e6351cf4334ca492a4f251af096",
+  "embedded_fr165m_sha256": "cbe65f126b9e9afcdccac795e8850445410790701b585bec98ea042805a423d7",
+  "identical_to_observed_program": true,
+  "iq_signature_verified": true,
+  "verified_programs": 21,
+  "source_input_count": 1392,
+  "source_and_snapshot_mismatches": 0,
+  "snapshot_qualified_locales": [
+    "en",
+    "ru",
+    "de",
+    "fr",
+    "es"
+  ],
+  "committed_independent_evidence_sha256": {
+    "FINAL.md": "400e9470f1ef65fa8958e7c9b8ca51d9d6c5515a2f9201a7aee2590487751531",
+    "seed-887-receipt.json": "aeb3d03a6b888ee66844277ea65e15e6b90c35a244230d89614011be1b0d0742",
+    "seed-887.log": "28a0cd41e0d242c8ca97f3b9f082860a4935349022d6ff0140cbc34fc16b79fc",
+    "seed-restoration.json": "b5349579b79d7c030f5a2c79f7e1743a5a454817865302ac9028a96d30298340",
+    "signed-restoration.json": "b5349579b79d7c030f5a2c79f7e1743a5a454817865302ac9028a96d30298340"
+  },
+  "readme_captures_sha256": {
+    "simulator-fr165m-0.1.10.png": "e878f55611ea6ed823216e9aad94a008b40ad7525a142f18c70df79af4fc8a57",
+    "simulator-fr165m-low-0.1.10.png": "b37f110c4d8b3f35f798dd3858590f978f1d0d82d78dfdbc216d649fcafea00a"
+  },
+  "boundary": "SDK signed program; watch settings/about and physical delivery unobserved; global future/mobile geographic coverage open."
+}

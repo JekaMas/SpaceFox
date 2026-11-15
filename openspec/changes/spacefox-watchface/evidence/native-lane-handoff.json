@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "worktree": "/Users/jekamas/projects/SpaceFox-worktrees/verify-first-install-incident-20261114",
-  "candidateSource": "aa79b73c218e84774421180acdac94132e52b5f1",
-  "independentEvidenceHead": "2ef509b60eb7db00b39f599fabe147a59264ff7b",
+  "candidateSource": "2e393bbff72573d5a422316ccc2b64b5d790b0bb",
+  "independentEvidenceHead": "2e393bbff72573d5a422316ccc2b64b5d790b0bb",
   "publicImplementationHead": "b47b71bc5169c908908de13e77417df9f2af3c1e",
-  "softwareGroup": "DELIVERY01 0.1.9 bounded software CLOSED after author self-GREEN, fresh independent verify/fix GREEN and root judgment; physical delivery remains NOT DONE",
+  "softwareGroup": "DISPLAY02 0.1.10 bounded software CLOSED after author/self-GREEN, fresh peer verify/fix and root judgment; physical NOT DONE",
   "incident014Source": "3b95dee18cb56d704970aa1e330cd93030193ffc",
   "incident014Evidence": "first-install-incident/ROOT-JUDGMENT.md",
   "phone015ChangedNativeFiles": [
@@ -33,7 +33,7 @@
     "ownTemporalEvents": "Original snapshot temporal registration unverified; no null claim.",
     "ownFeedUrls": "Original snapshot task-owned URL state unverified; no blank claim.",
     "otherApps": "preserved",
-    "leaseNote": "Independent retained-state replay restored exact pre-run snapshot and simulator.ini; temporal registration remains unverified.",
+    "leaseNote": "DISPLAY02 seed 887 restored 636-file snapshot and simulator.ini; temporal registration unverified.",
     "status": "RESTORED_SNAPSHOT_SDK_STOPPED",
     "temporalRegistrationUnverified": true,
     "localSnapshotManifest": "/Users/jekamas/.codex/tmp/spacefox-delivery-incident-20261114/runtime-original-manifest.json",
@@ -59,14 +59,14 @@
   ],
   "coordination": "Integrate reviewed public-only commits/hunks; preserve unrelated dirty work. Private authoring ancestry must not be pushed. Keep other producer deltas separate and do not activate unsupported fields. Existing valid greens retain original source/proof boundaries.",
   "activeFollowUp": {
-    "group": "DELIVERY01",
+    "group": "DISPLAY02",
     "owner": "root",
-    "stage": "bounded software accepted; publication and physical delivery separate",
-    "version": "0.1.9",
-    "runtimeId": "d04c16ef",
-    "compiledSource": "aa79b73c218e84774421180acdac94132e52b5f1",
-    "evidence": "delivery01/ROOT-JUDGMENT.md",
-    "simulatorLease": "released; RESTORED_SNAPSHOT_SDK_STOPPED; original temporal registration unverified"
+    "version": "0.1.10",
+    "runtimeId": "de5011f4",
+    "stage": "bounded software accepted; publication/readback next",
+    "compiledSource": "2e393bbff72573d5a422316ccc2b64b5d790b0bb",
+    "evidence": "display02/ROOT-JUDGMENT.md",
+    "simulatorLease": "released; stopped/restored; temporal registration unverified"
   },
   "latestPhysicalReport": {
     "source": "owner on-watch settings after stock-face round trip and normal full power cycle",
@@ -136,6 +136,14 @@
     "iqSha256": "5ec5ca0135f6f3a9ab24efa7082fa558d4977e7da2e0023487b4cb8d0186fd4d",
     "compiledSource": "aa79b73c218e84774421180acdac94132e52b5f1",
     "evidence": "delivery01/ROOT-JUDGMENT.md",
+    "physicalStatus": "NOT DONE"
+  },
+  "display02Candidate": {
+    "version": "0.1.10",
+    "runtimeId": "de5011f4",
+    "iqSha256": "33842eb2b3c4cb9653046d389a72f0b781d712acbe5ddeea674fce8df476fefc",
+    "compiledSource": "2e393bbff72573d5a422316ccc2b64b5d790b0bb",
+    "evidence": "display02/ROOT-JUDGMENT.md",
     "physicalStatus": "NOT DONE"
   }
 }

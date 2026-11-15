@@ -558,3 +558,12 @@ production-signed export and publication, and physical watch execution with fres
 matching launch and stable modes remain open. Do not treat the owner's observed
 0.1.6, a queued update, a test-key SDK capture or a signed predecessor as the
 corrected physical outcome.
+
+### DISPLAY02 root acceptance — bounded software closed, delivery open
+
+Author a536666a and fresh independent verify/fix2e393bbf accepted for0.1.10/de5011f4.
+OnlyLOW/NOT_LOW, shared UTC countdown, current189 fixed positions, corrected LOW
+font, independent seed887 and actual signed natural acquisition/full process
+reopen are qualified. All1392 pins and IQ+21 signatures passed. See
+[root judgment](evidence/display02/ROOT-JUDGMENT.md). Physicalwatch still observed0.1.6;
+worldwide future/mobile coverage remains open. Publication/readback are separate.
