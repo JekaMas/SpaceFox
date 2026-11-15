@@ -5,9 +5,14 @@ Garmin Forerunner 165. It has no SpaceFox account, advertising, payments or anal
 
 The watch face reads the Garmin health/activity values selected for its four
 fields, device battery, clock and language/settings. Health values are used for
-local display. SpaceFox does not upload them to its launch-feed publisher or
-include them in network requests. An unavailable Garmin value is displayed as
-unavailable. Garmin's own apps and services have their separate privacy policies.
+local display. When launch reminders are enabled, the watch also reads configured
+sleep/wake times, sleep-mode and Do Not Disturb state, and vibration settings
+locally to suppress reminders during quiet periods or when that state is
+unavailable. These values are not sent to the launch-feed publisher. SpaceFox
+uses Garmin system notifications; Garmin settings control their presentation
+and vibration. SpaceFox does not upload activity values to the launch-feed
+publisher or include them in network requests. An unavailable Garmin value is
+displayed as unavailable. Garmin's own apps and services have their separate privacy policies.
 
 The default HTTPS FeedBaseUrl is https://jekamas.github.io/SpaceFox; it can be overridden when settings are available for the installation. The watch requests public launch schedules,
 rocket artwork and launch-site map data from that host through Garmin's

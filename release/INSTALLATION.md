@@ -1,5 +1,7 @@
 # SpaceFox installation
 
+The [0.1.15 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.15-test.1) is available for a separate USB/MTP test; use its [installation](INSTALLATION-0.1.15.md) and [testing](TESTING-0.1.15.md) guides. It has not been submitted to Garmin. A local PRG or IQ cannot be installed by tapping it on a phone.
+
 The [0.1.14 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.14-test.1) is available for a separate USB/MTP test; use its [installation](INSTALLATION-0.1.14.md) and [testing](TESTING-0.1.14.md) guides. It has not been submitted to Garmin.
 
 ## Garmin 0.1.13
