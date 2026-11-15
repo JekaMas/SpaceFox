@@ -1,0 +1,27 @@
+------------------------------------------------------------------------------
+Executing test finalAnimationLifecycle...
+DEBUG (01:29): wake starts; sleep and hide stop/reset; static fallback duration 2.5s
+PASS
+------------------------------------------------------------------------------
+Executing test finalAnimationBounds...
+DEBUG (01:29): actual animation admission inclusive 2000 and 3000ms rejects outside
+PASS
+------------------------------------------------------------------------------
+Executing test finalAodMinuteGuard...
+DEBUG (01:29): actual sparse renderer minute guard and stopped animation
+PASS
+------------------------------------------------------------------------------
+Executing test finalLocalCalendar...
+DEBUG (01:29): five primary weekday labels; local midnight changes 14 Sat to 15 Sun, separate from launch date; actual Garmin local Gregorian smoke
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+finalAnimationLifecycle             PASS
+finalAnimationBounds                PASS
+finalAodMinuteGuard                 PASS
+finalLocalCalendar                  PASS
+Ran 4 tests
+
+PASSED (passed=4, failed=0, errors=0)

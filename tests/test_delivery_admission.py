@@ -22,6 +22,17 @@ class DeliveryAdmission(unittest.TestCase):
             with self.subTest(target=target), patch.object(Path,'read_bytes',changed):
                 with self.assertRaises(ValueError): software_locales(ROOT)
 
+    def test_current_delta_evidence_and_snapshot_corruption_rejected(self):
+        real = Path.read_bytes
+        base = ROOT/'openspec/changes/spacefox-watchface/evidence/current-native-ui'
+        for target in (base/'directed/native.log', base/'map-ru/screen.png',
+                       base/'prior/watchface/source/SceneRenderer.mc'):
+            def changed(path):
+                raw = real(path)
+                return raw+b'changed' if path.resolve() == target.resolve() else raw
+            with self.subTest(target=target), patch.object(Path, 'read_bytes', changed):
+                with self.assertRaises(ValueError): software_locales(ROOT)
+
     def test_release_snapshot_includes_delivery_proof_closure(self):
         from tools import release
         git = release.git
@@ -45,6 +56,11 @@ class DeliveryAdmission(unittest.TestCase):
         required |= {display_path, display['priorCatalog']['path']} | set(display['inputs'])
         required |= {item['path'] for item in display['priorSnapshots'].values()}
         required |= {item['path'] for item in display['evidence'].values()}
+        current_path = 'openspec/changes/spacefox-watchface/evidence/current-native-ui/supplement.json'
+        current = json.loads((ROOT/current_path).read_text())
+        required |= {current_path} | set(current['reviewedCurrent'])
+        required |= {item['path'] for item in current['historicalSnapshots'].values()}
+        required |= {item['path'] for item in current['evidence'].values()}
         required |= {'tests/__init__.py', 'tests/test_basic_launch_logic.py', 'tests/test_basic_time_fields.py'}
         for name, snapshot in display['priorSnapshots'].items():
             if name in required and not (ROOT/name).is_file():

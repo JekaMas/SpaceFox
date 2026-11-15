@@ -122,6 +122,14 @@ def source_state(root: Path) -> dict:
                             "missing DISPLAY02 historical source snapshot: " + name)
                     admission.remove(name)
                     admission.add(snapshot["path"])
+        if "currentNativeUiDeltaProof" in proof:
+            delta_path = proof["currentNativeUiDeltaProof"]["path"]
+            require(delta_path in paths, "current native UI proof must be tracked")
+            delta = json.loads((root / delta_path).read_text())
+            admission.add(delta_path)
+            admission.update(delta["reviewedCurrent"])
+            admission.update(item["path"] for item in delta["historicalSnapshots"].values())
+            admission.update(item["path"] for item in delta["evidence"].values())
         admission.update(receipt["observations"])
         corpus_directory = PurePosixPath(proof["corpusPath"]).parent
         admission.update(name for name in paths if PurePosixPath(name).is_relative_to(corpus_directory))
