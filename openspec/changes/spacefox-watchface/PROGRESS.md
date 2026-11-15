@@ -567,3 +567,17 @@ font, independent seed887 and actual signed natural acquisition/full process
 reopen are qualified. All1392 pins and IQ+21 signatures passed. See
 [root judgment](evidence/display02/ROOT-JUDGMENT.md). Physicalwatch still observed0.1.6;
 worldwide future/mobile coverage remains open. Publication/readback are separate.
+
+### DISPLAY02 publication — submitted, physical delivery still open
+
+Public main/tag v0.1.10 are published at ba1eada6; all 19 GitHub assets were
+anonymously downloaded and hash-matched. Garmin verified and accepted the final
+0.1.10 IQ in the original ordinary card; readback is 0.1.10 (Internal: 7), PENDING.
+The original installation URL also shows that version in an authenticated reload.
+The Music installation POST returned HTTP 200 with an empty body and no version
+selector. This is unversioned queue acceptance, not corrected-watch execution.
+Ivan received the original link and truthful version-check instructions. One
+normal sync and actual on-watch version, launch/countdown/point are requested.
+Last confirmed physical version remains 0.1.6; goal and task 3.2 stay NOT DONE.
+No new task group or invalidated behavior input; no behavior tests were rerun.
+See [publication record](evidence/display02-publication/PUBLICATION.md).

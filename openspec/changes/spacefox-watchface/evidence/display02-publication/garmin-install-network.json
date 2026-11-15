@@ -1,0 +1,27 @@
+{
+  "observedAt": "2026-11-15T00:19:44.585Z",
+  "appId": "7ef095e4-72fe-44cd-bc39-8987b6ab49e3",
+  "listingVersion": "0.1.10",
+  "listingInternalVersion": 7,
+  "requestVersionSpecified": false,
+  "network": [
+    {
+      "method": "Network.requestWillBeSent",
+      "sequence": 400,
+      "requestId": "94544.322",
+      "httpMethod": "POST",
+      "url": "https://apps-developer.garmin.com/api/appsLibraryExternalServices/api/asw/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3/install?unitId=[REDACTED]"
+    },
+    {
+      "method": "Network.responseReceived",
+      "sequence": 403,
+      "requestId": "94544.322",
+      "status": 200,
+      "url": "https://apps-developer.garmin.com/api/appsLibraryExternalServices/api/asw/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3/install?unitId=[REDACTED]"
+    }
+  ],
+  "response": {
+    "base64Encoded": false,
+    "body": ""
+  }
+}
