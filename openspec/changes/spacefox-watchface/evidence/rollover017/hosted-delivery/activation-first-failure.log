@@ -1,0 +1,13 @@
+prepare	Recover first, then check source cadence and prepare exact candidate	﻿2026-11-15T22:06:35.5777013Z ##[group]Run args=()
+prepare	Recover first, then check source cadence and prepare exact candidate	2026-11-15T22:06:35.5777314Z ^[[36;1margs=()^[[0m
+prepare	Recover first, then check source cadence and prepare exact candidate	2026-11-15T22:06:35.5777613Z ^[[36;1mif [ "$FIRST_BOOTSTRAP" = true ]; then args+=(--bootstrap); fi^[[0m
+prepare	Recover first, then check source cadence and prepare exact candidate	2026-11-15T22:06:35.5778254Z ^[[36;1mpython3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" prepare --output "$RUNNER_TEMP/spacefox-site" "${args[@]}"^[[0m
+prepare	Recover first, then check source cadence and prepare exact candidate	2026-11-15T22:06:35.5791869Z shell: /usr/bin/bash -e {0}
+prepare	Recover first, then check source cadence and prepare exact candidate	2026-11-15T22:06:35.5792143Z env:
+prepare	Recover first, then check source cadence and prepare exact candidate	2026-11-15T22:06:35.5792365Z   PYTHONDONTWRITEBYTECODE: 1
+prepare	Recover first, then check source cadence and prepare exact candidate	2026-11-15T22:06:35.5792685Z   SPACEFOX_SITE: https://JekaMas.github.io/SpaceFox
+prepare	Recover first, then check source cadence and prepare exact candidate	2026-11-15T22:06:35.5795894Z   GH_TOKEN: ***
+prepare	Recover first, then check source cadence and prepare exact candidate	2026-11-15T22:06:35.5796124Z   FIRST_BOOTSTRAP: false
+prepare	Recover first, then check source cadence and prepare exact candidate	2026-11-15T22:06:35.5796355Z ##[endgroup]
+prepare	Recover first, then check source cadence and prepare exact candidate	2026-11-15T22:08:08.2079620Z cloud-feed: complete delivery exceeds file bound
+prepare	Recover first, then check source cadence and prepare exact candidate	2026-11-15T22:08:08.2266029Z ##[error]Process completed with exit code 2.

@@ -12,6 +12,7 @@ import tempfile
 
 PARENT_SHA = '09e3ed20e5c7964b8d0907fe94a49c4c3ee8627bd82ab47fddfd07c2dbdd7ca7'
 NAMES = ('queueSequence', 'successorNearWake', 'forwardJumpAndPending', 'sourcedAscentWindowAndReschedule', 'realStorageQueue', 'longIdentityCache', 'savedQueueWake', 'photoExactGreen')
+PARENT_CLOUD = 'tests/fixtures/rollover017-published016-cloud.py.txt'
 
 def sha(data):
     return hashlib.sha256(data).hexdigest()
@@ -23,6 +24,17 @@ def read(root, ref):
     data = (root / name).read_bytes()
     if sha(data) != ref['sha256']:
         raise ValueError('rollover proof changed: ' + str(name))
+    return data
+
+def parent_bytes(root, name, expected, delta):
+    """Reconstruct against the immutable published receipt, including host fixes."""
+    data = delta.get(name)
+    if data is None:
+        data = (root / name).read_bytes()
+        if name == 'tools/spacefox/cloud.py' and sha(data) != expected:
+            data = (root / PARENT_CLOUD).read_bytes()
+    if sha(data) != expected:
+        raise ValueError('published parent source differs: ' + name)
     return data
 
 def parent_input(root, name, expected):
@@ -39,7 +51,7 @@ def parent_input(root, name, expected):
         try:
             member = archive.getmember(name)
         except KeyError:
-            data = (root / name).read_bytes()
+            data = parent_bytes(root, name, expected, {})
         else:
             if not member.isfile():
                 raise ValueError('invalid parent source')
@@ -73,14 +85,10 @@ def validate(root, catalog):
             if path.is_absolute() or '..' in path.parts:
                 raise ValueError('invalid parent source path')
             src = root / path
-            data = delta.get(name)
-            if data is None:
-                data = src.read_bytes()
-            if sha(data) != expected:
-                raise ValueError('published parent source differs: ' + name)
+            data = parent_bytes(root, name, expected, delta)
             dst = target / path
             dst.parent.mkdir(parents=True, exist_ok=True)
-            if name not in delta:
+            if name not in delta and (name != 'tools/spacefox/cloud.py' or sha(src.read_bytes()) == expected):
                 try:
                     os.link(src, dst)
                     continue

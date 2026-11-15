@@ -320,7 +320,11 @@ Optional visual work SHALL allow prompt valid schedule activation with generic a
 A content-only change SHALL allocate a monotonic pending generation without
 provider polling or renewing source age. Recovery SHALL reuse exact durable bytes.
 Complete current and recoverable same-format closure and exact HTTPS readback
-SHALL stay within 1MiB/256 files, 8192-byte feed and 4096-byte object bounds.
+SHALL stay within 1MiB and 512 files, 8192-byte feed and 4096-byte object bounds.
+Each constituent snapshot stays within 256 files; the complete-union limit is
+explicitly corrected from 256 to the derived maximum of two such closures.
+Any derived recovery sidecars must themselves fit the snapshot file bound.
+Check the full union before committing a new pending candidate.
 No v1/v2 endpoints, old exporter, legacy archive or transition-period gate applies.
 
 

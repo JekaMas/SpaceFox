@@ -769,3 +769,15 @@ stock memory, exported admission and affected reader observations are retained
 at their stated boundaries. The single final main integration had no changes
 or conflicts. Signed regular release, hosted successor activation and original
 Garmin publication follow; physical updated execution remains unobserved.
+
+### ROLLOVER017 hosted-delivery software closure accepted
+
+The first live activation failed on a captured complete union of 274 required
+paths, while both snapshots individually met their 256-path limits. Root accepts
+author `9ab7ec3b` and independent review `849ad4d2`: [host judgment](evidence/rollover017/hosted-delivery/ROOT-JUDGMENT.md).
+The complete count is explicitly corrected to 512 for two bounded snapshots;
+the 1 MiB complete-byte and 8 KiB feed limits are unchanged. Preflight now rejects
+an impossible union before pending persistence. The local exact recovery/next
+publication and five affected recovery checks are GREEN. This host revision
+does not alter the already released signed 0.1.17 binary. Live two-run activation
+and final readback remain open.

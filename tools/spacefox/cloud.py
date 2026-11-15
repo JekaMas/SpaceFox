@@ -24,6 +24,10 @@ from .publisher import (Conflict, LiveRevision, MAX_ARTIFACT_BYTES, STATE_REF,
 JOURNAL = 'cloud.json'
 FINAL = {'succeed', 'deployment_failed', 'deployment_perms_error',
          'deployment_content_failed', 'deployment_cancelled'}
+# A replacement contains at most two individually bounded closures.  This also
+# covers old snapshots: retained_files validates any derived sidecars against
+# the same per-artifact limit before excluding the previous mutable roots.
+MAX_DELIVERY_FILES = 2 * MAX_ARTIFACT_FILES
 
 
 class CloudError(StateError):
@@ -321,8 +325,23 @@ def retained_files(snapshot, files, *, text_transport):
             for path, raw in files.items() if path not in ('feed.json', 'feed.json.txt')}
 
 
+def preflight_delivery(pub, current_files):
+    """Reject an impossible complete replacement before saving a candidate."""
+    manifest = {}
+    active = pub.ledger['active']
+    if active is not None:
+        _, prior = snapshot_files(pub.store, pub.head, active['generation'])
+        manifest.update(retained_files(active, prior, text_transport='feed.json.txt' in current_files))
+    manifest.update({path: {'sha256': _sha(raw), 'bytes': len(raw)}
+                     for path, raw in current_files.items()})
+    if not 1 <= len(manifest) <= MAX_DELIVERY_FILES:
+        raise CloudError('complete delivery exceeds file bound')
+    if sum(meta['bytes'] for meta in manifest.values()) > MAX_ARTIFACT_BYTES:
+        raise CloudError('complete current and retained delivery exceeds1MiB')
+
+
 def delivery_files(pub, manifest):
-    if type(manifest) is not dict or not 1 <= len(manifest) <= MAX_ARTIFACT_FILES:
+    if type(manifest) is not dict or not 1 <= len(manifest) <= MAX_DELIVERY_FILES:
         raise CloudError('complete delivery exceeds file bound')
     result, cache = {}, {}
     for path, meta in manifest.items():

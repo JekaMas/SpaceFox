@@ -1,0 +1,10 @@
+test_pending_and_promotion_survive_before_and_lost_push_ack (tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_pending_and_promotion_survive_before_and_lost_push_ack) ... ok
+test_visible_pending_without_finality_cannot_promote_or_start_work (tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_visible_pending_without_finality_cannot_promote_or_start_work) ... ok
+test_missing_previous_catalog_cannot_promote_pending (tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_missing_previous_catalog_cannot_promote_pending) ... ok
+test_protected_pre_sidecar_snapshot_has_bounded_byte_identical_retained_copies (tests.test_phone_text_transport.PhoneTextTransportTest.test_protected_pre_sidecar_snapshot_has_bounded_byte_identical_retained_copies) ... ok
+test_deploy_readback_preserves_per_record_validation_age (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_deploy_readback_preserves_per_record_validation_age) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 521.350s
+
+OK
