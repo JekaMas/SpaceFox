@@ -4,6 +4,8 @@ SpaceFox is a free, MIT-licensed space watch face for Garmin watches, including 
 
 **[Install from Connect IQ](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3)** · **[Download release 0.1.16](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.16)** · [Release notes](release/RELEASE-NOTES-0.1.16.md)
 
+Garmin owner preview shows 0.1.16/Internal 9 pending review; an installation request was submitted, and physical installation is unverified.
+
 ![SpaceFox 0.1.16 running in the Forerunner 165 Music simulator](release/images/simulator-fr165m-0.1.16.png)
 
 Actual native 0.1.16 simulator capture using an offline public launch fixture and simulated activity values. The visible Cape Canaveral point, rocket and country flag come from the selected launch. The dotted countdown indicates stale data in this fixture.

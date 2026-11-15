@@ -7,17 +7,23 @@ stored recovery password have actual local restore/challenge evidence in
 the owner-held signing records. All copies remain on the same Mac; offsite
 and disaster recovery are not claimed.
 
+## Current 0.1.16 release
+
+[SpaceFox 0.1.16](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.16) is the regular GitHub release. Its compiled source and tag are `b1e0c56df8ef04b4a73637c80f176b6c0ff9cfed`; native ID is `e513cc6d`, IQ SHA-256 `09ef11c1fbc38af7e3e55327ecd213b361d8f66bbf271f6739763056dbca33e7`, and original receipt SHA-256 `09e3ed20e5c7964b8d0907fe94a49c4c3ee8627bd82ab47fddfd07c2dbdd7ca7`. The original [Garmin listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3) shows 0.1.16/Internal 9 PENDING in owner preview; a Music installation request was submitted, but delivery and installation are unobserved. See the [publication record](../openspec/changes/spacefox-watchface/evidence/display04-publication/PUBLICATION.md).
+
+Use the unmodified original 0.1.16 receipt and matching IQ as predecessor for any future higher-version candidate with the same UUID and key. The guard binds the original receipt bytes and compiled source revision. Earlier package receipts remain unchanged.
+
 ## 0.1.15 test package
 
-The published [0.1.15 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.15-test.1) has compiled source `b797fe5af70ff15ac75ad48ab9174577152b57eb`, native ID `2c92c60b`, IQ SHA-256 `39fc5df506af45a7730f54b2d15666655fb0f9e2d23c1cefe9ced1476937f2b5` and original receipt SHA-256 `357b36af8e5e1d8c876705e0fa9cf52e1936216dcec0730bf1ddb57ed04bce44`. Its export-time predecessor remains the published 0.1.14 receipt and IQ. Use the unchanged published 0.1.15 receipt and matching IQ as predecessor for the next higher-version candidate. The host guard checks the original receipt bytes and their compiled source revision, not the later tag revision; a reformatted receipt will not match. See [installation](INSTALLATION-0.1.15.md) and [testing](TESTING-0.1.15.md). Physical watch, phone, vibration, battery and Store acceptance remain unobserved.
+The published [0.1.15 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.15-test.1) has compiled source `b797fe5af70ff15ac75ad48ab9174577152b57eb`, native ID `2c92c60b`, IQ SHA-256 `39fc5df506af45a7730f54b2d15666655fb0f9e2d23c1cefe9ced1476937f2b5` and original receipt SHA-256 `357b36af8e5e1d8c876705e0fa9cf52e1936216dcec0730bf1ddb57ed04bce44`. Its export-time predecessor remains the published 0.1.14 receipt and IQ. The unchanged 0.1.15 receipt and IQ were the export-time predecessor of 0.1.16. The host guard checks the original receipt bytes and their compiled source revision, not the later tag revision; a reformatted receipt will not match. See [installation](INSTALLATION-0.1.15.md) and [testing](TESTING-0.1.15.md). Physical watch, phone, vibration, battery and Store acceptance remain unobserved.
 
 ## 0.1.14 test package
 
 The [published 0.1.14 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.14-test.1) uses the same application identity and the published 0.1.13 package as its export-time predecessor. Its exact export source is `1bebd706649176b562681685d33b3cfcc7c9d4dd`; its IQ SHA-256 is `6c80caef8ec6527ae3a3cdc3129e8be1fb581c5a2e1d85634b963f1b92a26a27`, and its original receipt SHA-256 is `491362b67469489d6d833668f2e509a38fd98b611df44586a178417cb281b480`. The published 0.1.14 receipt and matching IQ remain the export-time predecessor of 0.1.15. Its [USB installation](INSTALLATION-0.1.14.md) and [testing](TESTING-0.1.14.md) guides describe the correct device files and physical-test limitations. The [independent package review](../openspec/changes/spacefox-watchface/evidence/version-014/PEER-014-FINAL.md) records the exact source, signatures and retained evidence boundaries. This GitHub test package does not establish a new Garmin Store submission or approval.
 
-## Current delivery channels
+## Historical 0.1.13 delivery
 
-[SpaceFox 0.1.13](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.13) is published and submitted to the original ordinary Garmin card, which displays 0.1.13/Internal 8 PENDING in owner preview. The Music installation request returned HTTP 200/empty. Actual physical delivery remains unobserved.
+[SpaceFox 0.1.13](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.13) was published and submitted to the original ordinary Garmin card; its earlier observation showed 0.1.13/Internal 8 PENDING in owner preview. The Music installation request returned HTTP 200/empty. Actual physical delivery remains unobserved.
 
 Compiled source/tag commit is `1eca186c5da803d801b5ebca3e58df8f37ac5876`. IQ SHA-256 is `bf69a0df9b11f15c676be4cb6a0ce7d388c11688f11fefb3d8b0ed1544005896`; receipt SHA-256 is `ef32f0f1482ea3199b31aaceeb30ea532947393e481fbb48df2c411050ef61a1`. Those immutable files remain the export-time predecessor of 0.1.14. The embedded Music program matches the production-signed SDK executable. See [installation](INSTALLATION.md), [testing](../TESTING.md) and [publication](../openspec/changes/spacefox-watchface/evidence/display03-publication/PUBLICATION.md).
 
