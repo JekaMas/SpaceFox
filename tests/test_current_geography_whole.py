@@ -261,3 +261,60 @@ class CurrentGeographyWholeTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_artifact(altered)
         self.assertEqual(validate_artifact(self.files), self.feed)
+
+    def test_readdressed_selected_source_contract_refusals(self):
+        # Re-pin every ancestor and sidecar: digest rejection must not mask
+        # the source-selection identity and reachability checks.
+        import hashlib
+        from tools.spacefox.native_motion import _index, with_text_transport
+
+        target = self.scene['siteCountrySource']['path']
+        def rewrite(mutate):
+            rebuilt, memo = {}, {}
+            def walk(row):
+                if isinstance(row, list):
+                    return [walk(v) for v in row]
+                if not isinstance(row, dict):
+                    return row
+                if set(row) == {'path', 'sha256', 'decodedBytes'}:
+                    return document(row['path'])
+                row = {k: walk(v) for k, v in row.items()}
+                if 'catalogPath' in row:
+                    pin = document(row['catalogPath'])
+                    row.update(catalogPath=pin['path'], catalogDigest=pin['sha256'])
+                return row
+            def document(path):
+                if path in memo:
+                    return memo[path]
+                raw = self.files[path]
+                if path.endswith('.json'):
+                    row = walk(loads_json(raw))
+                    if isinstance(row, dict) and row.get('type') == 'native-transfer':
+                        row = _index(rebuilt, row['scene'])
+                    if path == target:
+                        mutate(row['catalogSelection'])
+                    raw = canonical_bytes(row)
+                digest = hashlib.sha256(raw).hexdigest()
+                name = 'feed.json' if path == 'feed.json' else path.rsplit('/', 1)[0] + '/' + digest + Path(path).suffix
+                rebuilt[name] = raw
+                memo[path] = dict(path=name, sha256=digest, decodedBytes=len(raw))
+                return memo[path]
+            document('feed.json')
+            return with_text_transport(rebuilt)
+
+        self.assertEqual(rewrite(lambda selection: None), self.files)
+        def root(selection):
+            selection['roots'] = []
+        def provenance(selection):
+            selection['dictionaries']['sites']['ll2:site:235']['provenance'][0]['recordId'] = '235'
+        def jurisdiction(selection):
+            selection['dictionaries']['countries']['ll2:country:2']['jurisdictionKind'] = 'territory'
+        def event_position(selection):
+            selection['dictionaries']['sites']['ll2:site:235']['eventPosition'] = {'latitude': 0, 'longitude': 0}
+        for label, mutation, reason in (
+                ('root', root, 'empty/duplicate catalog roots'),
+                ('provenance', provenance, 'source provenance mismatch'),
+                ('jurisdiction', jurisdiction, 'reference does not qualify a jurisdiction classification'),
+                ('event-position', event_position, 'event position not qualified')):
+            with self.subTest(defect=label), self.assertRaisesRegex(ValueError, reason):
+                validate_artifact(rewrite(mutation))

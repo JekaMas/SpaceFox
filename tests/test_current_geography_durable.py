@@ -43,6 +43,11 @@ class CurrentGeographyDurableTest(unittest.TestCase):
                 for facts in (row['facts'], row['originalFacts']):
                     facts['providerExtension'] = {'flag': False, 'missing': None}
                     facts['officialLifecycle'] = 'raw-provider-extension'
+                country = current['dictionaries']['countries']['ll2:country:2']
+                self.assertEqual(country['jurisdictionKind'], 'country')
+                country['originalFacts']['jurisdictionKind'] = 'raw-provider-classification'
+                # Existing reviewed correction remains authoritative over raw facts.
+                self.assertEqual(country['facts']['jurisdictionKind'], 'country')
                 second, digest2 = build_artifact(pub.schedule, current, NOW + 1, publisher=pub.publisher_envelope(NOW + 1), root=ROOT)
                 second_revision = pub.prepare(pub.head, NOW + 1, second, digest2, artifact_profile=PROFILE)
                 manifest = delivery(pub)
@@ -53,7 +58,14 @@ class CurrentGeographyDurableTest(unittest.TestCase):
                 self.assertEqual(reopened.pending_files(), second)
                 self.assertEqual(snapshot_files(store, reopened.head, 1)[1], first)
                 feed = loads_json(second['feed.json'])
+                self.assertEqual(feed['launch']['source_validated_utc'], NOW)
+                self.assertEqual(feed['publisher']['selectionValidatedUtc'], NOW)
                 scene = loads_json(read_ref(feed['visualSelection'], second))
+                site_source = loads_json(second[scene['siteCountrySource']['path']])
+                selected_country = site_source['catalogSelection']['dictionaries']['countries']['ll2:country:2']
+                self.assertEqual(selected_country['originalFacts']['jurisdictionKind'], 'raw-provider-classification')
+                self.assertEqual(selected_country['facts']['jurisdictionKind'], 'country')
+                self.assertEqual(selected_country['jurisdictionKind'], 'country')
                 origin = loads_json(second[scene['origins']['model']['sourceRecord']['path']])
                 self.assertEqual(origin['owner']['facts']['officialLifecycle'], 'raw-provider-extension')
                 self.assertEqual(origin['owner']['originalFacts']['providerExtension'], {'flag': False, 'missing': None})
