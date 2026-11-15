@@ -62,6 +62,12 @@ scene seam, not proof that the mutated packet itself passes wire admission.
 It checks a matching marker, an absent position, and suppression of a marker
 for an unmatched projection while retaining its source-qualified coordinates.
 
+`build_reschedule_view.py` builds `output/reschedule-view/CF6.prg`. Its captured
+MIN packets and controlled time exercise current native cache-to-view countdown,
+same-ID reschedule, unchanged refresh, withdrawal and new-ID latch behavior.
+It uses an in-memory store and does not demonstrate a live provider or natural
+firmware scheduling.
+
 1. **Recorded-build source applicability:** `python3 -B tests/native_scene_diagnostics/verify_binding.py --public-root "$SCENE_PUBLIC"` compares the public production sources/resources, retained generated probe sources/resources, generators/drivers and A/B fixture bytes to the recorded build bindings. It does not inspect logs, run the simulator, or check an installed SDK. It requires the historical public base in the checkout ancestry. A mismatch or missing file invalidates the affected reuse; it is not repaired by updating a digest.
 2. **Installed runtime comparison:** add `--sdk-root "$SCENE_SDK_COPY" --image "$SCENE_IMAGE"` to the preceding command. This compares the compiler, simulator, profile, API/font inputs and image ID to the historical runtime. It does not execute the SDK. A different runtime requires affected requalification. The archived SDK digest is provenance, not a fresh archive check.
 3. **Fresh SDK replay:** run the isolated setup and relevant generator/package above, save new outputs and separately assess their actual outcomes. A fresh run is not verified by source applicability alone. The default host test suite does not install, invoke or require the SDK.
