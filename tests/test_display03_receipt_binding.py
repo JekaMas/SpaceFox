@@ -134,6 +134,19 @@ def validate_current_batch(data):
             raise AssertionError('current RGB decoder result incomplete')
 
 
+def validate_current_stream_log(data):
+    proof=json.loads((ROOT/'locales/catalog.json').read_text())['supportPolicy']['softwareQualificationProof']
+    ref=proof['decoderStreamProof'];raw=(ROOT/ref['path']).read_bytes()
+    if hashlib.sha256(raw).hexdigest()!=ref['sha256']: raise AssertionError('current stream proof changed')
+    record=json.loads(raw)
+    for name in ('watchface/source/NativeSfr.mc','watchface/source/SceneRenderer.mc','watchface/source/SpaceFoxView.mc','watchface/source/generated/NativeVersion.mc'):
+        if hashlib.sha256((ROOT/name).read_bytes()).hexdigest()!=record['nativeInputs'][name]: raise AssertionError('current stream owner changed: '+name)
+    if hashlib.sha256(data).hexdigest()!=record['sdkLog']['sha256']:
+        raise AssertionError('current stream observation changed')
+    for marker in (b'CURRENT_MAP checksum=true outline=true complete=true',b'CURRENT_MAP wrong_pixel_hash_refused=true',b'STREAM_MATCH bitmap=true outlineDeferred=true',b'STREAM_NONCANONICAL refused=true',b'PASSED (passed=2, failed=0, errors=0)'):
+        if marker not in data: raise AssertionError('current stream observation incomplete')
+
+
 class CurrentMapReceiptTest(unittest.TestCase):
     def test_current_map_positive(self):
         receipt = json.loads((BATCH / 'receipt.json').read_text())
@@ -144,11 +157,16 @@ class CurrentMapReceiptTest(unittest.TestCase):
         data = (BATCH / 'native-batch.log').read_bytes()
         self.assertEqual(hashlib.sha256(data).hexdigest(), receipt['log_sha256'])
         validate_current_batch(data)
+        proof=json.loads((ROOT/'locales/catalog.json').read_text())['supportPolicy']['softwareQualificationProof']['decoderStreamProof'];record=json.loads((ROOT/proof['path']).read_text())
+        validate_current_stream_log((ROOT/record['sdkLog']['path']).read_bytes())
 
     def test_current_map_negative(self):
         data = (BATCH / 'native-batch.log').read_bytes()
         with self.assertRaisesRegex(AssertionError, 'decoder result incomplete'):
             validate_current_batch(data.replace(b'wrong_pixel_hash_refused=true', b'wrong_pixel_hash_refused=false'))
+        proof=json.loads((ROOT/'locales/catalog.json').read_text())['supportPolicy']['softwareQualificationProof']['decoderStreamProof'];record=json.loads((ROOT/proof['path']).read_text());current=(ROOT/record['sdkLog']['path']).read_bytes()
+        with self.assertRaisesRegex(AssertionError, 'stream observation changed'):
+            validate_current_stream_log(current.replace(b'STREAM_NONCANONICAL refused=true',b'STREAM_NONCANONICAL refused=false'))
 
 P3 = ROOT / 'openspec/changes/spacefox-watchface/evidence/final-local-review-20261115/current-p3'
 
