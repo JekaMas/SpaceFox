@@ -7,6 +7,10 @@ stored recovery password have actual local restore/challenge evidence in
 the owner-held signing records. All copies remain on the same Mac; offsite
 and disaster recovery are not claimed.
 
+## 0.1.14 test package
+
+The 0.1.14 signed test package uses the same application identity and the published 0.1.13 package as its predecessor. Its [USB installation](INSTALLATION-0.1.14.md) and [testing](TESTING-0.1.14.md) guides describe the correct device files and physical-test limitations. The [independent package review](../openspec/changes/spacefox-watchface/evidence/version-014/PEER-014-FINAL.md) records the exact source, signatures and retained evidence boundaries. This GitHub test package does not establish a new Garmin Store submission or approval.
+
 ## Current delivery channels
 
 [SpaceFox 0.1.13](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.13) is published and submitted to the original ordinary Garmin card, which displays 0.1.13/Internal 8 PENDING in owner preview. The Music installation request returned HTTP 200/empty. Actual physical delivery remains unobserved.
