@@ -159,6 +159,9 @@ class CurrentP3ReceiptTest(unittest.TestCase):
         self.assertEqual(receipt['raw_exit'], 1)
         for name, digest in {**receipt['source_inputs'], **receipt['generated_inputs']}.items():
             self.assertEqual(observed_input_digest(name), digest, name)
+        import base64
+        manifest = base64.b64decode((P3 / 'manifest.xml.b64').read_bytes(), validate=False)
+        self.assertEqual(hashlib.sha256(manifest).hexdigest(), receipt['compiled_manifest_sha256'])
         data = (P3 / 'native.log').read_bytes()
         self.assertEqual(hashlib.sha256(data).hexdigest(), receipt['log_sha256'])
         validate_current_p3(data)
