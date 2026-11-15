@@ -46,3 +46,22 @@ rendering are both observed. Track platform latency separately. A full-looking
 active screen at LOW framework minute cadence remains a distinct consistency
 witness to investigate. This correction does not close the owner's 10–20s physical
 wake defect or permit an unsafe rendering mode.
+
+## Exact ACTIVE geometry — latest owner correction
+
+The owner rejected the widened, repositioned LOW map: “Ты карту поменял на
+что-то невразумительное! Другая форма и масштаб! Я это не утверждал. Делай как
+в active, но только контур.” LOW uses the same map shape, scale, projection,
+placement and point coordinates as ACTIVE, with outline instead of fill. The
+prior 130px upper-map composition and its size targets are superseded; retain
+those captures and observations as rejected history. Arrange the foreground
+around the actual point and preserve the large clock, minute countdown, battery,
+calendar, no custom fields and LOW pixel-rest/burn-in bounds.
+
+## Latest owner acceptance — full contour retained
+
+The owner then said: “А оставь. Мне понравилась полная карта в low. Продолжай
+со всей задачей”. The full-scale complete bundled contour shown in the subsequent
+RU and dense frames is accepted, at the existing ACTIVE projection and selected
+point. Its foreground clearing, minute precision, no custom fields, status
+colors and burn-in bound remain. The earlier thumbnail/stretch remains rejected.

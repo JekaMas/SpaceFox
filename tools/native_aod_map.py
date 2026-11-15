@@ -1,25 +1,19 @@
 #!/usr/bin/env python3
 """Build a sparse LOW outline from the same fixed-site map geometry.
 
-The 130px image uses the center-right active projection at twice its prior
-horizontal scale. SceneRenderer applies the same projection to the point.
+The 390px image uses the exact ACTIVE map geometry and coordinate system.
 """
 from PIL import Image, ImageDraw
 import json, subprocess, tempfile
 
 def outline(mapping):
-    image=Image.new('RGBA',(130,130),(0,0,0,0))
+    # Draw the original ACTIVE projection at its native 390px coordinates.
+    image=Image.new('RGB',(390,390),(0,0,0))
     draw=ImageDraw.Draw(image)
     for polygon in mapping['polygons']:
         if len(polygon)>=3:
-            points=[(round(2*x/3)-130,round(y/3)) for x,y in polygon]
-            draw.line(points+[points[0]],fill=(190,225,240,255),width=1)
-    # Keep the outline within the round screen at its fixed placement.
-    pixels=image.load()
-    for y in range(130):
-        for x in range(130):
-            if y+20>=100 or (x+190-195)**2+(y+20-195)**2 > 190**2:
-                pixels[x,y]=(0,0,0,0)
+            points=[(round(x),round(y)) for x,y in polygon]
+            draw.line(points+[points[0]],fill=(190,225,240),width=1)
     return image
 
 def additional_maps(root):

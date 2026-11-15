@@ -66,7 +66,7 @@ class SceneRenderer {
                 var point=context.point as Array<Numeric>;
                 var coordinates=NativeAssets.aodCoordinates;
                 for(var i=0;i<coordinates.size()/8;i+=1){var longitude=aodCoordinate(coordinates,i*8);var latitude=aodCoordinate(coordinates,i*8+4);var lon=point[0]-longitude;var lat=point[1]-latitude;
-                    if(lon>=-0.25&&lon<=0.25&&lat>=-0.25&&lat<=0.25){var projected=projectSite(point,longitude,latitude);aodPinX=projected[0];aodPinY=projected[1];aodPin=true;aodResource=NativeAssets.aodResource(54+i);break;}}
+                    if(lon>=-0.25&&lon<=0.25&&lat>=-0.25&&lat<=0.25){var projected=projectSite(point,longitude,latitude);aodPinX=projected[0];aodPinY=projected[1];pinX=aodPinX;pinY=aodPinY;pin=true;mapResource=NativeAssets.extraMapResource(i);aodPin=true;aodResource=NativeAssets.aodResource(54+i);break;}}
             }
         }
         map=load(mapResource) as Graphics.BitmapType;
@@ -175,8 +175,12 @@ class SceneRenderer {
         current.stale=current.stale||fullContext!=null&&fullContext.stale;
         var rich=downloaded instanceof NativeSfrRenderer?downloaded:null;
         var selected=rich!=null && rich.mapOutline!=null && rich.scene!=null && rich.scene["position"]!=null;
-        if(!selected && aodMap==null && aodResource!=null){aodMap=load(aodResource as ResourceId) as Graphics.BitmapType;}
-        SceneAod.draw(dc,current,minute,presentation,fonts["aod"] as Graphics.FontType,settings,selected?rich.mapOutline:aodMap,selected||aodPin,selected?335:aodPinX,selected?165:aodPinY);
+        // The current finite fixed-site catalog has full outlines at matching
+        // centers. Prefer that shape even when the selected scene is READY;
+        // unmatched future locations retain their own decoded raster outline.
+        if(aodMap==null && aodResource!=null){aodMap=load(aodResource as ResourceId) as Graphics.BitmapType;}
+        var bundled=aodMap!=null && aodPin;
+        SceneAod.draw(dc,current,minute,presentation,fonts["aod"] as Graphics.FontType,settings,bundled?aodMap:(selected?rich.mapOutline:null),bundled||selected,selected?335:aodPinX,selected?165:aodPinY);
     }
 }
 
@@ -186,7 +190,12 @@ module SceneAod {
     function draw(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,presentation as LocalePresentation,font as Graphics.FontType,settings as SceneSettings,map as Graphics.BitmapType or Null,pin as Boolean,pinX as Number,pinY as Number) as Void {
         dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();
         var positions=[[-1,-1],[1,-1],[-1,1],[1,1]];var phase=((minute%4+4)%4).toNumber();var p=positions[phase];
-        if(map!=null){dc.drawBitmap(190+p[0],20+p[1],map);}
+        if(map!=null){dc.drawBitmap(0,0,map);}
+        // Keep the ACTIVE-coordinate coastlines outside the foreground bands.
+        // Clearing under the hollow clock also bounds lit pixels on dense maps.
+        dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);
+        dc.fillRectangle(35,132,280,39);dc.fillRectangle(20,180,350,108);
+        dc.fillRectangle(40,288,310,39);dc.fillRectangle(125,327,140,43);
         dc.setColor(settings.clockColor,Graphics.COLOR_TRANSPARENT);
         // Monospaced advance boxes do not imply symmetric digit ink. The
         // bundled AOD atlas has 68px advances; these are the fully lit left
@@ -197,15 +206,15 @@ module SceneAod {
         var first="0123456789".find(current.localTime.substring(0,1) as String);
         var last="0123456789".find(current.localTime.substring(4,5) as String);
         var correction=first==null||last==null?0:(69-leftEdges[first as Number]-rightEdges[last as Number])/2;
-        dc.drawText(195+p[0]+correction,123+p[1],font,current.localTime,Graphics.TEXT_JUSTIFY_CENTER);
+        dc.setColor(settings.clockColor,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0]+correction,163+p[1],font,current.localTime,Graphics.TEXT_JUSTIFY_CENTER);
         var calendarFont=presentation.aodContextFont as Graphics.FontType;
-        if(current.localCalendar!=null){dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],98+p[1],calendarFont,presentation.calendar(current.localCalendar as Array<Number>),Graphics.TEXT_JUSTIFY_CENTER);}
+        if(current.localCalendar!=null){var date=presentation.calendar(current.localCalendar as Array<Number>);dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],130+p[1],calendarFont,date,Graphics.TEXT_JUSTIFY_CENTER);}
         var color=current.rescheduled?0xFF6B6B:settings.countdownColor;
         var countFont=presentation.aodContextFont as Graphics.FontType;
         var value=presentation.fit(dc,current.countdown,countFont,300);
-        dc.setColor(color,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],247+p[1],countFont,value,Graphics.TEXT_JUSTIFY_CENTER);
-        dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],286+p[1],presentation.aodBatteryFont as Graphics.FontType,current.battery,Graphics.TEXT_JUSTIFY_CENTER);
-        if(current.stale){dc.setColor(color,Graphics.COLOR_TRANSPARENT);var width=dc.getTextWidthInPixels(value,countFont);for(var x=195+p[0]-width/2;x<=195+p[0]+width/2;x+=5){dc.fillCircle(x,287+p[1],1);}}
-        if(map!=null && pin){var x=60+2*pinX/3+p[0];var y=20+pinY/3+p[1];dc.setColor(0xFFFFFF,Graphics.COLOR_TRANSPARENT);dc.fillCircle(x,y,7);dc.setColor(0xFF6B6B,Graphics.COLOR_TRANSPARENT);dc.fillCircle(x,y,4);}
+        dc.setColor(color,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],287+p[1],countFont,value,Graphics.TEXT_JUSTIFY_CENTER);
+        dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],326+p[1],presentation.aodBatteryFont as Graphics.FontType,current.battery,Graphics.TEXT_JUSTIFY_CENTER);
+        if(current.stale){dc.setColor(color,Graphics.COLOR_TRANSPARENT);var width=dc.getTextWidthInPixels(value,countFont);for(var x=195+p[0]-width/2;x<=195+p[0]+width/2;x+=5){dc.fillCircle(x,327+p[1],1);}}
+        if(map!=null && pin){var x=pinX;var y=pinY;dc.setColor(0xFFFFFF,Graphics.COLOR_TRANSPARENT);dc.fillCircle(x,y,7);dc.setColor(0xFF6B6B,Graphics.COLOR_TRANSPARENT);dc.fillCircle(x,y,4);}
     }
 }

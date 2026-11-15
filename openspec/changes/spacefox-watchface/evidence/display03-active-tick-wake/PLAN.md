@@ -79,6 +79,25 @@ The SDK9.3/Java11 and device profiles are already authorized. Respect the native
 lane and actual running process ownership; a lease file alone is not liveness.
 Preserve/restore simulator state, do not reset unrelated files or kill others'
 work. Do not alter server accounts/schedulers or publish from an implementation
-agent. A later code release must exceed existing native .11, with the original
+agent. A later code release must exceed already-published GitHub native .12, with the original
 production UUID/key/card. A version bump alone is not a fix. Physical goal remains
 NOT DONE until actual corrected execution and fresh matching launch are observed.
+
+## Latest owner correction — exact ACTIVE map geometry
+
+Owner rejected the prior widened/repositioned LOW treatment: “Ты карту поменял
+на что-то невразумительное! Другая форма и масштаб! Я это не утверждал. Делай
+как в active, но только контур.” LOW must use the same map shape, scale,
+projection, placement and selected-point coordinates as ACTIVE, with outline
+instead of fill. The former root-requested 130px upper-map target is retired;
+its captures remain rejected history. Preserve the large clock (at least 96px
+observed ink), minute countdown, date/weekday, battery, no custom fields,
+reschedule color and the AOD lit-pixel/rest bounds. Reposition or clear foreground
+ink around the actual point; do not distort or move map geometry. Verify matching
+bundled and decoded outlines, the current extra-site fallback, and both 390 and
+454 profile geometry. This is the same open unit, not a new task list.
+
+Owner subsequently accepted the full-scale complete LOW contour: “А оставь.
+Мне понравилась полная карта в low. Продолжай со всей задачей”. Retain the
+full bundled outline at ACTIVE projection/point with foreground clearing; do
+not revert it to the earlier thumbnail or a faded-only bundled treatment.
