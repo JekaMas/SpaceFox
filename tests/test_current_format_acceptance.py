@@ -209,15 +209,15 @@ class CurrentFormatAcceptanceTest(unittest.TestCase):
   # verify_current_ui_batch against changed current owners or repin its hashes.
   # Its original lifecycle observation is read below; current mode/recovery
   # composition has its own source-qualified positive and tamper controls.
-  if 'current-ui' not in self._route_cache:
-   from tests.test_display03_receipt_binding import Display03ReceiptBindingTest, WF09CurrentCompositionTest
-   from tests.retained_native_binding import verify_current
-   verify_current()
-   Display03ReceiptBindingTest.setUpClass()
-   Display03ReceiptBindingTest('test_modes_positive').test_modes_positive()
-   Display03ReceiptBindingTest('test_modes_negative').test_modes_negative()
-   WF09CurrentCompositionTest('test_recovery_positive').test_recovery_positive()
-   self._route_cache.add('current-ui')
+  # Retained receipts and their source snapshots are mutable checkout files.
+  # Authenticate the composition on every call, including an already-warmed route.
+  from tests.test_display03_receipt_binding import Display03ReceiptBindingTest, WF09CurrentCompositionTest
+  from tests.retained_native_binding import verify_current
+  verify_current()
+  Display03ReceiptBindingTest.setUpClass()
+  Display03ReceiptBindingTest('test_modes_positive').test_modes_positive()
+  Display03ReceiptBindingTest('test_modes_negative').test_modes_negative()
+  WF09CurrentCompositionTest('test_recovery_positive').test_recovery_positive()
  def lifecycle(self,*names):
   self.current_ui()
   path=E/'lifecycle';build=json.loads((path/'build.json').read_text());fixture=ROOT/'tests/fixtures/final_design/LifecycleProbe.mc'
