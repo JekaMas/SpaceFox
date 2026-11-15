@@ -826,7 +826,7 @@
       ],
       "statement": "Official releases SHALL use the same backed-up 4096-bit RSA developer signing key\nand application UUID for updates. The private key SHALL remain outside source,\nPages and data workflows. Release provenance SHALL record source/toolchain,\npackage digest, version, supported products/languages and test evidence without\npublishing credentials. A forked native product SHALL use its own identity/key.",
       "owner": "tools/release.py",
-      "oracle": "Current executable custody controls use real OpenSSL and disposable external identities: actual encrypted restore, deterministic challenge signature, wrong/corrupt/swapped inputs and overwrite/replacement refusal. Retained production custody and SDK update observations remain immutable historical evidence; the obsolete initial-production export campaign is retired after public publication. No fresh production restore/export or whole-property closure is claimed.",
+      "oracle": "Real OpenSSL disposable RSA4096 custody cases prove encrypted restore, independently equal challenge signatures, integrity and no-replacement filesystem guards. A dated opt-in actual-production backup observation supplements immutable 0.1.11/0.1.12 same-identity SDK/signature provenance; native fork guidance requires its own UUID/key. No device/Store or offsite/disaster recovery claim.",
       "source_globs": [
         "tools/release.py",
         "tools/ReleaseInspector.java",
@@ -843,9 +843,10 @@
         "LICENSE",
         "THIRD_PARTY_NOTICES.md",
         "docs/AGENT_SETUP.md",
-        "docs/RELEASE_AND_UPDATES.md"
+        "docs/RELEASE_AND_UPDATES.md",
+        "tools/verify_signing_backup.py"
       ],
-      "planning_status": "Original broad identity/custody requirement preserved. Current disposable custody controls plus immutable production-signing evidence and separately accepted RL02.P2/RL08.P2 signed-export controls have distinct proof boundaries. Supplemental published history admission checks do not prove signed higher-version repair; physical/Store/task7 acceptance remains open."
+      "planning_status": "Current whole local signing-custody increment: executable disposable positive/negative controls plus dated actual-production retained-backup restoration and retained production same-key package/provenance observations. Physical/phone/Store/task7 acceptance remains separate; root judges closure after one different peer."
     },
     {
       "id": "RL03.P1",
@@ -1013,9 +1014,15 @@
         "tools/spacefox/bridge_map.py",
         "tools/spacefox/graphics.py",
         "tools/spacefox/global_map.py",
-        "tests/fixtures/provider/page-normal.json"
+        "tests/fixtures/provider/page-normal.json",
+        "tests/test_catalog_coverage_budget.py",
+        "tests/test_current_metadata_publisher.py",
+        "tests/fixtures/metadata-current/**",
+        "tools/display_corpus.py",
+        "tools/spacefox/catalog_refresh.py",
+        "tools/spacefox/native_motion.py"
       ],
-      "planning_status": "planned; no acceptance or implementation is inferred by this evidence topology"
+      "planning_status": "Author current finite local software witnesses implemented; independent peer and root judgment pending. Retained source-qualified native evidence keeps original boundary."
     },
     {
       "id": "VC02.P1",
@@ -1055,9 +1062,16 @@
         "schemas/**",
         "tests/fixtures/catalog/**",
         "tests/test_catalog.py",
-        "tools/catalog.py"
+        "tools/catalog.py",
+        "tests/test_catalog_coverage_budget.py",
+        "tests/test_current_metadata_publisher.py",
+        "tests/fixtures/metadata-current/**",
+        "tools/display_corpus.py",
+        "tools/spacefox/catalog_refresh.py",
+        "tools/spacefox/current_catalog.py",
+        "tools/spacefox/native_motion.py"
       ],
-      "planning_status": "planned; no acceptance or implementation is inferred by this evidence topology"
+      "planning_status": "Author current finite local software witnesses implemented; independent peer and root judgment pending. Retained source-qualified native evidence keeps original boundary."
     },
     {
       "id": "VC06.P1",
@@ -1134,9 +1148,17 @@
         "watchface/resources*/**",
         "watchface/source/**",
         "watchface/source/VisualCatalog.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tests/test_catalog_coverage_budget.py",
+        "tests/test_current_metadata_publisher.py",
+        "tests/fixtures/metadata-current/**",
+        "tools/display_corpus.py",
+        "tools/spacefox/catalog_refresh.py",
+        "tools/spacefox/current_catalog.py",
+        "tools/spacefox/native_motion.py",
+        "tests/test_catalog_quota_peer.py"
       ],
-      "planning_status": "Current-only witnesses remain planned after executed fixture/harness closure retirement. Retained historical observations do not execute this graph or close product acceptance."
+      "planning_status": "Author current finite local software witnesses implemented; independent peer and root judgment pending. Retained source-qualified native evidence keeps original boundary."
     },
     {
       "id": "VC08.P1",
@@ -5445,7 +5467,8 @@
         "LICENSE",
         "THIRD_PARTY_NOTICES.md",
         "docs/AGENT_SETUP.md",
-        "docs/RELEASE_AND_UPDATES.md"
+        "docs/RELEASE_AND_UPDATES.md",
+        "tools/verify_signing_backup.py"
       ],
       "test_id": "unittest::tests.test_release_identity.SigningCustodyTest.test_actual_encrypted_restore_and_independent_signature",
       "command_id": "production-signing-checks",
@@ -5461,7 +5484,7 @@
           "Physical installation, phone, Store or whole RL02.P1 closure"
         ]
       },
-      "source_sha256": "0d07cca6d599adc8be45d890be4fec8156637107de7847d11fc6ea846e9901e8"
+      "source_sha256": "e7401d2655455bcdc172c980a2089b2b3bfd083b5d29ed5ef7b7dea9c9f2ab3b"
     },
     {
       "id": "RL02.P1.S01.NEGATIVE",
@@ -5470,9 +5493,9 @@
       "scenario": "Update the official app",
       "scenario_fingerprint": "689f2b4e1a999b0886430b8793af3c4007b0e6af2ac7cd1b659daf93e79dea29",
       "setup": "Real OpenSSL-generated disposable RSA4096 custody outside Git, encrypted backup and separate disposable password; no production secrets or native SDK export.",
-      "observable": "Wrong password, corrupt DER, changed digest/public identity and existing destination or bound identity refuse without replacing signing material.",
+      "observable": "Wrong password, corrupt DER, changed digest/public identity, existing destination or bound identity, Git destination, unsafe permissions, symlink and colocated password refuse without replacing signing material or changing backup/password bytes.",
       "red_expectation": "A mismatched identity/signature or successful refused control fails the literal assertions.",
-      "green_expectation": "Wrong password, corrupt DER, changed digest/public identity and existing destination or bound identity refuse without replacing signing material.",
+      "green_expectation": "Wrong password, corrupt DER, changed digest/public identity, existing destination or bound identity, Git destination, unsafe permissions, symlink and colocated password refuse without replacing signing material or changing backup/password bytes.",
       "invalidation_dependencies": [
         "tools/release.py",
         "tools/ReleaseInspector.java",
@@ -5489,7 +5512,8 @@
         "LICENSE",
         "THIRD_PARTY_NOTICES.md",
         "docs/AGENT_SETUP.md",
-        "docs/RELEASE_AND_UPDATES.md"
+        "docs/RELEASE_AND_UPDATES.md",
+        "tools/verify_signing_backup.py"
       ],
       "test_id": "unittest::tests.test_release_identity.SigningCustodyTest.test_wrong_corrupt_swapped_and_existing_identity_refused",
       "command_id": "production-signing-checks",
@@ -5505,7 +5529,7 @@
           "Physical installation, phone, Store or whole RL02.P1 closure"
         ]
       },
-      "source_sha256": "0d07cca6d599adc8be45d890be4fec8156637107de7847d11fc6ea846e9901e8"
+      "source_sha256": "e7401d2655455bcdc172c980a2089b2b3bfd083b5d29ed5ef7b7dea9c9f2ab3b"
     },
     {
       "id": "RL03.P1.S01.POSITIVE",
@@ -6267,22 +6291,30 @@
         "tools/spacefox/bridge_map.py",
         "tools/spacefox/graphics.py",
         "tools/spacefox/global_map.py",
-        "corpus/real-schedule-20261113/**"
+        "corpus/real-schedule-20261113/**",
+        "tests/test_catalog_coverage_budget.py",
+        "tests/test_current_metadata_publisher.py",
+        "tests/fixtures/metadata-current/**",
+        "tools/display_corpus.py",
+        "tools/spacefox/catalog_refresh.py",
+        "tools/spacefox/native_motion.py"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p1_s01_positive_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc01_s01_positive",
+      "command_id": "catalog-coverage-budget",
+      "state": "implemented",
+      "source_path": "tests/test_catalog_coverage_budget.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
-        "owner_replaced": "Provider HTTPS uses exact captured real launch records; only technical identifiers or absent mappings may be mutated.",
-        "allowed_proof": "Current local admission, identity and generic/no-point fallback after actual implementation and execution.",
+        "owner_replaced": "Provider/source HTTP responses and failures use exact captured raw records through controlled response ports; historical status/time and technical typed IDs may be mutated. Real local Git/CLI/current schema3 SFR1M producer execute.",
+        "allowed_proof": "Finite current local admission, complete captured pagination/refusal, coverage distinctions, selected dependency bounds and durable shared quota/restart. Source-qualified existing SDK observations are retained at their named source/toolchain/applicability scope, not new executions.",
         "forbidden_claims": [
-          "Worldwide or live provider completeness",
-          "Physical watch or Store acceptance"
+          "Worldwide or live provider completeness/currentness from captured enumeration",
+          "Surveyed pad accuracy, exact geometry from representative art or generic art as specific",
+          "Physical watch, paired phone, ordinary app peak resources, hosting or Store acceptance"
         ]
       },
-      "planning_note": "Current binding planned; retired predecessor evidence remains historical only. Scenario fingerprint updated only for relocation of the already-consolidated contract clauses into an existing scenario; this case proves only its stated conjunct and its original source-bound execution is unchanged."
+      "planning_note": "Actual finite current software author witness; same author repairs until green; independent peer/root verdict pending. Historical immutable receipts retain original source and proof scope. See evidence/catalog-coverage-budget/FINAL.md.",
+      "source_sha256": "256a0393d2c2297a3a206a42ddd972b1066ca0e858c8e1fbadc9bf9fd62af1df"
     },
     {
       "id": "VC01.P1.S01.NEGATIVE.CURRENT",
@@ -6311,23 +6343,31 @@
         "tools/spacefox/bridge_map.py",
         "tools/spacefox/graphics.py",
         "tools/spacefox/global_map.py",
-        "tests/fixtures/provider/page-normal.json"
+        "tests/fixtures/provider/page-normal.json",
+        "tests/test_catalog_coverage_budget.py",
+        "tests/test_current_metadata_publisher.py",
+        "tests/fixtures/metadata-current/**",
+        "tools/display_corpus.py",
+        "tools/spacefox/catalog_refresh.py",
+        "tools/spacefox/native_motion.py"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p1_s01_negative_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc01_s01_negative",
+      "command_id": "catalog-coverage-budget",
+      "state": "implemented",
+      "source_path": "tests/test_catalog_coverage_budget.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
-        "owner_replaced": "Provider HTTPS uses exact captured real launch records; only technical identifiers or absent mappings may be mutated.",
-        "allowed_proof": "Current local admission, identity and generic/no-point fallback after actual implementation and execution.",
+        "owner_replaced": "Provider/source HTTP responses and failures use exact captured raw records through controlled response ports; historical status/time and technical typed IDs may be mutated. Real local Git/CLI/current schema3 SFR1M producer execute.",
+        "allowed_proof": "Finite current local admission, complete captured pagination/refusal, coverage distinctions, selected dependency bounds and durable shared quota/restart. Source-qualified existing SDK observations are retained at their named source/toolchain/applicability scope, not new executions.",
         "forbidden_claims": [
-          "Worldwide or live provider completeness",
-          "Physical watch or Store acceptance"
+          "Worldwide or live provider completeness/currentness from captured enumeration",
+          "Surveyed pad accuracy, exact geometry from representative art or generic art as specific",
+          "Physical watch, paired phone, ordinary app peak resources, hosting or Store acceptance"
         ]
       },
-      "planning_note": "Exact original method now exists; bounded local observations and source review in evidence/original-open-catalog/apply-r1/verification.json. State remains planned for root judgment then different whole peer. No world-completeness promotion. Scenario fingerprint updated only for relocation of the already-consolidated contract clauses into an existing scenario; this case proves only its stated conjunct and its original source-bound execution is unchanged.",
-      "implementation_note": "Root accepts exact original finite local cases after fresh APPLY and different whole peer. See evidence/judge/original-open-catalog-root-whole.json for controlled identities, valid-provenance negative, current JAXA source/404 limit and retained receipt boundaries; no worldwide closure."
+      "planning_note": "Actual finite current software author witness; same author repairs until green; independent peer/root verdict pending. Historical immutable receipts retain original source and proof scope. See evidence/catalog-coverage-budget/FINAL.md.",
+      "implementation_note": "Root accepts exact original finite local cases after fresh APPLY and different whole peer. See evidence/judge/original-open-catalog-root-whole.json for controlled identities, valid-provenance negative, current JAXA source/404 limit and retained receipt boundaries; no worldwide closure.",
+      "source_sha256": "256a0393d2c2297a3a206a42ddd972b1066ca0e858c8e1fbadc9bf9fd62af1df"
     },
     {
       "id": "VC01.P1.S02.POSITIVE.CURRENT",
@@ -6356,23 +6396,30 @@
         "tools/spacefox/provider.py",
         "tools/spacefox/schedule.py",
         "tools/spacefox/visual_bridge.py",
-        "tools/spacefox/wire.py"
+        "tools/spacefox/wire.py",
+        "tests/test_catalog_coverage_budget.py",
+        "tests/test_current_metadata_publisher.py",
+        "tests/fixtures/metadata-current/**",
+        "tools/display_corpus.py",
+        "tools/spacefox/catalog_refresh.py",
+        "tools/spacefox/native_motion.py"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p1_s02_positive_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc01_s02_positive",
+      "command_id": "catalog-coverage-budget",
+      "state": "implemented",
+      "source_path": "tests/test_catalog_coverage_budget.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
-        "owner_replaced": "Live provider/source transport and physical device replaced by source-pinned real records, original test artwork and local software execution. Technical identifier/coordinate/rights mutations do not invent display names.",
-        "allowed_proof": "Only the stated current-format local mechanics and finite software language admission; no historical receipt transfers to the replacement.",
+        "owner_replaced": "Provider/source HTTP responses and failures use exact captured raw records through controlled response ports; historical status/time and technical typed IDs may be mutated. Real local Git/CLI/current schema3 SFR1M producer execute.",
+        "allowed_proof": "Finite current local admission, complete captured pagination/refusal, coverage distinctions, selected dependency bounds and durable shared quota/restart. Source-qualified existing SDK observations are retained at their named source/toolchain/applicability scope, not new executions.",
         "forbidden_claims": [
-          "Complete real display corpus or actual glyph review without observations",
-          "Actual third-party rights or surveyed coordinates from test metadata",
-          "Human, physical device, phone, hosted or Store acceptance"
+          "Worldwide or live provider completeness/currentness from captured enumeration",
+          "Surveyed pad accuracy, exact geometry from representative art or generic art as specific",
+          "Physical watch, paired phone, ordinary app peak resources, hosting or Store acceptance"
         ]
       },
-      "planning_note": "Real-record/current-format replacement remains planned. Historical method and receipts retain their original scope; no current execution or acceptance is inferred."
+      "planning_note": "Actual finite current software author witness; same author repairs until green; independent peer/root verdict pending. Historical immutable receipts retain original source and proof scope. See evidence/catalog-coverage-budget/FINAL.md.",
+      "source_sha256": "256a0393d2c2297a3a206a42ddd972b1066ca0e858c8e1fbadc9bf9fd62af1df"
     },
     {
       "id": "VC01.P1.S02.NEGATIVE.CURRENT",
@@ -6401,23 +6448,30 @@
         "tools/spacefox/provider.py",
         "tools/spacefox/schedule.py",
         "tools/spacefox/visual_bridge.py",
-        "tools/spacefox/wire.py"
+        "tools/spacefox/wire.py",
+        "tests/test_catalog_coverage_budget.py",
+        "tests/test_current_metadata_publisher.py",
+        "tests/fixtures/metadata-current/**",
+        "tools/display_corpus.py",
+        "tools/spacefox/catalog_refresh.py",
+        "tools/spacefox/native_motion.py"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p1_s02_negative_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc01_s02_negative",
+      "command_id": "catalog-coverage-budget",
+      "state": "implemented",
+      "source_path": "tests/test_catalog_coverage_budget.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
-        "owner_replaced": "Live provider/source transport and physical device replaced by source-pinned real records, original test artwork and local software execution. Technical identifier/coordinate/rights mutations do not invent display names.",
-        "allowed_proof": "Only the stated current-format local mechanics and finite software language admission; no historical receipt transfers to the replacement.",
+        "owner_replaced": "Provider/source HTTP responses and failures use exact captured raw records through controlled response ports; historical status/time and technical typed IDs may be mutated. Real local Git/CLI/current schema3 SFR1M producer execute.",
+        "allowed_proof": "Finite current local admission, complete captured pagination/refusal, coverage distinctions, selected dependency bounds and durable shared quota/restart. Source-qualified existing SDK observations are retained at their named source/toolchain/applicability scope, not new executions.",
         "forbidden_claims": [
-          "Complete real display corpus or actual glyph review without observations",
-          "Actual third-party rights or surveyed coordinates from test metadata",
-          "Human, physical device, phone, hosted or Store acceptance"
+          "Worldwide or live provider completeness/currentness from captured enumeration",
+          "Surveyed pad accuracy, exact geometry from representative art or generic art as specific",
+          "Physical watch, paired phone, ordinary app peak resources, hosting or Store acceptance"
         ]
       },
-      "planning_note": "Real-record/current-format replacement remains planned. Historical method and receipts retain their original scope; no current execution or acceptance is inferred."
+      "planning_note": "Actual finite current software author witness; same author repairs until green; independent peer/root verdict pending. Historical immutable receipts retain original source and proof scope. See evidence/catalog-coverage-budget/FINAL.md.",
+      "source_sha256": "256a0393d2c2297a3a206a42ddd972b1066ca0e858c8e1fbadc9bf9fd62af1df"
     },
     {
       "id": "VC02.P1.S01.POSITIVE.CURRENT",
@@ -6565,7 +6619,7 @@
       "polarity": "positive",
       "scenario": "Only the first result page was imported",
       "scenario_fingerprint": "82ce2776425d1cdbad264232d8a8f820854fb48fc8e13b0e5f5b05c3697eedf6",
-      "setup": "Use verbatim display strings from captured real corpus records (or the existing sourced JAXA S-520/Uchinoura supplement for the scientific-source scenario), never CatalogTest synthetic display setup. Exercise sole current schema-3 SFR1M /feed.json where a feed is needed. Preserve the following technical scenario: paginated inventory count3, page1 IDs1/2 nextpage, page2 ID3",
+      "setup": "All 19 captured real launch pages since 2021-11-13UTC through next=null (1822 unique IDs) plus all33 captured typed-table pages (103/350/532/251); negative omits page or mutates only technical IDs/counts and preserves accepted complete output bytes.",
       "observable": "three unique IDs and pages reconcile before completeness claim",
       "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: three unique IDs and pages reconcile before completeness claim",
       "green_expectation": "three unique IDs and pages reconcile before completeness claim",
@@ -6576,23 +6630,31 @@
         "schemas/**",
         "tests/fixtures/catalog/**",
         "tests/test_current_format_acceptance.py",
-        "tools/catalog.py"
+        "tools/catalog.py",
+        "tests/test_catalog_coverage_budget.py",
+        "tests/test_current_metadata_publisher.py",
+        "tests/fixtures/metadata-current/**",
+        "tools/display_corpus.py",
+        "tools/spacefox/catalog_refresh.py",
+        "tools/spacefox/current_catalog.py",
+        "tools/spacefox/native_motion.py"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p1_s01_positive_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc04_s01_positive",
+      "command_id": "catalog-coverage-budget",
+      "state": "implemented",
+      "source_path": "tests/test_catalog_coverage_budget.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
-        "owner_replaced": "Live provider/source transport and physical device replaced by source-pinned real records, original test artwork and local software execution. Technical identifier/coordinate/rights mutations do not invent display names.",
-        "allowed_proof": "Only the stated current-format local mechanics and finite software language admission; no historical receipt transfers to the replacement.",
+        "owner_replaced": "Provider/source HTTP responses and failures use exact captured raw records through controlled response ports; historical status/time and technical typed IDs may be mutated. Real local Git/CLI/current schema3 SFR1M producer execute.",
+        "allowed_proof": "Finite current local admission, complete captured pagination/refusal, coverage distinctions, selected dependency bounds and durable shared quota/restart. Source-qualified existing SDK observations are retained at their named source/toolchain/applicability scope, not new executions.",
         "forbidden_claims": [
-          "Complete real display corpus or actual glyph review without observations",
-          "Actual third-party rights or surveyed coordinates from test metadata",
-          "Human, physical device, phone, hosted or Store acceptance"
+          "Worldwide or live provider completeness/currentness from captured enumeration",
+          "Surveyed pad accuracy, exact geometry from representative art or generic art as specific",
+          "Physical watch, paired phone, ordinary app peak resources, hosting or Store acceptance"
         ]
       },
-      "planning_note": "Real-record/current-format replacement remains planned. Historical method and receipts retain their original scope; no current execution or acceptance is inferred."
+      "planning_note": "Actual finite current software author witness; same author repairs until green; independent peer/root verdict pending. Historical immutable receipts retain original source and proof scope. See evidence/catalog-coverage-budget/FINAL.md.",
+      "source_sha256": "256a0393d2c2297a3a206a42ddd972b1066ca0e858c8e1fbadc9bf9fd62af1df"
     },
     {
       "id": "VC04.P1.S01.NEGATIVE.CURRENT",
@@ -6600,7 +6662,7 @@
       "polarity": "negative",
       "scenario": "Only the first result page was imported",
       "scenario_fingerprint": "82ce2776425d1cdbad264232d8a8f820854fb48fc8e13b0e5f5b05c3697eedf6",
-      "setup": "Use verbatim display strings from captured real corpus records (or the existing sourced JAXA S-520/Uchinoura supplement for the scientific-source scenario), never CatalogTest synthetic display setup. Exercise sole current schema-3 SFR1M /feed.json where a feed is needed. Preserve the following technical scenario: omit page2, duplicateID2, or count drift to4 midtraversal",
+      "setup": "All 19 captured real launch pages since 2021-11-13UTC through next=null (1822 unique IDs) plus all33 captured typed-table pages (103/350/532/251); negative omits page or mutates only technical IDs/counts and preserves accepted complete output bytes.",
       "observable": "import completeness fails and accepted complete revision remains",
       "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: import completeness fails and accepted complete revision remains",
       "green_expectation": "import completeness fails and accepted complete revision remains",
@@ -6611,23 +6673,31 @@
         "schemas/**",
         "tests/fixtures/catalog/**",
         "tests/test_current_format_acceptance.py",
-        "tools/catalog.py"
+        "tools/catalog.py",
+        "tests/test_catalog_coverage_budget.py",
+        "tests/test_current_metadata_publisher.py",
+        "tests/fixtures/metadata-current/**",
+        "tools/display_corpus.py",
+        "tools/spacefox/catalog_refresh.py",
+        "tools/spacefox/current_catalog.py",
+        "tools/spacefox/native_motion.py"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p1_s01_negative_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc04_s01_negative",
+      "command_id": "catalog-coverage-budget",
+      "state": "implemented",
+      "source_path": "tests/test_catalog_coverage_budget.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
-        "owner_replaced": "Live provider/source transport and physical device replaced by source-pinned real records, original test artwork and local software execution. Technical identifier/coordinate/rights mutations do not invent display names.",
-        "allowed_proof": "Only the stated current-format local mechanics and finite software language admission; no historical receipt transfers to the replacement.",
+        "owner_replaced": "Provider/source HTTP responses and failures use exact captured raw records through controlled response ports; historical status/time and technical typed IDs may be mutated. Real local Git/CLI/current schema3 SFR1M producer execute.",
+        "allowed_proof": "Finite current local admission, complete captured pagination/refusal, coverage distinctions, selected dependency bounds and durable shared quota/restart. Source-qualified existing SDK observations are retained at their named source/toolchain/applicability scope, not new executions.",
         "forbidden_claims": [
-          "Complete real display corpus or actual glyph review without observations",
-          "Actual third-party rights or surveyed coordinates from test metadata",
-          "Human, physical device, phone, hosted or Store acceptance"
+          "Worldwide or live provider completeness/currentness from captured enumeration",
+          "Surveyed pad accuracy, exact geometry from representative art or generic art as specific",
+          "Physical watch, paired phone, ordinary app peak resources, hosting or Store acceptance"
         ]
       },
-      "planning_note": "Real-record/current-format replacement remains planned. Historical method and receipts retain their original scope; no current execution or acceptance is inferred."
+      "planning_note": "Actual finite current software author witness; same author repairs until green; independent peer/root verdict pending. Historical immutable receipts retain original source and proof scope. See evidence/catalog-coverage-budget/FINAL.md.",
+      "source_sha256": "256a0393d2c2297a3a206a42ddd972b1066ca0e858c8e1fbadc9bf9fd62af1df"
     },
     {
       "id": "VC04.P1.S02.POSITIVE.CURRENT",
@@ -6646,23 +6716,31 @@
         "schemas/**",
         "tests/fixtures/catalog/**",
         "tests/test_current_format_acceptance.py",
-        "tools/catalog.py"
+        "tools/catalog.py",
+        "tests/test_catalog_coverage_budget.py",
+        "tests/test_current_metadata_publisher.py",
+        "tests/fixtures/metadata-current/**",
+        "tools/display_corpus.py",
+        "tools/spacefox/catalog_refresh.py",
+        "tools/spacefox/current_catalog.py",
+        "tools/spacefox/native_motion.py"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p1_s02_positive_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc04_s02_positive",
+      "command_id": "catalog-coverage-budget",
+      "state": "implemented",
+      "source_path": "tests/test_catalog_coverage_budget.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
-        "owner_replaced": "Live provider/source transport and physical device replaced by source-pinned real records, original test artwork and local software execution. Technical identifier/coordinate/rights mutations do not invent display names.",
-        "allowed_proof": "Only the stated current-format local mechanics and finite software language admission; no historical receipt transfers to the replacement.",
+        "owner_replaced": "Provider/source HTTP responses and failures use exact captured raw records through controlled response ports; historical status/time and technical typed IDs may be mutated. Real local Git/CLI/current schema3 SFR1M producer execute.",
+        "allowed_proof": "Finite current local admission, complete captured pagination/refusal, coverage distinctions, selected dependency bounds and durable shared quota/restart. Source-qualified existing SDK observations are retained at their named source/toolchain/applicability scope, not new executions.",
         "forbidden_claims": [
-          "Complete real display corpus or actual glyph review without observations",
-          "Actual third-party rights or surveyed coordinates from test metadata",
-          "Human, physical device, phone, hosted or Store acceptance"
+          "Worldwide or live provider completeness/currentness from captured enumeration",
+          "Surveyed pad accuracy, exact geometry from representative art or generic art as specific",
+          "Physical watch, paired phone, ordinary app peak resources, hosting or Store acceptance"
         ]
       },
-      "planning_note": "Real-record/current-format replacement remains planned. Historical method and receipts retain their original scope; no current execution or acceptance is inferred."
+      "planning_note": "Actual finite current software author witness; same author repairs until green; independent peer/root verdict pending. Historical immutable receipts retain original source and proof scope. See evidence/catalog-coverage-budget/FINAL.md.",
+      "source_sha256": "256a0393d2c2297a3a206a42ddd972b1066ca0e858c8e1fbadc9bf9fd62af1df"
     },
     {
       "id": "VC04.P1.S02.NEGATIVE.CURRENT",
@@ -6681,23 +6759,31 @@
         "schemas/**",
         "tests/fixtures/catalog/**",
         "tests/test_current_format_acceptance.py",
-        "tools/catalog.py"
+        "tools/catalog.py",
+        "tests/test_catalog_coverage_budget.py",
+        "tests/test_current_metadata_publisher.py",
+        "tests/fixtures/metadata-current/**",
+        "tools/display_corpus.py",
+        "tools/spacefox/catalog_refresh.py",
+        "tools/spacefox/current_catalog.py",
+        "tools/spacefox/native_motion.py"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p1_s02_negative_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc04_s02_negative",
+      "command_id": "catalog-coverage-budget",
+      "state": "implemented",
+      "source_path": "tests/test_catalog_coverage_budget.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
-        "owner_replaced": "Live provider/source transport and physical device replaced by source-pinned real records, original test artwork and local software execution. Technical identifier/coordinate/rights mutations do not invent display names.",
-        "allowed_proof": "Only the stated current-format local mechanics and finite software language admission; no historical receipt transfers to the replacement.",
+        "owner_replaced": "Provider/source HTTP responses and failures use exact captured raw records through controlled response ports; historical status/time and technical typed IDs may be mutated. Real local Git/CLI/current schema3 SFR1M producer execute.",
+        "allowed_proof": "Finite current local admission, complete captured pagination/refusal, coverage distinctions, selected dependency bounds and durable shared quota/restart. Source-qualified existing SDK observations are retained at their named source/toolchain/applicability scope, not new executions.",
         "forbidden_claims": [
-          "Complete real display corpus or actual glyph review without observations",
-          "Actual third-party rights or surveyed coordinates from test metadata",
-          "Human, physical device, phone, hosted or Store acceptance"
+          "Worldwide or live provider completeness/currentness from captured enumeration",
+          "Surveyed pad accuracy, exact geometry from representative art or generic art as specific",
+          "Physical watch, paired phone, ordinary app peak resources, hosting or Store acceptance"
         ]
       },
-      "planning_note": "Real-record/current-format replacement remains planned. Historical method and receipts retain their original scope; no current execution or acceptance is inferred."
+      "planning_note": "Actual finite current software author witness; same author repairs until green; independent peer/root verdict pending. Historical immutable receipts retain original source and proof scope. See evidence/catalog-coverage-budget/FINAL.md.",
+      "source_sha256": "256a0393d2c2297a3a206a42ddd972b1066ca0e858c8e1fbadc9bf9fd62af1df"
     },
     {
       "id": "VC06.P1.S01.POSITIVE",
@@ -7059,7 +7145,7 @@
       "polarity": "positive",
       "scenario": "Full catalog exceeds watch limits",
       "scenario_fingerprint": "f9a4f6972efb71d4a47df66e199ff21ebd9b764ef9aa792cbf1e75f0f08a9d04",
-      "setup": "publisher inventory10000entries, selected two launches sharing few dependencies",
+      "setup": "Actual complete finite catalog (215 configurations/224 sites/683 assets), captured Starship event and current eligibility selection; current schema3 SFR1M selected dependency closure.",
       "observable": "bounded feed/slice contains only necessary closure and verified shards",
       "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: bounded feed/slice contains only necessary closure and verified shards",
       "green_expectation": "bounded feed/slice contains only necessary closure and verified shards",
@@ -7083,24 +7169,33 @@
         "watchface/resources*/**",
         "watchface/source/**",
         "watchface/source/VisualCatalog.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tests/test_catalog_coverage_budget.py",
+        "tests/test_current_metadata_publisher.py",
+        "tests/fixtures/metadata-current/**",
+        "tools/display_corpus.py",
+        "tools/spacefox/catalog_refresh.py",
+        "tools/spacefox/current_catalog.py",
+        "tools/spacefox/native_motion.py"
       ],
-      "test_id": "unittest::tests.test_native_visual_transport.NativeVisualTransportTest.test_full_catalog_exceeds_watch_limits_positive",
-      "command_id": "transport-checks",
-      "state": "planned",
-      "source_path": "tests/test_native_visual_transport.py",
+      "test_id": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s01_positive",
+      "command_id": "catalog-coverage-budget",
+      "state": "implemented",
+      "source_path": "tests/test_catalog_coverage_budget.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
-        "owner_replaced": "Physical FR165 firmware/hardware when running the actual Monkey C unit/simulator harness",
-        "allowed_proof": "Only actual compiled Monkey C or simulator behavior and measured simulator limits once those tools/tests exist.",
+        "owner_replaced": "Provider/source HTTP responses and failures use exact captured raw records through controlled response ports; historical status/time and technical typed IDs may be mutated. Real local Git/CLI/current schema3 SFR1M producer execute.",
+        "allowed_proof": "Finite current local admission, complete captured pagination/refusal, coverage distinctions, selected dependency bounds and durable shared quota/restart. Source-qualified existing SDK observations are retained at their named source/toolchain/applicability scope, not new executions.",
         "forbidden_claims": [
-          "Physical FR165 RAM/storage/battery/glyph qualification",
-          "Real paired-phone background delivery",
-          "Garmin Store approval or approved binary install"
+          "Worldwide or live provider completeness/currentness from captured enumeration",
+          "Surveyed pad accuracy, exact geometry from representative art or generic art as specific",
+          "Physical watch, paired phone, ordinary app peak resources, hosting or Store acceptance"
         ]
       },
-      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review.",
-      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; exact native tests/compiles have not yet been implemented or executed. Physical-device proof remains absent."
+      "planning_note": "Actual finite current software author witness; same author repairs until green; independent peer/root verdict pending. Historical immutable receipts retain original source and proof scope. See evidence/catalog-coverage-budget/FINAL.md.",
+      "retired_workload_setup": "publisher inventory10000entries, selected two launches sharing few dependencies",
+      "workload_decision": "Explicit user finite actual dataset/no-stress instruction retires only 10000/9998 workload size/mechanics; preserves bounded selected dependency, cache and no-global-fetch invariant. Historical immutable evidence is not rewritten or relabelled passing.",
+      "source_sha256": "256a0393d2c2297a3a206a42ddd972b1066ca0e858c8e1fbadc9bf9fd62af1df"
     },
     {
       "id": "VC07.P1.S01.NEGATIVE",
@@ -7108,7 +7203,7 @@
       "polarity": "negative",
       "scenario": "Full catalog exceeds watch limits",
       "scenario_fingerprint": "f9a4f6972efb71d4a47df66e199ff21ebd9b764ef9aa792cbf1e75f0f08a9d04",
-      "setup": "append9998unrelated records without changing selected dependency set",
+      "setup": "Remove one real unselected SpaceshipTwo asset, retain independently repinned eligibility, then restore the actual full finite catalog. Exact selected launch and dependencies stay the same; no synthesized records or display names.",
       "observable": "watch payload/cache do not grow with global cardinality or fetch global manifest",
       "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: watch payload/cache do not grow with global cardinality or fetch global manifest",
       "green_expectation": "watch payload/cache do not grow with global cardinality or fetch global manifest",
@@ -7132,24 +7227,33 @@
         "watchface/resources*/**",
         "watchface/source/**",
         "watchface/source/VisualCatalog.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tests/test_catalog_coverage_budget.py",
+        "tests/test_current_metadata_publisher.py",
+        "tests/fixtures/metadata-current/**",
+        "tools/display_corpus.py",
+        "tools/spacefox/catalog_refresh.py",
+        "tools/spacefox/current_catalog.py",
+        "tools/spacefox/native_motion.py"
       ],
-      "test_id": "unittest::tests.test_native_visual_transport.NativeVisualTransportTest.test_full_catalog_exceeds_watch_limits_negative",
-      "command_id": "transport-checks",
-      "state": "planned",
-      "source_path": "tests/test_native_visual_transport.py",
+      "test_id": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s01_negative",
+      "command_id": "catalog-coverage-budget",
+      "state": "implemented",
+      "source_path": "tests/test_catalog_coverage_budget.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
-        "owner_replaced": "Physical FR165 firmware/hardware when running the actual Monkey C unit/simulator harness",
-        "allowed_proof": "Only actual compiled Monkey C or simulator behavior and measured simulator limits once those tools/tests exist.",
+        "owner_replaced": "Provider/source HTTP responses and failures use exact captured raw records through controlled response ports; historical status/time and technical typed IDs may be mutated. Real local Git/CLI/current schema3 SFR1M producer execute.",
+        "allowed_proof": "Finite current local admission, complete captured pagination/refusal, coverage distinctions, selected dependency bounds and durable shared quota/restart. Source-qualified existing SDK observations are retained at their named source/toolchain/applicability scope, not new executions.",
         "forbidden_claims": [
-          "Physical FR165 RAM/storage/battery/glyph qualification",
-          "Real paired-phone background delivery",
-          "Garmin Store approval or approved binary install"
+          "Worldwide or live provider completeness/currentness from captured enumeration",
+          "Surveyed pad accuracy, exact geometry from representative art or generic art as specific",
+          "Physical watch, paired phone, ordinary app peak resources, hosting or Store acceptance"
         ]
       },
-      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review.",
-      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; exact native tests/compiles have not yet been implemented or executed. Physical-device proof remains absent."
+      "planning_note": "Actual finite current software author witness; same author repairs until green; independent peer/root verdict pending. Historical immutable receipts retain original source and proof scope. See evidence/catalog-coverage-budget/FINAL.md.",
+      "retired_workload_setup": "append9998unrelated records without changing selected dependency set",
+      "workload_decision": "Explicit user finite actual dataset/no-stress instruction retires only 10000/9998 workload size/mechanics; preserves bounded selected dependency, cache and no-global-fetch invariant. Historical immutable evidence is not rewritten or relabelled passing.",
+      "source_sha256": "256a0393d2c2297a3a206a42ddd972b1066ca0e858c8e1fbadc9bf9fd62af1df"
     },
     {
       "id": "VC08.P1.S01.POSITIVE.CURRENT",
@@ -16257,24 +16361,33 @@
         "watchface/resources*/**",
         "watchface/source/**",
         "watchface/source/VisualCatalog.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tests/test_catalog_coverage_budget.py",
+        "tests/test_current_metadata_publisher.py",
+        "tests/fixtures/metadata-current/**",
+        "tools/display_corpus.py",
+        "tools/spacefox/current_catalog.py",
+        "tools/spacefox/native_motion.py",
+        "tests/test_catalog_quota_peer.py"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p1_s02_positive_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_positive",
+      "command_id": "catalog-quota-original-scenarios",
+      "state": "implemented",
+      "source_path": "tests/test_catalog_coverage_budget.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
-        "owner_replaced": "Provider/phone/platform failure boundary only as explicitly selected by the future actual current-format witness.",
-        "allowed_proof": "Only the retained scenario-specific current-format local/native observation, with exact actual source and toolchain.",
+        "owner_replaced": "Provider/source HTTP responses and failures use exact captured raw records through controlled response ports; historical status/time and technical typed IDs may be mutated. Real local Git/CLI/current schema3 SFR1M producer execute.",
+        "allowed_proof": "Finite current local admission, complete captured pagination/refusal, coverage distinctions, selected dependency bounds and durable shared quota/restart. Source-qualified existing SDK observations are retained at their named source/toolchain/applicability scope, not new executions.",
         "forbidden_claims": [
-          "Complete real provider corpus or worldwide coverage from a fixture",
-          "Phone/physical/Store/cloud/public acceptance without actual observation"
+          "Worldwide or live provider completeness/currentness from captured enumeration",
+          "Surveyed pad accuracy, exact geometry from representative art or generic art as specific",
+          "Physical watch, paired phone, ordinary app peak resources, hosting or Store acceptance"
         ]
       },
-      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate.",
+      "planning_note": "Actual finite current software author witness; same author repairs until green; independent peer/root verdict pending. Historical immutable receipts retain original source and proof scope. See evidence/catalog-coverage-budget/FINAL.md. Required original-setup controls execute together with both case methods through catalog-quota-original-scenarios; see PEER-FINAL.md and quota-closure-run.json.",
       "original_test_id": "unittest::tests.test_publisher_state.PublisherStateTest.test_catalog_refresh_competes_with_launch_updates_positive",
-      "original_setup": "quota15/hour with4schedulepoll reservations and queued catalog pagination"
+      "original_setup": "quota15/hour with4schedulepoll reservations and queued catalog pagination",
+      "source_sha256": "256a0393d2c2297a3a206a42ddd972b1066ca0e858c8e1fbadc9bf9fd62af1df"
     },
     {
       "id": "VC07.P1.S02.NEGATIVE.CURRENT",
@@ -16310,24 +16423,33 @@
         "watchface/resources*/**",
         "watchface/source/**",
         "watchface/source/VisualCatalog.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tests/test_catalog_coverage_budget.py",
+        "tests/test_current_metadata_publisher.py",
+        "tests/fixtures/metadata-current/**",
+        "tools/display_corpus.py",
+        "tools/spacefox/current_catalog.py",
+        "tools/spacefox/native_motion.py",
+        "tests/test_catalog_quota_peer.py"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p1_s02_negative_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_negative",
+      "command_id": "catalog-quota-original-scenarios",
+      "state": "implemented",
+      "source_path": "tests/test_catalog_coverage_budget.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
-        "owner_replaced": "Provider/phone/platform failure boundary only as explicitly selected by the future actual current-format witness.",
-        "allowed_proof": "Only the retained scenario-specific current-format local/native observation, with exact actual source and toolchain.",
+        "owner_replaced": "Provider/source HTTP responses and failures use exact captured raw records through controlled response ports; historical status/time and technical typed IDs may be mutated. Real local Git/CLI/current schema3 SFR1M producer execute.",
+        "allowed_proof": "Finite current local admission, complete captured pagination/refusal, coverage distinctions, selected dependency bounds and durable shared quota/restart. Source-qualified existing SDK observations are retained at their named source/toolchain/applicability scope, not new executions.",
         "forbidden_claims": [
-          "Complete real provider corpus or worldwide coverage from a fixture",
-          "Phone/physical/Store/cloud/public acceptance without actual observation"
+          "Worldwide or live provider completeness/currentness from captured enumeration",
+          "Surveyed pad accuracy, exact geometry from representative art or generic art as specific",
+          "Physical watch, paired phone, ordinary app peak resources, hosting or Store acceptance"
         ]
       },
-      "planning_note": "PLANNED current-only replacement. This method/binding is not an implementation or observation. Historical test and original exact assertions are retained in the retirement/source-closure audit, not rerun as a current gate.",
+      "planning_note": "Actual finite current software author witness; same author repairs until green; independent peer/root verdict pending. Historical immutable receipts retain original source and proof scope. See evidence/catalog-coverage-budget/FINAL.md. Required original-setup controls execute together with both case methods through catalog-quota-original-scenarios; see PEER-FINAL.md and quota-closure-run.json.",
       "original_test_id": "unittest::tests.test_publisher_state.PublisherStateTest.test_catalog_refresh_competes_with_launch_updates_negative",
-      "original_setup": "manualretry consumes final slot while catalog worker also tries a request"
+      "original_setup": "manualretry consumes final slot while catalog worker also tries a request",
+      "source_sha256": "256a0393d2c2297a3a206a42ddd972b1066ca0e858c8e1fbadc9bf9fd62af1df"
     },
     {
       "id": "LS02.P2.S01.POSITIVE.CURRENT",
@@ -34564,7 +34686,7 @@
       "timeout_seconds": 60,
       "authority": "local",
       "planned_boundary": "EXTERNAL_BOUNDARY",
-      "notes": "Current real disposable OpenSSL custody controls only. Obsolete initial-production SDK campaign retired after publication; historical production receipts remain immutable. No production secrets, compiler, Simulator/device/Store."
+      "notes": "Real disposable OpenSSL custody controls with actual Git/permissions/symlink/separate-password guards. Dated opt-in actual-production observation is supplemental evidence, never an automated data job or SDK export. No physical/phone/Store/offsite proof."
     },
     {
       "id": "native-aod-recovery-observed",
@@ -35186,6 +35308,41 @@
       "timeout_seconds": 900,
       "authority": "local",
       "notes": "Uses the tracked source-bound native-all-site-maps evidence by default; SPACEFOX_NATIVE_ALL_SITE_EVIDENCE may select an explicit alternative. Does not start SDK or claim physical/resource acceptance."
+    },
+    {
+      "id": "catalog-coverage-budget",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_catalog_coverage_budget"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 600,
+      "authority": "local",
+      "notes": "Twelve finite current catalog admission/provenance/coverage/selected-closure/shared-budget cases. Actual local Git/CLI, controlled captured response port. No provider/SDK/physical/network service execution."
+    },
+    {
+      "id": "catalog-quota-original-scenarios",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_positive",
+        "tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_negative",
+        "tests.test_catalog_quota_peer.CatalogQuotaPeerTest.test_four_schedule_reservations_reopen_then_catalog_and_due_schedule",
+        "tests.test_catalog_quota_peer.CatalogQuotaPeerTest.test_manual_fifteenth_slot_blocks_queued_stale_and_fresh_collectors"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 600,
+      "authority": "local",
+      "notes": "Both original catalog-quota case methods and their required four-poll/manual-fifteenth-slot directed controls execute together. Captured response transport, real local Git."
     },
     {
       "id": "native-feed-bounds-current",

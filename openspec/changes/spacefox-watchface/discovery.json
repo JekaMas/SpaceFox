@@ -306,8 +306,6 @@
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p8_s01_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls06_p1_s01_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls06_p1_s01_positive_current",
-      "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_raw_depth_and_storage_negative",
-      "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_provisional_and_raw_positive",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s04_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s04_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p2_s01_negative_current",
@@ -412,18 +410,10 @@
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_rl07_p1_s02_positive",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_rl08_p1_s01_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_rl08_p1_s01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p1_s01_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p1_s01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p1_s02_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p1_s02_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc02_p1_s01_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc02_p1_s01_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc02_p1_s02_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc02_p1_s02_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p1_s01_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p1_s01_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p1_s02_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p1_s02_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p2_c01_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p2_c02_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p2_c03_positive_current",
@@ -440,8 +430,6 @@
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc05_p3_c10_negative",
       "unittest::tests.test_native_current_pad_geography.CurrentPadGeographyTest.test_vc06_p1_s03_negative_current",
       "unittest::tests.test_native_current_pad_geography.CurrentPadGeographyTest.test_vc06_p1_s03_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p1_s02_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p1_s02_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p4_c01_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p4_c02_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p4_c03_positive_current",
@@ -648,8 +636,6 @@
       "unittest::tests.test_native_timing.NativeTimingTest.test_freshness_threshold_reached_positive",
       "unittest::tests.test_native_timing.NativeTimingTest.test_publisher_stops_but_the_file_remains_available_negative",
       "unittest::tests.test_native_timing.NativeTimingTest.test_publisher_stops_but_the_file_remains_available_positive",
-      "unittest::tests.test_native_visual_transport.NativeVisualTransportTest.test_full_catalog_exceeds_watch_limits_negative",
-      "unittest::tests.test_native_visual_transport.NativeVisualTransportTest.test_full_catalog_exceeds_watch_limits_positive",
       "unittest::tests.test_native_visual_transport.NativeVisualTransportTest.test_global_catalog_grows_outside_the_selected_slice_negative",
       "unittest::tests.test_native_visual_transport.NativeVisualTransportTest.test_global_catalog_grows_outside_the_selected_slice_positive",
       "unittest::tests.test_native_visual_transport.NativeVisualTransportTest.test_global_manifest_has_thousands_of_assets_negative",
@@ -682,7 +668,21 @@
       "unittest::tests.test_release_identity.SigningCustodyTest.test_actual_encrypted_restore_and_independent_signature",
       "unittest::tests.test_release_identity.SigningCustodyTest.test_wrong_corrupt_swapped_and_existing_identity_refused",
       "unittest::tests.test_typed_operator_presentation.TypedOperatorPresentationTest.test_source_bound_abbreviation",
-      "unittest::tests.test_typed_operator_presentation.TypedOperatorPresentationTest.test_unqualified_abbreviation_rejection"
+      "unittest::tests.test_typed_operator_presentation.TypedOperatorPresentationTest.test_unqualified_abbreviation_rejection",
+      "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc01_s01_negative",
+      "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc01_s01_positive",
+      "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc01_s02_negative",
+      "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc01_s02_positive",
+      "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc04_s01_negative",
+      "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc04_s01_positive",
+      "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc04_s02_negative",
+      "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc04_s02_positive",
+      "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_negative",
+      "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_positive",
+      "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s01_negative",
+      "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s01_positive",
+      "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_raw_depth_and_storage_negative",
+      "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_provisional_and_raw_positive"
     ]
   },
   "reviews": [
@@ -821,10 +821,10 @@
         "unittest::tests.test_native_geography.NativeGeographyTest.test_small_island_or_date_line_site_negative",
         "unittest::tests.test_native_geography.NativeGeographyTest.test_moving_or_unavailable_departure_point_positive",
         "unittest::tests.test_native_geography.NativeGeographyTest.test_moving_or_unavailable_departure_point_negative",
-        "unittest::tests.test_native_visual_transport.NativeVisualTransportTest.test_full_catalog_exceeds_watch_limits_positive",
-        "unittest::tests.test_native_visual_transport.NativeVisualTransportTest.test_full_catalog_exceeds_watch_limits_negative",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p1_s02_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p1_s02_negative_current",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s01_positive",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s01_negative",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_positive",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_negative",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc08_p1_s02_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc08_p1_s02_negative_current",
         "unittest::tests.test_native_storage.NativeStorageTest.test_cache_is_full_during_an_asset_replacement_positive",
@@ -4757,8 +4757,8 @@
         "VC07.P1"
       ],
       "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p1_s02_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p1_s02_negative_current"
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_positive",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_negative"
       ],
       "searches": [
         {
@@ -5471,8 +5471,8 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_rl07_p1_s02_positive",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_rl08_p1_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_rl08_p1_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p1_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p1_s01_positive_current",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc01_s01_negative",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc01_s01_positive",
         "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_source_integrity_and_typed_refusal",
         "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_reviewed_typed_catalog_and_unknown_position",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc05_p3_c10_negative",
@@ -5713,16 +5713,16 @@
         "WF12.P3"
       ],
       "test_ids": [
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p1_s02_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p1_s02_negative_current",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc01_s02_positive",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc01_s02_negative",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc02_p1_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc02_p1_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc02_p1_s02_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc02_p1_s02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p1_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p1_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p1_s02_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p1_s02_negative_current",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc04_s01_positive",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc04_s01_negative",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc04_s02_positive",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc04_s02_negative",
         "unittest::tests.test_native_current_pad_geography.CurrentPadGeographyTest.test_vc06_p1_s03_positive_current",
         "unittest::tests.test_native_current_pad_geography.CurrentPadGeographyTest.test_vc06_p1_s03_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc08_p1_s01_positive_current",
@@ -5965,8 +5965,6 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p8_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls06_p1_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls06_p1_s01_positive_current",
-        "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_raw_depth_and_storage_negative",
-        "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_provisional_and_raw_positive",
         "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_unchanged_refresh_negative",
         "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_known_new_time_positive",
         "unittest::tests.test_basic_reschedule.BasicRescheduleTest.test_different_launch_negative",
@@ -6077,14 +6075,16 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p4_c02_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p4_c03_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p4_c04_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p1_s02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p1_s02_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p4_c01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p4_c02_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p4_c03_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p4_c04_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf08_p2_s01_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf08_p2_s01_positive_current"
+        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf08_p2_s01_positive_current",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_negative",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_positive",
+        "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_raw_depth_and_storage_negative",
+        "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_provisional_and_raw_positive"
       ],
       "searches": [
         {
@@ -7205,6 +7205,136 @@
       ],
       "disposition": "current_change",
       "rationale": "Independent peer inspected source, assertions, original builds/logs/captures and the public closure. Repaired unchecked proof manifest and unbound current host-producer applicability; affected 12-case batch passes. Source-qualified FR165 simulator evidence remains separate from feed admission, ordinary resources, physical, phone and Store acceptance; root judgment pending."
+    },
+    {
+      "id": "catalog-coverage-budget-current-finite-author",
+      "question": "Do the complete finite captured catalog/corpus, current producer and durable refresh preserve open admission, honest coverage, selected dependency bounds and shared schedule quota?",
+      "property_ids": [
+        "VC01.P1",
+        "VC04.P1",
+        "VC07.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc01_s01_positive",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc01_s01_negative",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc01_s02_positive",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc01_s02_negative",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc04_s01_positive",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc04_s01_negative",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc04_s02_positive",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc04_s02_negative",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s01_positive",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s01_negative",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_positive",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_negative"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Known catalog.py/catalog_refresh.py/current_catalog.py/native_motion.py owners, complete captures and retained native selected-closure applicability.",
+          "outcome": "New cohesive twelve-case current module replaces planned placeholder routes; no production byte changes. Maintained curated reference, full typed-provider capture and source-qualified current cohort remain distinct; finite real unrelated-asset growth replaces only obsolete 10k workload mechanics.",
+          "results": [
+            {
+              "path": "tools/spacefox/catalog.py",
+              "classification": "reusable_unchanged",
+              "reason": "Production catalog/provenance/coverage validation."
+            },
+            {
+              "path": "tools/spacefox/catalog_refresh.py",
+              "classification": "reusable_unchanged",
+              "reason": "Current pagination, checkpoint and budget owner."
+            },
+            {
+              "path": "tools/spacefox/native_motion.py",
+              "classification": "reusable_unchanged",
+              "reason": "Actual current selected dependency producer."
+            },
+            {
+              "path": "tests/test_catalog_coverage_budget.py",
+              "classification": "test_proof",
+              "reason": "Actual records and independent literal refusal/bound assertions."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Known exact assigned owners.",
+          "reason": "No unknown code ownership.",
+          "outcome": "No semantic-search claim.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Local Python/catalog boundaries.",
+          "reason": "No indexed operation required.",
+          "outcome": "No IDE index claim.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "Evidence/test/graph repair of current twelve-case group; independent peer/root verdict pending. Source dates/omissions and current-vs-provider-vs-curated denominator boundaries preserved."
+    },
+    {
+      "id": "D-signing-custody-20261115",
+      "question": "Does the retained production encrypted backup still restore the current official public signing identity, while disposable controls preserve integrity and refusal boundaries?",
+      "property_ids": [
+        "RL02.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_release_identity.SigningCustodyTest.test_actual_encrypted_restore_and_independent_signature",
+        "unittest::tests.test_release_identity.SigningCustodyTest.test_wrong_corrupt_swapped_and_existing_identity_refused"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Inspect release.py custody, same two cases, production public identity/historical restore, current original SDK receipt and external path-only custody config.",
+          "outcome": "Reuse qualified PKCS8 PBES2 AES256/PBKDF2-HMAC-SHA256600000 recipe and retained0.1.11/0.1.12 same-identity signing provenance. Add opt-in actual-backup observer, disposable filesystem-guard assertions and own-native-fork identity guide. No release.py/native/publisher owner change.",
+          "results": [
+            {
+              "path": "tools/release.py",
+              "classification": "test_proof",
+              "reason": "Qualified real OpenSSL custody implementation retained."
+            },
+            {
+              "path": "tools/verify_signing_backup.py",
+              "classification": "change_candidate",
+              "reason": "Opt-in current retained-backup observation with ephemeral restore cleanup and public-only metadata."
+            },
+            {
+              "path": "tests/test_release_identity.py",
+              "classification": "test_proof",
+              "reason": "Two existing cases with real RSA4096/encryption/challenge and filesystem refusal controls."
+            },
+            {
+              "path": "docs/RELEASE_AND_UPDATES.md",
+              "classification": "change_candidate",
+              "reason": "Custody operations, limits and own-native-fork identity guidance."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Known exact custody owner from assigned graph and release.py.",
+          "reason": "No unknown ownership search needed.",
+          "outcome": "No semantic-search claim.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Bounded Python/OpenSSL workflow with exact owners.",
+          "reason": "No indexed symbol operation required.",
+          "outcome": "No IDE index claim.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "Whole attainable local RL02.P1 evidence repair; sourcebound actual-production backup restore supplements original receipt without rewriting it. Same-Mac only, no offsite, physical/phone/Store or task7 closure."
     },
     {
       "id": "D-native-feed-bounds-current-20261115",
