@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build source-driven finite flat-map selections; never fetch or publish."""
+"""Audit finite source-driven flat-map geography; never fetch or publish."""
 import argparse
 import json
 from pathlib import Path
@@ -8,25 +8,21 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from tools.spacefox.catalog import CatalogError, build_catalog, canonical_bytes
-from tools.spacefox.global_map import GeographyError, audit_sites, build_bundle, build_site_view, write_bundle
-from tools.spacefox.graphics import VisualError, build_pack
+from tools.spacefox.global_map import GeographyError, audit_sites
+from tools.spacefox.graphics import VisualError
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source',type=Path,default=ROOT/'catalog/source.json')
     parser.add_argument('--output',type=Path,required=True)
-    parser.add_argument('--site',action='append',default=[])
-    parser.add_argument('--root',action='append',dest='roots')
-    parser.add_argument('--kind',choices=('map',),default='map')
-    parser.add_argument('--retain-directory',type=Path,help='retain exactly previous current selection')
-    parser.add_argument('--audit',action='store_true',help='render source coordinate contexts for every finite site')
+    parser.add_argument('--audit', action='store_true', required=True, help='render source coordinate contexts for every finite site')
     parser.add_argument('--scope', choices=('current', 'archive'), default='current',
                         help='audit source-dated current context roots or explicit full archive')
     args = parser.parse_args(argv)
     try:
         catalog = build_catalog(ROOT,args.source); output = args.output.resolve()
-        from tools.spacefox.current_catalog import load_registry, current_view
+        from tools.spacefox.current_catalog import load_registry
         eligibility = load_registry(ROOT, catalog, source_path=args.source)
         context_report = None
         if args.audit and args.scope == 'current':
@@ -36,8 +32,6 @@ def main(argv=None):
             contexts = load_contexts(ROOT, catalog)
             context_report = context_coverage(catalog, eligibility, contexts)
             catalog = context_view(catalog, eligibility, contexts)['catalog']
-        elif not args.audit and eligibility is not None:
-            catalog = current_view(catalog, eligibility, referenced_ids=args.site + (args.roots or []))['catalog']
         if output.is_relative_to(ROOT) and not output.is_relative_to(ROOT/'build'):
             raise GeographyError('in-checkout output must stay under build/')
         if args.audit:
@@ -51,13 +45,6 @@ def main(argv=None):
             from tools.spacefox.graphics import _atomic
             _atomic(output,canonical_bytes(report),'.audit-')
             print(json.dumps({k:v for k,v in report.items() if k != 'rows'},sort_keys=True));return 0
-        if not 1 <= len(args.site) <= 2 or len(set(args.site)) != len(args.site):
-            raise GeographyError('choose one or two distinct site IDs')
-        kinds = (args.kind,)
-        views = [build_site_view(ROOT,catalog,site,kind=kind) for site in args.site for kind in kinds]
-        visuals = build_pack(ROOT,catalog,roots=args.roots) if args.roots else None
-        bundle = build_bundle(visuals,views,previous_directory=args.retain_directory)
-        print(json.dumps(write_bundle(output,bundle),sort_keys=True));return 0
     except (CatalogError,VisualError,GeographyError,OSError,ValueError) as exc:
         print('global_map: '+str(exc),file=sys.stderr);return 1
 
