@@ -1,0 +1,11 @@
+Background: SFR_PROBE owner=8e906b38f2254c4987d492208133f381|spacefox-peer-low-decoded|7bcc19f71c5c
+SFR_PROBE owner=8e906b38f2254c4987d492208133f381|spacefox-peer-low-decoded|7bcc19f71c5c
+
+Error: Watchdog Tripped Error - Code Executed Too Long
+Details: Failed invoking <symbol>
+Stack: 
+  - oneRow() at /Users/jekamas/projects/SpaceFox-worktrees/verify-active-clock-wake-20261115/watchface/source/NativeSfr.mc:70 0x10007b18 
+  - step() at /Users/jekamas/projects/SpaceFox-worktrees/verify-active-clock-wake-20261115/watchface/source/NativeSfr.mc:73 0x10007db4 
+  - initialize() at /Users/jekamas/.codex/tmp/spacefox-peer-low-decoded/Probe.mc:13 0x10007f63 
+  - getInitialView() at /Users/jekamas/.codex/tmp/spacefox-peer-low-decoded/Probe.mc:16 0x10001076 
+Encountered an app crash.

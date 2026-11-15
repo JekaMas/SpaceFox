@@ -637,3 +637,11 @@ registration remains unverified. Physical version `0.10.0`, reported 10–20 s
 wake, physical map point, Store delivery and physical behavior remain open.
 This is an author checkpoint only; task completion and publication require
 fresh independent verification and root judgment.
+
+### DISPLAY03 peer LOW-map correction — source checkpoint
+
+Root visual review found the original LOW map too small and dim. Peer enlarged the
+same-size sparse map, enlarged its point, and corrected decoded-outline color state;
+EN/RU bundled and EN decoded native controlled frames and source-bound admission
+are in [the peer record](evidence/display03-active-tick-wake/low-map-peer/RESULT.md).
+Final signed runtime, root integration and physical acceptance remain open.

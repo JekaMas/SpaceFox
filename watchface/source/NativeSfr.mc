@@ -14,7 +14,7 @@ class NativeSfrDecoder {
     (:extendedCode)
     function initialize(adapter,d){
         immutable=new NativeImmutable(adapter);descriptor=d;width=d["canvas"][0];height=d["canvas"][1];channels=d["channels"];hash=new Cryptography.Hash({:algorithm=>Cryptography.HASH_SHA256});
-        bitmap=Graphics.createBufferedBitmap({:width=>width,:height=>height,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();dc=bitmap.getDc();dc.setColor(Graphics.COLOR_TRANSPARENT,Graphics.COLOR_TRANSPARENT);dc.clear();if(channels==3){rgbRowBitmap=Graphics.createBufferedBitmap({:width=>width,:height=>1,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();rgbRowDc=rgbRowBitmap.getDc();outlineBitmap=Graphics.createBufferedBitmap({:width=>130,:height=>130,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();outlineDc=outlineBitmap.getDc();outlineDc.setColor(Graphics.COLOR_TRANSPARENT,Graphics.COLOR_TRANSPARENT);outlineDc.clear();outlineDc.setColor(0x6996A5,Graphics.COLOR_TRANSPARENT);for(var i=0;i<390;i+=1){outlinePrevious.add(0);}}
+        bitmap=Graphics.createBufferedBitmap({:width=>width,:height=>height,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();dc=bitmap.getDc();dc.setColor(Graphics.COLOR_TRANSPARENT,Graphics.COLOR_TRANSPARENT);dc.clear();if(channels==3){rgbRowBitmap=Graphics.createBufferedBitmap({:width=>width,:height=>1,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();rgbRowDc=rgbRowBitmap.getDc();outlineBitmap=Graphics.createBufferedBitmap({:width=>130,:height=>130,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();outlineDc=outlineBitmap.getDc();outlineDc.setColor(Graphics.COLOR_TRANSPARENT,Graphics.COLOR_TRANSPARENT);outlineDc.clear();outlineDc.setColor(0xBEE1F0,Graphics.COLOR_TRANSPARENT);for(var i=0;i<390;i+=1){outlinePrevious.add(0);}}
     }
     (:extendedCode)
     function fail(){throw new Lang.InvalidValueException("Invalid SFR1 raster");}
@@ -55,10 +55,11 @@ class NativeSfrDecoder {
     }
     (:extendedCode) function channelDistance(a,b){var d=a-b;return d<0?-d:d;}
     // Derive a sparse outline from the accepted map raster while decoding it,
-    // never during redraw. Neighbour differences are measured at 3px spacing.
+    // never during redraw. The horizontal crop/scale matches the bundled outline
+    // and marker; vertical samples remain three source pixels apart.
     (:extendedCode) function outlineRow(){
-        if(channels!=3 || y%3!=0){return;}var oy=y/3;var leftR=0;var leftG=0;var leftB=0;
-        for(var x=0;x<130;x+=1){var at=x*9;var previous=x*3;var r=row[at];var g=row[at+1];var b=row[at+2];
+        if(channels!=3 || y%3!=0){return;}outlineDc.setColor(0xBEE1F0,Graphics.COLOR_TRANSPARENT);var oy=y/3;var leftR=0;var leftG=0;var leftB=0;
+        for(var x=0;x<130;x+=1){var at=((x+130)*3/2)*3;var previous=x*3;var r=row[at];var g=row[at+1];var b=row[at+2];if(x==0){leftR=r;leftG=g;leftB=b;}
             var change=channelDistance(r,leftR);var n=channelDistance(g,leftG);if(n>change){change=n;}n=channelDistance(b,leftB);if(n>change){change=n;}
             if(y>0){n=channelDistance(r,outlinePrevious[previous]);if(n>change){change=n;}n=channelDistance(g,outlinePrevious[previous+1]);if(n>change){change=n;}n=channelDistance(b,outlinePrevious[previous+2]);if(n>change){change=n;}}
             var dx=x-5;var dy=oy-175;if(change>16 && oy+20<100 && dx*dx+dy*dy<=36100){outlineDc.drawPoint(x,oy);}outlinePrevious[previous]=r;outlinePrevious[previous+1]=g;outlinePrevious[previous+2]=b;leftR=r;leftG=g;leftB=b;

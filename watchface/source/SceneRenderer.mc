@@ -206,6 +206,6 @@ module SceneAod {
         dc.setColor(color,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],247+p[1],countFont,value,Graphics.TEXT_JUSTIFY_CENTER);
         dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(195+p[0],286+p[1],presentation.aodBatteryFont as Graphics.FontType,current.battery,Graphics.TEXT_JUSTIFY_CENTER);
         if(current.stale){dc.setColor(color,Graphics.COLOR_TRANSPARENT);var width=dc.getTextWidthInPixels(value,countFont);for(var x=195+p[0]-width/2;x<=195+p[0]+width/2;x+=5){dc.fillCircle(x,287+p[1],1);}}
-        if(map!=null && pin){var x=190+pinX/3+p[0];var y=20+pinY/3+p[1];dc.setColor(0xFFFFFF,Graphics.COLOR_TRANSPARENT);dc.fillCircle(x,y,5);dc.setColor(0xFF6B6B,Graphics.COLOR_TRANSPARENT);dc.fillCircle(x,y,3);}
+        if(map!=null && pin){var x=60+2*pinX/3+p[0];var y=20+pinY/3+p[1];dc.setColor(0xFFFFFF,Graphics.COLOR_TRANSPARENT);dc.fillCircle(x,y,7);dc.setColor(0xFF6B6B,Graphics.COLOR_TRANSPARENT);dc.fillCircle(x,y,4);}
     }
 }
