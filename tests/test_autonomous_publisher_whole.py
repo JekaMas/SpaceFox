@@ -9,7 +9,6 @@ from contextlib import contextmanager
 from copy import deepcopy
 from email.utils import formatdate
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-import hashlib
 import json
 import os
 from pathlib import Path
@@ -20,7 +19,6 @@ import tempfile
 import threading
 import unittest
 from unittest.mock import patch
-from urllib.parse import urlsplit
 
 from tests.test_basic_publisher_clock import current_source_closure
 from tests.test_current_motion_publisher import captured_starship, NOW
@@ -31,10 +29,9 @@ from tools.spacefox.cloud import (CloudError, DeploymentStatusEmpty, Pages, Site
 from tools.spacefox.native_motion import PROFILE, build_artifact, validate_artifact
 from tools.spacefox.provider import normalize_launch
 from tools.spacefox.publisher import (Conflict, GitState, LiveRevision, Publisher,
-    STATE_REF, StateError, _canonical, _sha, _catalog_ref)
-from tools.spacefox.catalog_refresh import CatalogRefresh, RefreshError
+    STATE_REF, _canonical, _sha, _catalog_ref)
+from tools.spacefox.catalog_refresh import CatalogRefresh
 from tools.spacefox.schedule import RefreshPolicy, ScheduleState, merge_schedule
-from tools.refresh_catalog import scheduled
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = (ROOT / '.github/workflows/update-feed.yml').read_text()
@@ -209,9 +206,12 @@ class AutonomousPublisherWholeTest(unittest.TestCase):
         pub.accept_source(pub.head, token, (normalize_launch(captured_starship(), NOW),), now, selection_validated_utc=NOW)
 
     def candidate(self, pub, now=NOW):
-        files = dict(self.template); feed = json.loads(files['feed.json'])
+        from tools.spacefox.native_motion import with_text_transport
+        files = {path: raw for path, raw in self.template.items() if not path.endswith('.txt')}
+        feed = json.loads(files['feed.json'])
         feed['publisher'] = pub.publisher_envelope(now)
         files['feed.json'] = canonical_bytes(feed)
+        files = with_text_transport(files)
         validate_artifact(files)
         return files
 
@@ -431,7 +431,9 @@ sys.exit(m.main())'''
             self.assertEqual(journal(pub)['status'],'succeed'); self.assertEqual(pub.ledger['selection_validated_utc'],preserved_source)
             self.assertEqual(len(pub.ledger['requests']),1)
             self.assertEqual(snapshot_files(store,pub.head,pub.ledger['active']['generation'])[1],second)
-            self.assertTrue(all(s.files[name]==raw for name,raw in first.items() if name!='feed.json'))
+            self.assertTrue(all(s.files[name]==raw for name,raw in first.items() if name not in ('feed.json','feed.json.txt')))
+            self.assertEqual(s.files['feed.json'],second['feed.json'])
+            self.assertEqual(s.files['feed.json.txt'],second['feed.json'])
             before=pub.head; calls=len(s.calls)
             answer=self.cli(source,remote,s,'prepare','--output',self.base/'not-due',now=NOW+2,runtime=False,success=False)
             # Runtime-only prepare cannot rebuild source; later jobs never need it.
@@ -458,9 +460,17 @@ sys.exit(m.main())'''
             faults=[]
             for field,value in [('schemaVersion',2),('rendererProfile','unsupported'),('publisher',dict(instance='b'*64,generation=1,selectionValidatedUtc=NOW)),('pollIntervalSeconds',7200)]:
                 altered=dict(files); feed=json.loads(files['feed.json']); feed[field]=value
-                altered['feed.json']=canonical_bytes(feed); faults.append(altered)
-            altered=dict(files); key=next(k for k in files if k.startswith('rasters/')); altered[key]+=b'x'; faults.append(altered)
+                altered['feed.json']=canonical_bytes(feed)
+                altered['feed.json.txt']=altered['feed.json']
+                faults.append(altered)
+            altered=dict(files)
+            key=next(k for k in files if k.startswith('rasters/') and not k.endswith('.txt'))
+            altered[key]+=b'x'
+            if key+'.txt' in altered:
+                altered[key+'.txt']=altered[key]
+            faults.append(altered)
             for number,altered in enumerate(faults):
+                self.assertEqual(altered['feed.json'],altered['feed.json.txt'])
                 doc=deepcopy(good_doc); snap=doc['pending']; snap['files']={k:dict(sha256=_sha(v),bytes=len(v)) for k,v in altered.items()}
                 snap['artifact_revision']=_sha(_canonical({k:v for k,v in snap.items() if k!='artifact_revision'}))
                 bad=store._commit(doc,original,{f'artifacts/1/{k}':v for k,v in altered.items()})
@@ -663,7 +673,7 @@ sys.exit(m.main())'''
             # CLI supplies current policy without a caller page-size override.
             self.assertEqual(self.cli(source,remote,s,'metadata','--max-requests',1)['status'],'partial')
             pub=self.pub(store);collector=CatalogRefresh(pub,origin=s.url,local_http=True)
-            prefix=deepcopy(collector.journal['staging']);ref=pub.ledger['catalog_refresh']; head=pub.head
+            prefix=deepcopy(collector.journal['staging']);_=pub.ledger['catalog_refresh']; head=pub.head
             self.assertEqual(collector.journal['schemaVersion'],3)
             for defect in ('schema','pageSize','origin','age','stagePolicy'):
                 changed=deepcopy(collector.journal)
