@@ -109,7 +109,7 @@ def validate(root, catalog):
     reopen = read(record['observations']['peer-storage-reopen/reopen.log']).decode()
     if 'REOPEN_SEED stored=true calls=0' not in seed or 'push=false' not in reopen or 'REOPEN_OBSERVED persisted=true calls=0 duplicateSuppressed=true' not in reopen:
         raise ValueError('SDK storage reopen observation missing')
-    binding = json.loads(read(record['observations']['native-reminder-tests/peer-binding.json']))
+    binding = json.loads(read(record['observations']['native-reminder-tests/peer-stable-binding.json']))
     for name, expected in binding['inputs'].items():
         path = Path(name)
         if path.is_absolute() or '..' in path.parts or hashlib.sha256((root / path).read_bytes()).hexdigest() != expected:

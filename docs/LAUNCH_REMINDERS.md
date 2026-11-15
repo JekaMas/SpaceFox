@@ -9,3 +9,5 @@ Background timing is best effort: Garmin enforces a five-minute gap between app 
 The original request for one-minute reminders and the API findings are retained in the [feasibility record](../openspec/changes/add-launch-reminders/evidence/FEASIBILITY.md). Simulator observations do not establish actual hardware vibration, sleep detection, wake precision or battery behavior.
 
 If the watch clock moves backwards, or the bounded reminder history fills with still-active schedules, SpaceFox suppresses reminders until the state can be safely used again. An inconsistent target and launch-window bound is also suppressed; missing individual bounds are permitted.
+
+On first install or upgrade without a saved reminder snapshot, SpaceFox can create one after the launch feed is fully verified in the foreground, including when a saved feed passes full verification on reopen. Until then there is no eligible snapshot to alert from.

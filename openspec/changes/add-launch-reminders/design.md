@@ -25,3 +25,5 @@ A single 300-second cadence cannot promise exact thresholds when an unrelated fe
 Settings default off on existing installs. No existing feed, cache or version history is migrated. Release artifacts require separate signed predecessor and physical-boundary checks.
 
 The peer repair keeps up to 16 still-actionable source/launch/target records and a durable time watermark. Expired records are pruned only as part of a successful new attempt write; a full history, corrupt state, failed write or a backwards clock suppresses the attempt instead of evicting a still-actionable identity. Pre-peer single-record state upgrades into the bounded representation. A fresh quiet-state read uses the current local clock during the callback; eligibility and the late-slot bound are rechecked before posting. A provided launch-window endpoint must contain the exact or nominal target; either endpoint may be absent.
+
+Foreground cache reopen verifies and reparses the complete durable feed before using it; it can reconstruct an absent reminder snapshot from that fully admitted source. Missing or rejected cache data cannot create one.

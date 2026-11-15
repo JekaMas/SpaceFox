@@ -111,5 +111,15 @@ import Toybox.WatchUi;
 }
 (:test,:typecheck(false)) function snapshotWrites(logger){
  var c=new ReminderCache();c.packet=new ReminderPacketFixture();c.commit={"seal"=>"one"};LaunchReminderForeground.publish(c,999000l);Test.assertEqual(c.store.writes,1);
- LaunchReminderForeground.publish(c,999001l);Test.assertEqual(c.store.writes,1);c.commit={"seal"=>"two"};LaunchReminderForeground.publish(c,999002l);Test.assertEqual(c.store.writes,2);c.packet=null;LaunchReminderForeground.publish(c,999003l);Test.assertEqual(c.store.writes,3);LaunchReminderForeground.publish(c,999004l);Test.assertEqual(c.store.writes,3);return true;
+ LaunchReminderForeground.publish(c,999001l);Test.assertEqual(c.store.writes,1);c.commit={"seal"=>"two"};LaunchReminderForeground.publish(c,999002l);Test.assertEqual(c.store.writes,2);c.packet=null;LaunchReminderForeground.publish(c,999003l);Test.assertEqual(c.store.writes,3);LaunchReminderForeground.publish(c,999004l);Test.assertEqual(c.store.writes,3);
+ // Exercise the real foreground cache: accept a source, verify its durable
+ // commit on reopen, preserve its fresh snapshot without another write, and
+ // reconstruct an absent snapshot only from that fully parsed accepted feed.
+ var store=new ReminderStore();var catalog=WatchUi.loadResource(Rez.JsonData.DisplayCatalog);store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);
+ var cache=new NativeCache("https://example.invalid",store);var now=1794551202l;Test.assert(cache.accept(WatchUi.loadResource(Rez.JsonData.DisplayInitial)["raw"],now));
+ LaunchReminderForeground.publish(cache,now);var admitted=store.read("sf.reminder.snapshot");Test.assert(admitted instanceof Dictionary);Test.assert(LaunchReminder.bound(store,admitted,cache.base,now));
+ var reopened=new NativeCache(cache.base,store);Test.assert(reopened.load(now)!=null);Test.assert(reopened.packet instanceof NativeBridgeFeed);
+ var before=store.writes;LaunchReminderForeground.publish(reopened,now+1);Test.assertEqual(store.writes,before);Test.assert(nativeSame(admitted,store.read("sf.reminder.snapshot")));
+ store.remove("sf.reminder.snapshot");before=store.writes;LaunchReminderForeground.publish(reopened,now+1);Test.assertEqual(store.writes,before+1);var restored=store.read("sf.reminder.snapshot");Test.assert(restored instanceof Dictionary);Test.assert(LaunchReminder.bound(store,restored,reopened.base,now+1));
+ store.data["sf.commit"]["seal"]="invalid";var rejected=new NativeCache(cache.base,store);Test.assert(rejected.load(now+2)==null);LaunchReminderForeground.publish(rejected,now+2);Test.assert(store.read("sf.reminder.snapshot")==null);return true;
 }

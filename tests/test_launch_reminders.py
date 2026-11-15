@@ -15,11 +15,14 @@ NAMES = ('settingsPositive', 'cadencePositive', 'cadenceNegative', 'quietPositiv
 class ReminderTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        receipt = json.loads((EVIDENCE / 'peer-binding.json').read_text())
+        receipt = json.loads((EVIDENCE / 'peer-stable-binding.json').read_text())
         for name, expected in receipt['inputs'].items():
             actual = hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
             if actual != expected:
                 raise AssertionError('SDK observation source changed: ' + name)
+        fixture = json.loads((ROOT / 'tests/fixtures/watch_refresh_cache/packets.json').read_text())
+        if json.loads((EVIDENCE / 'peer-DisplayCatalog.json').read_text()) != fixture['catalogs']['initial'] or json.loads((EVIDENCE / 'peer-DisplayInitial.json').read_text()) != {'raw': fixture['packets']['initial']}:
+            raise AssertionError('SDK lifecycle resources differ from retained cache fixture')
         source = (ROOT / 'watchface/reminder-tests/ReminderFixture.mc').read_text()
         captured = json.loads((ROOT / 'tests/fixtures/typed_operator/feed.json').read_text())
         captured['publisher']['generation'] += 1
@@ -38,10 +41,10 @@ class ReminderTest(unittest.TestCase):
                                                 separators=(',', ':')).encode()).hexdigest()
         if independent not in source:
             raise AssertionError('independent semantic digest differs')
-        raw = (EVIDENCE / 'peer-final.log').read_text()
+        raw = (EVIDENCE / 'peer-stable.log').read_text()
         if hashlib.sha256(raw.encode()).hexdigest() != receipt['logSha256']:
             raise AssertionError('SDK log changed')
-        if 'BUILD SUCCESSFUL' not in (EVIDENCE / 'peer-compile.log').read_text():
+        if 'BUILD SUCCESSFUL' not in (EVIDENCE / 'peer-stable-compile.log').read_text():
             raise AssertionError('SDK compile incomplete')
         result = parse_output(raw, receipt['rawExit'], NAMES)
         if result['status'] != 'passed':
