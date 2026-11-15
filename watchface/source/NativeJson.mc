@@ -22,7 +22,7 @@ class NativeJson {
     function byteSize(value){var total=0;for(var i=0;i<value.length();i+=64){var end=i+64;if(end>value.length()){end=value.length();}total+=StringUtil.convertEncodedString(value.substring(i,end),{:fromRepresentation=>StringUtil.REPRESENTATION_STRING_PLAIN_TEXT,:toRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:encoding=>StringUtil.CHAR_ENCODING_UTF8}).size();}return total;}
     function parse(raw,maxBytes){
         if(!(raw instanceof String) || raw.length()>maxBytes || byteSize(raw)>maxBytes){fail();}
-        source=raw;hasDel=source.find(127.toChar().toString())!=null;index=0;nodes=0;path="";spans={};ignored=[];for(var ctrl=0;ctrl<32;ctrl+=1){if(!feedMode&&(ctrl==9||ctrl==10||ctrl==13)){continue;}var character=ctrl.toChar().toString();if(character.length()>0&&source.find(character)!=null){fail();}}var value=read(0);white();if(index!=source.length()){fail();}source="";NativeMetrics.sample("json-parsed");return value;
+        source=raw;hasDel=source.find(127.toChar().toString())!=null;index=0;nodes=0;path="";spans={};ignored=[];for(var ctrl=0;ctrl<32;ctrl+=1){if(!feedMode&&(ctrl==9||ctrl==10||ctrl==13)){continue;}var character=ctrl.toChar().toString();if(character.length()>0&&source.find(character)!=null){fail();}}var value=read(0);white();if(index!=source.length()){fail();}source="";return value;
     }
     function peek(){return index<source.length()?source.substring(index,index+1):"";}
     // In canonical feed mode every caller requires its next delimiter/token.

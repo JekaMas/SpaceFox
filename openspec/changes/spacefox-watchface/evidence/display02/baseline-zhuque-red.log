@@ -1,0 +1,21 @@
+------------------------------------------------------------------------------
+Executing test displayCapturedZhuqueMarker...
+DEBUG (02:33): CAPTURED_ZHUQUE pin=false
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - displayCapturedZhuqueMarker() at /Users/jekamas/.codex/tmp/spacefox-display02-author/baseline/case/Display02Baseline.mc:5 0x10003d1f 
+  - evaluate_test_entries_0_to_1() at /Users/jekamas/.codex/tmp/spacefox-display02-author/baseline/gen/006-B4432-00/source/UnitTests.mcgen:51 0x10007c37 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-display02-author/baseline/gen/006-B4432-00/source/UnitTests.mcgen:66 0x10007ce3 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+displayCapturedZhuqueMarker         ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

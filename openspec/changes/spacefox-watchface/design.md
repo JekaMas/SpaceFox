@@ -35,11 +35,11 @@ this specification increment.
 Use04/full:390×390 flat map, directed gradual fading, unfaded source-derived pin,
 transparent text backgrounds and thin dark glyph contours without a clock tile.
 Keep the124px left rocket, mint primary time, countdown immediately below time,
-four independently configurable32px values in2×2, larger country/site below the
-fields and separate small watch battery above. Rocket and operator read together
+four independently configurable32px values in2×2 and larger country/site below the
+fields. Watch battery is a selectable field, with no separate active battery. Rocket and operator read together
 above time (`Falcon9 · SpaceX`), mission purpose on the next line. Long values
 wrap or abbreviate without inventing missing context; full supplied values remain
-in the accepted data. The only map is the accepted faded flat map. The current clock is fixed 24-hour HH:mm; the four fixed positions independently select one of six roles. Only role, language and feed URL settings remain.
+in the accepted data. The only map is the accepted faded flat map. The current clock is fixed 24-hour HH:mm; the four fixed positions independently select one of six roles. Field roles, colors, language and feed URL remain configurable.
 
 Amber countdown means reschedule; a dotted underline independently means stale.
 There is no exclamation/cloud badge or permanent last-update row. Watch charge
@@ -61,9 +61,10 @@ legibility, power, global artwork or36-language acceptance.
 ### Separate AMOLED active and always-on scenes
 
 The accepted full-screen map belongs to active mode. AOD uses sparse thin time
-and compact countdown/uncertainty on black, with no large map, rocket animation
-or seconds. It must fit the applicable 10-percent lit-pixel ceiling and target
-burn-in rules. Use minute updates, restrained grayscale and qualified placement
+and compact seconds-bearing countdown/uncertainty on black, with no large map
+or rocket animation. The seconds value is recalculated at each permitted minute
+snapshot and immediately on wake, not continuously in LOW. It must fit the applicable 10-percent lit-pixel ceiling and target
+burn-in rules. Use minute updates, the configured time/countdown colors and qualified placement
 variation; a particular shift pattern is not proof of compliance. Do not apply
 MIP partial-update assumptions to FR165 AMOLED.
 
@@ -768,7 +769,7 @@ Mandatory software qualification covers en, ru, de, fr and es; 31 remaining reso
 
 The owner observed ordinary0.1.4 running (generic rocket, empty countdown, battery at top), then exact `Feed -400` at the correct default base. GitHub Pages currently serves `/feed.json` as application/json; the native SDK declares TEXT_PLAIN. Garmin defines -400 as a body invalid for the request type. Earlier simulator200 did not qualify the paired-phone MIME boundary.
 
-The fixed current design moves the separate battery left above the rocket (icon x30/y101, text center x70/y96; combined center near x65/y105), increases its font13→15, increases four metrics32→38 and scalable countdown36→40 (about32px visible glyphs), and keeps time unchanged. Unknown/maintenance countdown preserves the configured color and normal font/fit. A real reschedule keeps its independent amber override. Only EN/RU changed-scene visuals are newly observed; prior five-primary glyph/corpus proof is replayed on original bytes, and31 other resources remain best-effort.
+The fixed current design moves the separate battery left above the rocket (icon x30/y101, text center x70/y96; combined center near x65/y105), increases its font13→15, increases four metrics32→38 and scalable countdown36→40 (about32px visible glyphs), and keeps time unchanged. Unknown countdown preserves the configured color and normal font/fit. A real reschedule keeps its independent amber override. Only EN/RU changed-scene visuals are newly observed; prior five-primary glyph/corpus proof is replayed on original bytes, and31 other resources remain best-effort.
 
 Static transport uses `.txt` copies for only NativeBatch's exact current selected download closure. Native GET maps the logical path to that HTTP path and declares Accept:text/plain/TEXT_PLAIN. No Dictionary reserialization, parser/wire revision, new backend, global catalog duplication, freshness renewal or provider call is introduced. Copies join atomic snapshot/CAS/artifact/readback/recovery manifests; both mutable roots are excluded from prior immutable retention. Already accepted current-format snapshots retain their original identities and remain recoverable; new candidates always include complete copies. Exact measured bounds and focused receipts are in evidence/phone-mime-readability-015. Hosted HTTPS MIME and actual phone/watch readback remain open.
 

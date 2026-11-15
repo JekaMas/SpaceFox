@@ -8,7 +8,7 @@ class NativeCache extends NativeCacheCore {
     function readCommit(marker,now){
         if(backgroundMode){return NativeCacheCore.readCommit(marker,now);}
         if(checkedProjection(marker,now)==null){return null;}
-        var value=store.read("sf.feed."+marker["slot"]);if(!(value instanceof Dictionary)||!(value["base"] instanceof String)||!value["base"].equals(base)){return null;}var raw=readRaw(value,marker["slot"]);NativeMetrics.sample("load-raw-assembled");if(!(raw instanceof String)){return null;}
+        var value=store.read("sf.feed."+marker["slot"]);if(!(value instanceof Dictionary)||!(value["base"] instanceof String)||!value["base"].equals(base)){return null;}var raw=readRaw(value,marker["slot"]);if(!(raw instanceof String)){return null;}
         if(!rawHash(raw).equals(marker["rawHash"])){return null;}var original=null;var current=raw;
         if(!marker["wireHash"].equals(marker["rawHash"])){var spans=value["mutableSpans"];original=pieces(raw,spans);current=replaceSpans(raw,spans,marker["mutable"]);}
         value=null;raw=null;var p=parseFeed(current,now);current=null;
@@ -43,7 +43,7 @@ class NativeCache extends NativeCacheCore {
             var piece=store.read("sf.feed."+slot+"."+part);if(!(piece instanceof String)||piece.length()>512){return null;}
             var size=0;for(var offset=0;offset<piece.length();offset+=64){var end=offset+64;if(end>piece.length()){end=piece.length();}var chunk=piece.substring(offset,end).toUtf8Array();size+=chunk.size();if(size>2048||bytes.size()+chunk.size()>8192){return null;}bytes.addAll(chunk);}
         }
-        NativeMetrics.sample("load-bytes-assembled");
+
         return StringUtil.convertEncodedString(bytes,{:fromRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:toRepresentation=>StringUtil.REPRESENTATION_STRING_PLAIN_TEXT,:encoding=>StringUtil.CHAR_ENCODING_UTF8});
     }
 }

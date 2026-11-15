@@ -1,56 +1,36 @@
 import Toybox.Lang;
 
-// Foreground scene ownership. Display power is separate: only the selected
-// scene/asset build advances here. Tokens invalidate callbacks from older scenes.
+// Optional asset work is a single cancellable job for the selected scene. It is
+// independent of the two display modes and never selects a different layout.
+class SceneJob {
+    const QUEUED = 0;
+    const BUILDING = 1;
+    const FAILED = 2;
+    var token as Number;
+    var state as Number = QUEUED;
+    var batchSerial as Number or Long;
+    function initialize(generation as Number, serial as Number or Long) {token=generation;batchSerial=serial;}
+}
 class SceneLifecycle {
-    const EMPTY = 0;
-    const FALLBACK_NEW = 1;
-    const FALLBACK_PAINTED = 2;
-    const WAIT_PAINT = 3;
-    const WAIT_BUILD = 4;
-    const BUILDING = 5;
-    const READY = 6;
-    const FAILED = 7;
-
-    var phase as Number = EMPTY;
     var generation as Number = 0;
-
-    function replace(hasScene as Boolean) as Void {
-        generation += 1;
-        phase = hasScene ? FALLBACK_NEW : EMPTY;
-    }
-    function bindReady() as Void { phase = READY; }
-    function allowRetry() as Void {
-        if (phase == FAILED) { phase = FALLBACK_PAINTED; }
-    }
-    function pending() as Boolean {
-        return phase == WAIT_PAINT || phase == WAIT_BUILD || phase == BUILDING;
-    }
-    function request() as Boolean {
-        if (phase == FALLBACK_NEW) { phase = WAIT_PAINT; return true; }
-        if (phase == FALLBACK_PAINTED) { phase = WAIT_BUILD; return true; }
-        return false;
-    }
-    function painted() as Void {
-        if (phase == FALLBACK_NEW) { phase = FALLBACK_PAINTED; }
-        else if (phase == WAIT_PAINT) { phase = WAIT_BUILD; }
+    var job as SceneJob or Null = null;
+    function replace() as Void {generation+=1;job=null;}
+    function bindReady() as Void {job=null;}
+    function pending() as Boolean {return job!=null && job.state!=job.FAILED;}
+    function request(serial as Number or Long) as Boolean {
+        if(job!=null){return false;}
+        job=new SceneJob(generation,serial);return true;
     }
     function begin() as Number or Null {
-        if (phase != WAIT_BUILD) { return null; }
-        phase = BUILDING;
-        return generation;
+        if(job==null || job.state!=job.QUEUED){return null;}
+        job.state=job.BUILDING;return job.token;
     }
     function complete(token as Number) as Boolean {
-        if (phase != BUILDING || token != generation) { return false; }
-        phase = READY;
-        return true;
+        if(job==null || job.state!=job.BUILDING || token!=job.token || token!=generation){return false;}
+        job=null;return true;
     }
     function fail(token as Number) as Void {
-        if (phase == BUILDING && token == generation) { phase = FAILED; }
+        if(job!=null && job.state==job.BUILDING && token==job.token && token==generation){job.state=job.FAILED;}
     }
-    function cancel() as Void {
-        generation += 1;
-        if (phase == WAIT_PAINT) { phase = FALLBACK_NEW; }
-        else if (phase == WAIT_BUILD || phase == BUILDING) { phase = FALLBACK_PAINTED; }
-    }
+    function cancel() as Void {generation+=1;job=null;}
 }

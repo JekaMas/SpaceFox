@@ -1,0 +1,59 @@
+------------------------------------------------------------------------------
+Executing test deliveryModeCallbacksAreIdempotent...
+
+Error: Symbol Not Found Error
+Details: Could not find symbol 'System'
+Stack: 
+  - deliveryModeCallbacksAreIdempotent() at /Users/jekamas/.codex/tmp/spacefox-display02-author/incident/DeliveryContinuityTests.mc:6 0x10002d21 
+  - evaluate_test_entries_0_to_8() at /Users/jekamas/.codex/tmp/spacefox-display02-author/incident/gen/006-B4432-00/source/UnitTests.mcgen:58 0x10008f7b 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-display02-author/incident/gen/006-B4432-00/source/UnitTests.mcgen:87 0x1000913f 
+ERROR
+------------------------------------------------------------------------------
+Executing test deliveryRejectedResponseRetainsScene...
+DEBUG (03:13): REJECTED_RESPONSE retainedAcceptedScene=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryPendingDeadlineDoesNotMove...
+DEBUG (03:13): PENDING_DEADLINE first=1300 wake=1300 reload=1300 osMinimum=1600
+PASS
+------------------------------------------------------------------------------
+Executing test deliverySceneEventsAndLateCompletion...
+DEBUG (03:13): JOB duplicate blocked; cancelled and old completion rejected; current applied
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryVisualIdentityCases...
+DEBUG (03:13): VISUAL_KEY sameT0AndGeneration=true modelSitePointQualificationArtChangesDistinct=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryVisualWaitsForMatchingBatch...
+DEBUG (03:13): VISUAL_BATCH pendingAndWrongIdentityRejected=true completedMatchingBatchApplied=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryRealRegisteredDeadline...
+
+Error: Symbol Not Found Error
+Details: Could not find symbol 'Time'
+Stack: 
+  - deliveryRealRegisteredDeadline() at /Users/jekamas/.codex/tmp/spacefox-display02-author/incident/DeliveryContinuityTests.mc:136 0x10004ea1 
+  - evaluate_test_entries_0_to_8() at /Users/jekamas/.codex/tmp/spacefox-display02-author/incident/gen/006-B4432-00/source/UnitTests.mcgen:70 0x1000901d 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-display02-author/incident/gen/006-B4432-00/source/UnitTests.mcgen:87 0x1000913f 
+ERROR
+------------------------------------------------------------------------------
+Executing test deliveryDuplicateCallbackDoesNotInvalidateBuild...
+DEBUG (03:13): CALLBACKS duplicateNoMutation=2 newCandidateApplied=1 staleCompletionRejected=1
+PASS
+
+==============================================================================
+RESULTS
+Test:                                           Status:
+deliveryModeCallbacksAreIdempotent              ERROR
+deliveryRejectedResponseRetainsScene            PASS
+deliveryPendingDeadlineDoesNotMove              PASS
+deliverySceneEventsAndLateCompletion            PASS
+deliveryVisualIdentityCases                     PASS
+deliveryVisualWaitsForMatchingBatch             PASS
+deliveryRealRegisteredDeadline                  ERROR
+deliveryDuplicateCallbackDoesNotInvalidateBuild PASS
+Ran 8 tests
+
+FAILED (passed=6, failed=0, errors=2)

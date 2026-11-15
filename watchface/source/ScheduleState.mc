@@ -4,10 +4,8 @@ import Toybox.Lang;
 // Minute targets retain their source precision; their nominal UTC is used for arithmetic.
 class ScheduleState {
     private var _exactUtc as Long or Null;
-    private var _precision as String;
 
     function initialize(exactUtc as Object or Null, precision as String) {
-        _precision = precision;
         _exactUtc = null;
         // Validated Unix UTC includes epoch zero and pre-1970 timestamps. Null
         // denotes absence; sign does not. Promote before arithmetic so accepted
@@ -24,7 +22,7 @@ class ScheduleState {
         return remaining;
     }
 
-    function display(nowUtc as Number or Long, active as Boolean) as String {
+    function display(nowUtc as Number or Long) as String {
         return CountdownFormat.format(remainingSeconds(nowUtc));
     }
 }

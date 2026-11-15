@@ -1,0 +1,57 @@
+------------------------------------------------------------------------------
+Executing test clockExactPositive...
+DEBUG (03:10): literal7200 second=T- 02:00:00 reads=3 cross=T- 777777:46:40
+PASS
+------------------------------------------------------------------------------
+Executing test clockExactNegative...
+DEBUG (03:10): prohibit offset arithmetic and cached countdown on local change
+PASS
+------------------------------------------------------------------------------
+Executing test uncertaintyPositive...
+DEBUG (03:10): date/window ignore nominal midpoint; exact countdown remains null
+PASS
+------------------------------------------------------------------------------
+Executing test uncertaintyNegative...
+DEBUG (03:10): null/fraction/date/string/boolean cannot create precision; signed integer UTC is present
+PASS
+------------------------------------------------------------------------------
+Executing test offlineWakePositive...
+DEBUG (03:10): offline before=T- 03:00:00 after=T- 01:00:00 reads=4
+PASS
+------------------------------------------------------------------------------
+Executing test offlineWakeNegative...
+DEBUG (03:10): forward/zero/backward: T+00:01:40,T+00:00:00,T- 01:00:00
+PASS
+------------------------------------------------------------------------------
+Executing test precisionTransitions...
+DEBUG (03:10): fixed numeric countdown; minute target uses nominal arithmetic
+PASS
+------------------------------------------------------------------------------
+Executing test emptyStartup...
+DEBUG (03:10): real App initial view has no invented launch
+PASS
+------------------------------------------------------------------------------
+Executing test clockAdapterSmoke...
+DEBUG (03:10): live SDK Time.now adapter observed=1794697846
+PASS
+------------------------------------------------------------------------------
+Executing test formatLocalSettings...
+DEBUG (03:10): watch12/24 settings formatter: midnight/noon/23h
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+clockExactPositive                  PASS
+clockExactNegative                  PASS
+uncertaintyPositive                 PASS
+uncertaintyNegative                 PASS
+offlineWakePositive                 PASS
+offlineWakeNegative                 PASS
+precisionTransitions                PASS
+emptyStartup                        PASS
+clockAdapterSmoke                   PASS
+formatLocalSettings                 PASS
+Ran 10 tests
+
+PASSED (passed=10, failed=0, errors=0)

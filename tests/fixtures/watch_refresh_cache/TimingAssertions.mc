@@ -25,7 +25,7 @@ import Toybox.System;
 (:test,:typecheck(false)) function finalTimingPositive(log){
  var times=[1794583543-176523,1794583543-59,1794583543-1,1794583543,1794583543+899,1794583543+900,1794583543+901];
  var expected=["T- 49:02:03","T- 00:00:59","T- 00:00:01","T+ 00:00:00","T+ 00:14:59","T+ 00:15:00","T+ 00:15:01"];
- for(var i=0;i<times.size();i+=1){var r=finalRead("exact",times[i]);Test.assertEqual(r[1].countdown,expected[i]);Test.assertEqual(r[0].presentation.countdown(r[1],true),expected[i]);Test.assertEqual(r[3],"ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a");}
+ for(var i=0;i<times.size();i+=1){var r=finalRead("exact",times[i]);Test.assertEqual(r[1].countdown,expected[i]);Test.assertEqual(r[3],"ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a");}
  var started=finalRead("started",1794583543+899);Test.assertEqual(started[1].countdown,"T+ 00:14:59");Test.assertEqual(started[3],"ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a");
  var minute=finalRead("minute",1794592440+899);Test.assertEqual(minute[1].countdown,"T+ 00:14:59");Test.assertEqual(minute[2],"source-coarse");
  log.debug("production schema3 parser->FeedScene->ScheduleState->View: all7literal states exact and nominalMIN precision preserved; no local liftoff state");return true;
@@ -33,9 +33,9 @@ import Toybox.System;
 (:test,:typecheck(false)) function finalTimingNegative(log){
  var unknown=finalRead("unknown",1794584444);Test.assertEqual(unknown[1].countdown,"--:--:--");
  var corrected=finalRead("exact",1794583543-1);Test.assertEqual(corrected[1].countdown,"T- 00:00:01");
- var huge=new ScheduleState(253402300799l,"exact");Test.assertEqual(huge.display(-62135596800l,true),"T- 87649415:59:59");
- Test.assertEqual(new ScheduleState(null,"exact").display(0,true),"--:--:--");
- Test.assertEqual(new ScheduleState(1794583543,"date").display(1794583543,true),"--:--:--");
+ var huge=new ScheduleState(253402300799l,"exact");Test.assertEqual(huge.display(-62135596800l),"T- 87649415:59:59");
+ Test.assertEqual(new ScheduleState(null,"exact").display(0),"--:--:--");
+ Test.assertEqual(new ScheduleState(1794583543,"date").display(1794583543),"--:--:--");
  log.debug("unknown/date cannot inherit a precise timer; clock correction unlatches elapsed; signed Long UTC does not wrap");return true;
 }
 (:test,:typecheck(false)) function finalParserUpdatePositive(log){

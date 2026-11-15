@@ -8,8 +8,8 @@ class NativeStore {
     var reads=0;var writes=0;var dataWrites=0;
     function initialize(){}
     function read(key){reads+=1;return Application.Storage.getValue(key);}
-    function write(key,value){writes+=1;if(key.find("sf.feed.")==0){dataWrites+=1;}Application.Storage.setValue(key,value);if(NativeMetrics.traceStores){System.println("NATIVE_STORE op=write key="+key+" owner="+NativeMetrics.ownerTag);}}
-    function remove(key){writes+=1;Application.Storage.deleteValue(key);if(NativeMetrics.traceStores){System.println("NATIVE_STORE op=delete key="+key+" owner="+NativeMetrics.ownerTag);}}
+    function write(key,value){writes+=1;if(key.find("sf.feed.")==0){dataWrites+=1;}Application.Storage.setValue(key,value);}
+    function remove(key){writes+=1;Application.Storage.deleteValue(key);}
 }
 
 (:typecheck(false))
@@ -24,7 +24,7 @@ class NativePrior {
 // not this class; clock/renderer arithmetic remains resident.
 (:extendedCode, :typecheck(false))
 class NativeCacheCore {
-    var store;var base;var pinKey;var packet=null;var commit=null;var lastAttempt=null;var failure="";var failureReason="";var backgroundMode=true;var requestWake=null;var commitKey="sf.commit";var detached=false;
+    var store;var base;var pinKey;var packet=null;var commit=null;var lastAttempt=null;var failure="";var backgroundMode=true;var requestWake=null;var commitKey="sf.commit";var detached=false;
     function initialize(url,adapter){base=normalize(url);pinKey="sf.pin."+rawHash(base);store=adapter==null?new NativeStore():adapter;}
     function normalize(value){
         if(!(value instanceof String)||value.length()<9||value.length()>240||!value.substring(0,8).equals("https://")){return "";}
@@ -46,7 +46,7 @@ class NativeCacheCore {
         packet=null;commit=null;lastAttempt=null;requestWake=null;detached=false;if(base.equals("")){return null;}
         try{var attempt=store.read("sf.attempt");if(attempt instanceof Dictionary&&attempt["base"] instanceof String&&attempt["base"].equals(base)&&attempt["utc"] instanceof Long&&attempt["utc"]>= -62135596800l&&attempt["utc"]<=253402300799l){lastAttempt=attempt["utc"];}}catch(e){}
         var names=["sf.commit","sf.recovery"];
-        for(var i=0;i<names.size();i+=1){try{var marker=store.read(names[i]);var loaded=readCommit(marker,now);if(loaded!=null){if(backgroundMode){loaded.compact();}packet=loaded;commit=backgroundMode?marker:detachedCommit(marker);detached=!backgroundMode;commitKey=names[i];return packet;}}catch(e){failure="cache-rejected";NativeMetrics.failure(e.getErrorMessage());if(NativeMetrics.enabled){e.printStackTrace();}}}
+        for(var i=0;i<names.size();i+=1){try{var marker=store.read(names[i]);var loaded=readCommit(marker,now);if(loaded!=null){if(backgroundMode){loaded.compact();}packet=loaded;commit=backgroundMode?marker:detachedCommit(marker);detached=!backgroundMode;commitKey=names[i];return packet;}}catch(e){failure="cache-rejected";}}
         return null;
     }
     // Strict readCommit has already authenticated the complete durable marker.
@@ -61,7 +61,7 @@ class NativeCacheCore {
         if(base.equals("")||!hex(expectedSeal)){return null;}
         try{var attempt=store.read("sf.attempt");if(attempt instanceof Dictionary&&attempt["base"] instanceof String&&attempt["base"].equals(base)&&attempt["utc"] instanceof Long&&attempt["utc"]>= -62135596800l&&attempt["utc"]<=253402300799l){lastAttempt=attempt["utc"];}}catch(e){}
         var names=["sf.commit","sf.recovery"];
-        for(var i=0;i<names.size();i+=1){try{var marker=store.read(names[i]);if(!(marker instanceof Dictionary)||!(marker["seal"] instanceof String)||!marker["seal"].equals(expectedSeal)){continue;}var loaded=readCommit(marker,now);if(loaded!=null){if(backgroundMode){loaded.compact();}packet=loaded;commit=backgroundMode?marker:detachedCommit(marker);detached=!backgroundMode;commitKey=names[i];return packet;}}catch(e){failure="cache-rejected";NativeMetrics.failure(e.getErrorMessage());}}
+        for(var i=0;i<names.size();i+=1){try{var marker=store.read(names[i]);if(!(marker instanceof Dictionary)||!(marker["seal"] instanceof String)||!marker["seal"].equals(expectedSeal)){continue;}var loaded=readCommit(marker,now);if(loaded!=null){if(backgroundMode){loaded.compact();}packet=loaded;commit=backgroundMode?marker:detachedCommit(marker);detached=!backgroundMode;commitKey=names[i];return packet;}}catch(e){failure="cache-rejected";}}
         return null;
     }
     function priorFrom(packet){return [packet.priorDocument(),packet.timingKey,packet.recordHash];}
@@ -82,7 +82,7 @@ class NativeCacheCore {
         if(value["v"]==2&&(value["chunks"] instanceof Number||value["chunks"] instanceof Long)&&value["chunks"]>=1&&value["chunks"]<=16){for(var i=0;i<value["chunks"];i+=1){var piece=store.read("sf.feed."+marker["slot"]+"."+i);if(!(piece instanceof String)||piece.length()>512){return false;}var bytes=StringUtil.convertEncodedString(piece,{:fromRepresentation=>StringUtil.REPRESENTATION_STRING_PLAIN_TEXT,:toRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:encoding=>StringUtil.CHAR_ENCODING_UTF8});total+=bytes.size();if(bytes.size()>2048||total>8192){return false;}hash.update(bytes);}}
         else{return false;}return hash.digest().equals(marker["rawHash"]);
     }
-    function readCommit(marker,now){var p=checkedProjection(marker,now);if(p==null||!verifyRaw(marker)){return null;}p.advance(now);NativeMetrics.sample("cached-raw-and-projection-verified");return p;}
+    function readCommit(marker,now){var p=checkedProjection(marker,now);if(p==null||!verifyRaw(marker)){return null;}p.advance(now);return p;}
     function freeSlot(){
         var active=commit==null?-1:commit["slot"];var recovery=-1;var old=store.read("sf.recovery");if(old instanceof Dictionary&&old["base"] instanceof String&&old["base"].equals(base)&&(old["slot"] instanceof Number||old["slot"] instanceof Long)){recovery=old["slot"];}
         for(var slot=0;slot<3;slot+=1){if(slot!=active&&slot!=recovery){return slot;}}throw new Lang.InvalidValueException("No inactive feed slot");
@@ -101,23 +101,23 @@ class NativeCacheCore {
     function releaseForTransfer(now){
         // An identical publisher generation can succeed without writing a new
         // commit. Keep its accepted seal for a later same-session refusal.
-        requestWake=nextWake(now);detached=true;if(packet!=null){packet=new NativePrior(packet);}if(commit!=null){commit={"slot"=>commit["slot"],"generation"=>commit["generation"],"rawHash"=>commit["rawHash"],"seal"=>commit["seal"]};}NativeMetrics.sample("pre-request-released");
+        requestWake=nextWake(now);detached=true;if(packet!=null){packet=new NativePrior(packet);}if(commit!=null){commit={"slot"=>commit["slot"],"generation"=>commit["generation"],"rawHash"=>commit["rawHash"],"seal"=>commit["seal"]};}
     }
     function accept(raw,now){
-        var operation="parse";failure="";failureReason="";try{
-            var promotionWrites=store.writes;var candidate=parseFeed(raw,now);var pub=candidate.document["publisher"];
-            if(base.equals("")||pub["selectionValidatedUtc"]==null){failure="update-rejected";failureReason="publisher";return false;}
-            operation="lookup";if(!checkPublisher(pub,candidate.wireHash)){failure="update-rejected";failureReason="publisher";return false;}
-            if(packet!=null){var previous=packet instanceof NativePrior?packet.publisher:packet.document["publisher"];if(!pub["instance"].equals(previous["instance"])||pub["generation"]<previous["generation"]||pub["selectionValidatedUtc"]<previous["selectionValidatedUtc"]){failure="update-rejected";failureReason="publisher";return false;}if(pub["generation"]==previous["generation"]){if(!candidate.wireHash.equals(packet.wireHash)){failure="update-rejected";failureReason="publisher";return false;}if(packet instanceof NativePrior){operation="metadata";candidate.metadata(packet,now);if(!backgroundMode){candidate.presentation=feedScene(candidate,now);}candidate.compact();packet=candidate;requestWake=null;}else{packet.advance(now);}return true;}}
-            var mutable=candidate.mutableWire();var mutableSpans=candidate.ignored;operation="metadata";candidate.metadata(packet,now);NativeMetrics.sample("candidate-and-prior");if(!backgroundMode){candidate.presentation=feedScene(candidate,now);}candidate.compact();NativeMetrics.sample("candidate-compacted");operation="persist";var same=packet!=null&&candidate.contentHash.equals(packet.contentHash);var slot=same?commit["slot"]:freeSlot();var rawDigest=same?commit["rawHash"]:candidate.wireHash;
+        var operation="parse";failure="";try{
+            var candidate=parseFeed(raw,now);var pub=candidate.document["publisher"];
+            if(base.equals("")||pub["selectionValidatedUtc"]==null){failure="update-rejected";return false;}
+            operation="lookup";if(!checkPublisher(pub,candidate.wireHash)){failure="update-rejected";return false;}
+            if(packet!=null){var previous=packet instanceof NativePrior?packet.publisher:packet.document["publisher"];if(!pub["instance"].equals(previous["instance"])||pub["generation"]<previous["generation"]||pub["selectionValidatedUtc"]<previous["selectionValidatedUtc"]){failure="update-rejected";return false;}if(pub["generation"]==previous["generation"]){if(!candidate.wireHash.equals(packet.wireHash)){failure="update-rejected";return false;}if(packet instanceof NativePrior){operation="metadata";candidate.metadata(packet,now);if(!backgroundMode){candidate.presentation=feedScene(candidate,now);}candidate.compact();packet=candidate;requestWake=null;}else{packet.advance(now);}return true;}}
+            var mutable=candidate.mutableWire();var mutableSpans=candidate.ignored;operation="metadata";candidate.metadata(packet,now);if(!backgroundMode){candidate.presentation=feedScene(candidate,now);}candidate.compact();operation="persist";var same=packet!=null&&candidate.contentHash.equals(packet.contentHash);var slot=same?commit["slot"]:freeSlot();var rawDigest=same?commit["rawHash"]:candidate.wireHash;
             var marker={"v"=>6,"base"=>base,"slot"=>slot,"generation"=>commit==null?1:commit["generation"]+1,"rawHash"=>rawDigest,"contentHash"=>candidate.contentHash,"validation"=>candidate.validation,"stale"=>candidate.stale,"rescheduled"=>candidate.rescheduled,"publisher"=>pub,"wireHash"=>candidate.wireHash,"mutable"=>mutable};marker["prior"]=priorFrom(candidate);marker["priorHash"]=priorHash(marker["prior"]);marker["seal"]=seal(marker);
             if(!same){var chunks=0;for(var offset=0;offset<raw.length();offset+=512){var end=offset+512;if(end>raw.length()){end=raw.length();}var part=raw.substring(offset,end);var key="sf.feed."+slot+"."+chunks;store.write(key,part);var verify=store.read(key);if(!(verify instanceof String)||!verify.equals(part)){throw new Lang.InvalidValueException("Chunk readback mismatch");}verify=null;part=null;chunks+=1;}store.write("sf.feed."+slot,{"v"=>2,"base"=>base,"chunks"=>chunks,"rawHash"=>rawDigest,"mutableSpans"=>mutableSpans});}
             // Every chunk has completed write/readback; commit verification needs
             // only the compact candidate and immutable raw hash from this point.
             raw=null;
             rememberPublisher(pub,candidate.wireHash);if(commit!=null){store.write("sf.recovery",detached?store.read(commitKey):commit);}store.write("sf.commit",marker);var observed=store.read("sf.commit");if(!(observed instanceof Dictionary)||!(observed["seal"] instanceof String)||!observed["seal"].equals(marker["seal"])||!seal(observed).equals(marker["seal"])){throw new Lang.InvalidValueException("Commit readback mismatch");}
-            commit=backgroundMode?marker:detachedCommit(marker);packet=candidate;commitKey="sf.commit";detached=!backgroundMode;requestWake=null;failure="";NativeMetrics.writes("promotion",store.writes-promotionWrites);NativeMetrics.sample("cache-committed");return true;
-        }catch(e){var message=e.getErrorMessage();failure=operation.equals("lookup")||operation.equals("persist")||message.equals("Bridge catalog incomplete")?"admission-retry":"update-rejected";failureReason=operation;if(message.equals("Bridge catalog incomplete")){failureReason="catalog incomplete";}else if(message instanceof String&&message.find("Invalid current feed:")==0){var phase=message.substring(21,message.length());if(["header","publisher","policy","dictionaries","catalog-hash","selection","launch","traversal"].indexOf(phase)>=0){failureReason="feed "+phase;}}NativeMetrics.failure(message);return false;}
+            commit=backgroundMode?marker:detachedCommit(marker);packet=candidate;commitKey="sf.commit";detached=!backgroundMode;requestWake=null;failure="";return true;
+        }catch(e){var message=e.getErrorMessage();failure=operation.equals("lookup")||operation.equals("persist")||message.equals("Bridge catalog incomplete")?"admission-retry":"update-rejected";return false;}
     }
     function attempted(now){lastAttempt=now.toLong();try{store.write("sf.attempt",{"base"=>base,"utc"=>lastAttempt});return true;}catch(e){failure="storage-full";return false;}}
     function due(now){if(base.equals("")){return false;}var cadence=packet==null?3600:packet.interval(now);return lastAttempt==null||now<lastAttempt||now-lastAttempt>=cadence;}

@@ -1,0 +1,10 @@
+
+Error: Unhandled Exception
+Exception: Source must not use a color palette
+Stack: 
+  - active() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/SceneRenderer.mc:90 0x1000531f 
+  - drawScene() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/SpaceFoxView.mc:172 0x100070e1 
+  - updateForDisplayMode() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/SpaceFoxView.mc:152 0x10006da5 
+  - onUpdate() at /Users/jekamas/projects/SpaceFox-worktrees/apply-two-mode-countdown-20261115/watchface/source/SpaceFoxView.mc:144 0x10007523 
+  - onUpdate() at /Users/jekamas/.codex/tmp/spacefox-display02-author/ready/DisplayReady.mc:8 0x10005119 
+Encountered an app crash.

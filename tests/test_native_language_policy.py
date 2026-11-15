@@ -37,8 +37,6 @@ class NativeSoftwareAdmissionTest(unittest.TestCase):
             'watchface/resources/fonts/fonts.xml',
             'watchface/resources/fonts/Aod40.fnt',
             'watchface/resources/fonts/Aod40.png',
-            'watchface/resources/fonts/Battery13.fnt',
-            'watchface/resources/fonts/Battery13.png',
             'watchface/resources/fonts/Metric32.fnt',
             'watchface/resources/fonts/Metric32.png',
             'watchface/resources/fonts/Time80.fnt',
@@ -102,12 +100,12 @@ class NativeSoftwareAdmissionTest(unittest.TestCase):
     original=proof[key];proof[key]=value
     with self.subTest(field=key),self.assertRaises(ValueError):_validate_bound_files(root,c)
     proof[key]=original
- def test_current_phone_delta_source_drift_refuses(self):
+ def test_current_display_delta_source_drift_refuses(self):
   self.assertEqual(software_locales(ROOT,self.catalog),['en','ru','de','fr','es'])
   with tempfile.TemporaryDirectory() as temp:
    root=Path(temp)
    for folder in ('watchface','locales','tools'):shutil.copytree(ROOT/folder,root/folder,ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
    for folder in ('openspec','corpus','tests','assets','catalog','schemas'):(root/folder).symlink_to(ROOT/folder,target_is_directory=True)
    changed=root/'watchface/source/SceneRenderer.mc';changed.write_bytes(changed.read_bytes()+b' ')
-   with self.assertRaisesRegex(ValueError,'UX delta proof input changed'):software_locales(root,self.catalog)
+   with self.assertRaisesRegex(ValueError,'DISPLAY02 proof input changed'):software_locales(root,self.catalog)
 if __name__=='__main__':unittest.main()

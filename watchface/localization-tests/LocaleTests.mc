@@ -19,12 +19,12 @@ import Toybox.WatchUi;
 }
 (:test,:typecheck(false)) function localeFormatsPositive(logger){
  var p=new LocalePresentation();p.prepare("ru");Test.assertEqual(p.number("12345"),"12 345");Test.assertEqual(p.date("2026-11-12"),"12/11/2026");
- var c=new ClockSnapshot("12:00","DATE ONLY");c.date="2026-11-12";Test.assertEqual(p.countdown(c,true),"--:--:--");
- p.prepare("en");var mixed=new ClockSnapshot("12:00","");mixed.remaining=93780;Test.assertEqual(p.countdown(mixed,true),"26:03:00");p.prepare("ru");Test.assertEqual(p.countdown(mixed,true),"26:03:00");
+ Test.assertEqual(new ScheduleState(null,"date").display(0),"--:--:--");
+ p.prepare("en");Test.assertEqual(new ScheduleState(93780,"exact").display(0),"T- 26:03:00");p.prepare("ru");Test.assertEqual(new ScheduleState(93780,"exact").display(0),"T- 26:03:00");
  p.prepare("en");Test.assertEqual(p.number("12345"),"12,345");Test.assertEqual(p.date("2026-11-12"),"11/12/2026");
  p.prepare("de");Test.assertEqual(p.date("2026-11-12"),"12/11/2026");
  var w=new WatchClock();Test.assertEqual(w.formatLocal(0,0),"00:00");Test.assertEqual(w.formatLocal(12,0),"12:00");Test.assertEqual(w.formatLocal(23,7),"23:07");return true;
 }
 (:test,:typecheck(false)) function localeFormatsNegative(logger){
- var p=new LocalePresentation();p.prepare("en");Test.assertEqual(p.number("—"),"—");var c=new ClockSnapshot("08:08","TIME UNKNOWN");Test.assertEqual(p.countdown(c,true),"--:--:--");c.remaining=0;Test.assertEqual(p.countdown(c,false),"T+ 00:00:00");return true;
+ var p=new LocalePresentation();p.prepare("en");Test.assertEqual(p.number("—"),"—");Test.assertEqual(new ScheduleState(null,"unknown").display(0),"--:--:--");Test.assertEqual(new ScheduleState(0,"exact").display(0),"T+ 00:00:00");return true;
 }

@@ -29,13 +29,13 @@ function clockExactPositive(logger as Test.Logger) as Boolean {
     input.local = "12:00"; // local UTC+4, same absolute moment
     var second = view.snapshot();
     var crossWidth = new ScheduleState(1800000000, "exact");
-    logger.debug("literal7200 second=" + second.countdown + " reads=" + input.reads + " cross=" + crossWidth.display(-1000000000, true));
+    logger.debug("literal7200 second=" + second.countdown + " reads=" + input.reads + " cross=" + crossWidth.display(-1000000000));
     return schedule.remainingSeconds(input.utc) == 7200 &&
         first.countdown.equals("T- 02:00:00") && second.countdown.equals("T- 02:00:00") &&
         first.localTime.equals("08:00") && second.localTime.equals("12:00") && input.reads == 3 &&
-        new ScheduleState(-1, "exact").display(-61, true).equals("T- 00:01:00") &&
+        new ScheduleState(-1, "exact").display(-61).equals("T- 00:01:00") &&
         crossWidth.remainingSeconds(-1000000000) == 2800000000l &&
-        crossWidth.display(-1000000000, true).equals("T- 777777:46:40");
+        crossWidth.display(-1000000000).equals("T- 777777:46:40");
 }
 
 (:test)
@@ -56,9 +56,9 @@ function uncertaintyPositive(logger as Test.Logger) as Boolean {
     var window = new ScheduleState(1800007200, "window");
     var unknown = new ScheduleState(null, "unknown");
     logger.debug("date/window ignore nominal midpoint; exact countdown remains null");
-    return date.remainingSeconds(1800000000) == null && date.display(1800000000, true).equals("--:--:--") &&
-        window.remainingSeconds(1800000000) == null && window.display(1800000000, true).equals("--:--:--") &&
-        unknown.remainingSeconds(1800000000) == null && unknown.display(1800000000, true).equals("--:--:--");
+    return date.remainingSeconds(1800000000) == null && date.display(1800000000).equals("--:--:--") &&
+        window.remainingSeconds(1800000000) == null && window.display(1800000000).equals("--:--:--") &&
+        unknown.remainingSeconds(1800000000) == null && unknown.display(1800000000).equals("--:--:--");
 }
 
 (:test)
@@ -68,7 +68,7 @@ function uncertaintyNegative(logger as Test.Logger) as Boolean {
         var value = invalid[index];
         var schedule = new ScheduleState(value, "exact");
         if (schedule.remainingSeconds(1800000000) != null ||
-            !schedule.display(1800000000, true).equals("--:--:--")) { return false; }
+            !schedule.display(1800000000).equals("--:--:--")) { return false; }
     }
     logger.debug("null/fraction/date/string/boolean cannot create precision; signed integer UTC is present");
     var valid = [0, 0l, -1, -1000000000, -62135596800l];
@@ -76,7 +76,7 @@ function uncertaintyNegative(logger as Test.Logger) as Boolean {
         var schedule = new ScheduleState(valid[index], "exact");
         if (schedule.remainingSeconds(1800000000) == null ||
             (schedule.remainingSeconds(1800000000) as Number or Long) >= 0 ||
-            schedule.display(1800000000, true).find("T+ ") != 0) { return false; }
+            schedule.display(1800000000).find("T+ ") != 0) { return false; }
     }
     return true;
 }
@@ -128,9 +128,9 @@ function precisionTransitions(logger as Test.Logger) as Boolean {
     var distant = new ScheduleState(1800176580, "exact");
     logger.debug("fixed numeric countdown; minute target uses nominal arithmetic");
     return initial.countdown.equals("T- 01:01:01") && active.countdown.equals("T- 01:01:01") &&
-        asleep.countdown.equals("T- 01:01:00") && distant.display(1800000000, true).equals("T- 49:03:00") &&
-        new ScheduleState(1800003661,"minute").display(1800000000,true).equals("T- 01:01:01") &&
-        new ScheduleState(null,"window").display(1800000000,true).equals("--:--:--");
+        asleep.countdown.equals("T- 01:01:00") && distant.display(1800000000).equals("T- 49:03:00") &&
+        new ScheduleState(1800003661,"minute").display(1800000000).equals("T- 01:01:01") &&
+        new ScheduleState(null,"window").display(1800000000).equals("--:--:--");
 }
 
 (:test)

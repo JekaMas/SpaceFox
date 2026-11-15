@@ -94,6 +94,12 @@ class NativeBuildTest(unittest.TestCase):
             # policy guard is required, not actual runtime feature support.
             self.assertEqual(result.returncode, 0, log)
             self.assertIn("BUILD SUCCESSFUL", log)
+            # Bind the isolated negative tree to its own manifest and source,
+            # so identity validation does not mask the intended API guard.
+            from tools.generate_native_version import render
+            identity = root / "watchface/source/generated/NativeVersion.mc"
+            identity.parent.mkdir(parents=True, exist_ok=True)
+            identity.write_text(render(root))
             with self.assertRaisesRegex(BuildBlocked, "unsupported API6.0.3 symbol HTTP_RESPONSE_CONTENT_TYPE_OCTET_STREAM on FR165 API5.2.0"):
                 build(output / "policy-blocked", root=root)
             (output / "counterexample-and-policy.json").write_text(json.dumps({"command": argv, "exit_code": result.returncode,

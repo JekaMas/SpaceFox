@@ -538,3 +538,46 @@ GitHub release asset bodies anonymously downloaded and hash-matched. Original
 Garmin form is prepared but submission has NOT occurred; action-time agreement
 confirmation is pending. Physical watch remains observed0.1.6. See
 [publication checkpoint](evidence/delivery01-publication/PUBLICATION.md).
+
+### DISPLAY02 current owner correction — apply pending
+
+Owner still sees no launch point and requires only LOW/NOT_LOW, no special mode
+flags/debug/alternate layouts, one countdown calculation and focused event PBT.
+One grouped author apply/self-GREEN, then one fresh independent verify/fix, root
+judge and higher-version publication are planned in [DISPLAY02](evidence/display02/PLAN.md).
+Existing0.1.9 Garmin form is superseded before submission; physicalwatch remains0.1.6.
+
+### DISPLAY02 author checkpoint — two modes and visible point
+
+The author-side implementation and focused source/test-key SDK verification are
+recorded in [DISPLAY02 status](evidence/display02/STATUS.md). The captured 0.1.9
+Zhuque point failure, exact failing harness/SDK controls, four-seed event run,
+current map coverage and restored simulator state remain visible there. This is
+**NOT DONE** overall: a fresh independent verification/fix, root judgment,
+production-signed export and publication, and physical watch execution with fresh
+matching launch and stable modes remain open. Do not treat the owner's observed
+0.1.6, a queued update, a test-key SDK capture or a signed predecessor as the
+corrected physical outcome.
+
+### DISPLAY02 root acceptance — bounded software closed, delivery open
+
+Author a536666a and fresh independent verify/fix2e393bbf accepted for0.1.10/de5011f4.
+OnlyLOW/NOT_LOW, shared UTC countdown, current189 fixed positions, corrected LOW
+font, independent seed887 and actual signed natural acquisition/full process
+reopen are qualified. All1392 pins and IQ+21 signatures passed. See
+[root judgment](evidence/display02/ROOT-JUDGMENT.md). Physicalwatch still observed0.1.6;
+worldwide future/mobile coverage remains open. Publication/readback are separate.
+
+### DISPLAY02 publication — submitted, physical delivery still open
+
+Public main/tag v0.1.10 are published at ba1eada6; all 19 GitHub assets were
+anonymously downloaded and hash-matched. Garmin verified and accepted the final
+0.1.10 IQ in the original ordinary card; readback is 0.1.10 (Internal: 7), PENDING.
+The original installation URL also shows that version in an authenticated reload.
+The Music installation POST returned HTTP 200 with an empty body and no version
+selector. This is unversioned queue acceptance, not corrected-watch execution.
+Ivan received the original link and truthful version-check instructions. One
+normal sync and actual on-watch version, launch/countdown/point are requested.
+Last confirmed physical version remains 0.1.6; goal and task 3.2 stay NOT DONE.
+No new task group or invalidated behavior input; no behavior tests were rerun.
+See [publication record](evidence/display02-publication/PUBLICATION.md).

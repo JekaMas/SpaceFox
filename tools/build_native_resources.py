@@ -3,7 +3,7 @@
 """Rebuild public native resources; no private workflow/SDK required.
 Python3.14, Pillow13.0.0, fonttools4.68.0, brotli1.2.1 and Node are pinned.
 Only existing licensed woff2/PNG/Natural Earth sources are inputs. No live data.
-Prepared map views are bundled fallbacks, never downloaded-asset qualification.
+Prepared map views bind the finite authored fixed-site catalog.
 """
 from pathlib import Path
 import hashlib,io,json,math,shutil,subprocess,tempfile
@@ -55,7 +55,7 @@ def main():
  (RES/'drawables/art_unknown.png').write_bytes(subprocess.check_output([renderer,'-w','54','-h','124',str(unknown)]))
  drawables.append('<bitmap id="Art_unknown" filename="art_unknown.png"/>')
  chars=''.join(chr(i)for i in range(32,127))+''.join(chr(i)for i in range(0x410,0x450))+'Ёё—…·–'
- fonts=[font('Aod40',134,['RobotoCondensed-latin-600.woff2'],'0123456789:'),font('Time80',104,['BarlowSemiCondensed-latin-600.woff2'],'0123456789:'),font('Metric32',46,['RobotoCondensed-latin-600.woff2','NotoSans-latin-500.woff2'], '0123456789 ,—%.…'),font('Label21',21,['NotoSans-latin-500.woff2','NotoSans-cyrillic-500.woff2'],chars),font('Label17',17.2,['NotoSans-latin-500.woff2','NotoSans-cyrillic-500.woff2'],chars),font('Count31',31,['RobotoCondensed-latin-600.woff2','NotoSans-cyrillic-500.woff2','NotoSans-latin-500.woff2'],chars+'−')]
+ fonts=[font('Aod40',136,['RobotoCondensed-latin-600.woff2'],'0123456789:'),font('Time80',104,['BarlowSemiCondensed-latin-600.woff2'],'0123456789:'),font('Metric32',46,['RobotoCondensed-latin-600.woff2','NotoSans-latin-500.woff2'], '0123456789 ,—%.…'),font('Label21',21,['NotoSans-latin-500.woff2','NotoSans-cyrillic-500.woff2'],chars),font('Label17',17.2,['NotoSans-latin-500.woff2','NotoSans-cyrillic-500.woff2'],chars),font('Count31',31,['RobotoCondensed-latin-600.woff2','NotoSans-cyrillic-500.woff2','NotoSans-latin-500.woff2'],chars+'−')]
  (RES/'fonts/fonts.xml').write_text('<fonts>\n'+''.join(f'<font id="{f["name"]}" filename="{f["name"]}.fnt" antialias="true"/>\n'for f in fonts)+'</fonts>\n')
  points=json.loads((ROOT/'watchface/resource-inputs/map-views.json').read_text())['points']
  with tempfile.NamedTemporaryFile('w',suffix='.json')as temp:
@@ -79,7 +79,7 @@ def main():
    for x in range(390):
     fade=.85*interp(x/389,[(0,.06),(.25,.22),(.60,.68),(1,1)])*interp(y/389,[(0,.06),(.18,.55),(.40,1),(.65,.9),(1,.04)])
     px[x,y]=tuple(round(a*fade)for a in px[x,y])
-  name=f'MapView{i}';im.quantize(colors=256,method=Image.Quantize.MEDIANCUT,dither=Image.Dither.NONE).save(RES/'drawables'/(name+'.png'));drawables.append(f'<bitmap id="{name}" filename="{name}.png"/>');entries.append(f'new NativeMap({m["point"][0]},{m["point"][1]},Rez.Drawables.{name})')
+  name=f'MapView{i}';indexed=im.resize((195,195),Image.Resampling.LANCZOS);indexed.save(RES/'drawables'/(name+'.png'));drawables.append(f'<bitmap id="{name}" filename="{name}.png" automaticPalette="false"/>');entries.append(f'new NativeMap({m["point"][0]},{m["point"][1]},Rez.Drawables.{name})')
  renderer=shutil.which('rsvg-convert')
  if not renderer:raise RuntimeError('Public dependency rsvg-convert2.57.0 is required for accepted SVG icon paths; no automatic installation')
  version=subprocess.check_output([renderer,'--version'],text=True).strip()
@@ -106,6 +106,6 @@ def main():
  except ImportError:
   from build_native_localization import generate
  generate(ROOT)
- manifest={'schema':1,'builder':'tools/build_native_resources.py','dependencies':{'Pillow':'13.0.0','fonttools':'4.68.0','brotli':'1.2.1'},'svg_renderer':version,'marker_source_sha256':sha(ROOT/'prototype/marker/renderer.js'),'marker_exporter_sha256':sha(ROOT/'tools/native_marker_svg.js'),'metric_icon_source_sha256':sha(ROOT/'prototype/qualification/renderer.js'),'unknown_art_source_sha256':sha(unknown),'unknown_art_png_sha256':sha(RES/'drawables/art_unknown.png'),'fonts':fonts,'font_sources':{str(p.relative_to(ROOT)):sha(p)for p in sorted((ROOT/'prototype/fonts').glob('*.woff2'))},'map_views_sha256':sha(ROOT/'watchface/resource-inputs/map-views.json'),'catalog_sha256':sha(ROOT/'assets/rocket-pack/catalog.json'),'bundled_prepared_map_points':points,'proof_boundary':'Bundled prepared fallback views only; no native arbitrary geography, remote download, transport or full36locale qualification.'}
+ manifest={'schema':1,'builder':'tools/build_native_resources.py','dependencies':{'Pillow':'13.0.0','fonttools':'4.68.0','brotli':'1.2.1'},'svg_renderer':version,'marker_source_sha256':sha(ROOT/'prototype/marker/renderer.js'),'marker_exporter_sha256':sha(ROOT/'tools/native_marker_svg.js'),'metric_icon_source_sha256':sha(ROOT/'prototype/qualification/renderer.js'),'fonts':fonts,'font_sources':{str(p.relative_to(ROOT)):sha(p)for p in sorted((ROOT/'prototype/fonts').glob('*.woff2'))},'map_views_sha256':sha(ROOT/'watchface/resource-inputs/map-views.json'),'catalog_sha256':sha(ROOT/'assets/rocket-pack/catalog.json'),'bundled_prepared_map_points':points,'proof_boundary':'Finite fixed-site catalog centers only; no arbitrary later catalog additions, remote download, transport or full36locale qualification.','unknown_art_source_sha256':sha(unknown),'unknown_art_png_sha256':sha(RES/'drawables/art_unknown.png')}
  (RES/'resource-build.json').write_text(json.dumps(manifest,indent=2)+'\n')
 if __name__=='__main__':main()

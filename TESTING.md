@@ -7,10 +7,9 @@ phone release notes and an empty Updates list do not identify executing code.
 Keep the existing cache; corrected-build delivery and stable scene transitions
 remain NOT DONE. See the [corrected record](openspec/changes/spacefox-watchface/evidence/ux03-delivery/PUBLICATION.md).
 
-## Current testing and ordinary 0.1.7
+## Current testing and ordinary listing
 
-The combined 0.1.9 repair is a local candidate; the latest published 0.1.8 is
-a GitHub test prerelease, not a Garmin submission. The owner last observed 0.1.6
+The 0.1.10 two-mode repair is a local candidate; 0.1.9 was published on GitHub but has not been submitted to Garmin. The owner last observed 0.1.6
 on the physical watch after a power cycle. Simulator observations use isolated
 test identities and do not establish installation or behavior of the signed
 candidate on that watch.
@@ -25,6 +24,6 @@ Check the clock and four fields, wait for a schedule and rocket/map, and compare
 
 See [privacy](https://github.com/JekaMas/SpaceFox/blob/main/docs/PRIVACY.md), [licenses](https://github.com/JekaMas/SpaceFox/blob/main/THIRD_PARTY_NOTICES.md) and [project setup](https://github.com/JekaMas/SpaceFox/blob/main/docs/AGENT_SETUP.md).
 
-## Published 0.1.8 test and combined 0.1.9 candidate
+## Published test builds and 0.1.10 candidate
 
-The [0.1.8 test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.8-test.1) is published on GitHub and was not submitted to Garmin. The combined 0.1.9 repair is a separate local candidate. Check release status and checksums before use. Match `SpaceFox-fr165m.prg` to the Forerunner 165 Music and `SpaceFox-fr165.prg` to the standard model. For USB installation, simulator steps, offline checks and the phone/pairing distinction, see [installation and testing](docs/TESTING_ON_PHONE.ru.md). Physical delivery and the incident remain open until the executing version and actual device behavior are observed.
+The [0.1.8 test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.8-test.1) is published on GitHub and was not submitted to Garmin. The 0.1.9 repair was published on GitHub; the 0.1.10 repair is a separate local candidate. Check release status and checksums before use. Match `SpaceFox-fr165m.prg` to the Forerunner 165 Music and `SpaceFox-fr165.prg` to the standard model. For USB installation, simulator steps, offline checks and the phone/pairing distinction, see [installation and testing](docs/TESTING_ON_PHONE.ru.md). Physical delivery and the incident remain open until the executing version and actual device behavior are observed.
