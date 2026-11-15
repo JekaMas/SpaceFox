@@ -736,3 +736,14 @@ deferred, and valid greens remain reused under the latest owner instruction.
 The interrupted discovery is not a full-suite pass. One final main integration,
 signed-source/package identity, version tag and original-card publication follow;
 physical updated execution, fresh data, wake and power remain NOT DONE.
+
+### Integrated 0.1.16 software and source export accepted
+
+Root accepts merge `068f0011` and fresh peer `53346c2b`, native ID `e513cc6d`:
+[integration judgment](evidence/display04-integrated016/ROOT-JUDGMENT.md).
+The actual cold-stock OOMs were fixed with demand-paged cold parser/scheduler
+code, preserving reminder behavior and the accepted DISPLAY04 UI. Exact final
+offline READY and affected native checks pass; all 5,616 release-source inputs
+match the passing isolated export. This closes the integration software unit,
+not physical or release disposition. Main PR merge, production signing/tag and
+original-card publication/readback follow without repeating valid behavior tests.
