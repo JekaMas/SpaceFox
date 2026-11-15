@@ -77,7 +77,7 @@ def validate(root, catalog):
             path = Path(name)
             if path.is_absolute() or '..' in path.parts:
                 raise ValueError('invalid absent path')
-            (target / path).unlink()
+            (target / path).unlink(missing_ok=True)
         # Isolate module imports: the incoming release validator differs from the
         # one that established the prior DISPLAY03 chain.
         code = ('import json; from pathlib import Path; '
