@@ -7205,6 +7205,65 @@
       ],
       "disposition": "current_change",
       "rationale": "Independent peer inspected source, assertions, original builds/logs/captures and the public closure. Repaired unchecked proof manifest and unbound current host-producer applicability; affected 12-case batch passes. Source-qualified FR165 simulator evidence remains separate from feed admission, ordinary resources, physical, phone and Store acceptance; root judgment pending."
+    },
+    {
+      "id": "D-signing-custody-20261115",
+      "question": "Does the retained production encrypted backup still restore the current official public signing identity, while disposable controls preserve integrity and refusal boundaries?",
+      "property_ids": [
+        "RL02.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_release_identity.SigningCustodyTest.test_actual_encrypted_restore_and_independent_signature",
+        "unittest::tests.test_release_identity.SigningCustodyTest.test_wrong_corrupt_swapped_and_existing_identity_refused"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Inspect release.py custody, same two cases, production public identity/historical restore, current original SDK receipt and external path-only custody config.",
+          "outcome": "Reuse qualified PKCS8 PBES2 AES256/PBKDF2-HMAC-SHA256600000 recipe and retained0.1.11/0.1.12 same-identity signing provenance. Add opt-in actual-backup observer, disposable filesystem-guard assertions and own-native-fork identity guide. No release.py/native/publisher owner change.",
+          "results": [
+            {
+              "path": "tools/release.py",
+              "classification": "test_proof",
+              "reason": "Qualified real OpenSSL custody implementation retained."
+            },
+            {
+              "path": "tools/verify_signing_backup.py",
+              "classification": "change_candidate",
+              "reason": "Opt-in current retained-backup observation with ephemeral restore cleanup and public-only metadata."
+            },
+            {
+              "path": "tests/test_release_identity.py",
+              "classification": "test_proof",
+              "reason": "Two existing cases with real RSA4096/encryption/challenge and filesystem refusal controls."
+            },
+            {
+              "path": "docs/RELEASE_AND_UPDATES.md",
+              "classification": "change_candidate",
+              "reason": "Custody operations, limits and own-native-fork identity guidance."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Known exact custody owner from assigned graph and release.py.",
+          "reason": "No unknown ownership search needed.",
+          "outcome": "No semantic-search claim.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Bounded Python/OpenSSL workflow with exact owners.",
+          "reason": "No indexed symbol operation required.",
+          "outcome": "No IDE index claim.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "Whole attainable local RL02.P1 evidence repair; sourcebound actual-production backup restore supplements original receipt without rewriting it. Same-Mac only, no offsite, physical/phone/Store or task7 closure."
     }
   ]
 }

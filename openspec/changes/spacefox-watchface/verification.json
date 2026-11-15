@@ -826,7 +826,7 @@
       ],
       "statement": "Official releases SHALL use the same backed-up 4096-bit RSA developer signing key\nand application UUID for updates. The private key SHALL remain outside source,\nPages and data workflows. Release provenance SHALL record source/toolchain,\npackage digest, version, supported products/languages and test evidence without\npublishing credentials. A forked native product SHALL use its own identity/key.",
       "owner": "tools/release.py",
-      "oracle": "Current executable custody controls use real OpenSSL and disposable external identities: actual encrypted restore, deterministic challenge signature, wrong/corrupt/swapped inputs and overwrite/replacement refusal. Retained production custody and SDK update observations remain immutable historical evidence; the obsolete initial-production export campaign is retired after public publication. No fresh production restore/export or whole-property closure is claimed.",
+      "oracle": "Real OpenSSL disposable RSA4096 custody cases prove encrypted restore, independently equal challenge signatures, integrity and no-replacement filesystem guards. A dated opt-in actual-production backup observation supplements immutable 0.1.11/0.1.12 same-identity SDK/signature provenance; native fork guidance requires its own UUID/key. No device/Store or offsite/disaster recovery claim.",
       "source_globs": [
         "tools/release.py",
         "tools/ReleaseInspector.java",
@@ -843,9 +843,10 @@
         "LICENSE",
         "THIRD_PARTY_NOTICES.md",
         "docs/AGENT_SETUP.md",
-        "docs/RELEASE_AND_UPDATES.md"
+        "docs/RELEASE_AND_UPDATES.md",
+        "tools/verify_signing_backup.py"
       ],
-      "planning_status": "Original broad identity/custody requirement preserved. Current disposable custody controls plus immutable production-signing evidence and separately accepted RL02.P2/RL08.P2 signed-export controls have distinct proof boundaries. Supplemental published history admission checks do not prove signed higher-version repair; physical/Store/task7 acceptance remains open."
+      "planning_status": "Current whole local signing-custody increment: executable disposable positive/negative controls plus dated actual-production retained-backup restoration and retained production same-key package/provenance observations. Physical/phone/Store/task7 acceptance remains separate; root judges closure after one different peer."
     },
     {
       "id": "RL03.P1",
@@ -5445,7 +5446,8 @@
         "LICENSE",
         "THIRD_PARTY_NOTICES.md",
         "docs/AGENT_SETUP.md",
-        "docs/RELEASE_AND_UPDATES.md"
+        "docs/RELEASE_AND_UPDATES.md",
+        "tools/verify_signing_backup.py"
       ],
       "test_id": "unittest::tests.test_release_identity.SigningCustodyTest.test_actual_encrypted_restore_and_independent_signature",
       "command_id": "production-signing-checks",
@@ -5461,7 +5463,7 @@
           "Physical installation, phone, Store or whole RL02.P1 closure"
         ]
       },
-      "source_sha256": "0d07cca6d599adc8be45d890be4fec8156637107de7847d11fc6ea846e9901e8"
+      "source_sha256": "e7401d2655455bcdc172c980a2089b2b3bfd083b5d29ed5ef7b7dea9c9f2ab3b"
     },
     {
       "id": "RL02.P1.S01.NEGATIVE",
@@ -5470,9 +5472,9 @@
       "scenario": "Update the official app",
       "scenario_fingerprint": "689f2b4e1a999b0886430b8793af3c4007b0e6af2ac7cd1b659daf93e79dea29",
       "setup": "Real OpenSSL-generated disposable RSA4096 custody outside Git, encrypted backup and separate disposable password; no production secrets or native SDK export.",
-      "observable": "Wrong password, corrupt DER, changed digest/public identity and existing destination or bound identity refuse without replacing signing material.",
+      "observable": "Wrong password, corrupt DER, changed digest/public identity, existing destination or bound identity, Git destination, unsafe permissions, symlink and colocated password refuse without replacing signing material or changing backup/password bytes.",
       "red_expectation": "A mismatched identity/signature or successful refused control fails the literal assertions.",
-      "green_expectation": "Wrong password, corrupt DER, changed digest/public identity and existing destination or bound identity refuse without replacing signing material.",
+      "green_expectation": "Wrong password, corrupt DER, changed digest/public identity, existing destination or bound identity, Git destination, unsafe permissions, symlink and colocated password refuse without replacing signing material or changing backup/password bytes.",
       "invalidation_dependencies": [
         "tools/release.py",
         "tools/ReleaseInspector.java",
@@ -5489,7 +5491,8 @@
         "LICENSE",
         "THIRD_PARTY_NOTICES.md",
         "docs/AGENT_SETUP.md",
-        "docs/RELEASE_AND_UPDATES.md"
+        "docs/RELEASE_AND_UPDATES.md",
+        "tools/verify_signing_backup.py"
       ],
       "test_id": "unittest::tests.test_release_identity.SigningCustodyTest.test_wrong_corrupt_swapped_and_existing_identity_refused",
       "command_id": "production-signing-checks",
@@ -5505,7 +5508,7 @@
           "Physical installation, phone, Store or whole RL02.P1 closure"
         ]
       },
-      "source_sha256": "0d07cca6d599adc8be45d890be4fec8156637107de7847d11fc6ea846e9901e8"
+      "source_sha256": "e7401d2655455bcdc172c980a2089b2b3bfd083b5d29ed5ef7b7dea9c9f2ab3b"
     },
     {
       "id": "RL03.P1.S01.POSITIVE",
@@ -34524,7 +34527,7 @@
       "timeout_seconds": 60,
       "authority": "local",
       "planned_boundary": "EXTERNAL_BOUNDARY",
-      "notes": "Current real disposable OpenSSL custody controls only. Obsolete initial-production SDK campaign retired after publication; historical production receipts remain immutable. No production secrets, compiler, Simulator/device/Store."
+      "notes": "Real disposable OpenSSL custody controls with actual Git/permissions/symlink/separate-password guards. Dated opt-in actual-production observation is supplemental evidence, never an automated data job or SDK export. No physical/phone/Store/offsite proof."
     },
     {
       "id": "native-aod-recovery-observed",

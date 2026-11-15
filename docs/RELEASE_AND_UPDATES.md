@@ -49,3 +49,27 @@ addresses apps designed for children under 13 and qualifies its general-audience
 exception when such use is known. Recheck the current terms and the truthful
 facts at release review; an adult publisher or PRG installation is not an
 exemption.
+
+
+### Local backup observation and native forks
+
+The opt-in local command `python3 -B -m tools.verify_signing_backup --config /absolute/path/to/private-path-config.json`
+uses the existing protected path-only custody config. It checks the committed
+public fingerprint and encrypted-backup digest, restores that retained encrypted
+copy to a new private temporary destination, compares original/restored challenge
+signatures, and removes the restored plaintext. Its JSON contains public metadata
+only. Never put this command, the config, the key, the encrypted backup or the
+recovery password in a Pages/data workflow. Keep the backup and its recovery
+password in separate owner-only directories outside every Git checkout (files0600,
+directories0700). Same-Mac recovery does not establish offsite/disaster recovery.
+A dated observation supplements the immutable SDK receipt; it does not change a
+receipt whose backup status was `not_supplied` or claim custody at build time.
+
+A fork that distributes a **native watch face** must create its own application
+UUID and its own external RSA4096 signing key, then bind its own public fingerprint
+in its fork's release policy and native toolchain/manifest identity. Preserve that
+fork identity for its updates. Do not request or copy the author's signing key,
+UUID or recovery password; the official custody initializer intentionally refuses
+a bound production identity and is not a fork identity generator. A personal
+data-feed fork configured through `FeedBaseUrl` follows [the setup guide](AGENT_SETUP.md)
+and requires no author credentials or native signing key in its data workflow.
