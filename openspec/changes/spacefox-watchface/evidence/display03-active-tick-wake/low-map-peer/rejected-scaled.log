@@ -1,0 +1,9 @@
+Background: SFR_PROBE owner=8e906b38f2254c4987d492208133f381|spacefox-peer-low-visual|68e563cbe1de
+SFR_PROBE owner=8e906b38f2254c4987d492208133f381|spacefox-peer-low-visual|68e563cbe1de
+
+Error: Unhandled Exception
+Exception: Source must be native color format
+Stack: 
+  - draw() at /Users/jekamas/projects/SpaceFox-worktrees/verify-active-clock-wake-20261115/watchface/source/SceneRenderer.mc:190 0x1000819d 
+  - onUpdate() at /Users/jekamas/.codex/tmp/spacefox-peer-low-visual/Probe.mc:12 0x10007fd4 
+Encountered an app crash.

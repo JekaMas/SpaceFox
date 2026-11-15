@@ -10,11 +10,11 @@ import Toybox.System;
 // paged. NativeCacheCore paging funds this within the same foreground cap.
 (:typecheck(false))
 class NativeSfrDecoder {
-    var immutable;var descriptor;var bitmap;var dc;var hash;var row=[]b;var colors=[];var width;var height;var channels;var rgbRowBitmap=null;var rgbRowDc=null;var y=0;var shard=0;var data=null;var offset=0;var endRow=0;var done=false;
+    var immutable;var descriptor;var bitmap;var dc;var hash;var row=[]b;var colors=[];var width;var height;var channels;var rgbRowBitmap=null;var rgbRowDc=null;var outlineBitmap=null;var outlineDc=null;var outlinePrevious=[]b;var y=0;var shard=0;var data=null;var offset=0;var endRow=0;var done=false;
     (:extendedCode)
     function initialize(adapter,d){
         immutable=new NativeImmutable(adapter);descriptor=d;width=d["canvas"][0];height=d["canvas"][1];channels=d["channels"];hash=new Cryptography.Hash({:algorithm=>Cryptography.HASH_SHA256});
-        bitmap=Graphics.createBufferedBitmap({:width=>width,:height=>height,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();dc=bitmap.getDc();dc.setColor(Graphics.COLOR_TRANSPARENT,Graphics.COLOR_TRANSPARENT);dc.clear();if(channels==3){rgbRowBitmap=Graphics.createBufferedBitmap({:width=>width,:height=>1,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();rgbRowDc=rgbRowBitmap.getDc();}
+        bitmap=Graphics.createBufferedBitmap({:width=>width,:height=>height,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();dc=bitmap.getDc();dc.setColor(Graphics.COLOR_TRANSPARENT,Graphics.COLOR_TRANSPARENT);dc.clear();if(channels==3){rgbRowBitmap=Graphics.createBufferedBitmap({:width=>width,:height=>1,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();rgbRowDc=rgbRowBitmap.getDc();outlineBitmap=Graphics.createBufferedBitmap({:width=>390,:height=>390,:palette=>[Graphics.COLOR_BLACK,0xBEE1F0],:colorDepth=>1}).get();outlineDc=outlineBitmap.getDc();outlineDc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);outlineDc.clear();outlineDc.setColor(0xBEE1F0,Graphics.COLOR_TRANSPARENT);for(var i=0;i<1170;i+=1){outlinePrevious.add(0);}}
     }
     (:extendedCode)
     function fail(){throw new Lang.InvalidValueException("Invalid SFR1 raster");}
@@ -53,17 +53,28 @@ class NativeSfrDecoder {
     function paintCopy(x,length){
         var first=x;var current=colors[x];for(var n=1;n<length;n+=1){var next=colors[x+n];if(next!=current){span(first,x+n-first,current);first=x+n;current=next;}}span(first,x+length-first,current);
     }
+    (:extendedCode) function channelDistance(a,b){var d=a-b;return d<0?-d:d;}
+    // Compare neighbouring source pixels at its unchanged ACTIVE coordinate.
+    // The one-bit buffer stays the same 390px projection and uses two colors.
+    (:extendedCode) function outlineRow(){
+        if(channels!=3){return;}outlineDc.setColor(0xBEE1F0,Graphics.COLOR_BLACK);var leftR=0;var leftG=0;var leftB=0;
+        for(var x=0;x<390;x+=1){var at=x*3;var r=row[at];var g=row[at+1];var b=row[at+2];if(x==0){leftR=r;leftG=g;leftB=b;}
+            var change=channelDistance(r,leftR);var n=channelDistance(g,leftG);if(n>change){change=n;}n=channelDistance(b,leftB);if(n>change){change=n;}
+            if(y>0){n=channelDistance(r,outlinePrevious[at]);if(n>change){change=n;}n=channelDistance(g,outlinePrevious[at+1]);if(n>change){change=n;}n=channelDistance(b,outlinePrevious[at+2]);if(n>change){change=n;}}
+            if(change>8){outlineDc.drawPoint(x,y);}outlinePrevious[at]=r;outlinePrevious[at+1]=g;outlinePrevious[at+2]=b;leftR=r;leftG=g;leftB=b;
+        }
+    }
     function oneRow(){
         if(data==null){chunk();}var x=0;
         while(x<width){if(offset>=data.size()){fail();}var token=data[offset];offset+=1;var count=(token&127)+1;if(x+count>width){fail();}if(token<128){if(offset+channels>data.size()){fail();}var value=color(offset);if(channels==3){for(var n=0;n<count;n+=1){var at=(x+n)*3;row[at]=data[offset];row[at+1]=data[offset+1];row[at+2]=data[offset+2];}}else{for(var n=0;n<count;n+=1){colors[x+n]=value;for(var c=0;c<channels;c+=1){row[(x+n)*channels+c]=data[offset+c];}}}offset+=channels;span(x,count,value);}else if(channels==4){paintCopy(x,count);}x+=count;}
-        if(channels==3){dc.drawBitmap(0,y,rgbRowBitmap);}hash.update(row);y+=1;if(y==endRow){if(offset!=data.size()){fail();}data=null;row=[]b;colors=[];}if(y==height){if(shard!=descriptor["shards"].size()||data!=null){fail();}var digest=StringUtil.convertEncodedString(hash.digest(),{:fromRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:toRepresentation=>StringUtil.REPRESENTATION_STRING_HEX}).toLower();if(!digest.equals(descriptor["pixelSha256"])){fail();}done=true;row=[]b;colors=[];descriptor=null;dc=null;hash=null;rgbRowDc=null;rgbRowBitmap=null;}
+        if(channels==3){dc.drawBitmap(0,y,rgbRowBitmap);outlineRow();}hash.update(row);y+=1;if(y==endRow){if(offset!=data.size()){fail();}data=null;row=[]b;colors=[];}if(y==height){if(shard!=descriptor["shards"].size()||data!=null){fail();}var digest=StringUtil.convertEncodedString(hash.digest(),{:fromRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:toRepresentation=>StringUtil.REPRESENTATION_STRING_HEX}).toLower();if(!digest.equals(descriptor["pixelSha256"])){fail();}done=true;row=[]b;colors=[];outlinePrevious=[]b;outlineDc=null;descriptor=null;dc=null;hash=null;rgbRowDc=null;rgbRowBitmap=null;}
     }
-    function step(){if(data==null&&!done){chunk();return false;}var start=System.getTimer();var rows=0;while(!done&&rows<16&&(rows==0||System.getTimer()-start<18)){oneRow();rows+=1;if(data==null){break;}}return done;}
+    function step(){if(data==null&&!done){chunk();return false;}var start=System.getTimer();var rows=0;while(!done&&rows<(channels==3?1:16)&&(rows==0||System.getTimer()-start<18)){oneRow();rows+=1;if(data==null){break;}}return done;}
 }
 
 (:typecheck(false))
 class NativeSfrRenderer extends NativeVisualRenderer {
-    var siteCountryBitmap=null;var mapBitmap=null;var scene=null;var selectionHash="";
+    var siteCountryBitmap=null;var mapBitmap=null;var mapOutline=null;var scene=null;var selectionHash="";
     function initialize(){NativeVisualRenderer.initialize();}
 
 }
@@ -156,6 +167,6 @@ class NativeSfrBuild {
     function displayScene(){return {"position"=>scene["position"]};}
     function step(){
         if(role>=names.size()){if(!closureChecked){checkIndex();closureChecked=true;scene=displayScene();result.scene=scene;return false;}if(closureAt<expected.size()){var start=System.getTimer();var checked=0;while(closureAt<expected.size()&&checked<4&&(checked==0||System.getTimer()-start<18)){checkRaw(expected[closureAt]);closureAt+=1;checked+=1;}return false;}closure();return true;}var name=names[role];if(decoder==null){var d=prepareRole(name);if(d==null){role+=1;return false;}decoder=new NativeSfrDecoder(store,d);}
-        if(decoder.step()){if(name.equals("map")){result.mapBitmap=decoder.bitmap;}else if(name.equals("rocket")){result.bitmap=decoder.bitmap;}else if(name.equals("siteCountry")){result.siteCountryBitmap=decoder.bitmap;}decoder=null;role+=1;}return false;
+        if(decoder.step()){if(name.equals("map")){result.mapBitmap=decoder.bitmap;result.mapOutline=decoder.outlineBitmap;}else if(name.equals("rocket")){result.bitmap=decoder.bitmap;}else if(name.equals("siteCountry")){result.siteCountryBitmap=decoder.bitmap;}decoder=null;role+=1;}return false;
     }
 }

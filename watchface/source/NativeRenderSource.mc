@@ -1,6 +1,6 @@
 (:extendedCode, :typecheck(false))
 class NativeRenderSource {
-    var store;var base;var ready;var serial;
+    var store;var base;var ready;var serial;var transferHash=null;var selectionHash=null;
     function initialize(adapter,url,bridge){
         store=adapter;base=url;ready=false;serial=0;
         if(bridge==null||!(bridge["transfer"] instanceof Dictionary)){return;}
@@ -11,6 +11,7 @@ class NativeRenderSource {
                 marker["base"].equals(base) && marker["pending"]==false && head["catalogDigest"] instanceof String &&
                 head["catalogDigest"].equals(bridge["catalogDigest"]) && head["transfer"] instanceof Dictionary &&
                 head["transfer"]["sha256"] instanceof String && head["transfer"]["sha256"].equals(transfer["sha256"]);
+            if(ready && bridge["selection"] instanceof Dictionary && bridge["selection"]["sha256"] instanceof String){transferHash=transfer["sha256"];selectionHash=bridge["selection"]["sha256"]; }
             if(ready && (head["serial"] instanceof Number || head["serial"] instanceof Long) && head["serial"]>=0){serial=head["serial"];}
         } catch(e) { ready=false; }
     }

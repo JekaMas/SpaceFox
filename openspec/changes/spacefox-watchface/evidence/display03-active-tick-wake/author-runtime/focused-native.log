@@ -1,0 +1,73 @@
+------------------------------------------------------------------------------
+Executing test display03RealMapDecode...
+DEBUG (10:09): REAL_MAP_DECODE launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a sourceSite=ll2:site:29 checksum=verified outline=true steps=51 elapsedMs=717
+PASS
+------------------------------------------------------------------------------
+Executing test display03CausalSequence...
+DEBUG (10:09): D03_SEQUENCE seed=1 events=30 required_dispositions=12 skipped=0
+DEBUG (10:09): D03_SEQUENCE seed=2 events=30 required_dispositions=12 skipped=0
+DEBUG (10:09): D03_SEQUENCE seed=3 events=30 required_dispositions=12 skipped=0
+DEBUG (10:09): D03_SEQUENCE seed=4 events=30 required_dispositions=12 skipped=0
+DEBUG (10:09): D03_SEQUENCE seed=5 events=30 required_dispositions=12 skipped=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03ReadyAndErrorOnWake...
+DEBUG (10:09): READY_ERROR sleep accepted_target retained rejected_old no_load_until_first_active_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03BackgroundBeforeFrame...
+DEBUG (10:09): BACKGROUND sleep_applied=true wake_first_frame no_reload=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03RepeatedLowCallbacks...
+DEBUG (10:09): LOW_CALLBACKS 60 same-minute callbacks one paint; next minute second paint
+PASS
+------------------------------------------------------------------------------
+Executing test display03MinuteRounding...
+DEBUG (10:09): MINUTE offset=-61 observed=T- 00:02 expected=T- 00:02
+DEBUG (10:09): MINUTE offset=-60 observed=T- 00:01 expected=T- 00:01
+DEBUG (10:09): MINUTE offset=-59 observed=T- 00:01 expected=T- 00:01
+DEBUG (10:09): MINUTE offset=-1 observed=T- 00:01 expected=T- 00:01
+DEBUG (10:09): MINUTE offset=0 observed=T+ 00:00 expected=T+ 00:00
+DEBUG (10:09): MINUTE offset=1 observed=T+ 00:00 expected=T+ 00:00
+DEBUG (10:09): MINUTE offset=59 observed=T+ 00:00 expected=T+ 00:00
+DEBUG (10:09): MINUTE offset=60 observed=T+ 00:01 expected=T+ 00:01
+DEBUG (10:09): MINUTE offset=61 observed=T+ 00:01 expected=T+ 00:01
+PASS
+------------------------------------------------------------------------------
+Executing test display03SleepThenHighObservation...
+DEBUG (10:09): SLEEP_QUERY_HIGH active=0 low=1 mode=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03WakeThenLowObservation...
+DEBUG (10:09): WAKE_QUERY_LOW active=0 low=1 mode=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03PrimaryLanguages...
+DEBUG (10:09): PRIMARY_DATE locale=en text=Sun 15.11 width=177
+DEBUG (10:09): PRIMARY_DATE locale=ru text=Вс 15.11 width=155
+DEBUG (10:09): PRIMARY_DATE locale=de text=So 15.11 width=156
+DEBUG (10:09): PRIMARY_DATE locale=fr text=dim 15.11 width=177
+DEBUG (10:09): PRIMARY_DATE locale=es text=dom 15.11 width=190
+PASS
+------------------------------------------------------------------------------
+Executing test display03LocaleResume...
+DEBUG (10:09): LOCALE_WAKE refreshed_after_first_frame=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+display03RealMapDecode              PASS
+display03CausalSequence             PASS
+display03ReadyAndErrorOnWake        PASS
+display03BackgroundBeforeFrame      PASS
+display03RepeatedLowCallbacks       PASS
+display03MinuteRounding             PASS
+display03SleepThenHighObservation   PASS
+display03WakeThenLowObservation     PASS
+display03PrimaryLanguages           PASS
+display03LocaleResume               PASS
+Ran 10 tests
+
+PASSED (passed=10, failed=0, errors=0)

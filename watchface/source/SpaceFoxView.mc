@@ -7,6 +7,7 @@ import Toybox.Timer;
 class ClockSnapshot {
     var localTime as String;
     var countdown as String;
+    var lowCountdown as String = "--:--";
     var stale as Boolean=false;var rescheduled as Boolean=false;
     var date as String or Null=null;
     var localCalendar as Array<Number> or Null=null;
@@ -20,8 +21,12 @@ class SpaceFoxView extends WatchUi.WatchFace {
     const LOW = 0;
     const NOT_LOW = 1;
     private var _mode as Number = LOW;
+    // The WatchFace callback controls update cadence; display mode separately
+    // permits or forbids the full-power layout.
+    private var _awake as Boolean = true;
     private var _shown as Boolean = false;
     private var _resumePending as Boolean = false;
+    private var _resumeTimer as Timer.Timer or Null = null;
     var presentation as LocalePresentation;
     var settings as SceneSettings;
     var context as SceneContext or Null;var visualKey as Array or Null=null;
@@ -47,28 +52,36 @@ class SpaceFoxView extends WatchUi.WatchFace {
         presentation=new LocalePresentation();settings=new SceneSettings(null);context=null;renderer=null;fitness=new Fitness();values={};sceneLifecycle=new SceneLifecycle();
     }
     function syncDisplayMode(mode as System.DisplayMode) as Void {
-        transitionMode(mode == System.DISPLAY_MODE_HIGH_POWER ? NOT_LOW : LOW);
+        transitionMode(_awake && mode == System.DISPLAY_MODE_HIGH_POWER ? NOT_LOW : LOW);
     }
     function displayMode() as Number {return _mode;}
     function transitionMode(next as Number) as Void {
-        if (_mode == next && !(_mode == NOT_LOW && _resumePending)) { return; }
-        _mode=next;_resumePending=false;aodMinute=null;metricsMinute=null;
-        if (_mode == LOW) { stopAnimation();cancelSfrBuild();stopFitness(); }
-        else {
-            refreshLocale();if(_shown&&pendingLoader!=null){pendingLoader.invoke();}refreshFitness();prepareVisual();
-            if(_shown&&context!=null){var duration=downloaded==null?2.5:((downloaded as NativeVisualRenderer).duration() as Float);animationRunning=true;WatchUi.animate(self,:animationProgress,WatchUi.ANIM_TYPE_LINEAR,0.0,1.0,duration,method(:animationDone));}
-        }
+        if (_mode == next) { return; }
+        _mode=next;aodMinute=null;metricsMinute=null;
+        if (_mode == LOW) { _resumePending=false;stopResume();stopAnimation();cancelSfrBuild();stopFitness(); }
+        else { if(renderer!=null){renderer.releaseAod();} _resumePending=true; }
         WatchUi.requestUpdate();
     }
     function onShow() as Void {
-        var alreadyHigh=(_mode == NOT_LOW);var wasPending=_resumePending;_shown=true;refreshLocale();syncDisplayMode(System.getDisplayMode());
-        if(_mode == NOT_LOW){if(alreadyHigh&&!wasPending&&pendingLoader!=null){pendingLoader.invoke();}refreshFitness();prepareVisual();}
+        _shown=true;refreshLocale();syncDisplayMode(System.getDisplayMode());
+        if(_mode == NOT_LOW){_resumePending=true;WatchUi.requestUpdate();}
+    }
+    function stopResume() as Void {if(_resumeTimer!=null){_resumeTimer.stop();_resumeTimer=null;}}
+    function resumeAfterFrame() as Void {
+        _resumeTimer=null;if(!_shown||_mode!=NOT_LOW){return;}
+        refreshLocale();if(pendingLoader!=null){pendingLoader.invoke();}refreshFitness();prepareVisual();
+        if(context!=null){var duration=downloaded==null?2.5:((downloaded as NativeVisualRenderer).duration() as Float);animationRunning=true;WatchUi.animate(self,:animationProgress,WatchUi.ANIM_TYPE_LINEAR,0.0,1.0,duration,method(:animationDone));}
+    }
+    function queueResumeAfterFrame() as Void {
+        if(_shown && _resumePending && _resumeTimer==null){_resumePending=false;_resumeTimer=new Timer.Timer();_resumeTimer.start(method(:resumeAfterFrame),50,false);}
     }
     (:extendedCode)
     function refreshFitness() as Void {if(!(_mode == NOT_LOW)){return;}var now=_clock.utcSeconds();var minute=utcMinute(now);if(metricsMinute==null||metricsMinute!=minute){values=fitness.sample(now);metricsMinute=minute;}if(_shown&&fitnessTimer==null){fitnessTimer=new Timer.Timer();fitnessTimer.start(method(:refreshFitness),60000,true);}WatchUi.requestUpdate();}
     function stopFitness() as Void {if(fitnessTimer!=null){fitnessTimer.stop();fitnessTimer=null;}}
     function snapshotAt(now as Number or Long) as ClockSnapshot {
-        var current=new ClockSnapshot(_clock.localTimeText(),_schedule.display(now));
+        var remaining=_schedule.remainingSeconds(now);
+        var current=new ClockSnapshot(_clock.localTimeText(),CountdownFormat.format(remaining));
+        current.lowCountdown=CountdownFormat.minutes(remaining);
         current.date=context==null?null:context.date;current.localCalendar=_clock.localCalendar();current.battery=fitness.display(values,"battery");
         if(context!=null){current.stale=context.stale;current.rescheduled=context.rescheduled;}
         return current;
@@ -94,9 +107,15 @@ class SpaceFoxView extends WatchUi.WatchFace {
         if(renderer!=null){renderer.downloaded=downloaded;}
         if(packet!=null){packet.compact();}
     }
-    function setAssetCache(cache as NativeRenderSource) as Void {
+    (:typecheck(false)) function setAssetCache(cache as NativeRenderSource) as Void {
         var newlyReady=cache.ready && (assetCache==null || !assetCache.ready || assetCache.serial!=cache.serial);
-        if(newlyReady && assetCache!=null){cancelSfrBuild();}
+        // A newly admitted batch serial can point to the same immutable scene.
+        // Keep the one existing job only when namespace, transfer and selection
+        // digests all match. Packet/schedule admission remains independent.
+        var same=assetCache!=null && assetCache.ready && cache.ready && assetCache.base.equals(cache.base) &&
+            assetCache.transferHash!=null && cache.transferHash!=null && assetCache.transferHash.equals(cache.transferHash) &&
+            assetCache.selectionHash!=null && cache.selectionHash!=null && assetCache.selectionHash.equals(cache.selectionHash);
+        if(newlyReady && assetCache!=null && !same){cancelSfrBuild();}
         assetCache=cache;
     }
     (:extendedCode, :typecheck(false))
@@ -118,7 +137,8 @@ class SpaceFoxView extends WatchUi.WatchFace {
         context=next;_schedule=next==null?new ScheduleState(null,"empty"):next.schedule;
         if(renderer!=null){renderer.prepare(context,settings);(renderer as SceneRenderer).downloaded=downloaded;}
     }
-    function canForegroundWork() as Boolean {return _shown&&(_mode == NOT_LOW);}
+    function canForegroundWork() as Boolean {return _shown&&(_mode == NOT_LOW)&&!_resumePending&&_resumeTimer==null;}
+    function canAcceptBackground() as Boolean {return _shown&&(!_awake||canForegroundWork());}
     (:typecheck(false))
     // Keep the last accepted scene while its durable packet is revalidated.
     // The packet is detached for the parser, but its presentation and qualified
@@ -146,16 +166,13 @@ class SpaceFoxView extends WatchUi.WatchFace {
     (:typecheck(false)) function updateForDisplayMode(dc as Graphics.Dc, displayMode as System.DisplayMode) as Void {
         // Garmin may deliver a draw before the corresponding sleep callback.
         // Observe the system mode at the draw boundary; OFF does no drawing.
-        if(displayMode==System.DISPLAY_MODE_HIGH_POWER && _mode==LOW){
-            // A draw can precede onExitSleep. Render cached state now; defer
-            // loading, fitness and build restart to the lifecycle callback.
-            _mode=NOT_LOW;_resumePending=true;aodMinute=null;metricsMinute=null;
-        }else if(displayMode!=System.DISPLAY_MODE_HIGH_POWER){syncDisplayMode(displayMode);}
+        syncDisplayMode(displayMode);
         if(displayMode==System.DISPLAY_MODE_OFF){return;}
         // Skip the entire LOW update, including mask and scaled-buffer blit.
         if(!(_mode == NOT_LOW) && aodMinute!=null && aodMinute==utcMinute(_clock.utcSeconds())){return;}
-        if(sceneBuffer!=null){var bitmap=sceneBuffer as Graphics.BufferedBitmap;var target=bitmap.getDc();drawScene(target);applyPixelRest(target);dc.drawBitmap2(0,0,bitmap,sceneScaleOptions);return;}
+        if(sceneBuffer!=null){var bitmap=sceneBuffer as Graphics.BufferedBitmap;var target=bitmap.getDc();drawScene(target);applyPixelRest(target);dc.drawBitmap2(0,0,bitmap,sceneScaleOptions);if(_mode==NOT_LOW&&renderer!=null){queueResumeAfterFrame();}return;}
         drawScene(dc);applyPixelRest(dc);
+        if(_mode==NOT_LOW&&renderer!=null){queueResumeAfterFrame();}
     }
     function applyPixelRest(dc as Graphics.Dc) as Void {
         if((_mode == NOT_LOW)||restMask==null){return;}
@@ -175,16 +192,16 @@ class SpaceFoxView extends WatchUi.WatchFace {
         var current=snapshotAt(now);
         var drawing=renderer as SceneRenderer;
         if((_mode == NOT_LOW)){drawing.active(dc,current,settings,values,fitness,animationProgress);}
-        else{drawing.aod(dc,current,minute,settings);aodMinute=minute;}
+        else{current.countdown=current.lowCountdown;drawing.aod(dc,current,minute,settings);aodMinute=minute;}
     }
     function stopAnimation() as Void{
         if(animationRunning){WatchUi.cancelAllAnimations();}
         animationRunning=false;animationProgress=0.0;
     }
     function animationDone() as Void{animationRunning=false;animationProgress=0.0;WatchUi.requestUpdate();}
-    function onEnterSleep() as Void { transitionMode(LOW); }
-    function onExitSleep() as Void { syncDisplayMode(System.getDisplayMode()); }
-    function onHide() as Void {_shown=false;_resumePending=false;stopAnimation();cancelSfrBuild();stopFitness();}
+    function onEnterSleep() as Void { _awake=false;transitionMode(LOW); }
+    function onExitSleep() as Void { _awake=true;syncDisplayMode(System.getDisplayMode());WatchUi.requestUpdate(); }
+    function onHide() as Void {_shown=false;_resumePending=false;stopResume();stopAnimation();cancelSfrBuild();stopFitness();}
     (:typecheck(false))
     // Fixed SDK-minimum cadence; repeated preparation cannot postpone a pending
     // slice. Each decoder slice still has its existing18ms/16row work budget.

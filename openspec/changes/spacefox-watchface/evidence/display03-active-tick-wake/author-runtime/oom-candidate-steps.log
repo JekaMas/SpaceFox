@@ -1,0 +1,19 @@
+D03_SHOW ms=10931 display=0
+D03_FRAME begin=10931 end=10939 utc=1794723583 display=0 mode=1 countdown=T- 10:51:47 low=T- 10:52 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=true point=true ready=false wake=-1
+D03_FRAME begin=10940 end=10944 utc=1794723583 display=0 mode=1 countdown=T- 10:51:47 low=T- 10:52 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=true point=true ready=false wake=-1
+D03_RELOAD_BEGIN ms=11004
+D03_RELOAD_END ms=11008
+D03_FRAME begin=11015 end=11020 utc=1794723583 display=0 mode=1 countdown=T- 10:51:47 low=T- 10:52 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=true point=true ready=false wake=-1
+D03_FRAME begin=11021 end=11026 utc=1794723583 display=0 mode=1 countdown=T- 10:51:47 low=T- 10:52 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=true point=true ready=false wake=-1
+D03_FRAME begin=11052 end=11057 utc=1794723583 display=0 mode=1 countdown=T- 10:51:47 low=T- 10:52 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=true point=true ready=false wake=-1
+MEM_STEP_BEGIN used=111544 build=false role=-1 pending=true
+MEM_STEP_END used=115960 build=true role=0 ready=false
+MEM_STEP_BEGIN used=115960 build=true role=0 pending=true
+
+Error: Out Of Memory Error
+Details: Failed invoking <symbol>
+Stack: 
+  -  at 
+D03_RELOAD_BEGIN ms=11209
+D03_RELOAD_END ms=11212
+Encountered an app crash.

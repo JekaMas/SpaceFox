@@ -1,0 +1,61 @@
+OWNER_MEMORY before-setPacket used=91048
+OWNER_MEMORY after-setPacket used=90976
+JOB_CACHE old=-1 new=1 ready=true pending=false build=false
+JOB_ID base=https://jekamas.github.io/SpaceFox selection=77d4b3173b019ee84b7eb751e81ccb7a47edfba560a54166bfb47f441e8b7b37 transfer=3e4b028f9bfdf0355c3a801bbb1ef452511c15bdcd877be23a74b667ddcc8cb4
+OWNER_MEMORY before-renderer used=91680
+OWNER_MEMORY after-renderer used=105824
+D03_SHOW ms=10823 display=0
+OWNER_MEMORY before-show used=105920
+OWNER_MEMORY after-show used=105920
+D03_FRAME begin=10823 end=10830 utc=1794724872 display=0 mode=1 countdown=T- 10:30:18 low=T- 10:31 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_FRAME begin=10831 end=10836 utc=1794724872 display=0 mode=1 countdown=T- 10:30:18 low=T- 10:31 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_FRAME begin=10895 end=10900 utc=1794724872 display=0 mode=1 countdown=T- 10:30:18 low=T- 10:31 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_FRAME begin=10901 end=10906 utc=1794724872 display=0 mode=1 countdown=T- 10:30:18 low=T- 10:31 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_RELOAD_BEGIN ms=10907
+JOB_INCOMING admission=false pending=false
+JOB_CACHE old=1 new=1 ready=true pending=false build=false
+JOB_ID base=https://jekamas.github.io/SpaceFox selection=77d4b3173b019ee84b7eb751e81ccb7a47edfba560a54166bfb47f441e8b7b37 transfer=3e4b028f9bfdf0355c3a801bbb1ef452511c15bdcd877be23a74b667ddcc8cb4
+OWNER_MEMORY before-visual used=106384
+OWNER_MEMORY after-visual used=106600
+D03_RELOAD_END ms=10912
+OWNER_MEMORY before-fitness used=106440
+OWNER_MEMORY after-fitness used=106816
+OWNER_MEMORY before-visual used=106816
+OWNER_MEMORY after-visual used=106808
+D03_FRAME begin=10920 end=10925 utc=1794724872 display=0 mode=1 countdown=T- 10:30:18 low=T- 10:31 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_FRAME begin=10963 end=10968 utc=1794724872 display=0 mode=1 countdown=T- 10:30:18 low=T- 10:31 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+MEM_STEP_BEGIN used=106840 build=false role=-1 pending=true
+MEM_STEP_END used=111240 build=true role=0 ready=false
+MEM_STEP_BEGIN used=111240 build=true role=0 pending=true
+MEM_STEP_END used=122784 build=true role=0 ready=false
+D03_FRAME begin=11062 end=11067 utc=1794724872 display=0 mode=1 countdown=T- 10:30:18 low=T- 10:31 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+MEM_STEP_BEGIN used=122784 build=true role=0 pending=true
+MEM_STEP_END used=122784 build=true role=0 ready=false
+MEM_STEP_BEGIN used=122784 build=true role=0 pending=true
+MEM_STEP_END used=122784 build=true role=0 ready=false
+D03_RELOAD_BEGIN ms=11182
+JOB_INCOMING admission=false pending=true
+JOB_CACHE old=1 new=2 ready=true pending=true build=true
+JOB_ID base=https://jekamas.github.io/SpaceFox selection=77d4b3173b019ee84b7eb751e81ccb7a47edfba560a54166bfb47f441e8b7b37 transfer=3e4b028f9bfdf0355c3a801bbb1ef452511c15bdcd877be23a74b667ddcc8cb4
+JOB_CANCEL ms=11185 build=true
+OWNER_MEMORY before-visual used=109208
+OWNER_MEMORY after-visual used=109424
+D03_RELOAD_END ms=11186
+D03_FRAME begin=11187 end=11192 utc=1794724872 display=0 mode=1 countdown=T- 10:30:18 low=T- 10:31 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_FRAME begin=11213 end=11218 utc=1794724872 display=0 mode=1 countdown=T- 10:30:18 low=T- 10:31 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+MEM_STEP_BEGIN used=109000 build=false role=-1 pending=true
+MEM_STEP_END used=113400 build=true role=0 ready=false
+D03_FRAME begin=11290 end=11295 utc=1794724872 display=0 mode=1 countdown=T- 10:30:18 low=T- 10:31 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+MEM_STEP_BEGIN used=113400 build=true role=0 pending=true
+
+Error: Out Of Memory Error
+Details: Failed invoking <symbol>
+Stack: 
+  - read() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-identity-trace/source/NativeCache.mc:10 0x1000117b 
+  - raw() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-identity-trace/source/NativeImmutable.mc:17 0x100008b8 
+  - chunk() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-identity-trace/source/NativeSfr.mc:27 0x50004ff9 
+  - step() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-identity-trace/source/NativeSfr.mc:72 0x10007ea2 
+  - step() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-identity-trace/source/NativeSfr.mc:170 0x5000c399 
+  - sfrStep() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-identity-trace/source/SpaceFoxView.mc:224 0x100068a8 
+  - sfrStep() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-identity-trace/Probe.mc:36 0x10008061 
+Encountered an app crash.

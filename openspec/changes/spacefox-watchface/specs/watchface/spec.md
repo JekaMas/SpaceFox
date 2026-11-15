@@ -24,7 +24,7 @@ readability of time, countdown and selected fitness values.
 The active face SHALL show the watch's current local Gregorian weekday and date
 as a compact fixed weekday plus `DD.MM` line aligned with the clock. The line
 SHALL fit without reducing the clock, four fields or map/rocket/marker geometry.
-The always-on display SHALL also show the current local weekday/date, a seconds-bearing countdown snapshot and watch battery at each permitted minute refresh.
+The always-on display SHALL also show the current local weekday/date, a minute-only countdown snapshot and watch battery at each permitted minute refresh.
 
 #### Scenario: Local midnight changes the calendar line
 - **WHEN** local time crosses midnight or the local time zone changes the civil day
@@ -118,7 +118,7 @@ large configurable fields, with watch battery available as a field. No redundant
 ### Requirement: Compact exceptional-state indicators
 
 The active home face SHALL omit a persistent update timestamp and service-status badges.
-A reschedule SHALL use an amber countdown; otherwise the countdown SHALL use its persisted selected color (mint by default). Unknown
+A reschedule SHALL use a readable reddish countdown; otherwise it SHALL use the persisted selected countdown color, mint by default. Unknown
 new time SHALL replace the precise countdown with an uncertainty label. Stale data
 SHALL add a dotted countdown underline, independently of rescheduling. No
 exclamation or cloud-off badge SHALL occupy the face.
@@ -129,7 +129,7 @@ exclamation or cloud-off badge SHALL occupy the face.
 
 #### Scenario: Reschedule and stale data coexist
 - **WHEN** a previously detected reschedule remains selected and its cached schedule becomes stale
-- **THEN** the countdown is amber with a dotted underline inside the circle, and the current-time color remains unchanged
+- **THEN** the countdown is reddish with a dotted underline inside the circle, and the current-time color remains unchanged
 
 ### Requirement: Short active-display launch animation
 
@@ -148,11 +148,17 @@ occurred merely because an animation played or the countdown reached zero.
 
 ### Requirement: Qualified AMOLED always-on display
 
-The sparse AOD SHALL show a large centered outlined 24-hour clock, local weekday/date, watch battery and the same seconds-bearing numeric countdown or uncertainty, recomputed at most once per minute. It SHALL meet lit-pixel and burn-in rules, omit the full map and animation, and stop active timers on sleep. Returning active restores the accepted composition and clock calculation. Reschedule and stale states remain distinguishable.
+The AOD SHALL show centered time, local weekday/date, a minute-only countdown or uncertainty, battery, a sparse matching map outline and selected launch point. It SHALL omit the four configurable fields and animation, and satisfy lit-pixel and burn-in rules. Returning active restores the accepted composition and UTC calculation.
+
 #### Scenario: Enter always-on mode
 - **WHEN** FR165 enters low-power always-on mode
-- **THEN** the sparse scene stays within the applicable 10-percent lit-pixel limit and device burn-in rules, timers stop and no full-screen map or launch animation remains lit; the numeric seconds reflect each permitted snapshot without a per-second AOD redraw promise
-- **AND** LOW and NOT_LOW are the only intentional visible modes for an accepted scene. Optional downloads, decode, retries and rejected updates SHALL NOT substitute a maintenance layout. Same visual identity retains its accepted scene and bitmap through sleep, wake and unchanged or rejected callbacks; on rejection the accepted scene and visual remain visible while the durable packet is restored; ambient operation SHALL NOT initiate network, visual decoding or active sensor sampling. One selected-launch and UTC snapshot and formatter supply active and LOW countdown text; LOW uses a permitted minute snapshot, including first entry and later permitted minutes, and wake recomputes UTC. No clock seconds, map or animation are drawn in LOW; rotation, pixel and burn-in safety remain applicable. Time and countdown use configured active colors and identical status overrides. AOD clock ink is centered within two pixels and at least 96px high; countdown ink is at least 28px and current system battery at least 32px, subject to pixel and burn-in limits. Transient update or partial staging failures retain the accepted launch and compatible scene across restart.
+- **THEN** the sparse scene stays within the applicable 10-percent lit-pixel limit and device burn-in rules, active timers stop, the matching outline and point remain visible and the countdown shows minutes without seconds
+- **AND** LOW redraws at most once per minute even if callbacks arrive more often; time and countdown use configured colors except for the reschedule override, and reschedule and stale states remain distinguishable
+- **AND** LOW and NOT_LOW are the only intentional visible modes. Optional downloads, decode, retries and rejected updates SHALL NOT substitute a maintenance layout. Same visual identity retains its accepted scene and bitmap through sleep, wake and unchanged or rejected callbacks; on rejection the accepted scene and visual remain visible while the durable packet is restored. Ambient operation SHALL NOT initiate network, visual decoding or active sensor sampling. AOD clock ink is centered within two pixels and at least 96px high; countdown ink is at least 28px and current system battery at least 32px, subject to pixel and burn-in limits. Transient update or partial staging failures retain the accepted launch and compatible scene across restart.
+
+#### Scenario: Lifecycle and display notifications differ
+- **WHEN** the watch-face lifecycle is sleeping or the physical display mode is LOW
+- **THEN** the full active layout is not drawn; once the lifecycle is awake and the display permits HIGH, the next update draws the active cached scene before optional feed or artwork work
 
 #### Scenario: Wrist gestures disabled
 - **WHEN** the user disables wrist wake and keeps AOD enabled
@@ -231,13 +237,25 @@ and cold reopen.
 #### Scenario: First launch and settings round trip
 - **WHEN** a fresh instance opens and the user changes language and appearance colors
 - **THEN** it starts in English, changed values affect the actual face and survive reopen, four metric assignments and the feed URL are preserved, and unknown values use their documented defaults
-- **AND** English default is independent of system language; clock/countdown default to mint, fields to white, reschedule amber and stale dotted underline remain semantic overrides, and no layout/map/clock-format choices are added
-- **AND** The actual running version SHALL appear in settings rather than on the face. Active time, field-value and countdown ink target at least 72px, 32px and 28px respectively on 390×390, with measurements exposing contradictions. Unknown countdown uses the persisted countdown palette and style; an actual reschedule retains its amber override. The active face has no standalone battery: battery is selectable in each fixed field and selected role, icon, value and color persist across restart. The six roles, circular fit, unmarked rocket and site-country flag remain intact.
+- **AND** English default is independent of system language; clock/countdown default to mint, fields to white, reschedule reddish and stale dotted underline remain semantic overrides, and no layout/map/clock-format choices are added
+- **AND** The actual running version SHALL appear in settings rather than on the face. Active time, field-value and countdown ink target at least 72px, 32px and 28px respectively on 390×390, with measurements exposing contradictions. Unknown countdown uses the persisted countdown palette and style; an actual reschedule retains its reddish override. The active face has no standalone battery: battery is selectable in each fixed field and selected role, icon, value and color persist across restart. The six roles, circular fit, unmarked rocket and site-country flag remain intact.
 
 #### Scenario: English and Russian final composition
 - **WHEN** final composition is qualified for this delivery
 - **THEN** batched source-bound native observations cover English and Russian at390×390, countdown above24hours, below60seconds, T+ zero/elapsed, reschedule/unknown/stale, all six metric icons and persisted appearance choices
 - **AND** no new all-language or synthetic-text campaign is required; prior five-language font/corpus observations retain only their original valid proof boundaries
+
+#### Scenario: Owner readability revision after physical first use
+- **WHEN** the active face draws known or unknown countdown data
+- **THEN** on a 390×390 display actual ink heights target at least 72px for time, 32px for field values, and 28px for countdown; measurements must expose any contradiction
+- **AND** unknown `--:--:--` uses the same persisted countdown palette and render style as the normal countdown; an actual reschedule independently retains its reddish semantic override
+- **AND** no standalone battery appears in active mode; battery is independently selectable in each of four fixed positions, with all six roles, circular fit, unmarked rocket and country-footer flag intact
+
+#### Scenario: Settings, AOD, and cached scene remain coherent
+- **WHEN** any field is selected through settings, including battery in field four, then settings change and the application restarts
+- **THEN** the exact role, icon, value and selected color persist and render in that field
+- **AND** the AOD time ink is centered within two pixels of the 390×390 display center and at least 96 pixels high; localized date and weekday and the minute-only countdown at least 28 pixels high, and current system battery at least 32 pixels high remain visible, with countdown updated at minute cadence, including first entry into LOW and each permitted later minute within the applicable 10-percent lit-pixel and burn-in constraints
+- **AND** a transient update or partial staging failure retains the last accepted launch and compatible scene across restart, while validated new metadata can display before its matching optional artwork without relabeling old artwork
 
 #### Scenario: On-watch settings and feed defaults
 - **WHEN** a fresh watch-face instance opens its system settings
@@ -259,3 +277,57 @@ site country abbreviation; the site strip SHALL omit a duplicated operator prefi
 - **WHEN** a selected launch is rendered with its accepted site country and source-correct flag
 - **THEN** the flag sits beside the matching country abbreviation in the site strip, the rocket has no flag or operator mark, duplicated operator prefixes are compacted without changing retained source text, and unused hull-mark rasters are absent from on-watch transport/cache closure
 - **AND** the flag denotes the launch site country, never rocket origin; preserve full accepted source text and the separate mission-purpose header. For example, `US · SpaceX Starbase, TX, USA` displays as the US flag and `US · Starbase`. No guessed country, mislabelled origin flag, generic image or missing coordinate counts as complete specific coverage; the map point uses the selected site’s accepted coordinates and remains visible over the faded map.
+
+### Requirement: Two display modes and one UTC countdown
+
+LOW and NOT_LOW SHALL be the only app-visible modes. NOT_LOW requires both an
+awake watch-face lifecycle and a HIGH display; either a sleeping lifecycle or
+LOW display selects LOW. OFF stops drawing and active work while retaining LOW
+as the app state. Loading, errors, retries and asset readiness SHALL NOT choose a mode.
+The version belongs in settings, not on the face.
+
+#### Scenario: Draw arrives before the power callback
+- **WHEN** the system reports LOW before delivering its sleep callback
+- **THEN** the draw uses LOW and active work is stopped without waiting for the callback
+
+### Requirement: Shared countdown snapshot
+
+A single selected-launch and UTC delta SHALL supply both renderers. Active
+shows seconds; LOW shows a minute snapshot with future minutes rounded up and
+elapsed minutes rounded down. Wake recomputes from UTC.
+
+#### Scenario: Same target and UTC in either mode
+- **WHEN** the selected target and UTC are identical at both render boundaries
+- **THEN** each text reflects that same delta in its mode-specific format, with accumulating hours across zero
+
+### Requirement: Continuous accepted scene across optional work
+
+NOT_LOW and LOW SHALL be the only intentional visible modes for an accepted
+scene. Optional downloads, decoding, retries and rejected updates SHALL NOT
+replace the visible scene with a separate maintenance layout. A same visual
+identity SHALL retain its accepted bitmap and scene through sleep, wake and
+unchanged or rejected feed callbacks. Ambient operation SHALL not initiate
+network, visual decoding or active sensor sampling.
+
+#### Scenario: Accepted scene while optional visuals decode
+
+- **WHEN** metadata is accepted before its matching optional visual is ready
+- **THEN** the normal accepted scene remains visible during decoding until the complete matching visual is admitted
+
+#### Scenario: A same-identity candidate is rejected
+
+- **WHEN** the current accepted scene is visible and a later feed candidate fails validation
+- **THEN** the accepted scene and visual remain visible while its durable packet is restored
+
+### Requirement: Bind each scene to its visual identity
+
+The visual identity SHALL include selected art/map digest, launch and model
+identity, site/country identity, and qualified site position. Changed visual
+facts SHALL use their own coherent scene until matching assets are ready; old
+artwork or a point SHALL NOT be relabeled as the new selection. Late build
+completions SHALL NOT replace a newer selection.
+
+#### Scenario: A late visual build belongs to an older selection
+
+- **WHEN** a visual build finishes after that selection was cancelled or replaced
+- **THEN** it does not change the current scene
