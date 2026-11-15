@@ -10,6 +10,9 @@ import csv
 import gzip
 import hashlib
 import json
+import os
+import struct
+import tempfile
 import sys
 from pathlib import Path
 import time
@@ -34,6 +37,59 @@ def digest(b):
     return hashlib.sha256(b).hexdigest()
 
 
+def read_png(path):
+    """Accept only a complete bounded RGB/RGBA PNG without hidden transparency."""
+    if path.stat().st_size > 2 * 1024 * 1024:
+        raise ValueError('PNG file bound')
+    raw = path.read_bytes()
+    if len(raw) > 2 * 1024 * 1024 or not raw.startswith(b'\x89PNG\r\n\x1a\n'):
+        raise ValueError('PNG signature or bound')
+    at = 8; seen_header = False; seen_idat = False; ended_idat = False
+    compressed = bytearray(); dimensions = None
+    while at < len(raw):
+        if len(raw)-at < 12: raise ValueError('truncated PNG chunk')
+        size = struct.unpack_from('>I', raw, at)[0]
+        end = at + 12 + size
+        if end > len(raw): raise ValueError('truncated PNG chunk')
+        kind = raw[at+4:at+8]; body = raw[at+8:at+8+size]
+        if zlib.crc32(kind+body) & 0xffffffff != struct.unpack_from('>I', raw, at+8+size)[0]:
+            raise ValueError('PNG CRC')
+        if not seen_header:
+            if kind != b'IHDR' or size != 13: raise ValueError('PNG header')
+            w,h,depth,color,comp,filt,interlace = struct.unpack('>IIBBBBB',body)
+            if not (1 <= w <= 390 and 1 <= h <= 390 and depth == 8 and color in (2,6) and (comp,filt,interlace)==(0,0,0)):
+                raise ValueError('RGB/RGBA8 PNG required')
+            dimensions=(w,h,3 if color==2 else 4);seen_header=True
+        elif kind == b'IHDR': raise ValueError('duplicate PNG header')
+        elif kind == b'tRNS': raise ValueError('PNG transparency chunk unsupported')
+        elif kind == b'IDAT':
+            if ended_idat: raise ValueError('nonconsecutive PNG data')
+            seen_idat=True;compressed.extend(body)
+            if len(compressed)>1048576: raise ValueError('PNG data bound')
+        elif kind == b'IEND':
+            if size or not seen_idat or end != len(raw): raise ValueError('PNG end')
+            w,h,ch=dimensions; decoder=zlib.decompressobj()
+            scan=decoder.decompress(compressed,(w*ch+1)*h+1)
+            if not decoder.eof or decoder.unused_data or decoder.unconsumed_tail or len(scan)!=(w*ch+1)*h:
+                raise ValueError('PNG inflate bound')
+            return raw, native.png_pixels(raw)
+        else:
+            if seen_idat: ended_idat=True
+            if kind[0] & 32 == 0: raise ValueError('unsupported critical PNG chunk')
+        at=end
+    raise ValueError('missing PNG end')
+
+
+def atomic_write(path, data):
+    """Publish each immutable object and replace the manifest only once complete."""
+    fd, name = tempfile.mkstemp(prefix='.image-pipeline-', dir=path.parent)
+    try:
+        with os.fdopen(fd, 'wb') as f: f.write(data)
+        os.replace(name, path)
+    finally:
+        if os.path.exists(name): os.unlink(name)
+
+
 def inventory():
     """Include all retained map tiles, LOW outlines and role artwork resources."""
     rows=list(CORPUS)
@@ -52,7 +108,7 @@ def inventory():
             continue
         rel=path.relative_to(ROOT).as_posix()
         if rel in known: continue
-        w,h,rgba=native.png_pixels(path.read_bytes())
+        w,h,rgba=read_png(path)[1]
         channels=3 if kind in ('map','low') else 4
         rows.append((path.stem,kind,'eval',rel,w,h,channels))
     return rows
@@ -60,11 +116,11 @@ def inventory():
 
 def load(row):
     name, kind, split, path, w, h, ch = row
-    raw = (ROOT / path).read_bytes()
+    raw = (ROOT / path).read_bytes() if path.endswith('.gz') else None
     if path.endswith('.gz'):
         pixels = gzip.decompress(raw)
     else:
-        pw, ph, rgba = native.png_pixels(raw)
+        raw, (pw, ph, rgba) = read_png(ROOT / path)
         if (pw, ph) != (w, h):
             raise ValueError('unexpected dimensions: '+path)
         pixels = rgba if ch == 4 else bytes(v for i, v in enumerate(rgba) if i % 4 != 3)
@@ -363,7 +419,7 @@ def main():
     args=parser.parse_args()
     if args.pack_png:
         if args.optimal: parser.error('--optimal and --pack-png are mutually exclusive')
-        raw=args.pack_png.read_bytes();w,h,rgba=native.png_pixels(raw)
+        raw,(w,h,rgba)=read_png(args.pack_png)
         if args.channels==3 and any(rgba[i]!=255 for i in range(3,len(rgba),4)):
             raise ValueError('RGB packing would discard alpha')
         pixels=rgba if args.channels==4 else bytes(v for i,v in enumerate(rgba) if i%4!=3)
@@ -372,9 +428,9 @@ def main():
         args.output.mkdir(parents=True,exist_ok=True)
         refs=[]
         for chunk in chunks:
-            sha=digest(chunk);(args.output/(sha+'.sfr')).write_bytes(chunk)
+            sha=digest(chunk);atomic_write(args.output/(sha+'.sfr'),chunk)
             refs.append(dict(sha256=sha,bytes=len(chunk)))
-        (args.output/'manifest.json').write_text(json.dumps(dict(source_sha256=digest(raw),pixel_sha256=digest(pixels),width=w,height=h,channels=args.channels,shards=refs),indent=2)+'\n')
+        atomic_write(args.output/'manifest.json',(json.dumps(dict(source_sha256=digest(raw),pixel_sha256=digest(pixels),width=w,height=h,channels=args.channels,shards=refs),indent=2)+'\n').encode())
     else:
         (optimal_study if args.optimal else study)(args.output)
 

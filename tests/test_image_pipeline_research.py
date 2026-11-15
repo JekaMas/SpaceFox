@@ -3,6 +3,8 @@ import itertools
 import json
 from pathlib import Path
 import subprocess
+import struct
+import zlib
 import sys
 import tempfile
 import unittest
@@ -63,6 +65,7 @@ class ImagePipelineTest(unittest.TestCase):
             chunks=[(Path(tmp)/(r['sha256']+'.sfr')).read_bytes() for r in manifest['shards']]
             w,h,raw=native.png_pixels(source.read_bytes())
             self.assertEqual(literal_decode(chunks,w,h,4),raw)
+            self.assertEqual(native.decode_raster(chunks,w,h,4),raw)
             self.assertEqual(manifest['pixel_sha256'],study.digest(raw))
 
     def test_invalid_negative(self):
@@ -73,6 +76,23 @@ class ImagePipelineTest(unittest.TestCase):
             result=subprocess.run([sys.executable,'-B',str(study.ROOT/'tools/image_pipeline_research.py'),'--pack-png',str(source),'--channels','3','--output',tmp],capture_output=True)
             self.assertNotEqual(result.returncode,0)
             self.assertFalse((Path(tmp)/'manifest.json').exists())
+            # A prior successful output remains authoritative on bad input.
+            manifest=Path(tmp)/'manifest.json'; manifest.write_bytes(b'prior manifest')
+            original=(study.ROOT/'watchface/resources/drawables/art_flag-us.png').read_bytes()
+            def chunk(kind, body):
+                return struct.pack('>I',len(body))+kind+body+struct.pack('>I',zlib.crc32(kind+body)&0xffffffff)
+            # Missing IEND, CRC corruption, truncated chunk, illegal tRNS and trailing bytes.
+            ihdr_end=8+12+13
+            rgb=(b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',struct.pack('>IIBBBBB',1,1,8,2,0,0,0))
+                 +chunk(b'tRNS',b'\x00'*6)+chunk(b'IDAT',zlib.compress(b'\x00\x00\x00\x00'))+chunk(b'IEND',b''))
+            cases=(rgb, original[:-12], original[:29]+bytes([original[29]^1])+original[30:],
+                   original[:-1], original[:ihdr_end]+chunk(b'tRNS',b'\x00'*6)+original[ihdr_end:],
+                   original+b'extra')
+            for i, bad in enumerate(cases):
+                path=Path(tmp)/f'bad-{i}.png';path.write_bytes(bad)
+                result=subprocess.run([sys.executable,'-B',str(study.ROOT/'tools/image_pipeline_research.py'),'--pack-png',str(path),'--output',tmp],capture_output=True)
+                self.assertNotEqual(result.returncode,0, i)
+                self.assertEqual(manifest.read_bytes(),b'prior manifest')
 
     def test_lossless_positive(self):
         for record in study.CORPUS[:3]:
