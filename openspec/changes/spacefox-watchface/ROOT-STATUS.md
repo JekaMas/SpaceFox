@@ -1,5 +1,19 @@
 # SpaceFox current root checkpoint
 
+Delivery research recheck is accepted at the bounded documentation/evidence scope.
+See [research](evidence/display02-publication/RECHECK-RESEARCH.md) and
+[root judgment](evidence/display02-publication/RECHECK-ROOT-JUDGMENT.md).
+Current channels are last observed physical 0.1.6, submitted Garmin 0.1.10/Internal 7
+PENDING (ordinary app, not Beta), and separate GitHub-only 0.1.11 test prerelease.
+Garmin permits owner testing while pending; the status alone is not a proved
+blocking cause. Related Garmin update-version reports supply a hypothesis, not
+SpaceFox root-cause confirmation. One hosted-feed observation is healthy; this
+is not phone/watch delivery. Targeted phone-process/update-page and USB-availability
+questions are pending. The factual Garmin draft is unsent. Physical acceptance and
+the goal remain NOT DONE. Later documentation edits retain signed receipts at their
+original source bounds, without a current-tree exact-pin claim.
+
+
 Current unit DISPLAY02 is accepted at bounded software and signed-SDK boundaries.
 Version 0.1.10/de5011f4, clean compiled source 2e393bbf, merged to public main
 and tagged v0.1.10 at ba1eada6. All 19 GitHub assets passed anonymous hash readback.

@@ -581,3 +581,24 @@ normal sync and actual on-watch version, launch/countdown/point are requested.
 Last confirmed physical version remains 0.1.6; goal and task 3.2 stay NOT DONE.
 No new task group or invalidated behavior input; no behavior tests were rerun.
 See [publication record](evidence/display02-publication/PUBLICATION.md).
+
+### Delivery research recheck — bounded docs GREEN, physical incident open
+
+Root fetched current public main d9e9091b before changes and reconciled the newer
+GitHub 0.1.11 test release with the actual Garmin 0.1.10 submission. Author
+0a184841 applied and self-verified; fresh independent verify/fix completed through
+1e9181ed. Root accepted the corrected five current entrypoints, primary-source
+research, sanitized exact server fields/public feed body and unsent report draft.
+Root's one hosted GET observed fresh source validation and successful autonomous
+workflow runs; no watch acceptance is inferred. An acknowledged update-version
+mismatch and related Android reports guide the next targeted diagnostic, without
+claiming their cause is confirmed for SpaceFox. PENDING alone does not prevent
+owner testing under Garmin's guidance. No code, binary, immutable publication
+receipt, upload, version bump, reset, repeated queue or routine-update campaign
+was changed/performed. Direct docs checks passed; retained behavior greens were
+not rerun. Historical signed source pins keep their original bounds.
+
+The current delivery incident, goal and physical task obligations remain NOT DONE.
+Android fresh-process/direct-listing result and physical computer/USB availability
+are requested; corrected execution, matching fresh launch/point and stable modes
+remain unobserved. See [root judgment](evidence/display02-publication/RECHECK-ROOT-JUDGMENT.md).

@@ -7,7 +7,6 @@ storage behavior, phone delivery or measured device peaks.
 import hashlib
 import json
 from pathlib import Path
-import re
 import unittest
 
 from tools.run_native_tests import parse_output
@@ -61,8 +60,10 @@ class CurrentDataConvergenceTest(unittest.TestCase):
         for name, expected in sources.items():
             data = (ROOT / name).read_bytes()
             if name == 'watchface/source/generated/NativeVersion.mc':
+                if data.count(b'BUILD = "0.1.11"') != 1 or data.count(b'ID = "c718deaa"') != 1:
+                    raise AssertionError('current NativeVersion.mc identity changed')
                 data = data.replace(b'BUILD = "0.1.11"', b'BUILD = "0.1.10"')
-                data = re.sub(rb'ID = "[0-9a-f]{8}"', b'ID = "de5011f4"', data)
+                data = data.replace(b'ID = "c718deaa"', b'ID = "de5011f4"')
             if digest(data) != expected:
                 raise AssertionError('source differs: ' + name)
 
@@ -119,7 +120,10 @@ class CurrentDataConvergenceTest(unittest.TestCase):
         for name, expected in receipt['inputHashes'].items():
             data = (ROOT / name).read_bytes()
             if name == 'watchface/manifest.xml':
+                self.assertEqual(data.count(b'version="0.1.11"'), 1, name)
                 data = data.replace(b'version="0.1.11"', b'version="0.1.10"')
             elif name == 'watchface/source/generated/NativeVersion.mc':
-                data = re.sub(rb'ID = "[0-9a-f]{8}"', b'ID = "de5011f4"', data.replace(b'BUILD = "0.1.11"', b'BUILD = "0.1.10"'))
+                self.assertEqual(data.count(b'BUILD = "0.1.11"'), 1, name)
+                self.assertEqual(data.count(b'ID = "c718deaa"'), 1, name)
+                data = data.replace(b'BUILD = "0.1.11"', b'BUILD = "0.1.10"').replace(b'ID = "c718deaa"', b'ID = "de5011f4"')
             self.assertEqual(digest(data), expected, name)
