@@ -30,10 +30,10 @@ class CurrentGlobalContextTest(unittest.TestCase):
 
     def test_exact_current_context_and_archive_positive(self):
         c = self.catalog
-        self.assertEqual(len(c['dictionaries']['configurations']), 211)
-        self.assertEqual(sum(r['state'] == 'current-evidence' for r in self.registry['records'].values()), 152)
-        self.assertEqual(sum(r['state'] == 'needs-review' for r in self.registry['records'].values()), 53)
-        self.assertEqual(len(c['dictionaries']['assets']), 656)
+        self.assertEqual(len(c['dictionaries']['configurations']), 215)
+        self.assertEqual(sum(r['state'] == 'current-evidence' for r in self.registry['records'].values()), 175)
+        self.assertEqual(sum(r['state'] == 'needs-review' for r in self.registry['records'].values()), 22)
+        self.assertEqual(len(c['dictionaries']['assets']), 683)
         for identity in NEW:
             row = c['dictionaries']['configurations'][identity]
             self.assertEqual(row['references']['manufacturer'], 'spacefox:organization:bayern-chemie' if identity.endswith('red-kite-red-kite') else None)
@@ -72,8 +72,32 @@ class CurrentGlobalContextTest(unittest.TestCase):
         self.assertIsNone(build_site_view(ROOT, c, 'll2:site:13')['manifest']['marker'])
         self.assertIsNone(build_site_view(ROOT, c, 'll2:site:101')['manifest']['marker'])
         archive = audit_sites(ROOT, c)
-        self.assertEqual((archive['siteRows'], archive['numericSourcePairs'], archive['mobileReferenceOnly']), (218, 213, 29))
-        self.assertEqual((archive['fixedNumericPairs'], archive['mobileNumericPairs'], archive['fixedUnknownPositions'], archive['mobileUnknownPositions']), (185, 28, 4, 1))
+        self.assertEqual((archive['siteRows'], archive['numericSourcePairs'], archive['mobileReferenceOnly']), (224, 217, 29))
+        self.assertEqual((archive['fixedNumericPairs'], archive['mobileNumericPairs'], archive['fixedUnknownPositions'], archive['mobileUnknownPositions']), (189, 28, 6, 1))
+
+    def test_dated_event_separates_vehicle_operator_and_launch_country(self):
+        # MAPHEUS-17 is a retained 2026 event: DLR operated its German-origin
+        # Red Kite / Improved Malemute from Esrange in Sweden. These facts
+        # are independently sourced; site country is not the operator origin.
+        row = next(r for r in self.context['records'] if r['id'] == 'spacefox:context:mapheus17-2026')
+        self.assertEqual((row['status'], row['period']), ('occurred', {'start': '2026-10-01', 'end': '2026-10-01'}))
+        self.assertEqual((row['configurationId'], row['siteId']),
+                         ('spacefox:configuration:red-kite-improved-malemute', ESRANGE))
+        self.assertEqual(row['organizationRoles'], [{
+            'organizationId': 'll2:organization:29', 'role': 'launch-operator',
+            'sources': ['https://www.dlr.de/en/latest/news/2026/successful-flight-of-dlr-sounding-rocket-mapheus-17']}])
+        dictionaries = context_view(self.catalog, self.registry, self.context)['catalog']['dictionaries']
+        model = dictionaries['configurations'][row['configurationId']]
+        operator = dictionaries['organizations']['ll2:organization:29']
+        site = dictionaries['sites'][row['siteId']]
+        self.assertEqual(model['references']['origin'], 'll2:country:4')
+        self.assertEqual(operator['references']['origin'], 'll2:country:4')
+        self.assertEqual(site['references']['country'], 'll2:country:15')
+        self.assertEqual(model['originSources'], [
+            'https://www.dlr.de/en/latest/news/2024/four-hundred-kilograms-of-research-in-microgravity',
+            'https://moraba.de/en/current-moraba-missions/mapheus/'])
+        self.assertEqual(operator['originSources'], ['https://moraba.de/impressum/'])
+        self.assertIsNone(site['position'])  # Facility, not an invented pad coordinate.
 
     def test_empty_corrupt_and_unbound_context_negative(self):
         for defect in ('empty', 'old', 'reversed', 'future-occurred', 'bad-site', 'bad-model', 'bad-role', 'unbound-source', 'duplicate', 'schema', 'source-object', 'model-object', 'role-object'):
@@ -322,7 +346,7 @@ class CurrentGlobalContextTest(unittest.TestCase):
                 facts = dict(curatedOriginId='ll2:country:24', curatedOriginSources=revision['sources'], curatedOriginReviewedAt='2026-11-12', curatedOriginNote='Literal rejection control.')
                 identity = 'spacefox:configuration:vsb30'
                 if defect == 'incomplete':
-                    identity = 'spacefox:configuration:black-brant-v-single-stage'; facts.pop('curatedOriginNote')
+                    identity = 'll2:configuration:5'; self.assertNotIn('curatedOriginNote', self.catalog['dictionaries']['configurations'][identity]['facts']); facts.pop('curatedOriginNote')
                 elif defect == 'wrong-type': facts['curatedOriginId'] = 'll2:organization:24'
                 elif defect == 'unknown-country': facts['curatedOriginId'] = 'll2:country:999999'
                 elif defect == 'source': facts['curatedOriginSources'] = ['https://example.invalid/unbound']

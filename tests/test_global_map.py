@@ -27,31 +27,6 @@ class GlobalMapTest(unittest.TestCase):
         self.assertEqual(project(0,0),(128,128))
         self.assertEqual(project(90,-180),(1,1))
         self.assertEqual(project(-90,180),(1,255))
-        self.assertEqual(project(0,90,kind='globe'),(255,128))
-        self.assertIsNone(project(0,180,kind='globe'))
-        for lat,lon in [(90,180),(-90,-180),(Decimal('0.00000000000001'),Decimal('179.99999999999999'))]:
-            x,y=project(lat,lon,kind='globe',center=(lat,lon))
-            self.assertAlmostEqual(x,128);self.assertAlmostEqual(y,128)
-        # Explicit archive scope renders map/globe contexts for every numeric source row.
-        # Current event/program scope has a separate source-dated nonempty oracle.
-        # The file is reusable evidence, not a fixed image chosen for five sites.
-        target=ROOT/'build/global-site-audit.json'
-        completed=subprocess.run([sys.executable,'-B',str(ROOT/'tools/build_global_map.py'),'--audit','--scope','archive','--output',str(target)],cwd=tempfile.gettempdir(),capture_output=True,text=True,timeout=180)
-        self.assertEqual(completed.returncode,0,completed.stderr)
-        report=loads_json(target.read_bytes())
-        self.assertEqual((report['siteRows'],report['numericSourcePairs'],report['unknownPositions']),(218,213,5))
-        self.assertEqual((report['mobileReferenceOnly'],report['eventPointEligible']),(29,185))
-        self.assertEqual((report['fixedNumericPairs'],report['mobileNumericPairs'],report['fixedUnknownPositions'],report['mobileUnknownPositions']),(185,28,4,1))
-        self.assertEqual({r['id'] for r in report['rows'] if r['positionMode']=='mobile-reference-no-event' and r['sourcePosition'] is None},{'ll2:site:101'})
-        self.assertTrue(report['contextsRendered'])
-        self.assertIsNone(report['independentlyVerifiedCoordinateAccuracy'])
-        source_ids={r['id'] for r in report['rows'] if r['sourcePosition'] is not None}
-        self.assertEqual(len(source_ids),213)
-        self.assertTrue(all(r['maxShardBytes']<=4096 and r['globe']==[4096,4096] for r in report['rows'] if r['sourcePosition'] is not None))
-        for identity in ['ll2:site:65','ll2:site:80','ll2:site:13']:
-            view=build_site_view(ROOT,self.catalog,identity,kind='globe')
-            self.assertEqual(view['manifest']['site']['id'],identity)
-            if identity!='ll2:site:13':self.assertEqual(view['manifest']['marker'],[4096,4096])
         view=build_site_view(ROOT,self.catalog,'ll2:site:13')
         self.assertIsNone(view['manifest']['marker'])
         self.assertEqual(canonical_bytes(view['manifest']['site']['sourcePosition']),canonical_bytes(self.catalog['dictionaries']['sites']['ll2:site:13']['position']))
@@ -97,15 +72,15 @@ class GlobalMapTest(unittest.TestCase):
         unknown=build_site_view(ROOT,catalog,'ll2:site:101')
         event={'latitude':Decimal('0.0000'),'longitude':Decimal('-179.9999999999999999'),
                'sources':['https://example.org/literal-event-point']}
-        moving=build_site_view(ROOT,catalog,'ll2:site:13',kind='globe',event_position=event)
+        moving=build_site_view(ROOT,catalog,'ll2:site:13',event_position=event)
         self.assertIsNone(mobile['manifest']['marker']);self.assertIsNone(unknown['manifest']['marker'])
-        self.assertEqual(moving['manifest']['marker'],[4096,4096])
+        self.assertEqual(moving['manifest']['marker'],[32,4096])
         build_bundle(None,[mobile,unknown,moving])
         with tempfile.TemporaryDirectory() as tmp:
             directory=Path(tmp)/'first';first=build_bundle(visuals,[view]);write_bundle(directory,first)
             # A replacement selection retains exactly the previous required closure.
-            globe=build_site_view(ROOT,catalog,'ll2:site:80',kind='globe')
-            next_bundle=build_bundle(None,[globe],previous_directory=directory)
+            other=build_site_view(ROOT,catalog,'ll2:site:80')
+            next_bundle=build_bundle(None,[other],previous_directory=directory)
             self.assertLessEqual(next_bundle['artifactBytes'],1048576)
             self.assertEqual(next_bundle['manifest']['previous'],first['manifest']['current'])
             self.assertTrue(set(first['files'])<=set(next_bundle['files']))
