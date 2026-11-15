@@ -57,6 +57,12 @@ settings/update behavior.
 - **WHEN** no physical FR165 installation and phone/background observations exist
 - **THEN** native hardware acceptance remains incomplete despite successful compilation or simulation
 
+The intended physical watch SHALL be observed running an identified target build with a matching fresh selected launch. Installability on the intended phone or a version-bound installation SHALL be observed separately; a publisher preview, compatibility response or unversioned acknowledgement is insufficient. Personal activity evidence SHALL remain private.
+
+#### Scenario: Installed version or selected launch is unproved
+- **WHEN** the physical build is unidentified, installation lacks a version binding, or a matching fresh launch is not observed on the intended watch
+- **THEN** the corresponding physical delivery and end-to-end acceptance remain open
+
 ### Requirement: Free truthful Connect IQ publication
 
 The official app SHALL be free without paid fields or activation. Store submission
@@ -117,22 +123,3 @@ SHALL retain reconstructible source and manifest evidence.
 #### Scenario: A signed app release is defective
 - **WHEN** the official binary requires repair
 - **THEN** a higher-version release with the existing identity/key is prepared and qualified; a Store downgrade or lossless sideload-to-Store migration is not assumed
-
-### Requirement: Observed end-to-end delivery
-
-A delivery SHALL remain unaccepted until the intended watch is observed running
-an identified target build and displaying a matching, fresh selected launch.
-The actual installability of that build on the intended phone or a version-bound
-installation SHALL be separately observed. A publisher preview, compatibility
-response, or unversioned installation acknowledgement SHALL NOT establish which
-build was installed. Personal activity values in evidence SHALL remain private.
-
-#### Scenario: An installation request has no version
-
-- **WHEN** compatibility was checked for a release but the installation request does not bind a version
-- **THEN** that acknowledgement does not establish installation or execution of the checked release
-
-#### Scenario: The installed build or launch is unknown
-
-- **WHEN** the executing physical build is unidentified or a fresh matching selected launch has not been observed on that watch
-- **THEN** the delivery and physical end-to-end acceptance remain open

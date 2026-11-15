@@ -29,4 +29,4 @@ def source(mode):
 }
 '''
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--mode',choices=['fill','clean'],required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();r=build_probe(a.output,source(a.mode),group='current',source_files=['watchface/source/NativeMetrics.mc']);print(r['exitCode']);sys.exit(r['exitCode'])
+ p=argparse.ArgumentParser();p.add_argument('--mode',choices=['fill','clean'],required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();r=build_probe(a.output,source(a.mode),group='current',source_files=['tests/fixtures/native/NativeMetrics.mc']);print(r['exitCode']);sys.exit(r['exitCode'])

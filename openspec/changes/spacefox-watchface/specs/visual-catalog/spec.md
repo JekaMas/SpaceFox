@@ -7,12 +7,7 @@ without duplicating catalogs or changing the watch-face layout for each entry.
 
 ### Requirement: Global current-launch inventory
 
-The catalog SHALL cover all publicly documented Earth space-launch countries,
-territories, current configurations, launch organizations and sites, including
-orbital attempts and public civil suborbital/scientific flights. Geography or
-the initial sample pack SHALL NOT limit admission. Non-public events SHALL remain
-unknown. Scope, source dates and unresolved external omissions SHALL be reported;
-provider enumeration alone SHALL NOT prove worldwide completeness.
+The catalog SHALL cover publicly documented Earth space-launch countries, territories, current configurations, organizations and sites, including orbital attempts and public civil suborbital/scientific flights, without a geographic whitelist. Non-public events remain unknown. The dated retained source inventory defines observed support; report source dates and unresolved omissions. Provider enumeration alone SHALL NOT establish worldwide completeness.
 
 #### Scenario: A launch outside the sample countries
 - **WHEN** a public launch references a country, operator, model or site absent from the original sample pack
@@ -26,8 +21,8 @@ provider enumeration alone SHALL NOT prove worldwide completeness.
 
 The current set SHALL include 2026+ operating, developing and officially planned
 configurations, with dated sources and uncertainty. Provider flags and pending
-counts alone SHALL NOT prove lifecycle. Historical identities SHALL remain
-available but not count as current. Future unknown or disputed references SHALL
+counts alone SHALL NOT prove lifecycle. Historical and unresolved identities SHALL remain
+available without inferring current or retired status. Future unknown or disputed references SHALL
 retain their identity and fallback. Distinct configuration IDs SHALL NOT merge;
 source corrections SHALL preserve provider facts and review evidence.
 
@@ -37,7 +32,7 @@ source corrections SHALL preserve provider facts and review evidence.
 
 #### Scenario: Future reference needs lifecycle review
 - **WHEN** a scheduled launch references an unknown, excluded or disputed configuration
-- **THEN** the schedule preserves its identity and source-validation age, flags the identity for review and uses a safe generic fallback until the exact model is qualified
+- **THEN** the schedule preserves its identity and source-validation age, flags the identity for review and uses its reviewed identity-bound representative when available, otherwise generic art; visual review does not establish current lifecycle
 
 #### Scenario: Distinct boosters or provider identities
 - **WHEN** configurations differ in provider ID, booster arrangement or supplied full name
@@ -53,7 +48,8 @@ country SHALL NOT automatically become vehicle origin or launch country.
 
 #### Scenario: Vehicle launches abroad
 - **WHEN** an operator and rocket originate in one jurisdiction and launch from another
-- **THEN** place text and map use the launch site while the body flag uses only the verified model origin and the company mark identifies the supplied launch operator
+- **THEN** place text, map and the flag beside the country code use the sourced launch site; the header identifies the supplied launch operator and the rocket has no flag or company mark
+- **AND** if provider abbreviation is absent, a matching typed organization and verified catalog provenance may supply a presentation abbreviation; unknown or mismatched organizations cannot lend a caption, and the full provider name, launch record and validation age remain unchanged
 
 #### Scenario: Government or multinational operator
 - **WHEN** the organization is an agency or has several associated countries
@@ -78,12 +74,11 @@ or explicit unknowns SHALL NOT be reported as full specific-visual coverage.
 
 ### Requirement: Complete model and identity artwork
 
-All required non-placeholder configurations SHALL have a matching original or
-redistributable specific visual, or a reviewed shared-geometry mapping that
-preserves the exact model label. Required known operators and verified origin
-countries/regions SHALL have identifiable licensed marks. Unknown identity SHALL
-omit its mark. Generic or unverified art SHALL remain a reported gap, never a
-substitute for completing the known-model artwork acceptance gate.
+Source-qualified current configurations and reviewed named families SHALL have matching original or
+redistributable specific art, or reviewed shared geometry preserving the exact
+model label. Required known launch-country flags SHALL have identifiable
+licensed artwork. Unknown country SHALL omit its flag. Generic or unverified
+art SHALL remain a reported gap, never complete the known-model artwork gate.
 
 #### Scenario: Newly catalogued model lacks artwork
 - **WHEN** a known current configuration has no accepted specific or reviewed shared asset
@@ -91,7 +86,7 @@ substitute for completing the known-model artwork acceptance gate.
 
 #### Scenario: Mark would identify a different organization
 - **WHEN** a launch service provider differs from its vehicle manufacturer or pad agency
-- **THEN** the company mark uses only the explicitly mapped launch operator and never substitutes the other organization merely because its artwork exists
+- **THEN** the header uses the explicitly supplied launch operator and never substitutes another organization merely because its artwork exists
 
 ### Requirement: Geographic coverage for every launch point
 
@@ -184,12 +179,12 @@ and measured end-to-end benefit before adoption.
 ### Requirement: Data-driven catalog maintenance
 
 Maintainers SHALL be able to add a rocket/model mapping, replace its image or
-animation frames, and add or correct a launch site through one documented,
-versioned catalog workflow. These operations SHALL not require editing the
+bounded transform timeline, and add or correct a launch site through one
+documented, versioned catalog workflow. These operations SHALL not require editing the
 watch-face layout or a second hardcoded site/model list.
 
 #### Scenario: Add a rocket visual
-- **WHEN** a maintainer adds a valid model entry and image/frame assets through the documented workflow
+- **WHEN** a maintainer adds a valid model entry and image, with an optional transform timeline through the documented workflow
 - **THEN** the new version can be validated and distributed without changing watch-face layout code
 
 #### Scenario: Correct a launch-site point
@@ -214,7 +209,7 @@ An unverified model match or missing coordinate SHALL remain explicit.
 ### Requirement: Updateable watch-compatible visuals
 
 The system SHALL distribute accepted catalog revisions and watch-compatible
-rocket images/frame packs as static HTTPS files beside the personal feed, without
+rocket images and optional bounded transform timelines as static HTTPS files beside the personal feed, without
 a layout-code change or dynamic image server. Transfers SHALL use immutable
 revision/digest references, device-qualified bounds and cache reuse. A different
 feed host SHALL NOT require a layout change. Unsupported visuals SHALL not activate.
@@ -248,30 +243,32 @@ with assets from an unaccepted version.
 
 #### Scenario: New launch arrives before optional artwork
 - **WHEN** valid new schedule metadata arrives while its optional model/map assets are still downloading
-- **THEN** time/status/identity activate in the normal scene with a source-qualified point on its matching map for a covered fixed site, and generic rocket art where necessary; no old model is relabeled and optional artwork cannot indefinitely block schedule freshness
+- **THEN** time/status/identity activate in the normal scene with generic art and a separately matched bundled projection of the source-qualified fixed point when available, otherwise no point; no previous model image is relabeled and optional artwork cannot indefinitely block schedule freshness
 
 ### Requirement: Redistributable asset provenance
 
-Every distributed image/frame asset SHALL record creator, source, license and
+Every distributed image asset SHALL record creator, source, license and
 required credit. Unknown or incompatible redistribution terms MUST prevent its
 inclusion in the default freely redistributable pack. Access to provider data
 SHALL NOT be treated as an image license. Original SpaceFox schematics use MIT;
 third-party rights remain separate.
 
 #### Scenario: Replace a rocket image
-- **WHEN** a maintainer proposes an image or frame-pack replacement
+- **WHEN** a maintainer proposes an image replacement or a transform-timeline update
 - **THEN** compatible recorded rights and attribution are required before distribution, or the asset is rejected and the accepted schematic remains available
 
-### Requirement: Curated origin and independent operator marks
+### Requirement: Curated origin and independent operator identity
 
-Graphics MAY carry body origin/company marks. Origin SHALL use curated model provenance, never launch country or operator fallback. Missing
-identity SHALL omit its mark; regions SHALL remain explicit. Readable model/operator
-labels SHALL remain. Official artwork SHALL retain separately established terms;
-original letter badges MAY substitute.
+The catalog SHALL retain independently sourced model origin and operator facts.
+The header SHALL show the supplied operator; the footer SHALL show the sourced
+launch-country flag beside its code and site. Rocket artwork SHALL have no
+origin or operator mark. Missing country identity or qualified flag SHALL omit
+the flag, not infer it from origin or operator. Official art requires
+established redistribution terms.
 
 #### Scenario: Origin differs from launch country
 - **WHEN** a rocket launches abroad
-- **THEN** the body flag follows only the curated model origin, the company mark follows only the supplied operator, the launch-site map stays unchanged, and absent model-origin provenance does not become a guessed national flag
+- **THEN** the footer flag follows the sourced launch country, the header identifies the supplied operator, the map uses the launch site, and no body mark is drawn or transferred
 
 ### Requirement: Bounded selection manifest
 
@@ -294,7 +291,7 @@ an externally supported profile.
 
 #### Scenario: Maintainer adds a rocket in the supported drawing schema
 - **WHEN** validated artwork uses the current bounded SFR1M primitives and transforms
-- **THEN** its geometry, marks and optional animation can update from static files without an app or layout change
+- **THEN** its geometry, launch-country flag and optional animation can update from static files without an app or layout change
 
 #### Scenario: Artwork requires a new renderer operation
 - **WHEN** a visual requires unknown operations or a different projection convention
@@ -315,10 +312,7 @@ The sole schema-3 native-motion-v3 envelope at /feed.json SHALL preserve selecte
 facts, typed role/entity/art identity, source provenance and source-validation age.
 Only the selected dependencies SHALL enter bounded immutable SFR1M delivery.
 Raw object bytes/path/size and decoded pixel integrity SHALL be checked separately.
-Optional visual work SHALL allow prompt valid schedule activation in the normal
-scene with its matching source-qualified point for a covered fixed site; unknown
-or mobile-reference sites remain unmarked. An old same-ID image SHALL NOT be
-relabeled as new art.
+Optional visual work SHALL allow prompt valid schedule activation with generic art and a source-qualified point only on its matching projection; absent or mobile-reference event positions remain unmarked. An old same-ID image SHALL NOT be relabeled as new art.
 A content-only change SHALL allocate a monotonic pending generation without
 provider polling or renewing source age. Recovery SHALL reuse exact durable bytes.
 Complete current and recoverable same-format closure and exact HTTPS readback
@@ -329,7 +323,7 @@ No v1/v2 endpoints, old exporter, legacy archive or transition-period gate appli
 
 #### Scenario: Corrupt or replayed optional visual dependency
 - **WHEN** a selected descriptor, object, index or immutable reference is missing, corrupt, stale or unsupported
-- **THEN** complete-closure admission rejects it without replacing accepted state, while valid schedule metadata can activate in the normal scene with a matching covered fixed-site point and generic rocket art if needed
+- **THEN** complete-closure admission rejects it without replacing accepted state, while valid schedule metadata can activate in the normal scene with generic art and its source-qualified point only on a matching projection
 
 ### Requirement: Finite native full visual profile
 
@@ -344,7 +338,7 @@ This profile SHALL NOT establish physical, catalog-frame or locale acceptance.
 - **THEN** ordinary126784B foreground and61248B background contexts preserve the full scene, real background exits within30s and schedules temporal work at least300s apart, while bytes, requests, writes, first verified map, full activation and sampled heap are reported separately without physical or phone timing claims
 
 Source geometry SHALL rasterize losslessly with uniform aspect fit into390square
-map,54x124 rocket,20x38 operator and20x12 origin. Raw and decoded pixel hashes,
+map,54x124 unmarked rocket and20x12 launch-country flag. Raw and decoded pixel hashes,
 complete selected typed identity, original source/model/operator/origin/site
 point and source-validation ages SHALL remain bound. Original source provenance
 SHALL be fully validated before projection. The complete artifact stays within
@@ -359,3 +353,5 @@ pixel, hidden cap increase or executable drawing grammar SHALL establish equival
 #### Scenario: Incomplete or incompatible scene retains coherent fallback
 - **WHEN** changed model/place/art, interruption, full storage, corrupt raw/pixels, unknown point, malformed late provenance or an endpoint/layout mismatch occurs
 - **THEN** durable source/publisher floors and old immutable objects remain intact, new metadata uses generic art and either an unmarked map or a separately matched bundled projection of its accepted fixed point until its own complete validated scene is ready, no old cross-model/place graphic is relabeled, and restart independently validates persisted raw/schema/identity/source/pixel closure before activation
+
+Visual identity SHALL bind art/map digest, launch, model, site, country and qualified position. Changed facts require their own coherent scene, without relabeling older art or point; a late completion for a cancelled or replaced selection SHALL NOT replace the newer scene. Unknown model or operator does not erase source-qualified coordinates: only a matching qualified projection may render their marker; truly absent coordinates stay absent.
