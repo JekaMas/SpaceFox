@@ -63,3 +63,15 @@ class CurrentSourceReaderTest(unittest.TestCase):
         with patch.object(Path, 'read_bytes', mutated):
             with self.assertRaisesRegex(AssertionError, 'source differs: watchface/source/NativeFeed.mc'):
                 reader_module.CurrentFormatAcceptanceTest.current_route('moreWidePolicy')
+
+
+    def test_changed_current_ui_owner_refuses_cached_route(self):
+        reader_module.CurrentFormatAcceptanceTest._route_cache.add('current-ui')
+        target = ROOT / 'watchface/source/SceneRenderer.mc'
+        original = Path.read_bytes
+        def mutated(path):
+            value = original(path)
+            return value + b'changed' if path == target else value
+        with patch.object(Path, 'read_bytes', mutated):
+            with self.assertRaisesRegex(AssertionError, 'current integration source changed'):
+                reader_module.CurrentFormatAcceptanceTest().current_ui()

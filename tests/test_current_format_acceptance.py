@@ -203,6 +203,8 @@ class CurrentFormatAcceptanceTest(unittest.TestCase):
    out=(path/(name+'.stdout')).read_text();err=(path/(name+'.stderr')).read_text();code=int((path/(name+'.exit')).read_text())
    self.assertFalse(err,name);self.assertEqual(parse_output(out,code,(name,))['status'],'passed',name)
  def current_ui(self):
+  from tests.public_proof_inputs import verify_current_closure
+  verify_current_closure(ROOT)  # Live owners are mutable; never cache their identity.
   # DISPLAY03 replaced the old whole-UI source epoch. Do not rerun the old
   # verify_current_ui_batch against changed current owners or repin its hashes.
   # Its original lifecycle observation is read below; current mode/recovery
