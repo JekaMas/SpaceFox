@@ -59,11 +59,14 @@ class CurrentDataConvergenceTest(unittest.TestCase):
         cls.input_stamps = {str(path): (path.stat().st_mtime_ns, path.stat().st_size, path.stat().st_ino) for path in tracked_paths}
         for name, expected in sources.items():
             data = (ROOT / name).read_bytes()
+            if name in ("watchface/source/SettingsMenu.mc", "watchface/source/SettingsMenuText.mc"):
+                from tools.verify_current_ui_batch import historical_owner
+                data = historical_owner(ROOT, name)
             if name == 'watchface/source/generated/NativeVersion.mc':
-                if data.count(b'BUILD = "0.1.11"') != 1 or data.count(b'ID = "c718deaa"') != 1:
+                if data.count(b'BUILD = "0.1.12"') != 1 or data.count(b'ID = "07120ad9"') != 1:
                     raise AssertionError('current NativeVersion.mc identity changed')
-                data = data.replace(b'BUILD = "0.1.11"', b'BUILD = "0.1.10"')
-                data = data.replace(b'ID = "c718deaa"', b'ID = "de5011f4"')
+                data = data.replace(b'BUILD = "0.1.12"', b'BUILD = "0.1.10"')
+                data = data.replace(b'ID = "07120ad9"', b'ID = "de5011f4"')
             if digest(data) != expected:
                 raise AssertionError('source differs: ' + name)
 
@@ -119,11 +122,14 @@ class CurrentDataConvergenceTest(unittest.TestCase):
         self.assertIn('LOW_RECOVERY actualStore=true malformedRejected=true laterGenerationOlderSourceRejected=true sealStable=true minuteGuard=true highReopen=true', log_bytes.decode())
         for name, expected in receipt['inputHashes'].items():
             data = (ROOT / name).read_bytes()
+            if name in ("watchface/source/SettingsMenu.mc", "watchface/source/SettingsMenuText.mc"):
+                from tools.verify_current_ui_batch import historical_owner
+                data = historical_owner(ROOT, name)
             if name == 'watchface/manifest.xml':
-                self.assertEqual(data.count(b'version="0.1.11"'), 1, name)
-                data = data.replace(b'version="0.1.11"', b'version="0.1.10"')
+                self.assertEqual(data.count(b'version="0.1.12"'), 1, name)
+                data = data.replace(b'version="0.1.12"', b'version="0.1.10"')
             elif name == 'watchface/source/generated/NativeVersion.mc':
-                self.assertEqual(data.count(b'BUILD = "0.1.11"'), 1, name)
-                self.assertEqual(data.count(b'ID = "c718deaa"'), 1, name)
-                data = data.replace(b'BUILD = "0.1.11"', b'BUILD = "0.1.10"').replace(b'ID = "c718deaa"', b'ID = "de5011f4"')
+                self.assertEqual(data.count(b'BUILD = "0.1.12"'), 1, name)
+                self.assertEqual(data.count(b'ID = "07120ad9"'), 1, name)
+                data = data.replace(b'BUILD = "0.1.12"', b'BUILD = "0.1.10"').replace(b'ID = "07120ad9"', b'ID = "de5011f4"')
             self.assertEqual(digest(data), expected, name)

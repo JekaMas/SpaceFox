@@ -18,7 +18,9 @@ SNAPSHOTS = {
 def validate(root, catalog):
     from tools.generate_native_version import validate as validate_version
     from tools.native_display02_requalification import validate as validate_reviewed
+    from tools.verify_current_ui_batch import historical_owner, verify_rejection_menu
     root = Path(root).resolve()
+    verify_rejection_menu(root)
     snapshots = {}
     for filename, (destination, expected) in SNAPSHOTS.items():
         data = (root / PRIOR / filename).read_bytes()
@@ -31,7 +33,7 @@ def validate(root, catalog):
     if prior_policy.count(before) != 1 or (root/'tools/native_language_policy.py').read_bytes() != prior_policy.replace(before, after):
         raise ValueError('release language policy differs beyond approved dispatch')
     old = snapshots['watchface/manifest.xml']
-    if old.count(b'version="0.1.10"') != 1 or (root/'watchface/manifest.xml').read_bytes() != old.replace(b'version="0.1.10"', b'version="0.1.11"'):
+    if old.count(b'version="0.1.10"') != 1 or (root/'watchface/manifest.xml').read_bytes() != old.replace(b'version="0.1.10"', b'version="0.1.12"'):
         raise ValueError('release manifest differs beyond approved version')
     with tempfile.TemporaryDirectory(prefix='spacefox-release-version-') as tmp:
         target = Path(tmp)
@@ -41,6 +43,8 @@ def validate(root, catalog):
             (target/folder).symlink_to(root/folder, target_is_directory=True)
         for name, data in snapshots.items():
             (target/name).write_bytes(data)
+        for name in ("watchface/source/SettingsMenu.mc", "watchface/source/SettingsMenuText.mc"):
+            (target/name).write_bytes(historical_owner(root, name))
         qualified = validate_reviewed(target, catalog)
     validate_version(root)
     return qualified

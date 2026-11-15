@@ -13,9 +13,9 @@ from tools.run_native_tests import parse_output
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / 'openspec/changes/spacefox-watchface/evidence/release-update-native'
 PINS = {
-    'build.json': '6bd698889d1bdfcd1e4f6e6618afa313fe21d3606af483bd91957ebc55c3b3c6',
-    'Probe.mc.txt': '1e21951157d63680d73eafc6cf129afb36a157fd4aa30f8c56eee642a2005ed9',
-    'run.log': 'cdac9c1c8f8aaba14340f59538d3f7922706ef929f0bfea5ec3d875b055bd092',
+    'build.json': '5b0ecca4f3ccd8e41da345422802a3f5151728fffe98a0eadee3216ec0af6dde',
+    'Probe.mc.txt': '2bd1368df945dc3a847db6dc63198d2f6c86fbaf8c23e89e44ee2ce57816c414',
+    'run.log': '17e3fb2166354a68c24623bb47e3e49adfe3c4e3b0975c17b5d46d3c4a120579',
     'exit.txt': '4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865',
 }
 
@@ -30,8 +30,15 @@ def check_payload(name, data):
 
 
 def check_sources(build, read):
+    from tools.generate_native_version import render
+    current_version = (ROOT / 'watchface/source/generated/NativeVersion.mc').read_text()
+    if current_version != render(ROOT) or 'BUILD = "0.1.12"' not in current_version:
+        raise ValueError('current NativeVersion identity differs')
     for name, expected in {**build['productionSources'], **build['productionResources']}.items():
-        if digest(read(ROOT / name)) != expected:
+        data = read(ROOT / name)
+        if name == 'watchface/source/generated/NativeVersion.mc':
+            data = data.replace(b'BUILD = "0.1.12"', b'BUILD = "0.1.11"').replace(b'ID = "07120ad9"', b'ID = "4673835d"')
+        if digest(data) != expected:
             raise ValueError('native owner changed: ' + name)
 
 
@@ -56,7 +63,7 @@ class ReleaseUpdateNativeTest(unittest.TestCase):
         self.assertIn('oldWireRetained=1', self.log)
 
     def test_unsupported_schema_refused_without_replacement(self):
-        self.assertIn('schemaRefused=1 rendererRefused=1 actionableMenu=1 fiveLocales=1 clearsOnSuccess=1 oldWireRetained=1', self.log)
+        self.assertIn('incomingPath=1 schemaRefused=1 rendererRefused=1 actionableMenu=1 fiveLocales=1 clearsOnSuccess=1 oldWireRetained=1', self.log)
         self.assertIn('Check URL or update SpaceFox', self.probe)
         self.assertIn('"schemaVersion\\":4', self.probe)
         with self.assertRaisesRegex(ValueError, 'native observation changed'):
@@ -82,3 +89,26 @@ class ReleaseUpdateNativeTest(unittest.TestCase):
         self.assertIn('SFR-unsupported', self.probe)
         with self.assertRaisesRegex(ValueError, 'native observation changed'):
             check_payload('Probe.mc.txt', (EVIDENCE / 'Probe.mc.txt').read_bytes() + b'changed')
+
+class ReleaseUpdateAdmissionTest(unittest.TestCase):
+    def test_language_admission_refuses_changed_menu_owner(self):
+        from unittest.mock import patch
+        from tools.native_language_policy import software_locales
+        original = Path.read_bytes
+        target = ROOT / 'watchface/source/SettingsMenu.mc'
+        def altered(path):
+            data = original(path)
+            return data + b'changed' if path.resolve() == target else data
+        with patch.object(Path, 'read_bytes', altered), self.assertRaisesRegex(ValueError, 'rejection menu current owner changed'):
+            software_locales(ROOT)
+
+    def test_language_admission_refuses_changed_sdk_observation(self):
+        from unittest.mock import patch
+        from tools.native_language_policy import software_locales
+        original = Path.read_bytes
+        target = EVIDENCE / 'run.log'
+        def altered(path):
+            data = original(path)
+            return data + b'changed' if path.resolve() == target else data
+        with patch.object(Path, 'read_bytes', altered), self.assertRaisesRegex(ValueError, 'rejection menu observation changed'):
+            software_locales(ROOT)
