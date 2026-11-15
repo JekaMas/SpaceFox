@@ -1,0 +1,38 @@
+Picked up JAVA_TOOL_OPTIONS: -Djava.awt.headless=true
+------------------------------------------------------------------------------
+Executing test uncertaintyPositive...
+DEBUG (05:02): date/window ignore nominal midpoint; exact countdown remains null
+PASS
+------------------------------------------------------------------------------
+Executing test uncertaintyNegative...
+DEBUG (05:02): null/fraction/date/string/boolean cannot create precision; signed integer UTC is present
+PASS
+------------------------------------------------------------------------------
+Executing test offlineWakePositive...
+DEBUG (05:02): offline before=T- 03:00:00 after=T- 01:00:00 reads=4
+PASS
+------------------------------------------------------------------------------
+Executing test offlineWakeNegative...
+DEBUG (05:02): forward/zero/backward: T+00:01:40,T+00:00:00,T- 01:00:00
+PASS
+------------------------------------------------------------------------------
+Executing test emptyStartup...
+DEBUG (05:02): real App initial view has no invented launch
+PASS
+------------------------------------------------------------------------------
+Executing test clockAdapterSmoke...
+DEBUG (05:02): live SDK Time.now adapter observed=1794718937
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+uncertaintyPositive                 PASS
+uncertaintyNegative                 PASS
+offlineWakePositive                 PASS
+offlineWakeNegative                 PASS
+emptyStartup                        PASS
+clockAdapterSmoke                   PASS
+Ran 6 tests
+
+PASSED (passed=6, failed=0, errors=0)

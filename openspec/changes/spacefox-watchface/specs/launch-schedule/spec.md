@@ -20,35 +20,18 @@ retirement, cancellation or worldwide schedule completeness.
 
 ### Requirement: Automatic bounded refresh
 
-The watch SHALL fetch its static HTTPS feed through Garmin Connect: hourly by
-default, every fifteen minutes from two hours before a known launch until thirty
-minutes after its unconfirmed target time. Unknown-time launches use hourly mode.
-Intervals SHALL be configurable within platform/provider limits, including an
-optional five-minute mode. Drawing/countdown ticks MUST NOT initiate network
-requests. Delivery delay SHALL remain explicit.
-
+The watch SHALL fetch its static HTTPS feed via Garmin Connect hourly by default, or every 15 minutes from two hours before an exact or validated MIN nominal target through 30 minutes after it without confirmation. MIN precision remains uncertain; date-only, window-only and unknown targets use hourly mode. Intervals SHALL be configurable within platform/provider limits, including optional 5-minute mode. Drawing/countdown ticks MUST NOT initiate requests. Delivery delay SHALL remain explicit.
 #### Scenario: Connected refresh
 - **WHEN** a scheduled background refresh is permitted and the phone has connectivity
 - **THEN** the watch receives the accepted static schedule without manual refresh, provider credentials or a custom phone application, and uses its updated launch times
-- **AND** physical evidence uses the selected watch face; simulator background execution while another face is active does not establish physical behavior
+- **AND** When a first background attempt without an accepted schedule fails or is interrupted before callback, register the next attempt before the request at the first permitted slot, five minutes after the later of last temporal event and attempt. Actual OS/phone dispatch may be later; redraw does not request and normal cadence resumes after acceptance. Foreground wakes and duplicate callbacks SHALL NOT postpone pending visual deadlines; retain the registered deadline without redundant re-registration. An event newer than last dispatch remains pending even when late; consumed or absent events observe the five-minute minimum. Missing, null or unreadable FeedBaseUrl uses the published default; an explicitly stored blank disables the feed. Physical evidence uses the selected watch face.
 
 #### Scenario: Provider unavailable or rate limited
 - **WHEN** a refresh fails, times out or is rate limited
 - **THEN** the last accepted schedule remains available and retries respect platform/provider limits without a per-second request loop
 
-#### Scenario: First-install refresh interrupted or unsuccessful
-- **WHEN** the selected feed has no accepted schedule and its first background attempt fails or the platform ends the service before a callback
-- **THEN** the app registers the next attempt before the request for the first permitted slot, five minutes after the later of the last temporal event and the attempt, with no redraw-triggered network request
-- **AND** actual execution may occur later if the platform or phone delays delivery
-- **AND** the ordinary hourly/near-launch policy resumes after a schedule is accepted
-
-#### Scenario: Missing or intentionally blank feed property
-- **WHEN** the FeedBaseUrl property is missing, null or cannot be read
-- **THEN** the watch uses the published default HTTPS base
-- **AND** an explicitly stored blank string remains an intentional disabled feed and does not silently select the default
-
 #### Scenario: Refresh window changes
-- **WHEN** the cached exact launch time enters the two-hour window or passes thirty minutes without confirmation
+- **WHEN** the cached exact or validated MIN nominal target enters the two-hour window or passes thirty minutes without confirmation
 - **THEN** the local scheduler changes between fifteen-minute and hourly checks without inferring liftoff; temporary faster checking does not become permanent
 
 ### Requirement: Personal static-feed operation
@@ -108,10 +91,10 @@ UTC times and precision, source-validation times and catalog revision references
 The initial feed MUST be at most 8192 UTF-8 bytes; actual FR165 memory/time
 qualification MAY require a smaller supported bound. Unsupported, oversized,
 regressing or malformed snapshots MUST NOT replace the last accepted cache.
-
 #### Scenario: Unsupported or inconsistent snapshot
 - **WHEN** a response exceeds the bound, has an unsupported schema, missing required identity, invalid coordinates/time, or older source validation than the accepted cache
 - **THEN** the response is rejected and current time, fitness fields and last accepted launch data remain usable
+- **AND** All native feed, catalog, transfer-index, scene/descriptor and raster GETs SHALL use `HTTP_RESPONSE_CONTENT_TYPE_TEXT_PLAIN` and byte-identical `.txt` sidecars served as `text/plain` from the configured HTTPS base. Logical paths, bytes, digests, ordering, precision, cache and parser semantics SHALL remain unchanged. After final metadata, bounded selected and protected same-format recovery sidecars join the same durable snapshot or authenticated delivery journal, artifact, manifest, CAS, retention, recovery and exact readback under the existing 1MiB/256-file bound, without provider requests or changes to source age, priority, selection epoch or quota. Missing, stale, corrupt, unexpected or wrong-MIME sidecars refuse the candidate or readback without reconstructing pending bytes or losing accepted recovery; simulator HTTP200 with wrong MIME does not prove phone acceptance.
 
 ### Requirement: Decoded feed size accounting
 
@@ -127,18 +110,22 @@ SHALL be qualified separately from JSON bytes.
 
 ### Requirement: Stable next-launch selection
 
-The system SHALL choose the earliest eligible upcoming launch from the accepted
-provider schedule using stable launch identifiers. It SHALL exclude cancelled
-or confirmed completed entries, preserve uncertain timing explicitly, and not
-treat a locally elapsed timestamp as confirmation that a launch occurred.
-
+The system SHALL choose the earliest eligible launch from the accepted schedule
+using stable identifiers, retaining it through target+900 seconds or a later
+source-supported ascent end. Cancellation, withdrawal or reschedule SHALL
+override retention. Terminal entries SHALL NOT be newly selected.
 #### Scenario: Earlier launch added
 - **WHEN** a refreshed schedule introduces an eligible launch before the displayed one
 - **THEN** the watch selects that earlier launch and updates its rocket, site and countdown together
 
 #### Scenario: Estimated time passes without confirmation
 - **WHEN** the countdown reaches zero but the provider has not confirmed launch completion or a new time
-- **THEN** the watch continues with the same accumulating `T+ HH:MM:SS` countdown and does not claim liftoff or completion; the selection remains eligible through at least 15 minutes after target or a later validated sourced ascent end
+- **THEN** the same launch stays selected and shows `T+ 00:00:00`, then increasing elapsed time through the retention interval, without claiming actual liftoff or completion
+- **AND** provider-reported in-flight or payload-deployed status remains eligible during the timed phase; ancient or untimed in-flight records are not newly selected, coarse/unknown timing remains explicit, and locally elapsed time never confirms launch
+
+#### Scenario: Postponement overrides elapsed retention
+- **WHEN** a retained launch receives a newer target, a withdrawn target or cancellation
+- **THEN** the accepted source update replaces the elapsed display coherently, preserves reschedule semantics and never keeps a cancelled launch by relying on the local timer
 
 ### Requirement: Launch context metadata
 
@@ -158,7 +145,13 @@ than reuse another launch's context or invent a mission task.
 
 ### Requirement: UTC countdown and precision
 
-The watch SHALL recompute validated launch UTC minus current UTC on redraw and wake without connectivity. Active displays `T- HH:MM:SS` before target and `T+ HH:MM:SS` at and after target, with accumulating hours. At each permitted minute snapshot, LOW displays `T- HH:MM` rounded up before target and `T+ HH:MM` rounded down at and after target; it need not repaint at a mid-minute target. Both use the same UTC delta. Validated nominal-minute targets use the same arithmetic without upgrading source precision. Missing target displays `--:--:--` active and `--:--` LOW; zero does not claim liftoff. Sleep MUST NOT accumulate drift.
+The watch SHALL recompute validated launch UTC minus current UTC on redraw and wake without connectivity. Active uses accumulating seconds; LOW uses a permitted minute snapshot of the same UTC delta. Sleep MUST NOT accumulate drift. Zero does not claim liftoff.
+
+#### Scenario: Mode-specific UTC precision
+- **WHEN** the target and current UTC are known
+- **THEN** active displays ASCII `T- HH:MM:SS` before target and `T+ HH:MM:SS` at and after target, with accumulating hours
+- **AND** each permitted LOW snapshot displays `T- HH:MM` rounded up before target and `T+ HH:MM` rounded down at and after target; no repaint is promised at a mid-minute target
+- **AND** nominal-minute targets use the same arithmetic without upgrading source precision; missing target displays `--:--:--` active and `--:--` LOW
 
 #### Scenario: Exact time available
 - **WHEN** an accepted launch has an exact UTC timestamp and the watch time zone changes
@@ -171,6 +164,12 @@ The watch SHALL recompute validated launch UTC minus current UTC on redraw and w
 #### Scenario: Offline countdown after sleep
 - **WHEN** the watch wakes after two hours asleep without connectivity and its cached exact launch is still in the future
 - **THEN** the remaining time reflects the current clock, two hours less than before sleep, without downloading data or requiring a continuously running timer
+
+#### Scenario: Preserve final seconds and elapsed phase
+- **WHEN** the same timed launch crosses remaining `00:00:59`, `00:00:01` and zero
+- **THEN** the active face displays numeric seconds, then `T+ 00:00:00`, without selecting the following launch at zero
+- **AND** at elapsed 899 and 900 seconds the same identity remains selected; at 901 seconds or after a later source-supported ascent end the next eligible launch may be selected
+- **AND** hours accumulate past 24 and final seconds remain numeric; an explicitly supported actual source launch time is distinct from a scheduled/nominal target, and missing ascent data uses 900 seconds without an invented prediction
 
 ### Requirement: Reschedule detection
 
@@ -274,37 +273,3 @@ measured separately.
 #### Scenario: Response exceeds native parser capacity
 - **WHEN** an untrusted or corrupt host returns a response beyond the qualified size or shape
 - **THEN** the error path preserves accepted storage, subsequent startup remains usable and no callback-only check is reported as preventing an earlier allocation
-
-
-### Requirement: Byte-identical plain-text native HTTP transport
-
-All native feed, catalog, transfer-index, scene/descriptor and raster GETs SHALL declare `HTTP_RESPONSE_CONTENT_TYPE_TEXT_PLAIN` and request byte-identical `.txt` sidecars served as `text/plain` from the same configured static HTTPS base. Logical JSON/SFR1M paths, raw UTF-8 bytes, digest identities, ordering, precision, cache keys and parser contracts SHALL remain unchanged.
-
-#### Scenario: Final metadata and atomic protected delivery
-- **WHEN** a current candidate is prepared
-- **THEN** copies are generated after final feed metadata for only the bounded NativeBatch closure, including already protected same-format recovery objects
-- **AND** they join the same durable snapshot or authenticated delivery journal, artifact, manifest, CAS, retention, recovery and exact readback within the existing 1MiB/256-file complete delivery bound
-- **AND** transport-only preparation preserves source age, provider priority, selection epoch and quota and makes no provider request
-
-
-#### Scenario: Phone enforces response MIME
-- **WHEN** Garmin Connect fulfills a native plain-text request
-- **THEN** the requested `logical-path.txt` response is `text/plain` and its body matches the logical content byte for byte, including the final mutable feed metadata
-- **AND** a simulator HTTP200 with a mismatched MIME SHALL NOT establish paired-phone acceptance
-
-#### Scenario: Exact transport closure or readback is incomplete
-- **WHEN** a sidecar is missing, stale, corrupt, unexpected or has the wrong MIME type
-- **THEN** the candidate/readback is refused without source-age renewal, reconstruction of pending bytes or loss of the accepted same-format recovery state
-
-### Requirement: Preserve the pending visual deadline
-
-A foreground wake or duplicate callback SHALL NOT postpone an already
-registered pending visual-download event. A registered event newer than the last
-dispatched event remains pending even if the operating system dispatches it
-late. A consumed or absent event SHALL be scheduled subject to the operating
-system's five-minute minimum since the last dispatched temporal event.
-
-#### Scenario: Several foreground wakes before or after the registered deadline
-
-- **WHEN** a pending temporal event has not yet been dispatched and the face wakes or reloads
-- **THEN** the registered deadline is retained without redundant re-registration

@@ -1,0 +1,56 @@
+{
+  "scope": "Current selector pointers only; original source-bound receipts remain historical. New current timing cases independently cover zero, seconds and retained selected phase.",
+  "currentSha256": "0e951d4bf55d2703bb80c7b910009a34f0fa73268304eb94f895915dd189c5fb",
+  "cases": [
+    {
+      "id": "LS09.P1.S01.POSITIVE",
+      "old": "f231348985c2097f831d45d73a511268bf5fa265d6b797529bb425f584ceaea4",
+      "currentSelector": "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_exact_positive"
+    },
+    {
+      "id": "LS09.P1.S01.NEGATIVE",
+      "old": "f231348985c2097f831d45d73a511268bf5fa265d6b797529bb425f584ceaea4",
+      "currentSelector": "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_exact_negative"
+    },
+    {
+      "id": "LS09.P1.S02.POSITIVE",
+      "old": "f231348985c2097f831d45d73a511268bf5fa265d6b797529bb425f584ceaea4",
+      "currentSelector": "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_uncertain_positive"
+    },
+    {
+      "id": "LS09.P1.S02.NEGATIVE",
+      "old": "f231348985c2097f831d45d73a511268bf5fa265d6b797529bb425f584ceaea4",
+      "currentSelector": "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_uncertain_negative"
+    },
+    {
+      "id": "LS09.P1.S03.POSITIVE",
+      "old": "f231348985c2097f831d45d73a511268bf5fa265d6b797529bb425f584ceaea4",
+      "currentSelector": "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_wake_positive"
+    },
+    {
+      "id": "LS09.P1.S03.NEGATIVE",
+      "old": "f231348985c2097f831d45d73a511268bf5fa265d6b797529bb425f584ceaea4",
+      "currentSelector": "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_wake_negative"
+    },
+    {
+      "id": "LS09.P1.S04.POSITIVE",
+      "old": "f231348985c2097f831d45d73a511268bf5fa265d6b797529bb425f584ceaea4",
+      "currentSelector": "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_provider_precision_positive"
+    },
+    {
+      "id": "LS09.P1.S04.NEGATIVE",
+      "old": "f231348985c2097f831d45d73a511268bf5fa265d6b797529bb425f584ceaea4",
+      "currentSelector": "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_provider_precision_negative"
+    },
+    {
+      "id": "LS09.P1.S05.POSITIVE",
+      "old": "f231348985c2097f831d45d73a511268bf5fa265d6b797529bb425f584ceaea4",
+      "currentSelector": "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_minute_positive"
+    },
+    {
+      "id": "LS09.P1.S05.NEGATIVE",
+      "old": "f231348985c2097f831d45d73a511268bf5fa265d6b797529bb425f584ceaea4",
+      "currentSelector": "unittest::tests.test_basic_launch_logic.BasicLaunchLogicTest.test_minute_negative"
+    }
+  ]
+}

@@ -119,6 +119,8 @@ class PhoneTextTransportTest(unittest.TestCase):
                     def __getattr__(self,name):raise AssertionError('transport-only provider access '+name)
                 result=prepare_content(pub,ForbiddenProvider(),NOW+1,catalog,root=ROOT)
                 self.assertEqual((result['result'],result['requests']),('content_pending',0))
+                self.assertEqual(result['catalogReview']['catalogRevision'], catalog['catalogVersion'])
+                self.assertEqual(result['catalogReview']['lifecycleReview'], 'available')
                 after=Publisher(store,code);new=after.pending_files()
                 self.assertEqual(new['feed.json.txt'],new['feed.json'])
                 self.assertEqual(after.ledger['accepted']['entries'],before['accepted']['entries'])
@@ -127,3 +129,50 @@ class PhoneTextTransportTest(unittest.TestCase):
                     self.assertEqual(after.ledger[key],before[key])
                 self.assertEqual(json.loads(new['feed.json'])['providerTraversal'],json.loads(old['feed.json'])['providerTraversal'])
             finally:store.close()
+
+    def test_complete_delivery_counts_current_and_protected_previous_bytes(self):
+        # Exercise the actual delivery union guard with controlled authenticated
+        # snapshot reads; these are size vectors, not launch/display fixtures.
+        from types import SimpleNamespace
+        from unittest.mock import patch
+        from tools.spacefox.cloud import delivery_files
+        state = 'a' * 40
+        def metadata(raw):
+            return {'sha256': hashlib.sha256(raw).hexdigest(), 'bytes': len(raw)}
+        def observe(previous_size):
+            old = {'feed.json': b'p', 'a.bin': b'a' * previous_size}
+            new = {'feed.json': b'c', 'b.bin': b'b' * 524288}
+            previous = {'generation': 1, 'artifact_revision': 'b' * 64,
+                        'files': {p: metadata(v) for p, v in old.items()}}
+            current = {'generation': 2, 'artifact_revision': 'c' * 64,
+                       'files': {p: metadata(v) for p, v in new.items()}}
+            ledger = {'active': previous, 'pending': current}
+            store = SimpleNamespace(_ledger_at=lambda _: ledger)
+            pub = SimpleNamespace(store=store, ledger=ledger)
+            manifest = {p: dict(metadata(v), state=state, generation=1, role='previous')
+                        for p, v in old.items() if p != 'feed.json'}
+            manifest.update({p: dict(metadata(v), state=state, generation=2, role='current')
+                             for p, v in new.items()})
+            def snapshot(_store, _state, generation):
+                return (None, old if generation == 1 else new)
+            with patch('tools.spacefox.cloud.snapshot_files', side_effect=snapshot):
+                return delivery_files(pub, manifest)
+        accepted = observe(524287)
+        self.assertEqual(sum(map(len, accepted.values())), 1048576)
+        self.assertEqual(accepted['feed.json'], b'c')
+        with self.assertRaisesRegex(CloudError, 'exceeds1MiB'):
+            observe(524288)
+        with self.assertRaisesRegex(CloudError, 'file bound'):
+            delivery_files(None, {str(n): {} for n in range(257)})
+        # A single current generation with exactly 256 names is admitted by
+        # this union layer; snapshot authenticity is the substituted boundary.
+        exact = {'feed.json': b'c'}
+        exact.update({f'objects/{n:03}.bin': b'' for n in range(255)})
+        snapshot = {'generation': 1, 'artifact_revision': 'd' * 64,
+                    'files': {p: metadata(v) for p, v in exact.items()}}
+        ledger = {'active': snapshot, 'pending': None}
+        pub = SimpleNamespace(store=SimpleNamespace(_ledger_at=lambda _: ledger), ledger=ledger)
+        manifest = {p: dict(metadata(v), state=state, generation=1, role='current')
+                    for p, v in exact.items()}
+        with patch('tools.spacefox.cloud.snapshot_files', return_value=(None, exact)):
+            self.assertEqual(delivery_files(pub, manifest), exact)

@@ -1,4 +1,4 @@
-"""Independent literal identities and actual CLI/filesystem producer witnesses.
+"""Independent literal identities and catalog CLI/internal geometry witnesses.
 
 The catalog source and original SVG files are real, copied to an isolated local
 directory for mutation. No provider, publisher, SDK or native boundary is proved.
@@ -12,6 +12,8 @@ import tempfile
 import unittest
 
 from tests.test_global_catalog import temporary_catalog
+from tests.source_pack_helpers import source_pack, add_historical_inputs
+from tools.spacefox.graphics import VisualError
 from tools.spacefox.catalog import build_catalog, canonical_bytes, coverage_report
 from tools.spacefox.graphics import assemble_visual, canonical_visual
 
@@ -46,29 +48,29 @@ def inventory(directory):
 
 class RemainingArtIndependentR1Test(unittest.TestCase):
     def export(self, source, output, roots):
-        args = [ROOT/'tools/export_visuals.py','--source',source,'--output',output]
-        for identity in roots:
-            args += ['--root',identity]
-        result = execute(*args)
-        self.assertEqual(result.returncode,0,result.stderr)
-        return json.loads((output/'manifest.json').read_bytes())
+        return source_pack(source, output, roots)
 
     def test_all36_public_export_exact_selection_and_shared_copy_pins(self):
         identities = list(EXPECTED)
         with tempfile.TemporaryDirectory() as tmp:
+            root = temporary_catalog(Path(tmp) / 'owner')
+            add_historical_inputs(root, HISTORICAL)
+            source = root / 'catalog/source.json'
+            source.write_bytes(HISTORICAL.read_bytes())
+            admitted = execute(ROOT/'tools/catalog.py', '--repo', root, '--source', source,
+                               '--amend', root/CURATION, '--catalog-version', 'historical.r1')
+            self.assertEqual(admitted.returncode, 0, admitted.stderr)
             # Rich source/curation metadata reaches the unchanged byte cap
             # before the 16-root cardinality cap. This is a bounded selection.
-            refused = execute(ROOT/'tools/export_visuals.py','--output',Path(tmp)/'too-rich',
-                               *[arg for identity in identities[:12] for arg in ('--root',identity)])
-            self.assertEqual(refused.returncode,1)
-            self.assertIn('selection manifest byte limit',refused.stderr)
+            with self.assertRaisesRegex(VisualError, 'selection manifest byte limit'):
+                source_pack(source, Path(tmp)/'too-rich', identities[:12])
             self.assertFalse((Path(tmp)/'too-rich').exists())
-            # The face selects one configuration. Exercise that public port
+            # The face selects one configuration. Exercise that internal selection
             # for each identity; multi-model bulk export is not this contract.
             for offset, identity in enumerate(identities):
                 roots = [identity]
                 output = Path(tmp)/f'selection-{offset}'
-                manifest = self.export(ROOT/'catalog/source.json',output,roots)
+                manifest = self.export(source,output,roots)
                 rows = manifest['selection']['dictionaries']['configurations']
                 self.assertEqual(set(rows),set(roots))
                 models = {asset for asset,entry in manifest['assets'].items()
@@ -87,19 +89,20 @@ class RemainingArtIndependentR1Test(unittest.TestCase):
                         self.assertEqual(entry['rights']['license'],'MIT')
                         self.assertIn('SpaceFox',entry['rights']['credit'])
                         self.assertTrue(entry['catalogRecord']['facts']['sources'])
-        c = build_catalog(ROOT)
-        for new_id, old_model in [('shared-lm7-yz1a',100),('shared-angara-a5-breezem',73)]:
-            new = c['dictionaries']['assets']['spacefox:asset:remaining-r1-'+new_id]
-            old_visual = c['dictionaries']['configurations'][f'll2:configuration:{old_model}']['references']['visual']
-            old = c['dictionaries']['assets'][old_visual]
-            self.assertNotEqual(new['facts']['id'],old['facts']['id'])
-            self.assertEqual((ROOT/new['content']['path']).read_bytes(),(ROOT/old['content']['path']).read_bytes())
-            self.assertEqual(new['content']['sha256'],old['content']['sha256'])
+            c = build_catalog(root)
+            for new_id, old_model in [('shared-lm7-yz1a',100),('shared-angara-a5-breezem',73)]:
+                new = c['dictionaries']['assets']['spacefox:asset:remaining-r1-'+new_id]
+                old_visual = c['dictionaries']['configurations'][f'll2:configuration:{old_model}']['references']['visual']
+                old = c['dictionaries']['assets'][old_visual]
+                self.assertNotEqual(new['facts']['id'],old['facts']['id'])
+                self.assertEqual((ROOT/new['content']['path']).read_bytes(),(ROOT/old['content']['path']).read_bytes())
+                self.assertEqual(new['content']['sha256'],old['content']['sha256'])
 
     def test_actual_curation_cli_reopen_and_rejected_update_preserve_files(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = temporary_catalog(Path(tmp)/'catalog-owner')
             source = root/'catalog/source.json'
+            add_historical_inputs(root, HISTORICAL)
             source.write_bytes(HISTORICAL.read_bytes())
             before = build_catalog(root)
             initial_output = Path(tmp)/'visual-output'
@@ -148,10 +151,10 @@ class RemainingArtIndependentR1Test(unittest.TestCase):
             self.assertEqual(catalog_output.read_bytes(),accepted_catalog)
             self.assertEqual(inventory(initial_output),accepted_output)
             self.assertFalse(list((root/'catalog').glob('.recipe-*')))
-            # The actual export CLI must reject a malformed typed selection
+            # The internal selection must reject a malformed typed selection
             # before changing an already accepted manifest or object store.
-            rejected = execute(ROOT/'tools/export_visuals.py','--source',source,'--output',initial_output,'--root','configuration:194')
-            self.assertEqual(rejected.returncode,1)
+            with self.assertRaises(VisualError):
+                source_pack(source, initial_output, ['configuration:194'])
             self.assertEqual(inventory(initial_output),accepted_output)
 
 

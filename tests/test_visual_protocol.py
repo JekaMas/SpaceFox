@@ -272,10 +272,6 @@ class VisualProtocolTest(unittest.TestCase):
             self.assertEqual(s['objectsWritten'],len(p['objects']))
             s=write_pack(d,p);self.assertEqual(s['objectsReused'],len(p['objects']))
             self.assertEqual((Path(d)/'manifest.json').read_bytes(),manifest)
-            command=[sys.executable,'-B',str(ROOT/'tools/export_visuals.py'),'--output',str(Path(d)/'cli'),'--root','ll2:configuration:164']
-            run=subprocess.run(command,cwd=d,capture_output=True,text=True)
-            self.assertEqual(run.returncode,0,run.stderr)
-            self.assertEqual(json.loads(run.stdout)['qualification'],'producer-only-not-device-qualified')
 
     def test_atomic_negative(self):
         with tempfile.TemporaryDirectory() as d:

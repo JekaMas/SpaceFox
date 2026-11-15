@@ -118,6 +118,13 @@ class BasicLaunchLogicTest(unittest.TestCase):
         )
 
     def clock(self, *names):
+        from tests.current_clock_reader import NAMES, observe_clock
+        if all(name in NAMES for name in names):
+            observe_clock(*names)
+            return None
+        return self.historical_clock(*names)
+
+    def historical_clock(self, *names):
         folder = EVIDENCE / "language-settings-whole/basic-five-clock"
         receipt = read(folder / "native-tests.json")
         current_sources(self, receipt["build"], "source_sha256", pending_admission=True)
@@ -161,21 +168,9 @@ class BasicLaunchLogicTest(unittest.TestCase):
         return raw, receipt
 
     def scene(self, *names):
-        from tests.test_basic_selected_scene import NAMES
-
-        observed = native_receipt(
-            self,
-            EVIDENCE / "basic-selected-scene-whole/native",
-            "scene-observation.json",
-            NAMES,
-            (
-                "watchface/source",
-                "watchface/resources",
-                "tests/fixtures/basic_selected_scene",
-            ),
-        )
-        for name in names:
-            self.assertEqual(observed["observed_tests"][name], "PASS")
+        # Exact old receipt/source inputs plus separately named current seams.
+        from tests.retained_scene_reader import observe_scene
+        observe_scene(*names)
 
     def exact_feed_native(self):
         """One current SDK assertion joins the exact-source parser to the view.
@@ -648,18 +643,18 @@ class BasicLaunchLogicTest(unittest.TestCase):
         self.assertEqual(record.timing.exact_utc, 1767406156)
         self.assertEqual(record.timing.nominal_utc, 1767406156)
         self.assertEqual(record.timing.source_precision_abbrev, "SEC")
-        self.clock("clockExactPositive", "clockAdapterSmoke", "precisionTransitions")
-        self.exact_feed_native()
+        from tests.current_clock_reader import observe_clock, observe_exact_packet
+        from tests.test_current_timing_convergence import CurrentTimingConvergenceTest
+        observe_clock('clockAdapterSmoke')
+        observe_exact_packet()
+        CurrentTimingConvergenceTest('test_retained_native_countdown_pair_positive').test_retained_native_countdown_pair_positive()
 
     def test_exact_negative(self):
-        raw, receipt = self.clock("clockExactNegative")
-        self.assertEqual(
-            parse_output(
-                raw.replace("clockExactNegative", "missingClock"),
-                receipt["raw_exit_code"],
-            )["status"],
-            "failed",
-        )
+        from tests.test_current_ui_batch import CurrentUiBatchTest
+        from tests.test_current_timing_convergence import CurrentTimingConvergenceTest
+        CurrentUiBatchTest.setUpClass()
+        CurrentUiBatchTest('test_midnight_does_not_shift_utc_countdown').test_midnight_does_not_shift_utc_countdown()
+        CurrentTimingConvergenceTest('test_missing_zero_observation_negative').test_missing_zero_observation_negative()
 
     def test_uncertain_positive(self):
         for key in (SOYUZ, DAY):
@@ -732,28 +727,13 @@ class BasicLaunchLogicTest(unittest.TestCase):
             ),
             (TimePrecision.SOURCE_COARSE, None, 1794592440, 1, "MIN"),
         )
-        # Regenerates exact current packets, verifies all compiled source/fixture/
-        # packet/toolchain inputs, then consumes original four SDK passes.
-        import os
-        from unittest.mock import patch
-        from tests.test_basic_reschedule import BasicRescheduleTest
-
-        with patch.dict(
-            os.environ,
-            {
-                "SPACEFOX_RESCHEDULE_REUSE": str(
-                    EVIDENCE / "basic-reschedule-whole/native"
-                ),
-                "SPACEFOX_RESCHEDULE_OUTPUT": str(
-                    ROOT / "build/basic-launch-logic/ls10-inputs"
-                ),
-            },
-        ):
-            BasicRescheduleTest.setUpClass()
-        self.assertEqual(
-            BasicRescheduleTest.observation["observed_tests"]["rescheduleMove"], "PASS"
-        )
-        self.clock("precisionTransitions")
+        # Current source-bound parser/cache/view exercises a moved MIN target
+        # and withdrawal; a separate paired native probe checks long hours.
+        from tests.test_current_data_convergence import CurrentDataConvergenceTest
+        from tests.test_current_timing_convergence import CurrentTimingConvergenceTest
+        CurrentDataConvergenceTest.setUpClass()
+        CurrentDataConvergenceTest('test_actual_parser_cache_and_view_reschedule').test_actual_parser_cache_and_view_reschedule()
+        CurrentTimingConvergenceTest('test_retained_native_countdown_pair_positive').test_retained_native_countdown_pair_positive()
 
     def test_minute_negative(self):
         launch = self.feed(state(self.records[VULCAN]))["launch"]

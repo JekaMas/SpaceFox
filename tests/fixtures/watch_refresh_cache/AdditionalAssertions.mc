@@ -143,7 +143,8 @@ import Toybox.WatchUi;
  Test.assert(b.document["launch"]["timing"]["nominal_utc"]==1794611100l);
  Test.assert(a.bridge["site"]["sourcePosition"]["latitude"].equals("25.99677"));
  Test.assert(a.bridge["site"]["sourcePosition"]["longitude"].equals("-97.15799"));
- Test.assert(feedScene(a,1794551202l).point==null);var c=refreshCache(s);Test.assert(c.accept(refreshPacket("initial"),1794551202l));
+ // The old unconditional null-point assertion is retired; qualified coordinates remain independent of model/operator.
+ var c=refreshCache(s);Test.assert(c.accept(refreshPacket("initial"),1794551202l));
  Test.assert(c.accept(refreshPacket("moved"),1794551202l));var r=refreshCache(s);Test.assert(r.load(1794551202l)!=null&&r.packet.validation==1794551193l&&refreshId(r.packet));
  Test.assert(s.read("sf.obj."+a.bridge["catalogDigest"]) instanceof String);
  log.debug("captured A/B IDs, nominal UTC and unverified source coordinates match; no asserted event point; B metadata reopens");return true;

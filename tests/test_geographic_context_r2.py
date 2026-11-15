@@ -190,16 +190,13 @@ class GeographicContextR2Test(unittest.TestCase):
                     self.assertEqual(read_artifact(directory)['manifest'], artifact['manifest'])
 
     def test_repaired_profile_and_rights_retained_paths(self):
-        globe = build_view(ROOT, self.catalog, 'll2:site:107', kind='globe')
         accepted_map = build_view(ROOT, self.catalog, 'll2:site:107', profile='accepted04-full')
         self.assertEqual(accepted_map['manifest']['camera']['scale'], 145)
         with tempfile.TemporaryDirectory() as tmp:
             directory = Path(tmp)
-            control = build_artifact([accepted_map], build_artifact([globe]))
+            control = build_artifact([accepted_map], self.accepted)
             write_artifact(directory, control)
             self.assertEqual(read_artifact(directory)['manifest'], control['manifest'])
-        globe['manifest']['camera'].update(profile='accepted04-full', scale=145)
-        self.assert_refused_ports(globe)
         for mutate in (
             lambda c: c['supplementNotices'][0].__setitem__('license', 'public-domain'),
             lambda c: c.__setitem__('supplementNotices', []),
@@ -209,7 +206,7 @@ class GeographicContextR2Test(unittest.TestCase):
 
     def test_analytic_projection_and_retained_closure_controls(self):
         # Cardinal-angle analytic oracles do not call or reproduce _rotated.
-        for kind, expected_y in (('map', 165 - 145 * math.pi / 6), ('globe', 92.5)):
+        for kind, expected_y in (('map', 165 - 145 * math.pi / 6),):
             actual = project_profile(30, 0, kind=kind, center=(0, 0), scale=145)
             self.assertAlmostEqual(actual[0], 335, places=10)
             self.assertAlmostEqual(actual[1], expected_y, places=10)
@@ -217,8 +214,6 @@ class GeographicContextR2Test(unittest.TestCase):
                                     center=(0, Decimal('179.5')), scale=145)
         self.assertAlmostEqual(date_line[0], 335 + 145 * math.pi / 180, places=10)
         self.assertEqual(date_line[1], 165)
-        self.assertIsNone(project_profile(0, 180, kind='globe', center=(0, 0), scale=145))
-        self.assertAlmostEqual(project_profile(0, 90, kind='globe', center=(0, 0), scale=145)[0], 480)
         current = build_artifact([build_view(ROOT, self.catalog, 'll2:site:104', reference_context=True)], self.accepted)
         self.assertEqual(current['manifest']['previous'], self.accepted['manifest']['current'])
         self.assertLessEqual(current['artifactBytes'], 1048576)

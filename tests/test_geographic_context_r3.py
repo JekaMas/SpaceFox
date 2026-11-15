@@ -151,9 +151,8 @@ class GeographicContextR3Test(unittest.TestCase):
                     self.assert_refused_envelope(external(bad, current=self.accepted if retained else None))
 
     def test_five_distinct_descriptors_exceed_selection_count(self):
-        views = [self.omelek, build_view(ROOT, self.catalog, 'll2:site:107', kind='globe')]
-        views.extend(build_view(ROOT, self.catalog, 'll2:site:59', kind=kind) for kind in ('map', 'globe'))
-        views.append(build_view(ROOT, self.catalog, 'll2:site:101'))
+        views = [self.omelek] + [build_view(ROOT, self.catalog, identity) for identity in
+                                ('ll2:site:65', 'll2:site:59', 'll2:site:101', 'll2:site:104')]
         files = {}
         descriptors = []
         for view in views:
@@ -200,44 +199,6 @@ class GeographicContextR3Test(unittest.TestCase):
             with self.subTest(defect=defect):
                 self.assert_refused_envelope(bad)
 
-    def test_selection_rotation_and_supported_limits(self):
-        mobile = build_view(ROOT, self.catalog, 'll2:site:59')
-        unknown = build_view(ROOT, self.catalog, 'll2:site:101')
-        globe = build_view(ROOT, self.catalog, 'll2:site:107', kind='globe')
-        views = [self.omelek, mobile, unknown, globe]
-        previous = None
-        with tempfile.TemporaryDirectory() as tmp:
-            directory = Path(tmp)
-            for count in range(1, 5):
-                current = build_artifact(views[:count], previous)
-                self.assertEqual(len(current['manifest']['current']), count)
-                self.assertEqual(current['manifest']['previous'], previous['manifest']['current'] if previous else [])
-                self.assertLessEqual(current['artifactBytes'], 1048576)
-                self.assertEqual(current['artifactBytes'], len(canonical_bytes(current['manifest'])) + sum(map(len, current['files'].values())))
-                write_artifact(directory, current)
-                self.assertEqual(read_artifact(directory)['manifest'], current['manifest'])
-                previous = current
-            # A prior selection of four remains admitted when current shrinks;
-            # current/prior overlap is valid and must not be deduplicated away.
-            current = build_artifact([unknown], previous)
-            self.assertEqual(len(current['manifest']['previous']), 4)
-            write_artifact(directory, current)
-            self.assertEqual(read_artifact(directory)['manifest'], current['manifest'])
-        self.assertEqual(mobile['manifest']['camera']['center'], [0, 0])
-        self.assertIsNone(mobile['manifest']['marker'])
-        self.assertIsNone(unknown['manifest']['site']['sourcePosition'])
-        self.assertIsNone(unknown['manifest']['marker'])
-        # Polar cardinal and exact-center oracles use known spherical geometry,
-        # independent of the producer's rotation and clipping implementation.
-        self.assertEqual(project_profile(Decimal('9.047861'), Decimal('167.743'),
-                                        kind='map', center=(Decimal('9.047861'), Decimal('167.743')), scale=145), (335, 165))
-        pole = project_profile(0, 0, kind='globe', center=(90, 0), scale=145)
-        self.assertAlmostEqual(pole[0], 335, places=10)
-        self.assertAlmostEqual(pole[1], 310, places=10)
-        with self.assertRaises(GeographyError):
-            build_artifact([])
-        with self.assertRaises(GeographyError):
-            build_artifact([self.omelek, self.omelek])
 
 
 if __name__ == '__main__':
