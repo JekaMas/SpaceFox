@@ -724,3 +724,15 @@ The later actual-ink typography audit found a 454 LOW battery RED: 37 px colored
 Owner scope correction: the later fractional 454 battery experiment is deferred and is not a release gate or a pass. Its 37 px observation and RED are preserved. The original size-51 battery font and its generated NativeVersion are restored byte-for-byte; the accepted AOD glyph and centering repairs remain. Original 390 battery ink was 32 px. Required conditional, preclip, resource, admission and final full-suite work remains open as recorded in the DISPLAY04 plan.
 
 DISPLAY04 current software unit is self-green at the scoped source/evidence boundary in [FINAL.md](evidence/display04-whole-quality/FINAL.md); a fresh independent peer must still verify/fix. The owner directed reuse of noninvalidated greens and interruption of blanket Python discovery; its two passes and interrupted third case are retained, not described as a full-suite pass. Final integration, signed release/publication, physical wake/power and fresh watch data remain separate open gates.
+
+### DISPLAY04 independent software closure accepted
+
+Root accepts author `5d7b3ec1` and independent peer `7ad65fb5`: the current
+software unit is DONE at its recorded source/fixture/SDK boundaries. See
+[root judgment](evidence/display04-whole-quality/ROOT-JUDGMENT.md) and
+[independent report](evidence/display04-whole-quality/INDEPENDENT.md). No further
+production fix was required by the peer. The optional typography experiment is
+deferred, and valid greens remain reused under the latest owner instruction.
+The interrupted discovery is not a full-suite pass. One final main integration,
+signed-source/package identity, version tag and original-card publication follow;
+physical updated execution, fresh data, wake and power remain NOT DONE.
