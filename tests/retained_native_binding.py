@@ -11,7 +11,7 @@ OWNERS = ('watchface/source/NativeSfr.mc', 'watchface/source/NativeRenderSource.
 
 def verify_current():
     proof = json.loads((ROOT/'locales/catalog.json').read_text())['supportPolicy']['softwareQualificationProof']
-    ref = proof.get('settingsReadabilityProof', proof['integration13DeltaProof'])
+    ref = proof.get('decoderStreamProof', proof.get('settingsReadabilityProof', proof['integration13DeltaProof']))
     raw = (ROOT/ref['path']).read_bytes()
     if hashlib.sha256(raw).hexdigest() != ref['sha256']:
         raise AssertionError('current integration proof changed')

@@ -86,6 +86,9 @@ def owner_digest(root, name):
 
 def verify_rejection_menu(root):
     catalog = json.loads((root/'locales/catalog.json').read_text())
+    if 'decoderStreamProof' in catalog['supportPolicy']['softwareQualificationProof']:
+        from tools.native_decoder_stream_qualification import validate
+        return validate(root, catalog)
     if 'settingsReadabilityProof' in catalog['supportPolicy']['softwareQualificationProof']:
         from tools.native_settings_readability import validate
         return validate(root, catalog)
