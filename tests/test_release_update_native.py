@@ -31,13 +31,20 @@ def check_payload(name, data):
 
 def check_sources(build, read):
     from tools.generate_native_version import render
-    current_version = (ROOT / 'watchface/source/generated/NativeVersion.mc').read_text()
-    if current_version != render(ROOT) or 'BUILD = "0.1.12"' not in current_version:
+    current_version = read(ROOT / 'watchface/source/generated/NativeVersion.mc').decode()
+    if current_version != render(ROOT) or 'BUILD = "0.1.13"' not in current_version:
         raise ValueError('current NativeVersion identity differs')
+    # The receipt predates DISPLAY03. Bind the live input to the new admission
+    # and compare its preserved predecessor bytes to the historical receipt.
+    proof = json.loads((ROOT / 'openspec/changes/spacefox-watchface/evidence/display03-active-tick-wake/integration13/proof.json').read_text())
     for name, expected in {**build['productionSources'], **build['productionResources']}.items():
         data = read(ROOT / name)
-        if digest(data) != expected:
+        if digest(data) != proof['nativeInputs'][name]:
             raise ValueError('native owner changed: ' + name)
+        if digest(data) != expected:
+            data = (EVIDENCE.parent / 'display03-active-tick-wake/integration13/historical/settings' / name).read_bytes()
+        if digest(data) != expected:
+            raise ValueError('historical native owner changed: ' + name)
 
 
 class ReleaseUpdateNativeTest(unittest.TestCase):

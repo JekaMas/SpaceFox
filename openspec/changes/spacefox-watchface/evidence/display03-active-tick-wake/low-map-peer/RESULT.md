@@ -1,0 +1,24 @@
+# DISPLAY03 LOW map peer correction
+
+The author frames had a tiny, faint LOW geography. This correction keeps the existing 130×130 sparse bitmap and shared scene/point identity, enlarges the center-right horizontal projection without an extra offscreen bitmap, and increases the map ink and point. The decoded RGB-map outline uses the corresponding crop and samples; its first sample does not create an artificial crop-edge line. It sets the outline color for each row because raster painting changes the graphics drawing color before the outline is drawn. The clock, custom-field behavior, settings, countdown colors and coral reschedule override are unchanged. Native build identity is `26d2a860`, version 0.1.12.
+
+These are controlled FR165 Music SDK 9.3 / Java 11 test-key native frames, using the actual rendering code with a fixed clock, date, 50% battery, rescheduled countdown and Cape-area map inputs. They are not signed-product, natural-feed, physical-screen or physical power observations. EN and RU use the bundled Cape outline. The third frame uses the actual checksum-verified accepted RGB map fixture for `ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a` / `ll2:site:29`, decoded in timer slices through `NativeSfrDecoder` before drawing its outline and point. The fixture's site position is marked `unverified-reference`; geographic source qualification is not inferred. I inspected all three native captures. The altered aspect ratio makes the contour wider but still recognizable in these samples; it is not a geographic navigation display.
+
+| Frame | Outline bounds | Point bounds after rest mask | Date-to-outline minimum pixel-center distance | Clock ink height | Lit pixels |
+| --- | --- | --- | ---: | ---: | ---: |
+| EN bundled | x189–318, y19–98 (130px wide) | x276–289, y68–81 (14×14) | 11.40px | 99px | 7,286 |
+| RU bundled | x189–318, y19–98 (130px wide) | x276–289, y68–81 (14×14) | 18.03px | 99px | 7,100 |
+| EN decoded | x193–318, y29–98 (126px wide) | x276–289, y68–81 (14×14) | 11.40px | 99px | 7,174 |
+
+The bright visible outline in these captures is approximately RGB (189,226,246), 15.37:1 contrast against black. All totals are below 11,945 lit pixels for the observed rest phase. These measurements do not claim all map geometries, languages, rest phases, firmware or physical readability.
+
+`display03RealMapDecode` passed 1/1 on the final source (raw SDK test launcher exit 1; the driver's generic "12" message counts its complete selector inventory and is not the executed count). The source-bound delta validates the final native input closure, selected decoder receipt, all three measured screenshots and visual probe inputs; it reconstructs and validates the prior DISPLAY03 qualification with its original evidence. `python3 -B tools/language_support.py` admitted EN/RU/DE/FR/ES; a renderer tamper was refused with `LOW native source closure changed`. `python3 -B -m unittest -v tests.test_display03_outline` passed both checks: 217 numeric current sites of 224 match a center, and generated outlines stay out of the date band. All 72 generated outlines contained at least 320 pre-mask pixels; this count is not proof of every site's visual clarity. `git diff --check` passed.
+
+The initial proposal to scale indexed bitmaps crashed in the SDK with `Source must be native color format`; `rejected-scaled.log` is retained. The first decoded visual was dark (`rejected-dark-decoded.png`); after correcting the color, an artificial left crop edge remained (`rejected-edge-decoded.png`) and was removed. Diagnostic-only synchronous decode tripped a watchdog; starting its timer before onShow was not permitted; the separate compile failure is also retained. None is presented as a passing observation. Source-resource generation initially stopped at the expected source-bound predecessor mismatch; a controlled generation bootstrap used the already-admitted locale list, then the new proof independently reconstructed and validated the predecessor. No bypass remains in production admission.
+
+A reused run directory caused the EN trial's cleanup copy to fail after its SDK process had stopped. The original 636 simulator files were restored against the retained pre-run manifest, the original simulator.ini hash was restored, and the lane was released before the next run. The subsequent RU, decoded visual and final decoder checks restored 636 files and ini with zero mismatches; temporal registration remains unverified. No fetch, main integration, production signing or publication occurred. Final signed runtime, actual refresh and physical owner acceptance remain NOT DONE.
+
+**Superseded composition:** the owner rejected the anisotropically enlarged,
+repositioned LOW map documented above. The later full-scale same-projection
+contour was subsequently accepted. The observations above remain historical and
+are not the current geometry acceptance; see `../exact-active-map/RESULT.md`.

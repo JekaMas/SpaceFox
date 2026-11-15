@@ -602,3 +602,66 @@ The current delivery incident, goal and physical task obligations remain NOT DON
 Android fresh-process/direct-listing result and physical computer/USB availability
 are requested; corrected execution, matching fresh launch/point and stable modes
 remain unobserved. See [root judgment](evidence/display02-publication/RECHECK-ROOT-JUDGMENT.md).
+
+### DISPLAY03 owner runtime report — author apply pending
+
+Owner reports after an update: active countdown frozen, LOW countdown advancing,
+missing active launch point and very slow LOW-to-active wake. Exact executing
+version, launch identity and approximate delay were requested; no version is
+inferred from the word updated. This is the SAME open delivery incident and one
+related iteration. Required evidence now includes automatic redraw liveness,
+measured callback-to-first-frame latency and actual marker pixels, not only
+same-UTC arithmetic. See [DISPLAY03 plan](evidence/display03-active-tick-wake/PLAN.md).
+One author apply/self-GREEN then one fresh independent verify/fix, root judge and
+original-card release follow. Existing tasks and physical acceptance remain open.
+
+### DISPLAY03 author checkpoint — ready for independent verification
+
+On the fixed merged base `49d7a991`, the 0.1.12 native source identity is
+`971cb9a1`. The bounded author SDK run passed 12/12 cases (raw launcher exit 1),
+including five 30-event independent-oracle traces, LOW minute stability,
+rendered selected-map decoding, five primary languages and same-digest batch
+job continuity. FR165 Music EN/RU native pixel captures and field bounds,
+current-catalog 217/217 numeric-site outline coverage, 4 ms simulator
+callback-to-completed-active-frame wake and stable automatic one-second
+countdown cadence are retained in [author observations](evidence/display03-active-tick-wake/author-runtime/FINAL-OBSERVATION.md).
+The five-language admission reconstructs the 0.1.11 predecessor and rejects a
+tampered current source; OpenSpec strict validation and source syntax checks
+passed. Plain-app EN/RU runs and a minimally instrumented selected-scene READY
+and background-callback witness are separately qualified there.
+
+The heavier ordinary-heap observer still ran out of memory; the failed controls
+and the plain-app boundary are retained in [the investigation](evidence/display03-active-tick-wake/author-runtime/OOM-INVESTIGATION.md).
+Original simulator files and ini were restored byte-for-byte; temporal event
+registration remains unverified. Physical version `0.10.0`, reported 10–20 s
+wake, physical map point, Store delivery and physical behavior remain open.
+This is an author checkpoint only; task completion and publication require
+fresh independent verification and root judgment.
+
+### DISPLAY03 peer LOW-map correction — source checkpoint
+
+Root visual review found the original LOW map too small and dim. Peer enlarged the
+same-size sparse map, enlarged its point, and corrected decoded-outline color state;
+EN/RU bundled and EN decoded native controlled frames and source-bound admission
+are in [the peer record](evidence/display03-active-tick-wake/low-map-peer/RESULT.md).
+Final signed runtime, root integration and physical acceptance remain open.
+
+### DISPLAY03 full LOW contour — independent source accepted
+
+The owner retained the full LOW map. Independent peer `7c400284` is accepted at
+its source/test-key SDK boundary: covered-site READY retains the full contour,
+minute-only LOW countdown, visible point and no custom fields. Root inspected
+EN/RU, 454px, decoded and controlled READY native frames. The current 217 numeric
+points use 72 lazy centers with at most 0.4751px point displacement and identical
+rounded coordinates; no universal coastline or future-site equivalence is claimed.
+Dense-map pixel overflow and multirow watchdog failures remain with their repaired
+observations. Directly affected checks, source-bound admission/tamper refusal and
+strict OpenSpec passed; unchanged behavior receipts were reused.
+
+The requested one final main integration has begun using cached `117e7a3f`,
+without another fetch. Only generated NativeVersion conflicted. Final candidate
+0.1.13, production-signed ordinary READY/refresh, exact IQ-member proof and
+original-card publication remain pending. Physical reported version `0.10.0`,
+10–20 second wake, point and delivery remain open. Task/goal completion is not
+inferred from the source checkpoint. See the
+[root judgment](evidence/display03-active-tick-wake/ROOT-JUDGMENT.md).

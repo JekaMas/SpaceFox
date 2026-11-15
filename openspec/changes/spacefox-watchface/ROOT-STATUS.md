@@ -1,50 +1,54 @@
 # SpaceFox current root checkpoint
 
-Delivery research recheck is accepted at the bounded documentation/evidence scope.
-See [research](evidence/display02-publication/RECHECK-RESEARCH.md) and
-[root judgment](evidence/display02-publication/RECHECK-ROOT-JUDGMENT.md).
-Current channels are last observed physical 0.1.6, submitted Garmin 0.1.10/Internal 7
-PENDING (ordinary app, not Beta), and separate GitHub-only 0.1.11 test prerelease.
-Garmin permits owner testing while pending; the status alone is not a proved
-blocking cause. Related Garmin update-version reports supply a hypothesis, not
-SpaceFox root-cause confirmation. One hosted-feed observation is healthy; this
-is not phone/watch delivery. Targeted phone-process/update-page and USB-availability
-questions are pending. The factual Garmin draft is unsent. Physical acceptance and
-the goal remain NOT DONE. Later documentation edits retain signed receipts at their
-original source bounds, without a current-tree exact-pin claim.
+DISPLAY03 author apply/self-verification and independent verify/fix are accepted
+at the bounded source/test-key SDK boundary. Author commit `cd573a3f` and peer
+commit `7c400284` retain the concrete failed inputs, fixes and observations. See
+[root judgment](evidence/display03-active-tick-wake/ROOT-JUDGMENT.md) and the
+[peer source result](evidence/display03-active-tick-wake/exact-active-map/RESULT.md).
 
+The latest owner decision retains the full contour map in LOW. LOW has large
+time, date/weekday, minute-only T-/T+ countdown, battery and launch point, without
+four activity fields. ACTIVE keeps the full scene, four fields and seconds.
+Rescheduled countdowns use the qualified coral override in both modes. The
+shared UTC target does not reset across modes. Covered-site READY now selects
+the full contour, rather than replacing the approved composition after loading.
 
-Current unit DISPLAY02 is accepted at bounded software and signed-SDK boundaries.
-Version 0.1.10/de5011f4, clean compiled source 2e393bbf, merged to public main
-and tagged v0.1.10 at ba1eada6. All 19 GitHub assets passed anonymous hash readback.
-The original Garmin listing is submitted and reads 0.1.10 (Internal: 7), PENDING.
-See [publication and delivery](evidence/display02-publication/PUBLICATION.md).
-Author apply/self-GREEN followed by one fresh peer verify/fix is complete.
-See [root judgment](evidence/display02/ROOT-JUDGMENT.md) and
-[independent report](evidence/display02-independent/FINAL.md).
+The bounded current catalog has 224 sites, including 217 numeric positions using
+72 lazy map centers. All 217 site points round to the same native displayed
+coordinate as the exact-center reference; maximum continuous point difference
+is 0.4751 pixels. This does not establish identical geographic centers, universal
+coastline equivalence, future coverage or positions for unknown/mobile launches.
+Native EN/RU and 454px LOW captures and the controlled decoded READY witness are
+accepted. Pixel-budget observations remain bounded to the measured text.
 
-The production-signed FR165Music program actually fetched the public launch,
-showed the point/countdown, naturally completed artwork, passed LOW/NOT_LOW and
-restored the scene after full process kill/relaunch against retained storage.
-The final IQ member matches that executable byte for byte. IQ and21 program
-signatures and all1392 source/snapshot pins passed; five-language admission replayed.
-The corrected LOW11:11 clock ink measures98px within the pixel budget.
+One final integration has started against the already-fetched main snapshot
+`117e7a3f`; no new fetch is authorized or needed for this iteration. Its only
+reported merge conflict is generated NativeVersion. The final candidate must be
+0.1.13 because GitHub already contains the separate 0.1.12 test prerelease.
+Production signing, ordinary signed READY/refresh, exact IQ-member verification
+and publication remain pending at this checkpoint. Retain valid behavior greens;
+only changed version, integration and packaging inputs require new checks.
 
-The SDK is stopped and original636 files plus simulator.ini restored. Original
-registration remains unverified. Raw owner photos, health and credentials stay local.
+The original ordinary Garmin card was last observed with 0.1.10/Internal 7
+submitted and PENDING. GitHub-only 0.1.12 is a different delivery channel. The
+owner subsequently reported executing version **0.10.0** verbatim, active timer
+stalling, no active point and 10–20 second wake. That string is not silently
+normalized to 0.1.10. Earlier unambiguous 0.1.6 observations remain historical.
+Do not repeat account, firmware, face-selection or reboot questions.
 
-**Physical delivery and the goal remain NOT DONE.** Owner last saw0.1.6 after
-full power cycle. Do not repeat old account/reselect/reboot questions. Garmin
-accepted an unversioned Music installation request with HTTP 200 and empty body;
-this does not identify the delivered version. One normal sync and exact on-watch
-version/launch/point readback are requested. Actual 0.1.10 execution, fresh data and
-stable physical modes remain open. No other task/property group starts while this
-delivery unit is open.
+The author measured a 4 ms SDK callback-to-completed-active-frame interval and
+automatic one-second active cadence. Those results do not measure physical
+gesture-to-callback latency or prove the physical wake defect repaired. The
+heavy observer's OOM, decoded multirow watchdog, dense-map pixel overflow and
+stalled diagnostic runs are retained; rejected or instrumented runs receive no
+ordinary-app or physical acceptance credit.
 
-The current189 fixed numeric positions are covered by54 views. Worldwide future
-and event-specific mobile coverage remains open;25 retained mobile-reference
-launches expose no event coordinates. No fabricated point or universal future
-coverage is claimed. Watch system about/settings entry and physical battery,
-phone and Store requirements retain their own open scope. The private workflow
-runner is unavailable and was not substituted. No paid model API or new account,
-backend, framework or SDK installation was used in this unit.
+The source-phase peer restored 636 original simulator files and simulator.ini;
+original temporal registration remains unverified. The final signed lane must
+preserve its own state and report its actual executable and proof boundaries.
+
+**The delivery/data incident and goal remain NOT DONE.** Corrected physical
+execution, fresh matching launch data, visible point and stable active/LOW modes
+remain unobserved. Existing task checkboxes retain their physical/external gates;
+source GREEN, upload acceptance and an unversioned installation queue do not
+close them. No next task group starts while this same incident is open.

@@ -36,5 +36,3 @@ class PublicationReviewTest(unittest.TestCase):
                 release.review_publication(dict(self.record(), claimed_exemption=exemption))
         with self.assertRaisesRegex(BuildBlocked, "needs a reference"):
             release.review_publication(dict(self.record(), audience_review="resolved"))
-
-

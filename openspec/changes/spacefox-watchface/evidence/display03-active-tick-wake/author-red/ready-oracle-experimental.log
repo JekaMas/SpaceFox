@@ -1,0 +1,59 @@
+------------------------------------------------------------------------------
+Executing test display03CausalSequence...
+DEBUG (09:52): D03_SEQUENCE seed=1 events=29 required_dispositions=11 skipped=0
+DEBUG (09:52): D03_SEQUENCE seed=2 events=29 required_dispositions=11 skipped=0
+DEBUG (09:52): D03_SEQUENCE seed=3 events=29 required_dispositions=11 skipped=0
+DEBUG (09:52): D03_SEQUENCE seed=4 events=29 required_dispositions=11 skipped=0
+DEBUG (09:52): D03_SEQUENCE seed=5 events=29 required_dispositions=11 skipped=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03ReadyAndErrorOnWake...
+DEBUG (09:52): READY_CHECK ready=true bridge=true transfer=true
+DEBUG (09:52): SLEEP_WORK pending=true timer=false calls=0
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - display03ReadyAndErrorOnWake() at /Users/jekamas/projects/SpaceFox-worktrees/active-clock-wake-20261115/watchface/display03-tests/Display03Sequence.mc:67 0x1000330e 
+  - evaluate_test_entries_0_to_6() at /Users/jekamas/.codex/tmp/spacefox-display03-author/focus-ready-debug/gen/006-B4433-00/source/UnitTests.mcgen:58 0x10009ddb 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-display03-author/focus-ready-debug/gen/006-B4433-00/source/UnitTests.mcgen:81 0x10009ea3 
+ERROR
+------------------------------------------------------------------------------
+Executing test display03RepeatedLowCallbacks...
+DEBUG (09:52): LOW_CALLBACKS 60 same-minute callbacks one paint; next minute second paint
+PASS
+------------------------------------------------------------------------------
+Executing test display03MinuteRounding...
+DEBUG (09:52): MINUTE offset=-61 observed=T- 00:02 expected=T- 00:02
+DEBUG (09:52): MINUTE offset=-60 observed=T- 00:01 expected=T- 00:01
+DEBUG (09:52): MINUTE offset=-59 observed=T- 00:01 expected=T- 00:01
+DEBUG (09:52): MINUTE offset=-1 observed=T- 00:01 expected=T- 00:01
+DEBUG (09:52): MINUTE offset=0 observed=T+ 00:00 expected=T+ 00:00
+DEBUG (09:52): MINUTE offset=1 observed=T+ 00:00 expected=T+ 00:00
+DEBUG (09:52): MINUTE offset=59 observed=T+ 00:00 expected=T+ 00:00
+DEBUG (09:52): MINUTE offset=60 observed=T+ 00:01 expected=T+ 00:01
+DEBUG (09:52): MINUTE offset=61 observed=T+ 00:01 expected=T+ 00:01
+PASS
+------------------------------------------------------------------------------
+Executing test display03SleepThenHighObservation...
+DEBUG (09:52): SLEEP_QUERY_HIGH active=0 low=1 mode=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03WakeThenLowObservation...
+DEBUG (09:52): WAKE_QUERY_LOW active=0 low=1 mode=0
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+display03CausalSequence             PASS
+display03ReadyAndErrorOnWake        ERROR
+display03RepeatedLowCallbacks       PASS
+display03MinuteRounding             PASS
+display03SleepThenHighObservation   PASS
+display03WakeThenLowObservation     PASS
+Ran 6 tests
+
+FAILED (passed=5, failed=0, errors=1)

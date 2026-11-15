@@ -145,18 +145,21 @@ than reuse another launch's context or invent a mission task.
 
 ### Requirement: UTC countdown and precision
 
-The watch SHALL recompute validated launch UTC minus current UTC on redraw and
-wake without connectivity. Positive values use ASCII `T- HH:mm:ss` with
-accumulating hours; zero and elapsed use `T+ HH:mm:ss`. Missing targets display
-`--:--:--`. Nominal-minute targets use the same arithmetic without upgrading
-source precision; sleep MUST NOT accumulate drift.
+The watch SHALL recompute validated launch UTC minus current UTC on redraw and wake without connectivity. Active uses accumulating seconds; LOW uses a permitted minute snapshot of the same UTC delta. Sleep MUST NOT accumulate drift. Zero does not claim liftoff.
+
+#### Scenario: Mode-specific UTC precision
+- **WHEN** the target and current UTC are known
+- **THEN** active displays ASCII `T- HH:MM:SS` before target and `T+ HH:MM:SS` at and after target, with accumulating hours
+- **AND** each permitted LOW snapshot displays `T- HH:MM` rounded up before target and `T+ HH:MM` rounded down at and after target; no repaint is promised at a mid-minute target
+- **AND** nominal-minute targets use the same arithmetic without upgrading source precision; missing target displays `--:--:--` active and `--:--` LOW
+
 #### Scenario: Exact time available
 - **WHEN** an accepted launch has an exact UTC timestamp and the watch time zone changes
 - **THEN** the remaining duration remains correct and the displayed local time follows the watch
 
 #### Scenario: Date known but time uncertain
 - **WHEN** the provider gives only a date, coarse window or invalid/missing exact timestamp
-- **THEN** the watch displays `--:--:--`; a validated nominal-minute target may count to its nominal UTC without changing the source precision
+- **THEN** the watch displays the uncertainty marker appropriate to its mode; a validated nominal-minute target may count to its nominal UTC without changing the source precision
 
 #### Scenario: Offline countdown after sleep
 - **WHEN** the watch wakes after two hours asleep without connectivity and its cached exact launch is still in the future
@@ -164,7 +167,7 @@ source precision; sleep MUST NOT accumulate drift.
 
 #### Scenario: Preserve final seconds and elapsed phase
 - **WHEN** the same timed launch crosses remaining `00:00:59`, `00:00:01` and zero
-- **THEN** the face displays numeric seconds, then `T+ 00:00:00`, without selecting the following launch at zero
+- **THEN** the active face displays numeric seconds, then `T+ 00:00:00`, without selecting the following launch at zero
 - **AND** at elapsed 899 and 900 seconds the same identity remains selected; at 901 seconds or after a later source-supported ascent end the next eligible launch may be selected
 - **AND** hours accumulate past 24 and final seconds remain numeric; an explicitly supported actual source launch time is distinct from a scheduled/nominal target, and missing ascent data uses 900 seconds without an invented prediction
 

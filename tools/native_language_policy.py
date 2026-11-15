@@ -89,6 +89,18 @@ def software_locales(root,catalog=None):
  if not qualified:
   if proof is not None:raise ValueError('empty software admission must have no proof')
   return []
+ if isinstance(proof,dict) and 'integration13DeltaProof' in proof:
+  from tools.native_integration13_requalification import validate
+  return validate(root,catalog)
+ if isinstance(proof,dict) and 'exactMapDeltaProof' in proof:
+  from tools.native_exact_map_requalification import validate
+  return validate(root,catalog)
+ if isinstance(proof,dict) and 'lowMapDeltaProof' in proof:
+  from tools.native_low_map_requalification import validate
+  return validate(root,catalog)
+ if isinstance(proof,dict) and 'display03DeltaProof' in proof:
+  from tools.native_display03_requalification import validate
+  return validate(root,catalog)
  if isinstance(proof,dict) and 'display02DeltaProof' in proof:
   from tools.native_release_version_requalification import validate
   return validate(root,catalog)

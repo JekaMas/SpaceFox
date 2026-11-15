@@ -28,6 +28,15 @@ class ScheduleState {
 }
 
 module CountdownFormat {
+    // LOW is a minute snapshot of the same signed UTC delta. Round a future
+    // target up so zero is never shown before the target; elapsed time rounds
+    // down. Zero itself belongs to T+.
+    function minutes(seconds as Number or Long or Null) as String {
+        if (seconds == null) { return "--:--"; }
+        var n=seconds.toLong();var future=n>0;
+        var total=future?(n+59)/60:(-n)/60;
+        return (future?"T- ":"T+ ")+(total/60).toNumber().format("%02d")+":"+(total%60).toNumber().format("%02d");
+    }
     function format(seconds as Number or Long or Null) as String {
         if (seconds == null) { return "--:--:--"; }
         var n = seconds.toLong();

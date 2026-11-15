@@ -64,7 +64,12 @@ def source_state(root: Path) -> dict:
                  # The historical site-flag observer imports these test modules
                  # while reconstructing the generator used by its proof.
                  "tests/__init__.py", "tests/test_basic_launch_logic.py",
-                 "tests/test_basic_time_fields.py"}
+                 "tests/test_basic_time_fields.py",
+                 # The integration proof binds the incoming settings and
+                 # historical receipt readers to the current owner closure.
+                 "tests/test_release_update_native.py", "tests/test_current_data_convergence.py",
+                 "tests/test_current_timing_convergence.py", "tests/test_current_version_binding.py",
+                 "tests/native_historical_binding.py"}
     # The retained delta validators reconstruct historical source trees. Their
     # exact proof inputs must travel with a release and isolated qualification.
     additional = json.loads((root / "release/native-admission-inputs.json").read_text())
@@ -138,11 +143,11 @@ def source_state(root: Path) -> dict:
     for name in paths:
         if not name or not (name.startswith("watchface/") or name.startswith("release/") or
                              name.startswith("licenses/") or name.startswith("locales/") or
-                             (name.startswith("tools/") and name.endswith(".py")) or name.startswith("tests/test_ux016_") or name in admission or
+                             (name.startswith("tools/") and name.endswith(".py")) or name.startswith("tests/") or name in admission or
                              name == "assets/rocket-pack/LICENSE" or
                              name in ("tools/release.py", "tools/ReleaseInspector.java", "tools/build_watchface.py",
                                       "LICENSE", "THIRD_PARTY_NOTICES.md", "docs/AGENT_SETUP.md",
-                                      "docs/RELEASE_AND_UPDATES.md", "docs/SUPPORTED_DEVICES.md", "README.md", "TESTING.md")):
+                                      "docs/RELEASE_AND_UPDATES.md", "docs/SUPPORTED_DEVICES.md", "docs/images/simulator-fr165m-0.1.13.png", "docs/images/simulator-fr165m-low-0.1.13.png", "README.md", "TESTING.md")):
             continue
         path = root / name
         require(path.is_file() and not path.is_symlink(), "release input must be a regular tracked file: " + name)

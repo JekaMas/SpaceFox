@@ -1,0 +1,33 @@
+OWNER_MEMORY before-setPacket used=92880
+OWNER_MEMORY after-setPacket used=92808
+OWNER_MEMORY before-renderer used=93512
+OWNER_MEMORY after-renderer used=110776
+D03_SHOW ms=11103 display=0
+OWNER_MEMORY before-show used=110872
+OWNER_MEMORY after-show used=110872
+D03_FRAME begin=11103 end=11111 utc=1794724122 display=0 mode=1 countdown=T- 10:42:48 low=T- 10:43 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_FRAME begin=11112 end=11117 utc=1794724122 display=0 mode=1 countdown=T- 10:42:48 low=T- 10:43 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_RELOAD_BEGIN ms=11183
+OWNER_MEMORY before-visual used=111336
+OWNER_MEMORY after-visual used=111552
+D03_RELOAD_END ms=11187
+OWNER_MEMORY before-fitness used=111392
+OWNER_MEMORY after-fitness used=111768
+OWNER_MEMORY before-visual used=111768
+OWNER_MEMORY after-visual used=111760
+D03_FRAME begin=11195 end=11200 utc=1794724122 display=0 mode=1 countdown=T- 10:42:48 low=T- 10:43 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_FRAME begin=11202 end=11207 utc=1794724122 display=0 mode=1 countdown=T- 10:42:48 low=T- 10:43 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+MEM_STEP_BEGIN used=111792 build=false role=-1 pending=true
+MEM_STEP_END used=116208 build=true role=0 ready=false
+D03_FRAME begin=11305 end=11310 utc=1794724122 display=0 mode=1 countdown=T- 10:42:48 low=T- 10:43 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+MEM_STEP_BEGIN used=116208 build=true role=0 pending=true
+
+Error: Out Of Memory Error
+Details: Failed invoking <symbol>
+Stack: 
+  -  at 
+D03_RELOAD_BEGIN ms=11398
+OWNER_MEMORY before-visual used=113992
+OWNER_MEMORY after-visual used=114208
+D03_RELOAD_END ms=11402
+Encountered an app crash.

@@ -1,0 +1,14 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.WatchUi;
+import Toybox.System;
+import Toybox.Background;
+import Toybox.Time;
+import Toybox.Graphics;
+(:background) module NativeMetrics {var ownerTag as String="";}
+(:typecheck(false)) class LowPeer extends WatchUi.WatchFace {
+ var renderer;var settings;var snap;var mask;
+ function initialize(){WatchFace.initialize();settings=new SceneSettings(null);renderer=new SceneRenderer(null);renderer.prepare(null,settings);snap=new ClockSnapshot("10:46","T- 10:26");snap.lowCountdown="T- 10:26";snap.localCalendar=[1,15,11];snap.battery="50%";snap.rescheduled=true;mask=WatchUi.loadResource(Rez.Drawables.AodRestMask);}
+ function onUpdate(dc){var lang=1;settings=new SceneSettings({"Language"=>lang});renderer.presentation.prepare(settings.language);SceneAod.draw(dc,snap,0,renderer.presentation,renderer.fonts["aod"],settings,WatchUi.loadResource(Rez.Drawables.AodMap0),true,335,165);dc.drawBitmap(0,0,mask);}
+}
+(:background,:typecheck(false)) class SfrRuntimeApp extends Application.AppBase {function initialize(){AppBase.initialize();NativeMetrics.ownerTag="8e906b38f2254c4987d492208133f381|spacefox-peer-low-visual|43e3cb12401b";System.println("SFR_PROBE owner="+NativeMetrics.ownerTag);}function getInitialView(){return [new LowPeer()];}}
