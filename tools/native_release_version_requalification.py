@@ -28,7 +28,6 @@ def validate(root, catalog):
     old = snapshots['watchface/manifest.xml']
     if old.count(b'version="0.1.10"') != 1 or (root/'watchface/manifest.xml').read_bytes() != old.replace(b'version="0.1.10"', b'version="0.1.11"'):
         raise ValueError('release manifest differs beyond approved version')
-    validate_version(root)
     with tempfile.TemporaryDirectory(prefix='spacefox-release-version-') as tmp:
         target = Path(tmp)
         for folder in ('watchface', 'locales', 'tools', 'tests'):
@@ -37,4 +36,6 @@ def validate(root, catalog):
             (target/folder).symlink_to(root/folder, target_is_directory=True)
         for name, data in snapshots.items():
             (target/name).write_bytes(data)
-        return validate_reviewed(target, catalog)
+        qualified = validate_reviewed(target, catalog)
+    validate_version(root)
+    return qualified
