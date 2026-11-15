@@ -1,0 +1,3 @@
+# Frozen current authority artifact
+
+`frozen-current.zip` contains the complete schema-3 SFR1M artifact and text-transport copies produced from the retained `captured_starship()` record, the checked-in catalog/source closure, and `NOW=1794551192`, with publisher instance `aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`, generation 1 and selection-validation epoch `1794551192`. This is a local test snapshot, not a provider, hosted, or device observation. `frozen-current.json` records literal SHA-256 and length for each file; the test also pins both fixture file digests in source and independently verifies the unpacked bytes. The archive uses deterministic names, timestamps and ordering. No display text or provider record was generated for this fixture.

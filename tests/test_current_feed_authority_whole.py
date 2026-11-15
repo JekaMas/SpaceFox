@@ -8,6 +8,7 @@ import hashlib
 from pathlib import Path
 import json
 import unittest
+import zipfile
 
 from tests.test_autonomous_publisher_whole import AutonomousPublisherWholeTest, Service
 from tests.test_current_motion_publisher import NOW
@@ -140,15 +141,26 @@ class CurrentFeedAuthorityWholeTest(AutonomousPublisherWholeTest):
         from tools.spacefox.publisher import STATE_REF
         with self.authority() as (_, remote, store, pub):
             self.accept(pub)
+            before_prepare = pub.head
             files, _ = self.prepare(pub)
             good = pub.head
             document = deepcopy(pub.ledger)
-            logical = {p: b for p, b in files.items() if not p.endswith('.txt')}
-            feed = json.loads(logical['feed.json'])
-            feed['publisher']['instance'] = 'f' * 64 if pub.ledger['instance_id'] != 'f' * 64 else 'e' * 64
-            logical['feed.json'] = canonical_bytes(feed)
-            altered = with_text_transport(logical)
-            # A complete self-consistent artifact is not the ledger's authority.
+            fixture = Path(__file__).parent / 'fixtures/current_authority'
+            archive = (fixture / 'frozen-current.zip').read_bytes()
+            manifest_raw = (fixture / 'frozen-current.json').read_bytes()
+            self.assertEqual('2f7f558e702e53a3fdc245e577f7d0ace26a305fead3c75d40fa3b0a26e292ef', hashlib.sha256(archive).hexdigest())
+            self.assertEqual('916d9e4b30ce68a0d9bd75f6ce03a652619238b1701f217c7a65f347746335d2', hashlib.sha256(manifest_raw).hexdigest())
+            manifest = json.loads(manifest_raw)
+            with zipfile.ZipFile(fixture / 'frozen-current.zip') as frozen_zip:
+                self.assertEqual(len(frozen_zip.namelist()), len(set(frozen_zip.namelist())))
+                altered = {p: frozen_zip.read(p) for p in frozen_zip.namelist()}
+            self.assertEqual(manifest['files'], {p: dict(sha256=hashlib.sha256(b).hexdigest(), bytes=len(b)) for p, b in altered.items()})
+            feed = json.loads(altered['feed.json'])
+            self.assertEqual('a' * 64, manifest['instance'])
+            self.assertEqual('a' * 64, feed['publisher']['instance'])
+            self.assertNotEqual(pub.ledger['instance_id'], feed['publisher']['instance'])
+            self.assertEqual(1, feed['publisher']['generation'])
+            self.assertEqual(1794551192, feed['launch']['source_validated_utc'])
             from tools.spacefox.native_motion import validate_artifact
             validate_artifact(altered)
             snap = document['pending']
@@ -157,12 +169,16 @@ class CurrentFeedAuthorityWholeTest(AutonomousPublisherWholeTest):
             frozen = json.dumps(unsigned, ensure_ascii=False, sort_keys=True,
                                 separators=(',', ':'), allow_nan=False).encode('utf-8')
             snap['artifact_revision'] = hashlib.sha256(frozen).hexdigest()
-            bad = store._commit(document, good, {f'artifacts/1/{p}': b for p, b in altered.items()})
-            with self.assertRaises((StateError, CloudError)):
+            validate_snapshot_artifact(snap, altered, refresh_policy=pub.ledger['refresh_policy'],
+                instance='a' * 64, selection_validated_utc=NOW, require_selection_epoch=True)
+            bad = store._commit(document, before_prepare, {f'artifacts/1/{p}': b for p, b in altered.items()})
+            with self.assertRaises(CloudError) as cloud_rejected:
                 snapshot_files(store, bad, 1)
+            self.assertIsInstance(cloud_rejected.exception.__cause__, StateError)
+            self.assertIn('artifact does not bind durable generation/source/catalog/instance', str(cloud_rejected.exception.__cause__))
             store._git('push', f'--force-with-lease={STATE_REF}:{good}', str(remote), f'{bad}:{STATE_REF}')
             try:
-                with self.assertRaises(StateError):
+                with self.assertRaisesRegex(StateError, 'artifact does not bind durable generation/source/catalog/instance'):
                     Publisher(store, self.code)
                 self.assertEqual(bad, store._refs(STATE_REF)[STATE_REF])
             finally:
