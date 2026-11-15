@@ -72,6 +72,14 @@ firmware scheduling.
 captured context and rendered absent-operator/purpose markers. The null context
 mutation is applied after parsing and is a scene seam, not wire-admission proof.
 
+`build_fresh_crossvm.py` builds ordinary diagnostic `output/fresh-crossvm/CF8.prg`.
+Its first launch seeds and accepts a newer source-only validation; a subsequent
+direct `RunInstalled` open of the same UUID reads it without a push. Inventory
+the owned installed PRG/DAT/IDX before stopping and after reopen, and preserve
+the two process identities, explicit writer/reopen markers and raw exit codes.
+The program uses the real SDK Storage and current NativeCache in a diagnostic
+AppBase; it does not prove natural firmware scheduling or physical power loss.
+
 1. **Recorded-build source applicability:** `python3 -B tests/native_scene_diagnostics/verify_binding.py --public-root "$SCENE_PUBLIC"` compares the public production sources/resources, retained generated probe sources/resources, generators/drivers and A/B fixture bytes to the recorded build bindings. It does not inspect logs, run the simulator, or check an installed SDK. It requires the historical public base in the checkout ancestry. A mismatch or missing file invalidates the affected reuse; it is not repaired by updating a digest.
 2. **Installed runtime comparison:** add `--sdk-root "$SCENE_SDK_COPY" --image "$SCENE_IMAGE"` to the preceding command. This compares the compiler, simulator, profile, API/font inputs and image ID to the historical runtime. It does not execute the SDK. A different runtime requires affected requalification. The archived SDK digest is provenance, not a fresh archive check.
 3. **Fresh SDK replay:** run the isolated setup and relevant generator/package above, save new outputs and separately assess their actual outcomes. A fresh run is not verified by source applicability alone. The default host test suite does not install, invoke or require the SDK.
