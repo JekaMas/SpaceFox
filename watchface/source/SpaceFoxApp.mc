@@ -22,7 +22,7 @@ class SpaceFoxApp extends Application.AppBase {
 
     function getServiceDelegate() as [System.ServiceDelegate] {return [new FeedService()];}
     (:typecheck(disableBackgroundCheck))
-    function onBackgroundData(data as Application.PersistableType) as Void {if(view==null){return;}try{reloadFeed();}catch(e){}WatchUi.requestUpdate();}
+    function onBackgroundData(data as Application.PersistableType) as Void {if(view==null){return;}if(view.canAcceptBackground()){try{reloadFeed();}catch(e){}}WatchUi.requestUpdate();}
     (:typecheck(disableBackgroundCheck))
     function reloadFeed() as Void {
         if(restorePending){queueRestore();return;}NativeForegroundApp.reload(self);
@@ -37,9 +37,9 @@ class SpaceFoxApp extends Application.AppBase {
         var current=view;var mode=System.getDisplayMode();
         if(current==null){return;}
         current.syncDisplayMode(mode);
-        if(mode==System.DISPLAY_MODE_HIGH_POWER){if(restorePending){queueRestore();}else{current.prepareVisual();}}
+        if(mode==System.DISPLAY_MODE_HIGH_POWER && current.canForegroundWork()){if(restorePending){queueRestore();}else{current.prepareVisual();}}
         else if((mode==System.DISPLAY_MODE_LOW_POWER||mode==System.DISPLAY_MODE_OFF)&&restoreTimer!=null){restoreTimer.stop();restoreTimer=null;}
     }
     (:typecheck(disableBackgroundCheck))
-    function onSettingsChanged() as Void {if(view!=null){view.setSettings(new SceneSettings(null).load());reloadFeed();WatchUi.requestUpdate();}}
+    function onSettingsChanged() as Void {var current=view;if(current!=null){current.setSettings(new SceneSettings(null).load());if(current.canForegroundWork()){reloadFeed();}WatchUi.requestUpdate();}}
 }

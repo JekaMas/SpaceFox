@@ -158,7 +158,7 @@ than reuse another launch's context or invent a mission task.
 
 ### Requirement: UTC countdown and precision
 
-The watch SHALL recompute validated launch UTC minus current UTC on redraw and wake without connectivity, displaying `T- HH:MM:SS` before target and `T+ HH:MM:SS` at and after target, with accumulating hours. Validated nominal-minute targets use the same arithmetic without upgrading source precision. Missing target displays `--:--:--`; zero displays `00:00:00` without claiming liftoff. Sleep MUST NOT accumulate drift.
+The watch SHALL recompute validated launch UTC minus current UTC on redraw and wake without connectivity. Active displays `T- HH:MM:SS` before target and `T+ HH:MM:SS` at and after target, with accumulating hours. At each permitted minute snapshot, LOW displays `T- HH:MM` rounded up before target and `T+ HH:MM` rounded down at and after target; it need not repaint at a mid-minute target. Both use the same UTC delta. Validated nominal-minute targets use the same arithmetic without upgrading source precision. Missing target displays `--:--:--` active and `--:--` LOW; zero does not claim liftoff. Sleep MUST NOT accumulate drift.
 
 #### Scenario: Exact time available
 - **WHEN** an accepted launch has an exact UTC timestamp and the watch time zone changes
@@ -166,7 +166,7 @@ The watch SHALL recompute validated launch UTC minus current UTC on redraw and w
 
 #### Scenario: Date known but time uncertain
 - **WHEN** the provider gives only a date, coarse window or invalid/missing exact timestamp
-- **THEN** the watch displays `--:--:--`; a validated nominal-minute target may count to its nominal UTC without changing the source precision
+- **THEN** the watch displays the uncertainty marker appropriate to its mode; a validated nominal-minute target may count to its nominal UTC without changing the source precision
 
 #### Scenario: Offline countdown after sleep
 - **WHEN** the watch wakes after two hours asleep without connectivity and its cached exact launch is still in the future

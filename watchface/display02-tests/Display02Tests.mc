@@ -29,6 +29,7 @@ import Toybox.WatchUi;
     var h=delta/3600;var m=(delta-h*3600)/60;var s=delta-h*3600-m*60;
     return sign+h.format("%02d")+":"+m.format("%02d")+":"+s.format("%02d");
 }
+(:typecheck(false)) function displayLowOracle(target,now){var n=target-now;var future=n>0;var m=future?(n+59)/60:(-n)/60;return (future?"T- ":"T+ ")+(m/60).format("%02d")+":"+(m%60).format("%02d");}
 (:typecheck(false)) function displayPacket(id){return WatchUi.loadResource(id)["raw"];}
 (:test,:typecheck(false)) function displayEventSequence(logger){
     // Causal prerequisites and expected target are independent literals from
@@ -40,7 +41,7 @@ import Toybox.WatchUi;
     var view=new SpaceFoxView(clock,new ScheduleState(null,"empty"));view.setPacket(cache.packet);
     var drawing=new DisplayRecordingRenderer();drawing.prepare(view.context,view.settings);view.renderer=drawing;
     var frame=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get();var dc=frame.getDc();
-    var target=1794609900;var applied=0;var observed=0;var rejected=0;var expectedMode=0;
+    var target=1794609900;var applied=0;var observed=0;var rejected=0;var expectedMode=0;var awake=true;
     var events=[["time",target-176523],["drawHigh",0],["sleep",0],["sleep",0],["drawLow",0],["drawLow",0],["wake",0],["wake",0],["drawHigh",0],
                 ["time",target-59],["drawLow",0],["drawHigh",0],["time",target],["drawHigh",0],["drawLow",0],
                 ["time",target+901],["drawLow",0],["drawHigh",0],["reopen",0],["drawHigh",0],["move",0],["reject",0],["reopen",0],
@@ -49,13 +50,13 @@ import Toybox.WatchUi;
     for(var i=0;i<events.size();i+=1){
         var row=events[i];var event=row[0];var oldApplied=applied;var oldObserved=observed;var oldRejected=rejected;
         if(event.equals("time")){clock.now=row[1];applied+=1;}
-        else if(event.equals("sleep")){view.onEnterSleep();if(expectedMode==0){observed+=1;}else{applied+=1;}expectedMode=0;}
-        else if(event.equals("wake")){view.syncDisplayMode(System.DISPLAY_MODE_HIGH_POWER);if(expectedMode==1){observed+=1;}else{applied+=1;}expectedMode=1;}
+        else if(event.equals("sleep")){view.onEnterSleep();if(!awake&&expectedMode==0){observed+=1;}else{applied+=1;}awake=false;expectedMode=0;}
+        else if(event.equals("wake")){view.onExitSleep();if(awake&&expectedMode==1){observed+=1;}else{applied+=1;}awake=true;expectedMode=1;}
         else if(event.equals("move")){Test.assert(cache.accept(displayPacket(Rez.JsonData.DisplayMoved),clock.now));target=1794611100;view.setPacket(cache.packet);drawing.prepare(view.context,view.settings);applied+=1;}
         else if(event.equals("reject")){var writes=store.writes;Test.assert(!cache.accept(displayPacket(Rez.JsonData.DisplayInitial),clock.now));Test.assert(store.writes==writes);rejected+=1;}
         else if(event.equals("reopen")){cache=new NativeCache("https://fixture.invalid/display02",store);Test.assert(cache.load(clock.now)!=null);view.setPacket(cache.packet);drawing.prepare(view.context,view.settings);applied+=1;}
         else if(event.equals("off")){var a=drawing.activeCalls;var l=drawing.lowCalls;view.updateForDisplayMode(dc,System.DISPLAY_MODE_OFF);expectedMode=0;Test.assert(a==drawing.activeCalls&&l==drawing.lowCalls);observed+=1;}
-        else {var high=event.equals("drawHigh");var count=high?drawing.activeCalls:drawing.lowCalls;view.updateForDisplayMode(dc,high?System.DISPLAY_MODE_HIGH_POWER:System.DISPLAY_MODE_LOW_POWER);var after=high?drawing.activeCalls:drawing.lowCalls;expectedMode=high?1:0;if(after>count){Test.assertEqual(high?drawing.activeValue:drawing.lowValue,displayOracle(target,clock.now));applied+=1;}else{observed+=1;}}
+        else {var high=event.equals("drawHigh");expectedMode=high&&awake?1:0;var count=expectedMode==1?drawing.activeCalls:drawing.lowCalls;view.updateForDisplayMode(dc,high?System.DISPLAY_MODE_HIGH_POWER:System.DISPLAY_MODE_LOW_POWER);var after=expectedMode==1?drawing.activeCalls:drawing.lowCalls;if(after>count){Test.assertEqual(expectedMode==1?drawing.activeValue:drawing.lowValue,expectedMode==1?displayOracle(target,clock.now):displayLowOracle(target,clock.now));applied+=1;}else{observed+=1;}}
         Test.assertEqual(view.displayMode(),expectedMode);
         Test.assertEqual(view.snapshot().countdown,displayOracle(target,clock.now));
         var disposition=applied>oldApplied?"applied":observed>oldObserved||rejected>oldRejected?"observed_no_mutation":"skipped_precondition";
@@ -91,7 +92,7 @@ import Toybox.Test;
  var cache=new NativeCache("https://fixture.invalid/display-pair",store);Test.assert(cache.accept(displayPacket(Rez.JsonData.DisplayInitial),clock.now));
  var view=new SpaceFoxView(clock,new ScheduleState(null,"empty"));view.setPacket(cache.packet);var renderer=new DisplayRecordingRenderer();renderer.prepare(view.context,view.settings);view.renderer=renderer;
  var frame=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get();var target=1794609900;var times=[target-176523,target-59,target,target+1,target+901];
- for(var i=0;i<times.size();i+=1){clock.now=times[i];view.updateForDisplayMode(frame.getDc(),System.DISPLAY_MODE_HIGH_POWER);view.updateForDisplayMode(frame.getDc(),System.DISPLAY_MODE_LOW_POWER);var expected=displayOracle(target,clock.now);Test.assertEqual(renderer.activeValue,expected);Test.assertEqual(renderer.lowValue,expected);logger.debug("PAIR utc="+clock.now+" target="+target+" active="+renderer.activeValue+" low="+renderer.lowValue+" oracle="+expected);}
+ for(var i=0;i<times.size();i+=1){clock.now=times[i];view.updateForDisplayMode(frame.getDc(),System.DISPLAY_MODE_HIGH_POWER);view.updateForDisplayMode(frame.getDc(),System.DISPLAY_MODE_LOW_POWER);var expected=displayOracle(target,clock.now);Test.assertEqual(renderer.activeValue,expected);Test.assertEqual(renderer.lowValue,displayLowOracle(target,clock.now));logger.debug("PAIR utc="+clock.now+" target="+target+" active="+renderer.activeValue+" low="+renderer.lowValue+" oracle="+expected);}
  return true;
 }
 (:test,:typecheck(false)) function displayBatchRetry(logger){
@@ -109,6 +110,6 @@ import Toybox.Test;
  var cache=new NativeCache(base,store);var clock=new DisplayClock();Test.assert(cache.accept(displayPacket(Rez.JsonData.DisplayInitial),clock.now));var bridge=cache.packet.bridge;
  store.write("sf.batch.head",{"base"=>base,"pending"=>false,"catalogDigest"=>bridge["catalogDigest"],"transfer"=>bridge["transfer"],"serial"=>1});store.write("sf.batch.pending",{"base"=>base,"pending"=>false});
  Application.Properties.setValue("FeedBaseUrl",base);var app=new SpaceFoxApp();var view=new SpaceFoxView(clock,new ScheduleState(null,"empty"));app.view=view;app.feed=cache;view.setPacket(cache.packet);view.setAssetCache(new NativeRenderSource(store,base,bridge));view.pendingLoader=app.method(:reloadFeed);
- view.syncDisplayMode(System.DISPLAY_MODE_HIGH_POWER);view.onShow();Test.assert(view.sceneLifecycle.pending());Test.assert(view.sfrTimer!=null);view.onHide();Application.Properties.setValue("FeedBaseUrl","");
- logger.debug("HIGH_BEFORE_SHOW productionReloadWired=true completedBatch=true queued=true timer=true");return true;
+ view.syncDisplayMode(System.DISPLAY_MODE_HIGH_POWER);view.onShow();Test.assert(!view.sceneLifecycle.pending());Test.assert(view.sfrTimer==null);var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();view.onLayout(dc);view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assert(!view.canForegroundWork());view.onHide();Application.Properties.setValue("FeedBaseUrl","");
+ logger.debug("HIGH_BEFORE_SHOW productionReloadWired=true completedBatch=true deferredThroughFirstFrame=true");return true;
 }

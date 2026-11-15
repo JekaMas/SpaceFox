@@ -101,7 +101,7 @@ class ReleaseTest(unittest.TestCase):
         receipt = self.original
         self.assertEqual(receipt["application_uuid"], "955b26e54df04e069c23cd95f9df5f01")
         self.assertEqual(receipt["entry"], "SpaceFoxApp")
-        self.assertEqual(receipt["version"], "0.1.11")
+        self.assertEqual(receipt["version"], "0.1.12")
         self.assertEqual(receipt["products"], list(self.context["lock"]["profiles"]))
         self.assertEqual(receipt["languages"], ["eng", "rus", "deu", "fre", "spa"])
         self.assertFalse(receipt["official_release"])
@@ -125,7 +125,7 @@ class ReleaseTest(unittest.TestCase):
                               capture_output=True, check=True).stdout
         app = ET.fromstring(data).find("iq:application", NS)
         self.assertEqual(app.get("id"), "955b26e54df04e069c23cd95f9df5f01")
-        self.assertEqual(app.get("version"), "0.1.11")
+        self.assertEqual(app.get("version"), "0.1.12")
         self.assertIn("006-B4433-00", [x.get("partNumber") for x in app.findall("iq:products/iq:product", NS)])
         self.assertEqual([x.text for x in app.findall("iq:languages/iq:language", NS)], ["deu", "eng", "fre", "rus", "spa"])
         text = (self.base / "first/release.json").read_text()
@@ -219,7 +219,7 @@ class ReleaseTest(unittest.TestCase):
         app = ET.parse(self.root / "watchface/manifest.xml").getroot().find("iq:application", NS)
         app.set("id", self.original["application_uuid"])
         prior = dict(self.original, package_sha256="a" * 64)
-        for value in ("0.1.11", "0.1.12"):
+        for value in ("0.1.12", "0.1.13"):
             with self.subTest(previous=value), self.assertRaisesRegex(BuildBlocked, "strictly increase"):
                 release.validate_previous(dict(prior, version=value), app, self.fingerprint)
         for field in ("application_uuid", "public_key_spki_sha256"):

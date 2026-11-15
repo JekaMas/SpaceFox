@@ -1,0 +1,49 @@
+------------------------------------------------------------------------------
+Executing test display03MinuteRounding...
+DEBUG (09:34): MINUTE offset=-61 observed=T- 00:01:01 expected=T- 00:02
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x300001ba 
+  - display03MinuteRounding() at /Users/jekamas/projects/SpaceFox-worktrees/active-clock-wake-20261115/watchface/display03-tests/Display03Tests.mc:28 0x100043b3 
+  - evaluate_test_entries_0_to_3() at /Users/jekamas/.codex/tmp/spacefox-display03-author/mode-red/gen/006-B4432-00/source/UnitTests.mcgen:53 0x10008251 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-display03-author/mode-red/gen/006-B4432-00/source/UnitTests.mcgen:72 0x100082e3 
+ERROR
+------------------------------------------------------------------------------
+Executing test display03SleepThenHighObservation...
+DEBUG (09:34): SLEEP_QUERY_HIGH active=1 low=0 mode=1
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - display03SleepThenHighObservation() at /Users/jekamas/projects/SpaceFox-worktrees/active-clock-wake-20261115/watchface/display03-tests/Display03Tests.mc:43 0x10004d6e 
+  - evaluate_test_entries_0_to_3() at /Users/jekamas/.codex/tmp/spacefox-display03-author/mode-red/gen/006-B4432-00/source/UnitTests.mcgen:55 0x1000826c 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-display03-author/mode-red/gen/006-B4432-00/source/UnitTests.mcgen:72 0x100082e3 
+ERROR
+------------------------------------------------------------------------------
+Executing test display03WakeThenLowObservation...
+DEBUG (09:34): WAKE_QUERY_LOW active=0 low=1 mode=0
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - display03WakeThenLowObservation() at /Users/jekamas/projects/SpaceFox-worktrees/active-clock-wake-20261115/watchface/display03-tests/Display03Tests.mc:50 0x10002deb 
+  - evaluate_test_entries_0_to_3() at /Users/jekamas/.codex/tmp/spacefox-display03-author/mode-red/gen/006-B4432-00/source/UnitTests.mcgen:57 0x10008287 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-display03-author/mode-red/gen/006-B4432-00/source/UnitTests.mcgen:72 0x100082e3 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+display03MinuteRounding             ERROR
+display03SleepThenHighObservation   ERROR
+display03WakeThenLowObservation     ERROR
+Ran 3 tests
+
+FAILED (passed=0, failed=0, errors=3)

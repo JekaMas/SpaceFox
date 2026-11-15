@@ -120,7 +120,7 @@ battery, globe or projection choice remains.
 ### Requirement: Compact exceptional-state indicators
 
 The active home face SHALL omit a persistent update timestamp and service-status badges.
-A reschedule SHALL use an amber countdown; otherwise it SHALL use the selected
+A reschedule SHALL use a readable reddish countdown; otherwise it SHALL use the selected
 countdown color, mint by default. Unknown
 new time SHALL replace the precise countdown with an uncertainty label. Stale data
 SHALL add a dotted countdown underline, independently of rescheduling. No
@@ -132,7 +132,7 @@ exclamation or cloud-off badge SHALL occupy the face.
 
 #### Scenario: Reschedule and stale data coexist
 - **WHEN** a previously detected reschedule remains selected and its cached schedule becomes stale
-- **THEN** the countdown is amber with a dotted underline inside the circle, and the current-time color remains unchanged
+- **THEN** the countdown is reddish with a dotted underline inside the circle, and the current-time color remains unchanged
 
 ### Requirement: Short active-display launch animation
 
@@ -151,11 +151,15 @@ occurred merely because an animation played or the countdown reached zero.
 
 ### Requirement: Qualified AMOLED always-on display
 
-The AOD SHALL show centered readable time, localized current date and weekday, the numeric countdown or uncertainty, and watch battery, recomputed at most once per minute. Time and countdown SHALL use their configured active colors and identical status overrides. It SHALL meet lit-pixel and burn-in rules, omit the full map and animation, and stop active timers on sleep. Returning active restores the accepted composition and clock calculation. Reschedule and stale states remain distinguishable.
+The AOD SHALL show centered readable time, localized current date and weekday, the minute-only countdown or uncertainty, watch battery, a sparse matching map outline and the selected launch point. It SHALL omit the four configurable fields and animation, redraw at most once per minute even if callbacks arrive more often, and meet lit-pixel and burn-in rules. Time and countdown SHALL use their configured colors except for the reschedule override. Returning active restores the accepted composition and the same UTC calculation. Reschedule and stale states remain distinguishable.
 
 #### Scenario: Enter always-on mode
 - **WHEN** FR165 enters low-power always-on mode
-- **THEN** the sparse scene stays within the applicable 10-percent lit-pixel limit and device burn-in rules, timers stop and no full-screen map or launch animation remains lit; countdown retains seconds at each permitted minute snapshot without a per-second AOD redraw promise
+- **THEN** the sparse scene stays within the applicable 10-percent lit-pixel limit and device burn-in rules, active timers stop, the matching outline and point remain visible and the countdown shows minutes without seconds
+
+#### Scenario: Lifecycle and display notifications differ
+- **WHEN** the watch-face lifecycle is sleeping or the physical display mode is LOW
+- **THEN** the full active layout is not drawn; once the lifecycle is awake and the display permits HIGH, the next update draws the active cached scene before optional feed or artwork work
 
 #### Scenario: Wrist gestures disabled
 - **WHEN** the user disables wrist wake and keeps AOD enabled
@@ -229,13 +233,13 @@ exercise technical failures without fabricating display names.
 #### Scenario: Owner readability revision after physical first use
 - **WHEN** the active face draws known or unknown countdown data
 - **THEN** on a 390×390 display actual ink heights target at least 72px for time, 32px for field values, and 28px for countdown; measurements must expose any contradiction
-- **AND** unknown `--:--:--` uses the same persisted countdown palette and render style as the normal countdown; an actual reschedule independently retains its amber semantic override
+- **AND** unknown `--:--:--` uses the same persisted countdown palette and render style as the normal countdown; an actual reschedule independently retains its reddish semantic override
 - **AND** no standalone battery appears in active mode; battery is independently selectable in each of four fixed positions, with all six roles, circular fit, unmarked rocket and country-footer flag intact
 
 #### Scenario: Settings, AOD, and cached scene remain coherent
 - **WHEN** any field is selected through settings, including battery in field four, then settings change and the application restarts
 - **THEN** the exact role, icon, value and selected color persist and render in that field
-- **AND** the AOD time ink is centered within two pixels of the 390×390 display center and at least 96 pixels high; localized date and weekday and countdown including seconds at least 28 pixels high, and current system battery at least 32 pixels high remain visible, with countdown updated at minute cadence, including first entry into LOW and each permitted later minute within the applicable 10-percent lit-pixel and burn-in constraints
+- **AND** the AOD time ink is centered within two pixels of the 390×390 display center and at least 96 pixels high; localized date and weekday and the minute-only countdown at least 28 pixels high, and current system battery at least 32 pixels high remain visible, with countdown updated at minute cadence, including first entry into LOW and each permitted later minute within the applicable 10-percent lit-pixel and burn-in constraints
 - **AND** a transient update or partial staging failure retains the last accepted launch and compatible scene across restart, while validated new metadata can display before its matching optional artwork without relabeling old artwork
 
 #### Scenario: Identify the running installed build
@@ -244,9 +248,10 @@ exercise technical failures without fabricating display names.
 
 ### Requirement: Two display modes and one UTC countdown
 
-LOW and NOT_LOW SHALL be the only app-visible modes. HIGH selects NOT_LOW;
-LOW selects LOW; OFF stops drawing and active work while retaining LOW as the
-app state. Loading, errors, retries and asset readiness SHALL NOT choose a mode.
+LOW and NOT_LOW SHALL be the only app-visible modes. NOT_LOW requires both an
+awake watch-face lifecycle and a HIGH display; either a sleeping lifecycle or
+LOW display selects LOW. OFF stops drawing and active work while retaining LOW
+as the app state. Loading, errors, retries and asset readiness SHALL NOT choose a mode.
 The version belongs in settings, not on the face.
 
 #### Scenario: Draw arrives before the power callback
@@ -255,13 +260,13 @@ The version belongs in settings, not on the face.
 
 ### Requirement: Shared countdown snapshot
 
-A single selected-launch and UTC snapshot SHALL supply identical formatted
-countdown text to both renderers. LOW shows a permitted minute snapshot and
-wake recomputes from UTC.
+A single selected-launch and UTC delta SHALL supply both renderers. Active
+shows seconds; LOW shows a minute snapshot with future minutes rounded up and
+elapsed minutes rounded down. Wake recomputes from UTC.
 
 #### Scenario: Same target and UTC in either mode
 - **WHEN** the selected target and UTC are identical at both render boundaries
-- **THEN** the text is identical, with accumulating hours and seconds across zero
+- **THEN** each text reflects that same delta in its mode-specific format, with accumulating hours across zero
 
 ### Requirement: Continuous accepted scene across optional work
 

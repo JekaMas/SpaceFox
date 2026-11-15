@@ -1,0 +1,51 @@
+import Toybox.Graphics;
+import Toybox.Lang;
+import Toybox.System;
+import Toybox.Test;
+
+(:test,:typecheck(false)) class Display03Clock extends WatchClock {
+    var now=1794762690;
+    function initialize(){WatchClock.initialize();}
+    function utcSeconds(){return now;}
+    function localTimeText(){return "08:08";}
+}
+(:test,:typecheck(false)) class Display03Renderer extends SceneRenderer {
+    var lowText=null;
+    function initialize(){SceneRenderer.initialize(null);}
+    function aod(dc,current,minute,settings){lowText=current.countdown;}
+}
+(:test,:typecheck(false)) function display03MinuteRounding(logger){
+    // Captured Vulcan target, independent expected literals. Each case uses a
+    // fresh view to avoid the legitimate same-minute redraw suppression.
+    var target=1794762690;var offsets=[-61,-60,-59,-1,0,1,59,60,61];
+    var expected=["T- 00:02","T- 00:01","T- 00:01","T- 00:01","T+ 00:00","T+ 00:00","T+ 00:00","T+ 00:01","T+ 00:01"];
+    var bmp=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get();
+    for(var i=0;i<offsets.size();i+=1){
+        var clock=new Display03Clock();clock.now=target+offsets[i];
+        var view=new SpaceFoxView(clock,new ScheduleState(target,"exact"));var d=new Display03Renderer();view.renderer=d;
+        view.updateForDisplayMode(bmp.getDc(),System.DISPLAY_MODE_LOW_POWER);
+        logger.debug("MINUTE offset="+offsets[i]+" observed="+d.lowText+" expected="+expected[i]);
+        Test.assertEqual(d.lowText,expected[i]);
+    }
+    return true;
+}
+(:test,:typecheck(false)) class Display03ModeRenderer extends SceneRenderer {
+    var activeCalls=0;var lowCalls=0;
+    function initialize(){SceneRenderer.initialize(null);}
+    function active(dc,current,settings,values,fitness,progress){activeCalls+=1;}
+    function aod(dc,current,minute,settings){lowCalls+=1;}
+}
+(:test,:typecheck(false)) function display03SleepThenHighObservation(logger){
+    var c=new Display03Clock();var v=new SpaceFoxView(c,new ScheduleState(1794762690,"exact"));var d=new Display03ModeRenderer();v.renderer=d;
+    v.onEnterSleep();var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();
+    v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);
+    logger.debug("SLEEP_QUERY_HIGH active="+d.activeCalls+" low="+d.lowCalls+" mode="+v.displayMode());
+    Test.assert(d.activeCalls==0 && d.lowCalls==1);return true;
+}
+(:test,:typecheck(false)) function display03WakeThenLowObservation(logger){
+    var c=new Display03Clock();var v=new SpaceFoxView(c,new ScheduleState(1794762690,"exact"));var d=new Display03ModeRenderer();v.renderer=d;
+    v.onEnterSleep();v.onExitSleep();var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();
+    v.updateForDisplayMode(dc,System.DISPLAY_MODE_LOW_POWER);
+    logger.debug("WAKE_QUERY_LOW active="+d.activeCalls+" low="+d.lowCalls+" mode="+v.displayMode());
+    Test.assert(d.activeCalls==1 && d.lowCalls==0);return true;
+}
