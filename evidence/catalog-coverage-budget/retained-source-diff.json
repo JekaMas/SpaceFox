@@ -1,0 +1,37 @@
+{
+  "method": "Targeted Git source diffs, not historical rehash/replay. Exact immutable baseline objects already present locally; no network fetch.",
+  "metadata": {
+    "reviewedProductionSource": "4cb6f75fea214a151c7d0fac458ef161ac404411",
+    "reviewedTests": "edd694b4db8871691c8341999f85d5a73eb48eac",
+    "unchanged": [
+      "tools/spacefox/catalog_refresh.py",
+      "tools/spacefox/publisher.py",
+      "tools/spacefox/provider.py",
+      "tools/spacefox/schedule.py",
+      "tests/test_current_metadata_publisher.py",
+      "tests/fixtures/metadata-current/**",
+      "tests/test_metadata_page_policy.py",
+      "tests/test_metadata_preflight.py"
+    ],
+    "applicability": "Retain raw complete33-page traversal, URL-scoped304/ETag/Date-Age, duplicate/count/refusal/recovery and shared quota source guards at their original controlled HTTP/local Git/CLI boundary."
+  },
+  "selectedNativeData": {
+    "reviewedSource": "e705dc0b2b3d734c17caa64ab029994e08bf8592",
+    "unchanged": [
+      "tools/spacefox/native_motion.py",
+      "tools/spacefox/catalog.py",
+      "tests/test_native_data_selected_growth.py",
+      "watchface/source/NativeFeed.mc",
+      "watchface/source/NativeBridgeFeed.mc",
+      "watchface/source/NativeCache.mc",
+      "watchface/source/NativeStore.mc",
+      "watchface/source/NativeBatch.mc",
+      "watchface/source/NativeForegroundCache.mc",
+      "watchface/source/NativeSfr.mc",
+      "watchface/source/NativeImmutable.mc"
+    ],
+    "changedFile": "tools/spacefox/current_catalog.py",
+    "exactChange": "Only appended46-line schedule_catalog_review host diagnostic function. Existing current_view/view_for_schedule selection paths unchanged. New group tests exercise appended diagnostic for unknown/generic actual event cases.",
+    "applicability": "Retain selected18-object/native bounded-index/cache protection and real unselected asset-growth observations under original limits; no current SDK replay or ordinary/physical resource claim."
+  }
+}
