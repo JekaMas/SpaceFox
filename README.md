@@ -25,7 +25,7 @@ A delayed or rescheduled launch uses a reddish countdown; stale data has a separ
 
 English and `https://jekamas.github.io/SpaceFox` are defaults. English, Russian, German, French and Spanish are the five primary software-supported languages; Auto is also available. Other retained internal translations are best effort.
 
-The watch calculates the countdown locally and keeps the accepted schedule offline. New schedules and artwork arrive through Garmin Connect on the paired phone. Failed requests retain accepted launch data. The public [feed](https://jekamas.github.io/SpaceFox/feed.json) is maintained by GitHub Actions with an independent Cloudflare timer; it does not need an agent or computer to stay running. No AWS account, subscription or SpaceFox login is required.
+The watch calculates the countdown locally and keeps accepted launch data offline. The upcoming repair also preloads a bounded set of upcoming launches so the face can advance locally at the retention deadline. New schedules and artwork arrive through Garmin Connect on the paired phone. Failed requests retain accepted launch data. The public [feed](https://jekamas.github.io/SpaceFox/feed.json) is maintained by GitHub Actions with an independent Cloudflare timer; it does not need an agent or computer to stay running. No AWS account, subscription or SpaceFox login is required.
 
 See [installation](release/INSTALLATION.md), [supported watches](docs/SUPPORTED_DEVICES.md), [settings and testing](TESTING.md), and [permissions and privacy](docs/PRIVACY.md). Use the existing SpaceFox Connect IQ listing for updates. USB installation uses the PRG matching the watch model; IQ is the Store export, not a file to open on a phone.
 

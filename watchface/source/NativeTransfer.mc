@@ -2,7 +2,7 @@ import Toybox.Lang;
 import Toybox.StringUtil;
 // Raw provisional transfer only. This class never creates an accepted feed,
 // publisher floor, source epoch, or active visual pointer.
-(:background, :typecheck(false))
+(:background, :extendedCode, :typecheck(false))
 class NativeTransfer {
     var store;var base;var lastAttempt=null;
     function initialize(url,adapter){base=normalize(url);store=adapter==null?new NativeStore():adapter;}
@@ -17,12 +17,15 @@ class NativeTransfer {
         // A first-install failure must not defer the next attempt for an hour.
         // Accepted content retains its existing feed-driven cadence.
         var ready=store.read("sf.transfer.ready");if(!(ready instanceof Dictionary)||!(ready["base"] instanceof String)||!ready["base"].equals(base)||ready["accepted"]!=true){return 300;}
-        var plan=store.read("sf.transfer.plan");if(!(plan instanceof Dictionary)||!(plan["base"] instanceof String)||!plan["base"].equals(base)){return 3600;}var p=plan["policy"];if(!(p instanceof Array)||p.size()!=3){return 3600;}for(var i=0;i<3;i+=1){if(p[i]!=null&&(!(p[i] instanceof Number||p[i] instanceof Long)||p[i]<300)){return 3600;}}if(p[0]==null||p[1]==null||p[1]>p[0]||p[2]!=null&&p[2]>p[1]){return 3600;}if(p[2]!=null){return p[2];}var target=plan["target"];return utc(target)&&now>=target-7200&&now<=target+1800?p[1]:p[0];
+        var plan=store.read("sf.transfer.plan");if(!(plan instanceof Dictionary)||!(plan["base"] instanceof String)||!plan["base"].equals(base)){return 3600;}var p=plan["policy"];if(!(p instanceof Array)||p.size()!=3){return 3600;}for(var i=0;i<3;i+=1){if(p[i]!=null&&(!(p[i] instanceof Number||p[i] instanceof Long)||p[i]<300)){return 3600;}}if(p[0]==null||p[1]==null||p[1]>p[0]||p[2]!=null&&p[2]>p[1]){return 3600;}if(p[2]!=null){return p[2];}var targets=planTargets(plan);for(var t=0;t<targets.size();t+=1){var target=targets[t];if(now>=target-7200&&now<=target+1800){return p[1];}}return p[0];
     }
+    // Earlier-format saved plans have only target; new plans include the two
+    // validated preloaded targets so their near windows can wake in time.
+    function planTargets(plan){var targets=plan["targets"];if(targets instanceof Array&&targets.size()<=3){for(var i=0;i<targets.size();i+=1){if(!utc(targets[i])){return [];}}return targets;}var target=plan["target"];return utc(target)?[target]:[];}
     function due(now){return !base.equals("")&&(lastAttempt==null||now<lastAttempt||now-lastAttempt>=interval(now));}
     function attempted(now){lastAttempt=now.toLong();store.write("sf.attempt",{"base"=>base,"utc"=>lastAttempt,"build"=>NativeVersion.BUILD});}
     function nextWake(now){
-        var cadence=interval(now);var remaining=lastAttempt==null||now<lastAttempt?0:cadence-(now-lastAttempt);var next=remaining<=0?now:now+(remaining>86400?86400:remaining);var p=store.read("sf.transfer.plan");if(p instanceof Dictionary&&p["base"] instanceof String&&p["base"].equals(base)&&utc(p["target"])){var start=p["target"]-7200;var end=p["target"]+1801;if(now<start&&next>start){next=start;}else if(now<end&&next>end){next=end;}}return next;
+        var cadence=interval(now);var remaining=lastAttempt==null||now<lastAttempt?0:cadence-(now-lastAttempt);var next=remaining<=0?now:now+(remaining>86400?86400:remaining);var p=store.read("sf.transfer.plan");if(p instanceof Dictionary&&p["base"] instanceof String&&p["base"].equals(base)){var targets=planTargets(p);for(var i=0;i<targets.size();i+=1){var start=targets[i]-7200;var end=targets[i]+1801;if(now<start&&next>start){next=start;}if(now<end&&next>end){next=end;}}}return next;
     }
     function stage(kind,raw,request){
         var limit=kind.equals("feed")?8192:4096;if(!(raw instanceof String)||raw.length()>limit){return false;}var hash=new NativeWireHash();hash.put(raw);var sha=hash.digest();if(hash.count>limit){return false;}if(kind.equals("object")&&(!nativeHex(request["sha256"])||!sha.equals(request["sha256"])||hash.count!=request["decodedBytes"])){return false;}

@@ -1,0 +1,19 @@
+import Toybox.Lang;
+import Toybox.Test;
+import Toybox.WatchUi;
+(:background,:typecheck(false)) class SfrRuntimeApp extends SpaceFoxApp {function initialize(){SpaceFoxApp.initialize();}}
+(:test,:typecheck(false)) class RolloverStore {
+ var data;var values={};var writes=0;var reads=0;
+ function initialize(d){data=d;}
+ function read(key){reads+=1;return key.equals("sf.obj."+data["catalogDigest"])?data["catalog"]:values[key];}
+ function write(key,v){writes+=1;values[key]=v;}
+ function remove(key){writes+=1;values.remove(key);}
+}
+(:test,:typecheck(false)) class RolloverClock extends WatchClock {var now=1794576343;function utcSeconds(){return now;}function localTimeText(){return "21:11";}}
+(:test,:typecheck(false)) function rolloverOffline(logger as Test.Logger) as Boolean {
+ var data=WatchUi.loadResource(Rez.JsonData.RolloverPackets);var store=new RolloverStore(data);var clock=new RolloverClock();var cache=new NativeCache("https://fixture.invalid",store);
+ Test.assert(cache.accept(data["feed"],clock.now));var v=new SpaceFoxView(clock,new ScheduleState(null,"empty"));v.setPacket(cache.packet);var target=data["target"];
+ clock.now=target+899;var before=v.snapshotAt(clock.now);Test.assert(v.context.launchId.equals("ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a"));Test.assert(before.countdown.equals("T+ 00:14:59"));var writes=store.writes;var reads=store.reads;
+ clock.now=target+900;var after=v.snapshotAt(clock.now);logger.debug("observed id="+(v.context==null?"none":v.context.launchId)+" rocket="+(v.context==null?"none":v.context.rocket)+" point="+(v.context!=null&&v.context.point!=null)+" countdown="+after.countdown+" low="+after.lowCountdown);Test.assert(v.context.launchId.equals("ll2:launch:0f867f0c-5422-4d44-93b8-d7faaae7019b"));Test.assert(v.context.rocket.equals("Starship V3"));Test.assert(v.context.site.find("Starbase")!=null);Test.assert(v.context.point!=null);Test.assert(v.downloaded==null);Test.assert(after.countdown.equals("T- 01:25:00"));Test.assert(after.lowCountdown.equals("T- 01:25"));Test.assert(store.writes==writes&&store.reads==reads);
+ var reopened=new NativeCache("https://fixture.invalid",store);Test.assert(reopened.load(clock.now)!=null);var v2=new SpaceFoxView(clock,new ScheduleState(null,"empty"));v2.setPacket(reopened.packet);var again=v2.snapshotAt(clock.now);Test.assert(v2.context.launchId.equals(v.context.launchId));Test.assert(again.countdown.equals(after.countdown));logger.debug("offline identity="+v.context.launchId+" site="+v.context.site+" countdown="+after.countdown+" writesOnTick="+(store.writes-writes));return true;
+}

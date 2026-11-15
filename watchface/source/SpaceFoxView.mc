@@ -32,6 +32,8 @@ class SpaceFoxView extends WatchUi.WatchFace {
     var settings as SceneSettings;
     var context as SceneContext or Null;var visualKey as Array or Null=null;
     var packet as NativeFeed or Null=null;
+    var upcoming as Array = [];
+    var passedSelections as Array = [];
     var downloaded as NativeVisualRenderer or Null=null;
     var assetCache as NativeRenderSource or Null=null;
     var sfrBuild as NativeSfrBuild or Null=null;var sfrTimer as Timer.Timer or Null=null;
@@ -106,12 +108,49 @@ class SpaceFoxView extends WatchUi.WatchFace {
     }
     function stopFitness() as Void {if(fitnessTimer!=null){fitnessTimer.stop();fitnessTimer=null;}bodyBattery.stop();fitness.currentBodyBattery=null;values["energy"]=null;}
     function snapshotAt(now as Number or Long) as ClockSnapshot {
+        advanceSelection(now);
+        if(context!=null){context.advanceFreshness(now);}
         var remaining=_schedule.remainingSeconds(now);
         var current=new ClockSnapshot(_clock.localTimeText(),CountdownFormat.format(remaining));
         current.lowCountdown=CountdownFormat.minutes(remaining);
         current.date=context==null?null:context.date;current.localCalendar=_clock.localCalendar();current.battery=fitness.display(values,"battery");
         if(context!=null){current.stale=context.stale;current.rescheduled=context.rescheduled;current.sourceHold=context.sourceHold;}
         return current;
+    }
+    // Selection transitions happen on a permitted frame, never by polling or
+    // storage work on every countdown tick. A successor can replace this
+    // waiting state only through a validated, source-bound admission.
+    (:extendedCode) function resetRollover() as Void {passedSelections=[];}
+    (:typecheck(false)) function selectionPassed(scene) {
+        if(scene==null||scene.retentionDeadline==null||scene.retentionTarget==null){return false;}
+        for(var i=0;i<passedSelections.size();i+=1){var row=passedSelections[i];if(row[0].equals(scene.launchId)&&row[1]==scene.retentionTarget&&row[2]==scene.retentionDeadline){return true;}}
+        return false;
+    }
+    (:typecheck(false)) function advanceSelection(now as Number or Long) as Void {
+        if(context==null||context.retentionDeadline==null){return;}
+        if(now.toLong()<context.retentionDeadline&&!selectionPassed(context)){return;}
+        resolveSelection(now);
+    }
+    (:extendedCode,:typecheck(false)) function resolveSelection(now as Number or Long) as Void {
+        var next=context;var changed=false;
+        while(next!=null&&next.retentionDeadline!=null&&(selectionPassed(next)||now.toLong()>=next.retentionDeadline)){
+            if(!selectionPassed(next)){passedSelections.add([next.launchId,next.retentionTarget,next.retentionDeadline]);if(passedSelections.size()>3){passedSelections=passedSelections.slice(passedSelections.size()-3,passedSelections.size());}}
+            changed=true;next=null;if(upcoming.size()>0){next=upcoming[0];upcoming=upcoming.slice(1,upcoming.size());}
+        }
+        if(!changed){return;}
+        // The packet's bitmap/transfer belong to the old identity. A successor
+        // starts with its own bundled fallback until its source update arrives.
+        packet=null;assetCache=null;setContext(next);
+    }
+    (:extendedCode,:typecheck(false)) function queueSnapshots(){var rows=[];if(context!=null){rows.add(context);}for(var i=0;i<upcoming.size();i+=1){rows.add(upcoming[i]);}return rows;}
+    (:extendedCode,:typecheck(false)) function earlier(a,b){if(a.orderingUtc==null){return b.orderingUtc==null&&a.launchId.compareTo(b.launchId)<0;}if(b.orderingUtc==null){return true;}return a.orderingUtc==b.orderingUtc?a.launchId.compareTo(b.launchId)<0:a.orderingUtc<b.orderingUtc;}
+    (:extendedCode,:typecheck(false)) function mergeSaved(saved,now,terminal) as Void {
+        var rows=queueSnapshots();
+        for(var i=0;i<saved.size();i+=1){var candidate=saved[i];var removed=false;for(var t=0;t<terminal.size();t+=1){if(terminal[t]["launch_id"].equals(candidate.launchId)&&terminal[t]["source_validated_utc"]>candidate.sourceValidated){removed=true;break;}}if(removed){continue;}var index=-1;for(var j=0;j<rows.size();j+=1){if(rows[j].launchId.equals(candidate.launchId)){index=j;break;}}
+            if(index<0){rows.add(candidate);}else if(candidate.sourceValidated>rows[index].sourceValidated){rows[index]=candidate;}}
+        var ordered=[];for(var k=0;k<rows.size();k+=1){var row=rows[k];if(selectionPassed(row)||row.retentionDeadline!=null&&now>=row.retentionDeadline){continue;}var inserted=false;var list=[];for(var n=0;n<ordered.size();n+=1){if(!inserted&&earlier(row,ordered[n])){list.add(row);inserted=true;}list.add(ordered[n]);}if(!inserted){list.add(row);}ordered=list;}
+        var selected=ordered.size()==0?null:ordered[0];upcoming=[];for(var q=1;q<ordered.size()&&q<3;q+=1){upcoming.add(ordered[q]);}
+        if(selected!=context){packet=null;assetCache=null;setContext(selected);}
     }
     function snapshot() as ClockSnapshot {return snapshotAt(_clock.utcSeconds());}
     (:extendedCode)
@@ -127,6 +166,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     (:extendedCode, :typecheck(false))
     function setPacket(next) as Void {
         var key=packetVisualKey(next);
+        upcoming=next!=null && next.upcomingScenes instanceof Array?next.upcomingScenes.slice(0,next.upcomingScenes.size()):[];
         var sameVisual=key!=null && nativeSame(visualKey,key);
         var retained=downloaded instanceof NativeSfrRenderer&&sameVisual&&downloaded.selectionHash.equals(key[0])?downloaded:null;
         // An accepted same-identity refresh can update schedule metadata while
@@ -139,14 +179,15 @@ class SpaceFoxView extends WatchUi.WatchFace {
             packet=next;var refreshed=feedScene(packet,_clock.utcSeconds());
             if(refreshed!=null && refreshed.launchId.equals("")){refreshed=null;}
             context=refreshed;_schedule=refreshed==null?new ScheduleState(null,"empty"):refreshed.schedule;
+            upcoming=next.upcomingScenes instanceof Array?next.upcomingScenes.slice(0,next.upcomingScenes.size()):[];
             downloaded=retained;if(renderer!=null){renderer.prepare(context,settings);renderer.downloaded=downloaded;}
-            packet.compact();return;
+            packet.compact();advanceSelection(_clock.utcSeconds());return;
         }
         packet=next;downloaded=null;assetCache=null;
-        setContext(feedScene(packet,_clock.utcSeconds()));visualKey=key;downloaded=retained;
+        setContext(feedScene(packet,_clock.utcSeconds()));upcoming=packet!=null && packet.upcomingScenes instanceof Array?packet.upcomingScenes.slice(0,packet.upcomingScenes.size()):[];visualKey=key;downloaded=retained;
         if(retained!=null){sceneLifecycle.bindReady();}
         if(renderer!=null){renderer.downloaded=downloaded;}
-        if(packet!=null){packet.compact();}
+        if(packet!=null){packet.compact();}advanceSelection(_clock.utcSeconds());
     }
     (:typecheck(false)) function setAssetCache(cache as NativeRenderSource) as Void {
         var newlyReady=cache.ready && (assetCache==null || !assetCache.ready || assetCache.serial!=cache.serial);

@@ -1,0 +1,49 @@
+------------------------------------------------------------------------------
+Executing test queueSequence...
+
+Error: Stack Overflow Error
+Details: Failed invoking <symbol>
+Stack: 
+  - need() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeJson.mc:35 0x50001010 
+  - string() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeJson.mc:67 0x5000059c 
+  - object() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeJson.mc:41 0x500014bf 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeJson.mc:37 0x50000f62 
+  - object() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeJson.mc:41 0x500015ad 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeJson.mc:37 0x50000f62 
+  - object() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeJson.mc:41 0x500015ad 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeJson.mc:37 0x50000f62 
+  - list() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeJson.mc:44 0x5000121a 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeJson.mc:37 0x50000f7e 
+  - object() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeJson.mc:41 0x500015ad 
+  - read() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeJson.mc:37 0x50000f62 
+  - parse() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeJson.mc:25 0x5000115c 
+  - parse() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeFeed.mc:17 0x50008864 
+  - parse() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeBridgeFeed.mc:24 0x5000e960 
+  - initialize() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeFeed.mc:6 0x500088e3 
+  - initialize() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeBridgeFeed.mc:18 0x5000ef89 
+  - parseFeed() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeForegroundCache.mc:7 0x5000e147 
+  - readCommit() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeForegroundCache.mc:14 0x5000de2b 
+  - restoreAccepted() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeCache.mc:64 0x5000457e 
+  - queueAdmit() at /Users/jekamas/.codex/tmp/spacefox-rollover017-red/queue/Probe.mc:8 0x10002be7 
+  - queueSequence() at /Users/jekamas/.codex/tmp/spacefox-rollover017-red/queue/Probe.mc:12 0x10005228 
+  - evaluate_test_entries_0_to_3() at /Users/jekamas/.codex/tmp/spacefox-rollover017-red/queue/gen/006-B4432-00/source/UnitTests.mcgen:53 0x10008a5e 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-rollover017-red/queue/gen/006-B4432-00/source/UnitTests.mcgen:72 0x10008af0 
+ERROR
+------------------------------------------------------------------------------
+Executing test successorNearWake...
+DEBUG (00:42): successor near window advanced wake by 3500s under unchanged policy; old plan remains accepted
+PASS
+------------------------------------------------------------------------------
+Executing test forwardJumpAndPending...
+DEBUG (00:42): Vulcan -> Falcon/Vandenberg -> Starship/Starbase; old asset job cancelled; forward jump and exhaustion; tick IO=0
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+queueSequence                       ERROR
+successorNearWake                   PASS
+forwardJumpAndPending               PASS
+Ran 3 tests
+
+FAILED (passed=2, failed=0, errors=1)

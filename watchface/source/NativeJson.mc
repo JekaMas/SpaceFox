@@ -52,6 +52,8 @@ class NativeJson {
             if(key.length()<5||!key.substring(key.length()-5,key.length()).equals("/name")){return value;}
             if(!keepCatalogNames){return null;}return value;
         }
+        // Successor rows use the same normalized launch text projection.
+        if(key.find("/upcoming/")==0){key="/launch"+key.substring(9,key.length());}
         if(key.find("/launch/")!=0){return value;}
         if(!nativeNormalizedEdges(value)){fail();}
         var unused=["/launch/mission_name","/launch/source_status_name","/launch/timing/source_precision_name","/launch/timing/source_precision_abbrev","/launch/timing/source_precision_description"];
@@ -62,7 +64,7 @@ class NativeJson {
     function literal(text){if(index+text.length()>source.length() || !source.substring(index,index+text.length()).equals(text)){fail();}index+=text.length();}
     function hex4(){var n=0;for(var i=0;i<4;i+=1){var c=peek().toLower();var v="0123456789abcdef".find(c);if(c.equals("")||v==null){fail();}n=n*16+v;index+=1;}return n;}
     function string(){
-        need("\"");var result="";var start=index;var normalized=feedMode&&(path.find("/launch/")==0||path.equals("/dictionaries")||path.equals("/unresolvedCatalogIds"));
+        need("\"");var result="";var start=index;var normalized=feedMode&&(path.find("/launch/")==0||path.find("/upcoming/")==0||path.equals("/dictionaries")||path.equals("/unresolvedCatalogIds"));
         while(index<source.length()){
             var end=index+128;if(end>source.length()){end=source.length();}var piece=source.substring(index,end);var quote=piece.find("\"");var slash=piece.find("\\");var stop=piece.length();
             if(quote!=null&&quote<stop){stop=quote;}if(slash!=null&&slash<stop){stop=slash;}

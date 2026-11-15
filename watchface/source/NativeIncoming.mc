@@ -21,7 +21,7 @@ class NativeIncoming {
         needsRestore=false;restoreSeal=cache.commit instanceof Dictionary?cache.commit["seal"]:null;
         var pending=store.read("sf.incoming.feed");var done=store.read("sf.incoming.feed.processed");if(!(pending instanceof Dictionary)||cache.packet!=null&&pending["sha256"] instanceof String&&done instanceof String&&token(pending).equals(done)){return false;}
         var commitKey=cache.commitKey;cache.releaseForTransfer(now);var accepted=false;
-        var row=null;try{row=read("feed",cache.packet==null);if(row!=null&&row[0]["kind"] instanceof String&&row[0]["kind"].equals("feed")){accepted=cache.accept(takeRaw(row),now);if(accepted||!cache.failure.equals("admission-retry")){processed("feed",row[0]);}}}catch(e){}
+        var row=null;try{row=read("feed",cache.packet==null);if(row!=null&&row[0]["kind"] instanceof String&&row[0]["kind"].equals("feed")){cache.queueView=view;try{accepted=cache.accept(takeRaw(row),now);}finally{cache.queueView=null;}if(accepted||!cache.failure.equals("admission-retry")){processed("feed",row[0]);}}}catch(e){}
         row=null;pending=null;done=null;
         // A failed promotion restores the FULL durable feed under loaded UI
         // residency. Release reconstructible view state before strict old8KiB

@@ -334,7 +334,7 @@ def missing_detail_throttled(failure_status=429):
 
 
 class ScheduleProducerTransportTest(unittest.TestCase):
-    def test_publisher_reports_upcoming_catalog_gaps_without_feed_expansion(self):
+    def test_publisher_reports_upcoming_catalog_gaps_with_bounded_metadata(self):
         import io
         import os
         from contextlib import redirect_stdout
@@ -467,8 +467,16 @@ class ScheduleProducerTransportTest(unittest.TestCase):
         self.assertEqual(one_feed['visualSelection'], many_feed['visualSelection'])
         self.assertEqual(one_feed['nativeTransfer'], many_feed['nativeTransfer'])
         self.assertEqual(one_feed['catalogDigest'], many_feed['catalogDigest'])
-        self.assertEqual({k: v for k, v in one.items() if k not in ('feed.json', 'feed.json.txt')},
-                         {k: v for k, v in many.items() if k not in ('feed.json', 'feed.json.txt')})
+        # Selected watch visual transport stays exactly unchanged. Additional
+        # immutable source proofs bind only the new successor site metadata.
+        from tools.spacefox.native_motion import native_transport_paths
+        first_paths = native_transport_paths(one) - {'feed.json'}
+        self.assertEqual(first_paths, native_transport_paths(many) - {'feed.json'})
+        self.assertEqual({k: one[k] for k in first_paths}, {k: many[k] for k in first_paths})
+        extra = {row['siteSource']['path'] for row in many_feed['upcoming']
+                 if 'terminal' not in row and row['siteSource'] is not None} - set(one)
+        self.assertEqual(set(many) - set(one), extra)
+        self.assertFalse(set(one) - set(many))
         self.assertEqual(one['feed.json.txt'], one['feed.json'])
         self.assertEqual(many['feed.json.txt'], many['feed.json'])
         self.assertEqual(many_feed['selection']['acceptedRecords'], 4)

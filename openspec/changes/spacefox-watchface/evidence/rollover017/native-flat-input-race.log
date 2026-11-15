@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/tmp/spacefox-rollover-queue-build.py", line 38, in <module>
+    r=build_probe(out,source,group='rollover-queue',tests=True,probe_resources=resources)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/tools/native_full_visual_runtime.py", line 54, in build_probe
+    if hashlib.sha256(raw).hexdigest()!=expected:raise RuntimeError('production source changed during compile: '+relative)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: production source changed during compile: watchface/source/NativeCache.mc

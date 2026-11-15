@@ -24,7 +24,7 @@ class NativePrior {
 // not this class; clock/renderer arithmetic remains resident.
 (:extendedCode, :typecheck(false))
 class NativeCacheCore {
-    var store;var base;var pinKey;var packet=null;var commit=null;var lastAttempt=null;var failure="";var backgroundMode=true;var requestWake=null;var commitKey="sf.commit";var detached=false;
+    var store;var base;var pinKey;var queueView=null;var packet=null;var commit=null;var lastAttempt=null;var failure="";var backgroundMode=true;var requestWake=null;var commitKey="sf.commit";var detached=false;
     function initialize(url,adapter){base=normalize(url);pinKey="sf.pin."+rawHash(base);store=adapter==null?new NativeStore():adapter;}
     function normalize(value){
         if(!(value instanceof String)||value.length()<9||value.length()>240||!value.substring(0,8).equals("https://")){return "";}
@@ -115,6 +115,9 @@ class NativeCacheCore {
             // Every chunk has completed write/readback; commit verification needs
             // only the compact candidate and immutable raw hash from this point.
             raw=null;
+            // The old source-bound queue is committed before the feed pointer
+            // changes; any failure leaves the accepted feed and recovery intact.
+            if(queueView!=null&&packet!=null){new NativeUpcomingCache(store,base,pub["instance"]).save(queueView.queueSnapshots());}
             rememberPublisher(pub,candidate.wireHash);if(commit!=null){store.write("sf.recovery",detached?store.read(commitKey):commit);}store.write("sf.commit",marker);var observed=store.read("sf.commit");if(!(observed instanceof Dictionary)||!(observed["seal"] instanceof String)||!observed["seal"].equals(marker["seal"])||!seal(observed).equals(marker["seal"])){throw new Lang.InvalidValueException("Commit readback mismatch");}
             commit=backgroundMode?marker:detachedCommit(marker);packet=candidate;commitKey="sf.commit";detached=!backgroundMode;requestWake=null;failure="";return true;
         }catch(e){var message=e.getErrorMessage();failure=operation.equals("lookup")||operation.equals("persist")||message.equals("Bridge catalog incomplete")?"admission-retry":"update-rejected";return false;}

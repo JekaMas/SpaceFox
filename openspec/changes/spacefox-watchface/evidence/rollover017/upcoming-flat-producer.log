@@ -1,0 +1,52 @@
+{
+  "target": 1794577543,
+  "feedBytes": 3477,
+  "feedSha256": "181ff02e0fc02f8f4223d18e14c49f130b2fe7446748919b10fb043902a83950",
+  "upcoming": [
+    {
+      "configuration_id": "ll2:configuration:522",
+      "configuration_name": "Starship V3",
+      "country_code": "US",
+      "country_id": "ll2:country:2",
+      "country_name": "United States of America",
+      "launch_id": "ll2:launch:0f867f0c-5422-4d44-93b8-d7faaae7019b",
+      "mission_name": "Starlink Group 31-2 (Starship Flight 15)",
+      "mission_purpose": "Communications",
+      "operator_abbrev": "SpX",
+      "operator_id": "ll2:organization:121",
+      "operator_name": "SpaceX",
+      "rescheduled": false,
+      "sitePosition": {
+        "encoding": "decimal-text-v1",
+        "latitude": "25.99677",
+        "longitude": "-97.15799",
+        "qualification": "unverified-reference",
+        "units": "degrees"
+      },
+      "siteSource": {
+        "decodedBytes": 4250,
+        "path": "sources/5eb227d6f3bdac45426c076ac33ace97cd9d23ff45804a325e16dbc1a74b54b6.json",
+        "sha256": "5eb227d6f3bdac45426c076ac33ace97cd9d23ff45804a325e16dbc1a74b54b6"
+      },
+      "site_id": "ll2:site:235",
+      "site_location_name": "SpaceX Starbase, TX, USA",
+      "site_name": "Orbital Launch Pad 2",
+      "source_status_id": 8,
+      "source_status_name": "To Be Confirmed",
+      "source_updated_iso": "2026-11-10T22:06:46Z",
+      "source_updated_utc": 1794348406,
+      "source_validated_utc": 1794576343,
+      "stale": false,
+      "status": "pending",
+      "timing": {
+        "date_utc": null,
+        "exact_utc": 1794583543,
+        "precision": "exact",
+        "window_end_utc": null,
+        "window_start_utc": null
+      }
+    }
+  ],
+  "files": 114,
+  "artifactBytes": 656460
+}

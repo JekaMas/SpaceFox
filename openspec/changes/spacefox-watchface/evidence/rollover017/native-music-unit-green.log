@@ -1,0 +1,32 @@
+------------------------------------------------------------------------------
+Executing test queueSequence...
+DEBUG (00:51): typed dispositions verified={omission:applied=>2, empty:applied=>1, restart:observed_no_mutation=>2, post_terminal:applied=>1, failed_accept:observed_no_mutation=>1, terminal:applied=>1, stale:observed_no_mutation=>1} queueBytes=746 writes=85
+PASS
+------------------------------------------------------------------------------
+Executing test successorNearWake...
+DEBUG (00:51): successor near window advanced wake by 3500s under unchanged policy; old plan remains accepted
+PASS
+------------------------------------------------------------------------------
+Executing test forwardJumpAndPending...
+DEBUG (00:51): Vulcan -> Falcon/Vandenberg -> Starship/Starbase; old asset job cancelled; forward jump and exhaustion; tick IO=0
+PASS
+------------------------------------------------------------------------------
+Executing test sourcedAscentWindowAndReschedule...
+DEBUG (00:51): later source ascent extends; launch window does not; newer source-epoch successor reschedule updates both modes
+PASS
+------------------------------------------------------------------------------
+Executing test realStorageQueue...
+DEBUG (00:51): actual Application.Storage two omissions+reopen preserved queue; queue canonical bytes=1330 store writes=36
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+queueSequence                       PASS
+successorNearWake                   PASS
+forwardJumpAndPending               PASS
+sourcedAscentWindowAndReschedule    PASS
+realStorageQueue                    PASS
+Ran 5 tests
+
+PASSED (passed=5, failed=0, errors=0)

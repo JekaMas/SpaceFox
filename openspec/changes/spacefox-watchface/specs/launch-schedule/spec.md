@@ -111,9 +111,15 @@ SHALL be qualified separately from JSON bytes.
 ### Requirement: Stable next-launch selection
 
 The system SHALL choose the earliest eligible launch from the accepted schedule
-using stable identifiers, retaining it through target+900 seconds or a later
+using stable identifiers, retaining it until target+900 seconds or a later
 source-supported ascent end. Cancellation, withdrawal or reschedule SHALL
 override retention. Terminal entries SHALL NOT be newly selected.
+#### Scenario: Cached successors and replenishment
+- **WHEN** eligible future records are known, the producer includes a bounded ordered successor buffer in the same atomic feed generation, with source-qualified location metadata and the existing selected visual closure
+- **THEN** the watch validates and caches successors before the selected launch expires, replenishes using its existing bounded refresh policy, and selects the next eligible cached record at its deadline without a network request or storage write on the transition
+- **AND** failed, partial, empty or stale updates do not discard valid known future records; an explicit newer cancellation or reschedule takes effect
+- **AND** missing successor waiting is an exceptional outcome after prolonged disconnection and exhaustion of all known entries, never a normal substitute for prefetch
+
 #### Scenario: Earlier launch added
 - **WHEN** a refreshed schedule introduces an eligible launch before the displayed one
 - **THEN** the watch selects that earlier launch and updates its rocket, site and countdown together
@@ -168,7 +174,7 @@ The watch SHALL recompute validated launch UTC minus current UTC on redraw and w
 #### Scenario: Preserve final seconds and elapsed phase
 - **WHEN** the same timed launch crosses remaining `00:00:59`, `00:00:01` and zero
 - **THEN** the active face displays numeric seconds, then `T+ 00:00:00`, without selecting the following launch at zero
-- **AND** at elapsed 899 and 900 seconds the same identity remains selected; at 901 seconds or after a later source-supported ascent end the next eligible launch may be selected
+- **AND** at elapsed 899 seconds the same identity remains selected; at 900 seconds, or at a later source-supported ascent end, the next eligible known launch is selected
 - **AND** hours accumulate past 24 and final seconds remain numeric; an explicitly supported actual source launch time is distinct from a scheduled/nominal target, and missing ascent data uses 900 seconds without an invented prediction
 
 ### Requirement: Reschedule detection

@@ -13,7 +13,7 @@ to a specific binary. The original photograph stays outside the public source.
 
 Preserve a deterministic failure on the current production selection path. For
 a launch with no sourced later ascent end, at target + 900 seconds the selected
-expired launch must give way to the next eligible known launch. At +3594 seconds
+expired launch must give way to the next eligible known launch. At +3584 seconds
 it must not remain displayed as the current launch. A genuine sourced later
 ascent end may extend retention; a launch-window end is not an ascent end. T0
 arithmetic does not confirm liftoff.
@@ -21,9 +21,7 @@ arithmetic does not confirm liftoff.
 Both ACTIVE and LOW must use the same selected launch and UTC target. Transition
 the mission/header, countdown, site/point and matching asset identity coherently;
 do not relabel an old rocket/map as a new launch. Retain known valid data across
-request errors, but do not retain an expired presentation indefinitely. Where
-no future record is actually available, do not fabricate one; document and test
-the bounded waiting/refresh behavior and how upcoming metadata is supplied.
+request errors, empty or partial source observations, and stale updates, but do not retain an expired presentation indefinitely. Normal connected operation preloads validated successors and replenishes the bounded buffer before it is exhausted using the existing refresh policy. At the deadline, select a cached successor without network or storage activity. Waiting is exceptional after prolonged disconnection and exhaustion of every known entry; never invent a launch. Source cancellations and reschedules remain authoritative and coherent.
 
 Use the finite existing real fixtures. Exercise before/at/after the 15-minute
 boundary and the reported +59:44, valid extended ascent, window-end distinction,

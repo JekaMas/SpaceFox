@@ -1,0 +1,20 @@
+E...
+======================================================================
+ERROR: test_elapsed_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_elapsed_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/tests/test_basic_launch_logic.py", line 399, in test_elapsed_positive
+    self.clock("offlineWakeNegative")
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/tests/test_basic_launch_logic.py", line 123, in clock
+    observe_clock(*names)
+    ~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/tests/current_clock_reader.py", line 30, in observe_clock
+    if sha(p)!=digest: raise ValueError('clock input changed: '+name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: clock input changed: watchface/manifest.xml
+
+----------------------------------------------------------------------
+Ran 4 tests in 44.801s
+
+FAILED (errors=1)

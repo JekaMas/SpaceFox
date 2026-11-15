@@ -12,7 +12,7 @@ def historical_input(name, expected):
     proof = json.loads((BASE / 'proof.json').read_text())
     catalog = json.loads((ROOT/'locales/catalog.json').read_text())
     refs = catalog['supportPolicy']['softwareQualificationProof']
-    ref = refs.get('integrated016Proof', refs.get('version14Proof', refs.get('decoderStreamProof', refs.get('settingsReadabilityProof'))))
+    ref = refs.get('rollover017Proof', refs.get('integrated016Proof', refs.get('version14Proof', refs.get('decoderStreamProof', refs.get('settingsReadabilityProof')))))
     if ref:
         raw = (ROOT/ref['path']).read_bytes()
         if hashlib.sha256(raw).hexdigest() != ref['sha256']:
@@ -34,7 +34,7 @@ def historical_input(name, expected):
         if path.exists():
             data = path.read_bytes()
         elif encoded.exists():
-            data = base64.b64decode(encoded.read_bytes(), validate=True)
+            data = base64.b64decode(encoded.read_bytes().strip(), validate=True)
         else:
             paths = [refs.get(k) for k in ('reminder015Proof', 'version14Proof', 'decoderStreamProof', 'settingsReadabilityProof', 'integration13DeltaProof')]
             paths.append({'path': 'openspec/changes/spacefox-watchface/evidence/display04-whole-quality/admission/proof.json', 'sha256': 'a7bf9dab95ef54c6a16570b36e12991b90beef21664bbe4cf2165aa18750ce8e'})
@@ -55,6 +55,9 @@ def historical_input(name, expected):
                     data = candidate
                     break
             else:
-                from tests.public_proof_inputs import recorded_input
-                data = recorded_input(name, expected)
+                from tools.native_rollover017_qualification import parent_input
+                data = parent_input(ROOT, name, expected)
+                if data is None:
+                    from tests.public_proof_inputs import recorded_input
+                    data = recorded_input(name, expected)
     return data

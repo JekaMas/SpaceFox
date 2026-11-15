@@ -67,7 +67,7 @@ def verify_current_closure(root=ROOT):
     """
     root = Path(root)
     proof = json.loads((root / 'locales/catalog.json').read_bytes())['supportPolicy']['softwareQualificationProof']
-    ref = proof.get('integrated016Proof', proof.get('version14Proof', proof.get('decoderStreamProof', proof.get('settingsReadabilityProof'))))
+    ref = proof.get('rollover017Proof', proof.get('integrated016Proof', proof.get('version14Proof', proof.get('decoderStreamProof', proof.get('settingsReadabilityProof')))))
     relative = Path(ref['path'])
     if relative.is_absolute() or '..' in relative.parts:
         raise AssertionError('invalid current proof path')

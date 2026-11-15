@@ -1,0 +1,62 @@
+------------------------------------------------------------------------------
+Executing test queueDisplay...
+
+Error: Not Enough Arguments Error
+Details: Failed invoking <symbol>
+Stack: 
+  - queueDisplay() at /Users/jekamas/.codex/tmp/spacefox-rollover017-red/queue/Probe.mc:7 0x10002aab 
+  - evaluate_test_entries_0_to_5() at /Users/jekamas/.codex/tmp/spacefox-rollover017-red/queue/gen/006-B4432-00/source/UnitTests.mcgen:55 0x1000863a 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-rollover017-red/queue/gen/006-B4432-00/source/UnitTests.mcgen:78 0x10008702 
+ERROR
+------------------------------------------------------------------------------
+Executing test queueAdmit...
+
+Error: Not Enough Arguments Error
+Details: Failed invoking <symbol>
+Stack: 
+  - queueAdmit() at /Users/jekamas/.codex/tmp/spacefox-rollover017-red/queue/Probe.mc:8 0x10002b21 
+  - evaluate_test_entries_0_to_5() at /Users/jekamas/.codex/tmp/spacefox-rollover017-red/queue/gen/006-B4432-00/source/UnitTests.mcgen:57 0x10008655 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-rollover017-red/queue/gen/006-B4432-00/source/UnitTests.mcgen:78 0x10008702 
+ERROR
+------------------------------------------------------------------------------
+Executing test queueNames...
+
+Error: Symbol Not Found Error
+Details: Could not find symbol 'context'
+Stack: 
+  - queueNames() at /Users/jekamas/.codex/tmp/spacefox-rollover017-red/queue/Probe.mc:9 0x10002c13 
+  - evaluate_test_entries_0_to_5() at /Users/jekamas/.codex/tmp/spacefox-rollover017-red/queue/gen/006-B4432-00/source/UnitTests.mcgen:59 0x10008670 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-rollover017-red/queue/gen/006-B4432-00/source/UnitTests.mcgen:78 0x10008702 
+ERROR
+------------------------------------------------------------------------------
+Executing test queueSequence...
+
+Error: Not Enough Arguments Error
+Details: Failed invoking <symbol>
+Stack: 
+  - API code 0x30001f18 
+  - write() at /Users/jekamas/.codex/tmp/spacefox-rollover017-red/queue/Probe.mc:5 0x100080ec 
+  - save() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeUpcomingCache.mc:31 0x50011c01 
+  - accept() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeCache.mc:120 0x50005cf3 
+  - admitFeedForView() at /Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/watchface/source/NativeIncoming.mc:24 0x5000d740 
+  - queueAdmit() at /Users/jekamas/.codex/tmp/spacefox-rollover017-red/queue/Probe.mc:8 0x10002b9b 
+  - queueSequence() at /Users/jekamas/.codex/tmp/spacefox-rollover017-red/queue/Probe.mc:12 0x10004def 
+  - evaluate_test_entries_0_to_5() at /Users/jekamas/.codex/tmp/spacefox-rollover017-red/queue/gen/006-B4432-00/source/UnitTests.mcgen:61 0x1000868b 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-rollover017-red/queue/gen/006-B4432-00/source/UnitTests.mcgen:78 0x10008702 
+ERROR
+------------------------------------------------------------------------------
+Executing test successorNearWake...
+DEBUG (00:39): successor near window advanced wake by 3500s under unchanged policy; old plan remains accepted
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+queueDisplay                        ERROR
+queueAdmit                          ERROR
+queueNames                          ERROR
+queueSequence                       ERROR
+successorNearWake                   PASS
+Ran 5 tests
+
+FAILED (passed=1, failed=0, errors=4)

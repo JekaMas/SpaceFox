@@ -534,10 +534,11 @@ def select_next(state: ScheduleState) -> Selection:
 
     eligible = [entry for entry in state.entries
                 if entry.record.status not in (LaunchStatus.CANCELLED, LaunchStatus.COMPLETED)
+                and (entry.record.timing.countdown_utc is None
+                     or state.evaluated_at_utc < retention_end(entry.record))
                 and (entry.record.status is not LaunchStatus.STARTED
                      or entry.record.timing.countdown_utc is not None
-                     and entry.record.timing.countdown_utc <= state.evaluated_at_utc
-                     <= retention_end(entry.record))]
+                     and entry.record.timing.countdown_utc <= state.evaluated_at_utc)]
     if not eligible:
         return Selection(None, TimingState.NO_SCHEDULE, None)
 
@@ -545,12 +546,9 @@ def select_next(state: ScheduleState) -> Selection:
         anchor = entry.record.timing.ordering_utc
         return anchor is None, anchor if anchor is not None else 0, entry.record.launch_id.key
 
-    # Keep the earliest selected timed launch throughout its15minute phase.
-    # Once its local phase expires, prefer the next still-eligible record. If
-    # no such record exists, retain the old source rather than infer completion.
-    current = [entry for entry in eligible if entry.record.timing.countdown_utc is None
-               or state.evaluated_at_utc <= retention_end(entry.record)]
-    entry = min(current or eligible, key=ordering)
+    # Expiry changes presentation eligibility, not source launch status. A
+    # missing successor yields no schedule instead of inferring completion.
+    entry = min(eligible, key=ordering)
     # Wire timingState preserves source precision; native MIN arithmetic is a
     # separate nominal display phase, never upgraded to exact-second knowledge.
     exact = entry.record.timing.exact_utc

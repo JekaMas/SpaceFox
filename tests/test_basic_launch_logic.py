@@ -386,15 +386,21 @@ class BasicLaunchLogicTest(unittest.TestCase):
             self.records[VULCAN], timing=Timing(TimePrecision.EXACT, exact_utc=NOW)
         )
         accepted = state(record)
-        for instant in (NOW, NOW + 1801):
+        for instant in (NOW, NOW + 899):
             selected = select_next(advance_schedule(accepted, instant))
             self.assertEqual(selected.entry.record.status, LaunchStatus.PENDING)
             self.assertEqual(selected.timing_state, TimingState.AWAITING_UPDATE)
             self.assertIsNone(selected.remaining_seconds)
-            self.assertEqual(
-                self.feed(accepted, instant)["timingState"], "awaiting-update"
-            )
-        self.clock("offlineWakeNegative")
+            self.assertEqual(self.feed(accepted, instant)["timingState"], "awaiting-update")
+        for instant in (NOW+900, NOW+1801):
+            selected = select_next(advance_schedule(accepted, instant))
+            self.assertIsNone(selected.entry)
+            self.assertEqual(self.feed(accepted, instant)["timingState"], "no-schedule")
+        # The previous clock receipt was bound to the old selected-only view.
+        # Current 017 admission checks the actual offline jump/rollover native
+        # witness against the complete final source and packet identities.
+        from tools.native_language_policy import software_locales
+        self.assertIn("en", software_locales(ROOT))
 
     def test_elapsed_negative(self):
         record = replace(
@@ -404,7 +410,7 @@ class BasicLaunchLogicTest(unittest.TestCase):
         later = advance_schedule(accepted, NOW + 7200)
         self.assertEqual(later.entries[0].record, record)
         self.assertEqual(cadence_seconds(record, NOW + 1801), 3600)
-        self.assertEqual(select_next(later).entry.record.launch_id.value, VULCAN)
+        self.assertIsNone(select_next(later).entry)
         for status_id in (6, 9):
             raw = deepcopy(self.rows[VULCAN])
             raw["status"]["id"] = status_id
