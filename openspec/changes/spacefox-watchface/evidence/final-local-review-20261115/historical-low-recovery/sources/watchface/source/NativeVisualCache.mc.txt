@@ -1,0 +1,38 @@
+import Toybox.Lang;
+
+// Semantic schema, complete digest, and activation run once in the foreground.
+(:extendedCode, :typecheck(false))
+class NativeVisualCache extends NativeVisualStage {
+    var decoded=null;
+    function initialize(adapter,url){NativeVisualStage.initialize(adapter,url);}
+    function protectedObjects(){var keep={};var keys=["sf.visual","sf.visual.recovery","sf.visual.ready"];for(var i=0;i<keys.size();i+=1){try{var marker=store.read(keys[i]);if(marker instanceof Dictionary&&marker["selection"] instanceof Dictionary&&marker["selection"]["shards"] instanceof Array){var list=marker["selection"]["shards"];for(var j=0;j<list.size();j+=1){if(list[j] instanceof Dictionary&&list[j]["sha256"] instanceof String){keep[list[j]["sha256"]]=true;}}}}catch(e){}}if(staging!=null){for(var k=0;k<staging["shards"].size();k+=1){keep[staging["shards"][k]["sha256"]]=true;}}return keep;}
+    function reserve(hash,bytes){
+        var index=store.read("sf.objects");if(index==null){index=[];}if(!(index instanceof Array)||index.size()>96){throw new Lang.InvalidValueException("Corrupt object index");}
+        var total=0;var found=false;for(var i=0;i<index.size();i+=1){var row=index[i];if(!(row instanceof Array)||row.size()!=2||!(row[0] instanceof String)||!(row[1] instanceof Number||row[1] instanceof Long)||row[1]<1||row[1]>4096){throw new Lang.InvalidValueException("Corrupt object index row");}if(row[0].equals(hash)){if(row[1]!=bytes){throw new Lang.InvalidValueException("Object size conflict");}found=true;}total+=row[1];}if(found){return;}
+        var keep=protectedObjects();var next=[];var needed=total+bytes;var count=index.size()+1;for(var j=0;j<index.size();j+=1){var row=index[j];if((needed>393216||count>96)&&!keep.hasKey(row[0])){store.remove(objectKey(row[0]));needed-=row[1];count-=1;}else{next.add(row);}}
+        if(needed>393216||count>96){throw new Lang.InvalidValueException("Protected cache full");}next.add([hash,bytes]);store.write("sf.objects",next);
+    }
+    function maintain(){
+        try{var index=store.read("sf.objects");if(!(index instanceof Array)||index.size()<92){return;}var keep=protectedObjects();var next=[];for(var i=0;i<index.size();i+=1){var r=index[i];if(r instanceof Array&&r.size()==2&&r[0] instanceof String){if(next.size()<88&&!keep.hasKey(r[0])){store.remove(objectKey(r[0]));}else{next.add(r);}}}store.write("sf.objects",next);}catch(e){}
+    }
+    function logicalDigest(d){
+        decoded=[];var palette=[];var pool=[];var operations=0;var refs=0;
+        for(var i=0;i<d["shards"].size();i+=1){var r=d["shards"][i];var shard=new NativeSfv(rawFor(r),null);if(shard.byteCount!=r["decodedBytes"]||shard.value[3][0]!=d["canvas"][0]||shard.value[3][1]!=d["canvas"][1]||shard.value[7][0]!=0){throw new Lang.InvalidValueException("Mixed shard");}var v=shard.value;decoded.add(v);
+            for(var c=0;c<v[4].size();c+=1){if(palette.indexOf(v[4][c])<0){palette.add(v[4][c]);}}for(var p=0;p<v[5].size();p+=1){if(pool.indexOf(v[5][p])<0){pool.add(v[5][p]);}}NativeMetrics.sample("logical-shard");operations+=shard.operations;refs+=shard.references;if(palette.size()>32||pool.size()>32||operations>16||refs>64){throw new Lang.InvalidValueException("Logical visual too large");}
+        }
+        palette.sort(null);var h=new NativeCanonical();h.put("[\"SFV\",1,32,");h.emit(d["canvas"]);h.put(",");h.emit(palette);h.put(",");h.emit(pool);h.put(",[");var first=true;
+        for(var j=0;j<d["shards"].size();j+=1){var v=decoded[j];for(var k=0;k<v[6].size();k+=1){var op=v[6][k];if(!first){h.put(",");}first=false;h.put("[0,");h.emit(palette.indexOf(v[4][op[1].toNumber()]));h.put(",[");for(var n=0;n<op[2].size();n+=1){if(n>0){h.put(",");}h.emit(pool.indexOf(v[5][op[2][n].toNumber()]));}h.put("]]");}}
+        h.put("],");h.emit(d["animation"]);h.put("]");return h.digest();
+    }
+    function activate(packet){
+        if(staging==null){return false;}try{var check=new NativeSfv("[\"SFV\",1,32,[10,10],[1122867],[0,320,5243200,5242880],[[0,0,[0,1,2,3]]],[0,[]]]",null);check.animation(staging["animation"]);if(!staging["catalogDigest"].equals(packet.document["catalogDigest"])||!staging["launchId"].equals(packet.launchId())||!staging["modelId"].equals(packet.document["launch"]["configuration_id"])||!logicalDigest(staging).equals(staging["sha256"])){return false;}
+            var old=store.read("sf.visual");if(old instanceof Dictionary){store.write("sf.visual.recovery",old);}store.write("sf.visual",{"v"=>1,"base"=>base,"selection"=>staging});manifest=staging;staging=null;return true;
+        }catch(e){return false;}
+    }
+    function activateReady(packet){
+        if(packet==null||packet.launchId()==null){return false;}try{var ready=store.read("sf.visual.ready");if(!(ready instanceof Dictionary)||ready["v"]!=1||!(ready["base"] instanceof String)||!ready["base"].equals(base)){return false;}staging=manifestData(ready["selection"],packet);if(activate(packet)){store.remove("sf.visual.ready");return true;}}catch(e){}return false;
+    }
+    function load(packet){
+        manifest=null;if(packet==null||packet.launchId()==null){return null;}var keys=["sf.visual","sf.visual.recovery"];for(var i=0;i<keys.size();i+=1){try{var m=store.read(keys[i]);if(m instanceof Dictionary&&m["v"]==1&&m["base"] instanceof String&&m["base"].equals(base)){var d=manifestData(m["selection"],packet);if(logicalDigest(d).equals(d["sha256"])){manifest=d;return d;}}}catch(e){}}return null;
+    }
+}

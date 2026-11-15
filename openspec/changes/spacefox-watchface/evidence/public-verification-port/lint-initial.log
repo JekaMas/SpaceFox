@@ -1,0 +1,10 @@
+tests/test_catalog_activation_whole.py:457:86: F401 [*] `tests.test_display03_receipt_binding.CurrentGeographyCompositionTest` imported but unused
+tests/test_current_format_acceptance.py:7:24: F401 [*] `subprocess` imported but unused
+tests/test_current_source_reader.py:2:8: F401 [*] `subprocess` imported but unused
+tests/test_native_cache_budget_whole.py:6:8: F401 [*] `subprocess` imported but unused
+tests/test_public_metadata_faults.py:8:25: F401 [*] `email.utils.formatdate` imported but unused
+tests/test_public_metadata_faults.py:10:8: F401 [*] `json` imported but unused
+tests/test_public_proof_portability.py:5:8: F401 [*] `shutil` imported but unused
+tests/test_public_proof_portability.py:7:8: F401 [*] `tempfile` imported but unused
+Found 8 errors.
+[*] 8 fixable with the `--fix` option.

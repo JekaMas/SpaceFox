@@ -76,10 +76,28 @@ def source_state(root: Path) -> dict:
     require(isinstance(additional, list) and len(additional) == len(set(additional)),
             "invalid native admission input manifest")
     for name in additional:
-        require(isinstance(name, str) and name.startswith("openspec/changes/spacefox-watchface/evidence/")
+        require(isinstance(name, str) and name.startswith(("openspec/changes/spacefox-watchface/evidence/",
+                                                       "openspec/changes/add-launch-reminders/evidence/"))
                 and ".." not in PurePosixPath(name).parts and name in paths,
                 "unsafe or untracked native admission input")
         admission.add(name)
+    if proof is not None and "integrated016Proof" in proof:
+        # Parent qualification reconstructs exact tracked tools inventories;
+        # include the non-Python entries that the standard export filter omits.
+        admission.update({"prototype/fonts/RobotoCondensed-latin-600.woff2",
+                          "tools/analyze_features.js", "tools/annotate_marker_aa.js",
+                          "tools/audit_marker_native.js", "tools/audit_native_motion_pixels.js",
+                          "tools/native-resources-requirements.txt", "tools/native_map_paths.js",
+                          "tools/native_marker_svg.js", "tools/recheck_feature_records.js",
+                          "tools/recheck_markers.js", "tools/reconcile_composition.js",
+                          "tools/spacefox/bridge_map_render.js", "tools/vendor/d3-7.9.0.min.js",
+                          "tools/vendor/topojson-client-3.1.0.min.js"})
+    if proof is not None and "reminder015Proof" in proof:
+        admission.update({"openspec/changes/add-launch-reminders/proposal.md",
+                          "openspec/changes/add-launch-reminders/design.md",
+                          "openspec/changes/add-launch-reminders/tasks.md",
+                          "openspec/changes/add-launch-reminders/specs/launch-reminders/spec.md",
+                          "docs/LAUNCH_REMINDERS.md"})
     if proof is not None:
         for name in (proof["corpusPath"], proof["receiptPath"]):
             require(isinstance(name, str) and name and not PurePosixPath(name).is_absolute() and
@@ -512,7 +530,10 @@ def build_release(output: Path, *, key: Path, root: Path = ROOT, mode: str = "ca
         if latest is not None:
             require(isinstance(latest, dict) and previous_data is not None and
                     latest.get("version") == previous_data.get("version") and
-                    latest.get("package_sha256") == previous_data.get("package_sha256"),
+                    latest.get("package_sha256") == previous_data.get("package_sha256") and
+                    latest.get("source_revision") == previous_data.get("source_revision") and
+                    isinstance(latest.get("original_receipt_sha256"), str) and
+                    previous is not None and digest(previous.expanduser().resolve()) == latest["original_receipt_sha256"],
                     "production update requires the committed latest release receipt/package")
     update = validate_previous(previous_data, app, fingerprint)
     backup_info = backup_status(backup, root, fingerprint, mode == "official")

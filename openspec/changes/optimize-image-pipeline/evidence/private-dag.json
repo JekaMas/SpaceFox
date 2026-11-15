@@ -1,0 +1,320 @@
+{
+  "cases": {
+    "I1.P1.corpus.negative": {
+      "evidence_fingerprint": "523fc56acff545cddefd8eedab955326dd5ecf88ba04df42160787af0bc48ce6",
+      "green_expectation": "Exact independent pixel reconstruction and refusal agree with the declared boundary.",
+      "invalidation_dependencies": [
+        "tools/image_pipeline_research.py",
+        "tools/spacefox/native_profile.py",
+        "tests/test_image_pipeline_research.py"
+      ],
+      "observable": "Real corpus comparison: negative",
+      "polarity": "negative",
+      "property_id": "I1.P1",
+      "red_expectation": "A changed byte, identity or malformed input is detected.",
+      "scenario": "Real corpus comparison",
+      "scenario_fingerprint": "9e0ddd9d595e5faecba23560838f3f561365d6023663bbf6fdad408e6fc57617",
+      "setup": "Retained source image corpus and bounded literal token cases.",
+      "source_path": "tests/test_image_pipeline_research.py",
+      "source_sha256": "d4413a9ae88b780b0f70a87050839284d86cf9d3945505eda13f140323278826",
+      "status": "passed",
+      "test_id": "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_corpus_negative"
+    },
+    "I1.P1.corpus.positive": {
+      "evidence_fingerprint": "e9bd92efa232f57ca59203e3fa5b8c5bf4e43f29ebc8ff26e86e68e914918f37",
+      "green_expectation": "Exact independent pixel reconstruction and refusal agree with the declared boundary.",
+      "invalidation_dependencies": [
+        "tools/image_pipeline_research.py",
+        "tools/spacefox/native_profile.py",
+        "tests/test_image_pipeline_research.py"
+      ],
+      "observable": "Real corpus comparison: positive",
+      "polarity": "positive",
+      "property_id": "I1.P1",
+      "red_expectation": "A changed byte, identity or malformed input is detected.",
+      "scenario": "Real corpus comparison",
+      "scenario_fingerprint": "9e0ddd9d595e5faecba23560838f3f561365d6023663bbf6fdad408e6fc57617",
+      "setup": "Retained source image corpus and bounded literal token cases.",
+      "source_path": "tests/test_image_pipeline_research.py",
+      "source_sha256": "d4413a9ae88b780b0f70a87050839284d86cf9d3945505eda13f140323278826",
+      "status": "passed",
+      "test_id": "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_corpus_positive"
+    },
+    "I1.P1.invalid.negative": {
+      "evidence_fingerprint": "cf49441222c23e2232d1b06fbfe80c402b9dfb28463fbb5a58188fa3caa9c01d",
+      "green_expectation": "Exact independent pixel reconstruction and refusal agree with the declared boundary.",
+      "invalidation_dependencies": [
+        "tools/image_pipeline_research.py",
+        "tools/spacefox/native_profile.py",
+        "tests/test_image_pipeline_research.py"
+      ],
+      "observable": "Invalid input refusal: negative",
+      "polarity": "negative",
+      "property_id": "I1.P1",
+      "red_expectation": "A changed byte, identity or malformed input is detected.",
+      "scenario": "Invalid input refusal",
+      "scenario_fingerprint": "46f294b9da26fff35ba01f805c66e398d03ce8e50a67a69b5c84340c08aa8dc5",
+      "setup": "Retained source image corpus and bounded literal token cases.",
+      "source_path": "tests/test_image_pipeline_research.py",
+      "source_sha256": "d4413a9ae88b780b0f70a87050839284d86cf9d3945505eda13f140323278826",
+      "status": "passed",
+      "test_id": "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_invalid_negative"
+    },
+    "I1.P1.invalid.positive": {
+      "evidence_fingerprint": "e696eaca2dca88815f0c4566f325bf1a56cf68a27182affb850159d445e75c53",
+      "green_expectation": "Exact independent pixel reconstruction and refusal agree with the declared boundary.",
+      "invalidation_dependencies": [
+        "tools/image_pipeline_research.py",
+        "tools/spacefox/native_profile.py",
+        "tests/test_image_pipeline_research.py"
+      ],
+      "observable": "Invalid input refusal: positive",
+      "polarity": "positive",
+      "property_id": "I1.P1",
+      "red_expectation": "A changed byte, identity or malformed input is detected.",
+      "scenario": "Invalid input refusal",
+      "scenario_fingerprint": "46f294b9da26fff35ba01f805c66e398d03ce8e50a67a69b5c84340c08aa8dc5",
+      "setup": "Retained source image corpus and bounded literal token cases.",
+      "source_path": "tests/test_image_pipeline_research.py",
+      "source_sha256": "d4413a9ae88b780b0f70a87050839284d86cf9d3945505eda13f140323278826",
+      "status": "passed",
+      "test_id": "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_invalid_positive"
+    },
+    "I2.P1.atomic-negative": {
+      "evidence_fingerprint": "9f5b88abac30f2deb3af719ab7841efa4ecfa59c21236ef1d89d55cdf38c9597",
+      "green_expectation": "Literal pixels and role bindings agree; invalid selected content is refused before pending state moves.",
+      "invalidation_dependencies": [
+        "tools/spacefox/native_profile.py",
+        "tests/test_current_feed_authority_whole.py"
+      ],
+      "observable": "Missing selected closure cannot advance durable pending state after reopen.",
+      "polarity": "negative",
+      "property_id": "I2.P1",
+      "red_expectation": "Altered object accepted or pending state moves despite missing required content.",
+      "scenario": "Corrupt current content",
+      "scenario_fingerprint": "50ae644efc658ab9c6fd39d84e657b34fd5d755b7a39e4dfde7f629fe8865342",
+      "setup": "Captured real Starship publisher artifact with bounded local Git state and exact source-derived raster fixture.",
+      "source_path": "tests/test_current_feed_authority_whole.py",
+      "source_sha256": "8d589148a564638b5eeaf8f8e4073a786d9cb0787f5f32b149cc9b287bfaa326",
+      "status": "passed",
+      "test_id": "unittest::tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_prepare_refuses_bad_profile_envelope_age_and_missing_closure_atomically"
+    },
+    "I2.P1.current-negative": {
+      "evidence_fingerprint": "e81f893fba4df9ccf7adee07a4c873591091a6691556004ee88102e3e5d5ac8c",
+      "green_expectation": "Literal pixels and role bindings agree; invalid selected content is refused before pending state moves.",
+      "invalidation_dependencies": [
+        "tools/spacefox/native_profile.py",
+        "tests/test_sfr1m_offline_current.py"
+      ],
+      "observable": "A corrupted authenticated raster is refused.",
+      "polarity": "negative",
+      "property_id": "I2.P1",
+      "red_expectation": "Altered object accepted or pending state moves despite missing required content.",
+      "scenario": "Corrupt current content",
+      "scenario_fingerprint": "50ae644efc658ab9c6fd39d84e657b34fd5d755b7a39e4dfde7f629fe8865342",
+      "setup": "Captured real Starship publisher artifact with bounded local Git state and exact source-derived raster fixture.",
+      "source_path": "tests/test_sfr1m_offline_current.py",
+      "source_sha256": "151fff51d5207f995b028b19317e96d7095f2675c31bd67da1ebd6dd4a223ffd",
+      "status": "passed",
+      "test_id": "unittest::tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_corrupt_digest_rejected"
+    },
+    "I2.P1.current-positive": {
+      "evidence_fingerprint": "f5a615ef48d80e77524fcd20b40842b2c8faa152c5f5e99056695c2fcca682aa",
+      "green_expectation": "Literal pixels and role bindings agree; invalid selected content is refused before pending state moves.",
+      "invalidation_dependencies": [
+        "tools/spacefox/native_profile.py",
+        "tests/test_sfr1m_offline_current.py"
+      ],
+      "observable": "Current captured scene has exact role identity, pixel bytes, bounds and source facts.",
+      "polarity": "positive",
+      "property_id": "I2.P1",
+      "red_expectation": "Altered object accepted or pending state moves despite missing required content.",
+      "scenario": "Corrupt current content",
+      "scenario_fingerprint": "50ae644efc658ab9c6fd39d84e657b34fd5d755b7a39e4dfde7f629fe8865342",
+      "setup": "Captured real Starship publisher artifact with bounded local Git state and exact source-derived raster fixture.",
+      "source_path": "tests/test_sfr1m_offline_current.py",
+      "source_sha256": "151fff51d5207f995b028b19317e96d7095f2675c31bd67da1ebd6dd4a223ffd",
+      "status": "passed",
+      "test_id": "unittest::tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_current_raw_pixels_identity_age_and_bounds"
+    },
+    "I2.P1.lossless.negative": {
+      "evidence_fingerprint": "abe1376700f807a49ce88ce345c55a4a5984483c7f834f947e3a8988b3ccf0c4",
+      "green_expectation": "Exact independent pixel reconstruction and refusal agree with the declared boundary.",
+      "invalidation_dependencies": [
+        "tools/image_pipeline_research.py",
+        "tools/spacefox/native_profile.py",
+        "tests/test_image_pipeline_research.py"
+      ],
+      "observable": "Lossless selected optimization: negative",
+      "polarity": "negative",
+      "property_id": "I2.P1",
+      "red_expectation": "A changed byte, identity or malformed input is detected.",
+      "scenario": "Lossless selected optimization",
+      "scenario_fingerprint": "41e49c5d76dd408322d1553763681cdcf6b9550a7869a64abee7efd4396ec96e",
+      "setup": "Retained source image corpus and bounded literal token cases.",
+      "source_path": "tests/test_image_pipeline_research.py",
+      "source_sha256": "d4413a9ae88b780b0f70a87050839284d86cf9d3945505eda13f140323278826",
+      "status": "passed",
+      "test_id": "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_lossless_negative"
+    },
+    "I2.P1.lossless.positive": {
+      "evidence_fingerprint": "87451f9eed37d45d895578efbe0219216fb4e6ca110d862b180b5c6aff370957",
+      "green_expectation": "Exact independent pixel reconstruction and refusal agree with the declared boundary.",
+      "invalidation_dependencies": [
+        "tools/image_pipeline_research.py",
+        "tools/spacefox/native_profile.py",
+        "tests/test_image_pipeline_research.py"
+      ],
+      "observable": "Lossless selected optimization: positive",
+      "polarity": "positive",
+      "property_id": "I2.P1",
+      "red_expectation": "A changed byte, identity or malformed input is detected.",
+      "scenario": "Lossless selected optimization",
+      "scenario_fingerprint": "41e49c5d76dd408322d1553763681cdcf6b9550a7869a64abee7efd4396ec96e",
+      "setup": "Retained source image corpus and bounded literal token cases.",
+      "source_path": "tests/test_image_pipeline_research.py",
+      "source_sha256": "d4413a9ae88b780b0f70a87050839284d86cf9d3945505eda13f140323278826",
+      "status": "passed",
+      "test_id": "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_lossless_positive"
+    }
+  },
+  "change": "optimize-image-pipeline",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_prepare_refuses_bad_profile_envelope_age_and_missing_closure_atomically"
+      ],
+      "cwd": "/Users/jekamas/projects/SpaceFox-worktrees/research-image-pipeline-20261115",
+      "duration_seconds": 31.231900374870747,
+      "exit_code": 0,
+      "id": "current-atomic",
+      "observed_tests": {
+        "unittest::tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_prepare_refuses_bad_profile_envelope_age_and_missing_closure_atomically": "pass"
+      },
+      "status": "exited",
+      "stderr": "test_prepare_refuses_bad_profile_envelope_age_and_missing_closure_atomically (tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_prepare_refuses_bad_profile_envelope_age_and_missing_closure_atomically) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 30.812s\n\nOK\n",
+      "stderr_artifact": "/Users/jekamas/projects/SpaceFox-worktrees/research-image-pipeline-20261115/openspec/changes/optimize-image-pipeline/evidence/private-dag.json.current-atomic.stderr.log",
+      "stderr_truncated": false,
+      "stdout": "",
+      "stdout_artifact": "/Users/jekamas/projects/SpaceFox-worktrees/research-image-pipeline-20261115/openspec/changes/optimize-image-pipeline/evidence/private-dag.json.current-atomic.stdout.log",
+      "stdout_truncated": false
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_sfr1m_offline_current"
+      ],
+      "cwd": "/Users/jekamas/projects/SpaceFox-worktrees/research-image-pipeline-20261115",
+      "duration_seconds": 27.837205125018954,
+      "exit_code": 0,
+      "id": "current-raster",
+      "observed_tests": {
+        "unittest::tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_corrupt_digest_rejected": "pass",
+        "unittest::tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_current_raw_pixels_identity_age_and_bounds": "pass",
+        "unittest::tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_global_growth_retains_selected_closure_bound": "pass",
+        "unittest::tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_repinned_identity_mismatch_rejected": "pass",
+        "unittest::tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_same_identity_real_asset_replacement_keeps_recovery_bounded": "pass",
+        "unittest::tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_token_row_overflow_rejected": "pass",
+        "unittest::tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_truncated_and_noncanonical_tokens_rejected": "pass"
+      },
+      "status": "exited",
+      "stderr": "test_corrupt_digest_rejected (tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_corrupt_digest_rejected) ... ok\ntest_current_raw_pixels_identity_age_and_bounds (tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_current_raw_pixels_identity_age_and_bounds) ... ok\ntest_global_growth_retains_selected_closure_bound (tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_global_growth_retains_selected_closure_bound) ... ok\ntest_repinned_identity_mismatch_rejected (tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_repinned_identity_mismatch_rejected) ... ok\ntest_same_identity_real_asset_replacement_keeps_recovery_bounded (tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_same_identity_real_asset_replacement_keeps_recovery_bounded) ... ok\ntest_token_row_overflow_rejected (tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_token_row_overflow_rejected) ... ok\ntest_truncated_and_noncanonical_tokens_rejected (tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_truncated_and_noncanonical_tokens_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 27.330s\n\nOK\n",
+      "stderr_artifact": "/Users/jekamas/projects/SpaceFox-worktrees/research-image-pipeline-20261115/openspec/changes/optimize-image-pipeline/evidence/private-dag.json.current-raster.stderr.log",
+      "stderr_truncated": false,
+      "stdout": "SFR1M selected/current+recovery 16 45506 18 19 35 103479\nSFR1M global growth/current+recovery 22 55182\nSFR1M replaced-asset/current+recovery 23 56609\n",
+      "stdout_artifact": "/Users/jekamas/projects/SpaceFox-worktrees/research-image-pipeline-20261115/openspec/changes/optimize-image-pipeline/evidence/private-dag.json.current-raster.stdout.log",
+      "stdout_truncated": false
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_image_pipeline_research"
+      ],
+      "cwd": "/Users/jekamas/projects/SpaceFox-worktrees/research-image-pipeline-20261115",
+      "duration_seconds": 23.59897404164076,
+      "exit_code": 0,
+      "id": "image-tests",
+      "observed_tests": {
+        "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_corpus_negative": "pass",
+        "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_corpus_positive": "pass",
+        "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_invalid_negative": "pass",
+        "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_invalid_positive": "pass",
+        "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_lossless_negative": "pass",
+        "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_lossless_positive": "pass"
+      },
+      "status": "exited",
+      "stderr": "test_corpus_negative (tests.test_image_pipeline_research.ImagePipelineTest.test_corpus_negative) ... ok\ntest_corpus_positive (tests.test_image_pipeline_research.ImagePipelineTest.test_corpus_positive) ... ok\ntest_invalid_negative (tests.test_image_pipeline_research.ImagePipelineTest.test_invalid_negative) ... ok\ntest_invalid_positive (tests.test_image_pipeline_research.ImagePipelineTest.test_invalid_positive) ... ok\ntest_lossless_negative (tests.test_image_pipeline_research.ImagePipelineTest.test_lossless_negative) ... ok\ntest_lossless_positive (tests.test_image_pipeline_research.ImagePipelineTest.test_lossless_positive) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 23.374s\n\nOK\n",
+      "stderr_artifact": "/Users/jekamas/projects/SpaceFox-worktrees/research-image-pipeline-20261115/openspec/changes/optimize-image-pipeline/evidence/private-dag.json.image-tests.stderr.log",
+      "stderr_truncated": false,
+      "stdout": "",
+      "stdout_artifact": "/Users/jekamas/projects/SpaceFox-worktrees/research-image-pipeline-20261115/openspec/changes/optimize-image-pipeline/evidence/private-dag.json.image-tests.stdout.log",
+      "stdout_truncated": false
+    }
+  ],
+  "finished_at": "2026-11-15T15:45:45.837243+00:00",
+  "git": {
+    "dirty": true,
+    "head": "5234e885415fa583bc957b11decfed9549dcd60f",
+    "status": "known"
+  },
+  "manifest": "openspec/changes/optimize-image-pipeline/verification.json",
+  "manifest_sha256": "60616fc17d4a83d8e69a685e035b53699bcdbf244f685c4e9de57aba8bb42721",
+  "requested_selectors": {
+    "all": true,
+    "cases": [],
+    "changed_paths": [],
+    "commands": [],
+    "owners": [],
+    "properties": [],
+    "requirements": [],
+    "scenarios": [],
+    "tests": []
+  },
+  "schema_version": 2,
+  "selection": {
+    "cases": [
+      "I1.P1.corpus.negative",
+      "I1.P1.corpus.positive",
+      "I1.P1.invalid.negative",
+      "I1.P1.invalid.positive",
+      "I2.P1.atomic-negative",
+      "I2.P1.current-negative",
+      "I2.P1.current-positive",
+      "I2.P1.lossless.negative",
+      "I2.P1.lossless.positive"
+    ],
+    "commands": [
+      "current-atomic",
+      "current-raster",
+      "image-tests"
+    ],
+    "properties": [
+      "I1.P1",
+      "I2.P1"
+    ],
+    "requirements": [
+      "I1",
+      "I2"
+    ]
+  },
+  "specifications": {
+    "I1": "844003c2561d97df57485d438f5035abe56569854dbd3d970dad47df64d81535",
+    "I2": "7a7153e557fae3db0a71c96b4a9fd9faa1729c9115b3fc6aa3c65766478bb30e"
+  },
+  "started_at": "2026-11-15T15:44:21.686204+00:00",
+  "status": "passed",
+  "substitution_gaps": []
+}

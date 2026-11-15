@@ -1,0 +1,62 @@
+{
+  "fixtureSeedManifest": "../display04-whole-quality/ready-postguard/seed-manifest.json",
+  "diagnostics": [
+    {
+      "name": "displaybase",
+      "observed": "READY",
+      "archive": "diagnostic-displaybase.tar.gz",
+      "sha256": "32178aa7756c99df499564836aa7ff03e679ef6df25c7ea8ba4eb351bcda3c72",
+      "prgSha256": "1075fdd9bd00275c0df9d4660874edad52572ddb31b639a3ae30ce9b8ad0c460"
+    },
+    {
+      "name": "olddecoder",
+      "observed": "OOM",
+      "archive": "diagnostic-olddecoder.tar.gz",
+      "sha256": "17e40c8b324bcfb697e764bf1d4acff01a5faf49a6cc5646fd43e06e6eceeac5",
+      "prgSha256": "7d01eab4161c31b8753f4dfa7067dcb5b94959f2d79c09c9d09f6ef13f5b2d9b"
+    },
+    {
+      "name": "oldreminder",
+      "observed": "READY",
+      "archive": "diagnostic-oldreminder.tar.gz",
+      "sha256": "d675c21bae809ed38d144f2b2b6dcb0a97f85a118163cb948260edc0895da932",
+      "prgSha256": "a820ffaa0c287e0830ff660d33338e432b00e838da99340696844ca2f7590afe"
+    },
+    {
+      "name": "feedonly",
+      "observed": "READY",
+      "archive": "diagnostic-feedonly.tar.gz",
+      "sha256": "2a2b595fc5e291b5012eabeab123f7306e8f958e784872486ddce6c5ce9569cc",
+      "prgSha256": "b330c0463c54941d1383aac76bbe7d0ca371ce44cf8a372c20f37ba6be54b0a2"
+    },
+    {
+      "name": "apponly",
+      "observed": "OOM",
+      "archive": "diagnostic-apponly.tar.gz",
+      "sha256": "0af5203339e578ee92ad493a0fcf900ed3c894596d23ceaab215e5dfa2d3aba1",
+      "prgSha256": "0371e947d4c5c8a5c9029cc262bd47535522b10e930a2ec7a10934d6dedf4a79"
+    },
+    {
+      "name": "serviceonly",
+      "observed": "OOM",
+      "archive": "diagnostic-serviceonly.tar.gz",
+      "sha256": "193077996b8a8b3c6b71a45bb1376489b6cf3547ab8b5cdd664a0b712315006d",
+      "prgSha256": "f2d3d683aa510b646ca895ead20e000ebe8a7a41fd81b4193947bbf0e38259f9"
+    },
+    {
+      "name": "extended",
+      "observed": "OOM",
+      "archive": "diagnostic-extended.tar.gz",
+      "sha256": "65fdd23694ebdafef2fc1d05ed419e1b47b4d7236afd3240196f0175f7930212",
+      "prgSha256": "18e932b642ad40d0bd6e886eda73e0a669bdff0a08c874a3d1e980aa4fdb68de"
+    },
+    {
+      "name": "extended2",
+      "observed": "READY",
+      "archive": "diagnostic-extended2.tar.gz",
+      "sha256": "94236caa75091299b3d5a2698e656ca13c085dc11eab1d33e0136a459401a70f",
+      "prgSha256": "8cf6ae1bc44eead0506cbf1f59f025d4d21cc93c8bd582ad0a1c928333f19cd8"
+    }
+  ],
+  "boundary": "test-only source substitutions and placement experiments; not release programs"
+}

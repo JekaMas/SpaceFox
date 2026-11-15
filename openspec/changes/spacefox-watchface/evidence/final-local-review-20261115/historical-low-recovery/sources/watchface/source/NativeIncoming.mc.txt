@@ -1,0 +1,48 @@
+import Toybox.Lang;
+import Toybox.StringUtil;
+// Foreground only: the provisional pointer is not an admission receipt.
+(:extendedCode, :typecheck(false))
+class NativeIncoming {
+    var store;var base;var needsRestore=false;var restoreSeal=null;
+    function initialize(adapter,url){store=adapter;base=url;}
+    function token(marker){return marker["sha256"]+":"+marker["sequence"];}
+    function read(name,force){
+        var key="sf.incoming."+name;var m=store.read(key);if(!(m instanceof Dictionary)||m["v"]!=2||!(m["base"] instanceof String)||!m["base"].equals(base)||!nativeHex(m["sha256"])||!(m["parts"] instanceof Array)||m["parts"].size()<1||m["parts"].size()>16||!(m["sequence"] instanceof Number||m["sequence"] instanceof Long)||m["sequence"]<1||m["sequence"]>253402300799l||!(m["bytes"] instanceof Number)||m["bytes"]<1||m["bytes"]>8192){return null;}
+        var done=store.read(key+".processed");if(!force&&done instanceof String&&done.equals(token(m))){return null;}var assembled=[]b;var total=0;var h=new NativeWireHash();for(var i=0;i<m["parts"].size();i+=1){var slot=m["parts"][i];if(!(slot instanceof Number)||slot<0||slot>1){return null;}var s=store.read(key+"."+slot+"."+i);if(!(s instanceof String)||s.length()>512){return null;}var b=StringUtil.convertEncodedString(s,{:fromRepresentation=>StringUtil.REPRESENTATION_STRING_PLAIN_TEXT,:toRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:encoding=>StringUtil.CHAR_ENCODING_UTF8});if(b.size()>2048||total+b.size()>8192){return null;}h.update(b);total+=b.size();assembled.addAll(b);}
+        var latest=store.read(key);if(total!=m["bytes"]||!h.digest().equals(m["sha256"])||!(latest instanceof Dictionary)||latest["sequence"]!=m["sequence"]||!(latest["sha256"] instanceof String)||!latest["sha256"].equals(m["sha256"])){return null;}
+        latest=null;h=null;var raw=StringUtil.convertEncodedString(assembled,{:fromRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:toRepresentation=>StringUtil.REPRESENTATION_STRING_PLAIN_TEXT,:encoding=>StringUtil.CHAR_ENCODING_UTF8});return [m,raw];
+    }
+    function processed(name,marker){store.write("sf.incoming."+name+".processed",token(marker));}
+    function admitFeed(cache,now){return admitFeedForView(cache,now,null);}
+    function admitFeedForView(cache,now,view){
+        needsRestore=false;restoreSeal=cache.commit instanceof Dictionary?cache.commit["seal"]:null;
+        var pending=store.read("sf.incoming.feed");var done=store.read("sf.incoming.feed.processed");if(!(pending instanceof Dictionary)||cache.packet!=null&&pending["sha256"] instanceof String&&done instanceof String&&token(pending).equals(done)){return false;}
+        var commitKey=cache.commitKey;cache.releaseForTransfer(now);var accepted=false;
+        var row=null;try{row=read("feed",cache.packet==null);if(row!=null&&row[0]["kind"] instanceof String&&row[0]["kind"].equals("feed")){var endpoint=row[0]["request"];if(endpoint!=null){if(!(endpoint instanceof Dictionary)||endpoint.size()!=1||!(endpoint["wireVersion"] instanceof Number)||endpoint["wireVersion"]<1||endpoint["wireVersion"]>3){throw new Lang.InvalidValueException("Invalid feed endpoint version");}cache.requiredWire=endpoint["wireVersion"];}accepted=cache.accept(row[1],now);row[1]=null;if(accepted||!cache.failure.equals("admission-retry")){processed("feed",row[0]);}}}catch(e){NativeMetrics.failure(e.getErrorMessage());}
+        cache.requiredWire=null;row=null;pending=null;done=null;
+        // A failed promotion restores the FULL durable feed under loaded UI
+        // residency. Release reconstructible view state before strict old8KiB
+        // raw reassembly; compact display context does not retain mission_name.
+        // Rebind the strict durable result and rebuild its own optional scene
+        // outside redraw. Durable raw, age, floor and accepted seal stay intact.
+        // Successful source-only admission keeps its completed bitmap.
+        if(!accepted){if(view!=null){view.clearForRestore();}cache.packet=null;cache.commit=null;cache.commitKey=commitKey;if(view==null){cache.restoreAccepted(now,restoreSeal);}else{needsRestore=true;}}
+        NativeMetrics.sample("foreground-feed-admission");return accepted;
+    }
+    function matches(d,packet){return d instanceof Dictionary&&d["catalogDigest"] instanceof String&&d["catalogDigest"].equals(packet.document["catalogDigest"])&&d["launchId"] instanceof String&&d["launchId"].equals(packet.launchId())&&(d["modelId"]==null?packet.document["launch"]["configuration_id"]==null:d["modelId"] instanceof String&&d["modelId"].equals(packet.document["launch"]["configuration_id"]));}
+    function request(packet,kind,path,now){return {"base"=>base,"catalogDigest"=>packet.document["catalogDigest"],"launchId"=>packet.launchId(),"modelId"=>packet.document["launch"]["configuration_id"],"kind"=>kind,"path"=>path,"notBefore"=>now+300};}
+    function processAsset(packet,now){
+        if(packet==null||packet.launchId()==null){return;}var row=read("asset",false);if(row==null){return;}var m=row[0];var r=m["request"];if(r instanceof Dictionary&&matches(r,packet)&&r["base"] instanceof String&&r["base"].equals(base)){
+            try{var v=new NativeVisualCache(store,base);if(m["kind"].equals("selection")){v.begin(row[1],packet);store.write("sf.visual.download",{"base"=>base,"selection"=>v.staging});}else if(m["kind"].equals("object")){var d=store.read("sf.visual.download");if(d instanceof Dictionary&&d["base"] instanceof String&&d["base"].equals(base)&&matches(d["selection"],packet)){v.staging=v.manifestData(d["selection"],packet);for(var i=0;i<v.staging["shards"].size();i+=1){if(v.staging["shards"][i]["sha256"].equals(r["sha256"])){v.stage(i,row[1]);break;}}}}}catch(e){}
+        }processed("asset",m);planAssets(packet,now);
+    }
+    function validPlan(row,packet,kind,path,now){return row instanceof Dictionary&&row["base"] instanceof String&&row["base"].equals(base)&&matches(row,packet)&&row["kind"] instanceof String&&row["kind"].equals(kind)&&row["path"] instanceof String&&row["path"].equals(path)&&packet.utc(row["notBefore"])&&row["notBefore"]<=now+3600;}
+    function removeAssetPlan(){if(store.read("sf.transfer.asset")!=null){store.remove("sf.transfer.asset");}}
+    function planAssets(packet,now){
+        if(packet==null||packet.launchId()==null){removeAssetPlan();return;}var v=new NativeVisualCache(store,base);v.maintain();var keys=["sf.visual.ready","sf.visual"];for(var k=0;k<keys.size();k+=1){var active=store.read(keys[k]);if(active instanceof Dictionary&&active["base"] instanceof String&&active["base"].equals(base)&&matches(active["selection"],packet)){try{v.staging=v.manifestData(active["selection"],packet);var intact=true;for(var j=0;j<v.staging["shards"].size();j+=1){intact=intact&&v.reuse(v.staging["shards"][j]);}if(intact){removeAssetPlan();return;}}catch(e){}}}
+        var d=store.read("sf.visual.download");if(d instanceof Dictionary&&d["base"] instanceof String&&d["base"].equals(base)&&matches(d["selection"],packet)){
+            try{v.staging=v.manifestData(d["selection"],packet);for(var i=0;i<v.staging["shards"].size();i+=1){var ref=v.staging["shards"][i];if(!v.reuse(ref)){var old=store.read("sf.transfer.asset");if(validPlan(old,packet,"object",ref["path"],now)&&old["sha256"] instanceof String&&old["sha256"].equals(ref["sha256"])&&old["decodedBytes"]==ref["decodedBytes"]){return;}var next=request(packet,"object",ref["path"],now);next["sha256"]=ref["sha256"];next["decodedBytes"]=ref["decodedBytes"];store.write("sf.transfer.asset",next);return;}}if(v.ready(packet)){removeAssetPlan();return;}}catch(e){}
+        }
+        var old=store.read("sf.transfer.asset");if(validPlan(old,packet,"selection","selection.json",now)){return;}store.write("sf.transfer.asset",request(packet,"selection","selection.json",now));
+    }
+}

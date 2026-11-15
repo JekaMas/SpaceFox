@@ -1,0 +1,15 @@
+OPEN_INSTALLED uuid=71dbbbd6-15e7-48cf-87e0-4f3053b55a50 push=false port=1234
+ORDINARY_REOPEN seeded=true totalMemory=126784
+ORDINARY_REQUEST totalMemory=126784
+BUNDLE_MATCH value=true used=111616
+
+Error: Out Of Memory Error
+Details: Failed invoking <symbol>
+Stack: 
+  - read() at /out/qualified/src/NativeCache.mc:10 0x100010a4 
+  - raw() at /out/qualified/src/NativeImmutable.mc:17 0x100008c4 
+  - chunk() at /out/qualified/src/NativeSfr.mc:27 0x500055a5 
+  - step() at /out/qualified/src/NativeSfr.mc:85 0x10007fc6 
+  - step() at /out/qualified/src/NativeSfr.mc:183 0x5000caf0 
+  - sfrStep() at /out/qualified/src/SpaceFoxView.mc:228 0x1000694d 
+OPEN_INSTALLED_END push=false

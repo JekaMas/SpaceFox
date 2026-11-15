@@ -4,6 +4,7 @@ The runtime observations live in the retained SDK log and probe, not in this
 reader. This does not re-run the simulator or prove physical/Store behavior.
 """
 import hashlib
+import base64
 import json
 from pathlib import Path
 import unittest
@@ -32,17 +33,47 @@ def check_payload(name, data):
 def check_sources(build, read):
     from tools.generate_native_version import render
     current_version = read(ROOT / 'watchface/source/generated/NativeVersion.mc').decode()
-    if current_version != render(ROOT) or 'BUILD = "0.1.13"' not in current_version:
+    if current_version != render(ROOT) or 'BUILD = "0.1.16"' not in current_version:
         raise ValueError('current NativeVersion identity differs')
     # The receipt predates DISPLAY03. Bind the live input to the new admission
     # and compare its preserved predecessor bytes to the historical receipt.
-    proof = json.loads((ROOT / 'openspec/changes/spacefox-watchface/evidence/display03-active-tick-wake/integration13/proof.json').read_text())
+    catalog = json.loads((ROOT / 'locales/catalog.json').read_text())
+    refs = catalog['supportPolicy']['softwareQualificationProof']; ref = refs.get('integrated016Proof', refs.get('version14Proof', refs.get('decoderStreamProof', refs.get('settingsReadabilityProof'))))
+    proof = json.loads((ROOT / (ref['path'] if ref else 'openspec/changes/spacefox-watchface/evidence/display03-active-tick-wake/integration13/proof.json')).read_text())
     for name, expected in {**build['productionSources'], **build['productionResources']}.items():
         data = read(ROOT / name)
         if digest(data) != proof['nativeInputs'][name]:
             raise ValueError('native owner changed: ' + name)
         if digest(data) != expected:
-            data = (EVIDENCE.parent / 'display03-active-tick-wake/integration13/historical/settings' / name).read_bytes()
+            # Resolve the exact recorded byte, never relabel a newer owner as
+            # the old execution. Both retained chains expose their snapshots.
+            proof_paths = [refs.get(key) for key in ('integrated016Proof', 'reminder015Proof', 'version14Proof', 'decoderStreamProof', 'settingsReadabilityProof', 'integration13DeltaProof')]
+            proof_paths.append({'path': 'openspec/changes/spacefox-watchface/evidence/display04-whole-quality/admission/proof.json'})
+            for prior_ref in proof_paths:
+                if not prior_ref:
+                    continue
+                raw = (ROOT / prior_ref['path']).read_bytes()
+                if prior_ref.get('sha256') and digest(raw) != prior_ref['sha256']:
+                    raise ValueError('historical qualification proof changed')
+                item = json.loads(raw).get('priorSnapshots', {}).get(name)
+                if item:
+                    stored = (ROOT / item['path']).read_bytes()
+                    if digest(stored) != item['sha256']:
+                        raise ValueError('historical snapshot changed: ' + name)
+                    candidate = base64.b64decode(stored, validate=True) if item.get('encoding') == 'base64' else stored
+                    if digest(candidate) == expected:
+                        data = candidate
+                        break
+            if digest(data) != expected:
+                try:
+                    from tests.public_proof_inputs import recorded_input
+                    data = recorded_input(name, expected)
+                except AssertionError:
+                    for folder in ('historical/settings', 'historical/timing'):
+                        path = EVIDENCE.parent / 'display03-active-tick-wake/integration13' / folder / name
+                        if path.is_file() and digest(path.read_bytes()) == expected:
+                            data = path.read_bytes()
+                            break
         if digest(data) != expected:
             raise ValueError('historical native owner changed: ' + name)
 
@@ -121,7 +152,7 @@ class ReleaseUpdateAdmissionTest(unittest.TestCase):
         def altered(path):
             data = original(path)
             return data + b'changed' if path.resolve() == target else data
-        with patch.object(Path, 'read_bytes', altered), self.assertRaisesRegex(ValueError, 'rejection menu current owner changed'):
+        with patch.object(Path, 'read_bytes', altered), self.assertRaisesRegex(ValueError, '(settings readability|decoder|version|integrated016) native closure changed'):
             software_locales(ROOT)
 
     def test_language_admission_refuses_changed_sdk_observation(self):

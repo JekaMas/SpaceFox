@@ -1,0 +1,32 @@
+test_moving_or_unavailable_departure_point_negative (tests.test_native_geography.NativeGeographyTest.test_moving_or_unavailable_departure_point_negative) ... ok
+test_moving_or_unavailable_departure_point_positive (tests.test_native_geography.NativeGeographyTest.test_moving_or_unavailable_departure_point_positive) ... FAIL
+test_small_island_or_date_line_site_negative (tests.test_native_geography.NativeGeographyTest.test_small_island_or_date_line_site_negative) ... ok
+test_small_island_or_date_line_site_positive (tests.test_native_geography.NativeGeographyTest.test_small_island_or_date_line_site_positive) ... ok
+test_vc06_p2_s01_negative (tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s01_negative) ... ok
+test_vc06_p2_s01_positive (tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s01_positive) ... ok
+test_vc06_p2_s02_negative (tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s02_negative) ... ok
+test_vc06_p2_s02_positive (tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s02_positive) ... ok
+test_vc06_p2_s03_negative (tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s03_negative) ... ok
+test_vc06_p2_s03_positive (tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s03_positive) ... ok
+test_vc06_p1_s03_negative_current (tests.test_native_current_pad_geography.CurrentPadGeographyTest.test_vc06_p1_s03_negative_current) ... ok
+test_vc06_p1_s03_positive_current (tests.test_native_current_pad_geography.CurrentPadGeographyTest.test_vc06_p1_s03_positive_current) ... ok
+test_current_provisional_and_raw_positive (tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_provisional_and_raw_positive) ... ok
+test_current_raw_depth_and_storage_negative (tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_raw_depth_and_storage_negative) ... ok
+test_s01_negative (tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s01_negative) ... ok
+test_s01_positive (tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s01_positive) ... ok
+test_s02_negative (tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s02_negative) ... ok
+test_s02_positive (tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s02_positive) ... ok
+
+======================================================================
+FAIL: test_moving_or_unavailable_departure_point_positive (tests.test_native_geography.NativeGeographyTest.test_moving_or_unavailable_departure_point_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-public-final-integration/tests/test_native_geography.py", line 76, in test_moving_or_unavailable_departure_point_positive
+    self.assertEqual(schedule,(ROOT/'watchface/source/ScheduleState.mc').read_bytes())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: b'imp[1206 chars]n    function format(seconds as Number or Long[453 chars]n}\n' != b'imp[1206 chars]n    // LOW is a minute snapshot of the same s[987 chars]n}\n'
+
+----------------------------------------------------------------------
+Ran 18 tests in 29.884s
+
+FAILED (failures=1)

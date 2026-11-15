@@ -5,7 +5,7 @@ import Toybox.StringUtil;
 // JSON integers need not fit the VM's arithmetic types. Keep an overflow
 // token as its exact canonical decimal lexeme. Domain validators must choose
 // explicitly whether that field is metadata or a bounded arithmetic value.
-(:typecheck(false))
+(:background, :typecheck(false))
 class NativeIntegerLexeme {
     var text;
     function initialize(value){text=value;}
@@ -14,7 +14,7 @@ class NativeIntegerLexeme {
 
 // Runtime-checked JSON boundary. Only integer JSON is admitted by current feed/descriptor objects.
 // Dynamic containers are deliberately checked here before domain construction.
-(:extendedCode, :typecheck(false))
+(:background, :extendedCode, :typecheck(false))
 class NativeJson {
     var source; var index; var nodes;var hasDel=false; var feedMode=false;var catalogMode=false;var keepCatalogNames=true;var rowOwner=null;var rootOwner=null;var nodeOwner=null;var commonKeys=["kind","name","visual","position","sourcePosition"];var path="";var spans={};var ignored=[];
     function initialize(){source="";index=0;nodes=0;}
@@ -124,7 +124,7 @@ function nativeHex(value){
     try{var bytes=StringUtil.convertEncodedString(value,{:fromRepresentation=>StringUtil.REPRESENTATION_STRING_HEX,:toRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY});var encoded=StringUtil.convertEncodedString(bytes,{:fromRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:toRepresentation=>StringUtil.REPRESENTATION_STRING_HEX});return bytes.size()==32&&encoded.toLower().equals(value);}catch(e){return false;}
 }
 
-(:typecheck(false))
+(:background, :typecheck(false))
 function nativeSpace(n){return n<=32||n==133||n==160||n==5760||n>=8192&&n<=8202||n==8232||n==8233||n==8239||n==8287||n==12288;}
-(:typecheck(false))
+(:background, :typecheck(false))
 function nativeNormalizedEdges(value){if(!(value instanceof String)||value.length()==0){return false;}var first=value.substring(0,1).toCharArray()[0].toNumber();var last=value.substring(value.length()-1,value.length()).toCharArray()[0].toNumber();return !nativeSpace(first)&&!nativeSpace(last);}

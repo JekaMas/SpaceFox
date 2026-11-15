@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "change": "optimize-image-pipeline",
+  "scope": {
+    "property_ids": [
+      "I1.P1",
+      "I2.P1"
+    ],
+    "test_ids": [
+      "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_corpus_positive",
+      "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_corpus_negative",
+      "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_invalid_positive",
+      "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_invalid_negative",
+      "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_lossless_positive",
+      "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_lossless_negative",
+      "unittest::tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_current_raw_pixels_identity_age_and_bounds",
+      "unittest::tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_corrupt_digest_rejected",
+      "unittest::tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_prepare_refuses_bad_profile_envelope_age_and_missing_closure_atomically"
+    ]
+  },
+  "reviews": [
+    {
+      "id": "D1",
+      "question": "Source-derived raster representations and integrity boundary",
+      "property_ids": [
+        "I1.P1",
+        "I2.P1"
+      ],
+      "test_ids": [
+        "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_corpus_positive",
+        "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_corpus_negative",
+        "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_invalid_positive",
+        "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_invalid_negative",
+        "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_lossless_positive",
+        "unittest::tests.test_image_pipeline_research.ImagePipelineTest.test_lossless_negative",
+        "unittest::tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_current_raw_pixels_identity_age_and_bounds",
+        "unittest::tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_corrupt_digest_rejected",
+        "unittest::tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_prepare_refuses_bad_profile_envelope_age_and_missing_closure_atomically"
+      ],
+      "searches": [
+        {
+          "kind": "semantic",
+          "status": "unavailable",
+          "query": "SFR1M raster construction and rendering ownership",
+          "reason": "jbcontext requires JetBrains AI login; no login authorized.",
+          "outcome": "No semantic-search evidence claimed.",
+          "results": []
+        },
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Read existing native profile, renderer and retained fixture regeneration.",
+          "outcome": "Bounded raster writer and decoder owners identified.",
+          "results": [
+            {
+              "path": "tools/spacefox/native_profile.py",
+              "line": 102,
+              "classification": "change_candidate",
+              "reason": "Current SFR1 encoder."
+            }
+          ]
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Known source and exact codec ownership",
+          "reason": "No symbol refactor needed.",
+          "outcome": "No indexed evidence claimed.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "A new source-integrated corpus comparison and compatible improvement."
+    }
+  ]
+}

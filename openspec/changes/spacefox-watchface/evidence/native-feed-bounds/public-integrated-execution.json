@@ -1,0 +1,143 @@
+{
+  "cases": {
+    "LS06.P3.S01.NEGATIVE.CURRENT": {
+      "evidence_fingerprint": "8195df05bc5cf13b8a799540c6c652e30e5c36de4b17a4b168e07ef3d4a3ac52",
+      "green_expectation": "The retained scenario-specific negative contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS06.P3.S01.NEGATIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "invalidation_dependencies": [
+        "corpus/real-schedule-20261113/**",
+        "tests/fixtures/native-transport/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/build_watchface.py",
+        "watchface/api-policy.json",
+        "watchface/manifest.xml",
+        "watchface/resources-rus/strings/strings.xml",
+        "watchface/resources/settings/**",
+        "watchface/resources/strings/strings.xml",
+        "watchface/source/**",
+        "watchface/toolchain-lock.json",
+        "watchface/transport-tests/**",
+        "tests/test_native_feed_bounds.py",
+        "tests/native_scene_diagnostics/build_feed_bounds.py",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/p3/**",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/feed-controls/**",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/receipt-hashes.json"
+      ],
+      "observable": "At the current owner, observe this exact retained contract: Native8KiB source-byte predicate and depth/oversize/storage-failure controls; unit heap is8MiB, ordinary OS memory/cold/warm transfer proof is separate pinned experiment.. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
+      "polarity": "negative",
+      "property_id": "LS06.P3",
+      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
+      "scenario": "Compressed schedule exceeds the decoded allowance",
+      "scenario_fingerprint": "e381c55d0a173ee5dcb945cb338de91bd079162d93c017fafbef953e00889b67",
+      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
+      "source_path": "tests/test_native_feed_bounds.py",
+      "source_sha256": "6c3a48e13f92a021d591567cb6ae0ee1498b67c12febdebff47aa8924d6b934f",
+      "status": "passed",
+      "test_id": "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_raw_depth_and_storage_negative"
+    },
+    "LS06.P3.S01.POSITIVE.CURRENT": {
+      "evidence_fingerprint": "60527c8c6af3e8284c68385fec38b30c41b28b6f3fd8a825f73db6afc48c729b",
+      "green_expectation": "The retained scenario-specific positive contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[LS06.P3.S01.POSITIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "invalidation_dependencies": [
+        "corpus/real-schedule-20261113/**",
+        "tests/fixtures/native-transport/**",
+        "tests/test_current_format_acceptance.py",
+        "tools/build_watchface.py",
+        "watchface/api-policy.json",
+        "watchface/manifest.xml",
+        "watchface/resources-rus/strings/strings.xml",
+        "watchface/resources/settings/**",
+        "watchface/resources/strings/strings.xml",
+        "watchface/source/**",
+        "watchface/toolchain-lock.json",
+        "watchface/transport-tests/**",
+        "tests/test_native_feed_bounds.py",
+        "tests/native_scene_diagnostics/build_feed_bounds.py",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/p3/**",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/feed-controls/**",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/receipt-hashes.json"
+      ],
+      "observable": "At the current owner, observe this exact retained contract: Native8KiB source-byte predicate and depth/oversize/storage-failure controls; unit heap is8MiB, ordinary OS memory/cold/warm transfer proof is separate pinned experiment.. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
+      "polarity": "positive",
+      "property_id": "LS06.P3",
+      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
+      "scenario": "Compressed schedule exceeds the decoded allowance",
+      "scenario_fingerprint": "e381c55d0a173ee5dcb945cb338de91bd079162d93c017fafbef953e00889b67",
+      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
+      "source_path": "tests/test_native_feed_bounds.py",
+      "source_sha256": "6c3a48e13f92a021d591567cb6ae0ee1498b67c12febdebff47aa8924d6b934f",
+      "status": "passed",
+      "test_id": "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_provisional_and_raw_positive"
+    }
+  },
+  "change": "spacefox-watchface",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_native_feed_bounds"
+      ],
+      "cwd": "/Users/jekamas/projects/SpaceFox-worktrees/verify-native-feed-bounds-public",
+      "duration_seconds": 0.1852125832810998,
+      "exit_code": 0,
+      "id": "native-feed-bounds-current",
+      "observed_tests": {
+        "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_provisional_and_raw_positive": "pass",
+        "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_raw_depth_and_storage_negative": "pass"
+      },
+      "status": "exited",
+      "stderr": "test_current_provisional_and_raw_positive (tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_provisional_and_raw_positive) ... ok\ntest_current_raw_depth_and_storage_negative (tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_raw_depth_and_storage_negative) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.073s\n\nOK\n",
+      "stderr_artifact": "/Users/jekamas/projects/SpaceFox-worktrees/verify-native-feed-bounds-public/openspec/changes/spacefox-watchface/evidence/native-feed-bounds/public-integrated-execution.json.native-feed-bounds-current.stderr.log",
+      "stderr_truncated": false,
+      "stdout": "",
+      "stdout_artifact": "/Users/jekamas/projects/SpaceFox-worktrees/verify-native-feed-bounds-public/openspec/changes/spacefox-watchface/evidence/native-feed-bounds/public-integrated-execution.json.native-feed-bounds-current.stdout.log",
+      "stdout_truncated": false
+    }
+  ],
+  "finished_at": "2026-11-15T07:47:00.860987+00:00",
+  "git": {
+    "dirty": true,
+    "head": "777e50c07b2071a9043966549679bdfecdad22cf",
+    "status": "known"
+  },
+  "manifest": "openspec/changes/spacefox-watchface/verification.json",
+  "manifest_sha256": "035acff350e0c7cb1cb071517ebcedad367398582268a689100fc76f98bf4723",
+  "requested_selectors": {
+    "all": false,
+    "cases": [],
+    "changed_paths": [],
+    "commands": [],
+    "owners": [],
+    "properties": [
+      "LS06.P3"
+    ],
+    "requirements": [],
+    "scenarios": [],
+    "tests": []
+  },
+  "schema_version": 2,
+  "selection": {
+    "cases": [
+      "LS06.P3.S01.NEGATIVE.CURRENT",
+      "LS06.P3.S01.POSITIVE.CURRENT"
+    ],
+    "commands": [
+      "native-feed-bounds-current"
+    ],
+    "properties": [
+      "LS06.P3"
+    ],
+    "requirements": [
+      "LS06"
+    ]
+  },
+  "specifications": {
+    "LS06": "eb2b3e9448b54f59ca78563b132a9afb326e3e5a3fa9b5096e0d8ef0fb659a14"
+  },
+  "started_at": "2026-11-15T07:47:00.499806+00:00",
+  "status": "passed",
+  "substitution_gaps": []
+}

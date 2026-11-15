@@ -1,0 +1,48 @@
+------------------------------------------------------------------------------
+Executing test cadencePositive...
+PASS
+------------------------------------------------------------------------------
+Executing test cadenceNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test quietPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test quietNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test identityPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test identityNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test schedulerPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test schedulerNegative...
+
+Error: Unhandled Exception
+Exception: post
+Stack: 
+  - post() at /source/watchface/reminder-tests/ReminderTests.mc:17 0x10008e30 
+  - wakeWith() at /source/watchface/source/LaunchReminder.mc:57 0x100036d5 
+  - schedulerNegative() at /source/watchface/reminder-tests/ReminderTests.mc:50 0x10005d42 
+  - evaluate_test_entries_0_to_8() at /task/fulltest/gen/006-B4432-00/source/UnitTests.mcgen:72 0x10009a8a 
+  - runTest() at /task/fulltest/gen/006-B4432-00/source/UnitTests.mcgen:87 0x10009b91 
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+cadencePositive                     PASS
+cadenceNegative                     PASS
+quietPositive                       PASS
+quietNegative                       PASS
+identityPositive                    PASS
+identityNegative                    PASS
+schedulerPositive                   PASS
+schedulerNegative                   PASS
+Ran 8 tests
+
+PASSED (passed=8, failed=0, errors=0)

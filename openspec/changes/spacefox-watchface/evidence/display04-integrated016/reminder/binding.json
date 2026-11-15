@@ -1,0 +1,27 @@
+{
+  "inputs": {
+    "watchface/source/LaunchReminder.mc": "e95d4e6bead0b3206b66a69ea07ba183058471a5345128fb9154221aea32cef5",
+    "watchface/source/LaunchReminderForeground.mc": "fb9b5e3a7e3cf825752ea670083fd25b91216c3f236237e1fc4c703507153560",
+    "watchface/source/NativeFeed.mc": "2ecdf2be9db0f0aec53cc168944a4dd749c4389982a6d4efd63dca2e48ee41c7",
+    "watchface/source/NativeJson.mc": "7b051ac93866e70069ae71833c30653feefbb7f9da029c9d77ee5621284246c2",
+    "watchface/source/FeedService.mc": "04be4d789e9421564aea038a1f1b6cb764c8eec013c5d0ed4f2f8672012a519d",
+    "watchface/source/NativeForegroundApp.mc": "27462df20343b183a96202ef73e1a098345fc1a4bf327d075ed5ec6d213db0d6",
+    "watchface/source/SpaceFoxApp.mc": "bfdfc116fa4fe1a87b295e12a6b676dd66ef7798356ca2d1f8e5353da42fd57d",
+    "watchface/source/SettingsMenu.mc": "21256528d7a051d712cb10c51c618acef95cee22e8d985c4869d29dc16e96ab3",
+    "watchface/source/SettingsMenuText.mc": "d7e7da49ba1cfee9fbf0453c14baebde89a298ecbb5ef5c8ba37711e04e071fc",
+    "watchface/source/generated/NativeVersion.mc": "18a440221b1cbc54c45eb530704ccbb248a89aafb2903f6c3fe056c8f9bba338",
+    "watchface/manifest.xml": "0d73879291aca586f5cdfe236e7ea0a008d107946634de4218f29f856ee00f13",
+    "watchface/resources/settings/properties.xml": "998ad36162b6820e53f3d92e7dcfe7963ece9cb99a182f9ac8e838666612b140",
+    "watchface/resources/settings/settings.xml": "8e45f2acca0af433bcfb69e932f55219f63f9d5e862765393a712a53cc7a01b3",
+    "watchface/reminder-tests/ReminderTests.mc": "0b6bb55c474dd5baed7481b479b35bf58a9621a002233b14e08524a0764b6185",
+    "watchface/reminder-tests/ReminderFixture.mc": "b07c5fec0a50d560fc6595be6c5b111bb1ed812abd07b81cf1c8ce3627d63587",
+    "tests/fixtures/typed_operator/feed.json": "1d836f7328c9f636abbd48fd37a059e7d1e9f3cf3afc872ea91a8a7fd154b894",
+    "tests/fixtures/watch_refresh_cache/packets.json": "e2ad46469a9bc6f7b0e17b58fd2cce1f9454e6ac3f5b2ed49b77880e53571490",
+    "openspec/changes/add-launch-reminders/evidence/native-reminder-tests/peer-DisplayCatalog.json": "1130202cf8c081e9cc4a540021f26f7e21f1c2dea0805a506c34c2a98ef0a8ae",
+    "openspec/changes/add-launch-reminders/evidence/native-reminder-tests/peer-DisplayInitial.json": "d1d9ae61ffcc0ad175da9f3f093b27514f9dbfaa50525a18494bb7745b347522"
+  },
+  "logSha256": "f5064d48bafdc90aa6d43a162e604bd4878be9f7647b75b2f44d9a5720ed9576",
+  "rawExit": 1,
+  "compiler": "official SDK 9.3.0 macOS FR165M API5.2",
+  "boundary": "current integrated source, test-key SDK unit execution; not hardware or OS scheduling"
+}

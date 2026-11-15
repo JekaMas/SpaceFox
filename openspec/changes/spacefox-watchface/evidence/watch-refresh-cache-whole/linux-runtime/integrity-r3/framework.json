@@ -1,0 +1,41 @@
+{
+  "moreOmissionPreservesAge": {
+    "status": "passed",
+    "raw_exit_code": 1,
+    "expected_tests": [
+      "moreOmissionPreservesAge"
+    ],
+    "observed_tests": {
+      "moreOmissionPreservesAge": "PASS"
+    },
+    "observed_count": 1,
+    "launcher_nonzero_framework_pass": true,
+    "stderrEmpty": true
+  },
+  "moreOfflineEmpty": {
+    "status": "passed",
+    "raw_exit_code": 1,
+    "expected_tests": [
+      "moreOfflineEmpty"
+    ],
+    "observed_tests": {
+      "moreOfflineEmpty": "PASS"
+    },
+    "observed_count": 1,
+    "launcher_nonzero_framework_pass": true,
+    "stderrEmpty": true
+  },
+  "moreCurrentIsoLiterals": {
+    "status": "passed",
+    "raw_exit_code": 1,
+    "expected_tests": [
+      "moreCurrentIsoLiterals"
+    ],
+    "observed_tests": {
+      "moreCurrentIsoLiterals": "PASS"
+    },
+    "observed_count": 1,
+    "launcher_nonzero_framework_pass": true,
+    "stderrEmpty": true
+  }
+}

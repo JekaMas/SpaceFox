@@ -1,0 +1,79 @@
+test_language_admission_refuses_changed_menu_owner (tests.test_release_update_native.ReleaseUpdateAdmissionTest.test_language_admission_refuses_changed_menu_owner) ... ok
+test_language_admission_refuses_changed_sdk_observation (tests.test_release_update_native.ReleaseUpdateAdmissionTest.test_language_admission_refuses_changed_sdk_observation) ... ok
+test_language_admission_refuses_changed_warning_glyph_observation (tests.test_release_update_native.ReleaseUpdateAdmissionTest.test_language_admission_refuses_changed_warning_glyph_observation) ... ok
+test_feed_hosts_keep_independent_age_and_reschedule (tests.test_release_update_native.ReleaseUpdateNativeTest.test_feed_hosts_keep_independent_age_and_reschedule) ... ok
+test_host_publisher_floor_and_owner_mutation_refusal (tests.test_release_update_native.ReleaseUpdateNativeTest.test_host_publisher_floor_and_owner_mutation_refusal) ... ok
+test_open_warning_tracks_language_selection (tests.test_release_update_native.ReleaseUpdateNativeTest.test_open_warning_tracks_language_selection) ... ok
+test_supported_current_cache_reopens (tests.test_release_update_native.ReleaseUpdateNativeTest.test_supported_current_cache_reopens) ... ok
+test_unsupported_renderer_refused (tests.test_release_update_native.ReleaseUpdateNativeTest.test_unsupported_renderer_refused) ... ok
+test_unsupported_schema_refused_without_replacement (tests.test_release_update_native.ReleaseUpdateNativeTest.test_unsupported_schema_refused_without_replacement) ... ok
+test_changed_current_build_id_is_rejected_by_native_readers (tests.test_current_version_binding.CurrentVersionBindingTest.test_changed_current_build_id_is_rejected_by_native_readers) ... 
+  test_changed_current_build_id_is_rejected_by_native_readers (tests.test_current_version_binding.CurrentVersionBindingTest.test_changed_current_build_id_is_rejected_by_native_readers) (replacement=b'ID = "deadbeef"') ... ERROR
+  test_changed_current_build_id_is_rejected_by_native_readers (tests.test_current_version_binding.CurrentVersionBindingTest.test_changed_current_build_id_is_rejected_by_native_readers) (replacement=b'ID = "de5011f4"') ... ERROR
+test_current_native_input_identity_and_mutation_refusal (tests.test_public_proof_portability.PublicProofPortabilityTest.test_current_native_input_identity_and_mutation_refusal) ... ok
+setUpClass (tests.test_current_ui_batch.CurrentUiBatchTest) ... ERROR
+
+======================================================================
+ERROR: test_changed_current_build_id_is_rejected_by_native_readers (tests.test_current_version_binding.CurrentVersionBindingTest.test_changed_current_build_id_is_rejected_by_native_readers) (replacement=b'ID = "deadbeef"')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/test_current_version_binding.py", line 22, in test_changed_current_build_id_is_rejected_by_native_readers
+    data_reader.CurrentDataConvergenceTest.setUpClass()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/test_current_data_convergence.py", line 62, in setUpClass
+    data = historical_input(name, expected)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/native_historical_binding.py", line 29, in historical_input
+    data = path.read_bytes() if path.exists() else base64.b64decode(path.with_name(path.name + '.b64').read_bytes())
+                                                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/test_current_version_binding.py", line 16, in altered
+    data = original(path)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 777, in read_bytes
+    with self.open(mode='rb', buffering=0) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/openspec/changes/spacefox-watchface/evidence/display03-active-tick-wake/integration13/historical/timing/watchface/source/Fitness.mc.b64'
+
+======================================================================
+ERROR: test_changed_current_build_id_is_rejected_by_native_readers (tests.test_current_version_binding.CurrentVersionBindingTest.test_changed_current_build_id_is_rejected_by_native_readers) (replacement=b'ID = "de5011f4"')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/test_current_version_binding.py", line 22, in test_changed_current_build_id_is_rejected_by_native_readers
+    data_reader.CurrentDataConvergenceTest.setUpClass()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/test_current_data_convergence.py", line 62, in setUpClass
+    data = historical_input(name, expected)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/native_historical_binding.py", line 29, in historical_input
+    data = path.read_bytes() if path.exists() else base64.b64decode(path.with_name(path.name + '.b64').read_bytes())
+                                                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/test_current_version_binding.py", line 16, in altered
+    data = original(path)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 777, in read_bytes
+    with self.open(mode='rb', buffering=0) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/openspec/changes/spacefox-watchface/evidence/display03-active-tick-wake/integration13/historical/timing/watchface/source/Fitness.mc.b64'
+
+======================================================================
+ERROR: setUpClass (tests.test_current_ui_batch.CurrentUiBatchTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/test_current_ui_batch.py", line 76, in setUpClass
+    cls.result=verify(ROOT)
+               ~~~~~~^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/test_current_ui_batch.py", line 20, in verify
+    verify_rejection_menu(root)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tools/verify_current_ui_batch.py", line 91, in verify_rejection_menu
+    return validate(root, catalog)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tools/native_version14_qualification.py", line 28, in validate
+    raise ValueError('prior qualification proof changed')
+ValueError: prior qualification proof changed
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.335s
+
+FAILED (errors=3)

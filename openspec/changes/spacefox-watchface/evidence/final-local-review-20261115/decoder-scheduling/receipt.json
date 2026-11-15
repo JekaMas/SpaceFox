@@ -1,0 +1,35 @@
+{
+  "status": "unresolved",
+  "scope": "Controlled SDK 9.3 FR165 test-key, retained Cape RGB map decoder, repeating 50 ms timer. Not a full cache-to-ready request, physical watch, or production-signed runtime.",
+  "baseline": "20,064 ms / 401 timer callbacks, bitmap and outline complete.",
+  "trials": [
+    {
+      "variant": "guard12",
+      "decoder_sha256": "1b4ae812c7fb29505fbabcb60094915889a514f752ae702315481bc482909c35",
+      "program_sha256": "edd32705b3059d2f1415fbe4615a9acd1034a479bda9c17cc49e020ce7fd6b42",
+      "launch_log": "launch-fixed.log",
+      "launch_sha256": "155abfbff67b3b5afe51b032b99f0a0534f2d7b4729b847ebd881eb592ad41b9"
+    },
+    {
+      "variant": "guard60",
+      "decoder_sha256": "8199fd51c21c205e15b706457fc0d8790731dacda691afdedebfe0122083239f",
+      "program_sha256": "7000c3069431372b405a97370b7c42895adb9f77a63deebc5c53ceb3b60afa14",
+      "launch_log": "launch-60.log",
+      "launch_sha256": "04714cddde06c81ff23008a9c55fb5c6bf6010799e9db65ec18c4d6885dbcfa3"
+    },
+    {
+      "variant": "guard30",
+      "decoder_sha256": "140e4a7badb5b77037fa91d62076444ffa6c7946a000115444719d74fac45bf1",
+      "program_sha256": "e91fa157ca0e2a7323bd2eecd0330436a6d824833c86c061e7bb1eaa13492627",
+      "launch_log": "launch-30.log",
+      "launch_sha256": "d7218bd39b4578e976144aa93f5c8494ccdf2305593654e5582f0cbbcbdfc3e7"
+    }
+  ],
+  "observations": {
+    "guard12": "396 callbacks, 19,813 ms, max 2 rows and 23 ms callback; bitmap and outline complete.",
+    "guard60": "watchdog tripped in outlineRow before completion.",
+    "guard30": "watchdog tripped in oneRow before completion."
+  },
+  "decision": "Experiments reverted; no tested scheduling-only variant satisfies both watchdog and WF09.P3 strict 8000 ms deadline. Full request-to-complete remains unmeasured and is not claimed green.",
+  "later_resolution": "A separate streamed RGB and qualified bundled-outline repair reached the actual no-push ordinary full-scene predicate in 5703 ms; see ../../decoder-stream-013/reopen.log. This does not retroactively turn the earlier trials green."
+}

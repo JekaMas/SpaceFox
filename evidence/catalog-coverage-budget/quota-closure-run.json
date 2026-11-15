@@ -1,0 +1,176 @@
+{
+  "cases": {
+    "VC07.P1.S02.NEGATIVE.CURRENT": {
+      "evidence_fingerprint": "209a42639c036ec1db360b1ea2bb05c76c1e1620f8334151f87abd6309939013",
+      "green_expectation": "The retained scenario-specific negative contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[VC07.P1.S02.NEGATIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "invalidation_dependencies": [
+        "assets/fonts/**",
+        "assets/rocket-pack/catalog.json",
+        "assets/rocket-pack/registry.source.json",
+        "catalog/**",
+        "corpus/real-schedule-20261113/**",
+        "schemas/**",
+        "tests/fixtures/state/**",
+        "tests/fixtures/transport/**",
+        "tests/test_current_format_acceptance.py",
+        "tests/test_native_visual_transport.py",
+        "tools/build_native_resources.py",
+        "tools/build_watchface.py",
+        "tools/refresh_catalog.py",
+        "tools/spacefox/catalog_refresh.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "watchface/generated/**",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources*/**",
+        "watchface/source/**",
+        "watchface/source/VisualCatalog.mc",
+        "watchface/toolchain-lock.json",
+        "tests/test_catalog_coverage_budget.py",
+        "tests/test_current_metadata_publisher.py",
+        "tests/fixtures/metadata-current/**",
+        "tools/display_corpus.py",
+        "tools/spacefox/current_catalog.py",
+        "tools/spacefox/native_motion.py",
+        "tests/test_catalog_quota_peer.py"
+      ],
+      "observable": "At the current owner, observe this exact retained contract: only durable reserved request proceeds, no source-age renewal from catalog traversal. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
+      "polarity": "negative",
+      "property_id": "VC07.P1",
+      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
+      "scenario": "Catalog refresh competes with launch updates",
+      "scenario_fingerprint": "1259b8ee821cfdfb90b8ef374bad9049f93fcd9921a9cb6c970024de3a656865",
+      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
+      "source_path": "tests/test_catalog_coverage_budget.py",
+      "source_sha256": "256a0393d2c2297a3a206a42ddd972b1066ca0e858c8e1fbadc9bf9fd62af1df",
+      "status": "passed",
+      "test_id": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_negative"
+    },
+    "VC07.P1.S02.POSITIVE.CURRENT": {
+      "evidence_fingerprint": "fd111f92cbe1f6e80c5a8a6959df7f5d7c0ac634923a2456fcaf1f000ef638fc",
+      "green_expectation": "The retained scenario-specific positive contract holds for actual-record current-format input, with exact identities/precision/absence/source ages, shared quota/CAS, coherent accepted/pending recovery and unchanged resource bounds where applicable; no unobserved native/provider/cloud/public pass is inferred. The exact original scenario assertions retained in evidence/current-only-finite-spec/independent-whole-r6/source-closure-audit.json retainedScenarioContracts[VC07.P1.S02.POSITIVE] remain obligations after substituting the one current format and actual record setup; only explicit retired old-format/profile/migration/archive clauses are excluded.",
+      "invalidation_dependencies": [
+        "assets/fonts/**",
+        "assets/rocket-pack/catalog.json",
+        "assets/rocket-pack/registry.source.json",
+        "catalog/**",
+        "corpus/real-schedule-20261113/**",
+        "schemas/**",
+        "tests/fixtures/state/**",
+        "tests/fixtures/transport/**",
+        "tests/test_current_format_acceptance.py",
+        "tests/test_native_visual_transport.py",
+        "tools/build_native_resources.py",
+        "tools/build_watchface.py",
+        "tools/refresh_catalog.py",
+        "tools/spacefox/catalog_refresh.py",
+        "tools/spacefox/provider.py",
+        "tools/spacefox/publisher.py",
+        "tools/spacefox/schedule.py",
+        "watchface/generated/**",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources*/**",
+        "watchface/source/**",
+        "watchface/source/VisualCatalog.mc",
+        "watchface/toolchain-lock.json",
+        "tests/test_catalog_coverage_budget.py",
+        "tests/test_current_metadata_publisher.py",
+        "tests/fixtures/metadata-current/**",
+        "tools/display_corpus.py",
+        "tools/spacefox/current_catalog.py",
+        "tools/spacefox/native_motion.py",
+        "tests/test_catalog_quota_peer.py"
+      ],
+      "observable": "At the current owner, observe this exact retained contract: resumable catalog honors remaining shared budget without starving due checks. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
+      "polarity": "positive",
+      "property_id": "VC07.P1",
+      "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
+      "scenario": "Catalog refresh competes with launch updates",
+      "scenario_fingerprint": "1259b8ee821cfdfb90b8ef374bad9049f93fcd9921a9cb6c970024de3a656865",
+      "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
+      "source_path": "tests/test_catalog_coverage_budget.py",
+      "source_sha256": "256a0393d2c2297a3a206a42ddd972b1066ca0e858c8e1fbadc9bf9fd62af1df",
+      "status": "passed",
+      "test_id": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_positive"
+    }
+  },
+  "change": "spacefox-watchface",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_positive",
+        "tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_negative",
+        "tests.test_catalog_quota_peer.CatalogQuotaPeerTest.test_four_schedule_reservations_reopen_then_catalog_and_due_schedule",
+        "tests.test_catalog_quota_peer.CatalogQuotaPeerTest.test_manual_fifteenth_slot_blocks_queued_stale_and_fresh_collectors"
+      ],
+      "cwd": "/Users/jekamas/projects/SpaceFox-worktrees/verify-catalog-coverage-budget-public",
+      "duration_seconds": 71.1046322081238,
+      "exit_code": 0,
+      "id": "catalog-quota-original-scenarios",
+      "observed_tests": {
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_negative": "pass",
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_positive": "pass",
+        "unittest::tests.test_catalog_quota_peer.CatalogQuotaPeerTest.test_four_schedule_reservations_reopen_then_catalog_and_due_schedule": "pass",
+        "unittest::tests.test_catalog_quota_peer.CatalogQuotaPeerTest.test_manual_fifteenth_slot_blocks_queued_stale_and_fresh_collectors": "pass"
+      },
+      "status": "exited",
+      "stderr": "test_vc07_s02_positive (tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_positive) ... ok\ntest_vc07_s02_negative (tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_negative) ... ok\ntest_four_schedule_reservations_reopen_then_catalog_and_due_schedule (tests.test_catalog_quota_peer.CatalogQuotaPeerTest.test_four_schedule_reservations_reopen_then_catalog_and_due_schedule) ... ok\ntest_manual_fifteenth_slot_blocks_queued_stale_and_fresh_collectors (tests.test_catalog_quota_peer.CatalogQuotaPeerTest.test_manual_fifteenth_slot_blocks_queued_stale_and_fresh_collectors) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 70.548s\n\nOK\n",
+      "stderr_artifact": "/Users/jekamas/projects/SpaceFox-worktrees/verify-catalog-coverage-budget-public/evidence/catalog-coverage-budget/quota-closure-run.json.catalog-quota-original-scenarios.stderr.log",
+      "stderr_truncated": false,
+      "stdout": "",
+      "stdout_artifact": "/Users/jekamas/projects/SpaceFox-worktrees/verify-catalog-coverage-budget-public/evidence/catalog-coverage-budget/quota-closure-run.json.catalog-quota-original-scenarios.stdout.log",
+      "stdout_truncated": false
+    }
+  ],
+  "finished_at": "2026-11-15T08:20:29.566397+00:00",
+  "git": {
+    "dirty": true,
+    "head": "f8eb2cc50dc4d35b3c89f8a8632358e8b11fcc91",
+    "status": "known"
+  },
+  "manifest": "openspec/changes/spacefox-watchface/verification.json",
+  "manifest_sha256": "b0db4ca5c98e03981cdcddc4262a03692479927774f27c72908931ed21914579",
+  "requested_selectors": {
+    "all": false,
+    "cases": [],
+    "changed_paths": [],
+    "commands": [
+      "catalog-quota-original-scenarios"
+    ],
+    "owners": [],
+    "properties": [],
+    "requirements": [],
+    "scenarios": [],
+    "tests": []
+  },
+  "schema_version": 2,
+  "selection": {
+    "cases": [
+      "VC07.P1.S02.NEGATIVE.CURRENT",
+      "VC07.P1.S02.POSITIVE.CURRENT"
+    ],
+    "commands": [
+      "catalog-quota-original-scenarios"
+    ],
+    "properties": [
+      "VC07.P1"
+    ],
+    "requirements": [
+      "VC07"
+    ]
+  },
+  "specifications": {
+    "VC07": "c4a66f4cdf67102dbd7f4a6e38c5f68acff6ce118de7aa24df9d4c1e02995192"
+  },
+  "started_at": "2026-11-15T08:19:18.230094+00:00",
+  "status": "passed",
+  "substitution_gaps": []
+}

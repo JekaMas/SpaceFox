@@ -1,0 +1,12 @@
+------------------------------------------------------------------------------
+Executing test moreOmissionPreservesAge...
+DEBUG (14:19): actual producer omission: selected A remains pending with own old source epoch while publisher and another record advance
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+moreOmissionPreservesAge            PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

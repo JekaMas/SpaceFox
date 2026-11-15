@@ -1,0 +1,34 @@
+setUpClass (tests.test_native_feed_bounds.NativeFeedBoundsTest) ... ERROR
+setUpClass (tests.test_native_current_pad_geography.CurrentPadGeographyTest) ... ERROR
+
+======================================================================
+ERROR: setUpClass (tests.test_native_feed_bounds.NativeFeedBoundsTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-public-final-integration/tests/test_native_feed_bounds.py", line 60, in setUpClass
+    raise AssertionError(f'{section}: {root / path} changed')
+AssertionError: p3: /Users/jekamas/projects/SpaceFox-public-final-integration/watchface/source/NativeRenderSource.mc changed
+
+======================================================================
+ERROR: setUpClass (tests.test_native_current_pad_geography.CurrentPadGeographyTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-public-final-integration/tests/test_native_current_pad_geography.py", line 11, in setUpClass
+    cls.evidence, cls.catalog, cls.rows, cls.results = evidence_data()
+                                                       ~~~~~~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-public-final-integration/tests/native_all_sites_support.py", line 16, in evidence_data
+    results = qualify(ROOT, evidence)
+  File "/Users/jekamas/projects/SpaceFox-public-final-integration/tools/native_all_site_qualification.py", line 207, in qualify
+    verify_native_builds(root,evidence,bindings)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-public-final-integration/tools/native_all_site_qualification.py", line 183, in verify_native_builds
+    require(hashlib.sha256((root/path).read_bytes()).hexdigest()==common['productionSources'][path], 'native rendering source changed: '+path)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-public-final-integration/tools/native_all_site_qualification.py", line 50, in require
+    raise ValueError(reason)
+ValueError: native rendering source changed: watchface/source/NativeSfr.mc
+
+----------------------------------------------------------------------
+Ran 0 tests in 3.112s
+
+FAILED (errors=2)

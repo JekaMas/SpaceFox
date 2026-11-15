@@ -1,0 +1,240 @@
+{
+  "change": "spacefox-watchface",
+  "manifest": "openspec/changes/spacefox-watchface/verification.json",
+  "manifest_sha256": "bc1ae7d92f8fc2b1411ec547ea7be6db34d3c2457e73582c35243569ebcf20f7",
+  "nodes": {
+    "cases": {
+      "LS11.P1.S05.NEGATIVE.CROSSVM": {
+        "command_id": "cross-vm-sdk-persistence-reconciliation",
+        "current_evidence_fingerprint": "832e1d856249aa29576e17d7db4821ac836d3a5e7abde36a496a9179688c09c8",
+        "green_expectation": "After the skipped near window B remains stale; exact old replay does not write or renew, older generation is rejected, newer source validation clears stale, and only the owned app namespace is cleaned.",
+        "id": "LS11.P1.S05.NEGATIVE.CROSSVM",
+        "implementation_boundary": "Actual SDK Storage across distinct private simulator processes and VM launches, with controlled time and network substitution; launcher timed out after app called System.exit; not physical power loss, phone or natural OS scheduling.",
+        "implementation_note": "Retained exact source/fixture/packet/process/storage-hash and named output reconciliation: evidence/watch-refresh-cache-whole/independent-minute-r1/cross-vm/REPORT.md.",
+        "invalidation_dependencies": [
+          "assets/fonts/**",
+          "corpus/real-schedule-20261113/**",
+          "schemas/**",
+          "tests/fixtures/device/**",
+          "tests/fixtures/schedule/**",
+          "tests/test_current_format_acceptance.py",
+          "tools/build_native_resources.py",
+          "tools/build_watchface.py",
+          "tools/spacefox/feed.py",
+          "tools/spacefox/publisher.py",
+          "tools/spacefox/schedule.py",
+          "tools/update_feed.py",
+          "watchface/generated/**",
+          "watchface/manifest.xml",
+          "watchface/monkey.jungle",
+          "watchface/resources*/**",
+          "watchface/source/**",
+          "watchface/source/ScheduleState.mc",
+          "watchface/source/SpaceFoxApp.mc",
+          "watchface/toolchain-lock.json",
+          "tests/fixtures/watch_refresh_cache/**",
+          "tools/watch_refresh_cache_probe.py",
+          "tools/watch_integrity_probe.py",
+          "tools/watch_timing_current_probe.py",
+          "tools/watch_lifecycle_current_probe.py",
+          "openspec/changes/spacefox-watchface/evidence/watch-refresh-cache-whole/linux-runtime/**",
+          "tests/test_cross_vm_persistence.py",
+          "openspec/changes/spacefox-watchface/evidence/watch-refresh-cache-whole/independent-minute-r1/cross-vm/**"
+        ],
+        "latest_observed_status": "not_loaded",
+        "native_test_ids": [
+          "CROSSVM_PHASE1",
+          "CROSSVM_PHASE2"
+        ],
+        "observable": "After the skipped near window B remains stale; exact old replay does not write or renew, older generation is rejected, newer source validation clears stale, and only the owned app namespace is cleaned.",
+        "polarity": "negative",
+        "property_id": "LS11.P1",
+        "red_expectation": "Refuse a missing/reseeded/mixed/regressed record or a replay that renews stale source; no physical or phone inference.",
+        "scenario": "Faster checking ends while data is stale",
+        "scenario_fingerprint": "61abdd7032a6377c16d0d8cf5524aefbd01182e5609cb8a07a3950b9552a06b1",
+        "setup": "One ordinary AppBase, fresh UUID and short C1.prg; phase one accepts captured MIN A then B to actual SDK Application.Storage, stores a nonce, exits and restarts the owned simulator with identical mounted app storage.",
+        "source_path": "tests/test_cross_vm_persistence.py",
+        "source_sha256": "0d9aeca3685c068663ecce2d55e66077b0813b9b12c7a0f3a97fc52d9da276e2",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Only actual compiled Monkey C or simulator behavior and measured simulator limits once those tools/tests exist.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Physical FR165 RAM/storage/battery/glyph qualification",
+            "Real paired-phone background delivery",
+            "Garmin Store approval or approved binary install"
+          ],
+          "owner_replaced": "Physical FR165 firmware/hardware when running the actual Monkey C unit/simulator harness"
+        },
+        "test_id": "unittest::tests.test_cross_vm_persistence.CrossVmPersistenceTest.test_negative_replay_floor_and_owned_cleanup"
+      },
+      "LS11.P1.S05.POSITIVE.CROSSVM": {
+        "command_id": "cross-vm-sdk-persistence-reconciliation",
+        "current_evidence_fingerprint": "0a902726687d45e42c6f18ddbe897f9f5abf7353a06640cd0110e773317d37b0",
+        "green_expectation": "Same captured launch B, MIN target, validation epoch, reschedule state, wire hash and per-URL floor reopen from actual SDK Storage after an owned simulator process restart without reseeding.",
+        "id": "LS11.P1.S05.POSITIVE.CROSSVM",
+        "implementation_boundary": "Actual SDK Storage across distinct private simulator processes and VM launches, with controlled time and network substitution; launcher timed out after app called System.exit; not physical power loss, phone or natural OS scheduling.",
+        "implementation_note": "Retained exact source/fixture/packet/process/storage-hash and named output reconciliation: evidence/watch-refresh-cache-whole/independent-minute-r1/cross-vm/REPORT.md.",
+        "invalidation_dependencies": [
+          "assets/fonts/**",
+          "corpus/real-schedule-20261113/**",
+          "schemas/**",
+          "tests/fixtures/device/**",
+          "tests/fixtures/schedule/**",
+          "tests/test_current_format_acceptance.py",
+          "tools/build_native_resources.py",
+          "tools/build_watchface.py",
+          "tools/spacefox/feed.py",
+          "tools/spacefox/publisher.py",
+          "tools/spacefox/schedule.py",
+          "tools/update_feed.py",
+          "watchface/generated/**",
+          "watchface/manifest.xml",
+          "watchface/monkey.jungle",
+          "watchface/resources*/**",
+          "watchface/source/**",
+          "watchface/source/ScheduleState.mc",
+          "watchface/source/SpaceFoxApp.mc",
+          "watchface/toolchain-lock.json",
+          "tests/fixtures/watch_refresh_cache/**",
+          "tools/watch_refresh_cache_probe.py",
+          "tools/watch_integrity_probe.py",
+          "tools/watch_timing_current_probe.py",
+          "tools/watch_lifecycle_current_probe.py",
+          "openspec/changes/spacefox-watchface/evidence/watch-refresh-cache-whole/linux-runtime/**",
+          "tests/test_cross_vm_persistence.py",
+          "openspec/changes/spacefox-watchface/evidence/watch-refresh-cache-whole/independent-minute-r1/cross-vm/**"
+        ],
+        "latest_observed_status": "not_loaded",
+        "native_test_ids": [
+          "CROSSVM_PHASE1",
+          "CROSSVM_PHASE2"
+        ],
+        "observable": "Same captured launch B, MIN target, validation epoch, reschedule state, wire hash and per-URL floor reopen from actual SDK Storage after an owned simulator process restart without reseeding.",
+        "polarity": "positive",
+        "property_id": "LS11.P1",
+        "red_expectation": "Refuse a missing/reseeded/mixed/regressed record or a replay that renews stale source; no physical or phone inference.",
+        "scenario": "Faster checking ends while data is stale",
+        "scenario_fingerprint": "61abdd7032a6377c16d0d8cf5524aefbd01182e5609cb8a07a3950b9552a06b1",
+        "setup": "One ordinary AppBase, fresh UUID and short C1.prg; phase one accepts captured MIN A then B to actual SDK Application.Storage, stores a nonce, exits and restarts the owned simulator with identical mounted app storage.",
+        "source_path": "tests/test_cross_vm_persistence.py",
+        "source_sha256": "0d9aeca3685c068663ecce2d55e66077b0813b9b12c7a0f3a97fc52d9da276e2",
+        "state": "implemented",
+        "substitution": {
+          "allowed_proof": "Only actual compiled Monkey C or simulator behavior and measured simulator limits once those tools/tests exist.",
+          "classification": "EXTERNAL_BOUNDARY",
+          "forbidden_claims": [
+            "Physical FR165 RAM/storage/battery/glyph qualification",
+            "Real paired-phone background delivery",
+            "Garmin Store approval or approved binary install"
+          ],
+          "owner_replaced": "Physical FR165 firmware/hardware when running the actual Monkey C unit/simulator harness"
+        },
+        "test_id": "unittest::tests.test_cross_vm_persistence.CrossVmPersistenceTest.test_source_bound_same_package_and_storage_restart"
+      }
+    },
+    "commands": {
+      "cross-vm-sdk-persistence-reconciliation": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "-v",
+          "tests.test_cross_vm_persistence"
+        ],
+        "authority": "local",
+        "cwd": ".",
+        "id": "cross-vm-sdk-persistence-reconciliation",
+        "notes": "Reconciles retained two-phase actual SDK AppBase/Storage output and private simulator restart; does not launch a simulator or prove paired-phone, physical, natural OS or clean power loss.",
+        "runner": "python-unittest",
+        "timeout_seconds": 120
+      }
+    },
+    "properties": {
+      "LS11.P1": {
+        "id": "LS11.P1",
+        "oracle": "Independent literal fixture values and prohibited outcomes, not implementation roundtrip equivalence. Freshness threshold reached: literal expected source age10800seconds is stale while content/reschedule remain; counterexample must yield not stale at10799; independent reschedule survives stale transition. Offline startup without a cache: literal expected current time and four chosen metric fields work; no launch or fake timestamp; counterexample must yield generic geometry cannot fabricate a launch/countdown or make a nonexistent cache stale. Publisher stops but the file remains available: literal expected age continues increasing and stale appears; counterexample must yield fresh HTTP/build cannot clear stale or overwrite source-validation history. Previously tracked record is absent from a new provider result: literal expected A retains own older validation and pending status; counterexample must yield never copy batch freshness to A or infer A cancelled/launched from omission. Faster checking ends while data is stale: literal expected hourly cadence resumes but stale latch stays set; counterexample must yield do not clear latch until strictly newer validation for A arrives.",
+        "owner": "watchface/source/ScheduleState.mc; watchface/source/SpaceFoxApp.mc; tools/spacefox/schedule.py",
+        "planning_status": "Current software witnesses implemented and source-bound to executed SDK receipts; independent review and separately identified physical/phone/OS clauses remain open.",
+        "requirement_id": "LS11",
+        "scenarios": [
+          "Freshness threshold reached",
+          "Offline startup without a cache",
+          "Publisher stops but the file remains available",
+          "Previously tracked record is absent from a new provider result",
+          "Faster checking ends while data is stale"
+        ],
+        "source_globs": [
+          "assets/fonts/**",
+          "corpus/real-schedule-20261113/**",
+          "schemas/**",
+          "tests/fixtures/device/**",
+          "tests/fixtures/watch_refresh_cache/**",
+          "tests/fixtures/schedule/**",
+          "tests/test_current_format_acceptance.py",
+          "tests/test_device_acceptance.py",
+          "tools/build_native_resources.py",
+          "tools/build_watchface.py",
+          "tools/spacefox/feed.py",
+          "tools/spacefox/publisher.py",
+          "tools/spacefox/schedule.py",
+          "tools/update_feed.py",
+          "watchface/generated/**",
+          "watchface/manifest.xml",
+          "watchface/monkey.jungle",
+          "watchface/resources*/**",
+          "watchface/source/**",
+          "watchface/source/ScheduleState.mc",
+          "watchface/source/SpaceFoxApp.mc",
+          "watchface/toolchain-lock.json",
+          "tools/watch_integrity_probe.py",
+          "openspec/changes/spacefox-watchface/evidence/watch-refresh-cache-whole/linux-runtime/**"
+        ],
+        "statement": "The watch SHALL persist data and each record's provider-validation time. Freshness\nMUST use source age, never download/build time. Default stale limits are three\nhours normally and forty-five minutes near launch, configurable with publisher\ncadence. Re-fetching old data or validating other records MUST NOT renew a record.\nOnce stale, that record SHALL remain stale until newer source validation arrives.\nCache SHALL survive restart; an empty cache SHALL show no schedule."
+      }
+    },
+    "requirements": {
+      "LS11": {
+        "capability": "launch-schedule",
+        "fingerprint": "fc56f65992f8b7086b6eea19fb06af3e78e9b7b422a1d091eba848a21c7f021f",
+        "id": "LS11",
+        "title": "Cached schedule freshness"
+      }
+    }
+  },
+  "requested_selectors": {
+    "all": false,
+    "cases": [
+      "LS11.P1.S05.POSITIVE.CROSSVM",
+      "LS11.P1.S05.NEGATIVE.CROSSVM"
+    ],
+    "changed_paths": [],
+    "commands": [],
+    "owners": [],
+    "properties": [],
+    "requirements": [],
+    "scenarios": [],
+    "tests": []
+  },
+  "selection": {
+    "cases": [
+      "LS11.P1.S05.NEGATIVE.CROSSVM",
+      "LS11.P1.S05.POSITIVE.CROSSVM"
+    ],
+    "commands": [
+      "cross-vm-sdk-persistence-reconciliation"
+    ],
+    "properties": [
+      "LS11.P1"
+    ],
+    "requirements": [
+      "LS11"
+    ]
+  },
+  "specifications": {
+    "LS11": "fc56f65992f8b7086b6eea19fb06af3e78e9b7b422a1d091eba848a21c7f021f"
+  },
+  "status": "passed",
+  "substitution_gaps": []
+}

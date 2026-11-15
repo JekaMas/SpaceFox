@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "scope": "Independent SDK RSA4096 IQ and 10 standalone plus 11 embedded program signatures, public-key equality, exact FR165 Music member, source archive inventory and six changed-input digest spot checks; no signed-runtime execution.",
+  "source_revision": "afead86144f1d44c7ad0925c1a61cf5deba414e5",
+  "native_version": "0.1.13",
+  "native_source_id": "6a666398",
+  "application_uuid": "ec8b7c8a8ea54ee9ac91ee6e7a674d15",
+  "production_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
+  "iq_sha256": "9113b6db3eef61bfd17e6d388a589502027528346438fa2c635311e7c8e9ed20",
+  "iq_bytes": 10808047,
+  "fr165m_member": "006-B4433-00/SpaceFox.prg",
+  "fr165m_program_sha256": "e9c8410bca7246ac15f95e165ac043af91e671a3337b32bfb9a16a593c1fa59d",
+  "fr165m_program_bytes": 7261132,
+  "archive_sha256": "d7a9fca792abf19cb0524f285ab60d185aa14bd9ad2fec47401cc2722755d46a",
+  "archive_entries": 3131,
+  "release_receipt_sha256": "65b3f3ba2c4796865dd6a7dcf5f3cbd33c41c10935fdd301f1c0b338833bac29",
+  "archive_secret_shape_hits": 0,
+  "previous_version": "0.1.12",
+  "limitations": "Full 3129 input hash audit retained from author; peer spot-checked six changed inputs plus generated manifest/jungle. IQ size is multi-profile; no physical/phone/Store or whole-memory-peak assertion."
+}

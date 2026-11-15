@@ -1,0 +1,19 @@
+------------------------------------------------------------------------------
+Executing test peerCurrentMapDecode...
+DEBUG (11:22): CURRENT_MAP checksum=true outline=true complete=true steps=400
+DEBUG (11:22): CURRENT_MAP wrong_pixel_hash_refused=true
+PASS
+------------------------------------------------------------------------------
+Executing test peerBundledStreaming...
+DEBUG (11:22): STREAM_MATCH bitmap=true outlineDeferred=true steps=93
+DEBUG (11:22): STREAM_NONCANONICAL refused=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+peerCurrentMapDecode                PASS
+peerBundledStreaming                PASS
+Ran 2 tests
+
+PASSED (passed=2, failed=0, errors=0)

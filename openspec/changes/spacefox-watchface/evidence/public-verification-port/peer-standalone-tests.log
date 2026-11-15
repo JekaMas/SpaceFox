@@ -1,0 +1,31 @@
+test_completion_refusal_keeps_four_304_pages_and_retries_without_http (tests.test_public_metadata_faults.PublicMetadataFaults.test_completion_refusal_keeps_four_304_pages_and_retries_without_http) ... ok
+test_five_bad_bodies_leave_no_scratch_and_consume_exact_failed_slots (tests.test_public_metadata_faults.PublicMetadataFaults.test_five_bad_bodies_leave_no_scratch_and_consume_exact_failed_slots) ... ok
+test_save_preflight_restores_prefix_and_repeats_only_uncommitted_url (tests.test_public_metadata_faults.PublicMetadataFaults.test_save_preflight_restores_prefix_and_repeats_only_uncommitted_url) ... ok
+test_two_bad_pages_keep_prefix_then_complete_with_six_http_seven_slots (tests.test_public_metadata_faults.PublicMetadataFaults.test_two_bad_pages_keep_prefix_then_complete_with_six_http_seven_slots) ... ok
+test_complete_inventory_and_runnable_implemented_bindings (tests.test_public_proof_portability.PublicProofPortabilityTest.test_complete_inventory_and_runnable_implemented_bindings) ... ok
+test_current_native_input_identity_and_mutation_refusal (tests.test_public_proof_portability.PublicProofPortabilityTest.test_current_native_input_identity_and_mutation_refusal) ... ok
+test_immutable_original_proof_bundle (tests.test_public_proof_portability.PublicProofPortabilityTest.test_immutable_original_proof_bundle) ... ok
+test_manifest_tamper_and_raw_record_tamper_refuse (tests.test_public_proof_portability.PublicProofPortabilityTest.test_manifest_tamper_and_raw_record_tamper_refuse) ... ok
+test_ordinary_full_scene_retained_source_binding (tests.test_public_proof_portability.PublicProofPortabilityTest.test_ordinary_full_scene_retained_source_binding) ... ok
+test_source_bundle_has_no_private_checkout_or_environment_fallback (tests.test_public_proof_portability.PublicProofPortabilityTest.test_source_bundle_has_no_private_checkout_or_environment_fallback) ... ok
+test_unknown_private_history_and_snapshot_tamper_refuse (tests.test_public_proof_portability.PublicProofPortabilityTest.test_unknown_private_history_and_snapshot_tamper_refuse) ... ok
+test_changed_current_input_invalidates_route_cache (tests.test_current_source_reader.CurrentSourceReaderTest.test_changed_current_input_invalidates_route_cache) ... ok
+test_changed_current_ui_owner_refuses_cached_route (tests.test_current_source_reader.CurrentSourceReaderTest.test_changed_current_ui_owner_refuses_cached_route) ... ok
+test_current_owner_mutation_refuses (tests.test_current_source_reader.CurrentSourceReaderTest.test_current_owner_mutation_refuses) ... ok
+test_evidence_manifest_mutation_refuses (tests.test_current_source_reader.CurrentSourceReaderTest.test_evidence_manifest_mutation_refuses) ... ok
+test_historical_input_mutation_refuses (tests.test_current_source_reader.CurrentSourceReaderTest.test_historical_input_mutation_refuses) ... ok
+test_full_replacement_negative (tests.test_native_cache_budget_whole.NativeCacheBudgetWholeTest.test_full_replacement_negative) ... ok
+test_full_replacement_positive (tests.test_native_cache_budget_whole.NativeCacheBudgetWholeTest.test_full_replacement_positive) ... ok
+test_source_only_negative (tests.test_native_cache_budget_whole.NativeCacheBudgetWholeTest.test_source_only_negative) ... ok
+test_source_only_positive (tests.test_native_cache_budget_whole.NativeCacheBudgetWholeTest.test_source_only_positive) ... ok
+test_p1_corrupt_scene_negative (tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p1_corrupt_scene_negative) ... ok
+test_p1_selected_scene_positive (tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p1_selected_scene_positive) ... ok
+test_p2_lifecycle_negative (tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p2_lifecycle_negative) ... ok
+test_p2_source_update_positive (tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p2_source_update_positive) ... ok
+test_p3_recovery_positive (tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p3_recovery_positive) ... ok
+test_p3_refusal_negative (tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p3_refusal_negative) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 134.316s
+
+OK

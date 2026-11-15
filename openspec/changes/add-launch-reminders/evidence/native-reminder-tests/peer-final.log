@@ -1,0 +1,60 @@
+------------------------------------------------------------------------------
+Executing test settingsPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test cadencePositive...
+PASS
+------------------------------------------------------------------------------
+Executing test cadenceNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test quietPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test quietNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test identityPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test identityNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test schedulerPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test schedulerNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test equivalencePositive...
+PASS
+------------------------------------------------------------------------------
+Executing test equivalenceNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test sharedRegistration...
+DEBUG (17:35): SHARED_REGISTRATION feed=300 reminder=900
+PASS
+------------------------------------------------------------------------------
+Executing test snapshotWrites...
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+settingsPositive                    PASS
+cadencePositive                     PASS
+cadenceNegative                     PASS
+quietPositive                       PASS
+quietNegative                       PASS
+identityPositive                    PASS
+identityNegative                    PASS
+schedulerPositive                   PASS
+schedulerNegative                   PASS
+equivalencePositive                 PASS
+equivalenceNegative                 PASS
+sharedRegistration                  PASS
+snapshotWrites                      PASS
+Ran 13 tests
+
+PASSED (passed=13, failed=0, errors=0)

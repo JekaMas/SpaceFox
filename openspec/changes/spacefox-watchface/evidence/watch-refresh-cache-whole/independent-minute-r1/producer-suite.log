@@ -1,0 +1,110 @@
+test_cadence_negative (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_cadence_negative) ... ok
+test_cadence_positive (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_cadence_positive) ... ok
+test_captured_minute_cadence_and_slept_through_stale (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_captured_minute_cadence_and_slept_through_stale) ... ok
+test_current_projection_deterministic (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_current_projection_deterministic) ... ok
+test_current_projection_preserves_timing_phase (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_current_projection_preserves_timing_phase) ... ok
+test_decoded_boundary_negative (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_decoded_boundary_negative) ... ok
+test_decoded_boundary_positive (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_decoded_boundary_positive) ... ok
+test_detail_mode_negative (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_detail_mode_negative) ... ok
+test_detail_mode_positive (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_detail_mode_positive) ... ok
+test_earlier_target_stale_and_unchanged_validation (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_earlier_target_stale_and_unchanged_validation) ... ok
+test_fractional_source_modification_is_exact_and_monotonic (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_fractional_source_modification_is_exact_and_monotonic) ... ok
+test_identity_omission_revalidation_and_atomic_rejection (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_identity_omission_revalidation_and_atomic_rejection) ... ok
+test_local_http_due_origin_304_and_429 (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_local_http_due_origin_304_and_429) ... ok
+test_missing_art_and_point_do_not_filter_launch_negative (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_missing_art_and_point_do_not_filter_launch_negative) ... ok
+test_missing_optional_context_current_artifact (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_missing_optional_context_current_artifact) ... ok
+test_normalized_atomic_admission_negative (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_normalized_atomic_admission_negative) ... ok
+test_normalized_identity_and_immutable_state_positive (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_normalized_identity_and_immutable_state_positive) ... ok
+test_omitted_pending_detail_and_terminal_no_detail (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_omitted_pending_detail_and_terminal_no_detail) ... ok
+test_origin_age_and_future_rejection (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_origin_age_and_future_rejection) ... ok
+test_real_utf8_launch_survives_current_projection (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_real_utf8_launch_survives_current_projection) ... ok
+test_record_omission_negative (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_record_omission_negative) ... ok
+test_record_omission_positive (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_record_omission_positive) ... ok
+test_stale_latch_after_near_window_with_literal_epoch (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_stale_latch_after_near_window_with_literal_epoch) ... ok
+test_stale_thresholds_and_skipped_near_window (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_stale_thresholds_and_skipped_near_window) ... ok
+test_unknown_identity_current_artifact_positive (tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_unknown_identity_current_artifact_positive) ... ok
+test_429_and_shared_quota_count_only_started_attempts (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_429_and_shared_quota_count_only_started_attempts) ... ok
+test_advancing_clock_keeps_each_response_origin (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_advancing_clock_keeps_each_response_origin) ... ok
+test_advancing_clock_optional_429_keeps_primary (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_advancing_clock_optional_429_keeps_primary) ... ok
+test_bounded_pagination_preserves_origin_epochs_positive (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_bounded_pagination_preserves_origin_epochs_positive) ... ok
+test_current_content_only_prepare_preserves_source_age_without_provider (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_current_content_only_prepare_preserves_source_age_without_provider) ... ok
+test_deploy_readback_preserves_per_record_validation_age (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_deploy_readback_preserves_per_record_validation_age) ... Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/__main__.py", line 18, in <module>
+    main(module=None)
+    ~~~~^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/main.py", line 104, in __init__
+    self.runTests()
+    ~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/main.py", line 270, in runTests
+    self.result = testRunner.run(self.test)
+                  ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/runner.py", line 257, in run
+    test(result)
+    ~~~~^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ~~~~~~~~^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/suite.py", line 122, in run
+    test(result)
+    ~~~~^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ~~~~~~~~^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/suite.py", line 122, in run
+    test(result)
+    ~~~~^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ~~~~~~~~^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/suite.py", line 122, in run
+    test(result)
+    ~~~~^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/case.py", line 725, in __call__
+    return self.run(*args, **kwds)
+           ~~~~~~~~^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/case.py", line 669, in run
+    self._callTestMethod(testMethod)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/case.py", line 615, in _callTestMethod
+    result = method()
+  File "/Users/jekamas/projects/SpaceFox-worktrees/verify-watch-refresh-cache-whole-20261114/tests/test_schedule_producer_transport.py", line 512, in test_deploy_readback_preserves_per_record_validation_age
+    reopened = Publisher(store, code)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/verify-watch-refresh-cache-whole-20261114/tools/spacefox/publisher.py", line 679, in __init__
+    self.head, self._ledger = store.load()
+                              ~~~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/verify-watch-refresh-cache-whole-20261114/tools/spacefox/publisher.py", line 483, in load
+    self._files(head, doc)  # Reject broken/missing artifacts on every reopen.
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/verify-watch-refresh-cache-whole-20261114/tools/spacefox/publisher.py", line 529, in _files
+    validate_snapshot_artifact(snapshot, product, refresh_policy=doc['refresh_policy'], instance=doc['instance_id'],
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                               selection_validated_utc=doc.get('selection_validated_utc'),
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                               require_selection_epoch=snapshot is doc['pending'])
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/verify-watch-refresh-cache-whole-20261114/tools/spacefox/publisher.py", line 194, in validate_snapshot_artifact
+    feed = _product_files(files, snapshot['artifact_profile'])
+  File "/Users/jekamas/projects/SpaceFox-worktrees/verify-watch-refresh-cache-whole-20261114/tools/spacefox/publisher.py", line 186, in _product_files
+    return validate_artifact(files)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/verify-watch-refresh-cache-whole-20261114/tools/spacefox/native_motion.py", line 412, in validate_artifact
+    desc = _validate_descriptor(source['descriptor'], files, set())
+  File "/Users/jekamas/projects/SpaceFox-worktrees/verify-watch-refresh-cache-whole-20261114/tools/spacefox/visual_bridge.py", line 166, in _validate_descriptor
+    child = _validate_descriptor(pin,files,seen,depth=depth+1)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/verify-watch-refresh-cache-whole-20261114/tools/spacefox/visual_bridge.py", line 172, in _validate_descriptor
+    child=_validate_descriptor(pin,files,seen,depth=depth+1)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/verify-watch-refresh-cache-whole-20261114/tools/spacefox/visual_bridge.py", line 156, in _validate_descriptor
+    seen.add(pin['path']);loads_shard(data);parts.append(data)
+                          ~~~~~~~~~~~^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/verify-watch-refresh-cache-whole-20261114/tools/spacefox/graphics.py", line 187, in loads_shard
+    value=loads_visual(raw)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/verify-watch-refresh-cache-whole-20261114/tools/spacefox/graphics.py", line 154, in loads_visual
+    return validate_visual(value)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/verify-watch-refresh-cache-whole-20261114/tools/spacefox/graphics.py", line 89, in validate_visual
+    _require(_area(poly) != 0,'zero-area wire polygon');_simple(poly)
+             ~~~~~^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/verify-watch-refresh-cache-whole-20261114/tools/spacefox/graphics.py", line 291, in _area
+    def _area(poly): return sum(_cross(a,b) for a,b in zip(poly,poly[1:]+poly[:1]))/2
+                                                       ~~~^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

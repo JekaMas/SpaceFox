@@ -1,0 +1,52 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.System;
+
+// Parsing/loading runs outside redraw; keep cold settings code off the small heap.
+(:extendedCode)
+class SceneSettings {
+    var slots as Array<String>;
+    var animation as Boolean = true;
+    var battery as Boolean = true;
+    var projection as String = "map";
+    var origin as String = "rocket";
+    var language as String = "en";
+    var autoLanguage as Boolean=false;
+    function initialize(values as Dictionary<String, Object or Null> or Null) {
+        slots = ["steps", "energy", "heart", "stress"];
+        if (values == null) { return; }
+        for (var i = 0; i < 4; i += 1) {
+            var key = "Field" + (i+1);
+            var assigned = values[key];
+            if(assigned instanceof Number && assigned>=0 && assigned<7){slots[i]=["steps","energy","heart","stress","calories","battery","off"][assigned];}
+            else if (validRole(assigned)) { slots[i] = assigned as String; }
+        }
+        if (values.hasKey("Animation") && values["Animation"] instanceof Boolean) { animation = values["Animation"] as Boolean; }
+        if (values.hasKey("DeviceBattery") && values["DeviceBattery"] instanceof Boolean) { battery = values["DeviceBattery"] as Boolean; }
+        if(values["Projection"] instanceof Number && (values["Projection"] as Number)==1){projection="globe";}
+        if(values["Origin"] instanceof Number){var originId=values["Origin"] as Number;if(originId==1){origin="operator";}else if(originId==2){origin="hidden";}}
+        var languageValue=values["Language"];
+        if((languageValue instanceof Number&&languageValue==36)||(languageValue instanceof String&&languageValue.equals("auto"))){autoLanguage=true;refreshLanguage();}
+        else {language=SceneStrings.locale(SceneStrings.index(languageValue));}
+        if (values.hasKey("Projection") && values["Projection"] instanceof String && (values["Projection"] as String).equals("globe")) { projection = "globe"; }
+        if (values.hasKey("Origin") && values["Origin"] instanceof String && ((values["Origin"] as String).equals("operator") || (values["Origin"] as String).equals("hidden"))) { origin = values["Origin"] as String; }
+    }
+    function selectSystemLanguage(code as String) as Void {if(autoLanguage){language=SceneStrings.locale(SceneStrings.systemIndex(code));}}
+    function refreshLanguage() as Void {if(autoLanguage){selectSystemLanguage(System.getDeviceSettings().systemLanguage.toString());}}
+    function validRole(role as Object or Null) as Boolean {
+        if (!(role instanceof String)) { return false; }
+        return role.equals("steps") || role.equals("energy") || role.equals("heart") || role.equals("stress") || role.equals("calories") || role.equals("battery") || role.equals("off");
+    }
+    function load() as SceneSettings {
+        var values = {};
+        for (var i = 0; i < 4; i += 1) {
+            var key = "Field" + (i+1);
+            try { values[key] = Application.Properties.getValue(key); } catch (e) {}
+        }
+        var keys = ["Animation", "DeviceBattery", "Projection", "Origin", "Language"];
+        for (var j = 0; j < keys.size(); j += 1) {
+            try { values[keys[j]] = Application.Properties.getValue(keys[j]); } catch (e) {}
+        }
+        return new SceneSettings(values);
+    }
+}

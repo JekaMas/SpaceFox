@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-watch-refresh-cache-whole-20261114/tests/fixtures/watch_refresh_cache/build_integrity.py", line 29, in <module>
+    for n in ('wide','nullId','widePrecision','finalRefresh'):validate_current_feed(rows[n].encode(),now=1794551202)
+                                                              ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-watch-refresh-cache-whole-20261114/tools/spacefox/wire.py", line 96, in validate_current_feed
+    _validate_publisher(doc['publisher'], now)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-watch-refresh-cache-whole-20261114/tools/spacefox/wire.py", line 79, in _validate_publisher
+    raise ValueError('invalid publisher selection validation UTC')
+ValueError: invalid publisher selection validation UTC

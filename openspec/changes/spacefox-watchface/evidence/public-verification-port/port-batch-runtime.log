@@ -1,0 +1,98 @@
+SELECTED 101 RETAINED 18
+test_vc13_s03_positive (tests.test_catalog_activation_whole.ScenarioCases.test_vc13_s03_positive) ... ok
+test_vc14_s01_positive (tests.test_catalog_activation_whole.ScenarioCases.test_vc14_s01_positive) ... ok
+test_vc14_s02_positive (tests.test_catalog_activation_whole.ScenarioCases.test_vc14_s02_positive) ... ok
+test_ls02_p1_s02_negative_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p1_s02_negative_current) ... ok
+test_ls02_p1_s03_negative_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p1_s03_negative_current) ... ok
+test_ls02_p1_s03_positive_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p1_s03_positive_current) ... ok
+test_ls02_p3_s01_negative_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p3_s01_negative_current) ... ok
+test_ls02_p4_s01_negative_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p4_s01_negative_current) ... ok
+test_ls05_p5_s01_negative (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p5_s01_negative) ... ok
+test_ls05_p5_s02_negative_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p5_s02_negative_current) ... ok
+test_ls05_p5_s02_positive_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p5_s02_positive_current) ... ok
+test_ls05_p5_s03_negative_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p5_s03_negative_current) ... ok
+test_ls05_p5_s03_positive_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p5_s03_positive_current) ... ok
+test_ls05_p6_s01_negative_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p6_s01_negative_current) ... ok
+test_ls05_p6_s01_positive_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p6_s01_positive_current) ... ok
+test_ls05_p7_s01_negative_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p7_s01_negative_current) ... ok
+test_ls05_p8_s01_negative_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p8_s01_negative_current) ... ok
+test_ls05_p8_s01_positive_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p8_s01_positive_current) ... ok
+test_ls11_p1_s01_negative (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s01_negative) ... ok
+test_ls11_p1_s01_positive (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s01_positive) ... ok
+test_ls11_p1_s02_negative (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s02_negative) ... ok
+test_ls11_p1_s02_positive (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s02_positive) ... ok
+test_ls11_p1_s03_negative (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s03_negative) ... ok
+test_ls11_p1_s03_positive (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s03_positive) ... ok
+test_ls11_p1_s04_negative_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s04_negative_current) ... ok
+test_ls11_p1_s04_positive_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s04_positive_current) ... ok
+test_ls11_p1_s05_negative (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s05_negative) ... ok
+test_ls11_p1_s05_positive (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s05_positive) ... ok
+test_ls11_p4_s01_negative_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p4_s01_negative_current) ... ok
+test_ls11_p4_s01_positive_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p4_s01_positive_current) ... ok
+test_ls11_p5_s01_negative_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p5_s01_negative_current) ... ok
+test_ls11_p5_s01_positive_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p5_s01_positive_current) ... ok
+test_changed_current_input_invalidates_route_cache (tests.test_current_source_reader.CurrentSourceReaderTest.test_changed_current_input_invalidates_route_cache) ... ok
+test_current_owner_mutation_refuses (tests.test_current_source_reader.CurrentSourceReaderTest.test_current_owner_mutation_refuses) ... ok
+test_evidence_manifest_mutation_refuses (tests.test_current_source_reader.CurrentSourceReaderTest.test_evidence_manifest_mutation_refuses) ... ok
+test_historical_input_mutation_refuses (tests.test_current_source_reader.CurrentSourceReaderTest.test_historical_input_mutation_refuses) ... ok
+test_404_requires_exact_completed_skipped_post_witness (tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_404_requires_exact_completed_skipped_post_witness) ... ok
+test_atomic_source_and_pending_survive_lost_push_ack (tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_atomic_source_and_pending_survive_lost_push_ack) ... ok
+test_completed_primary_reservation_requires_exact_unexpired_invocation (tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_completed_primary_reservation_requires_exact_unexpired_invocation) ... ok
+test_default_twenty_two_generations_with_shared_quota_and_pending_recovery (tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_default_twenty_two_generations_with_shared_quota_and_pending_recovery) ... ok
+test_missing_previous_catalog_cannot_promote_pending (tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_missing_previous_catalog_cannot_promote_pending) ... ok
+test_new_run_attempt_cannot_post_old_intent (tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_new_run_attempt_cannot_post_old_intent) ... ok
+test_packed_schedule_dedup_and_missing_or_bad_object_refusal (tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_packed_schedule_dedup_and_missing_or_bad_object_refusal) ... ok
+test_pending_and_promotion_survive_before_and_lost_push_ack (tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_pending_and_promotion_survive_before_and_lost_push_ack) ... Traceback (most recent call last):
+  File "/tmp/spacefox_run_port_batch.py", line 23, in <module>
+    result=unittest.TextTestRunner(verbosity=2,failfast=False).run(suite)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/runner.py", line 257, in run
+    test(result)
+    ~~~~^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ~~~~~~~~^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/suite.py", line 122, in run
+    test(result)
+    ~~~~^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ~~~~~~~~^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/suite.py", line 122, in run
+    test(result)
+    ~~~~^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/case.py", line 725, in __call__
+    return self.run(*args, **kwds)
+           ~~~~~~~~^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/case.py", line 669, in run
+    self._callTestMethod(testMethod)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/case.py", line 615, in _callTestMethod
+    result = method()
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-public-verification-port/tests/test_durable_delivery_whole.py", line 239, in test_pending_and_promotion_survive_before_and_lost_push_ack
+    self.assertEqual(files, pending.pending_files())
+                            ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-public-verification-port/tools/spacefox/publisher.py", line 981, in pending_files
+    head, doc = self.store.load()
+                ~~~~~~~~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-public-verification-port/tools/spacefox/publisher.py", line 483, in load
+    self._files(head, doc)  # Reject broken/missing artifacts on every reopen.
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-public-verification-port/tools/spacefox/publisher.py", line 524, in _files
+    data = self._blob(head, key, MAX_ARTIFACT_BYTES)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-public-verification-port/tools/spacefox/publisher.py", line 451, in _blob
+    size = self._git('cat-file', '-s', f'{revision}:{path}').stdout
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-public-verification-port/tools/spacefox/publisher.py", line 434, in _git
+    result = subprocess.run(['git', '-C', self.path, *args], input=data,
+                            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 557, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1221, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 2153, in _communicate
+    ready = selector.select(timeout)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/selectors.py", line 398, in select
+    fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt

@@ -1,4 +1,10 @@
-# SpaceFox 0.1.13 installation
+# SpaceFox installation
+
+The [0.1.15 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.15-test.1) is available for a separate USB/MTP test; use its [installation](INSTALLATION-0.1.15.md) and [testing](TESTING-0.1.15.md) guides. It has not been submitted to Garmin. A local PRG or IQ cannot be installed by tapping it on a phone.
+
+The [0.1.14 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.14-test.1) is available for a separate USB/MTP test; use its [installation](INSTALLATION-0.1.14.md) and [testing](TESTING-0.1.14.md) guides. It has not been submitted to Garmin.
+
+## Garmin 0.1.13
 
 Use the [original SpaceFox Connect IQ listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3). Garmin displays 0.1.13/Internal 8 in owner preview, PENDING; public approval and physical delivery remain unobserved. The Music installation request was accepted. For an existing installation, use normal Garmin Connect synchronization with the paired watch nearby. Expected SpaceFox settings version on the watch: **0.1.13**. Preserve settings/cache; no uninstall or reset is required.
 
@@ -8,7 +14,8 @@ English and `https://jekamas.github.io/SpaceFox` are defaults. The paired phone 
 
 The signed SDK run and package checks are documented in [testing](../TESTING.md). Phone delivery, physical behavior and battery use remain separate. Do not include credentials or private health data in reports.
 
-The next candidate declares four Garmin permissions: SensorHistory for recent
+The 0.1.16 candidate declares six Garmin permissions: SensorHistory for recent
 heart/stress samples, ComplicationSubscriber for current Body Battery when selected,
-Communications for the public feed, and Background for scheduled refresh. Actual
-Body Battery availability depends on the watch and its permissions.
+Communications for the public feed, Background for scheduled refresh, Notifications
+for enabled launch reminders, and UserProfile for quiet-time settings. Actual Body
+Battery availability depends on the watch and its permissions.

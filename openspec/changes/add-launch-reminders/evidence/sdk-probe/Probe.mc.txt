@@ -1,0 +1,33 @@
+import Toybox.Lang;
+import Toybox.Application;
+import Toybox.Background;
+import Toybox.Graphics;
+import Toybox.Notifications;
+import Toybox.System;
+import Toybox.Time;
+import Toybox.WatchUi;
+(:background) class ProbeApp extends Application.AppBase {
+ function initialize(){ AppBase.initialize(); }
+ (:typecheck(disableBackgroundCheck)) function getInitialView(){ return [new ProbeFace()]; }
+ function getServiceDelegate(){ return [new ProbeService()]; }
+}
+class ProbeFace extends WatchUi.WatchFace {
+ var sent as Lang.Boolean = false;
+ function initialize(){ WatchFace.initialize(); }
+ function onUpdate(dc) {
+  if (!sent) {
+   sent = true;
+   try { Notifications.showNotification("Foreground probe", "Immediate notification", {:dismissPrevious=>true}); System.println("PROBE foreground returned"); } catch(e) { System.println("PROBE foreground exception " + e); }
+   try { Background.registerForTemporalEvent(new Time.Duration(60)); System.println("PROBE 60 seconds accepted"); } catch(e) { System.println("PROBE 60 seconds rejected " + e); }
+   try { Background.registerForTemporalEvent(Time.now()); System.println("PROBE immediate background registered"); } catch(e) { System.println("PROBE background registration exception " + e); }
+  }
+ }
+}
+(:background) class ProbeService extends System.ServiceDelegate {
+ function initialize(){ ServiceDelegate.initialize(); }
+ function onTemporalEvent() {
+  System.println("PROBE background invoked");
+  try { Notifications.showNotification("Background probe", "Immediate notification", {:dismissPrevious=>true}); System.println("PROBE background notification returned"); } catch(e) { System.println("PROBE background exception " + e); }
+  Background.exit(null);
+ }
+}

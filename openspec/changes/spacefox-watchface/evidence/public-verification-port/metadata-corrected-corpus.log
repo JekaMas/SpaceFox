@@ -1,0 +1,9 @@
+test_completion_refusal_keeps_four_304_pages_and_retries_without_http (tests.test_public_metadata_faults.PublicMetadataFaults.test_completion_refusal_keeps_four_304_pages_and_retries_without_http) ... ok
+test_five_bad_bodies_leave_no_scratch_and_consume_exact_failed_slots (tests.test_public_metadata_faults.PublicMetadataFaults.test_five_bad_bodies_leave_no_scratch_and_consume_exact_failed_slots) ... ok
+test_save_preflight_restores_prefix_and_repeats_only_uncommitted_url (tests.test_public_metadata_faults.PublicMetadataFaults.test_save_preflight_restores_prefix_and_repeats_only_uncommitted_url) ... ok
+test_two_bad_pages_keep_prefix_then_complete_with_six_http_seven_slots (tests.test_public_metadata_faults.PublicMetadataFaults.test_two_bad_pages_keep_prefix_then_complete_with_six_http_seven_slots) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 79.711s
+
+OK

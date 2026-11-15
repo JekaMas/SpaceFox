@@ -1,0 +1,69 @@
+------------------------------------------------------------------------------
+Executing test settingsPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test cadencePositive...
+PASS
+------------------------------------------------------------------------------
+Executing test cadenceNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test quietPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test quietNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test identityPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test identityNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test schedulerPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test schedulerNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test equivalencePositive...
+PASS
+------------------------------------------------------------------------------
+Executing test equivalenceNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test sharedRegistration...
+DEBUG (17:46): SHARED_REGISTRATION feed=300 reminder=900
+PASS
+------------------------------------------------------------------------------
+Executing test snapshotWrites...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - snapshotWrites() at /source/watchface/reminder-tests/ReminderTests.mc:126 0x100064e6 
+  - evaluate_test_entries_0_to_13() at /task/fulltest/gen/006-B4432-00/source/UnitTests.mcgen:87 0x10009b15 
+  - runTest() at /task/fulltest/gen/006-B4432-00/source/UnitTests.mcgen:102 0x10009bb2 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+settingsPositive                    PASS
+cadencePositive                     PASS
+cadenceNegative                     PASS
+quietPositive                       PASS
+quietNegative                       PASS
+identityPositive                    PASS
+identityNegative                    PASS
+schedulerPositive                   PASS
+schedulerNegative                   PASS
+equivalencePositive                 PASS
+equivalenceNegative                 PASS
+sharedRegistration                  PASS
+snapshotWrites                      ERROR
+Ran 13 tests
+
+FAILED (passed=12, failed=0, errors=1)

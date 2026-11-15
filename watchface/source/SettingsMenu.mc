@@ -6,12 +6,12 @@ import Toybox.WatchUi;
 (:extendedCode, :typecheck(false))
 module SettingsMenu {
     function locale() {return new SceneSettings(null).load().language;}
-    function keys() {return ["Language","Field1","Field2","Field3","Field4","ClockColor","CountdownColor","Field1Color","Field2Color","Field3Color","Field4Color","FeedBaseUrl"];}
+    function keys() {return ["Language","Field1","Field2","Field3","Field4","ClockColor","CountdownColor","Field1Color","Field2Color","Field3Color","Field4Color","FeedBaseUrl","LaunchReminders"];}
     function titles() {return SettingsMenuText.values(locale(),0);}
-    function ids() {return [:i0,:i1,:i2,:i3,:i4,:i5,:i6,:i7,:i8,:i9,:i10,:i11];}
+    function ids() {return [:i0,:i1,:i2,:i3,:i4,:i5,:i6,:i7,:i8,:i9,:i10,:i11,:i12];}
     function root(app) as [WatchUi.Views, WatchUi.InputDelegates] {
-        var menu=new WatchUi.Menu2({:title=>"SpaceFox "+NativeVersion.BUILD+" "+NativeVersion.ID});var names=titles();var symbols=ids();
-        for(var i=0;i<names.size();i+=1){menu.addItem(new WatchUi.MenuItem(names[i],null,symbols[i],null));}
+        var menu=new WatchUi.Menu2({:title=>"SpaceFox "+NativeVersion.BUILD});var names=titles();var symbols=ids();
+        for(var i=0;i<names.size();i+=1){menu.addItem(new WatchUi.MenuItem(names[i],i==12?SettingsMenuText.reminderHelp(locale()):null,symbols[i],null));}
         // Rejected input never becomes accepted data. Explain a useful recovery
         // path in settings without adding a persistent home-screen timestamp.
         if(app.feed!=null&&app.feed.failure.equals("update-rejected")){
@@ -20,7 +20,7 @@ module SettingsMenu {
         }
         return [menu,new SettingsRootDelegate(app,menu)];
     }
-    function labels(index) {return SettingsMenuText.values(locale(),index==0?1:index<=4?2:3);}
+    function labels(index) {return index==12?SettingsMenuText.reminderChoices(locale()):SettingsMenuText.values(locale(),index==0?1:index<=4?2:3);}
     function refreshRejection(menu) {
         var index=menu.findItemById(:updateRejected);
         if(index>=0){var help=SettingsMenuText.rejected(locale());var item=menu.getItem(index);item.setLabel(help[0]);item.setSubLabel(help[1]);}
@@ -43,7 +43,7 @@ class SettingsRootDelegate extends WatchUi.Menu2InputDelegate {
 class SettingsChoiceDelegate extends WatchUi.Menu2InputDelegate {
     var app;var index;var rootMenu;
     function initialize(owner,which,menu){Menu2InputDelegate.initialize();app=owner;index=which;rootMenu=menu;}
-    function onSelect(item){var i=SettingsMenu.ids().indexOf(item.getId());if(i<0||i>=6){return;}SettingsMenu.apply(app,SettingsMenu.keys()[index],index==0&&i==5?36:i);if(index==0){var labels=SettingsMenu.titles();for(var n=0;n<labels.size();n+=1){rootMenu.getItem(n).setLabel(labels[n]);}SettingsMenu.refreshRejection(rootMenu);}WatchUi.popView(WatchUi.SLIDE_DOWN);}
+    function onSelect(item){var i=SettingsMenu.ids().indexOf(item.getId());if(i<0||i>=6||(index==12&&i>=2)){return;}SettingsMenu.apply(app,SettingsMenu.keys()[index],index==0&&i==5?36:i);if(index==0){var labels=SettingsMenu.titles();for(var n=0;n<labels.size();n+=1){rootMenu.getItem(n).setLabel(labels[n]);if(n==12){rootMenu.getItem(n).setSubLabel(SettingsMenuText.reminderHelp(SettingsMenu.locale()));}}SettingsMenu.refreshRejection(rootMenu);}WatchUi.popView(WatchUi.SLIDE_DOWN);}
     function onBack(){WatchUi.popView(WatchUi.SLIDE_DOWN);}
 }
 (:extendedCode, :typecheck(false))

@@ -1,0 +1,15 @@
+Background: SFR_PROBE owner=a77de44e85cb4261b2d6771577c108cc|storage|1612cb2f3384
+SFR_PROBE owner=a77de44e85cb4261b2d6771577c108cc|storage|1612cb2f3384
+STORAGE_PROGRESS entries=16
+STORAGE_PROGRESS entries=32
+STORAGE_PROGRESS entries=48
+STORAGE_PROGRESS entries=64
+
+Error: Out Of Memory Error
+Details: Failed invoking <symbol>
+Stack: 
+  - write() at /task/source/watchface/source/NativeCache.mc:11 0x100015de 
+  - put() at /task/source/watchface/source/NativeImmutable.mc:27 0x10000e48 
+  - step() at /task/output/storage/Probe.mc:8 0x10001271 
+  - onUpdate() at /task/output/storage/Probe.mc:2 0x100045dc 
+Encountered an app crash.

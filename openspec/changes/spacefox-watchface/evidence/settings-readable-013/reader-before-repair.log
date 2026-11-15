@@ -1,0 +1,26 @@
+test_language_admission_refuses_changed_menu_owner (tests.test_release_update_native.ReleaseUpdateAdmissionTest.test_language_admission_refuses_changed_menu_owner) ... ok
+test_language_admission_refuses_changed_sdk_observation (tests.test_release_update_native.ReleaseUpdateAdmissionTest.test_language_admission_refuses_changed_sdk_observation) ... ok
+test_language_admission_refuses_changed_warning_glyph_observation (tests.test_release_update_native.ReleaseUpdateAdmissionTest.test_language_admission_refuses_changed_warning_glyph_observation) ... ok
+setUpClass (tests.test_release_update_native.ReleaseUpdateNativeTest) ... ERROR
+
+======================================================================
+ERROR: setUpClass (tests.test_release_update_native.ReleaseUpdateNativeTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_release_update_native.py", line 61, in setUpClass
+    check_sources(cls.build, Path.read_bytes)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_release_update_native.py", line 47, in check_sources
+    data = (EVIDENCE.parent / 'display03-active-tick-wake/integration13/historical/settings' / name).read_bytes()
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 777, in read_bytes
+    with self.open(mode='rb', buffering=0) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '<repo>/openspec/changes/spacefox-watchface/evidence/display03-active-tick-wake/integration13/historical/settings/watchface/source/SettingsMenuText.mc'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.097s
+
+FAILED (errors=1)

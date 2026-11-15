@@ -1,0 +1,26 @@
+test_ls02_p4_s01_positive_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p4_s01_positive_current) ... ok
+test_vc12_s01_negative (tests.test_catalog_activation_whole.ScenarioCases.test_vc12_s01_negative) ... ok
+test_vc12_s01_positive (tests.test_catalog_activation_whole.ScenarioCases.test_vc12_s01_positive) ... ok
+test_vc12_s02_negative (tests.test_catalog_activation_whole.ScenarioCases.test_vc12_s02_negative) ... ok
+test_vc12_s02_positive (tests.test_catalog_activation_whole.ScenarioCases.test_vc12_s02_positive) ... ok
+test_vc13_s01_negative (tests.test_catalog_activation_whole.ScenarioCases.test_vc13_s01_negative) ... ok
+test_vc13_s01_positive (tests.test_catalog_activation_whole.ScenarioCases.test_vc13_s01_positive) ... ok
+test_vc13_s02_negative (tests.test_catalog_activation_whole.ScenarioCases.test_vc13_s02_negative) ... ok
+test_vc13_s02_positive (tests.test_catalog_activation_whole.ScenarioCases.test_vc13_s02_positive) ... ok
+test_vc13_s03_negative (tests.test_catalog_activation_whole.ScenarioCases.test_vc13_s03_negative) ... ERROR
+
+======================================================================
+ERROR: test_vc13_s03_negative (tests.test_catalog_activation_whole.ScenarioCases.test_vc13_s03_negative)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-public-verification-port/tests/test_catalog_activation_whole.py", line 530, in test_vc13_s03_negative
+    self.composition().test_current_native_identity_refusal()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-public-verification-port/tests/test_catalog_activation_whole.py", line 505, in composition
+    from tests.test_current_composition_matrix import CurrentCompositionMatrixTest
+ModuleNotFoundError: No module named 'tests.test_current_composition_matrix'
+
+----------------------------------------------------------------------
+Ran 10 tests in 34.756s
+
+FAILED (errors=1)

@@ -1,0 +1,18 @@
+test_completion_refusal_keeps_four_304_pages_and_retries_without_http (tests.test_public_metadata_faults.PublicMetadataFaults.test_completion_refusal_keeps_four_304_pages_and_retries_without_http) ... FAIL
+
+======================================================================
+FAIL: test_completion_refusal_keeps_four_304_pages_and_retries_without_http (tests.test_public_metadata_faults.PublicMetadataFaults.test_completion_refusal_keeps_four_304_pages_and_retries_without_http)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-public-verification-port/tests/test_public_metadata_faults.py", line 78, in test_completion_refusal_keeps_four_304_pages_and_retries_without_http
+    c, transport, pages = self.seeded(pub, complete=True, prefix=31)
+                          ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-public-verification-port/tests/test_public_metadata_faults.py", line 46, in seeded
+    self.assertEqual(len(pages), 35)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+AssertionError: 33 != 35
+
+----------------------------------------------------------------------
+Ran 1 test in 1.225s
+
+FAILED (failures=1)

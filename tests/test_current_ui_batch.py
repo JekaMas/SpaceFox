@@ -38,7 +38,8 @@ def verify(root):
         if hashlib.sha256((d/'Display02Tests.prg').read_bytes()).hexdigest()!=receipt['packageSha256']:
             raise ValueError('current native executable changed: '+folder)
         for name,expected in receipt['inputHashes'].items():
-            if hashlib.sha256((root/name).read_bytes()).hexdigest()!=expected:raise ValueError('current native input changed: '+name)
+            from tools.native_integrated016_qualification import historical_input
+            if hashlib.sha256(historical_input(root,name,expected)).hexdigest()!=expected:raise ValueError('historical native input changed: '+name)
         parsed=parse_output(log,receipt['rawExit'],tuple(mapped[folder]['tests']))
         if parsed['status']!='passed':raise ValueError('current native framework failed: '+folder)
         results[folder]=parsed['observed_tests']

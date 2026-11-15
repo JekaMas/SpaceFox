@@ -1,0 +1,11 @@
+
+Error: Out Of Memory Error
+Details: Failed invoking <symbol>
+Stack: 
+  - read() at /Users/jekamas/.codex/tmp/spacefox-integrated016-extended/source/NativeCache.mc:10 0x10001224 
+  - raw() at /Users/jekamas/.codex/tmp/spacefox-integrated016-extended/source/NativeImmutable.mc:17 0x100009e7 
+  - chunk() at /Users/jekamas/.codex/tmp/spacefox-integrated016-extended/source/NativeSfr.mc:26 0x50007fe8 
+  - step() at /Users/jekamas/.codex/tmp/spacefox-integrated016-extended/source/NativeSfr.mc:72 0x1000850a 
+  - step() at /Users/jekamas/.codex/tmp/spacefox-integrated016-extended/source/NativeSfr.mc:174 0x5000e985 
+  - sfrStep() at /Users/jekamas/.codex/tmp/spacefox-integrated016-extended/source/SpaceFoxView.mc:273 0x10006b4d 
+Encountered an app crash.

@@ -1,0 +1,17 @@
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.security.KeyFactory;
+import java.security.interfaces.RSAPublicKey;
+import java.security.spec.X509EncodedKeySpec;
+import java.math.BigInteger;
+import java.io.File;
+import com.garmin.connectiq.common.signing.DeveloperSignature;
+import com.garmin.connectiq.common.signing.VerifyingUtils;
+class SeedSignatureCheck {
+  public static void main(String[] args) throws Exception {
+    RSAPublicKey key=(RSAPublicKey)KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(Files.readAllBytes(Paths.get(args[1]))));
+    DeveloperSignature s=VerifyingUtils.getVerifiedDeveloperSignature(new File(args[0]));
+    if(key.getModulus().bitLength()!=4096 || !new BigInteger(1,s.getModulusBytes()).equals(key.getModulus()) || !BigInteger.valueOf(s.getExponentAsInt()).equals(key.getPublicExponent())) throw new SecurityException("seed public identity mismatch");
+    System.out.println("seed_prg_signature_verified=true public_spki_matches=true rsa_bits=4096");
+  }
+}
