@@ -757,3 +757,15 @@ the state machine and related queue/cache/refresh path, test normal event
 sequences, independent verify/fix, then regular0.1.17 release/publication.
 Scope and acceptance: [plan](evidence/rollover017/PLAN.md). No new typography,
 locale or unrelated full-suite campaign. Status: NOT DONE.
+
+### ROLLOVER017 software closure accepted
+
+Root accepts author `139696e6` and fresh independent repair `3c54628d`, final
+native ID `2e6fc8c4`: [judgment](evidence/rollover017/ROOT-JUDGMENT.md) and
+[independent report](evidence/rollover017/INDEPENDENT.md). The exact T+59:44
+counterexample, preloaded successor/point/countdown, persisted queue and
+omission/restart near-window refresh are software GREEN. Native 8/8 and exact
+stock memory, exported admission and affected reader observations are retained
+at their stated boundaries. The single final main integration had no changes
+or conflicts. Signed regular release, hosted successor activation and original
+Garmin publication follow; physical updated execution remains unobserved.
