@@ -1,0 +1,1109 @@
+generation,config,name,kind,split,wire_bytes,token_bytes,shards,encode_ms,decode_ms,filtered
+baseline,4/1,current-map,map,train,36772,27480,10,40.622,2.763,
+baseline,4/1,current-rocket,rocket,train,1427,1062,1,1.873,0.128,
+baseline,4/1,current-flag,flag,train,378,274,1,0.063,0.024,
+baseline,4/1,map-0,map,train,94803,70878,25,15.309,5.865,
+baseline,4/1,map-1,map,train,,,,,,raster capacity
+baseline,4/1,map-4,map,train,96420,72089,26,15.464,5.647,
+baseline,4/1,map-8,map,eval,97762,73106,25,15.826,5.907,
+baseline,4/1,map-12,map,train,89387,66831,24,14.59,5.587,
+baseline,4/1,map-15,map,eval,,,,,,raster capacity
+baseline,4/1,low-0,low,train,17514,13087,5,46.48,1.681,
+baseline,4/1,low-1,low,train,33572,25093,9,43.202,3.004,
+baseline,4/1,low-4,low,train,17953,13416,5,45.855,1.754,
+baseline,4/1,low-8,low,eval,19549,14614,5,43.93,1.796,
+baseline,4/1,falcon-9,rocket,train,1879,1399,1,1.622,0.131,
+baseline,4/1,falcon-heavy,rocket,train,3527,2636,1,1.565,0.204,
+baseline,4/1,ariane-62,rocket,train,2863,2139,1,1.687,0.206,
+baseline,4/1,ariane-64,rocket,eval,3527,2636,1,1.6,0.213,
+baseline,4/1,electron,rocket,eval,1927,1436,1,1.705,0.143,
+baseline,4/1,generic,rocket,train,2463,1839,1,1.746,0.167,
+baseline,4/1,flag-us,flag,train,342,249,1,0.059,0.023,
+baseline,4/1,flag-fr,flag,train,50,28,1,0.055,0.008,
+baseline,4/1,flag-nz,flag,eval,446,325,1,0.082,0.026,
+baseline,4/1,flag-europe,flag,train,354,256,1,0.157,0.027,
+baseline,4/1,AodMap10,low,eval,24601,18381,7,43.636,2.131,
+baseline,4/1,AodMap11,low,eval,32360,24187,9,41.883,2.667,
+baseline,4/1,AodMap12,low,eval,16458,12295,5,44.209,1.539,
+baseline,4/1,AodMap13,low,eval,35548,26575,9,41.405,3.034,
+baseline,4/1,AodMap14,low,eval,37051,27692,10,43.647,3.333,
+baseline,4/1,AodMap15,low,eval,34801,26017,9,42.681,3.115,
+baseline,4/1,AodMap16,low,eval,34725,25955,9,42.145,3.055,
+baseline,4/1,AodMap17,low,eval,25084,18744,7,44.095,2.344,
+baseline,4/1,AodMap18,low,eval,30985,23160,8,44.275,2.59,
+baseline,4/1,AodMap19,low,eval,15427,11529,4,43.44,1.511,
+baseline,4/1,AodMap2,low,eval,35112,26248,9,41.535,3.077,
+baseline,4/1,AodMap20,low,eval,30873,23078,8,44.439,2.841,
+baseline,4/1,AodMap21,low,eval,29157,21789,8,39.933,2.506,
+baseline,4/1,AodMap22,low,eval,29625,22138,8,44.032,2.572,
+baseline,4/1,AodMap23,low,eval,35580,26595,9,41.26,4.192,
+baseline,4/1,AodMap24,low,eval,31593,23615,8,46.402,2.829,
+baseline,4/1,AodMap25,low,eval,17722,13243,5,45.594,1.663,
+baseline,4/1,AodMap26,low,eval,25972,19410,7,46.064,2.373,
+baseline,4/1,AodMap27,low,eval,35889,26825,9,46.688,3.643,
+baseline,4/1,AodMap28,low,eval,35632,26636,9,43.233,3.884,
+baseline,4/1,AodMap29,low,eval,20431,15264,6,43.275,1.883,
+baseline,4/1,AodMap3,low,eval,34428,25738,9,43.042,2.965,
+baseline,4/1,AodMap30,low,eval,17261,12901,5,47.832,1.665,
+baseline,4/1,AodMap31,low,eval,34260,25606,9,43.638,2.954,
+baseline,4/1,AodMap32,low,eval,17593,13144,5,44.646,1.773,
+baseline,4/1,AodMap33,low,eval,25908,19362,7,46.231,2.309,
+baseline,4/1,AodMap34,low,eval,25025,18702,7,45.185,2.25,
+baseline,4/1,AodMap35,low,eval,29021,21687,8,41.459,3.682,
+baseline,4/1,AodMap36,low,eval,25737,19238,7,44.013,2.222,
+baseline,4/1,AodMap37,low,eval,24125,18036,6,48.862,2.149,
+baseline,4/1,AodMap38,low,eval,35064,26210,9,44.782,3.044,
+baseline,4/1,AodMap39,low,eval,34004,25416,9,43.957,2.812,
+baseline,4/1,AodMap40,low,eval,26609,19890,7,43.196,2.499,
+baseline,4/1,AodMap41,low,eval,33812,25270,9,44.848,2.823,
+baseline,4/1,AodMap42,low,eval,33513,25049,9,45.863,2.988,
+baseline,4/1,AodMap43,low,eval,29485,22033,8,43.858,2.744,
+baseline,4/1,AodMap44,low,eval,26321,19675,7,44.184,2.472,
+baseline,4/1,AodMap45,low,eval,29481,22034,8,44.204,2.653,
+baseline,4/1,AodMap46,low,eval,25977,19416,7,45.003,2.3,
+baseline,4/1,AodMap47,low,eval,33708,25191,9,44.816,2.815,
+baseline,4/1,AodMap48,low,eval,26473,19789,7,46.043,2.31,
+baseline,4/1,AodMap49,low,eval,28221,21097,7,50.022,4.583,
+baseline,4/1,AodMap5,low,eval,34736,25964,9,69.189,2.997,
+baseline,4/1,AodMap50,low,eval,32233,24100,8,56.045,2.991,
+baseline,4/1,AodMap51,low,eval,20169,15081,5,52.44,1.847,
+baseline,4/1,AodMap52,low,eval,33016,24675,9,48.912,2.804,
+baseline,4/1,AodMap53,low,eval,17210,12860,5,49.007,1.649,
+baseline,4/1,AodMap6,low,eval,23213,17353,6,45.473,2.135,
+baseline,4/1,AodMap7,low,eval,36460,27249,10,46.009,3.154,
+baseline,4/1,AodMap9,low,eval,32944,24621,9,51.728,3.072,
+baseline,4/1,MapExtra0,map,eval,,,,,,raster capacity
+baseline,4/1,MapExtra1,map,eval,94669,70773,26,145.724,9.964,
+baseline,4/1,MapExtra10,map,eval,,,,,,raster capacity
+baseline,4/1,MapExtra11,map,eval,,,,,,raster capacity
+baseline,4/1,MapExtra12,map,eval,,,,,,raster capacity
+baseline,4/1,MapExtra13,map,eval,,,,,,raster capacity
+baseline,4/1,MapExtra14,map,eval,,,,,,raster capacity
+baseline,4/1,MapExtra15,map,eval,,,,,,raster capacity
+baseline,4/1,MapExtra16,map,eval,,,,,,raster capacity
+baseline,4/1,MapExtra17,map,eval,,,,,,raster capacity
+baseline,4/1,MapExtra2,map,eval,98173,73401,26,15.439,5.913,
+baseline,4/1,MapExtra3,map,eval,88233,65970,23,16.385,5.89,
+baseline,4/1,MapExtra4,map,eval,,,,,,raster capacity
+baseline,4/1,MapExtra5,map,eval,98148,73383,26,16.888,6.797,
+baseline,4/1,MapExtra6,map,eval,,,,,,raster capacity
+baseline,4/1,MapExtra7,map,eval,,,,,,raster capacity
+baseline,4/1,MapExtra8,map,eval,,,,,,raster capacity
+baseline,4/1,MapExtra9,map,eval,97693,73047,26,15.676,7.172,
+baseline,4/1,MapView10,map,eval,,,,,,raster capacity
+baseline,4/1,MapView11,map,eval,,,,,,raster capacity
+baseline,4/1,MapView13,map,eval,,,,,,raster capacity
+baseline,4/1,MapView14,map,eval,,,,,,raster capacity
+baseline,4/1,MapView16,map,eval,,,,,,raster capacity
+baseline,4/1,MapView17,map,eval,,,,,,raster capacity
+baseline,4/1,MapView18,map,eval,,,,,,raster capacity
+baseline,4/1,MapView19,map,eval,87469,65395,23,15.001,6.726,
+baseline,4/1,MapView2,map,eval,,,,,,raster capacity
+baseline,4/1,MapView20,map,eval,,,,,,raster capacity
+baseline,4/1,MapView21,map,eval,,,,,,raster capacity
+baseline,4/1,MapView22,map,eval,,,,,,raster capacity
+baseline,4/1,MapView23,map,eval,,,,,,raster capacity
+baseline,4/1,MapView24,map,eval,,,,,,raster capacity
+baseline,4/1,MapView25,map,eval,,,,,,raster capacity
+baseline,4/1,MapView26,map,eval,,,,,,raster capacity
+baseline,4/1,MapView27,map,eval,,,,,,raster capacity
+baseline,4/1,MapView28,map,eval,,,,,,raster capacity
+baseline,4/1,MapView29,map,eval,,,,,,raster capacity
+baseline,4/1,MapView3,map,eval,,,,,,raster capacity
+baseline,4/1,MapView30,map,eval,92168,68912,24,14.518,5.59,
+baseline,4/1,MapView31,map,eval,,,,,,raster capacity
+baseline,4/1,MapView32,map,eval,95242,71206,25,15.069,5.745,
+baseline,4/1,MapView33,map,eval,,,,,,raster capacity
+baseline,4/1,MapView34,map,eval,,,,,,raster capacity
+baseline,4/1,MapView35,map,eval,,,,,,raster capacity
+baseline,4/1,MapView36,map,eval,,,,,,raster capacity
+baseline,4/1,MapView37,map,eval,,,,,,raster capacity
+baseline,4/1,MapView38,map,eval,,,,,,raster capacity
+baseline,4/1,MapView39,map,eval,,,,,,raster capacity
+baseline,4/1,MapView40,map,eval,,,,,,raster capacity
+baseline,4/1,MapView41,map,eval,,,,,,raster capacity
+baseline,4/1,MapView42,map,eval,,,,,,raster capacity
+baseline,4/1,MapView43,map,eval,,,,,,raster capacity
+baseline,4/1,MapView44,map,eval,,,,,,raster capacity
+baseline,4/1,MapView45,map,eval,,,,,,raster capacity
+baseline,4/1,MapView46,map,eval,,,,,,raster capacity
+baseline,4/1,MapView47,map,eval,,,,,,raster capacity
+baseline,4/1,MapView48,map,eval,,,,,,raster capacity
+baseline,4/1,MapView49,map,eval,,,,,,raster capacity
+baseline,4/1,MapView5,map,eval,,,,,,raster capacity
+baseline,4/1,MapView50,map,eval,,,,,,raster capacity
+baseline,4/1,MapView51,map,eval,97688,73029,26,14.775,5.995,
+baseline,4/1,MapView52,map,eval,,,,,,raster capacity
+baseline,4/1,MapView53,map,eval,95689,71540,26,14.692,5.868,
+baseline,4/1,MapView6,map,eval,,,,,,raster capacity
+baseline,4/1,MapView7,map,eval,,,,,,raster capacity
+baseline,4/1,MapView9,map,eval,,,,,,raster capacity
+baseline,4/1,art_unknown,rocket,eval,2083,1554,1,1.628,0.15,
+generation-1,1/2,current-map,map,train,41220,30808,11,40.963,2.669,
+generation-1,1/2,current-rocket,rocket,train,2099,1564,1,1.758,0.122,
+generation-1,1/2,current-flag,flag,train,398,290,1,0.055,0.02,
+generation-1,1/2,map-0,map,train,,,,,,raster capacity
+generation-1,1/2,map-1,map,train,,,,,,raster capacity
+generation-1,1/2,map-4,map,train,,,,,,raster capacity
+generation-1,1/2,map-12,map,train,93585,69958,25,13.651,5.462,
+generation-1,1/2,low-0,low,train,23037,17221,6,46.401,1.741,
+generation-1,1/2,low-1,low,train,40620,30360,11,42.59,2.835,
+generation-1,1/2,low-4,low,train,23769,17770,6,49.588,1.835,
+generation-1,1/2,falcon-9,rocket,train,2439,1820,1,1.695,0.144,
+generation-1,1/2,falcon-heavy,rocket,train,4214,3142,2,1.678,0.277,
+generation-1,1/2,ariane-62,rocket,train,3527,2636,1,1.558,0.188,
+generation-1,1/2,generic,rocket,train,3083,2302,1,1.682,0.165,
+generation-1,1/2,flag-us,flag,train,390,285,1,0.056,0.021,
+generation-1,1/2,flag-fr,flag,train,58,36,1,0.053,0.008,
+generation-1,1/2,flag-europe,flag,train,478,351,1,0.078,0.026,
+generation-1,2/2,current-map,map,train,36211,27065,10,39.87,2.55,
+generation-1,2/2,current-rocket,rocket,train,1423,1057,1,1.804,0.119,
+generation-1,2/2,current-flag,flag,train,378,274,1,0.058,0.022,
+generation-1,2/2,map-0,map,train,93134,69633,25,14.587,5.449,
+generation-1,2/2,map-1,map,train,,,,,,raster capacity
+generation-1,2/2,map-4,map,train,94882,70938,25,14.736,5.573,
+generation-1,2/2,map-12,map,train,88429,66115,23,13.597,5.289,
+generation-1,2/2,low-0,low,train,16914,12635,5,45.399,1.657,
+generation-1,2/2,low-1,low,train,32540,24319,9,43.482,3.429,
+generation-1,2/2,low-4,low,train,17433,13027,5,43.837,1.607,
+generation-1,2/2,falcon-9,rocket,train,1871,1395,1,1.637,0.132,
+generation-1,2/2,falcon-heavy,rocket,train,3511,2624,1,1.653,0.225,
+generation-1,2/2,ariane-62,rocket,train,2855,2131,1,1.599,0.18,
+generation-1,2/2,generic,rocket,train,2451,1830,1,1.658,0.156,
+generation-1,2/2,flag-us,flag,train,342,249,1,0.056,0.02,
+generation-1,2/2,flag-fr,flag,train,50,28,1,0.053,0.008,
+generation-1,2/2,flag-europe,flag,train,354,256,1,0.073,0.023,
+generation-1,3/2,current-map,map,train,36656,27393,10,40.436,2.619,
+generation-1,3/2,current-rocket,rocket,train,1427,1061,1,1.744,0.113,
+generation-1,3/2,current-flag,flag,train,378,274,1,0.056,0.021,
+generation-1,3/2,map-0,map,train,93723,70068,25,14.09,5.408,
+generation-1,3/2,map-1,map,train,,,,,,raster capacity
+generation-1,3/2,map-4,map,train,95470,71386,25,14.318,5.511,
+generation-1,3/2,map-12,map,train,88717,66335,23,13.471,5.395,
+generation-1,3/2,low-0,low,train,17262,12901,5,47.197,1.593,
+generation-1,3/2,low-1,low,train,32972,24647,9,42.025,2.812,
+generation-1,3/2,low-4,low,train,17769,13280,5,44.165,1.634,
+generation-1,3/2,falcon-9,rocket,train,1875,1397,1,1.611,0.132,
+generation-1,3/2,falcon-heavy,rocket,train,3523,2634,1,1.547,0.205,
+generation-1,3/2,ariane-62,rocket,train,2863,2137,1,1.576,0.175,
+generation-1,3/2,generic,rocket,train,2459,1834,1,1.643,0.159,
+generation-1,3/2,flag-us,flag,train,342,249,1,0.056,0.021,
+generation-1,3/2,flag-fr,flag,train,50,28,1,0.053,0.008,
+generation-1,3/2,flag-europe,flag,train,354,256,1,0.073,0.022,
+generation-1,4/2,current-map,map,train,36752,27468,10,39.89,2.648,
+generation-1,4/2,current-rocket,rocket,train,1427,1061,1,1.746,0.114,
+generation-1,4/2,current-flag,flag,train,378,274,1,0.055,0.021,
+generation-1,4/2,map-0,map,train,94323,70524,25,14.468,5.786,
+generation-1,4/2,map-1,map,train,,,,,,raster capacity
+generation-1,4/2,map-4,map,train,96113,71852,26,14.45,5.887,
+generation-1,4/2,map-12,map,train,89112,66620,24,14.255,5.538,
+generation-1,4/2,low-0,low,train,17418,13015,5,45.979,1.829,
+generation-1,4/2,low-1,low,train,33367,24944,9,42.0,2.955,
+generation-1,4/2,low-4,low,train,17877,13361,5,43.607,1.776,
+generation-1,4/2,falcon-9,rocket,train,1875,1398,1,1.697,0.14,
+generation-1,4/2,falcon-heavy,rocket,train,3527,2636,1,1.672,0.219,
+generation-1,4/2,ariane-62,rocket,train,2863,2138,1,1.548,0.177,
+generation-1,4/2,generic,rocket,train,2463,1837,1,1.661,0.157,
+generation-1,4/2,flag-us,flag,train,342,249,1,0.056,0.02,
+generation-1,4/2,flag-fr,flag,train,50,28,1,0.052,0.007,
+generation-1,4/2,flag-europe,flag,train,354,256,1,0.073,0.022,
+generation-1,5/2,current-map,map,train,36748,27467,10,40.26,2.874,
+generation-1,5/2,current-rocket,rocket,train,1427,1062,1,1.781,0.122,
+generation-1,5/2,current-flag,flag,train,378,274,1,0.057,0.022,
+generation-1,5/2,map-0,map,train,94399,70580,25,14.656,5.561,
+generation-1,5/2,map-1,map,train,,,,,,raster capacity
+generation-1,5/2,map-4,map,train,96185,71903,26,14.517,5.598,
+generation-1,5/2,map-12,map,train,89175,66668,24,13.895,5.51,
+generation-1,5/2,low-0,low,train,17414,13014,5,45.764,1.611,
+generation-1,5/2,low-1,low,train,33379,24946,9,42.294,2.935,
+generation-1,5/2,low-4,low,train,17889,13368,5,44.234,1.653,
+generation-1,5/2,falcon-9,rocket,train,1875,1398,1,1.637,0.133,
+generation-1,5/2,falcon-heavy,rocket,train,3527,2636,1,1.689,0.227,
+generation-1,5/2,ariane-62,rocket,train,2863,2138,1,1.604,0.185,
+generation-1,5/2,generic,rocket,train,2463,1838,1,1.747,0.176,
+generation-1,5/2,flag-us,flag,train,342,249,1,0.064,0.023,
+generation-1,5/2,flag-fr,flag,train,50,28,1,0.08,0.012,
+generation-1,5/2,flag-europe,flag,train,354,256,1,0.076,0.023,
+generation-1,6/2,current-map,map,train,36760,27473,10,40.741,2.767,
+generation-1,6/2,current-rocket,rocket,train,1427,1062,1,1.834,0.122,
+generation-1,6/2,current-flag,flag,train,378,274,1,0.059,0.022,
+generation-1,6/2,map-0,map,train,94715,70815,25,15.086,6.768,
+generation-1,6/2,map-1,map,train,,,,,,raster capacity
+generation-1,6/2,map-4,map,train,96320,72012,26,14.984,5.641,
+generation-1,6/2,map-12,map,train,89307,66774,24,14.242,5.531,
+generation-1,6/2,low-0,low,train,17458,13043,5,45.745,1.663,
+generation-1,6/2,low-1,low,train,33512,25048,9,42.544,2.867,
+generation-1,6/2,low-4,low,train,17921,13397,5,43.754,1.669,
+generation-1,6/2,falcon-9,rocket,train,1875,1398,1,1.615,0.132,
+generation-1,6/2,falcon-heavy,rocket,train,3527,2636,1,1.56,0.208,
+generation-1,6/2,ariane-62,rocket,train,2863,2139,1,1.561,0.175,
+generation-1,6/2,generic,rocket,train,2463,1839,1,1.645,0.156,
+generation-1,6/2,flag-us,flag,train,342,249,1,0.056,0.02,
+generation-1,6/2,flag-fr,flag,train,50,28,1,0.052,0.008,
+generation-1,6/2,flag-europe,flag,train,354,256,1,0.072,0.022,
+generation-1,8/2,current-map,map,train,36772,27480,10,40.241,2.697,
+generation-1,8/2,current-rocket,rocket,train,1427,1062,1,1.775,0.116,
+generation-1,8/2,current-flag,flag,train,378,274,1,0.057,0.021,
+generation-1,8/2,map-0,map,train,94803,70878,25,15.002,5.774,
+generation-1,8/2,map-1,map,train,,,,,,raster capacity
+generation-1,8/2,map-4,map,train,96420,72089,26,14.989,5.875,
+generation-1,8/2,map-12,map,train,89387,66831,24,14.104,5.476,
+generation-1,8/2,low-0,low,train,17514,13087,5,46.114,1.611,
+generation-1,8/2,low-1,low,train,33572,25093,9,42.17,2.864,
+generation-1,8/2,low-4,low,train,17953,13416,5,43.795,1.661,
+generation-1,8/2,falcon-9,rocket,train,1879,1399,1,1.619,0.132,
+generation-1,8/2,falcon-heavy,rocket,train,3527,2636,1,1.552,0.204,
+generation-1,8/2,ariane-62,rocket,train,2863,2139,1,1.534,0.175,
+generation-1,8/2,generic,rocket,train,2463,1839,1,1.716,0.188,
+generation-1,8/2,flag-us,flag,train,342,249,1,0.065,0.022,
+generation-1,8/2,flag-fr,flag,train,50,28,1,0.053,0.008,
+generation-1,8/2,flag-europe,flag,train,354,256,1,0.073,0.022,
+generation-1,10/2,current-map,map,train,36772,27481,10,39.641,2.769,
+generation-1,10/2,current-rocket,rocket,train,1427,1062,1,1.815,0.128,
+generation-1,10/2,current-flag,flag,train,378,274,1,0.059,0.023,
+generation-1,10/2,map-0,map,train,94843,70911,25,15.026,5.87,
+generation-1,10/2,map-1,map,train,,,,,,raster capacity
+generation-1,10/2,map-4,map,train,96485,72133,26,14.848,5.787,
+generation-1,10/2,map-12,map,train,89439,66866,24,14.143,5.634,
+generation-1,10/2,low-0,low,train,17526,13094,5,45.767,1.73,
+generation-1,10/2,low-1,low,train,33612,25119,9,42.571,2.865,
+generation-1,10/2,low-4,low,train,17969,13429,5,43.865,1.714,
+generation-1,10/2,falcon-9,rocket,train,1879,1399,1,1.65,0.138,
+generation-1,10/2,falcon-heavy,rocket,train,3527,2636,1,1.574,0.207,
+generation-1,10/2,ariane-62,rocket,train,2867,2140,1,1.59,0.183,
+generation-1,10/2,generic,rocket,train,2463,1839,1,1.752,0.165,
+generation-1,10/2,flag-us,flag,train,342,249,1,0.057,0.021,
+generation-1,10/2,flag-fr,flag,train,50,28,1,0.052,0.008,
+generation-1,10/2,flag-europe,flag,train,354,256,1,0.072,0.022,
+generation-1,12/2,current-map,map,train,36780,27484,10,39.714,2.808,
+generation-1,12/2,current-rocket,rocket,train,1427,1062,1,1.792,0.116,
+generation-1,12/2,current-flag,flag,train,378,274,1,0.056,0.021,
+generation-1,12/2,map-0,map,train,94859,70923,25,14.734,5.807,
+generation-1,12/2,map-1,map,train,,,,,,raster capacity
+generation-1,12/2,map-4,map,train,96493,72139,26,14.821,5.957,
+generation-1,12/2,map-12,map,train,89451,66879,24,13.959,5.516,
+generation-1,12/2,low-0,low,train,17542,13109,5,46.549,1.85,
+generation-1,12/2,low-1,low,train,33624,25129,9,42.219,2.956,
+generation-1,12/2,low-4,low,train,17977,13436,5,43.931,1.793,
+generation-1,12/2,falcon-9,rocket,train,1879,1399,1,1.666,0.138,
+generation-1,12/2,falcon-heavy,rocket,train,3527,2636,1,1.612,0.211,
+generation-1,12/2,ariane-62,rocket,train,2867,2142,1,1.541,0.176,
+generation-1,12/2,generic,rocket,train,2463,1839,1,1.645,0.156,
+generation-1,12/2,flag-us,flag,train,342,249,1,0.055,0.02,
+generation-1,12/2,flag-fr,flag,train,50,28,1,0.052,0.008,
+generation-1,12/2,flag-europe,flag,train,354,256,1,0.072,0.022,
+generation-1,16/2,current-map,map,train,36780,27488,10,39.873,2.676,
+generation-1,16/2,current-rocket,rocket,train,1427,1062,1,1.952,0.133,
+generation-1,16/2,current-flag,flag,train,378,274,1,0.061,0.032,
+generation-1,16/2,map-0,map,train,94879,70937,25,14.847,5.783,
+generation-1,16/2,map-1,map,train,,,,,,raster capacity
+generation-1,16/2,map-4,map,train,96517,72157,26,14.96,5.816,
+generation-1,16/2,map-12,map,train,89475,66894,24,14.246,5.592,
+generation-1,16/2,low-0,low,train,17542,13109,5,46.169,1.669,
+generation-1,16/2,low-1,low,train,33628,25137,9,42.331,2.893,
+generation-1,16/2,low-4,low,train,18013,13465,5,43.777,1.734,
+generation-1,16/2,falcon-9,rocket,train,1879,1399,1,1.639,0.137,
+generation-1,16/2,falcon-heavy,rocket,train,3527,2636,1,1.577,0.207,
+generation-1,16/2,ariane-62,rocket,train,2867,2142,1,1.557,0.177,
+generation-1,16/2,generic,rocket,train,2463,1839,1,1.701,0.165,
+generation-1,16/2,flag-us,flag,train,342,249,1,0.059,0.021,
+generation-1,16/2,flag-fr,flag,train,50,28,1,0.054,0.008,
+generation-1,16/2,flag-europe,flag,train,354,256,1,0.075,0.023,
+generation-1,20/2,current-map,map,train,36784,27491,10,39.73,2.734,
+generation-1,20/2,current-rocket,rocket,train,1427,1062,1,1.784,0.12,
+generation-1,20/2,current-flag,flag,train,378,274,1,0.058,0.022,
+generation-1,20/2,map-0,map,train,94875,70934,25,14.92,5.782,
+generation-1,20/2,map-1,map,train,,,,,,raster capacity
+generation-1,20/2,map-4,map,train,96525,72159,26,15.135,5.822,
+generation-1,20/2,map-12,map,train,89483,66900,24,14.319,5.451,
+generation-1,20/2,low-0,low,train,17542,13109,5,46.572,1.685,
+generation-1,20/2,low-1,low,train,33640,25142,9,42.466,2.838,
+generation-1,20/2,low-4,low,train,18017,13468,5,44.08,1.708,
+generation-1,20/2,falcon-9,rocket,train,1879,1399,1,1.654,0.133,
+generation-1,20/2,falcon-heavy,rocket,train,3527,2636,1,1.612,0.226,
+generation-1,20/2,ariane-62,rocket,train,2867,2142,1,1.591,0.202,
+generation-1,20/2,generic,rocket,train,2463,1839,1,1.781,0.169,
+generation-1,20/2,flag-us,flag,train,342,249,1,0.062,0.026,
+generation-1,20/2,flag-fr,flag,train,50,28,1,0.053,0.008,
+generation-1,20/2,flag-europe,flag,train,354,256,1,0.077,0.022,
+generation-1,24/2,current-map,map,train,36788,27493,10,40.372,2.657,
+generation-1,24/2,current-rocket,rocket,train,1431,1063,1,1.751,0.113,
+generation-1,24/2,current-flag,flag,train,378,274,1,0.056,0.021,
+generation-1,24/2,map-0,map,train,94879,70939,25,15.029,5.699,
+generation-1,24/2,map-1,map,train,,,,,,raster capacity
+generation-1,24/2,map-4,map,train,96529,72163,26,15.211,5.985,
+generation-1,24/2,map-12,map,train,89483,66903,24,14.884,5.709,
+generation-1,24/2,low-0,low,train,17550,13112,5,47.701,1.677,
+generation-1,24/2,low-1,low,train,33648,25144,9,42.283,2.938,
+generation-1,24/2,low-4,low,train,18021,13470,5,43.832,1.705,
+generation-1,24/2,falcon-9,rocket,train,1879,1399,1,1.719,0.142,
+generation-1,24/2,falcon-heavy,rocket,train,3527,2636,1,1.614,0.216,
+generation-1,24/2,ariane-62,rocket,train,2867,2142,1,1.555,0.182,
+generation-1,24/2,generic,rocket,train,2463,1839,1,1.662,0.161,
+generation-1,24/2,flag-us,flag,train,342,249,1,0.056,0.021,
+generation-1,24/2,flag-fr,flag,train,50,28,1,0.053,0.008,
+generation-1,24/2,flag-europe,flag,train,354,256,1,0.074,0.024,
+generation-1,32/2,current-map,map,train,36788,27493,10,40.404,2.718,
+generation-1,32/2,current-rocket,rocket,train,1431,1063,1,1.869,0.117,
+generation-1,32/2,current-flag,flag,train,378,274,1,0.058,0.022,
+generation-1,32/2,map-0,map,train,94883,70942,25,14.8,5.768,
+generation-1,32/2,map-1,map,train,,,,,,raster capacity
+generation-1,32/2,map-4,map,train,96529,72165,26,14.936,5.849,
+generation-1,32/2,map-12,map,train,89483,66904,24,14.326,5.337,
+generation-1,32/2,low-0,low,train,17550,13113,5,46.574,1.671,
+generation-1,32/2,low-1,low,train,33648,25145,9,43.276,2.935,
+generation-1,32/2,low-4,low,train,18029,13473,5,44.307,1.722,
+generation-1,32/2,falcon-9,rocket,train,1879,1399,1,1.766,0.138,
+generation-1,32/2,falcon-heavy,rocket,train,3527,2637,1,1.753,0.222,
+generation-1,32/2,ariane-62,rocket,train,2867,2142,1,1.627,0.177,
+generation-1,32/2,generic,rocket,train,2463,1839,1,1.725,0.157,
+generation-1,32/2,flag-us,flag,train,342,249,1,0.057,0.02,
+generation-1,32/2,flag-fr,flag,train,50,28,1,0.057,0.008,
+generation-1,32/2,flag-europe,flag,train,354,256,1,0.074,0.022,
+generation-1,40/2,current-map,map,train,36788,27494,10,40.331,2.745,
+generation-1,40/2,current-rocket,rocket,train,1431,1063,1,1.955,0.16,
+generation-1,40/2,current-flag,flag,train,378,274,1,0.064,0.025,
+generation-1,40/2,map-0,map,train,94891,70944,25,14.923,5.713,
+generation-1,40/2,map-1,map,train,,,,,,raster capacity
+generation-1,40/2,map-4,map,train,96529,72165,26,15.174,5.662,
+generation-1,40/2,map-12,map,train,89483,66904,24,14.338,5.439,
+generation-1,40/2,low-0,low,train,17550,13114,5,46.566,1.635,
+generation-1,40/2,low-1,low,train,33652,25147,9,42.737,2.811,
+generation-1,40/2,low-4,low,train,18029,13474,5,44.416,1.715,
+generation-1,40/2,falcon-9,rocket,train,1879,1399,1,1.776,0.139,
+generation-1,40/2,falcon-heavy,rocket,train,3527,2637,1,1.729,0.222,
+generation-1,40/2,ariane-62,rocket,train,2867,2142,1,1.636,0.179,
+generation-1,40/2,generic,rocket,train,2463,1839,1,1.742,0.159,
+generation-1,40/2,flag-us,flag,train,342,249,1,0.057,0.021,
+generation-1,40/2,flag-fr,flag,train,50,28,1,0.056,0.008,
+generation-1,40/2,flag-europe,flag,train,354,256,1,0.075,0.022,
+generation-1,48/2,current-map,map,train,36788,27494,10,40.65,2.725,
+generation-1,48/2,current-rocket,rocket,train,1431,1063,1,1.934,0.121,
+generation-1,48/2,current-flag,flag,train,378,274,1,0.057,0.022,
+generation-1,48/2,map-0,map,train,94891,70944,25,14.95,5.821,
+generation-1,48/2,map-1,map,train,,,,,,raster capacity
+generation-1,48/2,map-4,map,train,96533,72167,26,15.149,5.868,
+generation-1,48/2,map-12,map,train,89483,66904,24,14.154,5.643,
+generation-1,48/2,low-0,low,train,17550,13114,5,46.442,1.811,
+generation-1,48/2,low-1,low,train,33652,25148,9,42.685,2.999,
+generation-1,48/2,low-4,low,train,18029,13474,5,44.307,1.69,
+generation-1,48/2,falcon-9,rocket,train,1879,1399,1,1.748,0.139,
+generation-1,48/2,falcon-heavy,rocket,train,3527,2637,1,1.707,0.212,
+generation-1,48/2,ariane-62,rocket,train,2867,2142,1,1.663,0.184,
+generation-1,48/2,generic,rocket,train,2463,1839,1,1.844,0.165,
+generation-1,48/2,flag-us,flag,train,342,249,1,0.057,0.021,
+generation-1,48/2,flag-fr,flag,train,50,28,1,0.056,0.008,
+generation-1,48/2,flag-europe,flag,train,354,256,1,0.074,0.022,
+generation-1,64/2,current-map,map,train,36792,27495,10,40.068,2.851,
+generation-1,64/2,current-rocket,rocket,train,1431,1063,1,1.891,0.125,
+generation-1,64/2,current-flag,flag,train,378,274,1,0.068,0.022,
+generation-1,64/2,map-0,map,train,94891,70944,25,14.848,5.861,
+generation-1,64/2,map-1,map,train,,,,,,raster capacity
+generation-1,64/2,map-4,map,train,96533,72167,26,14.99,5.871,
+generation-1,64/2,map-12,map,train,89483,66904,24,14.268,5.536,
+generation-1,64/2,low-0,low,train,17550,13116,5,46.3,1.75,
+generation-1,64/2,low-1,low,train,33652,25149,9,42.508,3.327,
+generation-1,64/2,low-4,low,train,18033,13475,5,47.049,1.703,
+generation-1,64/2,falcon-9,rocket,train,1879,1399,1,1.762,0.148,
+generation-1,64/2,falcon-heavy,rocket,train,3527,2637,1,1.731,0.212,
+generation-1,64/2,ariane-62,rocket,train,2867,2142,1,1.647,0.178,
+generation-1,64/2,generic,rocket,train,2463,1839,1,1.749,0.157,
+generation-1,64/2,flag-us,flag,train,342,249,1,0.056,0.02,
+generation-1,64/2,flag-fr,flag,train,50,28,1,0.056,0.008,
+generation-1,64/2,flag-europe,flag,train,354,256,1,0.075,0.022,
+generation-2,7/8,current-map,map,train,40008,29911,10,39.755,2.657,
+generation-2,7/8,current-rocket,rocket,train,2099,1564,1,1.96,0.137,
+generation-2,7/8,current-flag,flag,train,398,290,1,0.062,0.023,
+generation-2,7/8,map-0,map,train,97943,73220,27,14.286,5.552,
+generation-2,7/8,map-1,map,train,,,,,,raster capacity
+generation-2,7/8,map-4,map,train,,,,,,raster capacity
+generation-2,7/8,map-12,map,train,92715,69320,24,13.631,5.264,
+generation-2,7/8,low-0,low,train,22560,16862,6,46.383,1.679,
+generation-2,7/8,low-1,low,train,39568,29578,10,42.543,2.878,
+generation-2,7/8,low-4,low,train,23169,17318,6,44.331,1.819,
+generation-2,7/8,falcon-9,rocket,train,2439,1820,1,1.772,0.147,
+generation-2,7/8,falcon-heavy,rocket,train,4166,3105,2,1.664,0.217,
+generation-2,7/8,ariane-62,rocket,train,3467,2591,1,1.654,0.192,
+generation-2,7/8,generic,rocket,train,3035,2267,1,1.795,0.17,
+generation-2,7/8,flag-us,flag,train,390,285,1,0.06,0.022,
+generation-2,7/8,flag-fr,flag,train,58,36,1,0.055,0.008,
+generation-2,7/8,flag-europe,flag,train,406,297,1,0.171,0.032,
+generation-2,9/8,current-map,map,train,36444,27235,10,40.025,2.699,
+generation-2,9/8,current-rocket,rocket,train,1423,1059,1,1.873,0.117,
+generation-2,9/8,current-flag,flag,train,378,274,1,0.058,0.022,
+generation-2,9/8,map-0,map,train,93154,69649,25,14.194,5.613,
+generation-2,9/8,map-1,map,train,,,,,,raster capacity
+generation-2,9/8,map-4,map,train,94902,70955,25,14.311,5.553,
+generation-2,9/8,map-12,map,train,88437,66127,23,13.531,5.225,
+generation-2,9/8,low-0,low,train,17194,12848,5,46.123,1.548,
+generation-2,9/8,low-1,low,train,32812,24523,9,42.167,2.669,
+generation-2,9/8,low-4,low,train,17653,13192,5,44.194,1.769,
+generation-2,9/8,falcon-9,rocket,train,1871,1395,1,1.726,0.135,
+generation-2,9/8,falcon-heavy,rocket,train,3511,2625,1,1.647,0.216,
+generation-2,9/8,ariane-62,rocket,train,2855,2131,1,1.675,0.185,
+generation-2,9/8,generic,rocket,train,2451,1830,1,1.843,0.165,
+generation-2,9/8,flag-us,flag,train,342,249,1,0.058,0.021,
+generation-2,9/8,flag-fr,flag,train,50,28,1,0.056,0.008,
+generation-2,9/8,flag-europe,flag,train,354,256,1,0.074,0.022,
+generation-2,11/8,current-map,map,train,36624,27369,10,40.094,2.792,
+generation-2,11/8,current-rocket,rocket,train,1427,1061,1,1.871,0.116,
+generation-2,11/8,current-flag,flag,train,378,274,1,0.056,0.021,
+generation-2,11/8,map-0,map,train,93471,69875,25,14.338,5.563,
+generation-2,11/8,map-1,map,train,,,,,,raster capacity
+generation-2,11/8,map-4,map,train,95170,71161,25,14.654,5.611,
+generation-2,11/8,map-12,map,train,88513,66181,23,14.006,5.158,
+generation-2,11/8,low-0,low,train,17266,12899,5,46.033,1.62,
+generation-2,11/8,low-1,low,train,32924,24605,9,42.585,2.83,
+generation-2,11/8,low-4,low,train,17725,13249,5,43.875,1.731,
+generation-2,11/8,falcon-9,rocket,train,1875,1397,1,1.728,0.135,
+generation-2,11/8,falcon-heavy,rocket,train,3523,2634,1,1.628,0.207,
+generation-2,11/8,ariane-62,rocket,train,2859,2136,1,1.627,0.175,
+generation-2,11/8,generic,rocket,train,2455,1833,1,1.717,0.155,
+generation-2,11/8,flag-us,flag,train,342,249,1,0.056,0.02,
+generation-2,11/8,flag-fr,flag,train,50,28,1,0.055,0.008,
+generation-2,11/8,flag-europe,flag,train,354,256,1,0.074,0.022,
+generation-2,13/8,current-map,map,train,36668,27401,10,40.099,2.816,
+generation-2,13/8,current-rocket,rocket,train,1427,1061,1,1.866,0.12,
+generation-2,13/8,current-flag,flag,train,378,274,1,0.057,0.021,
+generation-2,13/8,map-0,map,train,93735,70075,25,14.459,5.547,
+generation-2,13/8,map-1,map,train,,,,,,raster capacity
+generation-2,13/8,map-4,map,train,95490,71398,25,14.377,5.743,
+generation-2,13/8,map-12,map,train,88721,66341,23,13.67,5.363,
+generation-2,13/8,low-0,low,train,17266,12903,5,53.401,1.612,
+generation-2,13/8,low-1,low,train,33068,24713,9,42.317,2.733,
+generation-2,13/8,low-4,low,train,17773,13281,5,44.133,1.648,
+generation-2,13/8,falcon-9,rocket,train,1875,1397,1,1.745,0.137,
+generation-2,13/8,falcon-heavy,rocket,train,3523,2634,1,1.65,0.206,
+generation-2,13/8,ariane-62,rocket,train,2863,2137,1,1.625,0.176,
+generation-2,13/8,generic,rocket,train,2459,1834,1,1.75,0.156,
+generation-2,13/8,flag-us,flag,train,342,249,1,0.056,0.02,
+generation-2,13/8,flag-fr,flag,train,50,28,1,0.057,0.007,
+generation-2,13/8,flag-europe,flag,train,354,256,1,0.075,0.023,
+generation-2,15/8,current-map,map,train,36720,27440,10,40.237,2.693,
+generation-2,15/8,current-rocket,rocket,train,1427,1061,1,1.864,0.117,
+generation-2,15/8,current-flag,flag,train,378,274,1,0.058,0.021,
+generation-2,15/8,map-0,map,train,93819,70139,25,14.479,5.578,
+generation-2,15/8,map-1,map,train,,,,,,raster capacity
+generation-2,15/8,map-4,map,train,95586,71470,25,14.867,5.584,
+generation-2,15/8,map-12,map,train,88797,66399,23,14.244,5.281,
+generation-2,15/8,low-0,low,train,17270,12909,5,47.795,1.655,
+generation-2,15/8,low-1,low,train,33092,24729,9,42.655,2.807,
+generation-2,15/8,low-4,low,train,17781,13290,5,44.179,1.675,
+generation-2,15/8,falcon-9,rocket,train,1875,1397,1,1.698,0.132,
+generation-2,15/8,falcon-heavy,rocket,train,3523,2634,1,1.663,0.205,
+generation-2,15/8,ariane-62,rocket,train,2863,2137,1,1.612,0.174,
+generation-2,15/8,generic,rocket,train,2459,1834,1,1.73,0.156,
+generation-2,15/8,flag-us,flag,train,342,249,1,0.056,0.02,
+generation-2,15/8,flag-fr,flag,train,50,28,1,0.055,0.008,
+generation-2,15/8,flag-europe,flag,train,354,256,1,0.073,0.022,
+generation-2,17/8,current-map,map,train,36752,27469,10,40.067,2.687,
+generation-2,17/8,current-rocket,rocket,train,1427,1061,1,1.903,0.12,
+generation-2,17/8,current-flag,flag,train,378,274,1,0.059,0.022,
+generation-2,17/8,map-0,map,train,94327,70525,25,14.429,5.686,
+generation-2,17/8,map-1,map,train,,,,,,raster capacity
+generation-2,17/8,map-4,map,train,96117,71855,26,14.797,5.669,
+generation-2,17/8,map-12,map,train,89112,66620,24,14.129,5.393,
+generation-2,17/8,low-0,low,train,17418,13015,5,46.052,1.796,
+generation-2,17/8,low-1,low,train,33367,24944,9,42.654,2.859,
+generation-2,17/8,low-4,low,train,17877,13361,5,74.325,3.769,
+generation-2,17/8,falcon-9,rocket,train,1875,1398,1,4.042,0.182,
+generation-2,17/8,falcon-heavy,rocket,train,3527,2636,1,3.083,3.676,
+generation-2,17/8,ariane-62,rocket,train,2863,2138,1,2.262,0.212,
+generation-2,17/8,generic,rocket,train,2463,1837,1,2.128,0.172,
+generation-2,17/8,flag-us,flag,train,342,249,1,0.061,0.022,
+generation-2,17/8,flag-fr,flag,train,50,28,1,0.058,0.066,
+generation-2,17/8,flag-europe,flag,train,354,256,1,0.079,0.024,
+generation-2,19/8,current-map,map,train,36744,27465,10,44.002,4.026,
+generation-2,19/8,current-rocket,rocket,train,1427,1062,1,3.293,0.183,
+generation-2,19/8,current-flag,flag,train,378,274,1,0.066,0.07,
+generation-2,19/8,map-0,map,train,94355,70545,25,17.396,5.759,
+generation-2,19/8,map-1,map,train,,,,,,raster capacity
+generation-2,19/8,map-4,map,train,96137,71870,26,15.135,5.835,
+generation-2,19/8,map-12,map,train,89155,66648,24,14.281,5.903,
+generation-2,19/8,low-0,low,train,17410,13008,5,49.027,1.912,
+generation-2,19/8,low-1,low,train,33375,24945,9,45.163,2.931,
+generation-2,19/8,low-4,low,train,17885,13365,5,48.583,1.718,
+generation-2,19/8,falcon-9,rocket,train,1875,1398,1,5.173,0.15,
+generation-2,19/8,falcon-heavy,rocket,train,3527,2636,1,1.793,0.254,
+generation-2,19/8,ariane-62,rocket,train,2863,2138,1,1.807,0.194,
+generation-2,19/8,generic,rocket,train,2463,1838,1,2.52,0.176,
+generation-2,19/8,flag-us,flag,train,342,249,1,0.062,0.022,
+generation-2,19/8,flag-fr,flag,train,50,28,1,0.059,0.008,
+generation-2,19/8,flag-europe,flag,train,354,256,1,0.078,0.023,
+generation-2,21/8,current-map,map,train,36748,27467,10,47.726,3.05,
+generation-2,21/8,current-rocket,rocket,train,1427,1062,1,1.974,0.123,
+generation-2,21/8,current-flag,flag,train,378,274,1,0.06,0.023,
+generation-2,21/8,map-0,map,train,94403,70581,25,14.768,5.699,
+generation-2,21/8,map-1,map,train,,,,,,raster capacity
+generation-2,21/8,map-4,map,train,96189,71906,26,14.692,5.812,
+generation-2,21/8,map-12,map,train,89175,66668,24,14.541,5.601,
+generation-2,21/8,low-0,low,train,17414,13014,5,46.143,1.614,
+generation-2,21/8,low-1,low,train,33383,24947,9,42.713,2.768,
+generation-2,21/8,low-4,low,train,17889,13368,5,44.582,1.66,
+generation-2,21/8,falcon-9,rocket,train,1875,1398,1,1.783,0.159,
+generation-2,21/8,falcon-heavy,rocket,train,3527,2636,1,1.708,0.224,
+generation-2,21/8,ariane-62,rocket,train,2863,2138,1,1.723,0.182,
+generation-2,21/8,generic,rocket,train,2463,1838,1,1.72,0.156,
+generation-2,21/8,flag-us,flag,train,342,249,1,0.056,0.02,
+generation-2,21/8,flag-fr,flag,train,50,28,1,0.055,0.008,
+generation-2,21/8,flag-europe,flag,train,354,256,1,0.075,0.022,
+generation-3-finalists,2/2,current-map,map,train,36211,27065,10,39.87,2.55,
+generation-3-finalists,2/2,current-rocket,rocket,train,1423,1057,1,1.804,0.119,
+generation-3-finalists,2/2,current-flag,flag,train,378,274,1,0.058,0.022,
+generation-3-finalists,2/2,map-0,map,train,93134,69633,25,14.587,5.449,
+generation-3-finalists,2/2,map-1,map,train,,,,,,raster capacity
+generation-3-finalists,2/2,map-4,map,train,94882,70938,25,14.736,5.573,
+generation-3-finalists,2/2,map-8,map,eval,96194,71925,25,14.624,5.735,
+generation-3-finalists,2/2,map-12,map,train,88429,66115,23,13.597,5.289,
+generation-3-finalists,2/2,map-15,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,low-0,low,train,16914,12635,5,45.399,1.657,
+generation-3-finalists,2/2,low-1,low,train,32540,24319,9,43.482,3.429,
+generation-3-finalists,2/2,low-4,low,train,17433,13027,5,43.837,1.607,
+generation-3-finalists,2/2,low-8,low,eval,18925,14147,5,43.971,1.7,
+generation-3-finalists,2/2,falcon-9,rocket,train,1871,1395,1,1.637,0.132,
+generation-3-finalists,2/2,falcon-heavy,rocket,train,3511,2624,1,1.653,0.225,
+generation-3-finalists,2/2,ariane-62,rocket,train,2855,2131,1,1.599,0.18,
+generation-3-finalists,2/2,ariane-64,rocket,eval,3519,2630,1,1.639,0.203,
+generation-3-finalists,2/2,electron,rocket,eval,1919,1431,1,1.737,0.13,
+generation-3-finalists,2/2,generic,rocket,train,2451,1830,1,1.658,0.156,
+generation-3-finalists,2/2,flag-us,flag,train,342,249,1,0.056,0.02,
+generation-3-finalists,2/2,flag-fr,flag,train,50,28,1,0.053,0.008,
+generation-3-finalists,2/2,flag-nz,flag,eval,438,319,1,0.074,0.024,
+generation-3-finalists,2/2,flag-europe,flag,train,354,256,1,0.073,0.023,
+generation-3-finalists,2/2,AodMap10,low,eval,23937,17894,6,42.845,2.031,
+generation-3-finalists,2/2,AodMap11,low,eval,31545,23578,8,42.103,2.526,
+generation-3-finalists,2/2,AodMap12,low,eval,15915,11898,4,44.184,1.571,
+generation-3-finalists,2/2,AodMap13,low,eval,34456,25751,9,40.916,2.979,
+generation-3-finalists,2/2,AodMap14,low,eval,35920,26855,9,42.713,2.965,
+generation-3-finalists,2/2,AodMap15,low,eval,33732,25216,9,41.967,2.69,
+generation-3-finalists,2/2,AodMap16,low,eval,33656,25155,9,41.412,2.821,
+generation-3-finalists,2/2,AodMap17,low,eval,24372,18217,7,45.608,2.139,
+generation-3-finalists,2/2,AodMap18,low,eval,30097,22496,8,44.684,2.512,
+generation-3-finalists,2/2,AodMap19,low,eval,14890,11129,4,43.651,1.413,
+generation-3-finalists,2/2,AodMap2,low,eval,34004,25419,9,41.594,2.859,
+generation-3-finalists,2/2,AodMap20,low,eval,29917,22359,8,44.412,2.442,
+generation-3-finalists,2/2,AodMap21,low,eval,28360,21196,8,39.905,2.358,
+generation-3-finalists,2/2,AodMap22,low,eval,28685,21435,8,43.785,2.42,
+generation-3-finalists,2/2,AodMap23,low,eval,34604,25866,9,40.729,2.906,
+generation-3-finalists,2/2,AodMap24,low,eval,30701,22948,8,42.784,2.721,
+generation-3-finalists,2/2,AodMap25,low,eval,17062,12750,5,45.664,1.538,
+generation-3-finalists,2/2,AodMap26,low,eval,25161,18802,7,41.16,2.153,
+generation-3-finalists,2/2,AodMap27,low,eval,34728,25959,9,41.439,2.887,
+generation-3-finalists,2/2,AodMap28,low,eval,34396,25713,9,44.008,2.88,
+generation-3-finalists,2/2,AodMap29,low,eval,19935,14901,5,44.405,1.856,
+generation-3-finalists,2/2,AodMap3,low,eval,33364,24938,9,41.513,2.701,
+generation-3-finalists,2/2,AodMap30,low,eval,16790,12542,5,44.427,1.536,
+generation-3-finalists,2/2,AodMap31,low,eval,33283,24875,9,42.885,2.666,
+generation-3-finalists,2/2,AodMap32,low,eval,17054,12740,5,44.485,1.566,
+generation-3-finalists,2/2,AodMap33,low,eval,25141,18791,7,41.469,2.128,
+generation-3-finalists,2/2,AodMap34,low,eval,24394,18225,7,43.6,2.151,
+generation-3-finalists,2/2,AodMap35,low,eval,28105,21010,7,40.201,2.347,
+generation-3-finalists,2/2,AodMap36,low,eval,25029,18706,7,44.049,2.106,
+generation-3-finalists,2/2,AodMap37,low,eval,23501,17570,6,43.824,1.991,
+generation-3-finalists,2/2,AodMap38,low,eval,33980,25400,9,44.332,2.812,
+generation-3-finalists,2/2,AodMap39,low,eval,33017,24673,9,43.628,2.643,
+generation-3-finalists,2/2,AodMap40,low,eval,25748,19246,7,41.734,2.356,
+generation-3-finalists,2/2,AodMap41,low,eval,32796,24507,9,42.039,2.783,
+generation-3-finalists,2/2,AodMap42,low,eval,32437,24244,9,43.919,2.799,
+generation-3-finalists,2/2,AodMap43,low,eval,28721,21461,8,43.127,2.353,
+generation-3-finalists,2/2,AodMap44,low,eval,25601,19136,7,39.077,2.228,
+generation-3-finalists,2/2,AodMap45,low,eval,28709,21454,8,39.873,2.385,
+generation-3-finalists,2/2,AodMap46,low,eval,25233,18857,7,40.978,2.18,
+generation-3-finalists,2/2,AodMap47,low,eval,32740,24464,9,42.294,2.87,
+generation-3-finalists,2/2,AodMap48,low,eval,25777,19265,7,48.503,2.176,
+generation-3-finalists,2/2,AodMap49,low,eval,27425,20496,7,43.288,2.327,
+generation-3-finalists,2/2,AodMap5,low,eval,33711,25195,9,41.99,2.809,
+generation-3-finalists,2/2,AodMap50,low,eval,31293,23389,8,42.437,2.634,
+generation-3-finalists,2/2,AodMap51,low,eval,19529,14599,5,44.968,1.788,
+generation-3-finalists,2/2,AodMap52,low,eval,32049,23961,8,42.224,2.601,
+generation-3-finalists,2/2,AodMap53,low,eval,16701,12480,5,44.393,1.624,
+generation-3-finalists,2/2,AodMap6,low,eval,22461,16788,6,41.183,2.037,
+generation-3-finalists,2/2,AodMap7,low,eval,35368,26437,9,42.302,2.823,
+generation-3-finalists,2/2,AodMap9,low,eval,32057,23963,8,44.39,2.68,
+generation-3-finalists,2/2,MapExtra0,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapExtra1,map,eval,93199,69684,25,14.104,5.595,
+generation-3-finalists,2/2,MapExtra10,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapExtra11,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapExtra12,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapExtra13,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapExtra14,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapExtra15,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapExtra16,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapExtra17,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapExtra2,map,eval,96590,72220,25,14.669,5.562,
+generation-3-finalists,2/2,MapExtra3,map,eval,86977,65025,23,13.508,4.963,
+generation-3-finalists,2/2,MapExtra4,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapExtra5,map,eval,96604,72220,26,15.478,5.864,
+generation-3-finalists,2/2,MapExtra6,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapExtra7,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapExtra8,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapExtra9,map,eval,96142,71887,25,14.395,5.625,
+generation-3-finalists,2/2,MapView10,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView11,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView13,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView14,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView16,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView17,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView18,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView19,map,eval,85819,64162,23,13.775,4.994,
+generation-3-finalists,2/2,MapView2,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView20,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView21,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView22,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView23,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView24,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView25,map,eval,97130,72614,26,14.809,5.738,
+generation-3-finalists,2/2,MapView26,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView27,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView28,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView29,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView3,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView30,map,eval,90748,67840,24,25.65,6.322,
+generation-3-finalists,2/2,MapView31,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView32,map,eval,93739,70075,25,16.82,5.622,
+generation-3-finalists,2/2,MapView33,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView34,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView35,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView36,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView37,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView38,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView39,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView40,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView41,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView42,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView43,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView44,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView45,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView46,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView47,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView48,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView49,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView5,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView50,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView51,map,eval,96618,72239,25,14.256,5.756,
+generation-3-finalists,2/2,MapView52,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView53,map,eval,94094,70347,25,13.974,5.37,
+generation-3-finalists,2/2,MapView6,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView7,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,MapView9,map,eval,,,,,,raster capacity
+generation-3-finalists,2/2,art_unknown,rocket,eval,2079,1551,1,1.773,0.179,
+generation-3-finalists,3/2,current-map,map,train,36656,27393,10,40.436,2.619,
+generation-3-finalists,3/2,current-rocket,rocket,train,1427,1061,1,1.744,0.113,
+generation-3-finalists,3/2,current-flag,flag,train,378,274,1,0.056,0.021,
+generation-3-finalists,3/2,map-0,map,train,93723,70068,25,14.09,5.408,
+generation-3-finalists,3/2,map-1,map,train,,,,,,raster capacity
+generation-3-finalists,3/2,map-4,map,train,95470,71386,25,14.318,5.511,
+generation-3-finalists,3/2,map-8,map,eval,96778,72362,25,14.834,5.743,
+generation-3-finalists,3/2,map-12,map,train,88717,66335,23,13.471,5.395,
+generation-3-finalists,3/2,map-15,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,low-0,low,train,17262,12901,5,47.197,1.593,
+generation-3-finalists,3/2,low-1,low,train,32972,24647,9,42.025,2.812,
+generation-3-finalists,3/2,low-4,low,train,17769,13280,5,44.165,1.634,
+generation-3-finalists,3/2,low-8,low,eval,19301,14427,5,44.077,1.791,
+generation-3-finalists,3/2,falcon-9,rocket,train,1875,1397,1,1.611,0.132,
+generation-3-finalists,3/2,falcon-heavy,rocket,train,3523,2634,1,1.547,0.205,
+generation-3-finalists,3/2,ariane-62,rocket,train,2863,2137,1,1.576,0.175,
+generation-3-finalists,3/2,ariane-64,rocket,eval,3527,2635,1,1.748,0.212,
+generation-3-finalists,3/2,electron,rocket,eval,1927,1435,1,1.69,0.131,
+generation-3-finalists,3/2,generic,rocket,train,2459,1834,1,1.643,0.159,
+generation-3-finalists,3/2,flag-us,flag,train,342,249,1,0.056,0.021,
+generation-3-finalists,3/2,flag-fr,flag,train,50,28,1,0.053,0.008,
+generation-3-finalists,3/2,flag-nz,flag,eval,442,322,1,0.076,0.026,
+generation-3-finalists,3/2,flag-europe,flag,train,354,256,1,0.073,0.022,
+generation-3-finalists,3/2,AodMap10,low,eval,24277,18149,6,43.161,2.206,
+generation-3-finalists,3/2,AodMap11,low,eval,31949,23883,8,42.378,2.611,
+generation-3-finalists,3/2,AodMap12,low,eval,16298,12177,5,44.128,1.614,
+generation-3-finalists,3/2,AodMap13,low,eval,35020,26176,9,41.082,2.812,
+generation-3-finalists,3/2,AodMap14,low,eval,36591,27346,10,43.354,2.97,
+generation-3-finalists,3/2,AodMap15,low,eval,34296,25632,9,41.551,2.797,
+generation-3-finalists,3/2,AodMap16,low,eval,34216,25579,9,41.751,2.939,
+generation-3-finalists,3/2,AodMap17,low,eval,24784,18522,7,43.735,2.225,
+generation-3-finalists,3/2,AodMap18,low,eval,30561,22842,8,44.711,2.499,
+generation-3-finalists,3/2,AodMap19,low,eval,15246,11395,4,44.113,1.533,
+generation-3-finalists,3/2,AodMap2,low,eval,34692,25928,9,49.527,3.202,
+generation-3-finalists,3/2,AodMap20,low,eval,30457,22767,8,49.314,2.673,
+generation-3-finalists,3/2,AodMap21,low,eval,28825,21545,8,41.797,2.553,
+generation-3-finalists,3/2,AodMap22,low,eval,29212,21831,8,46.577,2.634,
+generation-3-finalists,3/2,AodMap23,low,eval,35192,26304,9,43.519,3.05,
+generation-3-finalists,3/2,AodMap24,low,eval,31089,23241,8,43.996,2.643,
+generation-3-finalists,3/2,AodMap25,low,eval,17514,13085,5,47.34,1.792,
+generation-3-finalists,3/2,AodMap26,low,eval,25564,19108,7,43.132,2.424,
+generation-3-finalists,3/2,AodMap27,low,eval,35428,26485,9,41.882,2.908,
+generation-3-finalists,3/2,AodMap28,low,eval,35008,26169,9,42.819,2.975,
+generation-3-finalists,3/2,AodMap29,low,eval,20183,15089,5,41.693,1.884,
+generation-3-finalists,3/2,AodMap3,low,eval,33956,25380,9,41.698,2.69,
+generation-3-finalists,3/2,AodMap30,low,eval,17114,12790,5,44.627,1.589,
+generation-3-finalists,3/2,AodMap31,low,eval,33784,25255,9,42.705,2.891,
+generation-3-finalists,3/2,AodMap32,low,eval,17373,12981,5,44.113,1.598,
+generation-3-finalists,3/2,AodMap33,low,eval,25656,19176,7,41.814,2.175,
+generation-3-finalists,3/2,AodMap34,low,eval,24753,18495,7,45.631,7.072,
+generation-3-finalists,3/2,AodMap35,low,eval,28660,21418,8,40.459,2.419,
+generation-3-finalists,3/2,AodMap36,low,eval,25453,19018,7,44.263,2.306,
+generation-3-finalists,3/2,AodMap37,low,eval,23857,17837,6,43.478,2.064,
+generation-3-finalists,3/2,AodMap38,low,eval,34468,25766,9,43.156,2.784,
+generation-3-finalists,3/2,AodMap39,low,eval,33572,25093,9,43.265,2.838,
+generation-3-finalists,3/2,AodMap40,low,eval,26269,19634,7,41.817,2.437,
+generation-3-finalists,3/2,AodMap41,low,eval,33335,24918,9,50.073,7.388,
+generation-3-finalists,3/2,AodMap42,low,eval,32944,24622,9,49.51,2.965,
+generation-3-finalists,3/2,AodMap43,low,eval,29145,21782,8,45.048,2.475,
+generation-3-finalists,3/2,AodMap44,low,eval,26005,19432,7,43.134,2.241,
+generation-3-finalists,3/2,AodMap45,low,eval,29085,21735,8,41.162,2.487,
+generation-3-finalists,3/2,AodMap46,low,eval,25601,19131,7,42.152,2.232,
+generation-3-finalists,3/2,AodMap47,low,eval,33315,24899,9,42.194,2.755,
+generation-3-finalists,3/2,AodMap48,low,eval,26089,19503,7,41.77,2.238,
+generation-3-finalists,3/2,AodMap49,low,eval,27837,20812,7,47.492,2.349,
+generation-3-finalists,3/2,AodMap5,low,eval,34331,25665,9,41.836,2.856,
+generation-3-finalists,3/2,AodMap50,low,eval,31777,23759,8,41.734,2.694,
+generation-3-finalists,3/2,AodMap51,low,eval,19829,14826,5,43.238,1.767,
+generation-3-finalists,3/2,AodMap52,low,eval,32512,24299,9,42.311,2.74,
+generation-3-finalists,3/2,AodMap53,low,eval,17026,12721,5,46.249,1.599,
+generation-3-finalists,3/2,AodMap6,low,eval,22913,17128,6,41.315,2.113,
+generation-3-finalists,3/2,AodMap7,low,eval,35964,26886,9,42.591,2.927,
+generation-3-finalists,3/2,AodMap9,low,eval,32533,24310,9,43.459,2.593,
+generation-3-finalists,3/2,MapExtra0,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapExtra1,map,eval,93875,70179,25,14.176,5.71,
+generation-3-finalists,3/2,MapExtra10,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapExtra11,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapExtra12,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapExtra13,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapExtra14,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapExtra15,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapExtra16,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapExtra17,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapExtra2,map,eval,97142,72634,25,14.45,5.684,
+generation-3-finalists,3/2,MapExtra3,map,eval,87416,65353,23,13.415,5.241,
+generation-3-finalists,3/2,MapExtra4,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapExtra5,map,eval,97165,72639,26,14.593,5.85,
+generation-3-finalists,3/2,MapExtra6,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapExtra7,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapExtra8,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapExtra9,map,eval,96696,72289,26,18.542,5.986,
+generation-3-finalists,3/2,MapView10,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView11,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView13,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView14,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView16,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView17,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView18,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView19,map,eval,86270,64504,23,14.05,5.336,
+generation-3-finalists,3/2,MapView2,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView20,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView21,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView22,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView23,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView24,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView25,map,eval,97679,73032,26,14.444,5.663,
+generation-3-finalists,3/2,MapView26,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView27,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView28,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView29,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView3,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView30,map,eval,91292,68257,24,14.562,5.648,
+generation-3-finalists,3/2,MapView31,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView32,map,eval,94242,70461,25,14.139,5.774,
+generation-3-finalists,3/2,MapView33,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView34,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView35,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView36,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView37,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView38,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView39,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView40,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView41,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView42,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView43,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView44,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView45,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView46,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView47,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView48,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView49,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView5,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView50,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView51,map,eval,97102,72605,25,14.583,5.771,
+generation-3-finalists,3/2,MapView52,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView53,map,eval,94670,70780,25,14.346,5.621,
+generation-3-finalists,3/2,MapView6,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView7,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,MapView9,map,eval,,,,,,raster capacity
+generation-3-finalists,3/2,art_unknown,rocket,eval,2083,1552,1,1.704,0.147,
+generation-3-finalists,9/8,current-map,map,train,36444,27235,10,40.025,2.699,
+generation-3-finalists,9/8,current-rocket,rocket,train,1423,1059,1,1.873,0.117,
+generation-3-finalists,9/8,current-flag,flag,train,378,274,1,0.058,0.022,
+generation-3-finalists,9/8,map-0,map,train,93154,69649,25,14.194,5.613,
+generation-3-finalists,9/8,map-1,map,train,,,,,,raster capacity
+generation-3-finalists,9/8,map-4,map,train,94902,70955,25,14.311,5.553,
+generation-3-finalists,9/8,map-8,map,eval,96222,71943,25,13.973,5.745,
+generation-3-finalists,9/8,map-12,map,train,88437,66127,23,13.531,5.225,
+generation-3-finalists,9/8,map-15,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,low-0,low,train,17194,12848,5,46.123,1.548,
+generation-3-finalists,9/8,low-1,low,train,32812,24523,9,42.167,2.669,
+generation-3-finalists,9/8,low-4,low,train,17653,13192,5,44.194,1.769,
+generation-3-finalists,9/8,low-8,low,eval,19165,14326,5,44.229,1.72,
+generation-3-finalists,9/8,falcon-9,rocket,train,1871,1395,1,1.726,0.135,
+generation-3-finalists,9/8,falcon-heavy,rocket,train,3511,2625,1,1.647,0.216,
+generation-3-finalists,9/8,ariane-62,rocket,train,2855,2131,1,1.675,0.185,
+generation-3-finalists,9/8,ariane-64,rocket,eval,3519,2630,1,1.683,0.211,
+generation-3-finalists,9/8,electron,rocket,eval,1923,1432,1,1.687,0.136,
+generation-3-finalists,9/8,generic,rocket,train,2451,1830,1,1.843,0.165,
+generation-3-finalists,9/8,flag-us,flag,train,342,249,1,0.058,0.021,
+generation-3-finalists,9/8,flag-fr,flag,train,50,28,1,0.056,0.008,
+generation-3-finalists,9/8,flag-nz,flag,eval,438,320,1,0.077,0.026,
+generation-3-finalists,9/8,flag-europe,flag,train,354,256,1,0.074,0.022,
+generation-3-finalists,9/8,AodMap10,low,eval,24205,18098,6,42.893,2.107,
+generation-3-finalists,9/8,AodMap11,low,eval,31753,23735,8,41.635,2.577,
+generation-3-finalists,9/8,AodMap12,low,eval,16171,12091,4,43.864,1.854,
+generation-3-finalists,9/8,AodMap13,low,eval,34792,26006,9,40.605,2.793,
+generation-3-finalists,9/8,AodMap14,low,eval,36264,27113,9,95.451,2.936,
+generation-3-finalists,9/8,AodMap15,low,eval,34072,25467,9,47.172,2.991,
+generation-3-finalists,9/8,AodMap16,low,eval,33980,25393,9,41.927,2.916,
+generation-3-finalists,9/8,AodMap17,low,eval,24620,18395,7,50.878,2.166,
+generation-3-finalists,9/8,AodMap18,low,eval,30385,22711,8,44.611,2.644,
+generation-3-finalists,9/8,AodMap19,low,eval,15114,11298,4,43.378,1.493,
+generation-3-finalists,9/8,AodMap2,low,eval,34380,25692,9,116.087,2.865,
+generation-3-finalists,9/8,AodMap20,low,eval,30177,22556,8,44.335,2.576,
+generation-3-finalists,9/8,AodMap21,low,eval,28641,21398,8,39.583,2.418,
+generation-3-finalists,9/8,AodMap22,low,eval,29032,21696,8,44.158,2.391,
+generation-3-finalists,9/8,AodMap23,low,eval,34976,26145,9,41.278,2.809,
+generation-3-finalists,9/8,AodMap24,low,eval,30973,23151,8,43.108,2.563,
+generation-3-finalists,9/8,AodMap25,low,eval,17386,12991,5,45.66,1.574,
+generation-3-finalists,9/8,AodMap26,low,eval,25416,18992,7,40.739,2.207,
+generation-3-finalists,9/8,AodMap27,low,eval,35104,26245,9,41.425,2.977,
+generation-3-finalists,9/8,AodMap28,low,eval,34748,25972,9,42.614,2.848,
+generation-3-finalists,9/8,AodMap29,low,eval,20115,15040,5,41.569,1.891,
+generation-3-finalists,9/8,AodMap3,low,eval,33756,25226,9,42.688,2.893,
+generation-3-finalists,9/8,AodMap30,low,eval,17002,12702,5,44.588,1.612,
+generation-3-finalists,9/8,AodMap31,low,eval,33524,25052,9,43.641,2.885,
+generation-3-finalists,9/8,AodMap32,low,eval,17261,12897,5,91.245,3.7,
+generation-3-finalists,9/8,AodMap33,low,eval,25504,19064,7,75.979,2.978,
+generation-3-finalists,9/8,AodMap34,low,eval,24613,18394,7,54.819,3.283,
+generation-3-finalists,9/8,AodMap35,low,eval,28468,21271,8,48.981,4.615,
+generation-3-finalists,9/8,AodMap36,low,eval,25257,18877,7,48.495,2.452,
+generation-3-finalists,9/8,AodMap37,low,eval,23745,17749,6,48.114,2.059,
+generation-3-finalists,9/8,AodMap38,low,eval,34276,25618,9,54.722,2.81,
+generation-3-finalists,9/8,AodMap39,low,eval,33423,24982,9,44.407,2.999,
+generation-3-finalists,9/8,AodMap40,low,eval,26028,19458,7,42.925,2.593,
+generation-3-finalists,9/8,AodMap41,low,eval,33123,24758,9,44.228,2.937,
+generation-3-finalists,9/8,AodMap42,low,eval,32740,24467,9,44.835,2.718,
+generation-3-finalists,9/8,AodMap43,low,eval,28937,21625,8,42.934,2.441,
+generation-3-finalists,9/8,AodMap44,low,eval,25825,19303,7,40.691,3.121,
+generation-3-finalists,9/8,AodMap45,low,eval,28881,21586,8,42.775,2.485,
+generation-3-finalists,9/8,AodMap46,low,eval,25433,19010,7,42.227,2.312,
+generation-3-finalists,9/8,AodMap47,low,eval,32992,24655,9,44.944,2.837,
+generation-3-finalists,9/8,AodMap48,low,eval,25925,19380,7,45.111,3.061,
+generation-3-finalists,9/8,AodMap49,low,eval,27709,20715,7,45.414,2.403,
+generation-3-finalists,9/8,AodMap5,low,eval,34067,25469,9,44.419,2.952,
+generation-3-finalists,9/8,AodMap50,low,eval,31541,23578,8,42.462,2.573,
+generation-3-finalists,9/8,AodMap51,low,eval,19765,14778,5,43.646,1.856,
+generation-3-finalists,9/8,AodMap52,low,eval,32320,24152,9,84.529,3.013,
+generation-3-finalists,9/8,AodMap53,low,eval,16878,12608,5,54.179,2.705,
+generation-3-finalists,9/8,AodMap6,low,eval,22733,16993,6,45.237,2.385,
+generation-3-finalists,9/8,AodMap7,low,eval,35712,26699,9,53.647,3.262,
+generation-3-finalists,9/8,AodMap9,low,eval,32301,24150,8,46.119,2.713,
+generation-3-finalists,9/8,MapExtra0,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapExtra1,map,eval,93231,69705,25,14.147,5.477,
+generation-3-finalists,9/8,MapExtra10,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapExtra11,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapExtra12,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapExtra13,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapExtra14,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapExtra15,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapExtra16,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapExtra17,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapExtra2,map,eval,96606,72237,25,14.709,5.775,
+generation-3-finalists,9/8,MapExtra3,map,eval,86985,65031,23,13.173,5.283,
+generation-3-finalists,9/8,MapExtra4,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapExtra5,map,eval,96636,72240,26,14.64,5.676,
+generation-3-finalists,9/8,MapExtra6,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapExtra7,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapExtra8,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapExtra9,map,eval,96166,71904,25,14.195,5.718,
+generation-3-finalists,9/8,MapView10,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView11,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView13,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView14,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView16,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView17,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView18,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView19,map,eval,85847,64181,23,13.335,5.014,
+generation-3-finalists,9/8,MapView2,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView20,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView21,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView22,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView23,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView24,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView25,map,eval,97146,72628,26,14.454,5.705,
+generation-3-finalists,9/8,MapView26,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView27,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView28,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView29,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView3,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView30,map,eval,90772,67864,24,13.767,5.584,
+generation-3-finalists,9/8,MapView31,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView32,map,eval,93763,70094,25,14.101,5.483,
+generation-3-finalists,9/8,MapView33,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView34,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView35,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView36,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView37,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView38,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView39,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView40,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView41,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView42,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView43,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView44,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView45,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView46,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView47,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView48,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView49,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView5,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView50,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView51,map,eval,96630,72248,25,17.381,6.045,
+generation-3-finalists,9/8,MapView52,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView53,map,eval,94118,70362,25,16.12,6.497,
+generation-3-finalists,9/8,MapView6,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView7,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,MapView9,map,eval,,,,,,raster capacity
+generation-3-finalists,9/8,art_unknown,rocket,eval,2079,1551,1,1.745,0.156,
+generation-3-finalists,11/8,current-map,map,train,36624,27369,10,40.094,2.792,
+generation-3-finalists,11/8,current-rocket,rocket,train,1427,1061,1,1.871,0.116,
+generation-3-finalists,11/8,current-flag,flag,train,378,274,1,0.056,0.021,
+generation-3-finalists,11/8,map-0,map,train,93471,69875,25,14.338,5.563,
+generation-3-finalists,11/8,map-1,map,train,,,,,,raster capacity
+generation-3-finalists,11/8,map-4,map,train,95170,71161,25,14.654,5.611,
+generation-3-finalists,11/8,map-8,map,eval,96522,72167,25,14.546,5.802,
+generation-3-finalists,11/8,map-12,map,train,88513,66181,23,14.006,5.158,
+generation-3-finalists,11/8,map-15,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,low-0,low,train,17266,12899,5,46.033,1.62,
+generation-3-finalists,11/8,low-1,low,train,32924,24605,9,42.585,2.83,
+generation-3-finalists,11/8,low-4,low,train,17725,13249,5,43.875,1.731,
+generation-3-finalists,11/8,low-8,low,eval,19249,14388,5,46.879,1.79,
+generation-3-finalists,11/8,falcon-9,rocket,train,1875,1397,1,1.728,0.135,
+generation-3-finalists,11/8,falcon-heavy,rocket,train,3523,2634,1,1.628,0.207,
+generation-3-finalists,11/8,ariane-62,rocket,train,2859,2136,1,1.627,0.175,
+generation-3-finalists,11/8,ariane-64,rocket,eval,3523,2633,1,1.713,0.214,
+generation-3-finalists,11/8,electron,rocket,eval,1927,1435,1,1.694,0.135,
+generation-3-finalists,11/8,generic,rocket,train,2455,1833,1,1.717,0.155,
+generation-3-finalists,11/8,flag-us,flag,train,342,249,1,0.056,0.02,
+generation-3-finalists,11/8,flag-fr,flag,train,50,28,1,0.055,0.008,
+generation-3-finalists,11/8,flag-nz,flag,eval,438,321,1,0.076,0.026,
+generation-3-finalists,11/8,flag-europe,flag,train,354,256,1,0.074,0.022,
+generation-3-finalists,11/8,AodMap10,low,eval,24225,18114,6,42.401,2.227,
+generation-3-finalists,11/8,AodMap11,low,eval,31881,23833,8,42.023,2.745,
+generation-3-finalists,11/8,AodMap12,low,eval,16251,12152,4,43.445,1.566,
+generation-3-finalists,11/8,AodMap13,low,eval,34948,26125,9,41.368,2.92,
+generation-3-finalists,11/8,AodMap14,low,eval,36520,27292,10,43.822,2.945,
+generation-3-finalists,11/8,AodMap15,low,eval,34228,25586,9,41.506,2.875,
+generation-3-finalists,11/8,AodMap16,low,eval,34112,25498,9,42.231,2.78,
+generation-3-finalists,11/8,AodMap17,low,eval,24736,18488,7,44.698,2.37,
+generation-3-finalists,11/8,AodMap18,low,eval,30509,22804,8,44.399,2.54,
+generation-3-finalists,11/8,AodMap19,low,eval,15202,11363,4,43.997,1.543,
+generation-3-finalists,11/8,AodMap2,low,eval,34620,25877,9,41.995,2.918,
+generation-3-finalists,11/8,AodMap20,low,eval,30401,22727,8,49.152,17.065,
+generation-3-finalists,11/8,AodMap21,low,eval,28793,21516,8,125.379,4.061,
+generation-3-finalists,11/8,AodMap22,low,eval,29156,21791,8,67.535,64.96,
+generation-3-finalists,11/8,AodMap23,low,eval,35128,26255,9,54.937,3.246,
+generation-3-finalists,11/8,AodMap24,low,eval,31093,23247,8,48.973,2.663,
+generation-3-finalists,11/8,AodMap25,low,eval,17470,13052,5,50.445,1.824,
+generation-3-finalists,11/8,AodMap26,low,eval,25532,19079,7,44.061,2.286,
+generation-3-finalists,11/8,AodMap27,low,eval,35300,26392,9,41.289,3.01,
+generation-3-finalists,11/8,AodMap28,low,eval,34924,26111,9,42.232,2.814,
+generation-3-finalists,11/8,AodMap29,low,eval,20159,15068,5,41.333,1.881,
+generation-3-finalists,11/8,AodMap3,low,eval,33900,25337,9,41.613,2.688,
+generation-3-finalists,11/8,AodMap30,low,eval,17082,12766,5,44.377,1.57,
+generation-3-finalists,11/8,AodMap31,low,eval,33708,25192,9,42.542,2.906,
+generation-3-finalists,11/8,AodMap32,low,eval,17345,12961,5,45.789,1.631,
+generation-3-finalists,11/8,AodMap33,low,eval,25612,19141,7,58.938,80.897,
+generation-3-finalists,11/8,AodMap34,low,eval,24713,18468,7,127.613,2.107,
+generation-3-finalists,11/8,AodMap35,low,eval,28600,21372,8,44.023,2.509,
+generation-3-finalists,11/8,AodMap36,low,eval,25401,18981,7,44.025,2.136,
+generation-3-finalists,11/8,AodMap37,low,eval,23841,17821,6,43.74,2.168,
+generation-3-finalists,11/8,AodMap38,low,eval,34400,25714,9,42.898,3.003,
+generation-3-finalists,11/8,AodMap39,low,eval,33520,25052,9,43.196,2.825,
+generation-3-finalists,11/8,AodMap40,low,eval,26208,19587,7,41.746,2.245,
+generation-3-finalists,11/8,AodMap41,low,eval,33275,24869,9,42.367,2.702,
+generation-3-finalists,11/8,AodMap42,low,eval,32908,24591,9,49.47,4.069,
+generation-3-finalists,11/8,AodMap43,low,eval,29089,21737,8,55.382,2.68,
+generation-3-finalists,11/8,AodMap44,low,eval,25957,19400,7,47.714,2.792,
+generation-3-finalists,11/8,AodMap45,low,eval,29005,21679,8,45.933,3.175,
+generation-3-finalists,11/8,AodMap46,low,eval,25549,19091,7,50.238,2.415,
+generation-3-finalists,11/8,AodMap47,low,eval,33240,24844,9,51.036,2.875,
+generation-3-finalists,11/8,AodMap48,low,eval,26057,19474,7,42.959,2.268,
+generation-3-finalists,11/8,AodMap49,low,eval,27785,20772,7,52.781,2.805,
+generation-3-finalists,11/8,AodMap5,low,eval,34267,25613,9,45.408,2.879,
+generation-3-finalists,11/8,AodMap50,low,eval,31693,23692,8,42.384,2.778,
+generation-3-finalists,11/8,AodMap51,low,eval,19789,14795,5,44.067,1.864,
+generation-3-finalists,11/8,AodMap52,low,eval,32477,24268,9,43.794,2.694,
+generation-3-finalists,11/8,AodMap53,low,eval,16974,12683,5,45.137,1.634,
+generation-3-finalists,11/8,AodMap6,low,eval,22877,17098,6,41.495,2.188,
+generation-3-finalists,11/8,AodMap7,low,eval,35912,26844,9,43.248,3.198,
+generation-3-finalists,11/8,AodMap9,low,eval,32473,24271,9,45.793,2.655,
+generation-3-finalists,11/8,MapExtra0,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapExtra1,map,eval,93547,69938,25,14.448,5.88,
+generation-3-finalists,11/8,MapExtra10,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapExtra11,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapExtra12,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapExtra13,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapExtra14,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapExtra15,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapExtra16,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapExtra17,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapExtra2,map,eval,96898,72449,25,15.109,5.965,
+generation-3-finalists,11/8,MapExtra3,map,eval,87229,65219,23,13.831,5.401,
+generation-3-finalists,11/8,MapExtra4,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapExtra5,map,eval,96913,72444,26,15.174,5.822,
+generation-3-finalists,11/8,MapExtra6,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapExtra7,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapExtra8,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapExtra9,map,eval,96477,72127,26,14.599,5.771,
+generation-3-finalists,11/8,MapView10,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView11,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView13,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView14,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView16,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView17,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView18,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView19,map,eval,86070,64352,23,20.178,8.603,
+generation-3-finalists,11/8,MapView2,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView20,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView21,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView22,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView23,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView24,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView25,map,eval,97395,72816,26,14.704,5.817,
+generation-3-finalists,11/8,MapView26,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView27,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView28,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView29,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView3,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView30,map,eval,91032,68061,24,14.725,6.389,
+generation-3-finalists,11/8,MapView31,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView32,map,eval,93970,70255,25,14.325,5.566,
+generation-3-finalists,11/8,MapView33,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView34,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView35,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView36,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView37,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView38,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView39,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView40,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView41,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView42,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView43,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView44,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView45,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView46,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView47,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView48,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView49,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView5,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView50,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView51,map,eval,96906,72458,25,14.715,5.82,
+generation-3-finalists,11/8,MapView52,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView53,map,eval,94406,70582,25,14.418,5.633,
+generation-3-finalists,11/8,MapView6,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView7,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,MapView9,map,eval,,,,,,raster capacity
+generation-3-finalists,11/8,art_unknown,rocket,eval,2083,1552,1,1.709,0.155,
