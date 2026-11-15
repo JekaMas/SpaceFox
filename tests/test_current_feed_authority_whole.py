@@ -137,7 +137,7 @@ class CurrentFeedAuthorityWholeTest(AutonomousPublisherWholeTest):
             self.assertEqual(files, Publisher(store, self.code).pending_files())
 
     def test_rehashed_foreign_instance_snapshot_refuses_cloud_and_reopen(self):
-        from tools.spacefox.publisher import STATE_REF, _canonical, _sha
+        from tools.spacefox.publisher import STATE_REF
         with self.authority() as (_, remote, store, pub):
             self.accept(pub)
             files, _ = self.prepare(pub)
@@ -152,8 +152,11 @@ class CurrentFeedAuthorityWholeTest(AutonomousPublisherWholeTest):
             from tools.spacefox.native_motion import validate_artifact
             validate_artifact(altered)
             snap = document['pending']
-            snap['files'] = {p: dict(sha256=_sha(b), bytes=len(b)) for p, b in altered.items()}
-            snap['artifact_revision'] = _sha(_canonical({k: v for k, v in snap.items() if k != 'artifact_revision'}))
+            snap['files'] = {p: dict(sha256=hashlib.sha256(b).hexdigest(), bytes=len(b)) for p, b in altered.items()}
+            unsigned = {k: v for k, v in snap.items() if k != 'artifact_revision'}
+            frozen = json.dumps(unsigned, ensure_ascii=False, sort_keys=True,
+                                separators=(',', ':'), allow_nan=False).encode('utf-8')
+            snap['artifact_revision'] = hashlib.sha256(frozen).hexdigest()
             bad = store._commit(document, good, {f'artifacts/1/{p}': b for p, b in altered.items()})
             with self.assertRaises((StateError, CloudError)):
                 snapshot_files(store, bad, 1)
