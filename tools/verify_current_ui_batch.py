@@ -75,6 +75,17 @@ def verify_rejection_menu(root):
     for name in ('watchface/source/SettingsMenu.mc', 'watchface/source/SettingsMenuText.mc'):
         if digest((root/name).read_bytes()) != build['productionSources'][name]:
             raise ValueError('rejection menu current owner changed: '+name)
+    glyph_raw = (base/'menu-warning-glyphs.json').read_bytes()
+    if digest(glyph_raw) != '6468fa659cc0ad18b2fdb99375ea7ec4ffa214b619f927a752a4dfafaca306a8':
+        raise ValueError('rejection menu glyph observation changed')
+    glyph = json.loads(glyph_raw)
+    labels = [s for s in re.findall(r'"([^\"]*)"', TEXT_DELTA.decode())
+              if s not in ('ru', 'de', 'fr', 'es')]
+    prior = json.loads((root/'openspec/changes/spacefox-watchface/evidence/basic-main-review/primary-menu-fonts.json').read_text())
+    points = {str(ord(c)) for label in labels for c in label}
+    if (glyph['font'] != prior['font'] or glyph['labels'] != labels or
+        set(glyph['glyphs']) != points or any(v in (None, 0, '.notdef') for v in glyph['glyphs'].values())):
+        raise ValueError('rejection menu glyph coverage incomplete')
     result = parse_output(raw['run.log'].decode(), int(raw['exit.txt']), ('releaseCurrentHostSchema',))
     if (result['status'] != 'passed' or
         'deferredRestoreSameCache=1 schemaRefused=1 rendererRefused=1 actionableMenu=1 fiveLocales=1 clearsOnSuccess=1' not in raw['run.log'].decode()):

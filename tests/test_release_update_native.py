@@ -89,6 +89,17 @@ class ReleaseUpdateNativeTest(unittest.TestCase):
             check_payload('Probe.mc.txt', (EVIDENCE / 'Probe.mc.txt').read_bytes() + b'changed')
 
 class ReleaseUpdateAdmissionTest(unittest.TestCase):
+    def test_language_admission_refuses_changed_warning_glyph_observation(self):
+        from unittest.mock import patch
+        from tools.native_language_policy import software_locales
+        original = Path.read_bytes
+        target = EVIDENCE / 'menu-warning-glyphs.json'
+        def altered(path):
+            data = original(path)
+            return data + b'changed' if path.resolve() == target else data
+        with patch.object(Path, 'read_bytes', altered), self.assertRaisesRegex(ValueError, 'glyph observation changed'):
+            software_locales(ROOT)
+
     def test_language_admission_refuses_changed_menu_owner(self):
         from unittest.mock import patch
         from tools.native_language_policy import software_locales
