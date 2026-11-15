@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "kind": "openspec",
+  "cwd": "/Users/jekamas/projects/SpaceFox-worktrees/research-image-pipeline-public-20261115",
+  "scope": [
+    "openspec"
+  ],
+  "started_at": "2026-11-15T15:51:08.855845+00:00",
+  "timeout_seconds": 120,
+  "status": "missing_project_guidance",
+  "claim": "selected check only; not overall DONE",
+  "steps": [
+    {
+      "command": [
+        "openspec",
+        "--version"
+      ],
+      "exit_code": 0,
+      "status": "exited",
+      "duration_seconds": 0.2864209171384573,
+      "stdout_artifact": "/private/tmp/sf-image-public-final-spec/openspec-2m0fwfob/result.json.version.stdout.log",
+      "stdout_truncated": false,
+      "stderr_artifact": "/private/tmp/sf-image-public-final-spec/openspec-2m0fwfob/result.json.version.stderr.log",
+      "stderr_truncated": false
+    },
+    {
+      "command": [
+        "openspec",
+        "validate",
+        "optimize-image-pipeline",
+        "--type",
+        "change",
+        "--strict",
+        "--json",
+        "--no-interactive"
+      ],
+      "exit_code": 0,
+      "status": "exited",
+      "duration_seconds": 0.2780075832270086,
+      "stdout_artifact": "/private/tmp/sf-image-public-final-spec/openspec-2m0fwfob/result.json.0.stdout.log",
+      "stdout_truncated": false,
+      "stderr_artifact": "/private/tmp/sf-image-public-final-spec/openspec-2m0fwfob/result.json.0.stderr.log",
+      "stderr_truncated": false,
+      "label": "specs",
+      "result": "passed",
+      "observed": {
+        "selection": "optimize-image-pipeline",
+        "totals": {
+          "items": 1,
+          "passed": 1,
+          "failed": 0
+        },
+        "claim": "spec validation only"
+      }
+    },
+    {
+      "command": [
+        "openspec",
+        "instructions",
+        "proposal",
+        "--change",
+        "optimize-image-pipeline",
+        "--json"
+      ],
+      "exit_code": 0,
+      "status": "exited",
+      "duration_seconds": 0.24058770900592208,
+      "stdout_artifact": "/private/tmp/sf-image-public-final-spec/openspec-2m0fwfob/result.json.1.stdout.log",
+      "stdout_truncated": false,
+      "stderr_artifact": "/private/tmp/sf-image-public-final-spec/openspec-2m0fwfob/result.json.1.stderr.log",
+      "stderr_truncated": false,
+      "label": "guidance:proposal",
+      "result": "missing_project_guidance",
+      "observed": {
+        "surface": "proposal",
+        "missing": "rules"
+      }
+    }
+  ],
+  "tool": {
+    "command": [
+      "openspec",
+      "--version"
+    ],
+    "version": "1.14.3",
+    "exit_code": 0
+  },
+  "artifact": "/private/tmp/sf-image-public-final-spec/openspec-2m0fwfob/result.json"
+}

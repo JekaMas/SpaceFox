@@ -86,12 +86,15 @@ def rasterize(visuals, width, height, *, opaque=False):
 
 
 def _row_tokens(row, previous, channels):
-    width=len(row)//channels; x=0; out=bytearray()
+    # Group each bounded row once instead of repeatedly allocating byte slices
+    # while searching COPY and RUN lengths. Token decisions and bytes are unchanged.
+    pixels=list(zip(*(iter(row),)*channels)); prior=list(zip(*(iter(previous),)*channels))
+    width=len(pixels); x=0; out=bytearray()
     while x<width:
         copy=0
-        while copy<128 and x+copy<width and row[(x+copy)*channels:(x+copy+1)*channels]==previous[(x+copy)*channels:(x+copy+1)*channels]: copy+=1
-        run=1; color=row[x*channels:(x+1)*channels]
-        while run<128 and x+run<width and row[(x+run)*channels:(x+run+1)*channels]==color: run+=1
+        while copy<128 and x+copy<width and pixels[x+copy]==prior[x+copy]: copy+=1
+        run=1; color=pixels[x]
+        while run<128 and x+run<width and pixels[x+run]==color: run+=1
         if copy and copy*4>=run:
             out.append(127+copy);x+=copy
         else:

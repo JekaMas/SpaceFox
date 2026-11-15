@@ -1,0 +1,362 @@
+[
+  {
+    "name": "current-map",
+    "kind": "map",
+    "split": "train",
+    "pixel_sha256": "b166d43ce4b6b0bb659656eb3b98bf62683c7fbb5443c3bfaba1f543c2537ccd",
+    "baseline": {
+      "wire_bytes": 36772,
+      "shards": 10,
+      "encode_ms": 39.807
+    },
+    "optimal": {
+      "wire_bytes": 36195,
+      "shards": 10,
+      "encode_ms": 1351.591
+    }
+  },
+  {
+    "name": "current-rocket",
+    "kind": "rocket",
+    "split": "train",
+    "pixel_sha256": "15395365f81866ada8f35c360baa648fb7621b9a0e15052c2dfe5562ae8eacba",
+    "baseline": {
+      "wire_bytes": 1427,
+      "shards": 1,
+      "encode_ms": 1.898
+    },
+    "optimal": {
+      "wire_bytes": 1423,
+      "shards": 1,
+      "encode_ms": 25.093
+    }
+  },
+  {
+    "name": "current-flag",
+    "kind": "flag",
+    "split": "train",
+    "pixel_sha256": "c8b74ae2cd882dfb43d120675b2c3cca57e8d69584f9ab902ba1b6d1c63f1fa9",
+    "baseline": {
+      "wire_bytes": 378,
+      "shards": 1,
+      "encode_ms": 0.061
+    },
+    "optimal": {
+      "wire_bytes": 378,
+      "shards": 1,
+      "encode_ms": 0.291
+    }
+  },
+  {
+    "name": "map-0",
+    "kind": "map",
+    "split": "train",
+    "pixel_sha256": "47538d73d127fdef76d5a9298e8174cbe2bff45ef1aff4f6a308edeba9a1ac76",
+    "baseline": {
+      "wire_bytes": 94803,
+      "shards": 25,
+      "encode_ms": 15.251
+    },
+    "optimal": {
+      "wire_bytes": 93134,
+      "shards": 25,
+      "encode_ms": 38.782
+    }
+  },
+  {
+    "name": "map-1",
+    "kind": "map",
+    "split": "train",
+    "pixel_sha256": "5d4c9910f27ec9e9b45256e240efe2def6e4fb8c2bfb7dbacfa754bed187c49e",
+    "baseline": {
+      "filtered": "raster capacity"
+    },
+    "optimal": {
+      "filtered": "raster capacity"
+    }
+  },
+  {
+    "name": "map-4",
+    "kind": "map",
+    "split": "train",
+    "pixel_sha256": "0d6bb5bc0de4f6446faee182be91d84220b8aa63acdb045d730314ceccafeea3",
+    "baseline": {
+      "wire_bytes": 96420,
+      "shards": 26,
+      "encode_ms": 15.286
+    },
+    "optimal": {
+      "wire_bytes": 94882,
+      "shards": 25,
+      "encode_ms": 37.71
+    }
+  },
+  {
+    "name": "map-8",
+    "kind": "map",
+    "split": "eval",
+    "pixel_sha256": "dcb0e3dd37fd4dfb147d95a86956cffb86d226d748f41643824b61e93fcb0c17",
+    "baseline": {
+      "wire_bytes": 97762,
+      "shards": 25,
+      "encode_ms": 15.019
+    },
+    "optimal": {
+      "wire_bytes": 96194,
+      "shards": 25,
+      "encode_ms": 36.597
+    }
+  },
+  {
+    "name": "map-12",
+    "kind": "map",
+    "split": "train",
+    "pixel_sha256": "5241503886f1e1fefde577155eed1502cb68239cb716d6ebd7a67500fe568c29",
+    "baseline": {
+      "wire_bytes": 89387,
+      "shards": 24,
+      "encode_ms": 14.499
+    },
+    "optimal": {
+      "wire_bytes": 88429,
+      "shards": 23,
+      "encode_ms": 38.761
+    }
+  },
+  {
+    "name": "map-15",
+    "kind": "map",
+    "split": "eval",
+    "pixel_sha256": "d186e94ca607ffc7bb82cb4c4c13b4c92184750508fe7c620c87a28b861f5faa",
+    "baseline": {
+      "filtered": "raster capacity"
+    },
+    "optimal": {
+      "filtered": "raster capacity"
+    }
+  },
+  {
+    "name": "low-0",
+    "kind": "low",
+    "split": "train",
+    "pixel_sha256": "c932df5d061fb1a381a5413d09a0480702ecb6a2a446ea315eb9ab059862f5dc",
+    "baseline": {
+      "wire_bytes": 17514,
+      "shards": 5,
+      "encode_ms": 47.728
+    },
+    "optimal": {
+      "wire_bytes": 16910,
+      "shards": 5,
+      "encode_ms": 2358.384
+    }
+  },
+  {
+    "name": "low-1",
+    "kind": "low",
+    "split": "train",
+    "pixel_sha256": "851d7e809328f48da27bda88dd62940c370d030fa5e7188bc2dce2add6707ebb",
+    "baseline": {
+      "wire_bytes": 33572,
+      "shards": 9,
+      "encode_ms": 43.345
+    },
+    "optimal": {
+      "wire_bytes": 32536,
+      "shards": 9,
+      "encode_ms": 1665.508
+    }
+  },
+  {
+    "name": "low-4",
+    "kind": "low",
+    "split": "train",
+    "pixel_sha256": "88c5f35ea9ad2c625d627ec2eeab01f52ec5e834f87a930c523be5c89be6601e",
+    "baseline": {
+      "wire_bytes": 17953,
+      "shards": 5,
+      "encode_ms": 46.477
+    },
+    "optimal": {
+      "wire_bytes": 17433,
+      "shards": 5,
+      "encode_ms": 2428.171
+    }
+  },
+  {
+    "name": "low-8",
+    "kind": "low",
+    "split": "eval",
+    "pixel_sha256": "3ddae8c7a26a51f3eacc907c8d553e18f89dfddecc08a5302e8bd58690067ada",
+    "baseline": {
+      "wire_bytes": 19549,
+      "shards": 5,
+      "encode_ms": 44.695
+    },
+    "optimal": {
+      "wire_bytes": 18925,
+      "shards": 5,
+      "encode_ms": 2202.671
+    }
+  },
+  {
+    "name": "falcon-9",
+    "kind": "rocket",
+    "split": "train",
+    "pixel_sha256": "a593b08ec22789b6f15ec0f90b7fb18b45b15501dece598630cd5595bf126026",
+    "baseline": {
+      "wire_bytes": 1879,
+      "shards": 1,
+      "encode_ms": 1.766
+    },
+    "optimal": {
+      "wire_bytes": 1871,
+      "shards": 1,
+      "encode_ms": 21.241
+    }
+  },
+  {
+    "name": "falcon-heavy",
+    "kind": "rocket",
+    "split": "train",
+    "pixel_sha256": "c0508f7443d1aef00f980119997e1d7af0a6226cbf4e7c4b8aa9f96364ff5a97",
+    "baseline": {
+      "wire_bytes": 3527,
+      "shards": 1,
+      "encode_ms": 1.647
+    },
+    "optimal": {
+      "wire_bytes": 3511,
+      "shards": 1,
+      "encode_ms": 18.051
+    }
+  },
+  {
+    "name": "ariane-62",
+    "kind": "rocket",
+    "split": "train",
+    "pixel_sha256": "d9c4e3118b977b36d7d6883be344ed26056b537874687412faa8173781c426dc",
+    "baseline": {
+      "wire_bytes": 2863,
+      "shards": 1,
+      "encode_ms": 1.681
+    },
+    "optimal": {
+      "wire_bytes": 2855,
+      "shards": 1,
+      "encode_ms": 21.514
+    }
+  },
+  {
+    "name": "ariane-64",
+    "kind": "rocket",
+    "split": "eval",
+    "pixel_sha256": "e98a2ac8f876bd436e1135df16052cc1185e7055157a17722f366a36f244ad9a",
+    "baseline": {
+      "wire_bytes": 3527,
+      "shards": 1,
+      "encode_ms": 1.659
+    },
+    "optimal": {
+      "wire_bytes": 3519,
+      "shards": 1,
+      "encode_ms": 18.968
+    }
+  },
+  {
+    "name": "electron",
+    "kind": "rocket",
+    "split": "eval",
+    "pixel_sha256": "0fd87ba610f302c9f0b40bf8bfcaefb1483e9b85f266cc8295fca5bc17b270b4",
+    "baseline": {
+      "wire_bytes": 1927,
+      "shards": 1,
+      "encode_ms": 1.778
+    },
+    "optimal": {
+      "wire_bytes": 1919,
+      "shards": 1,
+      "encode_ms": 21.666
+    }
+  },
+  {
+    "name": "generic",
+    "kind": "rocket",
+    "split": "train",
+    "pixel_sha256": "ec6515da6ef7918281078dcff142397a22b383692196ec595391ded9b20e53a2",
+    "baseline": {
+      "wire_bytes": 2463,
+      "shards": 1,
+      "encode_ms": 1.757
+    },
+    "optimal": {
+      "wire_bytes": 2451,
+      "shards": 1,
+      "encode_ms": 20.723
+    }
+  },
+  {
+    "name": "flag-us",
+    "kind": "flag",
+    "split": "train",
+    "pixel_sha256": "41ddb8b1c1bf37890e1a3926b777afc600f42fdcf4bbc6d820814a44646a83f7",
+    "baseline": {
+      "wire_bytes": 342,
+      "shards": 1,
+      "encode_ms": 0.069
+    },
+    "optimal": {
+      "wire_bytes": 342,
+      "shards": 1,
+      "encode_ms": 0.338
+    }
+  },
+  {
+    "name": "flag-fr",
+    "kind": "flag",
+    "split": "train",
+    "pixel_sha256": "59e8a45e57a830faa4ab420157e93d5d64cf280fab763261dcfb58fa433ccc76",
+    "baseline": {
+      "wire_bytes": 50,
+      "shards": 1,
+      "encode_ms": 0.058
+    },
+    "optimal": {
+      "wire_bytes": 50,
+      "shards": 1,
+      "encode_ms": 0.423
+    }
+  },
+  {
+    "name": "flag-nz",
+    "kind": "flag",
+    "split": "eval",
+    "pixel_sha256": "35d90992977f7ce7143aaa37104043b8ce81f8786ffe6bcf324a86f6bdcd39c9",
+    "baseline": {
+      "wire_bytes": 446,
+      "shards": 1,
+      "encode_ms": 0.086
+    },
+    "optimal": {
+      "wire_bytes": 438,
+      "shards": 1,
+      "encode_ms": 0.332
+    }
+  },
+  {
+    "name": "flag-europe",
+    "kind": "flag",
+    "split": "train",
+    "pixel_sha256": "632917317cca3dafe40bd61b6488c9b7d3dd520fbd875fe108122460b61cb325",
+    "baseline": {
+      "wire_bytes": 354,
+      "shards": 1,
+      "encode_ms": 0.078
+    },
+    "optimal": {
+      "wire_bytes": 354,
+      "shards": 1,
+      "encode_ms": 0.294
+    }
+  }
+]
