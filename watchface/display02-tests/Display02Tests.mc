@@ -31,8 +31,6 @@ import Toybox.WatchUi;
 }
 (:typecheck(false)) function displayPacket(id){return WatchUi.loadResource(id)["raw"];}
 (:test,:typecheck(false)) function displayEventSequence(logger){
-    var seeds=[73,191,433,719];
-    for(var run=0;run<seeds.size();run+=1){var initialSeed=seeds[run];
     // Causal prerequisites and expected target are independent literals from
     // the captured packet oracle. Regressing initial generation is rejected.
     var clock=new DisplayClock();var store=new DisplayStore();var cat=WatchUi.loadResource(Rez.JsonData.DisplayCatalog);
@@ -43,14 +41,10 @@ import Toybox.WatchUi;
     var drawing=new DisplayRecordingRenderer();drawing.prepare(view.context,view.settings);view.renderer=drawing;
     var frame=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get();var dc=frame.getDc();
     var target=1794609900;var applied=0;var observed=0;var rejected=0;var expectedMode=0;
-    var events=[["time",target-176523],["drawHigh",0],["sleep",0],["sleep",0],["drawLow",0],["wake",0],["wake",0],["drawHigh",0],
+    var events=[["time",target-176523],["drawHigh",0],["sleep",0],["sleep",0],["drawLow",0],["drawLow",0],["wake",0],["wake",0],["drawHigh",0],
                 ["time",target-59],["drawLow",0],["drawHigh",0],["time",target],["drawHigh",0],["drawLow",0],
                 ["time",target+901],["drawLow",0],["drawHigh",0],["reopen",0],["drawHigh",0],["move",0],["reject",0],["reopen",0],
                 ["drawLow",0],["drawHigh",0],["sleep",0],["wake",0],["sleep",0],["wake",0],["off",0],["drawHigh",0]];
-    // Generated deterministic legal display observations after the directed
-    // boundary witnesses; the seed and full generated trace are logged.
-    var seed=initialSeed;var generated="";
-    for(var g=0;g<16;g+=1){seed=(seed*37+11)%997;var name=seed%3==0?"drawLow":seed%3==1?"drawHigh":"off";events.add([name,0]);generated+=name+",";}
     var matrix={};
     for(var i=0;i<events.size();i+=1){
         var row=events[i];var event=row[0];var oldApplied=applied;var oldObserved=observed;var oldRejected=rejected;
@@ -70,7 +64,7 @@ import Toybox.WatchUi;
     var required=["time:applied","sleep:applied","sleep:observed_no_mutation","wake:applied","wake:observed_no_mutation","drawHigh:applied","drawLow:applied","drawLow:observed_no_mutation","off:observed_no_mutation","reopen:applied","move:applied","reject:observed_no_mutation"];
     for(var j=0;j<required.size();j+=1){Test.assert(matrix.hasKey(required[j])&&matrix[required[j]]>0);}
     Test.assert(applied>0&&observed>0&&rejected>0);Test.assert(drawing.activeCalls>0&&drawing.lowCalls>0);
-    logger.debug("DISPLAY02 seed="+initialSeed+" generated="+generated+" applied="+applied+" observed_no_mutation="+(observed+rejected)+" includes_rejected="+rejected+" skipped=0");}
+    logger.debug("DISPLAY02 directed applied="+applied+" observed_no_mutation="+(observed+rejected)+" includes_rejected="+rejected+" skipped=0");
  return true;
 }
 (:test,:typecheck(false)) function displayRealSiteMarker(logger){

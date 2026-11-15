@@ -1,0 +1,119 @@
+{
+  "scope": "display02-current-map-wake-directed",
+  "status": "passed",
+  "reviewedCurrent": {
+    "watchface/source/SceneRenderer.mc": "d460ec37e9c91def9f68c2bf8ec32dd8f9bb0c038fc1791c12966d8117fe373e",
+    "watchface/source/SpaceFoxView.mc": "0197c7f8f1ff2f2a43f69e95d87d8fd4fe270f235e6f23cef0f880dd731a746c",
+    "watchface/display02-tests/Display02Tests.mc": "4d10bbb5390dae13e9eac291b627da64c9dcaddf9b58e1c23488d591fcc177cd",
+    "tools/native_display02_requalification.py": "2a2a555c488e7791b9964b04c1934e00ff1cd8c156ef5d58388923b954e55ce9"
+  },
+  "historicalSnapshots": {
+    "watchface/source/SceneRenderer.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/prior/watchface/source/SceneRenderer.mc",
+      "sha256": "7e9984f4b2358c4cfaa540cfdf0aed271d8166b4f5bdfe237a0087de036184ba"
+    },
+    "watchface/source/SpaceFoxView.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/prior/watchface/source/SpaceFoxView.mc",
+      "sha256": "ce5765bf3abbb570187886a5022695656aea799973123d265ead5d4763e63420"
+    },
+    "watchface/display02-tests/Display02Tests.mc": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/prior/watchface/display02-tests/Display02Tests.mc",
+      "sha256": "4b6ead79f119b52ac6d49613c9c434270d1ed58be756bda7689fad130d1f8793"
+    },
+    "tools/native_display02_requalification.py": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/prior/tools/native_display02_requalification.py",
+      "sha256": "80cd6644e3f5f64aea0dc7a8af8204b701b2690919457bbecc688a75fa4ce60a"
+    }
+  },
+  "evidence": {
+    "directedReceipt": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/directed/receipt.json",
+      "sha256": "476da9bfc181dd593ab3467ad621b1f53e2f86d7838385d1150645c21bb41211"
+    },
+    "directedLog": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/directed/native.log",
+      "sha256": "888777a972c34b561d457ab5b45c102ebadcc5dc770566919b9713b5bb3691f7"
+    },
+    "directedCompile": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/directed/compile.log",
+      "sha256": "30f8bc1fb15ddaf1b8553a105f7fb6059c4594b18c4d3818688aae3b91f0c94a"
+    },
+    "redrawReceipt": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/redraw/receipt.json",
+      "sha256": "a55b0c9e8abd83d2149509d4bffcd2cada8d8ce8a992f89e8ee07dad749afe32"
+    },
+    "redrawLog": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/redraw/native.log",
+      "sha256": "e88c3427c2cb7a3663ff1d71fa85e824cb54f5f471eac3cfdaa4ba645c94b38b"
+    },
+    "englishMapBuild": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/map/build.json",
+      "sha256": "dadf61cb7465ea1853ca286cd8df9696d07dd2201e03b25340feac50f113295d"
+    },
+    "englishMapLog": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/map/run.log",
+      "sha256": "bc62fa21c43e2357f390efd60475ea52502fea129c708b9ed81f0a364e801c78"
+    },
+    "englishMapFrame": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/map/screen.png",
+      "sha256": "7f50c65f2d20221aceab510d3dadc9a395062ddf3a4796e172cb34b1784961c7"
+    },
+    "russianMapBuild": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/map-ru/build.json",
+      "sha256": "f1c62e3f00d35bc93585edcf0117b71590279643f0b25d552e535fb9a7371545"
+    },
+    "russianMapFrame": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/map-ru/screen.png",
+      "sha256": "7829209c8510e5c6282730c69bdb5655e31911b84681a2f77ae67a906fd77cf0"
+    },
+    "russianMapProbe": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/map-ru/Probe.mc",
+      "sha256": "e4c0bd18ece5fa524b248a266cb2746ac1015b8e0d294db5b7958f91a54e7703"
+    },
+    "russianMapLog": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/map-ru/run.log",
+      "sha256": "a0ea713a2bb6aea62dc27067117771aee13bbf312e643228fbb2975800380546"
+    },
+    "englishMapProbe": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/map/Probe.mc",
+      "sha256": "b50d8fef3692a7a77ced15fabb9d1e53faf1b2cf70965c22ffed029515d077ea"
+    },
+    "settingsReceiptJson": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/settings/receipt.json",
+      "sha256": "04db08bd099154bd3e5a522ca57438239b0cd468a2c63877f0bb7e20aee6b1d3"
+    },
+    "settingsNativeLog": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/settings/native.log",
+      "sha256": "2983d5b535163dc37b8adbc373bd3939d7ec609c5189fd52cbe3df59f2106723"
+    },
+    "settingsCompileLog": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/settings/compile.log",
+      "sha256": "1df57346d97ca6d3394ae450657260d2954c6d3ab9f869fe758cb480a7c8c0fd"
+    },
+    "menuReceiptJson": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/menu/receipt.json",
+      "sha256": "8d615e062ac630e81f09a4267da50f2900de50734c739c1c64123f1f5ff997fd"
+    },
+    "menuNativeLog": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/menu/native.log",
+      "sha256": "c338aa906e0ea41d0a2c8994bc8ae3e0a860d014f12bb3a4ce44ffcc086bbf2a"
+    },
+    "menuCompileLog": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/menu/compile.log",
+      "sha256": "a1f36ae7944d95d147f4d3841e1bdace4b09d1c4e0da15924bfcc2a967d304de"
+    },
+    "lifecycleReceiptJson": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/lifecycle/receipt.json",
+      "sha256": "bb3302946f166f361d410d0b4c2f17626f43419739eeed37e6fbfe51f7810955"
+    },
+    "lifecycleNativeLog": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/lifecycle/native.log",
+      "sha256": "2797be3288c8dbc0dae6d0ea64ea4921e42480e6889d9944192f74f83a33486c"
+    },
+    "lifecycleCompileLog": {
+      "path": "openspec/changes/spacefox-watchface/evidence/current-native-ui/lifecycle/compile.log",
+      "sha256": "c81c352766b45cdac42a1f3bad8e19bce56d30cb630e7c325d4877d5662ccd7b"
+    }
+  },
+  "boundary": "Retained finite language proof on historical exact inputs plus current FR165 directed controls and one real-launch EN/RU map sample; not a new five-language corpus replay or physical qualification."
+}
