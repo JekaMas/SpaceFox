@@ -1,6 +1,6 @@
 # Testing SpaceFox
 
-The [0.1.14 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.14-test.1) has separate [USB installation](release/INSTALLATION-0.1.14.md) and [testing](release/TESTING-0.1.14.md) guides. Its signed runtime and physical delivery remain unobserved; no 0.1.14 Garmin submission is claimed.
+The [0.1.14 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.14-test.1) has separate [USB installation](release/INSTALLATION-0.1.14.md) and [testing](release/TESTING-0.1.14.md) guides. One [signed 0.1.14 SDK run](openspec/changes/spacefox-watchface/evidence/signed-014-runtime/RESULT.md) showed a retained historical scene in ACTIVE and LOW, offline, after a seed-only control. Physical delivery and 0.1.14 Garmin submission remain unobserved.
 
 ## Garmin 0.1.13
 

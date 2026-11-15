@@ -1,0 +1,12 @@
+{
+  "seed_prg_sha256": "3661d34915c762e17ce7ae1ba811a11ab2b57caeac9c02aaf076ee3fd7af1e67",
+  "retained_source_sha256": "151a675a1b7ea8ac0ebf6a6fd873f52f75f0d387e151cc75590f11eace74f3b7",
+  "task_local_source_matches_retained": true,
+  "sdk_debug_xml_sha256": "a265ba8b5b8a18128d7174d790e986e593c14c5a9ed4ce7700ce5abf4b67dd95",
+  "sdk_debug_symbols_present": [
+    "SpaceFoxApp.getInitialView",
+    "SpaceFoxApp.seedStep",
+    "SeedView.onUpdate"
+  ],
+  "boundary": "Task-local debug file and matching source support the author compile account; no independent bytecode/source equivalence, seed-launch argv, or cryptographic debug-file binding is asserted."
+}
