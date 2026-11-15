@@ -781,3 +781,23 @@ an impossible union before pending persistence. The local exact recovery/next
 publication and five affected recovery checks are GREEN. This host revision
 does not alter the already released signed 0.1.17 binary. Live two-run activation
 and final readback remain open.
+
+### ROLLOVER017 release and hosted activation completed
+
+Current incident status is DONE for the accepted software, regular release,
+original-card submission and hosted activation. The preceding entries preserve
+their earlier checkpoint status. Root accepts publication commit `3f6df4e4`:
+[publication and exact readbacks](evidence/rollover017/publication/PUBLICATION.md).
+The regular v0.1.17 release contains all 22 verified artifacts from native source
+`bc744093`, ID `2e6fc8c4`. Host-only main `7eb5220e` successfully recovered 49
+and automatically published 50 in two serialized five-job runs. Live schema-3
+JSON/text are equal, 5,657 bytes, with two upcoming entries and preserved source
+validation age. The redundant manual run was cancelled before any job. Current
+predecessor metadata passed five actual-receipt checks; no unchanged native or
+behavioral checks were repeated for publication records.
+
+Garmin owner preview is 0.1.17/Internal 10 PENDING with status/signature verified
+and a confirmed Music queue for the next synchronization. Ivan received the
+authorized public links and installation instructions. Physical installed
+version, updated watch data, wake/power and public Garmin approval remain
+unobserved; this incident does not close those existing global task obligations.
