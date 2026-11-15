@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "observed_at_utc": "2026-11-15T07:59:45.891415+00:00",
+  "application_uuid": "ec8b7c8a8ea54ee9ac91ee6e7a674d15",
+  "algorithm": "RSA4096 PKCS8 DER",
+  "public_key_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
+  "restored_public_key_matches": true,
+  "challenge_hex": "63bd5df45fd3c2c5e9b7dbf7757d9922099d09968ebd3dcdef6a9d3f24a8999c",
+  "challenge_signature_base64": "mB00+Pybql7O0wp85NAtZXahEZl4dJwingvHK7/H4RJACy4DyxHr59eDz8/bB4gf/uUQ/Ip7Pn4+Ym8+Zh9mPGc9N4YvjmElTJ6erchofulABvHuoFr0dMs9fC1oEVjoeFK6u09VRVEiigUf4ENiDqSgCMnwwIsa/jcL3yBP3n5p5cw4bnVSnKmZUB8e4p7JwwGno9HrEpyC/4bm128kPZeePvj5rH7LWLOJ9CmRuvfZqc05KV1VUjJ8u43FAh2JZcVdFramuFQpfVpismoqYlgB7L8WeELL9vumbHzYejk51WfaiuWJb+wzUU8TR1Bxm2o/X7Wz8ObgXjwQB4d3m6BcBBMe8ej7Luja1U/tKg6mWuSrto52CAKa0rPNZ3ClZ0qSuIi1UDcUZgys3BWvZ0pZJHGz/fBhWdqqfpkLR4hsPE+sCa4o3am8eiwsXilwvdEqf9KdpD3NoqnQLGVQICw0yEg15NJPcPQPEvyvvweFMJ9YzFXDJzzxTkd7IUycf9h/yqcMiysBa9ODnV0QVqR+wGO0Tqc5bgWmZFIcJKQyRvTuo9zMYfmGks+tZq1i67JUhAcD74e4r2wvMpxapXoe327d0grQTRZbzPZd216iY9hMnVyixMCqMuUISshPoTYNbnef1dm1UKNCmsSRBiB03epwApdRopry3N2+5To=",
+  "challenge_signature_verified": true,
+  "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
+  "proof_boundary": "Dated supplement: actual retained production encrypted PKCS8 backup restored locally to a distinct ephemeral protected destination; same RSA4096 public identity and independently equal original/restored SHA256 challenge signatures. Plaintext restore removed; original key unchanged. Same Mac only. Does not alter the original SDK build receipt or prove backup at build time, offsite/disaster recovery, phone/device or Store acceptance.",
+  "original_and_restored_challenge_signatures_equal": true,
+  "original_key_bytes_and_modes_unchanged": true,
+  "restored_plaintext_removed": true,
+  "backup_and_password_separate_directories": true,
+  "permissions": {
+    "original_key": {
+      "file_mode": "0o600",
+      "parent_mode": "0o700",
+      "owner_matches_current_user": true,
+      "outside_git": true
+    },
+    "encrypted_backup": {
+      "file_mode": "0o600",
+      "parent_mode": "0o700",
+      "owner_matches_current_user": true,
+      "outside_git": true
+    },
+    "recovery_password": {
+      "file_mode": "0o600",
+      "parent_mode": "0o700",
+      "owner_matches_current_user": true,
+      "outside_git": true
+    },
+    "ephemeral_restored_key": {
+      "file_mode": "0o600",
+      "parent_mode": "0o700",
+      "owner_matches_current_user": true,
+      "outside_git": true
+    }
+  },
+  "openssl_version": "OpenSSL 3.6.5 29 Sep 2026 (Library: OpenSSL 3.6.5 29 Sep 2026)",
+  "source_inputs_sha256": {
+    "tools/release.py": "6dce923b23d15eb546f61f115cb9bc5706777add879acfbcaf894249a65f00ce",
+    "tools/verify_signing_backup.py": "2e62046d13813cbf02fc0231ebc7c8af985e1cd2f20eb8e7009ea8545c472876",
+    "release/signing-identity.json": "1302c6d6787f8deb84ef5b9de2b04d7cab374aff340d787e1bcfc917d3316a09"
+  },
+  "offsite_verified": false,
+  "source_binding_note": "Production operation observed with these exact tool/policy byte digests; repository-specific authoring revision omitted. No private checkout is required by the disposable suite."
+}
