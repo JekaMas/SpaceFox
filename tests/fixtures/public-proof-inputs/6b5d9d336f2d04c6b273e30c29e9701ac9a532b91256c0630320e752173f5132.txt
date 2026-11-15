@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+"""Compile the retained current timing/settings literals with bounded resources.
+
+A simulator result and strict locale admission are separate observations. The
+fixture is a retained actual producer capture; each resource loads independently.
+"""
+import hashlib
+import json
+import uuid
+from pathlib import Path
+from unittest.mock import patch
+from xml.etree import ElementTree as ET
+from tools.native_full_visual_runtime import ROOT, GROUPS, IMPORTS, build_probe
+from tools.native_timing_settings import NATIVE
+
+FIXTURE=ROOT/'openspec/changes/spacefox-watchface/evidence/final-native-timing-settings/packets.json'
+ASSERTIONS=ROOT/'tests/fixtures/watch_refresh_cache/TimingAssertions.mc'
+CLOCK=ROOT/'watchface/tests/NativeClockTests.mc'
+
+def build(output, *, diagnostic_unqualified=False):
+    data=json.loads(FIXTURE.read_bytes())
+    GROUPS['current-timing']=(uuid.uuid4().hex,'SpaceFoxCurrentTimingTests.prg')
+    source=IMPORTS+'(:background) class SfrRuntimeApp extends SpaceFoxApp {function initialize(){SpaceFoxApp.initialize();}}\n'+CLOCK.read_text()+'\n'+ASSERTIONS.read_text()
+    rows={'TimingCatalog':{'catalog':data['catalog'],'catalogDigest':data['catalogDigest']}}
+    for label in ('exact','started','minute','unknown','postponed','withdrawn','postponedMinute','invalid'):
+        rows['Timing'+label[0].upper()+label[1:]]={'raw':data[label]}
+    resources={};xml=['<resources>']
+    for name,value in rows.items():
+        raw=json.dumps(value,ensure_ascii=False,separators=(',',':')).encode()
+        if len(raw)>8192:raise ValueError('timing test resource exceeds 8192 bytes: '+name)
+        resources[name+'.json']=raw
+        xml.append('<jsonData id="'+name+'" filename="'+name+'.json"/>')
+    resources['timing.xml']=(''.join(xml)+'</resources>').encode()
+    if diagnostic_unqualified:
+        with patch('tools.native_full_visual_runtime.validate_manifest',lambda root,lock:ET.parse(root/'watchface/manifest.xml')):
+            result=build_probe(output,source,group='current-timing',tests=True,probe_resources=resources)
+    else:result=build_probe(output,source,group='current-timing',tests=True,probe_resources=resources)
+    result['expectedTests']=list(NATIVE)
+    result['admissionValidation']='bypassed-diagnostic-only' if diagnostic_unqualified else 'strict-current-proof'
+    result['assertionInputs']={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in (FIXTURE,ASSERTIONS,CLOCK,Path(__file__).resolve())}
+    result['proofBoundary']='Compiler only; controlled clock and simulator execution require a separate receipt.'
+    (output/'build.json').write_text(json.dumps(result,indent=2)+'\n')
+    if result['exitCode']!=0:raise RuntimeError('timing compilation failed')
+    return result

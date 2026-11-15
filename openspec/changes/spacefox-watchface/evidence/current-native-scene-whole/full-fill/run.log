@@ -1,0 +1,25 @@
+Background: SFR_PROBE owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+SFR_PROBE owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+SFR_QUOTA SNAPSHOT label=begin-fill generation=1 validation=1794551192 seal=a070273cd9aec4269c9f7a910f25bd8447db2fd281993a2fc817be36d3eac990 floor=1 floorUtc=1794551192 owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+NATIVE_METRIC phase=quota-snapshot used=14768 free=112016 total=126784 sampledHigh=14768 utc=1794697674 ms=311391 owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+SFR_QUOTA CLEAN removed=0 ownFillerOnly=true owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+SFR_QUOTA SNAPSHOT label=cleaned generation=1 validation=1794551192 seal=a070273cd9aec4269c9f7a910f25bd8447db2fd281993a2fc817be36d3eac990 floor=1 floorUtc=1794551192 owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+NATIVE_METRIC phase=quota-snapshot used=15136 free=111648 total=126784 sampledHigh=15136 utc=1794697681 ms=318073 owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+SFR_QUOTA FILL keys=32 logicalBytes=1024000 owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+SFR_QUOTA FILL keys=64 logicalBytes=2048000 owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+SFR_QUOTA FILL keys=96 logicalBytes=3072000 owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+SFR_QUOTA FILL keys=128 logicalBytes=4096000 owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+SFR_QUOTA FILL keys=160 logicalBytes=5120000 owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+SFR_QUOTA FILL keys=192 logicalBytes=6144000 owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+SFR_QUOTA FILL keys=224 logicalBytes=7168000 owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+SFR_QUOTA FILL keys=256 logicalBytes=8192000 owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+SFR_QUOTA FILL keys=288 logicalBytes=9216000 owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+SFR_QUOTA FILL keys=320 logicalBytes=10240000 owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+SFR_QUOTA QUOTA exception=Lang.StorageFullException tier=32000 successful=322 keys=322 error=Toybox.Application.Storage.setValue() storage limit exceeded owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+SFR_QUOTA QUOTA exception=Lang.StorageFullException tier=4096 successful=4 keys=326 error=Toybox.Application.Storage.setValue() storage limit exceeded owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+SFR_QUOTA QUOTA exception=Lang.StorageFullException tier=512 successful=2 keys=328 error=Toybox.Application.Storage.setValue() storage limit exceeded owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+SFR_QUOTA QUOTA exception=Lang.StorageFullException tier=64 successful=1 keys=329 error=Toybox.Application.Storage.setValue() storage limit exceeded owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+SFR_QUOTA QUOTA exception=Lang.StorageFullException tier=1 successful=0 keys=329 error=Toybox.Application.Storage.setValue() storage limit exceeded owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+SFR_QUOTA SNAPSHOT label=filled generation=1 validation=1794551192 seal=a070273cd9aec4269c9f7a910f25bd8447db2fd281993a2fc817be36d3eac990 floor=1 floorUtc=1794551192 owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+NATIVE_METRIC phase=quota-snapshot used=17408 free=109376 total=126784 sampledHigh=17408 utc=1794697685 ms=322433 owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1
+SFR_QUOTA COMPLETE full=true logicalBytes=10321472 keys=329 setupBlank=true owner=afcb63403b834ed49f7fdc85a32bb319|full-fill|036772376da1

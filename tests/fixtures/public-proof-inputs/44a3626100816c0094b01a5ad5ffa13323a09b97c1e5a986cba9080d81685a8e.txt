@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+"""Supplement the current packet probe with bounded integrity/callback cases."""
+import hashlib,json
+from pathlib import Path
+from unittest.mock import patch
+from tools import watch_refresh_cache_probe as core
+ROOT=core.ROOT
+FIXTURE=ROOT/'tests/fixtures/watch_refresh_cache'
+NAMES=('moreServiceAcceptAndReplay','moreCurrentIntegrity','moreWidePolicy','moreCorruptRecovery','moreTypedMetadata','moreNearLatchReopen','moreOmissionPreservesAge','moreOfflineEmpty','moreCurrentIsoLiterals','moreCanonicalCurrent','morePublisherFloor','moreSourceIdentity','moreRescheduledStale','moreSdkThreeSlots','moreSourcedAscent','moreSourceOnlyReuse','moreGenericRenderer','moreNonfinitePosition','moreStorageFull')
+
+def build(output,*,diagnostic_unqualified=False):
+ data=json.loads((FIXTURE/'integrity.json').read_bytes());omission=json.loads((FIXTURE/'omission.json').read_bytes())
+ original=core.build_probe
+ def add_source(out,source,**kwargs):
+  resources=kwargs['probe_resources'];xml=['<resources>']
+  values={'IntegrityCatalog':{'catalog':data['badCatalog'],'catalogDigest':data['badCatalogDigest']},'OmissionInitial':omission['initial'],'OmissionOmitted':omission['omitted'],'IntegrityNanCatalog':{'catalog':data['nanCatalog'],'catalogDigest':data['nanCatalogDigest']}}
+  values.update({'Integrity'+k[0].upper()+k[1:]:{'raw':v} for k,v in data['packets'].items()})
+  for name,value in values.items():
+   raw=json.dumps(value,ensure_ascii=False,separators=(',',':')).encode()
+   if len(raw)>8192:raise ValueError('integrity resource too large '+name)
+   resources[name+'.json']=raw;xml.append('<jsonData id="'+name+'" filename="'+name+'.json"/>')
+  resources['integrity.xml']=(''.join(xml)+'</resources>').encode()
+  return original(out,source+'\n'+(FIXTURE/'AdditionalAssertions.mc').read_text(),**kwargs)
+ with patch.object(core,'build_probe',add_source),patch.object(core,'NAMES',NAMES):
+  result=core.build(output,diagnostic_unqualified)
+ result['additionalInputs']={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in (FIXTURE/'AdditionalAssertions.mc',FIXTURE/'integrity.json',FIXTURE/'integrity-oracle.json',FIXTURE/'build_integrity.py',FIXTURE/'omission.json',FIXTURE/'build_omission.py',Path(__file__).resolve())}
+ (output/'build.json').write_text(json.dumps(result,indent=2)+'\n');return result

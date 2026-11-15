@@ -1,0 +1,214 @@
+{
+  "scope": "Method-text comparison only; method names with duplicate names resolve first occurrence; no execution or independent review. Changed methods need manual role-level classification.",
+  "public": "f01654cf57d6e4bd30da920be124f16a44161872",
+  "rows": [
+    {
+      "file": "watchface/source/NativeImmutable.mc",
+      "prior": "9fe21b28",
+      "method": "raw",
+      "byte_identical": true,
+      "old_sha256": "4f385254988e67bc0271607d8ba2f9ad63941dd45ec65cc4bd75c238f26415c6",
+      "current_sha256": "4f385254988e67bc0271607d8ba2f9ad63941dd45ec65cc4bd75c238f26415c6"
+    },
+    {
+      "file": "watchface/source/NativeImmutable.mc",
+      "prior": "9fe21b28",
+      "method": "protectedHashes",
+      "byte_identical": true,
+      "old_sha256": "2006c4428fa591a9c5b10cad01d634f38cae78bde115b52f8b253077de0bd3d2",
+      "current_sha256": "2006c4428fa591a9c5b10cad01d634f38cae78bde115b52f8b253077de0bd3d2"
+    },
+    {
+      "file": "watchface/source/NativeImmutable.mc",
+      "prior": "9fe21b28",
+      "method": "put",
+      "byte_identical": true,
+      "old_sha256": "cd191caac349adf763ad80bba1bfe97fccc7dc67ef6dc8f298228afbb35d32e0",
+      "current_sha256": "cd191caac349adf763ad80bba1bfe97fccc7dc67ef6dc8f298228afbb35d32e0"
+    },
+    {
+      "file": "watchface/source/NativeImmutable.mc",
+      "prior": "9fe21b28",
+      "method": "begin",
+      "byte_identical": false,
+      "old_sha256": "4e08284482ef60b38e8fba9b1008b015f5bdd0ab0e6b68b5c5cf0760de596f9f",
+      "current_sha256": "64df62b28fb4f3077bb7a6180a49ddd80b257ab006d0c942e5ba7062b776b090"
+    },
+    {
+      "file": "watchface/source/NativeImmutable.mc",
+      "prior": "9fe21b28",
+      "method": "next",
+      "byte_identical": false,
+      "old_sha256": "6d715abe29a42f7c37d4f7ca84961c9bb1b68e8ae2855ddbf50669aa5fe9c385",
+      "current_sha256": "64b694860f22e54399782da88637c5bc865e059586914052d46769cc624ef900"
+    },
+    {
+      "file": "watchface/source/NativeFeed.mc",
+      "prior": "b9dbfd26",
+      "method": "hashRaw",
+      "byte_identical": true,
+      "old_sha256": "6feef26a65555d4dadfc93e50649671fad29e99719138ac9f52775c298376c2b",
+      "current_sha256": "6feef26a65555d4dadfc93e50649671fad29e99719138ac9f52775c298376c2b"
+    },
+    {
+      "file": "watchface/source/NativeFeed.mc",
+      "prior": "b9dbfd26",
+      "method": "parse",
+      "byte_identical": true,
+      "old_sha256": "d6db5d74f1788d6b0ff3429ddad325b7739d53ae5160f5e2ecafb9213d7a6ad9",
+      "current_sha256": "d6db5d74f1788d6b0ff3429ddad325b7739d53ae5160f5e2ecafb9213d7a6ad9"
+    },
+    {
+      "file": "watchface/source/NativeFeed.mc",
+      "prior": "b9dbfd26",
+      "method": "validate",
+      "byte_identical": true,
+      "old_sha256": "d3c4f824b4f6d39bcacb74f4a88d4935996d8b492fb3db3a6436748d690c20da",
+      "current_sha256": "d3c4f824b4f6d39bcacb74f4a88d4935996d8b492fb3db3a6436748d690c20da"
+    },
+    {
+      "file": "watchface/source/NativeFeed.mc",
+      "prior": "b9dbfd26",
+      "method": "semanticHash",
+      "byte_identical": true,
+      "old_sha256": "d9a89f3d88b0ce9d67c105c52726db9fbf6ce97069db33c4deee1e355dde11bb",
+      "current_sha256": "d9a89f3d88b0ce9d67c105c52726db9fbf6ce97069db33c4deee1e355dde11bb"
+    },
+    {
+      "file": "watchface/source/NativeFeed.mc",
+      "prior": "b9dbfd26",
+      "method": "advance",
+      "byte_identical": true,
+      "old_sha256": "8fcc0364ce960db38cb0026bcc7de5fbd198d42de7283488c3c72eff5ed9c69a",
+      "current_sha256": "8fcc0364ce960db38cb0026bcc7de5fbd198d42de7283488c3c72eff5ed9c69a"
+    },
+    {
+      "file": "watchface/source/NativeFeed.mc",
+      "prior": "b9dbfd26",
+      "method": "metadata",
+      "byte_identical": true,
+      "old_sha256": "2050ebf00cd945c06d21647d27223c681ef2da563c6e03123af59d7dc07a527a",
+      "current_sha256": "2050ebf00cd945c06d21647d27223c681ef2da563c6e03123af59d7dc07a527a"
+    },
+    {
+      "file": "watchface/source/NativeFeed.mc",
+      "prior": "b9dbfd26",
+      "method": "refreshTarget",
+      "byte_identical": true,
+      "old_sha256": "de53223797222460c5a1ac0296317a244060850351c33216c35f564d9bae85fc",
+      "current_sha256": "de53223797222460c5a1ac0296317a244060850351c33216c35f564d9bae85fc"
+    },
+    {
+      "file": "watchface/source/NativeFeed.mc",
+      "prior": "b9dbfd26",
+      "method": "interval",
+      "byte_identical": true,
+      "old_sha256": "9958b42ef697b6c8bef72ad6e0a95123e28d779920b282d2f510acd3f96c3c15",
+      "current_sha256": "9958b42ef697b6c8bef72ad6e0a95123e28d779920b282d2f510acd3f96c3c15"
+    },
+    {
+      "file": "watchface/source/NativeCache.mc",
+      "prior": "b9dbfd26",
+      "method": "checkPublisher",
+      "byte_identical": true,
+      "old_sha256": "7a4e1c6a62252ec15629845a1df6bf699ea3b0e78b589e82985a02a3c63005ae",
+      "current_sha256": "7a4e1c6a62252ec15629845a1df6bf699ea3b0e78b589e82985a02a3c63005ae"
+    },
+    {
+      "file": "watchface/source/NativeCache.mc",
+      "prior": "b9dbfd26",
+      "method": "rememberPublisher",
+      "byte_identical": true,
+      "old_sha256": "7ef0fa27b818800961a9879629a55bc1e171519c440e0b595cb74f0be5fdabee",
+      "current_sha256": "7ef0fa27b818800961a9879629a55bc1e171519c440e0b595cb74f0be5fdabee"
+    },
+    {
+      "file": "watchface/source/NativeCache.mc",
+      "prior": "b9dbfd26",
+      "method": "freeSlot",
+      "byte_identical": true,
+      "old_sha256": "611c922b1e96f9a47a1e4da5bfb033bf6c4fece168685095bcaec7d222cafc16",
+      "current_sha256": "611c922b1e96f9a47a1e4da5bfb033bf6c4fece168685095bcaec7d222cafc16"
+    },
+    {
+      "file": "watchface/source/NativeCache.mc",
+      "prior": "b9dbfd26",
+      "method": "accept",
+      "byte_identical": false,
+      "old_sha256": "5051bce638e64bb145d1453c053acba51c82f28449a257156ae74e9a470b02c2",
+      "current_sha256": "c96cd3fc9d79e386e0507326010501c4cb06933d50896a9bb4d8f6d59cbf0788"
+    },
+    {
+      "file": "watchface/source/NativeCache.mc",
+      "prior": "b9dbfd26",
+      "method": "readCommit",
+      "byte_identical": false,
+      "old_sha256": "57fe6b7b7ab95adb2dbaa4f543356040a3b3a5558e7a99ab9696422e228cea39",
+      "current_sha256": "fe91ff7fa6b342332e0b55987290c41c370a2f6a9897d5ccc44eec18ada5316e"
+    },
+    {
+      "file": "watchface/source/NativeForegroundCache.mc",
+      "prior": "b9dbfd26",
+      "method": "readCommit",
+      "byte_identical": false,
+      "old_sha256": "5aaa5a1d9b4b7540cd022ab0b59304426bcec9ab7844e792d918e3ab1c794f1a",
+      "current_sha256": "b93febfe58f354abfb7ac3f53b5e133fa04a477c2870964dc9ec19d8b76d5a77"
+    },
+    {
+      "file": "watchface/source/NativeForegroundCache.mc",
+      "prior": "b9dbfd26",
+      "method": "readRaw",
+      "byte_identical": false,
+      "old_sha256": "55c520bc0b15bc544ab52edf299977537c3a4d59d6c75be5dcb48c2261d469f0",
+      "current_sha256": "548b50ffa8e5aff48383692490b72218bcfa299601b2d084fbcbb6269c2b700c"
+    },
+    {
+      "file": "watchface/source/NativeTransfer.mc",
+      "prior": "9fe21b28",
+      "method": "load",
+      "byte_identical": false,
+      "old_sha256": "0e1542027e21651097a1b8efa5e3a17fab66f1d74563ea316806a0469e70ef78",
+      "current_sha256": "13e917a82f4505326b0a089804fdccdc5244d966f0cd7da7f492a857f7104a24"
+    },
+    {
+      "file": "watchface/source/NativeTransfer.mc",
+      "prior": "9fe21b28",
+      "method": "attempted",
+      "byte_identical": false,
+      "old_sha256": "c1929bf55fa7d2e9c970b96539e69fafe8e1f165d6e1afacbadfe7476d1aa758",
+      "current_sha256": "c91747e21808087ad5cf649bcf7faeaf0b36a8c4455a9f0d6c52e1888edd84e6"
+    },
+    {
+      "file": "watchface/source/NativeTransfer.mc",
+      "prior": "9fe21b28",
+      "method": "due",
+      "byte_identical": true,
+      "old_sha256": "550987ac6b7022aa8ebf66a6365f1c4ca0dd1d281c81182d89a94cf482c48b86",
+      "current_sha256": "550987ac6b7022aa8ebf66a6365f1c4ca0dd1d281c81182d89a94cf482c48b86"
+    },
+    {
+      "file": "watchface/source/NativeTransfer.mc",
+      "prior": "9fe21b28",
+      "method": "nextWake",
+      "byte_identical": true,
+      "old_sha256": "3a2680d5f1ceae1ce814a15ed85c9e1e961ad4bde345252436cb7d8bdf7084c3",
+      "current_sha256": "3a2680d5f1ceae1ce814a15ed85c9e1e961ad4bde345252436cb7d8bdf7084c3"
+    },
+    {
+      "file": "watchface/source/FeedService.mc",
+      "prior": "9fe21b28",
+      "method": "receiveBatch",
+      "byte_identical": false,
+      "old_sha256": "39dcfb185aaeb50f34c660deca7339b172092c64ac1c282d21be9d5b24e325ab",
+      "current_sha256": "102dbbd3202d9983bc52ed27f1a66e55919040aadb83dcd0f3847c96551ccb8d"
+    },
+    {
+      "file": "watchface/source/FeedService.mc",
+      "prior": "9fe21b28",
+      "method": "armFeed",
+      "byte_identical": false,
+      "old_sha256": "83e3466e31859bd9002ddc74f798f1db7277c08742ea8cf89a0e5aae180046a1",
+      "current_sha256": "6bb702abcf513678896e28708bc9ad0d5c8459ae668dcf3c6792f29ce8618e59"
+    }
+  ]
+}

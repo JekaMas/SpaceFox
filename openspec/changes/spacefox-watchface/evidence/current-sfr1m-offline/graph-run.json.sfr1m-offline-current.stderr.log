@@ -1,0 +1,11 @@
+test_corrupt_digest_rejected (tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_corrupt_digest_rejected) ... ok
+test_current_raw_pixels_identity_age_and_bounds (tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_current_raw_pixels_identity_age_and_bounds) ... ok
+test_repinned_identity_mismatch_rejected (tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_repinned_identity_mismatch_rejected) ... ok
+test_same_identity_real_asset_replacement_keeps_recovery_bounded (tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_same_identity_real_asset_replacement_keeps_recovery_bounded) ... ok
+test_token_row_overflow_rejected (tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_token_row_overflow_rejected) ... ok
+test_truncated_and_noncanonical_tokens_rejected (tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_truncated_and_noncanonical_tokens_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 20.647s
+
+OK

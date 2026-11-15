@@ -1,0 +1,26 @@
+test_ls02_p4_s01_positive_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p4_s01_positive_current) ... ERROR
+
+======================================================================
+ERROR: test_ls02_p4_s01_positive_current (tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p4_s01_positive_current)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-public-verification-port/tests/test_current_format_acceptance.py", line 327, in test_ls02_p4_s01_positive_current
+    self.observe('refreshOfflineView');self.lifecycle('finalAnimationLifecycle','finalAodMinuteGuard');self.redraw_sources()
+                                       ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-public-verification-port/tests/test_current_format_acceptance.py", line 224, in lifecycle
+    self.current_ui()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-public-verification-port/tests/test_current_format_acceptance.py", line 213, in current_ui
+    CurrentUiBatchTest.setUpClass()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-public-verification-port/tests/test_current_ui_batch.py", line 12, in setUpClass
+    cls.result=verify(ROOT)
+               ~~~~~~^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-public-verification-port/tools/verify_current_ui_batch.py", line 192, in verify
+    raise ValueError('current UI semantic owner changed: '+name)
+ValueError: current UI semantic owner changed: watchface/source/SceneRenderer.mc
+
+----------------------------------------------------------------------
+Ran 1 test in 19.164s
+
+FAILED (errors=1)

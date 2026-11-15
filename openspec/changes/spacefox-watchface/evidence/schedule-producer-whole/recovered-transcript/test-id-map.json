@@ -1,0 +1,828 @@
+{
+  "agentPath": "/root/apply_schedule_producer_whole_terra",
+  "threadId": "01a1d91c-7bc3-7392-b8c3-10eeb723bbe2",
+  "parentThreadId": "01a1c5ca-d360-78a0-9fa5-2b26b127a61d",
+  "turnId": "01a1d91c-7c00-7233-a167-1f78f79b1908",
+  "transcriptPath": "/Users/jekamas/.codex/sessions/2026/11/14/rollout-2026-11-14T12-11-24-01a1d91c-7bc3-7392-b8c3-10eeb723bbe2.jsonl",
+  "transcriptStopOrdinalInclusive": 3707,
+  "transcriptPolicy": "Live append-only file: selected record offsets, byte lengths and SHA-256 hashes anchor each imported record; no mutable whole-file hash is required.",
+  "scope": "Only this subagent initial turn local producer/current-motion unittest commands and corresponding outputs, including failures and write_stdin chunks.",
+  "receiptFile": "unittest-command-events.jsonl",
+  "receiptFileSha256": "c8416b044d62dc082e55648526695904dad00e6e998d8b7dc4393fd013130eb6",
+  "commandCount": 81,
+  "failedOrInterruptedCount": 8,
+  "mappedCurrentTestIds": 54,
+  "requestedCurrentTestIds": 54,
+  "methods": [
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_429_and_shared_quota_count_only_started_attempts",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-bb95880e-9d08-485b-8d99-4542c166f640",
+      "toolCallId": "call_22288a87ae754235aaa4cc0adfb5315a",
+      "processId": "8769",
+      "timestampUTC": "2026-11-14T08:50:42.373Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 1815,
+        "byteOffset": 3849074,
+        "byteLength": 6440,
+        "sha256": "eda94c41a03d4a17b1bff922e2125a2b56efb8ef3a7c3720318557e2a2ea5f5b"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_advancing_clock_keeps_each_response_origin",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-9c626bf5-60b3-40f0-a0c4-0762d6f30cf3",
+      "toolCallId": "call_b3ad9c69949e4cf7bc008fd9254d4d5e",
+      "processId": "49784",
+      "timestampUTC": "2026-11-14T08:59:56.036Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 2192,
+        "byteOffset": 4480175,
+        "byteLength": 2945,
+        "sha256": "028f44736a3035816c13df00a0e6f294d00f125c7eef52cbadf764380f9a0c7f"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_advancing_clock_optional_429_keeps_primary",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-7e18efd8-0c23-43dc-b3b8-5fa4ed88b70c",
+      "toolCallId": "call_9f1f14f444a545fe9d993f815b038fbe",
+      "processId": "97794",
+      "timestampUTC": "2026-11-14T09:00:43.389Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 2224,
+        "byteOffset": 4521220,
+        "byteLength": 6032,
+        "sha256": "58ab529c2ad2165d0a5df453848b2d954807463c537d7fb4c1863f268bc2d68a"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_duplicate_later_page_rejects_atomic_batch_negative",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-15229ee3-8b9b-4a53-8811-391351ead5be",
+      "toolCallId": "call_f318470dbd3a4b76854073dd48cb3bb6",
+      "processId": "9135",
+      "timestampUTC": "2026-11-14T08:31:30.515Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 943,
+        "byteOffset": 2400249,
+        "byteLength": 10741,
+        "sha256": "e48458f65b7a7b2196027fa0476e7f33c171cca21a8c6177c415972418693bfa"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_durable_latches_and_publication_preserve_source_ages",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-86b1a107-82a1-4e12-82f7-5e4e8af3f614",
+      "toolCallId": "call_edde6896358c4f698745fd1cf7ebd378",
+      "processId": "96385",
+      "timestampUTC": "2026-11-14T09:07:33.883Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 2495,
+        "byteOffset": 5095186,
+        "byteLength": 3859,
+        "sha256": "e158110d821c88f08ab0ca2b1eac16edf484624eb7b80c67049ffdb0710a67d3"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_empty_cached_200_preserves_selection_epoch",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-f41a2fb2-bcd6-4e67-87bf-8fd3e315a22c",
+      "toolCallId": "call_7aa17c6723124e039dc5f34d5a2425b3",
+      "processId": "46003",
+      "timestampUTC": "2026-11-14T09:08:51.985Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 2535,
+        "byteOffset": 5174694,
+        "byteLength": 5227,
+        "sha256": "4eb5b6f05ff830633ae8e7aae85068d4a607a3cc4a92cd713a0ed635981835b5"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_explicit_page_cap_reports_partial_positive",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-62f2e641-f572-4b4b-8e95-0748692585a3",
+      "toolCallId": "call_37cfe942cf0449798a442b0d800dbcf3",
+      "processId": "35056",
+      "timestampUTC": "2026-11-14T08:31:57.499Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 962,
+        "byteOffset": 2429820,
+        "byteLength": 3203,
+        "sha256": "08642d14cca5fc734a19951f0c209deca541dc85e08ca05ff68f07b6b64cbeb2"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_fast_policy_persists_twelve_due_reservations",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-568a95e0-e329-4b0f-b923-581676882925",
+      "toolCallId": "call_bea5320806064aab95697295ba6abb7b",
+      "processId": "12424",
+      "timestampUTC": "2026-11-14T08:37:13.305Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 1253,
+        "byteOffset": 3038784,
+        "byteLength": 5085,
+        "sha256": "b5c15c1b04814d568288a4f36a4b0acb2e5d6929a888ca37022d8107a6bbd45a"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_fixed_now_survives_delayed_response",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-e4aa07c0-c00f-4cdd-84ac-62820815b6bf",
+      "toolCallId": "call_afbb17f010e24b1ebd70470b10cdbb5a",
+      "processId": "74545",
+      "timestampUTC": "2026-11-14T09:19:57.292Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 2940,
+        "byteOffset": 5805642,
+        "byteLength": 4009,
+        "sha256": "b8a2ff293ac9a7f6240bc86d2f0536c7d794d52b273438ac236fb19096c271eb"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_fractional_revision_persists_and_rejects_regression",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-ae35cefa-7a1a-4452-9122-c2bd0c6bfee2",
+      "toolCallId": "call_e041f74b22c94f10899472be81118414",
+      "processId": "26051",
+      "timestampUTC": "2026-11-14T08:45:54.104Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 1631,
+        "byteOffset": 3581697,
+        "byteLength": 4511,
+        "sha256": "9bd1d9ec4bb7d123ca30437a3cc6d1fa54266d6dfb1e54c3a2243f45c2e2b232"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_invalid_current_artifacts_keep_active_and_source",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-30835e1d-51ba-4942-a34b-a7e174417b9e",
+      "toolCallId": "call_b0a94c2d4f2c4b98941fb80b8a9e3720",
+      "processId": "81104",
+      "timestampUTC": "2026-11-14T09:26:14.534Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 3157,
+        "byteOffset": 6194283,
+        "byteLength": 4175,
+        "sha256": "50f0ede19c520593d1c6a44b4552050bf6489f5547af0cf2ea87be8a45e7f8cd"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_missing_art_does_not_exclude_upcoming_identity",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-148a51ca-e62b-4906-bfc3-d6d7beb0756f",
+      "toolCallId": "call_85103c58d8c54dbb87230bd7d9ffbf39",
+      "processId": "48427",
+      "timestampUTC": "2026-11-14T08:53:09.395Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 1923,
+        "byteOffset": 4047318,
+        "byteLength": 3958,
+        "sha256": "ddb37c6a55125704e195cbd624746b69a4e634d26de69d3c0dd9dcd71b84313b"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_newer_primary_reappearance_reopens_detail_eligibility",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-c5dc4d56-fd0b-4c3b-bc27-95a26755b538",
+      "toolCallId": "call_5aa6e813dda34f13955ac898f05f5c70",
+      "processId": "94945",
+      "timestampUTC": "2026-11-14T08:44:26.835Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 1558,
+        "byteOffset": 3462861,
+        "byteLength": 7754,
+        "sha256": "6e30d128c77dbdc34fc656052cced7fcb4eb951d20254dc6b417f2d6a0d787a7"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_null_zero_negative_and_future_selection_epochs",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-fccf84cf-2e9b-45e8-a031-c63730eef28b",
+      "toolCallId": "call_e2f5da27ea014ae48beef9e5a46294b3",
+      "processId": "96992",
+      "timestampUTC": "2026-11-14T09:15:46.702Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 2789,
+        "byteOffset": 5549534,
+        "byteLength": 4989,
+        "sha256": "b853a6dc1aaf809b34de357fc0d135ea39d11222add1b90a6bc9d3b41b98c1b0"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_old_200_cannot_renew_accepted_origin",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-2b793c75-26e3-478a-a206-542ea66d5199",
+      "toolCallId": "call_62c1e8ba67ba4be9aa81bffd60a65f1d",
+      "processId": "19149",
+      "timestampUTC": "2026-11-14T08:40:14.342Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 1386,
+        "byteOffset": 3250276,
+        "byteLength": 4647,
+        "sha256": "b7c0fbfb089ea4c74c6e3f602969f3724ece33c113587b47618d5a8a96c22599"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_old_source_and_duplicate_result_refused_negative",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-4477e114-4dd3-43b1-9c0d-55d334f64cf4",
+      "toolCallId": "call_a9d58ed21e834729a695b24db8aeb63c",
+      "processId": "71237",
+      "timestampUTC": "2026-11-14T08:49:13.311Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 1760,
+        "byteOffset": 3768630,
+        "byteLength": 4487,
+        "sha256": "8cb5ca6246d4d86fcfb94948c3ec08ee323f170856d1d447ec5d3544e4873cce"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_omitted_unknown_keeps_own_old_age",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-97caa261-853d-40cb-829a-a3c20e62615e",
+      "toolCallId": "call_e8ff4978513649ef93aac6eb7489b2a7",
+      "processId": "25372",
+      "timestampUTC": "2026-11-14T08:46:40.368Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 1661,
+        "byteOffset": 3622291,
+        "byteLength": 5277,
+        "sha256": "da0805954b1f58672a1d36b6f1fd302d7bfb46f0c787e9176af5fc4b77658a08"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_optional_429_preserves_primary_and_omitted_age",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-5e460eb8-bc63-4ac3-93e4-880840e72b69",
+      "toolCallId": "call_224a1348e6c74bcebace41f9ffa2bc3a",
+      "processId": "79579",
+      "timestampUTC": "2026-11-14T08:32:43.831Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 988,
+        "byteOffset": 2466522,
+        "byteLength": 6764,
+        "sha256": "2a6b9865abf0565130f195eac252b9415c60be02c2eadd291b30bebaa0d57460"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_optional_detail_never_renews_primary_minimum",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-62b08416-e2fb-4b1e-a70e-daef0b6ec8b3",
+      "toolCallId": "call_da51edcbeeba4c2e80ffbd87f9d7304e",
+      "processId": "52967",
+      "timestampUTC": "2026-11-14T08:58:16.598Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 2122,
+        "byteOffset": 4368654,
+        "byteLength": 7314,
+        "sha256": "5fb537ad57ffff532d38c988216d6a89a37b6a3ae93616d387e32907be7708bc"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_optional_failures_preserve_primary_and_old_source",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-b39845fd-af56-47b1-80a2-1709209156b9",
+      "toolCallId": "call_8ad76365a5c341c7a722fcbc622dd169",
+      "processId": "25390",
+      "timestampUTC": "2026-11-14T09:13:26.785Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 2715,
+        "byteOffset": 5414985,
+        "byteLength": 8561,
+        "sha256": "1ddb468b201dd9714d45731d39eca8be24c85503045be180210ed4a94353e58b"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_optional_missing_404_preserves_primary_and_old_record",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-27a62380-3cfd-4a75-8165-4e8df7f12304",
+      "toolCallId": "call_6c3420438e5f4dc0a483c2279abafdad",
+      "processId": "73108",
+      "timestampUTC": "2026-11-14T09:11:31.571Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 2643,
+        "byteOffset": 5334635,
+        "byteLength": 3763,
+        "sha256": "22563ec2e0f2d345177a3194f203fd1a5e8d96df3be5e15b0c923f9d39d876d6"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_ordered_source_events_preserve_per_record_facts",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-a4a778d7-7e9d-47e4-a297-b364f1da5c53",
+      "toolCallId": "call_af12ba5dc27e4304bd18c84dc64d1edd",
+      "processId": "97148",
+      "timestampUTC": "2026-11-14T09:18:18.140Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 2884,
+        "byteOffset": 5704107,
+        "byteLength": 8645,
+        "sha256": "39a610763e8d1cfe7165a8d26737c44800c1a2dd8056092fc270069109fad6b6"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_real_cli_without_now_rejects_future_origin",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-f9b6ac3a-0514-4ac9-a556-539b115a0820",
+      "toolCallId": "call_99948978c6734827bea9c596827fa0f7",
+      "processId": "17548",
+      "timestampUTC": "2026-11-14T08:55:19.129Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 2011,
+        "byteOffset": 4185200,
+        "byteLength": 6922,
+        "sha256": "b12ad19be7dd46dc1e5f2c534093aef6b6820c3b5e74897c384ed5681685fb17"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_real_cli_without_now_uses_response_time",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-19213173-b112-4826-b3c1-9e8a61e783d5",
+      "toolCallId": "call_d983972f931c4623ba5c892dff2f2cb2",
+      "processId": "39722",
+      "timestampUTC": "2026-11-14T08:54:46.323Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 1993,
+        "byteOffset": 4157849,
+        "byteLength": 3343,
+        "sha256": "af70b3a3eb2cfb3c356a7df7e42ca1f43dc6d7dc7268268cc63564dd6376008b"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_regressing_source_rejected_without_replacement",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-ab457887-c26e-4b30-a4c8-040d8c1458be",
+      "toolCallId": "call_fdf76c918e1240edb6fd8422b84beff7",
+      "processId": "33587",
+      "timestampUTC": "2026-11-14T08:45:05.515Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 1592,
+        "byteOffset": 3513065,
+        "byteLength": 4749,
+        "sha256": "61c39798d62a3698254fa927988fed92afce1ce68d221f676ea2344b043bc903"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_reserved_http_redirect_size_and_timeout_preserve_source",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-38ed949f-22dc-4a94-891b-daaeda7be5cf",
+      "toolCallId": "call_1108c9c3f03e4d03bf02036de8d9d654",
+      "processId": "26509",
+      "timestampUTC": "2026-11-14T09:05:40.365Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 2405,
+        "byteOffset": 4889538,
+        "byteLength": 4325,
+        "sha256": "2da1f772d4475a15fc64457f796d7fcc5eb06d2549ef3ca4a40a6a1c8a162f5a"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_rollover_optional_404_counts_started_attempt",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-70b945fd-1930-40e2-aa9b-9432b49936f7",
+      "toolCallId": "call_e4f4ece87fcf46989d23b8f9da765aeb",
+      "processId": "52157",
+      "timestampUTC": "2026-11-14T09:17:12.456Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 2839,
+        "byteOffset": 5623617,
+        "byteLength": 9235,
+        "sha256": "861ff2113ab9738ed16dfe0749e0bb4281ef2fe412ba260c6322a1306d355416"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_rollover_optional_success_counts_each_attempt",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-70b945fd-1930-40e2-aa9b-9432b49936f7",
+      "toolCallId": "call_e4f4ece87fcf46989d23b8f9da765aeb",
+      "processId": "52157",
+      "timestampUTC": "2026-11-14T09:17:12.456Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 2839,
+        "byteOffset": 5623617,
+        "byteLength": 9235,
+        "sha256": "861ff2113ab9738ed16dfe0749e0bb4281ef2fe412ba260c6322a1306d355416"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_source_advances_after_reservation_starts_no_http",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-c56ead39-10ea-48ad-9111-ff77094b9515",
+      "toolCallId": "call_c4c0d81aa303497eb777397509b46239",
+      "processId": "13011",
+      "timestampUTC": "2026-11-14T09:33:30.189Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 3504,
+        "byteOffset": 6679542,
+        "byteLength": 3103,
+        "sha256": "f5931850ff5a4d3657b57df70e5065b485bddcc879248db90440c44415bd5627"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_throttled_backoff_blocks_manual_version_without_write",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-8000b9b1-abf6-48b5-b0f2-33543495829c",
+      "toolCallId": "call_9c2d13605c204ea4859c14fbbeb2c7f1",
+      "processId": "63305",
+      "timestampUTC": "2026-11-14T08:49:53.883Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 1787,
+        "byteOffset": 3809708,
+        "byteLength": 4139,
+        "sha256": "45318e60c219c38435d9e9ca088b0f5c2d0c0d0c4feb342ba75cd0d033de6cd0"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_uncertain_reservation_survives_reopen_without_refund",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-5cdbcee8-2bea-416b-b362-c4f5a2934986",
+      "toolCallId": "call_5a37ec2a4801488692c932e09360a39a",
+      "processId": "16539",
+      "timestampUTC": "2026-11-14T08:49:38.687Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 1776,
+        "byteOffset": 3794273,
+        "byteLength": 3597,
+        "sha256": "e34af5e5639ed054676429f3131dbf709bcf84245ba2f50ae5072a2e5836dbc0"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_unchanged_fresh_origin_renews_only_validation",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-e8d57541-802c-45f7-a153-86e7978b8037",
+      "toolCallId": "call_1f24b4bcaaf6435d9a3973a1c859c806",
+      "processId": "24943",
+      "timestampUTC": "2026-11-14T08:36:08.234Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 1187,
+        "byteOffset": 2922184,
+        "byteLength": 5738,
+        "sha256": "fa4a2e6b0542aec0f2c83eda5b80da80a7e999fe6a49d2627af1f8762b89380a"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_unknown_identities_through_current_http_updater",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-a3035673-0e5c-4c4c-8f9f-9802335a424a",
+      "toolCallId": "call_47fca2b99c5b4b969c0a3a5cb14a63c8",
+      "processId": "4407",
+      "timestampUTC": "2026-11-14T08:53:25.180Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 1934,
+        "byteOffset": 4062809,
+        "byteLength": 3080,
+        "sha256": "272b8c934c23e4f33b527c46b5424c27893b4a0824e1f1702c79afaae538e82d"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_zero_utc_backoff_survives_reopen",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-f61ff6c1-60d0-418c-a94b-8058eed285f4",
+      "toolCallId": "call_4ca87bd36ba841c387a0eed4b874bb33",
+      "processId": "37623",
+      "timestampUTC": "2026-11-14T08:38:02.268Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 1299,
+        "byteOffset": 3107043,
+        "byteLength": 3822,
+        "sha256": "9471ac80b73c0e98409bf008a1f532a179478d4b1bd0f0be0814901225e8a730"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_cadence_negative",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-08cb0447-9c88-41b0-aed6-db08fda789c8",
+      "toolCallId": "call_781852475af844648b8bb8844664d890",
+      "processId": "79201",
+      "timestampUTC": "2026-11-14T08:23:49.659Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 640,
+        "byteOffset": 1778574,
+        "byteLength": 10029,
+        "sha256": "291ccf2b69bfbbb1a51829971035d4ed193537859e6db05a2a9c8818d2e4a15e"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_cadence_positive",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-08cb0447-9c88-41b0-aed6-db08fda789c8",
+      "toolCallId": "call_781852475af844648b8bb8844664d890",
+      "processId": "79201",
+      "timestampUTC": "2026-11-14T08:23:49.659Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 640,
+        "byteOffset": 1778574,
+        "byteLength": 10029,
+        "sha256": "291ccf2b69bfbbb1a51829971035d4ed193537859e6db05a2a9c8818d2e4a15e"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_current_projection_deterministic",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-d994991f-376c-4174-a07b-38181dd42b44",
+      "toolCallId": "call_ba47b14e7b414c03b51b18abb7b0d483",
+      "processId": "8212",
+      "timestampUTC": "2026-11-14T09:06:53.213Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 2474,
+        "byteOffset": 5068569,
+        "byteLength": 3090,
+        "sha256": "f7277c139ba6e0c3850d1cbecd953cde4e635c5bad8966d49324ef23943bf480"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_decoded_boundary_negative",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-ceb38a8b-5be4-45df-b1e4-6bd87f83e419",
+      "toolCallId": "call_8f6aa293ed8a41bb891f792df1c03e73",
+      "processId": "31416",
+      "timestampUTC": "2026-11-14T08:29:02.031Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 857,
+        "byteOffset": 2258493,
+        "byteLength": 2489,
+        "sha256": "f7467edddb2028df5be0fcc3087041fd4141e01489bb4c9ea3ff273b784f0e5b"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_decoded_boundary_positive",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-2ed8ac96-45f3-42dc-ac79-124c1aade26d",
+      "toolCallId": "call_e8d1694c84f449d6a8765090f2c0bc0e",
+      "processId": "12210",
+      "timestampUTC": "2026-11-14T09:01:28.779Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 2256,
+        "byteOffset": 4589520,
+        "byteLength": 2206,
+        "sha256": "dc3becb6c6d45666454d1b3c25f0926e779829fdc93cbdb062dec60fcb0a86df"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_detail_mode_negative",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-4148d0f2-5d83-43ce-a39a-a739489caa7d",
+      "toolCallId": "call_a551c7eab6074b2d95d6c59ca5e934e3",
+      "processId": "30743",
+      "timestampUTC": "2026-11-14T08:24:46.958Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 682,
+        "byteOffset": 1934537,
+        "byteLength": 4276,
+        "sha256": "d01c80dab32037843b11817be2446b84bfa28bf2dc388fcdad9af4bfc1371a30"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_detail_mode_positive",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-4148d0f2-5d83-43ce-a39a-a739489caa7d",
+      "toolCallId": "call_a551c7eab6074b2d95d6c59ca5e934e3",
+      "processId": "30743",
+      "timestampUTC": "2026-11-14T08:24:46.958Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 682,
+        "byteOffset": 1934537,
+        "byteLength": 4276,
+        "sha256": "d01c80dab32037843b11817be2446b84bfa28bf2dc388fcdad9af4bfc1371a30"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_local_http_due_origin_304_and_429",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-93c5e438-7ad0-4a38-a091-525e268ebe0a",
+      "toolCallId": "call_8bcf9bb0f05143fa818fb7ff357532d2",
+      "processId": "37092",
+      "timestampUTC": "2026-11-14T08:17:19.295Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 349,
+        "byteOffset": 1196316,
+        "byteLength": 2884,
+        "sha256": "995c7592babc4a5122a6ca9bb83bd1b440265ca5121752f4267cfb519bffabf0"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_missing_art_and_point_do_not_filter_launch_negative",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-147b17df-5c05-4596-8912-4726cf9c0b59",
+      "toolCallId": "call_be8f078c86da4825a1b29469a376b81c",
+      "processId": "24181",
+      "timestampUTC": "2026-11-14T08:29:45.539Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 885,
+        "byteOffset": 2304062,
+        "byteLength": 4440,
+        "sha256": "029bbf18be54138d92c5ef9de921b985bb497df6e0a12c39d1e64b1dfeac48fd"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_missing_optional_context_current_artifact",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-8784db72-bf90-43de-89b2-f88a7ad79aca",
+      "toolCallId": "call_32633acb292c4fc298cc329be74ac9f2",
+      "processId": "7764",
+      "timestampUTC": "2026-11-14T08:44:13.051Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 1538,
+        "byteOffset": 3440354,
+        "byteLength": 3502,
+        "sha256": "2f773916292317c4428a00c4cf929ec700f1b0ac24c9d8a9525d1fdbb5c8731f"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_normalized_atomic_admission_negative",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-0257d997-ecb7-4bd6-a241-4a765ca76c65",
+      "toolCallId": "call_2d5c0f5f15f142c48304a419ba02a288",
+      "processId": "52870",
+      "timestampUTC": "2026-11-14T08:26:08.923Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 738,
+        "byteOffset": 2036865,
+        "byteLength": 4361,
+        "sha256": "81c1a3efe0855f1b1b7d321e5f0e965494b0bcbee8ab8613ba6bce71bd507c36"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_normalized_identity_and_immutable_state_positive",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-0257d997-ecb7-4bd6-a241-4a765ca76c65",
+      "toolCallId": "call_2d5c0f5f15f142c48304a419ba02a288",
+      "processId": "52870",
+      "timestampUTC": "2026-11-14T08:26:08.923Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 738,
+        "byteOffset": 2036865,
+        "byteLength": 4361,
+        "sha256": "81c1a3efe0855f1b1b7d321e5f0e965494b0bcbee8ab8613ba6bce71bd507c36"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_omitted_pending_detail_and_terminal_no_detail",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-e2d639b6-f48f-49fc-9a52-1c655d0b1ac8",
+      "toolCallId": "call_f4aa43cd4a004a798b9d0b240c0ae76a",
+      "processId": "72000",
+      "timestampUTC": "2026-11-14T09:02:28.581Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 2296,
+        "byteOffset": 4659230,
+        "byteLength": 5951,
+        "sha256": "aed074adb6bf00d021b4afeee26443116d834680801797439d646ba2bab1f65a"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_origin_age_and_future_rejection",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-37b55d40-4245-478e-9f6c-6f005a24ea7f",
+      "toolCallId": "call_5ad53d822fc84c15a2968b4c84f48194",
+      "processId": "84812",
+      "timestampUTC": "2026-11-14T09:14:47.550Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 2757,
+        "byteOffset": 5498071,
+        "byteLength": 2950,
+        "sha256": "5388c6b4c4721693ea3a5f7c1af6491cb006df62161d76e0feca64578a29ec68"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_real_utf8_launch_survives_current_projection",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-2b0f8f03-da02-4754-979d-2983919d1780",
+      "toolCallId": "call_b1eefb00308c47d49f4303a6d7ce08ce",
+      "processId": "87313",
+      "timestampUTC": "2026-11-14T09:22:25.073Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 3013,
+        "byteOffset": 5952480,
+        "byteLength": 4644,
+        "sha256": "de0fb1f380d831d2e63a7722dab7d9533891a0f68dc2e0e5e67ddf43cf0e11eb"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_record_omission_negative",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-08cb0447-9c88-41b0-aed6-db08fda789c8",
+      "toolCallId": "call_781852475af844648b8bb8844664d890",
+      "processId": "79201",
+      "timestampUTC": "2026-11-14T08:23:49.659Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 640,
+        "byteOffset": 1778574,
+        "byteLength": 10029,
+        "sha256": "291ccf2b69bfbbb1a51829971035d4ed193537859e6db05a2a9c8818d2e4a15e"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_record_omission_positive",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-08cb0447-9c88-41b0-aed6-db08fda789c8",
+      "toolCallId": "call_781852475af844648b8bb8844664d890",
+      "processId": "79201",
+      "timestampUTC": "2026-11-14T08:23:49.659Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 640,
+        "byteOffset": 1778574,
+        "byteLength": 10029,
+        "sha256": "291ccf2b69bfbbb1a51829971035d4ed193537859e6db05a2a9c8818d2e4a15e"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_stale_latch_after_near_window_with_literal_epoch",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-d5cf7eeb-5bae-48e0-a68e-02ef6007f8a9",
+      "toolCallId": "call_1073bf0c9a584f588428822fb2a5e39f",
+      "processId": "12594",
+      "timestampUTC": "2026-11-14T08:22:39.020Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 605,
+        "byteOffset": 1712981,
+        "byteLength": 3057,
+        "sha256": "3eb54c285e94d4ed9c44f2daa213f3c6a18e3d136830e6f5115afc9d4e6a29f8"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_stale_thresholds_and_skipped_near_window",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-f201d448-3e31-43e1-a44d-22aabe5a83e0",
+      "toolCallId": "call_b134dba1a392454e86ab2347960b3c07",
+      "processId": "46680",
+      "timestampUTC": "2026-11-14T08:19:28.590Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 435,
+        "byteOffset": 1360020,
+        "byteLength": 8264,
+        "sha256": "eaf1c884f0d1156916d69c8cfd284629ab7e7bf432c47a130752c00cda64bc5a"
+      }
+    },
+    {
+      "testId": "unittest::tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_unknown_identity_current_artifact_positive",
+      "observed": true,
+      "receiptCommandExecutionId": "exec-147b17df-5c05-4596-8912-4726cf9c0b59",
+      "toolCallId": "call_be8f078c86da4825a1b29469a376b81c",
+      "processId": "24181",
+      "timestampUTC": "2026-11-14T08:29:45.539Z",
+      "exitCode": 0,
+      "completionRecord": {
+        "line": 885,
+        "byteOffset": 2304062,
+        "byteLength": 4440,
+        "sha256": "029bbf18be54138d92c5ef9de921b985bb497df6e0a12c39d1e64b1dfeac48fd"
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+------------------------------------------------------------------------------
+Executing test moreCorruptRecovery...
+DEBUG (15:42): corrupted current committed raw reopens the prior complete A, with its own age and reschedule state
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+moreCorruptRecovery                 PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

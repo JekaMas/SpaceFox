@@ -2,7 +2,8 @@
 from pathlib import Path
 import unittest
 from unittest.mock import patch
-from tools.verify_current_ui_batch import verify, validate_aod_masks, validate_circle_box, validate_vertical_gap
+from tools.verify_current_ui_batch import validate_aod_masks, validate_circle_box, validate_vertical_gap
+from tests.public_ui_binding import verify
 
 ROOT = Path(__file__).resolve().parents[1]
 

@@ -1,0 +1,29 @@
+{
+  "containerId": "86a104230646e97e8338f61bc4f354a73eeae3087bd1cf8970b72b3e945d989b",
+  "image": "spacefox-refresh-cache-sdk9:local",
+  "networkMode": "none",
+  "portBindings": {},
+  "mounts": [
+    {
+      "Source": "/Users/jekamas/.codex/tmp/spacefox-crossvm-20261114",
+      "Destination": "/task",
+      "RW": true
+    },
+    {
+      "Source": "/Users/jekamas/projects/SpaceFox-worktrees/verify-watch-refresh-cache-whole-20261114",
+      "Destination": "/task/source",
+      "RW": false
+    },
+    {
+      "Source": "/Users/jekamas/.codex/tmp/spacefox-sdk-setup-20261111/test-only/spacefox-development.der",
+      "Destination": "/test-key/spacefox-development.der",
+      "RW": false
+    }
+  ],
+  "runtimePath": "/tmp/com.garmin.connectiq -> /task/simulator-data-C7",
+  "SDK_archive_sha256": "1653cc98edd70029670a3e3fcd4ad6e746974a8b758a7b736a4e11506dfd8bc8",
+  "scope": "owned private Linux SDK simulator; no phone or physical device",
+  "compilerSha256": "082b2fd3f50578204e01d44313f43f2ce52a60dbfd6221f6b259b2687239de3f",
+  "simulatorSha256": "f980f8a67fb1a68a064ae701c66fb357ae1a2a88699267e1b85c3c316363fb4a",
+  "builderSha256": "5e875b7656dc0da000f14e621e61d1e731d768f99eafb16dba6ad605b9b1e505"
+}
