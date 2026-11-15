@@ -1,0 +1,30 @@
+{
+  "observed_utc": "2026-11-15T22:45:23.831160+00:00",
+  "publisher": {
+    "generation": 49,
+    "instance": "40655f8a46c4c47ecb6f6d4a8608bde8396c6c440807e09d962b1f7fde006204",
+    "selectionValidatedUtc": 1794770809
+  },
+  "launch_id": "ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60",
+  "configuration_name": "Long March 2D",
+  "source_validated_utc": 1794770809,
+  "upcoming_rows": 0,
+  "observations": [
+    {
+      "file": "feed.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "bytes": 2766,
+      "sha256": "0fb0a63cd8f36845055453467875dcc7817c7086c814b8bc89bb69238b728b7c"
+    },
+    {
+      "file": "feed.json.txt",
+      "status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 2766,
+      "sha256": "0fb0a63cd8f36845055453467875dcc7817c7086c814b8bc89bb69238b728b7c"
+    }
+  ],
+  "json_and_text_equal": true,
+  "schema_version": 3
+}

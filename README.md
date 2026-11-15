@@ -4,7 +4,7 @@ SpaceFox is a free, MIT-licensed space watch face for Garmin watches, including 
 
 **[Install from Connect IQ](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3)** · **[Release 0.1.17](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.17)** · [Release notes](release/RELEASE-NOTES-0.1.17.md)
 
-The 0.1.17 rollover repair is independently software-verified. Release and Garmin submission are tracked separately; the last observed Garmin owner preview was 0.1.16/Internal 9 pending review. Physical installation is unverified.
+The 0.1.17 rollover repair is independently software-verified and published. Garmin owner preview shows 0.1.17/Internal 10 pending review; a Forerunner 165 Music install is queued for the next sync. Physical installation is unverified.
 
 ![SpaceFox 0.1.17 running in the Forerunner 165 Music simulator](release/images/simulator-fr165m-0.1.17.png)
 

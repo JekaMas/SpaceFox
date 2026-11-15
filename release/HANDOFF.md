@@ -7,11 +7,19 @@ stored recovery password have actual local restore/challenge evidence in
 the owner-held signing records. All copies remain on the same Mac; offsite
 and disaster recovery are not claimed.
 
-## Current 0.1.16 release
+## Current 0.1.17 release
 
-[SpaceFox 0.1.16](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.16) is the regular GitHub release. Its compiled source and tag are `b1e0c56df8ef04b4a73637c80f176b6c0ff9cfed`; native ID is `e513cc6d`, IQ SHA-256 `09ef11c1fbc38af7e3e55327ecd213b361d8f66bbf271f6739763056dbca33e7`, and original receipt SHA-256 `09e3ed20e5c7964b8d0907fe94a49c4c3ee8627bd82ab47fddfd07c2dbdd7ca7`. The original [Garmin listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3) shows 0.1.16/Internal 9 PENDING in owner preview; a Music installation request was submitted, but delivery and installation are unobserved. See the [publication record](../openspec/changes/spacefox-watchface/evidence/display04-publication/PUBLICATION.md).
+[SpaceFox 0.1.17](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.17) is the regular GitHub release. Its compiled source and tag are `bc744093d9f2546461de8a353361e8a2e2f71734`, native ID `2e6fc8c4`, IQ SHA-256 `68bd65ca1108b4cbcdb86cef46173896d474a2ca424ebddc5b3730f2acebd52d`, and original receipt SHA-256 `187c7a23fe2f87a5cf25a5ea9e4e16730d362e1ac6d01c6afd08b04353167be6`. The original [Garmin listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3) shows 0.1.17/Internal 10 PENDING in owner preview. Music installation is queued for next sync; physical installation remains unobserved. See [publication](../openspec/changes/spacefox-watchface/evidence/rollover017/publication/PUBLICATION.md).
 
-Use the unmodified original 0.1.16 receipt and matching IQ as predecessor for any future higher-version candidate with the same UUID and key. The guard binds the original receipt bytes and compiled source revision. Earlier package receipts remain unchanged.
+The host-only delivery repair is live: two serialized runs recovered generation 49 and promoted generation 50 with two upcoming rows and unchanged source-validation time. Its server source `7eb5220ec380c08cc4ec62985ce23be30c581c38` is separate from the signed native source above.
+
+For a future higher-version candidate, use the original 0.1.17 receipt and matching IQ with the same UUID and key. The original 0.1.16 receipt remains the 0.1.17 export-time predecessor; do not repin older artifacts.
+
+## Historical 0.1.16 release
+
+[SpaceFox 0.1.16](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.16) is the regular GitHub release. Its compiled source and tag are `b1e0c56df8ef04b4a73637c80f176b6c0ff9cfed`; native ID is `e513cc6d`, IQ SHA-256 `09ef11c1fbc38af7e3e55327ecd213b361d8f66bbf271f6739763056dbca33e7`, and original receipt SHA-256 `09e3ed20e5c7964b8d0907fe94a49c4c3ee8627bd82ab47fddfd07c2dbdd7ca7`. The original [Garmin listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3) previously showed 0.1.16/Internal 9 PENDING in owner preview; a Music installation request was submitted, but delivery and installation were unobserved. See the [publication record](../openspec/changes/spacefox-watchface/evidence/display04-publication/PUBLICATION.md).
+
+The unmodified original 0.1.16 receipt and matching IQ were the export-time predecessor of 0.1.17. The guard binds the original receipt bytes and compiled source revision. Earlier package receipts remain unchanged.
 
 ## 0.1.15 test package
 
