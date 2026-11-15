@@ -22,5 +22,19 @@
   ],
   "testExit": 0,
   "graphExit": 0,
-  "cleanAfter": true
+  "cleanAfter": true,
+  "finalDelta": {
+    "head": "1a2dfd9081738a2c78ef9173ae0ba2ed888e5d87",
+    "tests": [
+      "tests.test_native_cache_budget_whole",
+      "tests.test_current_source_reader.CurrentSourceReaderTest.test_changed_current_ui_owner_refuses_cached_route",
+      "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p4_s01_positive_current",
+      "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p4_s01_negative_current",
+      "tests.test_public_proof_portability.PublicProofPortabilityTest.test_complete_inventory_and_runnable_implemented_bindings"
+    ],
+    "testExit": 0,
+    "graphExit": 0,
+    "cleanAfter": true,
+    "retainedPrior18": "Initial18 standalone greens retained; changed cache-budget/uncached-live-identity readers and graph were verified here. Frozen product, fixtures, source snapshots and raw observations unchanged."
+  }
 }

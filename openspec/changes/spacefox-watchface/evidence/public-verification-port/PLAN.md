@@ -42,3 +42,12 @@ meaningful tamper/missing/private-history refusal; standalone real public Git
 checkout; stable source fingerprints/strict graph/discovery/affected syntax lint;
 clean commit and FINAL. Do not repeat already valid case observations unless their
 specific dependency/assertion changes. No native or external action occurred.
+
+## Closed author checkpoint
+
+Author self-verification is GREEN; FINAL.md and case-map.json own the final
+result and scope. Standalone18+affected8 and strict graph/discovery passed with
+no private objects/alternates/SDK/env dependency. The ordinary durable broad batch
+was intentionally stopped and150 valid original method observations retained.
+No additional implementation or external work is required from this author
+before the one independent peer's findings.

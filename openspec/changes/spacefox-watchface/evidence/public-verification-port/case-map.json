@@ -38,7 +38,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_unknown_identity_current_artifact_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS01.P1.S01.NEGATIVE.CURRENT",
@@ -65,7 +68,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_missing_art_and_point_do_not_filter_launch_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS02.P1.S01.POSITIVE",
@@ -92,7 +98,10 @@
         "tests.test_device_acceptance.DeviceAcceptanceTest.test_connected_refresh_positive"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "LS02.P1.S01.NEGATIVE",
@@ -119,7 +128,10 @@
         "tests.test_device_acceptance.DeviceAcceptanceTest.test_connected_refresh_negative"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "LS05.P1.S01.POSITIVE.CURRENT",
@@ -146,7 +158,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_durable_latches_and_publication_preserve_source_ages"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P1.S01.POSITIVE",
@@ -173,7 +188,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s01_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS11.P1.S01.NEGATIVE",
@@ -200,7 +218,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s01_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS11.P1.S02.POSITIVE",
@@ -227,7 +248,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s02_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS11.P1.S02.NEGATIVE",
@@ -254,7 +278,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s02_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS11.P1.S03.POSITIVE",
@@ -281,7 +308,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s03_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS11.P1.S03.NEGATIVE",
@@ -308,7 +338,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s03_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS11.P1.S05.POSITIVE",
@@ -335,7 +368,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s05_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS11.P1.S05.NEGATIVE",
@@ -362,7 +398,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s05_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS12.P1.S01.POSITIVE",
@@ -389,7 +428,10 @@
         "tests.test_live_acceptance.LiveAcceptanceTest.test_another_family_configures_a_copy_positive"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "LS12.P1.S01.NEGATIVE",
@@ -416,7 +458,10 @@
         "tests.test_live_acceptance.LiveAcceptanceTest.test_another_family_configures_a_copy_negative"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "LS14.P1.S02.POSITIVE.CURRENT",
@@ -443,7 +488,10 @@
         "tests.test_hosted_rocket_controls.HostedRocketControlTest.test_schedule_change_keeps_referenced_raster_and_reopens"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P1.S02.NEGATIVE.CURRENT",
@@ -470,7 +518,10 @@
         "tests.test_hosted_rocket_controls.HostedRocketControlTest.test_omitted_rocket_shard_refuses_before_pending"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS15.P1.S01.POSITIVE",
@@ -497,7 +548,10 @@
         "tests.test_device_acceptance.DeviceAcceptanceTest.test_response_exceeds_native_parser_capacity_positive"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "LS15.P1.S01.NEGATIVE",
@@ -524,7 +578,10 @@
         "tests.test_device_acceptance.DeviceAcceptanceTest.test_response_exceeds_native_parser_capacity_negative"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "RL03.P1.S01.POSITIVE",
@@ -551,7 +608,10 @@
         "tests.test_publication_review.PublicationReviewTest.test_adult_owner_publishes_the_app_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "RL03.P1.S01.NEGATIVE",
@@ -578,7 +638,10 @@
         "tests.test_publication_review.PublicationReviewTest.test_adult_owner_publishes_the_app_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "RL03.P1.S02.POSITIVE",
@@ -605,7 +668,10 @@
         "tests.test_publication_review.PublicationReviewTest.test_audience_review_identifies_an_applicable_restriction_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "RL03.P1.S02.NEGATIVE",
@@ -632,7 +698,10 @@
         "tests.test_publication_review.PublicationReviewTest.test_audience_review_identifies_an_applicable_restriction_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "RL04.P1.S01.POSITIVE",
@@ -659,7 +728,10 @@
         "tests.test_device_acceptance.DeviceAcceptanceTest.test_pilot_works_in_the_simulator_only_positive"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "RL04.P1.S01.NEGATIVE",
@@ -686,7 +758,10 @@
         "tests.test_device_acceptance.DeviceAcceptanceTest.test_pilot_works_in_the_simulator_only_negative"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "RL05.P1.S01.POSITIVE",
@@ -713,7 +788,10 @@
         "tests.test_live_acceptance.LiveAcceptanceTest.test_package_is_uploaded_but_awaiting_review_positive"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "RL05.P1.S01.NEGATIVE",
@@ -740,7 +818,10 @@
         "tests.test_live_acceptance.LiveAcceptanceTest.test_package_is_uploaded_but_awaiting_review_negative"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "RL05.P1.S02.POSITIVE",
@@ -767,7 +848,10 @@
         "tests.test_live_acceptance.LiveAcceptanceTest.test_another_family_uses_the_official_app_positive"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "RL05.P1.S02.NEGATIVE",
@@ -794,7 +878,10 @@
         "tests.test_live_acceptance.LiveAcceptanceTest.test_another_family_uses_the_official_app_negative"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "RL06.P1.S01.POSITIVE",
@@ -821,7 +908,10 @@
         "tests.test_release_content_rollback.ContentRollbackTest.test_prior_art_republished_with_new_generation_and_honest_age"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "RL06.P1.S01.NEGATIVE",
@@ -848,7 +938,10 @@
         "tests.test_release_update_native.ReleaseUpdateNativeTest.test_unsupported_renderer_refused"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "RL07.P1.S01.POSITIVE.CURRENT",
@@ -875,7 +968,10 @@
         "tests.test_release_update_native.ReleaseUpdateNativeTest.test_supported_current_cache_reopens"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "RL07.P1.S01.NEGATIVE.CURRENT",
@@ -902,7 +998,10 @@
         "tests.test_release_update_native.ReleaseUpdateNativeTest.test_unsupported_schema_refused_without_replacement"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "RL07.P1.S02.POSITIVE.CURRENT",
@@ -929,7 +1028,10 @@
         "tests.test_release_update_native.ReleaseUpdateNativeTest.test_feed_hosts_keep_independent_age_and_reschedule"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "RL07.P1.S02.NEGATIVE.CURRENT",
@@ -956,7 +1058,10 @@
         "tests.test_release_update_native.ReleaseUpdateNativeTest.test_host_publisher_floor_and_owner_mutation_refusal"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "RL08.P1.S01.POSITIVE.CURRENT",
@@ -983,7 +1088,10 @@
         "tests.test_release_content_rollback.ContentRollbackTest.test_prior_art_republished_with_new_generation_and_honest_age"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "RL08.P1.S01.NEGATIVE.CURRENT",
@@ -1010,7 +1118,10 @@
         "tests.test_release_content_rollback.ContentRollbackTest.test_old_generation_and_faked_validation_are_refused"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "RL08.P1.S02.POSITIVE",
@@ -1037,7 +1148,10 @@
         "tests.test_release.ReleaseTest.test_higher_version_signed_repair_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "RL08.P1.S02.NEGATIVE",
@@ -1064,7 +1178,10 @@
         "tests.test_release.ReleaseTest.test_update_and_backup_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC02.P1.S01.POSITIVE.CURRENT",
@@ -1100,7 +1217,10 @@
         "tests.test_current_catalog_art_closure.CurrentCatalogArtClosureTest.test_independent_lifecycle_batch_preserves_facts_and_art"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC02.P1.S01.NEGATIVE.CURRENT",
@@ -1127,7 +1247,10 @@
         "tests.test_current_catalog_art_closure.CurrentCatalogArtClosureTest.test_stale_eligibility_rejects_before_projection"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC02.P1.S02.POSITIVE.CURRENT",
@@ -1163,7 +1286,10 @@
         "tests.test_current_catalog_art_closure.CurrentCatalogArtClosureTest.test_named_family_selection_preserves_unknown_variant"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC02.P1.S02.NEGATIVE.CURRENT",
@@ -1190,7 +1316,10 @@
         "tests.test_current_catalog_art_closure.CurrentCatalogArtClosureTest.test_unknown_rights_and_wrong_model_refuse_before_activation"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC08.P1.S01.POSITIVE.CURRENT",
@@ -1217,7 +1346,10 @@
         "tests.test_typed_dictionaries_whole.TypedDictionariesWholeTest.test_shared_actual_entities_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC08.P1.S01.NEGATIVE.CURRENT",
@@ -1244,7 +1376,10 @@
         "tests.test_typed_dictionaries_whole.TypedDictionariesWholeTest.test_shared_identity_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC09.P1.S01.POSITIVE",
@@ -1271,7 +1406,10 @@
         "tests.test_native_cache_budget_whole.NativeCacheBudgetWholeTest.test_full_replacement_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "cache-budget"
+      ]
     },
     {
       "public_case_id": "VC09.P1.S01.NEGATIVE",
@@ -1298,7 +1436,10 @@
         "tests.test_native_cache_budget_whole.NativeCacheBudgetWholeTest.test_full_replacement_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "cache-budget"
+      ]
     },
     {
       "public_case_id": "VC09.P1.S02.POSITIVE",
@@ -1325,7 +1466,10 @@
         "tests.test_native_cache_budget_whole.NativeCacheBudgetWholeTest.test_source_only_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "cache-budget"
+      ]
     },
     {
       "public_case_id": "VC09.P1.S02.NEGATIVE",
@@ -1352,7 +1496,10 @@
         "tests.test_native_cache_budget_whole.NativeCacheBudgetWholeTest.test_source_only_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "cache-budget"
+      ]
     },
     {
       "public_case_id": "VC10.P1.S01.POSITIVE",
@@ -1379,7 +1526,10 @@
         "tests.test_device_acceptance.DeviceAcceptanceTest.test_compressed_content_expands_beyond_limits_positive"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "VC10.P1.S01.NEGATIVE",
@@ -1406,7 +1556,10 @@
         "tests.test_device_acceptance.DeviceAcceptanceTest.test_compressed_content_expands_beyond_limits_negative"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "VC10.P1.S02.POSITIVE",
@@ -1433,7 +1586,10 @@
         "tests.test_native_visual_transport.NativeVisualTransportTest.test_global_catalog_grows_outside_the_selected_slice_positive"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "VC10.P1.S02.NEGATIVE",
@@ -1460,7 +1616,10 @@
         "tests.test_native_visual_transport.NativeVisualTransportTest.test_global_catalog_grows_outside_the_selected_slice_negative"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "VC12.P1.S01.POSITIVE.CURRENT",
@@ -1487,7 +1646,10 @@
         "tests.test_catalog_activation_whole.ScenarioCases.test_vc12_s01_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "catalog-sdk"
+      ]
     },
     {
       "public_case_id": "VC12.P1.S01.NEGATIVE.CURRENT",
@@ -1514,7 +1676,10 @@
         "tests.test_catalog_activation_whole.ScenarioCases.test_vc12_s01_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "catalog-sdk"
+      ]
     },
     {
       "public_case_id": "VC12.P1.S02.POSITIVE.CURRENT",
@@ -1541,7 +1706,10 @@
         "tests.test_catalog_activation_whole.ScenarioCases.test_vc12_s02_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "catalog-sdk"
+      ]
     },
     {
       "public_case_id": "VC12.P1.S02.NEGATIVE.CURRENT",
@@ -1568,7 +1736,10 @@
         "tests.test_catalog_activation_whole.ScenarioCases.test_vc12_s02_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "catalog-sdk"
+      ]
     },
     {
       "public_case_id": "VC13.P1.S01.POSITIVE",
@@ -1595,7 +1766,10 @@
         "tests.test_catalog_activation_whole.ScenarioCases.test_vc13_s01_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "catalog-sdk"
+      ]
     },
     {
       "public_case_id": "VC13.P1.S01.NEGATIVE",
@@ -1622,7 +1796,10 @@
         "tests.test_catalog_activation_whole.ScenarioCases.test_vc13_s01_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "catalog-sdk"
+      ]
     },
     {
       "public_case_id": "VC13.P1.S02.POSITIVE",
@@ -1649,7 +1826,10 @@
         "tests.test_catalog_activation_whole.ScenarioCases.test_vc13_s02_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "catalog-sdk"
+      ]
     },
     {
       "public_case_id": "VC13.P1.S02.NEGATIVE",
@@ -1676,7 +1856,10 @@
         "tests.test_catalog_activation_whole.ScenarioCases.test_vc13_s02_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "catalog-sdk"
+      ]
     },
     {
       "public_case_id": "VC13.P1.S03.POSITIVE",
@@ -1703,7 +1886,10 @@
         "tests.test_catalog_activation_whole.ScenarioCases.test_vc13_s03_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "catalog-sdk"
+      ]
     },
     {
       "public_case_id": "VC13.P1.S03.NEGATIVE",
@@ -1730,7 +1916,10 @@
         "tests.test_catalog_activation_whole.ScenarioCases.test_vc13_s03_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "catalog-sdk"
+      ]
     },
     {
       "public_case_id": "VC14.P1.S01.POSITIVE",
@@ -1757,7 +1946,10 @@
         "tests.test_catalog_activation_whole.ScenarioCases.test_vc14_s01_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "catalog-sdk"
+      ]
     },
     {
       "public_case_id": "VC14.P1.S01.NEGATIVE",
@@ -1784,7 +1976,10 @@
         "tests.test_catalog_activation_whole.ScenarioCases.test_vc14_s01_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "catalog-sdk"
+      ]
     },
     {
       "public_case_id": "VC14.P1.S02.POSITIVE",
@@ -1811,7 +2006,10 @@
         "tests.test_catalog_activation_whole.ScenarioCases.test_vc14_s02_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "catalog-sdk"
+      ]
     },
     {
       "public_case_id": "VC14.P1.S02.NEGATIVE",
@@ -1838,7 +2036,10 @@
         "tests.test_catalog_activation_whole.ScenarioCases.test_vc14_s02_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "catalog-sdk"
+      ]
     },
     {
       "public_case_id": "VC17.P1.S01.POSITIVE",
@@ -1865,7 +2066,10 @@
         "tests.test_catalog_activation_whole.ScenarioCases.test_vc17_s01_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "catalog-sdk"
+      ]
     },
     {
       "public_case_id": "VC17.P1.S01.NEGATIVE",
@@ -1892,7 +2096,10 @@
         "tests.test_catalog_activation_whole.ScenarioCases.test_vc17_s01_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "catalog-sdk"
+      ]
     },
     {
       "public_case_id": "WF08.P1.S01.POSITIVE",
@@ -1919,7 +2126,10 @@
         "tests.test_device_acceptance.DeviceAcceptanceTest.test_raise_wrist_positive"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "WF08.P1.S01.NEGATIVE",
@@ -1946,7 +2156,10 @@
         "tests.test_device_acceptance.DeviceAcceptanceTest.test_raise_wrist_negative"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "WF08.P1.S02.POSITIVE",
@@ -1973,7 +2186,10 @@
         "tests.test_device_acceptance.DeviceAcceptanceTest.test_animation_disabled_or_display_sleeps_positive"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "WF08.P1.S02.NEGATIVE",
@@ -2000,7 +2216,10 @@
         "tests.test_device_acceptance.DeviceAcceptanceTest.test_animation_disabled_or_display_sleeps_negative"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "WF09.P1.S01.POSITIVE",
@@ -2027,7 +2246,10 @@
         "tests.test_device_acceptance.DeviceAcceptanceTest.test_enter_always_on_mode_positive"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "WF09.P1.S01.NEGATIVE",
@@ -2054,7 +2276,10 @@
         "tests.test_device_acceptance.DeviceAcceptanceTest.test_enter_always_on_mode_negative"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "WF09.P1.S02.POSITIVE",
@@ -2081,7 +2306,10 @@
         "tests.test_device_acceptance.DeviceAcceptanceTest.test_wrist_gestures_disabled_positive"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "WF09.P1.S02.NEGATIVE",
@@ -2108,7 +2336,10 @@
         "tests.test_device_acceptance.DeviceAcceptanceTest.test_wrist_gestures_disabled_negative"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "WF10.P1.S01.POSITIVE",
@@ -2135,7 +2366,10 @@
         "tests.test_device_acceptance.DeviceAcceptanceTest.test_background_process_is_interrupted_positive"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "WF10.P1.S01.NEGATIVE",
@@ -2162,7 +2396,10 @@
         "tests.test_device_acceptance.DeviceAcceptanceTest.test_background_process_is_interrupted_negative"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "LS06.P2.S01.POSITIVE",
@@ -2189,7 +2426,10 @@
         "tests.test_native_feed_budget.NativeFeedBudgetTest.test_ls06_p2_s01_positive"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "LS06.P2.S01.NEGATIVE",
@@ -2216,7 +2456,10 @@
         "tests.test_native_feed_budget.NativeFeedBudgetTest.test_ls06_p2_s01_negative"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "LS06.P2.S02.POSITIVE",
@@ -2243,7 +2486,10 @@
         "tests.test_native_feed_budget.NativeFeedBudgetTest.test_ls06_p2_s02_positive"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "LS06.P2.S02.NEGATIVE",
@@ -2270,7 +2516,10 @@
         "tests.test_native_feed_budget.NativeFeedBudgetTest.test_ls06_p2_s02_negative"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "LS05.P4.S01.POSITIVE.CURRENT",
@@ -2342,7 +2591,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_real_utf8_launch_survives_current_projection"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS05.P4.S02.POSITIVE.CURRENT",
@@ -2369,7 +2621,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_current_projection_deterministic"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS05.P4.S03.NEGATIVE.CURRENT",
@@ -2413,7 +2668,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_invalid_source_coordinate_preserves_accepted_artifact"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P3.S11.NEGATIVE.CURRENT",
@@ -2440,7 +2698,10 @@
         "tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_schedule_catalog_version_share_rolling_quota"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC05.P3.C10.NEGATIVE.CURRENT",
@@ -2494,7 +2755,10 @@
         "tests.test_current_catalog_art_closure.CurrentCatalogArtClosureTest.test_source_cohort_gate_refuses_missing_wrong_art_and_flags"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P1.C01.POSITIVE.CURRENT",
@@ -2521,7 +2785,10 @@
         "tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_same_identity_real_asset_replacement_keeps_recovery_bounded"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P1.C02.NEGATIVE.CURRENT",
@@ -2548,7 +2815,10 @@
         "tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_repinned_role_point_and_catalog_grammar_refused_before_persistence"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P1.C03.POSITIVE.CURRENT",
@@ -2575,7 +2845,10 @@
         "tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_exact_union_and_final_root_reread_for_current_and_recovery"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P1.C04.NEGATIVE.CURRENT",
@@ -2602,7 +2875,10 @@
         "tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_prepare_refuses_bad_profile_envelope_age_and_missing_closure_atomically"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P1.C05.POSITIVE.CURRENT",
@@ -2629,7 +2905,10 @@
         "tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_snapshot_instance_and_source_facts_bind_authenticated_namespace"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P1.C06.POSITIVE.CURRENT",
@@ -2656,7 +2935,10 @@
         "tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_exact_union_and_final_root_reread_for_current_and_recovery"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P1.C07.NEGATIVE.CURRENT",
@@ -2683,7 +2965,10 @@
         "tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_repinned_role_point_and_catalog_grammar_refused_before_persistence"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P1.C08.POSITIVE.CURRENT",
@@ -2711,7 +2996,10 @@
       ],
       "state": "implemented",
       "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
-      "runnerAliasOf": "unittest::tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_exact_union_and_final_root_reread_for_current_and_recovery"
+      "runnerAliasOf": "unittest::tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_exact_union_and_final_root_reread_for_current_and_recovery",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P2.C01.POSITIVE.CURRENT",
@@ -2738,7 +3026,10 @@
         "tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_exact_union_and_final_root_reread_for_current_and_recovery"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P2.C02.NEGATIVE.CURRENT",
@@ -2765,7 +3056,10 @@
         "tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_repinned_role_point_and_catalog_grammar_refused_before_persistence"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P2.C03.NEGATIVE.CURRENT",
@@ -2792,7 +3086,10 @@
         "tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_repinned_role_point_and_catalog_grammar_refused_before_persistence"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P2.C04.NEGATIVE.CURRENT",
@@ -2820,7 +3117,10 @@
       ],
       "state": "implemented",
       "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
-      "runnerAliasOf": "unittest::tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_repinned_role_point_and_catalog_grammar_refused_before_persistence"
+      "runnerAliasOf": "unittest::tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_repinned_role_point_and_catalog_grammar_refused_before_persistence",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P2.C05.NEGATIVE.CURRENT",
@@ -2848,7 +3148,10 @@
       ],
       "state": "implemented",
       "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
-      "runnerAliasOf": "unittest::tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_repinned_role_point_and_catalog_grammar_refused_before_persistence"
+      "runnerAliasOf": "unittest::tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_repinned_role_point_and_catalog_grammar_refused_before_persistence",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P2.C06.POSITIVE.CURRENT",
@@ -2875,7 +3178,10 @@
         "tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_exact_union_and_final_root_reread_for_current_and_recovery"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P2.C07.NEGATIVE.CURRENT",
@@ -2902,7 +3208,10 @@
         "tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_corrupt_digest_rejected"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P2.C08.NEGATIVE.CURRENT",
@@ -2929,7 +3238,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_root_switch_while_pending_cannot_promote_or_post"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P3.C01.POSITIVE.CURRENT",
@@ -2956,7 +3268,10 @@
         "tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_snapshot_instance_and_source_facts_bind_authenticated_namespace"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P3.C04.NEGATIVE.CURRENT",
@@ -2983,7 +3298,10 @@
         "tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_prepare_refuses_bad_profile_envelope_age_and_missing_closure_atomically"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P3.C05.NEGATIVE.CURRENT",
@@ -3011,7 +3329,10 @@
       ],
       "state": "implemented",
       "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
-      "runnerAliasOf": "unittest::tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_prepare_refuses_bad_profile_envelope_age_and_missing_closure_atomically"
+      "runnerAliasOf": "unittest::tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_prepare_refuses_bad_profile_envelope_age_and_missing_closure_atomically",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P3.C06.NEGATIVE.CURRENT",
@@ -3039,7 +3360,10 @@
       ],
       "state": "implemented",
       "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
-      "runnerAliasOf": "unittest::tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_prepare_refuses_bad_profile_envelope_age_and_missing_closure_atomically"
+      "runnerAliasOf": "unittest::tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_prepare_refuses_bad_profile_envelope_age_and_missing_closure_atomically",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P3.C12.NEGATIVE.CURRENT",
@@ -3067,7 +3391,10 @@
       ],
       "state": "implemented",
       "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
-      "runnerAliasOf": "unittest::tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_prepare_refuses_bad_profile_envelope_age_and_missing_closure_atomically"
+      "runnerAliasOf": "unittest::tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_prepare_refuses_bad_profile_envelope_age_and_missing_closure_atomically",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P3.C13.NEGATIVE.CURRENT",
@@ -3094,7 +3421,10 @@
         "tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_rehashed_foreign_instance_snapshot_refuses_cloud_and_reopen"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P4.C01.POSITIVE.CURRENT",
@@ -3121,7 +3451,10 @@
         "tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_exact_union_and_final_root_reread_for_current_and_recovery"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P4.C02.NEGATIVE.CURRENT",
@@ -3148,7 +3481,10 @@
         "tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_rehashed_foreign_instance_snapshot_refuses_cloud_and_reopen"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P4.C03.POSITIVE.CURRENT",
@@ -3175,7 +3511,10 @@
         "tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_snapshot_instance_and_source_facts_bind_authenticated_namespace"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P4.C04.NEGATIVE.CURRENT",
@@ -3202,7 +3541,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_root_switch_while_pending_cannot_promote_or_post"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS05.P5.S01.POSITIVE.CURRENT",
@@ -3229,7 +3571,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p5_s01_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS05.P5.S01.NEGATIVE.CURRENT",
@@ -3258,7 +3603,11 @@
         "tests.test_current_source_reader.CurrentSourceReaderTest.test_historical_input_mutation_refuses"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "port-controls",
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "VC04.P3.C02.POSITIVE.CURRENT",
@@ -3285,7 +3634,10 @@
         "tests.test_metadata_page_policy.MetadataPagePolicyTest.test_url_scoped_304_reuses_exact_bodies_and_source_dates"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC04.P3.C03.NEGATIVE.CURRENT",
@@ -3312,7 +3664,10 @@
         "tests.test_metadata_page_policy.MetadataPagePolicyTest.test_cli_refuses_unsupported_schema_and_policy_before_http"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC04.P3.C04.NEGATIVE.CURRENT",
@@ -3339,7 +3694,10 @@
         "tests.test_metadata_page_policy.MetadataPagePolicyTest.test_inflight_source_and_base_changes_keep_prefix_and_reservation"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC07.P3.C02.POSITIVE.CURRENT",
@@ -3366,7 +3724,10 @@
         "tests.test_metadata_page_policy.MetadataPagePolicyTest.test_url_scoped_304_reuses_exact_bodies_and_source_dates"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC07.P3.C03.NEGATIVE.CURRENT",
@@ -3393,7 +3754,10 @@
         "tests.test_metadata_page_policy.MetadataPagePolicyTest.test_cli_refuses_unsupported_schema_and_policy_before_http"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC07.P3.C04.NEGATIVE.CURRENT",
@@ -3420,7 +3784,10 @@
         "tests.test_metadata_page_policy.MetadataPagePolicyTest.test_inflight_source_and_base_changes_keep_prefix_and_reservation"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC20.P1.C02.NEGATIVE.CURRENT",
@@ -3449,7 +3816,11 @@
         "tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_corrupt_digest_rejected"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host",
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P1.C03.POSITIVE.CURRENT",
@@ -3479,7 +3850,12 @@
         "tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_current_raw_pixels_identity_age_and_bounds"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "port-controls",
+        "retained-host",
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P1.C04.NEGATIVE.CURRENT",
@@ -3509,7 +3885,11 @@
       ],
       "state": "implemented",
       "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
-      "runnerAliasOf": "unittest::tests.test_public_case_mappings.PublicMappedCases.test_vc20_p1_c02_negative_current"
+      "runnerAliasOf": "unittest::tests.test_public_case_mappings.PublicMappedCases.test_vc20_p1_c02_negative_current",
+      "proof_families": [
+        "retained-host",
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P1.C05.POSITIVE.CURRENT",
@@ -3540,7 +3920,12 @@
       ],
       "state": "implemented",
       "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
-      "runnerAliasOf": "unittest::tests.test_public_case_mappings.PublicMappedCases.test_vc20_p1_c03_positive_current"
+      "runnerAliasOf": "unittest::tests.test_public_case_mappings.PublicMappedCases.test_vc20_p1_c03_positive_current",
+      "proof_families": [
+        "port-controls",
+        "retained-host",
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P2.C01.POSITIVE.CURRENT",
@@ -3567,7 +3952,10 @@
         "tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p2_source_update_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P2.C02.NEGATIVE.CURRENT",
@@ -3594,7 +3982,10 @@
         "tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p2_lifecycle_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P3.C01.POSITIVE.CURRENT",
@@ -3621,7 +4012,10 @@
         "tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p3_recovery_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P3.C02.NEGATIVE.CURRENT",
@@ -3648,7 +4042,10 @@
         "tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p3_refusal_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P1.C06.POSITIVE.CURRENT",
@@ -3679,7 +4076,12 @@
       ],
       "state": "implemented",
       "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
-      "runnerAliasOf": "unittest::tests.test_public_case_mappings.PublicMappedCases.test_vc20_p1_c03_positive_current"
+      "runnerAliasOf": "unittest::tests.test_public_case_mappings.PublicMappedCases.test_vc20_p1_c03_positive_current",
+      "proof_families": [
+        "port-controls",
+        "retained-host",
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P1.C06.NEGATIVE.CURRENT",
@@ -3709,7 +4111,11 @@
       ],
       "state": "implemented",
       "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
-      "runnerAliasOf": "unittest::tests.test_public_case_mappings.PublicMappedCases.test_vc20_p1_c02_negative_current"
+      "runnerAliasOf": "unittest::tests.test_public_case_mappings.PublicMappedCases.test_vc20_p1_c02_negative_current",
+      "proof_families": [
+        "retained-host",
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P1.C07.NEGATIVE.CURRENT",
@@ -3739,7 +4145,11 @@
       ],
       "state": "implemented",
       "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
-      "runnerAliasOf": "unittest::tests.test_public_case_mappings.PublicMappedCases.test_vc20_p1_c02_negative_current"
+      "runnerAliasOf": "unittest::tests.test_public_case_mappings.PublicMappedCases.test_vc20_p1_c02_negative_current",
+      "proof_families": [
+        "retained-host",
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P1.MOTIONWHOLE.POSITIVE.CURRENT",
@@ -3770,7 +4180,12 @@
       ],
       "state": "implemented",
       "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
-      "runnerAliasOf": "unittest::tests.test_public_case_mappings.PublicMappedCases.test_vc20_p1_c03_positive_current"
+      "runnerAliasOf": "unittest::tests.test_public_case_mappings.PublicMappedCases.test_vc20_p1_c03_positive_current",
+      "proof_families": [
+        "port-controls",
+        "retained-host",
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P1.MOTIONWHOLE.NEGATIVE.CURRENT",
@@ -3800,7 +4215,11 @@
       ],
       "state": "implemented",
       "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
-      "runnerAliasOf": "unittest::tests.test_public_case_mappings.PublicMappedCases.test_vc20_p1_c02_negative_current"
+      "runnerAliasOf": "unittest::tests.test_public_case_mappings.PublicMappedCases.test_vc20_p1_c02_negative_current",
+      "proof_families": [
+        "retained-host",
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P2.MOTIONWHOLE.POSITIVE.CURRENT",
@@ -3828,7 +4247,10 @@
       ],
       "state": "implemented",
       "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
-      "runnerAliasOf": "unittest::tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p2_source_update_positive"
+      "runnerAliasOf": "unittest::tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p2_source_update_positive",
+      "proof_families": [
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P2.MOTIONWHOLE.NEGATIVE.CURRENT",
@@ -3856,7 +4278,10 @@
       ],
       "state": "implemented",
       "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
-      "runnerAliasOf": "unittest::tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p2_lifecycle_negative"
+      "runnerAliasOf": "unittest::tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p2_lifecycle_negative",
+      "proof_families": [
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P3.MOTIONWHOLE.POSITIVE.CURRENT",
@@ -3884,7 +4309,10 @@
       ],
       "state": "implemented",
       "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
-      "runnerAliasOf": "unittest::tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p3_recovery_positive"
+      "runnerAliasOf": "unittest::tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p3_recovery_positive",
+      "proof_families": [
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P3.MOTIONWHOLE.NEGATIVE.CURRENT",
@@ -3912,7 +4340,10 @@
       ],
       "state": "implemented",
       "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
-      "runnerAliasOf": "unittest::tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p3_refusal_negative"
+      "runnerAliasOf": "unittest::tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p3_refusal_negative",
+      "proof_families": [
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P3.MOTIONWHOLE.HOSTCLOSURE.NEGATIVE.CURRENT",
@@ -3940,7 +4371,11 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_missing_previous_catalog_cannot_promote_pending"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host",
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P2.MOTIONWHOLE.HOSTGENERATION.POSITIVE.CURRENT",
@@ -3968,7 +4403,11 @@
         "tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p2_source_update_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host",
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P3.MOTIONWHOLE.HOSTHTTP.NEGATIVE.CURRENT",
@@ -3997,7 +4436,11 @@
       ],
       "state": "implemented",
       "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
-      "runnerAliasOf": "unittest::tests.test_public_case_mappings.PublicMappedCases.test_vc20_p3_motionwhole_hostclosure_negative_current"
+      "runnerAliasOf": "unittest::tests.test_public_case_mappings.PublicMappedCases.test_vc20_p3_motionwhole_hostclosure_negative_current",
+      "proof_families": [
+        "retained-host",
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P1.MOTIONWHOLE.HOSTSPARSE.POSITIVE.CURRENT",
@@ -4028,7 +4471,12 @@
         "tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_current_raw_pixels_identity_age_and_bounds"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "port-controls",
+        "retained-host",
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P1.MOTIONWHOLE.SDKPIXELS.POSITIVE.CURRENT",
@@ -4059,7 +4507,12 @@
       ],
       "state": "implemented",
       "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
-      "runnerAliasOf": "unittest::tests.test_public_case_mappings.PublicMappedCases.test_vc20_p1_c03_positive_current"
+      "runnerAliasOf": "unittest::tests.test_public_case_mappings.PublicMappedCases.test_vc20_p1_c03_positive_current",
+      "proof_families": [
+        "port-controls",
+        "retained-host",
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P3.MOTIONWHOLE.SDKCLEANUP.NEGATIVE.CURRENT",
@@ -4087,7 +4540,10 @@
       ],
       "state": "implemented",
       "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
-      "runnerAliasOf": "unittest::tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p3_refusal_negative"
+      "runnerAliasOf": "unittest::tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p3_refusal_negative",
+      "proof_families": [
+        "scene-native"
+      ]
     },
     {
       "public_case_id": "VC20.P4.C01.POSITIVE.CURRENT",
@@ -4114,7 +4570,10 @@
         "tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_current_raw_pixels_identity_age_and_bounds"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC20.P4.C02.NEGATIVE.CURRENT",
@@ -4141,7 +4600,10 @@
         "tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_repinned_identity_mismatch_rejected"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC20.P4.C03.NEGATIVE.CURRENT",
@@ -4168,7 +4630,10 @@
         "tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_corrupt_digest_rejected"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC20.P4.C05.NEGATIVE.CURRENT",
@@ -4195,7 +4660,10 @@
         "tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_token_row_overflow_rejected"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC20.P4.C06.NEGATIVE.CURRENT",
@@ -4222,7 +4690,10 @@
         "tests.test_sfr1m_offline_current.Sfr1mOfflineCurrent.test_truncated_and_noncanonical_tokens_rejected"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC19.P3.CURRENT02.POSITIVE",
@@ -4249,7 +4720,10 @@
         "tests.test_current_feed_authority_whole.CurrentFeedAuthorityWholeTest.test_exact_union_and_final_root_reread_for_current_and_recovery"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS04.P1.S01.POSITIVE.CURRENT",
@@ -4276,7 +4750,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_local_http_due_origin_304_and_429"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS04.P1.S01.NEGATIVE.CURRENT",
@@ -4303,7 +4780,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_source_advances_after_reservation_starts_no_http"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS04.P1.S02.POSITIVE.CURRENT",
@@ -4330,7 +4810,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_unchanged_fresh_origin_renews_only_validation"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS04.P1.S02.NEGATIVE.CURRENT",
@@ -4357,7 +4840,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_old_200_cannot_renew_accepted_origin"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS05.P1.S01.NEGATIVE.CURRENT",
@@ -4402,7 +4888,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_regressing_source_rejected_without_replacement"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS06.P1.S01.POSITIVE.CURRENT",
@@ -4429,7 +4918,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_decoded_boundary_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS06.P1.S01.NEGATIVE.CURRENT",
@@ -4456,7 +4948,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_decoded_boundary_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P1.S01.POSITIVE.CURRENT",
@@ -4483,7 +4978,10 @@
         "tests.test_hosted_durable_controls.DurableAuthorityWholeTest.test_rescheduled_flag_and_age_survive_http_then_process_death"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P1.S01.NEGATIVE.CURRENT",
@@ -4510,7 +5008,10 @@
         "tests.test_hosted_durable_controls.DurableAuthorityWholeTest.test_actual_http_then_process_death_retains_consumed_permission"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P1.S02.POSITIVE.CURRENT",
@@ -4537,7 +5038,10 @@
         "tests.test_hosted_rocket_controls.HostedRocketControlTest.test_missing_authority_keeps_existing_deployment"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P1.S02.NEGATIVE.CURRENT",
@@ -4564,7 +5068,10 @@
         "tests.test_hosted_durable_controls.DurableAuthorityWholeTest.test_anchor_missing_state_refuses_reset"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P1.S01.POSITIVE.CURRENT",
@@ -4591,7 +5098,10 @@
         "tests.test_hosted_delivery_controls.AutonomousPublisherWholeTest.test_runtime_only_two_generations_finality_and_exact_readback"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P1.S01.NEGATIVE.CURRENT",
@@ -4618,7 +5128,10 @@
         "tests.test_hosted_delivery_controls.AutonomousPublisherWholeTest.test_saved_faults_stale_source_and_cas_refuse_without_publication"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS02.P2.S01.POSITIVE.CURRENT",
@@ -4645,7 +5158,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_cadence_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS02.P2.S01.NEGATIVE.CURRENT",
@@ -4672,7 +5188,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_cadence_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS05.P3.S01.POSITIVE.CURRENT",
@@ -4699,7 +5218,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_normalized_identity_and_immutable_state_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS05.P3.S01.NEGATIVE.CURRENT",
@@ -4726,7 +5248,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_normalized_atomic_admission_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P2.S01.POSITIVE.CURRENT",
@@ -4753,7 +5278,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_stale_thresholds_and_skipped_near_window"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P2.S01.NEGATIVE.CURRENT",
@@ -4780,7 +5308,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_stale_latch_after_near_window_with_literal_epoch"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P2.S02.POSITIVE.CURRENT",
@@ -4807,7 +5338,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_record_omission_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P2.S02.NEGATIVE.CURRENT",
@@ -4834,7 +5368,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_record_omission_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS04.P2.S01.POSITIVE.CURRENT",
@@ -4870,7 +5407,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_local_http_due_origin_304_and_429"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS04.P2.S01.NEGATIVE.CURRENT",
@@ -4906,7 +5446,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_uncertain_reservation_survives_reopen_without_refund"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS04.P2.S02.POSITIVE.CURRENT",
@@ -4933,7 +5476,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_durable_latches_and_publication_preserve_source_ages"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS04.P2.S02.NEGATIVE.CURRENT",
@@ -4960,7 +5506,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_old_source_and_duplicate_result_refused_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS04.P2.S03.POSITIVE.CURRENT",
@@ -4987,7 +5536,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_fast_policy_persists_twelve_due_reservations"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P2.S01.POSITIVE.CURRENT",
@@ -5014,7 +5566,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_pending_and_promotion_survive_before_and_lost_push_ack"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P2.S02.POSITIVE.CURRENT",
@@ -5041,7 +5596,10 @@
         "tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_anchor_missing_state_refuses_reset"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P2.S02.NEGATIVE.CURRENT",
@@ -5068,7 +5626,10 @@
         "tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_corrupt_authority_reopen_refuses_without_rewriting_ref"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P2.S03.NEGATIVE.CURRENT",
@@ -5095,7 +5656,10 @@
         "tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_saved_faults_stale_source_and_cas_refuse_without_publication"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P2.S04.POSITIVE.CURRENT",
@@ -5122,7 +5686,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_pending_source_adoption_portable_cli_and_export_refusals"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P2.S01.POSITIVE.CURRENT",
@@ -5149,7 +5716,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_pending_and_promotion_survive_before_and_lost_push_ack"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P2.S01.NEGATIVE.CURRENT",
@@ -5176,7 +5746,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_visible_pending_without_finality_cannot_promote_or_start_work"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P2.S02.POSITIVE.CURRENT",
@@ -5203,7 +5776,10 @@
         "tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_two_process_reservation_cas"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P2.S02.NEGATIVE.CURRENT",
@@ -5230,7 +5806,10 @@
         "tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_source_advances_during_reservation_consumes_slot_without_permission"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P2.S03.POSITIVE.CURRENT",
@@ -5257,7 +5836,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_three_promotions_drop_first_closure_and_survive_adoption"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P2.S04.POSITIVE.CURRENT",
@@ -5284,7 +5866,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_pending_and_promotion_survive_before_and_lost_push_ack"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P2.S01.NEGATIVE.CURRENT",
@@ -5311,7 +5896,10 @@
         "tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_actual_http_then_process_death_retains_consumed_permission"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS04.P2.S04.POSITIVE.CURRENT",
@@ -5338,7 +5926,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_zero_utc_backoff_survives_reopen"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P2.S05.NEGATIVE.CURRENT",
@@ -5365,7 +5956,10 @@
         "tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_corrupt_authority_reopen_refuses_without_rewriting_ref"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS01.P2.S01.POSITIVE.CURRENT",
@@ -5392,7 +5986,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_unknown_identities_through_current_http_updater"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS01.P2.S02.NEGATIVE.CURRENT",
@@ -5419,7 +6016,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_missing_art_does_not_exclude_upcoming_identity"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS04.P3.S01.POSITIVE.CURRENT",
@@ -5446,7 +6046,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_local_http_due_origin_304_and_429"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS04.P3.S02.NEGATIVE.CURRENT",
@@ -5473,7 +6076,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_reserved_http_redirect_size_and_timeout_preserve_source"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS04.P3.S03.POSITIVE.CURRENT",
@@ -5500,7 +6106,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_optional_detail_never_renews_primary_minimum"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS04.P3.S04.NEGATIVE.CURRENT",
@@ -5536,7 +6145,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_explicit_page_cap_reports_partial_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS04.P3.S05.POSITIVE.CURRENT",
@@ -5563,7 +6175,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_unchanged_fresh_origin_renews_only_validation"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS04.P3.S06.NEGATIVE.CURRENT",
@@ -5590,7 +6205,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_old_200_cannot_renew_accepted_origin"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P3.S01.POSITIVE.CURRENT",
@@ -5617,7 +6235,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_ordered_source_events_preserve_per_record_facts"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P3.S02.NEGATIVE.CURRENT",
@@ -5653,7 +6274,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_decoded_boundary_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P3.S03.POSITIVE.CURRENT",
@@ -5680,7 +6304,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_fractional_revision_persists_and_rejects_regression"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P3.S01.NEGATIVE.CURRENT",
@@ -5707,7 +6334,10 @@
         "tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_actual_http_then_process_death_retains_consumed_permission"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P3.S02.POSITIVE.CURRENT",
@@ -5734,7 +6364,10 @@
         "tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_terminal_archive_exact_and_old_revision_refusal"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P3.S03.NEGATIVE.CURRENT",
@@ -5761,7 +6394,10 @@
         "tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_required_authority_bounds_reject_without_eviction_or_refund"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P3.S01.POSITIVE.CURRENT",
@@ -5788,7 +6424,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_default_twenty_two_generations_with_shared_quota_and_pending_recovery"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P3.S02.NEGATIVE.CURRENT",
@@ -5815,7 +6454,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_pending_source_adoption_portable_cli_and_export_refusals"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P3.S04.NEGATIVE.CURRENT",
@@ -5842,7 +6484,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_omitted_unknown_keeps_own_old_age"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P3.S04.POSITIVE.CURRENT",
@@ -5869,7 +6514,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_atomic_source_and_pending_survive_lost_push_ack"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P3.S10.POSITIVE.CURRENT",
@@ -5896,7 +6544,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_optional_missing_404_preserves_primary_and_old_record"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P3.S10.NEGATIVE.CURRENT",
@@ -5932,7 +6583,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_two_hour_429_backoff_survives_quota_window_rollover"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P3.S10.POSITIVE.CURRENT",
@@ -5959,7 +6613,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_default_twenty_two_generations_with_shared_quota_and_pending_recovery"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P3.S12.NEGATIVE.CURRENT",
@@ -5986,7 +6643,10 @@
         "tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_required_authority_bounds_reject_without_eviction_or_refund"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P3.S10.POSITIVE.CURRENT",
@@ -6013,7 +6673,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_updater_cli_recovers_pending_before_any_http"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P3.S10.NEGATIVE.CURRENT",
@@ -6040,7 +6703,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_packed_schedule_dedup_and_missing_or_bad_object_refusal"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P3.S12.POSITIVE.CURRENT",
@@ -6067,7 +6733,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_default_twenty_two_generations_with_shared_quota_and_pending_recovery"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P3.S20.POSITIVE.CURRENT",
@@ -6094,7 +6763,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_real_cli_without_now_uses_response_time"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P3.S21.NEGATIVE.CURRENT",
@@ -6121,7 +6793,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_real_cli_without_now_rejects_future_origin"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P3.S22.NEGATIVE.CURRENT",
@@ -6148,7 +6823,10 @@
         "tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_actual_429_samples_completion_once_and_persists_backoff"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P3.S23.POSITIVE.CURRENT",
@@ -6175,7 +6853,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_advancing_clock_keeps_each_response_origin"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P3.S24.NEGATIVE.CURRENT",
@@ -6202,7 +6883,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_advancing_clock_optional_429_keeps_primary"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P3.S25.POSITIVE.CURRENT",
@@ -6229,7 +6913,10 @@
         "tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_failure_clock_backoff_survives_restart_and_rejects_time_regression"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P3.S26.NEGATIVE.CURRENT",
@@ -6265,7 +6952,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_origin_age_and_future_rejection"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P3.S27.POSITIVE.CURRENT",
@@ -6292,7 +6982,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_completed_primary_reservation_requires_exact_unexpired_invocation"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P3.S28.NEGATIVE.CURRENT",
@@ -6319,7 +7012,10 @@
         "tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_actual_429_samples_completion_once_and_persists_backoff"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P3.S30.POSITIVE.CURRENT",
@@ -6346,7 +7042,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_empty_cached_200_preserves_selection_epoch"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P3.S31.POSITIVE.CURRENT",
@@ -6373,7 +7072,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_optional_detail_never_renews_primary_minimum"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P3.S32.POSITIVE.CURRENT",
@@ -6409,7 +7111,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_unchanged_fresh_origin_renews_only_validation"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P3.S33.POSITIVE.CURRENT",
@@ -6445,7 +7150,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_optional_429_preserves_primary_and_omitted_age"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P3.S34.NEGATIVE.CURRENT",
@@ -6472,7 +7180,10 @@
         "tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_saved_faults_stale_source_and_cas_refuse_without_publication"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P3.S35.NEGATIVE.CURRENT",
@@ -6499,7 +7210,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_null_zero_negative_and_future_selection_epochs"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P3.S36.POSITIVE.CURRENT",
@@ -6526,7 +7240,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_default_twenty_two_generations_with_shared_quota_and_pending_recovery"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P3.S37.NEGATIVE.CURRENT",
@@ -6553,7 +7270,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_updater_rejects_missing_or_wrong_builder_envelope"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P3.S40.NEGATIVE.CURRENT",
@@ -6580,7 +7300,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_rollover_optional_404_counts_started_attempt"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P3.S41.POSITIVE.CURRENT",
@@ -6607,7 +7330,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_rollover_optional_success_counts_each_attempt"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS04.P3.S40.NEGATIVE.CURRENT",
@@ -6634,7 +7360,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_429_and_shared_quota_count_only_started_attempts"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS04.P3.S41.NEGATIVE.CURRENT",
@@ -6661,7 +7390,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_source_advances_after_reservation_starts_no_http"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P4.C03.POSITIVE.CURRENT",
@@ -6688,7 +7420,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_pending_source_adoption_portable_cli_and_export_refusals"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P4.C04.NEGATIVE.CURRENT",
@@ -6715,7 +7450,10 @@
         "tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_saved_faults_stale_source_and_cas_refuse_without_publication"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P4.C05.POSITIVE.CURRENT",
@@ -6742,7 +7480,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_pending_and_promotion_survive_before_and_lost_push_ack"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS13.P4.C06.NEGATIVE.CURRENT",
@@ -6769,7 +7510,10 @@
         "tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_source_advances_during_reservation_consumes_slot_without_permission"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P4.C07.POSITIVE.CURRENT",
@@ -6796,7 +7540,10 @@
         "tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_runtime_only_two_generations_finality_and_exact_readback"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P4.C08.POSITIVE.CURRENT",
@@ -6823,7 +7570,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_terminal_failed_attempt_preserves_active_then_new_intent_posts_once"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P4.C09.NEGATIVE.CURRENT",
@@ -6850,7 +7600,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_visible_pending_without_finality_cannot_promote_or_start_work"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P4.C10.POSITIVE.CURRENT",
@@ -6877,7 +7630,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_404_requires_exact_completed_skipped_post_witness"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P4.C11.POSITIVE.CURRENT",
@@ -6904,7 +7660,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_three_promotions_drop_first_closure_and_survive_adoption"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P4.C12.NEGATIVE.CURRENT",
@@ -6931,7 +7690,10 @@
         "tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_pages_empty_identity_and_uncertainty_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P4.C13.NEGATIVE.CURRENT",
@@ -6958,7 +7720,10 @@
         "tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_saved_faults_stale_source_and_cas_refuse_without_publication"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P4.C14.POSITIVE.CURRENT",
@@ -6985,7 +7750,10 @@
         "tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_empty_pages_exact_witness_and_nonempty_uncertainty"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P4.C15.POSITIVE.CURRENT",
@@ -7012,7 +7780,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_atomic_source_and_pending_survive_lost_push_ack"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P4.C16.NEGATIVE.CURRENT",
@@ -7039,7 +7810,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_new_run_attempt_cannot_post_old_intent"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P4.C17.POSITIVE.CURRENT",
@@ -7066,7 +7840,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_pending_and_promotion_survive_before_and_lost_push_ack"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P5.C01.POSITIVE.CURRENT",
@@ -7093,7 +7870,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_404_requires_exact_completed_skipped_post_witness"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P5.C02.POSITIVE.CURRENT",
@@ -7120,7 +7900,10 @@
         "tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_empty_pages_exact_witness_and_nonempty_uncertainty"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P5.C03.NEGATIVE.CURRENT",
@@ -7147,7 +7930,10 @@
         "tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_pages_empty_identity_and_uncertainty_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P5.C04.NEGATIVE.CURRENT",
@@ -7174,7 +7960,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_new_run_attempt_cannot_post_old_intent"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P5.C05.POSITIVE.CURRENT",
@@ -7201,7 +7990,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_three_promotions_drop_first_closure_and_survive_adoption"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P6.C01.NEGATIVE.CURRENT",
@@ -7228,7 +8020,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_missing_previous_catalog_cannot_promote_pending"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P6.C02.POSITIVE.CURRENT",
@@ -7255,7 +8050,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_three_promotions_drop_first_closure_and_survive_adoption"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P6.C03.NEGATIVE.CURRENT",
@@ -7282,7 +8080,10 @@
         "tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_pages_empty_identity_and_uncertainty_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS14.P6.C04.POSITIVE.CURRENT",
@@ -7309,7 +8110,10 @@
         "tests.test_durable_delivery_whole.DurableDeliveryWholeTest.test_terminal_failed_attempt_preserves_active_then_new_intent_posts_once"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC04.P2.C01.POSITIVE.CURRENT",
@@ -7336,7 +8140,10 @@
         "tests.test_current_metadata_publisher.CurrentMetadataPublisherTest.test_captured_whole_traversal_reopens_preserves_ages_and_source_headroom"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC04.P2.C02.NEGATIVE.CURRENT",
@@ -7363,7 +8170,10 @@
         "tests.test_metadata_page_policy.MetadataPagePolicyTest.test_captured_page_rejects_count_drift_and_unsafe_or_truncated_next"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC04.P2.C03.POSITIVE.CURRENT",
@@ -7390,7 +8200,10 @@
         "tests.test_metadata_page_policy.MetadataPagePolicyTest.test_url_scoped_304_reuses_exact_bodies_and_source_dates"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC04.P2.C07.POSITIVE.CURRENT",
@@ -7417,7 +8230,10 @@
         "tests.test_metadata_page_policy.MetadataPagePolicyTest.test_omissions_keep_original_record_dates_and_facts"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC04.P2.C08.NEGATIVE.CURRENT",
@@ -7444,7 +8260,10 @@
         "tests.test_metadata_page_policy.MetadataPagePolicyTest.test_capacity_refusal_clears_scratch_and_resumes"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC04.P2.C11.NEGATIVE.CURRENT",
@@ -7471,7 +8290,10 @@
         "tests.test_public_metadata_faults.PublicMetadataFaults.test_completion_refusal_keeps_four_304_pages_and_retries_without_http"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "metadata-direct"
+      ]
     },
     {
       "public_case_id": "VC04.P2.C12.NEGATIVE.CURRENT",
@@ -7498,7 +8320,10 @@
         "tests.test_public_metadata_faults.PublicMetadataFaults.test_five_bad_bodies_leave_no_scratch_and_consume_exact_failed_slots"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "metadata-direct"
+      ]
     },
     {
       "public_case_id": "VC04.P2.C13.NEGATIVE.CURRENT",
@@ -7525,7 +8350,10 @@
         "tests.test_public_metadata_faults.PublicMetadataFaults.test_two_bad_pages_keep_prefix_then_complete_with_six_http_seven_slots"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "metadata-direct"
+      ]
     },
     {
       "public_case_id": "VC04.P2.C14.NEGATIVE.CURRENT",
@@ -7552,7 +8380,10 @@
         "tests.test_public_metadata_faults.PublicMetadataFaults.test_save_preflight_restores_prefix_and_repeats_only_uncommitted_url"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "metadata-direct"
+      ]
     },
     {
       "public_case_id": "WF08.P2.S01.POSITIVE.CURRENT",
@@ -7579,7 +8410,11 @@
         "tests.test_current_ui_batch.CurrentUiBatchTest.test_natural_animation_and_stop"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host",
+        "ui-composition"
+      ]
     },
     {
       "public_case_id": "WF08.P2.S01.NEGATIVE.CURRENT",
@@ -7606,7 +8441,11 @@
         "tests.test_current_ui_batch.CurrentUiBatchTest.test_animation_bounds_and_stop"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host",
+        "ui-composition"
+      ]
     },
     {
       "public_case_id": "LS05.P8.S01.POSITIVE.CURRENT",
@@ -7633,7 +8472,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p8_s01_positive_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS05.P8.S01.NEGATIVE.CURRENT",
@@ -7664,7 +8506,11 @@
         "tests.test_public_proof_portability.PublicProofPortabilityTest.test_unknown_private_history_and_snapshot_tamper_refuse"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "port-controls",
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS02.P3.S01.POSITIVE.CURRENT",
@@ -7691,7 +8537,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p3_s01_positive_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS02.P3.S01.NEGATIVE.CURRENT",
@@ -7718,7 +8567,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p3_s01_negative_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS11.P5.S01.POSITIVE.CURRENT",
@@ -7745,7 +8597,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p5_s01_positive_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS11.P5.S01.NEGATIVE.CURRENT",
@@ -7772,7 +8627,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p5_s01_negative_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS11.P4.S01.POSITIVE.CURRENT",
@@ -7799,7 +8657,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p4_s01_positive_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS11.P4.S01.NEGATIVE.CURRENT",
@@ -7826,7 +8687,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p4_s01_negative_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS05.P6.S01.POSITIVE.CURRENT",
@@ -7853,7 +8717,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p6_s01_positive_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS05.P6.S01.NEGATIVE.CURRENT",
@@ -7881,7 +8748,11 @@
         "tests.test_current_source_reader.CurrentSourceReaderTest.test_changed_current_input_invalidates_route_cache"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "port-controls",
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS02.P4.S01.POSITIVE.CURRENT",
@@ -7908,7 +8779,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p4_s01_positive_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS02.P4.S01.NEGATIVE.CURRENT",
@@ -7935,7 +8809,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p4_s01_negative_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS05.P7.S01.POSITIVE.CURRENT",
@@ -7962,7 +8839,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p7_s01_positive_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS05.P7.S01.NEGATIVE.CURRENT",
@@ -7989,7 +8869,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p7_s01_negative_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS05.P5.S02.POSITIVE.CURRENT",
@@ -8016,7 +8899,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p5_s02_positive_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS05.P5.S02.NEGATIVE.CURRENT",
@@ -8043,7 +8929,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p5_s02_negative_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS05.P5.S03.NEGATIVE.CURRENT",
@@ -8070,7 +8959,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p5_s03_negative_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS01.P3.C01.POSITIVE.CURRENT",
@@ -8097,7 +8989,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_detail_mode_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS01.P3.C02.NEGATIVE.CURRENT",
@@ -8124,7 +9019,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_detail_mode_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS02.P5.C03.POSITIVE.CURRENT",
@@ -8151,7 +9049,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_omitted_pending_detail_and_terminal_no_detail"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS02.P5.C04.NEGATIVE.CURRENT",
@@ -8178,7 +9079,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_optional_failures_preserve_primary_and_old_source"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P6.C05.POSITIVE.CURRENT",
@@ -8205,7 +9109,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_omitted_pending_detail_and_terminal_no_detail"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P6.C06.NEGATIVE.CURRENT",
@@ -8232,7 +9139,10 @@
         "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_newer_primary_reappearance_reopens_detail_eligibility"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS11.P6.C07.POSITIVE.CURRENT",
@@ -8259,7 +9169,10 @@
         "tests.test_schedule_producer_whole.ScheduleProducerWholeTest.test_omitted_pending_detail_and_terminal_no_detail"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC04.P4.C01.NEGATIVE.CURRENT",
@@ -8286,7 +9199,10 @@
         "tests.test_metadata_page_policy.MetadataPagePolicyTest.test_duplicate_discards_only_current_collection_and_preserves_epochs"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC04.P4.C02.POSITIVE.CURRENT",
@@ -8313,7 +9229,10 @@
         "tests.test_current_metadata_publisher.CurrentMetadataPublisherTest.test_captured_whole_traversal_reopens_preserves_ages_and_source_headroom"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC04.P4.C03.POSITIVE.CURRENT",
@@ -8340,7 +9259,10 @@
         "tests.test_current_metadata_publisher.CurrentMetadataPublisherTest.test_expired_current_prefix_restarts_without_renewing_source_or_quota"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC07.P4.C01.NEGATIVE.CURRENT",
@@ -8367,7 +9289,10 @@
         "tests.test_metadata_page_policy.MetadataPagePolicyTest.test_duplicate_discards_only_current_collection_and_preserves_epochs"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC07.P4.C02.POSITIVE.CURRENT",
@@ -8394,7 +9319,10 @@
         "tests.test_current_metadata_publisher.CurrentMetadataPublisherTest.test_captured_whole_traversal_reopens_preserves_ages_and_source_headroom"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC07.P4.C03.POSITIVE.CURRENT",
@@ -8421,7 +9349,10 @@
         "tests.test_current_metadata_publisher.CurrentMetadataPublisherTest.test_expired_current_prefix_restarts_without_renewing_source_or_quota"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC04.P4.C04.POSITIVE.CURRENT",
@@ -8448,7 +9379,10 @@
         "tests.test_metadata_page_policy.MetadataPagePolicyTest.test_cli_duplicate_refusal_and_retry"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC07.P4.C04.POSITIVE.CURRENT",
@@ -8475,7 +9409,10 @@
         "tests.test_metadata_page_policy.MetadataPagePolicyTest.test_cli_duplicate_refusal_and_retry"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS02.P1.S02.POSITIVE.CURRENT",
@@ -8502,7 +9439,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p1_s02_positive_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS02.P1.S02.NEGATIVE.CURRENT",
@@ -8529,7 +9469,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p1_s02_negative_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS02.P1.S03.POSITIVE.CURRENT",
@@ -8556,7 +9499,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p1_s03_positive_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS02.P1.S03.NEGATIVE.CURRENT",
@@ -8583,7 +9529,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p1_s03_negative_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS11.P1.S04.POSITIVE.CURRENT",
@@ -8610,7 +9559,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s04_positive_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "LS11.P1.S04.NEGATIVE.CURRENT",
@@ -8637,7 +9589,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p1_s04_negative_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "VC08.P1.S02.POSITIVE.CURRENT",
@@ -8664,7 +9619,10 @@
         "tests.test_typed_dictionaries_whole.TypedDictionariesWholeTest.test_reordered_dictionaries_positive"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "VC08.P1.S02.NEGATIVE.CURRENT",
@@ -8691,7 +9649,10 @@
         "tests.test_typed_dictionaries_whole.TypedDictionariesWholeTest.test_unsupported_schema_negative"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "retained-host"
+      ]
     },
     {
       "public_case_id": "LS05.P5.S03.POSITIVE.CURRENT",
@@ -8718,7 +9679,10 @@
         "tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p5_s03_positive_current"
       ],
       "state": "implemented",
-      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution."
+      "scope": "Actual local software boundary; immutable SDK observations retain their source/toolchain/exit, and are not new execution.",
+      "proof_families": [
+        "refresh-native"
+      ]
     },
     {
       "public_case_id": "WF09.P1.LIFECYCLE.POSITIVE",
@@ -8745,7 +9709,10 @@
         "tests.test_integration_graph_pending.PendingIntegrationTest.test_wf09_p1_lifecycle_positive"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     },
     {
       "public_case_id": "WF09.P1.LIFECYCLE.NEGATIVE",
@@ -8772,7 +9739,10 @@
         "tests.test_integration_graph_pending.PendingIntegrationTest.test_wf09_p1_lifecycle_negative"
       ],
       "state": "planned",
-      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned."
+      "scope": "External phone/watch/Store/resource evidence unavailable; remains planned.",
+      "proof_families": [
+        "external-hold"
+      ]
     }
   ],
   "addedExternalConjunctIds": [
@@ -12528,5 +13498,77 @@
     }
   ],
   "budgetApplicabilityRepair": "Whole NativeImmutable.mc changed only in NativeBatch. The actual current NativeImmutable class and initialize/text/pinned/parseIndex/sameRefs bodies match original budget bytes; begin/select/next serial/pending changes use the separately source-authenticated current batch-marker fault probe. Original108888-byte heap/storage observations remain historical, not current full peaks.",
-  "liveInputCachePolicy": "Original immutable proof results may be reused; live current native input identity is authenticated before a cached UI composition can be reused. Direct current SceneRenderer mutation is refused even when current-ui is already in the route cache."
+  "liveInputCachePolicy": "Original immutable proof results may be reused; live current native input identity is authenticated before a cached UI composition can be reused. Direct current SceneRenderer mutation is refused even when current-ui is already in the route cache.",
+  "proofFamilies": {
+    "retained-host": {
+      "index": "retainedHostObservations",
+      "scope": "150 exact original host methods; source-bound raw observations, with explicit AST-equal public module aliases where named. No fresh public execution inferred."
+    },
+    "refresh-native": {
+      "runner": "tests/test_current_format_acceptance.py",
+      "proofs": [
+        "evidence/watch-refresh-cache-whole/linux-runtime",
+        "evidence/watch-refresh-cache-whole/independent-minute-r1/native-r10",
+        "evidence/current-native-data-public"
+      ],
+      "scope": "Each WITNESS selects exact build/probe/resource hashes and named raw stdout/stderr/exit. SDK toolchain is the recorded build command/environment. Copied-value/injected-failure Storage, controlled time and direct-seeding probes stay distinct from SDK Storage/no-push rows. Current parser/cache/marker/mode seams are separate source-authenticated observations."
+    },
+    "scene-native": {
+      "runner": "tests/test_current_native_scene_whole.py",
+      "proofs": [
+        "evidence/current-native-scene-whole",
+        "evidence/decoder-stream-013"
+      ],
+      "scope": "Original source/probe/resources/toolchain and partial-pixel/grammar/lifecycle/callback observations remain original; current public artifact validation and newer stream/ordinary5703ms source binding are separate. No SDK is run by the reader."
+    },
+    "cache-budget": {
+      "runner": "tests/test_native_cache_budget_whole.py",
+      "proofs": [
+        "evidence/native-cache-budget-whole",
+        "evidence/current-native-data-public/batch-marker-r3"
+      ],
+      "scope": "Whole NativeImmutable.mc changed only in NativeBatch. The actual current NativeImmutable class and initialize/text/pinned/parseIndex/sameRefs bodies match original budget bytes; begin/select/next serial/pending changes use the separately source-authenticated current batch-marker fault probe. Original108888-byte heap/storage observations remain historical, not current full peaks."
+    },
+    "cross-vm": {
+      "runner": "tests/test_cross_vm_persistence.py",
+      "proofs": [
+        "evidence/watch-refresh-cache-whole/independent-minute-r1/cross-vm"
+      ],
+      "scope": "Original owned ordinary SDK AppBase restart with diagnostic admission bypass; original source/package/compiler/environment hashes and124/143/0 exits retained. No physical restart or natural firmware claim."
+    },
+    "catalog-sdk": {
+      "runner": "tests/test_catalog_activation_whole.py",
+      "proofs": [
+        "evidence/catalog-activation-whole"
+      ],
+      "scope": "Exact original selected-closure/SDK probe sources/resources, real SDK Storage versus injected faults and stopped run exits remain in build/probe/raw records. Current identity/geography/namespace seams use existing DISPLAY03 compositions."
+    },
+    "ui-composition": {
+      "runner": "tests/public_ui_binding.py",
+      "proofs": [
+        "evidence/current-native-ui/batch.json",
+        "evidence/display03-active-tick-wake",
+        "evidence/decoder-stream-013",
+        "evidence/version-014"
+      ],
+      "scope": "Original sparse UI numbers and captured activity values are historical. Complete current native input identity plus accepted current settings/geography/display/mode observations are composed separately; no new layout, language, signed14, physical or peak claim."
+    },
+    "metadata-direct": {
+      "runner": "tests/test_public_metadata_faults.py",
+      "receipt": "evidence/public-verification-port/metadata-corrected-corpus.log",
+      "scope": "Finite full current schema3 captured corpus has 33 pages. Tests seed a committed normalized prefix (no claim of earlier HTTP traversal), then execute real collector HTTP/save/rollback/reopen. Original four304,6HTTP/7slots,5HTTP/6slots retained; technical source epochs1000/1601/2501 shift to captured NOW/NOW+601/NOW+1501. No display/source fact is invented."
+    },
+    "port-controls": {
+      "runner": "tests/test_public_proof_portability.py",
+      "receipts": [
+        "evidence/public-verification-port/portability-first.log",
+        "evidence/public-verification-port/ordinary-proof-binding.log",
+        "evidence/public-verification-port/composed-adapters-corrected.log",
+        "evidence/public-verification-port/standalone-tests.log",
+        "evidence/public-verification-port/standalone-final-delta-tests.log"
+      ],
+      "scope": "New public host-only input/manifest/raw-record/missing/private-reference/path-escape/live-cache refusal and actual standalone-Git checks. No SDK/provider/service execution."
+    }
+  },
+  "finalObservationBoundary": "All315 original planned public cases mapped; runnable inventory648 implemented/34 external planned. This is source/proof portability acceptance, not fresh execution of all648 or682 cases. Current frozen1191 production inputs agree with canonical source. Raw original proof hash/exit/source/toolchain/substitution fields are retained, and changed readers/direct controls plus actual standalone checkout were exercised."
 }
