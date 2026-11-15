@@ -1,5 +1,6 @@
 import Toybox.Graphics;
 import Toybox.Lang;
+import Toybox.Math;
 import Toybox.System;
 import Toybox.Test;
 
@@ -73,4 +74,31 @@ import Toybox.Test;
 (:test,:typecheck(false)) function display03LocaleResume(logger){
  var c=new Display03Clock();var v=new D03LocaleView(c,new ScheduleState(1794762690,"exact"));v.renderer=new Display03ModeRenderer();v.onShow();var before=v.refreshes;v.onEnterSleep();v.onExitSleep();
  var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assert(v.refreshes==before);v.resumeAfterFrame();Test.assert(v.refreshes==before+1);v.onHide();logger.debug("LOCALE_WAKE refreshed_after_first_frame=true");return true;
+}
+
+// The sparse current-catalog lookup stores signed microdegrees in bytes. Check
+// both hemispheres and that resource indices continue to select the real views.
+(:test,:typecheck(false)) function display03PackedCenters(logger){
+    var renderer=new SceneRenderer(null);var data=NativeAssets.aodCoordinates;
+    Test.assert(data.size()==18*8);
+    var first=renderer.aodCoordinate(data,0);Test.assert(first>144.7971&&first<144.7974);
+    var second=renderer.aodCoordinate(data,4);Test.assert(second>13.4837&&second<13.4840);
+    var third=renderer.aodCoordinate(data,8);Test.assert(third> -81.8764&&third< -81.8761);
+    var fourth=renderer.aodCoordinate(data,12);Test.assert(fourth>30.2240&&fourth<30.2244);
+    Test.assert(NativeAssets.aodResource(0)==Rez.Drawables.AodMap0);
+    Test.assert(NativeAssets.aodResource(54)==Rez.Drawables.AodExtra0);
+    Test.assert(NativeAssets.aodResource(71)==Rez.Drawables.AodExtra17);
+    return true;
+}
+
+// A new publication serial alone does not replace the same immutable job.
+(:test,:typecheck(false)) function display03SameBatchJob(logger){
+    var view=new SpaceFoxView(new Display03Clock(),new ScheduleState(null,"empty"));
+    var old=new NativeRenderSource(null,"https://example.invalid",null);old.ready=true;old.serial=1;old.transferHash="transfer";old.selectionHash="selection";
+    var next=new NativeRenderSource(null,"https://example.invalid",null);next.ready=true;next.serial=2;next.transferHash="transfer";next.selectionHash="selection";
+    view.setAssetCache(old);Test.assert(view.sceneLifecycle.request(1));var generation=view.sceneLifecycle.generation;
+    view.setAssetCache(next);Test.assert(view.sceneLifecycle.pending()&&view.sceneLifecycle.generation==generation);
+    var changed=new NativeRenderSource(null,"https://example.invalid",null);changed.ready=true;changed.serial=3;changed.transferHash="different";changed.selectionHash="selection";
+    view.setAssetCache(changed);Test.assert(!view.sceneLifecycle.pending()&&view.sceneLifecycle.generation>generation);
+    logger.debug("SAME_BATCH serial_advance_preserved=true changed_digest_canceled=true");return true;
 }

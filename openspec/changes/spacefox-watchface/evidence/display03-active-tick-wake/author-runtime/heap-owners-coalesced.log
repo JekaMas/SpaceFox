@@ -1,0 +1,58 @@
+OWNER_MEMORY before-setPacket used=91000
+OWNER_MEMORY after-setPacket used=90928
+JOB_CACHE old=-1 new=1 ready=true pending=false build=false
+OWNER_MEMORY before-renderer used=91656
+OWNER_MEMORY after-renderer used=105800
+D03_SHOW ms=11006 display=0
+OWNER_MEMORY before-show used=105896
+OWNER_MEMORY after-show used=105896
+D03_FRAME begin=11007 end=11015 utc=1794724997 display=0 mode=1 countdown=T- 10:28:13 low=T- 10:29 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_FRAME begin=11015 end=11020 utc=1794724997 display=0 mode=1 countdown=T- 10:28:13 low=T- 10:29 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_FRAME begin=11051 end=11056 utc=1794724997 display=0 mode=1 countdown=T- 10:28:13 low=T- 10:29 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_FRAME begin=11087 end=11092 utc=1794724997 display=0 mode=1 countdown=T- 10:28:13 low=T- 10:29 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_RELOAD_BEGIN ms=11093
+JOB_INCOMING admission=false pending=false
+JOB_CACHE old=1 new=1 ready=true pending=false build=false
+OWNER_MEMORY before-visual used=106360
+OWNER_MEMORY after-visual used=106576
+D03_RELOAD_END ms=11098
+OWNER_MEMORY before-fitness used=106416
+OWNER_MEMORY after-fitness used=106792
+OWNER_MEMORY before-visual used=106792
+OWNER_MEMORY after-visual used=106784
+D03_FRAME begin=11106 end=11111 utc=1794724997 display=0 mode=1 countdown=T- 10:28:13 low=T- 10:29 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+MEM_STEP_BEGIN used=106816 build=false role=-1 pending=true
+MEM_STEP_END used=111232 build=true role=0 ready=false
+MEM_STEP_BEGIN used=111232 build=true role=0 pending=true
+MEM_STEP_END used=122776 build=true role=0 ready=false
+D03_FRAME begin=11229 end=11234 utc=1794724997 display=0 mode=1 countdown=T- 10:28:13 low=T- 10:29 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+MEM_STEP_BEGIN used=122776 build=true role=0 pending=true
+MEM_STEP_END used=122776 build=true role=0 ready=false
+D03_FRAME begin=11298 end=11303 utc=1794724997 display=0 mode=1 countdown=T- 10:28:13 low=T- 10:29 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+MEM_STEP_BEGIN used=122776 build=true role=0 pending=true
+MEM_STEP_END used=122776 build=true role=0 ready=false
+D03_RELOAD_BEGIN ms=11346
+JOB_INCOMING admission=false pending=true
+JOB_CACHE old=1 new=2 ready=true pending=true build=true
+OWNER_MEMORY before-visual used=123208
+OWNER_MEMORY after-visual used=123200
+D03_RELOAD_END ms=11351
+MEM_STEP_BEGIN used=122776 build=true role=0 pending=true
+MEM_STEP_END used=122776 build=true role=0 ready=false
+D03_FRAME begin=11373 end=11378 utc=1794724997 display=0 mode=1 countdown=T- 10:28:13 low=T- 10:29 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_FRAME begin=11379 end=11384 utc=1794724997 display=0 mode=1 countdown=T- 10:28:13 low=T- 10:29 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+MEM_STEP_BEGIN used=122776 build=true role=0 pending=true
+MEM_STEP_END used=118552 build=true role=0 ready=false
+MEM_STEP_BEGIN used=118552 build=true role=0 pending=true
+
+Error: Out Of Memory Error
+Details: Failed invoking <symbol>
+Stack: 
+  - read() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-coalesced/source/NativeCache.mc:10 0x1000117b 
+  - raw() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-coalesced/source/NativeImmutable.mc:17 0x100008b8 
+  - chunk() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-coalesced/source/NativeSfr.mc:27 0x50004ff9 
+  - step() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-coalesced/source/NativeSfr.mc:72 0x10007ea9 
+  - step() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-coalesced/source/NativeSfr.mc:170 0x5000c3e9 
+  - sfrStep() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-coalesced/source/SpaceFoxView.mc:229 0x100068a8 
+  - sfrStep() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-coalesced/Probe.mc:36 0x10008068 
+Encountered an app crash.

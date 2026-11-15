@@ -12,6 +12,7 @@ class SceneRenderer {
     var art as Graphics.BitmapType or Null;
     var map as Graphics.BitmapType or Null;
     var aodMap as Graphics.BitmapType or Null=null;
+    var aodResource as ResourceId or Null=null;
     var aodPin as Boolean=false;var aodPinX as Number=335;var aodPinY as Number=165;
     var mapScale as Dictionary;
     var pin as Boolean = false;
@@ -42,7 +43,7 @@ class SceneRenderer {
         presentation.prepare(settings.language);fonts["label"]=presentation.label as Graphics.FontType;fonts["small"]=presentation.small as Graphics.FontType;fonts["count"]=presentation.count as Graphics.FontType;
         // The bundled view is geographical backdrop only: no location marker is
         // shown unless the selected launch supplies a qualified matching point.
-        fullContext = context; model = null; art = null; map = null; aodMap=null; pin = false;aodPin=false;
+        fullContext = context; model = null; art = null; map = null; aodMap=null; aodResource=null; pin = false;aodPin=false;
         var mapResource=Rez.Drawables.MapView0;
         if (context == null) { map=load(mapResource) as Graphics.BitmapType; art = load(Rez.Drawables.Art_unknown) as Graphics.BitmapType; return; }
         var id = NativeAssets.models.hasKey(context.modelId) ? context.modelId : "generic";
@@ -58,17 +59,19 @@ class SceneRenderer {
                 if (lonDelta>=-0.25 && lonDelta<=0.25 && latDelta>=-0.25 && latDelta<=0.25) {
                     var projected=projectSite(point,view.longitude,view.latitude);
                     pinX=projected[0];pinY=projected[1];aodPinX=pinX;aodPinY=pinY;
-                    mapResource=view.resource;aodMap=load(view.aodResource) as Graphics.BitmapType;pin = true;aodPin=true;break;
+                    mapResource=view.resource;aodResource=NativeAssets.aodResource(i);pin = true;aodPin=true;break;
                 }
             }
-            if(aodMap==null){
+            if(aodResource==null){
                 var point=context.point as Array<Numeric>;
-                for(var i=0;i<NativeAssets.aodMaps.size();i+=1){var view=NativeAssets.aodMaps[i];var lon=point[0]-view.longitude;var lat=point[1]-view.latitude;
-                    if(lon>=-0.25&&lon<=0.25&&lat>=-0.25&&lat<=0.25){var projected=projectSite(point,view.longitude,view.latitude);aodPinX=projected[0];aodPinY=projected[1];aodPin=true;aodMap=load(view.resource) as Graphics.BitmapType;break;}}
+                var coordinates=NativeAssets.aodCoordinates;
+                for(var i=0;i<coordinates.size()/8;i+=1){var longitude=aodCoordinate(coordinates,i*8);var latitude=aodCoordinate(coordinates,i*8+4);var lon=point[0]-longitude;var lat=point[1]-latitude;
+                    if(lon>=-0.25&&lon<=0.25&&lat>=-0.25&&lat<=0.25){var projected=projectSite(point,longitude,latitude);aodPinX=projected[0];aodPinY=projected[1];aodPin=true;aodResource=NativeAssets.aodResource(54+i);break;}}
             }
         }
         map=load(mapResource) as Graphics.BitmapType;
     }
+    function aodCoordinate(data as ByteArray,offset as Number) as Float {return ((data[offset]<<24)|(data[offset+1]<<16)|(data[offset+2]<<8)|data[offset+3])/1000000.0;}
     function projectSite(point as Array<Numeric>,longitude as Numeric,latitude as Numeric) as Array<Number> {
         var rad=0.017453292519943295;var lambda=(point[0]-longitude)*rad;var phi=point[1]*rad;var delta=-latitude*rad;
         var x=Math.cos(lambda)*Math.cos(phi);var y=Math.sin(lambda)*Math.cos(phi);var z=Math.sin(phi);
@@ -166,11 +169,13 @@ class SceneRenderer {
     function icon(dc as Graphics.Dc,x as Numeric,y as Numeric,role as String) as Void {
         if(icons.hasKey(role)){dc.drawBitmap(x,y,icons[role] as Graphics.BitmapType);}
     }
+    function releaseAod() as Void { aodMap=null; }
     (:typecheck(false)) function aod(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,settings as SceneSettings) as Void {
         current.rescheduled=current.rescheduled||fullContext!=null&&fullContext.rescheduled;
         current.stale=current.stale||fullContext!=null&&fullContext.stale;
         var rich=downloaded instanceof NativeSfrRenderer?downloaded:null;
         var selected=rich!=null && rich.mapOutline!=null && rich.scene!=null && rich.scene["position"]!=null;
+        if(!selected && aodMap==null && aodResource!=null){aodMap=load(aodResource as ResourceId) as Graphics.BitmapType;}
         SceneAod.draw(dc,current,minute,presentation,fonts["aod"] as Graphics.FontType,settings,selected?rich.mapOutline:aodMap,selected||aodPin,selected?335:aodPinX,selected?165:aodPinY);
     }
 }

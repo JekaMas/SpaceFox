@@ -1,0 +1,20 @@
+------------------------------------------------------------------------------
+Executing test display03PackedCenters...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - display03PackedCenters() at /Users/jekamas/projects/SpaceFox-worktrees/active-clock-wake-20261115/watchface/display03-tests/Display03Tests.mc:84 0x10003a26 
+  - evaluate_test_entries_0_to_11() at /Users/jekamas/.codex/tmp/spacefox-display03-author/focus-packed-fixed/gen/006-B4433-00/source/UnitTests.mcgen:81 0x10008370 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-display03-author/focus-packed-fixed/gen/006-B4433-00/source/UnitTests.mcgen:96 0x1000849e 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+display03PackedCenters              ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

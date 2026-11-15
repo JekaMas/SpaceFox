@@ -11,16 +11,17 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from tools.build_watchface import discover
 from tools.run_native_tests import parse_output
-NAMES=('display03MinuteRounding','display03RepeatedLowCallbacks','display03SleepThenHighObservation','display03WakeThenLowObservation','display03CausalSequence','display03ReadyAndErrorOnWake','display03BackgroundBeforeFrame','display03RealMapDecode','display03PrimaryLanguages','display03LocaleResume')
+NAMES=('display03MinuteRounding','display03RepeatedLowCallbacks','display03SleepThenHighObservation','display03WakeThenLowObservation','display03CausalSequence','display03ReadyAndErrorOnWake','display03BackgroundBeforeFrame','display03RealMapDecode','display03PrimaryLanguages','display03LocaleResume','display03PackedCenters','display03SameBatchJob')
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
-def inputs():
- paths=[p for p in (ROOT/'watchface/source').rglob('*.mc') if p.is_file()]
- paths += [p for p in (ROOT/'watchface/resources').rglob('*') if p.is_file()]
- paths += [p for d in ROOT.glob('watchface/resources-*') for p in d.rglob('*') if p.is_file()]
- paths += list((ROOT/'watchface/display03-tests').glob('*.mc'))
- paths += [p for p in (ROOT/'openspec/changes/spacefox-watchface/evidence/site-flag-visual-batch/native-artifact').rglob('*') if p.is_file()]
- paths += [ROOT/'watchface/manifest.xml',ROOT/'watchface/toolchain-lock.json',ROOT/'tests/fixtures/watch_refresh_cache/packets.json',ROOT/'tools/native_display03_probe.py']
- return {str(p.relative_to(ROOT)):sha(p) for p in sorted(paths)}
+def inputs(root=ROOT):
+ root=Path(root).resolve()
+ paths=[p for p in (root/'watchface/source').rglob('*.mc') if p.is_file()]
+ paths += [p for p in (root/'watchface/resources').rglob('*') if p.is_file()]
+ paths += [p for d in root.glob('watchface/resources-*') for p in d.rglob('*') if p.is_file()]
+ paths += list((root/'watchface/display03-tests').glob('*.mc'))
+ paths += [p for p in (root/'openspec/changes/spacefox-watchface/evidence/site-flag-visual-batch/native-artifact').rglob('*') if p.is_file()]
+ paths += [root/'watchface/manifest.xml',root/'watchface/toolchain-lock.json',root/'tests/fixtures/watch_refresh_cache/packets.json',root/'tools/native_display03_probe.py']
+ return {str(p.relative_to(root)):sha(p) for p in sorted(paths)}
 def run(out):
  out=Path(out).resolve();out.mkdir(parents=True,exist_ok=True);ctx=discover();before=inputs()
  ET.register_namespace('iq','http://www.garmin.com/xml/connectiq');tree=ET.parse(ROOT/'watchface/manifest.xml');tree.getroot().find('{http://www.garmin.com/xml/connectiq}application').set('id','5bb6fca4fe174f9da6bfdc2ac6d70b59');tree.write(out/'manifest.xml',encoding='utf-8',xml_declaration=True)
@@ -42,7 +43,11 @@ def run(out):
   code={'chs':'zhs','cht':'zht'}.get(row['garmin'],row['garmin']);j+='base.lang.'+code+' = '+str(ROOT/'watchface'/('resources-'+code))+'\n'
  (out/'probe.jungle').write_text(j);package=out/'Display02Tests.prg';cmd=[str(ctx['java']),'-Dfile.encoding=UTF-8','-jar',str(ctx['compiler']),'-f',str(out/'probe.jungle'),'-d','fr165m','-o',str(package),'-y',str(ctx['key']),'-l','3','-O','2','-w','--unit-test'];build=subprocess.run(cmd,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=120);(out/'compile.log').write_text(build.stdout)
  if build.returncode:raise RuntimeError('SDK compile failed')
- launch=[str(ctx['java']),'-Dfile.encoding=UTF-8','-classpath',str(ctx['compiler']),'com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux','-f',str(package),'-d','fr165m','-s',str(ctx['sdk']/'bin/shell'),'-t'];test=subprocess.run(launch,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=90);(out/'native.log').write_text(test.stdout);result=parse_output(test.stdout,test.returncode,NAMES)
+ launch=[str(ctx['java']),'-Dfile.encoding=UTF-8','-classpath',str(ctx['compiler']),'com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux','-f',str(package),'-d','fr165m','-s',str(ctx['sdk']/'bin/shell'),'-t'];selected=os.environ.get('SPACEFOX_DISPLAY03_TEST');
+ if selected:
+  if selected not in NAMES:raise ValueError('unknown DISPLAY03 test filter')
+  launch.append(selected)
+ test=subprocess.run(launch,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=90);(out/'native.log').write_text(test.stdout);result=parse_output(test.stdout,test.returncode,(selected,) if selected else NAMES)
  if inputs()!=before:raise RuntimeError('native source changed during test')
  receipt={'status':result['status'],'buildCommand':cmd,'launchCommand':launch,'rawExit':test.returncode,'tests':result,'inputHashes':before,'packageSha256':sha(package),'testKeyBoundary':'disposable SDK test key','admission':'diagnostic bypass; current proof checked separately'};(out/'receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
  if result['status']!='passed':raise RuntimeError('SDK tests incomplete or failed')

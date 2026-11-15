@@ -59,7 +59,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
         if (_mode == next) { return; }
         _mode=next;aodMinute=null;metricsMinute=null;
         if (_mode == LOW) { _resumePending=false;stopResume();stopAnimation();cancelSfrBuild();stopFitness(); }
-        else { _resumePending=true; }
+        else { if(renderer!=null){renderer.releaseAod();} _resumePending=true; }
         WatchUi.requestUpdate();
     }
     function onShow() as Void {
@@ -107,9 +107,15 @@ class SpaceFoxView extends WatchUi.WatchFace {
         if(renderer!=null){renderer.downloaded=downloaded;}
         if(packet!=null){packet.compact();}
     }
-    function setAssetCache(cache as NativeRenderSource) as Void {
+    (:typecheck(false)) function setAssetCache(cache as NativeRenderSource) as Void {
         var newlyReady=cache.ready && (assetCache==null || !assetCache.ready || assetCache.serial!=cache.serial);
-        if(newlyReady && assetCache!=null){cancelSfrBuild();}
+        // A newly admitted batch serial can point to the same immutable scene.
+        // Keep the one existing job only when namespace, transfer and selection
+        // digests all match. Packet/schedule admission remains independent.
+        var same=assetCache!=null && assetCache.ready && cache.ready && assetCache.base.equals(cache.base) &&
+            assetCache.transferHash!=null && cache.transferHash!=null && assetCache.transferHash.equals(cache.transferHash) &&
+            assetCache.selectionHash!=null && cache.selectionHash!=null && assetCache.selectionHash.equals(cache.selectionHash);
+        if(newlyReady && assetCache!=null && !same){cancelSfrBuild();}
         assetCache=cache;
     }
     (:extendedCode, :typecheck(false))

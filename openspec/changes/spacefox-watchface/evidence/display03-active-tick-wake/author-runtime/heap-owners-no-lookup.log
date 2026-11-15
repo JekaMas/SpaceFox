@@ -1,0 +1,52 @@
+OWNER_MEMORY before-setPacket used=90824
+OWNER_MEMORY after-setPacket used=90752
+OWNER_MEMORY before-renderer used=91456
+OWNER_MEMORY after-renderer used=105408
+D03_SHOW ms=11218 display=0
+OWNER_MEMORY before-show used=105504
+OWNER_MEMORY after-show used=105504
+D03_FRAME begin=11219 end=11227 utc=1794724033 display=0 mode=1 countdown=T- 10:44:17 low=T- 10:45 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_FRAME begin=11227 end=11232 utc=1794724033 display=0 mode=1 countdown=T- 10:44:17 low=T- 10:45 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_FRAME begin=11265 end=11270 utc=1794724033 display=0 mode=1 countdown=T- 10:44:17 low=T- 10:45 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_FRAME begin=11302 end=11308 utc=1794724033 display=0 mode=1 countdown=T- 10:44:17 low=T- 10:45 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_RELOAD_BEGIN ms=11309
+OWNER_MEMORY before-visual used=105968
+OWNER_MEMORY after-visual used=106184
+D03_RELOAD_END ms=11314
+OWNER_MEMORY before-fitness used=106024
+OWNER_MEMORY after-fitness used=106400
+OWNER_MEMORY before-visual used=106400
+OWNER_MEMORY after-visual used=106392
+D03_FRAME begin=11323 end=11328 utc=1794724033 display=0 mode=1 countdown=T- 10:44:17 low=T- 10:45 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_FRAME begin=11350 end=11356 utc=1794724033 display=0 mode=1 countdown=T- 10:44:17 low=T- 10:45 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+MEM_STEP_BEGIN used=106424 build=false role=-1 pending=true
+MEM_STEP_END used=110840 build=true role=0 ready=false
+MEM_STEP_BEGIN used=110840 build=true role=0 pending=true
+MEM_STEP_END used=122648 build=true role=0 ready=false
+D03_FRAME begin=11497 end=11502 utc=1794724034 display=0 mode=1 countdown=T- 10:44:16 low=T- 10:45 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+MEM_STEP_BEGIN used=122648 build=true role=0 pending=true
+MEM_STEP_END used=122648 build=true role=0 ready=false
+MEM_STEP_BEGIN used=122648 build=true role=0 pending=true
+MEM_STEP_END used=122648 build=true role=0 ready=false
+D03_RELOAD_BEGIN ms=11606
+OWNER_MEMORY before-visual used=108808
+OWNER_MEMORY after-visual used=109024
+D03_RELOAD_END ms=11610
+D03_FRAME begin=11610 end=11615 utc=1794724034 display=0 mode=1 countdown=T- 10:44:16 low=T- 10:45 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_FRAME begin=11617 end=11621 utc=1794724034 display=0 mode=1 countdown=T- 10:44:16 low=T- 10:45 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+MEM_STEP_BEGIN used=108600 build=false role=-1 pending=true
+MEM_STEP_END used=113000 build=true role=0 ready=false
+D03_FRAME begin=11761 end=11765 utc=1794724034 display=0 mode=1 countdown=T- 10:44:16 low=T- 10:45 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+MEM_STEP_BEGIN used=113000 build=true role=0 pending=true
+
+Error: Out Of Memory Error
+Details: Failed invoking <symbol>
+Stack: 
+  - read() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-no-lookup/source/NativeCache.mc:10 0x1000117b 
+  - raw() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-no-lookup/source/NativeImmutable.mc:17 0x100008b8 
+  - chunk() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-no-lookup/source/NativeSfr.mc:27 0x50004e8f 
+  - step() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-no-lookup/source/NativeSfr.mc:72 0x10007e93 
+  - step() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-no-lookup/source/NativeSfr.mc:170 0x5000ae46 
+  - sfrStep() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-no-lookup/source/SpaceFoxView.mc:222 0x1000683f 
+  - sfrStep() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-no-lookup/Probe.mc:36 0x10008070 
+Encountered an app crash.

@@ -1,0 +1,38 @@
+OWNER_MEMORY before-setPacket used=91016
+OWNER_MEMORY after-setPacket used=90944
+OWNER_MEMORY before-renderer used=91648
+OWNER_MEMORY after-renderer used=105792
+D03_SHOW ms=11396 display=0
+OWNER_MEMORY before-show used=105888
+OWNER_MEMORY after-show used=105888
+D03_FRAME begin=11396 end=11405 utc=1794724213 display=0 mode=1 countdown=T- 10:41:17 low=T- 10:42 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_FRAME begin=11406 end=11411 utc=1794724213 display=0 mode=1 countdown=T- 10:41:17 low=T- 10:42 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_FRAME begin=11486 end=11491 utc=1794724213 display=0 mode=1 countdown=T- 10:41:17 low=T- 10:42 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_FRAME begin=11493 end=11499 utc=1794724213 display=0 mode=1 countdown=T- 10:41:17 low=T- 10:42 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+D03_RELOAD_BEGIN ms=11501
+OWNER_MEMORY before-visual used=106352
+OWNER_MEMORY after-visual used=106568
+D03_RELOAD_END ms=11505
+OWNER_MEMORY before-fitness used=106408
+OWNER_MEMORY after-fitness used=106784
+OWNER_MEMORY before-visual used=106784
+OWNER_MEMORY after-visual used=106776
+D03_FRAME begin=11515 end=11521 utc=1794724213 display=0 mode=1 countdown=T- 10:41:17 low=T- 10:42 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+MEM_STEP_BEGIN used=106808 build=false role=-1 pending=true
+MEM_STEP_END used=111224 build=true role=0 ready=false
+D03_FRAME begin=11610 end=11617 utc=1794724213 display=0 mode=1 countdown=T- 10:41:17 low=T- 10:42 launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a map=false point=true ready=false wake=-1
+MEM_STEP_BEGIN used=111224 build=true role=0 pending=true
+
+Error: Unexpected Type Error
+Details: Failed invoking <symbol>
+Stack: 
+  - chunk() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-compact/source/NativeSfr.mc:43 0x500051c8 
+  - step() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-compact/source/NativeSfr.mc:72 0x10007f11 
+  - step() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-compact/source/NativeSfr.mc:170 0x5000c331 
+  - sfrStep() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-compact/source/SpaceFoxView.mc:222 0x100068a8 
+  - sfrStep() at /Users/jekamas/.codex/tmp/spacefox-display03-author/owners-compact/Probe.mc:36 0x100080d0 
+D03_RELOAD_BEGIN ms=11705
+OWNER_MEMORY before-visual used=109024
+OWNER_MEMORY after-visual used=109240
+D03_RELOAD_END ms=11712
+Encountered an app crash.

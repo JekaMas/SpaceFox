@@ -10,11 +10,11 @@ import Toybox.System;
 // paged. NativeCacheCore paging funds this within the same foreground cap.
 (:typecheck(false))
 class NativeSfrDecoder {
-    var immutable;var descriptor;var bitmap;var dc;var hash;var row=[]b;var colors=[];var width;var height;var channels;var rgbRowBitmap=null;var rgbRowDc=null;var outlineBitmap=null;var outlineDc=null;var outlinePrevious=[];var y=0;var shard=0;var data=null;var offset=0;var endRow=0;var done=false;
+    var immutable;var descriptor;var bitmap;var dc;var hash;var row=[]b;var colors=[];var width;var height;var channels;var rgbRowBitmap=null;var rgbRowDc=null;var outlineBitmap=null;var outlineDc=null;var outlinePrevious=[]b;var y=0;var shard=0;var data=null;var offset=0;var endRow=0;var done=false;
     (:extendedCode)
     function initialize(adapter,d){
         immutable=new NativeImmutable(adapter);descriptor=d;width=d["canvas"][0];height=d["canvas"][1];channels=d["channels"];hash=new Cryptography.Hash({:algorithm=>Cryptography.HASH_SHA256});
-        bitmap=Graphics.createBufferedBitmap({:width=>width,:height=>height,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();dc=bitmap.getDc();dc.setColor(Graphics.COLOR_TRANSPARENT,Graphics.COLOR_TRANSPARENT);dc.clear();if(channels==3){rgbRowBitmap=Graphics.createBufferedBitmap({:width=>width,:height=>1,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();rgbRowDc=rgbRowBitmap.getDc();outlineBitmap=Graphics.createBufferedBitmap({:width=>130,:height=>130,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();outlineDc=outlineBitmap.getDc();outlineDc.setColor(Graphics.COLOR_TRANSPARENT,Graphics.COLOR_TRANSPARENT);outlineDc.clear();outlineDc.setColor(0x6996A5,Graphics.COLOR_TRANSPARENT);for(var i=0;i<130;i+=1){outlinePrevious.add(0);}}
+        bitmap=Graphics.createBufferedBitmap({:width=>width,:height=>height,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();dc=bitmap.getDc();dc.setColor(Graphics.COLOR_TRANSPARENT,Graphics.COLOR_TRANSPARENT);dc.clear();if(channels==3){rgbRowBitmap=Graphics.createBufferedBitmap({:width=>width,:height=>1,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();rgbRowDc=rgbRowBitmap.getDc();outlineBitmap=Graphics.createBufferedBitmap({:width=>130,:height=>130,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();outlineDc=outlineBitmap.getDc();outlineDc.setColor(Graphics.COLOR_TRANSPARENT,Graphics.COLOR_TRANSPARENT);outlineDc.clear();outlineDc.setColor(0x6996A5,Graphics.COLOR_TRANSPARENT);for(var i=0;i<390;i+=1){outlinePrevious.add(0);}}
     }
     (:extendedCode)
     function fail(){throw new Lang.InvalidValueException("Invalid SFR1 raster");}
@@ -53,21 +53,21 @@ class NativeSfrDecoder {
     function paintCopy(x,length){
         var first=x;var current=colors[x];for(var n=1;n<length;n+=1){var next=colors[x+n];if(next!=current){span(first,x+n-first,current);first=x+n;current=next;}}span(first,x+length-first,current);
     }
-    function channelDistance(a,b){var d=a-b;return d<0?-d:d;}
+    (:extendedCode) function channelDistance(a,b){var d=a-b;return d<0?-d:d;}
     // Derive a sparse outline from the accepted map raster while decoding it,
     // never during redraw. Neighbour differences are measured at 3px spacing.
-    function outlineRow(){
-        if(channels!=3 || y%3!=0){return;}var oy=y/3;var left=0;
-        for(var x=0;x<130;x+=1){var at=x*9;var r=row[at];var g=row[at+1];var b=row[at+2];var value=r*65536+g*256+b;var above=outlinePrevious[x];
-            var change=channelDistance(r,(left>>16)&255);var n=channelDistance(g,(left>>8)&255);if(n>change){change=n;}n=channelDistance(b,left&255);if(n>change){change=n;}
-            if(y>0){n=channelDistance(r,(above>>16)&255);if(n>change){change=n;}n=channelDistance(g,(above>>8)&255);if(n>change){change=n;}n=channelDistance(b,above&255);if(n>change){change=n;}}
-            var dx=x-5;var dy=oy-175;if(change>16 && oy+20<100 && dx*dx+dy*dy<=36100){outlineDc.drawPoint(x,oy);}outlinePrevious[x]=value;left=value;
+    (:extendedCode) function outlineRow(){
+        if(channels!=3 || y%3!=0){return;}var oy=y/3;var leftR=0;var leftG=0;var leftB=0;
+        for(var x=0;x<130;x+=1){var at=x*9;var previous=x*3;var r=row[at];var g=row[at+1];var b=row[at+2];
+            var change=channelDistance(r,leftR);var n=channelDistance(g,leftG);if(n>change){change=n;}n=channelDistance(b,leftB);if(n>change){change=n;}
+            if(y>0){n=channelDistance(r,outlinePrevious[previous]);if(n>change){change=n;}n=channelDistance(g,outlinePrevious[previous+1]);if(n>change){change=n;}n=channelDistance(b,outlinePrevious[previous+2]);if(n>change){change=n;}}
+            var dx=x-5;var dy=oy-175;if(change>16 && oy+20<100 && dx*dx+dy*dy<=36100){outlineDc.drawPoint(x,oy);}outlinePrevious[previous]=r;outlinePrevious[previous+1]=g;outlinePrevious[previous+2]=b;leftR=r;leftG=g;leftB=b;
         }
     }
     function oneRow(){
         if(data==null){chunk();}var x=0;
         while(x<width){if(offset>=data.size()){fail();}var token=data[offset];offset+=1;var count=(token&127)+1;if(x+count>width){fail();}if(token<128){if(offset+channels>data.size()){fail();}var value=color(offset);if(channels==3){for(var n=0;n<count;n+=1){var at=(x+n)*3;row[at]=data[offset];row[at+1]=data[offset+1];row[at+2]=data[offset+2];}}else{for(var n=0;n<count;n+=1){colors[x+n]=value;for(var c=0;c<channels;c+=1){row[(x+n)*channels+c]=data[offset+c];}}}offset+=channels;span(x,count,value);}else if(channels==4){paintCopy(x,count);}x+=count;}
-        if(channels==3){dc.drawBitmap(0,y,rgbRowBitmap);outlineRow();}hash.update(row);y+=1;if(y==endRow){if(offset!=data.size()){fail();}data=null;row=[]b;colors=[];}if(y==height){if(shard!=descriptor["shards"].size()||data!=null){fail();}var digest=StringUtil.convertEncodedString(hash.digest(),{:fromRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:toRepresentation=>StringUtil.REPRESENTATION_STRING_HEX}).toLower();if(!digest.equals(descriptor["pixelSha256"])){fail();}done=true;row=[]b;colors=[];outlinePrevious=[];outlineDc=null;descriptor=null;dc=null;hash=null;rgbRowDc=null;rgbRowBitmap=null;}
+        if(channels==3){dc.drawBitmap(0,y,rgbRowBitmap);outlineRow();}hash.update(row);y+=1;if(y==endRow){if(offset!=data.size()){fail();}data=null;row=[]b;colors=[];}if(y==height){if(shard!=descriptor["shards"].size()||data!=null){fail();}var digest=StringUtil.convertEncodedString(hash.digest(),{:fromRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:toRepresentation=>StringUtil.REPRESENTATION_STRING_HEX}).toLower();if(!digest.equals(descriptor["pixelSha256"])){fail();}done=true;row=[]b;colors=[];outlinePrevious=[]b;outlineDc=null;descriptor=null;dc=null;hash=null;rgbRowDc=null;rgbRowBitmap=null;}
     }
     function step(){if(data==null&&!done){chunk();return false;}var start=System.getTimer();var rows=0;while(!done&&rows<16&&(rows==0||System.getTimer()-start<18)){oneRow();rows+=1;if(data==null){break;}}return done;}
 }

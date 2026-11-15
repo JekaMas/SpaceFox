@@ -614,3 +614,26 @@ measured callback-to-first-frame latency and actual marker pixels, not only
 same-UTC arithmetic. See [DISPLAY03 plan](evidence/display03-active-tick-wake/PLAN.md).
 One author apply/self-GREEN then one fresh independent verify/fix, root judge and
 original-card release follow. Existing tasks and physical acceptance remain open.
+
+### DISPLAY03 author checkpoint — ready for independent verification
+
+On the fixed merged base `49d7a991`, the 0.1.12 native source identity is
+`971cb9a1`. The bounded author SDK run passed 12/12 cases (raw launcher exit 1),
+including five 30-event independent-oracle traces, LOW minute stability,
+rendered selected-map decoding, five primary languages and same-digest batch
+job continuity. FR165 Music EN/RU native pixel captures and field bounds,
+current-catalog 217/217 numeric-site outline coverage, 4 ms simulator
+callback-to-completed-active-frame wake and stable automatic one-second
+countdown cadence are retained in [author observations](evidence/display03-active-tick-wake/author-runtime/FINAL-OBSERVATION.md).
+The five-language admission reconstructs the 0.1.11 predecessor and rejects a
+tampered current source; OpenSpec strict validation and source syntax checks
+passed. Plain-app EN/RU runs and a minimally instrumented selected-scene READY
+and background-callback witness are separately qualified there.
+
+The heavier ordinary-heap observer still ran out of memory; the failed controls
+and the plain-app boundary are retained in [the investigation](evidence/display03-active-tick-wake/author-runtime/OOM-INVESTIGATION.md).
+Original simulator files and ini were restored byte-for-byte; temporal event
+registration remains unverified. Physical version `0.10.0`, reported 10–20 s
+wake, physical map point, Store delivery and physical behavior remain open.
+This is an author checkpoint only; task completion and publication require
+fresh independent verification and root judgment.
