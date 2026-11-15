@@ -1,0 +1,15 @@
+import Toybox.Application;
+import Toybox.Lang;
+import Toybox.System;
+import Toybox.WatchUi;
+(:background,:typecheck(false)) class ReopenProbeApp extends Application.AppBase {
+ var calls=0;
+ function initialize(){AppBase.initialize();}
+ function post(slot,s){calls+=1;}
+ (:typecheck(disableBackgroundCheck)) function getInitialView(){
+  var store=new NativeStore();var cache=new NativeTransfer("https://reopen.invalid",store);Application.Properties.setValue("LaunchReminders",1);var old=store.read("sf.reminder.attempt");
+  if(old==null){store.write("sf.commit",{"base"=>cache.base,"seal"=>"one"});store.write("sf.reminder.control",{"enabled"=>true,"since"=>998000l});store.write("sf.reminder.snapshot",{"base"=>cache.base,"id"=>"source:launch:one","target"=>1000000l,"title"=>"Launch","validated"=>999000l,"since"=>998000l,"stale"=>false,"policy"=>[7200,3600,null,4],"seal"=>"one","commitKey"=>"sf.commit"});LaunchReminder.wakeWith(cache,999100l,true,method(:post));var saved=store.read("sf.reminder.attempt");System.println("REOPEN_SEED stored="+(saved!=null)+" calls="+calls);}
+  else{LaunchReminder.wakeWith(cache,999101l,false,method(:post));System.println("REOPEN_OBSERVED persisted="+(old["rows"] instanceof Array&&old["rows"].size()==1&&old["rows"][0]["last"]==0)+" calls="+calls+" duplicateSuppressed="+(calls==0));}
+  System.exit();return [new WatchUi.WatchFace()];
+ }
+}

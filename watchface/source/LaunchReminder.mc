@@ -70,14 +70,38 @@ module LaunchReminder {
   for(var i=0;i<times.size();i+=1){var t=times[i];if(t>=since&&now>=t&&now<=t+(i==3?0:90)){index=i;}}
   if(index==null){return null;}if(prior instanceof Dictionary&&same(prior["base"],s["base"])&&same(prior["id"],s["id"])&&prior["target"]==s["target"]&&number(prior["last"])&&prior["last"]>=index){return null;}return index;
  }
+ // Retain every still-actionable identity; if full or the clock moves backward,
+ // fail closed rather than forget a consumed slot. Expired rows can be dropped
+ // only while preserving the monotonic watermark in the same durable write.
+ function consume(store,s,now,since){
+  var saved=store.read("sf.reminder.attempt");var rows=[];var watermark=now;
+  if(saved!=null){
+   if(!(saved instanceof Dictionary)){return null;}
+   if(saved.hasKey("rows")){
+    if(!(saved["rows"] instanceof Array)||saved["rows"].size()>16||!number(saved["watermark"])||now<saved["watermark"]){return null;}
+    watermark=now;
+    for(var i=0;i<saved["rows"].size();i+=1){var r=saved["rows"][i];if(!(r instanceof Dictionary)||!(r["base"] instanceof String)||!(r["id"] instanceof String)||!number(r["target"])||!number(r["last"])||r["last"]<0||r["last"]>3){return null;}if(r["target"]>=now){rows.add(r);}}
+   }else{
+    // Upgrade the initial 0.1.15 test state without losing its consumed slot.
+    if(!(saved["base"] instanceof String)||!(saved["id"] instanceof String)||!number(saved["target"])||!number(saved["last"])||saved["last"]<0||saved["last"]>3){return null;}
+    if(saved["target"]>=now){rows.add(saved);}
+   }
+  }
+  var prior=null;var pos=null;for(var j=0;j<rows.size();j+=1){var r=rows[j];if(same(r["base"],s["base"])&&same(r["id"],s["id"])&&r["target"]==s["target"]){prior=r;pos=j;break;}}
+  var slot=candidate(s,now,since,prior);if(slot==null){return null;}
+  var entry={"base"=>s["base"],"id"=>s["id"],"target"=>s["target"],"last"=>slot};
+  if(pos==null){if(rows.size()>=16){return null;}rows.add(entry);}else{rows[pos]=entry;}
+  store.write("sf.reminder.attempt",{"watermark"=>watermark,"rows"=>rows});
+  var check=store.read("sf.reminder.attempt");if(!(check instanceof Dictionary)||check["watermark"]!=watermark||!(check["rows"] instanceof Array)||check["rows"].size()!=rows.size()){return null;}
+  var observed=check["rows"][pos==null?rows.size()-1:pos];if(!(observed instanceof Dictionary)||!same(observed["base"],s["base"])||!same(observed["id"],s["id"])||observed["target"]!=s["target"]||observed["last"]!=slot){return null;}
+  return slot;
+ }
  function post(slot,s){if(slot==3&&Time.now().value().toLong()>s["target"]){return;}var label=slot==3?"Scheduled launch time":"Launch in "+[15,10,5][slot]+" min";Notifications.showNotification(label,s["title"],{:dismissPrevious=>true});}
  function wake(cache,now){try{if(!enabled()){return;}wakeWith(cache,now,null,method(:post));}catch(e){}}
  function wakeWith(cache,now,quietState,postMethod){
-  try{var control=syncEnable(cache.store,now);if(!control["enabled"]){return;}var s=cache.store.read("sf.reminder.snapshot");if(!bound(cache.store,s,cache.base,now)){return;}var since=control["since"]>s["since"]?control["since"]:s["since"];var prior=cache.store.read("sf.reminder.attempt");var slot=candidate(s,now,since,prior);if(slot==null){return;}
-   cache.store.write("sf.reminder.attempt",{"base"=>s["base"],"id"=>s["id"],"target"=>s["target"],"last"=>slot});
-   var saved=cache.store.read("sf.reminder.attempt");if(!(saved instanceof Dictionary)||!same(saved["base"],s["base"])||!same(saved["id"],s["id"])||saved["target"]!=s["target"]||saved["last"]!=slot){return;}
-   if(quietState==null){quietState=isQuiet(now);}if(quietState!=false||!enabled()){return;}
-   var current=cache.store.read("sf.reminder.snapshot");if(!(current instanceof Dictionary)||!same(current["seal"],s["seal"])||!same(current["id"],s["id"])||current["target"]!=s["target"]||!bound(cache.store,s,cache.base,now)){return;}postMethod.invoke(slot,s);
+  try{var control=syncEnable(cache.store,now);if(!control["enabled"]){return;}var s=cache.store.read("sf.reminder.snapshot");if(!bound(cache.store,s,cache.base,now)){return;}var since=control["since"]>s["since"]?control["since"]:s["since"];var slot=consume(cache.store,s,now,since);if(slot==null){return;}
+   var checkNow=now;if(quietState==null){checkNow=Time.now().value().toLong();quietState=isQuiet(checkNow);}if(checkNow<now||quietState!=false||!enabled()||candidate(s,checkNow,since,null)!=slot){return;}
+   var current=cache.store.read("sf.reminder.snapshot");if(!(current instanceof Dictionary)||!same(current["seal"],s["seal"])||!same(current["id"],s["id"])||current["target"]!=s["target"]||!bound(cache.store,s,cache.base,checkNow)){return;}postMethod.invoke(slot,s);
   }catch(e){}
  }
  function nextWake(cache,now,last){try{var control=syncEnable(cache.store,now);if(!control["enabled"]){return null;}var s=cache.store.read("sf.reminder.snapshot");if(!bound(cache.store,s,cache.base,now)){return null;}var since=control["since"]>s["since"]?control["since"]:s["since"];return next(s,now,last,since);}catch(e){return null;}}

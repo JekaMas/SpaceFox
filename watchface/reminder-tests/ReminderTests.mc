@@ -52,12 +52,27 @@ import Toybox.WatchUi;
  var reopened=new ReminderCache();reopened.store=c.store;LaunchReminder.wakeWith(reopened,999102l,false,sink.method(:post));Test.assertEqual(sink.calls,1);
  var moved=reopened.store.data["sf.reminder.snapshot"];moved["target"]=1000600l;moved["since"]=999102l;moved["seal"]="two";reopened.store.data["sf.commit"]["seal"]="two";
  LaunchReminder.wakeWith(reopened,999400l,false,sink.method(:post));Test.assertEqual(sink.calls,1);LaunchReminder.wakeWith(reopened,999700l,false,sink.method(:post));Test.assertEqual(sink.calls,2);LaunchReminder.wakeWith(reopened,999701l,false,sink.method(:post));Test.assertEqual(sink.calls,2);
+ // Repeated callbacks at one instant around A→B→A must not erase A.
+ var x=new ReminderCache();reminderReady(x);var out=new ReminderSink();var a=x.store.data["sf.reminder.snapshot"];
+ LaunchReminder.wakeWith(x,999400l,false,out.method(:post));Test.assertEqual(out.calls,1);
+ a["target"]=1000300l;a["seal"]="b";x.store.data["sf.commit"]["seal"]="b";
+ LaunchReminder.wakeWith(x,999400l,false,out.method(:post));Test.assertEqual(out.calls,2);
+ a["target"]=1000000l;a["seal"]="a";x.store.data["sf.commit"]["seal"]="a";
+ var again=new ReminderCache();again.store=x.store;LaunchReminder.wakeWith(again,999400l,false,out.method(:post));Test.assertEqual(out.calls,2);
+ // A backward clock cannot revive an expired row after bounded pruning.
+ a["target"]=1001000l;a["seal"]="c";x.store.data["sf.commit"]["seal"]="c";
+ LaunchReminder.wakeWith(x,1000100l,false,out.method(:post));Test.assertEqual(out.calls,3);
+ a["target"]=1000000l;a["seal"]="a";x.store.data["sf.commit"]["seal"]="a";
+ LaunchReminder.wakeWith(x,999400l,false,out.method(:post));Test.assertEqual(out.calls,3);
+ // Full history fails closed while all retained identities are actionable.
+ var full=new ReminderCache();reminderReady(full);var all=[];for(var k=0;k<16;k+=1){all.add({"base"=>full.base,"id"=>"other:"+k,"target"=>1000001l,"last"=>0});}full.store.data["sf.reminder.attempt"]={"watermark"=>999100l,"rows"=>all};
+ var suppressed=new ReminderSink();LaunchReminder.wakeWith(full,999100l,false,suppressed.method(:post));Test.assertEqual(suppressed.calls,0);Test.assertEqual(full.store.data["sf.reminder.attempt"]["rows"].size(),16);
  Application.Properties.setValue("LaunchReminders",0);return true;
 }
 (:test,:typecheck(false)) function identityNegative(logger){
  var c=new ReminderCache();reminderReady(c);var sink=new ReminderSink();var s=c.store.data["sf.reminder.snapshot"];
  var exact=WatchUi.loadResource(Rez.JsonData.ReminderExact);var projection=new ReminderProjection(exact);Test.assert(projection.reminderProjection()!=null);exact["launch"]["status"]="unknown";Test.assert(projection.reminderProjection()==null);
- var minute=WatchUi.loadResource(Rez.JsonData.ReminderMinute);var minProjection=new ReminderProjection(minute);Test.assert(minProjection.reminderProjection()!=null);minute["launch"]["timing"]["source_precision_id"]=2;Test.assert(minProjection.reminderProjection()==null);
+ var minute=WatchUi.loadResource(Rez.JsonData.ReminderMinute);var minProjection=new ReminderProjection(minute);Test.assert(minProjection.reminderProjection()!=null);var timing=minute["launch"]["timing"];var originalStart=timing["window_start_utc"];timing["window_start_utc"]=timing["nominal_utc"]+1;Test.assert(minProjection.reminderProjection()==null);timing["window_start_utc"]=originalStart;timing["source_precision_id"]=2;Test.assert(minProjection.reminderProjection()==null);
  c.store.data["sf.incoming.feed"]={"base"=>c.base,"sha256"=>"new","sequence"=>1};LaunchReminder.wakeWith(c,999100l,false,sink.method(:post));Test.assertEqual(sink.calls,0);c.store.remove("sf.incoming.feed");
  c.store.replaceCommitOnAttempt=true;LaunchReminder.wakeWith(c,999100l,false,sink.method(:post));Test.assertEqual(sink.calls,0);c.store.replaceCommitOnAttempt=false;c.store.data["sf.commit"]["seal"]="one";c.store.remove("sf.reminder.attempt");
  s["stale"]=true;LaunchReminder.wakeWith(c,999100l,false,sink.method(:post));Test.assertEqual(sink.calls,0);s["stale"]=false;s["validated"]=980000l;LaunchReminder.wakeWith(c,999100l,false,sink.method(:post));Test.assertEqual(sink.calls,0);s["validated"]=999000l;c.store.data["sf.commit"]["seal"]="changed";LaunchReminder.wakeWith(c,999100l,false,sink.method(:post));Test.assertEqual(sink.calls,0);Application.Properties.setValue("LaunchReminders",0);return true;

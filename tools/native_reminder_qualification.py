@@ -75,8 +75,22 @@ def validate(root, catalog):
         read(item)
     previous_visual = json.loads(read(record['observations']['locale-015/prepared-inputs.json']))['nativeInputs']
     visual_delta = {k for k in previous_visual.keys() | current.keys() if previous_visual.get(k) != current.get(k)}
-    if visual_delta != {'watchface/source/LaunchReminderForeground.mc', 'watchface/source/generated/NativeVersion.mc'}:
+    if visual_delta != {'watchface/source/LaunchReminderForeground.mc', 'watchface/source/generated/NativeVersion.mc',
+                        'watchface/source/LaunchReminder.mc', 'watchface/source/NativeFeed.mc'}:
         raise ValueError('visual reuse source delta changed')
+    old_reminder = read(record['observations']['menu/pre-peer-reminder.mc.txt'])
+    old_feed = read(record['observations']['menu/pre-peer-native-feed.mc.txt'])
+    for name, raw in (('watchface/source/LaunchReminder.mc', old_reminder),
+                      ('watchface/source/NativeFeed.mc', old_feed)):
+        if hashlib.sha256(raw).hexdigest() != previous_visual[name]:
+            raise ValueError('visual peer baseline differs: ' + name)
+    # NativeFeed's peer edit is confined to the reminder-only projection.
+    def outside_projection(raw):
+        before, tail = raw.split(b'    function reminderProjection(){', 1)
+        _, after = tail.split(b'    function hashRaw(text)', 1)
+        return before, after
+    if outside_projection(old_feed) != outside_projection((root / 'watchface/source/NativeFeed.mc').read_bytes()):
+        raise ValueError('visual feed change extends beyond reminder projection')
     old_helper = read(record['observations']['menu/pre-dedup-foreground.mc.txt'])
     old_version = read(record['observations']['menu/pre-dedup-version.mc.txt'])
     if hashlib.sha256(old_helper).hexdigest() != previous_visual['watchface/source/LaunchReminderForeground.mc'] or hashlib.sha256(old_version).hexdigest() != previous_visual['watchface/source/generated/NativeVersion.mc']:
@@ -91,11 +105,11 @@ def validate(root, catalog):
     new_build = (root / 'watchface/source/generated/NativeVersion.mc').read_text().split('const ID = ')[0]
     if old_build != new_build:
         raise ValueError('visual BUILD version changed')
-    seed = read(record['observations']['storage-reopen/seed.log']).decode()
-    reopen = read(record['observations']['storage-reopen/reopen.log']).decode()
+    seed = read(record['observations']['peer-storage-reopen/seed.log']).decode()
+    reopen = read(record['observations']['peer-storage-reopen/reopen.log']).decode()
     if 'REOPEN_SEED stored=true calls=0' not in seed or 'push=false' not in reopen or 'REOPEN_OBSERVED persisted=true calls=0 duplicateSuppressed=true' not in reopen:
         raise ValueError('SDK storage reopen observation missing')
-    binding = json.loads(read(record['observations']['native-reminder-tests/binding.json']))
+    binding = json.loads(read(record['observations']['native-reminder-tests/peer-binding.json']))
     for name, expected in binding['inputs'].items():
         path = Path(name)
         if path.is_absolute() or '..' in path.parts or hashlib.sha256((root / path).read_bytes()).hexdigest() != expected:

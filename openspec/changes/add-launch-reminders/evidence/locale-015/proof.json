@@ -360,14 +360,14 @@
     "watchface/source/FeedScene.mc": "7216343e1be1478e189f3364b2e3141f58dc437ccef49f63a6ab48b2fd7d62e0",
     "watchface/source/FeedService.mc": "c3cef5b62d54a6ac760c1ad432a1da29ca0598b6a739f5fb62d4fd62bb836008",
     "watchface/source/Fitness.mc": "4514c60764062fcf08aabf253f729629fbb68727789154c801be839a55e581ba",
-    "watchface/source/LaunchReminder.mc": "79d0671c6ef587fc8e7fe86ef7a443892c62627abf00c3291b8470edb4644f57",
+    "watchface/source/LaunchReminder.mc": "196825e049dcaf3279c0318a2c7c693cfb3a2b0e7b0ec1108fd53b64a9039ec7",
     "watchface/source/LaunchReminderForeground.mc": "fb9b5e3a7e3cf825752ea670083fd25b91216c3f236237e1fc4c703507153560",
     "watchface/source/LocalePresentation.mc": "ca4bd66ff4046c3bd51c1e2c5a5272d00226e91585290f91ace7b1c3bccaa2f7",
     "watchface/source/NativeAnimation.mc": "87d1baaad814772abfd06c83c2bbef7b1be29ce8b6b73670f240e2971ae226d8",
     "watchface/source/NativeAssetTypes.mc": "7898007364c66748377eccc8289863f45764e66479b813c57214a84374b20867",
     "watchface/source/NativeBridgeFeed.mc": "0e1be9d956114995ebd79e35e67d078ce914d604082c1c825e5c992068a88ccd",
     "watchface/source/NativeCache.mc": "3220b5cf607244ae6acbfec1c55c722eedd1d1467c4764285b838d075826afcf",
-    "watchface/source/NativeFeed.mc": "18c93ba24189585c17828442d0d5035ee1019e3f760504c7c9365ace6474d6a6",
+    "watchface/source/NativeFeed.mc": "3128394e91812f16e96b9ef3e30acf8bb448e6c4c7288e6d2042462c405ae38d",
     "watchface/source/NativeForegroundApp.mc": "27462df20343b183a96202ef73e1a098345fc1a4bf327d075ed5ec6d213db0d6",
     "watchface/source/NativeForegroundCache.mc": "5ecfa85f8cce322725dba136656f54151b9c5c1e5625ae916d7270cf985e8658",
     "watchface/source/NativeImmutable.mc": "4e56746909147976638304d234d4a41e7a7bb8b3184958b519aa3c7d98428717",
@@ -390,7 +390,7 @@
     "watchface/source/WatchClock.mc": "e1cb5dd3ac35fb8bc52efad2ef85c7b909cb15fe7a04b4710302d4d34ddec100",
     "watchface/source/generated/LocaleGraphemes.mc": "5ad65d6328908a7f251cd5ddbac83244de9b51929c2c46cb746bfb168a4f6c80",
     "watchface/source/generated/NativeAssets.mc": "7cd1909c77568e19ef18e60cc278e702e4fb2e363e035309c589dc1920a70d7c",
-    "watchface/source/generated/NativeVersion.mc": "df199385c5c560e5d8c36f1d1cf6a4fd69d05436ee124e9bea381f49f4ed0d76",
+    "watchface/source/generated/NativeVersion.mc": "a0ba5fa20bbe6f9386275bcff270aac0656e7a25bae22ebe32b4361cb1b79562",
     "watchface/source/generated/SceneStrings.mc": "dd8a910b53d2493ec8760e0148186c9535c05a5e0644ae5b6e6eccb6dd651109",
     "watchface/toolchain-lock.json": "89b2d31b8fe2597fb6f20a61b7205af3c5141982d0563477fea75c4139fe3eb7"
   },
@@ -508,8 +508,8 @@
   ],
   "rawExit": 1,
   "nativeLog": {
-    "path": "openspec/changes/add-launch-reminders/evidence/native-reminder-tests/final.log",
-    "sha256": "42ddda65d5592f999e1c8edcf301e76a1c5cacaea17abe4957cc8b9e77155347"
+    "path": "openspec/changes/add-launch-reminders/evidence/native-reminder-tests/peer-final.log",
+    "sha256": "b5f217b0b896b17de68dc4d47a25694ce86ea553e8bfcfdb77709861a06c9780"
   },
   "glyphs": {
     "path": "openspec/changes/spacefox-watchface/evidence/settings-readable-013/glyphs.json",
@@ -636,7 +636,7 @@
     },
     "menu/REUSE.md": {
       "path": "openspec/changes/add-launch-reminders/evidence/menu/REUSE.md",
-      "sha256": "8215dcc97329cc52d8733b085d02621a22a850d39239fa09f33baad7813851e1"
+      "sha256": "4bad497d91a183bd681d2eebb22af82d16fdaecde85322ed448e7425b5a639e2"
     },
     "current-menu/test-source": {
       "path": "watchface/current-menu-tests/MenuTests.mc",
@@ -661,6 +661,38 @@
     "storage-reopen/compile.log": {
       "path": "openspec/changes/add-launch-reminders/evidence/storage-reopen/compile.log",
       "sha256": "7ea612f9df0d19181937087f1cc830c223718e92fed997287a6da47fd0ebc559"
+    },
+    "menu/pre-peer-native-feed.mc.txt": {
+      "path": "openspec/changes/add-launch-reminders/evidence/menu/pre-peer-native-feed.mc.txt",
+      "sha256": "18c93ba24189585c17828442d0d5035ee1019e3f760504c7c9365ace6474d6a6"
+    },
+    "menu/pre-peer-reminder.mc.txt": {
+      "path": "openspec/changes/add-launch-reminders/evidence/menu/pre-peer-reminder.mc.txt",
+      "sha256": "79d0671c6ef587fc8e7fe86ef7a443892c62627abf00c3291b8470edb4644f57"
+    },
+    "native-reminder-tests/peer-binding.json": {
+      "path": "openspec/changes/add-launch-reminders/evidence/native-reminder-tests/peer-binding.json",
+      "sha256": "7af82e1fe17f34c5ed52ecbd67deb0e8e94e20f0d1d0cdf69c4d16d1f172580a"
+    },
+    "peer-storage-reopen/Probe.mc.txt": {
+      "path": "openspec/changes/add-launch-reminders/evidence/peer-storage-reopen/Probe.mc.txt",
+      "sha256": "67c95724ba472881c3f5dea05d65d15192141e7cd90f3702d3206a3b8192f565"
+    },
+    "peer-storage-reopen/compile.log": {
+      "path": "openspec/changes/add-launch-reminders/evidence/peer-storage-reopen/compile.log",
+      "sha256": "7ea612f9df0d19181937087f1cc830c223718e92fed997287a6da47fd0ebc559"
+    },
+    "peer-storage-reopen/seed.log": {
+      "path": "openspec/changes/add-launch-reminders/evidence/peer-storage-reopen/seed.log",
+      "sha256": "bc28c9c0cd519776c3dcf0d886b4d2572829d13750df95cad77cce4521145828"
+    },
+    "peer-storage-reopen/reopen.log": {
+      "path": "openspec/changes/add-launch-reminders/evidence/peer-storage-reopen/reopen.log",
+      "sha256": "cf6481ddd9249cc04b9949ed989de6b6b4d7423e2a01d028b786b8bb57814ce6"
+    },
+    "peer-storage-reopen/RESULT.md": {
+      "path": "openspec/changes/add-launch-reminders/evidence/peer-storage-reopen/RESULT.md",
+      "sha256": "e3e009704b8262cb73eb9a10c571a41fe22e35fc27962077bde9d4d052154110"
     }
   }
 }

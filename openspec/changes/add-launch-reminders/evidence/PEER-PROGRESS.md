@@ -1,0 +1,3 @@
+# Peer review checkpoint
+
+The reviewer uses isolated private and public worktrees rooted at candidate commits a2077c3c and 172f391b. Source review found A→B→A slot loss and nominal targets outside supplied window bounds; the peer repaired those and checks callback-time quiet state. The fixed SDK table is 13/13 with raw exit 1 accepted by the existing strict parser; the failed first peer run is retained. A new SDK process-reopen probe observed the bounded storage row persisted and suppressed a duplicate, with `push=false`. Source-admission, clean graph execution, candidate rebuilding and independent artifact handoff remain in progress. No physical, phone or Store evidence is claimed.

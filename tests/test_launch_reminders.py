@@ -15,7 +15,7 @@ NAMES = ('settingsPositive', 'cadencePositive', 'cadenceNegative', 'quietPositiv
 class ReminderTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        receipt = json.loads((EVIDENCE / 'binding.json').read_text())
+        receipt = json.loads((EVIDENCE / 'peer-binding.json').read_text())
         for name, expected in receipt['inputs'].items():
             actual = hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
             if actual != expected:
@@ -38,10 +38,10 @@ class ReminderTest(unittest.TestCase):
                                                 separators=(',', ':')).encode()).hexdigest()
         if independent not in source:
             raise AssertionError('independent semantic digest differs')
-        raw = (EVIDENCE / 'final.log').read_text()
+        raw = (EVIDENCE / 'peer-final.log').read_text()
         if hashlib.sha256(raw.encode()).hexdigest() != receipt['logSha256']:
             raise AssertionError('SDK log changed')
-        if 'BUILD SUCCESSFUL' not in (EVIDENCE / 'compile.log').read_text():
+        if 'BUILD SUCCESSFUL' not in (EVIDENCE / 'peer-compile.log').read_text():
             raise AssertionError('SDK compile incomplete')
         result = parse_output(raw, receipt['rawExit'], NAMES)
         if result['status'] != 'passed':
