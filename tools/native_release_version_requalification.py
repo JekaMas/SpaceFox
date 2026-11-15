@@ -25,6 +25,11 @@ def validate(root, catalog):
         if hashlib.sha256(data).hexdigest() != expected:
             raise ValueError('release prior input changed: ' + filename)
         snapshots[destination] = data
+    prior_policy = snapshots['tools/native_language_policy.py']
+    before = b'  from tools.native_display02_requalification import validate\n  return validate(root,catalog)'
+    after = b'  from tools.native_release_version_requalification import validate\n  return validate(root,catalog)'
+    if prior_policy.count(before) != 1 or (root/'tools/native_language_policy.py').read_bytes() != prior_policy.replace(before, after):
+        raise ValueError('release language policy differs beyond approved dispatch')
     old = snapshots['watchface/manifest.xml']
     if old.count(b'version="0.1.10"') != 1 or (root/'watchface/manifest.xml').read_bytes() != old.replace(b'version="0.1.10"', b'version="0.1.11"'):
         raise ValueError('release manifest differs beyond approved version')
