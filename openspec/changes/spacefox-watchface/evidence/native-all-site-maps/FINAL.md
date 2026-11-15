@@ -15,3 +15,7 @@ The original Omelek native frame in `historical/` omitted sourced island context
 `proof-input-digests.json` covers the generic proof inputs (SHA-256 `49d9995d2692da01b8b33f29e673c0c8c0d62f08baf293c0d434837753c9e312`); Git binds the manifest and code. The observed SDK 9.3 compiler SHA-256 was `082b2fd3f50578204e01d44313f43f2ce52a60dbfd6221f6b259b2687239de3f`, and the FR165 profile inputs were checked against the toolchain lock. The private build records retain complete original bindings and failed attempts.
 
 Physical watch/phone, live and hosted operation, complete ordinary/background resource qualification, full-DAG readiness and Store acceptance remain open.
+
+## Independent peer follow-up
+
+The same independent peer completed source/assertion/original-observation review, repaired the manifest/applicability gate, and passed the affected checks. See `PEER-FINAL.md` for the bounded verdict, controls and unchanged limits. Root judgment remains pending. This follow-up does not replace or relabel the original author observations above.

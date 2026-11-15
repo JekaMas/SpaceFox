@@ -12,6 +12,36 @@ if __package__ in (None, ''):
 from tools.spacefox.catalog import build_catalog, canonical_bytes, loads_json
 from tools.spacefox.native_profile import decode_raster, png_pixels
 
+# Retained immutable observations are checked once per qualification, shared by
+# the 12 cases through evidence_data(). Code and these pins are Git-bound.
+PROOF_INPUTS_SHA256 = '49d9995d2692da01b8b33f29e673c0c8c0d62f08baf293c0d434837753c9e312'
+HOST_SOURCE_SHA256 = 'fe0eacfaa5cd8c5bc22670f9adb4f0de179964386d65eb2aed86c9bc7621e922'
+
+
+def verify_file_digests(root, files, boundary):
+    for name, digest in files.items():
+        path = Path(name)
+        require(not path.is_absolute() and '..' not in path.parts, boundary + ' input path')
+        target = Path(root) / path
+        require(target.is_file() and hashlib.sha256(target.read_bytes()).hexdigest() == digest,
+                boundary + ' input changed: ' + name)
+
+
+def verify_evidence_inputs(root, evidence):
+    # The manifest pin also protects the all-black index-zero barcode: zero
+    # alone cannot distinguish absent diagnostic squares from black squares.
+    # Its captured bytes, first-frame log/probe, and map content jointly bind it.
+    for name, expected, directory, boundary in (
+        ('proof-input-digests.json', PROOF_INPUTS_SHA256, evidence, 'native proof'),
+        ('host-source-applicability.json', HOST_SOURCE_SHA256, root, 'host map source'),
+    ):
+        raw = (Path(evidence) / name).read_bytes()
+        require(hashlib.sha256(raw).hexdigest() == expected, boundary + ' manifest changed')
+        manifest = json.loads(raw)
+        require(manifest['schema'] == 1 and bool(manifest['files']), boundary + ' manifest schema')
+        verify_file_digests(directory, manifest['files'], boundary)
+
+
 FRAME = re.compile(r'SITE_FRAME index=(\d+) id=(\S+) digest=([0-9a-f]{64}) heap=(\d+)')
 
 
@@ -127,20 +157,24 @@ def verify_detail(descriptor, probe, source_records, image):
     require(len(matches)==1 and probe['coordinate'] in matches[0]['coordinates'], 'regional source vertex/provenance')
     scale=probe['scale']
     require('source-centered-regional-inset-scale:'+str(scale) in descriptor['contextLimits'], 'regional inset absent')
-    lon,lat=map(float,probe['coordinate']);center=list(map(float,descriptor['center']))
+    lon,lat=map(float,probe['coordinate'])
+    center=list(map(float,descriptor['center']))
     x,y=expected_anchor(lat,lon,center,scale)
     require(306<x<364 and 136<y<194 and math.hypot(x-335,y-165)>16, 'source vertex outside visible inset')
-    w,h,rgba=png_pixels(image);require((w,h)==(390,390),'detail frame dimensions')
+    w,h,rgba=png_pixels(image)
+    require((w,h)==(390,390),'detail frame dimensions')
     def pixel(x,y):
         at=(y*w+x)*4
         return rgba[at:at+3]
-    point=pixel(round(x),round(y));background=pixel(*probe['oceanSample'])
+    point=pixel(round(x),round(y))
+    background=pixel(*probe['oceanSample'])
     require(point[0]-background[0]>=25 and point[1]-background[1]>=30 and point[2]-background[2]>=30, 'sourced regional detail missing from native frame')
     return {'sourceVertexPixel':[round(x),round(y)],'detailColor':list(point)}
 
 
 def verify_native_builds(root, evidence, bindings):
-    builds=evidence/'native-builds'; common=json.loads((builds/'production-inputs.json').read_text())
+    builds=evidence/'native-builds'
+    common=json.loads((builds/'production-inputs.json').read_text())
     for path in ('watchface/source/NativeSfr.mc','watchface/source/NativeImmutable.mc',
                  'watchface/source/NativeVisualRenderer.mc','watchface/source/SceneRenderer.mc',
                  'watchface/source/SceneContext.mc','watchface/source/SceneSettings.mc',
@@ -150,8 +184,10 @@ def verify_native_builds(root, evidence, bindings):
     marker='watchface/resources/drawables/LaunchMarker.png'
     require(hashlib.sha256((root/marker).read_bytes()).hexdigest()==common['productionResources'][marker], 'native marker resource changed')
     for name in set(bindings.values()):
-        part=name.removeprefix('native-').removesuffix('.log');require(len(part)==3 and part.isdigit(),'invalid native log binding')
-        directory=builds/part;build=json.loads((directory/'build-binding.json').read_text())
+        part=name.removeprefix('native-').removesuffix('.log')
+        require(len(part)==3 and part.isdigit(),'invalid native log binding')
+        directory=builds/part
+        build=json.loads((directory/'build-binding.json').read_text())
         require(build['exitCode']==0 and build['sourceSetSha256']==common['sourceSetSha256'], 'native build/source binding')
         require(hashlib.sha256((directory/'Probe.mc').read_bytes()).hexdigest()==build['probeSha256'], 'native probe source changed')
         owner=build['applicationUuid']+'|native-build-'+part+'|'+common['sourceSetSha256'][:12]
@@ -160,6 +196,7 @@ def verify_native_builds(root, evidence, bindings):
 
 def qualify(root, evidence):
     root, evidence = Path(root), Path(evidence)
+    verify_evidence_inputs(root, evidence)
     catalog = build_catalog(root)
     sites = catalog['dictionaries']['sites']
     rows = loads_json((evidence/'producer-rows.json').read_bytes())
@@ -169,7 +206,8 @@ def qualify(root, evidence):
     bindings=json.loads((evidence/'frame-bindings.json').read_text())
     verify_native_builds(root,evidence,bindings)
     for key,name in bindings.items():
-        index=int(key);require(str(index)==key and index not in frame_logs and Path(name).name==name,'invalid frame binding')
+        index=int(key)
+        require(str(index)==key and index not in frame_logs and Path(name).name==name,'invalid frame binding')
         text=(evidence/'native-logs'/name).read_text()
         matches=[m.group(0) for m in FRAME.finditer(text) if int(m[1])==index]
         require(len(matches)==1,'missing/duplicate selected native frame')
@@ -201,7 +239,8 @@ def qualify(root, evidence):
             checked=verify_frame(identity, fixed_index, item['pixelSha256'], frame_logs.get(fixed_index, ''), image, chunks)
             has_detail=any(x.startswith('source-centered-regional-inset-scale:') for x in binding['descriptor']['contextLimits'])
             require(has_detail == (identity in probes), 'regional detail review missing/extra')
-            if has_detail:checked.update(verify_detail(binding['descriptor'],probes[identity],regional['supplements'],image))
+            if has_detail:
+                checked.update(verify_detail(binding['descriptor'],probes[identity],regional['supplements'],image))
             result.append({'id': identity, 'index': fixed_index, **checked})
             fixed_index += 1
         else:
