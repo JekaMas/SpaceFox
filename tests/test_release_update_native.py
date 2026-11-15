@@ -13,9 +13,9 @@ from tools.run_native_tests import parse_output
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / 'openspec/changes/spacefox-watchface/evidence/release-update-native'
 PINS = {
-    'build.json': '5b0ecca4f3ccd8e41da345422802a3f5151728fffe98a0eadee3216ec0af6dde',
-    'Probe.mc.txt': '2bd1368df945dc3a847db6dc63198d2f6c86fbaf8c23e89e44ee2ce57816c414',
-    'run.log': '17e3fb2166354a68c24623bb47e3e49adfe3c4e3b0975c17b5d46d3c4a120579',
+    'build.json': '24b32d8bbf0b03095da2e80eaacc2cc12d5d8922787297c3a8fe9df81027b2c0',
+    'Probe.mc.txt': '01a45b14fdfdee8d26436cac970c4f87e958caab8266a1c13915718a8490e2ea',
+    'run.log': 'd3ebbb9f466db3961d5aa39c839d007cf5d426dc4b9208995f39019c3f0d4afb',
     'exit.txt': '4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865',
 }
 
@@ -36,8 +36,6 @@ def check_sources(build, read):
         raise ValueError('current NativeVersion identity differs')
     for name, expected in {**build['productionSources'], **build['productionResources']}.items():
         data = read(ROOT / name)
-        if name == 'watchface/source/generated/NativeVersion.mc':
-            data = data.replace(b'BUILD = "0.1.12"', b'BUILD = "0.1.11"').replace(b'ID = "07120ad9"', b'ID = "4673835d"')
         if digest(data) != expected:
             raise ValueError('native owner changed: ' + name)
 
@@ -63,7 +61,7 @@ class ReleaseUpdateNativeTest(unittest.TestCase):
         self.assertIn('oldWireRetained=1', self.log)
 
     def test_unsupported_schema_refused_without_replacement(self):
-        self.assertIn('incomingPath=1 schemaRefused=1 rendererRefused=1 actionableMenu=1 fiveLocales=1 clearsOnSuccess=1 oldWireRetained=1', self.log)
+        self.assertIn('incomingPath=1 deferredRestoreSameCache=1 schemaRefused=1 rendererRefused=1 actionableMenu=1 fiveLocales=1 clearsOnSuccess=1 oldWireRetained=1', self.log)
         self.assertIn('Check URL or update SpaceFox', self.probe)
         self.assertIn('"schemaVersion\\":4', self.probe)
         with self.assertRaisesRegex(ValueError, 'native observation changed'):

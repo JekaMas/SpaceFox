@@ -73,7 +73,7 @@ class CurrentTimingConvergenceTest(unittest.TestCase):
         self.assertEqual(receipt['tests']['observed_tests']['displayPairedInputs'], 'PASS')
         check_native_pair(raw)
         # The exact source under this observation is reconstructed at its known
-        # 0.1.10 UI revision; current 0.1.12 changes version admission only.
+        # 0.1.10 UI revision; exact menu delta is reconstructed separately, plus version.
         for name, expected in receipt['inputHashes'].items():
             data = (ROOT / name).read_bytes()
             if name in ("watchface/source/SettingsMenu.mc", "watchface/source/SettingsMenuText.mc"):

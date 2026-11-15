@@ -3,8 +3,8 @@
   "group": "grammar",
   "device": "fr165",
   "tests": true,
-  "ownerTag": "aa779b77d8e2443a867aeee85ebbf9b3|release-cache|e8e35826f81e",
-  "sourceSetSha256": "e8e35826f81ec24c18fb8ffbfa9be02a9fb0f1611c1400a078eed9305a85dd12",
+  "ownerTag": "19b549be977f4f868a03259b60e965c6|release-cache|38a2ebee2046",
+  "sourceSetSha256": "38a2ebee2046824249560cb243f65c03ab106b4c190217c8f8a6a48a03759e6f",
   "sourceHead": "854a5a30a5bb021d2bac3e2f799b4f6401f269af",
   "sourceDirty": true,
   "command": [
@@ -29,7 +29,7 @@
   ],
   "exitCode": 0,
   "packageName": "RC1.prg",
-  "packageSha256": "bffb2a2f150c73cc2bc9fe5e9c88042c510e6e346dd4d0c9b373c9b631b5bb51",
+  "packageSha256": "107fdeeea78c4a167de58483e3c0b93316052d7de37115efa189c4fa7cb0ac6c",
   "productionSources": {
     "watchface/source/Fitness.mc": "4514c60764062fcf08aabf253f729629fbb68727789154c801be839a55e581ba",
     "watchface/source/NativeSourceTimes.mc": "86abcd251ed68f88055279e0d98ca3adc7f017a86d7fa2bd14f91c44cb6bb4dc",
@@ -61,7 +61,7 @@
     "watchface/source/NativeImmutable.mc": "4e56746909147976638304d234d4a41e7a7bb8b3184958b519aa3c7d98428717",
     "watchface/source/NativeForegroundCache.mc": "5ecfa85f8cce322725dba136656f54151b9c5c1e5625ae916d7270cf985e8658",
     "watchface/source/generated/NativeAssets.mc": "8c9f597bc889f5f9e15d58ac55a3f4c87b66338993cb3ffa30d1a2e776e00ea2",
-    "watchface/source/generated/NativeVersion.mc": "c4e02e1473e929a07ebb0745d7d1196f9288769ec61d208830e1825b79590ee3",
+    "watchface/source/generated/NativeVersion.mc": "38b680015c4b6414a6ec81315706dc499dc3f8903bbfa36ae73b9c646f419cfd",
     "watchface/source/generated/SceneStrings.mc": "dd8a910b53d2493ec8760e0148186c9535c05a5e0644ae5b6e6eccb6dd651109",
     "watchface/source/generated/LocaleGraphemes.mc": "5ad65d6328908a7f251cd5ddbac83244de9b51929c2c46cb746bfb168a4f6c80"
   },
@@ -239,8 +239,8 @@
   "probeResources": {
     "probe.xml": "29909c621cc8c049ff7f9210e738daadea10665d9dbee72e54aa5a515f5133a5"
   },
-  "probeSha256": "2bd1368df945dc3a847db6dc63198d2f6c86fbaf8c23e89e44ee2ce57816c414",
-  "applicationUuid": "aa779b77d8e2443a867aeee85ebbf9b3",
+  "probeSha256": "01a45b14fdfdee8d26436cac970c4f87e958caab8266a1c13915718a8490e2ea",
+  "applicationUuid": "19b549be977f4f868a03259b60e965c6",
   "productionSourceScope": "all-native",
   "proofBoundary": "Build isolated ordinary or seed-test SFR1 probes from production owners.\n\nEvery UUID has a distinct PRG basename. A seed intentionally replaces network\nonly; a plain observer excludes raw constants and uses ordinary126784B runtime.\n",
   "sourceBinding": "compare productionSources and productionResources to checkout",

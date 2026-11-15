@@ -64,7 +64,7 @@ def owner_digest(root, name):
 
 def verify_rejection_menu(root):
     base = root/'openspec/changes/spacefox-watchface/evidence/release-update-native'
-    pins = {'build.json': '5b0ecca4f3ccd8e41da345422802a3f5151728fffe98a0eadee3216ec0af6dde', 'Probe.mc.txt': '2bd1368df945dc3a847db6dc63198d2f6c86fbaf8c23e89e44ee2ce57816c414', 'run.log': '17e3fb2166354a68c24623bb47e3e49adfe3c4e3b0975c17b5d46d3c4a120579', 'exit.txt': '4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865'}
+    pins = {'build.json': '24b32d8bbf0b03095da2e80eaacc2cc12d5d8922787297c3a8fe9df81027b2c0', 'Probe.mc.txt': '01a45b14fdfdee8d26436cac970c4f87e958caab8266a1c13915718a8490e2ea', 'run.log': 'd3ebbb9f466db3961d5aa39c839d007cf5d426dc4b9208995f39019c3f0d4afb', 'exit.txt': '4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865'}
     raw = {name: (base/name).read_bytes() for name in pins}
     for name, expected in pins.items():
         if digest(raw[name]) != expected:
@@ -77,7 +77,7 @@ def verify_rejection_menu(root):
             raise ValueError('rejection menu current owner changed: '+name)
     result = parse_output(raw['run.log'].decode(), int(raw['exit.txt']), ('releaseCurrentHostSchema',))
     if (result['status'] != 'passed' or
-        'actionableMenu=1 fiveLocales=1 clearsOnSuccess=1' not in raw['run.log'].decode()):
+        'deferredRestoreSameCache=1 schemaRefused=1 rendererRefused=1 actionableMenu=1 fiveLocales=1 clearsOnSuccess=1' not in raw['run.log'].decode()):
         raise ValueError('rejection menu SDK observation incomplete')
 
 

@@ -1,7 +1,7 @@
-"""Reconstruct the reviewed UI input for a strictly version-only release delta.
+"""Reconstruct reviewed UI inputs for the version and exact rejection-menu delta.
 
 The original observations remain bound to 0.1.10 inputs; this does not claim
-that the new signed program was run or that another native edit is qualified.
+that a new signed program was run or that any other native edit is qualified.
 """
 import hashlib
 import shutil
