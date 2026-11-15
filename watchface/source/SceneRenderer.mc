@@ -174,7 +174,7 @@ class SceneRenderer {
         current.rescheduled=current.rescheduled||fullContext!=null&&fullContext.rescheduled;
         current.stale=current.stale||fullContext!=null&&fullContext.stale;
         var rich=downloaded instanceof NativeSfrRenderer?downloaded:null;
-        var selected=rich!=null && rich.mapOutline!=null && rich.scene!=null && rich.scene["position"]!=null;
+        var selected=rich!=null && (rich.mapOutline!=null||(rich.bundledOutline&&aodPin&&aodResource!=null)) && rich.scene!=null && rich.scene["position"]!=null;
         // The current finite fixed-site catalog has full outlines at matching
         // centers. Prefer that shape even when the selected scene is READY;
         // unmatched future locations retain their own decoded raster outline.
