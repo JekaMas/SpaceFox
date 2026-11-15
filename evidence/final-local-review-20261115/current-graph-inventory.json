@@ -1,0 +1,88 @@
+{
+  "scope": "Integrated graph reconciliation; not a full readiness execution",
+  "historical_source_bound_properties": "123 of 133 (historical acceptance accounting, not a current all-graph verdict)",
+  "historical_external_properties": [
+    "LS02.P1",
+    "LS12.P1",
+    "LS15.P1",
+    "RL04.P1",
+    "RL05.P1",
+    "VC10.P1",
+    "WF08.P1",
+    "WF09.P1",
+    "WF10.P1",
+    "LS06.P2"
+  ],
+  "new_or_invalidated_planned_case_count": 38,
+  "new_or_invalidated_planned_cases_by_property": {
+    "LS05.P2": [
+      "LS05.P2.S01.POSITIVE",
+      "LS05.P2.S01.NEGATIVE"
+    ],
+    "LS09.P1": [
+      "LS09.P1.S02.POSITIVE",
+      "LS09.P1.S02.NEGATIVE",
+      "LS09.P1.S04.POSITIVE",
+      "LS09.P1.S04.NEGATIVE",
+      "LS09.P1.MODE.POSITIVE",
+      "LS09.P1.MODE.NEGATIVE"
+    ],
+    "VC06.P1": [
+      "VC06.P1.S01.POSITIVE",
+      "VC06.P1.S01.NEGATIVE",
+      "VC06.P1.S02.POSITIVE",
+      "VC06.P1.S02.NEGATIVE"
+    ],
+    "VC14.P1": [
+      "VC14.P1.S03.POSITIVE",
+      "VC14.P1.S03.NEGATIVE"
+    ],
+    "WF07.P1": [
+      "WF07.P1.S02.POSITIVE",
+      "WF07.P1.S02.NEGATIVE"
+    ],
+    "WF09.P1": [
+      "WF09.P1.LIFECYCLE.POSITIVE",
+      "WF09.P1.LIFECYCLE.NEGATIVE"
+    ],
+    "WF09.P2": [
+      "WF09.P2.S01.POSITIVE.CURRENT",
+      "WF09.P2.S01.NEGATIVE.CURRENT"
+    ],
+    "WF09.P4": [
+      "WF09.P4.1.POSITIVE",
+      "WF09.P4.1.NEGATIVE"
+    ],
+    "WF13.P1": [
+      "WF13.P1.FINAL.S1.POSITIVE",
+      "WF13.P1.FINAL.S1.NEGATIVE",
+      "WF13.P1.READABILITY.POSITIVE",
+      "WF13.P1.READABILITY.NEGATIVE",
+      "WF13.P1.COHERENCE.POSITIVE",
+      "WF13.P1.COHERENCE.NEGATIVE"
+    ],
+    "WF16.P1": [
+      "WF16.P1.S01.POSITIVE",
+      "WF16.P1.S01.NEGATIVE"
+    ],
+    "WF17.P1": [
+      "WF17.P1.S01.POSITIVE",
+      "WF17.P1.S01.NEGATIVE"
+    ],
+    "WF18.P1": [
+      "WF18.P1.S01.POSITIVE",
+      "WF18.P1.S01.NEGATIVE",
+      "WF18.P1.S02.POSITIVE",
+      "WF18.P1.S02.NEGATIVE"
+    ],
+    "WF19.P1": [
+      "WF19.P1.S01.POSITIVE",
+      "WF19.P1.S01.NEGATIVE"
+    ]
+  },
+  "reason": "Revised scenario or historic whole-source reader is not by itself evidence of the full current scenario. New focused bounded SDK evidence is recorded separately; physical and natural-network edges remain external.",
+  "retained_graph_total_planned_cases": 353,
+  "selected_new_composition": "peer-final-graph.json",
+  "selected_case_count": 14,
+  "selected_status": "passed"
+}

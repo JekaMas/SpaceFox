@@ -135,7 +135,16 @@
       "WF13.P1",
       "WF13.P2",
       "WF14.P1",
-      "WF15.P1"
+      "WF15.P1",
+      "WF16.P1",
+      "WF16.P2",
+      "WF17.P1",
+      "WF17.P2",
+      "WF18.P1",
+      "WF19.P1",
+      "WF17.P3",
+      "VC14.P4",
+      "VC18.P2"
     ],
     "test_ids": [
       "unittest::tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_current_live_root_and_immutable_negative",
@@ -442,10 +451,6 @@
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc12_p1_s01_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc12_p1_s02_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc12_p1_s02_positive_current",
-      "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s01_negative",
-      "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s01_positive",
-      "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s02_negative",
-      "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s02_positive",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p1_c01_positive",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p1_c02_negative",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p1_c03_positive",
@@ -525,8 +530,6 @@
       "unittest::tests.test_current_role_convergence.CurrentRoleConvergenceTest.test_captured_foreign_site_roles_are_independent",
       "unittest::tests.test_current_role_convergence.CurrentRoleConvergenceTest.test_government_manufacturer_and_unknown_origin_remain_distinct",
       "unittest::tests.test_current_role_convergence.CurrentRoleConvergenceTest.test_unknown_jurisdiction_cannot_become_model_origin",
-      "unittest::tests.test_current_timing_convergence.CurrentTimingConvergenceTest.test_missing_zero_observation_negative",
-      "unittest::tests.test_current_timing_convergence.CurrentTimingConvergenceTest.test_retained_native_countdown_pair_positive",
       "unittest::tests.test_current_timing_convergence.CurrentTimingConvergenceTest.test_retention_and_postponement_positive",
       "unittest::tests.test_current_timing_convergence.CurrentTimingConvergenceTest.test_terminal_and_elapsed_negative",
       "unittest::tests.test_current_ui_batch.CurrentUiBatchTest.test_animation_bounds_and_stop",
@@ -681,8 +684,32 @@
       "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_positive",
       "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s01_negative",
       "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s01_positive",
-      "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_raw_depth_and_storage_negative",
-      "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_provisional_and_raw_positive"
+      "unittest::tests.test_integration_graph_pending.PendingIntegrationTest.test_wf16_1_positive",
+      "unittest::tests.test_integration_graph_pending.PendingIntegrationTest.test_wf16_1_negative",
+      "unittest::tests.test_integration_graph_pending.PendingIntegrationTest.test_wf17_1_positive",
+      "unittest::tests.test_integration_graph_pending.PendingIntegrationTest.test_wf17_1_negative",
+      "unittest::tests.test_integration_graph_pending.PendingIntegrationTest.test_wf18_1_positive",
+      "unittest::tests.test_integration_graph_pending.PendingIntegrationTest.test_wf18_1_negative",
+      "unittest::tests.test_integration_graph_pending.PendingIntegrationTest.test_wf18_2_positive",
+      "unittest::tests.test_integration_graph_pending.PendingIntegrationTest.test_wf18_2_negative",
+      "unittest::tests.test_integration_graph_pending.PendingIntegrationTest.test_wf19_1_positive",
+      "unittest::tests.test_integration_graph_pending.PendingIntegrationTest.test_wf19_1_negative",
+      "unittest::tests.test_display03_receipt_binding.Display03ReceiptBindingTest.test_modes_positive",
+      "unittest::tests.test_display03_receipt_binding.Display03ReceiptBindingTest.test_modes_negative",
+      "unittest::tests.test_display03_receipt_binding.Display03ReceiptBindingTest.test_minute_positive",
+      "unittest::tests.test_display03_receipt_binding.Display03ReceiptBindingTest.test_minute_negative",
+      "unittest::tests.test_display03_receipt_binding.CurrentCountdownReceiptTest.test_current_pair_positive",
+      "unittest::tests.test_display03_receipt_binding.CurrentCountdownReceiptTest.test_current_pair_negative",
+      "unittest::tests.test_display03_receipt_binding.CurrentMapReceiptTest.test_current_map_positive",
+      "unittest::tests.test_display03_receipt_binding.CurrentMapReceiptTest.test_current_map_negative",
+      "unittest::tests.test_display03_receipt_binding.CurrentP3ReceiptTest.test_current_p3_positive",
+      "unittest::tests.test_display03_receipt_binding.CurrentP3ReceiptTest.test_current_p3_negative",
+      "unittest::tests.test_display03_receipt_binding.VC18CompositionTest.test_vc18_composition_positive",
+      "unittest::tests.test_display03_receipt_binding.VC18CompositionTest.test_vc18_composition_negative",
+      "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s01_positive",
+      "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s01_negative",
+      "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s02_positive",
+      "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s02_negative"
     ]
   },
   "reviews": [
@@ -3581,8 +3608,6 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p4_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p6_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p6_s01_negative_current",
-        "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_provisional_and_raw_positive",
-        "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_raw_depth_and_storage_negative",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p4_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p4_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p7_s01_positive_current",
@@ -5480,10 +5505,6 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p4_c02_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p4_c03_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p4_c04_positive_current",
-        "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s01_negative",
-        "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s01_positive",
-        "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s02_negative",
-        "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s02_positive",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p1_c01_positive",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p1_c02_negative",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p1_c03_positive",
@@ -6082,9 +6103,7 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf08_p2_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_wf08_p2_s01_positive_current",
         "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_negative",
-        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_positive",
-        "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_raw_depth_and_storage_negative",
-        "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_provisional_and_raw_positive"
+        "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_positive"
       ],
       "searches": [
         {
@@ -7060,8 +7079,6 @@
         "unittest::tests.test_current_role_convergence.CurrentRoleConvergenceTest.test_captured_foreign_site_roles_are_independent",
         "unittest::tests.test_current_role_convergence.CurrentRoleConvergenceTest.test_government_manufacturer_and_unknown_origin_remain_distinct",
         "unittest::tests.test_current_role_convergence.CurrentRoleConvergenceTest.test_unknown_jurisdiction_cannot_become_model_origin",
-        "unittest::tests.test_current_timing_convergence.CurrentTimingConvergenceTest.test_missing_zero_observation_negative",
-        "unittest::tests.test_current_timing_convergence.CurrentTimingConvergenceTest.test_retained_native_countdown_pair_positive",
         "unittest::tests.test_current_timing_convergence.CurrentTimingConvergenceTest.test_retention_and_postponement_positive",
         "unittest::tests.test_current_timing_convergence.CurrentTimingConvergenceTest.test_terminal_and_elapsed_negative",
         "unittest::tests.test_current_ui_batch.CurrentUiBatchTest.test_animation_bounds_and_stop",
@@ -7342,10 +7359,7 @@
       "property_ids": [
         "LS06.P3"
       ],
-      "test_ids": [
-        "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_provisional_and_raw_positive",
-        "unittest::tests.test_native_feed_bounds.NativeFeedBoundsTest.test_current_raw_depth_and_storage_negative"
-      ],
+      "test_ids": [],
       "searches": [
         {
           "kind": "exact",
@@ -7384,6 +7398,89 @@
       ],
       "disposition": "current_change",
       "rationale": "Current native executable assertions and retained evidence have explicitly separate unit, ordinary historical and physical boundaries."
+    },
+    {
+      "id": "D-display03-integration-graph",
+      "question": "Which revised DISPLAY03 scenarios have bounded source-linked simulator observations and which full edges remain open?",
+      "property_ids": [
+        "WF16.P1",
+        "WF16.P2",
+        "WF17.P1",
+        "WF17.P2",
+        "WF18.P1",
+        "WF19.P1",
+        "WF17.P3",
+        "VC14.P4",
+        "LS06.P3",
+        "VC18.P1",
+        "VC18.P2"
+      ],
+      "test_ids": [
+        "unittest::tests.test_integration_graph_pending.PendingIntegrationTest.test_wf16_1_positive",
+        "unittest::tests.test_integration_graph_pending.PendingIntegrationTest.test_wf16_1_negative",
+        "unittest::tests.test_integration_graph_pending.PendingIntegrationTest.test_wf17_1_positive",
+        "unittest::tests.test_integration_graph_pending.PendingIntegrationTest.test_wf17_1_negative",
+        "unittest::tests.test_integration_graph_pending.PendingIntegrationTest.test_wf18_1_positive",
+        "unittest::tests.test_integration_graph_pending.PendingIntegrationTest.test_wf18_1_negative",
+        "unittest::tests.test_integration_graph_pending.PendingIntegrationTest.test_wf18_2_positive",
+        "unittest::tests.test_integration_graph_pending.PendingIntegrationTest.test_wf18_2_negative",
+        "unittest::tests.test_integration_graph_pending.PendingIntegrationTest.test_wf19_1_positive",
+        "unittest::tests.test_integration_graph_pending.PendingIntegrationTest.test_wf19_1_negative",
+        "unittest::tests.test_display03_receipt_binding.Display03ReceiptBindingTest.test_modes_positive",
+        "unittest::tests.test_display03_receipt_binding.Display03ReceiptBindingTest.test_modes_negative",
+        "unittest::tests.test_display03_receipt_binding.Display03ReceiptBindingTest.test_minute_positive",
+        "unittest::tests.test_display03_receipt_binding.Display03ReceiptBindingTest.test_minute_negative",
+        "unittest::tests.test_display03_receipt_binding.CurrentCountdownReceiptTest.test_current_pair_positive",
+        "unittest::tests.test_display03_receipt_binding.CurrentCountdownReceiptTest.test_current_pair_negative",
+        "unittest::tests.test_display03_receipt_binding.CurrentMapReceiptTest.test_current_map_positive",
+        "unittest::tests.test_display03_receipt_binding.CurrentMapReceiptTest.test_current_map_negative",
+        "unittest::tests.test_display03_receipt_binding.CurrentP3ReceiptTest.test_current_p3_positive",
+        "unittest::tests.test_display03_receipt_binding.CurrentP3ReceiptTest.test_current_p3_negative",
+        "unittest::tests.test_display03_receipt_binding.VC18CompositionTest.test_vc18_composition_positive",
+        "unittest::tests.test_display03_receipt_binding.VC18CompositionTest.test_vc18_composition_negative",
+        "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s01_positive",
+        "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s01_negative",
+        "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s02_positive",
+        "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s02_negative"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Compare DISPLAY03 specification, lifecycle/countdown owner bytes and retained native test table to integrated source.",
+          "outcome": "Focused native callback and minute boundaries match three named owners; complete lifecycle, visual identity and physical acceptance remain planned. A later isolated current FR165 SDK table covers the five literal active/LOW UTC pairs; see current-countdown receipt. Current native RGB decoder additionally completed real Cape map and refused a changed pixel digest in isolated SDK. Current native P3 probe now covers the changed callback guard plus original raw/depth/no-write and recovery assertions. VC18 composition separately binds unchanged descriptor, transfer, callback and animation owners, exact identified RGB delta and the new actual current decode/hash refusal.",
+          "results": [
+            {
+              "path": "tests/test_display03_receipt_binding.py",
+              "classification": "test_proof",
+              "reason": "Authenticates focused SDK markers and named unchanged owners; refusal does not establish new simulator execution."
+            },
+            {
+              "path": "watchface/source/SpaceFoxView.mc",
+              "classification": "change_candidate",
+              "reason": "Lifecycle boundary and scene owner."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Named DISPLAY03 owners and receipts.",
+          "reason": "Exact source and evidence are known.",
+          "outcome": "No semantic-search claim.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Named owners and historical execution.",
+          "reason": "No index operation required.",
+          "outcome": "No IDE index claim.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "Map revised contracts without converting historical SDK receipts into fresh integrated execution."
     }
   ]
 }
