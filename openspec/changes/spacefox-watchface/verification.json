@@ -16344,7 +16344,7 @@
         "tests/test_catalog_quota_peer.py"
       ],
       "test_id": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_positive",
-      "command_id": "catalog-coverage-budget",
+      "command_id": "catalog-quota-original-scenarios",
       "state": "implemented",
       "source_path": "tests/test_catalog_coverage_budget.py",
       "substitution": {
@@ -16357,7 +16357,7 @@
           "Physical watch, paired phone, ordinary app peak resources, hosting or Store acceptance"
         ]
       },
-      "planning_note": "Actual finite current software author witness; same author repairs until green; independent peer/root verdict pending. Historical immutable receipts retain original source and proof scope. See evidence/catalog-coverage-budget/FINAL.md. Peer supplementary directed original-setup control: tests/test_catalog_quota_peer.py; see PEER-FINAL.md and peer-quota.log.",
+      "planning_note": "Actual finite current software author witness; same author repairs until green; independent peer/root verdict pending. Historical immutable receipts retain original source and proof scope. See evidence/catalog-coverage-budget/FINAL.md. Required original-setup controls execute together with both case methods through catalog-quota-original-scenarios; see PEER-FINAL.md and quota-closure-run.json.",
       "original_test_id": "unittest::tests.test_publisher_state.PublisherStateTest.test_catalog_refresh_competes_with_launch_updates_positive",
       "original_setup": "quota15/hour with4schedulepoll reservations and queued catalog pagination",
       "source_sha256": "256a0393d2c2297a3a206a42ddd972b1066ca0e858c8e1fbadc9bf9fd62af1df"
@@ -16406,7 +16406,7 @@
         "tests/test_catalog_quota_peer.py"
       ],
       "test_id": "unittest::tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_negative",
-      "command_id": "catalog-coverage-budget",
+      "command_id": "catalog-quota-original-scenarios",
       "state": "implemented",
       "source_path": "tests/test_catalog_coverage_budget.py",
       "substitution": {
@@ -16419,7 +16419,7 @@
           "Physical watch, paired phone, ordinary app peak resources, hosting or Store acceptance"
         ]
       },
-      "planning_note": "Actual finite current software author witness; same author repairs until green; independent peer/root verdict pending. Historical immutable receipts retain original source and proof scope. See evidence/catalog-coverage-budget/FINAL.md. Peer supplementary directed original-setup control: tests/test_catalog_quota_peer.py; see PEER-FINAL.md and peer-quota.log.",
+      "planning_note": "Actual finite current software author witness; same author repairs until green; independent peer/root verdict pending. Historical immutable receipts retain original source and proof scope. See evidence/catalog-coverage-budget/FINAL.md. Required original-setup controls execute together with both case methods through catalog-quota-original-scenarios; see PEER-FINAL.md and quota-closure-run.json.",
       "original_test_id": "unittest::tests.test_publisher_state.PublisherStateTest.test_catalog_refresh_competes_with_launch_updates_negative",
       "original_setup": "manualretry consumes final slot while catalog worker also tries a request",
       "source_sha256": "256a0393d2c2297a3a206a42ddd972b1066ca0e858c8e1fbadc9bf9fd62af1df"
@@ -35281,6 +35281,25 @@
       "timeout_seconds": 600,
       "authority": "local",
       "notes": "Twelve finite current catalog admission/provenance/coverage/selected-closure/shared-budget cases. Actual local Git/CLI, controlled captured response port. No provider/SDK/physical/network service execution."
+    },
+    {
+      "id": "catalog-quota-original-scenarios",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_positive",
+        "tests.test_catalog_coverage_budget.CatalogCoverageBudgetTest.test_vc07_s02_negative",
+        "tests.test_catalog_quota_peer.CatalogQuotaPeerTest.test_four_schedule_reservations_reopen_then_catalog_and_due_schedule",
+        "tests.test_catalog_quota_peer.CatalogQuotaPeerTest.test_manual_fifteenth_slot_blocks_queued_stale_and_fresh_collectors"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 600,
+      "authority": "local",
+      "notes": "Both original catalog-quota case methods and their required four-poll/manual-fifteenth-slot directed controls execute together. Captured response transport, real local Git."
     }
   ]
 }
