@@ -34,7 +34,8 @@ Remove only the uniquely named container and its owned diagnostic files when fin
 
 `build_fresh_retained.py` generates a separate one-test package for source-only
 freshness, stale-latch clearing, same-selection renderer-reference retention and
-SDK Storage reopen in the same process. Run its `output/fresh-retained/CF2.prg` with `monkeydo
+SDK Storage reopen in the same process, with immutable-object writes counted.
+Run its `output/fresh-retained/CF2.prg` with `monkeydo
 ... fr165 -t` and require `freshRetainedScene PASS`; raw launcher exit 1 alone
 does not establish success. Its injected clock and store are controlled, and the
 retained renderer is a reference, not a decoded bitmap or process restart.
@@ -53,6 +54,13 @@ the operations actually reached by a current A-to-B cache commit and interrupts
 each one against a copying in-memory store, requiring reopened state to have an
 exact old or new wire hash with its matching source-validation time. It does not
 stand in for physical interruption, full-storage behavior or other update paths.
+
+`build_site_independence.py` builds `output/site-independence/CF5.prg` to check
+the scene mapping of a qualified site when model/operator are unknown. It
+modifies those fields after parsing a captured valid packet: this is a controlled
+scene seam, not proof that the mutated packet itself passes wire admission.
+It checks a matching marker, an absent position, and suppression of a marker
+for an unmatched projection while retaining its source-qualified coordinates.
 
 1. **Recorded-build source applicability:** `python3 -B tests/native_scene_diagnostics/verify_binding.py --public-root "$SCENE_PUBLIC"` compares the public production sources/resources, retained generated probe sources/resources, generators/drivers and A/B fixture bytes to the recorded build bindings. It does not inspect logs, run the simulator, or check an installed SDK. It requires the historical public base in the checkout ancestry. A mismatch or missing file invalidates the affected reuse; it is not repaired by updating a digest.
 2. **Installed runtime comparison:** add `--sdk-root "$SCENE_SDK_COPY" --image "$SCENE_IMAGE"` to the preceding command. This compares the compiler, simulator, profile, API/font inputs and image ID to the historical runtime. It does not execute the SDK. A different runtime requires affected requalification. The archived SDK digest is provenance, not a fresh archive check.

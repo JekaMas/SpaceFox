@@ -30,10 +30,14 @@ class DataClock extends WatchClock {
  var at as Number = 1794551192;
  function utcSeconds() as Number {return at;}
 }
+(:typecheck(false)) class FreshCountingStore extends NativeStore {
+ var objectWrites=0;
+ function write(key,value){if(key.find("sf.obj.")==0){objectWrites+=1;}NativeStore.write(key,value);}
+}
 (:test,:typecheck(false)) function freshRetainedScene(logger){
- var s=new NativeStore();var c=currentCache(s);var start=1794551192l;
+ var s=new FreshCountingStore();var c=currentCache(s);var start=1794551192l;
  Test.assert(c.accept(CurrentFixture.feed(),start));
- var oldRaw=c.commit["rawHash"];var oldValidation=c.packet.validation;
+ var oldRaw=c.commit["rawHash"];var oldValidation=c.packet.validation;var objectWrites=s.objectWrites;
  var clock=new DataClock();var v=new SpaceFoxView(clock,new ScheduleState(null,"empty"));
  v.setPacket(c.packet);var art=new NativeSfrRenderer();
  art.selectionHash=c.packet.bridge["selection"]["sha256"];v.downloaded=art;
@@ -47,7 +51,8 @@ class DataClock extends WatchClock {
  Test.assertMessage(!v.context.stale,"view must expose renewed source age");
  var reopened=new NativeCache(c.base,s);Test.assert(reopened.load(start+10800l)!=null);
  Test.assert(reopened.packet.validation==start+3600l && !reopened.packet.stale);
- logger.debug("FRESH_RETAINED newerValidation=1 sameRaw=1 staleCleared=1 bitmapRetained=1 reopen=1");return true;
+ Test.assertMessage(s.objectWrites==objectWrites,"source-only refresh must not rewrite immutable objects");
+ logger.debug("FRESH_RETAINED newerValidation=1 sameRaw=1 staleCleared=1 bitmapRetained=1 reopen=1 immutableWrites=0");return true;
 }
 '''.replace('FRESH_INPUT', fresh_literal)
 with patch.object(runtime, 'discover', lambda: linux_probe.context), \
