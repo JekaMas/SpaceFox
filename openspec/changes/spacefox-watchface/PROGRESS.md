@@ -164,7 +164,7 @@ submission took place; credentials were never requested in chat. [Prepared listi
 Phone installation needs a Connect IQ page accessible to the paired account;
 a GitHub PRG/IQ download alone cannot install from a phone. DefaultFeedBaseUrl
 is blank; enter https://jekamas.github.io/SpaceFox via ConnectIQ settings after
-installation. Garmin beta URLs are account-only per official SDK9.3 docs and
+installation. Garmin beta URLs are account-only per official SDK 9.3 docs and
 cannot stand in for public access from another account. Physical/phone/battery
 and task7.3 remain OPEN. SDKleaseFREE; no model API/credits used.
 
@@ -487,7 +487,7 @@ A fresh independent verify/fix agent follows only after author self-GREEN.
 Acceptance requires identifying the corrected build actually executing on the
 physical watch and observing fresh selected launch data. Until those are
 observed, the incident and current goal remain NOT DONE. Manual simulator
-events, injected caches, publisher preview, HTTP200 queue acknowledgement and
+events, injected caches, publisher preview, HTTP 200 queue acknowledgement and
 gallery images cannot satisfy that external gate. Do not invent a root cause,
 erase a valid cache, bump versions blindly or weaken a failing gate. Run only
 checks invalidated by the concrete owner/contract changes. Existing tasks
@@ -665,3 +665,16 @@ original-card publication remain pending. Physical reported version `0.10.0`,
 10–20 second wake, point and delivery remain open. Task/goal completion is not
 inferred from the source checkpoint. See the
 [root judgment](evidence/display03-active-tick-wake/ROOT-JUDGMENT.md).
+
+### DISPLAY03 0.1.13 published — physical acceptance open
+
+Root accepted clean compiled source 1eca186c and the final signed IQ. The Music
+member exactly matches the executed PRG; IQ/21 program signatures and 2,856
+source pins passed in the peer lane. Source merged through PR #21; tag v0.1.13 and
+21 GitHub assets published. The original Garmin card accepted the package and
+reads 0.1.13/Internal 8 PENDING. Music installation POST returned 200/empty; this
+is queue acceptance only. Ivan received the original link and normal-sync/version
+instruction. No repeated behavior tests or new task group were started.
+See [publication](evidence/display03-publication/PUBLICATION.md). Corrected physical
+execution, fresh data, point, wake and power remain NOT DONE; task external gates
+and the overall delivery/data goal remain open.
