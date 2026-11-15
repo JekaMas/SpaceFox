@@ -3,9 +3,10 @@
 The owner reports after an update: active layout has no visible launch point and
 its countdown does not advance; LOW countdown advances; LOW-to-active is very
 slow. This is a new concrete runtime failure in the SAME open delivery/data
-incident. Installed version and launch identity have been requested asynchronously;
-"updated" does not itself prove a particular version. Preserve the last confirmed
-0.1.6 and the original 0.1.10 submission boundaries until exact readback arrives.
+incident. Owner reports version **0.10.0** verbatim and a **10–20 second** wake delay.
+This string is not silently normalized to 0.1.10; reconcile it with signed/runtime
+identities without inventing delivery proof. Launch identity remains unknown.
+Latest steering is in OWNER-STEERING.md and overrides earlier LOW clauses.
 Do not repeat account, firmware, face-roundtrip or full-reboot diagnostics.
 
 One coherent author Terra 6.1 xhigh APPLY/self-VERIFY/fix to GREEN, then a fresh
@@ -24,7 +25,10 @@ attribute the physical cause to a simulated symptom before discriminating it.
 
 * NOT_LOW redraw liveness: actual scheduled high-power updates advance the
   displayed countdown from one UTC target every second while high-power is
-  permitted. LOW uses Garmin-permitted minute snapshots of the SAME calculation.
+  permitted. LOW now displays T-/T+ HH:MM only, no seconds, and updates once per
+  minute from the same underlying UTC delta. Before T0 use ceil remaining
+  minutes; after T0 floor elapsed minutes. Formatting intentionally differs; no
+  separate target, local timer reset or early T+ transition is permitted.
   A computed-value assertion or manually calling draw/update once per test step
   does not establish scheduler or automatic redraw liveness.
 * LOW -> NOT_LOW: the actual exit-sleep/high-power event requests and presents
@@ -36,8 +40,15 @@ attribute the physical cause to a simulated symptom before discriminating it.
 * Launch point: use the actual accepted Vulcan/ULA/Cape SLC41 public launch and
   retained Zhuque witness. The selected fixed site's visible, unclipped native
   marker must survive loading/ready and ordinary sleep/wake, with a matching map.
+  LOW now retains a sparse map outline and a visible selected launch point, with
+  clock/date/weekday/battery, and no four custom activity fields. Respect measured
+  Garmin AOD lit-pixel/burn-in limits; retain a readable point and layout.
   Same-point arithmetic alone is not visual proof. Batch before/after native
   captures and assert pixels/position, including a readable active marker.
+* Rescheduled launches use a contrast-qualified reddish countdown override in
+  BOTH modes. Otherwise retain selected base clock/countdown colors. Check the
+  four active custom fields' sizes, alignment, available space and lack of overlap
+  through actual native pixel measurements. These fields are absent in LOW.
 * Focused event sequence PBT drives production lifecycle/render/cache boundaries
   with independently expected UTC values, causal events and asserted effective
   event dispositions. Cover automatic high ticks, sleep/wake, ready/error arrival
@@ -55,7 +66,8 @@ Only run checks invalidated by changed production owners, contracts, tests or
 fixtures. Batch a whole stable property/task iteration; retain valid greens,
 perform lint/hash/export once at the end. EN/RU, FR165 Music plus larger-profile
 checks only where changed geometry requires them. Preserve exactly LOW/NOT_LOW,
-four fields, selected colors, local T-/T+, accepted cache and current data format.
+four active fields, selected colors with the explicit reddish reschedule override,
+local T-/T+, accepted cache and current data format.
 Remove faulty special flags/debug/alternate layouts instead of adding another
 fallback. Reconcile only affected specifications and tests as one review.
 
