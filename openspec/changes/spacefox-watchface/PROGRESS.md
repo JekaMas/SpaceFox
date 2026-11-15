@@ -678,3 +678,14 @@ instruction. No repeated behavior tests or new task group were started.
 See [publication](evidence/display03-publication/PUBLICATION.md). Corrected physical
 execution, fresh data, point, wake and power remain NOT DONE; task external gates
 and the overall delivery/data goal remain open.
+
+### DISPLAY04 owner whole-quality round started
+
+Latest owner photo/report reopens the active point/lightning field, possible LOW
+1px digit clipping and geometry/resource/scheduling behavior. Full final test
+runs and one Astra spec/test/process audit are now explicitly requested. Base is
+public main 8c93f211; current .13 release is compiled from 1eca186c, not the entire
+later main. No 100% physical or all-main publication claim is made. See
+[evidence/display04-whole-quality/PLAN.md](evidence/display04-whole-quality/PLAN.md).
+One Terra author and one fresh independent Terra peer will complete this coherent
+native group before final integrated release. No code/tests have changed yet.
