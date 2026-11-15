@@ -438,8 +438,8 @@
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p4_c03_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p4_c04_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc05_p3_c10_negative",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc06_p1_s03_negative_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc06_p1_s03_positive_current",
+      "unittest::tests.test_native_current_pad_geography.CurrentPadGeographyTest.test_vc06_p1_s03_negative_current",
+      "unittest::tests.test_native_current_pad_geography.CurrentPadGeographyTest.test_vc06_p1_s03_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p1_s02_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p1_s02_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p4_c01_negative_current",
@@ -5723,8 +5723,8 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p1_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p1_s02_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc04_p1_s02_negative_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc06_p1_s03_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc06_p1_s03_negative_current",
+        "unittest::tests.test_native_current_pad_geography.CurrentPadGeographyTest.test_vc06_p1_s03_positive_current",
+        "unittest::tests.test_native_current_pad_geography.CurrentPadGeographyTest.test_vc06_p1_s03_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc08_p1_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc08_p1_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc12_p1_s02_positive_current",
@@ -7135,6 +7135,76 @@
       ],
       "disposition": "current_change",
       "rationale": "Consolidates current requirements and truthful structural selectors; planned or source-bound historical observations are not promoted to new passes."
+    },
+    {
+      "id": "D-native-all-site-maps-20261115",
+      "question": "Does every committed required site retain its sourced position or explicit unavailable state and have a bound actual native map/marker observation with necessary source context?",
+      "property_ids": [
+        "VC06.P1",
+        "VC06.P2"
+      ],
+      "test_ids": [
+        "unittest::tests.test_native_geography.NativeGeographyTest.test_small_island_or_date_line_site_positive",
+        "unittest::tests.test_native_geography.NativeGeographyTest.test_small_island_or_date_line_site_negative",
+        "unittest::tests.test_native_geography.NativeGeographyTest.test_moving_or_unavailable_departure_point_positive",
+        "unittest::tests.test_native_geography.NativeGeographyTest.test_moving_or_unavailable_departure_point_negative",
+        "unittest::tests.test_native_current_pad_geography.CurrentPadGeographyTest.test_vc06_p1_s03_positive_current",
+        "unittest::tests.test_native_current_pad_geography.CurrentPadGeographyTest.test_vc06_p1_s03_negative_current",
+        "unittest::tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s01_positive",
+        "unittest::tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s01_negative",
+        "unittest::tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s02_positive",
+        "unittest::tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s02_negative",
+        "unittest::tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s03_positive",
+        "unittest::tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s03_negative"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "Inspect current catalog source cohort, map materializer, native decoder/renderer and per-ID simulator observations.",
+          "outcome": "224 IDs reconciled, source-bound simulator frames and negative controls recorded; source2 regional detail restored for Omelek. Historical native zero test retained with explicit current-method applicability.",
+          "results": [
+            {
+              "path": "tools/spacefox/bridge_map.py",
+              "classification": "change_candidate",
+              "reason": "Source-derived regional inset in the fixed flat-map materializer."
+            },
+            {
+              "path": "tools/native_all_site_qualification.py",
+              "classification": "test_proof",
+              "reason": "Complete ID, native-frame, source-vertex, marker and unavailable-position qualification."
+            },
+            {
+              "path": "tests/test_native_global_geography.py",
+              "classification": "test_proof",
+              "reason": "Coverage, false-point, source and missing-detail refusals."
+            },
+            {
+              "path": "tests/test_native_geography.py",
+              "classification": "test_proof",
+              "reason": "Island, date-line, polar and moving-position controls."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "not_applicable",
+          "query": "Known exact geography and native owners.",
+          "reason": "The assigned owners and observed failing paths were explicit.",
+          "outcome": "No semantic-search claim.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "not_applicable",
+          "query": "Known exact source and retained native observations.",
+          "reason": "No index operation required.",
+          "outcome": "No IDE-index claim.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "Source-qualified FR165 simulator evidence remains separate from feed-admission, ordinary-resource, physical, phone and Store acceptance; one different peer is pending."
     }
   ]
 }

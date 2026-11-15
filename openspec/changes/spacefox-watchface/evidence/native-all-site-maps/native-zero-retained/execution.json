@@ -1,0 +1,19 @@
+{
+  "rawExitCode": 1,
+  "framework": {
+    "status": "passed",
+    "raw_exit_code": 1,
+    "expected_tests": [
+      "siteFlagPositive",
+      "siteFlagNegative",
+      "siteCorpusBounds"
+    ],
+    "observed_tests": {
+      "siteFlagPositive": "PASS",
+      "siteFlagNegative": "PASS",
+      "siteCorpusBounds": "PASS"
+    },
+    "observed_count": 3,
+    "launcher_nonzero_framework_pass": true
+  }
+}

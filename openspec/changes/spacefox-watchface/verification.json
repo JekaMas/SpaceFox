@@ -1068,7 +1068,7 @@
         "Site is referenced despite its lifecycle flag"
       ],
       "statement": "Every required site SHALL retain its pad-level identity and sourced coordinates\nor an explicit unavailable state. Full-screen flat map SHALL work\nworldwide, including small islands, polar regions, the date line, sea/air launches\nand foreign-operated pads. Shared world geometry or qualified regional detail\nSHALL serve the point; missing country artwork SHALL NOT suppress a valid point.",
-      "owner": "watchface/source/Geography.mc; tools/catalog.py",
+      "owner": "tools/spacefox/bridge_map.py; tools/spacefox/geographic_context.py; watchface/source/NativeSfr.mc; watchface/source/SceneRenderer.mc",
       "oracle": "Independent literal fixture values and prohibited outcomes, not implementation roundtrip equivalence. Small island or date-line site: literal expected pin/context aligned and inside chosen fullflat map at target390; counterexample must yield native geographic qualification rejects clipping/missing necessary detail without shifting point. Moving or unavailable departure point: literal expected show supplied text and omit launch pin; counterexample must yield reject fabricated coordinate; actual sourced0,0 must remain a distinct valid fact if supplied. Site is referenced despite its lifecycle flag: literal expected pad ID retained in required set with uncertainty; counterexample must yield coverage gate fails instead of inventing position or discarding launch.",
       "source_globs": [
         "assets/fonts/**",
@@ -1092,9 +1092,15 @@
         "watchface/resources*/**",
         "watchface/source/**",
         "watchface/source/Geography.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py",
+        "tests/test_native_current_pad_geography.py"
       ],
-      "planning_status": "Cutover changed native/source/settings owner; prior receipts are historical pending current revalidation."
+      "planning_status": "Author evidence completed for the bounded local native frame and source qualification; independent peer and root judgment pending."
     },
     {
       "id": "VC07.P1",
@@ -1840,7 +1846,7 @@
         "Site is referenced despite its lifecycle flag"
       ],
       "statement": "Every required site has a source-bound qualification in actual native flat map output, or an explicit unavailable position. Boundary samples alone cannot close the complete required-site set.",
-      "owner": "watchface/source/Geography.mc; catalog/coverage.json; actual native geographic output",
+      "owner": "tools/spacefox/bridge_map.py; tools/spacefox/geographic_context.py; watchface/source/NativeSfr.mc; watchface/source/SceneRenderer.mc",
       "oracle": "Independently reviewed dated required-site IDs and sourced coordinates/unknown states, plus independent numeric projection references and source-bound geometry/context review. Every finite sourced site must be measured on actual compiled native flat map; unknown/mobile positions must not get guessed points. Counts reconcile against actual production artifacts.",
       "source_globs": [
         "assets/fonts/**",
@@ -1863,9 +1869,14 @@
         "watchface/source/**",
         "watchface/source/Geography.mc",
         "watchface/source/VisualCatalog.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py"
       ],
-      "planning_status": "Cutover changed native/source/settings owner; prior receipts are historical pending current revalidation."
+      "planning_status": "Author evidence completed for the bounded local native frame and source qualification; independent peer and root judgment pending."
     },
     {
       "id": "LS06.P2",
@@ -6716,11 +6727,16 @@
         "watchface/resources*/**",
         "watchface/source/**",
         "watchface/source/Geography.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py"
       ],
       "test_id": "unittest::tests.test_native_geography.NativeGeographyTest.test_small_island_or_date_line_site_positive",
-      "command_id": "geography-checks",
-      "state": "planned",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
       "source_path": "tests/test_native_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
@@ -6732,8 +6748,9 @@
           "Garmin Store approval or approved binary install"
         ]
       },
-      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review.",
-      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; exact native tests/compiles have not yet been implemented or executed. Physical-device proof remains absent."
+      "planning_note": "Executed author-side against the recorded source-bound native frame set; independent peer and root judgment remain pending.",
+      "source_sha256": "7513e4e2bed5ea01613561cd932d6620312b822680ed2039f01f607a9c188e90",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC06.P1.S01.NEGATIVE",
@@ -6767,11 +6784,16 @@
         "watchface/resources*/**",
         "watchface/source/**",
         "watchface/source/Geography.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py"
       ],
       "test_id": "unittest::tests.test_native_geography.NativeGeographyTest.test_small_island_or_date_line_site_negative",
-      "command_id": "geography-checks",
-      "state": "planned",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
       "source_path": "tests/test_native_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
@@ -6783,8 +6805,9 @@
           "Garmin Store approval or approved binary install"
         ]
       },
-      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review.",
-      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; exact native tests/compiles have not yet been implemented or executed. Physical-device proof remains absent."
+      "planning_note": "Executed author-side against the recorded source-bound native frame set; independent peer and root judgment remain pending.",
+      "source_sha256": "7513e4e2bed5ea01613561cd932d6620312b822680ed2039f01f607a9c188e90",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC06.P1.S02.POSITIVE",
@@ -6818,11 +6841,16 @@
         "watchface/resources*/**",
         "watchface/source/**",
         "watchface/source/Geography.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py"
       ],
       "test_id": "unittest::tests.test_native_geography.NativeGeographyTest.test_moving_or_unavailable_departure_point_positive",
-      "command_id": "geography-checks",
-      "state": "planned",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
       "source_path": "tests/test_native_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
@@ -6834,8 +6862,9 @@
           "Garmin Store approval or approved binary install"
         ]
       },
-      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review.",
-      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; exact native tests/compiles have not yet been implemented or executed. Physical-device proof remains absent."
+      "planning_note": "Executed author-side against the recorded source-bound native frame set; independent peer and root judgment remain pending.",
+      "source_sha256": "7513e4e2bed5ea01613561cd932d6620312b822680ed2039f01f607a9c188e90",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC06.P1.S02.NEGATIVE",
@@ -6869,11 +6898,16 @@
         "watchface/resources*/**",
         "watchface/source/**",
         "watchface/source/Geography.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py"
       ],
       "test_id": "unittest::tests.test_native_geography.NativeGeographyTest.test_moving_or_unavailable_departure_point_negative",
-      "command_id": "geography-checks",
-      "state": "planned",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
       "source_path": "tests/test_native_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
@@ -6885,8 +6919,9 @@
           "Garmin Store approval or approved binary install"
         ]
       },
-      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review.",
-      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; exact native tests/compiles have not yet been implemented or executed. Physical-device proof remains absent."
+      "planning_note": "Executed author-side against the recorded source-bound native frame set; independent peer and root judgment remain pending.",
+      "source_sha256": "7513e4e2bed5ea01613561cd932d6620312b822680ed2039f01f607a9c188e90",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC06.P1.S03.POSITIVE.CURRENT",
@@ -6909,7 +6944,6 @@
         "schemas/**",
         "tests/fixtures/catalog/**",
         "tests/fixtures/geography/**",
-        "tests/test_current_format_acceptance.py",
         "tests/test_native_geography.py",
         "tools/build_native_resources.py",
         "tools/build_watchface.py",
@@ -6920,12 +6954,18 @@
         "watchface/resources*/**",
         "watchface/source/**",
         "watchface/source/Geography.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py",
+        "tests/test_native_current_pad_geography.py"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc06_p1_s03_positive_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_native_current_pad_geography.CurrentPadGeographyTest.test_vc06_p1_s03_positive_current",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
+      "source_path": "tests/test_native_current_pad_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Live provider/source transport and physical device replaced by source-pinned real records, original test artwork and local software execution. Technical identifier/coordinate/rights mutations do not invent display names.",
@@ -6936,7 +6976,9 @@
           "Human, physical device, phone, hosted or Store acceptance"
         ]
       },
-      "planning_note": "Real-record/current-format replacement remains planned. Historical method and receipts retain their original scope; no current execution or acceptance is inferred."
+      "planning_note": "Executed author-side against the recorded source-bound native frame set; independent peer and root judgment remain pending.",
+      "source_sha256": "71df0025bb1cc23b350c8547afb8236770799a3577fa1d56bf4ef584e5d9c498",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC06.P1.S03.NEGATIVE.CURRENT",
@@ -6959,7 +7001,6 @@
         "schemas/**",
         "tests/fixtures/catalog/**",
         "tests/fixtures/geography/**",
-        "tests/test_current_format_acceptance.py",
         "tests/test_native_geography.py",
         "tools/build_native_resources.py",
         "tools/build_watchface.py",
@@ -6970,12 +7011,18 @@
         "watchface/resources*/**",
         "watchface/source/**",
         "watchface/source/Geography.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py",
+        "tests/test_native_current_pad_geography.py"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc06_p1_s03_negative_current",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_native_current_pad_geography.CurrentPadGeographyTest.test_vc06_p1_s03_negative_current",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
+      "source_path": "tests/test_native_current_pad_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Live provider/source transport and physical device replaced by source-pinned real records, original test artwork and local software execution. Technical identifier/coordinate/rights mutations do not invent display names.",
@@ -6986,7 +7033,9 @@
           "Human, physical device, phone, hosted or Store acceptance"
         ]
       },
-      "planning_note": "Real-record/current-format replacement remains planned. Historical method and receipts retain their original scope; no current execution or acceptance is inferred."
+      "planning_note": "Executed author-side against the recorded source-bound native frame set; independent peer and root judgment remain pending.",
+      "source_sha256": "71df0025bb1cc23b350c8547afb8236770799a3577fa1d56bf4ef584e5d9c498",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC07.P1.S01.POSITIVE",
@@ -10647,11 +10696,16 @@
         "watchface/source/**",
         "watchface/source/Geography.mc",
         "watchface/source/VisualCatalog.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py"
       ],
       "test_id": "unittest::tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s01_positive",
-      "command_id": "native-global-map-checks",
-      "state": "planned",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
       "source_path": "tests/test_native_global_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
@@ -10663,7 +10717,9 @@
           "Store approval or approved binary installation"
         ]
       },
-      "planning_note": "A future exact identity, not an implemented source or observed product test."
+      "planning_note": "Executed author-side against the recorded source-bound native frame set; independent peer and root judgment remain pending.",
+      "source_sha256": "c1458ca5c11e7dea1a7dc9fd7a38d88adaaadc1231701930a0e7186cac933ee9",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC06.P2.S01.NEGATIVE",
@@ -10696,11 +10752,16 @@
         "watchface/source/**",
         "watchface/source/Geography.mc",
         "watchface/source/VisualCatalog.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py"
       ],
       "test_id": "unittest::tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s01_negative",
-      "command_id": "native-global-map-checks",
-      "state": "planned",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
       "source_path": "tests/test_native_global_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
@@ -10712,7 +10773,9 @@
           "Store approval or approved binary installation"
         ]
       },
-      "planning_note": "A future exact identity, not an implemented source or observed product test."
+      "planning_note": "Executed author-side against the recorded source-bound native frame set; independent peer and root judgment remain pending.",
+      "source_sha256": "c1458ca5c11e7dea1a7dc9fd7a38d88adaaadc1231701930a0e7186cac933ee9",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC06.P2.S02.POSITIVE",
@@ -10745,11 +10808,16 @@
         "watchface/source/**",
         "watchface/source/Geography.mc",
         "watchface/source/VisualCatalog.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py"
       ],
       "test_id": "unittest::tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s02_positive",
-      "command_id": "native-global-map-checks",
-      "state": "planned",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
       "source_path": "tests/test_native_global_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
@@ -10761,7 +10829,9 @@
           "Store approval or approved binary installation"
         ]
       },
-      "planning_note": "A future exact identity, not an implemented source or observed product test."
+      "planning_note": "Executed author-side against the recorded source-bound native frame set; independent peer and root judgment remain pending.",
+      "source_sha256": "c1458ca5c11e7dea1a7dc9fd7a38d88adaaadc1231701930a0e7186cac933ee9",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC06.P2.S02.NEGATIVE",
@@ -10794,11 +10864,16 @@
         "watchface/source/**",
         "watchface/source/Geography.mc",
         "watchface/source/VisualCatalog.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py"
       ],
       "test_id": "unittest::tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s02_negative",
-      "command_id": "native-global-map-checks",
-      "state": "planned",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
       "source_path": "tests/test_native_global_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
@@ -10810,7 +10885,9 @@
           "Store approval or approved binary installation"
         ]
       },
-      "planning_note": "A future exact identity, not an implemented source or observed product test."
+      "planning_note": "Executed author-side against the recorded source-bound native frame set; independent peer and root judgment remain pending.",
+      "source_sha256": "c1458ca5c11e7dea1a7dc9fd7a38d88adaaadc1231701930a0e7186cac933ee9",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC06.P2.S03.POSITIVE",
@@ -10843,11 +10920,16 @@
         "watchface/source/**",
         "watchface/source/Geography.mc",
         "watchface/source/VisualCatalog.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py"
       ],
       "test_id": "unittest::tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s03_positive",
-      "command_id": "native-global-map-checks",
-      "state": "planned",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
       "source_path": "tests/test_native_global_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
@@ -10859,7 +10941,9 @@
           "Store approval or approved binary installation"
         ]
       },
-      "planning_note": "A future exact identity, not an implemented source or observed product test."
+      "planning_note": "Executed author-side against the recorded source-bound native frame set; independent peer and root judgment remain pending.",
+      "source_sha256": "c1458ca5c11e7dea1a7dc9fd7a38d88adaaadc1231701930a0e7186cac933ee9",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "VC06.P2.S03.NEGATIVE",
@@ -10892,11 +10976,16 @@
         "watchface/source/**",
         "watchface/source/Geography.mc",
         "watchface/source/VisualCatalog.mc",
-        "watchface/toolchain-lock.json"
+        "watchface/toolchain-lock.json",
+        "tools/spacefox/bridge_map.py",
+        "tools/native_all_site_qualification.py",
+        "tests/native_all_sites_support.py",
+        "tests/fixtures/global_geography/required-regional-details.json",
+        "tests/test_native_map_detail.py"
       ],
       "test_id": "unittest::tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s03_negative",
-      "command_id": "native-global-map-checks",
-      "state": "planned",
+      "command_id": "native-all-site-maps-batch",
+      "state": "implemented",
       "source_path": "tests/test_native_global_geography.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
@@ -10908,7 +10997,9 @@
           "Store approval or approved binary installation"
         ]
       },
-      "planning_note": "A future exact identity, not an implemented source or observed product test."
+      "planning_note": "Executed author-side against the recorded source-bound native frame set; independent peer and root judgment remain pending.",
+      "source_sha256": "c1458ca5c11e7dea1a7dc9fd7a38d88adaaadc1231701930a0e7186cac933ee9",
+      "implementation_boundary": "Fixed positions: source-bound producer rasters decoded and composited by current native owners in a local FR165 simulator; unavailable/mobile frames use an explicitly substituted no-point context. Historical zero-coordinate native unit is reused only after exact method applicability checks. No full feed admission, ordinary all-site resource, physical, phone, hosted or Store claim."
     },
     {
       "id": "LS06.P2.S01.POSITIVE",
@@ -34027,53 +34118,6 @@
       "notes": "Reserved command for planned real tests. It is not executed or credited until cases are implemented and source hashes recorded."
     },
     {
-      "id": "geography-checks",
-      "runner": "python-unittest",
-      "argv": [
-        "python3",
-        "-B",
-        "-m",
-        "unittest",
-        "-v",
-        "tests.test_native_geography.NativeGeographyTest.test_coordinates_unavailable_negative",
-        "tests.test_native_geography.NativeGeographyTest.test_coordinates_unavailable_positive",
-        "tests.test_native_geography.NativeGeographyTest.test_moving_or_unavailable_departure_point_negative",
-        "tests.test_native_geography.NativeGeographyTest.test_moving_or_unavailable_departure_point_positive",
-        "tests.test_native_geography.NativeGeographyTest.test_site_or_coordinates_change_negative",
-        "tests.test_native_geography.NativeGeographyTest.test_site_or_coordinates_change_positive",
-        "tests.test_native_geography.NativeGeographyTest.test_small_island_or_date_line_site_negative",
-        "tests.test_native_geography.NativeGeographyTest.test_small_island_or_date_line_site_positive",
-        "tests.test_native_geography.NativeGeographyTest.test_worldwide_catalog_geography_negative",
-        "tests.test_native_geography.NativeGeographyTest.test_worldwide_catalog_geography_positive"
-      ],
-      "cwd": ".",
-      "timeout_seconds": 300,
-      "authority": "local",
-      "planned_boundary": "NATIVE",
-      "notes": "Reserved command for planned real tests. It is not executed or credited until cases are implemented and source hashes recorded."
-    },
-    {
-      "id": "native-global-map-checks",
-      "runner": "python-unittest",
-      "argv": [
-        "python3",
-        "-B",
-        "-m",
-        "unittest",
-        "-v",
-        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s01_negative",
-        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s01_positive",
-        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s02_negative",
-        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s02_positive",
-        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s03_negative",
-        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s03_positive"
-      ],
-      "cwd": ".",
-      "timeout_seconds": 300,
-      "authority": "local",
-      "notes": "Planned typed observer. Native paths must execute actual compiled Monkey C; complete-set paths must consume actual production artifacts and reviewed independent required IDs."
-    },
-    {
       "id": "native-feed-budget-checks",
       "runner": "python-unittest",
       "argv": [
@@ -35047,6 +35091,33 @@
       "timeout_seconds": 600,
       "authority": "local",
       "notes": "Whole coherent final timing/selection/settings unit; batched native probe exact assertions and frames, no model/live calls."
+    },
+    {
+      "id": "native-all-site-maps-batch",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_native_geography.NativeGeographyTest.test_small_island_or_date_line_site_positive",
+        "tests.test_native_geography.NativeGeographyTest.test_small_island_or_date_line_site_negative",
+        "tests.test_native_geography.NativeGeographyTest.test_moving_or_unavailable_departure_point_positive",
+        "tests.test_native_geography.NativeGeographyTest.test_moving_or_unavailable_departure_point_negative",
+        "tests.test_native_current_pad_geography.CurrentPadGeographyTest.test_vc06_p1_s03_positive_current",
+        "tests.test_native_current_pad_geography.CurrentPadGeographyTest.test_vc06_p1_s03_negative_current",
+        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s01_positive",
+        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s01_negative",
+        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s02_positive",
+        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s02_negative",
+        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s03_positive",
+        "tests.test_native_global_geography.NativeGlobalGeographyTest.test_vc06_p2_s03_negative"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 900,
+      "authority": "local",
+      "notes": "Uses the tracked source-bound native-all-site-maps evidence by default; SPACEFOX_NATIVE_ALL_SITE_EVIDENCE may select an explicit alternative. Does not start SDK or claim physical/resource acceptance."
     }
   ]
 }
