@@ -4,7 +4,7 @@ This table links each final local design and function check to its evidence. A c
 
 ## 0.1.14 continuation
 
-The 0.1.14 test package uses source `1bebd706649176b562681685d33b3cfcc7c9d4dd`. Relative to the qualified functional source above, its native delta is the manifest version and generated identity only; the prior SDK observations retain their original 0.1.13 source and test-key boundaries. See the [version and package peer review](../openspec/changes/spacefox-watchface/evidence/version-014/PEER-014-FINAL.md), [0.1.14 installation](../release/INSTALLATION-0.1.14.md) and [testing](../release/TESTING-0.1.14.md). There is no new signed 0.1.14 runtime, physical-watch or Store approval claim.
+The 0.1.14 test package uses source `1bebd706649176b562681685d33b3cfcc7c9d4dd`. Relative to the qualified functional source above, its native delta is the manifest version and generated identity only; the prior SDK observations retain their original 0.1.13 source and test-key boundaries. See the [version and package peer review](../openspec/changes/spacefox-watchface/evidence/version-014/PEER-014-FINAL.md), [0.1.14 installation](../release/INSTALLATION-0.1.14.md) and [testing](../release/TESTING-0.1.14.md). A separate [signed 0.1.14 SDK run](../openspec/changes/spacefox-watchface/evidence/signed-014-runtime/RESULT.md) observed one offline historical scene after a seed-only control. Physical-watch and Store approval remain unobserved.
 
 ## Original 0.1.13 evidence
 
