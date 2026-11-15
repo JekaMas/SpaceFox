@@ -1,0 +1,145 @@
+------------------------------------------------------------------------------
+Executing test display03RealMapDecode...
+DEBUG (16:07): REAL_MAP_DECODE launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a sourceSite=ll2:site:29 checksum=verified outline=true steps=400 elapsedMs=4111
+PASS
+------------------------------------------------------------------------------
+Executing test display03CausalSequence...
+DEBUG (16:07): D03_SEQUENCE seed=1 events=30 required_dispositions=12 skipped=0
+DEBUG (16:07): D03_SEQUENCE seed=2 events=30 required_dispositions=12 skipped=0
+DEBUG (16:07): D03_SEQUENCE seed=3 events=30 required_dispositions=12 skipped=0
+DEBUG (16:07): D03_SEQUENCE seed=4 events=30 required_dispositions=12 skipped=0
+DEBUG (16:07): D03_SEQUENCE seed=5 events=30 required_dispositions=12 skipped=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03ReadyAndErrorOnWake...
+DEBUG (16:07): READY_ERROR sleep accepted_target retained rejected_old no_load_until_first_active_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03BackgroundBeforeFrame...
+DEBUG (16:07): BACKGROUND sleep_applied=true wake_first_frame no_reload=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03FailedSameDigestRetry...
+DEBUG (16:07): FAILED_RETRY realTransientSelectionRead=true sameSerialNoSpin=true newSerialBuild=true staleCompletionRejected=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03SourcedHoldCache...
+DEBUG (16:07): SOURCED_HOLD status5=true staleIndependent=true cacheReopen=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03WarmAodResources...
+DEBUG (16:07): WARM_AOD drawLoads=0 wakeReloads=0 duplicatePrepareLoads=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03SameSceneRefreshKeepsJob...
+DEBUG (16:07): SAME_SCENE_REFRESH acceptedReopen=true queuedJobRetained=true assetSourceRetained=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03ForegroundReloadDuringBuild...
+DEBUG (16:07): RELOAD_STAGE duplicate
+DEBUG (16:07): RELOAD_STAGE moved
+DEBUG (16:07): RELOAD_STAGE reject
+DEBUG (16:07): RELOAD_STAGE restore
+DEBUG (16:07): FOREGROUND_RELOAD duplicateJobRetained=true duplicateWrites=0 movedTargetVisible=true oldCompletionRejected=true rejectedRetainsTarget=true elapsedMs=118 appUsedBefore=158896 appUsedAfter=174440 appTotal=8383928
+PASS
+------------------------------------------------------------------------------
+Executing test display03StreamWireValidation...
+DEBUG (16:07): STREAM_WIRE canonical=true padBitsRejected=true interiorPaddingRejected=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03RepeatedLowCallbacks...
+DEBUG (16:07): LOW_CALLBACKS 60 same-minute callbacks one paint; next minute second paint
+PASS
+------------------------------------------------------------------------------
+Executing test display03MinuteRounding...
+DEBUG (16:07): MINUTE offset=-61 observed=T- 00:02 expected=T- 00:02
+DEBUG (16:07): MINUTE offset=-60 observed=T- 00:01 expected=T- 00:01
+DEBUG (16:07): MINUTE offset=-59 observed=T- 00:01 expected=T- 00:01
+DEBUG (16:07): MINUTE offset=-1 observed=T- 00:01 expected=T- 00:01
+DEBUG (16:07): MINUTE offset=0 observed=T+ 00:00 expected=T+ 00:00
+DEBUG (16:07): MINUTE offset=1 observed=T+ 00:00 expected=T+ 00:00
+DEBUG (16:07): MINUTE offset=59 observed=T+ 00:00 expected=T+ 00:00
+DEBUG (16:07): MINUTE offset=60 observed=T+ 00:01 expected=T+ 00:01
+DEBUG (16:07): MINUTE offset=61 observed=T+ 00:01 expected=T+ 00:01
+PASS
+------------------------------------------------------------------------------
+Executing test display03SleepThenHighObservation...
+DEBUG (16:07): SLEEP_QUERY_HIGH active=0 low=1 mode=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03WakeThenLowObservation...
+DEBUG (16:07): WAKE_QUERY_LOW active=0 low=1 mode=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03PrimaryLanguages...
+DEBUG (16:07): PRIMARY_DATE locale=en text=Sun 15.11 width=177
+DEBUG (16:07): PRIMARY_DATE locale=ru text=Вс 15.11 width=155
+DEBUG (16:07): PRIMARY_DATE locale=de text=So 15.11 width=156
+DEBUG (16:07): PRIMARY_DATE locale=fr text=dim 15.11 width=177
+DEBUG (16:07): PRIMARY_DATE locale=es text=dom 15.11 width=190
+PASS
+------------------------------------------------------------------------------
+Executing test display03LocaleResume...
+DEBUG (16:07): LOCALE_WAKE refreshed_after_first_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03PackedCenters...
+PASS
+------------------------------------------------------------------------------
+Executing test display03SameBatchJob...
+DEBUG (16:07): SAME_BATCH serial_advance_preserved=true changed_digest_canceled=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03MetricRolesAndAge...
+DEBUG (16:07): METRIC_ROLE duplicate=one historyAgeBound=unchanged energy=currentComplication absent=unavailable fresh=restored
+PASS
+------------------------------------------------------------------------------
+Executing test display03LowDoesNotSample...
+PASS
+------------------------------------------------------------------------------
+Executing test display03OffStopsWork...
+DEBUG (16:07): OFF noPaintOrSampling=true cancelOnce=true highFirstFrameBeforeSampling=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03CurrentBodyBatteryLifecycle...
+DEBUG (16:07): BODY_CURRENT selectedOnly=true duplicatesOne=true callbackNullAndZero=true lowNoRead=true wakeAfterFrame=true deselectionUnsubscribes=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03ComplicationSourceBoundary...
+DEBUG (16:07): BODY_SOURCE startDedup=true nullZeroRange=true deniedSubscription=true unavailableRead=null currentReadAllowed=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03ActualComplicationApi...
+DEBUG (16:07): BODY_API subscription=true valuePresent=true valueRangeChecked=true stopped=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                                Status:
+display03RealMapDecode               PASS
+display03CausalSequence              PASS
+display03ReadyAndErrorOnWake         PASS
+display03BackgroundBeforeFrame       PASS
+display03FailedSameDigestRetry       PASS
+display03SourcedHoldCache            PASS
+display03WarmAodResources            PASS
+display03SameSceneRefreshKeepsJob    PASS
+display03ForegroundReloadDuringBuild PASS
+display03StreamWireValidation        PASS
+display03RepeatedLowCallbacks        PASS
+display03MinuteRounding              PASS
+display03SleepThenHighObservation    PASS
+display03WakeThenLowObservation      PASS
+display03PrimaryLanguages            PASS
+display03LocaleResume                PASS
+display03PackedCenters               PASS
+display03SameBatchJob                PASS
+display03MetricRolesAndAge           PASS
+display03LowDoesNotSample            PASS
+display03OffStopsWork                PASS
+display03CurrentBodyBatteryLifecycle PASS
+display03ComplicationSourceBoundary  PASS
+display03ActualComplicationApi       PASS
+Ran 24 tests
+
+PASSED (passed=24, failed=0, errors=0)

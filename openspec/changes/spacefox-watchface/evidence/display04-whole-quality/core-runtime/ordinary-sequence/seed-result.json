@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/opt/homebrew/opt/openjdk@11/bin/java",
+    "-Dfile.encoding=UTF-8",
+    "-classpath",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+    "com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux",
+    "-f",
+    "/Users/jekamas/.codex/tmp/spacefox-display04-ordinary-sequence-05/seed.prg",
+    "-d",
+    "fr165m",
+    "-s",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/shell"
+  ],
+  "runnerPid": 18435,
+  "rawExit": 143,
+  "markers": [
+    "D04_SEED accepted=true"
+  ],
+  "reached": true,
+  "wallSeconds": 12.099174708127975
+}

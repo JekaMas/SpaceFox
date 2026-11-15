@@ -1,0 +1,80 @@
+test_current_live_root_and_immutable_negative (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_current_live_root_and_immutable_negative) ... ok
+test_current_source_data_only_extension_and_preserved_refusals (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_current_source_data_only_extension_and_preserved_refusals) ... ok
+test_empty_pages_exact_witness_and_nonempty_uncertainty (tests.test_autonomous_publisher_whole.AutonomousPublisherWholeTest.test_empty_pages_exact_witness_and_nonempty_uncertainty) ... Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/__main__.py", line 18, in <module>
+    main(module=None)
+    ~~~~^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/main.py", line 104, in __init__
+    self.runTests()
+    ~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/main.py", line 270, in runTests
+    self.result = testRunner.run(self.test)
+                  ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/runner.py", line 257, in run
+    test(result)
+    ~~~~^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ~~~~~~~~^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/suite.py", line 122, in run
+    test(result)
+    ~~~~^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ~~~~~~~~^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/suite.py", line 122, in run
+    test(result)
+    ~~~~^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ~~~~~~~~^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/suite.py", line 122, in run
+    test(result)
+    ~~~~^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/case.py", line 725, in __call__
+    return self.run(*args, **kwds)
+           ~~~~~~~~^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/case.py", line 669, in run
+    self._callTestMethod(testMethod)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/case.py", line 615, in _callTestMethod
+    result = method()
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/test_autonomous_publisher_whole.py", line 533, in test_empty_pages_exact_witness_and_nonempty_uncertainty
+    pub=recover(pub,Site(s.url+'/site',local_http=True),pages)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tools/spacefox/cloud.py", line 465, in recover
+    pub = write_journal(pub, value)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tools/spacefox/cloud.py", line 295, in write_journal
+    pub._context(pub.head)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tools/spacefox/publisher.py", line 694, in _context
+    head, doc = self.store.load()
+                ~~~~~~~~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tools/spacefox/publisher.py", line 483, in load
+    self._files(head, doc)  # Reject broken/missing artifacts on every reopen.
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tools/spacefox/publisher.py", line 524, in _files
+    data = self._blob(head, key, MAX_ARTIFACT_BYTES)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tools/spacefox/publisher.py", line 454, in _blob
+    return self._git('show', f'{revision}:{path}').stdout
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tools/spacefox/publisher.py", line 434, in _git
+    result = subprocess.run(['git', '-C', self.path, *args], input=data,
+                            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 555, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1943, in _execute_child
+    part = os.read(errpipe_read, 50000)
+KeyboardInterrupt

@@ -61,6 +61,14 @@ integrated with this authoring source; full native integration and phone/device/
 acceptance remain separate. Any SDK/compiler/simulator/device observation must name
 its exact source and toolchain. A local SDK observation does not install it on another machine.
 
+SDK simulator work uses one owned lane. Before launch, identify live processes and
+connections and snapshot the affected simulator files and configuration; preserve
+other owners' processes and data. Restore and verify the snapshot after the run,
+then verify that no task-owned launcher or simulator remains. Computer-use app
+selection or accessibility reads can launch a fresh simulator: use them only while
+the owned runner is live, never after it exits. Do not infer device or graphics-pool
+measurements from a simulator process or an app-heap counter.
+
 Product health fields display Garmin-provided data or an unavailable marker. A
 real launch update, an asset update and an actual liftoff are different events.
 Preserve uncertainty and the user's compact home-screen design.

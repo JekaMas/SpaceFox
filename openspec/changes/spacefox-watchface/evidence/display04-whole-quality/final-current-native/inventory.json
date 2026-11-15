@@ -1,0 +1,86 @@
+{
+  "currentSuites": [
+    {
+      "probe": "tests/native_scene_diagnostics/current-508/current_clock_probe.py",
+      "source": "watchface/current-clock-tests/ClockTests.mc",
+      "tests": [
+        "currentClockPositive",
+        "currentClockNegative",
+        "currentClockAdapter",
+        "currentClockFormatting",
+        "currentColorStates"
+      ],
+      "runnerExit": 0
+    },
+    {
+      "probe": "tests/native_scene_diagnostics/current-508/current_fields_probe.py",
+      "source": "watchface/current-fields-tests/FieldsTests.mc",
+      "tests": [
+        "currentLayoutEnglish",
+        "currentLayoutRussianLong",
+        "currentFooterCircleBound",
+        "currentPreclipTextIcons",
+        "basicFieldsPositive",
+        "basicFieldsNegative",
+        "basicUnavailablePositive",
+        "basicUnavailableNegative",
+        "basicBatteryPositive",
+        "basicBatteryNegative"
+      ],
+      "runnerExit": 0
+    },
+    {
+      "probe": "tests/native_scene_diagnostics/current-508/current_lifecycle_probe.py",
+      "source": "watchface/current-lifecycle-tests/LifecycleTests.mc",
+      "tests": [
+        "finalAnimationLifecycle",
+        "finalAnimationBounds",
+        "finalAodMinuteGuard",
+        "finalLocalCalendar"
+      ],
+      "runnerExit": 0
+    },
+    {
+      "probe": "tests/native_scene_diagnostics/current-508/current_menu_probe.py",
+      "source": "watchface/current-menu-tests/MenuTests.mc",
+      "tests": [
+        "currentMenuSettings"
+      ],
+      "runnerExit": 0
+    },
+    {
+      "probe": "tests/native_scene_diagnostics/current-508/current_recovery_probe.py",
+      "source": "watchface/current-recovery-tests/RecoveryTests.mc",
+      "tests": [
+        "currentLowRecovery"
+      ],
+      "runnerExit": 0
+    },
+    {
+      "probe": "tests/native_scene_diagnostics/current-508/current_redraw_probe.py",
+      "source": "watchface/current-scene-tests/RedrawTests.mc",
+      "tests": [
+        "displayDrawDefersResume"
+      ],
+      "runnerExit": 0
+    },
+    {
+      "probe": "tests/native_scene_diagnostics/current-508/current_settings_probe.py",
+      "source": "watchface/current-ui-tests/SettingsTests.mc",
+      "tests": [
+        "finalSettingsPositive",
+        "finalSettingsNegative"
+      ],
+      "runnerExit": 0
+    }
+  ],
+  "currentTestCount": 24,
+  "separateNativeFamilies": [
+    "watchface/tests",
+    "watchface/scene-tests",
+    "watchface/incident-tests",
+    "watchface/ux-tests",
+    "watchface/localization-tests"
+  ],
+  "boundary": "caller-owned simulator lease"
+}

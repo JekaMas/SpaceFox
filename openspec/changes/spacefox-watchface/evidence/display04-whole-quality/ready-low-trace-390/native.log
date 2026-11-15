@@ -1,0 +1,26 @@
+------------------------------------------------------------------------------
+Executing test dcFont...
+
+Error: Not Enough Arguments Error
+Details: Failed invoking <symbol>
+Stack: 
+  - dcFont() at /Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/openspec/changes/spacefox-watchface/evidence/display04-whole-quality/ready-low-trace-390/observer/ReadyAssetTrace.mc:30 0x10004227 
+  - evaluate_test_entries_0_to_2() at /Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/openspec/changes/spacefox-watchface/evidence/display04-whole-quality/ready-low-trace-390/gen/006-B4432-00/source/UnitTests.mcgen:52 0x10009555 
+  - runTest() at /Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/openspec/changes/spacefox-watchface/evidence/display04-whole-quality/ready-low-trace-390/gen/006-B4432-00/source/UnitTests.mcgen:69 0x10009629 
+ERROR
+------------------------------------------------------------------------------
+Executing test display04RealReadyLowTrace...
+DEBUG (20:18): D04_READY_ASSETS|0|selection=ddef3be6db53150c8c9b4b1712c758cde77d2a2137a981cfcf5a3876aa014d0c|map=390x390|rocket=54x124|flag=20x12|phase=0|position=true
+DEBUG (20:18): D04_READY_LOW|0|selection=ddef3be6db53150c8c9b4b1712c758cde77d2a2137a981cfcf5a3876aa014d0c|bundled=true|mapResource=ResourceId|mapSize=390x390|point=335,165|minutePhase=1|clock=08:38|count=T- 04:29|date=Sun 15.11|aodFont=152|contextFont=47
+DEBUG (20:18): D04_READY_ASSETS|1|selection=ddef3be6db53150c8c9b4b1712c758cde77d2a2137a981cfcf5a3876aa014d0c|map=390x390|rocket=54x124|flag=20x12|phase=0|position=true
+DEBUG (20:18): D04_READY_LOW|1|selection=ddef3be6db53150c8c9b4b1712c758cde77d2a2137a981cfcf5a3876aa014d0c|bundled=true|mapResource=ResourceId|mapSize=390x390|point=335,165|minutePhase=1|clock=08:38|count=T- 04:29|date=Вс 15.11|aodFont=152|contextFont=47
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+dcFont                              ERROR
+display04RealReadyLowTrace          PASS
+Ran 2 tests
+
+FAILED (passed=1, failed=0, errors=1)

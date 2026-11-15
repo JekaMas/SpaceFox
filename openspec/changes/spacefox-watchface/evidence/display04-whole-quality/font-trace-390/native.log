@@ -1,0 +1,21 @@
+------------------------------------------------------------------------------
+Executing test display04ActualFontTrace...
+DEBUG (18:48): D04_FONT|0|locale=en|face=RobotoRegular|labelVector=true|smallVector=true|countVector=true|timeHeight=116|metricHeight=52|aodHeight=152
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - display04ActualFontTrace() at /Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/fixtures/display04_font_trace/TraceFonts.mc:14 0x1000446a 
+  - evaluate_test_entries_0_to_1() at /Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/openspec/changes/spacefox-watchface/evidence/display04-whole-quality/font-trace-390/gen/006-B4432-00/source/UnitTests.mcgen:51 0x10008b81 
+  - runTest() at /Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/openspec/changes/spacefox-watchface/evidence/display04-whole-quality/font-trace-390/gen/006-B4432-00/source/UnitTests.mcgen:66 0x10008c2d 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+display04ActualFontTrace            ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

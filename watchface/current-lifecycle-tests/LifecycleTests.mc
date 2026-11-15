@@ -33,11 +33,12 @@ function finalBuffer() as Graphics.BufferedBitmap {
 (:test, :typecheck(false))
 function finalAnimationLifecycle(logger as Test.Logger) as Boolean {
     var v=new SpaceFoxView(new FinalClock(),new ScheduleState(null,"empty"));
-    v.setContext(finalContext());v.onShow();v.onExitSleep();
-    var started=v.animationRunning;v.setSettings(new SceneSettings(null));var settingsStopped=!v.animationRunning && v.animationProgress==0.0;v.onExitSleep();v.onEnterSleep();var stopped=!v.animationRunning && v.animationProgress==0.0;
-    v.onExitSleep();var restarted=v.animationRunning;v.onHide();
-    logger.debug("wake starts; sleep and hide stop/reset; static fallback duration 2.5s");
-    return started && settingsStopped && stopped && restarted && !v.animationRunning && v.animationProgress==0.0 && new NativeVisualRenderer().duration()==2.5;
+    v.setContext(finalContext());var dc=finalBuffer().getDc();v.onLayout(dc);v.onShow();
+    v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);var firstFrameBeforeResume=!v.animationRunning;v.resumeAfterFrame();
+    var started=v.animationRunning;v.setSettings(new SceneSettings(null));var settingsStopped=!v.animationRunning && v.animationProgress==0.0;v.onEnterSleep();var stopped=!v.animationRunning && v.animationProgress==0.0;
+    v.onExitSleep();v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);var wakeFrameBeforeResume=!v.animationRunning;v.resumeAfterFrame();var restarted=v.animationRunning;v.onHide();
+    logger.debug("first frame precedes resume; sleep and hide stop/reset; static fallback duration 2.5s");
+    return firstFrameBeforeResume && wakeFrameBeforeResume && started && settingsStopped && stopped && restarted && !v.animationRunning && v.animationProgress==0.0 && new NativeVisualRenderer().duration()==2.5;
 }
 (:test, :typecheck(false))
 function finalAnimationBounds(logger as Test.Logger) as Boolean {

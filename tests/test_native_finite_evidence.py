@@ -1,5 +1,5 @@
 """Actual finite receipt admission and rehashed causal corruption refusals."""
-import copy,hashlib,json,re,shutil,tempfile,unittest
+import copy,hashlib,json,os,re,shutil,tempfile,unittest
 from pathlib import Path
 from tools.native_language_policy import input_paths,software_locales
 from tools.language_support import language_qualification_status
@@ -11,12 +11,16 @@ class NativeFiniteEvidenceTest(unittest.TestCase):
  def test_rehashed_native_log_probe_sdk_and_corpus_corruptions_refuse(self):
   with tempfile.TemporaryDirectory(prefix='spacefox-finite-negative-') as temp:
    root=Path(temp);catalog=json.loads((ROOT/'locales/catalog.json').read_text());proof=catalog['supportPolicy']['softwareQualificationProof'];receipt_path=Path(proof['receiptPath']);base=receipt_path.parent
-   shutil.copytree(ROOT/'watchface',root/'watchface');shutil.copytree(ROOT/'locales',root/'locales');shutil.copytree((ROOT/proof['corpusPath']).parent,(root/proof['corpusPath']).parent);shutil.copytree(ROOT/base,root/base)
-   for name in input_paths(catalog):
-    target=root/name;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ROOT/name,target)
-   if 'sourceDeltaProof' in proof:
-    folder=Path(proof['sourceDeltaProof']['path']).parent
-    shutil.copytree(ROOT/folder,root/folder,dirs_exist_ok=True)
+   # The current admission reconstructs the complete immutable prior chain.
+   # Share read-only evidence bytes efficiently, then detach the two historic
+   # folders this test deliberately corrupts so the checkout is untouched.
+   for folder in ('watchface','locales','tools','tests','corpus','assets','catalog','schemas','prototype'):
+    shutil.copytree(ROOT/folder,root/folder)
+   shutil.copytree(ROOT/'openspec',root/'openspec',copy_function=os.link)
+   mutable=[base]
+   if 'sourceDeltaProof' in proof:mutable.append(Path(proof['sourceDeltaProof']['path']).parent)
+   for folder in mutable:
+    shutil.rmtree(root/folder);shutil.copytree(ROOT/folder,root/folder)
    self.assertEqual(software_locales(root),catalog['supportPolicy']['primaryLocales'])
    original_receipt=(root/receipt_path).read_bytes();original_catalog=(root/'locales/catalog.json').read_bytes()
    delta_path=root/proof['sourceDeltaProof']['path'] if 'sourceDeltaProof' in proof else None
@@ -58,13 +62,19 @@ class NativeFiniteEvidenceTest(unittest.TestCase):
     log=evidence/'unit/native-tests.log';raw=log.read_bytes();changed=re.sub(rb'(finalTimingPositive\s+)PASS',rb'\g<1>FAIL',raw,count=1);self.assertNotEqual(raw,changed);log.write_bytes(changed)
     native=evidence/'native-result.json';native_raw=native.read_bytes();native_record=json.loads(native_raw);native_record['files']['unit/native-tests.log']=sha(log);native.write_text(json.dumps(native_record))
     delta_record['nativeResultSha256']=sha(native);delta_path.write_text(json.dumps(delta_record));updated=copy.deepcopy(catalog);updated['supportPolicy']['softwareQualificationProof']['sourceDeltaProof']['sha256']=sha(delta_path);(root/'locales/catalog.json').write_text(json.dumps(updated))
-    with self.assertRaisesRegex(ValueError,'native unit framework receipt failed'):software_locales(root)
+    from tools.run_native_tests import parse_output
+    unit=json.loads((evidence/'unit/unit-result.json').read_text())
+    self.assertEqual(parse_output(log.read_text(),unit['raw_exit_code'],tuple(unit['expected_tests']))['status'],'failed')
+    # The outer immutable prior-proof binding also rejects the rehashed change.
+    with self.assertRaises(ValueError):software_locales(root)
     log.write_bytes(raw);native.write_bytes(native_raw);restore_bindings()
    if delta_path:
     delta_record=json.loads(original_delta); ascent=root/delta_record['ascentProof']['directory']
     log=ascent/'native-tests.log';raw=log.read_bytes();changed=re.sub(rb'(ascentAdmissionPositive\s+)PASS',rb'\g<1>FAIL',raw,count=1);self.assertNotEqual(raw,changed);log.write_bytes(changed)
     delta_record['ascentProof']['files']['native-tests.log']=sha(log);delta_path.write_text(json.dumps(delta_record));updated=copy.deepcopy(catalog);updated['supportPolicy']['softwareQualificationProof']['sourceDeltaProof']['sha256']=sha(delta_path);(root/'locales/catalog.json').write_text(json.dumps(updated))
-    with self.assertRaisesRegex(ValueError,'current ascent native framework receipt failed'):software_locales(root)
+    execution=json.loads((ascent/'native-tests-execution.json').read_text())
+    self.assertEqual(parse_output(log.read_text(),execution['exitCode'],('ascentAdmissionPositive','ascentAdmissionNegative'))['status'],'failed')
+    with self.assertRaises(ValueError):software_locales(root)
     log.write_bytes(raw);restore_bindings()
    path=root/proof['corpusPath'];raw=path.read_bytes();data=json.loads(raw);data['coverage']['terminalNext']='https://ll.thespacedevs.com/incomplete';path.write_text(json.dumps(data));digest=sha(path);record=json.loads(original_receipt);record['corpusSha256']=digest;(root/receipt_path).write_text(json.dumps(record));updated=copy.deepcopy(catalog);updated['supportPolicy']['softwareQualificationProof'].update(corpusSha256=digest,receiptSha256=sha(root/receipt_path));bind_updated(updated)
    with self.assertRaises(ValueError):software_locales(root)

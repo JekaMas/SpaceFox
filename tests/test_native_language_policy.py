@@ -107,5 +107,5 @@ class NativeSoftwareAdmissionTest(unittest.TestCase):
    for folder in ('watchface','locales','tools'):shutil.copytree(ROOT/folder,root/folder,ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
    for folder in ('openspec','corpus','tests','assets','catalog','schemas'):(root/folder).symlink_to(ROOT/folder,target_is_directory=True)
    changed=root/'watchface/source/SceneRenderer.mc';changed.write_bytes(changed.read_bytes()+b' ')
-   with self.assertRaisesRegex(ValueError,'DISPLAY02 proof input changed'):software_locales(root,self.catalog)
+   with self.assertRaisesRegex(ValueError,'DISPLAY04 current native closure changed'):software_locales(root,self.catalog)
 if __name__=='__main__':unittest.main()

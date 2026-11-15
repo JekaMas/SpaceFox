@@ -78,13 +78,13 @@ function sceneRocketPositive(logger as Test.Logger) as Boolean {
     var d=new SceneRenderer(null);var s=new SceneSettings(null);d.prepare(suppliedScene(),s);var original=d.model;
     d.prepare(new SceneContext({"id"=>"e","rocket"=>"Electron","operator"=>"Rocket Lab","modelId"=>"electron","operatorId"=>"company-rocket-lab"}),s);
     logger.debug("actual catalog resources change Falcon9->Electron; curated rocket origin remainsNZ independent USoperator");
-    return original!=(d.model) && d.art!=null && d.fullContext.operator.equals("Rocket Lab");
+    return original!=(d.model) && d.art!=null && (d.fullContext as SceneContext).operator.equals("Rocket Lab");
 }
 (:test)
 function sceneRocketNegative(logger as Test.Logger) as Boolean {
     var d=new SceneRenderer(null);d.prepare(new SceneContext({"id"=>"x","rocket"=>"Future unlisted rocket","site"=>"USA · Somewhere","modelId"=>"new-999","operatorId"=>"company-spacex"}),new SceneSettings(null));
     logger.debug("unknown model generic, missing supplied operator omits company/origin; siteUSA never fallback");
-    return d.model==NativeAssets.models["generic"] && d.art!=null && d.fullContext.operator.equals("");
+    return d.model==NativeAssets.models["generic"] && d.art!=null && (d.fullContext as SceneContext).operator.equals("");
 }
 (:test)
 function sceneGeographyPositive(logger as Test.Logger) as Boolean {
@@ -125,22 +125,23 @@ function sceneStatusNegative(logger as Test.Logger) as Boolean {
 }
 (:test)
 function sceneAnimationPositive(logger as Test.Logger) as Boolean {
-    var v=new SpaceFoxView(new SceneClock(),new ScheduleState(null,"empty"));v.setContext(suppliedScene());v.onShow();v.onExitSleep();var running=v.animationRunning;v.onEnterSleep();
-    logger.debug("real WatchUi.animate active starts; sleep cancels/reset; no liftoffstate");return running && !v.animationRunning && v.animationProgress==0.0 && v.snapshot().countdown.equals("02:00:00");
+    var v=new SpaceFoxView(new SceneClock(),new ScheduleState(null,"empty"));v.setContext(suppliedScene());var dc=sceneBuffer().getDc();v.onLayout(dc);v.onShow();v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);var before=!v.animationRunning;v.resumeAfterFrame();var running=v.animationRunning;v.onEnterSleep();
+    logger.debug("first frame before animation; sleep cancels/reset; no liftoff state");var pass=before && running && !v.animationRunning && v.animationProgress==0.0 && v.snapshot().countdown.equals("T- 02:00:00");v.onHide();return pass;
 }
 (:test)
 function sceneAodPositive(logger as Test.Logger) as Boolean {
     var input=new SceneClock();var v=new SpaceFoxView(input,new ScheduleState(1800003661,"exact"));var telemetry=new SceneTelemetry();v.fitness=telemetry;
-    v.onExitSleep();var im=sceneBuffer();v.onLayout(im.getDc());v.onEnterSleep();v.onUpdate(im.getDc());var minute=v.aodMinute;input.now+=1;v.onUpdate(im.getDc());
-    logger.debug("sleep minute redraw guard; fixed numeric countdown; telemetry read once outside redraw");return minute==v.aodMinute && telemetry.reads==1 && v.snapshot().countdown.equals("01:01:00") && !v.animationRunning;
+    var im=sceneBuffer();var dc=im.getDc();v.onLayout(dc);v.onShow();v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);v.resumeAfterFrame();v.onEnterSleep();v.updateForDisplayMode(dc,System.DISPLAY_MODE_LOW_POWER);var minute=v.aodMinute;input.now+=1;v.updateForDisplayMode(dc,System.DISPLAY_MODE_LOW_POWER);
+    logger.debug("sleep minute redraw guard; telemetry read once outside redraw");var pass=minute==v.aodMinute && telemetry.reads==1 && v.snapshot().countdown.equals("T- 01:01:00") && !v.animationRunning;v.onHide();return pass;
 }
 (:test)
 function sceneAodNegative(logger as Test.Logger) as Boolean {
     var d=new SceneRenderer(null);var im=sceneBuffer();d.prepare(suppliedScene(),new SceneSettings(null));
-    for(var i=0;i<4;i+=1){d.aod(im.getDc(),new ClockSnapshot("08:08","02:00:00"),i);}
-    d.aod(im.getDc(),new ClockSnapshot("08:08","02:00:00"),-1);
+    var settings=new SceneSettings(null);d.prepareAod();var loads=d.resourceLoads;
+    for(var i=0;i<4;i+=1){d.aod(im.getDc(),new ClockSnapshot("08:08","T- 02:00"),i,settings);}
+    d.aod(im.getDc(),new ClockSnapshot("08:08","T- 02:00"),-1,settings);
     logger.debug("actual4sparseposition renders plusnegativeUTCminute; mapnotdrawn byseparatepath; pixelbudget separatelyscreenshotted");var v=new SpaceFoxView(new SceneClock(),new ScheduleState(null,"empty"));
-    return d.map!=null && v.utcMinute(-1)==-1l && v.utcMinute(-60)==-1l && v.utcMinute(-61)==-2l && v.utcMinute(253402300799l)==4223371679l;
+    return d.map!=null && d.resourceLoads==loads && v.utcMinute(-1)==-1l && v.utcMinute(-60)==-1l && v.utcMinute(-61)==-2l && v.utcMinute(253402300799l)==4223371679l;
 }
 (:test)
 function sceneMetricsPositive(logger as Test.Logger) as Boolean {

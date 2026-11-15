@@ -14,7 +14,8 @@ This increment extends the accepted native04/full face without changing its font
 icons, marker, map resources or layout. Native source is in `watchface/source/`.
 The background service makes read-only HTTPS requests through Garmin's
 `Communications.makeWebRequest`; the app never uploads health or location data.
-`SensorHistory` remains the existing read-only fitness source. No GPS or raw
+`SensorHistory` supplies read-only heart/stress history; the selected Body Battery
+field uses the current Garmin complication under `ComplicationSubscriber`. No GPS or raw
 sensor activation is added. The FR165 target is API5.2; minimum API is now5.1
 because the bounded parser/admission/decoder classes use the official `:extendedCode`
 paging annotation. String comparison, sorting and display synchronization need5.0;

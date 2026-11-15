@@ -41,7 +41,7 @@ above time (`Falcon9 · SpaceX`), mission purpose on the next line. Long values
 wrap or abbreviate without inventing missing context; full supplied values remain
 in the accepted data. The only map is the accepted faded flat map. The current clock is fixed 24-hour HH:mm; the four fixed positions independently select one of six roles. Field roles, colors, language and feed URL remain configurable.
 
-Amber countdown means reschedule; a dotted underline independently means stale.
+Coral countdown means a target reschedule or a source-qualified structured Hold/delay; a dotted underline independently means stale. Elapsed T+ time alone does not imply Hold.
 There is no exclamation/cloud badge or permanent last-update row. Watch charge
 and Body Battery have distinct Garmin sources. The initial five model drawings,
 curated model-origin flags and original company letter marks use the
@@ -60,13 +60,16 @@ legibility, power, global artwork or36-language acceptance.
 
 ### Separate AMOLED active and always-on scenes
 
-The accepted full-screen map belongs to active mode. AOD uses sparse thin time
-and compact seconds-bearing countdown/uncertainty on black, with no large map
-or rocket animation. The seconds value is recalculated at each permitted minute
-snapshot and immediately on wake, not continuously in LOW. It must fit the applicable 10-percent lit-pixel ceiling and target
-burn-in rules. Use minute updates, the configured time/countdown colors and qualified placement
-variation; a particular shift pattern is not proof of compliance. Do not apply
-MIP partial-update assumptions to FR165 AMOLED.
+ACTIVE shows the accepted full-screen flat map. LOW retains its full matching
+contour and a visible source-qualified selected point, centered thin HH:mm time,
+localized weekday/date, minute-only HH:MM countdown or uncertainty, and current
+watch battery. LOW omits the four configurable fields and rocket animation. It
+uses the same UTC target and T−/T+ meaning as ACTIVE, paints at most once per
+minute in normal operation, and does no per-second countdown work. It must fit
+the applicable 10-percent lit-pixel ceiling and target burn-in rules. Use the
+configured time/countdown colors, bounded position variation and a four-phase
+pixel-rest mask; a particular shift pattern is not proof of compliance. Do not
+apply MIP partial-update assumptions to FR165 AMOLED.
 
 Implement `WatchUi.WatchFace`; stop active timers/animation in `onEnterSleep`,
 restore the accepted scene and recompute UTC countdown in `onExitSleep`. A user
@@ -92,12 +95,16 @@ with a small revision token. Do not pass the8KiB feed through `Background.exit`:
 its approximately8KiB serialized-data ceiling is a separate constraint. The same-current-format cache
 writer/reopen protocol must be qualified, not assumed transactional.
 
-Planned field sources are ActivityMonitor steps/calories, System watch charge and
-recent SensorHistory samples for heart rate/Body Battery/stress. Check exact API
-availability and needed permissions on target; take only a bounded latest sample,
-not an entire history or raw sensor stream. Unavailable data shows `—`. No health,
-user location, child identity or field history is uploaded to the feed. The map
-uses launch-site coordinates and needs no watch GPS permission.
+Field sources are ActivityMonitor steps/calories, System watch charge, bounded
+recent SensorHistory samples for heart rate/stress, and Garmin's current Body
+Battery complication. Subscribe to Body Battery only when selected in an active
+field; share one subscription for duplicates, unsubscribe in LOW/hide and treat
+null or denied data as unavailable (`—`). The current complication is not given
+an invented history-expiry interval. The manifest declares SensorHistory,
+ComplicationSubscriber, Communications and Background; actual physical value
+availability remains unobserved. No health, user location, child identity or
+field history is uploaded to the feed. The map uses launch-site coordinates and
+needs no watch GPS permission.
 
 Garmin's App Types table allows SensorHistory for watch faces, while its manifest
 permission table leaves that cell blank. Treat this documentation inconsistency
@@ -516,10 +523,10 @@ and accepted previous content keep clock/fields usable when content is unavailab
 
 Reschedule flags are per launch identity; unchanged refreshes preserve them and a
 new identity does not inherit them. Unknown new time replaces precision with an
-uncertainty label. Amber and dotted underline remain independent in the active
-scene; sparse AOD preserves both meanings through qualified restrained treatments. Full
-update/version diagnostics belong in settings/runbook, without new service badges
-on the active face. Keep the dedicated battery separate from the four slots.
+uncertainty label. Coral marks reschedule or explicitly sourced Hold independently
+of a stale dotted underline in both visible modes. Full update/version diagnostics
+belong in settings/runbook, without new service badges on the active face. Watch
+battery is selectable within the four ACTIVE slots and separately shown in LOW.
 
 ### Animate a short visual, not a claimed real liftoff
 
@@ -569,11 +576,13 @@ boundaries are qualified.
 
 ## Risks / Trade-offs
 
-- Draft language resources are now in `locales/`; the preview/license foundation
-  and its bounded checks are in `../localize-free-distribution/`. Generate native
-  resources/manifest from that catalog, qualify actual FR165 firmware glyphs,
-  Arabic shaping/RTL, long strings, memory and local time/number settings, and
-  retain English fallback. No native language support is established yet.
+- Language resources and bounded software qualification are described in the
+  software language admission section below; five primary locales are the
+  current finite software target and the other resources remain best-effort.
+  Actual FR165 firmware glyphs, long strings, memory and local time/number
+  settings still need device evidence, and translations need human review.
+  Preserve the English fallback. Arabic shaping and RTL are not claims of the
+  current five-primary software qualification.
 - Original code/specs/translations/schematics use root MIT. Official downloads
   are free, with no paid fields/subscription. Per-image rights are separate;
   unknown/incompatible assets stay out of the default pack. Preserve notices and
@@ -753,8 +762,8 @@ The sole current schema-3 SFR1M envelope has one accepted flat-map selection and
 transfer; globe fields, selection settings, and operator-origin flag are retired,
 not passed compatibility features. The current clock is always 24-hour `HH:mm`;
 the four fixed positions choose one of six metric roles, with invalid values
-falling back individually. Animation is active-only, the separate watch battery
-is shown, and the rocket model determines its origin flag. Language and feed URL
+falling back individually. Animation is active-only; watch battery is a selectable
+ACTIVE field and the selected site country flag belongs by the footer, not the rocket. Language and feed URL
 remain configurable. Existing public dual-scene feed and old cache are historical;
 a new authority/bootstrap and preserved rolling quota are required for a separately
 authorized cutover. No old-format parser or state migration is required.
@@ -762,19 +771,19 @@ authorized cutover. No old-format parser or state migration is required.
 
 ## 2026-11-13 five-language numeric countdown revision
 
-Mandatory software qualification covers en, ru, de, fr and es; 31 remaining resources are best-effort. The only countdown is numeric `HH:mm:ss`, with accumulating hours. Validated nominal-minute UTC uses local arithmetic without changing source precision. Missing target yields `--:--:--`, and zero yields `00:00:00` without claiming launch. Active redraws recompute against UTC; sparse AOD keeps minute lifecycle and formats each permitted snapshot in the same form, with no per-second AOD redraw claim. Earlier 26-language, translated countdown and RTL layout observations remain historical.
+Mandatory software qualification covers en, ru, de, fr and es; 31 remaining resources are best-effort. The ACTIVE countdown is numeric `HH:mm:ss`, with accumulating hours; LOW uses minute-only `HH:mm`. Validated nominal-minute UTC uses local arithmetic without changing source precision. Missing target yields `--:--:--`, and zero yields `00:00:00` without claiming launch. ACTIVE redraws recompute against UTC; LOW uses the same target at minute cadence with no per-second LOW redraw claim. Earlier 26-language, translated countdown and RTL layout observations remain historical.
 
 
 ## 2026-11-14 physical Feed -400 and readability repair
 
 The owner observed ordinary0.1.4 running (generic rocket, empty countdown, battery at top), then exact `Feed -400` at the correct default base. GitHub Pages currently serves `/feed.json` as application/json; the native SDK declares TEXT_PLAIN. Garmin defines -400 as a body invalid for the request type. Earlier simulator200 did not qualify the paired-phone MIME boundary.
 
-The fixed current design moves the separate battery left above the rocket (icon x30/y101, text center x70/y96; combined center near x65/y105), increases its font13→15, increases four metrics32→38 and scalable countdown36→40 (about32px visible glyphs), and keeps time unchanged. Unknown countdown preserves the configured color and normal font/fit. A real reschedule keeps its independent amber override. Only EN/RU changed-scene visuals are newly observed; prior five-primary glyph/corpus proof is replayed on original bytes, and31 other resources remain best-effort.
+The historical 0.1.4 repair moved the separate battery left above the rocket (icon x30/y101, text center x70/y96; combined center near x65/y105), increased its font13→15, increased four metrics32→38 and scalable countdown36→40 (about32px visible glyphs), and kept time unchanged. Unknown countdown preserves the configured color and normal font/fit. That historical candidate used an amber reschedule override; the present design uses coral for reschedule or sourced Hold. At that historical boundary only EN/RU changed-scene visuals were observed; five-primary glyph/corpus proof retained its original bytes, and 31 other resources remained best-effort.
 
 Static transport uses `.txt` copies for only NativeBatch's exact current selected download closure. Native GET maps the logical path to that HTTP path and declares Accept:text/plain/TEXT_PLAIN. No Dictionary reserialization, parser/wire revision, new backend, global catalog duplication, freshness renewal or provider call is introduced. Copies join atomic snapshot/CAS/artifact/readback/recovery manifests; both mutable roots are excluded from prior immutable retention. Already accepted current-format snapshots retain their original identities and remain recoverable; new candidates always include complete copies. Exact measured bounds and focused receipts are in evidence/phone-mime-readability-015. Hosted HTTPS MIME and actual phone/watch readback remain open.
 
-## 2026-11-14 UX01 current native repair contract
+## 2026-11-14 UX01 native repair and current scope
 
-This section supersedes the earlier separate battery and sparse shifted AOD descriptions. The active screen has four independent persisted metric roles and no extra battery. Measurements use actual SDK-rendered ink, including EN/RU real cases. AOD centers large thin time with current localized date/weekday, battery and seconds-bearing countdown refreshed at minute cadence, subject to measured Garmin lit-pixel and burn-in behavior. Foreground redraw performs no communication or storage I/O. Retain accepted data and compatible imagery on transient failures; activate validated new metadata without relabeling old artwork.
+This section supersedes the earlier separate battery and sparse shifted AOD descriptions. The active screen has four independent persisted metric roles and no extra battery. Measurements use actual SDK-rendered ink, including EN/RU real cases. AOD centers large thin time with current localized date/weekday, battery, full matching contour and point, and minute-only countdown refreshed at minute cadence, subject to measured Garmin lit-pixel and burn-in behavior. Foreground redraw performs no communication or storage I/O. Retain accepted data and compatible imagery on transient failures; activate validated new metadata without relabeling old artwork.
 
 The UX01 verification graph covers baseline and repaired SDK pixels, real settings XML/property callback/restart, real low-power/wake lifecycle over three minutes, actual background network/cache failure after acceptance, and signed ordinary package identity. Existing valid proofs remain scoped to their observed sources. Device, phone, Store delivery and physical power acceptance stay open.

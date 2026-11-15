@@ -1,0 +1,17 @@
+------------------------------------------------------------------------------
+Executing test finalSettingsPositive...
+DEBUG (21:38): actual Properties/app.onSettingsChanged/load; distinct6colors+RU, retained4roles andFeedBaseUrl; UI/mobile selection not claimed
+PASS
+------------------------------------------------------------------------------
+Executing test finalSettingsNegative...
+DEBUG (21:38): unknown or wrongtyped palette values default individually; Auto+36 internalIDs retained; no new layout/clock options
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+finalSettingsPositive               PASS
+finalSettingsNegative               PASS
+Ran 2 tests
+
+PASSED (passed=2, failed=0, errors=0)

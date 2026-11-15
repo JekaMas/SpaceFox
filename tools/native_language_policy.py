@@ -89,6 +89,9 @@ def software_locales(root,catalog=None):
  if not qualified:
   if proof is not None:raise ValueError('empty software admission must have no proof')
   return []
+ if isinstance(proof,dict) and 'display04DeltaProof' in proof:
+  from tools.native_display04_requalification import validate
+  return validate(root,catalog)
  if isinstance(proof,dict) and 'integration13DeltaProof' in proof:
   from tools.native_integration13_requalification import validate
   return validate(root,catalog)

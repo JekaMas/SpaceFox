@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "test": {
+    "status": "passed",
+    "raw_exit_code": 1,
+    "expected_tests": [
+      "display04RealReadyLowTrace"
+    ],
+    "observed_tests": {
+      "display04RealReadyLowTrace": "PASS"
+    },
+    "observed_count": 1,
+    "launcher_nonzero_framework_pass": true
+  },
+  "rawExit": 1,
+  "packageSha256": "f931bebe9353f96b64adc2c684dac94914d3cfcc5f6835f58642ed54e666ee32",
+  "launch": [
+    "/opt/homebrew/Cellar/openjdk@11/11.0.21/libexec/openjdk.jdk/Contents/Home/bin/java",
+    "-Dfile.encoding=UTF-8",
+    "-classpath",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+    "com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux",
+    "-f",
+    "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/openspec/changes/spacefox-watchface/evidence/display04-whole-quality/ready-low-trace-fixed-390/Trace.prg",
+    "-d",
+    "fr165",
+    "-s",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/shell",
+    "-t"
+  ],
+  "boundary": "unit allowance; real production selection/build/decoder and actual EN/RU LOW selection and draw calls, no physical or stock-memory proof"
+}

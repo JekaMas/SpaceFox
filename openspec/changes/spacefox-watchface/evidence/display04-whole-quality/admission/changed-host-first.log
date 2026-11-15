@@ -1,0 +1,23 @@
+setUpClass (tests.test_current_ui_batch.CurrentUiBatchTest) ... ERROR
+NativeLocalizationTest (unittest.loader._FailedTest.NativeLocalizationTest) ... ERROR
+
+======================================================================
+ERROR: setUpClass (tests.test_current_ui_batch.CurrentUiBatchTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tests/test_current_ui_batch.py", line 12, in setUpClass
+    cls.result=verify(ROOT)
+               ~~~~~~^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/tools/verify_current_ui_batch.py", line 151, in verify
+    raise ValueError('current clock assertions changed')
+ValueError: current clock assertions changed
+
+======================================================================
+ERROR: NativeLocalizationTest (unittest.loader._FailedTest.NativeLocalizationTest)
+----------------------------------------------------------------------
+AttributeError: module 'tests.test_native_localization' has no attribute 'NativeLocalizationTest'. Did you mean: 'NativeLocalizationResourcesTest'?
+
+----------------------------------------------------------------------
+Ran 1 test in 0.023s
+
+FAILED (errors=2)

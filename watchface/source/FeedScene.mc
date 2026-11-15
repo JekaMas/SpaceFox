@@ -22,5 +22,5 @@ function feedScene(packet,now){
     // approximate display precision separate from the accepted feed identity.
     if(precision.equals("source-coarse")&&timing["source_precision_id"]==1&&timing["nominal_utc"]!=null){precision="minute";target=timing["nominal_utc"];}
     else if(precision.equals("source-coarse")&&(timing["window_start_utc"]!=null||timing["window_end_utc"]!=null)){precision="window";}
-    return new SceneContext({"id"=>row["launch_id"],"rocket"=>rocket,"operator"=>operator,"operatorShort"=>operatorShort,"purpose"=>row["mission_purpose"],"site"=>site,"modelId"=>row["configuration_id"],"operatorId"=>row["operator_id"],"point"=>point,"target"=>target,"precision"=>precision,"date"=>timing["date_utc"],"rescheduled"=>packet.rescheduled,"stale"=>packet.stale});
+    return new SceneContext({"id"=>row["launch_id"],"rocket"=>rocket,"operator"=>operator,"operatorShort"=>operatorShort,"purpose"=>row["mission_purpose"],"site"=>site,"modelId"=>row["configuration_id"],"operatorId"=>row["operator_id"],"point"=>point,"target"=>target,"precision"=>precision,"date"=>timing["date_utc"],"rescheduled"=>packet.rescheduled,"stale"=>packet.stale,"sourceHold"=>row["source_status_id"]==5});
 }

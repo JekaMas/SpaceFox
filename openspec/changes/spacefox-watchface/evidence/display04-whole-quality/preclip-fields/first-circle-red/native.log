@@ -1,0 +1,148 @@
+------------------------------------------------------------------------------
+Executing test currentFooterCircleBound...
+DEBUG (17:47): BASIC_TEXT|vector|188|43|0|26|
+DEBUG (17:47): BASIC_TEXT|vector|195|47|15|22|—
+DEBUG (17:47): BASIC_TEXT|vector|195|70|15|22|—
+DEBUG (17:47): BASIC_TEXT|vector|195|319|239|22|US · Cape Canaveral SFS, F…
+DEBUG (17:47): BASIC_TEXT|time|195|109|239|116|08:38
+DEBUG (17:47): BASIC_TEXT|vector|195|202|194|46|T- 01:00:00
+DEBUG (17:47): BASIC_TEXT|metric|70|240|31|52|—
+DEBUG (17:47): BASIC_TEXT|metric|319|240|31|52|—
+DEBUG (17:47): BASIC_TEXT|metric|70|278|31|52|—
+DEBUG (17:47): BASIC_TEXT|metric|319|278|31|52|—
+DEBUG (17:47): FOOTER_CIRCLE language=0 case=0 width=239 height=22 shown=US · Cape Canaveral SFS, F…
+DEBUG (17:47): BASIC_TEXT|vector|188|43|0|26|
+DEBUG (17:47): BASIC_TEXT|vector|195|47|15|22|—
+DEBUG (17:47): BASIC_TEXT|vector|195|70|15|22|—
+DEBUG (17:47): BASIC_TEXT|vector|195|319|242|22|KP · Sohae Satellite Launch…
+DEBUG (17:47): BASIC_TEXT|time|195|109|239|116|08:38
+DEBUG (17:47): BASIC_TEXT|vector|195|202|194|46|T- 01:00:00
+DEBUG (17:47): BASIC_TEXT|metric|70|240|31|52|—
+DEBUG (17:47): BASIC_TEXT|metric|319|240|31|52|—
+DEBUG (17:47): BASIC_TEXT|metric|70|278|31|52|—
+DEBUG (17:47): BASIC_TEXT|metric|319|278|31|52|—
+DEBUG (17:47): FOOTER_CIRCLE language=0 case=1 width=242 height=22 shown=KP · Sohae Satellite Launch…
+DEBUG (17:47): BASIC_TEXT|vector|188|43|0|26|
+DEBUG (17:47): BASIC_TEXT|vector|195|47|15|22|—
+DEBUG (17:47): BASIC_TEXT|vector|195|70|15|22|—
+DEBUG (17:47): BASIC_TEXT|vector|195|319|239|22|US · Cape Canaveral SFS, F…
+DEBUG (17:47): BASIC_TEXT|time|195|109|239|116|08:38
+DEBUG (17:47): BASIC_TEXT|vector|195|202|194|46|T- 01:00:00
+DEBUG (17:47): BASIC_TEXT|metric|70|240|31|52|—
+DEBUG (17:47): BASIC_TEXT|metric|319|240|31|52|—
+DEBUG (17:47): BASIC_TEXT|metric|70|278|31|52|—
+DEBUG (17:47): BASIC_TEXT|metric|319|278|31|52|—
+DEBUG (17:47): FOOTER_CIRCLE language=1 case=0 width=239 height=22 shown=US · Cape Canaveral SFS, F…
+DEBUG (17:47): BASIC_TEXT|vector|188|43|0|26|
+DEBUG (17:47): BASIC_TEXT|vector|195|47|15|22|—
+DEBUG (17:47): BASIC_TEXT|vector|195|70|15|22|—
+DEBUG (17:47): BASIC_TEXT|vector|195|319|242|22|KP · Sohae Satellite Launch…
+DEBUG (17:47): BASIC_TEXT|time|195|109|239|116|08:38
+DEBUG (17:47): BASIC_TEXT|vector|195|202|194|46|T- 01:00:00
+DEBUG (17:47): BASIC_TEXT|metric|70|240|31|52|—
+DEBUG (17:47): BASIC_TEXT|metric|319|240|31|52|—
+DEBUG (17:47): BASIC_TEXT|metric|70|278|31|52|—
+DEBUG (17:47): BASIC_TEXT|metric|319|278|31|52|—
+DEBUG (17:47): FOOTER_CIRCLE language=1 case=1 width=242 height=22 shown=KP · Sohae Satellite Launch…
+PASS
+------------------------------------------------------------------------------
+Executing test currentPreclipTextIcons...
+DEBUG (17:47): PRECLIP_TEXT|141|43|67|26|2|true
+DEBUG (17:47): PRECLIP_TEXT|183|47|5|22|2|true
+DEBUG (17:47): PRECLIP_TEXT|237|47|92|22|2|true
+DEBUG (17:47): PRECLIP_TEXT|195|70|144|22|2|true
+DEBUG (17:47): PRECLIP_TEXT|195|319|239|22|2|true
+DEBUG (17:47): PRECLIP_TEXT|195|95|129|36|2|true
+DEBUG (17:47): PRECLIP_TEXT|195|109|239|116|2|true
+DEBUG (17:47): PRECLIP_TEXT|195|202|194|46|2|true
+DEBUG (17:47): PRECLIP_ICON|steps|30|249|18|22|true
+DEBUG (17:47): PRECLIP_TEXT|118|240|126|52|2|true
+DEBUG (17:47): PRECLIP_ICON|energy|264|249|18|22|true
+DEBUG (17:47): PRECLIP_TEXT|312|240|46|52|2|true
+DEBUG (17:47): PRECLIP_ICON|heart|30|287|18|22|false
+DEBUG (17:47): PRECLIP_TEXT|78|278|46|52|2|false
+DEBUG (17:47): PRECLIP_ICON|stress|264|287|18|22|true
+DEBUG (17:47): PRECLIP_TEXT|312|278|46|52|2|false
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - currentPreclipTextIcons() at /Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/watchface/current-fields-tests/FieldsTests.mc:75 0x10004f7f 
+  - evaluate_test_entries_0_to_10() at /Users/jekamas/.codex/tmp/spacefox-display04-fields-preclip-01/current_fields_probe/gen/006-B4432-00/source/UnitTests.mcgen:62 0x10009aaa 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-display04-fields-preclip-01/current_fields_probe/gen/006-B4432-00/source/UnitTests.mcgen:93 0x10009c1f 
+ERROR
+------------------------------------------------------------------------------
+Executing test currentLayoutEnglish...
+DEBUG (17:47): BASIC_TEXT|vector|155|43|110|26|Starship V3
+DEBUG (17:47): BASIC_TEXT|vector|218|47|5|22|·
+DEBUG (17:47): BASIC_TEXT|vector|258|47|64|22|SpaceX
+DEBUG (17:47): BASIC_TEXT|vector|195|70|144|22|Communications
+DEBUG (17:47): BASIC_TEXT|vector|195|319|235|22|US · SpaceX Starbase, TX, …
+DEBUG (17:47): BASIC_TEXT|vector|195|95|129|36|Sat 14.11
+DEBUG (17:47): BASIC_TEXT|time|195|109|239|116|08:08
+DEBUG (17:47): BASIC_TEXT|vector|195|202|194|46|T- 49:02:03
+DEBUG (17:47): BASIC_TEXT|metric|118|240|126|52|12,345
+DEBUG (17:47): BASIC_TEXT|metric|312|240|46|52|68
+DEBUG (17:47): BASIC_TEXT|metric|78|278|46|52|72
+DEBUG (17:47): BASIC_TEXT|metric|312|278|46|52|47
+DEBUG (17:47): LAYOUT_EN actual captured launch, date, default fields and colors
+PASS
+------------------------------------------------------------------------------
+Executing test currentLayoutRussianLong...
+DEBUG (17:47): BASIC_TEXT|vector|140|43|119|26|Long Marc…
+DEBUG (17:47): BASIC_TEXT|vector|208|47|5|22|·
+DEBUG (17:47): BASIC_TEXT|vector|262|47|93|22|China Aer…
+DEBUG (17:47): BASIC_TEXT|vector|195|70|114|22|Earth Science
+DEBUG (17:47): BASIC_TEXT|vector|195|319|237|22|CN · Taiyuan Satellite Laun…
+DEBUG (17:47): BASIC_TEXT|vector|195|95|121|36|Сб 14.11
+DEBUG (17:47): BASIC_TEXT|time|195|109|239|116|08:08
+DEBUG (17:47): BASIC_TEXT|vector|195|202|205|46|T+ 00:15:01
+DEBUG (17:47): BASIC_TEXT|metric|106|240|103|52|2 345
+DEBUG (17:47): BASIC_TEXT|metric|297|240|75|52|82%
+DEBUG (17:47): BASIC_TEXT|metric|118|278|126|52|12 345
+DEBUG (17:47): BASIC_TEXT|metric|312|278|46|52|68
+DEBUG (17:47): LAYOUT_RU real long captured launch, date, custom four fields and independent colors
+PASS
+------------------------------------------------------------------------------
+Executing test basicFieldsPositive...
+DEBUG (17:47): actual Properties and app callback: duplicate selections persist; only second field changes
+PASS
+------------------------------------------------------------------------------
+Executing test basicFieldsNegative...
+DEBUG (17:47): only invalid second persisted field defaults; other three including duplicates unchanged
+PASS
+------------------------------------------------------------------------------
+Executing test basicUnavailablePositive...
+DEBUG (17:47): real Garmin adapter API smoke separately; controlled missing sample exercises actual view/formatter
+PASS
+------------------------------------------------------------------------------
+Executing test basicUnavailableNegative...
+DEBUG (17:47): new missing sample replaces former72/68; age300 accepted,301 or future unavailable; real zero allowed only for applicable metrics
+PASS
+------------------------------------------------------------------------------
+Executing test basicBatteryPositive...
+DEBUG (17:47): top battery reads watch82%; BodyBattery68 remains different; four slots including duplicate energy survive
+PASS
+------------------------------------------------------------------------------
+Executing test basicBatteryNegative...
+DEBUG (17:47): missing watch charge cannot borrowBodyBattery68; dedicated battery not a fifth configurable field
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+currentFooterCircleBound            PASS
+currentPreclipTextIcons             ERROR
+currentLayoutEnglish                PASS
+currentLayoutRussianLong            PASS
+basicFieldsPositive                 PASS
+basicFieldsNegative                 PASS
+basicUnavailablePositive            PASS
+basicUnavailableNegative            PASS
+basicBatteryPositive                PASS
+basicBatteryNegative                PASS
+Ran 10 tests
+
+FAILED (passed=9, failed=0, errors=1)

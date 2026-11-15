@@ -1,0 +1,20 @@
+------------------------------------------------------------------------------
+Executing test uxSettingsCallbackAndReopen...
+DEBUG (21:42): UX_SETTINGS slot=1 persisted=battery color=lavender callback=true
+DEBUG (21:42): UX_SETTINGS slot=2 persisted=battery color=lavender callback=true
+DEBUG (21:42): UX_SETTINGS slot=3 persisted=battery color=lavender callback=true
+DEBUG (21:42): UX_SETTINGS slot=4 persisted=battery color=lavender callback=true
+PASS
+------------------------------------------------------------------------------
+Executing test uxCalendarCountdown...
+DEBUG (21:42): UX_CALENDAR en=Sat_14.11 ru=Сб_14.11 AOD=seconds_at_minute_snapshot active=seconds
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+uxSettingsCallbackAndReopen         PASS
+uxCalendarCountdown                 PASS
+Ran 2 tests
+
+PASSED (passed=2, failed=0, errors=0)

@@ -31,8 +31,20 @@ def font(name,size,files,characters):
   draw.text((x-l,y-t),ch,font=f,fill='white',anchor='ls',features=features);glyphs.append((ord(ch),x,y,w,h,l,base+t,round(f.getlength(ch,features=features))-(1 if name=='Time80' else 0)));x+=w+2;row=max(row,h)
  im=im.crop((0,0,width,2**math.ceil(math.log2(max(1,y+row+2)))));directory=RES/'fonts';directory.mkdir(parents=True,exist_ok=True);
  if name == 'Aod40':
-  alpha=im.getchannel('A');from PIL import ImageChops
-  edge=ImageChops.subtract(alpha,alpha.filter(ImageFilter.MinFilter(5)));im.putalpha(edge)
+  # Keep the licensed glyphs' full vertical size while fitting the clock beside
+  # the geographically fixed point. Pack horizontally condensed solid glyphs
+  # before outlining so the two-pixel contour remains consistent on all sides.
+  alpha=im.getchannel('A');packed=Image.new('L',alpha.size);condensed=[];x=y=row=0
+  for n,gx,gy,w,h,l,t,a in glyphs:
+   nw=max(1,round(w*.78));na=round(a*.78)
+   if x+nw+2>width:x=0;y+=row+2;row=0
+   glyph=alpha.crop((gx,gy,gx+w,gy+h)).resize((nw,h),Image.Resampling.LANCZOS)
+   packed.paste(glyph,(x,y));condensed.append((n,x,y,nw,h,round(l*.78),t,na));x+=nw+2;row=max(row,h)
+  glyphs=condensed
+  from PIL import ImageChops
+  padded=Image.new('L',(packed.width+8,packed.height+8));padded.paste(packed,(4,4))
+  edge=ImageChops.subtract(padded,padded.filter(ImageFilter.MinFilter(5)))
+  im.putalpha(edge.crop((4,4,packed.width+4,packed.height+4)))
  coverage=im.getchannel('A')
  im=Image.merge('RGB',(coverage,coverage,coverage))
  im.save(directory/(name+'.png'))

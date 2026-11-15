@@ -118,14 +118,18 @@ large configurable fields, with watch battery available as a field. No redundant
 ### Requirement: Compact exceptional-state indicators
 
 The active home face SHALL omit a persistent update timestamp and service-status badges.
-A reschedule SHALL use a readable reddish countdown; otherwise it SHALL use the persisted selected countdown color, mint by default. Unknown
+A target reschedule or explicit source-reported hold SHALL use a readable reddish countdown; otherwise it SHALL use the persisted selected countdown color, mint by default. Unknown
 new time SHALL replace the precise countdown with an uncertainty label. Stale data
-SHALL add a dotted countdown underline, independently of rescheduling. No
+SHALL add a dotted countdown underline, independently of rescheduling and sourced hold. No
 exclamation or cloud-off badge SHALL occupy the face.
 
 #### Scenario: Normal schedule
-- **WHEN** the selected launch has current data and no detected reschedule
+- **WHEN** the selected launch has current data, no detected reschedule and no sourced hold
 - **THEN** no service timestamp or exceptional-state marker occupies the home screen
+
+#### Scenario: Sourced hold and uncertain time
+- **WHEN** the accepted source explicitly reports a hold, including when the target is unknown or the record is stale
+- **THEN** the countdown is reddish, a stale record separately has a dotted underline, and neither elapsed time nor uncertainty alone asserts a hold
 
 #### Scenario: Reschedule and stale data coexist
 - **WHEN** a previously detected reschedule remains selected and its cached schedule becomes stale
@@ -153,7 +157,7 @@ The AOD SHALL show centered time, local weekday/date, a minute-only countdown or
 #### Scenario: Enter always-on mode
 - **WHEN** FR165 enters low-power always-on mode
 - **THEN** the sparse scene stays within the applicable 10-percent lit-pixel limit and device burn-in rules, active timers stop, the matching outline and point remain visible and the countdown shows minutes without seconds
-- **AND** LOW redraws at most once per minute even if callbacks arrive more often; time and countdown use configured colors except for the reschedule override, and reschedule and stale states remain distinguishable
+- **AND** LOW redraws at most once per minute even if callbacks arrive more often; time and countdown use configured colors except for the sourced-hold or reschedule override, and hold/reschedule and stale states remain distinguishable
 - **AND** LOW and NOT_LOW are the only intentional visible modes. Optional downloads, decode, retries and rejected updates SHALL NOT substitute a maintenance layout. Same visual identity retains its accepted scene and bitmap through sleep, wake and unchanged or rejected callbacks; on rejection the accepted scene and visual remain visible while the durable packet is restored. Ambient operation SHALL NOT initiate network, visual decoding or active sensor sampling. AOD clock ink is centered within two pixels and at least 96px high; countdown ink is at least 28px and current system battery at least 32px, subject to pixel and burn-in limits. Transient update or partial staging failures retain the accepted launch and compatible scene across restart.
 
 #### Scenario: Lifecycle and display notifications differ
@@ -179,10 +183,16 @@ accepted cache; termination SHALL preserve the last working state.
 ### Requirement: Native Garmin metric access
 
 Fields SHALL use available Garmin APIs and only necessary declared permissions.
-Steps/calories, watch charge and recent heart-rate/Body Battery/stress samples
-SHALL retain distinct sources. Feature checks SHALL handle unsupported APIs,
-denied permissions and absent samples. Reading a field SHALL NOT enable raw
-sensor streaming, parse entire histories or upload personal data.
+Steps/calories, watch charge, recent heart-rate/stress samples and the current
+Garmin Body Battery complication SHALL retain distinct sources. Feature checks
+SHALL handle unsupported APIs, denied permissions and absent samples. Reading a
+field SHALL NOT enable raw sensor streaming, parse entire histories or upload
+personal data.
+
+#### Scenario: Body Battery is selected more than once
+- **WHEN** one or more active fields select Body Battery
+- **THEN** the face uses one current complication subscription and represents an absent or denied value as unavailable
+- **AND** it does not subscribe when no active field selects Body Battery
 
 #### Scenario: A selected history metric is unavailable
 - **WHEN** firmware, permissions or recent samples do not support the chosen metric
@@ -237,8 +247,8 @@ and cold reopen.
 #### Scenario: First launch and settings round trip
 - **WHEN** a fresh instance opens and the user changes language and appearance colors
 - **THEN** it starts in English, changed values affect the actual face and survive reopen, four metric assignments and the feed URL are preserved, and unknown values use their documented defaults
-- **AND** English default is independent of system language; clock/countdown default to mint, fields to white, reschedule reddish and stale dotted underline remain semantic overrides, and no layout/map/clock-format choices are added
-- **AND** The actual running version SHALL appear in settings rather than on the face. Active time, field-value and countdown ink target at least 72px, 32px and 28px respectively on 390×390, with measurements exposing contradictions. Unknown countdown uses the persisted countdown palette and style; an actual reschedule retains its reddish override. The active face has no standalone battery: battery is selectable in each fixed field and selected role, icon, value and color persist across restart. The six roles, circular fit, unmarked rocket and site-country flag remain intact.
+- **AND** English default is independent of system language; clock/countdown default to mint, fields to white, reschedule or sourced hold reddish and stale dotted underline remain semantic overrides, and no layout/map/clock-format choices are added
+- **AND** The actual running version SHALL appear in settings rather than on the face. Active time, field-value and countdown ink target at least 72px, 32px and 28px respectively on 390×390, with measurements exposing contradictions. Unknown countdown uses the persisted countdown palette and style unless an explicit sourced hold or actual reschedule supplies the reddish override. The active face has no standalone battery: battery is selectable in each fixed field and selected role, icon, value and color persist across restart. The six roles, circular fit, unmarked rocket and site-country flag remain intact.
 
 #### Scenario: English and Russian final composition
 - **WHEN** final composition is qualified for this delivery
@@ -248,7 +258,7 @@ and cold reopen.
 #### Scenario: Owner readability revision after physical first use
 - **WHEN** the active face draws known or unknown countdown data
 - **THEN** on a 390×390 display actual ink heights target at least 72px for time, 32px for field values, and 28px for countdown; measurements must expose any contradiction
-- **AND** unknown `--:--:--` uses the same persisted countdown palette and render style as the normal countdown; an actual reschedule independently retains its reddish semantic override
+- **AND** unknown `--:--:--` uses the normal persisted countdown palette unless an explicit sourced hold or actual reschedule independently supplies the reddish semantic override
 - **AND** no standalone battery appears in active mode; battery is independently selectable in each of four fixed positions, with all six roles, circular fit, unmarked rocket and country-footer flag intact
 
 #### Scenario: Settings, AOD, and cached scene remain coherent

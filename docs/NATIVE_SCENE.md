@@ -35,12 +35,14 @@ actual source-bound native qualification remains separate from bundled fallbacks
 Adding a prepared point is a resource-data/build operation, not a layout switch.
 
 Metric data come from guarded ActivityMonitor.getInfo steps/calories,
-System.getSystemStats battery and SensorHistory one newest heart/Body Battery/
-stress sample. Source/time/value/range/null checks keep unavailable values honest;
-zero Body Battery/stress/calories/steps is valid. Samples older than300seconds or
-from future clock time are unavailable. No raw Sensor activation/history traversal,
-network, storage parsing or health upload occurs on redraw. SensorHistory is the
-only new declared permission. Physical health availability/permission denial and
+System.getSystemStats battery, SensorHistory one newest heart/stress sample, and
+Garmin's current Body Battery complication when selected. Source/time/value/range/null checks keep unavailable values honest;
+zero Body Battery/stress/calories/steps is valid. Heart/stress samples older than
+300 seconds or from future clock time are unavailable; Body Battery is the current
+complication value or unavailable. No raw Sensor activation/history traversal,
+network, storage parsing or health upload occurs on redraw. The four declared
+permissions are SensorHistory, ComplicationSubscriber, Communications and Background.
+Physical health availability/permission denial and
 firmware samples remain required qualification; SDK observations cannot prove them.
 
 Settings use Garmin Application.Properties for four role assignments, Language

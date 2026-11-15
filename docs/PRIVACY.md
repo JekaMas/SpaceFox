@@ -4,7 +4,9 @@ Effective 13 November 2026. SpaceFox is a free, independent watch face for
 Garmin Forerunner 165. It has no SpaceFox account, advertising, payments or analytics.
 
 The watch face reads the Garmin health/activity values selected for its four
-fields, device battery, clock and language/settings. Health values are used for
+fields, device battery, clock and language/settings. When Body Battery is selected,
+it uses Garmin’s current Body Battery complication and subscribes to its updates;
+the app declares the ComplicationSubscriber permission for that purpose. Health values are used for
 local display. SpaceFox does not upload them to its launch-feed publisher or
 include them in network requests. An unavailable Garmin value is displayed as
 unavailable. Garmin's own apps and services have their separate privacy policies.

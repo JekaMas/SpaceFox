@@ -1,0 +1,32 @@
+------------------------------------------------------------------------------
+Executing test currentClockPositive...
+DEBUG (21:35): CLOCK_LOCAL 08:00->12:00 UTC=7200 unchanged
+PASS
+------------------------------------------------------------------------------
+Executing test currentClockNegative...
+DEBUG (21:35): CLOCK_MIDNIGHT no offset applied UTC=7200
+PASS
+------------------------------------------------------------------------------
+Executing test currentClockAdapter...
+DEBUG (21:35): CLOCK_API actual Garmin local and UTC adapters
+PASS
+------------------------------------------------------------------------------
+Executing test currentClockFormatting...
+DEBUG (21:35): CLOCK_FORMAT fixed 24h midnight noon 23h
+PASS
+------------------------------------------------------------------------------
+Executing test currentColorStates...
+DEBUG (21:35): COLORS selected clock and countdown; coral reschedule or sourced hold; stale dots; coexisting unknown preserves clock
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+currentClockPositive                PASS
+currentClockNegative                PASS
+currentClockAdapter                 PASS
+currentClockFormatting              PASS
+currentColorStates                  PASS
+Ran 5 tests
+
+PASSED (passed=5, failed=0, errors=0)

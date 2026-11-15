@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "test": {
+    "status": "passed",
+    "raw_exit_code": 1,
+    "expected_tests": [
+      "display04Actual454ScaleTrace"
+    ],
+    "observed_tests": {
+      "display04Actual454ScaleTrace": "PASS"
+    },
+    "observed_count": 1,
+    "launcher_nonzero_framework_pass": true
+  },
+  "rawExit": 1,
+  "packageSha256": "404193eb58451cbf94864e04a9eb2fc40139d1b82d1d184cb59c61e6e1b60df7",
+  "launch": [
+    "/opt/homebrew/Cellar/openjdk@11/11.0.21/libexec/openjdk.jdk/Contents/Home/bin/java",
+    "-Dfile.encoding=UTF-8",
+    "-classpath",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+    "com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux",
+    "-f",
+    "/Users/jekamas/projects/SpaceFox-worktrees/display04-whole-quality-20261115/openspec/changes/spacefox-watchface/evidence/display04-whole-quality/scale-view-454/Trace.prg",
+    "-d",
+    "fr965",
+    "-s",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/shell",
+    "-t"
+  ],
+  "boundary": "454 production view buffer and affine path only; no circle, alpha, other contexts, memory or release proof"
+}
