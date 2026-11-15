@@ -21,11 +21,13 @@ class PublishedPredecessorTest(unittest.TestCase):
         policy = json.loads((ROOT / 'release/signing-identity.json').read_text())
         latest = policy['latest_release']
         self.assertEqual((latest['version'], latest['tag'], latest['kind']),
-                         ('0.1.16', 'v0.1.16', 'github_regular_release_and_garmin_submission'))
-        self.assertEqual(latest['package_sha256'], '09ef11c1fbc38af7e3e55327ecd213b361d8f66bbf271f6739763056dbca33e7')
-        self.assertEqual(latest['original_receipt_sha256'], '09e3ed20e5c7964b8d0907fe94a49c4c3ee8627bd82ab47fddfd07c2dbdd7ca7')
-        self.assertEqual(latest['source_revision'], 'b1e0c56df8ef04b4a73637c80f176b6c0ff9cfed')
-        self.assertEqual(latest['tag_revision'], 'b1e0c56df8ef04b4a73637c80f176b6c0ff9cfed')
+                         ('0.1.17', 'v0.1.17', 'github_regular_release_and_garmin_submission'))
+        self.assertEqual(latest['package_sha256'], '68bd65ca1108b4cbcdb86cef46173896d474a2ca424ebddc5b3730f2acebd52d')
+        self.assertEqual(latest['original_receipt_sha256'], '187c7a23fe2f87a5cf25a5ea9e4e16730d362e1ac6d01c6afd08b04353167be6')
+        self.assertEqual(latest['source_revision'], 'bc744093d9f2546461de8a353361e8a2e2f71734')
+        self.assertEqual(latest['tag_revision'], 'bc744093d9f2546461de8a353361e8a2e2f71734')
+        self.assertEqual(policy['historical_release_016']['version'], '0.1.16')
+        self.assertEqual(policy['historical_release_016']['original_receipt_sha256'], '09e3ed20e5c7964b8d0907fe94a49c4c3ee8627bd82ab47fddfd07c2dbdd7ca7')
         self.assertEqual(policy['historical_release_015']['version'], '0.1.15')
         self.assertEqual(policy['historical_release_015']['original_receipt_sha256'], '357b36af8e5e1d8c876705e0fa9cf52e1936216dcec0730bf1ddb57ed04bce44')
         self.assertEqual(policy['historical_release_014']['version'], '0.1.14')
@@ -34,18 +36,18 @@ class PublishedPredecessorTest(unittest.TestCase):
         self.assertEqual(policy['previous_release']['kind'], 'garmin_ordinary_store_submission')
         self.assertEqual(policy['historical_release_012']['version'], '0.1.12')
         self.assertEqual(policy['historical_release_011']['version'], '0.1.11')
-        app = ET.Element('application', id=policy['application_uuid'], version='0.1.17')
+        app = ET.Element('application', id=policy['application_uuid'], version='0.1.18')
         prior = {'version': latest['version'], 'package_sha256': latest['package_sha256'],
                  'application_uuid': policy['application_uuid'], 'public_key_spki_sha256': policy['public_key_spki_sha256']}
         update = release.validate_previous(prior, app, policy['public_key_spki_sha256'])
         self.assertEqual((update['previous_version'], update['previous_package_sha256']),
-                         ('0.1.16', latest['package_sha256']))
+                         ('0.1.17', latest['package_sha256']))
         self.assertFalse(update['migration_qualified'])
-        for version in ('0.1.16', '0.1.15'):
+        for version in ('0.1.17', '0.1.16'):
             app.set('version', version)
             with self.subTest(version=version), self.assertRaisesRegex(BuildBlocked, 'strictly increase'):
                 release.validate_previous(prior, app, policy['public_key_spki_sha256'])
-        app.set('version', '0.1.17')
+        app.set('version', '0.1.18')
         with self.assertRaisesRegex(BuildBlocked, 'identity/key changed'):
             release.validate_previous(dict(prior, application_uuid='0' * 32), app, policy['public_key_spki_sha256'])
         with self.assertRaisesRegex(BuildBlocked, 'identity/key changed'):
@@ -67,7 +69,7 @@ class ActualPublishedPredecessorTest(unittest.TestCase):
         cls.lock = json.loads((ROOT / 'watchface/toolchain-lock.json').read_text())
 
     def setUp(self):
-        self.tmp = tempfile.TemporaryDirectory(prefix='spacefox-published-016-')
+        self.tmp = tempfile.TemporaryDirectory(prefix='spacefox-published-017-')
         self.addCleanup(self.tmp.cleanup)
         self.base = Path(self.tmp.name)
 
@@ -87,7 +89,7 @@ class ActualPublishedPredecessorTest(unittest.TestCase):
             finally:
                 self.assertFalse(output.exists())
 
-    def test_actual_16_receipt_and_iq_reach_next_version_boundary(self):
+    def test_actual_17_receipt_and_iq_reach_next_version_boundary(self):
         latest = self.policy['latest_release']
         self.assertEqual(hashlib.sha256(self.path.read_bytes()).hexdigest(), latest['original_receipt_sha256'])
         self.assertEqual(hashlib.sha256(self.public).hexdigest(), self.policy['public_key_spki_sha256'])
@@ -95,15 +97,15 @@ class ActualPublishedPredecessorTest(unittest.TestCase):
         self.assertEqual(self.prior['package_sha256'], latest['package_sha256'])
         self.assertEqual(self.prior['source_revision'], latest['source_revision'])
         self.assertEqual(self.prior['application_uuid'], self.policy['application_uuid'])
-        self.assertEqual(self.prior['update']['previous_version'], '0.1.15')
+        self.assertEqual(self.prior['update']['previous_version'], '0.1.16')
         with self.assertRaises(ExportBoundaryReached):
-            self.admit('0.1.17', self.path)
-        for version in ('0.1.16', '0.1.15'):
+            self.admit('0.1.18', self.path)
+        for version in ('0.1.17', '0.1.16'):
             with self.subTest(version=version), self.assertRaisesRegex(BuildBlocked, 'strictly increase'):
                 self.admit(version, self.path)
         with self.assertRaisesRegex(BuildBlocked, 'committed latest release receipt/package'):
-            self.admit('0.1.17', None)
-        app = ET.Element('application', id=self.policy['application_uuid'], version='0.1.17')
+            self.admit('0.1.18', None)
+        app = ET.Element('application', id=self.policy['application_uuid'], version='0.1.18')
         for prior, key in ((dict(self.prior, application_uuid='0' * 32), self.policy['public_key_spki_sha256']),
                            (self.prior, '0' * 64)):
             with self.assertRaisesRegex(BuildBlocked, 'identity/key changed'):
@@ -115,7 +117,7 @@ class ActualPublishedPredecessorTest(unittest.TestCase):
         path = self.base / 'release.json'
         path.write_text(json.dumps(changed))
         with self.assertRaisesRegex(BuildBlocked, 'committed latest release receipt/package'):
-            self.admit('0.1.17', path)
+            self.admit('0.1.18', path)
 
     def test_same_package_with_altered_receipt_is_refused(self):
         shutil.copyfile(self.path.parent / self.prior['packages']['iq']['path'], self.base / 'SpaceFox.iq')
@@ -125,10 +127,10 @@ class ActualPublishedPredecessorTest(unittest.TestCase):
             path.write_text(json.dumps(altered))
             with self.subTest(altered=altered), self.assertRaisesRegex(
                     BuildBlocked, 'committed latest release receipt/package'):
-                self.admit('0.1.17', path)
+                self.admit('0.1.18', path)
 
     def test_actual_receipt_must_match_committed_source(self):
         wrong = dict(self.policy, latest_release=dict(self.policy['latest_release'], source_revision='0' * 40))
         with patch.object(release, 'identity_policy', return_value=wrong):
             with self.assertRaisesRegex(BuildBlocked, 'committed latest release receipt/package'):
-                self.admit('0.1.17', self.path)
+                self.admit('0.1.18', self.path)

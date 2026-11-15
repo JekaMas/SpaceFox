@@ -1,5 +1,7 @@
 # Launch rollover 0.1.17 — author evidence
 
+**Publication and hosted update:** The regular 0.1.17 release and original-card Garmin submission are recorded in [publication](publication/PUBLICATION.md). The host-only delivery repair was merged separately, both serialized activation runs succeeded, and generation 50 was read back live with two upcoming rows and preserved source age. This closes the current software/hosted activation boundary; Garmin review and physical installation/data/wake/power remain open. The historical narrative below retains its original observation times.
+
 The photograph shows Vulcan VC6L at T+00:59:44 (3,584 s); it does not show an application version. In the captured-source reproduction, the producer retained an elapsed pending record and shipped only that selected record, and the view advanced its displayed clock without selecting again. The actual pinned-SDK `NativeBridgeFeed → FeedScene → SpaceFoxView` RED at 3,584 s showed Vulcan with active `T+ 00:59:44` and LOW `T+ 00:59`: `native-red.log`, `native-red-probe.mc.txt`, `native-red-build.json`, `native-red-observation.json`. The diagnostic compiler bypassed only the unrelated broken historical language admission; it is not release admission. The original producer 3,594 s RED remains in `publisher-red.log`.
 
 | State/event | Selection and effects |

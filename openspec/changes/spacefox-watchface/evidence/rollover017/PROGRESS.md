@@ -42,3 +42,7 @@ photo +3584; uninstrumented stock used 105.8/123.8 KiB, peak 121.8, decoded
 visual and two successors, zero new last-frame resources. SDK lanes restored.
 The first probe failure (missing readiness setup) and stale-ID diagnostic are
 retained. Strict admission from the clean exported checkpoint qualified all five primary languages; five affected exported timing/version readers passed. Independent peer is GREEN; root release gates remain open.
+
+## Publication and hosted activation
+
+Regular 0.1.17 publication and Garmin owner-preview PENDING/queued Music installation are recorded in [publication](publication/PUBLICATION.md). The 0.1.17 original receipt and IQ are the current predecessor; the focused metadata guard passed 5/5. The first hosted activation failed at the delivery-union bound, and the separately merged host-only repair has local and independent evidence. The two serialized runs succeeded: generation 49 recovered first, then generation 50 deployed with two upcoming rows; the live JSON/text readback passed with unchanged source-validation time. Hosted activation is DONE at this bounded software boundary. Physical acceptance remains open.

@@ -1,6 +1,8 @@
 # Launch rollover incident and release 0.1.17
 
-Status: NOT DONE. Base: public main `4aa10bdeb3b41908558fab56c5467930bf735f0e`.
+**Publication and hosted update:** The regular 0.1.17 release and original-card Garmin submission are recorded in [publication](publication/PUBLICATION.md). The host-only delivery repair was merged separately, both serialized activation runs succeeded, and generation 50 was read back live with two upcoming rows and preserved source age. This closes the current software/hosted activation boundary; Garmin review and physical installation/data/wake/power remain open. The historical narrative below retains its original observation times.
+
+Current status: DONE for incident software, regular release, original-card submission and hosted activation. Physical acceptance remains unobserved. Initial base: public main `4aa10bdeb3b41908558fab56c5467930bf735f0e`.
 This is one repair unit under existing tasks 3.2, 5.1/5.2 and 7.2/7.3, not a new
 numbered task list. The owner requests reproduction, scenario tests, a clean
 selection state machine, a version increase and a regular release/publication.

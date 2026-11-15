@@ -1,0 +1,86 @@
+{
+  "observed_utc": "2026-11-15T22:55:24.731184+00:00",
+  "publisher": {
+    "generation": 50,
+    "instance": "40655f8a46c4c47ecb6f6d4a8608bde8396c6c440807e09d962b1f7fde006204",
+    "selectionValidatedUtc": 1794770809
+  },
+  "launch_id": "ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60",
+  "configuration_name": "Long March 2D",
+  "site_name": "Launch Complex 9",
+  "source_validated_utc": 1794770809,
+  "upcoming": [
+    {
+      "launch_id": "ll2:launch:76617033-4dc0-4448-b50c-e5b0d5a18539",
+      "configuration_name": "Falcon 9 Block 5",
+      "site_name": "Space Launch Complex 4E",
+      "site_position": {
+        "encoding": "decimal-text-v1",
+        "latitude": "34.632",
+        "longitude": "-120.611",
+        "qualification": "unverified-reference",
+        "units": "degrees"
+      },
+      "timing": {
+        "date_utc": null,
+        "exact_utc": null,
+        "nominal_utc": 1795057200,
+        "precision": "source-coarse",
+        "source_net": "2026-11-19T03:00:00Z",
+        "source_precision_abbrev": "MIN",
+        "source_precision_description": "The T-0 is accurate to the minute.",
+        "source_precision_id": 1,
+        "source_precision_name": "Minute",
+        "window_end_utc": 1795071600,
+        "window_start_utc": 1795057200
+      },
+      "source_validated_utc": 1794770809
+    },
+    {
+      "launch_id": "ll2:launch:a2975167-7c6f-4403-99e1-b40df17c8140",
+      "configuration_name": "Long March 8A",
+      "site_name": "Commercial LC-1",
+      "site_position": {
+        "encoding": "decimal-text-v1",
+        "latitude": "19.597275",
+        "longitude": "110.930753",
+        "qualification": "unverified-reference",
+        "units": "degrees"
+      },
+      "timing": {
+        "date_utc": null,
+        "exact_utc": null,
+        "nominal_utc": 1795172400,
+        "precision": "source-coarse",
+        "source_net": "2026-11-20T11:00:00Z",
+        "source_precision_abbrev": "HR",
+        "source_precision_description": "The T-0 is accurate to the hour.",
+        "source_precision_id": 2,
+        "source_precision_name": "Hour",
+        "window_end_utc": 1795183200,
+        "window_start_utc": 1795172400
+      },
+      "source_validated_utc": 1794770809
+    }
+  ],
+  "upcoming_rows": 2,
+  "observations": [
+    {
+      "file": "feed.json",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "bytes": 5657,
+      "sha256": "a06e9d743b14deecbd760d46e05bd28b2383b82c03d9e64020ffa22d8d404310"
+    },
+    {
+      "file": "feed.json.txt",
+      "status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 5657,
+      "sha256": "a06e9d743b14deecbd760d46e05bd28b2383b82c03d9e64020ffa22d8d404310"
+    }
+  ],
+  "json_and_text_equal": true,
+  "current_wire_validation_passed": true,
+  "schema_version": 3
+}

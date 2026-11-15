@@ -1,5 +1,7 @@
 # Hosted rollover delivery repair
 
+**Later root publication observation:** The host repair is deployed: generation 49 was recovered and generation 50 promoted by two successful serialized runs. Both live endpoints returned identical generation-50 bytes with two upcoming rows and unchanged source-validation time. See [publication readback](../publication/PUBLICATION.md). The author-era local evidence below retains its original boundary.
+
 Author apply/self-verification: GREEN for the bounded local publisher unit.
 The local generation-50 readback and all listed focused recovery checks passed.
 Independent peer review, actual GitHub Pages activation, exact live readback and
