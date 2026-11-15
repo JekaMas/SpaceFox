@@ -14680,15 +14680,15 @@
         "tools/spacefox/graphics.py",
         "tests/test_global_content_parity_r6.py"
       ],
-      "test_id": "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_current_sfr_source_extension_preserved",
-      "command_id": "current-geography-whole",
+      "test_id": "unittest::tests.test_current_geography_durable.CurrentGeographyDurableTest.test_source_extension_survives_current_recovery_and_reopen",
+      "command_id": "current-geography-durable",
       "state": "implemented",
-      "source_path": "tests/test_current_geography_whole.py",
+      "source_path": "tests/test_current_geography_durable.py",
       "substitution": {
         "classification": "NO_TEST_DOUBLE"
       },
-      "source_sha256": "3095278bb7e5a951c8d21f97af459256be84c661995b1191536d8a1fb3392456",
-      "implementation_note": "Actual current selected SFR1M model retains technical source-only extension with original jurisdiction; current/recovery exact immutable union separately retained in current-feed-authority-whole/FINAL.md. Old frozen-bundle port retired.",
+      "source_sha256": "14aa3aae4535c2630a1f9c015f352ce7a895b8893cd614120b6d9a8be408d83e",
+      "implementation_note": "Current SFR1M actual selected model raw extension persists through current/pending delivery, publisher reopen and promotion; earlier generation is not claimed as a host snapshot after promotion. No legacy bundle or physical watch claim.",
       "distinct_reason": "Global manifest has thousands of assets: VC17.P3.C17.POSITIVE supplies a distinct current bounded clause; complementary controls are recorded in current-geography-closure-whole."
     },
     {
@@ -34558,6 +34558,22 @@
       "timeout_seconds": 900,
       "authority": "local",
       "notes": "Current off-watch selected source and SFR1M producer; no on-watch cohort or worldwide claim."
+    },
+    {
+      "id": "current-geography-durable",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_current_geography_durable"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 900,
+      "authority": "local",
+      "notes": "Actual isolated local Git publisher; no hosted or device claim."
     }
   ]
 }

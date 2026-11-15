@@ -641,7 +641,7 @@
       "unittest::tests.test_global_content_identity.GlobalContentIdentityTest.test_unknown_operator_badge_negative",
       "unittest::tests.test_global_content_minotaur_review.GlobalContentMinotaurReviewTest.test_optional_fairing_metadata_and_selection_positive",
       "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_source_extension_and_reopen_corrections",
-      "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_current_sfr_source_extension_preserved",
+      "unittest::tests.test_current_geography_durable.CurrentGeographyDurableTest.test_source_extension_survives_current_recovery_and_reopen",
       "unittest::tests.test_global_content_retained_unknown.GlobalContentRetainedUnknownTest.test_generic_unknown_and_known_identity_corrections_positive",
       "unittest::tests.test_global_content_retained_unknown.GlobalContentRetainedUnknownTest.test_ordinary_unknown_recode_negative",
       "unittest::tests.test_global_content_retained_unknown.GlobalContentRetainedUnknownTest.test_recoded_unknown_model_operator_origins_negative",
@@ -2866,7 +2866,7 @@
       ],
       "test_ids": [
         "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_selected_source_identity_history_refusals",
-        "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_current_sfr_source_extension_preserved",
+        "unittest::tests.test_current_geography_durable.CurrentGeographyDurableTest.test_source_extension_survives_current_recovery_and_reopen",
         "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_source_extension_and_reopen_corrections"
       ],
       "searches": [
