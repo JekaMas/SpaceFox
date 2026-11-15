@@ -24,7 +24,10 @@ class MapOnlyContractTest(unittest.TestCase):
         settings = ET.parse(ROOT / 'watchface/resources/settings/settings.xml').getroot()
         properties = ET.parse(ROOT / 'watchface/resources/settings/properties.xml').getroot()
         self.assertEqual({p.attrib['id'] for p in properties},
-                         {'Field1', 'Field2', 'Field3', 'Field4', 'Language', 'FeedBaseUrl'})
+                         {'Field1', 'Field2', 'Field3', 'Field4', 'Language', 'FeedBaseUrl',
+                          'ClockColor', 'CountdownColor', 'Field1Color', 'Field2Color', 'Field3Color', 'Field4Color'})
+        self.assertEqual(next(p.text for p in properties if p.get('id') == 'FeedBaseUrl'),
+                         'https://jekamas.github.io/SpaceFox')
         for i in range(1, 5):
             entry = next(item for item in settings if item.attrib['propertyKey'] == '@Properties.Field'+str(i))
             self.assertEqual([child.text for child in entry.find('settingConfig')],

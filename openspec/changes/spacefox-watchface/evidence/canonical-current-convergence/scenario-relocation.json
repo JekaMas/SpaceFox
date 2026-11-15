@@ -1,0 +1,325 @@
+{
+  "reason": "OpenSpec strict requires shorter requirement prose; clauses were relocated without semantic change into existing scenarios. Fingerprints identify current text only; prior executions and their original source/scenario boundaries are not rewritten.",
+  "oldRequirements": {
+    "LS02": "c664a04d813bb660d025d4038b6e4dedf75b93cdf369316d49a8c1cbba2b7327",
+    "LS05": "f28ca969562031592716c9bde85c829021d2c375962d337eb61016d62f7227ac",
+    "RL04": "4e9872245ee29ce4c5b449075f12f8faa04f1dbbc2adcdb1a7d071633dfc8ea9",
+    "VC01": "85b028714798cd239f1e657945cefde03a7761c004d96872ef0fca63667b1d03",
+    "WF05": "0295d76901e8e6e24fbaa3c9659d8299bc1a02142114086afbb18dd7374e66bc",
+    "WF06": "246e0dacb33f91ed444a6422085d1974927a20c96237bc53d9c2b097552a0863",
+    "WF08": "dfe68a4713c882ed2af4002751e637bf49d612612cdb5b38bd06b7343ed277e5",
+    "WF09": "1fe41c0c4df2b7d7498de7e2ffcbae3015c27f7fb4065c4fef08b1b2667f2770",
+    "VC20": "6bc6ad089d34c87ee615d68f946971eb43af07604e787eaf64b5b24085192aae",
+    "WF13": "bbafc5cef4e084190900d69c5e7a87fc6ac4c7fcfb2f0b55dd1f4cf15d31a562"
+  },
+  "oldCases": [
+    {
+      "id": "LS02.P1.S01.POSITIVE",
+      "oldScenarioFingerprint": "9e5bc17e2bb74b7f9beb1cdf830951e4b7e3d552f8899f076e07a29d220d9687"
+    },
+    {
+      "id": "LS02.P1.S01.NEGATIVE",
+      "oldScenarioFingerprint": "9e5bc17e2bb74b7f9beb1cdf830951e4b7e3d552f8899f076e07a29d220d9687"
+    },
+    {
+      "id": "LS05.P1.S01.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "RL04.P1.S01.POSITIVE",
+      "oldScenarioFingerprint": "f4c14957d3c12c95386c732d2c179477e8bce0d1bf4780ad4ed5aae48366f396"
+    },
+    {
+      "id": "RL04.P1.S01.NEGATIVE",
+      "oldScenarioFingerprint": "f4c14957d3c12c95386c732d2c179477e8bce0d1bf4780ad4ed5aae48366f396"
+    },
+    {
+      "id": "VC01.P1.S01.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "ec910c763012801ed7f5d45a4abdf739ec7827b778732f79b5cdaaa33a3080c9"
+    },
+    {
+      "id": "VC01.P1.S01.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "ec910c763012801ed7f5d45a4abdf739ec7827b778732f79b5cdaaa33a3080c9"
+    },
+    {
+      "id": "WF05.P1.S01.POSITIVE",
+      "oldScenarioFingerprint": "0bc7ba01086df1f9c4b6d014e1361dfecb314b9f8dd8db4125999200f51a1c4e"
+    },
+    {
+      "id": "WF05.P1.S01.NEGATIVE",
+      "oldScenarioFingerprint": "0bc7ba01086df1f9c4b6d014e1361dfecb314b9f8dd8db4125999200f51a1c4e"
+    },
+    {
+      "id": "WF06.P1.S01.POSITIVE",
+      "oldScenarioFingerprint": "4ce114129074daa7d5b01e86f7ecb24de18670e54ab939a0484d1667bd4c3337"
+    },
+    {
+      "id": "WF06.P1.S01.NEGATIVE",
+      "oldScenarioFingerprint": "4ce114129074daa7d5b01e86f7ecb24de18670e54ab939a0484d1667bd4c3337"
+    },
+    {
+      "id": "WF08.P1.S01.POSITIVE",
+      "oldScenarioFingerprint": "5f850e988207f413fb6e6f02ba9cfcdd55898c38119e65e2c68566e775f052d1"
+    },
+    {
+      "id": "WF08.P1.S01.NEGATIVE",
+      "oldScenarioFingerprint": "5f850e988207f413fb6e6f02ba9cfcdd55898c38119e65e2c68566e775f052d1"
+    },
+    {
+      "id": "WF09.P1.S01.POSITIVE",
+      "oldScenarioFingerprint": "b9d285f3430fc6aa0f6d5f679d48b8d750f061a3c7dabc5948f6cdc960e248e7"
+    },
+    {
+      "id": "WF09.P1.S01.NEGATIVE",
+      "oldScenarioFingerprint": "b9d285f3430fc6aa0f6d5f679d48b8d750f061a3c7dabc5948f6cdc960e248e7"
+    },
+    {
+      "id": "LS05.P2.S01.POSITIVE",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "LS05.P2.S01.NEGATIVE",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "LS05.P4.S01.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "LS05.P4.S02.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "LS05.P4.S03.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "LS05.P5.S01.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "LS05.P5.S01.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "VC01.P5.C03.POSITIVE",
+      "oldScenarioFingerprint": "ec910c763012801ed7f5d45a4abdf739ec7827b778732f79b5cdaaa33a3080c9"
+    },
+    {
+      "id": "VC01.P5.C04.NEGATIVE",
+      "oldScenarioFingerprint": "ec910c763012801ed7f5d45a4abdf739ec7827b778732f79b5cdaaa33a3080c9"
+    },
+    {
+      "id": "VC20.P1.C02.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "c5b84df5ea0ff0534e00337cabefc50000c3a0aa29f50a81453e9fb5a7987932"
+    },
+    {
+      "id": "VC20.P1.C03.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "c5b84df5ea0ff0534e00337cabefc50000c3a0aa29f50a81453e9fb5a7987932"
+    },
+    {
+      "id": "VC20.P1.C04.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "c5b84df5ea0ff0534e00337cabefc50000c3a0aa29f50a81453e9fb5a7987932"
+    },
+    {
+      "id": "VC20.P1.C05.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "c5b84df5ea0ff0534e00337cabefc50000c3a0aa29f50a81453e9fb5a7987932"
+    },
+    {
+      "id": "VC20.P1.C06.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "c5b84df5ea0ff0534e00337cabefc50000c3a0aa29f50a81453e9fb5a7987932"
+    },
+    {
+      "id": "VC20.P1.C06.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "c5b84df5ea0ff0534e00337cabefc50000c3a0aa29f50a81453e9fb5a7987932"
+    },
+    {
+      "id": "VC20.P1.C07.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "c5b84df5ea0ff0534e00337cabefc50000c3a0aa29f50a81453e9fb5a7987932"
+    },
+    {
+      "id": "WF09.P3.C01.POSITIVE",
+      "oldScenarioFingerprint": "b9d285f3430fc6aa0f6d5f679d48b8d750f061a3c7dabc5948f6cdc960e248e7"
+    },
+    {
+      "id": "WF09.P3.C02.NEGATIVE",
+      "oldScenarioFingerprint": "b9d285f3430fc6aa0f6d5f679d48b8d750f061a3c7dabc5948f6cdc960e248e7"
+    },
+    {
+      "id": "VC20.P1.MOTIONWHOLE.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "c5b84df5ea0ff0534e00337cabefc50000c3a0aa29f50a81453e9fb5a7987932"
+    },
+    {
+      "id": "VC20.P1.MOTIONWHOLE.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "c5b84df5ea0ff0534e00337cabefc50000c3a0aa29f50a81453e9fb5a7987932"
+    },
+    {
+      "id": "VC20.P1.MOTIONWHOLE.HOSTSPARSE.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "c5b84df5ea0ff0534e00337cabefc50000c3a0aa29f50a81453e9fb5a7987932"
+    },
+    {
+      "id": "VC20.P1.MOTIONWHOLE.SDKPIXELS.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "c5b84df5ea0ff0534e00337cabefc50000c3a0aa29f50a81453e9fb5a7987932"
+    },
+    {
+      "id": "VC20.P4.C01.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "c5b84df5ea0ff0534e00337cabefc50000c3a0aa29f50a81453e9fb5a7987932"
+    },
+    {
+      "id": "VC20.P4.C02.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "c5b84df5ea0ff0534e00337cabefc50000c3a0aa29f50a81453e9fb5a7987932"
+    },
+    {
+      "id": "VC20.P4.C03.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "c5b84df5ea0ff0534e00337cabefc50000c3a0aa29f50a81453e9fb5a7987932"
+    },
+    {
+      "id": "VC20.P4.C05.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "c5b84df5ea0ff0534e00337cabefc50000c3a0aa29f50a81453e9fb5a7987932"
+    },
+    {
+      "id": "VC20.P4.C06.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "c5b84df5ea0ff0534e00337cabefc50000c3a0aa29f50a81453e9fb5a7987932"
+    },
+    {
+      "id": "LS05.P1.S01.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "LS05.P3.S01.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "LS05.P3.S01.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "WF08.P2.S01.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "5f850e988207f413fb6e6f02ba9cfcdd55898c38119e65e2c68566e775f052d1"
+    },
+    {
+      "id": "WF08.P2.S01.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "5f850e988207f413fb6e6f02ba9cfcdd55898c38119e65e2c68566e775f052d1"
+    },
+    {
+      "id": "LS05.P8.S01.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "LS05.P8.S01.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "LS02.P3.S01.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "9e5bc17e2bb74b7f9beb1cdf830951e4b7e3d552f8899f076e07a29d220d9687"
+    },
+    {
+      "id": "LS02.P3.S01.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "9e5bc17e2bb74b7f9beb1cdf830951e4b7e3d552f8899f076e07a29d220d9687"
+    },
+    {
+      "id": "LS05.P6.S01.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "LS05.P6.S01.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "LS02.P4.S01.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "9e5bc17e2bb74b7f9beb1cdf830951e4b7e3d552f8899f076e07a29d220d9687"
+    },
+    {
+      "id": "LS02.P4.S01.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "9e5bc17e2bb74b7f9beb1cdf830951e4b7e3d552f8899f076e07a29d220d9687"
+    },
+    {
+      "id": "LS05.P7.S01.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "LS05.P7.S01.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "LS05.P5.S02.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "LS05.P5.S02.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "LS05.P5.S03.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "LS02.P5.C03.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "9e5bc17e2bb74b7f9beb1cdf830951e4b7e3d552f8899f076e07a29d220d9687"
+    },
+    {
+      "id": "LS02.P5.C04.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "9e5bc17e2bb74b7f9beb1cdf830951e4b7e3d552f8899f076e07a29d220d9687"
+    },
+    {
+      "id": "LS05.P5.S03.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "LS05.P4.C01.POSITIVE",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "LS05.P4.C02.NEGATIVE",
+      "oldScenarioFingerprint": "c34b6eef8be90dd9ce817ecee35853c71a1322ed73e2c15032be67e259bc8404"
+    },
+    {
+      "id": "WF05.P1.RING24.POSITIVE",
+      "oldScenarioFingerprint": "0bc7ba01086df1f9c4b6d014e1361dfecb314b9f8dd8db4125999200f51a1c4e"
+    },
+    {
+      "id": "WF05.P1.RING24.NEGATIVE",
+      "oldScenarioFingerprint": "0bc7ba01086df1f9c4b6d014e1361dfecb314b9f8dd8db4125999200f51a1c4e"
+    },
+    {
+      "id": "WF06.P1.PUBLIC.POSITIVE",
+      "oldScenarioFingerprint": "4ce114129074daa7d5b01e86f7ecb24de18670e54ab939a0484d1667bd4c3337"
+    },
+    {
+      "id": "WF06.P1.PUBLIC.NEGATIVE",
+      "oldScenarioFingerprint": "4ce114129074daa7d5b01e86f7ecb24de18670e54ab939a0484d1667bd4c3337"
+    },
+    {
+      "id": "WF13.P1.FINAL.S1.POSITIVE",
+      "oldScenarioFingerprint": "d368a6b9931fc8f1f894b4895d3b3b86aea58f1408fd3268ef6ca8308907bff6"
+    },
+    {
+      "id": "WF13.P1.FINAL.S1.NEGATIVE",
+      "oldScenarioFingerprint": "d368a6b9931fc8f1f894b4895d3b3b86aea58f1408fd3268ef6ca8308907bff6"
+    },
+    {
+      "id": "WF08.P3.1.POSITIVE",
+      "oldScenarioFingerprint": "5f850e988207f413fb6e6f02ba9cfcdd55898c38119e65e2c68566e775f052d1"
+    },
+    {
+      "id": "WF08.P3.1.NEGATIVE",
+      "oldScenarioFingerprint": "5f850e988207f413fb6e6f02ba9cfcdd55898c38119e65e2c68566e775f052d1"
+    },
+    {
+      "id": "WF09.P4.1.POSITIVE",
+      "oldScenarioFingerprint": "b9d285f3430fc6aa0f6d5f679d48b8d750f061a3c7dabc5948f6cdc960e248e7"
+    },
+    {
+      "id": "WF09.P4.1.NEGATIVE",
+      "oldScenarioFingerprint": "b9d285f3430fc6aa0f6d5f679d48b8d750f061a3c7dabc5948f6cdc960e248e7"
+    },
+    {
+      "id": "WF09.P2.S01.POSITIVE.CURRENT",
+      "oldScenarioFingerprint": "b9d285f3430fc6aa0f6d5f679d48b8d750f061a3c7dabc5948f6cdc960e248e7"
+    },
+    {
+      "id": "WF09.P2.S01.NEGATIVE.CURRENT",
+      "oldScenarioFingerprint": "b9d285f3430fc6aa0f6d5f679d48b8d750f061a3c7dabc5948f6cdc960e248e7"
+    }
+  ]
+}

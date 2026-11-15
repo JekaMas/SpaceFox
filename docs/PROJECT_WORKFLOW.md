@@ -118,3 +118,16 @@ admission use `supportPolicy.softwareQualifiedLocales` only after validation of 
 source-bound finite-corpus software proof; English remains the bootstrap fallback.
 Per-row `nativeQualified`, human and physical flags stay truthful and do not control
 software admission. Translations remain draft until actually reviewed.
+
+## Instrumented native probe compatibility
+
+The current watch face does not compile the historical `NativeMetrics` diagnostic
+module. Its unmodified source remains under `tests/fixtures/native/` for explicit
+probe use. The retained `tools/native_full_visual_runtime.py` is bound by earlier
+qualification proofs; do not edit its bytes or treat those proofs as new runs.
+For a diagnostic that imports that helper, invoke it through
+`python3 -B tools/run_instrumented_probe.py <repository-diagnostic.py> ...` so
+the probe-only adapter includes the fixture without adding it to the product.
+This route does not authorize a run, alter recorded receipts, or establish
+physical or phone behavior. Historical probes still require their own source,
+fixture, toolchain and observation boundaries.

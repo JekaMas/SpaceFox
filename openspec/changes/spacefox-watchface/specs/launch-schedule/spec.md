@@ -21,10 +21,10 @@ retirement, cancellation or worldwide schedule completeness.
 ### Requirement: Automatic bounded refresh
 
 The watch SHALL fetch its static HTTPS feed via Garmin Connect hourly by default, or every 15 minutes from two hours before an exact or validated MIN nominal target through 30 minutes after it without confirmation. MIN precision remains uncertain; date-only, window-only and unknown targets use hourly mode. Intervals SHALL be configurable within platform/provider limits, including optional 5-minute mode. Drawing/countdown ticks MUST NOT initiate requests. Delivery delay SHALL remain explicit.
-
 #### Scenario: Connected refresh
 - **WHEN** a scheduled background refresh is permitted and the phone has connectivity
 - **THEN** the watch receives the accepted static schedule without manual refresh, provider credentials or a custom phone application, and uses its updated launch times
+- **AND** When a first background attempt without an accepted schedule fails or is interrupted before callback, register the next attempt before the request at the first permitted slot, five minutes after the later of last temporal event and attempt. Actual OS/phone dispatch may be later; redraw does not request and normal cadence resumes after acceptance. Foreground wakes and duplicate callbacks SHALL NOT postpone pending visual deadlines. An event newer than last dispatch remains pending even when late; consumed or absent events observe the five-minute minimum. Missing, null or unreadable FeedBaseUrl uses the published default; an explicitly stored blank disables the feed. Physical evidence uses the selected watch face.
 
 #### Scenario: Provider unavailable or rate limited
 - **WHEN** a refresh fails, times out or is rate limited
@@ -33,13 +33,6 @@ The watch SHALL fetch its static HTTPS feed via Garmin Connect hourly by default
 #### Scenario: Refresh window changes
 - **WHEN** the cached exact or validated MIN nominal target enters the two-hour window or passes thirty minutes without confirmation
 - **THEN** the local scheduler changes between fifteen-minute and hourly checks without inferring liftoff; temporary faster checking does not become permanent
-
-#### Scenario: First installation or pending visual work
-- **WHEN** the selected feed has no accepted schedule and its first background attempt fails or is interrupted before a callback
-- **THEN** the next attempt is registered before the request for the first permitted slot, five minutes after the later of the last temporal event and attempt; actual OS/phone dispatch may occur later, redraw makes no request, and normal cadence resumes after acceptance
-- **AND** foreground wakes and duplicate callbacks do not postpone a registered pending visual deadline; an event newer than the last dispatched event remains pending even when late, while a consumed or absent event observes the five-minute minimum since dispatch
-- **AND** missing, null or unreadable FeedBaseUrl uses the published default; an explicitly stored blank disables the feed
-- **AND** physical refresh evidence uses the selected watch face
 
 ### Requirement: Personal static-feed operation
 
@@ -98,17 +91,10 @@ UTC times and precision, source-validation times and catalog revision references
 The initial feed MUST be at most 8192 UTF-8 bytes; actual FR165 memory/time
 qualification MAY require a smaller supported bound. Unsupported, oversized,
 regressing or malformed snapshots MUST NOT replace the last accepted cache.
-
 #### Scenario: Unsupported or inconsistent snapshot
 - **WHEN** a response exceeds the bound, has an unsupported schema, missing required identity, invalid coordinates/time, or older source validation than the accepted cache
 - **THEN** the response is rejected and current time, fitness fields and last accepted launch data remain usable
-
-All native feed, catalog, transfer-index, scene/descriptor and raster GETs SHALL use `HTTP_RESPONSE_CONTENT_TYPE_TEXT_PLAIN` and byte-identical `.txt` sidecars served as `text/plain` from the configured HTTPS base. Logical paths, bytes, digests, ordering, precision, cache and parser semantics SHALL remain unchanged.
-
-#### Scenario: Transport closure is prepared or read back
-- **WHEN** final metadata or bounded selected and protected same-format recovery objects are prepared
-- **THEN** sidecars join the same durable snapshot or authenticated delivery journal, artifact, manifest, CAS, retention, recovery and exact readback under the existing 1MiB/256-file bound, without provider requests, source-age renewal or changes to priority, selection epoch and quota
-- **AND** missing, stale, corrupt, unexpected or wrong-MIME sidecars refuse the candidate or readback without reconstructing pending bytes or losing accepted recovery; simulator HTTP200 with wrong MIME does not prove phone acceptance
+- **AND** All native feed, catalog, transfer-index, scene/descriptor and raster GETs SHALL use `HTTP_RESPONSE_CONTENT_TYPE_TEXT_PLAIN` and byte-identical `.txt` sidecars served as `text/plain` from the configured HTTPS base. Logical paths, bytes, digests, ordering, precision, cache and parser semantics SHALL remain unchanged. After final metadata, bounded selected and protected same-format recovery sidecars join the same durable snapshot or authenticated delivery journal, artifact, manifest, CAS, retention, recovery and exact readback under the existing 1MiB/256-file bound, without provider requests or changes to source age, priority, selection epoch or quota. Missing, stale, corrupt, unexpected or wrong-MIME sidecars refuse the candidate or readback without reconstructing pending bytes or losing accepted recovery; simulator HTTP200 with wrong MIME does not prove phone acceptance.
 
 ### Requirement: Decoded feed size accounting
 

@@ -45,26 +45,9 @@ class FinalNativeTimingSettingsTest(unittest.TestCase):
         return self.native('finalTimingPositive','finalParserUpdatePositive')
 
     def scene(self,*names):
-        # Retain only the two unmodified typed SFR identity assertions. They do
-        # not draw text, settings, timer, colors or marks. The whole old scene
-        # suite is historical, never claimed current.
-        allowed={'selectedIdentityPositive','selectedIdentityNegative'}
-        self.assertTrue(set(names)<=allowed)
-        folder=ROOT/'openspec/changes/spacefox-watchface/evidence/basic-selected-scene-whole/native'
-        result=json.loads((folder/'scene-observation.json').read_text())
-        hashes=result['build']['source_sha256']
-        dependencies=['NativeSfr.mc','NativeImmutable.mc','NativeBridgeFeed.mc','NativeJson.mc','NativeSourceTimes.mc','NativeAssetTypes.mc','NativeRenderSource.mc','NativeAnimation.mc','NativeVisualRenderer.mc']
-        for name in ['watchface/source/'+x for x in dependencies]+[x for x in hashes if x.startswith('tests/fixtures/basic_selected_scene/')]:
-            source = self.evidence/'observer/production-snapshot'/Path(name+'.txt') if name=='watchface/source/NativeJson.mc' else ROOT/name
-            self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(),hashes[name],name)
-        old=(self.evidence/'baseline/watchface/source/NativeFeed.mc').read_text()
-        current=(self.evidence/'observer/production-snapshot/watchface/source/NativeFeed.mc.txt').read_text()
-        self.assertEqual(current.replace('["pending","unknown","started"].indexOf(l["status"])','["pending","unknown"].indexOf(l["status"])'),old)
-        self.assertEqual(hashlib.sha256(old.encode()).hexdigest(),hashes['watchface/source/NativeFeed.mc'])
-        from tests.test_basic_selected_scene import NAMES
-        observed=parse_output((folder/'native-tests.log').read_text(),result['raw_exit_code'],NAMES)
-        self.assertEqual(observed['status'],'passed')
-        for name in names:self.assertEqual(observed['observed_tests'][name],'PASS')
+        # Exact old receipt/source inputs plus separately named current seams.
+        from tests.retained_scene_reader import observe_scene
+        observe_scene(*names)
 
     def native(self,*names):
         result=json.loads((self.evidence/'unit/unit-result.json').read_text())

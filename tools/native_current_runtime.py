@@ -180,7 +180,7 @@ def main():
     if a.draw_observer or a.refusal:
         if a.mode!='observe':p.error('--draw-observer requires observe')
         source=draw_observer(source)
-    result=runtime.build_probe(a.output,source,group='motion',tests=a.mode=='seed',source_files=['tests/fixtures/native/NativeMetrics.mc'] if a.mode in ('fill','clean') else None)
+    result=runtime.build_probe(a.output,source,group='motion',tests=a.mode=='seed',source_files=['watchface/source/NativeMetrics.mc'] if a.mode in ('fill','clean') else None)
     result['expectedTests']=['motionSeed'] if a.mode=='seed' else []
     result['generatorSha256']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     (a.output/'build.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({k:result[k] for k in ('exitCode','sourceSetSha256','packageName')}));return result['exitCode']

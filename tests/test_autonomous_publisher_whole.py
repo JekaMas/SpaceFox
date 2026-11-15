@@ -541,9 +541,11 @@ sys.exit(m.main())'''
             pub,new=arm(pub,expected=pub.head,repository='local/spacefox',run_id=43,run_attempt=1,artifact_id=78,now=NOW+1)
             self.assertNotEqual(new['buildVersion'],intent['buildVersion']);s.statuses=['queued','in_progress','succeed']
             from tools.spacefox.cloud import deploy
-            with patch('tools.spacefox.cloud.time.sleep') as sleep:
+            # Replace cloud's time reference, not the process-global time.sleep
+            # used by subprocess timeout polling inside the HTTP worker.
+            with patch('tools.spacefox.cloud.time') as cloud_time:
                 self.assertEqual(deploy(pub,pages,Site(s.url+'/site',local_http=True),expected=pub.head,repository='local/spacefox',run_id=43,run_attempt=1,id_token='local',polls=3),'succeed')
-                self.assertEqual(sleep.call_count,2)
+                self.assertEqual(cloud_time.sleep.call_count,2)
             self.assertEqual(sum(c[0]=='POST' for c in s.calls),old_post+1)
             s.files=delivery_files(pub,journal(pub)['files']);s.statuses=['succeed']
             pub=recover(pub,Site(s.url+'/site',local_http=True),pages)
@@ -779,6 +781,11 @@ sys.exit(m.main())'''
             for target,key,value in defects:
                 s.run=deepcopy(run);s.jobs=deepcopy(jobs);(s.run if target=='run' else s.jobs['jobs'][0])[key]=value
                 with self.subTest(target=target,key=key):self.assertFalse(pages.never_started(intent))
+            s.run=deepcopy(run);s.jobs=deepcopy(jobs);s.jobs['jobs'][0]['conclusion']='cancelled'
+            self.assertFalse(pages.never_started(intent))
+            s.jobs['jobs'][0]['conclusion']='success'
+            s.jobs['jobs'][0]['steps']=[dict(name='POST once, then bound async polling and cancellation finality',status='completed',conclusion='skipped')]
+            self.assertTrue(pages.never_started(intent))
             for statuses in (['queued',''],['',{}],['in_progress',''],[dict(status=3)]):
                 s.statuses=list(statuses);count=len(s.calls)
                 with self.subTest(statuses=statuses),self.assertRaises(CloudError):pages.wait(intent['buildVersion'],polls=2,delay=0)

@@ -25,11 +25,8 @@ def build_probe(output,source,*,group,tests=False,source_files=None,probe_resour
         ET.SubElement(products,'{http://www.garmin.com/xml/connectiq}product',{'id':device})
     tree.write(out/'manifest.xml')
     selected_sources=list((ROOT/'watchface/source').rglob('*.mc')) if source_files is None else [ROOT/p for p in source_files]
-    # Instrumentation is probe-only and is never compiled into the product.
-    metrics=ROOT/'tests/fixtures/native/NativeMetrics.mc'
-    if 'NativeMetrics' in source and metrics not in selected_sources:selected_sources.append(metrics)
     production_sources={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in selected_sources}
-    source_path=str(ROOT/'watchface/source')+';'+str(metrics.parent)+';'+str(out)
+    source_path=str(ROOT/'watchface/source')+';'+str(out)
     if source_files is not None:
         source_path=str(out)
         for p in selected_sources:
@@ -94,7 +91,7 @@ def main():
         out=a.output.resolve();b=json.loads((out/'build.json').read_text())
         expected={**b['productionSources'],**b.get('productionResources',{})}
         changed=[name for name,digest in expected.items() if not (ROOT/name).is_file() or hashlib.sha256((ROOT/name).read_bytes()).hexdigest()!=digest]
-        if b['productionSourceScope']=='all-native' and set(b['productionSources'])-{"tests/fixtures/native/NativeMetrics.mc"}!={str(p.relative_to(ROOT)) for p in (ROOT/'watchface/source').rglob('*.mc')}:changed.append('all-native source closure')
+        if b['productionSourceScope']=='all-native' and set(b['productionSources'])!={str(p.relative_to(ROOT)) for p in (ROOT/'watchface/source').rglob('*.mc')}:changed.append('all-native source closure')
         changed += ['probe-resource/'+name for name,digest in b.get('probeResources',{}).items() if not (out/'probe-resources'/name).is_file() or hashlib.sha256((out/'probe-resources'/name).read_bytes()).hexdigest()!=digest]
         if changed:raise RuntimeError('Refusing stale native package: '+', '.join(changed[:8]))
         c=discover();command=[str(c['java']),'-Dfile.encoding=UTF-8','-classpath',str(c['compiler']),'com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux','-f',str(out/b['packageName']),'-d',b.get('device','fr165'),'-s',str(c['sdk']/'bin/shell')]

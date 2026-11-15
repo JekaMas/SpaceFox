@@ -1,0 +1,13 @@
+------------------------------------------------------------------------------
+Executing test currentCoreFaultRoles...
+DEBUG (03:05): CURRENT_CORE_OPERATIONS count=20 roles=[read:sf.obj.d49da8ac54926e64f9eb7b8599920f7e4aa779b843fe77018dec104385f61a7b, read:sf.pin.dbc2e1c939ca2a17f260b9c0fb121ccdce2998ca1ad88d9d239198b7b5c37060, read:sf.recovery, write:sf.feed.1.0, read:sf.feed.1.0, write:sf.feed.1.1, read:sf.feed.1.1, write:sf.feed.1.2, read:sf.feed.1.2, write:sf.feed.1.3, read:sf.feed.1.3, write:sf.feed.1.4, read:sf.feed.1.4, write:sf.feed.1, read:sf.pin.dbc2e1c939ca2a17f260b9c0fb121ccdce2998ca1ad88d9d239198b7b5c37060, write:sf.pin.dbc2e1c939ca2a17f260b9c0fb121ccdce2998ca1ad88d9d239198b7b5c37060, read:sf.commit, write:sf.recovery, write:sf.commit, read:sf.commit]
+DEBUG (03:05): CURRENT_CORE_FAULTS reached=20 exactOldOrNew=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+currentCoreFaultRoles               PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

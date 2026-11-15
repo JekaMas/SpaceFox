@@ -1,4 +1,4 @@
-"""Exact finite R2 data/CLI/immutable-store witnesses; shape review is separate."""
+"""Finite historical R2 catalog CLI and internal source-geometry witnesses."""
 import copy
 import hashlib
 import json
@@ -9,6 +9,8 @@ import tempfile
 import unittest
 
 from tests.test_global_catalog import temporary_catalog
+from tests.source_pack_helpers import source_pack, add_historical_inputs
+from tools.spacefox.graphics import VisualError
 from tools.spacefox.catalog import build_catalog, canonical_bytes, coverage_report, loads_json
 from tools.spacefox.graphics import assemble_visual, canonical_visual
 
@@ -63,6 +65,7 @@ class FurtherArtR2Test(unittest.TestCase):
         cls.addClassCleanup(cls.history_tmp.cleanup)
         history = temporary_catalog(Path(cls.history_tmp.name) / 'owner')
         cls.historical_source = history / 'catalog/source.json'
+        add_historical_inputs(history, HISTORICAL)
         cls.historical_source.write_bytes(HISTORICAL.read_bytes())
         for amendment, version in ((CURATION, 'literal.further.r2'),
                                    (RADIAL_CURATION, 'literal.further.r2.radial')):
@@ -73,10 +76,7 @@ class FurtherArtR2Test(unittest.TestCase):
         cls.after = build_catalog(history)
 
     def export(self,source,output,identity):
-        result = execute(ROOT/'tools/export_visuals.py','--source',source,
-                         '--output',output,'--root',identity)
-        self.assertEqual(result.returncode,0,result.stderr)
-        return json.loads((output/'manifest.json').read_bytes())
+        return source_pack(source, output, [identity])
 
     def test_exact12_remaining15_and_preserved_source_contract(self):
         self.use_historical_recipe()
@@ -160,6 +160,7 @@ class FurtherArtR2Test(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root = temporary_catalog(Path(tmp)/'owner')
             source = root/'catalog/source.json'
+            add_historical_inputs(root, HISTORICAL)
             source.write_bytes(HISTORICAL.read_bytes())
             output = Path(tmp)/'visuals'
             old = self.export(source,output,'ll2:configuration:522')
@@ -217,9 +218,8 @@ class FurtherArtR2Test(unittest.TestCase):
                              '--amend',path,'--catalog-version','rejected.rights','--output',catalog_output)
             self.assertEqual(rejected.returncode,1)
             self.assertEqual((source.read_bytes(),catalog_output.read_bytes(),inventory(output)),accepted)
-            refused=execute(ROOT/'tools/export_visuals.py','--source',source,'--output',output,
-                            '--root','configuration:522')
-            self.assertEqual(refused.returncode,1)
+            with self.assertRaises(VisualError):
+                source_pack(source, output, ['configuration:522'])
             self.assertEqual(inventory(output),accepted[2])
 
 

@@ -256,7 +256,17 @@ class CatalogCoreTest(unittest.TestCase):
         before = ARCHIVE.read_bytes()
         c = build_catalog(ROOT)
         d = c['dictionaries']
-        self.assertEqual({k: len(d[k]) for k in d}, {'countries': 104, 'organizations': 350, 'configurations': 176, 'sites': 218, 'assets': 562})
+        recipe = loads_json((ROOT/'catalog/source.json').read_bytes())
+        reference = loads_json((ROOT/recipe['reference']['path']).read_bytes())
+        for source, table, kind in (('models', 'configurations', 'configuration'),
+                                    ('organizations', 'organizations', 'organization'),
+                                    ('sites', 'sites', 'site'), ('countries', 'countries', 'country')):
+            for fact in reference[source]:
+                identity = f'll2:{kind}:{fact["sourceId"]}'
+                row = d[table][identity]
+                self.assertEqual(canonical_bytes(row.get('originalFacts', row['facts'])), canonical_bytes(fact), identity)
+                self.assertIn({'source': 'reference', 'recordId': fact['sourceId']}, row['provenance'])
+        self.assertEqual({k: len(d[k]) for k in d}, {'countries': 104, 'organizations': 352, 'configurations': 215, 'sites': 224, 'assets': 683})
         expected = {26: 'electron', 116: 'ariane-64', 121: 'ariane-62', 161: 'falcon-heavy', 164: 'falcon-9'}
         for key, asset in expected.items():
             self.assertEqual(d['configurations'][f'll2:configuration:{key}']['references']['visual'], f'spacefox:asset:{asset}')
@@ -286,7 +296,10 @@ class CatalogCoreTest(unittest.TestCase):
             out = Path(temp)/'catalog.json'
             r = subprocess.run([sys.executable, '-B', 'tools/catalog.py', '--output', str(out)], cwd=ROOT, capture_output=True, text=True)
             self.assertEqual(r.returncode, 0, r.stderr)
-            self.assertEqual(out.read_bytes(), canonical_bytes(build_catalog(ROOT)))
+            from tools.spacefox.current_catalog import current_view, load_registry
+            catalog = build_catalog(ROOT)
+            eligibility = load_registry(ROOT, catalog, source_path=ROOT/'catalog/source.json')
+            self.assertEqual(out.read_bytes(), canonical_bytes(current_view(catalog, eligibility)['catalog']))
             summary = json.loads(r.stdout)
             self.assertEqual(summary['schemaVersion'], 1)
             self.assertEqual(summary['sha256'], hashlib.sha256(out.read_bytes()).hexdigest())

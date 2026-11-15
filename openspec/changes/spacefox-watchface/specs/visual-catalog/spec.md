@@ -7,11 +7,15 @@ without duplicating catalogs or changing the watch-face layout for each entry.
 
 ### Requirement: Global current-launch inventory
 
-The catalog SHALL cover publicly documented Earth space-launch countries, territories, current configurations, organizations and sites, including orbital attempts and public civil suborbital/scientific flights, without a geographic whitelist. Non-public events remain unknown. The dated retained source inventory defines observed support; report source dates and unresolved omissions. Provider enumeration alone SHALL NOT establish worldwide completeness.
-
+The catalog SHALL admit source-qualified launch countries, configurations,
+organizations and sites, including public civil suborbital flights, without a
+geographic whitelist. The dated retained source inventory defines the supported
+guarantee. Report source dates and unresolved omissions; provider enumeration
+alone SHALL NOT establish worldwide completeness.
 #### Scenario: A launch outside the sample countries
 - **WHEN** a public launch references a country, operator, model or site absent from the original sample pack
 - **THEN** its identity and available facts enter review and, when in scope, the current catalog without a country whitelist or layout change; missing visuals or coordinates are recorded as gaps
+- **AND** The intended inventory covers publicly documented Earth launch countries and territories, orbital attempts and public civil suborbital/scientific flights. Non-public events remain unknown; coverage cannot be asserted from an incomplete dated inventory.
 
 #### Scenario: A scientific rocket missing from the main provider
 - **WHEN** an agency documents an in-scope current vehicle or site absent from the provider
@@ -332,7 +336,6 @@ The sole `native-motion-v3` producer SHALL publish schema-3 SFR1M through
 pixels, typed identities, source provenance and ages SHALL remain digest bound;
 finite bounds and ordinary native lifecycle SHALL satisfy the scenarios below.
 This profile SHALL NOT establish physical, catalog-frame or locale acceptance.
-
 #### Scenario: Complete selected scene within native budgets
 - **WHEN** the selected full actual producer scene is cold, warm or reopened on the qualified FR1655.2 Simulator with HTTPS requirements enabled
 - **THEN** ordinary126784B foreground and61248B background contexts preserve the full scene, real background exits within30s and schedules temporal work at least300s apart, while bytes, requests, writes, first verified map, full activation and sampled heap are reported separately without physical or phone timing claims
@@ -345,6 +348,7 @@ SHALL be fully validated before projection. The complete artifact stays within
 1MiB/256files; feed8192B, immutable raw4096B, selected raster98304B/32chunks and
 transfer40objects/114688B caps SHALL remain. No lossy palette, unselected stand-in
 pixel, hidden cap increase or executable drawing grammar SHALL establish equivalence.
+- **AND** Visual identity SHALL bind art/map digest, launch, model, site, country and qualified position. Changed facts require their own coherent scene without relabeling older art or point; a late completion for a cancelled or replaced selection SHALL NOT replace the newer scene. Unknown model or operator does not erase source-qualified coordinates: only a matching qualified projection may render their marker; truly absent coordinates stay absent.
 
 #### Scenario: Source update and display lifecycle reuse
 - **WHEN** an up-to8192B valid source-only generation retains the same immutable selection, or high power enters low/off/hide and returns
@@ -353,5 +357,3 @@ pixel, hidden cap increase or executable drawing grammar SHALL establish equival
 #### Scenario: Incomplete or incompatible scene retains coherent fallback
 - **WHEN** changed model/place/art, interruption, full storage, corrupt raw/pixels, unknown point, malformed late provenance or an endpoint/layout mismatch occurs
 - **THEN** durable source/publisher floors and old immutable objects remain intact, new metadata uses generic art and either an unmarked map or a separately matched bundled projection of its accepted fixed point until its own complete validated scene is ready, no old cross-model/place graphic is relabeled, and restart independently validates persisted raw/schema/identity/source/pixel closure before activation
-
-Visual identity SHALL bind art/map digest, launch, model, site, country and qualified position. Changed facts require their own coherent scene, without relabeling older art or point; a late completion for a cancelled or replaced selection SHALL NOT replace the newer scene. Unknown model or operator does not erase source-qualified coordinates: only a matching qualified projection may render their marker; truly absent coordinates stay absent.

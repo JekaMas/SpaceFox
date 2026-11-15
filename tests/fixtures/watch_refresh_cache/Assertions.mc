@@ -265,7 +265,7 @@ class RefreshSdkStore {
     service.receive(304,null);Test.assertEqual(service.finishes,1);
     var r=refreshCache(s);Test.assert(r.load(1794561992l)!=null);Test.assertEqual(r.packet.wireHash,wire);
     Test.assert(r.packet.validation==1794551192l);Test.assert(r.packet.stale);
-    Test.assertEqual(s.read("sf.sync.status")["code"],304);
+    // Historical diagnostic sf.sync.status was retired; no status-key assertion.
     log.debug("actual 304 response handler keeps accepted record validation and stale threshold; injected finish boundary");return true;
 }
 

@@ -52,16 +52,10 @@ Build for Device PRG and a verified GARMIN/APPS installation route. Real FR165
 time/settings, active/AOD, health, phone sync, reboot and two data/asset revisions
 SHALL be observed. Sideload success SHALL NOT establish Store approval or Store
 settings/update behavior.
-
 #### Scenario: Pilot works in the simulator only
 - **WHEN** no physical FR165 installation and phone/background observations exist
 - **THEN** native hardware acceptance remains incomplete despite successful compilation or simulation
-
-The intended physical watch SHALL be observed running an identified target build with a matching fresh selected launch. Installability on the intended phone or a version-bound installation SHALL be observed separately; a publisher preview, compatibility response or unversioned acknowledgement is insufficient. Personal activity evidence SHALL remain private.
-
-#### Scenario: Installed version or selected launch is unproved
-- **WHEN** the physical build is unidentified, installation lacks a version binding, or a matching fresh launch is not observed on the intended watch
-- **THEN** the corresponding physical delivery and end-to-end acceptance remain open
+- **AND** The intended physical watch SHALL be observed running an identified target build with a matching fresh selected launch. Installability on the intended phone or a version-bound installation SHALL be observed separately. A publisher preview, compatibility response or unversioned acknowledgement is insufficient; without the identified build and fresh matching launch, corresponding physical and end-to-end acceptance remains open. Personal activity evidence SHALL remain private.
 
 ### Requirement: Free truthful Connect IQ publication
 
