@@ -60,9 +60,9 @@ class RealDisplayCorpusTest(unittest.TestCase):
     def test_real_native_ui_words_and_referenced_menu_only(self):
         ui, menus, provenance = corpus.ui_sources(ROOT)
         self.assertEqual(len(ui), 36)
-        self.assertEqual(ui['en'], {'hour': 'h', 'minute': 'm', 'day': 'd', 'second': 's',
-            'noSchedule': 'No schedule', 'dateOnly': 'Date only', 'window': 'Launch window',
-            'timeUnknown': 'Time unknown', 'awaitUpdate': 'Awaiting update'})
+        # Numeric T-/T+ countdown no longer renders the retained historical
+        # countdown words; actual referenced settings/menu text is checked below.
+        self.assertEqual(ui['en'], {})
         for loc, values in ui.items():
             self.assertEqual(set(values), set(corpus.UI_WORDS))
             self.assertNotIn('preview', values)
@@ -96,10 +96,16 @@ class RealDisplayCorpusTest(unittest.TestCase):
             self.assertNotEqual(exact, corpus.ui_file_hashes(root))
             path = root / 'watchface/resources/json/Locale0.json'
             native = json.loads(path.read_text())
-            native['timeUnknown'] = before[0]['fr']['timeUnknown']
+            # The old countdown label is retained but no longer rendered.
+            native['timeUnknown'] = 'retained test-only value'
             path.write_text(json.dumps(native))
+            self.assertEqual(before, corpus.ui_sources(root))
+            menu = root / 'watchface/resources/strings/strings.xml'
+            original_menu = menu.read_text()
+            self.assertIn('id="Locale0">English<', original_menu)
+            menu.write_text(original_menu.replace('id="Locale0">English<', 'id="Locale0">English changed<', 1))
             self.assertNotEqual(before, corpus.ui_sources(root))
-            path.write_text(json.dumps({**native, 'timeUnknown': before[0]['en']['timeUnknown']}))
+            menu.write_text(original_menu)
             self.assertEqual(before, corpus.ui_sources(root))
             path = root / 'watchface/resources/settings/settings.xml'
             path.write_text(path.read_text().replace('<listEntry value="0">', '<listEntry value="99">', 1))
@@ -251,11 +257,13 @@ class RealDisplayCorpusTest(unittest.TestCase):
         for loc, refs in data['ui'].items():
             index = next(i for i, r in enumerate(catalog['locales']) if r['id'] == loc)
             source = json.loads((ROOT / 'watchface/resources/json' / ('Locale' + str(index) + '.json')).read_text())
-            self.assertEqual(set(refs), set(corpus.UI_WORDS))
-            for key, value in source.items():
-                if key not in corpus.UI_WORDS:
-                    continue
-                self.assertEqual(strings[refs[key]], value)
+            # This immutable captured corpus predates the numeric-only face:
+            # its nine retained labels remain exact historical source strings,
+            # while current face/menu inputs are independently checked above.
+            historical = {'hour','minute','day','second','noSchedule','dateOnly','window','timeUnknown','awaitUpdate'}
+            self.assertEqual(set(refs), historical)
+            for key in historical:
+                self.assertEqual(strings[refs[key]], source[key])
         self.assertFalse(data['coverage']['nativeOrArtworkAcceptance'])
 
     def test_whole_actual_hash_mutation_refuses_without_publishing(self):

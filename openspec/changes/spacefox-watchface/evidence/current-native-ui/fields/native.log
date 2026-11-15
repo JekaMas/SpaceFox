@@ -1,0 +1,71 @@
+------------------------------------------------------------------------------
+Executing test currentLayoutEnglish...
+DEBUG (01:43): BASIC_TEXT|vector|155|43|110|26|Starship V3
+DEBUG (01:43): BASIC_TEXT|vector|218|47|5|22|·
+DEBUG (01:43): BASIC_TEXT|vector|258|47|64|22|SpaceX
+DEBUG (01:43): BASIC_TEXT|vector|195|70|144|22|Communications
+DEBUG (01:43): BASIC_TEXT|vector|195|319|235|22|US · SpaceX Starbase, TX, …
+DEBUG (01:43): BASIC_TEXT|vector|195|95|129|36|Sat 14.11
+DEBUG (01:43): BASIC_TEXT|time|195|109|239|116|08:08
+DEBUG (01:43): BASIC_TEXT|vector|195|202|194|46|T- 49:02:03
+DEBUG (01:43): BASIC_TEXT|metric|118|240|126|52|12,345
+DEBUG (01:43): BASIC_TEXT|metric|312|240|46|52|68
+DEBUG (01:43): BASIC_TEXT|metric|78|278|46|52|72
+DEBUG (01:43): BASIC_TEXT|metric|312|278|46|52|47
+DEBUG (01:43): LAYOUT_EN actual captured launch, date, default fields and colors
+PASS
+------------------------------------------------------------------------------
+Executing test currentLayoutRussianLong...
+DEBUG (01:43): BASIC_TEXT|vector|140|43|119|26|Long Marc…
+DEBUG (01:43): BASIC_TEXT|vector|208|47|5|22|·
+DEBUG (01:43): BASIC_TEXT|vector|262|47|93|22|China Aer…
+DEBUG (01:43): BASIC_TEXT|vector|195|70|114|22|Earth Science
+DEBUG (01:43): BASIC_TEXT|vector|195|319|237|22|CN · Taiyuan Satellite Laun…
+DEBUG (01:43): BASIC_TEXT|vector|195|95|121|36|Сб 14.11
+DEBUG (01:43): BASIC_TEXT|time|195|109|239|116|08:08
+DEBUG (01:43): BASIC_TEXT|vector|195|202|205|46|T+ 00:15:01
+DEBUG (01:43): BASIC_TEXT|metric|106|240|103|52|2 345
+DEBUG (01:43): BASIC_TEXT|metric|297|240|75|52|82%
+DEBUG (01:43): BASIC_TEXT|metric|118|278|126|52|12 345
+DEBUG (01:43): BASIC_TEXT|metric|312|278|46|52|68
+DEBUG (01:43): LAYOUT_RU real long captured launch, date, custom four fields and independent colors
+PASS
+------------------------------------------------------------------------------
+Executing test basicFieldsPositive...
+DEBUG (01:43): actual Properties and app callback: duplicate selections persist; only second field changes
+PASS
+------------------------------------------------------------------------------
+Executing test basicFieldsNegative...
+DEBUG (01:43): only invalid second persisted field defaults; other three including duplicates unchanged
+PASS
+------------------------------------------------------------------------------
+Executing test basicUnavailablePositive...
+DEBUG (01:43): real Garmin adapter API smoke separately; controlled missing sample exercises actual view/formatter
+PASS
+------------------------------------------------------------------------------
+Executing test basicUnavailableNegative...
+DEBUG (01:43): new missing sample replaces former72/68; age300 accepted,301 or future unavailable; real zero allowed only for applicable metrics
+PASS
+------------------------------------------------------------------------------
+Executing test basicBatteryPositive...
+DEBUG (01:43): top battery reads watch82%; BodyBattery68 remains different; four slots including duplicate energy survive
+PASS
+------------------------------------------------------------------------------
+Executing test basicBatteryNegative...
+DEBUG (01:43): missing watch charge cannot borrowBodyBattery68; dedicated battery not a fifth configurable field
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+currentLayoutEnglish                PASS
+currentLayoutRussianLong            PASS
+basicFieldsPositive                 PASS
+basicFieldsNegative                 PASS
+basicUnavailablePositive            PASS
+basicUnavailableNegative            PASS
+basicBatteryPositive                PASS
+basicBatteryNegative                PASS
+Ran 8 tests
+
+PASSED (passed=8, failed=0, errors=0)
