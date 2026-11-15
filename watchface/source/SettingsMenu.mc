@@ -10,7 +10,7 @@ module SettingsMenu {
     function titles() {return SettingsMenuText.values(locale(),0);}
     function ids() {return [:i0,:i1,:i2,:i3,:i4,:i5,:i6,:i7,:i8,:i9,:i10,:i11];}
     function root(app) as [WatchUi.Views, WatchUi.InputDelegates] {
-        var menu=new WatchUi.Menu2({:title=>"SpaceFox "+NativeVersion.BUILD+" "+NativeVersion.ID});var names=titles();var symbols=ids();
+        var menu=new WatchUi.Menu2({:title=>"SpaceFox "+NativeVersion.BUILD});var names=titles();var symbols=ids();
         for(var i=0;i<names.size();i+=1){menu.addItem(new WatchUi.MenuItem(names[i],null,symbols[i],null));}
         // Rejected input never becomes accepted data. Explain a useful recovery
         // path in settings without adding a persistent home-screen timestamp.
