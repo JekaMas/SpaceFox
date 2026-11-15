@@ -9,12 +9,11 @@ and disaster recovery are not claimed.
 
 ## Current delivery channels
 
-The original ordinary Garmin app has 0.1.10 (Internal 7) submitted and PENDING in publisher preview; public approval is unobserved. The owner last observed 0.1.6 executing on the watch. Simulator observation, a queue acknowledgement and GitHub publication do not establish physical delivery. See [testing](../TESTING.md) and the [delivery recheck](../openspec/changes/spacefox-watchface/evidence/display02-publication/RECHECK-RESEARCH.md).
+[SpaceFox 0.1.13](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.13) is published and submitted to the original ordinary Garmin card, which displays 0.1.13/Internal 8 PENDING in owner preview. The Music installation request returned HTTP 200/empty. Actual physical delivery remains unobserved.
 
-The signed [0.1.12 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.12-test.1) is separate and has not been submitted to Garmin. It uses the stable production identity and follows the published 0.1.11 predecessor. The export was built from public source `14679651a3c169a6f15eb9309c28478ae50c6463`; its release tag points to `bfc1007904807a50c9c08bc5343a144f9bac81d7`. Its IQ SHA-256 is `283864f66833b47b2afa0c016948d892c7ecc65ababf5bd72f76f0495551c989`; the original receipt SHA-256 is `81c5b2f928a4fb92e0881eb7748d0ab1e58af1c3f93d980a40029b01d24fe0ed`. Its receipt and IQ are the predecessor for the next higher-version candidate. The [installation guide](INSTALLATION.md) and [test notes](TESTING-0.1.12.md) describe the pilot. Physical installation, phone delivery and Store acceptance remain unverified.
+Compiled source/tag commit is `1eca186c5da803d801b5ebca3e58df8f37ac5876`. IQ SHA-256 is `bf69a0df9b11f15c676be4cb6a0ce7d388c11688f11fefb3d8b0ed1544005896`; receipt SHA-256 is `ef32f0f1482ea3199b31aaceeb30ea532947393e481fbb48df2c411050ef61a1`. Those immutable files are the predecessor for the next higher-version candidate. The embedded Music program matches the production-signed SDK executable. See [installation](INSTALLATION.md), [testing](../TESTING.md) and [publication](../openspec/changes/spacefox-watchface/evidence/display03-publication/PUBLICATION.md).
 
-The earlier [0.1.11 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.11-test.1) remains historical; its original signed receipt and assets are unchanged.
-
+The previous 0.1.12 GitHub-only release remains historical and was the predecessor of 0.1.13. Its original source, IQ and receipt are unchanged; publication metadata is not repinned into older signed artifacts. Physical installation, fresh data, wake and power remain open.
 
 ## Historical test releases
 

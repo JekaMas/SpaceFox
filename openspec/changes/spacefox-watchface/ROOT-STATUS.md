@@ -21,16 +21,18 @@ coastline equivalence, future coverage or positions for unknown/mobile launches.
 Native EN/RU and 454px LOW captures and the controlled decoded READY witness are
 accepted. Pixel-budget observations remain bounded to the measured text.
 
-One final integration has started against the already-fetched main snapshot
-`117e7a3f`; no new fetch is authorized or needed for this iteration. Its only
-reported merge conflict is generated NativeVersion. The final candidate must be
-0.1.13 because GitHub already contains the separate 0.1.12 test prerelease.
-Production signing, ordinary signed READY/refresh, exact IQ-member verification
-and publication remain pending at this checkpoint. Retain valid behavior greens;
-only changed version, integration and packaging inputs require new checks.
+Final source 0.1.13/ea38c443 is `1eca186c`, signed and published under tag v0.1.13.
+The production Music run and exact embedded-member equality passed. IQ plus 21
+program signatures and 2,856 source pins passed. The original Garmin card displays
+0.1.13/Internal 8 PENDING and accepted the Music install request. All 21 GitHub
+assets were published. See [publication](evidence/display03-publication/PUBLICATION.md).
+The cached 117e7a3f integration had only a generated-version conflict. A later
+remote-main push rejection was handled with conflict-free PR #21, preserving separate
+publisher-map work; its changes are not relabeled into the compiled source.
+Per owner instruction, no behavior tests were repeated for publication.
 
-The original ordinary Garmin card was last observed with 0.1.10/Internal 7
-submitted and PENDING. GitHub-only 0.1.12 is a different delivery channel. The
+The original ordinary Garmin card now shows0.1.13/Internal 8 PENDING. The previous
+0.1.12 GitHub-only build is historical. The
 owner subsequently reported executing version **0.10.0** verbatim, active timer
 stalling, no active point and 10–20 second wake. That string is not silently
 normalized to 0.1.10. Earlier unambiguous 0.1.6 observations remain historical.

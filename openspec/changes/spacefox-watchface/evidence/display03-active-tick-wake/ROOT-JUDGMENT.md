@@ -31,3 +31,15 @@ Publication must use the original Garmin app identity/card and production key,
 with an exact final member-to-executed-PRG relationship. A submission/queue is
 not physical delivery. Owner version `0.10.0` and reported physical symptoms
 remain explicit until actual corrected execution and fresh data are observed.
+
+## Final signed artifact and publication
+
+Root accepted signed source 1eca186c/0.1.13/ea38c443, the ordinary retained READY
+run and final IQ Music member equality. No third behavior loop was run. The IQ
+and 21 program signatures, 2,856 source pins and isolated five-language replay
+passed in the peer lane. Source merged through PR #21, tag v0.1.13 and all 21 release
+assets published. Garmin reads 0.1.13/Internal 8 PENDING on the original card and
+accepted the Music install POST. Ivan received the original link. See the
+[publication record](../display03-publication/PUBLICATION.md). Physical execution,
+fresh data, wake/power and Store delivery remain NOT DONE. Publication metadata
+updates do not relabel or rebuild the immutable compiled-source receipt.
