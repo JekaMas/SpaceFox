@@ -21,6 +21,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     const NOT_LOW = 1;
     private var _mode as Number = LOW;
     private var _shown as Boolean = false;
+    private var _resumePending as Boolean = false;
     var presentation as LocalePresentation;
     var settings as SceneSettings;
     var context as SceneContext or Null;var visualKey as Array or Null=null;
@@ -50,8 +51,8 @@ class SpaceFoxView extends WatchUi.WatchFace {
     }
     function displayMode() as Number {return _mode;}
     function transitionMode(next as Number) as Void {
-        if (_mode == next) { return; }
-        _mode=next;aodMinute=null;metricsMinute=null;
+        if (_mode == next && !(_mode == NOT_LOW && _resumePending)) { return; }
+        _mode=next;_resumePending=false;aodMinute=null;metricsMinute=null;
         if (_mode == LOW) { stopAnimation();cancelSfrBuild();stopFitness(); }
         else {
             refreshLocale();if(_shown&&pendingLoader!=null){pendingLoader.invoke();}refreshFitness();prepareVisual();
@@ -60,8 +61,8 @@ class SpaceFoxView extends WatchUi.WatchFace {
         WatchUi.requestUpdate();
     }
     function onShow() as Void {
-        var alreadyHigh=(_mode == NOT_LOW);_shown=true;refreshLocale();syncDisplayMode(System.getDisplayMode());
-        if(_mode == NOT_LOW){if(alreadyHigh&&pendingLoader!=null){pendingLoader.invoke();}refreshFitness();prepareVisual();}
+        var alreadyHigh=(_mode == NOT_LOW);var wasPending=_resumePending;_shown=true;refreshLocale();syncDisplayMode(System.getDisplayMode());
+        if(_mode == NOT_LOW){if(alreadyHigh&&!wasPending&&pendingLoader!=null){pendingLoader.invoke();}refreshFitness();prepareVisual();}
     }
     (:extendedCode)
     function refreshFitness() as Void {if(!(_mode == NOT_LOW)){return;}var now=_clock.utcSeconds();var minute=utcMinute(now);if(metricsMinute==null||metricsMinute!=minute){values=fitness.sample(now);metricsMinute=minute;}if(_shown&&fitnessTimer==null){fitnessTimer=new Timer.Timer();fitnessTimer.start(method(:refreshFitness),60000,true);}WatchUi.requestUpdate();}
@@ -145,7 +146,11 @@ class SpaceFoxView extends WatchUi.WatchFace {
     (:typecheck(false)) function updateForDisplayMode(dc as Graphics.Dc, displayMode as System.DisplayMode) as Void {
         // Garmin may deliver a draw before the corresponding sleep callback.
         // Observe the system mode at the draw boundary; OFF does no drawing.
-        syncDisplayMode(displayMode);
+        if(displayMode==System.DISPLAY_MODE_HIGH_POWER && _mode==LOW){
+            // A draw can precede onExitSleep. Render cached state now; defer
+            // loading, fitness and build restart to the lifecycle callback.
+            _mode=NOT_LOW;_resumePending=true;aodMinute=null;metricsMinute=null;
+        }else if(displayMode!=System.DISPLAY_MODE_HIGH_POWER){syncDisplayMode(displayMode);}
         if(displayMode==System.DISPLAY_MODE_OFF){return;}
         // Skip the entire LOW update, including mask and scaled-buffer blit.
         if(!(_mode == NOT_LOW) && aodMinute!=null && aodMinute==utcMinute(_clock.utcSeconds())){return;}
@@ -179,7 +184,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     function animationDone() as Void{animationRunning=false;animationProgress=0.0;WatchUi.requestUpdate();}
     function onEnterSleep() as Void { transitionMode(LOW); }
     function onExitSleep() as Void { syncDisplayMode(System.getDisplayMode()); }
-    function onHide() as Void {_shown=false;stopAnimation();cancelSfrBuild();stopFitness();}
+    function onHide() as Void {_shown=false;_resumePending=false;stopAnimation();cancelSfrBuild();stopFitness();}
     (:typecheck(false))
     // Fixed SDK-minimum cadence; repeated preparation cannot postpone a pending
     // slice. Each decoder slice still has its existing18ms/16row work budget.

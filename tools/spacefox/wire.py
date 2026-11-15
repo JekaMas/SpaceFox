@@ -165,6 +165,9 @@ def validate_current_feed(raw, *, now=None):
             evaluation = max(record['source_validated_utc'], reviewed) if type(reviewed) is int else record['source_validated_utc']
         normalized = _schedule({'entries': [dict(record=record, **flags)],
                    'evaluated_at_utc': evaluation}).entries[0].record
+        selection_epoch = doc['publisher']['selectionValidatedUtc']
+        if selection_epoch is None or selection_epoch < normalized.source_validated_utc:
+            raise ValueError('selection validation precedes selected source')
         from .schedule import LaunchStatus
         if normalized.status in (LaunchStatus.COMPLETED, LaunchStatus.CANCELLED):
             raise ValueError('selected launch is no longer upcoming')
