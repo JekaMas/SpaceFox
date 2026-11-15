@@ -7,9 +7,12 @@ stored recovery password have actual local restore/challenge evidence in
 the owner-held signing records. All copies remain on the same Mac; offsite
 and disaster recovery are not claimed.
 
-## Current test release
+## Current delivery channels
 
-The signed [0.1.11 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.11-test.1) uses the stable production identity and follows the published 0.1.10 predecessor. The export was built from public source `245293d9f089a57755d0d1830973243363ab5098`; the release tag points to `9f1f05076155e10bdafc92614fbfcc5068b451f7`. Its IQ SHA-256 is `f498d9953c00bf0d120286dcefb42ae0ec7b142841b82acbcf12b4b015b04ee9`. The original signed receipt and assets remain unchanged. The [installation guide](INSTALLATION.md) and [test notes](TESTING-0.1.11.md) describe the pilot. Physical installation, phone delivery and Store acceptance remain unverified; a queue acknowledgement does not establish installation.
+The original ordinary Garmin app has 0.1.10 (Internal 7) submitted and PENDING in publisher preview; public approval is unobserved. The owner last observed 0.1.6 executing on the watch. Simulator observation, a queue acknowledgement and GitHub publication do not establish physical delivery. See [testing](../TESTING.md) and the [delivery recheck](../openspec/changes/spacefox-watchface/evidence/display02-publication/RECHECK-RESEARCH.md).
+
+The signed [0.1.11 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.11-test.1) is separate and has not been submitted to Garmin. It uses the stable production identity and follows the published 0.1.10 predecessor. The export was built from public source `245293d9f089a57755d0d1830973243363ab5098`; the release tag points to `9f1f05076155e10bdafc92614fbfcc5068b451f7`. Its IQ SHA-256 is `f498d9953c00bf0d120286dcefb42ae0ec7b142841b82acbcf12b4b015b04ee9`. The original signed receipt and assets remain unchanged. Its receipt and IQ are the predecessor for the next higher-version candidate. The [installation guide](INSTALLATION.md) and [test notes](TESTING-0.1.11.md) describe the pilot. Physical installation, phone delivery and Store acceptance remain unverified.
+
 
 ## Historical test releases
 
@@ -67,11 +70,11 @@ the prior package and evidence; re-enter settings if the observed installation
 boundary requires it. Content rollback is a new monotonic generation selecting
 prior compatible bytes, without renewing launch-source validation.
 
-The [v0.1.2-test.1 GitHub prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.2-test.1) was a published test release. Its IQ SHA-256 is `46f1c44c18a54134a97a3b003a00376891b64c087d691041430421b1e142a530`; its original [receipt](../openspec/changes/spacefox-watchface/evidence/published-test-history/v0.1.2-test.1/release.json) is retained. All 21 downloaded release assets matched their uploaded bytes and GitHub digests. Its receipt and IQ document that historical release; do not supply them as the current predecessor. Use a strictly higher native version with the same UUID and signing identity. The owner observed Garmin accept 0.1.2 for review, with status and signature verified and all nine target devices listed. The app is pending review, not approved. Fresh Music simulator and physical installation remain unobserved.
+The [v0.1.2-test.1 GitHub prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.2-test.1) was a published test release. Its IQ SHA-256 is `46f1c44c18a54134a97a3b003a00376891b64c087d691041430421b1e142a530`; its original [receipt](../openspec/changes/spacefox-watchface/evidence/published-test-history/v0.1.2-test.1/release.json) is retained. All 21 downloaded release assets matched their uploaded bytes and GitHub digests. Its receipt and IQ document that historical release; do not supply them as the current predecessor. Use a strictly higher native version with the same UUID and signing identity. The owner observed Garmin accept 0.1.2 for review, with status and signature verified and all nine target devices listed. At that observation the app was pending review, not approved; fresh Music simulator and physical installation were unobserved.
 
 The root release owner also observed Forerunner 165 Music in the Download / Add to Device picker and Garmin confirmed installation is queued for the next sync. This does not establish completion or on-device behavior; the [bounded observation](../openspec/changes/spacefox-watchface/evidence/published-test-history/v0.1.2-test.1/garmin-root-observation.json) omits device identifiers.
 
 
-## Published predecessor and current candidate
+## Historical 0.1.9 and 0.1.10 handoff
 
-The [0.1.9 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.9) is the published predecessor. Its IQ SHA-256 is `5ec5ca0135f6f3a9ab24efa7082fa558d4977e7da2e0023487b4cb8d0186fd4d`; its original receipt SHA-256 is `f0d78c96b0192ecc473a837c5e6c26e20545878b8c3ca29b012a739ad53270f8`. Use the matching receipt and IQ with `--previous`, preserving the production UUID and signing key. The higher-version 0.1.10 candidate has been exercised in the SDK; its actual physical installation and behavior remain NOT DONE. The 0.1.9 test prerelease was not submitted to Garmin. See [testing](../TESTING.md).
+The [0.1.9 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.9) was the published predecessor to 0.1.10. Its IQ SHA-256 is `5ec5ca0135f6f3a9ab24efa7082fa558d4977e7da2e0023487b4cb8d0186fd4d`; its original receipt SHA-256 is `f0d78c96b0192ecc473a837c5e6c26e20545878b8c3ca29b012a739ad53270f8`. For future updates, select the applicable actual predecessor receipt and IQ with `--previous`, preserving the production UUID and signing key. The higher-version 0.1.10 build was exercised in the SDK; its actual physical installation and behavior remain NOT DONE. The 0.1.9 test prerelease was not submitted to Garmin. See [testing](../TESTING.md).

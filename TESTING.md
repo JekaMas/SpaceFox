@@ -1,26 +1,36 @@
 # Testing SpaceFox
 
-**Delivery incident open:** the owner reports0.1.6 executing after a stock-face
-round trip, despite the0.1.7 developer preview and queue acknowledgement. The
-installation POST did not select an explicit version. A successful queue, old
-phone release notes and an empty Updates list do not identify executing code.
-Keep the existing cache; corrected-build delivery and stable scene transitions
-remain NOT DONE. See the [corrected record](openspec/changes/spacefox-watchface/evidence/ux03-delivery/PUBLICATION.md).
+**Delivery incident open:** the owner last observed 0.1.6 executing after a
+stock-face round trip and full reboot. The original Garmin app now has 0.1.10
+(Internal 7) submitted and pending; its accepted installation request did not
+specify a version. Physical delivery and corrected execution remain **NOT DONE**.
+See the [publication record](openspec/changes/spacefox-watchface/evidence/display02-publication/PUBLICATION.md)
+and [delivery recheck](openspec/changes/spacefox-watchface/evidence/display02-publication/RECHECK-RESEARCH.md).
 
 ## Current testing and ordinary listing
 
-The [0.1.11 signed test build](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.11-test.1) and 0.1.10 were published on GitHub, not as Garmin Store releases. The owner last observed 0.1.6
-on the physical watch after a power cycle. Earlier UI simulator observations used isolated test identities. The signed
-0.1.11 programs were also observed offline in simulators; neither establishes
-installation or behavior on that physical watch.
+The original [SpaceFox Connect IQ listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3)
+has 0.1.10 pending in publisher preview; public approval has not been observed.
+[Garmin permits owner preview and testing during review](https://developer.garmin.com/connect-iq/submit-an-app/); pending status alone does
+not establish why the last observed watch version was 0.1.6. The latest [0.1.11 signed test
+build](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.11-test.1) is a
+separate GitHub release and has not been submitted to Garmin. Neither the GitHub
+release nor simulator observations establish physical installation.
 
-The ordinary candidate uses the original [SpaceFox Connect IQ listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3) and the watches in [supported devices](docs/SUPPORTED_DEVICES.md), including Forerunner 165 Music and Forerunner 965. Garmin accepted 0.1.7 at the original card, which shows 0.1.7 (Internal 6) in the publisher preview. An installation request was acknowledged without specifying a version; it does not establish which build was queued or installed. Physical delivery/installation and public approval remain unobserved. See the [0.1.7 publication record](openspec/changes/spacefox-watchface/evidence/ux03-delivery/PUBLICATION.md).
-
-In the Connect IQ phone app, open **My Device → Updates → Update All**, then sync through Garmin Connect and select and apply the ordinary SpaceFox watch face. Do not expect tapping an IQ or PRG file on the phone to install it. If an update or feed error persists, record the foreground menu version and, where shown, the background build stamp. Keep the existing cache; deletion and reinstallation are not the first diagnostic step. The actual phone flow, physical settings entry and watch installation remain unverified.
+For the open Store-delivery diagnosis, a proposed reversible step is to force-stop
+the Android Connect IQ app without clearing its storage, reopen the original
+listing, inspect the displayed version and any update action, then perform a normal
+Connect IQ and Garmin Connect sync. Record the result and the version actually
+shown in SpaceFox settings. If it remains old, the separate Garmin Express USB
+Store route can be tried when a physical computer is available; see the
+[recheck](openspec/changes/spacefox-watchface/evidence/display02-publication/RECHECK-RESEARCH.md).
+These steps have not been verified as a workaround. Keep the existing cache.
+A local PRG transfer tests a different delivery route and cannot prove Store update
+acceptance. The supported models are listed in [supported devices](docs/SUPPORTED_DEVICES.md).
 
 A clean install defaults to English; Field 1 steps, Field 2 Body Battery, Field 3 heart rate and Field 4 stress; mint clock and countdown; white field values; and `https://jekamas.github.io/SpaceFox` as the feed URL. The watch needs its normal Garmin communications connection to fetch the schedule; the host must publish a compatible schema-3 SFR1M scene. The public feed passed a portable compatibility check on 14 November 2026; first background synchronization and its timing have not been observed on a watch. The clock and last accepted data can work offline, subject to the device and cache state. The production settings menu and persisted choices were exercised in an SDK watch-app host; the signed watch face system entry and phone settings remain unverified. The developer simulator is not evidence of physical watch, phone, battery or Store behavior.
 
-Check the clock and four fields, wait for a schedule and rocket/map, and compare the launch against its source. Confirm `T-` before a known target and `T+` after it if that situation is encountered; zero alone is not confirmation of liftoff. Try offline display, reconnection and reboot. Note the watch firmware, app version, phone model, approximate time and steps for any problem. Report at [GitHub Issues](https://github.com/JekaMas/SpaceFox/issues), omitting health readings or other private details from screenshots.
+Check the clock and four fields, wait for a schedule and rocket/map, and compare the launch against its source. Confirm `T-` before a known target and `T+` after it if that situation is encountered; zero alone is not confirmation of liftoff. Try offline display and reconnection when physical testing resumes. For future physical testing, note the watch model and firmware, app version, phone model, approximate time and steps for any problem; do not repeat the firmware question for the current 0.1.6 diagnosis. Report at [GitHub Issues](https://github.com/JekaMas/SpaceFox/issues), omitting health readings or other private details from screenshots.
 
 See [privacy](https://github.com/JekaMas/SpaceFox/blob/main/docs/PRIVACY.md), [licenses](https://github.com/JekaMas/SpaceFox/blob/main/THIRD_PARTY_NOTICES.md) and [project setup](https://github.com/JekaMas/SpaceFox/blob/main/docs/AGENT_SETUP.md).
 
