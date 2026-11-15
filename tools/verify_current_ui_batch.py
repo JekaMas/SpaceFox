@@ -55,6 +55,18 @@ REFRESH_CALL = b'SettingsMenu.refreshRejection(rootMenu);'
 
 def historical_owner(root, name):
     data = (root/name).read_bytes()
+    catalog = json.loads((root/'locales/catalog.json').read_text())
+    ref = catalog['supportPolicy']['softwareQualificationProof'].get('settingsReadabilityProof')
+    if ref and name in ('watchface/source/SettingsMenu.mc','watchface/source/SettingsMenuText.mc'):
+        raw = (root/ref['path']).read_bytes()
+        if digest(raw) != ref['sha256']:
+            raise ValueError('settings readability proof changed')
+        proof = json.loads(raw)
+        if digest(data) != proof['nativeInputs'][name]:
+            raise ValueError('current settings owner changed: '+name)
+        prior = proof['priorSnapshots'][name]; data = (root/prior['path']).read_bytes()
+        if digest(data) != prior['sha256']:
+            raise ValueError('prior settings owner changed: '+name)
     delta = {'watchface/source/SettingsMenu.mc': MENU_DELTA,
              'watchface/source/SettingsMenuText.mc': TEXT_DELTA}.get(name)
     if delta is not None:
@@ -73,6 +85,10 @@ def owner_digest(root, name):
 
 
 def verify_rejection_menu(root):
+    catalog = json.loads((root/'locales/catalog.json').read_text())
+    if 'settingsReadabilityProof' in catalog['supportPolicy']['softwareQualificationProof']:
+        from tools.native_settings_readability import validate
+        return validate(root, catalog)
     base = root/'openspec/changes/spacefox-watchface/evidence/release-update-native'
     pins = {'build.json': '4b9de8393ae22dbb02bd13f3a093906a206d272b38c372065d266925b7b9e1ca', 'Probe.mc.txt': '0713ca67b40d0ce7e22db9d85383591f9e4d859d0497b4b576a9df4fa9f7ead1', 'run.log': '10be30feb2c55fabe58fffc5d6f87f6bda27bffa7e0f363315e5851ae160a2f0', 'exit.txt': '4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865'}
     raw = {name: (base/name).read_bytes() for name in pins}

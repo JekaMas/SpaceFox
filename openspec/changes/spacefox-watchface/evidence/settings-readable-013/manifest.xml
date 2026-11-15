@@ -1,0 +1,8 @@
+<iq:manifest xmlns:iq="http://www.garmin.com/xml/connectiq" version="3">
+    
+    <iq:application id="e81aa6f00adf40c2b65d156d9111e198" type="watch-app" name="@Strings.AppName" entry="SettingsProbeApp" launcherIcon="@Drawables.LauncherIcon" minApiLevel="5.1.0" version="0.1.13">
+        <iq:products><iq:product id="fr165" /></iq:products><iq:permissions><iq:uses-permission id="SensorHistory" /><iq:uses-permission id="Communications" /><iq:uses-permission id="Background" /></iq:permissions>
+        
+        <iq:languages><iq:language>eng</iq:language><iq:language>rus</iq:language><iq:language>deu</iq:language><iq:language>fre</iq:language><iq:language>spa</iq:language></iq:languages><iq:barrels />
+    </iq:application>
+</iq:manifest>
