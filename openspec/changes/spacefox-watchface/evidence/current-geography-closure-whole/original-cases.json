@@ -1,0 +1,1236 @@
+{
+  "sourceRevision": "d5b85b22",
+  "properties": [
+    {
+      "id": "VC01.P3",
+      "requirement_id": "VC01",
+      "scenarios": [
+        "A scientific rocket missing from the main provider"
+      ],
+      "statement": "Curated additions retain distinct typed identities, source review and unknown positions.",
+      "owner": "tools/spacefox/catalog.py",
+      "oracle": "Literal source IDs, retained coordinate decimals and independent axis/dateline/pole vectors; actual source SVG export and CLI file transactions. No provider/worldwide/native evidence.",
+      "source_globs": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/graphics.py",
+        "tools/build_global_map.py",
+        "tests/test_global_catalog.py",
+        "tests/test_global_map.py"
+      ],
+      "planning_status": "implemented producer conjunct; incomplete native/worldwide acceptance remains explicit"
+    },
+    {
+      "id": "VC17.P3",
+      "requirement_id": "VC17",
+      "scenarios": [
+        "Global manifest has thousands of assets"
+      ],
+      "statement": "Selected source-driven geography/content shards remain byte-bounded and independent of unrelated global growth.",
+      "owner": "tools/spacefox/global_map.py",
+      "oracle": "Literal source IDs, retained coordinate decimals and independent axis/dateline/pole vectors; actual source SVG export and CLI file transactions. No provider/worldwide/native evidence.",
+      "source_globs": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/graphics.py",
+        "tools/build_global_map.py",
+        "tests/test_global_catalog.py",
+        "tests/test_global_map.py"
+      ],
+      "planning_status": "implemented producer conjunct; incomplete native/worldwide acceptance remains explicit"
+    },
+    {
+      "id": "VC06.P4",
+      "requirement_id": "VC06",
+      "scenarios": [
+        "Small island or date-line site",
+        "Moving or unavailable departure point"
+      ],
+      "statement": "Off-watch finite sourced regional context serves all213numeric references in actual bounded current source geometry flat map previews within390round geometry; exact fixed/mobile/unknown semantics persist; corresponding source/rights and complete current+retained selections stay bounded. Accepted full-camera profile remains explicitly separate from native/pad/worldwide acceptance.",
+      "owner": "tools/spacefox/geographic_context.py",
+      "oracle": "Independent literal Omelek polygon containment/vertex, old-source zero-context control, all-required-ID enumeration, decoded SFV visible-ink distance within390round, exact335/165 marker and independent byte sums. Source data are not an independent pad survey.",
+      "source_globs": [
+        "catalog/geography/**",
+        "catalog/world.json",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/geographic_context.py",
+        "tools/spacefox/graphics.py",
+        "tools/build_geographic_context.py",
+        "tools/prepare_geographic_source.py",
+        "tests/test_geographic_context.py"
+      ],
+      "planning_status": "Cutover changed native/source/settings owner; prior receipts are historical pending current revalidation."
+    }
+  ],
+  "cases": [
+    {
+      "id": "VC01.P3.C01.POSITIVE",
+      "property_id": "VC01.P3",
+      "polarity": "positive",
+      "scenario": "A scientific rocket missing from the main provider",
+      "scenario_fingerprint": "5cab49eacb0729709518b3fb8b8a30ece2d0c8b5c1eea25f5b72a595bea0ad02",
+      "setup": "Pinned reference plus independent literal curation/projection fixtures; actual local CLI/export boundary.",
+      "observable": "Curated additions retain distinct typed identities, source review and unknown positions.",
+      "red_expectation": "Reject the contrary identity/position/rights/size outcome under literal assertions.",
+      "green_expectation": "Curated additions retain distinct typed identities, source review and unknown positions.",
+      "invalidation_dependencies": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/graphics.py",
+        "tools/build_global_map.py",
+        "tests/test_global_catalog.py",
+        "tests/test_global_map.py"
+      ],
+      "test_id": "unittest::tests.test_global_catalog.GlobalCatalogTest.test_curation_positive",
+      "command_id": "global-catalog-checks",
+      "state": "implemented",
+      "source_path": "tests/test_global_catalog.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "6510392ccc19596d15a0b795192405eeadce7fc625bd1938c6bddf867181ec68",
+      "implementation_note": "Actual local maintained-catalog/geometry producer only. Requalified after explicit producer2/source recipe/global-map dependency and active-inventory assertion changes; original receipts retained unchanged. No worldwide/native/provider acceptance."
+    },
+    {
+      "id": "VC01.P3.C01.NEGATIVE",
+      "property_id": "VC01.P3",
+      "polarity": "negative",
+      "scenario": "A scientific rocket missing from the main provider",
+      "scenario_fingerprint": "5cab49eacb0729709518b3fb8b8a30ece2d0c8b5c1eea25f5b72a595bea0ad02",
+      "setup": "Pinned reference plus independent literal curation/projection fixtures; actual local CLI/export boundary.",
+      "observable": "Curated additions retain distinct typed identities, source review and unknown positions.",
+      "red_expectation": "Reject the contrary identity/position/rights/size outcome under literal assertions.",
+      "green_expectation": "Curated additions retain distinct typed identities, source review and unknown positions.",
+      "invalidation_dependencies": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/graphics.py",
+        "tools/build_global_map.py",
+        "tests/test_global_catalog.py",
+        "tests/test_global_map.py"
+      ],
+      "test_id": "unittest::tests.test_global_catalog.GlobalCatalogTest.test_curation_negative",
+      "command_id": "global-catalog-checks",
+      "state": "implemented",
+      "source_path": "tests/test_global_catalog.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "6510392ccc19596d15a0b795192405eeadce7fc625bd1938c6bddf867181ec68",
+      "implementation_note": "Actual local maintained-catalog/geometry producer only. Requalified after explicit producer2/source recipe/global-map dependency and active-inventory assertion changes; original receipts retained unchanged. No worldwide/native/provider acceptance."
+    },
+    {
+      "id": "VC17.P3.C01.POSITIVE",
+      "property_id": "VC17.P3",
+      "polarity": "positive",
+      "scenario": "Global manifest has thousands of assets",
+      "scenario_fingerprint": "27f01a9caa9d85de336203765439705221b8f2a7f63d1ae1bc358dee06d46689",
+      "setup": "Pinned reference plus independent literal curation/projection fixtures; actual local CLI/export boundary.",
+      "observable": "Selected source-driven geography/content shards remain byte-bounded and independent of unrelated global growth.",
+      "red_expectation": "Reject the contrary identity/position/rights/size outcome under literal assertions.",
+      "green_expectation": "Selected source-driven geography/content shards remain byte-bounded and independent of unrelated global growth.",
+      "invalidation_dependencies": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/graphics.py",
+        "tools/build_global_map.py",
+        "tests/test_global_catalog.py",
+        "tests/test_global_map.py"
+      ],
+      "test_id": "unittest::tests.test_global_map.GlobalMapTest.test_selection_positive",
+      "command_id": "global-catalog-checks",
+      "state": "implemented",
+      "source_path": "tests/test_global_map.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "fffb1c3a0558c1264d1f2058b8bccb1fc92158b45ff7a47618904c06022713ef",
+      "implementation_note": "Removed old geography-manifest compatibility assertion; retained current source growth and selection assertions requalified by focused test exit 0, 10.050s. Prior source hash retained in Git history and historical receipts."
+    },
+    {
+      "id": "VC17.P3.C01.NEGATIVE",
+      "property_id": "VC17.P3",
+      "polarity": "negative",
+      "scenario": "Global manifest has thousands of assets",
+      "scenario_fingerprint": "27f01a9caa9d85de336203765439705221b8f2a7f63d1ae1bc358dee06d46689",
+      "setup": "Pinned reference plus independent literal curation/projection fixtures; actual local CLI/export boundary.",
+      "observable": "Selected source-driven geography/content shards remain byte-bounded and independent of unrelated global growth.",
+      "red_expectation": "Reject the contrary identity/position/rights/size outcome under literal assertions.",
+      "green_expectation": "Selected source-driven geography/content shards remain byte-bounded and independent of unrelated global growth.",
+      "invalidation_dependencies": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/graphics.py",
+        "tools/build_global_map.py",
+        "tests/test_global_catalog.py",
+        "tests/test_global_map.py"
+      ],
+      "test_id": "unittest::tests.test_global_map.GlobalMapTest.test_selection_negative",
+      "command_id": "global-catalog-checks",
+      "state": "implemented",
+      "source_path": "tests/test_global_map.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "fffb1c3a0558c1264d1f2058b8bccb1fc92158b45ff7a47618904c06022713ef",
+      "implementation_note": "Actual local maintained-catalog/geometry producer only. Requalified after explicit producer2/source recipe/global-map dependency and active-inventory assertion changes; original receipts retained unchanged. No worldwide/native/provider acceptance. Definition-only rebind after retiring old wire/schema sibling/compatibility assertion; original source hash 903515cd2fe880be93bbb6aba1db8b285184e5ab621807eedc23be8ceb8b4490."
+    },
+    {
+      "id": "VC06.P4.C01.POSITIVE",
+      "property_id": "VC06.P4",
+      "polarity": "positive",
+      "scenario": "Small island or date-line site",
+      "scenario_fingerprint": "f1a0e901066f348de5e257bfb4b74db5f28ee7cb692335d73d7152c2c2f5ca11",
+      "setup": "Explicit candidate recipe, immutable source2 corpus and current unchanged finite catalog; actual SFV/source/CLI boundary.",
+      "observable": "Off-watch finite sourced regional context serves all213numeric references in actual bounded SFV map previews within390round geometry; exact fixed/mobile/unknown semantics persist; corresponding source/rights and complete current+retained selections stay bounded. Accepted full-camera profile remains explicitly separate from native/pad/worldwide acceptance.",
+      "red_expectation": "Reject source/digest/rights/coordinate/marker/closure/budget faults; old source must demonstrate omitted island context.",
+      "green_expectation": "Off-watch finite sourced regional context serves all213numeric references in actual bounded SFV map previews within390round geometry; exact fixed/mobile/unknown semantics persist; corresponding source/rights and complete current+retained selections stay bounded. Accepted full-camera profile remains explicitly separate from native/pad/worldwide acceptance.",
+      "invalidation_dependencies": [
+        "catalog/geography/**",
+        "catalog/world.json",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/geographic_context.py",
+        "tools/spacefox/graphics.py",
+        "tools/build_geographic_context.py",
+        "tools/prepare_geographic_source.py",
+        "tests/test_geographic_context.py"
+      ],
+      "test_id": "unittest::tests.test_geographic_context.GeographicContextTest.test_source_and_literal_island_context",
+      "command_id": "geographic-context-1-checks",
+      "state": "planned",
+      "source_path": "tests/test_geographic_context.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "d0d0154b7c5b9b3597778ac00bbd8f8e0cfd9c26c3d22aceb58a750751c36baf",
+      "implementation_note": "Offwatch only. Preserve retained historical greens; no native wire, phone, survey, deployment or complete worldwide acceptance.",
+      "planning_note": "Previously observed receipt is historical after fixed-map/settings cutover. Rebind only after its complete current assertion is revalidated."
+    },
+    {
+      "id": "VC06.P4.C02.POSITIVE",
+      "property_id": "VC06.P4",
+      "polarity": "positive",
+      "scenario": "Small island or date-line site",
+      "scenario_fingerprint": "f1a0e901066f348de5e257bfb4b74db5f28ee7cb692335d73d7152c2c2f5ca11",
+      "setup": "Explicit candidate recipe, immutable source2 corpus and current unchanged finite catalog; actual SFV/source/CLI boundary.",
+      "observable": "Off-watch finite sourced regional context serves all213numeric references in actual bounded SFV map previews within390round geometry; exact fixed/mobile/unknown semantics persist; corresponding source/rights and complete current+retained selections stay bounded. Accepted full-camera profile remains explicitly separate from native/pad/worldwide acceptance.",
+      "red_expectation": "Reject source/digest/rights/coordinate/marker/closure/budget faults; old source must demonstrate omitted island context.",
+      "green_expectation": "Off-watch finite sourced regional context serves all213numeric references in actual bounded SFV map previews within390round geometry; exact fixed/mobile/unknown semantics persist; corresponding source/rights and complete current+retained selections stay bounded. Accepted full-camera profile remains explicitly separate from native/pad/worldwide acceptance.",
+      "invalidation_dependencies": [
+        "catalog/geography/**",
+        "catalog/world.json",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/geographic_context.py",
+        "tools/spacefox/graphics.py",
+        "tools/build_geographic_context.py",
+        "tools/prepare_geographic_source.py",
+        "tests/test_geographic_context.py"
+      ],
+      "test_id": "unittest::tests.test_geographic_context.GeographicContextTest.test_all_required_source_context_and_marker_visibility",
+      "command_id": "geographic-context-2-checks",
+      "state": "planned",
+      "source_path": "tests/test_geographic_context.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "d0d0154b7c5b9b3597778ac00bbd8f8e0cfd9c26c3d22aceb58a750751c36baf",
+      "implementation_note": "Offwatch only. Preserve retained historical greens; no native wire, phone, survey, deployment or complete worldwide acceptance.",
+      "distinct_reason": "Small island or date-line site: all213 numeric references have actual decoded-SFV local ink inside390round, beyond finite coordinate bounds.",
+      "planning_note": "Previously observed receipt is historical after fixed-map/settings cutover. Rebind only after its complete current assertion is revalidated."
+    },
+    {
+      "id": "VC06.P4.C03.NEGATIVE",
+      "property_id": "VC06.P4",
+      "polarity": "negative",
+      "scenario": "Moving or unavailable departure point",
+      "scenario_fingerprint": "cf68d09d466e5effa08d5271d1338b6f29527345c89df867c51dfbb3f1d93a9d",
+      "setup": "Explicit candidate recipe, immutable source2 corpus and current unchanged finite catalog; actual SFV/source/CLI boundary.",
+      "observable": "Off-watch finite sourced regional context serves all213numeric references in actual bounded SFV map previews within390round geometry; exact fixed/mobile/unknown semantics persist; corresponding source/rights and complete current+retained selections stay bounded. Accepted full-camera profile remains explicitly separate from native/pad/worldwide acceptance.",
+      "red_expectation": "Reject source/digest/rights/coordinate/marker/closure/budget faults; old source must demonstrate omitted island context.",
+      "green_expectation": "Off-watch finite sourced regional context serves all213numeric references in actual bounded SFV map previews within390round geometry; exact fixed/mobile/unknown semantics persist; corresponding source/rights and complete current+retained selections stay bounded. Accepted full-camera profile remains explicitly separate from native/pad/worldwide acceptance.",
+      "invalidation_dependencies": [
+        "catalog/geography/**",
+        "catalog/world.json",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/geographic_context.py",
+        "tools/spacefox/graphics.py",
+        "tools/build_geographic_context.py",
+        "tools/prepare_geographic_source.py",
+        "tests/test_geographic_context.py"
+      ],
+      "test_id": "unittest::tests.test_geographic_context.GeographicContextTest.test_old_source_control_and_mobile_omission",
+      "command_id": "geographic-context-3-checks",
+      "state": "planned",
+      "source_path": "tests/test_geographic_context.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "d0d0154b7c5b9b3597778ac00bbd8f8e0cfd9c26c3d22aceb58a750751c36baf",
+      "implementation_note": "Offwatch only. Preserve retained historical greens; no native wire, phone, survey, deployment or complete worldwide acceptance.",
+      "planning_note": "Previously observed receipt is historical after fixed-map/settings cutover. Rebind only after its complete current assertion is revalidated."
+    },
+    {
+      "id": "VC06.P4.C04.NEGATIVE",
+      "property_id": "VC06.P4",
+      "polarity": "negative",
+      "scenario": "Small island or date-line site",
+      "scenario_fingerprint": "f1a0e901066f348de5e257bfb4b74db5f28ee7cb692335d73d7152c2c2f5ca11",
+      "setup": "Explicit candidate recipe, immutable source2 corpus and current unchanged finite catalog; actual SFV/source/CLI boundary.",
+      "observable": "Off-watch finite sourced regional context serves all213numeric references in actual bounded SFV map previews within390round geometry; exact fixed/mobile/unknown semantics persist; corresponding source/rights and complete current+retained selections stay bounded. Accepted full-camera profile remains explicitly separate from native/pad/worldwide acceptance.",
+      "red_expectation": "Reject source/digest/rights/coordinate/marker/closure/budget faults; old source must demonstrate omitted island context.",
+      "green_expectation": "Off-watch finite sourced regional context serves all213numeric references in actual bounded SFV map previews within390round geometry; exact fixed/mobile/unknown semantics persist; corresponding source/rights and complete current+retained selections stay bounded. Accepted full-camera profile remains explicitly separate from native/pad/worldwide acceptance.",
+      "invalidation_dependencies": [
+        "catalog/geography/**",
+        "catalog/world.json",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/geographic_context.py",
+        "tools/spacefox/graphics.py",
+        "tools/build_geographic_context.py",
+        "tools/prepare_geographic_source.py",
+        "tests/test_geographic_context.py"
+      ],
+      "test_id": "unittest::tests.test_geographic_context.GeographicContextTest.test_source_validation_negatives",
+      "command_id": "geographic-context-4-checks",
+      "state": "planned",
+      "source_path": "tests/test_geographic_context.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "d0d0154b7c5b9b3597778ac00bbd8f8e0cfd9c26c3d22aceb58a750751c36baf",
+      "implementation_note": "Offwatch only. Preserve retained historical greens; no native wire, phone, survey, deployment or complete worldwide acceptance.",
+      "planning_note": "Previously observed receipt is historical after fixed-map/settings cutover. Rebind only after its complete current assertion is revalidated."
+    },
+    {
+      "id": "VC06.P4.C05.POSITIVE",
+      "property_id": "VC06.P4",
+      "polarity": "positive",
+      "scenario": "Small island or date-line site",
+      "scenario_fingerprint": "f1a0e901066f348de5e257bfb4b74db5f28ee7cb692335d73d7152c2c2f5ca11",
+      "setup": "Explicit candidate recipe, immutable source2 corpus and current unchanged finite catalog; actual SFV/source/CLI boundary.",
+      "observable": "Off-watch finite sourced regional context serves all213numeric references in actual bounded SFV map previews within390round geometry; exact fixed/mobile/unknown semantics persist; corresponding source/rights and complete current+retained selections stay bounded. Accepted full-camera profile remains explicitly separate from native/pad/worldwide acceptance.",
+      "red_expectation": "Reject source/digest/rights/coordinate/marker/closure/budget faults; old source must demonstrate omitted island context.",
+      "green_expectation": "Off-watch finite sourced regional context serves all213numeric references in actual bounded SFV map previews within390round geometry; exact fixed/mobile/unknown semantics persist; corresponding source/rights and complete current+retained selections stay bounded. Accepted full-camera profile remains explicitly separate from native/pad/worldwide acceptance.",
+      "invalidation_dependencies": [
+        "catalog/geography/**",
+        "catalog/world.json",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/geographic_context.py",
+        "tools/spacefox/graphics.py",
+        "tools/build_geographic_context.py",
+        "tools/prepare_geographic_source.py",
+        "tests/test_geographic_context.py"
+      ],
+      "test_id": "unittest::tests.test_geographic_context.GeographicContextTest.test_complete_current_retained_bounds",
+      "command_id": "geographic-context-5-checks",
+      "state": "planned",
+      "source_path": "tests/test_geographic_context.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "d0d0154b7c5b9b3597778ac00bbd8f8e0cfd9c26c3d22aceb58a750751c36baf",
+      "implementation_note": "Offwatch only. Preserve retained historical greens; no native wire, phone, survey, deployment or complete worldwide acceptance.",
+      "planning_note": "Previously observed receipt is historical after fixed-map/settings cutover. Rebind only after its complete current assertion is revalidated."
+    },
+    {
+      "id": "VC06.P4.C06.NEGATIVE",
+      "property_id": "VC06.P4",
+      "polarity": "negative",
+      "scenario": "Small island or date-line site",
+      "scenario_fingerprint": "f1a0e901066f348de5e257bfb4b74db5f28ee7cb692335d73d7152c2c2f5ca11",
+      "setup": "Explicit candidate recipe, immutable source2 corpus and current unchanged finite catalog; actual SFV/source/CLI boundary.",
+      "observable": "Off-watch finite sourced regional context serves all213numeric references in actual bounded SFV map previews within390round geometry; exact fixed/mobile/unknown semantics persist; corresponding source/rights and complete current+retained selections stay bounded. Accepted full-camera profile remains explicitly separate from native/pad/worldwide acceptance.",
+      "red_expectation": "Reject source/digest/rights/coordinate/marker/closure/budget faults; old source must demonstrate omitted island context.",
+      "green_expectation": "Off-watch finite sourced regional context serves all213numeric references in actual bounded SFV map previews within390round geometry; exact fixed/mobile/unknown semantics persist; corresponding source/rights and complete current+retained selections stay bounded. Accepted full-camera profile remains explicitly separate from native/pad/worldwide acceptance.",
+      "invalidation_dependencies": [
+        "catalog/geography/**",
+        "catalog/world.json",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/geographic_context.py",
+        "tools/spacefox/graphics.py",
+        "tools/build_geographic_context.py",
+        "tools/prepare_geographic_source.py",
+        "tests/test_geographic_context.py"
+      ],
+      "test_id": "unittest::tests.test_geographic_context.GeographicContextTest.test_descriptor_and_closure_negatives",
+      "command_id": "geographic-context-6-checks",
+      "state": "planned",
+      "source_path": "tests/test_geographic_context.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "d0d0154b7c5b9b3597778ac00bbd8f8e0cfd9c26c3d22aceb58a750751c36baf",
+      "implementation_note": "Offwatch only. Preserve retained historical greens; no native wire, phone, survey, deployment or complete worldwide acceptance.",
+      "planning_note": "Previously observed receipt is historical after fixed-map/settings cutover. Rebind only after its complete current assertion is revalidated."
+    },
+    {
+      "id": "VC06.P4.C07.POSITIVE",
+      "property_id": "VC06.P4",
+      "polarity": "positive",
+      "scenario": "Moving or unavailable departure point",
+      "scenario_fingerprint": "cf68d09d466e5effa08d5271d1338b6f29527345c89df867c51dfbb3f1d93a9d",
+      "setup": "Explicit candidate recipe, immutable source2 corpus and current unchanged finite catalog; actual SFV/source/CLI boundary.",
+      "observable": "Off-watch finite sourced regional context serves all213numeric references in actual bounded SFV map previews within390round geometry; exact fixed/mobile/unknown semantics persist; corresponding source/rights and complete current+retained selections stay bounded. Accepted full-camera profile remains explicitly separate from native/pad/worldwide acceptance.",
+      "red_expectation": "Reject source/digest/rights/coordinate/marker/closure/budget faults; old source must demonstrate omitted island context.",
+      "green_expectation": "Off-watch finite sourced regional context serves all213numeric references in actual bounded SFV map previews within390round geometry; exact fixed/mobile/unknown semantics persist; corresponding source/rights and complete current+retained selections stay bounded. Accepted full-camera profile remains explicitly separate from native/pad/worldwide acceptance.",
+      "invalidation_dependencies": [
+        "catalog/geography/**",
+        "catalog/world.json",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/geographic_context.py",
+        "tools/spacefox/graphics.py",
+        "tools/build_geographic_context.py",
+        "tools/prepare_geographic_source.py",
+        "tests/test_geographic_context.py"
+      ],
+      "test_id": "unittest::tests.test_geographic_context.GeographicContextTest.test_all_required_source_context_and_marker_visibility",
+      "command_id": "geographic-context-2-checks",
+      "state": "planned",
+      "source_path": "tests/test_geographic_context.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "d0d0154b7c5b9b3597778ac00bbd8f8e0cfd9c26c3d22aceb58a750751c36baf",
+      "implementation_note": "Offwatch only. Preserve retained historical greens; no native wire, phone, survey, deployment or complete worldwide acceptance.",
+      "distinct_reason": "Moving or unavailable departure point: separately counts185fixed markers,28mobile numeric references with no marker and5unknown omissions, retaining exact source facts.",
+      "planning_note": "Previously observed receipt is historical after fixed-map/settings cutover. Rebind only after its complete current assertion is revalidated."
+    },
+    {
+      "id": "VC01.P3.C10.POSITIVE",
+      "property_id": "VC01.P3",
+      "polarity": "positive",
+      "scenario": "A scientific rocket missing from the main provider",
+      "scenario_fingerprint": "5cab49eacb0729709518b3fb8b8a30ece2d0c8b5c1eea25f5b72a595bea0ad02",
+      "setup": "Current global.3 source, frozen historical global.2 recipe and independently authored literal mutations; actual exporter and atomic recipe amendment.",
+      "observable": "Typed sourced extensions on imported rows retain original facts, provider flags and ordered operation sources.",
+      "red_expectation": "Literal contrary result must fail; no native/worldwide/official logo acceptance inferred.",
+      "green_expectation": "Typed sourced extensions on imported rows retain original facts, provider flags and ordered operation sources.",
+      "invalidation_dependencies": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tests/test_global_content.py",
+        "tests/test_global_catalog.py",
+        "tests/fixtures/catalog/global-before-content-source.json"
+      ],
+      "test_id": "unittest::tests.test_global_content.GlobalContentTest.test_reviewed_extensions_positive",
+      "command_id": "global-content-checks",
+      "state": "implemented",
+      "source_path": "tests/test_global_content.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "9b17e0581080a3fdd1fe2c7d0f15e39e59a0b1197e776ec6899bf6f2dfc6b65d",
+      "implementation_note": "Producer-only current content/typed admission evidence. Historical full-pack witnesses stay explicitly global.2. Never full goal acceptance."
+    },
+    {
+      "id": "VC01.P3.C10.NEGATIVE",
+      "property_id": "VC01.P3",
+      "polarity": "negative",
+      "scenario": "A scientific rocket missing from the main provider",
+      "scenario_fingerprint": "5cab49eacb0729709518b3fb8b8a30ece2d0c8b5c1eea25f5b72a595bea0ad02",
+      "setup": "Current global.3 source, frozen historical global.2 recipe and independently authored literal mutations; actual exporter and atomic recipe amendment.",
+      "observable": "Reject undeclared, wrong-collection, wrong-type, unsourced, conflicting-source and future review assertions atomically.",
+      "red_expectation": "Literal contrary result must fail; no native/worldwide/official logo acceptance inferred.",
+      "green_expectation": "Reject undeclared, wrong-collection, wrong-type, unsourced, conflicting-source and future review assertions atomically.",
+      "invalidation_dependencies": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tests/test_global_content.py",
+        "tests/test_global_catalog.py",
+        "tests/fixtures/catalog/global-before-content-source.json"
+      ],
+      "test_id": "unittest::tests.test_global_content.GlobalContentTest.test_reviewed_extensions_negative",
+      "command_id": "global-content-checks",
+      "state": "implemented",
+      "source_path": "tests/test_global_content.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "9b17e0581080a3fdd1fe2c7d0f15e39e59a0b1197e776ec6899bf6f2dfc6b65d",
+      "implementation_note": "Producer-only current content/typed admission evidence. Historical full-pack witnesses stay explicitly global.2. Never full goal acceptance."
+    },
+    {
+      "id": "VC17.P3.C10.POSITIVE",
+      "property_id": "VC17.P3",
+      "polarity": "positive",
+      "scenario": "Global manifest has thousands of assets",
+      "scenario_fingerprint": "27f01a9caa9d85de336203765439705221b8f2a7f63d1ae1bc358dee06d46689",
+      "setup": "Current global.3 source, frozen historical global.2 recipe and independently authored literal mutations; actual exporter and atomic recipe amendment.",
+      "observable": "All562 current assets pass real bounded source export; no complete global delivery prerequisite.",
+      "red_expectation": "Literal contrary result must fail; no native/worldwide/official logo acceptance inferred.",
+      "green_expectation": "All562 current assets pass real bounded source export; no complete global delivery prerequisite.",
+      "invalidation_dependencies": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tests/test_global_content.py",
+        "tests/test_global_catalog.py",
+        "tests/fixtures/catalog/global-before-content-source.json"
+      ],
+      "test_id": "unittest::tests.test_global_content.GlobalContentTest.test_current_all_asset_bounded_admission_positive",
+      "command_id": "global-content-checks",
+      "state": "implemented",
+      "source_path": "tests/test_global_content.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "9b17e0581080a3fdd1fe2c7d0f15e39e59a0b1197e776ec6899bf6f2dfc6b65d",
+      "implementation_note": "Producer-only current content/typed admission evidence. Historical full-pack witnesses stay explicitly global.2. Never full goal acceptance."
+    },
+    {
+      "id": "VC17.P3.C10.NEGATIVE",
+      "property_id": "VC17.P3",
+      "polarity": "negative",
+      "scenario": "Global manifest has thousands of assets",
+      "scenario_fingerprint": "27f01a9caa9d85de336203765439705221b8f2a7f63d1ae1bc358dee06d46689",
+      "setup": "Current global.3 source, frozen historical global.2 recipe and independently authored literal mutations; actual exporter and atomic recipe amendment.",
+      "observable": "Real full-global pack exceeds unchanged1MiB; actual malformed source asset rejects amendment atomically.",
+      "red_expectation": "Literal contrary result must fail; no native/worldwide/official logo acceptance inferred.",
+      "green_expectation": "Real full-global pack exceeds unchanged1MiB; actual malformed source asset rejects amendment atomically.",
+      "invalidation_dependencies": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tests/test_global_content.py",
+        "tests/test_global_catalog.py",
+        "tests/fixtures/catalog/global-before-content-source.json"
+      ],
+      "test_id": "unittest::tests.test_global_content.GlobalContentTest.test_current_full_pack_and_atomic_invalid_asset_negative",
+      "command_id": "global-content-checks",
+      "state": "implemented",
+      "source_path": "tests/test_global_content.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "9b17e0581080a3fdd1fe2c7d0f15e39e59a0b1197e776ec6899bf6f2dfc6b65d",
+      "implementation_note": "Producer-only current content/typed admission evidence. Historical full-pack witnesses stay explicitly global.2. Never full goal acceptance."
+    },
+    {
+      "id": "VC17.P3.C11.POSITIVE",
+      "property_id": "VC17.P3",
+      "polarity": "positive",
+      "scenario": "Global manifest has thousands of assets",
+      "scenario_fingerprint": "27f01a9caa9d85de336203765439705221b8f2a7f63d1ae1bc358dee06d46689",
+      "setup": "Current global.3 source, frozen historical global.2 recipe and independently authored literal mutations; actual exporter and atomic recipe amendment.",
+      "observable": "Unrelated global growth preserves selected closure; reviewed jurisdiction changes are explicit; ElectronNZ/operatorUS and Europe/FrenchGuiana roles remain distinct.",
+      "red_expectation": "Literal contrary result must fail; no native/worldwide/official logo acceptance inferred.",
+      "green_expectation": "Unrelated global growth preserves selected closure; reviewed jurisdiction changes are explicit; ElectronNZ/operatorUS and Europe/FrenchGuiana roles remain distinct.",
+      "invalidation_dependencies": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tests/test_global_content.py",
+        "tests/test_global_catalog.py",
+        "tests/fixtures/catalog/global-before-content-source.json"
+      ],
+      "test_id": "unittest::tests.test_global_content.GlobalContentTest.test_current_selected_closure_invariance_positive",
+      "command_id": "global-content-checks",
+      "state": "implemented",
+      "source_path": "tests/test_global_content.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "9b17e0581080a3fdd1fe2c7d0f15e39e59a0b1197e776ec6899bf6f2dfc6b65d",
+      "implementation_note": "Producer-only current content/typed admission evidence. Historical full-pack witnesses stay explicitly global.2. Never full goal acceptance."
+    },
+    {
+      "id": "VC01.P3.C11.NEGATIVE",
+      "property_id": "VC01.P3",
+      "polarity": "negative",
+      "scenario": "A scientific rocket missing from the main provider",
+      "scenario_fingerprint": "5cab49eacb0729709518b3fb8b8a30ece2d0c8b5c1eea25f5b72a595bea0ad02",
+      "setup": "Current global.3 source, frozen historical global.2 recipe and independently authored literal mutations; actual exporter and atomic recipe amendment.",
+      "observable": "Future lifecycle review date rejects even when candidate curation is also future, without recipe activation.",
+      "red_expectation": "Literal contrary result fails; actual pre-repair observation retained in independent-r2/future-review-red.log.",
+      "green_expectation": "Future lifecycle review date rejects even when candidate curation is also future, without recipe activation.",
+      "invalidation_dependencies": [
+        "tests/test_global_content_review_dates.py",
+        "catalog/**",
+        "assets/global/**",
+        "tools/catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tests/test_global_catalog.py",
+        "tests/test_global_content.py"
+      ],
+      "test_id": "unittest::tests.test_global_content_review_dates.GlobalContentReviewDateTest.test_future_lifecycle_review_negative",
+      "command_id": "global-content-review-dates-r2",
+      "state": "implemented",
+      "source_path": "tests/test_global_content_review_dates.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "ae25e84e3443b41be852c4eb67a0689effca6ece25c5f19661bb9268e4c05a37",
+      "implementation_note": "R2 calendar-bound typed lifecycle admission only. Retain prior observations; new R3/root judgment required."
+    },
+    {
+      "id": "VC01.P3.C11.POSITIVE",
+      "property_id": "VC01.P3",
+      "polarity": "positive",
+      "scenario": "A scientific rocket missing from the main provider",
+      "scenario_fingerprint": "5cab49eacb0729709518b3fb8b8a30ece2d0c8b5c1eea25f5b72a595bea0ad02",
+      "setup": "Current global.3 source, frozen historical global.2 recipe and independently authored literal mutations; actual exporter and atomic recipe amendment.",
+      "observable": "Exact UTC admission-date lifecycle review is admitted, preserving stored source dates, original facts and operation sources.",
+      "red_expectation": "Literal contrary result fails; actual pre-repair observation retained in independent-r2/future-review-red.log.",
+      "green_expectation": "Exact UTC admission-date lifecycle review is admitted, preserving stored source dates, original facts and operation sources.",
+      "invalidation_dependencies": [
+        "tests/test_global_content_review_dates.py",
+        "catalog/**",
+        "assets/global/**",
+        "tools/catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tests/test_global_catalog.py",
+        "tests/test_global_content.py"
+      ],
+      "test_id": "unittest::tests.test_global_content_review_dates.GlobalContentReviewDateTest.test_today_lifecycle_review_positive",
+      "command_id": "global-content-review-dates-r2",
+      "state": "implemented",
+      "source_path": "tests/test_global_content_review_dates.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "ae25e84e3443b41be852c4eb67a0689effca6ece25c5f19661bb9268e4c05a37",
+      "implementation_note": "R2 calendar-bound typed lifecycle admission only. Retain prior observations; new R3/root judgment required."
+    },
+    {
+      "id": "VC01.P3.C12.NEGATIVE",
+      "property_id": "VC01.P3",
+      "polarity": "negative",
+      "scenario": "A scientific rocket missing from the main provider",
+      "scenario_fingerprint": "5cab49eacb0729709518b3fb8b8a30ece2d0c8b5c1eea25f5b72a595bea0ad02",
+      "setup": "Current global.3 source, frozen historical global.2 recipe and independently authored literal mutations; actual exporter and atomic recipe amendment.",
+      "observable": "Invalid calendar date, compact ISO date and timestamp all reject atomically.",
+      "red_expectation": "Literal contrary result fails; actual pre-repair observation retained in independent-r2/future-review-red.log.",
+      "green_expectation": "Invalid calendar date, compact ISO date and timestamp all reject atomically.",
+      "invalidation_dependencies": [
+        "tests/test_global_content_review_dates.py",
+        "catalog/**",
+        "assets/global/**",
+        "tools/catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tests/test_global_catalog.py",
+        "tests/test_global_content.py"
+      ],
+      "test_id": "unittest::tests.test_global_content_review_dates.GlobalContentReviewDateTest.test_malformed_lifecycle_review_negative",
+      "command_id": "global-content-review-dates-r2",
+      "state": "implemented",
+      "source_path": "tests/test_global_content_review_dates.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "ae25e84e3443b41be852c4eb67a0689effca6ece25c5f19661bb9268e4c05a37",
+      "implementation_note": "R2 calendar-bound typed lifecycle admission only. Retain prior observations; new R3/root judgment required."
+    },
+    {
+      "id": "VC01.P3.C13.NEGATIVE",
+      "property_id": "VC01.P3",
+      "polarity": "negative",
+      "scenario": "A scientific rocket missing from the main provider",
+      "scenario_fingerprint": "5cab49eacb0729709518b3fb8b8a30ece2d0c8b5c1eea25f5b72a595bea0ad02",
+      "setup": "Real pinned catalog/SVG copies, actual amend/build/export owners; synthetic facts supply literal contract discriminators only.",
+      "observable": "New complete typed lifecycle creation cannot carry a future review even with future curation.",
+      "red_expectation": "Prior creation path accepts prohibited typed fields and actual future/incomplete amendments activate; retained red logs record exact observations.",
+      "green_expectation": "New complete typed lifecycle creation cannot carry a future review even with future curation.",
+      "invalidation_dependencies": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tests/test_global_catalog.py",
+        "tests/test_global_content.py",
+        "tests/test_global_content_creation_r3.py"
+      ],
+      "test_id": "unittest::tests.test_global_content_creation_r3.GlobalContentCreationR3Test.test_future_creation_amendment_negative",
+      "command_id": "global-content-creation-r3",
+      "state": "implemented",
+      "source_path": "tests/test_global_content_creation_r3.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "b930749651bdc5be119cdd239ff1677f5b808196c2f124270c9bd47166959b51",
+      "implementation_note": "Independent R3 creation-route typed admission repair. Preserve all prior cases and receipts. New independent R4/root judgment required after repair."
+    },
+    {
+      "id": "VC01.P3.C14.NEGATIVE",
+      "property_id": "VC01.P3",
+      "polarity": "negative",
+      "scenario": "A scientific rocket missing from the main provider",
+      "scenario_fingerprint": "5cab49eacb0729709518b3fb8b8a30ece2d0c8b5c1eea25f5b72a595bea0ad02",
+      "setup": "Real pinned catalog/SVG copies, actual amend/build/export owners; synthetic facts supply literal contract discriminators only.",
+      "observable": "Creation validates state/type/date/source and collection on real pinned recipe replay.",
+      "red_expectation": "Prior creation path accepts prohibited typed fields and actual future/incomplete amendments activate; retained red logs record exact observations.",
+      "green_expectation": "Creation validates state/type/date/source and collection on real pinned recipe replay.",
+      "invalidation_dependencies": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tests/test_global_catalog.py",
+        "tests/test_global_content.py",
+        "tests/test_global_content_creation_r3.py"
+      ],
+      "test_id": "unittest::tests.test_global_content_creation_r3.GlobalContentCreationR3Test.test_typed_creation_matrix_negative",
+      "command_id": "global-content-creation-r3",
+      "state": "implemented",
+      "source_path": "tests/test_global_content_creation_r3.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "b930749651bdc5be119cdd239ff1677f5b808196c2f124270c9bd47166959b51",
+      "implementation_note": "Independent R3 creation-route typed admission repair. Preserve all prior cases and receipts. New independent R4/root judgment required after repair."
+    },
+    {
+      "id": "VC01.P3.C15.NEGATIVE.CURRENT",
+      "property_id": "VC01.P3",
+      "polarity": "negative",
+      "scenario": "A scientific rocket missing from the main provider",
+      "scenario_fingerprint": "5cab49eacb0729709518b3fb8b8a30ece2d0c8b5c1eea25f5b72a595bea0ad02",
+      "setup": "Use exact captured real launch records and actual UI/menu text in the sole schema3 /feed.json SFR1M envelope; mutate actual record/object fields or interrupt at the named technical failure boundary.",
+      "observable": "Curated additions retain distinct typed identities, source review and unknown positions. Scenario: A scientific rocket missing from the main provider.",
+      "red_expectation": "A violated current scenario, false completeness, mixed identity, changed source age/quota or invalid activation must fail this case.",
+      "green_expectation": "Observe the named current-owner outcome with exact source/identity/age/quota and resource bounds; no old-format or invented-display pass substitutes.",
+      "invalidation_dependencies": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tests/test_global_catalog.py",
+        "tests/test_global_content.py",
+        "tests/test_global_content_creation_r3.py",
+        "tests/test_current_format_acceptance.py",
+        "tools/spacefox/native_motion.py",
+        "corpus/real-schedule-20261113/**"
+      ],
+      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p3_c15_negative",
+      "command_id": "current-format-acceptance-planned",
+      "state": "planned",
+      "source_path": "tests/test_current_format_acceptance.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "planning_note": "Current binding planned; retired predecessor evidence remains historical only."
+    },
+    {
+      "id": "VC01.P3.C16.POSITIVE.CURRENT",
+      "property_id": "VC01.P3",
+      "polarity": "positive",
+      "scenario": "A scientific rocket missing from the main provider",
+      "scenario_fingerprint": "5cab49eacb0729709518b3fb8b8a30ece2d0c8b5c1eea25f5b72a595bea0ad02",
+      "setup": "Use exact captured real launch records and actual UI/menu text in the sole schema3 /feed.json SFR1M envelope; valid current candidate and same-format accepted recovery state.",
+      "observable": "Curated additions retain distinct typed identities, source review and unknown positions. Scenario: A scientific rocket missing from the main provider.",
+      "red_expectation": "A violated current scenario, false completeness, mixed identity, changed source age/quota or invalid activation must fail this case.",
+      "green_expectation": "Observe the named current-owner outcome with exact source/identity/age/quota and resource bounds; no old-format or invented-display pass substitutes.",
+      "invalidation_dependencies": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tests/test_global_catalog.py",
+        "tests/test_global_content.py",
+        "tests/test_global_content_creation_r3.py",
+        "tests/test_current_format_acceptance.py",
+        "tools/spacefox/native_motion.py",
+        "corpus/real-schedule-20261113/**"
+      ],
+      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p3_c16_positive",
+      "command_id": "current-format-acceptance-planned",
+      "state": "planned",
+      "source_path": "tests/test_current_format_acceptance.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "planning_note": "Current binding planned; retired predecessor evidence remains historical only."
+    },
+    {
+      "id": "VC17.P3.C12.NEGATIVE",
+      "property_id": "VC17.P3",
+      "polarity": "negative",
+      "scenario": "Global manifest has thousands of assets",
+      "scenario_fingerprint": "27f01a9caa9d85de336203765439705221b8f2a7f63d1ae1bc358dee06d46689",
+      "setup": "Actual current and frozen source catalog, actual exporter and bundle APIs. Ordinary-JSON independent readdressing/index/byte oracle and independent graph reachability; isolated filesystem; no production validation helper supplies expected outcomes.",
+      "observable": "Delivered current/frozen metadata contains exactly reachable rows/assets and at most 16 unique typed roots; failed current activation preserves every accepted file.",
+      "red_expectation": "Real producer rejects mismatches that a freshly rehashed current/retained bundle admits; red receipt preserves the exact failed assertions.",
+      "green_expectation": "Delivered current/frozen metadata contains exactly reachable rows/assets and at most 16 unique typed roots; failed current activation preserves every accepted file.",
+      "invalidation_dependencies": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/graphics.py",
+        "tests/fixtures/catalog/global-before-content-source.json",
+        "tests/test_global_content_closure_r5.py"
+      ],
+      "test_id": "unittest::tests.test_global_content_closure_r5.GlobalContentClosureR5Test.test_readdressed_root_and_exact_closure_negative",
+      "command_id": "global-content-closure-r5",
+      "state": "implemented",
+      "source_path": "tests/test_global_content_closure_r5.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "f7b2b021976420d11b4523ed807c2fb0fb6d6db1527b9a5edac63aba702e2227",
+      "implementation_note": "Independent R5 grouped delivered-contract parity repair. Preserve old case/receipt pins; repaired candidate requires NEW R6/root judgment."
+    },
+    {
+      "id": "VC17.P3.C13.NEGATIVE",
+      "property_id": "VC17.P3",
+      "polarity": "negative",
+      "scenario": "Global manifest has thousands of assets",
+      "scenario_fingerprint": "27f01a9caa9d85de336203765439705221b8f2a7f63d1ae1bc358dee06d46689",
+      "setup": "Actual current and frozen source catalog, actual exporter and bundle APIs. Ordinary-JSON independent readdressing/index/byte oracle and independent graph reachability; isolated filesystem; no production validation helper supplies expected outcomes.",
+      "observable": "Delivered current/frozen visual envelopes and visible row provenance, roles, qualifications and source positions retain the actual producer contract.",
+      "red_expectation": "Real producer rejects mismatches that a freshly rehashed current/retained bundle admits; red receipt preserves the exact failed assertions.",
+      "green_expectation": "Delivered current/frozen visual envelopes and visible row provenance, roles, qualifications and source positions retain the actual producer contract.",
+      "invalidation_dependencies": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/graphics.py",
+        "tests/fixtures/catalog/global-before-content-source.json",
+        "tests/test_global_content_closure_r5.py"
+      ],
+      "test_id": "unittest::tests.test_global_content_closure_r5.GlobalContentClosureR5Test.test_readdressed_envelope_and_visible_row_contract_negative",
+      "command_id": "global-content-closure-r5",
+      "state": "implemented",
+      "source_path": "tests/test_global_content_closure_r5.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "f7b2b021976420d11b4523ed807c2fb0fb6d6db1527b9a5edac63aba702e2227",
+      "implementation_note": "Independent R5 grouped delivered-contract parity repair. Preserve old case/receipt pins; repaired candidate requires NEW R6/root judgment."
+    },
+    {
+      "id": "VC17.P3.C14.POSITIVE",
+      "property_id": "VC17.P3",
+      "polarity": "positive",
+      "scenario": "Global manifest has thousands of assets",
+      "scenario_fingerprint": "27f01a9caa9d85de336203765439705221b8f2a7f63d1ae1bc358dee06d46689",
+      "setup": "Actual current and frozen source catalog, actual exporter and bundle APIs. Ordinary-JSON independent readdressing/index/byte oracle and independent graph reachability; isolated filesystem; no production validation helper supplies expected outcomes.",
+      "observable": "Current/frozen selections admit 16 roots, overlapping typed roots/shared dependencies and standalone asset roots through activation and retention without duplicated objects.",
+      "red_expectation": "Real producer rejects mismatches that a freshly rehashed current/retained bundle admits; red receipt preserves the exact failed assertions.",
+      "green_expectation": "Current/frozen selections admit 16 roots, overlapping typed roots/shared dependencies and standalone asset roots through activation and retention without duplicated objects.",
+      "invalidation_dependencies": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/graphics.py",
+        "tests/fixtures/catalog/global-before-content-source.json",
+        "tests/test_global_content_closure_r5.py"
+      ],
+      "test_id": "unittest::tests.test_global_content_closure_r5.GlobalContentClosureR5Test.test_current_frozen_asset_roots_and_shared_dependencies_positive",
+      "command_id": "global-content-closure-r5",
+      "state": "implemented",
+      "source_path": "tests/test_global_content_closure_r5.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "f7b2b021976420d11b4523ed807c2fb0fb6d6db1527b9a5edac63aba702e2227",
+      "implementation_note": "Independent R5 grouped delivered-contract parity repair. Preserve old case/receipt pins; repaired candidate requires NEW R6/root judgment."
+    },
+    {
+      "id": "VC17.P3.C15.NEGATIVE",
+      "property_id": "VC17.P3",
+      "polarity": "negative",
+      "scenario": "Global manifest has thousands of assets",
+      "scenario_fingerprint": "27f01a9caa9d85de336203765439705221b8f2a7f63d1ae1bc358dee06d46689",
+      "setup": "Actual current and frozen source catalog, actual exporter and bundle APIs. Ordinary-JSON independent readdressing/index/byte oracle and independent graph reachability; isolated filesystem; no production validation helper supplies expected outcomes.",
+      "observable": "Asset envelopes reject extra fields, non-integer canvas/bounds/units (including numerically equal JSON decimals) and standalone assets retain an admitted seed role at current/frozen current and retained ports.",
+      "red_expectation": "Real producer rejects mismatches that a freshly rehashed current/retained bundle admits; red receipt preserves the exact failed assertions.",
+      "green_expectation": "Asset envelopes reject extra fields, non-integer canvas/bounds/units (including numerically equal JSON decimals) and standalone assets retain an admitted seed role at current/frozen current and retained ports.",
+      "invalidation_dependencies": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/graphics.py",
+        "tests/fixtures/catalog/global-before-content-source.json",
+        "tests/test_global_content_closure_r5.py"
+      ],
+      "test_id": "unittest::tests.test_global_content_closure_r5.GlobalContentClosureR5Test.test_readdressed_asset_envelope_and_standalone_role_negative",
+      "command_id": "global-content-closure-r5",
+      "state": "implemented",
+      "source_path": "tests/test_global_content_closure_r5.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "f7b2b021976420d11b4523ed807c2fb0fb6d6db1527b9a5edac63aba702e2227",
+      "implementation_note": "Independent R5 grouped delivered-contract parity repair. Preserve old case/receipt pins; repaired candidate requires NEW R6/root judgment."
+    },
+    {
+      "id": "VC17.P3.C16.NEGATIVE",
+      "property_id": "VC17.P3",
+      "polarity": "negative",
+      "scenario": "Global manifest has thousands of assets",
+      "scenario_fingerprint": "27f01a9caa9d85de336203765439705221b8f2a7f63d1ae1bc358dee06d46689",
+      "setup": "Actual current/frozen catalog and builder; independent Decimal-preserving JSON/hashlib readdressing and isolated real filesystem. Sequence oracle uses literal amendment events; no production validator supplies expected facts/bytes.",
+      "observable": "Visible cumulative corrections cannot rewrite sourceId; historical correction IDs retain the existing canonical token grammar at current/frozen current and retained ports, preserving all accepted files on refusal.",
+      "red_expectation": "Actual forbidden admission or builder-valid source-only rejection is retained before the repair.",
+      "green_expectation": "Visible cumulative corrections cannot rewrite sourceId; historical correction IDs retain the existing canonical token grammar at current/frozen current and retained ports, preserving all accepted files on refusal.",
+      "invalidation_dependencies": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/graphics.py",
+        "tests/test_global_content_parity_r6.py"
+      ],
+      "test_id": "unittest::tests.test_global_content_parity_r6.GlobalContentParityR6Test.test_visible_cumulative_identity_and_history_ids_negative",
+      "command_id": "global-content-parity-r6",
+      "state": "implemented",
+      "source_path": "tests/test_global_content_parity_r6.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "d22c595c6989a028cf85372dda688d557d14252d501f70bcf209337d4a5f46be",
+      "implementation_note": "Independent R6 two-sided visible correction/source-only parity finding; preserve old pins, stop for NEW R7/root judgment."
+    },
+    {
+      "id": "VC17.P3.C17.POSITIVE",
+      "property_id": "VC17.P3",
+      "polarity": "positive",
+      "scenario": "Global manifest has thousands of assets",
+      "scenario_fingerprint": "27f01a9caa9d85de336203765439705221b8f2a7f63d1ae1bc358dee06d46689",
+      "setup": "Actual current/frozen catalog and builder; independent Decimal-preserving JSON/hashlib readdressing and isolated real filesystem. Sequence oracle uses literal amendment events; no production validator supplies expected facts/bytes.",
+      "observable": "Builder-valid imported raw extension facts, including names coincident with publisher extensions, survive exact current/frozen activation and retention without becoming a reviewed jurisdiction classification.",
+      "red_expectation": "Actual forbidden admission or builder-valid source-only rejection is retained before the repair.",
+      "green_expectation": "Builder-valid imported raw extension facts, including names coincident with publisher extensions, survive exact current/frozen activation and retention without becoming a reviewed jurisdiction classification.",
+      "invalidation_dependencies": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/graphics.py",
+        "tests/test_global_content_parity_r6.py"
+      ],
+      "test_id": "unittest::tests.test_global_content_parity_r6.GlobalContentParityR6Test.test_builder_valid_source_only_extensions_current_retained_positive",
+      "command_id": "global-content-parity-r6",
+      "state": "implemented",
+      "source_path": "tests/test_global_content_parity_r6.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "d22c595c6989a028cf85372dda688d557d14252d501f70bcf209337d4a5f46be",
+      "implementation_note": "Independent R6 two-sided visible correction/source-only parity finding; preserve old pins, stop for NEW R7/root judgment."
+    },
+    {
+      "id": "VC17.P3.C18.POSITIVE",
+      "property_id": "VC17.P3",
+      "polarity": "positive",
+      "scenario": "Global manifest has thousands of assets",
+      "scenario_fingerprint": "27f01a9caa9d85de336203765439705221b8f2a7f63d1ae1bc358dee06d46689",
+      "setup": "Actual current/frozen catalog and builder; independent Decimal-preserving JSON/hashlib readdressing and isolated real filesystem. Sequence oracle uses literal amendment events; no production validator supplies expected facts/bytes.",
+      "observable": "Two actual amendments, current activation, retention, rejected identity amendment and source reopen preserve event-derived original facts, operation history, roots and stored bytes.",
+      "red_expectation": "Actual forbidden admission or builder-valid source-only rejection is retained before the repair.",
+      "green_expectation": "Two actual amendments, current activation, retention, rejected identity amendment and source reopen preserve event-derived original facts, operation history, roots and stored bytes.",
+      "invalidation_dependencies": [
+        "catalog/**",
+        "assets/global/**",
+        "tools/catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/graphics.py",
+        "tests/test_global_content_parity_r6.py"
+      ],
+      "test_id": "unittest::tests.test_global_content_parity_r6.GlobalContentParityR6Test.test_amend_activate_retain_reopen_sequence_positive",
+      "command_id": "global-content-parity-r6",
+      "state": "implemented",
+      "source_path": "tests/test_global_content_parity_r6.py",
+      "substitution": {
+        "classification": "NO_TEST_DOUBLE"
+      },
+      "source_sha256": "d22c595c6989a028cf85372dda688d557d14252d501f70bcf209337d4a5f46be",
+      "implementation_note": "Independent R6 two-sided visible correction/source-only parity finding; preserve old pins, stop for NEW R7/root judgment."
+    }
+  ],
+  "commands": [
+    {
+      "id": "global-catalog-checks",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_global_catalog.GlobalCatalogTest.test_coverage_negative",
+        "tests.test_global_catalog.GlobalCatalogTest.test_coverage_positive",
+        "tests.test_global_catalog.GlobalCatalogTest.test_curation_negative",
+        "tests.test_global_catalog.GlobalCatalogTest.test_curation_positive",
+        "tests.test_global_catalog.GlobalCatalogTest.test_maintenance_negative",
+        "tests.test_global_catalog.GlobalCatalogTest.test_maintenance_positive",
+        "tests.test_global_map.GlobalMapTest.test_projection_negative",
+        "tests.test_global_map.GlobalMapTest.test_projection_positive",
+        "tests.test_global_map.GlobalMapTest.test_selection_negative",
+        "tests.test_global_map.GlobalMapTest.test_selection_positive"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 180,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "Real maintained catalog and geography producer only; no HTTP/native/world completeness."
+    },
+    {
+      "id": "geographic-context-1-checks",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_geographic_context.GeographicContextTest.test_source_and_literal_island_context"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "One exact case to preserve independent retained greens. Offwatch producer previews and corresponding selected source only."
+    },
+    {
+      "id": "geographic-context-2-checks",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_geographic_context.GeographicContextTest.test_all_required_source_context_and_marker_visibility"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "One exact case to preserve independent retained greens. Offwatch producer previews and corresponding selected source only."
+    },
+    {
+      "id": "geographic-context-3-checks",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_geographic_context.GeographicContextTest.test_old_source_control_and_mobile_omission"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "One exact case to preserve independent retained greens. Offwatch producer previews and corresponding selected source only."
+    },
+    {
+      "id": "geographic-context-4-checks",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_geographic_context.GeographicContextTest.test_source_validation_negatives"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "One exact case to preserve independent retained greens. Offwatch producer previews and corresponding selected source only."
+    },
+    {
+      "id": "geographic-context-5-checks",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_geographic_context.GeographicContextTest.test_complete_current_retained_bounds"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "One exact case to preserve independent retained greens. Offwatch producer previews and corresponding selected source only."
+    },
+    {
+      "id": "geographic-context-6-checks",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_geographic_context.GeographicContextTest.test_descriptor_and_closure_negatives"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "One exact case to preserve independent retained greens. Offwatch producer previews and corresponding selected source only."
+    },
+    {
+      "id": "global-content-checks",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_global_content.GlobalContentTest.test_current_all_asset_bounded_admission_positive",
+        "tests.test_global_content.GlobalContentTest.test_current_full_pack_and_atomic_invalid_asset_negative",
+        "tests.test_global_content.GlobalContentTest.test_current_geometry_and_flags_positive",
+        "tests.test_global_content.GlobalContentTest.test_current_selected_closure_invariance_positive",
+        "tests.test_global_content.GlobalContentTest.test_immutable_mark_revisions_positive",
+        "tests.test_global_content.GlobalContentTest.test_reviewed_extensions_negative",
+        "tests.test_global_content.GlobalContentTest.test_reviewed_extensions_positive"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "Real local publisher source export/curation operations. Observation wrapper around actual build_pack records all assets; no owner replaced. Native/worldwide/rights review remain separate."
+    },
+    {
+      "id": "global-content-review-dates-r2",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_global_content_review_dates.GlobalContentReviewDateTest.test_future_lifecycle_review_negative",
+        "tests.test_global_content_review_dates.GlobalContentReviewDateTest.test_malformed_lifecycle_review_negative",
+        "tests.test_global_content_review_dates.GlobalContentReviewDateTest.test_today_lifecycle_review_positive"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "Three isolated R2 actual amendment/export methods: exact UTC admission day positive, next UTC day negative even with future curation, malformed-date negatives. UTC date sampled once for input replay and final catalog validation; synthetic facts are not lifecycle evidence."
+    },
+    {
+      "id": "global-content-creation-r3",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_global_content_creation_r3.GlobalContentCreationR3Test.test_future_creation_amendment_negative",
+        "tests.test_global_content_creation_r3.GlobalContentCreationR3Test.test_typed_creation_matrix_negative"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 600,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "Run only the exact active method selectors; retired cases are absent. Retained receipts keep their original source and proof boundary."
+    },
+    {
+      "id": "global-content-closure-r5",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_global_content_closure_r5.GlobalContentClosureR5Test.test_current_frozen_asset_roots_and_shared_dependencies_positive",
+        "tests.test_global_content_closure_r5.GlobalContentClosureR5Test.test_readdressed_asset_envelope_and_standalone_role_negative",
+        "tests.test_global_content_closure_r5.GlobalContentClosureR5Test.test_readdressed_envelope_and_visible_row_contract_negative",
+        "tests.test_global_content_closure_r5.GlobalContentClosureR5Test.test_readdressed_root_and_exact_closure_negative"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 240,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "Grouped independent R5 delivered root/closure, envelope and visible row contract discriminators, with current/frozen overlap/asset-root positive controls; no complete global-source authentication/native/geography accuracy claim."
+    },
+    {
+      "id": "global-content-parity-r6",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_global_content_parity_r6.GlobalContentParityR6Test.test_amend_activate_retain_reopen_sequence_positive",
+        "tests.test_global_content_parity_r6.GlobalContentParityR6Test.test_builder_valid_source_only_extensions_current_retained_positive",
+        "tests.test_global_content_parity_r6.GlobalContentParityR6Test.test_visible_cumulative_identity_and_history_ids_negative"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 240,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "Independent R6 correction identity/history grammar, builder-valid imported source extension compatibility, and actual amend/activate/retain/reopen sequence; no omitted global-envelope authentication or native/world claim."
+    },
+    {
+      "id": "current-format-acceptance-planned",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_current_format_acceptance"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "notes": "Planned actual current-format producer/native bindings; no execution or pass claimed. Actual-record mutations only; no invented display strings."
+    }
+  ]
+}
