@@ -21,6 +21,9 @@ def main():
  for name in GROUPS:
   folder=HERE/name;d=json.loads((folder/'build.json').read_bytes());assert d['exitCode']==0 and d['actualBase']=='854a5a30a5bb021d2bac3e2f799b4f6401f269af'
   expected=1 if name in ('full-fill','full-clean') else 34;assert len(d['productionSources'])==expected,(name,'source count')
+  if d.get('productionSourceScope')=='all-native':
+   assert set(d['productionSources'])=={str(f.relative_to(root)) for f in (root/'watchface/source').rglob('*.mc')},(name,'source inventory')
+   assert set(d['productionResources'])=={str(f.relative_to(root)) for d0 in (root/'watchface').glob('resources*') if d0.is_dir() for f in d0.rglob('*') if f.is_file()},(name,'resource inventory')
   for field in ('productionSources','productionResources'):
    for path,digest in d.get(field,{}).items():assert sha(root/path)==digest,(name,path)
   assert sha(folder/'Probe.mc')==d['probeSha256'],name
