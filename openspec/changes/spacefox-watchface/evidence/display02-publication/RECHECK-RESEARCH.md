@@ -13,7 +13,7 @@ Store presentation, transfer and actual execution.
 | Original ordinary Garmin app | The signed **0.1.10, Internal 7** was submitted; publisher preview shows **PENDING**. Public approval has not been observed. [Submission and versioned artifact receipt](PUBLICATION.md); [original listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3); [publisher portal](https://apps-developer.garmin.com/ru-RU/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3). |
 | GitHub | Signed **0.1.11** is the latest [test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.11-test.1), with model-specific PRGs; it has not been submitted to Garmin. [Installation](../../../../../release/INSTALLATION.md). |
 
-The authenticated server metadata observed 15 November identified the original
+The sanitized [authenticated server metadata observation](garmin-metadata-recheck.json) from 15 November identified the original
 app as `betaApp=false`, `status=PENDING`, `latestExternalVersion=0.1.10`,
 `latestInternalVersion=7`, `hasVersionPendingScan=false`, and
 `downloadProtected=false`. These fields do not prove device delivery or public

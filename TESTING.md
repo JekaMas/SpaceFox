@@ -12,7 +12,7 @@ and [delivery recheck](openspec/changes/spacefox-watchface/evidence/display02-pu
 The original [SpaceFox Connect IQ listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3)
 has 0.1.10 pending in publisher preview; public approval has not been observed.
 [Garmin permits owner preview and testing during review](https://developer.garmin.com/connect-iq/submit-an-app/); pending status alone does
-not establish why this watch is still on 0.1.6. The latest [0.1.11 signed test
+not establish why the last observed watch version was 0.1.6. The latest [0.1.11 signed test
 build](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.11-test.1) is a
 separate GitHub release and has not been submitted to Garmin. Neither the GitHub
 release nor simulator observations establish physical installation.
