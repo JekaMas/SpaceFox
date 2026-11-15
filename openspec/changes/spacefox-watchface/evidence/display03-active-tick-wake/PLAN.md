@@ -34,9 +34,13 @@ attribute the physical cause to a simulated symptom before discriminating it.
 * LOW -> NOT_LOW: the actual exit-sleep/high-power event requests and presents
   the active layout on the next available update, without optional feed/artwork
   work delaying the first frame. Measure event-to-first-active-frame latency in
-  the SDK, aiming <=1 second after event delivery, and disclose the platform
-  versus physical boundary. Repeated/late mode observations must not override a
-  newer wake event, create a third layout or freeze active update scheduling.
+  the SDK, aiming <=1 second after lifecycle wake AND a display state permitting
+  high-power rendering, and disclose platform versus app/physical delay. Actual
+  DISPLAY_MODE_LOW_POWER must always retain burn-in-safe sparse rendering even
+  if a high-power lifecycle callback has arrived. Do not assume an injected LOW
+  query is stale, demand an unsafe active frame or count that oracle as a proved
+  production defect. Reconcile callback cadence and display safety without a
+  third layout, ad hoc delayed-resume flags or frozen active update scheduling.
 * Launch point: use the actual accepted Vulcan/ULA/Cape SLC41 public launch and
   retained Zhuque witness. The selected fixed site's visible, unclipped native
   marker must survive loading/ready and ordinary sleep/wake, with a matching map.

@@ -33,3 +33,16 @@ advancing and the Cape marker. LOW lacked the newly requested map and included
 seconds. A combined menu/state/screenshot round trip returned active in 0.56s;
 that is not an instrumented event-to-frame latency or a physical-device result.
 Preserve the unexpected pass and investigate callback/runtime distinctions.
+
+## Platform oracle correction
+
+The author found callback/query-divergence failures using a controlled SDK seam.
+Root's original unconditional wake->active oracle was too strong when the query
+represents an actual DISPLAY_MODE_LOW_POWER state, whose sparse/burn-in limits
+still apply. Retain that experimental failure and explain its unsupported
+assumption; it is not confirmed physical root-cause evidence. The positive prompt
+active-frame bound begins once lifecycle wake and a display state permitting high
+rendering are both observed. Track platform latency separately. A full-looking
+active screen at LOW framework minute cadence remains a distinct consistency
+witness to investigate. This correction does not close the owner's 10–20s physical
+wake defect or permit an unsafe rendering mode.
