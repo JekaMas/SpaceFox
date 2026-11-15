@@ -1,12 +1,14 @@
-"""Checks bounded retained SDK observations; does not execute a simulator."""
+"""Checks historical pre-DISPLAY03 SDK observations; does not run a simulator."""
 import hashlib
 import json
 import unittest
+from tests.retained_native_binding import verify_current
 from pathlib import Path
 from xml.etree import ElementTree
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / 'openspec/changes/spacefox-watchface/evidence/sfr1m-current/raw'
+HISTORICAL = ROOT / 'tests/fixtures/retained-pre-display03'
 
 
 def sha(path):
@@ -16,6 +18,7 @@ def sha(path):
 class CurrentSfr1mReceipts(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        verify_current()
         manifest_path = RAW / 'receipt-hashes.json'
         if sha(manifest_path) != 'ec6360de23ceab4b92836b6aeb9da9c5625bb6e8ad076d2b76d53f634974aacb':
             raise AssertionError('changed receipt manifest')
@@ -29,15 +32,15 @@ class CurrentSfr1mReceipts(unittest.TestCase):
             if build['exitCode'] != 0 or 'BUILD SUCCESSFUL' not in (directory / 'compile.log').read_text():
                 raise AssertionError('compiler failed ' + name)
             sources = build['productionSources']
-            actual = {str(p.relative_to(ROOT)) for p in (ROOT / 'watchface/source').rglob('*.mc')}
+            actual = {str(p.relative_to(HISTORICAL)) for p in (HISTORICAL / 'watchface/source').rglob('*.mc')}
             listed = {p for p in sources if p.startswith('watchface/source/')}
             if actual != listed:
                 raise AssertionError('source inventory ' + name)
-            resources = {str(p.relative_to(ROOT)) for p in (ROOT / 'watchface').rglob('*') if p.is_file() and any(part.startswith('resources') for part in p.relative_to(ROOT / 'watchface').parts)}
+            resources = {str(p.relative_to(HISTORICAL)) for p in (HISTORICAL / 'watchface').rglob('*') if p.is_file() and any(part.startswith('resources') for part in p.relative_to(HISTORICAL / 'watchface').parts)}
             if resources != set(build['productionResources']):
                 raise AssertionError('resource inventory ' + name)
             for p, h in {**sources, **build['productionResources']}.items():
-                if sha(ROOT / p) != h:
+                if sha(HISTORICAL / p) != h:
                     raise AssertionError('source changed ' + p)
             if sha(directory / 'Probe.mc') != build['probeSha256']:
                 raise AssertionError('probe changed ' + name)

@@ -1,16 +1,19 @@
 """Source-bound reconciliation of actual current SDK feed boundary probes.
 
-This reader does not start a simulator. The native test generators and original
-SDK outputs remain reviewable; physical and actual phone behavior are separate.
+This reader reconstructs the pre-DISPLAY03 source and never starts a simulator.
+It verifies historical SDK observations, not execution of the 0.1.13 owners.
+Physical and actual phone behavior are separate.
 """
 import hashlib
 import json
 from pathlib import Path
 import re
 import unittest
+from tests.retained_native_binding import verify_current
 
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / 'openspec/changes/spacefox-watchface/evidence/native-feed-bounds'
+HISTORICAL = ROOT / 'tests/fixtures/retained-pre-display03'
 
 
 def digest(path):
@@ -37,6 +40,7 @@ def framework(path, names):
 class NativeFeedBoundsTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        verify_current()
         receipt_hashes = json.loads((EVIDENCE / 'receipt-hashes.json').read_text())
         for path, expected in receipt_hashes.items():
             verify_receipt(EVIDENCE / path, expected)
@@ -46,7 +50,7 @@ class NativeFeedBoundsTest(unittest.TestCase):
             if build['exitCode'] != 0 or digest(folder / 'Probe.mc') != build['probeSha256']:
                 raise AssertionError('compiler or probe binding: '+section)
             for category in ('productionSources', 'productionResources'):
-                for root in (ROOT,):
+                for root in (HISTORICAL,):
                     watchface = root / 'watchface'
                     if category == 'productionSources':
                         actual = {str(p.relative_to(root)) for p in (watchface / 'source').rglob('*.mc')}
@@ -55,7 +59,7 @@ class NativeFeedBoundsTest(unittest.TestCase):
                     if set(build[category]) != actual:
                         raise AssertionError(f'{section}: {category} closure differs in {root}')
                 for path, expected in build[category].items():
-                    for root in (ROOT,):
+                    for root in (HISTORICAL,):
                         if digest(root / path) != expected:
                             raise AssertionError(f'{section}: {root / path} changed')
 

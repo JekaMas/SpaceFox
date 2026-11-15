@@ -1,4 +1,8 @@
-"""Qualify a source-bound finite native map capture set; never launch the SDK."""
+"""Check historical finite SDK captures and current source binding; never launch the SDK.
+
+The captured 224-site campaign predates DISPLAY03. Its source is reconstructed
+from the retained pre-DISPLAY03 snapshot; current binding does not rerun it.
+"""
 import hashlib
 import json
 import math
@@ -175,14 +179,20 @@ def verify_detail(descriptor, probe, source_records, image):
 def verify_native_builds(root, evidence, bindings):
     builds=evidence/'native-builds'
     common=json.loads((builds/'production-inputs.json').read_text())
+    historical = root/'tests/fixtures/retained-pre-display03'
+    proof_ref=json.loads((root/'locales/catalog.json').read_text())['supportPolicy']['softwareQualificationProof']['integration13DeltaProof']
+    proof_raw=(root/proof_ref['path']).read_bytes()
+    require(hashlib.sha256(proof_raw).hexdigest()==proof_ref['sha256'], 'current integration proof changed')
+    current=json.loads(proof_raw)['nativeInputs']
     for path in ('watchface/source/NativeSfr.mc','watchface/source/NativeImmutable.mc',
                  'watchface/source/NativeVisualRenderer.mc','watchface/source/SceneRenderer.mc',
                  'watchface/source/SceneContext.mc','watchface/source/SceneSettings.mc',
                  'watchface/source/LocalePresentation.mc','watchface/source/Fitness.mc',
                  'watchface/source/generated/NativeAssets.mc'):
-        require(hashlib.sha256((root/path).read_bytes()).hexdigest()==common['productionSources'][path], 'native rendering source changed: '+path)
+        require(hashlib.sha256((historical/path).read_bytes()).hexdigest()==common['productionSources'][path], 'historical native rendering source changed: '+path)
+        require(path in current and hashlib.sha256((root/path).read_bytes()).hexdigest()==current[path], 'current integration source changed: '+path)
     marker='watchface/resources/drawables/LaunchMarker.png'
-    require(hashlib.sha256((root/marker).read_bytes()).hexdigest()==common['productionResources'][marker], 'native marker resource changed')
+    require(hashlib.sha256((historical/marker).read_bytes()).hexdigest()==common['productionResources'][marker] and hashlib.sha256((root/marker).read_bytes()).hexdigest()==current[marker], 'native marker resource changed')
     for name in set(bindings.values()):
         part=name.removeprefix('native-').removesuffix('.log')
         require(len(part)==3 and part.isdigit(),'invalid native log binding')
