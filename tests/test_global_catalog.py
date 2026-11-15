@@ -44,7 +44,7 @@ class GlobalCatalogTest(unittest.TestCase):
     def test_curation_positive(self):
         c = self.catalog;d = c['dictionaries']
         self.assertEqual({k:len(v) for k,v in d.items()},
-                         {'countries':104,'organizations':350,'configurations':176,'sites':218,'assets':562})
+                         {'countries':104,'organizations':352,'configurations':215,'sites':224,'assets':683})
         reference = loads_json((ROOT/'openspec/changes/spacefox-watchface/evidence/global-catalog/reference-inventory.json').read_bytes())
         # Every one of the 839 original entities retains its exact source facts.
         for source,table,kind in [('countries','countries','country'),('organizations','organizations','organization'),('models','configurations','configuration'),('sites','sites','site')]:
@@ -61,8 +61,12 @@ class GlobalCatalogTest(unittest.TestCase):
         self.assertEqual(d['sites']['spacefox:site:esrange-sounding-area']['references']['agencies'],['ll2:organization:151'])
         self.assertEqual(d['sites']['ll2:site:13']['position']['latitude'].as_tuple(),Decimal('0.0').as_tuple())
         self.assertEqual(d['sites']['ll2:site:13']['facts']['positionMode'],'mobile-reference-no-event')
-        # Marks do not invent model or operator origin from source countries.
-        self.assertIsNone(d['configurations']['ll2:configuration:30']['references']['origin'])
+        # H3 origin now has an explicit independent reviewed source; marks alone
+        # are not its source of jurisdiction.
+        h3=d['configurations']['ll2:configuration:30']
+        self.assertEqual(h3['references']['origin'],'ll2:country:28')
+        self.assertEqual(h3['originSources'],['https://www.mhi.com/business/products-services/space-defense/launch-service/launch-vehicles'])
+        self.assertEqual(h3['facts']['curatedOriginReviewedAt'],'2026-11-12')
         self.assertEqual(d['organizations']['ll2:organization:37']['references']['origin'],'ll2:country:28')
 
     def test_curation_negative(self):

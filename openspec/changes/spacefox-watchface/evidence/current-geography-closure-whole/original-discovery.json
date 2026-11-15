@@ -1,0 +1,703 @@
+[
+  {
+    "id": "D-global-catalog-r1",
+    "question": "Implement maintained data-only curation, sourced broader art and finite global geography from supplied exact owners.",
+    "property_ids": [
+      "VC01.P3",
+      "VC11.P2",
+      "VC05.P3",
+      "VC06.P3",
+      "VC17.P3"
+    ],
+    "test_ids": [
+      "unittest::tests.test_global_catalog.GlobalCatalogTest.test_curation_positive",
+      "unittest::tests.test_global_catalog.GlobalCatalogTest.test_curation_negative",
+      "unittest::tests.test_global_catalog.GlobalCatalogTest.test_maintenance_positive",
+      "unittest::tests.test_global_catalog.GlobalCatalogTest.test_maintenance_negative",
+      "unittest::tests.test_global_catalog.GlobalCatalogTest.test_coverage_positive",
+      "unittest::tests.test_global_catalog.GlobalCatalogTest.test_coverage_negative",
+      "unittest::tests.test_global_map.GlobalMapTest.test_projection_positive",
+      "unittest::tests.test_global_map.GlobalMapTest.test_projection_negative",
+      "unittest::tests.test_global_map.GlobalMapTest.test_selection_positive",
+      "unittest::tests.test_global_map.GlobalMapTest.test_selection_negative"
+    ],
+    "searches": [
+      {
+        "kind": "exact",
+        "status": "completed",
+        "query": "Supplied catalog.py, graphics.py, pinned reference/registry, global inventory, selected spec/design and current source recipe.",
+        "outcome": "Frozen adapter intentionally cannot revise inputs. Add explicit producer2 curation while preserving schema1 compatibility and legacy sources; geography uses shared pinned world topology.",
+        "results": [
+          {
+            "path": "tools/spacefox/catalog.py",
+            "classification": "change_candidate",
+            "reason": "Actual identity/provenance/admission/build owner."
+          },
+          {
+            "path": "tools/spacefox/graphics.py",
+            "classification": "change_candidate",
+            "reason": "Existing bounded SFV export owner reused for all new art."
+          },
+          {
+            "path": "prototype/mission.html",
+            "classification": "reusable_unchanged",
+            "reason": "Frozen embedded Natural Earth topology source; never modify."
+          }
+        ]
+      },
+      {
+        "kind": "semantic",
+        "status": "unavailable",
+        "query": "No new discovery required for the exact catalog/graphics/global-map owners supplied in the task.",
+        "reason": "No matching fresh semantic/index observation was obtained or claimed. Exact source and Git/file inspection supply this scoped increment.",
+        "outcome": "No bootstrap, login, unrelated index or semantic coverage claim.",
+        "results": []
+      },
+      {
+        "kind": "jetbrains-index",
+        "status": "unavailable",
+        "query": "No new discovery required for the exact catalog/graphics/global-map owners supplied in the task.",
+        "reason": "No matching fresh semantic/index observation was obtained or claimed. Exact source and Git/file inspection supply this scoped increment.",
+        "outcome": "No bootstrap, login, unrelated index or semantic coverage claim.",
+        "results": []
+      }
+    ],
+    "disposition": "current_change",
+    "rationale": "Bounded producer increment within tasks4.1/4.3/4.5. Native, production provider quota/HTTP, current worldwide completeness and full art acceptance remain independent requirements."
+  },
+  {
+    "id": "D-global-catalog-independent-r1",
+    "question": "Independent review and bounded repair of repeated-correction citations, retained artifact admission/closure and SpaceShipTwo shape specificity.",
+    "property_ids": [
+      "VC01.P3",
+      "VC11.P2",
+      "VC05.P3",
+      "VC06.P3",
+      "VC17.P3"
+    ],
+    "test_ids": [
+      "unittest::tests.test_global_catalog.GlobalCatalogTest.test_curation_positive",
+      "unittest::tests.test_global_catalog.GlobalCatalogTest.test_curation_negative",
+      "unittest::tests.test_global_catalog.GlobalCatalogTest.test_maintenance_positive",
+      "unittest::tests.test_global_catalog.GlobalCatalogTest.test_maintenance_negative",
+      "unittest::tests.test_global_catalog.GlobalCatalogTest.test_coverage_positive",
+      "unittest::tests.test_global_catalog.GlobalCatalogTest.test_coverage_negative",
+      "unittest::tests.test_global_map.GlobalMapTest.test_projection_positive",
+      "unittest::tests.test_global_map.GlobalMapTest.test_projection_negative",
+      "unittest::tests.test_global_map.GlobalMapTest.test_selection_positive",
+      "unittest::tests.test_global_map.GlobalMapTest.test_selection_negative"
+    ],
+    "searches": [
+      {
+        "kind": "exact",
+        "status": "completed",
+        "query": "Exact supplied catalog.py/global_map.py/graphics.py/CLIs, their callers, all active curated asset mappings, original provider/registry/browser sources and frozen current/retained artifacts.",
+        "outcome": "Literal reds demonstrated discarded earlier operation sources, retained unknown-rights admission and current-file closure/metadata defects; primary NTSB/Scaled engineering drawing and Virgin fact sheet contradicted the declared SpaceShipTwo twin-boom feature. Repair preserves frozen inputs, appends one immutable art revision and adds selected-site source/digest bindings.",
+        "results": [
+          {
+            "path": "tools/spacefox/catalog.py",
+            "classification": "change_candidate",
+            "reason": "Actual identity/provenance/admission/build owner."
+          },
+          {
+            "path": "tools/spacefox/graphics.py",
+            "classification": "change_candidate",
+            "reason": "Existing bounded SFV export owner reused for all new art."
+          },
+          {
+            "path": "prototype/mission.html",
+            "classification": "reusable_unchanged",
+            "reason": "Frozen embedded Natural Earth topology source; never modify."
+          }
+        ]
+      },
+      {
+        "kind": "semantic",
+        "status": "unavailable",
+        "query": "No new discovery required for the exact catalog/graphics/global-map owners supplied in the task.",
+        "reason": "No matching fresh semantic/index observation was obtained or claimed. Exact source and Git/file inspection supply this scoped increment.",
+        "outcome": "No bootstrap, login, unrelated index or semantic coverage claim.",
+        "results": []
+      },
+      {
+        "kind": "jetbrains-index",
+        "status": "unavailable",
+        "query": "No new discovery required for the exact catalog/graphics/global-map owners supplied in the task.",
+        "reason": "No matching fresh semantic/index observation was obtained or claimed. Exact source and Git/file inspection supply this scoped increment.",
+        "outcome": "No bootstrap, login, unrelated index or semantic coverage claim.",
+        "results": []
+      }
+    ],
+    "disposition": "current_change",
+    "rationale": "In-scope local producer repair under unchanged tasks4.1/4.3/4.5. Original red receipts retained; final affected42 checks required on committed clean source. Fresh R2 and root judgment remain mandatory; full content/native/provider/hosting gaps stay open."
+  },
+  {
+    "id": "D-global-catalog-independent-r2",
+    "question": "Fresh R2 fixture correction and geography metadata admission review; retain unrelated green observations.",
+    "property_ids": [
+      "VC06.P3",
+      "VC17.P3"
+    ],
+    "test_ids": [
+      "unittest::tests.test_global_map.GlobalMapTest.test_selection_positive",
+      "unittest::tests.test_global_map.GlobalMapTest.test_selection_negative"
+    ],
+    "searches": [
+      {
+        "kind": "exact",
+        "status": "completed",
+        "query": "Read the supplied exact catalog/map/graphics owners, actual tests and frozen source/artifact records. Fresh literal metadata, three-operation maintenance, byte-bound and fault probes; primary artwork/source inspection.",
+        "outcome": "Stale fixed version now derived from active version with distinct digest/real minimum-byte assertions. Ten invalid geography metadata mutations and readdressed current write were admitted on old source. Shared metadata validation now serves current/prior closure without field changes; legacy optional source/binding omissions stay admissible.",
+        "results": [
+          {
+            "path": "tools/spacefox/global_map.py",
+            "classification": "change_candidate",
+            "reason": "Shared current/retained geography admission owner."
+          },
+          {
+            "path": "tests/test_global_map.py",
+            "classification": "change_candidate",
+            "reason": "Literal fixture/admission regression and legacy/mobile/sourced-event positives."
+          },
+          {
+            "path": "assets/global/curation-20261112-independent-r1.json",
+            "classification": "reusable_unchanged",
+            "reason": "Immutable corrected silhouette compared with NTSB/Scaled drawing and Virgin fact sheet."
+          }
+        ]
+      },
+      {
+        "kind": "semantic",
+        "status": "unavailable",
+        "query": "No ownership discovery needed for supplied exact owners.",
+        "reason": "No fresh semantic or matching IDE index observation requested or obtained.",
+        "outcome": "Exact source/receipt/primary inspection only; no bootstrap or semantic/index claim.",
+        "results": []
+      },
+      {
+        "kind": "jetbrains-index",
+        "status": "unavailable",
+        "query": "No ownership discovery needed for supplied exact owners.",
+        "reason": "No fresh semantic or matching IDE index observation requested or obtained.",
+        "outcome": "Exact source/receipt/primary inspection only; no bootstrap or semantic/index claim.",
+        "results": []
+      }
+    ],
+    "disposition": "current_change",
+    "rationale": "Bounded current/retained admission repair. The two selection methods are invalidated; unchanged catalog/visual/projection behavior keeps its original receipts. Fresh R3 and root judgment required after this source/test repair; whole task boxes and worldwide/native/content/hosting acceptance remain open."
+  },
+  {
+    "id": "D-global-catalog-independent-r3",
+    "question": "Fresh independent R3 current/retained visual reference admission review and bounded repair.",
+    "property_ids": [
+      "VC17.P3"
+    ],
+    "test_ids": [
+      "unittest::tests.test_global_map.GlobalMapTest.test_selection_positive",
+      "unittest::tests.test_global_map.GlobalMapTest.test_selection_negative"
+    ],
+    "searches": [
+      {
+        "kind": "exact",
+        "status": "completed",
+        "query": "Read actual supplied catalog/graphics/geography/CLI owners and primary NTSB/Virgin images. Construct new readdressed path faults with actual public API, filesystem and CLI; no candidate test helper oracle.",
+        "outcome": "Missing, mismatched and external visual paths admitted by public writer/retained builder, and CLI retained malformed metadata. Extract the existing graphics reference validator and reuse it in shared current/prior bundle admission, with no field/SFV changes.",
+        "results": [
+          {
+            "path": "tools/spacefox/graphics.py",
+            "classification": "change_candidate",
+            "reason": "Extract the accepted visual reference contract for shared use; original pack behavior remains the same."
+          },
+          {
+            "path": "tools/spacefox/global_map.py",
+            "classification": "change_candidate",
+            "reason": "Shared current/retained bundle re-admission omitted explicit visual reference path validation."
+          },
+          {
+            "path": "tests/test_global_map.py",
+            "classification": "change_candidate",
+            "reason": "New literal current/retained path regressions; isolate accepted root before each mutation."
+          },
+          {
+            "path": "assets/global/curation-20261112-independent-r1.json",
+            "classification": "reusable_unchanged",
+            "reason": "Current twin-boom source/selected mapping inspected against retained NTSB and Virgin primary images; source remains immutable."
+          }
+        ]
+      },
+      {
+        "kind": "semantic",
+        "status": "unavailable",
+        "query": "Exact owners supplied; no unknown ownership search needed.",
+        "reason": "No semantic search/index proof obtained or claimed.",
+        "outcome": "Exact source, filesystem and primary-image observations only.",
+        "results": []
+      },
+      {
+        "kind": "jetbrains-index",
+        "status": "unavailable",
+        "query": "Exact owners supplied; no matching index operation needed.",
+        "reason": "No index qualification obtained or claimed.",
+        "outcome": "No bootstrap or semantic/index claim.",
+        "results": []
+      }
+    ],
+    "disposition": "current_change",
+    "rationale": "Bounded in-scope repair. Revalidate 4 exact unique tests/6mapped cases after source commit: two map selection and two visual atomic methods. Retain 36mapped/36unique unchanged observations at original receipt hashes. Whole content/native/worldwide/hosting tasks remain open. Stop for NEW R4/root judgment after affected checks."
+  },
+  {
+    "id": "D-global-content-independent-r3",
+    "question": "Do creation and later-curation routes enforce the same typed lifecycle contract while retaining valid known corrections and exact accepted legacy source facts?",
+    "property_ids": [
+      "VC01.P3",
+      "VC03.P1",
+      "VC05.P3"
+    ],
+    "test_ids": [
+      "unittest::tests.test_global_content_creation_r3.GlobalContentCreationR3Test.test_future_creation_amendment_negative",
+      "unittest::tests.test_global_content_creation_r3.GlobalContentCreationR3Test.test_typed_creation_matrix_negative",
+      "unittest::tests.test_global_content_selection_r3.GlobalContentSelectionR3Test.test_rehashed_current_retained_metadata_negative"
+    ],
+    "searches": [
+      {
+        "kind": "exact",
+        "status": "completed",
+        "query": "Inspect actual catalog build/creation/history validation and public amendment activation; independently challenge new complete future lifecycle add, incomplete lifecycle add, state/date/source/collection mutations and known correction sequence.",
+        "outcome": "Actual future lifecycle creation activated. Complete typed creation bypasses type/date/source/collection validation; public new additions also bypass completeness. Specific known jurisdiction correction is distinct from generic retained Unknown sentinel and remains admissible. A rehashed selected MIURA9 9999-12-31 review activated through current and retained bundle paths; shared bounded selection validation checks supplied identities/facts/history/roles/mappings and visible lifecycle dates without importing the whole global catalog.",
+        "results": [
+          {
+            "path": "tools/spacefox/catalog.py",
+            "classification": "change_candidate",
+            "reason": "Only update history invoked typed fact validation; new creation facts bypassed it."
+          },
+          {
+            "path": "tools/catalog.py",
+            "classification": "change_candidate",
+            "reason": "New public addition must require complete typed lifecycle, while generic replay preserves precise accepted legacy source format."
+          },
+          {
+            "path": "tests/test_global_content_creation_r3.py",
+            "classification": "change_candidate",
+            "reason": "New literal actual admission and sequence discriminators; no existing source/test/receipt changed."
+          },
+          {
+            "path": "tools/spacefox/global_map.py",
+            "classification": "change_candidate",
+            "reason": "Current/retained visual file validation omitted selected dictionary content semantics."
+          },
+          {
+            "path": "tests/test_global_content_selection_r3.py",
+            "classification": "change_candidate",
+            "reason": "Literal rehashed future lifecycle red plus 11 current/retained sibling mutation controls."
+          }
+        ]
+      },
+      {
+        "kind": "semantic",
+        "status": "unavailable",
+        "query": "Exact source/test ownership supplied by root.",
+        "reason": "No unknown-owner semantic lookup or index setup needed.",
+        "outcome": "No semantic or index claim.",
+        "results": []
+      },
+      {
+        "kind": "jetbrains-index",
+        "status": "unavailable",
+        "query": "Exact source/test ownership supplied by root.",
+        "reason": "No unknown-owner semantic lookup or index setup needed.",
+        "outcome": "No semantic or index claim.",
+        "results": []
+      }
+    ],
+    "disposition": "current_change",
+    "rationale": "Repair creation-route siblings within current typed lifecycle contract. Preserve accepted legacy facts and all old case/receipt pins; targeted new tests plus directly invalidated observations only; stop for new R4."
+  },
+  {
+    "id": "D-global-content-independent-r5",
+    "question": "Does current/retained delivered selection admission preserve the complete existing producer envelope, root/closure and visible row-source contract?",
+    "property_ids": [
+      "VC17.P3"
+    ],
+    "test_ids": [
+      "unittest::tests.test_global_content_closure_r5.GlobalContentClosureR5Test.test_readdressed_root_and_exact_closure_negative",
+      "unittest::tests.test_global_content_closure_r5.GlobalContentClosureR5Test.test_readdressed_envelope_and_visible_row_contract_negative",
+      "unittest::tests.test_global_content_closure_r5.GlobalContentClosureR5Test.test_current_frozen_asset_roots_and_shared_dependencies_positive",
+      "unittest::tests.test_global_content_closure_r5.GlobalContentClosureR5Test.test_readdressed_asset_envelope_and_standalone_role_negative"
+    ],
+    "searches": [
+      {
+        "kind": "exact",
+        "status": "completed",
+        "query": "Read exact catalog/global_map/graphics producer and delivered validators; compare actual readdressed current/frozen selected manifests and graph closure.",
+        "outcome": "Actual builder rejects removed roots/unreachable metadata while current/retained ports admit it; batch related envelope/row-source parity discriminators before repair.",
+        "results": [
+          {
+            "path": "tools/spacefox/catalog.py",
+            "classification": "change_candidate",
+            "reason": "Shared bounded metadata admission lacks exact reachable closure and visible row-source checks."
+          },
+          {
+            "path": "tools/spacefox/global_map.py",
+            "classification": "change_candidate",
+            "reason": "Delivered visual envelope/root limits omit existing builder checks."
+          },
+          {
+            "path": "tests/test_global_content_closure_r5.py",
+            "classification": "change_candidate",
+            "reason": "Independent readdressing/reachability oracle and actual current/frozen filesystem witnesses."
+          }
+        ]
+      },
+      {
+        "kind": "semantic",
+        "status": "unavailable",
+        "query": "Exact owners supplied by parent.",
+        "reason": "No unfamiliar semantic discovery/index setup required.",
+        "outcome": "No semantic/index claim.",
+        "results": []
+      },
+      {
+        "kind": "jetbrains-index",
+        "status": "unavailable",
+        "query": "Known Python source validators.",
+        "reason": "No PSI operation needed.",
+        "outcome": "No PSI claim.",
+        "results": []
+      }
+    ],
+    "disposition": "current_change",
+    "rationale": "Restore demonstrated existing builder contracts without new data/unknown policy/source-authentication assumptions. Group sibling mismatches, narrow repair, affected checks, STOP for NEW R6."
+  },
+  {
+    "id": "D-global-content-independent-r6",
+    "question": "Do delivered selections enforce visible immutable correction identity/history grammar while retaining builder-valid imported source-only extensions?",
+    "property_ids": [
+      "VC17.P3"
+    ],
+    "test_ids": [
+      "unittest::tests.test_global_content_parity_r6.GlobalContentParityR6Test.test_visible_cumulative_identity_and_history_ids_negative",
+      "unittest::tests.test_global_content_parity_r6.GlobalContentParityR6Test.test_builder_valid_source_only_extensions_current_retained_positive",
+      "unittest::tests.test_global_content_parity_r6.GlobalContentParityR6Test.test_amend_activate_retain_reopen_sequence_positive"
+    ],
+    "searches": [
+      {
+        "kind": "exact",
+        "status": "completed",
+        "query": "Read actual full/subset catalog and pack/bundle public ports, compare visible grammar in one independently readdressed batch.",
+        "outcome": "Actual immutable cumulative sourceId and malformed historical ID bypasses, plus builder-valid source-only extension rejections; literal raw probes retained.",
+        "results": [
+          {
+            "path": "tools/spacefox/catalog.py",
+            "classification": "change_candidate",
+            "reason": "Selected curation grammar omitted visible invariants while applying creation rules to raw imported fields."
+          },
+          {
+            "path": "tests/test_global_content_parity_r6.py",
+            "classification": "change_candidate",
+            "reason": "Independent literal byte and amendment-event oracles."
+          }
+        ]
+      },
+      {
+        "kind": "semantic",
+        "status": "unavailable",
+        "query": "Exact owners supplied by parent.",
+        "reason": "No unfamiliar semantic discovery/index setup required.",
+        "outcome": "No semantic/index claim.",
+        "results": []
+      },
+      {
+        "kind": "jetbrains-index",
+        "status": "unavailable",
+        "query": "Known Python source validators.",
+        "reason": "No PSI operation needed.",
+        "outcome": "No PSI claim.",
+        "results": []
+      }
+    ],
+    "disposition": "current_change",
+    "rationale": "Same approved lossless source-fact/typed correction contract. Two-sided parity repair; no stricter provider grammar or omitted source-envelope authentication. STOP for NEW R7."
+  },
+  {
+    "id": "CURRENT-ONLY-FINITE-20261113",
+    "question": "Reconcile both active graphs with current-only SFR1M and finite real text scope; retire old gates without claiming passes.",
+    "property_ids": [
+      "RL07.P1",
+      "VC18.P1",
+      "WF02.P1",
+      "WF12.P1",
+      "LS01.P2",
+      "LS04.P3",
+      "LS05.P4",
+      "LS08.P1",
+      "LS09.P1",
+      "LS11.P3",
+      "LS13.P3",
+      "LS14.P3",
+      "LS14.P4",
+      "VC06.P4",
+      "LS03.P4",
+      "LS03.P5",
+      "VC19.P1",
+      "VC19.P2",
+      "VC19.P3",
+      "VC19.P4",
+      "LS03.P6",
+      "LS03.P8",
+      "LS03.P7",
+      "VC05.P4",
+      "LS05.P5",
+      "LS01.P3",
+      "LS02.P5",
+      "LS11.P6",
+      "VC11.P5",
+      "LS03.P12",
+      "VC02.P2",
+      "VC20.P1",
+      "VC20.P2",
+      "VC20.P3",
+      "LS03.P10",
+      "VC04.P3",
+      "VC07.P3",
+      "VC20.P4",
+      "WF12.P3",
+      "WF12.P4",
+      "VC04.P4",
+      "VC07.P4",
+      "VC16.P1",
+      "VC11.P1",
+      "LS14.P1",
+      "RL08.P1"
+    ],
+    "test_ids": [
+      "unittest::tests.test_current_catalog.CurrentCatalogTest.test_data_only_revision_keeps_evidence_and_reopens_changed_identity",
+      "unittest::tests.test_current_catalog.CurrentCatalogTest.test_dated_inventory_produces_closed_current_view_and_preserves_archive",
+      "unittest::tests.test_current_catalog.CurrentCatalogTest.test_invalid_or_stale_registry_cannot_activate",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls01_p1_s01_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls01_p1_s01_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls01_p2_s01_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls01_p2_s02_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls01_p3_c01_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls01_p3_c02_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p5_c03_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls02_p5_c04_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p3_s01_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p3_s02_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p3_s03_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p3_s04_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p3_s05_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p3_s06_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p3_s40_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls04_p3_s41_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p1_s01_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p4_s01_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p4_s02_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p4_s03_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p5_s01_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p5_s01_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p5_s02_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p5_s02_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p5_s03_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls05_p5_s03_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s01_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s02_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s03_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s04_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s10_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s10_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s20_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s21_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s23_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s24_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s26_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s31_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s32_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s33_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s35_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s40_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p3_s41_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p6_c05_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p6_c06_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls11_p6_c07_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls13_p3_s01_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls13_p3_s02_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls13_p3_s03_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls13_p3_s04_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls13_p3_s10_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls13_p3_s11_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls13_p3_s12_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls13_p3_s22_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls13_p3_s25_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls13_p3_s28_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p1_s02_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p1_s02_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p3_s01_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p3_s02_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p3_s10_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p3_s10_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p3_s12_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p3_s27_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p3_s30_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p3_s34_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p3_s36_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p3_s37_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p4_c08_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p4_c09_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p4_c10_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p4_c11_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p4_c12_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p4_c13_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p4_c14_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p4_c15_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p4_c16_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_ls14_p4_c17_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_metadata_current_cli_defaults_and_unsupported_policy_refusal",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_metadata_current_policy_304_resume_and_refusals",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_metadata_current_quota_age_and_cas_refusal",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_rl07_p1_s01_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_rl07_p1_s01_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_rl07_p1_s02_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_rl07_p1_s02_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_rl08_p1_s01_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_rl08_p1_s01_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p1_s01_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p1_s01_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p3_c15_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p3_c16_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc02_p2_c03_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc03_p1_c13_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc03_p1_c14_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc05_p3_c10_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p4_c01_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p4_c02_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p4_c03_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc07_p4_c04_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc11_p1_motionwhole_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc11_p1_motionwhole_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc16_p1_motionwhole_hostshared_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc16_p1_motionwhole_hostsource_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc16_p1_motionwhole_negative_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc16_p1_motionwhole_positive_current",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc18_p1_s01_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc18_p1_s01_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc18_p1_s02_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc18_p1_s02_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p1_c01_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p1_c02_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p1_c03_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p1_c04_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p1_c05_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p1_c06_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p1_c07_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p1_c08_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p2_c01_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p2_c02_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p2_c03_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p2_c04_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p2_c05_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p2_c06_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p2_c07_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p2_c08_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p3_c01_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p3_c04_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p3_c05_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p3_c06_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p3_c12_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p3_c13_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p3_current02_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p4_c01_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p4_c02_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p4_c03_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc19_p4_c04_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p1_c02_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p1_c03_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p1_c04_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p1_c05_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p1_c06_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p1_c06_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p1_c07_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p1_motionwhole_hostsparse_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p1_motionwhole_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p1_motionwhole_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p1_motionwhole_sdkpixels_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p2_c01_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p2_c02_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p2_motionwhole_hostgeneration_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p2_motionwhole_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p2_motionwhole_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p3_c01_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p3_c02_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p3_motionwhole_hostclosure_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p3_motionwhole_hosthttp_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p3_motionwhole_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p3_motionwhole_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p3_motionwhole_sdkcleanup_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p4_c01_positive",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p4_c02_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p4_c03_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p4_c05_negative",
+      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc20_p4_c06_negative",
+      "unittest::tests.test_native_finite_evidence.NativeFiniteEvidenceTest.test_rehashed_native_log_probe_sdk_and_corpus_corruptions_refuse",
+      "unittest::tests.test_native_finite_evidence.NativeFiniteEvidenceTest.test_actual_finite_primary_software_receipt_admits_without_human_flags",
+      "unittest::tests.test_geographic_context.GeographicContextTest.test_all_required_source_context_and_marker_visibility",
+      "unittest::tests.test_geographic_context.GeographicContextTest.test_complete_current_retained_bounds",
+      "unittest::tests.test_geographic_context.GeographicContextTest.test_descriptor_and_closure_negatives",
+      "unittest::tests.test_geographic_context.GeographicContextTest.test_old_source_control_and_mobile_omission",
+      "unittest::tests.test_geographic_context.GeographicContextTest.test_source_and_literal_island_context",
+      "unittest::tests.test_geographic_context.GeographicContextTest.test_source_validation_negatives",
+      "unittest::tests.test_native_locale_runtime.NativeLocaleRuntimeTest.test_formats_negative",
+      "unittest::tests.test_native_locale_runtime.NativeLocaleRuntimeTest.test_formats_positive",
+      "unittest::tests.test_native_locale_runtime.NativeLocaleRuntimeTest.test_selection_negative",
+      "unittest::tests.test_native_locale_runtime.NativeLocaleRuntimeTest.test_selection_positive",
+      "unittest::tests.test_native_localization.NativeLocalizationResourcesTest.test_all36_and_settings_preserved",
+      "unittest::tests.test_native_localization.NativeLocalizationResourcesTest.test_generation_is_complete_and_repeatable",
+      "unittest::tests.test_native_localization.NativeLocalizationResourcesTest.test_missing_translation_or_placeholder_rejected",
+      "unittest::tests.test_remaining_art.RemainingArtTest.test_all_new_geometry_and_exact_selector_positive",
+      "unittest::tests.test_remaining_art.RemainingArtTest.test_finite_reviews_and_unchanged_facts_positive",
+      "unittest::tests.test_remaining_art.RemainingArtTest.test_known_unknown_unmapped_and_retained_selectors_positive",
+      "unittest::tests.test_remaining_art.RemainingArtTest.test_mismatched_identity_unknown_roots_and_fallback_negative",
+      "unittest::tests.test_remaining_art_r3.RemainingArtR3Test.test_malformed_typed_export_root_retains_written_objects",
+      "unittest::tests.test_remaining_art_r3.RemainingArtR3Test.test_public_cli_admit_reopen_export_and_atomic_wrong_model"
+    ],
+    "searches": [
+      {
+        "kind": "exact",
+        "status": "completed",
+        "query": "Direct reads of both specs/design/tasks/graphs, language_support.py/catalog policy and rg legacy/v1/v2/90-day/Unicode references.",
+        "outcome": "Found active compatibility/static/Unicode gates and mandatory all26 human/device prerequisite; retired or rebound current reliability obligations, split software versus external evidence.",
+        "results": [
+          {
+            "path": "tools/language_support.py",
+            "line": 1,
+            "classification": "change_candidate",
+            "reason": "Machine policy previously conflated human/physical with finite software scope."
+          },
+          {
+            "path": "openspec/changes/spacefox-watchface/specs/visual-catalog/spec.md",
+            "line": 1,
+            "classification": "change_candidate",
+            "reason": "Authoritative public current format and required reliable current delivery."
+          }
+        ]
+      },
+      {
+        "kind": "semantic",
+        "status": "unavailable",
+        "query": "SpaceFox current-format ownership",
+        "reason": "Exact owner paths supplied; no qualified SpaceFox semantic index available in this isolated worktree.",
+        "outcome": "No semantic evidence claimed.",
+        "results": []
+      },
+      {
+        "kind": "jetbrains-index",
+        "status": "unavailable",
+        "query": "SpaceFox current-format ownership",
+        "reason": "No qualified isolated SpaceFox worktree IDE index selected; direct owning artifacts used.",
+        "outcome": "No IDE index evidence claimed.",
+        "results": []
+      }
+    ],
+    "disposition": "current_change",
+    "rationale": "Explicit user decision changes active acceptance scope; implementation and actual corpus/native evidence remain separately pending."
+  }
+]

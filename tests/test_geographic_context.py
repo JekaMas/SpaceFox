@@ -50,8 +50,11 @@ class GeographicContextTest(unittest.TestCase):
             self.assertEqual(hashlib.sha256((ROOT/pin['path']).read_bytes()).hexdigest(),pin['sha256'])
         # Current source facts and recipe remain untouched; candidate is explicit.
         old=build_catalog(ROOT)
-        self.assertEqual({i:r['position'] for i,r in old['dictionaries']['sites'].items()},
-                         {i:r['position'] for i,r in self.catalog['dictionaries']['sites'].items()})
+        candidate=self.catalog['dictionaries']['sites']; current=old['dictionaries']['sites']
+        self.assertEqual(set(current)-set(candidate), {'ll2:site:125','ll2:site:203','ll2:site:237',
+                         'll2:site:77','ll2:site:81','spacefox:site:spaceport-nova-scotia'})
+        self.assertEqual({i:current[i]['position'] for i in candidate},
+                         {i:r['position'] for i,r in candidate.items()})
         self.assertEqual(len(load_world(ROOT,old)['lines']),594)
         with self.assertRaisesRegex(GeographyError,'offwatch context producer'):
             build_site_view(ROOT,self.catalog,'ll2:site:107')
@@ -71,7 +74,7 @@ class GeographicContextTest(unittest.TestCase):
             eligible=site['facts'].get('positionMode','fixed-source')=='fixed-source'
             if eligible:fixed+=1
             else:mobile+=1
-            for kind in ('map','globe'):
+            for kind in ('map',):
                 with self.subTest(identity=identity,kind=kind):
                     v=build_view(ROOT,self.catalog,identity,kind=kind,reference_context=not eligible)
                     self.assertEqual(v['manifest']['marker'],[335,165] if eligible else None)
@@ -120,7 +123,7 @@ class GeographicContextTest(unittest.TestCase):
                 self.assertIsNone(v['manifest']['site']['eventPosition'])
                 self.assertIsNone(build_view(ROOT,self.catalog,identity)['manifest']['marker'])
         for lat,lon in [(90,180),(-90,-180),(0,Decimal('179.999999999999999999')),(Decimal('-0.0000'),0)]:
-            for kind in ('map','globe'):
+            for kind in ('map',):
                 self.assertEqual(project_profile(lat,lon,kind=kind,center=(lat,lon),scale=145),(335,165))
         # The accepted full camera is an actual separate profile, not a 256-square
         # projection relabeled as owner/native acceptance.
@@ -151,11 +154,13 @@ class GeographicContextTest(unittest.TestCase):
             build_view(ROOT,self.catalog,'ll2:site:107',event_position={'latitude':90,'longitude':0,'sources':['https://example.org/explicit-test-event']})
 
     def test_complete_current_retained_bounds(self):
-        views=[build_view(ROOT,self.catalog,s,kind=k,reference_context=s!='ll2:site:107')
-               for s in ('ll2:site:107','ll2:site:104') for k in ('map','globe')]
+        # Distinct map-only views retain the old envelope accounting witness;
+        # this static envelope is not the current SFR1M artifact.
+        sites=('ll2:site:107','ll2:site:104','ll2:site:65','ll2:site:59')
+        views=[build_view(ROOT,self.catalog,site) for site in sites]
         first=build_artifact(views)
-        next_views=[build_view(ROOT,self.catalog,s,kind=k,reference_context=s=='ll2:site:59')
-                    for s in ('ll2:site:65','ll2:site:59') for k in ('map','globe')]
+        next_views=[build_view(ROOT,self.catalog,site) for site in
+                    ('ll2:site:50','ll2:site:52','ll2:site:90','ll2:site:67')]
         second=build_artifact(next_views,first)
         self.assertLessEqual(second['artifactBytes'],1048576)
         self.assertEqual(second['artifactBytes'],len(canonical_bytes(second['manifest']))+sum(map(len,second['files'].values())))

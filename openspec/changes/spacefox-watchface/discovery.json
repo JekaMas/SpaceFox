@@ -441,8 +441,8 @@
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p1_s01_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p1_s02_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p1_s02_positive_current",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p3_c15_negative",
-      "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p3_c16_positive",
+      "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_source_integrity_and_typed_refusal",
+      "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_reviewed_typed_catalog_and_unknown_position",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc02_p1_s01_negative_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc02_p1_s01_positive_current",
       "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc02_p1_s02_negative_current",
@@ -632,19 +632,16 @@
       "unittest::tests.test_global_content.GlobalContentTest.test_immutable_mark_revisions_positive",
       "unittest::tests.test_global_content.GlobalContentTest.test_reviewed_extensions_negative",
       "unittest::tests.test_global_content.GlobalContentTest.test_reviewed_extensions_positive",
-      "unittest::tests.test_global_content_closure_r5.GlobalContentClosureR5Test.test_current_frozen_asset_roots_and_shared_dependencies_positive",
-      "unittest::tests.test_global_content_closure_r5.GlobalContentClosureR5Test.test_readdressed_asset_envelope_and_standalone_role_negative",
-      "unittest::tests.test_global_content_closure_r5.GlobalContentClosureR5Test.test_readdressed_envelope_and_visible_row_contract_negative",
-      "unittest::tests.test_global_content_closure_r5.GlobalContentClosureR5Test.test_readdressed_root_and_exact_closure_negative",
-      "unittest::tests.test_global_content_creation_r3.GlobalContentCreationR3Test.test_future_creation_amendment_negative",
-      "unittest::tests.test_global_content_creation_r3.GlobalContentCreationR3Test.test_typed_creation_matrix_negative",
+      "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_sixteen_actual_asset_roots_and_refusals",
+      "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_selected_source_identity_history_refusals",
+      "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_future_typed_creation_refuses_atomically",
+      "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_typed_creation_rejects_actual_guard_failures",
       "unittest::tests.test_global_content_identity.GlobalContentIdentityTest.test_known_origin_badge_revision_positive",
       "unittest::tests.test_global_content_identity.GlobalContentIdentityTest.test_unknown_jurisdiction_origins_negative",
       "unittest::tests.test_global_content_identity.GlobalContentIdentityTest.test_unknown_operator_badge_negative",
       "unittest::tests.test_global_content_minotaur_review.GlobalContentMinotaurReviewTest.test_optional_fairing_metadata_and_selection_positive",
-      "unittest::tests.test_global_content_parity_r6.GlobalContentParityR6Test.test_amend_activate_retain_reopen_sequence_positive",
-      "unittest::tests.test_global_content_parity_r6.GlobalContentParityR6Test.test_builder_valid_source_only_extensions_current_retained_positive",
-      "unittest::tests.test_global_content_parity_r6.GlobalContentParityR6Test.test_visible_cumulative_identity_and_history_ids_negative",
+      "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_source_extension_and_reopen_corrections",
+      "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_current_sfr_source_extension_preserved",
       "unittest::tests.test_global_content_retained_unknown.GlobalContentRetainedUnknownTest.test_generic_unknown_and_known_identity_corrections_positive",
       "unittest::tests.test_global_content_retained_unknown.GlobalContentRetainedUnknownTest.test_ordinary_unknown_recode_negative",
       "unittest::tests.test_global_content_retained_unknown.GlobalContentRetainedUnknownTest.test_recoded_unknown_model_operator_origins_negative",
@@ -659,8 +656,7 @@
       "unittest::tests.test_global_content_unknown_rename.GlobalContentUnknownRenameTest.test_renamed_unknown_operator_badge_negative",
       "unittest::tests.test_global_map.GlobalMapTest.test_projection_negative",
       "unittest::tests.test_global_map.GlobalMapTest.test_projection_positive",
-      "unittest::tests.test_global_map.GlobalMapTest.test_selection_negative",
-      "unittest::tests.test_global_map.GlobalMapTest.test_selection_positive",
+      "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_current_real_selection_and_unrelated_growth",
       "unittest::tests.test_global_qualification.GlobalQualificationTest.test_vc05_p2_s01_negative",
       "unittest::tests.test_global_qualification.GlobalQualificationTest.test_vc05_p2_s01_positive",
       "unittest::tests.test_global_qualification.GlobalQualificationTest.test_vc05_p2_s02_negative",
@@ -1991,8 +1987,8 @@
         "unittest::tests.test_global_catalog.GlobalCatalogTest.test_coverage_negative",
         "unittest::tests.test_global_map.GlobalMapTest.test_projection_positive",
         "unittest::tests.test_global_map.GlobalMapTest.test_projection_negative",
-        "unittest::tests.test_global_map.GlobalMapTest.test_selection_positive",
-        "unittest::tests.test_global_map.GlobalMapTest.test_selection_negative"
+        "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_current_real_selection_and_unrelated_growth",
+        "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_source_integrity_and_typed_refusal"
       ],
       "searches": [
         {
@@ -2036,7 +2032,7 @@
         }
       ],
       "disposition": "current_change",
-      "rationale": "Bounded producer increment within tasks4.1/4.3/4.5. Native, production provider quota/HTTP, current worldwide completeness and full art acceptance remain independent requirements."
+      "rationale": "Bounded producer increment within tasks4.1/4.3/4.5. Native, production provider quota/HTTP, current worldwide completeness and full art acceptance remain independent requirements. Current-only replacement selectors are recorded with original discovery entries in evidence/current-geography-closure-whole; original historical observations remain at their original boundary."
     },
     {
       "id": "D-global-catalog-independent-r1",
@@ -2057,8 +2053,8 @@
         "unittest::tests.test_global_catalog.GlobalCatalogTest.test_coverage_negative",
         "unittest::tests.test_global_map.GlobalMapTest.test_projection_positive",
         "unittest::tests.test_global_map.GlobalMapTest.test_projection_negative",
-        "unittest::tests.test_global_map.GlobalMapTest.test_selection_positive",
-        "unittest::tests.test_global_map.GlobalMapTest.test_selection_negative"
+        "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_current_real_selection_and_unrelated_growth",
+        "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_source_integrity_and_typed_refusal"
       ],
       "searches": [
         {
@@ -2102,7 +2098,7 @@
         }
       ],
       "disposition": "current_change",
-      "rationale": "In-scope local producer repair under unchanged tasks4.1/4.3/4.5. Original red receipts retained; final affected42 checks required on committed clean source. Fresh R2 and root judgment remain mandatory; full content/native/provider/hosting gaps stay open."
+      "rationale": "In-scope local producer repair under unchanged tasks4.1/4.3/4.5. Original red receipts retained; final affected42 checks required on committed clean source. Fresh R2 and root judgment remain mandatory; full content/native/provider/hosting gaps stay open. Current-only replacement selectors are recorded with original discovery entries in evidence/current-geography-closure-whole; original historical observations remain at their original boundary."
     },
     {
       "id": "D-global-catalog-independent-r2",
@@ -2112,8 +2108,8 @@
         "VC17.P3"
       ],
       "test_ids": [
-        "unittest::tests.test_global_map.GlobalMapTest.test_selection_positive",
-        "unittest::tests.test_global_map.GlobalMapTest.test_selection_negative"
+        "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_current_real_selection_and_unrelated_growth",
+        "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_source_integrity_and_typed_refusal"
       ],
       "searches": [
         {
@@ -2157,7 +2153,7 @@
         }
       ],
       "disposition": "current_change",
-      "rationale": "Bounded current/retained admission repair. The two selection methods are invalidated; unchanged catalog/visual/projection behavior keeps its original receipts. Fresh R3 and root judgment required after this source/test repair; whole task boxes and worldwide/native/content/hosting acceptance remain open."
+      "rationale": "Bounded current/retained admission repair. The two selection methods are invalidated; unchanged catalog/visual/projection behavior keeps its original receipts. Fresh R3 and root judgment required after this source/test repair; whole task boxes and worldwide/native/content/hosting acceptance remain open. Current-only replacement selectors are recorded with original discovery entries in evidence/current-geography-closure-whole; original historical observations remain at their original boundary."
     },
     {
       "id": "D-global-catalog-independent-r3",
@@ -2166,8 +2162,8 @@
         "VC17.P3"
       ],
       "test_ids": [
-        "unittest::tests.test_global_map.GlobalMapTest.test_selection_positive",
-        "unittest::tests.test_global_map.GlobalMapTest.test_selection_negative"
+        "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_current_real_selection_and_unrelated_growth",
+        "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_source_integrity_and_typed_refusal"
       ],
       "searches": [
         {
@@ -2216,7 +2212,7 @@
         }
       ],
       "disposition": "current_change",
-      "rationale": "Bounded in-scope repair. Revalidate 4 exact unique tests/6mapped cases after source commit: two map selection and two visual atomic methods. Retain 36mapped/36unique unchanged observations at original receipt hashes. Whole content/native/worldwide/hosting tasks remain open. Stop for NEW R4/root judgment after affected checks."
+      "rationale": "Bounded in-scope repair. Revalidate 4 exact unique tests/6mapped cases after source commit: two map selection and two visual atomic methods. Retain 36mapped/36unique unchanged observations at original receipt hashes. Whole content/native/worldwide/hosting tasks remain open. Stop for NEW R4/root judgment after affected checks. Current-only replacement selectors are recorded with original discovery entries in evidence/current-geography-closure-whole; original historical observations remain at their original boundary."
     },
     {
       "id": "D-cloud-delivery-r1",
@@ -2749,8 +2745,8 @@
         "VC05.P3"
       ],
       "test_ids": [
-        "unittest::tests.test_global_content_creation_r3.GlobalContentCreationR3Test.test_future_creation_amendment_negative",
-        "unittest::tests.test_global_content_creation_r3.GlobalContentCreationR3Test.test_typed_creation_matrix_negative",
+        "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_future_typed_creation_refuses_atomically",
+        "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_typed_creation_rejects_actual_guard_failures",
         "unittest::tests.test_global_content_selection_r3.GlobalContentSelectionR3Test.test_rehashed_current_retained_metadata_negative"
       ],
       "searches": [
@@ -2805,7 +2801,7 @@
         }
       ],
       "disposition": "current_change",
-      "rationale": "Repair creation-route siblings within current typed lifecycle contract. Preserve accepted legacy facts and all old case/receipt pins; targeted new tests plus directly invalidated observations only; stop for new R4."
+      "rationale": "Repair creation-route siblings within current typed lifecycle contract. Preserve accepted legacy facts and all old case/receipt pins; targeted new tests plus directly invalidated observations only; stop for new R4. Current-only replacement selectors are recorded with original discovery entries in evidence/current-geography-closure-whole; original historical observations remain at their original boundary."
     },
     {
       "id": "D-global-content-independent-r5",
@@ -2814,10 +2810,9 @@
         "VC17.P3"
       ],
       "test_ids": [
-        "unittest::tests.test_global_content_closure_r5.GlobalContentClosureR5Test.test_readdressed_root_and_exact_closure_negative",
-        "unittest::tests.test_global_content_closure_r5.GlobalContentClosureR5Test.test_readdressed_envelope_and_visible_row_contract_negative",
-        "unittest::tests.test_global_content_closure_r5.GlobalContentClosureR5Test.test_current_frozen_asset_roots_and_shared_dependencies_positive",
-        "unittest::tests.test_global_content_closure_r5.GlobalContentClosureR5Test.test_readdressed_asset_envelope_and_standalone_role_negative"
+        "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_selected_source_identity_history_refusals",
+        "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_source_integrity_and_typed_refusal",
+        "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_sixteen_actual_asset_roots_and_refusals"
       ],
       "searches": [
         {
@@ -2861,7 +2856,7 @@
         }
       ],
       "disposition": "current_change",
-      "rationale": "Restore demonstrated existing builder contracts without new data/unknown policy/source-authentication assumptions. Group sibling mismatches, narrow repair, affected checks, STOP for NEW R6."
+      "rationale": "Restore demonstrated existing builder contracts without new data/unknown policy/source-authentication assumptions. Group sibling mismatches, narrow repair, affected checks, STOP for NEW R6. Current-only replacement selectors are recorded with original discovery entries in evidence/current-geography-closure-whole; original historical observations remain at their original boundary."
     },
     {
       "id": "D-global-content-independent-r6",
@@ -2870,9 +2865,9 @@
         "VC17.P3"
       ],
       "test_ids": [
-        "unittest::tests.test_global_content_parity_r6.GlobalContentParityR6Test.test_visible_cumulative_identity_and_history_ids_negative",
-        "unittest::tests.test_global_content_parity_r6.GlobalContentParityR6Test.test_builder_valid_source_only_extensions_current_retained_positive",
-        "unittest::tests.test_global_content_parity_r6.GlobalContentParityR6Test.test_amend_activate_retain_reopen_sequence_positive"
+        "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_selected_source_identity_history_refusals",
+        "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_current_sfr_source_extension_preserved",
+        "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_source_extension_and_reopen_corrections"
       ],
       "searches": [
         {
@@ -2911,7 +2906,7 @@
         }
       ],
       "disposition": "current_change",
-      "rationale": "Same approved lossless source-fact/typed correction contract. Two-sided parity repair; no stricter provider grammar or omitted source-envelope authentication. STOP for NEW R7."
+      "rationale": "Same approved lossless source-fact/typed correction contract. Two-sided parity repair; no stricter provider grammar or omitted source-envelope authentication. STOP for NEW R7. Current-only replacement selectors are recorded with original discovery entries in evidence/current-geography-closure-whole; original historical observations remain at their original boundary."
     },
     {
       "id": "D-publisher-content-integration-r1",
@@ -5669,8 +5664,8 @@
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_rl08_p1_s01_positive_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p1_s01_negative_current",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p1_s01_positive_current",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p3_c15_negative",
-        "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc01_p3_c16_positive",
+        "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_source_integrity_and_typed_refusal",
+        "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_reviewed_typed_catalog_and_unknown_position",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc02_p2_c03_positive",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc03_p1_c13_negative",
         "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc03_p1_c14_positive",
@@ -5805,7 +5800,7 @@
         }
       ],
       "disposition": "current_change",
-      "rationale": "Explicit user decision changes active acceptance scope; implementation and actual corpus/native evidence remain separately pending."
+      "rationale": "Explicit user decision changes active acceptance scope; implementation and actual corpus/native evidence remain separately pending. Current-only replacement selectors are recorded with original discovery entries in evidence/current-geography-closure-whole; original historical observations remain at their original boundary."
     },
     {
       "id": "CURRENT-ONLY-FINITE-WHOLE-R1",

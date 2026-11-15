@@ -128,11 +128,11 @@ class GlobalContentTest(unittest.TestCase):
         with patch('tools.spacefox.graphics.build_pack',side_effect=observe):
             validate_artwork_sources(ROOT,self.catalog)
         self.assertEqual(seen,set(self.catalog['dictionaries']['assets']))
-        self.assertEqual(len(seen),562)
+        self.assertEqual(len(seen),683)
         report=coverage_report(self.catalog)
-        self.assertEqual((report['configurations']['mappedArt'],len(report['configurations']['missingArtIds'])),(108,63))
+        self.assertEqual((report['configurations']['mappedArt'],len(report['configurations']['missingArtIds'])),(203,6))
         self.assertEqual(report['organizations']['mappedKnownBadges'],349)
-        self.assertEqual(len(report['origins']['organizations']['missingOriginIds']),336)
+        self.assertEqual(len(report['origins']['organizations']['missingOriginIds']),299)
         self.assertIsNone(self.catalog['dictionaries']['organizations']['ll2:organization:183']['references']['badge'])
 
     def test_current_full_pack_and_atomic_invalid_asset_negative(self):
