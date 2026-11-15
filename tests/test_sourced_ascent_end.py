@@ -31,7 +31,7 @@ class SourcedAscentEndTest(unittest.TestCase):
         original=attach(self.first,(self.fact,)); initial=state(original,self.second)
         self.assertEqual(original.source_validated_utc,self.first.source_validated_utc)
         with self.assertRaises(TypeError):original.ascent_end['end_utc']=NOW+9999
-        for offset, expected in ((0,VULCAN),(900,VULCAN),(901,VULCAN),(1800,VULCAN),(1801,STARSHIP)):
+        for offset, expected in ((0,VULCAN),(900,VULCAN),(901,VULCAN),(1799,VULCAN),(1800,STARSHIP),(1801,STARSHIP)):
             self.assertEqual(select_next(advance_schedule(initial,NOW+offset)).entry.record.launch_id.value,expected)
         fallback=state(self.first,self.second)
         self.assertEqual(select_next(advance_schedule(fallback,NOW+901)).entry.record.launch_id.value,STARSHIP)
@@ -64,7 +64,7 @@ class SourcedAscentEndTest(unittest.TestCase):
         for source_id in (6,9):
             raw=deepcopy(basic.BasicLaunchLogicTest.rows[VULCAN]);raw['status']['id']=source_id
             started=replace(normalize_launch(raw,NOW),timing=self.first.timing)
-            self.assertEqual(select_next(advance_schedule(state(attach(started,(self.fact,)),self.second),NOW+1800)).entry.record.launch_id.value,VULCAN)
+            self.assertEqual(select_next(advance_schedule(state(attach(started,(self.fact,)),self.second),NOW+1799)).entry.record.launch_id.value,VULCAN)
 
     def test_current_wire_projection_and_bounds(self):
         from tools.spacefox.wire import project_schedule, validate_current_feed

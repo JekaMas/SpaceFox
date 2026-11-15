@@ -42,6 +42,51 @@ def _validate_source_position(position):
             raise ValueError('malformed source position decimal') from error
 
 
+def project_launch(entry):
+    """One validated accepted record in the current feed's launch grammar."""
+    record = entry.record
+    launch = record.content()
+    launch.update(source_validated_utc=record.source_validated_utc,
+                  country_code=record.country_code, site_location_name=record.site_location_name,
+                  rescheduled=entry.rescheduled, stale=entry.stale)
+    for field in ('launch_id', 'configuration_id', 'operator_id', 'site_id', 'country_id'):
+        launch[field] = identity_text(getattr(record, field))
+    return launch
+
+
+def upcoming_entries(state, now, policy=DEFAULT_POLICY, limit=2):
+    """Bounded, ordered accepted records following the selected record."""
+    state = advance_schedule(state, now, policy)
+    entries = list(state.entries)
+    first = select_next(state).entry
+    if first is None:
+        return []
+    entries.remove(first)
+    result = []
+    while entries and len(result) < limit:
+        candidate = select_next(ScheduleState(tuple(entries), now)).entry
+        if candidate is None:
+            break
+        result.append(candidate)
+        entries.remove(candidate)
+    return result
+
+
+def terminal_updates(state, now):
+    """Explicit terminal facts for records that could still be cached."""
+    from .schedule import LaunchStatus
+    result = []
+    for entry in state.entries:
+        record = entry.record
+        target = record.timing.countdown_utc
+        deadline = None if target is None else max(target+900, record.ascent_end['end_utc'] if record.ascent_end else target+900)
+        if record.status in (LaunchStatus.CANCELLED, LaunchStatus.COMPLETED) and (deadline is None or now < deadline):
+            result.append({'terminal': {'launch_id': identity_text(record.launch_id), 'status': record.status.value,
+                'source_validated_utc': record.source_validated_utc, 'source_updated_utc': record.source_updated_utc,
+                'source_updated_subsecond': record.source_updated_subsecond}})
+    return result
+
+
 def project_schedule(state, catalog, now, *, publisher, policy=DEFAULT_POLICY, traversal=None):
     """Project the selected schedule facts for the current artifact builder."""
     if type(state) is not ScheduleState:
@@ -52,12 +97,7 @@ def project_schedule(state, catalog, now, *, publisher, policy=DEFAULT_POLICY, t
     record = None if selected.entry is None else selected.entry.record
     launch = None
     if record is not None:
-        launch = record.content()
-        launch.update(source_validated_utc=record.source_validated_utc,
-                      country_code=record.country_code, site_location_name=record.site_location_name,
-                      rescheduled=selected.entry.rescheduled, stale=selected.entry.stale)
-        for field in ('launch_id', 'configuration_id', 'operator_id', 'site_id', 'country_id'):
-            launch[field] = identity_text(getattr(record, field))
+        launch = project_launch(selected.entry)
     _validate_publisher(publisher, now)
     return {'publisher':dict(publisher), 'catalogRevision':catalog['catalogVersion'],
             'launch':launch, 'timingState':selected.timing_state.value,
@@ -89,7 +129,7 @@ def validate_current_feed(raw, *, now=None):
     keys = {'schemaVersion','publisher','catalogRevision','catalogDigest','catalogPath','unresolvedCatalogIds',
             'launch','timingState','refreshPolicy','pollIntervalSeconds','sourceContentRevision','selection',
             'providerTraversal','visualSelection','catalogSourceDigest','dictionaryMode','rendererProfile','nativeTransfer'}
-    if (type(doc) is not dict or set(doc) != keys
+    if (type(doc) is not dict or set(doc) - {'upcoming'} != keys
             or type(doc['schemaVersion']) is not int or doc['schemaVersion'] != 3
             or doc['rendererProfile'] != 'SFR1M' or doc['dictionaryMode'] != 'immutable-catalog'):
         raise ValueError('unsupported feed schema/fields')
@@ -173,6 +213,60 @@ def validate_current_feed(raw, *, now=None):
             raise ValueError('selected launch is no longer upcoming')
         if (state is TimingState.NO_SCHEDULE or (normalized.timing.exact_utc is None) != (state is TimingState.UNCERTAIN)):
             raise ValueError('selected precision and timing state disagree')
+    if 'upcoming' in doc:
+        rows = doc['upcoming']
+        if type(rows) is not list or len(rows) > 128 or len(rows) + int(doc['launch'] is not None) > selection['acceptedRecords']:
+            raise ValueError('invalid bounded upcoming metadata')
+        identities = set() if doc['launch'] is None else {doc['launch']['launch_id']}
+        future_count = 0
+        for item in rows:
+            if type(item) is not dict:
+                raise ValueError('invalid upcoming row')
+            if set(item) == {'terminal'}:
+                terminal = item['terminal']
+                if (type(terminal) is not dict or set(terminal) != {'launch_id', 'status', 'source_validated_utc', 'source_updated_utc', 'source_updated_subsecond'}
+                        or terminal['status'] not in ('cancelled', 'completed')
+                        or type(terminal['source_validated_utc']) is not int or not -62135596800 <= terminal['source_validated_utc'] <= 253402300799
+                        or doc['publisher']['selectionValidatedUtc'] is None
+                        or now is not None and terminal['source_validated_utc'] > now
+                        or terminal['source_updated_utc'] is not None and (type(terminal['source_updated_utc']) is not int or not -62135596800 <= terminal['source_updated_utc'] <= terminal['source_validated_utc'])
+                        or type(terminal['source_updated_subsecond']) is not int or not 0 <= terminal['source_updated_subsecond'] <= 999999
+                        or terminal['source_updated_utc'] is None and terminal['source_updated_subsecond'] != 0):
+                    raise ValueError('invalid terminal update')
+                namespace, kind, token = terminal['launch_id'].split(':', 2)
+                StableId(IdKind(kind), namespace, token)
+                if kind != 'launch' or terminal['launch_id'] in identities:
+                    raise ValueError('duplicate terminal identity')
+                identities.add(terminal['launch_id'])
+                continue
+            if not {'sitePosition', 'siteSource'} <= item.keys():
+                raise ValueError('invalid upcoming row')
+            future_count += 1
+            if future_count > 2:
+                raise ValueError('too many upcoming launches')
+            _validate_source_position(item['sitePosition'])
+            if item['siteSource'] is not None:
+                validate_ref(item['siteSource'], prefix='sources', maximum=1048576)
+            if item['sitePosition'] is not None and item['siteSource'] is None:
+                raise ValueError('upcoming position lacks source')
+            # Reuse the full current-launch validator, including source status,
+            # identity, precision, ascent and validation-epoch checks.
+            single = dict(doc)
+            single.pop('upcoming')
+            single['launch'] = {k: v for k, v in item.items() if k not in ('sitePosition', 'siteSource')}
+            # Per-record observations can be newer than the traversal's
+            # minimum selection epoch, without changing that epoch.
+            source_epoch = item['source_validated_utc']
+            if doc['publisher']['selectionValidatedUtc'] is None or type(source_epoch) is not int:
+                raise ValueError('upcoming launch lacks publisher or record epoch')
+            single['publisher'] = dict(doc['publisher'], selectionValidatedUtc=max(doc['publisher']['selectionValidatedUtc'], source_epoch))
+            single['timingState'] = ('uncertain' if item['timing']['exact_utc'] is None else 'countdown')
+            single['selection'] = dict(selection, includedRecords=1)
+            validate_current_feed(encode_feed(single), now=now)
+            identity = item['launch_id']
+            if identity in identities:
+                raise ValueError('duplicate upcoming identity')
+            identities.add(identity)
     # No roundtrip can replace schema checks, but bytes must be canonical for the
     # immutable digest/manifest boundary (duplicate keys rejected before here).
     if encode_feed(doc) != raw:

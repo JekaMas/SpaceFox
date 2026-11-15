@@ -1,0 +1,30 @@
+EE
+======================================================================
+ERROR: test_retained_native_countdown_pair_positive (tests.test_current_timing_convergence.CurrentTimingConvergenceTest.test_retained_native_countdown_pair_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/tests/test_current_timing_convergence.py", line 80, in test_retained_native_countdown_pair_positive
+    data = historical_input(name, expected)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/tests/native_historical_binding.py", line 37, in historical_input
+    data = base64.b64decode(encoded.read_bytes(), validate=True)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/base64.py", line 85, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Only base64 data is allowed
+
+======================================================================
+ERROR: setUpClass (tests.test_current_data_convergence.CurrentDataConvergenceTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/tests/test_current_data_convergence.py", line 62, in setUpClass
+    data = historical_input(name, expected)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/tests/native_historical_binding.py", line 59, in historical_input
+    data = recorded_input(name, expected)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/tests/public_proof_inputs.py", line 39, in recorded_input
+    raise AssertionError('historical build input unavailable or changed: ' + source)
+AssertionError: historical build input unavailable or changed: watchface/source/NativeBridgeFeed.mc
+
+----------------------------------------------------------------------
+Ran 1 test in 0.023s
+
+FAILED (errors=2)

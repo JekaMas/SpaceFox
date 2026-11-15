@@ -261,6 +261,18 @@ def build_artifact(state, catalog, now, *, publisher, policy=None, traversal=Non
         catalog = view_for_schedule(catalog, eligibility, state, now, policy or DEFAULT_POLICY)['catalog']
     feed = deepcopy(old)
     feed.update(schemaVersion=3, rendererProfile=RENDERER)
+    from .wire import upcoming_entries, terminal_updates, project_launch, _source_position
+    from .schedule import DEFAULT_POLICY
+    upcoming = []
+    for entry in upcoming_entries(state, now, policy or DEFAULT_POLICY):
+        launch = project_launch(entry)
+        site_id = launch['site_id']
+        site = full_catalog['dictionaries']['sites'].get(site_id)
+        position = (None if site is None or site['facts'].get('positionMode', 'fixed-source') != 'fixed-source'
+                    else _source_position(site['position']))
+        source = None if site is None else _site_country_source(files, full_catalog, old['catalogSourceDigest'], site_id)
+        upcoming.append(dict(launch, sitePosition=position, siteSource=source))
+    feed['upcoming'] = upcoming + terminal_updates(state, now)
     origins = None; rocket = None
     if old['visualSelection'] is not None:
         original = loads_json(read_ref(old['visualSelection'], files))
@@ -373,6 +385,26 @@ def validate_artifact(files):
                     and row['position']==(row['sourcePosition'] if row['positionMode']=='fixed-source' else None), 'catalog site position')
     if feed['launch'] is None:
         require(not entries and not cat['unresolved'] and feed['visualSelection'] is None, 'empty selection catalog')
+    for item in feed.get('upcoming', []):
+        if 'terminal' in item:
+            continue
+        site_id = item['site_id']
+        ref = item['siteSource']
+        if ref is None:
+            require(item['sitePosition'] is None, 'upcoming unqualified point')
+        else:
+            record = source_read(files, ref)
+            require(record['type'] == 'site-country-source' and record['siteId'] == site_id
+                    and record['catalogSourceDigest'] == feed['catalogSourceDigest'], 'upcoming site source identity')
+            selected = deepcopy(record['catalogSelection'])
+            assets = selected['dictionaries'].pop('assets')
+            validate_catalog_selection(selected, assets, expected_version=feed['catalogRevision'])
+            site = selected['dictionaries']['sites'].get(site_id)
+            require(selected['roots'] == [site_id] and site is not None, 'upcoming source site')
+            from .wire import _source_position
+            expected = (None if site['facts'].get('positionMode', 'fixed-source') != 'fixed-source'
+                        else _source_position(site['position']))
+            require(item['sitePosition'] == expected, 'upcoming point differs from source site')
     first = None
     for selection_key, transfer_key, layout in (('visualSelection', 'nativeTransfer', LAYOUT),):
         if selection_key not in feed:

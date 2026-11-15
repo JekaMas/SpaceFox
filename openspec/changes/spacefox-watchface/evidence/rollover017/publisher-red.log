@@ -1,0 +1,29 @@
+test_deadline_and_reported_elapsed (tests.test_rollover017.RolloverPublisherTest.test_deadline_and_reported_elapsed) ... 
+  test_deadline_and_reported_elapsed (tests.test_rollover017.RolloverPublisherTest.test_deadline_and_reported_elapsed) (elapsed=900) ... FAIL
+test_missing_successor_does_not_select_expired (tests.test_rollover017.RolloverPublisherTest.test_missing_successor_does_not_select_expired) ... FAIL
+
+======================================================================
+FAIL: test_deadline_and_reported_elapsed (tests.test_rollover017.RolloverPublisherTest.test_deadline_and_reported_elapsed) (elapsed=900)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/tests/test_rollover017.py", line 29, in test_deadline_and_reported_elapsed
+    self.assertEqual(self.selected(NOW+elapsed)['launch_id'], 'll2:launch:'+expected)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a' != 'll2:launch:0f867f0c-5422-4d44-93b8-d7faaae7019b'
+- ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a
++ ll2:launch:0f867f0c-5422-4d44-93b8-d7faaae7019b
+
+
+======================================================================
+FAIL: test_missing_successor_does_not_select_expired (tests.test_rollover017.RolloverPublisherTest.test_missing_successor_does_not_select_expired)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/tests/test_rollover017.py", line 32, in test_missing_successor_does_not_select_expired
+    self.assertIsNone(self.selected(NOW+3594, state(self.current)))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'launch_id': 'll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a', 'configuration_id': 'll2:configuration:479', 'operator_id': 'll2:organization:124', 'site_id': 'll2:site:29', 'country_id': 'll2:country:2', 'configuration_name': 'Vulcan VC6L', 'operator_name': 'United Launch Alliance', 'mission_name': 'Amazon Leo (LV-01)', 'mission_purpose': 'Communications', 'timing': {'precision': 'exact', 'exact_utc': 1794576343, 'date_utc': None, 'window_start_utc': None, 'window_end_utc': None}, 'source_updated_utc': 1794472198, 'source_updated_iso': '2026-11-12T08:29:58Z', 'source_status_id': 1, 'source_status_name': 'Go for Launch', 'site_name': 'Space Launch Complex 41', 'country_name': 'United States of America', 'country_code': 'US', 'site_location_name': 'Cape Canaveral SFS, FL, USA', 'operator_abbrev': 'ULA', 'status': 'pending', 'source_validated_utc': 1794576343, 'rescheduled': False, 'stale': False} is not None
+
+----------------------------------------------------------------------
+Ran 2 tests in 2.814s
+
+FAILED (failures=2)

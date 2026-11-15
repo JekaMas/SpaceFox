@@ -220,6 +220,12 @@ def validate_snapshot_artifact(snapshot, files, *, refresh_policy, instance=None
     if (feed['launch'] != launch or feed['timingState'] != selected.timing_state.value
             or feed['selection']['acceptedRecords'] != len(source.entries)):
         raise StateError('artifact selected facts disagree with durable schedule')
+    if 'upcoming' in feed:
+        from .wire import upcoming_entries, terminal_updates, project_launch
+        expected_upcoming = [project_launch(entry) for entry in upcoming_entries(source, source.evaluated_at_utc, policy)]
+        if ([{k:v for k,v in row.items() if k not in ('sitePosition','siteSource')} for row in feed['upcoming'] if 'terminal' not in row] != expected_upcoming or
+                [row for row in feed['upcoming'] if 'terminal' in row] != terminal_updates(source, source.evaluated_at_utc)):
+            raise StateError('artifact upcoming facts disagree with durable schedule')
     return feed
 
 

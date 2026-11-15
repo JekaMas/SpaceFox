@@ -1,0 +1,20 @@
+------------------------------------------------------------------------------
+Executing test photoExactGreen...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - photoExactGreen() at /Users/jekamas/.codex/tmp/spacefox-rollover017-photo/Probe.mc:47 0x10004468 
+  - evaluate_test_entries_0_to_7() at /Users/jekamas/.codex/tmp/spacefox-rollover017-photo/gen/006-B4433-00/source/UnitTests.mcgen:69 0x10008342 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-rollover017-photo/gen/006-B4433-00/source/UnitTests.mcgen:84 0x1000843c 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+photoExactGreen                     ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

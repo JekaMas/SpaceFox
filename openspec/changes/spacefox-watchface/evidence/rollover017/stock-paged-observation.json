@@ -1,0 +1,16 @@
+{
+  "result": "READY",
+  "device": "fr165m",
+  "primary": "ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a",
+  "sourceScenario": "controlled eligible Vulcan/Cape with two captured future records, offline seeded after simulator startup",
+  "display": "Decoded Vulcan rocket with boosters, US flag, Cape point and T-01:48:18",
+  "readyHeapDisplay": "105.9/123.8 kB",
+  "peakHeapDisplay": "121.8 kB",
+  "peakObjects": 615,
+  "newResourceAllocationsLastOnUpdate": 0,
+  "residentUpcoming": [
+    {"launchId": "ll2:launch:76617033-4dc0-4448-b50c-e5b0d5a18539", "rocket": "Falcon 9 Block 5", "site": "US · Vandenberg SFB", "siteId": "ll2:site:16", "pointPresent": true},
+    {"launchId": "ll2:launch:0f867f0c-5422-4d44-93b8-d7faaae7019b", "rocket": "Starship V3", "site": "US · Starbase", "siteId": "ll2:site:235", "pointPresent": true}
+  ],
+  "boundary": "One uninstrumented stock simulator run with fixture and developer test key; SDK memory viewer, not physical-device, radio, universal heap or Store acceptance. Diagnostic compilation bypassed the unrelated current release admission."
+}

@@ -747,3 +747,25 @@ offline READY and affected native checks pass; all 5,616 release-source inputs
 match the passing isolated export. This closes the integration software unit,
 not physical or release disposition. Main PR merge, production signing/tag and
 original-card publication/readback follow without repeating valid behavior tests.
+
+### ROLLOVER017: expired launch remains at T+59:44
+
+Owner photo shows Vulcan/Cape at T+00:59:44 instead of advancing after the
+15-minute retention. Version is not shown. Reopen the selected launch lifecycle
+under existing tasks3.2,5.1/5.2,7.2/7.3; preserve a production-bound red, repair
+the state machine and related queue/cache/refresh path, test normal event
+sequences, independent verify/fix, then regular0.1.17 release/publication.
+Scope and acceptance: [plan](evidence/rollover017/PLAN.md). No new typography,
+locale or unrelated full-suite campaign. Status: NOT DONE.
+
+### ROLLOVER017 software closure accepted
+
+Root accepts author `139696e6` and fresh independent repair `3c54628d`, final
+native ID `2e6fc8c4`: [judgment](evidence/rollover017/ROOT-JUDGMENT.md) and
+[independent report](evidence/rollover017/INDEPENDENT.md). The exact T+59:44
+counterexample, preloaded successor/point/countdown, persisted queue and
+omission/restart near-window refresh are software GREEN. Native 8/8 and exact
+stock memory, exported admission and affected reader observations are retained
+at their stated boundaries. The single final main integration had no changes
+or conflicts. Signed regular release, hosted successor activation and original
+Garmin publication follow; physical updated execution remains unobserved.

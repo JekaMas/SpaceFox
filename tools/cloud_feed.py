@@ -74,7 +74,20 @@ def prepare_content(pub, client, now, catalog, *, root, clock=None):
         if FEED_PATH not in active['files']:
             raise CloudError('current-format active feed missing')
         previous=validate_feed(pub.store._blob(pub.head,path,8192))
-        if previous is None or previous['catalogSourceDigest'] != sha(canonical_bytes(catalog)) or 'feed.json.txt' not in active['files']:
+        from tools.spacefox.schedule import advance_schedule, select_next
+        from tools.spacefox.wire import upcoming_entries, terminal_updates, identity_text
+        current = advance_schedule(pub.schedule, now, pub.policy)
+        selected = select_next(current).entry
+        current_id = None if selected is None else identity_text(selected.record.launch_id)
+        prior_id = None if previous['launch'] is None else previous['launch']['launch_id']
+        next_ids = [identity_text(entry.record.launch_id) for entry in upcoming_entries(current, now, pub.policy)]
+        prior_next = [row['launch_id'] for row in previous.get('upcoming', []) if 'terminal' not in row]
+        prior_terminal = [row for row in previous.get('upcoming', []) if 'terminal' in row]
+        # Reproject accepted facts at a local deadline; do not spend a provider
+        # request or renew the source validation epoch merely to refill the queue.
+        selection_changed = (prior_id != current_id or prior_next != next_ids or
+                             prior_terminal != terminal_updates(current, now))
+        if previous is None or 'upcoming' not in previous or selection_changed or previous['catalogSourceDigest'] != sha(canonical_bytes(catalog)) or 'feed.json.txt' not in active['files']:
             publisher=pub.publisher_envelope(now)
             traversal=previous['providerTraversal'] if previous is not None else None
             files,digest=builder(pub.schedule,catalog,now,publisher=publisher,policy=pub.policy,traversal=traversal)

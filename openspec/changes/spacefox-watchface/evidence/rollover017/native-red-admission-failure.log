@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/tools/build_watchface.py", line 140, in validate_manifest
+    qualified = software_locales(root, catalog)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/tools/native_language_policy.py", line 94, in software_locales
+    return validate(root,catalog)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/tools/native_integrated016_qualification.py", line 131, in validate
+    _read(root, item)
+    ~~~~~^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/tools/native_integrated016_qualification.py", line 30, in _read
+    raise ValueError('integrated016 evidence changed: ' + str(name))
+ValueError: integrated016 evidence changed: tools/native_integrated016_qualification.py
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/tmp/spacefox-rollover-red-build.py", line 22, in <module>
+    r=build_probe(Path('/Users/jekamas/.codex/tmp/spacefox-rollover017-red/native'),source,group='rollover-red',tests=True)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/tools/native_full_visual_runtime.py", line 21, in build_probe
+    out=output.resolve();out.mkdir(parents=True,exist_ok=True);c=discover();validate_api_policy(ROOT,c['lock']);tree=validate_manifest(ROOT,c['lock']);app=tree.getroot().find('iq:application',NS);app.set('id',GROUPS[group][0]);app.set('entry','SfrRuntimeApp');app.set('name','@Strings.SfrProbeName');
+                                                                                                                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/tools/build_watchface.py", line 143, in validate_manifest
+    raise BuildBlocked("native language admission invalid: " + str(error)) from error
+tools.build_watchface.BuildBlocked: native language admission invalid: integrated016 evidence changed: tools/native_integrated016_qualification.py

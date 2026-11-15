@@ -1,0 +1,18 @@
+E.
+======================================================================
+ERROR: test_elapsed_positive (tests.test_basic_launch_logic.BasicLaunchLogicTest.test_elapsed_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/tests/test_basic_launch_logic.py", line 403, in test_elapsed_positive
+    self.assertIn("en", software_locales(ROOT))
+                        ~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/tools/native_language_policy.py", line 94, in software_locales
+    return validate(root,catalog)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/launch-rollover-017-20261115/tools/native_rollover017_qualification.py", line 57, in validate
+    raise ValueError('published parent source differs: ' + name)
+ValueError: published parent source differs: release/native-admission-inputs.json
+
+----------------------------------------------------------------------
+Ran 2 tests in 4.571s
+
+FAILED (errors=1)

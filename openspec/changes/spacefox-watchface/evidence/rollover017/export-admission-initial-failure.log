@@ -1,0 +1,3 @@
+Initial clean checkpoint 72df1927f5d2317e959c1ff48d496050276e699b; source_state exported 5645 tracked inputs. Reconstructing the original published 016 inventory from this export failed:
+ValueError: published parent source differs: release/native-admission-inputs.json
+Cause: the first 017 delta archive was created before its manifest was extended. Rebuilt the delta from the exact published receipt after the manifest update; no 016 parent input was repinned.

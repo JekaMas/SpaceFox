@@ -1,0 +1,47 @@
+------------------------------------------------------------------------------
+Executing test queueSequence...
+DEBUG (01:54): typed dispositions verified={omission:applied=>2, empty:applied=>1, restart:observed_no_mutation=>2, post_terminal:applied=>1, failed_accept:observed_no_mutation=>1, terminal:applied=>1, stale:observed_no_mutation=>1} queueBytes=746 writes=85
+PASS
+------------------------------------------------------------------------------
+Executing test successorNearWake...
+DEBUG (01:54): successor near window advanced wake by 3500s under unchanged policy; old plan remains accepted
+PASS
+------------------------------------------------------------------------------
+Executing test forwardJumpAndPending...
+DEBUG (01:54): Vulcan -> Falcon/Vandenberg -> Starship/Starbase; old asset job cancelled; forward jump and exhaustion; tick IO=0
+PASS
+------------------------------------------------------------------------------
+Executing test sourcedAscentWindowAndReschedule...
+DEBUG (01:54): later source ascent extends; launch window does not; newer source-epoch successor reschedule updates both modes
+PASS
+------------------------------------------------------------------------------
+Executing test realStorageQueue...
+DEBUG (01:54): actual Application.Storage two omissions+reopen preserved queue; queue canonical bytes=1463 store writes=36
+PASS
+------------------------------------------------------------------------------
+Executing test longIdentityCache...
+DEBUG (01:54): accepted 200-character source identity survived queue admission and reopen
+PASS
+------------------------------------------------------------------------------
+Executing test savedQueueWake...
+DEBUG (01:54): saved successor scheduled after omissions empty and restart target=1794583543
+PASS
+------------------------------------------------------------------------------
+Executing test photoExactGreen...
+DEBUG (01:54): PHOTO_3584 Starship Starbase active=T- 00:40:16 low=T- 00:41
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+queueSequence                       PASS
+successorNearWake                   PASS
+forwardJumpAndPending               PASS
+sourcedAscentWindowAndReschedule    PASS
+realStorageQueue                    PASS
+longIdentityCache                   PASS
+savedQueueWake                      PASS
+photoExactGreen                     PASS
+Ran 8 tests
+
+PASSED (passed=8, failed=0, errors=0)

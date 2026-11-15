@@ -43,9 +43,10 @@ def check_native_pair(log):
 class CurrentTimingConvergenceTest(unittest.TestCase):
     def test_retention_and_postponement_positive(self):
         first, second, state = selected_state()
-        for offset in (0, 59, 899, 900):
+        for offset in (0, 59, 899):
             self.assertEqual(select_next(advance_schedule(state, NOW + offset)).entry.record.launch_id, first.launch_id)
-        self.assertEqual(select_next(advance_schedule(state, NOW + 901)).entry.record.launch_id, second.launch_id)
+        for offset in (900, 901):
+            self.assertEqual(select_next(advance_schedule(state, NOW + offset)).entry.record.launch_id, second.launch_id)
         postponed = replace(first, timing=Timing(TimePrecision.EXACT, exact_utc=NOW + 3600),
                             source_validated_utc=NOW + 1, source_updated_utc=NOW + 1, source_updated_iso=None)
         updated = merge_schedule(state, (postponed,), NOW + 1)
@@ -60,7 +61,7 @@ class CurrentTimingConvergenceTest(unittest.TestCase):
             mixed = merge_schedule(ScheduleState(), (terminal, second), NOW)
             self.assertEqual(select_next(mixed).entry.record.launch_id, second.launch_id)
         lone = merge_schedule(ScheduleState(), (first,), NOW)
-        self.assertEqual(select_next(advance_schedule(lone, NOW + 7200)).entry.record.status, LaunchStatus.PENDING)
+        self.assertIsNone(select_next(advance_schedule(lone, NOW + 7200)).entry)
 
     def test_retained_native_countdown_pair_positive(self):
         receipt_bytes = (DIRECTED / 'receipt.json').read_bytes()

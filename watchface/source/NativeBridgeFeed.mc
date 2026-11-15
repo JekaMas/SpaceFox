@@ -31,7 +31,7 @@ class NativeBridgeFeed extends NativeFeed {
 
         var version=d["schemaVersion"];if(!integer(version)||version!=3){fail();}
         var required=["schemaVersion","catalogRevision","catalogDigest","catalogPath","unresolvedCatalogIds","launch","timingState","refreshPolicy","pollIntervalSeconds","sourceContentRevision","selection","providerTraversal","publisher","visualSelection","catalogSourceDigest","dictionaryMode"];
-        required.add("rendererProfile");required.add("nativeTransfer");shape(d,required,[]);
+        required.add("rendererProfile");required.add("nativeTransfer");shape(d,required,["upcoming"]);
         if(!text(d["catalogRevision"],false)||d["catalogRevision"].length()==0||!hex(d["catalogDigest"])||!hex(d["sourceContentRevision"])||!hex(d["catalogSourceDigest"])||!same(d["dictionaryMode"],"immutable-catalog")||!same(d["catalogPath"],"wire3/catalogs/"+d["catalogDigest"]+".json")){fail();}
         if(d["visualSelection"]!=null){ref(d["visualSelection"],"descriptors");}if(!same(d["rendererProfile"],"SFR1M")){fail();}ref(d["nativeTransfer"],"descriptors");
         var catalog=catalogData;shape(catalog,["schemaVersion","catalogVersion","projection","entries","unresolved","visualSelection"],[]);
