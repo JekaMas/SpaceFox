@@ -1406,7 +1406,7 @@
         "watchface/source/VisualCatalog.mc",
         "watchface/toolchain-lock.json"
       ],
-      "planning_status": "Current-only contract; affected old-format test bindings retired, current bindings remain planned until observed."
+      "planning_status": "Current bounded SDK and producer observations implemented; physical and OS limits remain separate."
     },
     {
       "id": "WF01.P1",
@@ -8555,24 +8555,30 @@
         "watchface/toolchain-lock.json",
         "tests/test_current_format_acceptance.py",
         "tools/spacefox/native_motion.py",
-        "corpus/real-schedule-20261113/**"
+        "corpus/real-schedule-20261113/**",
+        "tests/test_sfr1m_current_receipts.py",
+        "tests/test_sfr1m_current_animation.py",
+        "tests/test_sfr1m_offline_current.py",
+        "openspec/changes/spacefox-watchface/evidence/sfr1m-current/raw/**",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/p3/**"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc18_p1_s01_positive",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s01_positive",
+      "command_id": "sfr1m-current-sdk",
+      "state": "implemented",
+      "source_path": "tests/test_sfr1m_current_receipts.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
-        "owner_replaced": "Physical FR165 firmware/hardware when running the actual Monkey C unit/simulator harness",
-        "allowed_proof": "Only actual compiled Monkey C or simulator behavior and measured simulator limits once those tools/tests exist.",
+        "owner_replaced": "Actual HTTP response, clock and natural firmware scheduling at the controlled SDK callback seam; physical watch and phone are not present.",
+        "allowed_proof": "Actual compiled native scene, bounded animation and immutable acceptance/refusal, current SDK Storage and no-push simulator reopen; source-bound P3 direct callback and sampled ordinary heap have separate exact scopes.",
         "forbidden_claims": [
-          "Physical FR165 RAM/storage/battery/glyph qualification",
-          "Real paired-phone background delivery",
-          "Garmin Store approval or approved binary install"
+          "Natural OS callback or live HTTPS",
+          "Physical power loss or device RAM peaks",
+          "Paired phone or Store approval",
+          "Allocator transient or GFX peak"
         ]
       },
-      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; exact native tests/compiles have not yet been implemented or executed. Physical-device proof remains absent.",
-      "planning_note": "Current binding planned; retired predecessor evidence remains historical only. Current specification binding only; remains unexecuted and confers no new acceptance."
+      "source_sha256": "2cc4b4f9fbfcd3854da0d78fdd9a8e923233d720353df0f616b1928f69729cea",
+      "implementation_note": "Source-bound current SDK observations and producer/literal pixel test; controlled direct callbacks and SDK Storage, with simulator restart and sampled memory as recorded. Natural OS, physical peaks and phone remain separate."
     },
     {
       "id": "VC18.P1.S01.NEGATIVE.CURRENT",
@@ -8602,24 +8608,30 @@
         "watchface/toolchain-lock.json",
         "tests/test_current_format_acceptance.py",
         "tools/spacefox/native_motion.py",
-        "corpus/real-schedule-20261113/**"
+        "corpus/real-schedule-20261113/**",
+        "tests/test_sfr1m_current_receipts.py",
+        "tests/test_sfr1m_current_animation.py",
+        "tests/test_sfr1m_offline_current.py",
+        "openspec/changes/spacefox-watchface/evidence/sfr1m-current/raw/**",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/p3/**"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc18_p1_s01_negative",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s01_negative",
+      "command_id": "sfr1m-current-sdk",
+      "state": "implemented",
+      "source_path": "tests/test_sfr1m_current_receipts.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
-        "owner_replaced": "Physical FR165 firmware/hardware when running the actual Monkey C unit/simulator harness",
-        "allowed_proof": "Only actual compiled Monkey C or simulator behavior and measured simulator limits once those tools/tests exist.",
+        "owner_replaced": "Actual HTTP response, clock and natural firmware scheduling at the controlled SDK callback seam; physical watch and phone are not present.",
+        "allowed_proof": "Actual compiled native scene, bounded animation and immutable acceptance/refusal, current SDK Storage and no-push simulator reopen; source-bound P3 direct callback and sampled ordinary heap have separate exact scopes.",
         "forbidden_claims": [
-          "Physical FR165 RAM/storage/battery/glyph qualification",
-          "Real paired-phone background delivery",
-          "Garmin Store approval or approved binary install"
+          "Natural OS callback or live HTTPS",
+          "Physical power loss or device RAM peaks",
+          "Paired phone or Store approval",
+          "Allocator transient or GFX peak"
         ]
       },
-      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; exact native tests/compiles have not yet been implemented or executed. Physical-device proof remains absent.",
-      "planning_note": "Current binding planned; retired predecessor evidence remains historical only. Current specification binding only; remains unexecuted and confers no new acceptance."
+      "source_sha256": "2cc4b4f9fbfcd3854da0d78fdd9a8e923233d720353df0f616b1928f69729cea",
+      "implementation_note": "Source-bound current SDK observations and producer/literal pixel test; controlled direct callbacks and SDK Storage, with simulator restart and sampled memory as recorded. Natural OS, physical peaks and phone remain separate."
     },
     {
       "id": "VC18.P1.S02.POSITIVE.CURRENT",
@@ -8649,24 +8661,30 @@
         "watchface/toolchain-lock.json",
         "tests/test_current_format_acceptance.py",
         "tools/spacefox/native_motion.py",
-        "corpus/real-schedule-20261113/**"
+        "corpus/real-schedule-20261113/**",
+        "tests/test_sfr1m_current_receipts.py",
+        "tests/test_sfr1m_current_animation.py",
+        "tests/test_sfr1m_offline_current.py",
+        "openspec/changes/spacefox-watchface/evidence/sfr1m-current/raw/**",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/p3/**"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc18_p1_s02_positive",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s02_positive",
+      "command_id": "sfr1m-current-sdk",
+      "state": "implemented",
+      "source_path": "tests/test_sfr1m_current_receipts.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
-        "owner_replaced": "Physical FR165 firmware/hardware when running the actual Monkey C unit/simulator harness",
-        "allowed_proof": "Only actual compiled Monkey C or simulator behavior and measured simulator limits once those tools/tests exist.",
+        "owner_replaced": "Actual HTTP response, clock and natural firmware scheduling at the controlled SDK callback seam; physical watch and phone are not present.",
+        "allowed_proof": "Actual compiled native scene, bounded animation and immutable acceptance/refusal, current SDK Storage and no-push simulator reopen; source-bound P3 direct callback and sampled ordinary heap have separate exact scopes.",
         "forbidden_claims": [
-          "Physical FR165 RAM/storage/battery/glyph qualification",
-          "Real paired-phone background delivery",
-          "Garmin Store approval or approved binary install"
+          "Natural OS callback or live HTTPS",
+          "Physical power loss or device RAM peaks",
+          "Paired phone or Store approval",
+          "Allocator transient or GFX peak"
         ]
       },
-      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; exact native tests/compiles have not yet been implemented or executed. Physical-device proof remains absent.",
-      "planning_note": "Current binding planned; retired predecessor evidence remains historical only."
+      "source_sha256": "2cc4b4f9fbfcd3854da0d78fdd9a8e923233d720353df0f616b1928f69729cea",
+      "implementation_note": "Source-bound current SDK observations and producer/literal pixel test; controlled direct callbacks and SDK Storage, with simulator restart and sampled memory as recorded. Natural OS, physical peaks and phone remain separate."
     },
     {
       "id": "VC18.P1.S02.NEGATIVE.CURRENT",
@@ -8696,24 +8714,30 @@
         "watchface/toolchain-lock.json",
         "tests/test_current_format_acceptance.py",
         "tools/spacefox/native_motion.py",
-        "corpus/real-schedule-20261113/**"
+        "corpus/real-schedule-20261113/**",
+        "tests/test_sfr1m_current_receipts.py",
+        "tests/test_sfr1m_current_animation.py",
+        "tests/test_sfr1m_offline_current.py",
+        "openspec/changes/spacefox-watchface/evidence/sfr1m-current/raw/**",
+        "openspec/changes/spacefox-watchface/evidence/native-feed-bounds/p3/**"
       ],
-      "test_id": "unittest::tests.test_current_format_acceptance.CurrentFormatAcceptanceTest.test_vc18_p1_s02_negative",
-      "command_id": "current-format-acceptance-planned",
-      "state": "planned",
-      "source_path": "tests/test_current_format_acceptance.py",
+      "test_id": "unittest::tests.test_sfr1m_current_receipts.CurrentSfr1mReceipts.test_s02_negative",
+      "command_id": "sfr1m-current-sdk",
+      "state": "implemented",
+      "source_path": "tests/test_sfr1m_current_receipts.py",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
-        "owner_replaced": "Physical FR165 firmware/hardware when running the actual Monkey C unit/simulator harness",
-        "allowed_proof": "Only actual compiled Monkey C or simulator behavior and measured simulator limits once those tools/tests exist.",
+        "owner_replaced": "Actual HTTP response, clock and natural firmware scheduling at the controlled SDK callback seam; physical watch and phone are not present.",
+        "allowed_proof": "Actual compiled native scene, bounded animation and immutable acceptance/refusal, current SDK Storage and no-push simulator reopen; source-bound P3 direct callback and sampled ordinary heap have separate exact scopes.",
         "forbidden_claims": [
-          "Physical FR165 RAM/storage/battery/glyph qualification",
-          "Real paired-phone background delivery",
-          "Garmin Store approval or approved binary install"
+          "Natural OS callback or live HTTPS",
+          "Physical power loss or device RAM peaks",
+          "Paired phone or Store approval",
+          "Allocator transient or GFX peak"
         ]
       },
-      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; exact native tests/compiles have not yet been implemented or executed. Physical-device proof remains absent.",
-      "planning_note": "Current binding planned; retired predecessor evidence remains historical only."
+      "source_sha256": "2cc4b4f9fbfcd3854da0d78fdd9a8e923233d720353df0f616b1928f69729cea",
+      "implementation_note": "Source-bound current SDK observations and producer/literal pixel test; controlled direct callbacks and SDK Storage, with simulator restart and sampled memory as recorded. Natural OS, physical peaks and phone remain separate."
     },
     {
       "id": "WF01.P1.S01.POSITIVE",
@@ -35335,6 +35359,23 @@
       "timeout_seconds": 300,
       "authority": "local",
       "notes": "Validates exact compiler, probe, current checkout source and named SDK outcomes; does not launch simulator. Ordinary OS and physical P2 remain separate."
+    },
+    {
+      "id": "sfr1m-current-sdk",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_sfr1m_current_receipts",
+        "tests.test_sfr1m_current_animation"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "notes": "Runs source-bound receipt checks and a real captured-record producer/literal pixel control; does not launch SDK. The SDK observations and substitutions retain their individual boundaries."
     }
   ]
 }
