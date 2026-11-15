@@ -6,7 +6,7 @@ import Toybox.WatchUi;
 
 (:test,:typecheck(false)) function currentMenuSettings(logger) {
     var keys=SettingsMenu.keys();
-    Test.assertEqual(keys.size(),12);Test.assertEqual(keys[0],"Language");Test.assertEqual(keys[11],"FeedBaseUrl");
+    Test.assertEqual(keys.size(),13);Test.assertEqual(keys[0],"Language");Test.assertEqual(keys[11],"FeedBaseUrl");
     Test.assertEqual(Application.Properties.getValue("FeedBaseUrl"),"https://jekamas.github.io/SpaceFox");
     Test.assertEqual(SettingsMenu.labels(0).size(),6);Test.assertEqual(SettingsMenu.labels(1).size(),6);
     var app=new SpaceFoxApp();app.view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));

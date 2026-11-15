@@ -1,0 +1,60 @@
+------------------------------------------------------------------------------
+Executing test settingsPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test cadencePositive...
+PASS
+------------------------------------------------------------------------------
+Executing test cadenceNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test quietPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test quietNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test identityPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test identityNegative...
+PASS
+------------------------------------------------------------------------------
+Executing test schedulerPositive...
+PASS
+------------------------------------------------------------------------------
+Executing test schedulerNegative...
+
+Error: Unhandled Exception
+Exception: post
+Stack: 
+  - post() at /source/watchface/reminder-tests/ReminderTests.mc:22 0x1000a9eb 
+  - wakeWith() at /source/watchface/source/LaunchReminder.mc:77 0x10002c7d 
+  - schedulerNegative() at /source/watchface/reminder-tests/ReminderTests.mc:62 0x10004fd1 
+  - evaluate_test_entries_0_to_11() at /task/fulltest/gen/006-B4432-00/source/UnitTests.mcgen:77 0x1000878a 
+  - runTest() at /task/fulltest/gen/006-B4432-00/source/UnitTests.mcgen:96 0x100088ee 
+PASS
+------------------------------------------------------------------------------
+Executing test equivalencePositive...
+PASS
+------------------------------------------------------------------------------
+Executing test equivalenceNegative...
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+settingsPositive                    PASS
+cadencePositive                     PASS
+cadenceNegative                     PASS
+quietPositive                       PASS
+quietNegative                       PASS
+identityPositive                    PASS
+identityNegative                    PASS
+schedulerPositive                   PASS
+schedulerNegative                   PASS
+equivalencePositive                 PASS
+equivalenceNegative                 PASS
+Ran 11 tests
+
+PASSED (passed=11, failed=0, errors=0)

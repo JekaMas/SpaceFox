@@ -76,10 +76,17 @@ def source_state(root: Path) -> dict:
     require(isinstance(additional, list) and len(additional) == len(set(additional)),
             "invalid native admission input manifest")
     for name in additional:
-        require(isinstance(name, str) and name.startswith("openspec/changes/spacefox-watchface/evidence/")
+        require(isinstance(name, str) and name.startswith(("openspec/changes/spacefox-watchface/evidence/",
+                                                       "openspec/changes/add-launch-reminders/evidence/"))
                 and ".." not in PurePosixPath(name).parts and name in paths,
                 "unsafe or untracked native admission input")
         admission.add(name)
+    if proof is not None and "reminder015Proof" in proof:
+        admission.update({"openspec/changes/add-launch-reminders/proposal.md",
+                          "openspec/changes/add-launch-reminders/design.md",
+                          "openspec/changes/add-launch-reminders/tasks.md",
+                          "openspec/changes/add-launch-reminders/specs/launch-reminders/spec.md",
+                          "docs/LAUNCH_REMINDERS.md"})
     if proof is not None:
         for name in (proof["corpusPath"], proof["receiptPath"]):
             require(isinstance(name, str) and name and not PurePosixPath(name).is_absolute() and

@@ -1,0 +1,14 @@
+BG_PROBE_REGISTERED
+Background: BG_PROBE_COMPARE same=true usedBefore=33080 usedAfter=34648
+Background: BG_PROBE_SUPPRESSED consumed=true
+Background: BG_PROBE_NOTIFICATION_RETURNED slot=0
+Background: BG_PROBE_THROW_INJECTED
+
+Error: Unhandled Exception
+Exception: controlled notification failure
+Stack: 
+  - sendThrow() at /task/bgprobe/BackgroundProbe.mc:22 0x10000a11 
+  - wakeWith() at /source/watchface/source/LaunchReminder.mc:104 0x100046a4 
+  - onTemporalEvent() at /task/bgprobe/BackgroundProbe.mc:27 0x10000c7c 
+Background: BG_PROBE_EXCEPTION_CONSUMED
+Background: BG_PROBE_COMPLETE

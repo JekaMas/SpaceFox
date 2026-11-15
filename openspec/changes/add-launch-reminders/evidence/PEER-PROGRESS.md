@@ -1,0 +1,7 @@
+# Peer review checkpoint
+
+The reviewer uses isolated private and public worktrees rooted at candidate commits a2077c3c and 172f391b. Source review found A→B→A slot loss and nominal targets outside supplied window bounds; the peer repaired those and checks callback-time quiet state. The fixed SDK table is 13/13 with raw exit 1 accepted by the existing strict parser; the failed first peer run is retained. A new SDK process-reopen probe observed the bounded storage row persisted and suppressed a duplicate, with `push=false`. Source-admission, clean graph execution, candidate rebuilding and independent artifact handoff remain in progress. No physical, phone or Store evidence is claimed.
+
+A later suspected compact-cache reopen bug was disproved by actual-owner testing: foreground `NativeCache.readCommit` fully reparses the durable feed. The in-flight `04bc4004` build was stopped (exit 130) while resolving that hypothesis. The real cache lifecycle regression now passes its stable SDK table; source-admission and clean graph checks precede the next export.
+
+The frozen replacement candidate, isolated archive admission and the bounded independent result are recorded in [PEER-FINAL](PEER-FINAL.md). Publication and physical/Store acceptance remain separate.
