@@ -27,6 +27,80 @@ def digest(data):
     return hashlib.sha256(data).hexdigest()
 
 
+
+# Reconstruct only the inspected Settings rejection-row delta before applying
+# historical UI receipts; all other bytes retain their original strict pins.
+MENU_DELTA = b'''        // Rejected input never becomes accepted data. Explain a useful recovery
+        // path in settings without adding a persistent home-screen timestamp.
+        if(app.feed!=null&&app.feed.failure.equals("update-rejected")){
+            var help=SettingsMenuText.rejected(locale());
+            menu.addItem(new WatchUi.MenuItem(help[0],help[1],:updateRejected,null));
+        }
+'''
+TEXT_DELTA = ''' function rejected(locale) {
+  if(locale.equals("ru")){return ["Данные отклонены", "Проверьте URL или обновите SpaceFox"];}
+  if(locale.equals("de")){return ["Daten abgelehnt", "URL prüfen oder SpaceFox aktualisieren"];}
+  if(locale.equals("fr")){return ["Données refusées", "Vérifiez l’URL ou mettez SpaceFox à jour"];}
+  if(locale.equals("es")){return ["Datos rechazados", "Compruebe la URL o actualice SpaceFox"];}
+  return ["Feed rejected", "Check URL or update SpaceFox"];
+ }
+'''.encode()
+REFRESH_DELTA = b'''    function refreshRejection(menu) {
+        var index=menu.findItemById(:updateRejected);
+        if(index>=0){var help=SettingsMenuText.rejected(locale());var item=menu.getItem(index);item.setLabel(help[0]);item.setSubLabel(help[1]);}
+    }
+'''
+REFRESH_CALL = b'SettingsMenu.refreshRejection(rootMenu);'
+
+
+def historical_owner(root, name):
+    data = (root/name).read_bytes()
+    delta = {'watchface/source/SettingsMenu.mc': MENU_DELTA,
+             'watchface/source/SettingsMenuText.mc': TEXT_DELTA}.get(name)
+    if delta is not None:
+        if data.count(delta) != 1:
+            raise ValueError('current settings repair delta changed: '+name)
+        data = data.replace(delta, b'', 1)
+    if name == 'watchface/source/SettingsMenu.mc':
+        if data.count(REFRESH_DELTA) != 1 or data.count(REFRESH_CALL) != 1:
+            raise ValueError('current settings language refresh delta changed: '+name)
+        data = data.replace(REFRESH_DELTA, b'', 1).replace(REFRESH_CALL, b'', 1)
+    return data
+
+
+def owner_digest(root, name):
+    return digest(historical_owner(root, name))
+
+
+def verify_rejection_menu(root):
+    base = root/'openspec/changes/spacefox-watchface/evidence/release-update-native'
+    pins = {'build.json': '4b9de8393ae22dbb02bd13f3a093906a206d272b38c372065d266925b7b9e1ca', 'Probe.mc.txt': '0713ca67b40d0ce7e22db9d85383591f9e4d859d0497b4b576a9df4fa9f7ead1', 'run.log': '10be30feb2c55fabe58fffc5d6f87f6bda27bffa7e0f363315e5851ae160a2f0', 'exit.txt': '4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865'}
+    raw = {name: (base/name).read_bytes() for name in pins}
+    for name, expected in pins.items():
+        if digest(raw[name]) != expected:
+            raise ValueError('rejection menu observation changed: '+name)
+    build = json.loads(raw['build.json'])
+    if build['exitCode'] != 0 or build['probeSha256'] != digest(raw['Probe.mc.txt']):
+        raise ValueError('rejection menu build/probe mismatch')
+    for name in ('watchface/source/SettingsMenu.mc', 'watchface/source/SettingsMenuText.mc'):
+        if digest((root/name).read_bytes()) != build['productionSources'][name]:
+            raise ValueError('rejection menu current owner changed: '+name)
+    glyph_raw = (base/'menu-warning-glyphs.json').read_bytes()
+    if digest(glyph_raw) != '6468fa659cc0ad18b2fdb99375ea7ec4ffa214b619f927a752a4dfafaca306a8':
+        raise ValueError('rejection menu glyph observation changed')
+    glyph = json.loads(glyph_raw)
+    labels = [s for s in re.findall(r'"([^\"]*)"', TEXT_DELTA.decode())
+              if s not in ('ru', 'de', 'fr', 'es')]
+    points = {str(ord(c)) for label in labels for c in label}
+    if (glyph['font'] != {'fileName': 'Roboto-Regular.ttf', 'sha256': '31d218ca177e4c2191134f9c14fb43027f8a38622476db14038fd8ff186f875e'} or glyph['labels'] != labels or
+        set(glyph['glyphs']) != points or any(v in (None, 0, '.notdef') for v in glyph['glyphs'].values())):
+        raise ValueError('rejection menu glyph coverage incomplete')
+    result = parse_output(raw['run.log'].decode(), int(raw['exit.txt']), ('releaseCurrentHostSchema',))
+    if (result['status'] != 'passed' or
+        'deferredRestoreSameCache=1 schemaRefused=1 rendererRefused=1 actionableMenu=1 fiveLocales=1 languageRefresh=1 clearsOnSuccess=1' not in raw['run.log'].decode()):
+        raise ValueError('rejection menu SDK observation incomplete')
+
+
 def validate_circle_box(box):
     if any((px-195)**2+(py-195)**2 > 195**2 for px in (box[0],box[2]) for py in (box[1],box[3])):
         raise ValueError('current rendered text outside circular bounds')
@@ -48,6 +122,7 @@ def validate_aod_masks(sets):
 
 def verify(root):
     root = Path(root).resolve()
+    verify_rejection_menu(root)
     base = root/'openspec/changes/spacefox-watchface/evidence/current-native-ui'
     record = json.loads((base/'batch.json').read_text())
     if record['scope'] != 'current-ui-directed-frames-and-fields':
@@ -90,13 +165,13 @@ def verify(root):
         raise ValueError('portable UI observer differs from executed probe')
     for owner in OWNERS:
         name = 'watchface/source/'+owner
-        actual = digest((root/name).read_bytes())
+        actual = owner_digest(root,name)
         if fields['inputHashes'][name] != actual or clock['inputHashes'][name] != actual or build['productionSources'][name] != actual:
             raise ValueError('current UI semantic owner changed: '+name)
     for name, expected in build['productionResources'].items():
         if name.startswith(('watchface/resources/fonts/', 'watchface/resources/drawables/',
                             'watchface/resources/settings/', 'watchface/resources-rus/')):
-            if digest((root/name).read_bytes()) != expected or fields['inputHashes'].get(name) != expected:
+            if owner_digest(root,name) != expected or fields['inputHashes'].get(name) != expected:
                 raise ValueError('current UI font, art or settings resource changed: '+name)
     from tools.native_language_policy import software_locales
     if software_locales(root) != ['en','ru','de','fr','es']:
@@ -108,10 +183,10 @@ def verify(root):
         if digest(old_bytes) != old_build['productionSources']['watchface/source/'+name]:
             raise ValueError('retained visual source differs: '+name)
     for name in ('watchface/source/SceneContext.mc',):
-        if digest((root/name).read_bytes()) != old_build['productionSources'][name]:
+        if owner_digest(root,name) != old_build['productionSources'][name]:
             raise ValueError('retained visual context owner changed')
     for name in ('watchface/resources/json/Locale0.json','watchface/resources/json/Locale1.json','watchface/resources/drawables/LaunchMarker.png'):
-        if digest((root/name).read_bytes()) != old_build['productionResources'][name]:
+        if owner_digest(root,name) != old_build['productionResources'][name]:
             raise ValueError('retained header or marker resource changed')
     old_assets=(visual/'NativeAssets.mc').read_bytes()
     if digest(old_assets) != old_build['productionSources']['watchface/source/generated/NativeAssets.mc']:
@@ -124,7 +199,7 @@ def verify(root):
             raise ValueError('retained model-art mapping changed: '+model)
     if (visual/'SceneSettings.mc').read_bytes() != (root/'watchface/source/SceneSettings.mc').read_bytes():
         raise ValueError('retained settings persistence owner changed')
-    old_menu=(visual/'SettingsMenu.mc').read_text();current_menu=(root/'watchface/source/SettingsMenu.mc').read_text()
+    old_menu=(visual/'SettingsMenu.mc').read_text();current_menu=historical_owner(root,'watchface/source/SettingsMenu.mc').decode()
     expected_menu=old_menu.replace(':title=>"SpaceFox"', ':title=>"SpaceFox "+NativeVersion.BUILD+" "+NativeVersion.ID')
     if expected_menu != current_menu:
         raise ValueError('retained menu binding changed beyond version title')
@@ -159,7 +234,7 @@ def verify(root):
     if live_tree != current_tree:
         raise ValueError('current asset or catalog Git tree differs')
     for name, expected in record['siteControlInputs'].items():
-        if digest((root/name).read_bytes()) != expected:
+        if owner_digest(root,name) != expected:
             raise ValueError('current site control input changed: '+name)
     for name, expected in record['siteControlGitTrees'].items():
         tree=subprocess.check_output(['git','-C',str(root),'rev-parse','HEAD:'+name],text=True).strip()
@@ -174,7 +249,7 @@ def verify(root):
         raise ValueError('fallback draw build changed')
     for owner in (*OWNERS,'NativeSfr.mc','NativeBridgeFeed.mc','NativeFeed.mc','NativeCache.mc'):
         name='watchface/source/'+owner
-        if fallback_build['productionSources'][name] != digest((root/name).read_bytes()):
+        if fallback_build['productionSources'][name] != owner_digest(root,name):
             raise ValueError('fallback draw semantic owner changed: '+name)
     fallback_log=(fallback/'run.log').read_text()
     if fallback_build['ownerTag'] not in fallback_log or 'Bpoint=26.99677 matchingProjection=false marker=false oldRaster=false' not in fallback_log:
@@ -184,7 +259,7 @@ def verify(root):
         raise ValueError('current selected-scene build differs')
     for owner in (*OWNERS,'NativeSfr.mc','NativeBridgeFeed.mc','NativeFeed.mc','NativeCache.mc'):
         name='watchface/source/'+owner
-        if real_build['productionSources'][name] != digest((root/name).read_bytes()):
+        if real_build['productionSources'][name] != owner_digest(root,name):
             raise ValueError('selected scene semantic owner changed: '+name)
     real_log=(realview/'run.log').read_text()
     if ((realview/'run.exit').read_text().strip() != '0' or real_build['ownerTag'] not in real_log or 'NEG_COMPLETE corruptRejected=true missingRefused=true priorPointerPreserved=true freshBContext=true noOldBitmap=true retryB=true recoveryA=true actualOldBitmapCleared=true' not in real_log):
@@ -194,7 +269,7 @@ def verify(root):
         raise ValueError('in-flight lifecycle build changed')
     for owner in (*OWNERS,'NativeSfr.mc','NativeBridgeFeed.mc','NativeFeed.mc','NativeCache.mc'):
         name='watchface/source/'+owner
-        if inflight_build['productionSources'][name] != digest((root/name).read_bytes()):
+        if inflight_build['productionSources'][name] != owner_digest(root,name):
             raise ValueError('in-flight lifecycle semantic owner changed: '+name)
     inflight_log=(inflight/'inflight.log').read_text()
     if (inflight_build['ownerTag'] not in inflight_log or
@@ -214,7 +289,7 @@ def verify(root):
         raise ValueError('current lifecycle assertions changed')
     for owner in OWNERS:
         name='watchface/source/'+owner
-        if lifecycle['inputHashes'][name] != digest((root/name).read_bytes()):
+        if lifecycle['inputHashes'][name] != owner_digest(root,name):
             raise ValueError('current lifecycle semantic owner changed: '+name)
     reopen = base/'settings-reopen'
     reopen_build = json.loads((reopen/'build.json').read_text())
@@ -228,7 +303,7 @@ def verify(root):
         raise ValueError('settings reopen source differs')
     for owner in OWNERS:
         name='watchface/source/'+owner
-        if reopen_build['productionSources'][name] != digest((root/name).read_bytes()):
+        if reopen_build['productionSources'][name] != owner_digest(root,name):
             raise ValueError('settings reopen semantic owner changed: '+name)
     seed=(reopen/'seed.log').read_text(); again=(reopen/'reopen.log').read_text()
     if ((reopen/'seed.exit').read_text().strip() != '124' or 'SETTINGS_SEEDED ru=true fields=4 colors=6 url=true' not in seed
@@ -256,7 +331,7 @@ def verify(root):
             raise ValueError('current settings or menu control differs: '+folder)
         for owner in OWNERS:
             name='watchface/source/'+owner
-            if receipt['inputHashes'][name] != digest((root/name).read_bytes()):
+            if receipt['inputHashes'][name] != owner_digest(root,name):
                 raise ValueError('current settings semantic owner changed: '+name)
         setting_controls.update(result['observed_tests'])
     retained = base/'retained-fitness'
@@ -266,7 +341,7 @@ def verify(root):
     if metrics['build']['exit_code'] != 0 or metric_result['status'] != 'passed':
         raise ValueError('retained Fitness boundary receipt failed')
     for name, expected in metrics['build']['source_sha256'].items():
-        if digest((root/name).read_bytes()) != expected:
+        if owner_digest(root,name) != expected:
             raise ValueError('retained Fitness semantic input changed: '+name)
     if digest((retained/'Fitness.mc').read_bytes()) != metrics['build']['transformed_fitness_sha256']:
         raise ValueError('retained transformed Fitness fixture changed')
@@ -285,9 +360,9 @@ def verify(root):
     for name in (recovery_path, fixture_path, *('watchface/source/'+n for n in OWNERS),
                  'watchface/source/NativeCache.mc','watchface/source/NativeFeed.mc',
                  'watchface/source/NativeBridgeFeed.mc','watchface/source/NativeJson.mc'):
-        if recovery['inputHashes'][name] != digest((root/name).read_bytes()):
+        if recovery['inputHashes'][name] != owner_digest(root,name):
             raise ValueError('current LOW recovery input changed: '+name)
-    fixture=json.loads((root/fixture_path).read_text());initial=json.loads(fixture['packets']['initial']);moved=json.loads(fixture['packets']['moved'])
+    fixture=json.loads((root/fixture_path).read_text());moved=json.loads(fixture['packets']['moved'])
     stale=json.loads((base/'recovery/DisplayStale.json').read_text())['raw'];stale=json.loads(stale)
     expected=json.loads(fixture['packets']['initial']);expected['publisher']['generation']=3
     if stale != expected or not (stale['publisher']['generation'] > moved['publisher']['generation'] and stale['publisher']['selectionValidatedUtc'] < moved['publisher']['selectionValidatedUtc']):

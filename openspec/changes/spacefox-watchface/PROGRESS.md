@@ -645,3 +645,23 @@ same-size sparse map, enlarged its point, and corrected decoded-outline color st
 EN/RU bundled and EN decoded native controlled frames and source-bound admission
 are in [the peer record](evidence/display03-active-tick-wake/low-map-peer/RESULT.md).
 Final signed runtime, root integration and physical acceptance remain open.
+
+### DISPLAY03 full LOW contour — independent source accepted
+
+The owner retained the full LOW map. Independent peer `7c400284` is accepted at
+its source/test-key SDK boundary: covered-site READY retains the full contour,
+minute-only LOW countdown, visible point and no custom fields. Root inspected
+EN/RU, 454px, decoded and controlled READY native frames. The current 217 numeric
+points use 72 lazy centers with at most 0.4751px point displacement and identical
+rounded coordinates; no universal coastline or future-site equivalence is claimed.
+Dense-map pixel overflow and multirow watchdog failures remain with their repaired
+observations. Directly affected checks, source-bound admission/tamper refusal and
+strict OpenSpec passed; unchanged behavior receipts were reused.
+
+The requested one final main integration has begun using cached `117e7a3f`,
+without another fetch. Only generated NativeVersion conflicted. Final candidate
+0.1.13, production-signed ordinary READY/refresh, exact IQ-member proof and
+original-card publication remain pending. Physical reported version `0.10.0`,
+10–20 second wake, point and delivery remain open. Task/goal completion is not
+inferred from the source checkpoint. See the
+[root judgment](evidence/display03-active-tick-wake/ROOT-JUDGMENT.md).

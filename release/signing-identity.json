@@ -5,6 +5,23 @@
   "public_key_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
   "status": "local_production_custody_restored",
   "latest_release": {
+    "version": "0.1.12",
+    "package_sha256": "283864f66833b47b2afa0c016948d892c7ecc65ababf5bd72f76f0495551c989",
+    "kind": "github_test_prerelease",
+    "tag": "v0.1.12-test.1",
+    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.12-test.1",
+    "source_revision": "14679651a3c169a6f15eb9309c28478ae50c6463",
+    "tag_revision": "bfc1007904807a50c9c08bc5343a144f9bac81d7",
+    "original_receipt_sha256": "81c5b2f928a4fb92e0881eb7748d0ab1e58af1c3f93d980a40029b01d24fe0ed",
+    "proof_boundary": "Signed GitHub test prerelease; no physical delivery or Store acceptance established."
+  },
+  "note": "Stable production UUID/key. The published 0.1.12 receipt and IQ are the predecessor for the next candidate. Physical phone/watch acceptance and Store delivery remain open.",
+  "local_custody": {
+    "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
+    "public_evidence": "openspec/changes/spacefox-watchface/evidence/production-signing/round1/custody-initialization.json",
+    "proof_boundary": "External owner-only production RSA4096 key and encrypted backup with separately stored password; actual local restore and public signing challenge. Same Mac only; no offsite/disaster recovery."
+  },
+  "previous_release": {
     "version": "0.1.11",
     "package_sha256": "f498d9953c00bf0d120286dcefb42ae0ec7b142841b82acbcf12b4b015b04ee9",
     "kind": "github_test_prerelease",
@@ -15,21 +32,6 @@
     "original_receipt_sha256": "61e99358506bec77b4d8939ec22b89630d10dfd1a38041f8a2b047ed21973993",
     "proof_boundary": "Signed GitHub test prerelease; no physical delivery or Store acceptance established."
   },
-  "note": "Stable production UUID/key. The published 0.1.11 receipt and IQ are the predecessor for the next candidate. Physical phone/watch acceptance and Store delivery remain open.",
-  "local_custody": {
-    "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
-    "public_evidence": "openspec/changes/spacefox-watchface/evidence/production-signing/round1/custody-initialization.json",
-    "proof_boundary": "External owner-only production RSA4096 key and encrypted backup with separately stored password; actual local restore and public signing challenge. Same Mac only; no offsite/disaster recovery."
-  },
-  "previous_release": {
-    "version": "0.1.10",
-    "package_sha256": "33842eb2b3c4cb9653046d389a72f0b781d712acbe5ddeea674fce8df476fefc",
-    "kind": "github_test_prerelease",
-    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.10",
-    "source_revision": "2e393bbff72573d5a422316ccc2b64b5d790b0bb",
-    "original_receipt_sha256": "b1d42c205daf468ae39388a7695a93da97eb6e6351cf4334ca492a4f251af096",
-    "proof_boundary": "Signed GitHub test prerelease; no physical delivery or Store acceptance established."
-  },
   "earlier_release": {
     "version": "0.1.6",
     "package_sha256": "f0486aec04a63ed9481caff0376a36930c7175df908ccb3e53f65075059dfc50",
@@ -38,5 +40,14 @@
     "source_revision": "4b16cca3f3c29083cbabc92b72f1a09718f77a5e",
     "original_receipt_sha256": "b333a5df9c0333f125960e16dcc7ebae90a8800d84e4c29df2af088f95e691ac",
     "proof_boundary": "Ordinary 0.1.6 signed IQ verified on the original Store card and existing watch installation queued; physical installation and acceptance remain unobserved."
+  },
+  "historical_release_010": {
+    "version": "0.1.10",
+    "package_sha256": "33842eb2b3c4cb9653046d389a72f0b781d712acbe5ddeea674fce8df476fefc",
+    "kind": "github_test_prerelease",
+    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.10",
+    "source_revision": "2e393bbff72573d5a422316ccc2b64b5d790b0bb",
+    "original_receipt_sha256": "b1d42c205daf468ae39388a7695a93da97eb6e6351cf4334ca492a4f251af096",
+    "proof_boundary": "Signed GitHub test prerelease; no physical delivery or Store acceptance established."
   }
 }

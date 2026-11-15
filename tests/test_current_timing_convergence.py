@@ -73,18 +73,10 @@ class CurrentTimingConvergenceTest(unittest.TestCase):
         self.assertEqual(receipt['tests']['observed_tests']['displayPairedInputs'], 'PASS')
         check_native_pair(raw)
         # The exact source under this observation is reconstructed at its known
-        # 0.1.10 UI revision; current 0.1.11 changes version admission only.
+        # 0.1.10 UI revision; exact menu delta is reconstructed separately, plus version.
         for name, expected in receipt['inputHashes'].items():
-            data = (ROOT / name).read_bytes()
-            if name == 'watchface/manifest.xml':
-                self.assertEqual(data.count(b'version="0.1.11"'), 1, name)
-                data = data.replace(b'version="0.1.11"', b'version="0.1.10"')
-            elif name == 'watchface/source/generated/NativeVersion.mc':
-                self.assertEqual(data.count(b'BUILD = "0.1.11"'), 1, name)
-                self.assertEqual(data.count(b'ID = "c718deaa"'), 1, name)
-                data = data.replace(b'BUILD = "0.1.11"', b'BUILD = "0.1.10"')
-                # The build ID is version-derived; bind its earlier exact value.
-                data = data.replace(b'ID = "c718deaa"', b'ID = "de5011f4"')
+            from tests.native_historical_binding import historical_input
+            data = historical_input(name, expected)
             self.assertEqual(hashlib.sha256(data).hexdigest(), expected, name)
 
     def test_missing_zero_observation_negative(self):
