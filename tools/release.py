@@ -143,7 +143,7 @@ def source_state(root: Path) -> dict:
     for name in paths:
         if not name or not (name.startswith("watchface/") or name.startswith("release/") or
                              name.startswith("licenses/") or name.startswith("locales/") or
-                             (name.startswith("tools/") and name.endswith(".py")) or name.startswith("tests/test_ux016_") or name in admission or
+                             (name.startswith("tools/") and name.endswith(".py")) or name.startswith("tests/") or name in admission or
                              name == "assets/rocket-pack/LICENSE" or
                              name in ("tools/release.py", "tools/ReleaseInspector.java", "tools/build_watchface.py",
                                       "LICENSE", "THIRD_PARTY_NOTICES.md", "docs/AGENT_SETUP.md",
