@@ -32,6 +32,21 @@ is unavailable or that it caused this incident. Garmin staff described a general
 review backlog due to submission volume in an [October 2026 reply](https://forums.garmin.com/developer/connect-iq/i/bug-reports/my-app-pac-man-under-review-for-6-days-almost-a-week?CommentId=ac882763-7793-4e9b-8390-9286b753a9c0);
 that is context, not evidence this particular review is stuck or an ETA.
 
+## Hosted feed observation
+
+Root observed one GET of the public [text feed](https://jekamas.github.io/SpaceFox/feed.json.txt)
+at 2026-11-15 05:00:57 UTC: HTTP 200, `text/plain; charset=utf-8`, 2,743
+bytes. The [observed public body](hosted-feed-recheck.json) has publisher
+generation 33 and selection and launch source validation at 04:24:51 UTC, about
+36 minutes earlier, with `stale=false` and a 3,600-second normal interval. It
+selected Vulcan VC6L / ULA / Amazon Leo (LV-01), Cape Canaveral SLC 41, with
+T0 17:11:30 UTC on 15 November. The source content's own update time is 14
+November; fresh validation does not mean the provider changed that content.
+Root also observed successful serialized-feed workflow dispatches, including
+the [04:52 UTC run](https://github.com/JekaMas/SpaceFox/actions/runs/43678604789).
+This is a point-in-time hosted publisher observation, not proof of phone or
+watch delivery, execution, or future freshness.
+
 ## Hypotheses and evidence needed
 
 A stale Store presentation, update-selection or delivery mismatch is plausible,

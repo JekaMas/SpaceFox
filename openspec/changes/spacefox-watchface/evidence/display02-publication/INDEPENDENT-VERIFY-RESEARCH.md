@@ -15,21 +15,23 @@ of the root-supplied server observation, checked for exact equality; it contains
 no paired-device identifiers or device timestamps. The linked external research
 claims and current GitHub release readback were supplied by root; this lane did
 not independently fetch them. The original publication and signed receipts were
-not altered. Clarified that 0.1.6 was the last observed version, and marked the
-linked release handoff historical: that file still calls 0.1.10 the current
-candidate and 0.1.9 the published predecessor, so it is not current version
-authority. This inconsistency was reported to root for the owning scope.
+not altered. Clarified that 0.1.6 was the last observed version, and corrected the linked release handoff after root expanded the review scope.
+Its historical predecessor receipts remain identified as historical. The feed
+body was read locally from root's supplied public observation; the HTTP and
+workflow readbacks were supplied by root, not independently fetched here.
 
-Checks: relative Markdown link existence passed for the seven reviewed Markdown
-files; sanitized receipt fields matched the source observation; `git diff
+Checks: relative Markdown link existence passed for the nine reviewed Markdown
+files; sanitized receipt fields matched the source observation and the public
+feed receipt matched the supplied body byte for byte; `git diff
 --check d9e9091b` passed. Exact-filename search in `tests`, `.github`, and `tools`
 found no direct documentation test; `tools/release.py:145` includes two edited
-documents among release source inputs. Existing signed artifacts retain their
+documents among release source inputs, and `tools/release.py:625` references
+the handoff as a release input. Existing signed artifacts retain their
 original bounds, not a current-tree pin. No behavior tests, SDK, build, remote
 mutation, or full suite were run; documentation changes do not invalidate the
 retained behavior evidence.
 
 Independent verdict: **GREEN** for the bounded documentation/research repair,
-subject to root integration and the qualified historical handoff link. Physical
+subject to root integration. Physical
 delivery, corrected execution, and existing on-watch acceptance remain
 **NOT DONE**.
