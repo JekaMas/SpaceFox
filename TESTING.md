@@ -1,4 +1,8 @@
-# Testing SpaceFox 0.1.13
+# Testing SpaceFox
+
+The [0.1.14 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.14-test.1) has separate [USB installation](release/INSTALLATION-0.1.14.md) and [testing](release/TESTING-0.1.14.md) guides. Its signed runtime and physical delivery remain unobserved; no 0.1.14 Garmin submission is claimed.
+
+## Garmin 0.1.13
 
 The [original Garmin listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3) displays 0.1.13/Internal 8 in owner preview, PENDING. The same signed package is in the [GitHub release](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.13). Garmin accepted the Forerunner 165 Music install request with HTTP 200/empty body; that does not prove which binary was selected or delivered.
 
