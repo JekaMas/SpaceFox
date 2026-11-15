@@ -1,0 +1,14 @@
+------------------------------------------------------------------------------
+Executing test peerPrecisionAndMissing...
+DEBUG (10:27): PRECISION mode=empty active=--:--:-- low=--:--
+DEBUG (10:27): PRECISION mode=minute active=T- 00:01:30 low=T- 00:02
+DEBUG (10:27): PRECISION mode=date active=--:--:-- low=--:--
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+peerPrecisionAndMissing             PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

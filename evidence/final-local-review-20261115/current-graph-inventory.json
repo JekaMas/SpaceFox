@@ -1,6 +1,6 @@
 {
-  "scope": "Integrated graph reconciliation; not a full readiness execution",
-  "historical_source_bound_properties": "123 of 133 (historical acceptance accounting, not a current all-graph verdict)",
+  "scope": "Structural full graph counts plus the bounded 50-case current integration selection; not a full ready-graph execution.",
+  "historical_source_bound_properties": "123 of 133 at the historical source boundary, not a current full-graph verdict",
   "historical_external_properties": [
     "LS02.P1",
     "LS12.P1",
@@ -13,76 +13,484 @@
     "WF10.P1",
     "LS06.P2"
   ],
-  "new_or_invalidated_planned_case_count": 38,
-  "new_or_invalidated_planned_cases_by_property": {
-    "LS05.P2": [
-      "LS05.P2.S01.POSITIVE",
-      "LS05.P2.S01.NEGATIVE"
+  "full_graph": {
+    "requirements": 63,
+    "properties": 142,
+    "cases": 680,
+    "case_states": {
+      "planned": 315,
+      "implemented": 365
+    },
+    "properties_all_cases_implemented_structurally": 72,
+    "properties_with_planned_cases": 70
+  },
+  "selected_current_graph": {
+    "status": "passed",
+    "cases": 50,
+    "properties": 17,
+    "requirements": 12,
+    "receipt": "peer-decoder-graph.json"
+  },
+  "external_hold_planned_cases": {
+    "LS02.P1": [
+      "LS02.P1.S01.POSITIVE",
+      "LS02.P1.S01.NEGATIVE",
+      "LS02.P1.S02.POSITIVE.CURRENT",
+      "LS02.P1.S02.NEGATIVE.CURRENT",
+      "LS02.P1.S03.POSITIVE.CURRENT",
+      "LS02.P1.S03.NEGATIVE.CURRENT"
     ],
-    "LS09.P1": [
-      "LS09.P1.S02.POSITIVE",
-      "LS09.P1.S02.NEGATIVE",
-      "LS09.P1.S04.POSITIVE",
-      "LS09.P1.S04.NEGATIVE",
-      "LS09.P1.MODE.POSITIVE",
-      "LS09.P1.MODE.NEGATIVE"
+    "LS12.P1": [
+      "LS12.P1.S01.POSITIVE",
+      "LS12.P1.S01.NEGATIVE"
     ],
-    "VC06.P1": [
-      "VC06.P1.S01.POSITIVE",
-      "VC06.P1.S01.NEGATIVE",
-      "VC06.P1.S02.POSITIVE",
-      "VC06.P1.S02.NEGATIVE"
+    "LS15.P1": [
+      "LS15.P1.S01.POSITIVE",
+      "LS15.P1.S01.NEGATIVE"
     ],
-    "VC14.P1": [
-      "VC14.P1.S03.POSITIVE",
-      "VC14.P1.S03.NEGATIVE"
+    "RL04.P1": [
+      "RL04.P1.S01.POSITIVE",
+      "RL04.P1.S01.NEGATIVE"
     ],
-    "WF07.P1": [
-      "WF07.P1.S02.POSITIVE",
-      "WF07.P1.S02.NEGATIVE"
+    "RL05.P1": [
+      "RL05.P1.S01.POSITIVE",
+      "RL05.P1.S01.NEGATIVE",
+      "RL05.P1.S02.POSITIVE",
+      "RL05.P1.S02.NEGATIVE"
+    ],
+    "VC10.P1": [
+      "VC10.P1.S01.POSITIVE",
+      "VC10.P1.S01.NEGATIVE",
+      "VC10.P1.S02.POSITIVE",
+      "VC10.P1.S02.NEGATIVE"
+    ],
+    "WF08.P1": [
+      "WF08.P1.S01.POSITIVE",
+      "WF08.P1.S01.NEGATIVE",
+      "WF08.P1.S02.POSITIVE",
+      "WF08.P1.S02.NEGATIVE"
     ],
     "WF09.P1": [
+      "WF09.P1.S01.POSITIVE",
+      "WF09.P1.S01.NEGATIVE",
+      "WF09.P1.S02.POSITIVE",
+      "WF09.P1.S02.NEGATIVE",
       "WF09.P1.LIFECYCLE.POSITIVE",
       "WF09.P1.LIFECYCLE.NEGATIVE"
     ],
-    "WF09.P2": [
-      "WF09.P2.S01.POSITIVE.CURRENT",
-      "WF09.P2.S01.NEGATIVE.CURRENT"
+    "WF10.P1": [
+      "WF10.P1.S01.POSITIVE",
+      "WF10.P1.S01.NEGATIVE"
     ],
-    "WF09.P4": [
-      "WF09.P4.1.POSITIVE",
-      "WF09.P4.1.NEGATIVE"
-    ],
-    "WF13.P1": [
-      "WF13.P1.FINAL.S1.POSITIVE",
-      "WF13.P1.FINAL.S1.NEGATIVE",
-      "WF13.P1.READABILITY.POSITIVE",
-      "WF13.P1.READABILITY.NEGATIVE",
-      "WF13.P1.COHERENCE.POSITIVE",
-      "WF13.P1.COHERENCE.NEGATIVE"
-    ],
-    "WF16.P1": [
-      "WF16.P1.S01.POSITIVE",
-      "WF16.P1.S01.NEGATIVE"
-    ],
-    "WF17.P1": [
-      "WF17.P1.S01.POSITIVE",
-      "WF17.P1.S01.NEGATIVE"
-    ],
-    "WF18.P1": [
-      "WF18.P1.S01.POSITIVE",
-      "WF18.P1.S01.NEGATIVE",
-      "WF18.P1.S02.POSITIVE",
-      "WF18.P1.S02.NEGATIVE"
-    ],
-    "WF19.P1": [
-      "WF19.P1.S01.POSITIVE",
-      "WF19.P1.S01.NEGATIVE"
+    "LS06.P2": [
+      "LS06.P2.S01.POSITIVE",
+      "LS06.P2.S01.NEGATIVE",
+      "LS06.P2.S02.POSITIVE",
+      "LS06.P2.S02.NEGATIVE"
     ]
   },
-  "reason": "Revised scenario or historic whole-source reader is not by itself evidence of the full current scenario. New focused bounded SDK evidence is recorded separately; physical and natural-network edges remain external.",
-  "retained_graph_total_planned_cases": 353,
-  "selected_new_composition": "peer-final-v2-graph.json",
-  "selected_case_count": 14,
-  "selected_status": "passed"
+  "other_planned_case_count": 279,
+  "other_planned_case_boundary": "Other planned graph cases are not inferred to be external or freshly green. See verification.json for individual requirements and cases.",
+  "task_status": "21/33 primary tasks closed; task 4.5 and 12 tasks remain open. Physical/device/phone/Store, natural-service, full peak and full ready DAG remain unobserved.",
+  "other_planned_cases_by_property": {
+    "LS01.P1": [
+      "LS01.P1.S01.POSITIVE.CURRENT",
+      "LS01.P1.S01.NEGATIVE.CURRENT"
+    ],
+    "LS05.P1": [
+      "LS05.P1.S01.POSITIVE.CURRENT",
+      "LS05.P1.S01.NEGATIVE.CURRENT"
+    ],
+    "LS11.P1": [
+      "LS11.P1.S01.POSITIVE",
+      "LS11.P1.S01.NEGATIVE",
+      "LS11.P1.S02.POSITIVE",
+      "LS11.P1.S02.NEGATIVE",
+      "LS11.P1.S03.POSITIVE",
+      "LS11.P1.S03.NEGATIVE",
+      "LS11.P1.S05.POSITIVE",
+      "LS11.P1.S05.NEGATIVE",
+      "LS11.P1.S04.POSITIVE.CURRENT",
+      "LS11.P1.S04.NEGATIVE.CURRENT"
+    ],
+    "LS14.P1": [
+      "LS14.P1.S02.POSITIVE.CURRENT",
+      "LS14.P1.S02.NEGATIVE.CURRENT",
+      "LS14.P1.S01.POSITIVE.CURRENT",
+      "LS14.P1.S01.NEGATIVE.CURRENT"
+    ],
+    "RL03.P1": [
+      "RL03.P1.S01.POSITIVE",
+      "RL03.P1.S01.NEGATIVE",
+      "RL03.P1.S02.POSITIVE",
+      "RL03.P1.S02.NEGATIVE"
+    ],
+    "RL06.P1": [
+      "RL06.P1.S01.POSITIVE",
+      "RL06.P1.S01.NEGATIVE"
+    ],
+    "RL07.P1": [
+      "RL07.P1.S01.POSITIVE.CURRENT",
+      "RL07.P1.S01.NEGATIVE.CURRENT",
+      "RL07.P1.S02.POSITIVE.CURRENT",
+      "RL07.P1.S02.NEGATIVE.CURRENT"
+    ],
+    "RL08.P1": [
+      "RL08.P1.S01.POSITIVE.CURRENT",
+      "RL08.P1.S01.NEGATIVE.CURRENT",
+      "RL08.P1.S02.POSITIVE",
+      "RL08.P1.S02.NEGATIVE"
+    ],
+    "VC02.P1": [
+      "VC02.P1.S01.POSITIVE.CURRENT",
+      "VC02.P1.S01.NEGATIVE.CURRENT",
+      "VC02.P1.S02.POSITIVE.CURRENT",
+      "VC02.P1.S02.NEGATIVE.CURRENT"
+    ],
+    "VC08.P1": [
+      "VC08.P1.S01.POSITIVE.CURRENT",
+      "VC08.P1.S01.NEGATIVE.CURRENT",
+      "VC08.P1.S02.POSITIVE.CURRENT",
+      "VC08.P1.S02.NEGATIVE.CURRENT"
+    ],
+    "VC09.P1": [
+      "VC09.P1.S01.POSITIVE",
+      "VC09.P1.S01.NEGATIVE",
+      "VC09.P1.S02.POSITIVE",
+      "VC09.P1.S02.NEGATIVE"
+    ],
+    "VC12.P1": [
+      "VC12.P1.S01.POSITIVE.CURRENT",
+      "VC12.P1.S01.NEGATIVE.CURRENT",
+      "VC12.P1.S02.POSITIVE.CURRENT",
+      "VC12.P1.S02.NEGATIVE.CURRENT"
+    ],
+    "VC13.P1": [
+      "VC13.P1.S01.POSITIVE",
+      "VC13.P1.S01.NEGATIVE",
+      "VC13.P1.S02.POSITIVE",
+      "VC13.P1.S02.NEGATIVE",
+      "VC13.P1.S03.POSITIVE",
+      "VC13.P1.S03.NEGATIVE"
+    ],
+    "VC14.P1": [
+      "VC14.P1.S01.POSITIVE",
+      "VC14.P1.S01.NEGATIVE",
+      "VC14.P1.S02.POSITIVE",
+      "VC14.P1.S02.NEGATIVE"
+    ],
+    "VC17.P1": [
+      "VC17.P1.S01.POSITIVE",
+      "VC17.P1.S01.NEGATIVE"
+    ],
+    "LS05.P4": [
+      "LS05.P4.S01.POSITIVE.CURRENT",
+      "LS05.P4.S02.POSITIVE.CURRENT",
+      "LS05.P4.S03.NEGATIVE.CURRENT"
+    ],
+    "LS13.P3": [
+      "LS13.P3.S11.NEGATIVE.CURRENT",
+      "LS13.P3.S01.NEGATIVE.CURRENT",
+      "LS13.P3.S02.POSITIVE.CURRENT",
+      "LS13.P3.S03.NEGATIVE.CURRENT",
+      "LS13.P3.S04.POSITIVE.CURRENT",
+      "LS13.P3.S10.POSITIVE.CURRENT",
+      "LS13.P3.S12.NEGATIVE.CURRENT",
+      "LS13.P3.S22.NEGATIVE.CURRENT",
+      "LS13.P3.S25.POSITIVE.CURRENT",
+      "LS13.P3.S28.NEGATIVE.CURRENT"
+    ],
+    "VC05.P3": [
+      "VC05.P3.C10.NEGATIVE.CURRENT"
+    ],
+    "VC19.P1": [
+      "VC19.P1.C01.POSITIVE.CURRENT",
+      "VC19.P1.C02.NEGATIVE.CURRENT",
+      "VC19.P1.C03.POSITIVE.CURRENT",
+      "VC19.P1.C04.NEGATIVE.CURRENT",
+      "VC19.P1.C05.POSITIVE.CURRENT",
+      "VC19.P1.C06.POSITIVE.CURRENT",
+      "VC19.P1.C07.NEGATIVE.CURRENT",
+      "VC19.P1.C08.POSITIVE.CURRENT"
+    ],
+    "VC19.P2": [
+      "VC19.P2.C01.POSITIVE.CURRENT",
+      "VC19.P2.C02.NEGATIVE.CURRENT",
+      "VC19.P2.C03.NEGATIVE.CURRENT",
+      "VC19.P2.C04.NEGATIVE.CURRENT",
+      "VC19.P2.C05.NEGATIVE.CURRENT",
+      "VC19.P2.C06.POSITIVE.CURRENT",
+      "VC19.P2.C07.NEGATIVE.CURRENT",
+      "VC19.P2.C08.NEGATIVE.CURRENT"
+    ],
+    "VC19.P3": [
+      "VC19.P3.C01.POSITIVE.CURRENT",
+      "VC19.P3.C04.NEGATIVE.CURRENT",
+      "VC19.P3.C05.NEGATIVE.CURRENT",
+      "VC19.P3.C06.NEGATIVE.CURRENT",
+      "VC19.P3.C12.NEGATIVE.CURRENT",
+      "VC19.P3.C13.NEGATIVE.CURRENT",
+      "VC19.P3.CURRENT02.POSITIVE"
+    ],
+    "VC19.P4": [
+      "VC19.P4.C01.POSITIVE.CURRENT",
+      "VC19.P4.C02.NEGATIVE.CURRENT",
+      "VC19.P4.C03.POSITIVE.CURRENT",
+      "VC19.P4.C04.NEGATIVE.CURRENT"
+    ],
+    "LS05.P5": [
+      "LS05.P5.S01.POSITIVE.CURRENT",
+      "LS05.P5.S01.NEGATIVE.CURRENT",
+      "LS05.P5.S02.POSITIVE.CURRENT",
+      "LS05.P5.S02.NEGATIVE.CURRENT",
+      "LS05.P5.S03.NEGATIVE.CURRENT",
+      "LS05.P5.S03.POSITIVE.CURRENT"
+    ],
+    "VC04.P3": [
+      "VC04.P3.C02.POSITIVE.CURRENT",
+      "VC04.P3.C03.NEGATIVE.CURRENT",
+      "VC04.P3.C04.NEGATIVE.CURRENT"
+    ],
+    "VC07.P3": [
+      "VC07.P3.C02.POSITIVE.CURRENT",
+      "VC07.P3.C03.NEGATIVE.CURRENT",
+      "VC07.P3.C04.NEGATIVE.CURRENT"
+    ],
+    "VC20.P1": [
+      "VC20.P1.C02.NEGATIVE.CURRENT",
+      "VC20.P1.C03.POSITIVE.CURRENT",
+      "VC20.P1.C04.NEGATIVE.CURRENT",
+      "VC20.P1.C05.POSITIVE.CURRENT",
+      "VC20.P1.C06.POSITIVE.CURRENT",
+      "VC20.P1.C06.NEGATIVE.CURRENT",
+      "VC20.P1.C07.NEGATIVE.CURRENT",
+      "VC20.P1.MOTIONWHOLE.POSITIVE.CURRENT",
+      "VC20.P1.MOTIONWHOLE.NEGATIVE.CURRENT",
+      "VC20.P1.MOTIONWHOLE.HOSTSPARSE.POSITIVE.CURRENT",
+      "VC20.P1.MOTIONWHOLE.SDKPIXELS.POSITIVE.CURRENT"
+    ],
+    "VC20.P2": [
+      "VC20.P2.C01.POSITIVE.CURRENT",
+      "VC20.P2.C02.NEGATIVE.CURRENT",
+      "VC20.P2.MOTIONWHOLE.POSITIVE.CURRENT",
+      "VC20.P2.MOTIONWHOLE.NEGATIVE.CURRENT",
+      "VC20.P2.MOTIONWHOLE.HOSTGENERATION.POSITIVE.CURRENT"
+    ],
+    "VC20.P3": [
+      "VC20.P3.C01.POSITIVE.CURRENT",
+      "VC20.P3.C02.NEGATIVE.CURRENT",
+      "VC20.P3.MOTIONWHOLE.POSITIVE.CURRENT",
+      "VC20.P3.MOTIONWHOLE.NEGATIVE.CURRENT",
+      "VC20.P3.MOTIONWHOLE.HOSTCLOSURE.NEGATIVE.CURRENT",
+      "VC20.P3.MOTIONWHOLE.HOSTHTTP.NEGATIVE.CURRENT",
+      "VC20.P3.MOTIONWHOLE.SDKCLEANUP.NEGATIVE.CURRENT"
+    ],
+    "VC20.P4": [
+      "VC20.P4.C01.POSITIVE.CURRENT",
+      "VC20.P4.C02.NEGATIVE.CURRENT",
+      "VC20.P4.C03.NEGATIVE.CURRENT",
+      "VC20.P4.C05.NEGATIVE.CURRENT",
+      "VC20.P4.C06.NEGATIVE.CURRENT"
+    ],
+    "LS04.P1": [
+      "LS04.P1.S01.POSITIVE.CURRENT",
+      "LS04.P1.S01.NEGATIVE.CURRENT",
+      "LS04.P1.S02.POSITIVE.CURRENT",
+      "LS04.P1.S02.NEGATIVE.CURRENT"
+    ],
+    "LS06.P1": [
+      "LS06.P1.S01.POSITIVE.CURRENT",
+      "LS06.P1.S01.NEGATIVE.CURRENT"
+    ],
+    "LS13.P1": [
+      "LS13.P1.S01.POSITIVE.CURRENT",
+      "LS13.P1.S01.NEGATIVE.CURRENT",
+      "LS13.P1.S02.POSITIVE.CURRENT",
+      "LS13.P1.S02.NEGATIVE.CURRENT"
+    ],
+    "LS02.P2": [
+      "LS02.P2.S01.POSITIVE.CURRENT",
+      "LS02.P2.S01.NEGATIVE.CURRENT"
+    ],
+    "LS05.P3": [
+      "LS05.P3.S01.POSITIVE.CURRENT",
+      "LS05.P3.S01.NEGATIVE.CURRENT"
+    ],
+    "LS11.P2": [
+      "LS11.P2.S01.POSITIVE.CURRENT",
+      "LS11.P2.S01.NEGATIVE.CURRENT",
+      "LS11.P2.S02.POSITIVE.CURRENT",
+      "LS11.P2.S02.NEGATIVE.CURRENT"
+    ],
+    "LS04.P2": [
+      "LS04.P2.S01.POSITIVE.CURRENT",
+      "LS04.P2.S01.NEGATIVE.CURRENT",
+      "LS04.P2.S02.POSITIVE.CURRENT",
+      "LS04.P2.S02.NEGATIVE.CURRENT",
+      "LS04.P2.S03.POSITIVE.CURRENT",
+      "LS04.P2.S04.POSITIVE.CURRENT"
+    ],
+    "LS13.P2": [
+      "LS13.P2.S01.POSITIVE.CURRENT",
+      "LS13.P2.S02.POSITIVE.CURRENT",
+      "LS13.P2.S02.NEGATIVE.CURRENT",
+      "LS13.P2.S03.NEGATIVE.CURRENT",
+      "LS13.P2.S04.POSITIVE.CURRENT",
+      "LS13.P2.S01.NEGATIVE.CURRENT",
+      "LS13.P2.S05.NEGATIVE.CURRENT"
+    ],
+    "LS14.P2": [
+      "LS14.P2.S01.POSITIVE.CURRENT",
+      "LS14.P2.S01.NEGATIVE.CURRENT",
+      "LS14.P2.S02.POSITIVE.CURRENT",
+      "LS14.P2.S02.NEGATIVE.CURRENT",
+      "LS14.P2.S03.POSITIVE.CURRENT",
+      "LS14.P2.S04.POSITIVE.CURRENT"
+    ],
+    "LS01.P2": [
+      "LS01.P2.S01.POSITIVE.CURRENT",
+      "LS01.P2.S02.NEGATIVE.CURRENT"
+    ],
+    "LS04.P3": [
+      "LS04.P3.S01.POSITIVE.CURRENT",
+      "LS04.P3.S02.NEGATIVE.CURRENT",
+      "LS04.P3.S03.POSITIVE.CURRENT",
+      "LS04.P3.S04.NEGATIVE.CURRENT",
+      "LS04.P3.S05.POSITIVE.CURRENT",
+      "LS04.P3.S06.NEGATIVE.CURRENT",
+      "LS04.P3.S40.NEGATIVE.CURRENT",
+      "LS04.P3.S41.NEGATIVE.CURRENT"
+    ],
+    "LS11.P3": [
+      "LS11.P3.S01.POSITIVE.CURRENT",
+      "LS11.P3.S02.NEGATIVE.CURRENT",
+      "LS11.P3.S03.POSITIVE.CURRENT",
+      "LS11.P3.S04.NEGATIVE.CURRENT",
+      "LS11.P3.S10.POSITIVE.CURRENT",
+      "LS11.P3.S10.NEGATIVE.CURRENT",
+      "LS11.P3.S20.POSITIVE.CURRENT",
+      "LS11.P3.S21.NEGATIVE.CURRENT",
+      "LS11.P3.S23.POSITIVE.CURRENT",
+      "LS11.P3.S24.NEGATIVE.CURRENT",
+      "LS11.P3.S26.NEGATIVE.CURRENT",
+      "LS11.P3.S31.POSITIVE.CURRENT",
+      "LS11.P3.S32.POSITIVE.CURRENT",
+      "LS11.P3.S33.POSITIVE.CURRENT",
+      "LS11.P3.S35.NEGATIVE.CURRENT",
+      "LS11.P3.S40.NEGATIVE.CURRENT",
+      "LS11.P3.S41.POSITIVE.CURRENT"
+    ],
+    "LS14.P3": [
+      "LS14.P3.S01.POSITIVE.CURRENT",
+      "LS14.P3.S02.NEGATIVE.CURRENT",
+      "LS14.P3.S10.POSITIVE.CURRENT",
+      "LS14.P3.S10.NEGATIVE.CURRENT",
+      "LS14.P3.S12.POSITIVE.CURRENT",
+      "LS14.P3.S27.POSITIVE.CURRENT",
+      "LS14.P3.S30.POSITIVE.CURRENT",
+      "LS14.P3.S34.NEGATIVE.CURRENT",
+      "LS14.P3.S36.POSITIVE.CURRENT",
+      "LS14.P3.S37.NEGATIVE.CURRENT"
+    ],
+    "LS13.P4": [
+      "LS13.P4.C03.POSITIVE.CURRENT",
+      "LS13.P4.C04.NEGATIVE.CURRENT",
+      "LS13.P4.C05.POSITIVE.CURRENT",
+      "LS13.P4.C06.NEGATIVE.CURRENT"
+    ],
+    "LS14.P4": [
+      "LS14.P4.C07.POSITIVE.CURRENT",
+      "LS14.P4.C08.POSITIVE.CURRENT",
+      "LS14.P4.C09.NEGATIVE.CURRENT",
+      "LS14.P4.C10.POSITIVE.CURRENT",
+      "LS14.P4.C11.POSITIVE.CURRENT",
+      "LS14.P4.C12.NEGATIVE.CURRENT",
+      "LS14.P4.C13.NEGATIVE.CURRENT",
+      "LS14.P4.C14.POSITIVE.CURRENT",
+      "LS14.P4.C15.POSITIVE.CURRENT",
+      "LS14.P4.C16.NEGATIVE.CURRENT",
+      "LS14.P4.C17.POSITIVE.CURRENT"
+    ],
+    "LS14.P5": [
+      "LS14.P5.C01.POSITIVE.CURRENT",
+      "LS14.P5.C02.POSITIVE.CURRENT",
+      "LS14.P5.C03.NEGATIVE.CURRENT",
+      "LS14.P5.C04.NEGATIVE.CURRENT",
+      "LS14.P5.C05.POSITIVE.CURRENT"
+    ],
+    "LS14.P6": [
+      "LS14.P6.C01.NEGATIVE.CURRENT",
+      "LS14.P6.C02.POSITIVE.CURRENT",
+      "LS14.P6.C03.NEGATIVE.CURRENT",
+      "LS14.P6.C04.POSITIVE.CURRENT"
+    ],
+    "VC04.P2": [
+      "VC04.P2.C01.POSITIVE.CURRENT",
+      "VC04.P2.C02.NEGATIVE.CURRENT",
+      "VC04.P2.C03.POSITIVE.CURRENT",
+      "VC04.P2.C07.POSITIVE.CURRENT",
+      "VC04.P2.C08.NEGATIVE.CURRENT",
+      "VC04.P2.C11.NEGATIVE.CURRENT",
+      "VC04.P2.C12.NEGATIVE.CURRENT",
+      "VC04.P2.C13.NEGATIVE.CURRENT",
+      "VC04.P2.C14.NEGATIVE.CURRENT"
+    ],
+    "WF08.P2": [
+      "WF08.P2.S01.POSITIVE.CURRENT",
+      "WF08.P2.S01.NEGATIVE.CURRENT"
+    ],
+    "LS05.P8": [
+      "LS05.P8.S01.POSITIVE.CURRENT",
+      "LS05.P8.S01.NEGATIVE.CURRENT"
+    ],
+    "LS02.P3": [
+      "LS02.P3.S01.POSITIVE.CURRENT",
+      "LS02.P3.S01.NEGATIVE.CURRENT"
+    ],
+    "LS11.P5": [
+      "LS11.P5.S01.POSITIVE.CURRENT",
+      "LS11.P5.S01.NEGATIVE.CURRENT"
+    ],
+    "LS11.P4": [
+      "LS11.P4.S01.POSITIVE.CURRENT",
+      "LS11.P4.S01.NEGATIVE.CURRENT"
+    ],
+    "LS05.P6": [
+      "LS05.P6.S01.POSITIVE.CURRENT",
+      "LS05.P6.S01.NEGATIVE.CURRENT"
+    ],
+    "LS02.P4": [
+      "LS02.P4.S01.POSITIVE.CURRENT",
+      "LS02.P4.S01.NEGATIVE.CURRENT"
+    ],
+    "LS05.P7": [
+      "LS05.P7.S01.POSITIVE.CURRENT",
+      "LS05.P7.S01.NEGATIVE.CURRENT"
+    ],
+    "LS01.P3": [
+      "LS01.P3.C01.POSITIVE.CURRENT",
+      "LS01.P3.C02.NEGATIVE.CURRENT"
+    ],
+    "LS02.P5": [
+      "LS02.P5.C03.POSITIVE.CURRENT",
+      "LS02.P5.C04.NEGATIVE.CURRENT"
+    ],
+    "LS11.P6": [
+      "LS11.P6.C05.POSITIVE.CURRENT",
+      "LS11.P6.C06.NEGATIVE.CURRENT",
+      "LS11.P6.C07.POSITIVE.CURRENT"
+    ],
+    "VC04.P4": [
+      "VC04.P4.C01.NEGATIVE.CURRENT",
+      "VC04.P4.C02.POSITIVE.CURRENT",
+      "VC04.P4.C03.POSITIVE.CURRENT",
+      "VC04.P4.C04.POSITIVE.CURRENT"
+    ],
+    "VC07.P4": [
+      "VC07.P4.C01.NEGATIVE.CURRENT",
+      "VC07.P4.C02.POSITIVE.CURRENT",
+      "VC07.P4.C03.POSITIVE.CURRENT",
+      "VC07.P4.C04.POSITIVE.CURRENT"
+    ]
+  }
 }

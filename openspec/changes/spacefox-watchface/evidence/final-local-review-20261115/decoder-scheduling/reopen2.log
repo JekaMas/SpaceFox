@@ -1,0 +1,12 @@
+OPEN_INSTALLED uuid=71dbbbd6-15e7-48cf-87e0-4f3053b55a50 push=false port=1235
+ORDINARY_REOPEN seeded=true totalMemory=126784
+ORDINARY_REQUEST totalMemory=126784
+
+Error: Unexpected Type Error
+Details: Failed invoking <symbol>
+Stack: 
+  - chunk() at /out/qualified/src/NativeSfr.mc:43 0x500051c8 
+  - step() at /out/qualified/src/NativeSfr.mc:73 0x1000832d 
+  - step() at /out/qualified/src/NativeSfr.mc:171 0x5000cb08 
+  - sfrStep() at /out/qualified/src/SpaceFoxView.mc:228 0x10006d04 
+OPEN_INSTALLED_END push=false

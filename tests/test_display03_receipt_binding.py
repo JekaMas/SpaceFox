@@ -514,3 +514,96 @@ class CurrentPrecisionCompositionTest(unittest.TestCase):
         data=(PRECISION/'native.log').read_bytes()
         with self.assertRaisesRegex(AssertionError,'precision observation incomplete'):
             validate_precision_log(data.replace(b'low=T- 00:02',b'low=T- 00:01'))
+
+EQUIV = ROOT/'openspec/changes/spacefox-watchface/evidence/final-local-review-20261115/current-outline-equivalence'
+PHASES = ROOT/'openspec/changes/spacefox-watchface/evidence/final-local-review-20261115/current-fullmap-phases'
+HISTORICAL_LOW = ROOT/'openspec/changes/spacefox-watchface/evidence/final-local-review-20261115/historical-low-recovery'
+
+
+def validate_outline_equivalence(first, second, log):
+    if first != second or b'PHASE frame=0' not in log or b'PHASE frame=1' not in log or b'EQUIVALENCE_COMPLETE' not in log:
+        raise AssertionError('bundled outline equivalence changed')
+
+
+def validate_low_timing(log):
+    import re
+    found=re.findall(rb'ORDINARY_COMPLETE elapsedMs=(\d+) map=true selection=true totalMemory=126784',log)
+    if len(found)!=1 or not 0<int(found[0])<8000 or b'push=false' not in log or b'BUNDLE_MATCH value=true' not in log:
+        raise AssertionError('current full-scene timing changed')
+
+
+def validate_low_recovery_history():
+    record=json.loads((HISTORICAL_LOW/'receipt.json').read_text())
+    for label,case in record['records'].items():
+        if case['buildExit']!=0 or case['launcherExit']!=143:
+            raise AssertionError('historical recovery exit changed')
+        if hashlib.sha256(json.dumps(case['productionSources'],sort_keys=True).encode()).hexdigest()!=case['sourceSetSha256']:
+            raise AssertionError('historical recovery source set changed')
+        for name,digest in case['productionSources'].items():
+            if hashlib.sha256((HISTORICAL_LOW/'sources'/(name+'.txt')).read_bytes()).hexdigest()!=digest:
+                raise AssertionError('historical recovery source changed: '+name)
+        probe=(HISTORICAL_LOW/label/'Probe.mc.txt').read_bytes()
+        log=(HISTORICAL_LOW/label/'native.log').read_bytes()
+        if hashlib.sha256(probe).hexdigest()!=case['probeSha256'] or hashlib.sha256(log).hexdigest()!=case['logSha256']:
+            raise AssertionError('historical recovery receipt changed')
+        marker=b'stagedMalformed=true' if label=='green-ordinary3' else b'stagedStaleSource=true'
+        for text in (marker,b'REVIEW_BG_CALLBACK mode=1',b'REVIEW_RESTORE pending=true',b'phase=foreground-restore-complete',b'NATIVE_SCHEDULE now='):
+            if text not in log: raise AssertionError('historical recovery marker changed')
+
+
+def validate_low_phases():
+    from tools.spacefox.native_profile import png_pixels
+    receipt=json.loads((PHASES/'receipt.json').read_text())
+    for language,start in (('en',0),('ru',4)):
+        sets=[]
+        for i,item in enumerate(receipt['images'][language]['phases']):
+            raw=(PHASES/('phase-'+str(start+i)+'.png')).read_bytes()
+            if hashlib.sha256(raw).hexdigest()!=item['sha256']: raise AssertionError('LOW phase changed')
+            width,height,pixels=png_pixels(raw)
+            lit={j//4 for j in range(0,len(pixels),4) if (j//4%width-195)**2+(j//4//width-195)**2<190**2 and max(pixels[j:j+3])>0}
+            if (width,height)!=(390,390) or len(lit)!=item['lit_inner_circle'] or len(lit)>=11945: raise AssertionError('LOW pixel budget changed')
+            sets.append(lit)
+        if set.intersection(*sets): raise AssertionError('LOW phase intersection changed')
+    mask=(ROOT/'watchface/resources/drawables/AodRestMask.png').read_bytes()
+    if hashlib.sha256(mask).hexdigest()!=receipt['mask_sha256']: raise AssertionError('LOW mask changed')
+    import struct,zlib
+    at=8; compressed=bytearray(); dimensions=None
+    while at<len(mask):
+        size=struct.unpack('>I',mask[at:at+4])[0];kind=mask[at+4:at+8];body=mask[at+8:at+8+size]
+        if zlib.crc32(kind+body)&0xffffffff!=struct.unpack('>I',mask[at+8+size:at+12+size])[0]: raise AssertionError('LOW mask CRC changed')
+        if kind==b'IHDR': dimensions=struct.unpack('>IIBBBBB',body)
+        if kind==b'IDAT': compressed.extend(body)
+        at+=size+12
+        if kind==b'IEND': break
+    if dimensions!=(391,391,8,6,0,0,0): raise AssertionError('LOW mask dimensions changed')
+    scan=zlib.decompress(bytes(compressed));stride=391*4+1
+    if len(scan)!=391*stride: raise AssertionError('LOW mask length changed')
+    opaque=b'\x00\x00\x00\xff'; clear=b'\x00\x00\x00\x00'
+    for y in range(391):
+        expected=b'\x00'+b''.join(opaque if x%2==0 and y%2==0 else clear for x in range(391))
+        if scan[y*stride:(y+1)*stride]!=expected: raise AssertionError('LOW rest mask parity changed')
+
+
+
+class WF09CurrentCompositionTest(unittest.TestCase):
+    def test_recovery_positive(self):
+        from tools.native_decoder_stream_qualification import validate
+        catalog=json.loads((ROOT/'locales/catalog.json').read_text());validate(ROOT,catalog)
+        validate_low_recovery_history()
+        CurrentP3ReceiptTest('test_current_p3_positive').test_current_p3_positive()
+        CurrentCoreCompositionTest('test_identity_positive').test_identity_positive()
+        receipt=json.loads((EQUIV/'receipt.json').read_text())
+        for name in ('watchface/source/NativeSfr.mc','watchface/source/SpaceFoxView.mc','watchface/source/SceneRenderer.mc','watchface/source/generated/NativeAssets.mc','watchface/resources/drawables/AodRestMask.png'):
+            self.assertEqual(hashlib.sha256((ROOT/name).read_bytes()).hexdigest(),receipt['nativeInputs'][name],name)
+        files={name:(EQUIV/name).read_bytes() for name in receipt['files']}
+        for name,data in files.items(): self.assertEqual(hashlib.sha256(data).hexdigest(),receipt['files'][name],name)
+        validate_outline_equivalence(files['phase-0.png'],files['phase-1.png'],files['run2.log'])
+        proof=json.loads((ROOT/catalog['supportPolicy']['softwareQualificationProof']['decoderStreamProof']['path']).read_text())
+        validate_low_timing((ROOT/proof['ordinaryLog']['path']).read_bytes())
+        validate_low_phases()
+
+    def test_recovery_negative(self):
+        first=(EQUIV/'phase-0.png').read_bytes();second=(EQUIV/'phase-1.png').read_bytes();log=(EQUIV/'run2.log').read_bytes()
+        with self.assertRaisesRegex(AssertionError,'equivalence changed'): validate_outline_equivalence(first,second+b'x',log)
+        catalog=json.loads((ROOT/'locales/catalog.json').read_text());proof=json.loads((ROOT/catalog['supportPolicy']['softwareQualificationProof']['decoderStreamProof']['path']).read_text());timed=(ROOT/proof['ordinaryLog']['path']).read_bytes()
+        with self.assertRaisesRegex(AssertionError,'timing changed'): validate_low_timing(timed.replace(b'elapsedMs=5703',b'elapsedMs=8000'))

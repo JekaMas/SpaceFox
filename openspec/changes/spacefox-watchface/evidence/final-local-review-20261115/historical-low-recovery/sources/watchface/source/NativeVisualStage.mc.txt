@@ -1,0 +1,40 @@
+import Toybox.Lang;
+
+// Provisional immutable raw strings; semantic validation is foreground-only.
+// Raw keys prevent a failed candidate from replacing active/recovery content.
+(:extendedCode, :typecheck(false))
+class NativeVisualStage {
+    var store;var base;var manifest=null;var staging=null;
+    function initialize(adapter,url){store=adapter;base=url;}
+    function rawHash(raw){var h=new NativeWireHash();h.put(raw);return h.digest();}
+    function objectKey(hash){return "sf.obj."+hash;}
+    function validManifest(raw,packet){return manifestData(new NativeJson().parse(raw,4096),packet);}
+    function manifestData(d,packet){
+        var f=packet;f.shape(d,["schemaVersion","catalogDigest","launchId","modelId","sha256","canvas","animation","shards"],[]);
+        if(d["schemaVersion"]!=1||!f.integer(d["schemaVersion"])||!f.same(d["catalogDigest"],packet.document["catalogDigest"])||packet.launchId()==null||!f.same(d["launchId"],packet.launchId())||!f.same(d["modelId"],packet.document["launch"]["configuration_id"])||!f.hex(d["sha256"])||!(d["canvas"] instanceof Array)||d["canvas"].size()!=2||!f.integer(d["canvas"][0])||d["canvas"][0]<1||d["canvas"][0]>256||!f.integer(d["canvas"][1])||d["canvas"][1]<1||d["canvas"][1]>256||!(d["shards"] instanceof Array)||d["shards"].size()<1||d["shards"].size()>4){throw new Lang.InvalidValueException("Invalid native selection");}
+        var seen={};var decodedTotal=0;for(var i=0;i<d["shards"].size();i+=1){var r=d["shards"][i];f.shape(r,["path","sha256","decodedBytes"],[]);if(!f.hex(r["sha256"])||!f.same(r["path"],"objects/"+r["sha256"]+".json")||!f.integer(r["decodedBytes"])||r["decodedBytes"]<1||r["decodedBytes"]>4096||seen.hasKey(r["sha256"])){throw new Lang.InvalidValueException("Invalid shard reference");}seen[r["sha256"]]=true;decodedTotal+=r["decodedBytes"];if(decodedTotal>512){throw new Lang.InvalidValueException("Native visual profile decoded bound");}}return d;
+    }
+    function begin(raw,packet){staging=validManifest(raw,packet);return staging;}
+    function stored(ref,hash){
+        if(!(hash instanceof String)){return null;}var raw=store.read(objectKey(hash));if(!(raw instanceof String)||raw.length()>4096||new NativeJson().byteSize(raw)!=ref["decodedBytes"]||!rawHash(raw).equals(hash)){return null;}return raw;
+    }
+    function reuse(ref){try{return stored(ref,ref["sha256"])!=null;}catch(e){return false;}}
+    // Background only reserves bounded immutable objects. Foreground maintenance
+    // evicts unprotected entries before the next optional transfer.
+    function reserve(hash,bytes){
+        var index=store.read("sf.objects");if(index==null){index=[];}if(!(index instanceof Array)||index.size()>96){throw new Lang.InvalidValueException("Corrupt object index");}var total=bytes;
+        for(var i=0;i<index.size();i+=1){var r=index[i];if(!(r instanceof Array)||r.size()!=2||!(r[0] instanceof String)||!(r[1] instanceof Number||r[1] instanceof Long)||r[1]<1||r[1]>4096){throw new Lang.InvalidValueException("Corrupt object index row");}if(r[0].equals(hash)){if(r[1]!=bytes){throw new Lang.InvalidValueException("Object size conflict");}return;}total+=r[1];}
+        if(index.size()>=96||total>393216){throw new Lang.InvalidValueException("Cache requires foreground maintenance");}index.add([hash,bytes]);store.write("sf.objects",index);
+    }
+    function stage(index,raw){
+        if(staging==null||index<0||index>=staging["shards"].size()||!(raw instanceof String)){return false;}
+        try{var ref=staging["shards"][index];var bytes=new NativeJson().byteSize(raw);if(bytes!=ref["decodedBytes"]||bytes>4096){return false;}var hash=rawHash(raw);if(!hash.equals(ref["sha256"])){return false;}reserve(hash,bytes);store.write(objectKey(hash),raw);if(stored(ref,hash)==null){return false;}return true;}catch(e){return false;}
+    }
+    function ready(packet){
+        try{if(staging==null||!staging["catalogDigest"].equals(packet.document["catalogDigest"])||!staging["launchId"].equals(packet.launchId())||!staging["modelId"].equals(packet.document["launch"]["configuration_id"])){return false;}
+            for(var i=0;i<staging["shards"].size();i+=1){var ref=staging["shards"][i];if(stored(ref,ref["sha256"])==null){return false;}}
+            store.write("sf.visual.ready",{"v"=>1,"base"=>base,"selection"=>staging});return true;
+        }catch(e){return false;}
+    }
+    function rawFor(ref){return stored(ref,ref["sha256"]);}
+}
