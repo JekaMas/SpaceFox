@@ -150,11 +150,7 @@ actually reviewed source values before use:
 python3 -B tools/catalog.py --amend catalog/reviewed-site-correction-2.json \
   --catalog-version 2026-11-12.global.6 --output build/publisher-catalog.json \
   --report build/global-coverage.json
-python3 -B tools/export_visuals.py --output build/selected-visuals \
-  --root ll2:configuration:164 --root ll2:site:65
-python3 -B tools/build_global_map.py --site ll2:site:65 \
-  --root ll2:configuration:164 --output build/scene-2 \
-  --retain-directory build/scene-1
+python3 -B tools/build_global_map.py --audit --output build/current-site-audit.json
 ```
 
 The amendment appends a pinned new file, requires a distinct version, builds the
