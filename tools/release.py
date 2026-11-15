@@ -147,7 +147,7 @@ def source_state(root: Path) -> dict:
                              name == "assets/rocket-pack/LICENSE" or
                              name in ("tools/release.py", "tools/ReleaseInspector.java", "tools/build_watchface.py",
                                       "LICENSE", "THIRD_PARTY_NOTICES.md", "docs/AGENT_SETUP.md",
-                                      "docs/RELEASE_AND_UPDATES.md", "docs/SUPPORTED_DEVICES.md", "README.md", "TESTING.md")):
+                                      "docs/RELEASE_AND_UPDATES.md", "docs/SUPPORTED_DEVICES.md", "docs/images/simulator-fr165m-0.1.13.png", "docs/images/simulator-fr165m-low-0.1.13.png", "README.md", "TESTING.md")):
             continue
         path = root / name
         require(path.is_file() and not path.is_symlink(), "release input must be a regular tracked file: " + name)
