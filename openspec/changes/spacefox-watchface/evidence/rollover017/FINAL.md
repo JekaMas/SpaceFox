@@ -27,3 +27,11 @@ Per-frame transition I/O is zero in the native test. Queue writes occur at accep
 Author self-verification is GREEN for this incident; peer judgment and hosted/publication gates are still open. Version is 0.1.17, native ID `cad2f4d3`. Native unit program SHA-256 (decompressed) `4bb29f8d0174646194d5d7fc36f8abed9b1f7fe3934fcc519531c65c1e18657c`; stock program `f4929adcf329ca2c1eec80a3bbf3337cdb36d8d1c1b8c6be31f2b437bc07fdd7`. `admission017.json` binds the exact native source/resource closure, test and stock inputs. The published 016 receipt has SHA-256 `09e3ed20e5c7964b8d0907fe94a49c4c3ee8627bd82ab47fddfd07c2dbdd7ca7`; the bridge verifies and reconstructs its original input inventory with an exact byte delta and runs the unchanged historical validator. Initial packaging/reader failures and repairs are retained. `openspec-final.json` is strict valid. Final clean-checkpoint export `079b54a484e737a29f8cc618c39f95f7d13fb93f` contained 5,651 exact tracked inputs and passed the bound 017 admission with all five primary locales (`export-bound-final.log`); five affected exported reader/identity checks passed (`export-final-readers.log`). Peer verification and publication remain open.
 
 **Hosted activation:** after the reviewed code is on `main`, run or observe the existing serialized `.github/workflows/update-feed.yml` on the merged revision (ordinary push or `workflow_dispatch` with `bootstrap=false` and `qualify_pre_post_recovery=false`). Its `prepare → arm → deploy → promote` path must finish and live feed readback must contain validated `upcoming` rows from the accepted source generation. Recover pending intent first and preserve existing source age, quota and compare-and-swap guards; do not force provider polling or bootstrap an existing site. This author run made no live provider/deploy/Store call. Publication and independent peer verification belong to root.
+
+## Independent peer correction
+
+The peer corrected a saved-queue wake-plan omission and independently qualified
+final native ID `2e6fc8c4`. The exact affected checks, stock memory, retained
+first failure, clean exported admission and remaining root-owned gates are in
+`INDEPENDENT.md`; the older author observations above retain their original
+`cad2f4d3` binding and are historical where the native input changed.

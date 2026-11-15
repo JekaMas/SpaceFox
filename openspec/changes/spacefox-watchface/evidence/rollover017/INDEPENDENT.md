@@ -1,6 +1,6 @@
 # Independent verification and repair
 
-Status: verification in progress; final exported admission remains open.
+Status: GREEN for the independent incident verification and repair.
 
 At author commit 139696e, reviewed the producer, bounded queue, admission/rollback,
 view transition and scheduler against the incident contract and inspected retained
@@ -29,6 +29,8 @@ used 105.8/123.8 KiB, peak 121.8 KiB, with zero new resources in the last
 update. `peer-stock-*` records the simulator observation, fixture seed and exact
 program. Both SDK lanes restore 563 files and ini; no owned processes remain.
 The earlier stale-ID run is retained as diagnostic, not final evidence.
+
+Clean checkpoint `7a9009f1` exported 5,669 tracked release inputs; strict admission from the exported root qualified all five primary languages and five affected timing/version reader checks passed (`peer-export-final.log`). The subsequent record-only commit does not change exported behavior inputs.
 
 This is SDK software evidence, not physical watch delivery. The hosted serialized
 feed activation and live upcoming readback, final integration and publication are

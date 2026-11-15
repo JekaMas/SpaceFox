@@ -41,4 +41,4 @@ FR165M eight named native tests passed, including omitted/empty/restart wake and
 photo +3584; uninstrumented stock used 105.8/123.8 KiB, peak 121.8, decoded
 visual and two successors, zero new last-frame resources. SDK lanes restored.
 The first probe failure (missing readiness setup) and stale-ID diagnostic are
-retained. Strict final exported admission and root release gates remain open.
+retained. Strict admission from the clean exported checkpoint qualified all five primary languages; five affected exported timing/version readers passed. Independent peer is GREEN; root release gates remain open.
