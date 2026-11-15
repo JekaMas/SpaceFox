@@ -12,6 +12,12 @@ module SettingsMenu {
     function root(app) as [WatchUi.Views, WatchUi.InputDelegates] {
         var menu=new WatchUi.Menu2({:title=>"SpaceFox "+NativeVersion.BUILD+" "+NativeVersion.ID});var names=titles();var symbols=ids();
         for(var i=0;i<names.size();i+=1){menu.addItem(new WatchUi.MenuItem(names[i],null,symbols[i],null));}
+        // Rejected input never becomes accepted data. Explain a useful recovery
+        // path in settings without adding a persistent home-screen timestamp.
+        if(app.feed!=null&&app.feed.failure.equals("update-rejected")){
+            var help=SettingsMenuText.rejected(locale());
+            menu.addItem(new WatchUi.MenuItem(help[0],help[1],:updateRejected,null));
+        }
         return [menu,new SettingsRootDelegate(app,menu)];
     }
     function labels(index) {return SettingsMenuText.values(locale(),index==0?1:index<=4?2:3);}

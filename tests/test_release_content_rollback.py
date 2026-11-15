@@ -107,5 +107,25 @@ class ContentRollbackTest(unittest.TestCase):
                     pub.prepare(head, NOW+1, forged, digest, artifact_profile=PROFILE)
                 self.assertEqual(pub.head, head)
                 self.assertEqual(pub.ledger['selection_validated_utc'], NOW)
+                # A real empty source observation can advance selection freshness
+                # while leaving the omitted launch's own validation unchanged.
+                token = pub.reserve(pub.head, NOW+2, trigger='manual')
+                pub.accept_source(pub.head, token, (), NOW+2, selection_validated_utc=NOW+2)
+                self.assertEqual(pub.schedule.entries[0].record.source_validated_utc, NOW)
+                next_files, next_digest = build_artifact(pub.schedule, build_catalog(ROOT), NOW+2,
+                    publisher=pub.publisher_envelope(NOW+2), root=ROOT)
+                forged_record = dict(next_files); next_feed = json.loads(next_files['feed.json'])
+                next_feed['launch']['source_validated_utc'] = NOW+1
+                forged_record['feed.json'] = canonical_bytes(next_feed)
+                forged_record = with_text_transport(forged_record)
+                # It must pass packet validation, so the independent durable
+                # schedule comparison—not an unrelated schema guard—rejects it.
+                from tools.spacefox.native_motion import validate_artifact
+                validate_artifact(forged_record)
+                head = pub.head
+                with self.assertRaisesRegex(StateError, 'selected facts disagree'):
+                    pub.prepare(head, NOW+2, forged_record, next_digest, artifact_profile=PROFILE)
+                self.assertEqual(pub.head, head)
+                self.assertEqual(pub.schedule.entries[0].record.source_validated_utc, NOW)
             finally:
                 store.close()

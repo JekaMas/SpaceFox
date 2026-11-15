@@ -1,6 +1,13 @@
 import Toybox.Lang;
 // Menu text mirrors the five existing settings string resources.
 (:extendedCode, :typecheck(false)) module SettingsMenuText {
+ function rejected(locale) {
+  if(locale.equals("ru")){return ["Данные отклонены", "Проверьте URL или обновите SpaceFox"];}
+  if(locale.equals("de")){return ["Daten abgelehnt", "URL prüfen oder SpaceFox aktualisieren"];}
+  if(locale.equals("fr")){return ["Données refusées", "Vérifiez l’URL ou mettez SpaceFox à jour"];}
+  if(locale.equals("es")){return ["Datos rechazados", "Compruebe la URL o actualice SpaceFox"];}
+  return ["Feed rejected", "Check URL or update SpaceFox"];
+ }
  function values(locale,group) {
   if(locale.equals("en")) { return [["Language", "Field 1", "Field 2", "Field 3", "Field 4", "Clock color", "Countdown color", "Field 1 color", "Field 2 color", "Field 3 color", "Field 4 color", "Feed URL"], ["English", "Русский", "Deutsch", "Français", "Español", "Automatic"], ["Steps", "Body Battery", "Heart rate", "Stress", "Calories", "Watch battery"], ["Mint", "White", "Ice blue", "Lavender", "Gold", "Pink"]][group]; }
   if(locale.equals("ru")) { return [["Язык", "Поле 1", "Поле 2", "Поле 3", "Поле 4", "Цвет часов", "Цвет отсчёта", "Цвет поля 1", "Цвет поля 2", "Цвет поля 3", "Цвет поля 4", "URL данных"], ["English", "Русский", "Deutsch", "Français", "Español", "Автоматически"], ["Шаги", "Body Battery", "Пульс", "Стресс", "Калории", "Заряд часов"], ["Мятный", "Белый", "Голубой", "Сиреневый", "Золотой", "Розовый"]][group]; }
