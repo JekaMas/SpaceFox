@@ -747,3 +747,13 @@ offline READY and affected native checks pass; all 5,616 release-source inputs
 match the passing isolated export. This closes the integration software unit,
 not physical or release disposition. Main PR merge, production signing/tag and
 original-card publication/readback follow without repeating valid behavior tests.
+
+### ROLLOVER017: expired launch remains at T+59:44
+
+Owner photo shows Vulcan/Cape at T+00:59:44 instead of advancing after the
+15-minute retention. Version is not shown. Reopen the selected launch lifecycle
+under existing tasks3.2,5.1/5.2,7.2/7.3; preserve a production-bound red, repair
+the state machine and related queue/cache/refresh path, test normal event
+sequences, independent verify/fix, then regular0.1.17 release/publication.
+Scope and acceptance: [plan](evidence/rollover017/PLAN.md). No new typography,
+locale or unrelated full-suite campaign. Status: NOT DONE.
