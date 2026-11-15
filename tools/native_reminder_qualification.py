@@ -91,6 +91,10 @@ def validate(root, catalog):
     new_build = (root / 'watchface/source/generated/NativeVersion.mc').read_text().split('const ID = ')[0]
     if old_build != new_build:
         raise ValueError('visual BUILD version changed')
+    seed = read(record['observations']['storage-reopen/seed.log']).decode()
+    reopen = read(record['observations']['storage-reopen/reopen.log']).decode()
+    if 'REOPEN_SEED stored=true calls=0' not in seed or 'push=false' not in reopen or 'REOPEN_OBSERVED persisted=true calls=0 duplicateSuppressed=true' not in reopen:
+        raise ValueError('SDK storage reopen observation missing')
     binding = json.loads(read(record['observations']['native-reminder-tests/binding.json']))
     for name, expected in binding['inputs'].items():
         path = Path(name)

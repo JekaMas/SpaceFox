@@ -48,7 +48,11 @@ import Toybox.WatchUi;
  var c=new ReminderCache();reminderReady(c);var sink=new ReminderSink();LaunchReminder.wakeWith(c,999100l,true,sink.method(:post));LaunchReminder.wakeWith(c,999101l,false,sink.method(:post));Test.assertEqual(sink.calls,0);Application.Properties.setValue("LaunchReminders",0);return true;
 }
 (:test,:typecheck(false)) function identityPositive(logger){
- var c=new ReminderCache();reminderReady(c);var sink=new ReminderSink();LaunchReminder.wakeWith(c,999100l,false,sink.method(:post));LaunchReminder.wakeWith(c,999101l,false,sink.method(:post));Test.assertEqual(sink.calls,1);Application.Properties.setValue("LaunchReminders",0);return true;
+ var c=new ReminderCache();reminderReady(c);var sink=new ReminderSink();LaunchReminder.wakeWith(c,999100l,false,sink.method(:post));LaunchReminder.wakeWith(c,999101l,false,sink.method(:post));Test.assertEqual(sink.calls,1);
+ var reopened=new ReminderCache();reopened.store=c.store;LaunchReminder.wakeWith(reopened,999102l,false,sink.method(:post));Test.assertEqual(sink.calls,1);
+ var moved=reopened.store.data["sf.reminder.snapshot"];moved["target"]=1000600l;moved["since"]=999102l;moved["seal"]="two";reopened.store.data["sf.commit"]["seal"]="two";
+ LaunchReminder.wakeWith(reopened,999400l,false,sink.method(:post));Test.assertEqual(sink.calls,1);LaunchReminder.wakeWith(reopened,999700l,false,sink.method(:post));Test.assertEqual(sink.calls,2);LaunchReminder.wakeWith(reopened,999701l,false,sink.method(:post));Test.assertEqual(sink.calls,2);
+ Application.Properties.setValue("LaunchReminders",0);return true;
 }
 (:test,:typecheck(false)) function identityNegative(logger){
  var c=new ReminderCache();reminderReady(c);var sink=new ReminderSink();var s=c.store.data["sf.reminder.snapshot"];

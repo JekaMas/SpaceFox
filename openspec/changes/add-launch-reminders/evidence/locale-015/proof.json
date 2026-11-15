@@ -509,7 +509,7 @@
   "rawExit": 1,
   "nativeLog": {
     "path": "openspec/changes/add-launch-reminders/evidence/native-reminder-tests/final.log",
-    "sha256": "3f428b6f5f91a19563c13770be8e62f629a76682487272eb552229149065aa1a"
+    "sha256": "42ddda65d5592f999e1c8edcf301e76a1c5cacaea17abe4957cc8b9e77155347"
   },
   "glyphs": {
     "path": "openspec/changes/spacefox-watchface/evidence/settings-readable-013/glyphs.json",
@@ -604,7 +604,7 @@
     },
     "native-reminder-tests/binding.json": {
       "path": "openspec/changes/add-launch-reminders/evidence/native-reminder-tests/binding.json",
-      "sha256": "4cc21e3651892454507ea0ce80afa35b6b03dad72b9eabc7011f60a9a8c95959"
+      "sha256": "26c70fde3b10afcf88f253f27d07e9e31a58845ab4eb219762d5f3116431ae26"
     },
     "current-menu/run.log": {
       "path": "openspec/changes/add-launch-reminders/evidence/current-menu/run.log",
@@ -641,6 +641,26 @@
     "current-menu/test-source": {
       "path": "watchface/current-menu-tests/MenuTests.mc",
       "sha256": "3f8674a40cdcb708791eacf64d00495f00051731eaf6bcde39d6bf7c49ddedfa"
+    },
+    "storage-reopen/Probe.mc.txt": {
+      "path": "openspec/changes/add-launch-reminders/evidence/storage-reopen/Probe.mc.txt",
+      "sha256": "f4aebc4a226813706253add40c37eeab996501626185b6e53f3ea9a102d89db7"
+    },
+    "storage-reopen/RESULT.md": {
+      "path": "openspec/changes/add-launch-reminders/evidence/storage-reopen/RESULT.md",
+      "sha256": "7c01ec1fe4e4406777bb5ddc56ad3f36bf9e6e9cc4e18961a13dfd834b421ecd"
+    },
+    "storage-reopen/seed.log": {
+      "path": "openspec/changes/add-launch-reminders/evidence/storage-reopen/seed.log",
+      "sha256": "bc28c9c0cd519776c3dcf0d886b4d2572829d13750df95cad77cce4521145828"
+    },
+    "storage-reopen/reopen.log": {
+      "path": "openspec/changes/add-launch-reminders/evidence/storage-reopen/reopen.log",
+      "sha256": "5f118b7c5ff44e05a829ba637286e86f741f2836b4c101fe45760f4900c9e820"
+    },
+    "storage-reopen/compile.log": {
+      "path": "openspec/changes/add-launch-reminders/evidence/storage-reopen/compile.log",
+      "sha256": "7ea612f9df0d19181937087f1cc830c223718e92fed997287a6da47fd0ebc559"
     }
   }
 }
