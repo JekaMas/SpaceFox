@@ -1,4 +1,9 @@
-"""Source-bound reconciliation of actual FR165 SDK cache budget probes."""
+"""Reconcile original FR165 budget probes with current immutable/marker seams.
+
+Original heap/storage numbers retain their execution epoch. Exact immutable
+storage bytes and separately observed current batch-marker faults are composed;
+this is not a fresh full current resource-peak or physical-device measurement.
+"""
 import hashlib
 import json
 from pathlib import Path
@@ -26,6 +31,21 @@ class NativeCacheBudgetWholeTest(unittest.TestCase):
     def setUpClass(cls):
         verify_current()
         current = recorded_input(OWNER, json.loads((E/'abc/build.json').read_text())['productionSources'][OWNER])
+        from tests.test_current_format_acceptance import block, method
+        live = (ROOT / OWNER).read_text()
+        historical = current.decode()
+        if block(live, 'class NativeImmutable {') != block(historical, 'class NativeImmutable {'):
+            raise AssertionError('current immutable storage class changed')
+        old_batch = block(historical, 'class NativeBatch {')
+        live_batch = block(live, 'class NativeBatch {')
+        for name in ('initialize', 'text', 'pinned', 'parseIndex', 'sameRefs'):
+            if method(old_batch, name) != method(live_batch, name):
+                raise AssertionError('retained batch read/parser changed: ' + name)
+        # begin/select/next acquired serial/pending repair after the old budget
+        # run. Authenticate and read its distinct actual current fault probe.
+        from tests.test_current_data_convergence import CurrentDataConvergenceTest
+        CurrentDataConvergenceTest.setUpClass()
+        CurrentDataConvergenceTest('test_current_freshness_batch_and_context').test_current_freshness_batch_and_context()
         for directory in ('abc', 'sdk-storage', 'selected-batch'):
             build = json.loads((E / directory / 'build.json').read_text())
             if build['exitCode'] != 0 or build['productionSources'][OWNER] != digest(current):

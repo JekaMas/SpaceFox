@@ -11006,22 +11006,22 @@
     },
     "VC09.P1.S01.POSITIVE": {
       "originalGraphSourceSha256": null,
-      "publicSourceSha256": "b13fa2084094813412aaf9cd14a0bc7f7a0c4423717db896f8a64028f1539272",
+      "publicSourceSha256": "53154b0a0d7eaa2e92d5ace61dd1d2498a188847d3644286f1af4526d2df729f",
       "reason": "Missing public test port or explicitly repaired reader/composition; original raw proof hashes remain unchanged."
     },
     "VC09.P1.S01.NEGATIVE": {
       "originalGraphSourceSha256": null,
-      "publicSourceSha256": "b13fa2084094813412aaf9cd14a0bc7f7a0c4423717db896f8a64028f1539272",
+      "publicSourceSha256": "53154b0a0d7eaa2e92d5ace61dd1d2498a188847d3644286f1af4526d2df729f",
       "reason": "Missing public test port or explicitly repaired reader/composition; original raw proof hashes remain unchanged."
     },
     "VC09.P1.S02.POSITIVE": {
       "originalGraphSourceSha256": null,
-      "publicSourceSha256": "b13fa2084094813412aaf9cd14a0bc7f7a0c4423717db896f8a64028f1539272",
+      "publicSourceSha256": "53154b0a0d7eaa2e92d5ace61dd1d2498a188847d3644286f1af4526d2df729f",
       "reason": "Missing public test port or explicitly repaired reader/composition; original raw proof hashes remain unchanged."
     },
     "VC09.P1.S02.NEGATIVE": {
       "originalGraphSourceSha256": null,
-      "publicSourceSha256": "b13fa2084094813412aaf9cd14a0bc7f7a0c4423717db896f8a64028f1539272",
+      "publicSourceSha256": "53154b0a0d7eaa2e92d5ace61dd1d2498a188847d3644286f1af4526d2df729f",
       "reason": "Missing public test port or explicitly repaired reader/composition; original raw proof hashes remain unchanged."
     },
     "VC12.P1.S01.POSITIVE.CURRENT": {
@@ -12526,5 +12526,6 @@
       "canonical_binding": "unittest::tests.test_current_native_scene_whole.CurrentNativeSceneWhole.test_p3_refusal_negative",
       "reason": "Preserve separate historical public IDs/assertions; same original proof method, not a new independent behavioral observation."
     }
-  ]
+  ],
+  "budgetApplicabilityRepair": "Whole NativeImmutable.mc changed only in NativeBatch. The actual current NativeImmutable class and initialize/text/pinned/parseIndex/sameRefs bodies match original budget bytes; begin/select/next serial/pending changes use the separately source-authenticated current batch-marker fault probe. Original108888-byte heap/storage observations remain historical, not current full peaks."
 }

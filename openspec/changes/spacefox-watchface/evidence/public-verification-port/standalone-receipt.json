@@ -1,0 +1,26 @@
+{
+  "root": "/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-public-port-standalone-k08p12s9",
+  "head": "6d1133ada4a9c629a36e7c40a26191d2778b684c",
+  "clone": "--no-local --single-branch; no alternates; no .agents; no private commits",
+  "privateObjectRefusals": {
+    "c6b72aba344d0b462ec6b0a25d59e280bedc6230": 128,
+    "b9dbfd26": 128
+  },
+  "environmentKeys": [
+    "LANG",
+    "PATH",
+    "PYTHONDONTWRITEBYTECODE"
+  ],
+  "tests": [
+    "tests.test_public_proof_portability",
+    "tests.test_current_native_scene_whole",
+    "tests.test_current_ui_batch.CurrentUiBatchTest.test_current_fields_and_visuals",
+    "tests.test_current_ui_batch.CurrentUiBatchTest.test_changed_clock_owner_refused",
+    "tests.test_current_ui_batch.CurrentUiBatchTest.test_corrupt_current_capture_refused",
+    "tests.test_public_metadata_faults.PublicMetadataFaults.test_five_bad_bodies_leave_no_scratch_and_consume_exact_failed_slots",
+    "tests.test_public_case_mappings.PublicMappedCases.test_ls05_p6_s01_negative_current_proof_controls"
+  ],
+  "testExit": 0,
+  "graphExit": 0,
+  "cleanAfter": true
+}
