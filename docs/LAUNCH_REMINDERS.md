@@ -1,0 +1,7 @@
+# Launch reminders: feasibility
+
+SpaceFox does **not** currently offer launch vibration reminders. The requested option would vibrate every five minutes from one hour to ten minutes before launch, then every minute through T−1, while respecting sleep and Do Not Disturb. Its [proposed specification and open tasks](../openspec/changes/add-launch-reminders/tasks.md) remain unimplemented.
+
+Garmin's Notifications API can post an immediate system notification from a watch face or its background service on the Forerunner 165 and 165 Music. It does not document a vibration control or a queue for future notifications. Background temporal events have a five-minute minimum and share a single registration with the existing feed service. Minute watch-face updates are not established as a dependable scheduler when the screen is off or another app is active. Sleep mode and Do Not Disturb are distinct; some sleep information can be unavailable. A local FR165 SDK probe showed notification calls returning and a 60-second background interval rejected, but did not establish physical notification delivery or vibration.
+
+The [feasibility record](../openspec/changes/add-launch-reminders/evidence/FEASIBILITY.md) links Garmin's sources and describes possible future approaches and their limits. A limited system-notification feature would have a materially different contract and needs an explicit product decision. No reminder permission, menu setting or new binary has been added as a result of this investigation.
