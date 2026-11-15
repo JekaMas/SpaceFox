@@ -34,12 +34,19 @@ Remove only the uniquely named container and its owned diagnostic files when fin
 
 `build_fresh_retained.py` generates a separate one-test package for source-only
 freshness, stale-latch clearing, same-selection renderer-reference retention and
-in-memory cache reopen. Run its `output/fresh-retained/CF2.prg` with `monkeydo
+SDK Storage reopen in the same process. Run its `output/fresh-retained/CF2.prg` with `monkeydo
 ... fr165 -t` and require `freshRetainedScene PASS`; raw launcher exit 1 alone
 does not establish success. Its injected clock and store are controlled, and the
-retained renderer is a reference, not a decoded bitmap or actual Storage restart.
+retained renderer is a reference, not a decoded bitmap or process restart.
 As with the other generators, independently compare the recorded source/resource
 hashes to the intended checkout; the runner's substituted Git head is historical.
+
+`build_batch_marker_fault.py` builds `output/batch-marker-fault/CF3.prg` for
+the same framework launcher. It injects failures at the pending batch's two
+begin and two completion marker writes, checks the accepted feed seal and retry,
+and uses a technical empty transfer index solely to reach completion. It does
+not establish that this artificial index is an admissible visual closure or
+simulate physical power loss.
 
 1. **Recorded-build source applicability:** `python3 -B tests/native_scene_diagnostics/verify_binding.py --public-root "$SCENE_PUBLIC"` compares the public production sources/resources, retained generated probe sources/resources, generators/drivers and A/B fixture bytes to the recorded build bindings. It does not inspect logs, run the simulator, or check an installed SDK. It requires the historical public base in the checkout ancestry. A mismatch or missing file invalidates the affected reuse; it is not repaired by updating a digest.
 2. **Installed runtime comparison:** add `--sdk-root "$SCENE_SDK_COPY" --image "$SCENE_IMAGE"` to the preceding command. This compares the compiler, simulator, profile, API/font inputs and image ID to the historical runtime. It does not execute the SDK. A different runtime requires affected requalification. The archived SDK digest is provenance, not a fresh archive check.
