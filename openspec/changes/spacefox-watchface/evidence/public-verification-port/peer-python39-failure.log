@@ -1,0 +1,32 @@
+Traceback (most recent call last):
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/__main__.py", line 18, in <module>
+    main(module=None)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/main.py", line 100, in __init__
+    self.parseArgs(argv)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/main.py", line 147, in parseArgs
+    self.createTests()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/main.py", line 158, in createTests
+    self.test = self.testLoader.loadTestsFromNames(self.testNames,
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 220, in loadTestsFromNames
+    suites = [self.loadTestsFromName(name, module) for name in names]
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 220, in <listcomp>
+    suites = [self.loadTestsFromName(name, module) for name in names]
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 154, in loadTestsFromName
+    module = __import__(module_name)
+  File "/Users/jekamas/.local/share/SpaceFox-delivery-20261115/public-port-independent-20261115/tests/test_public_metadata_faults.py", line 12, in <module>
+    from tests import test_current_metadata_publisher as fixture
+  File "/Users/jekamas/.local/share/SpaceFox-delivery-20261115/public-port-independent-20261115/tests/test_current_metadata_publisher.py", line 16, in <module>
+    from tools.spacefox.catalog_refresh import CatalogRefresh, RefreshError
+  File "/Users/jekamas/.local/share/SpaceFox-delivery-20261115/public-port-independent-20261115/tools/spacefox/catalog_refresh.py", line 20, in <module>
+    from .provider import (Response, _NoRedirect, retry_deadline,
+  File "/Users/jekamas/.local/share/SpaceFox-delivery-20261115/public-port-independent-20261115/tools/spacefox/provider.py", line 21, in <module>
+    from .schedule import (IdKind, StableId, Timing, TimePrecision, LaunchStatus,
+  File "/Users/jekamas/.local/share/SpaceFox-delivery-20261115/public-port-independent-20261115/tools/spacefox/schedule.py", line 104, in <module>
+    class Timing:
+  File "/Users/jekamas/.local/share/SpaceFox-delivery-20261115/public-port-independent-20261115/tools/spacefox/schedule.py", line 106, in Timing
+    exact_utc: int | None = None
+TypeError: unsupported operand type(s) for |: 'type' and 'NoneType'
