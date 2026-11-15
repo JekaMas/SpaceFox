@@ -75,3 +75,15 @@ class CurrentSourceReaderTest(unittest.TestCase):
         with patch.object(Path, 'read_bytes', mutated):
             with self.assertRaisesRegex(AssertionError, 'current integration source changed'):
                 reader_module.CurrentFormatAcceptanceTest().current_ui()
+
+    def test_warm_ui_route_refuses_changed_composition_receipt(self):
+        reader = reader_module.CurrentFormatAcceptanceTest()
+        reader.current_ui()
+        target = ROOT/'openspec/changes/spacefox-watchface/evidence/display03-active-tick-wake/author-runtime/final-focused-native.log'
+        original = Path.read_bytes
+        def mutated(path):
+            raw = original(path)
+            return raw+b'changed' if path==target else raw
+        with patch.object(Path,'read_bytes',mutated):
+            with self.assertRaisesRegex(AssertionError,'observation changed'):
+                reader.current_ui()
