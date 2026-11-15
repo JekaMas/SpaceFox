@@ -12,8 +12,8 @@ and [delivery recheck](openspec/changes/spacefox-watchface/evidence/display02-pu
 The original [SpaceFox Connect IQ listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3)
 has 0.1.10 pending in publisher preview; public approval has not been observed.
 [Garmin permits owner preview and testing during review](https://developer.garmin.com/connect-iq/submit-an-app/); pending status alone does
-not establish why the last observed watch version was 0.1.6. The latest [0.1.11 signed test
-build](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.11-test.1) is a
+not establish why the last observed watch version was 0.1.6. The latest [0.1.12 signed test
+build](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.12-test.1) is a
 separate GitHub release and has not been submitted to Garmin. Neither the GitHub
 release nor simulator observations establish physical installation.
 
@@ -36,4 +36,4 @@ See [privacy](https://github.com/JekaMas/SpaceFox/blob/main/docs/PRIVACY.md), [l
 
 ## Published test builds
 
-The latest [0.1.11 signed test release](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.11-test.1) is published on GitHub. Earlier GitHub test releases include [0.1.10](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.10) and [0.1.8](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.8-test.1). Check release status and checksums before use. Match `SpaceFox-fr165m.prg` to the Forerunner 165 Music and `SpaceFox-fr165.prg` to the standard model. For the current USB transfer steps and the phone/pairing distinction, see [0.1.11 installation](release/INSTALLATION.md). Physical delivery and the incident remain open until the executing version and actual device behavior are observed.
+The latest [0.1.12 signed test release](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.12-test.1) is published on GitHub. Earlier GitHub test releases include [0.1.11](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.11-test.1), [0.1.10](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.10) and [0.1.8](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.8-test.1). Check release status and checksums before use. Match `SpaceFox-fr165m.prg` to the Forerunner 165 Music and `SpaceFox-fr165.prg` to the standard model. For the current USB transfer steps and the phone/pairing distinction, see [0.1.12 installation](release/INSTALLATION.md). Physical delivery and the incident remain open until the executing version and actual device behavior are observed.

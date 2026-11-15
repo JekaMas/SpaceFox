@@ -72,9 +72,9 @@ class PublishedReleaseHistoryTest(unittest.TestCase):
             return boundary
 
     def test_actual_public_identity_artifact_and_acceptance_boundary(self):
-        self.assertEqual(self.latest['version'], '0.1.11')
+        self.assertEqual(self.latest['version'], '0.1.12')
         self.assertEqual(self.latest['package_sha256'],
-                         'f498d9953c00bf0d120286dcefb42ae0ec7b142841b82acbcf12b4b015b04ee9')
+                         '283864f66833b47b2afa0c016948d892c7ecc65ababf5bd72f76f0495551c989')
         self.assertEqual(self.previous['version'], self.latest['version'])
         self.assertEqual(self.previous['package_sha256'], self.latest['package_sha256'])
         self.assertEqual(self.previous['application_uuid'],
@@ -85,17 +85,17 @@ class PublishedReleaseHistoryTest(unittest.TestCase):
                          self.latest['original_receipt_sha256'])
         prg = self.previous_path.parent / self.previous['packages']['fr165m']['path']
         self.assertEqual(hashlib.sha256(prg.read_bytes()).hexdigest(),
-                         '4607c1fdcf8eb6051b9458e2c1831ff36ecde5bbd41f2b5ce0c7b758347a8d60')
+                         '579f3c40857aec48d73255daa17148c5e866ed1c225b514263cb0d081af7d016')
         self.assertFalse(self.previous['official_release'])
         self.assertFalse(self.previous['publication_ready'])
         self.assertEqual(self.latest['kind'], 'github_test_prerelease')
-        self.assertEqual(self.latest['tag'], 'v0.1.11-test.1')
-        self.assertEqual(self.latest['url'], 'https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.11-test.1')
+        self.assertEqual(self.latest['tag'], 'v0.1.12-test.1')
+        self.assertEqual(self.latest['url'], 'https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.12-test.1')
         self.assertEqual(self.latest['source_revision'], self.previous['source_revision'])
 
     def test_missing_prior_receipt_refused(self):
         with self.assertRaisesRegex(BuildBlocked, 'committed latest release receipt/package'):
-            self.admit('0.1.12', None)
+            self.admit('0.1.13', None)
 
     def test_different_prior_version_refused(self):
         # Retain the real IQ bytes so this reaches committed history comparison.
@@ -106,14 +106,21 @@ class PublishedReleaseHistoryTest(unittest.TestCase):
         path = directory / 'release.json'
         path.write_text(json.dumps(previous))
         with self.assertRaisesRegex(BuildBlocked, 'committed latest release receipt/package'):
-            self.admit('0.1.12', path)
+            self.admit('0.1.13', path)
 
     def test_same_or_lower_native_version_refused(self):
-        for version in ('0.1.11', '0.1.1', '0.1.0'):
+        for version in ('0.1.12', '0.1.11', '0.1.1'):
             with self.subTest(version=version):
                 with self.assertRaisesRegex(BuildBlocked, 'strictly increase'):
                     self.admit(version, self.previous_path)
 
+    def test_wrong_key_refused_for_actual_predecessor(self):
+        tree = ET.parse(ROOT / 'watchface/manifest.xml')
+        app = tree.getroot().find('iq:application', NS)
+        app.set('version', '0.1.13')
+        with self.assertRaisesRegex(BuildBlocked, 'identity/key changed'):
+            release.validate_previous(self.previous, app, '0' * 64)
+
     def test_higher_version_passes_history_admission_only(self):
         with self.assertRaises(ExportBoundaryReached):
-            self.admit('0.1.12', self.previous_path)
+            self.admit('0.1.13', self.previous_path)

@@ -12,9 +12,19 @@ module SettingsMenu {
     function root(app) as [WatchUi.Views, WatchUi.InputDelegates] {
         var menu=new WatchUi.Menu2({:title=>"SpaceFox "+NativeVersion.BUILD+" "+NativeVersion.ID});var names=titles();var symbols=ids();
         for(var i=0;i<names.size();i+=1){menu.addItem(new WatchUi.MenuItem(names[i],null,symbols[i],null));}
+        // Rejected input never becomes accepted data. Explain a useful recovery
+        // path in settings without adding a persistent home-screen timestamp.
+        if(app.feed!=null&&app.feed.failure.equals("update-rejected")){
+            var help=SettingsMenuText.rejected(locale());
+            menu.addItem(new WatchUi.MenuItem(help[0],help[1],:updateRejected,null));
+        }
         return [menu,new SettingsRootDelegate(app,menu)];
     }
     function labels(index) {return SettingsMenuText.values(locale(),index==0?1:index<=4?2:3);}
+    function refreshRejection(menu) {
+        var index=menu.findItemById(:updateRejected);
+        if(index>=0){var help=SettingsMenuText.rejected(locale());var item=menu.getItem(index);item.setLabel(help[0]);item.setSubLabel(help[1]);}
+    }
     function apply(app,key,value){Application.Properties.setValue(key,value);app.onSettingsChanged();}
 }
 (:extendedCode, :typecheck(false))
@@ -33,7 +43,7 @@ class SettingsRootDelegate extends WatchUi.Menu2InputDelegate {
 class SettingsChoiceDelegate extends WatchUi.Menu2InputDelegate {
     var app;var index;var rootMenu;
     function initialize(owner,which,menu){Menu2InputDelegate.initialize();app=owner;index=which;rootMenu=menu;}
-    function onSelect(item){var i=SettingsMenu.ids().indexOf(item.getId());if(i<0||i>=6){return;}SettingsMenu.apply(app,SettingsMenu.keys()[index],index==0&&i==5?36:i);if(index==0){var labels=SettingsMenu.titles();for(var n=0;n<labels.size();n+=1){rootMenu.getItem(n).setLabel(labels[n]);}}WatchUi.popView(WatchUi.SLIDE_DOWN);}
+    function onSelect(item){var i=SettingsMenu.ids().indexOf(item.getId());if(i<0||i>=6){return;}SettingsMenu.apply(app,SettingsMenu.keys()[index],index==0&&i==5?36:i);if(index==0){var labels=SettingsMenu.titles();for(var n=0;n<labels.size();n+=1){rootMenu.getItem(n).setLabel(labels[n]);}SettingsMenu.refreshRejection(rootMenu);}WatchUi.popView(WatchUi.SLIDE_DOWN);}
     function onBack(){WatchUi.popView(WatchUi.SLIDE_DOWN);}
 }
 (:extendedCode, :typecheck(false))

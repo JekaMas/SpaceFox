@@ -1,6 +1,6 @@
 # Installation and testing
 
-For the current incident and released versions see [TESTING](../TESTING.md). The filename is retained for existing links; this guide is in English. The original Garmin app has 0.1.10 submitted and pending; the latest GitHub test build is 0.1.11 and has not been submitted to Garmin. Neither is an observed corrected physical installation or a Garmin Store approval.
+For the current incident and released versions see [TESTING](../TESTING.md). The filename is retained for existing links; this guide is in English. The original Garmin app has 0.1.10 submitted and pending; the latest GitHub test build is 0.1.12 and has not been submitted to Garmin. Neither is an observed corrected physical installation or a Garmin Store approval.
 
 The local PRG route tests the exact binary independently; it does not establish Garmin Store update delivery, and settings and cache survival are unknown. To try a signed test program on a watch, verify its checksum and model, connect the watch to a computer using a data cable, copy the matching `.prg` into `GARMIN/APPS` over USB/MTP, eject safely and select SpaceFox on the watch. Choose `fr165m` for Forerunner 165 Music and `fr165` for Forerunner 165. A phone cannot install a local `.prg` or `.iq` by tapping it; `.iq` is the developer export. Pairing through Garmin Connect supplies the normal communications path; pairing alone does not install that local file. Do not invent a `.SET` file or assume settings survive an install route change.
 

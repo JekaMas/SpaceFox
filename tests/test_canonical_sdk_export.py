@@ -46,7 +46,7 @@ class CanonicalSdkExport(unittest.TestCase):
             self.assertEqual(receipt["products"], ["fr165", "fr165m", "fr170", "fr170m", "fr57042mm", "fr70", "venu3s", "venu441mm", "vivoactive6", "fr965"])
             self.assertEqual(receipt["languages"], ["eng", "rus", "deu", "fre", "spa"])
             self.assertEqual(receipt["minimum_api"], "5.1.0")
-            self.assertEqual(receipt["version"], "0.1.11")
+            self.assertEqual(receipt["version"], "0.1.12")
             self.assertEqual(receipt["permissions"], ["SensorHistory", "Communications", "Background"])
             self.assertEqual(receipt["update"]["kind"], "initial")
             for field in ("official_release", "publication_ready", "production_identity"):

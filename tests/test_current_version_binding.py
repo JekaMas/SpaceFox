@@ -12,7 +12,7 @@ class CurrentVersionBindingTest(unittest.TestCase):
             def altered(path):
                 data = original(path)
                 if path.as_posix().endswith('watchface/source/generated/NativeVersion.mc'):
-                    return data.replace(b'ID = "c718deaa"', replacement)
+                    return data.replace(b'ID = "225e279c"', replacement)
                 return data
             with self.subTest(replacement=replacement), patch.object(Path, 'read_bytes', altered):
                 with self.assertRaisesRegex(AssertionError, 'NativeVersion.mc'):
