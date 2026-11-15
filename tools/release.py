@@ -643,6 +643,46 @@ def build_release(output: Path, *, key: Path, root: Path = ROOT, mode: str = "ca
         raise
 
 
+def review_publication(record: dict) -> dict:
+    """Validate a bounded review declaration; never certify Garmin approval.
+
+    This is release preparation, not a runtime age check or legal adjudication.
+    Keep personal ages out of the declaration and retain the actual review separately.
+    """
+    require(isinstance(record, dict), "publication review must be an object")
+    allowed = {"publisher", "account_age_condition", "audience_review",
+               "audience_review_reference", "store_status", "claimed_exemption"}
+    require(set(record) == allowed, "publication review has missing or private/unknown fields")
+    require(record["publisher"] == "adult_owner_own_account" and
+            record["account_age_condition"] == "confirmed",
+            "official publisher/account eligibility must be confirmed")
+    require(record["store_status"] in ("not_submitted", "pending"),
+            "Store approval cannot be inferred from a review declaration")
+    require(record["claimed_exemption"] == "none",
+            "adult publisher or sideload is not an audience exemption")
+    require(record["audience_review"] in ("pending", "no_applicable_restriction", "resolved"),
+            "audience/use review status invalid")
+    ref = record["audience_review_reference"]
+    require(isinstance(ref, str) and (record["audience_review"] == "pending" or bool(ref.strip())),
+            "completed audience/use review needs a reference")
+    return {"implementation_blocked_by_unknown_viewer_age": False,
+            "account_age_condition": "confirmed", "audience_review": record["audience_review"],
+            "store_status": record["store_status"], "store_approved": False,
+            "publication_ready": False}
+
+
+def publication_review_main(arguments: list[str]) -> int:
+    parser = argparse.ArgumentParser(description="Validate a non-private release-review declaration")
+    parser.add_argument("record", type=Path)
+    args = parser.parse_args(arguments)
+    try:
+        print(json.dumps(review_publication(json.loads(args.record.read_text())), indent=2))
+        return 0
+    except (BuildBlocked, OSError, ValueError, TypeError) as exc:
+        print("BLOCKED: " + str(exc), file=sys.stderr)
+        return 2
+
+
 def custody_main(arguments: list[str]) -> int:
     parser = argparse.ArgumentParser(description="External SpaceFox signing custody; never prints secrets")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -671,6 +711,8 @@ def custody_main(arguments: list[str]) -> int:
 
 
 def main() -> int:
+    if len(sys.argv) > 1 and sys.argv[1] == "publication-review":
+        return publication_review_main(sys.argv[2:])
     if len(sys.argv) > 1 and sys.argv[1] in ("custody-init", "custody-restore"):
         return custody_main(sys.argv[1:])
     parser = argparse.ArgumentParser(description=__doc__)

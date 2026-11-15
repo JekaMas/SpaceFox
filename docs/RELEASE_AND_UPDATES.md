@@ -31,3 +31,21 @@ The candidate packaging tool requires a clean source revision, the existing exte
 Official mode additionally validates supplied key-backup and restore evidence; it does not independently establish custody. Keep keys, recovery passwords and protected backups outside Git, data jobs and Pages. Existing local restore evidence is bounded to one Mac, not offsite disaster recovery. Use the existing identity for updates and never replace a lost key with a newly generated identity while claiming continuity.
 
 Publisher generations, application versions, catalog revisions and source-validation timestamps are distinct. A catalog build or HTTP response alone does not refresh source age. Data updates stage the complete compatible current-format closure, validate digests and use atomic activation/recovery; deployment and hosted scheduling require their own observations. A watch update needs a newly signed binary, while compatible data changes do not. Preserve the open 0.1.7 incident and check the executing version rather than inferring installation from a queue.
+
+A local, optional `python3 -B tools/release.py publication-review REVIEW.json`
+checks a non-private review declaration before release planning. It accepts only
+`publisher`, `account_age_condition`, `audience_review`,
+`audience_review_reference`, `store_status`, and `claimed_exemption` fields.
+The publisher/account values are `adult_owner_own_account` and `confirmed`;
+audience review is `pending`, `no_applicable_restriction`, or `resolved`, with a
+nonempty review reference for the latter two. Store status is `not_submitted` or
+`pending`, and the exemption value is `none`. Do not put personal ages or other
+private facts in this file or its reference. The command checks the declaration's
+shape and refuses an asserted approval or exemption; it does not authenticate a
+review reference, decide eligibility, perform Store review, or establish readiness.
+A signed candidate remains a candidate. Garmin's [developer agreement](https://developer.garmin.com/downloads/connect-iq/sdks/agreement.html)
+requires an adult developer account for submission; its separate [review guideline §1(f)](https://developer.garmin.com/connect-iq/articles/app-review-guidelines/Overview.html)
+addresses apps designed for children under 13 and qualifies its general-audience
+exception when such use is known. Recheck the current terms and the truthful
+facts at release review; an adult publisher or PRG installation is not an
+exemption.
