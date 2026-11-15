@@ -12,7 +12,7 @@
       "id": "LS02",
       "capability": "launch-schedule",
       "title": "Automatic bounded refresh",
-      "fingerprint": "7064190438629159c9d2db1f69922a951adb43d42b735a6f6f4eadb434d1f9dc"
+      "fingerprint": "ff1cfbbc49417ca69fc16befcc38152a1075700e6840a7ace7514f3dfa7162d6"
     },
     {
       "id": "LS03",
@@ -300,7 +300,7 @@
       "id": "WF09",
       "capability": "watchface",
       "title": "Qualified AMOLED always-on display",
-      "fingerprint": "b4114fc3fa2b36094d7da11c6b17592f6a4d5e58800b92a10d4dfdc776c71d95"
+      "fingerprint": "39488c22df7c8d707c596cd392fc9910ab7f8e82949ec048367481d3a8878f09"
     },
     {
       "id": "WF10",
@@ -4594,7 +4594,7 @@
       "property_id": "LS02.P1",
       "polarity": "positive",
       "scenario": "Connected refresh",
-      "scenario_fingerprint": "a353c6167471a380cf7b923ec6d8dcc32fadd1cc322773186f1dd7ad9bc2661f",
+      "scenario_fingerprint": "70625f659b06c19ebe52927f235da4e56963d97370ffeab4508951df8d138442",
       "setup": "paired FR165, accepted snapshot A at UTC1800000000 then valid B at1800003600, background event due",
       "observable": "B becomes the accepted schedule without manual refresh or on-watch provider credentials",
       "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: B becomes the accepted schedule without manual refresh or on-watch provider credentials",
@@ -4644,7 +4644,7 @@
       "property_id": "LS02.P1",
       "polarity": "negative",
       "scenario": "Connected refresh",
-      "scenario_fingerprint": "a353c6167471a380cf7b923ec6d8dcc32fadd1cc322773186f1dd7ad9bc2661f",
+      "scenario_fingerprint": "70625f659b06c19ebe52927f235da4e56963d97370ffeab4508951df8d138442",
       "setup": "phone disconnects during B transfer after A was accepted",
       "observable": "A survives and time/countdown continue locally; no partial B or foreground request",
       "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: A survives and time/countdown continue locally; no partial B or foreground request",
@@ -8211,7 +8211,7 @@
       },
       "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review. Current specification binding only; remains unexecuted and confers no new acceptance.",
       "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; exact native tests/compiles have not yet been implemented or executed. Physical-device proof remains absent.",
-      "source_sha256": "ca3f2f8f2c792d134c439223ce11c6e2537962c89bc4c611a751ddc242ec5a12",
+      "source_sha256": "9393bb9025c82fc5cb825fe93479f8eee60f31ffc99718be4b05385118146b86",
       "implementation_note": "Current portable receipt checks executed locally; original tests/receipts remain historical and do not establish current full-DAG passage. Current 8-case source-bound receipt-control module passed locally after adding current 304, freshness, batch and context evidence; prior structural selector SHA ca3f2f8f2c792d134c439223ce11c6e2537962c89bc4c611a751ddc242ec5a12. No new SDK execution.",
       "distinct_reason": "Scenario New launch arrives before optional artwork: VC14.P1 selects B fallback, unmatched projection and no old raster, or preservation through optional-work refusal. Shared receipt suite contains separately named observations; neither edge alone claims the other requirement or physical acceptance."
     },
@@ -8264,7 +8264,7 @@
       },
       "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review. Current specification binding only; remains unexecuted and confers no new acceptance.",
       "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; exact native tests/compiles have not yet been implemented or executed. Physical-device proof remains absent.",
-      "source_sha256": "ca3f2f8f2c792d134c439223ce11c6e2537962c89bc4c611a751ddc242ec5a12",
+      "source_sha256": "9393bb9025c82fc5cb825fe93479f8eee60f31ffc99718be4b05385118146b86",
       "implementation_note": "Current portable receipt checks executed locally; original tests/receipts remain historical and do not establish current full-DAG passage. Current 8-case source-bound receipt-control module passed locally after adding current 304, freshness, batch and context evidence; prior structural selector SHA ca3f2f8f2c792d134c439223ce11c6e2537962c89bc4c611a751ddc242ec5a12. No new SDK execution.",
       "distinct_reason": "Scenario New launch arrives before optional artwork: VC14.P1 selects B fallback, unmatched projection and no old raster, or preservation through optional-work refusal. Shared receipt suite contains separately named observations; neither edge alone claims the other requirement or physical acceptance."
     },
@@ -10255,7 +10255,7 @@
       "property_id": "WF09.P1",
       "polarity": "positive",
       "scenario": "Enter always-on mode",
-      "scenario_fingerprint": "3f5353b32850df0151da2d781e0489118a17ccb4256abe935ff88d588de5dd15",
+      "scenario_fingerprint": "80b0442f0bd04c6ba81ff58adf8090e8f73373489f705b3fa71c729cd5045aec",
       "setup": "actualAMOLEDEnterSleep withlongtime/countdown/statussamplesandknownpixelcount",
       "observable": "sparseminuteupdatesstaywithin10percenttargetpixelsandburninrules",
       "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: sparseminuteupdatesstaywithin10percenttargetpixelsandburninrules",
@@ -10298,7 +10298,7 @@
       "property_id": "WF09.P1",
       "polarity": "negative",
       "scenario": "Enter always-on mode",
-      "scenario_fingerprint": "3f5353b32850df0151da2d781e0489118a17ccb4256abe935ff88d588de5dd15",
+      "scenario_fingerprint": "80b0442f0bd04c6ba81ff58adf8090e8f73373489f705b3fa71c729cd5045aec",
       "setup": "fullmap/seconds/rocketframeleftlit orunknown-timewideglyphstateexceedsbudget",
       "observable": "pixel/lifecyclequalificationfails;noinferencefrombrowserdarknessorMIPpartialupdate",
       "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: pixel/lifecyclequalificationfails;noinferencefrombrowserdarknessorMIPpartialupdate",
@@ -10558,7 +10558,7 @@
         ]
       },
       "planning_note": "A future exact identity, not an implemented source or observed product test.",
-      "source_sha256": "ca3f2f8f2c792d134c439223ce11c6e2537962c89bc4c611a751ddc242ec5a12",
+      "source_sha256": "9393bb9025c82fc5cb825fe93479f8eee60f31ffc99718be4b05385118146b86",
       "implementation_note": "Current portable source-bound receipt control executed locally. Original moreSourceIdentity unconditional null point assertion is retired, not reinterpreted; the preserved original cases and raw execution remain historical. Scenario fingerprint updated only for relocation of the already-consolidated contract clauses into an existing scenario; this case proves only its stated conjunct and its original source-bound execution is unchanged. Current 8-case source-bound receipt-control module passed locally after adding current 304, freshness, batch and context evidence; prior structural selector SHA ca3f2f8f2c792d134c439223ce11c6e2537962c89bc4c611a751ddc242ec5a12. No new SDK execution.",
       "distinct_reason": "Scenario Unsupported or inconsistent snapshot: LS05.P2 selects parser/UTC/reschedule and independent post-parse site identity, or malformed/regressive/fault admission. Shared receipt suite contains separately named observations; neither edge alone claims the other requirement or physical acceptance."
     },
@@ -10612,7 +10612,7 @@
         ]
       },
       "planning_note": "A future exact identity, not an implemented source or observed product test.",
-      "source_sha256": "ca3f2f8f2c792d134c439223ce11c6e2537962c89bc4c611a751ddc242ec5a12",
+      "source_sha256": "9393bb9025c82fc5cb825fe93479f8eee60f31ffc99718be4b05385118146b86",
       "implementation_note": "Current portable source-bound receipt control executed locally. Original moreSourceIdentity unconditional null point assertion is retired, not reinterpreted; the preserved original cases and raw execution remain historical. Scenario fingerprint updated only for relocation of the already-consolidated contract clauses into an existing scenario; this case proves only its stated conjunct and its original source-bound execution is unchanged. Current 8-case source-bound receipt-control module passed locally after adding current 304, freshness, batch and context evidence; prior structural selector SHA ca3f2f8f2c792d134c439223ce11c6e2537962c89bc4c611a751ddc242ec5a12. No new SDK execution.",
       "distinct_reason": "Scenario Unsupported or inconsistent snapshot: LS05.P2 selects parser/UTC/reschedule and independent post-parse site identity, or malformed/regressive/fault admission. Shared receipt suite contains separately named observations; neither edge alone claims the other requirement or physical acceptance."
     },
@@ -13989,7 +13989,7 @@
       ],
       "test_id": "unittest::tests.test_current_global_context.CurrentGlobalContextTest.test_exact_current_context_and_archive_positive",
       "command_id": "current-global-context",
-      "state": "planned",
+      "state": "implemented",
       "substitution": {
         "classification": "NO_TEST_DOUBLE",
         "owner_replaced": "None: temporary files are explicit inputs to actual catalog/context/map owners.",
@@ -14001,8 +14001,8 @@
         "allowed_proof": "Local typed closure, atomic input validation and selected rendering."
       },
       "source_path": "tests/test_current_global_context.py",
-      "source_sha256": "9fccde2eb0920b5371ba590331e1350b121082625fb33fc683e57a43bba401e5",
-      "planning_note": "Owning source/assertion changed for map-only cutover; historical receipt is retained and this case awaits direct current verification."
+      "source_sha256": "b0667489432538863aa744d0e504d5a2cc6d5b34860a8ab565e54b4344b62c0e",
+      "implementation_note": "Owning source/assertion changed for map-only cutover; historical receipt is retained and this case awaits direct current verification."
     },
     {
       "id": "VC01.P5.C02.NEGATIVE",
@@ -14026,7 +14026,7 @@
       ],
       "test_id": "unittest::tests.test_current_global_context.CurrentGlobalContextTest.test_empty_corrupt_and_unbound_context_negative",
       "command_id": "current-global-context",
-      "state": "planned",
+      "state": "implemented",
       "substitution": {
         "classification": "NO_TEST_DOUBLE",
         "owner_replaced": "None: temporary files are explicit inputs to actual catalog/context/map owners.",
@@ -14038,8 +14038,8 @@
         "allowed_proof": "Local typed closure, atomic input validation and selected rendering."
       },
       "source_path": "tests/test_current_global_context.py",
-      "source_sha256": "9fccde2eb0920b5371ba590331e1350b121082625fb33fc683e57a43bba401e5",
-      "planning_note": "Owning source/assertion changed for map-only cutover; historical receipt is retained and this case awaits direct current verification."
+      "source_sha256": "b0667489432538863aa744d0e504d5a2cc6d5b34860a8ab565e54b4344b62c0e",
+      "implementation_note": "Owning source/assertion changed for map-only cutover; historical receipt is retained and this case awaits direct current verification."
     },
     {
       "id": "VC01.P5.C03.POSITIVE",
@@ -14063,7 +14063,7 @@
       ],
       "test_id": "unittest::tests.test_current_global_context.CurrentGlobalContextTest.test_origin_amendment_and_selection_independence_positive",
       "command_id": "current-global-context",
-      "state": "planned",
+      "state": "implemented",
       "substitution": {
         "classification": "NO_TEST_DOUBLE",
         "owner_replaced": "None: temporary files are explicit inputs to actual catalog/context/map owners.",
@@ -14075,8 +14075,8 @@
         "allowed_proof": "Local typed closure, atomic input validation and selected rendering."
       },
       "source_path": "tests/test_current_global_context.py",
-      "source_sha256": "9fccde2eb0920b5371ba590331e1350b121082625fb33fc683e57a43bba401e5",
-      "planning_note": "Owning source/assertion changed for map-only cutover; historical receipt is retained and this case awaits direct current verification. Scenario fingerprint updated only for relocation of the already-consolidated contract clauses into an existing scenario; this case proves only its stated conjunct and its original source-bound execution is unchanged."
+      "source_sha256": "b0667489432538863aa744d0e504d5a2cc6d5b34860a8ab565e54b4344b62c0e",
+      "implementation_note": "Owning source/assertion changed for map-only cutover; historical receipt is retained and this case awaits direct current verification. Scenario fingerprint updated only for relocation of the already-consolidated contract clauses into an existing scenario; this case proves only its stated conjunct and its original source-bound execution is unchanged."
     },
     {
       "id": "VC01.P5.C04.NEGATIVE",
@@ -14100,7 +14100,7 @@
       ],
       "test_id": "unittest::tests.test_current_global_context.CurrentGlobalContextTest.test_invalid_origin_amendment_is_atomic_negative",
       "command_id": "current-global-context",
-      "state": "planned",
+      "state": "implemented",
       "substitution": {
         "classification": "NO_TEST_DOUBLE",
         "owner_replaced": "None: temporary files are explicit inputs to actual catalog/context/map owners.",
@@ -14112,8 +14112,8 @@
         "allowed_proof": "Local typed closure, atomic input validation and selected rendering."
       },
       "source_path": "tests/test_current_global_context.py",
-      "source_sha256": "9fccde2eb0920b5371ba590331e1350b121082625fb33fc683e57a43bba401e5",
-      "planning_note": "Owning source/assertion changed for map-only cutover; historical receipt is retained and this case awaits direct current verification. Scenario fingerprint updated only for relocation of the already-consolidated contract clauses into an existing scenario; this case proves only its stated conjunct and its original source-bound execution is unchanged."
+      "source_sha256": "b0667489432538863aa744d0e504d5a2cc6d5b34860a8ab565e54b4344b62c0e",
+      "implementation_note": "Owning source/assertion changed for map-only cutover; historical receipt is retained and this case awaits direct current verification. Scenario fingerprint updated only for relocation of the already-consolidated contract clauses into an existing scenario; this case proves only its stated conjunct and its original source-bound execution is unchanged."
     },
     {
       "id": "VC01.P5.C05.POSITIVE",
@@ -14152,7 +14152,7 @@
       ],
       "test_id": "unittest::tests.test_current_global_context.CurrentGlobalContextTest.test_tracked_context_source_closure_positive_and_negative",
       "command_id": "current-source-closure-whole",
-      "state": "planned",
+      "state": "implemented",
       "substitution": {
         "classification": "NO_TEST_DOUBLE",
         "owner_replaced": "None: actual runtime CLI, temporary committed Git repository and source bytes; expected closure comes from independent stdlib JSON/Git traversal.",
@@ -14164,8 +14164,8 @@
         "allowed_proof": "Exact local sparse runtime/source byte closure and preactivation refusal; no source truth, hosted or native execution acceptance."
       },
       "source_path": "tests/test_current_global_context.py",
-      "source_sha256": "9fccde2eb0920b5371ba590331e1350b121082625fb33fc683e57a43bba401e5",
-      "planning_note": "Owning source/assertion changed for map-only cutover; historical receipt is retained and this case awaits direct current verification."
+      "source_sha256": "b0667489432538863aa744d0e504d5a2cc6d5b34860a8ab565e54b4344b62c0e",
+      "implementation_note": "Owning source/assertion changed for map-only cutover; historical receipt is retained and this case awaits direct current verification."
     },
     {
       "id": "VC20.P1.C02.NEGATIVE.CURRENT",
@@ -14634,7 +14634,7 @@
       "property_id": "WF09.P3",
       "polarity": "positive",
       "scenario": "Enter always-on mode",
-      "scenario_fingerprint": "3f5353b32850df0151da2d781e0489118a17ccb4256abe935ff88d588de5dd15",
+      "scenario_fingerprint": "80b0442f0bd04c6ba81ff58adf8090e8f73373489f705b3fa71c729cd5045aec",
       "setup": "Owned UUID, pinnedSDKfr165, ordinary126784B/background61248B; actual temporal events; controlled-clock four-phase pixel probe separately labeled.",
       "observable": "Low rejection yields same guarded sparse AOD; prior seal and source survive Off/High/reopen, actual current timing remains under8000ms, four-phase intersection0.",
       "red_expectation": "Missing low callback/guard/restore, changed seal, bad native test profile, over8000ms or repeated same-position pixels refuses.",
@@ -14668,7 +14668,7 @@
       "property_id": "WF09.P3",
       "polarity": "negative",
       "scenario": "Enter always-on mode",
-      "scenario_fingerprint": "3f5353b32850df0151da2d781e0489118a17ccb4256abe935ff88d588de5dd15",
+      "scenario_fingerprint": "80b0442f0bd04c6ba81ff58adf8090e8f73373489f705b3fa71c729cd5045aec",
       "setup": "Owned UUID, pinnedSDKfr165, ordinary126784B/background61248B; actual temporal events; controlled-clock four-phase pixel probe separately labeled.",
       "observable": "Low rejection yields same guarded sparse AOD; prior seal and source survive Off/High/reopen, actual current timing remains under8000ms, four-phase intersection0.",
       "red_expectation": "Missing low callback/guard/restore, changed seal, bad native test profile, over8000ms or repeated same-position pixels refuses.",
@@ -20314,7 +20314,7 @@
       "property_id": "LS02.P3",
       "polarity": "positive",
       "scenario": "Connected refresh",
-      "scenario_fingerprint": "a353c6167471a380cf7b923ec6d8dcc32fadd1cc322773186f1dd7ad9bc2661f",
+      "scenario_fingerprint": "70625f659b06c19ebe52927f235da4e56963d97370ffeab4508951df8d138442",
       "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
       "observable": "At the current owner, observe this exact retained contract: Native elapsed UTC source-age, inclusive15min near window, optional>=300 fast, slept-through stale latch and same-ID reschedule transitions; no timer counters.. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
       "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
@@ -20356,7 +20356,7 @@
       "property_id": "LS02.P3",
       "polarity": "negative",
       "scenario": "Connected refresh",
-      "scenario_fingerprint": "a353c6167471a380cf7b923ec6d8dcc32fadd1cc322773186f1dd7ad9bc2661f",
+      "scenario_fingerprint": "70625f659b06c19ebe52927f235da4e56963d97370ffeab4508951df8d138442",
       "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
       "observable": "At the current owner, observe this exact retained contract: Native elapsed UTC source-age, inclusive15min near window, optional>=300 fast, slept-through stale latch and same-ID reschedule transitions; no timer counters.. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
       "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
@@ -20734,7 +20734,7 @@
       "property_id": "LS02.P4",
       "polarity": "positive",
       "scenario": "Connected refresh",
-      "scenario_fingerprint": "a353c6167471a380cf7b923ec6d8dcc32fadd1cc322773186f1dd7ad9bc2661f",
+      "scenario_fingerprint": "70625f659b06c19ebe52927f235da4e56963d97370ffeab4508951df8d138442",
       "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
       "observable": "At the current owner, observe this exact retained contract: Production scene context, countdown, status and cached graphics redraw do not fetch/read Storage/rebuild resources; settings/AOD stop animation.. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
       "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
@@ -20776,7 +20776,7 @@
       "property_id": "LS02.P4",
       "polarity": "negative",
       "scenario": "Connected refresh",
-      "scenario_fingerprint": "a353c6167471a380cf7b923ec6d8dcc32fadd1cc322773186f1dd7ad9bc2661f",
+      "scenario_fingerprint": "70625f659b06c19ebe52927f235da4e56963d97370ffeab4508951df8d138442",
       "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
       "observable": "At the current owner, observe this exact retained contract: Production scene context, countdown, status and cached graphics redraw do not fetch/read Storage/rebuild resources; settings/AOD stop animation.. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
       "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
@@ -21126,7 +21126,7 @@
       "property_id": "LS02.P5",
       "polarity": "positive",
       "scenario": "Connected refresh",
-      "scenario_fingerprint": "a353c6167471a380cf7b923ec6d8dcc32fadd1cc322773186f1dd7ad9bc2661f",
+      "scenario_fingerprint": "70625f659b06c19ebe52927f235da4e56963d97370ffeab4508951df8d138442",
       "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
       "observable": "At the current owner, observe this exact retained contract: nonterminal omissions use budget before any terminal history. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
       "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
@@ -21173,7 +21173,7 @@
       "property_id": "LS02.P5",
       "polarity": "negative",
       "scenario": "Connected refresh",
-      "scenario_fingerprint": "a353c6167471a380cf7b923ec6d8dcc32fadd1cc322773186f1dd7ad9bc2661f",
+      "scenario_fingerprint": "70625f659b06c19ebe52927f235da4e56963d97370ffeab4508951df8d138442",
       "setup": "Use actual captured real launch/catalog/page records and the sole current schema3 SFR1M /feed.json, packed schema2 authority and fixed schema3 metadata20/20/100/100 with pads ordering=id where applicable. Mutate only technical identity/time/policy/size/integrity/failure fields; preserve exact display strings. No old builder/profile/parser/authority migration or frozen-archive gate.",
       "observable": "At the current owner, observe this exact retained contract: optional detail refusals keep primary and old facts with consumed slot. Use current-format records/closure only; old-format observations cannot satisfy this binding.",
       "red_expectation": "The retained scenario-specific prohibited outcome, or changed accepted state/source age/quota/identity/resource bounds outside its authorized operation, fails this current-format witness.",
@@ -26310,7 +26310,7 @@
       "property_id": "WF09.P4",
       "polarity": "positive",
       "scenario": "Enter always-on mode",
-      "scenario_fingerprint": "3f5353b32850df0151da2d781e0489118a17ccb4256abe935ff88d588de5dd15",
+      "scenario_fingerprint": "80b0442f0bd04c6ba81ff58adf8090e8f73373489f705b3fa71c729cd5045aec",
       "setup": "Current SDK source-bound animation or AOD observation.",
       "observable": "Four actual AOD view/Graphics frames use distinct seconds-bearing snapshots and each lights at most 10% of the circular display; active animation is stopped.",
       "red_expectation": "Out-of-bound duration, missing phase, or stale/corrupt source evidence refuses.",
@@ -26366,7 +26366,7 @@
       "property_id": "WF09.P4",
       "polarity": "negative",
       "scenario": "Enter always-on mode",
-      "scenario_fingerprint": "3f5353b32850df0151da2d781e0489118a17ccb4256abe935ff88d588de5dd15",
+      "scenario_fingerprint": "80b0442f0bd04c6ba81ff58adf8090e8f73373489f705b3fa71c729cd5045aec",
       "setup": "Current SDK source-bound animation or AOD observation.",
       "observable": "The bounded pixel-limit control refuses empty frames and values exceeding the exact 10-percent limit.",
       "red_expectation": "The pixel guard fails if it admits an empty frame or an over-10-percent frame.",
@@ -26776,7 +26776,7 @@
       "command_id": "current-timing-convergence-controls",
       "state": "implemented",
       "source_path": "tests/test_current_timing_convergence.py",
-      "source_sha256": "60b1cd29253c0b6e541d7b3c72311560138ddbd1878c6f6725a1578b1818e9ea",
+      "source_sha256": "d8dc47443dac101e2b9966dc373a85ff489f0cf469f62d2b22b15d38e59f245c",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "No physical watch or phone; native execution is the retained source-bound simulator receipt.",
@@ -26809,7 +26809,7 @@
       "command_id": "current-timing-convergence-controls",
       "state": "implemented",
       "source_path": "tests/test_current_timing_convergence.py",
-      "source_sha256": "60b1cd29253c0b6e541d7b3c72311560138ddbd1878c6f6725a1578b1818e9ea",
+      "source_sha256": "d8dc47443dac101e2b9966dc373a85ff489f0cf469f62d2b22b15d38e59f245c",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "No physical watch or phone; native execution is the retained source-bound simulator receipt.",
@@ -33193,7 +33193,7 @@
       },
       "distinct_reason": "Earlier launch added: complete current whole-unit method includes named native assertion/actualframe/host boundary; see handoff case map, oldcontradictionssupersedednotpassed.",
       "source_path": "tests/test_final_native_timing_settings.py",
-      "source_sha256": "2560880b214c3e1b8a49faabea3e9a44fd25c93beb11545f7df1972fab493a46",
+      "source_sha256": "d6787bdf913e4ec72ed1f2454bda65599d3c7ba5196fd7d7da94d21634293263",
       "implementation_note": "Current SFR1M typed-root and producer selection reconciliation: evidence/watch-refresh-cache-whole/independent-minute-r1/FINAL.md; old scene receipt is historical. Structural source selector update: Selected method AST unchanged from 6f7b964c; shared file or helper changed. This binds the current selector only, not the earlier execution. Original source SHA cd5ba63b42b1c9b50d5d5fc2f08f9ff13a4b72282b1a46caaf1e9b2f38a281ce. Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
     {
@@ -33278,7 +33278,7 @@
       },
       "distinct_reason": "Earlier launch added: complete current whole-unit method includes named native assertion/actualframe/host boundary; see handoff case map, oldcontradictionssupersedednotpassed.",
       "source_path": "tests/test_final_native_timing_settings.py",
-      "source_sha256": "2560880b214c3e1b8a49faabea3e9a44fd25c93beb11545f7df1972fab493a46",
+      "source_sha256": "d6787bdf913e4ec72ed1f2454bda65599d3c7ba5196fd7d7da94d21634293263",
       "implementation_note": "Current SFR1M typed-root and producer selection reconciliation: evidence/watch-refresh-cache-whole/independent-minute-r1/FINAL.md; old scene receipt is historical. Structural source selector update: Selected method AST unchanged from 6f7b964c; shared file or helper changed. This binds the current selector only, not the earlier execution. Original source SHA cd5ba63b42b1c9b50d5d5fc2f08f9ff13a4b72282b1a46caaf1e9b2f38a281ce. Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
     {
@@ -33363,7 +33363,7 @@
       },
       "distinct_reason": "Estimated time passes without confirmation: complete current whole-unit method includes named native assertion/actualframe/host boundary; see handoff case map, oldcontradictionssupersedednotpassed.",
       "source_path": "tests/test_final_native_timing_settings.py",
-      "source_sha256": "2560880b214c3e1b8a49faabea3e9a44fd25c93beb11545f7df1972fab493a46",
+      "source_sha256": "d6787bdf913e4ec72ed1f2454bda65599d3c7ba5196fd7d7da94d21634293263",
       "implementation_note": "Current SFR1M typed-root and producer selection reconciliation: evidence/watch-refresh-cache-whole/independent-minute-r1/FINAL.md; old scene receipt is historical. Structural source selector update: Selected method AST unchanged from 6f7b964c; shared file or helper changed. This binds the current selector only, not the earlier execution. Original source SHA cd5ba63b42b1c9b50d5d5fc2f08f9ff13a4b72282b1a46caaf1e9b2f38a281ce. Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
     {
@@ -33448,7 +33448,7 @@
       },
       "distinct_reason": "Estimated time passes without confirmation: complete current whole-unit method includes named native assertion/actualframe/host boundary; see handoff case map, oldcontradictionssupersedednotpassed.",
       "source_path": "tests/test_final_native_timing_settings.py",
-      "source_sha256": "2560880b214c3e1b8a49faabea3e9a44fd25c93beb11545f7df1972fab493a46",
+      "source_sha256": "d6787bdf913e4ec72ed1f2454bda65599d3c7ba5196fd7d7da94d21634293263",
       "implementation_note": "Current SFR1M typed-root and producer selection reconciliation: evidence/watch-refresh-cache-whole/independent-minute-r1/FINAL.md; old scene receipt is historical. Structural source selector update: Selected method AST unchanged from 6f7b964c; shared file or helper changed. This binds the current selector only, not the earlier execution. Original source SHA cd5ba63b42b1c9b50d5d5fc2f08f9ff13a4b72282b1a46caaf1e9b2f38a281ce. Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
     {
@@ -33533,7 +33533,7 @@
       },
       "distinct_reason": "Postponement overrides elapsed retention: complete current whole-unit method includes named native assertion/actualframe/host boundary; see handoff case map, oldcontradictionssupersedednotpassed.",
       "source_path": "tests/test_final_native_timing_settings.py",
-      "source_sha256": "2560880b214c3e1b8a49faabea3e9a44fd25c93beb11545f7df1972fab493a46",
+      "source_sha256": "d6787bdf913e4ec72ed1f2454bda65599d3c7ba5196fd7d7da94d21634293263",
       "implementation_note": "Current SFR1M typed-root and producer selection reconciliation: evidence/watch-refresh-cache-whole/independent-minute-r1/FINAL.md; old scene receipt is historical. Structural source selector update: Selected method AST unchanged from 6f7b964c; shared file or helper changed. This binds the current selector only, not the earlier execution. Original source SHA cd5ba63b42b1c9b50d5d5fc2f08f9ff13a4b72282b1a46caaf1e9b2f38a281ce. Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
     {
@@ -33618,7 +33618,7 @@
       },
       "distinct_reason": "Postponement overrides elapsed retention: complete current whole-unit method includes named native assertion/actualframe/host boundary; see handoff case map, oldcontradictionssupersedednotpassed.",
       "source_path": "tests/test_final_native_timing_settings.py",
-      "source_sha256": "2560880b214c3e1b8a49faabea3e9a44fd25c93beb11545f7df1972fab493a46",
+      "source_sha256": "d6787bdf913e4ec72ed1f2454bda65599d3c7ba5196fd7d7da94d21634293263",
       "implementation_note": "Current SFR1M typed-root and producer selection reconciliation: evidence/watch-refresh-cache-whole/independent-minute-r1/FINAL.md; old scene receipt is historical. Structural source selector update: Selected method AST unchanged from 6f7b964c; shared file or helper changed. This binds the current selector only, not the earlier execution. Original source SHA cd5ba63b42b1c9b50d5d5fc2f08f9ff13a4b72282b1a46caaf1e9b2f38a281ce. Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
     {
@@ -33642,7 +33642,7 @@
       "command_id": "current-timing-convergence-controls",
       "state": "implemented",
       "source_path": "tests/test_current_timing_convergence.py",
-      "source_sha256": "60b1cd29253c0b6e541d7b3c72311560138ddbd1878c6f6725a1578b1818e9ea",
+      "source_sha256": "d8dc47443dac101e2b9966dc373a85ff489f0cf469f62d2b22b15d38e59f245c",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "No physical watch or phone; native execution is the retained source-bound simulator receipt.",
@@ -33675,7 +33675,7 @@
       "command_id": "current-timing-convergence-controls",
       "state": "implemented",
       "source_path": "tests/test_current_timing_convergence.py",
-      "source_sha256": "60b1cd29253c0b6e541d7b3c72311560138ddbd1878c6f6725a1578b1818e9ea",
+      "source_sha256": "d8dc47443dac101e2b9966dc373a85ff489f0cf469f62d2b22b15d38e59f245c",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "No physical watch or phone; native execution is the retained source-bound simulator receipt.",
@@ -33692,7 +33692,7 @@
       "property_id": "WF09.P2",
       "polarity": "positive",
       "scenario": "Enter always-on mode",
-      "scenario_fingerprint": "3f5353b32850df0151da2d781e0489118a17ccb4256abe935ff88d588de5dd15",
+      "scenario_fingerprint": "80b0442f0bd04c6ba81ff58adf8090e8f73373489f705b3fa71c729cd5045aec",
       "setup": "Use actual captured real launch/catalog/page records in sole-current schema3/SFR1M /feed.json, current packed2 authority and fixed schema3 metadata20/20/100/100 plus pads ordering=id where applicable; mutate technical fields only and retain exact display text. No retired builder/profile/parser/policy/old archive.",
       "observable": "Separate sparse minute-only scene without full map, clock seconds or animation; numeric countdown seconds remain visible and update only at permitted minute snapshots; SDK bitmap lit pixels/burn-in rotation observation, physical rules remain planned.",
       "red_expectation": "Reject contradictory/missing real execution or wrong visible/native output; incomplete physical edges remain incomplete.",
@@ -33767,7 +33767,7 @@
       "property_id": "WF09.P2",
       "polarity": "negative",
       "scenario": "Enter always-on mode",
-      "scenario_fingerprint": "3f5353b32850df0151da2d781e0489118a17ccb4256abe935ff88d588de5dd15",
+      "scenario_fingerprint": "80b0442f0bd04c6ba81ff58adf8090e8f73373489f705b3fa71c729cd5045aec",
       "setup": "Use actual captured real launch/catalog/page records in sole-current schema3/SFR1M /feed.json, current packed2 authority and fixed schema3 metadata20/20/100/100 plus pads ordering=id where applicable; mutate technical fields only and retain exact display text. No retired builder/profile/parser/policy/old archive.",
       "observable": "Separate sparse minute-only scene without full map, clock seconds or animation; numeric countdown seconds remain visible and update only at permitted minute snapshots; SDK bitmap lit pixels/burn-in rotation observation, physical rules remain planned.",
       "red_expectation": "Reject contradictory/missing real execution or wrong visible/native output; incomplete physical edges remain incomplete.",

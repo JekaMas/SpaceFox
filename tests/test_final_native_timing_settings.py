@@ -1,20 +1,15 @@
-"""Whole final timer/selection/settings unit with actual source-bound SDK evidence.
+"""Current selection controls with retained selected-scene observations.
 
-No native countdown implementation is duplicated on the host. Exact literal
-values, forbidden identities/states, actual Properties callbacks and cold reopen
-are the oracle. Retained finite fonts/corpus keep their original observation.
+Obsolete native/settings receipt wrappers were retired; their original results
+remain historical. Current clock and UI controls own their bounded observations.
 """
 from copy import deepcopy
 from dataclasses import replace
-import hashlib
 import json
 from pathlib import Path
-import tempfile
 import unittest
-from xml.etree import ElementTree as ET
 
-from tools.native_timing_settings import EVIDENCE, ROOT, NATIVE, validate_evidence
-from tools.run_native_tests import parse_output
+from tools.native_timing_settings import EVIDENCE, ROOT
 from tools.spacefox.schedule import (LaunchStatus, ScheduleState, Timing, TimePrecision,
     advance_schedule, merge_schedule, select_next, ScheduleError)
 from tools.spacefox.wire import project_schedule, validate_current_feed
@@ -36,42 +31,13 @@ class FinalNativeTimingSettingsTest(unittest.TestCase):
 
     feed=basic_launch.BasicLaunchLogicTest.feed
 
-    def clock(self,*names):
-        # Explicit current native16 assertion receipt replaces only the former
-        # clock receipt reader; the host assertions below execute unchanged.
-        return self.native(*names)
 
-    def exact_feed_native(self):
-        return self.native('finalTimingPositive','finalParserUpdatePositive')
 
     def scene(self,*names):
         # Exact old receipt/source inputs plus separately named current seams.
         from tests.retained_scene_reader import observe_scene
         observe_scene(*names)
 
-    def native(self,*names):
-        result=json.loads((self.evidence/'unit/unit-result.json').read_text())
-        build=json.loads((self.evidence/'unit/build.json').read_text())
-        self.assertEqual(build['exitCode'],0)
-        binding=json.loads((self.evidence/'clean-source.json').read_text())
-        self.assertEqual(binding['status'],'passed')
-        self.assertEqual(binding['productionSources'],build['productionSources'])
-        self.assertEqual(binding['productionResources'],build['productionResources'])
-        for name,digest in {**build['productionSources'],**build['productionResources']}.items():
-            # NativeFeed gained a bounded ascent field. The retained run binds
-            # its old byte snapshot; strict admission independently validates
-            # that snapshot and the current parser's targeted SDK assertions.
-            source = self.evidence/'observer/production-snapshot'/Path(name+'.txt') if name in ('watchface/source/NativeFeed.mc','watchface/source/NativeJson.mc') else ROOT/name
-            self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(),digest,name)
-        from tools.native_language_policy import software_locales
-        self.assertEqual(software_locales(ROOT),['en','ru','de','fr','es'])
-        self.assertEqual(build['assertionSha256'],hashlib.sha256((ROOT/'tests/fixtures/final_native_timing_settings/Assertions.mc').read_bytes()).hexdigest())
-        self.assertEqual(build['clockAssertionSha256'],hashlib.sha256((ROOT/'watchface/tests/NativeClockTests.mc').read_bytes()).hexdigest())
-        raw=(self.evidence/'unit/native-tests.log').read_text()
-        observed=parse_output(raw,result['raw_exit_code'],NATIVE)
-        self.assertEqual(observed['status'],'passed')
-        for name in names:self.assertEqual(observed['observed_tests'][name],'PASS')
-        return raw,result
 
     def test_selection_positive(self):
         from tests.test_sourced_ascent_end import SourcedAscentEndTest
@@ -156,81 +122,8 @@ class FinalNativeTimingSettingsTest(unittest.TestCase):
         self.assertEqual(lone.entry.record.launch_id.value,VULCAN)
         with self.assertRaises(ScheduleError):Timing(TimePrecision.EXACT,exact_utc=True)
 
-    def test_native_positive(self):
-        basic_launch.BasicLaunchLogicTest.test_exact_positive(self)
-        basic_launch.BasicLaunchLogicTest.test_uncertain_positive(self)
-        basic_launch.BasicLaunchLogicTest.test_provider_precision_positive(self)
-        self.native('clockExactPositive','offlineWakePositive','precisionTransitions','clockAdapterSmoke','formatLocalSettings','finalTimingPositive','finalParserUpdatePositive')
-        from tools.native_language_policy import software_locales
-        self.assertEqual(software_locales(ROOT),['en','ru','de','fr','es'])
-        result=json.loads((self.evidence/'native-result.json').read_text())
-        self.assertEqual(result['observedFrames'],20)
-        self.assertEqual(set(result['locales']),{'en','ru'})
-        self.assertEqual(result['geometryStatus'],'passed')
 
-    def test_native_negative(self):
-        basic_launch.BasicLaunchLogicTest.test_uncertain_negative(self)
-        basic_launch.BasicLaunchLogicTest.test_provider_precision_negative(self)
-        basic_launch.BasicLaunchLogicTest.test_minute_negative(self)
-        raw,result=self.native('clockExactNegative','uncertaintyPositive','uncertaintyNegative','offlineWakeNegative','emptyStartup','finalTimingNegative','finalParserUpdateNegative')
-        self.assertEqual(parse_output(raw.replace('finalTimingNegative','wrongTiming'),result['raw_exit_code'],NATIVE)['status'],'failed')
-        # Reproduce the root counterexample as a technical permutation of
-        # actual observed pixels/OCR: elapsed899 placed under a zero label.
-        # Hashes are updated consistently so only the semantic pixel oracle can
-        # reject it; no invented display text or digit corrections.
-        import shutil
-        from tools.native_timing_settings import validate_pixel_readback
-        with tempfile.TemporaryDirectory() as t:
-            folder=Path(t);shutil.copytree(self.evidence/'frames',folder/'frames')
-            for name in ('pixel-readback.json','pixel-ocr-first2.jsonl','pixel-ocr-remaining18.jsonl'):
-                shutil.copyfile(self.evidence/name,folder/name)
-            target=folder/'frames/held-en-zero.png';target.write_bytes((folder/'frames/held-en-elapsed899.png').read_bytes())
-            association=json.loads((folder/'pixel-readback.json').read_text())
-            next(row for row in association['frames'] if row['label']=='en-zero')['pngSha256']=hashlib.sha256(target.read_bytes()).hexdigest()
-            (folder/'pixel-readback.json').write_text(json.dumps(association))
-            rows=[json.loads(line) for line in (folder/'pixel-ocr-remaining18.jsonl').read_text().splitlines()]
-            elapsed=next(row for row in rows if Path(row['file']).name=='held-en-elapsed899.png')
-            next(row for row in rows if Path(row['file']).name=='held-en-zero.png')['observations']=deepcopy(elapsed['observations'])
-            (folder/'pixel-ocr-remaining18.jsonl').write_text('\n'.join(json.dumps(row) for row in rows)+'\n')
-            with self.assertRaisesRegex(ValueError,'actual countdown pixels disagree with label: en-zero'):
-                validate_pixel_readback(folder)
-        # Source-bound evidence itself must reject missing native state coverage.
-        with tempfile.TemporaryDirectory() as t:
-            p=Path(t);(p/'native-result.json').write_text(json.dumps({'status':'failed'}))
-            with self.assertRaises((ValueError,FileNotFoundError)):validate_evidence(p)
 
-    def test_settings_positive(self):
-        self.native('finalSettingsPositive')
-        from tools.native_language_policy import software_locales
-        self.assertEqual(software_locales(ROOT),['en','ru','de','fr','es'])
-        result=json.loads((self.evidence/'native-result.json').read_text())
-        self.assertTrue(result['coldReopenObserved'])
-        props=ET.parse(ROOT/'watchface/resources/settings/properties.xml').getroot()
-        self.assertEqual(next(x.text for x in props if x.get('id')=='Language'),'0')
-        self.assertEqual({x.get('id') for x in props},{'Field1','Field2','Field3','Field4','Language','ClockColor','CountdownColor','Field1Color','Field2Color','Field3Color','Field4Color','FeedBaseUrl'})
-        menus=ET.parse(ROOT/'watchface/resources/settings/settings.xml').getroot()
-        language=next(x for x in menus if x.get('propertyKey')=='@Properties.Language')
-        self.assertEqual({int(x.get('value')) for x in language.find('settingConfig')},{0,1,2,3,4,36})
-        from tools.native_language_policy import software_locales
-        self.assertEqual(software_locales(ROOT),['en','ru','de','fr','es'])
-        from tests.test_native_localization import NativeLocalizationResourcesTest
-        resource_test=NativeLocalizationResourcesTest()
-        resource_test.test_all36_and_settings_preserved()
-        resource_test.test_generation_is_complete_and_repeatable()
-        from tests.test_native_finite_evidence import NativeFiniteEvidenceTest
-        NativeFiniteEvidenceTest().test_actual_finite_primary_software_receipt_admits_without_human_flags()
 
-    def test_settings_negative(self):
-        self.native('finalSettingsNegative')
-        for color in (0x7FE7C6,0xF7F9FC,0x9AD5FF,0xCDB7FF,0xFFD686,0xFFAFCF):
-            def linear(c):return c/12.92 if c<=0.04045 else ((c+0.055)/1.055)**2.4
-            rgb=[linear(((color>>shift)&255)/255) for shift in (16,8,0)]
-            contrast=(sum(a*b for a,b in zip(rgb,(0.2126,0.7152,0.0722)))+0.05)/0.05
-            self.assertGreaterEqual(contrast,4.5)  # black contour heuristic only
-        from tests.test_native_finite_evidence import NativeFiniteEvidenceTest
-        NativeFiniteEvidenceTest('test_rehashed_native_log_probe_sdk_and_corpus_corruptions_refuse').test_rehashed_native_log_probe_sdk_and_corpus_corruptions_refuse()
-        resource=ET.parse(ROOT/'watchface/resources/settings/settings.xml').getroot()
-        self.assertEqual(len(resource),12)
-        self.assertFalse(any(any(word in x.get('propertyKey','').lower() for word in ('layout','globe','projection','hide','format')) for x in resource))
 
 if __name__=='__main__':unittest.main()
