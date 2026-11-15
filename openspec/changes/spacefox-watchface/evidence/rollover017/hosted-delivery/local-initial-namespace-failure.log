@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/Users/jekamas/.codex/tmp/spacefox-rollover017-diagnostic.py", line 32, in <module>
+    p=recover(p,site,pages)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/rollover017-hosted-delivery-20261116/tools/spacefox/cloud.py", line 456, in recover
+    raise CloudError('deployment repository namespace mismatch')
+tools.spacefox.cloud.CloudError: deployment repository namespace mismatch

@@ -1,0 +1,12 @@
+state 9675e0f0e42297e2399ae55f106f31dad67856ff
+active 48 114 469691 pending 49 164 571887
+prior 112 union 274 bytes 864544 missing-derived 0
+groups {'objects': 91, 'descriptors': 97, 'sources': 12, 'rasters': 68, 'feed.json.txt': 1, 'wire3': 4, 'feed.json': 1}
+Traceback (most recent call last):
+  File "<stdin>", line 17, in <module>
+  File "/Users/jekamas/projects/SpaceFox-worktrees/rollover017-hosted-delivery-20261116/tools/spacefox/cloud.py", line 389, in delivery
+    delivery_files(pub, manifest)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/rollover017-hosted-delivery-20261116/tools/spacefox/cloud.py", line 326, in delivery_files
+    raise CloudError('complete delivery exceeds file bound')
+tools.spacefox.cloud.CloudError: complete delivery exceeds file bound

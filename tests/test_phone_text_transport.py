@@ -163,7 +163,7 @@ class PhoneTextTransportTest(unittest.TestCase):
         with self.assertRaisesRegex(CloudError, 'exceeds1MiB'):
             observe(524288)
         with self.assertRaisesRegex(CloudError, 'file bound'):
-            delivery_files(None, {str(n): {} for n in range(257)})
+            delivery_files(None, {str(n): {} for n in range(513)})
         # A single current generation with exactly 256 names is admitted by
         # this union layer; snapshot authenticity is the substituted boundary.
         exact = {'feed.json': b'c'}

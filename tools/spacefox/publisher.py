@@ -979,6 +979,10 @@ class Publisher:
         _snapshot(candidate)
         validate_snapshot_artifact(candidate, files, refresh_policy=doc['refresh_policy'], instance=doc['instance_id'],
                                    selection_validated_utc=doc.get('selection_validated_utc'), require_selection_epoch=True)
+        # Do not durably strand a new pending generation that cannot be exported
+        # together with the exact protected active closure.
+        from .cloud import preflight_delivery
+        preflight_delivery(self, files)
         doc['generation'], doc['pending'] = generation, candidate
         self._save(doc, durable_files)
         return _live(candidate)
