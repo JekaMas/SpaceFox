@@ -9,6 +9,7 @@ def main():
  p=argparse.ArgumentParser();p.add_argument('--public-root',required=True,type=Path);p.add_argument('--sdk-root',type=Path);p.add_argument('--image',help='local image name to check with --sdk-root');args=p.parse_args();root=args.public_root
  subprocess.run(['git','-C',str(root),'merge-base','--is-ancestor','854a5a30a5bb021d2bac3e2f799b4f6401f269af','HEAD'],check=True)
  runtime=json.loads((HERE/'runtime-binding.json').read_bytes())
+ for path,digest in {'watchface/manifest.xml':'52b637d35e827a1a7316c5e98b690237d3337093d1f86478d5cef98b7aafea5d','watchface/toolchain-lock.json':'cfcc9f1e2604466ba28df3e3b1c51d03eff89bb4914d5be0dc6154746b7da9d1','watchface/api-policy.json':'5e6b5b7999ba4fa0c3a639336d773b8433e5b8b2ae897a456843f386118f108c'}.items():assert sha(root/path)==digest,('build input',path)
  if bool(args.sdk_root)!=bool(args.image):p.error('--sdk-root and --image must be supplied together')
  if args.sdk_root:
   sdk_root=args.sdk_root; sdk=sdk_root/'Sdks/connectiq-sdk-lin-9.3.0-2026-10-20-95888f262'
