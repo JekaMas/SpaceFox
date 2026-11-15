@@ -16,7 +16,10 @@ def sha(path):
 class CurrentSfr1mReceipts(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        manifest = json.loads((RAW / 'receipt-hashes.json').read_text())
+        manifest_path = RAW / 'receipt-hashes.json'
+        if sha(manifest_path) != 'ec6360de23ceab4b92836b6aeb9da9c5625bb6e8ad076d2b76d53f634974aacb':
+            raise AssertionError('changed receipt manifest')
+        manifest = json.loads(manifest_path.read_text())
         for path, expected in manifest.items():
             if sha(RAW / path) != expected:
                 raise AssertionError('changed receipt ' + path)
