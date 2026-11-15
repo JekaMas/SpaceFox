@@ -519,7 +519,10 @@ def build_release(output: Path, *, key: Path, root: Path = ROOT, mode: str = "ca
         if latest is not None:
             require(isinstance(latest, dict) and previous_data is not None and
                     latest.get("version") == previous_data.get("version") and
-                    latest.get("package_sha256") == previous_data.get("package_sha256"),
+                    latest.get("package_sha256") == previous_data.get("package_sha256") and
+                    latest.get("source_revision") == previous_data.get("source_revision") and
+                    isinstance(latest.get("original_receipt_sha256"), str) and
+                    previous is not None and digest(previous.expanduser().resolve()) == latest["original_receipt_sha256"],
                     "production update requires the committed latest release receipt/package")
     update = validate_previous(previous_data, app, fingerprint)
     backup_info = backup_status(backup, root, fingerprint, mode == "official")
