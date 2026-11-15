@@ -269,9 +269,10 @@
   },
   "generated_inputs": {
     "openspec/changes/spacefox-watchface/evidence/final-local-review-20261115/current-p3/Probe.mc": "d5f409a639246391150fcdc350dff737d9342d662b8bc519d6ccd44aef8890fd",
-    "openspec/changes/spacefox-watchface/evidence/final-local-review-20261115/current-p3/manifest.xml": "c9e2b696bee72ac9a45b3a18def7ff64f87a134600ae9f4a09969dea1835203d",
-    "openspec/changes/spacefox-watchface/evidence/final-local-review-20261115/current-p3/resources/probe.xml": "6b68d39b8e8f7884414f633913c4200637d725fec6857844f6f0d6b771e06699"
+    "openspec/changes/spacefox-watchface/evidence/final-local-review-20261115/current-p3/resources/probe.xml": "6b68d39b8e8f7884414f633913c4200637d725fec6857844f6f0d6b771e06699",
+    "openspec/changes/spacefox-watchface/evidence/final-local-review-20261115/current-p3/manifest.xml.b64": "18643b29155fd977bf45972147b4e3391f9386b066e59d05d5b13333977673a5"
   },
   "log_sha256": "696de77fdf4886b535f18f94d0e5895349b15bd912138f4df438952291f2f32d",
-  "limitations": "8 MiB SDK test heap, simulated callback and controlled store; no physical watch, natural background scheduling, ordinary heap peak or network claim."
+  "limitations": "8 MiB SDK test heap, simulated callback and controlled store; no physical watch, natural background scheduling, ordinary heap peak or network claim.",
+  "compiled_manifest_sha256": "c9e2b696bee72ac9a45b3a18def7ff64f87a134600ae9f4a09969dea1835203d"
 }
