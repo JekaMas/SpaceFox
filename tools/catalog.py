@@ -28,7 +28,7 @@ def validate_artwork_sources(root, catalog):
         build_pack(root, catalog, roots=identities[offset:offset+LIMITS['selectionRoots']])
 
 
-def amend_recipe(root, source, supplement, version, *, output_paths=(), contexts=None):
+def amend_recipe(root, source, supplement, version, *, output_paths=(), contexts=None, reference=None, eligibility_review=None):
     """Append a new pinned data revision; validate all inputs before activation."""
     root, source, supplement = Path(root).resolve(), Path(source).resolve(), Path(supplement).resolve()
     if not supplement.is_relative_to(root) or not supplement.is_file():
@@ -39,6 +39,26 @@ def amend_recipe(root, source, supplement, version, *, output_paths=(), contexts
     from tools.spacefox.current_catalog import load_registry, validate_registry
     previous = build_catalog(root, source)
     previous_registry = load_registry(root, previous, source_path=source)
+    if eligibility_review is not None and previous_registry is None:
+        raise CatalogError('eligibility review requires an existing registry')
+    if reference is not None:
+        reference_path = Path(reference).resolve()
+        if not reference_path.is_relative_to(root) or not reference_path.is_file():
+            raise CatalogError('reference must be a file inside the repository')
+        old_ref = loads_json((root / recipe['reference']['path']).read_bytes())
+        new_ref = loads_json(reference_path.read_bytes())
+        if not isinstance(new_ref, dict) or not isinstance(new_ref.get('models'), list):
+            raise CatalogError('invalid reference extension')
+        if any(new_ref.get(k) != v for k, v in old_ref.items() if k != 'models'):
+            raise CatalogError('reference extension must preserve prior non-model facts')
+        old_rows = {row['sourceId']: row for row in old_ref['models']}
+        if any(not isinstance(row, dict) or 'sourceId' not in row for row in new_ref['models']):
+            raise CatalogError('invalid reference extension model')
+        new_rows = {row['sourceId']: row for row in new_ref['models']}
+        if len(new_rows) != len(new_ref.get('models', [])) or any(new_rows.get(k) != v for k,v in old_rows.items()):
+            raise CatalogError('reference extension must preserve every prior model fact')
+        recipe['reference'] = {'path': reference_path.relative_to(root).as_posix(),
+                               'sha256': hashlib.sha256(reference_path.read_bytes()).hexdigest()}
     recipe.pop('eligibility', None)
     recipe.update(producerVersion=2, catalogVersion=version)
     relative = supplement.relative_to(root).as_posix()
@@ -81,6 +101,17 @@ def amend_recipe(root, source, supplement, version, *, output_paths=(), contexts
                         'sources': [facts['sourceUrl']],
                         'asOf': datetime.now(timezone.utc).date().isoformat(),
                         'uncertainty': 'No current or retired decision is inferred from this revision.'}
+            if eligibility_review is not None:
+                review_path = Path(eligibility_review).resolve()
+                if not review_path.is_relative_to(root) or not review_path.is_file():
+                    raise CatalogError('eligibility review must be a file inside the repository')
+                decisions = loads_json(review_path.read_bytes())
+                if not isinstance(decisions, dict) or not decisions:
+                    raise CatalogError('eligibility review requires explicit decisions')
+                for identity, decision in decisions.items():
+                    if identity not in records:
+                        raise CatalogError('eligibility review references unknown configuration')
+                    records[identity] = decision
             registry['records'] = records
             validate_registry(catalog, registry)
             registry_bytes = canonical_bytes(registry)
@@ -99,6 +130,8 @@ def amend_recipe(root, source, supplement, version, *, output_paths=(), contexts
         # Geometry/rights/export admission precedes source activation.
         validate_artwork_sources(root, catalog)
         protected = {source, supplement, *((root/p).resolve() for p in catalog['inputDigests'])}
+        if eligibility_review is not None:
+            protected.add(Path(eligibility_review).resolve())
         if any(p is not None and Path(p).resolve() in protected for p in output_paths):
             raise CatalogError('output would overwrite a catalog source or frozen import')
         os.replace(candidate, source); candidate = None
@@ -117,6 +150,8 @@ def main(argv=None):
     parser.add_argument('--source', type=Path)
     parser.add_argument('--output', type=Path)
     parser.add_argument('--amend', type=Path, help='append a new curation file and atomically activate its recipe pin')
+    parser.add_argument('--reference', type=Path, help='append-only reference snapshot extension with --amend')
+    parser.add_argument('--eligibility-review', type=Path, help='explicit reviewed decisions with --amend')
     parser.add_argument('--contexts', type=Path, help='pin source-dated current context data with --amend')
     parser.add_argument('--catalog-version', help='new version required with --amend')
     parser.add_argument('--report', type=Path, help='write finite coverage report')
@@ -131,14 +166,14 @@ def main(argv=None):
         for target in (args.output, args.report):
             if target is not None and target.resolve().is_relative_to(root) and not target.resolve().is_relative_to(root/'build'):
                 raise CatalogError('in-checkout derived output must stay under build/')
-        if args.contexts and not args.amend:
-            raise CatalogError('--contexts requires --amend')
+        if (args.contexts or args.reference or args.eligibility_review) and not args.amend:
+            raise CatalogError('--contexts, --reference and --eligibility-review require --amend')
         if args.amend:
             previous = build_catalog(root, args.source)
             protected_before = {args.source.resolve(), *((root / p).resolve() for p in previous['inputDigests'])}
             if any(p is not None and p.resolve() in protected_before for p in (args.output, args.report)):
                 raise CatalogError('output would overwrite a catalog source or frozen import')
-        catalog = amend_recipe(root, args.source, args.amend, args.catalog_version, output_paths=(args.output,args.report), contexts=args.contexts) if args.amend else build_catalog(root, args.source)
+        catalog = amend_recipe(root, args.source, args.amend, args.catalog_version, output_paths=(args.output,args.report), contexts=args.contexts, reference=args.reference, eligibility_review=args.eligibility_review) if args.amend else build_catalog(root, args.source)
         output = args.output.resolve() if args.output else None
         protected = {args.source.resolve(), *((root / path).resolve() for path in catalog['inputDigests'])}
         if output in protected or (args.report and args.report.resolve() in protected):

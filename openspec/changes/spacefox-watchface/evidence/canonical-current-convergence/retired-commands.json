@@ -1,0 +1,399 @@
+{
+  "reason": "No current case references these historical selectors after explicit case replacement. Original commands and execution receipts retain their original source and status; retirement does not mean pass.",
+  "commands": [
+    {
+      "id": "native-feed-checks",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_native_feed.NativeFeedValidationTest.test_ls05_p2_s01_negative",
+        "tests.test_native_feed.NativeFeedValidationTest.test_ls05_p2_s01_positive"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "notes": "Planned typed observer. Native paths must execute actual compiled Monkey C; complete-set paths must consume actual production artifacts and reviewed independent required IDs."
+    },
+    {
+      "id": "global-pack-checks",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_global_qualification.GlobalQualificationTest.test_vc05_p2_s01_negative",
+        "tests.test_global_qualification.GlobalQualificationTest.test_vc05_p2_s01_positive",
+        "tests.test_global_qualification.GlobalQualificationTest.test_vc05_p2_s02_negative",
+        "tests.test_global_qualification.GlobalQualificationTest.test_vc05_p2_s02_positive"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "notes": "Planned typed observer. Native paths must execute actual compiled Monkey C; complete-set paths must consume actual production artifacts and reviewed independent required IDs."
+    },
+    {
+      "id": "remaining-art-r1",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_remaining_art.RemainingArtTest.test_all_new_geometry_and_exact_selector_positive",
+        "tests.test_remaining_art.RemainingArtTest.test_data_only_replacement_reopen_new_generation_positive",
+        "tests.test_remaining_art.RemainingArtTest.test_finite_reviews_and_unchanged_facts_positive",
+        "tests.test_remaining_art.RemainingArtTest.test_known_unknown_unmapped_and_retained_selectors_positive",
+        "tests.test_remaining_art.RemainingArtTest.test_mismatched_identity_unknown_roots_and_fallback_negative",
+        "tests.test_remaining_art.RemainingArtTest.test_rights_and_malformed_shape_atomic_negative"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 600,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "Six exact new methods only. Unrelated valid greens retained; original graph/source pins remain immutable, including inherited stale refusals. Not whole-DAG or native acceptance."
+    },
+    {
+      "id": "remaining-art-r3",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_remaining_art_r3.RemainingArtR3Test.test_exact4_preservation_and_unmapped_uncertainty",
+        "tests.test_remaining_art_r3.RemainingArtR3Test.test_original_rights_geometry_and_atomic_invalid_source",
+        "tests.test_remaining_art_r3.RemainingArtR3Test.test_public_cli_admit_reopen_export_and_atomic_wrong_model"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 600,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "Exactoriginal3methodselector; prior94.780smodule-selector receipt reusedonlybyunchangedmethodAST, notclaimed asfreshcurrentDAGexecution."
+    },
+    {
+      "id": "remaining-art-r3-new-discriminators",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_remaining_art_r3.RemainingArtR3Test.test_explicit_operator_mark_stays_with_requested_organization",
+        "tests.test_remaining_art_r3.RemainingArtR3Test.test_false_generic_specific_claim_is_atomic",
+        "tests.test_remaining_art_r3.RemainingArtR3Test.test_malformed_typed_export_root_retains_written_objects",
+        "tests.test_remaining_art_r3.RemainingArtR3Test.test_other_organization_mark_cannot_activate"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "FourunchangednewmethodASTgreensretainedat34.117smixedbatch. Changeddigestmethodhasowncommand; notrerunthese4becauseonlymoduleSHAchanged."
+    },
+    {
+      "id": "remaining-art-r3-digest-negative",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_remaining_art_r3.RemainingArtR3Test.test_exact_mit_asset_wrong_source_digest_is_atomic"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 180,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "Onlyinvalidateddigestprobe aftercorrectingtemporaryamendmentrelativeassetpath."
+    },
+    {
+      "id": "current-2026-catalog-property",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_current_catalog.CurrentCatalogTest.test_data_only_revision_keeps_evidence_and_reopens_changed_identity",
+        "tests.test_current_catalog.CurrentCatalogTest.test_dated_inventory_produces_closed_current_view_and_preserves_archive",
+        "tests.test_current_catalog.CurrentCatalogTest.test_invalid_or_stale_registry_cannot_activate"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "Run only the exact active method selectors; retired cases are absent. Retained receipts keep their original source and proof boundary."
+    },
+    {
+      "id": "canonical-art-positive",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_further_art_r2.FurtherArtR2Test.test_cli_admission_reopens_and_preserves_retained_objects"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 900,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "Focused current case; historical aggregate receipt remains at its original source."
+    },
+    {
+      "id": "canonical-geometry-negative",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_canonical_geometry_negative.CanonicalGeometryNegative.test_unsupported_geometry_refuses_without_mutation"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 900,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "Focused current case; historical aggregate receipt remains at its original source."
+    },
+    {
+      "id": "canonical-geometry-positive",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_canonical_geometry_negative.CanonicalGeometryPositive.test_qualified_selection_reopens_and_reuses_objects"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "Focused positive on historical R2 fixture. The paired negative retains unsupported-geometry refusal and subsequent reopen. Historical aggregate receipt is preserved separately."
+    },
+    {
+      "id": "canonical-further-art-1",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_further_art_r2.FurtherArtR2Test.test_exact12_remaining15_and_preserved_source_contract"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 900,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "One exact existing witness; old aggregate and receipts remain in supersession record. Historical counts remain historical; no current-world completeness claim."
+    },
+    {
+      "id": "canonical-further-art-2",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_further_art_r2.FurtherArtR2Test.test_all12_actual_export_cli_exact_identity_rights_and_geometry"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 900,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "One exact existing witness; old aggregate and receipts remain in supersession record. Historical counts remain historical; no current-world completeness claim."
+    },
+    {
+      "id": "canonical-further-art-3",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_further_art_r2.FurtherArtR2Test.test_cli_admission_reopen_retained_objects_and_atomic_refusal"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 900,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "One exact existing witness; old aggregate and receipts remain in supersession record. Historical counts remain historical; no current-world completeness claim."
+    },
+    {
+      "id": "current-closure-data-property",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_current_catalog_closure.CurrentCatalogClosureTest.test_literal_current_decisions_art_and_unknowns_positive",
+        "tests.test_current_catalog_closure.CurrentCatalogClosureTest.test_old_inputs_assets_sites_decisions_and_selected_closure_positive",
+        "tests.test_current_catalog_closure.CurrentCatalogClosureTest.test_origin_only_batch_literal_countries_preserves_lifecycle_and_art_positive",
+        "tests.test_current_catalog_closure.CurrentCatalogClosureTest.test_wrong_model_rights_digest_coordinates_atomic_cli_negative"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 900,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "Whole finite data property. Retained-green map names actual split source receipts; command definition is not a claim this entire module was replayed at final source."
+    },
+    {
+      "id": "current-catalog-next-property",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_current_catalog_next.CurrentCatalogNextTest.test_literal_new_architecture_mapping_and_origins_positive",
+        "tests.test_current_catalog_next.CurrentCatalogNextTest.test_new_art_wrong_model_rights_digest_and_coordinates_atomic_cli_negative",
+        "tests.test_current_catalog_next.CurrentCatalogNextTest.test_retained_history_and_unrelated_selection_positive"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 900,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "Finite next whole data batch. Source/test versions snapshotted before exact executions; no native/public acceptance."
+    },
+    {
+      "id": "native-locale-resources",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_native_localization.NativeLocalizationResourcesTest.test_all36_and_settings_preserved",
+        "tests.test_native_localization.NativeLocalizationResourcesTest.test_generation_is_complete_and_repeatable",
+        "tests.test_native_localization.NativeLocalizationResourcesTest.test_missing_translation_or_placeholder_rejected"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "notes": "Canonical settings/complete generation and malformed input refusal; historical nativeQualified-based admission binding retired. No glyph or native runtime proof."
+    },
+    {
+      "id": "native-locale-functional",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_native_locale_runtime.NativeLocaleRuntimeTest.test_formats_negative",
+        "tests.test_native_locale_runtime.NativeLocaleRuntimeTest.test_formats_positive",
+        "tests.test_native_locale_runtime.NativeLocaleRuntimeTest.test_selection_negative",
+        "tests.test_native_locale_runtime.NativeLocaleRuntimeTest.test_selection_positive"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 600,
+      "authority": "protected",
+      "notes": "Requires exclusive Simulator lease. Fresh UUID and current-source SDK build, exact typed native framework assertions; raw launcher exit is separate. Unit heap does not prove ordinary memory. Historical underlying native runs retained separately; this newly added wrapper orchestration is unexecuted."
+    },
+    {
+      "id": "origin-coverage-whole-property",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_origin_coverage_whole.OriginCoverageWholeTest.test_all36_literal_countries_and_reviewed_nulls_positive",
+        "tests.test_origin_coverage_whole.OriginCoverageWholeTest.test_future_review_atomic_cli_negative",
+        "tests.test_origin_coverage_whole.OriginCoverageWholeTest.test_immutable_history_roles_eligibility_assets_and_context_retained_positive",
+        "tests.test_origin_coverage_whole.OriginCoverageWholeTest.test_missing_provenance_atomic_cli_negative",
+        "tests.test_origin_coverage_whole.OriginCoverageWholeTest.test_unknown_jurisdiction_atomic_cli_negative",
+        "tests.test_origin_coverage_whole.OriginCoverageWholeTest.test_unrelated_falcon9_selected_closure_retained_positive"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 900,
+      "authority": "local",
+      "planned_boundary": "NO_TEST_DOUBLE",
+      "notes": "Six actual methods, one per bounded case. Full filesystem witnesses are observations, not additional tests."
+    },
+    {
+      "id": "language-settings-source-bound-evidence",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_language_settings_evidence"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "notes": "Reconcile current production source hashes, retained ordinary native activation/settings receipts and qualified finite corpus. Not a new simulator launch."
+    },
+    {
+      "id": "language-settings-pending-policy",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_native_language_policy.NativeSoftwareAdmissionTest.test_pending_build_refuses_generated_availability_bypass"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "notes": "Actual pending admission and stale generated availability refusal, using isolated copied resources."
+    },
+    {
+      "id": "basic-primary-menu-evidence",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_basic_menu_evidence"
+      ]
+    },
+    {
+      "id": "current-finite-observation-admission",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_native_finite_evidence.NativeFiniteEvidenceTest.test_actual_finite_primary_software_receipt_admits_without_human_flags",
+        "tests.test_native_finite_evidence.NativeFiniteEvidenceTest.test_rehashed_native_log_probe_sdk_and_corpus_corruptions_refuse"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "notes": "Validates retained actual source-bound SDK/corpus observations; never starts simulator and is not a fresh native run."
+    }
+  ]
+}

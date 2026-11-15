@@ -154,3 +154,49 @@ def view_for_schedule(catalog, registry, state, now, policy):
                                             ('configuration_id', 'operator_id', 'site_id', 'country_id')
                                             if getattr(record, field) is not None]
     return current_view(catalog, registry, referenced_ids=references)
+
+def schedule_catalog_review(catalog, registry, state, now, policy):
+    """Return bounded publisher diagnostics, without adding watch-feed fields."""
+    from .schedule import LaunchStatus, advance_schedule
+    from .wire import identity_text
+    current = advance_schedule(state, now, policy)
+    if registry is not None:
+        references = [identity_text(getattr(entry.record, field))
+                      for entry in current.entries
+                      if entry.record.status not in (LaunchStatus.COMPLETED, LaunchStatus.CANCELLED)
+                      for field in ('configuration_id', 'operator_id', 'site_id', 'country_id')
+                      if getattr(entry.record, field) is not None]
+        review = set(current_view(catalog, registry, referenced_ids=references)['eventReviewIds'])
+    else:
+        known = {identity for rows in catalog['dictionaries'].values() for identity in rows}
+        review = {identity_text(getattr(entry.record, field))
+                  for entry in current.entries
+                  if entry.record.status not in (LaunchStatus.COMPLETED, LaunchStatus.CANCELLED)
+                  for field in ('configuration_id', 'operator_id', 'site_id', 'country_id')
+                  if getattr(entry.record, field) is not None
+                  and identity_text(getattr(entry.record, field)) not in known}
+    gaps = {(identity_text(entry.record.launch_id), identity_text(getattr(entry.record, field)),
+             'unresolved-or-lifecycle-review')
+                   for entry in current.entries
+                   if entry.record.status not in (LaunchStatus.COMPLETED, LaunchStatus.CANCELLED)
+                   for field in ('configuration_id', 'operator_id', 'site_id', 'country_id')
+                   if getattr(entry.record, field) is not None
+                   and identity_text(getattr(entry.record, field)) in review}
+    for entry in current.entries:
+        if entry.record.status in (LaunchStatus.COMPLETED, LaunchStatus.CANCELLED):
+            continue
+        launch = identity_text(entry.record.launch_id)
+        model_id = identity_text(entry.record.configuration_id)
+        model = catalog['dictionaries']['configurations'].get(model_id)
+        if model is not None and (model['references']['visual'] is None
+                                  or not model['facts'].get('currentPackSpecific', False)):
+            gaps.add((launch, model_id, 'specific-visual-not-qualified'))
+        site_id = identity_text(entry.record.site_id)
+        site = catalog['dictionaries']['sites'].get(site_id)
+        if site is not None and (site['position'] is None
+                                 or site['facts'].get('positionMode') == 'mobile-reference-no-event'):
+            gaps.add((launch, site_id, 'event-position-unavailable'))
+    return {'catalogRevision': catalog['catalogVersion'],
+            'lifecycleReview': 'available' if registry is not None else 'unavailable',
+            'gaps': [{'launchId': launch, 'identity': identity,
+                      'reason': reason} for launch, identity, reason in sorted(gaps)]}

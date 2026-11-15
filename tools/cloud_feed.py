@@ -58,10 +58,15 @@ def prepare_content(pub, client, now, catalog, *, root, clock=None):
     """
     if pub.ledger['pending'] is not None:
         return {'result':'recovered_pending','requests':0}
-    from tools.spacefox.current_catalog import load_registry
+    from tools.spacefox.current_catalog import load_registry, schedule_catalog_review
     eligibility = load_registry(root, catalog)
-    def builder(*args, **kwargs):
-        return build_artifact(*args, **kwargs, root=root, eligibility=eligibility)
+    catalog_review = {}
+    def builder(state, source, instant, *, publisher, policy, traversal):
+        review = schedule_catalog_review(source, eligibility, state, instant, policy)
+        files, digest = build_artifact(state, source, instant, publisher=publisher, policy=policy,
+                                       traversal=traversal, root=root, eligibility=eligibility)
+        catalog_review.update(review)
+        return files, digest
     active=pub.ledger['active']
     if active is not None:
         path=f'artifacts/{active["generation"]}/{FEED_PATH}'
@@ -74,8 +79,11 @@ def prepare_content(pub, client, now, catalog, *, root, clock=None):
             traversal=previous['providerTraversal'] if previous is not None else None
             files,digest=builder(pub.schedule,catalog,now,publisher=publisher,policy=pub.policy,traversal=traversal)
             revision=pub.prepare(pub.head,now,files,digest,feed_publisher=publisher,artifact_profile=PROFILE)
-            return {'result':'content_pending','requests':0,'revision':vars(revision)}
-    return update(pub,client,now,catalog,trigger='scheduled',clock=clock,artifact_builder=builder,artifact_profile=PROFILE)
+            return {'result':'content_pending','requests':0,'revision':vars(revision), 'catalogReview':catalog_review}
+    result = update(pub,client,now,catalog,trigger='scheduled',clock=clock,artifact_builder=builder,artifact_profile=PROFILE)
+    if result['result'] == 'pending':
+        result['catalogReview'] = catalog_review
+    return result
 
 
 def main(argv=None):

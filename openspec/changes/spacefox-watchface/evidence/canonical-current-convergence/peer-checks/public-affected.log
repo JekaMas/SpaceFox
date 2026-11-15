@@ -1,0 +1,21 @@
+test_selection_negative (tests.test_final_native_timing_settings.FinalNativeTimingSettingsTest.test_selection_negative) ... ok
+test_selection_positive (tests.test_final_native_timing_settings.FinalNativeTimingSettingsTest.test_selection_positive) ... ok
+test_actual_parser_cache_and_view_reschedule (tests.test_current_data_convergence.CurrentDataConvergenceTest.test_actual_parser_cache_and_view_reschedule) ... ok
+test_adapter_faults_preserve_old_or_new (tests.test_current_data_convergence.CurrentDataConvergenceTest.test_adapter_faults_preserve_old_or_new) ... ok
+test_current_304_preserves_source (tests.test_current_data_convergence.CurrentDataConvergenceTest.test_current_304_preserves_source) ... ok
+test_current_freshness_batch_and_context (tests.test_current_data_convergence.CurrentDataConvergenceTest.test_current_freshness_batch_and_context) ... ok
+test_current_parser_and_site (tests.test_current_data_convergence.CurrentDataConvergenceTest.test_current_parser_and_site) ... ok
+test_current_refusals_preserve_state (tests.test_current_data_convergence.CurrentDataConvergenceTest.test_current_refusals_preserve_state) ... ok
+test_fallback_own_point_without_old_scene (tests.test_current_data_convergence.CurrentDataConvergenceTest.test_fallback_own_point_without_old_scene) ... ok
+test_postparse_site_independence (tests.test_current_data_convergence.CurrentDataConvergenceTest.test_postparse_site_independence) ... ok
+test_missing_zero_observation_negative (tests.test_current_timing_convergence.CurrentTimingConvergenceTest.test_missing_zero_observation_negative) ... ok
+test_retained_native_countdown_pair_positive (tests.test_current_timing_convergence.CurrentTimingConvergenceTest.test_retained_native_countdown_pair_positive) ... ok
+test_retention_and_postponement_positive (tests.test_current_timing_convergence.CurrentTimingConvergenceTest.test_retention_and_postponement_positive) ... ok
+test_terminal_and_elapsed_negative (tests.test_current_timing_convergence.CurrentTimingConvergenceTest.test_terminal_and_elapsed_negative) ... ok
+test_changed_current_build_id_is_rejected_by_native_readers (tests.test_current_version_binding.CurrentVersionBindingTest.test_changed_current_build_id_is_rejected_by_native_readers) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 36.164s
+
+OK
+{"result": "not_due"}

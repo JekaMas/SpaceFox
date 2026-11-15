@@ -9,7 +9,10 @@ and disaster recovery are not claimed.
 
 ## Current delivery channels
 
-The original ordinary Garmin app has 0.1.10 (Internal 7) submitted and PENDING in publisher preview; public approval is unobserved. The latest signed [0.1.11 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.11-test.1) is separate and has not been submitted to Garmin. The owner last observed 0.1.6 executing on the watch. Simulator observation, a queue acknowledgement and GitHub publication do not establish physical delivery. See [testing](../TESTING.md) and the [delivery recheck](../openspec/changes/spacefox-watchface/evidence/display02-publication/RECHECK-RESEARCH.md).
+The original ordinary Garmin app has 0.1.10 (Internal 7) submitted and PENDING in publisher preview; public approval is unobserved. The owner last observed 0.1.6 executing on the watch. Simulator observation, a queue acknowledgement and GitHub publication do not establish physical delivery. See [testing](../TESTING.md) and the [delivery recheck](../openspec/changes/spacefox-watchface/evidence/display02-publication/RECHECK-RESEARCH.md).
+
+The signed [0.1.11 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.11-test.1) is separate and has not been submitted to Garmin. It uses the stable production identity and follows the published 0.1.10 predecessor. The export was built from public source `245293d9f089a57755d0d1830973243363ab5098`; the release tag points to `9f1f05076155e10bdafc92614fbfcc5068b451f7`. Its IQ SHA-256 is `f498d9953c00bf0d120286dcefb42ae0ec7b142841b82acbcf12b4b015b04ee9`. The original signed receipt and assets remain unchanged. Its receipt and IQ are the predecessor for the next higher-version candidate. The [installation guide](INSTALLATION.md) and [test notes](TESTING-0.1.11.md) describe the pilot. Physical installation, phone delivery and Store acceptance remain unverified.
+
 
 ## Historical test releases
 

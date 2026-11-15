@@ -242,16 +242,21 @@ def main(argv=None):
             now = args.now if args.now is not None else utc_now()
             client = LL2Client(origin=args.origin, page_size=args.page_size, local_http=args.local_http)
             catalog = build_catalog(root)
-            from tools.spacefox.current_catalog import load_registry, view_for_schedule
+            from tools.spacefox.current_catalog import load_registry, schedule_catalog_review
             eligibility = load_registry(root, catalog)
+            catalog_review = {}
             def current_builder(state, source, instant, *, publisher, policy, traversal):
-                return build_artifact(state, source, instant, publisher=publisher, policy=policy, traversal=traversal, root=root, eligibility=eligibility)
+                review = schedule_catalog_review(source, eligibility, state, instant, policy)
+                files, digest = build_artifact(state, source, instant, publisher=publisher, policy=policy, traversal=traversal, root=root, eligibility=eligibility)
+                catalog_review.update(review)
+                return files, digest
             from tools.spacefox.ascent_supplement import load_supplement
             supplement = load_supplement(args.ascent_supplement) if args.ascent_supplement else None
             result = update(pub, client, now, catalog, trigger=args.trigger, artifact_builder=current_builder, ascent_supplement=supplement,
                             max_pages=args.max_pages, detail_limit=args.detail_limit,
                             clock=None if args.now is not None else utc_now)
             if result['result'] == 'pending':
+                result['catalogReview'] = catalog_review
                 result['exportedFiles'] = export_pending(pub, args.output)
         print(json.dumps(result, sort_keys=True))
         return 0

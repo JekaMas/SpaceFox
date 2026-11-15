@@ -226,11 +226,11 @@ class GeographicContextR4Test(unittest.TestCase):
             self.refused(artifact, 'selection/' + label)
 
     def test_persistent_current_previous_and_primary_bytes(self):
-        globe = build_view(ROOT, self.catalog, 'll2:site:107', kind='globe')
+        other_map = build_view(ROOT, self.catalog, 'll2:site:104')
         unknown = build_view(ROOT, self.catalog, 'll2:site:101')
-        mobile_globe = build_view(ROOT, self.catalog, 'll2:site:59', kind='globe')
-        current_views = [self.omelek, globe, self.mobile, unknown]
-        next_views = [globe, self.mobile, unknown, mobile_globe]
+        another_map = build_view(ROOT, self.catalog, 'll2:site:65')
+        current_views = [self.omelek, other_map, self.mobile, unknown]
+        next_views = [other_map, self.mobile, unknown, another_map]
         with tempfile.TemporaryDirectory() as tmp:
             directory = Path(tmp)
             previous = None

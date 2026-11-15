@@ -1,0 +1,95 @@
+{
+  "scope": "Original fallback cases retained; current cases state their exact separately observed seams and do not subsume pending scheduling/physical coverage.",
+  "cases": [
+    {
+      "id": "VC14.P1.S03.POSITIVE",
+      "property_id": "VC14.P1",
+      "polarity": "positive",
+      "scenario": "New launch arrives before optional artwork",
+      "scenario_fingerprint": "6e3b9e2bb259e368e1c668d9fa725cd79e7e1b5703ca7914ddd37f9df157cde9",
+      "setup": "freshlaunchB metadata valid whileBimage/map stilldownloading afterlaunchA",
+      "observable": "B timing/status/context activates with generic art; its qualified point appears only on a matching projection, otherwise marker is absent.",
+      "red_expectation": "Refuse an old mismatched point or image, fabricated coordinates, or failure to activate valid B timing.",
+      "green_expectation": "B timing/status/context activates with generic art; its qualified point appears only on a matching projection, otherwise marker is absent.",
+      "invalidation_dependencies": [
+        "assets/fonts/**",
+        "assets/rocket-pack/catalog.json",
+        "assets/rocket-pack/registry.source.json",
+        "catalog/**",
+        "schemas/**",
+        "tests/fixtures/native_storage/**",
+        "tests/test_native_storage.py",
+        "tools/build_native_resources.py",
+        "tools/build_watchface.py",
+        "watchface/generated/**",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources*/**",
+        "watchface/source/**",
+        "watchface/source/AcceptedCache.mc",
+        "watchface/toolchain-lock.json"
+      ],
+      "test_id": "unittest::tests.test_native_storage.NativeStorageTest.test_new_launch_arrives_before_optional_artwork_positive",
+      "command_id": "native_storage-checks",
+      "state": "planned",
+      "source_path": "tests/test_native_storage.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 firmware/hardware when running the actual Monkey C unit/simulator harness",
+        "allowed_proof": "Only actual compiled Monkey C or simulator behavior and measured simulator limits once those tools/tests exist.",
+        "forbidden_claims": [
+          "Physical FR165 RAM/storage/battery/glyph qualification",
+          "Real paired-phone background delivery",
+          "Garmin Store approval or approved binary install"
+        ]
+      },
+      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review. Current specification binding only; remains unexecuted and confers no new acceptance.",
+      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; exact native tests/compiles have not yet been implemented or executed. Physical-device proof remains absent."
+    },
+    {
+      "id": "VC14.P1.S03.NEGATIVE",
+      "property_id": "VC14.P1",
+      "polarity": "negative",
+      "scenario": "New launch arrives before optional artwork",
+      "scenario_fingerprint": "6e3b9e2bb259e368e1c668d9fa725cd79e7e1b5703ca7914ddd37f9df157cde9",
+      "setup": "reuseAimage while relabelingitB or waitindefinitelyforBoptionalasset",
+      "observable": "rejectmisassociation/starvation; optionalvisualfailure cannot freeze validtiming update",
+      "red_expectation": "The assertion must fail on an observed result contradicting these independently specified fixture facts: rejectmisassociation/starvation; optionalvisualfailure cannot freeze validtiming update",
+      "green_expectation": "rejectmisassociation/starvation; optionalvisualfailure cannot freeze validtiming update",
+      "invalidation_dependencies": [
+        "assets/fonts/**",
+        "assets/rocket-pack/catalog.json",
+        "assets/rocket-pack/registry.source.json",
+        "catalog/**",
+        "schemas/**",
+        "tests/fixtures/native_storage/**",
+        "tests/test_native_storage.py",
+        "tools/build_native_resources.py",
+        "tools/build_watchface.py",
+        "watchface/generated/**",
+        "watchface/manifest.xml",
+        "watchface/monkey.jungle",
+        "watchface/resources*/**",
+        "watchface/source/**",
+        "watchface/source/AcceptedCache.mc",
+        "watchface/toolchain-lock.json"
+      ],
+      "test_id": "unittest::tests.test_native_storage.NativeStorageTest.test_new_launch_arrives_before_optional_artwork_negative",
+      "command_id": "native_storage-checks",
+      "state": "planned",
+      "source_path": "tests/test_native_storage.py",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical FR165 firmware/hardware when running the actual Monkey C unit/simulator harness",
+        "allowed_proof": "Only actual compiled Monkey C or simulator behavior and measured simulator limits once those tools/tests exist.",
+        "forbidden_claims": [
+          "Physical FR165 RAM/storage/battery/glyph qualification",
+          "Real paired-phone background delivery",
+          "Garmin Store approval or approved binary install"
+        ]
+      },
+      "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review. Current specification binding only; remains unexecuted and confers no new acceptance.",
+      "prerequisite": "Owner-approved SDK9.3.0 and fr165 device profile API5.2.0 are installed; exact native tests/compiles have not yet been implemented or executed. Physical-device proof remains absent."
+    }
+  ]
+}

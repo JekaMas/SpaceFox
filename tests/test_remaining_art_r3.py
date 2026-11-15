@@ -1,4 +1,4 @@
-"""R3 actual data/CLI/store witnesses. Factual/visual review is separate.
+"""R3 catalog CLI and internal source-geometry witnesses. Review is separate.
 
 All fixtures are tracked and portable; no reference-cache path, remote fetch,
 Garmin runtime or host-private acquisition file is required.
@@ -13,6 +13,8 @@ import tempfile
 import unittest
 
 from tests.test_global_catalog import temporary_catalog
+from tests.source_pack_helpers import source_pack, add_historical_inputs
+from tools.spacefox.graphics import VisualError
 from tools.spacefox.catalog import build_catalog, canonical_bytes, coverage_report, loads_json
 from tools.spacefox.graphics import assemble_visual, build_pack, canonical_visual, export_svg
 
@@ -47,15 +49,20 @@ class RemainingArtR3Test(unittest.TestCase):
         cls.after = build_catalog(ROOT)
 
     def export(self,source,output,*identities):
-        args=[ROOT/'tools/export_visuals.py','--source',source,'--output',output]
-        for identity in identities:
-            args.extend(['--root',identity])
-        result=execute(*args)
-        self.assertEqual(result.returncode,0,result.stderr)
-        return json.loads((output/'manifest.json').read_bytes())
+        return source_pack(source, output, list(identities))
 
     def test_exact4_preservation_and_unmapped_uncertainty(self):
-        old,new=coverage_report(self.before),coverage_report(self.after)
+        history_tmp = tempfile.TemporaryDirectory(prefix='spacefox-r3-history-')
+        self.addCleanup(history_tmp.cleanup)
+        root = temporary_catalog(Path(history_tmp.name) / 'owner')
+        add_historical_inputs(root, BEFORE)
+        source = root / 'catalog/source.json'
+        source.write_bytes(BEFORE.read_bytes())
+        admitted = execute(ROOT/'tools/catalog.py', '--repo', root, '--source', source,
+                           '--amend', root/CURATION, '--catalog-version', 'historical.remaining.r3')
+        self.assertEqual(admitted.returncode, 0, admitted.stderr)
+        historical_after = build_catalog(root)
+        old,new=coverage_report(self.before),coverage_report(historical_after)
         self.assertEqual((old['counts']['assets'],old['configurations']['mappedArt']),(611,156))
         self.assertEqual((new['counts']['assets'],new['configurations']['mappedArt']),(615,160))
         self.assertEqual(new['configurations']['requiredNonPlaceholder'],171)
@@ -63,9 +70,9 @@ class RemainingArtR3Test(unittest.TestCase):
         self.assertEqual(set(new['configurations']['missingArtIds']),GAPS)
         for table in ('countries','organizations','sites','assets'):
             for identity,row in self.before['dictionaries'][table].items():
-                self.assertEqual(self.after['dictionaries'][table][identity],row,(table,identity))
+                self.assertEqual(historical_after['dictionaries'][table][identity],row,(table,identity))
         for identity,oldrow in self.before['dictionaries']['configurations'].items():
-            row=self.after['dictionaries']['configurations'][identity]
+            row=historical_after['dictionaries']['configurations'][identity]
             self.assertEqual(row.get('originalFacts',row['facts']),oldrow.get('originalFacts',oldrow['facts']))
             for k,value in oldrow['facts'].items():
                 if k not in ('currentPackAssetId','currentPackSpecific'):
@@ -89,13 +96,13 @@ class RemainingArtR3Test(unittest.TestCase):
         self.assertEqual(experiments['mappedFamilies'],0)
         self.assertEqual(len(experiments['experiments']),12)
         self.assertEqual({r['identity'] for r in experiments['experiments']},FAMILIES)
-        selected=build_pack(ROOT,self.after,roots=sorted(FAMILIES))['manifest']['selection']['dictionaries']['configurations']
+        selected=build_pack(ROOT,historical_after,roots=sorted(FAMILIES))['manifest']['selection']['dictionaries']['configurations']
         for identity in FAMILIES:
             self.assertEqual(selected[identity]['references']['visual'],'spacefox:asset:generic')
             self.assertFalse(selected[identity]['facts']['currentPackSpecific'])
             self.assertIsNone(selected[identity]['references']['origin'])
         # Freeze recipe history rather than repin or erase accepted curations.
-        recipe=json.loads((ROOT/'catalog/source.json').read_bytes())
+        recipe=json.loads(source.read_bytes())
         before=json.loads(BEFORE.read_bytes())
         self.assertEqual(recipe['curations'][:-1],before['curations'])
         self.assertEqual(recipe['curations'][-1]['path'],str(CURATION))
@@ -105,6 +112,7 @@ class RemainingArtR3Test(unittest.TestCase):
     def test_public_cli_admit_reopen_export_and_atomic_wrong_model(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=temporary_catalog(Path(tmp)/'owner');source=root/'catalog/source.json'
+            add_historical_inputs(root, BEFORE)
             source.write_bytes(BEFORE.read_bytes())
             output=Path(tmp)/'objects';catalog_output=root/'build/catalog.json'
             old=self.export(source,output,*EXPECTED)
@@ -231,10 +239,8 @@ class RemainingArtR3Test(unittest.TestCase):
             output=Path(tmp)/'objects'
             self.export(ROOT/'catalog/source.json',output,'ll2:configuration:44')
             accepted=inventory(output)
-            result=execute(ROOT/'tools/export_visuals.py','--source',ROOT/'catalog/source.json',
-                           '--output',output,'--root','configuration:44')
-            self.assertEqual(result.returncode,1)
-            self.assertIn('root',result.stderr)
+            with self.assertRaisesRegex(VisualError, 'root'):
+                source_pack(ROOT/'catalog/source.json', output, ['configuration:44'])
             self.assertEqual(inventory(output),accepted)
 
     def test_exact_mit_asset_wrong_source_digest_is_atomic(self):
