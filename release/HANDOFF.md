@@ -9,7 +9,7 @@ and disaster recovery are not claimed.
 
 ## 0.1.15 test package
 
-The published [0.1.15 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.15-test.1) has compiled source `b797fe5af70ff15ac75ad48ab9174577152b57eb`, native ID `2c92c60b`, IQ SHA-256 `39fc5df506af45a7730f54b2d15666655fb0f9e2d23c1cefe9ced1476937f2b5` and original receipt SHA-256 `357b36af8e5e1d8c876705e0fa9cf52e1936216dcec0730bf1ddb57ed04bce44`. Its export-time predecessor remains the published 0.1.14 receipt and IQ. Use the published 0.1.15 receipt and matching IQ as predecessor for the next higher-version candidate. See [installation](INSTALLATION-0.1.15.md) and [testing](TESTING-0.1.15.md). Physical watch, phone, vibration, battery and Store acceptance remain unobserved.
+The published [0.1.15 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.15-test.1) has compiled source `b797fe5af70ff15ac75ad48ab9174577152b57eb`, native ID `2c92c60b`, IQ SHA-256 `39fc5df506af45a7730f54b2d15666655fb0f9e2d23c1cefe9ced1476937f2b5` and original receipt SHA-256 `357b36af8e5e1d8c876705e0fa9cf52e1936216dcec0730bf1ddb57ed04bce44`. Its export-time predecessor remains the published 0.1.14 receipt and IQ. Use the unchanged published 0.1.15 receipt and matching IQ as predecessor for the next higher-version candidate. The host guard checks the original receipt bytes and their compiled source revision, not the later tag revision; a reformatted receipt will not match. See [installation](INSTALLATION-0.1.15.md) and [testing](TESTING-0.1.15.md). Physical watch, phone, vibration, battery and Store acceptance remain unobserved.
 
 ## 0.1.14 test package
 

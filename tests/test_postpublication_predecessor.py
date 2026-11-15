@@ -114,3 +114,19 @@ class ActualPublishedPredecessorTest(unittest.TestCase):
         path.write_text(json.dumps(changed))
         with self.assertRaisesRegex(BuildBlocked, 'committed latest release receipt/package'):
             self.admit('0.1.16', path)
+
+    def test_same_package_with_altered_receipt_is_refused(self):
+        shutil.copyfile(self.path.parent / self.prior['packages']['iq']['path'], self.base / 'SpaceFox.iq')
+        path = self.base / 'release.json'
+        for altered in (dict(self.prior, source_revision='0' * 40),
+                        dict(self.prior, extra_unpublished_metadata=True)):
+            path.write_text(json.dumps(altered))
+            with self.subTest(altered=altered), self.assertRaisesRegex(
+                    BuildBlocked, 'committed latest release receipt/package'):
+                self.admit('0.1.16', path)
+
+    def test_actual_receipt_must_match_committed_source(self):
+        wrong = dict(self.policy, latest_release=dict(self.policy['latest_release'], source_revision='0' * 40))
+        with patch.object(release, 'identity_policy', return_value=wrong):
+            with self.assertRaisesRegex(BuildBlocked, 'committed latest release receipt/package'):
+                self.admit('0.1.16', self.path)
