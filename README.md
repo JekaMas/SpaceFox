@@ -1,27 +1,38 @@
 # SpaceFox
 
-SpaceFox is an independent space-themed watch face for selected Garmin watches, including Forerunner 165 and 165 Music. It shows a 24-hour clock, four activity fields, the next launch, rocket artwork and a launch-site map.
+SpaceFox is a free, MIT-licensed space watch face for Garmin watches, including Forerunner 165 and Forerunner 165 Music. It combines a large digital clock, rocket artwork, a launch-site map, a local T−/T+ countdown and four configurable activity fields.
 
-![SpaceFox active display in the Garmin simulator](docs/images/simulator-fr165m-0.1.13.png)
+**[Install from Connect IQ](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3)** · **[Download release 0.1.16](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.16)** · [Release notes](release/RELEASE-NOTES-0.1.16.md)
 
-![SpaceFox always-on display in the Garmin simulator](docs/images/simulator-fr165m-low-0.1.13.png)
+![SpaceFox 0.1.16 running in the Forerunner 165 Music simulator](release/images/simulator-fr165m-0.1.16.png)
 
-These Forerunner 165 Music SDK captures show the production-signed 0.1.13 build from before the later settings text repair (program SHA-256 `5cb199019325ff803a65d6eaba1f49f0d84795e710267b36ebfde084e4a8c542`) using retained public launch data and simulated activity values. The active image shows decoded rocket and flag assets; the always-on image shows the full geographic outline and launch point. They were captured at different times. Simulator results do not establish physical delivery or execution. See [supported devices](docs/SUPPORTED_DEVICES.md) and [testing](TESTING.md) for qualification boundaries; the [integration checks](docs/INTEGRATION_CHECKS_0.1.13.md) link each design and function check to its evidence. Find releases and report issues on [GitHub](https://github.com/JekaMas/SpaceFox). The public schedule is at [feed.json](https://jekamas.github.io/SpaceFox/feed.json).
+Actual native 0.1.16 simulator capture using an offline public launch fixture and simulated activity values. The visible Cape Canaveral point, rocket and country flag come from the selected launch. The dotted countdown indicates stale data in this fixture.
 
-[SpaceFox 0.1.13](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.13) is published and submitted to the [original Connect IQ listing](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3), which displays 0.1.13/Internal 8 in owner preview (PENDING). Garmin accepted the Music install request; physical installation is not yet observed. Use the existing SpaceFox installation and normal Garmin Connect synchronization. See [installation](release/INSTALLATION.md).
+## What it shows
 
-The [0.1.15 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.15-test.1) has separate [installation](release/INSTALLATION-0.1.15.md) and [testing](release/TESTING-0.1.15.md) guides. Physical watch and phone behavior, vibration, battery use and Garmin Store acceptance remain unverified.
+- A fixed 24-hour clock, local date and weekday.
+- An active countdown with seconds; always-on uses minutes. Both use the same UTC launch target. At T0 the timer becomes T+, and the launch remains visible for at least 15 minutes or through a later sourced ascent end.
+- A fading flat map with the launch point, the corresponding rocket, operator and mission purpose. The country flag appears beside the launch site; the rocket has no flag or abbreviation painted on it.
+- Four fixed fields independently configurable as steps, Body Battery, heart rate, stress, calories or watch battery. Clock, countdown and field colors can be configured separately.
+- A full map outline and launch point in always-on mode, with centered time, date, weekday, minute countdown and battery. The four activity fields and animation are hidden in this mode.
+- Optional, quiet-aware launch reminders. They are off by default; when enabled, Garmin schedules notifications from T−15. Device settings control vibration and delivery.
 
-The [0.1.14 GitHub test prerelease](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.14-test.1) has separate [installation](release/INSTALLATION-0.1.14.md) and [testing](release/TESTING-0.1.14.md) guides; its [qualification](openspec/changes/spacefox-watchface/evidence/version-014/PEER-014-FINAL.md) retains the original 0.1.13 evidence boundaries. A separate [signed 0.1.14 SDK observation](openspec/changes/spacefox-watchface/evidence/signed-014-runtime/RESULT.md) shows one offline seeded scene; it does not establish physical delivery.
+A delayed or rescheduled launch uses a reddish countdown; stale data has a separate dotted indicator. Passing zero is a time calculation, not confirmation of liftoff. Missing Garmin readings remain unavailable; Body Battery uses Garmin's current complication value when selected.
 
-Version 0.1.15 adds [launch reminders](docs/LAUNCH_REMINDERS.md), an opt-in, quiet-aware system notification feature scheduled every five minutes from T−15; actual vibration and timing depend on Garmin settings and background scheduling.
+## Data and settings
 
-The clock uses fixed 24-hour `HH:mm` and the current local weekday and `DD.MM` date. The active countdown shows `T- HH:mm:ss` before a known target and `T+ HH:mm:ss` from zero onward, with accumulating hours. Always-on uses minute precision; an unknown target is shown as dashes. Passing zero does not establish liftoff. The selected launch remains for at least 15 minutes, or through a later sourced ascent end. The watch retains an accepted schedule for offline use; stale and rescheduled data have separate indicators.
+English and `https://jekamas.github.io/SpaceFox` are defaults. English, Russian, German, French and Spanish are the five primary software-supported languages; Auto is also available. Other retained internal translations are best effort.
 
-The active flat map fades behind the text and shows a source-qualified site marker when its projection matches. Always-on retains the map outline and launch point, the clock, date, weekday, countdown and battery; it omits the four activity fields. The rocket is unmarked; the header shows the rocket and supplied operator with mission purpose, and the footer shows the launch-country flag and site without repeating the operator. Four fixed fields independently select steps, Body Battery, heart rate, stress, calories or watch battery. Clock, countdown and the four fields have independent colors. The default feed base is `https://jekamas.github.io/SpaceFox`; native transfers use byte-identical text sidecars for the schema-3 SFR1M feed and assets.
+The watch calculates the countdown locally and keeps the accepted schedule offline. New schedules and artwork arrive through Garmin Connect on the paired phone. Failed requests retain accepted launch data. The public [feed](https://jekamas.github.io/SpaceFox/feed.json) is maintained by GitHub Actions with an independent Cloudflare timer; it does not need an agent or computer to stay running. No AWS account, subscription or SpaceFox login is required.
 
-The default language is English. Four fixed positions can show supported Garmin activity metrics; unavailable readings remain unavailable. The menu offers Auto and the five primary software-supported languages: English, Russian, German, French and Spanish. The other 31 retained internal language resources are best effort. The settings menu and persisted choices were exercised in an SDK watch-app host; the signed watch face system entry, phone and physical-device behavior remain unverified. Artwork and catalogue coverage are still being developed.
+See [installation](release/INSTALLATION.md), [supported watches](docs/SUPPORTED_DEVICES.md), [settings and testing](TESTING.md), and [permissions and privacy](docs/PRIVACY.md). Use the existing SpaceFox Connect IQ listing for updates. USB installation uses the PRG matching the watch model; IQ is the Store export, not a file to open on a phone.
 
-Developers can read [project setup](docs/AGENT_SETUP.md), [the update pipeline](docs/CLOUD_DELIVERY.md), and the [project workflow](docs/PROJECT_WORKFLOW.md). See [contributing](CONTRIBUTING.md) for source changes and checks, or report bugs through [GitHub Issues](https://github.com/JekaMas/SpaceFox/issues); do not include private health data or credentials.
+## Contributing and SDD
 
-SpaceFox is available under the [MIT license](LICENSE). Fonts, data and other third-party materials retain their [notices](THIRD_PARTY_NOTICES.md). See the [privacy policy](docs/PRIVACY.md).
+Start with [CONTRIBUTING.md](CONTRIBUTING.md), [the SDD guide](docs/SDD_WORKFLOW.md) and [project workflow](docs/PROJECT_WORKFLOW.md). Keep the requirement, implementation, tests and evidence together in the relevant OpenSpec change. Finish a coherent task with green checks, obtain independent verification, and update its progress record. Reuse green checks unless their actual inputs changed.
+
+[Agent setup](docs/AGENT_SETUP.md) and [cloud delivery](docs/CLOUD_DELIVERY.md) explain how to run an independent feed. Report bugs in [GitHub Issues](https://github.com/JekaMas/SpaceFox/issues), including the exact watch model and the version shown in SpaceFox settings. Do not include credentials or private health data.
+
+The [0.1.16 integration record](openspec/changes/spacefox-watchface/evidence/display04-integrated016/INTEGRATION.md) and [independent review](openspec/changes/spacefox-watchface/evidence/display04-integrated016/INDEPENDENT.md) contain the native, memory and source-export evidence. Simulator qualification and physical-device results are recorded separately.
+
+SpaceFox's source and original specifications use [MIT](LICENSE). Fonts, data and other third-party materials retain their [notices](THIRD_PARTY_NOTICES.md).
