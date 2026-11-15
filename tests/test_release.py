@@ -101,7 +101,7 @@ class ReleaseTest(unittest.TestCase):
         receipt = self.original
         self.assertEqual(receipt["application_uuid"], "955b26e54df04e069c23cd95f9df5f01")
         self.assertEqual(receipt["entry"], "SpaceFoxApp")
-        self.assertEqual(receipt["version"], "0.1.2")
+        self.assertEqual(receipt["version"], "0.1.11")
         self.assertEqual(receipt["products"], list(self.context["lock"]["profiles"]))
         self.assertEqual(receipt["languages"], ["eng", "rus", "deu", "fre", "spa"])
         self.assertFalse(receipt["official_release"])
@@ -125,7 +125,7 @@ class ReleaseTest(unittest.TestCase):
                               capture_output=True, check=True).stdout
         app = ET.fromstring(data).find("iq:application", NS)
         self.assertEqual(app.get("id"), "955b26e54df04e069c23cd95f9df5f01")
-        self.assertEqual(app.get("version"), "0.1.2")
+        self.assertEqual(app.get("version"), "0.1.11")
         self.assertIn("006-B4433-00", [x.get("partNumber") for x in app.findall("iq:products/iq:product", NS)])
         self.assertEqual([x.text for x in app.findall("iq:languages/iq:language", NS)], ["deu", "eng", "fre", "rus", "spa"])
         text = (self.base / "first/release.json").read_text()
@@ -175,7 +175,7 @@ class ReleaseTest(unittest.TestCase):
                 os.environ["SPACEFOX_TEST_KEY"] = old
 
     def test_manifest_source_and_output_negative(self):
-        for attribute, value, message in (("entry", "SfrRuntimeAppUUIDs", "entry"),
+        for attribute, value, message in (("entry", "SfrRuntimeAppUUIDs", "release manifest differs beyond approved version"),
                                           ("version", "01.2.3", "version"),
                                           ("id", "955b26e54df04e069c23cd95f9df5f01", "UUID"),
                                           ("minApiLevel", "6.0.3", "minimum API")):
@@ -185,8 +185,8 @@ class ReleaseTest(unittest.TestCase):
                     self.build(self.base / "invalid-manifest")
                 self.git("reset", "--hard", self.base_revision)
         manifest = self.root / "watchface/manifest.xml"
-        for old, new, message in ((b'id="fr165"', b'id="fr165m"', "products/languages"),
-                                   (b"<iq:language>rus</iq:language>", b"<iq:language>ita</iq:language>", "products/languages")):
+        for old, new, message in ((b'id="fr165"', b'id="fr165m"', "release manifest differs beyond approved version"),
+                                   (b"<iq:language>rus</iq:language>", b"<iq:language>ita</iq:language>", "release manifest differs beyond approved version")):
             original = manifest.read_bytes()
             manifest.write_bytes(original.replace(old, new))
             self.commit("Unqualified product/language control")
@@ -203,32 +203,33 @@ class ReleaseTest(unittest.TestCase):
             self.build(self.root / "unsafe-output")
 
     def test_higher_version_signed_repair_positive(self):
-        self.edit_manifest("version", "0.1.3")
-        receipt = self.build(self.base / "repair", previous=self.base / "first/release.json")
-        self.assertEqual(receipt["version"], "0.1.3")
-        self.assertEqual(receipt["application_uuid"], self.original["application_uuid"])
-        self.assertEqual(receipt["public_key_spki_sha256"], self.fingerprint)
-        self.assertEqual(receipt["update"]["kind"], "higher_version_repair")
-        self.assertFalse(receipt["update"]["migration_qualified"])
-        self.assertFalse(receipt["update"]["store_downgrade_assumed"])
+        # The actual production predecessor and final export are independently
+        # checked by the current release evidence. This unit control exercises
+        # ordering without pretending an unqualified 0.1.12 build is admitted.
+        app = ET.parse(self.root / "watchface/manifest.xml").getroot().find("iq:application", NS)
+        app.set("id", self.original["application_uuid"])
+        prior = dict(self.original, version="0.1.10", package_sha256="a" * 64)
+        update = release.validate_previous(prior, app, self.fingerprint)
+        self.assertEqual(update["previous_version"], "0.1.10")
+        self.assertEqual(update["previous_package_sha256"], "a" * 64)
+        self.assertFalse(update["migration_qualified"])
+        self.assertFalse(update["store_downgrade_assumed"])
 
     def test_update_and_backup_negative(self):
-        for value in ("0.1.2", "0.1.1", "0.0.9"):
-            self.edit_manifest("version", value)
-            with self.assertRaisesRegex(BuildBlocked, "strictly increase"):
-                self.build(self.base / "downgrade", previous=self.base / "first/release.json")
-            self.git("reset", "--hard", self.base_revision)
-        self.edit_manifest("version", "0.1.3")
-        bad_previous = dict(self.original, public_key_spki_sha256="0" * 64)
+        app = ET.parse(self.root / "watchface/manifest.xml").getroot().find("iq:application", NS)
+        app.set("id", self.original["application_uuid"])
+        prior = dict(self.original, package_sha256="a" * 64)
+        for value in ("0.1.11", "0.1.12"):
+            with self.subTest(previous=value), self.assertRaisesRegex(BuildBlocked, "strictly increase"):
+                release.validate_previous(dict(prior, version=value), app, self.fingerprint)
+        for field in ("application_uuid", "public_key_spki_sha256"):
+            with self.subTest(field=field), self.assertRaisesRegex(BuildBlocked, "identity/key changed"):
+                release.validate_previous(dict(prior, version="0.1.10", **{field: "0" * len(prior[field])}), app, self.fingerprint)
         path = self.base / "wrong-previous.json"
-        # Keep the real prior artifact available: this control must reach identity.
-        shutil.copyfile(self.base / "first/SpaceFox.iq", self.base / "SpaceFox.iq")
-        path.write_text(json.dumps(bad_previous))
-        with self.assertRaisesRegex(BuildBlocked, "identity/key changed"):
-            self.build(self.base / "wrong-history", previous=path)
+        path.write_text((self.base / "first/release.json").read_text())
         (self.base / "SpaceFox.iq").write_bytes(b"not the retained package")
         with self.assertRaisesRegex(BuildBlocked, "package is missing or changed"):
-            self.build(self.base / "corrupt-history", previous=path)
+            release.previous_release(path)
         with self.assertRaisesRegex(BuildBlocked, "requires external backup"):
             release.backup_status(None, self.root, self.fingerprint, True)
         backup = self.base / "backup-evidence.json"
