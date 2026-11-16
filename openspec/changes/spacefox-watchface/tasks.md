@@ -150,4 +150,5 @@ Current integration batch (existing tasks 3.2–3.4, 5.1–5.5 and 7.1–7.3):
 
 - [x] Combine the frozen 0.2.1 and performance owners, preserving both runtime and resource contracts; record directly invalidated checks and original proof boundaries in `evidence/current-integration-022/INTEGRATION.md`.
 - [x] Complete the selected source, native interaction and release admission checks; retain earlier greens where their inputs are unchanged.
-- [ ] Obtain the existing independent peer review, build and publish the authorized signed release. Physical, phone and Store acceptance remain separate and unobserved.
+- [x] Existing independent peer reviewed and repaired the complete combined batch to GREEN; exact export receipt and retained/new proof scopes are in `evidence/current-integration-022/PEER.md` and `peer-current-022.json`.
+- [ ] Reserve/freeze actual main/source, build one full signed IQ, create the final tag after successful export, and publish/read back the authorized full GitHub release. Physical and phone acceptance remain unobserved; Store action requires actual current legal consent.

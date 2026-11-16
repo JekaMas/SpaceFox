@@ -1,5 +1,12 @@
 # Current changes integration
 
+Current software status: independent peer GREEN; see `PEER.md` and the exact
+export receipt `peer-current-022.json`. Signed release delivery remains open.
+All earlier pending/failed paragraphs below are historical checkpoints, not
+current software status. Physical/phone/Store acceptance remains NOT OBSERVED.
+
+## Historical merge and investigation checkpoints
+
 Scope frozen at public main `84503c911392b48ae31ca66fe072cd371608de13` and performance branch `90c5c36670aac08dca37948d3c3d8bfc2918d3d1`. Incoming A/B/C host and tooling work and D native optimization remain within the current schema-3/SFR1M contract. The 0.2.1 receiving source owns the latest bounded foreground admission, LOW/awake rendering, approximate NET display, reminder eligibility and type fixes. The two source histories are merged by behavior, not by choosing an entire side.
 
 The inventory of 255 worktrees is retained privately. Its only current non-ancestor branch is the performance head above. Four uncommitted historical scratch areas remain untouched: provider-art 2026-11-12 modifies a retired publisher snapshot/test; the detached display03 baseline contains a diagnostic probe and historical tests, not current product; the language-settings worktree contains a malformed PNG path, not source; the old native-lane-handoff JSON records a past lane state. None supplies an unmerged current product behavior. Other current branch heads are ancestors; historical proof and retired formats are not reintroduced.
@@ -22,4 +29,4 @@ The subsequent exact-source, same-program FR165M SDK run staged the captured gen
 
 The repair pages cold immutable code and generated geometry, releases parser and descriptor owners at callback boundaries, distinguishes continuing an allocated parser from admitting a new allocation, caches already fitted text during decode and reloads the queue only on actual packet/context rebinding. New allocations retain the established reserve and integrity checks. The affected SDK cases, including missing-fragment recovery, LOW qualification, decoder lifecycle, queue checkpoint/rebinding, RU text cache, NET/reminder binding and terminal corruption, are retained individually in `sdk/`; their first fixture failures remain alongside them. The fixture corrections supply the required namespace, catalog and historical clock rather than changing product semantics. FR165M and fr265s compiler checks, three host interaction checks and two predecessor checks passed. The two prior checkpoint and tail-cleanup passes retain their earlier matching behavioral scope. Existing independent parent performance and watchdog observations remain source-scoped; they are not represented as fresh checks of this merge.
 
-Current source admission binds the captured checks and exact native inputs. Independent review of this batch, signed release export, Store submission, phone delivery and physical watch acceptance remain open.
+Current source admission binds the captured checks and exact native inputs. At this author checkpoint independent review remained open; it is now completed in `PEER.md`. Signed release export/publication, Store submission, phone delivery and physical watch acceptance remain separate open obligations.
