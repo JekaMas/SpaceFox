@@ -2,6 +2,9 @@
 
 The public source export does not include `.agents/workflow`, `.gitmodules` or the private authoring adapter. Its authoring workflow revision was [f8e7ba481bf356600925e01936d7e9f3f1ac0084](https://github.com/JekaMas/agent-workflow/tree/f8e7ba481bf356600925e01936d7e9f3f1ac0084); that link identifies the reference revision, not a public checkout pin. Follow [the public quickstart](SDD_WORKFLOW.md), this project's instructions and the selected OpenSpec change. Do not run submodule commands or workflow scripts as if they existed in this checkout; setup or installation requires separate authorization.
 
+For property batches and authorized releases, follow the canonical
+[stable batch delivery rule](SDD_WORKFLOW.md#stable-batch-delivery).
+
 ## Current scope
 
 The repository began with an OpenSpec foundation and the browser mockup. The

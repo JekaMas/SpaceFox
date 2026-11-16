@@ -4,6 +4,14 @@
 
 On 2026-11-16 the owner explicitly authorized B2 and then B3 to proceed and a GitHub test release after each, despite the earlier physical-device sequencing and distribution gate below. This supersedes that execution restriction only: the physical FR165 criteria, the unexplained 0.1.18 crash, and all eight full acceptance properties remain open until supported by their own evidence. B3 starts only after B2 test publication. The highest public version observed at B2 start is 0.1.21; the candidate is 0.1.22 subject to root's release-time race check.
 
+The owner's later delivery decision supersedes any earlier B2/B3 instruction
+for a separate artifact peer or repeated release-stage proof. One author brings
+each whole batch to self-GREEN, then one independent peer reviews and repairs
+it through GREEN; root judges and merges once. The same author then prepares the
+full signed build, and root publishes. Follow the project's
+[stable batch delivery rule](../../../docs/SDD_WORKFLOW.md#stable-batch-delivery).
+Existing physical criteria and historical evidence remain unchanged.
+
 ## Goal and authority
 
 Restore SpaceFox against owner-approved P1–P8. This change refines the existing
