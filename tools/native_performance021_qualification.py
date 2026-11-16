@@ -73,6 +73,7 @@ REQUIRED_CURRENT = (REQUIRED_PRIOR - {'locales/catalog.json', 'tests/test_global
     'tests/test_schedule_producer_transport.py', 'tests/test_performance021_b.py',
     'tests/test_performance021_b_cloud.py', 'tests/test_performance021_b_peer.py', 'tests/test_current_metadata_publisher.py',
     'tests/test_durable_delivery_whole.py', 'tests/test_phone_text_transport.py',
+    'tests/test_performance021_d_receipts.py',
 }
 
 

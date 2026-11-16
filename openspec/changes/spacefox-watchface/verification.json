@@ -5856,8 +5856,7 @@
         "watchface/source/NativeSfr.mc",
         "tools/build_native_resources.py",
         "openspec/changes/spacefox-watchface/evidence/performance021/d/**"
-      ],
-      "planning_status": "planned; no observation or acceptance inferred"
+      ]
     },
     {
       "id": "WF25.P2",
@@ -5873,8 +5872,7 @@
         "watchface/source/SceneRenderer.mc",
         "watchface/source/SettingsMenu.mc",
         "openspec/changes/spacefox-watchface/evidence/performance021/d/**"
-      ],
-      "planning_status": "planned; no observation or acceptance inferred"
+      ]
     },
     {
       "id": "WF25.P3",
@@ -5889,8 +5887,7 @@
         "watchface/source/NativeImmutable.mc",
         "watchface/source/FeedService.mc",
         "openspec/changes/spacefox-watchface/evidence/performance021/d/**"
-      ],
-      "planning_status": "planned; no observation or acceptance inferred"
+      ]
     },
     {
       "id": "WF25.P4",
@@ -5908,8 +5905,7 @@
         "watchface/source/NativeForegroundCache.mc",
         "watchface/source/LaunchReminder.mc",
         "openspec/changes/spacefox-watchface/evidence/performance021/d/**"
-      ],
-      "planning_status": "planned; no observation or acceptance inferred"
+      ]
     },
     {
       "id": "WF25.P5",
@@ -5924,8 +5920,7 @@
         "watchface/source/SpaceFoxApp.mc",
         "watchface/source/SpaceFoxView.mc",
         "openspec/changes/spacefox-watchface/evidence/performance021/d/**"
-      ],
-      "planning_status": "planned; no observation or acceptance inferred"
+      ]
     },
     {
       "id": "WF25.P6",
@@ -5941,8 +5936,7 @@
         "watchface/resources/**",
         "tools/native_performance021_qualification.py",
         "openspec/changes/spacefox-watchface/evidence/performance021/d/**"
-      ],
-      "planning_status": "planned; no observation or acceptance inferred"
+      ]
     }
   ],
   "cases": [
@@ -40873,151 +40867,508 @@
       "implementation_note": "C author direct checks and actual Chrome DOM receipts in performance021/c; fresh peer/root remain pending."
     },
     {
-      "id": "WF25.P1.S01.PLANNED",
+      "id": "WF25.P1.S01.POSITIVE",
       "property_id": "WF25.P1",
       "polarity": "positive",
       "scenario": "Scene completes and transitions through LOW and wake",
       "scenario_fingerprint": "9c5661f777ee48dcc1494614df249e427083438056b4b2919d2f2aa05ba446ac",
-      "setup": "Current source and matching simulator or local causal event fixture.",
-      "observable": "Named behavior, resource and integrity evidence.",
-      "red_expectation": "The required behavior, identity or integrity observation fails.",
-      "green_expectation": "Independent expected behavior and actual observations agree.",
+      "setup": "Read source-bound SDK framework results, compile identities and recorded stock simulator evidence; this observer does not run a simulator.",
+      "observable": "scene complete",
+      "red_expectation": "A mismatched compiled source or program, failed native result, missing recorded assertion or violated observed boundary fails this observer.",
+      "green_expectation": "The named observed assertion and retained receipt match their source and stated simulator boundary.",
       "invalidation_dependencies": [
         "watchface/source/SceneRenderer.mc",
         "watchface/source/NativeSfr.mc",
-        "tools/build_native_resources.py"
+        "tools/build_native_resources.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/d/**",
+        "tests/test_performance021_d_receipts.py",
+        "watchface/incident-tests/DeliveryContinuityTests.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "tools/native_display03_probe.py"
       ],
-      "test_id": "planned::performance021_d.property_1",
-      "command_id": "performance021-d-planned",
-      "state": "planned",
-      "source_path": "openspec/changes/spacefox-watchface/evidence/performance021/d/APPLY.md",
-      "planning_note": "Replace with actual selected tests and commands before verification."
+      "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_scene_complete",
+      "command_id": "performance021-d-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_d_receipts.py",
+      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
+        "allowed_proof": "The named source-bound recorded assertion and simulator or package observation; paired observers may share a native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical-device acceptance",
+          "Unmeasured graphics pool, battery or Store acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
     },
     {
-      "id": "WF25.P2.S01.PLANNED",
+      "id": "WF25.P1.S01.NEGATIVE",
+      "property_id": "WF25.P1",
+      "polarity": "negative",
+      "scenario": "Scene completes and transitions through LOW and wake",
+      "scenario_fingerprint": "9c5661f777ee48dcc1494614df249e427083438056b4b2919d2f2aa05ba446ac",
+      "setup": "Read source-bound SDK framework results, compile identities and recorded stock simulator evidence; this observer does not run a simulator.",
+      "observable": "scene incomplete",
+      "red_expectation": "A mismatched compiled source or program, failed native result, missing recorded assertion or violated observed boundary fails this observer.",
+      "green_expectation": "The named observed assertion and retained receipt match their source and stated simulator boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/SceneRenderer.mc",
+        "watchface/source/NativeSfr.mc",
+        "tools/build_native_resources.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/d/**",
+        "tests/test_performance021_d_receipts.py",
+        "watchface/incident-tests/DeliveryContinuityTests.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "tools/native_display03_probe.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_scene_incomplete",
+      "command_id": "performance021-d-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_d_receipts.py",
+      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
+        "allowed_proof": "The named source-bound recorded assertion and simulator or package observation; paired observers may share a native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical-device acceptance",
+          "Unmeasured graphics pool, battery or Store acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
+    },
+    {
+      "id": "WF25.P1.S02.POSITIVE",
+      "property_id": "WF25.P1",
+      "polarity": "positive",
+      "scenario": "A matching bundled outline is available",
+      "scenario_fingerprint": "f24fc03588cebece50377f5c6635b486e585ee0a49a45f2b90f7f793b99ed83e",
+      "setup": "Read source-bound SDK framework results, compile identities and recorded stock simulator evidence; this observer does not run a simulator.",
+      "observable": "outline matching pixels",
+      "red_expectation": "A mismatched compiled source or program, failed native result, missing recorded assertion or violated observed boundary fails this observer.",
+      "green_expectation": "The named observed assertion and retained receipt match their source and stated simulator boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/SceneRenderer.mc",
+        "watchface/source/NativeSfr.mc",
+        "tools/build_native_resources.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/d/**",
+        "tests/test_performance021_d_receipts.py",
+        "watchface/incident-tests/DeliveryContinuityTests.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "tools/native_display03_probe.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_outline_matching_pixels",
+      "command_id": "performance021-d-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_d_receipts.py",
+      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
+        "allowed_proof": "The named source-bound recorded assertion and simulator or package observation; paired observers may share a native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical-device acceptance",
+          "Unmeasured graphics pool, battery or Store acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
+    },
+    {
+      "id": "WF25.P1.S02.NEGATIVE",
+      "property_id": "WF25.P1",
+      "polarity": "negative",
+      "scenario": "A matching bundled outline is available",
+      "scenario_fingerprint": "f24fc03588cebece50377f5c6635b486e585ee0a49a45f2b90f7f793b99ed83e",
+      "setup": "Read source-bound SDK framework results, compile identities and recorded stock simulator evidence; this observer does not run a simulator.",
+      "observable": "outline corrupt refusal",
+      "red_expectation": "A mismatched compiled source or program, failed native result, missing recorded assertion or violated observed boundary fails this observer.",
+      "green_expectation": "The named observed assertion and retained receipt match their source and stated simulator boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/SceneRenderer.mc",
+        "watchface/source/NativeSfr.mc",
+        "tools/build_native_resources.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/d/**",
+        "tests/test_performance021_d_receipts.py",
+        "watchface/incident-tests/DeliveryContinuityTests.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "tools/native_display03_probe.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_outline_corrupt_refusal",
+      "command_id": "performance021-d-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_d_receipts.py",
+      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
+        "allowed_proof": "The named source-bound recorded assertion and simulator or package observation; paired observers may share a native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical-device acceptance",
+          "Unmeasured graphics pool, battery or Store acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
+    },
+    {
+      "id": "WF25.P2.S01.POSITIVE",
       "property_id": "WF25.P2",
       "polarity": "positive",
       "scenario": "A source field or display value changes",
       "scenario_fingerprint": "f7d757f114736c0ddf631ea7408b4e76dca124c67e61c98c438a66b52a34909a",
-      "setup": "Current source and matching simulator or local causal event fixture.",
-      "observable": "Named behavior, resource and integrity evidence.",
-      "red_expectation": "The required behavior, identity or integrity observation fails.",
-      "green_expectation": "Independent expected behavior and actual observations agree.",
+      "setup": "Read source-bound SDK framework results, compile identities and recorded stock simulator evidence; this observer does not run a simulator.",
+      "observable": "fields shared update",
+      "red_expectation": "A mismatched compiled source or program, failed native result, missing recorded assertion or violated observed boundary fails this observer.",
+      "green_expectation": "The named observed assertion and retained receipt match their source and stated simulator boundary.",
       "invalidation_dependencies": [
         "watchface/source/FieldSources.mc",
         "watchface/source/SceneRenderer.mc",
-        "watchface/source/SettingsMenu.mc"
+        "watchface/source/SettingsMenu.mc",
+        "openspec/changes/spacefox-watchface/evidence/performance021/d/**",
+        "tests/test_performance021_d_receipts.py",
+        "watchface/incident-tests/DeliveryContinuityTests.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "tools/native_display03_probe.py"
       ],
-      "test_id": "planned::performance021_d.property_2",
-      "command_id": "performance021-d-planned",
-      "state": "planned",
-      "source_path": "openspec/changes/spacefox-watchface/evidence/performance021/d/APPLY.md",
-      "planning_note": "Replace with actual selected tests and commands before verification."
+      "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_fields_shared_update",
+      "command_id": "performance021-d-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_d_receipts.py",
+      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
+        "allowed_proof": "The named source-bound recorded assertion and simulator or package observation; paired observers may share a native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical-device acceptance",
+          "Unmeasured graphics pool, battery or Store acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
     },
     {
-      "id": "WF25.P3.S01.PLANNED",
+      "id": "WF25.P2.S01.NEGATIVE",
+      "property_id": "WF25.P2",
+      "polarity": "negative",
+      "scenario": "A source field or display value changes",
+      "scenario_fingerprint": "f7d757f114736c0ddf631ea7408b4e76dca124c67e61c98c438a66b52a34909a",
+      "setup": "Read source-bound SDK framework results, compile identities and recorded stock simulator evidence; this observer does not run a simulator.",
+      "observable": "fields fitted real provider",
+      "red_expectation": "A mismatched compiled source or program, failed native result, missing recorded assertion or violated observed boundary fails this observer.",
+      "green_expectation": "The named observed assertion and retained receipt match their source and stated simulator boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/FieldSources.mc",
+        "watchface/source/SceneRenderer.mc",
+        "watchface/source/SettingsMenu.mc",
+        "openspec/changes/spacefox-watchface/evidence/performance021/d/**",
+        "tests/test_performance021_d_receipts.py",
+        "watchface/incident-tests/DeliveryContinuityTests.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "tools/native_display03_probe.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_fields_fitted_real_provider",
+      "command_id": "performance021-d-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_d_receipts.py",
+      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
+        "allowed_proof": "The named source-bound recorded assertion and simulator or package observation; paired observers may share a native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical-device acceptance",
+          "Unmeasured graphics pool, battery or Store acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
+    },
+    {
+      "id": "WF25.P3.S01.POSITIVE",
       "property_id": "WF25.P3",
       "polarity": "positive",
       "scenario": "A batch progresses or its source changes",
       "scenario_fingerprint": "d65154b7c814815c32d32011a42251358db409163c21a25c28866a735c2efbbb",
-      "setup": "Current source and matching simulator or local causal event fixture.",
-      "observable": "Named behavior, resource and integrity evidence.",
-      "red_expectation": "The required behavior, identity or integrity observation fails.",
-      "green_expectation": "Independent expected behavior and actual observations agree.",
+      "setup": "Read source-bound SDK framework results, compile identities and recorded stock simulator evidence; this observer does not run a simulator.",
+      "observable": "batch prefix progress",
+      "red_expectation": "A mismatched compiled source or program, failed native result, missing recorded assertion or violated observed boundary fails this observer.",
+      "green_expectation": "The named observed assertion and retained receipt match their source and stated simulator boundary.",
       "invalidation_dependencies": [
         "watchface/source/NativeImmutable.mc",
-        "watchface/source/FeedService.mc"
+        "watchface/source/FeedService.mc",
+        "openspec/changes/spacefox-watchface/evidence/performance021/d/**",
+        "tests/test_performance021_d_receipts.py",
+        "watchface/incident-tests/DeliveryContinuityTests.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "tools/native_display03_probe.py"
       ],
-      "test_id": "planned::performance021_d.property_3",
-      "command_id": "performance021-d-planned",
-      "state": "planned",
-      "source_path": "openspec/changes/spacefox-watchface/evidence/performance021/d/APPLY.md",
-      "planning_note": "Replace with actual selected tests and commands before verification."
+      "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_batch_prefix_progress",
+      "command_id": "performance021-d-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_d_receipts.py",
+      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
+        "allowed_proof": "The named source-bound recorded assertion and simulator or package observation; paired observers may share a native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical-device acceptance",
+          "Unmeasured graphics pool, battery or Store acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
     },
     {
-      "id": "WF25.P4.S01.PLANNED",
+      "id": "WF25.P3.S01.NEGATIVE",
+      "property_id": "WF25.P3",
+      "polarity": "negative",
+      "scenario": "A batch progresses or its source changes",
+      "scenario_fingerprint": "d65154b7c814815c32d32011a42251358db409163c21a25c28866a735c2efbbb",
+      "setup": "Read source-bound SDK framework results, compile identities and recorded stock simulator evidence; this observer does not run a simulator.",
+      "observable": "batch corruption refused",
+      "red_expectation": "A mismatched compiled source or program, failed native result, missing recorded assertion or violated observed boundary fails this observer.",
+      "green_expectation": "The named observed assertion and retained receipt match their source and stated simulator boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/NativeImmutable.mc",
+        "watchface/source/FeedService.mc",
+        "openspec/changes/spacefox-watchface/evidence/performance021/d/**",
+        "tests/test_performance021_d_receipts.py",
+        "watchface/incident-tests/DeliveryContinuityTests.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "tools/native_display03_probe.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_batch_corruption_refused",
+      "command_id": "performance021-d-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_d_receipts.py",
+      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
+        "allowed_proof": "The named source-bound recorded assertion and simulator or package observation; paired observers may share a native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical-device acceptance",
+          "Unmeasured graphics pool, battery or Store acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
+    },
+    {
+      "id": "WF25.P4.S01.POSITIVE",
       "property_id": "WF25.P4",
       "polarity": "positive",
       "scenario": "A request is late or storage contains provisional state",
       "scenario_fingerprint": "3709e92f88e4929c81c46e4af81c2fe12e26cd47d1d44293340b533d7dc9e65b",
-      "setup": "Current source and matching simulator or local causal event fixture.",
-      "observable": "Named behavior, resource and integrity evidence.",
-      "red_expectation": "The required behavior, identity or integrity observation fails.",
-      "green_expectation": "Independent expected behavior and actual observations agree.",
+      "setup": "Read source-bound SDK framework results, compile identities and recorded stock simulator evidence; this observer does not run a simulator.",
+      "observable": "storage retry",
+      "red_expectation": "A mismatched compiled source or program, failed native result, missing recorded assertion or violated observed boundary fails this observer.",
+      "green_expectation": "The named observed assertion and retained receipt match their source and stated simulator boundary.",
       "invalidation_dependencies": [
         "watchface/source/FeedService.mc",
         "watchface/source/NativeUpcomingCache.mc",
         "watchface/source/NativeTransfer.mc",
         "watchface/source/NativeForegroundCache.mc",
-        "watchface/source/LaunchReminder.mc"
+        "watchface/source/LaunchReminder.mc",
+        "openspec/changes/spacefox-watchface/evidence/performance021/d/**",
+        "tests/test_performance021_d_receipts.py",
+        "watchface/incident-tests/DeliveryContinuityTests.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "tools/native_display03_probe.py"
       ],
-      "test_id": "planned::performance021_d.property_4",
-      "command_id": "performance021-d-planned",
-      "state": "planned",
-      "source_path": "openspec/changes/spacefox-watchface/evidence/performance021/d/APPLY.md",
-      "planning_note": "Replace with actual selected tests and commands before verification."
+      "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_storage_retry",
+      "command_id": "performance021-d-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_d_receipts.py",
+      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
+        "allowed_proof": "The named source-bound recorded assertion and simulator or package observation; paired observers may share a native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical-device acceptance",
+          "Unmeasured graphics pool, battery or Store acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
     },
     {
-      "id": "WF25.P5.S01.PLANNED",
+      "id": "WF25.P4.S01.NEGATIVE",
+      "property_id": "WF25.P4",
+      "polarity": "negative",
+      "scenario": "A request is late or storage contains provisional state",
+      "scenario_fingerprint": "3709e92f88e4929c81c46e4af81c2fe12e26cd47d1d44293340b533d7dc9e65b",
+      "setup": "Read source-bound SDK framework results, compile identities and recorded stock simulator evidence; this observer does not run a simulator.",
+      "observable": "late and corrupt preserve",
+      "red_expectation": "A mismatched compiled source or program, failed native result, missing recorded assertion or violated observed boundary fails this observer.",
+      "green_expectation": "The named observed assertion and retained receipt match their source and stated simulator boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/FeedService.mc",
+        "watchface/source/NativeUpcomingCache.mc",
+        "watchface/source/NativeTransfer.mc",
+        "watchface/source/NativeForegroundCache.mc",
+        "watchface/source/LaunchReminder.mc",
+        "openspec/changes/spacefox-watchface/evidence/performance021/d/**",
+        "tests/test_performance021_d_receipts.py",
+        "watchface/incident-tests/DeliveryContinuityTests.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "tools/native_display03_probe.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_late_and_corrupt_preserve",
+      "command_id": "performance021-d-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_d_receipts.py",
+      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
+        "allowed_proof": "The named source-bound recorded assertion and simulator or package observation; paired observers may share a native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical-device acceptance",
+          "Unmeasured graphics pool, battery or Store acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
+    },
+    {
+      "id": "WF25.P5.S01.POSITIVE",
       "property_id": "WF25.P5",
       "polarity": "positive",
       "scenario": "The actual application owner stops",
       "scenario_fingerprint": "75a63db70a13773c86b047ea74aa8cbe6c419d17d658f43be4f5a228ad7ccb4e",
-      "setup": "Current source and matching simulator or local causal event fixture.",
-      "observable": "Named behavior, resource and integrity evidence.",
-      "red_expectation": "The required behavior, identity or integrity observation fails.",
-      "green_expectation": "Independent expected behavior and actual observations agree.",
+      "setup": "Read source-bound SDK framework results, compile identities and recorded stock simulator evidence; this observer does not run a simulator.",
+      "observable": "owner stop cleanup",
+      "red_expectation": "A mismatched compiled source or program, failed native result, missing recorded assertion or violated observed boundary fails this observer.",
+      "green_expectation": "The named observed assertion and retained receipt match their source and stated simulator boundary.",
       "invalidation_dependencies": [
         "watchface/source/SpaceFoxApp.mc",
-        "watchface/source/SpaceFoxView.mc"
+        "watchface/source/SpaceFoxView.mc",
+        "openspec/changes/spacefox-watchface/evidence/performance021/d/**",
+        "tests/test_performance021_d_receipts.py",
+        "watchface/incident-tests/DeliveryContinuityTests.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "tools/native_display03_probe.py"
       ],
-      "test_id": "planned::performance021_d.property_5",
-      "command_id": "performance021-d-planned",
-      "state": "planned",
-      "source_path": "openspec/changes/spacefox-watchface/evidence/performance021/d/APPLY.md",
-      "planning_note": "Replace with actual selected tests and commands before verification."
+      "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_owner_stop_cleanup",
+      "command_id": "performance021-d-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_d_receipts.py",
+      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
+        "allowed_proof": "The named source-bound recorded assertion and simulator or package observation; paired observers may share a native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical-device acceptance",
+          "Unmeasured graphics pool, battery or Store acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
     },
     {
-      "id": "WF25.P6.S01.PLANNED",
+      "id": "WF25.P5.S01.NEGATIVE",
+      "property_id": "WF25.P5",
+      "polarity": "negative",
+      "scenario": "The actual application owner stops",
+      "scenario_fingerprint": "75a63db70a13773c86b047ea74aa8cbe6c419d17d658f43be4f5a228ad7ccb4e",
+      "setup": "Read source-bound SDK framework results, compile identities and recorded stock simulator evidence; this observer does not run a simulator.",
+      "observable": "hide does not stop owner",
+      "red_expectation": "A mismatched compiled source or program, failed native result, missing recorded assertion or violated observed boundary fails this observer.",
+      "green_expectation": "The named observed assertion and retained receipt match their source and stated simulator boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/SpaceFoxApp.mc",
+        "watchface/source/SpaceFoxView.mc",
+        "openspec/changes/spacefox-watchface/evidence/performance021/d/**",
+        "tests/test_performance021_d_receipts.py",
+        "watchface/incident-tests/DeliveryContinuityTests.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "tools/native_display03_probe.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_hide_does_not_stop_owner",
+      "command_id": "performance021-d-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_d_receipts.py",
+      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
+        "allowed_proof": "The named source-bound recorded assertion and simulator or package observation; paired observers may share a native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical-device acceptance",
+          "Unmeasured graphics pool, battery or Store acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
+    },
+    {
+      "id": "WF25.P6.S01.POSITIVE",
       "property_id": "WF25.P6",
       "polarity": "positive",
       "scenario": "Native resource evidence is measured",
       "scenario_fingerprint": "d42bb4f206228e8ce5f475bf1f8cdc7f09dce3d2c0483ee5371c310ce42648b2",
-      "setup": "Current source and matching simulator or local causal event fixture.",
-      "observable": "Named behavior, resource and integrity evidence.",
-      "red_expectation": "The required behavior, identity or integrity observation fails.",
-      "green_expectation": "Independent expected behavior and actual observations agree.",
+      "setup": "Read source-bound SDK framework results, compile identities and recorded stock simulator evidence; this observer does not run a simulator.",
+      "observable": "matched heap reduction",
+      "red_expectation": "A mismatched compiled source or program, failed native result, missing recorded assertion or violated observed boundary fails this observer.",
+      "green_expectation": "The named observed assertion and retained receipt match their source and stated simulator boundary.",
       "invalidation_dependencies": [
         "watchface/source/**",
         "watchface/resources/**",
-        "tools/native_performance021_qualification.py"
+        "tools/native_performance021_qualification.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/d/**",
+        "tests/test_performance021_d_receipts.py",
+        "watchface/incident-tests/DeliveryContinuityTests.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "tools/native_display03_probe.py"
       ],
-      "test_id": "planned::performance021_d.property_6",
-      "command_id": "performance021-d-planned",
-      "state": "planned",
-      "source_path": "openspec/changes/spacefox-watchface/evidence/performance021/d/APPLY.md",
-      "planning_note": "Replace with actual selected tests and commands before verification."
+      "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_matched_heap_reduction",
+      "command_id": "performance021-d-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_d_receipts.py",
+      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
+        "allowed_proof": "The named source-bound recorded assertion and simulator or package observation; paired observers may share a native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical-device acceptance",
+          "Unmeasured graphics pool, battery or Store acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
     },
     {
-      "id": "WF25.P1.S02.PLANNED",
-      "property_id": "WF25.P1",
-      "polarity": "positive",
-      "scenario": "A matching bundled outline is available",
-      "scenario_fingerprint": "f24fc03588cebece50377f5c6635b486e585ee0a49a45f2b90f7f793b99ed83e",
-      "setup": "Current source and matching simulator or local causal event fixture.",
-      "observable": "Named behavior, resource and integrity evidence.",
-      "red_expectation": "The required behavior, identity or integrity observation fails.",
-      "green_expectation": "Independent expected behavior and actual observations agree.",
+      "id": "WF25.P6.S01.NEGATIVE",
+      "property_id": "WF25.P6",
+      "polarity": "negative",
+      "scenario": "Native resource evidence is measured",
+      "scenario_fingerprint": "d42bb4f206228e8ce5f475bf1f8cdc7f09dce3d2c0483ee5371c310ce42648b2",
+      "setup": "Read source-bound SDK framework results, compile identities and recorded stock simulator evidence; this observer does not run a simulator.",
+      "observable": "package and graphics boundary",
+      "red_expectation": "A mismatched compiled source or program, failed native result, missing recorded assertion or violated observed boundary fails this observer.",
+      "green_expectation": "The named observed assertion and retained receipt match their source and stated simulator boundary.",
       "invalidation_dependencies": [
-        "watchface/source/SceneRenderer.mc",
-        "watchface/source/NativeSfr.mc",
-        "tools/build_native_resources.py"
+        "watchface/source/**",
+        "watchface/resources/**",
+        "tools/native_performance021_qualification.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/d/**",
+        "tests/test_performance021_d_receipts.py",
+        "watchface/incident-tests/DeliveryContinuityTests.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "tools/native_display03_probe.py"
       ],
-      "test_id": "planned::performance021_d.bundled_outline",
-      "command_id": "performance021-d-planned",
-      "state": "planned",
-      "source_path": "openspec/changes/spacefox-watchface/evidence/performance021/d/APPLY.md",
-      "planning_note": "Replace with actual selected tests and commands before verification."
+      "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_package_and_graphics_boundary",
+      "command_id": "performance021-d-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_d_receipts.py",
+      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
+        "allowed_proof": "The named source-bound recorded assertion and simulator or package observation; paired observers may share a native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical-device acceptance",
+          "Unmeasured graphics pool, battery or Store acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
     }
   ],
   "commands": [
@@ -46069,15 +46420,20 @@
       "planned_boundary": "Actual files and SDK pin discovery; deterministic callback lifetime controls, browser observation separate."
     },
     {
-      "id": "performance021-d-planned",
-      "runner": "manual",
+      "id": "performance021-d-receipts",
+      "runner": "python-unittest",
       "argv": [
-        "planned"
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_performance021_d_receipts"
       ],
       "cwd": ".",
-      "timeout_seconds": 180,
+      "timeout_seconds": 120,
       "authority": "local",
-      "planned_boundary": "Planning identity only; no execution or pass."
+      "notes": "Observes source-bound recorded simulator assertions, package and heap evidence; does not launch SDK."
     }
   ]
 }

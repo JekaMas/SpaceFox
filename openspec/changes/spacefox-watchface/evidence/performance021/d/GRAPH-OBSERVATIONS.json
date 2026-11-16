@@ -1,5 +1,5 @@
 {
-  "boundary": "Manual reconciliation of existing SDK, stock and offline receipts; no private full-graph execution and no new native execution. Graph cases remain planned because this private runner has no native-result adapter and requires distinct positive and negative identities per scenario.",
+  "boundary": "Manual reconciliation of existing SDK, stock and offline receipts; paired implemented unittest observers read those receipts only. This is not a private full-graph execution, independent native rerun or physical evidence.",
   "canonicalFingerprintTool": {
     "release": "f8e7ba481bf356600925e01936d7e9f3f1ac0084",
     "scriptSha256": "46641f165351f11b36f8db4ec6446d438576a17452d900e5aba3835f9d8d8442",

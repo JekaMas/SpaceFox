@@ -1,11 +1,13 @@
 """Tamper and missing-input controls for the host-only admission delta."""
+import hashlib
 import json
 from pathlib import Path
 import shutil
 import tempfile
 import unittest
 
-from tools.native_performance021_qualification import validate
+from tools.native_performance021_qualification import D_DELETED, validate
+from tools.release import ReleaseBlocked, resolve_performance021_retired_inputs
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -26,6 +28,30 @@ class HostProofTest(unittest.TestCase):
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(ROOT / name, target)
         self.record = record
+
+    def test_retired_release_resource_snapshots_and_tampering(self):
+        proof = self.catalog['supportPolicy']['softwareQualificationProof']
+        paths = {proof['performance021Proof']['path']}
+        paths.update(row['path'] for row in self.record['prior'].values())
+        admission = set(D_DELETED) | {'unrelated/missing'}
+        read = lambda name: (self.root / name).read_bytes()
+        resolve_performance021_retired_inputs(admission, paths, proof, read)
+        self.assertEqual(admission, {'unrelated/missing'} | {
+            self.record['prior'][name]['path'] for name in D_DELETED
+        })
+        current_record = json.loads(json.dumps(self.record))
+        current_record['current']['watchface/resources/fonts/Count31.fnt'] = '0' * 64
+        encoded = json.dumps(current_record).encode()
+        current_proof = dict(proof)
+        current_proof['performance021Proof'] = dict(proof['performance021Proof'], sha256=hashlib.sha256(encoded).hexdigest())
+        def current_reader(name):
+            return encoded if name == proof['performance021Proof']['path'] else read(name)
+        with self.assertRaisesRegex(ReleaseBlocked, 'current resource cannot use retired snapshot'):
+            resolve_performance021_retired_inputs(set(D_DELETED), paths, current_proof, current_reader)
+        path = self.record['prior']['watchface/resources/fonts/Count31.fnt']['path']
+        (self.root / path).write_bytes((self.root / path).read_bytes() + b'tampered')
+        with self.assertRaisesRegex(ReleaseBlocked, 'retired resource snapshot is missing or changed'):
+            resolve_performance021_retired_inputs(set(D_DELETED), paths, proof, read)
 
     def test_missing_prior_source_refuses(self):
         name = self.record['prior']['tests/test_global_content_closure_r5.py']['path']

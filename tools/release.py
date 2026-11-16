@@ -50,6 +50,32 @@ def git(root: Path, *args: str) -> str:
     return result.stdout
 
 
+def resolve_performance021_retired_inputs(admission, paths, proof, read_metadata):
+    """Replace only retired resource paths with their authenticated prior bytes."""
+    if proof is None or "performance021Proof" not in proof:
+        return
+    from tools.native_performance021_qualification import D_DELETED
+    ref = proof["performance021Proof"]
+    proof_path = ref["path"]
+    require(proof_path in paths and hashlib.sha256(read_metadata(proof_path)).hexdigest() == ref["sha256"],
+            "performance021 admission proof is missing or changed")
+    record = json.loads(read_metadata(proof_path))
+    require(record.get("scope") == "performance021-host-source-delta" and
+            record.get("baseline") == "29f3cfd067ff10690a9ba5163f25e04cd4b55b6f",
+            "performance021 admission baseline differs")
+    for name in D_DELETED & admission - paths:
+        require(name not in record["current"], "current resource cannot use retired snapshot: " + name)
+        snapshot = record["prior"].get(name)
+        require(isinstance(snapshot, dict), "missing retired resource snapshot: " + name)
+        path = snapshot.get("path")
+        require(isinstance(path, str) and not PurePosixPath(path).is_absolute() and
+                ".." not in PurePosixPath(path).parts and path in paths and
+                hashlib.sha256(read_metadata(path)).hexdigest() == snapshot.get("sha256"),
+                "retired resource snapshot is missing or changed: " + name)
+        admission.remove(name)
+        admission.add(path)
+
+
 def source_state(root: Path) -> dict:
     require(Path(git(root, "rev-parse", "--show-toplevel").strip()).resolve() == root,
             "root must be the actual Git worktree")
@@ -168,6 +194,7 @@ def source_state(root: Path) -> dict:
         admission.update(receipt["observations"])
         corpus_directory = PurePosixPath(proof["corpusPath"]).parent
         admission.update(name for name in paths if PurePosixPath(name).is_relative_to(corpus_directory))
+    resolve_performance021_retired_inputs(admission, set(paths), proof, read_metadata)
     require(admission <= set(paths), "language admission inputs must be tracked")
     inputs = {}
     for name in paths:
