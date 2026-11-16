@@ -21,7 +21,7 @@ class LocalePresentation {
     function initialize(){restore("en");}
     // All fields are optional outside the renderer. Rebuild them before the
     // normal scene so feed/bitmap work need not retain font resources.
-    function suspend(){dictionary=null;small=null;label=null;latinSmall=null;count=null;calendarFont=null;aodContextFont=null;aodBatteryFont=null;locale="";}
+    function suspend(){dictionary=null;small=null;label=null;latinSmall=null;count=null;calendarFont=null;aodContextFont=null;aodBatteryFont=null;locale="";LocaleGraphemes.data=null;}
     function restore(requested){
         if(label!=null){prepare(requested);return;}
         // Proper names use a shared Latin face, independent of UI language.

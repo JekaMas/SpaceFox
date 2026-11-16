@@ -1,0 +1,70 @@
+------------------------------------------------------------------------------
+Executing test sceneGeographyPositive...
+DEBUG (11:37): accepted flat-map resource preserves sourcepoint; pin335/165
+PASS
+------------------------------------------------------------------------------
+Executing test sceneGeographyNegative...
+DEBUG (11:37): invalid/missing/unprepared/moving-without-event position cannot createfalsepin
+PASS
+------------------------------------------------------------------------------
+Executing test sceneCompositionPositive...
+DEBUG (11:37): real resource font width08:08=239 height=116
+PASS
+------------------------------------------------------------------------------
+Executing test sceneCompositionNegative...
+DEBUG (11:37): actual3redraws do not load/parse static resource again
+PASS
+------------------------------------------------------------------------------
+Executing test sceneAodPositive...
+DEBUG (11:37): sleep minute redraw guard; telemetry read once outside redraw
+PASS
+------------------------------------------------------------------------------
+Executing test sceneAodNegative...
+DEBUG (11:37): actual4sparseposition renders plusnegativeUTCminute; mapnotdrawn byseparatepath; pixelbudget separatelyscreenshotted
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryRejectedResponseRetainsScene...
+DEBUG (11:37): REJECTED_RESPONSE retainedAcceptedScene=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryDuplicateCallbackDoesNotInvalidateBuild...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack:
+  - API code 0x30000203
+  - API code 0x30000174
+  - deliveryDuplicateCallbackDoesNotInvalidateBuild() at /task/focused/tests/DeliveryContinuityTests.mc:176 0x10002b07
+  - evaluate_test_entries_0_to_30() at /task/focused/gen/006-B4433-00/source/UnitTests.mcgen:95 0x10007dd0
+  - runTest() at /task/focused/gen/006-B4433-00/source/UnitTests.mcgen:173 0x1000824e
+ERROR
+------------------------------------------------------------------------------
+Executing test firstInstallDefaultsAndRetry...
+DEBUG (11:37): FIRST_INSTALL default=true blankDisabled=true coldRetry=300 acceptedRetry=3600
+PASS
+------------------------------------------------------------------------------
+Executing test uxAcceptedSceneDuringRestore...
+DEBUG (11:37): UX_RESTORE acceptedMetadata=true schedule=true errorDoesNotReplace=true
+PASS
+------------------------------------------------------------------------------
+Executing test uxNewIdentityAfterRestore...
+DEBUG (11:37): UX_IDENTITY afterRejectedRestore=newLaunch generic=true oldBitmap=false oldPoint=false
+PASS
+
+==============================================================================
+RESULTS
+Test:                                           Status:
+sceneGeographyPositive                          PASS
+sceneGeographyNegative                          PASS
+sceneCompositionPositive                        PASS
+sceneCompositionNegative                        PASS
+sceneAodPositive                                PASS
+sceneAodNegative                                PASS
+deliveryRejectedResponseRetainsScene            PASS
+deliveryDuplicateCallbackDoesNotInvalidateBuild ERROR
+firstInstallDefaultsAndRetry                    PASS
+uxAcceptedSceneDuringRestore                    PASS
+uxNewIdentityAfterRestore                       PASS
+Ran 11 tests
+
+FAILED (passed=10, failed=0, errors=1)

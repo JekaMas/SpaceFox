@@ -1,0 +1,78 @@
+------------------------------------------------------------------------------
+Executing test refreshColdCache...
+DEBUG (11:50): empty accepted cache remains empty; bundled catalog cannot invent a launch
+PASS
+------------------------------------------------------------------------------
+Executing test refreshCacheSequence...
+DEBUG (11:50): cache initial accepted=true failure= id=ll2:launch:0f867f0c-5422-4d44-93b8-d7faaae7019b
+DEBUG (11:50): current A, exact replay, moved B, source refresh, withdrawal and new identity survive admission/reopen
+PASS
+------------------------------------------------------------------------------
+Executing test refreshCacheRefusals...
+DEBUG (11:50): older generation and same-generation conflicting bytes cannot replace B
+PASS
+------------------------------------------------------------------------------
+Executing test refreshFeedCacheFaults...
+DEBUG (11:50): feed-cache fault indices reached=20; every reopen is exact A or B
+PASS
+------------------------------------------------------------------------------
+Executing test refreshParserRejects...
+DEBUG (11:51): current contradictory time packet rejected without replacing accepted cache
+PASS
+------------------------------------------------------------------------------
+Executing test refreshJsonRefusals...
+DEBUG (11:51): existing duplicate, leading-zero, incomplete and trailing grammar literals rejected; current packet SHA agrees
+PASS
+------------------------------------------------------------------------------
+Executing test moreCurrentIntegrity...
+DEBUG (11:51): current schema, identity, UTC/ISO, policy, metadata and real-site geometry refusals preserve A; 8193-byte provisional transfer refused
+PASS
+------------------------------------------------------------------------------
+Executing test moreWidePolicy...
+DEBUG (11:51): current packet retains existing overflow metadata/policy literal in raw SHA; bounded UTC calculation projection survives reopen
+PASS
+------------------------------------------------------------------------------
+Executing test moreCorruptRecovery...
+DEBUG (11:51): corrupted current committed raw reopens the prior complete A, with its own age and reschedule state
+PASS
+------------------------------------------------------------------------------
+Executing test morePublisherFloor...
+DEBUG (11:51): changed publisher instance, null/regressing selection origin and empty namespace cannot replace accepted A
+PASS
+------------------------------------------------------------------------------
+Executing test moreSourceIdentity...
+DEBUG (11:51): captured A/B IDs, nominal UTC and unverified source coordinates match; no asserted event point; B metadata reopens
+PASS
+------------------------------------------------------------------------------
+Executing test moreRescheduledStale...
+DEBUG (11:51): same selected launch retains reschedule independently through normal stale threshold and reopen
+PASS
+------------------------------------------------------------------------------
+Executing test moreStorageFull...
+DEBUG (11:51): injected SDK StorageFullException at a reached feed-cache write preserves complete A on reopen
+PASS
+------------------------------------------------------------------------------
+Executing test moreSourceOnlyReuse...
+DEBUG (11:51): source-only newer validation retains raw feed chunks without rewriting them and reopens same identity
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+refreshColdCache                    PASS
+refreshCacheSequence                PASS
+refreshCacheRefusals                PASS
+refreshFeedCacheFaults              PASS
+refreshParserRejects                PASS
+refreshJsonRefusals                 PASS
+moreCurrentIntegrity                PASS
+moreWidePolicy                      PASS
+moreCorruptRecovery                 PASS
+morePublisherFloor                  PASS
+moreSourceIdentity                  PASS
+moreRescheduledStale                PASS
+moreStorageFull                     PASS
+moreSourceOnlyReuse                 PASS
+Ran 14 tests
+
+PASSED (passed=14, failed=0, errors=0)

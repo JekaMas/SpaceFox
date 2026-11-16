@@ -19,4 +19,11 @@
 - [x] Qualify current B1/source/version admission and verify identity, source and predecessor rejection boundaries.
 - [x] Build and inspect the signed 0.1.19 PRGs/IQ and prepare private release assets and provenance.
 - [x] Independent peer verifies the exact source and artifacts.
-- [ ] Root merges and publishes the GitHub test prerelease, then verifies the published tag and assets.
+- [x] Superseded before publication by public 0.1.20; the 0.1.19 artifacts remain historical and were not released.
+
+
+## 0.1.21 integration and release
+
+- [x] Merge published 0.1.20 streaming/watchdog changes with B1 clock and lifecycle guarantees; verify affected boundaries and FR165 release-flags compilation.
+- [ ] Independently review and merge the integrated source to main.
+- [ ] Freeze that accepted main and prepare a signed 0.1.21 candidate using the original 0.1.20 receipt and IQ; peer checks artifacts before publication.

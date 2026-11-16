@@ -22,7 +22,7 @@ def run(out,device):
  pre=json.loads((previous/'ready-precompile.json').read_text());observed=(previous/'precompile-generated/observer/PointObserver.mc').read_text()
  start=observed.index('if(data.hasKey(key)){return data[key];}')+len('if(data.hasKey(key)){return data[key];}');end=observed.index('return null;',start)
  branches=observed[start:end];source=template.read_text();assert source.count('/* ASSET_BRANCHES */')==1
- generated=out/'observer';generated.mkdir();(generated/'ReadyAssetTrace.mc').write_text(source.replace('/* ASSET_BRANCHES */',branches))
+ generated=out/'observer';generated.mkdir();(generated/'ReadyAssetTrace.mc').write_text(source.replace('/* ASSET_BRANCHES */',branches));(generated/'CurrentJobs.mc').write_bytes((ROOT/'tests/native-runtime/CurrentJobs.mc').read_bytes())
  resources=out/'resources';shutil.copytree(previous/'precompile-generated/resources',resources)
  for n,h in pre['generatedResources'].items():
   if sha(resources/n)!=h:raise ValueError('retained READY resource changed: '+n)

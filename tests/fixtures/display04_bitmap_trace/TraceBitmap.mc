@@ -14,7 +14,7 @@ import Toybox.WatchUi;
 }
 (:test,:typecheck(false)) function display04PendingBitmapTrace(logger){
  var store=new D04BitmapStore();var catalog=WatchUi.loadResource(Rez.JsonData.D04Catalog);store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);
- var cache=new NativeCache("https://fixture.invalid/display04-point",store);var raw=WatchUi.loadResource(Rez.JsonData.D04Feed)["raw"];
+ var cache=new TestNativeCache("https://fixture.invalid/display04-point",store);var raw=WatchUi.loadResource(Rez.JsonData.D04Feed)["raw"];
  Test.assert(cache.accept(raw,1794551202));var context=feedScene(cache.packet,1794551202);Test.assert(context!=null&&context.point!=null);
  var previous=null;
  for(var language=0;language<2;language+=1){

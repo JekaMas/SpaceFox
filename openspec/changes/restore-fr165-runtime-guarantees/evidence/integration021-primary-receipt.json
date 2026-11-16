@@ -1,0 +1,28 @@
+{
+  "version": "0.1.21",
+  "native_id": "f29b60ca",
+  "uuid": "ec8b7c8a8ea54ee9ac91ee6e7a674d15",
+  "key_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
+  "profile": "fr165",
+  "compiler_sha256": "e1a6f9018b0c2f7552e25a41b7a6e621e4322bda6916bfd7177e9f7538c385c8",
+  "compiler_profile_sha256": "ed45eb28ba928e2d2bda1bf8c567401232ab226889b87712fef5713e7f9a4fa8",
+  "flags": [
+    "-l",
+    "3",
+    "-O",
+    "2",
+    "-w",
+    "-r",
+    "-d",
+    "fr165"
+  ],
+  "program_sha256": "ed3100b7ef8d4a328ce5a6cd8c7e72c85d5a67965a93a13bbf653d7a020751c4",
+  "verification": {
+    "iq_signature_verified": true,
+    "prg_signature_verified": true,
+    "prg_public_key_matches": true,
+    "rsa_bits": 4096,
+    "verified_programs": 1
+  },
+  "purpose": "source integration self-check; not final release artifact"
+}

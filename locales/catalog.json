@@ -509,9 +509,13 @@
         "path": "openspec/changes/spacefox-watchface/evidence/devices020/devices020-proof.json",
         "sha256": "efac6044cbbd3c67c038734bbbbe5e7d832d11f7f96c0d09f7cfd100748d4d22"
       },
-      "b1Runtime019Proof": {
-        "path": "openspec/changes/restore-fr165-runtime-guarantees/evidence/release019-admission.json",
-        "sha256": "55c4589f3e0a850c538a095aababa41341ba42b740ca7a79deeb6ee2895a1518"
+      "watchdogReleaseProof": {
+        "path": "openspec/changes/fix-device-watchdog/evidence/release-020/watchdog-release-proof.json",
+        "sha256": "9e420f9e41d1dfa9221a2384171688eb47484fc804ca36643a4cd23fde1849bd"
+      },
+      "b1Integration021Proof": {
+        "path": "openspec/changes/restore-fr165-runtime-guarantees/evidence/integration021-admission.json",
+        "sha256": "5c30a3f9911c3a68f49c7d00e17b0ec293cd54f4e8ff187ae7d74e56b4edac14"
       }
     }
   }

@@ -362,3 +362,21 @@ unfinished full-implementation goal complete.
 ### Owner distribution decision — 0.1.19 test release
 
 The owner explicitly instructed B1 to be merged to main and a new version released. This authorizes a GitHub test prerelease of 0.1.19 before physical-device observation; it changes distribution authority, not the status of P1–P3 verification. The independent software review remains source-scoped. Exact-candidate physical FR165 cold/reopen and at least 15 minutes ordinary use, and the cause of the reported 0.1.18 IQ screen, remain open. B2/P4–P6 and B3/P8 remain open. No Garmin Store action is authorized by this decision.
+
+
+### Main advanced during 0.1.19 preparation
+
+Public main advanced to `db9130d3bc870c848a4973eade0731ce5bd98da5`, and regular `v0.1.20` was published. The 0.1.19 candidate is superseded and remains immutable historical evidence. The next release is 0.1.21, integrating the B1 source with 0.1.20's streaming admission and watchdog repair. Source integration and independent review precede a separately frozen signed export. The original 0.1.20 full receipt was retained locally and its SHA-256 `fbfe2da43812ebd01608ad177007743fb24a368b1a69d8a0823ed37e98956818` matched the published package summary; it was not a public release asset. The published IQ SHA-256 is `b5bd0cb73b290f37e49e5b5027a6304213dcb38bc5669cf220d6652b8c59738d`. Physical FR165 acceptance and the 0.1.18 IQ cause remain open; the owner's earlier authorization permits GitHub distribution before that observation, without authorizing a Store action.
+
+### 0.1.21 author source integration checkpoint
+
+The author reconciled B1 with the published 0.1.20 streaming admission and
+recovery owners. The integration evidence and exact source boundaries are in
+`evidence/INTEGRATION-021.md`. The initial ordinary stock timer-limit failure
+was repaired; six directly affected SDK cases, a production-identity FR165
+release-flags compile, and an offline 55-second stock observation then passed
+at their stated boundaries. The older 21-row source table is retained with its
+pre-repair source identity. The original 0.1.20 full receipt is locally retained
+and authenticated by the published summary, not itself a published asset.
+Source peer review and accepted-main artifact preparation remain separate.
+Physical acceptance and the owner crash cause remain open.

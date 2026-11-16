@@ -2,6 +2,7 @@ import Toybox.Application;
 import Toybox.Background;
 import Toybox.Lang;
 import Toybox.Test;
+import Toybox.System;
 import Toybox.Time;
 import Toybox.WatchUi;
 
@@ -116,10 +117,16 @@ import Toybox.WatchUi;
  // commit on reopen, preserve its fresh snapshot without another write, and
  // reconstruct an absent snapshot only from that fully parsed accepted feed.
  var store=new ReminderStore();var catalog=WatchUi.loadResource(Rez.JsonData.DisplayCatalog);store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);
- var cache=new NativeCache("https://example.invalid",store);var now=1794551202l;Test.assert(cache.accept(WatchUi.loadResource(Rez.JsonData.DisplayInitial)["raw"],now));
+ var cache=new TestNativeCache("https://example.invalid",store);var now=1794551202l;Test.assert(cache.accept(WatchUi.loadResource(Rez.JsonData.DisplayInitial)["raw"],now));
  LaunchReminderForeground.publish(cache,now);var admitted=store.read("sf.reminder.snapshot");Test.assert(admitted instanceof Dictionary);Test.assert(LaunchReminder.bound(store,admitted,cache.base,now));
- var reopened=new NativeCache(cache.base,store);Test.assert(reopened.load(now)!=null);Test.assert(reopened.packet instanceof NativeBridgeFeed);
+ var reopened=new TestNativeCache(cache.base,store);Test.assert(reopened.load(now)!=null);Test.assert(reopened.packet instanceof NativeBridgeFeed);
  var before=store.writes;LaunchReminderForeground.publish(reopened,now+1);Test.assertEqual(store.writes,before);Test.assert(nativeSame(admitted,store.read("sf.reminder.snapshot")));
  store.remove("sf.reminder.snapshot");before=store.writes;LaunchReminderForeground.publish(reopened,now+1);Test.assertEqual(store.writes,before+1);var restored=store.read("sf.reminder.snapshot");Test.assert(restored instanceof Dictionary);Test.assert(LaunchReminder.bound(store,restored,reopened.base,now+1));
- store.data["sf.commit"]["seal"]="invalid";var rejected=new NativeCache(cache.base,store);Test.assert(rejected.load(now+2)==null);LaunchReminderForeground.publish(rejected,now+2);Test.assert(store.read("sf.reminder.snapshot")==null);return true;
+ store.data["sf.commit"]["seal"]="invalid";var rejected=new TestNativeCache(cache.base,store);Test.assert(rejected.load(now+2)==null);LaunchReminderForeground.publish(rejected,now+2);Test.assert(store.read("sf.reminder.snapshot")==null);return true;
+}
+
+// Whole background wake on the retained real exact-time feed, including the
+// uncached comparison and its final same-token recheck.
+(:test,:typecheck(false)) function reminderWholeCallback(logger){
+ var c=new ReminderCache();var now=1794631300l;var s=reminderAccepted();s["base"]=c.base;s["id"]="source:launch:one";s["target"]=now+900;s["title"]="Mission";s["since"]=now-1;s["stale"]=false;s["seal"]="one";s["commitKey"]="sf.commit";c.store.data["sf.commit"]={"base"=>c.base,"seal"=>"one"};c.store.data["sf.reminder.snapshot"]=s;c.store.data["sf.reminder.control"]={"enabled"=>true,"since"=>now-1};var raw=reminderRawFixture();var m=reminderIncoming(c.store,raw);m["base"]=c.base;Application.Properties.setValue("LaunchReminders",1);var sink=new ReminderSink();var start=System.getTimer();LaunchReminder.wakeWith(c,now,false,sink.method(:post));var elapsed=System.getTimer()-start;Application.Properties.setValue("LaunchReminders",0);Test.assertEqual(sink.calls,1);Test.assert(c.store.read("sf.reminder.compare")["same"]==true);logger.debug("REMINDER_CALLBACK realFeedBytes="+raw.length()+" ms="+elapsed+" accepted=true");return true;
 }

@@ -67,7 +67,6 @@ class SpaceFoxView extends WatchUi.WatchFace {
     }
     function stopForDisplayOff() as Void {
         _mode=LOW;_resumePending=false;aodMinute=null;metricsMinute=null;
-        if(cancelAdmission!=null){cancelAdmission.invoke();}
         stopResume();stopAnimation();stopFitness();stopFallbackClock();
         // OFF retains the bounded in-flight decoder so short wrist wakes can
         // make forward progress; no timer or graphics work runs while off.
@@ -77,7 +76,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     function transitionMode(next as Number) as Void {
         if (_mode == next) { return; }
         _mode=next;aodMinute=null;metricsMinute=null;
-        if (_mode == LOW) { _resumePending=false;stopResume();stopAnimation();stopSfrTimer();stopFitness();stopFallbackClock();if(cancelAdmission!=null){cancelAdmission.invoke();}prepareOptionalAod(); }
+        if (_mode == LOW) { _resumePending=false;stopResume();stopAnimation();stopSfrTimer();stopFitness();stopFallbackClock();prepareOptionalAod(); }
         else { _resumePending=true; }
         WatchUi.requestUpdate();
     }
@@ -85,6 +84,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
         _shown=true;try{refreshLocale();}catch(e){}syncDisplayMode(System.getDisplayMode());
         if(_mode == NOT_LOW){_resumePending=true;WatchUi.requestUpdate();}
     }
+    function resumeAfterAdmission() as Void {_resumePending=true;WatchUi.requestUpdate();}
     function stopResume() as Void {if(_resumeTimer!=null){_resumeTimer.stop();_resumeTimer=null;}}
     function resumeAfterFrame() as Void {
         _resumeTimer=null;if(!_shown||_mode!=NOT_LOW||System.getDisplayMode()!=System.DISPLAY_MODE_HIGH_POWER){return;}
@@ -231,7 +231,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     (:extendedCode)
     function setContext(next as SceneContext or Null) as Void {
         // Same object owns every metadata/time/point/visual field. No cross-ID merge.
-        stopAnimation();stopSfrTimer();sfrBuild=null;sfrFallbackPrepared=false;sceneLifecycle.replace();visualKey=null;downloaded=null;aodMinute=null;
+        stopAnimation();stopSfrTimer();if(sfrBuild!=null){sfrBuild.dispose();}sfrBuild=null;sfrFallbackPrepared=false;sceneLifecycle.replace();visualKey=null;downloaded=null;aodMinute=null;
         if(next!=null && next.launchId.equals("")){next=null;}
         context=next;_schedule=next==null?new ScheduleState(null,"empty"):next.schedule;
         if(renderer!=null){try{renderer.prepare(context,settings);(renderer as SceneRenderer).downloaded=downloaded;}catch(e){renderer=null;layoutReady=false;}if(_mode==LOW){prepareOptionalAod();}}
@@ -289,7 +289,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     }
     // Built-in fonts and local system clock do not depend on feed, assets or
     // health providers. This is temporary while the full scene is unavailable.
-    function drawClockFallback(dc as Graphics.Dc) as Void {
+    (:typecheck(false)) function drawClockFallback(dc as Graphics.Dc) as Void {
         startFallbackClock();
         var x=dc.getWidth()/2;var y=dc.getHeight()/2;var parts=_clock.localCalendar();
         if(_mode==LOW){var minute=utcMinute(_clock.utcSeconds());var phase=((minute%4+4)%4).toNumber();x+=(phase%2==0?-1:1);y+=(phase/2==0?-1:1);aodMinute=minute;}
@@ -299,7 +299,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
         if(parts.size()==3){dc.drawText(x,y-45,Graphics.FONT_TINY,parts[1].format("%02d")+"."+parts[2].format("%02d"),Graphics.TEXT_JUSTIFY_CENTER);}
         // Keep admitted facts independent of the optional graphics as well.
         // Their own failure cannot prevent the already drawn clock/date.
-        try{if(context!=null){var now=_clock.utcSeconds();advanceSelection(now);var selected=context as SceneContext or Null;if(selected!=null){var remaining=_schedule.remainingSeconds(now);var value=_mode==LOW?CountdownFormat.minutes(remaining):CountdownFormat.format(remaining);dc.setColor(selected.rescheduled||selected.sourceHold?0xFF6B6B:settings.countdownColor,Graphics.COLOR_TRANSPARENT);dc.drawText(x,y+25,Graphics.FONT_TINY,value,Graphics.TEXT_JUSTIFY_CENTER);dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(x,y+52,Graphics.FONT_TINY,selected.site,Graphics.TEXT_JUSTIFY_CENTER);if(_mode==NOT_LOW){dc.drawText(x,y+74,Graphics.FONT_TINY,selected.rocket,Graphics.TEXT_JUSTIFY_CENTER);}}}}catch(e){}
+        try{if(context!=null){var now=_clock.utcSeconds();advanceSelection(now);var selected=context as SceneContext or Null;if(selected!=null){var remaining=_schedule.remainingSeconds(now);var value=_mode==LOW?CountdownFormat.minutes(remaining):CountdownFormat.format(remaining);dc.setColor(selected.rescheduled||selected.sourceHold?0xFF6B6B:settings.countdownColor,Graphics.COLOR_TRANSPARENT);dc.drawText(x,y+25,Graphics.FONT_TINY,value,Graphics.TEXT_JUSTIFY_CENTER);dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(x,y+52,Graphics.FONT_TINY,selected.site,Graphics.TEXT_JUSTIFY_CENTER);dc.drawText(x,y+74,Graphics.FONT_TINY,selected.rocket+" · "+selected.purpose,Graphics.TEXT_JUSTIFY_CENTER);if(selected.pointText!=null){dc.drawText(x,y+96,Graphics.FONT_TINY,selected.pointText[1]+", "+selected.pointText[0],Graphics.TEXT_JUSTIFY_CENTER);}}}}catch(e){}
     }
     function applyPixelRest(dc as Graphics.Dc) as Void {
         if((_mode == NOT_LOW)||restMask==null){return;}
@@ -345,7 +345,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     function stopSfrTimer() as Void {if(sfrTimer!=null){sfrTimer.stop();sfrTimer=null;}sfrDeferred=false;}
     (:typecheck(false))
     function cancelSfrBuild() as Void {
-        stopSfrTimer();sfrBuild=null;sfrFallbackPrepared=false;sceneLifecycle.cancel();
+        stopSfrTimer();if(sfrBuild!=null){sfrBuild.dispose();}sfrBuild=null;sfrFallbackPrepared=false;sceneLifecycle.cancel();
     }
     // Native Storage can need more than one copy of a verified shard: the
     // observed 4,028-byte read failed with 8,184 bytes free. Reserve two shard
@@ -384,7 +384,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
             }
         } catch(e) {
 
-            sfrBuild=null;stopSfrTimer();sfrFallbackPrepared=false;sceneLifecycle.fail(sfrGeneration);prepareOptionalAod();_resumePending=true;WatchUi.requestUpdate();
+            if(sfrBuild!=null){sfrBuild.dispose();}sfrBuild=null;stopSfrTimer();sfrFallbackPrepared=false;sceneLifecycle.fail(sfrGeneration);prepareOptionalAod();_resumePending=true;WatchUi.requestUpdate();
         }
     }
 

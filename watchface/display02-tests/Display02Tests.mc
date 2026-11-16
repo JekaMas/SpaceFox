@@ -36,7 +36,7 @@ import Toybox.WatchUi;
     // the captured packet oracle. Regressing initial generation is rejected.
     var clock=new DisplayClock();var store=new DisplayStore();var cat=WatchUi.loadResource(Rez.JsonData.DisplayCatalog);
     store.write("sf.obj."+cat["catalogDigest"],cat["catalog"]);
-    var cache=new NativeCache("https://fixture.invalid/display02",store);
+    var cache=new TestNativeCache("https://fixture.invalid/display02",store);
     Test.assert(cache.accept(displayPacket(Rez.JsonData.DisplayInitial),clock.now));
     var view=new SpaceFoxView(clock,new ScheduleState(null,"empty"));view.setPacket(cache.packet);
     var drawing=new DisplayRecordingRenderer();drawing.prepare(view.context,view.settings);view.renderer=drawing;
@@ -54,7 +54,7 @@ import Toybox.WatchUi;
         else if(event.equals("wake")){view.onExitSleep();if(awake&&expectedMode==1){observed+=1;}else{applied+=1;}awake=true;expectedMode=1;}
         else if(event.equals("move")){Test.assert(cache.accept(displayPacket(Rez.JsonData.DisplayMoved),clock.now));target=1794611100;view.setPacket(cache.packet);drawing.prepare(view.context,view.settings);applied+=1;}
         else if(event.equals("reject")){var writes=store.writes;Test.assert(!cache.accept(displayPacket(Rez.JsonData.DisplayInitial),clock.now));Test.assert(store.writes==writes);rejected+=1;}
-        else if(event.equals("reopen")){cache=new NativeCache("https://fixture.invalid/display02",store);Test.assert(cache.load(clock.now)!=null);view.setPacket(cache.packet);drawing.prepare(view.context,view.settings);applied+=1;}
+        else if(event.equals("reopen")){cache=new TestNativeCache("https://fixture.invalid/display02",store);Test.assert(cache.load(clock.now)!=null);view.setPacket(cache.packet);drawing.prepare(view.context,view.settings);applied+=1;}
         else if(event.equals("off")){var a=drawing.activeCalls;var l=drawing.lowCalls;view.updateForDisplayMode(dc,System.DISPLAY_MODE_OFF);expectedMode=0;Test.assert(a==drawing.activeCalls&&l==drawing.lowCalls);observed+=1;}
         else {var high=event.equals("drawHigh");expectedMode=high&&awake?1:0;var count=expectedMode==1?drawing.activeCalls:drawing.lowCalls;view.updateForDisplayMode(dc,high?System.DISPLAY_MODE_HIGH_POWER:System.DISPLAY_MODE_LOW_POWER);var after=expectedMode==1?drawing.activeCalls:drawing.lowCalls;if(after>count){Test.assertEqual(expectedMode==1?drawing.activeValue:drawing.lowValue,expectedMode==1?displayOracle(target,clock.now):displayLowOracle(target,clock.now));applied+=1;}else{observed+=1;}}
         Test.assertEqual(view.displayMode(),expectedMode);
@@ -89,7 +89,7 @@ import Toybox.Test;
 }
 (:test,:typecheck(false)) function displayPairedInputs(logger){
  var clock=new DisplayClock();var store=new DisplayStore();var cat=WatchUi.loadResource(Rez.JsonData.DisplayCatalog);store.write("sf.obj."+cat["catalogDigest"],cat["catalog"]);
- var cache=new NativeCache("https://fixture.invalid/display-pair",store);Test.assert(cache.accept(displayPacket(Rez.JsonData.DisplayInitial),clock.now));
+ var cache=new TestNativeCache("https://fixture.invalid/display-pair",store);Test.assert(cache.accept(displayPacket(Rez.JsonData.DisplayInitial),clock.now));
  var view=new SpaceFoxView(clock,new ScheduleState(null,"empty"));view.setPacket(cache.packet);var renderer=new DisplayRecordingRenderer();renderer.prepare(view.context,view.settings);view.renderer=renderer;
  var frame=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get();var target=1794609900;var times=[target-176523,target-59,target,target+1,target+901];
  for(var i=0;i<times.size();i+=1){clock.now=times[i];view.updateForDisplayMode(frame.getDc(),System.DISPLAY_MODE_HIGH_POWER);view.updateForDisplayMode(frame.getDc(),System.DISPLAY_MODE_LOW_POWER);var expected=displayOracle(target,clock.now);Test.assertEqual(renderer.activeValue,expected);Test.assertEqual(renderer.lowValue,displayLowOracle(target,clock.now));logger.debug("PAIR utc="+clock.now+" target="+target+" active="+renderer.activeValue+" low="+renderer.lowValue+" oracle="+expected);}
@@ -107,7 +107,7 @@ import Toybox.Test;
 }
 (:test,:typecheck(false)) function displayHighBeforeShow(logger){
  var store=new DisplayStore();var catalog=WatchUi.loadResource(Rez.JsonData.DisplayCatalog);store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);var base="https://fixture.invalid/display-show";
- var cache=new NativeCache(base,store);var clock=new DisplayClock();Test.assert(cache.accept(displayPacket(Rez.JsonData.DisplayInitial),clock.now));var bridge=cache.packet.bridge;
+ var cache=new TestNativeCache(base,store);var clock=new DisplayClock();Test.assert(cache.accept(displayPacket(Rez.JsonData.DisplayInitial),clock.now));var bridge=cache.packet.bridge;
  store.write("sf.batch.head",{"base"=>base,"pending"=>false,"catalogDigest"=>bridge["catalogDigest"],"transfer"=>bridge["transfer"],"serial"=>1});store.write("sf.batch.pending",{"base"=>base,"pending"=>false});
  Application.Properties.setValue("FeedBaseUrl",base);var app=new SpaceFoxApp();var view=new SpaceFoxView(clock,new ScheduleState(null,"empty"));app.view=view;app.feed=cache;view.setPacket(cache.packet);view.setAssetCache(new NativeRenderSource(store,base,bridge));view.pendingLoader=app.method(:reloadFeed);
  view.syncDisplayMode(System.DISPLAY_MODE_HIGH_POWER);view.onShow();Test.assert(!view.sceneLifecycle.pending());Test.assert(view.sfrTimer==null);var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();view.onLayout(dc);view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assert(!view.canForegroundWork());view.onHide();Application.Properties.setValue("FeedBaseUrl","");

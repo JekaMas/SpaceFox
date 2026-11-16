@@ -81,12 +81,12 @@ class NativeSfrRenderer extends NativeVisualRenderer {
 
 (:extendedCode, :typecheck(false))
 class NativeSfrBuild {
-    var preferBundled=false;var store;var base;var packet;var immutable;var scene;var descriptors={};var expected=[];var role=0;var decoder=null;var result;var complete=false;var closureChecked=false;var closureAt=0;var selection;var rasterBytes=0;var rasterObjects=0;var readKind=0;var names;
-    function initialize(adapter,url,p){store=adapter;base=url;packet=p;immutable=new NativeImmutable(store);selection=p.bridge["selection"];names=["map","rocket","siteCountry"];result=new NativeSfrRenderer();begin();}
+    var preferBundled=false;var store;var base;var packet;var immutable;var scene;var descriptors={};var expected=[];var role=0;var decoder=null;var result;var complete=false;var closureChecked=false;var closureAt=0;var selection;var rootReady=false;var pendingRead=null;var rasterBytes=0;var rasterObjects=0;var readKind=0;var names;
+    function initialize(adapter,url,p){store=adapter;base=url;packet=p;immutable=new NativeImmutable(store);selection=p.bridge["selection"];names=["map","rocket","siteCountry"];result=new NativeSfrRenderer();}
+    function dispose(){if(pendingRead!=null){pendingRead.dispose();pendingRead=null;}}
     function fail(){throw new Lang.InvalidValueException("Invalid native SFR1M scene");}
     function same(a,b){return nativeSame(a,b);}
     function ref(r,prefix){packet.ref(r,prefix);return r;}
-    function read(r){var raw=immutable.raw(r);if(raw==null){fail();}var parser=new NativeJson();parser.feedMode=true;parser.nodeOwner=self;return parser.parse(raw,4096);}
     function add(r){addTuple(0,r["sha256"],r["decodedBytes"]);}
     function addTuple(kind,digest,bytes){for(var i=0;i<expected.size();i+=1){if(expected[i][1].equals(digest)){if(expected[i][0]!=kind||expected[i][2]!=bytes){fail();}return false;}}expected.add([kind,digest,bytes]);return true;}
     function objectField(path,key,value){
@@ -138,8 +138,12 @@ class NativeSfrBuild {
     function admitOrigins(){
         var origins=scene["origins"];packet.shape(origins,["model","operator"],[]);var modes=["model","operator"];for(var i=0;i<2;i+=1){var origin=origins[modes[i]];packet.shape(origin,["ownerId","countryId","sourceRecord"],[]);var owner=scene[i==0?"modelId":"operatorId"];if(!same(origin["ownerId"],owner)||!packet.id(origin["countryId"],"country",true)||owner==null&&origin["countryId"]!=null||origin["sourceRecord"]!=true){fail();}origin.remove("sourceRecord");}
     }
-    function begin(){
-        if(packet.bridge==null||packet.bridge["version"]!=3||selection==null){fail();}ref(selection,"descriptors");var rawScene=immutable.raw(selection);if(rawScene==null){fail();}var parser=new NativeJson();parser.feedMode=true;parser.rootOwner=self;parser.nodeOwner=self;scene=parser.parse(rawScene,4096);rawScene=null;parser=null;packet.shape(scene,sceneKeys(),[]);
+    function beginStep(){
+        if(rootReady){return true;}if(pendingRead==null){if(packet.bridge==null||packet.bridge["version"]!=3||selection==null){fail();}ref(selection,"descriptors");readKind=0;pendingRead=new NativeSfrReadJob(self,selection,true);return false;}
+        if(!pendingRead.step()){return false;}scene=pendingRead.result;pendingRead=null;finishBegin();rootReady=true;return true;
+    }
+    function finishBegin(){
+        packet.shape(scene,sceneKeys(),[]);
         if(!packet.same(scene["type"],"native-scene")||!packet.integer(scene["schemaVersion"])||scene["schemaVersion"]!=3||!packet.same(scene["rendererProfile"],"SFR1M")||!packet.same(scene["layoutRevision"],"native-04-motion-v1")){fail();}var keys=["launchId","modelId","operatorId","siteId","countryId"];for(var i=0;i<keys.size();i+=1){if(!same(scene[keys[i]],packet.bridge["ids"][i])){fail();}}
         var site=packet.bridge["site"];if(!same(scene["positionMode"],site==null?null:site["positionMode"])){fail();}
         if(scene["position"]!=null){if(scene["mapDefinitionSha256"]!=true||scene["marker"]!=true||scene["mapSource"]!=true){fail();}}
@@ -152,16 +156,19 @@ class NativeSfrBuild {
         // these parsed dictionaries before the next immutable shard read.
         scene.remove("origins");scene.remove("type");scene.remove("schemaVersion");scene.remove("rendererProfile");scene.remove("layoutRevision");scene.remove("positionMode");result.scene=scene;result.selectionHash=selection["sha256"];
     }
-    function prepareRole(name){
-        var binding=scene["roles"][name];if(binding==null){return null;}packet.shape(binding,["entityId","descriptor"],[]);var identity=name.equals("map")?scene["siteId"]:name.equals("rocket")?scene["modelId"]:scene["countryId"];if(identity==null||!packet.same(binding["entityId"],identity)){fail();}var tuple=binding["descriptor"];var r={"sha256"=>tuple[0],"decodedBytes"=>tuple[1]};add(r);readKind=1;var d=read(r);var moving=name.equals("rocket");packet.shape(d,["type","schemaVersion","rendererProfile","canvas","channels","pixelSha256","sourceDescriptor","sourceSemanticSha256","animation","shards"],moving?["sourceCanvas","motionSource"]:[]);if(moving&&(!d.hasKey("sourceCanvas")||!d.hasKey("motionSource"))){fail();}
+    function roleRef(name){
+        var binding=scene["roles"][name];if(binding==null){return null;}packet.shape(binding,["entityId","descriptor"],[]);var identity=name.equals("map")?scene["siteId"]:name.equals("rocket")?scene["modelId"]:scene["countryId"];if(identity==null||!packet.same(binding["entityId"],identity)){fail();}var tuple=binding["descriptor"];var r={"sha256"=>tuple[0],"decodedBytes"=>tuple[1]};add(r);readKind=1;return r;
+    }
+    function finishRole(name,d){
+        var moving=name.equals("rocket");packet.shape(d,["type","schemaVersion","rendererProfile","canvas","channels","pixelSha256","sourceDescriptor","sourceSemanticSha256","animation","shards"],moving?["sourceCanvas","motionSource"]:[]);if(moving&&(!d.hasKey("sourceCanvas")||!d.hasKey("motionSource"))){fail();}
         var size=name.equals("map")?[390,390]:name.equals("rocket")?[54,124]:[20,12];
         if(!packet.same(d["type"],"raster")||!packet.integer(d["schemaVersion"])||d["schemaVersion"]!=(moving?2:1)||!packet.same(d["rendererProfile"],moving?"SFR1M":"SFR1")||!same(d["canvas"],size)||!packet.integer(d["channels"])||d["channels"]!=(name.equals("map")?3:4)||!packet.hex(d["pixelSha256"])||!name.equals("map")&&!packet.hex(d["sourceSemanticSha256"])||name.equals("map")&&d["sourceSemanticSha256"]!=null||!(d["shards"] instanceof Array)||d["shards"].size()<1||d["shards"].size()>32){fail();}var total=0;for(var i=0;i<d["shards"].size();i+=1){var shard=d["shards"][i];if(addTuple(1,shard[0],shard[1])){total+=shard[1];rasterObjects+=1;}}rasterBytes+=total;if(rasterBytes>98304||rasterObjects>32){fail();}
         if(!moving&&!same(d["animation"],[0,[]])){fail();}if(moving){var canvas=d["sourceCanvas"];if(!(canvas instanceof Array)||canvas.size()!=2||!packet.integer(canvas[0])||!packet.integer(canvas[1])||canvas[0]<1||canvas[0]>256||canvas[1]<1||canvas[1]>256||d["motionSource"]!=true){fail();}}
         new NativeAnimation().validate(d["animation"]);if(name.equals("rocket")){result.manifest={"canvas"=>moving?d["sourceCanvas"]:size,"animation"=>d["animation"]};result.animations=d["animation"];result.prepareCanvas(result.manifest["canvas"]);}
         d.remove("sourceDescriptor");d.remove("sourceSemanticSha256");return d;
     }
-    function checkIndex(){
-        readKind=2;var index=read(ref(packet.bridge["transfer"],"descriptors"));packet.shape(index,["type","schemaVersion","rendererProfile","scene","objects"],[]);if(!packet.same(index["type"],"native-transfer")||!packet.integer(index["schemaVersion"])||index["schemaVersion"]!=1||!packet.same(index["rendererProfile"],"SFR1M")||!same(index["scene"],[selection["sha256"],selection["decodedBytes"]])||!(index["objects"] instanceof Array)||index["objects"].size()!=expected.size()||expected.size()>40){fail();}var total=0;for(var i=0;i<expected.size();i+=1){var r=expected[i];if(!same(index["objects"][i],r)){fail();}total+=r[2];}if(total>114688){fail();}
+    function checkIndex(index){
+        packet.shape(index,["type","schemaVersion","rendererProfile","scene","objects"],[]);if(!packet.same(index["type"],"native-transfer")||!packet.integer(index["schemaVersion"])||index["schemaVersion"]!=1||!packet.same(index["rendererProfile"],"SFR1M")||!same(index["scene"],[selection["sha256"],selection["decodedBytes"]])||!(index["objects"] instanceof Array)||index["objects"].size()!=expected.size()||expected.size()>40){fail();}var total=0;for(var i=0;i<expected.size();i+=1){var r=expected[i];if(!same(index["objects"][i],r)){fail();}total+=r[2];}if(total>114688){fail();}
     }
     function checkRaw(r){if(immutable.raw({"sha256"=>r[1],"decodedBytes"=>r[2]})==null){fail();}}
     function closure(){
@@ -170,7 +177,17 @@ class NativeSfrBuild {
     }
     function displayScene(){return {"position"=>scene["position"]};}
     function step(){
-        if(role>=names.size()){if(!closureChecked){checkIndex();closureChecked=true;scene=displayScene();result.scene=scene;return false;}if(closureAt<expected.size()){var start=System.getTimer();var checked=0;while(closureAt<expected.size()&&checked<4&&(checked==0||System.getTimer()-start<18)){checkRaw(expected[closureAt]);closureAt+=1;checked+=1;}return false;}closure();return true;}var name=names[role];if(decoder==null){var d=prepareRole(name);if(d==null){role+=1;return false;}if(name.equals("map")&&preferBundled){d["__localBundledOutline"]=true;result.bundledOutline=true;}decoder=new NativeSfrDecoder(store,d);return false;}
+        if(!rootReady){beginStep();return false;}
+        if(role>=names.size()){if(!closureChecked){if(pendingRead==null){readKind=2;pendingRead=new NativeSfrReadJob(self,ref(packet.bridge["transfer"],"descriptors"),false);return false;}if(!pendingRead.step()){return false;}var index=pendingRead.result;pendingRead=null;checkIndex(index);closureChecked=true;scene=displayScene();result.scene=scene;return false;}if(closureAt<expected.size()){var start=System.getTimer();var checked=0;while(closureAt<expected.size()&&checked<4&&(checked==0||System.getTimer()-start<18)){checkRaw(expected[closureAt]);closureAt+=1;checked+=1;}return false;}closure();return true;}
+        var name=names[role];if(decoder==null){if(pendingRead==null){var r=roleRef(name);if(r==null){role+=1;return false;}pendingRead=new NativeSfrReadJob(self,r,false);return false;}if(!pendingRead.step()){return false;}var d=finishRole(name,pendingRead.result);pendingRead=null;if(name.equals("map")&&preferBundled){d["__localBundledOutline"]=true;result.bundledOutline=true;}decoder=new NativeSfrDecoder(store,d);return false;}
         if(decoder.step()){if(name.equals("map")){result.mapBitmap=decoder.bitmap;result.mapOutline=decoder.outlineBitmap;}else if(name.equals("rocket")){result.bitmap=decoder.bitmap;}else if(name.equals("siteCountry")){result.siteCountryBitmap=decoder.bitmap;}decoder=null;role+=1;}return false;
     }
+}
+
+// Read one verified current-format descriptor with bounded hash/parser slices.
+(:extendedCode, :typecheck(false)) class NativeSfrReadJob {
+    var owner;var ref;var root;var raw;var hashJob;var parser=null;var phase=0;var result=null;
+    function initialize(build,reference,isRoot){owner=build;ref=reference;root=isRoot;raw=owner.store.read("sf.obj."+ref["sha256"]);if(!(raw instanceof String)||raw.length()>4096){owner.fail();}hashJob=new NativeFeedHashJob(raw,[]);}
+    function dispose(){if(parser!=null){parser.dispose();parser=null;}owner=null;raw=null;hashJob=null;}
+    function step(){if(phase==0){if(!hashJob.step()){return false;}if(hashJob.byteCount>4096||ref["decodedBytes"]!=null&&hashJob.byteCount!=ref["decodedBytes"]||!hashJob.result.equals(ref["sha256"])){owner.fail();}hashJob=null;parser=new NativeIncrementalJson();parser.feedMode=true;parser.nodeOwner=owner;if(root){parser.rootOwner=owner;}parser.begin(raw,4096);phase=1;return false;}if(!parser.step()){return false;}result=parser.result;parser.dispose();raw=null;parser=null;owner=null;return true;}
 }

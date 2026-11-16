@@ -37,7 +37,7 @@ import Toybox.WatchUi;
     view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);logger.debug("B1_DECODE_INITIAL countdown="+recorder.currentText);Test.assertEqual(recorder.currentText,"T- 16:18:18");
     view.setAssetCache(new NativeRenderSource(store,cache.base,cache.packet.bridge));view.prepareVisual();var beginAt=System.getTimer();view.sfrStep();var beginMs=System.getTimer()-beginAt;Test.assert(view.sfrBuild!=null&&view.fallbackClockTimer!=null);
     var maxSlice=0;var maxPhase="";var maxRole=-1;var maxRow=-1;var steps=0;
-    while(steps<20&&view.sfrBuild!=null){var job=view.sfrBuild;var role=job.role;var phase=job.decoder==null?"role":(job.decoder.data==null?"chunk":"rows");var row=job.decoder==null?-1:job.decoder.y;var start=System.getTimer();view.sfrStep();var elapsed=System.getTimer()-start;if(elapsed>maxSlice){maxSlice=elapsed;maxRole=role;maxPhase=phase;maxRow=row;}steps+=1;}
+    while(steps<2000&&view.sfrBuild!=null&&(steps<20||view.sfrBuild.decoder==null||view.sfrBuild.decoder.y==0)){var job=view.sfrBuild;var role=job.role;var phase=job.decoder==null?"role":(job.decoder.data==null?"chunk":"rows");var row=job.decoder==null?-1:job.decoder.y;var start=System.getTimer();view.sfrStep();var elapsed=System.getTimer()-start;if(elapsed>maxSlice){maxSlice=elapsed;maxRole=role;maxPhase=phase;maxRow=row;}steps+=1;}
     Test.assert(view.sfrBuild!=null&&view.renderer==null);clock.now+=2;view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assertEqual(view.fallbackText,"T- 16:18:16");
     clock.now+=31;view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assertEqual(view.fallbackText,"T- 16:17:45");
     var preserved=view.sfrBuild;Test.assert(preserved.decoder!=null);var previousRow=preserved.decoder.y;
@@ -59,8 +59,8 @@ import Toybox.WatchUi;
 (:test,:typecheck(false)) function b1RealDecodeTicksAndCancels(logger) {
     Application.Storage.clearValues();
     var base="https://fixture.invalid/profile-a";var store=new NativeStore();
-    var counts=b1StageProfile(store,base);var clock=new B1DecodeClock();var cache=new NativeCache(base,store);
-    Test.assert(new NativeIncoming(store,base).admitFeed(cache,clock.now));
+    var counts=b1StageProfile(store,base);var clock=new B1DecodeClock();var cache=new TestNativeCache(base,store);
+    Test.assert(new TestNativeIncoming(store,base).admitFeed(cache,clock.now));
     return b1ObserveDecode(logger,store,cache,clock,counts);
 }
 
@@ -71,7 +71,7 @@ import Toybox.WatchUi;
 }
 (:test,:typecheck(false)) function b1LowHeapDefersOptionalDecode(logger){
     Application.Storage.clearValues();var base="https://fixture.invalid/profile-a";var store=new NativeStore();b1StageProfile(store,base);
-    var clock=new B1DecodeClock();var cache=new NativeCache(base,store);Test.assert(new NativeIncoming(store,base).admitFeed(cache,clock.now));
+    var clock=new B1DecodeClock();var cache=new TestNativeCache(base,store);Test.assert(new TestNativeIncoming(store,base).admitFeed(cache,clock.now));
     var view=new B1BudgetDecodeView(clock);view.setPacket(cache.packet);var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();
     view.onShow();view.onLayout(dc);view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);view.setAssetCache(new NativeRenderSource(store,base,cache.packet.bridge));view.prepareVisual();
     view.freeBytes=view.sfrReadReserve()-1;view.sfrStep();Test.assert(view.sfrBuild==null&&view.sfrDeferred&&view.sceneLifecycle.pending()&&view.fallbackClockTimer!=null);
@@ -86,7 +86,7 @@ import Toybox.WatchUi;
     Test.assert(fields.starts==0&&fields.reads==0&&view.fitnessTimer==null&&view.sfrBuild==null&&!view.animationRunning);
     view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assert(view.renderer==null&&LocaleGraphemes.data==null);Test.assertEqual(view.fallbackText,"T- 16:18:18");clock.now+=2;view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assertEqual(view.fallbackText,"T- 16:18:16");
     view.freeBytes=view.sfrReadReserve();view.sfrStep();Test.assert(view.sfrBuild!=null&&!view.sfrDeferred);
-    view.freeBytes=view.sfrReadReserve();view.sfrStep();Test.assert(view.sfrBuild.decoder!=null&&view.sfrBuild.decoder.shard==0);
+    var setupSteps=0;while(view.sfrBuild!=null&&view.sfrBuild.decoder==null){view.freeBytes=view.sfrReadReserve();view.sfrStep();setupSteps+=1;Test.assert(setupSteps<2000);}Test.assert(view.sfrBuild!=null&&view.sfrBuild.decoder!=null&&view.sfrBuild.decoder.shard==0);
     var shardReserve=view.sfrReadReserve();view.freeBytes=shardReserve-1;view.sfrStep();
     Test.assert(view.sfrDeferred&&view.sfrBuild.decoder.shard==0&&view.sfrBuild.decoder.data==null);
     view.freeBytes=shardReserve;view.sfrStep();Test.assert(!view.sfrDeferred&&view.sfrBuild.decoder.shard==1&&view.sfrBuild.decoder.data!=null);

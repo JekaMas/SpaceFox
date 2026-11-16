@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "role": "independent peer verify and repair",
+  "author_source_commit": "62e90fd736a119322a3f7769e2f5ef04cdd3ee5a",
+  "base_commit": "29f3cfd067ff10690a9ba5163f25e04cd4b55b6f",
+  "production_source_modified": false,
+  "sdk": "Connect IQ SDK 9.3.0 2026-10-20 95888f262 Linux x86_64 in isolated Docker lane",
+  "device_profile": "fr165m",
+  "selected_tests": [
+    "peerCrossRecordAdmission"
+  ],
+  "observed_selected_tests": 1,
+  "cross_record_subcases": 9,
+  "failed": 0,
+  "errors": 0,
+  "raw_launcher_exit": 1,
+  "test_sha256": "53ef52d79930f0626f2e49d56e3001e55602faee0301cb853df7a899cce783b5",
+  "package_sha256": "db88e1185750a7ed7bf1844e035eef23446c887b3288ef1797b3cac2ba969ea1",
+  "compile_log_sha256": "d26510f3a7e811f721248874ae8d44f97d1d4f8fa59bdad2f8a56d50af4240cf",
+  "native_log_sha256": "4c6dfe905f274ac485554d60679e3923da5e47870c5796d3f263e361b0610f2a",
+  "build_command": "monkeyc -f /task/cold/monkey.jungle -d fr165m -o /task/peer/PeerFinal.prg -y <existing disposable test signer> -t",
+  "launch_command": "java -Dfile.encoding=UTF-8 -classpath <SDK>/bin/monkeybrains.jar com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux -f /task/peer/PeerFinal.prg -d fr165m -s <SDK>/bin/shell -t peerCrossRecordAdmission",
+  "first_observation": "receipts/peer-cross-record-initial.log: passed; final rerun invalidated only by stronger exception assertion (unexpected exceptions now escape)",
+  "isolation": {
+    "scope": "existing spacefox-watchdog-repair-20261116 container only; DISPLAY=:91",
+    "task_owned_candidate_stopped": true,
+    "pretest_storage_and_config_snapshotted": true,
+    "storage_and_config_restored": true,
+    "tar_compare_passed": true,
+    "simulator_config_sha256_unchanged": true,
+    "task_owned_live_launcher_or_simulator_remaining": false,
+    "foreign_native_lane_touched": false
+  },
+  "candidate_verification": {
+    "candidate_receipt": "candidate.json",
+    "prg_and_debug_sha256_match": true,
+    "production_public_spki_sha256_match": true,
+    "sdk_developer_signature_verified": true,
+    "sdk_public_key_match_rsa4096": true,
+    "candidate_project_leaf_files_compared": 41,
+    "resource_directory_links_verified": 36,
+    "only_differences": [
+      "manifest version 0.1.19",
+      "generated NativeVersion BUILD 0.1.19-WD / ID b95032a2"
+    ],
+    "rebuild_needed": false,
+    "exact_candidate_simulator_scope": "retained empty-cache fallback only",
+    "physical": "not observed"
+  },
+  "result": "GREEN for software diagnostic; overall physical acceptance NOT DONE"
+}

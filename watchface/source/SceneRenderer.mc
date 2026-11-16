@@ -57,8 +57,8 @@ class SceneRenderer {
         var id = NativeAssets.models.hasKey(context.modelId) ? context.modelId : "generic";
         model = NativeAssets.models[id] as NativeModel; art = load(id.equals("generic") ? Rez.Drawables.Art_unknown : (model as NativeModel).resource) as Graphics.BitmapType;
         if (context.point != null) {
-            for (var i = 0; i < NativeAssets.maps.size(); i += 1) {
-                var view = NativeAssets.maps[i];
+            for (var i = 0; i < NativeAssets.mapCount; i += 1) {
+                var view = NativeAssets.mapAt(i) as NativeMap;
                 var point=context.point as Array<Numeric>;
                 // These bitmaps use D3's rotated equirectangular projection.
                 // Admit only points within a quarter degree of the bitmap's

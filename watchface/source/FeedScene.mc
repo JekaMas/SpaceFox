@@ -1,23 +1,15 @@
 import Toybox.Lang;
 
 (:extendedCode,:typecheck(false))
-function feedScene(packet,now){return feedSceneWork(packet,now,false);}
-(:extendedCode,:typecheck(false))
-function feedSceneCompacting(packet,now){return feedSceneWork(packet,now,true);}
-(:extendedCode,:typecheck(false))
-function feedSceneWork(packet,now,releaseParsed){
+function feedScene(packet,now){
     if(packet==null||packet.document["launch"]==null){return null;}
     packet.advance(now);
     if(packet.presentation!=null){packet.presentation.stale=packet.stale;packet.presentation.rescheduled=packet.rescheduled;return packet.presentation;}
     var row=packet.document["launch"];var siteData=packet.bridge==null?null:packet.bridge["site"];
     var current=feedSceneRow(packet,row,siteData,true);
-    // During a transaction only, later work needs the compact launch identity,
-    // not the parsed launch/catalog object graph. Release it before allocating
-    // successor scenes; each validated successor can then be released in turn.
-    if(releaseParsed){packet.reducePresentationLaunch();row=null;siteData=null;}
     packet.upcomingScenes=[];
     var rows=packet.document["upcoming"];
-    if(rows instanceof Array){for(var i=0;i<rows.size();i+=1){var item=rows[i];if(item.hasKey("terminal")){if(releaseParsed){rows[i]=null;}continue;}var pos=item["sitePosition"];var site=pos==null?null:{"positionMode"=>"fixed-source","position"=>pos};packet.upcomingScenes.add(feedSceneRow(packet,item,site,false));if(releaseParsed){rows[i]=null;item=null;pos=null;site=null;}}}
+    if(rows instanceof Array){for(var i=0;i<rows.size();i+=1){var item=rows[i];if(item instanceof SceneContext){packet.upcomingScenes.add(item);continue;}if(item.hasKey("terminal")){continue;}var pos=item["sitePosition"];var site=pos==null?null:{"positionMode"=>"fixed-source","position"=>pos};packet.upcomingScenes.add(feedSceneRow(packet,item,site,false));}}
     return current;
 }
 
@@ -49,17 +41,5 @@ function feedSceneRow(packet,row,siteData,selected){
         deadline=target.toLong()+900l;var ascent=row["ascent_end"];
         if(ascent!=null && ascent["end_utc"]>deadline){deadline=ascent["end_utc"].toLong();}
     }
-    // Avoid a second 22-entry dictionary while the validated feed and its raw
-    // durable bytes are still live. Values have passed the same feed/catalog
-    // validation as before; assign the exact SceneContext projection directly.
-    var scene=new SceneContext({});scene.pointText=pointText;scene.orderingUtc=ordering==null?null:ordering.toLong();
-    var checked=row["source_validated_utc"];scene.sourceValidated=checked==null?null:checked.toLong();scene.freshnessPolicy=packet.document["refreshPolicy"];scene.retentionDeadline=deadline;
-    scene.launchId=row["launch_id"];scene.rocket=rocket instanceof String?rocket:"";scene.operator=operator instanceof String?operator:"";
-    scene.operatorShort=operatorShort instanceof String?operatorShort:"";scene.purpose=row["mission_purpose"] instanceof String?row["mission_purpose"]:"";
-    scene.site=site instanceof String?site:"";scene.modelId=row["configuration_id"] instanceof String?row["configuration_id"]:"";
-    scene.operatorId=row["operator_id"] instanceof String?row["operator_id"]:"";scene.siteId=row["site_id"] instanceof String?row["site_id"]:"";
-    scene.point=point!=null&&scene.validPoint(point)?point:null;scene.schedule=new ScheduleState(target,precision);scene.sourcePrecision=precision;scene.date=timing["date_utc"] instanceof String?timing["date_utc"]:null;
-    if((precision.equals("exact")||precision.equals("minute"))&&(target instanceof Number||target instanceof Long)){scene.freshnessTarget=target.toLong();scene.retentionTarget=target.toLong();}
-    scene.rescheduled=selected?packet.rescheduled:row["rescheduled"];scene.stale=selected?packet.stale:row["stale"];scene.sourceHold=row["source_status_id"]==5;
-    return scene;
+    return new SceneContext({"pointText"=>pointText,"orderingUtc"=>ordering,"sourceValidated"=>row["source_validated_utc"],"freshnessPolicy"=>packet.document["refreshPolicy"],"retentionDeadline"=>deadline,"id"=>row["launch_id"],"rocket"=>rocket,"operator"=>operator,"operatorShort"=>operatorShort,"purpose"=>row["mission_purpose"],"site"=>site,"modelId"=>row["configuration_id"],"operatorId"=>row["operator_id"],"siteId"=>row["site_id"],"point"=>point,"target"=>target,"precision"=>precision,"date"=>timing["date_utc"],"rescheduled"=>selected?packet.rescheduled:row["rescheduled"],"stale"=>selected?packet.stale:row["stale"],"sourceHold"=>row["source_status_id"]==5});
 }

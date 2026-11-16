@@ -1,0 +1,146 @@
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableSettings...
+DEBUG (14:06): B1_CLOCK settings_failure_first_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableHealth...
+DEBUG (14:06): B1_CLOCK health_and_callback_failure=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ActualColdViewDefersCache...
+DEBUG (14:06): B1_ACTUAL_INITIAL cache_before_frame=false cache_after_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockAfterDrawingFailure...
+DEBUG (14:06): B1_CLOCK drawing_failure_fallback=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockAfterLoaderFailure...
+
+Error: Unhandled Exception
+Exception: optional feed unavailable
+Stack: 
+  - reloadFeed() at /source/watchface/runtime-b1-tests/ClockFirst021.mc:23 0x1000e6bb 
+  - resumeAfterFrame() at /source/watchface/source/SpaceFoxView.mc:94 0x1000ceba 
+  - b1ClockAfterLoaderFailure() at /source/watchface/runtime-b1-tests/ClockFirst021.mc:74 0x10005bb2 
+  - evaluate_test_entries_0_to_30() at /task/cold/gen/006-B4432-00/source/UnitTests.mcgen:89 0x1000ac84 
+  - runTest() at /task/cold/gen/006-B4432-00/source/UnitTests.mcgen:173 0x1000b153 
+DEBUG (14:06): B1_CLOCK loader_failure_time_date_continue=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockBeforeLoader...
+DEBUG (14:06): B1_FIRST_FRAME clock_date=true loader_before_frame=false loader_after_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1LowBeforeLoader...
+DEBUG (14:06): B1_LOW_FIRST_FRAME clock_date=true loader_deferred=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableRenderer...
+DEBUG (14:06): B1_CLOCK optional_renderer_failed time_and_date_read=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1CapturedSuccessorTicksInFallback...
+DEBUG (14:06): B1_CAPTURED_MINUTE active_tick=2s low_minute=true fallback=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1AdmissionFitnessLifecycle...
+DEBUG (14:06): B1_FIELDS admission_stop_once=true pending_no_restart=true four_slots_resume=true low_hide_idempotent=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1GraphemeReleaseAndRebind...
+DEBUG (14:06): B1_GRAPHEME optional_release=true active_rebind=true en_ru_calendar=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ProviderIconBudget...
+DEBUG (14:06): B1_ICON known=true oversized_fallback=true unsupported_fallback=true value_preserved=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ShortWakeResume...
+DEBUG (14:06): B1_SHORT_WAKE same_job=true resumed=true exact_seconds=true admitted=true slices=60
+PASS
+------------------------------------------------------------------------------
+Executing test b1IncrementalRefusals...
+DEBUG (14:06): B1_REFUSALS existing_literals=4
+PASS
+------------------------------------------------------------------------------
+Executing test b1PreparedPromotion...
+DEBUG (14:06): B1_PROMOTION slices=18 strict_reopen=true sliced_restore=280
+PASS
+------------------------------------------------------------------------------
+Executing test b1ColdAcquisition...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - b1ColdAcquisition() at /source/watchface/runtime-b1-tests/ColdAcquisition.mc:18 0x1000618d 
+  - evaluate_test_entries_0_to_30() at /task/cold/gen/006-B4432-00/source/UnitTests.mcgen:103 0x1000ad41 
+  - runTest() at /task/cold/gen/006-B4432-00/source/UnitTests.mcgen:173 0x1000b153 
+ERROR
+------------------------------------------------------------------------------
+Executing test peerCrossRecordAdmission...
+DEBUG (14:06): PEER_ADMISSION captured-positive expected=true original=true staged=true
+DEBUG (14:06): PEER_ADMISSION selected-future-duplicate expected=false original=false staged=false
+DEBUG (14:06): PEER_ADMISSION future-future-duplicate expected=false original=false staged=false
+DEBUG (14:06): PEER_ADMISSION overall-count expected=false original=false staged=false
+DEBUG (14:06): PEER_ADMISSION terminal-positive expected=true original=true staged=true
+DEBUG (14:06): PEER_ADMISSION selected-terminal-duplicate expected=false original=false staged=false
+DEBUG (14:06): PEER_ADMISSION terminal-terminal-duplicate expected=false original=false staged=false
+DEBUG (14:06): PEER_ADMISSION terminal-status expected=false original=false staged=false
+DEBUG (14:06): PEER_ADMISSION terminal-future-validation expected=false original=false staged=false
+DEBUG (14:06): PEER_CROSS_RECORD cases=9 original_staged_parity=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1RealDecodeTicksAndCancels...
+DEBUG (14:06): B1_DECODE_INITIAL countdown=T- 16:18:18
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - b1ObserveDecode() at /source/watchface/runtime-b1-tests/DecodePending.mc:43 0x10002f5e 
+  - b1RealDecodeTicksAndCancels() at /source/watchface/runtime-b1-tests/DecodePending.mc:64 0x100046fb 
+  - evaluate_test_entries_0_to_30() at /task/cold/gen/006-B4432-00/source/UnitTests.mcgen:137 0x1000af0c 
+  - runTest() at /task/cold/gen/006-B4432-00/source/UnitTests.mcgen:173 0x1000b153 
+ERROR
+------------------------------------------------------------------------------
+Executing test b1LowHeapDefersOptionalDecode...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - b1LowHeapDefersOptionalDecode() at /source/watchface/runtime-b1-tests/DecodePending.mc:89 0x10004dba 
+  - evaluate_test_entries_0_to_30() at /task/cold/gen/006-B4432-00/source/UnitTests.mcgen:139 0x1000af27 
+  - runTest() at /task/cold/gen/006-B4432-00/source/UnitTests.mcgen:173 0x1000b153 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1ClockWithUnavailableSettings      PASS
+b1ClockWithUnavailableHealth        PASS
+b1ActualColdViewDefersCache         PASS
+b1ClockAfterDrawingFailure          PASS
+b1ClockAfterLoaderFailure           PASS
+b1ClockBeforeLoader                 PASS
+b1LowBeforeLoader                   PASS
+b1ClockWithUnavailableRenderer      PASS
+b1CapturedSuccessorTicksInFallback  PASS
+b1AdmissionFitnessLifecycle         PASS
+b1GraphemeReleaseAndRebind          PASS
+b1ProviderIconBudget                PASS
+b1ShortWakeResume                   PASS
+b1IncrementalRefusals               PASS
+b1PreparedPromotion                 PASS
+b1ColdAcquisition                   ERROR
+peerCrossRecordAdmission            PASS
+b1RealDecodeTicksAndCancels         ERROR
+b1LowHeapDefersOptionalDecode       ERROR
+Ran 19 tests
+
+FAILED (passed=16, failed=0, errors=3)

@@ -40,7 +40,7 @@ module MaskObserver {
 ''' % (element, 'Graphics.COLOR_WHITE' if white else 'Graphics.COLOR_BLACK', 'Graphics.COLOR_WHITE' if white else 'Graphics.COLOR_BLACK'))
     observer = out/'observer'; observer.mkdir()
     original = ROOT/'watchface/display04-observer/PointObserver.mc'
-    (observer/'PointObserver.mc').write_bytes(original.read_bytes())
+    (observer/'PointObserver.mc').write_bytes(original.read_bytes());(observer/'CurrentJobs.mc').write_bytes((ROOT/'tests/native-runtime/CurrentJobs.mc').read_bytes())
     tree=ET.parse(ROOT/'watchface/manifest.xml'); app=tree.getroot().find('{http://www.garmin.com/xml/connectiq}application')
     app.set('id','32b83a2963c24fa1938bd49af9527a62'); app.set('entry','Display04PointApp')
     ET.register_namespace('iq','http://www.garmin.com/xml/connectiq')

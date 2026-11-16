@@ -1,0 +1,133 @@
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableSettings...
+DEBUG (14:15): B1_CLOCK settings_failure_first_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableHealth...
+DEBUG (14:15): B1_CLOCK health_and_callback_failure=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ActualColdViewDefersCache...
+DEBUG (14:15): B1_ACTUAL_INITIAL cache_before_frame=false cache_after_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockAfterDrawingFailure...
+DEBUG (14:15): B1_CLOCK drawing_failure_fallback=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockAfterLoaderFailure...
+DEBUG (14:15): B1_CLOCK loader_failure_time_date_continue=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockBeforeLoader...
+DEBUG (14:15): B1_FIRST_FRAME clock_date=true loader_before_frame=false loader_after_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1LowBeforeLoader...
+DEBUG (14:15): B1_LOW_FIRST_FRAME clock_date=true loader_deferred=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableRenderer...
+DEBUG (14:15): B1_CLOCK optional_renderer_failed time_and_date_read=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1CapturedSuccessorTicksInFallback...
+DEBUG (14:15): B1_CAPTURED_MINUTE active_tick=2s low_minute=true fallback=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1AdmissionFitnessLifecycle...
+DEBUG (14:15): B1_FIELDS admission_stop_once=true pending_no_restart=true four_slots_resume=true low_hide_idempotent=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1GraphemeReleaseAndRebind...
+DEBUG (14:15): B1_GRAPHEME optional_release=true active_rebind=true en_ru_calendar=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ProviderIconBudget...
+DEBUG (14:15): B1_ICON known=true oversized_fallback=true unsupported_fallback=true value_preserved=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ShortWakeResume...
+DEBUG (14:15): B1_SHORT_WAKE same_job=true resumed=true exact_seconds=true admitted=true slices=60
+PASS
+------------------------------------------------------------------------------
+Executing test b1IncrementalRefusals...
+DEBUG (14:15): B1_REFUSALS existing_literals=4
+PASS
+------------------------------------------------------------------------------
+Executing test b1PreparedPromotion...
+DEBUG (14:15): B1_PROMOTION slices=18 strict_reopen=true sliced_restore=280
+PASS
+------------------------------------------------------------------------------
+Executing test b1ColdAcquisition...
+DEBUG (14:15): B1_PHASE parse_ms=193
+DEBUG (14:15): B1_PHASE validate_ms=16
+DEBUG (14:15): B1_PHASE semantic_ms=2
+DEBUG (14:15): B1_PHASE wire_ms=1
+DEBUG (14:15): B1_PHASE identity_ms=1
+DEBUG (14:15): B1_CANCEL parser_cycle_released=true retry=true
+DEBUG (14:15): B1_PREPARE phases=164 hashes_match=true maxStepMs=10 sampledUsedBytes=181224
+DEBUG (14:15): B1_READ parts=12 digest=true
+DEBUG (14:15): B1_ADMISSION promotionSteps=18
+DEBUG (14:15): B1_BATCH_CALLBACK maxMs=26 objects=27 includesFinalClosure=true
+DEBUG (14:16): B1_RENDER_CALLBACK maxMs=23 initMs=0 where=role:0 decoder:true steps=583 closure=true
+DEBUG (14:16): B1_COLD status=200 text/plain catalog_first=true staged_objects=27 strict_reopen=true captured_hour_precision_unknown=true
+PASS
+------------------------------------------------------------------------------
+Executing test peerCrossRecordAdmission...
+DEBUG (14:16): PEER_ADMISSION captured-positive expected=true original=true staged=true
+DEBUG (14:16): PEER_ADMISSION selected-future-duplicate expected=false original=false staged=false
+DEBUG (14:16): PEER_ADMISSION future-future-duplicate expected=false original=false staged=false
+DEBUG (14:16): PEER_ADMISSION overall-count expected=false original=false staged=false
+DEBUG (14:16): PEER_ADMISSION terminal-positive expected=true original=true staged=true
+DEBUG (14:16): PEER_ADMISSION selected-terminal-duplicate expected=false original=false staged=false
+DEBUG (14:16): PEER_ADMISSION terminal-terminal-duplicate expected=false original=false staged=false
+DEBUG (14:16): PEER_ADMISSION terminal-status expected=false original=false staged=false
+DEBUG (14:16): PEER_ADMISSION terminal-future-validation expected=false original=false staged=false
+DEBUG (14:16): PEER_CROSS_RECORD cases=9 original_staged_parity=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1RealDecodeTicksAndCancels...
+DEBUG (14:16): B1_DECODE_INITIAL countdown=T- 16:18:18
+DEBUG (14:16): B1_REAL_DECODE selected_min=true objects=18 beginMs=0 slices=73 maxSliceMs=27 maxPhase=rows maxRole=0 maxRow=0 maxBatchScanMs=15 maxPutMs=4 activeCatchup=true lowOffHighCyclesAdvance=true hideCancel=true testHost=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1LowHeapDefersOptionalDecode...
+DEBUG (14:16): B1_OPTIONAL_RESERVE deferred_without_allocation=true ticking=true recovery=true low_pause_hide_cancel=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1SupersededDuringAdmission021...
+DEBUG (14:16): B1_INTEGRATION supersession_no_commit=true stale_not_consumed=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1FailedPromotionRecovery021...
+DEBUG (14:16): B1_INTEGRATION chunk_and_commit_failure_preserve_seal=true exact_age_restored=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1ClockWithUnavailableSettings      PASS
+b1ClockWithUnavailableHealth        PASS
+b1ActualColdViewDefersCache         PASS
+b1ClockAfterDrawingFailure          PASS
+b1ClockAfterLoaderFailure           PASS
+b1ClockBeforeLoader                 PASS
+b1LowBeforeLoader                   PASS
+b1ClockWithUnavailableRenderer      PASS
+b1CapturedSuccessorTicksInFallback  PASS
+b1AdmissionFitnessLifecycle         PASS
+b1GraphemeReleaseAndRebind          PASS
+b1ProviderIconBudget                PASS
+b1ShortWakeResume                   PASS
+b1IncrementalRefusals               PASS
+b1PreparedPromotion                 PASS
+b1ColdAcquisition                   PASS
+peerCrossRecordAdmission            PASS
+b1RealDecodeTicksAndCancels         PASS
+b1LowHeapDefersOptionalDecode       PASS
+b1SupersededDuringAdmission021      PASS
+b1FailedPromotionRecovery021        PASS
+Ran 21 tests
+
+PASSED (passed=21, failed=0, errors=0)

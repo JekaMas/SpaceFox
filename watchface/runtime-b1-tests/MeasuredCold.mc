@@ -14,7 +14,7 @@ import Toybox.WatchUi;
     start=System.getTimer();var batch=new NativeBatch(store,base);Test.assert(batch.begin(raw));raw=null;var begin=System.getTimer()-start;
     start=System.getTimer();var request=batch.next();var maxScan=System.getTimer()-start;var maxPut=0;var objects=0;
     while(request!=null){var response=b1Response(request["path"]);Test.assert(response!=null);start=System.getTimer();Test.assert(batch.immutable.put(request,response));var elapsed=System.getTimer()-start;if(elapsed>maxPut){maxPut=elapsed;}response=null;objects+=1;Test.assert(objects<=27);start=System.getTimer();request=batch.next();elapsed=System.getTimer()-start;if(elapsed>maxScan){maxScan=elapsed;}}
-    logger.debug("B1_CAPTURED_PRE_ADMIT downloaded="+objects);Test.assertEqual(objects,27);var cache=new NativeCache(base,store);start=System.getTimer();Test.assert(new NativeIncoming(store,base).admitFeed(cache,1794818604l));var admit=System.getTimer()-start;
+    logger.debug("B1_CAPTURED_PRE_ADMIT downloaded="+objects);Test.assertEqual(objects,27);var cache=new TestNativeCache(base,store);start=System.getTimer();Test.assert(new TestNativeIncoming(store,base).admitFeed(cache,1794818604l));var admit=System.getTimer()-start;
     Test.assert(cache.packet!=null&&new NativeRenderSource(store,base,cache.packet.bridge).ready);
     logger.debug("B1_CAPTURED_CALLBACKS objects="+objects+" stageMs="+stage+" beginMs="+begin+" maxScanMs="+maxScan+" maxPutMs="+maxPut+" admitMs="+admit+" testHost=true");return true;
 }

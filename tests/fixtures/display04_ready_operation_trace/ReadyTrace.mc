@@ -31,7 +31,7 @@ import Toybox.WatchUi;
 }
 (:test,:typecheck(false)) function display04ReadyOperationTextTrace(logger){
  var store=new D04TraceStore();var catalog=WatchUi.loadResource(Rez.JsonData.D04Catalog);store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);
- var cache=new NativeCache("https://fixture.invalid/display04-point",store);var raw=WatchUi.loadResource(Rez.JsonData.D04Feed)["raw"];
+ var cache=new TestNativeCache("https://fixture.invalid/display04-point",store);var raw=WatchUi.loadResource(Rez.JsonData.D04Feed)["raw"];
  Test.assert(cache.accept(raw,1794576343));var context=feedScene(cache.packet,1794576343);Test.assert(context!=null&&context.point!=null);
  var image=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get();var dc=image.getDc();
  for(var language=0;language<2;language+=1){
