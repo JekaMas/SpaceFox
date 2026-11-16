@@ -1,6 +1,6 @@
 # Resource-audit implementation — performance021
 
-Status: NOT DONE overall. Groups A and B are complete after author, independent peer repairs and root judgment; 8 of 27 findings are closed, with 19 findings in groups C and D remaining. The sole checklist is ../../tasks.md; this journal is not a second task list.
+Status: NOT DONE overall. Groups A, B and C are complete after author, independent peer repairs and root judgment; 11 of 27 findings are closed, with 16 native findings in group D remaining. The sole checklist is ../../tasks.md; this journal is not a second task list.
 
 ## Source and authority
 
@@ -41,9 +41,9 @@ Native work is last to collect all invalidating edits into one stable profile bu
 | HOST-05 | B / 8.2 | DONE — author + peer + root|
 | HOST-06 | B / 8.2 | DONE — author + peer + root|
 | ENG-02 | B / 8.2 | DONE — author + peer + root|
-| ENG-01 | C / 8.3 | Author + peer GREEN — root pending |
-| CLEAN-02 | C / 8.3 | Author + peer GREEN — root pending |
-| WEB-01 | C / 8.3 | Author + peer GREEN — root pending |
+| ENG-01 | C / 8.3 | DONE — author + peer + root |
+| CLEAN-02 | C / 8.3 | DONE — author + peer + root |
+| WEB-01 | C / 8.3 | DONE — author + peer + root |
 | MEM-01 | D / 8.4 | PENDING |
 | MEM-02 | D / 8.4 | PENDING |
 | MEM-03 | D / 8.4 | PENDING |
@@ -64,7 +64,7 @@ Native work is last to collect all invalidating edits into one stable profile bu
 ## Progress and next action
 
 - Baseline report and all27 IDs read; current public source and applicable workflow resolved. Isolated worktree created from29f3cfd0; no main polling, SDK/provider run or product change performed during planning.
-- Root accepted group A / task8.1 at independent final `d3b748ed304afd593a36380662357d9fce683a51`. All four A findings are closed at the software/offline scope. Group B was subsequently completed and accepted as recorded below; group C / task8.3 is now next and D remains pending.
+- Root accepted group A / task8.1 at independent final `d3b748ed304afd593a36380662357d9fce683a51`. All four A findings are closed at the software/offline scope. Group B was subsequently completed and accepted as recorded below; group C / task8.3 was subsequently accepted; D / task8.4 is now next.
 
 ## Measurement limits
 
@@ -145,3 +145,11 @@ source-copy admission and current scan measurement are the final author checks.
   performance021 is NOT DONE, and D remains unstarted. The clean source-copy
   proof at 007c3a0d retains all 6,671 identical selected input hashes and
   exactly five qualified locales; later peer/task/journal paths are disjoint.
+
+## Root judgment C and final native group
+
+- Accepted independent final `00f3b7a69a3dfaf324a433fd5cca9a41381e5511`, clean source checkpoint `007c3a0d8f90fdefb7626633c6aaf51a0bf9bf30`. Task8.3 and its three original findings are closed at the local software boundary. The peer repaired duplicate requirement identity and incorrect native-case notes, restored the native records and retired the remaining stale CLI recipe. The exact original graph failure and copy sequencing failure remain in c/PEER.md.
+- Source scanning captures each file once within a call (19,965 to6,671 reads;1,452,162,923 to484,311,136 bytes on the stated differing inventories). Profile discovery retains181 unique inputs and42 profiles, with312 to181 reads and233,256,865 to157,852,272 bytes. These are local read/byte observations; no compiler speedup or profile elapsed improvement is claimed. The actual original compiler boundary remains; the mistaken extra-fence premise is explicitly corrected.
+- Complete byte/inventory fences before and after compiler invocations remain fresh. The peer independently observed same-size/restored-mtime mutation, rename, selector and empty-directory refusal, clean copied6,671-input admission and exactlyfive locales. Final report/task/journal paths are disjoint from selected bytes. The original actual Chrome detached-owner red and eight-mount/16-event current green remain valid for unchanged prototype sources; peer did not repeat the browser. Cleanup is bounded by the existing tick or a disconnected global event, not synchronous on DOM removal.
+- Proven unused beta/static exporter routes are removed. Eleven selected metadata corruption classes and current fully readdressed SFR1M refusal remain through current producers; authenticated historical fixtures are preserved. No native/watch/profile/font bytes changed in C, and no fresh SDK compiler, simulator, physical or Store result is inferred.
+- Next execute D / task8.4 as one coherent native group: all16 remaining findings. First measure the matched current native baseline, then implement and self-verify toGREEN, then fresh independent verify/fix toGREEN. Reconcile all invalidated host/native obligations and a single integrated host workload sample after code stabilizes. Compile/export the final42-profile cohort once after native source/resource freeze; use disposable signing only. Root judges and integrates only after the complete group is accepted.
