@@ -141,6 +141,13 @@
       "status": "passed",
       "receipt": "evidence/receipts/peer-cross-record-final.log",
       "boundary": "SDK 9.3 Linux FR165M; nine technical identity/count/terminal variants over captured input versus original parser/validator and expected results; no hardware proof"
+    },
+    {
+      "id": "WD-RELEASE-020",
+      "test": "official SDK export, IQ/PRG signature inspection, version-normalized source binding and negative repin",
+      "status": "passed_software_only",
+      "receipt": "evidence/release-020/package-summary.json",
+      "boundary": "42 profiles/91 signed programs; 316 compiler inputs match built source; physical and publication remain unobserved"
     }
   ],
   "software_diagnostic_gate": "passed"

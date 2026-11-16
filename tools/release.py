@@ -105,6 +105,7 @@ def source_state(root: Path) -> dict:
         require(delta_path in paths, "watchdog admission proof must be tracked")
         delta = json.loads((root / delta_path).read_text())
         admission.add(delta_path)
+        admission.add(delta["authorVersion"]["path"])
         admission.update(item["path"] for item in delta["priorSnapshots"].values())
         admission.update(item["path"] for item in delta["evidence"].values())
     if proof is not None:

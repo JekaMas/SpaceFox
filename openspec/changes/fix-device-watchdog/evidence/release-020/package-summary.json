@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "status": "signed_candidate_built_not_published",
+  "version": "0.1.20",
+  "source_revision": "30dc0421d35e77b76e1451d6dfd4b1a5b9d9a144",
+  "application_uuid": "ec8b7c8a8ea54ee9ac91ee6e7a674d15",
+  "public_key_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
+  "sdk_version": "9.3.0",
+  "native_input_id": "d8265852",
+  "profile_count": 42,
+  "verified_programs": 91,
+  "iq_signature_verified": true,
+  "prg_signature_verified": true,
+  "package_sha256": "b5bd0cb73b290f37e49e5b5027a6304213dcb38bc5669cf220d6652b8c59738d",
+  "packages": {
+    "iq": {
+      "path": "SpaceFox.iq",
+      "sha256": "b5bd0cb73b290f37e49e5b5027a6304213dcb38bc5669cf220d6652b8c59738d",
+      "bytes": 48683623
+    },
+    "fr165": {
+      "path": "SpaceFox-fr165.prg",
+      "sha256": "0a00c75a550f9831dff3a6da5ad2fc1632842a65a42a4c9c93cb43f1050ddac9",
+      "bytes": 7317692
+    },
+    "fr165m": {
+      "path": "SpaceFox-fr165m.prg",
+      "sha256": "0a00c75a550f9831dff3a6da5ad2fc1632842a65a42a4c9c93cb43f1050ddac9",
+      "bytes": 7317692
+    }
+  },
+  "full_receipt_sha256": "fbfe2da43812ebd01608ad177007743fb24a368b1a69d8a0823ed37e98956818",
+  "continuity": "316 compiler inputs independently matched the signed build after the additive admission-only fix",
+  "first_export_failure": "first-export-failure.json; IQ timeout at 240 seconds; 42 successful PRGs preserved",
+  "resume": {
+    "reason": "first IQ export exceeded 240-second bound",
+    "first_failure_receipt_sha256": "a1c23758a62de67c611b86c58dffb8803ff240dd3698d53fbd51e0b261ee30c6",
+    "first_compiler_logs": "42 preserved successful logs and rejected-suffix PRGs",
+    "standalone_recompiled": false,
+    "iq_export_timeout_seconds": 900,
+    "source_snapshot_compared_to_current_clean_revision": true
+  },
+  "physical_install_update_and_use": "not observed",
+  "github_and_store_publication": "not observed"
+}

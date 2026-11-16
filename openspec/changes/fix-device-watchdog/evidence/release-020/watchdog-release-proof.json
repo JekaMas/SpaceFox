@@ -324,8 +324,8 @@
   },
   "currentSupport": {
     "tools/native_language_policy.py": "a8c234d7e8dbf72a206d062a661a33efa776fcfa9b44bf237b96d8713e125868",
-    "tools/release.py": "f2b16cadedadd1d6741159bcc436ef470f5c1e1602609df07092084a99de7677",
-    "tools/native_watchdog_release_qualification.py": "db045704c94e57f31882a79e3942d043282abc6d4058a7b28628c5a5df8f68e8"
+    "tools/release.py": "b0b62e22c6ef92bc6db31277880dbedffdb01c8dc9a634ee59db28f217fb18cf",
+    "tools/native_watchdog_release_qualification.py": "fdbe27c61af0a5a4fcaeaed67a1df9992d2c0e34d57d0424fd302185aa16c663"
   },
   "nativeInputs": {
     "tools/fields018_native_probe.py": "04e02750b2d4cf5e73abc223d6610196ebc2a4e54dfddc41f74904a17ac84987",
@@ -1052,7 +1052,15 @@
     "russianFrame": {
       "path": "openspec/changes/fix-device-watchdog/evidence/frames/fr165m-russian-retained.png",
       "sha256": "2aeb081011b1af23427b9be78ed3f44ab9095a67a557158eea6f508da0bd02be"
+    },
+    "candidate": {
+      "path": "openspec/changes/fix-device-watchdog/evidence/candidate.json",
+      "sha256": "ba79d6e2c48c5f808418d283b30bb8062e551638d6d4d0f0e2e624a26d5b2da7"
     }
   },
-  "boundary": "Retains exact historical 42-profile proof; watchdog observations are FR165M simulator only. Physical installation and all-model watchdog behavior remain unobserved."
+  "boundary": "Retains exact historical 42-profile proof; watchdog observations are FR165M simulator only. Physical installation and all-model watchdog behavior remain unobserved.",
+  "authorVersion": {
+    "path": "openspec/changes/fix-device-watchdog/evidence/release-020/author/watchface/source/generated/NativeVersion.mc",
+    "sha256": "70571d5aa56ade29d47fdff7ea94b135a715227e0a0cff9b547b6e395ac09748"
+  }
 }

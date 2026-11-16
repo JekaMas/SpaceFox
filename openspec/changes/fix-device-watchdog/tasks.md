@@ -7,4 +7,4 @@
 - [x] Independent peer review and repair; software diagnostic gate green, root judgment separate (see evidence/PEER.md).
 - [ ] Physical FR165 cold start, reopen and ordinary use for at least 15 minutes (device acceptance).
 
-- [ ] Prepare the 0.1.20 signed release from public main and reconcile its version-bound evidence; publication and physical verification remain separate.
+- [x] Prepare the 0.1.20 signed release from public main and reconcile its version-bound evidence; publication and physical verification remain separate.

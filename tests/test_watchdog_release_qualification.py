@@ -1,6 +1,10 @@
 """The additive watchdog release admission rejects unreviewed source drift."""
+import hashlib
 import json
+import os
 from pathlib import Path
+import shutil
+import tempfile
 import unittest
 from unittest.mock import patch
 
@@ -35,6 +39,46 @@ class WatchdogReleaseQualificationTest(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'native source closure changed'):
                 proof.validate(ROOT, self.catalog)
             prior.assert_not_called()
+
+    def test_repinning_current_hashes_cannot_replace_peer_source(self):
+        # Model a modified native owner plus a freshly repinned delta record.
+        # Historical proof and peer candidate remain untouched. The independent
+        # diagnostic-source digest must still refuse the modified bytes.
+        with tempfile.TemporaryDirectory(prefix='watchdog-repin-test-') as folder:
+            root = Path(folder)
+            shutil.copytree(ROOT / 'watchface', root / 'watchface', copy_function=os.link)
+            for name in ('tools', 'tests', 'openspec'):
+                (root / name).symlink_to(ROOT / name, target_is_directory=True)
+            changed = root / 'watchface/source/NativeFeed.mc'
+            data = changed.read_bytes() + b'\n// unreviewed source mutation\n'
+            changed.unlink()
+            changed.write_bytes(data)
+            # A repinner can also regenerate the normal NativeVersion file;
+            # that must not evade the independent diagnostic-source binding.
+            from tools.generate_native_version import render
+            generated = root / 'watchface/source/generated/NativeVersion.mc'
+            regenerated = render(root)
+            generated.unlink()
+            generated.write_text(regenerated)
+            catalog = json.loads(json.dumps(self.catalog))
+            ref = catalog['supportPolicy']['softwareQualificationProof']['watchdogReleaseProof']
+            record = json.loads((ROOT / ref['path']).read_text())
+            record['nativeInputs'] = proof.native_inputs(root)
+            record['watchfaceInputs'] = {p.relative_to(root).as_posix(): proof.sha(p)
+                                         for p in sorted((root / 'watchface').rglob('*')) if p.is_file()}
+            fake = root / 'repinned-proof.json'
+            fake.write_text(json.dumps(record, indent=2) + '\n')
+            ref['sha256'] = hashlib.sha256(fake.read_bytes()).hexdigest()
+            original = proof.checked
+            def checked(candidate_root, name, expected):
+                if name == ref['path']:
+                    self.assertEqual(expected, hashlib.sha256(fake.read_bytes()).hexdigest())
+                    return fake
+                return original(candidate_root, name, expected)
+            with patch.object(proof, 'checked', side_effect=checked), patch.object(proof, 'run_prior') as prior:
+                with self.assertRaisesRegex(ValueError, 'differ from peer-verified diagnostic source'):
+                    proof.validate(root, catalog)
+                prior.assert_not_called()
 
 if __name__ == '__main__':
     unittest.main()

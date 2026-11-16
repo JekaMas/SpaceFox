@@ -68,6 +68,34 @@ def native_inputs(root):
     return {p.relative_to(root).as_posix(): sha(p) for p in sorted(paths) if p.is_file()}
 
 
+# The independent peer bound these native bytes to the signed diagnostic.
+# Only the release manifest version and generated BUILD/ID are normalized.
+PEER_NATIVE_SOURCE_SHA256 = '8a7bff4e26035425412e52061e838aa1eee889e10ff780bbb152868c4153f931'
+
+
+def diagnostic_source_digest(root, manifest_bytes, version_bytes):
+    watch = root / 'watchface'
+    paths = [watch / 'manifest.xml', watch / 'monkey.jungle']
+    paths += [p for p in (watch / 'source').rglob('*') if p.is_file()]
+    paths += [p for p in (watch / 'resources').rglob('*') if p.is_file()]
+    for folder in watch.glob('resources-*'):
+        if folder.is_dir():
+            paths += [p for p in folder.rglob('*') if p.is_file()]
+    digest = hashlib.sha256()
+    for path in sorted(paths):
+        name = path.relative_to(watch).as_posix()
+        data = manifest_bytes if name == 'manifest.xml' else (version_bytes if name == 'source/generated/NativeVersion.mc' else path.read_bytes())
+        digest.update(name.encode() + b'\0' + str(len(data)).encode() + b'\0' + data)
+    return digest.hexdigest()
+
+
+def require_peer_source_binding(root, manifest_bytes, version_bytes, candidate):
+    if candidate.get('source_native_inputs_sha256') != PEER_NATIVE_SOURCE_SHA256:
+        raise ValueError('peer diagnostic source identity changed')
+    if diagnostic_source_digest(root, manifest_bytes, version_bytes) != PEER_NATIVE_SOURCE_SHA256:
+        raise ValueError('current native bytes differ from peer-verified diagnostic source')
+
+
 def run_prior(root, catalog, snapshots):
     # Reconstruct only the changed predecessor inputs. Hardlinks retain all
     # other evidence bytes; replacements are unlinked before writing.
@@ -106,8 +134,10 @@ def run_prior(root, catalog, snapshots):
 
 
 def validate(root, catalog):
+    from tools.generate_native_version import validate as validate_version
     from tools.run_native_tests import parse_output
     root = Path(root).resolve()
+    validate_version(root)
     proof = catalog['supportPolicy']['softwareQualificationProof']
     ref = proof['watchdogReleaseProof']
     record = json.loads(checked(root, ref['path'], ref['sha256']).read_text())
@@ -162,7 +192,7 @@ def validate(root, catalog):
         raise ValueError('watchdog validator closure differs')
     evidence = {name: checked(root, item['path'], item['sha256']) for name, item in record['evidence'].items()}
     if set(evidence) != {'peer', 'peerLog', 'peerCompile', 'batch', 'integrity', 'field',
-                         'warm', 'warmReadback', 'englishFrame', 'russianFrame'}:
+                         'warm', 'warmReadback', 'englishFrame', 'russianFrame', 'candidate'}:
         raise ValueError('watchdog evidence inventory differs')
     peer = json.loads(evidence['peer'].read_text())
     if (peer['author_source_commit'] != '62e90fd736a119322a3f7769e2f5ef04cdd3ee5a' or
@@ -189,6 +219,10 @@ def validate(root, catalog):
         raise ValueError('watchdog field resume observation failed')
     if 'WD_WARM_MARKER_FLIPPED' not in evidence['warm'].read_text() or 'WD_RU_READY locale=ru slots=4' not in evidence['warm'].read_text() or 'publisher=57 incoming_processed=true' not in evidence['warmReadback'].read_text():
         raise ValueError('watchdog warm replacement observation missing')
+    version_ref = record['authorVersion']
+    author_version = checked(root, version_ref['path'], version_ref['sha256']).read_bytes()
+    candidate = json.loads(evidence['candidate'].read_text())
+    require_peer_source_binding(root, (root / snapshots['watchface/manifest.xml']['path']).read_bytes(), author_version, candidate)
     old_assets = (root / snapshots['watchface/source/generated/NativeAssets.mc']['path']).read_text()
     new_assets = (root / 'watchface/source/generated/NativeAssets.mc').read_text()
     if re.findall(r'new NativeMap\([^)]*\)', old_assets) != re.findall(r'new NativeMap\([^)]*\)', new_assets) or len(re.findall(r'new NativeMap\([^)]*\)', new_assets)) != 54:
