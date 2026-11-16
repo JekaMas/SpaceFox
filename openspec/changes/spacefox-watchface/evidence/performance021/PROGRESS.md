@@ -1,6 +1,6 @@
 # Resource-audit implementation — performance021
 
-Status: NOT DONE. 27 findings assigned to four sequential implementation groups. The sole checklist is ../../tasks.md; this journal is not a second task list.
+Status: NOT DONE overall. Group A is complete after author, independent peer repairs and root judgment; 4 of 27 findings are closed, with 23 findings in three groups remaining. The sole checklist is ../../tasks.md; this journal is not a second task list.
 
 ## Source and authority
 
@@ -33,10 +33,10 @@ Native work is last to collect all invalidating edits into one stable profile bu
 
 | Finding | Group / task | Status |
 | --- | --- | --- |
-| HOST-01 | A / 8.1 | AUTHOR + PEER GREEN; root judgment pending |
-| HOST-02 | A / 8.1 | AUTHOR + PEER GREEN; root judgment pending |
-| HOST-03 | A / 8.1 | AUTHOR + PEER GREEN; root judgment pending |
-| HOST-07 | A / 8.1 | AUTHOR + PEER GREEN; root judgment pending |
+| HOST-01 | A / 8.1 | DONE — author + peer + root|
+| HOST-02 | A / 8.1 | DONE — author + peer + root|
+| HOST-03 | A / 8.1 | DONE — author + peer + root|
+| HOST-07 | A / 8.1 | DONE — author + peer + root|
 | HOST-04 | B / 8.2 | PENDING |
 | HOST-05 | B / 8.2 | PENDING |
 | HOST-06 | B / 8.2 | PENDING |
@@ -64,10 +64,19 @@ Native work is last to collect all invalidating edits into one stable profile bu
 ## Progress and next action
 
 - Baseline report and all27 IDs read; current public source and applicable workflow resolved. Isolated worktree created from29f3cfd0; no main polling, SDK/provider run or product change performed during planning.
-- Group A / task8.1 author and independent peer apply/verify/fix are GREEN. Root judgment is required before group B starts; groups B/C/D remain pending.
+- Root accepted group A / task8.1 at independent final `d3b748ed304afd593a36380662357d9fce683a51`. All four A findings are closed at the software/offline scope. Group B / task8.2 is now the next authorized group; C/D remain pending.
 
 ## Measurement limits
 
 Physical watch, paired phone, battery energy, physical frame/wake timing, exact graphics-pool high-water/freeing and Linux-hosted cost are not currently observed. Complete independent authorized local work and keep these boundaries explicit; never manufacture physical acceptance or count a static estimate as a measurement.
 
 - Group A author implementation and local self-checks, retained failures and bounded measurements: [a/APPLY.md](a/APPLY.md). Author source/export checks passed; independent peer repairs and current source/export checks are recorded in [a/PEER.md](a/PEER.md); root judgment remains. Groups B/C/D remain unstarted.
+
+## Root judgment A and next group
+
+- Accepted source/software group A after reviewing the independent report and repaired cache identity/source guards. The peer fixed actual strict-type cache collision and hidden Git-flag source edits; valid sparse/flagged sources remain supported. Retained 106-file output equality, existing source-age/CAS/corruption checks and unchanged native/profile/font scope are explicit.
+- Accepted the measured public API snapshot peak tradeoff (91,862,960 versus 88,002,236 traced bytes), without a claim of universal peak reduction. The private operation owns its newly constructed catalog with no redundant complete copy; matched private/public incremental peaks were 75,041,796/79,050,758 bytes. Post-peer local profiled artifact build44.039s and repeated validation2.911s are single observations, not CI guarantees. Geography caller-drop release and six distinct semantic identities remain verified.
+- Current-source/export observations at checkpoint7a9992a0 remain valid for the final documentation-only peer commit; exact selected-input reconciliation is recorded. Root journal updates do not invalidate behavior. No private full graph-runner, hosted, provider, native, phone, Store or physical pass is invented.
+- Next execute B: HOST-04/05/06 and ENG-02, including the now-measured four-child source fence as a retained boundary. Preserve all fresh source/CAS/root checks; do not cache permission/authority across changes. Extend the existing single performance021 source delta against29f3cfd0, not another historical layer.
+- After remaining host changes stabilize, perform one integrated host workload/counter measurement and reconcile every actually invalidated A/B/C proof; do not repeatedly profile for stage or documentation changes. Final native group remains last.
+- Legacy follow-up for C: R5 discovery exposed retired global_map build_bundle/write_bundle and frozen exporter routes. Inspect actual current dependents and remove proven unused active routes, preserving current map primitives and authenticated historical reconstruction. This is focused cleanup under8.3, not a new task or a pass for the retired R5 fixture.
