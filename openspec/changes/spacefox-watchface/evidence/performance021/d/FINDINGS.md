@@ -1,6 +1,6 @@
-# D finding checkpoint — author self-verification GREEN
+# D findings — DONE at the local software boundary
 
-This is an implementation/evidence map, not an acceptance claim. The matched stock pair has completed; its one-workload scope and earlier setup reds are recorded; see [APPLY](APPLY.md). The 16 author observations below are complete at their stated boundaries; task 8.4 remains open for fresh independent peer verification/fix and root judgment.
+All 16 findings below are accepted after author self-verification, fresh independent verification and root judgment; task 8.4 is complete. The matched stock pair's one-workload scope and earlier setup reds remain in [APPLY](APPLY.md). [PEER](PEER.md) records independent checks and retained-input decisions; [the final root judgment](../PROGRESS.md#final-root-judgment--all-27-findings) closes the software group. Physical, graphics-pool total, power and Store observations remain unclaimed.
 
 | Finding | Current source treatment | Observed and remaining |
 | --- | --- | --- |

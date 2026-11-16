@@ -1,6 +1,6 @@
 # Resource-audit implementation — performance021
 
-Status: NOT DONE overall. Groups A, B and C are complete after author, independent peer repairs and root judgment; 11 of 27 findings are closed, with 16 native findings in group D remaining. The sole checklist is ../../tasks.md; this journal is not a second task list.
+Status: DONE at the local software boundary. All four groups and all 27 memory019 findings are closed after author apply/self-verification, fresh independent verification/fixes and root judgment. Tasks 8.1–8.4 are complete. Hardware, power, graphics-pool totals and Store delivery are separate unobserved boundaries, not passes. The sole checklist is ../../tasks.md; this journal is not a second task list. Earlier checkpoint entries below are chronological history, superseded by the final root judgment.
 
 ## Source and authority
 
@@ -44,22 +44,22 @@ Native work is last to collect all invalidating edits into one stable profile bu
 | ENG-01 | C / 8.3 | DONE — author + peer + root |
 | CLEAN-02 | C / 8.3 | DONE — author + peer + root |
 | WEB-01 | C / 8.3 | DONE — author + peer + root |
-| MEM-01 | D / 8.4 | PENDING |
-| MEM-02 | D / 8.4 | PENDING |
-| MEM-03 | D / 8.4 | PENDING |
-| MEM-04 | D / 8.4 | PENDING |
-| MEM-05 | D / 8.4 | PENDING |
-| CPU-01 | D / 8.4 | PENDING |
-| CPU-02 | D / 8.4 | PENDING |
-| CPU-03 | D / 8.4 | PENDING |
-| CPU-04 | D / 8.4 | PENDING |
-| IO-01 | D / 8.4 | PENDING |
-| IO-02 | D / 8.4 | PENDING |
-| IO-03 | D / 8.4 | PENDING |
-| LIFE-01 | D / 8.4 | PENDING |
-| PERF-01 | D / 8.4 | PENDING |
-| ASSET-01 | D / 8.4 | PENDING |
-| CLEAN-01 | D / 8.4 | PENDING |
+| MEM-01 | D / 8.4 | DONE — author + peer + root |
+| MEM-02 | D / 8.4 | DONE — author + peer + root |
+| MEM-03 | D / 8.4 | DONE — author + peer + root |
+| MEM-04 | D / 8.4 | DONE — author + peer + root |
+| MEM-05 | D / 8.4 | DONE — author + peer + root |
+| CPU-01 | D / 8.4 | DONE — author + peer + root |
+| CPU-02 | D / 8.4 | DONE — author + peer + root |
+| CPU-03 | D / 8.4 | DONE — author + peer + root |
+| CPU-04 | D / 8.4 | DONE — author + peer + root |
+| IO-01 | D / 8.4 | DONE — author + peer + root |
+| IO-02 | D / 8.4 | DONE — author + peer + root |
+| IO-03 | D / 8.4 | DONE — author + peer + root |
+| LIFE-01 | D / 8.4 | DONE — author + peer + root |
+| PERF-01 | D / 8.4 | DONE — author + peer + root |
+| ASSET-01 | D / 8.4 | DONE — author + peer + root |
+| CLEAN-01 | D / 8.4 | DONE — author + peer + root |
 
 ## Progress and next action
 
@@ -163,3 +163,11 @@ Task 8.4 remains unchecked, all 16 findings remain open. [D author record](d/APP
 - D author self-verification GREEN at clean source checkpoint `a8a3b9d2148beb50d3794c46b174f4eb921dd50a`: 14 paired source-bound receipt observers, 12 affected admission tests, 42 SDK release compiles, disposable IQ/signature inspection, generator roundtrip, stock simulator mode/visual and matched heap/readiness, strict OpenSpec, targeted lint, and clean sparse plus independently materialized release admission passed at stated boundaries. The earlier retired-font export refusal was repaired through authenticated historical snapshots with tamper/current-resource refusal. Final evidence-only reconciliation is disjoint from both clean source input sets. Task 8.4 remains unchecked for fresh independent peer verification/fix and root judgment; no physical/power/Store/private full-graph claim.
 
 - D fresh independent verification is **GREEN at the local software boundary**, with root judgment pending; task 8.4 is checked. [d/PEER.md](d/PEER.md) records the source review, 16 dispositions, re-exercised changed release/source fences, independent receipt/hash reconciliation, checker-assumption failures and the retained finite native observations. Its final documentation-only paths are outside selected release/sparse inputs. The private full graph, physical watch/graphics-pool/power, hosted and Store boundaries remain unclaimed.
+
+## Final root judgment — all 27 findings
+
+- Accepted independent D final `acef4e01ddf8ad1de5de8ef2a28ea543b834446c`, author final `52b5d9baeb59d30bfb20cbbb8b98ed2ff0d4f3d8` and original clean source checkpoint `a8a3b9d2148beb50d3794c46b174f4eb921dd50a`. All 16 D findings and task 8.4 are closed at their stated software boundaries; A/B/C acceptance remains valid. All 27 original IDs are accounted for, with no remaining software finding in this audit implementation.
+- The peer reviewed the complete D production/test delta and independently passed 26 admission/proof/receipt checks plus two affected C source-state/mutation controls, strict OpenSpec and targeted lint. It reconciled 347 cohort, 347 IQ and 309 stock input identities, 42 successful profile rows and all seven WF25 scenario joins. No new native execution is inferred from receipt observers. Exact invalidation and retained-green decisions are in [d/INVALIDATED-MATRIX.md](d/INVALIDATED-MATRIX.md) and [d/PEER.md](d/PEER.md).
+- Accepted the finite matched Venu X1 heap reduction (123.0 to 114.4 KiB peak), real 17-object prefix reduction (153 to 17 verifications), exact-map decoder reduction (223 to 51 steps), font package reduction (17,120 bytes), and preserved complete stock map/point/LOW/wake evidence. None establishes physical battery savings, exact graphics-pool reclamation, all-provider icon residency or a universal latency bound. The host public snapshot allocation tradeoff and cold menu re-enumeration tradeoff remain explicit.
+- The current-source retired-font repair preserves current-resource refusal and authenticates historical snapshots; it does not restore deleted runtime fonts or relax source/signature/corruption guards. Root final edits touch only this journal and D's finding summary, already outside the selected release/sparse source sets. Existing source-sensitive gates retain their original clean checkpoint; documentation changes do not trigger another behavior run.
+- Final integration is the sole remaining administrative action: one current-main fetch/conflict check and a normal fast-forward publication of the accepted source, preserving the old private main checkout. No production-signed Store package or physical delivery is claimed by this task.
