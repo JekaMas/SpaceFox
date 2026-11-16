@@ -69,7 +69,7 @@ def validate(root, catalog):
     if comparable != old_catalog:
         raise ValueError('locale policy changed outside performance021 delta')
     evidence = record['evidence']
-    if set(evidence) != {'hostMeasurement', 'hostTests', 'sourceRace', 'artifactBytes', 'cacheRelease', 'ownershipTest', 'peakAttribution', 'factoryTests', 'eligibleBaseline', 'affectedTests', 'peerHost', 'peerOwnership', 'peerTypes', 'bCore', 'bGit', 'bCloud', 'bAffected', 'bMetadata', 'bArtifact', 'bReadback', 'bSequence', 'bManifest', 'bGenerator', 'bARecheck'}:
+    if set(evidence) != {'hostMeasurement', 'hostTests', 'sourceRace', 'artifactBytes', 'cacheRelease', 'ownershipTest', 'peakAttribution', 'factoryTests', 'eligibleBaseline', 'affectedTests', 'peerHost', 'peerOwnership', 'peerTypes', 'bCore', 'bGit', 'bCloud', 'bAffected', 'bMetadata', 'bArtifact', 'bReadback', 'bSequence', 'bManifest', 'bGenerator', 'bARecheck', 'bFence'}:
         raise ValueError('performance021 evidence inventory differs')
     evidence_files = {name: _checked(root, row['path'], row['sha256']) for name, row in evidence.items()}
     artifact = json.loads(evidence_files['bArtifact'].read_text())
@@ -112,14 +112,19 @@ def validate(root, catalog):
             '\nOK\n' not in manifest):
         raise ValueError('performance021 manifest normalization evidence incomplete')
     recheck = evidence_files['bARecheck'].read_text()
-    if ('Ran 7 tests' not in recheck or '\nOK\n' not in recheck or
-            any(name not in recheck for name in ('test_validation_positive','test_validation_negative',
+    if ('Ran 8 tests' not in recheck or '\nOK\n' not in recheck or '"git_subprocesses": 4' not in recheck or
+            any(name not in recheck for name in ('test_geography_positive','test_validation_positive','test_validation_negative',
                 'test_no_work_fence_rejects_unverified_producer_sources',
                 'test_caller_mutation_after_snapshot_and_validation_identities',
                 'test_scoped_admission_distinguishes_integer_and_decimal',
                 'test_cloud_owned_content_change_preserves_age_without_provider',
                 'test_owned_catalog_real_output_and_no_full_copy'))):
         raise ValueError('performance021 prior host-owner recheck incomplete')
+    fence = evidence_files['bFence'].read_text()
+    if ('Ran 6 tests' not in fence or '\nOK\n' not in fence or
+            any(name not in fence for name in ('test_local_source_fence_timeout_before_authority',
+                'test_cloud_sparse_source_fence_hidden_change', 'test_git_deadline_kills_group_when_parent_exits_during_timeout', 'test_two_process_reservation_cas'))):
+        raise ValueError('performance021 bounded source fence evidence incomplete')
     generation = evidence_files['bGenerator'].read_text()
     if ('test_generation_is_complete_and_repeatable' not in generation or 'Ran 1 test' not in generation or
             '\nOK\n' not in generation):

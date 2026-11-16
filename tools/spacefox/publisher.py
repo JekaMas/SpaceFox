@@ -42,6 +42,10 @@ class StateError(ValueError):
     """Fail closed: authority, context, budget or candidate is unusable."""
 
 
+class GitDeadline(StateError):
+    """A bounded Git child timed out; callers must not grant work permission."""
+
+
 class Conflict(StateError):
     """The caller lost its exact expected Git base; start by reopening state."""
 
@@ -427,6 +431,41 @@ def _schedule_due(doc, now, policy):
                     policy, not_before_utc=doc['backoff_until_utc'])
 
 
+def bounded_git(path, *args, data=None, check=True):
+    argv = ['git', '-C', str(path), *args]
+    # Files prevent a descendant retaining a pipe from defeating the total
+    # deadline. The separate process group is killed and reaped on timeout.
+    with tempfile.TemporaryFile() as stdin, tempfile.TemporaryFile() as stdout, tempfile.TemporaryFile() as stderr:
+        if data is not None:
+            stdin.write(data)
+        stdin.seek(0)
+        proc = subprocess.Popen(argv, stdin=stdin, stdout=stdout, stderr=stderr, start_new_session=True)
+        try:
+            proc.wait(timeout=GIT_TOTAL_SECONDS)
+        except subprocess.TimeoutExpired as error:
+            # The group may still contain a transport or FS-monitor child even
+            # if the Git parent exits between timeout and our next poll.
+            try:
+                os.killpg(proc.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            proc.wait()
+            raise GitDeadline(f'Git {args[0]} deadline exceeded') from error
+        finally:
+            if proc.poll() is None:
+                try:
+                    os.killpg(proc.pid, signal.SIGKILL)
+                except ProcessLookupError:
+                    pass
+                proc.wait()
+        stdout.seek(0); stderr.seek(0)
+        result = subprocess.CompletedProcess(argv, proc.returncode, stdout.read(), stderr.read())
+    if check and result.returncode:
+        # Do not echo remote URLs/credentials or arbitrary server responses.
+        raise StateError(f'Git {args[0]} failed (exit{result.returncode})')
+    return result
+
+
 class GitState:
     """Dedicated ref/object authority; never checks out the source/research tree.
 
@@ -452,31 +491,7 @@ class GitState:
         self._tmp.cleanup()
 
     def _git(self, *args, data=None, check=True):
-        argv = ['git', '-C', self.path, *args]
-        # Files prevent a descendant retaining a pipe from defeating the total
-        # deadline. The separate process group is killed and reaped on timeout.
-        with tempfile.TemporaryFile() as stdin, tempfile.TemporaryFile() as stdout, tempfile.TemporaryFile() as stderr:
-            if data is not None:
-                stdin.write(data)
-            stdin.seek(0)
-            proc = subprocess.Popen(argv, stdin=stdin, stdout=stdout, stderr=stderr, start_new_session=True)
-            try:
-                proc.wait(timeout=GIT_TOTAL_SECONDS)
-            except subprocess.TimeoutExpired as error:
-                raise StateError(f'Git {args[0]} deadline exceeded') from error
-            finally:
-                if proc.poll() is None:
-                    try:
-                        os.killpg(proc.pid, signal.SIGKILL)
-                    except ProcessLookupError:
-                        pass
-                    proc.wait()
-            stdout.seek(0); stderr.seek(0)
-            result = subprocess.CompletedProcess(argv, proc.returncode, stdout.read(), stderr.read())
-        if check and result.returncode:
-            # Do not echo remote URLs/credentials or arbitrary server responses.
-            raise StateError(f'Git {args[0]} failed (exit{result.returncode})')
-        return result
+        return bounded_git(self.path, *args, data=data, check=check)
 
     def _refs(self, *refs):
         raw = self._git('ls-remote', '--refs', self.remote, *refs).stdout.decode()

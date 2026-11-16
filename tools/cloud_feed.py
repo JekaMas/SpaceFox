@@ -20,15 +20,15 @@ from tools.spacefox.visual_bridge import sha
 from tools.spacefox.native_motion import build_artifact, validate_feed, PROFILE, FEED_PATH, _RepositoryCatalogOperation
 from tools.spacefox.provider import LL2Client
 from tools.spacefox.publisher import (GitState, Publisher, StateError, STATE_REF, ANCHOR_REF,
-                                     _schedule, _live, _sha, _digest, _path)
+                                     _schedule, _live, _sha, _digest, _path, GitDeadline, bounded_git)
 from tools.spacefox.schedule import RefreshPolicy
 from tools.update_feed import executing_revision, update, utc_now, _head_tree, _tracked_bytes
 
 
 def source_revision(root):
     code = executing_revision(root)
-    dirty = subprocess.run(['git', '-C', str(root), 'status', '--porcelain', '--untracked-files=all',
-                            '--', 'tools/cloud_feed.py', 'tools/cloud_inputs.py', 'tools/refresh_catalog.py', '.github'], check=True, stdout=subprocess.PIPE)
+    dirty = bounded_git(root, 'status', '--porcelain', '--untracked-files=all', '--',
+                        'tools/cloud_feed.py', 'tools/cloud_inputs.py', 'tools/refresh_catalog.py', '.github')
     if dirty.stdout:
         raise CloudError('cloud runtime and workflow must be committed and clean')
     return code
@@ -124,8 +124,7 @@ def _cloud_source_fence(root, code):
     root = Path(root).resolve()
     try:
         scopes = ['assets', 'licenses', 'tools/vendor', 'catalog', 'schemas', 'tools/spacefox', '.github']
-        status = subprocess.run(['git', '-C', str(root), 'status', '--porcelain', '--untracked-files=all', '--', *scopes],
-                                check=True, stdout=subprocess.PIPE).stdout
+        status = bounded_git(root, 'status', '--porcelain', '--untracked-files=all', '--', *scopes).stdout
         if status:
             return False
         tree = _head_tree(root)
@@ -139,8 +138,9 @@ def _cloud_source_fence(root, code):
         for name in tree:
             if any(name.startswith(prefix + '/') for prefix in scopes) and (root / name).exists():
                 _tracked_bytes(root, tree, name)
-        return subprocess.run(['git', '-C', str(root), 'rev-parse', 'HEAD'], check=True,
-                              stdout=subprocess.PIPE).stdout.decode().strip() == code
+        return bounded_git(root, 'rev-parse', 'HEAD').stdout.decode().strip() == code
+    except GitDeadline:
+        raise
     except (OSError, ValueError, KeyError, TypeError, UnicodeError, subprocess.SubprocessError):
         return False
 
@@ -228,6 +228,8 @@ def _scheduling_no_work(store, site, code, repository, now, *, root, origin=None
                 or datetime.now(timezone.utc).date().isoformat() != witness['date']):
             return None
         return head
+    except GitDeadline:
+        raise
     except (ValueError, OSError, KeyError, TypeError, subprocess.SubprocessError):
         return None
 

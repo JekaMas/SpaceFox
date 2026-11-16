@@ -534,3 +534,49 @@ class GroupBTest(unittest.TestCase):
             self.assertNotEqual(changed,original);target.write_bytes(changed)
             _write_manifest_languages(target,['eng','rus','deu','fre','spa'])
             self.assertNotIn(b'unexpected',target.read_bytes())
+
+    def test_local_source_fence_timeout_before_authority(self):
+        import os,tempfile
+        from pathlib import Path
+        from tools import cloud_feed, update_feed
+        from tools.spacefox import publisher
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp).resolve();shim=root/'git';marker=root/'pid'
+            shim.write_text('#!/bin/sh\nprintf "%s" "$$" > "$SPACEFOX_TEST_PID"\nexec /bin/sleep 30\n');shim.chmod(0o755)
+            children=[];original=publisher.subprocess.Popen
+            def capture(*args,**kwargs):
+                child=original(*args,**kwargs);children.append(child);return child
+            with patch.dict(os.environ,{'PATH':str(root),'SPACEFOX_TEST_PID':str(marker)}),patch.object(publisher,'GIT_TOTAL_SECONDS',.25),patch.object(publisher.subprocess,'Popen',side_effect=capture):
+                start=time.monotonic()
+                with self.assertRaises(publisher.GitDeadline):update_feed._no_work_source_fence(root,'a'*40)
+                with self.assertRaises(publisher.GitDeadline):cloud_feed._cloud_source_fence(root,'a'*40)
+                with self.assertRaisesRegex(publisher.GitDeadline,'deadline'):update_feed.executing_revision(root)
+                with patch.object(cloud_feed,'GitState') as authority, patch.object(cloud_feed,'Site') as site:
+                    self.assertEqual(cloud_feed.main(['--repository','local/spacefox','--site','http://127.0.0.1:1','--local-qualification','probe']),2)
+                    authority.assert_not_called();site.assert_not_called()
+                with patch.object(cloud_feed,'source_revision',return_value='a'*40), patch.object(cloud_feed,'GitState') as authority, patch.object(cloud_feed,'Site') as site, patch.object(cloud_feed,'Pages'):
+                    self.assertEqual(cloud_feed.main(['--repository','local/spacefox','--site','http://127.0.0.1:1','--local-qualification','probe']),2)
+                    authority.return_value._load_authority.assert_not_called();site.return_value.get.assert_not_called()
+                with patch.object(update_feed,'executing_revision',return_value='a'*40), patch.object(update_feed,'GitState') as store, patch.object(update_feed,'Publisher') as admission:
+                    self.assertEqual(update_feed.main(['--remote','unused','--expected-base','b'*40,'run','--output',str(root/'unexpected')]),2)
+                    store.return_value.definitely_not_due.assert_not_called();admission.assert_not_called()
+                from unittest.mock import Mock
+                probe_store=Mock();probe_store._load_authority.side_effect=publisher.GitDeadline('deadline')
+                probe_site=Mock()
+                with self.assertRaises(publisher.GitDeadline):
+                    cloud_feed._scheduling_no_work(probe_store,probe_site,'a'*40,'local/spacefox',int(time.time()),root=root)
+                probe_site.get.assert_not_called()
+                self.assertLess(time.monotonic()-start,3)
+            self.assertEqual(len(children),6)
+            self.assertTrue(all(child.poll() is not None for child in children))
+            self.assertTrue(marker.exists());self.assertEqual({p.name for p in root.iterdir()},{'git','pid'})
+
+    def test_git_deadline_kills_group_when_parent_exits_during_timeout(self):
+        import subprocess
+        from unittest.mock import Mock
+        from tools.spacefox import publisher
+        child=Mock();child.pid=123456;child.wait.side_effect=[subprocess.TimeoutExpired(['git'],.1),0];child.poll.return_value=0
+        with patch.object(publisher.subprocess,'Popen',return_value=child),patch.object(publisher.os,'killpg') as kill:
+            with self.assertRaises(publisher.GitDeadline):publisher.bounded_git('/tmp','status')
+        kill.assert_called_once_with(child.pid,publisher.signal.SIGKILL)
+        self.assertEqual(child.wait.call_count,2)

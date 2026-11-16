@@ -396,7 +396,7 @@ The publisher SHALL bound host selection, geography, validation and I/O work whi
 
 #### Scenario: Bounded Git and exact snapshot
 - **WHEN** state and history are inspected or changed
-- **THEN** Git commands have total deadlines, exact immutable bytes may be reused within a process, and fresh remote, source and CAS checks still refuse conflicts without discarding history
+- **THEN** Git commands on source and authority paths have total deadlines; a deadline failure stops the invocation before subsequent authority or provider effects. Exact immutable bytes may be reused within a process, and fresh remote, source and CAS checks still refuse conflicts without discarding history
 
 #### Scenario: Operator total HTTP deadline
 - **WHEN** operator HTTP inspection receives slow, oversized or invalid data

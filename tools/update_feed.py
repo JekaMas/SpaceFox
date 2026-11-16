@@ -22,7 +22,7 @@ from tools.spacefox.feed import FeedEncodingError
 from tools.spacefox.provider import (LL2Client, ProviderError, normalize_detail_launch,
                                     validation_epoch, bounded_json, DEFAULT_ORIGIN)
 from tools.spacefox.publisher import (GitState, Publisher, StateError, LiveRevision,
-                                     AllowanceUnavailable)
+                                     AllowanceUnavailable, GitDeadline, bounded_git)
 from tools.spacefox.schedule import RefreshPolicy, LaunchStatus
 from tools.spacefox.native_motion import build_artifact, PROFILE, _RepositoryCatalogOperation
 
@@ -184,8 +184,7 @@ def export_pending(pub, directory):
 
 
 def _head_tree(root):
-    raw = subprocess.run(['git', '-C', str(root), 'ls-tree', '-r', '-l', '-z', 'HEAD'],
-                         stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True).stdout
+    raw = bounded_git(root, 'ls-tree', '-r', '-l', '-z', 'HEAD').stdout
     result = {}
     for entry in raw.split(b'\0'):
         if not entry:
@@ -224,14 +223,12 @@ def executing_revision(root):
     """Bind permission SHA to the actual tracked clean producer checkout."""
     root = Path(root).resolve()
     scopes = ['tools/spacefox', 'tools/update_feed.py', 'catalog', 'schemas']
-    result = subprocess.run(['git', '-C', str(root), 'status', '--porcelain', '--untracked-files=all', '--', *scopes],
-                            stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
+    result = bounded_git(root, 'status', '--porcelain', '--untracked-files=all', '--', *scopes)
     if result.stdout:
         raise StateError('producer checkout must be committed and clean before provider permission')
     # Git status ignores assume-unchanged and skip-worktree. Check any present
     # flagged producer bytes directly against HEAD before opening authority.
-    tracked = subprocess.run(['git', '-C', str(root), 'ls-files', '-v', '-z', '--', *scopes],
-                             stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True).stdout
+    tracked = bounded_git(root, 'ls-files', '-v', '-z', '--', *scopes).stdout
     flagged = [entry for entry in tracked.split(b'\0') if entry and entry[:1] != b'H']
     if flagged:
         tree = _head_tree(root)
@@ -245,21 +242,18 @@ def executing_revision(root):
                     raise ValueError('missing flagged producer input')
         except (KeyError, OSError, ValueError) as exc:
             raise StateError('producer checkout must be committed and clean before provider permission') from exc
-    return subprocess.run(['git', '-C', str(root), 'rev-parse', 'HEAD'], stdout=subprocess.PIPE,
-                          stderr=subprocess.PIPE, check=True).stdout.decode().strip()
+    return bounded_git(root, 'rev-parse', 'HEAD').stdout.decode().strip()
 
 
 def _no_work_source_fence(root, expected_revision=None):
     """Check the actual sparse runtime seed and recipe closure without decoding it."""
     root = Path(root).resolve()
     try:
-        status = subprocess.run(['git', '-C', str(root), 'status', '--porcelain',
-                                 '--untracked-files=all', '--', 'assets', 'licenses', 'tools/vendor'],
-                                stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
+        status = bounded_git(root, 'status', '--porcelain', '--untracked-files=all',
+                             '--', 'assets', 'licenses', 'tools/vendor')
         if status.stdout:
             return False
-        revision = subprocess.run(['git', '-C', str(root), 'rev-parse', 'HEAD'],
-                                  stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True).stdout.decode().strip()
+        revision = bounded_git(root, 'rev-parse', 'HEAD').stdout.decode().strip()
         if expected_revision is not None and revision != expected_revision:
             return False
         tree = _head_tree(root)
@@ -309,8 +303,9 @@ def _no_work_source_fence(root, expected_revision=None):
                 assets = []
             for facts in assets:
                 read((Path(name).parent / facts['file']).as_posix())
-        return revision == subprocess.run(['git', '-C', str(root), 'rev-parse', 'HEAD'],
-                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True).stdout.decode().strip()
+        return revision == bounded_git(root, 'rev-parse', 'HEAD').stdout.decode().strip()
+    except GitDeadline:
+        raise
     except (KeyError, OSError, TypeError, ValueError, subprocess.SubprocessError):
         return False
 

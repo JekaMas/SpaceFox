@@ -408,7 +408,7 @@
       "id": "VC21",
       "capability": "visual-catalog",
       "title": "Bounded host selection and validation work",
-      "fingerprint": "a58bdda5cb360c646a586d83604673ba07c34b4325886f6ae364ec6d98cb9c7f"
+      "fingerprint": "4a34c14fd61bb1f3d1c630e888b5da91129ad6dc962a3dbd79c6f12142d323c4"
     }
   ],
   "properties": [
@@ -5709,8 +5709,12 @@
       "owner": "tools/spacefox/publisher.py",
       "oracle": "Local real boundary and independent expected bytes, effect counters and elapsed/cleanup observations.",
       "source_globs": [
+        "tests/test_performance021_a.py",
+        "tests/test_performance021_b.py",
+        "tools/cloud_feed.py",
+        "tools/refresh_catalog.py",
         "tools/spacefox/publisher.py",
-        "tests/test_performance021_b.py"
+        "tools/update_feed.py"
       ],
       "planning_status": "implemented and author self-verified locally; independent verification and root judgment pending"
     },
@@ -39332,7 +39336,7 @@
       "state": "implemented",
       "source_path": "tests/test_performance021_a.py",
       "planning_note": "Exact intended identity; not yet implemented or observed.",
-      "source_sha256": "f3bac73e1e03454f1472a39ae488bbfa60a1bc0f47bd0ad8bdd0b62225a39a1d",
+      "source_sha256": "374c0fa2079cda07de2defa8b4c2311de51a2148d3ea68b267c29d24ab2930c0",
       "implementation_note": "Author and independent observations are reconciled in evidence/performance021/a/PEER.md; root judgment pending."
     },
     {
@@ -39363,7 +39367,7 @@
       "state": "implemented",
       "source_path": "tests/test_performance021_a.py",
       "planning_note": "Exact intended identity; not yet implemented or observed.",
-      "source_sha256": "f3bac73e1e03454f1472a39ae488bbfa60a1bc0f47bd0ad8bdd0b62225a39a1d",
+      "source_sha256": "374c0fa2079cda07de2defa8b4c2311de51a2148d3ea68b267c29d24ab2930c0",
       "implementation_note": "Author and independent observations are reconciled in evidence/performance021/a/PEER.md; root judgment pending."
     },
     {
@@ -39394,7 +39398,7 @@
       "state": "implemented",
       "source_path": "tests/test_performance021_a.py",
       "planning_note": "Exact intended identity; not yet implemented or observed.",
-      "source_sha256": "f3bac73e1e03454f1472a39ae488bbfa60a1bc0f47bd0ad8bdd0b62225a39a1d",
+      "source_sha256": "374c0fa2079cda07de2defa8b4c2311de51a2148d3ea68b267c29d24ab2930c0",
       "implementation_note": "Author and independent observations are reconciled in evidence/performance021/a/PEER.md; root judgment pending."
     },
     {
@@ -39425,7 +39429,7 @@
       "state": "implemented",
       "source_path": "tests/test_performance021_a.py",
       "planning_note": "Exact intended identity; not yet implemented or observed.",
-      "source_sha256": "f3bac73e1e03454f1472a39ae488bbfa60a1bc0f47bd0ad8bdd0b62225a39a1d",
+      "source_sha256": "374c0fa2079cda07de2defa8b4c2311de51a2148d3ea68b267c29d24ab2930c0",
       "implementation_note": "Author and independent observations are reconciled in evidence/performance021/a/PEER.md; root judgment pending."
     },
     {
@@ -39456,7 +39460,7 @@
       "state": "implemented",
       "source_path": "tests/test_performance021_a.py",
       "planning_note": "Exact intended identity; not yet implemented or observed.",
-      "source_sha256": "f3bac73e1e03454f1472a39ae488bbfa60a1bc0f47bd0ad8bdd0b62225a39a1d",
+      "source_sha256": "374c0fa2079cda07de2defa8b4c2311de51a2148d3ea68b267c29d24ab2930c0",
       "implementation_note": "Author and independent observations are reconciled in evidence/performance021/a/PEER.md; root judgment pending."
     },
     {
@@ -39487,7 +39491,7 @@
       "state": "implemented",
       "source_path": "tests/test_performance021_a.py",
       "planning_note": "Exact intended identity; not yet implemented or observed.",
-      "source_sha256": "f3bac73e1e03454f1472a39ae488bbfa60a1bc0f47bd0ad8bdd0b62225a39a1d",
+      "source_sha256": "374c0fa2079cda07de2defa8b4c2311de51a2148d3ea68b267c29d24ab2930c0",
       "implementation_note": "Author and independent observations are reconciled in evidence/performance021/a/PEER.md; root judgment pending."
     },
     {
@@ -39518,7 +39522,7 @@
       "state": "implemented",
       "source_path": "tests/test_performance021_a.py",
       "planning_note": "Exact intended identity; not yet implemented or observed.",
-      "source_sha256": "f3bac73e1e03454f1472a39ae488bbfa60a1bc0f47bd0ad8bdd0b62225a39a1d",
+      "source_sha256": "374c0fa2079cda07de2defa8b4c2311de51a2148d3ea68b267c29d24ab2930c0",
       "implementation_note": "Author and independent observations are reconciled in evidence/performance021/a/PEER.md; root judgment pending."
     },
     {
@@ -39549,7 +39553,7 @@
       "state": "implemented",
       "source_path": "tests/test_performance021_a.py",
       "planning_note": "Exact intended identity; not yet implemented or observed.",
-      "source_sha256": "f3bac73e1e03454f1472a39ae488bbfa60a1bc0f47bd0ad8bdd0b62225a39a1d",
+      "source_sha256": "374c0fa2079cda07de2defa8b4c2311de51a2148d3ea68b267c29d24ab2930c0",
       "implementation_note": "Author and independent observations are reconciled in evidence/performance021/a/PEER.md; root judgment pending."
     },
     {
@@ -39780,7 +39784,7 @@
       "state": "implemented",
       "source_path": "tests/test_performance021_a.py",
       "planning_note": "Exact intended identity; not yet implemented or observed.",
-      "source_sha256": "f3bac73e1e03454f1472a39ae488bbfa60a1bc0f47bd0ad8bdd0b62225a39a1d",
+      "source_sha256": "374c0fa2079cda07de2defa8b4c2311de51a2148d3ea68b267c29d24ab2930c0",
       "implementation_note": "Author and independent observations are reconciled in evidence/performance021/a/PEER.md; root judgment pending."
     },
     {
@@ -39827,7 +39831,7 @@
       "command_id": "performance021-b",
       "state": "implemented",
       "source_path": "tests/test_performance021_b.py",
-      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "source_sha256": "12550442b382639f902a2f0e216f6c6002d9ddefd4dcdd9b50beee6283a700ce",
       "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
     },
     {
@@ -39848,7 +39852,7 @@
       "command_id": "performance021-b",
       "state": "implemented",
       "source_path": "tests/test_performance021_b.py",
-      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "source_sha256": "12550442b382639f902a2f0e216f6c6002d9ddefd4dcdd9b50beee6283a700ce",
       "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
     },
     {
@@ -39869,7 +39873,7 @@
       "command_id": "performance021-b",
       "state": "implemented",
       "source_path": "tests/test_performance021_b.py",
-      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "source_sha256": "12550442b382639f902a2f0e216f6c6002d9ddefd4dcdd9b50beee6283a700ce",
       "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
     },
     {
@@ -39890,7 +39894,7 @@
       "command_id": "performance021-b",
       "state": "implemented",
       "source_path": "tests/test_performance021_b.py",
-      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "source_sha256": "12550442b382639f902a2f0e216f6c6002d9ddefd4dcdd9b50beee6283a700ce",
       "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
     },
     {
@@ -39918,7 +39922,7 @@
       "command_id": "performance021-b-cloud",
       "state": "implemented",
       "source_path": "tests/test_performance021_b_cloud.py",
-      "source_sha256": "55c2ee10b6442b0c67faa25799e045470fc352c0634ebdcf94117f0b79917f6e",
+      "source_sha256": "efd74d100f4eaed13eab6e423b43683b8224a5d041a346eadf6cc366541bc132",
       "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
     },
     {
@@ -39946,7 +39950,7 @@
       "command_id": "performance021-b-cloud",
       "state": "implemented",
       "source_path": "tests/test_performance021_b_cloud.py",
-      "source_sha256": "55c2ee10b6442b0c67faa25799e045470fc352c0634ebdcf94117f0b79917f6e",
+      "source_sha256": "efd74d100f4eaed13eab6e423b43683b8224a5d041a346eadf6cc366541bc132",
       "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
     },
     {
@@ -39974,7 +39978,7 @@
       "command_id": "performance021-b",
       "state": "implemented",
       "source_path": "tests/test_performance021_b.py",
-      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "source_sha256": "12550442b382639f902a2f0e216f6c6002d9ddefd4dcdd9b50beee6283a700ce",
       "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
     },
     {
@@ -40002,7 +40006,7 @@
       "command_id": "performance021-b",
       "state": "implemented",
       "source_path": "tests/test_performance021_b.py",
-      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "source_sha256": "12550442b382639f902a2f0e216f6c6002d9ddefd4dcdd9b50beee6283a700ce",
       "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
     },
     {
@@ -40010,7 +40014,7 @@
       "property_id": "VC21.P8",
       "polarity": "positive",
       "scenario": "Bounded Git and exact snapshot",
-      "scenario_fingerprint": "b65e4f41d3e66165aa840f482dd10e4177eb9cd97d90eaa3df18e78644795872",
+      "scenario_fingerprint": "115a60227f3d1119fdd484cb87c2b05efd5fd166e291090d1bbd6cf633628ccb",
       "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
       "observable": "Real Git immutable paths are fetched in one batch and exact repeat reuses them.",
       "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
@@ -40023,7 +40027,7 @@
       "command_id": "performance021-b",
       "state": "implemented",
       "source_path": "tests/test_performance021_b.py",
-      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "source_sha256": "12550442b382639f902a2f0e216f6c6002d9ddefd4dcdd9b50beee6283a700ce",
       "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
     },
     {
@@ -40031,7 +40035,7 @@
       "property_id": "VC21.P8",
       "polarity": "positive",
       "scenario": "Bounded Git and exact snapshot",
-      "scenario_fingerprint": "b65e4f41d3e66165aa840f482dd10e4177eb9cd97d90eaa3df18e78644795872",
+      "scenario_fingerprint": "115a60227f3d1119fdd484cb87c2b05efd5fd166e291090d1bbd6cf633628ccb",
       "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
       "observable": "A 136192-byte request for 512 distinct Git objects drains an early large response without pipe deadlock.",
       "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
@@ -40041,10 +40045,10 @@
         "tools/spacefox/publisher.py"
       ],
       "test_id": "unittest::tests.test_performance021_b.GroupBTest.test_git_large_duplex_batch_uses_file_input",
-      "command_id": "performance021-b-git",
+      "command_id": "performance021-b-git-final",
       "state": "implemented",
       "source_path": "tests/test_performance021_b.py",
-      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "source_sha256": "12550442b382639f902a2f0e216f6c6002d9ddefd4dcdd9b50beee6283a700ce",
       "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
     },
     {
@@ -40052,7 +40056,7 @@
       "property_id": "VC21.P8",
       "polarity": "negative",
       "scenario": "Bounded Git and exact snapshot",
-      "scenario_fingerprint": "b65e4f41d3e66165aa840f482dd10e4177eb9cd97d90eaa3df18e78644795872",
+      "scenario_fingerprint": "115a60227f3d1119fdd484cb87c2b05efd5fd166e291090d1bbd6cf633628ccb",
       "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
       "observable": "Remote authority is reobserved and missing local or remote refs force fetch or refusal.",
       "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
@@ -40065,7 +40069,7 @@
       "command_id": "performance021-b",
       "state": "implemented",
       "source_path": "tests/test_performance021_b.py",
-      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "source_sha256": "12550442b382639f902a2f0e216f6c6002d9ddefd4dcdd9b50beee6283a700ce",
       "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
     },
     {
@@ -40073,7 +40077,7 @@
       "property_id": "VC21.P8",
       "polarity": "negative",
       "scenario": "Bounded Git and exact snapshot",
-      "scenario_fingerprint": "b65e4f41d3e66165aa840f482dd10e4177eb9cd97d90eaa3df18e78644795872",
+      "scenario_fingerprint": "115a60227f3d1119fdd484cb87c2b05efd5fd166e291090d1bbd6cf633628ccb",
       "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
       "observable": "A real Git fetch with an owned stalled transport reaches its deadline and leaves no live transport.",
       "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
@@ -40083,10 +40087,10 @@
         "tools/spacefox/publisher.py"
       ],
       "test_id": "unittest::tests.test_performance021_b.GroupBTest.test_git_fetch_hang_reaps_transport",
-      "command_id": "performance021-b",
+      "command_id": "performance021-b-git-final",
       "state": "implemented",
       "source_path": "tests/test_performance021_b.py",
-      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "source_sha256": "12550442b382639f902a2f0e216f6c6002d9ddefd4dcdd9b50beee6283a700ce",
       "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
     },
     {
@@ -40094,7 +40098,7 @@
       "property_id": "VC21.P8",
       "polarity": "negative",
       "scenario": "Bounded Git and exact snapshot",
-      "scenario_fingerprint": "b65e4f41d3e66165aa840f482dd10e4177eb9cd97d90eaa3df18e78644795872",
+      "scenario_fingerprint": "115a60227f3d1119fdd484cb87c2b05efd5fd166e291090d1bbd6cf633628ccb",
       "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
       "observable": "Two real concurrent reservations yield exactly one winner and one conflict.",
       "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
@@ -40105,7 +40109,7 @@
         "tools/spacefox/publisher.py"
       ],
       "test_id": "unittest::tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_two_process_reservation_cas",
-      "command_id": "performance021-b-git-guards",
+      "command_id": "performance021-b-fences",
       "state": "implemented",
       "source_path": "tests/test_durable_publisher_whole.py",
       "source_sha256": "a667449a1701dd17066f8c8b9d2e70739c252183f4cee028b02f02b39d6b5486",
@@ -40116,7 +40120,7 @@
       "property_id": "VC21.P8",
       "polarity": "negative",
       "scenario": "Bounded Git and exact snapshot",
-      "scenario_fingerprint": "b65e4f41d3e66165aa840f482dd10e4177eb9cd97d90eaa3df18e78644795872",
+      "scenario_fingerprint": "115a60227f3d1119fdd484cb87c2b05efd5fd166e291090d1bbd6cf633628ccb",
       "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
       "observable": "Retired records remain exact and stale revisions are refused.",
       "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
@@ -40178,7 +40182,7 @@
       "command_id": "performance021-b",
       "state": "implemented",
       "source_path": "tests/test_performance021_b.py",
-      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "source_sha256": "12550442b382639f902a2f0e216f6c6002d9ddefd4dcdd9b50beee6283a700ce",
       "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
     },
     {
@@ -40202,7 +40206,7 @@
       "command_id": "performance021-b",
       "state": "implemented",
       "source_path": "tests/test_performance021_b.py",
-      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "source_sha256": "12550442b382639f902a2f0e216f6c6002d9ddefd4dcdd9b50beee6283a700ce",
       "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
     },
     {
@@ -40252,7 +40256,7 @@
       "command_id": "performance021-b-manifest",
       "state": "implemented",
       "source_path": "tests/test_performance021_b.py",
-      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "source_sha256": "12550442b382639f902a2f0e216f6c6002d9ddefd4dcdd9b50beee6283a700ce",
       "implementation_note": "Historical font and probe sources are hash-authenticated; no current font is introduced."
     },
     {
@@ -40378,6 +40382,52 @@
       "source_path": "tests/test_performance021_proof.py",
       "source_sha256": "e4bffdff898f78bdd99b583b28b449e1d073d77fe3a368b267395449d5d32f9a",
       "implementation_note": "Current source and group B evidence remain tied to the single historical performance021 delta."
+    },
+    {
+      "id": "VC21.P8.S01.LOCAL_TIMEOUT",
+      "property_id": "VC21.P8",
+      "polarity": "negative",
+      "scenario": "Bounded Git and exact snapshot",
+      "scenario_fingerprint": "115a60227f3d1119fdd484cb87c2b05efd5fd166e291090d1bbd6cf633628ccb",
+      "setup": "Owned hanging local Git shim and real source-fence entrypoints.",
+      "observable": "Local source Git deadlines propagate, owned children exit, and cloud/operator paths stop before remote authority or site access.",
+      "red_expectation": "A timed-out fence falls through to authority or provider work, or a child remains alive.",
+      "green_expectation": "All owned children exit and deadline exceptions stop both entrypoints before authority and provider effects.",
+      "invalidation_dependencies": [
+        "tools/spacefox/publisher.py",
+        "tools/update_feed.py",
+        "tools/cloud_feed.py",
+        "tests/test_performance021_b.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_b.GroupBTest.test_local_source_fence_timeout_before_authority",
+      "command_id": "performance021-b-fences",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_b.py",
+      "source_sha256": "12550442b382639f902a2f0e216f6c6002d9ddefd4dcdd9b50beee6283a700ce",
+      "implementation_note": "Current local source-fence receipt records actual process cleanup and forbidden effects."
+    },
+    {
+      "id": "VC21.P8.S01.EXIT_RACE",
+      "property_id": "VC21.P8",
+      "polarity": "negative",
+      "scenario": "Bounded Git and exact snapshot",
+      "scenario_fingerprint": "115a60227f3d1119fdd484cb87c2b05efd5fd166e291090d1bbd6cf633628ccb",
+      "setup": "Controlled timeout/parent-exit race plus a real hanging-fetch transport.",
+      "observable": "The owned process group is killed even if the Git parent exits immediately after its timeout.",
+      "red_expectation": "A live descendant escapes cleanup when its parent exits at the timeout boundary.",
+      "green_expectation": "The process group kill is issued and the parent reaped.",
+      "invalidation_dependencies": [
+        "tools/spacefox/publisher.py",
+        "tools/update_feed.py",
+        "tools/cloud_feed.py",
+        "tests/test_performance021_b.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_b.GroupBTest.test_git_deadline_kills_group_when_parent_exits_during_timeout",
+      "command_id": "performance021-b-fences",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_b.py",
+      "source_sha256": "12550442b382639f902a2f0e216f6c6002d9ddefd4dcdd9b50beee6283a700ce",
+      "implementation_note": "Current local source-fence receipt records actual process cleanup and forbidden effects."
     }
   ],
   "commands": [
@@ -45353,6 +45403,48 @@
       "authority": "local",
       "planned_boundary": "Actual current proof and watch-tree generation or isolated manifest normalization",
       "notes": "No SDK, simulator, signing, device or provider."
+    },
+    {
+      "id": "performance021-b-fences",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_performance021_a.HostPerformanceTest.test_no_work_fence_rejects_unverified_producer_sources",
+        "tests.test_performance021_b.GroupBTest.test_cloud_sparse_source_fence_hidden_change",
+        "tests.test_performance021_b.GroupBTest.test_local_source_fence_timeout_before_authority",
+        "tests.test_performance021_b.GroupBTest.test_git_deadline_kills_group_when_parent_exits_during_timeout",
+        "tests.test_performance021_b.GroupBTest.test_git_fresh_ref_and_fetch_reuse",
+        "tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_two_process_reservation_cas"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 600,
+      "authority": "local",
+      "planned_boundary": "Owned local Git/source fence, process lifetime and exact object boundary",
+      "notes": "No real remote or provider."
+    },
+    {
+      "id": "performance021-b-git-final",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_performance021_b.GroupBTest.test_git_deadline",
+        "tests.test_performance021_b.GroupBTest.test_git_fetch_hang_reaps_transport",
+        "tests.test_performance021_b.GroupBTest.test_git_catalog_object_above_artifact_limit",
+        "tests.test_performance021_b.GroupBTest.test_git_large_duplex_batch_uses_file_input"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 600,
+      "authority": "local",
+      "planned_boundary": "Owned local Git/source fence, process lifetime and exact object boundary",
+      "notes": "No real remote or provider."
     }
   ]
 }

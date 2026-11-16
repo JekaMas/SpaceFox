@@ -131,4 +131,4 @@ class RealCloudSchedulingTest(AutonomousPublisherWholeTest):
             self.assertEqual(run.returncode,0,run.stderr);self.assertEqual(json.loads(run.stdout.splitlines()[-1])['no_work'],'false')
             self.assertEqual(store._refs('refs/heads/feed-state-map-v3')['refs/heads/feed-state-map-v3'],pending_head)
             self.assertFalse(any('/2.3.0/' in call[1] or call[0]=='POST' for call in service.calls))
-            print('real cloud stages: old witness escalated; full same-content admission wrote only scheduling witness; sparse probe 2 root GETs, zero provider/render/push, unchanged ledger and source age; metadata staging and pending forced full path; catalog change created pending without provider or age reset')
+            print('real cloud stages: old witness escalated; full same-content admission wrote only scheduling witness; sparse probe 2 root GETs, zero provider/render/push, unchanged ledger and source age; metadata staging and pending forced full path; catalog change created pending without provider or age reset; fixture source '+self.code)

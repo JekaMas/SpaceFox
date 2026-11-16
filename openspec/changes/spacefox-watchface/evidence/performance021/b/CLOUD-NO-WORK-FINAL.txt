@@ -1,0 +1,9 @@
+test_active_full_admission_then_sparse_cli_no_work (tests.test_performance021_b_cloud.RealCloudSchedulingTest.test_active_full_admission_then_sparse_cli_no_work) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 71.702s
+
+OK
+real cloud stages: old witness escalated; full same-content admission wrote only scheduling witness; sparse probe 2 root GETs, zero provider/render/push, unchanged ledger and source age; metadata staging and pending forced full path; catalog change created pending without provider or age reset
+
+Boundary: actual retained launch record, actual producer artifact, local bare Git authority, actual cloud CLI stages, captured metadata served by loopback, checked-in workflow source materialization shell, and fresh sparse checkouts. Initial metadata collection used authorized loopback. The earlier missing-witness case escalated. Full same-content prepare had zero provider requests or deployment POST and produced no artifact output. It wrote the scheduling witness by CAS and retained the exact active ledger/source age. The subsequent sparse probe asserted no geographic decode, catalog build, provider request, Node/rsvg or Git push and made only two loopback root GETs. Malformed, stale-date and mismatched-artifact witnesses were each committed to local Git, refused by the probe without writes or provider/POST, and restored. A root change, independently due schedule and real partially staged metadata each refused the no-work shortcut without provider or POST. A tracked catalog/eligibility version change created a pending artifact without provider or source-age reset; a fresh matching-source sparse probe refused the shortcut while pending. This is not hosted Actions, provider, Pages, physical or phone evidence.

@@ -1,0 +1,10 @@
+test_git_deadline (tests.test_performance021_b.GroupBTest.test_git_deadline) ... ok
+test_git_fetch_hang_reaps_transport (tests.test_performance021_b.GroupBTest.test_git_fetch_hang_reaps_transport) ... ok
+test_git_catalog_object_above_artifact_limit (tests.test_performance021_b.GroupBTest.test_git_catalog_object_above_artifact_limit) ... ok
+test_git_large_duplex_batch_uses_file_input (tests.test_performance021_b.GroupBTest.test_git_large_duplex_batch_uses_file_input) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.598s
+
+OK
+real Git batch: 512 distinct objects, request 136192 bytes, output 911242 bytes, one cat-file child, 0.126s

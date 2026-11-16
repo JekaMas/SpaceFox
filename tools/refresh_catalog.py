@@ -13,7 +13,7 @@ import time
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from tools.spacefox.publisher import GitState, Publisher, LiveRevision, StateError, _canonical
+from tools.spacefox.publisher import GitState, Publisher, LiveRevision, StateError, _canonical, bounded_git
 from tools.spacefox.catalog_refresh import CatalogRefresh, reference_inventory, strict_json
 
 
@@ -74,15 +74,14 @@ def main(argv=None):
     args = parser.parse_args(argv)
     if args.now is not None and not args.local_http:
         parser.error('--now requires --local-http')
-    result = subprocess.run(['git', '-C', str(ROOT), 'rev-parse', 'HEAD'], stdout=subprocess.PIPE, check=True)
+    result = bounded_git(ROOT, 'rev-parse', 'HEAD')
     code = result.stdout.decode().strip()
     # Runtime files must belong to the executing checkout; a caller cannot pass a
     # newer revision string while running dirty/older collector files.
     paths = ['tools/refresh_catalog.py', 'tools/spacefox/catalog_refresh.py',
              'tools/spacefox/publisher.py', 'tools/spacefox/provider.py', 'tools/spacefox/schedule.py']
-    tracked = subprocess.run(['git', '-C', str(ROOT), 'ls-files', '--error-unmatch', *paths],
-                             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    clean = subprocess.run(['git', '-C', str(ROOT), 'diff', '--quiet', 'HEAD', '--', *paths])
+    tracked = bounded_git(ROOT, 'ls-files', '--error-unmatch', *paths, check=False)
+    clean = bounded_git(ROOT, 'diff', '--quiet', 'HEAD', '--', *paths, check=False)
     if tracked.returncode or clean.returncode:
         raise StateError('executing collector checkout must have exact tracked clean runtime files')
     store = GitState(args.remote, source_ref=args.source_ref)

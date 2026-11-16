@@ -150,13 +150,14 @@ runpy.run_path(sys.argv[0],run_name='__main__')
             # bytes are admitted; a missing or altered pin is never trusted.
             from tools.update_feed import _no_work_source_fence
             import time
-            real_run = subprocess.run
+            from tools.spacefox import publisher as publisher_module
+            real_popen = subprocess.Popen
             source_commands = []
-            def counted_run(argv, *args, **kwargs):
+            def counted_popen(argv, *args, **kwargs):
                 source_commands.append(argv)
-                return real_run(argv, *args, **kwargs)
+                return real_popen(argv, *args, **kwargs)
             start = time.perf_counter()
-            with patch('tools.update_feed.subprocess.run', side_effect=counted_run):
+            with patch.object(publisher_module.subprocess, 'Popen', side_effect=counted_popen):
                 self.assertTrue(_no_work_source_fence(root, code))
             elapsed = time.perf_counter() - start
             print('SPARSE_SOURCE_FENCE_RECEIPT ' + json.dumps({
