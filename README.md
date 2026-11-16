@@ -2,9 +2,9 @@
 
 SpaceFox is a free, MIT-licensed space watch face for Garmin watches, including Forerunner 165 and Forerunner 165 Music. It combines a large digital clock, rocket artwork, a launch-site map, a local T−/T+ countdown and four configurable activity fields.
 
-**[Install from Connect IQ](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3)** · **[Release 0.1.18](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.18)** · [Release notes](release/RELEASE-NOTES-0.1.18.md)
+**[Install from Connect IQ](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3)** · **[Release 0.1.20](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.20)** · [Release notes](release/RELEASE-NOTES-0.1.20.md)
 
-The 0.1.18 field update is independently software-verified. Garmin owner preview shows 0.1.18/Internal 11 pending review; a Forerunner 165 Music update is queued for the next sync. Physical installation is unverified. The 0.1.20 watchdog repair is prepared for release; physical FR165 Music acceptance remains unobserved.
+The 0.1.20 watchdog repair is software-verified and published on GitHub. Garmin Store availability is separate and has not been established; physical FR165 Music acceptance remains unobserved.
 
 ![SpaceFox 0.1.18 in the Forerunner 165 Music simulator](openspec/changes/spacefox-watchface/evidence/fields018/entry-controls/peer-release-390-256680ec.png)
 
@@ -29,7 +29,7 @@ English and `https://jekamas.github.io/SpaceFox` are defaults. English, Russian,
 
 The watch calculates the countdown locally, keeps accepted launch data offline and preloads a bounded set of upcoming launches so the face can advance locally at the retention deadline. Partial or failed updates preserve known future launches and their refresh targets across restart. New schedules and artwork arrive through Garmin Connect on the paired phone. The public [feed](https://jekamas.github.io/SpaceFox/feed.json) is maintained by GitHub Actions with an independent Cloudflare timer; it does not need an agent or computer to stay running. No AWS account, subscription or SpaceFox login is required.
 
-See [installation](release/INSTALLATION.md), [supported watches](docs/SUPPORTED_DEVICES.md), [settings and testing](TESTING.md), and [permissions and privacy](docs/PRIVACY.md). Use the existing SpaceFox Connect IQ listing for updates. USB installation uses the PRG matching the watch model; IQ is the Store export, not a file to open on a phone.
+See [installation](https://github.com/JekaMas/SpaceFox/releases/download/v0.1.20/INSTALLATION.md), [supported watches](docs/SUPPORTED_DEVICES.md), [settings and testing](TESTING.md), and [permissions and privacy](docs/PRIVACY.md). Use the existing SpaceFox Connect IQ listing for updates. USB installation uses the PRG matching the watch model; IQ is the Store export, not a file to open on a phone.
 
 ## Contributing and SDD
 
