@@ -40,28 +40,28 @@
     },
     {
       "id": "WD-ADMISSION-PROGRESSION",
-      "test": "pending executable native selector",
+      "test": "stock/monkey36.jungle rendered-warm marker flip -> onBackgroundData/onSettingsChanged; b1InspectImmediateReplacement",
       "status": "passed",
       "boundary": "preseeded distinct feed, actual onBackgroundData and later HIGH RU-ready frame; durable generation/token in inspect36.log",
       "receipt": "evidence/receipts/warm36.log"
     },
     {
       "id": "WD-RESTORE-RECOVERY",
-      "test": "pending executable native selector",
+      "test": "currentLowRecovery",
       "status": "passed",
       "boundary": "current-format actual-store bad/older-source refusal, seal preservation and HIGH reopen; see also test2.log integrity cases",
       "receipt": "evidence/receipts/fr165m-low-recovery.log"
     },
     {
       "id": "WD-BG-AND-RENDER",
-      "test": "b1BatchCorruption; render preparation selector pending",
+      "test": "b1BatchCorruption; b1ColdAcquisition (NativeSfrBuild through closure)",
       "status": "passed",
       "boundary": "captured 27-object batch/closure and SFR real callback samples; reminder whole wake separately fr165m-reminder.log",
       "receipt": "evidence/receipts/fr165m-watchdog-batch.log"
     },
     {
       "id": "WD-FR165M-PEAK",
-      "test": "b1ColdAcquisition and pending lifecycle selector",
+      "test": "stock/monkey-production.jungle Production39 + b1SeedImmediateReplacement/b1InspectImmediateReplacement; stock39/en39 retained-frame heap sample",
       "status": "observed_sample_only",
       "boundary": "unmodified production source and resources accepted distinct generation; stock39 screenshot sampled 100.1/123.8 KiB, not an intra-callback peak or device proof",
       "receipt": "evidence/receipts/inspect39.log"
@@ -123,9 +123,10 @@
     },
     {
       "id": "WD-PEER",
-      "test": "independent whole-change review",
-      "status": "not_observed",
-      "boundary": "root owned"
+      "test": "peerCrossRecordAdmission + independent source/evidence/candidate review",
+      "status": "passed_software_only",
+      "boundary": "independent peer-owned review and repair; one native selector with nine cross-record subcases; retained greens reconciled; device and exact peak remain unobserved",
+      "receipt": "evidence/PEER.md"
     },
     {
       "id": "WD-CANDIDATE",
@@ -133,6 +134,14 @@
       "status": "passed_software_only",
       "boundary": "signed exact FR165M candidate, matching debug and empty-cache simulator fallback; physical update/continuity not observed",
       "receipt": "evidence/candidate.json"
+    },
+    {
+      "id": "WD-PEER-CROSS-RECORD",
+      "test": "peerCrossRecordAdmission",
+      "status": "passed",
+      "receipt": "evidence/receipts/peer-cross-record-final.log",
+      "boundary": "SDK 9.3 Linux FR165M; nine technical identity/count/terminal variants over captured input versus original parser/validator and expected results; no hardware proof"
     }
-  ]
+  ],
+  "software_diagnostic_gate": "passed"
 }
