@@ -12,4 +12,4 @@ Version 0.1.19 declares the same six Garmin permissions: SensorHistory for recen
 
 In watch settings, use **Field 1–4 → More sources** to select available watch sources. In phone settings, **Selected on watch** uses the last source selected on the watch for that field. Future models require separate qualification.
 
-The signed SDK run and package checks are documented in [testing](../TESTING.md) and the [publication record](../openspec/changes/spacefox-watchface/evidence/fields018/publication/PUBLICATION.md). Physical delivery, actual watch and phone behavior, wake time and battery use remain unverified. Do not include credentials or private health data in reports.
+See the [0.1.19 physical test instructions](TESTING-0.1.19.md) and the [0.1.18 publication record](https://github.com/JekaMas/SpaceFox/blob/29f3cfd067ff10690a9ba5163f25e04cd4b55b6f/openspec/changes/spacefox-watchface/evidence/fields018/publication/PUBLICATION.md). Physical installation and behavior of 0.1.19, phone delivery, wake time and battery use remain unverified. Do not include credentials or private health data in reports.
