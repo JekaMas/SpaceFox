@@ -21,6 +21,8 @@ Native simulator capture; it is not a physical watch photograph.
 
 A delayed or rescheduled launch uses a reddish countdown; stale data has a separate dotted indicator. Passing zero is a time calculation, not confirmation of liftoff. Missing Garmin readings remain unavailable; Body Battery uses Garmin's current complication value when selected.
 
+A `~` before the countdown denotes a source time given to the minute, not a confirmed second. Dashes mean no usable target is available. A `?` beside a map point means its coordinates are an unverified source reference; a `?` without a point means an event location is unavailable. A simplified world outline can appear while optional artwork is loading.
+
 ## Data and settings
 
 In watch settings, open **Field 1–4 → More sources** to select sources available to that watch, including sources whose current reading is unavailable. Phone settings have a static list: choose **Selected on watch** to use the source last selected on the watch for that position. If none has been selected, the position shows a dash. Changing back to an established phone choice does not erase the watch-selected source; choosing **Selected on watch** again restores it. A missing provider remains selected and shows a dash until it returns.

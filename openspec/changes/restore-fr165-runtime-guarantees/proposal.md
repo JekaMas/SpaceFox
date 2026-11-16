@@ -4,7 +4,7 @@ The owner reports an IQ! after 5–10 seconds on Forerunner 165 with 0.1.18, wit
 
 ## What Changes
 
-Restore P1–P3 and P7 in the root contract across initial display, current-time countdown, acquisition, optional rendering and power transitions. Retain existing accepted launch semantics and normal visual design. Separate software observations from physical acceptance; a diagnostic candidate is not an ordinary release. P4–P6 and P8 remain separate batches.
+Restore P1–P7 in the root contract across initial display, countdown, validated facts, coherent replacement, acquisition, optional rendering and power transitions. B2 owns P4–P6 after the accepted B1 software work; B3 separately owns P8. Retain all eight full acceptance criteria and normal visual design. Software observations and GitHub test distribution do not establish physical acceptance.
 
 ## Capabilities
 
@@ -15,4 +15,4 @@ Restore P1–P3 and P7 in the root contract across initial display, current-time
 
 ## Impact
 
-Native view, foreground admission, render resources and their focused runtime evidence; no new services, paid actions, public release or hardware access.
+Native view, foreground admission, render resources and focused runtime evidence. The owner authorized a GitHub test release after each batch before physical observation; root owns publication. No new service, paid action, Store action or hardware access is implied.

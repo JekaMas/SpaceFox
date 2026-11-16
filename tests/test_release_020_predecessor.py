@@ -1,7 +1,8 @@
-"""Current release history boundary using the retained actual 0.1.20 receipt.
+"""Current update guard against an actual retained published receipt and IQ.
 
-This does not replace the separate immutable 0.1.12 historical witness and
-never reads the private production key or executes a Garmin export.
+The receipt remains a valid historical predecessor after publication metadata
+advances. The version rule is exercised using a strictly later candidate and a
+same-version refusal; this does not claim that the current candidate is released.
 """
 import hashlib
 import json
@@ -12,6 +13,7 @@ import xml.etree.ElementTree as ET
 
 from tools import release
 from tools.build_watchface import ROOT, NS, BuildBlocked
+
 
 class Release020PredecessorTest(unittest.TestCase):
     @classmethod
@@ -25,26 +27,31 @@ class Release020PredecessorTest(unittest.TestCase):
         cls.app = ET.parse(ROOT / 'watchface/manifest.xml').getroot().find('iq:application', NS)
 
     def test_real_receipt_iq_and_higher_version(self):
-        latest = self.policy['latest_release']
-        predecessor = self.policy['previous_release']
-        self.assertEqual(latest['version'], '0.1.21')
-        self.assertEqual(predecessor['version'], '0.1.20')
-        self.assertEqual(hashlib.sha256(self.path.read_bytes()).hexdigest(), predecessor['original_receipt_sha256'])
-        self.assertEqual(self.previous['version'], predecessor['version'])
-        self.assertEqual(self.previous['package_sha256'], predecessor['package_sha256'])
-        self.assertEqual(self.previous['source_revision'], predecessor['source_revision'])
-        self.assertEqual(self.app.get('version'), '0.1.21')
-        result = release.validate_previous(self.previous, self.app, self.policy['public_key_spki_sha256'])
+        matches = [value for value in self.policy.values() if isinstance(value, dict)
+                   and value.get('version') == self.previous['version']
+                   and value.get('original_receipt_sha256') == hashlib.sha256(self.path.read_bytes()).hexdigest()]
+        self.assertEqual(len(matches), 1)
+        recorded = matches[0]
+        self.assertEqual(self.previous['package_sha256'], recorded['package_sha256'])
+        self.assertEqual(self.previous['source_revision'], recorded['source_revision'])
+        candidate = ET.fromstring(ET.tostring(self.app))
+        parts = [int(part) for part in self.previous['version'].split('.')]
+        parts[-1] += 1
+        candidate.set('version', '.'.join(map(str, parts)))
+        result = release.validate_previous(self.previous, candidate, self.policy['public_key_spki_sha256'])
         self.assertEqual(result['kind'], 'higher_version_repair')
         self.assertFalse(result['migration_qualified'])
 
     def test_same_version_and_wrong_signer_refused(self):
         app = ET.fromstring(ET.tostring(self.app))
-        app.set('version', '0.1.20')
+        app.set('version', self.previous['version'])
         with self.assertRaisesRegex(BuildBlocked, 'strictly increase'):
             release.validate_previous(self.previous, app, self.policy['public_key_spki_sha256'])
+        parts = [int(part) for part in self.previous['version'].split('.')]
+        parts[-1] += 1
+        app.set('version', '.'.join(map(str, parts)))
         with self.assertRaisesRegex(BuildBlocked, 'identity/key changed'):
-            release.validate_previous(self.previous, self.app, '0' * 64)
+            release.validate_previous(self.previous, app, '0' * 64)
 
 if __name__ == '__main__':
     unittest.main()

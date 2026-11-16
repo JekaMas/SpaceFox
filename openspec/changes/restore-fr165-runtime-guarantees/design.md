@@ -2,6 +2,10 @@
 
 Initial view → first frame clock/date → deferred cache admission → verified facts → optional scene build → READY render. ACTIVE draw reads current UTC independently of build progress. LOW/OFF/hide cancels active work; HIGH resumes only after a frame. FeedService acquires staged text, catalog then immutable closure; foreground validates before admitting. Retained startup uses strict cache restoration and recovery; empty startup cannot assume a READY packet. The clock path must not depend on any of these optional edges.
 
+## B2 fact and selection boundaries
+
+Admit a selected launch as a coherent source-bound object containing its name, target precision, site and qualified source point. Its time and point must be visible without waiting for decorative downloads, including the temporary low-memory rendering path. A point is shown only when the validated source gives a fixed event position; a source reference remains explicitly unverified. A missing or coarse target does not become an exact time. Local selection retains the selected target until at least target + 900 seconds or a later validated ascent end. Replacement and recovery preserve the previous complete object and its original source validation time, and publish a replacement atomically. A zero delta is arithmetic, not a liftoff receipt. Exercise arithmetic with independent expected values, and test real validated fixtures and restart/failure paths separately from SDK drawing and physical use.
+
 ## Investigation and boundaries
 
 0.1.18 physical failure is real but unclassified. Obtain CIQ log or matching natural-path reproducer before attributing cause. Evaluate actual heap peak, graphics-pool lifetimes and work slice duration independently; allocation exceptions alone do not establish safety. Do not change normal visual design or source retention to obtain a green. Preserve prior scoped simulator evidence, and record newly invalidated boundaries.

@@ -128,11 +128,11 @@ import Toybox.WatchUi;
     var view=new B1UnavailableRenderer(clock);view.setContext(selected);
     var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();
     view.onShow();view.onLayout(dc);view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);
-    Test.assertEqual(view.snapshotAt(clock.now).countdown,"T- 66:16:36");
+    Test.assertEqual(view.snapshotAt(clock.now).countdown,"~T- 66:16:36");
     clock.now+=2;view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);
-    Test.assertEqual(view.snapshotAt(clock.now).countdown,"T- 66:16:34");
+    Test.assertEqual(view.snapshotAt(clock.now).countdown,"~T- 66:16:34");
     view.updateForDisplayMode(dc,System.DISPLAY_MODE_LOW_POWER);
-    Test.assertEqual(view.snapshotAt(clock.now).lowCountdown,"T- 66:17");
+    Test.assertEqual(view.snapshotAt(clock.now).lowCountdown,"~T- 66:17");
     view.onHide();logger.debug("B1_CAPTURED_MINUTE active_tick=2s low_minute=true fallback=true");return true;
 }
 (:test,:typecheck(false)) class B1AdmissionFields extends SelectedFields {

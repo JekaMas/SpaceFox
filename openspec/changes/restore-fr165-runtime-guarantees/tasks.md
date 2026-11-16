@@ -8,9 +8,15 @@
 - [x] Independent peer review and repair to software green (root-owned assignment).
 - [ ] Exact candidate physical FR165 cold start, reopen and ordinary use at least 15 minutes; P1–P3 acceptance remains open until observed.
 
-## Later batches
+## B2 — P4/P5/P6
 
-- [ ] B2 P4/P5/P6 arithmetic, fact and coherent-update acceptance.
+- [x] Implement and self-verify arithmetic, retention, immediate validated facts and coherent update/recovery, including current SDK and fallback rendering evidence.
+- [ ] Independent peer review and repair to software green; root judgment and merge.
+- [ ] Prepare and independently verify the signed 0.1.22 candidate after root freezes accepted main; root publishes and reads back the GitHub test release.
+- [ ] Exact candidate physical FR165 observation needed to establish physical P4–P6 acceptance.
+
+## Later batch
+
 - [ ] B3 P8 quiet reminder acceptance.
 
 ## Authorized 0.1.19 test distribution

@@ -1,0 +1,30 @@
+[
+  {
+    "case": "b2CrossVmSeedInterrupted",
+    "simulatorPid": 3299,
+    "ready": true,
+    "before": {
+      "B2.DAT": "b5a60f48e84bad244c8f0fe673e994b76db49e15b64e2729abd2a756c65b158a",
+      "B2.IDX": "32dcd677560e4d5c51809a6451820d46a237982ab1198c00f07c2aa8f2f4f8d5",
+      "B2.IMT": "cb7217c575a178471fa6afd74e47d47d8868690647a204de58d077a476bcf8bc"
+    },
+    "after": {
+      "B2.DAT": "014d7303e5bb47de984a619753ef65d758d5c12a9a5b6fe31bf5fe6d2c0f91b7",
+      "B2.IDX": "71484fe7aa4bf3f949d1addf77ae14dfa6a13d40112c8d8aac6b52ee7f7c252a"
+    }
+  },
+  {
+    "case": "b2CrossVmObserveRestored",
+    "simulatorPid": 3382,
+    "ready": true,
+    "before": {
+      "B2.DAT": "014d7303e5bb47de984a619753ef65d758d5c12a9a5b6fe31bf5fe6d2c0f91b7",
+      "B2.IDX": "71484fe7aa4bf3f949d1addf77ae14dfa6a13d40112c8d8aac6b52ee7f7c252a"
+    },
+    "after": {
+      "B2.DAT": "014d7303e5bb47de984a619753ef65d758d5c12a9a5b6fe31bf5fe6d2c0f91b7",
+      "B2.IDX": "71484fe7aa4bf3f949d1addf77ae14dfa6a13d40112c8d8aac6b52ee7f7c252a",
+      "B2.IMT": "cb7217c575a178471fa6afd74e47d47d8868690647a204de58d077a476bcf8bc"
+    }
+  }
+]

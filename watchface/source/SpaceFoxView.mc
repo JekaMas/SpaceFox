@@ -130,6 +130,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
         var remaining=_schedule.remainingSeconds(now);
         var current=new ClockSnapshot(_clock.localTimeText(),CountdownFormat.format(remaining));
         current.lowCountdown=CountdownFormat.minutes(remaining);
+        if(context!=null&&context.sourcePrecision.equals("minute")&&remaining!=null){current.countdown="~"+current.countdown;current.lowCountdown="~"+current.lowCountdown;}
         current.date=context==null?null:context.date;current.localCalendar=_clock.localCalendar();current.battery=fitness.display(values,"battery");
         if(context!=null){current.stale=context.stale;current.rescheduled=context.rescheduled;current.sourceHold=context.sourceHold;}
         return current;
@@ -299,7 +300,11 @@ class SpaceFoxView extends WatchUi.WatchFace {
         if(parts.size()==3){dc.drawText(x,y-45,Graphics.FONT_TINY,parts[1].format("%02d")+"."+parts[2].format("%02d"),Graphics.TEXT_JUSTIFY_CENTER);}
         // Keep admitted facts independent of the optional graphics as well.
         // Their own failure cannot prevent the already drawn clock/date.
-        try{if(context!=null){var now=_clock.utcSeconds();advanceSelection(now);var selected=context as SceneContext or Null;if(selected!=null){var remaining=_schedule.remainingSeconds(now);var value=_mode==LOW?CountdownFormat.minutes(remaining):CountdownFormat.format(remaining);dc.setColor(selected.rescheduled||selected.sourceHold?0xFF6B6B:settings.countdownColor,Graphics.COLOR_TRANSPARENT);dc.drawText(x,y+25,Graphics.FONT_TINY,value,Graphics.TEXT_JUSTIFY_CENTER);dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(x,y+52,Graphics.FONT_TINY,selected.site,Graphics.TEXT_JUSTIFY_CENTER);dc.drawText(x,y+74,Graphics.FONT_TINY,selected.rocket+" · "+selected.purpose,Graphics.TEXT_JUSTIFY_CENTER);if(selected.pointText!=null){dc.drawText(x,y+96,Graphics.FONT_TINY,selected.pointText[1]+", "+selected.pointText[0],Graphics.TEXT_JUSTIFY_CENTER);}}}}catch(e){}
+        try{if(context!=null){var now=_clock.utcSeconds();advanceSelection(now);var selected=context as SceneContext or Null;if(selected!=null){var remaining=_schedule.remainingSeconds(now);var value=_mode==LOW?CountdownFormat.minutes(remaining):CountdownFormat.format(remaining);if(selected.sourcePrecision.equals("minute")&&remaining!=null){value="~"+value;}dc.setColor(selected.rescheduled||selected.sourceHold?0xFF6B6B:settings.countdownColor,Graphics.COLOR_TRANSPARENT);dc.drawText(x,y+25,Graphics.FONT_TINY,value,Graphics.TEXT_JUSTIFY_CENTER);dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(x,y+52,Graphics.FONT_TINY,selected.site,Graphics.TEXT_JUSTIFY_CENTER);dc.drawText(x,y+74,Graphics.FONT_TINY,selected.rocket,Graphics.TEXT_JUSTIFY_CENTER);dc.drawText(x,y+96,Graphics.FONT_TINY,selected.purpose,Graphics.TEXT_JUSTIFY_CENTER);}}}catch(e){}
+        // Bounded direct-draw map after clock and facts: an optional failure
+        // must never erase or prevent the clock. Its source point is separate
+        // from downloaded artwork and is absent for an unknown event location.
+        try{if(context!=null){var left=(dc.getWidth()-195)/2;FallbackWorld.draw(dc,left,15);if(context.point!=null){FallbackMap.point(dc,context.point,left,15);}else{FallbackMap.unknown(dc,left+190,20);}}}catch(e){}
     }
     function applyPixelRest(dc as Graphics.Dc) as Void {
         if((_mode == NOT_LOW)||restMask==null){return;}
