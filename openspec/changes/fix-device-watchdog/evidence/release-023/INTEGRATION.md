@@ -23,3 +23,5 @@ prove phone HTTP delivery, hardware LOW transition or physical 15-minute success
 The earlier physical 0.1.20 owner report remains a failure witness: its missing
 update cause is not established. No current on-watch pass or Store submission is
 claimed by these software observations.
+
+Independent merge peer review found and repaired a cold-LOW regression: the default backdrop had been used as a qualified-point flag. The backdrop is now independent of `qualifiedPin`, so no context means no fabricated point/badge. The one affected LOW selector passed with actual renderer/SceneAod call tracing, while earlier groups/replacement/RU/font proof remains retained. Final version/native ID is 0.1.23/600d5e50; the applicability positive and native-repin negative pass. See `PEER.md`; physical status is unchanged and author packaging/publication is next.

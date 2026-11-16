@@ -91,6 +91,14 @@ import Toybox.WatchUi;
     Test.assert(v.downloaded==null&&v.assetCache==null);logger.debug("B2_REPLACEMENT reschedule=2 newSelection=6 coherent facts optionalArtAbsent");return true;
 }
 
+(:test,:typecheck(false)) class B2LowDrawTrace {
+    var circles=0;var questions=0;var maps=0;var clock=false;
+    function setColor(a,b){} function clear(){} function fillRectangle(x,y,w,h){}
+    function drawBitmap(x,y,bitmap){maps+=1;}
+    function fillCircle(x,y,r){circles+=1;}
+    function getTextWidthInPixels(value,font){return 1;}
+    function drawText(x,y,font,value,flags){if(value.equals("?")){questions+=1;}if(value.equals("08:38")){clock=true;}}
+}
 (:test,:typecheck(false)) function b2LowUnmatchedPoint(logger){
     // Technical coordinate boundary over an existing real display identity:
     // southern point is below the LOW foreground clearing band's upper edge.
@@ -108,7 +116,14 @@ import Toybox.WatchUi;
     // The same unmatched source point must also be drawable before admission
     // and optional artwork finish, through the normal pending owners.
     var pending=new SpaceFoxView(new B1Clock(),new ScheduleState(null,"empty"));pending.setContext(scene);pending.admissionPending=true;pending.drawPendingLow(frame.getDc());pending.admissionPending=false;pending.sfrFallbackPrepared=true;pending.drawDecodingFrame(frame.getDc());Test.assert(pending.context==scene&&scene.point!=null);
-    logger.debug("B2_LOW unmatchedSouthernPoint fallbackRendererDraw completed");return true;
+    // The default cold outline is a backdrop, never a qualified launch point.
+    // Trace the actual normal renderer/SceneAod call chain to catch a marker
+    // or uncertainty badge fabricated solely because that map is available.
+    renderer.prepare(null,settings);renderer.downloaded=null;renderer.prepareAod();
+    var trace=new B2LowDrawTrace();renderer.aod(trace,clock,0l,settings);
+    Test.assertMessage(trace.maps==1&&trace.clock,"cold LOW keeps its default map and clock");
+    Test.assertMessage(trace.circles==0&&trace.questions==0,"cold LOW must not invent a point or qualification");
+    logger.debug("B2_LOW unmatchedSouthernPoint fallbackRendererDraw completed coldMapClock=true noInventedPoint=true");return true;
 }
 
 (:test,:typecheck(false)) function b2SourcedAscentRetention(logger){

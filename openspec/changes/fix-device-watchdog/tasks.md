@@ -25,12 +25,12 @@ Software follow-up evidence for the above remains distinct from physical accepta
 - [x] Exercise captured current-format data, bounded admission/scene work and the injected gen56-to-gen57 replacement through restored SDK rendering.
 - [x] Check exact and estimated countdown policy, queue/commit failure recovery, LOW/wake and directly affected FR165 Music SDK cases; retain the stated EN/RU and event-injection boundaries.
 - [x] Independently review and repair the integrated source and software evidence (physical-020-followup/PEER.md).
-- [ ] Reconcile the final 0.1.22 signed source/build/signature artifacts and publication readback after root judgment; the owner's physical no-update and 15-minute acceptance remain open.
+- [ ] Reconcile the final 0.1.23 signed source/build/signature artifacts and publication readback after root judgment (public 0.1.22-test.1 was a separate B2 predecessor); the owner's physical no-update and 15-minute acceptance remain open.
 
 ## Final B2 integration and release
 
 - [x] Merge source-qualified world-map fallback with pending LOW and estimated NET; retain source timing and reminder semantics.
 - [x] Check directly invalidated FR165M SDK B2/LOW/decode and the captured gen56→gen57 replacement to restored artwork, preserving all earlier failures.
 - [x] Bind 0.1.23 native inputs and finite SDK observations to the retained 0.1.22 predecessor proof; reject an unreviewed repinned native change.
-- [ ] Independent review of the semantic merge and release handoff; signed export and authorized publication.
+- [x] Independent review and repair of the B2 semantic merge to software GREEN; see release-023/PEER.md. Signed export/publication remain the unchecked release-delivery row above.
 - [ ] Physical watch update, live data, LOW and 15-minute acceptance remain unobserved.

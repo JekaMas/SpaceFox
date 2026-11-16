@@ -32,7 +32,7 @@ OWNER_CHANGED = {'tools/build_fallback_world.py','watchface/runtime-b2-tests/B2T
 SNAPSHOTS = NATIVE_CHANGED | TEST_CHANGED | OWNER_CHANGED
 CURRENT_OWNERS = OWNER_CHANGED | {'tools/native_live_023_qualification.py','tests/test_live_023_admission.py'}
 # A peer reviews this exact native closure; the record alone cannot repin it.
-REVIEWED_NATIVE_SHA256 = '138a4b22801d6deac9cd0d4b560db5dbfe996115505b94d727aa6a68dbcde4a4'
+REVIEWED_NATIVE_SHA256 = '3bc96bb5991325104977075ffb17e2dba5e9083cfb97dd915710cbcfc1e80b69'
 
 
 def native_digest(inputs):

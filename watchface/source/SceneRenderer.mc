@@ -221,9 +221,10 @@ class SceneRenderer {
         // centers. Prefer that shape even when the selected scene is READY;
         // unmatched future locations retain their own decoded raster outline.
         var bundled=aodMap!=null && (aodPin||fullContext==null);
-        SceneAod.draw(dc,current,minute,presentation,fonts["aod"] as Graphics.FontType,settings,bundled?aodMap:(selected?rich.mapOutline:null),bundled||selected,bundled?aodPinX:335,bundled?aodPinY:165,aodWorldPoint(bundled,selected));
+        var qualifiedPin=(bundled&&aodPin)||selected;
+        SceneAod.draw(dc,current,minute,presentation,fonts["aod"] as Graphics.FontType,settings,bundled?aodMap:(selected?rich.mapOutline:null),qualifiedPin,bundled?aodPinX:335,bundled?aodPinY:165,aodWorldPoint(bundled,selected));
         if(fullContext!=null&&fullContext.point==null){FallbackMap.unknown(dc,365,20);}
-        else if(bundled||selected){FallbackMap.uncertain(dc,bundled?aodPinX:335,bundled?aodPinY:165);}
+        else if(qualifiedPin){FallbackMap.uncertain(dc,bundled?aodPinX:335,bundled?aodPinY:165);}
     }
 }
 

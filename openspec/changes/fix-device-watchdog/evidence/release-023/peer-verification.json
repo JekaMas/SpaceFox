@@ -1,0 +1,31 @@
+{
+  "status": "GREEN merge-only software",
+  "reviewed_author_commit": "040027be0b26b39f04a5df5f3ab83c2f10bc9f6f",
+  "parents": [
+    "107f7f4192abfe0d8b46e14f1479ad99f08d3c70",
+    "586212b9829cae7c69ed923de964f3f76047ddbb"
+  ],
+  "finding": "cold default LOW backdrop must not fabricate a launch pin or uncertainty badge",
+  "version": "0.1.23",
+  "native_id": "600d5e50",
+  "native_digest": "3bc96bb5991325104977075ffb17e2dba5e9083cfb97dd915710cbcfc1e80b69",
+  "sdk": "Linux SDK9.3 FR165M; author-confirmed spacefox-b2-merge-20261116",
+  "selected_native_case": "b2LowUnmatchedPoint",
+  "passed": 1,
+  "failed": 0,
+  "errors": 0,
+  "raw_launcher_exit": 1,
+  "current_wrapper_positive": "passed; retained predecessor result substituted; 24 anchored snapshots checked",
+  "unreviewed_native_repin_negative": "tests.test_live_023_admission PASS",
+  "retained": "prior107f peer; author fallback/facts/HR/decode/reserve/rollover/cold and captured56\u219257 replacement; no duplicate runtime suites",
+  "isolation": "owned lane snapshot/restored/tar-compared, simulator/launchers stopped; no foreign/watch writes",
+  "physical_acceptance": "NOT OBSERVED",
+  "next": "same author full signed0.1.23 package/merge/publication after root judgment",
+  "bindings": {
+    "test": "dc1380854457f0e6a1b704404728caae7febe21d54cfd00ce531815f15e25b98",
+    "renderer": "c073255fdc60d03a382467c090f78a9710c51b30c8dc94baeae7aa5b8f82ad89",
+    "native_log": "e47dca6c39010658971ad7c7cd73cc5afe8d793227f30a71b4725aa7fe562b2a",
+    "compile_log": "d26510f3a7e811f721248874ae8d44f97d1d4f8fa59bdad2f8a56d50af4240cf",
+    "unit_prg": "31b790f40321565c63a9291825c91e6e15ceadb69e8e6f088f8245a67a7f7a14"
+  }
+}

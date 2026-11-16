@@ -308,7 +308,7 @@
     "watchface/source/NativeVisualRenderer.mc": "4157f3659bca0a58aa1c044c584835dbf62029ecf64fb01d6fe8b30f64455f43",
     "watchface/source/SceneContext.mc": "fb50ca3f6cb6c52011896359cd267d3e84fd64314ef25a605d20ec1a4c0a18e6",
     "watchface/source/SceneLifecycle.mc": "d7723c246de7d19b206d6180101fb77ee8466dc3f7ef109c1381c55f17386c17",
-    "watchface/source/SceneRenderer.mc": "c1ca009d6d33a0c3523891d50e2943c82b1a7da2853e46bcb88bfc35373fa35c",
+    "watchface/source/SceneRenderer.mc": "c073255fdc60d03a382467c090f78a9710c51b30c8dc94baeae7aa5b8f82ad89",
     "watchface/source/SceneSettings.mc": "264304ed331374ed730a93da642998813dd9b9c15d2cff8043f92afb53e2efc4",
     "watchface/source/ScheduleState.mc": "4a9f22b9d01398fa60eb2ce6e430b09d878380b93b88f93058972e340780f3c4",
     "watchface/source/SettingsMenu.mc": "d32c1b064689befc2492f077f9b30651e51bfdde559685c9803bd8f01f1d8ed9",
@@ -319,7 +319,7 @@
     "watchface/source/generated/FallbackWorld.mc": "d25363d586a2daaf84eebe5bf2d28c4709b97b5baf583da4c8264e041294cca7",
     "watchface/source/generated/LocaleGraphemes.mc": "5ad65d6328908a7f251cd5ddbac83244de9b51929c2c46cb746bfb168a4f6c80",
     "watchface/source/generated/NativeAssets.mc": "0deebecafc34dc9f27a4756c905b3685648984a238f9d4bc5f7c2efe15c1df7a",
-    "watchface/source/generated/NativeVersion.mc": "ff6252d8d605965a85819abf08e9c270e0657a09872813ab7b402da88743c550",
+    "watchface/source/generated/NativeVersion.mc": "634da50362fd2cdccda1427c4cdca84f882c0bc9390d1f7bc7ab8eb89194f3c7",
     "watchface/source/generated/SceneStrings.mc": "dd8a910b53d2493ec8760e0148186c9535c05a5e0644ae5b6e6eccb6dd651109"
   },
   "testInputs": {
@@ -680,15 +680,15 @@
     "tools/b1_cold_probe.py": "47f482232469365336195ff75a689562c806900a6e8515a760686936e519a02d",
     "tools/build_fallback_world.py": "9814443792360464be033d59d900b82b37c5ed9932c0232365504c4f560e45d2",
     "tools/native_language_policy.py": "82a323f99811d2e4cb1ee7097fa0534f6860873292ea64840c0bd1834ea3606a",
-    "tools/native_live_023_qualification.py": "7704b36fa996e8e5456efe832937bf996560d03f957c9c7834240d5323080f3d",
+    "tools/native_live_023_qualification.py": "e3023e508a633bee2b8ba8677b1eee3c38b7f3712ad03510c603c574ae90aeb9",
     "tools/release.py": "73c634c5edf2606a201ec532ae8beb7ae77e8ef19ef78f922d408679c556be8d",
-    "watchface/runtime-b2-tests/B2Tests.mc": "2f0dfff95c19ad3196d83b2734149ad7f42b72d541f68860aa681999f67b539c",
+    "watchface/runtime-b2-tests/B2Tests.mc": "dc1380854457f0e6a1b704404728caae7febe21d54cfd00ce531815f15e25b98",
     "tests/test_live_023_admission.py": "88dbd3cbb284a624af6c9d5a4d0ac94e8c0320ff8a99d0b251bfc9a6c11b96bc"
   },
   "evidence": {
     "low": {
-      "path": "openspec/changes/fix-device-watchdog/evidence/release-023/receipts/b2LowUnmatchedPoint.log",
-      "sha256": "7fac4fccdad2bfd95a7becaf8eae49da02cf3e5e158f589d9e1a8f8bd67e0fd6"
+      "path": "openspec/changes/fix-device-watchdog/evidence/release-023/receipts/peer-low-null-context.log",
+      "sha256": "e47dca6c39010658971ad7c7cd73cc5afe8d793227f30a71b4725aa7fe562b2a"
     },
     "facts": {
       "path": "openspec/changes/fix-device-watchdog/evidence/release-023/receipts/b2AdmittedFactsWithoutArt.log",
@@ -723,8 +723,8 @@
       "sha256": "a2fac7bac271d36ffb3254f9622eb16d48b7d93ee48172011c5b3a5fe6bc59c2"
     },
     "peer": {
-      "path": "openspec/changes/fix-device-watchdog/evidence/physical-020-followup/PEER.md",
-      "sha256": "8d27ad334dc9dc2e8d057f335a34cfd5a8ed926713f822cfab1a946fbd03015c"
+      "path": "openspec/changes/fix-device-watchdog/evidence/release-023/PEER.md",
+      "sha256": "b3920e7db12bfbdc5f40bb132ca7b93756109ffedac14f7d4e05640855ee5b62"
     }
   },
   "proof_boundary": "Prior B2 locale proof and exact reviewed source delta; FR165M SDK observations are not physical acceptance."
