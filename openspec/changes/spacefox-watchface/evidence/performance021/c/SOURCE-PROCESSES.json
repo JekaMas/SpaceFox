@@ -1,0 +1,23 @@
+[
+  [
+    "git",
+    "rev-parse",
+    "--show-toplevel"
+  ],
+  [
+    "git",
+    "status",
+    "--porcelain",
+    "--untracked-files=all"
+  ],
+  [
+    "git",
+    "ls-files",
+    "-z"
+  ],
+  [
+    "git",
+    "rev-parse",
+    "HEAD"
+  ]
+]

@@ -41,9 +41,9 @@ Native work is last to collect all invalidating edits into one stable profile bu
 | HOST-05 | B / 8.2 | DONE — author + peer + root|
 | HOST-06 | B / 8.2 | DONE — author + peer + root|
 | ENG-02 | B / 8.2 | DONE — author + peer + root|
-| ENG-01 | C / 8.3 | PENDING |
-| CLEAN-02 | C / 8.3 | PENDING |
-| WEB-01 | C / 8.3 | PENDING |
+| ENG-01 | C / 8.3 | Author GREEN — peer/root pending |
+| CLEAN-02 | C / 8.3 | Author GREEN — peer/root pending |
+| WEB-01 | C / 8.3 | Author GREEN — peer/root pending |
 | MEM-01 | D / 8.4 | PENDING |
 | MEM-02 | D / 8.4 | PENDING |
 | MEM-03 | D / 8.4 | PENDING |
@@ -114,3 +114,22 @@ exact retirement-to-current-obligation map, first failures and correction of the
 mistaken duplicate-compiler-read premise. Fresh independent review and root
 judgment remain pending; task8.3 stays unchecked and D remains unstarted. Clean
 source-copy admission and current scan measurement are the final author checks.
+
+
+## Group C author GREEN and handoff
+
+- Clean source checkpoint `a9b2df23fae2d8cae1a5b991131f051b4e832e94` passed actual
+  copied release admission for6,671inputs/exactly5primary locales and the current
+ 756-input/28-seed sparse source/corruption gate. Two full snapshot fences read
+  every6,673files freshly twice and reject same-size/restored-mtime mutation.
+- Source scan reads19,965→6,671 and bytes1,452,162,923→484,311,136; toolchain reads
+ 312→181 and bytes233,256,865→157,852,272 over the same42profiles/181inputs. Both
+  version children and all compiler snapshot/final guards remain. Toolchain
+  elapsed time did not improve in this single local sample; no compiler speed or
+  CI claim is inferred.
+- [c/APPLY.md](c/APPLY.md) records exact legacy-to-current obligation mapping,
+  all11metadata counterexamples preserved, real Chrome baseline RED/current
+ 16-event GREEN, retained cleanup/export/harness failures, their fixes and scope.
+  Task8.3 stays unchecked for fresh independent verify/fix and root judgment.
+  D remains unstarted. Final receipt/documentation changes leave all selected
+  release/sparse input bytes unchanged.

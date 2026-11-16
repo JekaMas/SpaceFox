@@ -1,7 +1,7 @@
 # Group C author application and verification
 
-Status: source implementation and focused controls GREEN; final clean-source
-copy/admission and current scan measurement in progress. Task8.3 remains unchecked
+Status: **GREEN for C author implementation/self-verification at the local
+software boundary.** Clean source checkpoint: `a9b2df23fae2d8cae1a5b991131f051b4e832e94`. Task8.3 remains unchecked
 for fresh independent verification and root judgment. Overall performance021 is
 NOT DONE; group D has not started.
 
@@ -82,3 +82,55 @@ restoring changed/deleted sources only inside authenticated prior reconstruction
 Original devices020/native/profile/font receipts and source hashes are unchanged.
 C source/evidence and deleted historical inputs are admitted by current release
 selection. Missing or changed archived sources still refuse.
+
+## Final clean-source export and measured costs
+
+`RELEASE-CLOSURE.json` records actual clean a9b2df23 source selection and copied
+admission:6,671tracked inputs, every copied file independently hashed, exactly
+`en`, `ru`, `de`, `fr`, `es` admitted by the full retained proof. It exercises two
+complete fresh snapshot fences over6,673files including generated selectors:
+13,346reads/968,628,754bytes, every file read twice,2.676s. A same-size mutation
+with restored mtime is refused by the next fence; source_state remains identical.
+This is real filesystem admission, not a compiler/export or signing observation.
+
+| Actual local scan | Before at a3dffd05 | After at a9b2df23 | Measured change |
+| --- | --- | --- | --- |
+| source_state selected files |6,651|6,671|20 additional selected inputs after authenticated snapshots/current sources and retirements |
+| source_state reads |19,965|6,671|13,294 fewer reads; no duplicate byte reads within the call |
+| source_state read bytes |1,452,162,923|484,311,136|967,851,787 fewer bytes (66.65%) |
+| toolchain unique inputs / profiles |181 /42|181 /42|same protected input inventory |
+| toolchain reads |312|181|131 fewer reads (41.99%) |
+| toolchain read bytes |233,256,865|157,852,272|75,404,593 fewer bytes (32.33%) |
+| source_state seconds |2.586|2.327|one local observation; no CI timing claim |
+| toolchain seconds |0.514|0.751|no time improvement demonstrated in this sample |
+
+`BASELINE.json` and `CURRENT.json` retain the raw measurements and duplicate-path
+counts. The measurement wrapper's `processes` field records only toolchain
+version children: both real Java/compiler version children remain. It does not
+claim zero source Git children. `SOURCE-PROCESSES.json` separately observes the
+same4source Git commands (root, status, ls-files, HEAD); no process reduction is
+claimed. No compiler-before/after snapshot fence was removed to obtain the gains.
+The current closure differs by the stated source/snapshot retirement additions;
+this is not a byte-identical input-set timing comparison.
+
+`SOURCE-CLOSURE.txt` records the separate current clean-checkpoint sparse source
+positive/corruption gate:756catalog inputs,28tracked seed files, exact bytes,
+actual joined runtime imports/CLI help, unchanged HEAD/index and corrupt bytes
+preserved; exits0and2,48.920s. `GRAPH.json` reconciles9selected C/metadata cases to
+actual methods, commands and source hashes. This is not the unavailable private
+full graph runner. `RELOCATED-HELPER.json` confirms exact function AST equality
+and real imports for all4historical suites; this justifies retaining their
+unchanged behavior receipts rather than rerendering legacy previews.
+
+`RELEASE-FIRST-RED.txt` retains clean-source refusal of a literal PEM header in
+the new negative-test source. `SOURCE-SECRET-FINAL.txt` verifies the same runtime
+secret bytes are still refused when the test source constructs them from pieces.
+No secret material was present. `TOOLCHAIN-FENCE-FINAL.txt` belongs to the briefly
+attempted extra guard and is not final acceptance; TOOLCHAIN-FRESH-FINAL is the
+original-boundary control. Final documentation, graph-reference and receipt-only
+changes are reconciled against the6,671selected inputs; none changes their bytes.
+
+Limits: no fresh PRG/IQ build, production key/signing, simulator, physical watch,
+provider, hosted scheduler, phone, Store or deployment observation. A/B behavior
+and old native/profile/font evidence remain at their original valid boundaries.
+Fresh independent C verification/fix and root judgment are required before D.
