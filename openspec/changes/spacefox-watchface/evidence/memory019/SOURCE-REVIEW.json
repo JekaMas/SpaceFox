@@ -1,0 +1,372 @@
+{
+  "watchface/source/SpaceFoxApp.mc": {
+    "batch": "A1",
+    "method": "FULL_SOURCE_READ",
+    "note": "App retains feed/view; restore timer one-shot 50ms; display LOW/OFF stops restore; background callback excludes OFF; settings repeats durable transfer load."
+  },
+  "watchface/source/SpaceFoxView.mc": {
+    "batch": "A1",
+    "method": "FULL_SOURCE_READ",
+    "note": "Full source read. Owner of renderer/downloaded/job/390x390 16-bit scale buffer and three timer handles. onHide cancels callbacks/subscriptions and drops visual references; LOW cancels build but retains active visuals. LOW guard excludes mask/blit; active snapshot/formats allocated each draw."
+  },
+  "watchface/source/Fitness.mc": {
+    "batch": "A1",
+    "method": "FULL_SOURCE_READ",
+    "note": "Selected-only minute sampling; latest one history sample per selected source; no stream/upload. Dictionary and options recreated; custom Activity/System reader can duplicate basic sampler read."
+  },
+  "watchface/source/FieldSources.mc": {
+    "batch": "A1",
+    "method": "FULL_SOURCE_READ",
+    "note": "Picker holds six entries, re-enumerates prefix each page. SelectedFields <=4 subscriptions, dedup Id, callback deregistered on stop. Per callback reads all selected and formats dictionaries/icons anew; FieldText menus repeatedly loaded."
+  },
+  "watchface/source/FieldText.mc": {
+    "batch": "A1",
+    "method": "FULL_SOURCE_READ",
+    "note": "Lazy JSON lookup each menu/weather/status call, no cache. Candidate bounded per-read locale memoization; do not retain all locales."
+  },
+  "watchface/source/LocalePresentation.mc": {
+    "batch": "A1",
+    "method": "FULL_SOURCE_READ",
+    "note": "One dictionary and font set; old locale references cleared before next. fit temporary chars/prefixes/width measurements; unchanged text recomputed every active frame. Grapheme property table loaded once."
+  },
+  "watchface/source/SceneRenderer.mc": {
+    "batch": "A1",
+    "method": "FULL_SOURCE_READ",
+    "note": "Selected-only basic icons, map/model reuse by exact model/point. AOD lazy load/release, active retains both bundled and downloaded map/rocket; outlined text up to nine drawText calls per item. Larger scale buffer separate graphics memory."
+  },
+  "watchface/source/SceneLifecycle.mc": {
+    "batch": "A1",
+    "method": "FULL_SOURCE_READ",
+    "note": "Single bounded cancellable job, generation fences stale completion; newer serial permits failed job retry."
+  },
+  "watchface/source/SceneSettings.mc": {
+    "batch": "A1",
+    "method": "FULL_SOURCE_READ",
+    "note": "Cold paged property loading; allocations menu/settings only, no redraw storage reads."
+  },
+  "watchface/source/SettingsMenu.mc": {
+    "batch": "A1",
+    "method": "FULL_SOURCE_READ",
+    "note": "Settings releases visual first. Menus pages six, switchToView replaces page; repeated locale() loads 11 properties per call. Off-redraw cold cost."
+  },
+  "watchface/source/SettingsMenuText.mc": {
+    "batch": "A1",
+    "method": "FULL_SOURCE_READ",
+    "note": "Five languages literals; values() builds all four groups before selecting one; repeated root labels/locales cause transient allocation. Cold path."
+  },
+  "watchface/source/SceneContext.mc": {
+    "batch": "A1",
+    "method": "FULL_SOURCE_READ",
+    "note": "One scene object + copied 2D point; reference to bounded policy. No per-tick I/O. cacheRow allocates only when persisted."
+  },
+  "watchface/source/ScheduleState.mc": {
+    "batch": "A1",
+    "method": "FULL_SOURCE_READ",
+    "note": "Arithmetic only; new formatted strings per frame, LOW ceil/floor minute delta. No I/O or growing state."
+  },
+  "watchface/source/WatchClock.mc": {
+    "batch": "A1",
+    "method": "FULL_SOURCE_READ",
+    "note": "Calls system clock/local calendar per snapshot; three-element calendar array transient each snapshot."
+  },
+  "watchface/source/NativeAnimation.mc": {
+    "batch": "A1",
+    "method": "FULL_SOURCE_READ",
+    "note": "Bounded <=16 keyframes, 2-3s duration; validation cold."
+  },
+  "watchface/source/NativeAssetTypes.mc": {
+    "batch": "A1",
+    "method": "FULL_SOURCE_READ",
+    "note": "Small resource/coordinate wrappers, generated tables retained; no ownership cleanup API."
+  },
+  "watchface/source/NativeVisualRenderer.mc": {
+    "batch": "A1",
+    "method": "FULL_SOURCE_READ",
+    "note": "Single bitmap/transform/options owner; reuses transform/options per animated draw, bounded keyframes/clip; references released with downloaded renderer."
+  },
+  "watchface/source/NativeRenderSource.mc": {
+    "batch": "A2",
+    "method": "FULL_SOURCE_READ",
+    "note": "Five readiness storage reads at construction; retains store/base and only digest/serial readiness, not all raw asset payloads."
+  },
+  "watchface/source/FeedScene.mc": {
+    "batch": "A2",
+    "method": "FULL_SOURCE_READ",
+    "note": "Selected + <=2 successor scene construction from admitted feed; copies compact display metadata and source policy. No per-frame parse."
+  },
+  "watchface/source/LaunchReminderForeground.mc": {
+    "batch": "A2",
+    "method": "FULL_SOURCE_READ",
+    "note": "Snapshot storage write suppressed if deep-equal, single read per admission. Not a per-frame path."
+  },
+  "watchface/source/NativeTransfer.mc": {
+    "batch": "A2",
+    "method": "FULL_SOURCE_READ",
+    "note": "Bounded provisional-only 8KiB feed / 4KiB object; raw SHA bytes and 512-character alternating banks, piece readback. Build-scoped attempt/cadence plan reads. No foreground request. Two generations of slot fragments bounded but old tails retained."
+  },
+  "watchface/source/FeedService.mc": {
+    "batch": "A2",
+    "method": "FULL_SOURCE_READ",
+    "note": "Only native HTTP owner, one asynchronous GET at a time to same normalized base + .txt. <=44 starts and check-before-start 22s budget; exits immediately after catalog prerequisite. Restarts pending <=5min via durable markers. Does not abort already-running HTTP nor prebound response allocation."
+  },
+  "watchface/source/NativeForegroundApp.mc": {
+    "batch": "A2",
+    "method": "FULL_SOURCE_READ",
+    "note": "Initial/reload/readmission storage only; no HTTP. Releases renderer before new feed parse; compact accepted scene retained on error, restore next owned50ms callback. display() recreates saved queue/render source even duplicate admission; readiness equality suppresses writes."
+  },
+  "watchface/source/NativeForegroundCache.mc": {
+    "batch": "A2",
+    "method": "FULL_SOURCE_READ",
+    "note": "Strict reparse 8KiB durable raw + immutable catalog; mutable splice may temporarily hold original/replacement raw strings. ByteArray reassembly chunks with byte bounds, drops raw before parse where possible. One packet promoted, original seal preserves old accepted state."
+  },
+  "watchface/source/NativeIncoming.mc": {
+    "batch": "A2",
+    "method": "FULL_SOURCE_READ",
+    "note": "<=16 512-char pieces into <=8192-byte ByteArray, SHA + latest marker check; conversion overlaps bytearray/string. Detaches prior/renderer before admission; clears caller row raw; rejected promotion schedules strict durable restore, not overwrite accepted data."
+  },
+  "watchface/source/NativeUpcomingCache.mc": {
+    "batch": "A2",
+    "method": "FULL_SOURCE_READ",
+    "note": "Three-scene sealed derived queue, <=3 rows. Validation/hash/readback each load/save, identical writes suppressed. Key is URL hash; no index/eviction for obsolete URL queues found (publish pins separately cap8)."
+  },
+  "watchface/source/NativeImmutable.mc": {
+    "batch": "A2",
+    "method": "FULL_SOURCE_READ",
+    "note": "56 objects/229376 bytes cap,4KiB each; once-per-eviction protected-root scan. next() rescans+rehashes prefix after each arrival; all objects get raw SHA verification again on decode/closure. Catalog/descriptor/readback durability checks intentional but scan duplication avoidable with stable-generation cursor."
+  },
+  "watchface/source/NativeSfr.mc": {
+    "batch": "A2",
+    "method": "FULL_SOURCE_READ",
+    "note": "Streaming one shard<=4KiB plus <=96 decoded-byte block; row buffer and colors; map390x390 / rocket54x124 / flag20x12 graphics buffers locked via get(). Decoder clears row/colors/DC/hash/descriptor on completion. Whole build nulled on cancel/fail/success; final renderer retains results. Checks row budgets after indivisible rows; constructor/role-admission/chunk hashing not hard timed."
+  },
+  "watchface/source/NativeBridgeFeed.mc": {
+    "batch": "A2",
+    "method": "FULL_SOURCE_READ",
+    "note": "Reads/hashes immutable<=4096 catalog then feed; generic bounded parser projects rows/IDs. catalogData freed on header bridge extraction. Same canonical schemas and digest guarantees remain required."
+  },
+  "watchface/source/NativeCache.mc": {
+    "batch": "A2",
+    "method": "FULL_SOURCE_READ",
+    "note": "Single NativeStore wrapper,3feed slots,active/recovery sealed markers,8 namespace publisher pins. Detached prior drops full old feed before parse; identical content avoids raw writes; per-chunk and commit readback; restored previous seal after failed promotion. No unbounded per-tick storage. Counts are diagnostic counters only."
+  },
+  "watchface/source/NativeFeed.mc": {
+    "batch": "A2",
+    "method": "FULL_SOURCE_READ",
+    "note": "8KiB parser validation, <=2 future scenes, <=128 terminal metadata+accepted records. Multiple full/partial raw SHA passes (wire/content/record); compact drops raw/spans/dictionaries. Policy overflow/ISO/parity code adds validation complexity but current-format acceptance contract, not old wire parser."
+  },
+  "watchface/source/NativeJson.mc": {
+    "batch": "A2",
+    "method": "FULL_SOURCE_READ",
+    "note": "Canonical feed mode; <=8 nesting,5000nodes,8KiBfeed/4KiBdescriptor; projections discard unused display fields after parsing. char substring probes and transient arrays; hashes use <=128-char buffer. Generic parser survives for metadata/current schemas; no JSON.parse shortcut permitted without duplicate/order/hash oracle."
+  },
+  "watchface/source/NativeSourceTimes.mc": {
+    "batch": "A2",
+    "method": "FULL_SOURCE_READ",
+    "note": "ISO parsing and canonical date/offset validation only on admission, no redraw. Allocates short arrays/substrings; accepts broad producer lexical forms even current provider normalized ISO; potential contract-simplification candidate only, not an unapproved accepted-input change."
+  },
+  "watchface/source/LaunchReminder.mc": {
+    "batch": "A2",
+    "method": "FULL_SOURCE_READ",
+    "note": "Background-only notification decision, four scheduled slots with<=16 consumed identities. Disabled fast path; enabled may parse <=4KiB provisional feed and SHA fullraw again; memoized compare token. Compatibility for initial0.1.15 consumed state remains explicit legacy branch lines84-88; audit flag only, not deleted under analysis scope."
+  },
+  "tools/spacefox/__init__.py": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Package marker only, no runtime allocations/I/O."
+  },
+  "tools/spacefox/ascent_supplement.py": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Local<=64KiB supplement read,<=128rows, immutable tuple/replace; no source URL fetched. Full source read."
+  },
+  "tools/spacefox/bridge_map.py": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Pinned local geography+JS reads; one Node subprocess deadline60s, full topology/D3 serialized input and <=1MiB checked stdout. Draw/coast/region lists + SFV layers built in memory. Selected map only, no network. Resource path review33-79,111-212."
+  },
+  "tools/spacefox/catalog.py": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Whole recipe + curated reference/registry duplicated with deepcopy; canonical_bytes recursively builds full str then UTF8. dependency_closure deepcopies whole catalog before replacing tables with selected rows. build_catalog validates all rows and loads regional geography before due decision. Resource paths188-240,545-667,937-973,1008-1198 reviewed; pure fact validation AST-indexed."
+  },
+  "tools/spacefox/catalog_refresh.py": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "20s killable credential-free HTTP,2MiBpage/1024pages/20krows; 1-4 requests per command gated shared15/h. objects cache<=64MiB raw corpus, parsed current+previous+staging can overlap; full journal/deepcopy and page replay each reopen/save, failure clears scratch. Resource paths225-282,293-435,485-768 reviewed."
+  },
+  "tools/spacefox/cloud.py": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Killable20s HTTP worker/socket10s,64KiBGitHub API/1MiBgeneral/8KiBroot bounds. Serial full HTTPS closure observe per recovery; <=512files union/1MiB. Git/current snapshot validation repeated across journal/delivery/observe. Pages POST no replay,<=60polls5s defaultdeploy,6defaultwait, cancel finality. No response cache; finally closes response. Full I/O path review."
+  },
+  "tools/spacefox/current_catalog.py": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Digest+typed current eligibility validation and reference-closure subsets; sort/deepcopy/whole catalog revalidation repeated. Only local pinned registry reads; no external URL fetch."
+  },
+  "tools/spacefox/current_context.py": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Finite source-dated context/roles, local pinned file and SHA, sets/sorted roots. No network. Resource paths85-144 reviewed."
+  },
+  "tools/spacefox/feed.py": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Plain JSON recursion rejects cycles then whole JSON str+UTF8<=8KiB check after encoding. No compression/I/O; trusted schedule producer input bounded elsewhere. Full source read."
+  },
+  "tools/spacefox/geographic_context.py": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "LRUmax4 retains parsed original microdegree points plus float_lines and supplement rings. <=8MiBrawclips, each2MiB inflation checked; original+decoded+float representation overlap. Per-call dependencies rehashed even cache hit. Most large host residency; current cached corpus reused across build. Resource paths52-157,247-432 reviewed."
+  },
+  "tools/spacefox/global_map.py": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Local pinned world reads<=256KiB checked after read; pure projection + sorted/pool/split builders; write_bundle atomic/immutable output and all expected file validation. Current accepted04 path delegates to bridge/regional owners, not obsolete public wire. Resource paths45-68,88-186,236-428 reviewed."
+  },
+  "tools/spacefox/graphics.py": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Finite SVG converter and SFV pool/splits; source bounded stat+read<=sourceBytes. build_pack validates full catalog, dependency_closure and final catalog deepcopy even single asset; immutable/atomic writes clean tempfiles. Pure geometry loops AST-indexed, current used builders/read/write paths fully read."
+  },
+  "tools/spacefox/native_motion.py": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Builds static primitive internally then overlays current schema3/SFR1M; up to256files/1MiB. Holds raw source/SFV/raster bytes until closure prunes; text transport duplicates names but shares immutable bytes. validate_artifact re-rasterizes3roles and redecodes every call. Source provenance/digest checks required. Resource paths1-104,115-332,340-545 reviewed."
+  },
+  "tools/spacefox/native_profile.py": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Internal current SFR1 raster primitive, not second supported wire. rsvg timeout30s; bounded PNG390x390,1MiBcompressed/inflate bound, scan+row+RGBA output overlap. encode rows creates tuple lists and ByteArrays; map_raster tries1/4/8/16 quantization with fullpixel copies. Full raster/codec resource paths reviewed."
+  },
+  "tools/spacefox/provider.py": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "One durable allowance per HTTP attempt. <=512KiB raw response/80records/32depth/30knodes,20sprocessdeadline10ssocket. Chunk list+joined bytes+base64 child stdout+decoded parent+JSON objects overlap. No redirects/proxies/autoretry. Only429 interprets Retry-After currently; generic failure persisted by caller. Full transport/control paths read."
+  },
+  "tools/spacefox/publisher.py": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Temporary bare repo cleanup close/finally in CLIs. Every load fetches authority refs + linearity/history/activependingvalidate; each _files reads2subprocesses per blob and full pixel validation. _commit2 subprocesses per writtenfile. No timeout on Git itself; workflow timeout outerbound. Raw artifact<=1MiB/256files,delivery512;catalog64MiB separate. Git history/archive intentionally lifetime-growing. CriticalI/O/state methods read."
+  },
+  "tools/spacefox/schedule.py": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Immutable dataclasses/tuples; merge advances/replaces all entries and sorts, content_revision allocates full JSONstr+bytes each access. Publisher compacts<=128accepted; no network/cache/global mutable state. Resource paths/state transition owners inspected; pure temporal arithmetic AST-indexed."
+  },
+  "tools/spacefox/visual_bridge.py": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Selected source/asset roles only, immutable4KiB descriptors+source pins. Whole catalog validation/hash and repeated build_pack per selected role; no Internet. Finalfiles reference immutable bytes. Resource paths1-132,135-208 reviewed."
+  },
+  "tools/spacefox/wire.py": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Schedule projection <=2future rows but repeatedly calls advance/select (<=128entries). Serializes+checks currentfeed8KiB; typeddecimal positions remain lossless. No I/O. Resource paths57-122 and validate_current_feed reviewed via AST/bounds."
+  },
+  ".github/workflows/update-feed.yml": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Five isolated jobs, each installs renderer and opens/validates authoritative state.4cron+4Cloudflare ticks/hour possible; one concurrency lock prevents simultaneouswriter. Sparse source input checkout,full closure HTTPS per recovery. Full source read."
+  },
+  ".github/workflows/qualify-current-motion.yml": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Pullrequest/manual local integration workflow, no sparse checkout specified; full tree materialization includes historical evidence. Full source read."
+  },
+  "deploy/cloudflare-schedule/worker.mjs": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Clock only,4ticks/hr,one10sPOST, controller.noRetry, ctx.waitUntil+await same promise (one dispatch not two). Full source read."
+  },
+  "deploy/cloudflare-schedule/wrangler.toml": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Clock config,4ticks/hr,noHTTPworker endpoint. Full file read."
+  },
+  ".github/scripts/install-native-linux-renderer.sh": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Curl pinned2,300,742Bdeb +aptupdate/install eachjob; deletespackage via EXITtrap; no curltotaldeadline, outerjobdeadline only. Full source read."
+  },
+  "tools/update_feed.py": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Schedule2pages+2details default,each1..4bound; tuple normalized rows only, buildcandidate before durableaccept. Requiredpaginationatomic,optional failureyield. Main closesGitState; selected update path full read."
+  },
+  "tools/cloud_feed.py": {
+    "batch": "A3",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Allcommands open GitState/Publisher, recovery fullHTTPS before due logic; prepare buildsfullcatalog before poll due; finally closes store; exports immutableunion. Full orchestration resource path read."
+  },
+  "watchface/source/generated/NativeAssets.mc": {
+    "batch": "A4",
+    "method": "FULL_SOURCE_READ",
+    "note": "Full generated table read:6modelwrappers,54NativeMapwrappers,18extra centerpairs in144-byteByteArray,6iconIDs. ResourceIDs not loadedbitmaps. Candidate pack all coordinates rather than54heapobjects, measure before changing."
+  },
+  "watchface/source/generated/LocaleGraphemes.mc": {
+    "batch": "A4",
+    "method": "FULL_SOURCE_READ",
+    "note": "Full source read:1829-byte decodedproperty table retainedmodule-wide; loadonce; linear compressedrange lookup non-ASCII grapheme boundaries. Preserve finite-corpus contract, not an unboundedtext cache."
+  },
+  "watchface/source/generated/SceneStrings.mc": {
+    "batch": "A4",
+    "method": "FULL_SOURCE_READ",
+    "note": "Full source read:packed36IDs/codes,resource switch,onlyfiveavailable. Repeated index(locale) scans tokens, offcoldprepare; no36dictionary residency."
+  },
+  "watchface/source/generated/NativeVersion.mc": {
+    "batch": "A4",
+    "method": "FULL_SOURCE_READ",
+    "note": "Generated string constants only; no I/O."
+  },
+  "tools/spacefox/bridge_map_render.js": {
+    "batch": "A4",
+    "method": "FULL_SOURCE_READ",
+    "note": "Full source read:stdinJSON creates sandboxwithpinnedD3/TopoJSON,geometryrings,130x130samplegrid andverticalmergedrectangles. O(16900*projectededges) windingtest, bounded390canvas and parent60s; no network. Hostprofile1Node child~0.45s instrumented."
+  },
+  "tools/ReleaseInspector.java": {
+    "batch": "A4",
+    "method": "FULL_SOURCE_READ",
+    "note": "Full source read:smallpublicSPKIread+SDKfileverification sequentialPRGs; noprivatekeyloading/HTTP; JVMmemory/thread lifecycle owned by parent release subprocess."
+  },
+  "tools/verify_native_text_http.py": {
+    "batch": "A4",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Full source read:operator-onlyHTTPSsavedartifactreadback; up to256files/1MiBread BEFOREsize admission; each15ssockettimeout,nohardtotalbody/processdeadline (unlike cloud.HTTP). Not scheduledproductionrequestroute."
+  },
+  "tools/build_private_beta.py": {
+    "batch": "A4",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Full source read:hardcoded0.1.4nine-profile privatebetawrapper,monkeypatchesreleasefunctions; baselineincompatible withcurrent0.1.18tenprofiles. Legacyobsoleteoperatorentrypoint, notcurrentrelease/runtime. Noexecution attempted."
+  },
+  "tools/display_corpus.py": {
+    "batch": "A4",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Resource-path read:operator-grantedfinitecorpusfetch,onepage/budgetdefault1,filesystemlock/journal,60ssocketonly andboundedbody; offlinefullbuildgzipdecompresspageproofs+collectedstrings. NoauditHTTP. Legacyprobes notruntime."
+  },
+  "tools/run_native_tests.py": {
+    "batch": "A4",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Full source read:compilethen45sMonkeyDo childtimeout,strictcompleteframeworkgrammar. run killslauncher only; Simulatorownership/restore separateouterlane contract, not proven by this function."
+  },
+  "tools/build_watchface.py": {
+    "batch": "A4",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Build source/resourceclosure hashes wholewatchface; temporaryjunglecleanup,120sdefaultcompiler,nonproductionUUID. Resourcepathreview;noSDKinvocationinaudit."
+  },
+  "tools/release.py": {
+    "batch": "A4",
+    "method": "RESOURCE_PATH_REVIEW_WITH_AST_INDEX",
+    "note": "Releasepathsreview:sourcehashclosure,snapshotcopy,10profilePRG+IQexport240seach;hashfullinventorybefore/aftereachcompileandfinally;externalsignedkeypath never readinaudit. Noexistingcandidatepromotion. Gitcallsnopertimeout. Resourcepathreview,signaturesemanticsnotre-reviewed."
+  },
+  "prototype/mission.js": {
+    "batch": "A4",
+    "method": "FULL_SOURCE_READ",
+    "note": "Full source read:illustrative36locales+world+examplesparsedwhole;1sticker,2.6swakeRAF,timeout+ResizeObserver. Disconnectedrootstopsinterval/RAFandobserver,butglobalopenai:set_globals listenernotremoved; detachedembedcouldretainclosureuntilwindowunload. NoproductionWatchHTTP/nativepath."
+  },
+  "prototype/current/index.html": {
+    "batch": "A4",
+    "method": "FULL_SOURCE_READ",
+    "note": "Full file read:retiredexperimentalredirectnotice; noanimation/sourcefetch. Currentnativepreviewroute separate."
+  }
+}

@@ -2,6 +2,8 @@
 
 > Some historical authoring evidence referenced below is not included in this public export. Statements about those records retain their historical scope and are not independently verifiable from this checkout.
 
+Current resource analysis (2026-11-16): [memory019/AUDIT.md](evidence/memory019/AUDIT.md) records the plan, progress, file coverage and findings for released 0.1.18 at main `943f320c`. This is a static/offline audit under existing tasks 2.2, 3.2, 3.3, 4.4, 4.5, 5.3 and 5.5; it changes no completion boxes, product behavior, deployed service or physical-acceptance status.
+
 ## 1. Specification foundation — completed authoring increments
 
 - [x] 1.1 Create the independent SpaceFox repository, preserve the unchanged Mission mockup and audit every requested feature; verify the copied SHA-256 and `evidence/baseline-audit.md` coverage table.

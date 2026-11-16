@@ -1,0 +1,1393 @@
+[
+  {
+    "path": ".github/scripts/install-native-linux-renderer.sh",
+    "package": "other-executable",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "catalog/geography/regional-20261112-r3/spc-metadata-original.html",
+    "package": "catalog-assets-data",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 108,
+        "text": "(g=>{var h,a,k,p=\"The Google Maps JavaScript API\",c=\"google\",l=\"importLibrary\",q=\"__ib__\",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement(\"script\"));e.set(\"libraries\",[...r]+\"\");for(k in g)e.set(k.replace(/[A-Z"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "deploy/cloudflare-schedule/worker.mjs",
+    "package": "scheduler-workflows",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 15,
+        "text": "response = await fetch(ENDPOINT, {"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/composition/core.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 13,
+        "text": "return{passed:failures.length===0,failures:[...new Set(failures)],energyGain:baseline&&o.coordinate?o.map.energy/baseline.map.energy:null};"
+      },
+      {
+        "line": 16,
+        "text": "function catalogErrors(candidates,parents=[]){const ids=new Set(),signatures=new Set(),known=new Set(parents.map(p=>p.id)),errors=[];for(const c of candidates){if(ids.has(c.id)||signatures.has(signature(c)))errors.push('duplicate');if(c.generation>1&&(!c.parents?.length||c.parents.some(p=>!known.has(p))))errors.push('p"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/composition/index.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/composition/lab.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 4,
+        "text": "const [policy,scenes,selection]=await Promise.all(['policy.json',sceneFile,'../marker/final-selection.json'].map(async p=>(await fetch(p,{cache:'no-store'})).json()));"
+      },
+      {
+        "line": 6,
+        "text": "async function load(){const file=$('#generation').value,r=await fetch(file+'.json',{cache:'no-store'});candidates=r.ok?await r.json():[];result=null;$('#exportMetrics').disabled=true;$('#run').disabled=false;page=0;paint();$('#status').textContent=file+' \u00b7 \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043d\u043e '+candidates.length+' \u0432\u0430\u0440\u0438\u0430\u043d\u0442\u043e\u0432; \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u044b \u044d\u0442\u043e\u0433\u043e \u043d\u0430\u0431"
+      },
+      {
+        "line": 9,
+        "text": "async function run(){const requested=candidates.slice(),generation=$('#generation').value;document.querySelectorAll('.toolbar button,.toolbar select').forEach(e=>e.disabled=true);const rows=[],baseRows=[];try{const sourceSHA256={};for(const file of ['policy.json','core.js','renderer.js','metrics.js','lab.js','index.htm"
+      },
+      {
+        "line": 11,
+        "text": "$('#exportMetrics').onclick=()=>{const a=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(result)],{type:'application/json'}));a.href=url;a.download='composition-'+$('#generation').value+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),5000);};"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/composition/metrics.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 11,
+        "text": "const memo=new Map();"
+      },
+      {
+        "line": 20,
+        "text": "const url=URL.createObjectURL(new Blob([text],{type:'image/svg+xml'})),im=new Image();try{await new Promise((resolve,reject)=>{im.onload=resolve;im.onerror=()=>reject(Error('Map SVG raster failed'));im.src=url;});const canvas=document.createElement('canvas');canvas.width=N;canvas.height=N;const ctx=canvas.getContext('2"
+      },
+      {
+        "line": 26,
+        "text": "const all=labels.filter(e=>e.dataset.role!=='launchCue'),inkByElement=new Map(),inkContext=document.createElement('canvas').getContext('2d');"
+      },
+      {
+        "line": 41,
+        "text": "return{metricVersion:3,candidate:c.id,scene:s.id,coordinate:Boolean(s.fixture.point),semanticErrors,geometryErrors:[...new Set(geometryErrors)],text,clockInk:ink,boxes,axisGroups,marker,map:{method:'Computed live SVG-only raster at390, round clipped; RGB/RGBA opaque panels excluded; usable area additionally excludes in"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/composition/recheck.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/composition/recheck.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 2,
+        "text": "(async()=>{'use strict';const $=s=>document.querySelector(s),sources=['scenes.json','additional-scenes.json','../marker/final-selection.json'],[a,b,selection]=await Promise.all(sources.map(async p=>(await fetch(p,{cache:'no-store'})).json()));let output=null;const policy=await(await fetch('policy.json')).json();const s"
+      },
+      {
+        "line": 3,
+        "text": "$('#runControlAudit').onclick=async()=>{$('#runControlAudit').disabled=true;const rows=[];try{for(const c of controls)for(const s of scenes){$('#status').textContent=`\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u044c ${c.control?c.base.id:c.id} \u00b7 ${s.id} \u00b7 ${rows.length+1}/140`;const face=SpaceFoxMR.render(c,s);$('#bed').replaceChildren(face);rows.push(await "
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/composition/renderer.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/composition/review.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/composition/review.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 3,
+        "text": "const [final,marker,author,extra]=await Promise.all(['final.json','../marker/final-selection.json','scenes.json','additional-scenes.json'].map(async p=>(await fetch(p,{cache:'no-store'})).json()));const scenes=[...author,...extra];let native=false,selected=0,scene=0;"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/countdown-status/countdown-status.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/countdown-status/index.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/countdown-status/status-review.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 2,
+        "text": "(async()=>{'use strict';const $=s=>document.querySelector(s),load=async p=>(await fetch(p,{cache:'no-store'})).json();"
+      },
+      {
+        "line": 16,
+        "text": "const sourceSHA256={},paths=[...new Set([...document.scripts].map(e=>e.getAttribute('src')).filter(Boolean).concat(['index.html','status-style.css','../focus/style.css','../focus/variants.json','../relay/variants.json','../marker/final-selection.json','../composition/scenes.json','../composition/additional-scenes.json'"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/current/index.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/features/bounds-probe.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/features/bounds-probe.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 3,
+        "text": "const payload=await(await fetch('bounds-probe.json')).json(),F=window.SpaceFoxF,R=window.SpaceFoxFR,faces=[];"
+      },
+      {
+        "line": 4,
+        "text": "await Promise.all([...new Set(Object.values(F.fonts))].map(f=>document.fonts.load(`600 80px '${f}'`)));await document.fonts.load(\"500 17.2px 'Noto Sans'\",'\u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u043d\u043e\u0432\u044b\u0445 \u0441\u043e\u043b\u043d\u0435\u0447\u043d\u044b\u0445 \u043f\u0430\u043d\u0435\u043b\u0435\u0439');await document.fonts.ready;"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/features/core.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 24,
+        "text": "if (input.axes?.length!==12 || new Set(input.axes.map(a=>a.id)).size!==12) throw Error('twelve axes required');"
+      },
+      {
+        "line": 25,
+        "text": "for(const a of input.axes) if(!a.anchor || a.levels?.length!==8 || new Set(a.levels).size!==8 || a.levels.includes(a.anchor)"
+      },
+      {
+        "line": 39,
+        "text": "if(!cs.length || new Set(cs.map(c=>c.id)).size!==cs.length || new Set(cs.map(signature)).size!==cs.length||cs.some(c=>ancestors.some(a=>a.id===c.id||signature(a)===signature(c)))) throw Error('empty/duplicate visuals');"
+      },
+      {
+        "line": 40,
+        "text": "const all=[...ancestors,...cs], ids=new Set(all.map(c=>c.id));"
+      },
+      {
+        "line": 61,
+        "text": "if(rs.length!==cs.length || new Set(rs.map(r=>r.id)).size!==cs.length || cs.some(c=>!rs.some(r=>r.id===c.id&&r.trials>0&&Number.isFinite(r.failures)))) throw Error('incomplete measurements');"
+      },
+      {
+        "line": 75,
+        "text": "const out=[],seen=new Set(pool.map(signature));"
+      },
+      {
+        "line": 85,
+        "text": "c.parents.push(ap?.id||'ANCHOR');c.parents=[...new Set(c.parents)];"
+      },
+      {
+        "line": 99,
+        "text": "c.parents=[...new Set(c.parents)];"
+      },
+      {
+        "line": 113,
+        "text": "if(s.fields.length!==4||new Set(s.fields.map(f=>f.role)).size!==4)reasons.push('field-roles');"
+      },
+      {
+        "line": 136,
+        "text": "return {...legacy,geoArea:o.geo?.viewportArea||0,failures:[...new Set(failures)],outsideBenchmark:outside(s),pointExpected:Boolean(s.fixture.point),landArea:o.geo?.landArea||0,viewportArea:o.geo?.viewportArea||0,"
+      },
+      {
+        "line": 143,
+        "text": "const errors=[],ids=new Set(scenes.map(s=>s.id));"
+      },
+      {
+        "line": 144,
+        "text": "if(!scenes.length||ids.size!==scenes.length||trials.length!==scenes.length||new Set(trials.map(t=>t.scene)).size!==scenes.length)errors.push('scene-set');"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/features/data.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/features/index.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/features/lab.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 4,
+        "text": "const F=window.SpaceFoxF,R=window.SpaceFoxFR,D=window.SpaceFoxFeatureData,$=x=>document.querySelector(x),training=(await(await fetch('fixtures.json')).json()).scenes,bed=$('#bed');"
+      },
+      {
+        "line": 6,
+        "text": "const all=()=>campaign.generations.flatMap(g=>g.candidates),results=()=>{const m=new Map(campaign.generations.flatMap(g=>g.results).map(r=>[r.id,r]));for(const r of campaign.currentAudit?.results||[])m.set(r.id,r);return [...m.values()];};"
+      },
+      {
+        "line": 11,
+        "text": "async function run(cs,scenes){if(busy)throw Error('measurement already running');busy=true;const rs=[],records=[];try{for(const c of cs){const trials=[];for(const s of scenes){const face=R.render(c,s);bed.replaceChildren(face);const observation=R.measure(face,c,s),trial=F.evaluate(observation,s,c);trials.push(trial);re"
+      },
+      {
+        "line": 21,
+        "text": "campaign.generations.push({stage:'repair2',candidates:cs,scenes:known,...measured});const ids=new Set(training.map(s=>s.id)),records=measured.records.filter(r=>ids.has(r.scene));campaign.currentAudit.records.push(...records);campaign.currentAudit.results.push(...cs.map(c=>F.summarize(c.id,records.filter(r=>r.candidate="
+      },
+      {
+        "line": 22,
+        "text": "$('#repairWide').onclick=async()=>{try{if(all().some(c=>c.stage==='repair3'))throw Error('Wide repair already measured');const edge=campaign.controls.find(c=>c.kind==='stress');if(!edge?.results.some(r=>r.failures))throw Error('Retained OPENstressfailure required');const known=[...training,...campaign.controls.find(c=>"
+      },
+      {
+        "line": 28,
+        "text": "$('#control').onclick=async()=>{try{const input=JSON.parse($('#inputs').value),ids=$('#candidateIds').value.split(',').map(s=>s.trim()).filter(Boolean),cs=ids.map(id=>all().find(c=>c.id===id));if(cs.some(c=>!c)||new Set(ids).size!==ids.length)throw Error('unknown/duplicate candidates');const kind=$('#kind').value;if(!A"
+      },
+      {
+        "line": 29,
+        "text": "$('#exportButton').onclick=async()=>{const blob=new Blob([JSON.stringify(campaign)],{type:'application/json'}),stream=blob.stream().pipeThrough(new CompressionStream('gzip')),gz=await new Response(stream).blob(),a=document.createElement('a');a.href=URL.createObjectURL(gz);a.download='spacefox-feature-campaign.json.gz';"
+      },
+      {
+        "line": 30,
+        "text": "$('#load').onclick=async()=>{try{const response=await fetch('../../openspec/changes/expand-feature-research/evidence/campaign.json.gz');if(!response.ok)throw Error('\u041d\u0435\u0442 \u0441\u043e\u0445\u0440\u0430\u043d\u0451\u043d\u043d\u043e\u0433\u043e \u043f\u0440\u043e\u0433\u043e\u043d\u0430');campaign=JSON.parse(await new Response(response.body.pipeThrough(new DecompressionStream('gzip'))).text());output();refresh();se"
+      },
+      {
+        "line": 32,
+        "text": "const families=[...new Set(Object.values(F.fonts))];await Promise.all(families.map(f=>document.fonts.load(`600 80px '${f}'`)));await document.fonts.load(\"500 21px 'Noto Sans'\",'\u0420\u043e\u0441\u0441\u0438\u044f USA');await document.fonts.ready;"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/features/renderer.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 5,
+        "text": "const cache=new Map();let land;"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/features/review.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/features/review.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 3,
+        "text": "const params=new URLSearchParams(location.search),short=params.get('mode')==='shortlist',repair=params.get('mode')==='repair',ticket=params.get('mode')==='ticket',wide=params.get('mode')==='wide',marker=params.get('mode')==='marker',neutral=params.has('neutral'),overview=params.has('overview'),name=marker?'marker-selec"
+      },
+      {
+        "line": 12,
+        "text": "document.querySelector('#aodExport').onclick=()=>{const raw=document.querySelector('#raw');raw.style.display='block';raw.value=JSON.stringify([...document.querySelectorAll('.card canvas')].map(canvas=>({candidate:canvas.dataset.candidate,clock:scenes[Number(scene.value)].clock,countdown:scenes[Number(scene.value)].coun"
+      },
+      {
+        "line": 13,
+        "text": "await Promise.all([...new Set(Object.values(F.fonts))].map(f=>document.fonts.load(`600 80px '${f}'`)));await document.fonts.load(\"500 21px 'Noto Sans'\",'\u0420\u043e\u0441\u0441\u0438\u044f USA');await document.fonts.ready;paint();"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/features/sheet.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/features/sheet.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 3,
+        "text": "const response=await fetch('../../openspec/changes/expand-feature-research/evidence/campaign.json.gz'),c=JSON.parse(await new Response(response.body.pipeThrough(new DecompressionStream('gzip'))).text()),F=window.SpaceFoxF,R=window.SpaceFoxFR,all=c.generations.flatMap(g=>g.candidates),permutation=[9,0,5,10,2,8,7,11,1,6,"
+      },
+      {
+        "line": 6,
+        "text": "document.querySelector('#axis').onchange=paint;document.querySelector('#scene').onchange=paint;await Promise.all([...new Set(Object.values(F.fonts))].map(f=>document.fonts.load(`600 80px '${f}'`)));await document.fonts.load(\"500 21px 'Noto Sans'\",'\u0420\u043e\u0441\u0441\u0438\u044f USA');await document.fonts.ready;paint();"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/features/text-bounds.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/focus/index.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/focus/renderer.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/focus/review.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 2,
+        "text": "(async()=>{'use strict';const $=s=>document.querySelector(s),load=async p=>(await fetch(p,{cache:'no-store'})).json();"
+      },
+      {
+        "line": 22,
+        "text": "const sourceSHA256={},paths=[...new Set([...document.scripts].map(e=>e.getAttribute('src')).filter(Boolean).concat(['index.html','style.css','variants.json','../relay/variants.json','../marker/final-selection.json','../composition/scenes.json','../composition/additional-scenes.json','../composition/policy.json','../fea"
+      },
+      {
+        "line": 23,
+        "text": "for(const p of paths){const path=new URL(p,location.href).pathname.slice(1);sourceSHA256[path]=await hash(await(await fetch(p,{cache:'no-store'})).arrayBuffer());}"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/i18n.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/index.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/layout-data.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/layouts.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/layouts.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 69,
+        "text": "const button=document.createElement('button');button.type='button';button.className='enlarge';button.textContent='\u0420\u0430\u0441\u0441\u043c\u043e\u0442\u0440\u0435\u0442\u044c';button.setAttribute('aria-label',`\u0420\u0430\u0441\u0441\u043c\u043e\u0442\u0440\u0435\u0442\u044c ${v.id}: ${v.title}`);button.addEventListener('click',()=>{openId=v.id;document.getElementById('detail-title').textContent=`${v.id} \u00b7 ${v.title}`;d"
+      },
+      {
+        "line": 75,
+        "text": "for(const [id,key] of [['lab-launch','launch'],['lab-font','font'],['lab-state','status'],['lab-roll','roll'],['lab-clock','clock'],['lab-language','language']]){const input=document.getElementById(id);input.value=state[key];input.addEventListener('change',()=>{state[key]=input.value;render();try{localStorage.setItem('"
+      },
+      {
+        "line": 76,
+        "text": "document.getElementById('detail-close').addEventListener('click',()=>dialog.close());dialog.addEventListener('close',()=>{openId=null;});"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/marker/compare.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/marker/compare.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 2,
+        "text": "(async()=>{'use strict';const M=SpaceFoxM,R=SpaceFoxMR,D=SpaceFoxMarkerData,L=SpaceFoxLayoutData,$=s=>document.querySelector(s),final=await(await fetch('final-selection.json')).json();let family=0,sceneIndex=0,mode='overview';const old=M.controls();"
+      },
+      {
+        "line": 10,
+        "text": "await Promise.all([...new Set(Object.values(SpaceFoxF.fonts))].map(f=>document.fonts.load(`600 80px '${f}'`)));await document.fonts.load(\"500 21px 'Noto Sans'\",'\u0420\u043e\u0441\u0441\u0438\u044f USA');await document.fonts.ready;stats=measure();paint();})();"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/marker/core.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 11,
+        "text": "function validate(cs,ancestors=[]){if(!cs.length||new Set(cs.map(c=>c.id)).size!==cs.length||new Set(cs.map(signature)).size!==cs.length||cs.some(c=>ancestors.some(a=>a.id===c.id||signature(a)===signature(c))))throw Error('duplicate/empty rendered parameters');const ids=new Set([...ancestors,...cs].map(c=>c.id));"
+      },
+      {
+        "line": 24,
+        "text": "const cue=o.text.filter(t=>t.role==='launchCue');if(c.context?.cue&&s.fixture.point){if(cue.length!==1||cue[0].value!==(s.language==='ru'?'\u0421\u0422\u0410\u0420\u0422':'LAUNCH'))failures.push('launch-cue');}else if(cue.length)failures.push('invented-cue');return {...parent,failures:[...new Set(failures)]};}"
+      },
+      {
+        "line": 25,
+        "text": "function summarize(c,records){if(!records.length)throw Error('empty measurements');return {id:c.id,trials:records.length,failedScenes:records.filter(r=>r.failures.length).length,reasons:[...new Set(records.flatMap(r=>r.failures))],minGlyphClearance:Math.min(...records.filter(r=>r.observation.marker?.masks?.[390]).map(r"
+      },
+      {
+        "line": 26,
+        "text": "function qualify(c,scenes,records){const ids=new Set(scenes.map(s=>s.id)),errors=[];if(!scenes.length||ids.size!==scenes.length||records.length!==scenes.length||new Set(records.map(r=>r.scene)).size!==scenes.length)errors.push('scene-set');for(const r of records){const s=scenes.find(s=>s.id===r.scene);if(!s||r.candidat"
+      },
+      {
+        "line": 29,
+        "text": "function release(c,scenes,records,native,blind){const errors=[...qualify(c,scenes,records).errors];const expected=scenes.flatMap(s=>sizes.map(size=>s.id+':'+size));if(native.length!==expected.length||new Set(native.map(r=>r.scene+':'+r.size)).size!==expected.length||native.some(r=>r.candidate!==c.id||!expected.includes"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/marker/data.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/marker/index.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/marker/lab.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 8,
+        "text": "async function measure(cs,scenes){if(busy)throw Error('busy');busy=true;const records=[],rs=[];try{for(const c of cs){const trials=[];for(const s of scenes){const face=R.render(c,s);bed.replaceChildren(face);const out=await R.measure(face,c,s),observation=out.observation,t=M.evaluate(observation,s,c);let assetKey=null;"
+      },
+      {
+        "line": 15,
+        "text": "$('#all').onclick=()=>show(all());$('#final').onclick=guard(async()=>{const selection=await(await fetch('final-selection.json')).json();show(selection.candidates);$('#status').textContent='\u041f\u044f\u0442\u044c \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0445 \u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0439 \u0438\u0437 G2/G3; \u043f\u043e\u0434\u0440\u043e\u0431\u043d\u044b\u0435 \u0433\u0440\u0430\u043d\u0438\u0446\u044b \u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0438 \u2014 \u0432 \u043e\u0442\u0447\u0451\u0442\u0435.';});"
+      },
+      {
+        "line": 17,
+        "text": "$('#load').onclick=guard(async()=>{const r=await fetch('../../openspec/changes/make-launch-site-obvious/evidence/campaign.json.gz');campaign=JSON.parse(await new Response(r.body.pipeThrough(new DecompressionStream('gzip'))).text());summary();show(all().slice(-10));$('#status').textContent='\u0421\u043e\u0445\u0440\u0430\u043d\u0451\u043d\u043d\u044b\u0439 \u043f\u0440\u043e\u0433\u043e\u043d \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043d';"
+      },
+      {
+        "line": 18,
+        "text": "$('#control').onclick=guard(async()=>{const ids=$('#ids').value.split(',').map(s=>s.trim()),cs=ids.map(id=>all().find(c=>c.id===id)),scenes=JSON.parse($('#scenes').value).scenes;if(cs.some(c=>!c)||new Set(ids).size!==ids.length||scenes.length!==24)throw Error('24 scenes/known distinct IDs required');const out=await mea"
+      },
+      {
+        "line": 23,
+        "text": "$('#prepare').onclick=guard(async()=>{jobs=await(await fetch($('#jobs').value)).json();cursor=0;document.body.classList.add('capture');capture();});$('#next').onclick=guard(async()=>{cursor++;capture();});$('#exit').onclick=()=>{document.body.classList.remove('capture');painted=null;};"
+      },
+      {
+        "line": 24,
+        "text": "await Promise.all([...new Set(Object.values(SpaceFoxF.fonts))].map(f=>document.fonts.load(`600 80px '${f}'`)));await document.fonts.load(\"500 21px 'Noto Sans'\",'\u0420\u043e\u0441\u0441\u0438\u044f USA');await document.fonts.ready;show(M.controls());$('#status').textContent='\u0413\u043e\u0442\u043e\u0432\u043e \u00b7 30 \u2192 20 \u2192 10 + \u043f\u044f\u0442\u044c \u043f\u0440\u0435\u0436\u043d\u0438\u0445 \u043a\u043e\u043d\u0442\u0440\u043e\u043b\u0435\u0439';"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/marker/renderer.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 4,
+        "text": "const M=root.SpaceFoxM,F=root.SpaceFoxF,R=root.SpaceFoxFR,NS='http://www.w3.org/2000/svg',BG='#050a11',cache=new Map();"
+      },
+      {
+        "line": 45,
+        "text": "function nonMarker(face,c){const omitted=new Set(getElements(face,c));for(const e of face.querySelectorAll('[data-marker-related]'))omitted.add(e);const b=face.getBoundingClientRect(),k=390/b.width;"
+      },
+      {
+        "line": 58,
+        "text": "async function drawMask(text,size){const img=new Image();img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(text);await img.decode();const canvas=document.createElement('canvas');canvas.width=canvas.height=size;const ctx=canvas.getContext('2d',{willReadFrequently:true});ctx.drawImage(img,0,0,size,size);cons"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/marker/review.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/marker/review.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 2,
+        "text": "(async()=>{'use strict';const D=SpaceFoxMarkerData,R=SpaceFoxMR,L=SpaceFoxLayoutData,$=s=>document.querySelector(s),selection=await(await fetch('final-selection.json')).json();let language='ru',key='falcon';"
+      },
+      {
+        "line": 6,
+        "text": "$('#scene').onchange=()=>{key=$('#scene').value;render();};$('#language').onclick=()=>{language=language==='ru'?'en':'ru';$('#language').textContent=language==='ru'?'English':'\u0420\u0443\u0441\u0441\u043a\u0438\u0439';menu();render();};$('#size').onclick=()=>document.body.classList.toggle('native');$('#animate').onclick=()=>{document.querySelectorAll("
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/mission.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 294,
+        "text": "select.addEventListener('change',()=>{state.fields[Number(select.dataset.field)]=select.value;render();save();});"
+      },
+      {
+        "line": 297,
+        "text": "select.addEventListener('change',()=>{state[key]=select.value;render();save();});"
+      },
+      {
+        "line": 300,
+        "text": "input.addEventListener('change',()=>{state[key]=input.checked;render();save();});"
+      },
+      {
+        "line": 302,
+        "text": "root.querySelector('.accent-input').addEventListener('input',event=>{state.accent=event.target.value;render();save();});"
+      },
+      {
+        "line": 303,
+        "text": "root.querySelector('.raise-wrist').addEventListener('click',()=>{"
+      },
+      {
+        "line": 304,
+        "text": "clearTimeout(wakeTimer);cancelAnimationFrame(frameId);wakeUntil=Date.now()+3000;dial.classList.remove('waking');"
+      },
+      {
+        "line": 307,
+        "text": "const frame=now=>{if(!root.isConnected)return;const progress=Math.min(1,(now-start)/2600);drawGeo(14*Math.sin(Math.PI*progress));if(progress<1)frameId=requestAnimationFrame(frame);};"
+      },
+      {
+        "line": 308,
+        "text": "frameId=requestAnimationFrame(frame);"
+      },
+      {
+        "line": 310,
+        "text": "renderClock();wakeTimer=setTimeout(()=>{wakeUntil=0;dial.classList.remove('waking');drawGeo();renderClock();},3000);"
+      },
+      {
+        "line": 315,
+        "text": "window.addEventListener('openai:set_globals',event=>{if(event.detail?.globals?.widgetState){restore(event.detail.globals.widgetState);render();}});"
+      },
+      {
+        "line": 316,
+        "text": "const observer=new ResizeObserver(()=>drawGeo());observer.observe(geo);"
+      },
+      {
+        "line": 317,
+        "text": "const ticker=setInterval(()=>{if(!root.isConnected){clearInterval(ticker);clearTimeout(wakeTimer);cancelAnimationFrame(frameId);observer.disconnect();return;}renderClock();if(!geoReady)drawGeo();},1000);"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/mission.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 124,
+        "text": "select.addEventListener('change',()=>{state.fields[Number(select.dataset.field)]=select.value;render();save();});"
+      },
+      {
+        "line": 127,
+        "text": "select.addEventListener('change',()=>{state[key]=select.value;render();save();});"
+      },
+      {
+        "line": 130,
+        "text": "input.addEventListener('change',()=>{state[key]=input.checked;render();save();});"
+      },
+      {
+        "line": 132,
+        "text": "root.querySelector('.accent-input').addEventListener('input',event=>{state.accent=event.target.value;render();save();});"
+      },
+      {
+        "line": 133,
+        "text": "root.querySelector('.raise-wrist').addEventListener('click',()=>{"
+      },
+      {
+        "line": 134,
+        "text": "clearTimeout(wakeTimer);cancelAnimationFrame(frameId);wakeUntil=Date.now()+3000;dial.classList.remove('waking');"
+      },
+      {
+        "line": 137,
+        "text": "const frame=now=>{if(!root.isConnected)return;const progress=Math.min(1,(now-start)/2600);drawGeo(14*Math.sin(Math.PI*progress));if(progress<1)frameId=requestAnimationFrame(frame);};"
+      },
+      {
+        "line": 138,
+        "text": "frameId=requestAnimationFrame(frame);"
+      },
+      {
+        "line": 140,
+        "text": "renderClock();wakeTimer=setTimeout(()=>{wakeUntil=0;dial.classList.remove('waking');drawGeo();renderClock();},3000);"
+      },
+      {
+        "line": 145,
+        "text": "window.addEventListener('openai:set_globals',event=>{if(event.detail?.globals?.widgetState){restore(event.detail.globals.widgetState);render();}});"
+      },
+      {
+        "line": 146,
+        "text": "const observer=new ResizeObserver(()=>drawGeo());observer.observe(geo);"
+      },
+      {
+        "line": 147,
+        "text": "const ticker=setInterval(()=>{if(!root.isConnected){clearInterval(ticker);clearTimeout(wakeTimer);cancelAnimationFrame(frameId);observer.disconnect();return;}renderClock();if(!geoReady)drawGeo();},1000);"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/mission.template.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/qualification/core.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 21,
+        "text": "return {scene:s.id,failures:[...new Set(failures)],outsideBenchmark:Object.keys(limits).filter(k=>graphemes(s.fixture[k].displayLabel)>limits[k]),minGap:Number.isFinite(gap)?gap:0,inkHeight:o.text?.find(t=>t.role==='time')?.inkHeight||0,geoArea:o.geoArea||0};"
+      },
+      {
+        "line": 25,
+        "text": "function summarize(id,trials){if(!trials.length)throw Error('empty measurements');return {id,trials:trials.length,failedScenes:trials.filter(t=>t.failures.length).length,failures:trials.reduce((n,t)=>n+t.failures.length,0),reasons:[...new Set(trials.flatMap(t=>t.failures))],minGap:Math.min(...trials.map(t=>t.minGap)),g"
+      },
+      {
+        "line": 26,
+        "text": "function evolve(previous,results,generation){if(![2,3].includes(generation)||results.length!==previous.length||new Set(results.map(r=>r.id)).size!==previous.length||previous.some(c=>!results.some(r=>r.id===c.id&&r.trials>0&&Number.isFinite(r.failures))))throw Error('incomplete measured parents');const count=generation="
+      },
+      {
+        "line": 27,
+        "text": "function validateCatalog(cs,ancestors=[]){if(!cs.length||new Set(cs.map(signature)).size!==cs.length||new Set(cs.map(c=>c.id)).size!==cs.length)throw Error('empty or duplicate');for(const c of cs)if(!families.includes(c.family)||![c.shift,c.scale,c.rotation,c.metadata].every(Number.isFinite)||c.generation>1&&!ancestors"
+      },
+      {
+        "line": 30,
+        "text": "function qualifyTrials(id,scenes,trials){const errors=[],ids=new Set(scenes.map(s=>s.id));if(!scenes.length||ids.size!==scenes.length||trials.length!==scenes.length||new Set(trials.map(t=>t.scene)).size!==scenes.length)errors.push('incomplete scenes');for(const t of trials){const s=scenes.find(s=>s.id===t.scene);if(!s|"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/qualification/index.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/qualification/lab.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 20,
+        "text": "async function run(cs,scenes){const results=[],records=[];for(const c of cs){const trials=[];for(const s of scenes){const face=R.render(c,s);bed.replaceChildren(face);const observation=R.measure(face,c,s),result=Q.evaluate(observation,s);trials.push(result);records.push({candidate:c.id,...result,observation});}results."
+      },
+      {
+        "line": 24,
+        "text": "$('#load').onclick=async()=>{try{const response=await fetch('../../openspec/changes/independently-qualify-layouts/evidence/campaign-with-holdout.json');if(!response.ok)throw Error('No saved campaign');campaign=await response.json();$('#next').disabled=campaign.generations.length>=3;$('#final').disabled=false;$('#status"
+      },
+      {
+        "line": 26,
+        "text": "$('#repairRun').onclick=async()=>{try{if(!campaign.pendingRepair||campaign.generations.length!==3)throw Error('\u0421\u043d\u0430\u0447\u0430\u043b\u0430 \u043f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u0438\u0442\u044c \u0440\u0435\u043c\u043e\u043d\u0442');const cs=campaign.pendingRepair,scenes=[...training,...campaign.holdouts[0].scenes],measured=await run(cs,scenes);Q.validateCatalog(cs,campaign.generations.flatMap(g=>g.candidates)"
+      },
+      {
+        "line": 30,
+        "text": "$('#repairRun').onclick=async()=>{if(!campaign.pendingLimb)return measureFirstRepair();const cs=campaign.pendingLimb,g=campaign.generations[3],scenes=g.scenes,measured=await run(cs,scenes);Q.validateCatalog([...g.candidates,...cs],campaign.generations.slice(0,3).flatMap(g=>g.candidates));g.candidates.push(...cs);g.resu"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/qualification/renderer.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/qualification/review.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/qualification/review.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 3,
+        "text": "const c=await (await fetch('../../openspec/changes/independently-qualify-layouts/evidence/campaign-with-holdout.json')).json(),R=window.SpaceFoxQR,all=c.generations.flatMap(g=>g.candidates),holdout=c.holdouts[0].scenes,label=displayLabel=>({full:displayLabel,displayLabel});"
+      },
+      {
+        "line": 11,
+        "text": "const exportButton=document.createElement('button');exportButton.textContent='\u042d\u043a\u0441\u043f\u043e\u0440\u0442 \u0438\u0441\u0445\u043e\u0434\u043d\u044b\u0445 AOD';document.querySelector('.toolbar').append(exportButton);const exported=document.createElement('textarea');exported.readOnly=true;exported.setAttribute('aria-label','\u0418\u0441\u0445\u043e\u0434\u043d\u044b\u0435 AOD');exported.style.display='none';document.q"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/relay/header-renderer.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/relay/header-review.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 3,
+        "text": "const [config,paintConfig,selection,author,extra,policy,cache]=await Promise.all(['header-variants.json','variants.json','../marker/final-selection.json','../composition/scenes.json','../composition/additional-scenes.json','../composition/policy.json',cacheURL].map(async p=>(await fetch(p,{cache:'no-store'})).json()));"
+      },
+      {
+        "line": 13,
+        "text": "for(const[path,expected]of Object.entries(cache.sourceSHA256)){const actual=await hash(await(await fetch('../../'+path,{cache:'no-store'})).arrayBuffer());if(actual!==expected)throw Error('\u0418\u0441\u0445\u043e\u0434\u043d\u0438\u043a \u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044f \u0438\u0437\u043c\u0435\u043d\u0438\u043b\u0441\u044f: '+path);}"
+      },
+      {
+        "line": 15,
+        "text": "const sourceSHA256={};for(const file of ['header-variants.json','header-renderer.js','header-review.js','header.html'])sourceSHA256['prototype/relay/'+file]=await hash(await(await fetch(file,{cache:'no-store'})).arrayBuffer());"
+      },
+      {
+        "line": 16,
+        "text": "result={baseId:paintConfig.baseId,paintId:'clear',config,scenes,sourceSHA256,retainedControls:{url:cacheURL,sha256:await hash(await(await fetch(cacheURL,{cache:'no-store'})).arrayBuffer()),sceneCount:14,method:'Previously observed clear-map controls reused after scene and original-source hash verification; no new contr"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/relay/header.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/relay/index.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/relay/renderer.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/relay/review.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 3,
+        "text": "const [config,selection,author,additional,policy]=await Promise.all(['variants.json','../marker/final-selection.json','../composition/scenes.json','../composition/additional-scenes.json','../composition/policy.json'].map(async file=>(await fetch(file,{cache:'no-store'})).json()));"
+      },
+      {
+        "line": 10,
+        "text": "$('#measure').onclick=async()=>{document.querySelectorAll('.toolbar button,.toolbar select').forEach(e=>e.disabled=true);$('#download').disabled=true;const rows=[];try{for(const s of scenes){let baseline,baselineSnapshot;for(const v of config.variants){$('#status').textContent='\u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 '+s.id+' \u00b7 '+v.name;const f=face"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/research/fixtures.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/research/generator.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 35,
+        "text": "const ids=new Set(),parameters=new Set(),parents=new Set(knownParents.map(x=>x.id));"
+      },
+      {
+        "line": 57,
+        "text": "const byId=new Map(results.map(r=>[r.id,r]));"
+      },
+      {
+        "line": 133,
+        "text": "const all=generations.flatMap(g=>g.candidates),measurements=new Map(generations.flatMap(g=>g.results).map(r=>[r.id,r])),out=[];"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/research/index.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/research/lab.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 7,
+        "text": "const chosen=new Map();let busy=false;"
+      },
+      {
+        "line": 9,
+        "text": "const waitFrame=()=>new Promise(resolve=>requestAnimationFrame(resolve));"
+      },
+      {
+        "line": 15,
+        "text": "function ranked(candidates){const results=new Map(allResults().map(r=>[r.id,r]));return [...candidates].sort((a,b)=>(results.get(a.id)?.failures||0)-(results.get(b.id)?.failures||0)||(results.get(b.id)?.rank||0)-(results.get(a.id)?.rank||0)||a.id.localeCompare(b.id));}"
+      },
+      {
+        "line": 21,
+        "text": "candidates=ranked(candidates);const results=new Map(allResults().map(r=>[r.id,r]));"
+      },
+      {
+        "line": 57,
+        "text": "const before=new Set(allCandidates().map(G.signature));if(candidates.some(c=>before.has(G.signature(c))))throw Error('Duplicate cross-generation visual parameters');"
+      },
+      {
+        "line": 92,
+        "text": "const response=await fetch('../../openspec/changes/evolve-spacefox-layouts/evidence/campaign-checkpoint.json');if(!response.ok)throw Error('Saved run unavailable');const snapshot=await response.json(),restored=snapshot.campaign||snapshot;"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/research/metrics.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 37,
+        "text": "return {failures:[...new Set(failures)],truncations,geoArea:area,capClearance:scene.kind==='horizon'&&geo?.circle?geo.circle.y-geo.circle.r-geo.y:null,siteFont,siteWidth:text.find(t=>t.role==='site')?.w||0,timeFont:text.find(t=>t.role==='time')?.font||0,"
+      },
+      {
+        "line": 43,
+        "text": "reasons:[...new Set(trials.flatMap(t=>t.failures))],truncations:Math.max(...trials.map(t=>t.truncations)),geoArea:Math.min(...trials.map(t=>t.geoArea)),"
+      },
+      {
+        "line": 50,
+        "text": "if(candidates.length<200||new Set(candidates.map(c=>c.id)).size!==candidates.length)failures.push('candidate-count');"
+      },
+      {
+        "line": 51,
+        "text": "const audit=campaign.currentAudit,ids=new Set(audit?.results?.map(r=>r.id));"
+      },
+      {
+        "line": 55,
+        "text": "const signatures=new Set();let previous=[];"
+      },
+      {
+        "line": 58,
+        "text": "const ids=new Set(g.results?.map(r=>r.id));"
+      },
+      {
+        "line": 61,
+        "text": "if(campaign.finalists?.length!==3||new Set(campaign.finalists?.map(f=>f.kind)).size!==3||['globe','map','horizon'].some(k=>!campaign.finalists?.some(f=>f.kind===k)))failures.push('three-families');"
+      },
+      {
+        "line": 63,
+        "text": "const expected=new Set(Array.from({length:6},(_,i)=>['ru','en'].flatMap(lang=>['both','tbd'].map(status=>`validation-${i+1}-${lang}-${status}`))).flat());"
+      },
+      {
+        "line": 68,
+        "text": "if(!candidates.some(c=>c.id===f.id&&c.kind===f.kind)||f.scenes?.length!==24||new Set(f.scenes?.map(s=>s.scene)).size!==24||f.scenes?.some(s=>s.candidate!==f.id||s.failures.length))failures.push('scene-evidence:'+f.id);"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/research/renderer.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 4,
+        "text": "const ns='http://www.w3.org/2000/svg',cache=new Map();let countries;"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/rocket-models/core.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 6,
+        "text": "for(const group of ['models','companies','countries']){const ids=new Set(),aliases=new Set();if(!Array.isArray(c[group])||!c[group].length)throw Error('Missing category');for(const a of c[group]){if(ids.has(a.id)||!a.id||a.license!=='MIT'||!a.creator||!a.sources?.length)throw Error('Invalid asset identity/rights');ids."
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/rocket-models/index.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/rocket-models/renderer.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 4,
+        "text": "const base='../../assets/rocket-pack/',catalog=await(await fetch(base+'catalog.json',{cache:'no-store'})).json();root.SpaceFoxRocketIdentity.validate(catalog);const assets={};"
+      },
+      {
+        "line": 5,
+        "text": "await Promise.all(['models','companies','countries'].flatMap(k=>catalog[k]).map(async a=>{const bytes=await(await fetch(base+a.svg.path,{cache:'no-store'})).arrayBuffer(),digest=[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(v=>v.toString(16).padStart(2,'0')).join('');if(digest!==a.svg.sha256)thro"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/rocket-models/review.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 2,
+        "text": "(async()=>{'use strict';const $=s=>document.querySelector(s),load=async p=>(await fetch(p,{cache:'no-store'})).json();"
+      },
+      {
+        "line": 16,
+        "text": "for(const [path,digest]of Object.entries(control.sourceSHA256))if(await hash(await(await fetch('../../'+path,{cache:'no-store'})).arrayBuffer())!==digest)throw Error('Retained control source drift: '+path);"
+      },
+      {
+        "line": 18,
+        "text": "const sourceSHA256={},paths=[...new Set([...document.scripts].map(e=>e.getAttribute('src')).filter(Boolean).concat(['index.html','style.css','config.json','../focus/style.css','../features/style.css','../qualification/style.css','../fonts/fonts.css','../relay/variants.json','../marker/final-selection.json','../composit"
+      },
+      {
+        "line": 19,
+        "text": "result={rows,config,sourceScenes:scenes,sourceSHA256,retainedControl:{file:'openspec/changes/enlarge-relay-fields/evidence/countdown-status/browser.json',sha256:await hash(await(await fetch('../../openspec/changes/enlarge-relay-fields/evidence/countdown-status/browser.json',{cache:'no-store'})).arrayBuffer()),row:contr"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/vendor/d3-7.9.0.min.js",
+    "package": "browser-prototype-research",
+    "vendor": true,
+    "resource_sites": [],
+    "boundary": "Pinned vendor dependency, invocation/bounds reviewed at caller; minified implementation not manually re-reviewed"
+  },
+  {
+    "path": "prototype/vendor/lucide-0.468.0.min.js",
+    "package": "browser-prototype-research",
+    "vendor": true,
+    "resource_sites": [],
+    "boundary": "Pinned vendor dependency, invocation/bounds reviewed at caller; minified implementation not manually re-reviewed"
+  },
+  {
+    "path": "prototype/vendor/topojson-client-3.1.0.min.js",
+    "package": "browser-prototype-research",
+    "vendor": true,
+    "resource_sites": [],
+    "boundary": "Pinned vendor dependency, invocation/bounds reviewed at caller; minified implementation not manually re-reviewed"
+  },
+  {
+    "path": "prototype/wide-map/exposure.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 8,
+        "text": "const doc=svg('svg',{xmlns:NS,width:N,height:N,viewBox:'0 0 390 390'});doc.append(clone);const url=URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(doc)],{type:'image/svg+xml'})),im=new Image();let bytes;"
+      },
+      {
+        "line": 9,
+        "text": "try{await new Promise((yes,no)=>{im.onload=yes;im.onerror=()=>no(Error('Exposure SVG raster failed'));im.src=url;});const canvas=document.createElement('canvas');canvas.width=canvas.height=N;const ctx=canvas.getContext('2d',{willReadFrequently:true});ctx.drawImage(im,0,0);bytes=ctx.getImageData(0,0,N,N).data;}finally{U"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/wide-map/index.html",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/wide-map/renderer.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "prototype/wide-map/review.js",
+    "package": "browser-prototype-research",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 2,
+        "text": "(async()=>{'use strict';const $=s=>document.querySelector(s),load=async p=>(await fetch(p,{cache:'no-store'})).json();"
+      },
+      {
+        "line": 14,
+        "text": "for(const[path,digest]of Object.entries(control.sourceSHA256))if(await hash(await(await fetch('../../'+path,{cache:'no-store'})).arrayBuffer())!==digest)throw Error('Retained control source drift: '+path);"
+      },
+      {
+        "line": 17,
+        "text": "const sourceSHA256={},paths=[...new Set([...document.scripts].map(e=>e.getAttribute('src')).filter(Boolean).concat(['index.html','style.css','variants.json','../focus/style.css','../features/style.css','../qualification/style.css','../fonts/fonts.css','../fonts/RobotoCondensed-latin-600.woff2','../fonts/BarlowSemiConde"
+      },
+      {
+        "line": 18,
+        "text": "result={rows,config,sourceScenes:scenes,sourceSHA256,retainedControl:{file:'openspec/changes/prepare-model-rocket-assets/evidence/browser.json',sha256:await hash(await(await fetch('../../openspec/changes/prepare-model-rocket-assets/evidence/browser.json',{cache:'no-store'})).arrayBuffer()),row:control.rows.find(r=>r.sc"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "tests/native_scene_diagnostics/RunInstalled.java",
+    "package": "host-tests-fixtures",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 19,
+        "text": "String[] cmd=ShellUtils.getShellCommand(shellPath,port).toArray(new String[0]);shell.start(Runtime.getRuntime().exec(cmd));shell.sendMessage(\"ciq\");"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "tests/test_schedule_clock.mjs",
+    "package": "host-tests-fixtures",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "tests/test_schedule_clock_configuration.mjs",
+    "package": "host-tests-fixtures",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 5,
+        "text": "const configuration = readFileSync(new URL('../deploy/cloudflare-schedule/wrangler.toml', import.meta.url), 'utf8');"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "tests/test_schedule_clock_deadline.mjs",
+    "package": "host-tests-fixtures",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "tools/ReleaseInspector.java",
+    "package": "engineering-tools",
+    "vendor": false,
+    "resource_sites": [],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "tools/analyze_features.js",
+    "package": "engineering-tools",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 5,
+        "text": "const campaign=JSON.parse(zlib.gunzipSync(fs.readFileSync(input))),candidates=campaign.generations.flatMap(g=>g.candidates),audit=campaign.currentAudit;"
+      },
+      {
+        "line": 9,
+        "text": "const paramGroups=new Map(),paintGroups=new Map();"
+      },
+      {
+        "line": 20,
+        "text": "sourceArchiveSha256:crypto.createHash('sha256').update(fs.readFileSync(input)).digest('hex'),candidates:candidates.length,rawCurrentRecords:audit.records.length,parameterUnique:paramGroups.size,computedPaintDistinct:paintGroups.size,"
+      },
+      {
+        "line": 25,
+        "text": "fs.writeFileSync(process.argv[3]||'/tmp/spacefox-feature-analysis.json',JSON.stringify(result,null,2)+'\\n');"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "tools/annotate_marker_aa.js",
+    "package": "engineering-tools",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 2,
+        "text": "const fs=require('fs'),z=require('zlib'),crypto=require('crypto'),{png}=require('./audit_marker_native.js'),file=process.argv[2],x=JSON.parse(z.gunzipSync(fs.readFileSync(file))),cache=new Map();for(const a of Object.values(x.assets))for(const [size,m]of Object.entries(a.sizes))for(const [part,p]of Object.entries(m.par"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "tools/audit_marker_native.js",
+    "package": "engineering-tools",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 4,
+        "text": "const cache=new Map();function readImage(file){if(!cache.has(file)){let p=file;if(path.extname(file)==='.jpg'){p=file+'.decoded.png';if(!fs.existsSync(p))cp.execFileSync('/usr/bin/sips',['-s','format','png',file,'--out',p],{stdio:'ignore'});}cache.set(file,png(fs.readFileSync(p)));}return cache.get(file);}"
+      },
+      {
+        "line": 7,
+        "text": "function audit(campaign,dir){const records=campaign.controls.concat(campaign.generations).flatMap(g=>g.records),groups=new Map();for(const f of fs.readdirSync(dir).filter(f=>f.endsWith('.json'))){const meta=JSON.parse(fs.readFileSync(path.join(dir,f)));for(const t of meta.trials){const key=[t.candidate,t.scene,t.size]."
+      },
+      {
+        "line": 15,
+        "text": "if(require.main===module){const x=JSON.parse(z.gunzipSync(fs.readFileSync(process.argv[2]))),out=audit(x,process.argv[3]);fs.writeFileSync(process.argv[4],JSON.stringify(out,null,2));console.log(out.counts);}module.exports={png,audit};"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "tools/audit_native_motion_pixels.js",
+    "package": "engineering-tools",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 10,
+        "text": "const x = png(fs.readFileSync(path.join(directory, a)));"
+      },
+      {
+        "line": 11,
+        "text": "const y = png(fs.readFileSync(path.join(directory, b)));"
+      },
+      {
+        "line": 27,
+        "text": "n,crypto.createHash('sha256').update(fs.readFileSync(path.join(directory,n))).digest('hex')]))"
+      },
+      {
+        "line": 30,
+        "text": "const retained=JSON.parse(fs.readFileSync(path.join(packet,'pixel-audit.json')));"
+      },
+      {
+        "line": 33,
+        "text": "} else fs.writeFileSync(path.join(packet,'pixel-audit.json'),JSON.stringify(result,null,2)+'\\n');"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "tools/native_map_paths.js",
+    "package": "engineering-tools",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 4,
+        "text": "for(const p of ['prototype/vendor/d3-7.9.0.min.js','prototype/vendor/topojson-client-3.1.0.min.js','prototype/layout-data.js'])vm.runInContext(fs.readFileSync(path.join(root,p),'utf8'),c);"
+      },
+      {
+        "line": 5,
+        "text": "const points=JSON.parse(fs.readFileSync(process.argv[2],'utf8')),world=c.topojson.feature(c.SpaceFoxLayoutData.world,c.SpaceFoxLayoutData.world.objects.features),out=[];"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "tools/native_marker_svg.js",
+    "package": "engineering-tools",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 12,
+        "text": "vm.runInContext(fs.readFileSync(path.join(__dirname, '../prototype/marker/renderer.js'), 'utf8'), context);"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "tools/recheck_feature_records.js",
+    "package": "engineering-tools",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 4,
+        "text": "const path=process.argv[2],c=JSON.parse(zlib.gunzipSync(fs.readFileSync(path))),cs=c.generations.flatMap(g=>g.candidates),before=crypto.createHash('sha256').update(fs.readFileSync(path)).digest('hex');"
+      },
+      {
+        "line": 7,
+        "text": "c.currentAudit.evaluatorRecheck={method:'Existing DOM geometry unchanged; evaluator-only complete-word guard reevaluation, not new browser observations',parentArchiveSha256:before,sources:Object.fromEntries(['prototype/features/core.js','prototype/features/text-bounds.js'].map(p=>[p,crypto.createHash('sha256').update(f"
+      },
+      {
+        "line": 9,
+        "text": "fs.writeFileSync(path,zlib.gzipSync(JSON.stringify(c)));process.stdout.write(JSON.stringify({records:c.currentAudit.records.length,passed:c.currentAudit.results.filter(r=>!r.failures).length,regression:c.controls.filter(x=>x.kind==='regression80').flatMap(x=>x.qualification)})+'\\n');"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "tools/recheck_markers.js",
+    "package": "engineering-tools",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 2,
+        "text": "const fs=require('fs'),z=require('zlib'),M=require('../prototype/marker/core.js');const path=process.argv[2],x=JSON.parse(z.gunzipSync(fs.readFileSync(path)));for(const g of [...x.generations,...x.controls]){const scenes=g.scenes||x.training;for(const r of g.records){const c=(g.candidates||x.generations.flatMap(g=>g.ca"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "tools/reconcile_composition.js",
+    "package": "engineering-tools",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 4,
+        "text": "const root=path.resolve(__dirname,'..'),folder=path.join(root,'openspec/changes/compose-brighter-geography/evidence'),read=name=>JSON.parse(fs.readFileSync(path.join(folder,name),'utf8')),hash=name=>crypto.createHash('sha256').update(fs.readFileSync(path.join(folder,name))).digest('hex'),baseline=read('controls-v3-brow"
+      },
+      {
+        "line": 6,
+        "text": "const file=name+'-v2-browser.json',data=read(file),ids=new Set(data.scenes.map(s=>s.id));"
+      },
+      {
+        "line": 12,
+        "text": "fs.writeFileSync(path.join(folder,name+'-browser.json'),JSON.stringify(data)+'\\n');"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "tools/spacefox/bridge_map_render.js",
+    "package": "engineering-tools",
+    "vendor": false,
+    "resource_sites": [
+      {
+        "line": 3,
+        "text": "const input = JSON.parse(fs.readFileSync(0, 'utf8'));"
+      },
+      {
+        "line": 33,
+        "text": "const rectangles=[],active=new Map();"
+      },
+      {
+        "line": 34,
+        "text": "for(const row of rows){const next=new Map();for(const r of row){const key=[r[0],r[1],r[3]].join(':');const old=active.get(key);"
+      }
+    ],
+    "boundary": "Text resource-site index, not JS/Java call-graph or runtime evidence"
+  },
+  {
+    "path": "tools/vendor/d3-7.9.0.min.js",
+    "package": "engineering-tools",
+    "vendor": true,
+    "resource_sites": [],
+    "boundary": "Pinned vendor dependency, invocation/bounds reviewed at caller; minified implementation not manually re-reviewed"
+  },
+  {
+    "path": "tools/vendor/topojson-client-3.1.0.min.js",
+    "package": "engineering-tools",
+    "vendor": true,
+    "resource_sites": [],
+    "boundary": "Pinned vendor dependency, invocation/bounds reviewed at caller; minified implementation not manually re-reviewed"
+  }
+]

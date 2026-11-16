@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "base": "943f320c33b253b913eb8276d1c09b65d51a6c8a",
+  "tracked_file_rows": 18772,
+  "tracked_bytes": 1317586758,
+  "native_source_files": 38,
+  "publisher_modules": 19,
+  "python_files_ast_parsed": 431,
+  "native_resource_rows": 275,
+  "supporting_scripts": 94,
+  "engineering_commands": 163,
+  "findings": 27,
+  "review_methods": {
+    "RESOURCE_PATH_REVIEW_WITH_AST_INDEX": 32,
+    "DOC_OR_BUILD_METADATA_INVENTORY": 283,
+    "STATIC_SOURCE_DATA_INVENTORY": 960,
+    "AST_RESOURCE_INDEX_OUTSIDE_SHIPPING_RUNTIME": 404,
+    "RETAINED_ARTIFACT_NOT_CURRENT_CODE": 15636,
+    "RESEARCH_RESOURCE_SITE_INDEX_NOT_NATIVE": 122,
+    "FULL_SOURCE_READ": 42,
+    "PINNED_THIRD_PARTY_CALLER_BOUNDARY": 5,
+    "TEST_OR_PROBE_NOT_CURRENT_RUNTIME": 1013,
+    "RESOURCE_METADATA_REVIEW": 275
+  },
+  "product_or_test_diff": false,
+  "product_tests_rerun": false,
+  "paid_or_provider_calls": false,
+  "proof_boundary": "Audit artifact consistency/source identity only, not independent semantic review, native runtime, physical memory, battery, CI performance or release acceptance"
+}

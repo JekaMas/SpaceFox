@@ -1,0 +1,65 @@
+{
+  "boundary": "One offline geography cache lifecycle. cache_clear used only inside this diagnostic process. CPython traced objects and high-water RSS are different; not a watch or physical-power measurement",
+  "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 16.0.0 (clang-1600.0.26.6)]",
+  "base": "943f320c33b253b913eb8276d1c09b65d51a6c8a",
+  "seconds": 4.952845916617662,
+  "source_pin": {
+    "path": "catalog/geography/regional-20261112-r3/source.json",
+    "sha256": "7085be07fe5a3dcc5b7fdddc42b9dbd6fc1c8c73d57c4821c9fa7b755e45335e"
+  },
+  "summary": {
+    "records": 12763,
+    "original_vertices": 149103,
+    "supplement_rings": 731
+  },
+  "phases": [
+    {
+      "phase": "before",
+      "python_traced_current": 936,
+      "python_traced_peak": 982,
+      "process_peak_rss_bytes_macos": 33980416,
+      "cache": {
+        "hits": 0,
+        "misses": 0,
+        "maxsize": 4,
+        "currsize": 0
+      }
+    },
+    {
+      "phase": "loaded",
+      "python_traced_current": 63974430,
+      "python_traced_peak": 66250569,
+      "process_peak_rss_bytes_macos": 245792768,
+      "cache": {
+        "hits": 0,
+        "misses": 1,
+        "maxsize": 4,
+        "currsize": 1
+      }
+    },
+    {
+      "phase": "caller_reference_dropped",
+      "python_traced_current": 63975174,
+      "python_traced_peak": 66250569,
+      "process_peak_rss_bytes_macos": 245792768,
+      "cache": {
+        "hits": 0,
+        "misses": 1,
+        "maxsize": 4,
+        "currsize": 1
+      }
+    },
+    {
+      "phase": "cache_cleared",
+      "python_traced_current": 8615,
+      "python_traced_peak": 66250569,
+      "process_peak_rss_bytes_macos": 245792768,
+      "cache": {
+        "hits": 0,
+        "misses": 0,
+        "maxsize": 4,
+        "currsize": 0
+      }
+    }
+  ]
+}

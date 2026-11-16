@@ -1,0 +1,32 @@
+{
+  "base": "943f320c33b253b913eb8276d1c09b65d51a6c8a",
+  "platform": "macOS-14.7-arm64-arm-64bit-Mach-O",
+  "python": "3.14.7",
+  "node": "v22.22.0",
+  "rsvg": "rsvg-convert version 2.57.0",
+  "source_sha256": {
+    "tools/spacefox/__init__.py": "8168184472a2e477449456ad126b183f5205dddc24141d5479c86a9cc1b5a778",
+    "tools/spacefox/ascent_supplement.py": "65627cc48c77f159cfcba64a689fd978b7ce27b63fbe5269eea9833bef5a26ad",
+    "tools/spacefox/bridge_map.py": "f71d736ded7754f32a10b83f43cf0bcc5e9840e9e9159aa1f33d928014341e80",
+    "tools/spacefox/bridge_map_render.js": "a89478f79e3ba5e831074effc88552ee1e2752277104d6ca5a037cd65eb14b24",
+    "tools/spacefox/catalog.py": "a87b1577cf7c9ab29a0daff049e3c7c6bea1f87749d062988a1ffc1fb5f63a5c",
+    "tools/spacefox/catalog_refresh.py": "15fee92f31382190a0371e2adf66ea24a04b2d814608833cfcbf93146fe0f8c5",
+    "tools/spacefox/cloud.py": "066334a404a9c347197b7975edfcba07193c9bdb893a34b52839479052fe9c25",
+    "tools/spacefox/current_catalog.py": "6edee758f585a0f3f372e65fa769e8135ec85b58d2344a8f28e393424cd11e40",
+    "tools/spacefox/current_context.py": "8527166540bfbca108b9861da6602df21346f3db263778da2bfe395178fb5be4",
+    "tools/spacefox/feed.py": "cc15828f5b078e45acc5c1da22370b157d9be675f434200f33e41e697ac8545c",
+    "tools/spacefox/geographic_context.py": "23ed1a99f5e08b22430ba151c57c96d7237a7fcf0881dd6211fdf69872a5fc03",
+    "tools/spacefox/global_map.py": "a50687db161af083cba24330a719984747d58ea1c9cb90950169741ca7f5496d",
+    "tools/spacefox/graphics.py": "e4d26f23771504a6aeb7654487d1479074cc0d29d829c652bfa0b3bbbe83cf5a",
+    "tools/spacefox/native_motion.py": "449306650ede304b90c87c669623478b57d91aec9846fe5f9aa1c4c6626afc72",
+    "tools/spacefox/native_profile.py": "a0b40cd72fa368b0b1ba55024159ae726fa823aecc0369d3cb4a5490751c7b6e",
+    "tools/spacefox/provider.py": "726b6f4a70f59e990ca26c685d6801fad91204b8aee1b85e8a47c4b8cd7c0282",
+    "tools/spacefox/publisher.py": "9c7ef37481cd30952b934b04703e55ff85b9a434cc9c547c5d079c22d5fb7f0e",
+    "tools/spacefox/schedule.py": "14e483489034c1533d9424fb82fe7ec8da2ce2501b698b15ce955c18c94d871e",
+    "tools/spacefox/visual_bridge.py": "84943f4086eef7f63b24121661967eee775d5fb1db0a0e41d8eabee850b88acb",
+    "tools/spacefox/wire.py": "46ca558726de712391966cc0549473afb1454b1fc539ed2c46bb6a21a27b9862"
+  },
+  "fixture": "tests/fixtures/provider/current-starship/captured-page.json.gz",
+  "fixture_sha256": "9057fc2386591a5328602393caaed92b4c4c766c99c57f226d0de434ff922a5d",
+  "note": "Environment metadata collected after completed probes; original numeric observations preserved. Mac measurements do not qualify UbuntuCI or devices."
+}
