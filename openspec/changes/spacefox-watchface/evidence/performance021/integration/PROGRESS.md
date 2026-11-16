@@ -39,3 +39,28 @@ The strict OpenSpec structure check and targeted undefined-name lint passed afte
 The complete isolated resource generation then exited successfully and reproduced all 364 watchface files byte-for-byte; the source-bound file comparison is `generator-comparison.json`. Its parent-admission validation preceded the final host-test fixture change, which does not alter generated native inputs. The inherited B1 host admission tests initially assumed current files and version remained 0.1.21; the first red is retained. They now test the authenticated 0.1.21 parent in an isolated reconstruction and check the current 0.1.22 update against 0.1.21. The combined 30 B1, prior-proof and current-receipt tests passed. The final current-source qualification and clean-source release gates remain separate observations.
 
 The final source-bound combined qualification returned `en, ru, de, fr, es` after both historical-parent validations. The author merge checkpoint is prerequisite to the clean-source release guard; this qualification does not claim a private graph run, a peer verdict or a production-signed package.
+
+At clean merge checkpoint `c8fa2c2a5d8e0b691cf278b8d1a09879133370a2`, `tools.release.source_state` captured 7,108 tracked inputs. An independently materialized copy of exactly that set passed the actual current software-locale admission for `en, ru, de, fr, es`; the two targeted source-fence/retired-snapshot tests passed. A generic release-suite attempt was interrupted as soon as it began its own disposable SDK cohort, because the agreed single 42-profile production build must follow peer binding; it is not counted as a passed release suite.
+
+The publisher's retained offline call path is `catalog.build_catalog` → `native_motion.build_artifact` → `native_motion.validate_artifact`, distinct from the SDK `build_watchface` → `native_language_policy.software_locales` path. A fresh current-source run built 106 files / 606,276 bytes, retained the prior feed/catalog digests, started the expected one Node and six rsvg children for artifact construction and none for repeat validation. Its Python open audit recorded no opens of the locale catalog or native-language policy. The recorded 30.57 s catalog, 55.05 s artifact and 3.06 s repeat figures are one contended, profiled offline sample, not comparative CI or hardware claims.
+
+For LIFE-01, both the D parent and combined source declare `SpaceFoxApp extends Application.AppBase` and the same `(:background)` owner and `onStop(state as Dictionary or Null) as Void` hook; the changed combined body delegates cleanup to `stopOwnedForegroundWork` and clears the additional callback. The retained D simulator diagnostic proves platform dispatch of that unchanged hook under its own source. The combined direct tests prove the changed cleanup body and ordinary ownership sequence. Joining these two boundaries does not claim a newly observed combined-source OS dispatch or reclaimed bytes; the independent peer must assess that join.
+
+| D finding | Combined-source disposition |
+| --- | --- |
+| MEM-01 | Bounded representations retained; current FR165M stock peak 114.0 KiB is a new single-workload observation, with no before/after claim. |
+| MEM-02 | Downloaded-resource replacement and LOW fallback retained through B1 suspension/resume; current stock continuity observed. |
+| MEM-03 | LOW rest mask lazy and released on wake; B1 optional allocation guards retained; graphics-pool total unmeasured. |
+| MEM-04 | Packed exact per-map metadata retained; all 364 generated watchface files match current source. |
+| MEM-05 | Field fit/reuse retained with B1 bounded optional provider icons; unseen icon saving is not claimed. |
+| CPU-01 | Identity-bound layout reuse and dynamic clock/countdown retained in combined renderer. |
+| CPU-02 | Affected/shared field updates and event-local text reuse retained; current field suite passed. |
+| CPU-03 | Selected locale arrays/event-local reuse retained; cold provider discovery remains deliberate and unmeasured as latency. |
+| CPU-04 | Cold/warm resource behavior remains separately bounded; no zero-cold-load claim. |
+| IO-01 | B1 full terminal verification supersedes D's earlier total: current actual 17 prefix + 17 terminal checks and 100,010 hashed bytes; same-batch corrupt prefix refused. |
+| IO-02 | Deadline/late callback and owned cancel preserved; no undocumented autonomous HTTP timeout claimed. |
+| IO-03 | Bounded cleanup rechecks current active/recovery references every continuation; real takeover tests passed. |
+| LIFE-01 | Combined stop cancels jobs/timers and clears both view callbacks; direct tests plus prior unchanged-hook dispatch remain distinct observations. |
+| PERF-01 | Bounded decoder and matching outline optimization retained; current direct pixel checksum and 208/51 callbacks observed; old timing pair remains historical. |
+| ASSET-01 | Unused fonts remain retired and generator-consistent; historical package-size number remains historical. |
+| CLEAN-01 | Current raw-derived projection integrity retained in asynchronous restore/promotion; corruption and current source-switch cases passed. |
