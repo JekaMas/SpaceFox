@@ -1,6 +1,6 @@
 # Maximum practical device compatibility — iteration 020
 
-Status: APPLY and scoped self-verification GREEN; independent verification and root judgment pending. Owner task: existing OpenSpec change `spacefox-watchface`, task 2.4. One apply/self-verify/fix owner, then one fresh independent verify/fix owner, then root judgment. No next implementation group before this group is green.
+Status: COMPLETE for task 2.4 source/software compatibility. Author apply/self-verify/fix passed at `58a4d922`; fresh independent verify/fix passed at `fc9ac94f`; root accepted the scoped evidence and future roadmap. Physical, paired-phone, power and Store acceptance remain separate and unobserved by this iteration.
 
 ## User outcome
 
@@ -57,3 +57,9 @@ APPLY owner: complete the whole compatibility group, tests and fixes to green; r
 ## Independent verification checkpoint
 
 - Scoped peer verification GREEN; task 2.4 is complete at its source/software boundary. [PEER.md](PEER.md) records independent checks, graph and alias-wording corrections, retained observations, and outstanding physical/phone/power/Store boundaries. Root judgment remains separate.
+
+## Root judgment and integration
+
+- Accepted independent commit `fc9ac94fccd8a76edfa906bf11e22aa1385e97d5`: 42 source-qualified profiles (32 additions), actual per-profile release-flag builds, inspected disposable-key export, representative native/stock observations, bounded five-language/font proof and a documented future-admission path. Root directly inspected the 360-pixel English/Russian active frames and rectangular active/LOW frames; map, marker and uniform scene composition are visible in those samples.
+- One final public-main fetch found `origin/main` at `943f320c33b253b913eb8276d1c09b65d51a6c8a`, already an ancestor of the verified branch. `git merge --ff-only origin/main` required no source change and reported already up to date. No retained behavioral result was invalidated by this integration or this journal-only update. The separate old private local `main` was left untouched.
+- Task 2.4 is closed. Historical failed observations and exact evidence bytes remain retained. The source expansion is not in the existing ten-profile 0.1.18 Store binary; no production release, signing, upload, phone installation or physical acceptance is claimed here.
