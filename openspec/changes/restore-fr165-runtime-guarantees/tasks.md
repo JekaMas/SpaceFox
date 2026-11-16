@@ -29,4 +29,4 @@
 - [x] Root judges the integrated source and merges it to main.
 - [x] Freeze that accepted main and prepare a signed 0.1.21 candidate using the original 0.1.20 receipt and IQ.
 - [x] Independently verify the 0.1.21 artifact set and repair its portable handoff.
-- [ ] Root publishes the authorized GitHub test prerelease and verifies its tag and assets.
+- [x] Root publishes the authorized GitHub test prerelease and verifies its tag and assets.

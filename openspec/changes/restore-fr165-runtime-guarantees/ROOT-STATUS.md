@@ -380,3 +380,14 @@ pre-repair source identity. The original 0.1.20 full receipt is locally retained
 and authenticated by the published summary, not itself a published asset.
 Source peer review and accepted-main artifact preparation remain separate.
 Physical acceptance and the owner crash cause remain open.
+
+### 0.1.21 GitHub test publication
+
+Root accepted the existing independent source and artifact peer results, merged
+PR 38, and published `v0.1.21-test.1`. The public tag and compiled source both
+point to `98dc7a6e41f03e8904d1dd02ff941317d52eb5be`. Root's public readback
+verified 59/59 server asset digests and anonymously downloaded the corrected
+FR165 install ZIP with HTTP 200. See `evidence/PUBLICATION-021.md` for the
+receipt, exact identifiers, and proof boundary. This closes the authorized
+GitHub publication task, not physical FR165 P1–P3, B2/B3, phone migration or
+Garmin Store acceptance; the 0.1.18 crash cause remains unknown.

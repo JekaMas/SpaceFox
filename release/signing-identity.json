@@ -5,6 +5,23 @@
   "public_key_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
   "status": "local_production_custody_restored",
   "latest_release": {
+    "version": "0.1.21",
+    "package_sha256": "c1e991af2372ce63dd35cba147ccb2075a6cd9b0e9a50844ad3533347653379b",
+    "kind": "github_test_prerelease",
+    "tag": "v0.1.21-test.1",
+    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.21-test.1",
+    "source_revision": "98dc7a6e41f03e8904d1dd02ff941317d52eb5be",
+    "tag_revision": "98dc7a6e41f03e8904d1dd02ff941317d52eb5be",
+    "original_receipt_sha256": "d1d29b5d010f840acaf4fdb7734a2c3ea248ece3411ed914478abcdfe0bea2c1",
+    "proof_boundary": "Published GitHub test prerelease only after public readback; physical FR165 acceptance, phone/update migration, and 0.1.21 Garmin Store submission/approval remain unobserved."
+  },
+  "note": "Stable production UUID/key. For a future update use the published original 0.1.21 receipt and matching IQ. Its own predecessor was the locally retained original 0.1.20 receipt, authenticated by the published summary, and the matching published IQ.",
+  "local_custody": {
+    "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
+    "public_evidence": "openspec/changes/spacefox-watchface/evidence/production-signing/round1/custody-initialization.json",
+    "proof_boundary": "External owner-only production RSA4096 key and encrypted backup with separately stored password; actual local restore and public signing challenge. Same Mac only; no offsite/disaster recovery."
+  },
+  "previous_release": {
     "version": "0.1.20",
     "package_sha256": "b5bd0cb73b290f37e49e5b5027a6304213dcb38bc5669cf220d6652b8c59738d",
     "kind": "github_regular_release",
@@ -14,24 +31,6 @@
     "tag_revision": "4d97967b1b839683881f5b61c4e4e3ac9c126f26",
     "original_receipt_sha256": "fbfe2da43812ebd01608ad177007743fb24a368b1a69d8a0823ed37e98956818",
     "proof_boundary": "Published 0.1.20 GitHub package and public summary; full original receipt retained locally and authenticated by the public summary digest. Physical use and Garmin approval remain unobserved."
-  },
-  "note": "Stable production UUID/key. The original 0.1.20 receipt and matching published IQ are the update predecessor; physical acceptance and Garmin Store approval remain open.",
-  "local_custody": {
-    "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
-    "public_evidence": "openspec/changes/spacefox-watchface/evidence/production-signing/round1/custody-initialization.json",
-    "proof_boundary": "External owner-only production RSA4096 key and encrypted backup with separately stored password; actual local restore and public signing challenge. Same Mac only; no offsite/disaster recovery."
-  },
-  "previous_release": {
-    "version": "0.1.13",
-    "package_sha256": "bf69a0df9b11f15c676be4cb6a0ce7d388c11688f11fefb3d8b0ed1544005896",
-    "kind": "garmin_ordinary_store_submission",
-    "tag": "v0.1.13",
-    "url": "https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3",
-    "github_url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.13",
-    "source_revision": "1eca186c5da803d801b5ebca3e58df8f37ac5876",
-    "tag_revision": "1eca186c5da803d801b5ebca3e58df8f37ac5876",
-    "original_receipt_sha256": "ef32f0f1482ea3199b31aaceeb30ea532947393e481fbb48df2c411050ef61a1",
-    "proof_boundary": "Signed GitHub release and original Garmin card0.1.13/Internal8 PENDING; Music request accepted. Physical execution/delivery and public Store approval unobserved."
   },
   "earlier_release": {
     "version": "0.1.6",
@@ -130,5 +129,17 @@
     "tag_revision": "8ca1b7a63e51692d173bedec762dc6d6cbcd8e1c",
     "original_receipt_sha256": "bfe206bac41a83913404c738d4796e52e9d960863ac4674ea12968f082942c77",
     "proof_boundary": "Signed regular GitHub release and original Garmin card 0.1.18/Internal 11 PENDING in owner preview; Music installation queued for next sync, physical delivery and public approval unobserved."
+  },
+  "historical_release_013": {
+    "version": "0.1.13",
+    "package_sha256": "bf69a0df9b11f15c676be4cb6a0ce7d388c11688f11fefb3d8b0ed1544005896",
+    "kind": "garmin_ordinary_store_submission",
+    "tag": "v0.1.13",
+    "url": "https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3",
+    "github_url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.13",
+    "source_revision": "1eca186c5da803d801b5ebca3e58df8f37ac5876",
+    "tag_revision": "1eca186c5da803d801b5ebca3e58df8f37ac5876",
+    "original_receipt_sha256": "ef32f0f1482ea3199b31aaceeb30ea532947393e481fbb48df2c411050ef61a1",
+    "proof_boundary": "Signed GitHub release and original Garmin card0.1.13/Internal8 PENDING; Music request accepted. Physical execution/delivery and public Store approval unobserved."
   }
 }
