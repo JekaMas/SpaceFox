@@ -35,12 +35,17 @@ class FeedService extends System.ServiceDelegate {
         if(!callbackAllowed()){return;}
         try{
             if(code==200&&data instanceof Dictionary&&data["data"] instanceof Array&&new NativeTrustedStore(transfer.store,transfer.base).save(data["data"])){
-                // Publish core facts first; optional assets resume in the next
-                // background event and never gate the schedule snapshot.
+                // Publish core facts before any optional request. A due feed
+                // can run every five minutes, so waiting for a non-due event
+                // would starve assets at that cadence.
                 try{if(batch!=null&&data["data"][6]!=null){batch.select(data["data"][6]);}}catch(ignore){}
                 System.println("SF_BG snapshot_ready");
             }
-        }catch(e){System.println("SF_BG snapshot_error");}finish();
+        }catch(e){System.println("SF_BG snapshot_error");}
+        // Release the parsed response before the bounded asset scanner runs.
+        // A failed schedule response can still continue the existing art job;
+        // an art failure never rolls back the already published snapshot.
+        data=null;optional();
     }
     function callbackAllowed() as Boolean {if(ended){return false;}inFlight=false;if(deadlineArmed&&nowMillis()-started>=22000){finish();return false;}return true;}
     (:typecheck(false))

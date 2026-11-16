@@ -92,6 +92,10 @@ The scheduled publisher SHALL project selected and bounded upcoming launch facts
 - **WHEN** facts arrive before artwork, catalog or geometry downloads complete
 - **THEN** current facts and the source-qualified point remain visible with available fallback art while optional work continues independently.
 
+#### Scenario: Every background event has a due snapshot
+- **WHEN** a permitted 300-second cadence makes the snapshot due at every event
+- **THEN** a complete snapshot is published before bounded optional requests, and the pending artwork job still progresses even if a later snapshot response fails; artwork failure leaves the accepted facts available.
+
 ### Requirement: Interrupted snapshot recovery
 
 Failed responses and interrupted writes SHALL leave the last complete per-source snapshot available offline. Foreground time and countdown SHALL continue locally; optional asset failure SHALL NOT block the facts.

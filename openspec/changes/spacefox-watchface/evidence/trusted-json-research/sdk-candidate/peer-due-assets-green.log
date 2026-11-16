@@ -1,0 +1,22 @@
+Picked up JAVA_TOOL_OPTIONS: -Duser.home=/home/sdk
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test trustedDueSnapshotAssets...
+SF_BG enter phone=true registered=none last=none
+SF_WAKE registration_ok pending=false next=1794870357
+SF_BG snapshot_ready
+SF_BG object_http=200 catalog=true
+SF_BG catalog_ready
+SF_BG enter phone=true registered=1794870357 last=none
+SF_WAKE registration_kept pending=true next=1794870057
+SF_BG object_http=500 catalog=false
+DEBUG (23:00): TRUST_DUE_ASSETS fast300=true snapshotPublishedBeforeArt=true failedSnapshotContinuesAssets=true failedArtKeepsFacts=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+trustedDueSnapshotAssets            PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

@@ -76,3 +76,30 @@ import Toybox.WatchUi;
  var app=new SpaceFoxApp();var views=app.getInitialView();var view=views[0];view.onShow();var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();view.onLayout(dc);app.performReload();Test.assert(view.context!=null&&view.context.launchId.equals("ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60")&&view.context.point!=null);app.onStop({});
  var reopened=new SpaceFoxApp();var again=reopened.getInitialView()[0];again.onShow();again.onLayout(dc);reopened.performReload();Test.assert(again.context!=null&&again.context.launchId.equals("ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60")&&again.context.point!=null);reopened.onStop({});logger.debug("trusted actual Application.Storage snapshot restores on app reopen");return true;
 }
+
+// Use the production event/callback/optional owners. Only HTTP and OS exit are
+// substituted; a due 300-second schedule must not starve the captured asset job.
+(:test,:typecheck(false)) class TrustedAssetEvent extends FeedService {
+ var memory;var payload;var code=200;var requested=null;var snapshots=0;var exits=0;
+ function initialize(adapter,value){FeedService.initialize();memory=adapter;payload=value;}
+ function createTransfer() as NativeTransfer {return new NativeTransfer("https://jekamas.github.io/SpaceFox",memory);}
+ function requestSnapshot(){snapshots+=1;receiveSnapshot(code,{"data"=>payload});}
+ function request(path as String,callback as Method) as Void {requested=path;inFlight=true;}
+ function rearm() as Void {}
+ function leave() as Void {exits+=1;}
+}
+(:test,:typecheck(false)) function trustedDueSnapshotAssets(logger){
+ var base="https://jekamas.github.io/SpaceFox";var store=new SnapshotTestStore();var data=WatchUi.loadResource(Rez.JsonData.Coarse)["payload"];data[2]["fast_interval_seconds"]=300;
+ var first=new TrustedAssetEvent(store,data);first.onTemporalEvent();
+ Test.assertMessage(first.snapshots==1&&first.requested!=null,"due snapshot also starts optional assets");
+ var packet=new NativeTrustedPacket(new NativeTrustedStore(store,base).load());Test.assert(packet.presentation.point!=null&&packet.presentation.displayTarget==1795042200l);Test.assert(new NativeTransfer(base,store).interval(Toybox.Time.now().value().toLong())==300);
+ Test.assert(first.requested.find("wire3/catalogs/")==0);first.receiveBatch(200,b1Response(first.requested));Test.assert(first.exits==1);
+ // Next due event has a failed schedule response. The already accepted facts
+ // survive, and the existing optional transfer still requests its next object.
+ store.write("sf.attempt",{"base"=>base,"utc"=>Toybox.Time.now().value().toLong()-301l,"build"=>NativeVersion.BUILD});
+ var second=new TrustedAssetEvent(store,data);second.code=503;second.onTemporalEvent();
+ Test.assertMessage(second.snapshots==1&&second.requested!=null&&second.requested.find("wire3/catalogs/")==null,"failed due snapshot does not block pending assets");
+ second.receiveBatch(500,null);Test.assert(second.exits==1);
+ var retained=new NativeTrustedPacket(new NativeTrustedStore(store,base).load());Test.assert(retained.presentation.launchId.equals(packet.presentation.launchId)&&retained.presentation.point!=null);
+ logger.debug("TRUST_DUE_ASSETS fast300=true snapshotPublishedBeforeArt=true failedSnapshotContinuesAssets=true failedArtKeepsFacts=true");return true;
+}

@@ -1,0 +1,24 @@
+Picked up JAVA_TOOL_OPTIONS: -Duser.home=/home/sdk
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test trustedDueSnapshotAssets...
+SF_BG enter phone=true registered=none last=none
+SF_WAKE registration_ok pending=false next=1794870272
+SF_BG snapshot_ready
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED: due snapshot also starts optional assets
+Stack: 
+  - API code 0x30000203 
+  - trustedDueSnapshotAssets() at /source/watchface/trusted-tests/TrustedTests.mc:94 0x10000ffc 
+  - evaluate_test_entries_0_to_8() at /task/gen/006-B4433-00/source/UnitTests.mcgen:72 0x100049b9 
+  - runTest() at /task/gen/006-B4433-00/source/UnitTests.mcgen:87 0x10004ac6 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+trustedDueSnapshotAssets            ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)
