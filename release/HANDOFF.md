@@ -7,13 +7,17 @@ stored recovery password have actual local restore/challenge evidence in
 the owner-held signing records. All copies remain on the same Mac; offsite
 and disaster recovery are not claimed.
 
-## Prepared 0.1.22 regular candidate
+## Prepared 0.1.24 regular candidate
 
-The 0.1.22 candidate combines the latest watchdog and incremental runtime with the performance work. Final source-bound verification, independent review, production signing and publication must be recorded before describing it as released. Use the original 0.1.21 receipt and matching IQ as the update predecessor; retain the same UUID and production signing identity. Physical watch, phone, battery and Store acceptance are separate observations.
+The candidate combines the current B2/B3 runtime with performance work. Review, signing and publication remain pending; the original 0.1.22 receipt and IQ are its update predecessor.
+
+## Published 0.1.22 GitHub test prerelease
+
+[SpaceFox 0.1.22](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.22-test.1) is a published GitHub test prerelease built from `6dbe1af66e5b6d12bc88462d9a9ffcb0bc56ded5`, native ID `14586854`. The original receipt and IQ are the current update predecessor. The one-IQ export supplies all 42 profile PRGs, the FR165 install ZIP and exact source-input archive. Physical FR165 P1–P6 and 15-minute acceptance, the 0.1.18 IQ cause, phone migration and Garmin Store acceptance remain unverified. See [release notes](RELEASE-NOTES-0.1.22.md).
 
 ## Published 0.1.21 GitHub test prerelease
 
-[SpaceFox 0.1.21](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.21-test.1) is a published GitHub test prerelease, compiled from `98dc7a6e41f03e8904d1dd02ff941317d52eb5be` and tagged at that same revision. Its original receipt and IQ are the latest update predecessor. Version 0.1.21 integrates the published 0.1.20 watchdog repair with the independently reviewed B1 clock-first and resource-lifecycle changes. The original 0.1.20 receipt and published IQ are the update predecessor. The full receipt was retained locally and authenticated against the digest in the published package summary; it was not itself a public release asset. Exact-candidate physical FR165 cold start, reopen and at least 15 minutes ordinary use remain unverified; the owner's 0.1.18 IQ report remains unexplained. The owner authorized GitHub distribution before that observation. No 0.1.21 Store submission or approval is claimed. See [release notes](RELEASE-NOTES-0.1.21.md).
+[SpaceFox 0.1.21](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.21-test.1) is a published GitHub test prerelease, compiled from `98dc7a6e41f03e8904d1dd02ff941317d52eb5be` and tagged at that same revision. Its original receipt and IQ were the predecessor for 0.1.22. Version 0.1.21 integrates the published 0.1.20 watchdog repair with the independently reviewed B1 clock-first and resource-lifecycle changes. The original 0.1.20 receipt and published IQ were its update predecessor. The full receipt was retained locally and authenticated against the digest in the published package summary; it was not itself a public release asset. Exact-candidate physical FR165 cold start, reopen and at least 15 minutes ordinary use remain unverified; the owner's 0.1.18 IQ report remains unexplained. The owner authorized GitHub distribution before that observation. No 0.1.21 Store submission or approval is claimed. See [release notes](RELEASE-NOTES-0.1.21.md).
 
 ## Published 0.1.20 release
 

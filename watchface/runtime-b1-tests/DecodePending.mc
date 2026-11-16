@@ -34,19 +34,19 @@ import Toybox.WatchUi;
     var view=new B1DecodeView(clock);view.setPacket(cache.packet);
     var recorder=new B1DecodeRecorder();recorder.prepare(view.context,view.settings);view.renderer=recorder;
     var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();view.onShow();view.onLayout(dc);
-    view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);logger.debug("B1_DECODE_INITIAL countdown="+recorder.currentText);Test.assertEqual(recorder.currentText,"T- 16:18:18");
+    view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);logger.debug("B1_DECODE_INITIAL countdown="+recorder.currentText);Test.assertEqual(recorder.currentText,"~T- 16:18:18");
     view.setAssetCache(new NativeRenderSource(store,cache.base,cache.packet.bridge));view.prepareVisual();var beginAt=System.getTimer();view.sfrStep();var beginMs=System.getTimer()-beginAt;Test.assert(view.sfrBuild!=null&&view.fallbackClockTimer!=null);
     var maxSlice=0;var maxPhase="";var maxRole=-1;var maxRow=-1;var steps=0;
     while(steps<2000&&view.sfrBuild!=null&&(steps<20||view.sfrBuild.decoder==null||view.sfrBuild.decoder.y==0)){var job=view.sfrBuild;var role=job.role;var phase=job.decoder==null?"role":(job.decoder.data==null?"chunk":"rows");var row=job.decoder==null?-1:job.decoder.y;var start=System.getTimer();view.sfrStep();var elapsed=System.getTimer()-start;if(elapsed>maxSlice){maxSlice=elapsed;maxRole=role;maxPhase=phase;maxRow=row;}steps+=1;}
-    Test.assert(view.sfrBuild!=null&&view.renderer==null);clock.now+=2;view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assertEqual(view.fallbackText,"T- 16:18:16");
-    clock.now+=31;view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assertEqual(view.fallbackText,"T- 16:17:45");
+    Test.assert(view.sfrBuild!=null&&view.renderer==null);clock.now+=2;view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assertEqual(view.fallbackText,"~T- 16:18:16");
+    clock.now+=31;view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assertEqual(view.fallbackText,"~T- 16:17:45");
     var preserved=view.sfrBuild;Test.assert(preserved.decoder!=null);var previousRow=preserved.decoder.y;
     for(var cycle=0;cycle<3;cycle+=1){
         var sleeping=cycle==1?System.DISPLAY_MODE_OFF:System.DISPLAY_MODE_LOW_POWER;
         view.syncDisplayMode(sleeping);Test.assert(view.sfrBuild==preserved&&view.sfrTimer==null&&view.fallbackClockTimer==null);
         view.updateForDisplayMode(dc,sleeping);Test.assert(view.sfrBuild==preserved&&view.sfrTimer==null);
-        Test.assertEqual(view.snapshotAt(clock.now).lowCountdown,"T- 16:18");
-        view.syncDisplayMode(System.DISPLAY_MODE_HIGH_POWER);view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assertEqual(view.fallbackText,"T- 16:17:45");
+        Test.assertEqual(view.snapshotAt(clock.now).lowCountdown,"~T- 16:18");
+        view.syncDisplayMode(System.DISPLAY_MODE_HIGH_POWER);view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assertEqual(view.fallbackText,"~T- 16:17:45");
         view.stopResume();view.resumeAfterFrame();for(var step=0;step<8;step+=1){view.sfrStep();}
         Test.assert(view.sfrBuild==preserved&&preserved.decoder!=null&&preserved.decoder.y>previousRow);previousRow=preserved.decoder.y;
     }
@@ -84,7 +84,7 @@ import Toybox.WatchUi;
     view.syncDisplayMode(System.DISPLAY_MODE_LOW_POWER);view.syncDisplayMode(System.DISPLAY_MODE_HIGH_POWER);
     view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);view.stopResume();view.resumeAfterFrame();
     Test.assert(fields.starts==0&&fields.reads==0&&view.fitnessTimer==null&&view.sfrBuild==null&&!view.animationRunning);
-    view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assert(view.renderer==null&&LocaleGraphemes.data==null);Test.assertEqual(view.fallbackText,"T- 16:18:18");clock.now+=2;view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assertEqual(view.fallbackText,"T- 16:18:16");
+    view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assert(view.renderer==null&&LocaleGraphemes.data==null);Test.assertEqual(view.fallbackText,"~T- 16:18:18");clock.now+=2;view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assertEqual(view.fallbackText,"~T- 16:18:16");
     view.freeBytes=view.sfrReadReserve();view.sfrStep();Test.assert(view.sfrBuild!=null&&!view.sfrDeferred);
     var setupSteps=0;while(view.sfrBuild!=null&&view.sfrBuild.decoder==null){view.freeBytes=view.sfrReadReserve();view.sfrStep();setupSteps+=1;Test.assert(setupSteps<2000);}Test.assert(view.sfrBuild!=null&&view.sfrBuild.decoder!=null&&view.sfrBuild.decoder.shard==0);
     var shardReserve=view.sfrReadReserve();view.freeBytes=shardReserve-1;view.sfrStep();

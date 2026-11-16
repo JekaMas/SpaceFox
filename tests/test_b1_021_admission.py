@@ -9,7 +9,7 @@ from pathlib import Path
 from unittest.mock import patch
 from xml.etree import ElementTree as ET
 
-from tools import native_b1_021_qualification as proof
+from tools import native_b3_023_qualification as proof
 from tools import release
 from tools.native_integration022_qualification import ROOTS, checked
 
@@ -45,7 +45,7 @@ class IntegrationAdmission(unittest.TestCase):
         cls.catalog = json.loads((cls.root / 'locales/catalog.json').read_text())
         cls.app = ET.parse(ROOT / 'watchface/manifest.xml').getroot().find('{http://www.garmin.com/xml/connectiq}application')
         cls.previous = {'application_uuid': cls.app.get('id'), 'public_key_spki_sha256': KEY,
-                        'version': '0.1.21', 'package_sha256': 'a' * 64}
+                        'version': '0.1.22', 'package_sha256': 'a' * 64}
 
     def test_current_bound_evidence(self):
         self.assertEqual(proof.validate(self.root, self.catalog), ['en','ru','de','fr','es'])
@@ -65,22 +65,21 @@ class IntegrationAdmission(unittest.TestCase):
     def test_locale_and_evidence_drift_is_refused(self):
         catalog = copy.deepcopy(self.catalog)
         catalog['supportPolicy']['softwareQualifiedLocales'] = ['en']
-        with self.assertRaisesRegex(ValueError, 'locale policy changed'):
+        with self.assertRaisesRegex(ValueError, 'original 0.1.22 proof failed'):
             proof.validate(self.root, catalog)
-        original = proof.sha
-        for target in ('integration021-tests.log', 'integration021-peer-source-switch-green.log',
-                       'integration021-peer-primary-receipt.json'):
-            def altered(path):
-                if str(path).endswith(target):
-                    return '0' * 64
-                return original(path)
-            with self.subTest(evidence=target), patch.object(proof, 'sha', side_effect=altered):
+        original = proof.checked
+        for target in ('b3QueueAndRollover.log', 'b3AdmissionAndUnknown.log', 'b3OrdinaryReopen.log'):
+            def altered(root, ref):
+                if ref['path'].endswith(target):
+                    raise ValueError('integration input changed')
+                return original(root, ref)
+            with self.subTest(evidence=target), patch.object(proof, 'checked', side_effect=altered):
                 with self.assertRaisesRegex(ValueError, 'integration input changed'):
                     proof.validate(self.root, self.catalog)
 
     def test_update_version_uuid_and_key(self):
-        self.assertEqual(release.validate_previous(self.previous, self.app, KEY)['previous_version'], '0.1.21')
-        for field, value in [('application_uuid','0'*32),('public_key_spki_sha256','0'*64),('version','0.1.22')]:
+        self.assertEqual(release.validate_previous(self.previous, self.app, KEY)['previous_version'], '0.1.22')
+        for field, value in [('application_uuid','0'*32),('public_key_spki_sha256','0'*64),('version',self.app.get('version'))]:
             previous = dict(self.previous, **{field:value})
             with self.subTest(field=field), self.assertRaises(RuntimeError):
                 release.validate_previous(previous, self.app, KEY)

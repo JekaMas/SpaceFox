@@ -23,13 +23,13 @@ class PeerBinding(unittest.TestCase):
         cls.proof = cls.root / proof["path"]
         cls.proof.parent.mkdir(parents=True)
         shutil.copyfile(ROOT / proof["path"], cls.proof)
-        cls.receipt = {"kind": "integration022-independent-native-peer", "status": "GREEN",
-                       "native_inputs_sha256": release.INTEGRATION022_PEER_NATIVE_SHA256,
+        cls.receipt = {"kind": "integration024-independent-native-peer", "status": "GREEN",
+                       "native_inputs_sha256": release.INTEGRATION_PEER_NATIVE_SHA256,
                        "integration_proof_sha256": proof["sha256"], "proof_boundary": "test fixture"}
 
     def test_current_native_positive_and_refusals(self):
         def call(data):
-            release.require_integration022_peer(self.root, [{"data": item} for item in data])
+            release.require_combined_peer(self.root, [{"data": item} for item in data])
         call([self.receipt])
         for records in ([], [self.receipt, self.receipt], [dict(self.receipt, status="NOT DONE")],
                         [dict(self.receipt, integration_proof_sha256="0" * 64)],
@@ -66,13 +66,17 @@ class PeerBinding(unittest.TestCase):
         with self.assertRaisesRegex(release.ReleaseBlocked, "proof differs from independent peer binding"):
             call([dict(self.receipt, integration_proof_sha256=digest)])
         self.proof.write_bytes(original)
+        catalog["supportPolicy"]["softwareQualificationProof"].pop("integration022Proof")
+        catalog_path.write_text(json.dumps(catalog))
+        with self.assertRaisesRegex(release.ReleaseBlocked, "peer binding"):
+            call([self.receipt])
 
     def test_release_path_calls_guard_only_for_nonqualification(self):
         import ast
         tree = ast.parse((ROOT / "tools/release.py").read_text())
         build = next(x for x in tree.body if isinstance(x, ast.FunctionDef) and x.name == "build_release")
         guards = [x for x in build.body if isinstance(x, ast.If) and ast.unparse(x.test) == "mode != 'qualification'" and
-                  any(isinstance(c, ast.Call) and ast.unparse(c.func) == "require_integration022_peer" for c in ast.walk(x))]
+                  any(isinstance(c, ast.Call) and ast.unparse(c.func) == "require_combined_peer" for c in ast.walk(x))]
         self.assertEqual(len(guards), 1)
         self.assertLess(build.body.index(guards[0]), next(i for i, x in enumerate(build.body)
                         if isinstance(x, ast.Assign) and any(isinstance(t, ast.Name) and t.id == "output" for t in x.targets)))

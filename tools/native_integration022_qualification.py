@@ -41,7 +41,7 @@ def validate(root, catalog):
     root = Path(root).resolve()
     ref = catalog['supportPolicy']['softwareQualificationProof']['integration022Proof']
     record = json.loads(checked(root, ref['path'], ref['sha256']).read_text())
-    if record['scope'] != 'performance021-b1-current-source-022' or record['version'] != '0.1.22':
+    if record['scope'] != 'performance021-b1-b2-b3-current-source-024' or record['version'] != '0.1.24':
         raise ValueError('wrong combined qualification scope/version')
     catalog_body = json.loads(json.dumps(catalog))
     catalog_body['supportPolicy']['softwareQualificationProof'].pop('integration022Proof', None)
@@ -57,6 +57,9 @@ def validate(root, catalog):
         'tools/native_integration022_qualification.py', 'tools/native_language_policy.py',
         'tools/build_native_resources.py', 'tools/native_display03_probe.py',
         'tools/fields018_native_probe.py', 'tools/native_other_batch.py',
+        'tools/native_b2_022_qualification.py', 'tools/native_b3_023_qualification.py',
+        'tools/check_b2_evidence.py', 'tools/check_b3_evidence.py',
+        'tools/build_fallback_world.py',
     }
     if set(record['owners']) != expected_owners:
         raise ValueError('combined qualification owner inventory differs')
@@ -89,8 +92,19 @@ def validate(root, catalog):
             raise ValueError('combined SDK program differs: ' + label)
     current_b1 = repair_build['inputHashes']
     final_b1 = stop_build['inputHashes']
-    for name, expected in final_b1.items():
-        checked(root, name, expected)
+    # These exact owners changed in the subsequent B2/B3 merge. The retained
+    # earlier cases still have their original binary; affected cases execute
+    # separately on the source-bound current binary below.
+    merged_changes = {'watchface/manifest.xml', 'watchface/runtime-b1-tests/ClockFirst021.mc',
+        'watchface/runtime-b1-tests/DecodePending.mc', 'watchface/source/FeedScene.mc',
+        'watchface/source/LaunchReminder.mc', 'watchface/source/LaunchReminderForeground.mc',
+        'watchface/source/NativeForegroundApp.mc', 'watchface/source/NativeUpcomingCache.mc',
+        'watchface/source/SceneContext.mc', 'watchface/source/SceneRenderer.mc',
+        'watchface/source/SpaceFoxView.mc', 'watchface/source/generated/NativeVersion.mc'}
+    actual_changes = {name for name, expected in final_b1.items()
+                      if not (root / name).is_file() or sha(root / name) != expected}
+    if actual_changes != merged_changes:
+        raise ValueError('combined retained B1 source boundary differs')
     changed_b1 = {name for name in set(initial_build['inputHashes']) | set(current_b1)
                   if initial_build['inputHashes'].get(name) != current_b1.get(name)}
     if changed_b1 != {'watchface/source/NativeForegroundCache.mc',
@@ -138,12 +152,123 @@ def validate(root, catalog):
     if (parse_output(observed['display'], 1, ('display03RealMapDecode', 'display03BundledOutlineDecode'))['status'] != 'passed' or
         'pixelShaVerified=true noDiscardedOutline=true' not in observed['display']):
         raise ValueError('combined decoder observations differ')
+    required_current = {'peer024WorldAndDownloadedOwnership', 'b2ArithmeticAndRetention',
+        'b2AdmittedFactsWithoutArt', 'b2CapturedHourAndMissingPoint', 'b2LowUnmatchedPoint',
+        'b2FailedAndInterruptedReplacement', 'b2RescheduleAndNewSelection', 'b2SourcedAscentRetention',
+        'b3QueueAndRollover', 'b3AdmissionAndUnknown', 'b3QuietProvider', 'b3OrdinaryReopen',
+        'b3RescheduleAndQuiet', 'b3DisplayRetainedSelection', 'b1ColdAcquisition',
+        'b1PreparedPromotion', 'b1TailCleanupRechecksOwnership', 'b1OwnerStopReleasesPendingWork',
+        'b1LowHeapDefersOptionalDecode', 'b1ShortWakeResume', 'b1RealDecodeTicksAndCancels',
+        'b1FailedPromotionRecovery021', 'b1SupersededDuringAdmission021',
+        'peerSourceChangeDefersRenderer021', 'b1CapturedSuccessorTicksInFallback'}
+    if set(record['currentNative']) != required_current:
+        raise ValueError('combined current B1/B2/B3 case inventory differs')
+    for name, item in record['currentNative'].items():
+        log = checked(root, item['path'], item['sha256']).read_text()
+        if parse_output(log, item['rawExit'], (name,))['status'] != 'passed':
+            raise ValueError('combined current SDK case failed: ' + name)
+    build = json.loads(checked(root, record['currentBuild']['path'], record['currentBuild']['sha256']).read_text())
+    program = checked(root, record['currentProgram']['path'], record['currentProgram']['sha256'])
+    if hashlib.sha256(gzip.decompress(program.read_bytes())).hexdigest() != build['programSha256']:
+        raise ValueError('combined current SDK program differs')
+    old_sources = {
+        'watchface/source/generated/FallbackWorld.mc': 'FallbackWorld-before.mc.txt',
+        'watchface/source/generated/NativeVersion.mc': 'NativeVersion-before.mc.txt',
+    }
+    old_dir = 'openspec/changes/spacefox-watchface/evidence/performance021/integration/stock-024-first-red/'
+    for name, digest in build['sourceHashes'].items():
+        checked(root, old_dir + old_sources[name] if name in old_sources else name, digest)
+    fixture = checked(root, record['currentFixture']['path'], record['currentFixture']['sha256'])
+    test = checked(root, record['currentTest']['path'], record['currentTest']['sha256'])
+    checked(root, record['currentRestore']['path'], record['currentRestore']['sha256'])
+    if sha(fixture) != build['fixtureArchiveSha256'] or sha(test) != build['testSourceSha256']:
+        raise ValueError('combined current SDK fixture or test differs')
+    restored = json.loads((root / record['currentRestore']['path']).read_text())
+    if not restored['restored'] or not restored['ini']:
+        raise ValueError('combined current SDK runtime restoration differs')
+    packed_cases = {'peer024WorldAndDownloadedOwnership', 'b2AdmittedFactsWithoutArt',
+        'b2LowUnmatchedPoint', 'b1ColdAcquisition', 'b1LowHeapDefersOptionalDecode',
+        'b1RealDecodeTicksAndCancels', 'b1CapturedSuccessorTicksInFallback',
+        'b3DisplayRetainedSelection'}
+    if set(record['packedNative']) != packed_cases:
+        raise ValueError('packed current SDK case inventory differs')
+    for name, item in record['packedNative'].items():
+        log = checked(root, item['path'], item['sha256']).read_text()
+        if parse_output(log, item['rawExit'], (name,))['status'] != 'passed':
+            raise ValueError('packed current SDK case failed: ' + name)
+    for prefix in ('packed', 'packedBatch'):
+        packed_build = json.loads(checked(root, record[prefix + 'Build']['path'], record[prefix + 'Build']['sha256']).read_text())
+        packed_program = checked(root, record[prefix + 'Program']['path'], record[prefix + 'Program']['sha256'])
+        if hashlib.sha256(gzip.decompress(packed_program.read_bytes())).hexdigest() != packed_build['programSha256']:
+            raise ValueError('packed current SDK program differs')
+        if set(packed_build['sourceHashes']) != set(build['sourceHashes']):
+            raise ValueError('packed SDK source inventory differs')
+        for name, digest in packed_build['sourceHashes'].items():
+            checked(root, name, digest)
+        packed_restore = json.loads(checked(root, record[prefix + 'Restore']['path'], record[prefix + 'Restore']['sha256']).read_text())
+        if not packed_restore['restored'] or not packed_restore['ini']:
+            raise ValueError('packed SDK runtime restoration differs')
+        if prefix == 'packed':
+            if (packed_build['fixtureArchiveSha256'] != sha(fixture) or
+                packed_build['testSourceSha256'] != sha(test)):
+                raise ValueError('packed current SDK fixture or test differs')
+        else:
+            for suffix, field in (('Test', 'testSourceSha256'), ('Fixture', 'fixtureArchiveSha256')):
+                item = record[prefix + suffix]
+                if sha(checked(root, item['path'], item['sha256'])) != packed_build[field]:
+                    raise ValueError('packed batch fixture or test differs')
+    batch = checked(root, record['packedBatchLog']['path'], record['packedBatchLog']['sha256']).read_text()
+    if (parse_output(batch, 1, ('integrationBatchCorruptPrefixBeforeCompletion',))['status'] != 'passed' or
+        'terminalScanRefused=true repaired=true acceptedAndRasterUnchanged=true' not in batch):
+        raise ValueError('current terminal corruption/repair failed')
+    stock = record['packedStock']
+    required_stock = {'active-region.png', 'low-region.png', 'wake-region.png',
+        'check-readiness.py', 'frame-003.png', 'frame-012.png', 'frame-054.png',
+        'gate.json', 'memory-observation.json', 'restore.json', 'seed.log',
+        'seed.prg.gz', 'stock.prg.gz', 'samples.json', 'rebase.json', 'build.json', 'fixtures.tar.gz'}
+    if not required_stock <= set(stock):
+        raise ValueError('packed stock readiness evidence missing')
+    stock_paths = {name: checked(root, item['path'], item['sha256']) for name, item in stock.items()}
+    gate = json.loads(stock_paths['gate.json'].read_text())
+    stock_build = json.loads(stock_paths['build.json'].read_text())
+    if (stock_build['sourceHashes'] != packed_build['sourceHashes'] or
+        stock_build['fixtureArchiveSha256'] != sha(stock_paths['fixtures.tar.gz'])):
+        raise ValueError('packed stock source or fixture differs')
+    for kind in ('seed', 'stock'):
+        if hashlib.sha256(gzip.decompress(stock_paths[kind + '.prg.gz'].read_bytes())).hexdigest() != gate[kind + 'Sha256']:
+            raise ValueError('packed stock program differs')
+    restored = json.loads(stock_paths['restore.json'].read_text())
+    if not restored['restored'] or not restored['ini']:
+        raise ValueError('packed stock runtime restoration differs')
+    incident_build = json.loads(checked(root, record['currentIncidentBuild']['path'],
+                                        record['currentIncidentBuild']['sha256']).read_text())
+    incident_program = checked(root, record['currentIncidentProgram']['path'],
+                               record['currentIncidentProgram']['sha256'])
+    if hashlib.sha256(gzip.decompress(incident_program.read_bytes())).hexdigest() != incident_build['packageSha256']:
+        raise ValueError('combined current incident program differs')
+    for name in ('watchface/incident-tests/DeliveryContinuityTests.mc', 'watchface/source/SceneRenderer.mc',
+                 'watchface/source/FeedScene.mc', 'watchface/source/NativeForegroundCache.mc'):
+        checked(root, name, incident_build['inputHashes'][name])
+    incident_names = {'deliveryBundledFallbackTransitions', 'deliveryWarmLayoutIdentity',
+                      'deliveryRawProjectionIntegrity'}
+    if set(record['currentIncident']) != incident_names:
+        raise ValueError('combined current incident case inventory differs')
+    for name, item in record['currentIncident'].items():
+        log = checked(root, item['path'], item['sha256']).read_text()
+        if parse_output(log, item['rawExit'], (name,))['status'] != 'passed':
+            raise ValueError('combined current incident case failed: ' + name)
+    restored = json.loads(checked(root, record['currentIncidentRestore']['path'],
+                                  record['currentIncidentRestore']['sha256']).read_text())
+    if not restored['restored'] or not restored['ini']:
+        raise ValueError('combined current incident restoration differs')
     from tools.generate_native_version import validate as validate_version
     validate_version(root)
     locales = None
     for side in ('performance', 'runtime'):
         recipe = record['historical'][side]
-        if recipe['revision'] not in ('f955c6022ddabeb0153b71006ae1fa4bba4ad179', 'c410eb4e5d86bbbe28d100996abf6bf5beb0607d'):
+        expected_parent = {'performance': 'f955c6022ddabeb0153b71006ae1fa4bba4ad179',
+                           'runtime': 'c222b705f2ad7deff86e6d49f39119baa0748f3f'}
+        if recipe['revision'] != expected_parent[side]:
             raise ValueError('unexpected combined parent revision')
         for item in recipe['restore'].values():
             checked(root, item['path'], item['sha256'])

@@ -1,0 +1,13 @@
+------------------------------------------------------------------------------
+Executing test b1RealDecodeTicksAndCancels...
+DEBUG (22:35): B1_DECODE_INITIAL countdown=~T- 16:18:18
+DEBUG (22:35): B1_REAL_DECODE selected_min=true objects=18 beginMs=0 slices=73 maxSliceMs=12 maxPhase=rows maxRole=0 maxRow=0 maxBatchScanMs=10 maxPutMs=3 activeCatchup=true lowOffHighCyclesAdvance=true hideCancel=true testHost=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1RealDecodeTicksAndCancels         PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

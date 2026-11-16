@@ -95,6 +95,12 @@ def software_locales(root,catalog=None):
  if isinstance(proof,dict) and 'performance021Proof' in proof:
   from tools.native_performance021_qualification import validate
   return validate(root,catalog)
+ if isinstance(proof,dict) and 'b3Runtime023Proof' in proof:
+  from tools.native_b3_023_qualification import validate
+  return validate(root,catalog)
+ if isinstance(proof,dict) and 'b2Runtime022Proof' in proof:
+  from tools.native_b2_022_qualification import validate
+  return validate(root,catalog)
  if isinstance(proof,dict) and 'b1Integration021Proof' in proof:
   from tools.native_b1_021_qualification import validate
   return validate(root,catalog)

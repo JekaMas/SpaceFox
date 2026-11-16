@@ -18,6 +18,7 @@ class SceneRenderer {
     var aodPin as Boolean=false;var aodPinX as Number=335;var aodPinY as Number=165;
     var mapScale as Dictionary;
     var pin as Boolean = false;
+    var worldFallback as Boolean = false;
     var pinX as Number = 335; var pinY as Number = 165;
     var fullContext as SceneContext or Null;
     var downloaded as NativeVisualRenderer or Null=null;
@@ -62,7 +63,7 @@ class SceneRenderer {
         prepared=true;
         // The bundled view is geographical backdrop only: no location marker is
         // shown unless the selected launch supplies a qualified matching point.
-        model = null; art = null; map = null; aodMap=null; aodResource=null; pin = false;aodPin=false;
+        model = null; art = null; map = null; aodMap=null; aodResource=null; pin = false;aodPin=false;worldFallback=false;
         var mapResource=Rez.Drawables.MapView0;
         if (context == null) { self.mapResource=mapResource;artResource=Rez.Drawables.Art_unknown;map=load(mapResource) as Graphics.BitmapType; art = load(artResource as ResourceId) as Graphics.BitmapType; return; }
         var id = NativeAssets.models.hasKey(context.modelId) ? context.modelId : "generic";
@@ -89,11 +90,11 @@ class SceneRenderer {
                     if(lon>=-0.25&&lon<=0.25&&lat>=-0.25&&lat<=0.25){var projected=projectSite(point,longitude,latitude);aodPinX=projected[0];aodPinY=projected[1];pinX=aodPinX;pinY=aodPinY;pin=true;mapResource=NativeAssets.extraMapResource(i);aodPin=true;aodResource=NativeAssets.aodResource(54+i);break;}}
             }
         }
-        self.mapResource=mapResource;map=load(mapResource) as Graphics.BitmapType;
+        if(context.point!=null&&!pin){worldFallback=true;self.mapResource=null;map=null;}
+        else{self.mapResource=mapResource;map=load(mapResource) as Graphics.BitmapType;}
     }
-    // Drop only resources actually replaced by the complete selected scene.
-    // Their resource IDs remain available for immediate fallback on identity
-    // change or an incomplete/rejected subsequent build.
+    // Only restore a bundled bitmap if this point has a matching bundled map;
+    // unmatched points continue to use the bounded source-world fallback.
     (:typecheck(false)) function useDownloaded(value as NativeVisualRenderer or Null) as Void {
         downloaded=value;var rich=value instanceof NativeSfrRenderer?value:null;
         if(value!=null && value.bitmap!=null){art=null;}
@@ -141,7 +142,7 @@ class SceneRenderer {
         // A complete selected scene owns its validated map; the bundled map
         // remains the fallback while that scene is absent or incomplete.
         var selectedMap=rich!=null && rich.mapBitmap!=null;
-        if(selectedMap){dc.drawBitmap(0,0,rich.mapBitmap);}else if(map!=null){dc.drawBitmap2(0,0,map,mapScale);}
+        if(selectedMap){dc.drawBitmap(0,0,rich.mapBitmap);}else if(worldFallback){FallbackWorld.draw(dc,97,15);}else if(map!=null){dc.drawBitmap2(0,0,map,mapScale);}
         var context = fullContext;
         if (context != null) {
             // Match the existing unavailable health marker without changing the
@@ -218,8 +219,10 @@ class SceneRenderer {
                 text(dc,left+width/2,y,fonts["metric"] as Graphics.FontType,label,settings.fieldColors[i],128,1);
             }
         }
-        if(selectedMap){if(rich.scene!=null && rich.scene["position"]!=null){dc.drawBitmap(321,151,marker);}}
-        else if(pin){dc.drawBitmap(pinX-14,pinY-14,marker);}
+        if(selectedMap){if(rich.scene!=null && rich.scene["position"]!=null){dc.drawBitmap(321,151,marker);FallbackMap.uncertain(dc,335,165);}}
+        else if(pin){dc.drawBitmap(pinX-14,pinY-14,marker);FallbackMap.uncertain(dc,pinX,pinY);}
+        else if(worldFallback&&context!=null){FallbackMap.point(dc,context.point,97,15);}
+        else if(context!=null&&context.point==null){FallbackMap.unknown(dc,365,20);}
     }
     // Metric32 contains digits, percent and punctuation only. Provider strings
     // and units use the locale-capable font instead of missing bitmap glyphs.
@@ -244,6 +247,7 @@ class SceneRenderer {
     }
     function prepareAod() as Void {if(!fonts.hasKey("aod")){fonts["aod"]=load(Rez.Fonts.Aod40) as Graphics.FontType;}if(aodMap==null && aodResource!=null){aodMap=load(aodResource as ResourceId) as Graphics.BitmapType;}}
     function releaseAod() as Void {aodMap=null;fonts.remove("aod");}
+    (:typecheck(false)) function aodWorldPoint(bundled,selected) {return worldFallback&&!bundled&&!selected&&fullContext!=null?fullContext.point:null;}
     (:typecheck(false)) function aod(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,settings as SceneSettings) as Void {
         current.rescheduled=current.rescheduled||fullContext!=null&&fullContext.rescheduled;
         current.sourceHold=current.sourceHold||fullContext!=null&&fullContext.sourceHold;
@@ -254,7 +258,28 @@ class SceneRenderer {
         // centers. Prefer that shape even when the selected scene is READY;
         // unmatched future locations retain their own decoded raster outline.
         var bundled=aodMap!=null && aodPin;
-        SceneAod.draw(dc,current,minute,presentation,fonts["aod"] as Graphics.FontType,settings,bundled?aodMap:(selected?rich.mapOutline:null),bundled||selected,bundled?aodPinX:335,bundled?aodPinY:165);
+        SceneAod.draw(dc,current,minute,presentation,fonts["aod"] as Graphics.FontType,settings,bundled?aodMap:(selected?rich.mapOutline:null),bundled||selected,bundled?aodPinX:335,bundled?aodPinY:165,aodWorldPoint(bundled,selected));
+        if(fullContext!=null&&fullContext.point==null){FallbackMap.unknown(dc,365,20);}
+        else if(bundled||selected){FallbackMap.uncertain(dc,bundled?aodPinX:335,bundled?aodPinY:165);}
+    }
+}
+
+// A compact, fixed equirectangular source map avoids associating an unmatched
+// point with a different site's pre-rendered geography. Coordinates have been
+// validated before reaching this renderer; '?' marks their source-reference
+// qualification and no point is drawn for an unavailable event position.
+module FallbackMap {
+    (:typecheck(false)) function point(dc,position,x,y) as Void {
+        if(position==null){return;}
+        var px=x+((position[0]+180)*194/360+0.5).toNumber();
+        var py=y+((90-position[1])*97/180+0.5).toNumber();
+        dc.setColor(0xFFD066,Graphics.COLOR_TRANSPARENT);dc.fillCircle(px,py,3);uncertain(dc,px,py);
+    }
+    function uncertain(dc as Graphics.Dc,x as Number,y as Number) as Void {
+        dc.setColor(0xFFD066,Graphics.COLOR_TRANSPARENT);dc.drawText(x+5,y-8,Graphics.FONT_TINY,"?",Graphics.TEXT_JUSTIFY_LEFT);
+    }
+    function unknown(dc as Graphics.Dc,x as Number,y as Number) as Void {
+        dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(x,y,Graphics.FONT_TINY,"?",Graphics.TEXT_JUSTIFY_RIGHT);
     }
 }
 
@@ -262,15 +287,19 @@ class SceneRenderer {
 // owns the once-per-minute guard; fonts/dictionary are prepared outside redraw.
 module SceneAod {
     function countdownColor(current as ClockSnapshot, settings as SceneSettings) as Number {return current.rescheduled || current.sourceHold ? 0xFF6B6B : settings.countdownColor;}
-    function draw(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,presentation as LocalePresentation,font as Graphics.FontType,settings as SceneSettings,map as Graphics.BitmapType or Null,pin as Boolean,pinX as Number,pinY as Number) as Void {
+    (:typecheck(false)) function draw(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,presentation as LocalePresentation,font as Graphics.FontType,settings as SceneSettings,map as Graphics.BitmapType or Null,pin as Boolean,pinX as Number,pinY as Number,worldPoint) as Void {
         dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();
         var positions=[[-1,-1],[1,-1],[-1,1],[1,1]];var phase=((minute%4+4)%4).toNumber();var p=positions[phase];
         if(map!=null){dc.drawBitmap(0,0,map);}
+        if(worldPoint!=null){FallbackWorld.draw(dc,97,15);}
         // Keep the ACTIVE-coordinate coastlines outside the foreground bands.
         // Clearing under the hollow clock also bounds lit pixels on dense maps.
         dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);
         dc.fillRectangle(35,91,280,39);dc.fillRectangle(45,139,300,108);
         dc.fillRectangle(40,247,310,39);dc.fillRectangle(125,296,140,43);
+        // Draw the qualified point after the foreground masks so a southern
+        // coordinate is not erased by the calendar/clock clearing band.
+        if(worldPoint!=null){FallbackMap.point(dc,worldPoint,97,15);}
         dc.setColor(settings.clockColor,Graphics.COLOR_TRANSPARENT);
         // Monospaced advance boxes do not imply symmetric digit ink. The
         // bundled AOD atlas has 53px advances; these are the fully lit left

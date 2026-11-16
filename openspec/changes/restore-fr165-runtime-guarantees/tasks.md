@@ -8,10 +8,22 @@
 - [x] Independent peer review and repair to software green (root-owned assignment).
 - [ ] Exact candidate physical FR165 cold start, reopen and ordinary use at least 15 minutes; P1–P3 acceptance remains open until observed.
 
-## Later batches
+## B2 — P4/P5/P6
 
-- [ ] B2 P4/P5/P6 arithmetic, fact and coherent-update acceptance.
-- [ ] B3 P8 quiet reminder acceptance.
+- [x] Implement and self-verify arithmetic, retention, immediate validated facts and coherent update/recovery, including current SDK and fallback rendering evidence.
+- [x] Independent peer review and repair to software green.
+- [x] Root judgment and merge.
+- [x] After root froze accepted main, the same author prepared the full signed 0.1.22 candidate and published the authorized GitHub test release.
+- [ ] Exact candidate physical FR165 observation needed to establish physical P4–P6 acceptance.
+
+## B3 — P8 quiet reminders
+
+- [x] Implement and self-verify the whole selected-launch reminder batch against the criterion map and focused current evidence.
+- [x] One independent peer reviews and repairs the batch through software GREEN.
+- [ ] Root judges and merges.
+- [ ] After root freezes accepted main, the same author prepares and publishes the full signed 0.1.23 GitHub test release.
+- [ ] Physical FR165 notification delivery, vibration and scheduling observation remains open.
+
 
 ## Authorized 0.1.19 test distribution
 

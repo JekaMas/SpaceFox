@@ -1,0 +1,7 @@
+/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/openspec/changes/spacefox-watchface/evidence/performance021/integration/stock-024-packed/check-readiness.py:11: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  return sum(predicate(*pixel) for pixel in region.getdata())
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/openspec/changes/spacefox-watchface/evidence/performance021/integration/stock-024-packed/check-readiness.py", line 19, in <module>
+    assert count(im, (.2, .40, .34, .54), white) > 3000, name + ': rocket missing'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: active: rocket missing

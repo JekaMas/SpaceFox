@@ -19,6 +19,30 @@
       "capability": "runtime",
       "title": "Runtime resource and lifecycle bounds",
       "fingerprint": "7228048e0b1c7b0d9adde15e1e12f0eefc688c19767794b0db06ecdc8a888dbf"
+    },
+    {
+      "id": "B2R1",
+      "capability": "runtime",
+      "title": "Countdown and retention preserve source precision",
+      "fingerprint": "03be5a6aed55f53f07a0ef0bc41c806ce0355744a89b1b1804239db8c9e8a5f1"
+    },
+    {
+      "id": "B2R2",
+      "capability": "runtime",
+      "title": "Admitted facts precede optional artwork",
+      "fingerprint": "8126d385946d4695e5258b1f883f43c1dde74512e5fab96cbb257caa8eeaeb76"
+    },
+    {
+      "id": "B2R3",
+      "capability": "runtime",
+      "title": "Selected facts replace atomically",
+      "fingerprint": "76c8f2a351e41a77780fc5c1b6a7448b68a3bd51aca1413abf07f70a6574d113"
+    },
+    {
+      "id": "B3R1",
+      "capability": "runtime",
+      "title": "Selected-launch reminders remain quiet and deduplicated",
+      "fingerprint": "2ff37a045a7892c5705be10b1853645f69af248900b16802cb1c8603b574d3c3"
     }
   ],
   "properties": [
@@ -110,6 +134,94 @@
         "watchface/source/**",
         "watchface/runtime-b1-tests/**",
         "tests/fixtures/fr165-runtime-20261116/**"
+      ]
+    },
+    {
+      "id": "B2R1.P1",
+      "requirement_id": "B2R1",
+      "scenarios": [
+        "Arithmetic across zero"
+      ],
+      "statement": "Countdown and retention preserve source precision",
+      "owner": "watchface/source/SpaceFoxView.mc",
+      "oracle": "Named strict SDK table over production owners, captured real source facts and explicit arithmetic or recovery expectations; separately inspect the fallback frame.",
+      "source_globs": [
+        "watchface/source/**",
+        "watchface/runtime-b2-tests/**",
+        "tests/fixtures/watch_refresh_cache/**"
+      ]
+    },
+    {
+      "id": "B2R1.P2",
+      "requirement_id": "B2R1",
+      "scenarios": [
+        "Retention and unknown target"
+      ],
+      "statement": "Countdown and retention preserve source precision",
+      "owner": "watchface/source/SpaceFoxView.mc",
+      "oracle": "Named strict SDK table over production owners, captured real source facts and explicit arithmetic or recovery expectations; separately inspect the fallback frame.",
+      "source_globs": [
+        "watchface/source/**",
+        "watchface/runtime-b2-tests/**",
+        "tests/fixtures/watch_refresh_cache/**"
+      ]
+    },
+    {
+      "id": "B2R2.P1",
+      "requirement_id": "B2R2",
+      "scenarios": [
+        "Artwork is absent or pending"
+      ],
+      "statement": "Admitted facts precede optional artwork",
+      "owner": "watchface/source/SpaceFoxView.mc",
+      "oracle": "Named strict SDK table over production owners, captured real source facts and explicit arithmetic or recovery expectations; separately inspect the fallback frame.",
+      "source_globs": [
+        "watchface/source/**",
+        "watchface/runtime-b2-tests/**",
+        "tests/fixtures/watch_refresh_cache/**"
+      ]
+    },
+    {
+      "id": "B2R3.P1",
+      "requirement_id": "B2R3",
+      "scenarios": [
+        "Replacement fails or is interrupted"
+      ],
+      "statement": "Selected facts replace atomically",
+      "owner": "watchface/source/SpaceFoxView.mc",
+      "oracle": "Named strict SDK table over production owners, captured real source facts and explicit arithmetic or recovery expectations; separately inspect the fallback frame.",
+      "source_globs": [
+        "watchface/source/**",
+        "watchface/runtime-b2-tests/**",
+        "tests/fixtures/watch_refresh_cache/**"
+      ]
+    },
+    {
+      "id": "B3R1.P1",
+      "requirement_id": "B3R1",
+      "scenarios": [
+        "Quiet or unknown state"
+      ],
+      "statement": "Quiet-safe, source-qualified selected reminder with durable deduplication",
+      "owner": "watchface/source/LaunchReminder.mc",
+      "oracle": "Strict named native SDK table with controlled clock and notification sink; actual quiet-provider observation is separate. No physical delivery claim.",
+      "source_globs": [
+        "watchface/source/**",
+        "watchface/runtime-b3-tests/**"
+      ]
+    },
+    {
+      "id": "B3R1.P2",
+      "requirement_id": "B3R1",
+      "scenarios": [
+        "Selected launch changes or resumes"
+      ],
+      "statement": "Quiet-safe, source-qualified selected reminder with durable deduplication",
+      "owner": "watchface/source/LaunchReminder.mc",
+      "oracle": "Strict named native SDK table with controlled clock and notification sink; actual quiet-provider observation is separate. No physical delivery claim.",
+      "source_globs": [
+        "watchface/source/**",
+        "watchface/runtime-b3-tests/**"
       ]
     }
   ],
@@ -401,6 +513,523 @@
         "classification": "UNDECIDED"
       },
       "planning_note": "Pending mapping to final exact observer and its proof boundary; not a claimed execution."
+    },
+    {
+      "id": "B2R1.P1.POSITIVE",
+      "property_id": "B2R1.P1",
+      "polarity": "positive",
+      "scenario": "Arithmetic across zero",
+      "scenario_fingerprint": "08f4304c209c9a7798d3aba1e793f4bd64ea669b64e7dca76c317c593d4607f1",
+      "setup": "Captured real launch and catalog or technical replacement fixture in the isolated FR165 SDK test host.",
+      "observable": "The named native test checks source precision, selected facts or recovery as applicable.",
+      "red_expectation": "Reject missing table rows, errors, mixed facts, fabricated target or unqualified event point.",
+      "green_expectation": "The named complete strict SDK table passes, within the recorded test-host boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b2-tests/B2Tests.mc",
+        "tests/fixtures/watch_refresh_cache/**"
+      ],
+      "test_id": "b2ArithmeticAndRetention",
+      "command_id": "b2-b2ArithmeticAndRetention",
+      "state": "planned",
+      "source_path": "watchface/runtime-b2-tests/B2Tests.mc",
+      "source_sha256": "72560cd2d4e8989d696dd426f5b934288f7d7f87847ac74ba4460e93b6459f29",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "HTTP and/or durable device storage boundary",
+        "allowed_proof": "Deterministic production owner behavior over captured or controlled inputs",
+        "forbidden_claims": [
+          "Live phone transport, physical restart or real-watch behavior"
+        ]
+      },
+      "distinct_reason": "Arithmetic across zero uses this scoped table alongside other property edges; evidence remains test-host only.",
+      "planning_note": "Command strictly checks retained named SDK receipt; the shared graph has no Monkey C typed runner, so this edge is not claimed as a shared-runner behavioral pass."
+    },
+    {
+      "id": "B2R1.P1.NEGATIVE",
+      "property_id": "B2R1.P1",
+      "polarity": "negative",
+      "scenario": "Arithmetic across zero",
+      "scenario_fingerprint": "08f4304c209c9a7798d3aba1e793f4bd64ea669b64e7dca76c317c593d4607f1",
+      "setup": "Captured real launch and catalog or technical replacement fixture in the isolated FR165 SDK test host.",
+      "observable": "The named native test checks source precision, selected facts or recovery as applicable.",
+      "red_expectation": "Reject missing table rows, errors, mixed facts, fabricated target or unqualified event point.",
+      "green_expectation": "The named complete strict SDK table passes, within the recorded test-host boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b2-tests/B2Tests.mc",
+        "tests/fixtures/watch_refresh_cache/**"
+      ],
+      "test_id": "b2CapturedHourAndMissingPoint",
+      "command_id": "b2-b2CapturedHourAndMissingPoint",
+      "state": "planned",
+      "source_path": "watchface/runtime-b2-tests/B2Tests.mc",
+      "source_sha256": "72560cd2d4e8989d696dd426f5b934288f7d7f87847ac74ba4460e93b6459f29",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "HTTP and/or durable device storage boundary",
+        "allowed_proof": "Deterministic production owner behavior over captured or controlled inputs",
+        "forbidden_claims": [
+          "Live phone transport, physical restart or real-watch behavior"
+        ]
+      },
+      "distinct_reason": "Arithmetic across zero uses this scoped table alongside other property edges; evidence remains test-host only.",
+      "planning_note": "Command strictly checks retained named SDK receipt; the shared graph has no Monkey C typed runner, so this edge is not claimed as a shared-runner behavioral pass."
+    },
+    {
+      "id": "B2R1.P2.POSITIVE",
+      "property_id": "B2R1.P2",
+      "polarity": "positive",
+      "scenario": "Retention and unknown target",
+      "scenario_fingerprint": "4c745965b652103ef84da50c56ef65564a2057f10ffb2b133f9f640fbdc47c23",
+      "setup": "Captured real launch and catalog or technical replacement fixture in the isolated FR165 SDK test host.",
+      "observable": "The named native test checks source precision, selected facts or recovery as applicable.",
+      "red_expectation": "Reject missing table rows, errors, mixed facts, fabricated target or unqualified event point.",
+      "green_expectation": "The named complete strict SDK table passes, within the recorded test-host boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b2-tests/B2Tests.mc",
+        "tests/fixtures/watch_refresh_cache/**"
+      ],
+      "test_id": "b2ArithmeticAndRetention",
+      "command_id": "b2-b2ArithmeticAndRetention",
+      "state": "planned",
+      "source_path": "watchface/runtime-b2-tests/B2Tests.mc",
+      "source_sha256": "72560cd2d4e8989d696dd426f5b934288f7d7f87847ac74ba4460e93b6459f29",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "HTTP and/or durable device storage boundary",
+        "allowed_proof": "Deterministic production owner behavior over captured or controlled inputs",
+        "forbidden_claims": [
+          "Live phone transport, physical restart or real-watch behavior"
+        ]
+      },
+      "distinct_reason": "Retention and unknown target uses this scoped table alongside other property edges; evidence remains test-host only.",
+      "planning_note": "Command strictly checks retained named SDK receipt; the shared graph has no Monkey C typed runner, so this edge is not claimed as a shared-runner behavioral pass."
+    },
+    {
+      "id": "B2R1.P2.NEGATIVE",
+      "property_id": "B2R1.P2",
+      "polarity": "negative",
+      "scenario": "Retention and unknown target",
+      "scenario_fingerprint": "4c745965b652103ef84da50c56ef65564a2057f10ffb2b133f9f640fbdc47c23",
+      "setup": "Captured real launch and catalog or technical replacement fixture in the isolated FR165 SDK test host.",
+      "observable": "The named native test checks source precision, selected facts or recovery as applicable.",
+      "red_expectation": "Reject missing table rows, errors, mixed facts, fabricated target or unqualified event point.",
+      "green_expectation": "The named complete strict SDK table passes, within the recorded test-host boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b2-tests/B2Tests.mc",
+        "tests/fixtures/watch_refresh_cache/**"
+      ],
+      "test_id": "b2CapturedHourAndMissingPoint",
+      "command_id": "b2-b2CapturedHourAndMissingPoint",
+      "state": "planned",
+      "source_path": "watchface/runtime-b2-tests/B2Tests.mc",
+      "source_sha256": "72560cd2d4e8989d696dd426f5b934288f7d7f87847ac74ba4460e93b6459f29",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "HTTP and/or durable device storage boundary",
+        "allowed_proof": "Deterministic production owner behavior over captured or controlled inputs",
+        "forbidden_claims": [
+          "Live phone transport, physical restart or real-watch behavior"
+        ]
+      },
+      "distinct_reason": "Retention and unknown target uses this scoped table alongside other property edges; evidence remains test-host only.",
+      "planning_note": "Command strictly checks retained named SDK receipt; the shared graph has no Monkey C typed runner, so this edge is not claimed as a shared-runner behavioral pass."
+    },
+    {
+      "id": "B2R2.P1.POSITIVE",
+      "property_id": "B2R2.P1",
+      "polarity": "positive",
+      "scenario": "Artwork is absent or pending",
+      "scenario_fingerprint": "9bf41d9dd135d28a3f100f4c591e54f65b914d1d70d89a1967d2ac255c9029a6",
+      "setup": "Captured real launch and catalog or technical replacement fixture in the isolated FR165 SDK test host.",
+      "observable": "The named native test checks source precision, selected facts or recovery as applicable.",
+      "red_expectation": "Reject missing table rows, errors, mixed facts, fabricated target or unqualified event point.",
+      "green_expectation": "The named complete strict SDK table passes, within the recorded test-host boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b2-tests/B2Tests.mc",
+        "tests/fixtures/watch_refresh_cache/**"
+      ],
+      "test_id": "b2AdmittedFactsWithoutArt",
+      "command_id": "b2-b2AdmittedFactsWithoutArt",
+      "state": "planned",
+      "source_path": "watchface/runtime-b2-tests/B2Tests.mc",
+      "source_sha256": "72560cd2d4e8989d696dd426f5b934288f7d7f87847ac74ba4460e93b6459f29",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "HTTP and/or durable device storage boundary",
+        "allowed_proof": "Deterministic production owner behavior over captured or controlled inputs",
+        "forbidden_claims": [
+          "Live phone transport, physical restart or real-watch behavior"
+        ]
+      },
+      "distinct_reason": "Artwork is absent or pending uses this scoped table alongside other property edges; evidence remains test-host only.",
+      "planning_note": "Command strictly checks retained named SDK receipt; the shared graph has no Monkey C typed runner, so this edge is not claimed as a shared-runner behavioral pass."
+    },
+    {
+      "id": "B2R2.P1.NEGATIVE",
+      "property_id": "B2R2.P1",
+      "polarity": "negative",
+      "scenario": "Artwork is absent or pending",
+      "scenario_fingerprint": "9bf41d9dd135d28a3f100f4c591e54f65b914d1d70d89a1967d2ac255c9029a6",
+      "setup": "Captured real launch and catalog or technical replacement fixture in the isolated FR165 SDK test host.",
+      "observable": "The named native test checks source precision, selected facts or recovery as applicable.",
+      "red_expectation": "Reject missing table rows, errors, mixed facts, fabricated target or unqualified event point.",
+      "green_expectation": "The named complete strict SDK table passes, within the recorded test-host boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b2-tests/B2Tests.mc",
+        "tests/fixtures/watch_refresh_cache/**"
+      ],
+      "test_id": "b2CapturedHourAndMissingPoint",
+      "command_id": "b2-b2CapturedHourAndMissingPoint",
+      "state": "planned",
+      "source_path": "watchface/runtime-b2-tests/B2Tests.mc",
+      "source_sha256": "72560cd2d4e8989d696dd426f5b934288f7d7f87847ac74ba4460e93b6459f29",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "HTTP and/or durable device storage boundary",
+        "allowed_proof": "Deterministic production owner behavior over captured or controlled inputs",
+        "forbidden_claims": [
+          "Live phone transport, physical restart or real-watch behavior"
+        ]
+      },
+      "distinct_reason": "Artwork is absent or pending uses this scoped table alongside other property edges; evidence remains test-host only.",
+      "planning_note": "Command strictly checks retained named SDK receipt; the shared graph has no Monkey C typed runner, so this edge is not claimed as a shared-runner behavioral pass."
+    },
+    {
+      "id": "B2R3.P1.POSITIVE",
+      "property_id": "B2R3.P1",
+      "polarity": "positive",
+      "scenario": "Replacement fails or is interrupted",
+      "scenario_fingerprint": "d3d5b3c3e1ff35574544df4ec86ec0bf8e28b205b29da72bb4061d8e239a8970",
+      "setup": "Captured real launch and catalog or technical replacement fixture in the isolated FR165 SDK test host.",
+      "observable": "The named native test checks source precision, selected facts or recovery as applicable.",
+      "red_expectation": "Reject missing table rows, errors, mixed facts, fabricated target or unqualified event point.",
+      "green_expectation": "The named complete strict SDK table passes, within the recorded test-host boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b2-tests/B2Tests.mc",
+        "tests/fixtures/watch_refresh_cache/**"
+      ],
+      "test_id": "b2RescheduleAndNewSelection",
+      "command_id": "b2-b2RescheduleAndNewSelection",
+      "state": "planned",
+      "source_path": "watchface/runtime-b2-tests/B2Tests.mc",
+      "source_sha256": "72560cd2d4e8989d696dd426f5b934288f7d7f87847ac74ba4460e93b6459f29",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "HTTP and/or durable device storage boundary",
+        "allowed_proof": "Deterministic production owner behavior over captured or controlled inputs",
+        "forbidden_claims": [
+          "Live phone transport, physical restart or real-watch behavior"
+        ]
+      },
+      "distinct_reason": "Replacement fails or is interrupted uses this scoped table alongside other property edges; evidence remains test-host only.",
+      "planning_note": "Command strictly checks retained named SDK receipt; the shared graph has no Monkey C typed runner, so this edge is not claimed as a shared-runner behavioral pass."
+    },
+    {
+      "id": "B2R3.P1.NEGATIVE",
+      "property_id": "B2R3.P1",
+      "polarity": "negative",
+      "scenario": "Replacement fails or is interrupted",
+      "scenario_fingerprint": "d3d5b3c3e1ff35574544df4ec86ec0bf8e28b205b29da72bb4061d8e239a8970",
+      "setup": "Captured real launch and catalog or technical replacement fixture in the isolated FR165 SDK test host.",
+      "observable": "The named native test checks source precision, selected facts or recovery as applicable.",
+      "red_expectation": "Reject missing table rows, errors, mixed facts, fabricated target or unqualified event point.",
+      "green_expectation": "The named complete strict SDK table passes, within the recorded test-host boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b2-tests/B2Tests.mc",
+        "tests/fixtures/watch_refresh_cache/**"
+      ],
+      "test_id": "b2FailedAndInterruptedReplacement",
+      "command_id": "b2-b2FailedAndInterruptedReplacement",
+      "state": "planned",
+      "source_path": "watchface/runtime-b2-tests/B2Tests.mc",
+      "source_sha256": "72560cd2d4e8989d696dd426f5b934288f7d7f87847ac74ba4460e93b6459f29",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "HTTP and/or durable device storage boundary",
+        "allowed_proof": "Deterministic production owner behavior over captured or controlled inputs",
+        "forbidden_claims": [
+          "Live phone transport, physical restart or real-watch behavior"
+        ]
+      },
+      "distinct_reason": "Replacement fails or is interrupted uses this scoped table alongside other property edges; evidence remains test-host only.",
+      "planning_note": "Command strictly checks retained named SDK receipt; the shared graph has no Monkey C typed runner, so this edge is not claimed as a shared-runner behavioral pass."
+    },
+    {
+      "id": "B2R1.P2.ASCENT",
+      "property_id": "B2R1.P2",
+      "polarity": "positive",
+      "scenario": "Retention and unknown target",
+      "scenario_fingerprint": "4c745965b652103ef84da50c56ef65564a2057f10ffb2b133f9f640fbdc47c23",
+      "setup": "Captured real launch and catalog or technical replacement fixture in the isolated FR165 SDK test host.",
+      "observable": "The named native test checks source precision, selected facts or recovery as applicable.",
+      "red_expectation": "Reject missing table rows, errors, mixed facts, fabricated target or unqualified event point.",
+      "green_expectation": "The named complete strict SDK table passes, within the recorded test-host boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b2-tests/B2Tests.mc",
+        "tests/fixtures/watch_refresh_cache/**"
+      ],
+      "test_id": "b2SourcedAscentRetention",
+      "command_id": "b2-b2SourcedAscentRetention",
+      "state": "planned",
+      "source_path": "watchface/runtime-b2-tests/B2Tests.mc",
+      "source_sha256": "72560cd2d4e8989d696dd426f5b934288f7d7f87847ac74ba4460e93b6459f29",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "HTTP and/or durable device storage boundary",
+        "allowed_proof": "Deterministic production owner behavior over captured or controlled inputs",
+        "forbidden_claims": [
+          "Live phone transport, physical restart or real-watch behavior"
+        ]
+      },
+      "distinct_reason": "Retention and unknown target uses this scoped table alongside other property edges; evidence remains test-host only.",
+      "planning_note": "Command strictly checks retained named SDK receipt; the shared graph has no Monkey C typed runner, so this edge is not claimed as a shared-runner behavioral pass."
+    },
+    {
+      "id": "B2R2.P1.LOW",
+      "property_id": "B2R2.P1",
+      "polarity": "positive",
+      "scenario": "Artwork is absent or pending",
+      "scenario_fingerprint": "9bf41d9dd135d28a3f100f4c591e54f65b914d1d70d89a1967d2ac255c9029a6",
+      "setup": "Captured real launch and catalog or technical replacement fixture in the isolated FR165 SDK test host.",
+      "observable": "The named native test checks source precision, selected facts or recovery as applicable.",
+      "red_expectation": "Reject missing table rows, errors, mixed facts, fabricated target or unqualified event point.",
+      "green_expectation": "The named complete strict SDK table passes, within the recorded test-host boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b2-tests/B2Tests.mc",
+        "tests/fixtures/watch_refresh_cache/**"
+      ],
+      "test_id": "b2LowUnmatchedPoint",
+      "command_id": "b2-b2LowUnmatchedPoint",
+      "state": "planned",
+      "source_path": "watchface/runtime-b2-tests/B2Tests.mc",
+      "source_sha256": "72560cd2d4e8989d696dd426f5b934288f7d7f87847ac74ba4460e93b6459f29",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "HTTP and/or durable device storage boundary",
+        "allowed_proof": "Deterministic production owner behavior over captured or controlled inputs",
+        "forbidden_claims": [
+          "Live phone transport, physical restart or real-watch behavior"
+        ]
+      },
+      "distinct_reason": "Artwork is absent or pending uses this scoped table alongside other property edges; evidence remains test-host only.",
+      "planning_note": "Command strictly checks retained named SDK receipt; the shared graph has no Monkey C typed runner, so this edge is not claimed as a shared-runner behavioral pass."
+    },
+    {
+      "id": "B2R3.P1.SEED",
+      "property_id": "B2R3.P1",
+      "polarity": "negative",
+      "scenario": "Replacement fails or is interrupted",
+      "scenario_fingerprint": "d3d5b3c3e1ff35574544df4ec86ec0bf8e28b205b29da72bb4061d8e239a8970",
+      "setup": "Captured real launch and catalog or technical replacement fixture in the isolated FR165 SDK test host.",
+      "observable": "The named native test checks source precision, selected facts or recovery as applicable.",
+      "red_expectation": "Reject missing table rows, errors, mixed facts, fabricated target or unqualified event point.",
+      "green_expectation": "The named complete strict SDK table passes, within the recorded test-host boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b2-tests/B2Tests.mc",
+        "tests/fixtures/watch_refresh_cache/**"
+      ],
+      "test_id": "b2CrossVmSeedInterrupted",
+      "command_id": "b2-b2CrossVmSeedInterrupted",
+      "state": "planned",
+      "source_path": "watchface/runtime-b2-tests/B2Tests.mc",
+      "source_sha256": "72560cd2d4e8989d696dd426f5b934288f7d7f87847ac74ba4460e93b6459f29",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "HTTP and/or durable device storage boundary",
+        "allowed_proof": "Deterministic production owner behavior over captured or controlled inputs",
+        "forbidden_claims": [
+          "Live phone transport, physical restart or real-watch behavior"
+        ]
+      },
+      "distinct_reason": "Replacement fails or is interrupted uses this scoped table alongside other property edges; evidence remains test-host only.",
+      "planning_note": "Command strictly checks retained named SDK receipt; the shared graph has no Monkey C typed runner, so this edge is not claimed as a shared-runner behavioral pass."
+    },
+    {
+      "id": "B2R3.P1.REOPEN",
+      "property_id": "B2R3.P1",
+      "polarity": "negative",
+      "scenario": "Replacement fails or is interrupted",
+      "scenario_fingerprint": "d3d5b3c3e1ff35574544df4ec86ec0bf8e28b205b29da72bb4061d8e239a8970",
+      "setup": "Captured real launch and catalog or technical replacement fixture in the isolated FR165 SDK test host.",
+      "observable": "The named native test checks source precision, selected facts or recovery as applicable.",
+      "red_expectation": "Reject missing table rows, errors, mixed facts, fabricated target or unqualified event point.",
+      "green_expectation": "The named complete strict SDK table passes, within the recorded test-host boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b2-tests/B2Tests.mc",
+        "tests/fixtures/watch_refresh_cache/**"
+      ],
+      "test_id": "b2CrossVmObserveRestored",
+      "command_id": "b2-b2CrossVmObserveRestored",
+      "state": "planned",
+      "source_path": "watchface/runtime-b2-tests/B2Tests.mc",
+      "source_sha256": "72560cd2d4e8989d696dd426f5b934288f7d7f87847ac74ba4460e93b6459f29",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "HTTP and/or durable device storage boundary",
+        "allowed_proof": "Deterministic production owner behavior over captured or controlled inputs",
+        "forbidden_claims": [
+          "Live phone transport, physical restart or real-watch behavior"
+        ]
+      },
+      "distinct_reason": "Replacement fails or is interrupted uses this scoped table alongside other property edges; evidence remains test-host only.",
+      "planning_note": "Command strictly checks retained named SDK receipt; the shared graph has no Monkey C typed runner, so this edge is not claimed as a shared-runner behavioral pass."
+    },
+    {
+      "id": "B3R1.P1.b3QuietProvider",
+      "property_id": "B3R1.P1",
+      "polarity": "positive",
+      "scenario": "Quiet or unknown state",
+      "scenario_fingerprint": "c756bbda23f00d99b530a89a71fe35a39419adce436e57fa5ccc4bbfebad5988",
+      "setup": "Isolated FR165 SDK host, real admission or controlled technical time, and the named case.",
+      "observable": "Named complete native SDK table exercises the stated source boundary.",
+      "red_expectation": "Reject missing results, errors, duplicate dispatch or unqualified reminders.",
+      "green_expectation": "The named complete SDK table passes within its stated boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b3-tests/B3Tests.mc"
+      ],
+      "test_id": "b3QuietProvider",
+      "command_id": "b3-b3QuietProvider",
+      "state": "planned",
+      "source_path": "watchface/runtime-b3-tests/B3Tests.mc",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "Notification delivery and controlled clock where applicable",
+        "allowed_proof": "Production selection and consumption under explicit inputs",
+        "forbidden_claims": [
+          "Physical delivery, physical device restart, live scheduler or simulator reinstall"
+        ]
+      },
+      "distinct_reason": "This named table checks a specific selection, quiet, source or lifecycle boundary.",
+      "planning_note": "The command parses the retained named SDK table; the shared graph has no typed Monkey C runner and this edge is not a shared-runner behavioral pass."
+    },
+    {
+      "id": "B3R1.P1.b3RescheduleAndQuiet",
+      "property_id": "B3R1.P1",
+      "polarity": "negative",
+      "scenario": "Quiet or unknown state",
+      "scenario_fingerprint": "c756bbda23f00d99b530a89a71fe35a39419adce436e57fa5ccc4bbfebad5988",
+      "setup": "Isolated FR165 SDK host, real admission or controlled technical time, and the named case.",
+      "observable": "Named complete native SDK table exercises the stated source boundary.",
+      "red_expectation": "Reject missing results, errors, duplicate dispatch or unqualified reminders.",
+      "green_expectation": "The named complete SDK table passes within its stated boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b3-tests/B3Tests.mc"
+      ],
+      "test_id": "b3RescheduleAndQuiet",
+      "command_id": "b3-b3RescheduleAndQuiet",
+      "state": "planned",
+      "source_path": "watchface/runtime-b3-tests/B3Tests.mc",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "Notification delivery and controlled clock where applicable",
+        "allowed_proof": "Production selection and consumption under explicit inputs",
+        "forbidden_claims": [
+          "Physical delivery, physical device restart, live scheduler or simulator reinstall"
+        ]
+      },
+      "distinct_reason": "This named table checks a specific selection, quiet, source or lifecycle boundary.",
+      "planning_note": "The command parses the retained named SDK table; the shared graph has no typed Monkey C runner and this edge is not a shared-runner behavioral pass."
+    },
+    {
+      "id": "B3R1.P2.b3QueueAndRollover",
+      "property_id": "B3R1.P2",
+      "polarity": "positive",
+      "scenario": "Selected launch changes or resumes",
+      "scenario_fingerprint": "5dad50880439d7e0452d39e118375eea465fa813cc59318f1c6481aa16f824d2",
+      "setup": "Isolated FR165 SDK host, real admission or controlled technical time, and the named case.",
+      "observable": "Named complete native SDK table exercises the stated source boundary.",
+      "red_expectation": "Reject missing results, errors, duplicate dispatch or unqualified reminders.",
+      "green_expectation": "The named complete SDK table passes within its stated boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b3-tests/B3Tests.mc"
+      ],
+      "test_id": "b3QueueAndRollover",
+      "command_id": "b3-b3QueueAndRollover",
+      "state": "planned",
+      "source_path": "watchface/runtime-b3-tests/B3Tests.mc",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "Notification delivery and controlled clock where applicable",
+        "allowed_proof": "Production selection and consumption under explicit inputs",
+        "forbidden_claims": [
+          "Physical delivery, physical device restart, live scheduler or simulator reinstall"
+        ]
+      },
+      "distinct_reason": "This named table checks a specific selection, quiet, source or lifecycle boundary.",
+      "planning_note": "The command parses the retained named SDK table; the shared graph has no typed Monkey C runner and this edge is not a shared-runner behavioral pass."
+    },
+    {
+      "id": "B3R1.P2.b3AdmissionAndUnknown",
+      "property_id": "B3R1.P2",
+      "polarity": "negative",
+      "scenario": "Selected launch changes or resumes",
+      "scenario_fingerprint": "5dad50880439d7e0452d39e118375eea465fa813cc59318f1c6481aa16f824d2",
+      "setup": "Isolated FR165 SDK host, real admission or controlled technical time, and the named case.",
+      "observable": "Named complete native SDK table exercises the stated source boundary.",
+      "red_expectation": "Reject missing results, errors, duplicate dispatch or unqualified reminders.",
+      "green_expectation": "The named complete SDK table passes within its stated boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b3-tests/B3Tests.mc"
+      ],
+      "test_id": "b3AdmissionAndUnknown",
+      "command_id": "b3-b3AdmissionAndUnknown",
+      "state": "planned",
+      "source_path": "watchface/runtime-b3-tests/B3Tests.mc",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "Notification delivery and controlled clock where applicable",
+        "allowed_proof": "Production selection and consumption under explicit inputs",
+        "forbidden_claims": [
+          "Physical delivery, physical device restart, live scheduler or simulator reinstall"
+        ]
+      },
+      "distinct_reason": "This named table checks a specific selection, quiet, source or lifecycle boundary.",
+      "planning_note": "The command parses the retained named SDK table; the shared graph has no typed Monkey C runner and this edge is not a shared-runner behavioral pass."
+    },
+    {
+      "id": "B3R1.P2.b3OrdinaryReopen",
+      "property_id": "B3R1.P2",
+      "polarity": "positive",
+      "scenario": "Selected launch changes or resumes",
+      "scenario_fingerprint": "5dad50880439d7e0452d39e118375eea465fa813cc59318f1c6481aa16f824d2",
+      "setup": "Isolated FR165 SDK host, real admission or controlled technical time, and the named case.",
+      "observable": "Named complete native SDK table exercises the stated source boundary.",
+      "red_expectation": "Reject missing results, errors, duplicate dispatch or unqualified reminders.",
+      "green_expectation": "The named complete SDK table passes within its stated boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b3-tests/B3Tests.mc"
+      ],
+      "test_id": "b3OrdinaryReopen",
+      "command_id": "b3-b3OrdinaryReopen",
+      "state": "planned",
+      "source_path": "watchface/runtime-b3-tests/B3Tests.mc",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "Notification delivery and controlled clock where applicable",
+        "allowed_proof": "Production selection and consumption under explicit inputs",
+        "forbidden_claims": [
+          "Physical delivery, physical device restart, live scheduler or simulator reinstall"
+        ]
+      },
+      "distinct_reason": "This named table checks a specific selection, quiet, source or lifecycle boundary.",
+      "planning_note": "The command parses the retained named SDK table; the shared graph has no typed Monkey C runner and this edge is not a shared-runner behavioral pass."
     }
   ],
   "commands": [
@@ -428,6 +1057,258 @@
         "PENDING_3_2_negative"
       ],
       "notes": "Explicit failing placeholder while exact behavioral/device observers are unresolved; never a passing gate."
+    },
+    {
+      "id": "b2-b2AdmittedFactsWithoutArt",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "tools.check_b2_evidence",
+        "b2AdmittedFactsWithoutArt"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "expected_markers": [
+        "b2AdmittedFactsWithoutArt"
+      ],
+      "notes": "Strictly parses retained named SDK table; does not execute SDK or establish physical-device behavior."
+    },
+    {
+      "id": "b2-b2ArithmeticAndRetention",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "tools.check_b2_evidence",
+        "b2ArithmeticAndRetention"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "expected_markers": [
+        "b2ArithmeticAndRetention"
+      ],
+      "notes": "Strictly parses retained named SDK table; does not execute SDK or establish physical-device behavior."
+    },
+    {
+      "id": "b2-b2CapturedHourAndMissingPoint",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "tools.check_b2_evidence",
+        "b2CapturedHourAndMissingPoint"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "expected_markers": [
+        "b2CapturedHourAndMissingPoint"
+      ],
+      "notes": "Strictly parses retained named SDK table; does not execute SDK or establish physical-device behavior."
+    },
+    {
+      "id": "b2-b2FailedAndInterruptedReplacement",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "tools.check_b2_evidence",
+        "b2FailedAndInterruptedReplacement"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "expected_markers": [
+        "b2FailedAndInterruptedReplacement"
+      ],
+      "notes": "Strictly parses retained named SDK table; does not execute SDK or establish physical-device behavior."
+    },
+    {
+      "id": "b2-b2RescheduleAndNewSelection",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "tools.check_b2_evidence",
+        "b2RescheduleAndNewSelection"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "expected_markers": [
+        "b2RescheduleAndNewSelection"
+      ],
+      "notes": "Strictly parses retained named SDK table; does not execute SDK or establish physical-device behavior."
+    },
+    {
+      "id": "b2-b2SourcedAscentRetention",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "tools.check_b2_evidence",
+        "b2SourcedAscentRetention"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "expected_markers": [
+        "b2SourcedAscentRetention"
+      ],
+      "notes": "Strictly parses retained named SDK table; does not execute SDK or establish physical-device behavior."
+    },
+    {
+      "id": "b2-b2LowUnmatchedPoint",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "tools.check_b2_evidence",
+        "b2LowUnmatchedPoint"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "expected_markers": [
+        "b2LowUnmatchedPoint"
+      ],
+      "notes": "Strictly parses retained named SDK table; does not execute SDK or establish physical-device behavior."
+    },
+    {
+      "id": "b2-b2CrossVmSeedInterrupted",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "tools.check_b2_evidence",
+        "b2CrossVmSeedInterrupted"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "expected_markers": [
+        "b2CrossVmSeedInterrupted"
+      ],
+      "notes": "Strictly parses retained named SDK table; does not execute SDK or establish physical-device behavior."
+    },
+    {
+      "id": "b2-b2CrossVmObserveRestored",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "tools.check_b2_evidence",
+        "b2CrossVmObserveRestored"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "expected_markers": [
+        "b2CrossVmObserveRestored"
+      ],
+      "notes": "Strictly parses retained named SDK table; does not execute SDK or establish physical-device behavior."
+    },
+    {
+      "id": "b3-b3QuietProvider",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "tools.check_b3_evidence",
+        "b3QuietProvider"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "expected_markers": [
+        "b3QuietProvider"
+      ],
+      "notes": "Strictly parses the retained SDK table; does not run the SDK or establish physical-device behavior."
+    },
+    {
+      "id": "b3-b3RescheduleAndQuiet",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "tools.check_b3_evidence",
+        "b3RescheduleAndQuiet"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "expected_markers": [
+        "b3RescheduleAndQuiet"
+      ],
+      "notes": "Strictly parses the retained SDK table; does not run the SDK or establish physical-device behavior."
+    },
+    {
+      "id": "b3-b3QueueAndRollover",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "tools.check_b3_evidence",
+        "b3QueueAndRollover"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "expected_markers": [
+        "b3QueueAndRollover"
+      ],
+      "notes": "Strictly parses the retained SDK table; does not run the SDK or establish physical-device behavior."
+    },
+    {
+      "id": "b3-b3AdmissionAndUnknown",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "tools.check_b3_evidence",
+        "b3AdmissionAndUnknown"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "expected_markers": [
+        "b3AdmissionAndUnknown"
+      ],
+      "notes": "Strictly parses the retained SDK table; does not run the SDK or establish physical-device behavior."
+    },
+    {
+      "id": "b3-b3OrdinaryReopen",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "tools.check_b3_evidence",
+        "b3OrdinaryReopen"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "expected_markers": [
+        "b3OrdinaryReopen"
+      ],
+      "notes": "Strictly parses the retained SDK table; does not run the SDK or establish physical-device behavior."
     }
   ]
 }

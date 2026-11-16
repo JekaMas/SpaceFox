@@ -36,8 +36,10 @@ class DReceipts(unittest.TestCase):
         first = (E / 'incident-first-source.mc.txt').read_text()
         cls.fields = (ROOT / 'watchface/fields018-tests/Fields018Tests.mc').read_text()
         specs = [('incident-first', 'incident-first-source.mc.txt',
-                  ('watchface/source/SceneRenderer.mc',
-                   'watchface/source/NativeImmutable.mc', 'watchface/source/FeedService.mc')),
+                  ('watchface/source/NativeImmutable.mc', 'watchface/source/FeedService.mc')),
+                 ('incident-024', 'watchface/incident-tests/DeliveryContinuityTests.mc',
+                  ('watchface/source/SceneRenderer.mc', 'watchface/source/FeedScene.mc',
+                   'watchface/source/NativeForegroundCache.mc')),
                  ('incident-repair', 'watchface/incident-tests/DeliveryContinuityTests.mc',
                   ('watchface/source/NativeImmutable.mc', 'watchface/source/NativeIncoming.mc')),
                  ('incident-stop', 'watchface/incident-tests/DeliveryContinuityTests.mc',
@@ -46,8 +48,10 @@ class DReceipts(unittest.TestCase):
                   ('watchface/source/NativeForegroundCache.mc',)),
                  ('fields', 'watchface/fields018-tests/Fields018Tests.mc',
                   ('watchface/source/FieldSources.mc', 'tools/fields018_native_probe.py')),
+                 # The two selected methods directly exercise NativeSfrDecoder;
+                 # the changed scene renderer is exercised by incident-024.
                  ('display', 'tools/native_display03_probe.py',
-                  ('watchface/source/NativeSfr.mc', 'watchface/source/SceneRenderer.mc'))]
+                  ('watchface/source/NativeSfr.mc',))]
         receipts = {}
         for prefix, source, owners in specs:
             receipt = json.loads((E / (prefix + '-observer-receipt.json')).read_text())
@@ -69,6 +73,12 @@ class DReceipts(unittest.TestCase):
             if method(first, name) != method(cls.incident, name):
                 raise AssertionError('retained incident method changed: ' + name)
         cls.first = (E / 'incident-first-red.log').read_text()
+        cls.current_scene = (E / 'incident-024-deliveryBundledFallbackTransitions.log').read_text()
+        if parse_output(cls.current_scene, 1, ('deliveryBundledFallbackTransitions',))['status'] != 'passed':
+            raise AssertionError('current scene fallback result differs')
+        warm = (E / 'incident-024-deliveryWarmLayoutIdentity.log').read_text()
+        if parse_output(warm, 1, ('deliveryWarmLayoutIdentity',))['status'] != 'passed':
+            raise AssertionError('current layout result differs')
         cls.fields_log = (E / 'suites-fields.log').read_text()
         if parse_output(cls.fields_log, 1, tuple(NAMES))['status'] != 'passed':
             raise AssertionError('fields native result differs')
@@ -80,7 +90,7 @@ class DReceipts(unittest.TestCase):
         for log, name in [(cls.batch, 'integrationBatchLinearAndTerminal'), (cls.corrupt, 'integrationBatchCorruptPrefixBeforeCompletion')]:
             if parse_output(log, 1, (name,))['status'] != 'passed':
                 raise AssertionError('batch native result differs')
-        raw_projection = (E / 'incident-final-deliveryRawProjectionIntegrity.log').read_text()
+        raw_projection = (E / 'incident-024-deliveryRawProjectionIntegrity.log').read_text()
         if parse_output(raw_projection, 1, ('deliveryRawProjectionIntegrity',))['status'] != 'passed':
             raise AssertionError('final raw projection result differs')
         cls.raw_projection = raw_projection
@@ -95,11 +105,11 @@ class DReceipts(unittest.TestCase):
                 raise AssertionError('retained incident method not passed: ' + name)
 
     def test_scene_complete(self):
-        self.assertIn('completeReleasesOnlyReplaced=true', self.first)
+        self.assertIn('completeReleasesOnlyReplaced=true', self.current_scene)
         self.assertIn('renderer.art==null&&renderer.map==null', self.incident)
 
     def test_scene_incomplete(self):
-        self.assertIn('lowAndIncompleteRetained=true', self.first)
+        self.assertIn('lowAndIncompleteRetained=true', self.current_scene)
         self.assertIn('renderer.useDownloaded(incomplete);Test.assert(renderer.art!=null&&renderer.map!=null)', self.incident)
 
     def test_outline_matching_pixels(self):

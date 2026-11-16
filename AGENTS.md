@@ -8,3 +8,6 @@ actual evidence exists. Preserve the four configurable fields, rocket/company/mi
 separate reschedule/stale indicators. Zero countdown never proves a real liftoff.
 Retain valid green tests unless their semantic inputs change. Do not infer private
 workflow dependencies from historical evidence paths.
+
+Follow [stable batch delivery](docs/SDD_WORKFLOW.md#stable-batch-delivery) for
+SpaceFox property batches and their authorized releases.
