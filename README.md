@@ -2,13 +2,13 @@
 
 SpaceFox is a free, MIT-licensed space watch face for Garmin watches, including Forerunner 165 and Forerunner 165 Music. It combines a large digital clock, rocket artwork, a launch-site map, a local T−/T+ countdown and four configurable activity fields.
 
-**[Install from Connect IQ](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3)** · **[Release 0.1.17](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.17)** · [Release notes](release/RELEASE-NOTES-0.1.17.md)
+**[Install from Connect IQ](https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3)** · **[Release 0.1.18](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.18)** · [Release notes](release/RELEASE-NOTES-0.1.18.md)
 
-The 0.1.17 rollover repair is independently software-verified and published. Garmin owner preview shows 0.1.17/Internal 10 pending review; a Forerunner 165 Music install is queued for the next sync. Physical installation is unverified.
+The 0.1.18 field update is independently software-verified. Garmin owner preview shows 0.1.18/Internal 11 pending review; a Forerunner 165 Music update is queued for the next sync. Physical installation is unverified.
 
-![SpaceFox 0.1.17 running in the Forerunner 165 Music simulator](release/images/simulator-fr165m-0.1.17.png)
+![SpaceFox 0.1.18 in the Forerunner 165 Music simulator](openspec/changes/spacefox-watchface/evidence/fields018/entry-controls/peer-release-390-256680ec.png)
 
-Actual native 0.1.17 simulator capture using a controlled offline public-launch fixture and simulated activity values. The visible Cape Canaveral point, rocket and country flag come from the selected launch; two successor launches are also resident in the bounded queue. This is simulator evidence, not a physical watch photograph.
+Native simulator capture; it is not a physical watch photograph.
 
 ## What it shows
 
@@ -23,9 +23,9 @@ A delayed or rescheduled launch uses a reddish countdown; stale data has a separ
 
 ## Data and settings
 
-The on-watch field picker lists sources available to that watch, including sources whose current reading is unavailable. Phone settings have a static list: choose **Selected on watch** to use the source last selected on the watch for that position. If none has been selected, the position shows a dash. Changing back to an established phone choice does not erase the watch-selected source; choosing **Selected on watch** again restores it. A missing provider remains selected and shows a dash until it returns.
+In watch settings, open **Field 1–4 → More sources** to select sources available to that watch, including sources whose current reading is unavailable. Phone settings have a static list: choose **Selected on watch** to use the source last selected on the watch for that position. If none has been selected, the position shows a dash. Changing back to an established phone choice does not erase the watch-selected source; choosing **Selected on watch** again restores it. A missing provider remains selected and shows a dash until it returns.
 
-English and `https://jekamas.github.io/SpaceFox` are defaults. English, Russian, German, French and Spanish are the five primary software-supported languages; Auto is also available. Other retained internal translations are best effort.
+English and `https://jekamas.github.io/SpaceFox` are defaults. English, Russian, German, French and Spanish are the five primary software-supported languages; Auto is also available. The other 31 retained internal translations are best effort. Future watch models need separate qualification.
 
 The watch calculates the countdown locally, keeps accepted launch data offline and preloads a bounded set of upcoming launches so the face can advance locally at the retention deadline. Partial or failed updates preserve known future launches and their refresh targets across restart. New schedules and artwork arrive through Garmin Connect on the paired phone. The public [feed](https://jekamas.github.io/SpaceFox/feed.json) is maintained by GitHub Actions with an independent Cloudflare timer; it does not need an agent or computer to stay running. No AWS account, subscription or SpaceFox login is required.
 

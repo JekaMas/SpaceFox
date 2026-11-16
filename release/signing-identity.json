@@ -5,18 +5,18 @@
   "public_key_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
   "status": "local_production_custody_restored",
   "latest_release": {
-    "version": "0.1.17",
-    "package_sha256": "68bd65ca1108b4cbcdb86cef46173896d474a2ca424ebddc5b3730f2acebd52d",
+    "version": "0.1.18",
+    "package_sha256": "389d7e05b061f8621fb0792291cb1acb5e7f20f71ad6fa04dfe00f3e46cf5a36",
     "kind": "github_regular_release_and_garmin_submission",
-    "tag": "v0.1.17",
-    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.17",
+    "tag": "v0.1.18",
+    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.18",
     "garmin_url": "https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3",
-    "source_revision": "bc744093d9f2546461de8a353361e8a2e2f71734",
-    "tag_revision": "bc744093d9f2546461de8a353361e8a2e2f71734",
-    "original_receipt_sha256": "187c7a23fe2f87a5cf25a5ea9e4e16730d362e1ac6d01c6afd08b04353167be6",
-    "proof_boundary": "Signed regular GitHub release and original Garmin card 0.1.17/Internal 10 PENDING in owner preview; Music installation queued for next sync, physical delivery and public approval unobserved."
+    "source_revision": "8ca1b7a63e51692d173bedec762dc6d6cbcd8e1c",
+    "tag_revision": "8ca1b7a63e51692d173bedec762dc6d6cbcd8e1c",
+    "original_receipt_sha256": "bfe206bac41a83913404c738d4796e52e9d960863ac4674ea12968f082942c77",
+    "proof_boundary": "Signed regular GitHub release and original Garmin card 0.1.18/Internal 11 PENDING in owner preview; Music installation queued for next sync, physical delivery and public approval unobserved."
   },
-  "note": "Stable production UUID/key. The published 0.1.17 original receipt and matching IQ are the predecessor for a future higher-version candidate. Garmin 0.1.17 remains PENDING in owner preview; physical acceptance remains open.",
+  "note": "Stable production UUID/key. The published 0.1.18 original receipt and matching IQ are the predecessor for a future higher-version candidate. Garmin 0.1.18 remains PENDING in owner preview; physical acceptance remains open.",
   "local_custody": {
     "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
     "public_evidence": "openspec/changes/spacefox-watchface/evidence/production-signing/round1/custody-initialization.json",
@@ -107,5 +107,17 @@
     "tag_revision": "b1e0c56df8ef04b4a73637c80f176b6c0ff9cfed",
     "original_receipt_sha256": "09e3ed20e5c7964b8d0907fe94a49c4c3ee8627bd82ab47fddfd07c2dbdd7ca7",
     "proof_boundary": "Signed regular GitHub release and original Garmin card 0.1.16/Internal 9 PENDING in owner preview; installation requested, physical delivery and public approval unobserved."
+  },
+  "historical_release_017": {
+    "version": "0.1.17",
+    "package_sha256": "68bd65ca1108b4cbcdb86cef46173896d474a2ca424ebddc5b3730f2acebd52d",
+    "kind": "github_regular_release_and_garmin_submission",
+    "tag": "v0.1.17",
+    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.17",
+    "garmin_url": "https://apps.garmin.com/apps/7ef095e4-72fe-44cd-bc39-8987b6ab49e3",
+    "source_revision": "bc744093d9f2546461de8a353361e8a2e2f71734",
+    "tag_revision": "bc744093d9f2546461de8a353361e8a2e2f71734",
+    "original_receipt_sha256": "187c7a23fe2f87a5cf25a5ea9e4e16730d362e1ac6d01c6afd08b04353167be6",
+    "proof_boundary": "Signed regular GitHub release and original Garmin card 0.1.17/Internal 10 PENDING in owner preview; Music installation queued for next sync, physical delivery and public approval unobserved."
   }
 }
