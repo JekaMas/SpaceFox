@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/tmp/spacefox-performance021-c/copy_admission.py", line 7, in <module>
+    root=Path.cwd();before=source_state(root);report={'revision':before['revision'],'selected':len(before['inputs']),'inputs':before['inputs'],'nativeUnchanged':True}
+                           ~~~~~~~~~~~~^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tools/release.py", line 186, in source_state
+    require(path.suffix.lower() not in (".pem", ".key", ".der", ".p12", ".pfx") and
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            (b"-----BEGIN " + b"PRIVATE KEY-----") not in data and
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            (b"-----BEGIN " + b"RSA PRIVATE KEY-----") not in data,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "secret-shaped source input refused: " + name)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tools/release.py", line 37, in require
+    raise ReleaseBlocked(message)
+tools.release.ReleaseBlocked: secret-shaped source input refused: tests/test_performance021_c.py

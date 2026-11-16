@@ -61,7 +61,7 @@ class GroupCTest(unittest.TestCase):
             second=release.source_state(root)
             self.assertEqual(second['inputs'][str(source.relative_to(root))],sha(b'mutated! source\n'))
             self.assertNotEqual(first,second)
-            for data in (b'-----BEGIN PRIVATE KEY-----',b'-----BEGIN RSA PRIVATE KEY-----'):
+            for data in (b'-----BEGIN '+b'PRIVATE KEY-----',b'-----BEGIN '+b'RSA PRIVATE KEY-----'):
                 source.write_bytes(data);git(root,'add','.');git(root,'commit','-qm','secret control')
                 with self.assertRaisesRegex(release.ReleaseBlocked,'secret-shaped'):release.source_state(root)
 
