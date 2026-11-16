@@ -10,16 +10,19 @@
 - [x] Prepare the 0.1.20 signed release from public main and reconcile its version-bound evidence; publication and physical verification remain separate.
 - [x] Independently review and repair the 0.1.20 release guard and signed payload binding; root owns publication (see evidence/release-020/PEER.md).
 
-## Physical 0.1.20 follow-up — reopened
+## Physical 0.1.20 follow-up — software verified, hardware open
 
-- [ ] P-data: reproduce live background request, validated catalog/admission and foreground activation; repair observed delivery failures and retain integrity.
-- [ ] P-launch: show the selected site and point; display exact UTC normally and a validated inexact announced NET as `~T−`/`~T+`, without changing source precision, scheduling or reminders.
-- [ ] P-LOW: preserve the approved full map and point, clock, date/weekday, minute countdown and battery while data acquisition or restore is pending.
-- [ ] Run directly invalidated FR165 Music SDK behavior and EN/RU visual checks; reconcile retained watchdog and resource evidence.
-- [ ] Independent review after author green; physical FR165 Music cold/reopen/live update/LOW/15-minute acceptance remains open.
+The checked rows below close software implementation/SDK evidence only. The physical no-update/LOW report and the device-acceptance row above remain open.
+
+- [x] P-data software: reproduce live background request, validated catalog/admission and foreground activation; repair observed delivery failures and retain integrity.
+- [x] P-launch software: show the selected site and point; display exact UTC normally and a validated inexact announced NET as `~T−`/`~T+`, without changing source precision, scheduling or reminders.
+- [x] P-LOW software: preserve the approved full map and point, clock, date/weekday, minute countdown and battery while data acquisition or restore is pending.
+- [x] Run directly invalidated FR165 Music SDK behavior and EN/RU visual checks; reconcile retained watchdog and resource evidence.
+- [x] Independent software review and repair after author green; physical FR165 Music cold/reopen/live update/LOW/15-minute acceptance remains open.
 
 Software follow-up evidence for the above remains distinct from physical acceptance:
 
 - [x] Exercise captured current-format data, bounded admission/scene work and the injected gen56-to-gen57 replacement through restored SDK rendering.
 - [x] Check exact and estimated countdown policy, queue/commit failure recovery, LOW/wake and directly affected FR165 Music SDK cases; retain the stated EN/RU and event-injection boundaries.
-- [ ] Independently review the integrated source and reconcile final signed release artifacts; the owner's physical no-update and 15-minute acceptance are still open.
+- [x] Independently review and repair the integrated source and software evidence (physical-020-followup/PEER.md).
+- [ ] Reconcile the final 0.1.22 signed source/build/signature artifacts and publication readback after root judgment; the owner's physical no-update and 15-minute acceptance remain open.

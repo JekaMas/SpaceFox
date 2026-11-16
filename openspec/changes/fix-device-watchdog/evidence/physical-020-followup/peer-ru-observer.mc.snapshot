@@ -1,0 +1,23 @@
+import Toybox.Lang;import Toybox.System;import Toybox.WatchUi;import Toybox.Application;
+(:typecheck(false)) class PeerRussianView extends WatchUi.WatchFace {
+ var app;var normalAt=null;var low=false;var seenPending=false;
+ function initialize(a){WatchFace.initialize();app=a;}
+ function onLayout(dc){app.view.onLayout(dc);}
+ function onShow(){Application.Properties.setValue("Language",1);app.view.onShow();}
+ function onHide(){app.view.onHide();}
+ function onEnterSleep(){app.view.onEnterSleep();}
+ function onExitSleep(){app.view.onExitSleep();}
+ function onUpdate(dc){
+  if(normalAt!=null&&!low&&System.getTimer()-normalAt>=10000){app.view.onEnterSleep();low=true;}
+  app.view.onUpdate(dc);
+  if(!seenPending&&app.view.sfrBuild!=null){seenPending=true;System.println("PEER_RU pending=true language="+app.view.settings.language);}
+  if(normalAt==null&&app.view.downloaded!=null&&app.view.renderer!=null&&!app.view.admissionPending){
+   normalAt=System.getTimer();System.println("PEER_RU normal=true language="+app.view.settings.language+" locale="+app.view.presentation.locale+" used="+System.getSystemStats().usedMemory);
+  }
+  if(low&&app.view.aodMinute!=null){System.println("PEER_RU low=true estimated="+(app.view.context!=null&&app.view.context.displayTarget!=null)+" minute="+app.view.aodMinute);}
+ }
+}
+(:background,:typecheck(false)) class ColdEventApp extends SpaceFoxApp {
+ function initialize(){SpaceFoxApp.initialize();}
+ (:typecheck(disableBackgroundCheck)) function getInitialView(){SpaceFoxApp.getInitialView();return [new PeerRussianView(self)];}
+}

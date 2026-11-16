@@ -1,0 +1,43 @@
+SF_VIEW mode=HIGH pending=false
+SF_WAKE before_init build=0.1.21 id=f8aa87a5 now=1794849610 registered=none last=none
+SF_STORE sf.commit absent
+SF_STORE sf.recovery absent
+SF_STORE sf.incoming.feed absent
+SF_STORE sf.batch.head absent
+SF_STORE sf.batch.pending absent
+SF_STORE sf.incoming.feed.deferred absent
+SF_STORE sf.incoming.feed.rejected absent
+SF_STORE sf.attempt absent
+SF_WAKE registration_ok pending=false next=1794849610
+SF_WAKE restore_armed build=0.1.21 id=f8aa87a5 now=1794849610 registered=1794849610 last=none
+Background: SF_BG enter phone=true registered=none last=1794849610
+Background: SF_WAKE registration_ok pending=false next=1794849910
+SF_WAKE registration_kept pending=false next=1794849910
+Background: SF_BG feed_http=200
+Background: SF_BG feed_staged=true
+Background: SF_BG batch_begin=true
+Background: SF_BG object_http=200 catalog=true
+Background: SF_BG catalog_ready
+Background: SF_WAKE registration_kept pending=true next=1794849910
+SF_FG background_delivery
+SF_FG admission_begin
+SF_FG admission_accepted
+SF_WAKE registration_kept pending=true next=1794849910
+SF_WAKE registration_kept pending=true next=1794849910
+Background: COLD BG_START
+Background: SF_BG enter phone=true registered=none last=1794849644
+Background: COLD REQUEST feed.json
+Background: COLD FEED code=200 bytes=5660 used=34368
+Background: SF_BG feed_http=200
+Background: SF_BG feed_staged=true
+Background: SF_BG batch_begin=true
+
+Error: Out Of Memory Error
+Details: Failed invoking <symbol>
+Stack:
+  - read() at /source/watchface/source/NativeCache.mc:10 0x10002980
+  - sameRefs() at /source/watchface/source/NativeImmutable.mc:65 0x10001cf0
+  - next() at /source/watchface/source/NativeImmutable.mc:76 0x10001002
+  - optional() at /source/watchface/source/FeedService.mc:27 0x5000396b
+  - receive() at /source/watchface/source/FeedService.mc:24 0x50003910
+  - receive() at /task/event/Probe.mc:10 0x10001f9c

@@ -1,5 +1,12 @@
 # 0.1.21 main integration
 
+## Current status and proof boundaries
+
+Author and independent peer software verification are complete for the integrated repair: the grouped nine selectors, directly affected reserve/rollover/checkpoint cases and captured gen56→gen57 replacement through normal visual completion pass at their recorded scopes. The final replacement witness is `receipts/app-stage-run.log` with `receipts/app-stage-final.png`. Independent peer reconciliation follows in `PEER.md`. Physical activation, live-phone refresh, LOW correctness and 15-minute FR165 Music acceptance remain NOT OBSERVED. Release 0.1.22 packaging/publication is a later source/signature/delivery stage, not another behavior campaign.
+
+The investigation narrative below is chronological. Earlier phrases such as unverified, unfinished, requires a witness and RU not yet qualified describe those earlier source/observer states; the final status and final receipts supersede them without erasing the failed evidence.
+
+
 Merge: receiving `bf4b2fe072b2b1aa2cc69705ca91d07cde06fc46`, incoming public main `98dc7a6e41f03e8904d1dd02ff941317d52eb5be`, common ancestor `db9130d3bc870c848a4973eade0731ce5bd98da5`. Git stage 2 is the physical-follow-up repair; stage 3 is B1 main. The coupled conflicts were `NativeForegroundApp.mc`, `SpaceFoxView.mc` and `SceneRenderer.mc`.
 
 - Startup and source switching retain B1's clock-first bootstrap, deferred cache creation, first-frame loader handoff and the `admissionPending` guard preventing premature renderer reconstruction. Filtered device-store tracing runs after that first frame, before new cache rearm.
@@ -11,7 +18,7 @@ This document records intent; integrated compiler, cold delivery, source-switch,
 
 The first integrated 13-selector FR165M SDK batch passed (raw launcher exit 1 with all explicit PASS results), including first clock, source-switch guard, LOW/OFF/HIGH decoder progress, heap deferral, fitness, provider-icon bounds, short wake, pending LOW, batch continuation and admission failure/supersession. A later real-closure update observer reached an additional background OOM in `NativeBatch.sameRefs`, so that first batch is not complete integration acceptance. The repair compacts only in-memory references, retains the durable reference format and checks, and is undergoing the directly affected batch plus the same real update witness.
 
-### Resource presenter investigation (unfinished)
+### Historical resource presenter investigation and subsequent repairs
 
 After merging B1, the real captured closure and separate LOW/wake callback probe
 exposed a remaining liveness boundary. A retained full renderer reached the
@@ -23,14 +30,12 @@ must not be attributed to a specific allocation from the earlier observation.
 A test-only wake timer also exhausted the timer limit, so the probe now uses
 separate onUpdate callbacks; that timer failure is an observer limitation.
 
-The current, unverified draft paints accepted data directly without constructing
+At that stage, the unverified draft painted accepted data directly without constructing
 SceneRenderer during the decode, keeping the original reserve and independent
 clock. `diag13-run.log` shows a map/point frame and preserved job after LOW/wake,
 but it later deferred at 11,304 free vs 11,428 required. It does not establish
 completion or physical acceptance. A first image showed a date overlap; the
-subsequent spacing correction is not yet verified. Normal renderer restoration,
-complete downloaded scene, all renderer-presence gates, and the reported physical
-no-update cause remain open. These are failures or incomplete evidence, not green.
+subsequent spacing correction is not yet verified. At that stage, normal renderer restoration, complete downloaded scene and renderer-presence gates remained open. The reported physical no-update cause is still open. These are failures or incomplete evidence, not green.
 
 The stage-specific diagnostic `diag14-run.log` identified the defer as role 3,
 no decoder, an already loaded transfer descriptor and parser phase 1. Only this
@@ -58,8 +63,7 @@ The first RU probe coincided with an actual background delivery and failed after
 new feed reaching prepared phase 8 at 115,816 bytes used, followed by an
 unsymbolized OOM (`receipts/trace2-run.log`); neither log identifies an exact
 allocator. This remains a required failing witness until the changed promotion
-and the same background-during-decode path complete. RU visual is not yet
-qualified. No physical cause or physical pass follows from these observations.
+and the same background-during-decode path complete. RU visual was not yet qualified at that stage. No physical cause or physical pass follows from these observations.
 
 The grouped affected SDK run passed 9/9 selectors, including early promotion
 compaction, strict reopen, injected storage failure, first clock, LOW and SFR
@@ -80,7 +84,7 @@ completion remained open. An instrumented replay then OOMed at catalog parsing
 (`app-trace-run.log`); it had additional diagnostic allocation, so this is not
 proof of the exact allocator in the earlier observation. Previous successor
 contexts are now checkpointed and released during admission and restored from
-the authenticated queue; this latest draft still requires the same full witness.
+the authenticated queue; that draft still required the same full witness; the later app-stage observation below supplies it.
 `checkpoint-ru.png` is a readable RU temporary frame; it is callback-injected SDK
 evidence, not physical acceptance.
 
@@ -96,3 +100,5 @@ The original incomplete and instrumented failure receipts are retained. This
 is still simulator callback injection on captured data; it does not establish
 watch activation, a phone delivery, the device's no-update cause, or 15-minute
 physical acceptance.
+
+Independent peer completion: actual prepared LOW-font EN/RU widths pass; new current-source RU normal and estimated-LOW captures are `receipts/peer-ru-normal.png` and `receipts/peer-ru-low.png`. See `PEER.md` and `peer-verification.json` for source, observer, stale-EVENT4 attribution, retained-green reconciliation and restored-lane boundaries. No production code changed during peer repair.

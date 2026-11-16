@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "reviewed_author_commit": "f31119987e17afe8117d76a2b302f51a6355701a",
+  "production_source_changed": false,
+  "test_repair": "b1EstimatedCountdownGlyphWidth now prepares and asserts the actual lazy LOW font",
+  "fresh_selected_tests": [
+    "b1EstimatedCountdownGlyphWidth"
+  ],
+  "observed_tests": 1,
+  "passed": 1,
+  "failed": 0,
+  "errors": 0,
+  "raw_launcher_exit": 1,
+  "font_widths": {
+    "en": {
+      "low": 170,
+      "active": 221
+    },
+    "ru": {
+      "low": 170,
+      "active": 221
+    }
+  },
+  "visual": {
+    "sdk": "Linux Connect IQ 9.3 FR165M",
+    "source": "current /source/watchface/source plus saved peer observer; no source overrides",
+    "setup": "one captured-data seed, 27 immutable objects, accepted generation56; not a repeated behavior suite",
+    "normal_russian": "downloaded and normal renderer nonnull; locale=ru; sampled used110736 bytes",
+    "low_russian": "onEnterSleep callback injection after normal completion; approved map/point/date/clock/~minute/battery",
+    "global_display_mode_transition_or_phone_transfer": false,
+    "screenshot_status": "simulator retained captures (status bar Off); not a physical watch or cadence proof"
+  },
+  "stale_observer_failure": {
+    "receipt": "receipts/peer-ru-first-failure.log",
+    "simulator_log_filename": "EVENT4",
+    "registered_observer_uuid": "a1ef4a42aa834842a716698bd45cb082",
+    "six_pc_mappings": "all match event/event4.prg.debug.xml; none match those owners in current peer-ru debug",
+    "cleanup": "supported Background.deleteTemporalEvent in the old observer UUID returned temporal_registered=false",
+    "attribution_boundary": "old EVENT4 callback; stored media digest differs from original PRG, so byte-for-byte installed identity is not asserted"
+  },
+  "isolation": {
+    "owned_container": "spacefox-live-low-repair-20261116",
+    "display": ":91",
+    "storage_and_config_snapshotted_restored_tar_compared": true,
+    "foreign_simulators_and_device_untouched": true,
+    "owned_simulator_and_launchers_stopped": true
+  },
+  "retained_proof": "author grouped9, current reserve/rollover/checkpoint, real HTTP and batch continuation, gen56\u219257 admission\u2192visual completion; not rerun",
+  "physical_acceptance": "NOT OBSERVED; hardware no-update/LOW report unresolved",
+  "next_stage": "root judgment then author full0.1.22 packaging/signature/publication checks; no repeated behavior suite",
+  "hashes": {
+    "watchface/runtime-b1-tests/ColdAcquisition.mc": "92844ab7fc9e3228b3b0038a9db8801907e74dd19c920ed7d1f7087ccf71fcbd",
+    "openspec/changes/fix-device-watchdog/evidence/physical-020-followup/peer-ru-observer.mc.snapshot": "1213a3d6de8280fb62896b5f4182ea9784a59e7b9f6e1784c7e65d433c49ed67",
+    "openspec/changes/fix-device-watchdog/evidence/physical-020-followup/peer-ru-observer.jungle.snapshot": "97e59a87919a79a42a1d53c07204db7d28111809899a0ccc1682b2ed62732305",
+    "openspec/changes/fix-device-watchdog/evidence/physical-020-followup/receipts/peer-font.log": "0bfbc22faabfcacc40b3478269939bf5c36951ce4b75ce62ea1923bb2b6f7e4a",
+    "openspec/changes/fix-device-watchdog/evidence/physical-020-followup/receipts/peer-font-compile.log": "d26510f3a7e811f721248874ae8d44f97d1d4f8fa59bdad2f8a56d50af4240cf",
+    "openspec/changes/fix-device-watchdog/evidence/physical-020-followup/receipts/peer-ru-run.log": "d10a7c1c07f3bb08163d21b52e0d54bf28b46da7b2148e9543cbdee565e724e9",
+    "openspec/changes/fix-device-watchdog/evidence/physical-020-followup/receipts/peer-ru-first-failure.log": "08d40a88f7f1e165e2fb28efa95e0a4228a3707c20db2dc33fdf82013e8c693c",
+    "openspec/changes/fix-device-watchdog/evidence/physical-020-followup/receipts/peer-ru-normal.png": "c7304e9f622bc6500f96bae2815d70452dd472c7afda0f455249407da5493af1",
+    "openspec/changes/fix-device-watchdog/evidence/physical-020-followup/receipts/peer-ru-low.png": "6dd1357591676efde2842a1b733e699c90b03b3e40978fe17166b44c7915f08e"
+  }
+}

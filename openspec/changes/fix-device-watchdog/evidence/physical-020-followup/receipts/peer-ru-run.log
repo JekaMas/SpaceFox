@@ -1,0 +1,20 @@
+SF_VIEW mode=HIGH pending=false
+SF_WAKE before_init build=0.1.21 id=f8aa87a5 now=1794850236 registered=none last=1794849910
+SF_STORE sf.commit type=dict v=6 generation=1
+SF_STORE sf.recovery absent
+SF_STORE sf.incoming.feed absent
+SF_STORE sf.batch.head type=dict pending=false
+SF_STORE sf.batch.pending type=dict pending=false
+SF_STORE sf.incoming.feed.deferred absent
+SF_STORE sf.incoming.feed.rejected absent
+SF_STORE sf.attempt type=dict utc=1794850203 build=0.1.21
+SF_WAKE registration_ok pending=false next=1794853803
+SF_WAKE restore_armed build=0.1.21 id=f8aa87a5 now=1794850242 registered=1794853803 last=1794849910
+SF_WAKE registration_kept pending=false next=1794853803
+PEER_RU pending=true language=ru
+PEER_RU normal=true language=ru locale=ru used=110736
+SF_WAKE registration_kept pending=false next=1794853803
+SF_VIEW mode=LOW pending=false
+PEER_RU low=true estimated=true minute=29914171
+PEER_RU low=true estimated=true minute=29914171
+PEER_RU low=true estimated=true minute=29914171

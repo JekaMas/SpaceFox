@@ -195,8 +195,8 @@
       "id": "WD-021-ESTIMATED-NET",
       "test": "b1AnnouncedNetDisplayAndReopen; b1EstimatedCountdownGlyphWidth",
       "status": "passed_sdk_only",
-      "receipt": "evidence/physical-020-followup/INTEGRATION.md",
-      "boundary": "captured coarse input, exact scheduler unchanged; EN/RU font widths; no physical acceptance"
+      "receipt": "evidence/physical-020-followup/PEER.md",
+      "boundary": "retained display-only arithmetic/reopen cases; fresh actual prepared LOW-font EN/RU width test and RU normal/estimated-LOW captures; no physical acceptance"
     },
     {
       "id": "WD-021-REPLACEMENT",
@@ -209,8 +209,8 @@
       "id": "WD-021-PROMOTION",
       "test": "b1PreparedPromotion; b1FailedPromotionRecovery021; b1QueueCheckpointFailure021",
       "status": "passed_sdk_only",
-      "receipt": "evidence/physical-020-followup/receipts/grouped-batch.log",
-      "boundary": "verified prior projection, checkpoint failure and strict recovery; physical device pending"
+      "receipt": "evidence/physical-020-followup/INTEGRATION.md",
+      "boundary": "grouped promotion/recovery plus repaired checkpoint case in seed-fixed.log/last-seed.log; strict recovery and prior facts retained; physical pending"
     },
     {
       "id": "WD-021-SFR-STAGE",
@@ -218,6 +218,13 @@
       "status": "passed_sdk_only",
       "receipt": "evidence/physical-020-followup/receipts/verified2.log",
       "boundary": "loaded descriptor continuation, full pre-allocation reserve, rollover cancellation; no physical proof"
+    },
+    {
+      "id": "WD-021-INDEPENDENT-PEER",
+      "test": "source/property reconciliation; b1EstimatedCountdownGlyphWidth; current-source RU restored normal and estimated LOW observer",
+      "status": "passed_sdk_only",
+      "receipt": "evidence/physical-020-followup/PEER.md",
+      "boundary": "test assertion/preparation and evidence repaired in the same peer; no production delta, repeated runtime suite, physical gate or release claim"
     }
   ],
   "software_diagnostic_gate": "passed"
