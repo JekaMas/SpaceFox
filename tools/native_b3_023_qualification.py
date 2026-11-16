@@ -18,7 +18,9 @@ NATIVE_CHANGED = {'watchface/manifest.xml', 'watchface/source/generated/NativeVe
 SUPPORT_CHANGED = {'tools/native_language_policy.py', 'tools/release.py', 'tests/test_b1_021_admission.py'}
 SNAPSHOTS = NATIVE_CHANGED | SUPPORT_CHANGED
 REQUIRED_TESTS = {'b3QueueAndRollover', 'b3AdmissionAndUnknown', 'b3QuietProvider',
-                  'b3OrdinaryReopen', 'b3RescheduleAndQuiet',
+                  'b3OrdinaryReopen', 'b3RescheduleAndQuiet', 'b3DisplayRetainedSelection',
+                  'b1ColdAcquisition', 'b2AdmittedFactsWithoutArt',
+                  'b2FailedAndInterruptedReplacement', 'b2RescheduleAndNewSelection',
                   'b1LowHeapDefersOptionalDecode', 'b1ShortWakeResume'}
 OWNERS = SUPPORT_CHANGED | {'tools/native_b3_023_qualification.py', 'tools/check_b3_evidence.py', 'watchface/runtime-b3-tests/B3Tests.mc'}
 

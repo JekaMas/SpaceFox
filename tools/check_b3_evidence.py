@@ -7,7 +7,9 @@ from tools.run_native_tests import parse_output
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / 'openspec/changes/restore-fr165-runtime-guarantees/evidence/b3-023'
 CASES = {'b3QueueAndRollover', 'b3AdmissionAndUnknown', 'b3QuietProvider',
-         'b3OrdinaryReopen', 'b3RescheduleAndQuiet',
+         'b3OrdinaryReopen', 'b3RescheduleAndQuiet', 'b3DisplayRetainedSelection',
+         'b1ColdAcquisition', 'b2AdmittedFactsWithoutArt',
+         'b2FailedAndInterruptedReplacement', 'b2RescheduleAndNewSelection',
          'b1LowHeapDefersOptionalDecode', 'b1ShortWakeResume'}
 
 def main():

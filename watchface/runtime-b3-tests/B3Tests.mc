@@ -61,3 +61,22 @@ import Toybox.WatchUi;
  var reopened=new SpaceFoxApp();reopened.getInitialView();reopened.view.onShow();var cache=new NativeCache("https://fixture.invalid",null);var q=cache.store.read("sf.reminder.snapshot");var selected=LaunchReminder.selected(q,999101l);Test.assertEqual(selected["id"],"ll2:launch:a");Test.assertEqual(selected["validated"],998900l);LaunchReminder.wakeWith(cache,999101l,false,sink.method(:post));Test.assertEqual(sink.entries.size(),1);LaunchReminder.wakeWith(cache,999400l,false,sink.method(:post));Test.assertEqual(sink.entries.size(),2);Test.assertEqual(sink.entries[1][0],1);
  var successor=LaunchReminder.selected(q,1000900l);Test.assertEqual(successor["id"],"ll2:launch:b");Test.assertEqual(successor["validated"],998950l);LaunchReminder.wakeWith(cache,1000900l,false,sink.method(:post));Test.assertEqual(sink.entries.size(),3);Test.assertEqual(sink.entries[2][1],"ll2:launch:b");reopened.view.onHide();Application.Properties.setValue("LaunchReminders",0);logger.debug("B3_ORDINARY_REOPEN realStorage hideShow newApp newCache duplicateSuppressed sourceAge");return true;
 }
+
+// Exercise the production display/merge/publish owner after a real admission.
+// The two technical scenes carry controlled times over real display strings.
+(:test,:typecheck(false)) function b3DisplayRetainedSelection(logger){
+ var store=new B1MemoryStore();var base="https://fixture.invalid/profile-a";var now=Time.now().value().toLong();
+ var raw=WatchUi.loadResource(Rez.JsonData.B1ProfileFeed)["raw"];var batch=new NativeBatch(store,base);Test.assert(batch.begin(raw));var ref=batch.next();Test.assert(batch.immutable.put(ref,b1ProfileResponse(ref["path"])));
+ var c=new NativeCache(base,store);Test.assert(b1Promote021(c,raw,now));
+ var a=b3Scene("ll2:launch:a",now+1800,now-10,true);var b=b3Scene("ll2:launch:b",now+3600,now-5,true);
+ var owner=c.packet.document["publisher"]["instance"];new NativeUpcomingCache(store,base,owner).save([a]);
+ c.packet.presentation=b;c.packet.upcomingScenes=[];
+ var app=new SpaceFoxApp();app.getInitialView();NativeForegroundApp.display(app,c);
+ Test.assertEqual(app.view.context.launchId,a.launchId);var q=store.read("sf.reminder.snapshot");var selected=LaunchReminder.selected(q,now);
+ Test.assertEqual(selected["id"],a.launchId);
+ Test.assertEqual(selected["target"],a.retentionTarget);
+ Test.assertEqual(selected["validated"],a.sourceValidated);
+ Test.assert(LaunchReminder.bound(store,selected,base,Time.now().value().toLong()));
+ Test.assertEqual(LaunchReminder.selected(q,a.retentionDeadline)["id"],b.launchId);
+ logger.debug("B3_DISPLAY admittedPacket savedEarlierSelection actualDisplayQueue successor");return true;
+}

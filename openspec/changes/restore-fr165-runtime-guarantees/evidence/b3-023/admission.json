@@ -625,11 +625,11 @@
   },
   "currentOwners": {
     "tests/test_b1_021_admission.py": "3bb9165f5dffb851728dfeec0158ffbd22af77015feb17f9ca5f06b7e720a54b",
-    "tools/check_b3_evidence.py": "a69cbc145ec75d7b0997677f3763e65eafada4f25c54b77252c6795c1ad1bb62",
-    "tools/native_b3_023_qualification.py": "99040cfca9b042eb9da1b0991e2c2e8a8c105cba3f5895bb18ab54325be1ea68",
+    "tools/check_b3_evidence.py": "6dc032890b24b7c45639c20bfc24d28edeb4666292b83ffc199e29724c41d71c",
+    "tools/native_b3_023_qualification.py": "44ee22ade06f090988db8a5b40b96e7baae46e830dc1b62b3ccbf7ee892cad41",
     "tools/native_language_policy.py": "a1c357d60cfd955c47b34b5dd51269793b8dd4fb78a42b051ee33328ddfc04f4",
     "tools/release.py": "87084065d73d3d4e40b5634c6563d10f976564ba61dcde0eb3efd45f2ac73d93",
-    "watchface/runtime-b3-tests/B3Tests.mc": "ce98afad50dc7f495dfa6c0306dad8c83770413a0dad3ab01447551227df080a"
+    "watchface/runtime-b3-tests/B3Tests.mc": "1398ef6a66e7bbabc18782aa6acfc447033eefcd2ba96f01ecf4cc4900498d0a"
   },
   "sdkCases": [
     {
@@ -700,6 +700,56 @@
       "log": {
         "path": "openspec/changes/restore-fr165-runtime-guarantees/evidence/b3-023/b3RescheduleAndQuiet.log",
         "sha256": "71410f075ecebe0198aade7dbd8e5bb61b1e258686de6f3af57f7ddb5247f3b6"
+      }
+    },
+    {
+      "tests": [
+        "b3DisplayRetainedSelection"
+      ],
+      "rawExit": 1,
+      "log": {
+        "path": "openspec/changes/restore-fr165-runtime-guarantees/evidence/b3-023/b3DisplayRetainedSelection.log",
+        "sha256": "cd60ac588e00b432b02d4040b1080292bc92b2be7a0ccdb625960b1e2cdf5438"
+      }
+    },
+    {
+      "tests": [
+        "b1ColdAcquisition"
+      ],
+      "rawExit": 1,
+      "log": {
+        "path": "openspec/changes/restore-fr165-runtime-guarantees/evidence/b3-023/b1ColdAcquisition.log",
+        "sha256": "9f252327f58213871f20ede5bca21c9ae68624767878777307b92d39bf4bfbb6"
+      }
+    },
+    {
+      "tests": [
+        "b2AdmittedFactsWithoutArt"
+      ],
+      "rawExit": 1,
+      "log": {
+        "path": "openspec/changes/restore-fr165-runtime-guarantees/evidence/b3-023/b2AdmittedFactsWithoutArt.log",
+        "sha256": "be821afaae33142c595170db6e9ec9ea879a1fef2c0dedb1e080ac77e27868eb"
+      }
+    },
+    {
+      "tests": [
+        "b2FailedAndInterruptedReplacement"
+      ],
+      "rawExit": 1,
+      "log": {
+        "path": "openspec/changes/restore-fr165-runtime-guarantees/evidence/b3-023/b2FailedAndInterruptedReplacement.log",
+        "sha256": "73800d599a49dd3e3e5d4627a2214851b5fac55f67b5e380e536bec154d199d5"
+      }
+    },
+    {
+      "tests": [
+        "b2RescheduleAndNewSelection"
+      ],
+      "rawExit": 1,
+      "log": {
+        "path": "openspec/changes/restore-fr165-runtime-guarantees/evidence/b3-023/b2RescheduleAndNewSelection.log",
+        "sha256": "8c6d0ce238771ccf7da0170730ea5fcf8a8886f79e7a01be565f647ae528c57c"
       }
     }
   ]
