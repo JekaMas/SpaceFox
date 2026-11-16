@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+  File "/Users/jekamas/projects/SpaceFox-worktrees/max-devices020-20261116/tools/build_watchface.py", line 155, in validate_manifest
+    qualified = software_locales(root, catalog)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/max-devices020-20261116/tools/native_language_policy.py", line 94, in software_locales
+    return validate(root,catalog)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/max-devices020-20261116/tools/native_devices020_qualification.py", line 134, in validate
+    result=subprocess.run([sys.executable,'-c',code],cwd=target,env={**os.environ,'PYTHONPATH':str(target)},capture_output=True,text=True)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 557, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1221, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 2153, in _communicate
+    ready = selector.select(timeout)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/selectors.py", line 398, in select
+    fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt

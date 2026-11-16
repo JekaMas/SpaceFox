@@ -1,0 +1,1 @@
+A first attempt to list the IQ with unzip failed: end-of-central-directory signature not found. File identification and header showed the SDK IQ is a 7z container, as the existing release inspector requires. This is a tool-format mismatch, not an IQ export result. Subsequent inspection uses /usr/bin/tar and the pinned SDK signature verifier.

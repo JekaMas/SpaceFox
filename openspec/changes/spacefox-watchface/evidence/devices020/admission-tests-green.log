@@ -1,0 +1,13 @@
+test_alternate_root_native_tamper_is_refused (tests.test_devices020_admission.DeltaProofNegativeTest.test_alternate_root_native_tamper_is_refused) ... ok
+test_missing_or_altered_proof_and_visual_refused (tests.test_devices020_admission.DeltaProofNegativeTest.test_missing_or_altered_proof_and_visual_refused) ... ok
+test_changed_vector_font_is_refused (tests.test_devices020_admission.DeviceAdmissionTest.test_changed_vector_font_is_refused) ... ok
+test_each_resource_floor (tests.test_devices020_admission.DeviceAdmissionTest.test_each_resource_floor) ... ok
+test_method_font_and_api_rejection (tests.test_devices020_admission.DeviceAdmissionTest.test_method_font_and_api_rejection) ... ok
+test_missing_watchface_and_hash_tamper (tests.test_devices020_admission.DeviceAdmissionTest.test_missing_watchface_and_hash_tamper) ... ok
+test_valid_and_condensed_only (tests.test_devices020_admission.DeviceAdmissionTest.test_valid_and_condensed_only) ... ok
+test_manifest_products_match_profile_pins_and_reject_mutations (tests.test_devices020_admission.ManifestSelectionTest.test_manifest_products_match_profile_pins_and_reject_mutations) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.432s
+
+OK

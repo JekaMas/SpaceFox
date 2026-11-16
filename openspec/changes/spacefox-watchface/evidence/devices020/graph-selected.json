@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "requirement": "WF23",
+  "properties": 2,
+  "edges": [
+    {
+      "case": "WF23.P1.S01.POSITIVE",
+      "sourceHashMatches": true
+    },
+    {
+      "case": "WF23.P1.S01.NEGATIVE",
+      "sourceHashMatches": true
+    },
+    {
+      "case": "WF23.P2.S01.POSITIVE",
+      "sourceHashMatches": true
+    },
+    {
+      "case": "WF23.P2.S01.NEGATIVE",
+      "sourceHashMatches": true
+    }
+  ],
+  "boundary": "Manual selected edge and source-hash reconciliation only; not full graph runner"
+}

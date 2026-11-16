@@ -234,6 +234,737 @@
           "number": "006-B4315-00"
         }
       ]
+    },
+    "approachs7042mm": {
+      "display_name": "Approach\u00ae S70 42mm",
+      "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
+      "device_family": "round-390x390",
+      "resolution": {
+        "height": 390,
+        "width": 390
+      },
+      "files_sha256": {
+        "compiler.json": "7cd48ae19283030cfa9587aff55a477ee89b7823ceed30f2b4f2bfc35eb195a6",
+        "simulator.json": "c5ba16b7f3185e51c81a2765156296a5738f97a66d6e9074f60e8e04f13c946f",
+        "approachs7042mm.bin": "c2b265ff7125c9d96e853b5d5352f7d8e575d877f8a92bc0a0aeb524908bb853",
+        "approachs7042mm.api.debug.xml": "9a98024369c93d7d29d0d5699985f4b2e87d734c5cae5c8d2cef456cd8badaaf"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "5.1.0",
+          "firmwareVersion": 1723,
+          "number": "006-B4233-00"
+        }
+      ]
+    },
+    "approachs7047mm": {
+      "display_name": "Approach\u00ae S70 47mm",
+      "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
+      "device_family": "round-454x454",
+      "resolution": {
+        "height": 454,
+        "width": 454
+      },
+      "files_sha256": {
+        "compiler.json": "2d53c37eff4c0c38fdab7f19255779f15194874fa80b7603c11875d438f65262",
+        "simulator.json": "1ec57803d71486e7669c16a0faf4f49a73648515f9c0529c419fe9f8902c3db2",
+        "approachs7047mm.bin": "c2b265ff7125c9d96e853b5d5352f7d8e575d877f8a92bc0a0aeb524908bb853",
+        "approachs7047mm.api.debug.xml": "9a98024369c93d7d29d0d5699985f4b2e87d734c5cae5c8d2cef456cd8badaaf"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "5.1.0",
+          "firmwareVersion": 1723,
+          "number": "006-B4234-00"
+        }
+      ]
+    },
+    "approachs7243mm": {
+      "display_name": "Approach\u00ae S72 43mm",
+      "profile_version": "736e54690cf479afa0838040a004f5fb25f64fe9",
+      "device_family": "round-416x416",
+      "resolution": {
+        "height": 416,
+        "width": 416
+      },
+      "files_sha256": {
+        "compiler.json": "5ca557d79051b83786ce570c419bc249e1c94e7d1c3ed415ad74b57a72135199",
+        "simulator.json": "9641a57e4caa4cc2e8c94e6d78b0685e1aa072b6ea90ae4c3d5bc45523839b41",
+        "approachs7243mm.bin": "799ea00cee941b23159afac5471ca9ee6118b0dc07edd3edf3ad3392a0962f61",
+        "approachs7243mm.api.debug.xml": "8c087eeb1c1609604753fd1efea491b2a28b8f1fa84e4dd5dffdc06d24363298"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "number": "006-B4874-00"
+        }
+      ]
+    },
+    "approachs7247mm": {
+      "display_name": "Approach\u00ae S72 47mm",
+      "profile_version": "c641b48a5c296531063e7c1935a7c9a80c7e2f7b",
+      "device_family": "round-454x454",
+      "resolution": {
+        "height": 454,
+        "width": 454
+      },
+      "files_sha256": {
+        "compiler.json": "f688ff317dd5d1bd4b92cb0bd0fad11d41c6e0003f95026ce91f1c9a1903b4ba",
+        "simulator.json": "b4820a8fee316f9f6ae76de75a5ecb00e97af11f11a9b18cab16095f0a32ed3e",
+        "approachs7247mm.bin": "fe71dd31f348bb0704933ee4be6c55f720e29ffa54f6954bb882c32337c62e6a",
+        "approachs7247mm.api.debug.xml": "7c6ba3887716070e68f66f3f77b09e7b509a83bcba5aef3a7781da9c111de085"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "number": "006-B4875-00"
+        }
+      ]
+    },
+    "d2mach1": {
+      "display_name": "D2\u2122 Mach 1",
+      "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
+      "device_family": "round-416x416",
+      "resolution": {
+        "height": 416,
+        "width": 416
+      },
+      "files_sha256": {
+        "compiler.json": "f232a2557838c5caf9ba46a2aa8edca2742670aa57a6a1492552603b9224fbd2",
+        "simulator.json": "fb0a48f63f1a8e6bfca02a1bace41db0086c083a77d9036f368726147fdd8b89",
+        "d2mach1.bin": "14c397b56d728d7721a32014bd9e8ac7dbabd9b4054f3624f57b461f90fae942",
+        "d2mach1.api.debug.xml": "cd69253f78e0079ce8aa389dda18299ca197ad80162ddf43800f26118655263e"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "5.2.0",
+          "firmwareVersion": 2316,
+          "number": "006-B4079-00"
+        }
+      ]
+    },
+    "d2mach2": {
+      "display_name": "D2\u2122 Mach 2",
+      "profile_version": "ca7e2e4eea103e1dc6e9e3e938ed66c3ac69ca83",
+      "device_family": "round-454x454",
+      "resolution": {
+        "height": 454,
+        "width": 454
+      },
+      "files_sha256": {
+        "compiler.json": "41d48146379d84a9d22a0e278ca641420f911dd14b019128ead69ab6aef0af1b",
+        "simulator.json": "97193d03f948261e2362a1919c47e98094b633bab6a4318ec19c088960c8111e",
+        "d2mach2.bin": "efa63bd75f15c55f666a38f1fed50e7dcb52630ad352876075c3ba31f886becd",
+        "d2mach2.api.debug.xml": "afc5e4836e0e6d942dc349404cd70075ad96c7d921276e5f82fdd1164123f59d"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 2339,
+          "number": "006-B4879-00"
+        }
+      ]
+    },
+    "d2mach2pro": {
+      "display_name": "D2\u2122 Mach 2 Pro",
+      "profile_version": "ca7e2e4eea103e1dc6e9e3e938ed66c3ac69ca83",
+      "device_family": "round-454x454",
+      "resolution": {
+        "height": 454,
+        "width": 454
+      },
+      "files_sha256": {
+        "compiler.json": "b40ebeb17359cb38bf86171d675112953ceefa247b06b0c8cedff749c9c3d175",
+        "simulator.json": "70a211bec3b260b0a0f405bacf30ab3b4f153f35ef17ae276642d8cc94057971",
+        "d2mach2pro.bin": "efa63bd75f15c55f666a38f1fed50e7dcb52630ad352876075c3ba31f886becd",
+        "d2mach2pro.api.debug.xml": "afc5e4836e0e6d942dc349404cd70075ad96c7d921276e5f82fdd1164123f59d"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 2339,
+          "number": "006-B5056-00"
+        }
+      ]
+    },
+    "descentmk343mm": {
+      "display_name": "Descent\u2122 Mk3 43mm / Mk3i 43mm",
+      "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
+      "device_family": "round-390x390",
+      "resolution": {
+        "height": 390,
+        "width": 390
+      },
+      "files_sha256": {
+        "compiler.json": "33b35196bfb4622e58c6827a4df5dc2467300ff15e8ca12f28b11532c7007621",
+        "simulator.json": "b4e0fbe2332045c7b255646c15ed10925b94feeef9cd012fd74f89f611311dd5",
+        "descentmk343mm.bin": "47104a9df9f32dfc0e4ee952f35cf3700744ee8dd17d6080bc91e3589e0b6dd9",
+        "descentmk343mm.api.debug.xml": "4a271fefb63e0db4f3cee15c8f8c5a0ffd0e57470475e22b786b219d1e43a606"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "5.1.0",
+          "firmwareVersion": 1625,
+          "number": "006-B4222-00"
+        }
+      ]
+    },
+    "descentmk351mm": {
+      "display_name": "Descent\u2122 Mk3i 51mm",
+      "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
+      "device_family": "round-454x454",
+      "resolution": {
+        "height": 454,
+        "width": 454
+      },
+      "files_sha256": {
+        "compiler.json": "956056dae996edba4be22911e9b43bdc038982efdebb37e3e7d5033255017367",
+        "simulator.json": "c2e7bc95def24f09879db23a6aee151c44f29c2fbaabc2201a79478e073be4ce",
+        "descentmk351mm.bin": "99960d397db0b143086b4671e6fb7da5c81e312052400b7f0879f83438115c6d",
+        "descentmk351mm.api.debug.xml": "50c7f018afbb68bf3b17d1044bd2373127c8ce50dfd358480d249fcc5cbc9e61"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "5.1.0",
+          "firmwareVersion": 1625,
+          "number": "006-B4223-00"
+        }
+      ]
+    },
+    "epix2": {
+      "display_name": "epix\u2122 (Gen 2) / quatix\u00ae 7 Sapphire",
+      "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
+      "device_family": "round-416x416",
+      "resolution": {
+        "height": 416,
+        "width": 416
+      },
+      "files_sha256": {
+        "compiler.json": "82fae868142f348e63c5201c90e8f3b52eac91eead103a4489132cb8bb4beb19",
+        "simulator.json": "9acebf022dd8de9492ef1d45c2ee7b985af33a4852ad3f91782903d87d334a99",
+        "epix2.bin": "14c397b56d728d7721a32014bd9e8ac7dbabd9b4054f3624f57b461f90fae942",
+        "epix2.api.debug.xml": "cd69253f78e0079ce8aa389dda18299ca197ad80162ddf43800f26118655263e"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "5.2.0",
+          "firmwareVersion": 2316,
+          "number": "006-B3943-00"
+        },
+        {
+          "connectIQVersion": "5.2.0",
+          "firmwareVersion": 2316,
+          "number": "006-B3944-00"
+        }
+      ]
+    },
+    "epix2pro42mm": {
+      "display_name": "epix\u2122 Pro (Gen 2) 42mm",
+      "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
+      "device_family": "round-390x390",
+      "resolution": {
+        "height": 390,
+        "width": 390
+      },
+      "files_sha256": {
+        "compiler.json": "e1b9fc20b76707624db306e1337193d6e89d1b9aca9b708a7044b8213baebc82",
+        "simulator.json": "8911854d02ac89c54e18126985695261d6285ce73766d5ebfa08644744dc777e",
+        "epix2pro42mm.bin": "d92b517104b20e447be58811189aa06bcbb6a23b7514369c6f4b50f4718fb380",
+        "epix2pro42mm.api.debug.xml": "e3a091594789a75f5b0d44c2f638361cd60c4a410ee513876231f08bfc711733"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "5.2.0",
+          "firmwareVersion": 2316,
+          "number": "006-B4312-00"
+        }
+      ]
+    },
+    "epix2pro47mm": {
+      "display_name": "epix\u2122 Pro (Gen 2) 47mm / quatix\u00ae 7 Pro",
+      "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
+      "device_family": "round-416x416",
+      "resolution": {
+        "height": 416,
+        "width": 416
+      },
+      "files_sha256": {
+        "compiler.json": "865012acd41db7e7b49f914e809d022fa7e2ce61dd005bd39cc2bdcb0d6a3e0f",
+        "simulator.json": "c606ac411b610d0448a2d1d4f25ef35e37312f33b814668010d10855f0175d39",
+        "epix2pro47mm.bin": "d92b517104b20e447be58811189aa06bcbb6a23b7514369c6f4b50f4718fb380",
+        "epix2pro47mm.api.debug.xml": "e3a091594789a75f5b0d44c2f638361cd60c4a410ee513876231f08bfc711733"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "5.2.0",
+          "firmwareVersion": 2316,
+          "number": "006-B4313-00"
+        }
+      ]
+    },
+    "epix2pro51mm": {
+      "display_name": "epix\u2122 Pro (Gen 2) 51mm / D2\u2122 Mach 1 Pro / tactix\u00ae 7 \u2013 AMOLED Edition",
+      "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
+      "device_family": "round-454x454",
+      "resolution": {
+        "height": 454,
+        "width": 454
+      },
+      "files_sha256": {
+        "compiler.json": "4bd4ecdd087d7ccd41774718f3cbabecf0e1e1b956eb00b5755fe086c7bbf287",
+        "simulator.json": "26ac73566d4a69548b6da50a2fb95cbaf2ef7e6f9d98c8abd054607798a926a1",
+        "epix2pro51mm.bin": "d92b517104b20e447be58811189aa06bcbb6a23b7514369c6f4b50f4718fb380",
+        "epix2pro51mm.api.debug.xml": "e3a091594789a75f5b0d44c2f638361cd60c4a410ee513876231f08bfc711733"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "5.2.0",
+          "firmwareVersion": 2316,
+          "number": "006-B4314-00"
+        },
+        {
+          "connectIQVersion": "5.2.0",
+          "firmwareVersion": 2316,
+          "number": "006-B4542-00"
+        },
+        {
+          "connectIQVersion": "5.2.0",
+          "firmwareVersion": 2316,
+          "number": "006-B4556-00"
+        }
+      ]
+    },
+    "fenix843mm": {
+      "display_name": "f\u0113nix\u00ae 8 43mm",
+      "profile_version": "69f9c27a08d175c50b86464a70c24d15718945cb",
+      "device_family": "round-416x416",
+      "resolution": {
+        "height": 416,
+        "width": 416
+      },
+      "files_sha256": {
+        "compiler.json": "342fc308b5d5c3d003048b4ee053c842df6a327da4b14b2834e488d835d81566",
+        "simulator.json": "12bcee3d0c974a59f38cd840f74cec1ebceafadd5cbe4be716589b323aaa8654",
+        "fenix843mm.bin": "efa63bd75f15c55f666a38f1fed50e7dcb52630ad352876075c3ba31f886becd",
+        "fenix843mm.api.debug.xml": "bc84e9f48051e5cb6e767d8f877c406a284e627d9a7cc69680bfcee448462e93"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 2339,
+          "number": "006-B4534-00"
+        }
+      ]
+    },
+    "fenix847mm": {
+      "display_name": "f\u0113nix\u00ae 8 47mm / 51mm / tactix\u00ae 8 47mm / 51mm / quatix\u00ae 8 47mm / 51mm",
+      "profile_version": "69f9c27a08d175c50b86464a70c24d15718945cb",
+      "device_family": "round-454x454",
+      "resolution": {
+        "height": 454,
+        "width": 454
+      },
+      "files_sha256": {
+        "compiler.json": "e694cc55c7e22297935df08a8122ac8e2985d3298a7df2d90df73d11cd160970",
+        "simulator.json": "02e1938c1a0abf60b2a43b1a60f92ad0fcdaac6aae0bb53ef0087452296c4872",
+        "fenix847mm.bin": "efa63bd75f15c55f666a38f1fed50e7dcb52630ad352876075c3ba31f886becd",
+        "fenix847mm.api.debug.xml": "bc84e9f48051e5cb6e767d8f877c406a284e627d9a7cc69680bfcee448462e93"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 2339,
+          "number": "006-B4536-00"
+        },
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 2339,
+          "number": "006-B4775-00"
+        }
+      ]
+    },
+    "fenix8pro47mm": {
+      "display_name": "f\u0113nix\u00ae 8 Pro 47mm / 51mm / MicroLED / quatix\u00ae 8 Pro 47mm / 51mm",
+      "profile_version": "69f9c27a08d175c50b86464a70c24d15718945cb",
+      "device_family": "round-454x454",
+      "resolution": {
+        "height": 454,
+        "width": 454
+      },
+      "files_sha256": {
+        "compiler.json": "5530e93da1a35c012817d0f5d5d08c5c6f3ad09f91148dd5343067805416180e",
+        "simulator.json": "1c8bb81783fbb03a17b25f0255c5afe8e9f4cb0ead440ce06d7a41ac9b93a0a4",
+        "fenix8pro47mm.bin": "5ce9349c26f3d3f3d301f81dc308048e25c81a9155caebb3c520108800d465c0",
+        "fenix8pro47mm.api.debug.xml": "3749008c3e0c86e17aff9f27333032a294c03978871fd1a2c1e7ed9091b30172"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 2339,
+          "number": "006-B4631-00"
+        }
+      ]
+    },
+    "fenix943mm": {
+      "display_name": "f\u0113nix\u00ae 9 43mm",
+      "profile_version": "ee244507b073c52779d26e77dc69b690d79098bd",
+      "device_family": "round-416x416",
+      "resolution": {
+        "height": 416,
+        "width": 416
+      },
+      "files_sha256": {
+        "compiler.json": "d521767bffc637da49ed5337125c05f91c5a636e6cc195e42abdd01030fc33ef",
+        "simulator.json": "5e8df3eaa4da0917dc721360077768470dd6e81166cadc3d637839264898616b",
+        "fenix943mm.bin": "cdc60ae8cc66c73838b549beca6d04fa6b7b4e7375c7d0a154de0b57d54b0451",
+        "fenix943mm.api.debug.xml": "3a3edeb1aa02f6bea543b57f445c688b2a80fb39aeec120e01184a85d61eb955"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 648,
+          "number": "006-B5133-00"
+        }
+      ]
+    },
+    "fenix947mm": {
+      "display_name": "f\u0113nix\u00ae 9 47mm / 51mm",
+      "profile_version": "ee244507b073c52779d26e77dc69b690d79098bd",
+      "device_family": "round-454x454",
+      "resolution": {
+        "height": 454,
+        "width": 454
+      },
+      "files_sha256": {
+        "compiler.json": "a06f989dfd20fbbcec94394bf423c635bcd98198e9bb98d52895d4c2e9e29005",
+        "simulator.json": "78f1d601f17b67eb6716b3b183376736f4f166051cbd2038afd80a843dd5b55f",
+        "fenix947mm.bin": "cdc60ae8cc66c73838b549beca6d04fa6b7b4e7375c7d0a154de0b57d54b0451",
+        "fenix947mm.api.debug.xml": "3a3edeb1aa02f6bea543b57f445c688b2a80fb39aeec120e01184a85d61eb955"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 648,
+          "number": "006-B5134-00"
+        }
+      ]
+    },
+    "fenix9pro43mm": {
+      "display_name": "f\u0113nix\u00ae 9 Pro 43mm",
+      "profile_version": "ee244507b073c52779d26e77dc69b690d79098bd",
+      "device_family": "round-416x416",
+      "resolution": {
+        "height": 416,
+        "width": 416
+      },
+      "files_sha256": {
+        "compiler.json": "bc099ce945bd3997380a3b56252054a8ff6fb26e5a287110fa56f1f6de493c75",
+        "simulator.json": "b3282b53beeedba47039f2514392562db8f7d20839308d52f12db9cf0f1de7d5",
+        "fenix9pro43mm.bin": "cdc60ae8cc66c73838b549beca6d04fa6b7b4e7375c7d0a154de0b57d54b0451",
+        "fenix9pro43mm.api.debug.xml": "3a3edeb1aa02f6bea543b57f445c688b2a80fb39aeec120e01184a85d61eb955"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 648,
+          "number": "006-B4952-00"
+        }
+      ]
+    },
+    "fenix9pro47mm": {
+      "display_name": "f\u0113nix\u00ae 9 Pro 47mm",
+      "profile_version": "ee244507b073c52779d26e77dc69b690d79098bd",
+      "device_family": "round-454x454",
+      "resolution": {
+        "height": 454,
+        "width": 454
+      },
+      "files_sha256": {
+        "compiler.json": "8e5531fd41b53848a9df3763040e00120970b2e9a14c4635027a140a54b9b178",
+        "simulator.json": "1522eb74da59c4771acdb7b8f98363ae767f8ba65a09fbf25094c532e87b2717",
+        "fenix9pro47mm.bin": "cdc60ae8cc66c73838b549beca6d04fa6b7b4e7375c7d0a154de0b57d54b0451",
+        "fenix9pro47mm.api.debug.xml": "3a3edeb1aa02f6bea543b57f445c688b2a80fb39aeec120e01184a85d61eb955"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 648,
+          "number": "006-B4953-00"
+        }
+      ]
+    },
+    "fenix9pro51mm": {
+      "display_name": "f\u0113nix\u00ae 9 Pro 51mm",
+      "profile_version": "ee244507b073c52779d26e77dc69b690d79098bd",
+      "device_family": "round-466x466",
+      "resolution": {
+        "height": 466,
+        "width": 466
+      },
+      "files_sha256": {
+        "compiler.json": "0acb7936acd53ffe73bf4b1884699727021941e56baf7498f8bc232bd7ce90d5",
+        "simulator.json": "f00d77102d98bd12f77c08441fa7c79ba6e5ae2f9599962529b50959367dece7",
+        "fenix9pro51mm.bin": "cdc60ae8cc66c73838b549beca6d04fa6b7b4e7375c7d0a154de0b57d54b0451",
+        "fenix9pro51mm.api.debug.xml": "3a3edeb1aa02f6bea543b57f445c688b2a80fb39aeec120e01184a85d61eb955"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 648,
+          "number": "006-B4954-00"
+        }
+      ]
+    },
+    "fenixe": {
+      "display_name": "f\u0113nix\u00ae E",
+      "profile_version": "69f9c27a08d175c50b86464a70c24d15718945cb",
+      "device_family": "round-416x416",
+      "resolution": {
+        "height": 416,
+        "width": 416
+      },
+      "files_sha256": {
+        "compiler.json": "3a3818a78c9039f64cfa9243de72fba45dea6b616e3b2d5783ed92f1e7e61a26",
+        "simulator.json": "57a07522d13eb4637027c068d11650762336351bcf3a5e81db31fdb3837a0b15",
+        "fenixe.bin": "bbd005900fe495d335ef68cb1a6acc509bfaf3ff0441f0e66127dff1bfff1ebd",
+        "fenixe.api.debug.xml": "934148f64ddab2401d1bfbffa1f08b33534bfbfc1926941e783b96e5f96559eb"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 2339,
+          "number": "006-B4666-00"
+        }
+      ]
+    },
+    "fr265": {
+      "display_name": "Forerunner\u00ae 265",
+      "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
+      "device_family": "round-416x416",
+      "resolution": {
+        "height": 416,
+        "width": 416
+      },
+      "files_sha256": {
+        "compiler.json": "e6b5de3f1a9090977f3bb41b7ae932c5c233215cd0fd560fc7856df403d70645",
+        "simulator.json": "8bf2ba93b5728054636533da002e705231cadc7047a1bf23934083b0abd1d29a",
+        "fr265.bin": "6620087f819502c85f1388f1ddab07cbef4e77653d620075a6a5ae0d1a92b13f",
+        "fr265.api.debug.xml": "945ae1e7c916a7f9e3f5e8d51fe42c29c1d9761e3c2241e94baf7298da98b28d"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "5.2.0",
+          "firmwareVersion": 2502,
+          "number": "006-B4257-00"
+        }
+      ]
+    },
+    "fr265s": {
+      "display_name": "Forerunner\u00ae 265s",
+      "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
+      "device_family": "round-360x360",
+      "resolution": {
+        "height": 360,
+        "width": 360
+      },
+      "files_sha256": {
+        "compiler.json": "0bd995385aebbd95e030173c865adfd195cd69a0bdee5f6c03e1dfefe0b5b5d3",
+        "simulator.json": "ff0711654acdc150e8b702962d8f045ed2b3cc81519c045461ddb205a86fe317",
+        "fr265s.bin": "6620087f819502c85f1388f1ddab07cbef4e77653d620075a6a5ae0d1a92b13f",
+        "fr265s.api.debug.xml": "945ae1e7c916a7f9e3f5e8d51fe42c29c1d9761e3c2241e94baf7298da98b28d"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "5.2.0",
+          "firmwareVersion": 2502,
+          "number": "006-B4258-00"
+        }
+      ]
+    },
+    "fr57047mm": {
+      "display_name": "Forerunner\u00ae 570 47mm",
+      "profile_version": "2a089d06d343f3feda75c93ddf12e1fa29abe918",
+      "device_family": "round-454x454",
+      "resolution": {
+        "height": 454,
+        "width": 454
+      },
+      "files_sha256": {
+        "compiler.json": "697d1be0a4cc944003155635f8467d31d912bdb2aaf0885725d6cf10f18bd24b",
+        "simulator.json": "3743f6ec9ace4cc92b8279d26b98be4781ffa43b0442f47c89c2b6e4d66df3d1",
+        "fr57047mm.bin": "5a8333dad948ca56545872fdc2cda7c480a80eb2fcc87d4bfe28e8d4cb38ba61",
+        "fr57047mm.api.debug.xml": "9a25ae15776854c1c03546c92398b4d6eb2af79b7be8a58547f05b89e8b2646e"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 1829,
+          "number": "006-B4570-00"
+        }
+      ]
+    },
+    "fr970": {
+      "display_name": "Forerunner\u00ae 970",
+      "profile_version": "2a089d06d343f3feda75c93ddf12e1fa29abe918",
+      "device_family": "round-454x454",
+      "resolution": {
+        "height": 454,
+        "width": 454
+      },
+      "files_sha256": {
+        "compiler.json": "594d092ffd51f13936430f834aa86fe4d7d1efcdefc6be43c32aa61c6a8db457",
+        "simulator.json": "5799acd323d9bdfaeb1ae94be5092fa35b020db85bb82810c31bf7a5bcf944d8",
+        "fr970.bin": "e058664247cce348e9a8a1134698338dbe00310e0b67ecd59bb730a761a4d784",
+        "fr970.api.debug.xml": "0be49f00e548a4c09e3c11979e091e469a9e40c7d9cc9e6245fd1e0859b12b8b"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 1829,
+          "number": "006-B4565-00"
+        }
+      ]
+    },
+    "marq2": {
+      "display_name": "MARQ\u00ae (Gen 2) Athlete / Adventurer / Captain / Golfer / Carbon Edition / Commander - Carbon Edition",
+      "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
+      "device_family": "round-390x390",
+      "resolution": {
+        "height": 390,
+        "width": 390
+      },
+      "files_sha256": {
+        "compiler.json": "893f9b564c1976ccd623bf132eb5e9e6e57b359ea0af59318a4d70395f322ff7",
+        "simulator.json": "a8af1361701e4b954dccdd7f3c795b2a47c3861c8bcfed9309aa2fe90c32443b",
+        "marq2.bin": "4af47bb39cda5fe84a338fc15570f432fa940cdf59ed574ae28e18dfbee28b5b",
+        "marq2.api.debug.xml": "a0ed967fa5e9780f5a47dff6eef481ff0347246f96c05e1236dc776c28bd976e"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "5.2.0",
+          "firmwareVersion": 2316,
+          "number": "006-B4105-00"
+        },
+        {
+          "connectIQVersion": "5.2.0",
+          "firmwareVersion": 2316,
+          "number": "006-B4472-00"
+        }
+      ]
+    },
+    "marq2aviator": {
+      "display_name": "MARQ\u00ae (Gen 2) Aviator",
+      "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
+      "device_family": "round-390x390",
+      "resolution": {
+        "height": 390,
+        "width": 390
+      },
+      "files_sha256": {
+        "compiler.json": "31e20c5cb8d6119c79e6cde121d4f8c71005785cb545954293c2ab64105cbee3",
+        "simulator.json": "a08277500b4c8b7cc7b454d8aa3d55979c5f63bff09aa5069e82e8ebfbac48ce",
+        "marq2aviator.bin": "4af47bb39cda5fe84a338fc15570f432fa940cdf59ed574ae28e18dfbee28b5b",
+        "marq2aviator.api.debug.xml": "a0ed967fa5e9780f5a47dff6eef481ff0347246f96c05e1236dc776c28bd976e"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "5.2.0",
+          "firmwareVersion": 2316,
+          "number": "006-B4124-00"
+        }
+      ]
+    },
+    "marq3": {
+      "display_name": "MARQ\u00ae (Gen 3) Athlete / Adventurer / Aviator / Commander / Golfer / Diver",
+      "profile_version": "91d8bb210b12f6d65baa58c161e3c607a02054f7",
+      "device_family": "round-454x454",
+      "resolution": {
+        "height": 454,
+        "width": 454
+      },
+      "files_sha256": {
+        "compiler.json": "cb20abb013923cc1b32eabdce723fccf2091385485d75816defde6a7b30c7568",
+        "simulator.json": "a97e9799dae4e9830fe2667e3fd586006e7304d27d37fff43c8d0ab9106fb30e",
+        "marq3.bin": "cdc60ae8cc66c73838b549beca6d04fa6b7b4e7375c7d0a154de0b57d54b0451",
+        "marq3.api.debug.xml": "3a3edeb1aa02f6bea543b57f445c688b2a80fb39aeec120e01184a85d61eb955"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "number": "006-B5000-00"
+        }
+      ]
+    },
+    "venu3": {
+      "display_name": "Venu\u00ae 3",
+      "profile_version": "3d0fb192a2cf01699aefd0f384af3f527e5885bd",
+      "device_family": "round-454x454",
+      "resolution": {
+        "height": 454,
+        "width": 454
+      },
+      "files_sha256": {
+        "compiler.json": "db149043596f47e3220122e6052f813ad354b0b8da50789425189c08fbd0ce1a",
+        "simulator.json": "b505aebe5f5d83a2d16090f545ba9af9c244656e48b2a7788ff86b95ceb6895a",
+        "venu3.bin": "fd764b95417774270ec58e86695e5156a43b470479bad5df31117b16e293a8c2",
+        "venu3.api.debug.xml": "875bd80b78da8836f0fdfcd5b478b991f039ae4b3e930f4c98994c90bc9bf817"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "5.2.0",
+          "firmwareVersion": 1607,
+          "number": "006-B4260-00"
+        }
+      ]
+    },
+    "venu445mm": {
+      "display_name": "Venu\u00ae 4 45mm / D2\u2122 Air X15",
+      "profile_version": "eddc2840754f6d29c6c9a3ede43befdaadd25a09",
+      "device_family": "round-454x454",
+      "resolution": {
+        "height": 454,
+        "width": 454
+      },
+      "files_sha256": {
+        "compiler.json": "1aa85d1594c28318b66e6cdc656d4f5e7c782c81fbf488bd44a4b7c2439feaf4",
+        "simulator.json": "bd43392ac5d148de44d6abeefd598a1e680a54d09bb920047422eeb49ca7e1e2",
+        "venu445mm.bin": "422ba94c00d34380fbdce7ab0b44facd76a072fac78a178b28de15fafad75287",
+        "venu445mm.api.debug.xml": "3bcc13ba55646281b60b74d7b7a57c2152ae1fb0125f9c03a07e2e117ccef2a1"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 1830,
+          "number": "006-B4643-00"
+        },
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 1830,
+          "number": "006-B4944-00"
+        }
+      ]
+    },
+    "venux1": {
+      "display_name": "Venu\u00ae X1",
+      "profile_version": "eddc2840754f6d29c6c9a3ede43befdaadd25a09",
+      "device_family": "rectangle-448x486",
+      "resolution": {
+        "height": 486,
+        "width": 448
+      },
+      "files_sha256": {
+        "compiler.json": "943d601e1bcc688617834b7f76b2e1b17a8c00baa7aa63fa962158a56fee7c76",
+        "simulator.json": "eed2ee9d7256e6f49e6cb28b345a9f15ec78edf3bcdababc55fbc43d32823755",
+        "venux1.bin": "1afc5c163185af49cf0480ab63c2332c05e29fcfe0cbba24efff6ae5e95537f5",
+        "venux1.api.debug.xml": "2ed34ab82d4139ee130114835035abcd47e5d46904336ccf0f54165590e19ad1"
+      },
+      "parts": [
+        {
+          "connectIQVersion": "6.0.3",
+          "firmwareVersion": 1829,
+          "number": "006-B4603-00"
+        }
+      ]
     }
   }
 }

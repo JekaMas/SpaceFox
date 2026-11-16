@@ -786,3 +786,15 @@ Static transport uses `.txt` copies for only NativeBatch's exact current selecte
 This section supersedes the earlier separate battery and sparse shifted AOD descriptions. The active screen has four independent persisted metric roles and no extra battery. Measurements use actual SDK-rendered ink, including EN/RU real cases. AOD centers large thin time with current localized date/weekday, battery, full matching contour and point, and minute-only countdown refreshed at minute cadence, subject to measured Garmin lit-pixel and burn-in behavior. Foreground redraw performs no communication or storage I/O. Retain accepted data and compatible imagery on transient failures; activate validated new metadata without relabeling old artwork.
 
 The UX01 verification graph covers baseline and repaired SDK pixels, real settings XML/property callback/restart, real low-power/wake lifecycle over three minutes, actual background network/cache failure after acceptance, and signed ordinary package identity. Existing valid proofs remain scoped to their observed sources. Device, phone, Store delivery and physical power acceptance stay open.
+
+### Device compatibility iteration 020
+
+Profile admission is bound to the installed SDK profile's actual API, resource
+limits, display, vector fonts and hashed compiler/simulator/runtime inputs. A
+single 390-square scene is uniformly fitted and centered in each qualified
+viewport; its map, point, rocket and text share the same transform. Font family
+fallback must retain scalable Latin and Cyrillic and the five primary locales.
+The admitted source cohort and historical 0.1.18 release cohort are separate;
+compilation, simulator, physical device and Store delivery remain separate proofs.
+The iteration's positive and negative obligations are recorded in
+[evidence/devices020/VERIFICATION.md](evidence/devices020/VERIFICATION.md).

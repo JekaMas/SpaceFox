@@ -1,0 +1,3 @@
+First openspec validate spacefox-watchface --strict --json exited 1. Captured console issue:
+WARNING watchface/spec.md: ADDED "Profile-specific device admission": Requirement text is very long (>500 characters). Move examples and edge cases into scenarios, or split it into separate requirements that each state one behavior.
+The original JSON output was accidentally overwritten by the subsequent run; this file records the observed failure from console output, not the original receipt. The requirement was shortened without removing the scenarios; openspec-validate.json is the later passing result.

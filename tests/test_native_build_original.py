@@ -22,6 +22,8 @@ class OriginalNativeBuildTest(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix="spacefox-original-build-") as directory:
             root = Path(directory)
             shutil.copytree(ROOT / "watchface", root / "watchface")
+            (root / "tools").mkdir()
+            shutil.copy2(ROOT / "tools/device-fonts020.json", root / "tools/device-fonts020.json")
             shutil.copytree(ROOT / "locales", root / "locales")
             yield root
 

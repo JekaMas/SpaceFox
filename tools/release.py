@@ -81,6 +81,8 @@ def source_state(root: Path) -> dict:
                 and ".." not in PurePosixPath(name).parts and name in paths,
                 "unsafe or untracked native admission input")
         admission.add(name)
+    if proof is not None and "devices020Proof" in proof:
+        admission.add("tools/device-fonts020.json")
     if proof is not None and "integrated016Proof" in proof:
         # Parent qualification reconstructs exact tracked tools inventories;
         # include the non-Python entries that the standard export filter omits.

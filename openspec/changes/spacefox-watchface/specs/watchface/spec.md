@@ -8,7 +8,7 @@ fitness information with the next rocket launch on a Garmin Forerunner 165.
 ### Requirement: Readable space-themed home screen
 
 The watch face SHALL display the watch's current local time as the primary value
-as 24-hour `HH:mm` digits on a single 390 × 390 round screen, independent of the watch's 12/24-hour preference. Space-themed graphics SHALL preserve the
+as 24-hour `HH:mm` digits on the 390 × 390 logical canvas, uniformly fitted to each qualified display, independent of the watch's 12/24-hour preference. Space-themed graphics SHALL preserve the
 readability of time, countdown and selected fitness values.
 
 #### Scenario: Main values remain visible
@@ -370,3 +370,21 @@ completions SHALL NOT replace a newer selection.
 
 - **WHEN** a visual build finishes after that selection was cancelled or replaced
 - **THEN** it does not change the current scene
+
+### Requirement: Profile-specific device admission
+
+The source SHALL declare only profiles capable of the accepted scene, two
+display modes and four fields, with pinned inputs and a compiler receipt.
+The 390-square scene SHALL fit qualified displays uniformly and centrally.
+Support claims SHALL distinguish source, simulator, physical and Store proof.
+
+#### Scenario: A candidate cannot meet a baseline
+- **WHEN** an installed profile lacks a required API, resource budget, scalable
+  font or qualified display behavior
+- **THEN** it is excluded with a specific reason and is not silently weakened
+  into the supported cohort.
+
+#### Scenario: A qualified viewport differs in shape
+- **WHEN** a qualified display has unequal width and height
+- **THEN** the full square scene is centered and uniformly scaled without
+  distorting the map, launch point, rocket or text.

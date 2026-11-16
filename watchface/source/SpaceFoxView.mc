@@ -51,6 +51,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     var restMask as Graphics.BitmapType or Null=null;
     var sceneBuffer as Graphics.BufferedBitmap or Null=null;
     var sceneScaleOptions as Dictionary or Null=null;
+    var sceneWidth as Number=0;var sceneHeight as Number=0;var sceneX as Number=0;var sceneY as Number=0;
     function initialize(clock as WatchClock, schedule as ScheduleState) {
         WatchFace.initialize();_clock=clock;_schedule=schedule;
         presentation=new LocalePresentation();settings=new SceneSettings(null);context=null;renderer=null;fitness=new Fitness();selectedFields=new SelectedFields();fitness.selectedFields=selectedFields;values={};sceneLifecycle=new SceneLifecycle();
@@ -235,7 +236,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
         // Render the complete 390px design into one canvas before scaling:
         // map, points, dynamic raster, foreground, fonts and maintenance stay
         // in the same coordinate system on larger supported round screens.
-        if((dc.getWidth()!=390||dc.getHeight()!=390)&&sceneBuffer==null){sceneBuffer=Graphics.createBufferedBitmap({:width=>390,:height=>390,:colorDepth=>16}).get() as Graphics.BufferedBitmap;var scale=new Graphics.AffineTransform();scale.scale(dc.getWidth().toFloat()/390.0,dc.getHeight().toFloat()/390.0);sceneScaleOptions={:transform=>scale,:filterMode=>Graphics.FILTER_MODE_POINT};}
+        if(dc.getWidth()!=390||dc.getHeight()!=390){if(sceneBuffer==null){sceneBuffer=Graphics.createBufferedBitmap({:width=>390,:height=>390,:colorDepth=>16}).get() as Graphics.BufferedBitmap;sceneWidth=0;sceneHeight=0;}if(sceneWidth!=dc.getWidth()||sceneHeight!=dc.getHeight()){sceneWidth=dc.getWidth();sceneHeight=dc.getHeight();var side=sceneWidth<sceneHeight?sceneWidth:sceneHeight;sceneX=(sceneWidth-side)/2;sceneY=(sceneHeight-side)/2;var scale=new Graphics.AffineTransform();scale.scale(side.toFloat()/390.0,side.toFloat()/390.0);sceneScaleOptions={:transform=>scale,:filterMode=>Graphics.FILTER_MODE_POINT};}}else{sceneBuffer=null;sceneScaleOptions=null;sceneWidth=0;sceneHeight=0;}
     }
     function utcMinute(now as Number or Long) as Long {
         var seconds=now.toLong();var minute=seconds/60;
@@ -255,7 +256,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
         if(renderer==null && sfrBuild==null){onLayout(dc);}
         // Skip the entire LOW update, including mask and scaled-buffer blit.
         if(!(_mode == NOT_LOW) && aodMinute!=null && aodMinute==utcMinute(_clock.utcSeconds())){return;}
-        if(sceneBuffer!=null){var bitmap=sceneBuffer as Graphics.BufferedBitmap;var target=bitmap.getDc();drawScene(target);applyPixelRest(target);dc.drawBitmap2(0,0,bitmap,sceneScaleOptions);if(_mode==NOT_LOW&&renderer!=null){queueResumeAfterFrame();}return;}
+        if(sceneBuffer!=null){var bitmap=sceneBuffer as Graphics.BufferedBitmap;var target=bitmap.getDc();drawScene(target);applyPixelRest(target);if(sceneX!=0||sceneY!=0){dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();}dc.drawBitmap2(sceneX,sceneY,bitmap,sceneScaleOptions);if(_mode==NOT_LOW&&renderer!=null){queueResumeAfterFrame();}return;}
         drawScene(dc);applyPixelRest(dc);
         if(_mode==NOT_LOW&&renderer!=null){queueResumeAfterFrame();}
     }

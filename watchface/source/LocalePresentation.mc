@@ -21,13 +21,13 @@ class LocalePresentation {
     function initialize(){
         // Proper names use a shared Latin face, independent of UI language.
         // SDK font files stay external; retain only these two common handles.
-        try{label=Graphics.getVectorFont({:face=>"RobotoRegular",:size=>26});latinSmall=Graphics.getVectorFont({:face=>"RobotoRegular",:size=>22});}catch(e){}
+        try{label=Graphics.getVectorFont({:face=>["RobotoRegular","RobotoCondensedRegular"],:size=>26});latinSmall=Graphics.getVectorFont({:face=>["RobotoRegular","RobotoCondensedRegular"],:size=>22});}catch(e){}
         if(label==null){label=Graphics.FONT_TINY;}if(latinSmall==null){latinSmall=Graphics.FONT_XTINY;}
-        try{calendarFont=Graphics.getVectorFont({:face=>"RobotoRegular",:size=>36});}catch(e){}
+        try{calendarFont=Graphics.getVectorFont({:face=>["RobotoRegular","RobotoCondensedRegular"],:size=>36});}catch(e){}
         if(calendarFont==null){calendarFont=Graphics.FONT_TINY;}
-        try{aodContextFont=Graphics.getVectorFont({:face=>"RobotoRegular",:size=>47});}catch(e){}
+        try{aodContextFont=Graphics.getVectorFont({:face=>["RobotoRegular","RobotoCondensedRegular"],:size=>47});}catch(e){}
         if(aodContextFont==null){aodContextFont=calendarFont;}
-        try{aodBatteryFont=Graphics.getVectorFont({:face=>"RobotoRegular",:size=>51});}catch(e){}
+        try{aodBatteryFont=Graphics.getVectorFont({:face=>["RobotoRegular","RobotoCondensedRegular"],:size=>51});}catch(e){}
         if(aodBatteryFont==null){aodBatteryFont=aodContextFont;}
         LocaleGraphemes.load();prepare("en");
     }
@@ -40,8 +40,8 @@ class LocalePresentation {
         try {
             dictionary=WatchUi.loadResource(SceneStrings.resource(index));loads+=1;
             var face=dictionary["face"];
-            small=face.equals("RobotoRegular")?latinSmall:Graphics.getVectorFont({:face=>[face,"RobotoRegular"],:size=>22});
-            count=Graphics.getVectorFont({:face=>[face,"RobotoRegular"],:size=>46});
+            small=face.equals("RobotoRegular")?latinSmall:Graphics.getVectorFont({:face=>[face,"RobotoRegular","RobotoCondensedRegular"],:size=>22});
+            count=Graphics.getVectorFont({:face=>[face,"RobotoRegular","RobotoCondensedRegular"],:size=>46});
             if(small==null||label==null||count==null){throw new Lang.InvalidValueException("locale font unavailable");}
             locale=next;
         } catch(e) {

@@ -252,7 +252,7 @@
       "id": "WF01",
       "capability": "watchface",
       "title": "Readable space-themed home screen",
-      "fingerprint": "bcf24d02d0e31dd1f431f5444e39676ce0d8451169ba71e20507d092cd69e9ac"
+      "fingerprint": "430fddaea787bb5ae41aa50260afcff355fb1472c242344c9334bf224176abe1"
     },
     {
       "id": "WF02",
@@ -397,6 +397,12 @@
       "capability": "watchface",
       "title": "Phone field settings",
       "fingerprint": "2ecb15bc1e9c3151b09f13adc13454449c1a3b04381713460ecaf860e11aaf19"
+    },
+    {
+      "id": "WF23",
+      "capability": "watchface",
+      "title": "Profile-specific device admission",
+      "fingerprint": "acf2257a6a32b0e9d6bd1bf66d1946f166c0ba9bf55364ad74acb69b7426def0"
     }
   ],
   "properties": [
@@ -5490,6 +5496,41 @@
         "openspec/changes/spacefox-watchface/evidence/fields018/display03-green/**"
       ],
       "planning_status": "Native selected-source cases bound; 454 and full-unit admission remain open."
+    },
+    {
+      "id": "WF23.P1",
+      "requirement_id": "WF23",
+      "scenarios": [
+        "A candidate cannot meet a baseline"
+      ],
+      "statement": "Pinned device admission preserves API, resource and scalable-font requirements and rejects invalid inputs.",
+      "owner": "tools/build_watchface.py",
+      "oracle": "Real admission mutations and source-bound SDK simulator captures, with external physical/Store boundaries documented.",
+      "source_globs": [
+        "tools/build_watchface.py",
+        "tests/test_devices020_admission.py",
+        "openspec/changes/spacefox-watchface/evidence/devices020/**",
+        "tools/device-fonts020.json",
+        "watchface/toolchain-lock.json",
+        "watchface/manifest.xml"
+      ],
+      "planning_status": "Implemented, self-verified; independent review and external physical/Store boundaries remain."
+    },
+    {
+      "id": "WF23.P2",
+      "requirement_id": "WF23",
+      "scenarios": [
+        "A qualified viewport differs in shape"
+      ],
+      "statement": "The real simulator rectangle uses uniform centered scaling with black margins; retained original failure is observable.",
+      "owner": "watchface/source/SpaceFoxView.mc",
+      "oracle": "Real admission mutations and source-bound SDK simulator captures, with external physical/Store boundaries documented.",
+      "source_globs": [
+        "watchface/source/SpaceFoxView.mc",
+        "tests/test_devices020_pixels.py",
+        "openspec/changes/spacefox-watchface/evidence/devices020/**"
+      ],
+      "planning_status": "Implemented, self-verified; independent review and external physical/Store boundaries remain."
     }
   ],
   "cases": [
@@ -38925,6 +38966,128 @@
         ]
       },
       "implementation_note": "Receipt observer only; does not turn one native batch into multiple independent executions."
+    },
+    {
+      "id": "WF23.P1.S01.POSITIVE",
+      "property_id": "WF23.P1",
+      "polarity": "positive",
+      "scenario": "A candidate cannot meet a baseline",
+      "scenario_fingerprint": "02be45be427a086621545473491c3cfc1bbc58362db1d43e9267ea40eab4025a",
+      "setup": "Synthetic pinned SDK profiles or the retained actual Garmin simulator red/green frame, as named by the test.",
+      "observable": "The test observes the admitted capability or actual frame margin for its named polarity.",
+      "red_expectation": "The exact named control is absent, malformed, or contradicts its stated expected result.",
+      "green_expectation": "The named admission or decoded screenshot assertion passes at its stated boundary.",
+      "invalidation_dependencies": [
+        "tests/test_devices020_admission.py",
+        "tools/build_watchface.py",
+        "openspec/changes/spacefox-watchface/evidence/devices020/**",
+        "tools/device-fonts020.json",
+        "watchface/toolchain-lock.json",
+        "watchface/manifest.xml"
+      ],
+      "test_id": "unittest::tests.test_devices020_admission.DeviceAdmissionTest.test_valid_and_condensed_only",
+      "command_id": "devices020-admission",
+      "state": "implemented",
+      "source_path": "tests/test_devices020_admission.py",
+      "source_sha256": "30086716bd2fe0462381a8b1e43b28dfcd23d8d152330fdac06bc9051e4f5235",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Garmin physical watch and Store by local synthetic SDK inputs or actual SDK simulator screenshots.",
+        "allowed_proof": "The named host control or actual simulator frame only.",
+        "forbidden_claims": [
+          "Physical device, battery, paired phone or Store acceptance"
+        ]
+      }
+    },
+    {
+      "id": "WF23.P1.S01.NEGATIVE",
+      "property_id": "WF23.P1",
+      "polarity": "negative",
+      "scenario": "A candidate cannot meet a baseline",
+      "scenario_fingerprint": "02be45be427a086621545473491c3cfc1bbc58362db1d43e9267ea40eab4025a",
+      "setup": "Synthetic pinned SDK profiles or the retained actual Garmin simulator red/green frame, as named by the test.",
+      "observable": "The test observes the admitted capability or actual frame margin for its named polarity.",
+      "red_expectation": "The exact named control is absent, malformed, or contradicts its stated expected result.",
+      "green_expectation": "The named admission or decoded screenshot assertion passes at its stated boundary.",
+      "invalidation_dependencies": [
+        "tests/test_devices020_admission.py",
+        "tools/build_watchface.py",
+        "openspec/changes/spacefox-watchface/evidence/devices020/**",
+        "tools/device-fonts020.json",
+        "watchface/toolchain-lock.json",
+        "watchface/manifest.xml"
+      ],
+      "test_id": "unittest::tests.test_devices020_admission.DeviceAdmissionTest.test_method_font_and_api_rejection",
+      "command_id": "devices020-admission",
+      "state": "implemented",
+      "source_path": "tests/test_devices020_admission.py",
+      "source_sha256": "30086716bd2fe0462381a8b1e43b28dfcd23d8d152330fdac06bc9051e4f5235",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Garmin physical watch and Store by local synthetic SDK inputs or actual SDK simulator screenshots.",
+        "allowed_proof": "The named host control or actual simulator frame only.",
+        "forbidden_claims": [
+          "Physical device, battery, paired phone or Store acceptance"
+        ]
+      }
+    },
+    {
+      "id": "WF23.P2.S01.POSITIVE",
+      "property_id": "WF23.P2",
+      "polarity": "positive",
+      "scenario": "A qualified viewport differs in shape",
+      "scenario_fingerprint": "6937618cc563de2f3420e0865c1b8d8b4a15cb629789e8769cc558a1c0495121",
+      "setup": "Synthetic pinned SDK profiles or the retained actual Garmin simulator red/green frame, as named by the test.",
+      "observable": "The test observes the admitted capability or actual frame margin for its named polarity.",
+      "red_expectation": "The exact named control is absent, malformed, or contradicts its stated expected result.",
+      "green_expectation": "The named admission or decoded screenshot assertion passes at its stated boundary.",
+      "invalidation_dependencies": [
+        "tests/test_devices020_pixels.py",
+        "watchface/source/SpaceFoxView.mc",
+        "openspec/changes/spacefox-watchface/evidence/devices020/**"
+      ],
+      "test_id": "unittest::tests.test_devices020_pixels.RectanglePixelTest.test_green_frames_have_black_letterbox",
+      "command_id": "devices020-pixels",
+      "state": "implemented",
+      "source_path": "tests/test_devices020_pixels.py",
+      "source_sha256": "da6dc10058a4f7de90ee0e8304e6fb302fc83ba74ca85feba9ffa5835f015a28",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Garmin physical watch and Store by local synthetic SDK inputs or actual SDK simulator screenshots.",
+        "allowed_proof": "The named host control or actual simulator frame only.",
+        "forbidden_claims": [
+          "Physical device, battery, paired phone or Store acceptance"
+        ]
+      }
+    },
+    {
+      "id": "WF23.P2.S01.NEGATIVE",
+      "property_id": "WF23.P2",
+      "polarity": "negative",
+      "scenario": "A qualified viewport differs in shape",
+      "scenario_fingerprint": "6937618cc563de2f3420e0865c1b8d8b4a15cb629789e8769cc558a1c0495121",
+      "setup": "Synthetic pinned SDK profiles or the retained actual Garmin simulator red/green frame, as named by the test.",
+      "observable": "The test observes the admitted capability or actual frame margin for its named polarity.",
+      "red_expectation": "The exact named control is absent, malformed, or contradicts its stated expected result.",
+      "green_expectation": "The named admission or decoded screenshot assertion passes at its stated boundary.",
+      "invalidation_dependencies": [
+        "tests/test_devices020_pixels.py",
+        "watchface/source/SpaceFoxView.mc",
+        "openspec/changes/spacefox-watchface/evidence/devices020/**"
+      ],
+      "test_id": "unittest::tests.test_devices020_pixels.RectanglePixelTest.test_original_red_has_white_letterbox",
+      "command_id": "devices020-pixels",
+      "state": "implemented",
+      "source_path": "tests/test_devices020_pixels.py",
+      "source_sha256": "da6dc10058a4f7de90ee0e8304e6fb302fc83ba74ca85feba9ffa5835f015a28",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Garmin physical watch and Store by local synthetic SDK inputs or actual SDK simulator screenshots.",
+        "allowed_proof": "The named host control or actual simulator frame only.",
+        "forbidden_claims": [
+          "Physical device, battery, paired phone or Store acceptance"
+        ]
+      }
     }
   ],
   "commands": [
@@ -43675,6 +43838,38 @@
       "timeout_seconds": 120,
       "authority": "local",
       "notes": "Authenticates existing current fields018 SDK assertions and raw result tables; no simulator, provider or publication."
+    },
+    {
+      "id": "devices020-admission",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_devices020_admission"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 120,
+      "authority": "local",
+      "notes": "Focused local admission or retained SDK simulator screenshot controls."
+    },
+    {
+      "id": "devices020-pixels",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_devices020_pixels"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 120,
+      "authority": "local",
+      "notes": "Focused local admission or retained SDK simulator screenshot controls."
     }
   ]
 }

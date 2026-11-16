@@ -1,0 +1,42 @@
+inventory files 6384 source_state git listing simulated; sparse files hardlinked; no git-clean or publication claim
+
+Traceback (most recent call last):
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/devices020-release-inputs-adet9s3c/tools/build_watchface.py", line 155, in validate_manifest
+    qualified = software_locales(root, catalog)
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/devices020-release-inputs-adet9s3c/tools/native_language_policy.py", line 94, in software_locales
+    return validate(root,catalog)
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/devices020-release-inputs-adet9s3c/tools/native_devices020_qualification.py", line 136, in validate
+    raise ValueError('original fields018 proof failed: '+result.stderr[-3000:])
+ValueError: original fields018 proof failed: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;from pathlib import Path;from tools.native_fields018_qualification import validate;p=Path.cwd();print(json.dumps(validate(p,json.loads((p/"locales/catalog.json").read_text()))))
+                                                                                                                                 ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-devices020-prior-8hany7cm/tools/native_fields018_qualification.py", line 84, in validate
+    files = {name: read(root, ref) for name, ref in record['evidence'].items()}
+                   ~~~~^^^^^^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-devices020-prior-8hany7cm/tools/native_fields018_qualification.py", line 24, in read
+    raise ValueError('fields018 proof input unavailable: ' + str(path))
+ValueError: fields018 proof input unavailable: openspec/changes/spacefox-watchface/evidence/fields018/peer-fr165/receipt.json
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from pathlib import Path;from tools.build_watchface import discover_toolchain,validate_manifest;p=Path.cwd();c=discover_toolchain(p);validate_manifest(p,c["lock"]);print("PASS sparse release source",len(c["profiles"]))
+                                                                                                                                         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/devices020-release-inputs-adet9s3c/tools/build_watchface.py", line 158, in validate_manifest
+    raise BuildBlocked("native language admission invalid: " + str(error)) from error
+tools.build_watchface.BuildBlocked: native language admission invalid: original fields018 proof failed: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;from pathlib import Path;from tools.native_fields018_qualification import validate;p=Path.cwd();print(json.dumps(validate(p,json.loads((p/"locales/catalog.json").read_text()))))
+                                                                                                                                 ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-devices020-prior-8hany7cm/tools/native_fields018_qualification.py", line 84, in validate
+    files = {name: read(root, ref) for name, ref in record['evidence'].items()}
+                   ~~~~^^^^^^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-devices020-prior-8hany7cm/tools/native_fields018_qualification.py", line 24, in read
+    raise ValueError('fields018 proof input unavailable: ' + str(path))
+ValueError: fields018 proof input unavailable: openspec/changes/spacefox-watchface/evidence/fields018/peer-fr165/receipt.json
+
+
+exit 1

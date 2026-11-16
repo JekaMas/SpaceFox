@@ -57,6 +57,16 @@ def discover_toolchain(root: Path = ROOT) -> dict:
     if compiler_result.returncode or compiler_result.stdout.strip() != "Connect IQ Compiler version: " + lock["sdk_version"]:
         raise BuildBlocked("compiler version differs from pinned SDK" + compiler_result.stdout)
     profile_root = (sdk.parents[1] / "Devices").resolve()
+    try:
+        font_pins = json.loads((root / "tools/device-fonts020.json").read_text())
+    except (OSError, ValueError) as error:
+        raise BuildBlocked("device font pin file missing or invalid") from error
+    if set(font_pins) != {"Roboto-Regular.ttf", "RobotoCondensed-Regular.ttf"}:
+        raise BuildBlocked("device font pin inventory differs")
+    for name, expected in font_pins.items():
+        path = profile_root.parent / "Fonts" / name
+        if not path.is_file() or digest(path) != expected:
+            raise BuildBlocked("device font input differs from pin: " + name)
     profile = profile_root / lock["product"] / "compiler.json"
     simulator_profile = profile_root / lock["product"] / "simulator.json"
     for path, key in [(profile, "compiler_profile_sha256"), (simulator_profile, "simulator_profile_sha256")]:
@@ -77,6 +87,9 @@ def discover_toolchain(root: Path = ROOT) -> dict:
     profiles = {}
     for product, pin in lock["profiles"].items():
         directory = profile_root / product
+        required = {"compiler.json", "simulator.json", product + ".bin", product + ".api.debug.xml"}
+        if set(pin.get("files_sha256", {})) != required:
+            raise BuildBlocked("device input pin inventory differs: " + product)
         for name, expected in pin["files_sha256"].items():
             if not (directory / name).is_file() or digest(directory / name) != expected:
                 raise BuildBlocked("device input differs from pin: " + product + "/" + name)
@@ -87,11 +100,13 @@ def discover_toolchain(root: Path = ROOT) -> dict:
         parts = [{k: v for k, v in row.items() if k in ("number", "connectIQVersion", "firmwareVersion")} for row in data["partNumbers"]]
         if (data["deviceId"] != product or data["deviceVersion"] != pin["profile_version"] or
             data["displayName"] != pin["display_name"] or data["deviceFamily"] != pin.get("device_family", "round-390x390") or
-            data["resolution"] != pin.get("resolution", {"width": 390, "height": 390}) or data["displayType"] != "amoled" or
+            data["resolution"] != pin.get("resolution", {"width": 390, "height": 390}) or
             memories.get("watchFace", 0) < 131072 or memories.get("background", 0) < 65536 or
             simulator_data.get("graphicsResourcePoolSize", 0) < 2097152 or
             simulator_data.get("appStorageCapacity", 0) < 10485760 or
-            simulator_data.get("display", {}).get("shape") != "round" or "RobotoRegular" not in fonts or
+            simulator_data.get("display", {}).get("shape") not in ("round", "rectangle") or
+            not ({"RobotoRegular", "RobotoCondensedRegular"} & fonts) or
+            'symbol="getVectorFont"' not in (directory / (product + ".api.debug.xml")).read_text() or
             parts != pin["parts"] or not parts or any(tuple(map(int, p["connectIQVersion"].split("."))) < tuple(map(int, lock["min_api"].split("."))) for p in parts)):
             raise BuildBlocked("device capabilities differ from pinned cohort: " + product)
         profiles[product] = data
