@@ -37,10 +37,10 @@ Native work is last to collect all invalidating edits into one stable profile bu
 | HOST-02 | A / 8.1 | DONE — author + peer + root|
 | HOST-03 | A / 8.1 | DONE — author + peer + root|
 | HOST-07 | A / 8.1 | DONE — author + peer + root|
-| HOST-04 | B / 8.2 | AUTHOR GREEN — independent peer and root pending |
-| HOST-05 | B / 8.2 | AUTHOR GREEN — independent peer and root pending |
-| HOST-06 | B / 8.2 | AUTHOR GREEN — independent peer and root pending |
-| ENG-02 | B / 8.2 | AUTHOR GREEN — independent peer and root pending |
+| HOST-04 | B / 8.2 | PEER GREEN — root judgment pending |
+| HOST-05 | B / 8.2 | PEER GREEN — root judgment pending |
+| HOST-06 | B / 8.2 | PEER GREEN — root judgment pending |
+| ENG-02 | B / 8.2 | PEER GREEN — root judgment pending |
 | ENG-01 | C / 8.3 | PENDING |
 | CLEAN-02 | C / 8.3 | PENDING |
 | WEB-01 | C / 8.3 | PENDING |
@@ -92,3 +92,8 @@ Physical watch, paired phone, battery energy, physical frame/wake timing, exact 
 
 - Independent peer reproduced and repaired failed-probe routing and the incomplete HTTP deadline. A failed or skipped workflow probe now triggers a fresh full prepare with its independent source/authority guards; all accepted no-work outputs require successful probe outcome. A shared readback deadline covers both root HTTP requests and queued/running file workers, without changing the four-worker or byte limits. The 120-second HTTP budget is not a claimed full Site.observe wall-time deadline; snapshot/semantic preparation uses its own bounded child and input owners.
 - [b/PEER.md](b/PEER.md) records the exact initial failures, independent current-owner Git/root-race and sparse CLI checks, real 106-file readback sequence, typed no-write assertions, preserved evidence and limits. Current source proof and clean-source release gates are being reconciled; task 8.2 and root judgment remain pending. C/D have not started.
+
+## Group B peer completion and root handoff
+
+- Independent peer repairs and local validation are GREEN at clean source checkpoint `7e73bf5c52d23784d8cc294ff166c5719b6cda4b`; [b/PEER.md](b/PEER.md) records the failures, exact behavioral observations, source/export proof, bounded HTTP-versus-snapshot scope and outstanding external limits. Task 8.2 records completed author and peer work; root judgment is still required. No later group has started.
+- Clean-revision copied-input release admission accepted 6,651 tracked inputs and exactly `en`, `ru`, `de`, `fr`, `es`; the exact workflow, independent test and 106 artifact inputs were included. Sparse source closure passed with 756 catalog inputs, 28 seed files and corruption refusal. Selected VC21 P6–P10 mapped 25 cases to actual commands, test methods and source hashes; this is not the unavailable private graph runner. Final peer documentation and receipt changes must be reconciled as disjoint from those selected release/source inputs.
