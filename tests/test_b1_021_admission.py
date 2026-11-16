@@ -42,13 +42,15 @@ class IntegrationAdmission(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'locale policy changed'):
             proof.validate(ROOT, catalog)
         original = proof.sha
-        def altered(path):
-            if str(path).endswith('integration021-tests.log'):
-                return '0' * 64
-            return original(path)
-        with patch.object(proof, 'sha', side_effect=altered):
-            with self.assertRaisesRegex(ValueError, 'integration input changed'):
-                proof.validate(ROOT, self.catalog)
+        for target in ('integration021-tests.log', 'integration021-peer-source-switch-green.log',
+                       'integration021-peer-primary-receipt.json'):
+            def altered(path):
+                if str(path).endswith(target):
+                    return '0' * 64
+                return original(path)
+            with self.subTest(evidence=target), patch.object(proof, 'sha', side_effect=altered):
+                with self.assertRaisesRegex(ValueError, 'integration input changed'):
+                    proof.validate(ROOT, self.catalog)
 
     def test_update_version_uuid_and_key(self):
         self.assertEqual(release.validate_previous(self.previous, self.app, KEY)['previous_version'], '0.1.20')

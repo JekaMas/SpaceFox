@@ -59,6 +59,23 @@ import Toybox.WatchUi;
     Test.assert(app.feed instanceof NativeCache&&!view.bootstrapPending&&view.admissionPending&&view.fitnessTimer==null);
     view.onHide();logger.debug("B1_ACTUAL_INITIAL cache_before_frame=false cache_after_frame=true");return true;
 }
+// Switching a configured source takes the same strict-restore path as a cold
+// cache, but begins with an existing renderer and must release it until done.
+(:test,:typecheck(false)) function peerSourceChangeDefersRenderer021(logger) {
+    Application.Storage.clearValues();
+    var clock=new B1Clock();var view=new SpaceFoxView(clock,new ScheduleState(null,"empty"));
+    var app=new SpaceFoxApp();app.view=view;app.feed=new NativeCache("https://fixture.invalid/old-source",null);
+    app.batchingForeground=true;view.cancelAdmission=app.method(:cancelWork);
+    var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();
+    view.onShow();view.onLayout(dc);Test.assert(view.renderer!=null);
+    NativeForegroundApp.reload(app);
+    Test.assertMessage(app.restorePending&&view.admissionPending&&view.renderer==null,"source switch must not rebuild renderer during strict restore");
+    var before=clock.reads;view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);
+    Test.assert(clock.reads>before&&view.renderer==null);
+    var steps=0;while(app.restorePending){NativeForegroundApp.restoreStep(app);steps+=1;Test.assert(steps<20);}
+    Test.assert(!view.admissionPending);view.onLayout(dc);Test.assert(view.renderer!=null);
+    view.onHide();logger.debug("PEER_SOURCE_CHANGE restore_pending=true renderer_deferred=true clock_visible=true rebind=true");return true;
+}
 (:test,:typecheck(false)) function b1ClockAfterDrawingFailure(logger) {
     var clock=new B1Clock();var view=new SpaceFoxView(clock,new ScheduleState(null,"empty"));
     view.renderer=new B1BrokenDrawing();var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();

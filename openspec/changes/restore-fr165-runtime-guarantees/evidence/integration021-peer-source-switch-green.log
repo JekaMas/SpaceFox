@@ -1,0 +1,37 @@
+------------------------------------------------------------------------------
+Executing test peerSourceChangeDefersRenderer021...
+DEBUG (14:39): PEER_SOURCE_CHANGE restore_pending=true renderer_deferred=true clock_visible=true rebind=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ActualColdViewDefersCache...
+DEBUG (14:39): B1_ACTUAL_INITIAL cache_before_frame=false cache_after_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockAfterLoaderFailure...
+DEBUG (14:39): B1_CLOCK loader_failure_time_date_continue=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ShortWakeResume...
+DEBUG (14:39): B1_SHORT_WAKE same_job=true resumed=true exact_seconds=true admitted=true slices=64
+PASS
+------------------------------------------------------------------------------
+Executing test b1AdmissionFitnessLifecycle...
+DEBUG (14:39): B1_FIELDS admission_stop_once=true pending_no_restart=true four_slots_resume=true low_hide_idempotent=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1GraphemeReleaseAndRebind...
+DEBUG (14:39): B1_GRAPHEME optional_release=true active_rebind=true en_ru_calendar=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+peerSourceChangeDefersRenderer021   PASS
+b1ActualColdViewDefersCache         PASS
+b1ClockAfterLoaderFailure           PASS
+b1ShortWakeResume                   PASS
+b1AdmissionFitnessLifecycle         PASS
+b1GraphemeReleaseAndRebind          PASS
+Ran 6 tests
+
+PASSED (passed=6, failed=0, errors=0)

@@ -25,5 +25,6 @@
 ## 0.1.21 integration and release
 
 - [x] Merge published 0.1.20 streaming/watchdog changes with B1 clock and lifecycle guarantees; verify affected boundaries and FR165 release-flags compilation.
-- [ ] Independently review and merge the integrated source to main.
+- [x] Independently review and repair the integrated source to source/integration GREEN.
+- [ ] Root judges the integrated source and merges it to main.
 - [ ] Freeze that accepted main and prepare a signed 0.1.21 candidate using the original 0.1.20 receipt and IQ; peer checks artifacts before publication.

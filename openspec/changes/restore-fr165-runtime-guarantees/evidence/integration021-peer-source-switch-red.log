@@ -1,0 +1,19 @@
+------------------------------------------------------------------------------
+Executing test peerSourceChangeDefersRenderer021...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED: source switch must not rebuild renderer during strict restore
+Stack: 
+  - API code 0x30000203 
+  - peerSourceChangeDefersRenderer021() at /source/watchface/runtime-b1-tests/ClockFirst021.mc:71 0x10003b09 
+  - evaluate_test_entries_0_to_30() at /task/cold/gen/006-B4432-00/source/UnitTests.mcgen:87 0x1000b5f8 
+  - runTest() at /task/cold/gen/006-B4432-00/source/UnitTests.mcgen:182 0x1000bbdb 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+peerSourceChangeDefersRenderer021   ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

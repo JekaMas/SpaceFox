@@ -125,7 +125,7 @@ module NativeForegroundApp {
             display(app,selected);
             if(selected.packet!=null&&app.view!=null){savePlan(selected,selected.packet.document["refreshPolicy"],app.view);}
         } finally {
-            if (rebuild) { app.view.prepareRenderer(); }
+            if (rebuild && !app.view.admissionPending) { app.view.prepareRenderer(); }
         }
         if (app.view != null && System.getDisplayMode() == System.DISPLAY_MODE_HIGH_POWER) { app.view.prepareVisual(); }
 

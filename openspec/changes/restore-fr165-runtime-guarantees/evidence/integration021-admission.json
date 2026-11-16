@@ -1,7 +1,7 @@
 {
   "scope": "b1-watchdog-021-current-source",
   "version": "0.1.21",
-  "nativeId": "f29b60ca",
+  "nativeId": "e0ee18e0",
   "baselineCatalog": {
     "path": "openspec/changes/restore-fr165-runtime-guarantees/evidence/integration021-base-catalog.json",
     "sha256": "26d0a8389e00a758996cf3ba69d8c6d4115a4c3a9948f7b1dc2143d7b3828664"
@@ -298,7 +298,7 @@
     "watchface/source/NativeBridgeFeed.mc": "f41b1b673a5e643b2683ec0df506a87f4bf597b4909b077f30a4e377a4a908c3",
     "watchface/source/NativeCache.mc": "26414f737b00bbe7f04b07930e650f38dc593ef780cd314903bdbc0be5f3ba46",
     "watchface/source/NativeFeed.mc": "e765605d0fad306fcf5732c24239180d9220124ef2d461fbda0586e6983e3e61",
-    "watchface/source/NativeForegroundApp.mc": "17c82e7ef81745b29c681829e1bd4cc9e461753c080854415a94fc2d906eb6e4",
+    "watchface/source/NativeForegroundApp.mc": "7ed0c678a4503e8be762fd65fb3f32a312873e830ab8346bd65026a739ae757f",
     "watchface/source/NativeForegroundCache.mc": "d8920ad5bfa8364e1c68bb24d6948ec8876038aa0bbd97e4655e037a752cefa5",
     "watchface/source/NativeImmutable.mc": "2f0e675ce8260889d2027dc742766a0c8804db5303cc5f0b2e36e6b241d2aa82",
     "watchface/source/NativeIncoming.mc": "6149acdf2045665e280c0351e0a1b22c50a1c8f59e09df4c4c9d73ba57e9186d",
@@ -322,7 +322,7 @@
     "watchface/source/WatchClock.mc": "e1cb5dd3ac35fb8bc52efad2ef85c7b909cb15fe7a04b4710302d4d34ddec100",
     "watchface/source/generated/LocaleGraphemes.mc": "5ad65d6328908a7f251cd5ddbac83244de9b51929c2c46cb746bfb168a4f6c80",
     "watchface/source/generated/NativeAssets.mc": "0deebecafc34dc9f27a4756c905b3685648984a238f9d4bc5f7c2efe15c1df7a",
-    "watchface/source/generated/NativeVersion.mc": "9d0ed4040d0953c7cd17bb440128bf21288c4ea707786f82a8c26cc93f4f871a",
+    "watchface/source/generated/NativeVersion.mc": "21b1a64fc4731dbbeca043817fe7bdbf4031fbfdc239e857f1e40fe175695904",
     "watchface/source/generated/SceneStrings.mc": "dd8a910b53d2493ec8760e0148186c9535c05a5e0644ae5b6e6eccb6dd651109"
   },
   "testInputs": {
@@ -572,7 +572,7 @@
     "tests/native_scene_diagnostics/profile-b/sources/e99d085ca13f4b522f7ec0944ccdd47535575f506f9f515a52529c2c132b05eb.json": "e99d085ca13f4b522f7ec0944ccdd47535575f506f9f515a52529c2c132b05eb",
     "tests/native_scene_diagnostics/profile-b/wire3/catalogs/7ee79ac57dc9c9c0b51b9fc0969f46534c5c6cf6bacae53eda0420df81a848b4.json": "7ee79ac57dc9c9c0b51b9fc0969f46534c5c6cf6bacae53eda0420df81a848b4",
     "tests/native_scene_diagnostics/profile-b/wire3/catalogs/7ee79ac57dc9c9c0b51b9fc0969f46534c5c6cf6bacae53eda0420df81a848b4.json.txt": "7ee79ac57dc9c9c0b51b9fc0969f46534c5c6cf6bacae53eda0420df81a848b4",
-    "watchface/runtime-b1-tests/ClockFirst021.mc": "9ea2032b488ac126c6b0eaaff0ba43722a590ba9fc1d7f2efbc7ed003b564239",
+    "watchface/runtime-b1-tests/ClockFirst021.mc": "1db392482f55ab7eef90727e1b36894a2df0eb9382b724b3a95a39e21ed506d8",
     "watchface/runtime-b1-tests/ColdAcquisition.mc": "8f7ce04dab8e2b1f80508c36c9f09a828951d7c259462af6fea496164652e677",
     "watchface/runtime-b1-tests/CurrentJobs.mc": "c9eb7caaab7e1e51a4f2e4a408e47fcb0d570cd0a394f4f81638649e431381ac",
     "watchface/runtime-b1-tests/DecodePending.mc": "2b064baa1f3359be999408ec91a76888442df672409b74fcc41b0a7a817d762a",
@@ -582,11 +582,11 @@
     "watchface/runtime-b1-tests/ProviderIcon.mc": "98e7dbf852ff29c92f35de81227b743270acb9b390e9eecec3ce735dc77ac5e4"
   },
   "owners": {
-    "tests/test_b1_021_admission.py": "0ab423fed9d149864a16871d72ef8e5e7d0b4849a26ba9336f761a681308821e",
+    "tests/test_b1_021_admission.py": "e0e5257a027dd20d28a9823b128c8c115d61b9ebc8f8bce32adabcf79ad0ad7e",
     "tests/test_release_020_predecessor.py": "32bb0a3a96436830e4dbe62bf5b1b10d9ba8bb823159c45de15cdc7f7a7efd7b",
     "tools/b1_cold_probe.py": "ae8eadd9ad34a116933828874eb10cc6f3f922f3a89a0728944a7d39716f3d30",
     "tools/generate_native_version.py": "7f209587d4e3ebbcc6c56dd6e89f6994c33cb23bdc4c642cb38e615074f38600",
-    "tools/native_b1_021_qualification.py": "d6cb61f72ca5a107365a965036309283fb7d38585e94aa0969c1b37bff85cb55",
+    "tools/native_b1_021_qualification.py": "95715603277bfba13745a99cfa33718f3adde1c482751e00d1787ea6cd850c18",
     "tools/native_language_policy.py": "d150ad564da1fad9b5270cf2efe8cc52f51b35d1bad4e05f4b8f77dd02ea36ba",
     "tools/release.py": "af94ba171fba14e858e56defd7e6c459649429c76095a6c5b67bb6094e27a403",
     "tools/run_native_tests.py": "ca8a0bc30d71f3a901a8e8e03fadffe28e1544514c35b7eda695f30c3b2e0003"
@@ -608,6 +608,22 @@
       "path": "openspec/changes/restore-fr165-runtime-guarantees/evidence/integration021-stock-observation.json",
       "sha256": "7f6cd0037b4a65a15d460ba5b9931b434d99dc14168d308463ba1d4e06940796"
     },
+    "peerRepair": {
+      "path": "openspec/changes/restore-fr165-runtime-guarantees/evidence/integration021-peer-source-switch-green.log",
+      "sha256": "0b9801d4c7b7028f052ac344eb92c46809dcaee1521161b646e74a51dfb6f1ba"
+    },
+    "peerRed": {
+      "path": "openspec/changes/restore-fr165-runtime-guarantees/evidence/integration021-peer-source-switch-red.log",
+      "sha256": "be8f917520812051f72a037591b9986a20581a6917a2a5373b26090a89ddb832"
+    },
+    "peerReview": {
+      "path": "openspec/changes/restore-fr165-runtime-guarantees/evidence/INTEGRATION-021-PEER.md",
+      "sha256": "abb5dc3fd7ed0da40e86f1a0d5214568e19fa2f0a1e3e00a9296c8e5dba9ef1a"
+    },
+    "peerPrimary": {
+      "path": "openspec/changes/restore-fr165-runtime-guarantees/evidence/integration021-peer-primary-receipt.json",
+      "sha256": "e4eccbac0ca956b0a5d5a258edf8814d4e5ee34f0cfbee2b0a188d06f6b51010"
+    },
     "b1peer": {
       "path": "openspec/changes/restore-fr165-runtime-guarantees/evidence/PEER-B1.md",
       "sha256": "960db4e7fd5618059e6ae2fbfa37b13f083fd2baed26315d4e74b41c45e7fb28"
@@ -620,5 +636,6 @@
   "stockImage": {
     "path": "openspec/changes/restore-fr165-runtime-guarantees/evidence/integration021-stock-frame.png",
     "sha256": "26e1826678ccad91e003c20e04563bdfcebde92ddfa8b7463a7afa20cd98d788"
-  }
+  },
+  "authorNativeId": "f29b60ca"
 }
