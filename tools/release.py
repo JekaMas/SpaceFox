@@ -101,6 +101,14 @@ def source_state(root: Path) -> dict:
                           "openspec/changes/add-launch-reminders/tasks.md",
                           "openspec/changes/add-launch-reminders/specs/launch-reminders/spec.md",
                           "docs/LAUNCH_REMINDERS.md"})
+    if proof is not None and "b3Runtime023Proof" in proof:
+        b3_path = proof["b3Runtime023Proof"]["path"]
+        require(b3_path in paths, "B3 proof must be tracked")
+        b3 = json.loads((root / b3_path).read_text())
+        admission.add(b3_path)
+        admission.update(ref["path"] for ref in b3["priorSnapshots"].values())
+        admission.update(item["log"]["path"] for item in b3["sdkCases"])
+        admission.update(b3["currentOwners"])
     if proof is not None and "b2Runtime022Proof" in proof:
         b2_path = proof["b2Runtime022Proof"]["path"]
         require(b2_path in paths, "B2 proof must be tracked")

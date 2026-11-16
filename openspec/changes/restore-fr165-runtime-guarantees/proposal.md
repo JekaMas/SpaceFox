@@ -4,7 +4,7 @@ The owner reports an IQ! after 5–10 seconds on Forerunner 165 with 0.1.18, wit
 
 ## What Changes
 
-Restore P1–P7 in the root contract across initial display, countdown, validated facts, coherent replacement, acquisition, optional rendering and power transitions. B2 owns P4–P6 after the accepted B1 software work; B3 separately owns P8. Retain all eight full acceptance criteria and normal visual design. Software observations and GitHub test distribution do not establish physical acceptance.
+Restore P1–P8 in the root contract across initial display, countdown, validated facts, coherent replacement, acquisition, optional rendering and power transitions. B2 owns P4–P6 after the accepted B1 software work; B3 owns P8 quiet reminders and coherent selected-launch scheduling. Retain all eight full acceptance criteria and normal visual design. Software observations and GitHub test distribution do not establish physical acceptance.
 
 ## Capabilities
 

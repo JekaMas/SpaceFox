@@ -16,9 +16,13 @@
 - [x] After root froze accepted main, the same author prepared the full signed 0.1.22 candidate and published the authorized GitHub test release.
 - [ ] Exact candidate physical FR165 observation needed to establish physical P4–P6 acceptance.
 
-## Later batch
+## B3 — P8 quiet reminders
 
-- [ ] B3 P8 quiet reminder acceptance.
+- [x] Implement and self-verify the whole selected-launch reminder batch against the criterion map and focused current evidence.
+- [ ] One independent peer reviews and repairs the batch through software GREEN; root judges and merges.
+- [ ] After root freezes accepted main, the same author prepares and publishes the full signed 0.1.23 GitHub test release.
+- [ ] Physical FR165 notification delivery, vibration and scheduling observation remains open.
+
 
 ## Authorized 0.1.19 test distribution
 

@@ -1,0 +1,24 @@
+[
+  {
+    "case": "b3StorageSeed",
+    "simulatorPid": 676,
+    "ready": true,
+    "before": {},
+    "after": {
+      "B3.DAT": "0785448b36a3b8b067381c2be43be18a3045dbe965fe0f8de084d5841f3e7515",
+      "B3.IDX": "740499de1c144769c3156bcf78fbaf0c1be07ad170587074a45f25425db1dbe0",
+      "B3.IMT": "fee5208c67144877cb0d01c5758147a4c95ac724939ff59fba37e3bf30ff066d"
+    }
+  },
+  {
+    "case": "b3StorageReopen",
+    "simulatorPid": 761,
+    "ready": true,
+    "before": {
+      "B3.DAT": "0785448b36a3b8b067381c2be43be18a3045dbe965fe0f8de084d5841f3e7515",
+      "B3.IDX": "740499de1c144769c3156bcf78fbaf0c1be07ad170587074a45f25425db1dbe0",
+      "B3.IMT": "fee5208c67144877cb0d01c5758147a4c95ac724939ff59fba37e3bf30ff066d"
+    },
+    "after": {}
+  }
+]

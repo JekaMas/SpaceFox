@@ -21,3 +21,8 @@ The isolated live SDK RED mapped the foreground background-data callback to curr
 ## Provider icon budget
 
 A user complication's icon is optional and provider-controlled. Admit only a managed `Graphics.BitmapReference` with positive dimensions no larger than 96×96; retain normal scaled display for admitted icons. This bounds four full-color icon payloads to at most 147,456 bytes under the four-byte pixel estimate. A larger or unsupported icon uses a neutral marker; it does not change the selected field, value, unit or color. Null icon retains the existing absent-icon presentation. Width/height lookup and rendering remain guarded, and icon references remain evictable under the documented SDK graphics-pool contract. The limit is tied to the FR165 conditional working-set margin in `evidence/GRAPHICS-LEDGER.md`, not a claim about the undocumented native allocator or a universal physical memory guarantee.
+
+
+## B3 reminder selection
+
+Reminders are off by default and use the shared background scheduler. The selected launch and its accepted, original source age must remain coherent across retained-upcoming merges and local rollover. A bounded ordered reminder projection must follow the same selection and retention boundaries as the view without per-frame storage. Each launch/target slot remains consumed at most once; quiet/unknown states consume or suppress without catch-up. Preserve source precision, window and freshness checks. An API return is not physical notification or vibration evidence. See `evidence/B3-MAP.md` for the complete finite criterion and retained/current proof map.

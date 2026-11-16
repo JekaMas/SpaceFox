@@ -37,6 +37,12 @@
       "capability": "runtime",
       "title": "Selected facts replace atomically",
       "fingerprint": "76c8f2a351e41a77780fc5c1b6a7448b68a3bd51aca1413abf07f70a6574d113"
+    },
+    {
+      "id": "B3R1",
+      "capability": "runtime",
+      "title": "Selected-launch reminders remain quiet and deduplicated",
+      "fingerprint": "2ff37a045a7892c5705be10b1853645f69af248900b16802cb1c8603b574d3c3"
     }
   ],
   "properties": [
@@ -188,6 +194,34 @@
         "watchface/source/**",
         "watchface/runtime-b2-tests/**",
         "tests/fixtures/watch_refresh_cache/**"
+      ]
+    },
+    {
+      "id": "B3R1.P1",
+      "requirement_id": "B3R1",
+      "scenarios": [
+        "Quiet or unknown state"
+      ],
+      "statement": "Quiet-safe, source-qualified selected reminder with durable deduplication",
+      "owner": "watchface/source/LaunchReminder.mc",
+      "oracle": "Strict named native SDK table with controlled clock and notification sink; actual quiet-provider observation is separate. No physical delivery claim.",
+      "source_globs": [
+        "watchface/source/**",
+        "watchface/runtime-b3-tests/**"
+      ]
+    },
+    {
+      "id": "B3R1.P2",
+      "requirement_id": "B3R1",
+      "scenarios": [
+        "Selected launch changes or resumes"
+      ],
+      "statement": "Quiet-safe, source-qualified selected reminder with durable deduplication",
+      "owner": "watchface/source/LaunchReminder.mc",
+      "oracle": "Strict named native SDK table with controlled clock and notification sink; actual quiet-provider observation is separate. No physical delivery claim.",
+      "source_globs": [
+        "watchface/source/**",
+        "watchface/runtime-b3-tests/**"
       ]
     }
   ],
@@ -851,6 +885,151 @@
       },
       "distinct_reason": "Replacement fails or is interrupted uses this scoped table alongside other property edges; evidence remains test-host only.",
       "planning_note": "Command strictly checks retained named SDK receipt; the shared graph has no Monkey C typed runner, so this edge is not claimed as a shared-runner behavioral pass."
+    },
+    {
+      "id": "B3R1.P1.b3QuietProvider",
+      "property_id": "B3R1.P1",
+      "polarity": "positive",
+      "scenario": "Quiet or unknown state",
+      "scenario_fingerprint": "c756bbda23f00d99b530a89a71fe35a39419adce436e57fa5ccc4bbfebad5988",
+      "setup": "Isolated FR165 SDK host, real admission or controlled technical time, and the named case.",
+      "observable": "Named complete native SDK table exercises the stated source boundary.",
+      "red_expectation": "Reject missing results, errors, duplicate dispatch or unqualified reminders.",
+      "green_expectation": "The named complete SDK table passes within its stated boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b3-tests/B3Tests.mc"
+      ],
+      "test_id": "b3QuietProvider",
+      "command_id": "b3-b3QuietProvider",
+      "state": "planned",
+      "source_path": "watchface/runtime-b3-tests/B3Tests.mc",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "Notification delivery and controlled clock where applicable",
+        "allowed_proof": "Production selection and consumption under explicit inputs",
+        "forbidden_claims": [
+          "Physical delivery, physical device restart, live scheduler or simulator reinstall"
+        ]
+      },
+      "distinct_reason": "This named table checks a specific selection, quiet, source or lifecycle boundary.",
+      "planning_note": "The command parses the retained named SDK table; the shared graph has no typed Monkey C runner and this edge is not a shared-runner behavioral pass."
+    },
+    {
+      "id": "B3R1.P1.b3RescheduleAndQuiet",
+      "property_id": "B3R1.P1",
+      "polarity": "negative",
+      "scenario": "Quiet or unknown state",
+      "scenario_fingerprint": "c756bbda23f00d99b530a89a71fe35a39419adce436e57fa5ccc4bbfebad5988",
+      "setup": "Isolated FR165 SDK host, real admission or controlled technical time, and the named case.",
+      "observable": "Named complete native SDK table exercises the stated source boundary.",
+      "red_expectation": "Reject missing results, errors, duplicate dispatch or unqualified reminders.",
+      "green_expectation": "The named complete SDK table passes within its stated boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b3-tests/B3Tests.mc"
+      ],
+      "test_id": "b3RescheduleAndQuiet",
+      "command_id": "b3-b3RescheduleAndQuiet",
+      "state": "planned",
+      "source_path": "watchface/runtime-b3-tests/B3Tests.mc",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "Notification delivery and controlled clock where applicable",
+        "allowed_proof": "Production selection and consumption under explicit inputs",
+        "forbidden_claims": [
+          "Physical delivery, physical device restart, live scheduler or simulator reinstall"
+        ]
+      },
+      "distinct_reason": "This named table checks a specific selection, quiet, source or lifecycle boundary.",
+      "planning_note": "The command parses the retained named SDK table; the shared graph has no typed Monkey C runner and this edge is not a shared-runner behavioral pass."
+    },
+    {
+      "id": "B3R1.P2.b3QueueAndRollover",
+      "property_id": "B3R1.P2",
+      "polarity": "positive",
+      "scenario": "Selected launch changes or resumes",
+      "scenario_fingerprint": "5dad50880439d7e0452d39e118375eea465fa813cc59318f1c6481aa16f824d2",
+      "setup": "Isolated FR165 SDK host, real admission or controlled technical time, and the named case.",
+      "observable": "Named complete native SDK table exercises the stated source boundary.",
+      "red_expectation": "Reject missing results, errors, duplicate dispatch or unqualified reminders.",
+      "green_expectation": "The named complete SDK table passes within its stated boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b3-tests/B3Tests.mc"
+      ],
+      "test_id": "b3QueueAndRollover",
+      "command_id": "b3-b3QueueAndRollover",
+      "state": "planned",
+      "source_path": "watchface/runtime-b3-tests/B3Tests.mc",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "Notification delivery and controlled clock where applicable",
+        "allowed_proof": "Production selection and consumption under explicit inputs",
+        "forbidden_claims": [
+          "Physical delivery, physical device restart, live scheduler or simulator reinstall"
+        ]
+      },
+      "distinct_reason": "This named table checks a specific selection, quiet, source or lifecycle boundary.",
+      "planning_note": "The command parses the retained named SDK table; the shared graph has no typed Monkey C runner and this edge is not a shared-runner behavioral pass."
+    },
+    {
+      "id": "B3R1.P2.b3AdmissionAndUnknown",
+      "property_id": "B3R1.P2",
+      "polarity": "negative",
+      "scenario": "Selected launch changes or resumes",
+      "scenario_fingerprint": "5dad50880439d7e0452d39e118375eea465fa813cc59318f1c6481aa16f824d2",
+      "setup": "Isolated FR165 SDK host, real admission or controlled technical time, and the named case.",
+      "observable": "Named complete native SDK table exercises the stated source boundary.",
+      "red_expectation": "Reject missing results, errors, duplicate dispatch or unqualified reminders.",
+      "green_expectation": "The named complete SDK table passes within its stated boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b3-tests/B3Tests.mc"
+      ],
+      "test_id": "b3AdmissionAndUnknown",
+      "command_id": "b3-b3AdmissionAndUnknown",
+      "state": "planned",
+      "source_path": "watchface/runtime-b3-tests/B3Tests.mc",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "Notification delivery and controlled clock where applicable",
+        "allowed_proof": "Production selection and consumption under explicit inputs",
+        "forbidden_claims": [
+          "Physical delivery, physical device restart, live scheduler or simulator reinstall"
+        ]
+      },
+      "distinct_reason": "This named table checks a specific selection, quiet, source or lifecycle boundary.",
+      "planning_note": "The command parses the retained named SDK table; the shared graph has no typed Monkey C runner and this edge is not a shared-runner behavioral pass."
+    },
+    {
+      "id": "B3R1.P2.b3OrdinaryReopen",
+      "property_id": "B3R1.P2",
+      "polarity": "positive",
+      "scenario": "Selected launch changes or resumes",
+      "scenario_fingerprint": "5dad50880439d7e0452d39e118375eea465fa813cc59318f1c6481aa16f824d2",
+      "setup": "Isolated FR165 SDK host, real admission or controlled technical time, and the named case.",
+      "observable": "Named complete native SDK table exercises the stated source boundary.",
+      "red_expectation": "Reject missing results, errors, duplicate dispatch or unqualified reminders.",
+      "green_expectation": "The named complete SDK table passes within its stated boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b3-tests/B3Tests.mc"
+      ],
+      "test_id": "b3OrdinaryReopen",
+      "command_id": "b3-b3OrdinaryReopen",
+      "state": "planned",
+      "source_path": "watchface/runtime-b3-tests/B3Tests.mc",
+      "substitution": {
+        "classification": "APPROVED_TEST_DOUBLE",
+        "owner_replaced": "Notification delivery and controlled clock where applicable",
+        "allowed_proof": "Production selection and consumption under explicit inputs",
+        "forbidden_claims": [
+          "Physical delivery, physical device restart, live scheduler or simulator reinstall"
+        ]
+      },
+      "distinct_reason": "This named table checks a specific selection, quiet, source or lifecycle boundary.",
+      "planning_note": "The command parses the retained named SDK table; the shared graph has no typed Monkey C runner and this edge is not a shared-runner behavioral pass."
     }
   ],
   "commands": [
@@ -1040,6 +1219,96 @@
         "b2CrossVmObserveRestored"
       ],
       "notes": "Strictly parses retained named SDK table; does not execute SDK or establish physical-device behavior."
+    },
+    {
+      "id": "b3-b3QuietProvider",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "tools.check_b3_evidence",
+        "b3QuietProvider"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "expected_markers": [
+        "b3QuietProvider"
+      ],
+      "notes": "Strictly parses the retained SDK table; does not run the SDK or establish physical-device behavior."
+    },
+    {
+      "id": "b3-b3RescheduleAndQuiet",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "tools.check_b3_evidence",
+        "b3RescheduleAndQuiet"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "expected_markers": [
+        "b3RescheduleAndQuiet"
+      ],
+      "notes": "Strictly parses the retained SDK table; does not run the SDK or establish physical-device behavior."
+    },
+    {
+      "id": "b3-b3QueueAndRollover",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "tools.check_b3_evidence",
+        "b3QueueAndRollover"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "expected_markers": [
+        "b3QueueAndRollover"
+      ],
+      "notes": "Strictly parses the retained SDK table; does not run the SDK or establish physical-device behavior."
+    },
+    {
+      "id": "b3-b3AdmissionAndUnknown",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "tools.check_b3_evidence",
+        "b3AdmissionAndUnknown"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "expected_markers": [
+        "b3AdmissionAndUnknown"
+      ],
+      "notes": "Strictly parses the retained SDK table; does not run the SDK or establish physical-device behavior."
+    },
+    {
+      "id": "b3-b3OrdinaryReopen",
+      "runner": "command",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "tools.check_b3_evidence",
+        "b3OrdinaryReopen"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 30,
+      "authority": "local",
+      "expected_markers": [
+        "b3OrdinaryReopen"
+      ],
+      "notes": "Strictly parses the retained SDK table; does not run the SDK or establish physical-device behavior."
     }
   ]
 }

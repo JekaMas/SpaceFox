@@ -24,6 +24,9 @@ class SceneContext {
     var freshnessTarget as Long or Null = null;
     var freshnessPolicy as Dictionary or Null = null;
     var sourcePrecision as String = "";var pointText as Array or Null=null;var orderingUtc as Long or Null=null;
+    // True only when the admitted source established pending status, actionable
+    // precision and window bounds containing the nominal target.
+    var reminderEligible as Boolean=false;
     function initialize(data as Dictionary<String, Object or Null>) {
         launchId = text(data, "id");
         if(data.hasKey("date")&&data["date"] instanceof String){date=data["date"] as String;}
@@ -42,6 +45,7 @@ class SceneContext {
         var target = data.hasKey("target") ? data["target"] as Object or Null : null;
         var precision = text(data, "precision");
         schedule = new ScheduleState(target, precision);sourcePrecision=precision;
+        reminderEligible=flag(data,"reminderEligible");
         if(data["pointText"] instanceof Array){pointText=data["pointText"] as Array;}
         var ordering=data["orderingUtc"];if(ordering instanceof Number||ordering instanceof Long){orderingUtc=ordering.toLong();}
         var deadline=data["retentionDeadline"];
@@ -51,7 +55,7 @@ class SceneContext {
         if(data["freshnessPolicy"] instanceof Dictionary){freshnessPolicy=data["freshnessPolicy"] as Dictionary;}
     }
     (:typecheck(false)) function cacheRow(){
-        return {"id"=>launchId,"rocket"=>rocket,"operator"=>operator,"operatorShort"=>operatorShort,"purpose"=>purpose,"site"=>site,"modelId"=>modelId,"operatorId"=>operatorId,"siteId"=>siteId,"pointText"=>pointText,"target"=>retentionTarget,"precision"=>sourcePrecision,"date"=>date,"retentionDeadline"=>retentionDeadline,"orderingUtc"=>orderingUtc,"sourceValidated"=>sourceValidated,"freshnessPolicy"=>freshnessPolicy,"rescheduled"=>rescheduled,"stale"=>stale,"sourceHold"=>sourceHold};
+        return {"id"=>launchId,"rocket"=>rocket,"operator"=>operator,"operatorShort"=>operatorShort,"purpose"=>purpose,"site"=>site,"modelId"=>modelId,"operatorId"=>operatorId,"siteId"=>siteId,"pointText"=>pointText,"target"=>retentionTarget,"precision"=>sourcePrecision,"date"=>date,"retentionDeadline"=>retentionDeadline,"orderingUtc"=>orderingUtc,"sourceValidated"=>sourceValidated,"freshnessPolicy"=>freshnessPolicy,"rescheduled"=>rescheduled,"stale"=>stale,"sourceHold"=>sourceHold,"reminderEligible"=>reminderEligible};
     }
     // Same source-age rule as accepted feed, applied to whichever launch is
     // displayed after local selection. It performs arithmetic only.
