@@ -1,6 +1,6 @@
 # Independent combined-source review
 
-Status: qualification and clean-source gates pending. No production cohort, publication, physical watch, Store installation or power result is asserted here.
+Status: independent software review GREEN at the stated boundaries; root judgment and the production cohort remain pending. No production cohort, publication, physical watch, Store installation or power result is asserted here.
 
 The reviewed merge combines performance parent `f955c6022ddabeb0153b71006ae1fa4bba4ad179` with the exact fetched runtime parent `c222b705f2ad7deff86e6d49f39119baa0748f3f`, including B2 and B3. The version is 0.1.24; the observed published predecessor is 0.1.22, not unpublished 0.1.23. The 0.1.22 predecessor receipt and IQ were locally matched to the existing application UUID and signing public identity. The inherited WIP instruction to use 0.1.23 was superseded before the source freeze.
 
@@ -47,3 +47,5 @@ Eight affected B1/B2/B3 cases passed on a newly compiled packed-source diagnosti
 | CLEAN-01 | Current raw/projection restore preserves accepted seals and refuses resealed identity/time tamper and corruption; current async restore test retained. |
 
 The original first reds and reports remain in A/B/C/D and integration evidence. Full private graph execution was not available or claimed; selected actual graph and receipt joins retain their precise boundaries. Native cohort, source publication, Garmin Store acceptance, physical timing/power and total graphics-pool measurements are separate root/external gates.
+
+The exact clean checkpoint `320afee04eb2369574c4c3293b0abddc85551cf5` materialized 7,320 selected inputs in isolation and requalified en, ru, de, fr and es. Thirty-two selected host tests passed, as did the current production-guard positive and refusals, generated-source checks, and targeted Ruff checks. Strict OpenSpec validation passed for `spacefox-watchface`. The separately inherited `restore-fr165-runtime-guarantees` strict check reports its existing long-requirement-text warning; its scenarios and accepted source were preserved. `git diff --check` reports preserved incoming/raw evidence and authenticated snapshots with original whitespace; changed production code is clean. Peer binding is `peer-native-024.json`; its native and combined proof hashes bind the source reviewed here.
