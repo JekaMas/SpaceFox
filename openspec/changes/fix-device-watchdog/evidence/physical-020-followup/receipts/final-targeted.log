@@ -1,0 +1,52 @@
+SF_WAKE initial build=0.1.20 id=d8265852 now=1794840320 registered=none last=1794838825
+SF_STORE sf.commit type=dict v=6 generation=1
+SF_STORE sf.recovery absent
+SF_STORE sf.incoming.feed type=dict v=2 sequence=1
+SF_STORE sf.batch.head type=dict pending=false
+SF_STORE sf.batch.pending type=dict pending=false
+SF_STORE sf.incoming.feed.deferred absent
+SF_STORE sf.incoming.feed.rejected absent
+SF_STORE sf.attempt type=dict utc=1794838525
+SF_VIEW mode=HIGH pending=true
+------------------------------------------------------------------------------
+Executing test b1ShortWakeResume...
+SF_WAKE show build=0.1.20 id=d8265852 now=1794840320 registered=none last=1794838825
+SF_VIEW mode=HIGH pending=false
+SF_FG admission_begin
+SF_VIEW mode=LOW pending=true
+DEBUG (14:45): B1_PENDING_LOW_DURING_PARSE before=160856 after=161024
+SF_VIEW mode=HIGH pending=true
+SF_FG admission_accepted
+SF_WAKE registration_ok pending=true next=1794840321
+DEBUG (14:45): B1_SHORT_WAKE same_job=true resumed=true exact_seconds=true admitted=true slices=67
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1ShortWakeResume                   PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)
+SF_WAKE initial build=0.1.20 id=d8265852 now=1794840335 registered=none last=1794838825
+SF_STORE sf.commit type=dict v=6 generation=1
+SF_STORE sf.recovery absent
+SF_STORE sf.incoming.feed type=dict v=2 sequence=1
+SF_STORE sf.batch.head type=dict pending=false
+SF_STORE sf.batch.pending type=dict pending=false
+SF_STORE sf.incoming.feed.deferred absent
+SF_STORE sf.incoming.feed.rejected absent
+SF_STORE sf.attempt type=dict utc=1794838525
+SF_VIEW mode=HIGH pending=true
+------------------------------------------------------------------------------
+Executing test b1PendingLowComposition...
+DEBUG (14:45): B1_PENDING_LOW EN_RU=true retained_point=true cold_map=true temporary_fonts_released=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1PendingLowComposition             PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

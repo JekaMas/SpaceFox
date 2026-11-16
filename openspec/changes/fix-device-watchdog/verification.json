@@ -41,7 +41,7 @@
     {
       "id": "WD-ADMISSION-PROGRESSION",
       "test": "stock/monkey36.jungle rendered-warm marker flip -> onBackgroundData/onSettingsChanged; b1InspectImmediateReplacement",
-      "status": "passed",
+      "status": "retained_prior_source",
       "boundary": "preseeded distinct feed, actual onBackgroundData and later HIGH RU-ready frame; durable generation/token in inspect36.log",
       "receipt": "evidence/receipts/warm36.log"
     },
@@ -55,14 +55,14 @@
     {
       "id": "WD-BG-AND-RENDER",
       "test": "b1BatchCorruption; b1ColdAcquisition (NativeSfrBuild through closure)",
-      "status": "passed",
+      "status": "partially_invalidated",
       "boundary": "captured 27-object batch/closure and SFR real callback samples; reminder whole wake separately fr165m-reminder.log",
       "receipt": "evidence/receipts/fr165m-watchdog-batch.log"
     },
     {
       "id": "WD-FR165M-PEAK",
       "test": "stock/monkey-production.jungle Production39 + b1SeedImmediateReplacement/b1InspectImmediateReplacement; stock39/en39 retained-frame heap sample",
-      "status": "observed_sample_only",
+      "status": "retained_prior_source",
       "boundary": "unmodified production source and resources accepted distinct generation; stock39 screenshot sampled 100.1/123.8 KiB, not an intra-callback peak or device proof",
       "receipt": "evidence/receipts/inspect39.log"
     },
@@ -83,7 +83,7 @@
     {
       "id": "WD-DEVICE",
       "test": "physical FR165 Music cold start, reopen and 15-minute ordinary use",
-      "status": "not_observed",
+      "status": "reported_failure",
       "boundary": "exact diagnostic candidate only"
     },
     {
@@ -96,7 +96,7 @@
     {
       "id": "WD-RENDER-LIFECYCLE",
       "test": "scene/incident/restore selectors",
-      "status": "passed_after_repair",
+      "status": "partially_invalidated",
       "receipt": "evidence/receipts/fr165m-related-repair.log",
       "boundary": "ten retained passes in fr165m-related-initial.log plus one rerun after valid-marker fixture correction"
     },
@@ -124,14 +124,14 @@
     {
       "id": "WD-PEER",
       "test": "peerCrossRecordAdmission + independent source/evidence/candidate review",
-      "status": "passed_software_only",
+      "status": "retained_prior_source",
       "boundary": "independent peer-owned review and repair; one native selector with nine cross-record subcases; retained greens reconciled; device and exact peak remain unobserved",
       "receipt": "evidence/PEER.md"
     },
     {
       "id": "WD-CANDIDATE",
       "test": "production identity labeled FR165M diagnostic build",
-      "status": "passed_software_only",
+      "status": "retained_prior_source",
       "boundary": "signed exact FR165M candidate, matching debug and empty-cache simulator fallback; physical update/continuity not observed",
       "receipt": "evidence/candidate.json"
     },
@@ -148,6 +148,48 @@
       "status": "passed_software_only",
       "receipt": "evidence/release-020/package-summary.json",
       "boundary": "42 profiles/91 signed programs; 316 compiler inputs match built source; physical and publication remain unobserved"
+    },
+    {
+      "id": "WD-020-LIVE-BOOTSTRAP",
+      "test": "fresh FR165M SDK service/foreground observer, real HTTPS",
+      "status": "passed_sdk_only",
+      "receipt": "evidence/physical-020-followup/receipts/bootstrap-and-sfr-first.log",
+      "boundary": "fresh UUID, empty app storage, automatic temporal dispatch, real feed/catalog, foreground acceptance; not physical phone delivery"
+    },
+    {
+      "id": "WD-020-BATCH-RESUME",
+      "test": "b1NextBackgroundResumesCatalogBatch and SDK temporal-event continuation",
+      "status": "passed_sdk_only",
+      "receipt": "evidence/physical-020-followup/receipts/batch-resume.log",
+      "boundary": "actual captured current closure, polling not due, final verification; see resume.log for live service event"
+    },
+    {
+      "id": "WD-020-LOW-DRAW",
+      "test": "b1PendingLowComposition; b1ShortWakeResume",
+      "status": "passed_sdk_test_only",
+      "receipt": "evidence/physical-020-followup/receipts/final-targeted.log",
+      "boundary": "EN/RU pending resources and same-job LOW/wake injection; not physical display"
+    },
+    {
+      "id": "WD-020-SFR-LOW-WAKE",
+      "test": "split-callback injected LOW and wake during SFR build",
+      "status": "passed_sdk_injected",
+      "receipt": "evidence/physical-020-followup/receipts/lifecycle-paged.log",
+      "boundary": "current live closure, same app owner and real decoder; simulated callbacks, not global SDK LOW or physical sleep"
+    },
+    {
+      "id": "WD-020-SFR-STOCK",
+      "test": "stock view real closure complete with final resource/code lifetime",
+      "status": "passed_sdk_only",
+      "receipt": "evidence/physical-020-followup/stock-final.png",
+      "boundary": "stock production view after final SFR paging, same live closure, detailed rocket/map/flag and site point; snapshot not exact heap peak or physical device"
+    },
+    {
+      "id": "WD-020-PHYSICAL-DATA",
+      "test": "owner reported missing refresh, site, countdown and LOW composition",
+      "status": "reported_failure",
+      "receipt": "evidence/physical-020-followup/OBSERVATIONS.md",
+      "boundary": "reported 0.1.20; encrypted on-watch storage prevents external diagnosis; physical trace and acceptance pending"
     }
   ],
   "software_diagnostic_gate": "passed"

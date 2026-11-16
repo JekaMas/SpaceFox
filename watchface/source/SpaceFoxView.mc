@@ -62,27 +62,27 @@ class SpaceFoxView extends WatchUi.WatchFace {
         transitionMode(_awake && mode == System.DISPLAY_MODE_HIGH_POWER ? NOT_LOW : LOW);
     }
     function stopForDisplayOff() as Void {
-        _mode=LOW;_resumePending=false;aodMinute=null;metricsMinute=null;
+        _mode=LOW;_resumePending=false;aodMinute=null;metricsMinute=null;restMask=null;if(renderer!=null){(renderer as SceneRenderer).releaseAod();}
         stopResume();stopAnimation();stopFitness();
         if(sceneLifecycle.job!=null||sfrBuild!=null||sfrTimer!=null){cancelSfrBuild();}
     }
     function displayMode() as Number {return _mode;}
     function transitionMode(next as Number) as Void {
         if (_mode == next) { return; }
-        _mode=next;aodMinute=null;metricsMinute=null;
+        _mode=next;aodMinute=null;metricsMinute=null;System.println("SF_VIEW mode="+(_mode==LOW?"LOW":"HIGH")+" pending="+admissionPending);
         if (_mode == LOW) { _resumePending=false;stopResume();stopAnimation();cancelSfrBuild();stopFitness();if(renderer!=null){(renderer as SceneRenderer).prepareAod();} }
-        else { _resumePending=true; }
+        else { restMask=null;if(renderer!=null){(renderer as SceneRenderer).releaseAod();}_resumePending=true; }
         WatchUi.requestUpdate();
     }
     function onShow() as Void {
-        _shown=true;refreshLocale();syncDisplayMode(System.getDisplayMode());
+        NativeForegroundApp.traceWake("show");_shown=true;refreshLocale();syncDisplayMode(System.getDisplayMode());
         if(_mode == NOT_LOW){_resumePending=true;WatchUi.requestUpdate();}
     }
     function resumeAfterAdmission() as Void {_resumePending=true;WatchUi.requestUpdate();}
     function stopResume() as Void {if(_resumeTimer!=null){_resumeTimer.stop();_resumeTimer=null;}}
     function resumeAfterFrame() as Void {
         _resumeTimer=null;if(!_shown||_mode!=NOT_LOW||System.getDisplayMode()!=System.DISPLAY_MODE_HIGH_POWER){return;}
-        refreshLocale();if(renderer!=null){(renderer as SceneRenderer).prepareAod();}if(pendingLoader!=null){pendingLoader.invoke();}if(admissionPending){return;}refreshFitness();prepareVisual();
+        refreshLocale();if(pendingLoader!=null){pendingLoader.invoke();}if(admissionPending){return;}refreshFitness();prepareVisual();
         if(context!=null){var duration=downloaded==null?2.5:((downloaded as NativeVisualRenderer).duration() as Float);animationRunning=true;WatchUi.animate(self,:animationProgress,WatchUi.ANIM_TYPE_LINEAR,0.0,1.0,duration,method(:animationDone));}
     }
     function queueResumeAfterFrame() as Void {
@@ -235,7 +235,6 @@ class SpaceFoxView extends WatchUi.WatchFace {
     function onLayout(dc as Graphics.Dc) as Void {
         if(admissionPending){return;}
         prepareRenderer();
-        if(restMask==null){restMask=WatchUi.loadResource(Rez.Drawables.AodRestMask) as Graphics.BitmapType;}
         // Render the complete 390px design into one canvas before scaling:
         // map, points, dynamic raster, foreground, fonts and maintenance stay
         // in the same coordinate system on larger supported round screens.
@@ -247,6 +246,27 @@ class SpaceFoxView extends WatchUi.WatchFace {
         return minute;
     }
     function onUpdate(dc as Graphics.Dc) as Void {updateForDisplayMode(dc,System.getDisplayMode());}
+    // LOW can interrupt a long foreground admission. Keep the accepted
+    // context and draw the normal AOD using only temporary LOW resources;
+    // they are released again before the parser resumes in HIGH.
+    (:extendedCode, :typecheck(false)) function drawPendingLow(dc) {
+        var now=_clock.utcSeconds();var minute=utcMinute(now);if(aodMinute!=null&&aodMinute==minute){return;}
+        try{values["battery"]=fitness.number(System.getSystemStats().battery,100);}catch(e){values["battery"]=null;}
+        var current=snapshotAt(now);current.countdown=current.lowCountdown;
+        var index=0;var pin=false;var pinX=335;var pinY=165;
+        if(context!=null&&context.point!=null){var point=context.point;for(var i=0;i<NativeAssets.mapCount;i+=1){var map=NativeAssets.mapAt(i);var lon=point[0]-map.longitude;var lat=point[1]-map.latitude;if(lon>=-0.25&&lon<=0.25&&lat>=-0.25&&lat<=0.25){index=i;pin=true;var projected=SceneAod.project(point,map.longitude,map.latitude);pinX=projected[0];pinY=projected[1];break;}}
+            if(!pin){var coords=NativeAssets.aodCoordinates;for(var j=0;j<coords.size()/8;j+=1){var longitude=SceneAod.coordinate(coords,j*8);var latitude=SceneAod.coordinate(coords,j*8+4);var lon=point[0]-longitude;var lat=point[1]-latitude;if(lon>=-0.25&&lon<=0.25&&lat>=-0.25&&lat<=0.25){index=54+j;pin=true;var projected=SceneAod.project(point,longitude,latitude);pinX=projected[0];pinY=projected[1];break;}}}
+        }
+        var map=WatchUi.loadResource(NativeAssets.aodResource(index)) as Graphics.BitmapType;var font=WatchUi.loadResource(Rez.Fonts.Aod40) as Graphics.FontType;
+        var oldContext=presentation.aodContextFont;var oldBattery=presentation.aodBatteryFont;
+        try{if(oldContext==null){try{presentation.aodContextFont=Graphics.getVectorFont({:face=>["RobotoRegular","RobotoCondensedRegular"],:size=>47});}catch(ignore){}}if(oldBattery==null){try{presentation.aodBatteryFont=Graphics.getVectorFont({:face=>["RobotoRegular","RobotoCondensedRegular"],:size=>51});}catch(ignore){}}if(presentation.aodContextFont==null){presentation.aodContextFont=Graphics.FONT_SMALL;}if(presentation.aodBatteryFont==null){presentation.aodBatteryFont=Graphics.FONT_SMALL;}
+            var canvas=null;var target=dc;var side=dc.getWidth()<dc.getHeight()?dc.getWidth():dc.getHeight();
+            if(dc.getWidth()!=390||dc.getHeight()!=390){canvas=Graphics.createBufferedBitmap({:width=>390,:height=>390,:colorDepth=>16}).get();target=canvas.getDc();}
+            SceneAod.draw(target,current,minute,presentation,font,settings,map,pin,pinX,pinY);
+            var mask=WatchUi.loadResource(Rez.Drawables.AodRestMask) as Graphics.BitmapType;var phase=((minute%4+4)%4).toNumber();target.drawBitmap(-(phase%2),-(phase/2),mask);
+            if(canvas!=null){var transform=new Graphics.AffineTransform();transform.scale(side.toFloat()/390.0,side.toFloat()/390.0);dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();dc.drawBitmap2((dc.getWidth()-side)/2,(dc.getHeight()-side)/2,canvas,{:transform=>transform,:filterMode=>Graphics.FILTER_MODE_POINT});}aodMinute=minute;
+        }finally{presentation.aodContextFont=oldContext;presentation.aodBatteryFont=oldBattery;}
+    }
     (:typecheck(false)) function updateForDisplayMode(dc as Graphics.Dc, displayMode as System.DisplayMode) as Void {
         // OFF is not a third layout. Stop any owned work without scheduling a
         // redraw or loading resources; a later HIGH observation resumes after
@@ -258,8 +278,9 @@ class SpaceFoxView extends WatchUi.WatchFace {
         syncDisplayMode(displayMode);
         // Admission releases reconstructible artwork while validating. Do not
         // recreate it between slices; keep the current clock/countdown visible.
+        if(admissionPending&&_mode==LOW){drawPendingLow(dc);return;}
         if(admissionPending){var current=snapshotAt(_clock.utcSeconds());dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();dc.setColor(Graphics.COLOR_WHITE,Graphics.COLOR_TRANSPARENT);var w=dc.getWidth();var h=dc.getHeight();if(current.localCalendar!=null){dc.drawText(w/2,h/2-75,Graphics.FONT_SMALL,presentation.calendar(current.localCalendar),Graphics.TEXT_JUSTIFY_CENTER);}dc.drawText(w/2,h/2-40,Graphics.FONT_LARGE,current.localTime,Graphics.TEXT_JUSTIFY_CENTER);dc.drawText(w/2,h/2+15,Graphics.FONT_MEDIUM,_mode==NOT_LOW?current.countdown:current.lowCountdown,Graphics.TEXT_JUSTIFY_CENTER);if(context!=null){dc.drawText(w/2,h/2+55,Graphics.FONT_SMALL,context.rocket+" · "+context.purpose,Graphics.TEXT_JUSTIFY_CENTER);dc.drawText(w/2,h/2+78,Graphics.FONT_SMALL,context.site,Graphics.TEXT_JUSTIFY_CENTER);if(context.pointText!=null){dc.drawText(w/2,h/2+100,Graphics.FONT_SMALL,context.pointText[1]+", "+context.pointText[0],Graphics.TEXT_JUSTIFY_CENTER);}}if(_mode==NOT_LOW){queueResumeAfterFrame();}return;}
-        if((renderer==null||restMask==null) && sfrBuild==null){onLayout(dc);}
+        if(renderer==null && sfrBuild==null){onLayout(dc);}
         // Skip the entire LOW update, including mask and scaled-buffer blit.
         if(!(_mode == NOT_LOW) && aodMinute!=null && aodMinute==utcMinute(_clock.utcSeconds())){return;}
         if(sceneBuffer!=null){var bitmap=sceneBuffer as Graphics.BufferedBitmap;var target=bitmap.getDc();drawScene(target);applyPixelRest(target);if(sceneX!=0||sceneY!=0){dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();}dc.drawBitmap2(sceneX,sceneY,bitmap,sceneScaleOptions);if(_mode==NOT_LOW&&renderer!=null){queueResumeAfterFrame();}return;}
@@ -267,7 +288,8 @@ class SpaceFoxView extends WatchUi.WatchFace {
         if(_mode==NOT_LOW&&renderer!=null){queueResumeAfterFrame();}
     }
     function applyPixelRest(dc as Graphics.Dc) as Void {
-        if((_mode == NOT_LOW)||restMask==null){return;}
+        if(_mode == NOT_LOW){return;}
+        if(restMask==null){restMask=WatchUi.loadResource(Rez.Drawables.AodRestMask) as Graphics.BitmapType;}
         var minute=utcMinute(_clock.utcSeconds());var phase=((minute%4+4)%4).toNumber();
         dc.drawBitmap(-(phase%2),-(phase/2),restMask as Graphics.BitmapType);
     }
@@ -329,13 +351,13 @@ class SpaceFoxView extends WatchUi.WatchFace {
             if (sfrBuild.step()) {
                 var result=sfrBuild.result;stopSfrTimer();sfrBuild=null;
                 if (sceneLifecycle.complete(sfrGeneration)) {
-                    downloaded=result;if(renderer==null){prepareRenderer();}else{(renderer as SceneRenderer).downloaded=downloaded;(renderer as SceneRenderer).prepareAod();}
+                    downloaded=result;if(renderer==null){prepareRenderer();}else{(renderer as SceneRenderer).downloaded=downloaded;}
                     WatchUi.requestUpdate();
                 }
             }
         } catch(e) {
 
-            if(sfrBuild!=null){sfrBuild.dispose();}sfrBuild=null;stopSfrTimer();sceneLifecycle.fail(sfrGeneration);if(renderer!=null){(renderer as SceneRenderer).prepareAod();}WatchUi.requestUpdate();
+            if(sfrBuild!=null){sfrBuild.dispose();}sfrBuild=null;stopSfrTimer();sceneLifecycle.fail(sfrGeneration);WatchUi.requestUpdate();
         }
     }
 

@@ -9,3 +9,11 @@
 
 - [x] Prepare the 0.1.20 signed release from public main and reconcile its version-bound evidence; publication and physical verification remain separate.
 - [x] Independently review and repair the 0.1.20 release guard and signed payload binding; root owns publication (see evidence/release-020/PEER.md).
+
+## Physical 0.1.20 follow-up — reopened
+
+- [ ] P-data: reproduce live background request, validated catalog/admission and foreground activation; repair observed delivery failures and retain integrity.
+- [ ] P-launch: show the selected launch site and point, and countdown when source precision permits; preserve explicit coarse/unknown time semantics.
+- [ ] P-LOW: preserve the approved full map and point, clock, date/weekday, minute countdown and battery while data acquisition or restore is pending.
+- [ ] Run directly invalidated FR165 Music SDK behavior and EN/RU visual checks; reconcile retained watchdog and resource evidence.
+- [ ] Independent review after author green; physical FR165 Music cold/reopen/live update/LOW/15-minute acceptance remains open.

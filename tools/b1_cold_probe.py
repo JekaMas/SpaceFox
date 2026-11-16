@@ -10,10 +10,12 @@ from pathlib import Path
 from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
-FIXTURE = ROOT / 'tests/fixtures/fr165-runtime-20261116'
 parser = argparse.ArgumentParser()
 parser.add_argument('output', type=Path, help='host directory mounted at /task/cold in the isolated SDK lane')
-OUT = parser.parse_args().output.resolve()
+parser.add_argument('--fixture', type=Path, default=ROOT / 'tests/fixtures/fr165-runtime-20261116', help='captured feed and immutable response fixture')
+args = parser.parse_args()
+FIXTURE = args.fixture.resolve()
+OUT = args.output.resolve()
 OUT.mkdir(parents=True, exist_ok=True)
 res = OUT / 'resources'
 res.mkdir(exist_ok=True)

@@ -1,0 +1,32 @@
+SF_WAKE initial build=0.1.20 id=d8265852 now=1794839979 registered=1794842866 last=1794839316
+SF_STORE sf.commit type=dict v=6 generation=1
+SF_STORE sf.recovery absent
+SF_STORE sf.incoming.feed type=dict v=2 sequence=1
+SF_STORE sf.batch.head type=dict pending=false
+SF_STORE sf.batch.pending type=dict pending=false
+SF_STORE sf.incoming.feed.deferred absent
+SF_STORE sf.incoming.feed.rejected absent
+SF_STORE sf.attempt type=dict utc=1794839266
+SF_VIEW mode=HIGH pending=true
+SF_WAKE show build=0.1.20 id=d8265852 now=1794839979 registered=1794842866 last=1794839316
+SF_WAKE registration_kept pending=false next=1794842866
+SF_WAKE restore_armed build=0.1.20 id=d8265852 now=1794839984 registered=1794842866 last=1794839316
+SF_WAKE registration_kept pending=false next=1794842866
+SF_VIEW mode=LOW pending=false
+SFR_LIFECYCLE low_draw=true cancelled=true before=108744 low=107696
+SF_VIEW mode=HIGH pending=false
+SFR_LIFECYCLE separate_wake used=107176
+SF_WAKE registration_kept pending=false next=1794842866
+SFR_LIFECYCLE resumed=true used=108800
+
+Error: Out Of Memory Error
+Details: Failed invoking <symbol>
+Stack: 
+  - read() at /source/watchface/source/NativeCache.mc:10 0x10002980 
+  - raw() at /source/watchface/source/NativeImmutable.mc:17 0x1000096b 
+  - chunk() at /source/watchface/source/NativeSfr.mc:26 0x5000b445 
+  - step() at /source/watchface/source/NativeSfr.mc:72 0x10004a4b 
+  - step() at /source/watchface/source/NativeSfr.mc:183 0x5001aa08 
+  - sfrStep() at /source/watchface/source/SpaceFoxView.mc:351 0x10005bf4 
+Encountered an app crash.
+exit=2

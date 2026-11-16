@@ -65,3 +65,18 @@ Feed and scene-descriptor parsing and hashing SHALL advance in bounded foregroun
 #### Scenario: Accepted facts during a short active window
 - **WHEN** a valid input is still being prepared as the display enters low power and returns active
 - **THEN** the existing job resumes without restarting, and the previous accepted clock, countdown and facts remain available until the verified replacement is ready.
+
+### Requirement: Live launch acquisition and LOW continuity
+The watch face SHALL admit the current validated feed and catalog and display the selected launch and qualified site before optional artwork is ready. It SHALL preserve source precision. During acquisition and restoration, LOW SHALL retain the approved map, qualified point, clock, weekday/date, minute countdown and battery, and release temporary LOW resources before resuming HIGH work.
+
+#### Scenario: Background catalog precedes optional closure
+- **WHEN** the feed and its pinned catalog arrive and validate
+- **THEN** the selected launch and qualified point can be shown before optional artwork completes, and a subsequent background event resumes the pending closure even when feed polling is not due.
+
+#### Scenario: LOW interrupts pending preparation
+- **WHEN** the display enters LOW with acquisition or restoration pending
+- **THEN** it shows the approved LOW composition with a default outline if no site is known and the selected point when qualified; returning to HIGH releases LOW-only resources and resumes the current bounded work.
+
+#### Scenario: Coarse source time
+- **WHEN** the selected source supplies hour-level precision without an exact time
+- **THEN** the site and map point remain available and the countdown remains explicitly unknown.

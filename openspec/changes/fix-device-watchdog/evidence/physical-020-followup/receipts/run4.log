@@ -1,0 +1,18 @@
+SF_VIEW mode=HIGH pending=true
+Background: COLD BG_START
+Background: SF_BG enter phone=true registered=none last=1794838650
+Background: COLD REQUEST feed.json
+Background: COLD FEED code=200 bytes=5660 used=32984
+Background: SF_BG feed_http=200
+Background: SF_BG feed_staged=true
+Background: SF_BG batch_begin=true
+Background: COLD REQUEST wire3/catalogs/83226c3bce7f6da4d3830ffbff16aefe5632054f2eb23675ed2cc6ec8dcc82d0.json
+Background: COLD OBJECT code=200 bytes=1386 used=29976
+Background: SF_BG object_http=200 catalog=true
+Background: SF_BG catalog_ready
+Background: COLD BG_FINISH head=true used=29992
+COLD BG_DELIVERY
+SF_FG background_delivery
+SF_FG admission_begin
+SF_FG admission_accepted
+exit=0

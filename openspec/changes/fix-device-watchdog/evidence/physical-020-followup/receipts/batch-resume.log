@@ -1,0 +1,13 @@
+SF_VIEW mode=HIGH pending=true
+------------------------------------------------------------------------------
+Executing test b1NextBackgroundResumesCatalogBatch...
+DEBUG (14:21): B1_NEXT_BACKGROUND polling_due=false resumed=true remaining_objects=26 closure_verified=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1NextBackgroundResumesCatalogBatch PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

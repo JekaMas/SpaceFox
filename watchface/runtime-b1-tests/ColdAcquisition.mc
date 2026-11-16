@@ -156,7 +156,7 @@ import Toybox.WatchUi;
     Test.assertMessage(view.canForegroundWork(),"test requires HIGH simulator mode");NativeForegroundApp.beginAdmission(app,app.feed,new TestNativeIncoming(store,base),now);Test.assert(view.renderer==null&&view.downloaded==null&&view.context==exactScene);
     view.updateForDisplayMode(frame.getDc(),System.DISPLAY_MODE_HIGH_POWER);var first=view.snapshotAt(clock.now).countdown;clock.now+=1;view.updateForDisplayMode(frame.getDc(),System.DISPLAY_MODE_HIGH_POWER);var second=view.snapshotAt(clock.now).countdown;Test.assert(first.equals("T- 00:09:10")&&second.equals("T- 00:09:09"));
     var ticks=0;while(app.admissionJob!=null&&(app.admissionJob["packet"]==null||app.admissionJob["packet"].preparePhase<3)){if(app.admissionTimer!=null){app.admissionTimer.stop();app.admissionTimer=null;}app.admissionStep();ticks+=1;Test.assert(ticks<2000);}
-    var held=app.admissionJob;Test.assert(held!=null);var before=held["packet"].preparePhase;view.transitionMode(0);if(app.admissionTimer!=null){app.admissionTimer.stop();app.admissionTimer=null;}app.admissionStep();Test.assert(app.admissionJob==held&&held["packet"].preparePhase==before);
+    var held=app.admissionJob;Test.assert(held!=null);var before=held["packet"].preparePhase;view.transitionMode(0);if(app.admissionTimer!=null){app.admissionTimer.stop();app.admissionTimer=null;}var lowUsed=System.getSystemStats().usedMemory;view.drawPendingLow(frame.getDc());logger.debug("B1_PENDING_LOW_DURING_PARSE before="+lowUsed+" after="+System.getSystemStats().usedMemory);app.admissionStep();Test.assert(app.admissionJob==held&&held["packet"].preparePhase==before);
     view.transitionMode(1);view.queueResumeAfterFrame();view.stopResume();Test.assert(view.canForegroundWork());
     while(app.admissionJob!=null){if(app.admissionTimer!=null){app.admissionTimer.stop();app.admissionTimer=null;}app.admissionStep();ticks+=1;Test.assert(ticks<3000);}
     Test.assert(app.feed.packet!=null&&app.feed.packet.launchId().equals("ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60"));Test.assert(!view.admissionPending&&store.commits==1);
@@ -241,4 +241,27 @@ import Toybox.WatchUi;
 
 (:test,:typecheck(false)) function b1AbandonedRetry(logger){
     var store=new B1MemoryStore();var raw=WatchUi.loadResource(Rez.JsonData.B1Feed)["raw"];var cache=new NativeCache("https://jekamas.github.io/SpaceFox",store);var app=new SpaceFoxApp();var view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));view.setContext(new SceneContext({"id"=>"source:launch:one","rocket"=>"Previous rocket","purpose"=>"Previous purpose","site"=>"Previous site","precision"=>"exact","target"=>1794820000l}));app.view=view;app.feed=cache;var candidate=new NativePreparedBridgeFeed(raw,1794818604l,store);candidate.prepareStep();var parser=candidate.parser;var previous=view.context;Test.assert(previous!=null&&previous.rocket.equals("Previous rocket"));app.admissionJob={"cache"=>cache,"packet"=>candidate,"seal"=>"old-seal","key"=>"sf.commit"};view.admissionPending=true;app.abandonForegroundWork();Test.assert(app.admissionJob==null&&!app.restorePending&&app.restoreTimer==null&&app.admissionTimer==null&&!view.admissionPending&&view.context==previous);Test.assert(app.deferredRestore&&app.deferredSeal.equals("old-seal")&&cache.packet==null&&parser.rowOwner==null);app.reloadFeed();Test.assert(!app.deferredRestore&&app.restorePending&&app.restoreSeal.equals("old-seal"));logger.debug("B1_ABANDON terminal=true deferred_event_retry=true owner_released=true");return true;
+}
+
+// The LOW frame remains available while the current incremental parser and
+// its retained schedule own the foreground heap. This is an SDK resource
+// smoke check; screenshots and stock heap remain separate observations.
+(:test,:typecheck(false)) function b1PendingLowComposition(logger){
+    var store=new B1MemoryStore();var base="https://jekamas.github.io/SpaceFox";var raw=WatchUi.loadResource(Rez.JsonData.B1Feed)["raw"];
+    var batch=new NativeBatch(store,base);Test.assert(batch.begin(raw));var catalog=batch.next();Test.assert(batch.immutable.put(catalog,b1Response(catalog["path"])));
+    var packet=new NativePreparedBridgeFeed(raw,1794818604l,store);while(!packet.prepareStep()){}var scene=feedScene(packet,1794818604l);Test.assert(scene!=null&&scene.point!=null);packet.disposePreparation();packet=null;raw=null;batch=null;store=null;
+    var frame=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get();
+    for(var i=0;i<2;i+=1){var view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));view.settings.language=i==0?"en":"ru";view.presentation.prepare(view.settings.language);view.setContext(scene);view.presentation.suspend();view.admissionPending=true;view.drawPendingLow(frame.getDc());Test.assert(view.aodMinute!=null&&view.presentation.aodContextFont==null&&view.presentation.aodBatteryFont==null);view=null;}
+    var cold=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));cold.admissionPending=true;cold.presentation.suspend();cold.drawPendingLow(frame.getDc());Test.assert(cold.aodMinute!=null&&cold.context==null);logger.debug("B1_PENDING_LOW EN_RU=true retained_point=true cold_map=true temporary_fonts_released=true");return true;
+}
+
+// FeedService exits as soon as the first catalog arrives. The next background
+// process must resume the same pending immutable batch even when polling is not
+// yet due, rather than starting or accepting a different closure.
+(:test,:typecheck(false)) function b1NextBackgroundResumesCatalogBatch(logger){
+    var store=new B1MemoryStore();var base="https://jekamas.github.io/SpaceFox";var now=Time.now().value().toLong();var raw=WatchUi.loadResource(Rez.JsonData.B1Feed)["raw"];
+    var transfer=new NativeTransfer(base,store);transfer.attempted(now);Test.assert(transfer.stage("feed",raw,null));var first=new NativeBatch(store,base);Test.assert(first.begin(raw));var catalog=first.next();Test.assert(catalog!=null&&catalog["path"].find("wire3/catalogs/")==0);Test.assert(first.immutable.put(catalog,b1Response(catalog["path"])));first=null;raw=null;
+    var nextTransfer=new NativeTransfer(base,store);nextTransfer.load();Test.assert(!nextTransfer.due(now+1));Test.assert(batchPending(nextTransfer));var next=new NativeBatch(store,base);var ref=next.next();Test.assert(ref!=null&&ref["path"].find("descriptors/")==0);var delivered=0;
+    while(ref!=null){var data=b1Response(ref["path"]);Test.assert(data!=null&&next.immutable.put(ref,data));ref=next.next();delivered+=1;Test.assert(delivered<=41);}
+    Test.assert(!batchPending(nextTransfer));logger.debug("B1_NEXT_BACKGROUND polling_due=false resumed=true remaining_objects="+delivered+" closure_verified=true");return true;
 }

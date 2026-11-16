@@ -16,6 +16,7 @@ class NativeSfrDecoder {
         skipOutline=d.hasKey("__localBundledOutline")&&d["__localBundledOutline"]==true;d.remove("__localBundledOutline");immutable=new NativeImmutable(adapter);descriptor=d;width=d["canvas"][0];height=d["canvas"][1];channels=d["channels"];hash=new Cryptography.Hash({:algorithm=>Cryptography.HASH_SHA256});
         bitmap=Graphics.createBufferedBitmap({:width=>width,:height=>height,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();dc=bitmap.getDc();dc.setColor(Graphics.COLOR_TRANSPARENT,Graphics.COLOR_TRANSPARENT);dc.clear();if(channels==3){rgbRowBitmap=Graphics.createBufferedBitmap({:width=>width,:height=>1,:alphaBlending=>Graphics.ALPHA_BLENDING_FULL}).get();rgbRowDc=rgbRowBitmap.getDc();if(!skipOutline){outlineBitmap=Graphics.createBufferedBitmap({:width=>390,:height=>390,:palette=>[Graphics.COLOR_BLACK,0xBEE1F0],:colorDepth=>1}).get();outlineDc=outlineBitmap.getDc();outlineDc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);outlineDc.clear();outlineDc.setColor(0xBEE1F0,Graphics.COLOR_TRANSPARENT);}}
     }
+    (:extendedCode) function dispose(){dc=null;rgbRowDc=null;outlineDc=null;bitmap=null;rgbRowBitmap=null;outlineBitmap=null;data=null;block=null;descriptor=null;immutable=null;hash=null;row=[]b;colors=[];}
     (:extendedCode)
     function fail(){throw new Lang.InvalidValueException("Invalid SFR1 raster");}
     (:extendedCode)
@@ -64,7 +65,7 @@ class NativeSfrDecoder {
         if(y>0){n=channelDistance(r,row[at]);if(n>change){change=n;}n=channelDistance(g,row[at+1]);if(n>change){change=n;}n=channelDistance(b,row[at+2]);if(n>change){change=n;}}
         if(!skipOutline && change>8){outlineDc.drawPoint(x,y);}row[at]=r;row[at+1]=g;row[at+2]=b;leftR=r;leftG=g;leftB=b;
     }
-    function oneRow(){
+    (:extendedCode) function oneRow(){
         if(data==null){chunk();}var x=0;
         while(x<width){if(offset>=dataSize){fail();}var token=byteAt(offset);offset+=1;var count=(token&127)+1;if(x+count>width){fail();}if(token<128){if(offset+channels>dataSize){fail();}var r=byteAt(offset);var g=byteAt(offset+1);var b=byteAt(offset+2);var alpha=channels==3?255:byteAt(offset+3);var value=alpha==255?r*65536+g*256+b:alpha==0?Graphics.COLOR_TRANSPARENT:Graphics.createColor(alpha,r,g,b);if(channels==3){for(var n=0;n<count;n+=1){outlinePixel(x+n,r,g,b);}}else{for(var n=0;n<count;n+=1){colors[x+n]=value;var at=(x+n)*4;row[at]=r;row[at+1]=g;row[at+2]=b;row[at+3]=alpha;}}offset+=channels;span(x,count,value);}else if(channels==4){paintCopy(x,count);}else{for(var n=0;n<count;n+=1){var at=(x+n)*3;var r=y==chunkStart?0:row[at];var g=y==chunkStart?0:row[at+1];var b=y==chunkStart?0:row[at+2];outlinePixel(x+n,r,g,b);}}x+=count;}
         if(channels==3){dc.drawBitmap(0,y,rgbRowBitmap);}hash.update(row);y+=1;if(y==endRow){if(offset!=dataSize){fail();}data=null;block=null;}if(y==height){if(shard!=descriptor["shards"].size()||data!=null){fail();}var digest=StringUtil.convertEncodedString(hash.digest(),{:fromRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:toRepresentation=>StringUtil.REPRESENTATION_STRING_HEX}).toLower();if(!digest.equals(descriptor["pixelSha256"])){fail();}done=true;row=[]b;colors=[];outlineDc=null;descriptor=null;dc=null;hash=null;rgbRowDc=null;rgbRowBitmap=null;}
@@ -83,7 +84,7 @@ class NativeSfrRenderer extends NativeVisualRenderer {
 class NativeSfrBuild {
     var preferBundled=false;var store;var base;var packet;var immutable;var scene;var descriptors={};var expected=[];var role=0;var decoder=null;var result;var complete=false;var closureChecked=false;var closureAt=0;var selection;var rootReady=false;var pendingRead=null;var rasterBytes=0;var rasterObjects=0;var readKind=0;var names;
     function initialize(adapter,url,p){store=adapter;base=url;packet=p;immutable=new NativeImmutable(store);selection=p.bridge["selection"];names=["map","rocket","siteCountry"];result=new NativeSfrRenderer();}
-    function dispose(){if(pendingRead!=null){pendingRead.dispose();pendingRead=null;}}
+    function dispose(){if(pendingRead!=null){pendingRead.dispose();pendingRead=null;}if(decoder!=null){decoder.dispose();decoder=null;}result=null;scene=null;packet=null;immutable=null;expected=[];}
     function fail(){throw new Lang.InvalidValueException("Invalid native SFR1M scene");}
     function same(a,b){return nativeSame(a,b);}
     function ref(r,prefix){packet.ref(r,prefix);return r;}

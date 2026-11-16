@@ -53,7 +53,7 @@ class SceneRenderer {
         // shown unless the selected launch supplies a qualified matching point.
         model = null; art = null; map = null; aodMap=null; aodResource=null; pin = false;aodPin=false;
         var mapResource=Rez.Drawables.MapView0;
-        if (context == null) { map=load(mapResource) as Graphics.BitmapType; art = load(Rez.Drawables.Art_unknown) as Graphics.BitmapType; return; }
+        if (context == null) { aodResource=NativeAssets.aodResource(0); map=load(mapResource) as Graphics.BitmapType; art = load(Rez.Drawables.Art_unknown) as Graphics.BitmapType; return; }
         var id = NativeAssets.models.hasKey(context.modelId) ? context.modelId : "generic";
         model = NativeAssets.models[id] as NativeModel; art = load(id.equals("generic") ? Rez.Drawables.Art_unknown : (model as NativeModel).resource) as Graphics.BitmapType;
         if (context.point != null) {
@@ -77,6 +77,7 @@ class SceneRenderer {
                     if(lon>=-0.25&&lon<=0.25&&lat>=-0.25&&lat<=0.25){var projected=projectSite(point,longitude,latitude);aodPinX=projected[0];aodPinY=projected[1];pinX=aodPinX;pinY=aodPinY;pin=true;mapResource=NativeAssets.extraMapResource(i);aodPin=true;aodResource=NativeAssets.aodResource(54+i);break;}}
             }
         }
+        if(aodResource==null){aodResource=NativeAssets.aodResource(0);}
         map=load(mapResource) as Graphics.BitmapType;
     }
     function samePoint(a as Array<Numeric> or Null,b as Array<Numeric> or Null) as Boolean {
@@ -199,9 +200,9 @@ class SceneRenderer {
     (:extendedCode) function icon(dc as Graphics.Dc,x as Numeric,y as Numeric,role as String) as Void {
         if(icons.hasKey(role)){dc.drawBitmap(x,y,icons[role] as Graphics.BitmapType);}
     }
-    function prepareAod() as Void {if(!fonts.hasKey("aod")){fonts["aod"]=load(Rez.Fonts.Aod40) as Graphics.FontType;}if(aodMap==null && aodResource!=null){aodMap=load(aodResource as ResourceId) as Graphics.BitmapType;}}
-    function releaseAod() as Void {aodMap=null;fonts.remove("aod");}
-    (:typecheck(false)) function aod(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,settings as SceneSettings) as Void {
+    (:extendedCode) function prepareAod() as Void {if(!fonts.hasKey("aod")){fonts["aod"]=load(Rez.Fonts.Aod40) as Graphics.FontType;}if(aodMap==null && aodResource!=null){aodMap=load(aodResource as ResourceId) as Graphics.BitmapType;}}
+    (:extendedCode) function releaseAod() as Void {aodMap=null;fonts.remove("aod");}
+    (:extendedCode, :typecheck(false)) function aod(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,settings as SceneSettings) as Void {
         current.rescheduled=current.rescheduled||fullContext!=null&&fullContext.rescheduled;
         current.sourceHold=current.sourceHold||fullContext!=null&&fullContext.sourceHold;
         current.stale=current.stale||fullContext!=null&&fullContext.stale;
@@ -210,16 +211,18 @@ class SceneRenderer {
         // The current finite fixed-site catalog has full outlines at matching
         // centers. Prefer that shape even when the selected scene is READY;
         // unmatched future locations retain their own decoded raster outline.
-        var bundled=aodMap!=null && aodPin;
-        SceneAod.draw(dc,current,minute,presentation,fonts["aod"] as Graphics.FontType,settings,bundled?aodMap:(selected?rich.mapOutline:null),bundled||selected,bundled?aodPinX:335,bundled?aodPinY:165);
+        var bundled=aodMap!=null && (aodPin||!selected);
+        SceneAod.draw(dc,current,minute,presentation,fonts["aod"] as Graphics.FontType,settings,bundled?aodMap:(selected?rich.mapOutline:null),bundled?aodPin:selected,bundled?aodPinX:335,bundled?aodPinY:165);
     }
 }
 
 // LOW rendering uses the same clock snapshot as the active scene. The caller
 // owns the once-per-minute guard; fonts/dictionary are prepared outside redraw.
 module SceneAod {
-    function countdownColor(current as ClockSnapshot, settings as SceneSettings) as Number {return current.rescheduled || current.sourceHold ? 0xFF6B6B : settings.countdownColor;}
-    function draw(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,presentation as LocalePresentation,font as Graphics.FontType,settings as SceneSettings,map as Graphics.BitmapType or Null,pin as Boolean,pinX as Number,pinY as Number) as Void {
+    (:extendedCode) function project(point,longitude,latitude) {var rad=0.017453292519943295;var lambda=(point[0]-longitude)*rad;var phi=point[1]*rad;var delta=-latitude*rad;var x=Math.cos(lambda)*Math.cos(phi);var y=Math.sin(lambda)*Math.cos(phi);var z=Math.sin(phi);return [(335+145*Math.atan2(y,x*Math.cos(delta)-z*Math.sin(delta))+0.5).toNumber(),(165-145*Math.asin(z*Math.cos(delta)+x*Math.sin(delta))+0.5).toNumber()];}
+    (:extendedCode) function coordinate(data as ByteArray,offset as Number) as Float {return ((data[offset]<<24)|(data[offset+1]<<16)|(data[offset+2]<<8)|data[offset+3])/1000000.0;}
+    (:extendedCode) function countdownColor(current as ClockSnapshot, settings as SceneSettings) as Number {return current.rescheduled || current.sourceHold ? 0xFF6B6B : settings.countdownColor;}
+    (:extendedCode) function draw(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,presentation as LocalePresentation,font as Graphics.FontType,settings as SceneSettings,map as Graphics.BitmapType or Null,pin as Boolean,pinX as Number,pinY as Number) as Void {
         dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();
         var positions=[[-1,-1],[1,-1],[-1,1],[1,1]];var phase=((minute%4+4)%4).toNumber();var p=positions[phase];
         if(map!=null){dc.drawBitmap(0,0,map);}

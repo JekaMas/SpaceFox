@@ -5,9 +5,13 @@ import Toybox.System;
 import Toybox.Background;
 (:extendedCode, :typecheck(false))
 module NativeForegroundApp {
+    function traceWake(stage){try{var now=Time.now().value();var registered=Background.getTemporalEventRegisteredTime();var last=Background.getLastTemporalEventTime();System.println("SF_WAKE "+stage+" build="+NativeVersion.BUILD+" id="+NativeVersion.ID+" now="+now+" registered="+(registered==null?"none":registered.value())+" last="+(last==null?"none":last.value()));}catch(ignore){System.println("SF_WAKE status_unavailable");}}
+    // Fixed metadata only: the app reads its own durable state without dumping
+    // stored launch text, settings, URL, health values, tokens or hashes.
+    function traceStored(cache,key){try{var row=cache.store.read(key);if(row==null){System.println("SF_STORE "+key+" absent");return;}if(!(row instanceof Dictionary)){System.println("SF_STORE "+key+" type=other");return;}var msg="SF_STORE "+key+" type=dict";var names=["v","generation","sequence","pending","until","utc"];for(var i=0;i<names.size();i+=1){var k=names[i];if(row.hasKey(k)){var value=row[k];if(value instanceof Number||value instanceof Long||value instanceof Boolean){msg+=" "+k+"="+value;}}}System.println(msg);}catch(ignore){System.println("SF_STORE "+key+" unavailable");}}
     function initial(app) as [WatchUi.WatchFace] {
-        app.view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));
-        app.view.setSettings(new SceneSettings(null).load());var selected=new NativeCache(configuredFeedUrl(),null);app.feed=selected;app.restoreSeal=null;app.restorePending=true;app.view.admissionPending=true;app.view.presentation.suspend();app.view.pendingLoader=app.method(:reloadFeed);app.view.syncDisplayMode(System.getDisplayMode());return [app.view as WatchUi.WatchFace];
+        traceWake("initial");app.view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));
+        app.view.setSettings(new SceneSettings(null).load());var selected=new NativeCache(configuredFeedUrl(),null);app.feed=selected;var keys=["sf.commit","sf.recovery","sf.incoming.feed","sf.batch.head","sf.batch.pending","sf.incoming.feed.deferred","sf.incoming.feed.rejected","sf.attempt"];for(var i=0;i<keys.size();i+=1){traceStored(selected,keys[i]);}app.restoreSeal=null;app.restorePending=true;app.view.admissionPending=true;app.view.presentation.suspend();app.view.pendingLoader=app.method(:reloadFeed);app.view.syncDisplayMode(System.getDisplayMode());return [app.view as WatchUi.WatchFace];
     }
     function display(app,cache){
         if(app.view==null){return;}LaunchReminderForeground.publish(cache,Time.now().value().toLong());if(cache.packet==null||app.view.packet!=cache.packet||cache.packet.document.hasKey("dictionaries")||app.view.context!=cache.packet.presentation){app.view.setPacket(cache.packet);}if(cache.packet!=null){try{var owner=cache.packet.document["publisher"]["instance"];var saved=new NativeUpcomingCache(cache.store,cache.base,owner).load();app.view.mergeSaved(saved,Time.now().value().toLong(),cache.packet.terminalUpdates);}catch(e){}app.view.setAssetCache(new NativeRenderSource(cache.store,cache.base,cache.packet.bridge));}
@@ -31,7 +35,7 @@ module NativeForegroundApp {
         else if(app.restoreSeal==null){app.restorePending=false;display(app,selected);}
         if(!app.restorePending){var incoming=new NativeIncoming(selected.store,selected.base);if(hasNewIncoming(selected,incoming)){beginAdmission(app,selected,incoming,Time.now().value().toLong());return;}}
         if(!app.restorePending){app.view.resumeAfterAdmission();}
-        var transfer=new NativeTransfer(selected.base,selected.store);transfer.load();armFeed(transfer,Time.now().value().toLong());
+        var transfer=new NativeTransfer(selected.base,selected.store);transfer.load();armFeed(transfer,Time.now().value().toLong());traceWake("restore_armed");
     }
     // Only a new provisional feed can replace the scene. Duplicate callbacks
     // leave an in-progress visual build and its generation untouched.
@@ -50,6 +54,7 @@ module NativeForegroundApp {
     // The durable pointer is still published only by acceptPrepared after full
     // validation. A changed provisional marker invalidates the in-flight job.
     function beginAdmission(app,cache,incoming,now){
+        System.println("SF_FG admission_begin");
         app.view.cancelSfrBuild();
         app.view.stopFitness();app.view.stopAnimation();app.view.releaseVisualForSettings();app.view.assetCache=null;app.view.visualKey=null;app.view.presentation.suspend();app.view.packet=null;
         app.view.admissionPending=true;WatchUi.requestUpdate();
@@ -62,6 +67,7 @@ module NativeForegroundApp {
         app.queueAdmission();
     }
     function failAdmission(app){
+        System.println("SF_FG admission_failed");
         var job=app.admissionJob;if(job==null){return;}var cache=job["cache"];
         if(job["packet"]!=null){job["packet"].disposePreparation();}app.admissionJob=null;app.view.clearForRestore();cache.packet=null;cache.commit=null;cache.commitKey=job["key"];
         app.restoreSeal=job["seal"];app.restorePending=job["seal"]!=null;app.view.admissionPending=app.restorePending;if(app.restorePending){app.queueRestore();}else{display(app,cache);app.view.resumeAfterAdmission();}
@@ -74,7 +80,7 @@ module NativeForegroundApp {
             if(job["row"]==null){
                 if(job["reader"]==null){job["reader"]=new NativeIncomingReadJob(incoming);app.queueAdmission();return;}
                 var reader=job["reader"];if(!reader.step()){app.queueAdmission();return;}var row=reader.result;job["reader"]=null;
-                if(row==null){var pending=cache.store.read("sf.incoming.feed");if(incoming.validFeedMarker(pending)){try{incoming.defer(pending,Time.now().value().toLong());}catch(ignore){}}failAdmission(app);return;}
+                if(row==null){System.println("SF_FG chunk_wait");var pending=cache.store.read("sf.incoming.feed");if(incoming.validFeedMarker(pending)){try{incoming.defer(pending,Time.now().value().toLong());}catch(ignore){}}failAdmission(app);return;}
                 var latest=cache.store.read("sf.incoming.feed");if(!(latest instanceof Dictionary)||!(latest["sha256"] instanceof String)||!incoming.token(latest).equals(incoming.token(row[0]))){failAdmission(app);return;}
                 if(job["duplicate"]!=null&&row[0]["sha256"].equals(job["duplicate"].wireHash)){
                     cache.packet=job["duplicate"];cache.packet.advance(job["now"]);cache.requestWake=null;try{incoming.processed("feed",row[0]);incoming.clearRejected(row[0]);incoming.clearDeferred();}catch(ignore){}
@@ -88,13 +94,14 @@ module NativeForegroundApp {
             if(packet.preparePhase<8){packet.prepareStep();app.queueAdmission();return;}
             if(job["promotion"]==null){job["promotion"]=new NativeFeedPromotion(cache,incoming.takeRaw(row),packet,job["now"],app.view);app.queueAdmission();return;}
             var promotion=job["promotion"];if(!promotion.step()){app.queueAdmission();return;}var accepted=promotion.accepted;
-            if(accepted){try{incoming.processed("feed",row[0]);incoming.clearRejected(row[0]);incoming.clearDeferred();}catch(ignore){}}else if(!cache.failure.equals("admission-retry")){incoming.rejected(row[0],Time.now().value().toLong());incoming.processed("feed",row[0]);}
+            if(accepted){System.println("SF_FG admission_accepted");try{incoming.processed("feed",row[0]);incoming.clearRejected(row[0]);incoming.clearDeferred();}catch(ignore){}}else if(!cache.failure.equals("admission-retry")){incoming.rejected(row[0],Time.now().value().toLong());incoming.processed("feed",row[0]);}
             if(!accepted){failAdmission(app);return;}
             app.admissionJob=null;app.view.admissionPending=false;reload(app);app.view.resumeAfterAdmission();
         }catch(e){
+            System.println("SF_FG admission_error");
             // A malformed complete feed is consumed just as in synchronous
             // admission; a missing catalog remains retryable.
-            try{if(job["row"]!=null){if(e.getErrorMessage().equals("Bridge catalog incomplete")){incoming.defer(job["row"][0],Time.now().value().toLong());}else{incoming.rejected(job["row"][0],Time.now().value().toLong());incoming.processed("feed",job["row"][0]);}}}catch(ignore){}
+            try{if(job["row"]!=null){if(e.getErrorMessage().equals("Bridge catalog incomplete")){System.println("SF_FG catalog_wait");incoming.defer(job["row"][0],Time.now().value().toLong());}else{System.println("SF_FG feed_rejected");incoming.rejected(job["row"][0],Time.now().value().toLong());incoming.processed("feed",job["row"][0]);}}}catch(ignore){}
             failAdmission(app);
         }
     }

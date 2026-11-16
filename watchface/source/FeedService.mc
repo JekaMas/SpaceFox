@@ -12,24 +12,25 @@ class FeedService extends System.ServiceDelegate {
     function requestUrl(path as String) as String {return ((transfer as NativeTransfer).base as String)+"/"+path+".txt";}
     (:typecheck(false))
     function onTemporalEvent() as Void {
+        try{var settings=System.getDeviceSettings();var registered=Background.getTemporalEventRegisteredTime();var last=Background.getLastTemporalEventTime();System.println("SF_BG enter phone="+settings.phoneConnected+" registered="+(registered==null?"none":registered.value())+" last="+(last==null?"none":last.value()));}catch(ignore){}
         started=System.getTimer();requests=0;try{Background.registerForTemporalEvent(new Time.Duration(3600));}catch(e){}
-        try{transfer=createTransfer();if(transfer.base.equals("")){Background.deleteTemporalEvent();Background.exit(null);return;}batch=new NativeBatch(transfer.store,transfer.base);transfer.load();var now=Time.now().value().toLong();LaunchReminder.wake(transfer,now);if(transfer.due(now)){transfer.attempted(now);armFeed(transfer,now);request("feed.json",method(:receive));}else{optional();}}catch(e){finish();}
+        try{transfer=createTransfer();if(transfer.base.equals("")){Background.deleteTemporalEvent();Background.exit(null);return;}batch=new NativeBatch(transfer.store,transfer.base);transfer.load();var now=Time.now().value().toLong();LaunchReminder.wake(transfer,now);if(transfer.due(now)){transfer.attempted(now);armFeed(transfer,now);request("feed.json",method(:receive));}else{optional();}}catch(e){System.println("SF_BG start_error");finish();}
     }
     (:typecheck(false))
-    function request(path as String,callback as Method) as Void {if(requests>=44||System.getTimer()-started>=22000){finish();return;}requests+=1;try{Communications.makeWebRequest(requestUrl(path),{}, {:method=>Communications.HTTP_REQUEST_METHOD_GET,:headers=>{"Accept"=>"text/plain"},:responseType=>Communications.HTTP_RESPONSE_CONTENT_TYPE_TEXT_PLAIN},callback);}catch(e){finish();}}
+    function request(path as String,callback as Method) as Void {if(requests>=44||System.getTimer()-started>=22000){System.println("SF_BG request_budget");finish();return;}requests+=1;try{Communications.makeWebRequest(requestUrl(path),{}, {:method=>Communications.HTTP_REQUEST_METHOD_GET,:headers=>{"Accept"=>"text/plain"},:responseType=>Communications.HTTP_RESPONSE_CONTENT_TYPE_TEXT_PLAIN},callback);}catch(e){System.println("SF_BG request_error");finish();}}
     (:typecheck(false))
     function receive(code as Number,data as Dictionary or String or Null) as Void {
 
-        try{if(code==200&&data instanceof String){if(transfer.stage("feed",data,null)&&batch.begin(data)){optional();return;}}}catch(e){}finish();
+        try{System.println("SF_BG feed_http="+code);if(code==200&&data instanceof String){var staged=transfer.stage("feed",data,null);System.println("SF_BG feed_staged="+staged);if(staged){var begun=batch.begin(data);System.println("SF_BG batch_begin="+begun);if(begun){optional();return;}}}}catch(e){System.println("SF_BG feed_error");}finish();
     }
     (:typecheck(false))
-    function optional() as Void {try{if(batch!=null){assetRequest=batch.next();if(assetRequest!=null){request(assetRequest["path"],method(:receiveBatch));return;}if(batch.head!=null){finish();return;}}}catch(e){}finish();}
+    function optional() as Void {try{if(batch!=null){assetRequest=batch.next();if(assetRequest!=null){request(assetRequest["path"],method(:receiveBatch));return;}if(batch.head!=null){finish();return;}}}catch(e){System.println("SF_BG batch_error");}finish();}
     (:typecheck(false))
-    function receiveBatch(code as Number,data as Dictionary or String or Null) as Void {try{if(code==200&&data instanceof String&&batch.immutable.put(assetRequest,data)){
+    function receiveBatch(code as Number,data as Dictionary or String or Null) as Void {try{System.println("SF_BG object_http="+code+" catalog="+(assetRequest["path"].find("wire3/catalogs/")==0));if(code==200&&data instanceof String&&batch.immutable.put(assetRequest,data)){
         // The catalog is the admission prerequisite. Exit now so the foreground
         // can display the validated schedule; the durable pending batch resumes
         // optional visual downloads at the next permitted background event.
-        if(assetRequest["path"].find("wire3/catalogs/")==0){finish();return;}optional();return;}}catch(e){}finish();}
+        if(assetRequest["path"].find("wire3/catalogs/")==0){System.println("SF_BG catalog_ready");finish();return;}optional();return;}}catch(e){System.println("SF_BG object_error");}finish();}
     (:typecheck(false))
     function finish() as Void {try{if(transfer!=null){armFeed(transfer,Time.now().value().toLong());}}catch(e){}Background.exit({"provisional"=>true});}
 }
@@ -91,10 +92,10 @@ function armFeed(cache, now) {
     var next = pendingWake(now, cache.nextWake(now), registeredAt, lastAt, pending);
     var reminder = LaunchReminder.nextWake(cache, now, lastAt);
     if (reminder != null && reminder < next) { next = reminder; }
-    if (!registrationNeeded(now, next, registeredAt, lastAt, pending)) { return; }
+    if (!registrationNeeded(now, next, registeredAt, lastAt, pending)) { System.println("SF_WAKE registration_kept pending="+pending+" next="+next);return; }
     try {
-        Background.registerForTemporalEvent(new Time.Moment(next.toNumber()));
-    } catch(e) {  }
+        Background.registerForTemporalEvent(new Time.Moment(next.toNumber()));System.println("SF_WAKE registration_ok pending="+pending+" next="+next);
+    } catch(e) { System.println("SF_WAKE registration_error pending="+pending+" next="+next+" error="+e.getErrorMessage()); }
 }
 (:background)
 function feedUrlValue(value as Object or Null) as String {return value instanceof String?value:"https://jekamas.github.io/SpaceFox";}
