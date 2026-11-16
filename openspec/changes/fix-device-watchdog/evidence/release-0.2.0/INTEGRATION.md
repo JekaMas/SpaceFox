@@ -20,3 +20,11 @@ Version 0.2.0 was selected because 0.1.23 was already occupied by a published
 test prerelease. This software evidence does not establish the physical watch's
 missing-update cause, actual phone delivery, hardware LOW behavior, Store status
 or 15-minute acceptance.
+
+The existing independent peer completed the combined-field and eligibility
+review with software status GREEN; see `PEER.md`. The peer repaired release-note
+conflict markers/estimate wording and bound this current report in the admission
+record. No compiler inputs changed and no retained native case was repeated.
+Root judgment precedes immediate reviewed-main/tag freeze, one full signed IQ
+export from `v0.2.0` and full GitHub publication. The physical boundary above
+remains open.
