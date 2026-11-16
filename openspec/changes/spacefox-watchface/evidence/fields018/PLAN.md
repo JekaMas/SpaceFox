@@ -66,7 +66,4 @@ reconciled to public counterparts (UI PR13, cleanup PR4, preflight PR6).
 Image pipeline PR28, reminders PR29 and predecessor/publication PR30 are
 already transferred; current image owners are byte-identical to their peer.
 Eight likely current worktrees were clean. No ready absent production delta
-was identified. Thirty-four older historical/other refs were not individually
-requalified; these are not silently classified as green or merged. Never merge
-the private authoring main or retired experiments into the public tree merely
-because their ancestry differs.
+was identified. The remaining 34 older refs were also classified under the bounded readiness audit: transferred/current counterparts; retired old-wire, static, canary, fixture or evidence work; unbound 36-language/script foundations that are not product-qualified; and R4 artwork explicitly marked NO_ACTIVE_2026_CATALOG_ACCEPTANCE. One real absent 503 Retry-After change in provider.py at b70c4f45 remains explicitly unaccepted and incomplete (16 planned cases, six host observations; different peer and root judgment required). It is neither merged nor classified obsolete or green. All 248 heads are thus classified for bounded readiness; the eight current worktrees were clean. Those other unfinished units do not expand fields018. Never merge the private authoring main or retired experiments into the public tree merely because their ancestry differs.

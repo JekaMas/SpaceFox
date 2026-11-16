@@ -39,6 +39,8 @@ def generate(root=ROOT):
  for index,row in enumerate(rows):
   loc=row['id'];d=labels[loc];code=resource_code(row)
   texts={'AppName':'SpaceFox','Energy':'Body Battery','Language':d['language'],'FeedBaseUrl':d['feedUrl'],'Auto':d['auto'],'English':'English','Russian':'Русский'}
+  if loc in catalog['supportPolicy']['primaryLocales']:
+   texts['WatchSelected']={'ru':'Выбрано на часах','de':'Auf Uhr gewählt','fr':'Choisi sur la montre','es':'Elegido en el reloj'}.get(loc,'Selected on watch')
   appearance={
    'en':['Clock color','Countdown color','Field {n} color','Mint','White','Ice blue','Lavender','Gold','Pink'],
    'ru':['Цвет часов','Цвет отсчёта','Цвет поля {n}','Мятный','Белый','Голубой','Сиреневый','Золотой','Розовый'],
@@ -60,7 +62,7 @@ def generate(root=ROOT):
   payload.update(locale=loc,face=FACES.get(loc,'RobotoRegular'),rtl=row['direction']=='rtl',group=(' ' if loc in 'ru uk pl cs sk hu ro bg hr sl fi sv nb et lv lt fr'.split() else '.' if loc in 'de es it pt nl el tr da id'.split() else ','),dateOrder=('ymd' if loc in ['zh-Hans','zh-Hant','ja','ko','hu','lt','sv'] else 'mdy' if loc=='en' else 'dmy'))
   write(res/'json'/f'{ident}.json',json.dumps(payload,ensure_ascii=False,separators=(',',':'))+'\n')
  write(res/'json/locales.xml','<resources>\n'+''.join(f'<jsonData id="{i}" filename="{i}.json"/>\n' for i in json_ids)+'</resources>\n')
- settings=['<settings>'];props=['<properties>'];roles=['Steps','Energy','Heart','Stress','Calories','Battery']
+ settings=['<settings>'];props=['<properties>'];roles=['Steps','Energy','Heart','Stress','Calories','Battery','WatchSelected']
  for i in range(1,5):
   props.append(f'<property id="Field{i}" type="number">{i-1}</property>')
   settings.append(f'<setting propertyKey="@Properties.Field{i}" title="@Strings.Field{i}"><settingConfig type="list">'+''.join(f'<listEntry value="{n}">@Strings.{role}</listEntry>' for n,role in enumerate(roles))+'</settingConfig></setting>')

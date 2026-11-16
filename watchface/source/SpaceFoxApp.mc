@@ -18,7 +18,7 @@ class SpaceFoxApp extends Application.AppBase {
     }
 
     (:typecheck(disableBackgroundCheck))
-    function getSettingsView() as [Views] or [Views, InputDelegates] or Null {return SettingsMenu.root(self);}
+    function getSettingsView() as [Views] or [Views, InputDelegates] or Null {if(view!=null){view.releaseForSettings();}return SettingsMenu.root(self);}
 
     function getServiceDelegate() as [System.ServiceDelegate] {return [new FeedService()];}
     (:typecheck(disableBackgroundCheck))

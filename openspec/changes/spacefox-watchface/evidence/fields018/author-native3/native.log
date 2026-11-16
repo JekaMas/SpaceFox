@@ -1,0 +1,22 @@
+------------------------------------------------------------------------------
+Executing test fields018Format...
+DEBUG (03:34): FORMAT time, duration, pressure, signed, strings, type42, units, weather, null
+PASS
+------------------------------------------------------------------------------
+Executing test fields018Settings...
+DEBUG (03:34): SETTINGS legacy identities, custom slot and invalid defaults
+PASS
+------------------------------------------------------------------------------
+Executing test fields018NativeInventoryAndPersistence...
+DEBUG (03:34): INVENTORY actual=40 catalog=49 duplicates=4 subscriptions<=1 storedId=yes stop=yes
+PASS
+
+==============================================================================
+RESULTS
+Test:                                  Status:
+fields018Format                        PASS
+fields018Settings                      PASS
+fields018NativeInventoryAndPersistence PASS
+Ran 3 tests
+
+PASSED (passed=3, failed=0, errors=0)

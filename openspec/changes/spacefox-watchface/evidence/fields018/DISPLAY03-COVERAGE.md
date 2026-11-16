@@ -1,0 +1,21 @@
+# DISPLAY03 25-case reconciliation — scoped results
+
+The 25 identities are the complete `tools/native_display03_probe.py` NAMES tuple. They are not reduced to the first selected batch of 12. The initial admission-validator failure is preserved at `admission-red/first-validator.log`.
+
+Twelve directly affected by changed field manager, mode or view lifecycle were selected together in `display03-red`: CausalSequence, ReadyAndErrorOnWake, BackgroundBeforeFrame, SameBatchJob, SameSceneRefreshKeepsJob, ForegroundReloadDuringBuild, CurrentBodyBatteryLifecycle, ComplicationSourceBoundary, ActualComplicationApi, MetricRolesAndAge, LowDoesNotSample, OffStopsWork. Ten passed there, two were test-fixture/adapter errors fixed and passed at `display03-green`. The later change only replaces the custom-value branch in SceneRenderer.active; these twelve cases exercise mode, lifecycle, established roles and selected-source plumbing and do not draw a custom field. Their original exact compiled source snapshots remain bound to their receipts. The current custom branch is separately exercised by the FR165/FR170 fields018 renderer tests and 390 stock observation.
+
+Of the other 13, eight call modified SpaceFoxView construction, draw, mode transitions, onHide or scene-build lifecycle and therefore require current observations: MinuteRounding, RepeatedLowCallbacks, SleepThenHighObservation, WakeThenLowObservation, LocaleResume, FailedSameDigestRetry, SourcedHoldCache, WarmAodResources. Seven passed in `display03-extra-red`; retry failed at an expired captured launch fixture, corrected using the existing same-ID rebased fixture. An interrupted/hung retry is retained in `display03-extra-hang` and is not a pass. A fresh owned simulator rerun passed the corrected retry in `display03-extra-green` (raw SDK framework exit 1).
+
+Five retain their original semantic owner and evidence, without claiming that their entire old binary is current-source identical:
+
+| Case | Unchanged exercised owner/fixture | Retained observed PASS |
+| --- | --- | --- |
+| PrimaryLanguages | SceneSettings language conversion, LocalePresentation.calendar and the unchanged five literal date fixtures; fields018 only adds field role 6. | `display04-whole-quality/retained-primary-date/native.log` |
+| PackedCenters | SceneRenderer.aodCoordinate, NativeAssets coordinate bytes and resource IDs; fields018 modifies only ACTIVE custom-field drawing in SceneRenderer. | `display04-whole-quality/retained-display03-native/native.log` |
+| RealMapDecode | NativeSfrDecoder, map descriptor, shards and checksum fixture; fields018 changes view residency rather than decoder. | `display04-integrated016/map-final/native.log` |
+| StreamWireValidation | NativeSfrDecoder/NativeWireHash and the three exact canonical/padding input literals, unchanged. | `display04-integrated016/wire/native.log` |
+| SkipInvisibleRocket | NativeVisualRenderer animation clipping, NativeAnimation and SDK affine oracle, unchanged. | `display04-whole-quality/rocket-clipping/green/native.log` |
+
+Each retained result remains bound to its original receipt/inputs and proves only the specified unchanged behavior. The user-facing render, four-value fit and actual decoded 390/454 memory gates are separately required for the changed renderer.
+
+After the pending-decode renderer repair and paging, sixteen lifecycle/render identities were rerun on final ID `bd6dab7b`: the ten and six named in `display03-lifecycle-bd6dab7b/{receipt.json,additional-receipt.json}`. Both tables are PASS with raw SDK exit 1 and the same exact current test binary. The other four of the previous twenty retain their original results on unchanged direct owners: MinuteRounding (CountdownFormat), SourcedHoldCache (source status and SceneAod color), ComplicationSourceBoundary (SelectedFields adapter), and ActualComplicationApi (Complications API). The five earlier retained cases above remain scoped to their listed unchanged owners. This reconciles all 25 identities; it does not claim that historical binaries were rebuilt at the current ID. The separate real A+2 pending-tick red/green and final uninstrumented stock evidence cover the new renderer/decoder interaction and resource peak.

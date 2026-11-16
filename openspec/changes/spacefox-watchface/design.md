@@ -39,7 +39,7 @@ four independently configurable32px values in2×2 and larger country/site below 
 fields. Watch battery is a selectable field, with no separate active battery. Rocket and operator read together
 above time (`Falcon9 · SpaceX`), mission purpose on the next line. Long values
 wrap or abbreviate without inventing missing context; full supplied values remain
-in the accepted data. The only map is the accepted faded flat map. The current clock is fixed 24-hour HH:mm; the four fixed positions independently select one of six roles. Field roles, colors, language and feed URL remain configurable.
+in the accepted data. The only map is the accepted faded flat map. The current clock is fixed 24-hour HH:mm; the four fixed positions independently select an available Garmin source, preserving the six established role IDs. Field roles, colors, language and feed URL remain configurable.
 
 Coral countdown means a target reschedule or a source-qualified structured Hold/delay; a dotted underline independently means stale. Elapsed T+ time alone does not imply Hold.
 There is no exclamation/cloud badge or permanent last-update row. Watch charge
@@ -761,8 +761,7 @@ this specification-edit unit; root owns the separately authorized execution.
 The sole current schema-3 SFR1M envelope has one accepted flat-map selection and
 transfer; globe fields, selection settings, and operator-origin flag are retired,
 not passed compatibility features. The current clock is always 24-hour `HH:mm`;
-the four fixed positions choose one of six metric roles, with invalid values
-falling back individually. Animation is active-only; watch battery is a selectable
+the four fixed positions retain the six established metric role IDs, with invalid legacy values falling back individually; the model-aware 0.1.18 picker also supports accessible complications and daily values. Animation is active-only; watch battery is a selectable
 ACTIVE field and the selected site country flag belongs by the footer, not the rocket. Language and feed URL
 remain configurable. Existing public dual-scene feed and old cache are historical;
 a new authority/bootstrap and preserved rolling quota are required for a separately

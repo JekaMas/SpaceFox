@@ -97,7 +97,7 @@ import Toybox.Application;
 (:test,:typecheck(false)) function display03FailedSameDigestRetry(logger){
  var store=new D03TransientStore();var clock=new Display03Clock();var catalog=WatchUi.loadResource(Rez.JsonData.DisplayCatalog);
  store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);var base="https://fixture.invalid/display03-retry";
- var cache=new NativeCache(base,store);Test.assert(cache.accept(WatchUi.loadResource(Rez.JsonData.DisplayInitial)["raw"],clock.now));
+ clock.now=Time.now().value().toLong();var cache=new NativeCache(base,store);Test.assert(cache.accept(WatchUi.loadResource(Rez.JsonData.DisplayInitialFuture)["raw"],clock.now));
  var bridge=cache.packet.bridge;Test.assert(bridge["selection"]!=null);
  var objectKey="sf.obj."+bridge["selection"]["sha256"];store.write(objectKey,WatchUi.loadResource(Rez.JsonData.D03RetrySelection)["raw"]);store.rejected=objectKey;store.remaining=1;
  store.write("sf.batch.pending",{"base"=>base,"pending"=>false});
@@ -168,20 +168,20 @@ import Toybox.Application;
  try{
  var catalog=WatchUi.loadResource(Rez.JsonData.DisplayCatalog);var store=new D03Store();store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);
  var base=new NativeTransfer(configuredFeedUrl(),null).base;Test.assert(!base.equals(""));var now=Time.now().value().toLong();
- var cache=new NativeCache(base,store);var initial=WatchUi.loadResource(Rez.JsonData.DisplayInitial)["raw"];var moved=WatchUi.loadResource(Rez.JsonData.DisplayMoved)["raw"];
+ var cache=new NativeCache(base,store);var initial=WatchUi.loadResource(Rez.JsonData.DisplayInitialFuture)["raw"];var moved=WatchUi.loadResource(Rez.JsonData.DisplayMovedFuture)["raw"];
  Test.assert(cache.accept(initial,now));var bridge=cache.packet.bridge;
  store.write("sf.batch.pending",{"base"=>base,"pending"=>false});store.write("sf.batch.head",{"base"=>base,"pending"=>false,"catalogDigest"=>bridge["catalogDigest"],"transfer"=>bridge["transfer"],"serial"=>1});
  var transfer=new NativeTransfer(base,store);Test.assert(transfer.stage("feed",initial,null));var incoming=new NativeIncoming(store,base);store.write("sf.incoming.feed.processed",incoming.token(store.read("sf.incoming.feed")));
- var app=new SpaceFoxApp();var clock=new Display03Clock();var v=new SpaceFoxView(clock,new ScheduleState(null,"empty"));app.feed=cache;app.view=v;v.setPacket(cache.packet);v.setAssetCache(new NativeRenderSource(store,base,bridge));v.onShow();
+ var app=new SpaceFoxApp();var clock=new Display03Clock();clock.now=now;var v=new SpaceFoxView(clock,new ScheduleState(null,"empty"));app.feed=cache;app.view=v;v.setPacket(cache.packet);v.setAssetCache(new NativeRenderSource(store,base,bridge));v.onShow();
  Test.assert(v.sceneLifecycle.request(1));var token=v.sceneLifecycle.begin();Test.assert(token!=null);var job=v.sceneLifecycle.job;
- logger.debug("RELOAD_STAGE duplicate");Test.assert(transfer.stage("feed",initial,null));NativeForegroundApp.reload(app);Test.assert(v.sceneLifecycle.job==job);var writes=store.writes;
+ logger.debug("RELOAD_STAGE duplicate");Test.assertMessage(transfer.stage("feed",initial,null),"duplicate transfer stage rejected");NativeForegroundApp.reload(app);Test.assertMessage(v.sceneLifecycle.job==job,"duplicate reload discarded scene job");var writes=store.writes;
  NativeForegroundApp.reload(app);Test.assert(v.sceneLifecycle.job==job&&store.writes==writes);
  logger.debug("RELOAD_STAGE moved");Test.assert(transfer.stage("feed",moved,null));var start=System.getTimer();NativeForegroundApp.reload(app);var elapsed=System.getTimer()-start;
- Test.assertMessage(v.context!=null&&v.context.schedule.remainingSeconds(0)==1794611100,"new schedule must activate while optional scene is building");
+ Test.assertMessage(v.context!=null&&v.context.schedule.remainingSeconds(0)==WatchUi.loadResource(Rez.JsonData.DisplayMovedFuture)["target"],"new schedule must activate while optional scene is building");
  Test.assertMessage(elapsed<3000,"foreground schedule activation exceeded 3 seconds");Test.assert(!v.sceneLifecycle.complete(token));
  logger.debug("RELOAD_STAGE reject");var before=System.getSystemStats();Test.assert(transfer.stage("feed","{invalid",null));NativeForegroundApp.reload(app);
- Test.assert(app.restorePending&&v.context.schedule.remainingSeconds(0)==1794611100);logger.debug("RELOAD_STAGE restore");NativeForegroundApp.restore(app);app.restorePending=false;
- Test.assert(v.context.schedule.remainingSeconds(0)==1794611100);var after=System.getSystemStats();
+ Test.assert(app.restorePending&&v.context.schedule.remainingSeconds(0)==WatchUi.loadResource(Rez.JsonData.DisplayMovedFuture)["target"]);logger.debug("RELOAD_STAGE restore");NativeForegroundApp.restore(app);app.restorePending=false;
+ Test.assert(v.context.schedule.remainingSeconds(0)==WatchUi.loadResource(Rez.JsonData.DisplayMovedFuture)["target"]);var after=System.getSystemStats();
  v.onHide();logger.debug("FOREGROUND_RELOAD duplicateJobRetained=true duplicateWrites=0 movedTargetVisible=true oldCompletionRejected=true rejectedRetainsTarget=true elapsedMs="+elapsed+" appUsedBefore="+before.usedMemory+" appUsedAfter="+after.usedMemory+" appTotal="+after.totalMemory);return true;
  }finally{Application.Properties.setValue("FeedBaseUrl",previousBase);}
 }

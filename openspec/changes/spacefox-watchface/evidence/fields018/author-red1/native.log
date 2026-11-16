@@ -1,0 +1,30 @@
+------------------------------------------------------------------------------
+Executing test fields018Format...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - fields018Format() at /Users/jekamas/projects/SpaceFox-worktrees/model-aware-fields018-20261116/watchface/fields018-tests/Fields018Tests.mc:29 0x10003e1c 
+  - evaluate_test_entries_0_to_3() at /Users/jekamas/.codex/tmp/spacefox-fields018-lane-20261116/test1/gen/006-B4432-00/source/UnitTests.mcgen:53 0x100071e8 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-fields018-lane-20261116/test1/gen/006-B4432-00/source/UnitTests.mcgen:72 0x1000727a 
+ERROR
+------------------------------------------------------------------------------
+Executing test fields018Settings...
+DEBUG (03:28): SETTINGS legacy identities, custom slot and invalid defaults
+PASS
+------------------------------------------------------------------------------
+Executing test fields018NativeInventoryAndPersistence...
+DEBUG (03:28): INVENTORY actual=40 catalog=49 duplicates=4 subscriptions<=1 storedId=yes stop=yes
+PASS
+
+==============================================================================
+RESULTS
+Test:                                  Status:
+fields018Format                        ERROR
+fields018Settings                      PASS
+fields018NativeInventoryAndPersistence PASS
+Ran 3 tests
+
+FAILED (passed=2, failed=0, errors=1)

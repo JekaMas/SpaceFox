@@ -1,0 +1,87 @@
+------------------------------------------------------------------------------
+Executing test display03CausalSequence...
+DEBUG (05:11): D03_SEQUENCE seed=1 events=30 required_dispositions=12 skipped=0
+DEBUG (05:11): D03_SEQUENCE seed=2 events=30 required_dispositions=12 skipped=0
+DEBUG (05:11): D03_SEQUENCE seed=3 events=30 required_dispositions=12 skipped=0
+DEBUG (05:11): D03_SEQUENCE seed=4 events=30 required_dispositions=12 skipped=0
+DEBUG (05:11): D03_SEQUENCE seed=5 events=30 required_dispositions=12 skipped=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03ReadyAndErrorOnWake...
+DEBUG (05:11): READY_ERROR sleep accepted_target retained rejected_old no_load_until_first_active_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03BackgroundBeforeFrame...
+DEBUG (05:11): BACKGROUND sleep_applied=true wake_first_frame no_reload=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03SameBatchJob...
+DEBUG (05:11): SAME_BATCH serial_advance_preserved=true changed_digest_canceled=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03SameSceneRefreshKeepsJob...
+DEBUG (05:11): SAME_SCENE_REFRESH acceptedReopen=true queuedJobRetained=true assetSourceRetained=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03ForegroundReloadDuringBuild...
+DEBUG (05:11): RELOAD_STAGE duplicate
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - display03ForegroundReloadDuringBuild() at /Users/jekamas/projects/SpaceFox-worktrees/model-aware-fields018-20261116/watchface/display03-tests/Display03Sequence.mc:177 0x10002e1a 
+  - evaluate_test_entries_0_to_25() at /Users/jekamas/.codex/tmp/spacefox-fields018-final-display03/gen/006-B4433-00/source/UnitTests.mcgen:91 0x10009eb7 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-fields018-final-display03/gen/006-B4433-00/source/UnitTests.mcgen:138 0x1000a0c3 
+ERROR
+------------------------------------------------------------------------------
+Executing test display03CurrentBodyBatteryLifecycle...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - display03CurrentBodyBatteryLifecycle() at /Users/jekamas/projects/SpaceFox-worktrees/model-aware-fields018-20261116/watchface/display03-tests/MetricRoleTests.mc:60 0x100050b6 
+  - evaluate_test_entries_0_to_25() at /Users/jekamas/.codex/tmp/spacefox-fields018-final-display03/gen/006-B4433-00/source/UnitTests.mcgen:119 0x1000a031 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-fields018-final-display03/gen/006-B4433-00/source/UnitTests.mcgen:138 0x1000a0c3 
+ERROR
+------------------------------------------------------------------------------
+Executing test display03ComplicationSourceBoundary...
+DEBUG (05:11): FIELD_SOURCE oneOwner=true duplicatesOne=true deniedSubscription=true currentReadAllowed=true stopped=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03ActualComplicationApi...
+DEBUG (05:11): BODY_API valuePresent=true valueRangeChecked=true stopped=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03MetricRolesAndAge...
+DEBUG (05:11): METRIC_ROLE duplicate=one historyAgeBound=unchanged energy=currentComplication absent=unavailable fresh=restored
+PASS
+------------------------------------------------------------------------------
+Executing test display03LowDoesNotSample...
+PASS
+------------------------------------------------------------------------------
+Executing test display03OffStopsWork...
+DEBUG (05:11): OFF noPaintOrSampling=true cancelOnce=true highFirstFrameBeforeSampling=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                                Status:
+display03CausalSequence              PASS
+display03ReadyAndErrorOnWake         PASS
+display03BackgroundBeforeFrame       PASS
+display03SameBatchJob                PASS
+display03SameSceneRefreshKeepsJob    PASS
+display03ForegroundReloadDuringBuild ERROR
+display03CurrentBodyBatteryLifecycle ERROR
+display03ComplicationSourceBoundary  PASS
+display03ActualComplicationApi       PASS
+display03MetricRolesAndAge           PASS
+display03LowDoesNotSample            PASS
+display03OffStopsWork                PASS
+Ran 12 tests
+
+FAILED (passed=10, failed=0, errors=2)

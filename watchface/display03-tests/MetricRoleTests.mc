@@ -40,52 +40,49 @@ import Toybox.Test;
  logger.debug("OFF noPaintOrSampling=true cancelOnce=true highFirstFrameBeforeSampling=true");return true;
 }
 
-(:test,:typecheck(false)) class D03FakeBody extends BodyBatterySource {
+(:test,:typecheck(false)) class D03FakeFields extends SelectedFields {
  var starts=0;var reads=0;var stops=0;var next=68;
- function start(callback){if(!subscribed){starts+=1;subscribed=true;}return true;}
- function read(){reads+=1;observed=true;value=next;return value;}
- function stop(){if(subscribed){stops+=1;}subscribed=false;observed=false;value=null;}
+ function start(slots,callback){starts+=1;selected=slots.indexOf("energy")>=0?[new Complications.Id(23)]:[null];}
+ function read(locale){reads+=1;energy=selected[0] instanceof Complications.Id?next:null;}
+ function stop(){if(selected.size()>0){stops+=1;}selected=[];energy=null;}
+ function includes(id){return selected.size()>0&&id.getType()==23;}
 }
 (:test,:typecheck(false)) function display03CurrentBodyBatteryLifecycle(logger){
- var clock=new Display03Clock();var v=new SpaceFoxView(clock,new ScheduleState(null,"empty"));var body=new D03FakeBody();v.bodyBattery=body;v.fitness=new D03CountFitness();
+ var clock=new Display03Clock();var v=new SpaceFoxView(clock,new ScheduleState(null,"empty"));var fields=new D03FakeFields();v.selectedFields=fields;v.fitness=new D03CountFitness();
  v.setSettings(new SceneSettings({"Field1"=>1,"Field2"=>1,"Field3"=>1,"Field4"=>1}));v.renderer=new Display03ModeRenderer();v.onShow();
  var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);
- Test.assert(body.starts==0&&body.reads==0);v.resumeAfterFrame();Test.assert(body.starts==1&&body.reads==1&&v.values["energy"]==68);
- v.refreshFitness();Test.assert(body.starts==1&&body.reads==1);
- var id=new Complications.Id(Complications.COMPLICATION_TYPE_BODY_BATTERY);body.next=null;v.bodyBatteryChanged(id);Test.assert(body.reads==2&&v.values["energy"]==null);
- body.next=0;clock.now+=60;v.refreshFitness();Test.assert(body.reads==3&&v.values["energy"]==0);
- v.onEnterSleep();Test.assert(body.stops==1&&v.values["energy"]==null);v.bodyBatteryChanged(id);Test.assert(body.reads==3);
- v.onExitSleep();v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assert(body.reads==3);v.resumeAfterFrame();Test.assert(body.starts==2&&body.reads==4&&v.values["energy"]==0);
- v.setSettings(new SceneSettings({"Field1"=>0,"Field2"=>0,"Field3"=>0,"Field4"=>0}));Test.assert(body.stops==2&&v.values["energy"]==null);v.onHide();
- logger.debug("BODY_CURRENT selectedOnly=true duplicatesOne=true callbackNullAndZero=true lowNoRead=true wakeAfterFrame=true deselectionUnsubscribes=true");return true;
+ Test.assert(fields.starts==0&&fields.reads==0);v.resumeAfterFrame();Test.assert(fields.starts==1&&fields.reads==1&&v.values["energy"]==68);
+ v.refreshFitness();Test.assert(fields.starts==1&&fields.reads==1);
+ var id=new Complications.Id(23);fields.next=null;v.fieldsChanged(id);Test.assert(fields.reads==2&&v.values["energy"]==null);
+ fields.next=0;clock.now+=60;v.refreshFitness();Test.assert(fields.reads==3&&v.values["energy"]==0);
+ v.onEnterSleep();Test.assert(fields.stops==1&&v.values["energy"]==null);v.fieldsChanged(id);Test.assert(fields.reads==3);
+ v.onExitSleep();v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assert(fields.reads==3);v.resumeAfterFrame();Test.assert(fields.starts==2&&fields.reads==4&&v.values["energy"]==0);
+ v.setSettings(new SceneSettings({"Field1"=>0,"Field2"=>0,"Field3"=>0,"Field4"=>0}));Test.assert(fields.stops==2&&v.values["energy"]==null);v.onHide();
+ logger.debug("BODY_CURRENT unifiedOwner=true callbackNullAndZero=true lowNoRead=true wakeAfterFrame=true deselectionUnsubscribes=true");return true;
 }
-
-(:typecheck(false)) class D03Id {var kind;function initialize(k){kind=k;}function getType(){return kind;}}
-(:typecheck(false)) class D03ComplicationValue {var value;function initialize(v){value=v;}}
-(:typecheck(false)) module D03Complications {
- const BODY=23;var registration=0;var subscriptions=0;var removals=0;var reads=0;var next=null;var deny=false;var failRead=false;
- function reset(){registration=0;subscriptions=0;removals=0;reads=0;next=null;deny=false;failRead=false;}
- function registerComplicationChangeCallback(callback){registration+=1;}
- function subscribeToUpdates(id){subscriptions+=1;if(deny){return false;}return true;}
- function unsubscribeFromUpdates(id){removals+=1;}
- function getComplication(id){reads+=1;if(failRead){throw new Lang.InvalidValueException("unavailable");}return new D03ComplicationValue(next);}
+(:typecheck(false)) class D03ComplicationValue {
+ var value;var unit=null;var shortLabel="Body Battery";var longLabel="Body Battery";
+ function initialize(v){value=v;}function getType(){return 23;}
+}
+(:typecheck(false)) class D03Complications {
+ var registration=0;var subscriptions=0;var removals=0;var reads=0;var next=null;var deny=false;var failRead=false;
+ function register(callback){registration+=1;}function subscribe(id){subscriptions+=1;return !deny;}
+ function unsubscribe(id){removals+=1;}function get(id){reads+=1;if(failRead){throw new Complications.ComplicationNotFoundException();}return new D03ComplicationValue(next);}
 }
 (:typecheck(false)) class D03ComplicationObserver {function changed(id){}}
 (:test,:typecheck(false)) function display03ComplicationSourceBoundary(logger){
- D03Complications.reset();var source=new MappedBodyBatterySource();var observer=new D03ComplicationObserver();
- Test.assert(source.start(observer.method(:changed)));Test.assert(source.start(observer.method(:changed)));
- Test.assert(D03Complications.subscriptions==1&&D03Complications.registration==1);
- D03Complications.next=68;Test.assert(source.read()==68);D03Complications.next=0;Test.assert(source.read()==0);
- D03Complications.next=null;Test.assert(source.read()==null);D03Complications.next=101;Test.assert(source.read()==null);
- D03Complications.failRead=true;Test.assert(source.read()==null);source.stop();Test.assert(D03Complications.removals==1&&!source.subscribed&&!source.observed);
- D03Complications.reset();D03Complications.deny=true;Test.assert(!source.start(observer.method(:changed))&&!source.subscribed);
- D03Complications.next=48;Test.assert(source.read()==48);D03Complications.failRead=true;Test.assert(source.read()==null);
- logger.debug("BODY_SOURCE startDedup=true nullZeroRange=true deniedSubscription=true unavailableRead=null currentReadAllowed=true");return true;
+ var api=new D03Complications();var source=new SelectedFields();source.api=api;var observer=new D03ComplicationObserver();
+ source.start(["energy","energy","energy","energy"],observer.method(:changed));Test.assert(api.subscriptions==1&&api.registration==1);
+ api.next=68;source.read("en");Test.assert(source.energy==68&&api.reads==1);api.next=0;source.read("en");Test.assert(source.energy==0&&api.reads==2);
+ api.next=null;source.read("en");Test.assert(source.energy==null);api.next=101;source.read("en");Test.assert(source.energy==null);
+ api.failRead=true;source.read("en");Test.assert(source.energy==null);source.stop();Test.assert(api.removals==1&&!source.active()&&!source.callbackRegistered);
+ api=new D03Complications();api.deny=true;source.api=api;source.start(["energy","energy","energy","energy"],observer.method(:changed));
+ Test.assert(api.subscriptions==1&&source.subscribed.size()==0);api.next=48;source.read("en");Test.assert(source.energy==48);
+ api.failRead=true;source.read("en");Test.assert(source.energy==null);source.stop();
+ logger.debug("FIELD_SOURCE oneOwner=true duplicatesOne=true deniedSubscription=true currentReadAllowed=true stopped=true");return true;
 }
-
-(:test,:typecheck(false)) class D03ActualComplicationObserver {function changed(id){}}
 (:test,:typecheck(false)) function display03ActualComplicationApi(logger){
- var source=new BodyBatterySource();var observer=new D03ActualComplicationObserver();var subscribed=source.start(observer.method(:changed));
- var current=source.read();Test.assert(current==null||(current>=0&&current<=100));source.stop();
- Test.assert(!source.subscribed&&!source.observed);logger.debug("BODY_API subscription="+subscribed+" valuePresent="+(current!=null)+" valueRangeChecked=true stopped=true");return true;
+ var source=new SelectedFields();var observer=new D03ComplicationObserver();source.start(["energy","energy","energy","energy"],observer.method(:changed));source.read("en");
+ var current=source.energy;Test.assert(current==null||(current>=0&&current<=100));Test.assert(source.subscribed.size()<=1);source.stop();
+ Test.assert(!source.active()&&!source.callbackRegistered);logger.debug("BODY_API valuePresent="+(current!=null)+" valueRangeChecked=true stopped=true");return true;
 }

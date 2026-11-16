@@ -1,0 +1,21 @@
+------------------------------------------------------------------------------
+Executing test fields018DecodeTick...
+DEBUG (06:35): REAL_A2_PENDING slices=20 cadenceMs=50 minimumWallMs=1000 cpuMs=453 rendererRetained=false
+DEBUG (06:35): ACTIVE_TICK calls=0 countdown=null
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED: active countdown must redraw while real scene decode is pending
+Stack: 
+  - API code 0x30000203 
+  - fields018DecodeTick() at /Users/jekamas/.codex/tmp/spacefox-fields018-decode-tick-red/Probe.mc:9 0x1000320a 
+  - evaluate_test_entries_0_to_1() at /Users/jekamas/.codex/tmp/spacefox-fields018-decode-tick-red/gen/006-B4433-00/source/UnitTests.mcgen:51 0x10006dc6 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-fields018-decode-tick-red/gen/006-B4433-00/source/UnitTests.mcgen:66 0x10006e72 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+fields018DecodeTick                 ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

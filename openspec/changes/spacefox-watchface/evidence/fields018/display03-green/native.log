@@ -1,0 +1,21 @@
+------------------------------------------------------------------------------
+Executing test display03ForegroundReloadDuringBuild...
+DEBUG (05:14): RELOAD_STAGE duplicate
+DEBUG (05:14): RELOAD_STAGE moved
+DEBUG (05:14): RELOAD_STAGE reject
+DEBUG (05:14): RELOAD_STAGE restore
+DEBUG (05:14): FOREGROUND_RELOAD duplicateJobRetained=true duplicateWrites=0 movedTargetVisible=true oldCompletionRejected=true rejectedRetainsTarget=true elapsedMs=124 appUsedBefore=165312 appUsedAfter=180968 appTotal=8383928
+PASS
+------------------------------------------------------------------------------
+Executing test display03CurrentBodyBatteryLifecycle...
+DEBUG (05:14): BODY_CURRENT unifiedOwner=true callbackNullAndZero=true lowNoRead=true wakeAfterFrame=true deselectionUnsubscribes=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                                Status:
+display03ForegroundReloadDuringBuild PASS
+display03CurrentBodyBatteryLifecycle PASS
+Ran 2 tests
+
+PASSED (passed=2, failed=0, errors=0)

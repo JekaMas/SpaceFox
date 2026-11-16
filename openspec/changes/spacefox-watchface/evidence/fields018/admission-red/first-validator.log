@@ -1,0 +1,2 @@
+First current validator attempt: ValueError: fields018 first display result differs.
+Cause: the validator compared the 12 actually selected DISPLAY03 cases to the complete 25-case NAMES tuple. This is an admission-validator error, not a native product result. Subsequent source-owner audit identifies eight further affected cases for direct rerun and five semantically unchanged cases retained from their original source-bound observations; see DISPLAY03-COVERAGE.md. No 12/25 denominator reduction is admitted.

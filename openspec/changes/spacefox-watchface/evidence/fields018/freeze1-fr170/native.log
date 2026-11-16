@@ -1,0 +1,45 @@
+------------------------------------------------------------------------------
+Executing test fields018Format...
+DEBUG (05:11): FORMAT time, duration, pressure, signed, strings, type42, units, weather, null
+PASS
+------------------------------------------------------------------------------
+Executing test fields018Settings...
+DEBUG (05:11): SETTINGS legacy identities, custom slot and invalid defaults
+PASS
+------------------------------------------------------------------------------
+Executing test fields018NativeInventoryAndPersistence...
+DEBUG (05:11): INVENTORY actual=41 catalog=53 duplicates=4 subscriptions<=1 storedId=yes stop=yes
+PASS
+------------------------------------------------------------------------------
+Executing test fields018RenderRealSource...
+DEBUG (05:11): RENDER locale=en provider=FLRS output=FLRS 0 fields=4 bounds=true
+DEBUG (05:11): RENDER locale=ru provider=FLRS output=FLRS 0 fields=4 bounds=true
+PASS
+------------------------------------------------------------------------------
+Executing test fields018PrimaryLabels...
+DEBUG (05:11): PRIMARY labels locales=5 activity=21
+PASS
+------------------------------------------------------------------------------
+Executing test fields018SameSlotReplacement...
+DEBUG (05:11): SAME_SLOT property=6 unchanged=true source=A->B immediate=true lowStopped=true
+PASS
+------------------------------------------------------------------------------
+Executing test fields018CapabilityInventory...
+DEBUG (05:11): ACTIVITY_KEYS [distance, stepGoal, floorsClimbedGoal, floorsDescended, metersClimbed, metersDescended, moveBarLevel, activeMinutesWeekGoal, activeMinutesDayTotal, activeMinutesDayModerate, activeMinutesDayVigorous, activeMinutesWeekModerate, activeMinutesWeekVigorous, stressScore]
+DEBUG (05:11): SYSTEM_KEYS [system:batteryInDays, system:charging]
+DEBUG (05:11): CAPABILITY native=41 mapped=4 paged=37 activity=14 system=2 availableNullSelectable=true solarNullUnsupported=true solarNegativeSupported=true type42=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                                  Status:
+fields018Format                        PASS
+fields018Settings                      PASS
+fields018NativeInventoryAndPersistence PASS
+fields018RenderRealSource              PASS
+fields018PrimaryLabels                 PASS
+fields018SameSlotReplacement           PASS
+fields018CapabilityInventory           PASS
+Ran 7 tests
+
+PASSED (passed=7, failed=0, errors=0)

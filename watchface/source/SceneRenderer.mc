@@ -25,10 +25,7 @@ class SceneRenderer {
     function initialize(owner as LocalePresentation or Null) {
         presentation=owner==null?new LocalePresentation():owner;
         fonts = {};icons={};var transform=new Graphics.AffineTransform();transform.scale(2.0,2.0);mapScale={:transform=>transform,:filterMode=>Graphics.FILTER_MODE_BILINEAR};
-        var roles=["steps","energy","heart","stress","calories","battery"];
-        for(var i=0;i<roles.size();i+=1){icons[roles[i]]=load(NativeAssets.icons[roles[i]] as ResourceId) as Graphics.BitmapType;}
         marker=load(Rez.Drawables.LaunchMarker) as Graphics.BitmapType;
-        fonts["aod"] = load(Rez.Fonts.Aod40) as Graphics.FontType;
         fonts["time"] = load(Rez.Fonts.Time80) as Graphics.FontType;
         fonts["metric"] = load(Rez.Fonts.Metric32) as Graphics.FontType;
         fonts["label"] = presentation.label as Graphics.FontType;
@@ -42,6 +39,9 @@ class SceneRenderer {
     (:extendedCode)
     function prepare(context as SceneContext or Null, settings as SceneSettings) as Void {
         presentation.prepare(settings.language);fonts["label"]=presentation.label as Graphics.FontType;fonts["small"]=presentation.small as Graphics.FontType;fonts["count"]=presentation.count as Graphics.FontType;
+        var selected={} as Dictionary<String,Graphics.BitmapType>;
+        for(var i=0;i<settings.slots.size();i+=1){var role=settings.slots[i];if(NativeAssets.icons.hasKey(role)&&!selected.hasKey(role)){selected[role]=icons.hasKey(role)?(icons[role] as Graphics.BitmapType):load(NativeAssets.icons[role] as ResourceId) as Graphics.BitmapType;}}
+        icons=selected;
         // Unchanged model and qualified point retain the same bitmaps even if
         // metadata/settings were refreshed or the accepted scene woke again.
         var same=prepared && ((context==null && fullContext==null) ||
@@ -89,10 +89,10 @@ class SceneRenderer {
         var x=Math.cos(lambda)*Math.cos(phi);var y=Math.sin(lambda)*Math.cos(phi);var z=Math.sin(phi);
         return [(335+145*Math.atan2(y,x*Math.cos(delta)-z*Math.sin(delta))+0.5).toNumber(),(165-145*Math.asin(z*Math.cos(delta)+x*Math.sin(delta))+0.5).toNumber()];
     }
-    function fit(dc as Graphics.Dc, text as String, font as Graphics.FontType, width as Number) as String {
+    (:extendedCode) function fit(dc as Graphics.Dc, text as String, font as Graphics.FontType, width as Number) as String {
         return presentation.fit(dc,text,font,width);
     }
-    function text(dc as Graphics.Dc, x as Numeric, y as Numeric, font as Graphics.FontType, value as String, color as Number, width as Number, contour as Number) as String {
+    (:extendedCode) function text(dc as Graphics.Dc, x as Numeric, y as Numeric, font as Graphics.FontType, value as String, color as Number, width as Number, contour as Number) as String {
         var content = fit(dc, value, font, width);
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
         if (contour > 0) {
@@ -106,7 +106,7 @@ class SceneRenderer {
         dc.drawText(x, y, font, content, Graphics.TEXT_JUSTIFY_CENTER);
         return content;
     }
-    (:typecheck(false)) function active(dc as Graphics.Dc, current as ClockSnapshot, settings as SceneSettings, values as Dictionary<String, Number or Null>, fitness as Fitness, progress as Float) as Void {
+    (:extendedCode, :typecheck(false)) function active(dc as Graphics.Dc, current as ClockSnapshot, settings as SceneSettings, values as Dictionary<String, Number or Null>, fitness as Fitness, progress as Float) as Void {
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK); dc.clear();
         var rich=downloaded instanceof NativeSfrRenderer?downloaded:null;
         // A complete selected scene owns its validated map; the bundled map
@@ -164,26 +164,43 @@ class SceneRenderer {
         for (var i = 0; i < 4; i += 1) {
             var role = settings.slots[i];
             var label=metricText(fitness,values,role,settings);
-            label=fit(dc,label,fonts["metric"] as Graphics.FontType,128);
-            var width=dc.getTextWidthInPixels(label,fonts["metric"] as Graphics.FontType);
-            var left=i%2==0?55:335-width;if(i==2&&role.equals("battery")){left+=18;}var rowTop=i<2?244:282;var y=rowTop-4;
-            icon(dc,left-(role.equals("battery")?31:25),rowTop+(role.equals("battery")?2:5),role);
-            text(dc,left+width/2,y,fonts["metric"] as Graphics.FontType,label,settings.fieldColors[i],128,1);
+            var rowTop=i<2?244:282;
+            if(role.find("custom")==0){
+                var small=fonts["small"] as Graphics.FontType;var metric=fonts["metric"] as Graphics.FontType;
+                var customLeft=i%2==0?55:207;var name=fit(dc,fitness.fieldLabel(role),small,35);
+                var customIcon=fitness.fieldIcon(role);if(customIcon!=null){try{dc.drawBitmap2(customLeft-25,rowTop+5,customIcon[0],customIcon[1]);}catch(e){}}
+                text(dc,customLeft+17,rowTop+6,small,name,settings.fieldColors[i],35,1);
+                var valueFont=metricGlyphs(label)?metric:small;
+                text(dc,customLeft+80,rowTop+(valueFont==metric?-4:6),valueFont,label,settings.fieldColors[i],90,1);
+            }else{
+                label=fit(dc,label,fonts["metric"] as Graphics.FontType,128);
+                var width=dc.getTextWidthInPixels(label,fonts["metric"] as Graphics.FontType);
+                var left=i%2==0?55:335-width;if(i==2&&role.equals("battery")){left+=18;}var y=rowTop-4;
+                icon(dc,left-(role.equals("battery")?31:25),rowTop+(role.equals("battery")?2:5),role);
+                text(dc,left+width/2,y,fonts["metric"] as Graphics.FontType,label,settings.fieldColors[i],128,1);
+            }
         }
         if(selectedMap){if(rich.scene!=null && rich.scene["position"]!=null){dc.drawBitmap(321,151,marker);}}
         else if(pin){dc.drawBitmap(pinX-14,pinY-14,marker);}
     }
-    function metricText(fitness as Fitness,values as Dictionary<String,Number or Null>,role as String,settings as SceneSettings) as String {
+    // Metric32 contains digits, percent and punctuation only. Provider strings
+    // and units use the locale-capable font instead of missing bitmap glyphs.
+    (:extendedCode) function metricGlyphs(value as String) as Boolean {
+        for(var i=0;i<value.length();i+=1){if("0123456789.,% —…".find(value.substring(i,i+1) as String)==null){return false;}}
+        return true;
+    }
+    (:extendedCode) function metricText(fitness as Fitness,values as Dictionary<String,Number or Null>,role as String,settings as SceneSettings) as String {
         return presentation.metric(fitness,values,role);
     }
-    function underline(dc as Graphics.Dc,x as Numeric,y as Numeric,width as Number,color as Number) as Void {
+    (:extendedCode) function underline(dc as Graphics.Dc,x as Numeric,y as Numeric,width as Number,color as Number) as Void {
         dc.setColor(color,Graphics.COLOR_TRANSPARENT);
         for (var i = x-width/2; i <= x+width/2; i += 5) { dc.fillCircle(i,y,1); }
     }
-    function icon(dc as Graphics.Dc,x as Numeric,y as Numeric,role as String) as Void {
+    (:extendedCode) function icon(dc as Graphics.Dc,x as Numeric,y as Numeric,role as String) as Void {
         if(icons.hasKey(role)){dc.drawBitmap(x,y,icons[role] as Graphics.BitmapType);}
     }
-    function prepareAod() as Void {if(aodMap==null && aodResource!=null){aodMap=load(aodResource as ResourceId) as Graphics.BitmapType;}}
+    function prepareAod() as Void {if(!fonts.hasKey("aod")){fonts["aod"]=load(Rez.Fonts.Aod40) as Graphics.FontType;}if(aodMap==null && aodResource!=null){aodMap=load(aodResource as ResourceId) as Graphics.BitmapType;}}
+    function releaseAod() as Void {aodMap=null;fonts.remove("aod");}
     (:typecheck(false)) function aod(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,settings as SceneSettings) as Void {
         current.rescheduled=current.rescheduled||fullContext!=null&&fullContext.rescheduled;
         current.sourceHold=current.sourceHold||fullContext!=null&&fullContext.sourceHold;

@@ -1,0 +1,446 @@
+Timestamp               Ty Process[PID:TID]
+2026-11-16 05:49:26.565 Df syspolicyd[247:ac9f01d] [com.apple.syspolicy.exec:default] Found provenance data on process: TA(73d9d7df456b3728, 2), 42128
+2026-11-16 05:49:26.565 Df syspolicyd[247:ac9f01d] [com.apple.syspolicy.exec:default] Process was already in provenance sandbox, skipping: 42128, TA(73d9d7df456b3728, 2)
+2026-11-16 05:49:26.581 Df cfprefsd[179:acb7104] [com.apple.xpc:connection] [0x12081b0d0] activating connection: mach=false listener=false peer=true name=com.apple.cfprefsd.daemon.peer[42128].0x12081b0d0
+2026-11-16 05:49:26.581 Df cfprefsd[453:acb6b57] [com.apple.xpc:connection] [0x15790ad70] activating connection: mach=false listener=false peer=true name=com.apple.cfprefsd.agent.peer[42128].0x15790ad70
+2026-11-16 05:49:26.583 Df launchservicesd[152:acb75e2] [com.apple.xpc:connection] [0x1283f1480] activating connection: mach=false listener=false peer=true name=com.apple.coreservices.launchservicesd.peer[42128].0x1283f1480
+2026-11-16 05:49:26.583 Df pboard[465:acb71c3] [com.apple.xpc:connection] [0x12e010f70] activating connection: mach=false listener=false peer=true name=com.apple.pasteboard.1.peer[42128].0x12e010f70
+2026-11-16 05:49:26.583 Df distnoted[452:acb7192] [com.apple.xpc:connection] [0x14de9a460] activating connection: mach=false listener=false peer=true name=com.apple.distributed_notifications@Uv3.peer[42128].0x14de9a460
+2026-11-16 05:49:26.584 Df distnoted[452:acb7a06] [com.apple.distnoted:diagnostic] register name: AppleColorPreferencesChangedNotification object: kCFNotificationAnyObject token: 100000000 pid: 42128
+2026-11-16 05:49:26.585 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: AppleAppSleepPreferencesChangedNotification object: kCFNotificationAnyObject token: 200000001 pid: 42128
+2026-11-16 05:49:26.585 Df tccd[42312:acb6e6f] [com.apple.xpc:connection] [0x143436a50] activating connection: mach=false listener=false peer=true name=com.apple.tccd.system.peer[42128].0x143436a50
+2026-11-16 05:49:26.585 Df tccd[42312:acb6e6f] [com.apple.TCC:access] REQUEST: tccd_uid=0, sender_pid=42128, sender_uid=501, sender_auid=501, function=TCCAccessRequest, msgID=42128.1
+2026-11-16 05:49:26.585 Df tccd[42312:acb6e6f] [com.apple.TCC:access] AUTHREQ_CTX: msgID=42128.1, function=<private>, service=kTCCServiceListenEvent, preflight=yes, query=1, client_dict=(null), daemon_dict=<private>
+2026-11-16 05:49:26.585 Df tccd[42312:acb6e6f] [com.apple.TCC:access] AUTHREQ_ATTRIBUTION: msgID=42128.1, attribution={responsible={TCCDProcess: identifier=com.openai.codex, pid=50957, auid=501, euid=501, responsible_path=/Applications/ChatGPT.app/Contents/MacOS/ChatGPT, binary_path=/Applications/ChatGPT.app/Contents/MacOS/ChatGPT}, requesting={TCCDProcess: identifier=com.garmin.connectiq.simulator, pid=42128, auid=501, euid=501, binary_path=/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/ConnectIQ.app/Contents/MacOS/simulator}, },
+2026-11-16 05:49:26.587 Df tccd[42312:acb6e6f] [com.apple.TCC:access] AUTHREQ_SUBJECT: msgID=42128.1, subject=com.openai.codex,
+2026-11-16 05:49:26.598 Df tccd[42312:acb6e6f] [com.apple.TCC:access] AUTHREQ_RESULT: msgID=42128.1, authValue=0, authReason=4, authVersion=1, error=(null),
+2026-11-16 05:49:26.598 Df tccd[42312:acb6e6f] [com.apple.TCC:access] REPLY: (0) function=TCCAccessRequest, msgID=42128.1
+2026-11-16 05:49:26.600 Df tccd[42312:acb7b14] [com.apple.TCC:access] AUTHREQ_ATTRIBUTION: msgID=178.82450, attribution={responsible={TCCDProcess: identifier=com.openai.codex, pid=50957, auid=501, euid=501, responsible_path=/Applications/ChatGPT.app/Contents/MacOS/ChatGPT, binary_path=/Applications/ChatGPT.app/Contents/MacOS/ChatGPT}, accessing={TCCDProcess: identifier=com.garmin.connectiq.simulator, pid=42128, auid=501, euid=501, binary_path=/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/ConnectIQ.app/Contents/MacOS/simulator}, requesting={TCCDProcess: identifier=com.apple.WindowServer, pid=178, auid=88, euid=88, binary_path=/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/Resources/WindowServer}, },
+2026-11-16 05:49:26.600 Df tccd[42312:acb7b14] [com.apple.TCC:access] requestor: TCCDProcess: identifier=com.apple.WindowServer, pid=178, auid=88, euid=88, binary_path=/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/Resources/WindowServer is checking access for accessor TCCDProcess: identifier=com.garmin.connectiq.simulator, pid=42128, auid=501, euid=501, binary_path=/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/ConnectIQ.app/Contents/MacOS/simulator
+2026-11-16 05:49:26.622 Df simulator[42128:acb7b0f] [com.apple.processmanager:front-35286506] CHECKIN: pid=42128
+2026-11-16 05:49:26.626 Df launchservicesd[152:acb75e3] [com.apple.launchservices:cas] CHECKIN:0x0-0xf36c35d 42128 com.garmin.connectiq.simulator
+2026-11-16 05:49:26.626 Df simulator[42128:acb7b0f] [com.apple.processmanager:front-35286506] CHECKEDIN: pid=42128 asn=0x0-0xf36c35d foreground=1
+2026-11-16 05:49:26.626 Df runningboardd[186:acb6d4c] [com.apple.runningboard:general] Launchd didn't have information for pid 42128, reason: Error Domain=NSPOSIXErrorDomain Code=113 "Unknown error: 113"
+2026-11-16 05:49:26.626 Df runningboardd[186:acb6d4c] [com.apple.runningboard:process] _resolveProcessWithIdentifier pid 42128 euid 501 auid 501
+2026-11-16 05:49:26.626 Df runningboardd[186:acb6d4c] [com.apple.runningboard:process] Unable to obtain process properties from launchd for pid=42128
+2026-11-16 05:49:26.626 Df runningboardd[186:acb6d4c] [com.apple.runningboard:process] Resolved pid 42128 to [anon<simulator>(501):42128]
+2026-11-16 05:49:26.626 Df runningboardd[186:acb6d4c] [com.apple.runningboard:general] Full encoding handle <private>, with data 58ffe34f0000a490, and pid 42128
+2026-11-16 05:49:26.626 Df runningboardd[186:acb6d4c] [com.apple.runningboard:process] [anon<simulator>(501):42128] is not RunningBoard jetsam managed.
+2026-11-16 05:49:26.626 Df runningboardd[186:acb6d4c] [com.apple.runningboard:process] [anon<simulator>(501):42128] This process will not be managed.
+2026-11-16 05:49:26.626 Df runningboardd[186:acb6d4c] [com.apple.runningboard:ttl] Now tracking process: [anon<simulator>(501):42128]
+2026-11-16 05:49:26.627 Df runningboardd[186:acb6d4c] [com.apple.libxpc.OSLaunchdJob:all] copyJobWithPid:42128 failed with error 113: Could not find specified service
+2026-11-16 05:49:26.627 Df runningboardd[186:acb6d4c] [com.apple.runningboard:ttl] Acquiring assertion targeting [anon<simulator>(501):42128] from originator [osservice<com.apple.coreservices.launchservicesd>:152] with description <RBSAssertionDescriptor| "foregroundApp:42128" ID:186-152-2676522 target:42128 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.launchservicesd" name:"RoleUserInteractiveNonFocal" sourceEnvironment:"(null)">
+	]>
+2026-11-16 05:49:26.627 Df lsd[467:acb7562] [com.apple.xpc:connection] [0x14f427d80] activating connection: mach=false listener=false peer=true name=com.apple.lsd.modifydb.peer[42128].0x14f427d80
+2026-11-16 05:49:26.627 Df runningboardd[186:acb6d4c] [com.apple.runningboard:ttl] Assertion 186-152-2676522 (target:[anon<simulator>(501):42128]) will be created as active
+2026-11-16 05:49:26.627 Df runningboardd[186:acb7a10] [com.apple.runningboard:ttl] Acquiring assertion targeting [anon<simulator>(501):42128] from originator [osservice<com.apple.coreservices.launchservicesd>:152] with description <RBSAssertionDescriptor| "foregroundApp:42128" ID:186-152-2676523 target:42128 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.launchservicesd" name:"RoleUserInteractiveNonFocal" sourceEnvironment:"(null)">
+	]>
+2026-11-16 05:49:26.627 Df runningboardd[186:acb7a11] [com.apple.runningboard:process] [anon<simulator>(501):42128] Ignoring jetsam update because this process is not memory-managed
+2026-11-16 05:49:26.627 Df runningboardd[186:acb7a11] [com.apple.runningboard:process] [anon<simulator>(501):42128] Ignoring suspend because this process is not lifecycle managed
+2026-11-16 05:49:26.627 Df runningboardd[186:acb7a11] [com.apple.runningboard:ttl] [anon<simulator>(501):42128] Set darwin role to: UserInteractiveNonFocal
+2026-11-16 05:49:26.627 Df runningboardd[186:acb7a11] [com.apple.runningboard:process] [anon<simulator>(501):42128] Ignoring GPU update because this process is not GPU managed
+2026-11-16 05:49:26.627 Df runningboardd[186:acb7a11] [com.apple.runningboard:process] [anon<simulator>(501):42128] Ignoring memory limit update because this process is not memory-managed
+2026-11-16 05:49:26.627 Df lsd[467:acb7562] [com.apple.launchservices:default] pid 42128 registering self
+2026-11-16 05:49:26.627 Df runningboardd[186:acb7a10] [com.apple.runningboard:ttl] Assertion 186-152-2676523 (target:[anon<simulator>(501):42128]) will be created as active
+2026-11-16 05:49:26.627 Df runningboardd[186:acb7a10] [com.apple.runningboard:ttl] Invalidating assertion 186-152-2676522 (target:[anon<simulator>(501):42128]) from originator [osservice<com.apple.coreservices.launchservicesd>:152]
+2026-11-16 05:49:26.627 Df gamepolicyd[378:acb726b] [com.apple.runningboard:process] Hit the server for a process handle 18ffe34f0000a490 that resolved to: [anon<simulator>(501):42128]
+2026-11-16 05:49:26.627 Df gamepolicyd[378:acb726b] [com.apple.runningboard:monitor] Received state update for 42128 (anon<simulator>(501), running-NotVisible
+2026-11-16 05:49:26.633 Df simulator[42128:acb7b0f] [com.apple.processmanager:front-35286506] Registered, pid=42128 ASN=0x0,0xf36c35d
+2026-11-16 05:49:26.634 Df lsd[467:acb7562] [com.apple.xpc:connection] [0x14f132d50] activating connection: mach=false listener=false peer=true name=com.apple.lsd.mapdb.peer[42128].0x14f132d50
+2026-11-16 05:49:26.635 Df simulator[42128:acb7b0f] [com.apple.processmanager:front-35286506] BringForward: pid=42128 asn=0x0-0xf36c35d bringForward=0 foreground=1 uiElement=0 launchedByLS=0 modifiersCount=0 allDisabled=0
+2026-11-16 05:49:26.637 Df distnoted[452:acb7a06] [com.apple.distnoted:diagnostic] register name: AppleInterfaceMenuBarHidingChangedNotification object: kCFNotificationAnyObject token: 300000002 pid: 42128
+2026-11-16 05:49:26.637 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: __NSFakeMemoryPressureNotification object: kCFNotificationAnyObject token: 400000003 pid: 42128
+2026-11-16 05:49:26.642 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: AppleAquaColorVariantChanged object: kCFNotificationAnyObject token: 500000004 pid: 42128
+2026-11-16 05:49:26.642 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: AppleReduceDesktopTintingChanged object: kCFNotificationAnyObject token: 600000005 pid: 42128
+2026-11-16 05:49:26.644 Df distnoted[452:acb7a06] [com.apple.distnoted:diagnostic] register name: AXInterfaceIncreaseContrastStatusDidChange object: kCFNotificationAnyObject token: 700000006 pid: 42128
+2026-11-16 05:49:26.644 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: AXInterfaceClassicInvertColorStatusDidChange object: kCFNotificationAnyObject token: 800000007 pid: 42128
+2026-11-16 05:49:26.644 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: AXInterfaceDifferentiateWithoutColorStatusDidChange object: kCFNotificationAnyObject token: 900000008 pid: 42128
+2026-11-16 05:49:26.644 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: AXInterfaceShowWindowTitlebarIconsStatusDidChangeNotification object: kCFNotificationAnyObject token: a00000009 pid: 42128
+2026-11-16 05:49:26.644 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: AXInterfaceReduceTransparencyStatusDidChange object: kCFNotificationAnyObject token: b0000000a pid: 42128
+2026-11-16 05:49:26.644 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: AXInterfaceReduceMotionStatusDidChange object: kCFNotificationAnyObject token: c0000000b pid: 42128
+2026-11-16 05:49:26.644 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: com.apple.universalaccess.screenPolarityDidChange object: kCFNotificationAnyObject token: d0000000c pid: 42128
+2026-11-16 05:49:26.644 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: com.apple.universalaccess.screenGrayscaleDidChange object: kCFNotificationAnyObject token: e0000000d pid: 42128
+2026-11-16 05:49:26.644 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: AXInterfaceShowToolbarButtonShapesStatusDidChangeNotification object: kCFNotificationAnyObject token: f0000000e pid: 42128
+2026-11-16 05:49:26.644 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: ApplePrivateInterfaceThemeChangedNotification object: kCFNotificationAnyObject token: 100000000f pid: 42128
+2026-11-16 05:49:26.654 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: com.apple.universalaccess.VoiceOverSettingsDidChange object: kCFNotificationAnyObject token: 1100000010 pid: 42128
+2026-11-16 05:49:26.654 Df distnoted[452:acb7a06] [com.apple.distnoted:diagnostic] register name: UniversalAccessDomainAssistiveControlSettingsDidChangeNotification object: kCFNotificationAnyObject token: 1200000011 pid: 42128
+2026-11-16 05:49:26.654 Df distnoted[452:acb7a06] [com.apple.distnoted:diagnostic] register name: UADomainKeyboardAccessSettingsDidChangeNotification object: kCFNotificationAnyObject token: 130000001a pid: 42128
+2026-11-16 05:49:26.654 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: AppleNoRedisplayAppearancePreferenceChanged object: kCFNotificationAnyObject token: 1400000019 pid: 42128
+2026-11-16 05:49:26.654 Df distnoted[452:acb7a06] [com.apple.distnoted:diagnostic] register name: AppleNoRedisplayAppearancePreferenceChanged object: kCFNotificationAnyObject token: 1500000018 pid: 42128
+2026-11-16 05:49:26.654 Df distnoted[452:acb7a06] [com.apple.distnoted:diagnostic] register name: com.apple.AppleSpacesSwitchOnActivate object: kCFNotificationAnyObject token: 1600000017 pid: 42128
+2026-11-16 05:49:26.655 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: AppleKeyboardPreferencesFnKeySettingChangedNotification object: kCFNotificationAnyObject token: 1700000016 pid: 42128
+2026-11-16 05:49:26.658 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: NSEventResetDefaults object: com.apple.AppKit.NSEventResetDefaults token: 1800000015 pid: 42128
+2026-11-16 05:49:26.658 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: com.apple.AppleMultitouchTrackpadDomainDidChangeNotification object: kCFNotificationAnyObject token: 1900000014 pid: 42128
+2026-11-16 05:49:26.658 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: AppleEnableSwipeNavigateWithScrollsDidChangeNotification object: kCFNotificationAnyObject token: 1a00000013 pid: 42128
+2026-11-16 05:49:26.658 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: AppleEnableMouseSwipeNavigateWithScrollsDidChangeNotification object: kCFNotificationAnyObject token: 1b00000012 pid: 42128
+2026-11-16 05:49:26.658 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: com.apple.xctest.FakeForceTouchDevice object: com.garmin.connectiq.simulator token: 1c00000023 pid: 42128
+2026-11-16 05:49:26.660 Df analyticsd[206:acb7ab3] [com.apple.xpc:connection] [0x15097fdc0] activating connection: mach=false listener=false peer=true name=com.apple.analyticsd.peer[42128].0x15097fdc0
+2026-11-16 05:49:26.676 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: UAPMenuFontSizeDidChangeNotification object: kCFNotificationAnyObject token: 1d00000022 pid: 42128
+2026-11-16 05:49:26.676 Df distnoted[452:acb7a06] [com.apple.distnoted:diagnostic] register name: AppleAquaAntiAliasingChanged object: kCFNotificationAnyObject token: 1e00000021 pid: 42128
+2026-11-16 05:49:26.677 Df distnoted[452:acb7a06] [com.apple.distnoted:diagnostic] register name: com.apple.accessibility.api object: kCFNotificationAnyObject token: 1f00000020 pid: 42128
+2026-11-16 05:49:26.677 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: com.apple.userkeyequivalentsdidchange object: kCFNotificationAnyObject token: 200000001f pid: 42128
+2026-11-16 05:49:26.686 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: AppleNoRedisplayAppearancePreferenceChanged object: kCFNotificationAnyObject token: 210000001e pid: 42128
+2026-11-16 05:49:26.686 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: __NSFakeMemoryPressureNotification object: kCFNotificationAnyObject token: 220000001d pid: 42128
+2026-11-16 05:49:26.687 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: NSPersistentUIBitmapEncryptionKeyDidChange object: kCFNotificationAnyObject token: 230000001c pid: 42128
+2026-11-16 05:49:26.691 Df appleeventsd[306:acb75cb] [com.apple.xpc:connection] [0x1390150f0] activating connection: mach=false listener=false peer=true name=com.apple.coreservices.appleevents.peer[42128].0x1390150f0
+2026-11-16 05:49:26.691 Df simulator[42128:acb7b0f] [com.apple.processmanager:front-35286506] SignalReady: pid=42128 asn=0x0-0xf36c35d
+2026-11-16 05:49:26.691 Df simulator[42128:acb7b0f] [com.apple.processmanager:front-35286506] SIGNAL: pid=42128 asn=0x0x-0xf36c35d
+2026-11-16 05:49:26.692 Df distnoted[452:acb7a06] [com.apple.distnoted:diagnostic] register name: com.apple.Carbon.TISNotifyHandwritingInputSourceChanged object: kCFNotificationAnyObject token: 240000001b pid: 42128
+2026-11-16 05:49:26.693 Df distnoted[452:acb7a06] [com.apple.distnoted:diagnostic] register name: AXInterfaceIncreaseContrastStatusDidChange object: kCFNotificationAnyObject token: 250000002c pid: 42128
+2026-11-16 05:49:26.693 Df distnoted[452:acb7a06] [com.apple.distnoted:diagnostic] register name: AppleDatePreferencesChangedNotification object: kCFNotificationAnyObject token: 260000002b pid: 42128
+2026-11-16 05:49:26.693 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: AppleTimePreferencesChangedNotification object: kCFNotificationAnyObject token: 270000002a pid: 42128
+2026-11-16 05:49:26.693 Df distnoted[452:acb7a06] [com.apple.distnoted:diagnostic] register name: AppleNumberPreferencesChangedNotification object: kCFNotificationAnyObject token: 2800000029 pid: 42128
+2026-11-16 05:49:26.693 Df distnoted[452:acb7a06] [com.apple.distnoted:diagnostic] register name: AppleTextBehaviorPreferencesChangedNotification object: kCFNotificationAnyObject token: 2900000028 pid: 42128
+2026-11-16 05:49:26.693 Df distnoted[452:acb7a06] [com.apple.distnoted:diagnostic] register name: AppleLanguagePreferencesChangedNotification object: kCFNotificationAnyObject token: 2a00000027 pid: 42128
+2026-11-16 05:49:26.693 Df distnoted[452:acb7a06] [com.apple.distnoted:diagnostic] register name: AppleKeyboardMenuPreferencesChangedNotification object: kCFNotificationAnyObject token: 2b00000026 pid: 42128
+2026-11-16 05:49:26.693 Df distnoted[452:acb7a06] [com.apple.distnoted:diagnostic] register name: AppleKeyboardPreferencesChangedNotification object: kCFNotificationAnyObject token: 2c00000025 pid: 42128
+2026-11-16 05:49:26.693 Df distnoted[452:acb7a06] [com.apple.distnoted:diagnostic] register name: AppleKeyboardPreferencesSelectedItemsChangedNotification object: kCFNotificationAnyObject token: 2d00000024 pid: 42128
+2026-11-16 05:49:26.693 Df distnoted[452:acb7a06] [com.apple.distnoted:diagnostic] register name: AppleSelectedInputMethodPasteboardInvalidNotification object: kCFNotificationAnyObject token: 2e00000035 pid: 42128
+2026-11-16 05:49:26.693 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: AppleTextInputMenuExtraDidLoadNotification object: kCFNotificationAnyObject token: 2f00000034 pid: 42128
+2026-11-16 05:49:26.693 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: com.apple.Carbon.TISNotifyEnabledKeyboardInputSourcesChanged object: kCFNotificationAnyObject token: 3000000033 pid: 42128
+2026-11-16 05:49:26.693 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: com.apple.Carbon.TISNotifyHandwritingInputSourceChanged object: kCFNotificationAnyObject token: 3100000032 pid: 42128
+2026-11-16 05:49:26.693 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: com.apple.Carbon.TISNotifyIronwoodAutoEnableChanged object: kCFNotificationAnyObject token: 3200000031 pid: 42128
+2026-11-16 05:49:26.693 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: AppleInstalledInputSourcesChangedNotification object: kCFNotificationAnyObject token: 3300000030 pid: 42128
+2026-11-16 05:49:26.694 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: AppleEnabledInputSourcesChangedNotification object: kCFNotificationAnyObject token: 340000002f pid: 42128
+2026-11-16 05:49:26.694 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: AppleSelectedInputSourcesChangedNotification object: kCFNotificationAnyObject token: 350000002e pid: 42128
+2026-11-16 05:49:26.694 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: com.apple.Carbon.TISNotifyEnabledHandwritingLanguagesChanged object: kCFNotificationAnyObject token: 360000002d pid: 42128
+2026-11-16 05:49:26.694 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: com.apple.Carbon.TISNotifySelectedHandwritingLanguageChanged object: kCFNotificationAnyObject token: 370000003f pid: 42128
+2026-11-16 05:49:26.694 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: AppleRomanSwitchSettingChangedNotification object: kCFNotificationAnyObject token: 380000003e pid: 42128
+2026-11-16 05:49:26.694 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: AppleKeyboardPreferencesFnKeySettingChangedNotification object: kCFNotificationAnyObject token: 390000003d pid: 42128
+2026-11-16 05:49:26.697 Df distnoted[452:acb7a06] [com.apple.distnoted:diagnostic] register name: com.apple.Carbon.TISNotifySelectedKeyboardInputSourceChanged object: kCFNotificationAnyObject token: 3a0000003c pid: 42128
+2026-11-16 05:49:26.710 Df WindowManager[462:acb7381] [com.apple.windowmanagement:xpcconnection] Connection activated | (42128) Connect IQ Device Simulator
+2026-11-16 05:49:26.710 Df WindowManager[462:acb7381] [com.apple.xpc:connection] [0x1054bf8b0] activating connection: mach=false listener=false peer=true name=com.apple.windowmanager.server.peer[42128].0x1054bf8b0
+2026-11-16 05:49:26.733 Df gamepolicyd[378:acb7a13] [com.apple.runningboard:monitor] Received state update for 42128 (anon<simulator>(501), running-NotVisible
+2026-11-16 05:49:28.853 Df fontd[619:acb75d9] [com.apple.xpc:connection] [0x145d785b0] activating connection: mach=false listener=false peer=true name=com.apple.fonts.peer[42128].0x145d785b0
+2026-11-16 05:49:28.877 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: com.apple.nsquiet_safe_quit_give_reason object: com.garmin.connectiq.simulator token: 3b0000003b pid: 42128
+2026-11-16 05:49:28.884 Df Dock[644:19ba] [com.apple.xpc:connection] [0x146abd080] activating connection: mach=false listener=false peer=true name=com.apple.dock.fullscreen.peer[42128].0x146abd080
+2026-11-16 05:49:28.888 Df csnameddatad[64450:acb75d0] [com.apple.xpc:connection] [0x152a041a0] activating connection: mach=false listener=false peer=true name=com.apple.carboncore.csnameddata.peer[42128].0x152a041a0
+2026-11-16 05:49:28.917 Df distnoted[452:acb7a06] [com.apple.distnoted:diagnostic] register name: com.apple.KeyboardUIModeDidChange object: kCFNotificationAnyObject token: 3c0000003a pid: 42128
+2026-11-16 05:49:28.917 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: NSWindowForceInvalidateShadow object: kCFNotificationAnyObject token: 3d00000039 pid: 42128
+2026-11-16 05:49:28.933 Df runningboardd[186:acb7b1d] [com.apple.runningboard:connection] Incoming connection from 42128, user 501/501
+2026-11-16 05:49:28.934 Df runningboardd[186:acb7b1d] [com.apple.xpc:connection] [0x11ecf2990] activating connection: mach=false listener=false peer=true name=com.apple.runningboard.peer[42128].0x11ecf2990
+2026-11-16 05:49:28.934 Df runningboardd[186:acb7b1d] [com.apple.runningboard:connection] Setting client for [anon<simulator>(501):42128] as ready
+2026-11-16 05:49:28.934 Df runningboardd[186:acb7b1d] [com.apple.runningboard:connection] Process: [anon<simulator>(501):42128]: Sending inheritance changeset: <RBSInheritanceChangeSet| gained:{(
+    <RBSInheritance| environment:(none) name:com.apple.launchservices.userfacing origID:186-152-2676523 0>
+)} lost:{(
+)}>
+2026-11-16 05:49:28.934 Df runningboardd[186:acb7b1d] [com.apple.runningboard:connection] Received handshake request from 42128 with 0 assertion descriptors
+2026-11-16 05:49:28.934 Df runningboardd[186:acb7b1d] [com.apple.runningboard:connection] Handshake successful with 42128; sending response
+2026-11-16 05:49:28.934 Df runningboardd[186:acb7a10] [com.apple.runningboard:ttl] Acquiring assertion targeting [anon<simulator>(501):42128] from originator [anon<simulator>(501):42128] with description <RBSAssertionDescriptor| "AppNap adapter assertion" ID:186-42128-2676525 target:42128 attributes:[
+	<RBSAcquisitionCompletionAttribute| policy:AfterApplication>,
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"Enable" sourceEnvironment:"(null)">,
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"Inactive" sourceEnvironment:"(null)">,
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"PreventDiskThrottle" sourceEnvironment:"(null)">,
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"PreventSuppressedCPU" sourceEnvironment:"(null)">,
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"PreventLowPriorirtyCPU" sourceEnvironment:"(null)">,
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"PreventBackgroundSockets" sourceEnvironment:"(null)">,
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"PreventTimerThrottleTier0" sourceEnvironment:"(null)">
+	]>
+2026-11-16 05:49:28.934 Df runningboardd[186:acb7a10] [com.apple.runningboard:ttl] Assertion 186-42128-2676525 (target:[anon<simulator>(501):42128]) will be created as active
+2026-11-16 05:49:28.935 Df runningboardd[186:acb7b1d] [com.apple.runningboard:process] [anon<simulator>(501):42128] Ignoring jetsam update because this process is not memory-managed
+2026-11-16 05:49:28.935 Df runningboardd[186:acb7b1d] [com.apple.runningboard:process] [anon<simulator>(501):42128] Ignoring suspend because this process is not lifecycle managed
+2026-11-16 05:49:28.935 Df runningboardd[186:acb7b1d] [com.apple.runningboard:process] [anon<simulator>(501):42128] Ignoring GPU update because this process is not GPU managed
+2026-11-16 05:49:28.935 Df runningboardd[186:acb7b1d] [com.apple.runningboard:process] [anon<simulator>(501):42128] Ignoring memory limit update because this process is not memory-managed
+2026-11-16 05:49:28.935 Df runningboardd[186:acb7b1d] [com.apple.runningboard:process] [anon<simulator>(501):42128] Set AppNap state: <RBMutableProcessAppNapState|0x11d7863b0 enabled:Y active:N socket:N disk:N priority:N cpu:N timer:Tier0>
+2026-11-16 05:49:28.935 Df gamepolicyd[378:acb726b] [com.apple.runningboard:monitor] Received state update for 42128 (anon<simulator>(501), running-NotVisible
+2026-11-16 05:49:28.935 Df ViewBridgeAuxiliary[618:acb7434] [com.apple.xpc:connection] [0x111f09780] activating connection: mach=false listener=false peer=true name=com.apple.ViewBridgeAuxiliary.peer[42128].0x111f09780
+2026-11-16 05:49:28.936 Df ViewBridgeAuxiliary[618:acb7434] [com.apple.xpc:connection] [0x123d19970] activating connection: mach=false listener=false peer=true name=com.apple.xpc.anonymous.0x121e0b980.peer[42128].0x123d19970
+2026-11-16 05:49:28.943 Df distnoted[452:acb7192] [com.apple.distnoted:diagnostic] register name: NSSecondaryDisplayVisChanged object: kCFNotificationAnyObject token: 3e00000038 pid: 42128
+2026-11-16 05:49:28.954 Df runningboardd[186:acb7a10] [com.apple.runningboard:ttl] Acquiring assertion targeting [anon<simulator>(501):42128] from originator [osservice<com.apple.WindowServer(88)>:178] with description <RBSAssertionDescriptor| "AppDrawing" ID:186-178-2676526 target:42128 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"AppDrawing" sourceEnvironment:"(null)">,
+	<RBSAcquisitionCompletionAttribute| policy:AfterApplication>
+	]>
+2026-11-16 05:49:28.954 Df runningboardd[186:acb7a10] [com.apple.runningboard:ttl] Assertion 186-178-2676526 (target:[anon<simulator>(501):42128]) will be created as active
+2026-11-16 05:49:28.954 Df runningboardd[186:acb6d4c] [com.apple.runningboard:process] [anon<simulator>(501):42128] Ignoring jetsam update because this process is not memory-managed
+2026-11-16 05:49:28.954 Df runningboardd[186:acb6d4c] [com.apple.runningboard:process] [anon<simulator>(501):42128] Ignoring suspend because this process is not lifecycle managed
+2026-11-16 05:49:28.954 Df runningboardd[186:acb6d4c] [com.apple.runningboard:process] [anon<simulator>(501):42128] Ignoring GPU update because this process is not GPU managed
+2026-11-16 05:49:28.954 Df runningboardd[186:acb6d4c] [com.apple.runningboard:process] [anon<simulator>(501):42128] Ignoring memory limit update because this process is not memory-managed
+2026-11-16 05:49:28.960 Df runningboardd[186:acb6d4c] [com.apple.runningboard:ttl] Acquiring assertion targeting [anon<simulator>(501):42128] from originator [osservice<com.apple.WindowServer(88)>:178] with description <RBSAssertionDescriptor| "AppVisible" ID:186-178-2676527 target:42128 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"AppVisible" sourceEnvironment:"(null)">,
+	<RBSAcquisitionCompletionAttribute| policy:AfterApplication>
+	]>
+2026-11-16 05:49:28.960 Df runningboardd[186:acb6d4c] [com.apple.runningboard:ttl] Assertion 186-178-2676527 (target:[anon<simulator>(501):42128]) will be created as active
+2026-11-16 05:49:28.960 Df runningboardd[186:acb6d4c] [com.apple.runningboard:process] [anon<simulator>(501):42128] Ignoring jetsam update because this process is not memory-managed
+2026-11-16 05:49:28.960 Df runningboardd[186:acb6d4c] [com.apple.runningboard:process] [anon<simulator>(501):42128] Ignoring suspend because this process is not lifecycle managed
+2026-11-16 05:49:28.960 Df runningboardd[186:acb6d4c] [com.apple.runningboard:process] [anon<simulator>(501):42128] Ignoring GPU update because this process is not GPU managed
+2026-11-16 05:49:28.960 Df runningboardd[186:acb6d4c] [com.apple.runningboard:process] [anon<simulator>(501):42128] Ignoring memory limit update because this process is not memory-managed
+2026-11-16 05:49:29.041 Df gamepolicyd[378:acb7a13] [com.apple.runningboard:monitor] Received state update for 42128 (anon<simulator>(501), running-NotVisible
+2026-11-16 05:49:58.883 Df tccd[42312:acb806c] [com.apple.TCC:access] AUTHREQ_ATTRIBUTION: msgID=178.82452, attribution={responsible={TCCDProcess: identifier=com.openai.codex, pid=50957, auid=501, euid=501, responsible_path=/Applications/ChatGPT.app/Contents/MacOS/ChatGPT, binary_path=/Applications/ChatGPT.app/Contents/MacOS/ChatGPT}, accessing={TCCDProcess: identifier=com.garmin.connectiq.simulator, pid=42128, auid=501, euid=501, binary_path=/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/ConnectIQ.app/Contents/MacOS/simulator}, requesting={TCCDProcess: identifier=com.apple.WindowServer, pid=178, auid=88, euid=88, binary_path=/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/Resources/WindowServer}, },
+2026-11-16 05:49:58.884 Df tccd[42312:acb806c] [com.apple.TCC:access] requestor: TCCDProcess: identifier=com.apple.WindowServer, pid=178, auid=88, euid=88, binary_path=/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/Resources/WindowServer is checking access for accessor TCCDProcess: identifier=com.garmin.connectiq.simulator, pid=42128, auid=501, euid=501, binary_path=/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/ConnectIQ.app/Contents/MacOS/simulator
+2026-11-16 05:50:13.610 Df tccd[42312:acb81f0] [com.apple.xpc:connection] [0x14323ec20] activating connection: mach=false listener=false peer=true name=com.apple.tccd.system.peer[42128].0x14323ec20
+2026-11-16 05:50:13.610 Df tccd[42312:acb81f0] [com.apple.TCC:access] REQUEST: tccd_uid=0, sender_pid=42128, sender_uid=501, sender_auid=501, function=TCCAccessRequest, msgID=42128.2
+2026-11-16 05:50:13.610 E  tccd[42312:acb81f0] [com.apple.TCC:access] TCCDProcess: identifier=com.garmin.connectiq.simulator, pid=42128, auid=501, euid=501, binary_path=/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/ConnectIQ.app/Contents/MacOS/simulator attempted to call TCCAccessRequest for kTCCServiceAccessibility without the recommended com.apple.private.tcc.manager.check-by-audit-token entitlement
+2026-11-16 05:50:13.610 Df tccd[42312:acb81f0] [com.apple.TCC:access] AUTHREQ_CTX: msgID=42128.2, function=<private>, service=kTCCServiceAccessibility, preflight=yes, query=1, client_dict=(null), daemon_dict=<private>
+2026-11-16 05:50:13.610 Df tccd[42312:acb81f0] [com.apple.TCC:access] AUTHREQ_ATTRIBUTION: msgID=42128.2, attribution={accessing={TCCDProcess: identifier=com.openai.sky.CUAService, pid=39259, auid=501, euid=501, binary_path=/Users/jekamas/.codex/computer-use/Codex Computer Use.app/Contents/MacOS/SkyComputerUseService}, requesting={TCCDProcess: identifier=com.garmin.connectiq.simulator, pid=42128, auid=501, euid=501, binary_path=/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/ConnectIQ.app/Contents/MacOS/simulator}, },
+2026-11-16 05:50:13.613 Df tccd[42312:acb81f0] [com.apple.TCC:access] AUTHREQ_SUBJECT: msgID=42128.2, subject=com.openai.sky.CUAService,
+2026-11-16 05:50:13.616 Df tccd[42312:acb81f0] [com.apple.TCC:access] AUTHREQ_RESULT: msgID=42128.2, authValue=2, authReason=4, authVersion=1, error=(null),
+2026-11-16 05:50:13.616 Df tccd[42312:acb81f0] [com.apple.TCC:access] REPLY: (0) function=TCCAccessRequest, msgID=42128.2
+2026-11-16 05:50:13.693 Df runningboardd[186:acb83cd] [com.apple.runningboard:process] Resolved XPC Service com.apple.appkit.xpc.ThemeWidgetControlViewService (ThemeWidgetControlViewService) with host pid 42128, variant 1, scope 1, uuid (null), pid 42424, and auid 501
+2026-11-16 05:50:13.693 Df runningboardd[186:acb83cd] [com.apple.runningboard:process] Resolved pid 42424 to [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424]
+2026-11-16 05:50:13.693 Df runningboardd[186:acb83cd] [com.apple.runningboard:process] [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] is not RunningBoard jetsam managed.
+2026-11-16 05:50:13.693 Df runningboardd[186:acb83cd] [com.apple.runningboard:process] [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] This process will not be managed.
+2026-11-16 05:50:13.693 Df runningboardd[186:acb83cd] [com.apple.runningboard:ttl] Now tracking process: [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424]
+2026-11-16 05:50:13.693 Df runningboardd[186:acb83cd] [com.apple.runningboard:ttl] Acquiring assertion targeting [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] from originator [osservice<com.apple.coreservices.launchservicesd>:152] with description <RBSAssertionDescriptor| "viewBridge:42424" ID:186-152-2676553 target:42424 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.launchservicesd" name:"RoleViewBridge" sourceEnvironment:"(null)">
+	]>
+2026-11-16 05:50:13.693 Df runningboardd[186:acb83cd] [com.apple.runningboard:ttl] Assertion 186-152-2676553 (target:[xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424]) will be created as active
+2026-11-16 05:50:13.693 Df runningboardd[186:acb8257] [com.apple.runningboard:general] [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] reported to RB as running
+2026-11-16 05:50:13.694 Df runningboardd[186:acb8257] [com.apple.runningboard:process] [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] Ignoring jetsam update because this process is not memory-managed
+2026-11-16 05:50:13.694 Df runningboardd[186:acb8257] [com.apple.runningboard:process] [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] Ignoring suspend because this process is not lifecycle managed
+2026-11-16 05:50:13.694 Df runningboardd[186:acb8257] [com.apple.runningboard:ttl] [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] Set darwin role to: UserInteractiveNonFocal
+2026-11-16 05:50:13.694 Df runningboardd[186:acb8257] [com.apple.runningboard:process] [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] Ignoring GPU update because this process is not GPU managed
+2026-11-16 05:50:13.694 Df runningboardd[186:acb8257] [com.apple.runningboard:process] [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] Ignoring memory limit update because this process is not memory-managed
+2026-11-16 05:50:13.694 Df runningboardd[186:acb83cd] [com.apple.runningboard:ttl] Acquiring assertion targeting [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] from originator [osservice<com.apple.coreservices.launchservicesd>:152] with description <RBSAssertionDescriptor| "viewBridge:42424" ID:186-152-2676554 target:42424 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.launchservicesd" name:"RoleViewBridge" sourceEnvironment:"(null)">
+	]>
+2026-11-16 05:50:13.694 Df gamepolicyd[378:acb806a] [com.apple.runningboard:process] Hit the server for a process handle fb0b6840000a5b8 that resolved to: [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424]
+2026-11-16 05:50:13.694 Df gamepolicyd[378:acb806a] [com.apple.runningboard:monitor] Received state update for 42424 (xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424, running-NotVisible
+2026-11-16 05:50:13.694 Df runningboardd[186:acb83cd] [com.apple.runningboard:ttl] Assertion 186-152-2676554 (target:[xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424]) will be created as active
+2026-11-16 05:50:13.694 Df runningboardd[186:acb83cd] [com.apple.runningboard:ttl] Invalidating assertion 186-152-2676553 (target:[xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424]) from originator [osservice<com.apple.coreservices.launchservicesd>:152]
+2026-11-16 05:50:13.705 Df SkyComputerUseService[39259:acb8365] (ScreenCaptureKit)  [INFO] -[SCRunningApplication initWithPID:]:309 (0x600001685580) processID=42128
+2026-11-16 05:50:13.717 Df SkyComputerUseService[39259:acb8365] (ScreenCaptureKit)  [INFO] -[SCRunningApplication initWithPID:]:309 (0x6000016356a0) processID=42128
+2026-11-16 05:50:13.720 Df SkyComputerUseService[39259:acb8367] (ScreenCaptureKit)  [INFO] -[SCRunningApplication initWithPID:]:309 (0x6000016efee0) processID=42128
+2026-11-16 05:50:13.798 Df gamepolicyd[378:acb806a] [com.apple.runningboard:monitor] Received state update for 42424 (xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424, running-NotVisible
+2026-11-16 05:50:13.818 Df runningboardd[186:acb8259] [com.apple.runningboard:connection] Setting client for [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] as ready
+2026-11-16 05:50:13.818 Df runningboardd[186:acb8259] [com.apple.runningboard:connection] Process: [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424]: Sending inheritance changeset: <RBSInheritanceChangeSet| gained:{(
+    <RBSInheritance| environment:(none) name:com.apple.launchservices.userfacing origID:186-152-2676554 0>
+)} lost:{(
+)}>
+2026-11-16 05:50:13.818 Df ThemeWidgetControlViewService[42424:acb85c5] [com.apple.runningboard:connection] Identity resolved as xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424
+2026-11-16 05:50:13.818 Df runningboardd[186:acb83cd] [com.apple.runningboard:ttl] Acquiring assertion targeting [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] from originator [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] with description <RBSAssertionDescriptor| "AppNap adapter assertion" ID:186-42424-2676555 target:42424 attributes:[
+	<RBSAcquisitionCompletionAttribute| policy:AfterApplication>,
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"Enable" sourceEnvironment:"(null)">,
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"Inactive" sourceEnvironment:"(null)">,
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"PreventDiskThrottle" sourceEnvironment:"(null)">,
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"PreventSuppressedCPU" sourceEnvironment:"(null)">,
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"PreventLowPriorirtyCPU" sourceEnvironment:"(null)">,
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"PreventBackgroundSockets" sourceEnviron<…>
+2026-11-16 05:50:13.818 Df runningboardd[186:acb83cd] [com.apple.runningboard:ttl] Assertion 186-42424-2676555 (target:[xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424]) will be created as active
+2026-11-16 05:50:13.819 Df runningboardd[186:acb8257] [com.apple.runningboard:process] [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] Ignoring jetsam update because this process is not memory-managed
+2026-11-16 05:50:13.819 Df runningboardd[186:acb8257] [com.apple.runningboard:process] [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] Ignoring suspend because this process is not lifecycle managed
+2026-11-16 05:50:13.819 Df runningboardd[186:acb8257] [com.apple.runningboard:process] [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] Ignoring GPU update because this process is not GPU managed
+2026-11-16 05:50:13.819 Df runningboardd[186:acb8257] [com.apple.runningboard:process] [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] Ignoring memory limit update because this process is not memory-managed
+2026-11-16 05:50:13.819 Df runningboardd[186:acb8257] [com.apple.runningboard:process] [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] Set AppNap state: <RBMutableProcessAppNapState|0x11ece8e90 enabled:Y active:N socket:N disk:N priority:N cpu:N timer:Tier0>
+2026-11-16 05:50:13.819 Df gamepolicyd[378:acb806a] [com.apple.runningboard:monitor] Received state update for 42424 (xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424, running-NotVisible
+2026-11-16 05:50:13.819 Df ThemeWidgetControlViewService[42424:acb85c5] [com.apple.xpc:connection] [0x148f06060] activating connection: mach=false listener=false peer=true name=com.apple.appkit.xpc.ThemeWidgetControlViewService.peer[42128].0x148f06060
+2026-11-16 05:50:13.819 Df ViewBridgeAuxiliary[618:acb8546] [com.apple.xpc:connection] [0x111f09780] activating connection: mach=false listener=false peer=true name=com.apple.ViewBridgeAuxiliary.peer[42128].0x111f09780
+2026-11-16 05:50:13.820 Df ViewBridgeAuxiliary[618:acb8546] [com.apple.xpc:connection] [0x111f098b0] activating connection: mach=false listener=false peer=true name=com.apple.xpc.anonymous.0x121e0b130.peer[42128].0x111f098b0
+2026-11-16 05:50:13.825 Df ThemeWidgetControlViewService[42424:acb85c5] [com.apple.xpc:connection] [0x14a305a00] activating connection: mach=false listener=false peer=true name=com.apple.xpc.anonymous.0x14a106f50.peer[42128].0x14a305a00
+2026-11-16 05:50:13.899 Df runningboardd[186:acb83cd] [com.apple.runningboard:ttl] Acquiring assertion targeting [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] from originator [osservice<com.apple.WindowServer(88)>:178] with description <RBSAssertionDescriptor| "AppDrawing" ID:186-178-2676556 target:42424 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"AppDrawing" sourceEnvironment:"(null)">,
+	<RBSAcquisitionCompletionAttribute| policy:AfterApplication>
+	]>
+2026-11-16 05:50:13.899 Df runningboardd[186:acb83cd] [com.apple.runningboard:ttl] Assertion 186-178-2676556 (target:[xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424]) will be created as active
+2026-11-16 05:50:13.899 Df runningboardd[186:acb83cd] [com.apple.runningboard:process] [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] Ignoring jetsam update because this process is not memory-managed
+2026-11-16 05:50:13.899 Df runningboardd[186:acb83cd] [com.apple.runningboard:process] [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] Ignoring suspend because this process is not lifecycle managed
+2026-11-16 05:50:13.899 Df runningboardd[186:acb83cd] [com.apple.runningboard:process] [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] Ignoring GPU update because this process is not GPU managed
+2026-11-16 05:50:13.899 Df runningboardd[186:acb83cd] [com.apple.runningboard:process] [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] Ignoring memory limit update because this process is not memory-managed
+2026-11-16 05:50:13.926 Df gamepolicyd[378:acb806a] [com.apple.runningboard:monitor] Received state update for 42424 (xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424, running-NotVisible
+2026-11-16 05:50:15.209 Df WindowManager[462:acb8052] [com.apple.windowmanagement:xpcconnection] Connection invalidated | (42128) Connect IQ Device Simulator
+2026-11-16 05:50:15.217 Df launchd[1:acb8540] [gui/501 [100003]:] service inactive: com.apple.xpc.launchd.unmanaged.simulator.42128
+2026-11-16 05:50:15.217 Df launchd[1:acb8540] [gui/501 [100003]:] removing inactive unmanaged service: com.apple.xpc.launchd.unmanaged.simulator.42128
+2026-11-16 05:50:15.218 Df runningboardd[186:acb8257] [com.apple.runningboard:process] [anon<simulator>(501):42128] termination reported by proc_exit
+2026-11-16 05:50:15.218 Df runningboardd[186:acb83cc] [com.apple.runningboard:ttl] Invalidating assertion 186-178-2676527 (target:[anon<simulator>(501):42128]) from originator [osservice<com.apple.WindowServer(88)>:178]
+2026-11-16 05:50:15.224 Df runningboardd[186:acb83cc] [com.apple.runningboard:process] XPC connection invalidated: [anon<simulator>(501):42128]
+2026-11-16 05:50:15.225 Df launchservicesd[152:acb855a] [com.apple.processmanager:front-35286506] QUITTING: pid=42128 asn=0x-0xf36c35d foreground=1 wasFront=0
+2026-11-16 05:50:15.232 Df runningboardd[186:acb83cd] [com.apple.runningboard:ttl] Invalidating assertion 186-152-2676523 (target:[anon<simulator>(501):42128]) from originator [osservice<com.apple.coreservices.launchservicesd>:152]
+2026-11-16 05:50:15.233 Df launchd[1:acb824e] [system:] removing child: pid/42128
+2026-11-16 05:50:15.234 Df runningboardd[186:acb83cd] [com.apple.runningboard:process] XPC connection invalidated: [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424]
+2026-11-16 05:50:15.235 Df runningboardd[186:acb8059] [com.apple.runningboard:ttl] [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424] termination reported by launchd (2, 9, 9)
+2026-11-16 05:50:15.236 Df runningboardd[186:acb8059] [com.apple.runningboard:process] Removing process: [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424]
+2026-11-16 05:50:15.236 Df runningboardd[186:acb8059] [com.apple.runningboard:general] removeJobWithInstance called for identity without existing job [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424]
+2026-11-16 05:50:15.236 Df runningboardd[186:acb8059] [com.apple.runningboard:process] Removing assertions for terminated process: [xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424:42424]
+2026-11-16 05:50:15.236 Df gamepolicyd[378:acb806a] [com.apple.runningboard:monitor] Received state update for 42424 (xpcservice<com.apple.appkit.xpc.ThemeWidgetControlViewService([anon<simulator>(501):42128])(501)>{vt hash: 0}:42424, none-NotVisible
+2026-11-16 05:50:15.325 Df runningboardd[186:acb8257] [com.apple.runningboard:process] Removing process: [anon<simulator>(501):42128]
+2026-11-16 05:50:15.325 Df runningboardd[186:acb8257] [com.apple.runningboard:general] removeJobWithInstance called for identity without existing job [anon<simulator>(501):42128]
+2026-11-16 05:50:15.325 Df runningboardd[186:acb8257] [com.apple.runningboard:process] Removing assertions for terminated process: [anon<simulator>(501):42128]
+2026-11-16 05:50:15.325 E  runningboardd[186:acb8624] [com.apple.runningboard:general] RBSStateCapture remove item called for untracked item 186-178-2676527 (target:[anon<simulator>(501):42128])
+2026-11-16 05:50:15.325 E  runningboardd[186:acb8624] [com.apple.runningboard:general] RBSStateCapture remove item called for untracked item 186-152-2676523 (target:[anon<simulator>(501):42128])
+2026-11-16 05:50:15.327 Df gamepolicyd[378:acb83d5] [com.apple.runningboard:monitor] Received state update for 42128 (anon<simulator>(501), none-NotVisible
+2026-11-16 05:51:26.101 Df syspolicyd[247:aca600f] [com.apple.syspolicy.exec:default] Found provenance data on process: TA(73d9d7df456b3728, 2), 42801
+2026-11-16 05:51:26.101 Df syspolicyd[247:aca600f] [com.apple.syspolicy.exec:default] Process was already in provenance sandbox, skipping: 42801, TA(73d9d7df456b3728, 2)
+2026-11-16 05:51:26.117 Df cfprefsd[179:acb9233] [com.apple.xpc:connection] [0x10fe06470] activating connection: mach=false listener=false peer=true name=com.apple.cfprefsd.daemon.peer[42801].0x10fe06470
+2026-11-16 05:51:26.117 Df cfprefsd[453:acb8fba] [com.apple.xpc:connection] [0x157a30420] activating connection: mach=false listener=false peer=true name=com.apple.cfprefsd.agent.peer[42801].0x157a30420
+2026-11-16 05:51:26.119 Df launchservicesd[152:acb9059] [com.apple.xpc:connection] [0x126ed35d0] activating connection: mach=false listener=false peer=true name=com.apple.coreservices.launchservicesd.peer[42801].0x126ed35d0
+2026-11-16 05:51:26.119 Df pboard[465:acb86c5] [com.apple.xpc:connection] [0x12e3075c0] activating connection: mach=false listener=false peer=true name=com.apple.pasteboard.1.peer[42801].0x12e3075c0
+2026-11-16 05:51:26.120 Df distnoted[452:acb8fe7] [com.apple.xpc:connection] [0x14deab700] activating connection: mach=false listener=false peer=true name=com.apple.distributed_notifications@Uv3.peer[42801].0x14deab700
+2026-11-16 05:51:26.120 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: AppleColorPreferencesChangedNotification object: kCFNotificationAnyObject token: 100000000 pid: 42801
+2026-11-16 05:51:26.121 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: AppleAppSleepPreferencesChangedNotification object: kCFNotificationAnyObject token: 200000001 pid: 42801
+2026-11-16 05:51:26.121 Df tccd[42312:acb8e62] [com.apple.xpc:connection] [0x143319300] activating connection: mach=false listener=false peer=true name=com.apple.tccd.system.peer[42801].0x143319300
+2026-11-16 05:51:26.122 Df tccd[42312:acb8e62] [com.apple.TCC:access] REQUEST: tccd_uid=0, sender_pid=42801, sender_uid=501, sender_auid=501, function=TCCAccessRequest, msgID=42801.1
+2026-11-16 05:51:26.122 Df tccd[42312:acb8e62] [com.apple.TCC:access] AUTHREQ_CTX: msgID=42801.1, function=<private>, service=kTCCServiceListenEvent, preflight=yes, query=1, client_dict=(null), daemon_dict=<private>
+2026-11-16 05:51:26.122 Df tccd[42312:acb8e62] [com.apple.TCC:access] AUTHREQ_ATTRIBUTION: msgID=42801.1, attribution={responsible={TCCDProcess: identifier=com.openai.codex, pid=50957, auid=501, euid=501, responsible_path=/Applications/ChatGPT.app/Contents/MacOS/ChatGPT, binary_path=/Applications/ChatGPT.app/Contents/MacOS/ChatGPT}, requesting={TCCDProcess: identifier=com.garmin.connectiq.simulator, pid=42801, auid=501, euid=501, binary_path=/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/ConnectIQ.app/Contents/MacOS/simulator}, },
+2026-11-16 05:51:26.124 Df tccd[42312:acb8e62] [com.apple.TCC:access] AUTHREQ_SUBJECT: msgID=42801.1, subject=com.openai.codex,
+2026-11-16 05:51:26.135 Df tccd[42312:acb8e62] [com.apple.TCC:access] AUTHREQ_RESULT: msgID=42801.1, authValue=0, authReason=4, authVersion=1, error=(null),
+2026-11-16 05:51:26.135 Df tccd[42312:acb8e62] [com.apple.TCC:access] REPLY: (0) function=TCCAccessRequest, msgID=42801.1
+2026-11-16 05:51:26.136 Df tccd[42312:acb8e62] [com.apple.TCC:access] AUTHREQ_ATTRIBUTION: msgID=178.82458, attribution={responsible={TCCDProcess: identifier=com.openai.codex, pid=50957, auid=501, euid=501, responsible_path=/Applications/ChatGPT.app/Contents/MacOS/ChatGPT, binary_path=/Applications/ChatGPT.app/Contents/MacOS/ChatGPT}, accessing={TCCDProcess: identifier=com.garmin.connectiq.simulator, pid=42801, auid=501, euid=501, binary_path=/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/ConnectIQ.app/Contents/MacOS/simulator}, requesting={TCCDProcess: identifier=com.apple.WindowServer, pid=178, auid=88, euid=88, binary_path=/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/Resources/WindowServer}, },
+2026-11-16 05:51:26.136 Df tccd[42312:acb8e62] [com.apple.TCC:access] requestor: TCCDProcess: identifier=com.apple.WindowServer, pid=178, auid=88, euid=88, binary_path=/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/Resources/WindowServer is checking access for accessor TCCDProcess: identifier=com.garmin.connectiq.simulator, pid=42801, auid=501, euid=501, binary_path=/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/ConnectIQ.app/Contents/MacOS/simulator
+2026-11-16 05:51:26.157 Df simulator[42801:acb9533] [com.apple.processmanager:front-35286506] CHECKIN: pid=42801
+2026-11-16 05:51:26.161 Df launchservicesd[152:acb905a] [com.apple.launchservices:cas] CHECKIN:0x0-0xf372363 42801 com.garmin.connectiq.simulator
+2026-11-16 05:51:26.161 Df simulator[42801:acb9533] [com.apple.processmanager:front-35286506] CHECKEDIN: pid=42801 asn=0x0-0xf372363 foreground=1
+2026-11-16 05:51:26.161 Df runningboardd[186:acb8e72] [com.apple.runningboard:general] Launchd didn't have information for pid 42801, reason: Error Domain=NSPOSIXErrorDomain Code=113 "Unknown error: 113"
+2026-11-16 05:51:26.161 Df runningboardd[186:acb8e72] [com.apple.runningboard:process] _resolveProcessWithIdentifier pid 42801 euid 501 auid 501
+2026-11-16 05:51:26.161 Df runningboardd[186:acb8e72] [com.apple.runningboard:process] Unable to obtain process properties from launchd for pid=42801
+2026-11-16 05:51:26.161 Df runningboardd[186:acb8e72] [com.apple.runningboard:process] Resolved pid 42801 to [anon<simulator>(501):42801]
+2026-11-16 05:51:26.161 Df runningboardd[186:acb8e72] [com.apple.runningboard:general] Full encoding handle <private>, with data 455c00650000a731, and pid 42801
+2026-11-16 05:51:26.161 Df runningboardd[186:acb8e72] [com.apple.runningboard:process] [anon<simulator>(501):42801] is not RunningBoard jetsam managed.
+2026-11-16 05:51:26.161 Df runningboardd[186:acb8e72] [com.apple.runningboard:process] [anon<simulator>(501):42801] This process will not be managed.
+2026-11-16 05:51:26.161 Df runningboardd[186:acb8e72] [com.apple.runningboard:ttl] Now tracking process: [anon<simulator>(501):42801]
+2026-11-16 05:51:26.162 Df runningboardd[186:acb8e72] [com.apple.libxpc.OSLaunchdJob:all] copyJobWithPid:42801 failed with error 113: Could not find specified service
+2026-11-16 05:51:26.162 Df runningboardd[186:acb8e72] [com.apple.runningboard:ttl] Acquiring assertion targeting [anon<simulator>(501):42801] from originator [osservice<com.apple.coreservices.launchservicesd>:152] with description <RBSAssertionDescriptor| "foregroundApp:42801" ID:186-152-2676613 target:42801 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.launchservicesd" name:"RoleUserInteractiveNonFocal" sourceEnvironment:"(null)">
+	]>
+2026-11-16 05:51:26.162 Df runningboardd[186:acb8e72] [com.apple.runningboard:ttl] Assertion 186-152-2676613 (target:[anon<simulator>(501):42801]) will be created as active
+2026-11-16 05:51:26.162 Df lsd[467:acb9235] [com.apple.xpc:connection] [0x14f280390] activating connection: mach=false listener=false peer=true name=com.apple.lsd.modifydb.peer[42801].0x14f280390
+2026-11-16 05:51:26.162 Df gamepolicyd[378:acb8fc0] [com.apple.runningboard:process] Hit the server for a process handle 55c00650000a731 that resolved to: [anon<simulator>(501):42801]
+2026-11-16 05:51:26.162 Df gamepolicyd[378:acb8fc0] [com.apple.runningboard:monitor] Received state update for 42801 (anon<simulator>(501), running-NotVisible
+2026-11-16 05:51:26.162 Df runningboardd[186:acb8e72] [com.apple.runningboard:ttl] Acquiring assertion targeting [anon<simulator>(501):42801] from originator [osservice<com.apple.coreservices.launchservicesd>:152] with description <RBSAssertionDescriptor| "foregroundApp:42801" ID:186-152-2676614 target:42801 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.launchservicesd" name:"RoleUserInteractiveNonFocal" sourceEnvironment:"(null)">
+	]>
+2026-11-16 05:51:26.162 Df runningboardd[186:acb8e72] [com.apple.runningboard:ttl] Assertion 186-152-2676614 (target:[anon<simulator>(501):42801]) will be created as active
+2026-11-16 05:51:26.162 Df lsd[467:acb9543] [com.apple.launchservices:default] pid 42801 registering self
+2026-11-16 05:51:26.162 Df runningboardd[186:acb953f] [com.apple.runningboard:process] [anon<simulator>(501):42801] Ignoring jetsam update because this process is not memory-managed
+2026-11-16 05:51:26.162 Df runningboardd[186:acb953f] [com.apple.runningboard:process] [anon<simulator>(501):42801] Ignoring suspend because this process is not lifecycle managed
+2026-11-16 05:51:26.162 Df runningboardd[186:acb953f] [com.apple.runningboard:ttl] [anon<simulator>(501):42801] Set darwin role to: UserInteractiveNonFocal
+2026-11-16 05:51:26.162 Df runningboardd[186:acb953f] [com.apple.runningboard:process] [anon<simulator>(501):42801] Ignoring GPU update because this process is not GPU managed
+2026-11-16 05:51:26.162 Df runningboardd[186:acb953f] [com.apple.runningboard:process] [anon<simulator>(501):42801] Ignoring memory limit update because this process is not memory-managed
+2026-11-16 05:51:26.162 Df runningboardd[186:acb8e72] [com.apple.runningboard:ttl] Invalidating assertion 186-152-2676613 (target:[anon<simulator>(501):42801]) from originator [osservice<com.apple.coreservices.launchservicesd>:152]
+2026-11-16 05:51:26.166 Df simulator[42801:acb9533] [com.apple.processmanager:front-35286506] Registered, pid=42801 ASN=0x0,0xf372363
+2026-11-16 05:51:26.168 Df simulator[42801:acb9533] [com.apple.processmanager:front-35286506] BringForward: pid=42801 asn=0x0-0xf372363 bringForward=0 foreground=1 uiElement=0 launchedByLS=0 modifiersCount=0 allDisabled=0
+2026-11-16 05:51:26.168 Df lsd[467:acb9543] [com.apple.xpc:connection] [0x14f01e2d0] activating connection: mach=false listener=false peer=true name=com.apple.lsd.mapdb.peer[42801].0x14f01e2d0
+2026-11-16 05:51:26.169 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: AppleInterfaceMenuBarHidingChangedNotification object: kCFNotificationAnyObject token: 300000002 pid: 42801
+2026-11-16 05:51:26.169 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: __NSFakeMemoryPressureNotification object: kCFNotificationAnyObject token: 400000003 pid: 42801
+2026-11-16 05:51:26.169 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: AppleAquaColorVariantChanged object: kCFNotificationAnyObject token: 500000004 pid: 42801
+2026-11-16 05:51:26.169 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: AppleReduceDesktopTintingChanged object: kCFNotificationAnyObject token: 600000005 pid: 42801
+2026-11-16 05:51:26.176 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: AXInterfaceIncreaseContrastStatusDidChange object: kCFNotificationAnyObject token: 700000006 pid: 42801
+2026-11-16 05:51:26.177 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: AXInterfaceClassicInvertColorStatusDidChange object: kCFNotificationAnyObject token: 800000007 pid: 42801
+2026-11-16 05:51:26.177 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: AXInterfaceDifferentiateWithoutColorStatusDidChange object: kCFNotificationAnyObject token: 900000008 pid: 42801
+2026-11-16 05:51:26.177 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: AXInterfaceShowWindowTitlebarIconsStatusDidChangeNotification object: kCFNotificationAnyObject token: a00000009 pid: 42801
+2026-11-16 05:51:26.177 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: AXInterfaceReduceTransparencyStatusDidChange object: kCFNotificationAnyObject token: b0000000a pid: 42801
+2026-11-16 05:51:26.177 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: AXInterfaceReduceMotionStatusDidChange object: kCFNotificationAnyObject token: c0000000b pid: 42801
+2026-11-16 05:51:26.177 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: com.apple.universalaccess.screenPolarityDidChange object: kCFNotificationAnyObject token: d0000000c pid: 42801
+2026-11-16 05:51:26.177 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: com.apple.universalaccess.screenGrayscaleDidChange object: kCFNotificationAnyObject token: e0000000d pid: 42801
+2026-11-16 05:51:26.177 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: AXInterfaceShowToolbarButtonShapesStatusDidChangeNotification object: kCFNotificationAnyObject token: f0000000e pid: 42801
+2026-11-16 05:51:26.178 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: ApplePrivateInterfaceThemeChangedNotification object: kCFNotificationAnyObject token: 100000000f pid: 42801
+2026-11-16 05:51:26.178 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: com.apple.universalaccess.VoiceOverSettingsDidChange object: kCFNotificationAnyObject token: 1100000010 pid: 42801
+2026-11-16 05:51:26.178 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: UniversalAccessDomainAssistiveControlSettingsDidChangeNotification object: kCFNotificationAnyObject token: 1200000011 pid: 42801
+2026-11-16 05:51:26.178 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: UADomainKeyboardAccessSettingsDidChangeNotification object: kCFNotificationAnyObject token: 130000001a pid: 42801
+2026-11-16 05:51:26.178 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: AppleNoRedisplayAppearancePreferenceChanged object: kCFNotificationAnyObject token: 1400000019 pid: 42801
+2026-11-16 05:51:26.178 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: AppleNoRedisplayAppearancePreferenceChanged object: kCFNotificationAnyObject token: 1500000018 pid: 42801
+2026-11-16 05:51:26.178 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: com.apple.AppleSpacesSwitchOnActivate object: kCFNotificationAnyObject token: 1600000017 pid: 42801
+2026-11-16 05:51:26.178 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: AppleKeyboardPreferencesFnKeySettingChangedNotification object: kCFNotificationAnyObject token: 1700000016 pid: 42801
+2026-11-16 05:51:26.186 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: NSEventResetDefaults object: com.apple.AppKit.NSEventResetDefaults token: 1800000015 pid: 42801
+2026-11-16 05:51:26.187 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: com.apple.AppleMultitouchTrackpadDomainDidChangeNotification object: kCFNotificationAnyObject token: 1900000014 pid: 42801
+2026-11-16 05:51:26.187 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: AppleEnableSwipeNavigateWithScrollsDidChangeNotification object: kCFNotificationAnyObject token: 1a00000013 pid: 42801
+2026-11-16 05:51:26.187 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: AppleEnableMouseSwipeNavigateWithScrollsDidChangeNotification object: kCFNotificationAnyObject token: 1b00000012 pid: 42801
+2026-11-16 05:51:26.188 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: com.apple.xctest.FakeForceTouchDevice object: com.garmin.connectiq.simulator token: 1c00000023 pid: 42801
+2026-11-16 05:51:26.189 Df analyticsd[206:acb9234] [com.apple.xpc:connection] [0x1509231e0] activating connection: mach=false listener=false peer=true name=com.apple.analyticsd.peer[42801].0x1509231e0
+2026-11-16 05:51:26.202 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: UAPMenuFontSizeDidChangeNotification object: kCFNotificationAnyObject token: 1d00000022 pid: 42801
+2026-11-16 05:51:26.202 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: AppleAquaAntiAliasingChanged object: kCFNotificationAnyObject token: 1e00000021 pid: 42801
+2026-11-16 05:51:26.203 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: com.apple.accessibility.api object: kCFNotificationAnyObject token: 1f00000020 pid: 42801
+2026-11-16 05:51:26.203 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: com.apple.userkeyequivalentsdidchange object: kCFNotificationAnyObject token: 200000001f pid: 42801
+2026-11-16 05:51:26.211 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: AppleNoRedisplayAppearancePreferenceChanged object: kCFNotificationAnyObject token: 210000001e pid: 42801
+2026-11-16 05:51:26.212 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: __NSFakeMemoryPressureNotification object: kCFNotificationAnyObject token: 220000001d pid: 42801
+2026-11-16 05:51:26.212 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: NSPersistentUIBitmapEncryptionKeyDidChange object: kCFNotificationAnyObject token: 230000001c pid: 42801
+2026-11-16 05:51:26.216 Df appleeventsd[306:acb9056] [com.apple.xpc:connection] [0x139112d40] activating connection: mach=false listener=false peer=true name=com.apple.coreservices.appleevents.peer[42801].0x139112d40
+2026-11-16 05:51:26.217 Df simulator[42801:acb9533] [com.apple.processmanager:front-35286506] SignalReady: pid=42801 asn=0x0-0xf372363
+2026-11-16 05:51:26.217 Df simulator[42801:acb9533] [com.apple.processmanager:front-35286506] SIGNAL: pid=42801 asn=0x0x-0xf372363
+2026-11-16 05:51:26.219 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: com.apple.Carbon.TISNotifyHandwritingInputSourceChanged object: kCFNotificationAnyObject token: 240000001b pid: 42801
+2026-11-16 05:51:26.219 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: AXInterfaceIncreaseContrastStatusDidChange object: kCFNotificationAnyObject token: 250000002c pid: 42801
+2026-11-16 05:51:26.219 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: AppleDatePreferencesChangedNotification object: kCFNotificationAnyObject token: 260000002b pid: 42801
+2026-11-16 05:51:26.219 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: AppleTimePreferencesChangedNotification object: kCFNotificationAnyObject token: 270000002a pid: 42801
+2026-11-16 05:51:26.219 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: AppleNumberPreferencesChangedNotification object: kCFNotificationAnyObject token: 2800000029 pid: 42801
+2026-11-16 05:51:26.219 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: AppleTextBehaviorPreferencesChangedNotification object: kCFNotificationAnyObject token: 2900000028 pid: 42801
+2026-11-16 05:51:26.219 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: AppleLanguagePreferencesChangedNotification object: kCFNotificationAnyObject token: 2a00000027 pid: 42801
+2026-11-16 05:51:26.219 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: AppleKeyboardMenuPreferencesChangedNotification object: kCFNotificationAnyObject token: 2b00000026 pid: 42801
+2026-11-16 05:51:26.219 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: AppleKeyboardPreferencesChangedNotification object: kCFNotificationAnyObject token: 2c00000025 pid: 42801
+2026-11-16 05:51:26.219 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: AppleKeyboardPreferencesSelectedItemsChangedNotification object: kCFNotificationAnyObject token: 2d00000024 pid: 42801
+2026-11-16 05:51:26.219 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: AppleSelectedInputMethodPasteboardInvalidNotification object: kCFNotificationAnyObject token: 2e00000035 pid: 42801
+2026-11-16 05:51:26.219 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: AppleTextInputMenuExtraDidLoadNotification object: kCFNotificationAnyObject token: 2f00000034 pid: 42801
+2026-11-16 05:51:26.219 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: com.apple.Carbon.TISNotifyEnabledKeyboardInputSourcesChanged object: kCFNotificationAnyObject token: 3000000033 pid: 42801
+2026-11-16 05:51:26.220 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: com.apple.Carbon.TISNotifyHandwritingInputSourceChanged object: kCFNotificationAnyObject token: 3100000032 pid: 42801
+2026-11-16 05:51:26.220 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: com.apple.Carbon.TISNotifyIronwoodAutoEnableChanged object: kCFNotificationAnyObject token: 3200000031 pid: 42801
+2026-11-16 05:51:26.220 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: AppleInstalledInputSourcesChangedNotification object: kCFNotificationAnyObject token: 3300000030 pid: 42801
+2026-11-16 05:51:26.220 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: AppleEnabledInputSourcesChangedNotification object: kCFNotificationAnyObject token: 340000002f pid: 42801
+2026-11-16 05:51:26.220 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: AppleSelectedInputSourcesChangedNotification object: kCFNotificationAnyObject token: 350000002e pid: 42801
+2026-11-16 05:51:26.220 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: com.apple.Carbon.TISNotifyEnabledHandwritingLanguagesChanged object: kCFNotificationAnyObject token: 360000002d pid: 42801
+2026-11-16 05:51:26.220 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: com.apple.Carbon.TISNotifySelectedHandwritingLanguageChanged object: kCFNotificationAnyObject token: 370000003f pid: 42801
+2026-11-16 05:51:26.220 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: AppleRomanSwitchSettingChangedNotification object: kCFNotificationAnyObject token: 380000003e pid: 42801
+2026-11-16 05:51:26.220 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: AppleKeyboardPreferencesFnKeySettingChangedNotification object: kCFNotificationAnyObject token: 390000003d pid: 42801
+2026-11-16 05:51:26.225 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: com.apple.Carbon.TISNotifySelectedKeyboardInputSourceChanged object: kCFNotificationAnyObject token: 3a0000003c pid: 42801
+2026-11-16 05:51:26.233 Df WindowManager[462:acb9050] [com.apple.windowmanagement:xpcconnection] Connection activated | (42801) Connect IQ Device Simulator
+2026-11-16 05:51:26.233 Df WindowManager[462:acb9050] [com.apple.xpc:connection] [0x1054bf8b0] activating connection: mach=false listener=false peer=true name=com.apple.windowmanager.server.peer[42801].0x1054bf8b0
+2026-11-16 05:51:26.268 Df gamepolicyd[378:acb8fc0] [com.apple.runningboard:monitor] Received state update for 42801 (anon<simulator>(501), running-NotVisible
+2026-11-16 05:51:28.392 Df fontd[619:acb9079] [com.apple.xpc:connection] [0x1458bda70] activating connection: mach=false listener=false peer=true name=com.apple.fonts.peer[42801].0x1458bda70
+2026-11-16 05:51:28.414 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: com.apple.nsquiet_safe_quit_give_reason object: com.garmin.connectiq.simulator token: 3b0000003b pid: 42801
+2026-11-16 05:51:28.419 Df csnameddatad[64450:acb9075] [com.apple.xpc:connection] [0x152d041a0] activating connection: mach=false listener=false peer=true name=com.apple.carboncore.csnameddata.peer[42801].0x152d041a0
+2026-11-16 05:51:28.421 Df Dock[644:19ba] [com.apple.xpc:connection] [0x146abd410] activating connection: mach=false listener=false peer=true name=com.apple.dock.fullscreen.peer[42801].0x146abd410
+2026-11-16 05:51:28.443 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: com.apple.KeyboardUIModeDidChange object: kCFNotificationAnyObject token: 3c0000003a pid: 42801
+2026-11-16 05:51:28.443 Df distnoted[452:acb8fe7] [com.apple.distnoted:diagnostic] register name: NSWindowForceInvalidateShadow object: kCFNotificationAnyObject token: 3d00000039 pid: 42801
+2026-11-16 05:51:28.455 Df runningboardd[186:acb8e72] [com.apple.runningboard:connection] Incoming connection from 42801, user 501/501
+2026-11-16 05:51:28.455 Df runningboardd[186:acb8e72] [com.apple.xpc:connection] [0x11ecd7fd0] activating connection: mach=false listener=false peer=true name=com.apple.runningboard.peer[42801].0x11ecd7fd0
+2026-11-16 05:51:28.455 Df runningboardd[186:acb8e72] [com.apple.runningboard:connection] Setting client for [anon<simulator>(501):42801] as ready
+2026-11-16 05:51:28.455 Df runningboardd[186:acb8e72] [com.apple.runningboard:connection] Process: [anon<simulator>(501):42801]: Sending inheritance changeset: <RBSInheritanceChangeSet| gained:{(
+    <RBSInheritance| environment:(none) name:com.apple.launchservices.userfacing origID:186-152-2676614 0>
+)} lost:{(
+)}>
+2026-11-16 05:51:28.455 Df runningboardd[186:acb8e72] [com.apple.runningboard:connection] Received handshake request from 42801 with 0 assertion descriptors
+2026-11-16 05:51:28.455 Df runningboardd[186:acb8e72] [com.apple.runningboard:connection] Handshake successful with 42801; sending response
+2026-11-16 05:51:28.456 Df runningboardd[186:acb953f] [com.apple.runningboard:ttl] Acquiring assertion targeting [anon<simulator>(501):42801] from originator [anon<simulator>(501):42801] with description <RBSAssertionDescriptor| "AppNap adapter assertion" ID:186-42801-2676615 target:42801 attributes:[
+	<RBSAcquisitionCompletionAttribute| policy:AfterApplication>,
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"Enable" sourceEnvironment:"(null)">,
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"Inactive" sourceEnvironment:"(null)">,
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"PreventDiskThrottle" sourceEnvironment:"(null)">,
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"PreventSuppressedCPU" sourceEnvironment:"(null)">,
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"PreventLowPriorirtyCPU" sourceEnvironment:"(null)">,
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"PreventBackgroundSockets" sourceEnvironment:"(null)">,
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"PreventTimerThrottleTier0" sourceEnvironment:"(null)">
+	]>
+2026-11-16 05:51:28.456 Df runningboardd[186:acb953f] [com.apple.runningboard:ttl] Assertion 186-42801-2676615 (target:[anon<simulator>(501):42801]) will be created as active
+2026-11-16 05:51:28.456 Df runningboardd[186:acb8e72] [com.apple.runningboard:process] [anon<simulator>(501):42801] Ignoring jetsam update because this process is not memory-managed
+2026-11-16 05:51:28.456 Df runningboardd[186:acb8e72] [com.apple.runningboard:process] [anon<simulator>(501):42801] Ignoring suspend because this process is not lifecycle managed
+2026-11-16 05:51:28.456 Df runningboardd[186:acb8e72] [com.apple.runningboard:process] [anon<simulator>(501):42801] Ignoring GPU update because this process is not GPU managed
+2026-11-16 05:51:28.456 Df runningboardd[186:acb8e72] [com.apple.runningboard:process] [anon<simulator>(501):42801] Ignoring memory limit update because this process is not memory-managed
+2026-11-16 05:51:28.456 Df runningboardd[186:acb8e72] [com.apple.runningboard:process] [anon<simulator>(501):42801] Set AppNap state: <RBMutableProcessAppNapState|0x11e9355c0 enabled:Y active:N socket:N disk:N priority:N cpu:N timer:Tier0>
+2026-11-16 05:51:28.457 Df gamepolicyd[378:acb8fc0] [com.apple.runningboard:monitor] Received state update for 42801 (anon<simulator>(501), running-NotVisible
+2026-11-16 05:51:28.457 Df ViewBridgeAuxiliary[618:acb9074] [com.apple.xpc:connection] [0x123908c30] activating connection: mach=false listener=false peer=true name=com.apple.ViewBridgeAuxiliary.peer[42801].0x123908c30
+2026-11-16 05:51:28.457 Df ViewBridgeAuxiliary[618:acb9074] [com.apple.xpc:connection] [0x123922c50] activating connection: mach=false listener=false peer=true name=com.apple.xpc.anonymous.0x121e0b980.peer[42801].0x123922c50
+2026-11-16 05:51:28.464 Df distnoted[452:acb9422] [com.apple.distnoted:diagnostic] register name: NSSecondaryDisplayVisChanged object: kCFNotificationAnyObject token: 3e00000038 pid: 42801
+2026-11-16 05:51:28.476 Df runningboardd[186:acb8e72] [com.apple.runningboard:ttl] Acquiring assertion targeting [anon<simulator>(501):42801] from originator [osservice<com.apple.WindowServer(88)>:178] with description <RBSAssertionDescriptor| "AppDrawing" ID:186-178-2676616 target:42801 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"AppDrawing" sourceEnvironment:"(null)">,
+	<RBSAcquisitionCompletionAttribute| policy:AfterApplication>
+	]>
+2026-11-16 05:51:28.476 Df runningboardd[186:acb8e72] [com.apple.runningboard:ttl] Assertion 186-178-2676616 (target:[anon<simulator>(501):42801]) will be created as active
+2026-11-16 05:51:28.477 Df runningboardd[186:acb8e72] [com.apple.runningboard:process] [anon<simulator>(501):42801] Ignoring jetsam update because this process is not memory-managed
+2026-11-16 05:51:28.477 Df runningboardd[186:acb8e72] [com.apple.runningboard:process] [anon<simulator>(501):42801] Ignoring suspend because this process is not lifecycle managed
+2026-11-16 05:51:28.477 Df runningboardd[186:acb8e72] [com.apple.runningboard:process] [anon<simulator>(501):42801] Ignoring GPU update because this process is not GPU managed
+2026-11-16 05:51:28.477 Df runningboardd[186:acb8e72] [com.apple.runningboard:process] [anon<simulator>(501):42801] Ignoring memory limit update because this process is not memory-managed
+2026-11-16 05:51:28.477 Df runningboardd[186:acb8e72] [com.apple.runningboard:ttl] Acquiring assertion targeting [anon<simulator>(501):42801] from originator [osservice<com.apple.WindowServer(88)>:178] with description <RBSAssertionDescriptor| "AppVisible" ID:186-178-2676617 target:42801 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"AppVisible" sourceEnvironment:"(null)">,
+	<RBSAcquisitionCompletionAttribute| policy:AfterApplication>
+	]>
+2026-11-16 05:51:28.477 Df runningboardd[186:acb8e72] [com.apple.runningboard:ttl] Assertion 186-178-2676617 (target:[anon<simulator>(501):42801]) will be created as active
+2026-11-16 05:51:28.477 Df runningboardd[186:acb9540] [com.apple.runningboard:process] [anon<simulator>(501):42801] Ignoring jetsam update because this process is not memory-managed
+2026-11-16 05:51:28.477 Df runningboardd[186:acb9540] [com.apple.runningboard:process] [anon<simulator>(501):42801] Ignoring suspend because this process is not lifecycle managed
+2026-11-16 05:51:28.477 Df runningboardd[186:acb9540] [com.apple.runningboard:process] [anon<simulator>(501):42801] Ignoring GPU update because this process is not GPU managed
+2026-11-16 05:51:28.477 Df runningboardd[186:acb9540] [com.apple.runningboard:process] [anon<simulator>(501):42801] Ignoring memory limit update because this process is not memory-managed
+2026-11-16 05:51:28.564 Df gamepolicyd[378:acb8fc0] [com.apple.runningboard:monitor] Received state update for 42801 (anon<simulator>(501), running-NotVisible
+2026-11-16 05:51:58.416 Df tccd[42312:acb8e62] [com.apple.TCC:access] AUTHREQ_ATTRIBUTION: msgID=178.82460, attribution={responsible={TCCDProcess: identifier=com.openai.codex, pid=50957, auid=501, euid=501, responsible_path=/Applications/ChatGPT.app/Contents/MacOS/ChatGPT, binary_path=/Applications/ChatGPT.app/Contents/MacOS/ChatGPT}, accessing={TCCDProcess: identifier=com.garmin.connectiq.simulator, pid=42801, auid=501, euid=501, binary_path=/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/ConnectIQ.app/Contents/MacOS/simulator}, requesting={TCCDProcess: identifier=com.apple.WindowServer, pid=178, auid=88, euid=88, binary_path=/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/Resources/WindowServer}, },
+2026-11-16 05:51:58.416 Df tccd[42312:acb8e62] [com.apple.TCC:access] requestor: TCCDProcess: identifier=com.apple.WindowServer, pid=178, auid=88, euid=88, binary_path=/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/Resources/WindowServer is checking access for accessor TCCDProcess: identifier=com.garmin.connectiq.simulator, pid=42801, auid=501, euid=501, binary_path=/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/ConnectIQ.app/Contents/MacOS/simulator
+2026-11-16 05:52:14.009 Df WindowManager[462:acb9ec8] [com.apple.windowmanagement:xpcconnection] Connection invalidated | (42801) Connect IQ Device Simulator
+2026-11-16 05:52:14.013 Df launchd[1:acb8d7e] [gui/501 [100003]:] service inactive: com.apple.xpc.launchd.unmanaged.simulator.42801
+2026-11-16 05:52:14.013 Df launchd[1:acb8d7e] [gui/501 [100003]:] removing inactive unmanaged service: com.apple.xpc.launchd.unmanaged.simulator.42801
+2026-11-16 05:52:14.013 Df runningboardd[186:acb9a7c] [com.apple.runningboard:process] [anon<simulator>(501):42801] termination reported by proc_exit
+2026-11-16 05:52:14.014 Df launchd[1:acb9f56] [system:] removing child: pid/42801
+2026-11-16 05:52:14.016 Df runningboardd[186:acb9f55] [com.apple.runningboard:ttl] Invalidating assertion 186-178-2676617 (target:[anon<simulator>(501):42801]) from originator [osservice<com.apple.WindowServer(88)>:178]
+2026-11-16 05:52:14.016 Df runningboardd[186:acb9f55] [com.apple.runningboard:process] XPC connection invalidated: [anon<simulator>(501):42801]
+2026-11-16 05:52:14.017 Df launchservicesd[152:acb9a60] [com.apple.processmanager:front-35286506] QUITTING: pid=42801 asn=0x-0xf372363 foreground=1 wasFront=0
+2026-11-16 05:52:14.024 Df runningboardd[186:acb9a7c] [com.apple.runningboard:ttl] Invalidating assertion 186-152-2676614 (target:[anon<simulator>(501):42801]) from originator [osservice<com.apple.coreservices.launchservicesd>:152]
+2026-11-16 05:52:14.119 Df runningboardd[186:acb9f77] [com.apple.runningboard:process] Removing process: [anon<simulator>(501):42801]
+2026-11-16 05:52:14.119 Df runningboardd[186:acb9f77] [com.apple.runningboard:general] removeJobWithInstance called for identity without existing job [anon<simulator>(501):42801]
+2026-11-16 05:52:14.120 Df runningboardd[186:acb9f77] [com.apple.runningboard:process] Removing assertions for terminated process: [anon<simulator>(501):42801]
+2026-11-16 05:52:14.122 E  runningboardd[186:acb9f73] [com.apple.runningboard:general] RBSStateCapture remove item called for untracked item 186-152-2676614 (target:[anon<simulator>(501):42801])
+2026-11-16 05:52:14.123 E  runningboardd[186:acb9f73] [com.apple.runningboard:general] RBSStateCapture remove item called for untracked item 186-178-2676617 (target:[anon<simulator>(501):42801])
+2026-11-16 05:52:14.124 Df gamepolicyd[378:acb9bd4] [com.apple.runningboard:monitor] Received state update for 42801 (anon<simulator>(501), none-NotVisible
