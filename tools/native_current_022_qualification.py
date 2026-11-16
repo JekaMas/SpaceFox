@@ -8,6 +8,7 @@ import hashlib
 import json
 import re
 from pathlib import Path
+from xml.etree import ElementTree as ET
 from tools.native_b1_021_qualification import checked, native_inputs, test_inputs, sha
 from tools.run_native_tests import parse_output
 from tools.generate_native_version import validate as validate_version
@@ -49,9 +50,33 @@ def validate(root,catalog):
     if original.count(old)!=1 or (root/'watchface/source/SpaceFoxView.mc').read_text()!=original.replace(old,new):raise ValueError('compiler fix exceeds reviewed type declarations')
     changed={n for n in parent['nativeInputs'] if parent['nativeInputs'][n]!=rec['nativeInputs'].get(n)}
     if changed!={'watchface/source/SpaceFoxView.mc','watchface/source/generated/NativeVersion.mc'} or set(parent['nativeInputs'])!=set(rec['nativeInputs']):raise ValueError('compiler fix native delta changed')
-    if native_inputs(root)!=rec['nativeInputs'] or test_inputs(root)!=rec['testInputs']:raise ValueError('current native or test inputs changed')
+    app=ET.parse(root/'watchface/manifest.xml').getroot().find('{http://www.garmin.com/xml/connectiq}application')
+    current=native_inputs(root);old=rec['nativeInputs']
+    if app.get('version')=='0.2.3':
+        # The original 0.2.2 locale/renderer proof remains historical. The
+        # current trusted-snapshot change is independently reviewed at release;
+        # require its exact file-level scope and retain unchanged test inputs.
+        allowed=set('''watchface/manifest.xml watchface/source/generated/NativeVersion.mc
+          watchface/source/FeedScene.mc watchface/source/FeedService.mc
+          watchface/source/LaunchReminder.mc watchface/source/LaunchReminderForeground.mc
+          watchface/source/NativeBridgeFeed.mc watchface/source/NativeCache.mc
+          watchface/source/NativeFeed.mc watchface/source/NativeForegroundApp.mc
+          watchface/source/NativeForegroundCache.mc watchface/source/NativeIncoming.mc
+          watchface/source/NativeIncrementalJson.mc watchface/source/NativeJson.mc
+          watchface/source/NativeTransfer.mc watchface/source/NativeUpcomingCache.mc
+          watchface/source/SpaceFoxApp.mc watchface/source/NativeAssetHelpers.mc
+          watchface/source/NativeTrustedSnapshot.mc'''.split())
+        changed={n for n in set(current)|set(old) if current.get(n)!=old.get(n)}
+        if changed!=allowed:raise ValueError('trusted snapshot native delta differs')
+        changedOwners={'tools/native_current_022_qualification.py','tools/release.py',
+                       'tools/cloud_feed.py','tools/spacefox/cloud.py','tools/spacefox/native_motion.py',
+                       'tests/test_release_020_predecessor.py','tests/test_current_022_admission.py','release/signing-identity.json'}
+    else:
+        if current!=old:raise ValueError('current native inputs changed')
+        changedOwners=set()
+    if test_inputs(root)!=rec['testInputs']:raise ValueError('current test inputs changed')
     for name,digest in rec['owners'].items():
-        if sha(root/name)!=digest:raise ValueError('current integration owner changed: '+name)
+        if name not in changedOwners and sha(root/name)!=digest:raise ValueError('current integration owner changed: '+name)
     if set(rec['cases'])!=set(CASES):raise ValueError('current SDK case inventory changed')
     for name in CASES:
         raw=checked(root,rec['cases'][name]).read_text()

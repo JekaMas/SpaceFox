@@ -1,0 +1,45 @@
+{
+  "fixture": "tests/fixtures/fr165-runtime-20261116/feed.txt",
+  "scope": "host Python json decode+field selection only; excludes publisher, SDK parsing, admission, HTTP, persistence and UI; not an end-to-end comparison",
+  "results": {
+    "current": {
+      "utf8Bytes": 5660,
+      "hostJsonDecodeAndSelectMsMedian": 0.0237,
+      "samplesMs": [
+        0.024171625,
+        0.023945499999999998,
+        0.0237325,
+        0.023603708,
+        0.023608792,
+        0.023646667,
+        0.023709292
+      ]
+    },
+    "projected-object": {
+      "utf8Bytes": 3974,
+      "hostJsonDecodeAndSelectMsMedian": 0.018,
+      "samplesMs": [
+        0.018219375,
+        0.018420458,
+        0.0181845,
+        0.017963208,
+        0.017755541,
+        0.017655541,
+        0.017841083
+      ]
+    },
+    "projected-array": {
+      "utf8Bytes": 2988,
+      "hostJsonDecodeAndSelectMsMedian": 0.0147,
+      "samplesMs": [
+        0.014781833000000001,
+        0.014635167,
+        0.014618917,
+        0.014626374999999999,
+        0.014684666,
+        0.014668292,
+        0.014655208999999999
+      ]
+    }
+  }
+}

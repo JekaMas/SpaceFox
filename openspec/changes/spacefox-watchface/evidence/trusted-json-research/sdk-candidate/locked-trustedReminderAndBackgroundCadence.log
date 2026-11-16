@@ -1,0 +1,14 @@
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test trustedReminderAndBackgroundCadence...
+DEBUG (22:42): TRUST_CADENCE normal=3600 near=900
+DEBUG (22:42): trusted reminder exact eligible, new pointer invalidates old, coarse excluded, cadence and namespace retained
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+trustedReminderAndBackgroundCadence PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

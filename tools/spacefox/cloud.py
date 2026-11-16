@@ -365,7 +365,7 @@ def retained_files(snapshot, files, *, text_transport):
         from .native_motion import with_text_transport
         files = with_text_transport(files)
     return {path: {'sha256': _sha(raw), 'bytes': len(raw)}
-            for path, raw in files.items() if path not in ('feed.json', 'feed.json.txt')}
+            for path, raw in files.items() if path not in ('feed.json', 'feed.json.txt', 'watch.json')}
 
 
 def preflight_delivery(pub, current_files):
@@ -457,7 +457,7 @@ def _readback_error(message, path, expected, status, actual, *, phase='closure')
     # fixed metadata and digests, never URLs, credentials or response bodies.
     context = {
         'path': path,
-        'kind': 'mutable-root' if path in ('feed.json', 'feed.json.txt') else 'immutable-file',
+        'kind': 'mutable-root' if path in ('feed.json', 'feed.json.txt', 'watch.json') else 'immutable-file',
         'phase': phase, 'status': status,
         'expected': None if expected is None else {'bytes': len(expected), 'sha256': _sha(expected)},
         'actual': {'bytes': len(actual), 'sha256': _sha(actual)},

@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/task/event/run-fresh.py", line 15, in <module>
+    else:raise RuntimeError('owned simulator did not open')
+RuntimeError: owned simulator did not open

@@ -1,0 +1,14 @@
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test trustedSnapshotFlow...
+DEBUG (22:29): FLOW exact=550 eligible=true point=true
+DEBUG (22:29): trusted snapshot: actual coarse + exact, interrupted pointer preserves old, successor saved
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+trustedSnapshotFlow                 PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

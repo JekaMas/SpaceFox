@@ -20,34 +20,16 @@ module LaunchReminder {
   return state;
  }
  function valid(s,base,now){
-  if(!(s instanceof Dictionary)||!same(s["base"],base)||!(s["id"] instanceof String)||!(s["seal"] instanceof String)||!number(s["target"])||!number(s["validated"])||!number(s["since"])||s["validated"]>now||s["since"]>now||s["stale"]!=false){return false;}
+  if(!(s instanceof Dictionary)||!same(s["base"],base)||!(s["id"] instanceof String)||!number(s["sequence"])||!number(s["target"])||!number(s["validated"])||!number(s["since"])||s["validated"]>now||s["since"]>now||s["stale"]!=false){return false;}
   var p=s["policy"];if(!(p instanceof Array)||p.size()!=4||!number(p[0])||!number(p[1])||p[2]!=null&&!number(p[2])||!number(p[3])||p[0]<300||p[1]<300||p[3]<1||p[2]!=null&&p[2]<300){return false;}
   var age=now-s["validated"];if(p[2]!=null){return age/p[2]<p[3];}
   if(age/p[0]>=p[3]){return false;}var end=now<s["target"]+1800?now:s["target"]+1800;
   return !(end>=s["target"]-7200&&end>=s["validated"]&&(end-s["validated"])/p[1]>=p[3]);
  }
- // Compare only unchanged, previously accepted content; do not advance age.
- function sameIncoming(store,s,m,now){try{
-  if(m["v"]!=2||!same(m["kind"],"feed")||!(m["parts"] instanceof Array)||m["parts"].size()<1||m["parts"].size()>16||!(m["sha256"] instanceof String)||!number(m["sequence"])||m["sequence"]<1||!number(m["bytes"])||m["bytes"]<1||m["bytes"]>4096){return false;}
-  var raw="";for(var i=0;i<m["parts"].size();i+=1){var slot=m["parts"][i];if(!number(slot)||slot<0||slot>1){return false;}var piece=store.read("sf.incoming.feed."+slot+"."+i);if(!(piece instanceof String)||piece.length()>512){return false;}raw+=piece;if(raw.length()>4096){return false;}}
-  var wire=new NativeWireHash();wire.put(raw);if(wire.count>4096||!wire.digest().equals(m["sha256"])||wire.count!=m["bytes"]){return false;}
-  var parser=new NativeJson();parser.feedMode=true;parser.keepCatalogNames=false;var doc=parser.parse(raw,4096);var launch=doc["launch"];var pub=doc["publisher"];
-  if(!(launch instanceof Dictionary)||!(pub instanceof Dictionary)||!same(pub["instance"],s["instance"])||!number(pub["generation"])||pub["generation"]<s["generation"]||!number(pub["selectionValidatedUtc"])||pub["selectionValidatedUtc"]>now||!number(launch["source_validated_utc"])||launch["source_validated_utc"]<s["validated"]||launch["source_validated_utc"]>pub["selectionValidatedUtc"]||launch["stale"]!=false||!(launch["rescheduled"] instanceof Boolean)||["countdown","awaiting-update","uncertain"].indexOf(doc["timingState"])<0){return false;}
-  if(pub["generation"]==s["generation"]&&!same(m["sha256"],s["wire"])){return false;}
-  if(same(s["precision"],"exact")&&["countdown","awaiting-update"].indexOf(doc["timingState"])<0||same(s["precision"],"source-coarse")&&!same(doc["timingState"],"uncertain")||!same(s["precision"],"exact")&&!same(s["precision"],"source-coarse")){return false;}
-  var current=store.read("sf.incoming.feed");if(!(current instanceof Dictionary)||current["sequence"]!=m["sequence"]||!same(current["sha256"],m["sha256"])){return false;}
-  var poll=doc["pollIntervalSeconds"];var p=s["policy"];if(!number(poll)||poll!=p[0]&&poll!=p[1]&&(p[2]==null||poll!=p[2])){return false;}
-  var h=new NativeWireHash();var start=0;for(var j=0;j<parser.ignored.size();j+=1){var span=parser.ignored[j];h.range(raw,start,span[0]);h.put("null");start=span[1];}h.range(raw,start,raw.length());return same(h.digest(),s["content"]);
- }catch(e){return false;}}
+ // A new complete snapshot invalidates a queued reminder before posting.
  function bound(store,s,base,now){
-  if(!valid(s,base,now)||!(s["commitKey"] instanceof String)||["sf.commit","sf.recovery"].indexOf(s["commitKey"])<0){return false;}
-  var marker=store.read(s["commitKey"]);if(!(marker instanceof Dictionary)||!same(marker["base"],base)||!same(marker["seal"],s["seal"])){return false;}
-  var incoming=store.read("sf.incoming.feed");if(!(incoming instanceof Dictionary)||!same(incoming["base"],base)){return true;}
-  var done=store.read("sf.incoming.feed.processed");var token=incoming["sha256"]+":"+incoming["sequence"];
-  if(done instanceof String&&done.equals(token)){return true;}
-  var old=store.read("sf.reminder.compare");if(old instanceof Dictionary&&same(old["seal"],s["seal"])&&old["same"]==false){return false;}
-  if(old instanceof Dictionary&&same(old["seal"],s["seal"])&&same(old["token"],token)&&old["same"]==true){return true;}
-  var sameContent=sameIncoming(store,s,incoming,now);store.write("sf.reminder.compare",{"seal"=>s["seal"],"token"=>token,"same"=>sameContent});return sameContent;
+  if(!valid(s,base,now)){return false;}var marker=new NativeTrustedStore(store,base).marker();
+  return marker instanceof Dictionary&&same(marker["base"],base)&&marker["sequence"]==s["sequence"];
  }
  function quiet(dnd,vibrate,sleep,sleepStart,wake,localSeconds){
   if(!(dnd instanceof Boolean)||!(vibrate instanceof Boolean)||!(sleep instanceof Boolean)||!number(sleepStart)||!number(wake)||!number(localSeconds)||sleepStart<0||sleepStart>=86400||wake<0||wake>=86400||sleepStart==wake||localSeconds<0||localSeconds>=86400){return true;}
@@ -79,7 +61,7 @@ module LaunchReminder {
   for(var i=0;i<rows.size();i+=1){var r=rows[i];if(!(r instanceof Array)||r.size()!=10||!(r[0] instanceof String)||!(r[9] instanceof Boolean)||r[8]!=null&&!number(r[8])){return null;}
    if(r[8]!=null&&now>=r[8]){if(start==null||r[8]>start){start=r[8];}continue;}if(!r[9]){return null;}
    var since=r[6];if(start!=null&&number(since)&&start>since){since=start;}
-   return {"base"=>snapshot["base"],"id"=>r[0],"target"=>r[1],"precision"=>r[2],"title"=>r[3],"validated"=>r[4],"stale"=>r[5],"since"=>since,"policy"=>r[7],"commitKey"=>snapshot["commitKey"],"seal"=>snapshot["seal"],"content"=>snapshot["content"],"wire"=>snapshot["wire"],"instance"=>snapshot["instance"],"generation"=>snapshot["generation"]};
+   return {"base"=>snapshot["base"],"id"=>r[0],"target"=>r[1],"precision"=>r[2],"title"=>r[3],"validated"=>r[4],"stale"=>r[5],"since"=>since,"policy"=>r[7],"sequence"=>snapshot["sequence"]};
   }return null;
  }
  // Retain every still-actionable identity; if full or the clock moves backward,
@@ -109,7 +91,7 @@ module LaunchReminder {
  function wakeWith(cache,now,quietState,postMethod){
   try{var control=syncEnable(cache.store,now);if(!control["enabled"]){return;}var s=selected(cache.store.read("sf.reminder.snapshot"),now);if(!bound(cache.store,s,cache.base,now)){return;}var since=control["since"]>s["since"]?control["since"]:s["since"];var slot=consume(cache.store,s,now,since);if(slot==null){return;}
    var checkNow=now;if(quietState==null){checkNow=Time.now().value().toLong();quietState=isQuiet(checkNow);}if(checkNow<now||quietState!=false||!enabled()||candidate(s,checkNow,since,null)!=slot){return;}
-   var current=selected(cache.store.read("sf.reminder.snapshot"),checkNow);if(!(current instanceof Dictionary)||!same(current["seal"],s["seal"])||!same(current["id"],s["id"])||current["target"]!=s["target"]||!bound(cache.store,current,cache.base,checkNow)){return;}postMethod.invoke(slot,s);
+   var current=selected(cache.store.read("sf.reminder.snapshot"),checkNow);if(!(current instanceof Dictionary)||current["sequence"]!=s["sequence"]||!same(current["id"],s["id"])||current["target"]!=s["target"]||!bound(cache.store,current,cache.base,checkNow)){return;}postMethod.invoke(slot,s);
   }catch(e){}
  }
  function nextWake(cache,now,last){try{var control=syncEnable(cache.store,now);if(!control["enabled"]){return null;}var snapshot=cache.store.read("sf.reminder.snapshot");var at=now;

@@ -107,7 +107,7 @@ def _prepare_content(pub, client, now, catalog, *, root, clock, owner):
             raise CloudError('current-format active feed missing')
         previous=validate_feed(pub.store._blob(pub.head,path,8192))
         selection_changed = _projection_changed(pub.schedule, now, pub.policy, previous)
-        if previous is None or 'upcoming' not in previous or selection_changed or previous['catalogSourceDigest'] != (owner.source_digest() if owner is not None else sha(canonical_bytes(catalog))) or 'feed.json.txt' not in active['files']:
+        if previous is None or 'upcoming' not in previous or selection_changed or previous['catalogSourceDigest'] != (owner.source_digest() if owner is not None else sha(canonical_bytes(catalog))) or 'feed.json.txt' not in active['files'] or 'watch.json' not in active['files']:
             publisher=pub.publisher_envelope(now)
             traversal=previous['providerTraversal'] if previous is not None else None
             files,digest=builder(pub.schedule,catalog,now,publisher=publisher,policy=pub.policy,traversal=traversal)

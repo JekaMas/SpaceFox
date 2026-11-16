@@ -22,15 +22,27 @@ class FeedService extends System.ServiceDelegate {
     function onTemporalEvent() as Void {
         try{var settings=System.getDeviceSettings();var registered=Background.getTemporalEventRegisteredTime();var last=Background.getLastTemporalEventTime();System.println("SF_BG enter phone="+settings.phoneConnected+" registered="+(registered==null?"none":registered.value())+" last="+(last==null?"none":last.value()));}catch(ignore){}
         startDeadline();try{Background.registerForTemporalEvent(new Time.Duration(3600));}catch(e){}
-        try{transfer=createTransfer();if(transfer.base.equals("")){Background.deleteTemporalEvent();Background.exit(null);return;}batch=new NativeBatch(transfer.store,transfer.base);transfer.load();var now=Time.now().value().toLong();LaunchReminder.wake(transfer,now);if(transfer.due(now)){transfer.attempted(now);armFeed(transfer,now);request("feed.json",method(:receive));}else{optional();}}catch(e){System.println("SF_BG start_error");finish();}
+        try{transfer=createTransfer();if(transfer.base.equals("")){Background.deleteTemporalEvent();Background.exit(null);return;}batch=new NativeBatch(transfer.store,transfer.base);transfer.load();var now=Time.now().value().toLong();LaunchReminder.wake(transfer,now);if(transfer.due(now)){transfer.attempted(now);armFeed(transfer,now);requestSnapshot();}else{optional();}}catch(e){System.println("SF_BG start_error");finish();}
     }
     (:typecheck(false))
     function request(path as String,callback as Method) as Void {if(ended){return;}if(requests>=44||nowMillis()-started>=22000){System.println("SF_BG request_budget");finish();return;}requests+=1;inFlight=true;try{sendRequest(path,callback);}catch(e){inFlight=false;System.println("SF_BG request_error");finish();}}
-    function callbackAllowed() as Boolean {if(ended){return false;}inFlight=false;if(deadlineArmed&&nowMillis()-started>=22000){finish();return false;}return true;}
-    (:typecheck(false))
-    function receive(code as Number,data as Dictionary or String or Null) as Void {
-        if(!callbackAllowed()){return;}try{System.println("SF_BG feed_http="+code);if(code==200&&data instanceof String){var staged=transfer.stage("feed",data,null);System.println("SF_BG feed_staged="+staged);if(staged){var begun=batch.begin(data);System.println("SF_BG batch_begin="+begun);if(begun){data=null;optional();return;}}}}catch(e){System.println("SF_BG feed_error");}finish();
+    (:typecheck(false)) function requestSnapshot() as Void {
+        if(ended){return;}if(requests>=44||nowMillis()-started>=22000){finish();return;}
+        requests+=1;inFlight=true;
+        try{Communications.makeWebRequest(transfer.base+"/watch.json",{}, {:method=>Communications.HTTP_REQUEST_METHOD_GET,:headers=>{"Accept"=>"application/json"},:responseType=>Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON},method(:receiveSnapshot));}catch(e){inFlight=false;System.println("SF_BG snapshot_request_error");finish();}
     }
+    (:typecheck(false)) function receiveSnapshot(code,data) as Void {
+        if(!callbackAllowed()){return;}
+        try{
+            if(code==200&&data instanceof Dictionary&&data["data"] instanceof Array&&new NativeTrustedStore(transfer.store,transfer.base).save(data["data"])){
+                // Publish core facts first; optional assets resume in the next
+                // background event and never gate the schedule snapshot.
+                try{if(batch!=null&&data["data"][6]!=null){batch.select(data["data"][6]);}}catch(ignore){}
+                System.println("SF_BG snapshot_ready");
+            }
+        }catch(e){System.println("SF_BG snapshot_error");}finish();
+    }
+    function callbackAllowed() as Boolean {if(ended){return false;}inFlight=false;if(deadlineArmed&&nowMillis()-started>=22000){finish();return false;}return true;}
     (:typecheck(false))
     function optional() as Void {try{if(batch!=null){assetRequest=batch.next();if(assetRequest!=null){request(assetRequest["path"],method(:receiveBatch));return;}if(batch.head!=null){finish();return;}}}catch(e){System.println("SF_BG batch_error");}finish();}
     (:typecheck(false))

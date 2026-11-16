@@ -1,0 +1,14 @@
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test b1MeasureCapturedCallbacks...
+DEBUG (21:46): B1_CAPTURED_PRE_ADMIT downloaded=27
+DEBUG (21:46): B1_CAPTURED_CALLBACKS objects=27 stageMs=7 beginMs=1 maxScanMs=18 maxPutMs=3 admitMs=494 testHost=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1MeasureCapturedCallbacks          PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

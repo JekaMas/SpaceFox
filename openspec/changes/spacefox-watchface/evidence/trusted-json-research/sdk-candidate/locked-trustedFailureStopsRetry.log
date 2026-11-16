@@ -1,0 +1,18 @@
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test trustedFailureStopsRetry...
+SF_VIEW mode=HIGH pending=false
+SF_FG snapshot_error
+SF_WAKE registration_ok pending=false next=1794868985
+SF_WAKE registration_kept pending=false next=1794868985
+SF_WAKE registration_kept pending=false next=1794868985
+DEBUG (22:43): trusted failure preserves facts, avoids hot retry and resumes on later delivery
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+trustedFailureStopsRetry            PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

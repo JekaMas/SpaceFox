@@ -84,17 +84,21 @@ and validation times. No LLM SHALL infer facts.
 - **WHEN** a successful provider validation confirms the same launch content
 - **THEN** the published feed records the new validation time without inventing a reschedule, even when the launch-content revision is unchanged
 
-### Requirement: Bounded coherent feed
+### Requirement: Compact trusted watch snapshot
 
-The watch SHALL validate a versioned feed with stable launch/model/site IDs,
-UTC times and precision, source-validation times and catalog revision references.
-The initial feed MUST be at most 8192 UTF-8 bytes; actual FR165 memory/time
-qualification MAY require a smaller supported bound. Unsupported, oversized,
-regressing or malformed snapshots MUST NOT replace the last accepted cache.
-#### Scenario: Unsupported or inconsistent snapshot
-- **WHEN** a response exceeds the bound, has an unsupported schema, missing required identity, invalid coordinates/time, or older source validation than the accepted cache
-- **THEN** the response is rejected and current time, fitness fields and last accepted launch data remain usable
-- **AND** All native feed, catalog, transfer-index, scene/descriptor and raster GETs SHALL use `HTTP_RESPONSE_CONTENT_TYPE_TEXT_PLAIN` and byte-identical `.txt` sidecars served as `text/plain` from the configured HTTPS base. Logical paths, bytes, digests, ordering, precision, cache and parser semantics SHALL remain unchanged. After final metadata, bounded selected and protected same-format recovery sidecars join the same durable snapshot or authenticated delivery journal, artifact, manifest, CAS, retention, recovery and exact readback without provider requests or changes to source age, priority, selection epoch or quota. Each snapshot remains limited to 256 files; the complete current-plus-recoverable delivery remains limited to 1 MiB and is limited to 512 files, derived from at most two 256-file closures, including any validated derived recovery sidecars. This explicitly corrects the former 256-file complete-union limit, which cannot accommodate two individually valid, disjoint closures. Capacity SHALL be checked before committing a new pending snapshot. Missing, stale, corrupt, unexpected or wrong-MIME sidecars refuse the candidate or readback without reconstructing pending bytes or losing accepted recovery; simulator HTTP200 with wrong MIME does not prove phone acceptance.
+The scheduled publisher SHALL project selected and bounded upcoming launch facts into `watch.json` after source acquisition, at most 8192 UTF-8 bytes. The watch SHALL request it as `application/json`, keeping exact UTC, announced NET reference, source age, reminder eligibility and qualified location distinct.
+
+#### Scenario: An optional visual is delayed
+- **WHEN** facts arrive before artwork, catalog or geometry downloads complete
+- **THEN** current facts and the source-qualified point remain visible with available fallback art while optional work continues independently.
+
+### Requirement: Interrupted snapshot recovery
+
+Failed responses and interrupted writes SHALL leave the last complete per-source snapshot available offline. Foreground time and countdown SHALL continue locally; optional asset failure SHALL NOT block the facts.
+
+#### Scenario: An update is interrupted before publication
+- **WHEN** a complete JSON response has not finished replacing its snapshot pointer
+- **THEN** the prior accepted snapshot remains selected and usable after reopen.
 
 ### Requirement: Decoded feed size accounting
 

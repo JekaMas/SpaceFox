@@ -30,12 +30,12 @@ class PhoneTextTransportTest(unittest.TestCase):
 
     def test_exact_native_closure_preserves_all_original_bytes_and_hashes(self):
         validate_artifact(self.files)
-        self.assertEqual({p:b for p,b in self.files.items() if not p.endswith('.txt')}, self.original)
+        self.assertEqual({p:b for p,b in self.files.items() if not p.endswith('.txt') and p != 'watch.json'}, self.original)
         feed=json.loads(self.original['feed.json']); index=json.loads(self.original[feed['nativeTransfer']['path']])
         expected={'feed.json',feed['catalogPath'],feed['nativeTransfer']['path']}
         expected.update(('rasters/' if kind else 'descriptors/')+digest+('.sfr' if kind else '.json') for kind,digest,size in index['objects'])
         self.assertEqual(native_transport_paths(self.original),expected)
-        self.assertEqual(set(self.files)-set(self.original), {p+'.txt' for p in expected})
+        self.assertEqual(set(self.files)-set(self.original), {p+'.txt' for p in expected}|{'watch.json'})
         for p in expected:
             self.assertEqual(self.files[p+'.txt'],self.original[p])
             self.assertEqual(hashlib.sha256(self.files[p+'.txt']).digest(),hashlib.sha256(self.original[p]).digest())
@@ -44,10 +44,11 @@ class PhoneTextTransportTest(unittest.TestCase):
 
     def test_partial_stale_extra_and_corrupt_sidecars_refuse(self):
         names=sorted(p for p in self.files if p.endswith('.txt'))
-        for change in ('missing','corrupt','extra'):
+        for change in ('missing','corrupt','extra','watch'):
             files=dict(self.files)
             if change=='missing':del files[names[0]]
             elif change=='corrupt':files['feed.json.txt']+=b' '
+            elif change=='watch':files['watch.json']+=b' '
             else:files['not-native.json.txt']=b'{}'
             with self.subTest(change=change), self.assertRaises(ValueError):validate_artifact(files)
 
@@ -64,6 +65,11 @@ class PhoneTextTransportTest(unittest.TestCase):
                     with urlopen(base+name) as response:
                         self.assertEqual(response.headers.get_content_type(),'text/plain')
                         self.assertEqual(response.read(),self.files[name])
+                with urlopen(base+'watch.json') as response:
+                    self.assertEqual(response.headers.get_content_type(),'application/json')
+                    projected=json.load(response)['data']
+                self.assertEqual(projected[0],1)
+                self.assertEqual(projected[6]['version'],3)
                 status,raw=HTTP().request('GET',base+'feed.json.txt',limit=8192)
                 self.assertEqual((status,raw),(200,self.original['feed.json']))
                 class WrongMime(QuietHandler):
@@ -83,7 +89,8 @@ class PhoneTextTransportTest(unittest.TestCase):
         after=with_text_transport(files)
         self.assertEqual(after['feed.json.txt'],files['feed.json'])
         self.assertEqual(json.loads(after['feed.json.txt'])['launch']['source_validated_utc'],age)
-        self.assertEqual({p:b for p,b in after.items() if p not in ('feed.json','feed.json.txt') and not p.endswith('.txt')},{p:b for p,b in self.original.items() if p!='feed.json'})
+        projected=json.loads(after['watch.json'])['data'];self.assertEqual(projected[1]['generation'],feed['publisher']['generation']);self.assertEqual(projected[3][15],age)
+        self.assertEqual({p:b for p,b in after.items() if p not in ('feed.json','feed.json.txt','watch.json') and not p.endswith('.txt')},{p:b for p,b in self.original.items() if p!='feed.json'})
 
     def test_protected_pre_sidecar_snapshot_has_bounded_byte_identical_retained_copies(self):
         from tools.spacefox.cloud import retained_files
@@ -111,7 +118,9 @@ class PhoneTextTransportTest(unittest.TestCase):
             store=GitState(str(remote))
             try:
                 store.bootstrap(code);pub=Publisher(store,code);pub.reconcile(None);catalog=build_catalog(ROOT)
-                with patch('tools.spacefox.native_motion.with_text_transport',lambda files:files):
+                def text_only(files):
+                    return {**files, **{p+'.txt':files[p] for p in native_transport_paths(files)}}
+                with patch('tools.spacefox.native_motion.with_text_transport',text_only):
                     old,digest=build_artifact(pub.schedule,catalog,NOW,publisher=pub.publisher_envelope(NOW),root=ROOT)
                     revision=pub.prepare(pub.head,NOW,old,digest,artifact_profile=PROFILE)
                 pub.reconcile(revision);before=pub.ledger
@@ -122,6 +131,7 @@ class PhoneTextTransportTest(unittest.TestCase):
                 self.assertEqual(result['catalogReview']['catalogRevision'], catalog['catalogVersion'])
                 self.assertEqual(result['catalogReview']['lifecycleReview'], 'available')
                 after=Publisher(store,code);new=after.pending_files()
+                self.assertNotIn('watch.json',old);self.assertIn('watch.json',new)
                 self.assertEqual(new['feed.json.txt'],new['feed.json'])
                 self.assertEqual(after.ledger['accepted']['entries'],before['accepted']['entries'])
                 self.assertEqual(after.ledger['accepted']['evaluated_at_utc'],NOW+1)

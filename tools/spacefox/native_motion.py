@@ -74,9 +74,12 @@ def native_transport_paths(files):
 
 def with_text_transport(files):
     """Copy final raw bytes, after metadata stamping; never parse/reserialize them."""
-    logical = {p: raw for p, raw in files.items() if not p.endswith('.txt')}
+    logical = {p: raw for p, raw in files.items() if not p.endswith('.txt') and p != 'watch.json'}
     paths = native_transport_paths(logical)
     result = dict(logical)
+    from .watch_snapshot import encode_snapshot
+    feed = loads_json(logical[FEED_PATH])
+    result['watch.json'] = encode_snapshot(feed, loads_json(logical[feed['catalogPath']]))
     result.update({p + '.txt': logical[p] for p in paths})
     require(len(result) <= 256 and sum(map(len, result.values())) <= 1048576,
             'complete artifact including text transport bound')
@@ -633,11 +636,15 @@ def _validate_artifact(files, cached, pending):
                 require(all(scene[k]==first[k] for k in scene if k not in ('layoutRevision','roles'))
                         and all(scene['roles'][r]==first['roles'][r] for r in ROLES if r!='map'), 'view agreement')
         require(read_ref(feed[transfer_key],files)==canonical_bytes(_index(files,ref)), 'transfer closure')
-    logical = {p: raw for p, raw in files.items() if not p.endswith('.txt')}
+    logical = {p: raw for p, raw in files.items() if not p.endswith('.txt') and p != 'watch.json'}
     require(set(logical) == closure(logical,[FEED_PATH]), 'complete immutable closure')
+    if 'watch.json' in files:
+        from .watch_snapshot import encode_snapshot
+        require(files['watch.json'] == encode_snapshot(feed, cat), 'watch projection matches feed')
     # Already accepted same-format snapshots may predate HTTP sidecars. If any
     # sidecar is present, require the complete exact set and byte identity. New
     # preparation always adds the complete set, including the final mutable root.
-    if len(logical) != len(files):
-        require(files == with_text_transport(logical), 'complete byte-identical text transport')
+    sidecars = {p: raw for p, raw in files.items() if p.endswith('.txt')}
+    if sidecars:
+        require(sidecars == {p + '.txt': logical[p] for p in native_transport_paths(logical)}, 'complete byte-identical text transport')
     return feed

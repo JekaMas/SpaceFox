@@ -28,12 +28,12 @@ class Release020PredecessorTest(unittest.TestCase):
 
     def test_real_receipt_iq_and_higher_version(self):
         recorded = self.policy['latest_release']
-        self.assertEqual(recorded['version'], '0.2.1')
+        self.assertEqual(recorded['version'], '0.2.2')
         self.assertEqual(recorded['original_receipt_sha256'], hashlib.sha256(self.path.read_bytes()).hexdigest())
         self.assertEqual(self.previous['version'], recorded['version'])
         self.assertEqual(self.previous['package_sha256'], recorded['package_sha256'])
         self.assertEqual(self.previous['source_revision'], recorded['source_revision'])
-        self.assertEqual(self.app.get('version'), '0.2.2')
+        self.assertEqual(self.app.get('version'), '0.2.3')
         result = release.validate_previous(self.previous, self.app, self.policy['public_key_spki_sha256'])
         self.assertEqual(result['kind'], 'higher_version_repair')
         self.assertFalse(result['migration_qualified'])

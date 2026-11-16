@@ -1,0 +1,14 @@
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test trustedSnapshotBench...
+DEBUG (21:48): CANDIDATE variant=0 resourceMs=0 writeMs=2 readFactMs=1 usedBefore=88824 usedLoaded=91808 sampled=true
+DEBUG (21:48): CANDIDATE variant=1 resourceMs=0 writeMs=0 readFactMs=1 usedBefore=88824 usedLoaded=90512 sampled=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+trustedSnapshotBench                PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

@@ -12,11 +12,7 @@ import Toybox.StringUtil;
 class NativeIncrementalJson extends NativeJson {
     var maxInput=0;var stack=[];var result=null;var done=false;var stage=0;var sizeAt=0;var bytes=0;var control=0;
     var token=null;var tokenPurpose=null;var tokenStart=0;var tokenResult="";var tokenSegment=0;var tokenNormalized=false;
-    function initialize(){NativeJson.initialize();
-        // Feed launch and successor rows repeat these keys. Interning their
-        // parsed spellings avoids keeping a separate heap string per row.
-        commonKeys.addAll(["decodedBytes","path","sha256","configuration_id","configuration_name","country_code","country_id","country_name","launch_id","mission_name","mission_purpose","operator_abbrev","operator_id","operator_name","rescheduled","site_id","site_location_name","site_name","source_status_id","source_status_name","source_updated_iso","source_updated_utc","source_validated_utc","stale","status","timing","date_utc","exact_utc","nominal_utc","precision","source_net","source_precision_abbrev","source_precision_description","source_precision_id","source_precision_name","window_end_utc","window_start_utc","worldwideCompleteness","sitePosition","siteSource"]);
-    }
+    function initialize(){NativeJson.initialize();}
     function dispose(){rowOwner=null;rootOwner=null;nodeOwner=null;source="";stack=null;result=null;}
     function begin(raw,maxBytes){
         if(!(raw instanceof String)||raw.length()>maxBytes){fail();}maxInput=maxBytes;source=raw;index=0;nodes=0;path="";spans={};ignored=[];stack=[];result=null;done=false;stage=0;sizeAt=0;bytes=0;control=0;token=null;hasDel=false;
@@ -88,6 +84,6 @@ class NativeIncrementalJson extends NativeJson {
             if(path.equals("/launch/operator_abbrev")){var next=finish;while(next<source.length()&&" \t\r\n".find(source.substring(next,next+1))!=null){next+=1;}if(source.substring(next,next+1).equals(",")){spans[path]=[f.keyStart,next+1];}else{fail();}}
             if(path.equals("/publisher")||path.equals("/launch/source_validated_utc")||path.equals("/launch/stale")||path.equals("/launch/rescheduled")||path.equals("/pollIntervalSeconds")||path.equals("/timingState")){ignored.add([begin,finish]);}child=projection(path,child);
         }
-        if(rowOwner!=null&&(oldPath.equals("/dictionaries")||catalogMode&&oldPath.equals("/entries"))){child=rowOwner.dictionaryRow(key,child);}if(nodeOwner!=null){child=nodeOwner.objectField(oldPath,key,child);}if(rootOwner!=null&&oldPath.equals("")){child=rootOwner.sceneField(key,child);}f.result[key]=child;path=oldPath;f.state=4;
+        if(nodeOwner!=null){child=nodeOwner.objectField(oldPath,key,child);}if(rootOwner!=null&&oldPath.equals("")){child=rootOwner.sceneField(key,child);}f.result[key]=child;path=oldPath;f.state=4;
     }
 }

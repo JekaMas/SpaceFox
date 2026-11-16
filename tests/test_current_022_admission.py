@@ -17,13 +17,23 @@ class Current022Binding(unittest.TestCase):
             with patch.object(owner,'checked',side_effect=read),patch.object(owner,'native_inputs',return_value=record['nativeInputs']):
                 with self.assertRaisesRegex(ValueError,'differs from reviewed closure'):owner.validate(ROOT,catalog)
 
-    def test_release_requires_matching_independent_peer(self):
-        from tools import release
+    def test_unreviewed_native_delta_is_refused(self):
         catalog=json.loads((ROOT/'locales/catalog.json').read_text())
-        digest='9838392688273e99b88e3808b4a4a24e7f549e4a97d418386ba461aa2243592c'
-        good={'data': {'kind':'current022-independent-native-peer', 'status':'GREEN', 'integration_proof_sha256':digest}}
+        native=owner.native_inputs(ROOT);native['watchface/source/WatchClock.mc']='0'*64
+        with patch.object(owner,'native_inputs',return_value=native):
+            with self.assertRaisesRegex(ValueError,'trusted snapshot native delta differs'):owner.validate(ROOT,catalog)
+
+    def test_release_requires_matching_independent_peer(self):
+        import re, subprocess
+        from tools import release
+        native=(ROOT/'watchface/source/generated/NativeVersion.mc').read_text()
+        native_id=re.search(r'const ID = "([0-9a-f]{8})"',native).group(1)
+        revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+        good={'data': {'kind':'trusted-json-independent-peer','status':'GREEN','version':'0.2.3','native_id':native_id,'source_revision':revision}}
         with patch.object(owner,'validate',return_value=[]):
             with self.assertRaises(Exception): release.require_combined_peer(ROOT,[])
-            bad={'data':dict(good['data'],integration_proof_sha256='0'*64)}
+            bad={'data':dict(good['data'],native_id='00000000')}
             with self.assertRaises(Exception): release.require_combined_peer(ROOT,[bad])
             release.require_combined_peer(ROOT,[good])
+            with patch.object(release,'git',return_value='watchface/source/SpaceFoxView.mc'):
+                with self.assertRaises(Exception):release.require_combined_peer(ROOT,[good])

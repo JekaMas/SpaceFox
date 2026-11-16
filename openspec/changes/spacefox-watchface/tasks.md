@@ -152,3 +152,13 @@ Current integration batch (existing tasks 3.2–3.4, 5.1–5.5 and 7.1–7.3):
 - [x] Complete the selected source, native interaction and release admission checks; retain earlier greens where their inputs are unchanged.
 - [x] Existing independent peer reviewed and repaired the complete combined batch to GREEN; exact export receipt and retained/new proof scopes are in `evidence/current-integration-022/PEER.md` and `peer-current-022.json`.
 - [ ] Reserve/freeze actual main/source, build one full signed IQ, create the final tag after successful export, and publish/read back the authorized full GitHub release. Physical and phone acceptance remain unobserved; Store action requires actual current legal consent.
+
+Trusted JSON simplification (existing tasks 3.2–3.4, 5.1–5.5, 7.1–7.3):
+
+The former feed-only raw hash/seal, chunk reassembly, repeated validation and reparse/recovery cases are retired by the user decision; their earlier marks and receipts remain historical. This does not retire clock/LOW, optional artwork, refresh, reminder, storage interruption or actual physical gates.
+
+- [x] Measure the current acquisition/admission path and real-input alternatives; record failures, non-comparable boundaries and technique decisions.
+- [x] Apply measured improvements across publisher and watch, remove superseded feed checks and owners, and verify offline snapshot recovery, launch display and independent optional assets locally. Hosted cutover remains open.
+- [x] Run affected host and owned-SDK lifecycle checks and update the authoritative specification and source/release bindings.
+- [ ] Complete independent peer verification and corrections for the same batch.
+- [ ] Publish the signed release; keep phone, Garmin Store and physical acceptance separately truthful.

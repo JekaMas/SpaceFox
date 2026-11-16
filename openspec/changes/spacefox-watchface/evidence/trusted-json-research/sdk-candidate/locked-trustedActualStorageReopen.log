@@ -1,0 +1,17 @@
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test trustedActualStorageReopen...
+SF_VIEW mode=HIGH pending=false
+SF_WAKE registration_ok pending=false next=1794869000
+SF_VIEW mode=HIGH pending=false
+SF_WAKE registration_kept pending=false next=1794869000
+DEBUG (22:43): trusted actual Application.Storage snapshot restores on app reopen
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+trustedActualStorageReopen          PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

@@ -87,16 +87,11 @@ source validation SHALL remain distinct; content builds SHALL NOT renew source a
 
 ### Requirement: Current format and state recovery
 
-Releases SHALL preserve field assignments, locale and feed URL through
-same-current-format updates and recovery. The sole supported public format SHALL
-be native-motion-v3 / SFR1M envelope schema 3 at /feed.json. Unsupported input SHALL
-retain accepted current-format data with honest age and an actionable explanation.
-No prior wire major, transition period, alternate root, static profile or legacy
-state migration SHALL be required. Feed-host changes SHALL isolate launch state.
+Releases SHALL preserve fields, locale and feed URL during updates. The publisher uses native-motion-v3 / SFR1M schema 3 at `/feed.json`, with a compact watch projection at `/watch.json`. Failed responses and interrupted writes SHALL retain accepted data with honest age. No prior wire major, transition, alternate root or legacy migration is required. Feed-host changes SHALL isolate launch state.
 
-#### Scenario: Unsupported input reaches the current app
-- **WHEN** the app encounters an unsupported envelope or corrupt current cached state
-- **THEN** it refuses that input, retains valid accepted current-format data with honest age, preserves user choices and offers recovery without inventing a fresh schedule
+#### Scenario: A snapshot update is interrupted
+- **WHEN** a response or snapshot write fails before the new pointer is committed
+- **THEN** the prior complete per-source snapshot and user choices remain available without inventing a fresh schedule
 
 #### Scenario: Change the personal feed host
 - **WHEN** FeedBaseUrl changes to another instance

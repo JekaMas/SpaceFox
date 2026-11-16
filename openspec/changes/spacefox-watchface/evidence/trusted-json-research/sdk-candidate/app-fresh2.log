@@ -1,0 +1,19 @@
+Background: TRUST_EVENT bootstrap_registered
+Background: TRUST_EVENT bootstrap_registered
+TRUST_EVENT bootstrap_registered
+SF_VIEW mode=HIGH pending=false
+SF_WAKE registration_ok pending=false next=1794867128
+Background: TRUST_EVENT bootstrap_error
+Background: TRUST_EVENT background_start
+Background: SF_BG enter phone=true registered=none last=1794867128
+Background: SF_WAKE registration_ok pending=false next=1794867428
+SF_WAKE registration_kept pending=false next=1794867428
+Background: TRUST_EVENT http=404 callbackMs=81 used=21136 dictionary=false
+Background: SF_WAKE registration_kept pending=false next=1794867428
+TRUST_EVENT delivery
+SF_FG background_delivery
+SF_WAKE registration_kept pending=false next=1794867428
+Background: TRUST_EVENT bootstrap_error
+Background: TRUST_EVENT background_start
+Background: SF_BG enter phone=true registered=none last=1794867129
+Background: SF_WAKE registration_ok pending=false next=1794867429

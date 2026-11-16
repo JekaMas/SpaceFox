@@ -103,11 +103,12 @@ majors, dual roots, static exporters, legacy migration/adoption, old-archive gat
 cross-version tests and the 90-day transition are RETIRED by explicit user decision,
 not passed. Existing immutable evidence remains historical with its original scope.
 
-Same-current-format accepted/pending updates, exact immutable current/recovery
-closure, atomic cache activation/reopen, namespace isolation, source age, shared
-quota, corruption refusal and all existing resource/time/UI bounds remain required.
-A previous content generation of this same format is recoverable content, not an
-old format. No schema or envelope is invented by this revision.
+The watch accepts the publisher's compact JSON projection and keeps its last
+complete per-source snapshot across an interrupted save or reopen. Source age,
+clock, namespace, shared quota and UI/resource bounds remain meaningful. The
+former on-watch raw-feed chunk/hash/reparse and sealed provenance requirements
+are retired by the 2026-11-17 user decision. Optional artwork remains separately
+bounded and may finish after core facts. Earlier receipts retain historical scope.
 
 Display qualification uses only the finite real corpus: every launch since
 2021-11-13T00:00:00Z (the last five years at this decision), ALL published future

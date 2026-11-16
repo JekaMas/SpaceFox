@@ -499,6 +499,23 @@ def require_combined_peer(root: Path, supplied: list[dict]) -> None:
     if combined is not None:
         from tools.native_current_022_qualification import validate
         validate(root, catalog)
+        app = ET.parse(root / "watchface/manifest.xml").getroot().find("iq:application", NS)
+        if app.get("version") == "0.2.3":
+            peers = [item["data"] for item in supplied if item["data"].get("kind") == "trusted-json-independent-peer"]
+            native = (root / "watchface/source/generated/NativeVersion.mc").read_text()
+            match = re.search(r'const ID = "([0-9a-f]{8})"', native)
+            require(len(peers) == 1 and peers[0].get("status") == "GREEN" and
+                    peers[0].get("version") == "0.2.3" and match is not None and
+                    peers[0].get("native_id") == match.group(1),
+                    "production export requires trusted snapshot independent peer binding")
+            reviewed = peers[0].get("source_revision")
+            require(isinstance(reviewed, str) and re.fullmatch(r"[0-9a-f]{40}", reviewed),
+                    "trusted snapshot peer must identify its reviewed source")
+            ancestry = subprocess.run(["git", "merge-base", "--is-ancestor", reviewed, "HEAD"], cwd=root, capture_output=True)
+            require(ancestry.returncode == 0, "peer source is not an ancestor")
+            unchanged = git(root, "diff", "--name-only", reviewed, "HEAD", "--", "watchface", "tools/spacefox", "tools/cloud_feed.py", "tools/release.py", "tools/native_current_022_qualification.py", "locales/catalog.json")
+            require(not unchanged.strip(), "reviewed trusted snapshot source changed")
+            return
         peers = [item["data"] for item in supplied if item["data"].get("kind") == "current022-independent-native-peer"]
         require(len(peers) == 1 and peers[0].get("status") == "GREEN" and
                 peers[0].get("integration_proof_sha256") == "9838392688273e99b88e3808b4a4a24e7f549e4a97d418386ba461aa2243592c",
