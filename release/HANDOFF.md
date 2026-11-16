@@ -7,9 +7,9 @@ stored recovery password have actual local restore/challenge evidence in
 the owner-held signing records. All copies remain on the same Mac; offsite
 and disaster recovery are not claimed.
 
-## 0.2.0 candidate
+## 0.2.1 candidate
 
-The 0.2.0 source combines the live-data/LOW and B2/B3 reminder integration. Its physical acceptance and Garmin Store status remain unobserved; publication and signed artifact identity are recorded after delivery. See [release notes](RELEASE-NOTES-0.2.0.md).
+The 0.2.1 source combines the live-data/LOW and B2/B3 reminder integration. Its physical acceptance and Garmin Store status remain unobserved; publication and signed artifact identity are recorded after delivery. See [release notes](RELEASE-NOTES-0.2.1.md).
 
 ## Published 0.1.23 GitHub test prerelease
 

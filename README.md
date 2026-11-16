@@ -10,7 +10,7 @@ The 0.1.23 GitHub test prerelease aligns optional launch reminders with the sele
 
 Native simulator capture; it is not a physical watch photograph.
 
-The 0.2.0 source candidate adds the estimated NET display and integrated LOW/data repairs; physical acceptance and Store publication remain unobserved.
+The 0.2.1 source candidate adds the estimated NET display and integrated LOW/data repairs; physical acceptance and Store publication remain unobserved.
 
 ## What it shows
 

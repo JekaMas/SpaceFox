@@ -153,3 +153,7 @@ published and 0.2.0 was free. Signed artifacts, GitHub release, Garmin Store
 submission, the physical no-update cause and hardware acceptance remain open
 until observed. The release tag and exact compiled source are to be frozen before
 export; later main movement does not change those bytes.
+
+## 0.2.1 compiler correction
+
+The 0.2.0 IQ export failed fr265s type checking; its tag remains immutable and no 0.2.0 package was released. The equivalent explicit type and nullability corrections compile successfully for fr265s on SDK 9.3. The 0.2.1 admission binds those changes to the retained reviewed behavior evidence. Physical acceptance remains unobserved.

@@ -1,4 +1,4 @@
-"""Bind the reviewed 0.2.0 integration to the retained B3 qualification.
+"""Bind the reviewed 0.2.0 integration and its 0.2.1 type-only successor to the retained B3 qualification.
 
 The predecessor and its locale proof remain unchanged. New observations are
 limited to the FR165M SDK interaction; physical acceptance is not inferred.
@@ -32,7 +32,7 @@ OWNER_CHANGED = {'tools/build_fallback_world.py','watchface/runtime-b2-tests/B2T
 SNAPSHOTS = NATIVE_CHANGED | TEST_CHANGED | OWNER_CHANGED
 CURRENT_OWNERS = OWNER_CHANGED | {'tools/native_live_020_qualification.py','tests/test_live_020_admission.py'}
 # A peer reviews this exact native closure; the record alone cannot repin it.
-REVIEWED_NATIVE_SHA256 = 'e980fe90905ac41347838e082131f550b6f84e0ba4c77d0078a2244db5d2a879'
+REVIEWED_NATIVE_SHA256 = '92324705e36929771cbf1b65b66b21e8aca284e2cac9929bd1e9f59224c0c137'
 
 
 def native_digest(inputs):
@@ -65,7 +65,7 @@ def validate(root,catalog):
     prior=json.loads(checked(root,proof['b3Runtime023Proof']).read_text())
     b1=json.loads(checked(root,proof['b1Integration021Proof']).read_text())
     b2=json.loads(checked(root,proof['b2Runtime022Proof']).read_text())
-    if record['scope']!='live-b3-020-reviewed-sdk' or record['version']!='0.2.0': raise ValueError('wrong live integration scope')
+    if record['scope']!='live-b3-020-reviewed-sdk' or record['version']!='0.2.1': raise ValueError('wrong live integration scope')
     native=native_inputs(root);old=prior['nativeInputs']
     if native!=record['nativeInputs'] or set(native)!=set(old) or {n for n in native if native[n]!=old[n]}!=NATIVE_CHANGED: raise ValueError('unexpected live native delta')
     if native_digest(native)!=REVIEWED_NATIVE_SHA256: raise ValueError('live native closure differs from reviewed source')
@@ -79,9 +79,9 @@ def validate(root,catalog):
         checked(root,ref)
     if set(record['currentOwners'])!=CURRENT_OWNERS or any(sha(root/name)!=digest for name,digest in record['currentOwners'].items()): raise ValueError('integration owner changed')
     old_manifest=checked(root,snapshots['watchface/manifest.xml']).read_bytes()
-    if old_manifest.replace(b'version="0.1.23"',b'version="0.2.0"',1)!=(root/'watchface/manifest.xml').read_bytes(): raise ValueError('manifest delta exceeds version')
+    if old_manifest.replace(b'version="0.1.23"',b'version="0.2.1"',1)!=(root/'watchface/manifest.xml').read_bytes(): raise ValueError('manifest delta exceeds version')
     app=ET.parse(root/'watchface/manifest.xml').getroot().find('{http://www.garmin.com/xml/connectiq}application')
-    if app.get('id')!='ec8b7c8a8ea54ee9ac91ee6e7a674d15' or app.get('version')!='0.2.0': raise ValueError('integration version or UUID changed')
+    if app.get('id')!='ec8b7c8a8ea54ee9ac91ee6e7a674d15' or app.get('version')!='0.2.1': raise ValueError('integration version or UUID changed')
     validate_version(root)
     expected={'b3roll':'b3QueueAndRollover','net':'b1AnnouncedNetDisplayAndReopen','binding':'b3EstimatedQueueBinding','eligibility':'b3AdmissionAndUnknown','selection':'b3DisplayRetainedSelection','checkpoint':'b1QueueCheckpointFailure021','low':'b2LowUnmatchedPoint','facts':'b2AdmittedFactsWithoutArt','hour':'b2CapturedHourAndMissingPoint','decode':'b1RealDecodeTicksAndCancels','reserve':'b1LowHeapDefersOptionalDecode','rollover':'b1CapturedSuccessorTicksInFallback','cold':'b1ColdAcquisition'}
     if set(record['evidence'])!=set(expected)|{'replacement','frame','peer'}: raise ValueError('integration evidence inventory changed')
