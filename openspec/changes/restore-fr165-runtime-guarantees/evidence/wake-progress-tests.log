@@ -1,0 +1,34 @@
+------------------------------------------------------------------------------
+Executing test b1RealDecodeTicksAndCancels...
+DEBUG (11:20): B1_DECODE_INITIAL countdown=T- 16:18:18
+DEBUG (11:21): B1_REAL_DECODE selected_min=true objects=18 beginMs=94 slices=20 maxSliceMs=53 maxPhase=role maxRole=0 maxRow=-1 maxBatchScanMs=15 maxPutMs=4 activeCatchup=true lowOffHighCyclesAdvance=true hideCancel=true testHost=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1LowHeapDefersOptionalDecode...
+DEBUG (11:21): B1_OPTIONAL_RESERVE deferred_without_allocation=true ticking=true recovery=true low_pause_hide_cancel=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1GraphemeReleaseAndRebind...
+DEBUG (11:21): B1_GRAPHEME optional_release=true active_rebind=true en_ru_calendar=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1StagedLiveFeedAdmission...
+DEBUG (11:21): B1_STAGED_VALIDATION actual=1794820332 commit=true
+DEBUG (11:21): B1_STAGED live_red_bytes=true phases=8 no_early_commit=true source_age_preserved=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1StagedRestoreExactAndRecovery...
+DEBUG (11:21): B1_RESTORE exact_live=true expected_seal_old=true corrupt_commit_recovery=true no_early_publish=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1RealDecodeTicksAndCancels         PASS
+b1LowHeapDefersOptionalDecode       PASS
+b1GraphemeReleaseAndRebind          PASS
+b1StagedLiveFeedAdmission           PASS
+b1StagedRestoreExactAndRecovery     PASS
+Ran 5 tests
+
+PASSED (passed=5, failed=0, errors=0)

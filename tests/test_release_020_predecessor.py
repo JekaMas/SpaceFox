@@ -1,4 +1,4 @@
-"""Current release history boundary using the retained actual 0.1.18 receipt.
+"""Current release history boundary using the retained actual 0.1.20 receipt.
 
 This does not replace the separate immutable 0.1.12 historical witness and
 never reads the private production key or executes a Garmin export.
@@ -13,7 +13,7 @@ import xml.etree.ElementTree as ET
 from tools import release
 from tools.build_watchface import ROOT, NS, BuildBlocked
 
-class Release018PredecessorTest(unittest.TestCase):
+class Release020PredecessorTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         path = os.environ.get('SPACEFOX_PUBLISHED_RELEASE_RECEIPT')
@@ -26,19 +26,19 @@ class Release018PredecessorTest(unittest.TestCase):
 
     def test_real_receipt_iq_and_higher_version(self):
         latest = self.policy['latest_release']
-        self.assertEqual(latest['version'], '0.1.18')
+        self.assertEqual(latest['version'], '0.1.20')
         self.assertEqual(hashlib.sha256(self.path.read_bytes()).hexdigest(), latest['original_receipt_sha256'])
         self.assertEqual(self.previous['version'], latest['version'])
         self.assertEqual(self.previous['package_sha256'], latest['package_sha256'])
         self.assertEqual(self.previous['source_revision'], latest['source_revision'])
-        self.assertEqual(self.app.get('version'), '0.1.20')
+        self.assertEqual(self.app.get('version'), '0.1.21')
         result = release.validate_previous(self.previous, self.app, self.policy['public_key_spki_sha256'])
         self.assertEqual(result['kind'], 'higher_version_repair')
         self.assertFalse(result['migration_qualified'])
 
     def test_same_version_and_wrong_signer_refused(self):
         app = ET.fromstring(ET.tostring(self.app))
-        app.set('version', '0.1.18')
+        app.set('version', '0.1.20')
         with self.assertRaisesRegex(BuildBlocked, 'strictly increase'):
             release.validate_previous(self.previous, app, self.policy['public_key_spki_sha256'])
         with self.assertRaisesRegex(BuildBlocked, 'identity/key changed'):

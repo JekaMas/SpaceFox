@@ -7,11 +7,23 @@ stored recovery password have actual local restore/challenge evidence in
 the owner-held signing records. All copies remain on the same Mac; offsite
 and disaster recovery are not claimed.
 
-## Current 0.1.18 release
+## 0.1.21 integration candidate
 
-[SpaceFox 0.1.18](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.18) is the regular GitHub release. Compiled source and tag: `8ca1b7a63e51692d173bedec762dc6d6cbcd8e1c`; native ID `256680ec`; IQ SHA-256 `389d7e05b061f8621fb0792291cb1acb5e7f20f71ad6fa04dfe00f3e46cf5a36`; original receipt SHA-256 `bfe206bac41a83913404c738d4796e52e9d960863ac4674ea12968f082942c77`. The original Garmin listing shows 0.1.18/Internal 11 PENDING in owner preview; Music installation is queued for the next sync. Physical installation and public approval remain unobserved. See [publication](../openspec/changes/spacefox-watchface/evidence/fields018/publication/PUBLICATION.md).
+Version 0.1.21 integrates the published 0.1.20 watchdog repair with the independently reviewed B1 clock-first and resource-lifecycle changes. The original 0.1.20 receipt and published IQ are the update predecessor. The full receipt was retained locally and authenticated against the digest in the published package summary; it was not itself a public release asset. Exact-candidate physical FR165 cold start, reopen and at least 15 minutes ordinary use remain unverified; the owner's 0.1.18 IQ report remains unexplained. The owner authorized GitHub distribution before that observation. No 0.1.21 Store submission or approval is claimed. See [release notes](RELEASE-NOTES-0.1.21.md).
 
-Use the original 0.1.18 receipt and matching IQ with the same UUID and key as the predecessor for a future higher version. The original 0.1.17 receipt and IQ remain the immutable 0.1.18 export-time predecessor.
+## Published 0.1.20 release
+
+[SpaceFox 0.1.20](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.20) is a regular GitHub release. Compiled source `30dc0421d35e77b76e1451d6dfd4b1a5b9d9a144`, native ID `d8265852`, IQ SHA-256 `b5bd0cb73b290f37e49e5b5027a6304213dcb38bc5669cf220d6652b8c59738d`; its original full receipt SHA-256 `fbfe2da43812ebd01608ad177007743fb24a368b1a69d8a0823ed37e98956818` is authenticated by the published package summary. No 0.1.20 Garmin Store submission or physical installation is established.
+
+## Historical 0.1.19 candidate
+
+The locally verified 0.1.19 artifacts were superseded by published 0.1.20 and were not released. Their original source and receipts remain immutable historical evidence.
+
+## Published 0.1.18 release
+
+[SpaceFox 0.1.18](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.18) is the regular GitHub release. Compiled source and tag: `8ca1b7a63e51692d173bedec762dc6d6cbcd8e1c`; native ID `256680ec`; IQ SHA-256 `389d7e05b061f8621fb0792291cb1acb5e7f20f71ad6fa04dfe00f3e46cf5a36`; original receipt SHA-256 `bfe206bac41a83913404c738d4796e52e9d960863ac4674ea12968f082942c77`. The original Garmin listing shows 0.1.18/Internal 11 PENDING in owner preview; Music installation was queued for the next sync. The owner separately installed 0.1.18 on a physical non-Music FR165 and reported missing point/time followed by an IQ error; its cause is unknown. Public Store approval remains unobserved. See [publication](../openspec/changes/spacefox-watchface/evidence/fields018/publication/PUBLICATION.md).
+
+The original 0.1.18 receipt and matching IQ were the published 0.1.20 candidate’s predecessor. The original 0.1.17 receipt and IQ remain the immutable 0.1.18 export-time predecessor.
 
 ## Historical 0.1.17 release
 

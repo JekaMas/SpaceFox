@@ -1,3 +1,4 @@
+import Toybox.Application;
 import Toybox.Lang;
 import Toybox.Test;
 import Toybox.Time;
@@ -8,6 +9,7 @@ import Toybox.WatchUi;
 // Actual durable storage and production transfer, batch, immutable, parser and
 // cache owners. The fixture substitutes only the HTTP response boundary.
 (:test,:typecheck(false)) function b1ColdAcquisition(logger) {
+    Application.Storage.clearValues(); // test UUID only; each cold replay starts empty
     var store=new NativeStore();var base="https://jekamas.github.io/SpaceFox";
     // Replay the captured response at its recorded capture instant, without
     // rebasing source timestamps or claiming this is a live provider request.
@@ -135,7 +137,7 @@ import Toybox.WatchUi;
     var store=new B1MemoryStore();var base="https://jekamas.github.io/SpaceFox";var now=1794818604l;var raw=WatchUi.loadResource(Rez.JsonData.B1Feed)["raw"];
     var batch=new NativeBatch(store,base);Test.assert(batch.begin(raw));var ref=batch.next();Test.assert(ref!=null);Test.assert(batch.immutable.put(ref,b1Response(ref["path"])));
     var prepared=new NativePreparedBridgeFeed(raw,now,store);var count=0;while(!prepared.prepareStep()){count+=1;Test.assert(count<2000);}
-    var cache=new TestNativeCache(base,store);var promotion=new NativeFeedPromotion(cache,raw,prepared,now,null);var promotions=0;while(!promotion.step()){promotions+=1;Test.assert(promotions<30);}Test.assert(promotion.accepted&&cache.packet!=null&&cache.commit!=null);
+    var cache=new TestNativeCache(base,store);var promotion=new NativeFeedPromotion(cache,raw,prepared,now,null);var promotions=0;while(!promotion.step()){Test.assertMessage(store.read("sf.commit")==null,"commit became visible before promotion completed");promotions+=1;Test.assert(promotions<30);}Test.assert(promotion.accepted&&cache.packet!=null&&cache.commit!=null);
     var reopened=new TestNativeCache(base,store);Test.assert(reopened.load(now)!=null);Test.assert(reopened.packet.launchId().equals(cache.packet.launchId()));
     var expectedId=reopened.packet.launchId();var expectedSeal=reopened.commit["seal"];cache=null;promotion=null;prepared=null;reopened=null;
     var sliced=new TestNativeCache(base,store);var restore=new NativeRestoreJob(sliced,now,null);var restoreSteps=0;while(!restore.step()){restoreSteps+=1;Test.assert(restoreSteps<3000);}Test.assert(restore.accepted&&sliced.packet.launchId().equals(expectedId)&&sliced.commit["seal"].equals(expectedSeal));

@@ -1,0 +1,28 @@
+------------------------------------------------------------------------------
+Executing test b1LowHeapDefersOptionalDecode...
+DEBUG (12:19): B1_OPTIONAL_RESERVE deferred_without_allocation=true ticking=true recovery=true low_pause_hide_cancel=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1RealDecodeTicksAndCancels...
+DEBUG (12:19): B1_DECODE_INITIAL countdown=T- 16:18:18
+DEBUG (12:19): B1_REAL_DECODE selected_min=true objects=18 beginMs=93 slices=20 maxSliceMs=53 maxPhase=role maxRole=0 maxRow=-1 maxBatchScanMs=15 maxPutMs=3 activeCatchup=true lowOffHighCyclesAdvance=true hideCancel=true testHost=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1AdmissionFitnessLifecycle...
+DEBUG (12:19): B1_FIELDS admission_stop_once=true pending_no_restart=true four_slots_resume=true low_hide_idempotent=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableHealth...
+DEBUG (12:19): B1_CLOCK health_and_callback_failure=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1LowHeapDefersOptionalDecode       PASS
+b1RealDecodeTicksAndCancels         PASS
+b1AdmissionFitnessLifecycle         PASS
+b1ClockWithUnavailableHealth        PASS
+Ran 4 tests
+
+PASSED (passed=4, failed=0, errors=0)

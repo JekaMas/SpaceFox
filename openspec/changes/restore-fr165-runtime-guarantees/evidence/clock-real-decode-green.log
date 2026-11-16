@@ -1,0 +1,64 @@
+------------------------------------------------------------------------------
+Executing test b1MeasureCapturedCallbacks...
+DEBUG (09:34): B1_CAPTURED_PRE_ADMIT downloaded=27
+DEBUG (09:34): B1_CAPTURED_CALLBACKS objects=27 stageMs=5 beginMs=0 maxScanMs=28 maxPutMs=4 admitMs=217 testHost=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1RealDecodeTicksAndCancels...
+DEBUG (09:34): B1_DECODE_INITIAL countdown=T- 16:18:18
+DEBUG (09:34): B1_REAL_DECODE selected_min=true objects=18 slices=20 maxSliceMs=58 maxBatchScanMs=14 maxPutMs=4 activeCatchup=true lowCancel=true highResume=true hideCancel=true testHost=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableRenderer...
+DEBUG (09:34): B1_CLOCK optional_renderer_failed time_and_date_read=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockBeforeLoader...
+DEBUG (09:34): B1_FIRST_FRAME clock_date=true loader_before_frame=false loader_after_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1LowBeforeLoader...
+DEBUG (09:34): B1_LOW_FIRST_FRAME clock_date=true loader_deferred=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockAfterDrawingFailure...
+DEBUG (09:34): B1_CLOCK drawing_failure_fallback=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockAfterLoaderFailure...
+DEBUG (09:34): B1_CLOCK loader_failure_time_date_continue=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ActualColdViewDefersCache...
+DEBUG (09:34): B1_ACTUAL_INITIAL cache_before_frame=false cache_after_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1CapturedSuccessorTicksInFallback...
+DEBUG (09:34): B1_CAPTURED_MINUTE active_tick=2s low_minute=true fallback=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableSettings...
+DEBUG (09:34): B1_CLOCK settings_failure_first_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableHealth...
+DEBUG (09:34): B1_CLOCK health_and_callback_failure=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1MeasureCapturedCallbacks          PASS
+b1RealDecodeTicksAndCancels         PASS
+b1ClockWithUnavailableRenderer      PASS
+b1ClockBeforeLoader                 PASS
+b1LowBeforeLoader                   PASS
+b1ClockAfterDrawingFailure          PASS
+b1ClockAfterLoaderFailure           PASS
+b1ActualColdViewDefersCache         PASS
+b1CapturedSuccessorTicksInFallback  PASS
+b1ClockWithUnavailableSettings      PASS
+b1ClockWithUnavailableHealth        PASS
+Ran 11 tests
+
+PASSED (passed=11, failed=0, errors=0)

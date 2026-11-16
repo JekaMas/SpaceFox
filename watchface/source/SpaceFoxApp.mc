@@ -13,6 +13,8 @@ class SpaceFoxApp extends Application.AppBase {
     var restoreSeal as String or Null=null;var restorePending as Boolean=false;var restoreTimer as Timer.Timer or Null=null;
     var deferredRestore as Boolean=false;var deferredSeal as String or Null=null;var batchingForeground as Boolean=false;var restoreJob as NativeRestoreJob or Null=null;var admissionJob as Dictionary or Null=null;var admissionTimer as Timer.Timer or Null=null;
     function initialize(){AppBase.initialize();view=null;}
+    (:typecheck(disableBackgroundCheck)) function initialSettings() as SceneSettings {return new SceneSettings(null).load();}
+    (:typecheck(false)) function cancelWork() as Void {if(admissionJob!=null||restoreJob!=null||restorePending){abandonForegroundWork();}}
     (:typecheck(disableBackgroundCheck))
     function getInitialView() as [Views] or [Views, InputDelegates] {
         return NativeForegroundApp.initial(self);
@@ -25,7 +27,8 @@ class SpaceFoxApp extends Application.AppBase {
     (:typecheck(disableBackgroundCheck))
     function onBackgroundData(data as Application.PersistableType) as Void {try{if(feed!=null){new NativeIncoming(feed.store,feed.base).clearDeferred();}}catch(e){}if(view==null||System.getDisplayMode()==System.DISPLAY_MODE_OFF){return;}if(view.canAcceptBackground()){try{reloadFeed();}catch(e){}}WatchUi.requestUpdate();}
     (:typecheck(disableBackgroundCheck))
-    function reloadFeed() as Void {
+    function reloadFeed() as Void {try{performReload();}catch(e){}}
+    (:typecheck(false)) function performReload() as Void {
         if(deferredRestore){deferredRestore=false;restoreSeal=deferredSeal;deferredSeal=null;restorePending=true;}
         if(restorePending){queueRestore();return;}if(admissionJob!=null){queueAdmission();return;}NativeForegroundApp.reload(self);
     }
@@ -60,5 +63,5 @@ class SpaceFoxApp extends Application.AppBase {
         else if(mode==System.DISPLAY_MODE_LOW_POWER||mode==System.DISPLAY_MODE_OFF){if(restoreTimer!=null){restoreTimer.stop();restoreTimer=null;}if(admissionTimer!=null){admissionTimer.stop();admissionTimer=null;}}
     }
     (:typecheck(disableBackgroundCheck))
-    function onSettingsChanged() as Void {try{var now=Time.now().value().toLong();var reminderTransfer=new NativeTransfer(configuredFeedUrl(),null);reminderTransfer.load();LaunchReminder.syncEnable(reminderTransfer.store,now);armFeed(reminderTransfer,now);}catch(e){}var current=view;if(current!=null){current.setSettings(new SceneSettings(null).load());if(current.canForegroundWork()){reloadFeed();}WatchUi.requestUpdate();}}
+    function onSettingsChanged() as Void {try{var now=Time.now().value().toLong();var reminderTransfer=new NativeTransfer(configuredFeedUrl(),null);reminderTransfer.load();LaunchReminder.syncEnable(reminderTransfer.store,now);armFeed(reminderTransfer,now);}catch(e){}var current=view;if(current!=null){try{current.setSettings(new SceneSettings(null).load());}catch(e){current.releaseRenderer();}if(current.canForegroundWork()){reloadFeed();}WatchUi.requestUpdate();}}
 }

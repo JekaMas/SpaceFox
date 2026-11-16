@@ -7,7 +7,7 @@ import Toybox.Background;
 module NativeForegroundApp {
     function initial(app) as [WatchUi.WatchFace] {
         app.view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));
-        app.view.setSettings(new SceneSettings(null).load());var selected=new NativeCache(configuredFeedUrl(),null);app.feed=selected;app.restoreSeal=null;app.restorePending=true;app.view.admissionPending=true;app.view.presentation.suspend();app.view.pendingLoader=app.method(:reloadFeed);app.view.syncDisplayMode(System.getDisplayMode());return [app.view as WatchUi.WatchFace];
+        try{app.view.setSettings(app.initialSettings());}catch(e){}app.view.bootstrapPending=true;app.view.pendingLoader=app.method(:reloadFeed);app.view.cancelAdmission=app.method(:cancelWork);app.view.syncDisplayMode(System.getDisplayMode());return [app.view as WatchUi.WatchFace];
     }
     function display(app,cache){
         if(app.view==null){return;}LaunchReminderForeground.publish(cache,Time.now().value().toLong());if(cache.packet==null||app.view.packet!=cache.packet||cache.packet.document.hasKey("dictionaries")||app.view.context!=cache.packet.presentation){app.view.setPacket(cache.packet);}if(cache.packet!=null){try{var owner=cache.packet.document["publisher"]["instance"];var saved=new NativeUpcomingCache(cache.store,cache.base,owner).load();app.view.mergeSaved(saved,Time.now().value().toLong(),cache.packet.terminalUpdates);}catch(e){}app.view.setAssetCache(new NativeRenderSource(cache.store,cache.base,cache.packet.bridge));}
@@ -112,7 +112,7 @@ module NativeForegroundApp {
                 }
                 if (app.view != null) { app.view.setPacket(null); }
                 selected=new NativeCache(url,null);app.feed=selected;
-                if(app.view!=null){app.view.resetRollover();}app.restoreSeal=null;if(app.restoreJob!=null){app.restoreJob.dispose();}app.restoreJob=null;app.restorePending=true;app.queueRestore();return;
+                if(app.view!=null){app.view.resetRollover();app.view.admissionPending=true;}app.restoreSeal=null;if(app.restoreJob!=null){app.restoreJob.dispose();}app.restoreJob=null;app.restorePending=true;app.queueRestore();return;
             }
             if (!selected.base.equals("")) {
                 var incoming=new NativeIncoming(selected.store,selected.base);
@@ -125,7 +125,7 @@ module NativeForegroundApp {
             display(app,selected);
             if(selected.packet!=null&&app.view!=null){savePlan(selected,selected.packet.document["refreshPolicy"],app.view);}
         } finally {
-            if (rebuild) { app.view.prepareRenderer(); }
+            if (rebuild && !app.view.admissionPending) { app.view.prepareRenderer(); }
         }
         if (app.view != null && System.getDisplayMode() == System.DISPLAY_MODE_HIGH_POWER) { app.view.prepareVisual(); }
 

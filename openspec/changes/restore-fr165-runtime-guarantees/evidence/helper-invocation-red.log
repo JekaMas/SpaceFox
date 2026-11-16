@@ -1,0 +1,149 @@
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableSettings...
+DEBUG (10:06): B1_CLOCK settings_failure_first_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableHealth...
+DEBUG (10:06): B1_CLOCK health_and_callback_failure=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ActualColdViewDefersCache...
+DEBUG (10:06): B1_ACTUAL_INITIAL cache_before_frame=false cache_after_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockAfterDrawingFailure...
+DEBUG (10:06): B1_CLOCK drawing_failure_fallback=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockAfterLoaderFailure...
+DEBUG (10:06): B1_CLOCK loader_failure_time_date_continue=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockBeforeLoader...
+DEBUG (10:06): B1_FIRST_FRAME clock_date=true loader_before_frame=false loader_after_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1LowBeforeLoader...
+DEBUG (10:06): B1_LOW_FIRST_FRAME clock_date=true loader_deferred=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableRenderer...
+DEBUG (10:06): B1_CLOCK optional_renderer_failed time_and_date_read=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1CapturedSuccessorTicksInFallback...
+DEBUG (10:06): B1_CAPTURED_MINUTE active_tick=2s low_minute=true fallback=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ColdAcquisition...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - b1ColdAcquisition() at /source/watchface/runtime-b1-tests/ColdAcquisition.mc:131 0x100040f7 
+  - evaluate_test_entries_0_to_21() at /task/staged6/gen/006-B4432-00/source/UnitTests.mcgen:89 0x10008161 
+  - runTest() at /task/staged6/gen/006-B4432-00/source/UnitTests.mcgen:126 0x10008327 
+ERROR
+------------------------------------------------------------------------------
+Executing test b1SeedProvisional...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - b1SeedProvisional() at /source/watchface/runtime-b1-tests/ColdAcquisition.mc:153 0x10003dea 
+  - evaluate_test_entries_0_to_21() at /task/staged6/gen/006-B4432-00/source/UnitTests.mcgen:91 0x1000817c 
+  - runTest() at /task/staged6/gen/006-B4432-00/source/UnitTests.mcgen:126 0x10008327 
+ERROR
+------------------------------------------------------------------------------
+Executing test b1StageProfile...
+
+Error: Not Enough Arguments Error
+Details: Failed invoking <symbol>
+Stack: 
+  - b1StageProfile() at /source/watchface/runtime-b1-tests/DecodePending.mc:25 0x100031cc 
+  - evaluate_test_entries_0_to_21() at /task/staged6/gen/006-B4432-00/source/UnitTests.mcgen:93 0x10008197 
+  - runTest() at /task/staged6/gen/006-B4432-00/source/UnitTests.mcgen:126 0x10008327 
+ERROR
+------------------------------------------------------------------------------
+Executing test b1ObserveDecode...
+
+Error: Not Enough Arguments Error
+Details: Failed invoking <symbol>
+Stack: 
+  - b1ObserveDecode() at /source/watchface/runtime-b1-tests/DecodePending.mc:33 0x100023b2 
+  - evaluate_test_entries_0_to_21() at /task/staged6/gen/006-B4432-00/source/UnitTests.mcgen:95 0x100081b2 
+  - runTest() at /task/staged6/gen/006-B4432-00/source/UnitTests.mcgen:126 0x10008327 
+ERROR
+------------------------------------------------------------------------------
+Executing test b1RealDecodeTicksAndCancels...
+DEBUG (10:06): B1_DECODE_INITIAL countdown=T- 16:18:18
+DEBUG (10:06): B1_REAL_DECODE selected_min=true objects=18 beginMs=90 slices=20 maxSliceMs=71 maxPhase=role maxRole=0 maxRow=-1 maxBatchScanMs=16 maxPutMs=4 activeCatchup=true lowCancel=true highResume=true hideCancel=true testHost=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1MeasureCapturedCallbacks...
+DEBUG (10:06): B1_CAPTURED_PRE_ADMIT downloaded=27
+DEBUG (10:06): B1_CAPTURED_CALLBACKS objects=27 stageMs=4 beginMs=0 maxScanMs=27 maxPutMs=4 admitMs=230 testHost=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1PutCapturedCatalog...
+
+Error: Symbol Not Found Error
+Details: Could not find symbol 'read'
+Stack: 
+  - raw() at /source/watchface/source/NativeImmutable.mc:17 0x100008b1 
+  - put() at /source/watchface/source/NativeImmutable.mc:27 0x10000be5 
+  - b1PutCapturedCatalog() at /source/watchface/runtime-b1-tests/StagedAdmission.mc:8 0x10002394 
+  - evaluate_test_entries_0_to_21() at /task/staged6/gen/006-B4432-00/source/UnitTests.mcgen:101 0x10008203 
+  - runTest() at /task/staged6/gen/006-B4432-00/source/UnitTests.mcgen:126 0x10008327 
+ERROR
+------------------------------------------------------------------------------
+Executing test b1StagedLiveFeedAdmission...
+DEBUG (10:06): B1_STAGED_VALIDATION actual=1794820332 commit=true
+DEBUG (10:06): B1_STAGED live_red_bytes=true phases=7 no_early_commit=true source_age_preserved=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1StagedSupersededToken...
+DEBUG (10:06): B1_STAGED superseded_token_no_promotion=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1StagedRestoreExactAndRecovery...
+DEBUG (10:06): B1_RESTORE exact_live=true expected_seal_old=true corrupt_commit_recovery=true no_early_publish=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1Response...
+FAIL
+------------------------------------------------------------------------------
+Executing test b1ProfileResponse...
+FAIL
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1ClockWithUnavailableSettings      PASS
+b1ClockWithUnavailableHealth        PASS
+b1ActualColdViewDefersCache         PASS
+b1ClockAfterDrawingFailure          PASS
+b1ClockAfterLoaderFailure           PASS
+b1ClockBeforeLoader                 PASS
+b1LowBeforeLoader                   PASS
+b1ClockWithUnavailableRenderer      PASS
+b1CapturedSuccessorTicksInFallback  PASS
+b1ColdAcquisition                   ERROR
+b1SeedProvisional                   ERROR
+b1StageProfile                      ERROR
+b1ObserveDecode                     ERROR
+b1RealDecodeTicksAndCancels         PASS
+b1MeasureCapturedCallbacks          PASS
+b1PutCapturedCatalog                ERROR
+b1StagedLiveFeedAdmission           PASS
+b1StagedSupersededToken             PASS
+b1StagedRestoreExactAndRecovery     PASS
+b1Response                          FAIL
+b1ProfileResponse                   FAIL
+Ran 21 tests
+
+FAILED (passed=14, failed=2, errors=5)

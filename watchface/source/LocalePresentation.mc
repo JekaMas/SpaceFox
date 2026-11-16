@@ -17,9 +17,13 @@ class LocalePresentation {
     var calendarFont as Graphics.FontType or Null=null;
     var aodContextFont as Graphics.FontType or Null=null;
     var aodBatteryFont as Graphics.FontType or Null=null;
-    var loads=0;var suspended=false;
-    function initialize(){loadFonts();LocaleGraphemes.load();prepare("en");}
-    function loadFonts(){
+    var loads=0;
+    function initialize(){restore("en");}
+    // All fields are optional outside the renderer. Rebuild them before the
+    // normal scene so feed/bitmap work need not retain font resources.
+    function suspend(){dictionary=null;small=null;label=null;latinSmall=null;count=null;calendarFont=null;aodContextFont=null;aodBatteryFont=null;locale="";LocaleGraphemes.data=null;}
+    function restore(requested){
+        if(label!=null){prepare(requested);return;}
         // Proper names use a shared Latin face, independent of UI language.
         // SDK font files stay external; retain only these two common handles.
         try{label=Graphics.getVectorFont({:face=>["RobotoRegular","RobotoCondensedRegular"],:size=>26});latinSmall=Graphics.getVectorFont({:face=>["RobotoRegular","RobotoCondensedRegular"],:size=>22});}catch(e){}
@@ -30,9 +34,8 @@ class LocalePresentation {
         if(aodContextFont==null){aodContextFont=calendarFont;}
         try{aodBatteryFont=Graphics.getVectorFont({:face=>["RobotoRegular","RobotoCondensedRegular"],:size=>51});}catch(e){}
         if(aodBatteryFont==null){aodBatteryFont=aodContextFont;}
+        prepare(requested);
     }
-    function suspend(){dictionary=null;small=null;label=null;latinSmall=null;count=null;calendarFont=null;aodContextFont=null;aodBatteryFont=null;LocaleGraphemes.data=null;suspended=true;}
-    function resume(requested){if(!suspended){return;}loadFonts();LocaleGraphemes.load();locale="";suspended=false;prepare(requested);}
     function prepare(requested) {
         var index=SceneStrings.index(requested);
         if(!qualificationMode&&!SceneStrings.available(index)){index=0;}
@@ -134,6 +137,9 @@ class LocalePresentation {
         // Printable ASCII pairs cannot be joined by any UAX29 rule. Controls
         // and every boundary touching a non-ASCII code point use the full rules.
         if(a>=32&&a<=126&&b>=32&&b<=126){return true;}
+        // Standalone callers may use fitting without a view; the normal view
+        // preloads this optional table after its first clock frame.
+        LocaleGraphemes.load();
         var join=false;
         if(a==13&&b==10){join=true;}
         else if(!LocaleGraphemes.control(a)&&!LocaleGraphemes.control(b)){
