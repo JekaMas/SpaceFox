@@ -34,3 +34,11 @@ Software follow-up evidence for the above remains distinct from physical accepta
 - [x] Bind 0.1.23 native inputs and finite SDK observations to the retained 0.1.22 predecessor proof; reject an unreviewed repinned native change.
 - [x] Independent review and repair of the B2 semantic merge to software GREEN; see release-023/PEER.md. Signed export/publication remain the unchecked release-delivery row above.
 - [ ] Physical watch update, live data, LOW and 15-minute acceptance remain unobserved.
+
+## B3 reminder integration and 0.2.0 delivery
+
+- [x] Preserve both optional sealed queue fields and keep approximate NET independent of reminder eligibility and nearest selection.
+- [x] Run the directly affected FR165M B3, NET and checkpoint SDK cases; retain prior B2 evidence at its original scope.
+- [x] Bind the combined 0.2.0 native source and finite evidence to the exact published B3 predecessor; reject unreviewed repins.
+- [ ] Existing peer reviews only the B3 interaction and applicability binding; then freeze main/tag and produce the authorized signed release.
+- [ ] Garmin Store submission/legal action and physical watch acceptance remain separate and unobserved.

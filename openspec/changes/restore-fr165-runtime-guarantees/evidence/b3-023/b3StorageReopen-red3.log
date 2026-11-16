@@ -1,0 +1,18 @@
+------------------------------------------------------------------------------
+Executing test b3StorageReopen...
+
+Error: Unhandled Exception
+Exception: UnexpectedTypeException: Expected Object/Array/Dictionary/ByteArray, given null
+Stack: 
+  - b3StorageReopen() at /source/watchface/runtime-b3-tests/B3Tests.mc:43 0x1000b607 
+  - evaluate_test_entries_30_to_52() at /task/cold/gen/006-B4432-00/source/UnitTests.mcgen:213 0x1000fd0a 
+  - runTest() at /task/cold/gen/006-B4432-00/source/UnitTests.mcgen:234 0x100102a5 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b3StorageReopen                     ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

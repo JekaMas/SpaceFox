@@ -136,3 +136,20 @@ admission and restored scene. The current native/locale applicability guard
 uses exact predecessor snapshots and carries the old B2 qualification forward;
 it does not assert new physical observations on any device. 0.1.23 is prepared
 for review and signing; publication is not implied by this source record.
+
+## B3 reminder integration and 0.2.0 candidate
+
+Public main advanced to `bf47e440e1069f5fc8c52dce19ee9b6779149848` and
+published a 0.1.23 test prerelease with selected-launch reminder binding. Its
+same-format `reminderEligible` and our display-only `displayTarget` are both
+retained as independently optional, sealed queue fields. An inexact NET does
+not create an exact target or reminder, and the nearest launch is not skipped.
+The directly affected six FR165M SDK cases passed; the extra four-combination
+optional-field assertion also passed. Prior B2 and physical receipts remain at
+their original source boundaries. See `release-0.2.0/INTEGRATION.md`.
+
+0.2.0 was selected after checking that the 0.1.23 numeric build was already
+published and 0.2.0 was free. Signed artifacts, GitHub release, Garmin Store
+submission, the physical no-update cause and hardware acceptance remain open
+until observed. The release tag and exact compiled source are to be frozen before
+export; later main movement does not change those bytes.

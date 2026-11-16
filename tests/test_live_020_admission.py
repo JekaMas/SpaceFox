@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from tools import native_live_023_qualification as owner
+from tools import native_live_020_qualification as owner
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class LiveAdmissionBinding(unittest.TestCase):
     def test_repinned_changed_native_is_rejected(self):
         catalog = json.loads((ROOT / 'locales/catalog.json').read_text())
-        proof = catalog['supportPolicy']['softwareQualificationProof']['liveRuntime023Proof']
+        proof = catalog['supportPolicy']['softwareQualificationProof']['liveRuntime020Proof']
         record = json.loads((ROOT / proof['path']).read_text())
         altered = dict(record['nativeInputs'])
         altered['watchface/source/FeedScene.mc'] = '0' * 64

@@ -1,0 +1,20 @@
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test b1RealDecodeTicksAndCancels...
+SF_VIEW mode=HIGH pending=false
+DEBUG (17:53): B1_DECODE_INITIAL countdown=~T- 16:18:18
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (17:53): B1_REAL_DECODE selected_min=true objects=18 beginMs=1 slices=74 maxSliceMs=12 maxPhase=rows maxRole=0 maxRow=0 maxBatchScanMs=16 maxPutMs=4 activeCatchup=true lowOffHighCyclesAdvance=true hideCancel=true testHost=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1RealDecodeTicksAndCancels         PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

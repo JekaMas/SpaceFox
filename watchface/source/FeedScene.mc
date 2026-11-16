@@ -41,5 +41,8 @@ function feedSceneRow(packet,row,siteData,selected){
         deadline=target.toLong()+900l;var ascent=row["ascent_end"];
         if(ascent!=null && ascent["end_utc"]>deadline){deadline=ascent["end_utc"].toLong();}
     }
-    return new SceneContext({"displayTarget"=>displayTarget,"pointText"=>pointText,"orderingUtc"=>ordering,"sourceValidated"=>row["source_validated_utc"],"freshnessPolicy"=>packet.document["refreshPolicy"],"retentionDeadline"=>deadline,"id"=>row["launch_id"],"rocket"=>rocket,"operator"=>operator,"operatorShort"=>operatorShort,"purpose"=>row["mission_purpose"],"site"=>site,"modelId"=>row["configuration_id"],"operatorId"=>row["operator_id"],"siteId"=>row["site_id"],"point"=>point,"target"=>target,"precision"=>precision,"date"=>timing["date_utc"],"rescheduled"=>selected?packet.rescheduled:row["rescheduled"],"stale"=>selected?packet.stale:row["stale"],"sourceHold"=>row["source_status_id"]==5});
+    var reminderEligible=row["status"] instanceof String&&row["status"].equals("pending")&&deadline!=null&&
+        (timing["window_start_utc"]==null||target>=timing["window_start_utc"])&&
+        (timing["window_end_utc"]==null||target<=timing["window_end_utc"]);
+    return new SceneContext({"displayTarget"=>displayTarget,"pointText"=>pointText,"orderingUtc"=>ordering,"sourceValidated"=>row["source_validated_utc"],"freshnessPolicy"=>packet.document["refreshPolicy"],"retentionDeadline"=>deadline,"reminderEligible"=>reminderEligible,"id"=>row["launch_id"],"rocket"=>rocket,"operator"=>operator,"operatorShort"=>operatorShort,"purpose"=>row["mission_purpose"],"site"=>site,"modelId"=>row["configuration_id"],"operatorId"=>row["operator_id"],"siteId"=>row["site_id"],"point"=>point,"target"=>target,"precision"=>precision,"date"=>timing["date_utc"],"rescheduled"=>selected?packet.rescheduled:row["rescheduled"],"stale"=>selected?packet.stale:row["stale"],"sourceHold"=>row["source_status_id"]==5});
 }

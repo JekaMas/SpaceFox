@@ -57,3 +57,16 @@ The watch face SHALL survive startup, data acquisition, artwork loading and acti
 #### Scenario: Work interrupted by lifecycle
 - **WHEN** artwork or acquisition is pending as the face enters low power, hides or turns off
 - **THEN** owned work stops or safely resumes without stale publication or resource exhaustion.
+
+
+### Requirement: Selected-launch reminders remain quiet and deduplicated
+The watch face SHALL default reminders off. When enabled, the shared background scheduler SHALL attempt each eligible selected-launch threshold at most once at T−15, T−10, T−5 and scheduled T0. It SHALL suppress quiet or unknown quiet state, avoid catch-up bursts, preserve deduplication across reschedule and restart, and use fresh accepted eligible source timing. Reminders SHALL follow the retained selection; scheduled T0 SHALL NOT assert liftoff.
+
+#### Scenario: Quiet or unknown state
+- **WHEN** a due reminder encounters sleep, Do Not Disturb or an unavailable quiet state
+- **THEN** no notification is attempted and the slot is not replayed after quiet ends.
+
+#### Scenario: Selected launch changes or resumes
+- **WHEN** an accepted selected launch reschedules, changes through retained selection, or resumes after restart
+- **THEN** only the current eligible launch can be reminded and already consumed slots are not dispatched again.
+- **AND** physical notification and vibration remain separate observations.

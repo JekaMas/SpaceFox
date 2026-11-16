@@ -25,6 +25,9 @@ class SceneContext {
     var freshnessPolicy as Dictionary or Null = null;
     var displayTarget as Long or Null=null;
     var sourcePrecision as String = "";var pointText as Array or Null=null;var orderingUtc as Long or Null=null;
+    // True only when the admitted source established pending status, actionable
+    // precision and window bounds containing the nominal target.
+    var reminderEligible as Boolean=false;
     function initialize(data as Dictionary<String, Object or Null>) {
         launchId = text(data, "id");
         if(data.hasKey("date")&&data["date"] instanceof String){date=data["date"] as String;}
@@ -44,6 +47,7 @@ class SceneContext {
         var precision = text(data, "precision");
         schedule = new ScheduleState(target, precision);sourcePrecision=precision;
         var announced=data["displayTarget"];if(announced instanceof Number||announced instanceof Long){displayTarget=announced.toLong();}else if(precision.equals("minute")&&(target instanceof Number||target instanceof Long)){displayTarget=target.toLong();}
+        reminderEligible=flag(data,"reminderEligible");
         if(data["pointText"] instanceof Array){pointText=data["pointText"] as Array;}
         var ordering=data["orderingUtc"];if(ordering instanceof Number||ordering instanceof Long){orderingUtc=ordering.toLong();}
         var deadline=data["retentionDeadline"];
@@ -53,7 +57,7 @@ class SceneContext {
         if(data["freshnessPolicy"] instanceof Dictionary){freshnessPolicy=data["freshnessPolicy"] as Dictionary;}
     }
     (:typecheck(false)) function cacheRow(){
-        var row={"id"=>launchId,"rocket"=>rocket,"operator"=>operator,"operatorShort"=>operatorShort,"purpose"=>purpose,"site"=>site,"modelId"=>modelId,"operatorId"=>operatorId,"siteId"=>siteId,"pointText"=>pointText,"target"=>retentionTarget,"precision"=>sourcePrecision,"date"=>date,"retentionDeadline"=>retentionDeadline,"orderingUtc"=>orderingUtc,"sourceValidated"=>sourceValidated,"freshnessPolicy"=>freshnessPolicy,"rescheduled"=>rescheduled,"stale"=>stale,"sourceHold"=>sourceHold};if(displayTarget!=null){row["displayTarget"]=displayTarget;}return row;
+        var row={"id"=>launchId,"rocket"=>rocket,"operator"=>operator,"operatorShort"=>operatorShort,"purpose"=>purpose,"site"=>site,"modelId"=>modelId,"operatorId"=>operatorId,"siteId"=>siteId,"pointText"=>pointText,"target"=>retentionTarget,"precision"=>sourcePrecision,"date"=>date,"retentionDeadline"=>retentionDeadline,"orderingUtc"=>orderingUtc,"sourceValidated"=>sourceValidated,"freshnessPolicy"=>freshnessPolicy,"rescheduled"=>rescheduled,"stale"=>stale,"sourceHold"=>sourceHold,"reminderEligible"=>reminderEligible};if(displayTarget!=null){row["displayTarget"]=displayTarget;}return row;
     }
     // Same source-age rule as accepted feed, applied to whichever launch is
     // displayed after local selection. It performs arithmetic only.
