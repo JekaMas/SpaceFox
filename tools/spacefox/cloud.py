@@ -8,6 +8,7 @@ import base64
 from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError as FuturesTimeout
 import json
 import os
+import time
 from pathlib import Path
 import re
 import subprocess
@@ -96,7 +97,7 @@ def _http_direct(document):
 
 class HTTP:
     """One attempt; killable20s total DNS/TLS/body deadline,10s socket timeout."""
-    def request(self, method, url, *, headers=None, document=None, limit=MAX_ARTIFACT_BYTES):
+    def request(self, method, url, *, headers=None, document=None, limit=MAX_ARTIFACT_BYTES, timeout=20):
         fields = {'Accept': 'application/json', 'Accept-Encoding': 'identity',
                   'Cache-Control': 'no-cache', 'User-Agent': 'SpaceFox/1'}
         fields.update(headers or {})
@@ -110,7 +111,7 @@ class HTTP:
                                     input=_canonical([url, method, fields, None if body is None
                                                       else base64.b64encode(body).decode('ascii'), limit]),
                                     stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                                    cwd=Path(__file__).resolve().parents[2], timeout=20)
+                                    cwd=Path(__file__).resolve().parents[2], timeout=min(20, timeout))
             if result.returncode or len(result.stdout) > 2 * limit + 1024:
                 raise CloudError('bounded HTTP worker failed; remote outcome may be unknown')
             status, encoded = json.loads(result.stdout)
@@ -473,8 +474,29 @@ class Site:
         _path(path)
         return self.http.request('GET', self.base + '/' + quote(path, safe='/'), limit=limit)
 
+    def _get_before(self, path, limit, deadline):
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            raise CloudError('complete closure observation deadline exceeded')
+        _path(path)
+        try:
+            if isinstance(self.http, HTTP):
+                result = self.http.request('GET', self.base + '/' + quote(path, safe='/'),
+                                           limit=limit, timeout=remaining)
+            else:
+                # Injected transports remain supported for deterministic tests.
+                result = self.get(path, limit)
+        except CloudError as error:
+            if time.monotonic() >= deadline:
+                raise CloudError('complete closure observation deadline exceeded') from error
+            raise
+        if time.monotonic() >= deadline:
+            raise CloudError('complete closure observation deadline exceeded')
+        return result
+
     def observe(self, pub, full_manifest=None):
-        status, feed = self.get('feed.json', 8192)
+        deadline = time.monotonic() + READBACK_DEADLINE_SECONDS
+        status, feed = self._get_before('feed.json', 8192, deadline)
         if status == 404 and pub.ledger['active'] is None:
             return None
         if status != 200:
@@ -499,10 +521,10 @@ class Site:
             # both concurrency and the complete closure, and wait for every
             # in-flight child to be reaped even when a result fails.
             with ThreadPoolExecutor(max_workers=4) as pool:
-                futures = {pool.submit(self.get, path, len(raw)): (path, raw)
+                futures = {pool.submit(self._get_before, path, len(raw), deadline): (path, raw)
                            for path, raw in expected.items() if path != 'feed.json'}
                 try:
-                    for future in as_completed(futures, timeout=READBACK_DEADLINE_SECONDS):
+                    for future in as_completed(futures, timeout=max(0, deadline - time.monotonic())):
                         path, raw = futures[future]
                         code, actual = future.result()
                         if code != 200 or actual != raw:
@@ -513,7 +535,7 @@ class Site:
                 finally:
                     for future in futures:
                         future.cancel()
-            code, actual = self.get('feed.json', 8192)
+            code, actual = self._get_before('feed.json', 8192, deadline)
             if (code, actual) != (200, feed):
                 raise _readback_error('live feed changed during exact closure observation',
                                       'feed.json', feed, code, actual, phase='after-closure')

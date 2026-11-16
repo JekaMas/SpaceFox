@@ -29,7 +29,7 @@ REQUIRED_CURRENT = (REQUIRED_PRIOR - {'locales/catalog.json', 'tests/test_global
     'tests/test_performance021_factory.py', 'tests/test_current_motion_publisher.py',
     'tests/test_durable_publisher_whole.py', 'tests/test_current_geography_whole.py',
     'tests/test_schedule_producer_transport.py', 'tests/test_performance021_b.py',
-    'tests/test_performance021_b_cloud.py', 'tests/test_current_metadata_publisher.py',
+    'tests/test_performance021_b_cloud.py', 'tests/test_performance021_b_peer.py', 'tests/test_current_metadata_publisher.py',
     'tests/test_durable_delivery_whole.py', 'tests/test_phone_text_transport.py',
 }
 
@@ -69,7 +69,7 @@ def validate(root, catalog):
     if comparable != old_catalog:
         raise ValueError('locale policy changed outside performance021 delta')
     evidence = record['evidence']
-    if set(evidence) != {'hostMeasurement', 'hostTests', 'sourceRace', 'artifactBytes', 'cacheRelease', 'ownershipTest', 'peakAttribution', 'factoryTests', 'eligibleBaseline', 'affectedTests', 'peerHost', 'peerOwnership', 'peerTypes', 'bCore', 'bGit', 'bCloud', 'bAffected', 'bMetadata', 'bArtifact', 'bReadback', 'bSequence', 'bManifest', 'bGenerator', 'bARecheck', 'bFence'}:
+    if set(evidence) != {'hostMeasurement', 'hostTests', 'sourceRace', 'artifactBytes', 'cacheRelease', 'ownershipTest', 'peakAttribution', 'factoryTests', 'eligibleBaseline', 'affectedTests', 'peerHost', 'peerOwnership', 'peerTypes', 'bCore', 'bGit', 'bCloud', 'bAffected', 'bMetadata', 'bArtifact', 'bReadback', 'bSequence', 'bManifest', 'bGenerator', 'bARecheck', 'bFence', 'bPeerFocused', 'bPeerReadback', 'bPeerCloud', 'bPeerRootRace', 'bPeerFirstRed'}:
         raise ValueError('performance021 evidence inventory differs')
     evidence_files = {name: _checked(root, row['path'], row['sha256']) for name, row in evidence.items()}
     artifact = json.loads(evidence_files['bArtifact'].read_text())
@@ -85,6 +85,21 @@ def validate(root, catalog):
         seen.add(row['path'])
         if _checked(root, row['path'], row['sha256']).stat().st_size != row['bytes']:
             raise ValueError('performance021 readback input size differs')
+    peer = evidence_files['bPeerFocused'].read_text()
+    readback_peer = evidence_files['bPeerReadback'].read_text()
+    cloud_peer = evidence_files['bPeerCloud'].read_text()
+    root_peer = evidence_files['bPeerRootRace'].read_text()
+    first_red = evidence_files['bPeerFirstRed'].read_text()
+    if (any(name not in peer for name in ('test_deadline_cancels_queued_requests_and_reaps_workers',
+            'test_deadline_includes_both_root_requests', 'test_failed_probe_routes_to_full_prepare',
+            'test_full_payload_budget_includes_duplicate_root', 'test_readback_slow_body_reaps_children'))
+            or 'Ran 5 tests' not in peer or '\nOK\n' not in peer
+            or 'Ran 4 tests' not in readback_peer or '\nOK\n' not in readback_peer
+            or '107 GET' not in readback_peer or 'peak 4' not in readback_peer
+            or 'test_active_full_admission_then_sparse_cli_no_work' not in cloud_peer or '\nOK\n' not in cloud_peer
+            or 'test_root_switch_while_pending_cannot_promote_or_post' not in root_peer or '\nOK\n' not in root_peer
+            or first_red.count('... FAIL') < 2):
+        raise ValueError('performance021 independent group B repair evidence incomplete')
     core = evidence_files['bCore'].read_text()
     core_names = ('test_readback_overlap_and_refusal', 'test_operator_http_deadline_and_bounds',
                   'test_git_deadline', 'test_git_batch_exact_identity', 'test_readback_slow_body_reaps_children',

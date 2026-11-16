@@ -1,0 +1,25 @@
+test_deadline_includes_both_root_requests (tests.test_performance021_b_peer.PeerBTest.test_deadline_includes_both_root_requests) ... FAIL
+test_failed_probe_routes_to_full_prepare (tests.test_performance021_b_peer.PeerBTest.test_failed_probe_routes_to_full_prepare) ... FAIL
+
+======================================================================
+FAIL: test_deadline_includes_both_root_requests (tests.test_performance021_b_peer.PeerBTest.test_deadline_includes_both_root_requests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_performance021_b_peer.py", line 41, in test_deadline_includes_both_root_requests
+    with self.assertRaises(cloud.CloudError): site.observe(pub)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: CloudError not raised
+
+======================================================================
+FAIL: test_failed_probe_routes_to_full_prepare (tests.test_performance021_b_peer.PeerBTest.test_failed_probe_routes_to_full_prepare)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_performance021_b_peer.py", line 51, in test_failed_probe_routes_to_full_prepare
+    self.assertRegex(probe, r'(?m)^        continue-on-error: true$')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Regex didn't match: '(?m)^        continue-on-error: true$' not found in '        id: probe\n        if: github.event_name != \'workflow_dispatch\' || !inputs.bootstrap\n        env:\n          GH_TOKEN: ${{ github.token }}\n        run: python3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" probe\n'
+
+----------------------------------------------------------------------
+Ran 2 tests in 2.027s
+
+FAILED (failures=2)

@@ -5673,9 +5673,10 @@
       "oracle": "Local real boundary and independent expected bytes, effect counters and elapsed/cleanup observations.",
       "source_globs": [
         "tools/spacefox/cloud.py",
-        "tests/test_performance021_b.py"
+        "tests/test_performance021_b.py",
+        "tests/test_performance021_b_peer.py"
       ],
-      "planning_status": "implemented and author self-verified locally; independent verification and root judgment pending"
+      "planning_status": "independent repaired local boundary; root judgment pending"
     },
     {
       "id": "VC21.P7",
@@ -5695,9 +5696,10 @@
         "tools/spacefox/catalog.py",
         "tools/spacefox/cloud.py",
         "tools/spacefox/current_catalog.py",
-        "tools/spacefox/native_motion.py"
+        "tools/spacefox/native_motion.py",
+        "tests/test_performance021_b_peer.py"
       ],
-      "planning_status": "implemented and author self-verified locally; independent verification and root judgment pending"
+      "planning_status": "independent repaired local boundary; root judgment pending"
     },
     {
       "id": "VC21.P8",
@@ -39605,7 +39607,7 @@
       "command_id": "performance021-proof",
       "state": "implemented",
       "source_path": "tests/test_performance021_proof.py",
-      "source_sha256": "e4bffdff898f78bdd99b583b28b449e1d073d77fe3a368b267395449d5d32f9a",
+      "source_sha256": "b03270552f0fc1295aa3d41c2a1425aef09d276078ba2b546c2b65d14fcf453b",
       "implementation_note": "Author and independent observations are reconciled in evidence/performance021/a/PEER.md; root judgment pending."
     },
     {
@@ -39631,7 +39633,7 @@
       "command_id": "performance021-proof",
       "state": "implemented",
       "source_path": "tests/test_performance021_proof.py",
-      "source_sha256": "e4bffdff898f78bdd99b583b28b449e1d073d77fe3a368b267395449d5d32f9a",
+      "source_sha256": "b03270552f0fc1295aa3d41c2a1425aef09d276078ba2b546c2b65d14fcf453b",
       "implementation_note": "Author and independent observations are reconciled in evidence/performance021/a/PEER.md; root judgment pending."
     },
     {
@@ -39657,7 +39659,7 @@
       "command_id": "performance021-proof",
       "state": "implemented",
       "source_path": "tests/test_performance021_proof.py",
-      "source_sha256": "e4bffdff898f78bdd99b583b28b449e1d073d77fe3a368b267395449d5d32f9a",
+      "source_sha256": "b03270552f0fc1295aa3d41c2a1425aef09d276078ba2b546c2b65d14fcf453b",
       "implementation_note": "Author and independent observations are reconciled in evidence/performance021/a/PEER.md; root judgment pending."
     },
     {
@@ -39810,7 +39812,7 @@
       "command_id": "performance021-proof",
       "state": "implemented",
       "source_path": "tests/test_performance021_proof.py",
-      "source_sha256": "e4bffdff898f78bdd99b583b28b449e1d073d77fe3a368b267395449d5d32f9a",
+      "source_sha256": "b03270552f0fc1295aa3d41c2a1425aef09d276078ba2b546c2b65d14fcf453b",
       "implementation_note": "Author and independent observations are reconciled in evidence/performance021/a/PEER.md; root judgment pending."
     },
     {
@@ -40287,7 +40289,7 @@
       "command_id": "performance021-proof",
       "state": "implemented",
       "source_path": "tests/test_performance021_proof.py",
-      "source_sha256": "e4bffdff898f78bdd99b583b28b449e1d073d77fe3a368b267395449d5d32f9a",
+      "source_sha256": "b03270552f0fc1295aa3d41c2a1425aef09d276078ba2b546c2b65d14fcf453b",
       "implementation_note": "Current source and group B evidence remain tied to the single historical performance021 delta."
     },
     {
@@ -40318,7 +40320,7 @@
       "command_id": "performance021-proof",
       "state": "implemented",
       "source_path": "tests/test_performance021_proof.py",
-      "source_sha256": "e4bffdff898f78bdd99b583b28b449e1d073d77fe3a368b267395449d5d32f9a",
+      "source_sha256": "b03270552f0fc1295aa3d41c2a1425aef09d276078ba2b546c2b65d14fcf453b",
       "implementation_note": "Current source and group B evidence remain tied to the single historical performance021 delta."
     },
     {
@@ -40349,7 +40351,7 @@
       "command_id": "performance021-proof",
       "state": "implemented",
       "source_path": "tests/test_performance021_proof.py",
-      "source_sha256": "e4bffdff898f78bdd99b583b28b449e1d073d77fe3a368b267395449d5d32f9a",
+      "source_sha256": "b03270552f0fc1295aa3d41c2a1425aef09d276078ba2b546c2b65d14fcf453b",
       "implementation_note": "Current source and group B evidence remain tied to the single historical performance021 delta."
     },
     {
@@ -40380,7 +40382,7 @@
       "command_id": "performance021-proof",
       "state": "implemented",
       "source_path": "tests/test_performance021_proof.py",
-      "source_sha256": "e4bffdff898f78bdd99b583b28b449e1d073d77fe3a368b267395449d5d32f9a",
+      "source_sha256": "b03270552f0fc1295aa3d41c2a1425aef09d276078ba2b546c2b65d14fcf453b",
       "implementation_note": "Current source and group B evidence remain tied to the single historical performance021 delta."
     },
     {
@@ -40428,6 +40430,90 @@
       "source_path": "tests/test_performance021_b.py",
       "source_sha256": "12550442b382639f902a2f0e216f6c6002d9ddefd4dcdd9b50beee6283a700ce",
       "implementation_note": "Current local source-fence receipt records actual process cleanup and forbidden effects."
+    },
+    {
+      "id": "VC21.P6.S01.PEER_ROOTS",
+      "property_id": "VC21.P6",
+      "polarity": "negative",
+      "scenario": "Concurrent complete readback",
+      "scenario_fingerprint": "c778d28a1e39356cddf48a86602dd84520a6cee0cb4204beaf3b28e6815f8abf",
+      "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
+      "observable": "Initial and final root slow responses share the HTTP deadline and leave no live worker or POST.",
+      "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
+      "green_expectation": "Initial and final root slow responses share the HTTP deadline and leave no live worker or POST.",
+      "invalidation_dependencies": [
+        "tests/test_performance021_b_peer.py",
+        "tools/spacefox/cloud.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_b_peer.PeerBTest.test_deadline_includes_both_root_requests",
+      "command_id": "performance021-b-peer",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_b_peer.py",
+      "source_sha256": "6262a265c0e58d2784318e1e0dda16d19a25e0f1e6cc18f05223bf82e80408cb",
+      "implementation_note": "Independent repair and local evidence: evidence/performance021/b/PEER.md; root judgment pending."
+    },
+    {
+      "id": "VC21.P6.S01.PEER_QUEUE",
+      "property_id": "VC21.P6",
+      "polarity": "negative",
+      "scenario": "Concurrent complete readback",
+      "scenario_fingerprint": "c778d28a1e39356cddf48a86602dd84520a6cee0cb4204beaf3b28e6815f8abf",
+      "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
+      "observable": "Queued and running file HTTP requests share the deadline; at most four start, all workers exit, and no POST occurs.",
+      "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
+      "green_expectation": "Queued and running file HTTP requests share the deadline; at most four start, all workers exit, and no POST occurs.",
+      "invalidation_dependencies": [
+        "tests/test_performance021_b_peer.py",
+        "tools/spacefox/cloud.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_b_peer.PeerBTest.test_deadline_cancels_queued_requests_and_reaps_workers",
+      "command_id": "performance021-b-peer",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_b_peer.py",
+      "source_sha256": "6262a265c0e58d2784318e1e0dda16d19a25e0f1e6cc18f05223bf82e80408cb",
+      "implementation_note": "Independent repair and local evidence: evidence/performance021/b/PEER.md; root judgment pending."
+    },
+    {
+      "id": "VC21.P6.S01.PEER_BUDGET",
+      "property_id": "VC21.P6",
+      "polarity": "positive",
+      "scenario": "Concurrent complete readback",
+      "scenario_fingerprint": "c778d28a1e39356cddf48a86602dd84520a6cee0cb4204beaf3b28e6815f8abf",
+      "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
+      "observable": "A one MiB closure plus its required duplicate root is accounted for with exact per-request limits.",
+      "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
+      "green_expectation": "A one MiB closure plus its required duplicate root is accounted for with exact per-request limits.",
+      "invalidation_dependencies": [
+        "tests/test_performance021_b_peer.py",
+        "tools/spacefox/cloud.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_b_peer.PeerBTest.test_full_payload_budget_includes_duplicate_root",
+      "command_id": "performance021-b-peer",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_b_peer.py",
+      "source_sha256": "6262a265c0e58d2784318e1e0dda16d19a25e0f1e6cc18f05223bf82e80408cb",
+      "implementation_note": "Independent repair and local evidence: evidence/performance021/b/PEER.md; root judgment pending."
+    },
+    {
+      "id": "VC21.P7.S01.PEER_WORKFLOW",
+      "property_id": "VC21.P7",
+      "polarity": "negative",
+      "scenario": "Cheap cloud no-work",
+      "scenario_fingerprint": "15593775d59d008fccf3fe81dc10410f3efe4d612694f56e91b596d284f0a82d",
+      "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
+      "observable": "Workflow accepts no-work output only from a successful probe and otherwise routes to fresh full prepare.",
+      "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
+      "green_expectation": "Workflow accepts no-work output only from a successful probe and otherwise routes to fresh full prepare.",
+      "invalidation_dependencies": [
+        "tests/test_performance021_b_peer.py",
+        ".github/workflows/update-feed.yml"
+      ],
+      "test_id": "unittest::tests.test_performance021_b_peer.PeerBTest.test_failed_probe_routes_to_full_prepare",
+      "command_id": "performance021-b-peer",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_b_peer.py",
+      "source_sha256": "6262a265c0e58d2784318e1e0dda16d19a25e0f1e6cc18f05223bf82e80408cb",
+      "implementation_note": "Independent repair and local evidence: evidence/performance021/b/PEER.md; root judgment pending."
     }
   ],
   "commands": [
@@ -45445,6 +45531,23 @@
       "authority": "local",
       "planned_boundary": "Owned local Git/source fence, process lifetime and exact object boundary",
       "notes": "No real remote or provider."
+    },
+    {
+      "id": "performance021-b-peer",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_performance021_b_peer"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 120,
+      "authority": "local",
+      "planned_boundary": "Loopback HTTP worker cleanup and checked workflow routing",
+      "notes": "No hosted Actions execution is claimed; additional in-flight-body regression is in PEER-FOCUSED.txt."
     }
   ]
 }

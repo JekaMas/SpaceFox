@@ -104,8 +104,8 @@
     }
   },
   "current": {
-    ".github/workflows/update-feed.yml": "240409fe5b6ca9583e1301f5cd1f1808471db4d5ebbe367af7d6d254983f1588",
-    "release/native-admission-inputs.json": "3d2cf4c8d9641f8acc493ed1cde539763e8f1580f23bfdcc70cac9486fe0bce9",
+    ".github/workflows/update-feed.yml": "168056bff86d2eb91c3c7c1d519560fee60331ca2c579ef36a63018fba66da31",
+    "release/native-admission-inputs.json": "5923739c70e8f7465ef8f0aeff4f9e755843e8749e6c5c653d7589fd83fca127",
     "tests/test_autonomous_publisher_whole.py": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
     "tests/test_current_geography_whole.py": "a151dd624d07219e508645e822be5c441e68875cf000f4bc597715ee1129114c",
     "tests/test_current_metadata_publisher.py": "6380a2dc1bbd59815fbbf122cc1c6c4542c8a011767fce686ee3b0919eb2cb52",
@@ -118,19 +118,19 @@
     "tests/test_performance021_b_cloud.py": "efd74d100f4eaed13eab6e423b43683b8224a5d041a346eadf6cc366541bc132",
     "tests/test_performance021_factory.py": "b738dbe3b483f114eb2d308cd9ea1645477183264db39c5729cc7d7861247ff3",
     "tests/test_performance021_ownership.py": "2f9a167f07c803c0478397902d517ac7f546ac014e84bee3800979f786f30ef7",
-    "tests/test_performance021_proof.py": "e4bffdff898f78bdd99b583b28b449e1d073d77fe3a368b267395449d5d32f9a",
+    "tests/test_performance021_proof.py": "b03270552f0fc1295aa3d41c2a1425aef09d276078ba2b546c2b65d14fcf453b",
     "tests/test_phone_text_transport.py": "bbf929628f9271847d1f6260116955ac65793ad798a633a3b9e73542e44d334b",
     "tests/test_schedule_producer_transport.py": "432cba012f6265fb65041fa6aaedb1f342a447dc861019e3ebb47089b9ddabd1",
     "tools/build_native_localization.py": "d21715bf7cd7a1ff7fa96ecb73aa38f9e94724ce651a7c698ce1776a6b959800",
     "tools/cloud_feed.py": "811eb8003f073cef805badcf44adc3c8e2d61f2d759fbd056e63525a603c2632",
     "tools/display_corpus.py": "5584299da25cd75d25321792196d69f408dbcbcc8757de9bbcad578a250448a1",
     "tools/native_language_policy.py": "436357ef1273774767acdf1989f14d6ac3c393ebfd4d9f2ca930e9c870e54db6",
-    "tools/native_performance021_qualification.py": "c1cea848baa979e0a71551b921fc6048214de7ffbdac83d4dc26c3d7affabd2f",
+    "tools/native_performance021_qualification.py": "a3f4545a5ca7275ba58ebaf6ec2dbb7b4a20014e54adb9bfc986ba6ed134da7a",
     "tools/refresh_catalog.py": "7438099aafe57dcc11d2fb98abb0b9cfbfa0022c862328d2fb0e5aa15acd579f",
     "tools/release.py": "135da6d66ff8598e14c462722b3288c5e00dd05cce386817d9e327e9feec9029",
     "tools/spacefox/bridge_map.py": "d2daebea7960e4474527214645d0c90c1fcbd473cfeb67bfaf56302cbc4c0604",
     "tools/spacefox/catalog.py": "b33bf56669302cc44cd5195c1665ac95b7cc95801efa4e1ad234bff24f92a29b",
-    "tools/spacefox/cloud.py": "6a7b0f55764cb8532617cc9f9851406705940ed031cafe1bca23c749f19ddfa0",
+    "tools/spacefox/cloud.py": "2b1c94ca6862d3481d744656463cdea48cd6916aa2ae161346046e390891c9f3",
     "tools/spacefox/current_catalog.py": "221e3b9edb62bdaf3161e9a0a47223f12fdc2a89b818a9b3e5316d8aba97290f",
     "tools/spacefox/geographic_context.py": "9f9a25032ed530d1ab7addfa8358900f120d5ec10d242a82ec84068bd7d7ecfa",
     "tools/spacefox/global_map.py": "b7848f5810405e04621b53d846d6e304e27433392863e4626a3fee942b7db832",
@@ -140,7 +140,8 @@
     "tools/spacefox/publisher.py": "2fb10d901b8d1fc244943e5463cf0e41d6d974d2d35dc1bca305f19b02cc3be6",
     "tools/spacefox/visual_bridge.py": "4f160a655a22544b2edb67d2ce2025c80dd15c3a929de78996b691541068a0d7",
     "tools/update_feed.py": "d03cc521ce9ebda7aef5de151bd218268fe3a9f86b3f0dc8659bf5d32f6c0150",
-    "tools/verify_native_text_http.py": "19cb1bf9c7f51fdeb4cb9e39f9b2186d9fb58d6f84230e1bac9d7c483ccc5934"
+    "tools/verify_native_text_http.py": "19cb1bf9c7f51fdeb4cb9e39f9b2186d9fb58d6f84230e1bac9d7c483ccc5934",
+    "tests/test_performance021_b_peer.py": "6262a265c0e58d2784318e1e0dda16d19a25e0f1e6cc18f05223bf82e80408cb"
   },
   "evidence": {
     "hostMeasurement": {
@@ -242,6 +243,26 @@
     "bFence": {
       "path": "openspec/changes/spacefox-watchface/evidence/performance021/b/GIT-FENCES-FINAL2.txt",
       "sha256": "1b11ecb2372957d8ff5383a4bf706f54d8d79130f2796832558c28cdf41b4b78"
+    },
+    "bPeerFocused": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/b/PEER-FOCUSED.txt",
+      "sha256": "9a30cdf6048c4d93ef40b098af22410d4637964d0ebfd5678f896a184d332aec"
+    },
+    "bPeerReadback": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/b/PEER-READBACK.txt",
+      "sha256": "27fbc0eed517248cdd28b88321aa65f45b45c4ec7c77bc752ebafa7bd4d18675"
+    },
+    "bPeerCloud": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/b/PEER-CLOUD.txt",
+      "sha256": "dddf22c71a9d07c1ed5e79f59ade254bcdf772ad15724c520757f899736f9b00"
+    },
+    "bPeerRootRace": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/b/PEER-ROOT-RACE.txt",
+      "sha256": "d1ef62b19b5ae2f96d26e00687cdead2704213ee4e73bf9452aa8f7e16a17b88"
+    },
+    "bPeerFirstRed": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/b/PEER-FIRST-RED.txt",
+      "sha256": "e351e7e83710bd0f9519b1f5047eb897caa726696cee02b56bae62728a0f4fb7"
     }
   }
 }

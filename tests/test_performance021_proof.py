@@ -57,6 +57,20 @@ class HostProofTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'proof input changed'):
             validate(self.root, self.catalog)
 
+    def test_changed_b_peer_source_refuses(self):
+        name = 'tests/test_performance021_b_peer.py'
+        path = self.root / name
+        path.write_bytes(path.read_bytes() + b'changed')
+        with self.assertRaisesRegex(ValueError, 'test_performance021_b_peer.py'):
+            validate(self.root, self.catalog)
+
+    def test_changed_b_peer_receipt_refuses(self):
+        name = self.record['evidence']['bPeerFocused']['path']
+        path = self.root / name
+        path.write_bytes(path.read_bytes() + b'changed')
+        with self.assertRaisesRegex(ValueError, 'PEER-FOCUSED.txt'):
+            validate(self.root, self.catalog)
+
     def test_missing_group_b_host_source_refuses(self):
         (self.root / 'tools/spacefox/cloud.py').unlink()
         with self.assertRaisesRegex(ValueError, 'proof input missing'):
