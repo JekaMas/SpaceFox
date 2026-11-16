@@ -1,0 +1,38 @@
+------------------------------------------------------------------------------
+Executing test fields018Format...
+DEBUG (03:50): FORMAT time, duration, pressure, signed, strings, type42, units, weather, null
+PASS
+------------------------------------------------------------------------------
+Executing test fields018Settings...
+DEBUG (03:50): SETTINGS legacy identities, custom slot and invalid defaults
+PASS
+------------------------------------------------------------------------------
+Executing test fields018NativeInventoryAndPersistence...
+DEBUG (03:50): INVENTORY actual=40 catalog=52 duplicates=4 subscriptions<=1 storedId=yes stop=yes
+PASS
+------------------------------------------------------------------------------
+Executing test fields018RenderRealSource...
+DEBUG (03:50): RENDER locale=en provider=FLRS output=FLRS 0 fields=4 bounds=true
+DEBUG (03:50): RENDER locale=ru provider=FLRS output=FLRS 0 fields=4 bounds=true
+PASS
+------------------------------------------------------------------------------
+Executing test fields018PrimaryLabels...
+DEBUG (03:50): PRIMARY labels locales=5 activity=21
+PASS
+------------------------------------------------------------------------------
+Executing test fields018SameSlotReplacement...
+DEBUG (03:50): SAME_SLOT property=6 unchanged=true source=A->B immediate=true lowStopped=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                                  Status:
+fields018Format                        PASS
+fields018Settings                      PASS
+fields018NativeInventoryAndPersistence PASS
+fields018RenderRealSource              PASS
+fields018PrimaryLabels                 PASS
+fields018SameSlotReplacement           PASS
+Ran 6 tests
+
+PASSED (passed=6, failed=0, errors=0)

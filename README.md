@@ -15,13 +15,15 @@ Actual native 0.1.17 simulator capture using a controlled offline public-launch 
 - A fixed 24-hour clock, local date and weekday.
 - An active countdown with seconds; always-on uses minutes. Both use the same UTC launch target. At T0 the timer becomes T+, and the launch remains visible for at least 15 minutes or through a later sourced ascent end.
 - A fading flat map with the launch point, the corresponding rocket, operator and mission purpose. The country flag appears beside the launch site; the rocket has no flag or abbreviation painted on it.
-- Four fixed fields independently configurable as steps, Body Battery, heart rate, stress, calories or watch battery. Clock, countdown and field colors can be configured separately.
+- Four independently configurable fields. The existing steps, Body Battery, heart rate, stress, calories and watch-battery choices remain; on-watch settings also offer accessible Garmin and user complications and supported daily activity readings. Clock, countdown and field colors can be configured separately.
 - A full map outline and launch point in always-on mode, with centered time, date, weekday, minute countdown and battery. The four activity fields and animation are hidden in this mode.
 - Optional, quiet-aware launch reminders. They are off by default; when enabled, Garmin schedules notifications from T−15. Device settings control vibration and delivery.
 
 A delayed or rescheduled launch uses a reddish countdown; stale data has a separate dotted indicator. Passing zero is a time calculation, not confirmation of liftoff. Missing Garmin readings remain unavailable; Body Battery uses Garmin's current complication value when selected.
 
 ## Data and settings
+
+The on-watch field picker lists sources available to that watch, including sources whose current reading is unavailable. Phone settings have a static list: choose **Selected on watch** to use the source last selected on the watch for that position. If none has been selected, the position shows a dash. Changing back to an established phone choice does not erase the watch-selected source; choosing **Selected on watch** again restores it. A missing provider remains selected and shows a dash until it returns.
 
 English and `https://jekamas.github.io/SpaceFox` are defaults. English, Russian, German, French and Spanish are the five primary software-supported languages; Auto is also available. Other retained internal translations are best effort.
 

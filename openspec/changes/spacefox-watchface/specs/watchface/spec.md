@@ -52,24 +52,53 @@ reducing primary time or placing text outside the circle.
 - **WHEN** a rocket/company/mission name is long or some context is unavailable
 - **THEN** bounded abbreviations or ellipsis keep the band readable, full supplied values remain retained, absent values are not invented and the larger country/site label does not overlap the countdown or circle
 
-### Requirement: Four configurable fitness fields
+### Requirement: Four configurable Garmin fields
 
-The watch face SHALL provide four independently configurable fields supporting
-steps, Body Battery, heart rate, stress, calories and watch battery; all four physical positions remain visible. It
-SHALL display Garmin-provided values and an unavailable marker for missing data.
-Watch battery and Body Battery SHALL remain distinct data sources. The active face SHALL NOT show a redundant standalone battery indicator; watch battery remains one of the six selectable roles.
+The watch face SHALL retain four independently configurable ACTIVE positions and colors. Property IDs 0–5 retain their established steps, Body Battery, heart rate, stress, calories and watch-battery meanings. Watch battery and Body Battery remain distinct; ACTIVE SHALL NOT show a redundant standalone battery. LOW SHALL omit the four fields.
 
 #### Scenario: Configure fields
-- **WHEN** a user assigns metric roles to the four positions
-- **THEN** those choices persist and affect only their assigned positions; an invalid role retains that position’s default
+- **WHEN** a user assigns sources independently to the four positions, including duplicate sources
+- **THEN** each assignment persists and affects only its position; invalid established settings retain that position’s default
 
 #### Scenario: Health data unavailable
-- **WHEN** Garmin does not supply a selected metric
-- **THEN** that field displays an unavailable marker rather than a fabricated value or a crash
+- **WHEN** Garmin does not supply a selected reading
+- **THEN** the position displays an unavailable marker rather than fabricating a value or crashing
 
 #### Scenario: Select watch battery
-- **WHEN** watch battery is selected in a fitness slot or shown on the always-on display
-- **THEN** it uses watch charge or an unavailable marker without substituting Body Battery, and all four active slots remain independently configurable
+- **WHEN** watch battery is selected in a field or shown on the always-on display
+- **THEN** it uses watch charge or an unavailable marker without substituting Body Battery
+
+### Requirement: Model-aware field discovery
+
+The on-watch picker SHALL discover accessible system and user complications and supported public daily and device readings at runtime without a device-name allowlist. It SHALL retain selectable sources when a current reading is null, apply their public units and meanings, and use reported labels and icons where available.
+
+#### Scenario: A new source becomes available
+- **WHEN** an accessible complication or qualified device capability appears
+- **THEN** it is selectable through its actual identifier, including future complication types and user providers
+
+#### Scenario: A reading is temporarily empty
+- **WHEN** an accessible source currently reports no value
+- **THEN** the source stays selectable and its field displays an unavailable marker
+
+### Requirement: Saved field identities and lifecycle
+
+Saved source identities SHALL survive restart and temporary provider unavailability. Only selected unique complications SHALL be subscribed through one callback owner, with at most four active subscriptions. LOW and hidden states SHALL stop selected-field subscriptions and polling; denial SHALL preserve the selection and permit bounded foreground reads.
+
+#### Scenario: A provider disappears and returns
+- **WHEN** a selected provider is temporarily absent and later returns
+- **THEN** its position shows unavailable without replacing its saved identity and resumes using the same source when it returns
+
+#### Scenario: A selection changes in one position
+- **WHEN** the source changes while the phone property remains at the watch-selected value
+- **THEN** the old subscription and value are replaced immediately, without changing the other positions
+
+### Requirement: Phone field settings
+
+The static phone settings SHALL retain choices 0–5 and offer a watch-selected source for each position. The expanded source itself is chosen on the watch. Toggling to an established phone choice SHALL retain the watch-selected identity for later reuse; a missing saved source displays unavailable.
+
+#### Scenario: Return to a watch-selected source
+- **WHEN** a user selects an established phone choice and later selects the watch-selected option
+- **THEN** that position uses its last watch-selected identity, or unavailable if no identity is saved
 
 ### Requirement: Model-specific rocket visual
 
@@ -248,18 +277,18 @@ and cold reopen.
 - **WHEN** a fresh instance opens and the user changes language and appearance colors
 - **THEN** it starts in English, changed values affect the actual face and survive reopen, four metric assignments and the feed URL are preserved, and unknown values use their documented defaults
 - **AND** English default is independent of system language; clock/countdown default to mint, fields to white, reschedule or sourced hold reddish and stale dotted underline remain semantic overrides, and no layout/map/clock-format choices are added
-- **AND** The actual running version SHALL appear in settings rather than on the face. Active time, field-value and countdown ink target at least 72px, 32px and 28px respectively on 390×390, with measurements exposing contradictions. Unknown countdown uses the persisted countdown palette and style unless an explicit sourced hold or actual reschedule supplies the reddish override. The active face has no standalone battery: battery is selectable in each fixed field and selected role, icon, value and color persist across restart. The six roles, circular fit, unmarked rocket and site-country flag remain intact.
+- **AND** The actual running version SHALL appear in settings rather than on the face. Active time, field-value and countdown ink target at least 72px, 32px and 28px respectively on 390×390, with measurements exposing contradictions. Unknown countdown uses the persisted countdown palette and style unless an explicit sourced hold or actual reschedule supplies the reddish override. The active face has no standalone battery: battery is selectable in each fixed field and selected role, icon, value and color persist across restart. The existing roles, expanded sources, circular fit, unmarked rocket and site-country flag remain intact.
 
 #### Scenario: English and Russian final composition
 - **WHEN** final composition is qualified for this delivery
-- **THEN** batched source-bound native observations cover English and Russian at390×390, countdown above24hours, below60seconds, T+ zero/elapsed, reschedule/unknown/stale, all six metric icons and persisted appearance choices
+- **THEN** batched source-bound native observations cover English and Russian at390×390, countdown above24hours, below60seconds, T+ zero/elapsed, reschedule/unknown/stale, the six established metric icons, representative expanded sources and persisted appearance choices
 - **AND** no new all-language or synthetic-text campaign is required; prior five-language font/corpus observations retain only their original valid proof boundaries
 
 #### Scenario: Owner readability revision after physical first use
 - **WHEN** the active face draws known or unknown countdown data
 - **THEN** on a 390×390 display actual ink heights target at least 72px for time, 32px for field values, and 28px for countdown; measurements must expose any contradiction
 - **AND** unknown `--:--:--` uses the normal persisted countdown palette unless an explicit sourced hold or actual reschedule independently supplies the reddish semantic override
-- **AND** no standalone battery appears in active mode; battery is independently selectable in each of four fixed positions, with all six roles, circular fit, unmarked rocket and country-footer flag intact
+- **AND** no standalone battery appears in active mode; battery is independently selectable in each of four fixed positions, with the established and expanded fields, circular fit, unmarked rocket and country-footer flag intact
 
 #### Scenario: Settings, AOD, and cached scene remain coherent
 - **WHEN** any field is selected through settings, including battery in field four, then settings change and the application restarts

@@ -1,0 +1,63 @@
+------------------------------------------------------------------------------
+Executing test display03MinuteRounding...
+DEBUG (05:35): MINUTE offset=-61 observed=T- 00:02 expected=T- 00:02
+DEBUG (05:35): MINUTE offset=-60 observed=T- 00:01 expected=T- 00:01
+DEBUG (05:35): MINUTE offset=-59 observed=T- 00:01 expected=T- 00:01
+DEBUG (05:35): MINUTE offset=-1 observed=T- 00:01 expected=T- 00:01
+DEBUG (05:35): MINUTE offset=0 observed=T+ 00:00 expected=T+ 00:00
+DEBUG (05:35): MINUTE offset=1 observed=T+ 00:00 expected=T+ 00:00
+DEBUG (05:35): MINUTE offset=59 observed=T+ 00:00 expected=T+ 00:00
+DEBUG (05:35): MINUTE offset=60 observed=T+ 00:01 expected=T+ 00:01
+DEBUG (05:35): MINUTE offset=61 observed=T+ 00:01 expected=T+ 00:01
+PASS
+------------------------------------------------------------------------------
+Executing test display03RepeatedLowCallbacks...
+DEBUG (05:35): LOW_CALLBACKS 60 same-minute callbacks one paint; next minute second paint
+PASS
+------------------------------------------------------------------------------
+Executing test display03SleepThenHighObservation...
+DEBUG (05:35): SLEEP_QUERY_HIGH active=0 low=1 mode=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03WakeThenLowObservation...
+DEBUG (05:35): WAKE_QUERY_LOW active=0 low=1 mode=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03LocaleResume...
+DEBUG (05:35): LOCALE_WAKE refreshed_after_first_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03FailedSameDigestRetry...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x30000174 
+  - display03FailedSameDigestRetry() at /Users/jekamas/projects/SpaceFox-worktrees/model-aware-fields018-20261116/watchface/display03-tests/Display03Sequence.mc:106 0x100043b8 
+  - evaluate_test_entries_0_to_25() at /Users/jekamas/.codex/tmp/spacefox-fields018-final-display03-extra/gen/006-B4433-00/source/UnitTests.mcgen:83 0x10009ee9 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-fields018-final-display03-extra/gen/006-B4433-00/source/UnitTests.mcgen:138 0x1000a161 
+ERROR
+------------------------------------------------------------------------------
+Executing test display03SourcedHoldCache...
+DEBUG (05:35): SOURCED_HOLD status5=true staleIndependent=true cacheReopen=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03WarmAodResources...
+DEBUG (05:35): WARM_AOD drawLoads=0 wakeReloads=0 duplicatePrepareLoads=0
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+display03MinuteRounding             PASS
+display03RepeatedLowCallbacks       PASS
+display03SleepThenHighObservation   PASS
+display03WakeThenLowObservation     PASS
+display03LocaleResume               PASS
+display03FailedSameDigestRetry      ERROR
+display03SourcedHoldCache           PASS
+display03WarmAodResources           PASS
+Ran 8 tests
+
+FAILED (passed=7, failed=0, errors=1)

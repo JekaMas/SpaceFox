@@ -1,0 +1,699 @@
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Time,2,14,18]; ]
+import Toybox.Time;
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Test,3,14,18]; ]
+import Toybox.Test;
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 6; @symbol_moduledef = [AvailableFeatures,6,7,24]; ]
+module AvailableFeatures {
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 6; ]
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 6; @symbol_moduledef = [ActivityMonitor,6,33,48]; ]
+    module ActivityMonitor {
+        [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 6; ]
+        <init> {
+        }
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 6; @symbol_moduledef = [SensorHistory,6,59,72]; ]
+    module SensorHistory {
+        [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 6; ]
+        <init> {
+        }
+    }
+}
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 7; @symbol_moduledef = [UnavailableFeatures,7,7,26]; ]
+module UnavailableFeatures {
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 7; ]
+    <init> {
+    }
+}
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 8; @symbol_moduledef = [MetricSDK,8,7,16]; ]
+module MetricSDK {
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 8; ]
+    <init> {
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 9 5 ]
+        symbol [ ActivityApi %tmp.4 9 43 54 ];
+        %tmp.4 = getv ? :ActivityApi;
+        %tmp.1 = newc %tmp.4 ();
+        putv self :activity %tmp.1;
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 10 5 ]
+        symbol [ HistoryApi %tmp.8 10 49 59 ];
+        %tmp.8 = getv ? :HistoryApi;
+        %tmp.5 = newc %tmp.8 ();
+        putv self :history %tmp.5;
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 11 5 ]
+        symbol [ SystemApi %tmp.12 11 29 38 ];
+        %tmp.12 = getv ? :SystemApi;
+        %tmp.9 = newc %tmp.12 ();
+        putv self :system %tmp.9;
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 13 5 ]
+        %tmp.13 = newa 0;
+        putv self :trace %tmp.13;
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 9; @position = 5; @symbol_vardef = [activity,9,5,13]; @symbol_type<0> = [ActivityApi,9,17,28]; @symbol_type<1> = [NoApis,9,32,38]; ]
+    var activity as ActivityApi or NoApis;
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 10; @position = 5; @symbol_vardef = [history,10,5,12]; @symbol_type<0> = [HistoryApi,10,16,26]; @symbol_type<1> = [MissingHistory,10,30,44]; ]
+    var history as HistoryApi or MissingHistory;
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 11; @position = 5; @symbol_vardef = [system,11,5,11]; @symbol_type<0> = [SystemApi,11,15,24]; ]
+    var system as SystemApi;
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 12; @position = 5; @symbol_vardef = [mode,12,5,9]; @symbol_type<0> = [Number,12,13,19]; ]
+    var mode as Number = 0;
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 13; @position = 5; @symbol_vardef = [trace,13,5,10]; @symbol_type<0> = [Array,13,14,19]; @symbol_type<1> = [String,13,20,26]; ]
+    var trace as Array<String>;
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 14; @symbol_functiondef = [reset,14,10,15]; @symbol_param<0> = [value,14,16,21]; @symbol_param<0>_type<0> = [Number,14,25,31]; ]
+    function reset(value as Number) as Void {
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_14_41_14_137_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 14 42 ]
+        %tmp.1 = lgetv %value;
+        symbol [ value %tmp.1 14 47 52 ];
+        symbol [ mode ? 14 42 46 ];
+        putv self :mode %tmp.1;
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 14 53 ]
+        %tmp.2 = newa 0;
+        symbol [ trace ? 14 53 58 ];
+        putv self :trace %tmp.2;
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 14 62 ]
+        symbol [ ActivityApi %tmp.6 14 75 86 ];
+        %tmp.6 = getv ? :ActivityApi;
+        %tmp.3 = newc %tmp.6 ();
+        symbol [ activity ? 14 62 70 ];
+        putv self :activity %tmp.3;
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 14 89 ]
+        symbol [ HistoryApi %tmp.10 14 101 111 ];
+        %tmp.10 = getv ? :HistoryApi;
+        %tmp.7 = newc %tmp.10 ();
+        symbol [ history ? 14 89 96 ];
+        putv self :history %tmp.7;
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 14 114 ]
+        symbol [ SystemApi %tmp.14 14 125 134 ];
+        %tmp.14 = getv ? :SystemApi;
+        %tmp.11 = newc %tmp.14 ();
+        symbol [ system ? 14 114 120 ];
+        putv self :system %tmp.11;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_14_41_14_137_stop:
+    }
+}
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 16; @symbol_classdef = [NoApis,16,6,12]; ]
+class NoApis {
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 16; ]
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 16; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 16; @symbol_functiondef = [initialize,16,23,33]; ]
+    function initialize() as Void {
+    }
+}
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 17; @symbol_classdef = [MissingHistory,17,6,20]; ]
+class MissingHistory {
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 17; ]
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 17; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 17; @position = 26; @symbol_vardef = [ORDER_NEWEST_FIRST,17,26,44]; @symbol_type<0> = [Number,17,48,54]; ]
+    var ORDER_NEWEST_FIRST as Number = 91;
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 17; @symbol_functiondef = [initialize,17,67,77]; ]
+    function initialize() as Void {
+    }
+}
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 18; @symbol_classdef = [MissingFields,18,6,19]; ]
+class MissingFields {
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 18; ]
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 18; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 18; @symbol_functiondef = [initialize,18,30,40]; ]
+    function initialize() as Void {
+    }
+}
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 19; @symbol_classdef = [MetricInfo,19,6,16]; ]
+class MetricInfo {
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 19; ]
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 19; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 19; @position = 22; @symbol_vardef = [steps,19,22,27]; @symbol_type<0> = [Number,19,31,37]; ]
+    var steps as Number = 0;
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 19; @position = 44; @symbol_vardef = [calories,19,44,52]; @symbol_type<0> = [Number,19,56,62]; ]
+    var calories as Number = 2345;
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 19; @symbol_functiondef = [initialize,19,77,87]; ]
+    function initialize() as Void {
+    }
+}
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 20; @symbol_classdef = [MetricStats,20,6,17]; ]
+class MetricStats {
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 20; ]
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 20; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 20; @position = 23; @symbol_vardef = [battery,20,23,30]; @symbol_type<0> = [Number,20,34,40]; ]
+    var battery as Number = 82;
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 20; @symbol_functiondef = [initialize,20,53,63]; ]
+    function initialize() as Void {
+    }
+}
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 21; @symbol_classdef = [MetricSample,21,6,18]; ]
+class MetricSample {
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 21; ]
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 21; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 21; @position = 24; @symbol_vardef = [data,21,24,28]; @symbol_type<0> = [Number,21,32,38]; ]
+    var data as Number;
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 21; @position = 43; @symbol_vardef = [when,21,43,47]; @symbol_type<0> = [Time,21,51,55]; @symbol_type<1> = [Moment,21,56,62]; ]
+    var when as Time.Moment;
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 21; @symbol_functiondef = [initialize,21,72,82]; @symbol_param<0> = [v,21,83,84]; @symbol_param<0>_type<0> = [Number,21,88,94]; @symbol_param<1> = [t,21,95,96]; @symbol_param<1>_type<0> = [Time,21,100,104]; @symbol_param<1>_type<1> = [Moment,21,105,111]; ]
+    function initialize(v as Number, t as Time.Moment) as Void {
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_21_112_21_127_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 21 113 ]
+        %tmp.1 = lgetv %v;
+        symbol [ v %tmp.1 21 118 119 ];
+        symbol [ data ? 21 113 117 ];
+        putv self :data %tmp.1;
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 21 120 ]
+        %tmp.2 = lgetv %t;
+        symbol [ t %tmp.2 21 125 126 ];
+        symbol [ when ? 21 120 124 ];
+        putv self :when %tmp.2;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_21_112_21_127_stop:
+    }
+}
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 22; @symbol_classdef = [MetricIterator,22,6,20]; ]
+class MetricIterator {
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 22; ]
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 22; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 23; @position = 5; @symbol_vardef = [role,23,5,9]; @symbol_type<0> = [String,23,13,19]; ]
+    var role as String;
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 23; @position = 24; @symbol_vardef = [calls,23,24,29]; @symbol_type<0> = [Number,23,33,39]; ]
+    var calls as Number = 0;
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 24; @symbol_functiondef = [initialize,24,10,20]; @symbol_param<0> = [value,24,21,26]; @symbol_param<0>_type<0> = [String,24,30,36]; ]
+    function initialize(value as String) as Void {
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_24_37_24_49_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 24 38 ]
+        %tmp.1 = lgetv %value;
+        symbol [ value %tmp.1 24 43 48 ];
+        symbol [ role ? 24 38 42 ];
+        putv self :role %tmp.1;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_24_37_24_49_stop:
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 25; @symbol_functiondef = [next,25,10,14]; @symbol_return<0> = [MetricSample,25,20,32]; ]
+    function next() as MetricSample or Null {
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_25_41_27_106_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 25 42 ]
+        symbol [ calls %tmp.1 25 42 47 ];
+        %tmp.1 = getv self :calls;
+        %tmp.2 = 1;
+        %tmp.3 = add %tmp.1 %tmp.2;
+        symbol [ calls ? 25 42 47 ];
+        putv self :calls dup %tmp.3;
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 25 51 ]
+        symbol [ MetricSDK %tmp.5 25 51 60 ];
+        %tmp.5 = getv ? :MetricSDK;
+        symbol [ trace %tmp.6 25 61 66 ];
+        %tmp.6 = getv %tmp.5 :trace;
+        symbol [ add %tmp.7 25 67 70 ];
+        %tmp.7 = getv function %tmp.6 :add;
+        symbol [ role %tmp.9 25 71 75 ];
+        %tmp.9 = getv ? :role;
+        %tmp.10 = ".next";
+        %tmp.11 = add %tmp.9 %tmp.10;
+        invoke %tmp.6 %tmp.7(%tmp.11);
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 25 85 ]
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_25_85_25_170_if_stmt:
+        symbol [ calls %tmp.13 25 88 93 ];
+        %tmp.13 = getv ? :calls;
+        %tmp.14 = 1;
+        %tmp.15 = gt %tmp.13 %tmp.14;
+        bf %tmp.15 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_25_85_25_170_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_25_85_25_170_if_true:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_25_96_25_170_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 25 97 ]
+        symbol [ Lang %tmp.18 25 107 111 ];
+        %tmp.18 = getm $.Toybox.Lang;
+        symbol [ InvalidValueException %tmp.19 25 112 133 ];
+        %tmp.19 = getv function ? %tmp.18 :InvalidValueException;
+        %tmp.20 = "full history traversal forbidden";
+        %tmp.16 = newc %tmp.19 (%tmp.20);
+        throw %tmp.16;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_25_96_25_170_stop:
+        goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_25_85_25_170_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_25_85_25_170_if_end:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 26 2 ]
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_26_2_26_36_if_stmt:
+        symbol [ MetricSDK %tmp.22 26 5 14 ];
+        %tmp.22 = getv ? :MetricSDK;
+        symbol [ mode %tmp.23 26 15 19 ];
+        %tmp.23 = getv %tmp.22 :mode;
+        %tmp.24 = 3;
+        %tmp.25 = eq %tmp.23 %tmp.24;
+        bf %tmp.25 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_26_2_26_36_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_26_2_26_36_if_true:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_26_23_26_36_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 26 24 ]
+        %tmp.26 = null;
+        ret %tmp.26;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_26_23_26_36_stop:
+        goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_26_2_26_36_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_26_2_26_36_if_end:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 27 2 ]
+        symbol [ MetricSample %tmp.30 27 13 25 ];
+        %tmp.30 = getv ? :MetricSample;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_27_26_27_75_begin:
+        symbol [ role %tmp.32 27 26 30 ];
+        %tmp.32 = getv ? :role;
+        symbol [ equals %tmp.33 27 31 37 ];
+        %tmp.33 = getv function %tmp.32 :equals;
+        %tmp.34 = "heart";
+        %tmp.35 = invoke %tmp.32 %tmp.33(%tmp.34);
+        bf %tmp.35 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_27_26_27_75_else_false;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_27_26_27_75_true:
+        %tmp.36 = 72;
+        push %tmp.36;
+        goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_27_26_27_75_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_27_26_27_75_else_false:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_27_50_27_75_begin:
+        symbol [ role %tmp.38 27 50 54 ];
+        %tmp.38 = getv ? :role;
+        symbol [ equals %tmp.39 27 55 61 ];
+        %tmp.39 = getv function %tmp.38 :equals;
+        %tmp.40 = "energy";
+        %tmp.41 = invoke %tmp.38 %tmp.39(%tmp.40);
+        bf %tmp.41 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_27_50_27_75_else_false;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_27_50_27_75_true:
+        %tmp.42 = 68;
+        push %tmp.42;
+        goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_27_50_27_75_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_27_50_27_75_else_false:
+        %tmp.43 = 0;
+        push %tmp.43;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_27_50_27_75_end:
+        %tmp.44 = phi [%tmp.41 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_27_50_27_75_begin] [%tmp.42 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_27_50_27_75_true] [%tmp.43 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_27_50_27_75_else_false] [%tmp.44 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_27_50_27_75_end];
+        push %tmp.44;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_27_26_27_75_end:
+        %tmp.45 = phi [%tmp.35 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_27_26_27_75_begin] [%tmp.36 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_27_26_27_75_true] [%tmp.44 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_27_26_27_75_else_false] [%tmp.45 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_27_26_27_75_end];
+        symbol [ Time %tmp.48 27 81 85 ];
+        %tmp.48 = getm $.Toybox.Time;
+        symbol [ Moment %tmp.49 27 86 92 ];
+        %tmp.49 = getv function ? %tmp.48 :Moment;
+        %tmp.50 = 1800000000;
+        %tmp.46 = newc %tmp.49 (%tmp.50);
+        %tmp.27 = newc %tmp.30 (%tmp.45, %tmp.46);
+        ret %tmp.27;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_25_41_27_106_stop:
+    }
+}
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 29; @symbol_classdef = [ActivityApi,29,6,17]; ]
+class ActivityApi {
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 29; ]
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 29; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 30; @symbol_functiondef = [initialize,30,10,20]; ]
+    function initialize() as Void {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 31; @symbol_functiondef = [getInfo,31,10,17]; @symbol_return<0> = [MetricInfo,31,23,33]; @symbol_return<1> = [MissingFields,31,37,50]; ]
+    function getInfo() as MetricInfo or MissingFields {
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_31_51_31_237_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 31 52 ]
+        symbol [ MetricSDK %tmp.2 31 52 61 ];
+        %tmp.2 = getv ? :MetricSDK;
+        symbol [ trace %tmp.3 31 62 67 ];
+        %tmp.3 = getv %tmp.2 :trace;
+        symbol [ add %tmp.4 31 68 71 ];
+        %tmp.4 = getv function %tmp.3 :add;
+        %tmp.5 = "activity.info";
+        invoke %tmp.3 %tmp.4(%tmp.5);
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 31 89 ]
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_31_89_31_174_if_stmt:
+        symbol [ MetricSDK %tmp.7 31 92 101 ];
+        %tmp.7 = getv ? :MetricSDK;
+        symbol [ mode %tmp.8 31 102 106 ];
+        %tmp.8 = getv %tmp.7 :mode;
+        %tmp.9 = 1;
+        %tmp.10 = eq %tmp.8 %tmp.9;
+        bf %tmp.10 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_31_89_31_174_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_31_89_31_174_if_true:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_31_110_31_174_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 31 111 ]
+        symbol [ Lang %tmp.13 31 121 125 ];
+        %tmp.13 = getm $.Toybox.Lang;
+        symbol [ InvalidValueException %tmp.14 31 126 147 ];
+        %tmp.14 = getv function ? %tmp.13 :InvalidValueException;
+        %tmp.15 = "denied ActivityMonitor";
+        %tmp.11 = newc %tmp.14 (%tmp.15);
+        throw %tmp.11;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_31_110_31_174_stop:
+        goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_31_89_31_174_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_31_89_31_174_if_end:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 31 175 ]
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_31_182_31_235_begin:
+        symbol [ MetricSDK %tmp.17 31 182 191 ];
+        %tmp.17 = getv ? :MetricSDK;
+        symbol [ mode %tmp.18 31 192 196 ];
+        %tmp.18 = getv %tmp.17 :mode;
+        %tmp.19 = 3;
+        %tmp.20 = eq %tmp.18 %tmp.19;
+        bf %tmp.20 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_31_182_31_235_else_false;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_31_182_31_235_true:
+        symbol [ MissingFields %tmp.24 31 204 217 ];
+        %tmp.24 = getv ? :MissingFields;
+        %tmp.21 = newc %tmp.24 ();
+        push %tmp.21;
+        goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_31_182_31_235_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_31_182_31_235_else_false:
+        symbol [ MetricInfo %tmp.28 31 224 234 ];
+        %tmp.28 = getv ? :MetricInfo;
+        %tmp.25 = newc %tmp.28 ();
+        push %tmp.25;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_31_182_31_235_end:
+        %tmp.29 = phi [%tmp.20 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_31_182_31_235_begin] [%tmp.21 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_31_182_31_235_true] [%tmp.25 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_31_182_31_235_else_false] [%tmp.29 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_31_182_31_235_end];
+        ret %tmp.29;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_31_51_31_237_stop:
+    }
+}
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 33; @symbol_classdef = [SystemApi,33,6,15]; ]
+class SystemApi {
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 33; ]
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 33; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 34; @symbol_functiondef = [initialize,34,10,20]; ]
+    function initialize() as Void {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 35; @symbol_functiondef = [getSystemStats,35,10,24]; @symbol_return<0> = [MetricStats,35,30,41]; ]
+    function getSystemStats() as MetricStats {
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_35_42_35_185_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 35 43 ]
+        symbol [ MetricSDK %tmp.2 35 43 52 ];
+        %tmp.2 = getv ? :MetricSDK;
+        symbol [ trace %tmp.3 35 53 58 ];
+        %tmp.3 = getv %tmp.2 :trace;
+        symbol [ add %tmp.4 35 59 62 ];
+        %tmp.4 = getv function %tmp.3 :add;
+        %tmp.5 = "system.stats";
+        invoke %tmp.3 %tmp.4(%tmp.5);
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 35 79 ]
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_35_79_35_159_if_stmt:
+        symbol [ MetricSDK %tmp.7 35 82 91 ];
+        %tmp.7 = getv ? :MetricSDK;
+        symbol [ mode %tmp.8 35 92 96 ];
+        %tmp.8 = getv %tmp.7 :mode;
+        %tmp.9 = 1;
+        %tmp.10 = eq %tmp.8 %tmp.9;
+        bf %tmp.10 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_35_79_35_159_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_35_79_35_159_if_true:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_35_100_35_159_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 35 101 ]
+        symbol [ Lang %tmp.13 35 111 115 ];
+        %tmp.13 = getm $.Toybox.Lang;
+        symbol [ InvalidValueException %tmp.14 35 116 137 ];
+        %tmp.14 = getv function ? %tmp.13 :InvalidValueException;
+        %tmp.15 = "unavailable stats";
+        %tmp.11 = newc %tmp.14 (%tmp.15);
+        throw %tmp.11;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_35_100_35_159_stop:
+        goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_35_79_35_159_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_35_79_35_159_if_end:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 35 160 ]
+        symbol [ MetricStats %tmp.19 35 171 182 ];
+        %tmp.19 = getv ? :MetricStats;
+        %tmp.16 = newc %tmp.19 ();
+        ret %tmp.16;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_35_42_35_185_stop:
+    }
+}
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 37; @symbol_classdef = [HistoryApi,37,6,16]; ]
+class HistoryApi {
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 37; ]
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 37; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 38; @position = 5; @symbol_vardef = [ORDER_NEWEST_FIRST,38,5,23]; @symbol_type<0> = [Number,38,27,33]; ]
+    var ORDER_NEWEST_FIRST as Number = 91;
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 39; @symbol_functiondef = [initialize,39,10,20]; ]
+    function initialize() as Void {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 40; @symbol_functiondef = [open,40,10,14]; @symbol_param<0> = [role,40,15,19]; @symbol_param<0>_type<0> = [String,40,23,29]; @symbol_param<1> = [options,40,30,37]; @symbol_param<1>_type<0> = [Dictionary,40,41,51]; @symbol_param<1>_type<1> = [Symbol,40,52,58]; @symbol_param<1>_type<2> = [Number,40,59,65]; @symbol_return<0> = [MetricIterator,40,71,85]; ]
+    function open(role as String, options as Dictionary<Symbol, Number>) as MetricIterator {
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_86_40_380_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 40 87 ]
+        symbol [ MetricSDK %tmp.2 40 87 96 ];
+        %tmp.2 = getv ? :MetricSDK;
+        symbol [ trace %tmp.3 40 97 102 ];
+        %tmp.3 = getv %tmp.2 :trace;
+        symbol [ add %tmp.4 40 103 106 ];
+        %tmp.4 = getv function %tmp.3 :add;
+        %tmp.5 = lgetv %role;
+        symbol [ role %tmp.5 40 107 111 ];
+        %tmp.6 = ".open";
+        %tmp.7 = add %tmp.5 %tmp.6;
+        invoke %tmp.3 %tmp.4(%tmp.7);
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 40 121 ]
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_121_40_263_if_stmt:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_124_40_181_begin:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_124_40_161_begin:
+        %tmp.8 = lgetv %options;
+        symbol [ options %tmp.8 40 124 131 ];
+        symbol [ size %tmp.9 40 132 136 ];
+        %tmp.9 = getv function %tmp.8 :size;
+        %tmp.10 = invoke %tmp.8 %tmp.9();
+        %tmp.11 = 2;
+        %tmp.12 = ne %tmp.10 %tmp.11;
+        bt %tmp.12 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_121_40_263_if_true;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_143_40_161_false:
+        %tmp.13 = lgetv %options;
+        symbol [ options %tmp.13 40 143 150 ];
+        %tmp.15 = const :period;
+        symbol [ period %tmp.15 40 152 158 const ];
+        %tmp.16 = agetv %tmp.13 %tmp.15;
+        %tmp.17 = 1;
+        %tmp.18 = ne %tmp.16 %tmp.17;
+        push %tmp.18;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_143_40_161_end:
+        %tmp.19 = phi [%tmp.12 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_124_40_161_begin] [%tmp.18 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_143_40_161_false] [%tmp.19 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_143_40_161_end];
+        bt %tmp.19 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_121_40_263_if_true;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_164_40_181_false:
+        %tmp.20 = lgetv %options;
+        symbol [ options %tmp.20 40 164 171 ];
+        %tmp.22 = const :order;
+        symbol [ order %tmp.22 40 173 178 const ];
+        %tmp.23 = agetv %tmp.20 %tmp.22;
+        %tmp.24 = 91;
+        %tmp.25 = ne %tmp.23 %tmp.24;
+        push %tmp.25;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_164_40_181_end:
+        %tmp.26 = phi [%tmp.19 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_124_40_181_begin] [%tmp.25 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_164_40_181_false] [%tmp.26 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_164_40_181_end];
+        bf %tmp.26 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_121_40_263_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_121_40_263_if_true:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_184_40_263_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 40 185 ]
+        symbol [ Lang %tmp.29 40 195 199 ];
+        %tmp.29 = getm $.Toybox.Lang;
+        symbol [ InvalidValueException %tmp.30 40 200 221 ];
+        %tmp.30 = getv function ? %tmp.29 :InvalidValueException;
+        %tmp.31 = "history request not one newest sample";
+        %tmp.27 = newc %tmp.30 (%tmp.31);
+        throw %tmp.27;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_184_40_263_stop:
+        goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_121_40_263_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_121_40_263_if_end:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 40 264 ]
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_264_40_347_if_stmt:
+        symbol [ MetricSDK %tmp.33 40 267 276 ];
+        %tmp.33 = getv ? :MetricSDK;
+        symbol [ mode %tmp.34 40 277 281 ];
+        %tmp.34 = getv %tmp.33 :mode;
+        %tmp.35 = 1;
+        %tmp.36 = eq %tmp.34 %tmp.35;
+        bf %tmp.36 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_264_40_347_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_264_40_347_if_true:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_285_40_347_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 40 286 ]
+        symbol [ Lang %tmp.39 40 296 300 ];
+        %tmp.39 = getm $.Toybox.Lang;
+        symbol [ InvalidValueException %tmp.40 40 301 322 ];
+        %tmp.40 = getv function ? %tmp.39 :InvalidValueException;
+        %tmp.41 = "denied SensorHistory";
+        %tmp.37 = newc %tmp.40 (%tmp.41);
+        throw %tmp.37;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_285_40_347_stop:
+        goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_264_40_347_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_264_40_347_if_end:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 40 348 ]
+        symbol [ MetricIterator %tmp.45 40 359 373 ];
+        %tmp.45 = getv ? :MetricIterator;
+        %tmp.46 = lgetv %role;
+        symbol [ role %tmp.46 40 374 378 ];
+        %tmp.42 = newc %tmp.45 (%tmp.46);
+        ret %tmp.42;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_40_86_40_380_stop:
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 41; @symbol_functiondef = [getHeartRateHistory,41,10,29]; @symbol_param<0> = [options,41,30,37]; @symbol_param<0>_type<0> = [Dictionary,41,41,51]; @symbol_param<0>_type<1> = [Symbol,41,52,58]; @symbol_param<0>_type<2> = [Number,41,59,65]; @symbol_return<0> = [MetricIterator,41,71,85]; ]
+    function getHeartRateHistory(options as Dictionary<Symbol, Number>) as MetricIterator {
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_41_86_41_116_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 41 87 ]
+        %tmp.1 = self;
+        symbol [ open %tmp.2 41 94 98 ];
+        %tmp.2 = getv function %tmp.1 :open;
+        %tmp.3 = "heart";
+        %tmp.4 = lgetv %options;
+        symbol [ options %tmp.4 41 107 114 ];
+        %tmp.5 = invoke %tmp.1 %tmp.2(%tmp.3, %tmp.4);
+        ret %tmp.5;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_41_86_41_116_stop:
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 42; @symbol_functiondef = [getBodyBatteryHistory,42,10,31]; @symbol_param<0> = [options,42,32,39]; @symbol_param<0>_type<0> = [Dictionary,42,43,53]; @symbol_param<0>_type<1> = [Symbol,42,54,60]; @symbol_param<0>_type<2> = [Number,42,61,67]; @symbol_return<0> = [MetricIterator,42,73,87]; ]
+    function getBodyBatteryHistory(options as Dictionary<Symbol, Number>) as MetricIterator {
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_42_88_42_119_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 42 89 ]
+        %tmp.1 = self;
+        symbol [ open %tmp.2 42 96 100 ];
+        %tmp.2 = getv function %tmp.1 :open;
+        %tmp.3 = "energy";
+        %tmp.4 = lgetv %options;
+        symbol [ options %tmp.4 42 110 117 ];
+        %tmp.5 = invoke %tmp.1 %tmp.2(%tmp.3, %tmp.4);
+        ret %tmp.5;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_42_88_42_119_stop:
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 43; @symbol_functiondef = [getStressHistory,43,10,26]; @symbol_param<0> = [options,43,27,34]; @symbol_param<0>_type<0> = [Dictionary,43,38,48]; @symbol_param<0>_type<1> = [Symbol,43,49,55]; @symbol_param<0>_type<2> = [Number,43,56,62]; @symbol_return<0> = [MetricIterator,43,68,82]; ]
+    function getStressHistory(options as Dictionary<Symbol, Number>) as MetricIterator {
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_43_83_43_114_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 43 84 ]
+        %tmp.1 = self;
+        symbol [ open %tmp.2 43 91 95 ];
+        %tmp.2 = getv function %tmp.1 :open;
+        %tmp.3 = "stress";
+        %tmp.4 = lgetv %options;
+        symbol [ options %tmp.4 43 105 112 ];
+        %tmp.5 = invoke %tmp.1 %tmp.2(%tmp.3, %tmp.4);
+        ret %tmp.5;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_43_83_43_114_stop:
+    }
+}
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 45; @symbol_functiondef = [traceEquals,45,9,20]; @symbol_param<0> = [expected,45,21,29]; @symbol_param<0>_type<0> = [Array,45,33,38]; @symbol_param<0>_type<1> = [String,45,39,45]; @symbol_return<0> = [Boolean,45,51,58]; ]
+function traceEquals(expected as Array<String>) as Boolean {
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_59_45_225_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 45 60 ]
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_60_45_117_if_stmt:
+    symbol [ MetricSDK %tmp.2 45 63 72 ];
+    %tmp.2 = getv ? :MetricSDK;
+    symbol [ trace %tmp.3 45 73 78 ];
+    %tmp.3 = getv %tmp.2 :trace;
+    symbol [ size %tmp.4 45 79 83 ];
+    %tmp.4 = getv function %tmp.3 :size;
+    %tmp.5 = invoke %tmp.3 %tmp.4();
+    %tmp.6 = lgetv %expected;
+    symbol [ expected %tmp.6 45 87 95 ];
+    symbol [ size %tmp.7 45 96 100 ];
+    %tmp.7 = getv function %tmp.6 :size;
+    %tmp.8 = invoke %tmp.6 %tmp.7();
+    %tmp.9 = ne %tmp.5 %tmp.8;
+    bf %tmp.9 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_60_45_117_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_60_45_117_if_true:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_103_45_117_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 45 104 ]
+    %tmp.10 = false;
+    ret %tmp.10;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_103_45_117_stop:
+    goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_60_45_117_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_60_45_117_if_end:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 45 118 ]
+    for @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_118_45_212_for_test @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_118_45_212_for_incr @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_118_45_212_for_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_118_45_212_for_init:
+    [ "_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_118_45_212_for_begin" "_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_118_45_212_for_end" ]
+    %i.1 = local;
+    symbol [ i %i.1 45 126 127 ];
+    %tmp.11 = 0;
+    lputv %i.1 %tmp.11;
+    symbol [ i %i.1 45 126 127 ];
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_118_45_212_for_test:
+    %tmp.12 = lgetv %i.1;
+    symbol [ i %tmp.12 45 130 131 ];
+    %tmp.13 = lgetv %expected;
+    symbol [ expected %tmp.13 45 132 140 ];
+    symbol [ size %tmp.14 45 141 145 ];
+    %tmp.14 = getv function %tmp.13 :size;
+    %tmp.15 = invoke %tmp.13 %tmp.14();
+    %tmp.16 = lt %tmp.12 %tmp.15;
+    bf %tmp.16 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_118_45_212_for_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_118_45_212_for_begin:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_153_45_212_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 45 154 ]
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_154_45_211_if_stmt:
+    symbol [ MetricSDK %tmp.18 45 158 167 ];
+    %tmp.18 = getv ? :MetricSDK;
+    symbol [ trace %tmp.19 45 168 173 ];
+    %tmp.19 = getv %tmp.18 :trace;
+    %tmp.20 = lgetv %i.1;
+    symbol [ i %tmp.20 45 174 175 ];
+    %tmp.21 = agetv %tmp.19 %tmp.20;
+    symbol [ equals %tmp.22 45 177 183 ];
+    %tmp.22 = getv function %tmp.21 :equals;
+    %tmp.23 = lgetv %expected;
+    symbol [ expected %tmp.23 45 184 192 ];
+    %tmp.24 = lgetv %i.1;
+    symbol [ i %tmp.24 45 193 194 ];
+    %tmp.25 = agetv %tmp.23 %tmp.24;
+    %tmp.26 = invoke %tmp.21 %tmp.22(%tmp.25);
+    %tmp.27 = not %tmp.26;
+    bf %tmp.27 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_154_45_211_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_154_45_211_if_true:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_197_45_211_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 45 198 ]
+    %tmp.28 = false;
+    ret %tmp.28;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_197_45_211_stop:
+    goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_154_45_211_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_154_45_211_if_end:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_153_45_212_stop:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_118_45_212_for_incr:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 45 ]
+    %tmp.29 = lgetv %i.1;
+    symbol [ i %tmp.29 45 148 149 ];
+    %tmp.30 = 1;
+    %tmp.31 = add %tmp.29 %tmp.30;
+    lputv %i.1 %tmp.31;
+    symbol [ i %i.1 45 148 149 ];
+    goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_118_45_212_for_test;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_118_45_212_for_end:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc" 45 213 ]
+    %tmp.32 = true;
+    ret %tmp.32;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_MetricBoundary_mc_45_59_45_225_stop:
+}
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/MetricBoundary.mc"; @line = 1; ]
+<init> {
+}

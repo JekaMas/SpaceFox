@@ -263,8 +263,8 @@
     {
       "id": "WF03",
       "capability": "watchface",
-      "title": "Four configurable fitness fields",
-      "fingerprint": "f96983d6cedb74a5425c0be0d3f42c2d0922b1f08aa20393038122549097adb5"
+      "title": "Four configurable Garmin fields",
+      "fingerprint": "5006499e90e2e01f14d4e85cfdea5e518fbd057ee4e128d993f6bb3cd32704f5"
     },
     {
       "id": "WF04",
@@ -312,7 +312,7 @@
       "id": "WF11",
       "capability": "watchface",
       "title": "Native Garmin metric access",
-      "fingerprint": "7c67bc6208a439bd4c8850fb30c109955dc9a98e64c9adc8a9728fa5bd1d0497"
+      "fingerprint": "0ca20633e8a54908a49c9f88c107fc95603911737cf6b7011c885c3259e622ad"
     },
     {
       "id": "WF12",
@@ -379,6 +379,24 @@
       "capability": "watchface",
       "title": "Bind each scene to its visual identity",
       "fingerprint": "c2e15e49ad4c3d9e4318594f37e0e25164846db669963c058cd50ec2c337c314"
+    },
+    {
+      "id": "WF20",
+      "capability": "watchface",
+      "title": "Model-aware field discovery",
+      "fingerprint": "9560ca270e3eae3057189c770b4864908de8855d4733a078feb0c5d542076d09"
+    },
+    {
+      "id": "WF21",
+      "capability": "watchface",
+      "title": "Saved field identities and lifecycle",
+      "fingerprint": "3157f79ee2b5ccc310596a97e2c3f1572e3fce8a63d8a6ce7e5b47802f5d46e8"
+    },
+    {
+      "id": "WF22",
+      "capability": "watchface",
+      "title": "Phone field settings",
+      "fingerprint": "2ecb15bc1e9c3151b09f13adc13454449c1a3b04381713460ecaf860e11aaf19"
     }
   ],
   "properties": [
@@ -1929,9 +1947,9 @@
       "scenarios": [
         "A selected history metric is unavailable"
       ],
-      "statement": "Fields SHALL use available Garmin APIs and only necessary declared permissions.\nSteps/calories, watch charge and recent heart-rate/Body Battery/stress samples\nSHALL retain distinct sources. Feature checks SHALL handle unsupported APIs,\ndenied permissions and absent samples. Reading a field SHALL NOT enable raw\nsensor streaming, parse entire histories or upload personal data.",
+      "statement": "Fields use accessible Garmin complications and public device/daily APIs with necessary permissions. Steps, calories, watch charge, recent heart/stress and current Body Battery retain distinct sources; unsupported, denied and empty values remain honest. No raw sensor streaming, full-history scans or personal-data uploads.",
       "owner": "watchface/source/Fitness.mc",
-      "oracle": "Actual current Fitness real-SDK/ordinary six-role observations plus four compiled exact-body API-boundary tests: literal distinct source values, one newest sample traces, thrown denied/unavailable calls, missing modules/functions/fields/samples. Actual view/formatter missing replacement and time/cache continuity reused. No Python health reimplementation.",
+      "oracle": "Current fields018 selected-source and lifecycle tests, supplemented by retained historical Fitness source observations only within their original input boundary.",
       "source_globs": [
         "tests/test_basic_time_fields.py",
         "tools/run_native_tests.py",
@@ -1967,7 +1985,7 @@
         "corpus/real-schedule-basic-five-20261113/display-corpus.json",
         "openspec/changes/spacefox-watchface/evidence/basic-main-review/finite/software-qualification.json"
       ],
-      "planning_status": "Whole software property implemented; complete clean graph execution and self verification, followed by one different peer and root judgment. No physical or Store acceptance."
+      "planning_status": "Current source is qualified by fields018 evidence; old graph cases must be reconciled before graph GREEN."
     },
     {
       "id": "LS05.P2",
@@ -4020,9 +4038,9 @@
         "Health data unavailable",
         "Select watch battery"
       ],
-      "statement": "Four fixed fields independently persist any of six Garmin metric roles including duplicates; invalid individual choices default, unavailable samples do not reuse values, and selected watch charge remains distinct from Body Battery. Physical health-source, phone and battery acceptance remains tasks 5.1, 5.5 and 6.1.",
-      "owner": "watchface/source/SceneSettings.mc; watchface/source/SpaceFoxApp.mc; watchface/source/SpaceFoxView.mc; watchface/source/Fitness.mc; watchface/source/SceneRenderer.mc",
-      "oracle": "Actual SDK Properties reopen and app settings callback with literal independent/duplicate choices; one invalid persisted selection preserves the other three; actual view refresh replaces old values with missing sample; literal300-second recency and301/future rejection; watch82% distinct from energy68. Retained ordinary six-callback/four-slot/six-role observation uses real Garmin adapter.",
+      "statement": "Four fixed ACTIVE positions independently persist accessible Garmin source identities, including duplicates; established phone choices 0–5 preserve their meanings, unavailable readings do not reuse stale values, and watch charge remains distinct from Body Battery. LOW omits all four fields.",
+      "owner": "watchface/source/SceneSettings.mc; watchface/source/FieldSources.mc; watchface/source/SettingsMenu.mc; watchface/source/SpaceFoxView.mc; watchface/source/SceneRenderer.mc",
+      "oracle": "Current fields018 FR165/FR170 SDK receipts and actual 390/454 stock observations; older six-role receipts retain only their original source boundary. Physical health-source, phone and battery acceptance remain separate.",
       "source_globs": [
         "locales/catalog.json",
         "openspec/changes/spacefox-watchface/evidence/basic-main-review/main-use/**",
@@ -4065,7 +4083,7 @@
         "evidence/final-local-review-20261115/geography-before-repair.log",
         "evidence/final-local-review-20261115/geography-fixed.log"
       ],
-      "planning_status": "Current controlled native settings/field, unavailable sample and watch battery observations are bound to combined source; physical sensor, phone and battery acceptance remain open."
+      "planning_status": "Current fields018 evidence recorded separately; prior case aliases do not by themselves qualify changed source. Reconcile full graph coverage before claiming graph GREEN."
     },
     {
       "id": "VC03.P1",
@@ -5362,6 +5380,116 @@
         "openspec/changes/spacefox-watchface/evidence/final-local-review-20261115/current-batch/**"
       ],
       "planning_status": "Bounded composition; physical, live-network and graphics pool peaks remain outside."
+    },
+    {
+      "id": "WF20.P1",
+      "requirement_id": "WF20",
+      "scenarios": [
+        "A new source becomes available",
+        "A reading is temporarily empty"
+      ],
+      "statement": "Runtime discovery enumerates accessible native and provider identities and qualified public readings; an unavailable value stays selectable and renders honestly.",
+      "owner": "watchface/source/FieldSources.mc; watchface/source/SettingsMenu.mc; watchface/source/SpaceFoxView.mc",
+      "oracle": "Typed receipt observers authenticate exact executed FR165/FR170 native source, test program and framework table; positive and negative graph edges may observe separate assertions in the same native batch. No independent execution, physical device or paired-phone claim.",
+      "source_globs": [
+        "watchface/source/FieldSources.mc",
+        "watchface/source/FieldText.mc",
+        "watchface/source/SceneSettings.mc",
+        "watchface/source/SpaceFoxView.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "watchface/fields018-extra-tests/EmptySelection.mc",
+        "tools/fields018_native_probe.py",
+        "tools/fields018_extra_probe.py",
+        "tests/test_fields018_graph_receipts.py",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr165/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr170/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-empty/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-red/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-green/**"
+      ],
+      "planning_status": "Current source-bound native and stock simulator observations are recorded; physical watch and phone remain outside this boundary."
+    },
+    {
+      "id": "WF21.P1",
+      "requirement_id": "WF21",
+      "scenarios": [
+        "A provider disappears and returns",
+        "A selection changes in one position"
+      ],
+      "statement": "Selected identities persist through provider loss, return and same-slot source changes; selected unique IDs own bounded subscriptions stopped in LOW and hidden modes.",
+      "owner": "watchface/source/FieldSources.mc; watchface/source/SettingsMenu.mc; watchface/source/SpaceFoxView.mc",
+      "oracle": "Typed receipt observers authenticate exact executed FR165/FR170 native source, test program and framework table; positive and negative graph edges may observe separate assertions in the same native batch. No independent execution, physical device or paired-phone claim.",
+      "source_globs": [
+        "watchface/source/FieldSources.mc",
+        "watchface/source/FieldText.mc",
+        "watchface/source/SceneSettings.mc",
+        "watchface/source/SpaceFoxView.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "watchface/fields018-extra-tests/EmptySelection.mc",
+        "tools/fields018_native_probe.py",
+        "tools/fields018_extra_probe.py",
+        "tests/test_fields018_graph_receipts.py",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr165/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr170/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-empty/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-red/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-green/**"
+      ],
+      "planning_status": "Current source-bound native and stock simulator observations are recorded; physical watch and phone remain outside this boundary."
+    },
+    {
+      "id": "WF22.P1",
+      "requirement_id": "WF22",
+      "scenarios": [
+        "Return to a watch-selected source"
+      ],
+      "statement": "Static phone choices 0–5 and watch-selected option 6 retain the saved source independently; missing selection displays unavailable.",
+      "owner": "watchface/source/FieldSources.mc; watchface/source/SettingsMenu.mc; watchface/source/SpaceFoxView.mc",
+      "oracle": "Typed receipt observers authenticate exact executed FR165/FR170 native source, test program and framework table; positive and negative graph edges may observe separate assertions in the same native batch. No independent execution, physical device or paired-phone claim.",
+      "source_globs": [
+        "watchface/source/FieldSources.mc",
+        "watchface/source/FieldText.mc",
+        "watchface/source/SceneSettings.mc",
+        "watchface/source/SpaceFoxView.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "watchface/fields018-extra-tests/EmptySelection.mc",
+        "tools/fields018_native_probe.py",
+        "tools/fields018_extra_probe.py",
+        "tests/test_fields018_graph_receipts.py",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr165/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr170/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-empty/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-red/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-green/**"
+      ],
+      "planning_status": "Current source-bound native and stock simulator observations are recorded; physical watch and phone remain outside this boundary."
+    },
+    {
+      "id": "WF11.P2",
+      "requirement_id": "WF11",
+      "scenarios": [
+        "Body Battery is selected more than once"
+      ],
+      "statement": "All selected Body Battery assignments share one callback and at most one subscription; LOW or hidden states stop selected-source work.",
+      "owner": "watchface/source/FieldSources.mc; watchface/source/SpaceFoxView.mc",
+      "oracle": "Current DISPLAY03 duplicate subscription boundary and selected-source lifecycle receipts; the API adapter is test-only at its documented boundary.",
+      "source_globs": [
+        "watchface/source/FieldSources.mc",
+        "watchface/source/FieldText.mc",
+        "watchface/source/SceneSettings.mc",
+        "watchface/source/SpaceFoxView.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "watchface/fields018-extra-tests/EmptySelection.mc",
+        "tools/fields018_native_probe.py",
+        "tools/fields018_extra_probe.py",
+        "tests/test_fields018_graph_receipts.py",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr165/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr170/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-empty/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-red/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-green/**"
+      ],
+      "planning_status": "Native selected-source cases bound; 454 and full-unit admission remain open."
     }
   ],
   "cases": [
@@ -26102,7 +26230,7 @@
           "Store approval or published official release"
         ]
       },
-      "implementation_note": "Whole RL01/WF11 qualification; exact P2 subsets folded with mappings in evidence/basic-platform-metrics-whole/folded-aliases.json. Existing valid native/compile/language receipts retained; only directly needed API-boundary native tests new."
+      "implementation_note": "Whole RL01/WF11 qualification; exact P2 subsets folded with mappings in evidence/basic-platform-metrics-whole/folded-aliases.json. Existing valid native/compile/language receipts retained; only directly needed API-boundary native tests new. Fields018 changed these owners; historical case observation is retained only at its original source boundary and is not alone current-source proof."
     },
     {
       "id": "WF11.P1.S01.NEGATIVE",
@@ -26165,7 +26293,7 @@
           "Store approval or published official release"
         ]
       },
-      "implementation_note": "Whole RL01/WF11 qualification; exact P2 subsets folded with mappings in evidence/basic-platform-metrics-whole/folded-aliases.json. Existing valid native/compile/language receipts retained; only directly needed API-boundary native tests new."
+      "implementation_note": "Whole RL01/WF11 qualification; exact P2 subsets folded with mappings in evidence/basic-platform-metrics-whole/folded-aliases.json. Existing valid native/compile/language receipts retained; only directly needed API-boundary native tests new. Fields018 changed these owners; historical case observation is retained only at its original source boundary and is not alone current-source proof."
     },
     {
       "id": "WF11.P1.C02.POSITIVE",
@@ -26228,7 +26356,7 @@
           "Store approval or published official release"
         ]
       },
-      "implementation_note": "Whole RL01/WF11 qualification; exact P2 subsets folded with mappings in evidence/basic-platform-metrics-whole/folded-aliases.json. Existing valid native/compile/language receipts retained; only directly needed API-boundary native tests new."
+      "implementation_note": "Whole RL01/WF11 qualification; exact P2 subsets folded with mappings in evidence/basic-platform-metrics-whole/folded-aliases.json. Existing valid native/compile/language receipts retained; only directly needed API-boundary native tests new. Fields018 changed these owners; historical case observation is retained only at its original source boundary and is not alone current-source proof."
     },
     {
       "id": "WF11.P1.C02.NEGATIVE",
@@ -26291,7 +26419,7 @@
           "Store approval or published official release"
         ]
       },
-      "implementation_note": "Whole RL01/WF11 qualification; exact P2 subsets folded with mappings in evidence/basic-platform-metrics-whole/folded-aliases.json. Existing valid native/compile/language receipts retained; only directly needed API-boundary native tests new."
+      "implementation_note": "Whole RL01/WF11 qualification; exact P2 subsets folded with mappings in evidence/basic-platform-metrics-whole/folded-aliases.json. Existing valid native/compile/language receipts retained; only directly needed API-boundary native tests new. Fields018 changed these owners; historical case observation is retained only at its original source boundary and is not alone current-source proof."
     },
     {
       "id": "WF11.P1.C03.POSITIVE",
@@ -26354,7 +26482,7 @@
           "Store approval or published official release"
         ]
       },
-      "implementation_note": "Whole RL01/WF11 qualification; exact P2 subsets folded with mappings in evidence/basic-platform-metrics-whole/folded-aliases.json. Existing valid native/compile/language receipts retained; only directly needed API-boundary native tests new."
+      "implementation_note": "Whole RL01/WF11 qualification; exact P2 subsets folded with mappings in evidence/basic-platform-metrics-whole/folded-aliases.json. Existing valid native/compile/language receipts retained; only directly needed API-boundary native tests new. Fields018 changed these owners; historical case observation is retained only at its original source boundary and is not alone current-source proof."
     },
     {
       "id": "WF11.P1.C03.NEGATIVE",
@@ -26417,7 +26545,7 @@
           "Store approval or published official release"
         ]
       },
-      "implementation_note": "Whole RL01/WF11 qualification; exact P2 subsets folded with mappings in evidence/basic-platform-metrics-whole/folded-aliases.json. Existing valid native/compile/language receipts retained; only directly needed API-boundary native tests new."
+      "implementation_note": "Whole RL01/WF11 qualification; exact P2 subsets folded with mappings in evidence/basic-platform-metrics-whole/folded-aliases.json. Existing valid native/compile/language receipts retained; only directly needed API-boundary native tests new. Fields018 changed these owners; historical case observation is retained only at its original source boundary and is not alone current-source proof."
     },
     {
       "id": "WF11.P1.C04.POSITIVE",
@@ -26480,7 +26608,7 @@
           "Store approval or published official release"
         ]
       },
-      "implementation_note": "Whole RL01/WF11 qualification; exact P2 subsets folded with mappings in evidence/basic-platform-metrics-whole/folded-aliases.json. Existing valid native/compile/language receipts retained; only directly needed API-boundary native tests new."
+      "implementation_note": "Whole RL01/WF11 qualification; exact P2 subsets folded with mappings in evidence/basic-platform-metrics-whole/folded-aliases.json. Existing valid native/compile/language receipts retained; only directly needed API-boundary native tests new. Fields018 changed these owners; historical case observation is retained only at its original source boundary and is not alone current-source proof."
     },
     {
       "id": "WF11.P1.C04.NEGATIVE",
@@ -26543,7 +26671,7 @@
           "Store approval or published official release"
         ]
       },
-      "implementation_note": "Whole RL01/WF11 qualification; exact P2 subsets folded with mappings in evidence/basic-platform-metrics-whole/folded-aliases.json. Existing valid native/compile/language receipts retained; only directly needed API-boundary native tests new."
+      "implementation_note": "Whole RL01/WF11 qualification; exact P2 subsets folded with mappings in evidence/basic-platform-metrics-whole/folded-aliases.json. Existing valid native/compile/language receipts retained; only directly needed API-boundary native tests new. Fields018 changed these owners; historical case observation is retained only at its original source boundary and is not alone current-source proof."
     },
     {
       "id": "LS03.P1.B01.POSITIVE",
@@ -29244,7 +29372,7 @@
       "property_id": "WF03.P1",
       "polarity": "positive",
       "scenario": "Configure fields",
-      "scenario_fingerprint": "87ff6c0af4570beb6a414a0a0cf90a8a073cdce23e1cb8660e97dcab55155bb2",
+      "scenario_fingerprint": "0c100ff6a012b45e75ce9ff9b88c5906003a7b1bc2f7068c997957e925400896",
       "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
       "observable": "Actual Properties persist four choices including duplicate calories; app callback changes only second position; ordinary six-role cycle retained.",
       "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
@@ -29314,7 +29442,7 @@
         ]
       },
       "source_sha256": "d95f43da334b9ffb0baa376e25a80f948b8310fd9cd11779be10edc0dc6aed74",
-      "implementation_note": "Public portability repair: original UI measurements remain at their original source epoch; current DISPLAY03/version14 inputs and named settings/geography/mode compositions are authenticated separately. See evidence/public-verification-port/case-map.json.",
+      "implementation_note": "Public portability repair: original UI measurements remain at their original source epoch; current DISPLAY03/version14 inputs and named settings/geography/mode compositions are authenticated separately. See evidence/public-verification-port/case-map.json. Fields018 changed these owners; historical case observation is retained only at its original source boundary and is not alone current-source proof.",
       "distinct_reason": "Configure fields: WF03.P1.S01.POSITIVE contributes its stated bounded clause; shared current batch/retained observations execute once and are not extra independent runs."
     },
     {
@@ -29322,7 +29450,7 @@
       "property_id": "WF03.P1",
       "polarity": "negative",
       "scenario": "Configure fields",
-      "scenario_fingerprint": "87ff6c0af4570beb6a414a0a0cf90a8a073cdce23e1cb8660e97dcab55155bb2",
+      "scenario_fingerprint": "0c100ff6a012b45e75ce9ff9b88c5906003a7b1bc2f7068c997957e925400896",
       "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
       "observable": "Only invalid second persisted field defaults toenergy while calories/battery/calories remain unchanged across reopen.",
       "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
@@ -29392,7 +29520,7 @@
         ]
       },
       "source_sha256": "d95f43da334b9ffb0baa376e25a80f948b8310fd9cd11779be10edc0dc6aed74",
-      "implementation_note": "Public portability repair: original UI measurements remain at their original source epoch; current DISPLAY03/version14 inputs and named settings/geography/mode compositions are authenticated separately. See evidence/public-verification-port/case-map.json.",
+      "implementation_note": "Public portability repair: original UI measurements remain at their original source epoch; current DISPLAY03/version14 inputs and named settings/geography/mode compositions are authenticated separately. See evidence/public-verification-port/case-map.json. Fields018 changed these owners; historical case observation is retained only at its original source boundary and is not alone current-source proof.",
       "distinct_reason": "Configure fields: WF03.P1.S01.NEGATIVE contributes its stated bounded clause; shared current batch/retained observations execute once and are not extra independent runs."
     },
     {
@@ -29400,7 +29528,7 @@
       "property_id": "WF03.P1",
       "polarity": "positive",
       "scenario": "Health data unavailable",
-      "scenario_fingerprint": "7b5b3268cc24c98f5677806a6a1f09ad53b0c29f13e40f602bed556df109a885",
+      "scenario_fingerprint": "941df7a5c143251edb9a2b7059daa577063fb3683b70bdee578fba32d43c931f",
       "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
       "observable": "Actual Garmin API adapter smoke remains callable; controlled null sample shows unavailable for selected missing roles while steps and local time continue.",
       "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
@@ -29470,7 +29598,7 @@
         ]
       },
       "source_sha256": "d95f43da334b9ffb0baa376e25a80f948b8310fd9cd11779be10edc0dc6aed74",
-      "implementation_note": "Public portability repair: original UI measurements remain at their original source epoch; current DISPLAY03/version14 inputs and named settings/geography/mode compositions are authenticated separately. See evidence/public-verification-port/case-map.json.",
+      "implementation_note": "Public portability repair: original UI measurements remain at their original source epoch; current DISPLAY03/version14 inputs and named settings/geography/mode compositions are authenticated separately. See evidence/public-verification-port/case-map.json. Fields018 changed these owners; historical case observation is retained only at its original source boundary and is not alone current-source proof.",
       "distinct_reason": "Health data unavailable: WF03.P1.S02.POSITIVE contributes its stated bounded clause; shared current batch/retained observations execute once and are not extra independent runs."
     },
     {
@@ -29478,7 +29606,7 @@
       "property_id": "WF03.P1",
       "polarity": "negative",
       "scenario": "Health data unavailable",
-      "scenario_fingerprint": "7b5b3268cc24c98f5677806a6a1f09ad53b0c29f13e40f602bed556df109a885",
+      "scenario_fingerprint": "941df7a5c143251edb9a2b7059daa577063fb3683b70bdee578fba32d43c931f",
       "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
       "observable": "Actual view refresh discards former72/68 samples; no invented zero,301-second/future samples unavailable; valid stepszero remainszero.",
       "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
@@ -29548,7 +29676,7 @@
         ]
       },
       "source_sha256": "d95f43da334b9ffb0baa376e25a80f948b8310fd9cd11779be10edc0dc6aed74",
-      "implementation_note": "Public portability repair: original UI measurements remain at their original source epoch; current DISPLAY03/version14 inputs and named settings/geography/mode compositions are authenticated separately. See evidence/public-verification-port/case-map.json.",
+      "implementation_note": "Public portability repair: original UI measurements remain at their original source epoch; current DISPLAY03/version14 inputs and named settings/geography/mode compositions are authenticated separately. See evidence/public-verification-port/case-map.json. Fields018 changed these owners; historical case observation is retained only at its original source boundary and is not alone current-source proof.",
       "distinct_reason": "Health data unavailable: WF03.P1.S02.NEGATIVE contributes its stated bounded clause; shared current batch/retained observations execute once and are not extra independent runs."
     },
     {
@@ -29556,7 +29684,7 @@
       "property_id": "WF03.P1",
       "polarity": "positive",
       "scenario": "Select watch battery",
-      "scenario_fingerprint": "adf861f50ba8a809f7be7ebdb4a972ed17e63ee55fc7a5fc6cb58831ca807514",
+      "scenario_fingerprint": "34ebd2fbca2f4ca47dae1ce796e9c9ac2157c66d62671a1532e71432203e2180",
       "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
       "observable": "Selected watch battery reports charge distinctly from Body Battery without an additional top battery indicator.",
       "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
@@ -29625,7 +29753,7 @@
           "Live provider/geographic truth/Store/release acceptance"
         ]
       },
-      "implementation_note": "Public portability repair: original UI measurements remain at their original source epoch; current DISPLAY03/version14 inputs and named settings/geography/mode compositions are authenticated separately. See evidence/public-verification-port/case-map.json.",
+      "implementation_note": "Public portability repair: original UI measurements remain at their original source epoch; current DISPLAY03/version14 inputs and named settings/geography/mode compositions are authenticated separately. See evidence/public-verification-port/case-map.json. Fields018 changed these owners; historical case observation is retained only at its original source boundary and is not alone current-source proof.",
       "source_sha256": "d95f43da334b9ffb0baa376e25a80f948b8310fd9cd11779be10edc0dc6aed74",
       "supersession_note": "Original title and cases preserved in evidence/current-native-ui-whole/retired-battery-scenario-name.json; selected-slot and AOD semantics unchanged.",
       "distinct_reason": "Select watch battery: WF03.P1.S03.POSITIVE contributes its stated bounded clause; shared current batch/retained observations execute once and are not extra independent runs."
@@ -29635,7 +29763,7 @@
       "property_id": "WF03.P1",
       "polarity": "negative",
       "scenario": "Select watch battery",
-      "scenario_fingerprint": "adf861f50ba8a809f7be7ebdb4a972ed17e63ee55fc7a5fc6cb58831ca807514",
+      "scenario_fingerprint": "34ebd2fbca2f4ca47dae1ce796e9c9ac2157c66d62671a1532e71432203e2180",
       "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
       "observable": "Unavailable watch battery does not borrow Body Battery or invent a charge value.",
       "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
@@ -29704,7 +29832,7 @@
           "Live provider/geographic truth/Store/release acceptance"
         ]
       },
-      "implementation_note": "Public portability repair: original UI measurements remain at their original source epoch; current DISPLAY03/version14 inputs and named settings/geography/mode compositions are authenticated separately. See evidence/public-verification-port/case-map.json.",
+      "implementation_note": "Public portability repair: original UI measurements remain at their original source epoch; current DISPLAY03/version14 inputs and named settings/geography/mode compositions are authenticated separately. See evidence/public-verification-port/case-map.json. Fields018 changed these owners; historical case observation is retained only at its original source boundary and is not alone current-source proof.",
       "source_sha256": "d95f43da334b9ffb0baa376e25a80f948b8310fd9cd11779be10edc0dc6aed74",
       "supersession_note": "Original title and cases preserved in evidence/current-native-ui-whole/retired-battery-scenario-name.json; selected-slot and AOD semantics unchanged.",
       "distinct_reason": "Select watch battery: WF03.P1.S03.NEGATIVE contributes its stated bounded clause; shared current batch/retained observations execute once and are not extra independent runs."
@@ -38293,6 +38421,510 @@
       "planning_note": "Future exact test identity, not an existing or observed test. Promote only after actual source/command/oracle implementation and independent review.",
       "prerequisite": "No attached FR165; actual phone/hardware observations not available.",
       "distinct_reason": "Preserved former WF09.P4 wrist-disabled case under its physical WF09.P1 parent; same physical scenario and planned device witness as WF09.P1.S02."
+    },
+    {
+      "id": "WF20.P1.S01.POSITIVE",
+      "property_id": "WF20.P1",
+      "polarity": "positive",
+      "scenario": "A new source becomes available",
+      "scenario_fingerprint": "33a6f6587781b0c9ff6905215a05b3c73bb0208cd0cbce5b987667ace7be5449",
+      "setup": "Read the exact current fields018 simulator receipt, compiled test-program hash and native assertion source; no Simulator is launched by this observer.",
+      "observable": "discovery new type",
+      "red_expectation": "A missing native execution, mismatched source/program, failing framework table or absent named assertion fails this edge.",
+      "green_expectation": "The named native assertion is bound to a passing SDK framework execution at its stated simulator boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/FieldSources.mc",
+        "watchface/source/FieldText.mc",
+        "watchface/source/SceneSettings.mc",
+        "watchface/source/SpaceFoxView.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "watchface/fields018-extra-tests/EmptySelection.mc",
+        "tools/fields018_native_probe.py",
+        "tools/fields018_extra_probe.py",
+        "tests/test_fields018_graph_receipts.py",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr165/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr170/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-empty/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-red/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-green/**"
+      ],
+      "test_id": "unittest::tests.test_fields018_graph_receipts.Fields018GraphReceipts.test_discovery_new_type",
+      "command_id": "fields018-graph-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_fields018_graph_receipts.py",
+      "source_sha256": "4b5181c96e616326220776eba2e2fafd563be24c9ee6fc84916d8215029755e8",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical watch and paired phone by pinned Garmin simulator; unavailable provider injected only through the documented test adapter.",
+        "allowed_proof": "The named native assertion and its recorded simulator outcome; paired graph edges may reference the same underlying native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical device acceptance",
+          "Real third-party provider lifecycle or paired-phone UI acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; does not turn one native batch into multiple independent executions."
+    },
+    {
+      "id": "WF20.P1.S01.NEGATIVE",
+      "property_id": "WF20.P1",
+      "polarity": "negative",
+      "scenario": "A new source becomes available",
+      "scenario_fingerprint": "33a6f6587781b0c9ff6905215a05b3c73bb0208cd0cbce5b987667ace7be5449",
+      "setup": "Read the exact current fields018 simulator receipt, compiled test-program hash and native assertion source; no Simulator is launched by this observer.",
+      "observable": "discovery all actual ids",
+      "red_expectation": "A missing native execution, mismatched source/program, failing framework table or absent named assertion fails this edge.",
+      "green_expectation": "The named native assertion is bound to a passing SDK framework execution at its stated simulator boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/FieldSources.mc",
+        "watchface/source/FieldText.mc",
+        "watchface/source/SceneSettings.mc",
+        "watchface/source/SpaceFoxView.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "watchface/fields018-extra-tests/EmptySelection.mc",
+        "tools/fields018_native_probe.py",
+        "tools/fields018_extra_probe.py",
+        "tests/test_fields018_graph_receipts.py",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr165/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr170/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-empty/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-red/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-green/**"
+      ],
+      "test_id": "unittest::tests.test_fields018_graph_receipts.Fields018GraphReceipts.test_discovery_all_actual_ids",
+      "command_id": "fields018-graph-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_fields018_graph_receipts.py",
+      "source_sha256": "4b5181c96e616326220776eba2e2fafd563be24c9ee6fc84916d8215029755e8",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical watch and paired phone by pinned Garmin simulator; unavailable provider injected only through the documented test adapter.",
+        "allowed_proof": "The named native assertion and its recorded simulator outcome; paired graph edges may reference the same underlying native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical device acceptance",
+          "Real third-party provider lifecycle or paired-phone UI acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; does not turn one native batch into multiple independent executions."
+    },
+    {
+      "id": "WF20.P1.S02.POSITIVE",
+      "property_id": "WF20.P1",
+      "polarity": "positive",
+      "scenario": "A reading is temporarily empty",
+      "scenario_fingerprint": "251010f7026c488371029cc6de04b897bd52dbd3d22d20a32a018ac4b1cea006",
+      "setup": "Read the exact current fields018 simulator receipt, compiled test-program hash and native assertion source; no Simulator is launched by this observer.",
+      "observable": "empty capability selectable",
+      "red_expectation": "A missing native execution, mismatched source/program, failing framework table or absent named assertion fails this edge.",
+      "green_expectation": "The named native assertion is bound to a passing SDK framework execution at its stated simulator boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/FieldSources.mc",
+        "watchface/source/FieldText.mc",
+        "watchface/source/SceneSettings.mc",
+        "watchface/source/SpaceFoxView.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "watchface/fields018-extra-tests/EmptySelection.mc",
+        "tools/fields018_native_probe.py",
+        "tools/fields018_extra_probe.py",
+        "tests/test_fields018_graph_receipts.py",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr165/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr170/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-empty/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-red/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-green/**"
+      ],
+      "test_id": "unittest::tests.test_fields018_graph_receipts.Fields018GraphReceipts.test_empty_capability_selectable",
+      "command_id": "fields018-graph-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_fields018_graph_receipts.py",
+      "source_sha256": "4b5181c96e616326220776eba2e2fafd563be24c9ee6fc84916d8215029755e8",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical watch and paired phone by pinned Garmin simulator; unavailable provider injected only through the documented test adapter.",
+        "allowed_proof": "The named native assertion and its recorded simulator outcome; paired graph edges may reference the same underlying native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical device acceptance",
+          "Real third-party provider lifecycle or paired-phone UI acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; does not turn one native batch into multiple independent executions."
+    },
+    {
+      "id": "WF20.P1.S02.NEGATIVE",
+      "property_id": "WF20.P1",
+      "polarity": "negative",
+      "scenario": "A reading is temporarily empty",
+      "scenario_fingerprint": "251010f7026c488371029cc6de04b897bd52dbd3d22d20a32a018ac4b1cea006",
+      "setup": "Read the exact current fields018 simulator receipt, compiled test-program hash and native assertion source; no Simulator is launched by this observer.",
+      "observable": "empty reading dash",
+      "red_expectation": "A missing native execution, mismatched source/program, failing framework table or absent named assertion fails this edge.",
+      "green_expectation": "The named native assertion is bound to a passing SDK framework execution at its stated simulator boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/FieldSources.mc",
+        "watchface/source/FieldText.mc",
+        "watchface/source/SceneSettings.mc",
+        "watchface/source/SpaceFoxView.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "watchface/fields018-extra-tests/EmptySelection.mc",
+        "tools/fields018_native_probe.py",
+        "tools/fields018_extra_probe.py",
+        "tests/test_fields018_graph_receipts.py",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr165/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr170/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-empty/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-red/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-green/**"
+      ],
+      "test_id": "unittest::tests.test_fields018_graph_receipts.Fields018GraphReceipts.test_empty_reading_dash",
+      "command_id": "fields018-graph-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_fields018_graph_receipts.py",
+      "source_sha256": "4b5181c96e616326220776eba2e2fafd563be24c9ee6fc84916d8215029755e8",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical watch and paired phone by pinned Garmin simulator; unavailable provider injected only through the documented test adapter.",
+        "allowed_proof": "The named native assertion and its recorded simulator outcome; paired graph edges may reference the same underlying native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical device acceptance",
+          "Real third-party provider lifecycle or paired-phone UI acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; does not turn one native batch into multiple independent executions."
+    },
+    {
+      "id": "WF21.P1.S01.POSITIVE",
+      "property_id": "WF21.P1",
+      "polarity": "positive",
+      "scenario": "A provider disappears and returns",
+      "scenario_fingerprint": "8baec930aaf38734fc2323facb2ca04251fcd13767d6da6477a42fe61226bca4",
+      "setup": "Read the exact current fields018 simulator receipt, compiled test-program hash and native assertion source; no Simulator is launched by this observer.",
+      "observable": "provider recovers identity",
+      "red_expectation": "A missing native execution, mismatched source/program, failing framework table or absent named assertion fails this edge.",
+      "green_expectation": "The named native assertion is bound to a passing SDK framework execution at its stated simulator boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/FieldSources.mc",
+        "watchface/source/FieldText.mc",
+        "watchface/source/SceneSettings.mc",
+        "watchface/source/SpaceFoxView.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "watchface/fields018-extra-tests/EmptySelection.mc",
+        "tools/fields018_native_probe.py",
+        "tools/fields018_extra_probe.py",
+        "tests/test_fields018_graph_receipts.py",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr165/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr170/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-empty/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-red/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-green/**"
+      ],
+      "test_id": "unittest::tests.test_fields018_graph_receipts.Fields018GraphReceipts.test_provider_recovers_identity",
+      "command_id": "fields018-graph-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_fields018_graph_receipts.py",
+      "source_sha256": "4b5181c96e616326220776eba2e2fafd563be24c9ee6fc84916d8215029755e8",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical watch and paired phone by pinned Garmin simulator; unavailable provider injected only through the documented test adapter.",
+        "allowed_proof": "The named native assertion and its recorded simulator outcome; paired graph edges may reference the same underlying native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical device acceptance",
+          "Real third-party provider lifecycle or paired-phone UI acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; does not turn one native batch into multiple independent executions."
+    },
+    {
+      "id": "WF21.P1.S01.NEGATIVE",
+      "property_id": "WF21.P1",
+      "polarity": "negative",
+      "scenario": "A provider disappears and returns",
+      "scenario_fingerprint": "8baec930aaf38734fc2323facb2ca04251fcd13767d6da6477a42fe61226bca4",
+      "setup": "Read the exact current fields018 simulator receipt, compiled test-program hash and native assertion source; no Simulator is launched by this observer.",
+      "observable": "provider missing retains identity",
+      "red_expectation": "A missing native execution, mismatched source/program, failing framework table or absent named assertion fails this edge.",
+      "green_expectation": "The named native assertion is bound to a passing SDK framework execution at its stated simulator boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/FieldSources.mc",
+        "watchface/source/FieldText.mc",
+        "watchface/source/SceneSettings.mc",
+        "watchface/source/SpaceFoxView.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "watchface/fields018-extra-tests/EmptySelection.mc",
+        "tools/fields018_native_probe.py",
+        "tools/fields018_extra_probe.py",
+        "tests/test_fields018_graph_receipts.py",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr165/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr170/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-empty/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-red/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-green/**"
+      ],
+      "test_id": "unittest::tests.test_fields018_graph_receipts.Fields018GraphReceipts.test_provider_missing_retains_identity",
+      "command_id": "fields018-graph-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_fields018_graph_receipts.py",
+      "source_sha256": "4b5181c96e616326220776eba2e2fafd563be24c9ee6fc84916d8215029755e8",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical watch and paired phone by pinned Garmin simulator; unavailable provider injected only through the documented test adapter.",
+        "allowed_proof": "The named native assertion and its recorded simulator outcome; paired graph edges may reference the same underlying native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical device acceptance",
+          "Real third-party provider lifecycle or paired-phone UI acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; does not turn one native batch into multiple independent executions."
+    },
+    {
+      "id": "WF21.P1.S02.POSITIVE",
+      "property_id": "WF21.P1",
+      "polarity": "positive",
+      "scenario": "A selection changes in one position",
+      "scenario_fingerprint": "ec702a164d40e5cd6893bf2077e29e3e4fb4a68aacef54d7928309a0cf996911",
+      "setup": "Read the exact current fields018 simulator receipt, compiled test-program hash and native assertion source; no Simulator is launched by this observer.",
+      "observable": "same slot new identity",
+      "red_expectation": "A missing native execution, mismatched source/program, failing framework table or absent named assertion fails this edge.",
+      "green_expectation": "The named native assertion is bound to a passing SDK framework execution at its stated simulator boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/FieldSources.mc",
+        "watchface/source/FieldText.mc",
+        "watchface/source/SceneSettings.mc",
+        "watchface/source/SpaceFoxView.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "watchface/fields018-extra-tests/EmptySelection.mc",
+        "tools/fields018_native_probe.py",
+        "tools/fields018_extra_probe.py",
+        "tests/test_fields018_graph_receipts.py",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr165/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr170/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-empty/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-red/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-green/**"
+      ],
+      "test_id": "unittest::tests.test_fields018_graph_receipts.Fields018GraphReceipts.test_same_slot_new_identity",
+      "command_id": "fields018-graph-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_fields018_graph_receipts.py",
+      "source_sha256": "4b5181c96e616326220776eba2e2fafd563be24c9ee6fc84916d8215029755e8",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical watch and paired phone by pinned Garmin simulator; unavailable provider injected only through the documented test adapter.",
+        "allowed_proof": "The named native assertion and its recorded simulator outcome; paired graph edges may reference the same underlying native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical device acceptance",
+          "Real third-party provider lifecycle or paired-phone UI acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; does not turn one native batch into multiple independent executions."
+    },
+    {
+      "id": "WF21.P1.S02.NEGATIVE",
+      "property_id": "WF21.P1",
+      "polarity": "negative",
+      "scenario": "A selection changes in one position",
+      "scenario_fingerprint": "ec702a164d40e5cd6893bf2077e29e3e4fb4a68aacef54d7928309a0cf996911",
+      "setup": "Read the exact current fields018 simulator receipt, compiled test-program hash and native assertion source; no Simulator is launched by this observer.",
+      "observable": "same slot old identity removed",
+      "red_expectation": "A missing native execution, mismatched source/program, failing framework table or absent named assertion fails this edge.",
+      "green_expectation": "The named native assertion is bound to a passing SDK framework execution at its stated simulator boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/FieldSources.mc",
+        "watchface/source/FieldText.mc",
+        "watchface/source/SceneSettings.mc",
+        "watchface/source/SpaceFoxView.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "watchface/fields018-extra-tests/EmptySelection.mc",
+        "tools/fields018_native_probe.py",
+        "tools/fields018_extra_probe.py",
+        "tests/test_fields018_graph_receipts.py",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr165/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr170/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-empty/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-red/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-green/**"
+      ],
+      "test_id": "unittest::tests.test_fields018_graph_receipts.Fields018GraphReceipts.test_same_slot_old_identity_removed",
+      "command_id": "fields018-graph-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_fields018_graph_receipts.py",
+      "source_sha256": "4b5181c96e616326220776eba2e2fafd563be24c9ee6fc84916d8215029755e8",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical watch and paired phone by pinned Garmin simulator; unavailable provider injected only through the documented test adapter.",
+        "allowed_proof": "The named native assertion and its recorded simulator outcome; paired graph edges may reference the same underlying native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical device acceptance",
+          "Real third-party provider lifecycle or paired-phone UI acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; does not turn one native batch into multiple independent executions."
+    },
+    {
+      "id": "WF22.P1.S01.POSITIVE",
+      "property_id": "WF22.P1",
+      "polarity": "positive",
+      "scenario": "Return to a watch-selected source",
+      "scenario_fingerprint": "6df2d254be20f9cf7f1196a8584ad35c7b3b1bec2c3a83231f0141a0afbc6266",
+      "setup": "Read the exact current fields018 simulator receipt, compiled test-program hash and native assertion source; no Simulator is launched by this observer.",
+      "observable": "phone roundtrip retains identity",
+      "red_expectation": "A missing native execution, mismatched source/program, failing framework table or absent named assertion fails this edge.",
+      "green_expectation": "The named native assertion is bound to a passing SDK framework execution at its stated simulator boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/FieldSources.mc",
+        "watchface/source/FieldText.mc",
+        "watchface/source/SceneSettings.mc",
+        "watchface/source/SpaceFoxView.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "watchface/fields018-extra-tests/EmptySelection.mc",
+        "tools/fields018_native_probe.py",
+        "tools/fields018_extra_probe.py",
+        "tests/test_fields018_graph_receipts.py",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr165/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr170/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-empty/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-red/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-green/**"
+      ],
+      "test_id": "unittest::tests.test_fields018_graph_receipts.Fields018GraphReceipts.test_phone_roundtrip_retains_identity",
+      "command_id": "fields018-graph-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_fields018_graph_receipts.py",
+      "source_sha256": "4b5181c96e616326220776eba2e2fafd563be24c9ee6fc84916d8215029755e8",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical watch and paired phone by pinned Garmin simulator; unavailable provider injected only through the documented test adapter.",
+        "allowed_proof": "The named native assertion and its recorded simulator outcome; paired graph edges may reference the same underlying native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical device acceptance",
+          "Real third-party provider lifecycle or paired-phone UI acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; does not turn one native batch into multiple independent executions."
+    },
+    {
+      "id": "WF22.P1.S01.NEGATIVE",
+      "property_id": "WF22.P1",
+      "polarity": "negative",
+      "scenario": "Return to a watch-selected source",
+      "scenario_fingerprint": "6df2d254be20f9cf7f1196a8584ad35c7b3b1bec2c3a83231f0141a0afbc6266",
+      "setup": "Read the exact current fields018 simulator receipt, compiled test-program hash and native assertion source; no Simulator is launched by this observer.",
+      "observable": "phone empty selection dash",
+      "red_expectation": "A missing native execution, mismatched source/program, failing framework table or absent named assertion fails this edge.",
+      "green_expectation": "The named native assertion is bound to a passing SDK framework execution at its stated simulator boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/FieldSources.mc",
+        "watchface/source/FieldText.mc",
+        "watchface/source/SceneSettings.mc",
+        "watchface/source/SpaceFoxView.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "watchface/fields018-extra-tests/EmptySelection.mc",
+        "tools/fields018_native_probe.py",
+        "tools/fields018_extra_probe.py",
+        "tests/test_fields018_graph_receipts.py",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr165/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr170/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-empty/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-red/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-green/**"
+      ],
+      "test_id": "unittest::tests.test_fields018_graph_receipts.Fields018GraphReceipts.test_phone_empty_selection_dash",
+      "command_id": "fields018-graph-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_fields018_graph_receipts.py",
+      "source_sha256": "4b5181c96e616326220776eba2e2fafd563be24c9ee6fc84916d8215029755e8",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical watch and paired phone by pinned Garmin simulator; unavailable provider injected only through the documented test adapter.",
+        "allowed_proof": "The named native assertion and its recorded simulator outcome; paired graph edges may reference the same underlying native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical device acceptance",
+          "Real third-party provider lifecycle or paired-phone UI acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; does not turn one native batch into multiple independent executions."
+    },
+    {
+      "id": "WF11.P2.S01.POSITIVE",
+      "property_id": "WF11.P2",
+      "polarity": "positive",
+      "scenario": "Body Battery is selected more than once",
+      "scenario_fingerprint": "7b562ce7d153777746be31980b50aa0b5f512113e95e8dfeeaee1dabeb633616",
+      "setup": "Read the exact current fields018 simulator receipt, compiled test-program hash and native assertion source; no Simulator is launched by this observer.",
+      "observable": "energy duplicates share subscription",
+      "red_expectation": "A missing native execution, mismatched source/program, failing framework table or absent named assertion fails this edge.",
+      "green_expectation": "The named native assertion is bound to a passing SDK framework execution at its stated simulator boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/FieldSources.mc",
+        "watchface/source/FieldText.mc",
+        "watchface/source/SceneSettings.mc",
+        "watchface/source/SpaceFoxView.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "watchface/fields018-extra-tests/EmptySelection.mc",
+        "tools/fields018_native_probe.py",
+        "tools/fields018_extra_probe.py",
+        "tests/test_fields018_graph_receipts.py",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr165/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr170/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-empty/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-red/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-green/**"
+      ],
+      "test_id": "unittest::tests.test_fields018_graph_receipts.Fields018GraphReceipts.test_energy_duplicates_share_subscription",
+      "command_id": "fields018-graph-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_fields018_graph_receipts.py",
+      "source_sha256": "4b5181c96e616326220776eba2e2fafd563be24c9ee6fc84916d8215029755e8",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical watch and paired phone by pinned Garmin simulator; unavailable provider injected only through the documented test adapter.",
+        "allowed_proof": "The named native assertion and its recorded simulator outcome; paired graph edges may reference the same underlying native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical device acceptance",
+          "Real third-party provider lifecycle or paired-phone UI acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; does not turn one native batch into multiple independent executions."
+    },
+    {
+      "id": "WF11.P2.S01.NEGATIVE",
+      "property_id": "WF11.P2",
+      "polarity": "negative",
+      "scenario": "Body Battery is selected more than once",
+      "scenario_fingerprint": "7b562ce7d153777746be31980b50aa0b5f512113e95e8dfeeaee1dabeb633616",
+      "setup": "Read the exact current fields018 simulator receipt, compiled test-program hash and native assertion source; no Simulator is launched by this observer.",
+      "observable": "energy stops when hidden",
+      "red_expectation": "A missing native execution, mismatched source/program, failing framework table or absent named assertion fails this edge.",
+      "green_expectation": "The named native assertion is bound to a passing SDK framework execution at its stated simulator boundary.",
+      "invalidation_dependencies": [
+        "watchface/source/FieldSources.mc",
+        "watchface/source/FieldText.mc",
+        "watchface/source/SceneSettings.mc",
+        "watchface/source/SpaceFoxView.mc",
+        "watchface/fields018-tests/Fields018Tests.mc",
+        "watchface/fields018-extra-tests/EmptySelection.mc",
+        "tools/fields018_native_probe.py",
+        "tools/fields018_extra_probe.py",
+        "tests/test_fields018_graph_receipts.py",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr165/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr170/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/peer-empty/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-red/**",
+        "openspec/changes/spacefox-watchface/evidence/fields018/display03-green/**"
+      ],
+      "test_id": "unittest::tests.test_fields018_graph_receipts.Fields018GraphReceipts.test_energy_stops_when_hidden",
+      "command_id": "fields018-graph-receipts",
+      "state": "implemented",
+      "source_path": "tests/test_fields018_graph_receipts.py",
+      "source_sha256": "4b5181c96e616326220776eba2e2fafd563be24c9ee6fc84916d8215029755e8",
+      "substitution": {
+        "classification": "EXTERNAL_BOUNDARY",
+        "owner_replaced": "Physical watch and paired phone by pinned Garmin simulator; unavailable provider injected only through the documented test adapter.",
+        "allowed_proof": "The named native assertion and its recorded simulator outcome; paired graph edges may reference the same underlying native execution.",
+        "forbidden_claims": [
+          "Independent native rerun or physical device acceptance",
+          "Real third-party provider lifecycle or paired-phone UI acceptance"
+        ]
+      },
+      "implementation_note": "Receipt observer only; does not turn one native batch into multiple independent executions."
     }
   ],
   "commands": [
@@ -43027,6 +43659,22 @@
       "timeout_seconds": 600,
       "authority": "local",
       "notes": "Explicit retained public case alias; original canonical proof/test method is shared. No independent observation is inferred."
+    },
+    {
+      "id": "fields018-graph-receipts",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_fields018_graph_receipts"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 120,
+      "authority": "local",
+      "notes": "Authenticates existing current fields018 SDK assertions and raw result tables; no simulator, provider or publication."
     }
   ]
 }

@@ -1,0 +1,45 @@
+{
+  "command": [
+    "/opt/homebrew/opt/openjdk@11/bin/java",
+    "-Dfile.encoding=UTF-8",
+    "-classpath",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+    "com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux",
+    "-f",
+    "/Users/jekamas/.codex/tmp/spacefox-fields018-freeze4-display/Display02Tests.prg",
+    "-d",
+    "fr165m",
+    "-s",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/shell",
+    "-t",
+    "display03BackgroundBeforeFrame",
+    "display03SameBatchJob",
+    "display03SameSceneRefreshKeepsJob",
+    "display03CurrentBodyBatteryLifecycle",
+    "display03LowDoesNotSample",
+    "display03LocaleResume"
+  ],
+  "rawExit": 1,
+  "tests": {
+    "status": "passed",
+    "raw_exit_code": 1,
+    "expected_tests": [
+      "display03BackgroundBeforeFrame",
+      "display03SameBatchJob",
+      "display03SameSceneRefreshKeepsJob",
+      "display03CurrentBodyBatteryLifecycle",
+      "display03LowDoesNotSample",
+      "display03LocaleResume"
+    ],
+    "observed_tests": {
+      "display03BackgroundBeforeFrame": "PASS",
+      "display03SameBatchJob": "PASS",
+      "display03SameSceneRefreshKeepsJob": "PASS",
+      "display03CurrentBodyBatteryLifecycle": "PASS",
+      "display03LowDoesNotSample": "PASS",
+      "display03LocaleResume": "PASS"
+    },
+    "observed_count": 6,
+    "launcher_nonzero_framework_pass": true
+  }
+}

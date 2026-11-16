@@ -1,0 +1,25 @@
+------------------------------------------------------------------------------
+Executing test display03ForegroundReloadDuringBuild...
+DEBUG (05:13): RELOAD_STAGE duplicate
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED: duplicate reload discarded scene job
+Stack: 
+  - API code 0x30000203 
+  - display03ForegroundReloadDuringBuild() at /Users/jekamas/projects/SpaceFox-worktrees/model-aware-fields018-20261116/watchface/display03-tests/Display03Sequence.mc:177 0x10002e24 
+  - evaluate_test_entries_0_to_25() at /Users/jekamas/.codex/tmp/spacefox-fields018-final-display03-redfix/gen/006-B4433-00/source/UnitTests.mcgen:91 0x10009ef4 
+  - runTest() at /Users/jekamas/.codex/tmp/spacefox-fields018-final-display03-redfix/gen/006-B4433-00/source/UnitTests.mcgen:138 0x1000a100 
+ERROR
+------------------------------------------------------------------------------
+Executing test display03CurrentBodyBatteryLifecycle...
+DEBUG (05:13): BODY_CURRENT unifiedOwner=true callbackNullAndZero=true lowNoRead=true wakeAfterFrame=true deselectionUnsubscribes=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                                Status:
+display03ForegroundReloadDuringBuild ERROR
+display03CurrentBodyBatteryLifecycle PASS
+Ran 2 tests
+
+FAILED (passed=1, failed=0, errors=1)

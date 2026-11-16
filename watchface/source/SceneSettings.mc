@@ -19,6 +19,7 @@ class SceneSettings {
             var key = "Field" + (i+1);
             var assigned = values[key];
             if(assigned instanceof Number && assigned>=0 && assigned<6){slots[i]=["steps","energy","heart","stress","calories","battery"][assigned];}
+            else if(assigned instanceof Number && assigned==6){slots[i]="custom"+(i+1);}
             else if (validRole(assigned)) { slots[i] = assigned as String; }
         }
         clockColor=color(values["ClockColor"],0);

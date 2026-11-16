@@ -1,0 +1,112 @@
+{
+  "status": "passed",
+  "scope": "selected field requirement/scenario fingerprint and mapping presence; not full authoritative graph",
+  "requirements": {
+    "WF22": {
+      "requirementFingerprintMatches": true,
+      "scenarios": {
+        "Return to a watch-selected source": {
+          "count": 2,
+          "polarities": [
+            "negative",
+            "positive"
+          ],
+          "fingerprintsMatch": true
+        }
+      }
+    },
+    "WF21": {
+      "requirementFingerprintMatches": true,
+      "scenarios": {
+        "A provider disappears and returns": {
+          "count": 2,
+          "polarities": [
+            "negative",
+            "positive"
+          ],
+          "fingerprintsMatch": true
+        },
+        "A selection changes in one position": {
+          "count": 2,
+          "polarities": [
+            "negative",
+            "positive"
+          ],
+          "fingerprintsMatch": true
+        }
+      }
+    },
+    "WF20": {
+      "requirementFingerprintMatches": true,
+      "scenarios": {
+        "A new source becomes available": {
+          "count": 2,
+          "polarities": [
+            "negative",
+            "positive"
+          ],
+          "fingerprintsMatch": true
+        },
+        "A reading is temporarily empty": {
+          "count": 2,
+          "polarities": [
+            "negative",
+            "positive"
+          ],
+          "fingerprintsMatch": true
+        }
+      }
+    },
+    "WF11": {
+      "requirementFingerprintMatches": true,
+      "scenarios": {
+        "Body Battery is selected more than once": {
+          "count": 2,
+          "polarities": [
+            "negative",
+            "positive"
+          ],
+          "fingerprintsMatch": true
+        },
+        "A selected history metric is unavailable": {
+          "count": 8,
+          "polarities": [
+            "negative",
+            "positive"
+          ],
+          "fingerprintsMatch": true
+        }
+      }
+    },
+    "WF03": {
+      "requirementFingerprintMatches": true,
+      "scenarios": {
+        "Configure fields": {
+          "count": 2,
+          "polarities": [
+            "negative",
+            "positive"
+          ],
+          "fingerprintsMatch": true
+        },
+        "Health data unavailable": {
+          "count": 2,
+          "polarities": [
+            "negative",
+            "positive"
+          ],
+          "fingerprintsMatch": true
+        },
+        "Select watch battery": {
+          "count": 2,
+          "polarities": [
+            "negative",
+            "positive"
+          ],
+          "fingerprintsMatch": true
+        }
+      }
+    }
+  },
+  "errors": []
+}

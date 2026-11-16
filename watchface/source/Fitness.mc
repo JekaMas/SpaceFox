@@ -8,6 +8,7 @@ class Fitness {
     // Null means the unfiltered adapter, used by direct API diagnostics.
     var selectedRoles as Array<String> or Null = null;
     var currentBodyBattery as Number or Null = null;
+    var selectedFields as SelectedFields or Null = null;
     function initialize() {}
     function requested(role as String) as Boolean {return selectedRoles==null || (selectedRoles as Array<String>).indexOf(role)>=0;}
     // Only finite nonnegative real Garmin data, no fixtures/default health.
@@ -50,7 +51,10 @@ class Fitness {
         }
         return values;
     }
+    (:typecheck(false)) function fieldIcon(role as String) {return selectedFields==null?null:(selectedFields as SelectedFields).icon(role);}
+    function fieldLabel(role as String) as String {return selectedFields==null?"":(selectedFields as SelectedFields).label(role);}
     function display(values as Dictionary<String, Number or Null>, role as String) as String {
+        if(role.find("custom")==0 && selectedFields!=null){return (selectedFields as SelectedFields).display(role);}
         var value = values[role];
         if (value == null) { return "—"; }
         var text = value.toString();

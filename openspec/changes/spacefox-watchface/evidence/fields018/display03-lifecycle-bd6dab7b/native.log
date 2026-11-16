@@ -1,0 +1,65 @@
+------------------------------------------------------------------------------
+Executing test display03RepeatedLowCallbacks...
+DEBUG (06:54): LOW_CALLBACKS 60 same-minute callbacks one paint; next minute second paint
+PASS
+------------------------------------------------------------------------------
+Executing test display03SleepThenHighObservation...
+DEBUG (06:54): SLEEP_QUERY_HIGH active=0 low=1 mode=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03WakeThenLowObservation...
+DEBUG (06:54): WAKE_QUERY_LOW active=0 low=1 mode=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03CausalSequence...
+DEBUG (06:54): D03_SEQUENCE seed=1 events=30 required_dispositions=12 skipped=0
+DEBUG (06:54): D03_SEQUENCE seed=2 events=30 required_dispositions=12 skipped=0
+DEBUG (06:54): D03_SEQUENCE seed=3 events=30 required_dispositions=12 skipped=0
+DEBUG (06:54): D03_SEQUENCE seed=4 events=30 required_dispositions=12 skipped=0
+DEBUG (06:54): D03_SEQUENCE seed=5 events=30 required_dispositions=12 skipped=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03ReadyAndErrorOnWake...
+DEBUG (06:54): READY_ERROR sleep accepted_target retained rejected_old no_load_until_first_active_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03FailedSameDigestRetry...
+DEBUG (06:54): FAILED_RETRY realTransientSelectionRead=true sameSerialNoSpin=true newSerialBuild=true staleCompletionRejected=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03WarmAodResources...
+DEBUG (06:54): WARM_AOD drawLoads=0 wakeReloads=0 duplicatePrepareLoads=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03MetricRolesAndAge...
+DEBUG (06:54): METRIC_ROLE duplicate=one historyAgeBound=unchanged energy=currentComplication absent=unavailable fresh=restored
+PASS
+------------------------------------------------------------------------------
+Executing test display03OffStopsWork...
+DEBUG (06:54): OFF noPaintOrSampling=true cancelOnce=true highFirstFrameBeforeSampling=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03ForegroundReloadDuringBuild...
+DEBUG (06:54): RELOAD_STAGE duplicate
+DEBUG (06:54): RELOAD_STAGE moved
+DEBUG (06:54): RELOAD_STAGE reject
+DEBUG (06:54): RELOAD_STAGE restore
+DEBUG (06:54): FOREGROUND_RELOAD duplicateJobRetained=true duplicateWrites=0 movedTargetVisible=true oldCompletionRejected=true rejectedRetainsTarget=true elapsedMs=123 appUsedBefore=162984 appUsedAfter=177392 appTotal=8383928
+PASS
+
+==============================================================================
+RESULTS
+Test:                                Status:
+display03RepeatedLowCallbacks        PASS
+display03SleepThenHighObservation    PASS
+display03WakeThenLowObservation      PASS
+display03CausalSequence              PASS
+display03ReadyAndErrorOnWake         PASS
+display03FailedSameDigestRetry       PASS
+display03WarmAodResources            PASS
+display03MetricRolesAndAge           PASS
+display03OffStopsWork                PASS
+display03ForegroundReloadDuringBuild PASS
+Ran 10 tests
+
+PASSED (passed=10, failed=0, errors=0)

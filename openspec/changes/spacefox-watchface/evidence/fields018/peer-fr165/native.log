@@ -1,0 +1,45 @@
+------------------------------------------------------------------------------
+Executing test fields018Format...
+DEBUG (07:12): FORMAT time, duration, pressure, signed, strings, type42, units, weather, null
+PASS
+------------------------------------------------------------------------------
+Executing test fields018Settings...
+DEBUG (07:12): SETTINGS legacy identities, custom slot and invalid defaults
+PASS
+------------------------------------------------------------------------------
+Executing test fields018NativeInventoryAndPersistence...
+DEBUG (07:12): INVENTORY actual=40 catalog=56 duplicates=4 subscriptions<=1 storedId=yes stop=yes
+PASS
+------------------------------------------------------------------------------
+Executing test fields018RenderRealSource...
+DEBUG (07:12): RENDER locale=en provider=FLRS value=0 fields=4 bounds=true numericMetric=true
+DEBUG (07:12): RENDER locale=ru provider=FLRS value=0 fields=4 bounds=true numericMetric=true
+PASS
+------------------------------------------------------------------------------
+Executing test fields018PrimaryLabels...
+DEBUG (07:12): PRIMARY labels locales=5 activity=21
+PASS
+------------------------------------------------------------------------------
+Executing test fields018SameSlotReplacement...
+DEBUG (07:12): SAME_SLOT property=6 unchanged=true source=A->B immediate=true lowStopped=true
+PASS
+------------------------------------------------------------------------------
+Executing test fields018CapabilityInventory...
+DEBUG (07:12): ACTIVITY_KEYS [distance, stepGoal, floorsClimbedGoal, floorsDescended, metersClimbed, metersDescended, moveBarLevel, activeMinutesWeekGoal, activeMinutesDayTotal, activeMinutesDayModerate, activeMinutesDayVigorous, activeMinutesWeekModerate, activeMinutesWeekVigorous, stressScore]
+DEBUG (07:12): SYSTEM_KEYS [system:batteryInDays, system:charging]
+DEBUG (07:12): CAPABILITY native=40 paged=40 activity=14 system=2 availableNullSelectable=true solarNullUnsupported=true solarNegativeSupported=true type42=false
+PASS
+
+==============================================================================
+RESULTS
+Test:                                  Status:
+fields018Format                        PASS
+fields018Settings                      PASS
+fields018NativeInventoryAndPersistence PASS
+fields018RenderRealSource              PASS
+fields018PrimaryLabels                 PASS
+fields018SameSlotReplacement           PASS
+fields018CapabilityInventory           PASS
+Ran 7 tests
+
+PASSED (passed=7, failed=0, errors=0)
