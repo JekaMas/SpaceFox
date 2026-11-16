@@ -93,7 +93,7 @@ jobs:
     needs: prepare
     if: needs.prepare.outputs.pending == 'true'
     runs-on: ubuntu-24.04
-    timeout-minutes: 3
+    timeout-minutes: 8
     permissions:
       contents: write
     outputs:
