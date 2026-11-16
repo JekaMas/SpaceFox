@@ -130,3 +130,5 @@ actual pixel clipping/overlap bounds, redundant work, memory/performance behavio
 one Astra spec/test/process review and the expressly requested full final test
 runs. See evidence/display04-whole-quality/PLAN.md. This adds no numbered task or
 new physical prerequisite; the existing external gates remain truthful.
+
+Fields018 software iteration (existing tasks 2.3, 5.1, 5.4, 7.2 and 7.3): source-bound simulator discovery, formatting, lifecycle, five-primary-locale admission and production-identity release-flag 390/454 stock observations are verified as recorded in [the independent iteration report](evidence/fields018/INDEPENDENT.md). Existing physical FR165, paired-phone, Store submission/review and Store-installation acceptance remain open in their respective tasks; this software closure does not close those tasks.

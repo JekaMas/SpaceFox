@@ -1,0 +1,46 @@
+{
+  "rawExit": 1,
+  "tests": {
+    "status": "passed",
+    "raw_exit_code": 1,
+    "expected_tests": [
+      "display03BackgroundBeforeFrame",
+      "display03SameBatchJob",
+      "display03SameSceneRefreshKeepsJob",
+      "display03CurrentBodyBatteryLifecycle",
+      "display03LowDoesNotSample",
+      "display03LocaleResume"
+    ],
+    "observed_tests": {
+      "display03BackgroundBeforeFrame": "PASS",
+      "display03SameBatchJob": "PASS",
+      "display03SameSceneRefreshKeepsJob": "PASS",
+      "display03CurrentBodyBatteryLifecycle": "PASS",
+      "display03LowDoesNotSample": "PASS",
+      "display03LocaleResume": "PASS"
+    },
+    "observed_count": 6,
+    "launcher_nonzero_framework_pass": true
+  },
+  "launchCommand": [
+    "/opt/homebrew/Cellar/openjdk@11/11.0.21/libexec/openjdk.jdk/Contents/Home/bin/java",
+    "-Dfile.encoding=UTF-8",
+    "-classpath",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+    "com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux",
+    "-f",
+    "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/Display02Tests.prg",
+    "-d",
+    "fr165m",
+    "-s",
+    "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/shell",
+    "-t",
+    "display03BackgroundBeforeFrame",
+    "display03SameBatchJob",
+    "display03SameSceneRefreshKeepsJob",
+    "display03CurrentBodyBatteryLifecycle",
+    "display03LowDoesNotSample",
+    "display03LocaleResume"
+  ],
+  "packageSha256": "32553f00e334c67d1a75474048196c4300f617e7676f69dd17f01e7fc351ad52"
+}

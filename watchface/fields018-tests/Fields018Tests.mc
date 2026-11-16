@@ -64,7 +64,7 @@ function fields018NativeInventoryAndPersistence(logger){
     var items=[];var offset=0;var page=FieldCatalog.page("en",offset);
     while(true){Test.assert(page.entries.size()<=6);for(var n=0;n<page.entries.size();n+=1){items.add(page.entries[n][1]);}if(!page.more){break;}offset+=6;Test.assert(offset<600);page=FieldCatalog.page("en",offset);}
     var id=null;var actual=Complications.getComplications();var item=actual.next();var count=0;var expected=0;
-    while(item!=null){Test.assert(item instanceof Complications.Complication);if(item.complicationId!=null){count+=1;if(id==null){id=item.complicationId;}var kind=item.getType();if(kind!=1&&kind!=2&&kind!=3&&kind!=23){expected+=1;var found=false;for(var n=0;n<items.size();n+=1){if(items[n] instanceof Complications.Id&&items[n].equals(item.complicationId)){found=true;break;}}Test.assert(found);}}item=actual.next();}
+    while(item!=null){Test.assert(item instanceof Complications.Complication);if(item.complicationId!=null){count+=1;if(id==null){id=item.complicationId;}expected+=1;var found=false;for(var n=0;n<items.size();n+=1){if(items[n] instanceof Complications.Id&&items[n].equals(item.complicationId)){found=true;break;}}Test.assert(found);}item=actual.next();}
     Test.assert(count>0&&id!=null&&items.size()>=expected);
     for(var slot=1;slot<=4;slot+=1){Application.Storage.setValue("sf.field"+slot,id);Test.assert(FieldCatalog.saved(slot).equals(id));}
     var f=new SelectedFields();var cb=new FieldCallback();f.start(["custom1","custom2","custom3","custom4"],cb.method(:changed));
@@ -162,12 +162,11 @@ function fields018SameSlotReplacement(logger){
 function fields018CapabilityInventory(logger){
     var visible=[];var offset=0;var page=FieldCatalog.page("en",0);
     while(true){for(var i=0;i<page.entries.size();i+=1){visible.add(page.entries[i][1]);}if(!page.more){break;}offset+=6;page=FieldCatalog.page("en",offset);}
-    var it=Complications.getComplications();var item=it.next();var types=[];var nativeCount=0;var mapped=0;var paged=0;var late=false;
+    var it=Complications.getComplications();var item=it.next();var types=[];var nativeCount=0;var paged=0;var late=false;
     while(item!=null){var id=item.complicationId;var kind=item.getType();if(id!=null){nativeCount+=1;types.add(kind);
-        if(kind==1||kind==2||kind==3||kind==23){var role=kind==1?5:kind==2?0:kind==3?4:1;var expected=kind==1?"battery":kind==2?"steps":kind==3?"calories":"energy";var config=new SceneSettings({"Field1"=>role});Test.assert(config.slots[0].equals(expected)&&id.equals(new Complications.Id(kind)));mapped+=1;}
-        else{var found=false;for(var i=0;i<visible.size();i+=1){if(visible[i] instanceof Complications.Id&&id.equals(visible[i])){found=true;break;}}Test.assert(found);paged+=1;if(kind==42){late=true;}}
+        var found=false;for(var i=0;i<visible.size();i+=1){if(visible[i] instanceof Complications.Id&&id.equals(visible[i])){found=true;break;}}Test.assert(found);paged+=1;if(kind==42){late=true;}
     }item=it.next();}
-    Test.assert(nativeCount==mapped+paged);
+    Test.assert(nativeCount==paged);
     var info=ActivityMonitor.getInfo();var keys=FieldCatalog.activityKeys();var activityCount=0;var activityNames=[];
     if(info!=null){for(var i=0;i<keys.size();i+=1){var key=keys[i];var duplicate=(key.equals("activeMinutesWeekTotal")&&types.indexOf(5)>=0)||(key.equals("floorsClimbed")&&types.indexOf(4)>=0)||(key.equals("pushes")&&types.indexOf(40)>=0)||(key.equals("timeToRecovery")&&types.indexOf(21)>=0)||(key.equals("respirationRate")&&types.indexOf(36)>=0);var expected=FieldsCapabilityOracle.activity(info,key)&&!duplicate;Test.assert((visible.indexOf(key)>=0)==expected);if(expected){activityCount+=1;activityNames.add(key);}}}
     var stats=System.getSystemStats();var systemKeys=FieldCatalog.systemKeys();var systemCount=0;var systemNames=[];
@@ -175,5 +174,5 @@ function fields018CapabilityInventory(logger){
     var empty=new FieldsEmptyInfo();Test.assert(FieldCatalog.supported(empty,"stepGoal")&&FieldCatalog.activityValue(empty,"stepGoal")==null);
     var fake=new FieldsDeviceStats();Test.assert(FieldCatalog.systemSupported(fake,"system:batteryInDays",[])&&FieldCatalog.systemSupported(fake,"system:charging",[])&&!FieldCatalog.systemSupported(fake,"system:solarIntensity",[]));
     fake.solarIntensity=-1;Test.assert(FieldCatalog.systemSupported(fake,"system:solarIntensity",[])&&!FieldCatalog.systemSupported(fake,"system:solarIntensity",[37]));
-    logger.debug("ACTIVITY_KEYS "+activityNames);logger.debug("SYSTEM_KEYS "+systemNames);logger.debug("CAPABILITY native="+nativeCount+" mapped="+mapped+" paged="+paged+" activity="+activityCount+" system="+systemCount+" availableNullSelectable=true solarNullUnsupported=true solarNegativeSupported=true type42="+late);return true;
+    logger.debug("ACTIVITY_KEYS "+activityNames);logger.debug("SYSTEM_KEYS "+systemNames);logger.debug("CAPABILITY native="+nativeCount+" paged="+paged+" activity="+activityCount+" system="+systemCount+" availableNullSelectable=true solarNullUnsupported=true solarNegativeSupported=true type42="+late);return true;
 }

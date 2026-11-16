@@ -22,7 +22,7 @@ class Fields018GraphReceipts(unittest.TestCase):
         cls.source = (ROOT / 'watchface/fields018-tests/Fields018Tests.mc').read_text()
         cls.extra_source = (ROOT / 'watchface/fields018-extra-tests/EmptySelection.mc').read_text()
         cls.logs = {}
-        for folder, expected, closure in [('final-fr165', NAMES, inputs()), ('final-fr170', NAMES, inputs()), ('final-empty', EXTRA_NAMES, extra_inputs())]:
+        for folder, expected, closure in [('peer-fr165', NAMES, inputs()), ('peer-fr170', NAMES, inputs()), ('peer-empty', EXTRA_NAMES, extra_inputs())]:
             root = EVIDENCE / folder
             receipt = json.loads((root / 'receipt.json').read_text())
             if receipt['inputHashes'] != closure or not receipt['inputsUnchanged'] or receipt['compileExit'] != 0:
@@ -35,17 +35,18 @@ class Fields018GraphReceipts(unittest.TestCase):
             cls.logs[folder] = raw
 
     def native(self, case, *anchors):
-        self.assertIn('Executing test ' + case + '...', self.logs['final-fr165'])
-        self.assertIn('Executing test ' + case + '...', self.logs['final-fr170'])
+        self.assertIn('Executing test ' + case + '...', self.logs['peer-fr165'])
+        self.assertIn('Executing test ' + case + '...', self.logs['peer-fr170'])
         for anchor in anchors:
             self.assertIn(anchor, self.source)
 
     def test_discovery_new_type(self):
         self.native('fields018CapabilityInventory', 'if(kind==42){late=true;}')
-        self.assertIn('type42=true', self.logs['final-fr170'])
+        self.assertIn('type42=true', self.logs['peer-fr170'])
 
     def test_discovery_all_actual_ids(self):
         self.native('fields018NativeInventoryAndPersistence', 'items[n].equals(item.complicationId)', 'Test.assert(found)')
+        self.native('fields018CapabilityInventory', 'id.equals(visible[i])', 'Test.assert(nativeCount==paged)')
 
     def test_empty_capability_selectable(self):
         self.native('fields018CapabilityInventory', 'FieldCatalog.supported(empty,"stepGoal")&&FieldCatalog.activityValue(empty,"stepGoal")==null')
@@ -69,8 +70,8 @@ class Fields018GraphReceipts(unittest.TestCase):
         self.native('fields018NativeInventoryAndPersistence', 'Application.Properties.setValue("Field1",6);Application.Properties.setValue("Field1",0);Application.Properties.setValue("Field1",6);', 'FieldCatalog.saved(1).equals(id)')
 
     def test_phone_empty_selection_dash(self):
-        self.assertIn('Executing test fields018EmptyWatchSelection...', self.logs['final-empty'])
-        self.assertIn('EMPTY_WATCH_SELECTION dash=true phone6Preserved=true otherSlotsUntouched=true', self.logs['final-empty'])
+        self.assertIn('Executing test fields018EmptyWatchSelection...', self.logs['peer-empty'])
+        self.assertIn('EMPTY_WATCH_SELECTION dash=true phone6Preserved=true otherSlotsUntouched=true', self.logs['peer-empty'])
         self.assertIn('FieldCatalog.saved(1)==null&&selected.display("custom1").equals("—")', self.extra_source)
 
     def test_energy_duplicates_share_subscription(self):

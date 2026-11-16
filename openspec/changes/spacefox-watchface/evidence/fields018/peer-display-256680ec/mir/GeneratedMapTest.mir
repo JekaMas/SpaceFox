@@ -1,0 +1,496 @@
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,26,32]; @symbol_importdef<1> = [System,1,33,39]; ]
+import Toybox.System;
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,47,53]; @symbol_importdef<1> = [Test,1,54,58]; ]
+import Toybox.Test;
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,66,72]; @symbol_importdef<1> = [WatchUi,1,73,80]; ]
+import Toybox.WatchUi;
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc"; @line = 2; test = true; typecheck = false; @symbol_classdef = [D03MapStore,2,32,43]; ]
+class D03MapStore {
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc"; @line = 2; ]
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc"; @line = 2; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc"; @line = 2; @symbol_functiondef = [read,2,54,58]; @symbol_param<0> = [key,2,59,62]; ]
+    function read(key) {
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_63_2_1760_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 64 ]
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_64_2_216_if_stmt:
+        %tmp.1 = lgetv %key;
+        symbol [ key %tmp.1 2 67 70 ];
+        symbol [ equals %tmp.2 2 71 77 ];
+        %tmp.2 = getv function %tmp.1 :equals;
+        %tmp.3 = "sf.obj.2a09c8ea59ca32d5ee8ea4e5520682de56a7539b86e434b804f96ffeca0cecd6";
+        %tmp.4 = invoke %tmp.1 %tmp.2(%tmp.3);
+        bf %tmp.4 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_64_2_216_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_64_2_216_if_true:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_153_2_216_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 154 ]
+        symbol [ WatchUi %tmp.5 2 161 168 ];
+        %tmp.5 = getm $.Toybox.WatchUi;
+        symbol [ loadResource %tmp.6 2 169 181 ];
+        %tmp.6 = getv function %tmp.5 :loadResource;
+        symbol [ Rez %tmp.8 2 182 185 ];
+        %tmp.8 = getv ? :Rez;
+        symbol [ JsonData %tmp.9 2 186 194 ];
+        %tmp.9 = getv %tmp.8 :JsonData;
+        symbol [ D03MapShard0 %tmp.10 2 195 207 ];
+        %tmp.10 = getv %tmp.9 :D03MapShard0;
+        %tmp.11 = invoke %tmp.5 %tmp.6(%tmp.10);
+        %tmp.12 = "raw";
+        %tmp.13 = agetv %tmp.11 %tmp.12;
+        ret %tmp.13;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_153_2_216_stop:
+        goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_64_2_216_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_64_2_216_if_end:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 217 ]
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_217_2_369_if_stmt:
+        %tmp.14 = lgetv %key;
+        symbol [ key %tmp.14 2 220 223 ];
+        symbol [ equals %tmp.15 2 224 230 ];
+        %tmp.15 = getv function %tmp.14 :equals;
+        %tmp.16 = "sf.obj.4d28962616ea3056f6ce6fde40f6904f9d9dee2e657f67f988b4eaa4d31e8e92";
+        %tmp.17 = invoke %tmp.14 %tmp.15(%tmp.16);
+        bf %tmp.17 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_217_2_369_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_217_2_369_if_true:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_306_2_369_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 307 ]
+        symbol [ WatchUi %tmp.18 2 314 321 ];
+        %tmp.18 = getm $.Toybox.WatchUi;
+        symbol [ loadResource %tmp.19 2 322 334 ];
+        %tmp.19 = getv function %tmp.18 :loadResource;
+        symbol [ Rez %tmp.21 2 335 338 ];
+        %tmp.21 = getv ? :Rez;
+        symbol [ JsonData %tmp.22 2 339 347 ];
+        %tmp.22 = getv %tmp.21 :JsonData;
+        symbol [ D03MapShard1 %tmp.23 2 348 360 ];
+        %tmp.23 = getv %tmp.22 :D03MapShard1;
+        %tmp.24 = invoke %tmp.18 %tmp.19(%tmp.23);
+        %tmp.25 = "raw";
+        %tmp.26 = agetv %tmp.24 %tmp.25;
+        ret %tmp.26;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_306_2_369_stop:
+        goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_217_2_369_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_217_2_369_if_end:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 370 ]
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_370_2_522_if_stmt:
+        %tmp.27 = lgetv %key;
+        symbol [ key %tmp.27 2 373 376 ];
+        symbol [ equals %tmp.28 2 377 383 ];
+        %tmp.28 = getv function %tmp.27 :equals;
+        %tmp.29 = "sf.obj.671a4b8da3f5c272f41a709b7b72285ee96247eed72d4b3c521bc13884bb6153";
+        %tmp.30 = invoke %tmp.27 %tmp.28(%tmp.29);
+        bf %tmp.30 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_370_2_522_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_370_2_522_if_true:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_459_2_522_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 460 ]
+        symbol [ WatchUi %tmp.31 2 467 474 ];
+        %tmp.31 = getm $.Toybox.WatchUi;
+        symbol [ loadResource %tmp.32 2 475 487 ];
+        %tmp.32 = getv function %tmp.31 :loadResource;
+        symbol [ Rez %tmp.34 2 488 491 ];
+        %tmp.34 = getv ? :Rez;
+        symbol [ JsonData %tmp.35 2 492 500 ];
+        %tmp.35 = getv %tmp.34 :JsonData;
+        symbol [ D03MapShard2 %tmp.36 2 501 513 ];
+        %tmp.36 = getv %tmp.35 :D03MapShard2;
+        %tmp.37 = invoke %tmp.31 %tmp.32(%tmp.36);
+        %tmp.38 = "raw";
+        %tmp.39 = agetv %tmp.37 %tmp.38;
+        ret %tmp.39;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_459_2_522_stop:
+        goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_370_2_522_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_370_2_522_if_end:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 523 ]
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_523_2_675_if_stmt:
+        %tmp.40 = lgetv %key;
+        symbol [ key %tmp.40 2 526 529 ];
+        symbol [ equals %tmp.41 2 530 536 ];
+        %tmp.41 = getv function %tmp.40 :equals;
+        %tmp.42 = "sf.obj.eeaefa0a3910f493ba1409eca38c0473fa68b6b99da810696788b8338b01fddd";
+        %tmp.43 = invoke %tmp.40 %tmp.41(%tmp.42);
+        bf %tmp.43 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_523_2_675_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_523_2_675_if_true:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_612_2_675_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 613 ]
+        symbol [ WatchUi %tmp.44 2 620 627 ];
+        %tmp.44 = getm $.Toybox.WatchUi;
+        symbol [ loadResource %tmp.45 2 628 640 ];
+        %tmp.45 = getv function %tmp.44 :loadResource;
+        symbol [ Rez %tmp.47 2 641 644 ];
+        %tmp.47 = getv ? :Rez;
+        symbol [ JsonData %tmp.48 2 645 653 ];
+        %tmp.48 = getv %tmp.47 :JsonData;
+        symbol [ D03MapShard3 %tmp.49 2 654 666 ];
+        %tmp.49 = getv %tmp.48 :D03MapShard3;
+        %tmp.50 = invoke %tmp.44 %tmp.45(%tmp.49);
+        %tmp.51 = "raw";
+        %tmp.52 = agetv %tmp.50 %tmp.51;
+        ret %tmp.52;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_612_2_675_stop:
+        goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_523_2_675_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_523_2_675_if_end:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 676 ]
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_676_2_828_if_stmt:
+        %tmp.53 = lgetv %key;
+        symbol [ key %tmp.53 2 679 682 ];
+        symbol [ equals %tmp.54 2 683 689 ];
+        %tmp.54 = getv function %tmp.53 :equals;
+        %tmp.55 = "sf.obj.180d4d090c41fddf2fd1d79dd46405bbf9d13569ec151440658ec50208b5eb5b";
+        %tmp.56 = invoke %tmp.53 %tmp.54(%tmp.55);
+        bf %tmp.56 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_676_2_828_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_676_2_828_if_true:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_765_2_828_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 766 ]
+        symbol [ WatchUi %tmp.57 2 773 780 ];
+        %tmp.57 = getm $.Toybox.WatchUi;
+        symbol [ loadResource %tmp.58 2 781 793 ];
+        %tmp.58 = getv function %tmp.57 :loadResource;
+        symbol [ Rez %tmp.60 2 794 797 ];
+        %tmp.60 = getv ? :Rez;
+        symbol [ JsonData %tmp.61 2 798 806 ];
+        %tmp.61 = getv %tmp.60 :JsonData;
+        symbol [ D03MapShard4 %tmp.62 2 807 819 ];
+        %tmp.62 = getv %tmp.61 :D03MapShard4;
+        %tmp.63 = invoke %tmp.57 %tmp.58(%tmp.62);
+        %tmp.64 = "raw";
+        %tmp.65 = agetv %tmp.63 %tmp.64;
+        ret %tmp.65;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_765_2_828_stop:
+        goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_676_2_828_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_676_2_828_if_end:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 829 ]
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_829_2_981_if_stmt:
+        %tmp.66 = lgetv %key;
+        symbol [ key %tmp.66 2 832 835 ];
+        symbol [ equals %tmp.67 2 836 842 ];
+        %tmp.67 = getv function %tmp.66 :equals;
+        %tmp.68 = "sf.obj.0936caabf3d961df403c05a1a35a5436d5842c45de0077cfd7053118a6e7ca29";
+        %tmp.69 = invoke %tmp.66 %tmp.67(%tmp.68);
+        bf %tmp.69 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_829_2_981_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_829_2_981_if_true:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_918_2_981_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 919 ]
+        symbol [ WatchUi %tmp.70 2 926 933 ];
+        %tmp.70 = getm $.Toybox.WatchUi;
+        symbol [ loadResource %tmp.71 2 934 946 ];
+        %tmp.71 = getv function %tmp.70 :loadResource;
+        symbol [ Rez %tmp.73 2 947 950 ];
+        %tmp.73 = getv ? :Rez;
+        symbol [ JsonData %tmp.74 2 951 959 ];
+        %tmp.74 = getv %tmp.73 :JsonData;
+        symbol [ D03MapShard5 %tmp.75 2 960 972 ];
+        %tmp.75 = getv %tmp.74 :D03MapShard5;
+        %tmp.76 = invoke %tmp.70 %tmp.71(%tmp.75);
+        %tmp.77 = "raw";
+        %tmp.78 = agetv %tmp.76 %tmp.77;
+        ret %tmp.78;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_918_2_981_stop:
+        goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_829_2_981_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_829_2_981_if_end:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 982 ]
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_982_2_1134_if_stmt:
+        %tmp.79 = lgetv %key;
+        symbol [ key %tmp.79 2 985 988 ];
+        symbol [ equals %tmp.80 2 989 995 ];
+        %tmp.80 = getv function %tmp.79 :equals;
+        %tmp.81 = "sf.obj.db31d9ab634adaa54e03c7c96a2eee50064466b0565444a8bda1145a520ac301";
+        %tmp.82 = invoke %tmp.79 %tmp.80(%tmp.81);
+        bf %tmp.82 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_982_2_1134_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_982_2_1134_if_true:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1071_2_1134_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 1072 ]
+        symbol [ WatchUi %tmp.83 2 1079 1086 ];
+        %tmp.83 = getm $.Toybox.WatchUi;
+        symbol [ loadResource %tmp.84 2 1087 1099 ];
+        %tmp.84 = getv function %tmp.83 :loadResource;
+        symbol [ Rez %tmp.86 2 1100 1103 ];
+        %tmp.86 = getv ? :Rez;
+        symbol [ JsonData %tmp.87 2 1104 1112 ];
+        %tmp.87 = getv %tmp.86 :JsonData;
+        symbol [ D03MapShard6 %tmp.88 2 1113 1125 ];
+        %tmp.88 = getv %tmp.87 :D03MapShard6;
+        %tmp.89 = invoke %tmp.83 %tmp.84(%tmp.88);
+        %tmp.90 = "raw";
+        %tmp.91 = agetv %tmp.89 %tmp.90;
+        ret %tmp.91;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1071_2_1134_stop:
+        goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_982_2_1134_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_982_2_1134_if_end:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 1135 ]
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1135_2_1287_if_stmt:
+        %tmp.92 = lgetv %key;
+        symbol [ key %tmp.92 2 1138 1141 ];
+        symbol [ equals %tmp.93 2 1142 1148 ];
+        %tmp.93 = getv function %tmp.92 :equals;
+        %tmp.94 = "sf.obj.653939e2711ce529f39617eb84040f245960720925e27e70d270247940553e3a";
+        %tmp.95 = invoke %tmp.92 %tmp.93(%tmp.94);
+        bf %tmp.95 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1135_2_1287_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1135_2_1287_if_true:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1224_2_1287_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 1225 ]
+        symbol [ WatchUi %tmp.96 2 1232 1239 ];
+        %tmp.96 = getm $.Toybox.WatchUi;
+        symbol [ loadResource %tmp.97 2 1240 1252 ];
+        %tmp.97 = getv function %tmp.96 :loadResource;
+        symbol [ Rez %tmp.99 2 1253 1256 ];
+        %tmp.99 = getv ? :Rez;
+        symbol [ JsonData %tmp.100 2 1257 1265 ];
+        %tmp.100 = getv %tmp.99 :JsonData;
+        symbol [ D03MapShard7 %tmp.101 2 1266 1278 ];
+        %tmp.101 = getv %tmp.100 :D03MapShard7;
+        %tmp.102 = invoke %tmp.96 %tmp.97(%tmp.101);
+        %tmp.103 = "raw";
+        %tmp.104 = agetv %tmp.102 %tmp.103;
+        ret %tmp.104;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1224_2_1287_stop:
+        goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1135_2_1287_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1135_2_1287_if_end:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 1288 ]
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1288_2_1440_if_stmt:
+        %tmp.105 = lgetv %key;
+        symbol [ key %tmp.105 2 1291 1294 ];
+        symbol [ equals %tmp.106 2 1295 1301 ];
+        %tmp.106 = getv function %tmp.105 :equals;
+        %tmp.107 = "sf.obj.07924fc156dcfcd1725e9dce51567b9d04b13933fe56f89a0255b3ffcc914580";
+        %tmp.108 = invoke %tmp.105 %tmp.106(%tmp.107);
+        bf %tmp.108 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1288_2_1440_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1288_2_1440_if_true:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1377_2_1440_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 1378 ]
+        symbol [ WatchUi %tmp.109 2 1385 1392 ];
+        %tmp.109 = getm $.Toybox.WatchUi;
+        symbol [ loadResource %tmp.110 2 1393 1405 ];
+        %tmp.110 = getv function %tmp.109 :loadResource;
+        symbol [ Rez %tmp.112 2 1406 1409 ];
+        %tmp.112 = getv ? :Rez;
+        symbol [ JsonData %tmp.113 2 1410 1418 ];
+        %tmp.113 = getv %tmp.112 :JsonData;
+        symbol [ D03MapShard8 %tmp.114 2 1419 1431 ];
+        %tmp.114 = getv %tmp.113 :D03MapShard8;
+        %tmp.115 = invoke %tmp.109 %tmp.110(%tmp.114);
+        %tmp.116 = "raw";
+        %tmp.117 = agetv %tmp.115 %tmp.116;
+        ret %tmp.117;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1377_2_1440_stop:
+        goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1288_2_1440_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1288_2_1440_if_end:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 1441 ]
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1441_2_1593_if_stmt:
+        %tmp.118 = lgetv %key;
+        symbol [ key %tmp.118 2 1444 1447 ];
+        symbol [ equals %tmp.119 2 1448 1454 ];
+        %tmp.119 = getv function %tmp.118 :equals;
+        %tmp.120 = "sf.obj.697b580f41521ace59315e84264ddbfb4dee9d77b50f3d2e256ad10b7a6a56cf";
+        %tmp.121 = invoke %tmp.118 %tmp.119(%tmp.120);
+        bf %tmp.121 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1441_2_1593_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1441_2_1593_if_true:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1530_2_1593_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 1531 ]
+        symbol [ WatchUi %tmp.122 2 1538 1545 ];
+        %tmp.122 = getm $.Toybox.WatchUi;
+        symbol [ loadResource %tmp.123 2 1546 1558 ];
+        %tmp.123 = getv function %tmp.122 :loadResource;
+        symbol [ Rez %tmp.125 2 1559 1562 ];
+        %tmp.125 = getv ? :Rez;
+        symbol [ JsonData %tmp.126 2 1563 1571 ];
+        %tmp.126 = getv %tmp.125 :JsonData;
+        symbol [ D03MapShard9 %tmp.127 2 1572 1584 ];
+        %tmp.127 = getv %tmp.126 :D03MapShard9;
+        %tmp.128 = invoke %tmp.122 %tmp.123(%tmp.127);
+        %tmp.129 = "raw";
+        %tmp.130 = agetv %tmp.128 %tmp.129;
+        ret %tmp.130;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1530_2_1593_stop:
+        goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1441_2_1593_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1441_2_1593_if_end:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 1594 ]
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1594_2_1747_if_stmt:
+        %tmp.131 = lgetv %key;
+        symbol [ key %tmp.131 2 1597 1600 ];
+        symbol [ equals %tmp.132 2 1601 1607 ];
+        %tmp.132 = getv function %tmp.131 :equals;
+        %tmp.133 = "sf.obj.9107867a46a828266cdc4669352d110734f23c385ef52bc1ca7073709bb415ee";
+        %tmp.134 = invoke %tmp.131 %tmp.132(%tmp.133);
+        bf %tmp.134 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1594_2_1747_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1594_2_1747_if_true:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1683_2_1747_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 1684 ]
+        symbol [ WatchUi %tmp.135 2 1691 1698 ];
+        %tmp.135 = getm $.Toybox.WatchUi;
+        symbol [ loadResource %tmp.136 2 1699 1711 ];
+        %tmp.136 = getv function %tmp.135 :loadResource;
+        symbol [ Rez %tmp.138 2 1712 1715 ];
+        %tmp.138 = getv ? :Rez;
+        symbol [ JsonData %tmp.139 2 1716 1724 ];
+        %tmp.139 = getv %tmp.138 :JsonData;
+        symbol [ D03MapShard10 %tmp.140 2 1725 1738 ];
+        %tmp.140 = getv %tmp.139 :D03MapShard10;
+        %tmp.141 = invoke %tmp.135 %tmp.136(%tmp.140);
+        %tmp.142 = "raw";
+        %tmp.143 = agetv %tmp.141 %tmp.142;
+        ret %tmp.143;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1683_2_1747_stop:
+        goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1594_2_1747_if_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_1594_2_1747_if_end:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 2 1748 ]
+        %tmp.144 = null;
+        ret %tmp.144;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_2_63_2_1760_stop:
+    }
+}
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc"; @line = 3; test = true; typecheck = false; @symbol_functiondef = [display03RealMapDecode,3,35,57]; @symbol_param<0> = [logger,3,58,64]; ]
+function display03RealMapDecode(logger) {
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_65_3_558_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 3 66 ]
+    [ "_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_65_3_558_start" "_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_65_3_558_stop" ]
+    %d.1 = local;
+    symbol [ d %d.1 3 70 71 ];
+    symbol [ WatchUi %tmp.1 3 72 79 ];
+    %tmp.1 = getm $.Toybox.WatchUi;
+    symbol [ loadResource %tmp.2 3 80 92 ];
+    %tmp.2 = getv function %tmp.1 :loadResource;
+    symbol [ Rez %tmp.4 3 93 96 ];
+    %tmp.4 = getv ? :Rez;
+    symbol [ JsonData %tmp.5 3 97 105 ];
+    %tmp.5 = getv %tmp.4 :JsonData;
+    symbol [ D03MapDescriptor %tmp.6 3 106 122 ];
+    %tmp.6 = getv %tmp.5 :D03MapDescriptor;
+    %tmp.7 = invoke %tmp.1 %tmp.2(%tmp.6);
+    lputv %d.1 %tmp.7;
+    symbol [ d %d.1 3 70 71 ];
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 3 124 ]
+    [ "_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_65_3_558_start" "_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_65_3_558_stop" ]
+    %start.2 = local;
+    symbol [ start %start.2 3 128 133 ];
+    symbol [ System %tmp.8 3 134 140 ];
+    %tmp.8 = getm $.Toybox.System;
+    symbol [ getTimer %tmp.9 3 141 149 ];
+    %tmp.9 = getv function %tmp.8 :getTimer;
+    %tmp.10 = invoke %tmp.8 %tmp.9();
+    lputv %start.2 %tmp.10;
+    symbol [ start %start.2 3 128 133 ];
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 3 152 ]
+    [ "_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_65_3_558_start" "_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_65_3_558_stop" ]
+    %decoder.3 = local;
+    symbol [ decoder %decoder.3 3 156 163 ];
+    symbol [ NativeSfrDecoder %tmp.14 3 168 184 ];
+    %tmp.14 = getv ? :NativeSfrDecoder;
+    symbol [ D03MapStore %tmp.18 3 189 200 ];
+    %tmp.18 = getv ? :D03MapStore;
+    %tmp.15 = newc %tmp.18 ();
+    %tmp.19 = lgetv %d.1;
+    symbol [ d %tmp.19 3 203 204 ];
+    %tmp.11 = newc %tmp.14 (%tmp.15, %tmp.19);
+    lputv %decoder.3 %tmp.11;
+    symbol [ decoder %decoder.3 3 156 163 ];
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 3 206 ]
+    [ "_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_65_3_558_start" "_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_65_3_558_stop" ]
+    %steps.4 = local;
+    symbol [ steps %steps.4 3 210 215 ];
+    %tmp.20 = 0;
+    lputv %steps.4 %tmp.20;
+    symbol [ steps %steps.4 3 210 215 ];
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 3 218 ]
+    while @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_218_3_274_while_test @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_218_3_274_while_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_218_3_274_while_test:
+    %tmp.21 = lgetv %decoder.3;
+    symbol [ decoder %tmp.21 3 225 232 ];
+    symbol [ step %tmp.22 3 233 237 ];
+    %tmp.22 = getv function %tmp.21 :step;
+    %tmp.23 = invoke %tmp.21 %tmp.22();
+    %tmp.24 = not %tmp.23;
+    bf %tmp.24 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_218_3_274_while_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_218_3_274_while_begin:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_240_3_274_start:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 3 241 ]
+    %tmp.25 = lgetv %steps.4;
+    symbol [ steps %tmp.25 3 241 246 ];
+    %tmp.26 = 1;
+    %tmp.27 = add %tmp.25 %tmp.26;
+    lputv %steps.4 %tmp.27;
+    symbol [ steps %steps.4 3 241 246 ];
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 3 250 ]
+    symbol [ Test %tmp.28 3 250 254 ];
+    %tmp.28 = getm $.Toybox.Test;
+    symbol [ assert %tmp.29 3 255 261 ];
+    %tmp.29 = getv function %tmp.28 :assert;
+    %tmp.30 = lgetv %steps.4;
+    symbol [ steps %tmp.30 3 262 267 ];
+    %tmp.31 = 2000;
+    %tmp.32 = lt %tmp.30 %tmp.31;
+    invoke %tmp.28 %tmp.29(%tmp.32);
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_240_3_274_stop:
+    goto @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_218_3_274_while_test;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_218_3_274_while_end:
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 3 275 ]
+    symbol [ Test %tmp.33 3 275 279 ];
+    %tmp.33 = getm $.Toybox.Test;
+    symbol [ assert %tmp.34 3 280 286 ];
+    %tmp.34 = getv function %tmp.33 :assert;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_287_3_346_begin:
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_287_3_317_begin:
+    %tmp.35 = lgetv %decoder.3;
+    symbol [ decoder %tmp.35 3 287 294 ];
+    symbol [ done %tmp.36 3 295 299 ];
+    %tmp.36 = getv %tmp.35 :done;
+    %tmp.37 = dup %tmp.36;
+    bf %tmp.37 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_301_3_317_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_301_3_317_true:
+    %tmp.38 = lgetv %decoder.3;
+    symbol [ decoder %tmp.38 3 301 308 ];
+    symbol [ bitmap %tmp.39 3 309 315 ];
+    %tmp.39 = getv %tmp.38 :bitmap;
+    %tmp.40 = null;
+    %tmp.41 = ne %tmp.39 %tmp.40;
+    %tmp.42 = and %tmp.36 %tmp.41;
+    push %tmp.42;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_301_3_317_end:
+    %tmp.43 = phi [%tmp.37 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_287_3_317_begin] [%tmp.42 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_301_3_317_true] [%tmp.43 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_301_3_317_end];
+    %tmp.44 = dup %tmp.43;
+    bf %tmp.44 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_323_3_346_end;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_323_3_346_true:
+    %tmp.45 = lgetv %decoder.3;
+    symbol [ decoder %tmp.45 3 323 330 ];
+    symbol [ outlineBitmap %tmp.46 3 331 344 ];
+    %tmp.46 = getv %tmp.45 :outlineBitmap;
+    %tmp.47 = null;
+    %tmp.48 = ne %tmp.46 %tmp.47;
+    %tmp.49 = and %tmp.43 %tmp.48;
+    push %tmp.49;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_323_3_346_end:
+    %tmp.50 = phi [%tmp.44 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_287_3_346_begin] [%tmp.49 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_323_3_346_true] [%tmp.50 @_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_323_3_346_end];
+    invoke %tmp.33 %tmp.34(%tmp.50);
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 3 352 ]
+    %tmp.51 = lgetv %logger;
+    symbol [ logger %tmp.51 3 352 358 ];
+    symbol [ debug %tmp.52 3 359 364 ];
+    %tmp.52 = getv function %tmp.51 :debug;
+    %tmp.53 = "REAL_MAP_DECODE launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a sourceSite=ll2:site:29 checksum=verified outline=true steps=";
+    %tmp.54 = lgetv %steps.4;
+    symbol [ steps %tmp.54 3 499 504 ];
+    %tmp.55 = add %tmp.53 %tmp.54;
+    %tmp.56 = " elapsedMs=";
+    %tmp.57 = add %tmp.55 %tmp.56;
+    symbol [ System %tmp.58 3 520 526 ];
+    %tmp.58 = getm $.Toybox.System;
+    symbol [ getTimer %tmp.59 3 527 535 ];
+    %tmp.59 = getv function %tmp.58 :getTimer;
+    %tmp.60 = invoke %tmp.58 %tmp.59();
+    %tmp.61 = lgetv %start.2;
+    symbol [ start %tmp.61 3 538 543 ];
+    %tmp.62 = sub %tmp.60 %tmp.61;
+    %tmp.63 = add %tmp.57 %tmp.62;
+    invoke %tmp.51 %tmp.52(%tmp.63);
+[ "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc" 3 546 ]
+    %tmp.64 = true;
+    ret %tmp.64;
+_Users_jekamas__codex_tmp_spacefox_fields018_peer_display_probe_GeneratedMapTest_mc_3_65_3_558_stop:
+}
+[ @file = "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-display/probe/GeneratedMapTest.mc"; @line = 1; ]
+<init> {
+}

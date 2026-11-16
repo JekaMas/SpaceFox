@@ -1,0 +1,13 @@
+[
+  "/opt/homebrew/opt/openjdk@11/bin/java",
+  "-Dfile.encoding=UTF-8",
+  "-classpath",
+  "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/monkeybrains.jar",
+  "com.garmin.monkeybrains.monkeydodeux.MonkeyDoDeux",
+  "-f",
+  "/Users/jekamas/.codex/tmp/spacefox-fields018-peer-release-build/stock454/SpaceFoxRolloverStock.prg",
+  "-d",
+  "fr965",
+  "-s",
+  "/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/shell"
+]

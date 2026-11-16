@@ -1,6 +1,6 @@
 {
   "scope": "fields-0.1.18-primary-software",
-  "nativeId": "bd6dab7b",
+  "nativeId": "256680ec",
   "parentReceipt": {
     "path": "openspec/changes/spacefox-watchface/evidence/fields018/parent017/receipt.json.gz",
     "sha256": "8fc2cdc2ab63c209ff21358bdc2d2d860048e5894253c9096dc0dfaa5d0bf2e0"
@@ -11,7 +11,7 @@
   },
   "nativeInputs": {
     "tools/fields018_native_probe.py": "04e02750b2d4cf5e73abc223d6610196ebc2a4e54dfddc41f74904a17ac84987",
-    "watchface/fields018-tests/Fields018Tests.mc": "e11e7f54e1b7d53afa3285fe5364d8aa42546275b5aaa667c5dc680aebbfc08b",
+    "watchface/fields018-tests/Fields018Tests.mc": "7de627f90089b51d68c27878701a1b0c8f3865379f25b9cca5b5db22a452bfe6",
     "watchface/manifest.xml": "2cb1e1e263cc803b6477cbbb67b8a988436239a91bc09185ab0bf102fdd26809",
     "watchface/resources/drawables/AodExtra0.png": "0d6630fc97e98bc40fee53579ff54a5354cf948ddd4323282a0ab7f3d6f17daf",
     "watchface/resources/drawables/AodExtra1.png": "366b0cf1e789e2e965e514fc4a2e37f4e70a37c2eae247adb742a899640df43f",
@@ -290,7 +290,7 @@
     "watchface/resources-zsm/strings/strings.xml": "4c4f5e3cc7277c26c714104abe584e01cf6cdffe062a2cd784dac7ea1dc8b455",
     "watchface/source/FeedScene.mc": "0c14c8714651945db633bbd93aa40256989073eeb9e890818d84d792fc983a27",
     "watchface/source/FeedService.mc": "04be4d789e9421564aea038a1f1b6cb764c8eec013c5d0ed4f2f8672012a519d",
-    "watchface/source/FieldSources.mc": "5a027519632de054d9e895c799b8783aae77d3653cdfccb30ee70b15f5a72fac",
+    "watchface/source/FieldSources.mc": "82db125f770874733b1b7e0d850569bd06110ca1f3df95f6aae65ae5ede401be",
     "watchface/source/FieldText.mc": "38ea7704627315455b6228a8ea1f14358df230064e5413ac6f0e08a3db8689d0",
     "watchface/source/Fitness.mc": "45515d240eb06628309bf4cd71c85e4cebe6772e21fbbbc1d1952abc96f2558c",
     "watchface/source/LaunchReminder.mc": "e95d4e6bead0b3206b66a69ea07ba183058471a5345128fb9154221aea32cef5",
@@ -324,202 +324,210 @@
     "watchface/source/WatchClock.mc": "e1cb5dd3ac35fb8bc52efad2ef85c7b909cb15fe7a04b4710302d4d34ddec100",
     "watchface/source/generated/LocaleGraphemes.mc": "5ad65d6328908a7f251cd5ddbac83244de9b51929c2c46cb746bfb168a4f6c80",
     "watchface/source/generated/NativeAssets.mc": "7cd1909c77568e19ef18e60cc278e702e4fb2e363e035309c589dc1920a70d7c",
-    "watchface/source/generated/NativeVersion.mc": "c70da0ef204231ca56092ac2a84576f34c881473ffa95a99f2ec9d4cad6e2ca4",
+    "watchface/source/generated/NativeVersion.mc": "e5c864111ee476c2608546e89028cf528180c0462632ec54c642f7e4d40dd687",
     "watchface/source/generated/SceneStrings.mc": "dd8a910b53d2493ec8760e0148186c9535c05a5e0644ae5b6e6eccb6dd651109"
   },
-  "validatorSha256": "6111803b74782c921b4a85aeb9d80c67194da210b5e80d294e4beac5aacd2f6d",
+  "validatorSha256": "2ff58aabe26a2d6911db3d1a1118f4a28e3bf84002cdeb1b2884390f7aefa213",
   "evidence": {
     "fontReport": {
       "path": "openspec/changes/spacefox-watchface/evidence/fields018/fields-fonts.json",
       "sha256": "a354de9e76a1d8d2d574ec672609b370d73f129111b5b338c6ecf36b19c5105c"
     },
     "fr165Receipt": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/final-fr165/receipt.json",
-      "sha256": "3f567841a7ed01fdc8ba2c3a501d4d4a5a178388a0be336cc106c77e304925a7"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr165/receipt.json",
+      "sha256": "be06511986bd93d00df8f54ceaf0b8add813c8b9294a297a05df23d855508b75"
     },
     "fr165Log": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/final-fr165/native.log",
-      "sha256": "a715f95146072c848ee1b2497517a88c4b4d56305f059ab19972e65146f794f1"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr165/native.log",
+      "sha256": "89db5a2a4fad89f9c14f7242c21696f1639d29dbde7d4f75c6e1fc59abbfbd67"
     },
     "fr165Program": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/final-fr165/program.prg.gz",
-      "sha256": "33c624431be1fc36004ec7edb07424c0220dfad8706840b503981e488d555f90"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr165/program.prg.gz",
+      "sha256": "960b5a9bd92174fa6040e5a02212a7816c370d92d599459865ebc6aee3aed03b"
     },
     "fr170Receipt": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/final-fr170/receipt.json",
-      "sha256": "19b62cc0263bc5f55ddc0bf6cb39bb203fcc103e1bd1d453f1671f9db5ffeca7"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr170/receipt.json",
+      "sha256": "49de35c8f95f1f739428d1564e4a52db2e385b3f12929ec534f83e25206ae861"
     },
     "fr170Log": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/final-fr170/native.log",
-      "sha256": "92fd52c8c8066079ea4431e72db4131ecc872a836f09a961eed1cc80def33c7e"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr170/native.log",
+      "sha256": "e8451f6b82051eaf703971d89e6e8b2822ec87d024795873a4dbbd5883a2d1fd"
     },
     "fr170Program": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/final-fr170/program.prg.gz",
-      "sha256": "18d1a4bc64b37a9bf005fdfc58505bcebe9e5f6264ed1198ee6d5216ab08cf5b"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-fr170/program.prg.gz",
+      "sha256": "e79174c1c374b55ca2e8217b377b7918d06f1c2e9f2ac19049615028e03fe44c"
     },
     "emptyReceipt": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/final-empty/receipt.json",
-      "sha256": "a41ff8761fcd99d63d8f7252a7a9df1c6e4a09bd1dfa4ce2fbf9dfee1d2ca35a"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-empty/receipt.json",
+      "sha256": "652700e51ad0f2d9176e151c647f64d17e625e24f85e6c1604117bb4715278cd"
     },
     "emptyLog": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/final-empty/native.log",
-      "sha256": "16a2caa5e93ecaa67ab6f88359c240ded3f9e17ead2a9733d2482ec3650cfe78"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-empty/native.log",
+      "sha256": "94ea21ac2010e44ac1fa4520980e9a24f0410f5386a9b296f335b41bc83695f2"
     },
     "emptyProgram": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/final-empty/program.prg.gz",
-      "sha256": "efef1d05afe507895cb7c0e5ee62c8439decf3e2a6f54eb4dbcac42812c85b6c"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-empty/program.prg.gz",
+      "sha256": "58a75d10f62e5cb113ddc5f05a99fd2509e808404c36cc714235c837ccb2ddaa"
     },
     "stock390Observation": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final390/observation.json",
-      "sha256": "3ae4d974085ca4b22bc59dc04c2a27f433822d83ee0326c3b2ebf0841cd940be"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock390/observation.json",
+      "sha256": "863472757d001aba5a667e24632140f9851241363bac88f0f1378b6a4de1d994"
     },
     "stock390Gate": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final390/prelaunch.json",
-      "sha256": "cfb0f02b31112eda4ced4ddd561a04e1219cd50960d83496e5e888564a695276"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock390/prelaunch.json",
+      "sha256": "0ac429af8a0338852f69befe285c3ddd79d68c3210b7e84d600aa99c4a1a91eb"
     },
     "stock390Restore": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final390/restore.json",
-      "sha256": "cbdd30a20215014449f5f3d229632d0fb5cbe2e716e5bc85bf1459e613808998"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock390/restore.json",
+      "sha256": "246ab16832d951c50bd24cf5659f3092a510a58a4f63e339df27bd700aab477f"
     },
     "stock390SeedLog": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final390/seed2.log",
-      "sha256": "ed7f2080dc9a81957aab2c0b3afd5a722dd3bd5af5c3ea2b5cb48868e833c9cf"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock390/seed.log",
+      "sha256": "48bb4bb2ae784a9ab36e9129115d653e1f484ae2ccb69d2e7454e557327ddf24"
     },
     "stock390Seed": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final390/seed.tar.gz",
-      "sha256": "a606d997de8dffe3a701aeb43233dcb2749d475c4e96912e7b991820804ebd9d"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock390/seed.tar.gz",
+      "sha256": "1c47763638d786591b961a3206602d90b158151aa8f9f1068f4cf8094b3fb701"
     },
     "stock390Program": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final390/program.prg.gz",
-      "sha256": "03ccb31bf613c70d467c5f812fd16eebe26629498a475971e783bf769e36c861"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock390/program.prg.gz",
+      "sha256": "1e649743e7ad6b8bd1b2fb7f557dd35d1a4100adc9337eb479697cc1c06d8116"
     },
     "stock390Probe": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final390/Probe.mc",
-      "sha256": "6ed6ece1d3af340320f9773403306b611d83756efcdb68624208068603550375"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock390/Probe.mc",
+      "sha256": "4fd9d90b6128c8d25e5da5fcdcb00cb7fb82161dec927f8c7247801625332043"
     },
     "stock390Fixture": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final390/feed.json",
-      "sha256": "333cd51478d91243252b511c3fbaa5adb56704aaa6487479f011d5571d27f22f"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock390/feed.json",
+      "sha256": "147ea7b17836f9b3567d3b06c6e104851baf9269b6b268ee35a1616ce9fdd938"
     },
     "stock390Rebase": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final390/rebase.json",
-      "sha256": "ce24032bf0cdd840aac8b180719eaffa6d7214b415e6e9904d46a07428e03d3f"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock390/rebase.json",
+      "sha256": "375f0d9c8885f5ccfced9734633ef11f20d3542a928a4803fd8c2b16eb417477"
     },
     "stock390SeedCompile": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final390/seed-compile.log",
-      "sha256": "19b7aa98d018411cc4d4f8708b93ec7ca031ab589414576d33880db32d4e63cd"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock390/seed-compile.log",
+      "sha256": "ba4c5253c0eeff26555dba80fc1050cdc85efa386a1a9e45c549ab7159f3d9b5"
     },
     "stock390StockCompile": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final390/stock-compile.log",
-      "sha256": "5633e8b36e155769ef202893ff2e51d8edca231d1a56fbf97178e4ded3282618"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock390/stock-compile.log",
+      "sha256": "e5fed6d7283c7a7806f11fe4874f6420c4a807aa068e163b7ec6baaa1f737b38"
+    },
+    "stock390CompileReceipt": {
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock390/stock-compile-receipt.json",
+      "sha256": "5c71dca93ccf7dd04ad8cab974c6e73c09a3214f4ca5f41d1cc0891609d270fb"
     },
     "stock390StockLog": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final390/stock.log",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock390/stock.log",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     "stock390SeedProgram": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final390/seed-program.prg.gz",
-      "sha256": "ffbc1b7cca13c7d2367f41ec193e4259006ffce04b019a5f9a99ddadcd4fce66"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock390/seed-program.prg.gz",
+      "sha256": "854d21a42e1688ca68a881603f317133b31629495cbcef07e371cc2e67756581"
     },
     "stock390SeedJungle": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final390/seed.jungle",
-      "sha256": "90762712b5c04b03432336e97eca28b4f75708fdd502bd361db2c69e0ac77005"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock390/seed.jungle",
+      "sha256": "6efb160e583d29260219aae32b23ee1622292f927fd824ba45050d015cb70969"
     },
     "stock390StockJungle": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final390/stock.jungle",
-      "sha256": "840ca79eadd74cacc8d52574adddb61f09d13dc478155ea84f610a16ea4b6eab"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock390/stock.jungle",
+      "sha256": "8f39c8beb2f675c4958c826c5329ea918b210517b8d09985f31b03d39d883a8a"
     },
     "stock390SeedManifest": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final390/seed-manifest.xml",
-      "sha256": "27354f47ce1ba905e452ade5a3bcd5137048c80f0f51ffe5b88ad89905db598b"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock390/seed-manifest.xml",
+      "sha256": "54feef85c06bb266b5b7fa04128c1711324c3950654e24cfa2454f63c753134f"
     },
     "stock390StockManifest": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final390/stock-manifest.xml",
-      "sha256": "3c589c500b97085d88ed0e1c22d31ad1ed355e99298c091e0d832a090a6ca29d"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock390/stock-manifest.xml",
+      "sha256": "2cb1e1e263cc803b6477cbbb67b8a988436239a91bc09185ab0bf102fdd26809"
     },
     "stock390SeedExit": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final390/seed-exit.txt",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock390/seed-exit.txt",
       "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
     },
     "stock390Image": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/entry-controls/final-fr165m-a2-four-fields-bd6dab7b.png",
-      "sha256": "d06faffa958c95563f0249c6477e84b9d33d6b73e14c967d27d42c0dc803696d"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/entry-controls/peer-release-390-256680ec.png",
+      "sha256": "9baaa0eb6a90a8d4d6fe5f0aaee05ce6f79804d4ae57a363d5999ba4372a3930"
     },
     "stock454Observation": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final454/observation.json",
-      "sha256": "ebb616a4fe7cfe7f6beaee95f7fddec99b430181cc6253e4c281d11dd17a23fd"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock454/observation.json",
+      "sha256": "18575a065b49f5b4aec79262d60fe18f9b1e06cdcb2fe7a34e0555ac2905f180"
     },
     "stock454Gate": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final454/prelaunch.json",
-      "sha256": "c18814950eb2e74be8d964dee94914d665d59c4799458b2b509155f076a50552"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock454/prelaunch.json",
+      "sha256": "8c926b58e3eaba75ee5995c02f66a622951e7e37f443531965b93d0425f416ce"
     },
     "stock454Restore": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final454/restore.json",
-      "sha256": "cbdd30a20215014449f5f3d229632d0fb5cbe2e716e5bc85bf1459e613808998"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock454/restore.json",
+      "sha256": "246ab16832d951c50bd24cf5659f3092a510a58a4f63e339df27bd700aab477f"
     },
     "stock454SeedLog": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final454/seed2.log",
-      "sha256": "aacd887145054fb3c5a874063d47a75e7c3cf03d57d050eb8b07f13b981273f5"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock454/seed.log",
+      "sha256": "3233b6cc0106705d4caedd0b7dacffb8ae24459e91f57b7a26c74b48f13afa54"
     },
     "stock454Seed": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final454/seed.tar.gz",
-      "sha256": "e40fe4f768366690870d3d24855ed77610846429a90212b5aa08c31f785d860a"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock454/seed.tar.gz",
+      "sha256": "9b9d4c693ff73e073098cb2fcb9bfcab0a3df57c65ac2397157b1f10b9d61895"
     },
     "stock454Program": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final454/program.prg.gz",
-      "sha256": "e901a09c7d34747d6882302b9bb487dfed802280320c1b264ba8ec913a06c62c"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock454/program.prg.gz",
+      "sha256": "ed492cae1fa74df32ee79fd57d08ef1b2166048af6b6ca8953867a9d3f130100"
     },
     "stock454Probe": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final454/Probe.mc",
-      "sha256": "6ed6ece1d3af340320f9773403306b611d83756efcdb68624208068603550375"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock454/Probe.mc",
+      "sha256": "4fd9d90b6128c8d25e5da5fcdcb00cb7fb82161dec927f8c7247801625332043"
     },
     "stock454Fixture": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final454/feed.json",
-      "sha256": "333cd51478d91243252b511c3fbaa5adb56704aaa6487479f011d5571d27f22f"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock454/feed.json",
+      "sha256": "147ea7b17836f9b3567d3b06c6e104851baf9269b6b268ee35a1616ce9fdd938"
     },
     "stock454Rebase": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final454/rebase.json",
-      "sha256": "ce24032bf0cdd840aac8b180719eaffa6d7214b415e6e9904d46a07428e03d3f"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock454/rebase.json",
+      "sha256": "375f0d9c8885f5ccfced9734633ef11f20d3542a928a4803fd8c2b16eb417477"
     },
     "stock454SeedCompile": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final454/seed-compile.log",
-      "sha256": "19b7aa98d018411cc4d4f8708b93ec7ca031ab589414576d33880db32d4e63cd"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock454/seed-compile.log",
+      "sha256": "ba4c5253c0eeff26555dba80fc1050cdc85efa386a1a9e45c549ab7159f3d9b5"
     },
     "stock454StockCompile": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final454/stock-compile.log",
-      "sha256": "e158abb87802912b624310646115d7d321e43ff156c592e01d5178f83813500f"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock454/stock-compile.log",
+      "sha256": "900ffc6847d5c04b42243cddc445a2f44ccde862af669aae56feda984d32937c"
+    },
+    "stock454CompileReceipt": {
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock454/stock-compile-receipt.json",
+      "sha256": "66e14d80444d9fa2f6a464817e1bb29b2fcdd5be1bf127bd3010c2180eb8db7d"
     },
     "stock454StockLog": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final454/stock.log",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock454/stock.log",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     "stock454SeedProgram": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final454/seed-program.prg.gz",
-      "sha256": "ffbc1b7cca13c7d2367f41ec193e4259006ffce04b019a5f9a99ddadcd4fce66"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock454/seed-program.prg.gz",
+      "sha256": "854d21a42e1688ca68a881603f317133b31629495cbcef07e371cc2e67756581"
     },
     "stock454SeedJungle": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final454/seed.jungle",
-      "sha256": "90762712b5c04b03432336e97eca28b4f75708fdd502bd361db2c69e0ac77005"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock454/seed.jungle",
+      "sha256": "6efb160e583d29260219aae32b23ee1622292f927fd824ba45050d015cb70969"
     },
     "stock454StockJungle": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final454/stock.jungle",
-      "sha256": "840ca79eadd74cacc8d52574adddb61f09d13dc478155ea84f610a16ea4b6eab"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock454/stock.jungle",
+      "sha256": "8f39c8beb2f675c4958c826c5329ea918b210517b8d09985f31b03d39d883a8a"
     },
     "stock454SeedManifest": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final454/seed-manifest.xml",
-      "sha256": "27354f47ce1ba905e452ade5a3bcd5137048c80f0f51ffe5b88ad89905db598b"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock454/seed-manifest.xml",
+      "sha256": "54feef85c06bb266b5b7fa04128c1711324c3950654e24cfa2454f63c753134f"
     },
     "stock454StockManifest": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final454/stock-manifest.xml",
-      "sha256": "3c589c500b97085d88ed0e1c22d31ad1ed355e99298c091e0d832a090a6ca29d"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock454/stock-manifest.xml",
+      "sha256": "2cb1e1e263cc803b6477cbbb67b8a988436239a91bc09185ab0bf102fdd26809"
     },
     "stock454SeedExit": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/stock-final454/seed-exit.txt",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-stock454/seed-exit.txt",
       "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
     },
     "stock454Image": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/entry-controls/final-fr965-a2-four-fields-bd6dab7b.png",
-      "sha256": "b81801c30ee67d6fbecf8b7f142d4f668ade719d8237e06171e6ed5202cc3457"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/entry-controls/peer-release-454-256680ec.png",
+      "sha256": "8b84f6df3aba127446a4ab4272380fe773b31cadb51ac5c98c20992a8ced91d3"
     },
     "decode-tick-red-native.log": {
       "path": "openspec/changes/spacefox-watchface/evidence/fields018/decode-tick-red/native.log",
@@ -556,6 +564,10 @@
       "Display03Sequence.mc.input.txt": {
         "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-red/Display03Sequence.mc.input.txt",
         "sha256": "8136d15867debb3355dafaecc032c37d9238875b5e9ce1b20875f030d122ee25"
+      },
+      "FieldSources.mc.input.txt": {
+        "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-red/FieldSources.mc.input.txt",
+        "sha256": "5a027519632de054d9e895c799b8783aae77d3653cdfccb30ee70b15f5a72fac"
       },
       "GeneratedMapTest.mc": {
         "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-red/GeneratedMapTest.mc",
@@ -691,6 +703,10 @@
         "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-green/Display03Sequence.mc.input.txt",
         "sha256": "93dccca96e74f2db09c99fb6024271f483c62bba739da017fbad140277250197"
       },
+      "FieldSources.mc.input.txt": {
+        "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-green/FieldSources.mc.input.txt",
+        "sha256": "5a027519632de054d9e895c799b8783aae77d3653cdfccb30ee70b15f5a72fac"
+      },
       "GeneratedMapTest.mc": {
         "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-green/GeneratedMapTest.mc",
         "sha256": "9700fcfb4e75d0a592f8b1661547f597738122ab9712b4ffcdce5711b0c6c4e3"
@@ -825,6 +841,10 @@
         "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-extra-red/Display03Sequence.mc.input.txt",
         "sha256": "93dccca96e74f2db09c99fb6024271f483c62bba739da017fbad140277250197"
       },
+      "FieldSources.mc.input.txt": {
+        "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-extra-red/FieldSources.mc.input.txt",
+        "sha256": "5a027519632de054d9e895c799b8783aae77d3653cdfccb30ee70b15f5a72fac"
+      },
       "GeneratedMapTest.mc": {
         "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-extra-red/GeneratedMapTest.mc",
         "sha256": "9700fcfb4e75d0a592f8b1661547f597738122ab9712b4ffcdce5711b0c6c4e3"
@@ -955,6 +975,10 @@
         "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-extra-green/BoundaryFitness.mc",
         "sha256": "cb84bd9695a5194c562575d09c8cdda0589c77587cbc2abbd799c4474ff0e4be"
       },
+      "FieldSources.mc.input.txt": {
+        "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-extra-green/FieldSources.mc.input.txt",
+        "sha256": "5a027519632de054d9e895c799b8783aae77d3653cdfccb30ee70b15f5a72fac"
+      },
       "GeneratedMapTest.mc": {
         "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-extra-green/GeneratedMapTest.mc",
         "sha256": "9700fcfb4e75d0a592f8b1661547f597738122ab9712b4ffcdce5711b0c6c4e3"
@@ -1083,140 +1107,152 @@
   },
   "lifecycleFiles": {
     "BoundaryFitness.mc": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/BoundaryFitness.mc",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/BoundaryFitness.mc",
       "sha256": "cb84bd9695a5194c562575d09c8cdda0589c77587cbc2abbd799c4474ff0e4be"
     },
-    "Display02Tests-settings.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/Display02Tests-settings.json",
-      "sha256": "59173baf62c6ef97e64b4ae73ce528fbc1216d5d45cc807fcc6bd128f776dcce"
-    },
     "GeneratedMapTest.mc": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/GeneratedMapTest.mc",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/GeneratedMapTest.mc",
       "sha256": "9700fcfb4e75d0a592f8b1661547f597738122ab9712b4ffcdce5711b0c6c4e3"
     },
     "MetricBoundary.mc": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/MetricBoundary.mc",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/MetricBoundary.mc",
       "sha256": "700e73af245781e3c83847481afc2e636efaa382c56180f29b71473c331e58c9"
     },
     "additional-native.log": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/additional-native.log",
-      "sha256": "c6827ae21b7ebd6f0e53c4f44ec7d92eb92cb82f0f979ba4966bde4c8310b0e3"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/additional-native.log",
+      "sha256": "a5675c0d23d247e2ebbfc6484cd9c0ea14ac83e2dff9d060481ed1f9111a9734"
     },
     "additional-receipt.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/additional-receipt.json",
-      "sha256": "0169d2a6179b8786b8940fd2dce0dc1768277b531296fc2503c60136861ae15a"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/additional-receipt.json",
+      "sha256": "f4f426d5db4ecc23ba7a8dc86455c1c56e00329d8ae53753b7a84c85397ea76f"
     },
-    "additional-restore.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/additional-restore.json",
-      "sha256": "cbdd30a20215014449f5f3d229632d0fb5cbe2e716e5bc85bf1459e613808998"
+    "before.json": {
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/before.json",
+      "sha256": "2646c4cf9bb56b28c8f20c926ca4c539edc75ae04e99b1a5b946160676e2bfdd"
     },
     "compile.log": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/compile.log",
-      "sha256": "138501f06373a933cb3bbca02b763cbccf270459b4bb8b08f196dac29a6825c5"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/compile.log",
+      "sha256": "279f7a5e842b3cfa94e9a86ca60e4290b2db159c0a7bf14ce4384f1f39744411"
     },
     "manifest.xml": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/manifest.xml",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/manifest.xml",
       "sha256": "9a4ab9544b438fe9b13ee118edaa57d09a53c9122c405b5afa333e6b87107b37"
     },
+    "mir/BoundaryFitness.mir": {
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/mir/BoundaryFitness.mir",
+      "sha256": "df38d6c3fc08d875590c93d6859e3e43d039094bce7c4224648bb0c14c5cda75"
+    },
+    "mir/GeneratedMapTest.mir": {
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/mir/GeneratedMapTest.mir",
+      "sha256": "50883dfd66bb8bf0fbd2e39724170f2722aa531a2dff4559eb68401228ba52c6"
+    },
+    "mir/MetricBoundary.mir": {
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/mir/MetricBoundary.mir",
+      "sha256": "7ae59d51787f1db9e9a60502e86298cb30f20c0b927a30a17c651e944961831d"
+    },
     "native.log": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/native.log",
-      "sha256": "29221375b0e707b74c0783dd508cefecda9d5c26e9f7ab056f8f7f0472bcd735"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/native.log",
+      "sha256": "9c9806ddd7aa11d4a416669182e37dc25ea6bec547af18044602ee090e87e429"
     },
     "precompile.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/precompile.json",
-      "sha256": "eaa8a4f4b2bbce0fb45cadece6adcb867dff2802bc0ec151f97fdd239b6df193"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/precompile.json",
+      "sha256": "f2a3ff13381e02447479177ef18422defaa7f46a9b848c07f2dd2f731c00e5b1"
     },
     "probe.jungle": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/probe.jungle",
-      "sha256": "de1eaaa0c5c9c53fdfee046560f75782050a8f461788b93d0cd823c974fca28b"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/probe.jungle",
+      "sha256": "4a799082a0b820e3f4856446c9fb79fe722eba14933a30cad0d76e1c8304b570"
     },
     "program.prg.gz": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/program.prg.gz",
-      "sha256": "6e8c0403d7f2ae0e625c19c57b9f1d63395a8f83bf7a56d72d75072a1a5379b9"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/program.prg.gz",
+      "sha256": "4478b1b13bd507af2b13736a63b6ebf6c6cb1aa23273727aafa3fd09ef56ec6d"
     },
     "receipt.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/receipt.json",
-      "sha256": "4d43be3f787ce1d7bc53933170ef5e3666c60c7a4b5d49b5d66208d8853c6b0d"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/receipt.json",
+      "sha256": "19d4800b72d3e28e4eb812b806b0ef203125e805574661bc491ef4190b75f2a2"
     },
     "resources/D03MapDescriptor.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/resources/D03MapDescriptor.json",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/resources/D03MapDescriptor.json",
       "sha256": "546ca9296631477e9d527f7b41e2cef9fc4bec523d9be1ffa5522166cc9a55a7"
     },
     "resources/D03MapShard0.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/resources/D03MapShard0.json",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/resources/D03MapShard0.json",
       "sha256": "b424f11d14f966731a92a813aeff8462d744416f0757340762fc1286af5cfea8"
     },
     "resources/D03MapShard1.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/resources/D03MapShard1.json",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/resources/D03MapShard1.json",
       "sha256": "28b14927186b4f1294ce6c70a8e568b14f07ca2ab279990bf38374541b6426eb"
     },
     "resources/D03MapShard10.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/resources/D03MapShard10.json",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/resources/D03MapShard10.json",
       "sha256": "dfa3ef778fa1ed9ba1d4c6f904ad612d8482d12c0e02f7ba1d8bf67450ccd2c7"
     },
     "resources/D03MapShard2.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/resources/D03MapShard2.json",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/resources/D03MapShard2.json",
       "sha256": "0d65de85125bdfc28a384c2e3831076fceeab6682aaa0d4c3ae6057676fd9638"
     },
     "resources/D03MapShard3.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/resources/D03MapShard3.json",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/resources/D03MapShard3.json",
       "sha256": "c5c7db74aa0fc101817586a11bee3543bbde3510910eb17e3350d07165bab50e"
     },
     "resources/D03MapShard4.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/resources/D03MapShard4.json",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/resources/D03MapShard4.json",
       "sha256": "3ec30fca68a60bb20fd43a2aa6b64d5206e9271b919bf18e5d485553db620d58"
     },
     "resources/D03MapShard5.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/resources/D03MapShard5.json",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/resources/D03MapShard5.json",
       "sha256": "4624302ff51da6959a29ad1d574d68ab0774c1fbe78a0e04df4a5f4251300252"
     },
     "resources/D03MapShard6.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/resources/D03MapShard6.json",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/resources/D03MapShard6.json",
       "sha256": "fd7f4d222a343afedae88cf4d97acd625c60c3303614caacf81a10a5448d8e1e"
     },
     "resources/D03MapShard7.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/resources/D03MapShard7.json",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/resources/D03MapShard7.json",
       "sha256": "79461ef61f9ffaf92182d5d09a768656bbdc6330cea68524cb485107ba4b1eb4"
     },
     "resources/D03MapShard8.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/resources/D03MapShard8.json",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/resources/D03MapShard8.json",
       "sha256": "fcad7e5f5d864f9471428e9e3dedaebe1b2edd86ce85e5b2158cfbcd9f6a5357"
     },
     "resources/D03MapShard9.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/resources/D03MapShard9.json",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/resources/D03MapShard9.json",
       "sha256": "359e8242952a647adb13c8efb19498ea8c43e2f0e46ab9833de464c0deee285f"
     },
     "resources/D03RetrySelection.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/resources/D03RetrySelection.json",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/resources/D03RetrySelection.json",
       "sha256": "6e720f60a24f215c7740c54de666e2db23ccb8bd60a346b3411e9db61c86dbb3"
     },
     "resources/DisplayCatalog.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/resources/DisplayCatalog.json",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/resources/DisplayCatalog.json",
       "sha256": "1130202cf8c081e9cc4a540021f26f7e21f1c2dea0805a506c34c2a98ef0a8ae"
     },
     "resources/DisplayInitial.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/resources/DisplayInitial.json",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/resources/DisplayInitial.json",
       "sha256": "d1d9ae61ffcc0ad175da9f3f093b27514f9dbfaa50525a18494bb7745b347522"
     },
     "resources/DisplayInitialFuture.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/resources/DisplayInitialFuture.json",
-      "sha256": "0fe935414625793dfd667d28d27907fc8dda6d90f5ddb61265b44b4c2fd51a9e"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/resources/DisplayInitialFuture.json",
+      "sha256": "370402ba82b8e02509523e8219cb94742cb210539043baa081d0e59f56fd07e6"
     },
     "resources/DisplayMoved.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/resources/DisplayMoved.json",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/resources/DisplayMoved.json",
       "sha256": "222e4a91aa02d21ae3f81db23323f2f6b18d97a6218e48daf77c7734d5c957ea"
     },
     "resources/DisplayMovedFuture.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/resources/DisplayMovedFuture.json",
-      "sha256": "f1fecefc0d8c0cde54607b120d51ec246e0003e5e5d1f08dc64d30b7788778dc"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/resources/DisplayMovedFuture.json",
+      "sha256": "71d51744868ddbde1114287990ff65c73663bc2634a5026096cb1f39348550ed"
     },
     "resources/data.xml": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/resources/data.xml",
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/resources/data.xml",
       "sha256": "b99e7171e7d6f433568c606f37b630fb753452e343d247362a4c3e154fc648bf"
     },
     "restore.json": {
-      "path": "openspec/changes/spacefox-watchface/evidence/fields018/display03-lifecycle-bd6dab7b/restore.json",
-      "sha256": "cbdd30a20215014449f5f3d229632d0fb5cbe2e716e5bc85bf1459e613808998"
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/restore.json",
+      "sha256": "2d703eba05133cd702c6ba23d18c2cb2c535b2dcdae0c407a2ff963907679fd2"
+    },
+    "run.log": {
+      "path": "openspec/changes/spacefox-watchface/evidence/fields018/peer-display-256680ec/run.log",
+      "sha256": "cb953e47938297282763392f07053c2dbffdcd9f37de0f5f59748abe0ecc48ea"
     }
   },
   "retainedDisplay": {

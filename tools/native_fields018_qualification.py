@@ -181,6 +181,19 @@ def validate(root, catalog):
             raise ValueError('fields018 stock predicates missing')
         if sha(gzip.decompress(files[prefix+'Program'])) != observed['stockProgramSha256']:
             raise ValueError('fields018 stock program differs')
+        # Stock heap proof must use the production manifest and release flags;
+        # a generated NativeVersion ID alone does not bind a compiled binary.
+        build = json.loads(files[prefix+'CompileReceipt'])
+        argv = build['command']
+        if (build['exit'] != 0 or build['profile'] != profile or not build['inputsUnchanged']
+                or build['inputHashes'] != record['nativeInputs']
+                or build['programSha256'] != observed['stockProgramSha256']
+                or not build['stockManifestIsProduction']
+                or build['manifestSha256'] != sha((root / 'watchface/manifest.xml').read_bytes())
+                or build['jungleSha256'] != sha(files[prefix+'StockJungle'])
+                or '-r' not in argv or '--unit-test' in argv
+                or not all(flag in argv for flag in ('-l', '3', '-O', '2', '-w'))):
+            raise ValueError('fields018 stock release build binding differs')
         import struct
         image = files[prefix+'Image']
         if not image.startswith(b'\x89PNG\r\n\x1a\n') or struct.unpack('>II', image[16:24]) != (dimension, dimension):

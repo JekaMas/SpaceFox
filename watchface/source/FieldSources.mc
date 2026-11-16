@@ -19,13 +19,13 @@ module FieldCatalog {
             while(item!=null){
                 if(item.complicationId!=null){
                     var kind=item.getType();if((kind==4||kind==5||kind==21||kind==36||kind==37||kind==40)&&types.indexOf(kind)<0){types.add(kind);}
-                    if(kind!=1&&kind!=2&&kind!=3&&kind!=23){
-                        var label=item.longLabel;
-                        if(!(label instanceof String)||label.equals("")){label=item.shortLabel;}
-                        if(!(label instanceof String)||label.equals("")){label=kind instanceof Number&&kind>0?"Complication "+kind:"Complication";}
-                        if(kind==18||kind==22){label+=" "+FieldText.menu(locale)["current"];}
-                        result.add(label,item.complicationId);
-                    }
+                    // Legacy choices use their original readers; expose the
+                    // complication itself even when its label looks similar.
+                    var label=item.longLabel;
+                    if(!(label instanceof String)||label.equals("")){label=item.shortLabel;}
+                    if(!(label instanceof String)||label.equals("")){label=kind instanceof Number&&kind>0?"Complication "+kind:"Complication";}
+                    if(kind==18||kind==22){label+=" "+FieldText.menu(locale)["current"];}
+                    result.add(label,item.complicationId);
                 }
                 if(result.more){return result;}
                 item=iter.next();

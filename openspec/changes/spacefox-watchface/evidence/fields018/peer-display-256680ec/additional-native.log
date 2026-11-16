@@ -1,0 +1,36 @@
+------------------------------------------------------------------------------
+Executing test display03BackgroundBeforeFrame...
+DEBUG (07:15): BACKGROUND sleep_applied=true wake_first_frame no_reload=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03SameBatchJob...
+DEBUG (07:15): SAME_BATCH serial_advance_preserved=true changed_digest_canceled=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03SameSceneRefreshKeepsJob...
+DEBUG (07:15): SAME_SCENE_REFRESH acceptedReopen=true queuedJobRetained=true assetSourceRetained=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03CurrentBodyBatteryLifecycle...
+DEBUG (07:15): BODY_CURRENT unifiedOwner=true callbackNullAndZero=true lowNoRead=true wakeAfterFrame=true deselectionUnsubscribes=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03LowDoesNotSample...
+PASS
+------------------------------------------------------------------------------
+Executing test display03LocaleResume...
+DEBUG (07:15): LOCALE_WAKE refreshed_after_first_frame=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                                Status:
+display03BackgroundBeforeFrame       PASS
+display03SameBatchJob                PASS
+display03SameSceneRefreshKeepsJob    PASS
+display03CurrentBodyBatteryLifecycle PASS
+display03LowDoesNotSample            PASS
+display03LocaleResume                PASS
+Ran 6 tests
+
+PASSED (passed=6, failed=0, errors=0)
