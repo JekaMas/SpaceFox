@@ -101,6 +101,24 @@ def source_state(root: Path) -> dict:
                           "openspec/changes/add-launch-reminders/tasks.md",
                           "openspec/changes/add-launch-reminders/specs/launch-reminders/spec.md",
                           "docs/LAUNCH_REMINDERS.md"})
+    if proof is not None and "liveRuntime023Proof" in proof:
+        current_path = proof["liveRuntime023Proof"]["path"]
+        require(current_path in paths, "live integration proof must be tracked")
+        current = json.loads((root / current_path).read_text())
+        admission.add(current_path)
+        admission.update(ref["path"] for ref in current["priorSnapshots"].values())
+        admission.update(ref["path"] for ref in current["evidence"].values())
+        admission.update(current["currentOwners"])
+    if proof is not None and "b2Runtime022Proof" in proof:
+        b2_path = proof["b2Runtime022Proof"]["path"]
+        require(b2_path in paths, "B2 proof must be tracked")
+        b2 = json.loads((root / b2_path).read_text())
+        admission.add(b2_path)
+        admission.update(ref["path"] for ref in b2["priorSnapshots"].values())
+        admission.update(item["log"]["path"] for item in b2["sdkCases"])
+        admission.update(ref["path"] for ref in b2["frameEvidence"].values())
+        admission.add(b2["crossVmProcesses"]["path"])
+        admission.update(b2["currentOwners"])
     if proof is not None and "b1Integration021Proof" in proof:
         current_path = proof["b1Integration021Proof"]["path"]
         require(current_path in paths, "B1 integration proof must be tracked")

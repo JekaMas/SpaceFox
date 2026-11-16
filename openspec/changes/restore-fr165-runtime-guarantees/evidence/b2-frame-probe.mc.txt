@@ -1,0 +1,32 @@
+import Toybox.Application;
+import Toybox.Graphics;
+import Toybox.Lang;
+import Toybox.System;
+import Toybox.Timer;
+import Toybox.WatchUi;
+(:typecheck(false)) class B2CaptureStore {
+    var data={};function read(k){return data[k];}function write(k,v){data[k]=v;}function remove(k){data.remove(k);}
+}
+(:typecheck(false)) class B2CaptureClock extends WatchClock {
+    function utcSeconds(){return 1794551202;}
+    function localTimeText(){return "08:38";}
+    function localCalendar(){return [1,16,11];}
+}
+(:typecheck(false)) class B2CaptureView extends SpaceFoxView {
+    var raw=null;var cache=null;var staged=null;var promotion=null;var timer=null;
+    function initialize(){SpaceFoxView.initialize(new B2CaptureClock(),new ScheduleState(null,"empty"));}
+    function onShow(){syncDisplayMode(System.DISPLAY_MODE_HIGH_POWER);timer=new Timer.Timer();timer.start(method(:step),50,true);}
+    function onLayout(dc){}
+    function onUpdate(dc){drawClockFallback(dc);}
+    function step(){
+        try{
+            if(cache==null){var store=new B2CaptureStore();var catalog=WatchUi.loadResource(Rez.JsonData.B2InitialCatalog)["raw"];store.write("sf.obj.d49da8ac54926e64f9eb7b8599920f7e4aa779b843fe77018dec104385f61a7b",catalog);catalog=null;raw=WatchUi.loadResource(Rez.JsonData.B2Initial)["raw"];cache=new NativeCache("https://fixture.invalid/profile-a",store);staged=new NativePreparedBridgeFeed(raw,1794551202l,store);return;}
+            if(staged!=null){if(!staged.prepareStep()){return;}promotion=new NativeFeedPromotion(cache,raw,staged,1794551202l,null);staged=null;raw=null;return;}
+            if(promotion!=null){if(!promotion.step()){return;}if(!promotion.accepted){throw new Lang.InvalidValueException("capture admission failed");}var scene=feedScene(cache.packet,1794551202l);setContext(scene);promotion=null;timer.stop();timer=null;System.println("B2_FRAME admitted="+scene.launchId+" target="+scene.retentionTarget+" point="+scene.pointText+" age="+scene.sourceValidated+" optionalAssets=0");WatchUi.requestUpdate();}
+        }catch(e){System.println("B2_FRAME_ERROR "+e.getErrorMessage());if(timer!=null){timer.stop();timer=null;}}
+    }
+}
+(:typecheck(false)) class B2CaptureApp extends Application.AppBase {
+    function initialize(){AppBase.initialize();}
+    function getInitialView(){return [new B2CaptureView()];}
+}

@@ -1,0 +1,30 @@
+
+---
+Error: Unhandled Exception
+Time: 2026-11-16T15:53:43Z
+Part-Number: 006-B4432-00
+Firmware-Version: '25.02'
+Language-Code: eng
+ConnectIQ-API-Version: 5.2.0
+ConnectIQ-Version: 6.0.4
+Filename: B2
+Appname: SpaceFox
+Stack: 
+  - pc: 0x30000203
+    Native: false
+  - pc: 0x30000174
+    Native: false
+  - pc: 0x1000810d
+    File: '/source/watchface/runtime-b2-tests/B2Tests.mc'
+    Line: 57
+    Function: b2FailedAndInterruptedReplacement
+  - pc: 0x1000d4a9
+    File: '/task/cold/gen/006-B4432-00/source/UnitTests.mcgen'
+    Line: 176
+    Function: evaluate_test_entries_30_to_39
+  - pc: 0x1000d569
+    File: '/task/cold/gen/006-B4432-00/source/UnitTests.mcgen'
+    Line: 195
+    Function: runTest
+---
+Error: 'Watchdog Tripped Error - Code Executed Too Long'

@@ -123,3 +123,16 @@ restriction above. GitHub main advanced again through publication-only commits
 to `c410eb4e5d86bbbe28d100996abf6bf5beb0607d`; those must be integrated before
 release. The reported physical no-update result, the reason for it, an actual
 watch update/reopen/LOW run and 15-minute acceptance remain NOT OBSERVED.
+
+## B2 integration and 0.1.23 candidate
+
+Public main advanced to `586212b9829cae7c69ed923de964f3f76047ddbb`, which
+contains the independently reviewed B2 geographic fallback and published 0.1.22
+test prerelease. The merge keeps its qualified world/point behavior and the
+live-data admission, memory ownership and estimated-NET policy together.
+`release-023/INTEGRATION.md` records the bounded FR165M SDK interaction, its
+first setup failure, the controlled simulator restart, and actual gen56→gen57
+admission and restored scene. The current native/locale applicability guard
+uses exact predecessor snapshots and carries the old B2 qualification forward;
+it does not assert new physical observations on any device. 0.1.23 is prepared
+for review and signing; publication is not implied by this source record.

@@ -1,5 +1,25 @@
 # Developer workflow: quickstart
 
+## Stable batch delivery
+
+Before applying a property batch, establish its complete fix scope and required
+test selection. One author owns implementation, fixes and verification until the
+whole batch is stable and self-GREEN. Exactly one independent peer then reviews
+and repairs that same batch through peer GREEN; do not assign a new agent for
+each finding. Root judges the accepted result and merges once. Generate the
+native ID and necessary source-admission metadata before final peer GREEN.
+
+After peer GREEN, freeze, merge, build the full signed release and publish as
+authorized. Do not add a separate artifact-verification agent or repeat SDK,
+behavior, locale or source-hash proof merely for release, commit or stage
+changes. The same owner repairs inherent compiler, signing or package errors.
+Only an actual semantic change or a concrete failed input reopens directly
+affected checks, once the whole fix batch is stable; do not rerun all tests by
+default. Batch package hashes and manifests once for the final package, not for
+documentation edits. Keep one task list, preserve original evidence, distinguish
+physical status, and report at phase or result boundaries. Never mark skipped,
+missing or failed evidence green or weaken the criteria.
+
 The public export has no `.agents/workflow` submodule or workflow adapter. The authoring project used [agent-workflow at f8e7ba481bf356600925e01936d7e9f3f1ac0084](https://github.com/JekaMas/agent-workflow/tree/f8e7ba481bf356600925e01936d7e9f3f1ac0084); this reference does not install it or establish a pin in this checkout. Use this repository's `AGENTS.md`, [project workflow](PROJECT_WORKFLOW.md), existing OpenSpec change, and proportionate checks. Do not initialize a non-existent submodule or silently install prerequisites. If adopting the shared workflow is requested, inspect its adoption instructions and proposed changes first; preserve this project's contracts and current evidence.
 
 ## Develop a task
