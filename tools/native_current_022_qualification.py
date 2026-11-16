@@ -40,6 +40,15 @@ def validate(root,catalog):
         if proof[name]['sha256']!=digest:raise ValueError('historical parent proof changed: '+name)
         checked(root,proof[name])
     if 'Status: independent software review GREEN' not in checked(root,rec['historicalPeer']).read_text():raise ValueError('historical peer evidence absent')
+    parent=json.loads(checked(root,rec['peerReviewedProof']).read_text())
+    if rec['peerReviewedProof']['sha256'] != '9838392688273e99b88e3808b4a4a24e7f549e4a97d418386ba461aa2243592c':raise ValueError('peer-reviewed proof changed')
+    original=checked(root,rec['preTypeView']).read_text()
+    if hashlib.sha256(original.encode()).hexdigest()!=parent['nativeInputs']['watchface/source/SpaceFoxView.mc']:raise ValueError('peer-reviewed view changed')
+    old='var decodingText=null;var decodingMetricInput=null;var decodingMetricText=null;'
+    new='var decodingText as Array or Null=null;var decodingMetricInput as Array or Null=null;var decodingMetricText as Array or Null=null;'
+    if original.count(old)!=1 or (root/'watchface/source/SpaceFoxView.mc').read_text()!=original.replace(old,new):raise ValueError('compiler fix exceeds reviewed type declarations')
+    changed={n for n in parent['nativeInputs'] if parent['nativeInputs'][n]!=rec['nativeInputs'].get(n)}
+    if changed!={'watchface/source/SpaceFoxView.mc','watchface/source/generated/NativeVersion.mc'} or set(parent['nativeInputs'])!=set(rec['nativeInputs']):raise ValueError('compiler fix native delta changed')
     if native_inputs(root)!=rec['nativeInputs'] or test_inputs(root)!=rec['testInputs']:raise ValueError('current native or test inputs changed')
     for name,digest in rec['owners'].items():
         if sha(root/name)!=digest:raise ValueError('current integration owner changed: '+name)

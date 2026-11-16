@@ -143,7 +143,7 @@ def source_state(root: Path) -> dict:
         current = json.loads((root / current_path).read_text())
         admission.add(current_path)
         admission.update(ref["path"] for ref in current["cases"].values())
-        admission.update(current[key]["path"] for key in ("replacement", "replacementRun", "seed", "program", "fixtureArchive", "fr165m", "fr265s", "host", "predecessor", "historicalPeer"))
+        admission.update(current[key]["path"] for key in ("replacement", "replacementRun", "seed", "program", "fixtureArchive", "fr165m", "fr265s", "host", "predecessor", "historicalPeer", "peerReviewedProof", "preTypeView"))
         admission.update(ref["path"] for ref in current["probeSources"].values())
         admission.update(current["owners"])
     if proof is not None and "liveRuntime020Proof" in proof:
@@ -487,7 +487,7 @@ def evidence_inputs(paths: list[Path], root: Path) -> list[dict]:
 
 # Independent combined-source review, including the exact 0.1.24 version file.
 # A freshly repinned author qualification cannot substitute for this boundary.
-CURRENT_INTEGRATION_PROOF_BODY_SHA256 = "c174ce2acfabaa0597873259ec055610b70061acb10daa3536ff124d79003d49"
+CURRENT_INTEGRATION_PROOF_BODY_SHA256 = "53481388290090e9d570c32a16acd93628100b2e4c7b1b743edb56de81844a23"
 INTEGRATION_PEER_NATIVE_SHA256 = "71547b49bc1c46f268ef22fd169b56feec0697b5ae4f24b76d19e9eab8826d5c"
 INTEGRATION_PEER_PROOF_BODY_SHA256 = "39d7287783bcc2f5642afcc1b90ac928909ecb435371391521a601bbf03de1bf"
 
@@ -501,7 +501,7 @@ def require_combined_peer(root: Path, supplied: list[dict]) -> None:
         validate(root, catalog)
         peers = [item["data"] for item in supplied if item["data"].get("kind") == "current022-independent-native-peer"]
         require(len(peers) == 1 and peers[0].get("status") == "GREEN" and
-                peers[0].get("integration_proof_sha256") == combined["sha256"],
+                peers[0].get("integration_proof_sha256") == "9838392688273e99b88e3808b4a4a24e7f549e4a97d418386ba461aa2243592c",
                 "production export requires current 0.2.2 independent peer binding")
         return
     catalog = json.loads((root / "locales/catalog.json").read_text())

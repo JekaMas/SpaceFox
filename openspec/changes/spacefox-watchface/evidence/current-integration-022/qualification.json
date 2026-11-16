@@ -308,12 +308,12 @@
     "watchface/source/SettingsMenu.mc": "8992ee366d912736084eed4c4527ffc06cef47022f34304d6e920c304365d796",
     "watchface/source/SettingsMenuText.mc": "90bc3e1a5f59125667a64903f4f4fb4829022921fcaf3ef031cf16c596da974c",
     "watchface/source/SpaceFoxApp.mc": "9a6d747598ad638a740d6e59c52440c93b8404d5e16d6fdbe1e9543332818257",
-    "watchface/source/SpaceFoxView.mc": "f60c3c71327f5657ed9e3d8aa88a6899663398767ae351a2997618f6b776c0d9",
+    "watchface/source/SpaceFoxView.mc": "c63e4268177c584ed6dc03e525c94082d93d4f2160b19b9adc4349d6f0fe0a6f",
     "watchface/source/WatchClock.mc": "e1cb5dd3ac35fb8bc52efad2ef85c7b909cb15fe7a04b4710302d4d34ddec100",
     "watchface/source/generated/FallbackWorld.mc": "1769a15e91d74b875fdcdeb95cda266946659d8e09603adb7928c67a8025f6fc",
     "watchface/source/generated/LocaleGraphemes.mc": "5ad65d6328908a7f251cd5ddbac83244de9b51929c2c46cb746bfb168a4f6c80",
     "watchface/source/generated/NativeAssets.mc": "9d311a4b9a065164ecce17590afa0e90596bc5e750cbb96198f673237f17a86e",
-    "watchface/source/generated/NativeVersion.mc": "a5850db5a73eb97fdde860432df10554cffd0cdafb3bbc3c304c641d2a5ede7e",
+    "watchface/source/generated/NativeVersion.mc": "86c9b6f558860acf31f92cdd1f41a7934e75563a13f5dba0af45241c44f37974",
     "watchface/source/generated/SceneStrings.mc": "dd8a910b53d2493ec8760e0148186c9535c05a5e0644ae5b6e6eccb6dd651109"
   },
   "testInputs": {
@@ -575,7 +575,7 @@
   "owners": {
     ".github/workflows/update-feed.yml": "168056bff86d2eb91c3c7c1d519560fee60331ca2c579ef36a63018fba66da31",
     "release/signing-identity.json": "00700a2f933951ca64093b6bccec2bbec66166e615d07c1de559f1addedd37f6",
-    "tests/test_current_022_admission.py": "2e86620dad65a541f5c841bf33cf84b8acd9a36f2ed215ff736d567c0fc6723c",
+    "tests/test_current_022_admission.py": "31b16a1ae3bc532196585871622d9b78d1606992f4909f529e95868e5529446a",
     "tests/test_performance021_a.py": "374c0fa2079cda07de2defa8b4c2311de51a2148d3ea68b267c29d24ab2930c0",
     "tests/test_performance021_b.py": "12550442b382639f902a2f0e216f6c6002d9ddefd4dcdd9b50beee6283a700ce",
     "tests/test_performance021_b_cloud.py": "efd74d100f4eaed13eab6e423b43683b8224a5d041a346eadf6cc366541bc132",
@@ -636,7 +636,7 @@
     "tools/native_bootstrap_requalification.py": "34cbe032f2e0472adaeeab10820aa7140489df919c02a1b1e5e722b8b11cc96b",
     "tools/native_cache_port_requalification.py": "8b186e64c22b68e0ac94a9e5490f38a93bd6ef43969133e7ae7b78de17f1715a",
     "tools/native_catalog_map_points.py": "9ee117749ff019e71482423619e534c606bad23175b940b1c97396c86516478c",
-    "tools/native_current_022_qualification.py": "ff721a9467e71aa701a56f34aeb579bc57af60cacb7df78cab18fd2339497bce",
+    "tools/native_current_022_qualification.py": "69c91e0217959488ed69d7769dfd0902977adf4e6226be5729b4d424e5508739",
     "tools/native_current_batch.py": "9c668c63e37dbdb5cca8eb6266991bd0ca4a8321867718ced076a21f11b51b8c",
     "tools/native_current_network.py": "cacf32a762953cbffc1d24cddf884c9610739324cbb9a3e63a2b1068f2183be2",
     "tools/native_current_packet.py": "56e2c4c5343eead4286695bcf42546afc5f5de55f2b6941f28e5900922b12e3e",
@@ -733,7 +733,7 @@
     "tools/publisher_state.py": "9e5b3a72569ac14f12a17e3a5f0885154c0f88c2a06d71cd322c03ff646a5c4f",
     "tools/qualify_native_finite.py": "f5923999e810f56f58b0bc42e0b570c0287189414d6d8e759728c5173a018f46",
     "tools/refresh_catalog.py": "7438099aafe57dcc11d2fb98abb0b9cfbfa0022c862328d2fb0e5aa15acd579f",
-    "tools/release.py": "f2653f84fbaa4e9c69970829fcf6a30c0a258f8c50e067f27ca58c996058990d",
+    "tools/release.py": "861024617434073419d9205cc4ce8f3e1c7bdd237559a5f41a4ed7b111e64043",
     "tools/rocket_contact_sheet.py": "38b4ca09994827f561817dea9c41b574242807161036f89d50a07c418937d3f6",
     "tools/rocket_pack_audit.py": "9c937b031a89befca6f56897258e25baace2176454c012de67338bd0c33d410c",
     "tools/run_instrumented_probe.py": "aa2d6de4093c0f13bf3d48d825ceaee0f937fd6f77577e9c58f195846dc6570f",
@@ -895,5 +895,13 @@
   "predecessor": {
     "path": "openspec/changes/spacefox-watchface/evidence/current-integration-022/sdk/predecessor.log",
     "sha256": "bdb46180f2778e96e87398bd91d3b224538e2fd0e0a5100c84b1438cabc03208"
+  },
+  "peerReviewedProof": {
+    "path": "openspec/changes/spacefox-watchface/evidence/current-integration-022/export-typefix/peer-reviewed-qualification.json",
+    "sha256": "9838392688273e99b88e3808b4a4a24e7f549e4a97d418386ba461aa2243592c"
+  },
+  "preTypeView": {
+    "path": "openspec/changes/spacefox-watchface/evidence/current-integration-022/export-typefix/SpaceFoxView.mc.snapshot",
+    "sha256": "f60c3c71327f5657ed9e3d8aa88a6899663398767ae351a2997618f6b776c0d9"
   }
 }

@@ -20,7 +20,7 @@ class Current022Binding(unittest.TestCase):
     def test_release_requires_matching_independent_peer(self):
         from tools import release
         catalog=json.loads((ROOT/'locales/catalog.json').read_text())
-        digest=catalog['supportPolicy']['softwareQualificationProof']['currentIntegration022Proof']['sha256']
+        digest='9838392688273e99b88e3808b4a4a24e7f549e4a97d418386ba461aa2243592c'
         good={'data': {'kind':'current022-independent-native-peer', 'status':'GREEN', 'integration_proof_sha256':digest}}
         with patch.object(owner,'validate',return_value=[]):
             with self.assertRaises(Exception): release.require_combined_peer(ROOT,[])

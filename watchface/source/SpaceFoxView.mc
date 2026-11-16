@@ -40,7 +40,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     var assetCache as NativeRenderSource or Null=null;
     var sfrBuild as NativeSfrBuild or Null=null;var sfrTimer as Timer.Timer or Null=null;
     var sfrDeferred as Boolean=false;var sfrFallbackPrepared as Boolean=false;var sfrBundled as Boolean=false;
-    var decodingText=null;var decodingMetricInput=null;var decodingMetricText=null;
+    var decodingText as Array or Null=null;var decodingMetricInput as Array or Null=null;var decodingMetricText as Array or Null=null;
     var fallbackClockTimer as Timer.Timer or Null=null;
     var sceneLifecycle as SceneLifecycle;var sfrGeneration as Number=0;
     var pendingLoader as Method or Null=null;
