@@ -41,9 +41,9 @@ Native work is last to collect all invalidating edits into one stable profile bu
 | HOST-05 | B / 8.2 | DONE — author + peer + root|
 | HOST-06 | B / 8.2 | DONE — author + peer + root|
 | ENG-02 | B / 8.2 | DONE — author + peer + root|
-| ENG-01 | C / 8.3 | Author GREEN — peer/root pending |
-| CLEAN-02 | C / 8.3 | Author GREEN — peer/root pending |
-| WEB-01 | C / 8.3 | Author GREEN — peer/root pending |
+| ENG-01 | C / 8.3 | Author + peer GREEN — root pending |
+| CLEAN-02 | C / 8.3 | Author + peer GREEN — root pending |
+| WEB-01 | C / 8.3 | Author + peer GREEN — root pending |
 | MEM-01 | D / 8.4 | PENDING |
 | MEM-02 | D / 8.4 | PENDING |
 | MEM-03 | D / 8.4 | PENDING |
@@ -133,3 +133,15 @@ source-copy admission and current scan measurement are the final author checks.
   Task8.3 stays unchecked for fresh independent verify/fix and root judgment.
   D remains unstarted. Final receipt/documentation changes leave all selected
   release/sparse input bytes unchanged.
+
+## Group C independent verification and root handoff
+
+- Peer repaired the duplicate WF21 graph identity and restored four original
+  native case notes; WF24.P1 now owns the browser cases. A stale geographic
+  preview operator recipe was retired. [c/PEER.md](c/PEER.md) records the
+  original red, meaningful controls, clean checkpoint and limits.
+- Local software C is GREEN after author and independent peer; task 8.3 is
+  checked for their completed work. Root judgment remains pending, overall
+  performance021 is NOT DONE, and D remains unstarted. The clean source-copy
+  proof at 007c3a0d retains all 6,671 identical selected input hashes and
+  exactly five qualified locales; later peer/task/journal paths are disjoint.
