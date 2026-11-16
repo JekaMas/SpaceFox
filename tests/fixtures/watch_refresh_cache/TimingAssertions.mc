@@ -17,7 +17,7 @@ import Toybox.System;
 }
 (:typecheck(false)) function finalRead(label,now){
  var data=WatchUi.loadResource(Rez.JsonData.TimingCatalog);var raw=finalPacket(label);
- var p=new NativeBridgeFeed(raw,1794576343,new FinalPacketStore(data));
+ var p=new TestNativeBridgeFeed(raw,1794576343,new FinalPacketStore(data));
  var precision=p.document["launch"]["timing"]["precision"];var identity=p.launchId();
  var clock=new ControlledClock(now,"08:08");var v=new SpaceFoxView(clock,new ScheduleState(null,"unknown"));v.setPacket(p);
  return [v,v.snapshot(),precision,identity];
@@ -46,7 +46,7 @@ import Toybox.System;
  log.debug("accepted sameID reschedule/targetwithdrawal replaces elapsed coherently through actual parser/context");return true;
 }
 (:test,:typecheck(false)) function finalParserUpdateNegative(log){
- var data=WatchUi.loadResource(Rez.JsonData.TimingCatalog);var rejected=false;try{new NativeBridgeFeed(finalPacket("invalid"),1794576343,new FinalPacketStore(data));}catch(e){rejected=true;}Test.assert(rejected);
+ var data=WatchUi.loadResource(Rez.JsonData.TimingCatalog);var rejected=false;try{new TestNativeBridgeFeed(finalPacket("invalid"),1794576343,new FinalPacketStore(data));}catch(e){rejected=true;}Test.assert(rejected);
  var p=finalRead("minute",1794576343);Test.assertEqual(p[2],"source-coarse");Test.assertEqual(p[1].countdown,"T- 04:28:17");
  log.debug("contradictory exact target/sourceNET is rejected; nominalMIN never relabelled exact");return true;
 }

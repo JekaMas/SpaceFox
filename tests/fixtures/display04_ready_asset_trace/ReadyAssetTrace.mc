@@ -28,9 +28,9 @@ import Toybox.WatchUi;
 (:test,:typecheck(false)) function display04RealReadyAssetTrace(logger){
  for(var language=0;language<2;language+=1){
   var store=new D04ReadyAssetStore();var catalog=WatchUi.loadResource(Rez.JsonData.D04Catalog);store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);
-  var cache=new NativeCache("https://fixture.invalid/display04-ready",store);var raw=WatchUi.loadResource(Rez.JsonData.D04Feed)["raw"];
+  var cache=new TestNativeCache("https://fixture.invalid/display04-ready",store);var raw=WatchUi.loadResource(Rez.JsonData.D04Feed)["raw"];
   Test.assert(cache.accept(raw,1794576343));var context=feedScene(cache.packet,1794576343);Test.assert(context!=null&&context.point!=null);
-  store.data={};var build=new NativeSfrBuild(store,"https://fixture.invalid/display04-ready",cache.packet);var steps=0;
+  store.data={};var build=new TestNativeSfrBuild(store,"https://fixture.invalid/display04-ready",cache.packet);var steps=0;
   while(!build.step()){steps+=1;Test.assert(steps<5000);}
   var visual=build.result;Test.assert(visual!=null&&visual.bitmap!=null&&visual.mapBitmap!=null&&visual.siteCountryBitmap!=null&&visual.scene["position"]!=null);
   logger.debug("D04_READY_ASSETS|"+language+"|selection="+visual.selectionHash+"|map="+visual.mapBitmap.getWidth()+"x"+visual.mapBitmap.getHeight()+"|rocket="+visual.bitmap.getWidth()+"x"+visual.bitmap.getHeight()+"|flag="+visual.siteCountryBitmap.getWidth()+"x"+visual.siteCountryBitmap.getHeight()+"|phase=0|position=true");

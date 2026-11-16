@@ -32,7 +32,7 @@ import Toybox.WatchUi;
  function onLayout(dc){SpaceFoxView.onLayout(dc);pump=new Timer.Timer();pump.start(method(:buildStep),25,true);}
  function buildStep(){
   try{
-   if(job==null){System.println("D04_READY_BUILD_START");job=new NativeSfrBuild(adapter,"https://fixture.invalid/display04-ready",packet);}
+   if(job==null){System.println("D04_READY_BUILD_START");job=new TestNativeSfrBuild(adapter,"https://fixture.invalid/display04-ready",packet);}
    if(job.step()){
     downloaded=job.result;renderer.downloaded=downloaded;
     System.println("D04_READY_BUILD_DONE selection="+downloaded.selectionHash+" map="+(downloaded.mapBitmap!=null)+" rocket="+(downloaded.bitmap!=null)+" flag="+(downloaded.siteCountryBitmap!=null)+" position="+(downloaded.scene!=null&&downloaded.scene["position"]!=null));
@@ -63,7 +63,7 @@ import Toybox.WatchUi;
  function initialize(){AppBase.initialize();}
  (:typecheck(disableBackgroundCheck)) function getInitialView(){
   var store=new D04ReadyStore();var catalog=WatchUi.loadResource(Rez.JsonData.D04Catalog);store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);
-  var cache=new NativeCache("https://fixture.invalid/display04-ready",store);var raw=WatchUi.loadResource(Rez.JsonData.D04Feed)["raw"];
+  var cache=new TestNativeCache("https://fixture.invalid/display04-ready",store);var raw=WatchUi.loadResource(Rez.JsonData.D04Feed)["raw"];
   if(!cache.accept(raw,1794576343)){throw new Lang.InvalidValueException("real READY feed rejected");}
   var view=new D04ReadyView(store);view.fitness=new D04ReadyFitness();view.bodyBattery=new D04ReadyBody();view.setSettings(new SceneSettings({"Language"=>0}));view.setPacket(cache.packet);
   // Simulated Storage is external to the application heap on watch. Drop its

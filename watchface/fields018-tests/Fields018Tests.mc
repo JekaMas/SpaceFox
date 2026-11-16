@@ -135,8 +135,9 @@ function fields018SameSlotReplacement(logger){
     Application.Storage.setValue("sf.field1",second);view.setSettings(new SceneSettings({"Field1"=>6,"Field2"=>0,"Field3"=>5,"Field4"=>3}));
     Test.assert(view.settings.slots[0].equals("custom1")&&view.selectedFields.includes(second)&&!view.selectedFields.includes(first));
     var expected=FieldFormat.complication(Complications.getComplication(second),"en");Test.assert(view.fitness.display(view.values,"custom1").equals(expected));
+    view.stopFitness();view.admissionPending=true;view.values["energy"]=1234;view.refreshFitness();view.fieldsChanged(second);Test.assert(!view.selectedFields.active()&&view.fitnessTimer==null&&view.values["energy"]==1234);view.admissionPending=false;view.refreshFitness();Test.assert(view.selectedFields.active());
     view.onEnterSleep();Test.assert(!view.selectedFields.active());view.onHide();Application.Storage.deleteValue("sf.field1");
-    logger.debug("SAME_SLOT property=6 unchanged=true source=A->B immediate=true lowStopped=true");return true;
+    logger.debug("SAME_SLOT property=6 unchanged=true source=A->B immediate=true pendingNoRead=true resume=true lowStopped=true");return true;
 }
 
 // Independent list of official Info symbols; null values do not remove a

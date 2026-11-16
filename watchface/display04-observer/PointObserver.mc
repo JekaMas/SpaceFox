@@ -38,7 +38,7 @@ import Toybox.WatchUi;
  function initialize(){AppBase.initialize();}
  (:typecheck(disableBackgroundCheck)) function getInitialView(){
   System.println("DISPLAY04_STAGE initial");var store=new PointStore();var catalog=WatchUi.loadResource(Rez.JsonData.D04Catalog);store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);
-  var cache=new NativeCache("https://fixture.invalid/display04-point",store);var raw=WatchUi.loadResource(Rez.JsonData.D04Feed)["raw"];
+  var cache=new TestNativeCache("https://fixture.invalid/display04-point",store);var raw=WatchUi.loadResource(Rez.JsonData.D04Feed)["raw"];
   System.println("DISPLAY04_STAGE before_accept");if(!cache.accept(raw,1794551202)){throw new Lang.InvalidValueException("captured feed rejected");}
   System.println("DISPLAY04_STAGE accepted");var v=new PointView(new PointClock(),new ScheduleState(null,"empty"));v.fitness=new PointFitness();v.bodyBattery=new PointBody();
   v.setSettings(new SceneSettings({"Language"=>0}));v.setPacket(cache.packet);v.values={"steps"=>12345,"calories"=>2345,"battery"=>82,"energy"=>null,"heart"=>null,"stress"=>null};

@@ -59,7 +59,7 @@ class RefreshSdkStore {
     var ids=[Rez.JsonData.RefreshCatalogInitial,Rez.JsonData.RefreshCatalogDifferent];
     for(var i=0;i<ids.size();i+=1){var row=WatchUi.loadResource(ids[i]);store.write("sf.obj."+row["catalogDigest"],row["catalog"]);}
 }
-(:typecheck(false)) function refreshCache(store){return new NativeCache("https://fixture.invalid/refresh",store);}
+(:typecheck(false)) function refreshCache(store){return new TestNativeCache("https://fixture.invalid/refresh",store);}
 (:typecheck(false)) function refreshId(p){return p.launchId().equals("ll2:launch:0f867f0c-5422-4d44-93b8-d7faaae7019b");}
 
 (:test,:typecheck(false)) function refreshColdCache(log){
@@ -70,7 +70,7 @@ class RefreshSdkStore {
 
 (:test,:typecheck(false)) function refreshCacheSequence(log){
     var d=refreshInputs();var s=new RefreshFaultStore(null);refreshSeed(s,d);var c=refreshCache(s);
-    var accepted=c.accept(refreshPacket("initial"),1794551202l);log.debug("cache initial accepted="+accepted+" failure="+c.failure+" reason="+c.failureReason+" id="+(c.packet==null?"null":c.packet.launchId()));Test.assert(accepted);Test.assert(refreshId(c.packet));
+    var accepted=c.accept(refreshPacket("initial"),1794551202l);log.debug("cache initial accepted="+accepted+" failure="+c.failure+" id="+(c.packet==null?"null":c.packet.launchId()));Test.assert(accepted);Test.assert(refreshId(c.packet));
     Test.assert(c.packet.validation==1794551192l);Test.assert(!c.packet.rescheduled);
     var writes=s.writes;Test.assert(c.accept(refreshPacket("initial"),1794551202l));Test.assertEqual(s.writes,writes);
     Test.assert(c.accept(refreshPacket("moved"),1794551202l));Test.assert(refreshId(c.packet));
@@ -79,7 +79,7 @@ class RefreshSdkStore {
     Test.assert(reopened.packet.validation==1794551193l);Test.assert(reopened.packet.rescheduled);
     Test.assert(reopened.accept(refreshPacket("refresh"),1794551202l));Test.assert(reopened.packet.rescheduled);
     Test.assert(reopened.accept(refreshPacket("withdrawn"),1794551202l));Test.assert(reopened.packet.rescheduled);
-    var unknown=new NativeBridgeFeed(refreshPacket("withdrawn"),1794551202l,s);
+    var unknown=new TestNativeBridgeFeed(refreshPacket("withdrawn"),1794551202l,s);
     Test.assertEqual(unknown.document["launch"]["timing"]["precision"],"unknown");
     Test.assert(unknown.document["launch"]["timing"]["exact_utc"]==null);
     Test.assert(reopened.accept(refreshPacket("withdrawn_refresh"),1794551202l));Test.assert(reopened.packet.rescheduled);
@@ -113,7 +113,7 @@ class RefreshSdkStore {
 }
 
 (:test,:typecheck(false)) function refreshNearAndClock(log){
-    var d=refreshFinal();var s=new RefreshFaultStore(null);refreshSeed(s,d);var p=new NativeBridgeFeed(refreshFinalPacket("exact"),1794576343l,s);
+    var d=refreshFinal();var s=new RefreshFaultStore(null);refreshSeed(s,d);var p=new TestNativeBridgeFeed(refreshFinalPacket("exact"),1794576343l,s);
     Test.assertEqual(p.interval(1794576342l),3600);Test.assertEqual(p.interval(1794576343l),900);
     Test.assertEqual(p.interval(1794585343l),900);Test.assertEqual(p.interval(1794585344l),3600);
     p.advance(1794579042l);Test.assert(!p.stale);p.advance(1794579043l);Test.assert(p.stale);
@@ -130,7 +130,7 @@ class RefreshSdkStore {
 (:test,:typecheck(false)) function refreshNamespaces(log){
     var d=refreshInputs();var s=new RefreshFaultStore(null);refreshSeed(s,d);
     var a=refreshCache(s);Test.assert(a.accept(refreshPacket("initial"),1794551202l));Test.assert(a.accept(refreshPacket("moved"),1794551202l));
-    var b=new NativeCache("https://fixture.invalid/other",s);Test.assert(b.accept(refreshPacket("initial"),1794551202l));
+    var b=new TestNativeCache("https://fixture.invalid/other",s);Test.assert(b.accept(refreshPacket("initial"),1794551202l));
     var again=refreshCache(s);again.load(1794551202l);Test.assert(!again.accept(refreshPacket("initial"),1794551202l));
     Test.assert(again.accept(refreshPacket("moved"),1794551202l));Test.assert(again.packet.validation==1794551193l);
     log.debug("publisher floor for each URL survives switching; exact current generation remains admissible");return true;
@@ -152,10 +152,10 @@ class RefreshSdkStore {
 }
 
 (:test,:typecheck(false)) function refreshParserRejects(log){
-    var d=refreshFinal();var s=new RefreshFaultStore(null);refreshSeed(s,d);var c=new NativeCache("https://fixture.invalid/parser",s);
+    var d=refreshFinal();var s=new RefreshFaultStore(null);refreshSeed(s,d);var c=new TestNativeCache("https://fixture.invalid/parser",s);
     Test.assert(c.accept(refreshFinalPacket("exact"),1794576343l));var prior=c.packet.wireHash;var writes=s.writes;
     Test.assert(!c.accept(refreshFinalPacket("invalid"),1794576343l));Test.assertEqual(s.writes,writes);
-    var r=new NativeCache("https://fixture.invalid/parser",s);Test.assert(r.load(1794576343l)!=null);
+    var r=new TestNativeCache("https://fixture.invalid/parser",s);Test.assert(r.load(1794576343l)!=null);
     Test.assertEqual(r.packet.wireHash,prior);Test.assert(r.packet.validation==1794576343l);
     log.debug("current contradictory time packet rejected without replacing accepted cache");return true;
 }
@@ -195,22 +195,22 @@ class RefreshSdkStore {
     s.write("sf.obj.6f416f909314f13613e0d0f5bea19d0f2bd6c63d4180560a2557966e74acbf08",unresolvedResource("technicalScene"));
 }
 (:test,:typecheck(false)) function refreshUnresolvedSequence(log){
-    var s=new RefreshFaultStore(null);unresolvedSeed(s);var c=new NativeCache("https://fixture.invalid/unresolved",s);
+    var s=new RefreshFaultStore(null);unresolvedSeed(s);var c=new TestNativeCache("https://fixture.invalid/unresolved",s);
     Test.assert(c.accept(unresolvedResource("empty1"),1794551192l));Test.assert(c.packet.launchId()==null);
     Test.assert(c.accept(unresolvedResource("real2"),1794551192l));
     Test.assertEqual(c.packet.launchId(),"ll2:launch:a6bc9339-1a98-4483-9cdd-738768401c2e");
-    var a=new NativeCache("https://fixture.invalid/unresolved",s);Test.assert(a.load(1794551192l)!=null);
+    var a=new TestNativeCache("https://fixture.invalid/unresolved",s);Test.assert(a.load(1794551192l)!=null);
     Test.assertEqual(a.packet.launchId(),"ll2:launch:a6bc9339-1a98-4483-9cdd-738768401c2e");
     Test.assert(a.accept(unresolvedResource("empty3"),1794551192l));Test.assert(a.packet.launchId()==null);
     Test.assert(a.accept(unresolvedResource("real4"),1794551192l));
-    var r=new NativeCache("https://fixture.invalid/unresolved",s);Test.assert(r.load(1794551192l)!=null);
+    var r=new TestNativeCache("https://fixture.invalid/unresolved",s);Test.assert(r.load(1794551192l)!=null);
     Test.assertEqual(r.packet.launchId(),"ll2:launch:a6bc9339-1a98-4483-9cdd-738768401c2e");
     Test.assert(r.packet.validation==1794551192l);Test.assert(r.packet.presentation.point==null);
     log.debug("current producer→native cache empty/nonempty generations 1/2/3/4; real unresolved historical record with technical status");return true;
 }
 (:test,:typecheck(false)) function refreshUnresolvedScene(log){
     var s=new RefreshFaultStore(null);unresolvedSeed(s);
-    var p=new NativeBridgeFeed(unresolvedResource("real2"),1794551192l,s);var row=p.document["launch"];
+    var p=new TestNativeBridgeFeed(unresolvedResource("real2"),1794551192l,s);var row=p.document["launch"];
     Test.assertEqual(p.launchId(),"ll2:launch:a6bc9339-1a98-4483-9cdd-738768401c2e");
     Test.assertEqual(row["configuration_id"],"ll2:configuration:515");Test.assertEqual(row["site_id"],"ll2:site:233");
     log.debug("unresolved nominal="+row["timing"]["nominal_utc"]+" config="+row["configuration_name"]+" validation="+p.validation);Test.assert(row["timing"]["nominal_utc"]==1717457880l);Test.assertEqual(row["configuration_name"],"Chang'e Sample Ascender");
@@ -218,15 +218,15 @@ class RefreshSdkStore {
     var context=feedScene(p,1794551192l);Test.assert(context.point==null);Test.assertEqual(context.modelId,"ll2:configuration:515");
     Test.assertEqual(context.rocket,"Chang'e Sample Ascender");Test.assertEqual(context.site,"Apollo crater");
     Test.assertEqual(p.bridge["selection"]["sha256"],"41abf304fe69c7ed2dd628e6946dbe48256e1919e375de41a0fdffa48cd4ff3f");
-    var scene=new NativeSfrBuild(s,"https://fixture.invalid/unresolved",p);Test.assert(scene.scene["position"]==null);
+    var scene=new TestNativeSfrBuild(s,"https://fixture.invalid/unresolved",p);Test.assert(scene.scene["position"]==null);
     Test.assert(scene.scene["roles"]["rocket"]==null);Test.assert(scene.scene["roles"]["map"]==null);
-    var t=new NativeBridgeFeed(unresolvedResource("technical1"),1794551192l,s);var tr=t.document["launch"];
+    var t=new TestNativeBridgeFeed(unresolvedResource("technical1"),1794551192l,s);var tr=t.document["launch"];
     Test.assertEqual(tr["configuration_id"],"ll2:configuration:999999");Test.assertEqual(tr["operator_id"],"ll2:organization:999999");Test.assertEqual(tr["site_id"],"ll2:site:999999");
     Test.assertEqual(tr["configuration_name"],"Starship V3");Test.assertEqual(tr["operator_name"],"SpaceX");Test.assertEqual(tr["site_name"],"Orbital Launch Pad 2");
     Test.assert(tr["timing"]["nominal_utc"]==1794609900l);var tc=feedScene(t,1794551192l);
     Test.assert(tc.point==null);Test.assertEqual(tc.operator,"SpaceX");Test.assertEqual(tc.modelId,"ll2:configuration:999999");
     Test.assertEqual(t.bridge["selection"]["sha256"],"6f416f909314f13613e0d0f5bea19d0f2bd6c63d4180560a2557966e74acbf08");
-    var ts=new NativeSfrBuild(s,"https://fixture.invalid/unresolved",t);Test.assert(ts.scene["position"]==null);
+    var ts=new TestNativeSfrBuild(s,"https://fixture.invalid/unresolved",t);Test.assert(ts.scene["position"]==null);
     Test.assert(ts.scene["roles"]["rocket"]==null);Test.assert(ts.scene["roles"]["map"]==null);
     log.debug("current producer→NativeBridgeFeed→feedScene→NativeSfrBuild.begin: exact captured text/UTC, unresolved IDs, no point or bound rocket/map; no drawing");return true;
 }

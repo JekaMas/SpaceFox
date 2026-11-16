@@ -25,7 +25,7 @@ import Toybox.Application;
  var moved=WatchUi.loadResource(Rez.JsonData.DisplayMoved)["raw"];
  for(var seed=1;seed<=5;seed+=1){
   var clock=new Display03Clock();clock.now=1794551202;var store=new D03Store();store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);
-  var cache=new NativeCache("https://fixture.invalid/display03",store);Test.assert(cache.accept(initial,clock.now));
+  var cache=new TestNativeCache("https://fixture.invalid/display03",store);Test.assert(cache.accept(initial,clock.now));
   var v=new SpaceFoxView(clock,new ScheduleState(null,"empty"));v.setPacket(cache.packet);var d=new D03Recording();d.prepare(v.context,v.settings);v.renderer=d;v.onShow();
   var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();var target=1794609900;var awake=true;var display=System.DISPLAY_MODE_HIGH_POWER;var previousMode=1;var lastLow=null;
   var events=["tick","sleep","ready","sleep","high","tick","wake","wake","low","tick","tick","advance","tick","high","tick","move","reject","tick"];
@@ -66,7 +66,7 @@ import Toybox.Application;
 (:test,:typecheck(false)) class D03Loader {var calls=0;function load(){calls+=1;}}
 (:test,:typecheck(false)) function display03ReadyAndErrorOnWake(logger){
  var clock=new Display03Clock();clock.now=1794551202;var store=new D03Store();var cat=WatchUi.loadResource(Rez.JsonData.DisplayCatalog);store.write("sf.obj."+cat["catalogDigest"],cat["catalog"]);
- var cache=new NativeCache("https://fixture.invalid/display03-ready",store);var initial=WatchUi.loadResource(Rez.JsonData.DisplayInitial)["raw"];var moved=WatchUi.loadResource(Rez.JsonData.DisplayMoved)["raw"];Test.assert(cache.accept(initial,clock.now));
+ var cache=new TestNativeCache("https://fixture.invalid/display03-ready",store);var initial=WatchUi.loadResource(Rez.JsonData.DisplayInitial)["raw"];var moved=WatchUi.loadResource(Rez.JsonData.DisplayMoved)["raw"];Test.assert(cache.accept(initial,clock.now));
  var v=new SpaceFoxView(clock,new ScheduleState(null,"empty"));v.setPacket(cache.packet);var d=new D03Recording();d.prepare(v.context,v.settings);v.renderer=d;var loader=new D03Loader();v.pendingLoader=loader.method(:load);
  v.onShow();v.onEnterSleep();Test.assert(cache.accept(moved,clock.now));v.setPacket(cache.packet);var identity=v.context.launchId;
  var writes=store.writes;Test.assert(!cache.accept(initial,clock.now));Test.assertEqual(store.writes,writes);Test.assertEqual(v.context.launchId,identity);Test.assertEqual(v.snapshot().countdown,d03ActiveOracle(1794611100,clock.now));
@@ -97,7 +97,7 @@ import Toybox.Application;
 (:test,:typecheck(false)) function display03FailedSameDigestRetry(logger){
  var store=new D03TransientStore();var clock=new Display03Clock();var catalog=WatchUi.loadResource(Rez.JsonData.DisplayCatalog);
  store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);var base="https://fixture.invalid/display03-retry";
- clock.now=Time.now().value().toLong();var cache=new NativeCache(base,store);Test.assert(cache.accept(WatchUi.loadResource(Rez.JsonData.DisplayInitialFuture)["raw"],clock.now));
+ clock.now=Time.now().value().toLong();var cache=new TestNativeCache(base,store);Test.assert(cache.accept(WatchUi.loadResource(Rez.JsonData.DisplayInitialFuture)["raw"],clock.now));
  var bridge=cache.packet.bridge;Test.assert(bridge["selection"]!=null);
  var objectKey="sf.obj."+bridge["selection"]["sha256"];store.write(objectKey,WatchUi.loadResource(Rez.JsonData.D03RetrySelection)["raw"]);store.rejected=objectKey;store.remaining=1;
  store.write("sf.batch.pending",{"base"=>base,"pending"=>false});
@@ -123,11 +123,11 @@ import Toybox.Application;
  var statusName="\"source_status_name\":\"To Be Confirmed\"";var namePos=held.find(statusName);Test.assert(namePos!=null);
  held=held.substring(0,namePos)+"\"source_status_name\":\"On Hold\""+held.substring(namePos+statusName.length(),held.length());
  var settings=new SceneSettings(null);var values=[raw,held];
- for(var i=0;i<2;i+=1){var store=new D03Store();store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);var base="https://fixture.invalid/hold"+i;var clock=new Display03Clock();clock.now=1794551202;var cache=new NativeCache(base,store);Test.assert(cache.accept(values[i],clock.now));
+ for(var i=0;i<2;i+=1){var store=new D03Store();store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);var base="https://fixture.invalid/hold"+i;var clock=new Display03Clock();clock.now=1794551202;var cache=new TestNativeCache(base,store);Test.assert(cache.accept(values[i],clock.now));
   var view=new SpaceFoxView(clock,new ScheduleState(null,"empty"));view.setPacket(cache.packet);Test.assert(view.context.sourceHold==(i==1));
   var snapshot=view.snapshot();Test.assert(SceneAod.countdownColor(snapshot,settings)==(i==1?0xFF6B6B:settings.countdownColor));
   snapshot.stale=true;Test.assert(SceneAod.countdownColor(snapshot,settings)==(i==1?0xFF6B6B:settings.countdownColor));
-  var reopened=new NativeCache(base,store);Test.assert(reopened.load(clock.now)!=null);view.setPacket(reopened.packet);Test.assert(view.context.sourceHold==(i==1));
+  var reopened=new TestNativeCache(base,store);Test.assert(reopened.load(clock.now)!=null);view.setPacket(reopened.packet);Test.assert(view.context.sourceHold==(i==1));
   snapshot=view.snapshot();Test.assert(SceneAod.countdownColor(snapshot,settings)==(i==1?0xFF6B6B:settings.countdownColor));
   snapshot.rescheduled=true;Test.assert(SceneAod.countdownColor(snapshot,settings)==0xFF6B6B);
  }
@@ -136,7 +136,7 @@ import Toybox.Application;
 
 (:test,:typecheck(false)) function display03WarmAodResources(logger){
  var catalog=WatchUi.loadResource(Rez.JsonData.DisplayCatalog);var store=new D03Store();store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);
- var clock=new Display03Clock();clock.now=1794551202;var cache=new NativeCache("https://fixture.invalid/warm",store);
+ var clock=new Display03Clock();clock.now=1794551202;var cache=new TestNativeCache("https://fixture.invalid/warm",store);
  Test.assert(cache.accept(WatchUi.loadResource(Rez.JsonData.DisplayInitial)["raw"],clock.now));
  var v=new SpaceFoxView(clock,new ScheduleState(null,"empty"));v.setPacket(cache.packet);var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();
  v.onLayout(dc);Test.assert(v.renderer.aodMap!=null);var loads=v.renderer.resourceLoads;var first=v.renderer.aodMap;
@@ -150,11 +150,11 @@ import Toybox.Application;
 
 (:test,:typecheck(false)) function display03SameSceneRefreshKeepsJob(logger){
  var store=new D03Store();var catalog=WatchUi.loadResource(Rez.JsonData.DisplayCatalog);store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);
- var clock=new Display03Clock();clock.now=1794551202;var base="https://fixture.invalid/refresh";var cache=new NativeCache(base,store);
+ var clock=new Display03Clock();clock.now=1794551202;var base="https://fixture.invalid/refresh";var cache=new TestNativeCache(base,store);
  Test.assert(cache.accept(WatchUi.loadResource(Rez.JsonData.DisplayInitial)["raw"],clock.now));var bridge=cache.packet.bridge;
  store.write("sf.batch.pending",{"base"=>base,"pending"=>false});store.write("sf.batch.head",{"base"=>base,"pending"=>false,"catalogDigest"=>bridge["catalogDigest"],"transfer"=>bridge["transfer"],"serial"=>1});
  var v=new SpaceFoxView(clock,new ScheduleState(null,"empty"));v.setPacket(cache.packet);var source=new NativeRenderSource(store,base,bridge);v.setAssetCache(source);Test.assert(v.sceneLifecycle.request(1));
- var job=v.sceneLifecycle.job;var generation=v.sceneLifecycle.generation;var reopen=new NativeCache(base,store);Test.assert(reopen.load(clock.now)!=null);
+ var job=v.sceneLifecycle.job;var generation=v.sceneLifecycle.generation;var reopen=new TestNativeCache(base,store);Test.assert(reopen.load(clock.now)!=null);
  v.setPacket(reopen.packet);Test.assert(v.sceneLifecycle.job==job&&v.sceneLifecycle.generation==generation&&v.assetCache==source);
  Test.assert(v.context.launchId.equals("ll2:launch:0f867f0c-5422-4d44-93b8-d7faaae7019b"));v.onHide();
  logger.debug("SAME_SCENE_REFRESH acceptedReopen=true queuedJobRetained=true assetSourceRetained=true");return true;
@@ -168,10 +168,10 @@ import Toybox.Application;
  try{
  var catalog=WatchUi.loadResource(Rez.JsonData.DisplayCatalog);var store=new D03Store();store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);
  var base=new NativeTransfer(configuredFeedUrl(),null).base;Test.assert(!base.equals(""));var now=Time.now().value().toLong();
- var cache=new NativeCache(base,store);var initial=WatchUi.loadResource(Rez.JsonData.DisplayInitialFuture)["raw"];var moved=WatchUi.loadResource(Rez.JsonData.DisplayMovedFuture)["raw"];
+ var cache=new TestNativeCache(base,store);var initial=WatchUi.loadResource(Rez.JsonData.DisplayInitialFuture)["raw"];var moved=WatchUi.loadResource(Rez.JsonData.DisplayMovedFuture)["raw"];
  Test.assert(cache.accept(initial,now));var bridge=cache.packet.bridge;
  store.write("sf.batch.pending",{"base"=>base,"pending"=>false});store.write("sf.batch.head",{"base"=>base,"pending"=>false,"catalogDigest"=>bridge["catalogDigest"],"transfer"=>bridge["transfer"],"serial"=>1});
- var transfer=new NativeTransfer(base,store);Test.assert(transfer.stage("feed",initial,null));var incoming=new NativeIncoming(store,base);store.write("sf.incoming.feed.processed",incoming.token(store.read("sf.incoming.feed")));
+ var transfer=new NativeTransfer(base,store);Test.assert(transfer.stage("feed",initial,null));var incoming=new TestNativeIncoming(store,base);store.write("sf.incoming.feed.processed",incoming.token(store.read("sf.incoming.feed")));
  var app=new SpaceFoxApp();var clock=new Display03Clock();clock.now=now;var v=new SpaceFoxView(clock,new ScheduleState(null,"empty"));app.feed=cache;app.view=v;v.setPacket(cache.packet);v.setAssetCache(new NativeRenderSource(store,base,bridge));v.onShow();
  Test.assert(v.sceneLifecycle.request(1));var token=v.sceneLifecycle.begin();Test.assert(token!=null);var job=v.sceneLifecycle.job;
  logger.debug("RELOAD_STAGE duplicate");Test.assertMessage(transfer.stage("feed",initial,null),"duplicate transfer stage rejected");NativeForegroundApp.reload(app);Test.assertMessage(v.sceneLifecycle.job==job,"duplicate reload discarded scene job");var writes=store.writes;
@@ -180,7 +180,7 @@ import Toybox.Application;
  Test.assertMessage(v.context!=null&&v.context.schedule.remainingSeconds(0)==WatchUi.loadResource(Rez.JsonData.DisplayMovedFuture)["target"],"new schedule must activate while optional scene is building");
  Test.assertMessage(elapsed<3000,"foreground schedule activation exceeded 3 seconds");Test.assert(!v.sceneLifecycle.complete(token));
  logger.debug("RELOAD_STAGE reject");var before=System.getSystemStats();Test.assert(transfer.stage("feed","{invalid",null));NativeForegroundApp.reload(app);
- Test.assert(app.restorePending&&v.context.schedule.remainingSeconds(0)==WatchUi.loadResource(Rez.JsonData.DisplayMovedFuture)["target"]);logger.debug("RELOAD_STAGE restore");NativeForegroundApp.restore(app);app.restorePending=false;
+ Test.assert(app.restorePending&&v.context.schedule.remainingSeconds(0)==WatchUi.loadResource(Rez.JsonData.DisplayMovedFuture)["target"]);logger.debug("RELOAD_STAGE restore");nativeTestRestoreApp(app);app.restorePending=false;
  Test.assert(v.context.schedule.remainingSeconds(0)==WatchUi.loadResource(Rez.JsonData.DisplayMovedFuture)["target"]);var after=System.getSystemStats();
  v.onHide();logger.debug("FOREGROUND_RELOAD duplicateJobRetained=true duplicateWrites=0 movedTargetVisible=true oldCompletionRejected=true rejectedRetainsTarget=true elapsedMs="+elapsed+" appUsedBefore="+before.usedMemory+" appUsedAfter="+after.usedMemory+" appTotal="+after.totalMemory);return true;
  }finally{Application.Properties.setValue("FeedBaseUrl",previousBase);}

@@ -161,18 +161,18 @@ import Toybox.Test;
 
 (:test,:typecheck(false)) function deliveryDuplicateCallbackDoesNotInvalidateBuild(logger){
     var store=new DeliveryScheduleStore();var cache=new DeliveryAdmissionCache(store);
-    var incoming=new NativeIncoming(store,"https://jekamas.github.io/SpaceFox");
+    var incoming=new TestNativeIncoming(store,"https://jekamas.github.io/SpaceFox");
     var machine=new SceneLifecycle();machine.replace();
     Test.assert(machine.request(1));var token=machine.begin();Test.assert(token!=null);
     // No response, then a response already processed: both reach the production
     // decision seam and leave the in-progress generation unchanged.
     Test.assert(!NativeForegroundApp.hasNewIncoming(cache,incoming));
     Test.assert(machine.pending());
-    var marker={"sha256"=>"same","sequence"=>1};store.write("sf.incoming.feed",marker);
+    var marker={"v"=>2,"base"=>"https://jekamas.github.io/SpaceFox","sha256"=>"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sequence"=>1,"parts"=>[0],"bytes"=>1,"kind"=>"feed"};store.write("sf.incoming.feed",marker);
     store.write("sf.incoming.feed.processed",incoming.token(marker));
     Test.assert(!NativeForegroundApp.hasNewIncoming(cache,incoming));
     Test.assert(machine.pending()&&machine.generation==token);
-    store.write("sf.incoming.feed",{"sha256"=>"new","sequence"=>2});
+    store.write("sf.incoming.feed",{"v"=>2,"base"=>"https://jekamas.github.io/SpaceFox","sha256"=>"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","sequence"=>2,"parts"=>[1],"bytes"=>1,"kind"=>"feed"});
     Test.assert(NativeForegroundApp.hasNewIncoming(cache,incoming));
     machine.cancel();Test.assert(!machine.complete(token));Test.assert(machine.job==null);
     logger.debug("CALLBACKS duplicateNoMutation=2 newCandidateApplied=1 staleCompletionRejected=1");return true;

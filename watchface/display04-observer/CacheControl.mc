@@ -16,7 +16,7 @@ import Toybox.Timer;
  (:typecheck(disableBackgroundCheck)) function getInitialView(){
   var started=System.getTimer();var base="https://fixture.invalid/display04-cache";Application.Properties.setValue("FeedBaseUrl",base);
   var store=new NativeStore();var catalog=WatchUi.loadResource(Rez.JsonData.D04Catalog);store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);
-  var cache=new NativeCache(base,store);var raw=WatchUi.loadResource(Rez.JsonData.D04Feed)["raw"];
+  var cache=new TestNativeCache(base,store);var raw=WatchUi.loadResource(Rez.JsonData.D04Feed)["raw"];
   if(!cache.accept(raw,1794551202)){throw new Lang.InvalidValueException("captured feed seed rejected");}
   System.println("D04_SEED accepted=true elapsedMs="+(System.getTimer()-started));return [new WatchUi.WatchFace()];
  }

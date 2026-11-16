@@ -1,0 +1,17 @@
+------------------------------------------------------------------------------
+Executing test b1AbandonedRetry...
+DEBUG (11:43): B1_ABANDON terminal=true deferred_event_retry=true owner_released=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ShortWakeResume...
+DEBUG (11:43): B1_SHORT_WAKE same_job=true resumed=true exact_seconds=true admitted=true slices=60
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1AbandonedRetry                    PASS
+b1ShortWakeResume                   PASS
+Ran 2 tests
+
+PASSED (passed=2, failed=0, errors=0)

@@ -1,0 +1,58 @@
+------------------------------------------------------------------------------
+Executing test b1ColdAcquisition...
+DEBUG (11:36): B1_PHASE parse_ms=190
+DEBUG (11:36): B1_PHASE validate_ms=15
+DEBUG (11:36): B1_PHASE semantic_ms=2
+DEBUG (11:36): B1_PHASE wire_ms=2
+DEBUG (11:36): B1_PHASE identity_ms=1
+DEBUG (11:36): B1_CANCEL parser_cycle_released=true retry=true
+DEBUG (11:36): B1_PREPARE phases=164 hashes_match=true maxStepMs=18 sampledUsedBytes=154352
+DEBUG (11:36): B1_READ parts=12 digest=true
+DEBUG (11:36): B1_ADMISSION promotionSteps=18
+DEBUG (11:36): B1_BATCH_CALLBACK maxMs=26 objects=27 includesFinalClosure=true
+DEBUG (11:36): B1_RENDER_CALLBACK maxMs=24 initMs=0 where=role:0 decoder:true steps=583 closure=true
+DEBUG (11:36): B1_COLD status=200 text/plain catalog_first=true staged_objects=27 strict_reopen=true captured_hour_precision_unknown=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1IncrementalRefusals...
+DEBUG (11:36): B1_REFUSALS existing_literals=4
+PASS
+------------------------------------------------------------------------------
+Executing test b1PreparedPromotion...
+DEBUG (11:36): B1_PROMOTION slices=18 strict_reopen=true sliced_restore=280
+PASS
+------------------------------------------------------------------------------
+Executing test b1ShortWakeResume...
+DEBUG (11:36): B1_SHORT_WAKE same_job=true resumed=true exact_seconds=true admitted=true slices=60
+PASS
+------------------------------------------------------------------------------
+Executing test b1BatchCorruption...
+DEBUG (11:36): B1_BATCH corrupt_prefix_redownload=true delivered=26
+PASS
+------------------------------------------------------------------------------
+Executing test b1RejectedFeedCooldown...
+DEBUG (11:36): B1_REJECT cooldown=true finite_retry=true unprocessed_retry=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1MissingCatalogWait...
+DEBUG (11:36): B1_CATALOG wait=true background_resume=true accepted=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1DuplicateAdmission...
+DEBUG (11:36): B1_DUPLICATE authenticated=true same_packet=true same_seal=true callbacks=4
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1ColdAcquisition                   PASS
+b1IncrementalRefusals               PASS
+b1PreparedPromotion                 PASS
+b1ShortWakeResume                   PASS
+b1BatchCorruption                   PASS
+b1RejectedFeedCooldown              PASS
+b1MissingCatalogWait                PASS
+b1DuplicateAdmission                PASS
+Ran 8 tests
+
+PASSED (passed=8, failed=0, errors=0)

@@ -17,8 +17,9 @@ class LocalePresentation {
     var calendarFont as Graphics.FontType or Null=null;
     var aodContextFont as Graphics.FontType or Null=null;
     var aodBatteryFont as Graphics.FontType or Null=null;
-    var loads=0;
-    function initialize(){
+    var loads=0;var suspended=false;
+    function initialize(){loadFonts();LocaleGraphemes.load();prepare("en");}
+    function loadFonts(){
         // Proper names use a shared Latin face, independent of UI language.
         // SDK font files stay external; retain only these two common handles.
         try{label=Graphics.getVectorFont({:face=>["RobotoRegular","RobotoCondensedRegular"],:size=>26});latinSmall=Graphics.getVectorFont({:face=>["RobotoRegular","RobotoCondensedRegular"],:size=>22});}catch(e){}
@@ -29,8 +30,9 @@ class LocalePresentation {
         if(aodContextFont==null){aodContextFont=calendarFont;}
         try{aodBatteryFont=Graphics.getVectorFont({:face=>["RobotoRegular","RobotoCondensedRegular"],:size=>51});}catch(e){}
         if(aodBatteryFont==null){aodBatteryFont=aodContextFont;}
-        LocaleGraphemes.load();prepare("en");
     }
+    function suspend(){dictionary=null;small=null;label=null;latinSmall=null;count=null;calendarFont=null;aodContextFont=null;aodBatteryFont=null;LocaleGraphemes.data=null;suspended=true;}
+    function resume(requested){if(!suspended){return;}loadFonts();LocaleGraphemes.load();locale="";suspended=false;prepare(requested);}
     function prepare(requested) {
         var index=SceneStrings.index(requested);
         if(!qualificationMode&&!SceneStrings.available(index)){index=0;}

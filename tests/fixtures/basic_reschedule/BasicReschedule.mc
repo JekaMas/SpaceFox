@@ -20,9 +20,9 @@ function rescheduleView(packet){
 }
 (:test, :typecheck(false))
 function rescheduleMove(logger as Test.Logger) as Boolean {
-    var first=new NativeBridgeFeed(ReschedulePackets.initial(),1794551202,new RescheduleCatalog());
+    var first=new TestNativeBridgeFeed(ReschedulePackets.initial(),1794551202,new RescheduleCatalog());
     var before=rescheduleView(first).snapshot();
-    var moved=new NativeBridgeFeed(ReschedulePackets.moved(),1794551202,new RescheduleCatalog());
+    var moved=new TestNativeBridgeFeed(ReschedulePackets.moved(),1794551202,new RescheduleCatalog());
     moved.metadata(first,1794551202);
     var v=rescheduleView(moved);var after=v.snapshot();
     logger.debug("actual producer MIN/null-exact envelope: 16:18:18 -> 16:38:18; reschedule latched");
@@ -32,10 +32,10 @@ function rescheduleMove(logger as Test.Logger) as Boolean {
 }
 (:test, :typecheck(false))
 function rescheduleRefresh(logger as Test.Logger) as Boolean {
-    var first=new NativeBridgeFeed(ReschedulePackets.initial(),1794551202,new RescheduleCatalog());
-    var unchanged=new NativeBridgeFeed(ReschedulePackets.unchanged(),1794551202,new RescheduleCatalog());unchanged.metadata(first,1794551202);
-    var moved=new NativeBridgeFeed(ReschedulePackets.moved(),1794551202,new RescheduleCatalog());moved.metadata(first,1794551202);
-    var refreshed=new NativeBridgeFeed(ReschedulePackets.refresh(),1794551202,new RescheduleCatalog());refreshed.metadata(moved,1794551202);
+    var first=new TestNativeBridgeFeed(ReschedulePackets.initial(),1794551202,new RescheduleCatalog());
+    var unchanged=new TestNativeBridgeFeed(ReschedulePackets.unchanged(),1794551202,new RescheduleCatalog());unchanged.metadata(first,1794551202);
+    var moved=new TestNativeBridgeFeed(ReschedulePackets.moved(),1794551202,new RescheduleCatalog());moved.metadata(first,1794551202);
+    var refreshed=new TestNativeBridgeFeed(ReschedulePackets.refresh(),1794551202,new RescheduleCatalog());refreshed.metadata(moved,1794551202);
     var v=rescheduleView(refreshed);
     logger.debug("successful unchanged validations neither create nor clear current launch latch");
     return !unchanged.rescheduled&&moved.rescheduled&&refreshed.rescheduled&&v.context.rescheduled&&
@@ -43,8 +43,8 @@ function rescheduleRefresh(logger as Test.Logger) as Boolean {
 }
 (:test, :typecheck(false))
 function rescheduleWithdraw(logger as Test.Logger) as Boolean {
-    var moved=new NativeBridgeFeed(ReschedulePackets.moved(),1794551202,new RescheduleCatalog());
-    var withdrawn=new NativeBridgeFeed(ReschedulePackets.withdrawn(),1794551202,new RescheduleCatalog());withdrawn.metadata(moved,1794551202);
+    var moved=new TestNativeBridgeFeed(ReschedulePackets.moved(),1794551202,new RescheduleCatalog());
+    var withdrawn=new TestNativeBridgeFeed(ReschedulePackets.withdrawn(),1794551202,new RescheduleCatalog());withdrawn.metadata(moved,1794551202);
     var v=rescheduleView(withdrawn);var s=v.snapshot();
     logger.debug("withdrawn current target: --:--:--, no prior nominal target, reschedule still set");
     return withdrawn.rescheduled&&v.context.rescheduled&&s.remaining==null&&s.countdown.equals("--:--:--")&&
@@ -52,10 +52,10 @@ function rescheduleWithdraw(logger as Test.Logger) as Boolean {
 }
 (:test, :typecheck(false))
 function rescheduleDifferent(logger as Test.Logger) as Boolean {
-    var withdrawn=new NativeBridgeFeed(ReschedulePackets.withdrawn(),1794551202,new RescheduleCatalog());
-    var refresh=new NativeBridgeFeed(ReschedulePackets.withdrawn_refresh(),1794551202,new RescheduleCatalog());refresh.metadata(withdrawn,1794551202);
+    var withdrawn=new TestNativeBridgeFeed(ReschedulePackets.withdrawn(),1794551202,new RescheduleCatalog());
+    var refresh=new TestNativeBridgeFeed(ReschedulePackets.withdrawn_refresh(),1794551202,new RescheduleCatalog());refresh.metadata(withdrawn,1794551202);
     var oldView=rescheduleView(refresh);var old=oldView.snapshot();
-    var different=new NativeBridgeFeed(ReschedulePackets.different(),1794551202,new RescheduleCatalog());different.metadata(refresh,1794551202);
+    var different=new TestNativeBridgeFeed(ReschedulePackets.different(),1794551202,new RescheduleCatalog());different.metadata(refresh,1794551202);
     var v=rescheduleView(different);
     logger.debug("withdrawn unchanged refresh stays unknown/latched; next identity never inherits old flag");
     return refresh.rescheduled&&old.countdown.equals("--:--:--")&&old.remaining==null&&

@@ -13,7 +13,7 @@ def build(out):
  fixture=json.loads((ROOT/'tests/fixtures/watch_refresh_cache/packets.json').read_text());rows={'D04Catalog':fixture['catalogs']['initial'],'D04Feed':{'raw':fixture['packets']['initial']},'D04Moved':{'raw':fixture['packets']['moved']}}
  for name,value in rows.items():(res/(name+'.json')).write_text(json.dumps(value,ensure_ascii=False,separators=(',',':')))
  (res/'data.xml').write_text('<resources>'+''.join('<jsonData id="'+name+'" filename="'+name+'.json"/>' for name in rows)+'</resources>')
- isolated=out/'source';isolated.mkdir();(isolated/'CacheControl.mc').write_bytes(source.read_bytes());products={}
+ isolated=out/'source';isolated.mkdir();(isolated/'CacheControl.mc').write_bytes(source.read_bytes());(isolated/'CurrentJobs.mc').write_bytes((ROOT/'tests/native-runtime/CurrentJobs.mc').read_bytes());products={}
  for kind,entry in [('seed','D04SeedApp'),('control','D04ControlApp')]:
   tree=ET.parse(ROOT/'watchface/manifest.xml');app=tree.getroot().find('{http://www.garmin.com/xml/connectiq}application');app.set('id','b454857f273844c4aef9e7fbc9f409e3');app.set('entry',entry);manifest=out/(kind+'.xml');ET.register_namespace('iq','http://www.garmin.com/xml/connectiq');tree.write(manifest,encoding='utf-8',xml_declaration=True)
   jungle=out/(kind+'.jungle');jungle.write_text('project.manifest = '+str(manifest)+'\nbase.sourcePath = '+str(ROOT/'watchface/source')+';'+str(isolated)+'\nbase.resourcePath = '+str(ROOT/'watchface/resources')+';'+str(res)+'\nbase.lang.rus = '+str(ROOT/'watchface/resources-rus')+'\n')

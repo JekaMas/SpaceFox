@@ -18,7 +18,7 @@ def build(out,device='fr165m'):
     res=out/'resources';res.mkdir()
     for name,value in rows.items():(res/(name+'.json')).write_text(json.dumps(value,ensure_ascii=False,separators=(',',':')))
     (res/'data.xml').write_text('<resources>'+''.join('<jsonData id="'+name+'" filename="'+name+'.json"/>' for name in rows)+'</resources>')
-    observer=out/'observer';observer.mkdir();(observer/'PointObserver.mc').write_bytes(paths[0].read_bytes())
+    observer=out/'observer';observer.mkdir();(observer/'PointObserver.mc').write_bytes(paths[0].read_bytes());(observer/'CurrentJobs.mc').write_bytes((ROOT/'tests/native-runtime/CurrentJobs.mc').read_bytes())
     jungle=out/'probe.jungle';jungle.write_text('project.manifest = '+str(out/'manifest.xml')+'\nbase.sourcePath = '+str(ROOT/'watchface/source')+';'+str(observer)+'\nbase.resourcePath = '+str(ROOT/'watchface/resources')+';'+str(res)+'\nbase.lang.rus = '+str(ROOT/'watchface/resources-rus')+'\n')
     package=out/'PointObserver.prg';cmd=[str(ctx['java']),'-Dfile.encoding=UTF-8','-jar',str(ctx['compiler']),'-f',str(jungle),'-d',device,'-o',str(package),'-y',str(ctx['key']),'-l','3','-O','2','-w']
     r=subprocess.run(cmd,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=120);(out/'compile.log').write_text(r.stdout)
