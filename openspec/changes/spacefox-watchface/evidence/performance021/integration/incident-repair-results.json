@@ -1,0 +1,30 @@
+[
+  {
+    "name": "deliveryBatchPrefixLifetime",
+    "status": "passed",
+    "raw_exit_code": 1,
+    "expected_tests": [
+      "deliveryBatchPrefixLifetime"
+    ],
+    "observed_tests": {
+      "deliveryBatchPrefixLifetime": "PASS"
+    },
+    "observed_count": 1,
+    "launcher_nonzero_framework_pass": true,
+    "seconds": 8.361
+  },
+  {
+    "name": "deliveryProvisionalFragmentCleanup",
+    "status": "passed",
+    "raw_exit_code": 1,
+    "expected_tests": [
+      "deliveryProvisionalFragmentCleanup"
+    ],
+    "observed_tests": {
+      "deliveryProvisionalFragmentCleanup": "PASS"
+    },
+    "observed_count": 1,
+    "launcher_nonzero_framework_pass": true,
+    "seconds": 8.467
+  }
+]

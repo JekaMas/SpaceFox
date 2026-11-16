@@ -18,7 +18,7 @@ class LaunchLogicClock extends WatchClock {
 
 (:typecheck(false))
 function launchLogicReading(raw, utc) {
-    var packet = new NativeBridgeFeed(raw, utc, new LaunchLogicCatalog());
+    var packet = new TestNativeBridgeFeed(raw, utc, new LaunchLogicCatalog());
     var timing = packet.document["launch"]["timing"];
     // Preserve the admitted source facts before View compacts its working packet.
     var facts = [timing["precision"], timing["exact_utc"], timing["nominal_utc"],

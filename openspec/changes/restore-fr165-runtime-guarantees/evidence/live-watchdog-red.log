@@ -1,0 +1,23 @@
+OPEN_INSTALLED uuid=8bfb35b0-3576-4c14-856e-d684585d3ffd push=true port=1234
+Background: B1_LIVE_REQUEST path=feed.json
+Background: B1_LIVE_RESPONSE feed status=200 type=string bytes=5660 sha256=68336209054817f30ed03e2d9965c11de241a0a87f1bf38309b2e10be1f06b4d
+Background: B1_LIVE_REQUEST path=wire3/catalogs/83226c3bce7f6da4d3830ffbff16aefe5632054f2eb23675ed2cc6ec8dcc82d0.json
+Background: B1_LIVE_RESPONSE object status=200 type=string bytes=1386 sha256=83226c3bce7f6da4d3830ffbff16aefe5632054f2eb23675ed2cc6ec8dcc82d0
+B1_LIVE_BACKGROUND delivered=true
+
+Error: Watchdog Tripped Error - Code Executed Too Long
+Details: Failed invoking <symbol>
+Stack: 
+  - 0x1000077e 
+  - 0x50008f5d 
+  - 0x50009083 
+  - 0x5000afe5 
+  - 0x50011ed2 
+  - 0x5001112c 
+  - 0x50007e51 
+  - 0x50010708 
+  - 0x5000fdd0 
+  - 0x10001093 
+  - 0x1000119c 
+  - 0x10000f5a 
+  - 0x1000090a 

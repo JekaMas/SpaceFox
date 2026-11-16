@@ -89,8 +89,17 @@ def software_locales(root,catalog=None):
  if not qualified:
   if proof is not None:raise ValueError('empty software admission must have no proof')
   return []
+ if isinstance(proof,dict) and 'integration022Proof' in proof:
+  from tools.native_integration022_qualification import validate
+  return validate(root,catalog)
  if isinstance(proof,dict) and 'performance021Proof' in proof:
   from tools.native_performance021_qualification import validate
+  return validate(root,catalog)
+ if isinstance(proof,dict) and 'b1Integration021Proof' in proof:
+  from tools.native_b1_021_qualification import validate
+  return validate(root,catalog)
+ if isinstance(proof,dict) and 'watchdogReleaseProof' in proof:
+  from tools.native_watchdog_release_qualification import validate
   return validate(root,catalog)
  if isinstance(proof,dict) and 'devices020Proof' in proof:
   from tools.native_devices020_qualification import validate

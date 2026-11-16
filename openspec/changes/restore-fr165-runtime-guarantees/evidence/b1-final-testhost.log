@@ -1,0 +1,90 @@
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableSettings...
+DEBUG (10:16): B1_CLOCK settings_failure_first_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableHealth...
+DEBUG (10:16): B1_CLOCK health_and_callback_failure=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ActualColdViewDefersCache...
+DEBUG (10:16): B1_ACTUAL_INITIAL cache_before_frame=false cache_after_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockAfterDrawingFailure...
+DEBUG (10:16): B1_CLOCK drawing_failure_fallback=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockAfterLoaderFailure...
+DEBUG (10:16): B1_CLOCK loader_failure_time_date_continue=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockBeforeLoader...
+DEBUG (10:16): B1_FIRST_FRAME clock_date=true loader_before_frame=false loader_after_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1LowBeforeLoader...
+DEBUG (10:16): B1_LOW_FIRST_FRAME clock_date=true loader_deferred=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableRenderer...
+DEBUG (10:16): B1_CLOCK optional_renderer_failed time_and_date_read=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1CapturedSuccessorTicksInFallback...
+DEBUG (10:16): B1_CAPTURED_MINUTE active_tick=2s low_minute=true fallback=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ColdAcquisition...
+DEBUG (10:16): B1_COLD status=200 text/plain catalog_first=true staged_objects=27 strict_reopen=true captured_hour_precision_unknown=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1AdmissionFitnessLifecycle...
+DEBUG (10:16): B1_FIELDS admission_stop_once=true pending_no_restart=true four_slots_resume=true low_hide_idempotent=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1RealDecodeTicksAndCancels...
+DEBUG (10:16): B1_DECODE_INITIAL countdown=T- 16:18:18
+DEBUG (10:16): B1_REAL_DECODE selected_min=true objects=18 beginMs=92 slices=20 maxSliceMs=60 maxPhase=role maxRole=0 maxRow=-1 maxBatchScanMs=15 maxPutMs=4 activeCatchup=true lowCancel=true highResume=true hideCancel=true testHost=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1MeasureCapturedCallbacks...
+DEBUG (10:16): B1_CAPTURED_PRE_ADMIT downloaded=27
+DEBUG (10:16): B1_CAPTURED_CALLBACKS objects=27 stageMs=4 beginMs=1 maxScanMs=38 maxPutMs=6 admitMs=239 testHost=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1StagedLiveFeedAdmission...
+DEBUG (10:16): B1_STAGED_VALIDATION actual=1794820332 commit=true
+DEBUG (10:16): B1_STAGED live_red_bytes=true phases=7 no_early_commit=true source_age_preserved=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1StagedSupersededToken...
+DEBUG (10:16): B1_STAGED superseded_token_no_promotion=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1StagedRestoreExactAndRecovery...
+DEBUG (10:16): B1_RESTORE exact_live=true expected_seal_old=true corrupt_commit_recovery=true no_early_publish=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1ClockWithUnavailableSettings      PASS
+b1ClockWithUnavailableHealth        PASS
+b1ActualColdViewDefersCache         PASS
+b1ClockAfterDrawingFailure          PASS
+b1ClockAfterLoaderFailure           PASS
+b1ClockBeforeLoader                 PASS
+b1LowBeforeLoader                   PASS
+b1ClockWithUnavailableRenderer      PASS
+b1CapturedSuccessorTicksInFallback  PASS
+b1ColdAcquisition                   PASS
+b1AdmissionFitnessLifecycle         PASS
+b1RealDecodeTicksAndCancels         PASS
+b1MeasureCapturedCallbacks          PASS
+b1StagedLiveFeedAdmission           PASS
+b1StagedSupersededToken             PASS
+b1StagedRestoreExactAndRecovery     PASS
+Ran 16 tests
+
+PASSED (passed=16, failed=0, errors=0)

@@ -25,7 +25,7 @@ def run(out,device,template_name="ReadyLowTrace.mc"):
  start=observed.index('if(data.hasKey(key)){return data[key];}')+len('if(data.hasKey(key)){return data[key];}');end=observed.index('return null;',start)
  branches=observed[start:end];source=template.read_text();assert source.count('/* ASSET_BRANCHES */')==1
  if template_name=='ReadyLowDimensions.mc' and source.count('D04_LOW_BOUNDS')!=1:raise ValueError('requested LOW dimensions marker missing')
- generated=out/'observer';generated.mkdir();(generated/'ReadyAssetTrace.mc').write_text(source.replace('/* ASSET_BRANCHES */',branches))
+ generated=out/'observer';generated.mkdir();(generated/'ReadyAssetTrace.mc').write_text(source.replace('/* ASSET_BRANCHES */',branches));(generated/'CurrentJobs.mc').write_bytes((ROOT/'tests/native-runtime/CurrentJobs.mc').read_bytes())
  if template_name=='ReadyLowDimensions.mc' and 'D04_LOW_BOUNDS' not in (generated/'ReadyAssetTrace.mc').read_text():raise ValueError('generated LOW dimensions marker missing')
  resources=out/'resources';shutil.copytree(previous/'precompile-generated/resources',resources)
  for n,h in pre['generatedResources'].items():

@@ -79,7 +79,7 @@ EXPECTED={'watchface/incident-tests/DeliveryContinuityTests.mc': ['deliveryModeC
 def inventory():
     rows=[]
     for family in FAMILIES:
-        files=sorted((ROOT/'watchface'/family).glob('*.mc'))
+        files=sorted(p for p in (ROOT/'watchface'/family).glob('*.mc') if p.name != 'CurrentJobs.mc')
         if not files:raise ValueError('empty native family: '+family)
         for path in files:
             names=re.findall(r'\(:test[^\n]*\)\s*function\s+(\w+)',path.read_text())
@@ -95,7 +95,7 @@ def inputs(source):
     paths=[p for p in (ROOT/'watchface/source').rglob('*.mc') if p.is_file()]
     paths += [p for p in (ROOT/'watchface/resources').rglob('*') if p.is_file()]
     paths += [p for d in ROOT.glob('watchface/resources-*') for p in d.rglob('*') if p.is_file()]
-    paths += [source,ROOT/'watchface/manifest.xml',ROOT/'watchface/toolchain-lock.json',
+    paths += [source,ROOT/'tests/native-runtime/CurrentJobs.mc',ROOT/'watchface/manifest.xml',ROOT/'watchface/toolchain-lock.json',
               ROOT/'locales/catalog.json',ROOT/'tests/fixtures/watch_refresh_cache/packets.json',ROOT/'tools/build_watchface.py',ROOT/'tools/run_native_tests.py',Path(__file__)]
     return {str(path.relative_to(ROOT)):sha(path) for path in sorted(paths)}
 
@@ -107,6 +107,8 @@ def run(row,out,ctx,compile_only):
     # earlier probe, so supply its imports here without changing its test body.
     if src.name=='UxLowGuardTests.mc':body='import Toybox.Graphics;import Toybox.Test;import Toybox.System;\n'+body
     (sources/src.name).write_text(body)
+    if 'TestNative' in body or 'nativeTestRestoreApp' in body:
+        (sources/'CurrentJobs.mc').write_bytes((ROOT/'tests/native-runtime/CurrentJobs.mc').read_bytes())
     tree=ET.parse(ROOT/'watchface/manifest.xml');tree.getroot().find('{http://www.garmin.com/xml/connectiq}application').set('id','5bb6fca4fe174f9da6bfdc2ac6d70b59')
     ET.register_namespace('iq','http://www.garmin.com/xml/connectiq');tree.write(out/'manifest.xml',encoding='utf-8',xml_declaration=True)
     fixture=json.loads((ROOT/'tests/fixtures/watch_refresh_cache/packets.json').read_text());rows={'DisplayCatalog':fixture['catalogs']['initial'],'DisplayInitial':{'raw':fixture['packets']['initial']},'DisplayMoved':{'raw':fixture['packets']['moved']}}

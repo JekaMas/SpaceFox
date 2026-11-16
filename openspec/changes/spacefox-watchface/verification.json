@@ -40884,13 +40884,14 @@
         "tests/test_performance021_d_receipts.py",
         "watchface/incident-tests/DeliveryContinuityTests.mc",
         "watchface/fields018-tests/Fields018Tests.mc",
-        "tools/native_display03_probe.py"
+        "tools/native_display03_probe.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/integration/**"
       ],
       "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_scene_complete",
       "command_id": "performance021-d-receipts",
       "state": "implemented",
       "source_path": "tests/test_performance021_d_receipts.py",
-      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "source_sha256": "ea4db81333ff5883a4b1f3d1fa478d5b57d796a953badc30272c1eddc2582ef2",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
@@ -40900,7 +40901,7 @@
           "Unmeasured graphics pool, battery or Store acceptance"
         ]
       },
-      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
+      "implementation_note": "Combined-source SDK receipt observer; shared causal runs are not independent native executions. Original matched heap/package numbers are historical only."
     },
     {
       "id": "WF25.P1.S01.NEGATIVE",
@@ -40920,13 +40921,14 @@
         "tests/test_performance021_d_receipts.py",
         "watchface/incident-tests/DeliveryContinuityTests.mc",
         "watchface/fields018-tests/Fields018Tests.mc",
-        "tools/native_display03_probe.py"
+        "tools/native_display03_probe.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/integration/**"
       ],
       "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_scene_incomplete",
       "command_id": "performance021-d-receipts",
       "state": "implemented",
       "source_path": "tests/test_performance021_d_receipts.py",
-      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "source_sha256": "ea4db81333ff5883a4b1f3d1fa478d5b57d796a953badc30272c1eddc2582ef2",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
@@ -40936,7 +40938,7 @@
           "Unmeasured graphics pool, battery or Store acceptance"
         ]
       },
-      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
+      "implementation_note": "Combined-source SDK receipt observer; shared causal runs are not independent native executions. Original matched heap/package numbers are historical only."
     },
     {
       "id": "WF25.P1.S02.POSITIVE",
@@ -40956,13 +40958,14 @@
         "tests/test_performance021_d_receipts.py",
         "watchface/incident-tests/DeliveryContinuityTests.mc",
         "watchface/fields018-tests/Fields018Tests.mc",
-        "tools/native_display03_probe.py"
+        "tools/native_display03_probe.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/integration/**"
       ],
       "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_outline_matching_pixels",
       "command_id": "performance021-d-receipts",
       "state": "implemented",
       "source_path": "tests/test_performance021_d_receipts.py",
-      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "source_sha256": "ea4db81333ff5883a4b1f3d1fa478d5b57d796a953badc30272c1eddc2582ef2",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
@@ -40972,7 +40975,7 @@
           "Unmeasured graphics pool, battery or Store acceptance"
         ]
       },
-      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
+      "implementation_note": "Combined-source SDK receipt observer; shared causal runs are not independent native executions. Original matched heap/package numbers are historical only."
     },
     {
       "id": "WF25.P1.S02.NEGATIVE",
@@ -40992,13 +40995,14 @@
         "tests/test_performance021_d_receipts.py",
         "watchface/incident-tests/DeliveryContinuityTests.mc",
         "watchface/fields018-tests/Fields018Tests.mc",
-        "tools/native_display03_probe.py"
+        "tools/native_display03_probe.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/integration/**"
       ],
       "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_outline_corrupt_refusal",
       "command_id": "performance021-d-receipts",
       "state": "implemented",
       "source_path": "tests/test_performance021_d_receipts.py",
-      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "source_sha256": "ea4db81333ff5883a4b1f3d1fa478d5b57d796a953badc30272c1eddc2582ef2",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
@@ -41008,7 +41012,7 @@
           "Unmeasured graphics pool, battery or Store acceptance"
         ]
       },
-      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
+      "implementation_note": "Combined-source SDK receipt observer; shared causal runs are not independent native executions. Original matched heap/package numbers are historical only."
     },
     {
       "id": "WF25.P2.S01.POSITIVE",
@@ -41028,13 +41032,14 @@
         "tests/test_performance021_d_receipts.py",
         "watchface/incident-tests/DeliveryContinuityTests.mc",
         "watchface/fields018-tests/Fields018Tests.mc",
-        "tools/native_display03_probe.py"
+        "tools/native_display03_probe.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/integration/**"
       ],
       "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_fields_shared_update",
       "command_id": "performance021-d-receipts",
       "state": "implemented",
       "source_path": "tests/test_performance021_d_receipts.py",
-      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "source_sha256": "ea4db81333ff5883a4b1f3d1fa478d5b57d796a953badc30272c1eddc2582ef2",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
@@ -41044,7 +41049,7 @@
           "Unmeasured graphics pool, battery or Store acceptance"
         ]
       },
-      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
+      "implementation_note": "Combined-source SDK receipt observer; shared causal runs are not independent native executions. Original matched heap/package numbers are historical only."
     },
     {
       "id": "WF25.P2.S01.NEGATIVE",
@@ -41064,13 +41069,14 @@
         "tests/test_performance021_d_receipts.py",
         "watchface/incident-tests/DeliveryContinuityTests.mc",
         "watchface/fields018-tests/Fields018Tests.mc",
-        "tools/native_display03_probe.py"
+        "tools/native_display03_probe.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/integration/**"
       ],
       "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_fields_fitted_real_provider",
       "command_id": "performance021-d-receipts",
       "state": "implemented",
       "source_path": "tests/test_performance021_d_receipts.py",
-      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "source_sha256": "ea4db81333ff5883a4b1f3d1fa478d5b57d796a953badc30272c1eddc2582ef2",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
@@ -41080,7 +41086,7 @@
           "Unmeasured graphics pool, battery or Store acceptance"
         ]
       },
-      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
+      "implementation_note": "Combined-source SDK receipt observer; shared causal runs are not independent native executions. Original matched heap/package numbers are historical only."
     },
     {
       "id": "WF25.P3.S01.POSITIVE",
@@ -41099,13 +41105,14 @@
         "tests/test_performance021_d_receipts.py",
         "watchface/incident-tests/DeliveryContinuityTests.mc",
         "watchface/fields018-tests/Fields018Tests.mc",
-        "tools/native_display03_probe.py"
+        "tools/native_display03_probe.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/integration/**"
       ],
       "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_batch_prefix_progress",
       "command_id": "performance021-d-receipts",
       "state": "implemented",
       "source_path": "tests/test_performance021_d_receipts.py",
-      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "source_sha256": "ea4db81333ff5883a4b1f3d1fa478d5b57d796a953badc30272c1eddc2582ef2",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
@@ -41115,7 +41122,7 @@
           "Unmeasured graphics pool, battery or Store acceptance"
         ]
       },
-      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
+      "implementation_note": "Combined-source SDK receipt observer; shared causal runs are not independent native executions. Original matched heap/package numbers are historical only."
     },
     {
       "id": "WF25.P3.S01.NEGATIVE",
@@ -41134,13 +41141,14 @@
         "tests/test_performance021_d_receipts.py",
         "watchface/incident-tests/DeliveryContinuityTests.mc",
         "watchface/fields018-tests/Fields018Tests.mc",
-        "tools/native_display03_probe.py"
+        "tools/native_display03_probe.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/integration/**"
       ],
       "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_batch_corruption_refused",
       "command_id": "performance021-d-receipts",
       "state": "implemented",
       "source_path": "tests/test_performance021_d_receipts.py",
-      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "source_sha256": "ea4db81333ff5883a4b1f3d1fa478d5b57d796a953badc30272c1eddc2582ef2",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
@@ -41150,7 +41158,7 @@
           "Unmeasured graphics pool, battery or Store acceptance"
         ]
       },
-      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
+      "implementation_note": "Combined-source SDK receipt observer; shared causal runs are not independent native executions. Original matched heap/package numbers are historical only."
     },
     {
       "id": "WF25.P4.S01.POSITIVE",
@@ -41172,13 +41180,14 @@
         "tests/test_performance021_d_receipts.py",
         "watchface/incident-tests/DeliveryContinuityTests.mc",
         "watchface/fields018-tests/Fields018Tests.mc",
-        "tools/native_display03_probe.py"
+        "tools/native_display03_probe.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/integration/**"
       ],
       "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_storage_retry",
       "command_id": "performance021-d-receipts",
       "state": "implemented",
       "source_path": "tests/test_performance021_d_receipts.py",
-      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "source_sha256": "ea4db81333ff5883a4b1f3d1fa478d5b57d796a953badc30272c1eddc2582ef2",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
@@ -41188,7 +41197,7 @@
           "Unmeasured graphics pool, battery or Store acceptance"
         ]
       },
-      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
+      "implementation_note": "Combined-source SDK receipt observer; shared causal runs are not independent native executions. Original matched heap/package numbers are historical only."
     },
     {
       "id": "WF25.P4.S01.NEGATIVE",
@@ -41210,13 +41219,14 @@
         "tests/test_performance021_d_receipts.py",
         "watchface/incident-tests/DeliveryContinuityTests.mc",
         "watchface/fields018-tests/Fields018Tests.mc",
-        "tools/native_display03_probe.py"
+        "tools/native_display03_probe.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/integration/**"
       ],
       "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_late_and_corrupt_preserve",
       "command_id": "performance021-d-receipts",
       "state": "implemented",
       "source_path": "tests/test_performance021_d_receipts.py",
-      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "source_sha256": "ea4db81333ff5883a4b1f3d1fa478d5b57d796a953badc30272c1eddc2582ef2",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
@@ -41226,7 +41236,7 @@
           "Unmeasured graphics pool, battery or Store acceptance"
         ]
       },
-      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
+      "implementation_note": "Combined-source SDK receipt observer; shared causal runs are not independent native executions. Original matched heap/package numbers are historical only."
     },
     {
       "id": "WF25.P5.S01.POSITIVE",
@@ -41245,13 +41255,14 @@
         "tests/test_performance021_d_receipts.py",
         "watchface/incident-tests/DeliveryContinuityTests.mc",
         "watchface/fields018-tests/Fields018Tests.mc",
-        "tools/native_display03_probe.py"
+        "tools/native_display03_probe.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/integration/**"
       ],
       "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_owner_stop_cleanup",
       "command_id": "performance021-d-receipts",
       "state": "implemented",
       "source_path": "tests/test_performance021_d_receipts.py",
-      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "source_sha256": "ea4db81333ff5883a4b1f3d1fa478d5b57d796a953badc30272c1eddc2582ef2",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
@@ -41261,7 +41272,7 @@
           "Unmeasured graphics pool, battery or Store acceptance"
         ]
       },
-      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
+      "implementation_note": "Combined-source SDK receipt observer; shared causal runs are not independent native executions. Original matched heap/package numbers are historical only."
     },
     {
       "id": "WF25.P5.S01.NEGATIVE",
@@ -41280,13 +41291,14 @@
         "tests/test_performance021_d_receipts.py",
         "watchface/incident-tests/DeliveryContinuityTests.mc",
         "watchface/fields018-tests/Fields018Tests.mc",
-        "tools/native_display03_probe.py"
+        "tools/native_display03_probe.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/integration/**"
       ],
       "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_hide_does_not_stop_owner",
       "command_id": "performance021-d-receipts",
       "state": "implemented",
       "source_path": "tests/test_performance021_d_receipts.py",
-      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "source_sha256": "ea4db81333ff5883a4b1f3d1fa478d5b57d796a953badc30272c1eddc2582ef2",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
@@ -41296,7 +41308,7 @@
           "Unmeasured graphics pool, battery or Store acceptance"
         ]
       },
-      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
+      "implementation_note": "Combined-source SDK receipt observer; shared causal runs are not independent native executions. Original matched heap/package numbers are historical only."
     },
     {
       "id": "WF25.P6.S01.POSITIVE",
@@ -41316,13 +41328,14 @@
         "tests/test_performance021_d_receipts.py",
         "watchface/incident-tests/DeliveryContinuityTests.mc",
         "watchface/fields018-tests/Fields018Tests.mc",
-        "tools/native_display03_probe.py"
+        "tools/native_display03_probe.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/integration/**"
       ],
       "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_matched_heap_reduction",
       "command_id": "performance021-d-receipts",
       "state": "implemented",
       "source_path": "tests/test_performance021_d_receipts.py",
-      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "source_sha256": "ea4db81333ff5883a4b1f3d1fa478d5b57d796a953badc30272c1eddc2582ef2",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
@@ -41332,7 +41345,7 @@
           "Unmeasured graphics pool, battery or Store acceptance"
         ]
       },
-      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
+      "implementation_note": "Combined-source SDK receipt observer; shared causal runs are not independent native executions. Original matched heap/package numbers are historical only."
     },
     {
       "id": "WF25.P6.S01.NEGATIVE",
@@ -41352,13 +41365,14 @@
         "tests/test_performance021_d_receipts.py",
         "watchface/incident-tests/DeliveryContinuityTests.mc",
         "watchface/fields018-tests/Fields018Tests.mc",
-        "tools/native_display03_probe.py"
+        "tools/native_display03_probe.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/integration/**"
       ],
       "test_id": "unittest::tests.test_performance021_d_receipts.DReceipts.test_package_and_graphics_boundary",
       "command_id": "performance021-d-receipts",
       "state": "implemented",
       "source_path": "tests/test_performance021_d_receipts.py",
-      "source_sha256": "5a5f403d85100f67a2a24e9b05db82acf1e6475d0d199cdba4b95be6d1228bd5",
+      "source_sha256": "ea4db81333ff5883a4b1f3d1fa478d5b57d796a953badc30272c1eddc2582ef2",
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Recorded pinned Garmin SDK simulator or offline package/heap observations replace physical devices and a new native execution.",
@@ -41368,7 +41382,7 @@
           "Unmeasured graphics pool, battery or Store acceptance"
         ]
       },
-      "implementation_note": "Receipt observer only; one underlying causal native batch is not multiple independent native executions."
+      "implementation_note": "Combined-source SDK receipt observer; shared causal runs are not independent native executions. Original matched heap/package numbers are historical only."
     }
   ],
   "commands": [

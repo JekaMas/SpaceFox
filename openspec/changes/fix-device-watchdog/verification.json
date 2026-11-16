@@ -1,0 +1,154 @@
+{
+  "schema_version": 2,
+  "change": "fix-device-watchdog",
+  "status": "not_done",
+  "cases": [
+    {
+      "id": "WD-BASELINE-COLD",
+      "test": "b1ColdAcquisition",
+      "status": "retained_prechange_pass",
+      "receipt": "evidence/PROGRESS.md",
+      "boundary": "SDK 9.3 Linux simulator; captured feed and catalog; not device watchdog proof"
+    },
+    {
+      "id": "WD-PARSER-EQUIVALENCE",
+      "test": "b1ColdAcquisition",
+      "status": "passed",
+      "boundary": "captured real feed; independent original-parser facts, spans and raw/semantic/record hashes; SDK simulator",
+      "receipt": "evidence/receipts/fr165m-watchdog-batch.log"
+    },
+    {
+      "id": "WD-PARSER-EXISTING-CASES",
+      "test": "b1IncrementalRefusals",
+      "status": "passed",
+      "boundary": "four existing malformed literals on final parser; current integrity cases separately retained",
+      "receipt": "evidence/receipts/fr165m-watchdog-batch.log"
+    },
+    {
+      "id": "WD-PROMOTION-REOPEN",
+      "test": "b1PreparedPromotion",
+      "status": "passed",
+      "boundary": "bounded actual jobs; staged promotion and strict reopen",
+      "receipt": "evidence/receipts/fr165m-watchdog-batch.log"
+    },
+    {
+      "id": "WD-SHORT-WAKE-RESUME",
+      "test": "b1ShortWakeResume",
+      "status": "passed",
+      "boundary": "LOW/wake and consecutive exact countdown seconds on real view/job with test clock; earlier full case is fr165m-watchdog-batch.log",
+      "receipt": "evidence/receipts/fr165m-short-wake.log"
+    },
+    {
+      "id": "WD-ADMISSION-PROGRESSION",
+      "test": "stock/monkey36.jungle rendered-warm marker flip -> onBackgroundData/onSettingsChanged; b1InspectImmediateReplacement",
+      "status": "passed",
+      "boundary": "preseeded distinct feed, actual onBackgroundData and later HIGH RU-ready frame; durable generation/token in inspect36.log",
+      "receipt": "evidence/receipts/warm36.log"
+    },
+    {
+      "id": "WD-RESTORE-RECOVERY",
+      "test": "currentLowRecovery",
+      "status": "passed",
+      "boundary": "current-format actual-store bad/older-source refusal, seal preservation and HIGH reopen; see also test2.log integrity cases",
+      "receipt": "evidence/receipts/fr165m-low-recovery.log"
+    },
+    {
+      "id": "WD-BG-AND-RENDER",
+      "test": "b1BatchCorruption; b1ColdAcquisition (NativeSfrBuild through closure)",
+      "status": "passed",
+      "boundary": "captured 27-object batch/closure and SFR real callback samples; reminder whole wake separately fr165m-reminder.log",
+      "receipt": "evidence/receipts/fr165m-watchdog-batch.log"
+    },
+    {
+      "id": "WD-FR165M-PEAK",
+      "test": "stock/monkey-production.jungle Production39 + b1SeedImmediateReplacement/b1InspectImmediateReplacement; stock39/en39 retained-frame heap sample",
+      "status": "observed_sample_only",
+      "boundary": "unmodified production source and resources accepted distinct generation; stock39 screenshot sampled 100.1/123.8 KiB, not an intra-callback peak or device proof",
+      "receipt": "evidence/receipts/inspect39.log"
+    },
+    {
+      "id": "WD-BAD-CACHE-EVENT-LOOP",
+      "test": "b1SeedBadCache then instrumented stock watchface",
+      "status": "passed",
+      "boundary": "instrumented actual simulator event loop: terminal nonpending state and three HIGH clock draws",
+      "receipt": "evidence/receipts/badcache37.log"
+    },
+    {
+      "id": "WD-REJECTED-FEED",
+      "test": "b1RejectedFeedCooldown plus actual event-loop bad-feed observation",
+      "status": "passed",
+      "boundary": "badfeed37.log event-loop termination and HIGH draws; rejection token and cooldown read back; missing catalog separately tested",
+      "receipt": "evidence/receipts/inspectbad38.log"
+    },
+    {
+      "id": "WD-DEVICE",
+      "test": "physical FR165 Music cold start, reopen and 15-minute ordinary use",
+      "status": "not_observed",
+      "boundary": "exact diagnostic candidate only"
+    },
+    {
+      "id": "WD-INTEGRITY",
+      "test": "refresh/cache and integrity selectors (14)",
+      "status": "passed",
+      "receipt": "evidence/receipts/test2.log",
+      "boundary": "current-format actual job adapter; source identity, corrupt recovery, publisher floor, storage and parser failures"
+    },
+    {
+      "id": "WD-RENDER-LIFECYCLE",
+      "test": "scene/incident/restore selectors",
+      "status": "passed_after_repair",
+      "receipt": "evidence/receipts/fr165m-related-repair.log",
+      "boundary": "ten retained passes in fr165m-related-initial.log plus one rerun after valid-marker fixture correction"
+    },
+    {
+      "id": "WD-REMINDER",
+      "test": "reminderWholeCallback, equivalencePositive, equivalenceNegative",
+      "status": "passed",
+      "receipt": "evidence/receipts/fr165m-reminder.log",
+      "boundary": "2,719-byte retained exact feed; 68 ms whole wake in simulator, no physical timing claim"
+    },
+    {
+      "id": "WD-FIELD-GUARD",
+      "test": "fields018SameSlotReplacement",
+      "status": "passed",
+      "receipt": "evidence/receipts/fr165m-field-guard.log",
+      "boundary": "no provider reads while pending; resumes after work"
+    },
+    {
+      "id": "WD-UNEXPECTED-FAILURE",
+      "test": "b1AbandonedRetry",
+      "status": "passed",
+      "receipt": "evidence/receipts/fr165m-abandoned-retry.log",
+      "boundary": "direct owner seam, preserved non-null prior scene and event-triggered retry; not a deliberately injected native timer failure"
+    },
+    {
+      "id": "WD-PEER",
+      "test": "peerCrossRecordAdmission + independent source/evidence/candidate review",
+      "status": "passed_software_only",
+      "boundary": "independent peer-owned review and repair; one native selector with nine cross-record subcases; retained greens reconciled; device and exact peak remain unobserved",
+      "receipt": "evidence/PEER.md"
+    },
+    {
+      "id": "WD-CANDIDATE",
+      "test": "production identity labeled FR165M diagnostic build",
+      "status": "passed_software_only",
+      "boundary": "signed exact FR165M candidate, matching debug and empty-cache simulator fallback; physical update/continuity not observed",
+      "receipt": "evidence/candidate.json"
+    },
+    {
+      "id": "WD-PEER-CROSS-RECORD",
+      "test": "peerCrossRecordAdmission",
+      "status": "passed",
+      "receipt": "evidence/receipts/peer-cross-record-final.log",
+      "boundary": "SDK 9.3 Linux FR165M; nine technical identity/count/terminal variants over captured input versus original parser/validator and expected results; no hardware proof"
+    },
+    {
+      "id": "WD-RELEASE-020",
+      "test": "official SDK export, IQ/PRG signature inspection, version-normalized source binding and negative repin",
+      "status": "passed_software_only",
+      "receipt": "evidence/release-020/package-summary.json",
+      "boundary": "42 profiles/91 signed programs; 316 compiler inputs match built source; physical and publication remain unobserved"
+    }
+  ],
+  "software_diagnostic_gate": "passed"
+}

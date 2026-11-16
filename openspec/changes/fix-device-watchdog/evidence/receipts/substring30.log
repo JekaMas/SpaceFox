@@ -1,0 +1,19 @@
+------------------------------------------------------------------------------
+Executing test b1SubstringRetention...
+
+Error: Unhandled Exception
+Exception: UnexpectedTypeException: Expected ByteArray, given Array
+Stack:
+  - b1HeldFeedSubstring() at /source/watchface/runtime-b1-tests/ColdAcquisition.mc:219 0x10003ce1
+  - b1SubstringRetention() at /source/watchface/runtime-b1-tests/ColdAcquisition.mc:223 0x10002878
+  - evaluate_test_entries_0_to_15() at /task/cold/gen/006-B4433-00/source/UnitTests.mcgen:91 0x10008747
+  - runTest() at /task/cold/gen/006-B4433-00/source/UnitTests.mcgen:108 0x100087ff
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1SubstringRetention                ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

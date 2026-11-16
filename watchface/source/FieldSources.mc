@@ -196,13 +196,19 @@ class SelectedFields {
                     }
                     if(needText){var label=item.shortLabel;if(!(label instanceof String)||label.equals("")){label=item.longLabel;}labels[key]=label instanceof String?label:"";
                         text[key]=kind==23?(energy==null?"—":energy.toString()):FieldFormat.complication(item,locale);
-                        if(kind==0){try{var icon=item.getIcon();if(icon!=null){var w=icon.getWidth();var h=icon.getHeight();if(w>0&&h>0){var transform=new Graphics.AffineTransform();transform.scale(18.0/w,18.0/h);icons[key]=[icon,{:transform=>transform}];}}}catch(noIcon){}}
+                        if(kind==0){try{var icon=item.getIcon();if(icon!=null){icons[key]=safeProviderIcon(icon);}}catch(noIcon){icons[key]=false;}}
                     }
                 }item=null;
             }else if(source instanceof String){if(source.find("system:")==0){if(!statsFetched){stats=System.getSystemStats();statsFetched=true;}if(stats!=null){text[key]=FieldFormat.system(source,FieldCatalog.systemValue(stats,source),locale);var keys=FieldCatalog.systemKeys();var at=keys.indexOf(source);if(at>=0){if(words==null){words=FieldText.menu(locale);}labels[key]=words["system"][at];}}}
                 else{if(!fetched){info=ActivityMonitor.getInfo();fetched=true;}if(info!=null){text[key]=FieldFormat.activity(source,FieldCatalog.activityValue(info,source));var keys=FieldCatalog.activityKeys();var at=keys.indexOf(source);if(at>=0){if(words==null){words=FieldText.menu(locale);}labels[key]=words["activity"][at];}}}}}
             catch(e){}
         }
+    }
+    // Optional provider graphics are managed references with bounded dimensions.
+    // False requests a neutral marker; null means no icon was supplied.
+    (:typecheck(false)) function safeProviderIcon(icon){
+        if(!(icon instanceof Graphics.BitmapReference)){return false;}
+        try{var w=icon.getWidth();var h=icon.getHeight();if(w<1||h<1||w>96||h>96){return false;}var transform=new Graphics.AffineTransform();transform.scale(18.0/w,18.0/h);return [icon,{:transform=>transform}];}catch(e){return false;}
     }
     function icon(role){return icons.hasKey(role)?icons[role]:null;}
     function active() as Boolean {return selected.size()>0;}

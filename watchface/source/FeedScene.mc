@@ -9,7 +9,7 @@ function feedScene(packet,now){
     var current=feedSceneRow(packet,row,siteData,true);
     packet.upcomingScenes=[];
     var rows=packet.document["upcoming"];
-    if(rows instanceof Array){for(var i=0;i<rows.size();i+=1){var item=rows[i];if(item.hasKey("terminal")){continue;}var pos=item["sitePosition"];var site=pos==null?null:{"positionMode"=>"fixed-source","position"=>pos};packet.upcomingScenes.add(feedSceneRow(packet,item,site,false));}}
+    if(rows instanceof Array){for(var i=0;i<rows.size();i+=1){var item=rows[i];if(item instanceof SceneContext){packet.upcomingScenes.add(item);continue;}if(item.hasKey("terminal")){continue;}var pos=item["sitePosition"];var site=pos==null?null:{"positionMode"=>"fixed-source","position"=>pos};packet.upcomingScenes.add(feedSceneRow(packet,item,site,false));}}
     return current;
 }
 

@@ -1,0 +1,37 @@
+------------------------------------------------------------------------------
+Executing test b1RealDecodeTicksAndCancels...
+
+Error: Stack Overflow Error
+Details: Failed invoking <symbol>
+Stack: 
+  - need() at /source/watchface/source/NativeJson.mc:35 0x50000c22 
+  - string() at /source/watchface/source/NativeJson.mc:67 0x500001c8 
+  - rowKey() at /source/watchface/source/NativeJson.mc:43 0x50000ff4 
+  - object() at /source/watchface/source/NativeJson.mc:41 0x500010db 
+  - read() at /source/watchface/source/NativeJson.mc:37 0x50000b94 
+  - object() at /source/watchface/source/NativeJson.mc:41 0x500011d2 
+  - read() at /source/watchface/source/NativeJson.mc:37 0x50000b94 
+  - object() at /source/watchface/source/NativeJson.mc:41 0x500011d2 
+  - read() at /source/watchface/source/NativeJson.mc:37 0x50000b94 
+  - object() at /source/watchface/source/NativeJson.mc:41 0x500011d2 
+  - read() at /source/watchface/source/NativeJson.mc:37 0x50000b94 
+  - parse() at /source/watchface/source/NativeJson.mc:25 0x50000d79 
+  - parse() at /source/watchface/source/NativeBridgeFeed.mc:24 0x5000a5d7 
+  - initialize() at /source/watchface/source/NativeFeed.mc:6 0x5000e7c4 
+  - initialize() at /source/watchface/source/NativeBridgeFeed.mc:18 0x5000ac19 
+  - parseFeed() at /source/watchface/source/NativeForegroundCache.mc:7 0x50011d4f 
+  - accept() at /source/watchface/source/NativeCache.mc:107 0x50007391 
+  - admitFeedForView() at /source/watchface/source/NativeIncoming.mc:24 0x5001134f 
+  - admitFeed() at /source/watchface/source/NativeIncoming.mc:19 0x500117b0 
+  - b1RealDecodeTicksAndCancels() at /source/watchface/runtime-b1-tests/DecodePending.mc:32 0x100028cd 
+  - evaluate_test_entries_0_to_15() at /task/green11/gen/006-B4432-00/source/UnitTests.mcgen:87 0x1000757f 
+  - runTest() at /task/green11/gen/006-B4432-00/source/UnitTests.mcgen:108 0x1000766d 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1RealDecodeTicksAndCancels         ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)

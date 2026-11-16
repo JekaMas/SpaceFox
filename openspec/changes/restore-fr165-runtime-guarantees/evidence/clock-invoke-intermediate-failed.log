@@ -1,0 +1,41 @@
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableRenderer...
+DEBUG (09:05): B1_CLOCK optional_renderer_failed time_and_date_read=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockBeforeLoader...
+DEBUG (09:05): B1_FIRST_FRAME clock_date=true loader_before_frame=false loader_after_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1LowBeforeLoader...
+DEBUG (09:05): B1_LOW_FIRST_FRAME clock_date=true loader_deferred=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockAfterDrawingFailure...
+DEBUG (09:05): B1_CLOCK drawing_failure_fallback=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockAfterLoaderFailure...
+
+Error: Unhandled Exception
+Exception: optional feed unavailable
+Stack: 
+  - load() at /source/watchface/runtime-b1-tests/ColdAcquisition.mc:18 0x100079fe 
+  - resumeAfterFrame() at /source/watchface/source/SpaceFoxView.mc:88 0x10007221 
+  - b1ClockAfterLoaderFailure() at /source/watchface/runtime-b1-tests/ColdAcquisition.mc:35 0x10002b0e 
+  - evaluate_test_entries_0_to_8() at /task/green2/gen/006-B4432-00/source/UnitTests.mcgen:60 0x10006036 
+  - runTest() at /task/green2/gen/006-B4432-00/source/UnitTests.mcgen:87 0x100061df 
+DEBUG (09:05): B1_CLOCK loader_failure_time_date_continue=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1ClockWithUnavailableRenderer      PASS
+b1ClockBeforeLoader                 PASS
+b1LowBeforeLoader                   PASS
+b1ClockAfterDrawingFailure          PASS
+b1ClockAfterLoaderFailure           PASS
+Ran 5 tests
+
+PASSED (passed=5, failed=0, errors=0)

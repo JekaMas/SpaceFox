@@ -35,6 +35,8 @@ def build_probe(output,source,*,group,tests=False,source_files=None,probe_resour
         for p in selected_sources:
             selected=out/'selected-production'/p.name;selected.parent.mkdir(parents=True,exist_ok=True);selected.write_bytes(p.read_bytes())
     production_resources={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted((ROOT/'watchface').rglob('*')) if p.is_file() and any(part.startswith('resources') for part in p.relative_to(ROOT/'watchface').parts)}
+    test_driver=ROOT/'tests/native-runtime/CurrentJobs.mc'
+    if 'TestNative' in source or 'nativeTestRestoreApp' in source:production_sources[str(test_driver.relative_to(ROOT))]=hashlib.sha256(test_driver.read_bytes()).hexdigest()
     source_set=hashlib.sha256(json.dumps(production_sources,sort_keys=True).encode()).hexdigest()
     owner_tag=GROUPS[group][0]+'|'+out.name+'|'+source_set[:12]
     if not tests:
@@ -46,6 +48,10 @@ def build_probe(output,source,*,group,tests=False,source_files=None,probe_resour
         target=resources/name;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(raw)
     probe_resource_hashes={str(p.relative_to(resources)):hashlib.sha256(p.read_bytes()).hexdigest() for p in resources.rglob('*') if p.is_file()}
     (out/'Probe.mc').write_text(source)
+    # Current cache/admission tests drive production continuation jobs through
+    # a test-only adapter, never through product compatibility methods.
+    if 'TestNative' in source or 'nativeTestRestoreApp' in source:
+        (out/'CurrentJobs.mc').write_bytes(test_driver.read_bytes())
     (out/'monkey.jungle').write_text('project.manifest = '+str(out/'manifest.xml')+'\nbase.sourcePath = '+source_path+'\nbase.resourcePath = '+str(ROOT/'watchface/resources')+';'+str(resources)+'\nbase.lang.rus = '+str(ROOT/'watchface/resources-rus')+'\n')
     package=out/GROUPS[group][1];command=[str(c['java']),'-Dfile.encoding=UTF-8','-jar',str(c['compiler']),'-f',str(out/'monkey.jungle'),'-d',device,'-o',str(package),'-y',str(c['key']),*c['lock']['compiler_options']]
     if tests:command.append('--unit-test')

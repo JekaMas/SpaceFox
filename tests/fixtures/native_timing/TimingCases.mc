@@ -12,8 +12,8 @@ import Toybox.System;
  function utcSeconds() as Number{return now;} function localTimeText() as String{return local;}
 }
 (:typecheck(false)) function timingView(raw,clock){
- var s=new TimingStore();var c=new NativeCache("https://fixture.invalid/clock",s);
- Test.assert(c.accept(raw,1800000000l));var reopened=new NativeCache("https://fixture.invalid/clock",s);
+ var s=new TimingStore();var c=new TestNativeCache("https://fixture.invalid/clock",s);
+ Test.assert(c.accept(raw,1800000000l));var reopened=new TestNativeCache("https://fixture.invalid/clock",s);
  Test.assert(reopened.load(1800000000l)!=null);var view=new SpaceFoxView(clock,new ScheduleState(null,"empty"));view.setPacket(reopened.packet);return view;
 }
 (:test, :typecheck(false)) function originalExactPositive(logger as Test.Logger) as Boolean {

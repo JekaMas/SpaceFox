@@ -163,18 +163,18 @@ import Toybox.Test;
 
 (:test,:typecheck(false)) function deliveryDuplicateCallbackDoesNotInvalidateBuild(logger){
     var store=new DeliveryScheduleStore();var cache=new DeliveryAdmissionCache(store);
-    var incoming=new NativeIncoming(store,"https://jekamas.github.io/SpaceFox");
+    var incoming=new TestNativeIncoming(store,"https://jekamas.github.io/SpaceFox");
     var machine=new SceneLifecycle();machine.replace();
     Test.assert(machine.request(1));var token=machine.begin();Test.assert(token!=null);
     // No response, then a response already processed: both reach the production
     // decision seam and leave the in-progress generation unchanged.
     Test.assert(!NativeForegroundApp.hasNewIncoming(cache,incoming));
     Test.assert(machine.pending());
-    var marker={"sha256"=>"same","sequence"=>1};store.write("sf.incoming.feed",marker);
+    var marker={"v"=>2,"base"=>"https://jekamas.github.io/SpaceFox","sha256"=>"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","sequence"=>1,"parts"=>[0],"bytes"=>1,"kind"=>"feed"};store.write("sf.incoming.feed",marker);
     store.write("sf.incoming.feed.processed",incoming.token(marker));
     Test.assert(!NativeForegroundApp.hasNewIncoming(cache,incoming));
     Test.assert(machine.pending()&&machine.generation==token);
-    store.write("sf.incoming.feed",{"sha256"=>"new","sequence"=>2});
+    store.write("sf.incoming.feed",{"v"=>2,"base"=>"https://jekamas.github.io/SpaceFox","sha256"=>"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","sequence"=>2,"parts"=>[1],"bytes"=>1,"kind"=>"feed"});
     Test.assert(NativeForegroundApp.hasNewIncoming(cache,incoming));
     machine.cancel();Test.assert(!machine.complete(token));Test.assert(machine.job==null);
     logger.debug("CALLBACKS duplicateNoMutation=2 newCandidateApplied=1 staleCompletionRejected=1");return true;
@@ -199,15 +199,15 @@ import Toybox.Test;
     Test.assert(counted.put({"sha256"=>catalogHash,"decodedBytes"=>null},catalog));Test.assert(counted.put(bridge["transfer"],index));
     for(var i=0;i<3;i+=1){var requested=b.next();Test.assert(requested["sha256"].equals(refs[i]["sha256"]));Test.assert(counted.put(requested,values[i]));}
     Test.assert(b.next()==null);
-    // Each missing object is checked once before and once after receipt. Earlier
-    // verified objects must not be rehashed on every later receipt.
-    for(var i=0;i<3;i+=1){Test.assert(counted.count(refs[i]["sha256"])==2);}
+    // Each missing object is checked before and after receipt, then exactly once
+    // in the incoming runtime's required full terminal corruption scan.
+    for(var i=0;i<3;i+=1){Test.assert(counted.count(refs[i]["sha256"])==3);}
     // A completed scan is not permanent trust: corruption and a new event both
     // cause the matching object to be requested again.
     store.data["sf.obj."+refs[1]["sha256"]]="corrupt";var missing=b.next();Test.assert(missing["sha256"].equals(refs[1]["sha256"]));
     Test.assert(counted.put(missing,values[1]));Test.assert(b.next()==null);
     store.data["sf.obj."+refs[0]["sha256"]]="corrupt";var restarted=new NativeBatch(store,base);missing=restarted.next();Test.assert(missing["sha256"].equals(refs[0]["sha256"]));
-    logger.debug("BATCH_PREFIX perObjectChecks=2 completionCorruptionAndRestartDetected=true");return true;
+    logger.debug("BATCH_PREFIX perObjectChecks=3 includesTerminalRecheck=true completionCorruptionAndRestartDetected=true");return true;
 }
 
 (:test,:typecheck(false)) function deliveryOwnerStopReleasesCycle(logger){
@@ -276,8 +276,8 @@ import Toybox.Test;
     var before=store.read("sf.incoming.feed");Test.assert(before["parts"].size()==3);
     Test.assert(transfer.stage("feed","short",null));var marker=store.read("sf.incoming.feed");Test.assert(marker["parts"].size()==1);
     for(var i=0;i<16;i+=1){for(var bank=0;bank<2;bank+=1){var value=store.read("sf.incoming.feed."+bank+"."+i);if(i==0&&bank==marker["parts"][0]){Test.assert(value.equals("short"));}else{Test.assert(value==null);}}}
-    var incoming=new NativeIncoming(store,base);var row=incoming.read("feed",true);Test.assert(row!=null&&row[1].equals("short"));
-    store.data["sf.incoming.feed."+marker["parts"][0]+".0"]="broken";Test.assert(incoming.read("feed",true)==null);
+    var incoming=new NativeIncoming(store,base);var read=new NativeIncomingReadJob(incoming);while(!read.step()){}var row=read.result;Test.assert(row!=null&&row[1].equals("short"));
+    store.data["sf.incoming.feed."+marker["parts"][0]+".0"]="broken";read=new NativeIncomingReadJob(incoming);while(!read.step()){}Test.assert(read.result==null);
     logger.debug("FRAGMENTS longToShortBounded=true currentReadable=true corruptRefused=true");return true;
 }
 
@@ -326,15 +326,20 @@ import Toybox.Test;
     if(value instanceof Dictionary){var result={};var keys=value.keys();for(var i=0;i<keys.size();i+=1){result[keys[i]]=deliveryCopy(value[keys[i]]);}return result;}
     if(value instanceof Array){var result=[];for(var i=0;i<value.size();i+=1){result.add(deliveryCopy(value[i]));}return result;}return value;
 }
+(:typecheck(false)) function deliveryRestoreMarker(base,store,marker,now){
+    var old=store.data["sf.commit"];store.data["sf.commit"]=marker;
+    try{var cache=new NativeCache(base,store);var job=new NativeRestoreJob(cache,now,marker["seal"]);var steps=0;while(!job.step()){steps+=1;Test.assert(steps<3000);}return job.accepted?cache.packet:null;}
+    finally{store.data["sf.commit"]=old;}
+}
 (:test,:typecheck(false)) function deliveryRawProjectionIntegrity(logger){
-    var fixture=WatchUi.loadResource(Rez.JsonData.DisplayInitial);var catalog=WatchUi.loadResource(Rez.JsonData.DisplayCatalog);var store=new DeliveryScheduleStore();store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);var cache=new NativeCache("https://projection.fixture.invalid",store);var now=1794551192l;
-    Test.assert(cache.accept(fixture["raw"],now));var marker=store.read("sf.commit");var seal=marker["seal"];var loaded=cache.readCommit(marker,now);Test.assert(loaded!=null&&loaded.refreshTarget()==1794609900l);
+    var fixture=WatchUi.loadResource(Rez.JsonData.DisplayInitial);var catalog=WatchUi.loadResource(Rez.JsonData.DisplayCatalog);var store=new DeliveryScheduleStore();store.write("sf.obj."+catalog["catalogDigest"],catalog["catalog"]);var base="https://projection.fixture.invalid";var cache=new TestNativeCache(base,store);var now=1794551192l;
+    Test.assert(cache.accept(fixture["raw"],now));var marker=store.read("sf.commit");var seal=marker["seal"];var loaded=deliveryRestoreMarker(base,store,marker,now);Test.assert(loaded!=null&&loaded.refreshTarget()==1794609900l);
     // Optional derived fields are rebuilt from the authenticated current raw
     // packet, and every field actually stored still has to match that packet.
-    var subset=deliveryCopy(marker);subset["prior"][0]["launch"]["timing"].remove("refresh_utc");subset["priorHash"]=cache.priorHash(subset["prior"]);subset["seal"]=cache.seal(subset);loaded=cache.readCommit(subset,now);Test.assert(loaded!=null&&loaded.refreshTarget()==1794609900l);
-    var changed=deliveryCopy(marker);changed["prior"][0]["launch"]["configuration_id"]="ll2:configuration:479";changed["priorHash"]=cache.priorHash(changed["prior"]);changed["seal"]=cache.seal(changed);Test.assert(cache.readCommit(changed,now)==null);
-    changed=deliveryCopy(marker);changed["prior"][0]["launch"]["timing"]["refresh_utc"]=1794609960l;changed["priorHash"]=cache.priorHash(changed["prior"]);changed["seal"]=cache.seal(changed);Test.assert(cache.readCommit(changed,now)==null);
-    var key="sf.feed."+marker["slot"]+".0";var piece=store.read(key);store.data[key]=piece+"x";Test.assert(cache.readCommit(marker,now)==null);store.data[key]=piece;Test.assert(store.read("sf.commit")["seal"].equals(seal)&&cache.readCommit(marker,now)!=null);
+    var subset=deliveryCopy(marker);subset["prior"][0]["launch"]["timing"].remove("refresh_utc");subset["priorHash"]=cache.priorHash(subset["prior"]);subset["seal"]=cache.seal(subset);loaded=deliveryRestoreMarker(base,store,subset,now);Test.assert(loaded!=null&&loaded.refreshTarget()==1794609900l);
+    var changed=deliveryCopy(marker);changed["prior"][0]["launch"]["configuration_id"]="ll2:configuration:479";changed["priorHash"]=cache.priorHash(changed["prior"]);changed["seal"]=cache.seal(changed);Test.assert(deliveryRestoreMarker(base,store,changed,now)==null);
+    changed=deliveryCopy(marker);changed["prior"][0]["launch"]["timing"]["refresh_utc"]=1794609960l;changed["priorHash"]=cache.priorHash(changed["prior"]);changed["seal"]=cache.seal(changed);Test.assert(deliveryRestoreMarker(base,store,changed,now)==null);
+    var key="sf.feed."+marker["slot"]+".0";var piece=store.read(key);store.data[key]=piece+"x";Test.assert(deliveryRestoreMarker(base,store,marker,now)==null);store.data[key]=piece;Test.assert(store.read("sf.commit")["seal"].equals(seal)&&deliveryRestoreMarker(base,store,marker,now)!=null);
     logger.debug("RAW_PROJECTION currentAndOptionalRebuilt=true readdressedIdentityAndTimeTamperRefused=true rawCorruptionRefused=true acceptedSealUnchanged=true");return true;
 }
 

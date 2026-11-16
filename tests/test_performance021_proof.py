@@ -17,7 +17,15 @@ class HostProofTest(unittest.TestCase):
         self.temporary = tempfile.TemporaryDirectory(prefix='spacefox-performance021-tamper-')
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name)
-        self.catalog = json.loads((ROOT / 'locales/catalog.json').read_text())
+        current = json.loads((ROOT / 'locales/catalog.json').read_text())
+        integration = current['supportPolicy']['softwareQualificationProof'].get('integration022Proof')
+        restore = {}
+        if integration:
+            combined = json.loads((ROOT / integration['path']).read_text())
+            restore = combined['historical']['performance']['restore']
+        def historical(name):
+            return ROOT / restore[name]['path'] if name in restore else ROOT / name
+        self.catalog = json.loads(historical('locales/catalog.json').read_text())
         ref = self.catalog['supportPolicy']['softwareQualificationProof']['performance021Proof']
         record = json.loads((ROOT / ref['path']).read_text())
         names = {ref['path'], *record['current']}
@@ -26,7 +34,7 @@ class HostProofTest(unittest.TestCase):
         for name in names:
             target = self.root / name
             target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(ROOT / name, target)
+            shutil.copyfile(historical(name), target)
         self.record = record
 
     def test_retired_release_resource_snapshots_and_tampering(self):

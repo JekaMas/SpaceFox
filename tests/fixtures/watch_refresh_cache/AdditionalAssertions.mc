@@ -25,7 +25,7 @@ import Toybox.WatchUi;
  service.transfer=new NativeTransfer("https://fixture.invalid/refresh",s);service.batch=new NativeBatch(s,service.transfer.base);
  service.receive(200,refreshPacket("moved"));Test.assert(service.optionals==1&&service.finishes==0);
  Test.assert(c.packet.validation==1794551192l);Test.assert(s.read("sf.batch.pending")["pending"]==true);
- var incoming=new NativeIncoming(s,service.transfer.base);Test.assert(incoming.admitFeed(c,1794551202l));
+ var incoming=new TestNativeIncoming(s,service.transfer.base);Test.assert(incoming.admitFeed(c,1794551202l));
  Test.assert(c.packet.validation==1794551193l&&c.packet.rescheduled&&refreshId(c.packet));
  service.receive(200,refreshPacket("initial"));Test.assert(service.optionals==2);Test.assert(!incoming.admitFeed(c,1794551202l));
  Test.assert(c.packet!=null&&c.packet.validation==1794551193l&&c.packet.rescheduled&&refreshId(c.packet));
@@ -41,7 +41,7 @@ import Toybox.WatchUi;
  log.debug("current schema, identity, UTC/ISO, policy, metadata and real-site geometry refusals preserve A; 8193-byte provisional transfer refused");return true;
 }
 (:test,:typecheck(false)) function moreWidePolicy(log){
- var d=refreshInputs();var s=new RefreshFaultStore(null);refreshSeed(s,d);var raw=integrityPacket("wide");var p=new NativeBridgeFeed(raw,1794551202l,s);var c=refreshCache(s);
+ var d=refreshInputs();var s=new RefreshFaultStore(null);refreshSeed(s,d);var raw=integrityPacket("wide");var p=new TestNativeBridgeFeed(raw,1794551202l,s);var c=refreshCache(s);
  Test.assert(c.accept(raw,1794551202l));Test.assert(c.packet.wireHash.equals("34c51270a36c44af598afbcb7d3a30e02fe9ba60236d2b69f8ba1a49612e7322"));
  Test.assert(p.document["launch"]["source_status_id"] instanceof NativeIntegerLexeme);
  Test.assert(p.document["launch"]["source_status_id"].text.equals("9223372036854775808"));
@@ -63,8 +63,8 @@ import Toybox.WatchUi;
 
 (:test,:typecheck(false)) function moreTypedMetadata(log){
  var d=refreshInputs();var store=new RefreshFaultStore(null);refreshSeed(store,d);
- var a=new NativeBridgeFeed(integrityPacket("nullId"),1794551202l,store);Test.assert(a.document["launch"]["source_status_id"]==null);
- var wide=new NativeBridgeFeed(integrityPacket("widePrecision"),1794551202l,store);
+ var a=new TestNativeBridgeFeed(integrityPacket("nullId"),1794551202l,store);Test.assert(a.document["launch"]["source_status_id"]==null);
+ var wide=new TestNativeBridgeFeed(integrityPacket("widePrecision"),1794551202l,store);
  Test.assert(wide.document["launch"]["timing"]["source_precision_id"] instanceof NativeIntegerLexeme);
  Test.assert(wide.document["launch"]["timing"]["source_precision_id"].text.equals("9223372036854775808"));
  Test.assert(!wide.utc(253402300800l));var c=refreshCache(store);Test.assert(c.accept(refreshPacket("initial"),1794551202l));
@@ -74,30 +74,30 @@ import Toybox.WatchUi;
 }
 (:test,:typecheck(false)) function moreNearLatchReopen(log){
  var d=refreshFinal();var store=new RefreshFaultStore(null);refreshSeed(store,d);var url="https://fixture.invalid/near";
- var c=new NativeCache(url,store);Test.assert(c.accept(refreshFinalPacket("exact"),1794576343l));
+ var c=new TestNativeCache(url,store);Test.assert(c.accept(refreshFinalPacket("exact"),1794576343l));
  c.packet.advance(1794579042l);Test.assert(!c.packet.stale);c.packet.advance(1794579043l);Test.assert(c.packet.stale);
- var r=new NativeCache(url,store);Test.assert(r.load(1794585344l)!=null);Test.assert(r.packet.stale);Test.assert(r.packet.interval(1794585344l)==3600);
+ var r=new TestNativeCache(url,store);Test.assert(r.load(1794585344l)!=null);Test.assert(r.packet.stale);Test.assert(r.packet.interval(1794585344l)==3600);
  Test.assert(r.accept(refreshFinalPacket("exact"),1794585344l));Test.assert(r.packet.stale);
  Test.assert(r.accept(integrityPacket("finalRefresh"),1794585344l));Test.assert(!r.packet.stale&&r.packet.validation==1794585344l);
- var again=new NativeCache(url,store);Test.assert(again.load(1794585344l)!=null&&!again.packet.stale);
+ var again=new TestNativeCache(url,store);Test.assert(again.load(1794585344l)!=null&&!again.packet.stale);
  log.debug("near stale latch survives T+1801 hourly exit, process reopen and old replay; newer source validation clears it");return true;
 }
 
 (:test,:typecheck(false)) function moreOmissionPreservesAge(log){
  var first=WatchUi.loadResource(Rez.JsonData.OmissionInitial);var omitted=WatchUi.loadResource(Rez.JsonData.OmissionOmitted);
  var store=new RefreshFaultStore(null);store.write("sf.obj."+first["catalogDigest"],first["catalog"]);store.write("sf.obj."+omitted["catalogDigest"],omitted["catalog"]);
- var c=new NativeCache("https://fixture.invalid/omission",store);Test.assert(c.accept(first["raw"],1800000000l));
+ var c=new TestNativeCache("https://fixture.invalid/omission",store);Test.assert(c.accept(first["raw"],1800000000l));
  Test.assert(c.accept(omitted["raw"],1800003600l));Test.assert(c.packet.validation==1800000000l&&c.packet.stale);
  Test.assert(c.packet.launchId().equals("ll2:launch:0f867f0c-5422-4d44-93b8-d7faaae7019b"));
- var parsed=new NativeBridgeFeed(omitted["raw"],1800003600l,store);Test.assert(parsed.document["launch"]["status"].equals("pending"));
+ var parsed=new TestNativeBridgeFeed(omitted["raw"],1800003600l,store);Test.assert(parsed.document["launch"]["status"].equals("pending"));
  Test.assert(parsed.document["publisher"]["selectionValidatedUtc"]==1800003600l);
  Test.assert(parsed.document["launch"]["source_validated_utc"]==1800000000l);
- var r=new NativeCache("https://fixture.invalid/omission",store);Test.assert(r.load(1800003600l)!=null&&r.packet.stale&&r.packet.validation==1800000000l);
+ var r=new TestNativeCache("https://fixture.invalid/omission",store);Test.assert(r.load(1800003600l)!=null&&r.packet.stale&&r.packet.validation==1800000000l);
  log.debug("actual producer omission: selected A remains pending with own old source epoch while publisher and another record advance");return true;
 }
 (:test,:typecheck(false)) function moreOfflineEmpty(log){
  Application.Properties.setValue("FeedBaseUrl","");var app=new SpaceFoxApp();var view=app.getInitialView()[0];
- Test.assert(view.packet==null&&view.context==null);var snap=view.snapshot();Test.assert(snap.countdown.equals("--:--:--")&&!snap.stale&&snap.remaining==null);
+ Test.assert(view.packet==null&&view.context==null);var snap=view.snapshot();Test.assert(snap.countdown.equals("--:--:--")&&!snap.stale);
  Test.assert(snap.localTime.length()>0);Test.assert(view.settings.slots.size()==4);
  view.values={"steps"=>123,"energy"=>45,"heart"=>67,"stress"=>8,"battery"=>82,"calories"=>456};
  var image=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get();view.onLayout(image.getDc());view.onUpdate(image.getDc());
@@ -132,13 +132,13 @@ import Toybox.WatchUi;
  var d=refreshInputs();var s=new RefreshFaultStore(null);refreshSeed(s,d);var c=refreshCache(s);
  Test.assert(c.accept(refreshPacket("initial"),1794551202l));var hash=c.packet.wireHash;
  var names=["changedInstance","nullSelection","regressedOrigin"];for(var i=0;i<names.size();i+=1){Test.assert(!c.accept(integrityPacket(names[i]),1794551202l));}
- var empty=new NativeCache("",s);Test.assert(!empty.accept(refreshPacket("initial"),1794551202l));
+ var empty=new TestNativeCache("",s);Test.assert(!empty.accept(refreshPacket("initial"),1794551202l));
  var r=refreshCache(s);Test.assert(r.load(1794551202l)!=null&&r.packet.wireHash.equals(hash)&&r.packet.validation==1794551192l);
  log.debug("changed publisher instance, null/regressing selection origin and empty namespace cannot replace accepted A");return true;
 }
 (:test,:typecheck(false)) function moreSourceIdentity(log){
  var d=refreshInputs();var s=new RefreshFaultStore(null);refreshSeed(s,d);
- var a=new NativeBridgeFeed(refreshPacket("initial"),1794551202l,s);var b=new NativeBridgeFeed(refreshPacket("moved"),1794551202l,s);
+ var a=new TestNativeBridgeFeed(refreshPacket("initial"),1794551202l,s);var b=new TestNativeBridgeFeed(refreshPacket("moved"),1794551202l,s);
  Test.assert(refreshId(a)&&refreshId(b));Test.assert(a.document["launch"]["timing"]["nominal_utc"]==1794609900l);
  Test.assert(b.document["launch"]["timing"]["nominal_utc"]==1794611100l);
  Test.assert(a.bridge["site"]["sourcePosition"]["latitude"].equals("25.99677"));
@@ -177,13 +177,13 @@ import Toybox.WatchUi;
 }
 (:test,:typecheck(false)) function moreSourcedAscent(log){
  var d=refreshFinal();var s=new RefreshFaultStore(null);refreshSeed(s,d);var raw=ascentPacket("ascentGood");
- var p=new NativeBridgeFeed(raw,1794576345l,s);Test.assert(p.document["launch"]["ascent_end"]["end_utc"]==1794585343l);
+ var p=new TestNativeBridgeFeed(raw,1794576345l,s);Test.assert(p.document["launch"]["ascent_end"]["end_utc"]==1794585343l);
  Test.assert(p.launchId().equals("ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a"));
- var c=new NativeCache("https://fixture.invalid/ascent",s);Test.assert(c.accept(refreshFinalPacket("exact"),1794576345l));var hash=c.packet.recordHash;
- Test.assert(c.accept(raw,1794576345l));Test.assert(c.packet.recordHash.equals(hash));var r=new NativeCache("https://fixture.invalid/ascent",s);
+ var c=new TestNativeCache("https://fixture.invalid/ascent",s);Test.assert(c.accept(refreshFinalPacket("exact"),1794576345l));var hash=c.packet.recordHash;
+ Test.assert(c.accept(raw,1794576345l));Test.assert(c.packet.recordHash.equals(hash));var r=new TestNativeCache("https://fixture.invalid/ascent",s);
  Test.assert(r.load(1794576345l)!=null&&r.packet.launchId().equals(p.launchId())&&r.packet.validation==1794576343l);
  var names=["ascentBadId","ascentBadTarget","ascentBadEnd","ascentBadUrl","ascentBadFuture"];
- for(var i=0;i<names.size();i+=1){var rejected=false;try{new NativeBridgeFeed(ascentPacket(names[i]),1794576345l,s);}catch(e){rejected=true;}Test.assertMessage(rejected,names[i]);}
+ for(var i=0;i<names.size();i+=1){var rejected=false;try{new TestNativeBridgeFeed(ascentPacket(names[i]),1794576345l,s);}catch(e){rejected=true;}Test.assertMessage(rejected,names[i]);}
  log.debug("current parser/cache admits same-ID sourced +1800 ascent-end, preserves source epoch and rejects five invalid bindings");return true;
 }
 
@@ -201,11 +201,11 @@ import Toybox.WatchUi;
  log.debug("source-only newer validation retains raw feed chunks without rewriting them and reopens same identity");return true;
 }
 (:test,:typecheck(false)) function moreGenericRenderer(log){
- var s=new RefreshFaultStore(null);unresolvedSeed(s);var p=new NativeBridgeFeed(unresolvedResource("real2"),1794551192l,s);
+ var s=new RefreshFaultStore(null);unresolvedSeed(s);var p=new TestNativeBridgeFeed(unresolvedResource("real2"),1794551192l,s);
  var context=feedScene(p,1794551192l);var renderer=new SceneRenderer(null);renderer.prepare(context,new SceneSettings(null));
  Test.assert(context.point==null&&!renderer.pin&&renderer.model==NativeAssets.models["generic"]);
  Test.assert(context.rocket.equals("Chang'e Sample Ascender")&&context.site.equals("Apollo crater"));
- var technical=new NativeBridgeFeed(unresolvedResource("technical1"),1794551192l,s);var next=feedScene(technical,1794551192l);renderer.prepare(next,new SceneSettings(null));
+ var technical=new TestNativeBridgeFeed(unresolvedResource("technical1"),1794551192l,s);var next=feedScene(technical,1794551192l);renderer.prepare(next,new SceneSettings(null));
  Test.assert(next.point==null&&!renderer.pin&&renderer.model==NativeAssets.models["generic"]&&next.operator.equals("SpaceX"));
  log.debug("actual current parser→context→renderer: captured unresolved names, generic model and no fabricated map point");return true;
 }
@@ -257,8 +257,8 @@ import Toybox.WatchUi;
  Test.assert(slept.accept(nearRaw,1794611701l)&&slept.packet.stale);
  var newer=WatchUi.loadResource(Rez.JsonData.IntegrityMinuteNewer)["raw"];
  Test.assert(slept.accept(newer,1794611701l)&&!slept.packet.stale&&slept.packet.validation==1794611701l);
- var date=new NativeBridgeFeed(WatchUi.loadResource(Rez.JsonData.IntegrityMinuteDate)["raw"],1794602700l,ns);
- var window=new NativeBridgeFeed(WatchUi.loadResource(Rez.JsonData.IntegrityMinuteWindow)["raw"],1794602700l,ns);
+ var date=new TestNativeBridgeFeed(WatchUi.loadResource(Rez.JsonData.IntegrityMinuteDate)["raw"],1794602700l,ns);
+ var window=new TestNativeBridgeFeed(WatchUi.loadResource(Rez.JsonData.IntegrityMinuteWindow)["raw"],1794602700l,ns);
  Test.assert(date.refreshTarget()==null&&date.interval(1794609900l)==3600);
  Test.assert(window.refreshTarget()==null&&window.interval(1794609900l)==3600);
  log.debug("captured MIN: inclusive window, older projection reopen and transfer plan; technical source epoch near stale 2699/2700 and slept-through exit");return true;

@@ -1,0 +1,79 @@
+------------------------------------------------------------------------------
+Executing test b1MeasureCapturedCallbacks...
+DEBUG (09:32): B1_CAPTURED_PRE_ADMIT downloaded=0
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x300001ba 
+  - b1MeasureCapturedCallbacks() at /source/watchface/runtime-b1-tests/MeasuredCold.mc:14 0x10003cac 
+  - evaluate_test_entries_0_to_15() at /task/green9/gen/006-B4432-00/source/UnitTests.mcgen:89 0x100074ce 
+  - runTest() at /task/green9/gen/006-B4432-00/source/UnitTests.mcgen:108 0x100075a1 
+ERROR
+------------------------------------------------------------------------------
+Executing test b1RealDecodeTicksAndCancels...
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x300001ba 
+  - b1RealDecodeTicksAndCancels() at /source/watchface/runtime-b1-tests/DecodePending.mc:27 0x10002865 
+  - evaluate_test_entries_0_to_15() at /task/green9/gen/006-B4432-00/source/UnitTests.mcgen:87 0x100074b3 
+  - runTest() at /task/green9/gen/006-B4432-00/source/UnitTests.mcgen:108 0x100075a1 
+ERROR
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableRenderer...
+DEBUG (09:32): B1_CLOCK optional_renderer_failed time_and_date_read=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockBeforeLoader...
+DEBUG (09:32): B1_FIRST_FRAME clock_date=true loader_before_frame=false loader_after_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1LowBeforeLoader...
+DEBUG (09:32): B1_LOW_FIRST_FRAME clock_date=true loader_deferred=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockAfterDrawingFailure...
+DEBUG (09:32): B1_CLOCK drawing_failure_fallback=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockAfterLoaderFailure...
+DEBUG (09:32): B1_CLOCK loader_failure_time_date_continue=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ActualColdViewDefersCache...
+DEBUG (09:32): B1_ACTUAL_INITIAL cache_before_frame=false cache_after_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1CapturedSuccessorTicksInFallback...
+DEBUG (09:32): B1_CAPTURED_MINUTE active_tick=2s low_minute=true fallback=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableSettings...
+DEBUG (09:32): B1_CLOCK settings_failure_first_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableHealth...
+DEBUG (09:32): B1_CLOCK health_and_callback_failure=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1MeasureCapturedCallbacks          ERROR
+b1RealDecodeTicksAndCancels         ERROR
+b1ClockWithUnavailableRenderer      PASS
+b1ClockBeforeLoader                 PASS
+b1LowBeforeLoader                   PASS
+b1ClockAfterDrawingFailure          PASS
+b1ClockAfterLoaderFailure           PASS
+b1ActualColdViewDefersCache         PASS
+b1CapturedSuccessorTicksInFallback  PASS
+b1ClockWithUnavailableSettings      PASS
+b1ClockWithUnavailableHealth        PASS
+Ran 11 tests
+
+FAILED (passed=9, failed=0, errors=2)

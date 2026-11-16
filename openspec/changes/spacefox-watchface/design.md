@@ -850,3 +850,24 @@ Measure the current native source before changes with the same 42-profile admiss
 The pixel-rest mask belongs to LOW rendering: acquire it before a permitted LOW blit and drop its reference on a transition to NOT_LOW. The scaled logical scene canvas remains owned where needed to preserve the same 390-pixel composition and scaling; a resource reference is not a measurement of the graphics pool.
 
 The matching-bundled-outline decoder path can skip edge comparisons that have no output, but must still maintain the exact RGB scanline state, zeroed first-row copy behavior and final full pixel digest. The normal generated-outline path remains unchanged. The observed first stock readiness regression remains a red until affected native pixel/corruption sequences and a new matched stock run establish its actual effect.
+
+### Combined performance and current incremental runtime
+
+The final merge preserves the current B1 sliced admission and restoration jobs,
+clock-first fallback and resource guards while applying performance021's
+identity-bound layout/field reuse, packed map metadata, event-local batch cursor
+and bounded cleanup. Complete immutable closures are freshly verified before
+completion; parsed raw feed remains the authority for the persisted current
+projection. Optional resources may be suspended under the existing heap guard and
+must be rebound on wake without replacing accepted launch facts. Historical
+qualification chains remain authenticated as historical inputs; only a separate
+combined-source proof may admit this merged source and release version.
+
+Inactive feed-tail cleanup is sliced across promotion continuations. Every slice
+re-reads the current active and recovery slots before removing a chunk; if its
+slot becomes protected, the in-flight promotion refuses as retryable before
+removal. Source/owner cancellation follows the existing B1 admission guard.
+
+Actual application stop also disposes B1's in-progress prepared feed and restore
+job, stops the admission and restore timers, and breaks both view-to-app callback
+references. Ordinary hide/settings retain their existing retry and rebind semantics.

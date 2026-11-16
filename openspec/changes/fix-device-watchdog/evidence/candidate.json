@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "kind": "diagnostic-not-store-release",
+  "profile": "fr165m",
+  "manifest_version": "0.1.19",
+  "settings_build": "0.1.19-WD",
+  "native_input_id": "b95032a2",
+  "application_uuid": "ec8b7c8a8ea54ee9ac91ee6e7a674d15",
+  "public_key_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
+  "prg_sha256": "3701d71ca0131df5a9262706940ab437c2b7c35c2ee3fb5679b892cf85047eff",
+  "debug_xml_sha256": "abd3f7229e404ba5aca02a7c6857a83e45af9d9d0169b9ca502f57f20e4e4a4d",
+  "source_native_inputs_sha256": "8a7bff4e26035425412e52061e838aa1eee889e10ff780bbb152868c4153f931",
+  "candidate_native_inputs_sha256": "c68db2f9d3aabe8555986501ae157f413ae730e116498c83ab76f784d06eb426",
+  "source_generated_id": "4e3ec943",
+  "source_to_candidate_difference": "candidate manifest version and generated NativeVersion label/input ID only",
+  "sdk_signature_verification": "passed: production RSA4096 public key matches",
+  "exact_candidate_simulator": "empty-cache fallback only; test UUID seed inaccessible",
+  "physical_install_update_and_use": "not observed"
+}

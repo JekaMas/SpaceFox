@@ -1,0 +1,7 @@
+# SpaceFox 0.1.19 — test release
+
+This test release contains the B1 runtime reliability repair: the clock and date are available before optional feed or artwork work; feed admission and retained-cache restoration are staged; optional artwork can defer under memory pressure while the clock and accepted facts remain visible; and decoding progresses across short LOW/OFF wake cycles. Optional provider icons are bounded, with a neutral marker when an icon cannot be safely used. Launch facts retain their published precision and source qualification.
+
+The B1 source received an independent software review and focused FR165 SDK checks. The earlier 950-second SDK session was on an earlier B1 source snapshot, not this signed 0.1.19 binary. SDK evidence does not establish physical-device behavior. The owner reported an IQ error on a physical Forerunner 165 with 0.1.18; its cause is unknown. The exact 0.1.19 candidate still needs physical cold startup, reopen, ACTIVE/LOW/OFF, and at least 15 minutes of ordinary use. Precise countdown seconds and a mapped point can only be assessed when the actual feed supports them.
+
+The owner authorized this GitHub test release before that physical observation. No Garmin Store submission or approval for 0.1.19 is claimed. Use the device-specific PRG and follow [installation](INSTALLATION.md); keep any crash logs private. This candidate retains the production UUID/key and uses the original published 0.1.18 package as predecessor. Export and signature checks do not prove that settings/cache survive the update.
