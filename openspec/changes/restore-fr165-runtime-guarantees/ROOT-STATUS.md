@@ -301,8 +301,8 @@ no third root source/test/hash pass and no new author per finding. Root judges
 the final packet. Retain the platform/physical qualifications and do not rerun
 valid behavior merely because the workflow stage changed.
 
-Current change task count: 4 of 8 checked, 4 open (peer, physical B1 gate, B2,
-B3). No whole physical guarantee is marked restored. B2 and B3 have not started.
+At peer assignment, the change task count was 4 of 8 checked, 4 open (peer,
+physical B1 gate, B2, B3). No whole physical guarantee was marked restored.
 
 The independent peer found one concrete remaining allocation/lifecycle gap:
 preflight can defer before builder construction, leaving
@@ -312,3 +312,48 @@ peer owns the guard repair and focused discriminator through software GREEN;
 no return to another author iteration. Its preliminary diagnostic binary is
 superseded and must not be handed to the owner. Source/fixture-specific prior
 greens remain retained unless this actual guard change invalidates them.
+
+### Root judgment — B1 software accepted, physical handoff required
+
+Root accepts the independent peer's scoped software GREEN at
+`0173de8bdc28fc42c55851207c084665a85885e1`. The peer reproduced an uncaught
+`Too Many Timers Error` for the null-builder deferred-preflight state, repaired
+both fitness entry guards and animation restart, and passed the four directly
+affected SDK cases with the strict named-result parser. The original RED is
+retained. See `evidence/PEER-B1.md` for the independent inspection, retained
+receipt scopes and explicit SDK/platform qualifications. Root performed no
+third source/test/hash pass. The peer commit was fast-forwarded into the owned
+`fix/countdown-runtime-20261116` branch; this final root edit is documentation
+only and does not invalidate behavior receipts.
+
+The diagnostic packaging step is now separate in the sole task list:
+**6 of 9 tasks checked; 3 open** — exact-candidate physical B1 acceptance, B2
+and B3. All eight root properties remain subject to their stated proof
+boundaries; SDK software acceptance is not physical restoration. B2 and B3 have
+not started. No ordinary release, public tag or main-branch publication was
+performed. The exact physical crash cause remains unknown without device
+evidence; do not infer it from the SDK failures.
+
+The final private FR165-only handoff is
+`SpaceFox-B1-FR165-private-diagnostic-final.zip`, recorded by the peer with
+SHA-256 `f3bab5d67d8d3c27c75645fb1e167b26abf8131decdad5a62f4836f13bccf392`.
+Its `B1DIAG.PRG` SHA-256 is
+`14ca92f7895eff8362fa4304092d9bdc422a459b1c24bd9b67d5a6f925e5b109`.
+App name: `SpaceFox B1 Diagnostic`; diagnostic UUID
+`8bfb35b035764c14856ed684585d3ffd`, ordinary `SpaceFoxApp`, English/current URL
+defaults, actual watch clock, no injected fixture. The package has only PRG,
+English instructions and checksums. It is not a Store or ordinary-release
+candidate that has passed physical testing. The private artifact base is
+`/Users/jekamas/.codex/tmp/spacefox-b1-peer-20261116/`; its exact final symbol map
+is `final/B1DIAG.PRG.debug.xml`, retained for physical crash decoding. Never use
+the superseded preliminary diagnostic. These private paths are handoff locators,
+not portable repository dependencies.
+
+Next required observation: install this exact PRG on physical FR165, observe
+cold first frame/acquisition, reopen and at least 15 minutes ordinary use with
+ACTIVE/LOW/OFF transitions. Confirm seconds when an exact target exists; an
+HR-only/unverified source cannot establish precise countdown or point behavior.
+Collect `GARMIN/APPS/LOGS/CIQ_LOG.YML` and its available rotated backup. Keep raw
+logs/media private. Until that boundary is observed, P1-P3 release gates remain
+open and this batch is not fully complete; do not start B2/B3 or mark the
+unfinished full-implementation goal complete.
