@@ -20,8 +20,8 @@
 
 - [x] Implement and self-verify the whole selected-launch reminder batch against the criterion map and focused current evidence.
 - [x] One independent peer reviews and repairs the batch through software GREEN.
-- [ ] Root judges and merges.
-- [ ] After root freezes accepted main, the same author prepares and publishes the full signed 0.1.23 GitHub test release.
+- [x] Root judges and merges.
+- [x] After root froze accepted main, the same author prepared and published the full signed 0.1.23 GitHub test release.
 - [ ] Physical FR165 notification delivery, vibration and scheduling observation remains open.
 
 

@@ -5,6 +5,23 @@
   "public_key_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
   "status": "local_production_custody_restored",
   "latest_release": {
+    "version": "0.1.23",
+    "package_sha256": "73aed882ff3c152bc5d6164bd119f7ba50ebe77de83b51c209d4b1def9670bf6",
+    "kind": "github_test_prerelease",
+    "tag": "v0.1.23-test.1",
+    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.23-test.1",
+    "source_revision": "c222b705f2ad7deff86e6d49f39119baa0748f3f",
+    "tag_revision": "c222b705f2ad7deff86e6d49f39119baa0748f3f",
+    "original_receipt_sha256": "6f5d169d3d89b27081d138de15db9ab3197a0edc6b1f92c99e33224d6d9d1301",
+    "proof_boundary": "SDK signed export and mapped profile extraction; GitHub draft, 59-file upload and publication commands returned zero. No separate artifact, signature, server-digest or download audit. Physical FR165 acceptance, phone/update migration, and Garmin Store submission/approval remain unobserved."
+  },
+  "note": "Stable production UUID/key. For a future update use the original published 0.1.23 receipt and matching IQ. Its predecessor was the original 0.1.22 receipt and matching IQ.",
+  "local_custody": {
+    "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
+    "public_evidence": "openspec/changes/spacefox-watchface/evidence/production-signing/round1/custody-initialization.json",
+    "proof_boundary": "External owner-only production RSA4096 key and encrypted backup with separately stored password; actual local restore and public signing challenge. Same Mac only; no offsite/disaster recovery."
+  },
+  "previous_release": {
     "version": "0.1.22",
     "package_sha256": "e747d4ceba7538ca06a764764f1a7f34cf9f892a3d5b03b3a3a7092c678dbc8c",
     "kind": "github_test_prerelease",
@@ -14,23 +31,6 @@
     "tag_revision": "6dbe1af66e5b6d12bc88462d9a9ffcb0bc56ded5",
     "original_receipt_sha256": "d249483dbd7bdfe59f97ee9cdd74c23172351086c3547713a12493d346255b03",
     "proof_boundary": "Published GitHub test prerelease; one names-and-state query reported all 59 staged names uploaded after the upload command exit status was not retained. No asset byte/hash or signature readback was performed. Physical FR165 acceptance, phone/update migration, and Garmin Store submission/approval remain unobserved."
-  },
-  "note": "Stable production UUID/key. For a future update use the original published 0.1.22 receipt and matching IQ. Its predecessor was the original 0.1.21 receipt and matching IQ.",
-  "local_custody": {
-    "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
-    "public_evidence": "openspec/changes/spacefox-watchface/evidence/production-signing/round1/custody-initialization.json",
-    "proof_boundary": "External owner-only production RSA4096 key and encrypted backup with separately stored password; actual local restore and public signing challenge. Same Mac only; no offsite/disaster recovery."
-  },
-  "previous_release": {
-    "version": "0.1.21",
-    "package_sha256": "c1e991af2372ce63dd35cba147ccb2075a6cd9b0e9a50844ad3533347653379b",
-    "kind": "github_test_prerelease",
-    "tag": "v0.1.21-test.1",
-    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.21-test.1",
-    "source_revision": "98dc7a6e41f03e8904d1dd02ff941317d52eb5be",
-    "tag_revision": "98dc7a6e41f03e8904d1dd02ff941317d52eb5be",
-    "original_receipt_sha256": "d1d29b5d010f840acaf4fdb7734a2c3ea248ece3411ed914478abcdfe0bea2c1",
-    "proof_boundary": "Published GitHub test prerelease only after public readback; physical FR165 acceptance, phone/update migration, and 0.1.21 Garmin Store submission/approval remain unobserved."
   },
   "earlier_release": {
     "version": "0.1.6",
@@ -152,5 +152,16 @@
     "tag_revision": "4d97967b1b839683881f5b61c4e4e3ac9c126f26",
     "original_receipt_sha256": "fbfe2da43812ebd01608ad177007743fb24a368b1a69d8a0823ed37e98956818",
     "proof_boundary": "Published 0.1.20 GitHub package and public summary; full original receipt retained locally and authenticated by the public summary digest. Physical use and Garmin approval remain unobserved."
+  },
+  "historical_release_021": {
+    "version": "0.1.21",
+    "package_sha256": "c1e991af2372ce63dd35cba147ccb2075a6cd9b0e9a50844ad3533347653379b",
+    "kind": "github_test_prerelease",
+    "tag": "v0.1.21-test.1",
+    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.21-test.1",
+    "source_revision": "98dc7a6e41f03e8904d1dd02ff941317d52eb5be",
+    "tag_revision": "98dc7a6e41f03e8904d1dd02ff941317d52eb5be",
+    "original_receipt_sha256": "d1d29b5d010f840acaf4fdb7734a2c3ea248ece3411ed914478abcdfe0bea2c1",
+    "proof_boundary": "Published GitHub test prerelease only after public readback; physical FR165 acceptance, phone/update migration, and 0.1.21 Garmin Store submission/approval remain unobserved."
   }
 }

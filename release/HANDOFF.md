@@ -7,9 +7,13 @@ stored recovery password have actual local restore/challenge evidence in
 the owner-held signing records. All copies remain on the same Mac; offsite
 and disaster recovery are not claimed.
 
+## Published 0.1.23 GitHub test prerelease
+
+[SpaceFox 0.1.23](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.23-test.1) is a published GitHub test prerelease built from `c222b705f2ad7deff86e6d49f39119baa0748f3f`, native ID `47d8d5a5`. Its original receipt and IQ are the current update predecessor. One SDK IQ export supplies all 42 profile PRGs, the FR165 install ZIP and source-input archive. The original 0.1.22 receipt and IQ were its predecessor. Physical FR165 notification delivery, haptics, scheduling and P1–P6 acceptance, the 0.1.18 IQ cause, phone migration and Garmin Store acceptance remain unverified. See [release notes](RELEASE-NOTES-0.1.23.md).
+
 ## Published 0.1.22 GitHub test prerelease
 
-[SpaceFox 0.1.22](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.22-test.1) is a published GitHub test prerelease built from `6dbe1af66e5b6d12bc88462d9a9ffcb0bc56ded5`, native ID `14586854`. The original receipt and IQ are the current update predecessor. The one-IQ export supplies all 42 profile PRGs, the FR165 install ZIP and exact source-input archive. Physical FR165 P1–P6 and 15-minute acceptance, the 0.1.18 IQ cause, phone migration and Garmin Store acceptance remain unverified. See [release notes](RELEASE-NOTES-0.1.22.md).
+[SpaceFox 0.1.22](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.22-test.1) is a published GitHub test prerelease built from `6dbe1af66e5b6d12bc88462d9a9ffcb0bc56ded5`, native ID `14586854`. The original receipt and IQ were the update predecessor for 0.1.23. The one-IQ export supplies all 42 profile PRGs, the FR165 install ZIP and exact source-input archive. Physical FR165 P1–P6 and 15-minute acceptance, the 0.1.18 IQ cause, phone migration and Garmin Store acceptance remain unverified. See [release notes](RELEASE-NOTES-0.1.22.md).
 
 ## Published 0.1.21 GitHub test prerelease
 
