@@ -1,4 +1,4 @@
-"""Authenticate the retained devices020 proof and the host-only source delta."""
+"""Authenticate retained devices020 history and the performance021 source delta."""
 import copy
 import hashlib
 import json
@@ -25,6 +25,31 @@ C_CHANGED = {
     'tests/test_geographic_context_r3.py', 'tests/test_geographic_context_r4.py',
 }
 
+# D remains the same outer delta anchored at 29f3cfd0. These are exact
+# pre-existing native source/resource identities; historical reconstruction
+# restores authenticated bytes only in the temporary tree, never the product.
+D_DELETED = {
+    'watchface/resources/fonts/Count31.fnt', 'watchface/resources/fonts/Count31.png',
+    'watchface/resources/fonts/Label17.fnt', 'watchface/resources/fonts/Label17.png',
+    'watchface/resources/fonts/Label21.fnt', 'watchface/resources/fonts/Label21.png',
+}
+D_CHANGED = {
+    'tools/build_native_resources.py', 'tools/fields018_native_probe.py', 'tools/native_other_batch.py',
+    'tools/native_display03_probe.py',
+    'watchface/fields018-tests/Fields018Tests.mc', 'watchface/incident-tests/DeliveryContinuityTests.mc',
+    'watchface/scene-tests/NativeSceneTests.mc',
+    'watchface/resources/fonts/fonts.xml', 'watchface/resources/resource-build.json',
+    'watchface/source/FeedService.mc', 'watchface/source/FieldSources.mc',
+    'watchface/source/LaunchReminder.mc', 'watchface/source/LocalePresentation.mc',
+    'watchface/source/NativeAssetTypes.mc', 'watchface/source/NativeCache.mc',
+    'watchface/source/NativeForegroundCache.mc', 'watchface/source/NativeImmutable.mc', 'watchface/source/NativeJson.mc',
+    'watchface/source/NativeSfr.mc', 'watchface/source/NativeTransfer.mc',
+    'watchface/source/NativeUpcomingCache.mc', 'watchface/source/SceneRenderer.mc',
+    'watchface/source/SettingsMenu.mc', 'watchface/source/SettingsMenuText.mc',
+    'watchface/source/SpaceFoxApp.mc', 'watchface/source/SpaceFoxView.mc',
+    'watchface/source/generated/NativeAssets.mc', 'watchface/source/generated/NativeVersion.mc',
+}
+
 REQUIRED_PRIOR = {
     'tools/spacefox/bridge_map.py', 'tools/spacefox/catalog.py',
     'tools/spacefox/geographic_context.py', 'tools/spacefox/global_map.py',
@@ -37,8 +62,8 @@ REQUIRED_PRIOR = {
     'tools/display_corpus.py', 'tools/verify_native_text_http.py',
     'tools/refresh_catalog.py', 'tools/release.py', 'tools/build_native_localization.py', '.github/workflows/update-feed.yml',
     'tests/test_autonomous_publisher_whole.py', 'tests/test_native_localization.py',
-} | C_RETIRED | C_CHANGED
-REQUIRED_CURRENT = (REQUIRED_PRIOR - {'locales/catalog.json', 'tests/test_global_content_closure_r5.py'} - C_RETIRED) | {
+} | C_RETIRED | C_CHANGED | D_DELETED | D_CHANGED
+REQUIRED_CURRENT = (REQUIRED_PRIOR - {'locales/catalog.json', 'tests/test_global_content_closure_r5.py'} - C_RETIRED - D_DELETED) | {
     'tests/test_performance021_c.py', 'tests/geography_artifact_helpers.py',
     'tests/test_current_selected_metadata.py',
     'tools/native_performance021_qualification.py', 'tests/test_performance021_a.py',

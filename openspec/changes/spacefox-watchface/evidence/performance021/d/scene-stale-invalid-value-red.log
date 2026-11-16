@@ -1,0 +1,112 @@
+------------------------------------------------------------------------------
+Executing test sceneLayoutPositive...
+DEBUG (16:09): actual390x390 native active resource render; heap=104872
+PASS
+------------------------------------------------------------------------------
+Executing test sceneLayoutNegative...
+DEBUG (16:09): long full retained; bounded actual glyph width=238
+PASS
+------------------------------------------------------------------------------
+Executing test sceneContextPositive...
+DEBUG (16:09): selected-id a->b swaps all context/time as one reference
+PASS
+------------------------------------------------------------------------------
+Executing test sceneContextNegative...
+DEBUG (16:09): absent context fields stay empty; no previous-launch inheritance
+PASS
+------------------------------------------------------------------------------
+Executing test sceneSettingsPositive...
+DEBUG (16:09): actual Properties write/reopen independent calories/stress/calories/battery; restore defaults
+PASS
+------------------------------------------------------------------------------
+Executing test sceneSettingsNegative...
+DEBUG (16:09): duplicates permitted; invalid individual setting preserves only its default
+FAIL
+------------------------------------------------------------------------------
+Executing test sceneRocketPositive...
+DEBUG (16:09): actual catalog resources change Falcon9->Electron; curated rocket origin remainsNZ independent USoperator
+PASS
+------------------------------------------------------------------------------
+Executing test sceneRocketNegative...
+DEBUG (16:09): unknown model generic, missing supplied operator omits company/origin; siteUSA never fallback
+PASS
+------------------------------------------------------------------------------
+Executing test sceneGeographyPositive...
+DEBUG (16:09): accepted flat-map resource preserves sourcepoint; pin335/165
+PASS
+------------------------------------------------------------------------------
+Executing test sceneGeographyNegative...
+DEBUG (16:09): invalid/missing/unprepared/moving-without-event position cannot createfalsepin
+PASS
+------------------------------------------------------------------------------
+Executing test sceneCompositionPositive...
+DEBUG (16:09): real resource font width08:08=239 height=116
+PASS
+------------------------------------------------------------------------------
+Executing test sceneCompositionNegative...
+DEBUG (16:09): actual3redraws do not load/parse static resource again
+PASS
+------------------------------------------------------------------------------
+Executing test sceneStatusPositive...
+DEBUG (16:09): actual uncertainty render with independent amber+dots; no preciseT-0
+PASS
+------------------------------------------------------------------------------
+Executing test sceneStatusNegative...
+DEBUG (16:09): reschedule and stale do not implyeachother
+PASS
+------------------------------------------------------------------------------
+Executing test sceneAnimationPositive...
+DEBUG (16:09): first frame before animation; sleep cancels/reset; no liftoff state
+PASS
+------------------------------------------------------------------------------
+Executing test sceneAodPositive...
+DEBUG (16:09): sleep minute redraw guard; telemetry read once outside redraw
+PASS
+------------------------------------------------------------------------------
+Executing test sceneAodNegative...
+DEBUG (16:09): actual4sparseposition renders plusnegativeUTCminute; mapnotdrawn byseparatepath; pixelbudget separatelyscreenshotted
+PASS
+------------------------------------------------------------------------------
+Executing test sceneMetricsPositive...
+DEBUG (16:09): independently supplied0validenergy/stress/calories/steps vs82watchcharge;300srecencyinclusive
+PASS
+------------------------------------------------------------------------------
+Executing test sceneMetricsNegative...
+DEBUG (16:09): realSDKmetricadapter guardedpermission/API smoke; nofixturehealth; absent/stale/future/outofrange rejected
+PASS
+------------------------------------------------------------------------------
+Executing test sceneFontsPositive...
+DEBUG (16:09): actualUnicode=Россия · Восточный; UTF8middle=·; width=210
+PASS
+------------------------------------------------------------------------------
+Executing test sceneFontsNegative...
+DEBUG (16:09): unsupported selection retains English fallback; explicit ru selection stays ru; rendering admission is separately checked
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+sceneLayoutPositive                 PASS
+sceneLayoutNegative                 PASS
+sceneContextPositive                PASS
+sceneContextNegative                PASS
+sceneSettingsPositive               PASS
+sceneSettingsNegative               FAIL
+sceneRocketPositive                 PASS
+sceneRocketNegative                 PASS
+sceneGeographyPositive              PASS
+sceneGeographyNegative              PASS
+sceneCompositionPositive            PASS
+sceneCompositionNegative            PASS
+sceneStatusPositive                 PASS
+sceneStatusNegative                 PASS
+sceneAnimationPositive              PASS
+sceneAodPositive                    PASS
+sceneAodNegative                    PASS
+sceneMetricsPositive                PASS
+sceneMetricsNegative                PASS
+sceneFontsPositive                  PASS
+sceneFontsNegative                  PASS
+Ran 21 tests
+
+FAILED (passed=20, failed=1, errors=0)

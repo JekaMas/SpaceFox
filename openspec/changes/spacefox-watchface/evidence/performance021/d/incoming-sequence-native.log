@@ -1,0 +1,14 @@
+------------------------------------------------------------------------------
+Executing test dForegroundCorruptThenRepair...
+DEBUG (19:02): REPAIR staged=true
+DEBUG (19:02): REPAIR admitted=true failure=
+DEBUG (19:02): FOREGROUND_CORRUPTION rejected=true durablePriorRestored=true repairedIncomingAdmitted=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+dForegroundCorruptThenRepair        PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

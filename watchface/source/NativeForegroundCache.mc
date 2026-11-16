@@ -5,6 +5,14 @@ import Toybox.StringUtil;
 class NativeCache extends NativeCacheCore {
     function initialize(url,adapter){NativeCacheCore.initialize(url,adapter);backgroundMode=false;}
     function parseFeed(raw,now){return new NativeBridgeFeed(raw,now,store);}
+    // Validate every stored projection field against the independently parsed
+    // current wire. The stored schema permits optional derived fields; the raw
+    // packet remains the authority for the complete current projection.
+    function projectionMatchesRaw(raw,stored){
+        if(stored instanceof Dictionary){if(!(raw instanceof Dictionary)){return false;}var keys=stored.keys();for(var i=0;i<keys.size();i+=1){var key=keys[i];if(!raw.hasKey(key)||!projectionMatchesRaw(raw[key],stored[key])){return false;}}return true;}
+        if(stored instanceof Array){if(!(raw instanceof Array)||raw.size()!=stored.size()){return false;}for(var i=0;i<stored.size();i+=1){if(!projectionMatchesRaw(raw[i],stored[i])){return false;}}return true;}
+        return nativeSame(raw,stored);
+    }
     function readCommit(marker,now){
         if(backgroundMode){return NativeCacheCore.readCommit(marker,now);}
         if(checkedProjection(marker,now)==null){return null;}
@@ -12,12 +20,8 @@ class NativeCache extends NativeCacheCore {
         if(!rawHash(raw).equals(marker["rawHash"])){return null;}var original=null;var current=raw;
         if(!marker["wireHash"].equals(marker["rawHash"])){var spans=value["mutableSpans"];original=pieces(raw,spans);current=replaceSpans(raw,spans,marker["mutable"]);}
         value=null;raw=null;var p=parseFeed(current,now);current=null;
-        var observedPrior=priorFrom(p);var storedLaunch=marker["prior"][0]["launch"];
-        // Current-format projections created before MIN refresh targeting omit
-        // this derived field. Verify their original seal, then reconstruct it
-        // from the independently parsed current raw feed for the active view.
-        if(storedLaunch!=null&&!storedLaunch["timing"].hasKey("refresh_utc")&&observedPrior[0]["launch"]!=null){observedPrior[0]["launch"]["timing"].remove("refresh_utc");}
-        if(!p.wireHash.equals(marker["wireHash"])||!p.contentHash.equals(marker["contentHash"])||p.validation!=marker["validation"]||!priorHash(observedPrior).equals(marker["priorHash"])){return null;}
+        var observedPrior=priorFrom(p);
+        if(!p.wireHash.equals(marker["wireHash"])||!p.contentHash.equals(marker["contentHash"])||p.validation!=marker["validation"]||!projectionMatchesRaw(observedPrior,marker["prior"])){return null;}
         // The inverse uses spans discovered by the FULL current-feed parser,
         // not cached positions. It must reproduce the unchanged durable raw.
         if(original!=null&&!hashReplaced(p.raw,p.ignored,original).equals(marker["rawHash"])){return null;}

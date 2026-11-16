@@ -1,0 +1,57 @@
+------------------------------------------------------------------------------
+Executing test deliveryModeCallbacksAreIdempotent...
+DEBUG (15:08): MODE highLowOff normalized; duplicate callbacks stable
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryRejectedResponseRetainsScene...
+DEBUG (15:08): REJECTED_RESPONSE retainedAcceptedScene=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryPendingDeadlineDoesNotMove...
+DEBUG (15:08): PENDING_DEADLINE first=1300 wake=1300 reload=1300 osMinimum=1600
+PASS
+------------------------------------------------------------------------------
+Executing test deliverySceneEventsAndLateCompletion...
+DEBUG (15:08): JOB duplicate blocked; cancelled and old completion rejected; current applied
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryVisualIdentityCases...
+DEBUG (15:08): VISUAL_KEY sameT0AndGeneration=true modelSitePointQualificationArtChangesDistinct=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryVisualWaitsForMatchingBatch...
+DEBUG (15:08): VISUAL_BATCH pendingAndWrongIdentityRejected=true completedMatchingBatchApplied=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryRealRegisteredDeadline...
+DEBUG (15:08): REGISTERED_DEADLINE preserved=true wakeAndReload=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryDuplicateCallbackDoesNotInvalidateBuild...
+DEBUG (15:08): CALLBACKS duplicateNoMutation=2 newCandidateApplied=1 staleCompletionRejected=1
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryBatchPrefixLifetime...
+DEBUG (15:08): BATCH_PREFIX perObjectChecks=2 completionCorruptionAndRestartDetected=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryOwnerStopReleasesCycle...
+DEBUG (15:08): OWNER_STOP hideSettingsRetainCallback=true stopClearsOwnerAndTimers=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                                           Status:
+deliveryModeCallbacksAreIdempotent              PASS
+deliveryRejectedResponseRetainsScene            PASS
+deliveryPendingDeadlineDoesNotMove              PASS
+deliverySceneEventsAndLateCompletion            PASS
+deliveryVisualIdentityCases                     PASS
+deliveryVisualWaitsForMatchingBatch             PASS
+deliveryRealRegisteredDeadline                  PASS
+deliveryDuplicateCallbackDoesNotInvalidateBuild PASS
+deliveryBatchPrefixLifetime                     PASS
+deliveryOwnerStopReleasesCycle                  PASS
+Ran 10 tests
+
+PASSED (passed=10, failed=0, errors=0)

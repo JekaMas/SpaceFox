@@ -1,0 +1,82 @@
+------------------------------------------------------------------------------
+Executing test deliveryModeCallbacksAreIdempotent...
+DEBUG (15:27): MODE highLowOff normalized; duplicate callbacks stable
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryRejectedResponseRetainsScene...
+DEBUG (15:27): REJECTED_RESPONSE retainedAcceptedScene=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryPendingDeadlineDoesNotMove...
+DEBUG (15:27): PENDING_DEADLINE first=1300 wake=1300 reload=1300 osMinimum=1600
+PASS
+------------------------------------------------------------------------------
+Executing test deliverySceneEventsAndLateCompletion...
+DEBUG (15:27): JOB duplicate blocked; cancelled and old completion rejected; current applied
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryVisualIdentityCases...
+DEBUG (15:27): VISUAL_KEY sameT0AndGeneration=true modelSitePointQualificationArtChangesDistinct=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryVisualWaitsForMatchingBatch...
+DEBUG (15:27): VISUAL_BATCH pendingAndWrongIdentityRejected=true completedMatchingBatchApplied=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryRealRegisteredDeadline...
+DEBUG (15:27): REGISTERED_DEADLINE preserved=true wakeAndReload=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryDuplicateCallbackDoesNotInvalidateBuild...
+DEBUG (15:27): CALLBACKS duplicateNoMutation=2 newCandidateApplied=1 staleCompletionRejected=1
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryBatchPrefixLifetime...
+DEBUG (15:27): BATCH_PREFIX perObjectChecks=2 completionCorruptionAndRestartDetected=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryOwnerStopReleasesCycle...
+DEBUG (15:27): OWNER_STOP hideSettingsRetainCallback=true stopClearsOwnerAndTimers=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryPackedMapIdentity...
+DEBUG (15:27): PACKED_MAP all54 exactOriginalFloatAndResource=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliverySettingsLocaleGroups...
+DEBUG (15:27): SETTINGS_GROUPS fiveLocalesAndEnglishFallback=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryBundledFallbackTransitions...
+DEBUG (15:27): FALLBACK completeReleasesOnlyReplaced=true lowAndIncompleteRetained=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryLateCallbackCannotStage...
+DEBUG (15:27): LATE_CALLBACK noStageOrAcceptedMutation=true duplicateIgnored=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryProvisionalFragmentCleanup...
+DEBUG (15:27): FRAGMENTS longToShortBounded=true currentReadable=true corruptRefused=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                                           Status:
+deliveryModeCallbacksAreIdempotent              PASS
+deliveryRejectedResponseRetainsScene            PASS
+deliveryPendingDeadlineDoesNotMove              PASS
+deliverySceneEventsAndLateCompletion            PASS
+deliveryVisualIdentityCases                     PASS
+deliveryVisualWaitsForMatchingBatch             PASS
+deliveryRealRegisteredDeadline                  PASS
+deliveryDuplicateCallbackDoesNotInvalidateBuild PASS
+deliveryBatchPrefixLifetime                     PASS
+deliveryOwnerStopReleasesCycle                  PASS
+deliveryPackedMapIdentity                       PASS
+deliverySettingsLocaleGroups                    PASS
+deliveryBundledFallbackTransitions              PASS
+deliveryLateCallbackCannotStage                 PASS
+deliveryProvisionalFragmentCleanup              PASS
+Ran 15 tests
+
+PASSED (passed=15, failed=0, errors=0)

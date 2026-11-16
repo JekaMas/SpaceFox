@@ -1,0 +1,264 @@
+{
+  "boundary": "Manual reconciliation of existing SDK, stock and offline receipts; no private full-graph execution and no new native execution. Graph cases remain planned because this private runner has no native-result adapter and requires distinct positive and negative identities per scenario.",
+  "canonicalFingerprintTool": {
+    "release": "f8e7ba481bf356600925e01936d7e9f3f1ac0084",
+    "scriptSha256": "46641f165351f11b36f8db4ec6446d438576a17452d900e5aba3835f9d8d8442",
+    "processRunnerSha256": "90a47472cb3c05441526eec3f83d39cee2f19ab80d64b3890449664b6acb4850",
+    "invocation": "python3 -B requirement_tests.py --root <worktree> --change spacefox-watchface fingerprints",
+    "scope": "read-only canonical fingerprints; not graph execution"
+  },
+  "rows": [
+    {
+      "property": "WF25.P1",
+      "scenario": "Scene completes and transitions through LOW and wake",
+      "sources": [
+        {
+          "path": "watchface/incident-tests/DeliveryContinuityTests.mc",
+          "sha256": "052798ef14b7b47be48752c41d1d43c9ce0fc058d8ce874fc0690b0c9ef81b31",
+          "observedIdentity": "deliveryBundledFallbackTransitions"
+        },
+        {
+          "path": "watchface/scene-tests/NativeSceneTests.mc",
+          "sha256": "a197b6ab35f19f84889742751f46c1b859a1cac65a16b2e144eab4bc93d5cf6c",
+          "observedIdentity": "sceneAodPositive"
+        },
+        {
+          "path": "watchface/scene-tests/NativeSceneTests.mc",
+          "sha256": "a197b6ab35f19f84889742751f46c1b859a1cac65a16b2e144eab4bc93d5cf6c",
+          "observedIdentity": "sceneAodNegative"
+        }
+      ],
+      "evidence": [
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/hash-incident.log",
+          "sha256": "c4c56ad4c7b31c16dd572e75cb63a8b7ad0a29dcc1e1541721635ab2bc674546"
+        },
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/scene-mask-native.log",
+          "sha256": "55a9c0475f89986f8c0dcbfccecf121b5b0cfe2da9175cbcdc69379d3ba7d2b0"
+        },
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/visual-360-ru-gate.json",
+          "sha256": "f2840974a1d5331190f34dfc909b627ac74e38cd07547a115e725afc2180f624"
+        },
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/visual-390-en-gate.json",
+          "sha256": "d48781b74562520399247c76afa5cab56049bf10292ca059cac9ff432521077d"
+        },
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/visual-466-ru-gate.json",
+          "sha256": "730314e9e09b622468c800e83aa5847c76cd5e6949f56692b379772dddd30074"
+        },
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/visual-rectangle-ru-gate.json",
+          "sha256": "8ce197e6f73b040c83715833e7b97e4ce29689a095cbb669891f164f15133a8d"
+        }
+      ]
+    },
+    {
+      "property": "WF25.P1",
+      "scenario": "A matching bundled outline is available",
+      "sources": [
+        {
+          "path": "tools/native_display03_probe.py",
+          "sha256": "ae5d0e4ca4100a0c9780fe3df969fd3f2d82a9fb987359b1e2b95e4f6b3c0d2d",
+          "observedIdentity": "display03RealMapDecode"
+        },
+        {
+          "path": "tools/native_display03_probe.py",
+          "sha256": "ae5d0e4ca4100a0c9780fe3df969fd3f2d82a9fb987359b1e2b95e4f6b3c0d2d",
+          "observedIdentity": "display03BundledOutlineDecode"
+        }
+      ],
+      "evidence": [
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/display03-mask-native.log",
+          "sha256": "cc269ed0e6c983fe8029353a495355bd4041a782caf53c7340a2131771568f09"
+        },
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/bundled-map-comparison.log",
+          "sha256": "5494a26d770df2c7c2ee49159fbbee72d7e4da7c7252410e21f7fb4aa7dee7fd"
+        }
+      ]
+    },
+    {
+      "property": "WF25.P2",
+      "scenario": "A source field or display value changes",
+      "sources": [
+        {
+          "path": "watchface/fields018-tests/Fields018Tests.mc",
+          "sha256": "4099c2b906e9f05df79b5a8d3f37c1e203d6ea210f6f134d4c485a0ee53bff6b",
+          "observedIdentity": "fields018ChangedIdAndSharedSlots"
+        },
+        {
+          "path": "watchface/fields018-tests/Fields018Tests.mc",
+          "sha256": "4099c2b906e9f05df79b5a8d3f37c1e203d6ea210f6f134d4c485a0ee53bff6b",
+          "observedIdentity": "fields018FittedRealProvider"
+        },
+        {
+          "path": "watchface/incident-tests/DeliveryContinuityTests.mc",
+          "sha256": "052798ef14b7b47be48752c41d1d43c9ce0fc058d8ce874fc0690b0c9ef81b31",
+          "observedIdentity": "deliveryWarmLayoutIdentity"
+        },
+        {
+          "path": "watchface/incident-tests/DeliveryContinuityTests.mc",
+          "sha256": "052798ef14b7b47be48752c41d1d43c9ce0fc058d8ce874fc0690b0c9ef81b31",
+          "observedIdentity": "deliverySettingsLocaleGroups"
+        }
+      ],
+      "evidence": [
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/current-fields.log",
+          "sha256": "e658a5f1563f222f60662a52df77ec05bd243ae664f602561400b25142fbac43"
+        },
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/hash-incident.log",
+          "sha256": "c4c56ad4c7b31c16dd572e75cb63a8b7ad0a29dcc1e1541721635ab2bc674546"
+        }
+      ]
+    },
+    {
+      "property": "WF25.P3",
+      "scenario": "A batch progresses or its source changes",
+      "sources": [
+        {
+          "path": "watchface/incident-tests/DeliveryContinuityTests.mc",
+          "sha256": "052798ef14b7b47be48752c41d1d43c9ce0fc058d8ce874fc0690b0c9ef81b31",
+          "observedIdentity": "deliveryBatchCausalSequences"
+        },
+        {
+          "path": "watchface/incident-tests/DeliveryContinuityTests.mc",
+          "sha256": "052798ef14b7b47be48752c41d1d43c9ce0fc058d8ce874fc0690b0c9ef81b31",
+          "observedIdentity": "deliveryBatchPrefixLifetime"
+        },
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/TerminalFenceTests.mc",
+          "sha256": "c26e26fcad1441a6bba8a53eea9e500e15ee4d4254e99a4360bff7be83eb4cae",
+          "observedIdentity": "dTerminalPrefixFence"
+        }
+      ],
+      "evidence": [
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/hash-incident.log",
+          "sha256": "c4c56ad4c7b31c16dd572e75cb63a8b7ad0a29dcc1e1541721635ab2bc674546"
+        },
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/real-batch-prior-native.log",
+          "sha256": "745a032f64795c2a856e4a67f2d17b85e0aaac12aec0dc0f9386efd4888109c6"
+        },
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/real-batch-final-native.log",
+          "sha256": "23dd75c597133c2145d3c74312f8db4b2c66a6aeac232c1a5e4af1830aea1f3e"
+        },
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/terminal-fence-native.log",
+          "sha256": "8ac3d2be2fee08297d2d647fc02865cd1f21c2204b299e40c2c936a4f507a9ba"
+        }
+      ]
+    },
+    {
+      "property": "WF25.P4",
+      "scenario": "A request is late or storage contains provisional state",
+      "sources": [
+        {
+          "path": "watchface/incident-tests/DeliveryContinuityTests.mc",
+          "sha256": "052798ef14b7b47be48752c41d1d43c9ce0fc058d8ce874fc0690b0c9ef81b31",
+          "observedIdentity": "deliveryDeadlineEventSequence"
+        },
+        {
+          "path": "watchface/incident-tests/DeliveryContinuityTests.mc",
+          "sha256": "052798ef14b7b47be48752c41d1d43c9ce0fc058d8ce874fc0690b0c9ef81b31",
+          "observedIdentity": "deliveryLateCallbackCannotStage"
+        },
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/StorageSequenceTests.mc",
+          "sha256": "e115b9600359fd0ed12c040d3f34480684cfb21724351814b74c95ec1f3f5e2b",
+          "observedIdentity": "dInterruptedFragmentRecovery"
+        },
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/IncomingSequenceTests.mc",
+          "sha256": "083efdda20362ecd5a5cdbb614fbd7f270634f39bbf45a9c4569d3507756d258",
+          "observedIdentity": "dForegroundCorruptThenRepair"
+        }
+      ],
+      "evidence": [
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/hash-incident.log",
+          "sha256": "c4c56ad4c7b31c16dd572e75cb63a8b7ad0a29dcc1e1541721635ab2bc674546"
+        },
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/storage-sequence-native.log",
+          "sha256": "b31cf87f17f96e2bfa5b28accb4d6f03aa87b1aa896e0934a8910729744b0b81"
+        },
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/incoming-sequence-native.log",
+          "sha256": "371b04d2d3dac1c33456bf1705a1774e910e593fa2e49b7afea6e954a00aec1a"
+        }
+      ]
+    },
+    {
+      "property": "WF25.P5",
+      "scenario": "The actual application owner stops",
+      "sources": [
+        {
+          "path": "watchface/incident-tests/DeliveryContinuityTests.mc",
+          "sha256": "052798ef14b7b47be48752c41d1d43c9ce0fc058d8ce874fc0690b0c9ef81b31",
+          "observedIdentity": "deliveryOwnerStopReleasesCycle"
+        },
+        {
+          "path": "watchface/source/SpaceFoxApp.mc",
+          "sha256": "7e54f62ee4828924af636b5f00bdefe6e5c23ac854e82749cc0fc853a08cd545",
+          "observedIdentity": "onStop"
+        }
+      ],
+      "evidence": [
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/hash-incident.log",
+          "sha256": "c4c56ad4c7b31c16dd572e75cb63a8b7ad0a29dcc1e1541721635ab2bc674546"
+        },
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/ownerstop-stock.log",
+          "sha256": "81c9d36a87ffa99b62679188ca7b808401f7dbbedf67456713f892481c93955a"
+        },
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/ownerstop-gate.json",
+          "sha256": "21bba0723ecc653533437eb283ae149d026e79a3337a06541398b5182ac119e1"
+        }
+      ]
+    },
+    {
+      "property": "WF25.P6",
+      "scenario": "Native resource evidence is measured",
+      "sources": [
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/stock-lane.py",
+          "sha256": "7dd809d31c9ad5b81e85f4f2cabc5ce6f1e9ea3612cb0888e3605b521ef9d340",
+          "observedIdentity": "stock simulator matched workload"
+        },
+        {
+          "path": "tools/build_native_resources.py",
+          "sha256": "bd43f3861ad2f9a9442b8c58f259b0113db7503e7b0f7570ed4beacba0babbae",
+          "observedIdentity": "resource generator"
+        }
+      ],
+      "evidence": [
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/prior-early-gate.json",
+          "sha256": "f874d769556661b9543753fa9eb39d049e3ad24f4b9496238fb5f9583496070a"
+        },
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/candidate-early-gate.json",
+          "sha256": "78db154b8e2f3291098f2f821168c9f9cc09ab0ae8f96da028ac58a80c696d23"
+        },
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/generator-compare.json",
+          "sha256": "7dd42b46c01a7efea95c9c41ace913f6cc73724f0e2cc8268149d12da9d67232"
+        },
+        {
+          "path": "openspec/changes/spacefox-watchface/evidence/performance021/d/export-final/inspection.json",
+          "sha256": "834808273b44b8480f6e26478424c933e10eda77630b1bb8151cf016951b0cf0"
+        }
+      ]
+    }
+  ]
+}

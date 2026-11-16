@@ -1,0 +1,55 @@
+------------------------------------------------------------------------------
+Executing test fields018Format...
+DEBUG (15:27): FORMAT time, duration, pressure, signed, strings, type42, units, weather, null
+PASS
+------------------------------------------------------------------------------
+Executing test fields018Settings...
+DEBUG (15:27): SETTINGS legacy identities, custom slot and invalid defaults
+PASS
+------------------------------------------------------------------------------
+Executing test fields018NativeInventoryAndPersistence...
+DEBUG (15:27): INVENTORY actual=40 catalog=56 duplicates=4 subscriptions<=1 storedId=yes stop=yes
+PASS
+------------------------------------------------------------------------------
+Executing test fields018RenderRealSource...
+DEBUG (15:27): RENDER locale=en provider=FLRS value=0 fields=4 bounds=true numericMetric=true
+DEBUG (15:27): RENDER locale=ru provider=FLRS value=0 fields=4 bounds=true numericMetric=true
+PASS
+------------------------------------------------------------------------------
+Executing test fields018PrimaryLabels...
+DEBUG (15:27): PRIMARY labels locales=5 activity=21
+PASS
+------------------------------------------------------------------------------
+Executing test fields018SameSlotReplacement...
+DEBUG (15:27): SAME_SLOT property=6 unchanged=true source=A->B immediate=true lowStopped=true
+PASS
+------------------------------------------------------------------------------
+Executing test fields018CapabilityInventory...
+DEBUG (15:27): ACTIVITY_KEYS [distance, stepGoal, floorsClimbedGoal, floorsDescended, metersClimbed, metersDescended, moveBarLevel, activeMinutesWeekGoal, activeMinutesDayTotal, activeMinutesDayModerate, activeMinutesDayVigorous, activeMinutesWeekModerate, activeMinutesWeekVigorous, stressScore]
+DEBUG (15:27): SYSTEM_KEYS [system:batteryInDays, system:charging]
+DEBUG (15:27): CAPABILITY native=40 paged=40 activity=14 system=2 availableNullSelectable=true solarNullUnsupported=true solarNegativeSupported=true type42=false
+PASS
+------------------------------------------------------------------------------
+Executing test fields018ChangedIdAndSharedSlots...
+DEBUG (15:27): CHANGED_ID sharedSlots=true otherProviderNotRead=true missingAndRecovery=true
+PASS
+------------------------------------------------------------------------------
+Executing test fields018ObservedProviderSizes...
+DEBUG (15:27): PROVIDER_SIZES discovered=40 maxLabelChars=29 maxStringValueChars=9 userIcons=0 maxIconWidth=0 maxIconHeight=0
+PASS
+
+==============================================================================
+RESULTS
+Test:                                  Status:
+fields018Format                        PASS
+fields018Settings                      PASS
+fields018NativeInventoryAndPersistence PASS
+fields018RenderRealSource              PASS
+fields018PrimaryLabels                 PASS
+fields018SameSlotReplacement           PASS
+fields018CapabilityInventory           PASS
+fields018ChangedIdAndSharedSlots       PASS
+fields018ObservedProviderSizes         PASS
+Ran 9 tests
+
+PASSED (passed=9, failed=0, errors=0)

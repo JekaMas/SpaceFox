@@ -88,10 +88,10 @@ class NativeWireHash {
     function initialize(){hash=new Cryptography.Hash({:algorithm=>Cryptography.HASH_SHA256});}
     function flush(){if(buffer.length()==0){return;}var b=StringUtil.convertEncodedString(buffer,{:fromRepresentation=>StringUtil.REPRESENTATION_STRING_PLAIN_TEXT,:toRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:encoding=>StringUtil.CHAR_ENCODING_UTF8});hash.update(b);count+=b.size();if(count>65536){throw new Lang.InvalidValueException("Canonical byte bound");}buffer="";}
     function put(text){
-        if(buffer.length()+text.length()<=128){buffer+=text;return;}
-        flush();for(var i=0;i<text.length();i+=128){var end=i+128;if(end>text.length()){end=text.length();}buffer=text.substring(i,end);flush();}
+        if(buffer.length()+text.length()<=256){buffer+=text;return;}
+        flush();for(var i=0;i<text.length();i+=256){var end=i+256;if(end>text.length()){end=text.length();}buffer=text.substring(i,end);flush();}
     }
-    function range(text,start,end){while(start<end){var next=start+128;if(next>end){next=end;}put(text.substring(start,next));start=next;}}
+    function range(text,start,end){while(start<end){var next=start+256;if(next>end){next=end;}put(text.substring(start,next));start=next;}}
     function update(bytes){hash.update(bytes);count+=bytes.size();if(count>65536){throw new Lang.InvalidValueException("Canonical byte bound");}}
     function scalar(value){if(value==null){put("null");}else if(value instanceof String){quoted(value);}else if(value instanceof Number||value instanceof Long){put(value.toString());}else{throw new Lang.InvalidValueException("Invalid scalar");}}
     function quoted(text){

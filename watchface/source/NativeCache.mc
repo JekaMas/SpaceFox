@@ -87,6 +87,13 @@ class NativeCacheCore {
         var active=commit==null?-1:commit["slot"];var recovery=-1;var old=store.read("sf.recovery");if(old instanceof Dictionary&&old["base"] instanceof String&&old["base"].equals(base)&&(old["slot"] instanceof Number||old["slot"] instanceof Long)){recovery=old["slot"];}
         for(var slot=0;slot<3;slot+=1){if(slot!=active&&slot!=recovery){return slot;}}throw new Lang.InvalidValueException("No inactive feed slot");
     }
+    // A newly written inactive slot no longer references older trailing chunks.
+    // Cleanup is best effort and never runs on the active or recovery slot.
+    function cleanupFeedTail(slot,count){try{
+        var active=store.read("sf.commit");var recovery=store.read("sf.recovery");
+        if(active instanceof Dictionary&&active["slot"]==slot||recovery instanceof Dictionary&&recovery["slot"]==slot){return;}
+        for(var i=count;i<16;i+=1){var key="sf.feed."+slot+"."+i;if(store.read(key)!=null){store.remove(key);}}
+    }catch(e){}}
     function checkPublisher(pub,wire){
         var pin=store.read(pinKey);if(pin==null){return true;}
         return pin instanceof Dictionary&&pin["instance"] instanceof String&&pin["instance"].equals(pub["instance"])&&(pin["generation"] instanceof Number||pin["generation"] instanceof Long)&&pub["generation"]>=pin["generation"]&&pub["selectionValidatedUtc"]>=pin["selectionValidatedUtc"]&&(pub["generation"]!=pin["generation"]||wire.equals(pin["wireHash"]));
@@ -111,7 +118,7 @@ class NativeCacheCore {
             if(packet!=null){var previous=packet instanceof NativePrior?packet.publisher:packet.document["publisher"];if(!pub["instance"].equals(previous["instance"])||pub["generation"]<previous["generation"]||pub["selectionValidatedUtc"]<previous["selectionValidatedUtc"]){failure="update-rejected";return false;}if(pub["generation"]==previous["generation"]){if(!candidate.wireHash.equals(packet.wireHash)){failure="update-rejected";return false;}if(packet instanceof NativePrior){operation="metadata";candidate.metadata(packet,now);if(!backgroundMode){candidate.presentation=feedScene(candidate,now);}candidate.compact();packet=candidate;requestWake=null;}else{packet.advance(now);}return true;}}
             var mutable=candidate.mutableWire();var mutableSpans=candidate.ignored;operation="metadata";candidate.metadata(packet,now);if(!backgroundMode){candidate.presentation=feedScene(candidate,now);}candidate.compact();operation="persist";var same=packet!=null&&candidate.contentHash.equals(packet.contentHash);var slot=same?commit["slot"]:freeSlot();var rawDigest=same?commit["rawHash"]:candidate.wireHash;
             var marker={"v"=>6,"base"=>base,"slot"=>slot,"generation"=>commit==null?1:commit["generation"]+1,"rawHash"=>rawDigest,"contentHash"=>candidate.contentHash,"validation"=>candidate.validation,"stale"=>candidate.stale,"rescheduled"=>candidate.rescheduled,"publisher"=>pub,"wireHash"=>candidate.wireHash,"mutable"=>mutable};marker["prior"]=priorFrom(candidate);marker["priorHash"]=priorHash(marker["prior"]);marker["seal"]=seal(marker);
-            if(!same){var chunks=0;for(var offset=0;offset<raw.length();offset+=512){var end=offset+512;if(end>raw.length()){end=raw.length();}var part=raw.substring(offset,end);var key="sf.feed."+slot+"."+chunks;store.write(key,part);var verify=store.read(key);if(!(verify instanceof String)||!verify.equals(part)){throw new Lang.InvalidValueException("Chunk readback mismatch");}verify=null;part=null;chunks+=1;}store.write("sf.feed."+slot,{"v"=>2,"base"=>base,"chunks"=>chunks,"rawHash"=>rawDigest,"mutableSpans"=>mutableSpans});}
+            if(!same){var chunks=0;for(var offset=0;offset<raw.length();offset+=512){var end=offset+512;if(end>raw.length()){end=raw.length();}var part=raw.substring(offset,end);var key="sf.feed."+slot+"."+chunks;store.write(key,part);var verify=store.read(key);if(!(verify instanceof String)||!verify.equals(part)){throw new Lang.InvalidValueException("Chunk readback mismatch");}verify=null;part=null;chunks+=1;}store.write("sf.feed."+slot,{"v"=>2,"base"=>base,"chunks"=>chunks,"rawHash"=>rawDigest,"mutableSpans"=>mutableSpans});cleanupFeedTail(slot,chunks);}
             // Every chunk has completed write/readback; commit verification needs
             // only the compact candidate and immutable raw hash from this point.
             raw=null;

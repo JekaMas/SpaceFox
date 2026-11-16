@@ -69,7 +69,7 @@ function sceneSettingsPositive(logger as Test.Logger) as Boolean {
 (:test)
 function sceneSettingsNegative(logger as Test.Logger) as Boolean {
     var s=new SceneSettings({"Field1"=>"energy","Field2"=>"energy","Field3"=>"energy","Field4"=>"energy","Language"=>null});
-    var bad=new SceneSettings({"Field1"=>6,"Field2"=>"off","Field3"=>false,"Field4"=>null});
+    var bad=new SceneSettings({"Field1"=>7,"Field2"=>"off","Field3"=>false,"Field4"=>null});
     logger.debug("duplicates permitted; invalid individual setting preserves only its default");
     return s.slots[0].equals("energy") && s.slots[3].equals("energy") && bad.slots[0].equals("steps") && bad.slots[1].equals("energy") && bad.slots[2].equals("heart") && bad.slots[3].equals("stress");
 }
@@ -131,8 +131,8 @@ function sceneAnimationPositive(logger as Test.Logger) as Boolean {
 (:test)
 function sceneAodPositive(logger as Test.Logger) as Boolean {
     var input=new SceneClock();var v=new SpaceFoxView(input,new ScheduleState(1800003661,"exact"));var telemetry=new SceneTelemetry();v.fitness=telemetry;
-    var im=sceneBuffer();var dc=im.getDc();v.onLayout(dc);v.onShow();v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);v.resumeAfterFrame();v.onEnterSleep();v.updateForDisplayMode(dc,System.DISPLAY_MODE_LOW_POWER);var minute=v.aodMinute;input.now+=1;v.updateForDisplayMode(dc,System.DISPLAY_MODE_LOW_POWER);
-    logger.debug("sleep minute redraw guard; telemetry read once outside redraw");var pass=minute==v.aodMinute && telemetry.reads==1 && v.snapshot().countdown.equals("T- 01:01:00") && !v.animationRunning;v.onHide();return pass;
+    var im=sceneBuffer();var dc=im.getDc();v.onLayout(dc);v.onShow();v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);var activeUnowned=v.restMask==null;v.resumeAfterFrame();v.onEnterSleep();v.updateForDisplayMode(dc,System.DISPLAY_MODE_LOW_POWER);var lowOwned=v.restMask!=null;var minute=v.aodMinute;input.now+=1;v.updateForDisplayMode(dc,System.DISPLAY_MODE_LOW_POWER);
+    logger.debug("sleep minute redraw guard; telemetry read once; mask acquired in LOW and released on wake");var pass=minute==v.aodMinute && telemetry.reads==1 && v.snapshot().countdown.equals("T- 01:01:00") && !v.animationRunning && activeUnowned && lowOwned;v.onExitSleep();v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);pass=pass && v.restMask==null;v.onHide();return pass;
 }
 (:test)
 function sceneAodNegative(logger as Test.Logger) as Boolean {

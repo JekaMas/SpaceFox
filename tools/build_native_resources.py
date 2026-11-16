@@ -6,7 +6,7 @@ Only existing licensed woff2/PNG/Natural Earth sources are inputs. No live data.
 Prepared map views bind the finite authored fixed-site catalog.
 """
 from pathlib import Path
-import hashlib,io,json,math,shutil,subprocess,tempfile
+import hashlib,io,json,math,shutil,struct,subprocess,tempfile
 import PIL,fontTools,brotli
 from PIL import Image,ImageDraw,ImageFont,ImageFilter
 try:
@@ -18,6 +18,12 @@ ROOT=Path(__file__).resolve().parents[1];RES=ROOT/'watchface/resources';GEN=ROOT
 
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def rid(s):return ''.join(c if c.isalnum() else '_' for c in s)
+def packed_map_metadata(points):
+ """Retain the exact single-precision literals used by Monkey C map lookup."""
+ coordinates=b''.join(struct.pack('>f',float(value)) for point in points for value in point)
+ data=' var mapCoordinates as ByteArray = ['+','.join(map(str,coordinates))+']b;\n'
+ cases=''.join(f'case {i}:return Rez.Drawables.MapView{i};' for i in range(len(points)))
+ return data+' (:extendedCode) function mapResource(index as Number) as ResourceId {switch(index){'+cases+'}return Rez.Drawables.MapView0;}\n'
 def font(name,size,files,characters):
  loaded=[]
  for f in files:
@@ -26,7 +32,7 @@ def font(name,size,files,characters):
  for ch in sorted(set(characters)):
   source=next(((f,cmap)for f,cmap in loaded if ord(ch)in cmap),None)
   if source is None:raise ValueError(f'missing real font glyph {ch!r} U+{ord(ch):04X}')
-  f,_=source;features=['tnum'] if name in ['Time80','Metric32','Count31','Aod40'] else [];l,t,r,b=f.getbbox(ch,anchor='ls',features=features);w=max(1,r-l);h=max(1,b-t)
+  f,_=source;features=['tnum'] if name in ['Time80','Metric32','Aod40'] else [];l,t,r,b=f.getbbox(ch,anchor='ls',features=features);w=max(1,r-l);h=max(1,b-t)
   if x+w+2>width:x=0;y+=row+2;row=0
   draw.text((x-l,y-t),ch,font=f,fill='white',anchor='ls',features=features);glyphs.append((ord(ch),x,y,w,h,l,base+t,round(f.getlength(ch,features=features))-(1 if name=='Time80' else 0)));x+=w+2;row=max(row,h)
  im=im.crop((0,0,width,2**math.ceil(math.log2(max(1,y+row+2)))));directory=RES/'fonts';directory.mkdir(parents=True,exist_ok=True);
@@ -63,7 +69,7 @@ def main():
  RES.mkdir(exist_ok=True);GEN.mkdir(exist_ok=True);catalog=json.loads((ROOT/'assets/rocket-pack/catalog.json').read_text());drawables=['<drawables>','<bitmap id="LauncherIcon" filename="launcher.png"/>'];models=[]
  for a in catalog['models']:
   p=ROOT/'assets/rocket-pack'/a['png']['path'];assert sha(p)==a['png']['sha256'];dest=RES/'drawables'/('art_'+a['id']+'.png');shutil.copyfile(p,dest);identity='Art_'+rid(a['id']);drawables.append(f'<bitmap id="{identity}" filename="{dest.name}"/>')
-  models.append(f'"{a["id"]}" => new NativeModel(Rez.Drawables.{identity})')
+  models.append(f'"{a["id"]}" => Rez.Drawables.{identity}')
  # Neutral fallback has no vehicle or country mark and asserts no launch identity.
  aod_coordinates=[];aod_cases=[];extra_maps=additional_maps(ROOT)
  for i,m in enumerate(extra_maps):
@@ -73,8 +79,7 @@ def main():
  unknown=ROOT/'watchface/resource-inputs/art-unknown.svg'
  (RES/'drawables/art_unknown.png').write_bytes(subprocess.check_output([renderer,'-w','54','-h','124',str(unknown)]))
  drawables.append('<bitmap id="Art_unknown" filename="art_unknown.png"/>')
- chars=''.join(chr(i)for i in range(32,127))+''.join(chr(i)for i in range(0x410,0x450))+'Ёё—…·–'
- fonts=[font('Aod40',136,['RobotoCondensed-latin-600.woff2'],'0123456789:'),font('Time80',104,['BarlowSemiCondensed-latin-600.woff2'],'0123456789:'),font('Metric32',46,['RobotoCondensed-latin-600.woff2','NotoSans-latin-500.woff2'], '0123456789 ,—%.…'),font('Label21',21,['NotoSans-latin-500.woff2','NotoSans-cyrillic-500.woff2'],chars),font('Label17',17.2,['NotoSans-latin-500.woff2','NotoSans-cyrillic-500.woff2'],chars),font('Count31',31,['RobotoCondensed-latin-600.woff2','NotoSans-cyrillic-500.woff2','NotoSans-latin-500.woff2'],chars+'−')]
+ fonts=[font('Aod40',136,['RobotoCondensed-latin-600.woff2'],'0123456789:'),font('Time80',104,['BarlowSemiCondensed-latin-600.woff2'],'0123456789:'),font('Metric32',46,['RobotoCondensed-latin-600.woff2','NotoSans-latin-500.woff2'], '0123456789 ,—%.…')]
  (RES/'fonts/fonts.xml').write_text('<fonts>\n'+''.join(f'<font id="{f["name"]}" filename="{f["name"]}.fnt" antialias="true"/>\n'for f in fonts)+'</fonts>\n')
  points=json.loads((ROOT/'watchface/resource-inputs/map-views.json').read_text())['points']
  with tempfile.NamedTemporaryFile('w',suffix='.json')as temp:
@@ -100,7 +105,7 @@ def main():
     px[x,y]=tuple(round(a*fade)for a in px[x,y])
   name=f'MapView{i}' if i<54 else f'MapExtra{i-54}';indexed=im.resize((195,195),Image.Resampling.LANCZOS);indexed.save(RES/'drawables'/(name+'.png'));drawables.append(f'<bitmap id="{name}" filename="{name}.png" automaticPalette="false"/>')
   if i<54:
-   entries.append(f'new NativeMap({m["point"][0]},{m["point"][1]},Rez.Drawables.{name})');aod_cases.append(f'case {i}:return Rez.Drawables.AodMap{i};')
+   entries.append(m['point']);aod_cases.append(f'case {i}:return Rez.Drawables.AodMap{i};')
   low=f'AodMap{i}' if i<54 else f'AodExtra{i-54}';outline(m).save(RES/'drawables'/(low+'.png'));drawables.append(f'<bitmap id="{low}" filename="{low}.png"/>')
  renderer=shutil.which('rsvg-convert')
  if not renderer:raise RuntimeError('Public dependency rsvg-convert2.57.0 is required for accepted SVG icon paths; no automatic installation')
@@ -122,7 +127,7 @@ def main():
  # One transparent checkerboard, shifted per LOW minute; every pixel rests once in four phases.
  mask=Image.new('RGBA',(391,391),(0,0,0,0));mask.putdata([(0,0,0,255) if x%2==0 and y%2==0 else (0,0,0,0) for y in range(391) for x in range(391)]);mask.save(RES/'drawables/AodRestMask.png');drawables.append('<bitmap id="AodRestMask" filename="AodRestMask.png"/>')
  (RES/'drawables/drawables.xml').write_text('\n'.join(drawables+['</drawables>'])+'\n')
- (GEN/'NativeAssets.mc').write_text('// Generated by public tools/build_native_resources.py; catalog-driven, MIT.\nimport Toybox.Lang;\nmodule NativeAssets {\n var models as Dictionary<String, NativeModel> = {'+','.join(models)+'};\n var maps as Array<NativeMap> =['+','.join(entries)+'];\n var aodCoordinates as ByteArray = ['+','.join(map(str,aod_coordinates))+']b;\n (:extendedCode) function aodResource(index as Number) as ResourceId {switch(index){'+''.join(aod_cases)+'}return Rez.Drawables.AodMap0;}\n (:extendedCode) function extraMapResource(index as Number) as ResourceId {switch(index){'+''.join(f'case {i}:return Rez.Drawables.MapExtra{i};' for i in range(len(extra_maps)))+'}return Rez.Drawables.MapView0;}\n var icons as Dictionary<String,ResourceId> = {'+','.join(icon_entries)+'};\n}\n')
+ (GEN/'NativeAssets.mc').write_text('// Generated by public tools/build_native_resources.py; catalog-driven, MIT.\nimport Toybox.Lang;\nmodule NativeAssets {\n var models as Dictionary<String, ResourceId> = {'+','.join(models)+'};\n'+packed_map_metadata(entries)+' var aodCoordinates as ByteArray = ['+','.join(map(str,aod_coordinates))+']b;\n (:extendedCode) function aodResource(index as Number) as ResourceId {switch(index){'+''.join(aod_cases)+'}return Rez.Drawables.AodMap0;}\n (:extendedCode) function extraMapResource(index as Number) as ResourceId {switch(index){'+''.join(f'case {i}:return Rez.Drawables.MapExtra{i};' for i in range(len(extra_maps)))+'}return Rez.Drawables.MapView0;}\n var icons as Dictionary<String,ResourceId> = {'+','.join(icon_entries)+'};\n}\n')
  try:
   from tools.build_native_localization import generate
  except ImportError:

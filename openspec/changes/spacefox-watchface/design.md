@@ -842,3 +842,11 @@ inside the existing performance021 outer proof, never another proof layer.
 WEB-01 uses a named global callback and one idempotent teardown shared by event
 and ticker paths; disconnected event delivery cannot render stale roots. The
 existing one-second disconnection bound and visual composition are retained.
+
+## performance021 D — native resource work
+
+Measure the current native source before changes with the same 42-profile admission and five-primary-locale contracts. Group D retains the complete per-finding evidence and first failed observations under `evidence/performance021/d/`. Optimize only owned resources and event-local work; never rely on heap figures as graphics-pool measurements. The matched stock Venu X1 workload uses a frozen rebased offline A+2 fixture, a disposable key and release flags. A complete visible selected scene and baseline/final readiness phase are required before comparison. Preserve all current accepted data and source authority, exact mode/field and graphics behavior, final digest admission and corruption/restart recovery. Individual fixes and their independent event-sequence or native test oracles will be recorded against their real owners before implementation; missing observations remain open.
+
+The pixel-rest mask belongs to LOW rendering: acquire it before a permitted LOW blit and drop its reference on a transition to NOT_LOW. The scaled logical scene canvas remains owned where needed to preserve the same 390-pixel composition and scaling; a resource reference is not a measurement of the graphics pool.
+
+The matching-bundled-outline decoder path can skip edge comparisons that have no output, but must still maintain the exact RGB scanline state, zeroed first-row copy behavior and final full pixel digest. The normal generated-outline path remains unchanged. The observed first stock readiness regression remains a red until affected native pixel/corruption sequences and a new matched stock run establish its actual effect.

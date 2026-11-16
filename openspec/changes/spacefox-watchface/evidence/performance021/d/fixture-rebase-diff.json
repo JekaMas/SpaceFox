@@ -1,0 +1,76 @@
+{
+  "oldFeedSha256": "cabe3726b776fdb2b7dff595a50df77c9d6f08ce906b03fb1ea5b5b3cbddde8f",
+  "newFeedSha256": "c0dedc49ab3f012688b066ee1b3fb47e71f233aca31bd07d6f28ea245a7ea51a",
+  "changes": [
+    [
+      "/launch/source_validated_utc",
+      1794826622,
+      1794837636
+    ],
+    [
+      "/launch/timing/exact_utc",
+      1794913022,
+      1794924036
+    ],
+    [
+      "/publisher/selectionValidatedUtc",
+      1794826622,
+      1794837636
+    ],
+    [
+      "/sourceContentRevision",
+      "d1935488dba7be95bcb2d3239c38a17703324da77e08f1fd4a27946b146943c8",
+      "74a3eff3af16fae729aa0337017577a45764ce7abf5a14750cac96be6fcda355"
+    ],
+    [
+      "/upcoming/0/source_validated_utc",
+      1794826622,
+      1794837636
+    ],
+    [
+      "/upcoming/0/timing/exact_utc",
+      1794920222,
+      1794931236
+    ],
+    [
+      "/upcoming/1/source_validated_utc",
+      1794826622,
+      1794837636
+    ],
+    [
+      "/upcoming/1/timing/exact_utc",
+      1794927422,
+      1794938436
+    ]
+  ],
+  "oldRebase": {
+    "now": 1794826622,
+    "targets": [
+      1794913022,
+      1794920222,
+      1794927422
+    ],
+    "ids": [
+      "ef9850ad-1096-425b-9d27-f7bbd186e61a",
+      "76617033-4dc0-4448-b50c-e5b0d5a18539",
+      "0f867f0c-5422-4d44-93b8-d7faaae7019b"
+    ],
+    "sourceContentRevision": "d1935488dba7be95bcb2d3239c38a17703324da77e08f1fd4a27946b146943c8",
+    "boundary": "offline captured identities and assets with rebased fixture times"
+  },
+  "newRebase": {
+    "now": 1794837636,
+    "targets": [
+      1794924036,
+      1794931236,
+      1794938436
+    ],
+    "ids": [
+      "ef9850ad-1096-425b-9d27-f7bbd186e61a",
+      "76617033-4dc0-4448-b50c-e5b0d5a18539",
+      "0f867f0c-5422-4d44-93b8-d7faaae7019b"
+    ],
+    "sourceContentRevision": "74a3eff3af16fae729aa0337017577a45764ce7abf5a14750cac96be6fcda355",
+    "boundary": "offline captured identities and assets with rebased fixture times"
+  }
+}

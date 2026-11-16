@@ -20,6 +20,16 @@ class SpaceFoxApp extends Application.AppBase {
     (:typecheck(disableBackgroundCheck))
     function getSettingsView() as [Views] or [Views, InputDelegates] or Null {if(view!=null){view.releaseForSettings();}return SettingsMenu.root(self);}
 
+    // This is the application-owner boundary, not an ordinary hide or settings
+    // transition. Break the app/view Method cycle and cancel owned callbacks.
+    (:typecheck(disableBackgroundCheck))
+    function onStop(state as Dictionary or Null) as Void {
+        if(restoreTimer!=null){restoreTimer.stop();restoreTimer=null;}
+        restorePending=false;restoreSeal=null;
+        var current=view;if(current!=null){current.pendingLoader=null;current.onHide();}
+        view=null;feed=null;
+    }
+
     function getServiceDelegate() as [System.ServiceDelegate] {return [new FeedService()];}
     (:typecheck(disableBackgroundCheck))
     function onBackgroundData(data as Application.PersistableType) as Void {if(view==null||System.getDisplayMode()==System.DISPLAY_MODE_OFF){return;}if(view.canAcceptBackground()){try{reloadFeed();}catch(e){}}WatchUi.requestUpdate();}

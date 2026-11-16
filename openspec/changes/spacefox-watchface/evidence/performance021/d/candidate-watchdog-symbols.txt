@@ -1,0 +1,16 @@
+Exact candidate stock PRG debug XML: /Users/jekamas/.codex/tmp/spacefox-performance021-candidate/stock/SpaceFoxRolloverStock.prg.debug.xml
+Addresses mapped to nearest preceding pcToLineNum entry:
+100006d5 NativeJson.mc:89 NativeWireHash.flush
+1000084e NativeJson.mc:92 NativeWireHash.put
+10000795 NativeJson.mc:94 NativeWireHash.range
+50009891 NativeFeed.mc:119 NativeFeed.recordRange
+50009980 NativeFeed.mc:121 NativeFeed.recordIdentity
+5000b98d NativeFeed.mc:6 NativeFeed.initialize
+500130b9 NativeBridgeFeed.mc:18 NativeBridgeFeed.initialize
+5001230c NativeForegroundCache.mc:7 NativeCache.parseFeed
+5000877a NativeCache.mc:115 NativeCacheCore.accept
+50011844 NativeIncoming.mc:24 NativeIncoming.admitFeedForView
+50010e9c NativeForegroundApp.mc:70 NativeForegroundApp.reload
+100010dc SpaceFoxApp.mc:38 SpaceFoxApp.reloadFeed
+10000eba SpaceFoxApp.mc:35 SpaceFoxApp.onBackgroundData
+The stack concerns synchronous foreground feed admission invoked by the OS background-data callback; it is not evidence that the decoder row budget tripped. Source identities and final hashes pending final source freeze.

@@ -70,7 +70,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
         if (_mode == next) { return; }
         _mode=next;aodMinute=null;metricsMinute=null;
         if (_mode == LOW) { _resumePending=false;stopResume();stopAnimation();cancelSfrBuild();stopFitness();if(renderer!=null){(renderer as SceneRenderer).prepareAod();} }
-        else { _resumePending=true; }
+        else { restMask=null;_resumePending=true; }
         WatchUi.requestUpdate();
     }
     function onShow() as Void {
@@ -102,7 +102,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     }
     function fieldsChanged(id as Complications.Id) as Void {
         if(!_shown||_mode!=NOT_LOW||System.getDisplayMode()!=System.DISPLAY_MODE_HIGH_POWER||!selectedFields.includes(id)){return;}
-        selectedFields.read(settings.language);fitness.currentBodyBattery=selectedFields.energy;
+        selectedFields.readChanged(settings.language,id);fitness.currentBodyBattery=selectedFields.energy;
         values["energy"]=fitness.currentBodyBattery;WatchUi.requestUpdate();
     }
     function stopFitness() as Void {if(fitnessTimer!=null){fitnessTimer.stop();fitnessTimer=null;}selectedFields.stop();fitness.currentBodyBattery=null;values["energy"]=null;metricsMinute=null;}
@@ -153,7 +153,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
     }
     function snapshot() as ClockSnapshot {return snapshotAt(_clock.utcSeconds());}
     (:extendedCode)
-    function setSettings(next as SceneSettings) as Void { stopFitness();var rolesChanged=!nativeSame(settings.slots,next.slots);settings=next;if(rolesChanged){metricsMinute=null;}aodMinute=null;presentation.prepare(settings.language);stopAnimation();if(renderer!=null){renderer.prepare(context,settings);(renderer as SceneRenderer).downloaded=downloaded;} if(canForegroundWork()){refreshFitness();} }
+    function setSettings(next as SceneSettings) as Void { stopFitness();var rolesChanged=!nativeSame(settings.slots,next.slots);settings=next;if(rolesChanged){metricsMinute=null;}aodMinute=null;presentation.prepare(settings.language);stopAnimation();if(renderer!=null){renderer.prepare(context,settings);(renderer as SceneRenderer).useDownloaded(downloaded);} if(canForegroundWork()){refreshFitness();} }
     function refreshLocale() as Void {var previous=settings.language;settings.refreshLanguage();if(!previous.equals(settings.language)){setSettings(settings);}}
     (:extendedCode, :typecheck(false))
     // The scene digest binds selected art/map identity; bridge IDs and exact
@@ -179,13 +179,13 @@ class SpaceFoxView extends WatchUi.WatchFace {
             if(refreshed!=null && refreshed.launchId.equals("")){refreshed=null;}
             context=refreshed;_schedule=refreshed==null?new ScheduleState(null,"empty"):refreshed.schedule;
             upcoming=next.upcomingScenes instanceof Array?next.upcomingScenes.slice(0,next.upcomingScenes.size()):[];
-            downloaded=retained;if(renderer!=null){renderer.prepare(context,settings);renderer.downloaded=downloaded;}
+            downloaded=retained;if(renderer!=null){renderer.prepare(context,settings);renderer.useDownloaded(downloaded);}
             packet.compact();advanceSelection(_clock.utcSeconds());return;
         }
         packet=next;downloaded=null;assetCache=null;
         setContext(feedScene(packet,_clock.utcSeconds()));upcoming=packet!=null && packet.upcomingScenes instanceof Array?packet.upcomingScenes.slice(0,packet.upcomingScenes.size()):[];visualKey=key;downloaded=retained;
         if(retained!=null){sceneLifecycle.bindReady();}
-        if(renderer!=null){renderer.downloaded=downloaded;}
+        if(renderer!=null){renderer.useDownloaded(downloaded);}
         if(packet!=null){packet.compact();}advanceSelection(_clock.utcSeconds());
     }
     (:typecheck(false)) function setAssetCache(cache as NativeRenderSource) as Void {
@@ -216,7 +216,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
         stopAnimation();stopSfrTimer();sfrBuild=null;sceneLifecycle.replace();visualKey=null;downloaded=null;aodMinute=null;
         if(next!=null && next.launchId.equals("")){next=null;}
         context=next;_schedule=next==null?new ScheduleState(null,"empty"):next.schedule;
-        if(renderer!=null){renderer.prepare(context,settings);(renderer as SceneRenderer).downloaded=downloaded;if(_mode==LOW){(renderer as SceneRenderer).prepareAod();}}
+        if(renderer!=null){(renderer as SceneRenderer).downloaded=null;renderer.prepare(context,settings);(renderer as SceneRenderer).useDownloaded(downloaded);if(_mode==LOW){(renderer as SceneRenderer).prepareAod();}}
     }
     function canForegroundWork() as Boolean {return _shown&&(_mode == NOT_LOW)&&!_resumePending&&_resumeTimer==null&&System.getDisplayMode()==System.DISPLAY_MODE_HIGH_POWER;}
     function canAcceptBackground() as Boolean {return _shown&&System.getDisplayMode()!=System.DISPLAY_MODE_OFF&&(!_awake||canForegroundWork());}
@@ -228,11 +228,10 @@ class SpaceFoxView extends WatchUi.WatchFace {
         if(packet!=null && context!=null){context.stale=packet.stale;context.rescheduled=packet.rescheduled;}
         packet=null;
     }
-    function prepareRenderer() as Void {if(sfrBuild!=null){return;}renderer=new SceneRenderer(presentation);renderer.prepare(context,settings);(renderer as SceneRenderer).downloaded=downloaded;if(_mode==LOW){(renderer as SceneRenderer).prepareAod();}}
+    function prepareRenderer() as Void {if(sfrBuild!=null){return;}renderer=new SceneRenderer(presentation);renderer.prepare(context,settings);(renderer as SceneRenderer).useDownloaded(downloaded);if(_mode==LOW){(renderer as SceneRenderer).prepareAod();}}
     function releaseRenderer() as Void {stopAnimation();renderer=null;}
     function onLayout(dc as Graphics.Dc) as Void {
         prepareRenderer();
-        if(restMask==null){restMask=WatchUi.loadResource(Rez.Drawables.AodRestMask) as Graphics.BitmapType;}
         // Render the complete 390px design into one canvas before scaling:
         // map, points, dynamic raster, foreground, fonts and maintenance stay
         // in the same coordinate system on larger supported round screens.
@@ -261,7 +260,8 @@ class SpaceFoxView extends WatchUi.WatchFace {
         if(_mode==NOT_LOW&&renderer!=null){queueResumeAfterFrame();}
     }
     function applyPixelRest(dc as Graphics.Dc) as Void {
-        if((_mode == NOT_LOW)||restMask==null){return;}
+        if(_mode == NOT_LOW){return;}
+        if(restMask==null){restMask=WatchUi.loadResource(Rez.Drawables.AodRestMask) as Graphics.BitmapType;}
         var minute=utcMinute(_clock.utcSeconds());var phase=((minute%4+4)%4).toNumber();
         dc.drawBitmap(-(phase%2),-(phase/2),restMask as Graphics.BitmapType);
     }
@@ -323,7 +323,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
             if (sfrBuild.step()) {
                 var result=sfrBuild.result;stopSfrTimer();sfrBuild=null;
                 if (sceneLifecycle.complete(sfrGeneration)) {
-                    downloaded=result;if(renderer==null){prepareRenderer();}else{(renderer as SceneRenderer).downloaded=downloaded;(renderer as SceneRenderer).prepareAod();}
+                    downloaded=result;if(renderer==null){prepareRenderer();}else{(renderer as SceneRenderer).useDownloaded(downloaded);(renderer as SceneRenderer).prepareAod();}
                     WatchUi.requestUpdate();
                 }
             }

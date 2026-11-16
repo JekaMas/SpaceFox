@@ -1,0 +1,17 @@
+------------------------------------------------------------------------------
+Executing test dInterruptedFragmentRecovery...
+DEBUG (18:55): FRAGMENT_SEQUENCE failedMarkerPreservesOld=true failedCleanupPreservesNew=true retryReclaimsTail=true acceptedUnchanged=true
+PASS
+------------------------------------------------------------------------------
+Executing test dInactiveFeedTailRecovery...
+DEBUG (18:55): FEED_TAIL_SEQUENCE activeRecoveryProtected=true interruptedCleanupRetry=true acceptedFutureUnchanged=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+dInterruptedFragmentRecovery        PASS
+dInactiveFeedTailRecovery           PASS
+Ran 2 tests
+
+PASSED (passed=2, failed=0, errors=0)

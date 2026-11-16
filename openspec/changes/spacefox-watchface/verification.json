@@ -421,6 +421,12 @@
       "capability": "watchface",
       "title": "Bounded illustrative embed ownership",
       "fingerprint": "b4cc2b010611bd2b3199fa80c04a769047fbd7307300e86bfc12d74ac2795aa7"
+    },
+    {
+      "id": "WF25",
+      "capability": "watchface",
+      "title": "Bounded native resource ownership and work",
+      "fingerprint": "4d82241c3b11b575b83c5c58aced6b24d9dd28dc4168e1ff789cba94adfef14e"
     }
   ],
   "properties": [
@@ -714,7 +720,7 @@
       ],
       "statement": "The system SHALL identify a reschedule when the accepted target time changes for\nthe same launch identifier, recalculate the countdown and retain a change flag\nfor that selected launch. An unchanged successful refresh SHALL not create or\nclear the flag; selecting a different launch SHALL not inherit it.",
       "owner": "tools/spacefox/schedule.py; tools/spacefox/wire.py; watchface/source/NativeFeed.mc; watchface/source/FeedScene.mc; watchface/source/ScheduleState.mc; watchface/source/SpaceFoxView.mc",
-      "oracle": "Literal current MIN target1794609900\u21921794611100 at clock1794551202 produces58698\u219259898 seconds (16:18:18\u219216:38:18), +1200 and same-ID flag. Unchanged validation cannot create or clear it. Withdrawal gives null remaining and --:--:--; next timed launch identity cannot inherit prior latch. Actual captured SEC merge additionally retains unchanged-exact-UTC metadata behavior. Provider precision and exact_utc=null remain intact for MIN. Native assertions execute production classes rather than a Python countdown model.",
+      "oracle": "Literal current MIN target1794609900→1794611100 at clock1794551202 produces58698→59898 seconds (16:18:18→16:38:18), +1200 and same-ID flag. Unchanged validation cannot create or clear it. Withdrawal gives null remaining and --:--:--; next timed launch identity cannot inherit prior latch. Actual captured SEC merge additionally retains unchanged-exact-UTC metadata behavior. Provider precision and exact_utc=null remain intact for MIN. Native assertions execute production classes rather than a Python countdown model.",
       "source_globs": [
         "tests/test_basic_reschedule.py",
         "tests/fixtures/basic_reschedule/**",
@@ -1600,7 +1606,7 @@
         "Main values remain visible",
         "Local time changes"
       ],
-      "statement": "Software boundary: the unchanged compiled native watch face displays Garmin local time as primary fixed24-hour HH:mm, with UTC countdown independent of local-zone presentation. Actual captured real launch text, countdown and four selected metrics remain readable within the390\u00d7390 circular active scene using accepted fixed geometry and bounded labels. Physical readability remains release task5.1/6.1.",
+      "statement": "Software boundary: the unchanged compiled native watch face displays Garmin local time as primary fixed24-hour HH:mm, with UTC countdown independent of local-zone presentation. Actual captured real launch text, countdown and four selected metrics remain readable within the390×390 circular active scene using accepted fixed geometry and bounded labels. Physical readability remains release task5.1/6.1.",
       "owner": "watchface/source/WatchClock.mc; watchface/source/SpaceFoxView.mc; watchface/source/SceneRenderer.mc",
       "oracle": "Retained exact ten-test SDK clock table (including actual Garmin Time.now/System.getClockTime smoke and literal7200 seconds despite local changes); new actual production text draw calls checked by independent circle/rectangle geometry and resource glyph bounds; retained source-bound current map screenshot inspected. No recreated Python clock/layout model.",
       "source_globs": [
@@ -1627,7 +1633,7 @@
         "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
       "planning_status": "Implemented whole software property; actual selected verifier receipt required. P2 conjunctive alias folded, external release obligations retained.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF02.P1",
@@ -1936,7 +1942,7 @@
         "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
       "planning_status": "planned; no acceptance or implementation is inferred by this evidence topology",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF10.P1",
@@ -3214,7 +3220,7 @@
         "evidence/final-local-review-20261115/geography-fixed.log"
       ],
       "planning_status": "Current-only witnesses remain planned after executed fixture/harness closure retirement. Retained historical observations do not execute this graph or close product acceptance.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "LS05.P7",
@@ -3976,7 +3982,7 @@
         "Raise wrist",
         "Display sleeps"
       ],
-      "statement": "Whole simulator software animation: active wake starts a 2\u20133s rocket-only animation, valid frame duration is bounded, natural completion resets, sleep/hide/low-power stops, static fallback remains readable and no liftoff is inferred. Physical wrist activation and power measurements remain task 5.3.",
+      "statement": "Whole simulator software animation: active wake starts a 2–3s rocket-only animation, valid frame duration is bounded, natural completion resets, sleep/hide/low-power stops, static fallback remains readable and no liftoff is inferred. Physical wrist activation and power measurements remain task 5.3.",
       "owner": "watchface/source/SpaceFoxView.mc; watchface/source/SceneRenderer.mc",
       "oracle": "Actual source-bound SDK framework/lifecycle and bitmap captures with literal time/pixel bounds, plus independent receipt corruption refusal; physical watch remains separate.",
       "source_globs": [
@@ -4062,7 +4068,7 @@
         "Health data unavailable",
         "Select watch battery"
       ],
-      "statement": "Four fixed ACTIVE positions independently persist accessible Garmin source identities, including duplicates; established phone choices 0\u20135 preserve their meanings, unavailable readings do not reuse stale values, and watch charge remains distinct from Body Battery. LOW omits all four fields.",
+      "statement": "Four fixed ACTIVE positions independently persist accessible Garmin source identities, including duplicates; established phone choices 0–5 preserve their meanings, unavailable readings do not reuse stale values, and watch charge remains distinct from Body Battery. LOW omits all four fields.",
       "owner": "watchface/source/SceneSettings.mc; watchface/source/FieldSources.mc; watchface/source/SettingsMenu.mc; watchface/source/SpaceFoxView.mc; watchface/source/SceneRenderer.mc",
       "oracle": "Current fields018 FR165/FR170 SDK receipts and actual 390/454 stock observations; older six-role receipts retain only their original source boundary. Physical health-source, phone and battery acceptance remain separate.",
       "source_globs": [
@@ -5208,7 +5214,7 @@
         "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
       "planning_status": "Reconcile individual DISPLAY03 source-bound observations with the complete requirement; no full property result inferred.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF17.P1",
@@ -5240,7 +5246,7 @@
         "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
       "planning_status": "Reconcile individual DISPLAY03 source-bound observations with the complete requirement; no full property result inferred.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF18.P1",
@@ -5273,7 +5279,7 @@
         "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
       "planning_status": "Reconcile individual DISPLAY03 source-bound observations with the complete requirement; no full property result inferred.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF19.P1",
@@ -5305,7 +5311,7 @@
         "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
       "planning_status": "Reconcile individual DISPLAY03 source-bound observations with the complete requirement; no full property result inferred.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF16.P2",
@@ -5326,7 +5332,7 @@
         "openspec/changes/spacefox-watchface/evidence/display03-active-tick-wake/author-runtime/final-native-receipt.json"
       ],
       "planning_status": "Bounded retained SDK observation only; full P1 remains planned.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF17.P2",
@@ -5347,7 +5353,7 @@
         "openspec/changes/spacefox-watchface/evidence/display03-active-tick-wake/author-runtime/final-native-receipt.json"
       ],
       "planning_status": "Bounded retained SDK observation only; full P1 remains planned.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF17.P3",
@@ -5367,7 +5373,7 @@
         "watchface/manifest.xml"
       ],
       "planning_status": "Bounded five-vector current-source SDK execution; full scenario remains separately mapped.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "VC14.P4",
@@ -5467,7 +5473,7 @@
       "scenarios": [
         "Return to a watch-selected source"
       ],
-      "statement": "Static phone choices 0\u20135 and watch-selected option 6 retain the saved source independently; missing selection displays unavailable.",
+      "statement": "Static phone choices 0–5 and watch-selected option 6 retain the saved source independently; missing selection displays unavailable.",
       "owner": "watchface/source/FieldSources.mc; watchface/source/SettingsMenu.mc; watchface/source/SpaceFoxView.mc",
       "oracle": "Typed receipt observers authenticate exact executed FR165/FR170 native source, test program and framework table; positive and negative graph edges may observe separate assertions in the same native batch. No independent execution, physical device or paired-phone claim.",
       "source_globs": [
@@ -5834,6 +5840,109 @@
         "openspec/changes/spacefox-watchface/evidence/performance021/c/BROWSER-*.json"
       ],
       "planning_status": "implemented and author self-verified; fresh peer and root judgment pending"
+    },
+    {
+      "id": "WF25.P1",
+      "requirement_id": "WF25",
+      "scenarios": [
+        "Scene completes and transitions through LOW and wake",
+        "A matching bundled outline is available"
+      ],
+      "statement": "MEM-02/03/04 and PERF-01: retain matching scene identity and bounded resource ownership through completion and cancellation.",
+      "owner": "watchface/source/SceneRenderer.mc; watchface/source/NativeSfr.mc; tools/build_native_resources.py",
+      "oracle": "Actual event sequence or simulator observations with independent expected behavior and source-bound receipts.",
+      "source_globs": [
+        "watchface/source/SceneRenderer.mc",
+        "watchface/source/NativeSfr.mc",
+        "tools/build_native_resources.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/d/**"
+      ],
+      "planning_status": "planned; no observation or acceptance inferred"
+    },
+    {
+      "id": "WF25.P2",
+      "requirement_id": "WF25",
+      "scenarios": [
+        "A source field or display value changes"
+      ],
+      "statement": "MEM-05 and CPU-01/02/03/04: reuse only actual unchanged identities; retain dynamic data and source discovery.",
+      "owner": "watchface/source/FieldSources.mc; watchface/source/SceneRenderer.mc; watchface/source/SettingsMenu.mc",
+      "oracle": "Actual event sequence or simulator observations with independent expected behavior and source-bound receipts.",
+      "source_globs": [
+        "watchface/source/FieldSources.mc",
+        "watchface/source/SceneRenderer.mc",
+        "watchface/source/SettingsMenu.mc",
+        "openspec/changes/spacefox-watchface/evidence/performance021/d/**"
+      ],
+      "planning_status": "planned; no observation or acceptance inferred"
+    },
+    {
+      "id": "WF25.P3",
+      "requirement_id": "WF25",
+      "scenarios": [
+        "A batch progresses or its source changes"
+      ],
+      "statement": "IO-01: event-local prefix verification retains full admission and restart/corruption fences.",
+      "owner": "watchface/source/NativeImmutable.mc; watchface/source/FeedService.mc",
+      "oracle": "Actual event sequence or simulator observations with independent expected behavior and source-bound receipts.",
+      "source_globs": [
+        "watchface/source/NativeImmutable.mc",
+        "watchface/source/FeedService.mc",
+        "openspec/changes/spacefox-watchface/evidence/performance021/d/**"
+      ],
+      "planning_status": "planned; no observation or acceptance inferred"
+    },
+    {
+      "id": "WF25.P4",
+      "requirement_id": "WF25",
+      "scenarios": [
+        "A request is late or storage contains provisional state"
+      ],
+      "statement": "IO-02/03 and CLEAN-01: bound owned callbacks and cleanup while retaining accepted and future facts.",
+      "owner": "watchface/source/FeedService.mc; watchface/source/NativeUpcomingCache.mc; watchface/source/NativeTransfer.mc; watchface/source/NativeForegroundCache.mc; watchface/source/LaunchReminder.mc",
+      "oracle": "Actual event sequence or simulator observations with independent expected behavior and source-bound receipts.",
+      "source_globs": [
+        "watchface/source/FeedService.mc",
+        "watchface/source/NativeUpcomingCache.mc",
+        "watchface/source/NativeTransfer.mc",
+        "watchface/source/NativeForegroundCache.mc",
+        "watchface/source/LaunchReminder.mc",
+        "openspec/changes/spacefox-watchface/evidence/performance021/d/**"
+      ],
+      "planning_status": "planned; no observation or acceptance inferred"
+    },
+    {
+      "id": "WF25.P5",
+      "requirement_id": "WF25",
+      "scenarios": [
+        "The actual application owner stops"
+      ],
+      "statement": "LIFE-01: actual owner stop breaks the cycle and owned timers, preserving hide/settings behavior.",
+      "owner": "watchface/source/SpaceFoxApp.mc; watchface/source/SpaceFoxView.mc",
+      "oracle": "Actual event sequence or simulator observations with independent expected behavior and source-bound receipts.",
+      "source_globs": [
+        "watchface/source/SpaceFoxApp.mc",
+        "watchface/source/SpaceFoxView.mc",
+        "openspec/changes/spacefox-watchface/evidence/performance021/d/**"
+      ],
+      "planning_status": "planned; no observation or acceptance inferred"
+    },
+    {
+      "id": "WF25.P6",
+      "requirement_id": "WF25",
+      "scenarios": [
+        "Native resource evidence is measured"
+      ],
+      "statement": "MEM-01 and ASSET-01: matched complete-scene heap and actual package resource evidence with explicit boundaries.",
+      "owner": "watchface/source/**; watchface/resources/**; tools/native_performance021_qualification.py",
+      "oracle": "Actual event sequence or simulator observations with independent expected behavior and source-bound receipts.",
+      "source_globs": [
+        "watchface/source/**",
+        "watchface/resources/**",
+        "tools/native_performance021_qualification.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/d/**"
+      ],
+      "planning_status": "planned; no observation or acceptance inferred"
     }
   ],
   "cases": [
@@ -10241,9 +10350,9 @@
       "scenario": "Local time changes",
       "scenario_fingerprint": "6c19dec060e1a363b43b81ce7217fe43f54e21f99774bbc449c34bd3a3688013",
       "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
-      "observable": "Retained actual Garmin API smoke and native literal local08:00\u219212:00 with unchangedUTC duration7200; ordinary live clock advances.",
+      "observable": "Retained actual Garmin API smoke and native literal local08:00→12:00 with unchangedUTC duration7200; ordinary live clock advances.",
       "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
-      "green_expectation": "Retained actual Garmin API smoke and native literal local08:00\u219212:00 with unchangedUTC duration7200; ordinary live clock advances.",
+      "green_expectation": "Retained actual Garmin API smoke and native literal local08:00→12:00 with unchangedUTC duration7200; ordinary live clock advances.",
       "invalidation_dependencies": [
         "tests/test_basic_time_fields.py",
         "tests/fixtures/basic_time_fields/**",
@@ -10287,9 +10396,9 @@
       "scenario": "Local time changes",
       "scenario_fingerprint": "6c19dec060e1a363b43b81ce7217fe43f54e21f99774bbc449c34bd3a3688013",
       "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
-      "observable": "Native23:59\u219200:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
+      "observable": "Native23:59→00:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
       "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
-      "green_expectation": "Native23:59\u219200:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
+      "green_expectation": "Native23:59→00:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
       "invalidation_dependencies": [
         "tests/test_basic_time_fields.py",
         "tests/fixtures/basic_time_fields/**",
@@ -16507,7 +16616,7 @@
       "scenario": "Enter always-on mode",
       "scenario_fingerprint": "da512bbf0d7b6ec5f4576b67a8d4d2e85e2b6535fdebf8247b34d6462633c50b",
       "setup": "Owned UUID, pinnedSDKfr165, ordinary126784B/background61248B; actual temporal events; controlled-clock four-phase pixel probe separately labeled.",
-      "observable": "LOW rejection preserves the accepted seal and guarded full-map AOD through Off/High/reopen; current ordinary full-scene completion is under 8000 ms; four controlled phases have zero inner-circle intersection and the full 390\u00d7390 mask has the verified parity-rest property.",
+      "observable": "LOW rejection preserves the accepted seal and guarded full-map AOD through Off/High/reopen; current ordinary full-scene completion is under 8000 ms; four controlled phases have zero inner-circle intersection and the full 390×390 mask has the verified parity-rest property.",
       "red_expectation": "Missing low callback/guard/restore, changed seal, bad native test profile, over8000ms or repeated same-position pixels refuses.",
       "green_expectation": "Authenticated historical registered-callback recovery plus current callback, full-scene timing, bundled-outline equivalence and four-phase/mask observations; no current execution is inferred from historical logs.",
       "invalidation_dependencies": [
@@ -16547,7 +16656,7 @@
       "scenario": "Enter always-on mode",
       "scenario_fingerprint": "da512bbf0d7b6ec5f4576b67a8d4d2e85e2b6535fdebf8247b34d6462633c50b",
       "setup": "Owned UUID, pinnedSDKfr165, ordinary126784B/background61248B; actual temporal events; controlled-clock four-phase pixel probe separately labeled.",
-      "observable": "LOW rejection preserves the accepted seal and guarded full-map AOD through Off/High/reopen; current ordinary full-scene completion is under 8000 ms; four controlled phases have zero inner-circle intersection and the full 390\u00d7390 mask has the verified parity-rest property.",
+      "observable": "LOW rejection preserves the accepted seal and guarded full-map AOD through Off/High/reopen; current ordinary full-scene completion is under 8000 ms; four controlled phases have zero inner-circle intersection and the full 390×390 mask has the verified parity-rest property.",
       "red_expectation": "Missing low callback/guard/restore, changed seal, bad native test profile, over8000ms or repeated same-position pixels refuses.",
       "green_expectation": "Authenticated historical registered-callback recovery plus current callback, full-scene timing, bundled-outline equivalence and four-phase/mask observations; no current execution is inferred from historical logs.",
       "invalidation_dependencies": [
@@ -17068,7 +17177,7 @@
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Physical FR165 replaced by pinned ordinary SDK simulator; network inputs are exact owned fixture bytes. This command reads retained source-bound observations; it does not execute a new SDK run.",
-        "allowed_proof": "Six independent literal SDKtransformPoint anchors plus native pixel comparison prove rest repair60\u21920differences and transformed-path preservation; tall/wide endpoints retain pixels.",
+        "allowed_proof": "Six independent literal SDKtransformPoint anchors plus native pixel comparison prove rest repair60→0differences and transformed-path preservation; tall/wide endpoints retain pixels.",
         "forbidden_claims": [
           "Physical/human/phone/BLE/battery/Store acceptance",
           "Public HTTPS/Linux motion delivery or universal/peak performance",
@@ -17659,9 +17768,9 @@
       "scenario": "Known new launch time",
       "scenario_fingerprint": "ff1c31bcd1c140b6f53cf040269e54e738d75e18e6819320bba99350d5d04a39",
       "setup": "Retained raw captured Starship MIN record; technical UTC/ID mutations only, verbatim display text. Current schema3 SFR1M captured envelope with actual production schedule projection. Pinned FR165 SDK uses four new test-only native assertions and numeric clock. Captured historical SEC record supplies agreeing-target metadata merge assertion.",
-      "observable": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698\u219259898, text16:18:18\u219216:38:18, flag true.",
+      "observable": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698→59898, text16:18:18→16:38:18, flag true.",
       "red_expectation": "Fails if the stated literal relation, latch, identity or precision assertion is false, or the exact native framework test is missing/fails.",
-      "green_expectation": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698\u219259898, text16:18:18\u219216:38:18, flag true.",
+      "green_expectation": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698→59898, text16:18:18→16:38:18, flag true.",
       "invalidation_dependencies": [
         "tests/test_basic_reschedule.py",
         "tests/fixtures/basic_reschedule/**",
@@ -40762,6 +40871,153 @@
       "source_path": "tests/test_performance021_c.py",
       "source_sha256": "653400912d6839c23f405a617df9b78663eec02a0d7b2bb3a7f723a90641749f",
       "implementation_note": "C author direct checks and actual Chrome DOM receipts in performance021/c; fresh peer/root remain pending."
+    },
+    {
+      "id": "WF25.P1.S01.PLANNED",
+      "property_id": "WF25.P1",
+      "polarity": "positive",
+      "scenario": "Scene completes and transitions through LOW and wake",
+      "scenario_fingerprint": "9c5661f777ee48dcc1494614df249e427083438056b4b2919d2f2aa05ba446ac",
+      "setup": "Current source and matching simulator or local causal event fixture.",
+      "observable": "Named behavior, resource and integrity evidence.",
+      "red_expectation": "The required behavior, identity or integrity observation fails.",
+      "green_expectation": "Independent expected behavior and actual observations agree.",
+      "invalidation_dependencies": [
+        "watchface/source/SceneRenderer.mc",
+        "watchface/source/NativeSfr.mc",
+        "tools/build_native_resources.py"
+      ],
+      "test_id": "planned::performance021_d.property_1",
+      "command_id": "performance021-d-planned",
+      "state": "planned",
+      "source_path": "openspec/changes/spacefox-watchface/evidence/performance021/d/APPLY.md",
+      "planning_note": "Replace with actual selected tests and commands before verification."
+    },
+    {
+      "id": "WF25.P2.S01.PLANNED",
+      "property_id": "WF25.P2",
+      "polarity": "positive",
+      "scenario": "A source field or display value changes",
+      "scenario_fingerprint": "f7d757f114736c0ddf631ea7408b4e76dca124c67e61c98c438a66b52a34909a",
+      "setup": "Current source and matching simulator or local causal event fixture.",
+      "observable": "Named behavior, resource and integrity evidence.",
+      "red_expectation": "The required behavior, identity or integrity observation fails.",
+      "green_expectation": "Independent expected behavior and actual observations agree.",
+      "invalidation_dependencies": [
+        "watchface/source/FieldSources.mc",
+        "watchface/source/SceneRenderer.mc",
+        "watchface/source/SettingsMenu.mc"
+      ],
+      "test_id": "planned::performance021_d.property_2",
+      "command_id": "performance021-d-planned",
+      "state": "planned",
+      "source_path": "openspec/changes/spacefox-watchface/evidence/performance021/d/APPLY.md",
+      "planning_note": "Replace with actual selected tests and commands before verification."
+    },
+    {
+      "id": "WF25.P3.S01.PLANNED",
+      "property_id": "WF25.P3",
+      "polarity": "positive",
+      "scenario": "A batch progresses or its source changes",
+      "scenario_fingerprint": "d65154b7c814815c32d32011a42251358db409163c21a25c28866a735c2efbbb",
+      "setup": "Current source and matching simulator or local causal event fixture.",
+      "observable": "Named behavior, resource and integrity evidence.",
+      "red_expectation": "The required behavior, identity or integrity observation fails.",
+      "green_expectation": "Independent expected behavior and actual observations agree.",
+      "invalidation_dependencies": [
+        "watchface/source/NativeImmutable.mc",
+        "watchface/source/FeedService.mc"
+      ],
+      "test_id": "planned::performance021_d.property_3",
+      "command_id": "performance021-d-planned",
+      "state": "planned",
+      "source_path": "openspec/changes/spacefox-watchface/evidence/performance021/d/APPLY.md",
+      "planning_note": "Replace with actual selected tests and commands before verification."
+    },
+    {
+      "id": "WF25.P4.S01.PLANNED",
+      "property_id": "WF25.P4",
+      "polarity": "positive",
+      "scenario": "A request is late or storage contains provisional state",
+      "scenario_fingerprint": "3709e92f88e4929c81c46e4af81c2fe12e26cd47d1d44293340b533d7dc9e65b",
+      "setup": "Current source and matching simulator or local causal event fixture.",
+      "observable": "Named behavior, resource and integrity evidence.",
+      "red_expectation": "The required behavior, identity or integrity observation fails.",
+      "green_expectation": "Independent expected behavior and actual observations agree.",
+      "invalidation_dependencies": [
+        "watchface/source/FeedService.mc",
+        "watchface/source/NativeUpcomingCache.mc",
+        "watchface/source/NativeTransfer.mc",
+        "watchface/source/NativeForegroundCache.mc",
+        "watchface/source/LaunchReminder.mc"
+      ],
+      "test_id": "planned::performance021_d.property_4",
+      "command_id": "performance021-d-planned",
+      "state": "planned",
+      "source_path": "openspec/changes/spacefox-watchface/evidence/performance021/d/APPLY.md",
+      "planning_note": "Replace with actual selected tests and commands before verification."
+    },
+    {
+      "id": "WF25.P5.S01.PLANNED",
+      "property_id": "WF25.P5",
+      "polarity": "positive",
+      "scenario": "The actual application owner stops",
+      "scenario_fingerprint": "75a63db70a13773c86b047ea74aa8cbe6c419d17d658f43be4f5a228ad7ccb4e",
+      "setup": "Current source and matching simulator or local causal event fixture.",
+      "observable": "Named behavior, resource and integrity evidence.",
+      "red_expectation": "The required behavior, identity or integrity observation fails.",
+      "green_expectation": "Independent expected behavior and actual observations agree.",
+      "invalidation_dependencies": [
+        "watchface/source/SpaceFoxApp.mc",
+        "watchface/source/SpaceFoxView.mc"
+      ],
+      "test_id": "planned::performance021_d.property_5",
+      "command_id": "performance021-d-planned",
+      "state": "planned",
+      "source_path": "openspec/changes/spacefox-watchface/evidence/performance021/d/APPLY.md",
+      "planning_note": "Replace with actual selected tests and commands before verification."
+    },
+    {
+      "id": "WF25.P6.S01.PLANNED",
+      "property_id": "WF25.P6",
+      "polarity": "positive",
+      "scenario": "Native resource evidence is measured",
+      "scenario_fingerprint": "d42bb4f206228e8ce5f475bf1f8cdc7f09dce3d2c0483ee5371c310ce42648b2",
+      "setup": "Current source and matching simulator or local causal event fixture.",
+      "observable": "Named behavior, resource and integrity evidence.",
+      "red_expectation": "The required behavior, identity or integrity observation fails.",
+      "green_expectation": "Independent expected behavior and actual observations agree.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/resources/**",
+        "tools/native_performance021_qualification.py"
+      ],
+      "test_id": "planned::performance021_d.property_6",
+      "command_id": "performance021-d-planned",
+      "state": "planned",
+      "source_path": "openspec/changes/spacefox-watchface/evidence/performance021/d/APPLY.md",
+      "planning_note": "Replace with actual selected tests and commands before verification."
+    },
+    {
+      "id": "WF25.P1.S02.PLANNED",
+      "property_id": "WF25.P1",
+      "polarity": "positive",
+      "scenario": "A matching bundled outline is available",
+      "scenario_fingerprint": "f24fc03588cebece50377f5c6635b486e585ee0a49a45f2b90f7f793b99ed83e",
+      "setup": "Current source and matching simulator or local causal event fixture.",
+      "observable": "Named behavior, resource and integrity evidence.",
+      "red_expectation": "The required behavior, identity or integrity observation fails.",
+      "green_expectation": "Independent expected behavior and actual observations agree.",
+      "invalidation_dependencies": [
+        "watchface/source/SceneRenderer.mc",
+        "watchface/source/NativeSfr.mc",
+        "tools/build_native_resources.py"
+      ],
+      "test_id": "planned::performance021_d.bundled_outline",
+      "command_id": "performance021-d-planned",
+      "state": "planned",
+      "source_path": "openspec/changes/spacefox-watchface/evidence/performance021/d/APPLY.md",
+      "planning_note": "Replace with actual selected tests and commands before verification."
     }
   ],
   "commands": [
@@ -45811,6 +46067,17 @@
       "timeout_seconds": 180,
       "authority": "local",
       "planned_boundary": "Actual files and SDK pin discovery; deterministic callback lifetime controls, browser observation separate."
+    },
+    {
+      "id": "performance021-d-planned",
+      "runner": "manual",
+      "argv": [
+        "planned"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 180,
+      "authority": "local",
+      "planned_boundary": "Planning identity only; no execution or pass."
     }
   ]
 }
