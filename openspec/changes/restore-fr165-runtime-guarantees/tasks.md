@@ -17,5 +17,5 @@
 
 - [x] Preserve production UUID/key and bind the original published 0.1.18 update predecessor.
 - [x] Qualify current B1/source/version admission and verify identity, source and predecessor rejection boundaries.
-- [ ] Build and inspect the signed 0.1.19 PRGs/IQ and prepare private release assets and provenance.
+- [x] Build and inspect the signed 0.1.19 PRGs/IQ and prepare private release assets and provenance.
 - [ ] Independent peer verifies the exact source and artifacts; root merges and publishes the GitHub test prerelease.
