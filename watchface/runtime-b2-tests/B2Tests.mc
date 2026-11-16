@@ -99,6 +99,12 @@ import Toybox.WatchUi;
     Test.assert(renderer.worldFallback&&!renderer.pin&&scene.point!=null);
     var frame=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get();var clock=new ClockSnapshot("08:38","~T- 16:19");clock.localCalendar=[1,16,11];
     renderer.aod(frame.getDc(),clock,0l,settings);
+    // Once a downloaded outline is ready, use its centered marker alone;
+    // the fallback projection must not be overlaid at a second location.
+    Test.assert(renderer.aodWorldPoint(false,false)!=null);
+    Test.assert(renderer.aodWorldPoint(false,true)==null);
+    var rich=new NativeSfrRenderer();rich.scene={"position"=>scene.point};rich.mapOutline=frame;renderer.downloaded=rich;
+    renderer.aod(frame.getDc(),clock,1l,settings);
     logger.debug("B2_LOW unmatchedSouthernPoint fallbackRendererDraw completed");return true;
 }
 

@@ -1,0 +1,14 @@
+Prg file doesn't exist: /task/cold/Peer.prg.
+usage: MonkeyDoDeux
+ -a,--additionalFile <arg>   An additional file to send to the simulator
+                             in the form of <source>:<dest>
+ -d,--device <arg>           The device to simulate
+ -f,--file <arg>             The PRG files to run, the PRG files are
+                             separated by ':' and foreground app should be
+                             listed first.
+ -n,--runNativePairing       Run the app in native pairing mode
+ -s,--shell <arg>            The Shell executable to use to communicate to
+                             the CIQ Simulator
+ -t,--test <arg>             Run unit tests. Providing an optional list of
+                             space separated test names will run only
+                             those tests.

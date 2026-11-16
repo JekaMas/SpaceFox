@@ -210,6 +210,7 @@ class SceneRenderer {
     }
     function prepareAod() as Void {if(!fonts.hasKey("aod")){fonts["aod"]=load(Rez.Fonts.Aod40) as Graphics.FontType;}if(aodMap==null && aodResource!=null){aodMap=load(aodResource as ResourceId) as Graphics.BitmapType;}}
     function releaseAod() as Void {aodMap=null;fonts.remove("aod");}
+    (:typecheck(false)) function aodWorldPoint(bundled,selected) {return worldFallback&&!bundled&&!selected&&fullContext!=null?fullContext.point:null;}
     (:typecheck(false)) function aod(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,settings as SceneSettings) as Void {
         current.rescheduled=current.rescheduled||fullContext!=null&&fullContext.rescheduled;
         current.sourceHold=current.sourceHold||fullContext!=null&&fullContext.sourceHold;
@@ -220,9 +221,9 @@ class SceneRenderer {
         // centers. Prefer that shape even when the selected scene is READY;
         // unmatched future locations retain their own decoded raster outline.
         var bundled=aodMap!=null && aodPin;
-        SceneAod.draw(dc,current,minute,presentation,fonts["aod"] as Graphics.FontType,settings,bundled?aodMap:(selected?rich.mapOutline:null),bundled||selected,bundled?aodPinX:335,bundled?aodPinY:165,worldFallback&&fullContext!=null?fullContext.point:null);
+        SceneAod.draw(dc,current,minute,presentation,fonts["aod"] as Graphics.FontType,settings,bundled?aodMap:(selected?rich.mapOutline:null),bundled||selected,bundled?aodPinX:335,bundled?aodPinY:165,aodWorldPoint(bundled,selected));
         if(fullContext!=null&&fullContext.point==null){FallbackMap.unknown(dc,365,20);}
-        else if(!worldFallback&&(bundled||selected)){FallbackMap.uncertain(dc,bundled?aodPinX:335,bundled?aodPinY:165);}
+        else if(bundled||selected){FallbackMap.uncertain(dc,bundled?aodPinX:335,bundled?aodPinY:165);}
     }
 }
 

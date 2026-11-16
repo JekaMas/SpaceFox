@@ -307,7 +307,7 @@
     "watchface/source/NativeVisualRenderer.mc": "4157f3659bca0a58aa1c044c584835dbf62029ecf64fb01d6fe8b30f64455f43",
     "watchface/source/SceneContext.mc": "022c72ac38a07b327c16cdf5bdaa19893e48c751e99f5a4ed4f266874d6c455c",
     "watchface/source/SceneLifecycle.mc": "d7723c246de7d19b206d6180101fb77ee8466dc3f7ef109c1381c55f17386c17",
-    "watchface/source/SceneRenderer.mc": "a86e57998c83760f7195d93668c8513a5eafa038bc6e708a1a596509132eabc7",
+    "watchface/source/SceneRenderer.mc": "7efff018c73bbf22cf388dfc047bd8aa7e9c76ee14954451b9df706e08935b07",
     "watchface/source/SceneSettings.mc": "264304ed331374ed730a93da642998813dd9b9c15d2cff8043f92afb53e2efc4",
     "watchface/source/ScheduleState.mc": "4a9f22b9d01398fa60eb2ce6e430b09d878380b93b88f93058972e340780f3c4",
     "watchface/source/SettingsMenu.mc": "d32c1b064689befc2492f077f9b30651e51bfdde559685c9803bd8f01f1d8ed9",
@@ -318,7 +318,7 @@
     "watchface/source/generated/FallbackWorld.mc": "cfd84190f1191bfb1ca828d42290e26daaffc6940828eb573126f4f416cd3b76",
     "watchface/source/generated/LocaleGraphemes.mc": "5ad65d6328908a7f251cd5ddbac83244de9b51929c2c46cb746bfb168a4f6c80",
     "watchface/source/generated/NativeAssets.mc": "0deebecafc34dc9f27a4756c905b3685648984a238f9d4bc5f7c2efe15c1df7a",
-    "watchface/source/generated/NativeVersion.mc": "a601080110a0f9a46a180453b9a4892810aab7ed09a2b22ed58bd03f5cd77a85",
+    "watchface/source/generated/NativeVersion.mc": "6884cd91f7971d9db7f0717c3a844a1e455efb05212685af1916e1c7cf36519c",
     "watchface/source/generated/SceneStrings.mc": "dd8a910b53d2493ec8760e0148186c9535c05a5e0644ae5b6e6eccb6dd651109"
   },
   "priorTestInputs": {
@@ -632,11 +632,11 @@
     "tests/test_release_020_predecessor.py": "3244c44e6d5345debf2029ad0ddeaa670dcc0000eba293841755a851d5ef2fca",
     "tools/build_b2_test_resources.py": "6f7079b595f54ce32d79bde817b94126969a10097f42bdf93babb7185ed61d56",
     "tools/build_fallback_world.py": "c38661006c65157c1ce64aeffa72a0ad0098371200dc8987041221a8164770fa",
-    "tools/check_b2_evidence.py": "e4156fc0030d4b85df4cfdba01e5c94a110eb4bf81c2c07c6ec7f5d73e6aba42",
+    "tools/check_b2_evidence.py": "46433a53616f06fefea3829aea49327ca119aa0714e559dae1a2ca3797d8448c",
     "tools/native_b2_022_qualification.py": "d7975f86b5f53c6b80811f47179d879f14ad596cecf4b36cf5cfd9ad18d839b7",
     "tools/native_language_policy.py": "c44752855c8835e754780c7f6ba1cb0ac0d8a03bc1b442bb260470c29330e74c",
     "tools/release.py": "7e8c1087e970b4f6a47cf2d6fbe8dcd24b5402992f5bfd532459ef442e32efde",
-    "watchface/runtime-b2-tests/B2Tests.mc": "72560cd2d4e8989d696dd426f5b934288f7d7f87847ac74ba4460e93b6459f29",
+    "watchface/runtime-b2-tests/B2Tests.mc": "84f7db126c12649aa9b5d78a5e3b7abf0135f441122f07e1038ba8fb398bdd88",
     "watchface/runtime-b2-tests/resources/B2Ascent.json": "2815b13e8074498f13ad566893b4879801fcec27c3a041832e74aa5825ca52f1",
     "watchface/runtime-b2-tests/resources/B2AscentCatalog.json": "8ac2049133d63dcb95eb2c07ebacc1599ca870fe1825fc82f135c55489ca0bc2",
     "watchface/runtime-b2-tests/resources/B2Different.json": "9eede32fe6275dcd5075426c7f34da48a4149fc2bf9cc05553f63175bcc36579",
@@ -703,8 +703,8 @@
       ],
       "rawExit": 1,
       "log": {
-        "path": "openspec/changes/restore-fr165-runtime-guarantees/evidence/b2-low-unmatched.log",
-        "sha256": "93678831429fc33efb0bfcce93d6a5ff033b8fc94349dc58fd5436d982e04c4c"
+        "path": "openspec/changes/restore-fr165-runtime-guarantees/evidence/b2-peer-low.log",
+        "sha256": "f071184ff7f0b7909dd6abb13a26285b23c38dfe224730bee61056f00ab6f58b"
       }
     },
     {
