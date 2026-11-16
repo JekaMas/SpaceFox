@@ -170,7 +170,7 @@ class NativeSfrBuild {
     }
     function displayScene(){return {"position"=>scene["position"]};}
     function step(){
-        if(role>=names.size()){if(!closureChecked){checkIndex();closureChecked=true;scene=displayScene();result.scene=scene;return false;}if(closureAt<expected.size()){var start=System.getTimer();var checked=0;while(closureAt<expected.size()&&checked<4&&(checked==0||System.getTimer()-start<18)){checkRaw(expected[closureAt]);closureAt+=1;checked+=1;}return false;}closure();return true;}var name=names[role];if(decoder==null){var d=prepareRole(name);if(d==null){role+=1;return false;}if(name.equals("map")&&preferBundled){d["__localBundledOutline"]=true;result.bundledOutline=true;}decoder=new NativeSfrDecoder(store,d);}
+        if(role>=names.size()){if(!closureChecked){checkIndex();closureChecked=true;scene=displayScene();result.scene=scene;return false;}if(closureAt<expected.size()){var start=System.getTimer();var checked=0;while(closureAt<expected.size()&&checked<4&&(checked==0||System.getTimer()-start<18)){checkRaw(expected[closureAt]);closureAt+=1;checked+=1;}return false;}closure();return true;}var name=names[role];if(decoder==null){var d=prepareRole(name);if(d==null){role+=1;return false;}if(name.equals("map")&&preferBundled){d["__localBundledOutline"]=true;result.bundledOutline=true;}decoder=new NativeSfrDecoder(store,d);return false;}
         if(decoder.step()){if(name.equals("map")){result.mapBitmap=decoder.bitmap;result.mapOutline=decoder.outlineBitmap;}else if(name.equals("rocket")){result.bitmap=decoder.bitmap;}else if(name.equals("siteCountry")){result.siteCountryBitmap=decoder.bitmap;}decoder=null;role+=1;}return false;
     }
 }

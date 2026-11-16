@@ -1,0 +1,11 @@
+OPEN_INSTALLED uuid=8bfb35b0-3576-4c14-856e-d684585d3ffd push=true port=1235
+
+Error: Out Of Memory Error
+Details: Failed invoking <symbol>
+Stack: 
+  - read() at /source/watchface/source/NativeCache.mc:10 0x10001581 
+  - raw() at /source/watchface/source/NativeImmutable.mc:17 0x100008c2 
+  - chunk() at /source/watchface/source/NativeSfr.mc:26 0x5000da23 
+  - step() at /source/watchface/source/NativeSfr.mc:72 0x100066d1 
+  - step() at /source/watchface/source/NativeSfr.mc:174 0x50015177 
+  - sfrStep() at /source/watchface/source/SpaceFoxView.mc:372 0x100045bd 

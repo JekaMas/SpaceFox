@@ -7,7 +7,11 @@ import Toybox.Background;
 module NativeForegroundApp {
     function initial(app) as [WatchUi.WatchFace] {
         app.view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));
-        app.view.setSettings(new SceneSettings(null).load());var selected=new NativeCache(configuredFeedUrl(),null);app.feed=selected;var now=Time.now().value().toLong();selected.load(now);display(app,selected);if(selected.packet!=null){savePlan(selected,selected.packet.document["refreshPolicy"],app.view);}app.view.pendingLoader=app.method(:reloadFeed);app.view.syncDisplayMode(System.getDisplayMode());return [app.view as WatchUi.WatchFace];
+        try{app.view.setSettings(app.initialSettings());}catch(e){}
+        // Return the view before opening or parsing durable optional data.
+        // The first HIGH frame queues the normal reload, which still owns
+        // cache validation, recovery, reminder scheduling and visual admission.
+        app.view.bootstrapPending=true;app.view.pendingLoader=app.method(:reloadFeed);app.view.cancelAdmission=app.method(:cancelWork);app.view.syncDisplayMode(System.getDisplayMode());return [app.view as WatchUi.WatchFace];
     }
     function display(app,cache){
         if(app.view==null){return;}LaunchReminderForeground.publish(cache,Time.now().value().toLong());if(cache.packet==null||cache.packet.document.hasKey("dictionaries")||app.view.context!=cache.packet.presentation){app.view.setPacket(cache.packet);}if(cache.packet!=null){try{var owner=cache.packet.document["publisher"]["instance"];var saved=new NativeUpcomingCache(cache.store,cache.base,owner).load();app.view.mergeSaved(saved,Time.now().value().toLong(),cache.packet.terminalUpdates);}catch(e){}app.view.setAssetCache(new NativeRenderSource(cache.store,cache.base,cache.packet.bridge));}
@@ -43,6 +47,7 @@ module NativeForegroundApp {
     }
 
     function reload(app) {
+        if(app.incomingJob!=null){app.queueIncoming();return;}
         var url = new NativeTransfer(configuredFeedUrl(),null).base;
         var selected = app.feed;
         var now = Time.now().value().toLong();
@@ -55,32 +60,35 @@ module NativeForegroundApp {
                 }
                 if (app.view != null) { app.view.setPacket(null); }
                 selected=new NativeCache(url,null);app.feed=selected;
-                selected.load(now);if(app.view!=null){app.view.resetRollover();}
+                if(app.view!=null){app.view.resetRollover();app.restoreSeal=null;app.startRestore(selected,now);return;}
+                selected.load(now);
             }
             if (!selected.base.equals("")) {
                 var incoming=new NativeIncoming(selected.store,selected.base);
                 var admission=hasNewIncoming(selected,incoming);
-                if (admission && app.view != null) {
-                    if (app.view.sceneLifecycle.pending()) { app.view.cancelSfrBuild(); }
-                    if (app.view.renderer != null) {
-                        rebuild=true;app.view.releaseRenderer();app.view.packet=null;
-
-                    }
-                }
-                incoming.admitFeedForView(selected,now,app.view);
-                if (incoming.needsRestore) {
-                    app.restoreSeal=incoming.restoreSeal;app.restorePending=true;
-                    app.queueRestore();return;
-                }
+                if (admission && app.view != null) {app.startIncoming(selected,now);return;}
 
             }
             display(app,selected);
             if(selected.packet!=null&&app.view!=null){savePlan(selected,selected.packet.document["refreshPolicy"],app.view);}
         } finally {
-            if (rebuild) { app.view.prepareRenderer(); }
+            if (rebuild && !app.view.admissionPending) { app.view.prepareRenderer(); }
         }
         if (app.view != null && System.getDisplayMode() == System.DISPLAY_MODE_HIGH_POWER) { app.view.prepareVisual(); }
 
         var transfer=new NativeTransfer(selected.base,selected.store);transfer.load();armFeed(transfer,now);
+    }
+    function completeIncoming(app,job){
+        var cache=job.cache;var now=Time.now().value().toLong();
+        if(job.accepted){display(app,cache);if(cache.packet!=null){savePlan(cache,cache.packet.document["refreshPolicy"],app.view);}}
+        else if(job.restoreSeal instanceof String){app.restoreSeal=job.restoreSeal;app.restorePending=true;}
+        if(app.view!=null){app.view.endAdmission();}
+        var transfer=new NativeTransfer(cache.base,cache.store);transfer.load();armFeed(transfer,now);
+    }
+    function completeRestore(app,job){
+        var cache=job.cache;
+        if(job.restored){app.restoreSeal=null;app.restorePending=false;display(app,cache);if(cache.packet!=null){savePlan(cache,cache.packet.document["refreshPolicy"],app.view);}}
+        else if(app.restoreSeal==null){app.restorePending=false;}
+        if(app.view!=null){if(app.restorePending){app.view.admissionPending=false;WatchUi.requestUpdate();}else{app.view.endAdmission();}}
     }
 }

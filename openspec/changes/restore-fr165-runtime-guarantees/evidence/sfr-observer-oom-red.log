@@ -1,0 +1,20 @@
+OPEN_INSTALLED uuid=8bfb35b0-3576-4c14-856e-d684585d3ffd push=false port=1235
+B1_SFR_BEFORE role=0 role used=109272 total=126784 reserve=7332
+B1_SFR_BEFORE role=0 shard=1 bytes=3935 used=116360 total=126784 reserve=7332
+B1_SFR_BEFORE role=0 shard=2 bytes=3706 used=116376 total=126784 reserve=7332
+B1_SFR_BEFORE role=0 shard=3 bytes=3903 used=116392 total=126784 reserve=7332
+B1_SFR_BEFORE role=0 shard=4 bytes=3915 used=116408 total=126784 reserve=7332
+B1_SFR_BEFORE role=0 shard=5 bytes=3923 used=116424 total=126784 reserve=7332
+B1_SFR_BEFORE role=0 shard=6 bytes=4044 used=116440 total=126784 reserve=7332
+B1_SFR_BEFORE role=0 shard=7 bytes=3964 used=116456 total=126784 reserve=7332
+B1_SFR_BEFORE role=0 shard=8 bytes=4028 used=118600 total=126784 reserve=7332
+
+Error: Out Of Memory Error
+Details: Failed invoking <symbol>
+Stack: 
+  - read() at /task/sfr-observer/source/NativeCache.mc:10 0x10001581 
+  - raw() at /task/sfr-observer/source/NativeImmutable.mc:17 0x100008c2 
+  - chunk() at /task/sfr-observer/source/NativeSfr.mc:26 0x5000da23 
+  - step() at /task/sfr-observer/source/NativeSfr.mc:72 0x100067aa 
+  - step() at /task/sfr-observer/source/NativeSfr.mc:174 0x50015177 
+  - sfrStep() at /task/sfr-observer/source/SpaceFoxView.mc:373 0x10004696 

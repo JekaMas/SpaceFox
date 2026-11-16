@@ -3,7 +3,9 @@ import Toybox.Lang;
 (:extendedCode, :typecheck(false))
 class NativeFeed {
     var bridge=null;var presentation=null;var upcomingScenes=null;var terminalUpdates=[];var hasUpcomingMetadata=false;var reminderData=null;var backgroundNames=false;var document;var raw;var contentHash;var wireHash;var spans;var ignored;var timingKey="";var recordHash="";var phase="header";var validation;var stale=false;var rescheduled=false;
-    function initialize(text,now){raw=text;parse(text);validate(now);validation=document["launch"]==null?null:document["launch"]["source_validated_utc"];stale=document["launch"]!=null && document["launch"]["stale"];rescheduled=document["launch"]!=null && document["launch"]["rescheduled"];contentHash=semanticHash();wireHash=hashRaw(raw);timingKey=timingIdentity();recordHash=recordIdentity(0);reminderData=reminderProjection();}
+    function initialize(text,now){raw=text;parse(text);validatePhase(now);contentHash=semanticHash();wireHash=hashRaw(raw);identityPhase();}
+    function validatePhase(now){validate(now);validation=document["launch"]==null?null:document["launch"]["source_validated_utc"];stale=document["launch"]!=null && document["launch"]["stale"];rescheduled=document["launch"]!=null && document["launch"]["rescheduled"];}
+    function identityPhase(){timingKey=timingIdentity();recordHash=recordIdentity(0);reminderData=reminderProjection();}
     (:extendedCode) function reminderProjection(){
         var l=document["launch"];if(l==null||!same(l["status"],"pending")){return null;}var t=l["timing"];
         var target=refreshTarget();if(target==null||!(same(t["precision"],"exact")||same(t["precision"],"source-coarse")&&t["source_precision_id"]==1)){return null;}
@@ -127,6 +129,16 @@ class NativeFeed {
         return {"catalogDigest"=>document["catalogDigest"],"refreshPolicy"=>document["refreshPolicy"],"launch"=>row};
     }
     function mutableWire(){var pieces=[];for(var i=0;i<ignored.size();i+=1){var span=ignored[i];pieces.add(raw.substring(span[0],span[1]));}return pieces;}
+    // Strict parsing, hashes, metadata and mutable witnesses are already
+    // complete at this point. Drop header-only objects before allocating the
+    // presentation; the compact transaction projection needs the remaining
+    // launch, upcoming, catalog, policy and publisher objects only.
+    function preparePresentation(){
+        var keys=["schemaVersion","catalogRevision","catalogPath","unresolvedCatalogIds","timingState","pollIntervalSeconds","sourceContentRevision","selection","providerTraversal","visualSelection","catalogSourceDigest","dictionaryMode","rendererProfile","nativeTransfer"];
+        for(var i=0;i<keys.size();i+=1){document.remove(keys[i]);}
+        raw="";spans=null;ignored=null;
+    }
+    function reducePresentationLaunch(){var projection=priorDocument();document["launch"]=projection["launch"];document.remove("dictionaries");}
     function compact(){var pub=document["publisher"];document=priorDocument();document["publisher"]=pub;raw="";spans=null;ignored=null;}
     function target(){return document["launch"]==null?null:document["launch"]["timing"]["exact_utc"];}
     // Source precision MIN is an actionable nominal-minute target, just as in FeedScene.

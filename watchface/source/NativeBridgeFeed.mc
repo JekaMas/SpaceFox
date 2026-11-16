@@ -43,3 +43,16 @@ class NativeBridgeFeed extends NativeFeed {
     function catalogHash(d){}
 }
 
+// Foreground incoming admission can yield between the same strict phases used
+// by the synchronous constructor. No candidate is published before all four
+// validations and digest computations have completed.
+(:extendedCode, :typecheck(false))
+class NativeStagedBridgeFeed extends NativeBridgeFeed {
+    function initialize(text,adapter){catalogStore=adapter;raw=text;}
+    function parseStage(){parse(raw);}
+    function validationStage(now){validatePhase(now);}
+    function semanticStage(){contentHash=semanticHash();}
+    function wireStage(){wireHash=hashRaw(raw);}
+    function identityStage(){identityPhase();}
+}
+

@@ -33,3 +33,52 @@ class NativeIncoming {
         return accepted;
     }
 }
+
+// One foreground admission owns one exact provisional token. Expensive strict
+// parser/hash phases run on separate permitted event turns; atomic promotion is
+// still delegated to NativeCacheCore.acceptPrepared.
+(:extendedCode,:typecheck(false))
+class NativeAdmissionJob {
+    var cache;var view;var incoming;var now;var phase=0;var marker=null;var raw=null;var candidate=null;
+    var restoreSeal=null;var commitKey=null;var prepared=null;var started=false;var accepted=false;var retry=false;var finished=false;
+    function initialize(owner,target,instant){cache=owner;view=target;now=instant;incoming=new NativeIncoming(cache.store,cache.base);}
+    function takeRaw(){var value=raw;raw=null;return value;}
+    function current(){var latest=cache.store.read("sf.incoming.feed");return latest instanceof Dictionary&&marker instanceof Dictionary&&latest["sequence"]==marker["sequence"]&&latest["sha256"] instanceof String&&latest["sha256"].equals(marker["sha256"]);}
+    function begin(){
+        restoreSeal=cache.commit instanceof Dictionary?cache.commit["seal"]:null;commitKey=cache.commitKey;
+        cache.releaseForTransfer(now);started=true;var row=incoming.read("feed",cache.packet==null);
+        if(row==null||!(row[0]["kind"] instanceof String)||!row[0]["kind"].equals("feed")){retry=true;return false;}
+        marker=row[0];raw=incoming.takeRaw(row);row=null;candidate=new NativeStagedBridgeFeed(raw,cache.store);return true;
+    }
+    function step(){
+        if(finished){return true;}
+        try{
+            if(phase==0){if(!begin()){finish(false);return true;}}
+            else if(phase==1){candidate.parseStage();}
+            else if(phase==2){candidate.validationStage(now);}
+            else if(phase==3){candidate.semanticStage();}
+            else if(phase==4){candidate.wireStage();}
+            else if(phase==5){candidate.identityStage();}
+            else if(phase==6){
+                if(!current()){retry=true;finish(false);return true;}
+                prepared=cache.prepareCandidate(candidate,takeRaw(),now);
+                if(prepared==null){retry=cache.failure.equals("admission-retry");if(!retry){try{incoming.processed("feed",marker);}catch(e){}}finish(false);return true;}
+                // Return through the VM event boundary before allocating the
+                // display contexts; no raw-feed argument remains on the stack.
+            }
+            else{
+                if(!current()){retry=true;finish(false);return true;}
+                cache.queueView=view;try{accepted=cache.finishCandidate(prepared,now);}finally{cache.queueView=null;}
+                retry=!accepted&&cache.failure.equals("admission-retry");
+                if(accepted||!retry){try{incoming.processed("feed",marker);}catch(e){}}
+                finish(accepted);return true;
+            }
+            phase+=1;return false;
+        }catch(e){var message=e.getErrorMessage();retry=message.equals("Bridge catalog incomplete");cache.failure=retry?"admission-retry":"update-rejected";if(marker!=null&&!retry){try{incoming.processed("feed",marker);}catch(ignored){}}finish(false);return true;}
+    }
+    function finish(ok){
+        finished=true;candidate=null;raw=null;marker=null;prepared=null;
+        if(!ok&&started){if(view!=null){view.clearForRestore();}cache.packet=null;cache.commit=null;cache.commitKey=commitKey;}
+    }
+    function abort(){if(finished&&accepted){return;}retry=true;finish(false);}
+}
