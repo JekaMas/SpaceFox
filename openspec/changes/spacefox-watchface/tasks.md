@@ -160,5 +160,6 @@ The former feed-only raw hash/seal, chunk reassembly, repeated validation and re
 - [x] Measure the current acquisition/admission path and real-input alternatives; record failures, non-comparable boundaries and technique decisions.
 - [x] Apply measured improvements across publisher and watch, remove superseded feed checks and owners, and verify offline snapshot recovery, launch display and independent optional assets locally. Hosted cutover remains open.
 - [x] Run affected host and owned-SDK lifecycle checks and update the authoritative specification and source/release bindings.
-- [ ] Complete independent peer verification and corrections for the same batch.
-- [ ] Publish the signed release; keep phone, Garmin Store and physical acceptance separately truthful.
+- [x] Complete independent peer verification and corrections for the same batch; repaired fast-cadence asset starvation, retained first red and observed the targeted pass (`evidence/trusted-json-research/PEER.md`, sole release receipt `peer.json`).
+- [ ] Merge/freeze the reviewed source, cut over the autonomous publisher and read back hosted `watch.json` with correct HTTPS/MIME/projection before publishing the new watch build.
+- [ ] Produce and publish the authorized full signed release with readback; keep phone, Garmin Store and physical acceptance separately truthful.
