@@ -450,6 +450,48 @@ def evidence_inputs(paths: list[Path], root: Path) -> list[dict]:
     return evidence
 
 
+# Independent combined-source review, including the exact 0.1.22 version file.
+# A freshly repinned author qualification cannot substitute for this boundary.
+INTEGRATION022_PEER_NATIVE_SHA256 = "46b67421b2d77dd1fb4ab67585cbc47b07a4697b46494c45cedebe694471a5dc"
+INTEGRATION022_PEER_PROOF_BODY_SHA256 = "563b6d96650c6a4ce26e9d4ee39f62dfb6b4e741472f8a281ea590e53926484f"
+
+
+def require_integration022_peer(root: Path, supplied: list[dict]) -> None:
+    """Bind production export to the reviewed native bytes and combined proof."""
+    catalog = json.loads((root / "locales/catalog.json").read_text())
+    proof = catalog["supportPolicy"]["softwareQualificationProof"]
+    if not isinstance(proof, dict) or "integration022Proof" not in proof:
+        return
+    from tools.native_watchdog_release_qualification import diagnostic_source_digest
+    ref = proof["integration022Proof"]
+    expected_proof = ref["sha256"]
+    path = PurePosixPath(ref["path"])
+    require(not path.is_absolute() and ".." not in path.parts,
+            "invalid integration022 proof path")
+    raw = (root / path).read_bytes()
+    require(hashlib.sha256(raw).hexdigest() == expected_proof,
+            "integration022 proof differs from locale binding")
+    record = json.loads(raw)
+    # The proof binds this release owner; exclude that single digest to avoid a
+    # circular guard -> proof -> guard hash. All other reviewed proof bytes are
+    # independently fixed here, and the locale qualifier checks the owner hash.
+    record["owners"].pop("tools/release.py")
+    body = json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()
+    require(hashlib.sha256(body).hexdigest() == INTEGRATION022_PEER_PROOF_BODY_SHA256,
+            "integration022 proof differs from independent peer binding")
+    peers = [item["data"] for item in supplied
+             if item["data"].get("kind") == "integration022-independent-native-peer"]
+    require(len(peers) == 1 and peers[0].get("status") == "GREEN" and
+            peers[0].get("native_inputs_sha256") == INTEGRATION022_PEER_NATIVE_SHA256 and
+            peers[0].get("integration_proof_sha256") == expected_proof,
+            "production export requires current integration022 peer binding")
+    watch = root / "watchface"
+    actual = diagnostic_source_digest(root, (watch / "manifest.xml").read_bytes(),
+                                      (watch / "source/generated/NativeVersion.mc").read_bytes())
+    require(actual == INTEGRATION022_PEER_NATIVE_SHA256,
+            "current native inputs differ from integration022 peer binding")
+
+
 def backup_status(path: Path | None, root: Path, fingerprint: str, official: bool) -> dict:
     if path is None:
         require(not official, "official signing requires external backup/restore evidence")
@@ -621,6 +663,8 @@ def build_release(output: Path, *, key: Path, root: Path = ROOT, mode: str = "ca
     update = validate_previous(previous_data, app, fingerprint)
     backup_info = backup_status(backup, root, fingerprint, mode == "official")
     supplied = evidence_inputs(evidence or [], root)
+    if mode != "qualification":
+        require_integration022_peer(root, supplied)
     external_hashes = {str(path.expanduser().resolve()): digest(path.expanduser().resolve())
                        for path in [p for p in (previous, backup, qualification_policy, *(evidence or [])) if p]}
     output = output.expanduser().absolute()

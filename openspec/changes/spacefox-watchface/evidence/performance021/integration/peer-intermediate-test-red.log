@@ -1,0 +1,91 @@
+test_current_bound_evidence (tests.test_b1_021_admission.IntegrationAdmission.test_current_bound_evidence) ... ERROR
+test_locale_and_evidence_drift_is_refused (tests.test_b1_021_admission.IntegrationAdmission.test_locale_and_evidence_drift_is_refused) ... 
+  test_locale_and_evidence_drift_is_refused (tests.test_b1_021_admission.IntegrationAdmission.test_locale_and_evidence_drift_is_refused) (evidence='integration021-tests.log') ... FAIL
+  test_locale_and_evidence_drift_is_refused (tests.test_b1_021_admission.IntegrationAdmission.test_locale_and_evidence_drift_is_refused) (evidence='integration021-peer-source-switch-green.log') ... FAIL
+  test_locale_and_evidence_drift_is_refused (tests.test_b1_021_admission.IntegrationAdmission.test_locale_and_evidence_drift_is_refused) (evidence='integration021-peer-primary-receipt.json') ... FAIL
+test_native_or_fixture_drift_is_refused (tests.test_b1_021_admission.IntegrationAdmission.test_native_or_fixture_drift_is_refused) ... ok
+test_previous_receipt_rejects_wrong_artifact (tests.test_b1_021_admission.IntegrationAdmission.test_previous_receipt_rejects_wrong_artifact) ... ok
+test_update_version_uuid_and_key (tests.test_b1_021_admission.IntegrationAdmission.test_update_version_uuid_and_key) ... ok
+test_real_receipt_iq_and_higher_version (tests.test_release_020_predecessor.ReleasePredecessorTest.test_real_receipt_iq_and_higher_version) ... ok
+test_same_version_and_wrong_signer_refused (tests.test_release_020_predecessor.ReleasePredecessorTest.test_same_version_and_wrong_signer_refused) ... ok
+test_changed_b_peer_receipt_refuses (tests.test_performance021_proof.HostProofTest.test_changed_b_peer_receipt_refuses) ... ok
+test_changed_b_peer_source_refuses (tests.test_performance021_proof.HostProofTest.test_changed_b_peer_source_refuses) ... ok
+test_changed_current_source_refuses (tests.test_performance021_proof.HostProofTest.test_changed_current_source_refuses) ... ok
+test_changed_group_b_receipt_refuses (tests.test_performance021_proof.HostProofTest.test_changed_group_b_receipt_refuses) ... ok
+test_changed_peer_receipt_refuses (tests.test_performance021_proof.HostProofTest.test_changed_peer_receipt_refuses) ... ok
+test_changed_real_readback_input_refuses (tests.test_performance021_proof.HostProofTest.test_changed_real_readback_input_refuses) ... ok
+test_changed_receipt_refuses (tests.test_performance021_proof.HostProofTest.test_changed_receipt_refuses) ... ok
+test_missing_group_b_host_source_refuses (tests.test_performance021_proof.HostProofTest.test_missing_group_b_host_source_refuses) ... ok
+test_missing_prior_source_refuses (tests.test_performance021_proof.HostProofTest.test_missing_prior_source_refuses) ... ok
+test_missing_real_readback_input_refuses (tests.test_performance021_proof.HostProofTest.test_missing_real_readback_input_refuses) ... ok
+test_retired_release_resource_snapshots_and_tampering (tests.test_performance021_proof.HostProofTest.test_retired_release_resource_snapshots_and_tampering) ... ok
+test_batch_corruption_refused (tests.test_performance021_d_receipts.DReceipts.test_batch_corruption_refused) ... ok
+test_batch_prefix_progress (tests.test_performance021_d_receipts.DReceipts.test_batch_prefix_progress) ... ok
+test_fields_fitted_real_provider (tests.test_performance021_d_receipts.DReceipts.test_fields_fitted_real_provider) ... ok
+test_fields_shared_update (tests.test_performance021_d_receipts.DReceipts.test_fields_shared_update) ... ok
+test_hide_does_not_stop_owner (tests.test_performance021_d_receipts.DReceipts.test_hide_does_not_stop_owner) ... ok
+test_late_and_corrupt_preserve (tests.test_performance021_d_receipts.DReceipts.test_late_and_corrupt_preserve) ... ok
+test_matched_heap_reduction (tests.test_performance021_d_receipts.DReceipts.test_matched_heap_reduction) ... ok
+test_outline_corrupt_refusal (tests.test_performance021_d_receipts.DReceipts.test_outline_corrupt_refusal) ... ok
+test_outline_matching_pixels (tests.test_performance021_d_receipts.DReceipts.test_outline_matching_pixels) ... ok
+test_owner_stop_cleanup (tests.test_performance021_d_receipts.DReceipts.test_owner_stop_cleanup) ... ok
+test_package_and_graphics_boundary (tests.test_performance021_d_receipts.DReceipts.test_package_and_graphics_boundary) ... ok
+test_scene_complete (tests.test_performance021_d_receipts.DReceipts.test_scene_complete) ... ok
+test_scene_incomplete (tests.test_performance021_d_receipts.DReceipts.test_scene_incomplete) ... ok
+test_storage_retry (tests.test_performance021_d_receipts.DReceipts.test_storage_retry) ... ok
+
+======================================================================
+ERROR: test_current_bound_evidence (tests.test_b1_021_admission.IntegrationAdmission.test_current_bound_evidence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_b1_021_admission.py", line 51, in test_current_bound_evidence
+    self.assertEqual(proof.validate(self.root, self.catalog), ['en','ru','de','fr','es'])
+                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tools/native_b1_021_qualification.py", line 78, in validate
+    if set(record['owners'])!=OWNERS or any(sha(root/n)!=h for n,h in record['owners'].items()):raise ValueError('integration admission owner changed')
+                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: integration admission owner changed
+
+======================================================================
+FAIL: test_locale_and_evidence_drift_is_refused (tests.test_b1_021_admission.IntegrationAdmission.test_locale_and_evidence_drift_is_refused) (evidence='integration021-tests.log')
+----------------------------------------------------------------------
+ValueError: integration admission owner changed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_b1_021_admission.py", line 78, in test_locale_and_evidence_drift_is_refused
+    with self.assertRaisesRegex(ValueError, 'integration input changed'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "integration input changed" does not match "integration admission owner changed"
+
+======================================================================
+FAIL: test_locale_and_evidence_drift_is_refused (tests.test_b1_021_admission.IntegrationAdmission.test_locale_and_evidence_drift_is_refused) (evidence='integration021-peer-source-switch-green.log')
+----------------------------------------------------------------------
+ValueError: integration admission owner changed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_b1_021_admission.py", line 78, in test_locale_and_evidence_drift_is_refused
+    with self.assertRaisesRegex(ValueError, 'integration input changed'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "integration input changed" does not match "integration admission owner changed"
+
+======================================================================
+FAIL: test_locale_and_evidence_drift_is_refused (tests.test_b1_021_admission.IntegrationAdmission.test_locale_and_evidence_drift_is_refused) (evidence='integration021-peer-primary-receipt.json')
+----------------------------------------------------------------------
+ValueError: integration admission owner changed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_b1_021_admission.py", line 78, in test_locale_and_evidence_drift_is_refused
+    with self.assertRaisesRegex(ValueError, 'integration input changed'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "integration input changed" does not match "integration admission owner changed"
+
+----------------------------------------------------------------------
+Ran 32 tests in 12.037s
+
+FAILED (failures=3, errors=1)

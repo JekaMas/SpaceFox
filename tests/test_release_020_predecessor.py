@@ -1,7 +1,8 @@
-"""Current release history boundary using the retained actual 0.1.20 receipt.
+"""Current release history boundary using the actual 0.1.21 predecessor.
 
-This does not replace the separate immutable 0.1.12 historical witness and
-never reads the private production key or executes a Garmin export.
+The historical filename is retained as an existing qualification input; the
+0.1.20-to-0.1.21 witness stays in the authenticated parent proof. This test
+never reads the production key or executes a Garmin export.
 """
 import hashlib
 import json
@@ -13,7 +14,7 @@ import xml.etree.ElementTree as ET
 from tools import release
 from tools.build_watchface import ROOT, NS, BuildBlocked
 
-class Release020PredecessorTest(unittest.TestCase):
+class ReleasePredecessorTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         path = os.environ.get('SPACEFOX_PUBLISHED_RELEASE_RECEIPT')
@@ -26,21 +27,19 @@ class Release020PredecessorTest(unittest.TestCase):
 
     def test_real_receipt_iq_and_higher_version(self):
         latest = self.policy['latest_release']
-        predecessor = self.policy['previous_release']
         self.assertEqual(latest['version'], '0.1.21')
-        self.assertEqual(predecessor['version'], '0.1.20')
-        self.assertEqual(hashlib.sha256(self.path.read_bytes()).hexdigest(), predecessor['original_receipt_sha256'])
-        self.assertEqual(self.previous['version'], predecessor['version'])
-        self.assertEqual(self.previous['package_sha256'], predecessor['package_sha256'])
-        self.assertEqual(self.previous['source_revision'], predecessor['source_revision'])
-        self.assertEqual(self.app.get('version'), '0.1.21')
+        self.assertEqual(hashlib.sha256(self.path.read_bytes()).hexdigest(), latest['original_receipt_sha256'])
+        self.assertEqual(self.previous['version'], latest['version'])
+        self.assertEqual(self.previous['package_sha256'], latest['package_sha256'])
+        self.assertEqual(self.previous['source_revision'], latest['source_revision'])
+        self.assertEqual(self.app.get('version'), '0.1.22')
         result = release.validate_previous(self.previous, self.app, self.policy['public_key_spki_sha256'])
         self.assertEqual(result['kind'], 'higher_version_repair')
         self.assertFalse(result['migration_qualified'])
 
     def test_same_version_and_wrong_signer_refused(self):
         app = ET.fromstring(ET.tostring(self.app))
-        app.set('version', '0.1.20')
+        app.set('version', '0.1.21')
         with self.assertRaisesRegex(BuildBlocked, 'strictly increase'):
             release.validate_previous(self.previous, app, self.policy['public_key_spki_sha256'])
         with self.assertRaisesRegex(BuildBlocked, 'identity/key changed'):
