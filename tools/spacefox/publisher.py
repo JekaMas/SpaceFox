@@ -415,6 +415,13 @@ def _transition(old, new, archive_lookup=None):
             raise StateError('completed reservation cannot acquire source permission')
 
 
+def _schedule_due(doc, now, policy):
+    current = advance_schedule(_schedule(doc['accepted']), now, policy)
+    selected = select_next(current).entry
+    return poll_due(None if selected is None else selected.record, doc['last_poll_utc'], now,
+                    policy, not_before_utc=doc['backoff_until_utc'])
+
+
 class GitState:
     """Dedicated ref/object authority; never checks out the source/research tree.
 
@@ -464,6 +471,10 @@ class GitState:
                              lambda path: self._blob(revision, path, MAX_ARTIFACT_BYTES))
 
     def load(self):
+        """Full authoritative reopen, including artifact semantic admission."""
+        return self._load_authority(validate_artifacts=True)
+
+    def _load_authority(self, *, validate_artifacts):
         refs = self._refs(STATE_REF, ANCHOR_REF)
         if set(refs) != {STATE_REF, ANCHOR_REF}:
             raise StateError('authoritative state/anchor unavailable; do not bootstrap or recover from CDN')
@@ -486,13 +497,39 @@ class GitState:
             self._check_retired(parents[0], head, doc)
         elif head != anchor:
             raise StateError('unanchored state root')
-        self._files(head, doc)  # Reject broken/missing artifacts on every reopen.
+        if validate_artifacts:
+            self._files(head, doc)  # Reject broken/missing artifacts on every full reopen.
         if 'catalog_refresh' in doc:
             ref = doc['catalog_refresh']
             raw = self._blob(head, _catalog_ref(ref), MAX_CATALOG_JOURNAL_BYTES)
             if len(raw) != ref['bytes'] or _sha(raw) != ref['sha256']:
                 raise StateError('catalog journal bytes/digest mismatch')
         return head, doc
+
+    def definitely_not_due(self, expected, running_code, now, live):
+        """Read-only no-work decision; never admits or returns artifact content."""
+        head, doc = self._load_authority(validate_artifacts=False)
+        if head != expected:
+            raise Conflict('caller expected base is stale')
+        if self.current_code() != running_code:
+            raise StateError('queued source code is stale before work permission')
+        # Code adoption, pending recovery, and mismatched live state must all go
+        # through Publisher and the full artifact validation path.
+        if doc['code_revision'] != running_code or doc['pending'] is not None or live != _live(doc['active']):
+            return False
+        _utc(now)
+        if doc['last_event_utc'] is not None and now < doc['last_event_utc']:
+            raise StateError('logical UTC cannot regress')
+        policy = RefreshPolicy(**doc['refresh_policy'])
+        if _schedule_due(doc, now, policy):
+            return False
+        # The decision grants no permission, yet still fence a racing authority
+        # or source update before reporting that this invocation has no work.
+        refs = self._refs(STATE_REF, ANCHOR_REF, self.source_ref)
+        anchor = self._git('rev-parse', 'refs/spacefox/anchor').stdout.decode().strip()
+        if refs.get(STATE_REF) != head or refs.get(ANCHOR_REF) != anchor or refs.get(self.source_ref) != running_code:
+            raise Conflict('authority changed during no-work decision')
+        return True
 
     @staticmethod
     def _archive_path(identity):
@@ -739,14 +776,14 @@ class Publisher:
         self._time(doc, now)
         if purpose not in ('schedule', 'catalog', 'version') or trigger not in ('scheduled', 'manual', 'retry', 'extra'):
             raise StateError('invalid request purpose/trigger')
-        current = advance_schedule(self.schedule, now, self.policy)
-        selected = select_next(current).entry
         if trigger == 'scheduled':
             if purpose != 'schedule':
                 raise StateError('scheduled catalog/version work needs its own qualified due owner')
-            if not poll_due(None if selected is None else selected.record, doc['last_poll_utc'],
-                            now, self.policy, not_before_utc=doc['backoff_until_utc']):
+            if not _schedule_due(doc, now, self.policy):
                 return None
+        else:
+            # Preserve the existing schedule validation for non-scheduled requests.
+            select_next(advance_schedule(self.schedule, now, self.policy))
         if doc['backoff_until_utc'] is not None and now < doc['backoff_until_utc']:
             raise AllowanceUnavailable('durable provider backoff is active')
         requests = [r for r in doc['requests'] if now < r['at_utc'] + 3600]

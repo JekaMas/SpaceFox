@@ -403,6 +403,12 @@
       "capability": "watchface",
       "title": "Profile-specific device admission",
       "fingerprint": "acf2257a6a32b0e9d6bd1bf66d1946f166c0ba9bf55364ad74acb69b7426def0"
+    },
+    {
+      "id": "VC21",
+      "capability": "visual-catalog",
+      "title": "Bounded host selection and validation work",
+      "fingerprint": "ce4f5859edce2632ecfa487c6d4959cbc2123dc5caf303fb91b4c7ded0a67ee9"
     }
   ],
   "properties": [
@@ -5531,6 +5537,125 @@
         "openspec/changes/spacefox-watchface/evidence/devices020/**"
       ],
       "planning_status": "Implemented and independently verified at the recorded local boundaries; physical/Store acceptance remains open."
+    },
+    {
+      "id": "VC21.P1",
+      "requirement_id": "VC21",
+      "scenarios": [
+        "Selected catalog closure"
+      ],
+      "statement": "Selected catalog closure retains exact source/output/authority guarantees.",
+      "owner": "tools/spacefox/catalog.py; tools/spacefox/graphics.py; tools/spacefox/native_motion.py; tools/update_feed.py; tools/cloud_feed.py",
+      "oracle": "Real producer inputs, independently specified identities and forbidden mutations; actual process boundaries for bounds.",
+      "source_globs": [
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tools/spacefox/geographic_context.py",
+        "tools/spacefox/bridge_map.py",
+        "tools/spacefox/native_motion.py",
+        "tools/spacefox/native_profile.py",
+        "tests/test_performance021_a.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/visual_bridge.py",
+        "tools/spacefox/publisher.py",
+        "tools/update_feed.py",
+        "tools/cloud_feed.py",
+        "tests/test_performance021_factory.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/a/ELIGIBLE-BASELINE.json"
+      ],
+      "planning_status": "implemented and author self-verified at the recorded local boundary; fresh independent verification and root judgment pending"
+    },
+    {
+      "id": "VC21.P2",
+      "requirement_id": "VC21",
+      "scenarios": [
+        "Geography ownership"
+      ],
+      "statement": "Geography ownership retains exact source/output/authority guarantees.",
+      "owner": "tools/spacefox/geographic_context.py; tools/spacefox/bridge_map.py; tools/spacefox/publisher.py; tools/update_feed.py",
+      "oracle": "Real producer inputs, independently specified identities and forbidden mutations; actual process boundaries for bounds.",
+      "source_globs": [
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tools/spacefox/geographic_context.py",
+        "tools/spacefox/bridge_map.py",
+        "tools/spacefox/native_motion.py",
+        "tools/spacefox/native_profile.py",
+        "tests/test_performance021_a.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/visual_bridge.py",
+        "tools/spacefox/publisher.py",
+        "tools/update_feed.py"
+      ],
+      "planning_status": "implemented and author self-verified at the recorded local boundary; fresh independent verification and root judgment pending"
+    },
+    {
+      "id": "VC21.P3",
+      "requirement_id": "VC21",
+      "scenarios": [
+        "Repeated artifact validation"
+      ],
+      "statement": "Repeated artifact validation retains exact source/output/authority guarantees.",
+      "owner": "tools/spacefox/catalog.py; tools/spacefox/graphics.py; tools/spacefox/geographic_context.py; tools/spacefox/bridge_map.py; tools/spacefox/native_motion.py; tools/spacefox/native_profile.py",
+      "oracle": "Real producer inputs, independently specified identities and forbidden mutations; actual process boundaries for bounds.",
+      "source_globs": [
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tools/spacefox/geographic_context.py",
+        "tools/spacefox/bridge_map.py",
+        "tools/spacefox/native_motion.py",
+        "tools/spacefox/native_profile.py",
+        "tests/test_performance021_a.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/visual_bridge.py",
+        "tools/spacefox/publisher.py",
+        "tools/update_feed.py"
+      ],
+      "planning_status": "implemented and author self-verified at the recorded local boundary; fresh independent verification and root judgment pending"
+    },
+    {
+      "id": "VC21.P4",
+      "requirement_id": "VC21",
+      "scenarios": [
+        "Bounded local input and renderer output"
+      ],
+      "statement": "Bounded local input and renderer output retains exact source/output/authority guarantees.",
+      "owner": "tools/spacefox/catalog.py; tools/spacefox/graphics.py; tools/spacefox/geographic_context.py; tools/spacefox/bridge_map.py; tools/spacefox/native_motion.py; tools/spacefox/native_profile.py",
+      "oracle": "Real producer inputs, independently specified identities and forbidden mutations; actual process boundaries for bounds.",
+      "source_globs": [
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tools/spacefox/geographic_context.py",
+        "tools/spacefox/bridge_map.py",
+        "tools/spacefox/native_motion.py",
+        "tools/spacefox/native_profile.py",
+        "tests/test_performance021_a.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/visual_bridge.py",
+        "tools/spacefox/publisher.py",
+        "tools/update_feed.py"
+      ],
+      "planning_status": "implemented and author self-verified at the recorded local boundary; fresh independent verification and root judgment pending"
+    },
+    {
+      "id": "VC21.P5",
+      "requirement_id": "VC21",
+      "scenarios": [
+        "Host changes retain prior native admission"
+      ],
+      "statement": "Exact prior devices020 proof is reconstructed and current host evidence bound without repinning historical receipts.",
+      "owner": "tools/native_performance021_qualification.py; tools/native_language_policy.py",
+      "oracle": "Run the actual retained native/profile/font proof on restored planning bytes; mutate or remove actual current proof inputs and require refusal.",
+      "source_globs": [
+        "tools/native_performance021_qualification.py",
+        "tools/native_language_policy.py",
+        "release/native-admission-inputs.json",
+        "locales/catalog.json",
+        "tests/test_performance021_proof.py",
+        "tests/test_native_localization.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/a/**"
+      ],
+      "planning_status": "implemented and author self-verified at the recorded local boundary; fresh independent verification and root judgment pending"
     }
   ],
   "cases": [
@@ -13863,8 +13988,7 @@
         "tools/spacefox/catalog.py",
         "tools/spacefox/global_map.py",
         "tools/spacefox/graphics.py",
-        "tests/fixtures/catalog/global-before-content-source.json",
-        "tests/test_global_content_closure_r5.py"
+        "tests/fixtures/catalog/global-before-content-source.json"
       ],
       "test_id": "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_selected_source_identity_history_refusals",
       "command_id": "current-geography-whole",
@@ -13874,7 +13998,7 @@
         "classification": "NO_TEST_DOUBLE"
       },
       "source_sha256": "a151dd624d07219e508645e822be5c441e68875cf000f4bc597715ee1129114c",
-      "implementation_note": "Current pack root/closure refusal; current SFR1M readdress and atomic pending/recovery controls are independently retained in current-feed-authority-whole/FINAL.md. Frozen old bundle port retired.",
+      "implementation_note": "Current pack root/closure refusal; current SFR1M readdress and atomic pending/recovery controls are independently retained in current-feed-authority-whole/FINAL.md. Frozen old bundle port retired. R5 legacy bundle witness retired; current exact test_id remains authoritative. Nine-root current rejection retained in tests.test_performance021_a.",
       "distinct_reason": "Global manifest has thousands of assets: VC17.P3.C12.NEGATIVE supplies a distinct current bounded clause; complementary controls are recorded in current-geography-closure-whole."
     },
     {
@@ -13893,8 +14017,7 @@
         "tools/spacefox/catalog.py",
         "tools/spacefox/global_map.py",
         "tools/spacefox/graphics.py",
-        "tests/fixtures/catalog/global-before-content-source.json",
-        "tests/test_global_content_closure_r5.py"
+        "tests/fixtures/catalog/global-before-content-source.json"
       ],
       "test_id": "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_source_integrity_and_typed_refusal",
       "command_id": "current-geography-whole",
@@ -13904,7 +14027,7 @@
         "classification": "NO_TEST_DOUBLE"
       },
       "source_sha256": "a151dd624d07219e508645e822be5c441e68875cf000f4bc597715ee1129114c",
-      "implementation_note": "Current local source integrity and typed-identity guard; selected-role/point/catalog semantic readdress controls are separately retained in current-feed-authority-whole/FINAL.md. Old bundle port retired.",
+      "implementation_note": "Current local source integrity and typed-identity guard; selected-role/point/catalog semantic readdress controls are separately retained in current-feed-authority-whole/FINAL.md. Old bundle port retired. R5 legacy bundle witness retired; current exact test_id remains authoritative. Nine-root current rejection retained in tests.test_performance021_a.",
       "distinct_reason": "Global manifest has thousands of assets: VC17.P3.C13.NEGATIVE supplies a distinct current bounded clause; complementary controls are recorded in current-geography-closure-whole."
     },
     {
@@ -13923,8 +14046,7 @@
         "tools/spacefox/catalog.py",
         "tools/spacefox/global_map.py",
         "tools/spacefox/graphics.py",
-        "tests/fixtures/catalog/global-before-content-source.json",
-        "tests/test_global_content_closure_r5.py"
+        "tests/fixtures/catalog/global-before-content-source.json"
       ],
       "test_id": "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_sixteen_actual_asset_roots_and_refusals",
       "command_id": "current-geography-whole",
@@ -13934,7 +14056,7 @@
         "classification": "NO_TEST_DOUBLE"
       },
       "source_sha256": "a151dd624d07219e508645e822be5c441e68875cf000f4bc597715ee1129114c",
-      "implementation_note": "Root approved retirement of arbitrary 16-root delivered bundle under current-only format. Current pack accepts mixed 16 roots with shared visual; current/recovery SFR1M exact union is separate in current-sfr1m-offline/RESUME.md and current-feed-authority-whole/FINAL.md. No 16-root SFR1M delivery claim.",
+      "implementation_note": "Root approved retirement of arbitrary 16-root delivered bundle under current-only format. Current pack accepts mixed 16 roots with shared visual; current/recovery SFR1M exact union is separate in current-sfr1m-offline/RESUME.md and current-feed-authority-whole/FINAL.md. No 16-root SFR1M delivery claim. R5 legacy bundle witness retired; current exact test_id remains authoritative. Nine-root current rejection retained in tests.test_performance021_a.",
       "distinct_reason": "Global manifest has thousands of assets: VC17.P3.C14.POSITIVE supplies a distinct current bounded clause; complementary controls are recorded in current-geography-closure-whole."
     },
     {
@@ -13953,8 +14075,7 @@
         "tools/spacefox/catalog.py",
         "tools/spacefox/global_map.py",
         "tools/spacefox/graphics.py",
-        "tests/fixtures/catalog/global-before-content-source.json",
-        "tests/test_global_content_closure_r5.py"
+        "tests/fixtures/catalog/global-before-content-source.json"
       ],
       "test_id": "unittest::tests.test_current_geography_whole.CurrentGeographyWholeTest.test_source_integrity_and_typed_refusal",
       "command_id": "current-geography-whole",
@@ -13964,7 +14085,7 @@
         "classification": "NO_TEST_DOUBLE"
       },
       "source_sha256": "a151dd624d07219e508645e822be5c441e68875cf000f4bc597715ee1129114c",
-      "implementation_note": "Current pack refuses asset type/provenance mismatch; current integer discriminator for canvas/schema and selected SFR1M semantic validation are separately retained in schedule-producer-whole/current-integer.log and current-feed-authority-whole/FINAL.md. Old bundle port retired.",
+      "implementation_note": "Current pack refuses asset type/provenance mismatch; current integer discriminator for canvas/schema and selected SFR1M semantic validation are separately retained in schedule-producer-whole/current-integer.log and current-feed-authority-whole/FINAL.md. Old bundle port retired. R5 legacy bundle witness retired; current exact test_id remains authoritative. Nine-root current rejection retained in tests.test_performance021_a.",
       "distinct_reason": "Global manifest has thousands of assets: VC17.P3.C15.NEGATIVE supplies a distinct current bounded clause; complementary controls are recorded in current-geography-closure-whole."
     },
     {
@@ -39088,6 +39209,431 @@
           "Physical device, battery, paired phone or Store acceptance"
         ]
       }
+    },
+    {
+      "id": "VC21.P1.S01.POSITIVE",
+      "property_id": "VC21.P1",
+      "polarity": "positive",
+      "scenario": "Selected catalog closure",
+      "scenario_fingerprint": "fd2232787cd98d789f510706eb5a501f058051abe559f5ab3842e213995e2ef1",
+      "setup": "Retained real source and explicit changed-input counterexample.",
+      "observable": "Expected exact identity, ownership, rejection and bounded work at the production boundary.",
+      "red_expectation": "Stale acceptance, unbounded work, output or ownership change fails.",
+      "green_expectation": "Exact admission and rejection, output and resource bounds hold.",
+      "invalidation_dependencies": [
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tools/spacefox/geographic_context.py",
+        "tools/spacefox/bridge_map.py",
+        "tools/spacefox/native_motion.py",
+        "tools/spacefox/native_profile.py",
+        "tests/test_performance021_a.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/visual_bridge.py",
+        "tools/spacefox/publisher.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_a.HostPerformanceTest.test_selection_positive",
+      "command_id": "performance021-a",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_a.py",
+      "planning_note": "Exact intended identity; not yet implemented or observed.",
+      "source_sha256": "f3673df4e70ab96af8a985a06d3d4d1d6e57cbe95e070a51065379e57b287ed5",
+      "implementation_note": "Actual local execution recorded under evidence/performance021/a; author self-verification only, independent review pending."
+    },
+    {
+      "id": "VC21.P1.S01.NEGATIVE",
+      "property_id": "VC21.P1",
+      "polarity": "negative",
+      "scenario": "Selected catalog closure",
+      "scenario_fingerprint": "fd2232787cd98d789f510706eb5a501f058051abe559f5ab3842e213995e2ef1",
+      "setup": "Retained real source and explicit changed-input counterexample.",
+      "observable": "Expected exact identity, ownership, rejection and bounded work at the production boundary.",
+      "red_expectation": "Stale acceptance, unbounded work, output or ownership change fails.",
+      "green_expectation": "Exact admission and rejection, output and resource bounds hold.",
+      "invalidation_dependencies": [
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tools/spacefox/geographic_context.py",
+        "tools/spacefox/bridge_map.py",
+        "tools/spacefox/native_motion.py",
+        "tools/spacefox/native_profile.py",
+        "tests/test_performance021_a.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/visual_bridge.py",
+        "tools/spacefox/publisher.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_a.HostPerformanceTest.test_selection_negative",
+      "command_id": "performance021-a",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_a.py",
+      "planning_note": "Exact intended identity; not yet implemented or observed.",
+      "source_sha256": "f3673df4e70ab96af8a985a06d3d4d1d6e57cbe95e070a51065379e57b287ed5",
+      "implementation_note": "Actual local execution recorded under evidence/performance021/a; author self-verification only, independent review pending."
+    },
+    {
+      "id": "VC21.P2.S01.POSITIVE",
+      "property_id": "VC21.P2",
+      "polarity": "positive",
+      "scenario": "Geography ownership",
+      "scenario_fingerprint": "a93cf59de0f3840a6d077d3c7b5cb594f9b354ac2e0fac85f793fa6a9bd8fcc7",
+      "setup": "Retained real source and explicit changed-input counterexample.",
+      "observable": "Expected exact identity, ownership, rejection and bounded work at the production boundary.",
+      "red_expectation": "Stale acceptance, unbounded work, output or ownership change fails.",
+      "green_expectation": "Exact admission and rejection, output and resource bounds hold.",
+      "invalidation_dependencies": [
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tools/spacefox/geographic_context.py",
+        "tools/spacefox/bridge_map.py",
+        "tools/spacefox/native_motion.py",
+        "tools/spacefox/native_profile.py",
+        "tests/test_performance021_a.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/visual_bridge.py",
+        "tools/spacefox/publisher.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_a.HostPerformanceTest.test_geography_positive",
+      "command_id": "performance021-a",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_a.py",
+      "planning_note": "Exact intended identity; not yet implemented or observed.",
+      "source_sha256": "f3673df4e70ab96af8a985a06d3d4d1d6e57cbe95e070a51065379e57b287ed5",
+      "implementation_note": "Actual local execution recorded under evidence/performance021/a; author self-verification only, independent review pending."
+    },
+    {
+      "id": "VC21.P2.S01.NEGATIVE",
+      "property_id": "VC21.P2",
+      "polarity": "negative",
+      "scenario": "Geography ownership",
+      "scenario_fingerprint": "a93cf59de0f3840a6d077d3c7b5cb594f9b354ac2e0fac85f793fa6a9bd8fcc7",
+      "setup": "Retained real source and explicit changed-input counterexample.",
+      "observable": "Expected exact identity, ownership, rejection and bounded work at the production boundary.",
+      "red_expectation": "Stale acceptance, unbounded work, output or ownership change fails.",
+      "green_expectation": "Exact admission and rejection, output and resource bounds hold.",
+      "invalidation_dependencies": [
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tools/spacefox/geographic_context.py",
+        "tools/spacefox/bridge_map.py",
+        "tools/spacefox/native_motion.py",
+        "tools/spacefox/native_profile.py",
+        "tests/test_performance021_a.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/visual_bridge.py",
+        "tools/spacefox/publisher.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_a.HostPerformanceTest.test_geography_negative",
+      "command_id": "performance021-a",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_a.py",
+      "planning_note": "Exact intended identity; not yet implemented or observed.",
+      "source_sha256": "f3673df4e70ab96af8a985a06d3d4d1d6e57cbe95e070a51065379e57b287ed5",
+      "implementation_note": "Actual local execution recorded under evidence/performance021/a; author self-verification only, independent review pending."
+    },
+    {
+      "id": "VC21.P3.S01.POSITIVE",
+      "property_id": "VC21.P3",
+      "polarity": "positive",
+      "scenario": "Repeated artifact validation",
+      "scenario_fingerprint": "4d7a80ded1bb40b075c608656bda6c3ec1ecbd42e08dd15f5637bafa8d1d6789",
+      "setup": "Retained real source and explicit changed-input counterexample.",
+      "observable": "Expected exact identity, ownership, rejection and bounded work at the production boundary.",
+      "red_expectation": "Stale acceptance, unbounded work, output or ownership change fails.",
+      "green_expectation": "Exact admission and rejection, output and resource bounds hold.",
+      "invalidation_dependencies": [
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tools/spacefox/geographic_context.py",
+        "tools/spacefox/bridge_map.py",
+        "tools/spacefox/native_motion.py",
+        "tools/spacefox/native_profile.py",
+        "tests/test_performance021_a.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/visual_bridge.py",
+        "tools/spacefox/publisher.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_a.HostPerformanceTest.test_validation_positive",
+      "command_id": "performance021-a",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_a.py",
+      "planning_note": "Exact intended identity; not yet implemented or observed.",
+      "source_sha256": "f3673df4e70ab96af8a985a06d3d4d1d6e57cbe95e070a51065379e57b287ed5",
+      "implementation_note": "Actual local execution recorded under evidence/performance021/a; author self-verification only, independent review pending."
+    },
+    {
+      "id": "VC21.P3.S01.NEGATIVE",
+      "property_id": "VC21.P3",
+      "polarity": "negative",
+      "scenario": "Repeated artifact validation",
+      "scenario_fingerprint": "4d7a80ded1bb40b075c608656bda6c3ec1ecbd42e08dd15f5637bafa8d1d6789",
+      "setup": "Retained real source and explicit changed-input counterexample.",
+      "observable": "Expected exact identity, ownership, rejection and bounded work at the production boundary.",
+      "red_expectation": "Stale acceptance, unbounded work, output or ownership change fails.",
+      "green_expectation": "Exact admission and rejection, output and resource bounds hold.",
+      "invalidation_dependencies": [
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tools/spacefox/geographic_context.py",
+        "tools/spacefox/bridge_map.py",
+        "tools/spacefox/native_motion.py",
+        "tools/spacefox/native_profile.py",
+        "tests/test_performance021_a.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/visual_bridge.py",
+        "tools/spacefox/publisher.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_a.HostPerformanceTest.test_validation_negative",
+      "command_id": "performance021-a",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_a.py",
+      "planning_note": "Exact intended identity; not yet implemented or observed.",
+      "source_sha256": "f3673df4e70ab96af8a985a06d3d4d1d6e57cbe95e070a51065379e57b287ed5",
+      "implementation_note": "Actual local execution recorded under evidence/performance021/a; author self-verification only, independent review pending."
+    },
+    {
+      "id": "VC21.P4.S01.POSITIVE",
+      "property_id": "VC21.P4",
+      "polarity": "positive",
+      "scenario": "Bounded local input and renderer output",
+      "scenario_fingerprint": "11f780939461ab3b01b087b2543f2a3e608e02aa8e568b282835e7724de6914e",
+      "setup": "Retained real source and explicit changed-input counterexample.",
+      "observable": "Expected exact identity, ownership, rejection and bounded work at the production boundary.",
+      "red_expectation": "Stale acceptance, unbounded work, output or ownership change fails.",
+      "green_expectation": "Exact admission and rejection, output and resource bounds hold.",
+      "invalidation_dependencies": [
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tools/spacefox/geographic_context.py",
+        "tools/spacefox/bridge_map.py",
+        "tools/spacefox/native_motion.py",
+        "tools/spacefox/native_profile.py",
+        "tests/test_performance021_a.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/visual_bridge.py",
+        "tools/spacefox/publisher.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_a.HostPerformanceTest.test_bounds_positive",
+      "command_id": "performance021-a",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_a.py",
+      "planning_note": "Exact intended identity; not yet implemented or observed.",
+      "source_sha256": "f3673df4e70ab96af8a985a06d3d4d1d6e57cbe95e070a51065379e57b287ed5",
+      "implementation_note": "Actual local execution recorded under evidence/performance021/a; author self-verification only, independent review pending."
+    },
+    {
+      "id": "VC21.P4.S01.NEGATIVE",
+      "property_id": "VC21.P4",
+      "polarity": "negative",
+      "scenario": "Bounded local input and renderer output",
+      "scenario_fingerprint": "11f780939461ab3b01b087b2543f2a3e608e02aa8e568b282835e7724de6914e",
+      "setup": "Retained real source and explicit changed-input counterexample.",
+      "observable": "Expected exact identity, ownership, rejection and bounded work at the production boundary.",
+      "red_expectation": "Stale acceptance, unbounded work, output or ownership change fails.",
+      "green_expectation": "Exact admission and rejection, output and resource bounds hold.",
+      "invalidation_dependencies": [
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/graphics.py",
+        "tools/spacefox/geographic_context.py",
+        "tools/spacefox/bridge_map.py",
+        "tools/spacefox/native_motion.py",
+        "tools/spacefox/native_profile.py",
+        "tests/test_performance021_a.py",
+        "tools/spacefox/global_map.py",
+        "tools/spacefox/visual_bridge.py",
+        "tools/spacefox/publisher.py",
+        "tools/update_feed.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_a.HostPerformanceTest.test_bounds_negative",
+      "command_id": "performance021-a",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_a.py",
+      "planning_note": "Exact intended identity; not yet implemented or observed.",
+      "source_sha256": "f3673df4e70ab96af8a985a06d3d4d1d6e57cbe95e070a51065379e57b287ed5",
+      "implementation_note": "Actual local execution recorded under evidence/performance021/a; author self-verification only, independent review pending."
+    },
+    {
+      "id": "VC21.P5.S01.POSITIVE",
+      "property_id": "VC21.P5",
+      "polarity": "positive",
+      "scenario": "Host changes retain prior native admission",
+      "scenario_fingerprint": "108a42f9d224fbaa8ab5658a180a6b64d135d91a1d14b4790793775f7a30df9b",
+      "setup": "Exact retained devices020 source/proof and current host evidence; independently changed or missing input for negative cases.",
+      "observable": "Five locale admissions match the retained proof or altered/missing input is refused.",
+      "red_expectation": "Missing or changed source/evidence is admitted, or prior device proof cannot be reconstructed.",
+      "green_expectation": "Retained five-locale proof validates; every changed or missing input is refused.",
+      "invalidation_dependencies": [
+        "tools/native_performance021_qualification.py",
+        "tools/native_language_policy.py",
+        "release/native-admission-inputs.json",
+        "locales/catalog.json",
+        "tests/test_performance021_proof.py",
+        "tests/test_native_localization.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/a/**"
+      ],
+      "test_id": "unittest::tests.test_native_localization.NativeLocalizationResourcesTest.test_release_excludes_unqualified_candidates",
+      "command_id": "performance021-proof",
+      "state": "implemented",
+      "source_path": "tests/test_native_localization.py",
+      "source_sha256": "c3b28a6f94b052a81220102b5aef1a0e097736377437e8e65a9b77b42185fb76",
+      "implementation_note": "Actual local execution recorded under evidence/performance021/a; author self-verification only, independent review pending."
+    },
+    {
+      "id": "VC21.P5.S01.MISSING",
+      "property_id": "VC21.P5",
+      "polarity": "negative",
+      "scenario": "Host changes retain prior native admission",
+      "scenario_fingerprint": "108a42f9d224fbaa8ab5658a180a6b64d135d91a1d14b4790793775f7a30df9b",
+      "setup": "Exact retained devices020 source/proof and current host evidence; independently changed or missing input for negative cases.",
+      "observable": "Five locale admissions match the retained proof or altered/missing input is refused.",
+      "red_expectation": "Missing or changed source/evidence is admitted, or prior device proof cannot be reconstructed.",
+      "green_expectation": "Retained five-locale proof validates; every changed or missing input is refused.",
+      "invalidation_dependencies": [
+        "tools/native_performance021_qualification.py",
+        "tools/native_language_policy.py",
+        "release/native-admission-inputs.json",
+        "locales/catalog.json",
+        "tests/test_performance021_proof.py",
+        "tests/test_native_localization.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/a/**"
+      ],
+      "test_id": "unittest::tests.test_performance021_proof.HostProofTest.test_missing_prior_source_refuses",
+      "command_id": "performance021-proof",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_proof.py",
+      "source_sha256": "6272128073da08f041a0435a0d42be5832ba28f85ee5c382e579ab3900492576",
+      "implementation_note": "Actual local execution recorded under evidence/performance021/a; author self-verification only, independent review pending."
+    },
+    {
+      "id": "VC21.P5.S01.RECEIPT",
+      "property_id": "VC21.P5",
+      "polarity": "negative",
+      "scenario": "Host changes retain prior native admission",
+      "scenario_fingerprint": "108a42f9d224fbaa8ab5658a180a6b64d135d91a1d14b4790793775f7a30df9b",
+      "setup": "Exact retained devices020 source/proof and current host evidence; independently changed or missing input for negative cases.",
+      "observable": "Five locale admissions match the retained proof or altered/missing input is refused.",
+      "red_expectation": "Missing or changed source/evidence is admitted, or prior device proof cannot be reconstructed.",
+      "green_expectation": "Retained five-locale proof validates; every changed or missing input is refused.",
+      "invalidation_dependencies": [
+        "tools/native_performance021_qualification.py",
+        "tools/native_language_policy.py",
+        "release/native-admission-inputs.json",
+        "locales/catalog.json",
+        "tests/test_performance021_proof.py",
+        "tests/test_native_localization.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/a/**"
+      ],
+      "test_id": "unittest::tests.test_performance021_proof.HostProofTest.test_changed_receipt_refuses",
+      "command_id": "performance021-proof",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_proof.py",
+      "source_sha256": "6272128073da08f041a0435a0d42be5832ba28f85ee5c382e579ab3900492576",
+      "implementation_note": "Actual local execution recorded under evidence/performance021/a; author self-verification only, independent review pending."
+    },
+    {
+      "id": "VC21.P5.S01.SOURCE",
+      "property_id": "VC21.P5",
+      "polarity": "negative",
+      "scenario": "Host changes retain prior native admission",
+      "scenario_fingerprint": "108a42f9d224fbaa8ab5658a180a6b64d135d91a1d14b4790793775f7a30df9b",
+      "setup": "Exact retained devices020 source/proof and current host evidence; independently changed or missing input for negative cases.",
+      "observable": "Five locale admissions match the retained proof or altered/missing input is refused.",
+      "red_expectation": "Missing or changed source/evidence is admitted, or prior device proof cannot be reconstructed.",
+      "green_expectation": "Retained five-locale proof validates; every changed or missing input is refused.",
+      "invalidation_dependencies": [
+        "tools/native_performance021_qualification.py",
+        "tools/native_language_policy.py",
+        "release/native-admission-inputs.json",
+        "locales/catalog.json",
+        "tests/test_performance021_proof.py",
+        "tests/test_native_localization.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/a/**"
+      ],
+      "test_id": "unittest::tests.test_performance021_proof.HostProofTest.test_changed_current_source_refuses",
+      "command_id": "performance021-proof",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_proof.py",
+      "source_sha256": "6272128073da08f041a0435a0d42be5832ba28f85ee5c382e579ab3900492576",
+      "implementation_note": "Actual local execution recorded under evidence/performance021/a; author self-verification only, independent review pending."
+    },
+    {
+      "id": "VC21.P1.S01.OWNERSHIP",
+      "property_id": "VC21.P1",
+      "polarity": "positive",
+      "scenario": "Selected catalog closure",
+      "scenario_fingerprint": "fd2232787cd98d789f510706eb5a501f058051abe559f5ab3842e213995e2ef1",
+      "setup": "Build retained real catalog and mutate the caller dictionary after the operation-owned snapshot is created.",
+      "observable": "All 106 real artifact digests match the original baseline; the mutated caller is refused; six semantic validations cover six exact identities.",
+      "red_expectation": "Caller mutation alters the built artifact or a poisoned catalog is accepted.",
+      "green_expectation": "Owned artifact is byte-identical and invalid caller is refused.",
+      "invalidation_dependencies": [
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/native_motion.py",
+        "tests/test_performance021_ownership.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/a/ARTIFACT-BYTES.json"
+      ],
+      "test_id": "unittest::tests.test_performance021_ownership.CatalogOwnershipTest.test_caller_mutation_after_snapshot_and_validation_identities",
+      "command_id": "performance021-ownership",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_ownership.py",
+      "source_sha256": "6731538bc65447185b2c95692aa03a85aeed956817c9e427739dab1f22758329",
+      "implementation_note": "Actual local execution recorded under evidence/performance021/a; author self-verification only, independent review pending."
+    },
+    {
+      "id": "VC21.P1.S01.FACTORY",
+      "property_id": "VC21.P1",
+      "polarity": "positive",
+      "scenario": "Selected catalog closure",
+      "scenario_fingerprint": "fd2232787cd98d789f510706eb5a501f058051abe559f5ab3842e213995e2ef1",
+      "setup": "Actual repository-created catalog and retained real launch; local Git for cloud content-only flow.",
+      "observable": "Private operation preserves every baseline artifact digest and source age without whole-catalog copying or provider calls.",
+      "red_expectation": "Copy, changed artifact bytes, stale identity, or provider call occurs.",
+      "green_expectation": "Exact artifact bytes and source age are preserved with no full-catalog copy.",
+      "invalidation_dependencies": [
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/native_motion.py",
+        "tools/cloud_feed.py",
+        "tools/update_feed.py",
+        "tests/test_performance021_factory.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/a/ELIGIBLE-BASELINE.json"
+      ],
+      "test_id": "unittest::tests.test_performance021_factory.RepositoryFactoryTest.test_owned_catalog_real_output_and_no_full_copy",
+      "command_id": "performance021-factory",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_factory.py",
+      "source_sha256": "b738dbe3b483f114eb2d308cd9ea1645477183264db39c5729cc7d7861247ff3",
+      "implementation_note": "Actual local execution recorded under evidence/performance021/a; author self-verification only, independent review pending."
+    },
+    {
+      "id": "VC21.P1.S01.CLOUD",
+      "property_id": "VC21.P1",
+      "polarity": "positive",
+      "scenario": "Selected catalog closure",
+      "scenario_fingerprint": "fd2232787cd98d789f510706eb5a501f058051abe559f5ab3842e213995e2ef1",
+      "setup": "Actual repository-created catalog and retained real launch; local Git for cloud content-only flow.",
+      "observable": "Private operation preserves every baseline artifact digest and source age without whole-catalog copying or provider calls.",
+      "red_expectation": "Copy, changed artifact bytes, stale identity, or provider call occurs.",
+      "green_expectation": "Exact artifact bytes and source age are preserved with no full-catalog copy.",
+      "invalidation_dependencies": [
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/native_motion.py",
+        "tools/cloud_feed.py",
+        "tools/update_feed.py",
+        "tests/test_performance021_factory.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/a/ELIGIBLE-BASELINE.json"
+      ],
+      "test_id": "unittest::tests.test_performance021_factory.RepositoryFactoryTest.test_cloud_owned_content_change_preserves_age_without_provider",
+      "command_id": "performance021-factory",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_factory.py",
+      "source_sha256": "b738dbe3b483f114eb2d308cd9ea1645477183264db39c5729cc7d7861247ff3",
+      "implementation_note": "Actual local execution recorded under evidence/performance021/a; author self-verification only, independent review pending."
     }
   ],
   "commands": [
@@ -43870,6 +44416,75 @@
       "timeout_seconds": 120,
       "authority": "local",
       "notes": "Focused local admission or retained SDK simulator screenshot controls."
+    },
+    {
+      "id": "performance021-a",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_performance021_a"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 600,
+      "authority": "local",
+      "planned_boundary": "Offline real host boundary and controlled local child",
+      "notes": "No provider, deployment or SDK."
+    },
+    {
+      "id": "performance021-proof",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_native_localization.NativeLocalizationResourcesTest.test_release_excludes_unqualified_candidates",
+        "tests.test_performance021_proof"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 600,
+      "authority": "local",
+      "planned_boundary": "Retained host-only proof reconstruction and independent input mutation",
+      "notes": "No SDK, simulator or physical device run."
+    },
+    {
+      "id": "performance021-ownership",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_performance021_ownership"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 300,
+      "authority": "local",
+      "planned_boundary": "Retained real producer build and caller mutation",
+      "notes": "No provider, deployment or SDK."
+    },
+    {
+      "id": "performance021-factory",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_performance021_factory"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 600,
+      "authority": "local",
+      "planned_boundary": "Actual repository-owned build and local Git cloud content-only flow",
+      "notes": "No provider, deployment or SDK."
     }
   ]
 }

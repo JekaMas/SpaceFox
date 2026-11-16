@@ -22,7 +22,7 @@ from tools.spacefox.provider import (LL2Client, ProviderError, normalize_detail_
 from tools.spacefox.publisher import (GitState, Publisher, StateError, LiveRevision,
                                      AllowanceUnavailable)
 from tools.spacefox.schedule import RefreshPolicy, LaunchStatus
-from tools.spacefox.native_motion import build_artifact, PROFILE
+from tools.spacefox.native_motion import build_artifact, PROFILE, _RepositoryCatalogOperation
 
 
 def utc_now():
@@ -192,6 +192,24 @@ def executing_revision(root):
                           stderr=subprocess.PIPE, check=True).stdout.decode().strip()
 
 
+def _no_work_source_fence(root):
+    """Use the cheap path only for visibly clean, fully checked-out inputs."""
+    scopes = ['assets', 'licenses', 'tools/vendor']
+    try:
+        status = subprocess.run(['git', '-C', str(root), 'status', '--porcelain',
+                                 '--untracked-files=all', '--', *scopes],
+                                stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
+        tracked = subprocess.run(['git', '-C', str(root), 'ls-files', '-v', '-z', '--', *scopes],
+                                 stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
+    except (OSError, subprocess.SubprocessError):
+        return False
+    # Lowercase means assume-unchanged; S means skip-worktree. Neither is a
+    # verified clean byte boundary, so let the full admission path decide.
+    entries = [entry for entry in tracked.stdout.split(b'\0') if entry]
+    present = all(any(entry[2:].startswith(scope.encode() + b'/') for entry in entries) for scope in scopes)
+    return not status.stdout and present and all(entry[:1] == b'H' for entry in entries)
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--remote', required=True, help='durable Git authority URL/path (local paths work offline)')
@@ -223,6 +241,17 @@ def main(argv=None):
         if args.command == 'bootstrap':
             print(json.dumps({'head': store.bootstrap(code, RefreshPolicy(fast_interval_seconds=args.fast_seconds))}))
             return 0
+        if args.command == 'run' and args.trigger == 'scheduled':
+            if args.expected_base is None:
+                raise StateError('supply exact current --expected-base')
+            checked_now = args.now if args.now is not None else utc_now()
+            checked_live = None
+            if args.live:
+                generation, digest = args.live.split(':')
+                checked_live = LiveRevision(int(generation), digest)
+            if _no_work_source_fence(root) and store.definitely_not_due(args.expected_base, code, checked_now, checked_live):
+                print(json.dumps({'result': 'not_due', 'head': args.expected_base, 'requests': 0}, sort_keys=True))
+                return 0
         pub = Publisher(store, code)
         if args.command == 'status':
             print(json.dumps({'head': pub.head, 'ledger': pub.ledger, 'measurement': store.measure()}, sort_keys=True))
@@ -241,22 +270,14 @@ def main(argv=None):
         else:
             now = args.now if args.now is not None else utc_now()
             client = LL2Client(origin=args.origin, page_size=args.page_size, local_http=args.local_http)
-            catalog = build_catalog(root)
-            from tools.spacefox.current_catalog import load_registry, schedule_catalog_review
-            eligibility = load_registry(root, catalog)
-            catalog_review = {}
-            def current_builder(state, source, instant, *, publisher, policy, traversal):
-                review = schedule_catalog_review(source, eligibility, state, instant, policy)
-                files, digest = build_artifact(state, source, instant, publisher=publisher, policy=policy, traversal=traversal, root=root, eligibility=eligibility)
-                catalog_review.update(review)
-                return files, digest
+            operation = _RepositoryCatalogOperation(root)
             from tools.spacefox.ascent_supplement import load_supplement
             supplement = load_supplement(args.ascent_supplement) if args.ascent_supplement else None
-            result = update(pub, client, now, catalog, trigger=args.trigger, artifact_builder=current_builder, ascent_supplement=supplement,
+            result = update(pub, client, now, None, trigger=args.trigger, artifact_builder=operation.build, ascent_supplement=supplement,
                             max_pages=args.max_pages, detail_limit=args.detail_limit,
                             clock=None if args.now is not None else utc_now)
             if result['result'] == 'pending':
-                result['catalogReview'] = catalog_review
+                result['catalogReview'] = operation.review
                 result['exportedFiles'] = export_pending(pub, args.output)
         print(json.dumps(result, sort_keys=True))
         return 0

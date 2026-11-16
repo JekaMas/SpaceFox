@@ -1,0 +1,15 @@
+test_geography_positive (tests.test_performance021_a.HostPerformanceTest.test_geography_positive) ... FAIL
+
+======================================================================
+FAIL: test_geography_positive (tests.test_performance021_a.HostPerformanceTest.test_geography_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_performance021_a.py", line 18, in test_geography_positive
+    self.assertEqual(_load_source_cached.cache_info().currsize, 0)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 != 0
+
+----------------------------------------------------------------------
+Ran 1 test in 1.550s
+
+FAILED (failures=1)

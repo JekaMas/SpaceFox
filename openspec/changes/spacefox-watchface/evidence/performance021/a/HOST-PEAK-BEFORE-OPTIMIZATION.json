@@ -1,0 +1,49 @@
+{
+  "boundary": "One local tracemalloc attribution pass, same retained corpus; shared-input control is deliberately unsafe and not a proposed implementation or acceptance result",
+  "catalogBytes": 2869521,
+  "allArtifactDigestsEqual": true,
+  "rows": [
+    {
+      "mode": "owned_snapshot",
+      "before": 0,
+      "current": 1679887,
+      "peak": 89145876,
+      "peak_over_before": 89145876,
+      "seconds": 27.841340084094554,
+      "events": [
+        {
+          "event": "snapshot_input",
+          "current": 2988366,
+          "peak": 14464528,
+          "bytes": 2869521
+        },
+        {
+          "event": "owned_build_entry",
+          "current": 7839969,
+          "peak": 16499241
+        }
+      ]
+    },
+    {
+      "mode": "diagnostic_unsafe_shared",
+      "before": 73086,
+      "current": 1452825,
+      "peak": 81476950,
+      "peak_over_before": 81403864,
+      "seconds": 27.73586008325219,
+      "events": [
+        {
+          "event": "snapshot_input",
+          "current": 3060897,
+          "peak": 14537059,
+          "bytes": 2869521
+        },
+        {
+          "event": "owned_build_entry",
+          "current": 192284,
+          "peak": 14537059
+        }
+      ]
+    }
+  ]
+}

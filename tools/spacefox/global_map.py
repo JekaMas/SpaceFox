@@ -9,7 +9,7 @@ import math
 import re
 from pathlib import Path
 
-from .catalog import (CatalogError, _identity, _local_path, canonical_bytes, loads_json,
+from .catalog import (CatalogError, _identity, _local_path, _read_snapshot, canonical_bytes, loads_json,
                       validate_catalog, validate_catalog_selection)
 from .graphics import (UNITS, VisualError, _pooled, canonical_visual, split_visual,
                        validate_visual, LIMITS)
@@ -46,8 +46,9 @@ def load_world(root, catalog):
     validate_catalog(catalog)
     pin = catalog['source'].get('geography')
     _require(isinstance(pin, dict) and set(pin) == {'path', 'sha256'}, 'catalog has no pinned world geometry')
-    data = _local_path(Path(root).resolve(), pin['path']).read_bytes()
-    _require(len(data) <= 262144 and hashlib.sha256(data).hexdigest() == pin['sha256'], 'world digest/size mismatch')
+    try:data = _read_snapshot(_local_path(Path(root).resolve(), pin['path']), 262144)
+    except (OSError, ValueError):_require(False, 'world digest/size mismatch')
+    _require(hashlib.sha256(data).hexdigest() == pin['sha256'], 'world digest/size mismatch')
     world = loads_json(data)
     if isinstance(world, dict) and world.get('schemaVersion') == 2:
         from .geographic_context import load_source

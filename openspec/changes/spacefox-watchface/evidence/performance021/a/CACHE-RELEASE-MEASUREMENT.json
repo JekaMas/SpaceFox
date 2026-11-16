@@ -1,0 +1,34 @@
+{
+  "boundary": "Same local pinned corpus, tracemalloc and profiler-free Python; current allocation is not RSS release or native leak evidence",
+  "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 16.0.0 (clang-1600.0.26.6)]",
+  "seconds": 4.968464749865234,
+  "source_pin": {
+    "path": "catalog/geography/regional-20261112-r3/source.json",
+    "sha256": "7085be07fe5a3dcc5b7fdddc42b9dbd6fc1c8c73d57c4821c9fa7b755e45335e"
+  },
+  "summary": {
+    "records": 12763,
+    "original_vertices": 149103,
+    "supplement_rings": 731
+  },
+  "phases": [
+    {
+      "phase": "before",
+      "python_traced_current": 936,
+      "python_traced_peak": 982,
+      "process_peak_rss_bytes_macos": 23969792
+    },
+    {
+      "phase": "loaded",
+      "python_traced_current": 63962406,
+      "python_traced_peak": 66197612,
+      "process_peak_rss_bytes_macos": 235864064
+    },
+    {
+      "phase": "caller_reference_dropped",
+      "python_traced_current": 7689,
+      "python_traced_peak": 66197612,
+      "process_peak_rss_bytes_macos": 235880448
+    }
+  ]
+}

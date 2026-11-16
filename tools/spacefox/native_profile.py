@@ -11,7 +11,7 @@ import struct
 import subprocess
 import zlib
 
-from .catalog import canonical_bytes, loads_json
+from .catalog import _run_bounded_child, canonical_bytes, loads_json
 from .visual_bridge import build_source, read_ref, put, sha
 from .graphics import assemble_visual
 
@@ -77,7 +77,8 @@ def rasterize(visuals, width, height, *, opaque=False):
             draws.append(f'<polygon fill="#{v[4][op[1]]:06x}" points="{points}"/>')
     if opaque:draws.append('</g>')
     svg=(f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}">'+''.join(draws)+'</svg>').encode()
-    proc=subprocess.run(['rsvg-convert'],input=svg,stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=30)
+    try:proc=_run_bounded_child(['rsvg-convert'],svg,maximum=2097152,timeout=30)
+    except ValueError:require(False,'rsvg-convert output bound')
     require(proc.returncode==0,'rsvg-convert failed')
     w,h,pixels=png_pixels(proc.stdout)
     require((w,h)==(width,height),'raster dimensions')

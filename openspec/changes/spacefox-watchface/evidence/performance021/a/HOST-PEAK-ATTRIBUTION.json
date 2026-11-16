@@ -1,0 +1,22 @@
+{
+  "boundary": "One matched local Python tracemalloc pass: both input catalogs preconstructed, same source, eligibility, review and retained launch; incremental tracked allocations, not total RSS, not CI",
+  "allArtifactDigestsEqual": true,
+  "rows": [
+    {
+      "mode": "public_caller_snapshot",
+      "before": 0,
+      "current": 1648048,
+      "peak": 79049144,
+      "peak_over_before": 79049144,
+      "seconds": 29.43873762479052
+    },
+    {
+      "mode": "private_repository_factory",
+      "before": 66752,
+      "current": 1691904,
+      "peak": 75109578,
+      "peak_over_before": 75042826,
+      "seconds": 29.65819491678849
+    }
+  ]
+}

@@ -14,7 +14,7 @@ from tools.spacefox.catalog import build_catalog, canonical_bytes
 from tools.spacefox.cloud import (CloudError, Pages, Site, arm, delivery, delivery_files,
                                   deploy, git_credentials, journal, oidc_token, recover)
 from tools.spacefox.visual_bridge import sha
-from tools.spacefox.native_motion import build_artifact, validate_feed, PROFILE, FEED_PATH
+from tools.spacefox.native_motion import build_artifact, validate_feed, PROFILE, FEED_PATH, _RepositoryCatalogOperation
 from tools.spacefox.provider import LL2Client
 from tools.spacefox.publisher import GitState, Publisher, StateError
 from tools.spacefox.schedule import RefreshPolicy
@@ -56,17 +56,30 @@ def prepare_content(pub, client, now, catalog, *, root, clock=None):
     The complete source digest detects metadata/art changes independent of code
     adoption or provider due time. Pending candidates are never reconstructed.
     """
+    return _prepare_content(pub, client, now, catalog, root=root, clock=clock, owner=None)
+
+
+def _prepare_content_from_source(pub, client, now, *, root, clock=None):
+    owner = _RepositoryCatalogOperation(root)
+    return _prepare_content(pub, client, now, None, root=root, clock=clock, owner=owner)
+
+
+def _prepare_content(pub, client, now, catalog, *, root, clock, owner):
     if pub.ledger['pending'] is not None:
         return {'result':'recovered_pending','requests':0}
-    from tools.spacefox.current_catalog import load_registry, schedule_catalog_review
-    eligibility = load_registry(root, catalog)
-    catalog_review = {}
-    def builder(state, source, instant, *, publisher, policy, traversal):
-        review = schedule_catalog_review(source, eligibility, state, instant, policy)
-        files, digest = build_artifact(state, source, instant, publisher=publisher, policy=policy,
-                                       traversal=traversal, root=root, eligibility=eligibility)
-        catalog_review.update(review)
-        return files, digest
+    if owner is None:
+        from tools.spacefox.current_catalog import load_registry, schedule_catalog_review
+        eligibility = load_registry(root, catalog)
+        catalog_review = {}
+        def builder(state, source, instant, *, publisher, policy, traversal):
+            review = schedule_catalog_review(source, eligibility, state, instant, policy)
+            files, digest = build_artifact(state, source, instant, publisher=publisher, policy=policy,
+                                           traversal=traversal, root=root, eligibility=eligibility)
+            catalog_review.update(review)
+            return files, digest
+    else:
+        builder = owner.build
+        catalog_review = owner.review
     active=pub.ledger['active']
     if active is not None:
         path=f'artifacts/{active["generation"]}/{FEED_PATH}'
@@ -87,7 +100,7 @@ def prepare_content(pub, client, now, catalog, *, root, clock=None):
         # request or renew the source validation epoch merely to refill the queue.
         selection_changed = (prior_id != current_id or prior_next != next_ids or
                              prior_terminal != terminal_updates(current, now))
-        if previous is None or 'upcoming' not in previous or selection_changed or previous['catalogSourceDigest'] != sha(canonical_bytes(catalog)) or 'feed.json.txt' not in active['files']:
+        if previous is None or 'upcoming' not in previous or selection_changed or previous['catalogSourceDigest'] != (owner.source_digest() if owner is not None else sha(canonical_bytes(catalog))) or 'feed.json.txt' not in active['files']:
             publisher=pub.publisher_envelope(now)
             traversal=previous['providerTraversal'] if previous is not None else None
             files,digest=builder(pub.schedule,catalog,now,publisher=publisher,policy=pub.policy,traversal=traversal)
@@ -189,7 +202,7 @@ def main(argv=None):
             result = {'result': 'recovered_pending', 'requests': 0}
             if pub.ledger['pending'] is None:
                 client = LL2Client(**({} if args.origin is None else {'origin': args.origin, 'local_http': True}))
-                result = prepare_content(pub, client, sample(), build_catalog(root), root=root,
+                result = _prepare_content_from_source(pub, client, sample(), root=root,
                                          clock=None if args.now is not None else utc_now)
             pending = pub.ledger['pending'] is not None
             if pending:

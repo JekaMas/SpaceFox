@@ -89,6 +89,9 @@ def software_locales(root,catalog=None):
  if not qualified:
   if proof is not None:raise ValueError('empty software admission must have no proof')
   return []
+ if isinstance(proof,dict) and 'performance021Proof' in proof:
+  from tools.native_performance021_qualification import validate
+  return validate(root,catalog)
  if isinstance(proof,dict) and 'devices020Proof' in proof:
   from tools.native_devices020_qualification import validate
   return validate(root,catalog)

@@ -4,14 +4,13 @@ Source schema2 is separate from legacy schema1. SFV1 limits are unchanged. The
 preview descriptor is an explicit next native interface, not an FR165 transport.
 """
 from decimal import Decimal
-from functools import lru_cache
 import gzip
 import hashlib
 import math
 from pathlib import Path
 import re
 
-from .catalog import _local_path, canonical_bytes as _exact_bytes, loads_json, validate_catalog
+from .catalog import _local_path, _read_snapshot, canonical_bytes as _exact_bytes, loads_json, validate_catalog
 from .global_map import _require, position
 from .graphics import (UNITS, _pooled, canonical_visual, split_visual, loads_shard,
                        assemble_visual, LIMITS)
@@ -52,14 +51,15 @@ def _validate_original_notices(notices):
 def _read_pin(root, pin, maximum):
     _require(isinstance(pin, dict) and {'path', 'sha256'} <= pin.keys(), 'source pin required')
     path = _local_path(Path(root).resolve(), pin['path'])
-    _require(path.stat().st_size <= maximum, 'offwatch input bound')
-    data = path.read_bytes()
+    try:
+        data = _read_snapshot(path, maximum)
+    except (OSError, ValueError) as exc:
+        _require(False, 'offwatch input bound/read: ' + str(exc))
     _require(_sha(data) == pin['sha256'], 'source dependency digest mismatch')
     return data
 
 
-@lru_cache(maxsize=4)
-def _load_source_cached(root, data):
+def _load_source(root, data):
     source = loads_json(data)
     _require(source.get('schemaVersion') == 2 and source.get('format') == 'offwatch-regional-context-v1', 'unsupported regional source')
     _require(source.get('license') == 'LGPL-3.0-or-later' and source.get('sourceDate') == '2017-06-15', 'regional source rights/date')
@@ -146,15 +146,20 @@ def _load_source_cached(root, data):
             'supplementNotices':supplement_notices,'notices':notices, 'indexSha256':_sha(data)}
 
 
-def load_source(root, pin):
-    """Verify every transitive immutable input; returned data stay publisher-side."""
+def _admit_source_bytes(root, pin):
+    """Freshly admit the recipe and every transitive dependency."""
     data = _read_pin(root,pin,65536)
-    # A cached decoded corpus never exempts dependency bytes from fresh admission.
     index=loads_json(data)
     extra=[p for spec in index.get('supplements',[]) for p in (spec,spec['metadata'])]
     for dependency in [index['baseWorld'],*index['clips'],*index['notices'],*extra]:
         _read_pin(root,dependency,262144)
-    return _load_source_cached(str(Path(root).resolve()),data)
+    return data
+
+
+def load_source(root, pin):
+    """Verify every transitive immutable input; returned data stay publisher-side."""
+    data = _admit_source_bytes(root, pin)
+    return _load_source(str(Path(root).resolve()),data)
 
 
 def dependencies(source):
@@ -271,11 +276,15 @@ def _objects(segments):
 
 def build_view(root,catalog,site_id,*,source_pin=None,kind='map',profile='regional',event_position=None,reference_context=False):
     """Build a source-backed preview; mobile references never activate a marker."""
+    source = load_source(root, source_pin or catalog['source']['geography'])
+    return _build_view_with_source(catalog, site_id, source, kind=kind, profile=profile, event_position=event_position, reference_context=reference_context)
+
+
+def _build_view_with_source(catalog,site_id,source,*,kind='map',profile='regional',event_position=None,reference_context=False):
     validate_catalog(catalog)
     _require(site_id in catalog['dictionaries']['sites'],'unknown site identity')
     _require(profile in ('regional','accepted04-full'),'unsupported preview profile')
     _require(profile != 'accepted04-full' or kind == 'map','owner accepted04 profile is map only')
-    source=load_source(root,source_pin or catalog['source']['geography'])
     site=catalog['dictionaries']['sites'][site_id];mode=site['facts'].get('positionMode','fixed-source')
     active=site['position'] if mode == 'fixed-source' else None
     if event_position is not None:

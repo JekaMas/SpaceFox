@@ -361,3 +361,27 @@ pixel, hidden cap increase or executable drawing grammar SHALL establish equival
 #### Scenario: Incomplete or incompatible scene retains coherent fallback
 - **WHEN** changed model/place/art, interruption, full storage, corrupt raw/pixels, unknown point, malformed late provenance or an endpoint/layout mismatch occurs
 - **THEN** durable source/publisher floors and old immutable objects remain intact, new metadata uses generic art and either an unmarked map or a separately matched bundled projection of its accepted fixed point until its own complete validated scene is ready, no old cross-model/place graphic is relabeled, and restart independently validates persisted raw/schema/identity/source/pixel closure before activation
+
+### Requirement: Bounded host selection and validation work
+
+The publisher SHALL bound host selection, geography, validation and I/O work while preserving complete source and artifact admission, mutable-input rejection, deterministic output, quota, CAS and final readback.
+
+#### Scenario: Selected catalog closure
+- **WHEN** a validated catalog is used to build a selected asset
+- **THEN** only selected rows need be copied for internal selection, output remains deterministic, and mutation of a caller or returned catalog cannot create stale acceptance
+
+#### Scenario: Geography ownership
+- **WHEN** no asset build needs geography or an asset operation finishes
+- **THEN** a read-only not-due decision checks ledger, source, head and due state without admitting an active artifact, geographic decoding or renderer children; any due, pending, recovery or artifact-use path performs full admission, and a completed operation releases its decoded corpus
+
+#### Scenario: Repeated artifact validation
+- **WHEN** the identical artifact is revalidated in one process
+- **THEN** source-derived pixel work may be reused only under the same exact content and renderer/source identity, while changed or corrupt bytes are refused and fresh authority checks remain
+
+#### Scenario: Bounded local input and renderer output
+- **WHEN** a local source or renderer exceeds its existing byte or time bound including a read race
+- **THEN** it is refused without unbounded capture, the child is cleaned up, and accepted output is unchanged
+
+#### Scenario: Host changes retain prior native admission
+- **WHEN** host-only source changes invalidate historical source-bound native admission
+- **THEN** exact historical source is authenticated and reconstructed for the unchanged native/profile/font proof, current host sources and measured evidence are separately bound, and missing or altered proof inputs are refused

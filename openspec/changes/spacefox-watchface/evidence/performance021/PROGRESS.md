@@ -33,10 +33,10 @@ Native work is last to collect all invalidating edits into one stable profile bu
 
 | Finding | Group / task | Status |
 | --- | --- | --- |
-| HOST-01 | A / 8.1 | PENDING |
-| HOST-02 | A / 8.1 | PENDING |
-| HOST-03 | A / 8.1 | PENDING |
-| HOST-07 | A / 8.1 | PENDING |
+| HOST-01 | A / 8.1 | AUTHOR GREEN; fresh peer and root pending |
+| HOST-02 | A / 8.1 | AUTHOR GREEN; fresh peer and root pending |
+| HOST-03 | A / 8.1 | AUTHOR GREEN; fresh peer and root pending |
+| HOST-07 | A / 8.1 | AUTHOR GREEN; fresh peer and root pending |
 | HOST-04 | B / 8.2 | PENDING |
 | HOST-05 | B / 8.2 | PENDING |
 | HOST-06 | B / 8.2 | PENDING |
@@ -69,3 +69,5 @@ Native work is last to collect all invalidating edits into one stable profile bu
 ## Measurement limits
 
 Physical watch, paired phone, battery energy, physical frame/wake timing, exact graphics-pool high-water/freeing and Linux-hosted cost are not currently observed. Complete independent authorized local work and keep these boundaries explicit; never manufacture physical acceptance or count a static estimate as a measurement.
+
+- Group A author implementation and local self-checks, retained failures and bounded measurements: [a/APPLY.md](a/APPLY.md). Clean-revision source/export checks passed at checkpoint and are rerun on the final revision; fresh peer/root judgment remain; task 8.1 stays unchecked. Groups B/C/D remain unstarted.
