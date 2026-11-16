@@ -1,6 +1,6 @@
 # Iteration 020 verification graph
 
-Status: author scoped self-verification GREEN; exact receipts, retained failures and proof limits are recorded in [APPLY.md](APPLY.md). Independent verification and root judgment remain pending.
+Status: scoped author and independent software verification GREEN; exact receipts, corrections and limits are recorded in [APPLY.md](APPLY.md) and [PEER.md](PEER.md). Root judgment and physical/phone/power/Store acceptance remain separate.
 
 - D1 inventory → admission: enumerate every installed device directory, retain
   names/parts/capabilities and explicit reasons; reject absent watchface,

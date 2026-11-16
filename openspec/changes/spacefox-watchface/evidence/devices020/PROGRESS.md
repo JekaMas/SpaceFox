@@ -53,3 +53,7 @@ APPLY owner: complete the whole compatibility group, tests and fixes to green; r
 - FR265S source-bound stock captures now cover EN/RU ACTIVE/LOW. Russian ACTIVE used the focused native-window fallback: owned simulator PID 17813, window 67623, `screencapture -x -l 67623 .../stock-fr265s-ru-native/owned-window.png`, then direct `view_image`; Russian LOW was saved via simulator UI when AX became responsive. Rebased seed passed and the runtime and ini were restored. Two earlier AX failures and the separate diagnostic, which showed advancing RU callbacks but no downloaded visual during its bounded run, remain preserved. These screenshots establish their specific visible scenes, not physical readability or all asset states.
 
 - Final scoped host closure passed 10/10 methods (`host-stable.log`); selected WF23 graph mapping has two properties and four source-hashed positive/negative edges (`graph-selected.json`). The corrected sparse release-source reconstruction passed 42-profile admission with a simulated Git clean/list boundary. Actual clean committed-tree selection remains the next post-commit check; task 2.4 stays open. See APPLY.md for exact proof boundaries and retained failures.
+
+## Independent verification checkpoint
+
+- Scoped peer verification GREEN; task 2.4 is complete at its source/software boundary. [PEER.md](PEER.md) records independent checks, graph and alias-wording corrections, retained observations, and outstanding physical/phone/power/Store boundaries. Root judgment remains separate.
