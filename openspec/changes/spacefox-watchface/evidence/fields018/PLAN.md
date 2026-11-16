@@ -1,6 +1,6 @@
 # Model-aware custom fields and regular release 0.1.18
 
-Software iteration: DONE at NativeVersion `256680ec`; independent evidence is in `INDEPENDENT.md`. Physical watch, paired phone, Store, final integration and publication remain separate. Base: public main `28017c7bb2e9ca7c729f62c5a05cc7d3920ecf05`.
+Software iteration: DONE at NativeVersion `256680ec`; independent evidence is in `INDEPENDENT.md`. Final integration, GitHub publication and Garmin submission are recorded in [publication](publication/PUBLICATION.md). Physical watch, paired phone, Store approval and installation remain separate. Base: public main `28017c7bb2e9ca7c729f62c5a05cc7d3920ecf05`.
 This is one coherent iteration under existing tasks 2.3, 5.1, 5.4 and 7.2/7.3;
 the existing tasks.md remains the sole numbered task list.
 
