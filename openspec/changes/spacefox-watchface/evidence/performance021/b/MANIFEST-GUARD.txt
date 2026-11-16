@@ -1,0 +1,5 @@
+python3 -B -m unittest -v tests.test_performance021_b.GroupBTest.test_manifest_normalization_keeps_correct_bytes_and_repairs_extra_attributes
+test_manifest_normalization_keeps_correct_bytes_and_repairs_extra_attributes (tests.test_performance021_b.GroupBTest.test_manifest_normalization_keeps_correct_bytes_and_repairs_extra_attributes) ... ok
+Ran 1 test in 0.018s
+OK
+A correct current manifest was byte-identical after normalization; a language element with an extra attribute was normalized instead of being accepted merely by its text.

@@ -3,6 +3,7 @@
 SFR1 is the finite pixel codec; source records retain producer provenance.
 """
 from copy import deepcopy
+from datetime import datetime, timezone
 from pathlib import Path
 from collections import OrderedDict
 import hashlib
@@ -260,8 +261,10 @@ class _RepositoryCatalogOperation:
         from .catalog import build_catalog
         from .current_catalog import load_registry
         self.__root = Path(root).resolve()
-        self.__catalog = build_catalog(self.__root)
-        self.__eligibility = load_registry(self.__root, self.__catalog)
+        admission = datetime.now(timezone.utc).date()
+        self.__catalog = build_catalog(self.__root, _admission_date=admission)
+        self.__eligibility = load_registry(self.__root, self.__catalog, _admission_date=admission)
+        self.scheduling_date = admission.isoformat() if datetime.now(timezone.utc).date() == admission else None
         self.review = {}
 
     def source_digest(self):
@@ -275,6 +278,8 @@ class _RepositoryCatalogOperation:
                 policy=policy, traversal=traversal, root=self.__root, eligibility=self.__eligibility)
         self.review.clear()
         self.review.update(review)
+        if self.scheduling_date != datetime.now(timezone.utc).date().isoformat():
+            self.scheduling_date = None
         return files, digest
 
 

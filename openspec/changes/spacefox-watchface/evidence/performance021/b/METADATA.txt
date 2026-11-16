@@ -1,0 +1,6 @@
+python3 -B -m unittest -v tests.test_current_metadata_publisher.CurrentMetadataPublisherTest.test_captured_whole_traversal_reopens_preserves_ages_and_source_headroom
+test_captured_whole_traversal_reopens_preserves_ages_and_source_headroom (tests.test_current_metadata_publisher.CurrentMetadataPublisherTest.test_captured_whole_traversal_reopens_preserves_ages_and_source_headroom) ... ok
+Ran 1 test in 80.223s
+OK
+{"control":"captured-current3-whole","pages":33,"fixtureSha256":"b42ed84082efc9ff7550eb2752132c96f1d6b568dada430ff0ca13eaf954f2a1","yields":5,"sourceAgePreserved":1794541187,"counts":{"countries":103,"models":532,"organizations":350,"sites":251}}
+Boundary: actual local Git and captured response transport; no live provider.

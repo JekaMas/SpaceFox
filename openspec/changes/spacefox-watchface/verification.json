@@ -408,7 +408,7 @@
       "id": "VC21",
       "capability": "visual-catalog",
       "title": "Bounded host selection and validation work",
-      "fingerprint": "ce4f5859edce2632ecfa487c6d4959cbc2123dc5caf303fb91b4c7ded0a67ee9"
+      "fingerprint": "a58bdda5cb360c646a586d83604673ba07c34b4325886f6ae364ec6d98cb9c7f"
     }
   ],
   "properties": [
@@ -5647,15 +5647,109 @@
       "owner": "tools/native_performance021_qualification.py; tools/native_language_policy.py",
       "oracle": "Run the actual retained native/profile/font proof on restored planning bytes; mutate or remove actual current proof inputs and require refusal.",
       "source_globs": [
-        "tools/native_performance021_qualification.py",
-        "tools/native_language_policy.py",
-        "release/native-admission-inputs.json",
+        ".github/workflows/update-feed.yml",
         "locales/catalog.json",
-        "tests/test_performance021_proof.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/a/**",
+        "openspec/changes/spacefox-watchface/evidence/performance021/b/**",
+        "release/native-admission-inputs.json",
         "tests/test_native_localization.py",
-        "openspec/changes/spacefox-watchface/evidence/performance021/a/**"
+        "tests/test_performance021_b.py",
+        "tests/test_performance021_b_cloud.py",
+        "tests/test_performance021_proof.py",
+        "tools/build_native_localization.py",
+        "tools/native_language_policy.py",
+        "tools/native_performance021_qualification.py"
       ],
       "planning_status": "implemented and author self-verified at the recorded local boundary; fresh independent verification and root judgment pending"
+    },
+    {
+      "id": "VC21.P6",
+      "requirement_id": "VC21",
+      "scenarios": [
+        "Concurrent complete readback"
+      ],
+      "statement": "Final exact bytes and root race are checked with bounded concurrent requests; corrupt, partial, slow and changed roots refuse.",
+      "owner": "tools/spacefox/cloud.py",
+      "oracle": "Local real boundary and independent expected bytes, effect counters and elapsed/cleanup observations.",
+      "source_globs": [
+        "tools/spacefox/cloud.py",
+        "tests/test_performance021_b.py"
+      ],
+      "planning_status": "implemented and author self-verified locally; independent verification and root judgment pending"
+    },
+    {
+      "id": "VC21.P7",
+      "requirement_id": "VC21",
+      "scenarios": [
+        "Cheap cloud no-work"
+      ],
+      "statement": "A no-work stage avoids catalog decode and renderer; due, changed catalog and pending work progress under fresh authority.",
+      "owner": "tools/cloud_feed.py; .github/workflows/update-feed.yml",
+      "oracle": "Local real boundary and independent expected bytes, effect counters and elapsed/cleanup observations.",
+      "source_globs": [
+        ".github/workflows/update-feed.yml",
+        "tests/test_performance021_b.py",
+        "tests/test_performance021_b_cloud.py",
+        "tools/cloud_feed.py",
+        "tools/refresh_catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/cloud.py",
+        "tools/spacefox/current_catalog.py",
+        "tools/spacefox/native_motion.py"
+      ],
+      "planning_status": "implemented and author self-verified locally; independent verification and root judgment pending"
+    },
+    {
+      "id": "VC21.P8",
+      "requirement_id": "VC21",
+      "scenarios": [
+        "Bounded Git and exact snapshot"
+      ],
+      "statement": "Git deadlines, exact blob snapshots and streaming measurements retain fresh CAS and archive authority; hangs and revision changes refuse.",
+      "owner": "tools/spacefox/publisher.py",
+      "oracle": "Local real boundary and independent expected bytes, effect counters and elapsed/cleanup observations.",
+      "source_globs": [
+        "tools/spacefox/publisher.py",
+        "tests/test_performance021_b.py"
+      ],
+      "planning_status": "implemented and author self-verified locally; independent verification and root judgment pending"
+    },
+    {
+      "id": "VC21.P9",
+      "requirement_id": "VC21",
+      "scenarios": [
+        "Operator total HTTP deadline"
+      ],
+      "statement": "Loopback slow progress and oversize responses refuse within total deadline and reap workers; valid responses retain protocol diagnostics.",
+      "owner": "tools/display_corpus.py; tools/verify_native_text_http.py",
+      "oracle": "Local real boundary and independent expected bytes, effect counters and elapsed/cleanup observations.",
+      "source_globs": [
+        "tests/test_performance021_b.py",
+        "tests/test_phone_text_transport.py",
+        "tools/display_corpus.py",
+        "tools/spacefox/catalog.py",
+        "tools/verify_native_text_http.py"
+      ],
+      "planning_status": "implemented and author self-verified locally; independent verification and root judgment pending"
+    },
+    {
+      "id": "VC21.P10",
+      "requirement_id": "VC21",
+      "scenarios": [
+        "Native generation retains current reminders"
+      ],
+      "statement": "Current five-locale reminder strings, default-off settings and existing watch files remain byte-identical through first and repeated generation; malformed language elements still normalize.",
+      "owner": "tools/build_native_localization.py",
+      "oracle": "Actual current proof closure, complete watch-tree byte comparison and malformed manifest element regression.",
+      "source_globs": [
+        "tools/build_native_localization.py",
+        "tests/test_native_localization.py",
+        "tests/test_performance021_b.py",
+        "watchface/resources/settings/properties.xml",
+        "watchface/resources/settings/settings.xml",
+        "watchface/manifest.xml"
+      ],
+      "planning_status": "implemented and author self-verified with exact current watch bytes; independent verification and root judgment pending"
     }
   ],
   "cases": [
@@ -18647,7 +18741,7 @@
       },
       "planning_note": "Runner implemented and source-bound; structural state is not independent acceptance or full ready-DAG completion.",
       "implementation_note": "Public runner/proof port; original assertion and ID retained. See evidence/public-verification-port/case-map.json. Historical SDK records retain original source, toolchain and raw exit; no fresh external observation.",
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Scenario Prior state cannot be recovered: The named whole test covers this scenario conjunct as well as the separately recorded edges; shared proof is not independent execution."
     },
     {
@@ -20969,7 +21063,7 @@
       },
       "planning_note": "Runner implemented and source-bound; structural state is not independent acceptance or full ready-DAG completion.",
       "implementation_note": "Public runner/proof port; original assertion and ID retained. See evidence/public-verification-port/case-map.json. Historical SDK records retain original source, toolchain and raw exit; no fresh external observation.",
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Scenario Crash between deployment and promotion: The named whole test covers this scenario conjunct as well as the separately recorded edges; shared proof is not independent execution."
     },
     {
@@ -21396,7 +21490,7 @@
       "distinct_reason": "Runner disappears after a provider call: Crash/reopen source-age and pending preservation assertions, with no CDN bootstrap.",
       "planning_note": "Runner implemented and source-bound; structural state is not independent acceptance or full ready-DAG completion.",
       "implementation_note": "Public runner/proof port; original assertion and ID retained. See evidence/public-verification-port/case-map.json. Historical SDK records retain original source, toolchain and raw exit; no fresh external observation.",
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445"
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13"
     },
     {
       "id": "LS13.P4.C05.POSITIVE.CURRENT",
@@ -21513,7 +21607,7 @@
       "distinct_reason": "Crash between deployment and promotion: Local data-file closure/finality conjunct only; original graphics and remote P1 obligations remain open.",
       "planning_note": "Runner implemented and source-bound; structural state is not independent acceptance or full ready-DAG completion.",
       "implementation_note": "Public runner/proof port; original assertion and ID retained. See evidence/public-verification-port/case-map.json. Historical SDK records retain original source, toolchain and raw exit; no fresh external observation.",
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445"
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13"
     },
     {
       "id": "LS14.P4.C08.POSITIVE.CURRENT",
@@ -21708,7 +21802,7 @@
       "distinct_reason": "Crash between deployment and promotion: Local data-file closure/finality conjunct only; original graphics and remote P1 obligations remain open.",
       "planning_note": "Runner implemented and source-bound; structural state is not independent acceptance or full ready-DAG completion.",
       "implementation_note": "Public runner/proof port; original assertion and ID retained. See evidence/public-verification-port/case-map.json. Historical SDK records retain original source, toolchain and raw exit; no fresh external observation.",
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445"
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13"
     },
     {
       "id": "LS14.P4.C13.NEGATIVE.CURRENT",
@@ -21747,7 +21841,7 @@
       "distinct_reason": "Crash between deployment and promotion: Local data-file closure/finality conjunct only; original graphics and remote P1 obligations remain open.",
       "planning_note": "Runner implemented and source-bound; structural state is not independent acceptance or full ready-DAG completion.",
       "implementation_note": "Public runner/proof port; original assertion and ID retained. See evidence/public-verification-port/case-map.json. Historical SDK records retain original source, toolchain and raw exit; no fresh external observation.",
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445"
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13"
     },
     {
       "id": "LS14.P4.C14.POSITIVE.CURRENT",
@@ -21786,7 +21880,7 @@
       "distinct_reason": "Crash between deployment and promotion: Local data-file closure/finality conjunct only; original graphics and remote P1 obligations remain open.",
       "planning_note": "Runner implemented and source-bound; structural state is not independent acceptance or full ready-DAG completion.",
       "implementation_note": "Public runner/proof port; original assertion and ID retained. See evidence/public-verification-port/case-map.json. Historical SDK records retain original source, toolchain and raw exit; no fresh external observation.",
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445"
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13"
     },
     {
       "id": "LS14.P4.C15.POSITIVE.CURRENT",
@@ -21989,7 +22083,7 @@
       "distinct_reason": "Scenario Crash between deployment and promotion: R1 local repair/probe conjunct only; original required remote and product boundaries stay open.",
       "planning_note": "Runner implemented and source-bound; structural state is not independent acceptance or full ready-DAG completion.",
       "implementation_note": "Public runner/proof port; original assertion and ID retained. See evidence/public-verification-port/case-map.json. Historical SDK records retain original source, toolchain and raw exit; no fresh external observation.",
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445"
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13"
     },
     {
       "id": "LS14.P5.C03.NEGATIVE.CURRENT",
@@ -22032,7 +22126,7 @@
       "distinct_reason": "Scenario Crash between deployment and promotion: R1 local repair/probe conjunct only; original required remote and product boundaries stay open.",
       "planning_note": "Runner implemented and source-bound; structural state is not independent acceptance or full ready-DAG completion.",
       "implementation_note": "Public runner/proof port; original assertion and ID retained. See evidence/public-verification-port/case-map.json. Historical SDK records retain original source, toolchain and raw exit; no fresh external observation.",
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445"
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13"
     },
     {
       "id": "LS14.P5.C04.NEGATIVE.CURRENT",
@@ -22232,7 +22326,7 @@
       "distinct_reason": "Scenario Crash between deployment and promotion: R2 independent literal CDN-race and guard witnesses; bounded repair requires NEW R3.",
       "planning_note": "Runner implemented and source-bound; structural state is not independent acceptance or full ready-DAG completion.",
       "implementation_note": "Public runner/proof port; original assertion and ID retained. See evidence/public-verification-port/case-map.json. Historical SDK records retain original source, toolchain and raw exit; no fresh external observation.",
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445"
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13"
     },
     {
       "id": "LS14.P6.C04.POSITIVE.CURRENT",
@@ -32949,7 +33043,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: The actual YAML materializer restores every independently declared current source byte into a real clean sparse checkout.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -32987,7 +33081,7 @@
       "substitution": {
         "classification": "NO_TEST_DOUBLE"
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: A relocated complete real tracked curation is materialized without editing the sparse runtime seed.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33025,7 +33119,7 @@
       "substitution": {
         "classification": "NO_TEST_DOUBLE"
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: Missing, wrong-pin, untracked and re-pinned wrong-LGPL-source declarations reject without authorizing a later bootstrap.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33063,7 +33157,7 @@
       "substitution": {
         "classification": "NO_TEST_DOUBLE"
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: Ordinary, staged and assume-unchanged local source bytes reject and survive exactly.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33101,7 +33195,7 @@
       "substitution": {
         "classification": "NO_TEST_DOUBLE"
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: All real SVGs of the relocated current curation materialize through the declared path with their exact original bytes.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33139,7 +33233,7 @@
       "substitution": {
         "classification": "NO_TEST_DOUBLE"
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: A hidden corrupt real SVG refuses materialization and retains its exact original corrupt local bytes and Git head.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33183,7 +33277,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: A full valid source checkout executes not_due prepare with zero provider/publication/write, then a delayed second source validation preserves launch identity/no-reschedule and creates the exact saved current replacement.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33221,7 +33315,7 @@
       "substitution": {
         "classification": "NO_TEST_DOUBLE"
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: Current sparse materialization refuses dirty/untracked/rights-substituted inputs while preserving local bytes.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33265,7 +33359,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Scenario Personal deployment: this edge uses the exact assertion stated in its observable; related edges retain their separately named conjuncts.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33309,7 +33403,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Scenario Personal deployment: this edge uses the exact assertion stated in its observable; related edges retain their separately named conjuncts.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33353,7 +33447,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: Independent actual live-root reread and immutable corruption refuse without authority/source-age/quota mutation. The positive whole runtime witness additionally checks retained-only corrupt bytes.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33397,7 +33491,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Scenario Personal deployment: this edge uses the exact assertion stated in its observable; related edges retain their separately named conjuncts.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33441,7 +33535,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: Independent malformed immutable current delivery refuses without provider/POST or authority/source-age/quota mutation. Retained whole runtime observations separately supply the rich saved current+retained reopen/readback/promotion closure.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33485,7 +33579,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: Same-policy current schema3 metadata resumes, binds ETags per URL, reuses exact304 raw bodies/source epochs and retains the previous complete candidate.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33529,7 +33623,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: Actual CLI current defaults reject unsupported journal schema/query/age/page policy before metadata HTTP or authority mutation.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33573,7 +33667,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: Stale expected-base, rolling source headroom/backoff and failed HTTP preserve source age and accepted metadata prefix/candidate; quota reservations remain durable.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33617,7 +33711,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: The restored full current recipe builds the actual captured launch feed with exact source epoch and identity; its exported current files equal authenticated Git.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33655,7 +33749,7 @@
       "substitution": {
         "classification": "NO_TEST_DOUBLE"
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: Selected current feed/closure remains bounded; empty and actual-name unknown-technical-ID records preserve explicit null visual/map/position and unresolved identities.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33699,7 +33793,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: The actual prepare sparse shell materializes the independent current closure before first exact current generation and one reserved provider request.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33743,7 +33837,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: A committed wrong source pin makes the exact YAML shell fail before its reachable follow-up bootstrap marker.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33787,7 +33881,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Scenario Personal deployment: this edge uses the exact assertion stated in its observable; related edges retain their separately named conjuncts.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33831,7 +33925,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Scenario Personal deployment: this edge uses the exact assertion stated in its observable; related edges retain their separately named conjuncts.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33875,7 +33969,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Scenario Personal deployment: this edge uses the exact assertion stated in its observable; related edges retain their separately named conjuncts.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33919,7 +34013,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Scenario Personal deployment: this edge uses the exact assertion stated in its observable; related edges retain their separately named conjuncts.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -33963,7 +34057,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: Empty-only bounded Pages polling plus the exact completed skipped-old-attempt witness changes only cloud journal; accepted/pending/active/source-age/quota remain exact.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -34007,7 +34101,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: Wrong run/attempt/source/branch/path/repository/job identities, running or actually started deploy records cannot authorize empty recovery.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -34051,7 +34145,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: Any nonempty, malformed, missing-after-nonempty or error status remains uncertain with no Actions fallback reads.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -34095,7 +34189,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: Queued/in_progress/succeed statuses retain exact polling/delay/finality behavior and bypass the skipped-deploy witness.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -34139,7 +34233,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: The old intent never reposts after empty recovery; a new exact bound intent posts once and can promote the same current pending artifact after full current/retained readback.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -34183,7 +34277,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: Actual sparse metadata CLI resumes2+2 pages, finishes current schema3 candidate, then replaces it via four URL-scoped304s at the exact completion cadence deadline.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -34227,7 +34321,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: Actual source-due, backoff, uncertain reservation, primary headroom and fast-mode events yield metadata with zero metadata/provider HTTP or auxiliary write (exact live readback may GET the public site).",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -34271,7 +34365,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: The96 exact daily cron ticks, whole-workflow concurrency, bounded artifact retention and metadata prepare/promotion failure gate remain exact.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -34315,7 +34409,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: Independent actual partial schema3 Git corpus retains exact auxiliary objects/source age through accepted source and explicit code adoption. The retained whole pending/armed lifecycle additionally proves rich active artifacts and terminal cloud-journal byte preservation.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -34359,7 +34453,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: The current sparse prepare builds real saved source files before metadata; subsequent metadata operates only from immutable Git/runtime and does not adopt source catalog or launch age.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -34403,7 +34497,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: Minimum/default/maximum completion predeadlines do no writes; the minimum deadline yields to due source, then exact four304 replacement preserves the accepted launch age.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -34447,7 +34541,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: Dirty helper, untrusted main context and invalid bounds refuse metadata before any HTTP/authority write. Mixed/corrupt live closure rejection is separately exercised by the metadata readback witness.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -34491,7 +34585,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: Core promotion can clear pending while journal remains armed: metadata yields before collector import/HTTP/write; explicit recovery establishes finality first.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -34535,7 +34629,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: No-journal active metadata completes four current typed pages, returns not_due with unchanged authority, and never creates a cloud journal.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -34579,7 +34673,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: A partial page prefix survives pending/armed refusal and explicit current recovery, then the remaining three pages complete with the first raw page and source epoch unchanged.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -34623,7 +34717,7 @@
           "Physical Mac-off, phone/device/Store acceptance"
         ]
       },
-      "source_sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445",
+      "source_sha256": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
       "distinct_reason": "Personal deployment: No-journal idle metadata refuses corrupt immutable bytes and a mixed final mutable root before metadata HTTP/write; exact closure permits completion and cadence checks.",
       "implementation_note": " Current graph selector has this exact authored source; historical execution retains original source and is not a fresh full-suite pass."
     },
@@ -39215,7 +39309,7 @@
       "property_id": "VC21.P1",
       "polarity": "positive",
       "scenario": "Selected catalog closure",
-      "scenario_fingerprint": "fd2232787cd98d789f510706eb5a501f058051abe559f5ab3842e213995e2ef1",
+      "scenario_fingerprint": "a649b6fffabe874bcbeadc68febe3ff2cab4ca30acd87259cea64a581d0acb55",
       "setup": "Retained real source and explicit changed-input counterexample.",
       "observable": "Expected exact identity, ownership, rejection and bounded work at the production boundary.",
       "red_expectation": "Stale acceptance, unbounded work, output or ownership change fails.",
@@ -39246,7 +39340,7 @@
       "property_id": "VC21.P1",
       "polarity": "negative",
       "scenario": "Selected catalog closure",
-      "scenario_fingerprint": "fd2232787cd98d789f510706eb5a501f058051abe559f5ab3842e213995e2ef1",
+      "scenario_fingerprint": "a649b6fffabe874bcbeadc68febe3ff2cab4ca30acd87259cea64a581d0acb55",
       "setup": "Retained real source and explicit changed-input counterexample.",
       "observable": "Expected exact identity, ownership, rejection and bounded work at the production boundary.",
       "red_expectation": "Stale acceptance, unbounded work, output or ownership change fails.",
@@ -39277,7 +39371,7 @@
       "property_id": "VC21.P2",
       "polarity": "positive",
       "scenario": "Geography ownership",
-      "scenario_fingerprint": "a93cf59de0f3840a6d077d3c7b5cb594f9b354ac2e0fac85f793fa6a9bd8fcc7",
+      "scenario_fingerprint": "e4ae6fbc1be6085f8a75024a931a9241392f636ca14d4f182ab48bc4ff9c0ccf",
       "setup": "Retained real source and explicit changed-input counterexample.",
       "observable": "Expected exact identity, ownership, rejection and bounded work at the production boundary.",
       "red_expectation": "Stale acceptance, unbounded work, output or ownership change fails.",
@@ -39308,7 +39402,7 @@
       "property_id": "VC21.P2",
       "polarity": "negative",
       "scenario": "Geography ownership",
-      "scenario_fingerprint": "a93cf59de0f3840a6d077d3c7b5cb594f9b354ac2e0fac85f793fa6a9bd8fcc7",
+      "scenario_fingerprint": "e4ae6fbc1be6085f8a75024a931a9241392f636ca14d4f182ab48bc4ff9c0ccf",
       "setup": "Retained real source and explicit changed-input counterexample.",
       "observable": "Expected exact identity, ownership, rejection and bounded work at the production boundary.",
       "red_expectation": "Stale acceptance, unbounded work, output or ownership change fails.",
@@ -39481,7 +39575,7 @@
       "command_id": "performance021-proof",
       "state": "implemented",
       "source_path": "tests/test_native_localization.py",
-      "source_sha256": "c3b28a6f94b052a81220102b5aef1a0e097736377437e8e65a9b77b42185fb76",
+      "source_sha256": "45491d51b0036609289dea06b1eb71fb70ec4be4777d17ad637bc2a72e6d9376",
       "implementation_note": "Author and independent observations are reconciled in evidence/performance021/a/PEER.md; root judgment pending."
     },
     {
@@ -39507,7 +39601,7 @@
       "command_id": "performance021-proof",
       "state": "implemented",
       "source_path": "tests/test_performance021_proof.py",
-      "source_sha256": "b232f566fd105f481ce1f246193daa6f84d9f1cd145e661ff6499040cb8e95c0",
+      "source_sha256": "e4bffdff898f78bdd99b583b28b449e1d073d77fe3a368b267395449d5d32f9a",
       "implementation_note": "Author and independent observations are reconciled in evidence/performance021/a/PEER.md; root judgment pending."
     },
     {
@@ -39533,7 +39627,7 @@
       "command_id": "performance021-proof",
       "state": "implemented",
       "source_path": "tests/test_performance021_proof.py",
-      "source_sha256": "b232f566fd105f481ce1f246193daa6f84d9f1cd145e661ff6499040cb8e95c0",
+      "source_sha256": "e4bffdff898f78bdd99b583b28b449e1d073d77fe3a368b267395449d5d32f9a",
       "implementation_note": "Author and independent observations are reconciled in evidence/performance021/a/PEER.md; root judgment pending."
     },
     {
@@ -39559,7 +39653,7 @@
       "command_id": "performance021-proof",
       "state": "implemented",
       "source_path": "tests/test_performance021_proof.py",
-      "source_sha256": "b232f566fd105f481ce1f246193daa6f84d9f1cd145e661ff6499040cb8e95c0",
+      "source_sha256": "e4bffdff898f78bdd99b583b28b449e1d073d77fe3a368b267395449d5d32f9a",
       "implementation_note": "Author and independent observations are reconciled in evidence/performance021/a/PEER.md; root judgment pending."
     },
     {
@@ -39567,7 +39661,7 @@
       "property_id": "VC21.P1",
       "polarity": "positive",
       "scenario": "Selected catalog closure",
-      "scenario_fingerprint": "fd2232787cd98d789f510706eb5a501f058051abe559f5ab3842e213995e2ef1",
+      "scenario_fingerprint": "a649b6fffabe874bcbeadc68febe3ff2cab4ca30acd87259cea64a581d0acb55",
       "setup": "Build retained real catalog and mutate the caller dictionary after the operation-owned snapshot is created.",
       "observable": "All 106 real artifact digests match the original baseline; the mutated caller is refused; six semantic validations cover six exact identities.",
       "red_expectation": "Caller mutation alters the built artifact or a poisoned catalog is accepted.",
@@ -39590,7 +39684,7 @@
       "property_id": "VC21.P1",
       "polarity": "positive",
       "scenario": "Selected catalog closure",
-      "scenario_fingerprint": "fd2232787cd98d789f510706eb5a501f058051abe559f5ab3842e213995e2ef1",
+      "scenario_fingerprint": "a649b6fffabe874bcbeadc68febe3ff2cab4ca30acd87259cea64a581d0acb55",
       "setup": "Actual repository-created catalog and retained real launch; local Git for cloud content-only flow.",
       "observable": "Private operation preserves every baseline artifact digest and source age without whole-catalog copying or provider calls.",
       "red_expectation": "Copy, changed artifact bytes, stale identity, or provider call occurs.",
@@ -39615,7 +39709,7 @@
       "property_id": "VC21.P1",
       "polarity": "positive",
       "scenario": "Selected catalog closure",
-      "scenario_fingerprint": "fd2232787cd98d789f510706eb5a501f058051abe559f5ab3842e213995e2ef1",
+      "scenario_fingerprint": "a649b6fffabe874bcbeadc68febe3ff2cab4ca30acd87259cea64a581d0acb55",
       "setup": "Actual repository-created catalog and retained real launch; local Git for cloud content-only flow.",
       "observable": "Private operation preserves every baseline artifact digest and source age without whole-catalog copying or provider calls.",
       "red_expectation": "Copy, changed artifact bytes, stale identity, or provider call occurs.",
@@ -39640,7 +39734,7 @@
       "property_id": "VC21.P1",
       "polarity": "negative",
       "scenario": "Selected catalog closure",
-      "scenario_fingerprint": "fd2232787cd98d789f510706eb5a501f058051abe559f5ab3842e213995e2ef1",
+      "scenario_fingerprint": "a649b6fffabe874bcbeadc68febe3ff2cab4ca30acd87259cea64a581d0acb55",
       "setup": "Actual catalog admitted in a scope, mutated to JSON-identical invalid Decimal, and restored.",
       "observable": "All 106 real artifact digests match the original baseline; the mutated caller is refused; six semantic validations cover six exact identities.",
       "red_expectation": "Caller mutation alters the built artifact or a poisoned catalog is accepted.",
@@ -39663,7 +39757,7 @@
       "property_id": "VC21.P2",
       "polarity": "negative",
       "scenario": "Geography ownership",
-      "scenario_fingerprint": "a93cf59de0f3840a6d077d3c7b5cb594f9b354ac2e0fac85f793fa6a9bd8fcc7",
+      "scenario_fingerprint": "e4ae6fbc1be6085f8a75024a931a9241392f636ca14d4f182ab48bc4ff9c0ccf",
       "setup": "Local Git hidden producer and schema modifications are rejected before authority access.",
       "observable": "Expected exact identity, ownership, rejection and bounded work at the production boundary.",
       "red_expectation": "Stale acceptance, unbounded work, output or ownership change fails.",
@@ -39712,8 +39806,578 @@
       "command_id": "performance021-proof",
       "state": "implemented",
       "source_path": "tests/test_performance021_proof.py",
-      "source_sha256": "b232f566fd105f481ce1f246193daa6f84d9f1cd145e661ff6499040cb8e95c0",
+      "source_sha256": "e4bffdff898f78bdd99b583b28b449e1d073d77fe3a368b267395449d5d32f9a",
       "implementation_note": "Author and independent observations are reconciled in evidence/performance021/a/PEER.md; root judgment pending."
+    },
+    {
+      "id": "VC21.P6.S01.REAL",
+      "property_id": "VC21.P6",
+      "polarity": "positive",
+      "scenario": "Concurrent complete readback",
+      "scenario_fingerprint": "c778d28a1e39356cddf48a86602dd84520a6cee0cb4204beaf3b28e6815f8abf",
+      "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
+      "observable": "Actual 106-file closure and exact root readback overlap with bounded workers.",
+      "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
+      "green_expectation": "Actual 106-file closure and exact root readback overlap with bounded workers.",
+      "invalidation_dependencies": [
+        "tests/test_performance021_b.py",
+        "tools/spacefox/cloud.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_b.GroupBTest.test_real_artifact_readback_concurrency_and_corruption",
+      "command_id": "performance021-b",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_b.py",
+      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
+    },
+    {
+      "id": "VC21.P6.S01.SEQUENCE",
+      "property_id": "VC21.P6",
+      "polarity": "negative",
+      "scenario": "Concurrent complete readback",
+      "scenario_fingerprint": "c778d28a1e39356cddf48a86602dd84520a6cee0cb4204beaf3b28e6815f8abf",
+      "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
+      "observable": "Corruption, root race and restoration are compared after each event against independent expected outcomes.",
+      "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
+      "green_expectation": "Corruption, root race and restoration are compared after each event against independent expected outcomes.",
+      "invalidation_dependencies": [
+        "tests/test_performance021_b.py",
+        "tools/spacefox/cloud.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_b.GroupBTest.test_readback_sequence_independent_oracle",
+      "command_id": "performance021-b",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_b.py",
+      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
+    },
+    {
+      "id": "VC21.P6.S01.TIMEOUT",
+      "property_id": "VC21.P6",
+      "polarity": "negative",
+      "scenario": "Concurrent complete readback",
+      "scenario_fingerprint": "c778d28a1e39356cddf48a86602dd84520a6cee0cb4204beaf3b28e6815f8abf",
+      "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
+      "observable": "Slow in-flight bodies hit the total deadline, leave no live worker and issue no POST.",
+      "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
+      "green_expectation": "Slow in-flight bodies hit the total deadline, leave no live worker and issue no POST.",
+      "invalidation_dependencies": [
+        "tests/test_performance021_b.py",
+        "tools/spacefox/cloud.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_b.GroupBTest.test_readback_slow_body_reaps_children",
+      "command_id": "performance021-b",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_b.py",
+      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
+    },
+    {
+      "id": "VC21.P6.S01.CANCEL",
+      "property_id": "VC21.P6",
+      "polarity": "negative",
+      "scenario": "Concurrent complete readback",
+      "scenario_fingerprint": "c778d28a1e39356cddf48a86602dd84520a6cee0cb4204beaf3b28e6815f8abf",
+      "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
+      "observable": "Interrupting a real in-flight readback reaps its workers and issues no POST.",
+      "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
+      "green_expectation": "Interrupting a real in-flight readback reaps its workers and issues no POST.",
+      "invalidation_dependencies": [
+        "tests/test_performance021_b.py",
+        "tools/spacefox/cloud.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_b.GroupBTest.test_cancelled_readback_reaps_http_workers",
+      "command_id": "performance021-b",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_b.py",
+      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
+    },
+    {
+      "id": "VC21.P7.S01.CLOUD",
+      "property_id": "VC21.P7",
+      "polarity": "positive",
+      "scenario": "Cheap cloud no-work",
+      "scenario_fingerprint": "15593775d59d008fccf3fe81dc10410f3efe4d612694f56e91b596d284f0a82d",
+      "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
+      "observable": "Full same-content admission creates a source-bound date witness and a later sparse CLI no-work probe uses no renderer, provider or publication.",
+      "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
+      "green_expectation": "Full same-content admission creates a source-bound date witness and a later sparse CLI no-work probe uses no renderer, provider or publication.",
+      "invalidation_dependencies": [
+        ".github/workflows/update-feed.yml",
+        "tests/test_performance021_b.py",
+        "tests/test_performance021_b_cloud.py",
+        "tools/cloud_feed.py",
+        "tools/refresh_catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/cloud.py",
+        "tools/spacefox/current_catalog.py",
+        "tools/spacefox/native_motion.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_b_cloud.RealCloudSchedulingTest.test_active_full_admission_then_sparse_cli_no_work",
+      "command_id": "performance021-b-cloud",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_b_cloud.py",
+      "source_sha256": "55c2ee10b6442b0c67faa25799e045470fc352c0634ebdcf94117f0b79917f6e",
+      "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
+    },
+    {
+      "id": "VC21.P7.S01.ESCALATE",
+      "property_id": "VC21.P7",
+      "polarity": "negative",
+      "scenario": "Cheap cloud no-work",
+      "scenario_fingerprint": "15593775d59d008fccf3fe81dc10410f3efe4d612694f56e91b596d284f0a82d",
+      "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
+      "observable": "Missing, malformed, stale or mismatched witness, changed root, due, staging, catalog change and pending all escalate under local Git and loopback.",
+      "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
+      "green_expectation": "Missing, malformed, stale or mismatched witness, changed root, due, staging, catalog change and pending all escalate under local Git and loopback.",
+      "invalidation_dependencies": [
+        ".github/workflows/update-feed.yml",
+        "tests/test_performance021_b.py",
+        "tests/test_performance021_b_cloud.py",
+        "tools/cloud_feed.py",
+        "tools/refresh_catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/cloud.py",
+        "tools/spacefox/current_catalog.py",
+        "tools/spacefox/native_motion.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_b_cloud.RealCloudSchedulingTest.test_active_full_admission_then_sparse_cli_no_work",
+      "command_id": "performance021-b-cloud",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_b_cloud.py",
+      "source_sha256": "55c2ee10b6442b0c67faa25799e045470fc352c0634ebdcf94117f0b79917f6e",
+      "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
+    },
+    {
+      "id": "VC21.P7.S01.MIDNIGHT",
+      "property_id": "VC21.P7",
+      "polarity": "negative",
+      "scenario": "Cheap cloud no-work",
+      "scenario_fingerprint": "15593775d59d008fccf3fe81dc10410f3efe4d612694f56e91b596d284f0a82d",
+      "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
+      "observable": "An actual catalog operation spanning a controlled UTC date change emits no date witness.",
+      "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
+      "green_expectation": "An actual catalog operation spanning a controlled UTC date change emits no date witness.",
+      "invalidation_dependencies": [
+        ".github/workflows/update-feed.yml",
+        "tests/test_performance021_b.py",
+        "tests/test_performance021_b_cloud.py",
+        "tools/cloud_feed.py",
+        "tools/refresh_catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/cloud.py",
+        "tools/spacefox/current_catalog.py",
+        "tools/spacefox/native_motion.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_b.GroupBTest.test_actual_catalog_midnight_disagreement_withholds_witness",
+      "command_id": "performance021-b",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_b.py",
+      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
+    },
+    {
+      "id": "VC21.P7.S01.SOURCE",
+      "property_id": "VC21.P7",
+      "polarity": "negative",
+      "scenario": "Cheap cloud no-work",
+      "scenario_fingerprint": "15593775d59d008fccf3fe81dc10410f3efe4d612694f56e91b596d284f0a82d",
+      "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
+      "observable": "Present hidden source changes and missing required runtime refuse the sparse shortcut.",
+      "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
+      "green_expectation": "Present hidden source changes and missing required runtime refuse the sparse shortcut.",
+      "invalidation_dependencies": [
+        ".github/workflows/update-feed.yml",
+        "tests/test_performance021_b.py",
+        "tests/test_performance021_b_cloud.py",
+        "tools/cloud_feed.py",
+        "tools/refresh_catalog.py",
+        "tools/spacefox/catalog.py",
+        "tools/spacefox/cloud.py",
+        "tools/spacefox/current_catalog.py",
+        "tools/spacefox/native_motion.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_b.GroupBTest.test_cloud_sparse_source_fence_hidden_change",
+      "command_id": "performance021-b",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_b.py",
+      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
+    },
+    {
+      "id": "VC21.P8.S01.BATCH",
+      "property_id": "VC21.P8",
+      "polarity": "positive",
+      "scenario": "Bounded Git and exact snapshot",
+      "scenario_fingerprint": "b65e4f41d3e66165aa840f482dd10e4177eb9cd97d90eaa3df18e78644795872",
+      "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
+      "observable": "Real Git immutable paths are fetched in one batch and exact repeat reuses them.",
+      "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
+      "green_expectation": "Real Git immutable paths are fetched in one batch and exact repeat reuses them.",
+      "invalidation_dependencies": [
+        "tests/test_performance021_b.py",
+        "tools/spacefox/publisher.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_b.GroupBTest.test_git_batch_exact_identity",
+      "command_id": "performance021-b",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_b.py",
+      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
+    },
+    {
+      "id": "VC21.P8.S01.DUPLEX",
+      "property_id": "VC21.P8",
+      "polarity": "positive",
+      "scenario": "Bounded Git and exact snapshot",
+      "scenario_fingerprint": "b65e4f41d3e66165aa840f482dd10e4177eb9cd97d90eaa3df18e78644795872",
+      "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
+      "observable": "A 136192-byte request for 512 distinct Git objects drains an early large response without pipe deadlock.",
+      "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
+      "green_expectation": "A 136192-byte request for 512 distinct Git objects drains an early large response without pipe deadlock.",
+      "invalidation_dependencies": [
+        "tests/test_performance021_b.py",
+        "tools/spacefox/publisher.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_b.GroupBTest.test_git_large_duplex_batch_uses_file_input",
+      "command_id": "performance021-b-git",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_b.py",
+      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
+    },
+    {
+      "id": "VC21.P8.S01.REFS",
+      "property_id": "VC21.P8",
+      "polarity": "negative",
+      "scenario": "Bounded Git and exact snapshot",
+      "scenario_fingerprint": "b65e4f41d3e66165aa840f482dd10e4177eb9cd97d90eaa3df18e78644795872",
+      "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
+      "observable": "Remote authority is reobserved and missing local or remote refs force fetch or refusal.",
+      "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
+      "green_expectation": "Remote authority is reobserved and missing local or remote refs force fetch or refusal.",
+      "invalidation_dependencies": [
+        "tests/test_performance021_b.py",
+        "tools/spacefox/publisher.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_b.GroupBTest.test_git_fresh_ref_and_fetch_reuse",
+      "command_id": "performance021-b",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_b.py",
+      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
+    },
+    {
+      "id": "VC21.P8.S01.HANG",
+      "property_id": "VC21.P8",
+      "polarity": "negative",
+      "scenario": "Bounded Git and exact snapshot",
+      "scenario_fingerprint": "b65e4f41d3e66165aa840f482dd10e4177eb9cd97d90eaa3df18e78644795872",
+      "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
+      "observable": "A real Git fetch with an owned stalled transport reaches its deadline and leaves no live transport.",
+      "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
+      "green_expectation": "A real Git fetch with an owned stalled transport reaches its deadline and leaves no live transport.",
+      "invalidation_dependencies": [
+        "tests/test_performance021_b.py",
+        "tools/spacefox/publisher.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_b.GroupBTest.test_git_fetch_hang_reaps_transport",
+      "command_id": "performance021-b",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_b.py",
+      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
+    },
+    {
+      "id": "VC21.P8.S01.CAS",
+      "property_id": "VC21.P8",
+      "polarity": "negative",
+      "scenario": "Bounded Git and exact snapshot",
+      "scenario_fingerprint": "b65e4f41d3e66165aa840f482dd10e4177eb9cd97d90eaa3df18e78644795872",
+      "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
+      "observable": "Two real concurrent reservations yield exactly one winner and one conflict.",
+      "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
+      "green_expectation": "Two real concurrent reservations yield exactly one winner and one conflict.",
+      "invalidation_dependencies": [
+        "tests/test_durable_publisher_whole.py",
+        "tests/test_performance021_b.py",
+        "tools/spacefox/publisher.py"
+      ],
+      "test_id": "unittest::tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_two_process_reservation_cas",
+      "command_id": "performance021-b-git-guards",
+      "state": "implemented",
+      "source_path": "tests/test_durable_publisher_whole.py",
+      "source_sha256": "a667449a1701dd17066f8c8b9d2e70739c252183f4cee028b02f02b39d6b5486",
+      "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
+    },
+    {
+      "id": "VC21.P8.S01.ARCHIVE",
+      "property_id": "VC21.P8",
+      "polarity": "negative",
+      "scenario": "Bounded Git and exact snapshot",
+      "scenario_fingerprint": "b65e4f41d3e66165aa840f482dd10e4177eb9cd97d90eaa3df18e78644795872",
+      "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
+      "observable": "Retired records remain exact and stale revisions are refused.",
+      "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
+      "green_expectation": "Retired records remain exact and stale revisions are refused.",
+      "invalidation_dependencies": [
+        "tests/test_durable_publisher_whole.py",
+        "tests/test_performance021_b.py",
+        "tools/spacefox/publisher.py"
+      ],
+      "test_id": "unittest::tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_terminal_archive_exact_and_old_revision_refusal",
+      "command_id": "performance021-b-git-guards",
+      "state": "implemented",
+      "source_path": "tests/test_durable_publisher_whole.py",
+      "source_sha256": "a667449a1701dd17066f8c8b9d2e70739c252183f4cee028b02f02b39d6b5486",
+      "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
+    },
+    {
+      "id": "VC21.P9.S01.HTTP",
+      "property_id": "VC21.P9",
+      "polarity": "positive",
+      "scenario": "Operator total HTTP deadline",
+      "scenario_fingerprint": "bbefef9898129e133ff142ab413c644258facc2ec257d7f324a7e3ba1ac9d4e0",
+      "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
+      "observable": "Actual valid text MIME and exact raw bytes retain existing response diagnostics.",
+      "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
+      "green_expectation": "Actual valid text MIME and exact raw bytes retain existing response diagnostics.",
+      "invalidation_dependencies": [
+        "tests/test_performance021_b.py",
+        "tests/test_phone_text_transport.py",
+        "tools/display_corpus.py",
+        "tools/spacefox/catalog.py",
+        "tools/verify_native_text_http.py"
+      ],
+      "test_id": "unittest::tests.test_phone_text_transport.PhoneTextTransportTest.test_actual_http_plain_mime_raw_body_and_wrong_mime_refusal",
+      "command_id": "performance021-b-http",
+      "state": "implemented",
+      "source_path": "tests/test_phone_text_transport.py",
+      "source_sha256": "bbf929628f9271847d1f6260116955ac65793ad798a633a3b9e73542e44d334b",
+      "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
+    },
+    {
+      "id": "VC21.P9.S01.DEADLINE",
+      "property_id": "VC21.P9",
+      "polarity": "negative",
+      "scenario": "Operator total HTTP deadline",
+      "scenario_fingerprint": "bbefef9898129e133ff142ab413c644258facc2ec257d7f324a7e3ba1ac9d4e0",
+      "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
+      "observable": "Slow and oversized local bodies refuse and spawned operator children exit.",
+      "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
+      "green_expectation": "Slow and oversized local bodies refuse and spawned operator children exit.",
+      "invalidation_dependencies": [
+        "tests/test_performance021_b.py",
+        "tests/test_phone_text_transport.py",
+        "tools/display_corpus.py",
+        "tools/spacefox/catalog.py",
+        "tools/verify_native_text_http.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_b.GroupBTest.test_operator_http_deadline_and_bounds",
+      "command_id": "performance021-b",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_b.py",
+      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
+    },
+    {
+      "id": "VC21.P9.S01.ENCODING",
+      "property_id": "VC21.P9",
+      "polarity": "negative",
+      "scenario": "Operator total HTTP deadline",
+      "scenario_fingerprint": "bbefef9898129e133ff142ab413c644258facc2ec257d7f324a7e3ba1ac9d4e0",
+      "setup": "Real local Git, loopback HTTP and owned subprocesses where specified; no remote provider.",
+      "observable": "An empty Content-Encoding is refused as before.",
+      "red_expectation": "A required byte, authority, timing, cleanup or forbidden-effect assertion fails.",
+      "green_expectation": "An empty Content-Encoding is refused as before.",
+      "invalidation_dependencies": [
+        "tests/test_performance021_b.py",
+        "tests/test_phone_text_transport.py",
+        "tools/display_corpus.py",
+        "tools/spacefox/catalog.py",
+        "tools/verify_native_text_http.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_b.GroupBTest.test_operator_empty_content_encoding_rejected",
+      "command_id": "performance021-b",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_b.py",
+      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "implementation_note": "Author local evidence is recorded in evidence/performance021/b; independent verification and root judgment remain pending."
+    },
+    {
+      "id": "VC21.P10.S01.PRESERVE",
+      "property_id": "VC21.P10",
+      "polarity": "positive",
+      "scenario": "Native generation retains current reminders",
+      "scenario_fingerprint": "d5b6e661476ac6ee4f1ea83517dca72947d5d422595f9651bb7a321f49503108",
+      "setup": "Isolated current proof/source tree, no SDK or watch write.",
+      "observable": "First and repeated actual generation preserve all current watch bytes.",
+      "red_expectation": "Reminder resources are lost, watch bytes change, or malformed manifest entries remain.",
+      "green_expectation": "First and repeated actual generation preserve all current watch bytes.",
+      "invalidation_dependencies": [
+        "tools/build_native_localization.py",
+        "tests/test_native_localization.py",
+        "tests/test_performance021_b.py",
+        "watchface/resources/settings/properties.xml",
+        "watchface/resources/settings/settings.xml",
+        "watchface/manifest.xml"
+      ],
+      "test_id": "unittest::tests.test_native_localization.NativeLocalizationResourcesTest.test_generation_is_complete_and_repeatable",
+      "command_id": "performance021-b-generator",
+      "state": "implemented",
+      "source_path": "tests/test_native_localization.py",
+      "source_sha256": "45491d51b0036609289dea06b1eb71fb70ec4be4777d17ad637bc2a72e6d9376",
+      "implementation_note": "Historical font and probe sources are hash-authenticated; no current font is introduced."
+    },
+    {
+      "id": "VC21.P10.S01.MANIFEST",
+      "property_id": "VC21.P10",
+      "polarity": "negative",
+      "scenario": "Native generation retains current reminders",
+      "scenario_fingerprint": "d5b6e661476ac6ee4f1ea83517dca72947d5d422595f9651bb7a321f49503108",
+      "setup": "Isolated current proof/source tree, no SDK or watch write.",
+      "observable": "Extra language attributes are normalized while correct current serialization is unchanged.",
+      "red_expectation": "Reminder resources are lost, watch bytes change, or malformed manifest entries remain.",
+      "green_expectation": "Extra language attributes are normalized while correct current serialization is unchanged.",
+      "invalidation_dependencies": [
+        "tools/build_native_localization.py",
+        "tests/test_native_localization.py",
+        "tests/test_performance021_b.py",
+        "watchface/resources/settings/properties.xml",
+        "watchface/resources/settings/settings.xml",
+        "watchface/manifest.xml"
+      ],
+      "test_id": "unittest::tests.test_performance021_b.GroupBTest.test_manifest_normalization_keeps_correct_bytes_and_repairs_extra_attributes",
+      "command_id": "performance021-b-manifest",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_b.py",
+      "source_sha256": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+      "implementation_note": "Historical font and probe sources are hash-authenticated; no current font is introduced."
+    },
+    {
+      "id": "VC21.P5.S01.B_RECEIPT",
+      "property_id": "VC21.P5",
+      "polarity": "negative",
+      "scenario": "Host changes retain prior native admission",
+      "scenario_fingerprint": "108a42f9d224fbaa8ab5658a180a6b64d135d91a1d14b4790793775f7a30df9b",
+      "setup": "Isolated current source proof copy and controlled changed or missing input.",
+      "observable": "An altered group B local receipt is rejected.",
+      "red_expectation": "The altered or missing proof input is accepted.",
+      "green_expectation": "An altered group B local receipt is rejected.",
+      "invalidation_dependencies": [
+        ".github/workflows/update-feed.yml",
+        "locales/catalog.json",
+        "openspec/changes/spacefox-watchface/evidence/performance021/a/**",
+        "openspec/changes/spacefox-watchface/evidence/performance021/b/**",
+        "release/native-admission-inputs.json",
+        "tests/test_native_localization.py",
+        "tests/test_performance021_b.py",
+        "tests/test_performance021_b_cloud.py",
+        "tests/test_performance021_proof.py",
+        "tools/build_native_localization.py",
+        "tools/native_language_policy.py",
+        "tools/native_performance021_qualification.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_proof.HostProofTest.test_changed_group_b_receipt_refuses",
+      "command_id": "performance021-proof",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_proof.py",
+      "source_sha256": "e4bffdff898f78bdd99b583b28b449e1d073d77fe3a368b267395449d5d32f9a",
+      "implementation_note": "Current source and group B evidence remain tied to the single historical performance021 delta."
+    },
+    {
+      "id": "VC21.P5.S01.B_SOURCE",
+      "property_id": "VC21.P5",
+      "polarity": "negative",
+      "scenario": "Host changes retain prior native admission",
+      "scenario_fingerprint": "108a42f9d224fbaa8ab5658a180a6b64d135d91a1d14b4790793775f7a30df9b",
+      "setup": "Isolated current source proof copy and controlled changed or missing input.",
+      "observable": "A missing current group B host source is rejected.",
+      "red_expectation": "The altered or missing proof input is accepted.",
+      "green_expectation": "A missing current group B host source is rejected.",
+      "invalidation_dependencies": [
+        ".github/workflows/update-feed.yml",
+        "locales/catalog.json",
+        "openspec/changes/spacefox-watchface/evidence/performance021/a/**",
+        "openspec/changes/spacefox-watchface/evidence/performance021/b/**",
+        "release/native-admission-inputs.json",
+        "tests/test_native_localization.py",
+        "tests/test_performance021_b.py",
+        "tests/test_performance021_b_cloud.py",
+        "tests/test_performance021_proof.py",
+        "tools/build_native_localization.py",
+        "tools/native_language_policy.py",
+        "tools/native_performance021_qualification.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_proof.HostProofTest.test_missing_group_b_host_source_refuses",
+      "command_id": "performance021-proof",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_proof.py",
+      "source_sha256": "e4bffdff898f78bdd99b583b28b449e1d073d77fe3a368b267395449d5d32f9a",
+      "implementation_note": "Current source and group B evidence remain tied to the single historical performance021 delta."
+    },
+    {
+      "id": "VC21.P5.S01.B_ARTIFACT_CHANGED",
+      "property_id": "VC21.P5",
+      "polarity": "negative",
+      "scenario": "Host changes retain prior native admission",
+      "scenario_fingerprint": "108a42f9d224fbaa8ab5658a180a6b64d135d91a1d14b4790793775f7a30df9b",
+      "setup": "Isolated current source proof copy and controlled changed or missing input.",
+      "observable": "A changed actual readback input is rejected.",
+      "red_expectation": "The altered or missing proof input is accepted.",
+      "green_expectation": "A changed actual readback input is rejected.",
+      "invalidation_dependencies": [
+        ".github/workflows/update-feed.yml",
+        "locales/catalog.json",
+        "openspec/changes/spacefox-watchface/evidence/performance021/a/**",
+        "openspec/changes/spacefox-watchface/evidence/performance021/b/**",
+        "release/native-admission-inputs.json",
+        "tests/test_native_localization.py",
+        "tests/test_performance021_b.py",
+        "tests/test_performance021_b_cloud.py",
+        "tests/test_performance021_proof.py",
+        "tools/build_native_localization.py",
+        "tools/native_language_policy.py",
+        "tools/native_performance021_qualification.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_proof.HostProofTest.test_changed_real_readback_input_refuses",
+      "command_id": "performance021-proof",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_proof.py",
+      "source_sha256": "e4bffdff898f78bdd99b583b28b449e1d073d77fe3a368b267395449d5d32f9a",
+      "implementation_note": "Current source and group B evidence remain tied to the single historical performance021 delta."
+    },
+    {
+      "id": "VC21.P5.S01.B_ARTIFACT_MISSING",
+      "property_id": "VC21.P5",
+      "polarity": "negative",
+      "scenario": "Host changes retain prior native admission",
+      "scenario_fingerprint": "108a42f9d224fbaa8ab5658a180a6b64d135d91a1d14b4790793775f7a30df9b",
+      "setup": "Isolated current source proof copy and controlled changed or missing input.",
+      "observable": "A missing actual readback input is rejected.",
+      "red_expectation": "The altered or missing proof input is accepted.",
+      "green_expectation": "A missing actual readback input is rejected.",
+      "invalidation_dependencies": [
+        ".github/workflows/update-feed.yml",
+        "locales/catalog.json",
+        "openspec/changes/spacefox-watchface/evidence/performance021/a/**",
+        "openspec/changes/spacefox-watchface/evidence/performance021/b/**",
+        "release/native-admission-inputs.json",
+        "tests/test_native_localization.py",
+        "tests/test_performance021_b.py",
+        "tests/test_performance021_b_cloud.py",
+        "tests/test_performance021_proof.py",
+        "tools/build_native_localization.py",
+        "tools/native_language_policy.py",
+        "tools/native_performance021_qualification.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_proof.HostProofTest.test_missing_real_readback_input_refuses",
+      "command_id": "performance021-proof",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_proof.py",
+      "source_sha256": "e4bffdff898f78bdd99b583b28b449e1d073d77fe3a368b267395449d5d32f9a",
+      "implementation_note": "Current source and group B evidence remain tied to the single historical performance021 delta."
     }
   ],
   "commands": [
@@ -44565,6 +45229,130 @@
       "authority": "local",
       "planned_boundary": "Actual repository-owned build and local Git cloud content-only flow",
       "notes": "No provider, deployment or SDK."
+    },
+    {
+      "id": "performance021-b",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_performance021_b"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 600,
+      "authority": "local",
+      "planned_boundary": "Real local Git, loopback HTTP, subprocess and cloud stage boundaries",
+      "notes": "Seventeen retained green tests preceded the separately executed 512-object test; see B-CORE.txt and GIT-DUPLEX.txt."
+    },
+    {
+      "id": "performance021-b-git",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_performance021_b.GroupBTest.test_git_large_duplex_batch_uses_file_input"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 600,
+      "authority": "local",
+      "planned_boundary": "Real local Git, loopback HTTP, owned subprocess and source admission boundary",
+      "notes": "No external provider or deployment; see group B receipts."
+    },
+    {
+      "id": "performance021-b-cloud",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_performance021_b_cloud.RealCloudSchedulingTest.test_active_full_admission_then_sparse_cli_no_work"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 600,
+      "authority": "local",
+      "planned_boundary": "Real local Git, loopback HTTP, owned subprocess and source admission boundary",
+      "notes": "No external provider or deployment; see group B receipts."
+    },
+    {
+      "id": "performance021-b-git-guards",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_two_process_reservation_cas",
+        "tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_regressing_git_authority_refuses_reopen_without_rewriting",
+        "tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_terminal_archive_exact_and_old_revision_refusal",
+        "tests.test_performance021_b.GroupBTest.test_git_batch_exact_identity",
+        "tests.test_performance021_b.GroupBTest.test_git_fetch_hang_reaps_transport"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 600,
+      "authority": "local",
+      "planned_boundary": "Real local Git, loopback HTTP, owned subprocess and source admission boundary",
+      "notes": "No external provider or deployment; see group B receipts."
+    },
+    {
+      "id": "performance021-b-http",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_phone_text_transport.PhoneTextTransportTest.test_actual_http_plain_mime_raw_body_and_wrong_mime_refusal",
+        "tests.test_performance021_b.GroupBTest.test_operator_http_deadline_and_bounds"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 600,
+      "authority": "local",
+      "planned_boundary": "Real local Git, loopback HTTP, owned subprocess and source admission boundary",
+      "notes": "No external provider or deployment; see group B receipts."
+    },
+    {
+      "id": "performance021-b-generator",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_native_localization.NativeLocalizationResourcesTest.test_generation_is_complete_and_repeatable"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 600,
+      "authority": "local",
+      "planned_boundary": "Actual current proof and watch-tree generation or isolated manifest normalization",
+      "notes": "No SDK, simulator, signing, device or provider."
+    },
+    {
+      "id": "performance021-b-manifest",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_performance021_b.GroupBTest.test_manifest_normalization_keeps_correct_bytes_and_repairs_extra_attributes"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 600,
+      "authority": "local",
+      "planned_boundary": "Actual current proof and watch-tree generation or isolated manifest normalization",
+      "notes": "No SDK, simulator, signing, device or provider."
     }
   ]
 }

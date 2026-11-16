@@ -318,10 +318,12 @@ sys.exit(m.main())'''
         with self.authority(runtime=False) as (source,remote,store,pub),Service().serving() as service:
             result=subprocess.run(['bash','-ec',shell_step('Materialize exact reviewed runtime and catalog closure')],cwd=source,capture_output=True)
             self.assertEqual(result.returncode,0,result.stderr)
-            first,revision=self.active(pub,service);before=pub.head;calls=len(service.calls)
+            first,revision=self.active(pub,service);before=pub.head;before_ledger=pub.ledger;calls=len(service.calls)
             out=self.cli(source,remote,service,'prepare','--output',self.base/'not-due-full',now=NOW+1,runtime=False)
             self.assertEqual((out['pending'],out['requests']),('false',0))
-            self.assertEqual(self.pub(store).head,before);self.assertFalse((self.base/'not-due-full').exists())
+            observed=self.pub(store)
+            self.assertNotEqual(observed.head,before);self.assertEqual(observed.ledger,before_ledger)
+            self.assertFalse((self.base/'not-due-full').exists())
             self.assertFalse(any('/2.3.0/' in c[1] or c[0]=='POST' for c in service.calls[calls:]))
             # No scheduled events for two normal periods. Source age is still
             # captured NOW, then one current source validation repairs freshness.
@@ -641,7 +643,7 @@ sys.exit(m.main())'''
         self.assertIn('group: spacefox-whole-publisher-v1\n  cancel-in-progress: false',WORKFLOW)
         minutes=[int(x) for x in re.findall(r"cron: '(\d+) \* \* \* \*'",WORKFLOW)]
         self.assertEqual({hour*60+minute for hour in range(24) for minute in minutes},{hour*60+minute for hour in range(24) for minute in (7,22,37,52)})
-        self.assertIn("if: always() && needs.prepare.result == 'success' && (needs.prepare.outputs.pending == 'false' || needs.promote.result == 'success')",WORKFLOW)
+        self.assertIn("if: always() && needs.prepare.result == 'success' && needs.prepare.outputs.no_work != 'true' && (needs.prepare.outputs.pending == 'false' || needs.promote.result == 'success')",WORKFLOW)
         self.assertIn('retention-days: 1',WORKFLOW);self.assertIn('exit 97',WORKFLOW)
         for state in ('due','backoff','uncertain','headroom','fast'):
             policy=RefreshPolicy(fast_interval_seconds=300) if state=='fast' else None

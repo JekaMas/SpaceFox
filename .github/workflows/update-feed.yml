@@ -42,9 +42,10 @@ jobs:
       pages: read
       actions: read
     outputs:
-      pending: ${{ steps.prepare.outputs.pending }}
-      head: ${{ steps.prepare.outputs.head }}
+      pending: ${{ steps.probe.outputs.no_work == 'true' && 'false' || steps.prepare.outputs.pending }}
+      head: ${{ steps.probe.outputs.no_work == 'true' && steps.probe.outputs.head || steps.prepare.outputs.head }}
       artifact_id: ${{ steps.upload.outputs.artifact_id }}
+      no_work: ${{ steps.probe.outputs.no_work }}
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
@@ -52,14 +53,27 @@ jobs:
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: /.github/spacefox-inputs.txt
+      - name: Check out runtime seed for scheduling observation
+        run: |
+          sed '\|^/catalog/source.json$|d' .github/spacefox-inputs.txt |
+            git sparse-checkout set --no-cone --stdin
+      - name: Observe whether all work is excluded
+        id: probe
+        if: github.event_name != 'workflow_dispatch' || !inputs.bootstrap
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 -B tools/cloud_feed.py --site "$SPACEFOX_SITE" probe
       - name: Materialize exact reviewed runtime and catalog closure
+        if: steps.probe.outputs.no_work != 'true'
         run: |
           git sparse-checkout set --no-cone --stdin < .github/spacefox-inputs.txt
           python3 -B tools/cloud_inputs.py
       - name: Install pinned native renderer
+        if: steps.probe.outputs.no_work != 'true'
         run: bash .github/scripts/install-native-linux-renderer.sh
       - name: Recover first, then check source cadence and prepare exact candidate
         id: prepare
+        if: steps.probe.outputs.no_work != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           FIRST_BOOTSTRAP: ${{ github.event_name == 'workflow_dispatch' && inputs.bootstrap && 'true' || 'false' }}
@@ -171,7 +185,7 @@ jobs:
 
   metadata:
     needs: [prepare, arm, deploy, promote]
-    if: always() && needs.prepare.result == 'success' && (needs.prepare.outputs.pending == 'false' || needs.promote.result == 'success')
+    if: always() && needs.prepare.result == 'success' && needs.prepare.outputs.no_work != 'true' && (needs.prepare.outputs.pending == 'false' || needs.promote.result == 'success')
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     permissions:

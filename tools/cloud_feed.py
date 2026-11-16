@@ -4,6 +4,8 @@ import argparse
 import json
 import os
 from pathlib import Path
+from datetime import datetime, timezone
+from types import SimpleNamespace
 import subprocess
 import sys
 
@@ -12,13 +14,15 @@ if __package__ in (None, ''):
 
 from tools.spacefox.catalog import build_catalog, canonical_bytes
 from tools.spacefox.cloud import (CloudError, Pages, Site, arm, delivery, delivery_files,
-                                  deploy, git_credentials, journal, oidc_token, recover)
+                                  deploy, git_credentials, journal, oidc_token, recover, write_scheduling_witness,
+                                  SCHEDULING_WITNESS, JOURNAL)
 from tools.spacefox.visual_bridge import sha
 from tools.spacefox.native_motion import build_artifact, validate_feed, PROFILE, FEED_PATH, _RepositoryCatalogOperation
 from tools.spacefox.provider import LL2Client
-from tools.spacefox.publisher import GitState, Publisher, StateError
+from tools.spacefox.publisher import (GitState, Publisher, StateError, STATE_REF, ANCHOR_REF,
+                                     _schedule, _live, _sha, _digest, _path)
 from tools.spacefox.schedule import RefreshPolicy
-from tools.update_feed import executing_revision, update, utc_now
+from tools.update_feed import executing_revision, update, utc_now, _head_tree, _tracked_bytes
 
 
 def source_revision(root):
@@ -45,7 +49,7 @@ def outputs(result):
     filename = os.environ.get('GITHUB_OUTPUT')
     if filename:
         with open(filename, 'a', encoding='utf-8') as stream:
-            for key in ('head', 'pending', 'build_version'):
+            for key in ('head', 'pending', 'build_version', 'no_work'):
                 if key in result:
                     stream.write(f'{key}={result[key]}\n')
 
@@ -62,6 +66,21 @@ def prepare_content(pub, client, now, catalog, *, root, clock=None):
 def _prepare_content_from_source(pub, client, now, *, root, clock=None):
     owner = _RepositoryCatalogOperation(root)
     return _prepare_content(pub, client, now, None, root=root, clock=clock, owner=owner)
+
+
+def _projection_changed(schedule, now, policy, previous):
+    """Pure current-facts projection shared by full prepare and scheduling probe."""
+    from tools.spacefox.schedule import advance_schedule, select_next
+    from tools.spacefox.wire import upcoming_entries, terminal_updates, identity_text
+    current = advance_schedule(schedule, now, policy)
+    selected = select_next(current).entry
+    current_id = None if selected is None else identity_text(selected.record.launch_id)
+    prior_id = None if previous['launch'] is None else previous['launch']['launch_id']
+    next_ids = [identity_text(entry.record.launch_id) for entry in upcoming_entries(current, now, policy)]
+    prior_next = [row['launch_id'] for row in previous.get('upcoming', []) if 'terminal' not in row]
+    prior_terminal = [row for row in previous.get('upcoming', []) if 'terminal' in row]
+    return (prior_id != current_id or prior_next != next_ids or
+            prior_terminal != terminal_updates(current, now))
 
 
 def _prepare_content(pub, client, now, catalog, *, root, clock, owner):
@@ -87,19 +106,7 @@ def _prepare_content(pub, client, now, catalog, *, root, clock, owner):
         if FEED_PATH not in active['files']:
             raise CloudError('current-format active feed missing')
         previous=validate_feed(pub.store._blob(pub.head,path,8192))
-        from tools.spacefox.schedule import advance_schedule, select_next
-        from tools.spacefox.wire import upcoming_entries, terminal_updates, identity_text
-        current = advance_schedule(pub.schedule, now, pub.policy)
-        selected = select_next(current).entry
-        current_id = None if selected is None else identity_text(selected.record.launch_id)
-        prior_id = None if previous['launch'] is None else previous['launch']['launch_id']
-        next_ids = [identity_text(entry.record.launch_id) for entry in upcoming_entries(current, now, pub.policy)]
-        prior_next = [row['launch_id'] for row in previous.get('upcoming', []) if 'terminal' not in row]
-        prior_terminal = [row for row in previous.get('upcoming', []) if 'terminal' in row]
-        # Reproject accepted facts at a local deadline; do not spend a provider
-        # request or renew the source validation epoch merely to refill the queue.
-        selection_changed = (prior_id != current_id or prior_next != next_ids or
-                             prior_terminal != terminal_updates(current, now))
+        selection_changed = _projection_changed(pub.schedule, now, pub.policy, previous)
         if previous is None or 'upcoming' not in previous or selection_changed or previous['catalogSourceDigest'] != (owner.source_digest() if owner is not None else sha(canonical_bytes(catalog))) or 'feed.json.txt' not in active['files']:
             publisher=pub.publisher_envelope(now)
             traversal=previous['providerTraversal'] if previous is not None else None
@@ -110,6 +117,119 @@ def _prepare_content(pub, client, now, catalog, *, root, clock, owner):
     if result['result'] == 'pending':
         result['catalogReview'] = catalog_review
     return result
+
+
+def _cloud_source_fence(root, code):
+    """Verify present sparse inputs; absent catalog assets are not consumed here."""
+    root = Path(root).resolve()
+    try:
+        scopes = ['assets', 'licenses', 'tools/vendor', 'catalog', 'schemas', 'tools/spacefox', '.github']
+        status = subprocess.run(['git', '-C', str(root), 'status', '--porcelain', '--untracked-files=all', '--', *scopes],
+                                check=True, stdout=subprocess.PIPE).stdout
+        if status:
+            return False
+        tree = _head_tree(root)
+        seed = _tracked_bytes(root, tree, '.github/spacefox-inputs.txt').decode().splitlines()
+        for item in seed:
+            name = item.removeprefix('/')
+            if name == 'catalog/source.json':
+                continue
+            if name in tree:
+                _tracked_bytes(root, tree, name)
+        for name in tree:
+            if any(name.startswith(prefix + '/') for prefix in scopes) and (root / name).exists():
+                _tracked_bytes(root, tree, name)
+        return subprocess.run(['git', '-C', str(root), 'rev-parse', 'HEAD'], check=True,
+                              stdout=subprocess.PIPE).stdout.decode().strip() == code
+    except (OSError, ValueError, KeyError, TypeError, UnicodeError, subprocess.SubprocessError):
+        return False
+
+
+def _scheduling_no_work(store, site, code, repository, now, *, root, origin=None, local=False):
+    """Scheduling observation only: never admits artifact bytes or grants writes."""
+    from tools.spacefox.provider import bounded_json
+    from tools.spacefox.catalog_refresh import CatalogRefresh
+    from tools.refresh_catalog import metadata_not_due
+    try:
+        if datetime.fromtimestamp(now, timezone.utc).date() != datetime.now(timezone.utc).date():
+            return None
+        head, doc = store._load_authority(validate_artifacts=False)
+        anchor = store._git('rev-parse', 'refs/spacefox/anchor').stdout.decode().strip()
+        active = doc['active']
+        if active is None or doc['pending'] is not None or doc['code_revision'] != code or active['code_revision'] != code:
+            return None
+        witness = bounded_json(store._blob(head, SCHEDULING_WITNESS, 4096))
+        expected_keys = {'schemaVersion', 'date', 'source', 'instance', 'generation', 'artifactRevision', 'catalogSourceDigest'}
+        if (type(witness) is not dict or set(witness) != expected_keys or type(witness['schemaVersion']) is not int
+                or witness['schemaVersion'] != 1 or witness['date'] != datetime.now(timezone.utc).date().isoformat()
+                or witness['source'] != code or witness['instance'] != doc['instance_id']
+                or type(witness['generation']) is not int or witness['generation'] != active['generation']
+                or witness['artifactRevision'] != active['artifact_revision']):
+            return None
+        _digest(witness['catalogSourceDigest'])
+        feed = store._blob(head, f'artifacts/{active["generation"]}/feed.json', 8192)
+        if active['files'].get('feed.json') != {'bytes':len(feed),'sha256':_sha(feed)}:
+            return None
+        previous = validate_feed(feed)
+        if (previous['catalogSourceDigest'] != witness['catalogSourceDigest'] or 'upcoming' not in previous
+                or 'feed.json.txt' not in active['files'] or
+                _projection_changed(_schedule(doc['accepted']), now, RefreshPolicy(**doc['refresh_policy']), previous)):
+            return None
+        status, live = site.get('feed.json', 8192)
+        if (status, live) != (200, feed):
+            return None
+        journal_value = bounded_json(store._blob(head, JOURNAL, 1048576))
+        if (type(journal_value) is not dict or set(journal_value) != {'schemaVersion','intent','status','files'}
+                or type(journal_value['schemaVersion']) is not int or journal_value['schemaVersion'] != 1
+                or journal_value['status'] != 'succeed'):
+            return None
+        intent = journal_value['intent']; manifest = journal_value['files']
+        if (type(intent) is not dict or set(intent) != {'buildVersion','state','generation','artifactRevision','source','sourceRef','repository','runId','runAttempt','artifactId'}
+                or intent['generation'] != active['generation'] or intent['artifactRevision'] != active['artifact_revision']
+                or intent['source'] != code or intent['sourceRef'] != store.source_ref or intent['repository'] != repository
+                or any(type(intent[key]) is not int or intent[key] <= 0 for key in ('generation','runId','runAttempt','artifactId'))
+                or type(manifest) is not dict or not 1 <= len(manifest) <= 512):
+            return None
+        for key in ('buildVersion','state','source'):
+            _digest(intent[key],git=True)
+        for path, meta in manifest.items():
+            _path(path)
+            if (type(meta) is not dict or set(meta) != {'sha256','bytes','state','generation','role'}
+                    or type(meta['bytes']) is not int or meta['bytes'] < 0
+                    or type(meta['generation']) is not int or meta['generation'] <= 0
+                    or meta['role'] not in ('current','previous')):
+                return None
+            _digest(meta['sha256']); _digest(meta['state'],git=True)
+        if sum(meta['bytes'] for meta in manifest.values()) > 1048576:
+            return None
+        origin_doc = store._ledger_at(intent['state'])
+        origin_snap = next((item for item in (origin_doc['active'], origin_doc['pending'])
+                            if item is not None and item['generation'] == active['generation']), None)
+        if origin_snap != active:
+            return None
+        for path, meta in active['files'].items():
+            saved = manifest.get(path)
+            if (saved is None or saved['role'] != 'current' or saved['state'] != intent['state']
+                    or saved['generation'] != active['generation'] or saved['bytes'] != meta['bytes']
+                    or saved['sha256'] != meta['sha256']):
+                return None
+        fake = SimpleNamespace(store=store, head=head, ledger=doc)
+        collector = CatalogRefresh(fake, **({} if origin is None else {'origin':origin, 'local_http':local}))
+        if not metadata_not_due(collector.journal, collector.current(), now, 86400):
+            return None
+        if not store.definitely_not_due(head, code, now, _live(active)):
+            return None
+        if site.get('feed.json',8192) != (200,feed):
+            return None
+        if not _cloud_source_fence(root, code):
+            return None
+        refs = store._refs(STATE_REF, ANCHOR_REF, store.source_ref)
+        if (refs != {STATE_REF:head, ANCHOR_REF:anchor, store.source_ref:code}
+                or datetime.now(timezone.utc).date().isoformat() != witness['date']):
+            return None
+        return head
+    except (ValueError, OSError, KeyError, TypeError, subprocess.SubprocessError):
+        return None
 
 
 def main(argv=None):
@@ -132,6 +252,7 @@ def main(argv=None):
     deploy_p = sub.add_parser('deploy')
     deploy_p.add_argument('--expected-base', required=True)
     sub.add_parser('recover')
+    sub.add_parser('probe', help='read-only scheduling observation before materialization')
     metadata = sub.add_parser('metadata', help='bounded daily off-watch candidate refresh after delivery')
     metadata.add_argument('--interval-seconds', type=int, default=86400)
     metadata.add_argument('--max-requests', type=int, default=4)
@@ -157,6 +278,13 @@ def main(argv=None):
             store.bootstrap(code, RefreshPolicy(fast_interval_seconds=args.fast_seconds))
         elif args.command == 'prepare' and args.fast_seconds is not None:
             raise CloudError('fast mode may only be selected at explicit bootstrap')
+        if args.command == 'probe':
+            head = None
+            if _cloud_source_fence(root, code):
+                head = _scheduling_no_work(store, site, code, args.repository, sample(),
+                                           root=root, origin=args.origin, local=args.local_qualification)
+            outputs({'no_work':str(head is not None).lower(), **({} if head is None else {'head':head, 'pending':'false'})})
+            return 0
         pub = Publisher(store, code)
         if args.command in ('arm', 'deploy') and args.expected_base != pub.head:
             raise CloudError('supply exact current state base')
@@ -202,8 +330,14 @@ def main(argv=None):
             result = {'result': 'recovered_pending', 'requests': 0}
             if pub.ledger['pending'] is None:
                 client = LL2Client(**({} if args.origin is None else {'origin': args.origin, 'local_http': True}))
-                result = _prepare_content_from_source(pub, client, sample(), root=root,
-                                         clock=None if args.now is not None else utc_now)
+                owner = _RepositoryCatalogOperation(root)
+                result = _prepare_content(pub, client, sample(), None, root=root,
+                                          clock=None if args.now is not None else utc_now, owner=owner)
+                if (owner.scheduling_date is not None and
+                        (pub.ledger['pending'] is not None or
+                         result['result'] == 'not_due' and pub.ledger['active'] is not None
+                         and pub.ledger['active']['code_revision'] == code)):
+                    pub = write_scheduling_witness(pub, owner.scheduling_date, owner.source_digest())
             pending = pub.ledger['pending'] is not None
             if pending:
                 files = delivery_files(pub, delivery(pub))

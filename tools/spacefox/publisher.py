@@ -8,6 +8,10 @@ does not defend against an administrator force-rewinding those authority refs.
 from dataclasses import dataclass
 import hashlib
 import json
+import os
+import signal
+import selectors
+import time
 from pathlib import PurePosixPath
 import re
 import subprocess
@@ -31,6 +35,7 @@ UNCERTAIN_DELAY_SECONDS = 60
 STATE_REF = 'refs/heads/feed-state-map-v3'
 ANCHOR_REF = 'refs/tags/spacefox-state-bootstrap-map-v3'
 _HEX = re.compile(r'[0-9a-f]+\Z')
+GIT_TOTAL_SECONDS = 60
 
 
 class StateError(ValueError):
@@ -434,6 +439,9 @@ class GitState:
         if not source_ref.startswith('refs/heads/') or any(c.isspace() for c in source_ref):
             raise StateError('explicit source branch ref required')
         self.remote, self.source_ref = remote, source_ref
+        self._blob_cache = {}
+        self._fetched_refs = None
+        self._blob_cache_bytes = 0
         self._tmp = tempfile.TemporaryDirectory(prefix='spacefox-state-')
         self.path = self._tmp.name
         self._git('init', '--bare', '-q', '.')
@@ -444,8 +452,27 @@ class GitState:
         self._tmp.cleanup()
 
     def _git(self, *args, data=None, check=True):
-        result = subprocess.run(['git', '-C', self.path, *args], input=data,
-                                stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        argv = ['git', '-C', self.path, *args]
+        # Files prevent a descendant retaining a pipe from defeating the total
+        # deadline. The separate process group is killed and reaped on timeout.
+        with tempfile.TemporaryFile() as stdin, tempfile.TemporaryFile() as stdout, tempfile.TemporaryFile() as stderr:
+            if data is not None:
+                stdin.write(data)
+            stdin.seek(0)
+            proc = subprocess.Popen(argv, stdin=stdin, stdout=stdout, stderr=stderr, start_new_session=True)
+            try:
+                proc.wait(timeout=GIT_TOTAL_SECONDS)
+            except subprocess.TimeoutExpired as error:
+                raise StateError(f'Git {args[0]} deadline exceeded') from error
+            finally:
+                if proc.poll() is None:
+                    try:
+                        os.killpg(proc.pid, signal.SIGKILL)
+                    except ProcessLookupError:
+                        pass
+                    proc.wait()
+            stdout.seek(0); stderr.seek(0)
+            result = subprocess.CompletedProcess(argv, proc.returncode, stdout.read(), stderr.read())
         if check and result.returncode:
             # Do not echo remote URLs/credentials or arbitrary server responses.
             raise StateError(f'Git {args[0]} failed (exit{result.returncode})')
@@ -460,11 +487,65 @@ class GitState:
         _digest(current, git=True)
         return current
 
+    def _blobs(self, revision, requests):
+        """Read immutable paths in one bounded cat-file process per cache miss."""
+        from .catalog import _run_bounded_child
+        _digest(revision, git=True)
+        for path, limit in requests.items():
+            _path(path)
+            if type(limit) is not int or limit < 0:
+                raise StateError('invalid Git object limit')
+        present = {(revision, path): self._blob_cache[(revision, path)] for path in requests
+                   if (revision, path) in self._blob_cache}
+        additions = {}
+        missing = [(path, limit) for path, limit in requests.items()
+                   if (revision, path) not in self._blob_cache]
+        if missing:
+            budget = sum(limit for _, limit in missing)
+            if budget > MAX_CATALOG_CORPUS_BYTES:
+                raise StateError('Git batch exceeds closure budget')
+            argv = ['git', '-C', self.path, 'cat-file', '--batch']
+            names = b''.join(f'{revision}:{path}\n'.encode() for path, _ in missing)
+            try:
+                result = _run_bounded_child(argv, names, maximum=budget + len(missing) * 256,
+                                            timeout=GIT_TOTAL_SECONDS)
+            except (OSError, subprocess.SubprocessError, ValueError) as error:
+                raise StateError('bounded Git blob batch failed') from error
+            if result.returncode:
+                raise StateError('Git blob batch failed')
+            raw = result.stdout
+            offset = 0
+            for path, limit in missing:
+                end = raw.find(b'\n', offset)
+                if end < 0:
+                    raise StateError('truncated Git blob header')
+                fields = raw[offset:end].split()
+                if len(fields) != 3 or fields[1] != b'blob' or not fields[2].isdigit():
+                    raise StateError('missing or invalid Git blob')
+                size = int(fields[2]); offset = end + 1
+                if size > limit or offset + size >= len(raw) or raw[offset + size:offset + size + 1] != b'\n':
+                    raise StateError('Git object exceeds byte budget or is truncated')
+                additions[(revision, path)] = raw[offset:offset + size]
+                offset += size + 1
+            if offset != len(raw):
+                raise StateError('unexpected Git batch output')
+            added_bytes = sum(map(len, additions.values()))
+            if self._blob_cache_bytes + added_bytes > 4 * MAX_ARTIFACT_BYTES:
+                self._blob_cache.clear(); self._blob_cache_bytes = 0
+            if added_bytes <= 4 * MAX_ARTIFACT_BYTES:
+                self._blob_cache.update(additions)
+                self._blob_cache_bytes += added_bytes
+        result = {}
+        values = {**present, **additions}
+        for path, limit in requests.items():
+            data = values[(revision, path)]
+            if len(data) > limit:
+                raise StateError('Git object exceeds byte budget before parse')
+            result[path] = data
+        return result
+
     def _blob(self, revision, path, limit):
-        size = self._git('cat-file', '-s', f'{revision}:{path}').stdout
-        if int(size) > limit:
-            raise StateError('Git object exceeds byte budget before parse')
-        return self._git('show', f'{revision}:{path}').stdout
+        return self._blobs(revision, {path: limit})[path]
 
     def _ledger_at(self, revision):
         return decode_ledger(self._blob(revision, 'ledger.json', MAX_LEDGER_BYTES),
@@ -478,10 +559,21 @@ class GitState:
         refs = self._refs(STATE_REF, ANCHOR_REF)
         if set(refs) != {STATE_REF, ANCHOR_REF}:
             raise StateError('authoritative state/anchor unavailable; do not bootstrap or recover from CDN')
-        self._git('fetch', '--no-tags', '-q', self.remote,
-                  f'+{STATE_REF}:refs/spacefox/state', f'+{ANCHOR_REF}:refs/spacefox/anchor')
-        head = self._git('rev-parse', 'refs/spacefox/state').stdout.decode().strip()
-        anchor = self._git('rev-parse', 'refs/spacefox/anchor').stdout.decode().strip()
+        local = {}
+        if refs == self._fetched_refs:
+            for remote_ref, local_ref in ((STATE_REF, 'refs/spacefox/state'), (ANCHOR_REF, 'refs/spacefox/anchor')):
+                result = self._git('rev-parse', '--verify', local_ref, check=False)
+                if result.returncode == 0:
+                    local[remote_ref] = result.stdout.decode().strip()
+        if local != refs:
+            self._git('fetch', '--no-tags', '-q', self.remote,
+                      f'+{STATE_REF}:refs/spacefox/state', f'+{ANCHOR_REF}:refs/spacefox/anchor')
+            local = {STATE_REF: self._git('rev-parse', 'refs/spacefox/state').stdout.decode().strip(),
+                     ANCHOR_REF: self._git('rev-parse', 'refs/spacefox/anchor').stdout.decode().strip()}
+        head, anchor = local[STATE_REF], local[ANCHOR_REF]
+        # Only immutable local objects can be reused. Remote refs were just
+        # observed again above; a racing fetch cannot seed a false cache hit.
+        self._fetched_refs = refs if refs == local else None
         if self._git('merge-base', '--is-ancestor', anchor, head, check=False).returncode:
             raise StateError('state is not descended from bootstrap authority')
         doc = self._ledger_at(head)
@@ -557,6 +649,10 @@ class GitState:
 
     def _files(self, head, doc):
         result = {}
+        requests = {f'artifacts/{snapshot["generation"]}/{path}': meta['bytes']
+                    for snapshot in (doc['active'], doc['pending']) if snapshot is not None
+                    for path, meta in snapshot['files'].items()}
+        saved = self._blobs(head, requests)
         for snapshot in (doc['active'], doc['pending']):
             if snapshot is None:
                 continue
@@ -564,7 +660,7 @@ class GitState:
             product = {}
             for path, meta in snapshot['files'].items():
                 key = f'artifacts/{generation}/{path}'
-                data = self._blob(head, key, MAX_ARTIFACT_BYTES)
+                data = saved[key]
                 if len(data) != meta['bytes'] or _sha(data) != meta['sha256']:
                     raise StateError('durable artifact file digest mismatch')
                 result[key] = data
@@ -679,11 +775,61 @@ class GitState:
             raise Conflict('state CAS failed; reload authoritative ref')
         return commit, candidate
 
+    def _history_sizes(self, head):
+        """Stream reachable object sizes without retaining the OID or size lists."""
+        _digest(head, git=True)
+        producer = consumer = None
+        try:
+            producer = subprocess.Popen(['git', '-C', self.path, 'rev-list', '--objects', '--no-object-names', head],
+                                        stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, start_new_session=True)
+            consumer = subprocess.Popen(['git', '-C', self.path, 'cat-file', '--batch-check=%(objectsize)'],
+                                        stdin=producer.stdout, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
+                                        start_new_session=True)
+            producer.stdout.close()
+            count = total = 0; pending = b''; deadline = time.monotonic() + GIT_TOTAL_SECONDS
+            with selectors.DefaultSelector() as selector:
+                selector.register(consumer.stdout, selectors.EVENT_READ)
+                while selector.get_map():
+                    remaining = deadline - time.monotonic()
+                    if remaining <= 0 or not selector.select(remaining):
+                        raise StateError('Git history measurement deadline exceeded')
+                    part = os.read(consumer.stdout.fileno(), 65536)
+                    if not part:
+                        selector.unregister(consumer.stdout); break
+                    lines = (pending + part).split(b'\n'); pending = lines.pop()
+                    if len(pending) > 32:
+                        raise StateError('invalid Git object size stream')
+                    for line in lines:
+                        if not line.isdigit() or len(line) > 32:
+                            raise StateError('invalid Git object size stream')
+                        count += 1; total += int(line)
+            if pending:
+                raise StateError('truncated Git object size stream')
+            for proc in (producer, consumer):
+                remaining = deadline - time.monotonic()
+                if remaining <= 0:
+                    raise StateError('Git history measurement deadline exceeded')
+                try:
+                    proc.wait(timeout=remaining)
+                except subprocess.TimeoutExpired as error:
+                    raise StateError('Git history measurement deadline exceeded') from error
+                if proc.returncode:
+                    raise StateError('Git history measurement failed')
+            return count, total
+        finally:
+            for proc in (producer, consumer):
+                if proc is not None and proc.poll() is None:
+                    try: os.killpg(proc.pid, signal.SIGKILL)
+                    except ProcessLookupError: pass
+                    proc.wait()
+            if consumer is not None and consumer.stdout is not None:
+                consumer.stdout.close()
+            if producer is not None and producer.stdout is not None:
+                producer.stdout.close()
+
     def measure(self):
         head, _ = self.load()
-        objects = self._git('rev-list', '--objects', head).stdout
-        sizes = self._git('cat-file', '--batch-check=%(objectsize)',
-                          data=b'\n'.join(line.split(b' ')[0] for line in objects.splitlines()) + b'\n').stdout
+        object_count, object_bytes = self._history_sizes(head)
         archive = self._git('ls-tree', '-r', '-l', head, 'retired').stdout.splitlines()
         schedules = self._git('ls-tree', '-r', '-l', head, 'schedules').stdout.splitlines()
         catalog = self._git('ls-tree', '-r', '-l', head, 'catalog-refresh').stdout.splitlines()
@@ -692,8 +838,8 @@ class GitState:
                 'catalog_objects': len(catalog), 'catalog_blob_bytes': sum(int(line.split()[3]) for line in catalog),
                 'ledger_bytes': len(self._blob(head, 'ledger.json', MAX_LEDGER_BYTES)),
                 'commits': int(self._git('rev-list', '--count', head).stdout),
-                'history_object_bytes': sum(int(size) for size in sizes.splitlines()),
-                'reachable_objects': len(sizes.splitlines())}
+                'history_object_bytes': object_bytes,
+                'reachable_objects': object_count}
 
 
 @dataclass(frozen=True)

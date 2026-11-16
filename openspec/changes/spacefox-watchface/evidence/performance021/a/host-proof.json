@@ -61,31 +61,86 @@
     "tools/update_feed.py": {
       "path": "openspec/changes/spacefox-watchface/evidence/performance021/a/prior/tools/update_feed.py",
       "sha256": "cee4b3c33506f5898d2e0ecd35c721b2db04cefad462124ad235222248721344"
+    },
+    "tools/verify_native_text_http.py": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/a/prior/tools/verify_native_text_http.py",
+      "sha256": "5e8fd20c907fdde9d8c4f029a58de49990226942787ff323788bf202a30ac8ac"
+    },
+    "tools/release.py": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/a/prior/tools/release.py",
+      "sha256": "e03fe8819a8af8ea846b1ad723c5245ff38a3afee71ca7ede493e11aab75aae6"
+    },
+    "tools/spacefox/cloud.py": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/a/prior/tools/spacefox/cloud.py",
+      "sha256": "066334a404a9c347197b7975edfcba07193c9bdb893a34b52839479052fe9c25"
+    },
+    ".github/workflows/update-feed.yml": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/a/prior/.github/workflows/update-feed.yml",
+      "sha256": "d2eac0a935e1a43ed4856ba4a4062cc36521db7bc42d12281cd8e3adcdd40baa"
+    },
+    "tests/test_autonomous_publisher_whole.py": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/a/prior/tests/test_autonomous_publisher_whole.py",
+      "sha256": "cdcca8d042d2590bf130e5ee5587117ea00973414dc4d1a9f5d899c8a87fd445"
+    },
+    "tools/display_corpus.py": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/a/prior/tools/display_corpus.py",
+      "sha256": "cb88fb7195afc0c7b78c870d24d8b54282fc97934a08f17368ce7fc125ed4367"
+    },
+    "tools/spacefox/current_catalog.py": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/a/prior/tools/spacefox/current_catalog.py",
+      "sha256": "6edee758f585a0f3f372e65fa769e8135ec85b58d2344a8f28e393424cd11e40"
+    },
+    "tools/refresh_catalog.py": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/a/prior/tools/refresh_catalog.py",
+      "sha256": "c4d23fd804c7e51f8d55962134e34eee7d622e4451ea7345a0d8869ea65b435a"
+    },
+    "tests/test_native_localization.py": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/a/prior/tests/test_native_localization.py",
+      "sha256": "c3b28a6f94b052a81220102b5aef1a0e097736377437e8e65a9b77b42185fb76"
+    },
+    "tools/build_native_localization.py": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/a/prior/tools/build_native_localization.py",
+      "sha256": "dcfc9e95b62c7041349c005e507874b67244aacee270907caf9ea219fece182a"
     }
   },
   "current": {
-    "release/native-admission-inputs.json": "64e68cac7c179fc97bba1aa726a073a93ebaa150fbe624ead60a3d82358b143a",
+    ".github/workflows/update-feed.yml": "240409fe5b6ca9583e1301f5cd1f1808471db4d5ebbe367af7d6d254983f1588",
+    "release/native-admission-inputs.json": "17ce402fee4f170a7499a5c7c747779a61c7aa4f602d901e351d510406ba2d56",
+    "tests/test_autonomous_publisher_whole.py": "2b1ad4a7fe7ed88b2c4c2cee7010f1aaf39b962c24d7b7529db4e28c7f0efa13",
     "tests/test_current_geography_whole.py": "a151dd624d07219e508645e822be5c441e68875cf000f4bc597715ee1129114c",
+    "tests/test_current_metadata_publisher.py": "6380a2dc1bbd59815fbbf122cc1c6c4542c8a011767fce686ee3b0919eb2cb52",
     "tests/test_current_motion_publisher.py": "09278a07b1839b1b298533ddd8d723f3bc89689b373af7600274cba5ed857532",
+    "tests/test_durable_delivery_whole.py": "31d97e16be7e88f4cc0659a59760c9471211f624a90bb5f2b9325f0c40d8944f",
     "tests/test_durable_publisher_whole.py": "a667449a1701dd17066f8c8b9d2e70739c252183f4cee028b02f02b39d6b5486",
+    "tests/test_native_localization.py": "45491d51b0036609289dea06b1eb71fb70ec4be4777d17ad637bc2a72e6d9376",
     "tests/test_performance021_a.py": "f3bac73e1e03454f1472a39ae488bbfa60a1bc0f47bd0ad8bdd0b62225a39a1d",
+    "tests/test_performance021_b.py": "6b03d2a051453f8b2beb6cf49e3ba24395be1cdfe3dffda44c4458ea12930f70",
+    "tests/test_performance021_b_cloud.py": "55c2ee10b6442b0c67faa25799e045470fc352c0634ebdcf94117f0b79917f6e",
     "tests/test_performance021_factory.py": "b738dbe3b483f114eb2d308cd9ea1645477183264db39c5729cc7d7861247ff3",
     "tests/test_performance021_ownership.py": "2f9a167f07c803c0478397902d517ac7f546ac014e84bee3800979f786f30ef7",
-    "tests/test_performance021_proof.py": "b232f566fd105f481ce1f246193daa6f84d9f1cd145e661ff6499040cb8e95c0",
+    "tests/test_performance021_proof.py": "e4bffdff898f78bdd99b583b28b449e1d073d77fe3a368b267395449d5d32f9a",
+    "tests/test_phone_text_transport.py": "bbf929628f9271847d1f6260116955ac65793ad798a633a3b9e73542e44d334b",
     "tests/test_schedule_producer_transport.py": "432cba012f6265fb65041fa6aaedb1f342a447dc861019e3ebb47089b9ddabd1",
-    "tools/cloud_feed.py": "22b45a81fc02bc852fd3c41a08d0e84a0c674a6619c285652ed52217f3f519d8",
+    "tools/build_native_localization.py": "d21715bf7cd7a1ff7fa96ecb73aa38f9e94724ce651a7c698ce1776a6b959800",
+    "tools/cloud_feed.py": "68d16b4a37c3e394338376e004354b903c2856e0aa3ebe27c4d0c20cbedd0e2f",
+    "tools/display_corpus.py": "5584299da25cd75d25321792196d69f408dbcbcc8757de9bbcad578a250448a1",
     "tools/native_language_policy.py": "436357ef1273774767acdf1989f14d6ac3c393ebfd4d9f2ca930e9c870e54db6",
-    "tools/native_performance021_qualification.py": "1d6fb9f764a75f2be8381789ca9622b1350877fd6bb6032d3a71fa6fa4706cc9",
+    "tools/native_performance021_qualification.py": "954c045d06af22226dd670207d4dd109fe6141dc4388222ed825cc7ba3abb177",
+    "tools/refresh_catalog.py": "02c271d69bd2140f33c67fc8e1d08cbee2cc098353cbb0cdd04e2a5fbfad1682",
+    "tools/release.py": "135da6d66ff8598e14c462722b3288c5e00dd05cce386817d9e327e9feec9029",
     "tools/spacefox/bridge_map.py": "d2daebea7960e4474527214645d0c90c1fcbd473cfeb67bfaf56302cbc4c0604",
-    "tools/spacefox/catalog.py": "e1d49201e829644a987e8de213fee98c3975b591cec2d9b6556615038c63426a",
+    "tools/spacefox/catalog.py": "b33bf56669302cc44cd5195c1665ac95b7cc95801efa4e1ad234bff24f92a29b",
+    "tools/spacefox/cloud.py": "6a7b0f55764cb8532617cc9f9851406705940ed031cafe1bca23c749f19ddfa0",
+    "tools/spacefox/current_catalog.py": "221e3b9edb62bdaf3161e9a0a47223f12fdc2a89b818a9b3e5316d8aba97290f",
     "tools/spacefox/geographic_context.py": "9f9a25032ed530d1ab7addfa8358900f120d5ec10d242a82ec84068bd7d7ecfa",
     "tools/spacefox/global_map.py": "b7848f5810405e04621b53d846d6e304e27433392863e4626a3fee942b7db832",
     "tools/spacefox/graphics.py": "091d7f100c2d8836e55171b72ebccf1f8799f05cf51c486c72fde00e902707a0",
-    "tools/spacefox/native_motion.py": "9598755edd7c0be34c5250c06fc88c6933055f3aded76418d45e2d83d63d3dd4",
+    "tools/spacefox/native_motion.py": "09d2f28fe24962758422d3f36175c94b58b30e78c6f8420d92f3578e8a1a9247",
     "tools/spacefox/native_profile.py": "341d8bb649513aa751ba990697e7fc18dadac9b7de585a9e907a54d60bd2ed65",
-    "tools/spacefox/publisher.py": "d0387194b9ea9e5a6a1602cfc9e1f521a70fd6e1b44e8bc1bc2711c7b013832c",
+    "tools/spacefox/publisher.py": "6470d9f11aaefb7ec95bb76da25fae8318e7e23ba21636ab7bc74ef0cf7b7ad9",
     "tools/spacefox/visual_bridge.py": "4f160a655a22544b2edb67d2ce2025c80dd15c3a929de78996b691541068a0d7",
-    "tools/update_feed.py": "c4109da6d23d615ca7ca7ca53256b99c4afe0a02498ceabc16d08ff4e53be878"
+    "tools/update_feed.py": "c4109da6d23d615ca7ca7ca53256b99c4afe0a02498ceabc16d08ff4e53be878",
+    "tools/verify_native_text_http.py": "19cb1bf9c7f51fdeb4cb9e39f9b2186d9fb58d6f84230e1bac9d7c483ccc5934"
   },
   "evidence": {
     "hostMeasurement": {
@@ -139,6 +194,50 @@
     "peerTypes": {
       "path": "openspec/changes/spacefox-watchface/evidence/performance021/a/PEER-TYPES-TESTS.txt",
       "sha256": "b420d4ef87d79ff28d6792b91d7a1dbae64df99db7aa54c63bc8f67fdfa9c5ac"
+    },
+    "bCore": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/b/B-CORE.txt",
+      "sha256": "e9d37b2dfb084abbe1c251b9f92579de7a8c4f326df43f03eb11ebbc96dd7fcc"
+    },
+    "bGit": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/b/GIT-DUPLEX.txt",
+      "sha256": "1c495e3648118fc6fdec473a2b9cefc80011a501ae977cf4531713ac7a4dd044"
+    },
+    "bCloud": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/b/CLOUD-NO-WORK.txt",
+      "sha256": "0eb8c1a756b5752b0b9d377cf4a50760909208078a51888e0c45fbdb4cb60aa5"
+    },
+    "bAffected": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/b/CLOUD-AFFECTED.txt",
+      "sha256": "74c8dbdb1506da24e6f34446feb0fc190791d216408724f452c93069ae0259d6"
+    },
+    "bMetadata": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/b/METADATA.txt",
+      "sha256": "d4c64c36b5c60136236e8fe1617c087b13f3eb2dc911cdd1a2b1287a491ec3ab"
+    },
+    "bArtifact": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/b/REAL-INPUTS.json",
+      "sha256": "327c24db8b0c60fe8302693c9de0a629f22139225033cd381c18d9c93f2d443d"
+    },
+    "bReadback": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/b/REAL-READBACK.txt",
+      "sha256": "f4325fd1b713dd03d76daa47c327dce19e0fceb398ab17930e070190ec0b3939"
+    },
+    "bSequence": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/b/READBACK-SEQUENCE.txt",
+      "sha256": "6247f7a50558c087b08723789cbde12ae4f0cfc792fca3acd8b38f3a32095f4b"
+    },
+    "bManifest": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/b/MANIFEST-GUARD.txt",
+      "sha256": "897c2fa1f52834237047cc724271dab5447e67dc230f3fbae06992ad0693d5bd"
+    },
+    "bGenerator": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/b/GENERATOR-TEST.txt",
+      "sha256": "a7765c99f165d7f63106a531b71e095cef4b29ca0ecad8813c0989aa711356a0"
+    },
+    "bARecheck": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/b/A-RECHECK.txt",
+      "sha256": "6e8902c0cc58c9104840e1441041cbfb0952af9c9f19b892c6dfdc62595b51bd"
     }
   }
 }

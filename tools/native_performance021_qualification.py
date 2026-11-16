@@ -18,13 +18,19 @@ REQUIRED_PRIOR = {
     'tools/spacefox/visual_bridge.py', 'tools/update_feed.py', 'tools/cloud_feed.py',
     'tools/native_language_policy.py', 'locales/catalog.json',
     'release/native-admission-inputs.json', 'tests/test_global_content_closure_r5.py',
+    'tools/spacefox/cloud.py', 'tools/spacefox/current_catalog.py',
+    'tools/display_corpus.py', 'tools/verify_native_text_http.py',
+    'tools/refresh_catalog.py', 'tools/release.py', 'tools/build_native_localization.py', '.github/workflows/update-feed.yml',
+    'tests/test_autonomous_publisher_whole.py', 'tests/test_native_localization.py',
 }
 REQUIRED_CURRENT = (REQUIRED_PRIOR - {'locales/catalog.json', 'tests/test_global_content_closure_r5.py'}) | {
     'tools/native_performance021_qualification.py', 'tests/test_performance021_a.py',
     'tests/test_performance021_proof.py', 'tests/test_performance021_ownership.py',
     'tests/test_performance021_factory.py', 'tests/test_current_motion_publisher.py',
     'tests/test_durable_publisher_whole.py', 'tests/test_current_geography_whole.py',
-    'tests/test_schedule_producer_transport.py',
+    'tests/test_schedule_producer_transport.py', 'tests/test_performance021_b.py',
+    'tests/test_performance021_b_cloud.py', 'tests/test_current_metadata_publisher.py',
+    'tests/test_durable_delivery_whole.py', 'tests/test_phone_text_transport.py',
 }
 
 
@@ -63,9 +69,75 @@ def validate(root, catalog):
     if comparable != old_catalog:
         raise ValueError('locale policy changed outside performance021 delta')
     evidence = record['evidence']
-    if set(evidence) != {'hostMeasurement', 'hostTests', 'sourceRace', 'artifactBytes', 'cacheRelease', 'ownershipTest', 'peakAttribution', 'factoryTests', 'eligibleBaseline', 'affectedTests', 'peerHost', 'peerOwnership', 'peerTypes'}:
+    if set(evidence) != {'hostMeasurement', 'hostTests', 'sourceRace', 'artifactBytes', 'cacheRelease', 'ownershipTest', 'peakAttribution', 'factoryTests', 'eligibleBaseline', 'affectedTests', 'peerHost', 'peerOwnership', 'peerTypes', 'bCore', 'bGit', 'bCloud', 'bAffected', 'bMetadata', 'bArtifact', 'bReadback', 'bSequence', 'bManifest', 'bGenerator', 'bARecheck'}:
         raise ValueError('performance021 evidence inventory differs')
     evidence_files = {name: _checked(root, row['path'], row['sha256']) for name, row in evidence.items()}
+    artifact = json.loads(evidence_files['bArtifact'].read_text())
+    if (type(artifact) is not dict or set(artifact) != {'files', 'bytes'} or
+            len(artifact['files']) != 106 or artifact['bytes'] != 606248 or
+            sum(row['bytes'] for row in artifact['files']) != artifact['bytes']):
+        raise ValueError('performance021 real readback input inventory differs')
+    seen = set()
+    for row in artifact['files']:
+        if (type(row) is not dict or set(row) != {'path', 'bytes', 'sha256'} or row['path'] in seen or
+                not row['path'].startswith('openspec/changes/spacefox-watchface/evidence/current-native-scene-whole/profile-a/')):
+            raise ValueError('performance021 invalid readback input')
+        seen.add(row['path'])
+        if _checked(root, row['path'], row['sha256']).stat().st_size != row['bytes']:
+            raise ValueError('performance021 readback input size differs')
+    core = evidence_files['bCore'].read_text()
+    core_names = ('test_readback_overlap_and_refusal', 'test_operator_http_deadline_and_bounds',
+                  'test_git_deadline', 'test_git_batch_exact_identity', 'test_readback_slow_body_reaps_children',
+                  'test_git_fetch_hang_reaps_transport', 'test_git_fresh_ref_and_fetch_reuse',
+                  'test_git_catalog_object_above_artifact_limit', 'test_real_artifact_readback_concurrency_and_corruption',
+                  'test_operator_empty_content_encoding_rejected', 'test_actual_catalog_midnight_disagreement_withholds_witness',
+                  'test_metadata_due_and_staging_decision', 'test_cloud_sparse_source_fence_hidden_change',
+                  'test_probe_decision_unit_matrix', 'test_readback_sequence_independent_oracle',
+                  'test_later_stage_fresh_admission_needs_renderer', 'test_cancelled_readback_reaps_http_workers')
+    if ('Ran 17 tests' not in core or '\nOK\n' not in core or
+            any(name not in core for name in core_names)):
+        raise ValueError('performance021 group B core evidence incomplete')
+    readback = evidence_files['bReadback'].read_text()
+    sequence = evidence_files['bSequence'].read_text()
+    if ('106 files 606248 bytes' not in readback or '107 GET' not in readback or '\nOK\n' not in readback or
+            'test_readback_sequence_independent_oracle' not in sequence or
+            'test_cancelled_readback_reaps_http_workers' not in sequence):
+        raise ValueError('performance021 exact readback evidence incomplete')
+    git = evidence_files['bGit'].read_text()
+    if ('test_git_large_duplex_batch_uses_file_input' not in git or '512 distinct objects' not in git or
+            'request 136192 bytes' not in git or '\nOK\n' not in git):
+        raise ValueError('performance021 Git batch evidence incomplete')
+    manifest = evidence_files['bManifest'].read_text()
+    if ('test_manifest_normalization_keeps_correct_bytes_and_repairs_extra_attributes' not in manifest or
+            '\nOK\n' not in manifest):
+        raise ValueError('performance021 manifest normalization evidence incomplete')
+    recheck = evidence_files['bARecheck'].read_text()
+    if ('Ran 7 tests' not in recheck or '\nOK\n' not in recheck or
+            any(name not in recheck for name in ('test_validation_positive','test_validation_negative',
+                'test_no_work_fence_rejects_unverified_producer_sources',
+                'test_caller_mutation_after_snapshot_and_validation_identities',
+                'test_scoped_admission_distinguishes_integer_and_decimal',
+                'test_cloud_owned_content_change_preserves_age_without_provider',
+                'test_owned_catalog_real_output_and_no_full_copy'))):
+        raise ValueError('performance021 prior host-owner recheck incomplete')
+    generation = evidence_files['bGenerator'].read_text()
+    if ('test_generation_is_complete_and_repeatable' not in generation or 'Ran 1 test' not in generation or
+            '\nOK\n' not in generation):
+        raise ValueError('performance021 current generation evidence incomplete')
+    cloud = evidence_files['bCloud'].read_text()
+    if ('test_active_full_admission_then_sparse_cli_no_work' not in cloud or '\nOK\n' not in cloud or
+            'metadata staging and pending forced full path' not in cloud or 'Malformed, stale-date' not in cloud):
+        raise ValueError('performance021 cloud scheduling evidence incomplete')
+    affected = evidence_files['bAffected'].read_text()
+    if ('Ran 3 tests' not in affected or '\nOK\n' not in affected or
+            any(name not in affected for name in ('test_prepare_not_due_second_validation_and_disabled_schedule_recovery',
+                'test_metadata_pending_armed_core_promotion_recovery_and_partial_prefix',
+                'test_current_source_data_only_extension_and_preserved_refusals'))):
+        raise ValueError('performance021 cloud regression evidence incomplete')
+    metadata = evidence_files['bMetadata'].read_text()
+    if ('test_captured_whole_traversal_reopens_preserves_ages_and_source_headroom' not in metadata or
+            '\nOK\n' not in metadata or '"pages":33' not in metadata):
+        raise ValueError('performance021 metadata evidence incomplete')
     measurement = json.loads(evidence_files['hostMeasurement'].read_text())
     if (measurement['artifact_files'] != 106 or measurement['artifact_bytes'] != 606276 or
         measurement['feed_sha256'] != '0d30182c4b22bef02a8f07fd70b6b4c63fcea31a2c29b1e68f5725fe957f0c3c' or

@@ -1,0 +1,74 @@
+# Whitespace-only context trimmed; the .patch.gz retains the exact original diagnostic diff.
+--- current/watchface/manifest.xml
++++ generated/watchface/manifest.xml
+@@ -6,4 +6,4 @@
+
+         <iq:languages><iq:language>eng</iq:language><iq:language>rus</iq:language><iq:language>deu</iq:language><iq:language>fre</iq:language><iq:language>spa</iq:language></iq:languages><iq:barrels />
+     </iq:application>
+-</iq:manifest>+</iq:manifest>
+--- current/watchface/resources-deu/strings/strings.xml
++++ generated/watchface/resources-deu/strings/strings.xml
+@@ -64,7 +64,4 @@
+ <string id="Locale33">Bahasa Melayu</string>
+ <string id="Locale34">Tiếng Việt</string>
+ <string id="Locale35">ไทย</string>
+-<string id="LaunchReminders">Start-Hinweise</string>
+-<string id="RemindersOff">Aus</string>
+-<string id="RemindersOn">Ein</string>
+ </strings>
+--- current/watchface/resources-fre/strings/strings.xml
++++ generated/watchface/resources-fre/strings/strings.xml
+@@ -64,7 +64,4 @@
+ <string id="Locale33">Bahasa Melayu</string>
+ <string id="Locale34">Tiếng Việt</string>
+ <string id="Locale35">ไทย</string>
+-<string id="LaunchReminders">Alerte lancement</string>
+-<string id="RemindersOff">Désactivés</string>
+-<string id="RemindersOn">Activés</string>
+ </strings>
+--- current/watchface/resources-rus/strings/strings.xml
++++ generated/watchface/resources-rus/strings/strings.xml
+@@ -64,7 +64,4 @@
+ <string id="Locale33">Bahasa Melayu</string>
+ <string id="Locale34">Tiếng Việt</string>
+ <string id="Locale35">ไทย</string>
+-<string id="LaunchReminders">Сигналы пуска</string>
+-<string id="RemindersOff">Выкл.</string>
+-<string id="RemindersOn">Вкл.</string>
+ </strings>
+--- current/watchface/resources-spa/strings/strings.xml
++++ generated/watchface/resources-spa/strings/strings.xml
+@@ -64,7 +64,4 @@
+ <string id="Locale33">Bahasa Melayu</string>
+ <string id="Locale34">Tiếng Việt</string>
+ <string id="Locale35">ไทย</string>
+-<string id="LaunchReminders">Avisos de cohete</string>
+-<string id="RemindersOff">Desactivados</string>
+-<string id="RemindersOn">Activados</string>
+ </strings>
+--- current/watchface/resources/settings/properties.xml
++++ generated/watchface/resources/settings/properties.xml
+@@ -11,5 +11,4 @@
+ <property id="Field3Color" type="number">1</property>
+ <property id="Field4Color" type="number">1</property>
+ <property id="FeedBaseUrl" type="string">https://jekamas.github.io/SpaceFox</property>
+-<property id="LaunchReminders" type="number">0</property>
+ </properties>
+--- current/watchface/resources/settings/settings.xml
++++ generated/watchface/resources/settings/settings.xml
+@@ -11,5 +11,4 @@
+ <setting propertyKey="@Properties.Field3Color" title="@Strings.Field3Color"><settingConfig type="list"><listEntry value="0">@Strings.Color0</listEntry><listEntry value="1">@Strings.Color1</listEntry><listEntry value="2">@Strings.Color2</listEntry><listEntry value="3">@Strings.Color3</listEntry><listEntry value="4">@Strings.Color4</listEntry><listEntry value="5">@Strings.Color5</listEntry></settingConfig></setting>
+ <setting propertyKey="@Properties.Field4Color" title="@Strings.Field4Color"><settingConfig type="list"><listEntry value="0">@Strings.Color0</listEntry><listEntry value="1">@Strings.Color1</listEntry><listEntry value="2">@Strings.Color2</listEntry><listEntry value="3">@Strings.Color3</listEntry><listEntry value="4">@Strings.Color4</listEntry><listEntry value="5">@Strings.Color5</listEntry></settingConfig></setting>
+ <setting propertyKey="@Properties.FeedBaseUrl" title="@Strings.FeedBaseUrl"><settingConfig type="alphaNumeric"/></setting>
+-<setting propertyKey="@Properties.LaunchReminders" title="@Strings.LaunchReminders"><settingConfig type="list"><listEntry value="0">@Strings.RemindersOff</listEntry><listEntry value="1">@Strings.RemindersOn</listEntry></settingConfig></setting>
+ </settings>
+--- current/watchface/resources/strings/strings.xml
++++ generated/watchface/resources/strings/strings.xml
+@@ -64,7 +64,4 @@
+ <string id="Locale33">Bahasa Melayu</string>
+ <string id="Locale34">Tiếng Việt</string>
+ <string id="Locale35">ไทย</string>
+-<string id="LaunchReminders">Launch reminders</string>
+-<string id="RemindersOff">Off</string>
+-<string id="RemindersOn">On</string>
+ </strings>

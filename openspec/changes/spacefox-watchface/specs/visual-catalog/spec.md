@@ -385,3 +385,23 @@ The publisher SHALL bound host selection, geography, validation and I/O work whi
 #### Scenario: Host changes retain prior native admission
 - **WHEN** host-only source changes invalidate historical source-bound native admission
 - **THEN** exact historical source is authenticated and reconstructed for the unchanged native/profile/font proof, current host sources and measured evidence are separately bound, and missing or altered proof inputs are refused
+
+#### Scenario: Concurrent complete readback
+- **WHEN** a delivery closure is observed
+- **THEN** bounded concurrent file requests check every exact byte and a fresh final root, while incomplete, corrupt or mixed delivery refuses without promotion
+
+#### Scenario: Cheap cloud no-work
+- **WHEN** a scheduled cloud invocation has no due, pending, catalog or code change
+- **THEN** it avoids geography and renderer work after fresh source, active root, projection date and metadata staging/cadence checks; a missing, stale, malformed or mismatched scheduling witness, pending recovery, due metadata or changed source escalates to independent full admission. The scheduling witness is bound to the exact admitted source, artifact and actual UTC projection date, never grants artifact admission or publication permission, and a first full same-content admission may persist it without changing source age or publishing a candidate.
+
+#### Scenario: Bounded Git and exact snapshot
+- **WHEN** state and history are inspected or changed
+- **THEN** Git commands have total deadlines, exact immutable bytes may be reused within a process, and fresh remote, source and CAS checks still refuse conflicts without discarding history
+
+#### Scenario: Operator total HTTP deadline
+- **WHEN** operator HTTP inspection receives slow, oversized or invalid data
+- **THEN** it respects total time and byte bounds, cleans up its child and retains existing protocol diagnostics
+
+#### Scenario: Native generation retains current reminders
+- **WHEN** the current source-bound five-locale resources are regenerated
+- **THEN** the existing reminder strings and default-off setting remain byte-identical, an already correct manifest retains its exact serialization, malformed language elements are normalized, and a second generation produces identical watch files

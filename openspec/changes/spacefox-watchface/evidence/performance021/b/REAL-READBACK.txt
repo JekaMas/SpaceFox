@@ -1,0 +1,6 @@
+python3 -B -m unittest -v tests.test_performance021_b.GroupBTest.test_real_artifact_readback_concurrency_and_corruption
+ok
+Ran 1 test in 18.196s
+OK
+real artifact: 106 files 606248 bytes, serial 13.472s concurrent 3.880s, 107 GET, peak 4
+Exact retained artifact source: openspec/changes/spacefox-watchface/evidence/current-native-scene-whole/profile-a. The service returned those exact bytes; one selected non-root file was separately byte-corrupted and refused. Snapshot lookup was substituted to supply this retained artifact; this witness does not prove Git authority, promotion or deployment. No POST observed. The real Git pending-root integration is separate.

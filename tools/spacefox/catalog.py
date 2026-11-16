@@ -1125,10 +1125,10 @@ def _curated_row(identity, facts, references, evidence):
     return row
 
 
-def build_catalog(root, source_path=None, *, _strict_creation_path=None):
+def build_catalog(root, source_path=None, *, _strict_creation_path=None, _admission_date=None):
     """Build the single source recipe, checking immutable imports and SVG bytes."""
     # One UTC calendar sample governs operation replay and final validation.
-    admission_date = datetime.now(timezone.utc).date()
+    admission_date = _admission_date if _admission_date is not None else datetime.now(timezone.utc).date()
     root = Path(root).resolve()
     source_path = Path(source_path) if source_path is not None else root / 'catalog/source.json'
     manifest = loads_json(_read(source_path))

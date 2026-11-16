@@ -50,3 +50,28 @@ class HostProofTest(unittest.TestCase):
         path.write_bytes(path.read_bytes() + b'\n# modified\n')
         with self.assertRaisesRegex(ValueError, 'proof input changed'):
             validate(self.root, self.catalog)
+
+    def test_changed_group_b_receipt_refuses(self):
+        path = self.root / self.record['evidence']['bCloud']['path']
+        path.write_bytes(path.read_bytes() + b'changed')
+        with self.assertRaisesRegex(ValueError, 'proof input changed'):
+            validate(self.root, self.catalog)
+
+    def test_missing_group_b_host_source_refuses(self):
+        (self.root / 'tools/spacefox/cloud.py').unlink()
+        with self.assertRaisesRegex(ValueError, 'proof input missing'):
+            validate(self.root, self.catalog)
+
+    def test_changed_real_readback_input_refuses(self):
+        manifest = json.loads((self.root / self.record['evidence']['bArtifact']['path']).read_text())
+        name = manifest['files'][0]['path']
+        source = ROOT / name
+        target = self.root / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(source.read_bytes() + b'changed')
+        with self.assertRaisesRegex(ValueError, 'proof input changed'):
+            validate(self.root, self.catalog)
+
+    def test_missing_real_readback_input_refuses(self):
+        with self.assertRaisesRegex(ValueError, 'proof input missing'):
+            validate(self.root, self.catalog)
