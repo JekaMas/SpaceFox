@@ -1,0 +1,26 @@
+requirements duplicate IDs: {}
+properties duplicate IDs: {}
+cases duplicate IDs: {}
+commands duplicate IDs: {}
+RL21.P1.test_source_capture_single_read_and_fresh_fence -> RL21.P1 -> Fresh release input fences and retired operator entrypoints
+RL21.P1.test_snapshot_mutation_sequences -> RL21.P1 -> Fresh release input fences and retired operator entrypoints
+RL21.P2.test_toolchain_single_capture_and_fresh_mutation -> RL21.P2 -> Fresh release input fences and retired operator entrypoints
+RL21.P2.test_toolchain_pin_mutations_refuse -> RL21.P2 -> Fresh release input fences and retired operator entrypoints
+RL21.P3.test_retired_routes_and_current_primitives -> RL21.P3 -> Fresh release input fences and retired operator entrypoints
+RL21.P3.test_changed_retired_snapshot_refuses -> RL21.P3 -> Fresh release input fences and retired operator entrypoints
+WF24.P1.test_embed_lifetime -> WF24.P1 -> Bounded illustrative embed ownership
+WF24.P1.test_embed_disconnected_event -> WF24.P1 -> Bounded illustrative embed ownership
+PASS: unique IDs and C case/property/scenario/requirement joins
+WF21.P1.S01.POSITIVE source, callable, command and original native case OK
+WF21.P1.S01.NEGATIVE source, callable, command and original native case OK
+WF21.P1.S02.POSITIVE source, callable, command and original native case OK
+WF21.P1.S02.NEGATIVE source, callable, command and original native case OK
+RL21.P1.test_source_capture_single_read_and_fresh_fence source, callable, command and original native case OK
+RL21.P1.test_snapshot_mutation_sequences source, callable, command and original native case OK
+RL21.P2.test_toolchain_single_capture_and_fresh_mutation source, callable, command and original native case OK
+RL21.P2.test_toolchain_pin_mutations_refuse source, callable, command and original native case OK
+RL21.P3.test_retired_routes_and_current_primitives source, callable, command and original native case OK
+RL21.P3.test_changed_retired_snapshot_refuses source, callable, command and original native case OK
+WF24.P1.test_embed_lifetime source, callable, command and original native case OK
+WF24.P1.test_embed_disconnected_event source, callable, command and original native case OK
+PASS: C and original WF21 cases map to actual test callables/commands; native cases byte-equivalent as JSON objects

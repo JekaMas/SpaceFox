@@ -417,7 +417,7 @@
       "fingerprint": "4514535e6f10e503f134aa9889dda2e41ebab3b239c963eb6df323d5b9c01352"
     },
     {
-      "id": "WF21",
+      "id": "WF24",
       "capability": "watchface",
       "title": "Bounded illustrative embed ownership",
       "fingerprint": "b4cc2b010611bd2b3199fa80c04a769047fbd7307300e86bfc12d74ac2795aa7"
@@ -5814,6 +5814,24 @@
       "source_globs": [
         "tools/spacefox/global_map.py",
         "tests/test_performance021_c.py"
+      ],
+      "planning_status": "implemented and author self-verified; fresh peer and root judgment pending"
+    },
+    {
+      "id": "WF24.P1",
+      "requirement_id": "WF24",
+      "scenarios": [
+        "Repeated mission mount and unmount",
+        "Global event arrives before cleanup tick"
+      ],
+      "statement": "Disconnected illustrative owners release their listener and other window-owned resources within one ticker period, and global events cannot render a disconnected owner.",
+      "owner": "prototype/mission.js; prototype/mission.html",
+      "oracle": "Actual Chrome DOM and browser scheduler resource observations; production script copies are byte-matched.",
+      "source_globs": [
+        "prototype/mission.js",
+        "prototype/mission.html",
+        "tests/test_performance021_c.py",
+        "openspec/changes/spacefox-watchface/evidence/performance021/c/BROWSER-*.json"
       ],
       "planning_status": "implemented and author self-verified; fresh peer and root judgment pending"
     }
@@ -38952,7 +38970,7 @@
           "Real third-party provider lifecycle or paired-phone UI acceptance"
         ]
       },
-      "implementation_note": "C author direct checks and actual Chrome DOM receipts in performance021/c; fresh peer/root remain pending."
+      "implementation_note": "Receipt observer only; does not turn one native batch into multiple independent executions."
     },
     {
       "id": "WF21.P1.S01.NEGATIVE",
@@ -38994,7 +39012,7 @@
           "Real third-party provider lifecycle or paired-phone UI acceptance"
         ]
       },
-      "implementation_note": "C author direct checks and actual Chrome DOM receipts in performance021/c; fresh peer/root remain pending."
+      "implementation_note": "Receipt observer only; does not turn one native batch into multiple independent executions."
     },
     {
       "id": "WF21.P1.S02.POSITIVE",
@@ -39036,7 +39054,7 @@
           "Real third-party provider lifecycle or paired-phone UI acceptance"
         ]
       },
-      "implementation_note": "C author direct checks and actual Chrome DOM receipts in performance021/c; fresh peer/root remain pending."
+      "implementation_note": "Receipt observer only; does not turn one native batch into multiple independent executions."
     },
     {
       "id": "WF21.P1.S02.NEGATIVE",
@@ -39078,7 +39096,7 @@
           "Real third-party provider lifecycle or paired-phone UI acceptance"
         ]
       },
-      "implementation_note": "C author direct checks and actual Chrome DOM receipts in performance021/c; fresh peer/root remain pending."
+      "implementation_note": "Receipt observer only; does not turn one native batch into multiple independent executions."
     },
     {
       "id": "WF22.P1.S01.POSITIVE",
@@ -40702,8 +40720,8 @@
       "implementation_note": "C author direct checks and actual Chrome DOM receipts in performance021/c; fresh peer/root remain pending."
     },
     {
-      "id": "WF21.P1.test_embed_lifetime",
-      "property_id": "WF21.P1",
+      "id": "WF24.P1.test_embed_lifetime",
+      "property_id": "WF24.P1",
       "polarity": "positive",
       "scenario": "Repeated mission mount and unmount",
       "scenario_fingerprint": "ea5ee36b8defe118911e449522951cf80ed4251ca290d24717399eda752d0b6f",
@@ -40713,7 +40731,8 @@
       "green_expectation": "Independent byte/refusal/lifetime assertions pass.",
       "invalidation_dependencies": [
         "prototype/mission.js",
-        "tests/test_performance021_c.py"
+        "tests/test_performance021_c.py",
+        "prototype/mission.html"
       ],
       "test_id": "unittest::tests.test_performance021_c.GroupCTest.test_embed_lifetime",
       "command_id": "performance021-c",
@@ -40723,8 +40742,8 @@
       "implementation_note": "C author direct checks and actual Chrome DOM receipts in performance021/c; fresh peer/root remain pending."
     },
     {
-      "id": "WF21.P1.test_embed_disconnected_event",
-      "property_id": "WF21.P1",
+      "id": "WF24.P1.test_embed_disconnected_event",
+      "property_id": "WF24.P1",
       "polarity": "negative",
       "scenario": "Global event arrives before cleanup tick",
       "scenario_fingerprint": "cb23abda3f64243b6b079a747cfa6a1205770ed08925c098294c140922f1dbd8",
@@ -40734,7 +40753,8 @@
       "green_expectation": "Independent byte/refusal/lifetime assertions pass.",
       "invalidation_dependencies": [
         "prototype/mission.js",
-        "tests/test_performance021_c.py"
+        "tests/test_performance021_c.py",
+        "prototype/mission.html"
       ],
       "test_id": "unittest::tests.test_performance021_c.GroupCTest.test_embed_disconnected_event",
       "command_id": "performance021-c",
