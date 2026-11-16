@@ -46,6 +46,20 @@ def discover_toolchain(root: Path = ROOT) -> dict:
         raise BuildBlocked("Java11 missing: set SPACEFOX_JAVA to its executable")
     java = Path(java_path).expanduser().resolve()
     compiler = sdk / "bin/monkeybrains.jar"
+    # Fresh for this discovery fence only. Hash pins and semantic capability
+    # checks consume facts from the same captured bytes, including overlapping
+    # primary/cohort pins. Never trust a previous discovery or path identity.
+    captured = {}
+    def capture(path):
+        if path not in captured:
+            data = path.read_bytes()
+            facts = {"sha256": hashlib.sha256(data).hexdigest()}
+            if path.suffix == ".json":
+                facts["json_bytes"] = data
+            if path.name.endswith(".api.debug.xml"):
+                facts["vector_font"] = b'symbol="getVectorFont"' in data
+            captured[path] = facts
+        return captured[path]
     if not compiler.is_file():
         raise BuildBlocked("Garmin SDK9.3.0 missing: set SPACEFOX_SDK to the official SDK directory")
     if digest(compiler) != lock["compiler_sha256"]:
@@ -65,22 +79,22 @@ def discover_toolchain(root: Path = ROOT) -> dict:
         raise BuildBlocked("device font pin inventory differs")
     for name, expected in font_pins.items():
         path = profile_root.parent / "Fonts" / name
-        if not path.is_file() or digest(path) != expected:
+        if not path.is_file() or capture(path)["sha256"] != expected:
             raise BuildBlocked("device font input differs from pin: " + name)
     profile = profile_root / lock["product"] / "compiler.json"
     simulator_profile = profile_root / lock["product"] / "simulator.json"
     for path, key in [(profile, "compiler_profile_sha256"), (simulator_profile, "simulator_profile_sha256")]:
-        if not path.is_file() or digest(path) != lock[key]:
+        if not path.is_file() or capture(path)["sha256"] != lock[key]:
             raise BuildBlocked("device profile hash mismatch/missing: " + str(path))
     for relative, expected in lock["sdk_input_sha256"].items():
         path = sdk / relative
-        if not path.is_file() or digest(path) != expected:
+        if not path.is_file() or capture(path)["sha256"] != expected:
             raise BuildBlocked("SDK input differs from pin: " + relative)
     for relative, expected in lock["profile_input_sha256"].items():
         path = profile_root / relative
-        if not path.is_file() or digest(path) != expected:
+        if not path.is_file() or capture(path)["sha256"] != expected:
             raise BuildBlocked("device runtime/API input differs from pin: " + relative)
-    profile_data = json.loads(profile.read_text())
+    profile_data = json.loads(capture(profile)["json_bytes"])
     # The profile's actual runtime API is authoritative, independent of SDK9.3.
     if not any(p.get("connectIQVersion") == lock["profile_api"] for p in profile_data.get("partNumbers", [])):
         raise BuildBlocked("device runtime API differs from pinned FR165 profile")
@@ -91,10 +105,10 @@ def discover_toolchain(root: Path = ROOT) -> dict:
         if set(pin.get("files_sha256", {})) != required:
             raise BuildBlocked("device input pin inventory differs: " + product)
         for name, expected in pin["files_sha256"].items():
-            if not (directory / name).is_file() or digest(directory / name) != expected:
+            if not (directory / name).is_file() or capture(directory / name)["sha256"] != expected:
                 raise BuildBlocked("device input differs from pin: " + product + "/" + name)
-        data = json.loads((directory / "compiler.json").read_text())
-        simulator_data = json.loads((directory / "simulator.json").read_text())
+        data = json.loads(capture(directory / "compiler.json")["json_bytes"])
+        simulator_data = json.loads(capture(directory / "simulator.json")["json_bytes"])
         fonts = {font["name"] for group in simulator_data["fonts"] for font in group["fonts"]}
         memories = {row["type"]: row["memoryLimit"] for row in data["appTypes"]}
         parts = [{k: v for k, v in row.items() if k in ("number", "connectIQVersion", "firmwareVersion")} for row in data["partNumbers"]]
@@ -106,7 +120,7 @@ def discover_toolchain(root: Path = ROOT) -> dict:
             simulator_data.get("appStorageCapacity", 0) < 10485760 or
             simulator_data.get("display", {}).get("shape") not in ("round", "rectangle") or
             not ({"RobotoRegular", "RobotoCondensedRegular"} & fonts) or
-            'symbol="getVectorFont"' not in (directory / (product + ".api.debug.xml")).read_text() or
+            not capture(directory / (product + ".api.debug.xml"))["vector_font"] or
             parts != pin["parts"] or not parts or any(tuple(map(int, p["connectIQVersion"].split("."))) < tuple(map(int, lock["min_api"].split("."))) for p in parts)):
             raise BuildBlocked("device capabilities differ from pinned cohort: " + product)
         profiles[product] = data

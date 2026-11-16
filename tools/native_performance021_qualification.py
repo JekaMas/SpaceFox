@@ -10,6 +10,21 @@ import sys
 import tempfile
 
 
+# C extends this same exact29f outer delta. Deleted executable/test routes are
+# restored only inside authenticated historical reconstruction, never at runtime.
+C_RETIRED = {
+    'tools/build_private_beta.py', 'tools/build_geographic_context.py',
+    'tests/test_global_content_selection_r3.py', 'tests/test_global_content_parity_r6.py',
+    'tests/test_global_content_jurisdiction_r4.py',
+}
+C_CHANGED = {
+    'tools/build_watchface.py', 'prototype/mission.js', 'prototype/mission.html',
+    'release/PRIVATE-BETA.md', 'tests/test_global_map.py',
+    'tests/test_publisher_content_integration.py', 'tests/test_retired_static_entrypoints.py',
+    'tests/test_geographic_context.py', 'tests/test_geographic_context_r2.py',
+    'tests/test_geographic_context_r3.py', 'tests/test_geographic_context_r4.py',
+}
+
 REQUIRED_PRIOR = {
     'tools/spacefox/bridge_map.py', 'tools/spacefox/catalog.py',
     'tools/spacefox/geographic_context.py', 'tools/spacefox/global_map.py',
@@ -22,8 +37,10 @@ REQUIRED_PRIOR = {
     'tools/display_corpus.py', 'tools/verify_native_text_http.py',
     'tools/refresh_catalog.py', 'tools/release.py', 'tools/build_native_localization.py', '.github/workflows/update-feed.yml',
     'tests/test_autonomous_publisher_whole.py', 'tests/test_native_localization.py',
-}
-REQUIRED_CURRENT = (REQUIRED_PRIOR - {'locales/catalog.json', 'tests/test_global_content_closure_r5.py'}) | {
+} | C_RETIRED | C_CHANGED
+REQUIRED_CURRENT = (REQUIRED_PRIOR - {'locales/catalog.json', 'tests/test_global_content_closure_r5.py'} - C_RETIRED) | {
+    'tests/test_performance021_c.py', 'tests/geography_artifact_helpers.py',
+    'tests/test_current_selected_metadata.py',
     'tools/native_performance021_qualification.py', 'tests/test_performance021_a.py',
     'tests/test_performance021_proof.py', 'tests/test_performance021_ownership.py',
     'tests/test_performance021_factory.py', 'tests/test_current_motion_publisher.py',
@@ -69,9 +86,25 @@ def validate(root, catalog):
     if comparable != old_catalog:
         raise ValueError('locale policy changed outside performance021 delta')
     evidence = record['evidence']
-    if set(evidence) != {'hostMeasurement', 'hostTests', 'sourceRace', 'artifactBytes', 'cacheRelease', 'ownershipTest', 'peakAttribution', 'factoryTests', 'eligibleBaseline', 'affectedTests', 'peerHost', 'peerOwnership', 'peerTypes', 'bCore', 'bGit', 'bCloud', 'bAffected', 'bMetadata', 'bArtifact', 'bReadback', 'bSequence', 'bManifest', 'bGenerator', 'bARecheck', 'bFence', 'bPeerFocused', 'bPeerReadback', 'bPeerCloud', 'bPeerRootRace', 'bPeerFirstRed'}:
+    if set(evidence) != {'hostMeasurement', 'hostTests', 'sourceRace', 'artifactBytes', 'cacheRelease', 'ownershipTest', 'peakAttribution', 'factoryTests', 'eligibleBaseline', 'affectedTests', 'peerHost', 'peerOwnership', 'peerTypes', 'bCore', 'bGit', 'bCloud', 'bAffected', 'bMetadata', 'bArtifact', 'bReadback', 'bSequence', 'bManifest', 'bGenerator', 'bARecheck', 'bFence', 'bPeerFocused', 'bPeerReadback', 'bPeerCloud', 'bPeerRootRace', 'bPeerFirstRed', 'cCore', 'cBrowser', 'cBrowserBaseline', 'cFresh'}:
         raise ValueError('performance021 evidence inventory differs')
     evidence_files = {name: _checked(root, row['path'], row['sha256']) for name, row in evidence.items()}
+    c_core = evidence_files['cCore'].read_text()
+    if 'Ran 8 tests' not in c_core or not c_core.rstrip().endswith('OK'):
+        raise ValueError('performance021 C direct evidence incomplete')
+    fresh = evidence_files['cFresh'].read_text()
+    if 'Ran 1 test' not in fresh or not fresh.rstrip().endswith('OK'):
+        raise ValueError('performance021 C fresh SDK fence evidence incomplete')
+    browser = json.loads(evidence_files['cBrowser'].read_text())
+    baseline = json.loads(evidence_files['cBrowserBaseline'].read_text())
+    if (browser.get('status') != 'GREEN' or len(browser.get('events', [])) != 16 or
+            browser.get('sourceSha256') != current['prototype/mission.js'] or
+            baseline.get('status') != 'RED' or
+            'disconnected event rendered old owner' not in baseline.get('error', '')):
+        raise ValueError('performance021 C browser evidence incomplete')
+    for event in browser['events']:
+        if event['disposition'] == 'observed_no_mutation' and any(event['counts'].values()):
+            raise ValueError('performance021 C detached owner retained resources')
     artifact = json.loads(evidence_files['bArtifact'].read_text())
     if (type(artifact) is not dict or set(artifact) != {'files', 'bytes'} or
             len(artifact['files']) != 106 or artifact['bytes'] != 606248 or

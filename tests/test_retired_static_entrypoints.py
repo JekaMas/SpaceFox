@@ -26,7 +26,7 @@ class RetiredStaticEntrypointsTest(unittest.TestCase):
             self.assertFalse((ROOT / 'tools/export_visuals.py').exists())
             retired = subprocess.run([sys.executable, '-B', str(ROOT / 'tools/build_geographic_context.py')], capture_output=True, text=True)
             self.assertNotEqual(retired.returncode, 0)
-            self.assertIn('retired', retired.stderr)
+            self.assertFalse((ROOT / 'tools/build_geographic_context.py').exists())
             self.assertEqual(output.read_bytes(), before)
 
 

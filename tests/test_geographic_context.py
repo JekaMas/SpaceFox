@@ -10,7 +10,7 @@ from tools.spacefox.catalog import build_catalog, canonical_bytes as exact_bytes
 from tools.spacefox.global_map import GeographyError, load_world, build_site_view
 from tools.spacefox.geographic_context import (load_source, build_view, build_artifact,
     canonical_bytes, project_profile, dependencies)
-from tools.build_geographic_context import write_artifact, read_artifact
+from tests.geography_artifact_helpers import write_artifact, read_artifact
 from tools.spacefox.graphics import assemble_visual, PACK_BASE
 
 ROOT=Path(__file__).resolve().parents[1]

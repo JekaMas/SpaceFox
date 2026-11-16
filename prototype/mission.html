@@ -312,9 +312,20 @@
   let saved;
   try { saved=JSON.parse(localStorage.getItem('spacefox.preview')); } catch { /* Use browser defaults. */ }
   restore(window.openai?.widgetState||saved);render();
-  window.addEventListener('openai:set_globals',event=>{if(event.detail?.globals?.widgetState){restore(event.detail.globals.widgetState);render();}});
+  let disposed=false;
+  function teardown() {
+    if(disposed)return;
+    disposed=true;
+    window.removeEventListener('openai:set_globals',onGlobals);
+    clearInterval(ticker);clearTimeout(wakeTimer);cancelAnimationFrame(frameId);observer.disconnect();
+  }
+  function onGlobals(event) {
+    if(!root.isConnected){teardown();return;}
+    if(event.detail?.globals?.widgetState){restore(event.detail.globals.widgetState);render();}
+  }
+  window.addEventListener('openai:set_globals',onGlobals);
   const observer=new ResizeObserver(()=>drawGeo());observer.observe(geo);
-  const ticker=setInterval(()=>{if(!root.isConnected){clearInterval(ticker);clearTimeout(wakeTimer);cancelAnimationFrame(frameId);observer.disconnect();return;}renderClock();if(!geoReady)drawGeo();},1000);
+  const ticker=setInterval(()=>{if(!root.isConnected){teardown();return;}renderClock();if(!geoReady)drawGeo();},1000);
 })();
 
 </script>

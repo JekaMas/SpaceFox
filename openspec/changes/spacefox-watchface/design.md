@@ -824,3 +824,21 @@ Source-fence and authority Git commands use the same process-group deadline owne
 The source-closure repair also retains the existing five primary reminder labels and default-off setting in localization generation. An already normalized manifest is left byte-identical, including its original final-newline convention; malformed or changed language elements still take the original normalization path. Generation and its repeat are checked against the complete current watch tree; historical missing fonts and the old NativeMetrics input remain authenticated historical snapshots and are never inserted into current watch resources.
 
 The workflow accepts a no-work output only from a successful probe. A failed or skipped probe proceeds to a fresh full prepare invocation, which independently repeats source and Git deadline guards before any authority or provider effects.
+
+## performance021 C — captured release fences and retired routes
+
+ENG-01 shares a fresh capture only among consumers inside one required fence.
+Source secret checks and hashing consume one read; source metadata can reuse its
+same-call capture. Toolchain pin/hash and capability consumers share same-call
+captured facts. No capture survives a source/toolchain call or a compiler fence.
+Before/after every one of 42 PRGs plus IQ and final package/source/signing checks
+remain. Actual current-input read counts and bytes are recorded separately from
+compiler execution; no host scan observation claims a fresh native build.
+
+CLEAN-02 removes the obsolete beta CLI/recipe and proven test-only complete static
+bundle exporter. Shared projection, current selection/SFR1 primitives and source
+proof are retained; deleted baseline paths are reconstructed from exact29f bytes
+inside the existing performance021 outer proof, never another proof layer.
+WEB-01 uses a named global callback and one idempotent teardown shared by event
+and ticker paths; disconnected event delivery cannot render stale roots. The
+existing one-second disconnection bound and visual composition are retained.

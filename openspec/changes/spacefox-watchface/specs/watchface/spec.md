@@ -388,3 +388,19 @@ Support claims SHALL distinguish source, simulator, physical and Store proof.
 - **WHEN** a qualified display has unequal width and height
 - **THEN** the full square scene is centered and uniformly scaled without
   distorting the map, launch point, rocket or text.
+
+### Requirement: Bounded illustrative embed ownership
+
+The retained illustrative mission widget SHALL release its global listener,
+interval, wake timeout, animation frame and resize observer within one ticker
+period after its root disconnects. A disconnected widget SHALL NOT consume a
+later global-state event. Repeated mounts in one window SHALL retain only live
+widget listeners; visual composition and typography remain unchanged.
+
+#### Scenario: Repeated mission mount and unmount
+- **WHEN** mission roots mount, receive global state, disconnect and the cleanup tick runs repeatedly in one window
+- **THEN** each disconnected owner releases all window-owned resources and the live root alone responds
+
+#### Scenario: Global event arrives before cleanup tick
+- **WHEN** a disconnected root receives the next global-state event before its ticker fires
+- **THEN** it cleans up without restoring state or rendering the disconnected root

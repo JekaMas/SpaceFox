@@ -1,0 +1,37 @@
+test_projection_negative (tests.test_global_map.GlobalMapTest.test_projection_negative) ... ok
+test_projection_positive (tests.test_global_map.GlobalMapTest.test_projection_positive) ... ERROR
+test_selection_positive (tests.test_global_map.GlobalMapTest.test_selection_positive) ... ERROR
+test_audit_and_retired_scene_arguments (tests.test_retired_static_entrypoints.RetiredStaticEntrypointsTest.test_audit_and_retired_scene_arguments) ... ok
+test_catalog_complete (tests.test_foundation.FoundationTest.test_catalog_complete) ... ok
+test_catalog_rejects_corruption (tests.test_foundation.FoundationTest.test_catalog_rejects_corruption) ... ok
+test_distribution_inventory (tests.test_foundation.FoundationTest.test_distribution_inventory) ... ok
+test_language_preferences (tests.test_foundation.FoundationTest.test_language_preferences) ... ok
+test_unlicensed_distribution_rejected (tests.test_foundation.FoundationTest.test_unlicensed_distribution_rejected) ... ok
+test_unsupported_and_invalid_inputs (tests.test_foundation.FoundationTest.test_unsupported_and_invalid_inputs) ... ok
+
+======================================================================
+ERROR: test_projection_positive (tests.test_global_map.GlobalMapTest.test_projection_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_global_map.py", line 30, in test_projection_positive
+    view=build_site_view(ROOT,self.catalog,'ll2:site:13')
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tools/spacefox/global_map.py", line 154, in build_site_view
+    _require(len(canonical_bytes(manifest))+sum(map(len,objects.values())) <= LIMITS['artifactBytes'], 'geography publisher budget exceeded')
+                                                                              ^^^^^^
+NameError: name 'LIMITS' is not defined
+
+======================================================================
+ERROR: test_selection_positive (tests.test_global_map.GlobalMapTest.test_selection_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_global_map.py", line 55, in test_selection_positive
+    view=build_site_view(ROOT,catalog,site)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tools/spacefox/global_map.py", line 154, in build_site_view
+    _require(len(canonical_bytes(manifest))+sum(map(len,objects.values())) <= LIMITS['artifactBytes'], 'geography publisher budget exceeded')
+                                                                              ^^^^^^
+NameError: name 'LIMITS' is not defined
+
+----------------------------------------------------------------------
+Ran 10 tests in 9.739s
+
+FAILED (errors=2)

@@ -105,3 +105,12 @@ Physical watch, paired phone, battery energy, physical frame/wake timing, exact 
 - Post-peer real retained106-file readback observed13.605s serial and4.022s with four workers,107GETs. Snapshot lookup was substituted for this transport measurement; actual Git/pending/root-race and CLI are separately observed. Fresh authority/source/CAS checks, final complete readback, source age, quota and both clocks remain. Generation preserves the current watch bytes/reminders; no native inputs, SDK, device or Store behavior was newly claimed.
 - Clean checkpoint selected6,651 release inputs and admitted the five primary locales; actual756-input sparse source/corruption gate passed. Final documentation paths were reconciled as disjoint from the selected release and sparse input sets. Root journal-only acceptance does not invalidate those observations.
 - Next: C / task8.3 (ENG-01, CLEAN-02, WEB-01), preserving per-invocation release mutation/source/signature guarantees and authenticated old proof while removing proven unused active legacy entrypoints. D stays unstarted. Complete C author/self-GREEN, fresh peer/fix-GREEN and root judgment before D.
+
+## Group C author checkpoint
+
+C / task8.3 is implemented with focused source/SDK mutation, real Chrome teardown,
+legacy dependency and current metadata controls. [c/APPLY.md](c/APPLY.md) owns the
+exact retirement-to-current-obligation map, first failures and correction of the
+mistaken duplicate-compiler-read premise. Fresh independent review and root
+judgment remain pending; task8.3 stays unchecked and D remains unstarted. Clean
+source-copy admission and current scan measurement are the final author checks.

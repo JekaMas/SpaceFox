@@ -11,7 +11,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from tools.build_geographic_context import read_artifact, write_artifact
+from tests.geography_artifact_helpers import read_artifact, write_artifact
 from tools.spacefox.catalog import build_catalog, loads_json
 from tools.spacefox.geographic_context import build_artifact, build_view, validate_artifact
 from tools.spacefox.global_map import GeographyError

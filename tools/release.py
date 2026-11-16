@@ -58,7 +58,16 @@ def source_state(root: Path) -> dict:
     paths = git(root, "ls-files", "-z").split("\0")
     # Preserve the proof actually used by manifest admission, alongside compiler
     # inputs. Its retained raw pages are replayed locally, never fetched here.
-    catalog = json.loads((root / "locales/catalog.json").read_text())
+    # Only small admission metadata is retained. Large evidence/source bytes are
+    # read once below and released; nothing is reused by the next source fence.
+    metadata = {}
+    def read_metadata(name):
+        if name not in metadata:
+            metadata[name] = (root / name).read_bytes()
+        return metadata[name]
+    def metadata_digest(name):
+        return hashlib.sha256(read_metadata(name)).hexdigest()
+    catalog = json.loads(read_metadata("locales/catalog.json"))
     proof = catalog["supportPolicy"]["softwareQualificationProof"]
     admission = {"locales/catalog.json", "release/native-admission-inputs.json",
                  # The historical site-flag observer imports these test modules
@@ -72,7 +81,7 @@ def source_state(root: Path) -> dict:
                  "tests/native_historical_binding.py"}
     # The retained delta validators reconstruct historical source trees. Their
     # exact proof inputs must travel with a release and isolated qualification.
-    additional = json.loads((root / "release/native-admission-inputs.json").read_text())
+    additional = json.loads(read_metadata("release/native-admission-inputs.json"))
     require(isinstance(additional, list) and len(additional) == len(set(additional)),
             "invalid native admission input manifest")
     for name in additional:
@@ -106,14 +115,14 @@ def source_state(root: Path) -> dict:
             require(isinstance(name, str) and name and not PurePosixPath(name).is_absolute() and
                     ".." not in PurePosixPath(name).parts, "unsafe language proof path")
             admission.add(name)
-        receipt = json.loads((root / proof["receiptPath"]).read_text())
+        receipt = json.loads(read_metadata(proof["receiptPath"]))
         historical = {}
         for proof_key in ("ux02DeltaProof", "ux03DeltaProof", "cachePortDeltaProof", "deliveryDeltaProof"):
             if proof_key not in proof:
                 continue
             delta_path = proof[proof_key]["path"]
             require(delta_path in paths, proof_key + " admission proof must be tracked")
-            delta = json.loads((root / delta_path).read_text())
+            delta = json.loads(read_metadata(delta_path))
             historical.update(delta["priorSnapshots"])
             admission.add(delta_path)
             admission.add(delta["priorCatalog"]["path"])
@@ -128,14 +137,14 @@ def source_state(root: Path) -> dict:
         for name, expected in proof["productionSources"].items():
             if name not in paths and name in historical:
                 snapshot = historical[name]
-                require(snapshot["path"] in admission and digest(root / snapshot["path"]) == snapshot["sha256"],
+                require(snapshot["path"] in admission and metadata_digest(snapshot["path"]) == snapshot["sha256"],
                         "missing historical admission source snapshot: " + name)
             else:
                 admission.add(name)
         if "display02DeltaProof" in proof:
             delta_path = proof["display02DeltaProof"]["path"]
             require(delta_path in paths, "DISPLAY02 admission proof must be tracked")
-            delta = json.loads((root / delta_path).read_text())
+            delta = json.loads(read_metadata(delta_path))
             admission.update((delta_path, delta["priorCatalog"]["path"]))
             admission.update(delta["inputs"])
             admission.update(item["path"] for item in delta["priorSnapshots"].values())
@@ -144,14 +153,14 @@ def source_state(root: Path) -> dict:
             # validator reconstructs that exact path from its preserved snapshot.
             for name, snapshot in delta["priorSnapshots"].items():
                 if name in admission and name not in paths:
-                    require(snapshot["path"] in paths and digest(root / snapshot["path"]) == snapshot["sha256"],
+                    require(snapshot["path"] in paths and metadata_digest(snapshot["path"]) == snapshot["sha256"],
                             "missing DISPLAY02 historical source snapshot: " + name)
                     admission.remove(name)
                     admission.add(snapshot["path"])
         if "currentNativeUiDeltaProof" in proof:
             delta_path = proof["currentNativeUiDeltaProof"]["path"]
             require(delta_path in paths, "current native UI proof must be tracked")
-            delta = json.loads((root / delta_path).read_text())
+            delta = json.loads(read_metadata(delta_path))
             admission.add(delta_path)
             admission.update(delta["reviewedCurrent"])
             admission.update(item["path"] for item in delta["historicalSnapshots"].values())
@@ -167,19 +176,46 @@ def source_state(root: Path) -> dict:
                              (name.startswith("tools/") and name.endswith(".py")) or name.startswith("tests/") or name in admission or
                              name == "assets/rocket-pack/LICENSE" or
                              name in ("tools/release.py", "tools/ReleaseInspector.java", "tools/build_watchface.py",
+                                      "prototype/mission.js", "prototype/mission.html",
                                       "LICENSE", "THIRD_PARTY_NOTICES.md", "docs/AGENT_SETUP.md",
                                       "docs/RELEASE_AND_UPDATES.md", "docs/SUPPORTED_DEVICES.md", "docs/images/simulator-fr165m-0.1.13.png", "docs/images/simulator-fr165m-low-0.1.13.png", "README.md", "TESTING.md")):
             continue
         path = root / name
         require(path.is_file() and not path.is_symlink(), "release input must be a regular tracked file: " + name)
+        data = metadata.pop(name) if name in metadata else path.read_bytes()
         require(path.suffix.lower() not in (".pem", ".key", ".der", ".p12", ".pfx") and
-                (b"-----BEGIN " + b"PRIVATE KEY-----") not in path.read_bytes() and
-                (b"-----BEGIN " + b"RSA PRIVATE KEY-----") not in path.read_bytes(),
+                (b"-----BEGIN " + b"PRIVATE KEY-----") not in data and
+                (b"-----BEGIN " + b"RSA PRIVATE KEY-----") not in data,
                 "secret-shaped source input refused: " + name)
-        inputs[name] = digest(path)
+        inputs[name] = hashlib.sha256(data).hexdigest()
     require("tools/release.py" in inputs and "release/signing-identity.json" in inputs,
             "release owner and identity must be committed")
     return {"revision": git(root, "rev-parse", "HEAD").strip(), "inputs": inputs}
+
+
+def validate_snapshot_inputs(inputs: Path, source_hashes: dict, generated_hashes: dict) -> None:
+    """One fresh complete compiler-input fence; no before/after cache."""
+    expected_files = set(source_hashes) | {path.relative_to(inputs).as_posix() for path in generated_hashes}
+    expected_directories = {str(parent) for name in expected_files
+                            for parent in PurePosixPath(name).parents if str(parent) != "."}
+    # These generated files select what the SDK actually consumes. Their
+    # initial bytes must be retained, rather than trusting a final digest of
+    # settings that may have redirected the second compiler invocation.
+    require(all(path.is_file() and not path.is_symlink() and digest(path) == expected
+                for path, expected in generated_hashes.items()),
+            "generated build inputs changed during release build")
+    # SDK source/resource paths discover files by directory, so unchanged
+    # recorded bytes alone cannot exclude newly added compiler inputs.
+    # SDK intermediates live beside inputs, outside this exact inventory.
+    entries = list(inputs.rglob("*"))
+    require(inputs.is_dir() and not inputs.is_symlink() and
+            all(not path.is_symlink() and (path.is_file() or path.is_dir()) for path in entries) and
+            {path.relative_to(inputs).as_posix() for path in entries if path.is_file()} == expected_files and
+            {path.relative_to(inputs).as_posix() for path in entries if path.is_dir()} == expected_directories,
+            "snapshot input inventory changed during release build")
+    require(all((inputs / name).is_file() and not (inputs / name).is_symlink() and
+                digest(inputs / name) == expected for name, expected in source_hashes.items()),
+            "snapshot inputs changed during release build")
 
 
 def private_file(path: Path, root: Path, label: str) -> Path:
@@ -566,29 +602,8 @@ def build_release(output: Path, *, key: Path, root: Path = ROOT, mode: str = "ca
                       .replace("base.resourcePath = resources\n", "base.resourcePath = watchface/resources\n")
                       .replace(" = resources-", " = watchface/resources-"))
     generated_hashes = {path: digest(path) for path in (generated, jungle)}
-    expected_files = set(before["inputs"]) | {"manifest.xml", "monkey.jungle"}
-    expected_directories = {str(parent) for name in expected_files
-                            for parent in PurePosixPath(name).parents if str(parent) != "."}
-
     def validate_build_inputs() -> None:
-        # These generated files select what the SDK actually consumes. Their
-        # initial bytes must be retained, rather than trusting a final digest of
-        # settings that may have redirected the second compiler invocation.
-        require(all(path.is_file() and not path.is_symlink() and digest(path) == expected
-                    for path, expected in generated_hashes.items()),
-                "generated build inputs changed during release build")
-        # SDK source/resource paths discover files by directory, so unchanged
-        # recorded bytes alone cannot exclude newly added compiler inputs.
-        # SDK intermediates live beside inputs, outside this exact inventory.
-        entries = list(inputs.rglob("*"))
-        require(inputs.is_dir() and not inputs.is_symlink() and
-                all(not path.is_symlink() and (path.is_file() or path.is_dir()) for path in entries) and
-                {path.relative_to(inputs).as_posix() for path in entries if path.is_file()} == expected_files and
-                {path.relative_to(inputs).as_posix() for path in entries if path.is_dir()} == expected_directories,
-                "snapshot input inventory changed during release build")
-        require(all((inputs / name).is_file() and not (inputs / name).is_symlink() and
-                    digest(inputs / name) == expected for name, expected in before["inputs"].items()),
-                "snapshot inputs changed during release build")
+        validate_snapshot_inputs(inputs, before["inputs"], generated_hashes)
 
     public = output / "developer-public.der"
     public.write_bytes(pub)

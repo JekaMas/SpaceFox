@@ -409,6 +409,18 @@
       "capability": "visual-catalog",
       "title": "Bounded host selection and validation work",
       "fingerprint": "4a34c14fd61bb1f3d1c630e888b5da91129ad6dc962a3dbd79c6f12142d323c4"
+    },
+    {
+      "id": "RL21",
+      "capability": "release-lifecycle",
+      "title": "Fresh release input fences and retired operator entrypoints",
+      "fingerprint": "4514535e6f10e503f134aa9889dda2e41ebab3b239c963eb6df323d5b9c01352"
+    },
+    {
+      "id": "WF21",
+      "capability": "watchface",
+      "title": "Bounded illustrative embed ownership",
+      "fingerprint": "b4cc2b010611bd2b3199fa80c04a769047fbd7307300e86bfc12d74ac2795aa7"
     }
   ],
   "properties": [
@@ -702,7 +714,7 @@
       ],
       "statement": "The system SHALL identify a reschedule when the accepted target time changes for\nthe same launch identifier, recalculate the countdown and retain a change flag\nfor that selected launch. An unchanged successful refresh SHALL not create or\nclear the flag; selecting a different launch SHALL not inherit it.",
       "owner": "tools/spacefox/schedule.py; tools/spacefox/wire.py; watchface/source/NativeFeed.mc; watchface/source/FeedScene.mc; watchface/source/ScheduleState.mc; watchface/source/SpaceFoxView.mc",
-      "oracle": "Literal current MIN target1794609900→1794611100 at clock1794551202 produces58698→59898 seconds (16:18:18→16:38:18), +1200 and same-ID flag. Unchanged validation cannot create or clear it. Withdrawal gives null remaining and --:--:--; next timed launch identity cannot inherit prior latch. Actual captured SEC merge additionally retains unchanged-exact-UTC metadata behavior. Provider precision and exact_utc=null remain intact for MIN. Native assertions execute production classes rather than a Python countdown model.",
+      "oracle": "Literal current MIN target1794609900\u21921794611100 at clock1794551202 produces58698\u219259898 seconds (16:18:18\u219216:38:18), +1200 and same-ID flag. Unchanged validation cannot create or clear it. Withdrawal gives null remaining and --:--:--; next timed launch identity cannot inherit prior latch. Actual captured SEC merge additionally retains unchanged-exact-UTC metadata behavior. Provider precision and exact_utc=null remain intact for MIN. Native assertions execute production classes rather than a Python countdown model.",
       "source_globs": [
         "tests/test_basic_reschedule.py",
         "tests/fixtures/basic_reschedule/**",
@@ -1588,7 +1600,7 @@
         "Main values remain visible",
         "Local time changes"
       ],
-      "statement": "Software boundary: the unchanged compiled native watch face displays Garmin local time as primary fixed24-hour HH:mm, with UTC countdown independent of local-zone presentation. Actual captured real launch text, countdown and four selected metrics remain readable within the390×390 circular active scene using accepted fixed geometry and bounded labels. Physical readability remains release task5.1/6.1.",
+      "statement": "Software boundary: the unchanged compiled native watch face displays Garmin local time as primary fixed24-hour HH:mm, with UTC countdown independent of local-zone presentation. Actual captured real launch text, countdown and four selected metrics remain readable within the390\u00d7390 circular active scene using accepted fixed geometry and bounded labels. Physical readability remains release task5.1/6.1.",
       "owner": "watchface/source/WatchClock.mc; watchface/source/SpaceFoxView.mc; watchface/source/SceneRenderer.mc",
       "oracle": "Retained exact ten-test SDK clock table (including actual Garmin Time.now/System.getClockTime smoke and literal7200 seconds despite local changes); new actual production text draw calls checked by independent circle/rectangle geometry and resource glyph bounds; retained source-bound current map screenshot inspected. No recreated Python clock/layout model.",
       "source_globs": [
@@ -1615,7 +1627,7 @@
         "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
       "planning_status": "Implemented whole software property; actual selected verifier receipt required. P2 conjunctive alias folded, external release obligations retained.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF02.P1",
@@ -1924,7 +1936,7 @@
         "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
       "planning_status": "planned; no acceptance or implementation is inferred by this evidence topology",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF10.P1",
@@ -3202,7 +3214,7 @@
         "evidence/final-local-review-20261115/geography-fixed.log"
       ],
       "planning_status": "Current-only witnesses remain planned after executed fixture/harness closure retirement. Retained historical observations do not execute this graph or close product acceptance.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "LS05.P7",
@@ -3964,7 +3976,7 @@
         "Raise wrist",
         "Display sleeps"
       ],
-      "statement": "Whole simulator software animation: active wake starts a 2–3s rocket-only animation, valid frame duration is bounded, natural completion resets, sleep/hide/low-power stops, static fallback remains readable and no liftoff is inferred. Physical wrist activation and power measurements remain task 5.3.",
+      "statement": "Whole simulator software animation: active wake starts a 2\u20133s rocket-only animation, valid frame duration is bounded, natural completion resets, sleep/hide/low-power stops, static fallback remains readable and no liftoff is inferred. Physical wrist activation and power measurements remain task 5.3.",
       "owner": "watchface/source/SpaceFoxView.mc; watchface/source/SceneRenderer.mc",
       "oracle": "Actual source-bound SDK framework/lifecycle and bitmap captures with literal time/pixel bounds, plus independent receipt corruption refusal; physical watch remains separate.",
       "source_globs": [
@@ -4050,7 +4062,7 @@
         "Health data unavailable",
         "Select watch battery"
       ],
-      "statement": "Four fixed ACTIVE positions independently persist accessible Garmin source identities, including duplicates; established phone choices 0–5 preserve their meanings, unavailable readings do not reuse stale values, and watch charge remains distinct from Body Battery. LOW omits all four fields.",
+      "statement": "Four fixed ACTIVE positions independently persist accessible Garmin source identities, including duplicates; established phone choices 0\u20135 preserve their meanings, unavailable readings do not reuse stale values, and watch charge remains distinct from Body Battery. LOW omits all four fields.",
       "owner": "watchface/source/SceneSettings.mc; watchface/source/FieldSources.mc; watchface/source/SettingsMenu.mc; watchface/source/SpaceFoxView.mc; watchface/source/SceneRenderer.mc",
       "oracle": "Current fields018 FR165/FR170 SDK receipts and actual 390/454 stock observations; older six-role receipts retain only their original source boundary. Physical health-source, phone and battery acceptance remain separate.",
       "source_globs": [
@@ -5196,7 +5208,7 @@
         "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
       "planning_status": "Reconcile individual DISPLAY03 source-bound observations with the complete requirement; no full property result inferred.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF17.P1",
@@ -5228,7 +5240,7 @@
         "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
       "planning_status": "Reconcile individual DISPLAY03 source-bound observations with the complete requirement; no full property result inferred.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF18.P1",
@@ -5261,7 +5273,7 @@
         "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
       "planning_status": "Reconcile individual DISPLAY03 source-bound observations with the complete requirement; no full property result inferred.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF19.P1",
@@ -5293,7 +5305,7 @@
         "openspec/changes/spacefox-watchface/evidence/ux01-016/**"
       ],
       "planning_status": "Reconcile individual DISPLAY03 source-bound observations with the complete requirement; no full property result inferred.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF16.P2",
@@ -5314,7 +5326,7 @@
         "openspec/changes/spacefox-watchface/evidence/display03-active-tick-wake/author-runtime/final-native-receipt.json"
       ],
       "planning_status": "Bounded retained SDK observation only; full P1 remains planned.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF17.P2",
@@ -5335,7 +5347,7 @@
         "openspec/changes/spacefox-watchface/evidence/display03-active-tick-wake/author-runtime/final-native-receipt.json"
       ],
       "planning_status": "Bounded retained SDK observation only; full P1 remains planned.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "WF17.P3",
@@ -5355,7 +5367,7 @@
         "watchface/manifest.xml"
       ],
       "planning_status": "Bounded five-vector current-source SDK execution; full scenario remains separately mapped.",
-      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50→70 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
+      "implementation_note": "UX01: retain source-bound baseline RED and native SDK lifecycle/pixel/data observations, including fresh LOW 50\u219270 battery, and re-run only invalidated owners. Physical phone/watch and Store delivery remain open. See evidence/ux01-016/STATUS.md."
     },
     {
       "id": "VC14.P4",
@@ -5447,7 +5459,7 @@
         "openspec/changes/spacefox-watchface/evidence/fields018/display03-red/**",
         "openspec/changes/spacefox-watchface/evidence/fields018/display03-green/**"
       ],
-      "planning_status": "Current source-bound native and stock simulator observations are recorded; physical watch and phone remain outside this boundary."
+      "planning_status": "implemented and author self-verified; fresh peer and root judgment pending"
     },
     {
       "id": "WF22.P1",
@@ -5455,7 +5467,7 @@
       "scenarios": [
         "Return to a watch-selected source"
       ],
-      "statement": "Static phone choices 0–5 and watch-selected option 6 retain the saved source independently; missing selection displays unavailable.",
+      "statement": "Static phone choices 0\u20135 and watch-selected option 6 retain the saved source independently; missing selection displays unavailable.",
       "owner": "watchface/source/FieldSources.mc; watchface/source/SettingsMenu.mc; watchface/source/SpaceFoxView.mc",
       "oracle": "Typed receipt observers authenticate exact executed FR165/FR170 native source, test program and framework table; positive and negative graph edges may observe separate assertions in the same native batch. No independent execution, physical device or paired-phone claim.",
       "source_globs": [
@@ -5756,6 +5768,54 @@
         "watchface/manifest.xml"
       ],
       "planning_status": "implemented and author self-verified with exact current watch bytes; independent verification and root judgment pending"
+    },
+    {
+      "id": "RL21.P1",
+      "requirement_id": "RL21",
+      "scenarios": [
+        "Unchanged current release inputs",
+        "Inputs change between compiler boundaries"
+      ],
+      "statement": "Fresh complete source and compiler-snapshot fences preserve mutation, inventory and secret refusal with one captured read per consumer fence.",
+      "owner": "tools/release.py",
+      "oracle": "Independent expected byte hashes, filesystem mutation events and observable callback/resource counts.",
+      "source_globs": [
+        "tools/release.py",
+        "tests/test_performance021_c.py"
+      ],
+      "planning_status": "implemented and author self-verified; fresh peer and root judgment pending"
+    },
+    {
+      "id": "RL21.P2",
+      "requirement_id": "RL21",
+      "scenarios": [
+        "Unchanged current release inputs",
+        "Inputs change between compiler boundaries"
+      ],
+      "statement": "42-profile SDK pin and capability consumers share one fresh per-call capture and reject later mutations.",
+      "owner": "tools/build_watchface.py",
+      "oracle": "Independent expected byte hashes, filesystem mutation events and observable callback/resource counts.",
+      "source_globs": [
+        "tools/build_watchface.py",
+        "tests/test_performance021_c.py"
+      ],
+      "planning_status": "implemented and author self-verified; fresh peer and root judgment pending"
+    },
+    {
+      "id": "RL21.P3",
+      "requirement_id": "RL21",
+      "scenarios": [
+        "Current tooling after retirement",
+        "Historical proof references deleted active source"
+      ],
+      "statement": "Retired executable exporters are absent; shared current primitives and authenticated old proof remain.",
+      "owner": "tools/spacefox/global_map.py",
+      "oracle": "Independent expected byte hashes, filesystem mutation events and observable callback/resource counts.",
+      "source_globs": [
+        "tools/spacefox/global_map.py",
+        "tests/test_performance021_c.py"
+      ],
+      "planning_status": "implemented and author self-verified; fresh peer and root judgment pending"
     }
   ],
   "cases": [
@@ -10163,9 +10223,9 @@
       "scenario": "Local time changes",
       "scenario_fingerprint": "6c19dec060e1a363b43b81ce7217fe43f54e21f99774bbc449c34bd3a3688013",
       "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
-      "observable": "Retained actual Garmin API smoke and native literal local08:00→12:00 with unchangedUTC duration7200; ordinary live clock advances.",
+      "observable": "Retained actual Garmin API smoke and native literal local08:00\u219212:00 with unchangedUTC duration7200; ordinary live clock advances.",
       "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
-      "green_expectation": "Retained actual Garmin API smoke and native literal local08:00→12:00 with unchangedUTC duration7200; ordinary live clock advances.",
+      "green_expectation": "Retained actual Garmin API smoke and native literal local08:00\u219212:00 with unchangedUTC duration7200; ordinary live clock advances.",
       "invalidation_dependencies": [
         "tests/test_basic_time_fields.py",
         "tests/fixtures/basic_time_fields/**",
@@ -10209,9 +10269,9 @@
       "scenario": "Local time changes",
       "scenario_fingerprint": "6c19dec060e1a363b43b81ce7217fe43f54e21f99774bbc449c34bd3a3688013",
       "setup": "Current unchanged native owners on SDK9.3 FR165 API5.2. Retain original valid ten-test clock and ordinary six-role/current map receipts. New test-only numeric telemetry/clock inputs; captured real launch text only.",
-      "observable": "Native23:59→00:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
+      "observable": "Native23:59\u219200:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
       "red_expectation": "Fails if any named literal/native observation is missing, contradictory or violates the independently stated relation.",
-      "green_expectation": "Native23:59→00:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
+      "green_expectation": "Native23:59\u219200:01 local change does not alter7200UTC seconds or double-apply offset; damaged identity receipt refuses.",
       "invalidation_dependencies": [
         "tests/test_basic_time_fields.py",
         "tests/fixtures/basic_time_fields/**",
@@ -14048,7 +14108,7 @@
       "polarity": "negative",
       "scenario": "Newly catalogued model lacks artwork",
       "scenario_fingerprint": "e1a2b2a9eadbe0c5c874163655b0c3ae199df8c3dbeae1d7de4d48121623b87e",
-      "setup": "Actual current/frozen producer source and exporter, content-addressed bundles and local retained files; no substituted owner. Mutation helper recomputes actual full content hashes/index/bytes.",
+      "setup": "Actual current internal SFR selected pack and immutable file writer; complete standalone static transport is retired.",
       "observable": "Freshly rehashed current/retained subsets reject invalid lifecycle/date/collection, retained Unknown roles, wrong origins/exact art and typed references.",
       "red_expectation": "Actual baseline current and retained bundle APIs accepted freshly rehashed prohibited selected metadata; original source snapshot red run records literal counterexamples.",
       "green_expectation": "Freshly rehashed current/retained subsets reject invalid lifecycle/date/collection, retained Unknown roles, wrong origins/exact art and typed references.",
@@ -14058,19 +14118,19 @@
         "tools/spacefox/catalog.py",
         "tools/spacefox/global_map.py",
         "tools/spacefox/graphics.py",
-        "tests/test_global_content_selection_r3.py",
         "tests/test_global_content.py",
-        "tests/fixtures/catalog/global-before-content-source.json"
+        "tests/fixtures/catalog/global-before-content-source.json",
+        "tests/test_current_selected_metadata.py"
       ],
-      "test_id": "unittest::tests.test_global_content_selection_r3.GlobalContentSelectionR3Test.test_rehashed_current_retained_metadata_negative",
+      "test_id": "unittest::tests.test_current_selected_metadata.CurrentSelectedMetadataTest.test_selected_metadata_refusals_preserve_files",
       "command_id": "global-content-selection-r3",
       "state": "implemented",
-      "source_path": "tests/test_global_content_selection_r3.py",
+      "source_path": "tests/test_current_selected_metadata.py",
       "substitution": {
         "classification": "NO_TEST_DOUBLE"
       },
-      "source_sha256": "37a517f6a1829ad57b7d1311a597b4f9e5088e349cf775282d2a3816af6637f7",
-      "implementation_note": "Independent R3 content-specific current/retained subset metadata admission; new R4/root judgment required."
+      "source_sha256": "861cd81d1a281659e3575cd6c7e858243ecdba35a439c2f457c07e8afaa6ef1f",
+      "implementation_note": "All eleven original selected metadata mutation classes preserved at the current SFR1M primitive boundary; retired complete static current/previous bundle transport has no active API. See performance021/c/APPLY.md."
     },
     {
       "id": "VC17.P3.C12.NEGATIVE",
@@ -16429,7 +16489,7 @@
       "scenario": "Enter always-on mode",
       "scenario_fingerprint": "da512bbf0d7b6ec5f4576b67a8d4d2e85e2b6535fdebf8247b34d6462633c50b",
       "setup": "Owned UUID, pinnedSDKfr165, ordinary126784B/background61248B; actual temporal events; controlled-clock four-phase pixel probe separately labeled.",
-      "observable": "LOW rejection preserves the accepted seal and guarded full-map AOD through Off/High/reopen; current ordinary full-scene completion is under 8000 ms; four controlled phases have zero inner-circle intersection and the full 390×390 mask has the verified parity-rest property.",
+      "observable": "LOW rejection preserves the accepted seal and guarded full-map AOD through Off/High/reopen; current ordinary full-scene completion is under 8000 ms; four controlled phases have zero inner-circle intersection and the full 390\u00d7390 mask has the verified parity-rest property.",
       "red_expectation": "Missing low callback/guard/restore, changed seal, bad native test profile, over8000ms or repeated same-position pixels refuses.",
       "green_expectation": "Authenticated historical registered-callback recovery plus current callback, full-scene timing, bundled-outline equivalence and four-phase/mask observations; no current execution is inferred from historical logs.",
       "invalidation_dependencies": [
@@ -16469,7 +16529,7 @@
       "scenario": "Enter always-on mode",
       "scenario_fingerprint": "da512bbf0d7b6ec5f4576b67a8d4d2e85e2b6535fdebf8247b34d6462633c50b",
       "setup": "Owned UUID, pinnedSDKfr165, ordinary126784B/background61248B; actual temporal events; controlled-clock four-phase pixel probe separately labeled.",
-      "observable": "LOW rejection preserves the accepted seal and guarded full-map AOD through Off/High/reopen; current ordinary full-scene completion is under 8000 ms; four controlled phases have zero inner-circle intersection and the full 390×390 mask has the verified parity-rest property.",
+      "observable": "LOW rejection preserves the accepted seal and guarded full-map AOD through Off/High/reopen; current ordinary full-scene completion is under 8000 ms; four controlled phases have zero inner-circle intersection and the full 390\u00d7390 mask has the verified parity-rest property.",
       "red_expectation": "Missing low callback/guard/restore, changed seal, bad native test profile, over8000ms or repeated same-position pixels refuses.",
       "green_expectation": "Authenticated historical registered-callback recovery plus current callback, full-scene timing, bundled-outline equivalence and four-phase/mask observations; no current execution is inferred from historical logs.",
       "invalidation_dependencies": [
@@ -16990,7 +17050,7 @@
       "substitution": {
         "classification": "EXTERNAL_BOUNDARY",
         "owner_replaced": "Physical FR165 replaced by pinned ordinary SDK simulator; network inputs are exact owned fixture bytes. This command reads retained source-bound observations; it does not execute a new SDK run.",
-        "allowed_proof": "Six independent literal SDKtransformPoint anchors plus native pixel comparison prove rest repair60→0differences and transformed-path preservation; tall/wide endpoints retain pixels.",
+        "allowed_proof": "Six independent literal SDKtransformPoint anchors plus native pixel comparison prove rest repair60\u21920differences and transformed-path preservation; tall/wide endpoints retain pixels.",
         "forbidden_claims": [
           "Physical/human/phone/BLE/battery/Store acceptance",
           "Public HTTPS/Linux motion delivery or universal/peak performance",
@@ -17581,9 +17641,9 @@
       "scenario": "Known new launch time",
       "scenario_fingerprint": "ff1c31bcd1c140b6f53cf040269e54e738d75e18e6819320bba99350d5d04a39",
       "setup": "Retained raw captured Starship MIN record; technical UTC/ID mutations only, verbatim display text. Current schema3 SFR1M captured envelope with actual production schedule projection. Pinned FR165 SDK uses four new test-only native assertions and numeric clock. Captured historical SEC record supplies agreeing-target metadata merge assertion.",
-      "observable": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698→59898, text16:18:18→16:38:18, flag true.",
+      "observable": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698\u219259898, text16:18:18\u219216:38:18, flag true.",
       "red_expectation": "Fails if the stated literal relation, latch, identity or precision assertion is false, or the exact native framework test is missing/fails.",
-      "green_expectation": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698→59898, text16:18:18→16:38:18, flag true.",
+      "green_expectation": "Same captured MIN launch moves+1200 seconds; current canonical schema3 preserves exact_utc=null/source precision1 and new nominal UTC; actual native remaining58698\u219259898, text16:18:18\u219216:38:18, flag true.",
       "invalidation_dependencies": [
         "tests/test_basic_reschedule.py",
         "tests/fixtures/basic_reschedule/**",
@@ -38892,7 +38952,7 @@
           "Real third-party provider lifecycle or paired-phone UI acceptance"
         ]
       },
-      "implementation_note": "Receipt observer only; does not turn one native batch into multiple independent executions."
+      "implementation_note": "C author direct checks and actual Chrome DOM receipts in performance021/c; fresh peer/root remain pending."
     },
     {
       "id": "WF21.P1.S01.NEGATIVE",
@@ -38934,7 +38994,7 @@
           "Real third-party provider lifecycle or paired-phone UI acceptance"
         ]
       },
-      "implementation_note": "Receipt observer only; does not turn one native batch into multiple independent executions."
+      "implementation_note": "C author direct checks and actual Chrome DOM receipts in performance021/c; fresh peer/root remain pending."
     },
     {
       "id": "WF21.P1.S02.POSITIVE",
@@ -38976,7 +39036,7 @@
           "Real third-party provider lifecycle or paired-phone UI acceptance"
         ]
       },
-      "implementation_note": "Receipt observer only; does not turn one native batch into multiple independent executions."
+      "implementation_note": "C author direct checks and actual Chrome DOM receipts in performance021/c; fresh peer/root remain pending."
     },
     {
       "id": "WF21.P1.S02.NEGATIVE",
@@ -39018,7 +39078,7 @@
           "Real third-party provider lifecycle or paired-phone UI acceptance"
         ]
       },
-      "implementation_note": "Receipt observer only; does not turn one native batch into multiple independent executions."
+      "implementation_note": "C author direct checks and actual Chrome DOM receipts in performance021/c; fresh peer/root remain pending."
     },
     {
       "id": "WF22.P1.S01.POSITIVE",
@@ -40514,6 +40574,174 @@
       "source_path": "tests/test_performance021_b_peer.py",
       "source_sha256": "6262a265c0e58d2784318e1e0dda16d19a25e0f1e6cc18f05223bf82e80408cb",
       "implementation_note": "Independent repair and local evidence: evidence/performance021/b/PEER.md; root judgment pending."
+    },
+    {
+      "id": "RL21.P1.test_source_capture_single_read_and_fresh_fence",
+      "property_id": "RL21.P1",
+      "polarity": "positive",
+      "scenario": "Unchanged current release inputs",
+      "scenario_fingerprint": "36d55296647e4819d9d5021981bd1b86a072119018f0f3be6de70dc763f30983",
+      "setup": "Local current inputs and isolated mutation/lifetime controls; no provider or production key.",
+      "observable": "test_source_capture_single_read_and_fresh_fence",
+      "red_expectation": "Required digest, refusal or cleanup assertion fails.",
+      "green_expectation": "Independent byte/refusal/lifetime assertions pass.",
+      "invalidation_dependencies": [
+        "tools/release.py",
+        "tests/test_performance021_c.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_c.GroupCTest.test_source_capture_single_read_and_fresh_fence",
+      "command_id": "performance021-c",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_c.py",
+      "source_sha256": "0798dcbcd62e651fedfcdc928414542496701b3b8015e53bfabbea903b959dbc",
+      "implementation_note": "C author direct checks and actual Chrome DOM receipts in performance021/c; fresh peer/root remain pending."
+    },
+    {
+      "id": "RL21.P1.test_snapshot_mutation_sequences",
+      "property_id": "RL21.P1",
+      "polarity": "negative",
+      "scenario": "Inputs change between compiler boundaries",
+      "scenario_fingerprint": "33f6768fabc9bf1886e9e4d41c8c6348eead012cddbcb0d818fe852e07d39185",
+      "setup": "Local current inputs and isolated mutation/lifetime controls; no provider or production key.",
+      "observable": "test_snapshot_mutation_sequences",
+      "red_expectation": "Required digest, refusal or cleanup assertion fails.",
+      "green_expectation": "Independent byte/refusal/lifetime assertions pass.",
+      "invalidation_dependencies": [
+        "tools/release.py",
+        "tests/test_performance021_c.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_c.GroupCTest.test_snapshot_mutation_sequences",
+      "command_id": "performance021-c",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_c.py",
+      "source_sha256": "0798dcbcd62e651fedfcdc928414542496701b3b8015e53bfabbea903b959dbc",
+      "implementation_note": "C author direct checks and actual Chrome DOM receipts in performance021/c; fresh peer/root remain pending."
+    },
+    {
+      "id": "RL21.P2.test_toolchain_single_capture_and_fresh_mutation",
+      "property_id": "RL21.P2",
+      "polarity": "positive",
+      "scenario": "Unchanged current release inputs",
+      "scenario_fingerprint": "36d55296647e4819d9d5021981bd1b86a072119018f0f3be6de70dc763f30983",
+      "setup": "Local current inputs and isolated mutation/lifetime controls; no provider or production key.",
+      "observable": "test_toolchain_single_capture_and_fresh_mutation",
+      "red_expectation": "Required digest, refusal or cleanup assertion fails.",
+      "green_expectation": "Independent byte/refusal/lifetime assertions pass.",
+      "invalidation_dependencies": [
+        "tools/build_watchface.py",
+        "tests/test_performance021_c.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_c.GroupCTest.test_toolchain_single_capture_and_fresh_mutation",
+      "command_id": "performance021-c",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_c.py",
+      "source_sha256": "0798dcbcd62e651fedfcdc928414542496701b3b8015e53bfabbea903b959dbc",
+      "implementation_note": "C author direct checks and actual Chrome DOM receipts in performance021/c; fresh peer/root remain pending."
+    },
+    {
+      "id": "RL21.P2.test_toolchain_pin_mutations_refuse",
+      "property_id": "RL21.P2",
+      "polarity": "negative",
+      "scenario": "Inputs change between compiler boundaries",
+      "scenario_fingerprint": "33f6768fabc9bf1886e9e4d41c8c6348eead012cddbcb0d818fe852e07d39185",
+      "setup": "Local current inputs and isolated mutation/lifetime controls; no provider or production key.",
+      "observable": "test_toolchain_pin_mutations_refuse",
+      "red_expectation": "Required digest, refusal or cleanup assertion fails.",
+      "green_expectation": "Independent byte/refusal/lifetime assertions pass.",
+      "invalidation_dependencies": [
+        "tools/build_watchface.py",
+        "tests/test_performance021_c.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_c.GroupCTest.test_toolchain_pin_mutations_refuse",
+      "command_id": "performance021-c",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_c.py",
+      "source_sha256": "0798dcbcd62e651fedfcdc928414542496701b3b8015e53bfabbea903b959dbc",
+      "implementation_note": "C author direct checks and actual Chrome DOM receipts in performance021/c; fresh peer/root remain pending."
+    },
+    {
+      "id": "RL21.P3.test_retired_routes_and_current_primitives",
+      "property_id": "RL21.P3",
+      "polarity": "positive",
+      "scenario": "Current tooling after retirement",
+      "scenario_fingerprint": "0fe4a4f924c8f0f8f54c78a865625c0145293aef31bf0028aba5f7bd3982dd26",
+      "setup": "Local current inputs and isolated mutation/lifetime controls; no provider or production key.",
+      "observable": "test_retired_routes_and_current_primitives",
+      "red_expectation": "Required digest, refusal or cleanup assertion fails.",
+      "green_expectation": "Independent byte/refusal/lifetime assertions pass.",
+      "invalidation_dependencies": [
+        "tools/spacefox/global_map.py",
+        "tests/test_performance021_c.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_c.GroupCTest.test_retired_routes_and_current_primitives",
+      "command_id": "performance021-c",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_c.py",
+      "source_sha256": "0798dcbcd62e651fedfcdc928414542496701b3b8015e53bfabbea903b959dbc",
+      "implementation_note": "C author direct checks and actual Chrome DOM receipts in performance021/c; fresh peer/root remain pending."
+    },
+    {
+      "id": "RL21.P3.test_changed_retired_snapshot_refuses",
+      "property_id": "RL21.P3",
+      "polarity": "negative",
+      "scenario": "Historical proof references deleted active source",
+      "scenario_fingerprint": "bd96e4d554be3279c5141bfd95b84d9310e4516b1703f69d2970545ce162c9ce",
+      "setup": "Local current inputs and isolated mutation/lifetime controls; no provider or production key.",
+      "observable": "test_changed_retired_snapshot_refuses",
+      "red_expectation": "Required digest, refusal or cleanup assertion fails.",
+      "green_expectation": "Independent byte/refusal/lifetime assertions pass.",
+      "invalidation_dependencies": [
+        "tools/native_performance021_qualification.py",
+        "tests/test_performance021_c.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_c.GroupCTest.test_changed_retired_snapshot_refuses",
+      "command_id": "performance021-c",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_c.py",
+      "source_sha256": "0798dcbcd62e651fedfcdc928414542496701b3b8015e53bfabbea903b959dbc",
+      "implementation_note": "C author direct checks and actual Chrome DOM receipts in performance021/c; fresh peer/root remain pending."
+    },
+    {
+      "id": "WF21.P1.test_embed_lifetime",
+      "property_id": "WF21.P1",
+      "polarity": "positive",
+      "scenario": "Repeated mission mount and unmount",
+      "scenario_fingerprint": "ea5ee36b8defe118911e449522951cf80ed4251ca290d24717399eda752d0b6f",
+      "setup": "Local current inputs and isolated mutation/lifetime controls; no provider or production key.",
+      "observable": "test_embed_lifetime",
+      "red_expectation": "Required digest, refusal or cleanup assertion fails.",
+      "green_expectation": "Independent byte/refusal/lifetime assertions pass.",
+      "invalidation_dependencies": [
+        "prototype/mission.js",
+        "tests/test_performance021_c.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_c.GroupCTest.test_embed_lifetime",
+      "command_id": "performance021-c",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_c.py",
+      "source_sha256": "0798dcbcd62e651fedfcdc928414542496701b3b8015e53bfabbea903b959dbc",
+      "implementation_note": "C author direct checks and actual Chrome DOM receipts in performance021/c; fresh peer/root remain pending."
+    },
+    {
+      "id": "WF21.P1.test_embed_disconnected_event",
+      "property_id": "WF21.P1",
+      "polarity": "negative",
+      "scenario": "Global event arrives before cleanup tick",
+      "scenario_fingerprint": "cb23abda3f64243b6b079a747cfa6a1205770ed08925c098294c140922f1dbd8",
+      "setup": "Local current inputs and isolated mutation/lifetime controls; no provider or production key.",
+      "observable": "test_embed_disconnected_event",
+      "red_expectation": "Required digest, refusal or cleanup assertion fails.",
+      "green_expectation": "Independent byte/refusal/lifetime assertions pass.",
+      "invalidation_dependencies": [
+        "prototype/mission.js",
+        "tests/test_performance021_c.py"
+      ],
+      "test_id": "unittest::tests.test_performance021_c.GroupCTest.test_embed_disconnected_event",
+      "command_id": "performance021-c",
+      "state": "implemented",
+      "source_path": "tests/test_performance021_c.py",
+      "source_sha256": "0798dcbcd62e651fedfcdc928414542496701b3b8015e53bfabbea903b959dbc",
+      "implementation_note": "C author direct checks and actual Chrome DOM receipts in performance021/c; fresh peer/root remain pending."
     }
   ],
   "commands": [
@@ -40711,7 +40939,6 @@
         "tests.test_global_catalog.GlobalCatalogTest.test_maintenance_positive",
         "tests.test_global_map.GlobalMapTest.test_projection_negative",
         "tests.test_global_map.GlobalMapTest.test_projection_positive",
-        "tests.test_global_map.GlobalMapTest.test_selection_negative",
         "tests.test_global_map.GlobalMapTest.test_selection_positive"
       ],
       "cwd": ".",
@@ -40965,13 +41192,13 @@
         "-m",
         "unittest",
         "-v",
-        "tests.test_global_content_selection_r3.GlobalContentSelectionR3Test.test_rehashed_current_retained_metadata_negative"
+        "tests.test_current_selected_metadata.CurrentSelectedMetadataTest.test_selected_metadata_refusals_preserve_files"
       ],
       "cwd": ".",
       "timeout_seconds": 180,
       "authority": "local",
       "planned_boundary": "NO_TEST_DOUBLE",
-      "notes": "Run only the exact active method selectors; retired cases are absent. Retained receipts keep their original source and proof boundary."
+      "notes": "Current SFR1M internal selected metadata boundary; old complete static transport retired by current-format decision."
     },
     {
       "id": "canonical-core-release-sdk-export",
@@ -45548,6 +45775,22 @@
       "authority": "local",
       "planned_boundary": "Loopback HTTP worker cleanup and checked workflow routing",
       "notes": "No hosted Actions execution is claimed; additional in-flight-body regression is in PEER-FOCUSED.txt."
+    },
+    {
+      "id": "performance021-c",
+      "runner": "python-unittest",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_performance021_c"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 180,
+      "authority": "local",
+      "planned_boundary": "Actual files and SDK pin discovery; deterministic callback lifetime controls, browser observation separate."
     }
   ]
 }
