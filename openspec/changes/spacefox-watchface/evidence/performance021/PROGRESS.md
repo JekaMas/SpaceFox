@@ -37,10 +37,10 @@ Native work is last to collect all invalidating edits into one stable profile bu
 | HOST-02 | A / 8.1 | DONE — author + peer + root|
 | HOST-03 | A / 8.1 | DONE — author + peer + root|
 | HOST-07 | A / 8.1 | DONE — author + peer + root|
-| HOST-04 | B / 8.2 | PENDING |
-| HOST-05 | B / 8.2 | PENDING |
-| HOST-06 | B / 8.2 | PENDING |
-| ENG-02 | B / 8.2 | PENDING |
+| HOST-04 | B / 8.2 | AUTHOR GREEN — independent peer and root pending |
+| HOST-05 | B / 8.2 | AUTHOR GREEN — independent peer and root pending |
+| HOST-06 | B / 8.2 | AUTHOR GREEN — independent peer and root pending |
+| ENG-02 | B / 8.2 | AUTHOR GREEN — independent peer and root pending |
 | ENG-01 | C / 8.3 | PENDING |
 | CLEAN-02 | C / 8.3 | PENDING |
 | WEB-01 | C / 8.3 | PENDING |
@@ -80,3 +80,10 @@ Physical watch, paired phone, battery energy, physical frame/wake timing, exact 
 - Next execute B: HOST-04/05/06 and ENG-02, including the now-measured four-child source fence as a retained boundary. Preserve all fresh source/CAS/root checks; do not cache permission/authority across changes. Extend the existing single performance021 source delta against29f3cfd0, not another historical layer.
 - After remaining host changes stabilize, perform one integrated host workload/counter measurement and reconcile every actually invalidated A/B/C proof; do not repeatedly profile for stage or documentation changes. Final native group remains last.
 - Legacy follow-up for C: R5 discovery exposed retired global_map build_bundle/write_bundle and frozen exporter routes. Inspect actual current dependents and remove proven unused active routes, preserving current map primitives and authenticated historical reconstruction. This is focused cleanup under8.3, not a new task or a pass for the retired R5 fixture.
+
+
+## Group B author handoff
+
+- Author local implementation, repair and self-verification for HOST-04/05/06 and ENG-02 are green at source checkpoint `7af6952275760a6c23b02c547816366ff44e4990`; [b/APPLY.md](b/APPLY.md) owns the exact receipts, original failures, evidence boundaries and remaining independent review. Task 8.2 remains unchecked. The overall change remains **NOT DONE**; C/D have not started.
+- The current single performance021 outer proof binds the new host/source and receipt inputs while reconstructing the same authenticated historical native/profile/font proof. The narrow authorized localization-generator repair preserves the existing reminder resources and current watch bytes; no SDK, simulator, signing, provider, Pages, phone, Store or physical claim is made.
+- A fresh independent peer must verify and repair this exact group through green, then root judges it before another group starts. The eight-worker transport failure's cause remains unproven; four workers are the independently testable local boundary.
