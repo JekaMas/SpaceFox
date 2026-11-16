@@ -184,15 +184,15 @@ def export_pending(pub, directory):
 
 
 def _head_tree(root):
-    raw = bounded_git(root, 'ls-tree', '-r', '-l', '-z', 'HEAD').stdout
+    raw = bounded_git(root, 'ls-tree', '-r', '-z', 'HEAD').stdout
     result = {}
     for entry in raw.split(b'\0'):
         if not entry:
             continue
         header, path = entry.split(b'\t', 1)
-        mode, kind, digest, size = header.split()
+        mode, kind, digest = header.split()
         if kind == b'blob':
-            result[os.fsdecode(path)] = (mode, digest.decode('ascii'), int(size))
+            result[os.fsdecode(path)] = (mode, digest.decode('ascii'))
     return result
 
 
@@ -201,20 +201,28 @@ def _tracked_bytes(root, tree, name):
     if path.is_absolute() or '..' in path.parts or not path.parts:
         raise ValueError('unsafe tracked input')
     name = path.as_posix()
-    mode, expected, size = tree[name]
+    mode, expected = tree[name]
     target = root / path
     if mode != b'100644' and mode != b'100755':
         raise ValueError('regular tracked input required')
     if target.is_symlink() or not target.resolve().is_relative_to(root):
         raise ValueError('unsafe tracked input')
-    raw = _read_snapshot(target, size)
-    if len(raw) != size:
-        raise ValueError('tracked input size differs from HEAD')
+    # Resolve sizes only for files actually read: ls-tree -l on a partial
+    # clone fetches every missing blob in the whole repository. Stream the
+    # candidate before allocation, then recheck the stable snapshot so a
+    # changed or oversized worktree file cannot become trusted input.
+    size = target.stat().st_size
     algorithm = hashlib.sha1 if len(expected) == 40 else hashlib.sha256
+    digest = algorithm(b'blob ' + str(size).encode() + b'\0')
+    with target.open('rb') as stream:
+        while chunk := stream.read(65536):
+            digest.update(chunk)
+    if digest.hexdigest() != expected:
+        raise ValueError('tracked input differs from HEAD')
+    raw = _read_snapshot(target, size)
     digest = algorithm(b'blob ' + str(len(raw)).encode() + b'\0')
     digest.update(raw)
-    actual = digest.hexdigest()
-    if actual != expected:
+    if len(raw) != size or digest.hexdigest() != expected:
         raise ValueError('tracked input differs from HEAD')
     return raw
 

@@ -13,6 +13,33 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class HostPerformanceTest(unittest.TestCase):
+    def test_tree_fence_does_not_resolve_unread_blob_sizes(self):
+        import subprocess
+        import tempfile
+        from tools import update_feed
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary).resolve()
+            (root / 'actual').write_bytes(b'expected')
+            (root / 'unrelated').write_bytes(b'other')
+            def git(*args):
+                subprocess.run(['git', '-C', str(root), *args], check=True,
+                               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            git('init', '-q'); git('config', 'user.name', 'test')
+            git('config', 'user.email', 'test@example.invalid')
+            git('add', '.'); git('commit', '-qm', 'test')
+            real = update_feed.bounded_git
+            commands = []
+            def record(path, *args, **kwargs):
+                commands.append(args)
+                return real(path, *args, **kwargs)
+            with patch.object(update_feed, 'bounded_git', side_effect=record):
+                tree = update_feed._head_tree(root)
+                self.assertEqual(update_feed._tracked_bytes(root, tree, 'actual'), b'expected')
+                (root / 'actual').write_bytes(b'tampered')
+                with self.assertRaises(ValueError):
+                    update_feed._tracked_bytes(root, tree, 'actual')
+            self.assertEqual(commands, [('ls-tree', '-r', '-z', 'HEAD')])
+
     def test_geography_positive(self):
         # Building the source catalog needs pins and source admission, not decoded
         # map geometry. A no-map operation must not retain the real corpus.
