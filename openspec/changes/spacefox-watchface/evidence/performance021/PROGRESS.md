@@ -1,6 +1,6 @@
 # Resource-audit implementation — performance021
 
-Status: NOT DONE overall. Group A is complete after author, independent peer repairs and root judgment; 4 of 27 findings are closed, with 23 findings in three groups remaining. The sole checklist is ../../tasks.md; this journal is not a second task list.
+Status: NOT DONE overall. Groups A and B are complete after author, independent peer repairs and root judgment; 8 of 27 findings are closed, with 19 findings in groups C and D remaining. The sole checklist is ../../tasks.md; this journal is not a second task list.
 
 ## Source and authority
 
@@ -37,10 +37,10 @@ Native work is last to collect all invalidating edits into one stable profile bu
 | HOST-02 | A / 8.1 | DONE — author + peer + root|
 | HOST-03 | A / 8.1 | DONE — author + peer + root|
 | HOST-07 | A / 8.1 | DONE — author + peer + root|
-| HOST-04 | B / 8.2 | PEER GREEN — root judgment pending |
-| HOST-05 | B / 8.2 | PEER GREEN — root judgment pending |
-| HOST-06 | B / 8.2 | PEER GREEN — root judgment pending |
-| ENG-02 | B / 8.2 | PEER GREEN — root judgment pending |
+| HOST-04 | B / 8.2 | DONE — author + peer + root|
+| HOST-05 | B / 8.2 | DONE — author + peer + root|
+| HOST-06 | B / 8.2 | DONE — author + peer + root|
+| ENG-02 | B / 8.2 | DONE — author + peer + root|
 | ENG-01 | C / 8.3 | PENDING |
 | CLEAN-02 | C / 8.3 | PENDING |
 | WEB-01 | C / 8.3 | PENDING |
@@ -64,7 +64,7 @@ Native work is last to collect all invalidating edits into one stable profile bu
 ## Progress and next action
 
 - Baseline report and all27 IDs read; current public source and applicable workflow resolved. Isolated worktree created from29f3cfd0; no main polling, SDK/provider run or product change performed during planning.
-- Root accepted group A / task8.1 at independent final `d3b748ed304afd593a36380662357d9fce683a51`. All four A findings are closed at the software/offline scope. Group B / task8.2 is now the next authorized group; C/D remain pending.
+- Root accepted group A / task8.1 at independent final `d3b748ed304afd593a36380662357d9fce683a51`. All four A findings are closed at the software/offline scope. Group B was subsequently completed and accepted as recorded below; group C / task8.3 is now next and D remains pending.
 
 ## Measurement limits
 
@@ -97,3 +97,11 @@ Physical watch, paired phone, battery energy, physical frame/wake timing, exact 
 
 - Independent peer repairs and local validation are GREEN at clean source checkpoint `7e73bf5c52d23784d8cc294ff166c5719b6cda4b`; [b/PEER.md](b/PEER.md) records the failures, exact behavioral observations, source/export proof, bounded HTTP-versus-snapshot scope and outstanding external limits. Task 8.2 records completed author and peer work; root judgment is still required. No later group has started.
 - Clean-revision copied-input release admission accepted 6,651 tracked inputs and exactly `en`, `ru`, `de`, `fr`, `es`; the exact workflow, independent test and 106 artifact inputs were included. Sparse source closure passed with 756 catalog inputs, 28 seed files and corruption refusal. Selected VC21 P6–P10 mapped 25 cases to actual commands, test methods and source hashes; this is not the unavailable private graph runner. Final peer documentation and receipt changes must be reconciled as disjoint from those selected release/source inputs.
+
+## Root judgment B and next group
+
+- Accepted independent final `7e38e8d8afe8eff6a5a84e6411ce9c1d878f7291`, source checkpoint `7e73bf5c52d23784d8cc294ff166c5719b6cda4b`. Task8.2 and its four original findings are closed at the documented local software boundary. The peer fixed failed-probe escalation and the HTTP deadline/root/worker scope; post-fix Git, sparse CLI, real-byte readback and fault/cancellation witnesses are recorded in b/PEER.md.
+- The 120-second limit is a shared HTTP readback budget, including both roots and queued/running requests. Synchronous snapshot/semantic preparation has separate bounded Git/renderer and input owners; arbitrary callbacks and full CPU wall time are not preempted by that budget. This distinction is explicit in the design/evidence and is not a claim of full Site.observe wall time. Four readers are qualified; the eight-reader transport failure remains recorded with cause unproven.
+- Post-peer real retained106-file readback observed13.605s serial and4.022s with four workers,107GETs. Snapshot lookup was substituted for this transport measurement; actual Git/pending/root-race and CLI are separately observed. Fresh authority/source/CAS checks, final complete readback, source age, quota and both clocks remain. Generation preserves the current watch bytes/reminders; no native inputs, SDK, device or Store behavior was newly claimed.
+- Clean checkpoint selected6,651 release inputs and admitted the five primary locales; actual756-input sparse source/corruption gate passed. Final documentation paths were reconciled as disjoint from the selected release and sparse input sets. Root journal-only acceptance does not invalidate those observations.
+- Next: C / task8.3 (ENG-01, CLEAN-02, WEB-01), preserving per-invocation release mutation/source/signature guarantees and authenticated old proof while removing proven unused active legacy entrypoints. D stays unstarted. Complete C author/self-GREEN, fresh peer/fix-GREEN and root judgment before D.
