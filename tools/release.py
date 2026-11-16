@@ -100,6 +100,13 @@ def source_state(root: Path) -> dict:
                           "openspec/changes/add-launch-reminders/tasks.md",
                           "openspec/changes/add-launch-reminders/specs/launch-reminders/spec.md",
                           "docs/LAUNCH_REMINDERS.md"})
+    if proof is not None and "watchdogReleaseProof" in proof:
+        delta_path = proof["watchdogReleaseProof"]["path"]
+        require(delta_path in paths, "watchdog admission proof must be tracked")
+        delta = json.loads((root / delta_path).read_text())
+        admission.add(delta_path)
+        admission.update(item["path"] for item in delta["priorSnapshots"].values())
+        admission.update(item["path"] for item in delta["evidence"].values())
     if proof is not None:
         for name in (proof["corpusPath"], proof["receiptPath"]):
             require(isinstance(name, str) and name and not PurePosixPath(name).is_absolute() and
