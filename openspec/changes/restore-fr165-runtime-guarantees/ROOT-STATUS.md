@@ -357,3 +357,8 @@ Collect `GARMIN/APPS/LOGS/CIQ_LOG.YML` and its available rotated backup. Keep ra
 logs/media private. Until that boundary is observed, P1-P3 release gates remain
 open and this batch is not fully complete; do not start B2/B3 or mark the
 unfinished full-implementation goal complete.
+
+
+### Owner distribution decision — 0.1.19 test release
+
+The owner explicitly instructed B1 to be merged to main and a new version released. This authorizes a GitHub test prerelease of 0.1.19 before physical-device observation; it changes distribution authority, not the status of P1–P3 verification. The independent software review remains source-scoped. Exact-candidate physical FR165 cold/reopen and at least 15 minutes ordinary use, and the cause of the reported 0.1.18 IQ screen, remain open. B2/P4–P6 and B3/P8 remain open. No Garmin Store action is authorized by this decision.

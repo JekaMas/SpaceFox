@@ -83,6 +83,14 @@ def source_state(root: Path) -> dict:
         admission.add(name)
     if proof is not None and "devices020Proof" in proof:
         admission.add("tools/device-fonts020.json")
+    if proof is not None and "b1Runtime019Proof" in proof:
+        b1_path = proof["b1Runtime019Proof"]["path"]
+        require(b1_path in paths, "B1 release admission proof must be tracked")
+        b1 = json.loads((root / b1_path).read_text())
+        admission.add(b1_path)
+        admission.add(b1["baselineCatalog"]["path"])
+        admission.update(ref["path"] for ref in b1["evidence"].values())
+
     if proof is not None and "integrated016Proof" in proof:
         # Parent qualification reconstructs exact tracked tools inventories;
         # include the non-Python entries that the standard export filter omits.
