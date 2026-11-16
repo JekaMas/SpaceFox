@@ -95,14 +95,14 @@ class SpaceFoxView extends WatchUi.WatchFace {
         if(bootstrapPending){bootstrapPending=false;if(!admissionPending){try{if(renderer==null){prepareRenderer();}}catch(e){renderer=null;}_resumePending=true;WatchUi.requestUpdate();}}
         if(admissionPending){return;}
         try{refreshFitness();}catch(e){}prepareVisual();
-        if(context!=null){var duration=downloaded==null?2.5:((downloaded as NativeVisualRenderer).duration() as Float);animationRunning=true;WatchUi.animate(self,:animationProgress,WatchUi.ANIM_TYPE_LINEAR,0.0,1.0,duration,method(:animationDone));}
+        if(context!=null&&!sfrFallbackPrepared&&sfrBuild==null){var duration=downloaded==null?2.5:((downloaded as NativeVisualRenderer).duration() as Float);animationRunning=true;WatchUi.animate(self,:animationProgress,WatchUi.ANIM_TYPE_LINEAR,0.0,1.0,duration,method(:animationDone));}
     }
     function queueResumeAfterFrame() as Void {
         if(_shown && _resumePending && _resumeTimer==null){_resumePending=false;_resumeTimer=new Timer.Timer();_resumeTimer.start(method(:resumeAfterFrame),50,false);}
     }
     (:extendedCode)
     function refreshFitness() as Void {
-        if(!_shown||!(_mode == NOT_LOW)||admissionPending||sfrBuild!=null||System.getDisplayMode()!=System.DISPLAY_MODE_HIGH_POWER){return;}
+        if(!_shown||!(_mode == NOT_LOW)||admissionPending||sfrFallbackPrepared||sfrBuild!=null||System.getDisplayMode()!=System.DISPLAY_MODE_HIGH_POWER){return;}
         try{refreshFitnessWork();}catch(e){}
     }
     (:extendedCode)
@@ -119,7 +119,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
         if(changed){WatchUi.requestUpdate();}
     }
     function fieldsChanged(id as Complications.Id) as Void {
-        if(!_shown||_mode!=NOT_LOW||admissionPending||sfrBuild!=null||System.getDisplayMode()!=System.DISPLAY_MODE_HIGH_POWER){return;}
+        if(!_shown||_mode!=NOT_LOW||admissionPending||sfrFallbackPrepared||sfrBuild!=null||System.getDisplayMode()!=System.DISPLAY_MODE_HIGH_POWER){return;}
         try{if(!selectedFields.includes(id)){return;}selectedFields.read(settings.language);fitness.currentBodyBattery=selectedFields.energy;
         values["energy"]=fitness.currentBodyBattery;WatchUi.requestUpdate();}catch(e){}
     }

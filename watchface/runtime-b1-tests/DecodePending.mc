@@ -75,6 +75,15 @@ import Toybox.WatchUi;
     var view=new B1BudgetDecodeView(clock);view.setPacket(cache.packet);var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();
     view.onShow();view.onLayout(dc);view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);view.setAssetCache(new NativeRenderSource(store,base,cache.packet.bridge));view.prepareVisual();
     view.freeBytes=view.sfrReadReserve()-1;view.sfrStep();Test.assert(view.sfrBuild==null&&view.sfrDeferred&&view.sceneLifecycle.pending()&&view.fallbackClockTimer!=null);
+    // A deferred preflight has no builder yet, but still owns the optional
+    // memory budget. Settings and LOW/HIGH wake must not restart fitness.
+    var fields=new B1AdmissionFields();view.selectedFields=fields;view.fitness=new B1AdmissionFitness();
+    var settings=new SceneSettings({"Field1"=>1,"Field2"=>2,"Field3"=>3,"Field4"=>4});
+    view.setSettings(settings);view.refreshFitness();view.fieldsChanged(new Toybox.Complications.Id(23));
+    Test.assert(fields.starts==0&&fields.reads==0&&view.fitnessTimer==null);
+    view.syncDisplayMode(System.DISPLAY_MODE_LOW_POWER);view.syncDisplayMode(System.DISPLAY_MODE_HIGH_POWER);
+    view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);view.stopResume();view.resumeAfterFrame();
+    Test.assert(fields.starts==0&&fields.reads==0&&view.fitnessTimer==null&&view.sfrBuild==null&&!view.animationRunning);
     view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assert(view.renderer==null&&LocaleGraphemes.data==null);Test.assertEqual(view.fallbackText,"T- 16:18:18");clock.now+=2;view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assertEqual(view.fallbackText,"T- 16:18:16");
     view.freeBytes=view.sfrReadReserve();view.sfrStep();Test.assert(view.sfrBuild!=null&&!view.sfrDeferred);
     view.freeBytes=view.sfrReadReserve();view.sfrStep();Test.assert(view.sfrBuild.decoder!=null&&view.sfrBuild.decoder.shard==0);

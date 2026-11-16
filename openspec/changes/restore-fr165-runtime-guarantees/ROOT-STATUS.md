@@ -281,3 +281,34 @@ checks and the affected plain-build heap/runtime observation remain underway.
 Package only after the peer's final fixes; use the existing B1 disposable key
 and plain-runtime diagnostic UUID, never expose key contents. Physical P1-P3,
 B2 and B3 remain open.
+
+### Author software GREEN; independent peer active
+
+The same author completed self-verification at
+`dce18cac10bf7df4ae5a492c8d89c4c4c8b69431`. The author self-verification task is
+checked; the earlier 21-row receipt, five invalidated lifecycle rechecks and
+four new icon/lifecycle checks keep their exact recorded source scopes.
+The final plain reopen reached the normal scene without a CIQ delta, peak
+120.2/123.8 KiB. Do not represent its short current-source observation as a new
+15-minute run; the valid 950-second receipt remains tied to `d1263b37`.
+
+Root assigned exactly one independent repairing peer,
+`verify_fr165_guarantees_b1_terra`, in the isolated worktree
+`peer-fr165-runtime-guarantees-b1-20261116`, based on that author head. The peer
+owns actual source/evidence review, necessary fixes and invalidated/missing
+checks through software GREEN, then private diagnostic preparation. There is
+no third root source/test/hash pass and no new author per finding. Root judges
+the final packet. Retain the platform/physical qualifications and do not rerun
+valid behavior merely because the workflow stage changed.
+
+Current change task count: 4 of 8 checked, 4 open (peer, physical B1 gate, B2,
+B3). No whole physical guarantee is marked restored. B2 and B3 have not started.
+
+The independent peer found one concrete remaining allocation/lifecycle gap:
+preflight can defer before builder construction, leaving
+`sfrFallbackPrepared=true` with `sfrBuild=null`. Settings/wake paths could then
+restart fitness/provider allocations during that low-memory fallback. The same
+peer owns the guard repair and focused discriminator through software GREEN;
+no return to another author iteration. Its preliminary diagnostic binary is
+superseded and must not be handed to the owner. Source/fixture-specific prior
+greens remain retained unless this actual guard change invalidates them.
