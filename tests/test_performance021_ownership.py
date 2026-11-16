@@ -15,6 +15,22 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class CatalogOwnershipTest(unittest.TestCase):
+    def test_scoped_admission_distinguishes_integer_and_decimal(self):
+        from decimal import Decimal
+        from tools.spacefox.catalog import catalog_validation_scope
+        source = build_catalog(ROOT)
+        with catalog_validation_scope():
+            validate_catalog(source)
+            # Decimal('1') collides in canonical JSON. Native float is not
+            # supported by the canonicalizer and must not borrow the hit.
+            decimal_json = catalog_module.loads_json('{"schemaVersion":1.0}')['schemaVersion']
+            for value in (Decimal('1'), decimal_json, 1.0, True, '1'):
+                source['schemaVersion'] = value
+                with self.subTest(value=repr(value)), self.assertRaises(ValueError):
+                    validate_catalog(source)
+                source['schemaVersion'] = 1
+                validate_catalog(source)
+
     def test_caller_mutation_after_snapshot_and_validation_identities(self):
         catalog = build_catalog(ROOT)
         original = catalog_module._validate_catalog_uncached

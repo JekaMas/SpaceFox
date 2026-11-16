@@ -39,6 +39,12 @@ class HostProofTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'proof input changed'):
             validate(self.root, self.catalog)
 
+    def test_changed_peer_receipt_refuses(self):
+        path = self.root / self.record['evidence']['peerHost']['path']
+        path.write_bytes(path.read_bytes() + b'changed')
+        with self.assertRaisesRegex(ValueError, 'proof input changed'):
+            validate(self.root, self.catalog)
+
     def test_changed_current_source_refuses(self):
         path = self.root / 'tools/spacefox/native_motion.py'
         path.write_bytes(path.read_bytes() + b'\n# modified\n')

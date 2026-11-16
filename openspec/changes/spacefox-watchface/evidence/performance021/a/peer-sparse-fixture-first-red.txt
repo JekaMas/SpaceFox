@@ -1,0 +1,75 @@
+test_bounds_negative (tests.test_performance021_a.HostPerformanceTest.test_bounds_negative) ... ok
+test_bounds_positive (tests.test_performance021_a.HostPerformanceTest.test_bounds_positive) ... ok
+test_geography_negative (tests.test_performance021_a.HostPerformanceTest.test_geography_negative) ... ok
+test_geography_positive (tests.test_performance021_a.HostPerformanceTest.test_geography_positive) ... FAIL
+test_no_work_fence_rejects_unverified_producer_sources (tests.test_performance021_a.HostPerformanceTest.test_no_work_fence_rejects_unverified_producer_sources) ... ok
+test_selection_negative (tests.test_performance021_a.HostPerformanceTest.test_selection_negative) ... ok
+test_selection_positive (tests.test_performance021_a.HostPerformanceTest.test_selection_positive) ... ok
+test_validation_negative (tests.test_performance021_a.HostPerformanceTest.test_validation_negative) ... ok
+test_validation_positive (tests.test_performance021_a.HostPerformanceTest.test_validation_positive) ... ok
+
+======================================================================
+FAIL: test_geography_positive (tests.test_performance021_a.HostPerformanceTest.test_geography_positive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_performance021_a.py", line 27, in test_geography_positive
+    self._actual_not_due_cli()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_performance021_a.py", line 104, in _actual_not_due_cli
+    self.assertEqual(result.returncode, 0, result.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 != 0 : Traceback (most recent call last):
+  File "<string>", line 11, in <module>
+    runpy.run_path(sys.argv[0],run_name='__main__')
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 294, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/tmphdn752iu/source/tools/update_feed.py", line 394, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/tmphdn752iu/source/tools/update_feed.py", line 356, in main
+    pub = Publisher(store, code)
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/tmphdn752iu/source/tools/spacefox/publisher.py", line 722, in __init__
+    self.head, self._ledger = store.load()
+                              ~~~~~~~~~~^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/tmphdn752iu/source/tools/spacefox/publisher.py", line 475, in load
+    return self._load_authority(validate_artifacts=True)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/tmphdn752iu/source/tools/spacefox/publisher.py", line 501, in _load_authority
+    self._files(head, doc)  # Reject broken/missing artifacts on every full reopen.
+    ~~~~~~~~~~~^^^^^^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/tmphdn752iu/source/tools/spacefox/publisher.py", line 572, in _files
+    validate_snapshot_artifact(snapshot, product, refresh_policy=doc['refresh_policy'], instance=doc['instance_id'],
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                               selection_validated_utc=doc.get('selection_validated_utc'),
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                               require_selection_epoch=snapshot is doc['pending'])
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/tmphdn752iu/source/tools/spacefox/publisher.py", line 194, in validate_snapshot_artifact
+    feed = _product_files(files, snapshot['artifact_profile'])
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/tmphdn752iu/source/tools/spacefox/publisher.py", line 186, in _product_files
+    return validate_artifact(files)
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/tmphdn752iu/source/tools/spacefox/native_motion.py", line 432, in validate_artifact
+    result = _validate_artifact(files, cached, pending)
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/tmphdn752iu/source/tools/spacefox/native_motion.py", line 562, in _validate_artifact
+    descriptor=_raster(dict(files), country_source['descriptor'], _cached=cached, _pending=pending)), 'site country raster equality')
+               ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/tmphdn752iu/source/tools/spacefox/native_motion.py", line 230, in _raster
+    rgba, _, _ = static.rasterize([visual], 20, 12)
+                 ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/tmphdn752iu/source/tools/spacefox/native_profile.py", line 80, in rasterize
+    try:proc=_run_bounded_child(['rsvg-convert'],svg,maximum=2097152,timeout=30)
+             ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/tmphdn752iu/source/tools/spacefox/catalog.py", line 1060, in _run_bounded_child
+    proc = subprocess.Popen(argv, stdin=source, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+  File "<string>", line 7, in watched
+    if os.path.basename(argv[0]) in ('node','rsvg-convert'): raise AssertionError('renderer started during no-op')
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: renderer started during no-op
+
+
+----------------------------------------------------------------------
+Ran 9 tests in 58.124s
+
+FAILED (failures=1)

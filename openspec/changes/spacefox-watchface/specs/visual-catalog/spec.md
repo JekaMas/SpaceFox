@@ -368,11 +368,11 @@ The publisher SHALL bound host selection, geography, validation and I/O work whi
 
 #### Scenario: Selected catalog closure
 - **WHEN** a validated catalog is used to build a selected asset
-- **THEN** only selected rows need be copied for internal selection, output remains deterministic, and mutation of a caller or returned catalog cannot create stale acceptance
+- **THEN** only selected rows need be copied for internal selection, output remains deterministic, and mutation of a caller or returned catalog cannot create stale acceptance, including values with identical JSON encodings but different runtime numeric types
 
 #### Scenario: Geography ownership
 - **WHEN** no asset build needs geography or an asset operation finishes
-- **THEN** a read-only not-due decision checks ledger, source, head and due state without admitting an active artifact, geographic decoding or renderer children; any due, pending, recovery or artifact-use path performs full admission, and a completed operation releases its decoded corpus
+- **THEN** a read-only not-due decision checks ledger, source, head and due state without admitting an active artifact, geographic decoding or renderer children; any due, pending, recovery or artifact-use path performs full admission, and a completed operation releases its decoded corpus The source check verifies the present sparse runtime seed and transitive recipe inputs against the committed tree, including hidden Git index flags, while unrelated omitted files remain unnecessary; hidden changed producer/schema bytes are refused before authority access.
 
 #### Scenario: Repeated artifact validation
 - **WHEN** the identical artifact is revalidated in one process

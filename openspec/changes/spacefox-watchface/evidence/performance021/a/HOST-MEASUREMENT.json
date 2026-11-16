@@ -4,12 +4,12 @@
   "phases": [
     {
       "phase": "catalog_build",
-      "seconds": 20.47013129107654,
+      "seconds": 20.921892959158868,
       "python_traced_before": 376,
-      "python_traced_current": 6795016,
-      "python_traced_peak": 89467009,
-      "peak_over_before": 89466633,
-      "process_peak_rss_bytes_macos": 315211776,
+      "python_traced_current": 6794385,
+      "python_traced_peak": 89479614,
+      "peak_over_before": 89479238,
+      "process_peak_rss_bytes_macos": 328466432,
       "subprocesses": [],
       "function_counts": {
         "validate_catalog": 2,
@@ -23,116 +23,116 @@
           "line": 42,
           "function": "<lambda>",
           "calls": 1,
-          "cumulative_seconds": 20.465849125000002
+          "cumulative_seconds": 20.917494209
         },
         {
           "file": "catalog.py",
-          "line": 1111,
+          "line": 1128,
           "function": "build_catalog",
           "calls": 1,
-          "cumulative_seconds": 20.301116458000003
+          "cumulative_seconds": 20.759354459
         },
         {
           "file": "bridge_map.py",
           "line": 33,
           "function": "load_source",
           "calls": 1,
-          "cumulative_seconds": 7.595645625
+          "cumulative_seconds": 7.7582390000000006
         },
         {
           "file": "geographic_context.py",
           "line": 159,
           "function": "load_source",
           "calls": 1,
-          "cumulative_seconds": 7.5740102910000004
+          "cumulative_seconds": 7.738061417000001
         },
         {
           "file": "geographic_context.py",
           "line": 62,
           "function": "_load_source",
           "calls": 1,
-          "cumulative_seconds": 7.553135625
+          "cumulative_seconds": 7.721339625000001
         },
         {
           "file": "catalog.py",
           "line": 173,
           "function": "stable_id",
           "calls": 814031,
-          "cumulative_seconds": 4.793646979
+          "cumulative_seconds": 4.9265684940000005
         },
         {
           "file": "catalog.py",
-          "line": 580,
+          "line": 597,
           "function": "validate_catalog",
           "calls": 2,
-          "cumulative_seconds": 4.558747458
+          "cumulative_seconds": 4.7007315830000005
         },
         {
           "file": "catalog.py",
-          "line": 596,
+          "line": 613,
           "function": "_validate_catalog_uncached",
           "calls": 2,
-          "cumulative_seconds": 4.558364876000001
+          "cumulative_seconds": 4.700593625000001
         },
         {
           "file": "catalog.py",
           "line": 214,
           "function": "canonical_bytes",
           "calls": 5412,
-          "cumulative_seconds": 3.355326669
+          "cumulative_seconds": 3.45219645
         },
         {
           "file": "catalog.py",
           "line": 220,
           "function": "encode",
           "calls": 503722,
-          "cumulative_seconds": 3.341299362
+          "cumulative_seconds": 3.436996149
         },
         {
           "file": "~",
           "line": 0,
           "function": "<method 'join' of 'str' objects>",
           "calls": 85121,
-          "cumulative_seconds": 3.2640310080000003
+          "cumulative_seconds": 3.3580369400000003
         },
         {
           "file": "catalog.py",
           "line": 238,
           "function": "<genexpr>",
           "calls": 266210,
-          "cumulative_seconds": 3.2285373120000003
+          "cumulative_seconds": 3.3211824030000003
         },
         {
           "file": "global_map.py",
           "line": 45,
           "function": "load_world",
           "calls": 1,
-          "cumulative_seconds": 2.321454833
+          "cumulative_seconds": 2.4136874170000002
         },
         {
           "file": "__init__.py",
           "line": 185,
           "function": "dumps",
           "calls": 360279,
-          "cumulative_seconds": 1.4924883990000002
+          "cumulative_seconds": 1.5334874390000002
         },
         {
           "file": "__init__.py",
           "line": 169,
           "function": "fullmatch",
           "calls": 820397,
-          "cumulative_seconds": 1.362405808
+          "cumulative_seconds": 1.3935126
         }
       ]
     },
     {
       "phase": "native_artifact_build",
-      "seconds": 42.05919725028798,
-      "python_traced_before": 6747621,
-      "python_traced_current": 8196168,
-      "python_traced_peak": 91857018,
-      "peak_over_before": 85109397,
-      "process_peak_rss_bytes_macos": 393396224,
+      "seconds": 44.03933641593903,
+      "python_traced_before": 6746869,
+      "python_traced_current": 8203423,
+      "python_traced_peak": 91862960,
+      "peak_over_before": 85116091,
+      "process_peak_rss_bytes_macos": 385384448,
       "subprocesses": [
         {
           "program": "node"
@@ -168,116 +168,116 @@
           "line": 45,
           "function": "<lambda>",
           "calls": 1,
-          "cumulative_seconds": 42.049806458000006
+          "cumulative_seconds": 44.030369042000004
         },
         {
           "file": "native_motion.py",
           "line": 281,
           "function": "build_artifact",
           "calls": 1,
-          "cumulative_seconds": 42.040231333
+          "cumulative_seconds": 44.021073541
         },
         {
           "file": "native_motion.py",
           "line": 293,
           "function": "_build_artifact_owned",
           "calls": 1,
-          "cumulative_seconds": 41.713257458
+          "cumulative_seconds": 43.696986209
         },
         {
           "file": "native_profile.py",
           "line": 239,
           "function": "build_artifact",
           "calls": 1,
-          "cumulative_seconds": 29.227077750000003
+          "cumulative_seconds": 30.642250209
         },
         {
           "file": "visual_bridge.py",
           "line": 55,
           "function": "build_source",
           "calls": 1,
-          "cumulative_seconds": 26.372469041000002
+          "cumulative_seconds": 27.73557525
         },
         {
           "file": "catalog.py",
           "line": 214,
           "function": "canonical_bytes",
           "calls": 2872,
-          "cumulative_seconds": 16.833182724
+          "cumulative_seconds": 17.26276646
         },
         {
           "file": "~",
           "line": 0,
           "function": "<method 'join' of 'str' objects>",
           "calls": 413239,
-          "cumulative_seconds": 16.809101581
+          "cumulative_seconds": 17.234844426000002
         },
         {
           "file": "catalog.py",
           "line": 220,
           "function": "encode",
           "calls": 2427856,
-          "cumulative_seconds": 16.798622471
+          "cumulative_seconds": 17.225386692
+        },
+        {
+          "file": "catalog.py",
+          "line": 597,
+          "function": "validate_catalog",
+          "calls": 16,
+          "cumulative_seconds": 17.137093875
         },
         {
           "file": "catalog.py",
           "line": 238,
           "function": "<genexpr>",
           "calls": 1290354,
-          "cumulative_seconds": 16.649938471000002
-        },
-        {
-          "file": "catalog.py",
-          "line": 580,
-          "function": "validate_catalog",
-          "calls": 16,
-          "cumulative_seconds": 15.931441958
+          "cumulative_seconds": 17.070590744
         },
         {
           "file": "bridge_map.py",
           "line": 112,
           "function": "build_map",
           "calls": 1,
-          "cumulative_seconds": 15.314406833000001
+          "cumulative_seconds": 15.944377083000001
         },
         {
           "file": "__init__.py",
           "line": 185,
           "function": "dumps",
           "calls": 1740254,
-          "cumulative_seconds": 8.489262079000001
+          "cumulative_seconds": 8.657570086
         },
         {
           "file": "bridge_map.py",
           "line": 33,
           "function": "load_source",
           "calls": 1,
-          "cumulative_seconds": 7.9302666660000005
+          "cumulative_seconds": 8.048030583000001
         },
         {
           "file": "geographic_context.py",
           "line": 159,
           "function": "load_source",
           "calls": 1,
-          "cumulative_seconds": 7.909717625000001
+          "cumulative_seconds": 8.025881625
         },
         {
           "file": "geographic_context.py",
           "line": 62,
           "function": "_load_source",
           "calls": 1,
-          "cumulative_seconds": 7.887598916000001
+          "cumulative_seconds": 8.003624792
         }
       ]
     },
     {
       "phase": "repeat_same_artifact_validation",
-      "seconds": 2.8621886670589447,
-      "python_traced_before": 8095030,
-      "python_traced_current": 8226604,
-      "python_traced_peak": 10949217,
-      "peak_over_before": 2854187,
-      "process_peak_rss_bytes_macos": 393396224,
+      "seconds": 2.911176874767989,
+      "python_traced_before": 8101629,
+      "python_traced_current": 8233427,
+      "python_traced_peak": 10955963,
+      "peak_over_before": 2854334,
+      "process_peak_rss_bytes_macos": 385384448,
       "subprocesses": [],
       "function_counts": {
         "validate_catalog": 0,
@@ -291,105 +291,105 @@
           "line": 46,
           "function": "<lambda>",
           "calls": 1,
-          "cumulative_seconds": 2.8579694580000004
+          "cumulative_seconds": 2.906846375
         },
         {
           "file": "native_motion.py",
           "line": 427,
           "function": "validate_artifact",
           "calls": 1,
-          "cumulative_seconds": 2.857963166
+          "cumulative_seconds": 2.9068437080000002
         },
         {
           "file": "native_motion.py",
           "line": 441,
           "function": "_validate_artifact",
           "calls": 1,
-          "cumulative_seconds": 2.841834834
+          "cumulative_seconds": 2.890732584
         },
         {
           "file": "graphics.py",
           "line": 58,
           "function": "validate_visual",
           "calls": 206,
-          "cumulative_seconds": 1.9737423790000002
+          "cumulative_seconds": 2.015663834
         },
         {
           "file": "visual_bridge.py",
           "line": 135,
           "function": "_validate_descriptor",
           "calls": 28,
-          "cumulative_seconds": 1.541693333
+          "cumulative_seconds": 1.5847725430000001
         },
         {
           "file": "graphics.py",
           "line": 208,
           "function": "assemble_visual",
           "calls": 50,
-          "cumulative_seconds": 1.273230418
+          "cumulative_seconds": 1.2996037470000001
         },
         {
           "file": "graphics.py",
           "line": 184,
           "function": "loads_shard",
           "calls": 102,
-          "cumulative_seconds": 0.8989058350000001
+          "cumulative_seconds": 0.921445497
         },
         {
           "file": "graphics.py",
           "line": 134,
           "function": "loads_visual",
           "calls": 102,
-          "cumulative_seconds": 0.898402498
+          "cumulative_seconds": 0.920881092
         },
         {
           "file": "graphics.py",
           "line": 444,
           "function": "_simple",
           "calls": 15655,
-          "cumulative_seconds": 0.7441751050000001
+          "cumulative_seconds": 0.7515487860000001
         },
         {
           "file": "native_profile.py",
           "line": 173,
           "function": "_asset",
           "calls": 25,
-          "cumulative_seconds": 0.6505020840000001
+          "cumulative_seconds": 0.653599542
         },
         {
           "file": "native_profile.py",
           "line": 180,
           "function": "_map_visuals",
           "calls": 1,
-          "cumulative_seconds": 0.572489166
+          "cumulative_seconds": 0.5757457500000001
         },
         {
           "file": "graphics.py",
           "line": 429,
           "function": "_intersects",
           "calls": 43088,
-          "cumulative_seconds": 0.43848316600000004
+          "cumulative_seconds": 0.44402065100000004
         },
         {
           "file": "graphics.py",
           "line": 121,
           "function": "canonical_visual",
           "calls": 27,
-          "cumulative_seconds": 0.30207420700000004
+          "cumulative_seconds": 0.30865541700000004
         },
         {
           "file": "graphics.py",
           "line": 430,
           "function": "orient",
           "calls": 172352,
-          "cumulative_seconds": 0.209138665
+          "cumulative_seconds": 0.20974873500000002
         },
         {
           "file": "__init__.py",
           "line": 185,
           "function": "dumps",
           "calls": 3160,
-          "cumulative_seconds": 0.164931892
+          "cumulative_seconds": 0.16943881900000002
         }
       ]
     }

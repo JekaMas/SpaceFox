@@ -1,0 +1,15 @@
+test_no_work_fence_rejects_unverified_producer_sources (tests.test_performance021_a.HostPerformanceTest.test_no_work_fence_rejects_unverified_producer_sources) ... FAIL
+
+======================================================================
+FAIL: test_no_work_fence_rejects_unverified_producer_sources (tests.test_performance021_a.HostPerformanceTest.test_no_work_fence_rejects_unverified_producer_sources)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_performance021_a.py", line 181, in test_no_work_fence_rejects_unverified_producer_sources
+    self.assertFalse(_no_work_source_fence(root), name)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : catalog/a
+
+----------------------------------------------------------------------
+Ran 1 test in 0.109s
+
+FAILED (failures=1)

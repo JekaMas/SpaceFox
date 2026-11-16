@@ -568,13 +568,30 @@ def catalog_validation_scope():
 
 
 def _cache_safe(value):
-    # Canonical JSON deliberately omits Python subclass identity; only reuse
-    # when that encoding also preserves all runtime type distinctions.
+    # Unusual subclasses can have behavior not represented in JSON.
     if type(value) is dict:
         return all(type(k) is str and _cache_safe(v) for k, v in value.items())
     if type(value) is list:
         return all(_cache_safe(v) for v in value)
     return type(value) in (str, int, bool, Decimal, type(None))
+
+
+def _cache_type_digest(value):
+    # Canonical JSON encodes Decimal('1') and int(1) identically, although
+    # admission distinguishes them. Bind the type of each scalar in the same
+    # deterministic traversal as the content encoding.
+    digest = hashlib.sha256()
+    def visit(item):
+        if type(item) is dict:
+            for key in sorted(item):
+                visit(item[key])
+        elif type(item) is list:
+            for child in item:
+                visit(child)
+        else:
+            digest.update(b'D' if type(item) is Decimal else b'V')
+    visit(value)
+    return digest.digest()
 
 
 def validate_catalog(catalog, *, _admission_date=None):
@@ -584,7 +601,7 @@ def validate_catalog(catalog, *, _admission_date=None):
     admission_date = _admission_date if _admission_date is not None else datetime.now(timezone.utc).date()
     # A caller-owned dictionary is never trusted by identity. Hashing its exact
     # canonical content and admission date also detects mutation between uses.
-    key = (hashlib.sha256(canonical_bytes(catalog)).digest(), admission_date)
+    key = (hashlib.sha256(canonical_bytes(catalog)).digest(), _cache_type_digest(catalog), admission_date)
     if key in scope:
         return catalog
     result = _validate_catalog_uncached(catalog, _admission_date=admission_date)

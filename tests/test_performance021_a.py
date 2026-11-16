@@ -36,17 +36,34 @@ class HostPerformanceTest(unittest.TestCase):
         from tools.spacefox.publisher import GitState, Publisher
         with tempfile.TemporaryDirectory() as directory:
             parent = Path(directory); root = parent / 'source'; root.mkdir()
-            (root / 'tools').mkdir()
-            shutil.copytree(ROOT / 'tools/spacefox', root / 'tools/spacefox',
-                            ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
-            shutil.copyfile(ROOT / 'tools/update_feed.py', root / 'tools/update_feed.py')
-            shutil.copytree(ROOT / 'tools/vendor', root / 'tools/vendor')
-            for name in ('catalog', 'assets', 'schemas', 'licenses'):
-                shutil.copytree(ROOT / name, root / name)
+            # Materialize the actual sparse runtime seed, including CLI owners.
+            for item in (ROOT / '.github/spacefox-inputs.txt').read_text().splitlines():
+                name = item.removeprefix('/')
+                source, target = ROOT / name, root / name
+                if source.is_file() and not target.exists():
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copyfile(source, target)
+            receipt = (ROOT / 'openspec/changes/spacefox-watchface/evidence/performance021/a/SOURCE-CLOSURE.txt').read_text()
+            closure = json.loads(next(line.split(' ', 1)[1] for line in receipt.splitlines()
+                                      if line.startswith('SOURCE_CLOSURE_RECEIPT ')))
+            for name in closure['sourcePaths']:
+                source, target = ROOT / name, root / name
+                if source.is_file() and not target.exists():
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copyfile(source, target)
+            # One extra tracked schema is needed for the hidden-change
+            # refusal witness; it is not used to build the sparse closure.
+            schema = root / 'schemas/feed-v2.json'
+            schema.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(ROOT / 'schemas/feed-v2.json', schema)
+            (root / 'docs').mkdir()
+            (root / 'docs/irrelevant').write_text('unrelated sparse input')
             def git(*args):
                 return subprocess.check_output(['git', '-C', str(root), *args], stderr=subprocess.DEVNULL).decode().strip()
             git('init', '-q'); git('config', 'user.name', 'Local test'); git('config', 'user.email', 'local@example.invalid')
-            git('add', 'tools', 'catalog', 'assets', 'schemas', 'licenses'); git('commit', '-qm', 'isolated candidate')
+            git('add', '-A'); git('commit', '-qm', 'isolated candidate')
+            git('update-index', '--skip-worktree', 'docs/irrelevant')
+            (root / 'docs/irrelevant').unlink()
             code = git('rev-parse', 'HEAD')
             remote = parent / 'remote.git'
             subprocess.run(['git', 'init', '--bare', '-q', str(remote)], check=True)
@@ -73,11 +90,14 @@ class HostPerformanceTest(unittest.TestCase):
                 store.close()
             guard = """import os,runpy,subprocess,sys
 import tools.spacefox.geographic_context as geography
+import tools.spacefox.provider as provider
 def forbidden(*args, **kwargs): raise AssertionError('geography decoded during no-op')
 geography._load_source = forbidden
+provider.LL2Client.request = forbidden
 original = subprocess.Popen
 def watched(argv,*args,**kwargs):
  if os.path.basename(argv[0]) in ('node','rsvg-convert'): raise AssertionError('renderer started during no-op')
+ if os.path.basename(argv[0]) == 'git' and 'push' in argv: raise AssertionError('state write during no-op')
  return original(argv,*args,**kwargs)
 subprocess.Popen = watched
 sys.argv = sys.argv[1:]
@@ -93,6 +113,82 @@ runpy.run_path(sys.argv[0],run_name='__main__')
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertEqual(json.loads(result.stdout), {'head': before, 'requests': 0, 'result': 'not_due'})
             self.assertFalse((parent / 'unexpected-output').exists())
+            # Present but hidden producer changes must be refused before even
+            # contacting the authority, while a clean flagged file is accepted.
+            guarded = """import runpy,subprocess,sys
+original=subprocess.Popen
+def watched(argv,*args,**kwargs):
+ if any(x in argv for x in ('ls-remote','fetch','push')): raise AssertionError('authority contacted')
+ return original(argv,*args,**kwargs)
+subprocess.Popen=watched
+sys.argv=sys.argv[1:]
+runpy.run_path(sys.argv[0],run_name='__main__')
+"""
+            for name in ('catalog/source.json', 'schemas/feed-v2.json',
+                         'tools/spacefox/catalog.py', 'tools/update_feed.py'):
+                path = root / name
+                original = path.read_bytes()
+                git('update-index', '--assume-unchanged', name)
+                if name == 'catalog/source.json':
+                    clean_flagged = subprocess.run(command, cwd=root, capture_output=True, text=True,
+                        env={**os.environ, 'PYTHONPATH': str(root)}, timeout=30)
+                    self.assertEqual(clean_flagged.returncode, 0, clean_flagged.stderr)
+                    self.assertEqual(json.loads(clean_flagged.stdout)['result'], 'not_due')
+                try:
+                    path.write_bytes(original + b'\n# hidden edit\n')
+                    refused = subprocess.run([sys.executable, '-B', '-c', guarded, *command[4:]],
+                        cwd=root, capture_output=True, text=True,
+                        env={**os.environ, 'PYTHONPATH': str(root)}, timeout=30)
+                    self.assertEqual(refused.returncode, 2, (name, refused.stderr))
+                    self.assertIn('producer checkout', refused.stderr)
+                    self.assertEqual(refused.stdout, '')
+                    self.assertFalse((parent / 'unexpected-output').exists())
+                finally:
+                    path.write_bytes(original)
+                    git('update-index', '--no-assume-unchanged', name)
+            # Actual sparse flags may hide required inputs. Clean present
+            # bytes are admitted; a missing or altered pin is never trusted.
+            from tools.update_feed import _no_work_source_fence
+            import time
+            real_run = subprocess.run
+            source_commands = []
+            def counted_run(argv, *args, **kwargs):
+                source_commands.append(argv)
+                return real_run(argv, *args, **kwargs)
+            start = time.perf_counter()
+            with patch('tools.update_feed.subprocess.run', side_effect=counted_run):
+                self.assertTrue(_no_work_source_fence(root, code))
+            elapsed = time.perf_counter() - start
+            print('SPARSE_SOURCE_FENCE_RECEIPT ' + json.dumps({
+                'seconds': elapsed, 'git_subprocesses': len(source_commands),
+                'operations': [argv[3] for argv in source_commands],
+                'catalog_source_inputs': len(closure['sourcePaths']),
+                'other_tracked_file_missing': not (root / 'docs/irrelevant').exists(),
+            }, sort_keys=True))
+            self.assertEqual(len(source_commands), 4)
+            required = root / 'catalog/source.json'
+            content = required.read_bytes()
+            git('update-index', '--skip-worktree', 'catalog/source.json')
+            try:
+                self.assertTrue(_no_work_source_fence(root, code))
+                required.unlink()
+                self.assertFalse(_no_work_source_fence(root, code))
+                required.write_bytes(content)
+                required.write_bytes(content + b' ')
+                self.assertFalse(_no_work_source_fence(root, code))
+            finally:
+                required.write_bytes(content)
+                git('update-index', '--no-skip-worktree', 'catalog/source.json')
+            evidence_name = next(name for name in closure['sourcePaths'] if name.startswith('openspec/'))
+            evidence_path = root / evidence_name
+            evidence_bytes = evidence_path.read_bytes()
+            git('update-index', '--assume-unchanged', evidence_name)
+            try:
+                evidence_path.write_bytes(evidence_bytes + b' ')
+                self.assertFalse(_no_work_source_fence(root, code))
+            finally:
+                evidence_path.write_bytes(evidence_bytes)
+                git('update-index', '--no-assume-unchanged', evidence_name)
             # A changed pinned vendor file is unverified, so the cheap path
             # must escalate and actual source admission must reject it.
             vendor = root / 'tools/vendor/d3-7.9.0.min.js'
@@ -155,6 +251,33 @@ runpy.run_path(sys.argv[0],run_name='__main__')
                 self.assertEqual(store._refs(STATE_REF)[STATE_REF], bad)
             finally:
                 store.close()
+
+    def test_no_work_fence_rejects_unverified_producer_sources(self):
+        import subprocess
+        import tempfile
+        from tools.update_feed import executing_revision
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            names = ('assets/a', 'licenses/a', 'tools/vendor/a', 'tools/spacefox/a',
+                     'tools/update_feed.py', 'catalog/a', 'schemas/a')
+            for name in names:
+                path = root / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text('original')
+            def git(*args):
+                subprocess.run(['git', '-C', str(root), *args], check=True,
+                               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            git('init', '-q'); git('config', 'user.name', 'Local test')
+            git('config', 'user.email', 'local@example.invalid')
+            git('add', '.'); git('commit', '-qm', 'source')
+            executing_revision(root)
+            for name in ('catalog/a', 'schemas/a', 'tools/spacefox/a', 'tools/update_feed.py'):
+                git('update-index', '--assume-unchanged', name)
+                (root / name).write_text('modified')
+                with self.assertRaisesRegex(ValueError, 'producer checkout'):
+                    executing_revision(root)
+                (root / name).write_text('original')
+                git('update-index', '--no-assume-unchanged', name)
 
     def test_selection_positive(self):
         catalog = build_catalog(ROOT)

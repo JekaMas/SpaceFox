@@ -6,6 +6,8 @@ is an explicit operator observation until an authenticated deployment adapter is
 qualified. Local HTTP is only available with the explicit loopback test switch.
 """
 import argparse
+import hashlib
+import os
 from datetime import datetime, timezone
 import json
 from pathlib import Path
@@ -15,7 +17,7 @@ import sys
 if __package__ in (None, ''):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from tools.spacefox.catalog import build_catalog, CatalogError
+from tools.spacefox.catalog import build_catalog, CatalogError, _read_snapshot
 from tools.spacefox.feed import FeedEncodingError
 from tools.spacefox.provider import (LL2Client, ProviderError, normalize_detail_launch,
                                     validation_epoch, bounded_json, DEFAULT_ORIGIN)
@@ -181,33 +183,136 @@ def export_pending(pub, directory):
     return len(files)
 
 
+def _head_tree(root):
+    raw = subprocess.run(['git', '-C', str(root), 'ls-tree', '-r', '-l', '-z', 'HEAD'],
+                         stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True).stdout
+    result = {}
+    for entry in raw.split(b'\0'):
+        if not entry:
+            continue
+        header, path = entry.split(b'\t', 1)
+        mode, kind, digest, size = header.split()
+        if kind == b'blob':
+            result[os.fsdecode(path)] = (mode, digest.decode('ascii'), int(size))
+    return result
+
+
+def _tracked_bytes(root, tree, name):
+    path = Path(name)
+    if path.is_absolute() or '..' in path.parts or not path.parts:
+        raise ValueError('unsafe tracked input')
+    name = path.as_posix()
+    mode, expected, size = tree[name]
+    target = root / path
+    if mode != b'100644' and mode != b'100755':
+        raise ValueError('regular tracked input required')
+    if target.is_symlink() or not target.resolve().is_relative_to(root):
+        raise ValueError('unsafe tracked input')
+    raw = _read_snapshot(target, size)
+    if len(raw) != size:
+        raise ValueError('tracked input size differs from HEAD')
+    algorithm = hashlib.sha1 if len(expected) == 40 else hashlib.sha256
+    digest = algorithm(b'blob ' + str(len(raw)).encode() + b'\0')
+    digest.update(raw)
+    actual = digest.hexdigest()
+    if actual != expected:
+        raise ValueError('tracked input differs from HEAD')
+    return raw
+
+
 def executing_revision(root):
     """Bind permission SHA to the actual tracked clean producer checkout."""
+    root = Path(root).resolve()
     scopes = ['tools/spacefox', 'tools/update_feed.py', 'catalog', 'schemas']
     result = subprocess.run(['git', '-C', str(root), 'status', '--porcelain', '--untracked-files=all', '--', *scopes],
                             stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
     if result.stdout:
         raise StateError('producer checkout must be committed and clean before provider permission')
+    # Git status ignores assume-unchanged and skip-worktree. Check any present
+    # flagged producer bytes directly against HEAD before opening authority.
+    tracked = subprocess.run(['git', '-C', str(root), 'ls-files', '-v', '-z', '--', *scopes],
+                             stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True).stdout
+    flagged = [entry for entry in tracked.split(b'\0') if entry and entry[:1] != b'H']
+    if flagged:
+        tree = _head_tree(root)
+        try:
+            for entry in flagged:
+                name = os.fsdecode(entry[2:])
+                target = root / name
+                if target.exists() or target.is_symlink():
+                    _tracked_bytes(root, tree, name)
+                elif entry[:1] != b'S':
+                    raise ValueError('missing flagged producer input')
+        except (KeyError, OSError, ValueError) as exc:
+            raise StateError('producer checkout must be committed and clean before provider permission') from exc
     return subprocess.run(['git', '-C', str(root), 'rev-parse', 'HEAD'], stdout=subprocess.PIPE,
                           stderr=subprocess.PIPE, check=True).stdout.decode().strip()
 
 
-def _no_work_source_fence(root):
-    """Use the cheap path only for visibly clean, fully checked-out inputs."""
-    scopes = ['assets', 'licenses', 'tools/vendor']
+def _no_work_source_fence(root, expected_revision=None):
+    """Check the actual sparse runtime seed and recipe closure without decoding it."""
+    root = Path(root).resolve()
     try:
         status = subprocess.run(['git', '-C', str(root), 'status', '--porcelain',
-                                 '--untracked-files=all', '--', *scopes],
+                                 '--untracked-files=all', '--', 'assets', 'licenses', 'tools/vendor'],
                                 stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
-        tracked = subprocess.run(['git', '-C', str(root), 'ls-files', '-v', '-z', '--', *scopes],
-                                 stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
-    except (OSError, subprocess.SubprocessError):
+        if status.stdout:
+            return False
+        revision = subprocess.run(['git', '-C', str(root), 'rev-parse', 'HEAD'],
+                                  stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True).stdout.decode().strip()
+        if expected_revision is not None and revision != expected_revision:
+            return False
+        tree = _head_tree(root)
+        cache = {}
+        def read(name):
+            if name not in cache:
+                cache[name] = _tracked_bytes(root, tree, name)
+            return cache[name]
+        seed = read('.github/spacefox-inputs.txt').decode('utf-8').splitlines()
+        for item in seed:
+            name = item.removeprefix('/')
+            if name in tree:
+                read(name)
+        recipe = json.loads(read('catalog/source.json'))
+        asset_seed = recipe['assetSeed']['path']
+        curations = {item['path'] for item in recipe.get('curations', [])}
+        def pins(value):
+            if isinstance(value, dict):
+                if {'path', 'sha256'} <= value.keys():
+                    yield value
+                for child in value.values():
+                    yield from pins(child)
+            elif isinstance(value, list):
+                for child in value:
+                    yield from pins(child)
+        pending = ['catalog/source.json']
+        visited = set()
+        while pending:
+            name = pending.pop()
+            if name in visited:
+                continue
+            visited.add(name)
+            try:
+                value = json.loads(read(name))
+            except (ValueError, UnicodeDecodeError):
+                continue
+            for pin in pins(value):
+                data = read(pin['path'])
+                if hashlib.sha256(data).hexdigest() != pin['sha256']:
+                    return False
+                pending.append(pin['path'])
+            if name == asset_seed:
+                assets = [row for kind in ('models', 'companies', 'countries') for row in value[kind]]
+            elif name in curations:
+                assets = [row['facts'] for row in value['assets']]
+            else:
+                assets = []
+            for facts in assets:
+                read((Path(name).parent / facts['file']).as_posix())
+        return revision == subprocess.run(['git', '-C', str(root), 'rev-parse', 'HEAD'],
+                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True).stdout.decode().strip()
+    except (KeyError, OSError, TypeError, ValueError, subprocess.SubprocessError):
         return False
-    # Lowercase means assume-unchanged; S means skip-worktree. Neither is a
-    # verified clean byte boundary, so let the full admission path decide.
-    entries = [entry for entry in tracked.stdout.split(b'\0') if entry]
-    present = all(any(entry[2:].startswith(scope.encode() + b'/') for entry in entries) for scope in scopes)
-    return not status.stdout and present and all(entry[:1] == b'H' for entry in entries)
 
 
 def main(argv=None):
@@ -249,7 +354,7 @@ def main(argv=None):
             if args.live:
                 generation, digest = args.live.split(':')
                 checked_live = LiveRevision(int(generation), digest)
-            if _no_work_source_fence(root) and store.definitely_not_due(args.expected_base, code, checked_now, checked_live):
+            if _no_work_source_fence(root, code) and store.definitely_not_due(args.expected_base, code, checked_now, checked_live):
                 print(json.dumps({'result': 'not_due', 'head': args.expected_base, 'requests': 0}, sort_keys=True))
                 return 0
         pub = Publisher(store, code)

@@ -63,7 +63,7 @@ def validate(root, catalog):
     if comparable != old_catalog:
         raise ValueError('locale policy changed outside performance021 delta')
     evidence = record['evidence']
-    if set(evidence) != {'hostMeasurement', 'hostTests', 'sourceRace', 'artifactBytes', 'cacheRelease', 'ownershipTest', 'peakAttribution', 'factoryTests', 'eligibleBaseline', 'affectedTests'}:
+    if set(evidence) != {'hostMeasurement', 'hostTests', 'sourceRace', 'artifactBytes', 'cacheRelease', 'ownershipTest', 'peakAttribution', 'factoryTests', 'eligibleBaseline', 'affectedTests', 'peerHost', 'peerOwnership', 'peerTypes'}:
         raise ValueError('performance021 evidence inventory differs')
     evidence_files = {name: _checked(root, row['path'], row['sha256']) for name, row in evidence.items()}
     measurement = json.loads(evidence_files['hostMeasurement'].read_text())
@@ -85,6 +85,20 @@ def validate(root, catalog):
         'test_caller_mutation_after_snapshot_and_validation_identities' not in ownership or
         'uncached catalog content identities:' not in ownership):
         raise ValueError('performance021 catalog ownership evidence incomplete')
+    peer_host = evidence_files['peerHost'].read_text()
+    if ('Ran 2 tests' not in peer_host or '\nOK\n' not in peer_host or
+        'test_geography_positive' not in peer_host or
+        'test_no_work_fence_rejects_unverified_producer_sources' not in peer_host):
+        raise ValueError('performance021 peer source-fence evidence incomplete')
+    peer_ownership = evidence_files['peerOwnership'].read_text()
+    if ('Ran 4 tests' not in peer_ownership or '\nOK\n' not in peer_ownership or
+        'test_scoped_admission_distinguishes_integer_and_decimal' not in peer_ownership or
+        'test_owned_catalog_real_output_and_no_full_copy' not in peer_ownership):
+        raise ValueError('performance021 peer typed-admission evidence incomplete')
+    peer_types = evidence_files['peerTypes'].read_text()
+    if ('Ran 1 test' not in peer_types or '\nOK\n' not in peer_types or
+        'test_scoped_admission_distinguishes_integer_and_decimal' not in peer_types):
+        raise ValueError('performance021 peer scalar-type evidence incomplete')
     attribution = json.loads(evidence_files['peakAttribution'].read_text())
     if not attribution['allArtifactDigestsEqual'] or len(attribution['rows']) != 2:
         raise ValueError('performance021 peak attribution incomplete')

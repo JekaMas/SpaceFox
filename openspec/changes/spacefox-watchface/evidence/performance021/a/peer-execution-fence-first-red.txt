@@ -1,0 +1,15 @@
+test_no_work_fence_rejects_unverified_producer_sources (tests.test_performance021_a.HostPerformanceTest.test_no_work_fence_rejects_unverified_producer_sources) ... FAIL
+
+======================================================================
+FAIL: test_no_work_fence_rejects_unverified_producer_sources (tests.test_performance021_a.HostPerformanceTest.test_no_work_fence_rejects_unverified_producer_sources)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_performance021_a.py", line 182, in test_no_work_fence_rejects_unverified_producer_sources
+    with self.assertRaisesRegex(ValueError, 'producer checkout'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.128s
+
+FAILED (failures=1)

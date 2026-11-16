@@ -64,20 +64,20 @@
     }
   },
   "current": {
-    "release/native-admission-inputs.json": "98f112a10c0a921089cd18e355366a79b309179b51e43eef7374b9a82fbe0e4b",
+    "release/native-admission-inputs.json": "64e68cac7c179fc97bba1aa726a073a93ebaa150fbe624ead60a3d82358b143a",
     "tests/test_current_geography_whole.py": "a151dd624d07219e508645e822be5c441e68875cf000f4bc597715ee1129114c",
     "tests/test_current_motion_publisher.py": "09278a07b1839b1b298533ddd8d723f3bc89689b373af7600274cba5ed857532",
     "tests/test_durable_publisher_whole.py": "a667449a1701dd17066f8c8b9d2e70739c252183f4cee028b02f02b39d6b5486",
-    "tests/test_performance021_a.py": "f3673df4e70ab96af8a985a06d3d4d1d6e57cbe95e070a51065379e57b287ed5",
+    "tests/test_performance021_a.py": "f3bac73e1e03454f1472a39ae488bbfa60a1bc0f47bd0ad8bdd0b62225a39a1d",
     "tests/test_performance021_factory.py": "b738dbe3b483f114eb2d308cd9ea1645477183264db39c5729cc7d7861247ff3",
-    "tests/test_performance021_ownership.py": "6731538bc65447185b2c95692aa03a85aeed956817c9e427739dab1f22758329",
-    "tests/test_performance021_proof.py": "6272128073da08f041a0435a0d42be5832ba28f85ee5c382e579ab3900492576",
+    "tests/test_performance021_ownership.py": "2f9a167f07c803c0478397902d517ac7f546ac014e84bee3800979f786f30ef7",
+    "tests/test_performance021_proof.py": "b232f566fd105f481ce1f246193daa6f84d9f1cd145e661ff6499040cb8e95c0",
     "tests/test_schedule_producer_transport.py": "432cba012f6265fb65041fa6aaedb1f342a447dc861019e3ebb47089b9ddabd1",
     "tools/cloud_feed.py": "22b45a81fc02bc852fd3c41a08d0e84a0c674a6619c285652ed52217f3f519d8",
     "tools/native_language_policy.py": "436357ef1273774767acdf1989f14d6ac3c393ebfd4d9f2ca930e9c870e54db6",
-    "tools/native_performance021_qualification.py": "a6c67a3b4cad35f03a276bb52893acf02ecfd1a81347ba058d23e54cbd9ae03a",
+    "tools/native_performance021_qualification.py": "1d6fb9f764a75f2be8381789ca9622b1350877fd6bb6032d3a71fa6fa4706cc9",
     "tools/spacefox/bridge_map.py": "d2daebea7960e4474527214645d0c90c1fcbd473cfeb67bfaf56302cbc4c0604",
-    "tools/spacefox/catalog.py": "d97ad068804a785ae0dbe4334de37b36c760ff7a8461b3fab5672ad7df9ecc6e",
+    "tools/spacefox/catalog.py": "e1d49201e829644a987e8de213fee98c3975b591cec2d9b6556615038c63426a",
     "tools/spacefox/geographic_context.py": "9f9a25032ed530d1ab7addfa8358900f120d5ec10d242a82ec84068bd7d7ecfa",
     "tools/spacefox/global_map.py": "b7848f5810405e04621b53d846d6e304e27433392863e4626a3fee942b7db832",
     "tools/spacefox/graphics.py": "091d7f100c2d8836e55171b72ebccf1f8799f05cf51c486c72fde00e902707a0",
@@ -85,12 +85,12 @@
     "tools/spacefox/native_profile.py": "341d8bb649513aa751ba990697e7fc18dadac9b7de585a9e907a54d60bd2ed65",
     "tools/spacefox/publisher.py": "d0387194b9ea9e5a6a1602cfc9e1f521a70fd6e1b44e8bc1bc2711c7b013832c",
     "tools/spacefox/visual_bridge.py": "4f160a655a22544b2edb67d2ce2025c80dd15c3a929de78996b691541068a0d7",
-    "tools/update_feed.py": "e1f8518ff7bf59ff7ff11508fefffe7268ae964dc55a69dbdbe7ae698a0070c8"
+    "tools/update_feed.py": "c4109da6d23d615ca7ca7ca53256b99c4afe0a02498ceabc16d08ff4e53be878"
   },
   "evidence": {
     "hostMeasurement": {
       "path": "openspec/changes/spacefox-watchface/evidence/performance021/a/HOST-MEASUREMENT.json",
-      "sha256": "7da8ce73a4e43fac6e8e5b8f90d921a53110f57c393304e25489bf41184391d6"
+      "sha256": "7e6ab5ee5df96894dd83760ffe4006b066edeb46f1d2ccdc559460b28f87a66e"
     },
     "hostTests": {
       "path": "openspec/changes/spacefox-watchface/evidence/performance021/a/HOST-TESTS.txt",
@@ -114,7 +114,7 @@
     },
     "peakAttribution": {
       "path": "openspec/changes/spacefox-watchface/evidence/performance021/a/HOST-PEAK-ATTRIBUTION.json",
-      "sha256": "e7283247331b39dff30f41008393175d3e1fb91e3e082a04f231b9849bf6efa4"
+      "sha256": "1a5bbfe8056e4ef27bdfc810396f0b0e4664cf896b8e6cd036eb622139c6b12b"
     },
     "factoryTests": {
       "path": "openspec/changes/spacefox-watchface/evidence/performance021/a/FACTORY-TESTS.txt",
@@ -127,6 +127,18 @@
     "affectedTests": {
       "path": "openspec/changes/spacefox-watchface/evidence/performance021/a/AFFECTED-TESTS.txt",
       "sha256": "fd10ab54da985053a73b4140a5e5924a4c68317089e5ba55ccbd2e731fb283a8"
+    },
+    "peerHost": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/a/PEER-HOST-TESTS.txt",
+      "sha256": "f3388d21b9d1fb0ca4f7dbab834622491ea447073b6bd68c79a7fe09ffa41995"
+    },
+    "peerOwnership": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/a/PEER-OWNERSHIP-TESTS.txt",
+      "sha256": "8b87641ca42fe33c19955742719646550b750e9e8bfc2668080302c4fd7b79e4"
+    },
+    "peerTypes": {
+      "path": "openspec/changes/spacefox-watchface/evidence/performance021/a/PEER-TYPES-TESTS.txt",
+      "sha256": "b420d4ef87d79ff28d6792b91d7a1dbae64df99db7aa54c63bc8f67fdfa9c5ac"
     }
   }
 }
