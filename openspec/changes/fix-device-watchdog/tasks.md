@@ -8,3 +8,4 @@
 - [ ] Physical FR165 cold start, reopen and ordinary use for at least 15 minutes (device acceptance).
 
 - [x] Prepare the 0.1.20 signed release from public main and reconcile its version-bound evidence; publication and physical verification remain separate.
+- [x] Independently review and repair the 0.1.20 release guard and signed payload binding; root owns publication (see evidence/release-020/PEER.md).

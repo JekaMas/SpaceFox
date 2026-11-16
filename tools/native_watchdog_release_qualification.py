@@ -92,6 +92,18 @@ def diagnostic_source_digest(root, manifest_bytes, version_bytes):
 def require_peer_source_binding(root, manifest_bytes, version_bytes, candidate):
     if candidate.get('source_native_inputs_sha256') != PEER_NATIVE_SOURCE_SHA256:
         raise ValueError('peer diagnostic source identity changed')
+    # Normalization may replace labels, never executable module content. The
+    # generator is a separate tool dependency, so validating its current output
+    # alone is not an independent bound on what this substitution can hide.
+    current_version = (root / 'watchface/source/generated/NativeVersion.mc').read_bytes()
+    identity = re.search(rb'const ID = "([0-9a-f]{8})";', current_version)
+    expected_version = version_bytes.replace(b'const BUILD = "0.1.18";',
+                                              b'const BUILD = "0.1.20";', 1)
+    if identity is not None:
+        expected_version = re.sub(rb'const ID = "[0-9a-f]{8}";',
+                                  b'const ID = "' + identity[1] + b'";', expected_version, count=1)
+    if identity is None or current_version != expected_version:
+        raise ValueError('native version delta exceeds release BUILD/ID labels')
     if diagnostic_source_digest(root, manifest_bytes, version_bytes) != PEER_NATIVE_SOURCE_SHA256:
         raise ValueError('current native bytes differ from peer-verified diagnostic source')
 

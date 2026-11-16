@@ -40,6 +40,25 @@ class WatchdogReleaseQualificationTest(unittest.TestCase):
                 proof.validate(ROOT, self.catalog)
             prior.assert_not_called()
 
+    def test_version_normalization_cannot_hide_nonlabel_module_content(self):
+        catalog_proof = self.catalog['supportPolicy']['softwareQualificationProof']
+        record = json.loads((ROOT / catalog_proof['watchdogReleaseProof']['path']).read_text())
+        manifest = (ROOT / record['priorSnapshots']['watchface/manifest.xml']['path']).read_bytes()
+        author_version = (ROOT / record['authorVersion']['path']).read_bytes()
+        candidate = json.loads((ROOT / record['evidence']['candidate']['path']).read_text())
+        proof.require_peer_source_binding(ROOT, manifest, author_version, candidate)
+        with tempfile.TemporaryDirectory(prefix='watchdog-version-normalization-') as folder:
+            root = Path(folder)
+            shutil.copytree(ROOT / 'watchface', root / 'watchface', copy_function=os.link)
+            generated = root / 'watchface/source/generated/NativeVersion.mc'
+            changed = generated.read_bytes() + b'// unreviewed module content\n'
+            generated.unlink()
+            generated.write_bytes(changed)
+            # Even if a changed generator accepts this output, normalization
+            # must independently reject every change beyond the two labels.
+            with self.assertRaisesRegex(ValueError, 'exceeds release BUILD/ID labels'):
+                proof.require_peer_source_binding(root, manifest, author_version, candidate)
+
     def test_repinning_current_hashes_cannot_replace_peer_source(self):
         # Model a modified native owner plus a freshly repinned delta record.
         # Historical proof and peer candidate remain untouched. The independent
