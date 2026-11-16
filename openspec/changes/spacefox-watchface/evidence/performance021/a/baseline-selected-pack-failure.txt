@@ -1,0 +1,20 @@
+setUpClass (tests.test_global_content_closure_r5.GlobalContentClosureR5Test) ... ERROR
+
+======================================================================
+ERROR: setUpClass (tests.test_global_content_closure_r5.GlobalContentClosureR5Test)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/spacefox-performance021-baseline/tests/test_global_content_closure_r5.py", line 79, in setUpClass
+    cls.packs[name] = build_pack(ROOT, catalog, roots=ROOTS)
+                      ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/spacefox-performance021-baseline/tools/spacefox/graphics.py", line 708, in build_pack
+    if roots is not None:_require(len(manifest_data) <= LIMITS['selectionBytes'],'selection manifest byte limit')
+                         ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/spacefox-performance021-baseline/tools/spacefox/graphics.py", line 43, in _require
+    raise VisualError(message)
+tools.spacefox.graphics.VisualError: selection manifest byte limit
+
+----------------------------------------------------------------------
+Ran 0 tests in 2.306s
+
+FAILED (errors=1)

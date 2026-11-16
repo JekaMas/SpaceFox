@@ -1,0 +1,11 @@
+test_actual_launch_whole_publication_and_refusal (tests.test_current_motion_publisher.CurrentMotionPublisherTest.test_actual_launch_whole_publication_and_refusal) ... ok
+test_failure_clock_backoff_survives_restart_and_rejects_time_regression (tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_failure_clock_backoff_survives_restart_and_rejects_time_regression) ... ok
+test_source_advances_during_reservation_consumes_slot_without_permission (tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_source_advances_during_reservation_consumes_slot_without_permission) ... ok
+test_selected_source_identity_history_refusals (tests.test_current_geography_whole.CurrentGeographyWholeTest.test_selected_source_identity_history_refusals) ... ok
+test_source_integrity_and_typed_refusal (tests.test_current_geography_whole.CurrentGeographyWholeTest.test_source_integrity_and_typed_refusal) ... ok
+test_sixteen_actual_asset_roots_and_refusals (tests.test_current_geography_whole.CurrentGeographyWholeTest.test_sixteen_actual_asset_roots_and_refusals) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 136.782s
+
+OK

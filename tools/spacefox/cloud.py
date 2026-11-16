@@ -5,8 +5,10 @@ write/idempotency contract. An armed intent is never automatically POSTed twice.
 Unknown async finality blocks all later work, even if its feed is already visible.
 """
 import base64
+from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError as FuturesTimeout
 import json
 import os
+import time
 from pathlib import Path
 import re
 import subprocess
@@ -28,6 +30,7 @@ FINAL = {'succeed', 'deployment_failed', 'deployment_perms_error',
 # covers old snapshots: retained_files validates any derived sidecars against
 # the same per-artifact limit before excluding the previous mutable roots.
 MAX_DELIVERY_FILES = 2 * MAX_ARTIFACT_FILES
+READBACK_DEADLINE_SECONDS = 120
 
 
 class CloudError(StateError):
@@ -94,7 +97,7 @@ def _http_direct(document):
 
 class HTTP:
     """One attempt; killable20s total DNS/TLS/body deadline,10s socket timeout."""
-    def request(self, method, url, *, headers=None, document=None, limit=MAX_ARTIFACT_BYTES):
+    def request(self, method, url, *, headers=None, document=None, limit=MAX_ARTIFACT_BYTES, timeout=20):
         fields = {'Accept': 'application/json', 'Accept-Encoding': 'identity',
                   'Cache-Control': 'no-cache', 'User-Agent': 'SpaceFox/1'}
         fields.update(headers or {})
@@ -108,7 +111,7 @@ class HTTP:
                                     input=_canonical([url, method, fields, None if body is None
                                                       else base64.b64encode(body).decode('ascii'), limit]),
                                     stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                                    cwd=Path(__file__).resolve().parents[2], timeout=20)
+                                    cwd=Path(__file__).resolve().parents[2], timeout=min(20, timeout))
             if result.returncode or len(result.stdout) > 2 * limit + 1024:
                 raise CloudError('bounded HTTP worker failed; remote outcome may be unknown')
             status, encoded = json.loads(result.stdout)
@@ -311,6 +314,46 @@ def write_journal(pub, value):
     return Publisher(pub.store, pub.running_code)
 
 
+SCHEDULING_WITNESS = 'scheduling-witness.json'
+
+
+def write_scheduling_witness(pub, day, catalog_source_digest):
+    """Bind a scheduling-only date after pending or reconciled active admission."""
+    from datetime import date
+    from .native_motion import validate_feed
+    doc = pub._context(pub.head)
+    snap = doc['pending'] if doc['pending'] is not None else doc['active']
+    if (snap is None or snap['code_revision'] != pub.running_code
+            or doc['pending'] is None and not pub._reconciled):
+        raise CloudError('projection witness requires admitted pending or reconciled active')
+    if type(day) is not str or date.fromisoformat(day).isoformat() != day:
+        raise CloudError('projection witness requires an exact UTC date')
+    _digest(catalog_source_digest)
+    raw = pub.store._blob(pub.head, f'artifacts/{snap["generation"]}/feed.json', 8192)
+    feed = validate_feed(raw)
+    if feed['catalogSourceDigest'] != catalog_source_digest:
+        raise CloudError('projection witness catalog identity mismatch')
+    value = {'schemaVersion': 1, 'date': day, 'source': pub.running_code,
+             'instance': doc['instance_id'], 'generation': snap['generation'],
+             'artifactRevision': snap['artifact_revision'], 'catalogSourceDigest': catalog_source_digest}
+    head = pub.head
+    encoded = _canonical(value)
+    if pub.store._git('cat-file', '-e', f'{head}:{SCHEDULING_WITNESS}', check=False).returncode == 0:
+        try:
+            if pub.store._blob(head, SCHEDULING_WITNESS, 4096) == encoded:
+                return pub
+        except StateError:
+            pass  # A malformed old scheduling hint is replaced after full admission.
+    files = pub.store._files(head, doc)
+    files[SCHEDULING_WITNESS] = encoded
+    commit = pub.store._commit(doc, head, files)
+    result = pub.store._git('push', f'--force-with-lease={STATE_REF}:{head}',
+                            pub.store.remote, f'{commit}:{STATE_REF}', check=False)
+    if result.returncode:
+        raise Conflict('projection witness CAS failed')
+    return Publisher(pub.store, pub.running_code)
+
+
 def retained_files(snapshot, files, *, text_transport):
     """Protected same-format closure only; derive missing copies from pinned bytes.
 
@@ -431,8 +474,29 @@ class Site:
         _path(path)
         return self.http.request('GET', self.base + '/' + quote(path, safe='/'), limit=limit)
 
+    def _get_before(self, path, limit, deadline):
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            raise CloudError('complete closure observation deadline exceeded')
+        _path(path)
+        try:
+            if isinstance(self.http, HTTP):
+                result = self.http.request('GET', self.base + '/' + quote(path, safe='/'),
+                                           limit=limit, timeout=remaining)
+            else:
+                # Injected transports remain supported for deterministic tests.
+                result = self.get(path, limit)
+        except CloudError as error:
+            if time.monotonic() >= deadline:
+                raise CloudError('complete closure observation deadline exceeded') from error
+            raise
+        if time.monotonic() >= deadline:
+            raise CloudError('complete closure observation deadline exceeded')
+        return result
+
     def observe(self, pub, full_manifest=None):
-        status, feed = self.get('feed.json', 8192)
+        deadline = time.monotonic() + READBACK_DEADLINE_SECONDS
+        status, feed = self._get_before('feed.json', 8192, deadline)
         if status == 404 and pub.ledger['active'] is None:
             return None
         if status != 200:
@@ -453,14 +517,25 @@ class Site:
                 if role != 'active':
                     raise CloudError('live feed disagrees with intended complete delivery')
                 expected = files
-            for path, raw in expected.items():
-                if path == 'feed.json':
-                    continue
-                code, actual = self.get(path, len(raw))
-                if code != 200 or actual != raw:
-                    raise _readback_error('live immutable file missing, mixed or corrupt',
-                                          path, raw, code, actual)
-            code, actual = self.get('feed.json', 8192)
+            # Each HTTP child already has a 20-second total deadline. Bound
+            # both concurrency and the complete closure, and wait for every
+            # in-flight child to be reaped even when a result fails.
+            with ThreadPoolExecutor(max_workers=4) as pool:
+                futures = {pool.submit(self._get_before, path, len(raw), deadline): (path, raw)
+                           for path, raw in expected.items() if path != 'feed.json'}
+                try:
+                    for future in as_completed(futures, timeout=max(0, deadline - time.monotonic())):
+                        path, raw = futures[future]
+                        code, actual = future.result()
+                        if code != 200 or actual != raw:
+                            raise _readback_error('live immutable file missing, mixed or corrupt',
+                                                  path, raw, code, actual)
+                except FuturesTimeout as error:
+                    raise CloudError('complete closure observation deadline exceeded') from error
+                finally:
+                    for future in futures:
+                        future.cancel()
+            code, actual = self._get_before('feed.json', 8192, deadline)
             if (code, actual) != (200, feed):
                 raise _readback_error('live feed changed during exact closure observation',
                                       'feed.json', feed, code, actual, phase='after-closure')

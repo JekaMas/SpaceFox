@@ -10,12 +10,12 @@ module SettingsMenu {
     function titles() {return SettingsMenuText.values(locale(),0);}
     function ids() {return [:i0,:i1,:i2,:i3,:i4,:i5,:i6,:i7,:i8,:i9,:i10,:i11,:i12];}
     function root(app) as [WatchUi.Views, WatchUi.InputDelegates] {
-        var menu=new WatchUi.Menu2({:title=>"SpaceFox "+NativeVersion.BUILD});var names=titles();var symbols=ids();
-        for(var i=0;i<names.size();i+=1){menu.addItem(new WatchUi.MenuItem(names[i],i==12?SettingsMenuText.reminderHelp(locale()):null,symbols[i],null));}
+        var language=locale();var menu=new WatchUi.Menu2({:title=>"SpaceFox "+NativeVersion.BUILD});var names=SettingsMenuText.values(language,0);var symbols=ids();
+        for(var i=0;i<names.size();i+=1){menu.addItem(new WatchUi.MenuItem(names[i],i==12?SettingsMenuText.reminderHelp(language):null,symbols[i],null));}
         // Rejected input never becomes accepted data. Explain a useful recovery
         // path in settings without adding a persistent home-screen timestamp.
         if(app.feed!=null&&app.feed.failure.equals("update-rejected")){
-            var help=SettingsMenuText.rejected(locale());
+            var help=SettingsMenuText.rejected(language);
             menu.addItem(new WatchUi.MenuItem(help[0],help[1],:updateRejected,null));
         }
         return [menu,new SettingsRootDelegate(app,menu)];
@@ -33,13 +33,14 @@ class SettingsRootDelegate extends WatchUi.Menu2InputDelegate {
     function initialize(owner,menu){Menu2InputDelegate.initialize();app=owner;rootMenu=menu;}
     function onSelect(item){var index=SettingsMenu.ids().indexOf(item.getId());if(index<0){return;}var key=SettingsMenu.keys()[index];
         if(index==11){var current=Application.Properties.getValue(key);WatchUi.pushView(new WatchUi.TextPicker(current instanceof String?current:""),new SettingsUrlDelegate(app),WatchUi.SLIDE_UP);return;}
+        var language=SettingsMenu.locale();var title=SettingsMenuText.values(language,0)[index];var names=index==12?SettingsMenuText.reminderChoices(language):SettingsMenuText.values(language,index==0?1:index<=4?2:3);
         if(index>=1&&index<=4){
-            var fields=new WatchUi.Menu2({:title=>SettingsMenu.titles()[index]});var names=SettingsMenu.labels(index);var selected=Application.Properties.getValue(key);var fieldText=FieldText.menu(SettingsMenu.locale());
+            var fields=new WatchUi.Menu2({:title=>title});var selected=Application.Properties.getValue(key);var fieldText=FieldText.menu(language);
             for(var f=0;f<names.size();f+=1){var fieldName=names[f]+(f==2||f==3?" "+fieldText["recent"]:"");fields.addItem(new WatchUi.MenuItem(fieldName,selected==f?"*":null,f,null));}
             fields.addItem(new WatchUi.MenuItem(fieldText["navigation"][0],null,:more,null));
             WatchUi.pushView(fields,new SettingsFieldDelegate(app,index),WatchUi.SLIDE_UP);return;
         }
-        var menu=new WatchUi.Menu2({:title=>SettingsMenu.titles()[index]});var names=SettingsMenu.labels(index);var ids=SettingsMenu.ids();var selected=Application.Properties.getValue(key);
+        var menu=new WatchUi.Menu2({:title=>title});var ids=SettingsMenu.ids();var selected=Application.Properties.getValue(key);
         for(var i=0;i<names.size();i+=1){var value=index==0&&i==5?36:i;menu.addItem(new WatchUi.MenuItem(names[i],selected==value?"*":null,ids[i],null));}
         WatchUi.pushView(menu,new SettingsChoiceDelegate(app,index,rootMenu),WatchUi.SLIDE_UP);
     }
@@ -77,7 +78,7 @@ class SettingsFieldDelegate extends WatchUi.Menu2InputDelegate {
 module SettingsFieldPage {
     function show(app,slot,offset){
         var locale=SettingsMenu.locale();var words=FieldText.menu(locale)["navigation"];var page=FieldCatalog.page(locale,offset);
-        var menu=new WatchUi.Menu2({:title=>SettingsMenu.titles()[slot]});var selected=Application.Properties.getValue("Field"+slot);var saved=FieldCatalog.saved(slot);
+        var menu=new WatchUi.Menu2({:title=>SettingsMenuText.values(locale,0)[slot]});var selected=Application.Properties.getValue("Field"+slot);var saved=FieldCatalog.saved(slot);
         if(offset>0){menu.addItem(new WatchUi.MenuItem(words[1],null,:previous,null));}
         for(var i=0;i<page.entries.size();i+=1){var source=page.entries[i][1];var same=selected==6&&saved!=null&&saved.equals(source);menu.addItem(new WatchUi.MenuItem(page.entries[i][0],same?"*":null,source,null));}
         if(page.more){menu.addItem(new WatchUi.MenuItem(words[2],null,:next,null));}

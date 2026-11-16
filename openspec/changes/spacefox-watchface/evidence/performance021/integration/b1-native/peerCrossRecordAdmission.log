@@ -1,0 +1,21 @@
+------------------------------------------------------------------------------
+Executing test peerCrossRecordAdmission...
+DEBUG (20:42): PEER_ADMISSION captured-positive expected=true original=true staged=true
+DEBUG (20:42): PEER_ADMISSION selected-future-duplicate expected=false original=false staged=false
+DEBUG (20:42): PEER_ADMISSION future-future-duplicate expected=false original=false staged=false
+DEBUG (20:42): PEER_ADMISSION overall-count expected=false original=false staged=false
+DEBUG (20:42): PEER_ADMISSION terminal-positive expected=true original=true staged=true
+DEBUG (20:42): PEER_ADMISSION selected-terminal-duplicate expected=false original=false staged=false
+DEBUG (20:42): PEER_ADMISSION terminal-terminal-duplicate expected=false original=false staged=false
+DEBUG (20:42): PEER_ADMISSION terminal-status expected=false original=false staged=false
+DEBUG (20:42): PEER_ADMISSION terminal-future-validation expected=false original=false staged=false
+DEBUG (20:42): PEER_CROSS_RECORD cases=9 original_staged_parity=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+peerCrossRecordAdmission            PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

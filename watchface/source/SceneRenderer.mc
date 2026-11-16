@@ -6,11 +6,13 @@ import Toybox.WatchUi;
 class SceneRenderer {
     var presentation as LocalePresentation;
     var fonts as Dictionary<String, Graphics.FontType>;
-    var model as NativeModel or Null;
+    var model as ResourceId or Null;
     var icons as Dictionary<String,Graphics.BitmapType>;
     var marker as Graphics.BitmapType;
     var art as Graphics.BitmapType or Null;
     var map as Graphics.BitmapType or Null;
+    var artResource as ResourceId or Null=null;
+    var mapResource as ResourceId or Null=null;
     var aodMap as Graphics.BitmapType or Null=null;
     var aodResource as ResourceId or Null=null;
     var aodPin as Boolean=false;var aodPinX as Number=335;var aodPinY as Number=165;
@@ -22,6 +24,10 @@ class SceneRenderer {
     var downloaded as NativeVisualRenderer or Null=null;
     var resourceLoads as Number = 0;
     var prepared as Boolean = false;
+    var layoutRocketInput as String or Null=null;var layoutOperatorInput as String or Null=null;var layoutShortInput as String or Null=null;
+    var layoutLabelFont as Graphics.FontType or Null=null;var layoutNameFont as Graphics.FontType or Null=null;var layoutRocket as String="";var layoutOperator as String="";
+    var layoutRocketWidth as Number=0;var layoutOperatorWidth as Number=0;var layoutGap as Number=0;var layoutLeft as Number=0;
+    var metricLayouts as Array=[null,null,null,null,null,null,null,null];
     (:extendedCode)
     function initialize(owner as LocalePresentation or Null) {
         presentation=owner==null?new LocalePresentation():owner;
@@ -37,7 +43,7 @@ class SceneRenderer {
     }
     (:extendedCode)
     function load(id as ResourceId) as WatchUi.Resource { resourceLoads += 1; return WatchUi.loadResource(id); }
-    (:extendedCode)
+    (:extendedCode, :typecheck(false))
     function prepare(context as SceneContext or Null, settings as SceneSettings) as Void {
         presentation.prepare(settings.language);fonts["label"]=presentation.label as Graphics.FontType;fonts["small"]=presentation.small as Graphics.FontType;fonts["count"]=presentation.count as Graphics.FontType;
         var selected={} as Dictionary<String,Graphics.BitmapType>;
@@ -48,27 +54,34 @@ class SceneRenderer {
         var same=prepared && ((context==null && fullContext==null) ||
             (context!=null && fullContext!=null && context.modelId.equals(fullContext.modelId) && samePoint(context.point,fullContext.point)));
         fullContext=context;
-        if(same){return;}
+        if(same){
+            var rich=downloaded instanceof NativeSfrRenderer?downloaded:null;
+            if(art==null && artResource!=null && (downloaded==null||downloaded.bitmap==null)){art=load(artResource as ResourceId) as Graphics.BitmapType;}
+            if(map==null && mapResource!=null && (rich==null||rich.mapBitmap==null)){map=load(mapResource as ResourceId) as Graphics.BitmapType;}
+            return;
+        }
         prepared=true;
         // The bundled view is geographical backdrop only: no location marker is
         // shown unless the selected launch supplies a qualified matching point.
         model = null; art = null; map = null; aodMap=null; aodResource=null; pin = false;aodPin=false;worldFallback=false;
         var mapResource=Rez.Drawables.MapView0;
-        if (context == null) { aodResource=NativeAssets.aodResource(0); map=load(mapResource) as Graphics.BitmapType; art = load(Rez.Drawables.Art_unknown) as Graphics.BitmapType; return; }
+        if (context == null) { self.mapResource=mapResource;artResource=Rez.Drawables.Art_unknown;aodResource=NativeAssets.aodResource(0);map=load(mapResource) as Graphics.BitmapType; art = load(artResource as ResourceId) as Graphics.BitmapType; return; }
         var id = NativeAssets.models.hasKey(context.modelId) ? context.modelId : "generic";
-        model = NativeAssets.models[id] as NativeModel; art = load(id.equals("generic") ? Rez.Drawables.Art_unknown : (model as NativeModel).resource) as Graphics.BitmapType;
+        model=NativeAssets.models[id] as ResourceId;artResource=id.equals("generic") ? Rez.Drawables.Art_unknown : (model as ResourceId);art = load(artResource as ResourceId) as Graphics.BitmapType;
         if (context.point != null) {
-            for (var i = 0; i < NativeAssets.mapCount; i += 1) {
-                var view = NativeAssets.mapAt(i) as NativeMap;
+            var mapCoords=NativeAssets.mapCoordinates();
+            for (var i = 0; i < mapCoords.size()/8; i += 1) {
+                var longitude=mapCoords.decodeNumber(Lang.NUMBER_FORMAT_FLOAT,{:offset=>i*8,:endianness=>Lang.ENDIAN_BIG});
+                var latitude=mapCoords.decodeNumber(Lang.NUMBER_FORMAT_FLOAT,{:offset=>i*8+4,:endianness=>Lang.ENDIAN_BIG});
                 var point=context.point as Array<Numeric>;
                 // These bitmaps use D3's rotated equirectangular projection.
                 // Admit only points within a quarter degree of the bitmap's
                 // actual center, where its site remains legible beside time.
-                var lonDelta=point[0]-view.longitude;var latDelta=point[1]-view.latitude;
+                var lonDelta=point[0]-longitude;var latDelta=point[1]-latitude;
                 if (lonDelta>=-0.25 && lonDelta<=0.25 && latDelta>=-0.25 && latDelta<=0.25) {
-                    var projected=projectSite(point,view.longitude,view.latitude);
+                    var projected=projectSite(point,longitude,latitude);
                     pinX=projected[0];pinY=projected[1];aodPinX=pinX;aodPinY=pinY;
-                    mapResource=view.resource;aodResource=NativeAssets.aodResource(i);pin = true;aodPin=true;break;
+                    mapResource=NativeAssets.mapResource(i);aodResource=NativeAssets.aodResource(i);pin = true;aodPin=true;break;
                 }
             }
             if(aodResource==null){
@@ -78,8 +91,17 @@ class SceneRenderer {
                     if(lon>=-0.25&&lon<=0.25&&lat>=-0.25&&lat<=0.25){var projected=projectSite(point,longitude,latitude);aodPinX=projected[0];aodPinY=projected[1];pinX=aodPinX;pinY=aodPinY;pin=true;mapResource=NativeAssets.extraMapResource(i);aodPin=true;aodResource=NativeAssets.aodResource(54+i);break;}}
             }
         }
-        if(context.point!=null&&!pin){worldFallback=true;map=null;}
-        else{map=load(mapResource) as Graphics.BitmapType;}
+        if(context.point!=null&&!pin){worldFallback=true;self.mapResource=null;map=null;}
+        else{self.mapResource=mapResource;map=load(mapResource) as Graphics.BitmapType;}
+    }
+    // Only restore a bundled bitmap if this point has a matching bundled map;
+    // unmatched points continue to use the bounded source-world fallback.
+    (:typecheck(false)) function useDownloaded(value as NativeVisualRenderer or Null) as Void {
+        downloaded=value;var rich=value instanceof NativeSfrRenderer?value:null;
+        if(value!=null && value.bitmap!=null){art=null;}
+        else if(art==null && artResource!=null){art=load(artResource as ResourceId) as Graphics.BitmapType;}
+        if(rich!=null && rich.mapBitmap!=null){map=null;}
+        else if(map==null && mapResource!=null){map=load(mapResource as ResourceId) as Graphics.BitmapType;}
     }
     function samePoint(a as Array<Numeric> or Null,b as Array<Numeric> or Null) as Boolean {
         if(a==null||b==null){return a==null&&b==null;}
@@ -91,8 +113,15 @@ class SceneRenderer {
         var x=Math.cos(lambda)*Math.cos(phi);var y=Math.sin(lambda)*Math.cos(phi);var z=Math.sin(phi);
         return [(335+145*Math.atan2(y,x*Math.cos(delta)-z*Math.sin(delta))+0.5).toNumber(),(165-145*Math.asin(z*Math.cos(delta)+x*Math.sin(delta))+0.5).toNumber()];
     }
-    (:extendedCode) function fit(dc as Graphics.Dc, text as String, font as Graphics.FontType, width as Number) as String {
+    (:extendedCode, :typecheck(false)) function fit(dc as Graphics.Dc, text as String, font as Graphics.FontType, width as Number) as String {
+        if(layoutRocketInput!=null && font==layoutLabelFont && text.equals(layoutRocket) && layoutRocketWidth<=width){return text;}
+        if(layoutOperatorInput!=null && font==layoutNameFont && text.equals(layoutOperator) && layoutOperatorWidth<=width){return text;}
+        for(var i=0;i<metricLayouts.size();i+=1){var entry=metricLayouts[i];if(entry!=null && entry[1]==font && text.equals(entry[3]) && entry[4]<=width){return text;}}
         return presentation.fit(dc,text,font,width);
+    }
+    (:extendedCode, :typecheck(false)) function metricFit(slot,dc,value,font,width) {
+        var entry=metricLayouts[slot];if(entry!=null&&entry[1]==font&&entry[2]==width&&entry[0].equals(value)){return entry[3];}
+        var fitted=presentation.fit(dc,value,font,width);metricLayouts[slot]=[value,font,width,fitted,dc.getTextWidthInPixels(fitted,font)];return fitted;
     }
     (:extendedCode) function text(dc as Graphics.Dc, x as Numeric, y as Numeric, font as Graphics.FontType, value as String, color as Number, width as Number, contour as Number) as String {
         var content = fit(dc, value, font, width);
@@ -119,20 +148,23 @@ class SceneRenderer {
         if (context != null) {
             // Match the existing unavailable health marker without changing the
             // accepted context: absent company/mission stay empty in storage.
-            var operatorText=context.operator.equals("")?(context.operatorShort.equals("")?"—":context.operatorShort):context.operator;
             var purposeText=context.purpose.equals("")?"—":presentation.mission(context.purpose);
-            var naturalOperator=dc.getTextWidthInPixels(operatorText,fonts["nameSmall"] as Graphics.FontType);
-            if(!context.operatorShort.equals("")&&!context.operator.equals("")&&naturalOperator>(context.rocket.equals("")?238:100)){
-                operatorText=context.operatorShort;naturalOperator=dc.getTextWidthInPixels(operatorText,fonts["nameSmall"] as Graphics.FontType);
+            var labelFont=fonts["label"] as Graphics.FontType;var nameFont=fonts["nameSmall"] as Graphics.FontType;
+            if(layoutRocketInput==null||!layoutRocketInput.equals(context.rocket)||!layoutOperatorInput.equals(context.operator)||!layoutShortInput.equals(context.operatorShort)||layoutLabelFont!=labelFont||layoutNameFont!=nameFont){
+                // Invalidate by the actual text and fonts, including an empty
+                // long operator whose short fallback may change independently.
+                layoutRocketInput=null;layoutOperatorInput=null;
+                var operatorText=context.operator.equals("")?(context.operatorShort.equals("")?"—":context.operatorShort):context.operator;
+                var naturalOperator=dc.getTextWidthInPixels(operatorText,nameFont);
+                if(!context.operatorShort.equals("")&&!context.operator.equals("")&&naturalOperator>(context.rocket.equals("")?238:100)){operatorText=context.operatorShort;naturalOperator=dc.getTextWidthInPixels(operatorText,nameFont);}
+                var operatorBudget=context.rocket.equals("")?238:(naturalOperator<100?naturalOperator:100);
+                var rocketBudget=238-operatorBudget-(context.rocket.equals("")?0:16);
+                layoutRocket=presentation.fit(dc,context.rocket,labelFont,rocketBudget);layoutOperator=presentation.fit(dc,operatorText,nameFont,operatorBudget);
+                layoutRocketWidth=dc.getTextWidthInPixels(layoutRocket,labelFont);layoutOperatorWidth=dc.getTextWidthInPixels(layoutOperator,nameFont);
+                layoutGap=layoutRocket.equals("")||layoutOperator.equals("")?0:16;layoutLeft=195-(layoutRocketWidth+layoutOperatorWidth+layoutGap)/2;
+                layoutRocketInput=context.rocket;layoutOperatorInput=context.operator;layoutShortInput=context.operatorShort;layoutLabelFont=labelFont;layoutNameFont=nameFont;
             }
-            var operatorBudget=context.rocket.equals("")?238:(naturalOperator<100?naturalOperator:100);
-            var rocketBudget=238-operatorBudget-(context.rocket.equals("")?0:16);
-            var rocketTitle=fit(dc,context.rocket,fonts["label"] as Graphics.FontType,rocketBudget);
-            var operatorTitle=fit(dc,operatorText,fonts["nameSmall"] as Graphics.FontType,operatorBudget);
-            var rocketWidth=dc.getTextWidthInPixels(rocketTitle,fonts["label"] as Graphics.FontType);
-            var operatorWidth=dc.getTextWidthInPixels(operatorTitle,fonts["nameSmall"] as Graphics.FontType);
-            var gap=rocketTitle.equals("")||operatorTitle.equals("")?0:16;
-            var left=195-(rocketWidth+operatorWidth+gap)/2;
+            var rocketTitle=layoutRocket;var operatorTitle=layoutOperator;var rocketWidth=layoutRocketWidth;var operatorWidth=layoutOperatorWidth;var gap=layoutGap;var left=layoutLeft;
             text(dc,left+rocketWidth/2,43,fonts["label"] as Graphics.FontType,rocketTitle,0xD8E2ED,238,1);
             if(gap>0){text(dc,left+rocketWidth+8,47,fonts["nameSmall"] as Graphics.FontType,"·",0x96B8C9,16,1);}
             text(dc,left+rocketWidth+gap+operatorWidth/2,47,fonts["nameSmall"] as Graphics.FontType,operatorTitle,0xD4DFEB,238,1);
@@ -169,14 +201,20 @@ class SceneRenderer {
             var rowTop=i<2?244:282;
             if(role.find("custom")==0){
                 var small=fonts["small"] as Graphics.FontType;var metric=fonts["metric"] as Graphics.FontType;
-                var customLeft=i%2==0?55:207;var name=fit(dc,fitness.fieldLabel(role),small,35);
+                var customLeft=i%2==0?55:207;var name=metricFit(i,dc,fitness.fieldLabel(role),small,35);
                 drawProviderIcon(dc,fitness.fieldIcon(role),customLeft,rowTop,settings.fieldColors[i]);
                 text(dc,customLeft+17,rowTop+6,small,name,settings.fieldColors[i],35,1);
-                var valueFont=metricGlyphs(label)?metric:small;
-                text(dc,customLeft+80,rowTop+(valueFont==metric?-4:6),valueFont,label,settings.fieldColors[i],90,1);
+                var selected=fitness.selectedFields;var numeric=selected!=null && (selected as SelectedFields).fitted(role)?(selected as SelectedFields).numeric(role):metricGlyphs(label);
+                var valueFont=numeric?metric:small;
+                var fittedValue=metricFit(i+4,dc,label,valueFont,90);
+                var shownValue=text(dc,customLeft+80,rowTop+(valueFont==metric?-4:6),valueFont,fittedValue,settings.fieldColors[i],90,1);
+                if(selected!=null){(selected as SelectedFields).keepFitted(role,name,shownValue,numeric);}
+                // Do not retain a long provider string as a cache key after
+                // the selected-field owner has kept its exact fitted output.
+                if(selected!=null){metricLayouts[i][0]=name;metricLayouts[i+4][0]=shownValue;}
             }else{
-                label=fit(dc,label,fonts["metric"] as Graphics.FontType,128);
-                var width=dc.getTextWidthInPixels(label,fonts["metric"] as Graphics.FontType);
+                label=metricFit(i,dc,label,fonts["metric"] as Graphics.FontType,128);
+                var width=metricLayouts[i][4] as Number;
                 var left=i%2==0?55:335-width;if(i==2&&role.equals("battery")){left+=18;}var y=rowTop-4;
                 icon(dc,left-(role.equals("battery")?31:25),rowTop+(role.equals("battery")?2:5),role);
                 text(dc,left+width/2,y,fonts["metric"] as Graphics.FontType,label,settings.fieldColors[i],128,1);

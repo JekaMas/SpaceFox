@@ -1,0 +1,104 @@
+------------------------------------------------------------------------------
+Executing test display03SleepThenHighObservation...
+DEBUG (18:17): SLEEP_QUERY_HIGH active=0 low=1 mode=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03WakeThenLowObservation...
+DEBUG (18:17): WAKE_QUERY_LOW active=0 low=1 mode=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03CausalSequence...
+DEBUG (18:17): D03_SEQUENCE seed=1 events=30 required_dispositions=12 skipped=0
+DEBUG (18:17): D03_SEQUENCE seed=2 events=30 required_dispositions=12 skipped=0
+DEBUG (18:17): D03_SEQUENCE seed=3 events=30 required_dispositions=12 skipped=0
+DEBUG (18:17): D03_SEQUENCE seed=4 events=30 required_dispositions=12 skipped=0
+DEBUG (18:17): D03_SEQUENCE seed=5 events=30 required_dispositions=12 skipped=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03ReadyAndErrorOnWake...
+DEBUG (18:17): READY_ERROR sleep accepted_target retained rejected_old no_load_until_first_active_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03BackgroundBeforeFrame...
+DEBUG (18:17): BACKGROUND sleep_applied=true wake_first_frame no_reload=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03RealMapDecode...
+DEBUG (18:17): REAL_MAP_DECODE launch=ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a sourceSite=ll2:site:29 checksum=verified outline=true steps=208 elapsedMs=4280
+PASS
+------------------------------------------------------------------------------
+Executing test display03BundledOutlineDecode...
+DEBUG (18:17): BUNDLED_OUTLINE_DECODE sameRealMap=true pixelShaVerified=true noDiscardedOutline=true steps=51 elapsedMs=415
+PASS
+------------------------------------------------------------------------------
+Executing test display03PackedCenters...
+PASS
+------------------------------------------------------------------------------
+Executing test display03SameBatchJob...
+DEBUG (18:17): SAME_BATCH serial_advance_preserved=true changed_digest_canceled=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03FailedSameDigestRetry...
+DEBUG (18:17): FAILED_RETRY realTransientSelectionRead=true sameSerialNoSpin=true newSerialBuild=true staleCompletionRejected=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03SourcedHoldCache...
+DEBUG (18:17): SOURCED_HOLD status5=true staleIndependent=true cacheReopen=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03WarmAodResources...
+DEBUG (18:17): WARM_AOD drawLoads=0 wakeReloads=0 duplicatePrepareLoads=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03LowDoesNotSample...
+PASS
+------------------------------------------------------------------------------
+Executing test display03OffStopsWork...
+DEBUG (18:17): OFF noPaintOrSampling=true cancelOnce=true highFirstFrameBeforeSampling=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03SameSceneRefreshKeepsJob...
+DEBUG (18:17): SAME_SCENE_REFRESH acceptedReopen=true queuedJobRetained=true assetSourceRetained=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03ForegroundReloadDuringBuild...
+DEBUG (18:17): RELOAD_STAGE duplicate
+DEBUG (18:17): RELOAD_STAGE moved
+DEBUG (18:17): RELOAD_STAGE reject
+DEBUG (18:17): RELOAD_STAGE restore
+DEBUG (18:17): FOREGROUND_RELOAD duplicateJobRetained=true duplicateWrites=0 movedTargetVisible=true oldCompletionRejected=true rejectedRetainsTarget=true elapsedMs=127 appUsedBefore=159672 appUsedAfter=164176 appTotal=8383928
+PASS
+------------------------------------------------------------------------------
+Executing test display03StreamWireValidation...
+DEBUG (18:17): STREAM_WIRE canonical=true padBitsRejected=true interiorPaddingRejected=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03SkipInvisibleRocket...
+DEBUG (18:17): ROCKET_CLIP invisible draws=0 clips=0
+DEBUG (18:17): ROCKET_CLIP native affine comparisons=405
+PASS
+
+==============================================================================
+RESULTS
+Test:                                Status:
+display03SleepThenHighObservation    PASS
+display03WakeThenLowObservation      PASS
+display03CausalSequence              PASS
+display03ReadyAndErrorOnWake         PASS
+display03BackgroundBeforeFrame       PASS
+display03RealMapDecode               PASS
+display03BundledOutlineDecode        PASS
+display03PackedCenters               PASS
+display03SameBatchJob                PASS
+display03FailedSameDigestRetry       PASS
+display03SourcedHoldCache            PASS
+display03WarmAodResources            PASS
+display03LowDoesNotSample            PASS
+display03OffStopsWork                PASS
+display03SameSceneRefreshKeepsJob    PASS
+display03ForegroundReloadDuringBuild PASS
+display03StreamWireValidation        PASS
+display03SkipInvisibleRocket         PASS
+Ran 18 tests
+
+PASSED (passed=18, failed=0, errors=0)

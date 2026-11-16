@@ -1,0 +1,14 @@
+------------------------------------------------------------------------------
+Executing test dTerminalPrefixFence...
+DEBUG (19:16): PREFIX_CORRUPTED beforeCompletion=true verified=1
+DEBUG (19:16): NORMAL_ROUTE_REFUSED sourceConstruction=true acceptedCommitAndPriorRasterUnchanged=true
+DEBUG (19:16): TERMINAL_FENCE_COMPLETE sameBatchPrefixCorrupt=true normalRefused=true terminalClosureRefused=true steps=222
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+dTerminalPrefixFence                PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

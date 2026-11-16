@@ -1,0 +1,97 @@
+{
+  "status": "GREEN",
+  "boundary": "Selected executable identities only; private full graph runner unavailable",
+  "cases": [
+    {
+      "case": "VC05.P3.C21.NEGATIVE",
+      "polarity": "negative",
+      "test": "unittest::tests.test_current_selected_metadata.CurrentSelectedMetadataTest.test_selected_metadata_refusals_preserve_files",
+      "command": "global-content-selection-r3",
+      "sourceSha256": "861cd81d1a281659e3575cd6c7e858243ecdba35a439c2f457c07e8afaa6ef1f"
+    },
+    {
+      "case": "WF21.P1.S01.POSITIVE",
+      "polarity": "positive",
+      "test": "unittest::tests.test_fields018_graph_receipts.Fields018GraphReceipts.test_provider_recovers_identity",
+      "command": "fields018-graph-receipts",
+      "sourceSha256": "4b5181c96e616326220776eba2e2fafd563be24c9ee6fc84916d8215029755e8"
+    },
+    {
+      "case": "WF21.P1.S01.NEGATIVE",
+      "polarity": "negative",
+      "test": "unittest::tests.test_fields018_graph_receipts.Fields018GraphReceipts.test_provider_missing_retains_identity",
+      "command": "fields018-graph-receipts",
+      "sourceSha256": "4b5181c96e616326220776eba2e2fafd563be24c9ee6fc84916d8215029755e8"
+    },
+    {
+      "case": "WF21.P1.S02.POSITIVE",
+      "polarity": "positive",
+      "test": "unittest::tests.test_fields018_graph_receipts.Fields018GraphReceipts.test_same_slot_new_identity",
+      "command": "fields018-graph-receipts",
+      "sourceSha256": "4b5181c96e616326220776eba2e2fafd563be24c9ee6fc84916d8215029755e8"
+    },
+    {
+      "case": "WF21.P1.S02.NEGATIVE",
+      "polarity": "negative",
+      "test": "unittest::tests.test_fields018_graph_receipts.Fields018GraphReceipts.test_same_slot_old_identity_removed",
+      "command": "fields018-graph-receipts",
+      "sourceSha256": "4b5181c96e616326220776eba2e2fafd563be24c9ee6fc84916d8215029755e8"
+    },
+    {
+      "case": "RL21.P1.test_source_capture_single_read_and_fresh_fence",
+      "polarity": "positive",
+      "test": "unittest::tests.test_performance021_c.GroupCTest.test_source_capture_single_read_and_fresh_fence",
+      "command": "performance021-c",
+      "sourceSha256": "653400912d6839c23f405a617df9b78663eec02a0d7b2bb3a7f723a90641749f"
+    },
+    {
+      "case": "RL21.P1.test_snapshot_mutation_sequences",
+      "polarity": "negative",
+      "test": "unittest::tests.test_performance021_c.GroupCTest.test_snapshot_mutation_sequences",
+      "command": "performance021-c",
+      "sourceSha256": "653400912d6839c23f405a617df9b78663eec02a0d7b2bb3a7f723a90641749f"
+    },
+    {
+      "case": "RL21.P2.test_toolchain_single_capture_and_fresh_mutation",
+      "polarity": "positive",
+      "test": "unittest::tests.test_performance021_c.GroupCTest.test_toolchain_single_capture_and_fresh_mutation",
+      "command": "performance021-c",
+      "sourceSha256": "653400912d6839c23f405a617df9b78663eec02a0d7b2bb3a7f723a90641749f"
+    },
+    {
+      "case": "RL21.P2.test_toolchain_pin_mutations_refuse",
+      "polarity": "negative",
+      "test": "unittest::tests.test_performance021_c.GroupCTest.test_toolchain_pin_mutations_refuse",
+      "command": "performance021-c",
+      "sourceSha256": "653400912d6839c23f405a617df9b78663eec02a0d7b2bb3a7f723a90641749f"
+    },
+    {
+      "case": "RL21.P3.test_retired_routes_and_current_primitives",
+      "polarity": "positive",
+      "test": "unittest::tests.test_performance021_c.GroupCTest.test_retired_routes_and_current_primitives",
+      "command": "performance021-c",
+      "sourceSha256": "653400912d6839c23f405a617df9b78663eec02a0d7b2bb3a7f723a90641749f"
+    },
+    {
+      "case": "RL21.P3.test_changed_retired_snapshot_refuses",
+      "polarity": "negative",
+      "test": "unittest::tests.test_performance021_c.GroupCTest.test_changed_retired_snapshot_refuses",
+      "command": "performance021-c",
+      "sourceSha256": "653400912d6839c23f405a617df9b78663eec02a0d7b2bb3a7f723a90641749f"
+    },
+    {
+      "case": "WF21.P1.test_embed_lifetime",
+      "polarity": "positive",
+      "test": "unittest::tests.test_performance021_c.GroupCTest.test_embed_lifetime",
+      "command": "performance021-c",
+      "sourceSha256": "653400912d6839c23f405a617df9b78663eec02a0d7b2bb3a7f723a90641749f"
+    },
+    {
+      "case": "WF21.P1.test_embed_disconnected_event",
+      "polarity": "negative",
+      "test": "unittest::tests.test_performance021_c.GroupCTest.test_embed_disconnected_event",
+      "command": "performance021-c",
+      "sourceSha256": "653400912d6839c23f405a617df9b78663eec02a0d7b2bb3a7f723a90641749f"
+    }
+  ]
+}

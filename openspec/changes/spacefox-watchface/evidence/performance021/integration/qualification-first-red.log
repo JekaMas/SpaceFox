@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from pathlib import Path; from tools.native_language_policy import software_locales; print(software_locales(Path.cwd()))
+                                                                                               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tools/native_language_policy.py", line 94, in software_locales
+    return validate(root,catalog)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tools/native_integration022_qualification.py", line 181, in validate
+    raise ValueError('historical ' + side + ' qualification failed: ' + run.stderr[-3000:])
+ValueError: historical performance qualification failed: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;from pathlib import Path;from tools.native_language_policy import software_locales;print(json.dumps(software_locales(Path.cwd())))
+                                                                                                                    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-022-history-_zwix4v_/tools/native_language_policy.py", line 94, in software_locales
+    return validate(root,catalog)
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-022-history-_zwix4v_/tools/native_performance021_qualification.py", line 108, in validate
+    _checked(root, name, digest)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-022-history-_zwix4v_/tools/native_performance021_qualification.py", line 88, in _checked
+    raise ValueError('performance021 proof input changed: ' + name)
+ValueError: performance021 proof input changed: release/native-admission-inputs.json
+

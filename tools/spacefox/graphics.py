@@ -639,7 +639,7 @@ def _source_path(root,path):
     return resolved
 
 
-def build_pack(root,catalog,*,roots=None):
+def build_pack(root,catalog,*,roots=None,_include_catalog=True):
     """Export every selected asset via catalog definitions; never a model switch.
 
     Returns a fully validated local candidate. No file output occurs here. Full
@@ -707,7 +707,8 @@ def build_pack(root,catalog,*,roots=None):
         manifest_data=canonical_bytes(manifest)
         if roots is not None:_require(len(manifest_data) <= LIMITS['selectionBytes'],'selection manifest byte limit')
         _require(len(manifest_data)+sum(map(len,objects.values())) <= LIMITS['artifactBytes'],'publisher artifact byte limit')
-        return {'manifest':manifest,'objects':objects,'statistics':statistics,'catalog':deepcopy(catalog)}
+        return {'manifest':manifest,'objects':objects,'statistics':statistics,
+                'catalog':deepcopy(catalog) if _include_catalog else None}
     except CatalogError as exc:raise VisualError(f'catalog: {exc}') from exc
 
 

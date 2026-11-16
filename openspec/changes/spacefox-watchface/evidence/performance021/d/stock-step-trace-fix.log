@@ -1,0 +1,80 @@
+Background: IDENTITY build=7a336b22 base=https://rollover017.fixture.invalid incoming=true batch=true fixtureValid=true
+IDENTITY build=7a336b22 base=https://rollover017.fixture.invalid incoming=true batch=true fixtureValid=true
+TRACE_START t=25941 bundled=true loads=5
+TRACE_ENTER t=26326 step=1 role=0 row=0
+TRACE_EXIT t=26393 step=1
+TRACE_ENTER t=26393 step=2 role=0 row=0
+TRACE_EXIT t=26405 step=2
+TRACE_ENTER t=26794 step=3 role=0 row=8
+TRACE_EXIT t=26806 step=3
+TRACE_ENTER t=27368 step=4 role=0 row=14
+TRACE_EXIT t=27380 step=4
+TRACE_ENTER t=27381 step=5 role=0 row=20
+TRACE_EXIT t=27394 step=5
+TRACE_ENTER t=27669 step=6 role=0 row=27
+TRACE_EXIT t=27683 step=6
+TRACE_ENTER t=27683 step=7 role=0 row=35
+TRACE_EXIT t=27687 step=7
+TRACE_ENTER t=27967 step=8 role=0 row=37
+TRACE_EXIT t=27969 step=8
+TRACE_ENTER t=28529 step=9 role=0 row=37
+TRACE_EXIT t=28543 step=9
+TRACE_ENTER t=28827 step=10 role=0 row=43
+TRACE_EXIT t=28839 step=10
+TRACE_ENTER t=29122 step=11 role=0 row=48
+TRACE_EXIT t=29135 step=11
+TRACE_ENTER t=29135 step=12 role=0 row=52
+TRACE_EXIT t=29148 step=12
+TRACE_ENTER t=29426 step=13 role=0 row=56
+TRACE_EXIT t=29428 step=13
+TRACE_ENTER t=29985 step=14 role=0 row=56
+TRACE_EXIT t=29997 step=14
+TRACE_ENTER t=30280 step=15 role=0 row=59
+TRACE_EXIT t=30294 step=15
+TRACE_ENTER t=30576 step=16 role=0 row=63
+TRACE_EXIT t=30590 step=16
+TRACE_PROGRESS t=30590 steps=16 role=0 row=69 loads=5
+TRACE_ENTER t=30864 step=17 role=0 row=69
+TRACE_EXIT t=30877 step=17
+TRACE_ENTER t=30879 step=18 role=0 row=75
+TRACE_EXIT t=30884 step=18
+TRACE_ENTER t=31160 step=19 role=0 row=77
+TRACE_EXIT t=31162 step=19
+TRACE_ENTER t=31438 step=20 role=0 row=77
+TRACE_EXIT t=31452 step=20
+TRACE_ENTER t=31738 step=21 role=0 row=82
+TRACE_EXIT t=31752 step=21
+TRACE_ENTER t=31775 step=22 role=0 row=89
+TRACE_EXIT t=31787 step=22
+TRACE_ENTER t=32077 step=23 role=0 row=96
+TRACE_EXIT t=32089 step=23
+TRACE_ENTER t=32125 step=24 role=0 row=102
+TRACE_EXIT t=32138 step=24
+TRACE_ENTER t=32182 step=25 role=0 row=108
+TRACE_EXIT t=32183 step=25
+TRACE_ENTER t=32225 step=26 role=0 row=108
+TRACE_EXIT t=32237 step=26
+TRACE_ENTER t=32273 step=27 role=0 row=113
+TRACE_EXIT t=32287 step=27
+TRACE_ENTER t=32324 step=28 role=0 row=119
+TRACE_EXIT t=32336 step=28
+TRACE_ENTER t=32651 step=29 role=0 row=124
+TRACE_EXIT t=32664 step=29
+TRACE_PROGRESS t=32664 steps=29 role=0 row=130 loads=5
+TRACE_ENTER t=32674 step=30 role=0 row=130
+TRACE_EXIT t=32687 step=30
+TRACE_ENTER t=33673 step=40 role=0 row=179
+TRACE_EXIT t=33685 step=40
+TRACE_PROGRESS t=33779 steps=42 role=0 row=192 loads=5
+TRACE_PROGRESS t=35085 steps=54 role=0 row=260 loads=5
+TRACE_ENTER t=35656 step=60 role=0 row=289
+TRACE_EXIT t=35668 step=60
+TRACE_PROGRESS t=35737 steps=62 role=0 row=322 loads=5
+TRACE_PROGRESS t=36334 steps=70 role=1 row=0 loads=5
+TRACE_PROGRESS t=37184 steps=75 role=1 row=64 loads=5
+TRACE_PROGRESS t=37652 steps=79 role=2 row=0 loads=5
+TRACE_ENTER t=37674 step=80 role=2 row=0
+TRACE_EXIT t=37695 step=80
+TRACE_PROGRESS t=37729 steps=81 role=3 row=0 loads=5
+TRACE_DONE t=38659 steps=88 loads=5
+TRACE_TIMER_STOP t=38659 build=true steps=88

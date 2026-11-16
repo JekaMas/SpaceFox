@@ -117,3 +117,35 @@ SHALL retain reconstructible source and manifest evidence.
 #### Scenario: A signed app release is defective
 - **WHEN** the official binary requires repair
 - **THEN** a higher-version release with the existing identity/key is prepared and qualified; a Store downgrade or lossless sideload-to-Store migration is not assumed
+
+### Requirement: Fresh release input fences
+
+Each release invocation SHALL freshly capture its tracked source inventory and
+SDK/profile inputs. Each PRG or IQ compiler invocation SHALL retain fresh before
+and after snapshot-inventory and byte checks, followed by final source, signing,
+flags, UUID, provenance and package verification. A captured byte sequence MAY
+serve multiple checks within the same fence, but file/object identity or a prior
+fence SHALL NOT grant later admission. Secret-shaped inputs remain refused.
+
+#### Scenario: Unchanged current release inputs
+- **WHEN** the release tools admit the current 42-profile input closure
+- **THEN** duplicate consumers in one fence share its captured bytes and produce the same source digests and profile decisions, without weakening the protected inventory
+
+#### Scenario: Inputs change between compiler boundaries
+- **WHEN** source, generated settings, a discovered file/directory/symlink, SDK/profile bytes or external signing/history evidence changes
+- **THEN** the next required fresh fence refuses the result and no release receipt is accepted
+
+### Requirement: Retire obsolete operator entrypoints
+
+The obsolete 0.1.4 private-beta build CLI and retired standalone static/frozen map
+exporters SHALL have no active executable entrypoint or active operator recipe.
+Authenticated original proof snapshots SHALL remain reconstructible. Current
+SFR1M primitives, ordinary UUID, version, settings, URL and preview remain intact.
+
+#### Scenario: Current tooling after retirement
+- **WHEN** a maintainer uses the current release, map audit or native producer
+- **THEN** current behavior remains available and retired exporter symbols/CLI recipes are absent
+
+#### Scenario: Historical proof references deleted active source
+- **WHEN** a retained qualification needs the exact former exporter source
+- **THEN** it reads the authenticated historical snapshot, and missing or altered snapshots refuse qualification

@@ -13,7 +13,7 @@ module FieldCatalog {
     // Re-enumerate when changing pages so no full provider inventory remains
     // resident beside the selected scene. Only six entries are materialized.
     function page(locale,offset) {
-        var result=new FieldPage(offset);var types=[];
+        var result=new FieldPage(offset);var types=[];var words=null;
         try {
             var iter=Complications.getComplications();var item=iter.next();
             while(item!=null){
@@ -24,7 +24,7 @@ module FieldCatalog {
                     var label=item.longLabel;
                     if(!(label instanceof String)||label.equals("")){label=item.shortLabel;}
                     if(!(label instanceof String)||label.equals("")){label=kind instanceof Number&&kind>0?"Complication "+kind:"Complication";}
-                    if(kind==18||kind==22){label+=" "+FieldText.menu(locale)["current"];}
+                    if(kind==18||kind==22){if(words==null){words=FieldText.menu(locale);}label+=" "+words["current"];}
                     result.add(label,item.complicationId);
                 }
                 if(result.more){return result;}
@@ -32,12 +32,12 @@ module FieldCatalog {
             }
         } catch(e) {}
         try {var info=ActivityMonitor.getInfo();if(info!=null){
-            var keys=activityKeys();var labels=activityLabels(locale);
+            var keys=activityKeys();if(words==null){words=FieldText.menu(locale);}var labels=words["activity"];
             for(var i=0;i<keys.size();i+=1){var key=keys[i];
                 var duplicate=(key.equals("activeMinutesWeekTotal")&&types.indexOf(5)>=0)||(key.equals("floorsClimbed")&&types.indexOf(4)>=0)||(key.equals("pushes")&&types.indexOf(40)>=0)||(key.equals("timeToRecovery")&&types.indexOf(21)>=0)||(key.equals("respirationRate")&&types.indexOf(36)>=0);
                 if(!duplicate&&supported(info,key)){result.add(labels[i],key);if(result.more){return result;}}}
         }}catch(e){}
-        try{var stats=System.getSystemStats();if(stats!=null){var keys=systemKeys();var labels=systemLabels(locale);
+        try{var stats=System.getSystemStats();if(stats!=null){var keys=systemKeys();if(words==null){words=FieldText.menu(locale);}var labels=words["system"];
             for(var i=0;i<keys.size();i+=1){if(systemSupported(stats,keys[i],types)){result.add(labels[i],keys[i]);if(result.more){return result;}}}
         }}catch(e){}
         return result;
@@ -155,7 +155,7 @@ class FieldComplicationApi {
 // persisted if a provider disappears; a failed subscription is polled on minute.
 (:extendedCode, :typecheck(false))
 class SelectedFields {
-    var selected=[];var subscribed=[];var labels={};var text={};var icons={};var energy as Number or Null=null;var callbackRegistered=false;var provider=null;var api=null;var customMask=0;
+    var selected=[];var subscribed=[];var labels={};var text={};var icons={};var energy as Number or Null=null;var callbackRegistered=false;var provider=null;var api=null;var customMask=0;var fittedMask=0;var numericMask=0;
     function initialize(){}
     function start(slots,callback){
         stop();
@@ -176,11 +176,16 @@ class SelectedFields {
     }
     function stop(){for(var i=0;i<subscribed.size();i+=1){try{if(api==null){Complications.unsubscribeFromUpdates(subscribed[i]);}else{api.unsubscribe(subscribed[i]);}}catch(e){}}
         if(callbackRegistered){try{if(api==null){Complications.registerComplicationChangeCallback(null);}else{api.register(null);}}catch(e){}}
-        subscribed=[];selected=[];labels={};text={};icons={};energy=null;callbackRegistered=false;customMask=0;
+        subscribed=[];selected=[];labels={};text={};icons={};energy=null;callbackRegistered=false;customMask=0;fittedMask=0;numericMask=0;
     }
-    function read(locale){
-        var info=null;var fetched=false;var stats=null;var statsFetched=false;labels={};text={};icons={};energy=null;
+    function read(locale){readSelected(locale,null);}
+    function readChanged(locale,id){readSelected(locale,id);}
+    function readSelected(locale,onlyId){
+        var info=null;var fetched=false;var stats=null;var statsFetched=false;var words=null;
+        if(onlyId==null){labels={};text={};icons={};energy=null;fittedMask=0;numericMask=0;}
+        else{for(var i=0;i<selected.size();i+=1){var prior=selected[i];if(prior instanceof Complications.Id&&prior.equals(onlyId)){var key="custom"+(i+1);labels.remove(key);text.remove(key);icons.remove(key);fittedMask&=~(1<<i);numericMask&=~(1<<i);if(prior.getType()==23){energy=null;}}}}
         for(var i=0;i<selected.size();i+=1){var key="custom"+(i+1);var source=selected[i];if(source==null){continue;}
+            if(onlyId!=null&&(!(source instanceof Complications.Id)||!source.equals(onlyId))){continue;}
             try{if(source instanceof Complications.Id){
                 var earlier=-1;for(var n=0;n<i;n+=1){if(selected[n] instanceof Complications.Id&&source.equals(selected[n])){earlier=n;break;}}
                 if(earlier>=0){var previous="custom"+(earlier+1);if(labels.hasKey(previous)){labels[key]=labels[previous];}if(text.hasKey(previous)){text[key]=text[previous];}if(icons.hasKey(previous)){icons[key]=icons[previous];}continue;}
@@ -194,8 +199,8 @@ class SelectedFields {
                         if(kind==0){try{var icon=item.getIcon();if(icon!=null){icons[key]=safeProviderIcon(icon);}}catch(noIcon){icons[key]=false;}}
                     }
                 }item=null;
-            }else if(source instanceof String){if(source.find("system:")==0){if(!statsFetched){stats=System.getSystemStats();statsFetched=true;}if(stats!=null){text[key]=FieldFormat.system(source,FieldCatalog.systemValue(stats,source),locale);var keys=FieldCatalog.systemKeys();var at=keys.indexOf(source);if(at>=0){labels[key]=FieldCatalog.systemLabels(locale)[at];}}}
-                else{if(!fetched){info=ActivityMonitor.getInfo();fetched=true;}if(info!=null){text[key]=FieldFormat.activity(source,FieldCatalog.activityValue(info,source));var keys=FieldCatalog.activityKeys();var at=keys.indexOf(source);if(at>=0){labels[key]=FieldCatalog.activityLabels(locale)[at];}}}}}
+            }else if(source instanceof String){if(source.find("system:")==0){if(!statsFetched){stats=System.getSystemStats();statsFetched=true;}if(stats!=null){text[key]=FieldFormat.system(source,FieldCatalog.systemValue(stats,source),locale);var keys=FieldCatalog.systemKeys();var at=keys.indexOf(source);if(at>=0){if(words==null){words=FieldText.menu(locale);}labels[key]=words["system"][at];}}}
+                else{if(!fetched){info=ActivityMonitor.getInfo();fetched=true;}if(info!=null){text[key]=FieldFormat.activity(source,FieldCatalog.activityValue(info,source));var keys=FieldCatalog.activityKeys();var at=keys.indexOf(source);if(at>=0){if(words==null){words=FieldText.menu(locale);}labels[key]=words["activity"][at];}}}}}
             catch(e){}
         }
     }
@@ -209,5 +214,12 @@ class SelectedFields {
     function active() as Boolean {return selected.size()>0;}
     function display(role) as String {return text.hasKey(role)?text[role] as String:"—";}
     function label(role) as String {return labels.hasKey(role)?labels[role] as String:"";}
+    function roleBit(role){if(role.equals("custom1")){return 1;}if(role.equals("custom2")){return 2;}if(role.equals("custom3")){return 4;}if(role.equals("custom4")){return 8;}return 0;}
+    function fitted(role){return (fittedMask&roleBit(role))!=0;}
+    function numeric(role){return (numericMask&roleBit(role))!=0;}
+    // Retain exactly the strings already fitted by the real destination font
+    // and width. Remember the original value's font choice, since truncation
+    // can remove non-numeric characters. A source/locale refresh replaces them.
+    function keepFitted(role,name,value,isNumeric){var bit=roleBit(role);if(bit==0||(customMask&bit)==0){return;}if(labels.hasKey(role)){labels[role]=name;}if(text.hasKey(role)){text[role]=value;}fittedMask|=bit;if(isNumeric){numericMask|=bit;}else{numericMask&=~bit;}}
     function includes(id) as Boolean {for(var i=0;i<selected.size();i+=1){if(selected[i] instanceof Complications.Id&&selected[i].equals(id)){return true;}}return false;}
 }

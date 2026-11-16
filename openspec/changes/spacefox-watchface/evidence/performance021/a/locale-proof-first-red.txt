@@ -1,0 +1,32 @@
+test_release_excludes_unqualified_candidates (tests.test_native_localization.NativeLocalizationResourcesTest.test_release_excludes_unqualified_candidates) ... ERROR
+
+======================================================================
+ERROR: test_release_excludes_unqualified_candidates (tests.test_native_localization.NativeLocalizationResourcesTest.test_release_excludes_unqualified_candidates)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_native_localization.py", line 50, in test_release_excludes_unqualified_candidates
+    catalog=load_locales(ROOT)['catalog'];rows=catalog['locales'];qualified=software_locales(ROOT,catalog);expected=[resource_code(r) for r in rows if r['id']=='en' or r['id'] in qualified]
+                                                                            ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tools/native_language_policy.py", line 94, in software_locales
+    return validate(root,catalog)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tools/native_devices020_qualification.py", line 136, in validate
+    raise ValueError('original fields018 proof failed: '+result.stderr[-3000:])
+ValueError: original fields018 proof failed: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;from pathlib import Path;from tools.native_fields018_qualification import validate;p=Path.cwd();print(json.dumps(validate(p,json.loads((p/"locales/catalog.json").read_text()))))
+                                                                                                                                 ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-devices020-prior-k12sywbe/tools/native_fields018_qualification.py", line 57, in validate
+    data = src.read_bytes()
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 777, in read_bytes
+    with self.open(mode='rb', buffering=0) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-devices020-prior-k12sywbe/tests/test_global_content_closure_r5.py'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 9.292s
+
+FAILED (errors=1)

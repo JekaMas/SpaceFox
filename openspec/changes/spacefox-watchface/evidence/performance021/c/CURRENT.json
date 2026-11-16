@@ -1,0 +1,31 @@
+[
+  {
+    "owner": "source_state",
+    "seconds": 2.3272110419347882,
+    "reads": 6671,
+    "bytes": 484311136,
+    "uniqueFiles": 6671,
+    "duplicateReads": 0,
+    "maxReads": 1,
+    "profiles": null,
+    "selected": 6671,
+    "processes": [],
+    "duplicates": {}
+  },
+  {
+    "owner": "toolchain",
+    "seconds": 0.7513485830277205,
+    "reads": 181,
+    "bytes": 157852272,
+    "uniqueFiles": 181,
+    "duplicateReads": 0,
+    "maxReads": 1,
+    "profiles": 42,
+    "selected": null,
+    "processes": [
+      "-version",
+      "--version"
+    ],
+    "duplicates": {}
+  }
+]

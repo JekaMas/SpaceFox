@@ -147,7 +147,7 @@ large configurable fields, with watch battery available as a field. No redundant
 ### Requirement: Compact exceptional-state indicators
 
 The active home face SHALL omit a persistent update timestamp and service-status badges.
-A target reschedule or explicit source-reported hold SHALL use a readable reddish countdown; otherwise it SHALL use the persisted selected countdown color, mint by default. A new time with no announced NET SHALL replace the countdown with an uncertainty label; an inexact announced NET SHALL use the explicit estimated prefix. Stale data
+A target reschedule or explicit source-reported hold SHALL use a readable reddish countdown; otherwise it SHALL use the persisted selected countdown color, mint by default. Stale data
 SHALL add a dotted countdown underline, independently of rescheduling and sourced hold. No
 exclamation or cloud-off badge SHALL occupy the face.
 
@@ -162,6 +162,14 @@ exclamation or cloud-off badge SHALL occupy the face.
 #### Scenario: Reschedule and stale data coexist
 - **WHEN** a previously detected reschedule remains selected and its cached schedule becomes stale
 - **THEN** the countdown is reddish with a dotted underline inside the circle, and the current-time color remains unchanged
+
+### Requirement: Announced-time uncertainty
+
+A new time with no announced NET SHALL replace the countdown with an uncertainty label; an inexact announced NET SHALL use the explicit estimated prefix.
+
+#### Scenario: Inexact announced time
+- **WHEN** the selected launch has an inexact announced NET
+- **THEN** the countdown uses the estimated prefix without claiming liftoff
 
 ### Requirement: Short active-display launch animation
 
@@ -387,3 +395,56 @@ Support claims SHALL distinguish source, simulator, physical and Store proof.
 - **WHEN** a qualified display has unequal width and height
 - **THEN** the full square scene is centered and uniformly scaled without
   distorting the map, launch point, rocket or text.
+
+### Requirement: Bounded illustrative embed ownership
+
+The retained illustrative mission widget SHALL release its global listener,
+interval, wake timeout, animation frame and resize observer within one ticker
+period after its root disconnects. A disconnected widget SHALL NOT consume a
+later global-state event. Repeated mounts in one window SHALL retain only live
+widget listeners; visual composition and typography remain unchanged.
+
+#### Scenario: Repeated mission mount and unmount
+- **WHEN** mission roots mount, receive global state, disconnect and the cleanup tick runs repeatedly in one window
+- **THEN** each disconnected owner releases all window-owned resources and the live root alone responds
+
+#### Scenario: Global event arrives before cleanup tick
+- **WHEN** a disconnected root receives the next global-state event before its ticker fires
+- **THEN** it cleans up without restoring state or rendering the disconnected root
+
+### Requirement: Bounded native resource ownership and work
+
+The watch SHALL reduce redundant native work and residency while preserving
+current fields, locales, profiles, accepted launches, visual identity and both
+display modes. Event-local reuse SHALL bind to its source and generation and
+SHALL NOT replace final integrity admission.
+
+#### Scenario: Scene completes and transitions through LOW and wake
+- **WHEN** a selected downloaded scene completes, enters LOW, wakes, changes identity or an incomplete build is cancelled
+- **THEN** only redundant ownership is released, the matching map and point remain, wake is immediate, and incomplete or failed work never replaces accepted content
+- **AND** the LOW-only pixel-rest mask is acquired for the first LOW draw and released on wake without changing its pixels or the active frame
+
+#### Scenario: A source field or display value changes
+- **WHEN** a selected source, locale, settings value, date, clock or countdown changes
+- **THEN** bounded event or layout reuse reflects the actual changed identity, including shared selected fields, without dropping supported sources or making dynamic text stale
+
+#### Scenario: A batch progresses or its source changes
+- **WHEN** a transfer receives objects, restarts, encounters corruption or switches generation or namespace
+- **THEN** verified-prefix work is bounded within the matching event, while complete digest admission, eviction pins and restart/corruption fences remain effective
+
+#### Scenario: A request is late or storage contains provisional state
+- **WHEN** an in-flight request returns after the application deadline or an interrupted update leaves stale fragments
+- **THEN** callbacks cannot replace accepted current state, owned work is bounded where the platform permits, and cleanup preserves current and future facts while accounting for the whole store
+- **AND** immutable object limits are not presented as a total-store bound, nor request-start guards as in-flight cancellation or a hard event deadline
+
+#### Scenario: The actual application owner stops
+- **WHEN** the application owner stops after use, including timers and field subscriptions
+- **THEN** it breaks its callback ownership cycle and releases its owned work without treating settings or ordinary hide as owner teardown
+
+#### Scenario: Native resource evidence is measured
+- **WHEN** native performance is qualified
+- **THEN** matched current-source simulator workloads distinguish first frame, completed scene, cold and warm work, application heap and observed graphics ownership, while physical power and unmeasured graphics-pool peaks remain unclaimed
+
+#### Scenario: A matching bundled outline is available
+- **WHEN** a map decode uses a matching bundled LOW outline
+- **THEN** active RGB pixels and the full source digest remain identical while discarded edge-comparison work is skipped within bounded slices

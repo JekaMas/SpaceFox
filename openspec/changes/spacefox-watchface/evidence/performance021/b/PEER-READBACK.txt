@@ -1,0 +1,11 @@
+test_readback_overlap_and_refusal (tests.test_performance021_b.GroupBTest.test_readback_overlap_and_refusal) ... ok
+test_real_artifact_readback_concurrency_and_corruption (tests.test_performance021_b.GroupBTest.test_real_artifact_readback_concurrency_and_corruption) ... ok
+test_readback_sequence_independent_oracle (tests.test_performance021_b.GroupBTest.test_readback_sequence_independent_oracle) ... ok
+test_cancelled_readback_reaps_http_workers (tests.test_performance021_b.GroupBTest.test_cancelled_readback_reaps_http_workers) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 41.144s
+
+OK
+local readback baseline=2.647s concurrent=0.870s requests=10 peak=4
+real artifact: 106 files 606248 bytes, serial 13.605s concurrent 4.022s, 107 GET, peak 4

@@ -67,10 +67,13 @@ class NativeSfrDecoder {
     }
     (:extendedCode) function oneRow(){
         if(data==null){chunk();}var x=0;
-        while(x<width){if(offset>=dataSize){fail();}var token=byteAt(offset);offset+=1;var count=(token&127)+1;if(x+count>width){fail();}if(token<128){if(offset+channels>dataSize){fail();}var r=byteAt(offset);var g=byteAt(offset+1);var b=byteAt(offset+2);var alpha=channels==3?255:byteAt(offset+3);var value=alpha==255?r*65536+g*256+b:alpha==0?Graphics.COLOR_TRANSPARENT:Graphics.createColor(alpha,r,g,b);if(channels==3){for(var n=0;n<count;n+=1){outlinePixel(x+n,r,g,b);}}else{for(var n=0;n<count;n+=1){colors[x+n]=value;var at=(x+n)*4;row[at]=r;row[at+1]=g;row[at+2]=b;row[at+3]=alpha;}}offset+=channels;span(x,count,value);}else if(channels==4){paintCopy(x,count);}else{for(var n=0;n<count;n+=1){var at=(x+n)*3;var r=y==chunkStart?0:row[at];var g=y==chunkStart?0:row[at+1];var b=y==chunkStart?0:row[at+2];outlinePixel(x+n,r,g,b);}}x+=count;}
+        while(x<width){if(offset>=dataSize){fail();}var token=byteAt(offset);offset+=1;var count=(token&127)+1;if(x+count>width){fail();}if(token<128){if(offset+channels>dataSize){fail();}var r=byteAt(offset);var g=byteAt(offset+1);var b=byteAt(offset+2);var alpha=channels==3?255:byteAt(offset+3);var value=alpha==255?r*65536+g*256+b:alpha==0?Graphics.COLOR_TRANSPARENT:Graphics.createColor(alpha,r,g,b);if(channels==3){if(skipOutline){for(var n=0;n<count;n+=1){var at=(x+n)*3;row[at]=r;row[at+1]=g;row[at+2]=b;}}else{for(var n=0;n<count;n+=1){outlinePixel(x+n,r,g,b);}}}else{for(var n=0;n<count;n+=1){colors[x+n]=value;var at=(x+n)*4;row[at]=r;row[at+1]=g;row[at+2]=b;row[at+3]=alpha;}}offset+=channels;span(x,count,value);}else if(channels==4){paintCopy(x,count);}else{if(skipOutline){if(y==chunkStart){for(var n=0;n<count;n+=1){var at=(x+n)*3;row[at]=0;row[at+1]=0;row[at+2]=0;}}}else{for(var n=0;n<count;n+=1){var at=(x+n)*3;var r=y==chunkStart?0:row[at];var g=y==chunkStart?0:row[at+1];var b=y==chunkStart?0:row[at+2];outlinePixel(x+n,r,g,b);}}}x+=count;}
         if(channels==3){dc.drawBitmap(0,y,rgbRowBitmap);}hash.update(row);y+=1;if(y==endRow){if(offset!=dataSize){fail();}data=null;block=null;}if(y==height){if(shard!=descriptor["shards"].size()||data!=null){fail();}var digest=StringUtil.convertEncodedString(hash.digest(),{:fromRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:toRepresentation=>StringUtil.REPRESENTATION_STRING_HEX}).toLower();if(!digest.equals(descriptor["pixelSha256"])){fail();}done=true;row=[]b;colors=[];outlineDc=null;descriptor=null;dc=null;hash=null;rgbRowDc=null;rgbRowBitmap=null;}
     }
-    function step(){if(data==null&&!done){chunk();return false;}var start=System.getTimer();var rows=0;while(!done&&rows<(channels==3?(skipOutline?5:1):16)&&(rows==0||System.getTimer()-start<(channels==3&&skipOutline?12:18))){oneRow();rows+=1;if(data==null){break;}}return done;}
+    // Bound each callback by elapsed work as well as a fixed maximum number of
+    // indivisible rows. The first row is always permitted so a slow row cannot
+    // starve progress; shard boundaries still yield before the next read.
+    function step(){if(data==null&&!done){chunk();return false;}var start=System.getTimer();var rows=0;while(!done&&rows<16&&(rows==0||System.getTimer()-start<(channels==3&&skipOutline?12:18))){oneRow();rows+=1;if(data==null){break;}}return done;}
 }
 
 (:typecheck(false))
@@ -82,9 +85,9 @@ class NativeSfrRenderer extends NativeVisualRenderer {
 
 (:extendedCode, :typecheck(false))
 class NativeSfrBuild {
-    var preferBundled=false;var store;var base;var packet;var immutable;var scene;var descriptors={};var expected=[];var role=0;var decoder=null;var result;var complete=false;var closureChecked=false;var closureAt=0;var selection;var rootReady=false;var pendingRead=null;var pendingDescriptor=null;var rasterBytes=0;var rasterObjects=0;var readKind=0;var names;
+    var preferBundled=false;var store;var base;var packet;var immutable;var scene;var descriptors={};var expected=[];var role=0;var decoder=null;var result;var complete=false;var closureChecked=false;var closureAt=0;var selection;var rootReady=false;var rootParsed=false;var pendingRoot=null;var pendingRead=null;var pendingDescriptor=null;var rasterBytes=0;var rasterObjects=0;var readKind=0;var names;
     function initialize(adapter,url,p){store=adapter;base=url;packet=p;immutable=new NativeImmutable(store);selection=p.bridge["selection"];names=["map","rocket","siteCountry"];result=new NativeSfrRenderer();}
-    function dispose(){if(pendingRead!=null){pendingRead.dispose();pendingRead=null;}if(decoder!=null){decoder.dispose();decoder=null;}result=null;scene=null;packet=null;immutable=null;pendingDescriptor=null;expected=[];}
+    function dispose(){if(pendingRead!=null){pendingRead.dispose();pendingRead=null;}if(decoder!=null){decoder.dispose();decoder=null;}result=null;scene=null;pendingRoot=null;rootParsed=false;packet=null;immutable=null;pendingDescriptor=null;expected=[];}
     function fail(){throw new Lang.InvalidValueException("Invalid native SFR1M scene");}
     function same(a,b){return nativeSame(a,b);}
     function ref(r,prefix){packet.ref(r,prefix);return r;}
@@ -140,8 +143,12 @@ class NativeSfrBuild {
         var origins=scene["origins"];packet.shape(origins,["model","operator"],[]);var modes=["model","operator"];for(var i=0;i<2;i+=1){var origin=origins[modes[i]];packet.shape(origin,["ownerId","countryId","sourceRecord"],[]);var owner=scene[i==0?"modelId":"operatorId"];if(!same(origin["ownerId"],owner)||!packet.id(origin["countryId"],"country",true)||owner==null&&origin["countryId"]!=null||origin["sourceRecord"]!=true){fail();}origin.remove("sourceRecord");}
     }
     function beginStep(){
-        if(rootReady){return true;}if(pendingRead==null){if(packet.bridge==null||packet.bridge["version"]!=3||selection==null){fail();}ref(selection,"descriptors");readKind=0;pendingRead=new NativeSfrReadJob(self,selection,true);return false;}
-        if(!pendingRead.step()){return false;}scene=pendingRead.result;pendingRead=null;finishBegin();rootReady=true;return true;
+        if(rootReady){return true;}
+        // Parsing an already loaded root and validating its resulting scene
+        // are separate callbacks: the latter retains the full read reserve.
+        if(rootParsed){scene=pendingRoot;pendingRoot=null;rootParsed=false;finishBegin();rootReady=true;return true;}
+        if(pendingRead==null){if(packet.bridge==null||packet.bridge["version"]!=3||selection==null){fail();}ref(selection,"descriptors");readKind=0;pendingRead=new NativeSfrReadJob(self,selection,true);return false;}
+        if(!pendingRead.step()){return false;}pendingRoot=pendingRead.result;pendingRead=null;rootParsed=true;return false;
     }
     function finishBegin(){
         packet.shape(scene,sceneKeys(),[]);
@@ -155,10 +162,13 @@ class NativeSfrBuild {
         // Root identity, provenance, version and position mode have all been
         // checked above. They are not needed by role decoding or display; drop
         // these parsed dictionaries before the next immutable shard read.
-        scene.remove("origins");scene.remove("type");scene.remove("schemaVersion");scene.remove("rendererProfile");scene.remove("layoutRevision");scene.remove("positionMode");result.scene=scene;result.selectionHash=selection["sha256"];
+        scene.remove("origins");scene.remove("type");scene.remove("schemaVersion");scene.remove("rendererProfile");scene.remove("layoutRevision");scene.remove("positionMode");
+        // Rebuild the post-validation projection so removed root keys do not
+        // leave the original large hash table resident during role parsing.
+        scene={"position"=>scene["position"],"roles"=>scene["roles"],"siteId"=>scene["siteId"],"modelId"=>scene["modelId"],"countryId"=>scene["countryId"]};result.scene=scene;result.selectionHash=selection["sha256"];
     }
     function roleRef(name){
-        var binding=scene["roles"][name];if(binding==null){return null;}packet.shape(binding,["entityId","descriptor"],[]);var identity=name.equals("map")?scene["siteId"]:name.equals("rocket")?scene["modelId"]:scene["countryId"];if(identity==null||!packet.same(binding["entityId"],identity)){fail();}var tuple=binding["descriptor"];var r={"sha256"=>tuple[0],"decodedBytes"=>tuple[1]};add(r);readKind=1;return r;
+        var binding=scene["roles"][name];if(binding==null){return null;}packet.shape(binding,["entityId","descriptor"],[]);var identity=name.equals("map")?scene["siteId"]:name.equals("rocket")?scene["modelId"]:scene["countryId"];if(identity==null||!packet.same(binding["entityId"],identity)){fail();}var tuple=binding["descriptor"];var r={"sha256"=>tuple[0],"decodedBytes"=>tuple[1]};add(r);scene["roles"][name]=null;readKind=1;return r;
     }
     function finishRole(name,d){
         var moving=name.equals("rocket");packet.shape(d,["type","schemaVersion","rendererProfile","canvas","channels","pixelSha256","sourceDescriptor","sourceSemanticSha256","animation","shards"],moving?["sourceCanvas","motionSource"]:[]);if(moving&&(!d.hasKey("sourceCanvas")||!d.hasKey("motionSource"))){fail();}
@@ -190,5 +200,5 @@ class NativeSfrBuild {
     var owner;var ref;var root;var raw;var hashJob;var parser=null;var phase=0;var result=null;
     function initialize(build,reference,isRoot){owner=build;ref=reference;root=isRoot;raw=owner.store.read("sf.obj."+ref["sha256"]);if(!(raw instanceof String)||raw.length()>4096){owner.fail();}hashJob=new NativeFeedHashJob(raw,[]);}
     function dispose(){if(parser!=null){parser.dispose();parser=null;}owner=null;raw=null;hashJob=null;}
-    function step(){if(phase==0){if(!hashJob.step()){return false;}if(hashJob.byteCount>4096||ref["decodedBytes"]!=null&&hashJob.byteCount!=ref["decodedBytes"]||!hashJob.result.equals(ref["sha256"])){owner.fail();}hashJob=null;parser=new NativeIncrementalJson();parser.feedMode=true;parser.nodeOwner=owner;if(root){parser.rootOwner=owner;}parser.begin(raw,4096);phase=1;return false;}if(!parser.step()){return false;}result=parser.result;parser.dispose();raw=null;parser=null;owner=null;return true;}
+    function step(){if(phase==0){if(!hashJob.step()){return false;}if(hashJob.byteCount>4096||ref["decodedBytes"]!=null&&hashJob.byteCount!=ref["decodedBytes"]||!hashJob.result.equals(ref["sha256"])){owner.fail();}hashJob=null;parser=new NativeIncrementalJson();parser.feedMode=true;parser.commonKeys=["decodedBytes","path","sha256"];parser.nodeOwner=owner;if(root){parser.rootOwner=owner;}parser.begin(raw,4096);phase=1;return false;}if(!parser.step()){return false;}result=parser.result;parser.dispose();raw=null;parser=null;owner=null;return true;}
 }

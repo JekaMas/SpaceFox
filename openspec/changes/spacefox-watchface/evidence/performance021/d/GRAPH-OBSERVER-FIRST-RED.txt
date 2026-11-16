@@ -1,0 +1,28 @@
+test_batch_corruption_refused (tests.test_performance021_d_receipts.DReceipts.test_batch_corruption_refused) ... ok
+test_batch_prefix_progress (tests.test_performance021_d_receipts.DReceipts.test_batch_prefix_progress) ... ok
+test_fields_fitted_real_provider (tests.test_performance021_d_receipts.DReceipts.test_fields_fitted_real_provider) ... FAIL
+test_fields_shared_update (tests.test_performance021_d_receipts.DReceipts.test_fields_shared_update) ... ok
+test_hide_does_not_stop_owner (tests.test_performance021_d_receipts.DReceipts.test_hide_does_not_stop_owner) ... ok
+test_late_and_corrupt_preserve (tests.test_performance021_d_receipts.DReceipts.test_late_and_corrupt_preserve) ... ok
+test_matched_heap_reduction (tests.test_performance021_d_receipts.DReceipts.test_matched_heap_reduction) ... ok
+test_outline_corrupt_refusal (tests.test_performance021_d_receipts.DReceipts.test_outline_corrupt_refusal) ... ok
+test_outline_matching_pixels (tests.test_performance021_d_receipts.DReceipts.test_outline_matching_pixels) ... ok
+test_owner_stop_cleanup (tests.test_performance021_d_receipts.DReceipts.test_owner_stop_cleanup) ... ok
+test_package_and_graphics_boundary (tests.test_performance021_d_receipts.DReceipts.test_package_and_graphics_boundary) ... ok
+test_scene_complete (tests.test_performance021_d_receipts.DReceipts.test_scene_complete) ... ok
+test_scene_incomplete (tests.test_performance021_d_receipts.DReceipts.test_scene_incomplete) ... ok
+test_storage_retry (tests.test_performance021_d_receipts.DReceipts.test_storage_retry) ... ok
+
+======================================================================
+FAIL: test_fields_fitted_real_provider (tests.test_performance021_d_receipts.DReceipts.test_fields_fitted_real_provider)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_performance021_d_receipts.py", line 100, in test_fields_fitted_real_provider
+    self.assertIn('label=29', self.fields_log)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'label=29' not found in '------------------------------------------------------------------------------\nExecuting test fields018Format...\nDEBUG (16:12): FORMAT time, duration, pressure, signed, strings, type42, units, weather, null\nPASS\n------------------------------------------------------------------------------\nExecuting test fields018Settings...\nDEBUG (16:12): SETTINGS legacy identities, custom slot and invalid defaults\nPASS\n------------------------------------------------------------------------------\nExecuting test fields018NativeInventoryAndPersistence...\nDEBUG (16:12): INVENTORY actual=40 catalog=56 duplicates=4 subscriptions<=1 storedId=yes stop=yes\nPASS\n------------------------------------------------------------------------------\nExecuting test fields018RenderRealSource...\nDEBUG (16:12): RENDER locale=en provider=FL… value=0 fields=4 bounds=true numericMetric=true\nDEBUG (16:12): RENDER locale=ru provider=FL… value=0 fields=4 bounds=true numericMetric=true\nPASS\n------------------------------------------------------------------------------\nExecuting test fields018PrimaryLabels...\nDEBUG (16:12): PRIMARY labels locales=5 activity=21\nPASS\n------------------------------------------------------------------------------\nExecuting test fields018SameSlotReplacement...\nDEBUG (16:12): SAME_SLOT property=6 unchanged=true source=A->B immediate=true lowStopped=true\nPASS\n------------------------------------------------------------------------------\nExecuting test fields018CapabilityInventory...\nDEBUG (16:12): ACTIVITY_KEYS [distance, stepGoal, floorsClimbedGoal, floorsDescended, metersClimbed, metersDescended, moveBarLevel, activeMinutesWeekGoal, activeMinutesDayTotal, activeMinutesDayModerate, activeMinutesDayVigorous, activeMinutesWeekModerate, activeMinutesWeekVigorous, stressScore]\nDEBUG (16:12): SYSTEM_KEYS [system:batteryInDays, system:charging]\nDEBUG (16:12): CAPABILITY native=40 paged=40 activity=14 system=2 availableNullSelectable=true solarNullUnsupported=true solarNegativeSupported=true type42=false\nPASS\n------------------------------------------------------------------------------\nExecuting test fields018ChangedIdAndSharedSlots...\nDEBUG (16:12): CHANGED_ID sharedSlots=true otherProviderNotRead=true missingAndRecovery=true\nPASS\n------------------------------------------------------------------------------\nExecuting test fields018ObservedProviderSizes...\nDEBUG (16:12): PROVIDER_SIZES discovered=40 maxLabelChars=29 maxStringValueChars=9 userIcons=0 maxIconWidth=0 maxIconHeight=0\nPASS\n------------------------------------------------------------------------------\nExecuting test fields018FittedRealProvider...\nDEBUG (16:12): FITTED_REAL_PROVIDER maxDisplayedLabelChars=29 maxFormattedValueChars=9 retainedLabelChars=2 retainedValueChars=9 exactFittedOutput=true\nPASS\n\n==============================================================================\nRESULTS\nTest:                                  Status:\nfields018Format                        PASS\nfields018Settings                      PASS\nfields018NativeInventoryAndPersistence PASS\nfields018RenderRealSource              PASS\nfields018PrimaryLabels                 PASS\nfields018SameSlotReplacement           PASS\nfields018CapabilityInventory           PASS\nfields018ChangedIdAndSharedSlots       PASS\nfields018ObservedProviderSizes         PASS\nfields018FittedRealProvider            PASS\nRan 10 tests\n\nPASSED (passed=10, failed=0, errors=0)\n'
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.042s
+
+FAILED (failures=1)

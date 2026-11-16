@@ -1,0 +1,15 @@
+test_toolchain_single_capture_and_fresh_mutation (tests.test_performance021_c.GroupCTest.test_toolchain_single_capture_and_fresh_mutation) ... FAIL
+
+======================================================================
+FAIL: test_toolchain_single_capture_and_fresh_mutation (tests.test_performance021_c.GroupCTest.test_toolchain_single_capture_and_fresh_mutation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_performance021_c.py", line 128, in test_toolchain_single_capture_and_fresh_mutation
+    self.assertEqual(counts[sdk.resolve()/'bin/monkeybrains.jar'],2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 != 2
+
+----------------------------------------------------------------------
+Ran 1 test in 0.800s
+
+FAILED (failures=1)

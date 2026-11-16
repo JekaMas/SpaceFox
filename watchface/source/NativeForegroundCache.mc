@@ -4,6 +4,13 @@ import Toybox.StringUtil;
 (:extendedCode, :typecheck(false))
 class NativeCache extends NativeCacheCore {
     function initialize(url,adapter){NativeCacheCore.initialize(url,adapter);backgroundMode=false;}
+    // The stored projection may omit optional derived fields. Compare every
+    // retained field to the independently parsed current raw feed.
+    function projectionMatchesRaw(raw,stored){
+        if(stored instanceof Dictionary){if(!(raw instanceof Dictionary)){return false;}var keys=stored.keys();for(var i=0;i<keys.size();i+=1){var key=keys[i];if(!raw.hasKey(key)||!projectionMatchesRaw(raw[key],stored[key])){return false;}}return true;}
+        if(stored instanceof Array){if(!(raw instanceof Array)||raw.size()!=stored.size()){return false;}for(var i=0;i<stored.size();i+=1){if(!projectionMatchesRaw(raw[i],stored[i])){return false;}}return true;}
+        return nativeSame(raw,stored);
+    }
     function pieces(raw,spans){
         if(!(spans instanceof Array)||spans.size()>16){throw new Lang.InvalidValueException("Missing raw mutable spans");}var result=[];var previous=0;for(var i=0;i<spans.size();i+=1){var span=spans[i];if(!(span instanceof Array)||span.size()!=2||!(span[0] instanceof Number)||!(span[1] instanceof Number)||span[0]<previous||span[1]<=span[0]||span[1]>raw.length()){throw new Lang.InvalidValueException("Invalid raw mutable spans");}result.add(raw.substring(span[0],span[1]));previous=span[1];}return result;
     }
@@ -20,7 +27,7 @@ class NativeCache extends NativeCacheCore {
 // input chunk is written and read back in a separate permitted callback.
 (:extendedCode, :typecheck(false))
 class NativeFeedPromotion {
-    var cache;var raw;var candidate;var now;var view;var queueSaved=false;var mustYield=false;var phase=0;var operation="parse";var done=false;var accepted=false;var pub;var mutable;var mutableSpans;var marker;var slot;var same=false;var offset=0;var chunks=0;
+    var cache;var raw;var candidate;var now;var view;var queueSaved=false;var mustYield=false;var phase=0;var operation="parse";var done=false;var accepted=false;var pub;var mutable;var mutableSpans;var marker;var slot;var same=false;var offset=0;var chunks=0;var cleanupAt=16;
     function initialize(owner,text,packet,at,scene){cache=owner;raw=text;candidate=packet;now=at;view=scene;cache.failure="";}
     function step(){
         if(done){return true;}
@@ -41,8 +48,11 @@ class NativeFeedPromotion {
             if(phase==10){marker["priorHash"]=cache.priorHash(marker["prior"]);marker["seal"]=cache.seal(marker);phase=1;return false;}
             if(phase==1){
                 if(!same&&offset<raw.length()){var end=offset+512;if(end>raw.length()){end=raw.length();}var part=raw.substring(offset,end);var key="sf.feed."+slot+"."+chunks;cache.store.write(key,part);var observed=cache.store.read(key);if(!(observed instanceof String)||!observed.equals(part)){throw new Lang.InvalidValueException("Chunk readback mismatch");}offset=end;chunks+=1;return false;}
-                if(!same){cache.store.write("sf.feed."+slot,{"v"=>2,"base"=>cache.base,"chunks"=>chunks,"rawHash"=>marker["rawHash"],"mutableSpans"=>mutableSpans});}raw=null;phase=2;mustYield=true;return false;
+                if(!same){cache.store.write("sf.feed."+slot,{"v"=>2,"base"=>cache.base,"chunks"=>chunks,"rawHash"=>marker["rawHash"],"mutableSpans"=>mutableSpans});try{var active=cache.store.read("sf.commit");var recovery=cache.store.read("sf.recovery");if(active instanceof Dictionary&&active["slot"]==slot||recovery instanceof Dictionary&&recovery["slot"]==slot){cache.failure="admission-retry";done=true;return true;}cleanupAt=chunks;}catch(e){cleanupAt=16;}}raw=null;phase=7;mustYield=true;return false;
             }
+            // One optional stale chunk per continuation keeps cleanup out of
+            // the bounded foreground promotion callback. Failure is best effort.
+            if(phase==7){if(cleanupAt<16){try{var active=cache.store.read("sf.commit");var recovery=cache.store.read("sf.recovery");if(active instanceof Dictionary&&active["slot"]==slot||recovery instanceof Dictionary&&recovery["slot"]==slot){cache.failure="admission-retry";done=true;return true;}var stale="sf.feed."+slot+"."+cleanupAt;if(cache.store.read(stale)!=null){cache.store.remove(stale);}}catch(e){cleanupAt=16;return false;}cleanupAt+=1;return false;}phase=2;return false;}
             if(phase==2){phase=3;return false;}
             if(phase==3){if(!queueSaved&&view!=null&&cache.packet!=null){new NativeUpcomingCache(cache.store,cache.base,pub["instance"]).save(view.queueSnapshots());}phase=4;return false;}
             if(phase==4){cache.rememberPublisher(pub,candidate.wireHash);phase=5;return false;}
@@ -74,7 +84,7 @@ class NativeRestoreJob {
                 raw=StringUtil.convertEncodedString(bytes,{:fromRepresentation=>StringUtil.REPRESENTATION_BYTE_ARRAY,:toRepresentation=>StringUtil.REPRESENTATION_STRING_PLAIN_TEXT,:encoding=>StringUtil.CHAR_ENCODING_UTF8});bytes=null;hashJob=new NativeFeedHashJob(raw,[]);phase=2;return false;
             }
             if(phase==2){if(!hashJob.step()){return false;}if(!hashJob.result.equals(marker["rawHash"])){reject();return done;}hashJob=null;current=raw;if(!marker["wireHash"].equals(marker["rawHash"])){var spans=value["mutableSpans"];original=cache.pieces(raw,spans);current=cache.replaceSpans(raw,spans,marker["mutable"]);}value=null;raw=null;packet=new NativePreparedBridgeFeed(current,now,cache.store);phase=3;return false;}
-            if(phase==3){if(!packet.prepareStep()){return false;}current=null;var prior=cache.priorFrom(packet);var stored=marker["prior"][0]["launch"];if(stored!=null&&!stored["timing"].hasKey("refresh_utc")&&prior[0]["launch"]!=null){prior[0]["launch"]["timing"].remove("refresh_utc");}if(!packet.wireHash.equals(marker["wireHash"])||!packet.contentHash.equals(marker["contentHash"])||packet.validation!=marker["validation"]||!cache.priorHash(prior).equals(marker["priorHash"])){reject();return done;}
+            if(phase==3){if(!packet.prepareStep()){return false;}current=null;var prior=cache.priorFrom(packet);if(!packet.wireHash.equals(marker["wireHash"])||!packet.contentHash.equals(marker["contentHash"])||packet.validation!=marker["validation"]||!cache.projectionMatchesRaw(prior,marker["prior"])){reject();return done;}
                 if(original!=null){cache.pieces(packet.raw,packet.ignored);if(original.size()!=packet.ignored.size()){reject();return done;}var replacements=[];for(var i=0;i<original.size();i+=1){if(!(original[i] instanceof String)){reject();return done;}replacements.add([packet.ignored[i][0],packet.ignored[i][1],original[i]]);}hashJob=new NativeFeedHashJob(packet.raw,replacements);phase=4;return false;}phase=5;return false;
             }
             if(phase==4){if(!hashJob.step()){return false;}if(hashJob.byteCount>8192||!hashJob.result.equals(marker["rawHash"])){reject();return done;}hashJob=null;original=null;phase=5;return false;}

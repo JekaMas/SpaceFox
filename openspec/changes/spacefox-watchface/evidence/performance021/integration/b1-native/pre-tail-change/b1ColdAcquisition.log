@@ -1,0 +1,23 @@
+------------------------------------------------------------------------------
+Executing test b1ColdAcquisition...
+DEBUG (20:41): B1_PHASE parse_ms=195
+DEBUG (20:41): B1_PHASE validate_ms=10
+DEBUG (20:41): B1_PHASE semantic_ms=1
+DEBUG (20:41): B1_PHASE wire_ms=1
+DEBUG (20:41): B1_PHASE identity_ms=1
+DEBUG (20:41): B1_CANCEL parser_cycle_released=true retry=true
+DEBUG (20:41): B1_PREPARE phases=164 hashes_match=true maxStepMs=9 sampledUsedBytes=182952
+DEBUG (20:41): B1_READ parts=12 digest=true
+DEBUG (20:41): B1_ADMISSION promotionSteps=18
+DEBUG (20:41): B1_BATCH_CALLBACK maxMs=17 objects=27 includesFinalClosure=true
+DEBUG (20:42): B1_RENDER_CALLBACK maxMs=27 initMs=0 where=role:0 decoder:true steps=392 closure=true
+DEBUG (20:42): B1_COLD status=200 text/plain catalog_first=true staged_objects=27 strict_reopen=true captured_hour_precision_unknown=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1ColdAcquisition                   PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

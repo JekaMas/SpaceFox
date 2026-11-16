@@ -1,0 +1,67 @@
+"""Bind the 0.2.2 merge to retained parent proofs and the focused SDK receipts.
+
+Parent observations remain historical; this check does not claim that they ran
+on the merged bytes or establish phone/device/Store acceptance.
+"""
+import gzip
+import hashlib
+import json
+import re
+from pathlib import Path
+from tools.native_b1_021_qualification import checked, native_inputs, test_inputs, sha
+from tools.run_native_tests import parse_output
+from tools.generate_native_version import validate as validate_version
+
+PARENTS = {
+    'liveRuntime020Proof': 'c40f00937f481615fe576b25f9e3f2fa625d75a1bdc82327537dcaa2d48bbad2',
+    'integration022Proof': '5098f4de838eddbb4a16cefa3607a398a29442003aaede43be4d90d653eed6f6',
+}
+CASES = ('b1QueueCheckpointFailure021','b1TailCleanupRechecksOwnership',
+         'b1OwnerStopReleasesPendingWork','b2LowUnmatchedPoint',
+         'b2AdmittedFactsWithoutArt','b1RealDecodeTicksAndCancels','b1LowHeapDefersOptionalDecode',
+         'b1ColdAcquisition','integrationBatchCorruptPrefixBeforeCompletion',
+         'b1MissingChunkRecovery022','b1ReboundQueueRead022',
+         'b1DecodingTextCacheRu022','b3EstimatedQueueBinding','deliveryPackedMapIdentity')
+
+def body_digest(record):
+    body=json.loads(json.dumps(record));body['owners'].pop('tools/release.py')
+    return hashlib.sha256(json.dumps(body,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()).hexdigest()
+
+def validate(root,catalog):
+    from tools.release import CURRENT_INTEGRATION_PROOF_BODY_SHA256
+    root=Path(root).resolve();proof=catalog['supportPolicy']['softwareQualificationProof']
+    rec=json.loads(checked(root,proof['currentIntegration022Proof']).read_text())
+    if rec['scope']!='live-performance-current-022' or rec['version']!='0.2.2':raise ValueError('wrong current integration scope')
+    if body_digest(rec)!=CURRENT_INTEGRATION_PROOF_BODY_SHA256:raise ValueError('current integration differs from reviewed closure')
+    policy=json.loads(json.dumps(catalog));policy['supportPolicy']['softwareQualificationProof'].pop('currentIntegration022Proof')
+    encoded=json.dumps(policy,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+    if hashlib.sha256(encoded).hexdigest()!=rec['catalogSha256']:raise ValueError('current locale policy changed')
+    for name,digest in PARENTS.items():
+        if proof[name]['sha256']!=digest:raise ValueError('historical parent proof changed: '+name)
+        checked(root,proof[name])
+    if 'Status: independent software review GREEN' not in checked(root,rec['historicalPeer']).read_text():raise ValueError('historical peer evidence absent')
+    if native_inputs(root)!=rec['nativeInputs'] or test_inputs(root)!=rec['testInputs']:raise ValueError('current native or test inputs changed')
+    for name,digest in rec['owners'].items():
+        if sha(root/name)!=digest:raise ValueError('current integration owner changed: '+name)
+    if set(rec['cases'])!=set(CASES):raise ValueError('current SDK case inventory changed')
+    for name in CASES:
+        raw=checked(root,rec['cases'][name]).read_text()
+        clean='\n'.join(x for x in raw.splitlines() if not re.fullmatch(r'(?:SF_VIEW mode=(?:HIGH|LOW) pending=(?:true|false)|SF_FG admission_begin|SF_FG chunk_wait|SF_FG admission_failed)',x.strip()))
+        if parse_output(clean,1,(name,))['status']!='passed':raise ValueError('current SDK case failed: '+name)
+    if hashlib.sha256(gzip.decompress(checked(root,rec['program']).read_bytes())).hexdigest()!=rec['programSha256']:raise ValueError('replacement SDK program changed')
+    checked(root,rec['fixtureArchive'])
+    for ref in rec['probeSources'].values():checked(root,ref)
+    seed=checked(root,rec['seed']).read_text();seed='\n'.join(x for x in seed.splitlines() if not re.fullmatch(r'SF_VIEW mode=(?:HIGH|LOW) pending=(?:true|false)',x.strip()))
+    if parse_output(seed,1,('seedCapturedPair',))['status']!='passed':raise ValueError('replacement seed failed')
+    run=checked(root,rec['replacementRun']).read_text()
+    if "DATA_BEFORE_SEED []" not in run or "DATA_AFTER_SEED ['SINGLE.DAT', 'SINGLE.IDX']" not in run or 'PROGRAM_SHA256 '+rec['programSha256'] not in run or 'PAIR_COMPLETE_STABLE_30S' not in run:raise ValueError('replacement run incomplete')
+    raw=checked(root,rec['replacement']).read_text()
+    if any(x in raw for x in ('Encountered an app crash','Out Of Memory Error','PAIR_PRECONDITION_FAILED','SF_BG feed_http=')):raise ValueError('current replacement witness contaminated')
+    if not all(x in raw for x in ('PAIR_PRECONDITION gen=56 sfr=true','REAL_REPLACEMENT marker_flip_during_sfr=true','REAL_REPLACEMENT admission_after_cancel=true','SF_FG admission_accepted','PAIR_ACCEPTED gen=57','REAL_REPLACEMENT visual_complete=true')):raise ValueError('current replacement lifecycle incomplete')
+    for name in ('fr165m','fr265s'):
+        if 'BUILD SUCCESSFUL' not in checked(root,rec[name]).read_text():raise ValueError(name+' compile failed')
+    for name,count in (('host',3),('predecessor',2)):
+        text=checked(root,rec[name]).read_text()
+        if 'Ran '+str(count)+' tests' not in text or not text.rstrip().endswith('OK'):raise ValueError(name+' checks failed')
+    validate_version(root)
+    return catalog['supportPolicy']['softwareQualifiedLocales']

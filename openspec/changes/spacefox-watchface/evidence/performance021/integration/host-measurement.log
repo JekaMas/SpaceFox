@@ -1,0 +1,25 @@
+{
+  "output": "/Users/jekamas/.codex/tmp/spacefox-integration022-host-sample/HOST-MEASUREMENT-FINAL.json",
+  "artifact_files": 106,
+  "artifact_bytes": 606276,
+  "phases": [
+    {
+      "phase": "catalog_build",
+      "seconds": 30.572656208183616,
+      "python_traced_peak": 89418134,
+      "process_peak_rss_bytes_macos": 286638080
+    },
+    {
+      "phase": "native_artifact_build",
+      "seconds": 55.04847908299416,
+      "python_traced_peak": 91834383,
+      "process_peak_rss_bytes_macos": 323485696
+    },
+    {
+      "phase": "repeat_same_artifact_validation",
+      "seconds": 3.056402042042464,
+      "python_traced_peak": 10928498,
+      "process_peak_rss_bytes_macos": 323485696
+    }
+  ]
+}

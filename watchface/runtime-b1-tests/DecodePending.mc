@@ -38,8 +38,8 @@ import Toybox.WatchUi;
     view.setAssetCache(new NativeRenderSource(store,cache.base,cache.packet.bridge));view.prepareVisual();var beginAt=System.getTimer();view.sfrStep();var beginMs=System.getTimer()-beginAt;Test.assert(view.sfrBuild!=null&&view.renderer==null);
     var maxSlice=0;var maxPhase="";var maxRole=-1;var maxRow=-1;var steps=0;
     while(steps<2000&&view.sfrBuild!=null&&(steps<20||view.sfrBuild.decoder==null||view.sfrBuild.decoder.y==0)){var job=view.sfrBuild;var role=job.role;var phase=job.decoder==null?"role":(job.decoder.data==null?"chunk":"rows");var row=job.decoder==null?-1:job.decoder.y;var start=System.getTimer();view.sfrStep();var elapsed=System.getTimer()-start;if(elapsed>maxSlice){maxSlice=elapsed;maxRole=role;maxPhase=phase;maxRow=row;}steps+=1;}
-    Test.assert(view.sfrBuild!=null&&view.renderer==null);clock.now+=2;view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assertEqual(view.snapshotAt(clock.now).countdown,"~T- 16:18:16");
-    clock.now+=31;view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assertEqual(view.snapshotAt(clock.now).countdown,"~T- 16:17:45");
+    Test.assert(view.sfrBuild!=null&&view.renderer==null);clock.now+=2;view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assertEqual(view.snapshotAt(clock.now).countdown,"~T- 16:18:16");var fitted=view.decodingText;Test.assert(fitted!=null&&LocaleGraphemes.data==null);
+    clock.now+=31;view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assertEqual(view.snapshotAt(clock.now).countdown,"~T- 16:17:45");Test.assert(view.decodingText==fitted&&LocaleGraphemes.data==null);
     var preserved=view.sfrBuild;Test.assert(preserved.decoder!=null);var previousRow=preserved.decoder.y;
     for(var cycle=0;cycle<3;cycle+=1){
         var sleeping=cycle==1?System.DISPLAY_MODE_OFF:System.DISPLAY_MODE_LOW_POWER;
@@ -50,7 +50,7 @@ import Toybox.WatchUi;
         view.stopResume();view.resumeAfterFrame();for(var step=0;step<8;step+=1){view.sfrStep();}
         Test.assert(view.sfrBuild==preserved&&preserved.decoder!=null&&preserved.decoder.y>previousRow);previousRow=preserved.decoder.y;
     }
-    view.onHide();Test.assert(view.sfrBuild==null&&view.sfrTimer==null);
+    view.onHide();Test.assert(view.sfrBuild==null&&view.sfrTimer==null&&view.decodingText==null);
     logger.debug("B1_REAL_DECODE selected_min=true objects="+counts[0]+" beginMs="+beginMs+" slices="+steps+" maxSliceMs="+maxSlice+" maxPhase="+maxPhase+" maxRole="+maxRole+" maxRow="+maxRow+" maxBatchScanMs="+counts[1]+" maxPutMs="+counts[2]+" activeCatchup=true lowOffHighCyclesAdvance=true hideCancel=true testHost=true");return true;
 }
 // Production parser, durable store, immutable closure and SFR builder execute;
@@ -86,7 +86,9 @@ import Toybox.WatchUi;
     Test.assert(fields.starts==0&&fields.reads==0&&view.fitnessTimer==null&&view.sfrBuild==null&&!view.animationRunning);
     view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assert(view.renderer==null);Test.assertEqual(view.snapshotAt(clock.now).countdown,"~T- 16:18:18");clock.now+=2;view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assertEqual(view.snapshotAt(clock.now).countdown,"~T- 16:18:16");
     view.freeBytes=view.sfrReadReserve();view.sfrStep();Test.assert(view.sfrBuild!=null&&!view.sfrDeferred);
-    var setupSteps=0;while(view.sfrBuild!=null&&!(view.sfrBuild.rootReady&&view.sfrBuild.pendingRead!=null&&view.sfrBuild.pendingRead.phase==1)){view.freeBytes=view.sfrReadReserve();view.sfrStep();setupSteps+=1;Test.assert(setupSteps<2000);}
+    var setupSteps=0;while(view.sfrBuild!=null&&!(!view.sfrBuild.rootReady&&view.sfrBuild.pendingRead!=null&&view.sfrBuild.pendingRead.phase==1)){view.freeBytes=view.sfrReadReserve();view.sfrStep();setupSteps+=1;Test.assert(setupSteps<2000);}
+    Test.assertEqual(view.sfrReadReserve(),8192);var rootRead=view.sfrBuild.pendingRead;view.freeBytes=8191;view.sfrStep();Test.assert(view.sfrDeferred&&view.sfrBuild.pendingRead==rootRead);view.freeBytes=8192;view.sfrStep();Test.assert(view.sfrBuild!=null&&!view.sfrDeferred);
+    while(view.sfrBuild!=null&&!(view.sfrBuild.rootReady&&view.sfrBuild.pendingRead!=null&&view.sfrBuild.pendingRead.phase==1)){view.freeBytes=view.sfrReadReserve();view.sfrStep();setupSteps+=1;Test.assert(setupSteps<2000);}
     Test.assertEqual(view.sfrReadReserve(),8192);while(view.sfrBuild.pendingRead!=null){view.freeBytes=8192;view.sfrStep();setupSteps+=1;Test.assert(setupSteps<2000);}Test.assert(view.sfrBuild.pendingDescriptor!=null&&view.sfrBuild.decoder==null);Test.assertEqual(view.sfrReadReserve(),11428);
     view.freeBytes=11427;view.sfrStep();Test.assert(view.sfrDeferred&&view.sfrBuild.decoder==null);view.freeBytes=11428;view.sfrStep();Test.assert(view.sfrBuild.decoder!=null&&view.sfrBuild.decoder.shard==0);
     var shardReserve=view.sfrReadReserve();view.freeBytes=shardReserve-1;view.sfrStep();
@@ -105,4 +107,9 @@ import Toybox.WatchUi;
     rejected=false;try{view.sfrBuild.arrayElement("/objects",2,[1,digest,234],1);}catch(e){rejected=true;}Test.assert(rejected);
     view.sfrBuild.dispose();view.sfrBuild=null;
     logger.debug("B1_OPTIONAL_RESERVE deferred_without_allocation=true ticking=true recovery=true low_pause_hide_cancel=true");return true;
+}
+
+(:test,:typecheck(false)) function b1DecodingTextCacheRu022(logger){
+    var base="https://fixture.invalid/profile-a";var now=1794551202l;var raw=WatchUi.loadResource(Rez.JsonData.B1ProfileFeed)["raw"];var store=new B1MemoryStore();var batch=new NativeBatch(store,base);Test.assert(batch.begin(raw));var ref=batch.next();Test.assert(ref!=null&&batch.immutable.put(ref,b1ProfileResponse(ref["path"])));var cache=new NativeCache(base,store);Test.assert(b1Promote021(cache,raw,now));var view=new B1DecodeView(new B1DecodeClock());view.setPacket(cache.packet);view.setSettings(new SceneSettings({"Language"=>"ru"}));view.onShow();view.sfrFallbackPrepared=true;
+    var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);var first=view.decodingText;Test.assert(first!=null&&LocaleGraphemes.data==null);view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assert(view.decodingText==first&&LocaleGraphemes.data==null);view.setSettings(new SceneSettings({"Language"=>"en"}));Test.assert(view.decodingText==null);view.onHide();logger.debug("B1_DECODE_TEXT ruReuse=true localeChangeInvalidates=true graphemeReleased=true");return true;
 }

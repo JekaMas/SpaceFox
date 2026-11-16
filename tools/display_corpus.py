@@ -11,6 +11,8 @@ gzip pages retain full source bytes for independent reconstruction.
 from __future__ import annotations
 
 import argparse
+import base64
+import subprocess
 from datetime import datetime
 import fcntl
 import gzip
@@ -31,6 +33,9 @@ PATH = '/2.3.0/launches/'
 START = '2021-11-13T00:00:00Z'
 FIELDS = ('rocket', 'operator', 'purpose', 'site', 'country', 'location')
 MAX_BYTES = 16 * 1024 * 1024
+HTTP_TOTAL_SECONDS = 60
+if __package__ in (None, ''):
+    sys.path.insert(0, str(ROOT))
 
 
 def require(condition, message):
@@ -165,7 +170,7 @@ class NoRedirect(HTTPRedirectHandler):
         return None
 
 
-def http_get(url):
+def _http_get_direct(url):
     opener = build_opener(ProxyHandler({}), NoRedirect())
     request = Request(url, headers={'Accept': 'application/json', 'Accept-Encoding': 'identity',
                       'User-Agent': 'SpaceFox/1 finite-display-corpus (https://github.com/JekaMas/SpaceFox)'})
@@ -180,6 +185,37 @@ def http_get(url):
         require(len(raw) <= MAX_BYTES, 'source response exceeds bound')
         require(headers.get('content-encoding', 'identity') == 'identity', 'unexpected content encoding')
         return response.status, headers, raw
+
+
+def _http_get_worker(url):
+    try:
+        status, headers, raw = _http_get_direct(url)
+        return {'status':status, 'headers':headers, 'body':base64.b64encode(raw).decode('ascii')}
+    except Exception as error:
+        return {'errorType':type(error).__name__, 'errorMessage':str(error)}
+
+
+def http_get(url):
+    # The worker owns DNS, connection and body reads; the parent enforces a
+    # total operation deadline even if each individual socket read progresses.
+    from tools.spacefox.catalog import _run_bounded_child
+    code = (f"import json,sys; sys.path.insert(0, {str(ROOT)!r}); from tools.display_corpus import _http_get_worker; "
+            "print(json.dumps(_http_get_worker(json.load(sys.stdin))))")
+    try:
+        result = _run_bounded_child([sys.executable, '-B', '-c', code], json.dumps(url).encode(),
+                                    maximum=((MAX_BYTES + 2) // 3 * 4) + 2 * 1024 * 1024, timeout=HTTP_TOTAL_SECONDS)
+        if result.returncode:
+            raise ValueError('source HTTP worker failed')
+        envelope = json.loads(result.stdout)
+        if 'errorType' in envelope:
+            if envelope['errorType'] == 'ValueError':
+                raise ValueError(envelope['errorMessage'])
+            raise OSError(envelope['errorType'] + ': ' + envelope['errorMessage'])
+        raw = base64.b64decode(envelope['body'], validate=True)
+        require(len(raw) <= MAX_BYTES, 'source response exceeds bound')
+        return envelope['status'], envelope['headers'], raw
+    except (subprocess.SubprocessError, UnicodeError) as error:
+        raise ValueError('source HTTP deadline or transport failed') from error
 
 
 def fetch(directory, grant_path, budget=1, *, get=http_get, clock=time.time):

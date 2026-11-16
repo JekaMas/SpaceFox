@@ -1,0 +1,18 @@
+{
+  "priorScannerSha256": "4e56746909147976638304d234d4a41e7a7bb8b3184958b519aa3c7d98428717",
+  "candidateScannerSha256": "7cc9aeb17a6e646cf0fe33724dc63ceb462ea0272126631216954b76ff8f30a8",
+  "sharedScannerDependencies": {
+    "NativeCache.mc": {
+      "current": "c1584a1832f1dbb7d5fb779539073cb5dcb6d5a98e33f09508ea617b9f140871",
+      "prior": "c1584a1832f1dbb7d5fb779539073cb5dcb6d5a98e33f09508ea617b9f140871"
+    },
+    "NativeJson.mc": {
+      "current": "0ccd505249fb25b7597c4462b26c906473285fbded1594bbe503c8644c1c6996",
+      "prior": "0ccd505249fb25b7597c4462b26c906473285fbded1594bbe503c8644c1c6996"
+    }
+  },
+  "fixtureAndResourceBytesEqual": true,
+  "probeDifference": "Only independent expected counters 153/527343 versus 17/50005. Other copied native sources differ outside scanner dependencies after the prior candidate observation.",
+  "priorPackageSha256": "e88eea373f61d45bcabb87ceb474ebac0dac70a6ff20490ffbb65c93258eae4e",
+  "candidatePackageSha256": "71e16e6afc2ac9e22677ca659884b5a0d16be7ea3d738588447f2333d413e76b"
+}

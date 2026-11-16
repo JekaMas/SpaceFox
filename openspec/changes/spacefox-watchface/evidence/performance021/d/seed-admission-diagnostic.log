@@ -1,0 +1,16 @@
+------------------------------------------------------------------------------
+Executing test currentAdmissionDiagnose...
+DEBUG (16:23): STORAGE commit=false incoming=true processed=false batchPending=false
+DEBUG (16:23): LOAD packet=false failure=
+DEBUG (16:23): ADMISSION packet=true failure= needsRestore=false
+DEBUG (16:23): BRIDGE present=true selection=true
+DEBUG (16:23): SOURCE ready=true serial=1
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+currentAdmissionDiagnose            PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

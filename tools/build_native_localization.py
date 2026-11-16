@@ -4,6 +4,7 @@
 All 36 dictionaries are packaged separately; the VM loads only one. Resource
 presence is not qualification. Runtime/manifest use source-bound software proof.
 """
+import io
 import json
 from pathlib import Path
 from xml.sax.saxutils import escape
@@ -17,6 +18,14 @@ except ImportError:
 ROOT=Path(__file__).resolve().parents[1]
 ALIASES={'chs':'zhs','cht':'zht'}
 FACES={'ar':'NotoNaskhArabicRegular','he':'NotoSansHebrewRegular','zh-Hans':'NotoSansSCMedium','zh-Hant':'NotoSansSCMedium','ja':'KosugiRegular','ko':'NanumGothicBold','th':'PridiRegular'}
+# Exact existing primary-locale reminder resources, retained when regenerating.
+REMINDER_TEXT={
+ 'en':('Launch reminders','Off','On'),
+ 'ru':('Сигналы пуска','Выкл.','Вкл.'),
+ 'de':('Start-Hinweise','Aus','Ein'),
+ 'fr':('Alerte lancement','Désactivés','Activés'),
+ 'es':('Avisos de cohete','Desactivados','Activados'),
+}
 
 def resource_code(row): return ALIASES.get(row['garmin'],row['garmin'])
 def scene_strings(rows,qualified):
@@ -29,6 +38,16 @@ def scene_strings(rows,qualified):
  source+=' function index(value as Object or Null) as Number {if(value instanceof Number&&value>=0&&value<36){return value;}if(value instanceof String){for(var i=0;i<36;i+=1){if(locale(i).equals(value)){return i;}}}return 0;}\n'
  source+=' function systemIndex(code as Object or Null) as Number {if(code instanceof Number){switch(code){'+''.join('case System.LANGUAGE_'+r["garmin"].upper()+':return '+str(i)+';' for i,r in enumerate(rows))+'}}if(!(code instanceof String)){return 0;}if(code.equals("zhs")){code="chs";}if(code.equals("zht")){code="cht";}if(code.length()!=3){return 0;}var n=packedCodes.find(code+"|");return n==null||n%4!=0?0:n/4;}\n}\n'
  return source
+
+def _write_manifest_languages(path, desired):
+ # Preserve an already normalized manifest byte-for-byte, including whether it
+ # has a final newline. Other input still receives the original normalization.
+ ns='http://www.garmin.com/xml/connectiq';ET.register_namespace('iq',ns)
+ original=path.read_text();tree=ET.parse(path);langs=tree.find('.//{'+ns+'}languages');langs.clear()
+ for code in desired:ET.SubElement(langs,'{'+ns+'}language').text=code
+ output=io.StringIO();tree.write(output,encoding='unicode',xml_declaration=True);rendered=output.getvalue()
+ if original not in (rendered,rendered+'\n'):path.write_text(rendered+'\n')
+
 
 def generate(root=ROOT):
  loaded=load_locales(root);catalog=loaded["catalog"];labels=loaded["strings"]
@@ -54,6 +73,8 @@ def generate(root=ROOT):
   texts.update({k.capitalize():d[k] for k in ['steps','heart','stress','battery','calories']})
   texts.update({'Field'+str(i):d['field'].replace('{n}',str(i)) for i in range(1,5)})
   texts.update({'Locale'+str(i):r['name'] for i,r in enumerate(rows)})
+  if loc in REMINDER_TEXT:
+   texts.update(dict(zip(('LaunchReminders','RemindersOff','RemindersOn'),REMINDER_TEXT[loc])))
   directory=res if loc=='en' else root/'watchface'/('resources-'+code)
   write(directory/'strings/strings.xml',strings_xml(texts))
   # JSON resources do not allocate a global dictionary for every language.
@@ -72,15 +93,13 @@ def generate(root=ROOT):
   props.append(f'<property id="{key}" type="number">{default}</property>')
   settings.append(f'<setting propertyKey="@Properties.{key}" title="@Strings.{key}"><settingConfig type="list">'+''.join(f'<listEntry value="{n}">@Strings.Color{n}</listEntry>' for n in range(6))+'</settingConfig></setting>')
  props.append('<property id="FeedBaseUrl" type="string">https://jekamas.github.io/SpaceFox</property>');settings.append('<setting propertyKey="@Properties.FeedBaseUrl" title="@Strings.FeedBaseUrl"><settingConfig type="alphaNumeric"/></setting>')
+ props.append('<property id="LaunchReminders" type="number">0</property>')
+ settings.append('<setting propertyKey="@Properties.LaunchReminders" title="@Strings.LaunchReminders"><settingConfig type="list"><listEntry value="0">@Strings.RemindersOff</listEntry><listEntry value="1">@Strings.RemindersOn</listEntry></settingConfig></setting>')
  write(res/'settings/properties.xml','\n'.join(props+['</properties>'])+'\n');write(res/'settings/settings.xml','\n'.join(settings+['</settings>'])+'\n')
  write(gen/'SceneStrings.mc',scene_strings(rows,qualified))
  # Only explicitly software-observed primary modes join English bootstrap.
  # Human/device nativeQualified metadata remains independent.
- ns='http://www.garmin.com/xml/connectiq';ET.register_namespace('iq',ns)
- p=root/'watchface/manifest.xml';tree=ET.parse(p);langs=tree.find('.//{'+ns+'}languages');langs.clear()
- for r in rows:
-  if r['id']=='en' or r['id'] in qualified:ET.SubElement(langs,'{'+ns+'}language').text=resource_code(r)
- tree.write(p,encoding='unicode',xml_declaration=True)
- p.write_text(p.read_text()+'\n')
+ desired=[resource_code(r) for r in rows if r['id']=='en' or r['id'] in qualified]
+ _write_manifest_languages(root/'watchface/manifest.xml',desired)
  write(root/'watchface/monkey.jungle','project.manifest = manifest.xml\nbase.sourcePath = source\nbase.resourcePath = resources\n'+''.join('base.lang.'+resource_code(r)+' = resources-'+resource_code(r)+'\n' for r in rows if r['id']!='en'))
 if __name__=='__main__':generate()

@@ -1,0 +1,26 @@
+test_actual_catalog_midnight_disagreement_withholds_witness (tests.test_performance021_b.GroupBTest.test_actual_catalog_midnight_disagreement_withholds_witness) ... ok
+test_cancelled_readback_reaps_http_workers (tests.test_performance021_b.GroupBTest.test_cancelled_readback_reaps_http_workers) ... ok
+test_cloud_sparse_source_fence_hidden_change (tests.test_performance021_b.GroupBTest.test_cloud_sparse_source_fence_hidden_change) ... ok
+test_git_batch_exact_identity (tests.test_performance021_b.GroupBTest.test_git_batch_exact_identity) ... ok
+test_git_catalog_object_above_artifact_limit (tests.test_performance021_b.GroupBTest.test_git_catalog_object_above_artifact_limit) ... ok
+test_git_deadline (tests.test_performance021_b.GroupBTest.test_git_deadline) ... ok
+test_git_fetch_hang_reaps_transport (tests.test_performance021_b.GroupBTest.test_git_fetch_hang_reaps_transport) ... ok
+test_git_fresh_ref_and_fetch_reuse (tests.test_performance021_b.GroupBTest.test_git_fresh_ref_and_fetch_reuse) ... ok
+test_later_stage_fresh_admission_needs_renderer (tests.test_performance021_b.GroupBTest.test_later_stage_fresh_admission_needs_renderer) ... ok
+test_metadata_due_and_staging_decision (tests.test_performance021_b.GroupBTest.test_metadata_due_and_staging_decision) ... ok
+test_operator_empty_content_encoding_rejected (tests.test_performance021_b.GroupBTest.test_operator_empty_content_encoding_rejected) ... ok
+test_operator_http_deadline_and_bounds (tests.test_performance021_b.GroupBTest.test_operator_http_deadline_and_bounds) ... ok
+test_probe_decision_unit_matrix (tests.test_performance021_b.GroupBTest.test_probe_decision_unit_matrix) ... ok
+test_readback_overlap_and_refusal (tests.test_performance021_b.GroupBTest.test_readback_overlap_and_refusal) ... ok
+test_readback_sequence_independent_oracle (tests.test_performance021_b.GroupBTest.test_readback_sequence_independent_oracle) ... ok
+test_readback_slow_body_reaps_children (tests.test_performance021_b.GroupBTest.test_readback_slow_body_reaps_children) ... ok
+test_real_artifact_readback_concurrency_and_corruption (tests.test_performance021_b.GroupBTest.test_real_artifact_readback_concurrency_and_corruption) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 47.395s
+
+OK
+git blob observation: 2 paths, first batch 1 process, repeated snapshot 0 processes, missing 1 process
+git reopen: 3 fresh remote observations, 1 unchanged-ref fetch; missing local ref forced second fetch; missing remote refused
+local readback baseline=2.498s concurrent=0.848s requests=10 peak=4
+real artifact: 106 files 606248 bytes, serial 13.015s concurrent 3.884s, 107 GET, peak 4

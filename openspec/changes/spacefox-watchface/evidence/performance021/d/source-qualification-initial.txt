@@ -1,0 +1,9 @@
+Command: python3 -B - <<'PY'
+import json
+from pathlib import Path
+from tools.native_language_policy import software_locales
+p=Path.cwd(); print(software_locales(p,json.loads((p/'locales/catalog.json').read_text())))
+PY
+Observed: ['en', 'ru', 'de', 'fr', 'es']
+Prior inventory: 75 snapshots authenticated by git show 29f3cfd067ff10690a9ba5163f25e04cd4b55b6f, zero mismatches.
+This is a source-qualification result, not the clean revision-bound export gate or private graph runner.

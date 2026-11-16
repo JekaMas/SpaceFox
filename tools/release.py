@@ -50,6 +50,32 @@ def git(root: Path, *args: str) -> str:
     return result.stdout
 
 
+def resolve_performance021_retired_inputs(admission, paths, proof, read_metadata):
+    """Replace only retired resource paths with their authenticated prior bytes."""
+    if proof is None or "performance021Proof" not in proof:
+        return
+    from tools.native_performance021_qualification import D_DELETED
+    ref = proof["performance021Proof"]
+    proof_path = ref["path"]
+    require(proof_path in paths and hashlib.sha256(read_metadata(proof_path)).hexdigest() == ref["sha256"],
+            "performance021 admission proof is missing or changed")
+    record = json.loads(read_metadata(proof_path))
+    require(record.get("scope") == "performance021-host-source-delta" and
+            record.get("baseline") == "29f3cfd067ff10690a9ba5163f25e04cd4b55b6f",
+            "performance021 admission baseline differs")
+    for name in D_DELETED & admission - paths:
+        require(name not in record["current"], "current resource cannot use retired snapshot: " + name)
+        snapshot = record["prior"].get(name)
+        require(isinstance(snapshot, dict), "missing retired resource snapshot: " + name)
+        path = snapshot.get("path")
+        require(isinstance(path, str) and not PurePosixPath(path).is_absolute() and
+                ".." not in PurePosixPath(path).parts and path in paths and
+                hashlib.sha256(read_metadata(path)).hexdigest() == snapshot.get("sha256"),
+                "retired resource snapshot is missing or changed: " + name)
+        admission.remove(name)
+        admission.add(path)
+
+
 def source_state(root: Path) -> dict:
     require(Path(git(root, "rev-parse", "--show-toplevel").strip()).resolve() == root,
             "root must be the actual Git worktree")
@@ -58,7 +84,16 @@ def source_state(root: Path) -> dict:
     paths = git(root, "ls-files", "-z").split("\0")
     # Preserve the proof actually used by manifest admission, alongside compiler
     # inputs. Its retained raw pages are replayed locally, never fetched here.
-    catalog = json.loads((root / "locales/catalog.json").read_text())
+    # Only small admission metadata is retained. Large evidence/source bytes are
+    # read once below and released; nothing is reused by the next source fence.
+    metadata = {}
+    def read_metadata(name):
+        if name not in metadata:
+            metadata[name] = (root / name).read_bytes()
+        return metadata[name]
+    def metadata_digest(name):
+        return hashlib.sha256(read_metadata(name)).hexdigest()
+    catalog = json.loads(read_metadata("locales/catalog.json"))
     proof = catalog["supportPolicy"]["softwareQualificationProof"]
     admission = {"locales/catalog.json", "release/native-admission-inputs.json",
                  # The historical site-flag observer imports these test modules
@@ -72,12 +107,13 @@ def source_state(root: Path) -> dict:
                  "tests/native_historical_binding.py"}
     # The retained delta validators reconstruct historical source trees. Their
     # exact proof inputs must travel with a release and isolated qualification.
-    additional = json.loads((root / "release/native-admission-inputs.json").read_text())
+    additional = json.loads(read_metadata("release/native-admission-inputs.json"))
     require(isinstance(additional, list) and len(additional) == len(set(additional)),
             "invalid native admission input manifest")
     for name in additional:
-        require(isinstance(name, str) and name.startswith(("openspec/changes/spacefox-watchface/evidence/",
-                                                       "openspec/changes/add-launch-reminders/evidence/"))
+        require(isinstance(name, str) and (name == ".github/workflows/update-feed.yml" or
+                name.startswith(("openspec/changes/spacefox-watchface/evidence/",
+                                 "openspec/changes/add-launch-reminders/evidence/")))
                 and ".." not in PurePosixPath(name).parts and name in paths,
                 "unsafe or untracked native admission input")
         admission.add(name)
@@ -101,6 +137,15 @@ def source_state(root: Path) -> dict:
                           "openspec/changes/add-launch-reminders/tasks.md",
                           "openspec/changes/add-launch-reminders/specs/launch-reminders/spec.md",
                           "docs/LAUNCH_REMINDERS.md"})
+    if proof is not None and "currentIntegration022Proof" in proof:
+        current_path = proof["currentIntegration022Proof"]["path"]
+        require(current_path in paths, "current integration proof must be tracked")
+        current = json.loads((root / current_path).read_text())
+        admission.add(current_path)
+        admission.update(ref["path"] for ref in current["cases"].values())
+        admission.update(current[key]["path"] for key in ("replacement", "replacementRun", "seed", "program", "fixtureArchive", "fr165m", "fr265s", "host", "predecessor", "historicalPeer"))
+        admission.update(ref["path"] for ref in current["probeSources"].values())
+        admission.update(current["owners"])
     if proof is not None and "liveRuntime020Proof" in proof:
         current_path = proof["liveRuntime020Proof"]["path"]
         require(current_path in paths, "live integration proof must be tracked")
@@ -148,14 +193,14 @@ def source_state(root: Path) -> dict:
             require(isinstance(name, str) and name and not PurePosixPath(name).is_absolute() and
                     ".." not in PurePosixPath(name).parts, "unsafe language proof path")
             admission.add(name)
-        receipt = json.loads((root / proof["receiptPath"]).read_text())
+        receipt = json.loads(read_metadata(proof["receiptPath"]))
         historical = {}
         for proof_key in ("ux02DeltaProof", "ux03DeltaProof", "cachePortDeltaProof", "deliveryDeltaProof"):
             if proof_key not in proof:
                 continue
             delta_path = proof[proof_key]["path"]
             require(delta_path in paths, proof_key + " admission proof must be tracked")
-            delta = json.loads((root / delta_path).read_text())
+            delta = json.loads(read_metadata(delta_path))
             historical.update(delta["priorSnapshots"])
             admission.add(delta_path)
             admission.add(delta["priorCatalog"]["path"])
@@ -170,14 +215,14 @@ def source_state(root: Path) -> dict:
         for name, expected in proof["productionSources"].items():
             if name not in paths and name in historical:
                 snapshot = historical[name]
-                require(snapshot["path"] in admission and digest(root / snapshot["path"]) == snapshot["sha256"],
+                require(snapshot["path"] in admission and metadata_digest(snapshot["path"]) == snapshot["sha256"],
                         "missing historical admission source snapshot: " + name)
             else:
                 admission.add(name)
         if "display02DeltaProof" in proof:
             delta_path = proof["display02DeltaProof"]["path"]
             require(delta_path in paths, "DISPLAY02 admission proof must be tracked")
-            delta = json.loads((root / delta_path).read_text())
+            delta = json.loads(read_metadata(delta_path))
             admission.update((delta_path, delta["priorCatalog"]["path"]))
             admission.update(delta["inputs"])
             admission.update(item["path"] for item in delta["priorSnapshots"].values())
@@ -186,14 +231,14 @@ def source_state(root: Path) -> dict:
             # validator reconstructs that exact path from its preserved snapshot.
             for name, snapshot in delta["priorSnapshots"].items():
                 if name in admission and name not in paths:
-                    require(snapshot["path"] in paths and digest(root / snapshot["path"]) == snapshot["sha256"],
+                    require(snapshot["path"] in paths and metadata_digest(snapshot["path"]) == snapshot["sha256"],
                             "missing DISPLAY02 historical source snapshot: " + name)
                     admission.remove(name)
                     admission.add(snapshot["path"])
         if "currentNativeUiDeltaProof" in proof:
             delta_path = proof["currentNativeUiDeltaProof"]["path"]
             require(delta_path in paths, "current native UI proof must be tracked")
-            delta = json.loads((root / delta_path).read_text())
+            delta = json.loads(read_metadata(delta_path))
             admission.add(delta_path)
             admission.update(delta["reviewedCurrent"])
             admission.update(item["path"] for item in delta["historicalSnapshots"].values())
@@ -201,6 +246,7 @@ def source_state(root: Path) -> dict:
         admission.update(receipt["observations"])
         corpus_directory = PurePosixPath(proof["corpusPath"]).parent
         admission.update(name for name in paths if PurePosixPath(name).is_relative_to(corpus_directory))
+    resolve_performance021_retired_inputs(admission, set(paths), proof, read_metadata)
     require(admission <= set(paths), "language admission inputs must be tracked")
     inputs = {}
     for name in paths:
@@ -209,19 +255,46 @@ def source_state(root: Path) -> dict:
                              (name.startswith("tools/") and name.endswith(".py")) or name.startswith("tests/") or name in admission or
                              name == "assets/rocket-pack/LICENSE" or
                              name in ("tools/release.py", "tools/ReleaseInspector.java", "tools/build_watchface.py",
+                                      "prototype/mission.js", "prototype/mission.html",
                                       "LICENSE", "THIRD_PARTY_NOTICES.md", "docs/AGENT_SETUP.md",
                                       "docs/RELEASE_AND_UPDATES.md", "docs/SUPPORTED_DEVICES.md", "docs/images/simulator-fr165m-0.1.13.png", "docs/images/simulator-fr165m-low-0.1.13.png", "README.md", "TESTING.md")):
             continue
         path = root / name
         require(path.is_file() and not path.is_symlink(), "release input must be a regular tracked file: " + name)
+        data = metadata.pop(name) if name in metadata else path.read_bytes()
         require(path.suffix.lower() not in (".pem", ".key", ".der", ".p12", ".pfx") and
-                (b"-----BEGIN " + b"PRIVATE KEY-----") not in path.read_bytes() and
-                (b"-----BEGIN " + b"RSA PRIVATE KEY-----") not in path.read_bytes(),
+                (b"-----BEGIN " + b"PRIVATE KEY-----") not in data and
+                (b"-----BEGIN " + b"RSA PRIVATE KEY-----") not in data,
                 "secret-shaped source input refused: " + name)
-        inputs[name] = digest(path)
+        inputs[name] = hashlib.sha256(data).hexdigest()
     require("tools/release.py" in inputs and "release/signing-identity.json" in inputs,
             "release owner and identity must be committed")
     return {"revision": git(root, "rev-parse", "HEAD").strip(), "inputs": inputs}
+
+
+def validate_snapshot_inputs(inputs: Path, source_hashes: dict, generated_hashes: dict) -> None:
+    """One fresh complete compiler-input fence; no before/after cache."""
+    expected_files = set(source_hashes) | {path.relative_to(inputs).as_posix() for path in generated_hashes}
+    expected_directories = {str(parent) for name in expected_files
+                            for parent in PurePosixPath(name).parents if str(parent) != "."}
+    # These generated files select what the SDK actually consumes. Their
+    # initial bytes must be retained, rather than trusting a final digest of
+    # settings that may have redirected the second compiler invocation.
+    require(all(path.is_file() and not path.is_symlink() and digest(path) == expected
+                for path, expected in generated_hashes.items()),
+            "generated build inputs changed during release build")
+    # SDK source/resource paths discover files by directory, so unchanged
+    # recorded bytes alone cannot exclude newly added compiler inputs.
+    # SDK intermediates live beside inputs, outside this exact inventory.
+    entries = list(inputs.rglob("*"))
+    require(inputs.is_dir() and not inputs.is_symlink() and
+            all(not path.is_symlink() and (path.is_file() or path.is_dir()) for path in entries) and
+            {path.relative_to(inputs).as_posix() for path in entries if path.is_file()} == expected_files and
+            {path.relative_to(inputs).as_posix() for path in entries if path.is_dir()} == expected_directories,
+            "snapshot input inventory changed during release build")
+    require(all((inputs / name).is_file() and not (inputs / name).is_symlink() and
+                digest(inputs / name) == expected for name, expected in source_hashes.items()),
+            "snapshot inputs changed during release build")
 
 
 def private_file(path: Path, root: Path, label: str) -> Path:
@@ -412,6 +485,59 @@ def evidence_inputs(paths: list[Path], root: Path) -> list[dict]:
     return evidence
 
 
+# Independent combined-source review, including the exact 0.1.24 version file.
+# A freshly repinned author qualification cannot substitute for this boundary.
+CURRENT_INTEGRATION_PROOF_BODY_SHA256 = "c174ce2acfabaa0597873259ec055610b70061acb10daa3536ff124d79003d49"
+INTEGRATION_PEER_NATIVE_SHA256 = "71547b49bc1c46f268ef22fd169b56feec0697b5ae4f24b76d19e9eab8826d5c"
+INTEGRATION_PEER_PROOF_BODY_SHA256 = "39d7287783bcc2f5642afcc1b90ac928909ecb435371391521a601bbf03de1bf"
+
+
+def require_combined_peer(root: Path, supplied: list[dict]) -> None:
+    """Bind production export to the reviewed native bytes and combined proof."""
+    catalog = json.loads((root / "locales/catalog.json").read_text())
+    combined = catalog["supportPolicy"]["softwareQualificationProof"].get("currentIntegration022Proof")
+    if combined is not None:
+        from tools.native_current_022_qualification import validate
+        validate(root, catalog)
+        peers = [item["data"] for item in supplied if item["data"].get("kind") == "current022-independent-native-peer"]
+        require(len(peers) == 1 and peers[0].get("status") == "GREEN" and
+                peers[0].get("integration_proof_sha256") == combined["sha256"],
+                "production export requires current 0.2.2 independent peer binding")
+        return
+    catalog = json.loads((root / "locales/catalog.json").read_text())
+    proof = catalog["supportPolicy"]["softwareQualificationProof"]
+    require(isinstance(proof, dict) and "integration022Proof" in proof,
+            "production export requires current combined peer binding")
+    from tools.native_watchdog_release_qualification import diagnostic_source_digest
+    ref = proof["integration022Proof"]
+    expected_proof = ref["sha256"]
+    path = PurePosixPath(ref["path"])
+    require(not path.is_absolute() and ".." not in path.parts,
+            "invalid integration022 proof path")
+    raw = (root / path).read_bytes()
+    require(hashlib.sha256(raw).hexdigest() == expected_proof,
+            "combined proof differs from locale binding")
+    record = json.loads(raw)
+    # The proof binds this release owner; exclude that single digest to avoid a
+    # circular guard -> proof -> guard hash. All other reviewed proof bytes are
+    # independently fixed here, and the locale qualifier checks the owner hash.
+    record["owners"].pop("tools/release.py")
+    body = json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()
+    require(hashlib.sha256(body).hexdigest() == INTEGRATION_PEER_PROOF_BODY_SHA256,
+            "combined proof differs from independent peer binding")
+    peers = [item["data"] for item in supplied
+             if item["data"].get("kind") == "integration024-independent-native-peer"]
+    require(len(peers) == 1 and peers[0].get("status") == "GREEN" and
+            peers[0].get("native_inputs_sha256") == INTEGRATION_PEER_NATIVE_SHA256 and
+            peers[0].get("integration_proof_sha256") == expected_proof,
+            "production export requires current combined peer binding")
+    watch = root / "watchface"
+    actual = diagnostic_source_digest(root, (watch / "manifest.xml").read_bytes(),
+                                      (watch / "source/generated/NativeVersion.mc").read_bytes())
+    require(actual == INTEGRATION_PEER_NATIVE_SHA256,
+            "current native inputs differ from combined peer binding")
+
+
 def backup_status(path: Path | None, root: Path, fingerprint: str, official: bool) -> dict:
     if path is None:
         require(not official, "official signing requires external backup/restore evidence")
@@ -583,6 +709,8 @@ def build_release(output: Path, *, key: Path, root: Path = ROOT, mode: str = "ca
     update = validate_previous(previous_data, app, fingerprint)
     backup_info = backup_status(backup, root, fingerprint, mode == "official")
     supplied = evidence_inputs(evidence or [], root)
+    if mode != "qualification":
+        require_combined_peer(root, supplied)
     external_hashes = {str(path.expanduser().resolve()): digest(path.expanduser().resolve())
                        for path in [p for p in (previous, backup, qualification_policy, *(evidence or [])) if p]}
     output = output.expanduser().absolute()
@@ -608,29 +736,8 @@ def build_release(output: Path, *, key: Path, root: Path = ROOT, mode: str = "ca
                       .replace("base.resourcePath = resources\n", "base.resourcePath = watchface/resources\n")
                       .replace(" = resources-", " = watchface/resources-"))
     generated_hashes = {path: digest(path) for path in (generated, jungle)}
-    expected_files = set(before["inputs"]) | {"manifest.xml", "monkey.jungle"}
-    expected_directories = {str(parent) for name in expected_files
-                            for parent in PurePosixPath(name).parents if str(parent) != "."}
-
     def validate_build_inputs() -> None:
-        # These generated files select what the SDK actually consumes. Their
-        # initial bytes must be retained, rather than trusting a final digest of
-        # settings that may have redirected the second compiler invocation.
-        require(all(path.is_file() and not path.is_symlink() and digest(path) == expected
-                    for path, expected in generated_hashes.items()),
-                "generated build inputs changed during release build")
-        # SDK source/resource paths discover files by directory, so unchanged
-        # recorded bytes alone cannot exclude newly added compiler inputs.
-        # SDK intermediates live beside inputs, outside this exact inventory.
-        entries = list(inputs.rglob("*"))
-        require(inputs.is_dir() and not inputs.is_symlink() and
-                all(not path.is_symlink() and (path.is_file() or path.is_dir()) for path in entries) and
-                {path.relative_to(inputs).as_posix() for path in entries if path.is_file()} == expected_files and
-                {path.relative_to(inputs).as_posix() for path in entries if path.is_dir()} == expected_directories,
-                "snapshot input inventory changed during release build")
-        require(all((inputs / name).is_file() and not (inputs / name).is_symlink() and
-                    digest(inputs / name) == expected for name, expected in before["inputs"].items()),
-                "snapshot inputs changed during release build")
+        validate_snapshot_inputs(inputs, before["inputs"], generated_hashes)
 
     public = output / "developer-public.der"
     public.write_bytes(pub)

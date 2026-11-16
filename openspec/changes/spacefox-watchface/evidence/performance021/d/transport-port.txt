@@ -1,0 +1,4 @@
+COMMAND     PID    USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+simulator 73241 jekamas    9u  IPv4 0xf0393cf775669338      0t0  TCP *:1234 (LISTEN)
+simulator 73241 jekamas   11u  IPv4 0xce6367bd2c60f343      0t0  TCP 127.0.0.1:1234->127.0.0.1:63478 (ESTABLISHED)
+shell     73347 jekamas    3u  IPv4 0x647bd6e868e27fa4      0t0  TCP 127.0.0.1:63478->127.0.0.1:1234 (ESTABLISHED)

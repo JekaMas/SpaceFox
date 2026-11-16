@@ -18,6 +18,8 @@ class LocalePresentation {
     var aodContextFont as Graphics.FontType or Null=null;
     var aodBatteryFont as Graphics.FontType or Null=null;
     var loads=0;
+    var calendarWeekday=-1;var calendarDay=-1;var calendarMonth=-1;var calendarText="";
+    var stepsRaw=null;var stepsText=null;var caloriesRaw=null;var caloriesText=null;
     function initialize(){restore("en");}
     // All fields are optional outside the renderer. Rebuild them before the
     // normal scene so feed/bitmap work need not retain font resources.
@@ -45,7 +47,7 @@ class LocalePresentation {
         if(!qualificationMode&&!SceneStrings.available(index)){index=0;}
         var next=SceneStrings.locale(index);
         if(next.equals(locale)){return;}
-        dictionary=null;small=null;count=null;locale="";
+        dictionary=null;small=null;count=null;locale="";calendarWeekday=-1;stepsRaw=null;stepsText=null;caloriesRaw=null;caloriesText=null;
         try {
             dictionary=WatchUi.loadResource(SceneStrings.resource(index));loads+=1;
             var face=dictionary["face"];
@@ -61,13 +63,14 @@ class LocalePresentation {
         }
     }
     function calendar(parts as Array<Number>) as String {
+        if(parts.size()!=3||parts[0]<1||parts[0]>7||parts[1]<1||parts[1]>31||parts[2]<1||parts[2]>12){return "";}
+        if(parts[0]==calendarWeekday&&parts[1]==calendarDay&&parts[2]==calendarMonth){return calendarText;}
         var names=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
         if(locale.equals("ru")){names=["Вс","Пн","Вт","Ср","Чт","Пт","Сб"];}
         else if(locale.equals("de")){names=["So","Mo","Di","Mi","Do","Fr","Sa"];}
         else if(locale.equals("fr")){names=["dim","lun","mar","mer","jeu","ven","sam"];}
         else if(locale.equals("es")){names=["dom","lun","mar","mié","jue","vie","sáb"];}
-        if(parts.size()!=3||parts[0]<1||parts[0]>7||parts[1]<1||parts[1]>31||parts[2]<1||parts[2]>12){return "";}
-        return names[parts[0]-1]+" "+parts[1].format("%02d")+"."+parts[2].format("%02d");
+        calendarWeekday=parts[0];calendarDay=parts[1];calendarMonth=parts[2];calendarText=names[parts[0]-1]+" "+parts[1].format("%02d")+"."+parts[2].format("%02d");return calendarText;
     }
     function word(key) as String {
         if(dictionary!=null&&dictionary.hasKey(key)){return dictionary[key];}
@@ -90,7 +93,12 @@ class LocalePresentation {
         while(raw.length()>3){result=separator+raw.substring(raw.length()-3,raw.length())+result;raw=raw.substring(0,raw.length()-3);}
         return raw+result;
     }
-    function metric(fitness,values,role) as String {var raw=fitness.display(values,role);return role.equals("steps")||role.equals("calories")?number(raw):raw;}
+    function metric(fitness,values,role) as String {
+        var raw=fitness.display(values,role);
+        if(role.equals("steps")){if(stepsRaw==null||!stepsRaw.equals(raw)){stepsRaw=raw;stepsText=number(raw);}return stepsText;}
+        if(role.equals("calories")){if(caloriesRaw==null||!caloriesRaw.equals(raw)){caloriesRaw=raw;caloriesText=number(raw);}return caloriesText;}
+        return raw;
+    }
     function date(iso) as String {
         // Provider date is a UTC civil date, never a fabricated midnight moment.
         // Garmin exposes no date-order preference: explicit locale rule.

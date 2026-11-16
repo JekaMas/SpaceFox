@@ -1,0 +1,26 @@
+test_release_excludes_unqualified_candidates (tests.test_native_localization.NativeLocalizationResourcesTest.test_release_excludes_unqualified_candidates) ... ERROR
+
+======================================================================
+ERROR: test_release_excludes_unqualified_candidates (tests.test_native_localization.NativeLocalizationResourcesTest.test_release_excludes_unqualified_candidates)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_native_localization.py", line 50, in test_release_excludes_unqualified_candidates
+    catalog=load_locales(ROOT)['catalog'];rows=catalog['locales'];qualified=software_locales(ROOT,catalog);expected=[resource_code(r) for r in rows if r['id']=='en' or r['id'] in qualified]
+                                                                            ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tools/native_language_policy.py", line 94, in software_locales
+    return validate(root,catalog)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tools/native_devices020_qualification.py", line 136, in validate
+    raise ValueError('original fields018 proof failed: '+result.stderr[-3000:])
+ValueError: original fields018 proof failed: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;from pathlib import Path;from tools.native_fields018_qualification import validate;p=Path.cwd();print(json.dumps(validate(p,json.loads((p/"locales/catalog.json").read_text()))))
+                                                                                                                                 ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-devices020-prior-hlcp54qr/tools/native_fields018_qualification.py", line 59, in validate
+    raise ValueError('published 0.1.17 source differs: ' + name)
+ValueError: published 0.1.17 source differs: tools/spacefox/bridge_map.py
+
+
+----------------------------------------------------------------------
+Ran 1 test in 8.821s
+
+FAILED (errors=1)

@@ -1,5 +1,9 @@
 # Source-backed regional geography
 
+> Historical source and preview observations: the standalone preview CLI and its
+> static bundle route have been retired. The descriptions below record that
+> earlier experiment; they are not current operator instructions.
+
 This is an off-watch source and preview increment under task 4.3. The active
 `catalog/source.json` still uses the accepted schema1 Natural Earth source. The
 explicit candidate recipe is `catalog/geography/context-candidate-20261112.json`;
@@ -89,15 +93,9 @@ published feature denominator in the index. Adding/revising a site remains the
 single catalog data-only maintenance path; regeneration changes geography data
 and recipe pins, not the watch layout or a second site dictionary.
 
-Build a bounded preview with the candidate recipe, from any working directory:
-
-```sh
-python3 -B tools/build_geographic_context.py \
-  --catalog-source catalog/geography/context-candidate-20261112.json \
-  --geography-source catalog/geography/regional-20261112-r3/source.json \
-  --site ll2:site:107 --profile regional --kind both \
-  --output "$PWD/build/geographic-context/omelek"
-```
+The historical bounded preview used the candidate recipe and the Omelek site.
+The former standalone preview command has been retired; these observations do
+not describe a currently supported preview entrypoint.
 
 The `regional` camera chooses a scale from actual nearest sourced line distance;
 it does not enlarge an island or invent land under the marker. The separate, map-only

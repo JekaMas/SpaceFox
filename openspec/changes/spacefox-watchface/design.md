@@ -798,3 +798,76 @@ The admitted source cohort and historical 0.1.18 release cohort are separate;
 compilation, simulator, physical device and Store delivery remain separate proofs.
 The iteration's positive and negative obligations are recorded in
 [evidence/devices020/VERIFICATION.md](evidence/devices020/VERIFICATION.md).
+
+## Host selection and validation work (task 8.1)
+
+Keep public catalog/pack ownership semantics. An actual build may use an operation-owned, validated exact-content snapshot and selected-row copies; public mutable callers must never acquire stale acceptance through object-identity caching. Defer regional corpus decoding until a map needs it, with lifetime scoped to that operation. Reuse successful pixel derivation only in-process for exact artifact and renderer/source identities; each access still performs fresh authority and content admission. Bounded file reads must read at most limit plus one despite a stat/read race; renderer capture must enforce byte and time bounds while draining and reaping the actual child. No existing output, rights, source, CAS, quota, rejection, or final readback contract is relaxed.
+
+The cache transition evidence uses a bounded deterministic sequence: valid admission, identical reopen, changed bytes/source/renderer refusal or revalidation, then valid restoration. Independent expected identities and expected calls come from the input sequence, not cache flags; assert each event and forbidden stale success. Real local process/read-race checks are separate from the model.
+
+The operator CLI may make a distinct read-only not-due decision from the validated ledger, anchored history, source/head fences and matching live revision. This decision neither reads nor admits artifact content and grants no publication or provider permission. Pending, due, code-adoption, mismatched-live, recovery and artifact-use paths still use the full GitState.load and reserve/CAS checks. It does not report artifact integrity for a no-work invocation.
+
+A single performance021 host-source delta authenticates the planning-baseline host files and reconstructs the existing devices020 proof in an isolated hardlinked tree, unlinking each replacement before writing. The original devices020 and earlier proof hashes remain unchanged. Current host sources, the real artifact byte comparison, measurement and tests are separately bound. The previous validator still verifies the unchanged native, profile and font closure. Future host groups may extend this same delta rather than nesting another historical proof layer; changed native inputs require their own actual qualification.
+
+The public artifact builder takes a type-preserving caller snapshot and admits it once, so later caller mutation cannot change the build or normalize invalid Python numeric types. Operator and cloud CLI operations use a private repository factory that constructs and retains its own freshly admitted catalog and eligibility data; it never accepts a caller dictionary or exposes one to the provider. Its build uses the same exact-content admission scope without copying the full catalog. Public cloud preparation with a caller-supplied catalog retains the isolated public builder. The immutable artifact cache remains process-local and binds content plus source/renderer identity; it is not an authority cache.
+
+The no-work source fence follows the existing sparse runtime seed and transitive catalog recipe pins, verifies the required present bytes against committed Git blobs and permits unrelated tracked files to remain absent. Git assume-unchanged and skip-worktree flags do not prove content. Hidden changed producer/schema bytes are refused before authority access; a missing or changed recipe input cannot take the no-work shortcut. Catalog admission reuse also binds scalar types, so integer and Decimal values with identical JSON encodings cannot share acceptance.
+
+## Host I/O and cloud work (task 8.2)
+
+Bound complete readback parallelism and its 120-second HTTP budget, including the initial root, queued and running file requests, closing root and worker cleanup, while preserving every byte check. Snapshot and semantic preparation use their own bounded Git, renderer and byte limits; they are not preempted by the HTTP budget, so 120 seconds is not a bound on the entire Site.observe wall time. A cheap no-work decision must still admit catalog changes, pending recovery and due or adopted code. Git reuse is confined to exact immutable objects, never remote authority, and all subprocesses have finite deadlines. Operator HTTP uses killable total operation deadlines. Local fault and overlap tests distinguish actual I/O from modeled event expectations; source-bound native admission is extended through the existing single performance021 delta.
+
+A cloud probe is a read-only scheduling observation. It requires matching active, source and producer identities, an actual UTC projection-date witness, an unchanged launch projection, a terminal successful journal, a complete non-staging metadata candidate still within its own cadence, fresh root/source/authority fences and a not-due schedule. It does not admit an artifact or grant publication permission. A missing, malformed, stale or mismatched witness escalates to the full path. The private catalog owner captures its actual shared UTC admission date; if the date changes during the operation it emits no witness. After a full admitted pending transition or a fully reconciled same-content active admission, a CAS-bound scheduling witness may record that date and exact source, catalog and artifact identities outside the watch payload. Existing matching witnesses need no write. Metadata due or staged work remains eligible; both independent timers remain intact. Later jobs retain their renderer because independent fresh artifact admission rederives source pixels; the actual missing-renderer test establishes that boundary.
+
+Source-fence and authority Git commands use the same process-group deadline owner; a deadline exception propagates rather than becoming a shortcut miss that could proceed to authority or provider work. Git reopens always query current remote refs. An exact matching local ref snapshot may avoid a repeated fetch, while a moved or absent local or remote ref is rechecked and the ordinary CAS/source fences remain fresh. Exact immutable object reads use a process-local bounded cache and batched `cat-file` input supplied through a temporary file, avoiding a bidirectional pipe deadlock. Reachable history counts and sizes are streamed and history is retained. The real 512-distinct-object batch, local fetch timeout, authority movement, archive and concurrent reservation tests own those boundaries; they do not establish hosted operation.
+
+The source-closure repair also retains the existing five primary reminder labels and default-off setting in localization generation. An already normalized manifest is left byte-identical, including its original final-newline convention; malformed or changed language elements still take the original normalization path. Generation and its repeat are checked against the complete current watch tree; historical missing fonts and the old NativeMetrics input remain authenticated historical snapshots and are never inserted into current watch resources.
+
+The workflow accepts a no-work output only from a successful probe. A failed or skipped probe proceeds to a fresh full prepare invocation, which independently repeats source and Git deadline guards before any authority or provider effects.
+
+## performance021 C — captured release fences and retired routes
+
+ENG-01 shares a fresh capture only among consumers inside one required fence.
+Source secret checks and hashing consume one read; source metadata can reuse its
+same-call capture. Toolchain pin/hash and capability consumers share same-call
+captured facts. No capture survives a source/toolchain call or a compiler fence.
+Before/after every one of 42 PRGs plus IQ and final package/source/signing checks
+remain. Actual current-input read counts and bytes are recorded separately from
+compiler execution; no host scan observation claims a fresh native build.
+
+CLEAN-02 removes the obsolete beta CLI/recipe and proven test-only complete static
+bundle exporter. Shared projection, current selection/SFR1 primitives and source
+proof are retained; deleted baseline paths are reconstructed from exact29f bytes
+inside the existing performance021 outer proof, never another proof layer.
+WEB-01 uses a named global callback and one idempotent teardown shared by event
+and ticker paths; disconnected event delivery cannot render stale roots. The
+existing one-second disconnection bound and visual composition are retained.
+
+## performance021 D — native resource work
+
+Measure the current native source before changes with the same 42-profile admission and five-primary-locale contracts. Group D retains the complete per-finding evidence and first failed observations under `evidence/performance021/d/`. Optimize only owned resources and event-local work; never rely on heap figures as graphics-pool measurements. The matched stock Venu X1 workload uses a frozen rebased offline A+2 fixture, a disposable key and release flags. A complete visible selected scene and baseline/final readiness phase are required before comparison. Preserve all current accepted data and source authority, exact mode/field and graphics behavior, final digest admission and corruption/restart recovery. Individual fixes and their independent event-sequence or native test oracles will be recorded against their real owners before implementation; missing observations remain open.
+
+The pixel-rest mask belongs to LOW rendering: acquire it before a permitted LOW blit and drop its reference on a transition to NOT_LOW. The scaled logical scene canvas remains owned where needed to preserve the same 390-pixel composition and scaling; a resource reference is not a measurement of the graphics pool.
+
+The matching-bundled-outline decoder path can skip edge comparisons that have no output, but must still maintain the exact RGB scanline state, zeroed first-row copy behavior and final full pixel digest. The normal generated-outline path remains unchanged. The observed first stock readiness regression remains a red until affected native pixel/corruption sequences and a new matched stock run establish its actual effect.
+
+### Combined performance and current incremental runtime
+
+The final merge preserves the current B1 sliced admission and restoration jobs,
+clock-first fallback and resource guards while applying performance021's
+identity-bound layout/field reuse, packed map metadata, event-local batch cursor
+and bounded cleanup. Complete immutable closures are freshly verified before
+completion; parsed raw feed remains the authority for the persisted current
+projection. Optional resources may be suspended under the existing heap guard and
+must be rebound on wake without replacing accepted launch facts. Historical
+qualification chains remain authenticated as historical inputs; only a separate
+combined-source proof may admit this merged source and release version.
+
+Inactive feed-tail cleanup is sliced across promotion continuations. Every slice
+re-reads the current active and recovery slots before removing a chunk; if its
+slot becomes protected, the in-flight promotion refuses as retryable before
+removal. Source/owner cancellation follows the existing B1 admission guard.
+
+Actual application stop also disposes B1's in-progress prepared feed and restore
+job, stops the admission and restore timers, and breaks both view-to-app callback
+references. Ordinary hide/settings retain their existing retry and rebind semantics.

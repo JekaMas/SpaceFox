@@ -1,0 +1,10 @@
+test_deadline_cancels_queued_requests_and_reaps_workers (tests.test_performance021_b_peer.PeerBTest.test_deadline_cancels_queued_requests_and_reaps_workers) ... ok
+test_deadline_includes_both_root_requests (tests.test_performance021_b_peer.PeerBTest.test_deadline_includes_both_root_requests) ... ok
+test_failed_probe_routes_to_full_prepare (tests.test_performance021_b_peer.PeerBTest.test_failed_probe_routes_to_full_prepare) ... ok
+test_full_payload_budget_includes_duplicate_root (tests.test_performance021_b_peer.PeerBTest.test_full_payload_budget_includes_duplicate_root) ... ok
+test_readback_slow_body_reaps_children (tests.test_performance021_b.GroupBTest.test_readback_slow_body_reaps_children) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 3.003s
+
+OK

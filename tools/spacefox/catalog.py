@@ -5,12 +5,20 @@ and original schematic registry are imports of the single catalog source recipe.
 This module performs no network requests and grants no native/global qualification.
 """
 from copy import deepcopy
+from contextlib import contextmanager
+from contextvars import ContextVar
 from decimal import Decimal
 from datetime import date, datetime, timezone
 import hashlib
 import json
+import os
+import stat
 from pathlib import Path
 import re
+import selectors
+import subprocess
+import tempfile
+import time
 
 
 class CatalogError(ValueError):
@@ -542,7 +550,67 @@ def _check_reference_coherence(dictionaries):
             _require(row['references'] == expected, f'source reference mismatch {identity}')
 
 
+_validation_scope = ContextVar('spacefox_catalog_validation_scope', default=None)
+
+
+@contextmanager
+def catalog_validation_scope():
+    """Reuse exact successful catalog admission only inside the caller's operation."""
+    current = _validation_scope.get()
+    if current is not None:
+        yield
+        return
+    token = _validation_scope.set(set())
+    try:
+        yield
+    finally:
+        _validation_scope.reset(token)
+
+
+def _cache_safe(value):
+    # Unusual subclasses can have behavior not represented in JSON.
+    if type(value) is dict:
+        return all(type(k) is str and _cache_safe(v) for k, v in value.items())
+    if type(value) is list:
+        return all(_cache_safe(v) for v in value)
+    return type(value) in (str, int, bool, Decimal, type(None))
+
+
+def _cache_type_digest(value):
+    # Canonical JSON encodes Decimal('1') and int(1) identically, although
+    # admission distinguishes them. Bind the type of each scalar in the same
+    # deterministic traversal as the content encoding.
+    digest = hashlib.sha256()
+    def visit(item):
+        if type(item) is dict:
+            for key in sorted(item):
+                visit(item[key])
+        elif type(item) is list:
+            for child in item:
+                visit(child)
+        else:
+            digest.update(b'D' if type(item) is Decimal else b'V')
+    visit(value)
+    return digest.digest()
+
+
 def validate_catalog(catalog, *, _admission_date=None):
+    scope = _validation_scope.get()
+    if scope is None or not _cache_safe(catalog):
+        return _validate_catalog_uncached(catalog, _admission_date=_admission_date)
+    admission_date = _admission_date if _admission_date is not None else datetime.now(timezone.utc).date()
+    # A caller-owned dictionary is never trusted by identity. Hashing its exact
+    # canonical content and admission date also detects mutation between uses.
+    key = (hashlib.sha256(canonical_bytes(catalog)).digest(), _cache_type_digest(catalog), admission_date)
+    if key in scope:
+        return catalog
+    result = _validate_catalog_uncached(catalog, _admission_date=admission_date)
+    if len(scope) < 32:
+        scope.add(key)
+    return result
+
+
+def _validate_catalog_uncached(catalog, *, _admission_date=None):
     """Validate this producer schema and every typed dependency before use."""
     admission_date = _admission_date if _admission_date is not None else datetime.now(timezone.utc).date()
     canonical_bytes(catalog)
@@ -949,7 +1017,10 @@ def dependency_closure(catalog, roots, *, expected_revision):
         selected.add(identity)
         for value in all_rows[identity]['references'].values():
             todo.extend(value if isinstance(value, list) else ([] if value is None else [value]))
-    subset = deepcopy(catalog)
+    # Copy only the selected rows below; copying the full dictionaries first
+    # duplicates every unrelated record before immediately discarding it.
+    subset = {key: deepcopy(value) for key, value in catalog.items()
+              if key != 'dictionaries'}
     subset['roots'] = sorted(set(roots))
     subset['dictionaries'] = {collection: {key: deepcopy(row) for key, row in table.items() if key in selected}
                               for collection, table in catalog['dictionaries'].items()}
@@ -966,10 +1037,59 @@ def _local_path(root, relative):
     return path
 
 
+def _read_snapshot(path, maximum=None):
+    """Read no more than the admitted open-file size (+1 for growth)."""
+    with path.open('rb') as stream:
+        before = os.fstat(stream.fileno())
+        if not stat.S_ISREG(before.st_mode):
+            raise ValueError('regular local source required')
+        if maximum is not None and before.st_size > maximum:
+            raise ValueError('local source byte limit')
+        data = stream.read(before.st_size + 1)
+        after = os.fstat(stream.fileno())
+        identity = lambda st: (st.st_dev, st.st_ino, st.st_size, st.st_mtime_ns, st.st_ctime_ns)
+        if len(data) != before.st_size or identity(before) != identity(after):
+            raise ValueError('local source changed during read')
+        return data
+
+
+def _run_bounded_child(argv, data, *, maximum, timeout):
+    """Drain a child under a total deadline and cap output before allocation."""
+    with tempfile.TemporaryFile() as source:
+        source.write(data); source.seek(0)
+        proc = subprocess.Popen(argv, stdin=source, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+        output = bytearray()
+        try:
+            deadline = time.monotonic() + timeout
+            with selectors.DefaultSelector() as selector:
+                selector.register(proc.stdout, selectors.EVENT_READ)
+                while selector.get_map():
+                    remaining = deadline - time.monotonic()
+                    if remaining <= 0 or not selector.select(remaining):
+                        raise subprocess.TimeoutExpired(argv, timeout)
+                    part = os.read(proc.stdout.fileno(), min(65536, maximum + 1 - len(output)))
+                    if not part:
+                        selector.unregister(proc.stdout)
+                    else:
+                        output.extend(part)
+                        if len(output) > maximum:
+                            raise ValueError('child output byte limit')
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                raise subprocess.TimeoutExpired(argv, timeout)
+            proc.wait(timeout=remaining)
+            return subprocess.CompletedProcess(argv, proc.returncode, bytes(output), b'')
+        finally:
+            if proc.poll() is None:
+                proc.kill()
+            proc.wait()
+            proc.stdout.close()
+
+
 def _read(path):
     try:
-        return path.read_bytes()
-    except OSError as exc:
+        return _read_snapshot(path)
+    except (OSError, ValueError) as exc:
         raise CatalogError(f'cannot read catalog input {path}: {exc}') from exc
 
 
@@ -1005,10 +1125,10 @@ def _curated_row(identity, facts, references, evidence):
     return row
 
 
-def build_catalog(root, source_path=None, *, _strict_creation_path=None):
+def build_catalog(root, source_path=None, *, _strict_creation_path=None, _admission_date=None):
     """Build the single source recipe, checking immutable imports and SVG bytes."""
     # One UTC calendar sample governs operation replay and final validation.
-    admission_date = datetime.now(timezone.utc).date()
+    admission_date = _admission_date if _admission_date is not None else datetime.now(timezone.utc).date()
     root = Path(root).resolve()
     source_path = Path(source_path) if source_path is not None else root / 'catalog/source.json'
     manifest = loads_json(_read(source_path))

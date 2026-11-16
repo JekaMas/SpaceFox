@@ -7,32 +7,40 @@ import Toybox.Time;
 (:background, :extendedCode)
 class FeedService extends System.ServiceDelegate {
     var transfer as NativeTransfer or Null;var assetRequest as Dictionary or Null;var batch as NativeBatch or Null=null;var started as Number=0;var requests as Number=0;
+    var deadlineArmed as Boolean=false;var ended as Boolean=false;var inFlight as Boolean=false;
     function initialize(){ServiceDelegate.initialize();transfer=null;assetRequest=null;}
     function createTransfer() as NativeTransfer {return new NativeTransfer(configuredFeedUrl(),null);}
     function requestUrl(path as String) as String {return ((transfer as NativeTransfer).base as String)+"/"+path+".txt";}
+    function nowMillis() as Number {return System.getTimer();}
+    function startDeadline() as Void {started=nowMillis();requests=0;deadlineArmed=true;ended=false;inFlight=false;}
+    (:typecheck(false))
+    function sendRequest(path as String,callback as Method) as Void {Communications.makeWebRequest(requestUrl(path),{}, {:method=>Communications.HTTP_REQUEST_METHOD_GET,:headers=>{"Accept"=>"text/plain"},:responseType=>Communications.HTTP_RESPONSE_CONTENT_TYPE_TEXT_PLAIN},callback);}
+    function cancelOutstanding() as Void {Communications.cancelAllRequests();}
+    function rearm() as Void {if(transfer!=null){armFeed(transfer,Time.now().value().toLong());}}
+    function leave() as Void {Background.exit({"provisional"=>true});}
     (:typecheck(false))
     function onTemporalEvent() as Void {
         try{var settings=System.getDeviceSettings();var registered=Background.getTemporalEventRegisteredTime();var last=Background.getLastTemporalEventTime();System.println("SF_BG enter phone="+settings.phoneConnected+" registered="+(registered==null?"none":registered.value())+" last="+(last==null?"none":last.value()));}catch(ignore){}
-        started=System.getTimer();requests=0;try{Background.registerForTemporalEvent(new Time.Duration(3600));}catch(e){}
+        startDeadline();try{Background.registerForTemporalEvent(new Time.Duration(3600));}catch(e){}
         try{transfer=createTransfer();if(transfer.base.equals("")){Background.deleteTemporalEvent();Background.exit(null);return;}batch=new NativeBatch(transfer.store,transfer.base);transfer.load();var now=Time.now().value().toLong();LaunchReminder.wake(transfer,now);if(transfer.due(now)){transfer.attempted(now);armFeed(transfer,now);request("feed.json",method(:receive));}else{optional();}}catch(e){System.println("SF_BG start_error");finish();}
     }
     (:typecheck(false))
-    function request(path as String,callback as Method) as Void {if(requests>=44||System.getTimer()-started>=22000){System.println("SF_BG request_budget");finish();return;}requests+=1;try{Communications.makeWebRequest(requestUrl(path),{}, {:method=>Communications.HTTP_REQUEST_METHOD_GET,:headers=>{"Accept"=>"text/plain"},:responseType=>Communications.HTTP_RESPONSE_CONTENT_TYPE_TEXT_PLAIN},callback);}catch(e){System.println("SF_BG request_error");finish();}}
+    function request(path as String,callback as Method) as Void {if(ended){return;}if(requests>=44||nowMillis()-started>=22000){System.println("SF_BG request_budget");finish();return;}requests+=1;inFlight=true;try{sendRequest(path,callback);}catch(e){inFlight=false;System.println("SF_BG request_error");finish();}}
+    function callbackAllowed() as Boolean {if(ended){return false;}inFlight=false;if(deadlineArmed&&nowMillis()-started>=22000){finish();return false;}return true;}
     (:typecheck(false))
     function receive(code as Number,data as Dictionary or String or Null) as Void {
-
-        try{System.println("SF_BG feed_http="+code);if(code==200&&data instanceof String){var staged=transfer.stage("feed",data,null);System.println("SF_BG feed_staged="+staged);if(staged){var begun=batch.begin(data);System.println("SF_BG batch_begin="+begun);if(begun){data=null;optional();return;}}}}catch(e){System.println("SF_BG feed_error");}finish();
+        if(!callbackAllowed()){return;}try{System.println("SF_BG feed_http="+code);if(code==200&&data instanceof String){var staged=transfer.stage("feed",data,null);System.println("SF_BG feed_staged="+staged);if(staged){var begun=batch.begin(data);System.println("SF_BG batch_begin="+begun);if(begun){data=null;optional();return;}}}}catch(e){System.println("SF_BG feed_error");}finish();
     }
     (:typecheck(false))
     function optional() as Void {try{if(batch!=null){assetRequest=batch.next();if(assetRequest!=null){request(assetRequest["path"],method(:receiveBatch));return;}if(batch.head!=null){finish();return;}}}catch(e){System.println("SF_BG batch_error");}finish();}
     (:typecheck(false))
-    function receiveBatch(code as Number,data as Dictionary or String or Null) as Void {try{System.println("SF_BG object_http="+code+" catalog="+(assetRequest["path"].find("wire3/catalogs/")==0));if(code==200&&data instanceof String&&batch.immutable.put(assetRequest,data)){
+    function receiveBatch(code as Number,data as Dictionary or String or Null) as Void {if(!callbackAllowed()){return;}try{System.println("SF_BG object_http="+code+" catalog="+(assetRequest["path"].find("wire3/catalogs/")==0));if(code==200&&data instanceof String&&batch.immutable.put(assetRequest,data)){
         // The catalog is the admission prerequisite. Exit now so the foreground
         // can display the validated schedule; the durable pending batch resumes
         // optional visual downloads at the next permitted background event.
         if(assetRequest["path"].find("wire3/catalogs/")==0){System.println("SF_BG catalog_ready");finish();return;}optional();return;}}catch(e){System.println("SF_BG object_error");}finish();}
     (:typecheck(false))
-    function finish() as Void {try{if(transfer!=null){armFeed(transfer,Time.now().value().toLong());}}catch(e){}Background.exit({"provisional"=>true});}
+    function finish() as Void {if(ended){return;}ended=true;var cancel=inFlight;inFlight=false;if(cancel){try{cancelOutstanding();}catch(e){}}try{rearm();}catch(e){}leave();}
 }
 // Keep a pending download's earliest registered deadline across foreground
 // wakes. The OS enforces five minutes since the last dispatched event.

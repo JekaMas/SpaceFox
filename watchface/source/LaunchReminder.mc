@@ -93,11 +93,7 @@ module LaunchReminder {
     if(!(saved["rows"] instanceof Array)||saved["rows"].size()>16||!number(saved["watermark"])||now<saved["watermark"]){return null;}
     watermark=now;
     for(var i=0;i<saved["rows"].size();i+=1){var r=saved["rows"][i];if(!(r instanceof Dictionary)||!(r["base"] instanceof String)||!(r["id"] instanceof String)||!number(r["target"])||!number(r["last"])||r["last"]<0||r["last"]>3){return null;}if(r["target"]>=now){rows.add(r);}}
-   }else{
-    // Upgrade the initial 0.1.15 test state without losing its consumed slot.
-    if(!(saved["base"] instanceof String)||!(saved["id"] instanceof String)||!number(saved["target"])||!number(saved["last"])||saved["last"]<0||saved["last"]>3){return null;}
-    if(saved["target"]>=now){rows.add(saved);}
-   }
+   }else{return null;}
   }
   var prior=null;var pos=null;for(var j=0;j<rows.size();j+=1){var r=rows[j];if(same(r["base"],s["base"])&&same(r["id"],s["id"])&&r["target"]==s["target"]){prior=r;pos=j;break;}}
   var slot=candidate(s,now,since,prior);if(slot==null){return null;}

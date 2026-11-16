@@ -1,0 +1,16 @@
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test b1ReboundQueueRead022...
+DEBUG (21:02): QUEUE_READ first=1 context=true same=true
+DEBUG (21:02): QUEUE_READ second=1 same=true
+DEBUG (21:02): QUEUE_READ rebound=2
+DEBUG (21:02): B1_REBOUND_QUEUE first=true samePacketNoRead=true rebindReads=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1ReboundQueueRead022               PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

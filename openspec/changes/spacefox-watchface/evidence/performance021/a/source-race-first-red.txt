@@ -1,0 +1,2 @@
+Command: /Users/jekamas/.codex/tmp/spacefox-render-env-20261111/bin/python -B -m unittest -v tests.test_performance021_a.HostPerformanceTest.test_geography_negative
+First test harness error: KeyError: 'clips' at tests/test_performance021_a.py line 70. The catalog's world geography pin is schema 1; the actual regional corpus belongs to the visual bridge's regional pin. This was a harness error, not an observed product rejection.

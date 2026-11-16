@@ -509,6 +509,10 @@
         "path": "openspec/changes/spacefox-watchface/evidence/devices020/devices020-proof.json",
         "sha256": "efac6044cbbd3c67c038734bbbbe5e7d832d11f7f96c0d09f7cfd100748d4d22"
       },
+      "performance021Proof": {
+        "path": "openspec/changes/spacefox-watchface/evidence/performance021/a/host-proof.json",
+        "sha256": "bfd9c035b39edbd20707abbc2a28fe4cf80dfbdaddd3b1fcd8079220725894a6"
+      },
       "watchdogReleaseProof": {
         "path": "openspec/changes/fix-device-watchdog/evidence/release-020/watchdog-release-proof.json",
         "sha256": "9e420f9e41d1dfa9221a2384171688eb47484fc804ca36643a4cd23fde1849bd"
@@ -516,6 +520,10 @@
       "b1Integration021Proof": {
         "path": "openspec/changes/restore-fr165-runtime-guarantees/evidence/integration021-admission.json",
         "sha256": "419c3182747f1fa9b50779b36244cbf0cca69ee6493dc10ec37c4a3fbbff3dda"
+      },
+      "integration022Proof": {
+        "path": "openspec/changes/spacefox-watchface/evidence/performance021/integration/integration-proof.json",
+        "sha256": "5098f4de838eddbb4a16cefa3607a398a29442003aaede43be4d90d653eed6f6"
       },
       "b2Runtime022Proof": {
         "path": "openspec/changes/restore-fr165-runtime-guarantees/evidence/b2-022-admission.json",
@@ -528,6 +536,10 @@
       "liveRuntime020Proof": {
         "path": "openspec/changes/fix-device-watchdog/evidence/release-0.2.1/live-021-admission.json",
         "sha256": "c40f00937f481615fe576b25f9e3f2fa625d75a1bdc82327537dcaa2d48bbad2"
+      },
+      "currentIntegration022Proof": {
+        "path": "openspec/changes/spacefox-watchface/evidence/current-integration-022/qualification.json",
+        "sha256": "9838392688273e99b88e3808b4a4a24e7f549e4a97d418386ba461aa2243592c"
       }
     }
   }

@@ -23,6 +23,25 @@ class SpaceFoxApp extends Application.AppBase {
     (:typecheck(disableBackgroundCheck))
     function getSettingsView() as [Views] or [Views, InputDelegates] or Null {if(view!=null){view.releaseForSettings();}return SettingsMenu.root(self);}
 
+    // This is the application-owner boundary, not an ordinary hide or settings
+    // transition. Break the app/view Method cycle and cancel owned callbacks.
+    (:typecheck(disableBackgroundCheck))
+    function onStop(state as Dictionary or Null) as Void {
+        stopOwnedForegroundWork();
+        var current=view;if(current!=null){current.pendingLoader=null;current.cancelAdmission=null;current.onHide();}
+        view=null;feed=null;
+    }
+    // The application owner is stopping, so dispose continuations without
+    // scheduling the ordinary hide/settings retry or retaining view callbacks.
+    (:typecheck(false)) function stopOwnedForegroundWork() as Void {
+        try{if(admissionTimer!=null){admissionTimer.stop();}}catch(e){}
+        try{if(restoreTimer!=null){restoreTimer.stop();}}catch(e){}
+        try{if(admissionJob!=null&&admissionJob["packet"]!=null){admissionJob["packet"].disposePreparation();}}catch(e){}
+        try{if(restoreJob!=null){restoreJob.dispose();}}catch(e){}
+        admissionTimer=null;restoreTimer=null;admissionJob=null;restoreJob=null;
+        restorePending=false;restoreSeal=null;deferredRestore=false;deferredSeal=null;batchingForeground=false;
+    }
+
     function getServiceDelegate() as [System.ServiceDelegate] {return [new FeedService()];}
     (:typecheck(disableBackgroundCheck))
     function onBackgroundData(data as Application.PersistableType) as Void {System.println("SF_FG background_delivery");try{if(feed!=null){new NativeIncoming(feed.store,feed.base).clearDeferred();}}catch(e){}if(view==null||System.getDisplayMode()==System.DISPLAY_MODE_OFF){return;}if(view.canAcceptBackground()){try{reloadFeed();}catch(e){}}WatchUi.requestUpdate();}

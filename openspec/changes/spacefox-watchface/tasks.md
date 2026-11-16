@@ -98,9 +98,18 @@ Current resource analysis (2026-11-16): [memory019/AUDIT.md](evidence/memory019/
 - [ ] 7.2 Qualify current-format settings/cache recovery, the default FeedBaseUrl, explicitly blank URL behavior and independent host namespaces; retire old wire majors, migration and transition gates; observe PRG/Store and any beta/production boundaries without assuming state survival. Test unsupported schema/renderer, higher-version signed code repair and new-generation asset rollback with unchanged source age.
 - [ ] 7.3 Prepare accurate free Store listing, actual screenshots, setup/dependencies/permissions/privacy/rights/support and tested Export Project IQ. Recheck current guidelines/agreement, submit within an authorized release request, record Garmin disposition and qualify the approved Store installation/settings/update path. Source publication or owner-only beta does not close this task.
 
+## 8. Apply resource-audit findings — performance021
+
+The original [memory019 report](evidence/memory019/REPORT.md) is immutable baseline evidence. The [performance021 journal](evidence/performance021/PROGRESS.md) owns progress, measurements and the finding-to-test map; this file remains the sole task checklist. Execute one complete group through author apply/self-verify/fix, fresh independent verify/fix and root judgment before starting the next group. Reuse green results unless their semantic inputs changed.
+
+- [x] 8.1 Apply and measure HOST-01, HOST-02, HOST-03 and HOST-07: selected catalog closures without whole-catalog duplication, lazy operation-scoped geography, exact-identity process-local semantic validation reuse, and bounded local/subprocess reads. Preserve deterministic output bytes, corruption/source/recipe checks and mutable-input rejection; qualify real offline build/no-op allocation, validation/rasterizer counts and affected tests.
+- [x] 8.2 Apply and measure HOST-04, HOST-05, HOST-06 and ENG-02: bounded readback/Git/HTTP work, coherent process-local authority/blob reuse and cheap not-due workflow stages. Preserve the independent timer, shared provider quota, fresh source/CAS/root-race checks, accepted-state recovery and complete final readback. Exercise actual local Git/HTTP/subprocess failure and overlap boundaries; no unauthorized provider calls or deployment.
+- [x] 8.3 Resolve ENG-01, CLEAN-02 and WEB-01: optimize release input scanning while preserving per-invocation mutation/signature/source guarantees; remove obsolete beta entrypoint and proven unused retired static/frozen map exporters with their active references; release the old embed listener on teardown or retire the unused executable route after dependency review. Retain authenticated historical evidence, source-export reproducibility and current preview/release behavior.
+- [x] 8.4 Apply and measure MEM-01/02/03/04/05, CPU-01/02/03/04, IO-01/02/03, LIFE-01, PERF-01, ASSET-01 and CLEAN-01 as one native resource group. Target at least 4 KiB lower application-heap peak on matched baseline workloads; linear event-local object verification; fewer redundant field/layout/resource operations; bounded scene readiness and explicit teardown/storage/deadline semantics. Remove identified runtime legacy compatibility, unused packaged resources and unnecessary residency without reducing fields, five primary languages, both modes, launch-point/map fidelity, data retention, corruption checks or 42-profile support. Verify real SDK memory/transition/decoder/batch/field behavior, exact native inputs, representative EN/RU frames and all invalidated tests; compile/export the stable final native cohort once. Unavailable physical/graphics/power measurements remain explicit, not inferred from application heap.
+
 ## Current checkpoint
 
-The 31 numbered tasks above are the sole task list. No native task is checked off
+The 36 numbered tasks above are the sole task list. No native task is checked off
 by the current-only specification revision. Legacy-format/static/old-archive gates
 and synthetic display expansion are RETIRED by user decision, not passed. Earlier
 resume chronology remains in Git history and immutable evidence, without active
@@ -136,3 +145,9 @@ runs. See evidence/display04-whole-quality/PLAN.md. This adds no numbered task o
 new physical prerequisite; the existing external gates remain truthful.
 
 Fields018 software iteration (existing tasks 2.3, 5.1, 5.4, 7.2 and 7.3): source-bound simulator discovery, formatting, lifecycle, five-primary-locale admission and production-identity release-flag 390/454 stock observations are verified as recorded in [the independent iteration report](evidence/fields018/INDEPENDENT.md). GitHub release and Garmin submission are recorded in [publication](evidence/fields018/publication/PUBLICATION.md); existing physical FR165, paired-phone, Store review and Store-installation acceptance remain open in their respective tasks; this software closure does not close those tasks.
+
+Current integration batch (existing tasks 3.2–3.4, 5.1–5.5 and 7.1–7.3):
+
+- [x] Combine the frozen 0.2.1 and performance owners, preserving both runtime and resource contracts; record directly invalidated checks and original proof boundaries in `evidence/current-integration-022/INTEGRATION.md`.
+- [x] Complete the selected source, native interaction and release admission checks; retain earlier greens where their inputs are unchanged.
+- [ ] Obtain the existing independent peer review, build and publish the authorized signed release. Physical, phone and Store acceptance remain separate and unobserved.

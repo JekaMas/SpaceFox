@@ -1,0 +1,21 @@
+------------------------------------------------------------------------------
+Executing test motionSeed...
+DEBUG (16:42): FUTURE_SEED now=1794832930 deadline=1794833230
+DEBUG (16:42): SELECTED_ACTUAL_TYPES 4,5,6,8
+DEBUG (16:42): MOTION_SEEDED generation=1 objects=19 objectsOnly=false sourceAdmission=false
+PASS
+------------------------------------------------------------------------------
+Executing test currentEventDiagnose...
+DEBUG (16:42): BEFORE mode=0 shownAccept=true base=https://rollover017.fixture.invalid incoming=true
+DEBUG (16:42): EVENT1 ms=197 feeds=1 records=1 flushes=113 hashedBytes=12587 packet=true sourceReady=true
+DEBUG (16:42): EVENT2 ms=5 feeds=1 records=1 flushes=114 hashedBytes=12622 packet=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+motionSeed                          PASS
+currentEventDiagnose                PASS
+Ran 2 tests
+
+PASSED (passed=2, failed=0, errors=0)

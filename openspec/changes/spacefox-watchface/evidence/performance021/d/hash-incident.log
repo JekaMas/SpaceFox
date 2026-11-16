@@ -1,0 +1,117 @@
+------------------------------------------------------------------------------
+Executing test deliveryModeCallbacksAreIdempotent...
+DEBUG (16:45): MODE highLowOff normalized; duplicate callbacks stable
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryRejectedResponseRetainsScene...
+DEBUG (16:45): REJECTED_RESPONSE retainedAcceptedScene=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryPendingDeadlineDoesNotMove...
+DEBUG (16:45): PENDING_DEADLINE first=1300 wake=1300 reload=1300 osMinimum=1600
+PASS
+------------------------------------------------------------------------------
+Executing test deliverySceneEventsAndLateCompletion...
+DEBUG (16:45): JOB duplicate blocked; cancelled and old completion rejected; current applied
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryVisualIdentityCases...
+DEBUG (16:45): VISUAL_KEY sameT0AndGeneration=true modelSitePointQualificationArtChangesDistinct=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryVisualWaitsForMatchingBatch...
+DEBUG (16:45): VISUAL_BATCH pendingAndWrongIdentityRejected=true completedMatchingBatchApplied=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryRealRegisteredDeadline...
+DEBUG (16:45): REGISTERED_DEADLINE preserved=true wakeAndReload=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryDuplicateCallbackDoesNotInvalidateBuild...
+DEBUG (16:45): CALLBACKS duplicateNoMutation=2 newCandidateApplied=1 staleCompletionRejected=1
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryBatchPrefixLifetime...
+DEBUG (16:45): BATCH_PREFIX perObjectChecks=2 completionCorruptionAndRestartDetected=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryOwnerStopReleasesCycle...
+DEBUG (16:45): OWNER_STOP hideSettingsRetainCallback=true stopClearsOwnerAndTimers=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryPackedMapIdentity...
+DEBUG (16:45): PACKED_MAP all54 exactOriginalFloatAndResource=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliverySettingsLocaleGroups...
+DEBUG (16:45): SETTINGS_GROUPS fiveLocalesAndEnglishFallback=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryBundledFallbackTransitions...
+DEBUG (16:45): FALLBACK completeReleasesOnlyReplaced=true lowAndIncompleteRetained=true coldPrepareMs=1 coldCumulativeLoads=9 warmPrepareMs=0 warmAdditionalLoads=0
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryLateCallbackCannotStage...
+DEBUG (16:45): LATE_CALLBACK noStageOrAcceptedMutation=true duplicateIgnored=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryProvisionalFragmentCleanup...
+DEBUG (16:45): FRAGMENTS longToShortBounded=true currentReadable=true corruptRefused=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryCurrentPlanFallback...
+DEBUG (16:45): PLAN currentTargets=true missingOrCorruptNearCadence=true acceptedUnchanged=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryUpcomingPinnedAndRecovery...
+DEBUG (16:45): UPCOMING eightPinnedRestored=true ninthUnpinnedRefused=true failedWritePreserved=true corruptSealRefused=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryWarmLayoutIdentity...
+DEBUG (16:46): LAYOUT coldFitCalls=12 warmFitCalls=6 dynamicMetricCountdownAndTitle=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryRawProjectionIntegrity...
+DEBUG (16:46): RAW_PROJECTION currentAndOptionalRebuilt=true readdressedIdentityAndTimeTamperRefused=true rawCorruptionRefused=true acceptedSealUnchanged=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryDeadlineEventSequence...
+DEBUG (16:46): DEADLINE onTimeStage=true lateNoWrite=true ownerCancelOnce=true duplicateIgnored=true acceptedUnchanged=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryBatchCausalSequences...
+DEBUG (16:46): BATCH_SEQUENCE seeds=6 eachApplied=3 corruptRejected=1 duplicateObserved=1 restarted=1 replacementAndPostCompletionCorruption=true
+PASS
+------------------------------------------------------------------------------
+Executing test deliveryUtf8HashChunking...
+DEBUG (16:46): UTF8_HASH bytes=544 wholeSegmentedRangeMatch=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                                           Status:
+deliveryModeCallbacksAreIdempotent              PASS
+deliveryRejectedResponseRetainsScene            PASS
+deliveryPendingDeadlineDoesNotMove              PASS
+deliverySceneEventsAndLateCompletion            PASS
+deliveryVisualIdentityCases                     PASS
+deliveryVisualWaitsForMatchingBatch             PASS
+deliveryRealRegisteredDeadline                  PASS
+deliveryDuplicateCallbackDoesNotInvalidateBuild PASS
+deliveryBatchPrefixLifetime                     PASS
+deliveryOwnerStopReleasesCycle                  PASS
+deliveryPackedMapIdentity                       PASS
+deliverySettingsLocaleGroups                    PASS
+deliveryBundledFallbackTransitions              PASS
+deliveryLateCallbackCannotStage                 PASS
+deliveryProvisionalFragmentCleanup              PASS
+deliveryCurrentPlanFallback                     PASS
+deliveryUpcomingPinnedAndRecovery               PASS
+deliveryWarmLayoutIdentity                      PASS
+deliveryRawProjectionIntegrity                  PASS
+deliveryDeadlineEventSequence                   PASS
+deliveryBatchCausalSequences                    PASS
+deliveryUtf8HashChunking                        PASS
+Ran 22 tests
+
+PASSED (passed=22, failed=0, errors=0)

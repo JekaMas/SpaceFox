@@ -1,0 +1,1 @@
+Reviewed f0005ee41e8137c11c52ac1bfb211b8dd6bdf9a3. tools.release.evidence_inputs([], root) returned [] and build_release invoked no current-peer check; integration022 proof had no independent peer field. Historical watchdog binding was invoked only in the reconstructed parent. Thus the current production path did not require a current peer native-input receipt.

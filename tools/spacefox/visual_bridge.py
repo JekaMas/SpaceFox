@@ -87,7 +87,7 @@ def build_source(state, catalog, now, *, publisher, policy=None, traversal=None,
         if asset_id is None:
             gaps.append(name)
             return
-        pack = build_pack(root,catalog,roots=[asset_id])
+        pack = build_pack(root,catalog,roots=[asset_id],_include_catalog=False)
         for digest, data in pack['objects'].items():
             files[f'objects/{digest}.json'] = data
         ref = asset_descriptor(files,asset_id,pack['manifest']['assets'][asset_id])

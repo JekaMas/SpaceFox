@@ -1,0 +1,46 @@
+test_changed_retired_snapshot_refuses (tests.test_performance021_c.GroupCTest.test_changed_retired_snapshot_refuses) ... ERROR
+test_embed_disconnected_event (tests.test_performance021_c.GroupCTest.test_embed_disconnected_event) ... ok
+test_embed_lifetime (tests.test_performance021_c.GroupCTest.test_embed_lifetime) ... ok
+test_retired_routes_and_current_primitives (tests.test_performance021_c.GroupCTest.test_retired_routes_and_current_primitives) ... ok
+test_snapshot_mutation_sequences (tests.test_performance021_c.GroupCTest.test_snapshot_mutation_sequences) ... ok
+test_source_capture_single_read_and_fresh_fence (tests.test_performance021_c.GroupCTest.test_source_capture_single_read_and_fresh_fence) ... ok
+test_toolchain_pin_mutations_refuse (tests.test_performance021_c.GroupCTest.test_toolchain_pin_mutations_refuse) ... ERROR
+test_toolchain_single_capture_and_fresh_mutation (tests.test_performance021_c.GroupCTest.test_toolchain_single_capture_and_fresh_mutation) ... ERROR
+
+======================================================================
+ERROR: test_changed_retired_snapshot_refuses (tests.test_performance021_c.GroupCTest.test_changed_retired_snapshot_refuses)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_performance021_c.py", line 166, in test_changed_retired_snapshot_refuses
+    target=root/record['prior']['tools/build_private_beta.py']['path'];target.write_bytes(target.read_bytes()+b'changed')
+                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'tools/build_private_beta.py'
+
+======================================================================
+ERROR: test_toolchain_pin_mutations_refuse (tests.test_performance021_c.GroupCTest.test_toolchain_pin_mutations_refuse)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_performance021_c.py", line 136, in test_toolchain_pin_mutations_refuse
+    root,sdk,paths=self.toolchain_fixture(Path(temp));lock=json.loads((root/'watchface/toolchain-lock.json').read_text())
+                   ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_performance021_c.py", line 118, in toolchain_fixture
+    for src,dst in paths.items():dst.parent.mkdir(parents=True,exist_ok=True);os.link(src,dst)
+                                                                              ~~~~~~~^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted: '/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/ConnectIQ.app/Contents/MacOS/simulator' -> '/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/tmph82uwvoq/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/ConnectIQ.app/Contents/MacOS/simulator'
+
+======================================================================
+ERROR: test_toolchain_single_capture_and_fresh_mutation (tests.test_performance021_c.GroupCTest.test_toolchain_single_capture_and_fresh_mutation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_performance021_c.py", line 123, in test_toolchain_single_capture_and_fresh_mutation
+    root,sdk,paths=self.toolchain_fixture(Path(temp));counts=collections.Counter();reader=Path.read_bytes
+                   ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_performance021_c.py", line 118, in toolchain_fixture
+    for src,dst in paths.items():dst.parent.mkdir(parents=True,exist_ok=True);os.link(src,dst)
+                                                                              ~~~~~~~^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted: '/Users/jekamas/Library/Application Support/Garmin/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/ConnectIQ.app/Contents/MacOS/simulator' -> '/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/tmp5twy520o/ConnectIQ/Sdks/connectiq-sdk-mac-9.3.0-2026-10-20-95888f262/bin/ConnectIQ.app/Contents/MacOS/simulator'
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.401s
+
+FAILED (errors=3)

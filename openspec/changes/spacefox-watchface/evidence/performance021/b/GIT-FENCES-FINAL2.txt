@@ -1,0 +1,15 @@
+test_no_work_fence_rejects_unverified_producer_sources (tests.test_performance021_a.HostPerformanceTest.test_no_work_fence_rejects_unverified_producer_sources) ... ok
+test_cloud_sparse_source_fence_hidden_change (tests.test_performance021_b.GroupBTest.test_cloud_sparse_source_fence_hidden_change) ... ok
+test_local_source_fence_timeout_before_authority (tests.test_performance021_b.GroupBTest.test_local_source_fence_timeout_before_authority) ... cloud-feed: Git status deadline exceeded
+cloud-feed: Git status deadline exceeded
+update-feed: Git status deadline exceeded
+ok
+test_git_deadline_kills_group_when_parent_exits_during_timeout (tests.test_performance021_b.GroupBTest.test_git_deadline_kills_group_when_parent_exits_during_timeout) ... ok
+test_git_fresh_ref_and_fetch_reuse (tests.test_performance021_b.GroupBTest.test_git_fresh_ref_and_fetch_reuse) ... ok
+test_two_process_reservation_cas (tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_two_process_reservation_cas) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 3.664s
+
+OK
+git reopen: 3 fresh remote observations, 1 unchanged-ref fetch; missing local ref forced second fetch; missing remote refused

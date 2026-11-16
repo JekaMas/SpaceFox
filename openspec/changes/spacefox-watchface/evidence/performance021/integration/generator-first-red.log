@@ -1,0 +1,44 @@
+Traceback (most recent call last):
+  File "/Users/jekamas/.codex/tmp/spacefox-integration022-generator/tools/build_native_resources.py", line 141, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/jekamas/.codex/tmp/spacefox-integration022-generator/tools/build_native_resources.py", line 135, in main
+    generate(ROOT)
+    ~~~~~~~~^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-integration022-generator/tools/build_native_localization.py", line 54, in generate
+    rows=catalog['locales'];qualified=software_locales(root,catalog);res=root/'watchface/resources';gen=root/'watchface/source/generated';gen.mkdir(parents=True,exist_ok=True)
+                                      ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-integration022-generator/tools/native_language_policy.py", line 94, in software_locales
+    return validate(root,catalog)
+  File "/Users/jekamas/.codex/tmp/spacefox-integration022-generator/tools/native_integration022_qualification.py", line 181, in validate
+    raise ValueError('historical ' + side + ' qualification failed: ' + run.stderr[-3000:])
+ValueError: historical performance qualification failed: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;from pathlib import Path;from tools.native_language_policy import software_locales;print(json.dumps(software_locales(Path.cwd())))
+                                                                                                                    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-022-history-okisxm9r/tools/native_language_policy.py", line 94, in software_locales
+    return validate(root,catalog)
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-022-history-okisxm9r/tools/native_performance021_qualification.py", line 302, in validate
+    raise ValueError('retained devices020 proof failed: ' + run.stderr[-3000:])
+ValueError: retained devices020 proof failed: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;from pathlib import Path;from tools.native_devices020_qualification import validate;p=Path.cwd();print(json.dumps(validate(p,json.loads((p/"locales/catalog.json").read_text()))))
+                                                                                                                                  ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-performance021-prior-99gqc_1n/tools/native_devices020_qualification.py", line 136, in validate
+    raise ValueError('original fields018 proof failed: '+result.stderr[-3000:])
+ValueError: original fields018 proof failed: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json;from pathlib import Path;from tools.native_fields018_qualification import validate;p=Path.cwd();print(json.dumps(validate(p,json.loads((p/"locales/catalog.json").read_text()))))
+                                                                                                                                 ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-devices020-prior-cnl8yu7y/tools/native_fields018_qualification.py", line 57, in validate
+    data = src.read_bytes()
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 777, in read_bytes
+    with self.open(mode='rb', buffering=0) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/5q/gkjywh617zn6lrvf1_f51kv40000gn/T/spacefox-devices020-prior-cnl8yu7y/LICENSE'
+
+
+

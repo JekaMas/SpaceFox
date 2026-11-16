@@ -14,7 +14,14 @@ module NativeForegroundApp {
         try{app.view.setSettings(app.initialSettings());}catch(e){}app.view.bootstrapPending=true;app.view.pendingLoader=app.method(:reloadFeed);app.view.cancelAdmission=app.method(:cancelWork);app.view.syncDisplayMode(System.getDisplayMode());return [app.view as WatchUi.WatchFace];
     }
     function display(app,cache){
-        if(app.view==null){return;}var now=Time.now().value().toLong();if(cache.packet==null||app.view.packet!=cache.packet||cache.packet.document.hasKey("dictionaries")||app.view.context!=cache.packet.presentation){app.view.setPacket(cache.packet);}if(cache.packet!=null){try{var owner=cache.packet.document["publisher"]["instance"];var saved=new NativeUpcomingCache(cache.store,cache.base,owner).load();app.view.mergeSaved(saved,now,cache.packet.terminalUpdates);}catch(e){}app.view.setAssetCache(new NativeRenderSource(cache.store,cache.base,cache.packet.bridge));}LaunchReminderForeground.publishQueue(cache,now,app.view.queueSnapshots());
+        if(app.view==null){return;}var now=Time.now().value().toLong();var rebound=cache.packet==null||app.view.packet!=cache.packet||cache.packet.document.hasKey("dictionaries")||app.view.context!=cache.packet.presentation;
+        if(rebound){app.view.setPacket(cache.packet);}
+        if(cache.packet!=null){
+            // A saved queue is merged when the packet is rebound. Reopening it
+            // on every wake retains a second full queue beside decoded artwork.
+            if(rebound){try{var owner=cache.packet.document["publisher"]["instance"];var saved=new NativeUpcomingCache(cache.store,cache.base,owner).load();app.view.mergeSaved(saved,now,cache.packet.terminalUpdates);}catch(e){}}
+            app.view.setAssetCache(new NativeRenderSource(cache.store,cache.base,cache.packet.bridge));
+        }LaunchReminderForeground.publishQueue(cache,now,app.view.queueSnapshots());
         // Background uses this compact source-bound result rather than treating
         // an unvalidated commit marker as an accepted schedule.
         try{var accepted=cache.packet!=null;var prior=cache.store.read("sf.transfer.ready");if(!(prior instanceof Dictionary)||!(prior["base"] instanceof String)||!prior["base"].equals(cache.base)||prior["accepted"]!=accepted){cache.store.write("sf.transfer.ready",{"base"=>cache.base,"accepted"=>accepted});}}catch(e){}

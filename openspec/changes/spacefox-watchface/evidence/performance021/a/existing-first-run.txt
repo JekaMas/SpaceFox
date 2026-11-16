@@ -1,0 +1,24 @@
+setUpClass (tests.test_global_content_closure_r5.GlobalContentClosureR5Test) ... ERROR
+test_source_validation_negatives (tests.test_geographic_context.GeographicContextTest.test_source_validation_negatives) ... ok
+test_actual_launch_whole_publication_and_refusal (tests.test_current_motion_publisher.CurrentMotionPublisherTest.test_actual_launch_whole_publication_and_refusal) ... ok
+test_failure_clock_backoff_survives_restart_and_rejects_time_regression (tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_failure_clock_backoff_survives_restart_and_rejects_time_regression) ... ok
+test_source_advances_during_reservation_consumes_slot_without_permission (tests.test_durable_publisher_whole.DurableAuthorityWholeTest.test_source_advances_during_reservation_consumes_slot_without_permission) ... ok
+
+======================================================================
+ERROR: setUpClass (tests.test_global_content_closure_r5.GlobalContentClosureR5Test)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_global_content_closure_r5.py", line 79, in setUpClass
+    cls.packs[name] = build_pack(ROOT, catalog, roots=ROOTS)
+                      ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tools/spacefox/graphics.py", line 708, in build_pack
+    if roots is not None:_require(len(manifest_data) <= LIMITS['selectionBytes'],'selection manifest byte limit')
+                         ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tools/spacefox/graphics.py", line 43, in _require
+    raise VisualError(message)
+tools.spacefox.graphics.VisualError: selection manifest byte limit
+
+----------------------------------------------------------------------
+Ran 4 tests in 153.688s
+
+FAILED (errors=1)

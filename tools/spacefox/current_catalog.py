@@ -19,7 +19,7 @@ def _require(condition, message):
         raise CatalogError(message)
 
 
-def validate_registry(catalog, registry):
+def validate_registry(catalog, registry, *, _admission_date=None):
     validate_catalog(catalog)
     _require(isinstance(registry, dict) and registry.get('schemaVersion') == 1, 'invalid eligibility registry')
     _require(registry.get('catalogVersion') == catalog['catalogVersion'], 'eligibility catalog version mismatch')
@@ -39,7 +39,7 @@ def validate_registry(catalog, registry):
             reviewed = date.fromisoformat(row['asOf'])
         except (TypeError, ValueError) as exc:
             raise CatalogError('invalid eligibility date '+identity) from exc
-        _require(reviewed <= datetime.now(timezone.utc).date(), 'future eligibility date '+identity)
+        _require(reviewed <= (_admission_date if _admission_date is not None else datetime.now(timezone.utc).date()), 'future eligibility date '+identity)
         placeholder = catalog['dictionaries']['configurations'][identity]['facts']['placeholder']
         _require(not placeholder or row['state'] == 'unknown-reference', 'placeholder cannot be classified as a known model')
         _require(placeholder or row['state'] != 'unknown-reference', 'unknown state requires placeholder')
@@ -47,7 +47,7 @@ def validate_registry(catalog, registry):
 
 
 
-def load_registry(root, catalog, *, source_path=None):
+def load_registry(root, catalog, *, source_path=None, _admission_date=None):
     """Load the sole recipe-pinned eligibility source, or None for legacy recipes."""
     root = Path(root).resolve()
     pin = catalog['source'].get('eligibility')
@@ -59,7 +59,7 @@ def load_registry(root, catalog, *, source_path=None):
     data = path.read_bytes()
     _require(hashlib.sha256(data).hexdigest() == pin['sha256'], 'eligibility digest mismatch')
     registry = loads_json(data)
-    return validate_registry(catalog, registry)
+    return validate_registry(catalog, registry, _admission_date=_admission_date)
 
 
 def current_view(catalog, registry, *, referenced_ids=(), require_complete_eligibility=False):

@@ -8,7 +8,7 @@ import math
 import subprocess
 from pathlib import Path
 
-from .catalog import _local_path, canonical_bytes, loads_json
+from .catalog import _local_path, _read_snapshot, _run_bounded_child, canonical_bytes, loads_json
 from .graphics import _pooled, canonical_visual, split_visual, UNITS
 from .global_map import position
 from .wire import _source_position, _validate_source_position
@@ -32,8 +32,9 @@ def dependencies(index):
 
 def load_source(root,pin):
     def read(item,maximum):
-        raw=_local_path(Path(root).resolve(),item['path']).read_bytes()
-        _require(len(raw)<=maximum and sha(raw)==item['sha256'],'map source digest/bound')
+        try:raw=_read_snapshot(_local_path(Path(root).resolve(),item['path']),maximum)
+        except (OSError,ValueError):_require(False,'map source digest/bound')
+        _require(sha(raw)==item['sha256'],'map source digest/bound')
         return raw
     index=loads_json(read(pin,65536))
     _require(set(index)=={'schemaVersion','format','license','sources','credit','originalTopologySha256','topology','d3','topojson','regional','derivation','notices'}
@@ -127,9 +128,9 @@ def build_map(root,catalog,site_id,files):
     position(*center)
     data={'center':list(map(float,center)),**{k:source[k] for k in ('topology','d3','topojson')}}
     script=Path(__file__).with_name('bridge_map_render.js')
-    proc=subprocess.run(['node',str(script)],input=json.dumps(data,separators=(',',':')).encode(),
-                        stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=60)
-    _require(proc.returncode==0 and len(proc.stdout)<=1048576,'pinned D3 map renderer failed/bound')
+    try:proc=_run_bounded_child(['node',str(script)],json.dumps(data,separators=(',',':')).encode(),maximum=1048576,timeout=60)
+    except ValueError:_require(False,'pinned D3 map renderer failed/bound')
+    _require(proc.returncode==0,'pinned D3 map renderer failed/bound')
     rendered=json.loads(proc.stdout)
     _require(all(abs(a-b)<1e-7 for a,b in zip(rendered['anchor'],[335,165])),'D3 source-point anchor mismatch')
     def q(x):return round(max(0,min(390,x))*256/390*UNITS)
@@ -138,8 +139,9 @@ def build_map(root,catalog,site_id,files):
     layers=_layers(files,draws,'fill')
     # Reuse the owning source2 view for exact source selection/proofs, camera and
     # safe mobile semantics; its old technical object bytes are not republished.
-    from .geographic_context import build_view,validate_view
-    view=build_view(root,catalog,site_id,source_pin=source['index']['regional'],profile='accepted04-full')
+    from .geographic_context import _admit_source_bytes,_build_view_with_source,validate_view
+    _require(sha(_admit_source_bytes(root,source['index']['regional'])) == source['regional']['indexSha256'], 'regional source changed')
+    view=_build_view_with_source(catalog,site_id,source['regional'],profile='accepted04-full')
     validate_view(view['manifest'],view['files'])
     coast=[]
     for a,b in view['segments']:
@@ -161,7 +163,8 @@ def build_map(root,catalog,site_id,files):
     layers.extend(_layers(files,coast,'coast'))
     detail_scale=None
     if _requires_regional_detail(view):
-        detail=build_view(root,catalog,site_id,source_pin=source['index']['regional'],profile='regional')
+        _require(sha(_admit_source_bytes(root,source['index']['regional'])) == source['regional']['indexSha256'], 'regional source changed')
+        detail=_build_view_with_source(catalog,site_id,source['regional'],profile='regional')
         validate_view(detail['manifest'],detail['files'])
         full_proof=loads_json(view['files'][view['manifest']['source']['path']])
         detail_proof=loads_json(detail['files'][detail['manifest']['source']['path']])

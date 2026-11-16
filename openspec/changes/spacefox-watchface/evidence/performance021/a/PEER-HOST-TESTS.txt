@@ -1,0 +1,8 @@
+test_geography_positive (tests.test_performance021_a.HostPerformanceTest.test_geography_positive) ... ok
+test_no_work_fence_rejects_unverified_producer_sources (tests.test_performance021_a.HostPerformanceTest.test_no_work_fence_rejects_unverified_producer_sources) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 78.109s
+
+OK
+SPARSE_SOURCE_FENCE_RECEIPT {"catalog_source_inputs": 756, "git_subprocesses": 4, "operations": ["status", "rev-parse", "ls-tree", "rev-parse"], "other_tracked_file_missing": true, "seconds": 0.146504707634449}

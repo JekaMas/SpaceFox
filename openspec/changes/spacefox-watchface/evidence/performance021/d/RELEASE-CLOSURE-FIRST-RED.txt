@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/tmp/spacefox-performance021-release-closure.py", line 5, in <module>
+    result=source_state(root)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tools/release.py", line 171, in source_state
+    require(admission <= set(paths), "language admission inputs must be tracked")
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tools/release.py", line 37, in require
+    raise ReleaseBlocked(message)
+tools.release.ReleaseBlocked: language admission inputs must be tracked

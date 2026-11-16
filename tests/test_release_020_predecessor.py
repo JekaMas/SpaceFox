@@ -27,18 +27,14 @@ class Release020PredecessorTest(unittest.TestCase):
         cls.app = ET.parse(ROOT / 'watchface/manifest.xml').getroot().find('iq:application', NS)
 
     def test_real_receipt_iq_and_higher_version(self):
-        matches = [value for value in self.policy.values() if isinstance(value, dict)
-                   and value.get('version') == self.previous['version']
-                   and value.get('original_receipt_sha256') == hashlib.sha256(self.path.read_bytes()).hexdigest()]
-        self.assertEqual(len(matches), 1)
-        recorded = matches[0]
+        recorded = self.policy['latest_release']
+        self.assertEqual(recorded['version'], '0.2.1')
+        self.assertEqual(recorded['original_receipt_sha256'], hashlib.sha256(self.path.read_bytes()).hexdigest())
+        self.assertEqual(self.previous['version'], recorded['version'])
         self.assertEqual(self.previous['package_sha256'], recorded['package_sha256'])
         self.assertEqual(self.previous['source_revision'], recorded['source_revision'])
-        candidate = ET.fromstring(ET.tostring(self.app))
-        parts = [int(part) for part in self.previous['version'].split('.')]
-        parts[-1] += 1
-        candidate.set('version', '.'.join(map(str, parts)))
-        result = release.validate_previous(self.previous, candidate, self.policy['public_key_spki_sha256'])
+        self.assertEqual(self.app.get('version'), '0.2.2')
+        result = release.validate_previous(self.previous, self.app, self.policy['public_key_spki_sha256'])
         self.assertEqual(result['kind'], 'higher_version_repair')
         self.assertFalse(result['migration_qualified'])
 

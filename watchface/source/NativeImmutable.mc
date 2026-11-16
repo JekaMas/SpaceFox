@@ -5,7 +5,7 @@ function nativeHeaderText(raw,key){var prefix="\""+key+"\":\"";var at=raw.find(p
 
 // Raw <=4KiB immutable strings only. No parsed scene, native object or bitmap is
 // written by background. Active/recovery/feed pins protect referenced content.
-(:background, :typecheck(false))
+(:background, :extendedCode, :typecheck(false))
 class NativeImmutable {
     // A selected batch contains at most 40 objects plus its catalog and
     // transfer descriptor. Keep room for three observed current revisions while
@@ -34,16 +34,16 @@ class NativeImmutable {
 
 // This scanner schedules only finite, same-host, digest-addressed provisional
 // downloads. Full closed JSON/schema/selection validation remains foreground.
-(:background, :typecheck(false))
+(:background, :extendedCode, :typecheck(false))
 class NativeBatch {
-    var store;var base;var immutable;var head=null;var refs=null;var verified={};
+    var store;var base;var immutable;var head=null;var refs=null;var verifiedPrefix=0;
     function initialize(adapter,url){store=adapter;base=url;immutable=new NativeImmutable(store);var value=store.read("sf.batch.head");if(value instanceof Dictionary&&value["base"] instanceof String&&value["base"].equals(base)){head=value;}}
     function serial(){return head!=null && (head["serial"] instanceof Number || head["serial"] instanceof Long) && head["serial"]>=0 ? head["serial"] : 0;}
     function pending(ref){var marker=store.read("sf.batch.pending");if(!(marker instanceof Dictionary)||!(marker["base"] instanceof String)||!marker["base"].equals(base)||marker["pending"]!=true){store.write("sf.batch.pending",{"base"=>base,"pending"=>true});}if(head["pending"]!=true){head["pending"]=true;store.write("sf.batch.head",head);}return ref;}
     function text(raw,key){return nativeHeaderText(raw,key);}
     function pinned(raw,key){var prefix="\""+key+"\":{";var at=raw.find(prefix);if(at==null){return null;}var tail=raw.substring(at+prefix.length(),raw.length());var end=tail.find("}");if(end==null||end>240){return null;}var part=tail.substring(0,end);var hash=text(part,"sha256");if(!nativeHex(hash)||!text(part,"path").equals("descriptors/"+hash+".json")){return null;}return {"path"=>"descriptors/"+hash+".json","sha256"=>hash,"decodedBytes"=>null};}
     function begin(raw){
-        var hash=text(raw,"catalogDigest");if(!nativeHex(hash)){return false;}var transfer=pinned(raw,"nativeTransfer");if(transfer==null){return false;}var revision=serial();head={"base"=>base,"catalogDigest"=>hash,"transfer"=>transfer,"pending"=>true,"serial"=>revision};store.write("sf.batch.head",head);store.write("sf.batch.pending",{"base"=>base,"pending"=>true});refs=null;verified={};return true;
+        var hash=text(raw,"catalogDigest");if(!nativeHex(hash)){return false;}var transfer=pinned(raw,"nativeTransfer");if(transfer==null){return false;}var revision=serial();head={"base"=>base,"catalogDigest"=>hash,"transfer"=>transfer,"pending"=>true,"serial"=>revision};store.write("sf.batch.head",head);store.write("sf.batch.pending",{"base"=>base,"pending"=>true});refs=null;verifiedPrefix=0;return true;
     }
     // Settings switch schedules only this source-bound selected closure. The
     // existing immutable active/recovery pins survive an incomplete new view.
@@ -52,7 +52,7 @@ class NativeBatch {
     function select(bridge){
         var transfer=bridge["transfer"];if(transfer==null){return;}
         if(head!=null&&head["catalogDigest"] instanceof String&&head["catalogDigest"].equals(bridge["catalogDigest"])&&head["transfer"] instanceof Dictionary&&head["transfer"]["sha256"] instanceof String&&head["transfer"]["sha256"].equals(transfer["sha256"])){if(head["pending"]==true){var pending=store.read("sf.batch.pending");if(!(pending instanceof Dictionary)||!(pending["base"] instanceof String)||!pending["base"].equals(base)||pending["pending"]!=true){store.write("sf.batch.pending",{"base"=>base,"pending"=>true});}}return;}
-        var revision=serial();head={"base"=>base,"catalogDigest"=>bridge["catalogDigest"],"transfer"=>transfer,"pending"=>true,"serial"=>revision};refs=null;verified={};store.write("sf.batch.head",head);store.write("sf.batch.pending",{"base"=>base,"pending"=>true});
+        var revision=serial();head={"base"=>base,"catalogDigest"=>bridge["catalogDigest"],"transfer"=>transfer,"pending"=>true,"serial"=>revision};refs=null;verifiedPrefix=0;store.write("sf.batch.head",head);store.write("sf.batch.pending",{"base"=>base,"pending"=>true});
     }
     function parseIndex(raw){
         var prefix="\"objects\":[";var at=raw.find(prefix);if(at==null){throw new Lang.InvalidValueException("Batch objects absent");}at+=prefix.length();var rows=[];var total=0;var seen={};
@@ -62,30 +62,12 @@ class NativeBatch {
         }
         if(at>=raw.length()||!raw.substring(at,at+1).equals("]")){throw new Lang.InvalidValueException("Batch end");}return rows;
     }
-    // Keep only compact digest tuples while comparing the durable rows. This
-    // avoids holding two full path/digest dictionary arrays in background.
     function reference(row){return {"path"=>(row[0]==1?"rasters/"+row[1]+".sfr":"descriptors/"+row[1]+".json"),"sha256"=>row[1],"decodedBytes"=>row[2]};}
     function durableRefs(rows){var result=[];for(var i=0;i<rows.size();i+=1){result.add(reference(rows[i]));}return result;}
-    function sameRefs(rows){var saved=store.read("sf.batch.refs");if(!(saved instanceof Dictionary)||saved.size()!=2||!(saved["base"] instanceof String)||!saved["base"].equals(base)||!(saved["refs"] instanceof Array)||saved["refs"].size()!=rows.size()){return false;}for(var i=0;i<rows.size();i+=1){var a=saved["refs"][i];var b=rows[i];var path=b[0]==1?"rasters/"+b[1]+".sfr":"descriptors/"+b[1]+".json";if(!(a instanceof Dictionary)||a.size()!=3||!(a["path"] instanceof String)||!a["path"].equals(path)||!(a["sha256"] instanceof String)||!a["sha256"].equals(b[1])||!(a["decodedBytes"] instanceof Number||a["decodedBytes"] instanceof Long)||a["decodedBytes"]!=b[2]){return false;}}return true;}
-
-    // The service instance reuses already verified prefix entries while it
-    // downloads the remaining objects. Completion always performs a fresh
-    // digest scan, so a later missing or corrupted object is requested again.
-    function verifiedRef(ref){
-        var key=ref["sha256"];var size=ref["decodedBytes"];if(verified.hasKey(key)&&verified[key]==size){return true;}
-        if(immutable.raw(ref)==null){if(verified.hasKey(key)){verified.remove(key);}return false;}verified[key]=size;return true;
-    }
+    function sameRefs(rows){var saved=store.read("sf.batch.refs");if(!(saved instanceof Dictionary)||saved.size()!=2||!(saved["base"] instanceof String)||!saved["base"].equals(base)||!(saved["refs"] instanceof Array)||saved["refs"].size()!=rows.size()){return false;}for(var i=0;i<rows.size();i+=1){var a=saved["refs"][i];var b=reference(rows[i]);if(!(a instanceof Dictionary)||a.size()!=3||!(a["path"] instanceof String)||!a["path"].equals(b["path"])||!(a["sha256"] instanceof String)||!a["sha256"].equals(b["sha256"])||!(a["decodedBytes"] instanceof Number||a["decodedBytes"] instanceof Long)||a["decodedBytes"]!=b["decodedBytes"]){return false;}}return true;}
+    // Prefix work is local to this event; the final scan rechecks the full
+    // closure before completion, including already verified objects.
     function next(){
-        if(head==null){return null;}var catalog={"path"=>"wire3/catalogs/"+head["catalogDigest"]+".json","sha256"=>head["catalogDigest"],"decodedBytes"=>null};if(!verifiedRef(catalog)){return pending(catalog);}
-        if(head["transfer"]!=null){
-            if(refs==null){var raw=immutable.raw(head["transfer"]);if(raw==null){return pending(head["transfer"]);}verified[head["transfer"]["sha256"]]=head["transfer"]["decodedBytes"];refs=parseIndex(raw);raw=null;if(!sameRefs(refs)){store.write("sf.batch.refs",{"base"=>base,"refs"=>durableRefs(refs)});}}
-            else if(!verifiedRef(head["transfer"])){return pending(head["transfer"]);}
-            for(var i=0;i<refs.size();i+=1){var r=reference(refs[i]);if(!verifiedRef(r)){return pending(r);}}
-        }
-        // Recheck the entire closure immediately before completion; prefix
-        // reuse cannot hide removal or corruption between network callbacks.
-        if(immutable.raw(catalog)==null){verified.remove(catalog["sha256"]);return pending(catalog);}
-        if(head["transfer"]!=null){if(immutable.raw(head["transfer"])==null){verified.remove(head["transfer"]["sha256"]);return pending(head["transfer"]);}for(var j=0;j<refs.size();j+=1){var r=reference(refs[j]);if(immutable.raw(r)==null){verified.remove(r["sha256"]);return pending(r);}}}
-        var marker=store.read("sf.batch.pending");var wasPending=marker instanceof Dictionary&&marker["base"] instanceof String&&marker["base"].equals(base)&&marker["pending"]==true;if(head["pending"]!=false||wasPending){head["serial"]=serial()+1;head["pending"]=false;head.remove("refs");store.write("sf.batch.head",head);}if(!(marker instanceof Dictionary)||!(marker["base"] instanceof String)||!marker["base"].equals(base)||marker["pending"]!=false){store.write("sf.batch.pending",{"base"=>base,"pending"=>false});}return null;
+        if(head==null){return null;}var catalog={"path"=>"wire3/catalogs/"+head["catalogDigest"]+".json","sha256"=>head["catalogDigest"],"decodedBytes"=>null};if(immutable.raw(catalog)==null){verifiedPrefix=0;return pending(catalog);}if(head["transfer"]!=null){if(refs==null){var raw=immutable.raw(head["transfer"]);if(raw==null){verifiedPrefix=0;return pending(head["transfer"]);}refs=parseIndex(raw);raw=null;verifiedPrefix=0;if(!sameRefs(refs)){store.write("sf.batch.refs",{"base"=>base,"refs"=>durableRefs(refs)});}}while(verifiedPrefix<refs.size()){if(immutable.raw(reference(refs[verifiedPrefix]))==null){return pending(reference(refs[verifiedPrefix]));}verifiedPrefix+=1;}if(immutable.raw(catalog)==null){verifiedPrefix=0;return pending(catalog);}if(immutable.raw(head["transfer"])==null){verifiedPrefix=0;return pending(head["transfer"]);}for(var j=0;j<refs.size();j+=1){if(immutable.raw(reference(refs[j]))==null){verifiedPrefix=0;return pending(reference(refs[j]));}}}var marker=store.read("sf.batch.pending");var wasPending=marker instanceof Dictionary&&marker["base"] instanceof String&&marker["base"].equals(base)&&marker["pending"]==true;if(head["pending"]!=false||wasPending){head["serial"]=serial()+1;head["pending"]=false;head.remove("refs");store.write("sf.batch.head",head);}if(!(marker instanceof Dictionary)||!(marker["base"] instanceof String)||!marker["base"].equals(base)||marker["pending"]!=false){store.write("sf.batch.pending",{"base"=>base,"pending"=>false});}verifiedPrefix=0;return null;
     }
 }

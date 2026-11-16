@@ -1,0 +1,7 @@
+python3 -B -m unittest -v tests.test_performance021_b.GroupBTest.test_git_large_duplex_batch_uses_file_input
+test_git_large_duplex_batch_uses_file_input (tests.test_performance021_b.GroupBTest.test_git_large_duplex_batch_uses_file_input) ... ok
+Ran 1 test in 0.586s
+OK
+real Git batch: 512 distinct objects, request 136192 bytes, output 911242 bytes, one cat-file child, 0.123s
+
+The actual Git request uses one early 900,000-byte blob, 511 other distinct committed blobs and paths producing more than 64 KiB of request text, within the existing complete-delivery byte and file limits. `_run_bounded_child` presents the complete request through a temporary input file, not a pipe, while selector-draining the response under its total deadline; this avoids input-pipe/output-pipe deadlock without truncating accepted input.

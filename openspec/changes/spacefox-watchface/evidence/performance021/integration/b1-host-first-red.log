@@ -1,0 +1,78 @@
+EFFFF.F
+======================================================================
+ERROR: test_current_bound_evidence (tests.test_b1_021_admission.IntegrationAdmission.test_current_bound_evidence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_b1_021_admission.py", line 25, in test_current_bound_evidence
+    self.assertEqual(proof.validate(ROOT, self.catalog), ['en','ru','de','fr','es'])
+                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tools/native_b1_021_qualification.py", line 62, in validate
+    if current!=baseline:raise ValueError('locale policy changed outside integration proof')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: locale policy changed outside integration proof
+
+======================================================================
+FAIL: test_locale_and_evidence_drift_is_refused (tests.test_b1_021_admission.IntegrationAdmission.test_locale_and_evidence_drift_is_refused) (evidence='integration021-tests.log')
+----------------------------------------------------------------------
+ValueError: locale policy changed outside integration proof
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_b1_021_admission.py", line 52, in test_locale_and_evidence_drift_is_refused
+    with self.assertRaisesRegex(ValueError, 'integration input changed'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "integration input changed" does not match "locale policy changed outside integration proof"
+
+======================================================================
+FAIL: test_locale_and_evidence_drift_is_refused (tests.test_b1_021_admission.IntegrationAdmission.test_locale_and_evidence_drift_is_refused) (evidence='integration021-peer-source-switch-green.log')
+----------------------------------------------------------------------
+ValueError: locale policy changed outside integration proof
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_b1_021_admission.py", line 52, in test_locale_and_evidence_drift_is_refused
+    with self.assertRaisesRegex(ValueError, 'integration input changed'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "integration input changed" does not match "locale policy changed outside integration proof"
+
+======================================================================
+FAIL: test_locale_and_evidence_drift_is_refused (tests.test_b1_021_admission.IntegrationAdmission.test_locale_and_evidence_drift_is_refused) (evidence='integration021-peer-primary-receipt.json')
+----------------------------------------------------------------------
+ValueError: locale policy changed outside integration proof
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_b1_021_admission.py", line 52, in test_locale_and_evidence_drift_is_refused
+    with self.assertRaisesRegex(ValueError, 'integration input changed'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "integration input changed" does not match "locale policy changed outside integration proof"
+
+======================================================================
+FAIL: test_native_or_fixture_drift_is_refused (tests.test_b1_021_admission.IntegrationAdmission.test_native_or_fixture_drift_is_refused)
+----------------------------------------------------------------------
+ValueError: locale policy changed outside integration proof
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_b1_021_admission.py", line 31, in test_native_or_fixture_drift_is_refused
+    with self.assertRaisesRegex(ValueError, 'native input closure'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "native input closure" does not match "locale policy changed outside integration proof"
+
+======================================================================
+FAIL: test_update_version_uuid_and_key (tests.test_b1_021_admission.IntegrationAdmission.test_update_version_uuid_and_key) (field='version')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_b1_021_admission.py", line 59, in test_update_version_uuid_and_key
+    with self.subTest(field=field), self.assertRaises(RuntimeError):
+                                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.040s
+
+FAILED (failures=5, errors=1)

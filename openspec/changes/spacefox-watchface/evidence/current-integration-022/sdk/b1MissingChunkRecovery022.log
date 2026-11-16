@@ -1,0 +1,17 @@
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test b1MissingChunkRecovery022...
+SF_VIEW mode=HIGH pending=false
+SF_FG admission_begin
+SF_FG chunk_wait
+SF_FG admission_failed
+DEBUG (20:56): B1_MISSING_CHUNK deferred=true priorContext=true sealedRestore=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1MissingChunkRecovery022           PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

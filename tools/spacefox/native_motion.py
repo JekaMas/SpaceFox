@@ -3,9 +3,13 @@
 SFR1 is the finite pixel codec; source records retain producer provenance.
 """
 from copy import deepcopy
+from datetime import datetime, timezone
 from pathlib import Path
+from collections import OrderedDict
+import hashlib
+import shutil
 
-from .catalog import canonical_bytes, loads_json, validate_catalog, dependency_closure, validate_catalog_selection
+from .catalog import canonical_bytes, loads_json, validate_catalog, dependency_closure, validate_catalog_selection, catalog_validation_scope, _read_snapshot, _cache_safe
 from .graphics import build_pack, canonical_visual, export_svg, validate_visual, _source_path
 from .visual_bridge import asset_descriptor, put, read_ref, sha
 from . import native_profile as static
@@ -98,14 +102,14 @@ def source_read(files, ref):
 def _asset_source(root, catalog, asset_id, descriptor):
     row = catalog['dictionaries']['assets'][asset_id]
     content = row['content']
-    raw = _source_path(Path(root).resolve(), content['path']).read_bytes()
+    raw = _read_snapshot(_source_path(Path(root).resolve(), content['path']), 65536)
     require(len(raw) == content['bytes'] and sha(raw) == content['sha256']
             and catalog['inputDigests'].get(content['path']) == content['sha256'], 'original asset source pin')
     return dict(assetId=asset_id, asset=deepcopy(row), svg=raw.decode('utf-8'), sourceDescriptor=descriptor)
 
 
 def _asset(files, root, catalog, asset_id):
-    pack = build_pack(root, catalog, roots=[asset_id])
+    pack = build_pack(root, catalog, roots=[asset_id], _include_catalog=False)
     row = pack['manifest']['assets'][asset_id]
     for digest, raw in pack['objects'].items():
         files[f'objects/{digest}.json'] = raw
@@ -218,10 +222,14 @@ def _assert_site_country(files, ref, site_id, country_id, digest, version):
     return selection['dictionaries']['countries'].get(country_id)
 
 
-def _raster(files, source):
+def _raster(files, source, *, _cached=None, _pending=None):
     visual, descriptor = static._asset(files, source)
     require(visual[7] == [0, []], 'origin mark must be static')
-    rgba, _, _ = static.rasterize([visual], 20, 12)
+    key = ('country-check', 20, 12, hashlib.sha256(canonical_bytes([visual])).digest())
+    rgba = None if _cached is None else _cached.get(key)
+    if rgba is None:
+        rgba, _, _ = static.rasterize([visual], 20, 12)
+        if _pending is not None: _pending[key] = rgba
     shards = []
     for raw in static.encode_raster(rgba, 20, 12):
         digest = sha(raw); path = f'rasters/{digest}.sfr'; files[path] = raw
@@ -247,8 +255,48 @@ def _index(files, scene_ref):
                 objects=[[1 if r['path'].startswith('rasters/') else 0, r['sha256'], r['decodedBytes']] for r in refs])
 
 
+class _RepositoryCatalogOperation:
+    """One private operation owns a freshly admitted repository catalog."""
+    def __init__(self, root):
+        from .catalog import build_catalog
+        from .current_catalog import load_registry
+        self.__root = Path(root).resolve()
+        admission = datetime.now(timezone.utc).date()
+        self.__catalog = build_catalog(self.__root, _admission_date=admission)
+        self.__eligibility = load_registry(self.__root, self.__catalog, _admission_date=admission)
+        self.scheduling_date = admission.isoformat() if datetime.now(timezone.utc).date() == admission else None
+        self.review = {}
+
+    def source_digest(self):
+        return sha(canonical_bytes(self.__catalog))
+
+    def build(self, state, _unused, now, *, publisher, policy, traversal):
+        from .current_catalog import schedule_catalog_review
+        review = schedule_catalog_review(self.__catalog, self.__eligibility, state, now, policy)
+        with catalog_validation_scope():
+            files, digest = _build_artifact_owned(state, self.__catalog, now, publisher=publisher,
+                policy=policy, traversal=traversal, root=self.__root, eligibility=self.__eligibility)
+        self.review.clear()
+        self.review.update(review)
+        if self.scheduling_date != datetime.now(timezone.utc).date().isoformat():
+            self.scheduling_date = None
+        return files, digest
+
+
 def build_artifact(state, catalog, now, *, publisher, policy=None, traversal=None,
                    root=None, origin_mode='model', eligibility=None):
+    # Snapshot ordinary JSON values first, preserving their Python/Decimal
+    # types; the owned copy is admitted once before use. For unusual caller
+    # subclasses, retain admission of the original before copying as well.
+    if not _cache_safe(catalog):
+        validate_catalog(catalog)
+    owned = deepcopy(catalog)
+    with catalog_validation_scope():
+        return _build_artifact_owned(state, owned, now, publisher=publisher, policy=policy, traversal=traversal, root=root, origin_mode=origin_mode, eligibility=eligibility)
+
+
+def _build_artifact_owned(state, catalog, now, *, publisher, policy=None, traversal=None,
+                          root=None, origin_mode='model', eligibility=None):
     root = Path(root or Path(__file__).resolve().parents[2]).resolve()
     validate_catalog(catalog)
     require(origin_mode == 'model', 'model origin required')
@@ -349,7 +397,53 @@ def _assert_raster(files, binding, expected, *, motion=False):
     return descriptor
 
 
+# Successful pixel derivations are process-local, bounded, and never replace
+# complete structural/source admission or the publisher's fresh authority checks.
+_pixel_validations = OrderedDict()
+
+
+def _validation_identity(files):
+    if type(files) is not dict or not all(type(k) is str and type(v) is bytes for k,v in files.items()):
+        return None
+    if not 1 <= len(files) <= 256 or sum(map(len,files.values())) > 1048576:
+        return None
+    executable = shutil.which('rsvg-convert')
+    if executable is None:
+        return None
+    digest = hashlib.sha256()
+    def add(raw):
+        digest.update(len(raw).to_bytes(8, 'big')); digest.update(raw)
+    for name,raw in sorted(files.items()):
+        add(name.encode('utf-8')); add(raw)
+    try:
+        renderer = Path(executable).resolve()
+        add(str(renderer).encode())
+        with renderer.open('rb') as stream:
+            while chunk := stream.read(131072): digest.update(chunk)
+        # The loaded producer code is process-local; include current source so
+        # any source change in a long-running process invalidates reuse too.
+        for path in sorted(Path(__file__).parent.glob('*.py')):
+            add(path.name.encode()); add(_read_snapshot(path))
+    except (OSError, UnicodeError):
+        return None
+    return digest.digest()
+
+
 def validate_artifact(files):
+    """Freshly validate the complete artifact; reuse only successful pixels."""
+    identity = _validation_identity(files)
+    cached = _pixel_validations.get(identity, {}) if identity is not None else {}
+    pending = {}
+    result = _validate_artifact(files, cached, pending)
+    # A changed executable/source while validation ran cannot seed reuse.
+    if identity is not None and _validation_identity(files) == identity:
+        _pixel_validations[identity] = {**cached, **pending}
+        _pixel_validations.move_to_end(identity)
+        while len(_pixel_validations) > 4: _pixel_validations.popitem(last=False)
+    return result
+
+
+def _validate_artifact(files, cached, pending):
     """Validate one complete current artifact and its source-derived pixels."""
     require(type(files) is dict and 1 <= len(files) <= 256 and all(type(v) is bytes for v in files.values())
             and sum(map(len, files.values())) <= 1048576, 'complete artifact bound')
@@ -470,7 +564,7 @@ def validate_artifact(files):
                 require(country_binding is None, 'unmatched site country flag')
             else:
                 require(country_binding == dict(entityId=original['siteCountryId'],
-                        descriptor=_raster(dict(files), country_source['descriptor'])), 'site country raster equality')
+                        descriptor=_raster(dict(files), country_source['descriptor'], _cached=cached, _pending=pending)), 'site country raster equality')
             map_source=original['roles']['geography']
             md=None if map_source is None else loads_json(read_ref(map_source['descriptor'],files))
             for a,b in (('sourcePosition','sourcePosition'),('position','position'),('positionMode','positionMode'),
@@ -501,7 +595,11 @@ def validate_artifact(files):
                 else:
                     visual,_ = static._asset(files,source['descriptor']); visuals=[visual]
                     require(rd['sourceSemanticSha256'] == source_desc['sha256'], 'visual source digest')
-                pixels,_,_ = static.rasterize(visuals,width,height,opaque=role=='map')
+                pixel_key = (role, width, height, hashlib.sha256(canonical_bytes(visuals)).digest())
+                pixels = cached.get(pixel_key)
+                if pixels is None:
+                    pixels,_,_ = static.rasterize(visuals,width,height,opaque=role=='map')
+                    pending[pixel_key] = pixels
                 if channels == 3:
                     pixels=bytes(c for i,c in enumerate(pixels) if i%4 != 3)
                     pixels,_ = static.map_raster(pixels, source['descriptor'])

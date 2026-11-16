@@ -361,3 +361,47 @@ pixel, hidden cap increase or executable drawing grammar SHALL establish equival
 #### Scenario: Incomplete or incompatible scene retains coherent fallback
 - **WHEN** changed model/place/art, interruption, full storage, corrupt raw/pixels, unknown point, malformed late provenance or an endpoint/layout mismatch occurs
 - **THEN** durable source/publisher floors and old immutable objects remain intact, new metadata uses generic art and either an unmarked map or a separately matched bundled projection of its accepted fixed point until its own complete validated scene is ready, no old cross-model/place graphic is relabeled, and restart independently validates persisted raw/schema/identity/source/pixel closure before activation
+
+### Requirement: Bounded host selection and validation work
+
+The publisher SHALL bound host selection, geography, validation and I/O work while preserving complete source and artifact admission, mutable-input rejection, deterministic output, quota, CAS and final readback.
+
+#### Scenario: Selected catalog closure
+- **WHEN** a validated catalog is used to build a selected asset
+- **THEN** only selected rows need be copied for internal selection, output remains deterministic, and mutation of a caller or returned catalog cannot create stale acceptance, including values with identical JSON encodings but different runtime numeric types
+
+#### Scenario: Geography ownership
+- **WHEN** no asset build needs geography or an asset operation finishes
+- **THEN** a read-only not-due decision checks ledger, source, head and due state without admitting an active artifact, geographic decoding or renderer children; any due, pending, recovery or artifact-use path performs full admission, and a completed operation releases its decoded corpus The source check verifies the present sparse runtime seed and transitive recipe inputs against the committed tree, including hidden Git index flags, while unrelated omitted files remain unnecessary; hidden changed producer/schema bytes are refused before authority access.
+
+#### Scenario: Repeated artifact validation
+- **WHEN** the identical artifact is revalidated in one process
+- **THEN** source-derived pixel work may be reused only under the same exact content and renderer/source identity, while changed or corrupt bytes are refused and fresh authority checks remain
+
+#### Scenario: Bounded local input and renderer output
+- **WHEN** a local source or renderer exceeds its existing byte or time bound including a read race
+- **THEN** it is refused without unbounded capture, the child is cleaned up, and accepted output is unchanged
+
+#### Scenario: Host changes retain prior native admission
+- **WHEN** host-only source changes invalidate historical source-bound native admission
+- **THEN** exact historical source is authenticated and reconstructed for the unchanged native/profile/font proof, current host sources and measured evidence are separately bound, and missing or altered proof inputs are refused
+
+#### Scenario: Concurrent complete readback
+- **WHEN** a delivery closure is observed
+- **THEN** bounded concurrent file requests check every exact byte and a fresh final root, while incomplete, corrupt or mixed delivery refuses without promotion
+
+#### Scenario: Cheap cloud no-work
+- **WHEN** a scheduled cloud invocation has no due, pending, catalog or code change
+- **THEN** it avoids geography and renderer work after fresh source, active root, projection date and metadata staging/cadence checks; a missing, stale, malformed or mismatched scheduling witness, pending recovery, due metadata or changed source escalates to independent full admission. The scheduling witness is bound to the exact admitted source, artifact and actual UTC projection date, never grants artifact admission or publication permission, and a first full same-content admission may persist it without changing source age or publishing a candidate.
+
+#### Scenario: Bounded Git and exact snapshot
+- **WHEN** state and history are inspected or changed
+- **THEN** Git commands on source and authority paths have total deadlines; a deadline failure stops the invocation before subsequent authority or provider effects. Exact immutable bytes may be reused within a process, and fresh remote, source and CAS checks still refuse conflicts without discarding history
+
+#### Scenario: Operator total HTTP deadline
+- **WHEN** operator HTTP inspection receives slow, oversized or invalid data
+- **THEN** it respects total time and byte bounds, cleans up its child and retains existing protocol diagnostics
+
+#### Scenario: Native generation retains current reminders
+- **WHEN** the current source-bound five-locale resources are regenerated
+- **THEN** the existing reminder strings and default-off setting remain byte-identical, an already correct manifest retains its exact serialization, malformed language elements are normalized, and a second generation produces identical watch files

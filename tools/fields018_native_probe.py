@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.build_watchface import discover
 from tools.run_native_tests import parse_output
-NAMES = ('fields018Format', 'fields018Settings', 'fields018NativeInventoryAndPersistence', 'fields018RenderRealSource', 'fields018PrimaryLabels', 'fields018SameSlotReplacement', 'fields018CapabilityInventory')
+NAMES = ('fields018Format', 'fields018Settings', 'fields018NativeInventoryAndPersistence', 'fields018RenderRealSource', 'fields018PrimaryLabels', 'fields018SameSlotReplacement', 'fields018CapabilityInventory', 'fields018ChangedIdAndSharedSlots', 'fields018ObservedProviderSizes', 'fields018FittedRealProvider')
 
 def sha(path): return hashlib.sha256(path.read_bytes()).hexdigest()
 def inputs():

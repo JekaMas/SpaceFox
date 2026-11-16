@@ -1,0 +1,22 @@
+------------------------------------------------------------------------------
+Executing test currentAdmissionDiagnose...
+DEBUG (16:24): STORAGE commit=false incoming=true processed=false batchPending=false
+DEBUG (16:24): LOAD packet=false failure=
+DEBUG (16:24): ADMISSION packet=true failure= needsRestore=false
+DEBUG (16:24): BRIDGE present=true selection=true
+DEBUG (16:24): SOURCE ready=true serial=1
+DEBUG (16:24): BUILD steps=50 role=0 closure=0
+DEBUG (16:24): BUILD steps=100 role=0 closure=0
+DEBUG (16:24): BUILD steps=150 role=0 closure=0
+DEBUG (16:24): BUILD steps=200 role=0 closure=0
+DEBUG (16:24): BUILD steps=250 role=0 closure=0
+DEBUG (16:24): BUILD_RESULT complete=true steps=299 rocket=true flag=true map=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+currentAdmissionDiagnose            PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

@@ -62,6 +62,13 @@ class NativeCacheCore {
         var active=commit==null?-1:commit["slot"];var recovery=-1;var old=store.read("sf.recovery");if(old instanceof Dictionary&&old["base"] instanceof String&&old["base"].equals(base)&&(old["slot"] instanceof Number||old["slot"] instanceof Long)){recovery=old["slot"];}
         for(var slot=0;slot<3;slot+=1){if(slot!=active&&slot!=recovery){return slot;}}throw new Lang.InvalidValueException("No inactive feed slot");
     }
+    // A newly written inactive slot no longer references older trailing chunks.
+    // Cleanup is best effort and never runs on the active or recovery slot.
+    function cleanupFeedTail(slot,count){try{
+        var active=store.read("sf.commit");var recovery=store.read("sf.recovery");
+        if(active instanceof Dictionary&&active["slot"]==slot||recovery instanceof Dictionary&&recovery["slot"]==slot){return;}
+        for(var i=count;i<16;i+=1){var key="sf.feed."+slot+"."+i;if(store.read(key)!=null){store.remove(key);}}
+    }catch(e){}}
     function checkPublisher(pub,wire){
         var pin=store.read(pinKey);if(pin==null){return true;}
         return pin instanceof Dictionary&&pin["instance"] instanceof String&&pin["instance"].equals(pub["instance"])&&(pin["generation"] instanceof Number||pin["generation"] instanceof Long)&&pub["generation"]>=pin["generation"]&&pub["selectionValidatedUtc"]>=pin["selectionValidatedUtc"]&&(pub["generation"]!=pin["generation"]||wire.equals(pin["wireHash"]));

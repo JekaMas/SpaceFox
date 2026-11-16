@@ -1,0 +1,15 @@
+test_scoped_admission_distinguishes_integer_and_decimal (tests.test_performance021_ownership.CatalogOwnershipTest.test_scoped_admission_distinguishes_integer_and_decimal) ... FAIL
+
+======================================================================
+FAIL: test_scoped_admission_distinguishes_integer_and_decimal (tests.test_performance021_ownership.CatalogOwnershipTest.test_scoped_admission_distinguishes_integer_and_decimal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/performance021-20261116/tests/test_performance021_ownership.py", line 25, in test_scoped_admission_distinguishes_integer_and_decimal
+    with self.assertRaisesRegex(ValueError, 'unsupported schemaVersion'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 2.059s
+
+FAILED (failures=1)

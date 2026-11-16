@@ -29,6 +29,11 @@ class NativeUpcomingCache {
         return true;
     }
     function save(scenes){
+        // Queue namespaces correspond one-for-one to the publisher floor's
+        // existing eight-entry index. Never evict a protected publisher's
+        // future facts to make room for an unindexed namespace.
+        var pins=store.read("sf.pins");var pin="sf.pin."+key.substring("sf.upcoming.".length(),key.length());
+        if(!(pins instanceof Array)||pins.size()>8||pins.indexOf(pin)<0||!(store.read(pin) instanceof Dictionary)){throw new Lang.InvalidValueException("Future queue namespace not pinned");}
         var rows=[];for(var i=0;i<scenes.size()&&rows.size()<3;i+=1){var scene=scenes[i];if(scene!=null&&scene.sourceValidated!=null){var row=scene.cacheRow();if(!validRow(row)){throw new Lang.InvalidValueException("Invalid future queue row");}rows.add(row);}}
         var value={"v"=>1,"base"=>base,"instance"=>instance,"rows"=>rows};var digest=seal(value);var old=store.read(key);
         if(old instanceof Dictionary&&old["seal"] instanceof String&&old["seal"].equals(digest)&&old["value"] instanceof Dictionary&&nativeSame(old["value"],value)&&seal(old["value"]).equals(digest)){return;}

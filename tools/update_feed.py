@@ -6,6 +6,8 @@ is an explicit operator observation until an authenticated deployment adapter is
 qualified. Local HTTP is only available with the explicit loopback test switch.
 """
 import argparse
+import hashlib
+import os
 from datetime import datetime, timezone
 import json
 from pathlib import Path
@@ -15,14 +17,14 @@ import sys
 if __package__ in (None, ''):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from tools.spacefox.catalog import build_catalog, CatalogError
+from tools.spacefox.catalog import build_catalog, CatalogError, _read_snapshot
 from tools.spacefox.feed import FeedEncodingError
 from tools.spacefox.provider import (LL2Client, ProviderError, normalize_detail_launch,
                                     validation_epoch, bounded_json, DEFAULT_ORIGIN)
 from tools.spacefox.publisher import (GitState, Publisher, StateError, LiveRevision,
-                                     AllowanceUnavailable)
+                                     AllowanceUnavailable, GitDeadline, bounded_git)
 from tools.spacefox.schedule import RefreshPolicy, LaunchStatus
-from tools.spacefox.native_motion import build_artifact, PROFILE
+from tools.spacefox.native_motion import build_artifact, PROFILE, _RepositoryCatalogOperation
 
 
 def utc_now():
@@ -181,15 +183,131 @@ def export_pending(pub, directory):
     return len(files)
 
 
+def _head_tree(root):
+    raw = bounded_git(root, 'ls-tree', '-r', '-l', '-z', 'HEAD').stdout
+    result = {}
+    for entry in raw.split(b'\0'):
+        if not entry:
+            continue
+        header, path = entry.split(b'\t', 1)
+        mode, kind, digest, size = header.split()
+        if kind == b'blob':
+            result[os.fsdecode(path)] = (mode, digest.decode('ascii'), int(size))
+    return result
+
+
+def _tracked_bytes(root, tree, name):
+    path = Path(name)
+    if path.is_absolute() or '..' in path.parts or not path.parts:
+        raise ValueError('unsafe tracked input')
+    name = path.as_posix()
+    mode, expected, size = tree[name]
+    target = root / path
+    if mode != b'100644' and mode != b'100755':
+        raise ValueError('regular tracked input required')
+    if target.is_symlink() or not target.resolve().is_relative_to(root):
+        raise ValueError('unsafe tracked input')
+    raw = _read_snapshot(target, size)
+    if len(raw) != size:
+        raise ValueError('tracked input size differs from HEAD')
+    algorithm = hashlib.sha1 if len(expected) == 40 else hashlib.sha256
+    digest = algorithm(b'blob ' + str(len(raw)).encode() + b'\0')
+    digest.update(raw)
+    actual = digest.hexdigest()
+    if actual != expected:
+        raise ValueError('tracked input differs from HEAD')
+    return raw
+
+
 def executing_revision(root):
     """Bind permission SHA to the actual tracked clean producer checkout."""
+    root = Path(root).resolve()
     scopes = ['tools/spacefox', 'tools/update_feed.py', 'catalog', 'schemas']
-    result = subprocess.run(['git', '-C', str(root), 'status', '--porcelain', '--untracked-files=all', '--', *scopes],
-                            stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
+    result = bounded_git(root, 'status', '--porcelain', '--untracked-files=all', '--', *scopes)
     if result.stdout:
         raise StateError('producer checkout must be committed and clean before provider permission')
-    return subprocess.run(['git', '-C', str(root), 'rev-parse', 'HEAD'], stdout=subprocess.PIPE,
-                          stderr=subprocess.PIPE, check=True).stdout.decode().strip()
+    # Git status ignores assume-unchanged and skip-worktree. Check any present
+    # flagged producer bytes directly against HEAD before opening authority.
+    tracked = bounded_git(root, 'ls-files', '-v', '-z', '--', *scopes).stdout
+    flagged = [entry for entry in tracked.split(b'\0') if entry and entry[:1] != b'H']
+    if flagged:
+        tree = _head_tree(root)
+        try:
+            for entry in flagged:
+                name = os.fsdecode(entry[2:])
+                target = root / name
+                if target.exists() or target.is_symlink():
+                    _tracked_bytes(root, tree, name)
+                elif entry[:1] != b'S':
+                    raise ValueError('missing flagged producer input')
+        except (KeyError, OSError, ValueError) as exc:
+            raise StateError('producer checkout must be committed and clean before provider permission') from exc
+    return bounded_git(root, 'rev-parse', 'HEAD').stdout.decode().strip()
+
+
+def _no_work_source_fence(root, expected_revision=None):
+    """Check the actual sparse runtime seed and recipe closure without decoding it."""
+    root = Path(root).resolve()
+    try:
+        status = bounded_git(root, 'status', '--porcelain', '--untracked-files=all',
+                             '--', 'assets', 'licenses', 'tools/vendor')
+        if status.stdout:
+            return False
+        revision = bounded_git(root, 'rev-parse', 'HEAD').stdout.decode().strip()
+        if expected_revision is not None and revision != expected_revision:
+            return False
+        tree = _head_tree(root)
+        cache = {}
+        def read(name):
+            if name not in cache:
+                cache[name] = _tracked_bytes(root, tree, name)
+            return cache[name]
+        seed = read('.github/spacefox-inputs.txt').decode('utf-8').splitlines()
+        for item in seed:
+            name = item.removeprefix('/')
+            if name in tree:
+                read(name)
+        recipe = json.loads(read('catalog/source.json'))
+        asset_seed = recipe['assetSeed']['path']
+        curations = {item['path'] for item in recipe.get('curations', [])}
+        def pins(value):
+            if isinstance(value, dict):
+                if {'path', 'sha256'} <= value.keys():
+                    yield value
+                for child in value.values():
+                    yield from pins(child)
+            elif isinstance(value, list):
+                for child in value:
+                    yield from pins(child)
+        pending = ['catalog/source.json']
+        visited = set()
+        while pending:
+            name = pending.pop()
+            if name in visited:
+                continue
+            visited.add(name)
+            try:
+                value = json.loads(read(name))
+            except (ValueError, UnicodeDecodeError):
+                continue
+            for pin in pins(value):
+                data = read(pin['path'])
+                if hashlib.sha256(data).hexdigest() != pin['sha256']:
+                    return False
+                pending.append(pin['path'])
+            if name == asset_seed:
+                assets = [row for kind in ('models', 'companies', 'countries') for row in value[kind]]
+            elif name in curations:
+                assets = [row['facts'] for row in value['assets']]
+            else:
+                assets = []
+            for facts in assets:
+                read((Path(name).parent / facts['file']).as_posix())
+        return revision == bounded_git(root, 'rev-parse', 'HEAD').stdout.decode().strip()
+    except GitDeadline:
+        raise
+    except (KeyError, OSError, TypeError, ValueError, subprocess.SubprocessError):
+        return False
 
 
 def main(argv=None):
@@ -223,6 +341,17 @@ def main(argv=None):
         if args.command == 'bootstrap':
             print(json.dumps({'head': store.bootstrap(code, RefreshPolicy(fast_interval_seconds=args.fast_seconds))}))
             return 0
+        if args.command == 'run' and args.trigger == 'scheduled':
+            if args.expected_base is None:
+                raise StateError('supply exact current --expected-base')
+            checked_now = args.now if args.now is not None else utc_now()
+            checked_live = None
+            if args.live:
+                generation, digest = args.live.split(':')
+                checked_live = LiveRevision(int(generation), digest)
+            if _no_work_source_fence(root, code) and store.definitely_not_due(args.expected_base, code, checked_now, checked_live):
+                print(json.dumps({'result': 'not_due', 'head': args.expected_base, 'requests': 0}, sort_keys=True))
+                return 0
         pub = Publisher(store, code)
         if args.command == 'status':
             print(json.dumps({'head': pub.head, 'ledger': pub.ledger, 'measurement': store.measure()}, sort_keys=True))
@@ -241,22 +370,14 @@ def main(argv=None):
         else:
             now = args.now if args.now is not None else utc_now()
             client = LL2Client(origin=args.origin, page_size=args.page_size, local_http=args.local_http)
-            catalog = build_catalog(root)
-            from tools.spacefox.current_catalog import load_registry, schedule_catalog_review
-            eligibility = load_registry(root, catalog)
-            catalog_review = {}
-            def current_builder(state, source, instant, *, publisher, policy, traversal):
-                review = schedule_catalog_review(source, eligibility, state, instant, policy)
-                files, digest = build_artifact(state, source, instant, publisher=publisher, policy=policy, traversal=traversal, root=root, eligibility=eligibility)
-                catalog_review.update(review)
-                return files, digest
+            operation = _RepositoryCatalogOperation(root)
             from tools.spacefox.ascent_supplement import load_supplement
             supplement = load_supplement(args.ascent_supplement) if args.ascent_supplement else None
-            result = update(pub, client, now, catalog, trigger=args.trigger, artifact_builder=current_builder, ascent_supplement=supplement,
+            result = update(pub, client, now, None, trigger=args.trigger, artifact_builder=operation.build, ascent_supplement=supplement,
                             max_pages=args.max_pages, detail_limit=args.detail_limit,
                             clock=None if args.now is not None else utc_now)
             if result['result'] == 'pending':
-                result['catalogReview'] = catalog_review
+                result['catalogReview'] = operation.review
                 result['exportedFiles'] = export_pending(pub, args.output)
         print(json.dumps(result, sort_keys=True))
         return 0

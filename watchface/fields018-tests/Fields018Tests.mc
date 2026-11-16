@@ -177,3 +177,37 @@ function fields018CapabilityInventory(logger){
     fake.solarIntensity=-1;Test.assert(FieldCatalog.systemSupported(fake,"system:solarIntensity",[])&&!FieldCatalog.systemSupported(fake,"system:solarIntensity",[37]));
     logger.debug("ACTIVITY_KEYS "+activityNames);logger.debug("SYSTEM_KEYS "+systemNames);logger.debug("CAPABILITY native="+nativeCount+" paged="+paged+" activity="+activityCount+" system="+systemCount+" availableNullSelectable=true solarNullUnsupported=true solarNegativeSupported=true type42="+late);return true;
 }
+
+(:test,:typecheck(false)) class ChangedFieldProvider {
+    var first;var second;var missing=false;var firstCalls=0;var secondCalls=0;
+    function initialize(a,b){first=a;second=b;}
+    function get(id){if(id.equals(first)){firstCalls+=1;if(missing){throw new Complications.ComplicationNotFoundException();}}else if(id.equals(second)){secondCalls+=1;}return Complications.getComplication(id);}
+}
+(:test,:typecheck(false)) function fields018ChangedIdAndSharedSlots(logger){
+    var it=Complications.getComplications();var item=it.next();var ids=[];
+    while(item!=null&&ids.size()<2){if(item.complicationId!=null&&item.getType()!=23){var id=item.complicationId;var duplicate=false;for(var i=0;i<ids.size();i+=1){if(ids[i].equals(id)){duplicate=true;}}if(!duplicate){ids.add(id);}}item=it.next();}
+    Test.assert(ids.size()==2);Application.Storage.setValue("sf.field1",ids[0]);Application.Storage.setValue("sf.field2",ids[1]);Application.Storage.setValue("sf.field3",ids[0]);
+    var provider=new ChangedFieldProvider(ids[0],ids[1]);var fields=new SelectedFields();fields.provider=provider;var cb=new FieldCallback();fields.start(["custom1","custom2","custom3","steps"],cb.method(:changed));fields.read("en");
+    var stable=fields.display("custom2");var oldLabel=fields.label("custom2");provider.firstCalls=0;provider.secondCalls=0;provider.missing=true;fields.readChanged("en",ids[0]);
+    Test.assert(provider.firstCalls==1&&provider.secondCalls==0&&fields.display("custom1").equals("—")&&fields.display("custom3").equals("—"));Test.assert(fields.display("custom2").equals(stable)&&fields.label("custom2").equals(oldLabel));
+    provider.missing=false;fields.readChanged("en",ids[0]);Test.assert(provider.firstCalls==2&&provider.secondCalls==0&&fields.display("custom1").equals(fields.display("custom3")));
+    fields.stop();for(var slot=1;slot<=3;slot+=1){Application.Storage.deleteValue("sf.field"+slot);}logger.debug("CHANGED_ID sharedSlots=true otherProviderNotRead=true missingAndRecovery=true");return true;
+}
+
+(:test,:typecheck(false)) function fields018ObservedProviderSizes(logger){
+    var it=Complications.getComplications();var item=it.next();var count=0;var labels=0;var values=0;var icons=0;var maxWidth=0;var maxHeight=0;
+    while(item!=null){if(item.complicationId!=null){count+=1;if(item.shortLabel instanceof String&&item.shortLabel.length()>labels){labels=item.shortLabel.length();}if(item.longLabel instanceof String&&item.longLabel.length()>labels){labels=item.longLabel.length();}if(item.value instanceof String&&item.value.length()>values){values=item.value.length();}if(item.getType()==0){try{var icon=item.getIcon();if(icon!=null){icons+=1;if(icon.getWidth()>maxWidth){maxWidth=icon.getWidth();}if(icon.getHeight()>maxHeight){maxHeight=icon.getHeight();}}}catch(e){}}}item=it.next();}
+    Test.assert(count>0);logger.debug("PROVIDER_SIZES discovered="+count+" maxLabelChars="+labels+" maxStringValueChars="+values+" userIcons="+icons+" maxIconWidth="+maxWidth+" maxIconHeight="+maxHeight);return true;
+}
+
+(:test,:typecheck(false)) function fields018FittedRealProvider(logger){
+    var it=Complications.getComplications();var item=it.next();var chosen=null;var valueId=null;var length=-1;var valueLength=-1;
+    while(item!=null){if(item.complicationId!=null&&item.getType()!=23){var label=item.shortLabel;if(!(label instanceof String)||label.equals("")){label=item.longLabel;}if(label instanceof String&&label.length()>length){chosen=item.complicationId;length=label.length();}try{var value=FieldFormat.complication(item,"en");if(value instanceof String&&value.length()>valueLength){valueId=item.complicationId;valueLength=value.length();}}catch(e){}}item=it.next();}Test.assert(chosen!=null&&valueId!=null);
+    Application.Storage.setValue("sf.field1",chosen);Application.Storage.setValue("sf.field2",valueId);Application.Storage.setValue("sf.field3",chosen);Application.Storage.setValue("sf.field4",valueId);var fields=new SelectedFields();var cb=new FieldCallback();fields.start(["custom1","custom2","custom3","custom4"],cb.method(:changed));fields.read("en");
+    var names=[fields.label("custom1"),fields.label("custom2")];var values=[fields.display("custom1"),fields.display("custom2")];var fitness=new Fitness();fitness.selectedFields=fields;var settings=new SceneSettings({"Language"=>0,"Field1"=>6,"Field2"=>6,"Field3"=>6,"Field4"=>6});var renderer=new SceneRenderer(null);renderer.prepare(new SceneContext({"id"=>"ll2:launch:ef9850ad-1096-425b-9d27-f7bbd186e61a","rocket"=>"Vulcan VC6L","operator"=>"United Launch Alliance","modelId"=>"generic","point"=>[-80.58341025,28.58341025]}),settings);
+    var bitmap=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get();var dc=bitmap.getDc();var small=renderer.fonts["small"];var metric=renderer.fonts["metric"];var expectedNames=[];var expectedValues=[];var numerics=[];for(var i=0;i<2;i+=1){var numeric=renderer.metricGlyphs(values[i]);numerics.add(numeric);expectedNames.add(renderer.fit(dc,names[i],small,35));expectedValues.add(renderer.fit(dc,values[i],numeric?metric:small,90));}
+    renderer.active(dc,new ClockSnapshot("08:08","T- 01:00:00"),settings,{},fitness,0.0);
+    for(var i=0;i<2;i+=1){var role="custom"+(i+1);Test.assert(fields.label(role).equals(expectedNames[i])&&fields.display(role).equals(expectedValues[i])&&fields.fitted(role)&&fields.numeric(role)==numerics[i]);}
+    renderer.active(dc,new ClockSnapshot("08:08","T- 00:59:59"),settings,{},fitness,0.0);for(var i=0;i<2;i+=1){Test.assert(fields.display("custom"+(i+1)).equals(expectedValues[i]));}
+    logger.debug("FITTED_REAL_PROVIDER maxDisplayedLabelChars="+names[0].length()+" maxFormattedValueChars="+values[1].length()+" retainedLabelChars="+fields.label("custom1").length()+" retainedValueChars="+fields.display("custom2").length()+" exactFittedOutput=true");fields.stop();for(var slot=1;slot<=4;slot+=1){Application.Storage.deleteValue("sf.field"+slot);}return true;
+}
