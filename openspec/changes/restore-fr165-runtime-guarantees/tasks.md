@@ -12,8 +12,8 @@
 
 - [x] Implement and self-verify arithmetic, retention, immediate validated facts and coherent update/recovery, including current SDK and fallback rendering evidence.
 - [x] Independent peer review and repair to software green.
-- [ ] Root judgment and merge.
-- [ ] After root freezes accepted main, the same author prepares the full signed 0.1.22 candidate; root publishes the authorized GitHub test release.
+- [x] Root judgment and merge.
+- [x] After root froze accepted main, the same author prepared the full signed 0.1.22 candidate and published the authorized GitHub test release.
 - [ ] Exact candidate physical FR165 observation needed to establish physical P4–P6 acceptance.
 
 ## Later batch

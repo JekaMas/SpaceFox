@@ -403,3 +403,10 @@ FR165 install ZIP with HTTP 200. See `evidence/PUBLICATION-021.md` for the
 receipt, exact identifiers, and proof boundary. This closes the authorized
 GitHub publication task, not physical FR165 P1–P3, B2/B3, phone migration or
 Garmin Store acceptance; the 0.1.18 crash cause remains unknown.
+
+
+### B2 accepted and 0.1.22 test publication
+
+Root accepted the independent peer's P4–P6 software GREEN and advanced public main to `6dbe1af66e5b6d12bc88462d9a9ffcb0bc56ded5`. The same author made one SDK IQ export and derived 42 profile PRGs from its 49 part members, preserving the production UUID and the original 0.1.21 receipt and IQ as update predecessor. Native ID is `14586854`. The authorized GitHub test prerelease `v0.1.22-test.1` was created as a draft, supplied with 59 staged asset paths and then published successfully: https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.22-test.1. The upload command emitted no diagnostics, but its exit status was not retained; the publication command returned success. One names-and-state delivery query subsequently reported all 59 staged names uploaded, with no missing, extra or duplicate names. No asset bytes, server digests or signatures were rechecked. The retained IQ-first helper separately performed a custom post-export signature inspection of 91 programs before the later no-release-rechecks clarification; it was not intrinsic SDK compilation and was not repeated. The original full build receipt is SHA-256 `d249483dbd7bdfe59f97ee9cdd74c23172351086c3547713a12493d346255b03`.
+
+The signed binaries and source-input archive bind the frozen source above; subsequent documentation commits are not compiled source. Physical FR165 P1–P6, cold/reopen/15-minute acceptance, the 0.1.18 IQ cause, phone update migration and Garmin Store acceptance remain open. B3/P8 follows B2 publication.
