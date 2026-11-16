@@ -1,0 +1,33 @@
+------------------------------------------------------------------------------
+Executing test b1ProviderIconBudget...
+
+Error: Symbol Not Found Error
+Details: Could not find symbol 'Array'
+Stack: 
+  - b1ProviderIconBudget() at /source/watchface/runtime-b1-tests/ProviderIcon.mc:16 0x10002b72 
+  - evaluate_test_entries_0_to_22() at /task/staged6/gen/006-B4432-00/source/UnitTests.mcgen:102 0x100093ad 
+  - runTest() at /task/staged6/gen/006-B4432-00/source/UnitTests.mcgen:129 0x1000960c 
+ERROR
+------------------------------------------------------------------------------
+Executing test b1AdmissionFitnessLifecycle...
+DEBUG (12:04): B1_FIELDS admission_stop_once=true pending_no_restart=true four_slots_resume=true low_hide_idempotent=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableHealth...
+DEBUG (12:04): B1_CLOCK health_and_callback_failure=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1GraphemeReleaseAndRebind...
+DEBUG (12:04): B1_GRAPHEME optional_release=true active_rebind=true en_ru_calendar=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1ProviderIconBudget                ERROR
+b1AdmissionFitnessLifecycle         PASS
+b1ClockWithUnavailableHealth        PASS
+b1GraphemeReleaseAndRebind          PASS
+Ran 4 tests
+
+FAILED (passed=3, failed=0, errors=1)

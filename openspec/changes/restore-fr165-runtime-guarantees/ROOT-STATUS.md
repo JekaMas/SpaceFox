@@ -248,3 +248,36 @@ they are not accepted green yet. Prove that deferred work resumes with the
 clock live. Unexplained observer-only growth is not a reason for an open-ended
 campaign if conservative measured bounds close the actual production failure.
 Final plain cold/reopen, graphics/lifecycle bounds and stable run remain open.
+
+### First handoff judgment and same-author continuation
+
+The author committed `d1263b3799eaed9304b68e3508c278a49e39a88c`. Current
+ordinary cold acquisition passed on a separately identified generation-58 feed
+(SHA-256 `a1d32d5e231c137a7806a42146c436479080ee7c78c8f05313c28b326ce78297`),
+with measured 116.7/123.8 KiB peak. A source-frozen plain session ran from
+11:27:20 to approximately 11:43:10 UTC, 950 seconds, through OFF/HIGH cycles and
+normal scene, with no new CIQ entries. Exact MIN timer observations remain
+simulated-time traces, not a fabricated framework PASS. The 21-case receipt and
+five directly invalidated current-source rows passed the strict parser.
+
+Root rejected the first handoff as author-complete because its resource
+self-verification task was still unchecked. The same author continues; no new
+author or peer was assigned. Do not run another entire endurance session only
+because the workflow stage changed. Retain exact original source/binary scopes.
+
+The graphics argument may rely on the documented CIQ 4+ platform contract:
+resource references are managed/evictable, while `.get()` locks an object.
+Root checked the public Garmin Graphics guide. Do not invent a requirement for
+formal proofs of closed SDK allocator/font internals. Record conservative
+app-owned pinned payloads, live states, ordinary HIGH/LOW observations and the
+platform assumption; do not call an estimated working set a measured full peak
+or physical qualification.
+
+One remaining app-owned input was unbounded provider imagery. The same author
+is admitting only managed bitmap references up to 96x96 and using an existing
+bounded/neutral presentation for oversized, unsupported or failed images.
+Field values, units and selection must remain unchanged. Direct icon/lifecycle
+checks and the affected plain-build heap/runtime observation remain underway.
+Package only after the peer's final fixes; use the existing B1 disposable key
+and plain-runtime diagnostic UUID, never expose key contents. Physical P1-P3,
+B2 and B3 remain open.
