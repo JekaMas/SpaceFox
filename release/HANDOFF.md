@@ -7,9 +7,9 @@ stored recovery password have actual local restore/challenge evidence in
 the owner-held signing records. All copies remain on the same Mac; offsite
 and disaster recovery are not claimed.
 
-## 0.1.21 integration candidate
+## Published 0.1.21 GitHub test prerelease
 
-Version 0.1.21 integrates the published 0.1.20 watchdog repair with the independently reviewed B1 clock-first and resource-lifecycle changes. The original 0.1.20 receipt and published IQ are the update predecessor. The full receipt was retained locally and authenticated against the digest in the published package summary; it was not itself a public release asset. Exact-candidate physical FR165 cold start, reopen and at least 15 minutes ordinary use remain unverified; the owner's 0.1.18 IQ report remains unexplained. The owner authorized GitHub distribution before that observation. No 0.1.21 Store submission or approval is claimed. See [release notes](RELEASE-NOTES-0.1.21.md).
+[SpaceFox 0.1.21](https://github.com/JekaMas/SpaceFox/releases/tag/v0.1.21-test.1) is a published GitHub test prerelease, compiled from `98dc7a6e41f03e8904d1dd02ff941317d52eb5be` and tagged at that same revision. Its original receipt and IQ are the latest update predecessor. Version 0.1.21 integrates the published 0.1.20 watchdog repair with the independently reviewed B1 clock-first and resource-lifecycle changes. The original 0.1.20 receipt and published IQ are the update predecessor. The full receipt was retained locally and authenticated against the digest in the published package summary; it was not itself a public release asset. Exact-candidate physical FR165 cold start, reopen and at least 15 minutes ordinary use remain unverified; the owner's 0.1.18 IQ report remains unexplained. The owner authorized GitHub distribution before that observation. No 0.1.21 Store submission or approval is claimed. See [release notes](RELEASE-NOTES-0.1.21.md).
 
 ## Published 0.1.20 release
 

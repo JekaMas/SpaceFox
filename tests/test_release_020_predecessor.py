@@ -26,11 +26,13 @@ class Release020PredecessorTest(unittest.TestCase):
 
     def test_real_receipt_iq_and_higher_version(self):
         latest = self.policy['latest_release']
-        self.assertEqual(latest['version'], '0.1.20')
-        self.assertEqual(hashlib.sha256(self.path.read_bytes()).hexdigest(), latest['original_receipt_sha256'])
-        self.assertEqual(self.previous['version'], latest['version'])
-        self.assertEqual(self.previous['package_sha256'], latest['package_sha256'])
-        self.assertEqual(self.previous['source_revision'], latest['source_revision'])
+        predecessor = self.policy['previous_release']
+        self.assertEqual(latest['version'], '0.1.21')
+        self.assertEqual(predecessor['version'], '0.1.20')
+        self.assertEqual(hashlib.sha256(self.path.read_bytes()).hexdigest(), predecessor['original_receipt_sha256'])
+        self.assertEqual(self.previous['version'], predecessor['version'])
+        self.assertEqual(self.previous['package_sha256'], predecessor['package_sha256'])
+        self.assertEqual(self.previous['source_revision'], predecessor['source_revision'])
         self.assertEqual(self.app.get('version'), '0.1.21')
         result = release.validate_previous(self.previous, self.app, self.policy['public_key_spki_sha256'])
         self.assertEqual(result['kind'], 'higher_version_repair')
