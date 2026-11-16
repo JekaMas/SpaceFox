@@ -1,6 +1,6 @@
-# D finding checkpoint — NOT DONE
+# D finding checkpoint — author self-verification GREEN
 
-This is an implementation/evidence map, not an acceptance claim. The matched stock pair has completed; its one-workload scope and earlier setup reds are recorded; see [APPLY](APPLY.md). All findings remain open pending their complete invalidated proof and independent review.
+This is an implementation/evidence map, not an acceptance claim. The matched stock pair has completed; its one-workload scope and earlier setup reds are recorded; see [APPLY](APPLY.md). The 16 author observations below are complete at their stated boundaries; task 8.4 remains open for fresh independent peer verification/fix and root judgment.
 
 | Finding | Current source treatment | Observed and remaining |
 | --- | --- | --- |

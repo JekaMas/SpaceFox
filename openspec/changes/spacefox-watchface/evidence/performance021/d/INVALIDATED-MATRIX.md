@@ -1,6 +1,6 @@
-# D proof reconciliation — pending source freeze
+# D proof reconciliation — author self-verification
 
-This is a working selection map, not a green gate. Each retained receipt proves only its stated inputs. Task 8.4 and all final claims remain open.
+Each retained receipt proves only its stated inputs. The table records earlier selection status and is followed by current observations. Author selected checks are complete; task 8.4 remains open for peer and root judgment.
 
 | Proof | Current status and dependency |
 | --- | --- |
@@ -22,3 +22,5 @@ The table above is chronological; its pending entries are superseded as follows.
 The remaining work is to reconcile WF25 graph metadata without fabricating the unavailable private runner's normalization, run strict OpenSpec and clean-state/source guards after the source checkpoint, reconcile current manifests and finish author review. Previously observed A/B/C host behavior and independent peer receipts remain valid where their owner, fixture, assertion and toolchain are unchanged. No physical watch, graphics-pool peak, power, Store or private full-graph execution is asserted.
 
 After the first clean export refusal, the current release/source proof owners changed to resolve the six retired resources only through authenticated outer snapshots. The clean sparse-source result at `a25d06fd` is revision-sensitive and must be repeated at the repaired checkpoint; the earlier 42 native compiles, IQ and SDK behavior observations remain valid because watchface sources and resources did not change. Fourteen paired WF25 receipt observers now pass and replace the earlier planned aliases; they do not execute the private graph or the SDK.
+
+The repaired clean checkpoint `a8a3b9d2` passed the revision-sensitive sparse source positive/corruption test and 6,700-input isolated release locale admission; final receipt/document changes are disjoint from both inputs. The selected native/compiler observations above remain valid because no watchface input changed after their source fence.
