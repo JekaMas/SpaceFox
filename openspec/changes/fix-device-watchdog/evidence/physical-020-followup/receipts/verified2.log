@@ -1,0 +1,32 @@
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test b1LowHeapDefersOptionalDecode...
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+DEBUG (17:09): B1_OPTIONAL_RESERVE deferred_without_allocation=true ticking=true recovery=true low_pause_hide_cancel=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1LowHeapDefersOptionalDecode       PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test b1CapturedSuccessorTicksInFallback...
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+DEBUG (17:10): B1_CAPTURED_MINUTE active_tick=2s low_minute=true fallback=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1CapturedSuccessorTicksInFallback  PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

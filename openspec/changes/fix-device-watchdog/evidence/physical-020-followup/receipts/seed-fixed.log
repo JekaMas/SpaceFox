@@ -1,0 +1,29 @@
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test b1QueueCheckpointFailure021...
+SF_VIEW mode=HIGH pending=false
+SF_FG admission_begin
+DEBUG (16:48): B1_QUEUE_DIAG job=false pending=false failure=admission-retry deferred=true context=true
+DEBUG (16:48): B1_QUEUE_CHECKPOINT failure_keeps_commit_and_facts=true retry_deferred=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1QueueCheckpointFailure021         PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test b1SeedActualNext...
+DEBUG (16:48): REAL_CAPTURE seed_generation_56_and_57=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1SeedActualNext                    PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

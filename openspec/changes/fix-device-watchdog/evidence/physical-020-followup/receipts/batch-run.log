@@ -1,0 +1,33 @@
+SF_VIEW mode=HIGH pending=false
+SF_WAKE before_init build=0.1.26 id=1741ab3b now=1794846826 registered=1794849741 last=1794846141
+SF_STORE sf.commit type=dict v=6 generation=2
+SF_STORE sf.recovery type=dict v=6 generation=1
+SF_STORE sf.incoming.feed type=dict v=2 sequence=3
+SF_STORE sf.batch.head type=dict pending=false
+SF_STORE sf.batch.pending type=dict pending=false
+SF_STORE sf.incoming.feed.deferred absent
+SF_STORE sf.incoming.feed.rejected absent
+SF_STORE sf.attempt type=dict utc=1794846141 build=0.1.21
+SF_FG admission_begin used=98760
+SF_TRACE stage=new used=95696
+SF_TRACE stage=reader used=97224
+SF_TRACE stage=packet-0 used=102984
+SF_TRACE stage=packet-1 used=105600
+SF_TRACE stage=packet-2 used=110488
+SF_TRACE stage=packet-3 used=116936
+SF_TRACE stage=packet-4 used=115568
+SF_TRACE stage=packet-5 used=115112
+SF_TRACE stage=packet-6 used=115200
+SF_TRACE stage=packet-7 used=115288
+SF_TRACE stage=packet-8 used=115712
+SF_TRACE stage=promotion-0 used=116056
+SF_TRACE stage=promotion-10 used=112704
+SF_TRACE stage=promotion-1 used=112936
+SF_TRACE stage=promotion-2 used=107256
+SF_TRACE stage=promotion-3 used=107256
+
+Error: Out Of Memory Error
+Details: Failed invoking <symbol>
+Stack: 
+  -  at 
+Encountered an app crash.

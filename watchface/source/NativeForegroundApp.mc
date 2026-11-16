@@ -8,10 +8,10 @@ module NativeForegroundApp {
     function traceWake(stage){try{var now=Time.now().value();var registered=Background.getTemporalEventRegisteredTime();var last=Background.getLastTemporalEventTime();System.println("SF_WAKE "+stage+" build="+NativeVersion.BUILD+" id="+NativeVersion.ID+" now="+now+" registered="+(registered==null?"none":registered.value())+" last="+(last==null?"none":last.value()));}catch(ignore){System.println("SF_WAKE status_unavailable");}}
     // Fixed metadata only: the app reads its own durable state without dumping
     // stored launch text, settings, URL, health values, tokens or hashes.
-    function traceStored(cache,key){try{var row=cache.store.read(key);if(row==null){System.println("SF_STORE "+key+" absent");return;}if(!(row instanceof Dictionary)){System.println("SF_STORE "+key+" type=other");return;}var msg="SF_STORE "+key+" type=dict";var names=["v","generation","sequence","pending","until","utc"];for(var i=0;i<names.size();i+=1){var k=names[i];if(row.hasKey(k)){var value=row[k];if(value instanceof Number||value instanceof Long||value instanceof Boolean){msg+=" "+k+"="+value;}}}System.println(msg);}catch(ignore){System.println("SF_STORE "+key+" unavailable");}}
+    function traceStored(cache,key){try{var row=cache.store.read(key);if(row==null){System.println("SF_STORE "+key+" absent");return;}if(!(row instanceof Dictionary)){System.println("SF_STORE "+key+" type=other");return;}var msg="SF_STORE "+key+" type=dict";var names=["v","generation","sequence","pending","until","utc"];for(var i=0;i<names.size();i+=1){var k=names[i];if(row.hasKey(k)){var value=row[k];if(value instanceof Number||value instanceof Long||value instanceof Boolean){msg+=" "+k+"="+value;}}}if(key.equals("sf.attempt")&&row["build"] instanceof String){var build=row["build"];var valid=build.length()>0&&build.length()<=16;for(var b=0;b<build.length()&&valid;b+=1){if("0123456789.".find(build.substring(b,b+1))==null){valid=false;}}if(valid){msg+=" build="+build;}}System.println(msg);}catch(ignore){System.println("SF_STORE "+key+" unavailable");}}
     function initial(app) as [WatchUi.WatchFace] {
-        traceWake("initial");app.view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));
-        app.view.setSettings(new SceneSettings(null).load());var selected=new NativeCache(configuredFeedUrl(),null);app.feed=selected;var keys=["sf.commit","sf.recovery","sf.incoming.feed","sf.batch.head","sf.batch.pending","sf.incoming.feed.deferred","sf.incoming.feed.rejected","sf.attempt"];for(var i=0;i<keys.size();i+=1){traceStored(selected,keys[i]);}app.restoreSeal=null;app.restorePending=true;app.view.admissionPending=true;app.view.presentation.suspend();app.view.pendingLoader=app.method(:reloadFeed);app.view.syncDisplayMode(System.getDisplayMode());return [app.view as WatchUi.WatchFace];
+        app.view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));
+        try{app.view.setSettings(app.initialSettings());}catch(e){}app.view.bootstrapPending=true;app.view.pendingLoader=app.method(:reloadFeed);app.view.cancelAdmission=app.method(:cancelWork);app.view.syncDisplayMode(System.getDisplayMode());return [app.view as WatchUi.WatchFace];
     }
     function display(app,cache){
         if(app.view==null){return;}LaunchReminderForeground.publish(cache,Time.now().value().toLong());if(cache.packet==null||app.view.packet!=cache.packet||cache.packet.document.hasKey("dictionaries")||app.view.context!=cache.packet.presentation){app.view.setPacket(cache.packet);}if(cache.packet!=null){try{var owner=cache.packet.document["publisher"]["instance"];var saved=new NativeUpcomingCache(cache.store,cache.base,owner).load();app.view.mergeSaved(saved,Time.now().value().toLong(),cache.packet.terminalUpdates);}catch(e){}app.view.setAssetCache(new NativeRenderSource(cache.store,cache.base,cache.packet.bridge));}
@@ -58,12 +58,18 @@ module NativeForegroundApp {
         app.view.cancelSfrBuild();
         app.view.stopFitness();app.view.stopAnimation();app.view.releaseVisualForSettings();app.view.assetCache=null;app.view.visualKey=null;app.view.presentation.suspend();app.view.packet=null;
         app.view.admissionPending=true;WatchUi.requestUpdate();
+        // Checkpoint the already accepted queue before a new feed/parser owns
+        // the heap. Its publisher is still the accepted publisher; a different
+        // incoming publisher is rejected by promotion. A failed checkpoint
+        // leaves the current facts visible and asks for a later retry.
+        var queueSaved=false;
+        if(cache.packet!=null){try{var priorPublisher=cache.packet instanceof NativePrior?cache.packet.publisher:cache.packet.document["publisher"];new NativeUpcomingCache(cache.store,cache.base,priorPublisher["instance"]).save(app.view.queueSnapshots());queueSaved=true;app.view.upcoming=[];}catch(e){cache.failure="admission-retry";try{var waiting=cache.store.read("sf.incoming.feed");if(incoming.validFeedMarker(waiting)){incoming.defer(waiting,now);}}catch(ignore){}app.view.admissionPending=false;app.view.resumeAfterAdmission();return;}}
         var seal=cache.commit instanceof Dictionary?cache.commit["seal"]:null;
         // A provisional wire digest equal to an already accepted packet can
         // reuse that packet only after the incoming chunks authenticate.
         var pending=cache.store.read("sf.incoming.feed");var duplicate=cache.packet instanceof NativeFeed&&pending instanceof Dictionary&&pending["sha256"] instanceof String&&pending["sha256"].equals(cache.packet.wireHash)?cache.packet:null;
         var key=cache.commitKey;cache.releaseForTransfer(now);
-        app.admissionJob={"cache"=>cache,"incoming"=>incoming,"setting"=>configuredFeedUrl(),"seal"=>seal,"key"=>key,"now"=>now,"row"=>null,"reader"=>null,"packet"=>null,"promotion"=>null,"duplicate"=>duplicate};
+        app.admissionJob={"cache"=>cache,"incoming"=>incoming,"setting"=>configuredFeedUrl(),"seal"=>seal,"key"=>key,"now"=>now,"row"=>null,"reader"=>null,"packet"=>null,"promotion"=>null,"duplicate"=>duplicate,"queueSaved"=>queueSaved};
         app.queueAdmission();
     }
     function failAdmission(app){
@@ -92,7 +98,7 @@ module NativeForegroundApp {
             if(!(marker instanceof Dictionary)||!(marker["sha256"] instanceof String)||!incoming.token(marker).equals(incoming.token(row[0]))){failAdmission(app);return;}
             var packet=job["packet"];
             if(packet.preparePhase<8){packet.prepareStep();app.queueAdmission();return;}
-            if(job["promotion"]==null){job["promotion"]=new NativeFeedPromotion(cache,incoming.takeRaw(row),packet,job["now"],app.view);app.queueAdmission();return;}
+            if(job["promotion"]==null){job["promotion"]=new NativeFeedPromotion(cache,incoming.takeRaw(row),packet,job["now"],app.view);job["promotion"].queueSaved=job["queueSaved"]==true;app.queueAdmission();return;}
             var promotion=job["promotion"];if(!promotion.step()){app.queueAdmission();return;}var accepted=promotion.accepted;
             if(accepted){System.println("SF_FG admission_accepted");try{incoming.processed("feed",row[0]);incoming.clearRejected(row[0]);incoming.clearDeferred();}catch(ignore){}}else if(!cache.failure.equals("admission-retry")){incoming.rejected(row[0],Time.now().value().toLong());incoming.processed("feed",row[0]);}
             if(!accepted){failAdmission(app);return;}
@@ -114,12 +120,12 @@ module NativeForegroundApp {
         try {
             if (!(selected instanceof NativeCache) || !selected.base.equals(url)) {
                 // Host changes own a separate identity namespace.
-                if (app.view != null && app.view.renderer != null) {
+                if (app.view != null) {
                     rebuild=true;app.view.releaseRenderer();
                 }
                 if (app.view != null) { app.view.setPacket(null); }
-                selected=new NativeCache(url,null);app.feed=selected;
-                if(app.view!=null){app.view.resetRollover();}app.restoreSeal=null;if(app.restoreJob!=null){app.restoreJob.dispose();}app.restoreJob=null;app.restorePending=true;app.queueRestore();return;
+                traceWake("before_init");selected=new NativeCache(url,null);app.feed=selected;var keys=["sf.commit","sf.recovery","sf.incoming.feed","sf.batch.head","sf.batch.pending","sf.incoming.feed.deferred","sf.incoming.feed.rejected","sf.attempt"];for(var i=0;i<keys.size();i+=1){traceStored(selected,keys[i]);}
+                if(app.view!=null){app.view.resetRollover();app.view.admissionPending=true;}app.restoreSeal=null;if(app.restoreJob!=null){app.restoreJob.dispose();}app.restoreJob=null;app.restorePending=true;app.queueRestore();return;
             }
             if (!selected.base.equals("")) {
                 var incoming=new NativeIncoming(selected.store,selected.base);
@@ -132,7 +138,7 @@ module NativeForegroundApp {
             display(app,selected);
             if(selected.packet!=null&&app.view!=null){savePlan(selected,selected.packet.document["refreshPolicy"],app.view);}
         } finally {
-            if (rebuild) { app.view.prepareRenderer(); }
+            if (rebuild && !app.view.admissionPending) { app.view.prepareRenderer(); }
         }
         if (app.view != null && System.getDisplayMode() == System.DISPLAY_MODE_HIGH_POWER) { app.view.prepareVisual(); }
 

@@ -1,0 +1,433 @@
+{
+  "schema_version": 2,
+  "change": "restore-fr165-runtime-guarantees",
+  "requirements": [
+    {
+      "id": "B1R1",
+      "capability": "runtime",
+      "title": "First frame keeps the clock independent",
+      "fingerprint": "b46219ab7e58a6347effc1eb6bf85e0a45f2de93746f2e74fc5e52c5c4f27398"
+    },
+    {
+      "id": "B1R2",
+      "capability": "runtime",
+      "title": "Countdown follows current time across lifecycle",
+      "fingerprint": "7b405108df67e324cf157f380e0d6b6b1c491dcaf692b85d2c754fd54cf6d374"
+    },
+    {
+      "id": "B1R3",
+      "capability": "runtime",
+      "title": "Runtime resource and lifecycle bounds",
+      "fingerprint": "7228048e0b1c7b0d9adde15e1e12f0eefc688c19767794b0db06ecdc8a888dbf"
+    }
+  ],
+  "properties": [
+    {
+      "id": "B1R1.P1",
+      "requirement_id": "B1R1",
+      "scenarios": [
+        "Cold display without data"
+      ],
+      "statement": "Clock and local date visible before feed or asset work",
+      "owner": "watchface/source/SpaceFoxView.mc",
+      "oracle": "Actual native lifecycle, source-bound captured facts, real device display and independent resource measurements; no acceptance inferred from graph.",
+      "source_globs": [
+        "watchface/source/**",
+        "watchface/runtime-b1-tests/**",
+        "tests/fixtures/fr165-runtime-20261116/**"
+      ]
+    },
+    {
+      "id": "B1R1.P2",
+      "requirement_id": "B1R1",
+      "scenarios": [
+        "Optional work fails"
+      ],
+      "statement": "Time and date continue on later permitted frames",
+      "owner": "watchface/source/SpaceFoxView.mc",
+      "oracle": "Actual native lifecycle, source-bound captured facts, real device display and independent resource measurements; no acceptance inferred from graph.",
+      "source_globs": [
+        "watchface/source/**",
+        "watchface/runtime-b1-tests/**",
+        "tests/fixtures/fr165-runtime-20261116/**"
+      ]
+    },
+    {
+      "id": "B1R2.P1",
+      "requirement_id": "B1R2",
+      "scenarios": [
+        "Loading and delayed frame"
+      ],
+      "statement": "ACTIVE countdown follows current UTC while decode runs and after pause",
+      "owner": "watchface/source/SpaceFoxView.mc",
+      "oracle": "Actual native lifecycle, source-bound captured facts, real device display and independent resource measurements; no acceptance inferred from graph.",
+      "source_globs": [
+        "watchface/source/**",
+        "watchface/runtime-b1-tests/**",
+        "tests/fixtures/fr165-runtime-20261116/**"
+      ]
+    },
+    {
+      "id": "B1R2.P2",
+      "requirement_id": "B1R2",
+      "scenarios": [
+        "Low power transition"
+      ],
+      "statement": "LOW has minute precision and HIGH catches up without frozen seconds",
+      "owner": "watchface/source/SpaceFoxView.mc",
+      "oracle": "Actual native lifecycle, source-bound captured facts, real device display and independent resource measurements; no acceptance inferred from graph.",
+      "source_globs": [
+        "watchface/source/**",
+        "watchface/runtime-b1-tests/**",
+        "tests/fixtures/fr165-runtime-20261116/**"
+      ]
+    },
+    {
+      "id": "B1R3.P1",
+      "requirement_id": "B1R3",
+      "scenarios": [
+        "Cold acquisition and staged artwork"
+      ],
+      "statement": "Admission, clock and resource peaks remain bounded during cold acquisition",
+      "owner": "watchface/source/SpaceFoxView.mc",
+      "oracle": "Actual native lifecycle, source-bound captured facts, real device display and independent resource measurements; no acceptance inferred from graph.",
+      "source_globs": [
+        "watchface/source/**",
+        "watchface/runtime-b1-tests/**",
+        "tests/fixtures/fr165-runtime-20261116/**"
+      ]
+    },
+    {
+      "id": "B1R3.P2",
+      "requirement_id": "B1R3",
+      "scenarios": [
+        "Work interrupted by lifecycle"
+      ],
+      "statement": "Owned work cannot publish stale output, exhaust budgets or block clock",
+      "owner": "watchface/source/SpaceFoxView.mc",
+      "oracle": "Actual native lifecycle, source-bound captured facts, real device display and independent resource measurements; no acceptance inferred from graph.",
+      "source_globs": [
+        "watchface/source/**",
+        "watchface/runtime-b1-tests/**",
+        "tests/fixtures/fr165-runtime-20261116/**"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "B1R1.P1.POSITIVE",
+      "property_id": "B1R1.P1",
+      "polarity": "positive",
+      "scenario": "Cold display without data",
+      "scenario_fingerprint": "4d990c010cecd3215315054f25afbb1dd1c912c3220c930fbb1bf8c73f3479ac",
+      "setup": "empty storage and failing optional assets before first physical/SDK frame; normal path",
+      "observable": "Clock and local date visible before feed or asset work",
+      "red_expectation": "Reject missing clock, frozen time, stale output, unbounded work or a missing required observation.",
+      "green_expectation": "The specified observation occurs for this scenario with no contradictory exception or missing resource/device receipt.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b1-tests/**",
+        "tests/fixtures/fr165-runtime-20261116/**"
+      ],
+      "test_id": "PENDING_1_1_positive",
+      "command_id": "pending-proof",
+      "state": "planned",
+      "source_path": "watchface/runtime-b1-tests/ColdAcquisition.mc",
+      "substitution": {
+        "classification": "UNDECIDED"
+      },
+      "planning_note": "Pending mapping to final exact observer and its proof boundary; not a claimed execution."
+    },
+    {
+      "id": "B1R1.P1.NEGATIVE",
+      "property_id": "B1R1.P1",
+      "polarity": "negative",
+      "scenario": "Cold display without data",
+      "scenario_fingerprint": "4d990c010cecd3215315054f25afbb1dd1c912c3220c930fbb1bf8c73f3479ac",
+      "setup": "empty storage and failing optional assets before first physical/SDK frame; inject a single component failure or interruption",
+      "observable": "Clock and local date visible before feed or asset work",
+      "red_expectation": "Reject missing clock, frozen time, stale output, unbounded work or a missing required observation.",
+      "green_expectation": "The specified observation occurs for this scenario with no contradictory exception or missing resource/device receipt.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b1-tests/**",
+        "tests/fixtures/fr165-runtime-20261116/**"
+      ],
+      "test_id": "PENDING_1_1_negative",
+      "command_id": "pending-proof",
+      "state": "planned",
+      "source_path": "watchface/runtime-b1-tests/ColdAcquisition.mc",
+      "substitution": {
+        "classification": "UNDECIDED"
+      },
+      "planning_note": "Pending mapping to final exact observer and its proof boundary; not a claimed execution."
+    },
+    {
+      "id": "B1R1.P2.POSITIVE",
+      "property_id": "B1R1.P2",
+      "polarity": "positive",
+      "scenario": "Optional work fails",
+      "scenario_fingerprint": "e56dd09ef1e6fa57d47ee78fa9c3eb47d5b8b4d0889ebe08fb045e7d955d9453",
+      "setup": "inject a renderer, cache or health callback failure after a frame; normal path",
+      "observable": "Time and date continue on later permitted frames",
+      "red_expectation": "Reject missing clock, frozen time, stale output, unbounded work or a missing required observation.",
+      "green_expectation": "The specified observation occurs for this scenario with no contradictory exception or missing resource/device receipt.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b1-tests/**",
+        "tests/fixtures/fr165-runtime-20261116/**"
+      ],
+      "test_id": "PENDING_1_2_positive",
+      "command_id": "pending-proof",
+      "state": "planned",
+      "source_path": "watchface/runtime-b1-tests/ColdAcquisition.mc",
+      "substitution": {
+        "classification": "UNDECIDED"
+      },
+      "planning_note": "Pending mapping to final exact observer and its proof boundary; not a claimed execution."
+    },
+    {
+      "id": "B1R1.P2.NEGATIVE",
+      "property_id": "B1R1.P2",
+      "polarity": "negative",
+      "scenario": "Optional work fails",
+      "scenario_fingerprint": "e56dd09ef1e6fa57d47ee78fa9c3eb47d5b8b4d0889ebe08fb045e7d955d9453",
+      "setup": "inject a renderer, cache or health callback failure after a frame; inject a single component failure or interruption",
+      "observable": "Time and date continue on later permitted frames",
+      "red_expectation": "Reject missing clock, frozen time, stale output, unbounded work or a missing required observation.",
+      "green_expectation": "The specified observation occurs for this scenario with no contradictory exception or missing resource/device receipt.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b1-tests/**",
+        "tests/fixtures/fr165-runtime-20261116/**"
+      ],
+      "test_id": "PENDING_1_2_negative",
+      "command_id": "pending-proof",
+      "state": "planned",
+      "source_path": "watchface/runtime-b1-tests/ColdAcquisition.mc",
+      "substitution": {
+        "classification": "UNDECIDED"
+      },
+      "planning_note": "Pending mapping to final exact observer and its proof boundary; not a claimed execution."
+    },
+    {
+      "id": "B1R2.P1.POSITIVE",
+      "property_id": "B1R2.P1",
+      "polarity": "positive",
+      "scenario": "Loading and delayed frame",
+      "scenario_fingerprint": "557ccf476438f919aa929c02f82f4958f3311c59d4772f5696c08d55d83f8486",
+      "setup": "captured MIN successor with actual scene build pending and controlled UTC delay; normal path",
+      "observable": "ACTIVE countdown follows current UTC while decode runs and after pause",
+      "red_expectation": "Reject missing clock, frozen time, stale output, unbounded work or a missing required observation.",
+      "green_expectation": "The specified observation occurs for this scenario with no contradictory exception or missing resource/device receipt.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b1-tests/**",
+        "tests/fixtures/fr165-runtime-20261116/**"
+      ],
+      "test_id": "PENDING_2_1_positive",
+      "command_id": "pending-proof",
+      "state": "planned",
+      "source_path": "watchface/runtime-b1-tests/ColdAcquisition.mc",
+      "substitution": {
+        "classification": "UNDECIDED"
+      },
+      "planning_note": "Pending mapping to final exact observer and its proof boundary; not a claimed execution."
+    },
+    {
+      "id": "B1R2.P1.NEGATIVE",
+      "property_id": "B1R2.P1",
+      "polarity": "negative",
+      "scenario": "Loading and delayed frame",
+      "scenario_fingerprint": "557ccf476438f919aa929c02f82f4958f3311c59d4772f5696c08d55d83f8486",
+      "setup": "captured MIN successor with actual scene build pending and controlled UTC delay; inject a single component failure or interruption",
+      "observable": "ACTIVE countdown follows current UTC while decode runs and after pause",
+      "red_expectation": "Reject missing clock, frozen time, stale output, unbounded work or a missing required observation.",
+      "green_expectation": "The specified observation occurs for this scenario with no contradictory exception or missing resource/device receipt.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b1-tests/**",
+        "tests/fixtures/fr165-runtime-20261116/**"
+      ],
+      "test_id": "PENDING_2_1_negative",
+      "command_id": "pending-proof",
+      "state": "planned",
+      "source_path": "watchface/runtime-b1-tests/ColdAcquisition.mc",
+      "substitution": {
+        "classification": "UNDECIDED"
+      },
+      "planning_note": "Pending mapping to final exact observer and its proof boundary; not a claimed execution."
+    },
+    {
+      "id": "B1R2.P2.POSITIVE",
+      "property_id": "B1R2.P2",
+      "polarity": "positive",
+      "scenario": "Low power transition",
+      "scenario_fingerprint": "06edbe465ed3750e37db512c0ba07f8224e851562fa61a6bb0ff5905a263bf9b",
+      "setup": "ACTIVE build pending, transition LOW then HIGH using captured target; normal path",
+      "observable": "LOW has minute precision and HIGH catches up without frozen seconds",
+      "red_expectation": "Reject missing clock, frozen time, stale output, unbounded work or a missing required observation.",
+      "green_expectation": "The specified observation occurs for this scenario with no contradictory exception or missing resource/device receipt.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b1-tests/**",
+        "tests/fixtures/fr165-runtime-20261116/**"
+      ],
+      "test_id": "PENDING_2_2_positive",
+      "command_id": "pending-proof",
+      "state": "planned",
+      "source_path": "watchface/runtime-b1-tests/ColdAcquisition.mc",
+      "substitution": {
+        "classification": "UNDECIDED"
+      },
+      "planning_note": "Pending mapping to final exact observer and its proof boundary; not a claimed execution."
+    },
+    {
+      "id": "B1R2.P2.NEGATIVE",
+      "property_id": "B1R2.P2",
+      "polarity": "negative",
+      "scenario": "Low power transition",
+      "scenario_fingerprint": "06edbe465ed3750e37db512c0ba07f8224e851562fa61a6bb0ff5905a263bf9b",
+      "setup": "ACTIVE build pending, transition LOW then HIGH using captured target; inject a single component failure or interruption",
+      "observable": "LOW has minute precision and HIGH catches up without frozen seconds",
+      "red_expectation": "Reject missing clock, frozen time, stale output, unbounded work or a missing required observation.",
+      "green_expectation": "The specified observation occurs for this scenario with no contradictory exception or missing resource/device receipt.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b1-tests/**",
+        "tests/fixtures/fr165-runtime-20261116/**"
+      ],
+      "test_id": "PENDING_2_2_negative",
+      "command_id": "pending-proof",
+      "state": "planned",
+      "source_path": "watchface/runtime-b1-tests/ColdAcquisition.mc",
+      "substitution": {
+        "classification": "UNDECIDED"
+      },
+      "planning_note": "Pending mapping to final exact observer and its proof boundary; not a claimed execution."
+    },
+    {
+      "id": "B1R3.P1.POSITIVE",
+      "property_id": "B1R3.P1",
+      "polarity": "positive",
+      "scenario": "Cold acquisition and staged artwork",
+      "scenario_fingerprint": "19e1d847331e8392f0b1302c9d1c4c366be5b2d960b81ba13854039daf4423ad",
+      "setup": "captured text/plain feed, catalog and immutable closure through real owners; normal path",
+      "observable": "Admission, clock and resource peaks remain bounded during cold acquisition",
+      "red_expectation": "Reject missing clock, frozen time, stale output, unbounded work or a missing required observation.",
+      "green_expectation": "The specified observation occurs for this scenario with no contradictory exception or missing resource/device receipt.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b1-tests/**",
+        "tests/fixtures/fr165-runtime-20261116/**"
+      ],
+      "test_id": "PENDING_3_1_positive",
+      "command_id": "pending-proof",
+      "state": "planned",
+      "source_path": "watchface/runtime-b1-tests/ColdAcquisition.mc",
+      "substitution": {
+        "classification": "UNDECIDED"
+      },
+      "planning_note": "Pending mapping to final exact observer and its proof boundary; not a claimed execution."
+    },
+    {
+      "id": "B1R3.P1.NEGATIVE",
+      "property_id": "B1R3.P1",
+      "polarity": "negative",
+      "scenario": "Cold acquisition and staged artwork",
+      "scenario_fingerprint": "19e1d847331e8392f0b1302c9d1c4c366be5b2d960b81ba13854039daf4423ad",
+      "setup": "captured text/plain feed, catalog and immutable closure through real owners; inject a single component failure or interruption",
+      "observable": "Admission, clock and resource peaks remain bounded during cold acquisition",
+      "red_expectation": "Reject missing clock, frozen time, stale output, unbounded work or a missing required observation.",
+      "green_expectation": "The specified observation occurs for this scenario with no contradictory exception or missing resource/device receipt.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b1-tests/**",
+        "tests/fixtures/fr165-runtime-20261116/**"
+      ],
+      "test_id": "PENDING_3_1_negative",
+      "command_id": "pending-proof",
+      "state": "planned",
+      "source_path": "watchface/runtime-b1-tests/ColdAcquisition.mc",
+      "substitution": {
+        "classification": "UNDECIDED"
+      },
+      "planning_note": "Pending mapping to final exact observer and its proof boundary; not a claimed execution."
+    },
+    {
+      "id": "B1R3.P2.POSITIVE",
+      "property_id": "B1R3.P2",
+      "polarity": "positive",
+      "scenario": "Work interrupted by lifecycle",
+      "scenario_fingerprint": "cf439f0e0ac6b1081c6edb8381f124a7e9c07b0c0b2dc63110b5b69340486d0c",
+      "setup": "pending acquisition or decoder at LOW, OFF or hide, followed by HIGH and reopen; normal path",
+      "observable": "Owned work cannot publish stale output, exhaust budgets or block clock",
+      "red_expectation": "Reject missing clock, frozen time, stale output, unbounded work or a missing required observation.",
+      "green_expectation": "The specified observation occurs for this scenario with no contradictory exception or missing resource/device receipt.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b1-tests/**",
+        "tests/fixtures/fr165-runtime-20261116/**"
+      ],
+      "test_id": "PENDING_3_2_positive",
+      "command_id": "pending-proof",
+      "state": "planned",
+      "source_path": "watchface/runtime-b1-tests/ColdAcquisition.mc",
+      "substitution": {
+        "classification": "UNDECIDED"
+      },
+      "planning_note": "Pending mapping to final exact observer and its proof boundary; not a claimed execution."
+    },
+    {
+      "id": "B1R3.P2.NEGATIVE",
+      "property_id": "B1R3.P2",
+      "polarity": "negative",
+      "scenario": "Work interrupted by lifecycle",
+      "scenario_fingerprint": "cf439f0e0ac6b1081c6edb8381f124a7e9c07b0c0b2dc63110b5b69340486d0c",
+      "setup": "pending acquisition or decoder at LOW, OFF or hide, followed by HIGH and reopen; inject a single component failure or interruption",
+      "observable": "Owned work cannot publish stale output, exhaust budgets or block clock",
+      "red_expectation": "Reject missing clock, frozen time, stale output, unbounded work or a missing required observation.",
+      "green_expectation": "The specified observation occurs for this scenario with no contradictory exception or missing resource/device receipt.",
+      "invalidation_dependencies": [
+        "watchface/source/**",
+        "watchface/runtime-b1-tests/**",
+        "tests/fixtures/fr165-runtime-20261116/**"
+      ],
+      "test_id": "PENDING_3_2_negative",
+      "command_id": "pending-proof",
+      "state": "planned",
+      "source_path": "watchface/runtime-b1-tests/ColdAcquisition.mc",
+      "substitution": {
+        "classification": "UNDECIDED"
+      },
+      "planning_note": "Pending mapping to final exact observer and its proof boundary; not a claimed execution."
+    }
+  ],
+  "commands": [
+    {
+      "id": "pending-proof",
+      "runner": "command",
+      "argv": [
+        "/usr/bin/false"
+      ],
+      "cwd": ".",
+      "timeout_seconds": 1,
+      "authority": "protected",
+      "expected_markers": [
+        "PENDING_1_1_positive",
+        "PENDING_1_1_negative",
+        "PENDING_1_2_positive",
+        "PENDING_1_2_negative",
+        "PENDING_2_1_positive",
+        "PENDING_2_1_negative",
+        "PENDING_2_2_positive",
+        "PENDING_2_2_negative",
+        "PENDING_3_1_positive",
+        "PENDING_3_1_negative",
+        "PENDING_3_2_positive",
+        "PENDING_3_2_negative"
+      ],
+      "notes": "Explicit failing placeholder while exact behavioral/device observers are unresolved; never a passing gate."
+    }
+  ]
+}

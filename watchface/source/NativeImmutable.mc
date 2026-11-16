@@ -58,11 +58,16 @@ class NativeBatch {
         var prefix="\"objects\":[";var at=raw.find(prefix);if(at==null){throw new Lang.InvalidValueException("Batch objects absent");}at+=prefix.length();var rows=[];var total=0;var seen={};
         while(at<raw.length()&&!raw.substring(at,at+1).equals("]")){
             if(rows.size()>0){if(!raw.substring(at,at+1).equals(",")){throw new Lang.InvalidValueException("Batch comma");}at+=1;}
-            if(at+70>=raw.length()||!raw.substring(at,at+1).equals("[")){throw new Lang.InvalidValueException("Batch row");}var kind=raw.substring(at+1,at+2);if(!kind.equals("0")&&!kind.equals("1")||!raw.substring(at+2,at+4).equals(",\"")){throw new Lang.InvalidValueException("Batch kind");}var digest=raw.substring(at+4,at+68);if(!nativeHex(digest)||!raw.substring(at+68,at+70).equals("\",")){throw new Lang.InvalidValueException("Batch digest");}at+=70;var start=at;while(at<raw.length()&&"0123456789".find(raw.substring(at,at+1))!=null){at+=1;}var number=raw.substring(start,at);if(number.length()==0||number.length()>4||number.substring(0,1).equals("0")||!raw.substring(at,at+1).equals("]")){throw new Lang.InvalidValueException("Batch size");}at+=1;var size=number.toNumber();if(size<1||size>4096||seen.hasKey(digest)){throw new Lang.InvalidValueException("Batch bound");}seen[digest]=true;total+=size;var path=kind.equals("1")?"rasters/"+digest+".sfr":"descriptors/"+digest+".json";rows.add({"path"=>path,"sha256"=>digest,"decodedBytes"=>size});if(rows.size()>40||total>114688){throw new Lang.InvalidValueException("Batch complete bound");}
+            if(at+70>=raw.length()||!raw.substring(at,at+1).equals("[")){throw new Lang.InvalidValueException("Batch row");}var kind=raw.substring(at+1,at+2);if(!kind.equals("0")&&!kind.equals("1")||!raw.substring(at+2,at+4).equals(",\"")){throw new Lang.InvalidValueException("Batch kind");}var digest=raw.substring(at+4,at+68);if(!nativeHex(digest)||!raw.substring(at+68,at+70).equals("\",")){throw new Lang.InvalidValueException("Batch digest");}at+=70;var start=at;while(at<raw.length()&&"0123456789".find(raw.substring(at,at+1))!=null){at+=1;}var number=raw.substring(start,at);if(number.length()==0||number.length()>4||number.substring(0,1).equals("0")||!raw.substring(at,at+1).equals("]")){throw new Lang.InvalidValueException("Batch size");}at+=1;var size=number.toNumber();if(size<1||size>4096||seen.hasKey(digest)){throw new Lang.InvalidValueException("Batch bound");}seen[digest]=true;total+=size;rows.add([kind.equals("1")?1:0,digest,size]);if(rows.size()>40||total>114688){throw new Lang.InvalidValueException("Batch complete bound");}
         }
         if(at>=raw.length()||!raw.substring(at,at+1).equals("]")){throw new Lang.InvalidValueException("Batch end");}return rows;
     }
-    function sameRefs(rows){var saved=store.read("sf.batch.refs");if(!(saved instanceof Dictionary)||saved.size()!=2||!(saved["base"] instanceof String)||!saved["base"].equals(base)||!(saved["refs"] instanceof Array)||saved["refs"].size()!=rows.size()){return false;}for(var i=0;i<rows.size();i+=1){var a=saved["refs"][i];var b=rows[i];if(!(a instanceof Dictionary)||a.size()!=3||!(a["path"] instanceof String)||!a["path"].equals(b["path"])||!(a["sha256"] instanceof String)||!a["sha256"].equals(b["sha256"])||!(a["decodedBytes"] instanceof Number||a["decodedBytes"] instanceof Long)||a["decodedBytes"]!=b["decodedBytes"]){return false;}}return true;}
+    // Keep only compact digest tuples while comparing the durable rows. This
+    // avoids holding two full path/digest dictionary arrays in background.
+    function reference(row){return {"path"=>(row[0]==1?"rasters/"+row[1]+".sfr":"descriptors/"+row[1]+".json"),"sha256"=>row[1],"decodedBytes"=>row[2]};}
+    function durableRefs(rows){var result=[];for(var i=0;i<rows.size();i+=1){result.add(reference(rows[i]));}return result;}
+    function sameRefs(rows){var saved=store.read("sf.batch.refs");if(!(saved instanceof Dictionary)||saved.size()!=2||!(saved["base"] instanceof String)||!saved["base"].equals(base)||!(saved["refs"] instanceof Array)||saved["refs"].size()!=rows.size()){return false;}for(var i=0;i<rows.size();i+=1){var a=saved["refs"][i];var b=rows[i];var path=b[0]==1?"rasters/"+b[1]+".sfr":"descriptors/"+b[1]+".json";if(!(a instanceof Dictionary)||a.size()!=3||!(a["path"] instanceof String)||!a["path"].equals(path)||!(a["sha256"] instanceof String)||!a["sha256"].equals(b[1])||!(a["decodedBytes"] instanceof Number||a["decodedBytes"] instanceof Long)||a["decodedBytes"]!=b[2]){return false;}}return true;}
+
     // The service instance reuses already verified prefix entries while it
     // downloads the remaining objects. Completion always performs a fresh
     // digest scan, so a later missing or corrupted object is requested again.
@@ -73,14 +78,14 @@ class NativeBatch {
     function next(){
         if(head==null){return null;}var catalog={"path"=>"wire3/catalogs/"+head["catalogDigest"]+".json","sha256"=>head["catalogDigest"],"decodedBytes"=>null};if(!verifiedRef(catalog)){return pending(catalog);}
         if(head["transfer"]!=null){
-            if(refs==null){var raw=immutable.raw(head["transfer"]);if(raw==null){return pending(head["transfer"]);}verified[head["transfer"]["sha256"]]=head["transfer"]["decodedBytes"];refs=parseIndex(raw);if(!sameRefs(refs)){store.write("sf.batch.refs",{"base"=>base,"refs"=>refs});}}
+            if(refs==null){var raw=immutable.raw(head["transfer"]);if(raw==null){return pending(head["transfer"]);}verified[head["transfer"]["sha256"]]=head["transfer"]["decodedBytes"];refs=parseIndex(raw);raw=null;if(!sameRefs(refs)){store.write("sf.batch.refs",{"base"=>base,"refs"=>durableRefs(refs)});}}
             else if(!verifiedRef(head["transfer"])){return pending(head["transfer"]);}
-            for(var i=0;i<refs.size();i+=1){if(!verifiedRef(refs[i])){return pending(refs[i]);}}
+            for(var i=0;i<refs.size();i+=1){var r=reference(refs[i]);if(!verifiedRef(r)){return pending(r);}}
         }
         // Recheck the entire closure immediately before completion; prefix
         // reuse cannot hide removal or corruption between network callbacks.
         if(immutable.raw(catalog)==null){verified.remove(catalog["sha256"]);return pending(catalog);}
-        if(head["transfer"]!=null){if(immutable.raw(head["transfer"])==null){verified.remove(head["transfer"]["sha256"]);return pending(head["transfer"]);}for(var j=0;j<refs.size();j+=1){if(immutable.raw(refs[j])==null){verified.remove(refs[j]["sha256"]);return pending(refs[j]);}}}
+        if(head["transfer"]!=null){if(immutable.raw(head["transfer"])==null){verified.remove(head["transfer"]["sha256"]);return pending(head["transfer"]);}for(var j=0;j<refs.size();j+=1){var r=reference(refs[j]);if(immutable.raw(r)==null){verified.remove(r["sha256"]);return pending(r);}}}
         var marker=store.read("sf.batch.pending");var wasPending=marker instanceof Dictionary&&marker["base"] instanceof String&&marker["base"].equals(base)&&marker["pending"]==true;if(head["pending"]!=false||wasPending){head["serial"]=serial()+1;head["pending"]=false;head.remove("refs");store.write("sf.batch.head",head);}if(!(marker instanceof Dictionary)||!(marker["base"] instanceof String)||!marker["base"].equals(base)||marker["pending"]!=false){store.write("sf.batch.pending",{"base"=>base,"pending"=>false});}return null;
     }
 }

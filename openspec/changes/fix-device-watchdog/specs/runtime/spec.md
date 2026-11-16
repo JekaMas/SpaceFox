@@ -67,7 +67,7 @@ Feed and scene-descriptor parsing and hashing SHALL advance in bounded foregroun
 - **THEN** the existing job resumes without restarting, and the previous accepted clock, countdown and facts remain available until the verified replacement is ready.
 
 ### Requirement: Live launch acquisition and LOW continuity
-The watch face SHALL admit the current validated feed and catalog and display the selected launch and qualified site before optional artwork is ready. It SHALL preserve source precision. During acquisition and restoration, LOW SHALL retain the approved map, qualified point, clock, weekday/date, minute countdown and battery, and release temporary LOW resources before resuming HIGH work.
+The watch face SHALL admit the current validated feed and catalog and display the selected launch and qualified site before optional artwork is ready. It SHALL label an announced but inexact NET estimate while preserving source precision. During acquisition and restoration, LOW SHALL retain the approved map, qualified point, clock, weekday/date, minute countdown and battery, and release temporary LOW resources before resuming HIGH work.
 
 #### Scenario: Background catalog precedes optional closure
 - **WHEN** the feed and its pinned catalog arrive and validate
@@ -77,6 +77,10 @@ The watch face SHALL admit the current validated feed and catalog and display th
 - **WHEN** the display enters LOW with acquisition or restoration pending
 - **THEN** it shows the approved LOW composition with a default outline if no site is known and the selected point when qualified; returning to HIGH releases LOW-only resources and resumes the current bounded work.
 
-#### Scenario: Coarse source time
-- **WHEN** the selected source supplies hour-level precision without an exact time
-- **THEN** the site and map point remain available and the countdown remains explicitly unknown.
+#### Scenario: Announced but inexact source time
+- **WHEN** the selected source has no exact UTC but has a validated announced NET
+- **THEN** the face shows an explicitly estimated `~T−` before that reference and `~T+` afterward, while keeping source precision, selection, scheduling and reminders unchanged; `~T+` is elapsed time since the announced NET and is not proof of liftoff.
+
+#### Scenario: No announced reference
+- **WHEN** neither exact UTC nor validated announced NET is available
+- **THEN** the countdown remains unknown.

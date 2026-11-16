@@ -154,18 +154,19 @@ than reuse another launch's context or invent a mission task.
 The watch SHALL recompute validated launch UTC minus current UTC on redraw and wake without connectivity. Active uses accumulating seconds; LOW uses a permitted minute snapshot of the same UTC delta. Sleep MUST NOT accumulate drift. Zero does not claim liftoff.
 
 #### Scenario: Mode-specific UTC precision
-- **WHEN** the target and current UTC are known
+- **WHEN** an exact target and current UTC are known
 - **THEN** active displays ASCII `T- HH:MM:SS` before target and `T+ HH:MM:SS` at and after target, with accumulating hours
 - **AND** each permitted LOW snapshot displays `T- HH:MM` rounded up before target and `T+ HH:MM` rounded down at and after target; no repaint is promised at a mid-minute target
-- **AND** nominal-minute targets use the same arithmetic without upgrading source precision; missing target displays `--:--:--` active and `--:--` LOW
+- **AND** a validated announced NET without an exact target uses the same arithmetic prefixed with `~`, without upgrading source precision; absent both exact target and announced NET displays `--:--:--` active and `--:--` LOW
 
 #### Scenario: Exact time available
 - **WHEN** an accepted launch has an exact UTC timestamp and the watch time zone changes
 - **THEN** the remaining duration remains correct and the displayed local time follows the watch
 
 #### Scenario: Date known but time uncertain
-- **WHEN** the provider gives only a date, coarse window or invalid/missing exact timestamp
-- **THEN** the watch displays the uncertainty marker appropriate to its mode; a validated nominal-minute target may count to its nominal UTC without changing the source precision
+- **WHEN** the provider gives an inexact validated announced NET
+- **THEN** the face displays `~T-` before it and `~T+` afterward, and does not infer exactness or liftoff
+- **AND** a date or window with no announced NET displays the mode-appropriate unknown marker
 
 #### Scenario: Offline countdown after sleep
 - **WHEN** the watch wakes after two hours asleep without connectivity and its cached exact launch is still in the future

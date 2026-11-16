@@ -30,7 +30,7 @@ function feedSceneRow(packet,row,siteData,selected){
     // bundled projection or a validated downloaded scene, never a generic map.
     var point=null;var pointText=null;
     if(siteData!=null&&siteData["positionMode"].equals("fixed-source")&&siteData["position"]!=null){var position=siteData["position"];pointText=[position["longitude"],position["latitude"]];point=[position["longitude"].toFloat(),position["latitude"].toFloat()];}
-    var timing=row["timing"];var precision=timing["precision"];var target=timing["exact_utc"];
+    var timing=row["timing"];var precision=timing["precision"];var target=timing["exact_utc"];var displayTarget=target==null?timing["nominal_utc"]:null;
     // LL2 MIN is a usable nominal minute, not an exact second. Keep its
     // approximate display precision separate from the accepted feed identity.
     if(precision.equals("source-coarse")&&timing["source_precision_id"]==1&&timing["nominal_utc"]!=null){precision="minute";target=timing["nominal_utc"];}
@@ -41,5 +41,5 @@ function feedSceneRow(packet,row,siteData,selected){
         deadline=target.toLong()+900l;var ascent=row["ascent_end"];
         if(ascent!=null && ascent["end_utc"]>deadline){deadline=ascent["end_utc"].toLong();}
     }
-    return new SceneContext({"pointText"=>pointText,"orderingUtc"=>ordering,"sourceValidated"=>row["source_validated_utc"],"freshnessPolicy"=>packet.document["refreshPolicy"],"retentionDeadline"=>deadline,"id"=>row["launch_id"],"rocket"=>rocket,"operator"=>operator,"operatorShort"=>operatorShort,"purpose"=>row["mission_purpose"],"site"=>site,"modelId"=>row["configuration_id"],"operatorId"=>row["operator_id"],"siteId"=>row["site_id"],"point"=>point,"target"=>target,"precision"=>precision,"date"=>timing["date_utc"],"rescheduled"=>selected?packet.rescheduled:row["rescheduled"],"stale"=>selected?packet.stale:row["stale"],"sourceHold"=>row["source_status_id"]==5});
+    return new SceneContext({"displayTarget"=>displayTarget,"pointText"=>pointText,"orderingUtc"=>ordering,"sourceValidated"=>row["source_validated_utc"],"freshnessPolicy"=>packet.document["refreshPolicy"],"retentionDeadline"=>deadline,"id"=>row["launch_id"],"rocket"=>rocket,"operator"=>operator,"operatorShort"=>operatorShort,"purpose"=>row["mission_purpose"],"site"=>site,"modelId"=>row["configuration_id"],"operatorId"=>row["operator_id"],"siteId"=>row["site_id"],"point"=>point,"target"=>target,"precision"=>precision,"date"=>timing["date_utc"],"rescheduled"=>selected?packet.rescheduled:row["rescheduled"],"stale"=>selected?packet.stale:row["stale"],"sourceHold"=>row["source_status_id"]==5});
 }

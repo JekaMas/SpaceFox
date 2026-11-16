@@ -14,7 +14,7 @@ class NativeUpcomingCache {
     function validRow(row){
         if(!(row instanceof Dictionary)){return false;}
         var keys=["id","rocket","operator","operatorShort","purpose","site","modelId","operatorId","siteId","pointText","target","precision","date","retentionDeadline","orderingUtc","sourceValidated","freshnessPolicy","rescheduled","stale","sourceHold"];
-        if(row.size()!=keys.size()){return false;}for(var i=0;i<keys.size();i+=1){if(!row.hasKey(keys[i])){return false;}}
+        if(row.size()!=keys.size()&&!(row.size()==keys.size()+1&&row.hasKey("displayTarget"))){return false;}if(row.hasKey("displayTarget")&&(!validNumber(row["displayTarget"])||!(row["precision"] instanceof String)||row["precision"].equals("exact"))){return false;}for(var i=0;i<keys.size();i+=1){if(!row.hasKey(keys[i])){return false;}}
         var texts=["id","rocket","operator","operatorShort","purpose","site","modelId","operatorId","siteId","precision"];
         for(var j=0;j<texts.size();j+=1){var value=row[texts[j]];if(!(value instanceof String)){return false;}}
         if(!validIdentity(row["id"],"launch",false)||!validIdentity(row["modelId"],"configuration",true)||!validIdentity(row["operatorId"],"organization",true)||!validIdentity(row["siteId"],"site",true)||["exact","minute","date","window","unknown","source-coarse"].indexOf(row["precision"])<0){return false;}

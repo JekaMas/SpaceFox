@@ -1,0 +1,50 @@
+SF_VIEW mode=HIGH pending=false
+SF_WAKE before_init build=0.1.27 id=1741ab3b now=1794847087 registered=1794849741 last=1794846141
+SF_STORE sf.commit type=dict v=6 generation=2
+SF_STORE sf.recovery type=dict v=6 generation=1
+SF_STORE sf.incoming.feed type=dict v=2 sequence=3
+SF_STORE sf.batch.head type=dict pending=false
+SF_STORE sf.batch.pending type=dict pending=false
+SF_STORE sf.incoming.feed.deferred absent
+SF_STORE sf.incoming.feed.rejected absent
+SF_STORE sf.attempt type=dict utc=1794846141 build=0.1.21
+SF_FG admission_begin used=98784
+SF_TRACE stage=new used=95784
+SF_TRACE stage=reader used=97312
+SF_TRACE stage=packet-0 used=103072
+SF_TRACE stage=packet-1 used=105688
+SF_TRACE stage=packet-2 used=110576
+SF_TRACE stage=packet-3 used=117024
+SF_TRACE stage=packet-4 used=115656
+SF_TRACE stage=packet-5 used=115200
+SF_TRACE stage=packet-6 used=115304
+SF_TRACE stage=packet-7 used=115392
+SF_TRACE stage=packet-8 used=115832
+SF_TRACE stage=promotion-0 used=116184
+SF_TRACE stage=promotion-10 used=112832
+SF_TRACE stage=promotion-1 used=113080
+SF_TRACE stage=promotion-2 used=107400
+SF_TRACE stage=promotion-3 used=107400
+SF_TRACE stage=promotion-4 used=107400
+SF_TRACE stage=promotion-5 used=107400
+SF_TRACE stage=promotion-6 used=107400
+SF_FG admission_accepted
+SF_WAKE registration_ok pending=false next=1794847097
+Background: SF_BG enter phone=true registered=none last=1794847097
+Background: SF_WAKE registration_ok pending=false next=1794850697
+SF_WAKE registration_kept pending=false next=1794850697
+SF_VIEW mode=LOW pending=false
+SFR_LIFECYCLE low_draw=true retained=true before=102880 low=102272
+SF_VIEW mode=HIGH pending=false
+SFR_LIFECYCLE separate_wake used=102304
+SFR_LIFECYCLE resumed=true same=true used=102408
+SF_WAKE registration_kept pending=false next=1794850697
+Background: SF_BG feed_http=200
+Background: SF_BG feed_staged=true
+Background: SF_BG batch_begin=true
+Background: SF_WAKE registration_kept pending=false next=1794850697
+COLD BG_DELIVERY
+SF_FG background_delivery
+SF_WAKE registration_kept pending=false next=1794850697
+SFR_LIFECYCLE complete=true used=111096
+SF_WAKE registration_kept pending=false next=1794850697

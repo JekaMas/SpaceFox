@@ -1,0 +1,98 @@
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test b1LowHeapDefersOptionalDecode...
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+
+Error: Unhandled Exception
+Exception: ASSERTION FAILED
+Stack: 
+  - API code 0x30000203 
+  - API code 0x300001ba 
+  - b1LowHeapDefersOptionalDecode() at /source/watchface/runtime-b1-tests/DecodePending.mc:101 0x10006783 
+  - evaluate_test_entries_30_to_43() at /task/seed-real/gen/006-B4433-00/source/UnitTests.mcgen:174 0x1000ca0d 
+  - runTest() at /task/seed-real/gen/006-B4433-00/source/UnitTests.mcgen:207 0x1000d168 
+ERROR
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1LowHeapDefersOptionalDecode       ERROR
+Ran 1 test
+
+FAILED (passed=0, failed=0, errors=1)
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test b1RealDecodeTicksAndCancels...
+SF_VIEW mode=HIGH pending=false
+DEBUG (17:03): B1_DECODE_INITIAL countdown=~T- 16:18:18
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (17:03): B1_REAL_DECODE selected_min=true objects=18 beginMs=0 slices=74 maxSliceMs=26 maxPhase=rows maxRole=0 maxRow=0 maxBatchScanMs=16 maxPutMs=4 activeCatchup=true lowOffHighCyclesAdvance=true hideCancel=true testHost=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1RealDecodeTicksAndCancels         PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test b1QueueCheckpointFailure021...
+SF_VIEW mode=HIGH pending=false
+SF_FG admission_begin
+DEBUG (17:03): B1_QUEUE_DIAG job=false pending=false failure=admission-retry deferred=true context=true
+DEBUG (17:03): B1_QUEUE_CHECKPOINT failure_keeps_commit_and_facts=true retry_deferred=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1QueueCheckpointFailure021         PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test b1ColdAcquisition...
+DEBUG (17:04): B1_PHASE parse_ms=210
+DEBUG (17:04): B1_PHASE validate_ms=13
+DEBUG (17:04): B1_PHASE semantic_ms=2
+DEBUG (17:04): B1_PHASE wire_ms=2
+DEBUG (17:04): B1_PHASE identity_ms=1
+DEBUG (17:04): B1_CANCEL parser_cycle_released=true retry=true
+DEBUG (17:04): B1_PREPARE phases=164 hashes_match=true maxStepMs=10 sampledUsedBytes=192384
+DEBUG (17:04): B1_READ parts=12 digest=true
+DEBUG (17:04): B1_ADMISSION promotionSteps=19
+DEBUG (17:04): B1_BATCH_CALLBACK maxMs=28 objects=27 includesFinalClosure=true
+DEBUG (17:04): B1_RENDER_CALLBACK maxMs=37 initMs=0 where=role:0 decoder:true steps=586 closure=true
+DEBUG (17:04): B1_COLD status=200 text/plain catalog_first=true staged_objects=27 strict_reopen=true captured_hour_precision_unknown=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1ColdAcquisition                   PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test b1SeedActualNext...
+DEBUG (17:04): REAL_CAPTURE seed_generation_56_and_57=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1SeedActualNext                    PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

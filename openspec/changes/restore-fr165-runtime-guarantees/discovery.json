@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "change": "restore-fr165-runtime-guarantees",
+  "scope": {
+    "property_ids": [
+      "B1R1.P1",
+      "B1R1.P2",
+      "B1R2.P1",
+      "B1R2.P2",
+      "B1R3.P1",
+      "B1R3.P2"
+    ],
+    "test_ids": [
+      "PENDING_1_1_positive",
+      "PENDING_1_1_negative",
+      "PENDING_1_2_positive",
+      "PENDING_1_2_negative",
+      "PENDING_2_1_positive",
+      "PENDING_2_1_negative",
+      "PENDING_2_2_positive",
+      "PENDING_2_2_negative",
+      "PENDING_3_1_positive",
+      "PENDING_3_1_negative",
+      "PENDING_3_2_positive",
+      "PENDING_3_2_negative"
+    ]
+  },
+  "reviews": [
+    {
+      "id": "B1-runtime-discovery",
+      "question": "Trace startup, optional data and rendering, active/low lifecycle and resource boundaries.",
+      "property_ids": [
+        "B1R1.P1",
+        "B1R1.P2",
+        "B1R2.P1",
+        "B1R2.P2",
+        "B1R3.P1",
+        "B1R3.P2"
+      ],
+      "test_ids": [
+        "PENDING_1_1_positive",
+        "PENDING_1_1_negative",
+        "PENDING_1_2_positive",
+        "PENDING_1_2_negative",
+        "PENDING_2_1_positive",
+        "PENDING_2_1_negative",
+        "PENDING_2_2_positive",
+        "PENDING_2_2_negative",
+        "PENDING_3_1_positive",
+        "PENDING_3_1_negative",
+        "PENDING_3_2_positive",
+        "PENDING_3_2_negative"
+      ],
+      "searches": [
+        {
+          "kind": "exact",
+          "status": "completed",
+          "query": "rg lifecycle callbacks, memory, request, bitmap loading, countdown and owners in watchface/source and selected tests",
+          "outcome": "Owners and hypotheses listed in evidence/DISCOVERY.md.",
+          "results": [
+            {
+              "path": "watchface/source/SpaceFoxView.mc",
+              "classification": "change_candidate",
+              "reason": "Owns clock, rendering, timer and lifecycle transitions."
+            },
+            {
+              "path": "watchface/source/NativeForegroundApp.mc",
+              "classification": "change_candidate",
+              "reason": "Owns initial cache admission and foreground reload."
+            },
+            {
+              "path": "watchface/source/NativeSfr.mc",
+              "classification": "interface_dependency",
+              "reason": "Owns real decoder and graphics allocation."
+            }
+          ]
+        },
+        {
+          "kind": "semantic",
+          "status": "unavailable",
+          "query": "jbcontext search Trace native watch face startup, data acquisition, bitmap loading, update and power-mode lifecycle including countdown rendering",
+          "outcome": "CLI requested JetBrains AI Platform login.",
+          "reason": "No authentication attempted under task authority.",
+          "results": []
+        },
+        {
+          "kind": "jetbrains-index",
+          "status": "unavailable",
+          "query": "Exact current worktree Monkey C lifecycle ownership",
+          "outcome": "No matching exact-revision Monkey C PSI observation was obtained.",
+          "reason": "Index creation not authorized or required and available IDE language list does not establish Monkey C support.",
+          "results": []
+        }
+      ],
+      "disposition": "current_change",
+      "rationale": "Clock-first, foreground loading and optional resource/lifecycle work are within B1; P5 fact policy remains B2."
+    }
+  ]
+}

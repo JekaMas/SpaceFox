@@ -13,7 +13,13 @@
 ## Physical 0.1.20 follow-up — reopened
 
 - [ ] P-data: reproduce live background request, validated catalog/admission and foreground activation; repair observed delivery failures and retain integrity.
-- [ ] P-launch: show the selected launch site and point, and countdown when source precision permits; preserve explicit coarse/unknown time semantics.
+- [ ] P-launch: show the selected site and point; display exact UTC normally and a validated inexact announced NET as `~T−`/`~T+`, without changing source precision, scheduling or reminders.
 - [ ] P-LOW: preserve the approved full map and point, clock, date/weekday, minute countdown and battery while data acquisition or restore is pending.
 - [ ] Run directly invalidated FR165 Music SDK behavior and EN/RU visual checks; reconcile retained watchdog and resource evidence.
 - [ ] Independent review after author green; physical FR165 Music cold/reopen/live update/LOW/15-minute acceptance remains open.
+
+Software follow-up evidence for the above remains distinct from physical acceptance:
+
+- [x] Exercise captured current-format data, bounded admission/scene work and the injected gen56-to-gen57 replacement through restored SDK rendering.
+- [x] Check exact and estimated countdown policy, queue/commit failure recovery, LOW/wake and directly affected FR165 Music SDK cases; retain the stated EN/RU and event-injection boundaries.
+- [ ] Independently review the integrated source and reconcile final signed release artifacts; the owner's physical no-update and 15-minute acceptance are still open.

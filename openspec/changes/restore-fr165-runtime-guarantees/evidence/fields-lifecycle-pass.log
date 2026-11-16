@@ -1,0 +1,39 @@
+------------------------------------------------------------------------------
+Executing test b1AdmissionFitnessLifecycle...
+DEBUG (10:11): B1_FIELDS admission_stop_once=true pending_no_restart=true four_slots_resume=true low_hide_idempotent=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1RealDecodeTicksAndCancels...
+DEBUG (10:11): B1_DECODE_INITIAL countdown=T- 16:18:18
+DEBUG (10:11): B1_REAL_DECODE selected_min=true objects=18 beginMs=92 slices=20 maxSliceMs=60 maxPhase=role maxRole=0 maxRow=-1 maxBatchScanMs=15 maxPutMs=4 activeCatchup=true lowCancel=true highResume=true hideCancel=true testHost=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockBeforeLoader...
+DEBUG (10:11): B1_FIRST_FRAME clock_date=true loader_before_frame=false loader_after_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1LowBeforeLoader...
+DEBUG (10:11): B1_LOW_FIRST_FRAME clock_date=true loader_deferred=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1StagedLiveFeedAdmission...
+DEBUG (10:11): B1_STAGED_VALIDATION actual=1794820332 commit=true
+DEBUG (10:11): B1_STAGED live_red_bytes=true phases=7 no_early_commit=true source_age_preserved=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1StagedRestoreExactAndRecovery...
+DEBUG (10:11): B1_RESTORE exact_live=true expected_seal_old=true corrupt_commit_recovery=true no_early_publish=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1AdmissionFitnessLifecycle         PASS
+b1RealDecodeTicksAndCancels         PASS
+b1ClockBeforeLoader                 PASS
+b1LowBeforeLoader                   PASS
+b1StagedLiveFeedAdmission           PASS
+b1StagedRestoreExactAndRecovery     PASS
+Ran 6 tests
+
+PASSED (passed=6, failed=0, errors=0)

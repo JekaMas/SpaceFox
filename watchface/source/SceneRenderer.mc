@@ -169,7 +169,7 @@ class SceneRenderer {
             if(role.find("custom")==0){
                 var small=fonts["small"] as Graphics.FontType;var metric=fonts["metric"] as Graphics.FontType;
                 var customLeft=i%2==0?55:207;var name=fit(dc,fitness.fieldLabel(role),small,35);
-                var customIcon=fitness.fieldIcon(role);if(customIcon!=null){try{dc.drawBitmap2(customLeft-25,rowTop+5,customIcon[0],customIcon[1]);}catch(e){}}
+                drawProviderIcon(dc,fitness.fieldIcon(role),customLeft,rowTop,settings.fieldColors[i]);
                 text(dc,customLeft+17,rowTop+6,small,name,settings.fieldColors[i],35,1);
                 var valueFont=metricGlyphs(label)?metric:small;
                 text(dc,customLeft+80,rowTop+(valueFont==metric?-4:6),valueFont,label,settings.fieldColors[i],90,1);
@@ -200,8 +200,13 @@ class SceneRenderer {
     (:extendedCode) function icon(dc as Graphics.Dc,x as Numeric,y as Numeric,role as String) as Void {
         if(icons.hasKey(role)){dc.drawBitmap(x,y,icons[role] as Graphics.BitmapType);}
     }
-    (:extendedCode) function prepareAod() as Void {if(!fonts.hasKey("aod")){fonts["aod"]=load(Rez.Fonts.Aod40) as Graphics.FontType;}if(aodMap==null && aodResource!=null){aodMap=load(aodResource as ResourceId) as Graphics.BitmapType;}}
-    (:extendedCode) function releaseAod() as Void {aodMap=null;fonts.remove("aod");}
+    (:typecheck(false)) function drawProviderIcon(dc,icon,left,top,color) as Void {
+        if(icon==null){return;}
+        if(icon!=false){try{dc.drawBitmap2(left-25,top+5,icon[0],icon[1]);return;}catch(e){}}
+        dc.setColor(color,Graphics.COLOR_TRANSPARENT);dc.drawCircle(left-16,top+14,4);
+    }
+    (:extendedCode) function prepareAod() as Void {presentation.prepareAodFonts();if(!fonts.hasKey("aod")){fonts["aod"]=load(Rez.Fonts.Aod40) as Graphics.FontType;}if(aodMap==null && aodResource!=null){aodMap=load(aodResource as ResourceId) as Graphics.BitmapType;}}
+    (:extendedCode) function releaseAod() as Void {aodMap=null;fonts.remove("aod");presentation.aodContextFont=null;presentation.aodBatteryFont=null;}
     (:extendedCode, :typecheck(false)) function aod(dc as Graphics.Dc,current as ClockSnapshot,minute as Number or Long,settings as SceneSettings) as Void {
         current.rescheduled=current.rescheduled||fullContext!=null&&fullContext.rescheduled;
         current.sourceHold=current.sourceHold||fullContext!=null&&fullContext.sourceHold;

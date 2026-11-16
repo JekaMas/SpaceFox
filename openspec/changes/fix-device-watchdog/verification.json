@@ -190,6 +190,34 @@
       "status": "reported_failure",
       "receipt": "evidence/physical-020-followup/OBSERVATIONS.md",
       "boundary": "reported 0.1.20; encrypted on-watch storage prevents external diagnosis; physical trace and acceptance pending"
+    },
+    {
+      "id": "WD-021-ESTIMATED-NET",
+      "test": "b1AnnouncedNetDisplayAndReopen; b1EstimatedCountdownGlyphWidth",
+      "status": "passed_sdk_only",
+      "receipt": "evidence/physical-020-followup/INTEGRATION.md",
+      "boundary": "captured coarse input, exact scheduler unchanged; EN/RU font widths; no physical acceptance"
+    },
+    {
+      "id": "WD-021-REPLACEMENT",
+      "test": "captured gen56-to-gen57 during active SFR, accepted and visual completion",
+      "status": "passed_sdk_only",
+      "receipt": "evidence/physical-020-followup/receipts/app-stage-run.log",
+      "boundary": "pre-staged captured marker and direct onBackgroundData injection; not a phone transfer or physical sleep"
+    },
+    {
+      "id": "WD-021-PROMOTION",
+      "test": "b1PreparedPromotion; b1FailedPromotionRecovery021; b1QueueCheckpointFailure021",
+      "status": "passed_sdk_only",
+      "receipt": "evidence/physical-020-followup/receipts/grouped-batch.log",
+      "boundary": "verified prior projection, checkpoint failure and strict recovery; physical device pending"
+    },
+    {
+      "id": "WD-021-SFR-STAGE",
+      "test": "b1LowHeapDefersOptionalDecode; b1CapturedSuccessorTicksInFallback",
+      "status": "passed_sdk_only",
+      "receipt": "evidence/physical-020-followup/receipts/verified2.log",
+      "boundary": "loaded descriptor continuation, full pre-allocation reserve, rollover cancellation; no physical proof"
     }
   ],
   "software_diagnostic_gate": "passed"

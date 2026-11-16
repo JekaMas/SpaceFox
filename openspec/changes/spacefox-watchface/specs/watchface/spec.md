@@ -147,8 +147,7 @@ large configurable fields, with watch battery available as a field. No redundant
 ### Requirement: Compact exceptional-state indicators
 
 The active home face SHALL omit a persistent update timestamp and service-status badges.
-A target reschedule or explicit source-reported hold SHALL use a readable reddish countdown; otherwise it SHALL use the persisted selected countdown color, mint by default. Unknown
-new time SHALL replace the precise countdown with an uncertainty label. Stale data
+A target reschedule or explicit source-reported hold SHALL use a readable reddish countdown; otherwise it SHALL use the persisted selected countdown color, mint by default. A new time with no announced NET SHALL replace the countdown with an uncertainty label; an inexact announced NET SHALL use the explicit estimated prefix. Stale data
 SHALL add a dotted countdown underline, independently of rescheduling and sourced hold. No
 exclamation or cloud-off badge SHALL occupy the face.
 

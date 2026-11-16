@@ -1,0 +1,69 @@
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test b1QueueCheckpointFailure021...
+SF_VIEW mode=HIGH pending=false
+SF_FG admission_begin
+DEBUG (16:59): B1_QUEUE_DIAG job=false pending=false failure=admission-retry deferred=true context=true
+DEBUG (16:59): B1_QUEUE_CHECKPOINT failure_keeps_commit_and_facts=true retry_deferred=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1QueueCheckpointFailure021         PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test b1SupersededDuringAdmission021...
+SF_VIEW mode=HIGH pending=false
+SF_FG admission_begin
+SF_FG admission_failed
+DEBUG (16:59): B1_INTEGRATION supersession_no_commit=true stale_not_consumed=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1SupersededDuringAdmission021      PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test b1ColdAcquisition...
+DEBUG (16:59): B1_PHASE parse_ms=208
+DEBUG (16:59): B1_PHASE validate_ms=13
+DEBUG (16:59): B1_PHASE semantic_ms=2
+DEBUG (16:59): B1_PHASE wire_ms=1
+DEBUG (16:59): B1_PHASE identity_ms=1
+DEBUG (16:59): B1_CANCEL parser_cycle_released=true retry=true
+DEBUG (16:59): B1_PREPARE phases=164 hashes_match=true maxStepMs=9 sampledUsedBytes=192136
+DEBUG (16:59): B1_READ parts=12 digest=true
+DEBUG (16:59): B1_ADMISSION promotionSteps=19
+DEBUG (16:59): B1_BATCH_CALLBACK maxMs=27 objects=27 includesFinalClosure=true
+DEBUG (16:59): B1_RENDER_CALLBACK maxMs=28 initMs=0 where=role:0 decoder:true steps=583 closure=true
+DEBUG (16:59): B1_COLD status=200 text/plain catalog_first=true staged_objects=27 strict_reopen=true captured_hour_precision_unknown=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1ColdAcquisition                   PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)
+SF_VIEW mode=HIGH pending=false
+------------------------------------------------------------------------------
+Executing test b1SeedActualNext...
+DEBUG (16:59): REAL_CAPTURE seed_generation_56_and_57=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1SeedActualNext                    PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

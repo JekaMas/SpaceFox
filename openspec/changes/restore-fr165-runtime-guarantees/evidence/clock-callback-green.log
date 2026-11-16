@@ -1,0 +1,37 @@
+------------------------------------------------------------------------------
+Executing test b1ClockWithUnavailableRenderer...
+DEBUG (09:08): B1_CLOCK optional_renderer_failed time_and_date_read=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockBeforeLoader...
+DEBUG (09:08): B1_FIRST_FRAME clock_date=true loader_before_frame=false loader_after_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1LowBeforeLoader...
+DEBUG (09:08): B1_LOW_FIRST_FRAME clock_date=true loader_deferred=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockAfterDrawingFailure...
+DEBUG (09:08): B1_CLOCK drawing_failure_fallback=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ClockAfterLoaderFailure...
+DEBUG (09:08): B1_CLOCK loader_failure_time_date_continue=true
+PASS
+------------------------------------------------------------------------------
+Executing test b1ActualColdViewDefersCache...
+DEBUG (09:08): B1_ACTUAL_INITIAL cache_before_frame=false cache_after_frame=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1ClockWithUnavailableRenderer      PASS
+b1ClockBeforeLoader                 PASS
+b1LowBeforeLoader                   PASS
+b1ClockAfterDrawingFailure          PASS
+b1ClockAfterLoaderFailure           PASS
+b1ActualColdViewDefersCache         PASS
+Ran 6 tests
+
+PASSED (passed=6, failed=0, errors=0)

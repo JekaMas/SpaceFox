@@ -1,0 +1,22 @@
+SF_VIEW mode=HIGH pending=false
+SF_WAKE before_init build=0.1.21 id=1741ab3b now=1794848736 registered=none last=none
+SF_STORE sf.commit type=dict v=6 generation=1
+SF_STORE sf.recovery absent
+SF_STORE sf.incoming.feed type=dict v=2 sequence=1
+SF_STORE sf.batch.head type=dict pending=false
+SF_STORE sf.batch.pending type=dict pending=false
+SF_STORE sf.incoming.feed.deferred absent
+SF_STORE sf.incoming.feed.rejected absent
+SF_STORE sf.attempt type=dict utc=1794848669 build=0.1.21
+SF_WAKE registration_ok pending=false next=1794852269
+SF_WAKE restore_armed build=0.1.21 id=1741ab3b now=1794848742 registered=1794852269 last=none
+SF_WAKE registration_kept pending=false next=1794852269
+REAL_REPLACEMENT marker_flip_during_sfr=true
+SF_FG background_delivery
+SF_FG admission_begin
+REAL_REPLACEMENT admission_after_cancel=true
+SF_FG admission_accepted
+SF_WAKE registration_kept pending=false next=1794852269
+SF_WAKE registration_kept pending=false next=1794852269
+REAL_REPLACEMENT visual_complete=true used=110952
+SF_WAKE registration_kept pending=false next=1794852269

@@ -1,0 +1,30 @@
+{
+  "version": "0.1.21",
+  "native_id": "e0ee18e0",
+  "uuid": "8bfb35b035764c14856ed684585d3ffd",
+  "profile": "fr165",
+  "entry": "SpaceFoxApp",
+  "key_boundary": "disposable-test-key-not-production",
+  "key_spki_sha256": "40bf1220604f7268b5557e480949d860a9514e35061d0b5749b28181dc24045e",
+  "compiler_platform": "SDK 9.3 Linux amd64",
+  "compiler_sha256": "082b2fd3f50578204e01d44313f43f2ce52a60dbfd6221f6b259b2687239de3f",
+  "compiler_profile_sha256": "ed45eb28ba928e2d2bda1bf8c567401232ab226889b87712fef5713e7f9a4fa8",
+  "flags": [
+    "-l",
+    "3",
+    "-O",
+    "2",
+    "-w",
+    "-r",
+    "-d",
+    "fr165"
+  ],
+  "program_sha256": "707f1816de5d5dd94007e1aab62df7f3e6917a25284839b16df50b2279fc8b95",
+  "verification": {
+    "prg_public_key_matches": true,
+    "prg_signature_verified": true,
+    "rsa_bits": 4096
+  },
+  "clock": "real system clock; no fixture injection",
+  "proof_boundary": "Disposable-key, diagnostic UUID FR165 release-flags compile and SDK signature verification. Not production signature, package, on-device execution or physical acceptance."
+}

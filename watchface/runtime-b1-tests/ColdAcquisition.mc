@@ -1,3 +1,4 @@
+import Toybox.Application;
 import Toybox.Lang;
 import Toybox.Test;
 import Toybox.Time;
@@ -8,6 +9,7 @@ import Toybox.WatchUi;
 // Actual durable storage and production transfer, batch, immutable, parser and
 // cache owners. The fixture substitutes only the HTTP response boundary.
 (:test,:typecheck(false)) function b1ColdAcquisition(logger) {
+    Application.Storage.clearValues(); // test UUID only; each cold replay starts empty
     var store=new NativeStore();var base="https://jekamas.github.io/SpaceFox";
     // Replay the captured response at its recorded capture instant, without
     // rebasing source timestamps or claiming this is a live provider request.
@@ -135,7 +137,7 @@ import Toybox.WatchUi;
     var store=new B1MemoryStore();var base="https://jekamas.github.io/SpaceFox";var now=1794818604l;var raw=WatchUi.loadResource(Rez.JsonData.B1Feed)["raw"];
     var batch=new NativeBatch(store,base);Test.assert(batch.begin(raw));var ref=batch.next();Test.assert(ref!=null);Test.assert(batch.immutable.put(ref,b1Response(ref["path"])));
     var prepared=new NativePreparedBridgeFeed(raw,now,store);var count=0;while(!prepared.prepareStep()){count+=1;Test.assert(count<2000);}
-    var cache=new TestNativeCache(base,store);var promotion=new NativeFeedPromotion(cache,raw,prepared,now,null);var promotions=0;while(!promotion.step()){promotions+=1;Test.assert(promotions<30);}Test.assert(promotion.accepted&&cache.packet!=null&&cache.commit!=null);
+    var cache=new TestNativeCache(base,store);var promotion=new NativeFeedPromotion(cache,raw,prepared,now,null);var promotions=0;var releasedBeforeSeal=false;while(!promotion.step()){Test.assertMessage(store.read("sf.commit")==null,"commit became visible before promotion completed");if(promotion.phase==10){releasedBeforeSeal=promotion.mustYield&&prepared.raw.equals("")&&prepared.presentation!=null&&prepared.parser==null;}promotions+=1;Test.assert(promotions<30);}Test.assert(releasedBeforeSeal&&promotion.accepted&&cache.packet!=null&&cache.commit!=null);
     var reopened=new TestNativeCache(base,store);Test.assert(reopened.load(now)!=null);Test.assert(reopened.packet.launchId().equals(cache.packet.launchId()));
     var expectedId=reopened.packet.launchId();var expectedSeal=reopened.commit["seal"];cache=null;promotion=null;prepared=null;reopened=null;
     var sliced=new TestNativeCache(base,store);var restore=new NativeRestoreJob(sliced,now,null);var restoreSteps=0;while(!restore.step()){restoreSteps+=1;Test.assert(restoreSteps<3000);}Test.assert(restore.accepted&&sliced.packet.launchId().equals(expectedId)&&sliced.commit["seal"].equals(expectedSeal));
@@ -264,4 +266,35 @@ import Toybox.WatchUi;
     var nextTransfer=new NativeTransfer(base,store);nextTransfer.load();Test.assert(!nextTransfer.due(now+1));Test.assert(batchPending(nextTransfer));var next=new NativeBatch(store,base);var ref=next.next();Test.assert(ref!=null&&ref["path"].find("descriptors/")==0);var delivered=0;
     while(ref!=null){var data=b1Response(ref["path"]);Test.assert(data!=null&&next.immutable.put(ref,data));ref=next.next();delivered+=1;Test.assert(delivered<=41);}
     Test.assert(!batchPending(nextTransfer));logger.debug("B1_NEXT_BACKGROUND polling_due=false resumed=true remaining_objects="+delivered+" closure_verified=true");return true;
+}
+
+// A later event may receive the same feed after its closure is complete.
+// Its persisted reference rows must be compared without changing the durable
+// format; a damaged row must be repaired before final closure succeeds.
+(:test,:typecheck(false)) function b1SameBatchReloadAndRepair(logger){
+    var store=new B1MemoryStore();var base="https://jekamas.github.io/SpaceFox";var raw=WatchUi.loadResource(Rez.JsonData.B1Feed)["raw"];var first=new NativeBatch(store,base);Test.assert(first.begin(raw));var ref=first.next();var count=0;while(ref!=null){var data=b1Response(ref["path"]);Test.assert(data!=null&&first.immutable.put(ref,data));ref=first.next();count+=1;Test.assert(count<42);}Test.assert(count>1);
+    var saved=store.read("sf.batch.refs");Test.assert(saved instanceof Dictionary&&saved["refs"] instanceof Array&&saved["refs"].size()>0);var original=saved["refs"][0]["path"];saved["refs"][0]["path"]="damaged";store.write("sf.batch.refs",saved);first=null;saved=null;
+    var later=new NativeBatch(store,base);Test.assert(later.begin(raw));Test.assert(later.next()==null);var repaired=store.read("sf.batch.refs");Test.assert(repaired["refs"][0]["path"].equals(original));Test.assert(!batchPending(new NativeTransfer(base,store)));logger.debug("B1_REPEAT_BATCH corrupt_saved_refs_repaired=true closure_verified=true objects="+count);return true;
+}
+
+// The selected real captured HR-precision launch has an announced NET, not
+// an exact instant. Arithmetic here is display-only; retention, reminders and
+// source identity remain the accepted coarse values.
+(:test,:typecheck(false)) function b1AnnouncedNetDisplayAndReopen(logger){
+    var store=new B1MemoryStore();var base="https://jekamas.github.io/SpaceFox";var raw=WatchUi.loadResource(Rez.JsonData.B1Feed)["raw"];var batch=new NativeBatch(store,base);Test.assert(batch.begin(raw));var catalog=batch.next();Test.assert(batch.immutable.put(catalog,b1Response(catalog["path"])));
+    var packet=new NativePreparedBridgeFeed(raw,1794818604l,store);while(!packet.prepareStep()){}var scene=feedScene(packet,1794818604l);Test.assert(scene!=null&&scene.displayTarget==1795042200l&&scene.schedule.remainingSeconds(1794818604l)==null&&scene.retentionTarget==null);
+    var view=new SpaceFoxView(new WatchClock(),new ScheduleState(null,"empty"));view.setContext(scene);var t=scene.displayTarget;
+    var day=view.snapshotAt(t-90061);Test.assertEqual(day.countdown,"~T- 25:01:01");Test.assertEqual(day.lowCountdown,"~T- 25:02");
+    var near=view.snapshotAt(t-59);Test.assertEqual(near.countdown,"~T- 00:00:59");Test.assertEqual(near.lowCountdown,"~T- 00:01");
+    var zero=view.snapshotAt(t);Test.assertEqual(zero.countdown,"~T+ 00:00:00");Test.assertEqual(zero.lowCountdown,"~T+ 00:00");
+    var later=view.snapshotAt(t+30);Test.assertEqual(later.countdown,"~T+ 00:00:30");Test.assert(scene.schedule.remainingSeconds(t)==null&&scene.retentionTarget==null);
+    var queue=new NativeUpcomingCache(store,base,packet.document["publisher"]["instance"]);var oldRow=scene.cacheRow();oldRow.remove("displayTarget");Test.assert(queue.validRow(oldRow));var badRow=scene.cacheRow();badRow["displayTarget"]="not-a-time";Test.assert(!queue.validRow(badRow));queue.save([scene]);var reopened=queue.load();Test.assert(reopened.size()==1&&reopened[0].displayTarget==t&&reopened[0].retentionTarget==null);view.setContext(reopened[0]);Test.assertEqual(view.snapshotAt(t-59).countdown,"~T- 00:00:59");
+    var unknown=new SceneContext({"id"=>"source:launch:unknown","precision"=>"unknown"});view.setContext(unknown);Test.assertEqual(view.snapshotAt(t).countdown,"--:--:--");
+    logger.debug("B1_NET HR_estimated=true over_day=true subminute=true zero_plus=true durable=true schedule_unchanged=true unknown=true");return true;
+}
+
+(:test,:typecheck(false)) function b1EstimatedCountdownGlyphWidth(logger){
+    var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();
+    for(var i=0;i<2;i+=1){var presentation=new LocalePresentation();presentation.prepare(i==0?"en":"ru");var low=presentation.aodContextFont;var active=presentation.count;var lowWidth=dc.getTextWidthInPixels("~T- 25:02",low);var plainLow=dc.getTextWidthInPixels("T- 25:02",low);Test.assertMessage(lowWidth>plainLow&&lowWidth<=300,"tilde must have visible advance and the over-day LOW value must fit");var activeValue="~T- 25:01:01";var activeFont=dc.getTextWidthInPixels(activeValue,active)>275?presentation.small:active;var activeWidth=dc.getTextWidthInPixels(activeValue,activeFont);Test.assert(activeWidth<=275&&dc.getTextWidthInPixels("~T-",activeFont)>dc.getTextWidthInPixels("T-",activeFont));logger.debug("B1_NET_GLYPH locale="+(i==0?"en":"ru")+" lowWidth="+lowWidth+" activeWidth="+activeWidth);}
+    return true;
 }

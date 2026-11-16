@@ -83,6 +83,7 @@ def source_state(root: Path) -> dict:
         admission.add(name)
     if proof is not None and "devices020Proof" in proof:
         admission.add("tools/device-fonts020.json")
+
     if proof is not None and "integrated016Proof" in proof:
         # Parent qualification reconstructs exact tracked tools inventories;
         # include the non-Python entries that the standard export filter omits.
@@ -100,6 +101,14 @@ def source_state(root: Path) -> dict:
                           "openspec/changes/add-launch-reminders/tasks.md",
                           "openspec/changes/add-launch-reminders/specs/launch-reminders/spec.md",
                           "docs/LAUNCH_REMINDERS.md"})
+    if proof is not None and "b1Integration021Proof" in proof:
+        current_path = proof["b1Integration021Proof"]["path"]
+        require(current_path in paths, "B1 integration proof must be tracked")
+        current = json.loads((root / current_path).read_text())
+        admission.add(current_path)
+        admission.add(current["baselineCatalog"]["path"])
+        admission.add(current["stockImage"]["path"])
+        admission.update(ref["path"] for ref in current["evidence"].values())
     if proof is not None and "watchdogReleaseProof" in proof:
         delta_path = proof["watchdogReleaseProof"]["path"]
         require(delta_path in paths, "watchdog admission proof must be tracked")

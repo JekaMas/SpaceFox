@@ -1,0 +1,64 @@
+------------------------------------------------------------------------------
+Executing test display03RepeatedLowCallbacks...
+DEBUG (09:14): LOW_CALLBACKS 60 same-minute callbacks one paint; next minute second paint
+PASS
+------------------------------------------------------------------------------
+Executing test display03SleepThenHighObservation...
+DEBUG (09:14): SLEEP_QUERY_HIGH active=0 low=1 mode=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03WakeThenLowObservation...
+DEBUG (09:14): WAKE_QUERY_LOW active=0 low=1 mode=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03CausalSequence...
+DEBUG (09:14): D03_SEQUENCE seed=1 events=30 required_dispositions=12 skipped=0
+DEBUG (09:14): D03_SEQUENCE seed=2 events=30 required_dispositions=12 skipped=0
+DEBUG (09:14): D03_SEQUENCE seed=3 events=30 required_dispositions=12 skipped=0
+DEBUG (09:14): D03_SEQUENCE seed=4 events=30 required_dispositions=12 skipped=0
+DEBUG (09:14): D03_SEQUENCE seed=5 events=30 required_dispositions=12 skipped=0
+PASS
+------------------------------------------------------------------------------
+Executing test display03ReadyAndErrorOnWake...
+DEBUG (09:14): READY_ERROR sleep accepted_target retained rejected_old no_load_until_first_active_frame=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03BackgroundBeforeFrame...
+DEBUG (09:14): BACKGROUND sleep_applied=true wake_first_frame no_reload=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03LowDoesNotSample...
+PASS
+------------------------------------------------------------------------------
+Executing test display03OffStopsWork...
+DEBUG (09:14): OFF noPaintOrSampling=true cancelOnce=true highFirstFrameBeforeSampling=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03SameSceneRefreshKeepsJob...
+DEBUG (09:14): SAME_SCENE_REFRESH acceptedReopen=true queuedJobRetained=true assetSourceRetained=true
+PASS
+------------------------------------------------------------------------------
+Executing test display03ForegroundReloadDuringBuild...
+DEBUG (09:14): RELOAD_STAGE duplicate
+DEBUG (09:14): RELOAD_STAGE moved
+DEBUG (09:14): RELOAD_STAGE reject
+DEBUG (09:14): RELOAD_STAGE restore
+DEBUG (09:14): FOREGROUND_RELOAD duplicateJobRetained=true duplicateWrites=0 movedTargetVisible=true oldCompletionRejected=true rejectedRetainsTarget=true elapsedMs=134 appUsedBefore=161984 appUsedAfter=178304 appTotal=8383928
+PASS
+
+==============================================================================
+RESULTS
+Test:                                Status:
+display03RepeatedLowCallbacks        PASS
+display03SleepThenHighObservation    PASS
+display03WakeThenLowObservation      PASS
+display03CausalSequence              PASS
+display03ReadyAndErrorOnWake         PASS
+display03BackgroundBeforeFrame       PASS
+display03LowDoesNotSample            PASS
+display03OffStopsWork                PASS
+display03SameSceneRefreshKeepsJob    PASS
+display03ForegroundReloadDuringBuild PASS
+Ran 10 tests
+
+PASSED (passed=10, failed=0, errors=0)

@@ -82,9 +82,9 @@ class NativeSfrRenderer extends NativeVisualRenderer {
 
 (:extendedCode, :typecheck(false))
 class NativeSfrBuild {
-    var preferBundled=false;var store;var base;var packet;var immutable;var scene;var descriptors={};var expected=[];var role=0;var decoder=null;var result;var complete=false;var closureChecked=false;var closureAt=0;var selection;var rootReady=false;var pendingRead=null;var rasterBytes=0;var rasterObjects=0;var readKind=0;var names;
+    var preferBundled=false;var store;var base;var packet;var immutable;var scene;var descriptors={};var expected=[];var role=0;var decoder=null;var result;var complete=false;var closureChecked=false;var closureAt=0;var selection;var rootReady=false;var pendingRead=null;var pendingDescriptor=null;var rasterBytes=0;var rasterObjects=0;var readKind=0;var names;
     function initialize(adapter,url,p){store=adapter;base=url;packet=p;immutable=new NativeImmutable(store);selection=p.bridge["selection"];names=["map","rocket","siteCountry"];result=new NativeSfrRenderer();}
-    function dispose(){if(pendingRead!=null){pendingRead.dispose();pendingRead=null;}if(decoder!=null){decoder.dispose();decoder=null;}result=null;scene=null;packet=null;immutable=null;expected=[];}
+    function dispose(){if(pendingRead!=null){pendingRead.dispose();pendingRead=null;}if(decoder!=null){decoder.dispose();decoder=null;}result=null;scene=null;packet=null;immutable=null;pendingDescriptor=null;expected=[];}
     function fail(){throw new Lang.InvalidValueException("Invalid native SFR1M scene");}
     function same(a,b){return nativeSame(a,b);}
     function ref(r,prefix){packet.ref(r,prefix);return r;}
@@ -106,7 +106,7 @@ class NativeSfrBuild {
         if(readKind==2&&!path.equals("/objects")){fail();}
         if(path.equals("/shards")&&depth==1){if(index>=32){fail();}ref(value,"rasters");return [value["sha256"],value["decodedBytes"]];}
         if(path.equals("/shards")&&depth>1){fail();}
-        if(path.equals("/objects")&&depth==1){if(index>=40||!(value instanceof Array)||value.size()!=3||!packet.integer(value[0])||(value[0]!=0&&value[0]!=1)||!packet.hex(value[1])||!packet.integer(value[2])||value[2]<1||value[2]>4096){fail();}}
+        if(path.equals("/objects")&&depth==1){if(index>=40||index>=expected.size()||!(value instanceof Array)||value.size()!=3||!packet.integer(value[0])||(value[0]!=0&&value[0]!=1)||!packet.hex(value[1])||!packet.integer(value[2])||value[2]<1||value[2]>4096||!same(value,expected[index])){fail();}return null;}
         if(path.equals("/objects")&&(depth>2||depth==2&&index>=3)){fail();}
         if(path.equals("/animation")&&(depth>3||depth==1&&index>=2||depth==2&&index>=16||depth==3&&index>=4)){fail();}
         if(((path.equals("/canvas")||path.equals("/sourceCanvas"))&&index>=2)||(path.equals("/marker/anchor")&&index>=2)||(path.equals("/marker/colors")&&index>=3)){fail();}
@@ -169,7 +169,7 @@ class NativeSfrBuild {
         d.remove("sourceDescriptor");d.remove("sourceSemanticSha256");return d;
     }
     function checkIndex(index){
-        packet.shape(index,["type","schemaVersion","rendererProfile","scene","objects"],[]);if(!packet.same(index["type"],"native-transfer")||!packet.integer(index["schemaVersion"])||index["schemaVersion"]!=1||!packet.same(index["rendererProfile"],"SFR1M")||!same(index["scene"],[selection["sha256"],selection["decodedBytes"]])||!(index["objects"] instanceof Array)||index["objects"].size()!=expected.size()||expected.size()>40){fail();}var total=0;for(var i=0;i<expected.size();i+=1){var r=expected[i];if(!same(index["objects"][i],r)){fail();}total+=r[2];}if(total>114688){fail();}
+        packet.shape(index,["type","schemaVersion","rendererProfile","scene","objects"],[]);if(!packet.same(index["type"],"native-transfer")||!packet.integer(index["schemaVersion"])||index["schemaVersion"]!=1||!packet.same(index["rendererProfile"],"SFR1M")||!same(index["scene"],[selection["sha256"],selection["decodedBytes"]])||!(index["objects"] instanceof Array)||index["objects"].size()!=expected.size()||expected.size()>40){fail();}var total=0;for(var i=0;i<expected.size();i+=1){total+=expected[i][2];}if(total>114688){fail();}
     }
     function checkRaw(r){if(immutable.raw({"sha256"=>r[1],"decodedBytes"=>r[2]})==null){fail();}}
     function closure(){
@@ -180,7 +180,7 @@ class NativeSfrBuild {
     function step(){
         if(!rootReady){beginStep();return false;}
         if(role>=names.size()){if(!closureChecked){if(pendingRead==null){readKind=2;pendingRead=new NativeSfrReadJob(self,ref(packet.bridge["transfer"],"descriptors"),false);return false;}if(!pendingRead.step()){return false;}var index=pendingRead.result;pendingRead=null;checkIndex(index);closureChecked=true;scene=displayScene();result.scene=scene;return false;}if(closureAt<expected.size()){var start=System.getTimer();var checked=0;while(closureAt<expected.size()&&checked<4&&(checked==0||System.getTimer()-start<18)){checkRaw(expected[closureAt]);closureAt+=1;checked+=1;}return false;}closure();return true;}
-        var name=names[role];if(decoder==null){if(pendingRead==null){var r=roleRef(name);if(r==null){role+=1;return false;}pendingRead=new NativeSfrReadJob(self,r,false);return false;}if(!pendingRead.step()){return false;}var d=finishRole(name,pendingRead.result);pendingRead=null;if(name.equals("map")&&preferBundled){d["__localBundledOutline"]=true;result.bundledOutline=true;}decoder=new NativeSfrDecoder(store,d);return false;}
+        var name=names[role];if(decoder==null){if(pendingDescriptor!=null){var d=finishRole(name,pendingDescriptor);pendingDescriptor=null;if(name.equals("map")&&preferBundled){d["__localBundledOutline"]=true;result.bundledOutline=true;}decoder=new NativeSfrDecoder(store,d);return false;}if(pendingRead==null){var r=roleRef(name);if(r==null){role+=1;return false;}pendingRead=new NativeSfrReadJob(self,r,false);return false;}if(!pendingRead.step()){return false;}pendingDescriptor=pendingRead.result;pendingRead=null;return false;}
         if(decoder.step()){if(name.equals("map")){result.mapBitmap=decoder.bitmap;result.mapOutline=decoder.outlineBitmap;}else if(name.equals("rocket")){result.bitmap=decoder.bitmap;}else if(name.equals("siteCountry")){result.siteCountryBitmap=decoder.bitmap;}decoder=null;role+=1;}return false;
     }
 }

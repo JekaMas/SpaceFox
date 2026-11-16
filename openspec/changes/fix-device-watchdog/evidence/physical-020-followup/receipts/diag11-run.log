@@ -1,0 +1,25 @@
+SF_VIEW mode=HIGH pending=false
+SF_WAKE before_init build=0.1.23 id=1741ab3b now=1794844550 registered=1794846944 last=1794843344
+SF_STORE sf.commit type=dict v=6 generation=2
+SF_STORE sf.recovery type=dict v=6 generation=1
+SF_STORE sf.incoming.feed type=dict v=2 sequence=2
+SF_STORE sf.batch.head type=dict pending=false
+SF_STORE sf.batch.pending type=dict pending=false
+SF_STORE sf.incoming.feed.deferred absent
+SF_STORE sf.incoming.feed.rejected absent
+SF_STORE sf.attempt type=dict utc=1794843344 build=0.1.23
+SF_WAKE registration_kept pending=false next=1794846944
+SF_WAKE restore_armed build=0.1.23 id=1741ab3b now=1794844555 registered=1794846944 last=1794843344
+SF_WAKE registration_kept pending=false next=1794846944
+SF_VIEW mode=LOW pending=false
+SFR_LIFECYCLE low_draw=true retained=true before=102488 low=101880
+SF_VIEW mode=HIGH pending=false
+SFR_LIFECYCLE separate_wake used=101912
+SFR_LIFECYCLE resumed=true same=true used=102016
+SF_WAKE registration_kept pending=false next=1794846944
+
+Error: Out Of Memory Error
+Details: Failed invoking <symbol>
+Stack: 
+  -  at 
+Encountered an app crash.

@@ -20,7 +20,7 @@ class NativeCache extends NativeCacheCore {
 // input chunk is written and read back in a separate permitted callback.
 (:extendedCode, :typecheck(false))
 class NativeFeedPromotion {
-    var cache;var raw;var candidate;var now;var view;var mustYield=false;var phase=0;var operation="parse";var done=false;var accepted=false;var pub;var mutable;var mutableSpans;var marker;var slot;var same=false;var offset=0;var chunks=0;
+    var cache;var raw;var candidate;var now;var view;var queueSaved=false;var mustYield=false;var phase=0;var operation="parse";var done=false;var accepted=false;var pub;var mutable;var mutableSpans;var marker;var slot;var same=false;var offset=0;var chunks=0;
     function initialize(owner,text,packet,at,scene){cache=owner;raw=text;candidate=packet;now=at;view=scene;cache.failure="";}
     function step(){
         if(done){return true;}
@@ -32,14 +32,19 @@ class NativeFeedPromotion {
                 if(cache.packet!=null){var previous=cache.packet instanceof NativePrior?cache.packet.publisher:cache.packet.document["publisher"];if(!pub["instance"].equals(previous["instance"])||pub["generation"]<previous["generation"]||pub["selectionValidatedUtc"]<previous["selectionValidatedUtc"]){cache.failure="update-rejected";done=true;return true;}
                     if(pub["generation"]==previous["generation"]){if(!candidate.wireHash.equals(cache.packet.wireHash)){cache.failure="update-rejected";done=true;return true;}if(cache.packet instanceof NativePrior){operation="metadata";candidate.metadata(cache.packet,now);candidate.raw="";candidate.spans=null;candidate.ignored=null;raw=null;candidate.presentation=feedScene(candidate,now);candidate.compact();cache.packet=candidate;cache.requestWake=null;}else{cache.packet.advance(now);}accepted=true;done=true;return true;}}
                 mutable=candidate.mutableWire();mutableSpans=candidate.ignored;operation="metadata";candidate.metadata(cache.packet,now);candidate.raw="";candidate.spans=null;candidate.ignored=null;operation="persist";same=cache.packet!=null&&candidate.contentHash.equals(cache.packet.contentHash);slot=same?cache.commit["slot"]:cache.freeSlot();var rawDigest=same?cache.commit["rawHash"]:candidate.wireHash;
-                marker={"v"=>6,"base"=>cache.base,"slot"=>slot,"generation"=>cache.commit==null?1:cache.commit["generation"]+1,"rawHash"=>rawDigest,"contentHash"=>candidate.contentHash,"validation"=>candidate.validation,"stale"=>candidate.stale,"rescheduled"=>candidate.rescheduled,"publisher"=>pub,"wireHash"=>candidate.wireHash,"mutable"=>mutable};marker["prior"]=cache.priorFrom(candidate);marker["priorHash"]=cache.priorHash(marker["prior"]);marker["seal"]=cache.seal(marker);phase=1;return false;
+                // Materialize presentation and the exact durable prior while
+                // the verified document exists, then drop its parse tree before
+                // hashing the marker or writing chunks on a later callback.
+                candidate.presentation=feedScene(candidate,now);
+                marker={"v"=>6,"base"=>cache.base,"slot"=>slot,"generation"=>cache.commit==null?1:cache.commit["generation"]+1,"rawHash"=>rawDigest,"contentHash"=>candidate.contentHash,"validation"=>candidate.validation,"stale"=>candidate.stale,"rescheduled"=>candidate.rescheduled,"publisher"=>pub,"wireHash"=>candidate.wireHash,"mutable"=>mutable};marker["prior"]=cache.priorFrom(candidate);candidate.compact();phase=10;mustYield=true;return false;
             }
+            if(phase==10){marker["priorHash"]=cache.priorHash(marker["prior"]);marker["seal"]=cache.seal(marker);phase=1;return false;}
             if(phase==1){
                 if(!same&&offset<raw.length()){var end=offset+512;if(end>raw.length()){end=raw.length();}var part=raw.substring(offset,end);var key="sf.feed."+slot+"."+chunks;cache.store.write(key,part);var observed=cache.store.read(key);if(!(observed instanceof String)||!observed.equals(part)){throw new Lang.InvalidValueException("Chunk readback mismatch");}offset=end;chunks+=1;return false;}
                 if(!same){cache.store.write("sf.feed."+slot,{"v"=>2,"base"=>cache.base,"chunks"=>chunks,"rawHash"=>marker["rawHash"],"mutableSpans"=>mutableSpans});}raw=null;phase=2;mustYield=true;return false;
             }
-            if(phase==2){candidate.presentation=feedScene(candidate,now);candidate.compact();phase=3;return false;}
-            if(phase==3){if(view!=null&&cache.packet!=null){new NativeUpcomingCache(cache.store,cache.base,pub["instance"]).save(view.queueSnapshots());}phase=4;return false;}
+            if(phase==2){phase=3;return false;}
+            if(phase==3){if(!queueSaved&&view!=null&&cache.packet!=null){new NativeUpcomingCache(cache.store,cache.base,pub["instance"]).save(view.queueSnapshots());}phase=4;return false;}
             if(phase==4){cache.rememberPublisher(pub,candidate.wireHash);phase=5;return false;}
             if(phase==5){if(cache.commit!=null){cache.store.write("sf.recovery",cache.detached?cache.store.read(cache.commitKey):cache.commit);}phase=6;return false;}
             cache.store.write("sf.commit",marker);var observed=cache.store.read("sf.commit");if(!(observed instanceof Dictionary)||!(observed["seal"] instanceof String)||!observed["seal"].equals(marker["seal"])||!cache.seal(observed).equals(marker["seal"])){throw new Lang.InvalidValueException("Commit readback mismatch");}

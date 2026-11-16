@@ -103,3 +103,23 @@ Owner reports missing live data, point and expected LOW screen on the transferre
 A stock SDK reopen initially OOMed in SFR raster loading; the first LOW-mask deferral fixed the no-sleep stock case but failed separate injected sleep/wake callbacks. The retained shard trace showed 118,304/126,784 sampled bytes before a 4,044-byte read. Paging the row decoder, explicit cancellation cleanup and LOW-only resource ownership yielded a passing injected split-callback SFR completion and a detailed stock final frame. This is a finite simulator result, not a physical peak, OS global-LOW test, or physical fix claim. Exact first failures and observed receipts remain linked in the follow-up folder. The user's physical no-update outcome remains open and bounded trace is prepared for review.
 
 GitHub main advanced to `98dc7a6e41f03e8904d1dd02ff941317d52eb5be` during this work, integrating B1 with overlapping native runtime sources. The present changes and receipts are first preserved against `db9130d3`; integration and directly invalidated checks follow before peer handoff. No diagnostic has been installed and no new Store or GitHub release is authorized by this follow-up.
+
+## Integrated follow-up: software boundary and remaining device gate
+
+The captured source's validated announced NET is now shown as an explicitly
+estimated `~T−`/`~T+` reference; exact source precision and alert scheduling are
+unchanged. The accepted facts and LOW composition remain available while
+optional scene work progresses. The previously failing simulator replacement
+now proceeds from captured publisher generation 56 to 57 while SFR is active,
+cancels that job, authenticates/adopts the new input, and restores the full
+renderer. Its observed 110,952-byte sample is not a measured peak. A separate
+readback on the same source/seal path confirmed generation 57 and processed
+input. See `physical-020-followup/INTEGRATION.md` and its retained first-failure
+and callback-injection receipts for the exact boundaries and affected checks.
+
+The owner has since authorized a release once the affected software work and
+independent review are green; that supersedes the earlier private-only release
+restriction above. GitHub main advanced again through publication-only commits
+to `c410eb4e5d86bbbe28d100996abf6bf5beb0607d`; those must be integrated before
+release. The reported physical no-update result, the reason for it, an actual
+watch update/reopen/LOW run and 15-minute acceptance remain NOT OBSERVED.

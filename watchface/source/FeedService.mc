@@ -21,7 +21,7 @@ class FeedService extends System.ServiceDelegate {
     (:typecheck(false))
     function receive(code as Number,data as Dictionary or String or Null) as Void {
 
-        try{System.println("SF_BG feed_http="+code);if(code==200&&data instanceof String){var staged=transfer.stage("feed",data,null);System.println("SF_BG feed_staged="+staged);if(staged){var begun=batch.begin(data);System.println("SF_BG batch_begin="+begun);if(begun){optional();return;}}}}catch(e){System.println("SF_BG feed_error");}finish();
+        try{System.println("SF_BG feed_http="+code);if(code==200&&data instanceof String){var staged=transfer.stage("feed",data,null);System.println("SF_BG feed_staged="+staged);if(staged){var begun=batch.begin(data);System.println("SF_BG batch_begin="+begun);if(begun){data=null;optional();return;}}}}catch(e){System.println("SF_BG feed_error");}finish();
     }
     (:typecheck(false))
     function optional() as Void {try{if(batch!=null){assetRequest=batch.next();if(assetRequest!=null){request(assetRequest["path"],method(:receiveBatch));return;}if(batch.head!=null){finish();return;}}}catch(e){System.println("SF_BG batch_error");}finish();}
