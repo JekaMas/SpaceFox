@@ -639,8 +639,8 @@ def _validate_artifact(files, cached, pending):
     logical = {p: raw for p, raw in files.items() if not p.endswith('.txt') and p != 'watch.json'}
     require(set(logical) == closure(logical,[FEED_PATH]), 'complete immutable closure')
     if 'watch.json' in files:
-        from .watch_snapshot import encode_snapshot
-        require(files['watch.json'] == encode_snapshot(feed, cat), 'watch projection matches feed')
+        from .watch_snapshot import matches_accepted_projection
+        require(matches_accepted_projection(files['watch.json'], feed, cat), 'watch projection matches feed')
     # Already accepted same-format snapshots may predate HTTP sidecars. If any
     # sidecar is present, require the complete exact set and byte identity. New
     # preparation always adds the complete set, including the final mutable root.

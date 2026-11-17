@@ -97,3 +97,21 @@ def encode_snapshot(feed,catalog):
     encoded=json.dumps({'data':snapshot(feed,catalog)},ensure_ascii=False,separators=(',',':'),allow_nan=False).encode('utf-8')
     if len(encoded)>8192:raise ValueError('watch snapshot exceeds 8192 bytes')
     return encoded
+
+def matches_accepted_projection(raw, feed, catalog):
+    """Validate an accepted projection across the mission-label presentation change."""
+    try:
+        actual = json.loads(raw)
+        if json.dumps(actual, ensure_ascii=False, separators=(',', ':'), allow_nan=False).encode('utf-8') != raw:
+            return False
+        rows = actual['data']
+        pairs = [(rows[3], feed['launch'])]
+        pairs += list(zip(rows[4], (r for r in feed.get('upcoming', []) if 'terminal' not in r)))
+        for row, launch in pairs:
+            if row is not None and launch is not None and row[4] == launch.get('mission_purpose'):
+                row[4] = _mission_text(launch)
+        return (set(actual) == {'data'} and
+                json.dumps(actual, ensure_ascii=False, separators=(',', ':'), allow_nan=False).encode('utf-8')
+                == encode_snapshot(feed, catalog))
+    except (ValueError, TypeError, KeyError, IndexError):
+        return False
