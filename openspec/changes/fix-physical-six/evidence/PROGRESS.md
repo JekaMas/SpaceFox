@@ -1,3 +1,7 @@
+# Publisher delivery repair — host-only peer GREEN
+
+Current-format accepted generation84 reopen across the mission-label presentation update is independently GREEN at host source `6d16ff01cf7e9fff502950ddbe69973289664ce7`. `PUBLISHER-REOPEN-PEER.md/json` and `publisher-reopen-peer-check.log` retain exact scope: old source-authorized presentation accepted, current refresh generated, epoch/tamper/canonicality refused; immutable artifact checks unchanged. Actual publisher deployment/public readback is still pending. Frozen native0.2.11 source, export, tag and original six-property/native receipts are unchanged; no native rerun was performed.
+
 # Current authoritative status — peer software GREEN
 
 Clean reviewed source `469152653ccbb0567a20d297036e7080fd02c985`, 0.2.11 / NativeID `3c4d93d0`. Whole six-property independent source/evidence review is GREEN; no material runtime finding or new SDK run was needed. Existing actual clean combined-peer/source/five-primary gate PASS (`peer-current-gate.log`); one real `PEER.json` has the literal nonempty proof boundary. Delivery remains author-owned and open.
