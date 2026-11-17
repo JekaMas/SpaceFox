@@ -1,0 +1,15 @@
+------------------------------------------------------------------------------
+Executing test metricOverlayDoesNotRestartArt...
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (08:47): METRIC_OVERLAY provider_callback=true zero_valid=true job_restart=0
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+metricOverlayDoesNotRestartArt      PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

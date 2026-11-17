@@ -1,0 +1,18 @@
+------------------------------------------------------------------------------
+Executing test lowFirstDeliveryFrame...
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_ok pending=false next=1794908549
+SF_WAKE registration_kept pending=false next=1794908549
+DEBUG (09:42): LOW first delivery: normal LOW draw with point and target; no ACTIVE event between delivery and frame
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+lowFirstDeliveryFrame               PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

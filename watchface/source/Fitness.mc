@@ -7,8 +7,8 @@ import Toybox.Time;
 class Fitness {
     // Null means the unfiltered adapter, used by direct API diagnostics.
     var selectedRoles as Array<String> or Null = null;
-    var currentBodyBattery as Number or Null = null;
     var selectedFields as SelectedFields or Null = null;
+    var status as Dictionary = {};var reason as Dictionary = {};
     function initialize() {}
     function requested(role as String) as Boolean {return selectedRoles==null || (selectedRoles as Array<String>).indexOf(role)>=0;}
     // Only finite nonnegative real Garmin data, no fixtures/default health.
@@ -29,28 +29,32 @@ class Fitness {
         if(sample==null || sample.when==null){return null;}
         return recentValue(sample.data,sample.when.value(),now,maximum,heart);
     }
+    // READY means a real Garmin value, WAITING means the provider returned
+    // no usable current sample, and UNAVAILABLE records a missing API/error.
     function sample(now as Number or Long) as Dictionary<String, Number or Null> {
-        var values = {"steps"=>null,"calories"=>null,"battery"=>null,"heart"=>null,"energy"=>null,"stress"=>null};
-        try {
-            if ((requested("steps") || requested("calories")) && Toybox has :ActivityMonitor && ActivityMonitor has :getInfo) {
-                var info = ActivityMonitor.getInfo();
-                if (info != null) {
-                    if (info has :steps) { values["steps"] = number(info.steps, null); }
-                    if (info has :calories) { values["calories"] = number(info.calories, null); }
-                }
-            }
-        } catch (e) {}
-        try { if(requested("battery")){values["battery"] = number(System.getSystemStats().battery, 100);} } catch (e) {}
-        if(requested("energy")){values["energy"]=currentBodyBattery;}
-        // One latest sample per selected history source. No entire-history traversal,
-        // raw Sensor streaming or health upload. Permission/API failures are null.
-        if (Toybox has :SensorHistory) {
-            var options = {:period=>1, :order=>SensorHistory.ORDER_NEWEST_FIRST};
-            try { if (requested("heart") && SensorHistory has :getHeartRateHistory) { values["heart"] = recent(SensorHistory.getHeartRateHistory(options).next(), now, 300, true); } } catch (e) {}
-            try { if (requested("stress") && SensorHistory has :getStressHistory) { values["stress"] = recent(SensorHistory.getStressHistory(options).next(), now, 100, false); } } catch (e) {}
+        var values={"steps"=>null,"calories"=>null,"battery"=>null,"heart"=>null,"energy"=>null,"stress"=>null};
+        status={};reason={};var roles=["steps","calories","battery","heart","energy","stress"];
+        for(var i=0;i<roles.size();i+=1){if(requested(roles[i])){status[roles[i]]="WAITING";reason[roles[i]]="no-sample";}}
+        if(requested("steps")||requested("calories")){
+            try{if(Toybox has :ActivityMonitor && ActivityMonitor has :getInfo){var info=ActivityMonitor.getInfo();if(info!=null){if(info has :steps){values["steps"]=number(info.steps,null);}if(info has :calories){values["calories"]=number(info.calories,null);}}}
+                else{status["steps"]="UNAVAILABLE";status["calories"]="UNAVAILABLE";reason["steps"]="unsupported";reason["calories"]="unsupported";}}
+            catch(e){status["steps"]="UNAVAILABLE";status["calories"]="UNAVAILABLE";reason["steps"]="provider-error";reason["calories"]="provider-error";}
         }
+        if(requested("battery")){try{values["battery"]=number(System.getSystemStats().battery,100);}catch(e){status["battery"]="UNAVAILABLE";reason["battery"]="provider-error";}}
+        if(requested("energy")&&selectedFields!=null){values["energy"]=(selectedFields as SelectedFields).energy;if(values["energy"]==null){status["energy"]=(selectedFields as SelectedFields).energyStatus;reason["energy"]=(selectedFields as SelectedFields).energyReason;}}
+        if(requested("heart")){
+            try{if(Toybox has :SensorHistory && SensorHistory has :getHeartRateHistory){values["heart"]=recent(SensorHistory.getHeartRateHistory({:period=>1,:order=>SensorHistory.ORDER_NEWEST_FIRST}).next(),now,300,true);}else{status["heart"]="UNAVAILABLE";reason["heart"]="unsupported";}}
+            catch(e){status["heart"]="UNAVAILABLE";reason["heart"]="provider-error";}
+        }
+        if(requested("stress")){
+            try{if(Toybox has :SensorHistory && SensorHistory has :getStressHistory){values["stress"]=recent(SensorHistory.getStressHistory({:period=>1,:order=>SensorHistory.ORDER_NEWEST_FIRST}).next(),now,100,false);}else{status["stress"]="UNAVAILABLE";reason["stress"]="unsupported";}}
+            catch(e){status["stress"]="UNAVAILABLE";reason["stress"]="provider-error";}
+        }
+        for(var i=0;i<roles.size();i+=1){var role=roles[i];if(requested(role)&&values[role]!=null){status[role]="READY";reason[role]="available";}}
         return values;
     }
+    function fieldReason(role as String) as String {if(role.find("custom")==0&&selectedFields!=null){return (selectedFields as SelectedFields).reason(role) as String;}return reason.hasKey(role)?reason[role] as String:"no-sample";}
+    function fieldState(role as String) as String {if(role.find("custom")==0&&selectedFields!=null){return (selectedFields as SelectedFields).state(role) as String;}return status.hasKey(role)?status[role] as String:"WAITING";}
     (:typecheck(false)) function fieldIcon(role as String) {return selectedFields==null?null:(selectedFields as SelectedFields).icon(role);}
     function fieldLabel(role as String) as String {return selectedFields==null?"":(selectedFields as SelectedFields).label(role);}
     function display(values as Dictionary<String, Number or Null>, role as String) as String {

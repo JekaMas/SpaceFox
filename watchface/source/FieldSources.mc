@@ -155,7 +155,7 @@ class FieldComplicationApi {
 // persisted if a provider disappears; a failed subscription is polled on minute.
 (:extendedCode, :typecheck(false))
 class SelectedFields {
-    var selected=[];var subscribed=[];var labels={};var text={};var icons={};var energy as Number or Null=null;var callbackRegistered=false;var provider=null;var api=null;var customMask=0;var fittedMask=0;var numericMask=0;
+    var selected=[];var subscribed=[];var labels={};var text={};var icons={};var states={};var reasons={};var energy as Number or Null=null;var energyStatus="WAITING";var energyReason="no-sample";var callbackRegistered=false;var provider=null;var api=null;var customMask=0;var fittedMask=0;var numericMask=0;
     function initialize(){}
     function start(slots,callback){
         stop();
@@ -176,22 +176,23 @@ class SelectedFields {
     }
     function stop(){for(var i=0;i<subscribed.size();i+=1){try{if(api==null){Complications.unsubscribeFromUpdates(subscribed[i]);}else{api.unsubscribe(subscribed[i]);}}catch(e){}}
         if(callbackRegistered){try{if(api==null){Complications.registerComplicationChangeCallback(null);}else{api.register(null);}}catch(e){}}
-        subscribed=[];selected=[];labels={};text={};icons={};energy=null;callbackRegistered=false;customMask=0;fittedMask=0;numericMask=0;
+        subscribed=[];selected=[];labels={};text={};icons={};states={};reasons={};energy=null;energyStatus="WAITING";energyReason="no-sample";callbackRegistered=false;customMask=0;fittedMask=0;numericMask=0;
     }
     function read(locale){readSelected(locale,null);}
     function readChanged(locale,id){readSelected(locale,id);}
     function readSelected(locale,onlyId){
         var info=null;var fetched=false;var stats=null;var statsFetched=false;var words=null;
-        if(onlyId==null){labels={};text={};icons={};energy=null;fittedMask=0;numericMask=0;}
-        else{for(var i=0;i<selected.size();i+=1){var prior=selected[i];if(prior instanceof Complications.Id&&prior.equals(onlyId)){var key="custom"+(i+1);labels.remove(key);text.remove(key);icons.remove(key);fittedMask&=~(1<<i);numericMask&=~(1<<i);if(prior.getType()==23){energy=null;}}}}
-        for(var i=0;i<selected.size();i+=1){var key="custom"+(i+1);var source=selected[i];if(source==null){continue;}
+        if(onlyId==null){labels={};text={};icons={};states={};reasons={};energy=null;energyStatus="WAITING";energyReason="no-sample";fittedMask=0;numericMask=0;}
+        else{for(var i=0;i<selected.size();i+=1){var prior=selected[i];if(prior instanceof Complications.Id&&prior.equals(onlyId)){var key="custom"+(i+1);labels.remove(key);text.remove(key);icons.remove(key);states.remove(key);reasons.remove(key);fittedMask&=~(1<<i);numericMask&=~(1<<i);if(prior.getType()==23){energy=null;energyStatus="WAITING";energyReason="no-sample";}}}}
+        for(var i=0;i<selected.size();i+=1){var key="custom"+(i+1);var source=selected[i];if(source==null){if((customMask&(1<<i))!=0){states[key]="UNAVAILABLE";reasons[key]="not-configured";}continue;}
             if(onlyId!=null&&(!(source instanceof Complications.Id)||!source.equals(onlyId))){continue;}
+            states[key]="WAITING";reasons[key]="no-sample";
             try{if(source instanceof Complications.Id){
                 var earlier=-1;for(var n=0;n<i;n+=1){if(selected[n] instanceof Complications.Id&&source.equals(selected[n])){earlier=n;break;}}
-                if(earlier>=0){var previous="custom"+(earlier+1);if(labels.hasKey(previous)){labels[key]=labels[previous];}if(text.hasKey(previous)){text[key]=text[previous];}if(icons.hasKey(previous)){icons[key]=icons[previous];}continue;}
-                var item=null;try{item=provider!=null?provider.get(source):(api==null?Complications.getComplication(source):api.get(source));}catch(missing){}
+                if(earlier>=0){var previous="custom"+(earlier+1);if(labels.hasKey(previous)){labels[key]=labels[previous];}if(text.hasKey(previous)){text[key]=text[previous];}if(icons.hasKey(previous)){icons[key]=icons[previous];}if(states.hasKey(previous)){states[key]=states[previous];}if(reasons.hasKey(previous)){reasons[key]=reasons[previous];}continue;}
+                var item=null;try{item=provider!=null?provider.get(source):(api==null?Complications.getComplication(source):api.get(source));}catch(missing){states[key]="UNAVAILABLE";reasons[key]="provider-error";if(source.getType()==23){energyStatus="UNAVAILABLE";energyReason="provider-error";}}
                 if(item!=null){var kind=source.getType();var needText=(customMask&(1<<i))!=0;
-                    if(kind==23){if(item.value instanceof Number&&item.value>=0&&item.value<=100){energy=item.value;}
+                    if(kind==23){if(item.value instanceof Number&&item.value>=0&&item.value<=100){energy=item.value;energyStatus="READY";energyReason="available";}
                         if(!needText){for(var j=i+1;j<selected.size();j+=1){if((customMask&(1<<j))!=0&&selected[j] instanceof Complications.Id&&source.equals(selected[j])){needText=true;break;}}}
                     }
                     if(needText){var label=item.shortLabel;if(!(label instanceof String)||label.equals("")){label=item.longLabel;}labels[key]=label instanceof String?label:"";
@@ -201,7 +202,8 @@ class SelectedFields {
                 }item=null;
             }else if(source instanceof String){if(source.find("system:")==0){if(!statsFetched){stats=System.getSystemStats();statsFetched=true;}if(stats!=null){text[key]=FieldFormat.system(source,FieldCatalog.systemValue(stats,source),locale);var keys=FieldCatalog.systemKeys();var at=keys.indexOf(source);if(at>=0){if(words==null){words=FieldText.menu(locale);}labels[key]=words["system"][at];}}}
                 else{if(!fetched){info=ActivityMonitor.getInfo();fetched=true;}if(info!=null){text[key]=FieldFormat.activity(source,FieldCatalog.activityValue(info,source));var keys=FieldCatalog.activityKeys();var at=keys.indexOf(source);if(at>=0){if(words==null){words=FieldText.menu(locale);}labels[key]=words["activity"][at];}}}}}
-            catch(e){}
+            catch(e){states[key]="UNAVAILABLE";reasons[key]="provider-error";}
+            if(text.hasKey(key)&&text[key] instanceof String&&!(text[key] as String).equals("—")){states[key]="READY";reasons[key]="available";}
         }
     }
     // Optional provider graphics are managed references with bounded dimensions.
@@ -210,6 +212,8 @@ class SelectedFields {
         if(!(icon instanceof Graphics.BitmapReference)){return false;}
         try{var w=icon.getWidth();var h=icon.getHeight();if(w<1||h<1||w>96||h>96){return false;}var transform=new Graphics.AffineTransform();transform.scale(18.0/w,18.0/h);return [icon,{:transform=>transform}];}catch(e){return false;}
     }
+    function state(role){return states.hasKey(role)?states[role]:"WAITING";}
+    function reason(role){return reasons.hasKey(role)?reasons[role]:"no-sample";}
     function icon(role){return icons.hasKey(role)?icons[role]:null;}
     function active() as Boolean {return selected.size()>0;}
     function display(role) as String {return text.hasKey(role)?text[role] as String:"—";}

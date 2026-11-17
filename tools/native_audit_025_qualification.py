@@ -40,9 +40,13 @@ INTEGRATION_NATIVE = set("""watchface/manifest.xml watchface/source/FeedService.
  watchface/source/SpaceFoxApp.mc watchface/source/SpaceFoxView.mc
  watchface/source/generated/NativeVersion.mc""".split())
 INTEGRATION_OWNERS = {"tests/test_current_022_admission.py", "tools/release.py", "tools/native_audit_025_qualification.py", "watchface/audit-tests/AuditTests.mc"}
+METRICS_NATIVE = INTEGRATION_NATIVE | set("""watchface/source/FieldSources.mc watchface/source/Fitness.mc
+ watchface/source/NativeCache.mc watchface/source/SceneRenderer.mc""".split())
+METRICS_OWNERS = INTEGRATION_OWNERS | {"tools/spacefox/publisher.py", "tests/test_autonomous_publisher_whole.py"}
+METRICS_PRIOR_TESTS = {"watchface/runtime-b1-tests/ClockFirst021.mc", "watchface/runtime-b1-tests/ColdAcquisition.mc"}
 AUDIT_SOURCE = "e30f79680c4e2cd8bbae1895226e5915c2a72ef9"
 
-def run_prior(root, catalog, snapshots, audit_record=None):
+def run_prior(root, catalog, snapshots, audit_record=None, native_delta=None, test_delta=()):
     with tempfile.TemporaryDirectory(prefix='spacefox-audit-prior-') as temporary:
         target=Path(temporary)
         for path in root.iterdir():
@@ -55,7 +59,7 @@ def run_prior(root, catalog, snapshots, audit_record=None):
         if audit_record is not None:
             # Recreate the exact audited 0.2.5 native inputs before applying
             # its already-recorded 0.2.4 snapshots. Never modify the source tree.
-            for name in INTEGRATION_NATIVE:
+            for name in (native_delta or INTEGRATION_NATIVE):
                 destination=target/name
                 expected=audit_record['nativeInputs'].get(name)
                 if expected is None:
@@ -63,6 +67,10 @@ def run_prior(root, catalog, snapshots, audit_record=None):
                 raw=subprocess.check_output(['git','show',AUDIT_SOURCE+':'+name],cwd=root)
                 if hashlib.sha256(raw).hexdigest()!=expected:raise ValueError('audit predecessor native input changed: '+name)
                 destination.parent.mkdir(parents=True,exist_ok=True);destination.unlink(missing_ok=True);destination.write_bytes(raw)
+            for name in test_delta:
+                raw=subprocess.check_output(['git','show',AUDIT_SOURCE+':'+name],cwd=root)
+                if hashlib.sha256(raw).hexdigest()!=audit_record['priorTestInputs'][name]:raise ValueError('audit predecessor test input changed: '+name)
+                destination=target/name;destination.unlink(missing_ok=True);destination.write_bytes(raw)
             name='tools/native_current_022_qualification.py'
             raw=subprocess.check_output(['git','show',AUDIT_SOURCE+':'+name],cwd=root)
             destination=target/name;destination.unlink(missing_ok=True);destination.write_bytes(raw)
@@ -92,16 +100,20 @@ def validate(root,catalog):
     if record['scope']!='runtime-audit-025-current-source' or record['version']!='0.2.5':raise ValueError('wrong audit proof scope/version')
     from xml.etree import ElementTree as ET
     app=ET.parse(root/'watchface/manifest.xml').getroot().find('{http://www.garmin.com/xml/connectiq}application')
-    integrated=app.get('version')=='0.2.6'
+    integrated=app.get('version') in ('0.2.6','0.2.7')
+    metrics=app.get('version')=='0.2.7'
     actual=native_inputs(root);previous=record['nativeInputs']
     changed={name for name in set(actual)|set(previous) if actual.get(name)!=previous.get(name)}
-    if changed!=(INTEGRATION_NATIVE if integrated else set()):raise ValueError('audit native input closure changed')
-    if test_inputs(root)!=record['priorTestInputs']:raise ValueError('audit prior test input closure changed')
+    expected_native=METRICS_NATIVE if metrics else INTEGRATION_NATIVE if integrated else set()
+    if changed!=expected_native:raise ValueError('audit native input closure changed')
+    actual_tests=test_inputs(root);prior_tests=record['priorTestInputs']
+    changed_tests={name for name in set(actual_tests)|set(prior_tests) if actual_tests.get(name)!=prior_tests.get(name)}
+    if changed_tests!=(METRICS_PRIOR_TESTS if metrics else set()):raise ValueError('audit prior test input closure changed')
     if set(record['priorSnapshots'])!=SNAPSHOTS:raise ValueError('audit predecessor snapshot inventory changed')
     for ref in record['priorSnapshots'].values():checked(root,ref)
     if set(record['currentOwners'])!=OWNERS:raise ValueError('audit owner inventory changed')
     changed_owners={name for name,digest in record['currentOwners'].items() if sha(root/name)!=digest}
-    if changed_owners!=(INTEGRATION_OWNERS if integrated else set()):raise ValueError('audit current owner changed: '+', '.join(sorted(changed_owners)))
+    if changed_owners!=(METRICS_OWNERS if metrics else INTEGRATION_OWNERS if integrated else set()):raise ValueError('audit current owner changed: '+', '.join(sorted(changed_owners)))
     validate_version(root);seen=set()
     for row in record['sdkCases']:
         if len(row['tests'])!=1 or row['tests'][0] in seen:raise ValueError('audit SDK case inventory differs')
@@ -109,6 +121,6 @@ def validate(root,catalog):
         clean='\n'.join(line for line in raw.splitlines() if not re.fullmatch(r'SF_VIEW mode=(?:HIGH|LOW) pending=(?:true|false)',line.strip()))
         if parse_output(clean,row['rawExit'],tuple(row['tests']))['status']!='passed':raise ValueError('audit SDK case incomplete')
     if seen!=REQUIRED:raise ValueError('audit SDK case inventory differs')
-    qualified=run_prior(root,catalog,record['priorSnapshots'],record if integrated else None)
+    qualified=run_prior(root,catalog,record['priorSnapshots'],record if integrated else None, expected_native, METRICS_PRIOR_TESTS if metrics else ())
     if qualified!=catalog['supportPolicy']['softwareQualifiedLocales']:raise ValueError('retained locale set differs')
     return qualified

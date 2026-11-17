@@ -5,6 +5,7 @@ import Toybox.WatchUi;
 
 class SceneRenderer {
     var presentation as LocalePresentation;
+    var mapDecision as MapPresentation;
     var fonts as Dictionary<String, Graphics.FontType>;
     var model as ResourceId or Null;
     var icons as Dictionary<String,Graphics.BitmapType>;
@@ -30,7 +31,7 @@ class SceneRenderer {
     var metricLayouts as Array=[null,null,null,null,null,null,null,null];
     (:extendedCode)
     function initialize(owner as LocalePresentation or Null) {
-        presentation=owner==null?new LocalePresentation():owner;
+        presentation=owner==null?new LocalePresentation():owner;mapDecision=new MapPresentation();
         fonts = {};icons={};var transform=new Graphics.AffineTransform();transform.scale(2.0,2.0);mapScale={:transform=>transform,:filterMode=>Graphics.FILTER_MODE_BILINEAR};
         marker=load(Rez.Drawables.LaunchMarker) as Graphics.BitmapType;
         fonts["time"] = load(Rez.Fonts.Time80) as Graphics.FontType;
@@ -49,6 +50,7 @@ class SceneRenderer {
         var selected={} as Dictionary<String,Graphics.BitmapType>;
         for(var i=0;i<settings.slots.size();i+=1){var role=settings.slots[i];if(NativeAssets.icons.hasKey(role)&&!selected.hasKey(role)){selected[role]=icons.hasKey(role)?(icons[role] as Graphics.BitmapType):load(NativeAssets.icons[role] as ResourceId) as Graphics.BitmapType;}}
         icons=selected;
+        mapDecision.bind(context);
         // Unchanged model and qualified point retain the same bitmaps even if
         // metadata/settings were refreshed or the accepted scene woke again.
         var same=prepared && ((context==null && fullContext==null) ||
@@ -64,35 +66,14 @@ class SceneRenderer {
         // The bundled view is geographical backdrop only: no location marker is
         // shown unless the selected launch supplies a qualified matching point.
         model = null; art = null; map = null; aodMap=null; aodResource=null; pin = false;aodPin=false;worldFallback=false;
-        var mapResource=Rez.Drawables.MapView0;
-        if (context == null) { self.mapResource=mapResource;artResource=Rez.Drawables.Art_unknown;aodResource=NativeAssets.aodResource(0);map=load(mapResource) as Graphics.BitmapType; art = load(artResource as ResourceId) as Graphics.BitmapType; return; }
-        var id = NativeAssets.models.hasKey(context.modelId) ? context.modelId : "generic";
-        model=NativeAssets.models[id] as ResourceId;artResource=id.equals("generic") ? Rez.Drawables.Art_unknown : (model as ResourceId);art = load(artResource as ResourceId) as Graphics.BitmapType;
-        if (context.point != null) {
-            var mapCoords=NativeAssets.mapCoordinates();
-            for (var i = 0; i < mapCoords.size()/8; i += 1) {
-                var longitude=mapCoords.decodeNumber(Lang.NUMBER_FORMAT_FLOAT,{:offset=>i*8,:endianness=>Lang.ENDIAN_BIG});
-                var latitude=mapCoords.decodeNumber(Lang.NUMBER_FORMAT_FLOAT,{:offset=>i*8+4,:endianness=>Lang.ENDIAN_BIG});
-                var point=context.point as Array<Numeric>;
-                // These bitmaps use D3's rotated equirectangular projection.
-                // Admit only points within a quarter degree of the bitmap's
-                // actual center, where its site remains legible beside time.
-                var lonDelta=point[0]-longitude;var latDelta=point[1]-latitude;
-                if (lonDelta>=-0.25 && lonDelta<=0.25 && latDelta>=-0.25 && latDelta<=0.25) {
-                    var projected=projectSite(point,longitude,latitude);
-                    pinX=projected[0];pinY=projected[1];aodPinX=pinX;aodPinY=pinY;
-                    mapResource=NativeAssets.mapResource(i);aodResource=NativeAssets.aodResource(i);pin = true;aodPin=true;break;
-                }
-            }
-            if(aodResource==null){
-                var point=context.point as Array<Numeric>;
-                var coordinates=NativeAssets.aodCoordinates;
-                for(var i=0;i<coordinates.size()/8;i+=1){var longitude=aodCoordinate(coordinates,i*8);var latitude=aodCoordinate(coordinates,i*8+4);var lon=point[0]-longitude;var lat=point[1]-latitude;
-                    if(lon>=-0.25&&lon<=0.25&&lat>=-0.25&&lat<=0.25){var projected=projectSite(point,longitude,latitude);aodPinX=projected[0];aodPinY=projected[1];pinX=aodPinX;pinY=aodPinY;pin=true;mapResource=NativeAssets.extraMapResource(i);aodPin=true;aodResource=NativeAssets.aodResource(54+i);break;}}
-            }
-        }
-        if(context.point!=null&&!pin){worldFallback=true;self.mapResource=null;map=null;}
-        else{self.mapResource=mapResource;map=load(mapResource) as Graphics.BitmapType;}
+        var resource=mapDecision.activeResource();
+        if (context == null) { self.mapResource=resource;artResource=Rez.Drawables.Art_unknown;aodResource=mapDecision.lowResource();map=load(resource) as Graphics.BitmapType; art=load(artResource as ResourceId) as Graphics.BitmapType; return; }
+        var id=NativeAssets.models.hasKey(context.modelId)?context.modelId:"generic";
+        model=NativeAssets.models[id] as ResourceId;artResource=id.equals("generic")?Rez.Drawables.Art_unknown:(model as ResourceId);art=load(artResource as ResourceId) as Graphics.BitmapType;
+        pin=mapDecision.matched;aodPin=pin;pinX=mapDecision.x;pinY=mapDecision.y;aodPinX=pinX;aodPinY=pinY;
+        worldFallback=mapDecision.worldPoint(true)!=null;
+        aodResource=worldFallback?null:mapDecision.lowResource();
+        if(worldFallback){self.mapResource=null;map=null;}else{self.mapResource=resource;map=load(resource) as Graphics.BitmapType;}
     }
     // Only restore a bundled bitmap if this point has a matching bundled map;
     // unmatched points continue to use the bounded source-world fallback.
@@ -107,12 +88,7 @@ class SceneRenderer {
         if(a==null||b==null){return a==null&&b==null;}
         return a.size()==2&&b.size()==2&&a[0]==b[0]&&a[1]==b[1];
     }
-    function aodCoordinate(data as ByteArray,offset as Number) as Float {return ((data[offset]<<24)|(data[offset+1]<<16)|(data[offset+2]<<8)|data[offset+3])/1000000.0;}
-    function projectSite(point as Array<Numeric>,longitude as Numeric,latitude as Numeric) as Array<Number> {
-        var rad=0.017453292519943295;var lambda=(point[0]-longitude)*rad;var phi=point[1]*rad;var delta=-latitude*rad;
-        var x=Math.cos(lambda)*Math.cos(phi);var y=Math.sin(lambda)*Math.cos(phi);var z=Math.sin(phi);
-        return [(335+145*Math.atan2(y,x*Math.cos(delta)-z*Math.sin(delta))+0.5).toNumber(),(165-145*Math.asin(z*Math.cos(delta)+x*Math.sin(delta))+0.5).toNumber()];
-    }
+    function aodCoordinate(data as ByteArray,offset as Number) as Float {return SceneAod.coordinate(data,offset);}
     (:extendedCode, :typecheck(false)) function fit(dc as Graphics.Dc, text as String, font as Graphics.FontType, width as Number) as String {
         if(layoutRocketInput!=null && font==layoutLabelFont && text.equals(layoutRocket) && layoutRocketWidth<=width){return text;}
         if(layoutOperatorInput!=null && font==layoutNameFont && text.equals(layoutOperator) && layoutOperatorWidth<=width){return text;}
@@ -142,7 +118,7 @@ class SceneRenderer {
         var rich=downloaded instanceof NativeSfrRenderer?downloaded:null;
         // A complete selected scene owns its validated map; the bundled map
         // remains the fallback while that scene is absent or incomplete.
-        var selectedMap=rich!=null && rich.mapBitmap!=null;
+        var selectedMap=mapDecision.useDownloaded(true,rich!=null && rich.mapBitmap!=null && rich.scene!=null && rich.scene["position"]!=null);
         if(selectedMap){dc.drawBitmap(0,0,rich.mapBitmap);}else if(worldFallback){FallbackWorld.draw(dc,97,15);}else if(map!=null){dc.drawBitmap2(0,0,map,mapScale);}
         var context = fullContext;
         if (context != null) {
@@ -254,12 +230,12 @@ class SceneRenderer {
         current.sourceHold=current.sourceHold||fullContext!=null&&fullContext.sourceHold;
         current.stale=current.stale||fullContext!=null&&fullContext.stale;
         var rich=downloaded instanceof NativeSfrRenderer?downloaded:null;
-        var selected=rich!=null && (rich.mapOutline!=null||(rich.bundledOutline&&aodPin&&aodResource!=null)) && rich.scene!=null && rich.scene["position"]!=null;
+        var selected=mapDecision.useDownloaded(true,rich!=null && (rich.mapOutline!=null||(rich.bundledOutline&&aodPin&&aodResource!=null)) && rich.scene!=null && rich.scene["position"]!=null);
         // The current finite fixed-site catalog has full outlines at matching
         // centers. Prefer that shape even when the selected scene is READY;
         // unmatched future locations retain their own decoded raster outline.
-        var bundled=aodMap!=null && (aodPin||fullContext==null);
-        var qualifiedPin=(bundled&&aodPin)||selected;
+        var bundled=mapDecision.useBundled(true,aodMap!=null);
+        var qualifiedPin=mapDecision.pointVisible(true)&&((bundled&&aodPin)||selected);
         SceneAod.draw(dc,current,minute,presentation,fonts["aod"] as Graphics.FontType,settings,bundled?aodMap:(selected?rich.mapOutline:null),qualifiedPin,bundled?aodPinX:335,bundled?aodPinY:165,aodWorldPoint(bundled,selected));
         if(fullContext!=null&&fullContext.point==null){FallbackMap.unknown(dc,365,20);}
         else if(qualifiedPin){FallbackMap.uncertain(dc,bundled?aodPinX:335,bundled?aodPinY:165);}

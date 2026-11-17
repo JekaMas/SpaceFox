@@ -392,23 +392,6 @@ def journal(pub):
     return value
 
 
-def write_journal(pub, value):
-    """Auxiliary Git tree CAS; never changes/reencodes accepted ledger fields."""
-    pub._context(pub.head)
-    head = pub.head
-    files = pub.store._files(head, pub.ledger)
-    raw = _canonical(value)
-    if len(raw) > MAX_ARTIFACT_BYTES:
-        raise CloudError('cloud journal exceeds bound')
-    files[JOURNAL] = raw
-    commit = pub.store._commit(pub.ledger, head, files)
-    result = pub.store._git('push', f'--force-with-lease={STATE_REF}:{head}',
-                            pub.store.remote, f'{commit}:{STATE_REF}', check=False)
-    if result.returncode:
-        raise Conflict('cloud journal CAS failed')
-    return Publisher(pub.store, pub.running_code)
-
-
 SCHEDULING_WITNESS = 'scheduling-witness.json'
 
 
@@ -650,8 +633,8 @@ def recover(pub, site, pages):
             if not pages.never_started(value['intent']):
                 raise
             status = 'not_started'
-        value = dict(value, status=status)
-        pub = write_journal(pub, value)
+        pub, _ = pub.deployment_event('observed', intent=value['intent'], status=status)
+        value = journal(pub)
     # Finality precedes promotion, including when HTTPS already shows pending.
     live = site.observe(pub, None if value is None else value['files'])
     pub.reconcile(live)
@@ -659,26 +642,9 @@ def recover(pub, site, pages):
 
 
 def arm(pub, *, expected, repository, run_id, run_attempt, artifact_id, now):
-    pub._context(expected)
-    if (not re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', repository)
-            or any(type(v) is not int or not 0 < v < 2 ** 63 for v in (run_id, run_attempt, artifact_id))
-            or type(now) is not int):
-        raise CloudError('validated repository/run/artifact/time identity required')
-    previous = journal(pub)
-    if previous is not None and previous['status'] == 'armed':
-        raise CloudError('earlier async attempt still uncertain')
-    snap = pub.ledger['pending']
-    if snap is None:
-        raise CloudError('no durable pending deployment')
-    manifest = delivery(pub)
-    intent = dict(buildVersion=pub.head, state=pub.head, generation=snap['generation'],
-                  artifactRevision=snap['artifact_revision'], source=pub.running_code,
-                  sourceRef=pub.store.source_ref, repository=repository,
-                  runId=run_id, runAttempt=run_attempt, artifactId=artifact_id)
-    value = dict(schemaVersion=1, intent=intent, status='armed', files=manifest)
-    pub = write_journal(pub, value)
-    journal(pub)  # Fail closed on malformed trusted-workflow identity inputs.
-    return pub, intent
+    return pub.deployment_event('arm', expected=expected, repository=repository,
+                                run_id=run_id, run_attempt=run_attempt,
+                                artifact_id=artifact_id, now=now)
 
 
 def deploy(pub, pages, site, *, expected, repository, run_id, run_attempt, id_token, polls=60):

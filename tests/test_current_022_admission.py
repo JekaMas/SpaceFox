@@ -29,7 +29,7 @@ class Current022Binding(unittest.TestCase):
         native=(ROOT/'watchface/source/generated/NativeVersion.mc').read_text()
         native_id=re.search(r'const ID = "([0-9a-f]{8})"',native).group(1)
         revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
-        good={'data': {'kind':'state-machine-integration-peer','status':'GREEN','version':'0.2.6','native_id':native_id,'source_revision':revision}}
+        good={'data': {'kind':'metrics-map-independent-peer','status':'GREEN','version':'0.2.7','native_id':native_id,'source_revision':revision}}
         with patch.object(owner,'validate',return_value=[]):
             with self.assertRaises(Exception): release.require_combined_peer(ROOT,[])
             bad={'data':dict(good['data'],native_id='00000000')}
@@ -44,13 +44,13 @@ class Current022Binding(unittest.TestCase):
         native=(ROOT/'watchface/source/generated/NativeVersion.mc').read_text()
         native_id=re.search(r'const ID = "([0-9a-f]{8})"',native).group(1)
         revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
-        good={'data':{'kind':'state-machine-integration-peer','status':'GREEN','version':'0.2.6','native_id':native_id,'source_revision':revision}}
+        good={'data':{'kind':'metrics-map-independent-peer','status':'GREEN','version':'0.2.7','native_id':native_id,'source_revision':revision}}
         original=release.git
         # Report a post-review change only if the real gate asks Git to inspect
         # that semantic input. This tests its selected closure, not a blanket
         # mocked dirty result unrelated to the passed pathspec.
         with patch.object(owner,'validate',return_value=[]):
-            for changed_path in ('.github/workflows/update-feed.yml','.github/spacefox-inputs.txt'):
+            for changed_path in ('.github/workflows/update-feed.yml','.github/spacefox-inputs.txt','release/signing-identity.json','tests/test_current_motion_publisher.py'):
                 def changed(root,*args):
                     if args[0]=='diff':return changed_path+'\n' if changed_path in args else ''
                     return original(root,*args)

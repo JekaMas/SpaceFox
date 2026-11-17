@@ -988,6 +988,53 @@ class Publisher:
         self.head, self._ledger = self.store.write(self.head, doc, files)
         return self.head
 
+    def deployment_event(self, event, **inputs):
+        """Own the Pages intent/finality transition and its guarded state CAS."""
+        from .cloud import CloudError, FINAL, JOURNAL, delivery, journal
+        expected = inputs.get('expected', self.head)
+        self._context(expected)
+        previous = journal(self)
+        if event == 'arm':
+            repository = inputs.get('repository')
+            run_id, run_attempt, artifact_id = (inputs.get(k) for k in ('run_id', 'run_attempt', 'artifact_id'))
+            now = inputs.get('now')
+            if (not isinstance(repository, str) or not re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', repository)
+                    or any(type(v) is not int or not 0 < v < 2 ** 63 for v in (run_id, run_attempt, artifact_id))
+                    or type(now) is not int):
+                raise CloudError('validated repository/run/artifact/time identity required')
+            if previous is not None and previous['status'] == 'armed':
+                raise CloudError('earlier async attempt still uncertain')
+            snap = self.ledger['pending']
+            if snap is None:
+                raise CloudError('no durable pending deployment')
+            intent = dict(buildVersion=self.head, state=self.head, generation=snap['generation'],
+                          artifactRevision=snap['artifact_revision'], source=self.running_code,
+                          sourceRef=self.store.source_ref, repository=repository,
+                          runId=run_id, runAttempt=run_attempt, artifactId=artifact_id)
+            value = dict(schemaVersion=1, intent=intent, status='armed', files=delivery(self))
+        elif event == 'observed':
+            status, intent = inputs.get('status'), inputs.get('intent')
+            if (previous is None or previous['status'] != 'armed' or previous['intent'] != intent
+                    or status not in FINAL | {'not_started'}):
+                raise CloudError('observation does not match the armed deployment')
+            value = dict(previous, status=status)
+        else:
+            raise CloudError('unknown deployment event')
+        head = self.head
+        files = self.store._files(head, self.ledger)
+        raw = _canonical(value)
+        if len(raw) > MAX_ARTIFACT_BYTES:
+            raise CloudError('cloud journal exceeds bound')
+        files[JOURNAL] = raw
+        commit = self.store._commit(self.ledger, head, files)
+        result = self.store._git('push', f'--force-with-lease={STATE_REF}:{head}',
+                                 self.store.remote, f'{commit}:{STATE_REF}', check=False)
+        if result.returncode:
+            raise Conflict('cloud journal CAS failed')
+        updated = Publisher(self.store, self.running_code)
+        journal(updated)
+        return updated, value['intent']
+
     def _time(self, doc, now):
         _utc(now)
         if doc['last_event_utc'] is not None and now < doc['last_event_utc']:

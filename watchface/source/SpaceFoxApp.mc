@@ -24,12 +24,21 @@ class SpaceFoxApp extends Application.AppBase {
     // transition. Break the app/view Method cycle and cancel owned callbacks.
     (:typecheck(disableBackgroundCheck))
     function onStop(state as Dictionary or Null) as Void {
-        var current=view;if(current!=null){current.pendingLoader=null;current.cancelAdmission=null;current.onHide();}
+        var current=view;if(current!=null){current.pendingLoader=null;current.pendingVolatileCheck=null;current.cancelAdmission=null;current.onHide();}
         view=null;feed=null;
     }
     function getServiceDelegate() as [System.ServiceDelegate] {return [new FeedService()];}
     (:typecheck(disableBackgroundCheck))
-    function onBackgroundData(data as Application.PersistableType) as Void {System.println("SF_FG background_delivery");failedToken=null;if(view==null||System.getDisplayMode()==System.DISPLAY_MODE_OFF){return;}if(view.canAcceptBackground()){try{reloadFeed();}catch(e){}}WatchUi.requestUpdate();}
+    function onBackgroundData(data as Application.PersistableType) as Void {
+        System.println("SF_FG background_delivery");failedToken=null;
+        if(data instanceof Dictionary&&data.hasKey("volatileSnapshot")){
+            try{NativeForegroundApp.receiveVolatile(self,data);}catch(e){System.println("SF_FG volatile_rejected");}
+            return;
+        }
+        if(view==null||System.getDisplayMode()==System.DISPLAY_MODE_OFF){return;}
+        if(view.canAcceptBackground()){try{reloadFeed();}catch(e){}}WatchUi.requestUpdate();
+    }
+    (:typecheck(disableBackgroundCheck)) function hasPendingVolatile() as Boolean {if(feed==null){return false;}var pending=(feed as NativeCache).pendingVolatile;if(pending==null){return false;}return true;}
     (:typecheck(disableBackgroundCheck))
     function reloadFeed() as Void {try{performReload();}catch(e){System.println("SF_FG reload_error");}}
     (:typecheck(false)) function performReload() as Void {NativeForegroundApp.reload(self);}

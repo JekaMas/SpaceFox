@@ -1,0 +1,68 @@
+------------------------------------------------------------------------------
+Executing test volatileBeforeViewSequences...
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_ok pending=false next=1794908516
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_WAKE registration_kept pending=false next=1794908516
+SF_FG background_delivery
+DEBUG (09:41): VOLATILE_PREVIEW_SEED 0 effective=true
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794908516
+SF_FG background_delivery
+SF_WAKE registration_kept pending=false next=1794908516
+SF_FG background_delivery
+DEBUG (09:41): VOLATILE_PREVIEW_SEED 1 effective=true
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794908516
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_WAKE registration_kept pending=false next=1794908516
+SF_FG background_delivery
+DEBUG (09:41): VOLATILE_PREVIEW_SEED 2 effective=true
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794908516
+SF_FG background_delivery
+SF_WAKE registration_kept pending=false next=1794908516
+SF_FG background_delivery
+DEBUG (09:41): VOLATILE_PREVIEW_SEED 3 effective=true
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794908516
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_WAKE registration_kept pending=false next=1794908516
+SF_FG background_delivery
+DEBUG (09:41): VOLATILE_PREVIEW_SEED 4 effective=true
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794908516
+SF_FG background_delivery
+SF_WAKE registration_kept pending=false next=1794908516
+SF_FG background_delivery
+DEBUG (09:41): VOLATILE_PREVIEW_SEED 5 effective=true
+SF_FG background_delivery
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794908516
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_WAKE registration_kept pending=false next=1794908516
+SF_FG background_delivery
+DEBUG (09:41): VOLATILE_PREVIEW_SEED 6 effective=true
+SF_FG accepted launch=ll2:launch:e0a11eb1-0bda-4872-b36b-140247fd5c60 point=[111.589569, 38.863129] target=1795042200
+SF_WAKE registration_kept pending=false next=1794908516
+SF_FG background_delivery
+SF_WAKE registration_kept pending=false next=1794908516
+SF_FG background_delivery
+DEBUG (09:41): VOLATILE_PREVIEW_SEED 7 effective=true
+DEBUG (09:41): VOLATILE_PREVIEW seeds=8 events=56 two_causal_orders=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+volatileBeforeViewSequences         PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

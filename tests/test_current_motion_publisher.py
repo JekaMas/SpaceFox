@@ -91,7 +91,7 @@ class CurrentMotionPublisherTest(unittest.TestCase):
                 store.close()
 
     def test_cloud_journal_updates_current_state_ref(self):
-        from tools.spacefox.cloud import write_journal
+        from tools.spacefox.cloud import arm, journal
         from tools.spacefox.publisher import ANCHOR_REF, STATE_REF, Conflict
         self.assertEqual(STATE_REF, 'refs/heads/feed-state-map-v3')
         self.assertEqual(ANCHOR_REF, 'refs/tags/spacefox-state-bootstrap-map-v3')
@@ -110,16 +110,28 @@ class CurrentMotionPublisherTest(unittest.TestCase):
             try:
                 store.bootstrap(code)
                 pub = Publisher(store, code)
+                bootstrap = pub.head
+                self.assertEqual(store._refs(ANCHOR_REF)[ANCHOR_REF], bootstrap)
+                pub.reconcile(None)
+                files, digest = build_artifact(pub.schedule, build_catalog(ROOT), NOW,
+                    publisher=pub.publisher_envelope(NOW), root=ROOT)
+                pub.prepare(pub.head, NOW, files, digest, feed_publisher=pub.publisher_envelope(NOW), artifact_profile=PROFILE)
                 before = pub.head
-                self.assertEqual(store._refs(ANCHOR_REF)[ANCHOR_REF], before)
-                updated = write_journal(pub, {'test': 'journal'})
+                updated, intent = arm(pub, expected=before, repository='local/spacefox', run_id=42, run_attempt=1, artifact_id=78, now=NOW)
                 self.assertNotEqual(updated.head, before)
                 self.assertEqual(store._refs(STATE_REF)[STATE_REF], updated.head)
-                self.assertEqual(store._blob(updated.head, 'cloud.json', 1024), b'{"test":"journal"}')
+                self.assertEqual(journal(updated)['status'], 'armed')
                 with self.assertRaises(Conflict):
-                    write_journal(pub, {'test': 'stale'})
+                    pub.deployment_event('observed', expected=before, intent=intent, status='succeed')
+                with self.assertRaises(ValueError):
+                    updated.deployment_event('observed', intent=dict(intent, runId=99), status='succeed')
+                with self.assertRaises(ValueError):
+                    updated.deployment_event('replace', value={'status': 'succeed'})
                 self.assertEqual(store._refs(STATE_REF)[STATE_REF], updated.head)
-                self.assertEqual(store._refs(ANCHOR_REF)[ANCHOR_REF], before)
+                finished, _ = updated.deployment_event('observed', intent=intent, status='succeed')
+                self.assertEqual(journal(finished)['status'], 'succeed')
+                self.assertEqual(store._refs(STATE_REF)[STATE_REF], finished.head)
+                self.assertEqual(store._refs(ANCHOR_REF)[ANCHOR_REF], bootstrap)
                 self.assertEqual(store._refs('refs/heads/feed-state'), {})
                 self.assertEqual(store._refs(old_state, old_anchor), {old_state: code, old_anchor: code})
             finally:

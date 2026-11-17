@@ -146,11 +146,11 @@ import Toybox.WatchUi;
     function includes(id){return running;}
 }
 (:test,:typecheck(false)) class B1AdmissionFitness extends Fitness {
-    function sample(now){return {"energy"=>currentBodyBattery,"steps"=>123,"heart"=>72,"battery"=>80};}
+    function sample(now){return {"energy"=>(selectedFields==null?null:selectedFields.energy),"steps"=>123,"heart"=>72,"battery"=>80};}
 }
 (:test,:typecheck(false)) function b1AdmissionFitnessLifecycle(logger) {
     var clock=new B1Clock();var view=new SpaceFoxView(clock,new ScheduleState(null,"empty"));
-    var fields=new B1AdmissionFields();view.selectedFields=fields;view.fitness=new B1AdmissionFitness();
+    var fields=new B1AdmissionFields();view.selectedFields=fields;view.fitness=new B1AdmissionFitness();view.fitness.selectedFields=fields;
     var settings=new SceneSettings({"Field1"=>1,"Field2"=>2,"Field3"=>3,"Field4"=>4});
     view.setSettings(settings);view.onShow();var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();
     view.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);view.stopResume();view.resumeAfterFrame();

@@ -1,0 +1,14 @@
+------------------------------------------------------------------------------
+Executing test b1AdmissionFitnessLifecycle...
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=true
+DEBUG (09:33): B1_FIELDS admission_stop_once=true pending_no_restart=true four_slots_resume=true low_hide_idempotent=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                               Status:
+b1AdmissionFitnessLifecycle         PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

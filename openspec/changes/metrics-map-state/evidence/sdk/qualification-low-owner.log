@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from tools.generate_native_version import validate;validate();from tools.native_audit_025_qualification import validate as v;print(v())
+                                                                                                                                       ~^^
+TypeError: validate() missing 2 required positional arguments: 'root' and 'catalog'

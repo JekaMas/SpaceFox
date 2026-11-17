@@ -1,0 +1,36 @@
+{
+  "items": [
+    {
+      "id": "metrics-map-state",
+      "type": "change",
+      "valid": false,
+      "issues": [
+        {
+          "level": "WARNING",
+          "path": "runtime/spec.md",
+          "message": "ADDED \"Volatile and durable snapshot state\": Requirement text is very long (>500 characters). Move examples and edge cases into scenarios, or split it into separate requirements that each state one behavior."
+        }
+      ],
+      "durationMs": 16
+    }
+  ],
+  "summary": {
+    "totals": {
+      "items": 1,
+      "passed": 0,
+      "failed": 1
+    },
+    "byType": {
+      "change": {
+        "items": 1,
+        "passed": 0,
+        "failed": 1
+      }
+    }
+  },
+  "version": "1.0",
+  "root": {
+    "path": "/Users/jekamas/projects/SpaceFox-worktrees/fix-metrics-map-state-20261117",
+    "source": "nearest"
+  }
+}

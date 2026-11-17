@@ -37,7 +37,10 @@ class NativeTrustedStore {
     }
     function save(value){
         if(!(value instanceof Array)||value.size()!=7||value[0]!=1){return false;}
-        phase=CANDIDATE;normalize(value);
+        normalize(value);return saveNormalized(value);
+    }
+    function saveNormalized(value){
+        phase=CANDIDATE;
         var prior=marker();var slot=0;var sequence=1;
         if(prior instanceof Dictionary&&prior["base"] instanceof String&&prior["base"].equals(base)&&(prior["sequence"] instanceof Number||prior["sequence"] instanceof Long)){sequence=prior["sequence"]+1;}
         if(prior instanceof Dictionary&&prior["base"] instanceof String&&prior["base"].equals(base)&&prior["slot"]==0){slot=1;}

@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "<stdin>", line 4, in <module>
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-metrics-map-state-20261117/tools/native_audit_025_qualification.py", line 116, in validate
+    if changed_owners!=(METRICS_OWNERS if metrics else INTEGRATION_OWNERS if integrated else set()):raise ValueError('audit current owner changed: '+', '.join(sorted(changed_owners)))
+                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: audit current owner changed: tests/test_autonomous_publisher_whole.py, tests/test_current_022_admission.py, tools/native_audit_025_qualification.py, tools/release.py, tools/spacefox/publisher.py, watchface/audit-tests/AuditTests.mc

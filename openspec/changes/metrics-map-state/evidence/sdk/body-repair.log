@@ -1,0 +1,15 @@
+------------------------------------------------------------------------------
+Executing test display03CurrentBodyBatteryLifecycle...
+SF_VIEW mode=HIGH pending=false
+SF_VIEW mode=LOW pending=false
+SF_VIEW mode=HIGH pending=false
+DEBUG (09:34): BODY_CURRENT unifiedOwner=true callbackNullAndZero=true lowNoRead=true wakeAfterFrame=true deselectionUnsubscribes=true
+PASS
+
+==============================================================================
+RESULTS
+Test:                                Status:
+display03CurrentBodyBatteryLifecycle PASS
+Ran 1 test
+
+PASSED (passed=1, failed=0, errors=0)

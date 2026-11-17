@@ -5,17 +5,17 @@
   "public_key_spki_sha256": "84e95bea4f3052a7c93f297e25605dc374a02f946b8011c65eec950b284146cc",
   "status": "local_production_custody_restored",
   "latest_release": {
-    "version": "0.2.5",
-    "package_sha256": "a936cbb9e289706fb227b13d6e01f26efbda7b611b4699c6a38ab644739f378d",
+    "version": "0.2.6",
+    "package_sha256": "383ae60f1b566b56f8b0fc90ebb3bc3f061256e51f44de9bcaeb338dfdb9386d",
     "kind": "github_release",
-    "tag": "v0.2.5",
-    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.5",
-    "source_revision": "e30f79680c4e2cd8bbae1895226e5915c2a72ef9",
-    "tag_revision": "e30f79680c4e2cd8bbae1895226e5915c2a72ef9",
-    "original_receipt_sha256": "6abfa8edca41f4cd5e5e9e78512a8f4d1343c0c59d22f738288f39f308550f15",
-    "proof_boundary": "One official SDK signed IQ export and mapped profile extraction; upload and publication commands returned zero. No separate signature or artifact audit. Physical FR165, phone and Store acceptance remain unobserved."
+    "tag": "v0.2.6",
+    "url": "https://github.com/JekaMas/SpaceFox/releases/tag/v0.2.6",
+    "source_revision": "dd4289fb32814f2da6fa1adf7d9de8fb7e64df18",
+    "tag_revision": "dd4289fb32814f2da6fa1adf7d9de8fb7e64df18",
+    "original_receipt_sha256": "88261addb168eb36bc3d6ae56b828807fb6e37851adcfee321a9fa59d9409f1a",
+    "proof_boundary": "One signed 42-profile IQ export; GitHub API digests and IQ/FR165/FR165M download readback matched. Garmin submitted with verification but approval and physical/phone acceptance remain unobserved."
   },
-  "note": "Stable production UUID/key. For the next update use the original published 0.2.5 receipt and matching IQ.",
+  "note": "Stable production UUID/key. The next update uses the original published 0.2.6 receipt and matching IQ.",
   "local_custody": {
     "encrypted_backup_sha256": "863f743d0c3966bc67c38aa2cf91d254e4aab0d0a4334ca4de340f8a608312f6",
     "public_evidence": "openspec/changes/spacefox-watchface/evidence/production-signing/round1/custody-initialization.json",

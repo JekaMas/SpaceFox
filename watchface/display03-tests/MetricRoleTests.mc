@@ -7,15 +7,15 @@ import Toybox.Test;
 // Fitness is compiled from the production body with only Garmin module
 // references mapped to the counting API fake in MetricBoundary.mc.
 (:test,:typecheck(false)) function display03MetricRolesAndAge(logger){
- var f=new BoundaryFitness();f.selectedRoles=["energy","energy","battery","calories"];f.currentBodyBattery=68;
+ var f=new BoundaryFitness();f.selectedRoles=["energy","energy","battery","calories"];var energyFields=new D03FakeFields();f.selectedFields=energyFields;energyFields.energy=68;
  MetricSDK.reset(0);var atLimit=f.sample(1800000300);
  Test.assert(atLimit["energy"]==68&&atLimit["battery"]==82&&atLimit["calories"]==2345);
  Test.assert(atLimit["heart"]==null&&atLimit["stress"]==null);
  Test.assert(traceEquals(["activity.info","system.stats"]));
  MetricSDK.reset(0);var aged=f.sample(1800000301);Test.assert(aged["energy"]==68&&f.recentValue(72,1800000000,1800000301,300,true)==null);
- f.currentBodyBattery=null;MetricSDK.reset(3);var absent=f.sample(1800000000);Test.assert(absent["energy"]==null);
+ energyFields.energy=null;MetricSDK.reset(3);var absent=f.sample(1800000000);Test.assert(absent["energy"]==null);
  MetricSDK.reset(1);var denied=f.sample(1800000000);Test.assert(denied["energy"]==null);
- f.currentBodyBattery=68;MetricSDK.reset(0);var fresh=f.sample(1800000000);Test.assert(fresh["energy"]==68);
+ energyFields.energy=68;MetricSDK.reset(0);var fresh=f.sample(1800000000);Test.assert(fresh["energy"]==68);
  f.selectedRoles=["heart","heart","heart","heart"];MetricSDK.reset(0);f.sample(1800000000);
  Test.assert(traceEquals(["heart.open","heart.next"]));
  f.selectedRoles=[];MetricSDK.reset(0);f.sample(1800000000);Test.assert(traceEquals([]));
@@ -24,7 +24,7 @@ import Toybox.Test;
 }
 (:test,:typecheck(false)) class D03CountFitness extends Fitness {
  var calls=0;function initialize(){Fitness.initialize();}
- function sample(now){calls+=1;return {"steps"=>null,"calories"=>null,"battery"=>null,"heart"=>null,"energy"=>currentBodyBattery,"stress"=>null};}
+ function sample(now){calls+=1;return {"steps"=>null,"calories"=>null,"battery"=>null,"heart"=>null,"energy"=>(selectedFields==null?null:selectedFields.energy),"stress"=>null};}
 }
 (:test,:typecheck(false)) function display03LowDoesNotSample(logger){
  var v=new SpaceFoxView(new Display03Clock(),new ScheduleState(null,"empty"));var f=new D03CountFitness();v.fitness=f;
@@ -44,18 +44,19 @@ import Toybox.Test;
  var starts=0;var reads=0;var stops=0;var next=68;
  function start(slots,callback){starts+=1;selected=slots.indexOf("energy")>=0?[new Complications.Id(23)]:[null];}
  function read(locale){reads+=1;energy=selected[0] instanceof Complications.Id?next:null;}
+ function readChanged(locale,id){read(locale);}
  function stop(){if(selected.size()>0){stops+=1;}selected=[];energy=null;}
  function includes(id){return selected.size()>0&&id.getType()==23;}
 }
 (:test,:typecheck(false)) function display03CurrentBodyBatteryLifecycle(logger){
- var clock=new Display03Clock();var v=new SpaceFoxView(clock,new ScheduleState(null,"empty"));var fields=new D03FakeFields();v.selectedFields=fields;v.fitness=new D03CountFitness();
+ var clock=new Display03Clock();var v=new SpaceFoxView(clock,new ScheduleState(null,"empty"));var fields=new D03FakeFields();v.selectedFields=fields;v.fitness=new D03CountFitness();v.fitness.selectedFields=fields;
  v.setSettings(new SceneSettings({"Field1"=>1,"Field2"=>1,"Field3"=>1,"Field4"=>1}));v.renderer=new Display03ModeRenderer();v.onShow();
  var dc=Graphics.createBufferedBitmap({:width=>390,:height=>390}).get().getDc();v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);
  Test.assert(fields.starts==0&&fields.reads==0);v.resumeAfterFrame();Test.assert(fields.starts==1&&fields.reads==1&&v.values["energy"]==68);
  v.refreshFitness();Test.assert(fields.starts==1&&fields.reads==1);
  var id=new Complications.Id(23);fields.next=null;v.fieldsChanged(id);Test.assert(fields.reads==2&&v.values["energy"]==null);
  fields.next=0;clock.now+=60;v.refreshFitness();Test.assert(fields.reads==3&&v.values["energy"]==0);
- v.onEnterSleep();Test.assert(fields.stops==1&&v.values["energy"]==null);v.fieldsChanged(id);Test.assert(fields.reads==3);
+ v.onEnterSleep();Test.assert(fields.stops==1&&v.values["energy"]==0);v.fieldsChanged(id);Test.assert(fields.reads==3);
  v.onExitSleep();v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);Test.assert(fields.reads==3);v.resumeAfterFrame();Test.assert(fields.starts==2&&fields.reads==4&&v.values["energy"]==0);
  v.setSettings(new SceneSettings({"Field1"=>0,"Field2"=>0,"Field3"=>0,"Field4"=>0}));Test.assert(fields.stops==2&&v.values["energy"]==null);v.onHide();
  logger.debug("BODY_CURRENT unifiedOwner=true callbackNullAndZero=true lowNoRead=true wakeAfterFrame=true deselectionUnsubscribes=true");return true;

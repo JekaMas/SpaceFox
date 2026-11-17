@@ -52,7 +52,7 @@ function finalAnimationBounds(logger as Test.Logger) as Boolean {
 (:test, :typecheck(false))
 function finalAodMinuteGuard(logger as Test.Logger) as Boolean {
     var c=new FinalClock();var v=new SpaceFoxView(c,new ScheduleState(null,"empty"));v.setContext(finalContext());v.onShow();
-    var im=finalBuffer();v.onLayout(im.getDc());var renderer=new FinalAodRenderer();renderer.prepare(v.context,v.settings);v.renderer=renderer;v.onEnterSleep();v.updateForDisplayMode(im.getDc(),System.DISPLAY_MODE_LOW_POWER);var first=v.aodMinute;var firstDraws=renderer.draws;c.now+=1;v.updateForDisplayMode(im.getDc(),System.DISPLAY_MODE_LOW_POWER);var same=v.aodMinute;var sameDraws=renderer.draws;c.now+=60;v.updateForDisplayMode(im.getDc(),System.DISPLAY_MODE_LOW_POWER);var next=v.aodMinute;var nextDraws=renderer.draws;
+    var im=finalBuffer();v.onLayout(im.getDc());var renderer=new FinalAodRenderer();renderer.prepare(v.context,v.settings);v.renderer=renderer;v.onEnterSleep();v.updateForDisplayMode(im.getDc(),System.DISPLAY_MODE_LOW_POWER);var first=v.lastLowFrameMinute();var firstDraws=renderer.draws;c.now+=1;v.updateForDisplayMode(im.getDc(),System.DISPLAY_MODE_LOW_POWER);var same=v.lastLowFrameMinute();var sameDraws=renderer.draws;c.now+=60;v.updateForDisplayMode(im.getDc(),System.DISPLAY_MODE_LOW_POWER);var next=v.lastLowFrameMinute();var nextDraws=renderer.draws;
     logger.debug("actual sparse renderer minute guard and stopped animation");v.onHide();return first==same && next!=same && firstDraws==1 && sameDraws==1 && nextDraws==2 && !v.animationRunning;
 }
 

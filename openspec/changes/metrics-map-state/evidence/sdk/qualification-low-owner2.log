@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from pathlib import Path;from tools.native_language_policy import software_locales;print(software_locales(Path.cwd()))
+                                                                                             ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-metrics-map-state-20261117/tools/native_language_policy.py", line 94, in software_locales
+    return validate(root,catalog)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-metrics-map-state-20261117/tools/native_audit_025_qualification.py", line 111, in validate
+    if changed_tests!=(METRICS_PRIOR_TESTS if metrics else set()):raise ValueError('audit prior test input closure changed')
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: audit prior test input closure changed

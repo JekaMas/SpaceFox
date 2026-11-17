@@ -7,7 +7,7 @@ import Toybox.Time;
 (:background, :extendedCode)
 class FeedService extends System.ServiceDelegate {
     var transfer as NativeTransfer or Null;var assetRequest as Dictionary or Null;var batch as NativeBatch or Null=null;var started as Number=0;var requests as Number=0;
-    var deadlineArmed as Boolean=false;var flight as NativeRequestLifecycle;
+    var deadlineArmed as Boolean=false;var flight as NativeRequestLifecycle;var volatileSnapshot as Array or Null=null;
     function initialize(){ServiceDelegate.initialize();transfer=null;assetRequest=null;flight=new NativeRequestLifecycle();}
     function createTransfer() as NativeTransfer {return new NativeTransfer(configuredFeedUrl(),null);}
     function requestUrl(path as String) as String {return ((transfer as NativeTransfer).base as String)+"/"+path+".txt";}
@@ -18,7 +18,14 @@ class FeedService extends System.ServiceDelegate {
     function sendRequest(path as String,callback as Method) as Void {Communications.makeWebRequest(requestUrl(path),{}, {:method=>Communications.HTTP_REQUEST_METHOD_GET,:headers=>{"Accept"=>"text/plain"},:responseType=>Communications.HTTP_RESPONSE_CONTENT_TYPE_TEXT_PLAIN},callback);}
     function cancelOutstanding() as Void {Communications.cancelAllRequests();}
     function rearm() as Void {if(transfer!=null){armFeed(transfer,Time.now().value().toLong());}}
-    function leave() as Void {Background.exit({"provisional"=>true});}
+    (:typecheck(false)) function deliverBackground(data) as Void {Background.exit(data);}
+    (:typecheck(false)) function leave() as Void {
+        if(volatileSnapshot!=null){
+            try{deliverBackground({"base"=>transfer.base,"volatileSnapshot"=>volatileSnapshot});return;}
+            catch(e){System.println("SF_BG volatile_delivery_failed");volatileSnapshot=null;deliverBackground({"volatileDeliveryFailed"=>true});return;}
+        }
+        deliverBackground({"provisional"=>true});
+    }
     (:typecheck(false))
     function onTemporalEvent() as Void {
         try{var settings=System.getDeviceSettings();var registered=Background.getTemporalEventRegisteredTime();var last=Background.getLastTemporalEventTime();System.println("SF_BG enter phone="+settings.phoneConnected+" registered="+(registered==null?"none":registered.value())+" last="+(last==null?"none":last.value()));}catch(ignore){}
@@ -34,15 +41,21 @@ class FeedService extends System.ServiceDelegate {
     }
     (:typecheck(false)) function receiveSnapshot(code,data) as Void {
         if(!callbackAllowed()){return;}
-        try{
-            if(code==200&&data instanceof Dictionary&&data["data"] instanceof Array&&new NativeTrustedStore(transfer.store,transfer.base).save(data["data"])){
-                // Publish core facts before any optional request. A due feed
-                // can run every five minutes, so waiting for a non-due event
-                // would starve assets at that cadence.
-                try{if(batch!=null&&data["data"][6]!=null){batch.select(data["data"][6]);}}catch(ignore){}
+        if(code==200&&data instanceof Dictionary&&data["data"] instanceof Array){
+            var snapshot=data["data"];var accepted=false;
+            if(snapshot.size()!=7||snapshot[0]!=1){data=null;finish();return;}
+            var owner=new NativeTrustedStore(transfer.store,transfer.base);
+            try{owner.normalize(snapshot);}catch(e){System.println("SF_BG snapshot_invalid");data=null;finish();return;}
+            try{accepted=owner.saveNormalized(snapshot);}catch(e){System.println("SF_BG snapshot_storage_error");
+                // The SDK background and foreground heaps are separate. Only
+                // a complete response can be offered through bounded OS IPC.
+                if(snapshot.size()==7&&snapshot[0]==1){volatileSnapshot=snapshot;}}
+            if(accepted){
+                try{if(batch!=null&&snapshot[6]!=null){batch.select(snapshot[6]);}}catch(ignore){}
                 transfer.completed(true);System.println("SF_BG snapshot_ready");
             }
-        }catch(e){System.println("SF_BG snapshot_error");}
+            if(volatileSnapshot!=null){data=null;finish();return;}
+        }
         // Release the parsed response before the bounded asset scanner runs.
         // A failed schedule response can still continue the existing art job;
         // an art failure never rolls back the already published snapshot.

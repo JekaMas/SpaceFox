@@ -131,8 +131,8 @@ function sceneAnimationPositive(logger as Test.Logger) as Boolean {
 (:test)
 function sceneAodPositive(logger as Test.Logger) as Boolean {
     var input=new SceneClock();var v=new SpaceFoxView(input,new ScheduleState(1800003661,"exact"));var telemetry=new SceneTelemetry();v.fitness=telemetry;
-    var im=sceneBuffer();var dc=im.getDc();v.onLayout(dc);v.onShow();v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);var activeUnowned=v.restMask==null;v.resumeAfterFrame();v.onEnterSleep();v.updateForDisplayMode(dc,System.DISPLAY_MODE_LOW_POWER);var lowOwned=v.restMask!=null;var minute=v.aodMinute;input.now+=1;v.updateForDisplayMode(dc,System.DISPLAY_MODE_LOW_POWER);
-    logger.debug("sleep minute redraw guard; telemetry read once; mask acquired in LOW and released on wake");var pass=minute==v.aodMinute && telemetry.reads==1 && v.snapshot().countdown.equals("T- 01:01:00") && !v.animationRunning && activeUnowned && lowOwned;v.onExitSleep();v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);pass=pass && v.restMask==null;v.onHide();return pass;
+    var im=sceneBuffer();var dc=im.getDc();v.onLayout(dc);v.onShow();v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);var activeUnowned=v.restMask==null;v.resumeAfterFrame();v.onEnterSleep();v.updateForDisplayMode(dc,System.DISPLAY_MODE_LOW_POWER);var lowOwned=v.restMask!=null;var minute=v.lastLowFrameMinute();input.now+=1;v.updateForDisplayMode(dc,System.DISPLAY_MODE_LOW_POWER);
+    logger.debug("sleep minute redraw guard; telemetry read once; mask acquired in LOW and released on wake");var pass=minute==v.lastLowFrameMinute() && telemetry.reads==1 && v.snapshot().countdown.equals("T- 01:01:00") && !v.animationRunning && activeUnowned && lowOwned;v.onExitSleep();v.updateForDisplayMode(dc,System.DISPLAY_MODE_HIGH_POWER);pass=pass && v.restMask==null;v.onHide();return pass;
 }
 (:test)
 function sceneAodNegative(logger as Test.Logger) as Boolean {
