@@ -5,5 +5,5 @@
 - [x] Run deterministic event-sequence PBT against production handlers with independent oracle, event-disposition coverage, replayable failures and counter assertions.
 - [x] Run affected host and FR165M SDK integration: actual cold acquisition/callback/storage, accepted facts, mode transitions, active seconds, LOW and reopen; capture EN/RU frames and preserve precise adapter and physical boundaries.
 - [x] Reconcile current specifications, version/native identity and retained applicable evidence; author self-review and repair all failures.
-- [x] One independent peer reviews and fixes the whole stable batch to GREEN; see evidence/PEER.md, peer.json and actual peer-admission.log.
+- [x] One independent peer reviews and fixes the whole stable batch to GREEN; original0.2.5 evidence/PEER.md retained; current0.2.6 semantic integration closed in evidence/integration-026/PEER.md, its ONE peer.json and actual peer-admission.log.
 - [ ] After acceptance, merge and deliver the authorized release; physical watch and phone acceptance remain separately observed.

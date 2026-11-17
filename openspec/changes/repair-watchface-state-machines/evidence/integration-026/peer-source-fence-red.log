@@ -1,0 +1,26 @@
+test_current_peer_binds_workflow_and_sparse_seed (tests.test_current_022_admission.Current022Binding.test_current_peer_binds_workflow_and_sparse_seed) ... 
+  test_current_peer_binds_workflow_and_sparse_seed (tests.test_current_022_admission.Current022Binding.test_current_peer_binds_workflow_and_sparse_seed) (path='.github/workflows/update-feed.yml') ... FAIL
+  test_current_peer_binds_workflow_and_sparse_seed (tests.test_current_022_admission.Current022Binding.test_current_peer_binds_workflow_and_sparse_seed) (path='.github/spacefox-inputs.txt') ... FAIL
+
+======================================================================
+FAIL: test_current_peer_binds_workflow_and_sparse_seed (tests.test_current_022_admission.Current022Binding.test_current_peer_binds_workflow_and_sparse_seed) (path='.github/workflows/update-feed.yml')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-watchface-state-machines-20261117/tests/test_current_022_admission.py", line 58, in test_current_peer_binds_workflow_and_sparse_seed
+    with self.assertRaisesRegex(Exception,'reviewed runtime audit source changed'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Exception not raised
+
+======================================================================
+FAIL: test_current_peer_binds_workflow_and_sparse_seed (tests.test_current_022_admission.Current022Binding.test_current_peer_binds_workflow_and_sparse_seed) (path='.github/spacefox-inputs.txt')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-watchface-state-machines-20261117/tests/test_current_022_admission.py", line 58, in test_current_peer_binds_workflow_and_sparse_seed
+    with self.assertRaisesRegex(Exception,'reviewed runtime audit source changed'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Exception not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.032s
+
+FAILED (failures=2)

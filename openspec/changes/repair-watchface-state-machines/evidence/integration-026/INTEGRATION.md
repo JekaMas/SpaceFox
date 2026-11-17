@@ -1,5 +1,7 @@
 # Integration of published audit 0.2.5 with state machines
 
+Current status: independent semantic integration review **GREEN**, sourcec58c084fc3d3c06ea83ce3649b038b1b67354afd /0.2.6/e92eb87a. See [PEER.md](PEER.md), the single current [peer.json](peer.json) and unmocked [peer-admission.log](peer-admission.log). The author handoff and earlier evidence below retain their original scopes.
+
 The independently reviewed state-machine source was `3a7de1b9a924c82733a0d0935b6a3dca54edd3c0` / 0.2.5 / `593ad137`. During delivery, actual public main advanced to `cbdb69875f08599bfd94a4051de42dbd1f3d14c0` and already published v0.2.5 at `e30f79680c4e2cd8bbae1895226e5915c2a72ef9`. This integration uses the next free numeric version, 0.2.6, without changing or replacing that release. Neither prior source receipt is represented as an independent review of this merge.
 
 The merge keeps the four reviewed state owners and their app adapters. It also keeps the published audit's single freshness advancement, current reminder-row handling, publisher producer fence, sparse materialization and proof inputs. Publisher due acquisition is evaluated once before content-only work. The watchdog requirement keeps atomic slot/pointer publication, LOW delivery and bounded optional resource clauses. The predecessor is the public 0.2.5 receipt and matching IQ, whose receipt digest matches the existing signing identity. No original release evidence was rewritten.
