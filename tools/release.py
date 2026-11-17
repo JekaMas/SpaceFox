@@ -529,7 +529,7 @@ def require_combined_peer(root: Path, supplied: list[dict]) -> None:
         app = ET.parse(root / "watchface/manifest.xml").getroot().find("iq:application", NS)
         native = (root / "watchface/source/generated/NativeVersion.mc").read_text()
         match = re.search(r'const ID = "([0-9a-f]{8})"', native)
-        required_kind = {"0.2.6": "state-machine-integration-peer", "0.2.7": "metrics-map-independent-peer"}.get(app.get("version"), "runtime-audit-independent-peer")
+        required_kind = {"0.2.6": "state-machine-integration-peer", "0.2.7": "metrics-map-independent-peer", "0.2.8": "known-site-coordinates-independent-peer"}.get(app.get("version"), "runtime-audit-independent-peer")
         peers = [item["data"] for item in supplied if item["data"].get("kind") == required_kind]
         require(len(peers) == 1 and peers[0].get("status") == "GREEN" and
                 peers[0].get("version") == app.get("version") and match is not None and
@@ -538,7 +538,7 @@ def require_combined_peer(root: Path, supplied: list[dict]) -> None:
         require(isinstance(reviewed, str) and re.fullmatch(r"[0-9a-f]{40}", reviewed), "runtime audit peer must identify reviewed source")
         ancestry = subprocess.run(["git", "merge-base", "--is-ancestor", reviewed, "HEAD"], cwd=root, capture_output=True)
         require(ancestry.returncode == 0, "runtime audit peer source is not an ancestor")
-        unchanged = git(root, "diff", "--name-only", reviewed, "HEAD", "--", "watchface", "tools/spacefox", "tools/cloud_feed.py", "tools/update_feed.py", "tools/refresh_catalog.py", ".github/workflows/update-feed.yml", ".github/spacefox-inputs.txt", "tools/release.py", "tools/native_audit_025_qualification.py", "locales/catalog.json", "tests/test_state_machine_publisher.py", "tests/test_current_motion_publisher.py", "tests/test_autonomous_publisher_whole.py", "tests/test_current_022_admission.py", "release/signing-identity.json")
+        unchanged = git(root, "diff", "--name-only", reviewed, "HEAD", "--", "watchface", "tools/spacefox", "tools/cloud_feed.py", "tools/update_feed.py", "tools/refresh_catalog.py", ".github/workflows/update-feed.yml", ".github/spacefox-inputs.txt", "tools/release.py", "tools/native_audit_025_qualification.py", "locales/catalog.json", "tests/test_state_machine_publisher.py", "tests/test_known_site_coordinates.py", "tests/test_watch_snapshot.py", "tests/test_current_motion_publisher.py", "tests/test_autonomous_publisher_whole.py", "tests/test_current_022_admission.py", "release/signing-identity.json")
         require(not unchanged.strip(), "reviewed runtime audit source changed")
         return
     combined = catalog["supportPolicy"]["softwareQualificationProof"].get("currentIntegration022Proof")

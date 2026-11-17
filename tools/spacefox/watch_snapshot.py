@@ -4,6 +4,7 @@ The upstream publisher owns source acquisition and schema validation; the
 consumer receives this fixed positional projection. No digest is used here.
 """
 from datetime import date
+from decimal import Decimal, InvalidOperation
 import json
 
 # Order is shared with the native decoder. New values are appended only when
@@ -12,6 +13,15 @@ FIELDS=('id','rocket','operator','operatorShort','purpose','site','modelId',
         'operatorId','siteId','point','target','precision','date',
         'retentionDeadline','orderingUtc','sourceValidated','freshnessPolicy',
         'rescheduled','stale','sourceHold','displayTarget','reminderEligible')
+
+def _point(position):
+    if not isinstance(position, dict): return None
+    try:
+        lat, lon = (Decimal(str(position[k])) for k in ('latitude', 'longitude'))
+        if not lat.is_finite() or not lon.is_finite() or abs(lat)>90 or abs(lon)>180 or (lat==0 and lon==0): return None
+        return [str(lon), str(lat)]
+    except (KeyError, InvalidOperation, TypeError, ValueError):
+        return None
 
 def _row(launch, catalog, policy, selected):
     if launch is None:
@@ -33,10 +43,13 @@ def _row(launch, catalog, policy, selected):
     short=launch.get('operator_abbrev')
     if selected and short is None:short=entries.get(launch.get('operator_id'),{}).get('abbrev')
     site_data=entries.get(launch.get('site_id'),{}) if selected else None
+    # Fixed catalog pads take their recorded pad coordinate; mobile/unknown
+    # pads use only the position in this launch response.
     pos=(site_data.get('position') if site_data.get('positionMode')=='fixed-source' else None) if selected else launch.get('sitePosition')
-    point=None if pos is None else [pos['longitude'],pos['latitude']]
-    precision=timing['precision'];target=timing['exact_utc'];display=timing['nominal_utc'] if target is None else None
-    if precision=='source-coarse' and timing['source_precision_id']==1 and timing['nominal_utc'] is not None:
+    point=_point(pos)
+    if point is None: point=_point(launch.get('site_position'))
+    precision=timing['precision'];target=timing['exact_utc'];display=timing.get('nominal_utc') if target is None else None
+    if precision=='source-coarse' and timing.get('source_precision_id')==1 and timing.get('nominal_utc') is not None:
         precision='minute';target=timing['nominal_utc']
     elif precision=='source-coarse' and (timing['window_start_utc'] is not None or timing['window_end_utc'] is not None):precision='window'
     ordering=timing['exact_utc']
@@ -45,7 +58,7 @@ def _row(launch, catalog, policy, selected):
         if timing['date_utc'] is not None:
             day=(date.fromisoformat(timing['date_utc'])-date(1970,1,1)).days*86400
             if ordering is None or day>ordering:ordering=day
-        if ordering is None:ordering=timing['window_end_utc'] if timing['window_end_utc'] is not None else timing['nominal_utc']
+        if ordering is None:ordering=timing['window_end_utc'] if timing['window_end_utc'] is not None else timing.get('nominal_utc')
     deadline=None
     if precision in ('exact','minute') and target is not None:
         deadline=target+900;ascent=launch.get('ascent_end')

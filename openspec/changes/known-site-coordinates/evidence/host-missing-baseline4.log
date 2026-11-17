@@ -1,0 +1,35 @@
+test_omitted_unknown_keeps_own_old_age (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_omitted_unknown_keeps_own_old_age) ... ERROR
+
+======================================================================
+ERROR: test_omitted_unknown_keeps_own_old_age (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_omitted_unknown_keeps_own_old_age)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tests/test_schedule_producer_transport.py", line 1176, in test_omitted_unknown_keeps_own_old_age
+    result=update(pub,client,NOW+14400,build_catalog(ROOT),detail_limit=0)
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/update_feed.py", line 162, in update
+    files, catalog_digest = builder(candidate, catalog, accepted_at, publisher=publisher,
+                            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                         policy=pub.policy, traversal=traversal)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/native_motion.py", line 298, in build_artifact
+    return _build_artifact_owned(state, owned, now, publisher=publisher, policy=policy, traversal=traversal, root=root, origin_mode=origin_mode, eligibility=eligibility)
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/native_motion.py", line 381, in _build_artifact_owned
+    files = with_text_transport(files)
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/native_motion.py", line 82, in with_text_transport
+    result['watch.json'] = encode_snapshot(feed, loads_json(logical[feed['catalogPath']]))
+                           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/watch_snapshot.py", line 73, in encode_snapshot
+    encoded=json.dumps({'data':snapshot(feed,catalog)},ensure_ascii=False,separators=(',',':'),allow_nan=False).encode('utf-8')
+                               ~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/watch_snapshot.py", line 64, in snapshot
+    rows=[_row(r,catalog,policy,False) for r in upcoming if 'terminal' not in r]
+          ~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/watch_snapshot.py", line 38, in _row
+    precision=timing['precision'];target=timing['exact_utc'];display=timing['nominal_utc'] if target is None else None
+                                                                     ~~~~~~^^^^^^^^^^^^^^^
+KeyError: 'nominal_utc'
+
+----------------------------------------------------------------------
+Ran 1 test in 8.101s
+
+FAILED (errors=1)

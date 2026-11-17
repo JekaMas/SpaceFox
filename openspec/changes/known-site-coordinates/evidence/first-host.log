@@ -1,0 +1,28 @@
+test_known_pad_and_missing_position (tests.test_known_site_coordinates.CapturedCoordinates.test_known_pad_and_missing_position) ... ERROR
+test_unknown_reference_uses_per_launch_coordinates_after_store_roundtrip (tests.test_known_site_coordinates.CapturedCoordinates.test_unknown_reference_uses_per_launch_coordinates_after_store_roundtrip) ... ERROR
+
+======================================================================
+ERROR: test_known_pad_and_missing_position (tests.test_known_site_coordinates.CapturedCoordinates.test_known_pad_and_missing_position)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tests/test_known_site_coordinates.py", line 39, in test_known_pad_and_missing_position
+    out=dict(zip(FIELDS,_row(launch,{'entries':{'ll2:site:25':entry}},{},True)))
+                        ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/watch_snapshot.py", line 61, in _row
+    precision,timing['date_utc'],deadline,ordering,launch['source_validated_utc'],policy,
+                                                   ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'source_validated_utc'
+
+======================================================================
+ERROR: test_unknown_reference_uses_per_launch_coordinates_after_store_roundtrip (tests.test_known_site_coordinates.CapturedCoordinates.test_unknown_reference_uses_per_launch_coordinates_after_store_roundtrip)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tests/test_known_site_coordinates.py", line 31, in test_unknown_reference_uses_per_launch_coordinates_after_store_roundtrip
+    restored=_schedule(state.to_dict())
+                       ^^^^^^^^^^^^^
+AttributeError: 'ScheduleState' object has no attribute 'to_dict'
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.048s
+
+FAILED (errors=2)

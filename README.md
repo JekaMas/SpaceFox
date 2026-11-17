@@ -23,7 +23,7 @@ The 0.2.7 release uses hourly healthy schedule checks and retries missing or fai
 
 A delayed or rescheduled launch uses a reddish countdown; stale data has a separate dotted indicator. Passing zero is a time calculation, not confirmation of liftoff. Missing Garmin readings remain unavailable; Body Battery uses Garmin's current complication value when selected.
 
-A countdown may refer to an inexact announced NET; it does not confirm liftoff or change reminder eligibility. Dashes mean no usable target is available. A `?` beside a map point means its coordinates are an unverified source reference; a `?` without a point means an event location is unavailable. A simplified world outline can appear while optional artwork is loading.
+A countdown may refer to an inexact announced NET; it does not confirm liftoff or change reminder eligibility. Dashes mean no usable target is available. A point is omitted when no valid launch-site coordinates are available. A simplified world outline can appear while optional artwork is loading.
 
 ## Data and settings
 

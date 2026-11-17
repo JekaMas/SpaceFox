@@ -1,0 +1,28 @@
+test_old_source_and_duplicate_result_refused_negative (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_old_source_and_duplicate_result_refused_negative) ... ERROR
+
+======================================================================
+ERROR: test_old_source_and_duplicate_result_refused_negative (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_old_source_and_duplicate_result_refused_negative)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tests/test_schedule_producer_transport.py", line 1059, in test_old_source_and_duplicate_result_refused_negative
+    files,digest=build_artifact(pub.schedule,build_catalog(ROOT),at,publisher=envelope,root=ROOT)
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/native_motion.py", line 298, in build_artifact
+    return _build_artifact_owned(state, owned, now, publisher=publisher, policy=policy, traversal=traversal, root=root, origin_mode=origin_mode, eligibility=eligibility)
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/native_motion.py", line 382, in _build_artifact_owned
+    validate_artifact(files)
+    ~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/native_motion.py", line 440, in validate_artifact
+    result = _validate_artifact(files, cached, pending)
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/native_motion.py", line 453, in _validate_artifact
+    feed = validate_feed(files.get(FEED_PATH))
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/native_motion.py", line 388, in validate_feed
+    return validate_current_feed(raw, now=now)
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/wire.py", line 209, in validate_current_feed
+    raise ValueError('selection validation precedes selected source')
+ValueError: selection validation precedes selected source
+
+----------------------------------------------------------------------
+Ran 1 test in 8.592s
+
+FAILED (errors=1)

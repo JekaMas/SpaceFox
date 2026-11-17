@@ -196,10 +196,9 @@ class SceneRenderer {
                 text(dc,left+width/2,y,fonts["metric"] as Graphics.FontType,label,settings.fieldColors[i],128,1);
             }
         }
-        if(selectedMap){if(rich.scene!=null && rich.scene["position"]!=null){dc.drawBitmap(321,151,marker);FallbackMap.uncertain(dc,335,165);}}
-        else if(pin){dc.drawBitmap(pinX-14,pinY-14,marker);FallbackMap.uncertain(dc,pinX,pinY);}
+        if(selectedMap){if(rich.scene!=null && rich.scene["position"]!=null){dc.drawBitmap(321,151,marker);}}
+        else if(pin){dc.drawBitmap(pinX-14,pinY-14,marker);}
         else if(worldFallback&&context!=null){FallbackMap.point(dc,context.point,97,15);}
-        else if(context!=null&&context.point==null){FallbackMap.unknown(dc,365,20);}
     }
     // Metric32 contains digits, percent and punctuation only. Provider strings
     // and units use the locale-capable font instead of missing bitmap glyphs.
@@ -237,28 +236,20 @@ class SceneRenderer {
         var bundled=mapDecision.useBundled(true,aodMap!=null);
         var qualifiedPin=mapDecision.pointVisible(true)&&((bundled&&aodPin)||selected);
         SceneAod.draw(dc,current,minute,presentation,fonts["aod"] as Graphics.FontType,settings,bundled?aodMap:(selected?rich.mapOutline:null),qualifiedPin,bundled?aodPinX:335,bundled?aodPinY:165,aodWorldPoint(bundled,selected));
-        if(fullContext!=null&&fullContext.point==null){FallbackMap.unknown(dc,365,20);}
-        else if(qualifiedPin){FallbackMap.uncertain(dc,bundled?aodPinX:335,bundled?aodPinY:165);}
     }
 }
 
 // A compact, fixed equirectangular source map avoids associating an unmatched
 // point with a different site's pre-rendered geography. Coordinates have been
-// validated before reaching this renderer; '?' marks their source-reference
-// qualification and no point is drawn for an unavailable event position.
+// validated before reaching this renderer; no point is drawn for an unavailable position.
 module FallbackMap {
     (:extendedCode, :typecheck(false)) function point(dc,position,x,y) as Void {
         if(position==null){return;}
         var px=x+((position[0]+180)*194/360+0.5).toNumber();
         var py=y+((90-position[1])*97/180+0.5).toNumber();
-        dc.setColor(0xFFD066,Graphics.COLOR_TRANSPARENT);dc.fillCircle(px,py,3);uncertain(dc,px,py);
+        dc.setColor(0xFFD066,Graphics.COLOR_TRANSPARENT);dc.fillCircle(px,py,3);
     }
-    (:extendedCode) function uncertain(dc as Graphics.Dc,x as Number,y as Number) as Void {
-        dc.setColor(0xFFD066,Graphics.COLOR_TRANSPARENT);dc.drawText(x+5,y-8,Graphics.FONT_TINY,"?",Graphics.TEXT_JUSTIFY_LEFT);
-    }
-    (:extendedCode) function unknown(dc as Graphics.Dc,x as Number,y as Number) as Void {
-        dc.setColor(0xD4DFEB,Graphics.COLOR_TRANSPARENT);dc.drawText(x,y,Graphics.FONT_TINY,"?",Graphics.TEXT_JUSTIFY_RIGHT);
-    }
+
 }
 
 // LOW rendering uses the same clock snapshot as the active scene. The caller

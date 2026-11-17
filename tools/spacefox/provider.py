@@ -4,6 +4,7 @@ The transport has no automatic retries, redirects, credentials or cache renewal.
 Use LL2Client through update_feed: one committed Publisher reservation per call.
 """
 from dataclasses import dataclass
+from decimal import Decimal, InvalidOperation
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 import json
@@ -161,6 +162,19 @@ def normalize_detail_launch(row, validated_utc):
     return _normalize_launch(row, validated_utc, detail=True)
 
 
+def _pad_position(pad):
+    # Source coordinates belong to this launch response, never to a shared
+    # unknown/mobile pad ID. Missing or invalid values yield no marker.
+    try:
+        values = [Decimal(str(pad.get(key))) for key in ('latitude', 'longitude')]
+        if any(not value.is_finite() for value in values): return None
+        if abs(values[0]) > 90 or abs(values[1]) > 180 or not any(values): return None
+        if any(len(str(value)) > 64 for value in values): return None
+        return {'latitude': str(values[0]), 'longitude': str(values[1])}
+    except (InvalidOperation, ValueError, TypeError):
+        return None
+
+
 def _normalize_launch(row, validated_utc, *, detail):
     row = _object(row, 'launch')
     modes = ('normal', 'detailed') if detail else ('normal',)
@@ -213,7 +227,8 @@ def _normalize_launch(row, validated_utc, *, detail):
                             source_updated_subsecond=datetime.fromisoformat(row['last_updated'].replace('Z', '+00:00')).microsecond,
                             source_status_id=status_id, source_status_name=_text(status.get('name'), limit=100),
                             site_name=_text(pad.get('name'), limit=256), country_name=_text(country.get('name'), limit=256),
-                            country_code=_country_code(country), site_location_name=_text(location.get('name'), limit=256))
+                            country_code=_country_code(country), site_location_name=_text(location.get('name'), limit=256),
+                            site_position=_pad_position(pad))
     except (KeyError, ValueError, TypeError, UnicodeError) as error:
         if isinstance(error, ProviderError):
             raise

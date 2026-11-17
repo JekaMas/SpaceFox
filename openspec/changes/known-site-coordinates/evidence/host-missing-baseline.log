@@ -1,0 +1,48 @@
+test_omitted_unknown_keeps_own_old_age (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_omitted_unknown_keeps_own_old_age) ... ERROR
+
+======================================================================
+ERROR: test_omitted_unknown_keeps_own_old_age (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_omitted_unknown_keeps_own_old_age)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/graphics.py", line 680, in build_pack
+    path=_source_path(root,content['path'])
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/graphics.py", line 638, in _source_path
+    _require(resolved.is_relative_to(root),'source path resolves outside root')
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/graphics.py", line 43, in _require
+    raise VisualError(message)
+tools.spacefox.graphics.VisualError: source path resolves outside root
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tests/test_schedule_producer_transport.py", line 1176, in test_omitted_unknown_keeps_own_old_age
+    result=update(pub,client,NOW+14400,build_catalog(ROOT),detail_limit=0)
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/update_feed.py", line 162, in update
+    files, catalog_digest = builder(candidate, catalog, accepted_at, publisher=publisher,
+                            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                         policy=pub.policy, traversal=traversal)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/native_motion.py", line 298, in build_artifact
+    return _build_artifact_owned(state, owned, now, publisher=publisher, policy=policy, traversal=traversal, root=root, origin_mode=origin_mode, eligibility=eligibility)
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/native_motion.py", line 306, in _build_artifact_owned
+    files, old, cat = static.build_artifact(state, catalog, now, publisher=publisher,
+                      ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        policy=policy, traversal=traversal, root=root, origin_mode=origin_mode, eligibility=eligibility)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/native_profile.py", line 240, in build_artifact
+    source,base,catalog=build_source(*args,**kwargs)
+                        ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/visual_bridge.py", line 96, in build_source
+    role('rocket',launch['configuration_id'],'visual')
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/visual_bridge.py", line 90, in role
+    pack = build_pack(root,catalog,roots=[asset_id],_include_catalog=False)
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/graphics.py", line 705, in build_pack
+    raise VisualError(f'{identity}: {exc}') from exc
+tools.spacefox.graphics.VisualError: spacefox:asset:further-r2-starship-v3-2026: source path resolves outside root
+
+----------------------------------------------------------------------
+Ran 1 test in 5.358s
+
+FAILED (errors=1)

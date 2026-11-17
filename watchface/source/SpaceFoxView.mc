@@ -286,7 +286,6 @@ class SpaceFoxView extends WatchUi.WatchFace {
             var canvas=null;var target=dc;var side=dc.getWidth()<dc.getHeight()?dc.getWidth():dc.getHeight();
             if(dc.getWidth()!=390||dc.getHeight()!=390){canvas=Graphics.createBufferedBitmap({:width=>390,:height=>390,:colorDepth=>16}).get();target=canvas.getDc();}
             SceneAod.draw(target,current,minute,presentation,font,settings,map,pin,pinX,pinY,worldPoint);
-            if(context!=null&&context.point==null){FallbackMap.unknown(target,365,20);}else if(pin){FallbackMap.uncertain(target,pinX,pinY);}
             var mask=WatchUi.loadResource(Rez.Drawables.AodRestMask) as Graphics.BitmapType;var phase=((minute%4+4)%4).toNumber();target.drawBitmap(-(phase%2),-(phase/2),mask);
             if(canvas!=null){var transform=new Graphics.AffineTransform();transform.scale(side.toFloat()/390.0,side.toFloat()/390.0);dc.setColor(Graphics.COLOR_BLACK,Graphics.COLOR_BLACK);dc.clear();dc.drawBitmap2((dc.getWidth()-side)/2,(dc.getHeight()-side)/2,canvas,{:transform=>transform,:filterMode=>Graphics.FILTER_MODE_POINT});}lifecycle.framePainted(minute);
         }finally{presentation.aodContextFont=oldContext;presentation.aodBatteryFont=oldBattery;presentation.locale=oldLocale;}
@@ -354,7 +353,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
             dc.setColor(settings.clockColor,Graphics.COLOR_TRANSPARENT);dc.drawText(195,118,Graphics.FONT_NUMBER_MEDIUM,current.localTime,Graphics.TEXT_JUSTIFY_CENTER);
             dc.setColor(SceneAod.countdownColor(current,settings),Graphics.COLOR_TRANSPARENT);dc.drawText(195,202,Graphics.FONT_MEDIUM,current.countdown,Graphics.TEXT_JUSTIFY_CENTER);
             for(var i=0;i<4;i+=1){dc.setColor(settings.fieldColors[i],Graphics.COLOR_TRANSPARENT);dc.drawText(i%2==0?95:295,i<2?244:282,Graphics.FONT_TINY,decodingMetricText[i],Graphics.TEXT_JUSTIFY_CENTER);}
-            if(pin){dc.setColor(0xFFFFFF,Graphics.COLOR_TRANSPARENT);dc.fillCircle(x,y,8);dc.setColor(0xF7AE4F,Graphics.COLOR_TRANSPARENT);dc.fillCircle(x,y,5);FallbackMap.uncertain(dc,x,y);}else if(worldPoint!=null){FallbackMap.point(dc,worldPoint,97,15);}else if(selected!=null){FallbackMap.unknown(dc,365,20);}
+            if(pin){dc.setColor(0xFFFFFF,Graphics.COLOR_TRANSPARENT);dc.fillCircle(x,y,8);dc.setColor(0xF7AE4F,Graphics.COLOR_TRANSPARENT);dc.fillCircle(x,y,5);}else if(worldPoint!=null){FallbackMap.point(dc,worldPoint,97,15);}
         }finally{presentation.suspend();}
     }
     // Built-in fonts and local system clock do not depend on feed, assets or
@@ -377,7 +376,7 @@ class SpaceFoxView extends WatchUi.WatchFace {
         // Bounded direct-draw map after clock and facts: an optional failure
         // must never erase or prevent the clock. Its source point is separate
         // from downloaded artwork and is absent for an unknown event location.
-        try{var left=(dc.getWidth()-195)/2;FallbackWorld.draw(dc,left,15);if(mapDecision.pointVisible(true)){FallbackMap.point(dc,mapDecision.point,left,15);}else if(context!=null){FallbackMap.unknown(dc,left+190,20);}}catch(e){}
+        try{var left=(dc.getWidth()-195)/2;FallbackWorld.draw(dc,left,15);if(mapDecision.pointVisible(true)){FallbackMap.point(dc,mapDecision.point,left,15);}}catch(e){}
     }
     (:typecheck(false)) function drawFallbackFields(dc) {
         var x=dc.getWidth()/2;var y=dc.getHeight()/2;

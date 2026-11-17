@@ -1,0 +1,55 @@
+test_omitted_unknown_keeps_own_old_age (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_omitted_unknown_keeps_own_old_age) ... ERROR
+
+======================================================================
+ERROR: test_omitted_unknown_keeps_own_old_age (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_omitted_unknown_keeps_own_old_age)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/bridge_map.py", line 35, in read
+    try:raw=_read_snapshot(_local_path(Path(root).resolve(),item['path']),maximum)
+                           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/catalog.py", line 1036, in _local_path
+    _require(path.is_relative_to(root), 'import resolves outside repository')
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/catalog.py", line 149, in _require
+    raise CatalogError(message)
+tools.spacefox.catalog.CatalogError: import resolves outside repository
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tests/test_schedule_producer_transport.py", line 1176, in test_omitted_unknown_keeps_own_old_age
+    result=update(pub,client,NOW+14400,build_catalog(ROOT),detail_limit=0)
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/update_feed.py", line 162, in update
+    files, catalog_digest = builder(candidate, catalog, accepted_at, publisher=publisher,
+                            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                         policy=pub.policy, traversal=traversal)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/native_motion.py", line 298, in build_artifact
+    return _build_artifact_owned(state, owned, now, publisher=publisher, policy=policy, traversal=traversal, root=root, origin_mode=origin_mode, eligibility=eligibility)
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/native_motion.py", line 306, in _build_artifact_owned
+    files, old, cat = static.build_artifact(state, catalog, now, publisher=publisher,
+                      ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        policy=policy, traversal=traversal, root=root, origin_mode=origin_mode, eligibility=eligibility)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/native_profile.py", line 240, in build_artifact
+    source,base,catalog=build_source(*args,**kwargs)
+                        ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/visual_bridge.py", line 115, in build_source
+    roles['geography'] = {'entityId':site_id,'descriptor':build_map(root,catalog,site_id,files)}
+                                                          ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/bridge_map.py", line 126, in build_map
+    source=load_source(root,pin)
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/bridge_map.py", line 39, in load_source
+    index=loads_json(read(pin,65536))
+                     ~~~~^^^^^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/bridge_map.py", line 36, in read
+    except (OSError,ValueError):_require(False,'map source digest/bound')
+                                ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/visual_bridge.py", line 18, in _require
+    raise ValueError('visual bridge: ' + message)
+ValueError: visual bridge: map source digest/bound
+
+----------------------------------------------------------------------
+Ran 1 test in 5.755s
+
+FAILED (errors=1)

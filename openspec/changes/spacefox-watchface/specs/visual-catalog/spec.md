@@ -316,7 +316,7 @@ The sole schema-3 native-motion-v3 envelope at /feed.json SHALL preserve selecte
 facts, typed role/entity/art identity, source provenance and source-validation age.
 Only the selected dependencies SHALL enter bounded immutable SFR1M delivery.
 Raw object bytes/path/size and decoded pixel integrity SHALL be checked separately.
-Optional visual work SHALL allow prompt valid schedule activation with generic art and a source-qualified point only on its matching projection; absent or mobile-reference event positions remain unmarked. An old same-ID image SHALL NOT be relabeled as new art.
+Optional visual work SHALL allow prompt valid schedule activation with generic art and a source-qualified point only on its matching projection; an absent event position or a mobile reference alone remains unmarked, while valid coordinates in the selected launch response can place its point. An old same-ID image SHALL NOT be relabeled as new art.
 A content-only change SHALL allocate a monotonic pending generation without
 provider polling or renewing source age. Recovery SHALL reuse exact durable bytes.
 Complete current and recoverable same-format closure and exact HTTPS readback

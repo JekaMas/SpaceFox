@@ -100,8 +100,8 @@ def validate(root,catalog):
     if record['scope']!='runtime-audit-025-current-source' or record['version']!='0.2.5':raise ValueError('wrong audit proof scope/version')
     from xml.etree import ElementTree as ET
     app=ET.parse(root/'watchface/manifest.xml').getroot().find('{http://www.garmin.com/xml/connectiq}application')
-    integrated=app.get('version') in ('0.2.6','0.2.7')
-    metrics=app.get('version')=='0.2.7'
+    integrated=app.get('version') in ('0.2.6','0.2.7','0.2.8')
+    metrics=app.get('version') in ('0.2.7','0.2.8')
     actual=native_inputs(root);previous=record['nativeInputs']
     changed={name for name in set(actual)|set(previous) if actual.get(name)!=previous.get(name)}
     expected_native=METRICS_NATIVE if metrics else INTEGRATION_NATIVE if integrated else set()

@@ -7,6 +7,7 @@ state, reserve request quota separately, and apply the bounded feed encoder.
 from dataclasses import dataclass, replace
 from datetime import date, datetime, timezone
 from enum import Enum
+from decimal import Decimal, InvalidOperation
 import hashlib
 import json
 import re
@@ -219,6 +220,7 @@ class LaunchRecord:
     country_name: str | None = None
     country_code: str | None = None
     site_location_name: str | None = None
+    site_position: dict | None = None
     ascent_end: dict | None = None
 
     def __post_init__(self):
@@ -231,6 +233,23 @@ class LaunchRecord:
                 continue
             if type(identity) is not StableId or identity.kind is not kind:
                 raise ScheduleError(f'{field} must carry the matching typed identity')
+        if self.site_position is not None:
+            if type(self.site_position) is not dict or set(self.site_position) != {'latitude', 'longitude'}:
+                raise ScheduleError('invalid source point')
+            try:
+                coords = []
+                for key, bound in (('latitude', 90), ('longitude', 180)):
+                    value = self.site_position[key]
+                    if type(value) is not str or len(value) > 64:
+                        raise ScheduleError('invalid source coordinate')
+                    coordinate = Decimal(value)
+                    if not coordinate.is_finite() or str(coordinate) != value or abs(coordinate) > bound:
+                        raise ScheduleError('invalid source coordinate')
+                    coords.append(coordinate)
+                if not any(coords):
+                    raise ScheduleError('zero source point is not a qualified pad')
+            except InvalidOperation as error:
+                raise ScheduleError('invalid source coordinate') from error
         if type(self.timing) is not Timing or type(self.status) is not LaunchStatus:
             raise ScheduleError('record requires validated Timing and LaunchStatus')
         _utc(self.source_validated_utc, 'source_validated_utc')
@@ -293,7 +312,7 @@ class LaunchRecord:
                 result['timing'][field] = getattr(timing, field)
         if self.source_updated_subsecond:
             result['source_updated_subsecond'] = self.source_updated_subsecond
-        for field in ('source_updated_utc', 'source_updated_iso', 'source_status_id', 'source_status_name', 'site_name', 'country_name', 'country_code', 'site_location_name', 'operator_abbrev'):
+        for field in ('source_updated_utc', 'source_updated_iso', 'source_status_id', 'source_status_name', 'site_name', 'country_name', 'country_code', 'site_location_name', 'operator_abbrev', 'site_position'):
             if getattr(self, field) is not None:
                 result[field] = getattr(self, field)
         if self.ascent_end is not None:
@@ -469,6 +488,10 @@ def merge_schedule(state: ScheduleState, incoming: tuple[LaunchRecord, ...], now
             # Curated supplement is a distinct source from the LL2 content epoch.
             comparable.pop('ascent_end', None)
             old_content.pop('ascent_end', None)
+            # Pad details are independently supplied by the provider and may
+            # change without changing the launch object's last_updated.
+            comparable.pop('site_position', None)
+            old_content.pop('site_position', None)
             # Additive model qualification: old null/absent newly modeled footer
             # facts are unknown, not a negative assertion. A fresh origin may
             # supply them without changing last_updated. Known facts cannot be
@@ -482,7 +505,7 @@ def merge_schedule(state: ScheduleState, incoming: tuple[LaunchRecord, ...], now
             if record.source_validated_utc < old.source_validated_utc:
                 raise ScheduleError('source validation cannot regress')
             if record.source_validated_utc == old.source_validated_utc:
-                if comparable != old_content:
+                if comparable != old_content or record.site_position != old.site_position:
                     raise ScheduleError('conflicting content at the same source validation')
                 before, after = old.ascent_end, record.ascent_end
                 if before is not None and after is not None and before != after and after['reviewed_utc'] <= before['reviewed_utc']:

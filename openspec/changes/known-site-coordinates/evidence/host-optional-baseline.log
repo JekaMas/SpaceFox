@@ -1,0 +1,32 @@
+test_optional_detail_never_renews_primary_minimum (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_optional_detail_never_renews_primary_minimum) ... ERROR
+
+======================================================================
+ERROR: test_optional_detail_never_renews_primary_minimum (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_optional_detail_never_renews_primary_minimum)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tests/test_schedule_producer_transport.py", line 972, in test_optional_detail_never_renews_primary_minimum
+    result=update(pub,client,NOW+3600,build_catalog(ROOT),max_pages=2,detail_limit=1)
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/update_feed.py", line 162, in update
+    files, catalog_digest = builder(candidate, catalog, accepted_at, publisher=publisher,
+                            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                         policy=pub.policy, traversal=traversal)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/native_motion.py", line 298, in build_artifact
+    return _build_artifact_owned(state, owned, now, publisher=publisher, policy=policy, traversal=traversal, root=root, origin_mode=origin_mode, eligibility=eligibility)
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/native_motion.py", line 382, in _build_artifact_owned
+    validate_artifact(files)
+    ~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/native_motion.py", line 440, in validate_artifact
+    result = _validate_artifact(files, cached, pending)
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/native_motion.py", line 453, in _validate_artifact
+    feed = validate_feed(files.get(FEED_PATH))
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/native_motion.py", line 388, in validate_feed
+    return validate_current_feed(raw, now=now)
+  File "/Users/jekamas/.codex/tmp/spacefox-sites-028-20261117/baseline/tools/spacefox/wire.py", line 209, in validate_current_feed
+    raise ValueError('selection validation precedes selected source')
+ValueError: selection validation precedes selected source
+
+----------------------------------------------------------------------
+Ran 1 test in 9.685s
+
+FAILED (errors=1)

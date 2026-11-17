@@ -1,0 +1,231 @@
+test_known_pad_and_missing_position (tests.test_known_site_coordinates.CapturedCoordinates.test_known_pad_and_missing_position) ... ok
+test_unknown_reference_uses_per_launch_coordinates_after_store_roundtrip (tests.test_known_site_coordinates.CapturedCoordinates.test_unknown_reference_uses_per_launch_coordinates_after_store_roundtrip) ... ok
+test_coarse_real_capture (tests.test_watch_snapshot.CapturedSnapshot.test_coarse_real_capture) ... ok
+test_exact_real_capture (tests.test_watch_snapshot.CapturedSnapshot.test_exact_real_capture) ... ok
+test_429_and_shared_quota_count_only_started_attempts (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_429_and_shared_quota_count_only_started_attempts) ... ok
+test_advancing_clock_keeps_each_response_origin (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_advancing_clock_keeps_each_response_origin) ... ok
+test_advancing_clock_optional_429_keeps_primary (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_advancing_clock_optional_429_keeps_primary) ... ok
+test_bounded_pagination_preserves_origin_epochs_positive (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_bounded_pagination_preserves_origin_epochs_positive) ... ok
+test_current_content_only_prepare_preserves_source_age_without_provider (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_current_content_only_prepare_preserves_source_age_without_provider) ... ok
+test_deploy_readback_preserves_per_record_validation_age (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_deploy_readback_preserves_per_record_validation_age) ... ok
+test_duplicate_later_page_rejects_atomic_batch_negative (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_duplicate_later_page_rejects_atomic_batch_negative) ... ok
+test_durable_latches_and_publication_preserve_source_ages (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_durable_latches_and_publication_preserve_source_ages) ... ERROR
+test_empty_cached_200_preserves_selection_epoch (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_empty_cached_200_preserves_selection_epoch) ... ok
+test_explicit_page_cap_reports_partial_positive (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_explicit_page_cap_reports_partial_positive) ... ok
+test_fast_policy_persists_twelve_due_reservations (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_fast_policy_persists_twelve_due_reservations) ... FAIL
+test_fixed_now_survives_delayed_response (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_fixed_now_survives_delayed_response) ... ok
+test_fractional_revision_persists_and_rejects_regression (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_fractional_revision_persists_and_rejects_regression) ... ok
+test_invalid_current_artifacts_keep_active_and_source (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_invalid_current_artifacts_keep_active_and_source) ... ERROR
+test_invalid_source_coordinate_preserves_accepted_artifact (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_invalid_source_coordinate_preserves_accepted_artifact) ... ok
+test_missing_art_does_not_exclude_upcoming_identity (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_missing_art_does_not_exclude_upcoming_identity) ... ok
+test_newer_primary_reappearance_reopens_detail_eligibility (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_newer_primary_reappearance_reopens_detail_eligibility) ... ok
+test_null_zero_negative_and_future_selection_epochs (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_null_zero_negative_and_future_selection_epochs) ... ok
+test_old_200_cannot_renew_accepted_origin (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_old_200_cannot_renew_accepted_origin) ... ok
+test_old_source_and_duplicate_result_refused_negative (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_old_source_and_duplicate_result_refused_negative) ... ERROR
+test_omitted_unknown_keeps_own_old_age (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_omitted_unknown_keeps_own_old_age) ... ERROR
+test_optional_429_preserves_primary_and_omitted_age (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_optional_429_preserves_primary_and_omitted_age) ... ok
+test_optional_detail_never_renews_primary_minimum (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_optional_detail_never_renews_primary_minimum) ... ERROR
+test_optional_failures_preserve_primary_and_old_source (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_optional_failures_preserve_primary_and_old_source) ... ok
+test_optional_missing_404_preserves_primary_and_old_record (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_optional_missing_404_preserves_primary_and_old_record) ... ok
+test_ordered_source_events_preserve_per_record_facts (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_ordered_source_events_preserve_per_record_facts) ... ok
+test_publication_workflow_concurrency_is_global (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_publication_workflow_concurrency_is_global) ... ok
+test_publisher_reports_upcoming_catalog_gaps_with_bounded_metadata (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_publisher_reports_upcoming_catalog_gaps_with_bounded_metadata) ... ok
+test_quota_exhaustion_preserves_primary_and_terminal_latches (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_quota_exhaustion_preserves_primary_and_terminal_latches) ... ERROR
+test_real_cli_without_now_rejects_future_origin (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_real_cli_without_now_rejects_future_origin) ... FAIL
+test_real_cli_without_now_uses_response_time (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_real_cli_without_now_uses_response_time) ... FAIL
+test_regressing_source_rejected_without_replacement (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_regressing_source_rejected_without_replacement) ... ok
+test_reserved_http_redirect_size_and_timeout_preserve_source (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_reserved_http_redirect_size_and_timeout_preserve_source) ... ok
+test_rollover_optional_404_counts_started_attempt (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_rollover_optional_404_counts_started_attempt) ... FAIL
+test_rollover_optional_success_counts_each_attempt (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_rollover_optional_success_counts_each_attempt) ... FAIL
+test_runtime_clock_delayed_pages_preserve_origin_epochs (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_runtime_clock_delayed_pages_preserve_origin_epochs) ... ok
+test_schedule_pagination_failure_retries_without_backoff (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_schedule_pagination_failure_retries_without_backoff) ... ok
+test_source_advances_after_reservation_starts_no_http (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_source_advances_after_reservation_starts_no_http) ... ok
+test_throttled_backoff_blocks_manual_version_without_write (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_throttled_backoff_blocks_manual_version_without_write) ... ok
+test_uncertain_reservation_survives_reopen_without_refund (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_uncertain_reservation_survives_reopen_without_refund) ... ok
+test_unchanged_fresh_origin_renews_only_validation (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_unchanged_fresh_origin_renews_only_validation) ... ok
+test_unknown_identities_through_current_http_updater (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_unknown_identities_through_current_http_updater) ... ok
+test_upcoming_catalog_resolution_keeps_selected_artifact_closure (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_upcoming_catalog_resolution_keeps_selected_artifact_closure) ... ok
+test_zero_utc_backoff_survives_reopen (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_zero_utc_backoff_survives_reopen) ... ok
+
+======================================================================
+ERROR: test_durable_latches_and_publication_preserve_source_ages (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_durable_latches_and_publication_preserve_source_ages)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tests/test_schedule_producer_transport.py", line 1081, in test_durable_latches_and_publication_preserve_source_ages
+    pub.accept_source(pub.head,token,(a2,b),NOW+1,selection_validated_utc=NOW+1)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/publisher.py", line 1224, in accept_source
+    doc, request = self._result(expected, token, now)
+                   ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/publisher.py", line 1148, in _result
+    raise StateError('result requires a matching unused durable reservation')
+tools.spacefox.publisher.StateError: result requires a matching unused durable reservation
+
+======================================================================
+ERROR: test_invalid_current_artifacts_keep_active_and_source (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_invalid_current_artifacts_keep_active_and_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tests/test_schedule_producer_transport.py", line 1038, in test_invalid_current_artifacts_keep_active_and_source
+    broken=[with_text_transport(dict(candidate,**{'feed.json':raw})) for raw in cases]
+            ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/native_motion.py", line 82, in with_text_transport
+    result['watch.json'] = encode_snapshot(feed, loads_json(logical[feed['catalogPath']]))
+                           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/watch_snapshot.py", line 86, in encode_snapshot
+    encoded=json.dumps({'data':snapshot(feed,catalog)},ensure_ascii=False,separators=(',',':'),allow_nan=False).encode('utf-8')
+                               ~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/watch_snapshot.py", line 83, in snapshot
+    return [1,feed['publisher'],policy,_row(launch,catalog,policy,True),rows,terminal,bridge]
+                                       ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/watch_snapshot.py", line 69, in _row
+    values=(launch['launch_id'],rocket,operator,short,launch['mission_purpose'],site,
+            ~~~~~~^^^^^^^^^^^^^
+KeyError: 'launch_id'
+
+======================================================================
+ERROR: test_old_source_and_duplicate_result_refused_negative (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_old_source_and_duplicate_result_refused_negative)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tests/test_schedule_producer_transport.py", line 1059, in test_old_source_and_duplicate_result_refused_negative
+    files,digest=build_artifact(pub.schedule,build_catalog(ROOT),at,publisher=envelope,root=ROOT)
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/native_motion.py", line 298, in build_artifact
+    return _build_artifact_owned(state, owned, now, publisher=publisher, policy=policy, traversal=traversal, root=root, origin_mode=origin_mode, eligibility=eligibility)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/native_motion.py", line 382, in _build_artifact_owned
+    validate_artifact(files)
+    ~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/native_motion.py", line 440, in validate_artifact
+    result = _validate_artifact(files, cached, pending)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/native_motion.py", line 453, in _validate_artifact
+    feed = validate_feed(files.get(FEED_PATH))
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/native_motion.py", line 388, in validate_feed
+    return validate_current_feed(raw, now=now)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/wire.py", line 209, in validate_current_feed
+    raise ValueError('selection validation precedes selected source')
+ValueError: selection validation precedes selected source
+
+======================================================================
+ERROR: test_omitted_unknown_keeps_own_old_age (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_omitted_unknown_keeps_own_old_age)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tests/test_schedule_producer_transport.py", line 1176, in test_omitted_unknown_keeps_own_old_age
+    result=update(pub,client,NOW+14400,build_catalog(ROOT),detail_limit=0)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/update_feed.py", line 162, in update
+    files, catalog_digest = builder(candidate, catalog, accepted_at, publisher=publisher,
+                            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                         policy=pub.policy, traversal=traversal)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/native_motion.py", line 298, in build_artifact
+    return _build_artifact_owned(state, owned, now, publisher=publisher, policy=policy, traversal=traversal, root=root, origin_mode=origin_mode, eligibility=eligibility)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/native_motion.py", line 381, in _build_artifact_owned
+    files = with_text_transport(files)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/native_motion.py", line 82, in with_text_transport
+    result['watch.json'] = encode_snapshot(feed, loads_json(logical[feed['catalogPath']]))
+                           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/watch_snapshot.py", line 86, in encode_snapshot
+    encoded=json.dumps({'data':snapshot(feed,catalog)},ensure_ascii=False,separators=(',',':'),allow_nan=False).encode('utf-8')
+                               ~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/watch_snapshot.py", line 77, in snapshot
+    rows=[_row(r,catalog,policy,False) for r in upcoming if 'terminal' not in r]
+          ~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/watch_snapshot.py", line 51, in _row
+    precision=timing['precision'];target=timing['exact_utc'];display=timing['nominal_utc'] if target is None else None
+                                                                     ~~~~~~^^^^^^^^^^^^^^^
+KeyError: 'nominal_utc'
+
+======================================================================
+ERROR: test_optional_detail_never_renews_primary_minimum (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_optional_detail_never_renews_primary_minimum)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tests/test_schedule_producer_transport.py", line 972, in test_optional_detail_never_renews_primary_minimum
+    result=update(pub,client,NOW+3600,build_catalog(ROOT),max_pages=2,detail_limit=1)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/update_feed.py", line 162, in update
+    files, catalog_digest = builder(candidate, catalog, accepted_at, publisher=publisher,
+                            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                         policy=pub.policy, traversal=traversal)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/native_motion.py", line 298, in build_artifact
+    return _build_artifact_owned(state, owned, now, publisher=publisher, policy=policy, traversal=traversal, root=root, origin_mode=origin_mode, eligibility=eligibility)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/native_motion.py", line 382, in _build_artifact_owned
+    validate_artifact(files)
+    ~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/native_motion.py", line 440, in validate_artifact
+    result = _validate_artifact(files, cached, pending)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/native_motion.py", line 453, in _validate_artifact
+    feed = validate_feed(files.get(FEED_PATH))
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/native_motion.py", line 388, in validate_feed
+    return validate_current_feed(raw, now=now)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/wire.py", line 209, in validate_current_feed
+    raise ValueError('selection validation precedes selected source')
+ValueError: selection validation precedes selected source
+
+======================================================================
+ERROR: test_quota_exhaustion_preserves_primary_and_terminal_latches (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_quota_exhaustion_preserves_primary_and_terminal_latches)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tests/test_schedule_producer_transport.py", line 548, in test_quota_exhaustion_preserves_primary_and_terminal_latches
+    pub.accept_source(pub.head, token, tuple(moved), NOW + 1, selection_validated_utc=NOW + 1)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/publisher.py", line 1224, in accept_source
+    doc, request = self._result(expected, token, now)
+                   ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tools/spacefox/publisher.py", line 1148, in _result
+    raise StateError('result requires a matching unused durable reservation')
+tools.spacefox.publisher.StateError: result requires a matching unused durable reservation
+
+======================================================================
+FAIL: test_fast_policy_persists_twelve_due_reservations (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_fast_policy_persists_twelve_due_reservations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tests/test_schedule_producer_transport.py", line 1112, in test_fast_policy_persists_twelve_due_reservations
+    self.assertIsNotNone(token);pub.finish_request(pub.head,token,NOW+300*i,'success')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_real_cli_without_now_rejects_future_origin (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_real_cli_without_now_rejects_future_origin)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tests/test_schedule_producer_transport.py", line 870, in test_real_cli_without_now_rejects_future_origin
+    self.assertEqual(result.returncode,2);self.assertIn('provider Date exceeds clock tolerance',result.stderr)
+                                          ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'provider Date exceeds clock tolerance' not found in 'update-feed: producer checkout must be committed and clean before provider permission\n'
+
+======================================================================
+FAIL: test_real_cli_without_now_uses_response_time (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_real_cli_without_now_uses_response_time)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tests/test_schedule_producer_transport.py", line 893, in test_real_cli_without_now_uses_response_time
+    self.assertEqual(result.returncode,0,result.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 2 != 0 : update-feed: producer checkout must be committed and clean before provider permission
+
+
+======================================================================
+FAIL: test_rollover_optional_404_counts_started_attempt (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_rollover_optional_404_counts_started_attempt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tests/test_schedule_producer_transport.py", line 769, in test_rollover_optional_404_counts_started_attempt
+    self.rollover_observation(404)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tests/test_schedule_producer_transport.py", line 755, in rollover_observation
+    self.assertEqual(result['requests'],1+count);self.assertEqual(result['traversal']['detailRequests'],count)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_rollover_optional_success_counts_each_attempt (tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_rollover_optional_success_counts_each_attempt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tests/test_schedule_producer_transport.py", line 772, in test_rollover_optional_success_counts_each_attempt
+    self.rollover_observation(200)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-known-site-coordinates-20261117/tests/test_schedule_producer_transport.py", line 755, in rollover_observation
+    self.assertEqual(result['requests'],1+count);self.assertEqual(result['traversal']['detailRequests'],count)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 3
+
+----------------------------------------------------------------------
+Ran 48 tests in 597.687s
+
+FAILED (failures=5, errors=6)
