@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-stm-event-pbt-20261117/tools/run_native_stm_campaign.py", line 208, in <module>
+    main()
+    ~~~~^^
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-stm-event-pbt-20261117/tools/run_native_stm_campaign.py", line 183, in main
+    results = run_batches(owners, args.workers, args.seconds, args.output)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-stm-event-pbt-20261117/tools/run_native_stm_campaign.py", line 151, in run_batches
+    pair = [future.result() for future in futures]
+            ~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/concurrent/futures/_base.py", line 454, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/concurrent/futures/_base.py", line 396, in __get_result
+    raise self._exception
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/Users/jekamas/projects/SpaceFox-worktrees/fix-stm-event-pbt-20261117/tools/run_native_stm_campaign.py", line 89, in execute
+    ready.wait(timeout=420)
+    ~~~~~~~~~~^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/threading.py", line 731, in wait
+    self._enter() # Block while the barrier drains.
+    ~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/threading.py", line 755, in _enter
+    raise BrokenBarrierError
+threading.BrokenBarrierError

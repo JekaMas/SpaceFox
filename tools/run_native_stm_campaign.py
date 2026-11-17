@@ -3,7 +3,7 @@
 from __future__ import annotations
 import argparse
 import hashlib
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import json
 from pathlib import Path
 import re
@@ -11,6 +11,7 @@ import shutil
 import subprocess
 import threading
 import time
+import traceback
 from xml.etree import ElementTree as ET
 
 try:
@@ -78,6 +79,8 @@ def execute(owner, worker, seconds, output, ready=None):
                    '-o', f'/task/campaign-{owner}.prg', '-d', 'fr165m', '-y', '/task/test.der', '-t', '-l', '3')
     try:
         with COMPILES:
+            if ready is not None and ready.broken:
+                raise threading.BrokenBarrierError()
             compiled = command(*compile_cmd, timeout=180)
         program=task/f'campaign-{owner}.prg'
         program_sha=hashlib.sha256(program.read_bytes()).hexdigest()
@@ -90,6 +93,10 @@ def execute(owner, worker, seconds, output, ready=None):
     except BaseException:
         if ready is not None:
             ready.abort()
+        try:
+            command('docker','exec',container,'sh','-c','pkill -f "[/]bin/simulator" || true',timeout=20)
+        except Exception as cleanup:
+            (output/f'{NAMES[owner]}-cleanup-error.txt').write_text(repr(cleanup)+'\n')
         raise
     cmd = ('docker', 'exec', container, 'env', 'DISPLAY=:99', f'{SDK}/monkeydo',
            f'/task/campaign-{owner}.prg', 'fr165m', '-t', 'campaignPilot')
@@ -110,13 +117,19 @@ def execute(owner, worker, seconds, output, ready=None):
         rc = process.wait()
     finally:
         watchdog.cancel()
+        try:
+            command('docker','exec',container,'sh','-c','pkill -f "[/]bin/simulator" || true',timeout=20)
+            cleanup_ok=True
+        except Exception as error:
+            (output/f'{NAMES[owner]}-cleanup-error.txt').write_text(repr(error)+'\n')
+            cleanup_ok=False
     raw = ''.join(lines)
     begin_markers=re.findall(r'PBT_CAMPAIGN_BEGIN worker=(\d+) owner=(\d+) first=(\d+) version=([0-9.]+) native_id=([0-9a-f]{8})',raw)
     marker = re.search(r'PBT_CAMPAIGN_END worker=(\d+) owner=(\d+) first=(\d+) next=(\d+) batches=(\d+) events=(\d+) productive_ms=(\d+) wall_ms=(\d+)', raw)
     cov = re.search(r'PBT_CAMPAIGN_COVERAGE (.+) assertions=(\d+) skipped=(\d+)', raw)
     parsed = parse_output(raw, rc, ('campaignPilot',))
     counts = None if cov is None else coverage_counts(cov[1])
-    good = (parsed['status'] == 'passed' and len(begin_markers)==1 and
+    good = (cleanup_ok and parsed['status'] == 'passed' and len(begin_markers)==1 and
             begin_markers[0]==(str(worker),str(owner),str(1+worker*400000),identity[1],identity[2]) and
             raw.count('PBT_CAMPAIGN_END ')==1 and raw.count('PBT_CAMPAIGN_COVERAGE ')==1 and marker is not None and cov is not None and counts is not None and
             int(marker[1]) == worker and int(marker[2]) == owner and int(marker[3]) == 1+worker*400000 and
@@ -125,7 +138,7 @@ def execute(owner, worker, seconds, output, ready=None):
             int(cov[2]) > int(marker[6]) and int(marker[8]) >= int(marker[7]) and
             begin is not None and end is not None and end-begin >= seconds)
     return {'owner': NAMES[owner], 'worker': worker, 'status': 'GREEN' if good else 'RED',
-            'thread_id': threading.get_ident(), 'container': container,
+            'thread_id': threading.get_ident(), 'container': container, 'cleanup_ok': cleanup_ok,
             'program': str(program), 'program_sha256': program_sha,
             'test_uuid': app.get('id'), 'entry': 'PbtApp', 'version': identity[1], 'native_id': identity[2],
             'raw_exit': rc, 'launcher': parsed, 'host_start': started, 'productive_begin': begin,
@@ -141,21 +154,35 @@ def execute(owner, worker, seconds, output, ready=None):
 
 
 def run_batches(owners, workers, seconds, output):
-    results = []
+    results=[]
+    def invoke(owner,worker,ready):
+        try:
+            return execute(owner,worker,seconds,output,ready)
+        except BaseException as error:
+            ready.abort()
+            details=traceback.format_exc()
+            captured=getattr(error,'stdout',None) or getattr(error,'output',None)
+            if captured:
+                details+='\nCAPTURED COMMAND OUTPUT\n'+(captured.decode(errors='replace') if isinstance(captured,bytes) else captured)
+            (output/f'{NAMES[owner]}-error.txt').write_text(details)
+            raise
     with ThreadPoolExecutor(max_workers=workers) as pool:
-        for pos in range(0, len(owners), workers):
-            batch = owners[pos:pos+workers]
-            ready = threading.Barrier(len(batch))
-            futures = [pool.submit(execute, owner, worker, seconds, output, ready) for worker, owner in enumerate(batch)]
-            try:
-                pair = [future.result() for future in futures]
-            except Exception as exc:
-                (output / 'error.txt').write_text(repr(exc)+'\n')
-                raise
-            results.extend(pair)
-            (output / 'progress.json').write_text(json.dumps(results, indent=2)+'\n')
-            if any(item['status'] != 'GREEN' for item in pair):
-                break
+        for pos in range(0,len(owners),workers):
+            batch=owners[pos:pos+workers];ready=threading.Barrier(len(batch));rows={};errors=[]
+            futures={pool.submit(invoke,owner,worker,ready):owner for worker,owner in enumerate(batch)}
+            for future in as_completed(futures):
+                try:rows[futures[future]]=future.result()
+                except BaseException as error:errors.append((futures[future],error))
+            if errors:
+                # A peer waiting on the aborted barrier must not hide the
+                # original preparation/compiler failure in another worker.
+                owner,error=next(((owner,e) for owner,e in errors if not isinstance(e,threading.BrokenBarrierError)),errors[0])
+                (output/'error.txt').write_text('causal_owner='+NAMES[owner]+'\n'+repr(error)+'\n'+
+                    '\n'.join(NAMES[n]+': '+repr(e) for n,e in errors)+'\n')
+                raise error
+            pair=[rows[owner] for owner in batch];results.extend(pair)
+            (output/'progress.json').write_text(json.dumps(results,indent=2)+'\n')
+            if any(item['status']!='GREEN' for item in pair):break
     return results
 
 

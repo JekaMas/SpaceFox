@@ -57,6 +57,20 @@ class NativeCampaignOutputControl(unittest.TestCase):
             self.assertEqual({row[1] for row in batch},{width})
             self.assertEqual(len({row[2] for row in batch}),width)
 
+    def test_causal_setup_error_is_retained_instead_of_barrier_error(self):
+        import threading
+        import subprocess
+        from tools import run_native_stm_campaign as runner
+        def worker(owner,lane,seconds,output,ready):
+            if owner==2:raise subprocess.CalledProcessError(1,['fake-compiler'],output='primary compiler diagnostic')
+            ready.wait(timeout=3)
+            return dict(status='GREEN',owner=owner)
+        with TemporaryDirectory() as temporary, patch.object(runner,'execute',side_effect=worker):
+            output=Path(temporary)
+            with self.assertRaises(subprocess.CalledProcessError):runner.run_batches([0,1,2],3,1,output)
+            self.assertIn('primary compiler diagnostic',(output/'scene-error.txt').read_text())
+            self.assertIn('causal_owner=scene',(output/'error.txt').read_text())
+
     def test_required_coverage_cannot_be_empty_zero_malformed_or_duplicated(self):
         self.assertEqual(coverage_counts('{start_applied=>2, callback_no=>3}'),
                          {'start_applied': 2, 'callback_no': 3})
