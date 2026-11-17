@@ -105,7 +105,8 @@ class NativeSoftwareAdmissionTest(unittest.TestCase):
   with tempfile.TemporaryDirectory() as temp:
    root=Path(temp)
    for folder in ('watchface','locales','tools'):shutil.copytree(ROOT/folder,root/folder,ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
-   for folder in ('openspec','corpus','tests','assets','catalog','schemas'):(root/folder).symlink_to(ROOT/folder,target_is_directory=True)
+   for folder in ('corpus','tests','assets','catalog','schemas'):(root/folder).symlink_to(ROOT/folder,target_is_directory=True)
+   audit=root/'openspec/changes/close-static-runtime-audit/evidence/native-admission.json';audit.parent.mkdir(parents=True);shutil.copyfile(ROOT/audit.relative_to(root),audit)
    changed=root/'watchface/source/SceneRenderer.mc';changed.write_bytes(changed.read_bytes()+b' ')
-   with self.assertRaisesRegex(ValueError,'DISPLAY04 current native closure changed'):software_locales(root,self.catalog)
+   with self.assertRaisesRegex(ValueError,'audit native input closure changed'):software_locales(root,self.catalog)
 if __name__=='__main__':unittest.main()

@@ -1,4 +1,4 @@
-"""Retained historical replay uses its own root, while current tampering fails."""
+"""Retained UX02 snapshot stays historical; current tampering fails."""
 import json
 import shutil
 import tempfile
@@ -17,7 +17,8 @@ class HistoricalAdmission(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix='spacefox-ux02-tamper-') as d:
             root=Path(d)
             for folder in ('watchface','locales','tools'): shutil.copytree(ROOT/folder,root/folder,ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
-            for folder in ('openspec','corpus','tests','assets','catalog','schemas'): (root/folder).symlink_to(ROOT/folder,target_is_directory=True)
+            for folder in ('corpus','tests','assets','catalog','schemas'): (root/folder).symlink_to(ROOT/folder,target_is_directory=True)
+            audit=root/'openspec/changes/close-static-runtime-audit/evidence/native-admission.json';audit.parent.mkdir(parents=True);shutil.copyfile(ROOT/audit.relative_to(root),audit)
             owner=root/'watchface/source/SceneRenderer.mc';owner.write_text(owner.read_text()+'\n// tampered current owner\n')
-            with self.assertRaisesRegex(ValueError,'UX03 proof input changed'): software_locales(root)
+            with self.assertRaisesRegex(ValueError,'audit native input closure changed'): software_locales(root)
 if __name__=='__main__': unittest.main()

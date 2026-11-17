@@ -33,45 +33,26 @@ The watch face SHALL survive startup, data acquisition, artwork loading and acti
 - **WHEN** artwork or acquisition is pending as the face enters low power, hides or turns off
 - **THEN** owned work stops or safely resumes without stale publication or resource exhaustion.
 
-### Requirement: Rejected provisional work does not spin
-A complete provisional feed rejected by validation SHALL not be reparsed on every view wake. The implementation SHALL retain a token-specific rejection cooldown of at most 300 seconds and permit a subsequent retry of the identical input, because a future source timestamp can become valid as time advances. An unavailable catalog SHALL remain retryable without being classified as a rejected complete feed. A changed provisional token SHALL not inherit the previous token's cooldown.
+### Requirement: Current trusted snapshot activation
+The older provisional raw-feed token, chunk, semantic-hash and inverse-restore protocol from this change is superseded by the 2026-11-17 trusted `watch.json` projection. The watch SHALL retain its last complete accepted snapshot until a complete replacement is stored and the pointer advances; interrupted writes SHALL not publish a partial snapshot. The clock and independent optional visuals remain available under their existing lifecycle bounds.
 
-#### Scenario: Complete invalid feed on an empty cache
-- **WHEN** the foreground rejects a complete provisional feed and the view is reopened during its cooldown
-- **THEN** the same token is not reparsed and the clock continues; after the cooldown the identical token may be retried.
-
-#### Scenario: Catalog is not yet available
-- **WHEN** the required catalog is unavailable
-- **THEN** the provisional input remains retryable without the rejected-feed cooldown.
-
-#### Scenario: Missing catalog remains deferred until progress
-- **WHEN** a provisional feed is waiting for its catalog
-- **THEN** foreground wakes do not repeatedly reparse it, and a background delivery notification permits immediate retry; a bounded retry after at most 300 seconds remains available if notification is missed.
-
-### Requirement: Source-bound admission remains atomic
-The foreground SHALL authenticate staged chunks, fully validate the current-format feed and its pinned catalog, and verify semantic and record identities before changing the accepted pointer. A replacement or interrupted job SHALL NOT publish partial input. Any retained successor and selected launch facts SHALL be derived from the validated source, and strict restore SHALL verify the accepted raw and inverse witnesses before rebinding it.
-
-#### Scenario: A new token arrives during preparation
-- **WHEN** the provisional marker changes before publication
-- **THEN** the prior provisional job is discarded and the changed input is separately authenticated.
-
-#### Scenario: An unexpected foreground callback failure
-- **WHEN** the owned timer or preparation callback fails unexpectedly
-- **THEN** the active job and timers are released, the previous scene remains available, and a later lifecycle, settings or background event can initiate a strict restore.
+#### Scenario: Interrupted snapshot replacement
+- **WHEN** the replacement is incomplete or activation is interrupted
+- **THEN** the last complete accepted snapshot remains selected without requiring a raw-feed reparse.
 
 ### Requirement: Bounded foreground preparation and optional-resource overlap
-Feed and scene-descriptor parsing and hashing SHALL advance in bounded foreground work units. Foreground scheduling SHALL preserve progress across low-power transitions and SHALL release transient parser state before advancing to the next allocation-heavy phase. Reconstructible visual and optional health resources SHALL be deferred while a provisional input owns the constrained heap, then restored for the selected settings after admission or failure.
+Current trusted snapshot admission and optional scene-descriptor work SHALL remain bounded. Foreground scheduling SHALL preserve progress across low-power transitions and SHALL release transient parser state before advancing to the next allocation-heavy phase. Reconstructible visual and optional health resources SHALL be deferred while admission or optional visual work owns the constrained heap, then restored for the selected settings after admission or failure.
 
 #### Scenario: Accepted facts during a short active window
 - **WHEN** a valid input is still being prepared as the display enters low power and returns active
 - **THEN** the existing job resumes without restarting, and the previous accepted clock, countdown and facts remain available until the verified replacement is ready.
 
 ### Requirement: Live launch acquisition and LOW continuity
-The watch face SHALL admit the current validated feed and catalog and display the selected launch and qualified site before optional artwork is ready. It SHALL label an announced but inexact NET estimate while preserving source precision. During acquisition and restoration, LOW SHALL retain the approved map, qualified point, clock, weekday/date, minute countdown and battery, and release temporary LOW resources before resuming HIGH work.
+The watch face SHALL admit the current trusted watch snapshot and display the selected launch and qualified site before optional artwork is ready. It SHALL label an announced but inexact NET estimate while preserving source precision. During acquisition and restoration, LOW SHALL retain the approved map, qualified point, clock, weekday/date, minute countdown and battery, and release temporary LOW resources before resuming HIGH work.
 
 #### Scenario: Background catalog precedes optional closure
-- **WHEN** the feed and its pinned catalog arrive and validate
-- **THEN** the selected launch and qualified point can be shown before optional artwork completes, and a subsequent background event resumes the pending closure even when feed polling is not due.
+- **WHEN** the trusted watch snapshot arrives and is accepted
+- **THEN** the selected launch and qualified point can be shown before optional artwork completes, and a subsequent background event resumes the pending closure even when schedule polling is not due.
 
 #### Scenario: LOW interrupts pending preparation
 - **WHEN** the display enters LOW with acquisition or restoration pending
@@ -79,7 +60,7 @@ The watch face SHALL admit the current validated feed and catalog and display th
 
 #### Scenario: Announced but inexact source time
 - **WHEN** the selected source has no exact UTC but has a validated announced NET
-- **THEN** the face shows an explicitly estimated `~T−` before that reference and `~T+` afterward, while keeping source precision, selection, scheduling and reminders unchanged; `~T+` is elapsed time since the announced NET and is not proof of liftoff.
+- **THEN** the face shows `T−` before and `T+` after that reference without a precision prefix, while preserving source precision, selection, scheduling and reminder eligibility; elapsed time since the announced NET is not proof of liftoff.
 
 #### Scenario: No announced reference
 - **WHEN** neither exact UTC nor validated announced NET is available

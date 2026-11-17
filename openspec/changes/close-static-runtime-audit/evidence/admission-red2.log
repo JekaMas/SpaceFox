@@ -1,0 +1,52 @@
+test_release_requires_matching_independent_peer (tests.test_current_022_admission.Current022Binding.test_release_requires_matching_independent_peer) ... ok
+test_repinned_native_delta_is_refused (tests.test_current_022_admission.Current022Binding.test_repinned_native_delta_is_refused) ... ok
+test_unreviewed_native_delta_is_refused (tests.test_current_022_admission.Current022Binding.test_unreviewed_native_delta_is_refused) ... ok
+test_historical_root_replays_and_changed_current_owner_is_rejected (tests.test_ux02_admission.HistoricalAdmission.test_historical_root_replays_and_changed_current_owner_is_rejected) ... FAIL
+test_primary_qualification_and_changed_renderer_refusal (tests.test_ux03_admission.Ux03Admission.test_primary_qualification_and_changed_renderer_refusal) ... FAIL
+test_changed_predecessor_helper_is_refused (tests.test_native_reminder_qualification.ReminderQualificationTest.test_changed_predecessor_helper_is_refused) ... ok
+test_published_predecessor_reconstruction (tests.test_native_reminder_qualification.ReminderQualificationTest.test_published_predecessor_reconstruction) ... ok
+test_current_display_delta_source_drift_refuses (tests.test_native_language_policy.NativeSoftwareAdmissionTest.test_current_display_delta_source_drift_refuses) ... FAIL
+
+======================================================================
+FAIL: test_historical_root_replays_and_changed_current_owner_is_rejected (tests.test_ux02_admission.HistoricalAdmission.test_historical_root_replays_and_changed_current_owner_is_rejected)
+----------------------------------------------------------------------
+ValueError: B1 integration input changed: openspec/changes/close-static-runtime-audit/evidence/native-admission.json
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-runtime-audit-20261117/tests/test_ux02_admission.py", line 22, in test_historical_root_replays_and_changed_current_owner_is_rejected
+    with self.assertRaisesRegex(ValueError,'audit native input closure changed'): software_locales(root)
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "audit native input closure changed" does not match "B1 integration input changed: openspec/changes/close-static-runtime-audit/evidence/native-admission.json"
+
+======================================================================
+FAIL: test_primary_qualification_and_changed_renderer_refusal (tests.test_ux03_admission.Ux03Admission.test_primary_qualification_and_changed_renderer_refusal)
+----------------------------------------------------------------------
+ValueError: B1 integration input changed: openspec/changes/close-static-runtime-audit/evidence/native-admission.json
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-runtime-audit-20261117/tests/test_ux03_admission.py", line 15, in test_primary_qualification_and_changed_renderer_refusal
+    with self.assertRaisesRegex(ValueError,'audit native input closure changed'):software_locales(root)
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "audit native input closure changed" does not match "B1 integration input changed: openspec/changes/close-static-runtime-audit/evidence/native-admission.json"
+
+======================================================================
+FAIL: test_current_display_delta_source_drift_refuses (tests.test_native_language_policy.NativeSoftwareAdmissionTest.test_current_display_delta_source_drift_refuses)
+----------------------------------------------------------------------
+ValueError: B1 integration input changed: openspec/changes/close-static-runtime-audit/evidence/native-admission.json
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jekamas/projects/SpaceFox-worktrees/apply-runtime-audit-20261117/tests/test_native_language_policy.py", line 110, in test_current_display_delta_source_drift_refuses
+    with self.assertRaisesRegex(ValueError,'audit native input closure changed'):software_locales(root,self.catalog)
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "audit native input closure changed" does not match "B1 integration input changed: openspec/changes/close-static-runtime-audit/evidence/native-admission.json"
+
+----------------------------------------------------------------------
+Ran 8 tests in 32.613s
+
+FAILED (failures=3)

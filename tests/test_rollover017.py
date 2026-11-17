@@ -150,9 +150,13 @@ class RolloverCloudReplenishmentTest(unittest.TestCase):
 
         fixture.BasicLaunchLogicTest.setUpClass()
         records = fixture.BasicLaunchLogicTest.records
-        a = replace(records[VULCAN], timing=Timing(TimePrecision.EXACT, exact_utc=NOW))
-        b = replace(records[STARSHIP], timing=Timing(TimePrecision.EXACT, exact_utc=NOW+7200))
-        c = replace(records[fixture.ELECTRON], timing=Timing(TimePrecision.EXACT, exact_utc=NOW+10800))
+        # Three technical launch IDs share the same captured Starship visual
+        # closure. This tests rollover independently of the separate 1 MiB
+        # active-plus-pending delivery limit, without inventing display names.
+        captured = records[STARSHIP]
+        a = replace(captured, launch_id=records[VULCAN].launch_id, timing=Timing(TimePrecision.EXACT, exact_utc=NOW))
+        b = replace(captured, timing=Timing(TimePrecision.EXACT, exact_utc=NOW+7200))
+        c = replace(captured, launch_id=records[fixture.ELECTRON].launch_id, timing=Timing(TimePrecision.EXACT, exact_utc=NOW+10800))
         catalog = build_catalog(Path.cwd())
         def git(root, *args):
             return subprocess.check_output(['git', '-C', str(root), *args], stderr=subprocess.DEVNULL, text=True).strip()

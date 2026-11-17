@@ -230,10 +230,18 @@
     geo.querySelector('.map-fallback').hidden=true;
     geoReady=true;
   }
+  let formatterLocale, clockFormatter, dateFormatter, displayedDate;
   function renderClock() {
     const now=new Date();
-    root.querySelector('.clock').textContent=new Intl.DateTimeFormat(state.locale,{hour:'2-digit',minute:'2-digit',hourCycle:'h23',timeZone:'Asia/Dubai'}).format(now);
-    root.querySelector('.date').textContent=new Intl.DateTimeFormat(state.locale,{weekday:'short',day:'numeric',month:'short',timeZone:'Asia/Dubai'}).format(now);
+    if(formatterLocale!==state.locale){
+      formatterLocale=state.locale;
+      clockFormatter=new Intl.DateTimeFormat(state.locale,{hour:'2-digit',minute:'2-digit',hourCycle:'h23',timeZone:'Asia/Dubai'});
+      dateFormatter=new Intl.DateTimeFormat(state.locale,{weekday:'short',day:'numeric',month:'short',timeZone:'Asia/Dubai'});
+      displayedDate=undefined;
+    }
+    root.querySelector('.clock').textContent=clockFormatter.format(now);
+    const date=dateFormatter.format(now);
+    if(date!==displayedDate){root.querySelector('.date').textContent=date;displayedDate=date;}
     const total=Math.max(0,launches[state.launch].seconds+(state.schedule==='changed'?1200:0)-Math.floor((Date.now()-elapsedStart)/1000));
     const hours=Math.floor(total/3600), minutes=String(Math.floor(total/60)%60).padStart(2,'0'), seconds=String(total%60).padStart(2,'0');
     const text=state.schedule==='tbd'?t('tbd'):total===0?t('waiting'):Date.now()<wakeUntil?`T−${hours}:${minutes}:${seconds}`:`T−${hours}${t('hour')} ${minutes}${t('minute')}`;
@@ -327,5 +335,4 @@
   const observer=new ResizeObserver(()=>drawGeo());observer.observe(geo);
   const ticker=setInterval(()=>{if(!root.isConnected){teardown();return;}renderClock();if(!geoReady)drawGeo();},1000);
 })();
-
 </script>

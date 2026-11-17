@@ -102,14 +102,7 @@ and derived flags must be added separately by the future wire owner.
 
 ## Cadence and source age
 
-`RefreshPolicy()` gives 3600-second normal, 900-second near and three-cycle stale
-limits. Near mode is inclusive at exact `T−7200` and `T+1800`; `T−7201` and
-`T+1801` are normal. Unknown/nonexact targets use normal mode. Explicit
-`fast_interval_seconds=300` gives five-minute mode and a 900-second stale limit.
-Intervals and `stale_cycles` are configurable; intervals below 300 seconds are
-rejected, and near/fast may not be slower than their enclosing mode. Twelve
-steady polls/hour is only a cadence bound. Actual quota includes every request
-and requires the independent durable reservation/backoff owner.
+Healthy schedule acquisition is hourly. Failed acquisition or no future launch is retried at the next permitted connected opportunity; offline background wake observes the 300-second platform minimum. These request decisions are separate from source freshness: normal freshness is 10800 seconds and the near-window freshness threshold is 2700 seconds. The earlier near/fast request-frequency experiment is historical, not an active polling mode. Every provider call still requires durable allowance and recovery guards.
 
 Age at the effective limit is stale: normally 10800 seconds, near 2700. Once
 stale, replay or a longer interval cannot clear it. The reducer detects a near
@@ -117,12 +110,7 @@ threshold crossed even if evaluation sleeps through the whole near window.
 Renewal of B cannot renew omitted A. Download/build time is not an API input and
 cannot refresh source validation.
 
-`cadence_seconds(record_or_none, now_utc, policy)` only returns policy.
-`poll_due(record_or_none, last_poll_utc, now_utc, policy,
-not_before_utc=...)` also honors an externally persisted backoff deadline.
-Neither performs I/O or reserves quota. A true result does not authorize a
-provider request without that separate reservation. Native wake restrictions,
-HTTP 200/304 handling and actual publication remain integration obligations.
+The current request decision is `request_due`; it does not itself perform I/O or reserve quota. Native wake restrictions, HTTP response handling and actual publication remain separate integration boundaries.
 
 Portable checks: `python3 -B -m unittest -v tests.test_schedule_policy`.
 Literal tests cover selection/exclusion/context, precision/order, atomic rejection,

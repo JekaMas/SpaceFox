@@ -20,7 +20,7 @@ from tools.spacefox.visual_bridge import sha
 from tools.spacefox.native_motion import build_artifact, validate_feed, PROFILE, FEED_PATH, _RepositoryCatalogOperation
 from tools.spacefox.provider import LL2Client
 from tools.spacefox.publisher import (GitState, Publisher, StateError, STATE_REF, ANCHOR_REF,
-                                     _schedule, _live, _sha, _digest, _path, GitDeadline, bounded_git)
+                                     _schedule, _schedule_due, _live, _sha, _digest, _path, GitDeadline, bounded_git)
 from tools.spacefox.schedule import RefreshPolicy
 from tools.update_feed import executing_revision, update, utc_now, _head_tree, _tracked_bytes
 
@@ -55,7 +55,7 @@ def outputs(result):
 
 
 def prepare_content(pub, client, now, catalog, *, root, clock=None):
-    """Real cloud prepare owner: recover first; catalog-only changes never poll.
+    """Recover first; due acquisition takes priority over optional content rebuild.
 
     The complete source digest detects metadata/art changes independent of code
     adoption or provider due time. Pending candidates are never reconstructed.
@@ -99,6 +99,11 @@ def _prepare_content(pub, client, now, catalog, *, root, clock, owner):
     else:
         builder = owner.build
         catalog_review = owner.review
+    if _schedule_due(pub.ledger, now, pub.policy):
+        result = update(pub,client,now,catalog,trigger='scheduled',clock=clock,artifact_builder=builder,artifact_profile=PROFILE)
+        if result['result'] == 'pending':
+            result['catalogReview'] = catalog_review
+        return result
     active=pub.ledger['active']
     if active is not None:
         path=f'artifacts/{active["generation"]}/{FEED_PATH}'

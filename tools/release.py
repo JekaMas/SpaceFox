@@ -137,6 +137,14 @@ def source_state(root: Path) -> dict:
                           "openspec/changes/add-launch-reminders/tasks.md",
                           "openspec/changes/add-launch-reminders/specs/launch-reminders/spec.md",
                           "docs/LAUNCH_REMINDERS.md"})
+    if proof is not None and "auditRuntime025Proof" in proof:
+        audit_path = proof["auditRuntime025Proof"]["path"]
+        require(audit_path in paths, "runtime audit proof must be tracked")
+        audit = json.loads((root / audit_path).read_text())
+        admission.add(audit_path)
+        admission.update(ref["path"] for ref in audit["priorSnapshots"].values())
+        admission.update(item["log"]["path"] for item in audit["sdkCases"])
+        admission.update(audit["currentOwners"])
     if proof is not None and "currentIntegration022Proof" in proof:
         current_path = proof["currentIntegration022Proof"]["path"]
         require(current_path in paths, "current integration proof must be tracked")
@@ -487,6 +495,7 @@ def evidence_inputs(paths: list[Path], root: Path) -> list[dict]:
 
 # Independent combined-source review, including the exact 0.1.24 version file.
 # A freshly repinned author qualification cannot substitute for this boundary.
+AUDIT_RUNTIME_PROOF_BODY_SHA256 = "37bdc9e3999fb4b7e1f9d5837a8fdaa6ecb7d5e833b32319f89bc16ad240b847"
 CURRENT_INTEGRATION_PROOF_BODY_SHA256 = "53481388290090e9d570c32a16acd93628100b2e4c7b1b743edb56de81844a23"
 INTEGRATION_PEER_NATIVE_SHA256 = "71547b49bc1c46f268ef22fd169b56feec0697b5ae4f24b76d19e9eab8826d5c"
 INTEGRATION_PEER_PROOF_BODY_SHA256 = "39d7287783bcc2f5642afcc1b90ac928909ecb435371391521a601bbf03de1bf"
@@ -495,6 +504,24 @@ INTEGRATION_PEER_PROOF_BODY_SHA256 = "39d7287783bcc2f5642afcc1b90ac928909ecb4353
 def require_combined_peer(root: Path, supplied: list[dict]) -> None:
     """Bind production export to the reviewed native bytes and combined proof."""
     catalog = json.loads((root / "locales/catalog.json").read_text())
+    audit = catalog["supportPolicy"]["softwareQualificationProof"].get("auditRuntime025Proof")
+    if audit is not None:
+        from tools.native_audit_025_qualification import validate
+        validate(root, catalog)
+        app = ET.parse(root / "watchface/manifest.xml").getroot().find("iq:application", NS)
+        native = (root / "watchface/source/generated/NativeVersion.mc").read_text()
+        match = re.search(r'const ID = "([0-9a-f]{8})"', native)
+        peers = [item["data"] for item in supplied if item["data"].get("kind") == "runtime-audit-independent-peer"]
+        require(len(peers) == 1 and peers[0].get("status") == "GREEN" and
+                peers[0].get("version") == app.get("version") and match is not None and
+                peers[0].get("native_id") == match.group(1), "production export requires runtime audit peer binding")
+        reviewed = peers[0].get("source_revision")
+        require(isinstance(reviewed, str) and re.fullmatch(r"[0-9a-f]{40}", reviewed), "runtime audit peer must identify reviewed source")
+        ancestry = subprocess.run(["git", "merge-base", "--is-ancestor", reviewed, "HEAD"], cwd=root, capture_output=True)
+        require(ancestry.returncode == 0, "runtime audit peer source is not an ancestor")
+        unchanged = git(root, "diff", "--name-only", reviewed, "HEAD", "--", "watchface", "tools/spacefox", "tools/cloud_feed.py", "tools/update_feed.py", "tools/refresh_catalog.py", "tools/release.py", "tools/native_audit_025_qualification.py", "locales/catalog.json")
+        require(not unchanged.strip(), "reviewed runtime audit source changed")
+        return
     combined = catalog["supportPolicy"]["softwareQualificationProof"].get("currentIntegration022Proof")
     if combined is not None:
         from tools.native_current_022_qualification import validate

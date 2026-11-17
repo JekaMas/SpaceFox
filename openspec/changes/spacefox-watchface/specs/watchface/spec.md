@@ -165,11 +165,11 @@ exclamation or cloud-off badge SHALL occupy the face.
 
 ### Requirement: Announced-time uncertainty
 
-A new time with no announced NET SHALL replace the countdown with an uncertainty label; an inexact announced NET SHALL use the explicit estimated prefix.
+A new time with no announced NET SHALL replace the countdown with an uncertainty label; an inexact announced NET SHALL show the announced reference without a precision prefix.
 
 #### Scenario: Inexact announced time
 - **WHEN** the selected launch has an inexact announced NET
-- **THEN** the countdown uses the estimated prefix without claiming liftoff
+- **THEN** the countdown uses that announced reference without a precision prefix or claiming liftoff
 
 ### Requirement: Short active-display launch animation
 

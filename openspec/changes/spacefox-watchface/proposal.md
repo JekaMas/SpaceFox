@@ -16,9 +16,7 @@ the layout, but live updates and a maintainable visual catalog are still missing
   four large fields in 2×2, country/site below the fields and a large left rocket.
 - Calculate the countdown entirely on the watch from its current clock and the
   cached UTC launch time, including after sleep and without connectivity.
-- Refresh the schedule hourly by default and every fifteen minutes from two hours
-  before a known launch through thirty minutes after its unconfirmed time.
-  Unknown times use hourly checks; five-minute polling is an optional setting.
+- Refresh healthy schedules hourly; retry failure or no-future state at the next permitted connected opportunity. The former near/fast polling proposal is historical and superseded by 0.2.4.
   Use the paired phone and a small personal static HTTPS feed. GitHub Actions
   runs a deterministic updater and publishes it with GitHub Pages; no AWS account,
   always-running backend, custom phone app or per-refresh LLM call is required.

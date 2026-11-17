@@ -1,0 +1,21 @@
+# Static runtime and duplication audit
+
+Revision: `4623d51796d076472e3ddf869841c6041fa9c7d1`. Status: **static review and inventory reconciliation complete; peer final crosscheck complete**. This is an audit only: no product, settings, tests, assets, specification or publication changes; no test, SDK, build, network, deployment or watch operation was performed.
+
+## Findings and implications
+
+The concrete and qualified findings are recorded with source lines, trigger, authority, recommendation and confidence in [FINDINGS.md](FINDINGS.md). The primary watch-runtime finding is repeated freshness arithmetic on the same context during a normal active frame (A03). Preview-only repeated date formatter construction is A04; A05 identifies an apparently unused former feed timestamp parser in production source. A06 is an unranked old reminder-state-shape investigation: current guards apply and authorization/state-continuity needs a decision. No performance or battery cost was measured. Existing seconds redraw and brief animation are required behaviors, not defects merely because they repeat.
+
+A02, A08 and A09 record conflicting or obsolete current-facing specification/task statements for countdown prefix, polling strategy and the former raw-feed admission. A10 records incomplete descriptions of `/watch.json` alongside the still-real `/feed.json` root. A01 and A07 are unranked repeated map/geometry work: prior documentation identifies their frame-local lifetime as a memory tradeoff; an equally safe and cheaper alternative has not been established. The peer found a metadata-only branch that can defer a due no-future schedule request (H01), an unconditional test import of an absent historical file (H02), stale and mutually contradictory test oracles (H03), and a conditional weaker standalone metadata source fence (H04). See [peer findings](peer/FINDINGS.md) and the [lead crosscheck](HOST-CROSSCHECK.md); no static inference is a test result.
+
+[HOTPATHS.md](HOTPATHS.md) records the relevant wake/draw/timer, callback, network and Storage owners with conditions and configured intervals. Intervals are source facts, not physical delivery or execution-time measurements. The audit does not establish energy consumption, heap maxima, physical runtime behavior, or provider timing.
+
+## Coverage and limits
+
+The immutable inventory contains **20,806 distinct tracked paths**, each with a row and Git blob identity in [LEDGER.tsv](LEDGER.tsv). The lead owns 19,417 paths after two explicit transfers totaling 200 paths; the peer owns the remaining 1,389. The reconciled inventory has 865 full source/document reads, 53 byte-identical aliases tied to a representative, 17,964 path-level historical/static/data dispositions, 905 partial reviews and 1,019 explicit unknown historical code/config reachability boundaries. None remains unclassified or pending. [PROGRESS.md](PROGRESS.md) and [EVENTS.tsv](EVENTS.tsv) retain checkpoints; peer per-file results were imported by exact path and Git blob OID.
+
+All 39 current native production Monkey C sources and the native manifest/jungle were read; current preview executable owners were read, with vendored minified dependencies classified at their actual call sites rather than semantically reviewed. The preview HTML inline script is bound by byte equality to reviewed source, while its complete markup remains partial. Tests and older executable snapshots were inspected according to their real build/test consumers; **UNKNOWN** does not imply no possible host caller. Current locale admission reads retained proof data, while old source reconstruction executes only for selected historical policy or explicit diagnostics, as documented in [peer/HISTORICAL_CONSUMERS.md](peer/HISTORICAL_CONSUMERS.md). Static resources and binary assets were classified structurally, not visually or semantically qualified. Dated records retain their original proof boundaries.
+
+Both assigned scopes have been reconciled; no whole-repository all-green or dynamic verification claim is made.
+
+Independent bounded native crosschecks and the peer terminal report are [peer/CROSSCHECK.md](peer/CROSSCHECK.md) and [peer/FINAL.md](peer/FINAL.md). The final peer ledger was re-imported after its source-range completion; its one vendored-library classification remains partial in the combined ledger.

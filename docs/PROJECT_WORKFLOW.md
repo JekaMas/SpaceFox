@@ -9,7 +9,7 @@ For property batches and authorized releases, follow the canonical
 
 The repository began with an OpenSpec foundation and the browser mockup. The
 current implementation includes portable publisher/catalog/cloud owners and
-historical hosted observations; the current target is schema-3 SFR1M at /feed.json. The native change is `spacefox-watchface`; language/preview/license
+historical hosted observations; the current publisher and visual root is schema-3 SFR1M at `/feed.json`, while the watch schedule uses trusted `/watch.json`. The native change is `spacefox-watchface`; language/preview/license
 foundation is tracked by `localize-free-distribution`. Native implementation tasks stay
 open until native code, data/asset updates and the required checks actually exist.
 Do not use artifact readiness to claim product completion.

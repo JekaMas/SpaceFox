@@ -123,9 +123,9 @@ class SpaceFoxView extends WatchUi.WatchFace {
         values["energy"]=fitness.currentBodyBattery;WatchUi.requestUpdate();}catch(e){}
     }
     function stopFitness() as Void {if(fitnessTimer!=null){fitnessTimer.stop();fitnessTimer=null;}try{selectedFields.stop();}catch(e){}fitness.currentBodyBattery=null;values["energy"]=null;metricsMinute=null;}
-    function snapshotAt(now as Number or Long) as ClockSnapshot {
+    (:typecheck(false)) function snapshotAt(now as Number or Long) as ClockSnapshot {
         advanceSelection(now);
-        if(context!=null){context.advanceFreshness(now);}
+        if(context!=null){context.advanceFreshness(now);if(packet!=null&&packet.presentation==context){packet.stale=context.stale;}}
         var remaining=_schedule.remainingSeconds(now);
         if(context!=null&&context.displayTarget!=null){remaining=(context.displayTarget as Long)-now.toLong();}
         var current=new ClockSnapshot(_clock.localTimeText(),CountdownFormat.format(remaining));
@@ -383,7 +383,6 @@ class SpaceFoxView extends WatchUi.WatchFace {
         // Renderer release is synchronous; retain the last frame if an OS draw
         // arrives before its rebind rather than rendering a separate mode.
         if(renderer==null){return;}
-        if(packet!=null){(packet as NativeFeed).advance(now);if(context!=null){(context as SceneContext).stale=(packet as NativeFeed).stale as Boolean;}}
         var current=snapshotAt(now);
         var drawing=renderer as SceneRenderer;
         try{if((_mode == NOT_LOW)){drawing.active(dc,current,settings,values,fitness,animationProgress);}

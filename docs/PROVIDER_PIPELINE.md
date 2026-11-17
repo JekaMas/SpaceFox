@@ -72,9 +72,7 @@ Every request, including pagination/details/manual/retry, first calls the accept
 15/hour ledger, unresolved-crash delay and persisted429backoff apply before HTTP.
 Catalog/version calls use the same authority. A due check returning false causes
 no provider request, state commit, candidate, publication or output directory.
-Fast mode is persisted explicitly at bootstrap; ordinary restarts cannot reset it.
-Near/hour/fast decisions use the accepted schedule policy; redraw has no call path
-to this publisher program.
+Healthy schedule requests are hourly; failure or no future is retried at the next permitted connected opportunity. Offline wakes use the 300-second platform minimum; redraw has no call path to this publisher program. Metadata has its separate daily cadence.
 
 The real transport disables environment proxies, redirects, cookies, compression,
 credentials and implicit retries. It sends `Cache-Control: no-cache`. Socket
@@ -85,8 +83,7 @@ at524288before JSON parsing; Content-Length, streamed bodies, UTF8, depth32 and
 30000value nodes are bounded. Duplicate keys, nonfinite numbers and invalid
 structure reject. The standard HTTP parser additionally has its own header
 line/count limits; the512KiB body allowance is not a native memory measurement.
-429 honors Retry-After delta or aware HTTP date, with at least60seconds; invalid
-Retry-After defaults to300. Other errors retain a consumed slot and backoff.
+Failed or throttled schedule calls retain their consumed slot and retry at the next permitted connected opportunity; quota and unresolved-request recovery still apply. Catalog metadata retains its own bounded backoff.
 
 ## Source facts and freshness
 
@@ -260,8 +257,7 @@ python3 -B tools/update_feed.py --remote /absolute/remote.git \
   run --output /absolute/new-artifact-directory
 ```
 
-`bootstrap --fast-seconds 300` explicitly selects optional fast mode. A real
-provider run uses the default origin only after this durable bootstrap; every
+A real provider run uses the default origin only after durable bootstrap; every
 provider call still needs a saved reservation. `--now` is an explicit logical-time
 qualification input; default UTC comes from the clock. `--live G:SHA256` is an
 operator-observed site revision, absent for an empty site. It is not automated

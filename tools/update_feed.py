@@ -22,7 +22,7 @@ from tools.spacefox.feed import FeedEncodingError
 from tools.spacefox.provider import (LL2Client, ProviderError, normalize_detail_launch,
                                     validation_epoch, bounded_json, DEFAULT_ORIGIN)
 from tools.spacefox.publisher import (GitState, Publisher, StateError, LiveRevision,
-                                     AllowanceUnavailable, GitDeadline, bounded_git)
+                                     AllowanceUnavailable, GitDeadline, bounded_git, _head_tree, _tracked_bytes, tracked_executing_revision)
 from tools.spacefox.schedule import RefreshPolicy, LaunchStatus
 from tools.spacefox.native_motion import build_artifact, PROFILE, _RepositoryCatalogOperation
 
@@ -184,74 +184,9 @@ def export_pending(pub, directory):
     return len(files)
 
 
-def _head_tree(root):
-    raw = bounded_git(root, 'ls-tree', '-r', '-z', 'HEAD').stdout
-    result = {}
-    for entry in raw.split(b'\0'):
-        if not entry:
-            continue
-        header, path = entry.split(b'\t', 1)
-        mode, kind, digest = header.split()
-        if kind == b'blob':
-            result[os.fsdecode(path)] = (mode, digest.decode('ascii'))
-    return result
-
-
-def _tracked_bytes(root, tree, name):
-    path = Path(name)
-    if path.is_absolute() or '..' in path.parts or not path.parts:
-        raise ValueError('unsafe tracked input')
-    name = path.as_posix()
-    mode, expected = tree[name]
-    target = root / path
-    if mode != b'100644' and mode != b'100755':
-        raise ValueError('regular tracked input required')
-    if target.is_symlink() or not target.resolve().is_relative_to(root):
-        raise ValueError('unsafe tracked input')
-    # Resolve sizes only for files actually read: ls-tree -l on a partial
-    # clone fetches every missing blob in the whole repository. Stream the
-    # candidate before allocation, then recheck the stable snapshot so a
-    # changed or oversized worktree file cannot become trusted input.
-    size = target.stat().st_size
-    algorithm = hashlib.sha1 if len(expected) == 40 else hashlib.sha256
-    digest = algorithm(b'blob ' + str(size).encode() + b'\0')
-    with target.open('rb') as stream:
-        while chunk := stream.read(65536):
-            digest.update(chunk)
-    if digest.hexdigest() != expected:
-        raise ValueError('tracked input differs from HEAD')
-    raw = _read_snapshot(target, size)
-    digest = algorithm(b'blob ' + str(len(raw)).encode() + b'\0')
-    digest.update(raw)
-    if len(raw) != size or digest.hexdigest() != expected:
-        raise ValueError('tracked input differs from HEAD')
-    return raw
-
-
 def executing_revision(root):
     """Bind permission SHA to the actual tracked clean producer checkout."""
-    root = Path(root).resolve()
-    scopes = ['tools/spacefox', 'tools/update_feed.py', 'catalog', 'schemas']
-    result = bounded_git(root, 'status', '--porcelain', '--untracked-files=all', '--', *scopes)
-    if result.stdout:
-        raise StateError('producer checkout must be committed and clean before provider permission')
-    # Git status ignores assume-unchanged and skip-worktree. Check any present
-    # flagged producer bytes directly against HEAD before opening authority.
-    tracked = bounded_git(root, 'ls-files', '-v', '-z', '--', *scopes).stdout
-    flagged = [entry for entry in tracked.split(b'\0') if entry and entry[:1] != b'H']
-    if flagged:
-        tree = _head_tree(root)
-        try:
-            for entry in flagged:
-                name = os.fsdecode(entry[2:])
-                target = root / name
-                if target.exists() or target.is_symlink():
-                    _tracked_bytes(root, tree, name)
-                elif entry[:1] != b'S':
-                    raise ValueError('missing flagged producer input')
-        except (KeyError, OSError, ValueError) as exc:
-            raise StateError('producer checkout must be committed and clean before provider permission') from exc
-    return bounded_git(root, 'rev-parse', 'HEAD').stdout.decode().strip()
+    return tracked_executing_revision(root, ['tools/spacefox', 'tools/update_feed.py', 'catalog', 'schemas'])
 
 
 def _no_work_source_fence(root, expected_revision=None):

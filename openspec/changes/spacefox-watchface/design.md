@@ -185,6 +185,8 @@ clock, rather than continuing a frozen/decrementing counter. Seconds and animati
 remain restricted to an active display; a cached exact time can still be stale
 as a prediction, independently of the accuracy of that local calculation.
 
+**Historical cadence:** the following earlier near/fast polling design is superseded by 0.2.4: healthy schedule requests are hourly, failure/no-future retries at the next permitted connected opportunity, and offline wakes use the 300-second platform minimum. Source freshness thresholds remain distinct.
+
 | Data polling mode | Publisher and watch defaults | Source stale limit |
 | --- | --- | --- |
 | Normal / unknown launch time | 60 minutes | 3 hours |
@@ -241,6 +243,8 @@ actual response/parser limits, excessive shape and error/restart behavior.
 Version/lookup-table metadata counts toward it. Runtime containers, decode buffers,
 serialized storage and graphics have separate measured budgets; none follows
 automatically from the JSON byte count.
+
+**Historical polling strategy, superseded by the 0.2.4 hourly/earliest-permitted policy:**
 
 Target one bounded provider batch when due: normally once/hour, four/hour in the
 near window. A default fifteen-minute cron can inspect the retained schedule and
@@ -636,7 +640,7 @@ Separate versions: native app/build; feed wire major; renderer schema; catalog
 revision; immutable asset digest; monotonic publisher generation; per-record
 source-validation time. Supported content updates do not require a Store release.
 New logic, permissions, fonts/glyphs or renderer operations do. Never download
-executable watch code as an asset. Only the current schema-3 SFR1M envelope at /feed.json is supported.
+executable watch code as an asset. The publisher/visual root remains schema-3 SFR1M at /feed.json; current watches obtain the separate trusted schedule projection from /watch.json.
 Unsupported input is refused while accepted current-format cache retains honest age
 and an actionable settings/update message; no older feed or migration is offered.
 
@@ -673,8 +677,8 @@ complete the watch-face, live-feed, catalog transport or physical power tasks.
 
 ## Current-only format and finite text qualification — 2026-11-13
 
-The sole public current format is `native-motion-v3`: envelope schema 3 at
-`/feed.json`, with SFR1M visuals. SFR1 token/raster primitives inside SFR1M are
+The publisher and visual root is `native-motion-v3`: envelope schema 3 at
+`/feed.json`, with SFR1M visuals. The watch schedule is the separate trusted `/watch.json` projection. SFR1 token/raster primitives inside SFR1M are
 implementation dependencies, not a separately supported public profile. Old wire
 majors, dual roots, static exporters, legacy migration/adoption, old-archive gates,
 cross-version tests and the 90-day transition are RETIRED by explicit user decision,

@@ -1,8 +1,7 @@
 # Personal publisher and feed setup
 
 SpaceFox uses **scheduled GitHub Actions → static GitHub Pages → paired phone →
-watch**. The current contract has one canonical public format: native-motion-v3,
-schema-3 SFR1M at /feed.json. The owner's 2026-11-13 current G1/G2 operation is
+watch**. The publisher/visual root is native-motion-v3 schema-3 SFR1M at /feed.json; the watch schedule is the separate trusted /watch.json projection. The owner's 2026-11-13 current G1/G2 operation is
 recorded below; each other instance requires its own qualification. Physical
 phone/FR165, battery and Store acceptance remain separate. Runtime deployment and
 recovery commands are owned by [CLOUD_DELIVERY](CLOUD_DELIVERY.md); this contract
@@ -54,12 +53,11 @@ already exist; do not install tools implicitly.
 
 ## Operate and maintain
 
-The configured offset fifteen-minute cron is intended to wake a lightweight due
+The configured offset five-minute cron is intended to wake a lightweight due
 check. The finite natural external-clock dispatches above establish only their
 observed runs; they do not prove GitHub `schedule` event execution or future SLA.
 A manual due-recovery dispatch with `bootstrap=false` preserves cadence and quota.
-Normal source validation is hourly and near-launch validation every fifteen
-minutes, with explicit persisted fast mode. A not-due run makes no provider
+Healthy schedule requests are hourly; failed requests or no-future state retry at the next permitted connected opportunity. Offline wakes use the 300-second platform minimum. Metadata collection retains its separate daily cadence. A not-due run makes no provider
 request. Watch countdown calculation is local. Re-fetching an old file, correcting
 a catalog or rolling back compatible art never renews provider-validation age.
 

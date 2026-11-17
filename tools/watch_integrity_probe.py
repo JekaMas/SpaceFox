@@ -44,8 +44,8 @@ def build(output,*,diagnostic_unqualified=False):
    if len(raw)>8192:raise ValueError('integrity resource too large '+name)
    resources[name+'.json']=raw;xml.append('<jsonData id="'+name+'" filename="'+name+'.json"/>')
   resources['integrity.xml']=(''.join(xml)+'</resources>').encode()
-  return original(out,source+'\n'+(FIXTURE/'AdditionalAssertions.mc').read_text(),**kwargs)
+  return original(out,source+'\n'+(FIXTURE/'NativeSourceTimes.mc').read_text()+'\n'+(FIXTURE/'AdditionalAssertions.mc').read_text(),**kwargs)
  with patch.object(core,'build_probe',add_source),patch.object(core,'NAMES',NAMES):
   result=core.build(output,diagnostic_unqualified)
- result['additionalInputs']={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in (FIXTURE/'AdditionalAssertions.mc',FIXTURE/'integrity.json',FIXTURE/'integrity-oracle.json',FIXTURE/'build_integrity.py',FIXTURE/'omission.json',FIXTURE/'build_omission.py',Path(__file__).resolve())}
+ result['additionalInputs']={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in (FIXTURE/'AdditionalAssertions.mc',FIXTURE/'NativeSourceTimes.mc',FIXTURE/'integrity.json',FIXTURE/'integrity-oracle.json',FIXTURE/'build_integrity.py',FIXTURE/'omission.json',FIXTURE/'build_omission.py',Path(__file__).resolve())}
  (output/'build.json').write_text(json.dumps(result,indent=2)+'\n');return result
