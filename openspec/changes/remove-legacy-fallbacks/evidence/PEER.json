@@ -1,0 +1,29 @@
+{
+  "status": "GREEN",
+  "scope": "remove-legacy-fallbacks/P0-host-only",
+  "base_revision": "b9c241134bb5e5e5174db119f0e32ab7d798cb51",
+  "author_revision": "4d1165fd674aeca3b5be247e96a5662032c9b1b9",
+  "source_revision": "dfb43c27d454f9ecb9c33c8c0e81deba8ad365ec",
+  "report": "openspec/changes/remove-legacy-fallbacks/evidence/PEER.md",
+  "new_observation": {
+    "selector": "tests.test_schedule_producer_transport.ScheduleProducerTransportTest.test_wire_preserves_traversal_epoch_without_admitting_future_records",
+    "result": "PASS",
+    "seconds": 0.005,
+    "receipt": "peer-wire-epochs.log"
+  },
+  "retained_admission": [
+    "en",
+    "ru",
+    "de",
+    "fr",
+    "es"
+  ],
+  "native_delta": false,
+  "full_audit_status": "NOT DONE",
+  "future": [
+    "P1 admission consolidation",
+    "P2 deferred native/resource cleanup",
+    "P3 complete per-file audit"
+  ],
+  "remaining_delivery": "non-force integration and normal publisher delivery/readback; no IQ or Store work"
+}

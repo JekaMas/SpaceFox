@@ -24,7 +24,13 @@
     },
     {
       "id": "p0-peer",
-      "purpose": "independent review of frozen host diff"
+      "purpose": "independent review of frozen host diff",
+      "status": "GREEN",
+      "receipt": "PEER.json",
+      "evidence": [
+        "PEER.md",
+        "peer-wire-epochs.log"
+      ]
     }
   ],
   "observedCases": [
